@@ -146,7 +146,7 @@ module Batch
       def sign_out
         10.times {
           begin
-            click username_field, "userNameText" unless field_present? sign_out_link, "signOutLink"
+            click username_field, "userNameText" unless sign_out_link.present?
             click sign_out_link, "signOutLink"
             break field_present? username_field, "userNameText"
           rescue
