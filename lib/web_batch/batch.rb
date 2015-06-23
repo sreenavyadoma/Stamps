@@ -62,7 +62,7 @@ module Batch
 
     def check_row(number)
       field = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div"
-      unless field_present?(field, "Row#{number}")
+      unless field_present? field
         raise("Order Grid Row number #{number} does not exist.")
       end
       5.times do
@@ -148,7 +148,7 @@ module Batch
           begin
             click username_field, "userNameText" unless sign_out_link.present?
             click sign_out_link, "signOutLink"
-            break field_present? username_field, "userNameText"
+            break field_present? username_field
           rescue
             #ignore
           end
@@ -164,7 +164,7 @@ module Batch
       end
 
       def present?
-        field_present? username_field, "Username"
+        field_present? username_field
       end
 
     end
@@ -257,18 +257,18 @@ module Batch
     end
 
     def sign_in(username, password)
-      3.times do
+      5.times do
         visit
+        if ToolBar.new(@browser).present?
+          log "Sign in successful."
+          break
+        end
         if username_field.present?
           username_field.wait_until_present
           self.username = username
           self.password = password
           click sign_in_button, "SignIn"
           sign_in_button.wait_while_present(60)
-          if ToolBar.new(@browser).present?
-            log "Sign in successful."
-            break
-          end
         end
       end
     end
@@ -318,11 +318,11 @@ module Batch
         begin
           service_dlist_field = @browser.div(:css => 'div[id^=servicedroplist-][id$=-trigger-picker]')
           inline_service_selection_field = @browser.td(:css => "tr[data-qtip*='#{@selection}']>td:nth-child(2)")
-          service_dlist_field.click unless field_present? inline_service_selection_field, "inline_service_selection_field"
+          service_dlist_field.click unless field_present? inline_service_selection_field
           @inline_service_price = inline_service_price_field.text.gsub('$', '')
           #log "Service selection:  #{service_selection_field.text} Price: #{@inline_service_price}"
           inline_service_text = inline_service_selection_field.text
-          service_dlist_field.click unless field_present? inline_service_selection_field, "inline_service_selection_field"
+          service_dlist_field.click unless field_present? inline_service_selection_field
           log_browser_set inline_service_selection_field, @selection, "Service"
           inline_service_selection_field.click
           inline_service_selection_field.wait_while_present(3)
@@ -330,7 +330,7 @@ module Batch
           # Click this field 3 times to make tool tip disapper, tool tip appears after setting service.
           3.times
           begin
-            click single_order_form_item_label, "single_order_form_item_label" if field_present?(single_order_form_item_label, "single_order_form_item_label")
+            click single_order_form_item_label, "single_order_form_item_label" if field_present? single_order_form_item_label
           rescue
             #ignroe
           end
@@ -391,7 +391,7 @@ module Batch
     end
 
     def present?
-      field_present? add_field, "Add"
+      field_present? add_field
     end
   end
 
@@ -637,7 +637,7 @@ module Batch
     end
 
     def present?
-      field_present? window_title, "DeleteShippnigAddress"
+      field_present? window_title
     end
 
     def close
@@ -701,7 +701,7 @@ module Batch
     end
 
     def window_present?
-      field_present? add_button, "Add"
+      field_present? add_button
     end
 
     def add
@@ -761,7 +761,7 @@ module Batch
 
     def delete
       begin
-        click(delete_button, "Delete") if field_present?(delete_button, "Delete")
+        click(delete_button, "Delete") if field_present? delete_button
       rescue
         #ignore
       end
@@ -846,10 +846,7 @@ module Batch
     end
 
     def grid_cell_text(row, column)
-      field = grid_cell(row, column)
-      present = field_present? field, "cell(#{row}, #{column})"
-      text = get_text field, "cell(#{row}, #{column})"
-      text
+      get_text grid_cell(row, column), "cell(#{row}, #{column})"
     end
 
     def close_button
@@ -890,7 +887,7 @@ module Batch
 
     def expand_ship_to_address
       3.times {
-        if field_present? address_field, "address_field"
+        if field_present? address_field
           break
         else
           click ship_to_address_field, "ship_to_address_field"
@@ -899,7 +896,7 @@ module Batch
     end
 
     def less
-      click less_field, "Less" if field_present? less_field, "Less"
+      click less_field, "Less" if field_present? less_field
     end
 
     def item_label_field
@@ -940,7 +937,7 @@ module Batch
     end
 
     def present?
-      field_present? height_field, "Height"
+      field_present? height_field
     end
 
     def wait_until_present(timeout)
@@ -1040,7 +1037,7 @@ module Batch
       @manage_shipping_adddress ||= ManageShippingAddresses.new(@browser)
       10.times {
         begin
-          click ship_from_drop_list_field, "ship_from_selection(#{selection})" unless field_present? ship_from_selection(selection), "ship_from_selection(#{selection})"
+          click ship_from_drop_list_field, "ship_from_selection(#{selection})" unless field_present? ship_from_selection(selection)
           click ship_from_selection(selection), selection
           break if @manage_shipping_adddress.window_present?
         rescue
@@ -1228,7 +1225,7 @@ module Batch
 
     public
     def exact_address_not_found?
-      field_present? exact_address_not_found_field, "exact_address_not_found_field"
+      field_present? exact_address_not_found_field
     end
 
     def row=(number)
@@ -1256,7 +1253,7 @@ module Batch
       set_text address_field, formatAddress(partial_addy), 'Address'
       10.times {
         item_label_field.click
-        break if field_present?(exact_address_not_found_field, "exact_address_not_found_field") || field_present?(validate_address_field, "validate_address_field")
+        break if (field_present? exact_address_not_found_field) || (field_present? validate_address_field)
       }
       less
       self

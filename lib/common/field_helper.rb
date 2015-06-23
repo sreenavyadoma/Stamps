@@ -21,10 +21,9 @@ module FieldHelper
     log_browser_click field, field_name
   end
 
-  def field_present?(field, field_name)
+  def field_present?(field)
     begin
       present = field.present?
-      log_browser_present field, present.to_s, field_name
       return present
     rescue
       false

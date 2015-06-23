@@ -48,7 +48,7 @@ module Stamps
   end
 
   def log_step(step)
-    log "STEP :: -- #{step}  -- ::"
+    log "###########################################  ::  STEP  ::  #{step}  ::"
   end
 
   def log_browser_set(field, text, field_name)
