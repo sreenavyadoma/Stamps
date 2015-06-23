@@ -46,7 +46,7 @@ module Batch
     def row_number(order_id)
       row_offset = 1
       css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{GRID_COLUMNS[:order_id].first})>div"
-      elements = @browser.divs(:css => css)
+      elements = @browser.divs :css => css
       elements.each_with_index { |div, index|
         id = div.text
         id
@@ -291,11 +291,11 @@ module Batch
     end
 
     def inline_service_price_field
-      @browser.td(:css => "tr[data-qtip*='#{@selection}']>td:nth-child(3)")
+      @browser.td :css => "tr[data-qtip*='#{@selection}']>td:nth-child(3)"
     end
 
     def single_order_form_item_label
-      @browser.label(:text => 'Item:')
+      @browser.label :text => 'Item:'
     end
 
 =begin
@@ -310,14 +310,14 @@ module Batch
     end
 
     def service_field
-      @browser.text_field(:css => 'input[name^=servicedroplist-]')
+      @browser.text_field :css => 'input[name^=servicedroplist-]'
     end
 
     def select
       3.times {
         begin
-          service_dlist_field = @browser.div(:css => 'div[id^=servicedroplist-][id$=-trigger-picker]')
-          inline_service_selection_field = @browser.td(:css => "tr[data-qtip*='#{@selection}']>td:nth-child(2)")
+          service_dlist_field = @browser.div :css => 'div[id^=servicedroplist-][id$=-trigger-picker]'
+          inline_service_selection_field = @browser.td :css => "tr[data-qtip*='#{@selection}']>td:nth-child(2)"
           service_dlist_field.click unless field_present? inline_service_selection_field
           @inline_service_price = inline_service_price_field.text.gsub('$', '')
           #log "Service selection:  #{service_selection_field.text} Price: #{@inline_service_price}"
@@ -342,7 +342,7 @@ module Batch
           break if service_input_text.include? inline_service_text
         rescue => exception
           #log exception.backtrace
-          field = @browser.div(:css => 'div[id^=servicedroplist-][id$=-trigger-picker]')
+          field = @browser.div :css => 'div[id^=servicedroplist-][id$=-trigger-picker]'
           Watir::Wait.until {field.present?}
         end
       }
@@ -364,6 +364,65 @@ module Batch
     end
 =end
   end
+
+  class PrintWindow < Stamps::Page
+    def initialize(browser, *args)
+      super(browser)
+
+      case args.size
+        when 0
+          return self
+        when 1
+          self.print = args[0]
+          return self
+        when 2
+          self.print = args[0]
+          self.paper_trail = args[1]
+          return self
+        else
+          raise "Invalid printer arguments."
+      end
+    end
+
+    public
+    def print=(printer)
+      printer_field.when_present.set printer
+      self
+    end
+
+    def paper_trail=(tray)
+      paper_tray_field.when_present.set tray
+      self
+    end
+
+    def print
+      print_button.click
+      self
+    end
+
+    def print_sample
+      print_sample_button.click
+      self
+    end
+
+    private
+    def printer_field
+      @browser.text_field :name => 'printers'
+    end
+
+    def paper_tray_field
+      @browser.text_field :name => 'paperTrays'
+    end
+
+    def print_sample_button
+      @browser.span :text => 'Print Sample'
+    end
+
+    def print_button
+      @browser.elements(:text => 'Print').first
+    end
+  end
+
   #
   #  Contains Add/Edit buton for orders.
   #
@@ -372,7 +431,7 @@ module Batch
 
     private
     def add_field
-      @browser.span(:text => 'Add')
+      @browser.span :text => 'Add'
     end
 
     def print_button
@@ -380,8 +439,14 @@ module Batch
     end
 
     public
-    def print
+    def print(*args)
       print_button.click
+      PrintWindow.new(@browser, args).print
+    end
+
+    def print_sample(*args)
+      print_button.click
+      PrintWindow.new(@browser, args).print_sample
     end
 
     def add
@@ -589,31 +654,31 @@ module Batch
 
     private
     def origin_zip_field
-      @browser.text_field(:name => 'OriginZip')
+      @browser.text_field :name => 'OriginZip'
     end
 
     def name_field
-      @browser.text_field(:name => 'FullName')
+      @browser.text_field :name => 'FullName'
     end
 
     def company_field
-      @browser.text_field(:name => 'Company')
+      @browser.text_field :name => 'Company'
     end
 
     def street_address1_field
-      @browser.text_field(:name => 'Street1')
+      @browser.text_field :name => 'Street1'
     end
 
     def street_address2_field
-      @browser.text_field(:name => 'Street2')
+      @browser.text_field :name => 'Street2'
     end
 
     def city_field
-      @browser.text_field(:name => 'City')
+      @browser.text_field :name => 'City'
     end
 
     def state_field
-      @browser.text_field(:name => 'State')
+      @browser.text_field :name => 'State'
     end
 
     def zip_field
@@ -625,7 +690,7 @@ module Batch
     end
 
     def save_button
-      @browser.span(:text => 'Save')
+      @browser.span :text => 'Save'
     end
 
   end
@@ -869,16 +934,16 @@ module Batch
     end
 
     def add_button
-      @browser.link(:css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)")
+      @browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"
     end
 
     def edit_button
-      @browser.link(:css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)")
+      @browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
     end
 
 
     def delete_button
-      @browser.link(:css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
+      @browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
     end
 
   end
@@ -886,11 +951,11 @@ module Batch
   module SingleOrderCommon
 
     def ship_to_address_field
-      @browser.span(:css => 'div[id=shiptoview-addressCollapsed-targetEl]>a>span>span>span:nth-child(2)')
+      @browser.span :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a>span>span>span:nth-child(2)'
     end
 
     def less_field
-      @browser.span(:text => 'Less')
+      @browser.span :text => 'Less'
     end
 
     def expand_ship_to_address
@@ -908,15 +973,15 @@ module Batch
     end
 
     def item_label_field
-      @browser.label(:text => 'Item:')
+      @browser.label :text => 'Item:'
     end
 
     def address_field
-      @browser.textarea(:name => 'FreeFormAddress')
+      @browser.textarea :name => 'FreeFormAddress'
     end
 
     def validate_address_field
-      @browser.span(:text => 'Validate Address')
+      @browser.span :text => 'Validate Address'
     end
   end
 
@@ -1029,7 +1094,7 @@ module Batch
     end
 
     def manage_ship_from_address_field
-      @browser.div(:text => 'Manage Shipping Addresses...')
+      @browser.div :text => 'Manage Shipping Addresses...'
     end
 
     def ship_from_default
@@ -1038,7 +1103,7 @@ module Batch
     end
 
     def ship_from_selection(selection)
-      @browser.div(:text => selection)
+      @browser.div :text => selection
     end
 
     def ship_from(selection)
@@ -1228,7 +1293,7 @@ module Batch
 
     private
     def exact_address_not_found_field
-      @browser.div(:text => 'Exact Address Not Found')
+      @browser.div :text => 'Exact Address Not Found'
     end
 
     public
@@ -1238,8 +1303,8 @@ module Batch
 
     def row=(number)
       offset = 1
-      rox_input = @browser.input(:css => "input[name=addrAmbig][value='#{number-offset}']")
-      accept_button = @browser.span(:text => 'Accept')
+      rox_input = @browser.input :css => "input[name=addrAmbig][value='#{number-offset}']"
+      accept_button = @browser.span :text => 'Accept'
       3.times do
         begin
           rox_input.click

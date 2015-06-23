@@ -72,11 +72,11 @@ module Stamps
 
 
   def log_expectation(field, expected, actual, result)
-    log "EXPECTATION :: #{field} :: Expected=#{expected} :: Actual=#{actual}  ::  #{(result)?"Passed":"Failed"}"
+    log "EXPECTATION :: #{field}:  #{expected}, Actual:  #{actual} # #{(result)?"Passed":"Failed"}"
   end
 
   def log_expectation_eql(field, expected, actual)
-    log "EXPECTATION :: #{field} :: Expected=#{expected} :: Actual=#{actual}  ::  #{actual.eql?(expected)?"Passed":"Failed"}"
+    log "EXPECTATION :: #{field}:  #{expected}, Actual:  #{actual} # #{actual.eql?(expected)?"Passed":"Failed"}"
   end
 end
 

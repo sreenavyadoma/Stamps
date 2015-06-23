@@ -44,7 +44,7 @@ module Stamps
         browser_name = 'Internet Explorer'
     end
 
-    log "Browser:     " + browser_name
+    log_param 'Browser', browser_name
     browser.window.maximize
     @browser = browser
   end

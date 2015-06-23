@@ -31,3 +31,8 @@ Cucumber::Rake::Task.new(:regress_qacc_firefox) do |t|
   t.profile = 'regress_qacc_firefox'
   t.cucumber_opts = "-p html_report"
 end
+
+Cucumber::Rake::Task.new(:print_sample_priority_mail_package) do |t|
+  t.profile = 'print_sample_priority_mail_package'
+  t.cucumber_opts = "-p html_report"
+end

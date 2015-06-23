@@ -4,6 +4,6 @@ When /^Add a new order$/ do
   batch.grid.edit_order Batch.order_id
 end
 
-When /^Click toolbar Print button$/ do
-  batch.toolbar.print
+When /^Print Sample on (.*)$/ do |printer|
+  batch.toolbar.print(printer).print_sample
 end
