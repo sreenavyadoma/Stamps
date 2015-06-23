@@ -22,7 +22,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @first_class_mail_package_thick_envelope
   Scenario: First-Class Mail Package/Thick Envelope
@@ -42,7 +41,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @first_class_mail_large_envelope_flat
   Scenario: First-Class Mail Large Envelope/Flat
@@ -62,7 +60,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @first_class_mail_package_thick_envelope
   Scenario: First-Class Mail Package/Thick Envelope
@@ -82,7 +79,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_large_thick_envelope
   Scenario: Priority Mail Large/Thick Envelope
@@ -102,7 +98,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_package
   Scenario: Priority Mail Package
@@ -122,7 +117,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_large_package
   Scenario: Priority Mail Large Package
@@ -142,7 +136,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_flat_rate_envelope
   Scenario: Priority Mail Flat Rate Envelope
@@ -162,7 +155,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-   * Sign out
 
   @priority_mail_padded_flat_rate_envelope
   Scenario: Priority Mail Padded Flat Rate Envelope
@@ -182,7 +174,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_legal_flat_rate_envelope
   Scenario: Priority Mail Legal Flat Rate Envelope
@@ -202,7 +193,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_small_flat_rate_box
   Scenario: Priority Mail Small Flat Rate Box
@@ -222,7 +212,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_medium_flat_rate_box
   Scenario: Priority Mail Medium Flat Rate Box
@@ -242,7 +231,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_large_flat_rate_box
   Scenario: Priority Mail Large Flat Rate Box
@@ -262,7 +250,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_regional_rate_box_a
   Scenario: Priority Mail Regional Rate Box A
@@ -282,7 +269,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_regional_rate_box_b
   Scenario: Priority Mail Regional Rate Box B
@@ -302,7 +288,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_regional_rate_box_c
   Scenario: Priority Mail Regional Rate Box C
@@ -322,7 +307,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_express_package
   Scenario: Priority Mail Express Package
@@ -342,7 +326,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_express_flat_rate_envelope
   Scenario: Priority Mail Express Flat Rate Envelope
@@ -364,7 +347,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_express_legal_flat_rate_envelope
   Scenario: Priority Mail Express Legal Flat Rate Envelope
@@ -384,7 +366,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00             | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @priority_mail_express_medium_flat_rate_box
   Scenario: Priority Mail Express Medium Flat Rate Box
@@ -404,7 +385,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @parcel_select_package
   Scenario: Parcel Select Package
@@ -424,7 +404,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @parcel_select_large_package
   Scenario: Parcel Select Large Package
@@ -444,7 +423,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @parcel_select_oversized_package
   Scenario: Parcel Select Oversized Package
@@ -464,7 +442,6 @@ Feature: Service Control
     * Expect Order details to be;
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
-    * Sign out
 
   @media_mail_package
   Scenario: Media Mail Package
