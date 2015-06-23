@@ -2,7 +2,6 @@ module Stamps
   require_relative 'stamps_logger'
 
   def self.setup
-    log "###########################################"
     log "Begin..."
     case ENV['BROWSER']
       when 'ie', 'Internet Explorer'
@@ -54,6 +53,5 @@ module Stamps
     @browser.quit unless @browser == nil
     @browser = nil
     log "Done!"
-    log "###########################################"
   end
 end

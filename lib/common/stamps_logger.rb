@@ -26,12 +26,12 @@ module Stamps
   end
 
   def log_hash_param(table)
-    table.each{|key, value| log ":: parameter :: #{key} :: #{value}"}
+    table.each{|key, value| log "## #{key} :: #{value}"}
     table
   end
 
   def log_param(param_name, value)
-    log ":: parameter :: #{param_name} :: #{value}"
+    log "## #{param_name} :: #{value}"
     value
   end
 

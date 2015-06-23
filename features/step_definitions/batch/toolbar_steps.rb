@@ -1,5 +1,5 @@
 When /^Add a new order$/ do
-  log_step "Add a new order"
+  log "Add a new order"
   batch.toolbar.add
   batch.grid.edit_order Batch.order_id
 end

@@ -2,7 +2,7 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 $LOAD_PATH << File.expand_path('../../lib/web_batch', __FILE__)
 
 require 'data_magic'
-#require 'singleton'
+require 'rake'
 require 'watir-webdriver'
 module Watir
   module Container
