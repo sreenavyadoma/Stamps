@@ -1,0 +1,20 @@
+login_credentials:
+  qacc:
+    username:  auto01
+    password:  password1
+  staging:
+    username:  wc102_cc
+    password:  password1
+
+url_prefix:
+  qacc: printbatch100.qacc
+
+login_fields:
+  sign_in_link_loc:
+    text: Sign In
+  username_loc:
+    id: UserNameTextBox
+  password_loc:
+    id: PasswordTextBox
+  sign_in_button_loc:
+    id: signInButton

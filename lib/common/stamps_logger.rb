@@ -1,0 +1,82 @@
+module Stamps
+  private
+  def log_init
+    logger = Log4r::Logger.new ":"
+    logger.outputters = Outputter.stdout
+    logger.level = Log4r::INFO
+    logger
+  end
+
+  public
+  def self.logger
+    @logger ||= log_init
+  end
+
+  def log_debug(message)
+    Stamps.logger.debug caller[0] + message
+  end
+
+  def log(message)
+    begin
+      Stamps.logger.info message
+    rescue
+      # ignore
+    end
+    message
+  end
+
+  def log_hash_param(table)
+    table.each{|key, value| log ":: parameter :: #{key} :: #{value}"}
+    table
+  end
+
+  def log_param(param_name, value)
+    log ":: parameter :: #{param_name} :: #{value}"
+    value
+  end
+
+  def field_log_tag(field)
+    begin
+      if field.include? 'Watir::'
+        arr = field.to_s.split(":")
+        return "#{arr[0].split('<')[1]}.#{arr[2]}" if arr.size > 2
+      end
+    rescue
+      #ignore
+    end
+    field
+  end
+
+  def log_step(step)
+    log "STEP :: -- #{step}  -- ::"
+  end
+
+  def log_browser_set(field, text, field_name)
+    log "Browser.#{field_log_tag(field.to_s)}.#{field_name}.set  \"#{text}\""
+    text
+  end
+
+  def log_browser_get(field, text, field_name)
+    log "Browser.#{field_log_tag(field.to_s)}.#{field_name}.get \"#{text}\""
+    text
+  end
+
+  def log_browser_click(field, field_name)
+    log "Browser.#{field_log_tag(field.to_s)}.#{field_name}.click"
+  end
+
+  def log_browser_present(field, text, field_name)
+    log "Browser.#{field_log_tag(field.to_s)}.#{field_name}.present? \"#{text}\""
+    text
+  end
+
+
+  def log_expectation(field, expected, actual, result)
+    log "EXPECTATION :: #{field} :: Expected=#{expected} :: Actual=#{actual}  ::  #{(result)?"Passed":"Failed"}"
+  end
+
+  def log_expectation_eql(field, expected, actual)
+    log "EXPECTATION :: #{field} :: Expected=#{expected} :: Actual=#{actual}  ::  #{actual.eql?(expected)?"Passed":"Failed"}"
+  end
+end
+

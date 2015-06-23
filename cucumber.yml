@@ -1,0 +1,16 @@
+#default: --no-source --color --format pretty
+
+default: --profile html_report --profile default_profile
+html_report: --format progress --format html --backtrace -f pretty --out=features_report.html
+default_profile: --tags @bvt @regression BROWSER=chrome URL=qacc
+
+bvt_qacc_chrome: --tags @bvt_add_new_order BROWSER=chrome URL=qacc
+
+bvt_qacc_ie: --tags @bvt BROWSER=ie URL=qacc
+bvt_qacc_ff: --tags @bvt BROWSER=firefox URL=qacc
+
+regress_qacc_chrome:  --tags @regression BROWSER=chrome URL=qacc
+regress_qacc_ie:  --tags @regression BROWSER=firefox URL=qacc
+regress_qacc_firefox:  --tags @regression BROWSER=ie URL=qacc
+
+wip: --tags @wip BROWSER=firefox URL=qacc

@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+gem 'cucumber'
+gem 'rspec'
+gem 'rake'
+gem 'watir'
+#gem 'watir-webdriver'
+#gem 'watir-classic'
+#gem 'selenium-webdriver'
+gem 'rspec-expectations'
+gem 'data_magic'
+gem 'log4r'
