@@ -31,11 +31,3 @@ Cucumber::Rake::Task.new(:regress_qacc_firefox) do |t|
   t.profile = 'default'
   t.cucumber_opts = "-p html_report -p regress_qacc_firefox"
 end
-
-=begin
-Cucumber::Rake::Task.new(:xxxxx) do |t|
-  t.profile = 'default'
-  t.cucumber_opts = "-p html_report -p xxxxx"
-end
-=end
-

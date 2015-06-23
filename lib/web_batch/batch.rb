@@ -119,7 +119,7 @@ module Batch
       @grid ||= Grid.new(@browser)
     end
 
-    def tool_var
+    def toolbar
       @tool_bar ||= ToolBar.new(@browser)
     end
 
@@ -375,7 +375,15 @@ module Batch
       @browser.span(:text => 'Add')
     end
 
+    def print_button
+      @browser.elements(:text => 'Print').first
+    end
+
     public
+    def print
+      print_button.click
+    end
+
     def add
       add_field.when_present.click
       3.times do
