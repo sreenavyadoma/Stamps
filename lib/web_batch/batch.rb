@@ -481,9 +481,20 @@ module Batch
       self
     end
 
-    def print_sample
-      print_sample_button.click
+    def print_sample_expecting_error
+      print_sample_button.when_present.click
       print_result
+      self
+    end
+
+    def print_sample
+      print_sample_button.when_present.click
+      begin
+        print_result
+      rescue PrintingError => print_error
+        log print_error.message
+        @print_status = false
+      end
       self
     end
 
@@ -510,6 +521,7 @@ module Batch
     private
 
     def print_result
+      sleep(3)
       if error_ok_button.present?
         error_message = self.error_message
         log "!!!  PRINT ERROR !!!"
@@ -521,7 +533,7 @@ module Batch
         }
         close
         @print_status = false
-        raise PrintingError.new("Print Error: #{error_message}")
+        raise PrintingError.new("Printing Error: #{error_message}")
       end
       @print_status = true
       close
