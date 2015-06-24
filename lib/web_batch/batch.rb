@@ -130,7 +130,7 @@ module Batch
   #
   # Navigation bar containing Sign-in, etc
   #
-  module NavVar
+  module NavigationBar
     private
     def username_field
       @browser.span(:id => 'userNameText')
@@ -212,6 +212,7 @@ module Batch
   end
 
   class BatchPage < Page
+    include NavigationBar
     include Toolbar
 
     protected
@@ -467,13 +468,13 @@ module Batch
 
     def print
       print_button.click
-      self.print_result
+      print_result
       self
     end
 
     def print_sample
       print_sample_button.click
-      self.print_result
+      print_result
       self
     end
 

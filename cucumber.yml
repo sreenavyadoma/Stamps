@@ -2,6 +2,7 @@
 
 default: --profile html_report --profile default_profile
 html_report: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
+
 default_profile: --tags @bvt,@regression BROWSER=chrome URL=qacc
 
 bvt_qacc_chrome: --tags @bvt_add_new_order BROWSER=chrome URL=qacc

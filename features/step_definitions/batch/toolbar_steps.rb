@@ -5,5 +5,7 @@ When /^Add a new order$/ do
 end
 
 When /^Print Sample on (.*)$/ do |printer|
-  batch.print(printer).print_sample
+
+  expect{batch.print(printer).print_sample}.to raise_error(ArgumentError)
+
 end
