@@ -9,7 +9,7 @@ When /^Print Sample on (.*)$/ do |printer|
 end
 
 When /^Print Sample on (.*) raises a PrintingError$/ do |printer|
-  expect{batch.print(printer).print_sample}.to raise_error(PrintingError)
+  expect{batch.print(printer).print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 When /^Print Sample$/ do
@@ -17,5 +17,5 @@ When /^Print Sample$/ do
 end
 
 When /^Print Sample raises a Printing Error/ do
-  expect{batch.print.print_sample_expecting_error}.to raise_error(PrintingError)
+  expect(batch.print.print_sample_expecting_error).to raise_error(PrintingError)
 end
