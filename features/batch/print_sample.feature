@@ -33,5 +33,5 @@ Feature: B-01625  As a batch shipper, I want to be able to print sample postage
     * Expect Ounces to be 1
     * Expect Weight to be 1 lbs. 1 oz.
     * Expect Insured Value to be 1.00
-    * Print Sample on FakePrinter
+    * Print Sample raises a PrintingError
     * Sign out

@@ -5,7 +5,17 @@ When /^Add a new order$/ do
 end
 
 When /^Print Sample on (.*)$/ do |printer|
+  expect{batch.print(printer).print_sample}.to raise_error(PrintingError)
+end
 
-  expect{batch.print(printer).print_sample}.to raise_error(ArgumentError)
+When /^Print Sample on (.*) raises a PrintingError$/ do |printer|
+  expect{batch.print(printer).print_sample}.to raise_error(PrintingError)
+end
 
+When /^Print Sample$/ do
+  expect{batch.print.print_sample}.to raise_error(PrintingError)
+end
+
+When /^Print Sample raises a PrintingError/ do
+  expect{batch.print.print_sample}.to raise_error(PrintingError)
 end

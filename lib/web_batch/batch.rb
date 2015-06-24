@@ -189,7 +189,7 @@ module Batch
         print_button.click
         break if printer_window.present?
       }
-      printer_window.print_options args
+      printer_window.print_options *args
     end
 
     def add
@@ -236,6 +236,15 @@ module Batch
     end
 
   end
+
+  class PrintingError < StandardError
+    attr_reader :object
+
+    def initialize(object)
+      @object = object
+    end
+  end
+
 
   def self.url_prefix
     @url_prefix ||= data_for(:url_prefix, {})[ENV['URL']]
@@ -478,6 +487,10 @@ module Batch
       self
     end
 
+    def printed?
+      @print_status
+    end
+
     def present?
       print_button.present?
     end
@@ -506,7 +519,11 @@ module Batch
           error_ok_button.click
           break unless error_ok_button.present?
         }
+        close
+        @print_status = false
+        raise PrintingError.new("Print Error: #{error_message}")
       end
+      @print_status = true
       close
     end
 
