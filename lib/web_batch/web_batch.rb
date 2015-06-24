@@ -17,20 +17,5 @@ module Batch
   def new_order_row
     1
   end
-=begin
-
-  # @return [SingleOrderEditForm]
-  def single_order
-    @single_order_form ||= instance.single_order
-  end
-
-  def order_grid
-    @order_grid ||= instance.grid
-  end
-
-  def partial_address
-    @address_validation_form ||= single_order.partial_address
-  end
-=end
 
 end

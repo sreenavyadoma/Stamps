@@ -3,6 +3,7 @@ module Batch
   include Stamps
 
   module GridCommon
+
     GRID_COLUMNS ||= {
         :ship_cost => [2, 'Ship Cost'],
         :age => [3, 'Age'],
@@ -91,24 +92,138 @@ module Batch
 
   module SingleOrderCommon
 
+    def ship_to_address_field
+      @browser.span :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a>span>span>span:nth-child(2)'
+    end
+
+    def less_field
+      @browser.span :text => 'Less'
+    end
+
+    def expand_ship_to_address
+      3.times {
+        if field_present? address_field
+          break
+        else
+          click ship_to_address_field, "ship_to_address_field"
+        end
+      }
+    end
+
+    def less
+      click less_field, "Less" if field_present? less_field
+    end
+
+    def item_label_field
+      @browser.label :text => 'Item:'
+    end
+
+    def address_field
+      @browser.textarea :name => 'FreeFormAddress'
+    end
+
+    def validate_address_field
+      @browser.span :text => 'Validate Address'
+    end
+  end
+
+  #
+  # Navigation bar containing Sign-in, etc
+  #
+  module NavVar
+    private
+    def username_field
+      @browser.span(:id => 'userNameText')
+    end
+
+    def sign_out_link
+      @browser.link :id => "signOutLink"
+    end
+
+    public
+
+    def sign_out
+      10.times {
+        begin
+          click username_field, "userNameText" unless sign_out_link.present?
+          click sign_out_link, "signOutLink"
+          break field_present? username_field
+        rescue
+          #ignore
+        end
+      }
+    end
+
+    def username
+      username_field.when_present.text
+    end
+
+    def wait_until_present(timeout)
+      username_field.wait_until_present(timeout)
+    end
+
+    def present?
+      field_present? username_field
+    end
+
+  end
+
+  #
+  #  Contains Add/Edit buton for orders.
+  #
+  module Toolbar
+    include GridCommon
+    private
+    def add_field
+      @browser.span :text => 'Add'
+    end
+
+    def print_button
+      @browser.elements(:text => 'Print').first
+    end
+
+    public
+    def print(*args)
+      printer_window = PrintWindow.new(@browser)
+      7.times {
+        print_button.click
+        break if printer_window.present?
+      }
+      printer_window.print_options args
+    end
+
+    def add
+      add_field.when_present.click
+      3.times do
+        Batch.order_id = order_id(1)
+        unless Batch.order_id.size == 0
+          break
+        end
+      end
+    end
+
+    def wait_until_present
+      add_field.wait_until_present
+    end
+
+    def toolbar_present?
+      field_present? add_field
+    end
   end
 
   class BatchPage < Page
+    include Toolbar
+
     protected
     def helper
-      PageHelper.instance #todo refactor to BatchHelper
+      ParameterHelper.instance #todo refactor to BatchHelper
     end
   end
 
   class WebBatch < Batch::BatchPage
 
-    def sign_in
-      LoginPage.new(@browser).sign_in_default
-      self
-    end
-
-    def sign_out
-      nav_var.sign_out
+    def sign_in(*args)
+      LoginPage.new(@browser).sign_in *args
     end
 
     def single_order
@@ -117,56 +232,6 @@ module Batch
 
     def grid
       @grid ||= Grid.new(@browser)
-    end
-
-    def toolbar
-      @tool_bar ||= ToolBar.new(@browser)
-    end
-
-    def nav_var
-      @nav_bar ||= NavVar.new(@browser)
-    end
-
-    #
-    # Navigation bar containing Sign-in, etc
-    #
-    class NavVar < Stamps::Page
-
-      private
-      def username_field
-        @browser.span(:id => 'userNameText')
-      end
-
-      def sign_out_link
-        @browser.link :id => "signOutLink"
-      end
-
-      public
-
-      def sign_out
-        10.times {
-          begin
-            click username_field, "userNameText" unless sign_out_link.present?
-            click sign_out_link, "signOutLink"
-            break field_present? username_field
-          rescue
-            #ignore
-          end
-        }
-      end
-
-      def username
-        username_field.when_present.text
-      end
-
-      def wait_until_present(timeout)
-        username_field.wait_until_present(timeout)
-      end
-
-      def present?
-        field_present? username_field
-      end
-
     end
 
   end
@@ -184,7 +249,7 @@ module Batch
     @order_id
   end
 
-  class PageHelper #todo refactor to helper module within batch
+  class ParameterHelper #todo refactor to helper module within batch
     include Singleton
     include DataMagic
 
@@ -247,22 +312,27 @@ module Batch
       log "Visited #{url}"
     end
 
-    def sign_in_default
-      self.sign_in = helper.default_sign_in_credentials
-    end
+    def sign_in(*args)
+      case args.count
+        when 0
+          username = helper.default_sign_in_credentials['username']
+          password = helper.default_sign_in_credentials['password']
+        when 1
+          if args[0].is_a? Hash
+            username = args[0]['username']
+            password = args[0]['password']
+          else
+            raise 'Argument Parameter Error.'
+          end
+        when 2
+          username = args[0]
+          password = args[1]
+        else
+          raise 'Argument Parameter Error.'
+      end
 
-    def sign_in=(credentials={})
-      log_hash_param credentials
-      sign_in credentials['username'], credentials['password']
-    end
-
-    def sign_in(username, password)
       5.times do
         visit
-        if ToolBar.new(@browser).present?
-          log "Sign in successful."
-          break
-        end
         if username_field.present?
           username_field.wait_until_present
           self.username = username
@@ -270,6 +340,7 @@ module Batch
           click sign_in_button, "SignIn"
           sign_in_button.wait_while_present(60)
         end
+        break if toolbar_present?
       end
     end
 
@@ -349,63 +420,103 @@ module Batch
       @inline_service_price
     end
 
-=begin
-    def list_service_lovs
-      0.upto(25) { |index|
-        service_selection = @browser.td(:css => "tr[data-recordindex='#{index}']>td:nth-child(2)")
-        service_selection_price = @browser.td(:css => "tr[data-recordindex='#{index}']>td:nth-child(3)")
-        service_dlist_field.click unless service_selection.present?
-        #log "Service css: #{css} Exist? #{service_selection.present?} -- Price css: #{css_price} Exist? #{service_selection_price.present?}"
-        service_text = service_selection.text
-        service_price = service_selection_price.text
-        service_input_text = service_field.attribute_value("value")
-        log "#{index}, #{service_text}, #{service_input_text}, #{service_words service_input_text}, #{service_to_sym service_input_text}"
-      }
-    end
-=end
   end
 
   class PrintWindow < Stamps::Page
     def initialize(browser, *args)
       super(browser)
+      print_options *args
+    end
+
+    public
+    def print_options(*args)
 
       case args.size
         when 0
           return self
         when 1
-          self.print = args[0]
+          self.printer = args[0]
           return self
         when 2
-          self.print = args[0]
+          self.printer = args[0]
           self.paper_trail = args[1]
           return self
         else
           raise "Invalid printer arguments."
       end
+      self
     end
 
-    public
-    def print=(printer)
+    def open_printer_window
+
+    end
+
+    def printer=(printer)
       printer_field.when_present.set printer
+      printer_label.click
+      printer_label.click
       self
     end
 
     def paper_trail=(tray)
       paper_tray_field.when_present.set tray
+      printer_label.click
+      printer_label.click
       self
     end
 
     def print
       print_button.click
+      self.print_result
       self
     end
 
     def print_sample
       print_sample_button.click
+      self.print_result
       self
     end
 
+    def present?
+      print_button.present?
+    end
+
+    def error_ok_button
+      @browser.span :text => 'OK'
+    end
+
+    def error_message
+      @browser.div(:css => 'div[class=x-autocontainer-outerCt][id^=dialoguemodal]>div[id^=dialoguemodal]').text
+    end
+
+    def close
+      x_button.click
+    end
+
     private
+
+    def print_result
+      if error_ok_button.present?
+        error_message = self.error_message
+        log "!!!  PRINT ERROR !!!"
+        log error_message
+        log "!!!  PRINT ERROR !!!"
+        5.times {
+          error_ok_button.click
+          break unless error_ok_button.present?
+        }
+      end
+      close
+    end
+
+    def x_button
+      @browser.elements(:css => 'img[class*=x-tool-close]').last
+    end
+
+    def printer_label
+      @browser.label :text => 'Printer:'
+    end
+
     def printer_field
       @browser.text_field :name => 'printers'
     end
@@ -420,51 +531,6 @@ module Batch
 
     def print_button
       @browser.elements(:text => 'Print').first
-    end
-  end
-
-  #
-  #  Contains Add/Edit buton for orders.
-  #
-  class ToolBar < Stamps::Page
-    include GridCommon
-
-    private
-    def add_field
-      @browser.span :text => 'Add'
-    end
-
-    def print_button
-      @browser.elements(:text => 'Print').first
-    end
-
-    public
-    def print(*args)
-      print_button.click
-      PrintWindow.new(@browser, args).print
-    end
-
-    def print_sample(*args)
-      print_button.click
-      PrintWindow.new(@browser, args).print_sample
-    end
-
-    def add
-      add_field.when_present.click
-      3.times do
-        Batch.order_id = order_id(1)
-        unless Batch.order_id.size == 0
-          break
-        end
-      end
-    end
-
-    def wait_until_present
-      add_field.wait_until_present
-    end
-
-    def present?
-      field_present? add_field
     end
   end
 
@@ -947,44 +1013,6 @@ module Batch
     end
 
   end
-
-  module SingleOrderCommon
-
-    def ship_to_address_field
-      @browser.span :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a>span>span>span:nth-child(2)'
-    end
-
-    def less_field
-      @browser.span :text => 'Less'
-    end
-
-    def expand_ship_to_address
-      3.times {
-        if field_present? address_field
-          break
-        else
-          click ship_to_address_field, "ship_to_address_field"
-        end
-      }
-    end
-
-    def less
-      click less_field, "Less" if field_present? less_field
-    end
-
-    def item_label_field
-      @browser.label :text => 'Item:'
-    end
-
-    def address_field
-      @browser.textarea :name => 'FreeFormAddress'
-    end
-
-    def validate_address_field
-      @browser.span :text => 'Validate Address'
-    end
-  end
-
   #
   #  Single Order Edit Form
   #
@@ -1286,7 +1314,6 @@ module Batch
     end
 
   end #SingleOrderEdit Module
-
 
   class ExactAddressNotFound < BatchPage
     include Batch::SingleOrderCommon

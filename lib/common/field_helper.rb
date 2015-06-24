@@ -26,9 +26,8 @@ module FieldHelper
       present = field.present?
       return present
     rescue
-      false
+      return false
     end
-    false
   end
 
 end
