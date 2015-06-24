@@ -95,6 +95,3 @@ DEPENDENCIES
   rspec
   rspec-expectations
   watir
-
-BUNDLED WITH
-   1.10.4

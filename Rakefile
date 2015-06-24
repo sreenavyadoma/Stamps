@@ -36,3 +36,9 @@ Cucumber::Rake::Task.new(:print_sample_priority_mail_package) do |t|
   t.profile = 'print_sample_priority_mail_package'
   t.cucumber_opts = "-p html_report"
 end
+
+Cucumber::Rake::Task.new(:printing_qacc_chrome) do |t|
+  t.profile = 'printing_qacc_chrome'
+  t.cucumber_opts = "-p html_report"
+end
+

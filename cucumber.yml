@@ -9,7 +9,7 @@ bvt_qacc_chrome: --tags @bvt_add_new_order BROWSER=chrome URL=qacc
 bvt_qacc_ie: --tags @bvt BROWSER=ie URL=qacc
 bvt_qacc_ff: --tags @bvt BROWSER=firefox URL=qacc
 
-print_sample_priority_mail_package:  --tags @print_sample_priority_mail_package BROWSER=chrome URL=qacc
+printing_qacc_chrome:  --tags @printing BROWSER=chrome URL=qacc
 
 regress_qacc_chrome:  --tags @regression BROWSER=chrome URL=qacc
 regress_qacc_ie:  --tags @regression BROWSER=firefox URL=qacc
