@@ -488,8 +488,8 @@ module Batch
     end
 
     def print_sample
-      print_sample_button.when_present.click
       begin
+        print_sample_button.when_present.click #todo sometimes print says connecting to plugin
         print_result
       rescue PrintingError => print_error
         log print_error.message
