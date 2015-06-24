@@ -6,7 +6,7 @@ include DataMagic
 
 Before do  |scenario|
   log_step "#{scenario.name} :: BEGIN"
-  #setup
+  setup
 end
 
 After do |scenario|

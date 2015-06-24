@@ -1,5 +1,5 @@
 Given /^I am signed in as a batch shipper/ do
-  expect { raise StandardError }.to raise_error
+  #expect { raise StandardError }.to raise_error
   batch.sign_in
 end
 
