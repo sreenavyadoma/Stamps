@@ -16,7 +16,7 @@ module Stamps
         browser = Watir::Browser.new :ff
         browser_name = 'Firefox'
       when 'chrome', 'gc', 'Chrome'
-
+        browser_name = 'Chrome'
         chrome_data_dir = "C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data"
         log_param "chrome_data_dir:  exist?  #{File.exist? chrome_data_dir}  ##", chrome_data_dir
 
@@ -34,11 +34,11 @@ module Stamps
 
         user_data_dir = "user-data-dir=#{chrome_data_dir}"
         #--user-data-dir="C:\Users\rcruz\AppData\Local\Temp\scoped_dir19560_20237"
-
+        log "Launching #{browser_name}..."
         browser = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}"]
         #browser = Watir::Browser.new :chrome, :switches => ["--user_data_dir=C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate]"]
         #browser = Watir::Browser.new :chrome, :prefs => prefs
-        browser_name = 'Chrome'
+
       when 'opera'
         browser = Watir::Browser.new :opera
         browser_name = 'Opera'
