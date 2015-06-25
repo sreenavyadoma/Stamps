@@ -36,6 +36,7 @@ module Stamps
         #--user-data-dir="C:\Users\rcruz\AppData\Local\Temp\scoped_dir19560_20237"
         log "Launching #{browser_name}..."
         browser = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}"]
+        log "#{browser_name} instantiated."
         #browser = Watir::Browser.new :chrome, :switches => ["--user_data_dir=C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate]"]
         #browser = Watir::Browser.new :chrome, :prefs => prefs
 
