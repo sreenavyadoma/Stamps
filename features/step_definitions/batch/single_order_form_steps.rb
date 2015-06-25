@@ -84,7 +84,7 @@ And /^Set Receipient address to;$/ do |table|
 end
 
 When /^Set order details with;$/ do |table|
-  log "\"#{table}\""
+  log "\"#{table.hashes.first}\""
   log "Set order details with;"
   batch.single_order.edit_details log_hash_param table.hashes.first
   #end_step step
@@ -97,7 +97,7 @@ Then /^List all grid values for row (.*)$/ do |row|
 end
 
 When /^Set Receipient partial address to;$/ do |table|
-  log "Set Recipient partial address to \"#{table}\""
+  log "Set Recipient partial address to \"#{table.hashes.first}\""
   batch.single_order.partial_address.set table.hashes.first
 end
 
