@@ -3,6 +3,7 @@ module Stamps
 
   def self.setup
     log "Begin..."
+    cmd "taskkill /im chromedriver.exe /f"
     case ENV['BROWSER']
       when 'ie', 'Internet Explorer'
         browser = Watir::Browser.new :ie
@@ -13,6 +14,8 @@ module Stamps
       when 'chrome', 'gc'
 
         chrome_data_dir = "C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data"
+
+        raise "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}" unless File.exist? chrome_data_dir
 
         prefs = {
             :download => {
@@ -55,3 +58,9 @@ module Stamps
     log "Done!"
   end
 end
+=begin
+        public static void killChromeDriverProcess(){
+                     String command = "taskkill /im chromedriver.exe /f";
+                     executeShellCommand(command);
+        }
+=end
