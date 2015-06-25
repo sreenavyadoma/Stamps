@@ -21,6 +21,7 @@ module Stamps
 
         chrome_driver = "C:\\selenium\\drivers\\chromedriver.exe"
 
+        log_param "chrome_driver:  exist?  #{File.exist? chrome_driver}  ##", chrome_driver
         log_param "chrome_data_dir:  exist?  #{File.exist? chrome_data_dir}  ##", chrome_data_dir
 
         raise "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}" unless File.exist? chrome_data_dir
