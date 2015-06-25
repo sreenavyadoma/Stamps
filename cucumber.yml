@@ -1,5 +1,5 @@
-default: --profile report --profile default_profile
-report: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
+default: --profile html_report --profile default_profile
+html_report: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
 default_profile: --tags @bvt,@regression --guess BROWSER=chrome URL=qacc
 
