@@ -5,14 +5,14 @@ html_report: --format json --out report.json --format progress --format html --b
 
 default_profile: --tags @bvt,@regression --guess BROWSER=chrome URL=qacc
 
-bvt_qacc_chrome: --tags @bvt_add_new_order BROWSER=chrome URL=qacc
-bvt_qacc_ie: --tags @bvt BROWSER=ie URL=qacc
-bvt_qacc_ff: --tags @bvt BROWSER=firefox URL=qacc
+bvt_qacc_chrome: --tags @bvt_add_new_order --guess BROWSER=chrome URL=qacc
+bvt_qacc_ie: --tags @bvt --guess BROWSER=ie URL=qacc
+bvt_qacc_ff: --tags @bvt --guess BROWSER=firefox URL=qacc
 
-printing_qacc_chrome:  --tags @printing BROWSER=chrome URL=qacc
+printing_qacc_chrome:  --tags @printing --guess BROWSER=chrome URL=qacc
 
-regress_qacc_chrome:  --tags @regression BROWSER=chrome URL=qacc
-regress_qacc_ie:  --tags @regression BROWSER=firefox URL=qacc
-regress_qacc_firefox:  --tags @regression BROWSER=ie URL=qacc
+regress_qacc_chrome:  --tags @regression --guess BROWSER=chrome URL=qacc
+regress_qacc_ie:  --tags @regression --guess BROWSER=firefox URL=qacc
+regress_qacc_firefox:  --tags @regression --guess BROWSER=ie URL=qacc
 
 wip: --tags @wip BROWSER=firefox URL=qacc
