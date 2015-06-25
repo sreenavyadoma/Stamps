@@ -3,7 +3,11 @@ module Stamps
 
   def self.setup
     log "Begin..."
-    system "taskkill /im chromedriver.exe /f"
+    begin
+      system "taskkill /im chromedriver.exe /f"
+    rescue
+      #ignore
+    end
     case ENV['BROWSER']
       when 'ie', 'Internet Explorer'
         browser = Watir::Browser.new :ie
