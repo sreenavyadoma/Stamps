@@ -18,6 +18,9 @@ module Stamps
       when 'chrome', 'gc', 'Chrome'
         browser_name = 'Chrome'
         chrome_data_dir = "C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data"
+
+        chrome_driver = "C:\\selenium\\drivers\\chromedriver.exe"
+
         log_param "chrome_data_dir:  exist?  #{File.exist? chrome_data_dir}  ##", chrome_data_dir
 
         raise "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}" unless File.exist? chrome_data_dir
