@@ -1,5 +1,5 @@
 module Stamps
-  require_relative 'stamps_logger'
+  require_relative 'logger'
 
   def self.setup
     log "Begin..."
