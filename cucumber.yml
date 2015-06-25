@@ -9,7 +9,7 @@ bvt_qacc_chrome: --tags @bvt_add_new_order --guess BROWSER=chrome URL=qacc
 bvt_qacc_ie: --tags @bvt --guess BROWSER=ie URL=qacc
 bvt_qacc_ff: --tags @bvt --guess BROWSER=firefox URL=qacc
 
-printing_qacc_chrome:  --tags @printing --guess BROWSER=chrome URL=qacc
+print_qacc_chrome:  --tags @print --guess BROWSER=chrome URL=qacc
 
 regress_qacc_chrome:  --tags @regression --guess BROWSER=chrome URL=qacc
 regress_qacc_ie:  --tags @regression --guess BROWSER=firefox URL=qacc

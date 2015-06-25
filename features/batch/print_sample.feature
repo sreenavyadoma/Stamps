@@ -1,4 +1,4 @@
-@regression @printing
+@regression @print
 Feature: B-01625  As a batch shipper, I want to be able to print sample postage
 
   Background:
