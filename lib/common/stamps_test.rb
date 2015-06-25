@@ -19,9 +19,9 @@ module Stamps
         browser_name = 'Chrome'
         chrome_data_dir = "C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data"
 
-        chrome_driver = "C:\\selenium\\drivers\\chromedriver.exe"
+        chrome_driver_path = "C:\\selenium\\drivers\\chromedriver.exe"
 
-        log_param "chrome_driver:  exist?  #{File.exist? chrome_driver}  ##", chrome_driver
+        log_param "chrome_driver:  exist?  #{File.exist? chrome_driver_path}  ##", chrome_driver_path
         log_param "chrome_data_dir:  exist?  #{File.exist? chrome_data_dir}  ##", chrome_data_dir
 
         raise "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}" unless File.exist? chrome_data_dir
@@ -39,6 +39,7 @@ module Stamps
         user_data_dir = "user-data-dir=#{chrome_data_dir}"
         #--user-data-dir="C:\Users\rcruz\AppData\Local\Temp\scoped_dir19560_20237"
         log "Launching #{browser_name}..."
+        Selenium::WebDriver::Chrome.driver_path = chrome_driver_path
         browser = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}"]
         log "#{browser_name} instantiated."
         #browser = Watir::Browser.new :chrome, :switches => ["--user_data_dir=C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate]"]
