@@ -477,13 +477,19 @@ module Batch
     end
 
     def print
-      print_button.click
-      print_result
+      begin
+        print_button.when_present.click
+        print_result
+      rescue StandardError => print_error
+        log print_error.message
+        @print_status = false
+      end
+      self
       self
     end
 
-    def print_sample_expecting_error
-      print_sample_button.when_present.click
+    def print_expecting_error
+      print_button.when_present.click
       print_result
       self
     end
@@ -492,10 +498,16 @@ module Batch
       begin
         print_sample_button.when_present.click #todo sometimes print says connecting to plugin
         print_result
-      rescue PrintingError => print_error
+      rescue StandardError => print_error
         log print_error.message
         @print_status = false
       end
+      self
+    end
+
+    def print_sample_expecting_error
+      print_sample_button.when_present.click
+      print_result
       self
     end
 
