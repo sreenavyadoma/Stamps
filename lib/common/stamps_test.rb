@@ -4,7 +4,7 @@ module Stamps
   def self.setup
     log "Begin..."
     begin
-      system "taskkill /im chromedriver.exe /f"
+      system "taskkill /im chrome.exe /f"
     rescue
       #ignore
     end
