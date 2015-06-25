@@ -2,7 +2,7 @@
 Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an order
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in as a batch shipper with credentials auto01/password1
 
   @weight_tooltip
   Scenario:  Weight tooltip - negative test
