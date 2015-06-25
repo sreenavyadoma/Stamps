@@ -12,10 +12,10 @@ module Stamps
       when 'ie', 'Internet Explorer'
         browser = Watir::Browser.new :ie
         browser_name = 'Internet Explorer'
-      when 'ff', 'firefox'
+      when 'ff', 'firefox', 'Firefox'
         browser = Watir::Browser.new :ff
         browser_name = 'Firefox'
-      when 'chrome', 'gc'
+      when 'chrome', 'gc', 'Chrome'
 
         chrome_data_dir = "C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data"
 
