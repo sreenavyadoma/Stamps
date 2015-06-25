@@ -325,6 +325,7 @@ module Batch
     def sign_in(*args)
       case args.count
         when 0
+          # user default sign in credentials
           username = helper.default_sign_in_credentials['username']
           password = helper.default_sign_in_credentials['password']
         when 1

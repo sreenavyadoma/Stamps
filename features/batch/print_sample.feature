@@ -2,7 +2,7 @@
 Feature: B-01625  As a batch shipper, I want to be able to print sample postage
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in as a batch shipper with credentials auto01/password1
 
   @print_sample_first_class_mail_envelope
   Scenario:  Print Sample - First-Class Mail Envelope
