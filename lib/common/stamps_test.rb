@@ -4,7 +4,7 @@ module Stamps
   def self.setup
     log "Begin..."
     begin
-      system "taskkill /im chrome.exe /f"
+      log "Executed Shell Command:  taskkill /im chrome.exe /f [ #{system "taskkill /im chrome.exe /f"} ]"
     rescue
       #ignore
     end
@@ -69,9 +69,3 @@ module Stamps
     log "Done!"
   end
 end
-=begin
-        public static void killChromeDriverProcess(){
-                     String command = "taskkill /im chromedriver.exe /f";
-                     executeShellCommand(command);
-        }
-=end
