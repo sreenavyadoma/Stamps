@@ -92,26 +92,24 @@ module Batch
 
   module SingleOrderCommon
 
-    def ship_to_address_field
-      @browser.span :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a>span>span>span:nth-child(2)'
+    def ship_to_dropdown
+      #@browser.span :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a>span>span>span:nth-child(2)'
+      @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
     end
 
-    def less_field
+    def less_dropdown
       @browser.span :text => 'Less'
     end
 
-    def expand_ship_to_address
-      3.times {
-        if field_present? address_field
-          break
-        else
-          click ship_to_address_field, "ship_to_address_field"
-        end
+    def expand_ship_to
+      10.times {
+        break if field_present? address_field
+        click ship_to_dropdown, "ship_to_address_field" if field_present? ship_to_dropdown
       }
     end
 
     def less
-      click less_field, "Less" if field_present? less_field
+      click less_dropdown, "Less" if field_present? less_dropdown
     end
 
     def item_label_field
@@ -1121,31 +1119,31 @@ module Batch
     end
 
     def email=(email)
-      expand_ship_to_address
+      expand_ship_to
       set_text email_field, email, 'Email'
       less
     end
 
     def email
-      expand_ship_to_address
+      expand_ship_to
       log email_field.attribute_value('value')
       less
     end
 
     def phone
-      expand_ship_to_address
+      expand_ship_to
       phone_field.attribute_value('value')
       less
     end
 
     def phone=(phone)
-      expand_ship_to_address
+      expand_ship_to
       set_text phone_field, phone, 'Phone'
       less
     end
 
     def address=(address)
-      expand_ship_to_address
+      expand_ship_to
       set_text address_field, formatAddress(address), 'Address'
       less
     end
@@ -1155,7 +1153,7 @@ module Batch
     end
 
     def address
-      expand_ship_to_address
+      expand_ship_to
       address_field.attribute_value('value')
       less
     end
@@ -1392,7 +1390,7 @@ module Batch
     end
 
     def set(partial_addy)
-      expand_ship_to_address
+      expand_ship_to
       set_text address_field, formatAddress(partial_addy), 'Address'
       10.times {
         item_label_field.click

@@ -3,11 +3,6 @@ module Stamps
 
   def self.setup
     log "Begin..."
-    begin
-      log "Executed Shell Command:  taskkill /im chrome.exe /f [ #{system "taskkill /im chrome.exe /f"} ]"
-    rescue
-      #ignore
-    end
     case ENV['BROWSER']
       when 'ie', 'Internet Explorer'
         browser = Watir::Browser.new :ie
@@ -16,6 +11,11 @@ module Stamps
         browser = Watir::Browser.new :ff
         browser_name = 'Firefox'
       when 'chrome', 'gc', 'Chrome'
+        begin
+          log "Executed Shell Command:  taskkill /im chrome.exe /f [ #{system "taskkill /im chrome.exe /f"} ]"
+        rescue
+          #ignore
+        end
         browser_name = 'Chrome'
         chrome_data_dir = "C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data"
 

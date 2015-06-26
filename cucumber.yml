@@ -1,7 +1,7 @@
 default: --profile html_report --profile default_profile
 html_report: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
-default_profile: --tags @bvt,@regression --guess BROWSER=chrome URL=qacc
+default_profile: --tags @print_first_class_mail_envelope --guess BROWSER=ie URL=qacc
 
 bvt_qacc_chrome: --tags @bvt --guess BROWSER=chrome URL=qacc
 bvt_qacc_ie: --tags @bvt --guess BROWSER=ie URL=qacc
