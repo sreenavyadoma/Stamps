@@ -66,8 +66,8 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Expect order-grid Email to be rtest@stamps.com
     * Expect order-grid Pounds to be 0
     * Expect order-grid Ounces to be 1
-    * Expect Weight to be 0 lbs. 1 oz.
-    * Expect Insured Value to be 15.00
+    * Expect order-grid Weight to be 0 lbs. 1 oz.
+    * Expect order-grid Insured Value to be 15.00
     * Expect Single Order Form - Service Rate to be $0.00
     * Expect Service in-line rate for First-Class Mail Postcard to be greater than $0.35
     * Expect Single Order Form - Service Rate to be $0.35

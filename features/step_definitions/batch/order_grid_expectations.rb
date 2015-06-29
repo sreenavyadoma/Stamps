@@ -76,7 +76,7 @@ Then /^Expect order-grid Ounces to be (\d+)$/ do |expected_value|
   actual_value.should eql expected_value
 end
 
-Then /^Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
+Then /^Expect order-grid Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
   expected_value = "#{pounds} lbs. #{ounces} oz."
   actual_value = batch.grid.weight(Batch.order_id)
   log_expectation_eql "Weight", expected_value, actual_value
@@ -86,11 +86,11 @@ end
 # | insured_value  | pounds  | ounces | length  | width | height  |
 Then /^Expect Order details to be;$/ do |table|
   expected_value_hash = table.hashes.first
-  step "Expect Insured Value to be #{expected_value_hash[:insured_value]}"
-  step "Expect Weight to be #{expected_value_hash[:pounds]} lbs. #{expected_value_hash[:ounces]} oz."
+  step "Expect order-grid Insured Value to be #{expected_value_hash[:insured_value]}"
+  step "Expect order-grid Weight to be #{expected_value_hash[:pounds]} lbs. #{expected_value_hash[:ounces]} oz."
 end
 
-Then /^Expect Insured Value to be (\d*\.?\d*)$/ do |expected_value|
+Then /^Expect order-grid Insured Value to be (\d*\.?\d*)$/ do |expected_value|
   actual_value = batch.grid.insured_value(Batch.order_id)
   log_expectation_eql "Insurance", expected_value, actual_value
   actual_value.should eql expected_value

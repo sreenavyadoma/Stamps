@@ -53,8 +53,8 @@ Feature: B-01625  As a batch shipper, I want to be able to print sample postage
     * Expect order-grid Email to be rtest@stamps.com
     * Expect order-grid Pounds to be 1
     * Expect order-grid Ounces to be 1
-    * Expect Weight to be 1 lbs. 1 oz.
-    * Expect Insured Value to be 1.00
+    * Expect order-grid Weight to be 1 lbs. 1 oz.
+    * Expect order-grid Insured Value to be 1.00
     * Print Sample raises a Printing Error
     * Sign out
 

@@ -24,7 +24,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Expect order-grid Email to be rtest@stamps.com
     * Expect order-grid Pounds to be 0
     * Expect order-grid Ounces to be 1
-    * Expect Weight to be 0 lbs. 1 oz.
+    * Expect order-grid Weight to be 0 lbs. 1 oz.
 
     * Edit row 1 in the order grid
     * Change Ship-To Address to B-01671, Ship To Address is changed, 1901 Avenue Of The Stars, Los Angeles, CA, 90067-6001
@@ -73,7 +73,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Expect order-grid Email to be rtest@stamps.com
     * Expect order-grid Pounds to be 0
     * Expect order-grid Ounces to be 0
-    * Expect Weight to be 0 lbs. 0 oz.
+    * Expect order-grid Weight to be 0 lbs. 0 oz.
     * Sign out
 
 
