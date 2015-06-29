@@ -103,7 +103,7 @@ module Batch
 
     def expand_ship_to
       10.times {
-        break if field_present? address_field
+        break if field_present? address_textbox
         click ship_to_dropdown, "ship_to_address_field" if field_present? ship_to_dropdown
       }
     end
@@ -112,15 +112,25 @@ module Batch
       click less_dropdown, "Less" if field_present? less_dropdown
     end
 
-    def item_label_field
+    def item_label
       @browser.label :text => 'Item:'
     end
 
-    def address_field
+    def click_off
+      3.times {
+        begin
+          item_label.click
+        rescue
+          #ignore
+        end
+      }
+    end
+
+    def address_textbox
       @browser.textarea :name => 'FreeFormAddress'
     end
 
-    def validate_address_field
+    def validate_address_link
       @browser.span :text => 'Validate Address'
     end
   end
@@ -1076,16 +1086,16 @@ module Batch
     end
 
     def service_price
-      text = service_price_field.text.gsub('$', '')
+      text = service_price_label.text.gsub('$', '')
       text
     end
 
     def present?
-      field_present? height_field
+      field_present? height_textbox
     end
 
     def wait_until_present(timeout)
-      height_field.wait_until_present(timeout)
+      height_textbox.wait_until_present(timeout)
     end
 
     def edit_details(data = {})
@@ -1122,31 +1132,31 @@ module Batch
 
     def email=(email)
       expand_ship_to
-      set_text email_field, email, 'Email'
+      set_text email_textbox, email, 'Email'
       less
     end
 
     def email
       expand_ship_to
-      log email_field.attribute_value('value')
+      log email_textbox.attribute_value('value')
       less
     end
 
     def phone
       expand_ship_to
-      phone_field.attribute_value('value')
+      phone_textbox.attribute_value('value')
       less
     end
 
     def phone=(phone)
       expand_ship_to
-      set_text phone_field, phone, 'Phone'
+      set_text phone_textbox, phone, 'Phone'
       less
     end
 
     def address=(address)
       expand_ship_to
-      set_text address_field, formatAddress(address), 'Address'
+      set_text address_textbox, formatAddress(address), 'Address'
       less
     end
 
@@ -1156,7 +1166,7 @@ module Batch
 
     def address
       expand_ship_to
-      address_field.attribute_value('value')
+      address_textbox.attribute_value('value')
       less
     end
 
@@ -1169,8 +1179,9 @@ module Batch
     end
 
     def ship_from_default
-      ship_from_drop_list_field.when_present.click
-      ship_from_default_field.click
+      ship_from_dropdown.when_present.click
+      ship_from_default_selection.click
+      click_off
     end
 
     def ship_from_selection(selection)
@@ -1181,12 +1192,13 @@ module Batch
       @manage_shipping_adddress ||= ManageShippingAddresses.new(@browser)
       10.times {
         begin
-          click ship_from_drop_list_field, "ship_from_selection(#{selection})" unless field_present? ship_from_selection(selection)
+          click ship_from_dropdown, "ship_from_selection(#{selection})" unless field_present? ship_from_selection(selection)
           click ship_from_selection(selection), selection
           break if @manage_shipping_adddress.window_present?
         rescue
           #ignore
         end
+        click_off
       }
     end
 
@@ -1196,11 +1208,12 @@ module Batch
     end
 
     def pounds=(pounds)
-      set_text pounds_field, pounds, 'Pounds'
+      set_text pounds_textbox, pounds, 'Pounds'
+      click_off
     end
 
     def pounds
-      pounds_field.attribute_value('value')
+      pounds_textbox.attribute_value('value')
     end
 
     def pounds_max_value
@@ -1212,15 +1225,16 @@ module Batch
     end
 
     def pounds_qtip_error
-      pounds_field.attribute_value('data-errorqtip')
+      pounds_textbox.attribute_value('data-errorqtip')
     end
 
     def ounces=(ounces)
-      set_text ounces_field, ounces, 'Ounces'
+      set_text ounces_textbox, ounces, 'Ounces'
+      click_off
     end
 
     def ounces_qtip_error
-      ounces_field.attribute_value('data-errorqtip')
+      ounces_textbox.attribute_value('data-errorqtip')
     end
 
     def ounces_max_value
@@ -1232,7 +1246,7 @@ module Batch
     end
 
     def ounces
-      ounces_field.attribute_value('value')
+      ounces_textbox.attribute_value('value')
     end
 
 =begin
@@ -1246,88 +1260,92 @@ module Batch
     end
 
     def insured_value=(amount)
-      set_text insured_value_field, amount, 'Insurance'
+      set_text insured_value_textbox, amount, 'Insurance'
+      click_off
     end
 
     def insured_value
-      insured_value_field.attribute_value('value')
+      insured_value_textbox.attribute_value('value')
     end
 
     def length=(length)
-      set_text length_field, length, 'Length'
+      set_text length_textbox, length, 'Length'
+      click_off
     end
 
     def length
-      length_field.attribute_value('value')
+      length_textbox.attribute_value('value')
     end
 
     def width=(width)
-      set_text width_field, width, 'Width'
+      set_text width_textbox, width, 'Width'
+      click_off
     end
 
     def width
-      width_field.attribute_value('value')
+      width_textbox.attribute_value('value')
     end
 
     def height=(height)
-      set_text height_field, height, 'Height'
+      set_text height_textbox, height, 'Height'
+      click_off
     end
 
     def height
-      height_field.attribute_value('value')
+      height_textbox.attribute_value('value')
     end
 
     def country
-      country_field.attribute_value('value')
+      country_textbox.attribute_value('value')
     end
 
     private
 
-    def phone_field
+    def phone_textbox
       @browser.text_field :name => 'Phone'
     end
 
-    def email_field
+    def email_textbox
       @browser.text_field :name => 'Email'
     end
 
-    def ship_from_drop_list_field
+    def ship_from_dropdown
       @browser.div :css => 'div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]'
     end
 
-    def ship_from_default_field
+    def ship_from_default_selection
       @browser.div :css => 'div[data-recordindex=\'0\']'
     end
 
-    def insured_value_field
+    def insured_value_textbox
       @browser.text_field :name => 'InsuranceAmount'
     end
 
-    def pounds_field
+    def pounds_textbox
       @browser.text_field :name => 'WeightLbs'
     end
 
-    def ounces_field
+    def ounces_textbox
       @browser.text_field :name => 'WeightOz'
     end
 
-    def length_field
+    def length_textbox
       @browser.text_field :name => 'Length'
     end
 
-    def width_field
+    def width_textbox
       @browser.text_field :name => 'Width'
     end
 
-    def height_field
+    def height_textbox
       @browser.text_field :name => 'Height'
     end
 
-    def country_field
+    def country_textbox
       @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div>input'
     end
 
-    def country_dlist_field
+    def country_dropdown
       @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div:nth-child(2)'
     end
 
@@ -1335,24 +1353,24 @@ module Batch
       @browser.td :text => 'Postcard'
     end
 
-    def tracking_dlist_field
+    def tracking_dropdown
       @browser.div :css => 'div[id^=trackingdroplist-][id$=-trigger-picker]'[0]
     end
 
-    def tracking_usps_field
+    def tracking_usps_selection
       @browser.td :text => 'USPS Tracking'
     end
 
-    def tracking_field
+    def tracking_textbox
       @browser.text_field :name => 'Tracking'[0]
     end
 
-    def order_id_field
+    def order_id_label
       txt = "Order ##{WebBatchHelper.order_id}"
       @browser.label :text => txt
     end
 
-    def service_price_field
+    def service_price_label
       #@browser.label(:text => 'Service:').element(:xpath => './following-sibling::*[2]')
       @browser.label(:css => 'label[class*=selected_service_cost]')
     end
@@ -1394,10 +1412,10 @@ module Batch
 
     def set(partial_addy)
       expand_ship_to
-      set_text address_field, formatAddress(partial_addy), 'Address'
+      set_text address_textbox, formatAddress(partial_addy), 'Address'
       10.times {
-        item_label_field.click
-        break if (field_present? exact_address_not_found_field) || (field_present? validate_address_field)
+        item_label.click
+        break if (field_present? exact_address_not_found_field) || (field_present? validate_address_link)
       }
       less
       self
