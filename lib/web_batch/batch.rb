@@ -145,8 +145,8 @@ module Batch
         begin
           click username_field, "userNameText" unless sign_out_link.present?
           click sign_out_link, "signOutLink"
-          username_field.wait_until_present
-          break field_present? username_field
+          sign_in_button.wait_until_present
+          break field_present? sign_in_button
         rescue
           #ignore
         end
