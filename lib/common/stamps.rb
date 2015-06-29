@@ -1,5 +1,5 @@
 module Stamps
-  require_relative 'field_helper'
+  #require_relative 'field_helper'
 
   class Page
     include FieldHelper

@@ -15,6 +15,8 @@ address_cleansing_qacc_chrome:  --tags @address_cleansing --guess URL=qacc BROWS
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
-regress_qacc_chrome: --tags @address_cleansing,@print_first_class_mail_envelope,@address_management,@print_first_class_mail_envelope_expecting_an_error --guess URL=qacc BROWSER=chrome
+regress_qacc_chrome: --tags @user_views_price_next_to_service_dropdown,@address_cleansing,@print_first_class_mail_envelope,@address_management,@print_first_class_mail_envelope_expecting_an_error --guess URL=qacc BROWSER=chrome
+regress_qacc_ff: --tags @user_views_price_next_to_service_dropdown,@address_cleansing,@print_first_class_mail_envelope,@address_management,@print_first_class_mail_envelope_expecting_an_error --guess URL=qacc BROWSER=ff
+regress_qacc_ie: --tags @user_views_price_next_to_service_dropdown,@address_cleansing,@print_first_class_mail_envelope,@address_management,@print_first_class_mail_envelope_expecting_an_error --guess URL=qacc BROWSER=ie
 
 wip: --tags @wip BROWSER=firefox URL=qacc
