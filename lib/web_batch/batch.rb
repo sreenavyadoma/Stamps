@@ -151,16 +151,16 @@ module Batch
     public
 
     def sign_out
-      3.times {
-        begin
+      begin
+      2.times {
           click username_field, "userNameText" unless sign_out_link.present?
           click sign_out_link, "signOutLink"
           sign_in_button.wait_until_present(3)
           break field_present? sign_in_button
-        rescue
-          #ignore
-        end
       }
+      rescue
+        #ignore
+      end
     end
 
     def username
