@@ -45,22 +45,17 @@ Feature:  Build Verification Test
     * Add new order
     * Expect new Order ID created
     * Expect Single Order Form - Service Rate to be $0.00
-
     * Set Ship From to default
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
-    * Click Ship To Less button
-
     * Set Pounds to 1
     * Set Ounces to 1
     * Set Length to 1
     * Set Width to 1
     * Set Height to 1
     * Set Insured Value to 1.00
-
     * Set Service to Priority Mail Package
-
     * Expect order-grid Recipient Name to be B-01671
     * Expect order-grid Company Name to be Inline Rates
     * Expect order-grid Street Address to be 1900 E Grand Ave
