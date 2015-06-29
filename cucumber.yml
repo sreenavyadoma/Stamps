@@ -1,4 +1,4 @@
-default: --profile html_report --profile default_profile
+default: --profile html_report --profile regress_qacc_chrome
 html_report: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
 default_profile: --tags @print_first_class_mail_envelope --guess BROWSER=ie URL=qacc
