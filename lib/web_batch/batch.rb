@@ -2,6 +2,19 @@ module Batch
   require_relative '../common/stamps'
   include Stamps
 
+  def self.url_prefix
+    @url_prefix ||= data_for(:url_prefix, {})[ENV['URL']]
+  end
+
+  def self.order_id=(order_id)
+    @order_id = order_id
+    log "New Order ID:  #{order_id}"
+  end
+
+  def self.order_id
+    @order_id
+  end
+
   module GridCommon
 
     GRID_COLUMNS ||= {
@@ -252,20 +265,6 @@ module Batch
     def initialize(object)
       @object = object
     end
-  end
-
-
-  def self.url_prefix
-    @url_prefix ||= data_for(:url_prefix, {})[ENV['URL']]
-  end
-
-  def self.order_id=(order_id)
-    @order_id = order_id
-    log "New Order ID:  #{order_id}"
-  end
-
-  def self.order_id
-    @order_id
   end
 
   class ParameterHelper #todo refactor to helper module within batch
@@ -1065,6 +1064,7 @@ module Batch
     end
 
   end
+
   #
   #  Single Order Edit Form
   #
