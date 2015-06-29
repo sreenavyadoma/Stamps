@@ -56,16 +56,16 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
 
     # Expectations
     * Expect new Order ID created
-    * Expect Order Grid Recipient Name to be B-01671
-    * Expect Order Grid Company Name to be Inline Rates
-    * Expect Order Grid Street Address to be 1900 E Grand Ave
-    * Expect Order Grid City to be El Segundo
-    * Expect State to be CA
+    * Expect order-grid Recipient Name to be B-01671
+    * Expect order-grid Company Name to be Inline Rates
+    * Expect order-grid Street Address to be 1900 E Grand Ave
+    * Expect order-grid City to be El Segundo
+    * Expect order-grid State to be CA
     * Expect Zip to be 90245
     * Expect Phone to be (415) 123-5555
     * Expect Email to be rtest@stamps.com
-    * Expect Pounds to be 0
-    * Expect Ounces to be 1
+    * Expect order-grid Pounds to be 0
+    * Expect order-grid Ounces to be 1
     * Expect Weight to be 0 lbs. 1 oz.
     * Expect Insured Value to be 15.00
     * Expect Single Order Form - Service Rate to be $0.00

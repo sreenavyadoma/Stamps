@@ -17,7 +17,8 @@ module FieldHelper
   end
 
   def click(field, field_name)
-    field.when_present.click
+    field.focus
+    field.click
     log_browser_click field, field_name
   end
 

@@ -20,15 +20,15 @@ Feature: B-01603 As a batch shipper, I want Stamps.com to verify that my deliver
     * Select row 2 from Exact Address Not Found module
     * Set Service to Priority Mail Package
     * Set Ounces to 1
-    * Expect Order Grid Recipient Name to be B-01603
-    * Expect Order Grid Company Name to be Address Cleansing
-    * Expect Order Grid Street Address to be 1390 Market Street Ste 702
-    * Expect Order Grid City to be San Francisco
-    * Expect State to be CA
+    * Expect order-grid Recipient Name to be B-01603
+    * Expect order-grid Company Name to be Address Cleansing
+    * Expect order-grid Street Address to be 1390 Market Street Ste 702
+    * Expect order-grid City to be San Francisco
+    * Expect order-grid State to be CA
     * Expect Zip to be 94102
     * Expect Phone to be (415) 123-5555
     * Expect Email to be rtest@stamps.com
-    * Expect Ounces to be 1
+    * Expect order-grid Ounces to be 1
     * Set Recipient Complete Address to B-01603, Address Cleansing, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com

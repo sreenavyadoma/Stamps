@@ -2,44 +2,44 @@
 # | name | company    | street_address      | city          | state | zip   | country       | phone       |  email
 Then /^Expect Ship-To address to be;$/ do |table|
   expected_values = table.hashes.first
-  step "Expect Order Grid Recipient Name to be #{expected_values[:name]}"
-  step "Expect Order Grid Company Name to be #{expected_values[:company]}"
-  step "Expect Order Grid Street Address to be #{expected_values[:street_address]}"
-  step "Expect Order Grid City to be #{expected_values[:city]}"
-  step "Expect State to be #{expected_values[:state]}"
+  step "Expect order-grid Recipient Name to be #{expected_values[:name]}"
+  step "Expect order-grid Company Name to be #{expected_values[:company]}"
+  step "Expect order-grid Street Address to be #{expected_values[:street_address]}"
+  step "Expect order-grid City to be #{expected_values[:city]}"
+  step "Expect order-grid State to be #{expected_values[:state]}"
   step "Expect Zip to be #{expected_values[:zip]}"
   step "Expect Phone to be #{expected_values[:phone]}"
   step "Expect Email to be #{expected_values[:email]}"
 end
 
-Then /^Expect Order Grid Recipient Name to be (.*)$/ do |expected_value|
+Then /^Expect order-grid Recipient Name to be (.*)$/ do |expected_value|
   actual_value = batch.grid.recipient(Batch.order_id)
   log_expectation_eql "Recipient Name", expected_value, actual_value
   actual_value.should eql expected_value
 end
 
-Then /^Expect Order Grid Company Name to be (.*)$/ do |expected_value|
-  #begin_step step =  "Expect Order Grid Company Name to be \"#{expected_value}\""
+Then /^Expect order-grid Company Name to be (.*)$/ do |expected_value|
+  #begin_step step =  "Expect order-grid Company Name to be \"#{expected_value}\""
   actual_value = batch.grid.company(Batch.order_id)
   log_expectation_eql "Company Name", expected_value, actual_value
   expect(actual_value).to eql expected_value
   #end_step step
 end
 
-Then /^Expect Order Grid Street Address to be ([\w\s-]+)$/ do |expected_value|
+Then /^Expect order-grid Street Address to be ([\w\s-]+)$/ do |expected_value|
   actual_value = batch.grid.street_address(Batch.order_id)
   log_expectation_eql "Street Address", expected_value, actual_value
   actual_value.should eql expected_value
 end
 
-Then /^Expect Order Grid City to be ([\w\s]+)$/ do |expected_value|
-  #begin_step step =  "Expect Order Grid City to be \"#{expected_value}\""
+Then /^Expect order-grid City to be ([\w\s]+)$/ do |expected_value|
+  #begin_step step =  "Expect order-grid City to be \"#{expected_value}\""
   actual_value = batch.grid.city(Batch.order_id)
   log_expectation_eql "City", expected_value, actual_value
   actual_value.should eql expected_value
 end
 
-Then /^Expect State to be ([a-zA-Z]+)$/ do |expected_value|
+Then /^Expect order-grid State to be ([a-zA-Z]+)$/ do |expected_value|
   actual_value = batch.grid.state(Batch.order_id)
   log_expectation_eql "State", expected_value, actual_value
   actual_value.should eql expected_value
@@ -64,13 +64,13 @@ Then /^Expect Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/ do |
   actual_value.should eql expected_value
 end
 
-Then /^Expect Pounds to be (\d+)$/ do |expected_value|
+Then /^Expect order-grid Pounds to be (\d+)$/ do |expected_value|
   actual_value = batch.grid.pounds(Batch.order_id)
   log_expectation_eql "Pounds", expected_value, actual_value
   actual_value.should eql expected_value
 end
 
-Then /^Expect Ounces to be (\d+)$/ do |expected_value|
+Then /^Expect order-grid Ounces to be (\d+)$/ do |expected_value|
   actual_value = batch.grid.ounces(Batch.order_id)
   log_expectation_eql "Ounces", expected_value, actual_value
   actual_value.should eql expected_value

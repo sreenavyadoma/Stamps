@@ -29,15 +29,15 @@ Feature:  Build Verification Test
     * Select row 2 from Exact Address Not Found module
     * Set Service to Priority Mail Package
     * Set Ounces to 1
-    * Expect Order Grid Recipient Name to be B-01603
-    * Expect Order Grid Company Name to be Address Cleansing
-    * Expect Order Grid Street Address to be 1390 Market Street Ste 702
-    * Expect Order Grid City to be San Francisco
-    * Expect State to be CA
+    * Expect order-grid Recipient Name to be B-01603
+    * Expect order-grid Company Name to be Address Cleansing
+    * Expect order-grid Street Address to be 1390 Market Street Ste 702
+    * Expect order-grid City to be San Francisco
+    * Expect order-grid State to be CA
     * Expect Zip to be 94102
     * Expect Phone to be (415) 123-5555
     * Expect Email to be rtest@stamps.com
-    * Expect Ounces to be 1
+    * Expect order-grid Ounces to be 1
     * Sign out
 
   @bvt_add_new_order
@@ -61,16 +61,16 @@ Feature:  Build Verification Test
 
     * Set Service to Priority Mail Package
 
-    * Expect Order Grid Recipient Name to be B-01671
-    * Expect Order Grid Company Name to be Inline Rates
-    * Expect Order Grid Street Address to be 1900 E Grand Ave
-    * Expect Order Grid City to be El Segundo
-    * Expect State to be CA
+    * Expect order-grid Recipient Name to be B-01671
+    * Expect order-grid Company Name to be Inline Rates
+    * Expect order-grid Street Address to be 1900 E Grand Ave
+    * Expect order-grid City to be El Segundo
+    * Expect order-grid State to be CA
     * Expect Zip to be 90245
     * Expect Phone to be (415) 123-5555
     * Expect Email to be rtest@stamps.com
-    * Expect Pounds to be 1
-    * Expect Ounces to be 1
+    * Expect order-grid Pounds to be 1
+    * Expect order-grid Ounces to be 1
     * Expect Weight to be 1 lbs. 1 oz.
     * Expect Insured Value to be 1.00
     * Sign out

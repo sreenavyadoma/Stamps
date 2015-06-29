@@ -15,11 +15,11 @@ Feature: B-01625  As a batch shipper, I want to be able to print sample postage
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to First-Class Mail Envelope
-    * Expect Order Grid Recipient Name to be B-01625 Print Sample
-    * Expect Order Grid Company Name to be Priority Mail Package
-    * Expect Order Grid Street Address to be 1900 E Grand Ave
-    * Expect Order Grid City to be El Segundo
-    * Expect State to be CA
+    * Expect order-grid Recipient Name to be B-01625 Print Sample
+    * Expect order-grid Company Name to be Priority Mail Package
+    * Expect order-grid Street Address to be 1900 E Grand Ave
+    * Expect order-grid City to be El Segundo
+    * Expect order-grid State to be CA
     * Expect Zip to be 90245
     * Expect Phone to be (415) 123-5555
     * Expect Email to be rtest@stamps.com
@@ -43,16 +43,16 @@ Feature: B-01625  As a batch shipper, I want to be able to print sample postage
     * Set Width to 1
     * Set Height to 1
     * Set Insured Value to 1.00
-    * Expect Order Grid Recipient Name to be B-01625 Print Sample
-    * Expect Order Grid Company Name to be Priority Mail Package
-    * Expect Order Grid Street Address to be 1900 E Grand Ave
-    * Expect Order Grid City to be El Segundo
-    * Expect State to be CA
+    * Expect order-grid Recipient Name to be B-01625 Print Sample
+    * Expect order-grid Company Name to be Priority Mail Package
+    * Expect order-grid Street Address to be 1900 E Grand Ave
+    * Expect order-grid City to be El Segundo
+    * Expect order-grid State to be CA
     * Expect Zip to be 90245
     * Expect Phone to be (415) 123-5555
     * Expect Email to be rtest@stamps.com
-    * Expect Pounds to be 1
-    * Expect Ounces to be 1
+    * Expect order-grid Pounds to be 1
+    * Expect order-grid Ounces to be 1
     * Expect Weight to be 1 lbs. 1 oz.
     * Expect Insured Value to be 1.00
     * Print Sample raises a Printing Error
