@@ -15,8 +15,6 @@ address_cleansing_qacc_chrome:  --tags @address_cleansing --guess URL=qacc BROWS
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
-regress_qacc_firefox:  --profile html_report --profile print_qacc_ff address_cleansing_qacc_ff
-regress_qacc_chrome:  --profile html_report --profile print_qacc_chrome
-regress_qacc_ie:  --profile html_report --profile print_qacc_ie address_cleansing_qacc_ie
+regress_qacc_chrome: --tags @address_cleansing,@print_first_class_mail_envelope,@address_management,@print_first_class_mail_envelope_expecting_an_error --guess URL=qacc BROWSER=chrome
 
 wip: --tags @wip BROWSER=firefox URL=qacc
