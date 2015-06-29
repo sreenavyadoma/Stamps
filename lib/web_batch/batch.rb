@@ -1075,7 +1075,8 @@ module Batch
     end
 
     def service_price
-      service_price_field.text.gsub('$', '')
+      text = service_price_field.text.gsub('$', '')
+      text
     end
 
     def present?
@@ -1351,7 +1352,8 @@ module Batch
     end
 
     def service_price_field
-      @browser.label(:text => 'Service:').element(:xpath => './following-sibling::*[2]')
+      #@browser.label(:text => 'Service:').element(:xpath => './following-sibling::*[2]')
+      @browser.label(:css => 'label[class*=selected_service_cost]')
     end
 
   end #SingleOrderEdit Module
