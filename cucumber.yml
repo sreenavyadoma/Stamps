@@ -11,6 +11,9 @@ print_qacc_chrome:  --tags @print --guess URL=qacc BROWSER=chrome
 print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff
 print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie
 
-address_cleansing_qacc_chrome:  --tags @address_cleansing --guess BROWSER=chrome URL=qacc
+address_cleansing_qacc_chrome:  --tags @address_cleansing --guess URL=qacc BROWSER=chrome
+address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie
+address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
+
 
 wip: --tags @wip BROWSER=firefox URL=qacc
