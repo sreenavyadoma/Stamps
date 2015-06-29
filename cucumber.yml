@@ -3,14 +3,14 @@ html_report: --format json --out report.json --format progress --format html --b
 
 default_profile: --tags @print_first_class_mail_envelope --guess BROWSER=ie URL=qacc
 
-bvt_qacc_chrome: --tags @bvt --guess BROWSER=chrome URL=qacc
-bvt_qacc_ie: --tags @bvt --guess BROWSER=ie URL=qacc
-bvt_qacc_ff: --tags @bvt --guess BROWSER=firefox URL=qacc
+bvt_qacc_chrome: --tags @bvt --guess URL=qacc BROWSER=chrome
+bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie
+bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=firefox
 
-print_qacc_chrome:  --tags @print --guess BROWSER=chrome URL=qacc
+print_qacc_chrome:  --tags @print --guess URL=qacc BROWSER=chrome
+print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff
+print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie
 
-regress_qacc_chrome:  --tags @regression --guess BROWSER=chrome URL=qacc
-regress_qacc_ie:  --tags @regression --guess BROWSER=firefox URL=qacc
-regress_qacc_firefox:  --tags @regression --guess BROWSER=ie URL=qacc
+address_cleansing_qacc_chrome:  --tags @address_cleansing --guess BROWSER=chrome URL=qacc
 
 wip: --tags @wip BROWSER=firefox URL=qacc
