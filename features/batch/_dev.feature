@@ -5,7 +5,7 @@ Feature: Service Control
     Given I am signed in as a batch shipper with credentials auto01/password1
 
   Scenario:  First-Class Mail - Package Service Test
-    And Add a new order
+    * Add new order
     * Expect Single Order Form - Service Rate to be $0.00
     * Set Service to First-Class Mail Postcard
     * Set Service to Priority Mail Large/Thick Envelope

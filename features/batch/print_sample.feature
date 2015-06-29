@@ -6,7 +6,7 @@ Feature: B-01625  As a batch shipper, I want to be able to print sample postage
 
   @print_sample_first_class_mail_envelope
   Scenario:  Print Sample - First-Class Mail Envelope
-    * Add a new order
+    * Add new order
     * Expect new Order ID created
     * Expect Single Order Form - Service Rate to be $0.00
     * Set Ship From to default
@@ -28,7 +28,7 @@ Feature: B-01625  As a batch shipper, I want to be able to print sample postage
 
   @print_sample_first_class_mail_envelope_expecting_an_error
   Scenario:  Print Sample - First-Class Mail Envelope raises an Error
-    * Add a new order
+    * Add new order
     * Expect new Order ID created
     * Expect Single Order Form - Service Rate to be $0.00
     * Set Ship From to default

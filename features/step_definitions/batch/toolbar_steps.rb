@@ -1,5 +1,5 @@
-When /^Add a new order$/ do
-  log "Add a new order"
+When /^Add new order$/ do
+  log "Add new order"
   batch.add
   batch.grid.edit_order Batch.order_id
 end

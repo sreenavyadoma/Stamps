@@ -6,7 +6,7 @@ Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Sh
 
   @address_management
   Scenario: Address Management
-    * Add a new order
+    * Add new order
     * Expect new Order ID created
     * Delete all shipping addresses
     # Add new shipping address test

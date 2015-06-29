@@ -4,7 +4,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     Given I am signed in as a batch shipper with credentials auto01/password1
 
   Scenario:  User Views Price Next to Service Dropdown
-    * Add a new order
+    * Add new order
     * Expect new Order ID created
     * Expect Single Order Form - Service Rate to be $0.00
 

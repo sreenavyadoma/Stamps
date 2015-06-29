@@ -6,7 +6,7 @@ Feature:  Build Verification Test
 
   @bvt_shipping_address_management
   Scenario: Shipping Address Management
-    * Add a new order
+    * Add new order
     * Expect new Order ID created
     * Add new Ship-From address;
       |ship_from_zip  | name          | company     | street_address1    | street_address2 | city          | state         | zip    | country       | phone           |
@@ -15,7 +15,7 @@ Feature:  Build Verification Test
 
   @bvt_address_cleansing
   Scenario: Address Cleansing
-    * Add a new order
+    * Add new order
     * Expect new Order ID created
     * Set Ship From to default
     * Set Receipient address to;
@@ -42,7 +42,7 @@ Feature:  Build Verification Test
 
   @bvt_add_new_order
   Scenario:  Add New Order
-    * Add a new order
+    * Add new order
     * Expect new Order ID created
     * Expect Single Order Form - Service Rate to be $0.00
 

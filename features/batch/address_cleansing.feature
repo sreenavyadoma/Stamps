@@ -6,7 +6,7 @@ Feature: B-01603 As a batch shipper, I want Stamps.com to verify that my deliver
 
   @address_cleansing
   Scenario: Address Cleansing
-    * Add a new order
+    * Add new order
     * Expect new Order ID created
     * Set Ship From to default
     * Set Receipient address to;

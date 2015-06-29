@@ -6,7 +6,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
 
   #@inline_rates
   Scenario:  Inline Rates
-    * Add a new order
+    * Add new order
     * Edit row 1 in the order grid
     #  Setting Single order form values
     * Set Service to First Class Mail Package/Thick Envelope
