@@ -19,9 +19,9 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Expect order-grid Street Address to be 1900 E Grand Ave
     * Expect order-grid City to be El Segundo
     * Expect order-grid State to be CA
-    * Expect Zip to be 90245
-    * Expect Phone to be (415) 794-4522
-    * Expect Email to be rtest@stamps.com
+    * Expect order-grid Zip Code to be 90245
+    * Expect order-grid Phone to be (415) 794-4522
+    * Expect order-grid Email to be rtest@stamps.com
     * Expect order-grid Pounds to be 0
     * Expect order-grid Ounces to be 1
     * Expect Weight to be 0 lbs. 1 oz.
@@ -68,9 +68,9 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Expect order-grid Street Address to be 1900 E Grand Ave
     * Expect order-grid City to be El Segundo
     * Expect order-grid State to be CA
-    * Expect Zip to be 90245
-    * Expect Phone to be (415) 794-4522
-    * Expect Email to be rtest@stamps.com
+    * Expect order-grid Zip Code to be 90245
+    * Expect order-grid Phone to be (415) 794-4522
+    * Expect order-grid Email to be rtest@stamps.com
     * Expect order-grid Pounds to be 0
     * Expect order-grid Ounces to be 0
     * Expect Weight to be 0 lbs. 0 oz.

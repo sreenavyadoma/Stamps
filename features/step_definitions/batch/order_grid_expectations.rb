@@ -7,9 +7,9 @@ Then /^Expect Ship-To address to be;$/ do |table|
   step "Expect order-grid Street Address to be #{expected_values[:street_address]}"
   step "Expect order-grid City to be #{expected_values[:city]}"
   step "Expect order-grid State to be #{expected_values[:state]}"
-  step "Expect Zip to be #{expected_values[:zip]}"
-  step "Expect Phone to be #{expected_values[:phone]}"
-  step "Expect Email to be #{expected_values[:email]}"
+  step "Expect order-grid Zip Code to be #{expected_values[:zip]}"
+  step "Expect order-grid Phone to be #{expected_values[:phone]}"
+  step "Expect order-grid Email to be #{expected_values[:email]}"
 end
 
 Then /^Expect order-grid Recipient Name to be (.*)$/ do |expected_value|
@@ -45,20 +45,20 @@ Then /^Expect order-grid State to be ([a-zA-Z]+)$/ do |expected_value|
   actual_value.should eql expected_value
 end
 
-Then /^Expect Zip to be ([0-9]+)$/ do |expected_value|
-  #begin_step step =  "Expect Zip to be \"#{expected_value}\""
+Then /^Expect order-grid Zip Code to be ([0-9]+)$/ do |expected_value|
+  #begin_step step =  "Expect order-grid Zip Code to be \"#{expected_value}\""
   actual_value = batch.grid.zip(Batch.order_id)
   log_expectation_eql "Zip", expected_value, actual_value
   actual_value.should eql expected_value
 end
 
-Then /^Expect Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expected_value|
+Then /^Expect order-grid Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expected_value|
   actual_value = batch.grid.email(Batch.order_id)
   log_expectation_eql "Email", expected_value, actual_value
   actual_value.should eql expected_value
 end
 
-Then /^Expect Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/ do |expected_value|
+Then /^Expect order-grid Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/ do |expected_value|
   actual_value = batch.grid.phone(Batch.order_id)
   log_expectation_eql "Phone", expected_value, actual_value
   actual_value.should eql expected_value

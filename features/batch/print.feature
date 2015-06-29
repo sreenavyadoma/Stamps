@@ -20,9 +20,9 @@ Feature: B-01625  As a batch shipper, I want to be able to print sample postage
     * Expect order-grid Street Address to be 1900 E Grand Ave
     * Expect order-grid City to be El Segundo
     * Expect order-grid State to be CA
-    * Expect Zip to be 90245
-    * Expect Phone to be (415) 123-5555
-    * Expect Email to be rtest@stamps.com
+    * Expect order-grid Zip Code to be 90245
+    * Expect order-grid Phone to be (415) 123-5555
+    * Expect order-grid Email to be rtest@stamps.com
     * Print
     * Sign out
 
@@ -48,9 +48,9 @@ Feature: B-01625  As a batch shipper, I want to be able to print sample postage
     * Expect order-grid Street Address to be 1900 E Grand Ave
     * Expect order-grid City to be El Segundo
     * Expect order-grid State to be CA
-    * Expect Zip to be 90245
-    * Expect Phone to be (415) 123-5555
-    * Expect Email to be rtest@stamps.com
+    * Expect order-grid Zip Code to be 90245
+    * Expect order-grid Phone to be (415) 123-5555
+    * Expect order-grid Email to be rtest@stamps.com
     * Expect order-grid Pounds to be 1
     * Expect order-grid Ounces to be 1
     * Expect Weight to be 1 lbs. 1 oz.

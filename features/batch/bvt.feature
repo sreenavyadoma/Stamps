@@ -21,7 +21,7 @@ Feature:  Build Verification Test
     * Set Receipient address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
-    * Expect Zip to be 94102
+    * Expect order-grid Zip Code to be 94102
     * Set Receipient partial address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Address Cleansing | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
@@ -34,9 +34,9 @@ Feature:  Build Verification Test
     * Expect order-grid Street Address to be 1390 Market Street Ste 702
     * Expect order-grid City to be San Francisco
     * Expect order-grid State to be CA
-    * Expect Zip to be 94102
-    * Expect Phone to be (415) 123-5555
-    * Expect Email to be rtest@stamps.com
+    * Expect order-grid Zip Code to be 94102
+    * Expect order-grid Phone to be (415) 123-5555
+    * Expect order-grid Email to be rtest@stamps.com
     * Expect order-grid Ounces to be 1
     * Sign out
 
@@ -66,9 +66,9 @@ Feature:  Build Verification Test
     * Expect order-grid Street Address to be 1900 E Grand Ave
     * Expect order-grid City to be El Segundo
     * Expect order-grid State to be CA
-    * Expect Zip to be 90245
-    * Expect Phone to be (415) 123-5555
-    * Expect Email to be rtest@stamps.com
+    * Expect order-grid Zip Code to be 90245
+    * Expect order-grid Phone to be (415) 123-5555
+    * Expect order-grid Email to be rtest@stamps.com
     * Expect order-grid Pounds to be 1
     * Expect order-grid Ounces to be 1
     * Expect Weight to be 1 lbs. 1 oz.
