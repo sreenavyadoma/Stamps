@@ -1,5 +1,5 @@
 module Batch
-  class BatchPage < Page
+  class BatchPage < BrowserField
     public
     def navigation_bar
       NavigationBar.new(@browser)

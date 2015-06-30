@@ -1,6 +1,9 @@
 module Batch
 
   module SingleOrderCommon
+    def field_helper
+      BrowserField.instance
+    end
 
     def ship_to_dropdown
       #@browser.span :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a>span>span>span:nth-child(2)'
@@ -13,13 +16,13 @@ module Batch
 
     def expand_ship_to
       10.times {
-        break if BrowserFieldHelper.instance.field_present?  address_textbox
-        BrowserFieldHelper.instance.click ship_to_dropdown, "ship_to_address_field" if BrowserFieldHelper.instance.field_present?  ship_to_dropdown
+        break if field_helper.field_present?  address_textbox
+        field_helper.click ship_to_dropdown, "ship_to_address_field" if field_helper.field_present?  ship_to_dropdown
       }
     end
 
     def less
-      BrowserFieldHelper.instance.click less_dropdown, "Less" if BrowserFieldHelper.instance.field_present?  less_dropdown
+      field_helper.click less_dropdown, "Less" if field_helper.field_present?  less_dropdown
     end
 
     def item_label
@@ -71,7 +74,7 @@ module Batch
     end
 
     def present?
-      BrowserFieldHelper.instance.field_present?  height_textbox
+      field_helper.field_present?  height_textbox
     end
 
     def wait_until_present(timeout)
@@ -112,7 +115,7 @@ module Batch
 
     def email=(email)
       expand_ship_to
-      BrowserFieldHelper.instance.set_text email_textbox, email, 'Email'
+      field_helper.set_text email_textbox, email, 'Email'
       less
     end
 
@@ -130,13 +133,13 @@ module Batch
 
     def phone=(phone)
       expand_ship_to
-      BrowserFieldHelper.instance.set_text phone_textbox, phone, 'Phone'
+      field_helper.set_text phone_textbox, phone, 'Phone'
       less
     end
 
     def address=(address)
       expand_ship_to
-      BrowserFieldHelper.instance.set_text address_textbox, batch_helper.formatAddress(address), 'Address'
+      field_helper.set_text address_textbox, batch_helper.formatAddress(address), 'Address'
       less
     end
 
@@ -172,8 +175,8 @@ module Batch
       @manage_shipping_adddress ||= ManageShippingAddresses.new(@browser)
       10.times {
         begin
-          BrowserFieldHelper.instance.click ship_from_dropdown, "ship_from_selection(#{selection})" unless BrowserFieldHelper.instance.field_present?  ship_from_selection(selection)
-          BrowserFieldHelper.instance.click ship_from_selection(selection), selection
+          field_helper.click ship_from_dropdown, "ship_from_selection(#{selection})" unless field_helper.field_present?  ship_from_selection(selection)
+          field_helper.click ship_from_selection(selection), selection
           break if @manage_shipping_adddress.window_present?
         rescue
           #ignore
@@ -188,7 +191,7 @@ module Batch
     end
 
     def pounds=(pounds)
-      BrowserFieldHelper.instance.set_text pounds_textbox, pounds, 'Pounds'
+      field_helper.set_text pounds_textbox, pounds, 'Pounds'
       click_item_label
     end
 
@@ -209,7 +212,7 @@ module Batch
     end
 
     def ounces=(ounces)
-      BrowserFieldHelper.instance.set_text ounces_textbox, ounces, 'Ounces'
+      field_helper.set_text ounces_textbox, ounces, 'Ounces'
       click_item_label
     end
 
@@ -240,7 +243,7 @@ module Batch
     end
 
     def insured_value=(amount)
-      BrowserFieldHelper.instance.set_text insured_value_textbox, amount, 'Insurance'
+      field_helper.set_text insured_value_textbox, amount, 'Insurance'
       click_item_label
     end
 
@@ -249,7 +252,7 @@ module Batch
     end
 
     def length=(length)
-      BrowserFieldHelper.instance.set_text length_textbox, length, 'Length'
+      field_helper.set_text length_textbox, length, 'Length'
       click_item_label
     end
 
@@ -258,7 +261,7 @@ module Batch
     end
 
     def width=(width)
-      BrowserFieldHelper.instance.set_text width_textbox, width, 'Width'
+      field_helper.set_text width_textbox, width, 'Width'
       click_item_label
     end
 
@@ -267,7 +270,7 @@ module Batch
     end
 
     def height=(height)
-      BrowserFieldHelper.instance.set_text height_textbox, height, 'Height'
+      field_helper.set_text height_textbox, height, 'Height'
       click_item_label
     end
 

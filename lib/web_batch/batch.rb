@@ -46,7 +46,8 @@ module Batch
     }
 
     def grid_text(column, row)
-      grid_field(column, row).text
+      text = grid_field(column, row).text
+      text
     end
 
     def grid_field(column, row)

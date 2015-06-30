@@ -11,12 +11,6 @@ module Stamps
     end
   end
 
-  class Page
-    def initialize(browser)
-      @browser = browser
-    end
-  end
-
   def service_to_sym(str)
     str.downcase.tr('()', '').tr('/-', '_').strip.tr(' ', '_').to_sym
   end

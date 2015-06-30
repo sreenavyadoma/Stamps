@@ -64,7 +64,7 @@ module Batch
             username_textbox.wait_until_present
             self.username = username
             self.password = password
-            BrowserFieldHelper.instance.click sign_in_button_field, "SignIn"
+            field_helper.click sign_in_button_field, "SignIn"
             sign_in_button_field.wait_while_present(60)
           end
         rescue
@@ -75,11 +75,11 @@ module Batch
     end
 
     def username=(username)
-      BrowserFieldHelper.instance.set_text username_textbox, username, 'Username'
+      field_helper.set_text username_textbox, username, 'Username'
     end
 
     def password=(password)
-      BrowserFieldHelper.instance.set_text password_textbox, password, 'Password'
+      field_helper.set_text password_textbox, password, 'Password'
     end
 
     def sign_in_button
