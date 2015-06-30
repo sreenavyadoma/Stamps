@@ -107,16 +107,16 @@ end
 
 Then /^Add new Ship-From address;$/ do |table|
   manage_shipping_adddress = batch.single_order.manage_shipping_adddress
-  manage_shipping_adddress.add_address(table.hashes.first).should be_successful
+  manage_shipping_adddress.add_address(table.hashes.first).should be_added
 end
 
 Then /^Delete all shipping addresses$/ do
   manage_shipping_adddress = batch.single_order.manage_shipping_adddress
-  manage_shipping_adddress.delete_all_address #.should be_successful
+  manage_shipping_adddress.delete_all_address #.should be_all_deleted
 end
 
 Then /^Change Shipping Info for address having name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address_table|
   new_address_details = new_address_table.hashes.first
   manage_shipping_adddress = batch.single_order.manage_shipping_adddress
-  manage_shipping_adddress.edit_address(name, company, city, new_address_details).should be_successful
+  manage_shipping_adddress.edit_address(name, company, city, new_address_details).should be_edited
 end

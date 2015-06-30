@@ -62,13 +62,21 @@ module Batch
           log_param "row count before addition", count_before
           @shipping_address_form.shipping_address = args[0]
           count_after = shipping_address_count
-          @run_status = (count_before + 1) == count_after
-          log_param "Address added successfully? #{@run_status}", "Row count before:  #{count_before}, Row cuont after: #{count_after}"
+          @added = (count_before + 1) == count_after
+          log_param "Address added successfully? #{@added}", "Row count before:  #{count_before}, Row cuont after: #{count_after}"
           close_window
         else
           raise "Illegal number of arguments.  "
       end
       self
+    end
+
+    def added?
+      @added
+    end
+
+    def edited?
+      @edited
     end
 
     def edit_address(name, company, city, new_address_details)
@@ -77,7 +85,7 @@ module Batch
         select_row row_num
         edit new_address_details
       end
-      @run_status = row_number(new_address_details[:name], new_address_details[:company], new_address_details[:city]) > 0
+      @edited = row_number(new_address_details[:name], new_address_details[:company], new_address_details[:city]) > 0
       close_window
       self
     end
@@ -103,10 +111,6 @@ module Batch
       end
     end
 
-    def added?
-      @run_status
-    end
-
     def select_row(row_num)
       click_row_until_selected(row_num, "class", "x-grid-item-selected")
     end
@@ -124,6 +128,10 @@ module Batch
       end
     end
 
+    def all_deleted?
+      @all_deleted
+    end
+
     def delete_all_address
       begin
         count = shipping_address_count
@@ -137,12 +145,8 @@ module Batch
       rescue
         #
       end
-      @run_status = shipping_address_count == 1
+      @all_deleted = shipping_address_count == 1
       self
-    end
-
-    def successful?
-      @run_status
     end
 
     def close_window
