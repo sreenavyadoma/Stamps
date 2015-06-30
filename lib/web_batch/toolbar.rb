@@ -19,8 +19,8 @@ module Batch
     def print(*args)
       printer_window = PrintWindow.new(@browser)
       7.times {
-        field_helper.click print_button, "print_button"
         break if printer_window.present?
+        field_helper.click print_button, "print_button"
       }
       printer_window.print_options *args
     end

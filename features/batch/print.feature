@@ -23,6 +23,7 @@ Feature: B-01625  As a batch shipper, I want to be able to print sample postage
     * Expect order-grid Zip Code to be 90245
     * Expect order-grid Phone to be (415) 123-5555
     * Expect order-grid Email to be rtest@stamps.com
+    * Print Sample
     * Print
     * Sign out
 
