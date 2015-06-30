@@ -59,12 +59,16 @@ module Batch
 
       5.times do
         visit
-        if username_textbox.present?
-          username_textbox.wait_until_present
-          self.username = username
-          self.password = password
-          BrowserFieldHelper.instance.click sign_in_button_field, "SignIn"
-          sign_in_button_field.wait_while_present(60)
+        begin
+          if username_textbox.present?
+            username_textbox.wait_until_present
+            self.username = username
+            self.password = password
+            BrowserFieldHelper.instance.click sign_in_button_field, "SignIn"
+            sign_in_button_field.wait_while_present(60)
+          end
+        rescue
+          #ignore
         end
         break if toolbar.present?
       end
