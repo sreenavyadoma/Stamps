@@ -147,7 +147,7 @@ module Batch
 
     def close_window
       begin
-        click close_button, "Close"
+        field_helper.click close_button, "Close"
       rescue
         #ignore
       end
