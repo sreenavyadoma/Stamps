@@ -1,5 +1,5 @@
 module Batch
-  class ShippingAddressForm < BrowserField
+  class AddShippingAdress < BrowserField
     public
     def shipping_address=(table)
       self.origin_zip = table[:ship_from_zip]

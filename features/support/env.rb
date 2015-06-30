@@ -25,7 +25,7 @@ require_relative '../../lib/web_batch/grid'
 require_relative '../../lib/web_batch/manage_shipping_address'
 require_relative '../../lib/web_batch/print_window'
 require_relative '../../lib/web_batch/service_selection'
-require_relative '../../lib/web_batch/shipping_address_form'
+require_relative '../../lib/web_batch/add_shipping_adress'
 require_relative '../../lib/web_batch/address_not_found'
 require_relative '../../lib/web_batch/web_batch'
 

@@ -41,7 +41,7 @@ module Batch
     end
 
     def add
-      @shipping_address_form = ShippingAddressForm.new(@browser)
+      @shipping_address_form = AddShippingAdress.new(@browser)
       10.times {
         begin
           field_helper.click add_button, "add_button"
@@ -86,9 +86,9 @@ module Batch
       edit_button.when_present.click
       case args.length
         when 0
-          ShippingAddressForm.new(@browser)
+          AddShippingAdress.new(@browser)
         when 1
-          ShippingAddressForm.new(@browser).shipping_address = args[0]
+          AddShippingAdress.new(@browser).shipping_address = args[0]
         else
           raise "Illegal number of arguments.  "
       end
@@ -186,7 +186,9 @@ module Batch
     end
 
     def close_button
-      @browser.image :css => "img[class*='x-tool-img x-tool-close']"
+      button = @browser.image :css => "img[class*='x-tool-close']"
+      present = button.present?
+      button
     end
 
     def row_checked?(number)
