@@ -5,11 +5,11 @@ module Batch
     end
 
     def single_order
-      @single_order_form ||= SingleOrder.new(@browser)
+      SingleOrder.new(@browser)
     end
 
     def grid
-      @grid ||= Grid.new(@browser)
+      Grid.new(@browser)
     end
   end
 end
