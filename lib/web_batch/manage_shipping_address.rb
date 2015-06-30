@@ -42,10 +42,10 @@ module Batch
 
     def add
       @shipping_address_form = AddShippingAdress.new(@browser)
-      10.times {
+      5.times {
         begin
-          field_helper.click add_button, "add_button"
           break if @shipping_address_form.present?
+          field_helper.click add_button, "add_button"
         rescue
           #ignore
         end

@@ -1,4 +1,4 @@
-@regression
+@B-01671
 Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an order
 
   Background:
