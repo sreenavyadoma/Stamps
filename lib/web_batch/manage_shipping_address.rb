@@ -105,7 +105,7 @@ module Batch
 
     def delete
       begin
-        click(delete_button, "Delete") if field_helper.field_present?  delete_button
+        field_helper.click(delete_button, "Delete") if field_helper.field_present?  delete_button
       rescue
         #ignore
       end
