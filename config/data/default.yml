@@ -1,7 +1,126 @@
 login_credentials:
   qacc:
-    username:  auto01
-    password:  password1
+    01:
+      username:  auto01
+      password:  password1
+    02:
+      username:  auto02
+      password:  password1
+    03:
+      username:  auto03
+      password:  password1
+    04:
+      username:  auto04
+      password:  password1
+    05:
+      username:  auto05
+      password:  password1
+    06:
+      username:  auto06
+      password:  password1
+    07:
+      username:  auto07
+      password:  password1
+    08:
+      username:  auto08
+      password:  password1
+    09:
+      username:  auto09
+      password:  password1
+    10:
+      username:  auto10
+      password:  password1
+    11:
+      username:  auto11
+      password:  password1
+    12:
+      username:  auto12
+      password:  password1
+    13:
+      username:  auto13
+      password:  password1
+    14:
+      username:  auto14
+      password:  password1
+    15:
+      username:  auto15
+      password:  password1
+    16:
+      username:  auto16
+      password:  password1
+    17:
+      username:  auto17
+      password:  password1
+    18:
+      username:  auto18
+      password:  password1
+    19:
+      username:  auto19
+      password:  password1
+    20:
+      username:  auto20
+      password:  password1
+    21:
+      username:  auto21
+      password:  password1
+    22:
+      username:  auto22
+      password:  password1
+    23:
+      username:  auto23
+      password:  password1
+    24:
+      username:  auto24
+      password:  password1
+    25:
+      username:  auto25
+      password:  password1
+    26:
+      username:  auto26
+      password:  password1
+    27:
+      username:  auto27
+      password:  password1
+    28:
+      username:  auto28
+      password:  password1
+    29:
+      username:  auto29
+      password:  password1
+    30:
+      username:  auto30
+      password:  password1
+    31:
+      username:  auto31
+      password:  password1
+    32:
+      username:  auto32
+      password:  password1
+    33:
+      username:  auto33
+      password:  password1
+    34:
+      username:  auto34
+      password:  password1
+    35:
+      username:  auto35
+      password:  password1
+    36:
+      username:  auto36
+      password:  password1
+    37:
+      username:  auto37
+      password:  password1
+    38:
+      username:  auto38
+      password:  password1
+    39:
+      username:  auto39
+      password:  password1
+    40:
+      username:  auto40
+      password:  password1
+
   staging:
     username:  wc102_cc
     password:  password1

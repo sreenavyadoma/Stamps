@@ -1,5 +1,5 @@
 module Batch
-  class ManageShippingAddresses < Batch::BatchPage
+  class ManageShippingAddresses < BrowserField
     public
 
     def name(row)
@@ -37,14 +37,14 @@ module Batch
     end
 
     def window_present?
-      field_present? add_button
+      field_helper.field_present?  add_button
     end
 
     def add
       @shipping_address_form = ShippingAddressForm.new(@browser)
       10.times {
         begin
-          click add_button, "add_button"
+          field_helper.click add_button, "add_button"
           break if @shipping_address_form.present?
         rescue
           #ignore
@@ -97,7 +97,7 @@ module Batch
 
     def delete
       begin
-        click(delete_button, "Delete") if field_present? delete_button
+        click(delete_button, "Delete") if field_helper.field_present?  delete_button
       rescue
         #ignore
       end
@@ -115,7 +115,7 @@ module Batch
       cell = grid_cell(row_num, 1)
       5.times do
         begin
-          click cell, "cell(#{row_num}, 1)"
+          field_helper.click cell, "cell(#{row_num}, 1)"
           #log_browser_click(cell, attibute, attribute_value)
           break if row_checked? row_num
         rescue
@@ -182,7 +182,7 @@ module Batch
     end
 
     def grid_cell_text(row, column)
-      get_text grid_cell(row, column), "cell(#{row}, #{column})"
+      field_helper.text grid_cell(row, column), "cell(#{row}, #{column})"
     end
 
     def close_button

@@ -2,7 +2,7 @@ module Batch
   #
   # Orders Grid
   #
-  class Grid < BatchPage
+  class Grid < BrowserField
     include GridCommon
 
     public

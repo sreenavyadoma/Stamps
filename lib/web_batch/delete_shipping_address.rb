@@ -1,11 +1,11 @@
 module Batch
-  class DeleteShippingAddress < Batch::BatchPage
+  class DeleteShippingAddress < Stamps::BrowserField
     public
     def delete
       5.times {
         begin
           log "Delete Shipping Address :: #{message_field.text}"
-          click delete_button, 'DeleteShippnigAddress'
+          field_helper.click delete_button, 'DeleteShippnigAddress'
         rescue
           #ignore
         end
@@ -14,7 +14,7 @@ module Batch
     end
 
     def present?
-      field_present? window_title
+      field_helper.field_present?  window_title
     end
 
     def close
@@ -36,7 +36,5 @@ module Batch
       present = field.present?
       field
     end
-
-
   end
 end

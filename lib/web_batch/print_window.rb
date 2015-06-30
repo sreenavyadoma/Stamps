@@ -1,5 +1,5 @@
 module Batch
-  class PrintWindow < Stamps::Page
+  class PrintWindow < Stamps::BrowserField
     def initialize(browser, *args)
       super(browser)
       print_options *args
@@ -51,7 +51,6 @@ module Batch
         @print_status = false
       end
       self
-      self
     end
 
     def print_expecting_error
@@ -94,7 +93,11 @@ module Batch
     end
 
     def close
-      x_button.click
+      begin
+        x_button.click
+      rescue
+        #ignore
+      end
     end
 
     private
@@ -139,7 +142,10 @@ module Batch
     end
 
     def print_button
-      @browser.elements(:text => 'Print').first
+      #@browser.elements(:text => 'Print').first
+      span = @browser.span(:id => 'sdc-printwin-printbtn-btnInnerEl')
+      exist = span.present?
+      span
     end
   end
 end

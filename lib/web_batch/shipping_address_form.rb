@@ -1,5 +1,5 @@
 module Batch
-  class ShippingAddressForm < Batch::BatchPage
+  class ShippingAddressForm < BrowserField
     public
     def shipping_address=(table)
       self.origin_zip = table[:ship_from_zip]
@@ -15,7 +15,7 @@ module Batch
     end
 
     def origin_zip=(zip)
-      set_text origin_zip_field, zip, "origin_zip"
+      field_helper.set_text origin_zip_field, zip, "origin_zip"
     end
 
     def origin_zip
@@ -23,39 +23,39 @@ module Batch
     end
 
     def name=(name)
-      set_text name_field, name, "name_field"
+      field_helper.set_text name_field, name, "name_field"
     end
 
     def company=(company)
-      set_text company_field, company, "company_field"
+      field_helper.set_text company_field, company, "company_field"
     end
 
     def street_address1=(street)
-      set_text street_address1_field, street, "street_address1_field"
+      field_helper.set_text street_address1_field, street, "street_address1_field"
     end
 
     def street_address2=(street)
-      set_text street_address2_field, street, "street_address2_field"
+      field_helper.set_text street_address2_field, street, "street_address2_field"
     end
 
     def city=(city)
-      set_text city_field, city, "city_field"
+      field_helper.set_text city_field, city, "city_field"
     end
 
     def state=(state)
-      set_text state_field, state, "state_field"
+      field_helper.set_text state_field, state, "state_field"
     end
 
     def zip=(code)
-      set_text zip_field, code, "zip_field"
+      field_helper.set_text zip_field, code, "zip_field"
     end
 
     def phone=(number)
-      set_text phone_field, number, "phone_field"
+      field_helper.set_text phone_field, number, "phone_field"
     end
 
     def save
-      click save_button, "save_button"
+      field_helper.click save_button, "save_button"
       save_button.wait_while_present
     end
 

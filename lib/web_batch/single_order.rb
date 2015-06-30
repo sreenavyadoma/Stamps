@@ -13,20 +13,20 @@ module Batch
 
     def expand_ship_to
       10.times {
-        break if field_present? address_textbox
-        click ship_to_dropdown, "ship_to_address_field" if field_present? ship_to_dropdown
+        break if BrowserFieldHelper.instance.field_present?  address_textbox
+        BrowserFieldHelper.instance.click ship_to_dropdown, "ship_to_address_field" if BrowserFieldHelper.instance.field_present?  ship_to_dropdown
       }
     end
 
     def less
-      click less_dropdown, "Less" if field_present? less_dropdown
+      BrowserFieldHelper.instance.click less_dropdown, "Less" if BrowserFieldHelper.instance.field_present?  less_dropdown
     end
 
     def item_label
       @browser.label :text => 'Item:'
     end
 
-    def click_off
+    def click_item_label
       3.times {
         begin
           item_label.click
@@ -71,7 +71,7 @@ module Batch
     end
 
     def present?
-      field_present? height_textbox
+      BrowserFieldHelper.instance.field_present?  height_textbox
     end
 
     def wait_until_present(timeout)
@@ -112,7 +112,7 @@ module Batch
 
     def email=(email)
       expand_ship_to
-      set_text email_textbox, email, 'Email'
+      BrowserFieldHelper.instance.set_text email_textbox, email, 'Email'
       less
     end
 
@@ -130,13 +130,13 @@ module Batch
 
     def phone=(phone)
       expand_ship_to
-      set_text phone_textbox, phone, 'Phone'
+      BrowserFieldHelper.instance.set_text phone_textbox, phone, 'Phone'
       less
     end
 
     def address=(address)
       expand_ship_to
-      set_text address_textbox, formatAddress(address), 'Address'
+      BrowserFieldHelper.instance.set_text address_textbox, batch_helper.formatAddress(address), 'Address'
       less
     end
 
@@ -161,7 +161,7 @@ module Batch
     def ship_from_default
       ship_from_dropdown.when_present.click
       ship_from_default_selection.click
-      click_off
+      click_item_label
     end
 
     def ship_from_selection(selection)
@@ -172,13 +172,13 @@ module Batch
       @manage_shipping_adddress ||= ManageShippingAddresses.new(@browser)
       10.times {
         begin
-          click ship_from_dropdown, "ship_from_selection(#{selection})" unless field_present? ship_from_selection(selection)
-          click ship_from_selection(selection), selection
+          BrowserFieldHelper.instance.click ship_from_dropdown, "ship_from_selection(#{selection})" unless BrowserFieldHelper.instance.field_present?  ship_from_selection(selection)
+          BrowserFieldHelper.instance.click ship_from_selection(selection), selection
           break if @manage_shipping_adddress.window_present?
         rescue
           #ignore
         end
-        click_off
+        click_item_label
       }
     end
 
@@ -188,8 +188,8 @@ module Batch
     end
 
     def pounds=(pounds)
-      set_text pounds_textbox, pounds, 'Pounds'
-      click_off
+      BrowserFieldHelper.instance.set_text pounds_textbox, pounds, 'Pounds'
+      click_item_label
     end
 
     def pounds
@@ -209,8 +209,8 @@ module Batch
     end
 
     def ounces=(ounces)
-      set_text ounces_textbox, ounces, 'Ounces'
-      click_off
+      BrowserFieldHelper.instance.set_text ounces_textbox, ounces, 'Ounces'
+      click_item_label
     end
 
     def ounces_qtip_error
@@ -240,8 +240,8 @@ module Batch
     end
 
     def insured_value=(amount)
-      set_text insured_value_textbox, amount, 'Insurance'
-      click_off
+      BrowserFieldHelper.instance.set_text insured_value_textbox, amount, 'Insurance'
+      click_item_label
     end
 
     def insured_value
@@ -249,8 +249,8 @@ module Batch
     end
 
     def length=(length)
-      set_text length_textbox, length, 'Length'
-      click_off
+      BrowserFieldHelper.instance.set_text length_textbox, length, 'Length'
+      click_item_label
     end
 
     def length
@@ -258,8 +258,8 @@ module Batch
     end
 
     def width=(width)
-      set_text width_textbox, width, 'Width'
-      click_off
+      BrowserFieldHelper.instance.set_text width_textbox, width, 'Width'
+      click_item_label
     end
 
     def width
@@ -267,8 +267,8 @@ module Batch
     end
 
     def height=(height)
-      set_text height_textbox, height, 'Height'
-      click_off
+      BrowserFieldHelper.instance.set_text height_textbox, height, 'Height'
+      click_item_label
     end
 
     def height

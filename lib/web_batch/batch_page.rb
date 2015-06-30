@@ -1,15 +1,18 @@
 module Batch
-  # require_relative 'toolbar'
-  # require_relative '../common/stamps'
-  # require_relative 'parameter_helper'
+  class BatchPage < Page
+    public
+    def navigation_bar
+      NavigationBar.new(@browser)
+    end
 
-  class BatchPage < Stamps::Page
-    include NavigationBar
-    include Toolbar
+    def toolbar
+      Toolbar.new(@browser)
+    end
 
     protected
-    def helper
-      ParameterHelper.instance #todo refactor to BatchHelper
+    def batch_helper
+      BatchHelper.instance
     end
+
   end
 end

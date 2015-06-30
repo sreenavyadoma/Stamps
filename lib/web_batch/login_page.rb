@@ -16,15 +16,15 @@ module Batch
       page_title
     end
 
-    def username_field
+    def username_textbox
       @browser.text_field(LOGIN_FIELDS[:username_loc])
     end
 
-    def password_field
+    def password_textbox
       @browser.text_field(LOGIN_FIELDS[:password_loc])
     end
 
-    def sign_in_button
+    def sign_in_button_field
       @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
     end
 
@@ -33,14 +33,16 @@ module Batch
     def visit
       @browser.goto url = "http://#{Batch.url_prefix}.stamps.com/webbatch/"
       log "Visited #{url}"
+      self
     end
 
     def sign_in(*args)
       case args.count
         when 0
           # user default sign in credentials
-          username = helper.default_sign_in_credentials['username']
-          password = helper.default_sign_in_credentials['password']
+          credentials = batch_helper.rand_login_credentials
+          username = log_param "username", credentials["username"]
+          password = log_param "password", credentials["password"]
         when 1
           if args[0].is_a? Hash
             username = args[0]['username']
@@ -57,23 +59,27 @@ module Batch
 
       5.times do
         visit
-        if username_field.present?
-          username_field.wait_until_present
+        if username_textbox.present?
+          username_textbox.wait_until_present
           self.username = username
           self.password = password
-          click sign_in_button, "SignIn"
-          sign_in_button.wait_while_present(60)
+          field_helper.click sign_in_button_field, "SignIn"
+          sign_in_button_field.wait_while_present(60)
         end
-        break if toolbar_present?
+        break if toolbar.present?
       end
     end
 
     def username=(username)
-      set_text username_field, username, 'Username'
+      field_helper.set_text username_textbox, username, 'Username'
     end
 
     def password=(password)
-      set_text password_field, password, 'Password'
+      field_helper.set_text password_textbox, password, 'Password'
+    end
+
+    def sign_in_button
+      sign_in_button_field.click
     end
   end
 end
