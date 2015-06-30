@@ -34,7 +34,7 @@ module Batch
 
     def set(partial_addy)
       expand_ship_to
-      field_helper.set_text address_textbox, batch_helper.formatAddress(partial_addy), 'Address'
+      field_helper.set_text address_textbox, BatchHelper.instance.formatAddress(partial_addy), 'Address'
       10.times {
         item_label.click
         break if (field_helper.field_present?  exact_address_not_found_field) || (field_helper.field_present?  validate_address_link)
