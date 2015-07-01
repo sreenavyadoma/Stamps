@@ -39,8 +39,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Set Phone to (415) 794-4522
     * Set Email to rtest@stamps.com
     * Expect Single Order Form - Service Rate to be $0.00
-    * Expect Service in-line rate for First-Class Mail Postcard to be greater than $0.01
-    * Expect Service in-line rate for First-Class Mail Envelope to be greater than $0.01
+
     * Expect Service in-line rate for First-Class Mail Large Envelope/Flat to be greater than $0.01
     * Expect Service in-line rate for First-Class Mail Package/Thick Envelope to be greater than $0.01
     * Expect Service in-line rate for Priority Mail Large/Thick Envelope to be greater than $0.01
