@@ -124,3 +124,13 @@ end
 Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
   batch.single_order.manage_shipping_addresses.edit_address(name, company, city,  new_address.hashes.first).should be_edited
 end
+
+Then /^Set tracking to (.*)$/ do |traccking|
+
+end
+
+Then /^Expect Single Order Form Service Rate to be \$(.*)$/ do |service_price|
+  single_order_service_price = batch.single_order.service_price
+  single_order_service_price.should eql service_price
+end
+

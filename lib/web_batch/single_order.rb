@@ -70,6 +70,7 @@ module Batch
 
     def service_price
       text = service_price_label.text.gsub('$', '')
+      log_param "Service Price", text
       text
     end
 
