@@ -134,9 +134,9 @@ module Batch
       begin
         count = shipping_address_count
         if count > 1
-          for row in 1..(count+3)
+          for row in 1..(count)
             delete_row 1
-            log "Try #{row} :: Deleting row 1..."
+            log "Row #{row} :: Deleting row 1..."
             break if shipping_address_count == 1
           end
         end
