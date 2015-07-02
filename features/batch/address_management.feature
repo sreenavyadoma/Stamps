@@ -2,7 +2,7 @@
 Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Ship From address.
 
   Background:
-    Given I am signed in as a batch shipper auto01/password1
+    Given I am signed in as a batch shipper
 
 
   @address_management
@@ -27,4 +27,7 @@ Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Sh
       |ship_from_zip  | name          | company             | street_address1    | street_address2 | city          | state         | zip    | country       | phone           |
       |94105          | Euan Davidson | B-01690 Betfair UK  | 201 Mission Street | Suite 700       | San Francisco | California    | 94105  | United States | (415) 123-5555  |
     * Delete all shipping addresses
+    * Set Recipient Complete Address to B-01690 Delete, Modify, Edit Ship-From Address, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Phone to (415) 123-5555
+    * Set Service to Priority Mail Large Package
     * Sign out
