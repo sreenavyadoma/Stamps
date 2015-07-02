@@ -24,7 +24,7 @@ Feature:  Build Verification Test
     * Expect order-grid Zip Code to be 94102
     * Set Receipient partial address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
-      | B-01603 | Address Cleansing | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
+      | B-01603 | Exact Address Not Found | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     * Expect "Exact Address Not Found" module to appear
     * Select row 2 from Exact Address Not Found module
     * Set Service to Priority Mail Package

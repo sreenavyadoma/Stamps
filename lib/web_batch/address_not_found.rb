@@ -12,8 +12,8 @@ module Batch
       field_helper.field_present?  exact_address_not_found_field
     end
 
-    def row=(number=1)
-      row = (number.to_i>0) ? 0 : number.to_i - 1
+    def row=(number=0)
+      row = number.to_i<=0?0:number.to_i-1
       rox_input = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
       accept_button = @browser.span :text => 'Accept'
       3.times do
