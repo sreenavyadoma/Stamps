@@ -54,17 +54,14 @@ module Batch
     end
 
     def add_address(*args)
-      count_before = shipping_address_count
       add
       case args.length
         when 0
           @shipping_address_form
         when 1
-          log_param "row count before addition", count_before
           @shipping_address_form.shipping_address = args[0]
-          count_after = shipping_address_count
-          @added = (count_before + 1) == count_after
-          log_param "Address added successfully? #{@added}", "Row count before:  #{count_before}, Row cuont after: #{count_after}"
+          @test_status = locate_address(args[0][:name], args[0][:company], args[0][:city])
+          log "Add Status:  #{@test_status?"Success":"Failed"}"
           close_window
         else
           raise "Illegal number of arguments.  "
@@ -72,12 +69,8 @@ module Batch
       self
     end
 
-    def added?
-      @added
-    end
-
-    def edited?
-      @edited
+    def successful?
+      @test_status
     end
 
     def edit_address(name, company, city, new_address_details)
@@ -86,12 +79,14 @@ module Batch
         select_row row_num
         self.edit new_address_details
       end
-      @edited = row_number(new_address_details[:name], new_address_details[:company], new_address_details[:city]) > 0
+      @test_status = locate_address(new_address_details[:name], new_address_details[:company], new_address_details[:city])
       close_window
       self
     end
 
-
+    def locate_address(name, company, city)
+      row_number(name, company, city) > 0
+    end
 
     def edit(*args)
       edit_button.when_present.click
