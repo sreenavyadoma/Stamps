@@ -1,6 +1,6 @@
 module Batch
   def setup
-    @batch = Batch::WebBatch.new(Stamps.setup)
+    @batch = WebBatch.new(Stamps.setup)
   end
 
   def batch

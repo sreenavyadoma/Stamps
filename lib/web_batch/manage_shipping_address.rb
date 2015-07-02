@@ -46,6 +46,7 @@ module Batch
         begin
           break if @shipping_address_form.present?
           field_helper.click add_button, "add_button"
+          add_button.wait_until
         rescue
           #ignore
         end
@@ -53,12 +54,12 @@ module Batch
     end
 
     def add_address(*args)
+      count_before = shipping_address_count
       add
       case args.length
         when 0
           @shipping_address_form
         when 1
-          count_before = shipping_address_count
           log_param "row count before addition", count_before
           @shipping_address_form.shipping_address = args[0]
           count_after = shipping_address_count
@@ -128,11 +129,11 @@ module Batch
       end
     end
 
-    def all_deleted?
-      @all_deleted
+    def deleted?
+      @deleted
     end
 
-    def delete_all_address
+    def delete_all
       begin
         count = shipping_address_count
         if count > 1
@@ -145,7 +146,7 @@ module Batch
       rescue
         #
       end
-      @all_deleted = shipping_address_count == 1
+      @deleted = shipping_address_count == 1
       self
     end
 
@@ -177,7 +178,8 @@ module Batch
 
     def shipping_address_count
       wait_until_present
-      count = @browser.elements(:css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-boundview^=gridview]").size
+      rows = @browser.tables(:css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-boundview^=gridview]")
+      count = rows.length
       log "Manage Shipping Address:: row count = #{count}"
       count.to_i
     end

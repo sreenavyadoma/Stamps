@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
-default_profile: --tags @B-01690 --guess URL=qacc BROWSER=chrome
+default_profile: --tags @B-01690 --guess URL=qacc BROWSER=ie
 
 bvt_qacc_chrome: --tags @bvt --guess URL=qacc BROWSER=chrome
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie
@@ -15,8 +15,8 @@ address_cleansing_qacc_chrome:  --tags @address_cleansing --guess URL=qacc BROWS
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
-regress_qacc_chrome: --tags @print_priority_mail_package,@user_views_price_next_to_service_dropdown,@address_cleansing --guess URL=qacc BROWSER=chrome
-regress_qacc_ff: --tags @print_first_class_mail_envelope,@user_views_price_next_to_service_dropdown,@address_cleansing,@print_first_class_mail_envelope,@address_management,@print_first_class_mail_envelope_expecting_an_error --guess URL=qacc BROWSER=ff
-regress_qacc_ie: --tags @print_first_class_mail_envelope,@user_views_price_next_to_service_dropdown,@address_cleansing,@print_first_class_mail_envelope,@address_management,@print_first_class_mail_envelope_expecting_an_error --guess URL=qacc BROWSER=ie
+regress_qacc_chrome: --tags @B-01690 --guess URL=qacc BROWSER=chrome
+regress_qacc_ff: --tags @B-01690 --guess URL=qacc BROWSER=ff
+regress_qacc_ie: --tags @B-01690 --guess URL=qacc BROWSER=ie
 
 wip: --tags @wip BROWSER=firefox URL=qacc

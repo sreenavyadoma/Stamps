@@ -102,21 +102,21 @@ When /^Set Receipient partial address to;$/ do |table|
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
-  batch.single_order.partial_address.row = 4
+  batch.single_order.partial_address.row = row
 end
 
 Then /^Add new Ship-From address;$/ do |table|
-  manage_shipping_adddress = batch.single_order.manage_shipping_adddress
-  manage_shipping_adddress.add_address(table.hashes.first).should be_added
+  batch.single_order.manage_shipping_addresses.add_address(table.hashes.first).should be_added
 end
 
 Then /^Delete all shipping addresses$/ do
-  manage_shipping_adddress = batch.single_order.manage_shipping_adddress
-  manage_shipping_adddress.delete_all_address #.should be_all_deleted
+  batch.single_order.manage_shipping_addresses.delete_all #.should be_all_deleted
 end
 
-Then /^Change Shipping Info for address having name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address_table|
-  new_address_details = new_address_table.hashes.first
-  manage_shipping_adddress = batch.single_order.manage_shipping_adddress
-  manage_shipping_adddress.edit_address(name, company, city, new_address_details).should be_edited
+Then /^Delete all shipping addresses and fail test if delete fails$/ do
+  batch.single_order.manage_shipping_addresses.delete_all.should be_deleted
+end
+
+Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
+  batch.single_order.manage_shipping_addresses.edit_address(name, company, city,  new_address.hashes.first).should be_edited
 end

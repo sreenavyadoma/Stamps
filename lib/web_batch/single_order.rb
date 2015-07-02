@@ -172,7 +172,7 @@ module Batch
     end
 
     def ship_from(selection)
-      @manage_shipping_adddress ||= ManageShippingAddresses.new(@browser)
+      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
       5.times {
         begin
           field_helper.click ship_from_dropdown, "ship_from_selection(#{selection})" unless field_helper.field_present?  ship_from_selection(selection)
@@ -183,11 +183,11 @@ module Batch
         end
         click_item_label
       }
+      @manage_shipping_adddress
     end
 
-    def manage_shipping_adddress
+    def manage_shipping_addresses
       self.ship_from "Manage Shipping Addresses..."
-      @manage_shipping_adddress
     end
 
     def pounds=(pounds)
