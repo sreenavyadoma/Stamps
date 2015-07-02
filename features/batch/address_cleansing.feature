@@ -2,7 +2,7 @@
 Feature: B-01603 As a batch shipper, I want Stamps.com to verify that my delivery addresses are valid.
 
   Background:
-    Given I am signed in as a batch shipper with credentials auto03/password1
+    Given I am signed in as a batch shipper auto03/password1
 
   @address_cleansing
   Scenario: Address Cleansing

@@ -2,7 +2,7 @@
 Feature: Service Control
 
   Background:
-    Given I am signed in as a batch shipper with credentials auto01/password1
+    Given I am signed in as a batch shipper auto01/password1
 
   Scenario:  First-Class Mail - Package Service Test
     * Add new order

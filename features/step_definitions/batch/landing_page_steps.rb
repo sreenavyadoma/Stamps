@@ -1,4 +1,4 @@
-Given /^I am signed in as a batch shipper with credentials (.*)\/(.*)/ do |username, password|
+Given /^I am signed in as a batch shipper (.*)\/(.*)/ do |username, password|
   #expect { raise StandardError }.to raise_error
   batch.sign_in username, password
 end

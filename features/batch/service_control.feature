@@ -2,7 +2,7 @@
 Feature: Service Control
 
   Background:
-    Given I am signed in as a batch shipper with credentials auto08/password1
+    Given I am signed in as a batch shipper auto08/password1
 
   @first_class_mail_package_thick_envelope
   Scenario: First-Class Mail Package/Thick Envelope

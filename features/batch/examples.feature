@@ -2,7 +2,7 @@
 Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an order
 
   Background:
-    Given I am signed in as a batch shipper with credentials auto06/password1
+    Given I am signed in as a batch shipper auto06/password1
 
   #@inline_rates
   Scenario:  Inline Rates
