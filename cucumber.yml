@@ -15,8 +15,8 @@ address_cleansing_qacc_chrome:  --tags @address_cleansing --guess URL=qacc BROWS
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
-regress_qacc_chrome: --tags @address_cleansing,@address_management,@print_priority_mail_package --guess URL=qacc BROWSER=chrome
-regress_qacc_ff: --tags @address_cleansing,@address_management,@print_priority_mail_package --guess URL=qacc BROWSER=ff
-regress_qacc_ie: --tags @address_cleansing,@address_management,@print_priority_mail_package --guess URL=qacc BROWSER=ie
+regress_qacc_chrome: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package --guess URL=qacc BROWSER=chrome
+regress_qacc_ff: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package --guess URL=qacc BROWSER=ff
+regress_qacc_ie: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package --guess URL=qacc BROWSER=ie
 
 wip: --tags @wip BROWSER=firefox URL=qacc
