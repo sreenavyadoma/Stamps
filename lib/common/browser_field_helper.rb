@@ -13,7 +13,11 @@ module Stamps
     end
 
     def text(field, field_name)
-      field.focus
+      begin
+        field.focus
+      rescue
+        #ignore
+      end
       text = field.text #field.attribute_value('value')
       log_browser_get(field, text, field_name)
       text

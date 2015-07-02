@@ -84,7 +84,7 @@ module Batch
       row_num = row_number(name, company, city)
       if row_num > 0
         select_row row_num
-        edit new_address_details
+        self.edit new_address_details
       end
       @edited = row_number(new_address_details[:name], new_address_details[:company], new_address_details[:city]) > 0
       close_window
@@ -180,7 +180,7 @@ module Batch
 
     def shipping_address_count
       wait_until_present
-      rows = @browser.tables(:css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-boundview^=gridview]")
+      rows = @browser.trs(:css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-boundview^=gridview]>tbody>tr")
       count = rows.length
       log "Manage Shipping Address:: row count = #{count}"
       count.to_i

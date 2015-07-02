@@ -1,4 +1,4 @@
-@B-01690
+@address_management
 Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Ship From address.
 
   Background:
