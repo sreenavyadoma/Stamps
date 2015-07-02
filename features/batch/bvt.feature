@@ -31,7 +31,7 @@ Feature:  Build Verification Test
     * Set Ounces to 1
     * Expect order-grid Recipient Name to be B-01603
     * Expect order-grid Company Name to be Address Cleansing
-    * Expect order-grid Street Address to be 1390 Market Street Ste 702
+    * Expect order-grid Street Address to be 1390 Market Street Ste 1125
     * Expect order-grid City to be San Francisco
     * Expect order-grid State to be CA
     * Expect order-grid Zip Code to be 94102
