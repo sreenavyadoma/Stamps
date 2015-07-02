@@ -173,7 +173,7 @@ module Batch
 
     def ship_from(selection)
       @manage_shipping_adddress ||= ManageShippingAddresses.new(@browser)
-      10.times {
+      5.times {
         begin
           field_helper.click ship_from_dropdown, "ship_from_selection(#{selection})" unless field_helper.field_present?  ship_from_selection(selection)
           field_helper.click ship_from_selection(selection), selection

@@ -151,7 +151,10 @@ module Batch
 
     def close_window
       begin
-        field_helper.click close_button, "Close"
+        10.times{
+          break unless field_helper.field_present? close_button
+          field_helper.click close_button, "Close"
+        }
       rescue
         #ignore
       end
@@ -190,9 +193,7 @@ module Batch
     end
 
     def close_button
-      button = @browser.image :css => "img[class*='x-tool-close']"
-      present = button.present?
-      button
+      @browser.image :css => "img[class*='x-tool-close']"
     end
 
     def row_checked?(number)
