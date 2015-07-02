@@ -106,6 +106,10 @@ Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
 end
 
 Then /^Add new Ship-From address;$/ do |table|
+  batch.single_order.manage_shipping_addresses.add_address(table.hashes.first)#.should be_added
+end
+
+Then /^Set Ship From to Manage Shipping Addresses$/ do
   batch.single_order.manage_shipping_addresses.add_address(table.hashes.first).should be_added
 end
 
