@@ -5,8 +5,8 @@ module Batch
 
     def rand_login_credentials
       login_credentials = data_for(:login_credentials, {})[ENV['URL']]
-      values = login_credentials.values
-      values[rand(values.size)]
+      credentials = login_credentials.values
+      credentials[rand(credentials.size)]
     end
 
     def format_address_arr(address_array)
