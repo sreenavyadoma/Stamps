@@ -149,4 +149,5 @@ module Batch
       span
     end
   end
+
 end
