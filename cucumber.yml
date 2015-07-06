@@ -36,9 +36,9 @@ print_sample_qacc_ie: --tags @print_sample --guess URL=qacc BROWSER=ie
 print_sample_qacc_ff: --tags @print_sample --guess URL=qacc BROWSER=ff
 print_sample_qacc_gc: --tags @print_sample --guess URL=qacc BROWSER=gc
 
-user_views_price_next_to_service_dropdown_ie: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ie
-user_views_price_next_to_service_dropdown_ff: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ff
-user_views_price_next_to_service_dropdown_gc: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=gc
+user_views_price_next_to_service_dropdown_qacc_ie: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ie
+user_views_price_next_to_service_dropdown_qacc_ff: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ff
+user_views_price_next_to_service_dropdown_qacc_gc: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=gc
 
 
 
