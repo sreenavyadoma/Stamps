@@ -104,6 +104,7 @@ module Batch
     def delete
       begin
         browser_helper.click(delete_button, "Delete") if browser_helper.field_present?  delete_button
+        browser_helper.click window_title, 'window_title'
       rescue
         #ignore
       end
@@ -111,6 +112,7 @@ module Batch
 
     def select_row(row_num)
       click_row_until_selected(row_num, "class", "x-grid-item-selected")
+      browser_helper.click window_title, 'window_title'
     end
 
     def click_row_until_selected(row_num, attibute, attribute_value)
@@ -135,6 +137,7 @@ module Batch
         count = shipping_address_count
         if count > 1
           for row in 1..(count)
+            browser_helper.click window_title, 'window_title'
             delete_row 1
             log "Row #{row} :: Deleting row 1..."
             break if shipping_address_count == 1
@@ -162,6 +165,7 @@ module Batch
       @delete_shipping_address = DeleteShippingAddress.new(@browser)
       3.times {
         select_row number
+        browser_helper.click window_title, 'window_title'
         delete
         break if @delete_shipping_address.present?
       }
@@ -182,6 +186,13 @@ module Batch
     end
 
     private
+
+    def window_title
+      divs = @browser.divs :text => 'Manage Shipping Addresses'
+      title_div = divs.last
+      present = title_div.present?
+      title_div
+    end
 
     def grid_cell(row, column)
       @browser.td :css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-recordindex='#{row-1}'][data-boundview^=gridview]>tbody>tr>td:nth-child(#{column})"
