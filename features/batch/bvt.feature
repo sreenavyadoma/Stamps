@@ -21,7 +21,7 @@ Feature:  Build Verification Test
     * Set Receipient address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
-    * Expect order-grid Zip Code to be 94102
+    * Expect Zip Code to be 94102
     * Set Receipient partial address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Address Cleansing | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
@@ -29,22 +29,22 @@ Feature:  Build Verification Test
     * Select row 2 from Exact Address Not Found module
     * Set Service to Priority Mail Package
     * Set Ounces to 1
-    * Expect order-grid Recipient Name to be B-01603
-    * Expect order-grid Company Name to be Address Cleansing
-    * Expect order-grid Street Address to be 1390 Market Street Ste 702
-    * Expect order-grid City to be San Francisco
-    * Expect order-grid State to be CA
-    * Expect order-grid Zip Code to be 94102
-    * Expect order-grid Phone to be (415) 123-5555
-    * Expect order-grid Email to be rtest@stamps.com
-    * Expect order-grid Ounces to be 1
+    * Expect Recipient Name to be B-01603
+    * Expect Company Name to be Address Cleansing
+    * Expect Street Address to be 1390 Market Street Ste 702
+    * Expect City to be San Francisco
+    * Expect State to be CA
+    * Expect Zip Code to be 94102
+    * Expect Phone to be (415) 123-5555
+    * Expect Email to be rtest@stamps.com
+    * Expect Ounces to be 1
     * Sign out
 
   @bvt_add_new_order
   Scenario:  Add New Order
     * Add new order
     * Expect new Order ID created
-    * Expect Single Order Form - Service Rate to be $0.00
+    * Expect Service Rate to be $0.00
     * Set Ship From to default
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
@@ -56,16 +56,16 @@ Feature:  Build Verification Test
     * Set Height to 1
     * Set Insured Value to 1.00
     * Set Service to Priority Mail Package
-    * Expect order-grid Recipient Name to be B-01671
-    * Expect order-grid Company Name to be Inline Rates
-    * Expect order-grid Street Address to be 1900 E Grand Ave
-    * Expect order-grid City to be El Segundo
-    * Expect order-grid State to be CA
-    * Expect order-grid Zip Code to be 90245
-    * Expect order-grid Phone to be (415) 123-5555
-    * Expect order-grid Email to be rtest@stamps.com
-    * Expect order-grid Pounds to be 1
-    * Expect order-grid Ounces to be 1
-    * Expect order-grid Weight to be 1 lbs. 1 oz.
-    * Expect order-grid Insured Value to be 1.00
+    * Expect Recipient Name to be B-01671
+    * Expect Company Name to be Inline Rates
+    * Expect Street Address to be 1900 E Grand Ave
+    * Expect City to be El Segundo
+    * Expect State to be CA
+    * Expect Zip Code to be 90245
+    * Expect Phone to be (415) 123-5555
+    * Expect Email to be rtest@stamps.com
+    * Expect Pounds to be 1
+    * Expect Ounces to be 1
+    * Expect Weight to be 1 lbs. 1 oz.
+    * Expect Insured Value to be 1.00
     * Sign out

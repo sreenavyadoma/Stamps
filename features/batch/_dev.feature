@@ -6,7 +6,7 @@ Feature: Service Control
 
   Scenario:  First-Class Mail - Package Service Test
     * Add new order
-    * Expect Single Order Form - Service Rate to be $0.00
+    * Expect Service Rate to be $0.00
     * Set Service to First-Class Mail Postcard
     * Set Service to Priority Mail Large/Thick Envelope
     * Set Service to Priority Mail Package
