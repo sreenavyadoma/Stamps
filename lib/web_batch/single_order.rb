@@ -61,6 +61,23 @@ module Batch
       @services ||= Hash.new
     end
 
+    def total_amount
+      price_int  = total_price_label.text.to_i
+      log price_int
+      text
+    end
+
+    def total_amount_calculation
+      total_amount = self.total_amount
+      log total_amount
+      # @correct = will add service price + insure for + tracking
+
+    end
+
+    def correct?
+      @correct
+    end
+
     def service(selection)
       log_param "Service Selection", selection
       selection_sym = service_to_sym selection
@@ -68,9 +85,27 @@ module Batch
       ServiceSelection.new(@browser, selection).select
     end
 
+    def tracking(selection)
+      log_param "Tracking Selection", selection
+      #add service to hash unless it already exists
+      ServiceSelection.new(@browser, selection).select
+    end
+
     def service_price
       text = service_price_label.text.gsub('$', '')
       log_param "Service Price", text
+      text
+    end
+
+    def insured_price
+      text = insured_price_label.text.gsub('$', '')
+      log_param "Insured Price", text
+      text
+    end
+
+    def tracking_price
+      text = tracking_price_label.text.gsub('$', '')
+      log_param "Tracking Price", text
       text
     end
 
@@ -357,6 +392,22 @@ module Batch
     def service_price_label
       #@browser.label(:text => 'Service:').element(:xpath => './following-sibling::*[2]')
       @browser.label(:css => 'label[class*=selected_service_cost]')
+    end
+
+    def insured_price_label
+      @browser.label :css => 'label[class*=insurance_cost]'
+    end
+
+    def tracking_price_label
+      @browser.label(:css => 'label[class*=selected_tracking_cost]')
+    end
+
+    def total_price_label
+      #@browser.label(:css => 'label[class*=selected_tracking_cost]')
+      labels = @browser.labels :css => "div[id^=orderDetailsPanel][class *='x-panel x-border-item x-box-item x-panel-default']>div>div[id ^=singleOrderDetailsForm]>div>div[id^=toolbar]>div>div>label"
+      total_price_label = labels.first
+      present = total_price_label.present?
+      total_price_label
     end
 
   end #SingleOrderEdit Module

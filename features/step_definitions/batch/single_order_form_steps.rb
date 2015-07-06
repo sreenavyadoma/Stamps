@@ -65,6 +65,17 @@ And /^Set Service to ([a-zA-Z -\/]+)$/ do |service|
   #end_step step
 end
 
+Then /^Set Tracking to ([a-zA-Z -\/]+)$/ do |tracking|
+  log "Set Tracking to \"#{tracking}\""
+  cost = batch.single_order.tracking log_param "Tracking", tracking
+  log "Tracking:  #{tracking}, Cost:  #{cost}"
+  #end_step step
+end
+
+Then /^Set Tracking to (.*)$/ do |traccking|
+
+end
+
 And /^Set Insured Value to (\d*\.?\d*)$/ do |insured_value|
   log "Set Insured Value to \"#{insured_value}\""
   batch.single_order.insured_value = insured_value
@@ -125,12 +136,24 @@ Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city =
   batch.single_order.manage_shipping_addresses.edit_address(name, company, city,  new_address.hashes.first).should be_successful
 end
 
-Then /^Set tracking to (.*)$/ do |traccking|
 
-end
 
 Then /^Expect Single Order Form Service Rate to be \$(.*)$/ do |service_price|
   single_order_service_price = batch.single_order.service_price
   single_order_service_price.should eql service_price
+end
+
+Then /^Expect Single Order Form Insured Rate to be \$(.*)$/ do |insured_price|
+  single_order_insured_price = batch.single_order.insured_price
+  single_order_insured_price.should eql insured_price
+end
+
+Then /^Expect Single Order Form Tracking Rate to be \$(.*)$/ do |tracking_price|
+  single_order_tracking_price = batch.single_order.tracking_price
+  single_order_tracking_price.should eql tracking_price
+end
+
+Then /^Verify Single Order Form Total Amount$/ do
+  batch.single_order.total_amount_calculation.should be_correct
 end
 
