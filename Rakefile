@@ -2,8 +2,8 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-Cucumber::Rake::Task.new(:bvt_qacc_chrome) do |t|
-  t.profile = 'bvt_qacc_chrome'
+Cucumber::Rake::Task.new(:bvt_qacc_gc) do |t|
+  t.profile = 'bvt_qacc_gc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -32,8 +32,8 @@ Cucumber::Rake::Task.new(:print_qacc_ie) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:address_cleansing_qacc_chrome) do |t|
-  t.profile = 'address_cleansing_qacc_chrome'
+Cucumber::Rake::Task.new(:address_cleansing_qacc_gc) do |t|
+  t.profile = 'address_cleansing_qacc_gc'
   t.cucumber_opts = "-p cuke_reports"
 end
 

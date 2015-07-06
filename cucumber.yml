@@ -3,19 +3,19 @@ cuke_reports: --format json --out report.json --format progress --format html --
 
 default_profile: --tags @address_management --guess URL=qacc BROWSER=ie
 
-bvt_qacc_chrome: --tags @bvt --guess URL=qacc BROWSER=gc
+bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie
-bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=firefox
+bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff
 
 print_qacc_gc:  --tags @print --guess URL=qacc BROWSER=gc
 print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff
 print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie
 
-address_cleansing_qacc_chrome:  --tags @address_cleansing --guess URL=qacc BROWSER=chrome
+address_cleansing_qacc_gc:  --tags @address_cleansing --guess URL=qacc BROWSER=gc
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
-regress_qacc_gc: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package,@print_parcel_select_package,@print_media_mail_package --guess URL=qacc BROWSER=chrome
+regress_qacc_gc: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package,@print_parcel_select_package,@print_media_mail_package --guess URL=qacc BROWSER=gc
 regress_qacc_ff: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package,@print_parcel_select_package,@print_media_mail_package --guess URL=qacc BROWSER=ff
 regress_qacc_ie: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package,@print_parcel_select_package,@print_media_mail_package --guess URL=qacc BROWSER=ie
 
@@ -26,19 +26,19 @@ wip: --tags @wip BROWSER=firefox URL=qacc
 
 address_management_ie: --tags @address_management --guess URL=qacc BROWSER=ie
 address_management_ff: --tags @address_management --guess URL=qacc BROWSER=ff
-address_management_chrome: --tags @address_management --guess URL=qacc BROWSER=chrome
+address_management_gc: --tags @address_management --guess URL=qacc BROWSER=gc
 
 print_priority_mail_package_ie: --tags @print_priority_mail_package --guess URL=qacc BROWSER=ie
 print_priority_mail_package_ff: --tags @print_priority_mail_package --guess URL=qacc BROWSER=ff
-print_priority_mail_package_chrome: --tags @print_priority_mail_package --guess URL=qacc BROWSER=chrome
+print_priority_mail_package_gc: --tags @print_priority_mail_package --guess URL=qacc BROWSER=gc
 
 print_priority_mail_express_package_ie: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=ie
 print_priority_mail_express_package_ff: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=ff
-print_priority_mail_express_package_chrome: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=chrome
+print_priority_mail_express_package_gc: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=gc
 
 print_parcel_select_package_ie: --tags @print_parcel_select_package --guess URL=qacc BROWSER=ie
 print_parcel_select_package_ff: --tags @print_parcel_select_package --guess URL=qacc BROWSER=ff
-print_parcel_select_package_chrome: --tags @print_parcel_select_package --guess URL=qacc BROWSER=chrome
+print_parcel_select_package_gc: --tags @print_parcel_select_package --guess URL=qacc BROWSER=gc
 
 
 
