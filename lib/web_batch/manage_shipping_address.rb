@@ -165,7 +165,6 @@ module Batch
       @delete_shipping_address = DeleteShippingAddress.new(@browser)
       3.times {
         select_row number
-        browser_helper.click window_title, 'window_title'
         delete
         break if @delete_shipping_address.present?
       }
