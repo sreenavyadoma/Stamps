@@ -15,9 +15,9 @@ address_cleansing_qacc_gc:  --tags @address_cleansing --guess URL=qacc BROWSER=g
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
-regress_qacc_gc: --tags @address_cleansing,@address_management,@print --guess URL=qacc BROWSER=gc
-regress_qacc_ff: --tags @address_cleansing,@address_management,@print --guess URL=qacc BROWSER=ff
-regress_qacc_ie: --tags @address_cleansing,@address_management,@print --guess URL=qacc BROWSER=ie
+regress_qacc_gc: --tags @address_cleansing,@address_management,@print, @print_sample --guess URL=qacc BROWSER=gc
+regress_qacc_ff: --tags @address_cleansing,@address_management,@print, @print_sample --guess URL=qacc BROWSER=ff
+regress_qacc_ie: --tags @address_cleansing,@address_management,@print, @print_sample --guess URL=qacc BROWSER=ie
 
 wip: --tags @wip BROWSER=firefox URL=qacc
 #
