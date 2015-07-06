@@ -97,5 +97,5 @@ Then /^Expect Insured Value to be (\d*\.?\d*)$/ do |expected_value|
 end
 
 Then /^Expect new Order ID created$/ do
-  expect(Batch.order_id.to_i).to be > 999
+  Batch.order_id.to_i.should be > 999
 end

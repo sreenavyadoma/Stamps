@@ -30,5 +30,4 @@ require_relative '../../lib/web_batch/add_shipping_adress'
 require_relative '../../lib/web_batch/address_not_found'
 require_relative '../../lib/web_batch/web_batch'
 
-
 World(Batch)

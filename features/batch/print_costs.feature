@@ -21,5 +21,5 @@ Feature:
     * Sign out
 
   Examples:
-  | service                                   | ounces  | service_cost_expectation  | insure_for | insured_value_expectation  | insure_for_ tracking_cost | Postage Costs | Stamps.com Insurance Costs | Tracking Costs | Total Cost |
-  | Large Envelope/Flat                       | 1       | 0.98                      | 5.50       | 2.20                     | $0.00         | $185.47       | 16.55                      | $4.90          | $206.92    |
+    | service                                   | ounces  | service_cost_expectation  | insure_for | insured_value_expectation  |
+    | Large Envelope/Flat                       | 1       | 0.98                      | 5.50       | 2.20                       |
