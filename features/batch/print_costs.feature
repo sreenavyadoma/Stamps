@@ -16,10 +16,10 @@ Feature:
     * Set Ounces to <ounces>
     * Set Service to <service>
     * Set Insured Value to <insure_for>
-    * Expect Service Rate to be $<service_cost_expectation>
-    * Expect Insured Value to be <insured_value_expectation>
+    * Expect Service Rate to be $<service_rate_expectation>
+    * Expect Insured Value to be <insure_for>
     * Sign out
 
-  Examples:
-  | service                                   | ounces  | service_cost_expectation  | insure_for | insured_value_expectation  | insure_for_ tracking_cost | Postage Costs | Stamps.com Insurance Costs | Tracking Costs | Total Cost |
-  | Large Envelope/Flat                       | 1       | 0.98                      | 5.50       | 2.20                     | $0.00         | $185.47       | 16.55                      | $4.90          | $206.92    |
+    Examples:
+      | service             | ounces | service_rate_expectation | insure_for | insured_value_expectation |
+      | Large Envelope/Flat | 1      | 0.98                     | 5.50       | 2.20                      |
