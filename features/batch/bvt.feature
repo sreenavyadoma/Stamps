@@ -2,7 +2,7 @@
 Feature:  Build Verification Test
 
   Background:
-    * I am signed in as a batch shipper with credentials auto05/password1
+    * I am signed in as a batch shipper auto20/password1
 
   @bvt_shipping_address_management
   Scenario: Shipping Address Management
