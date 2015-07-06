@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile default_profile
+default: --profile cuke_reports --profile print_priority_mail_express_package_ie
 cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
 default_profile: --tags @address_management --guess URL=qacc BROWSER=ie
@@ -20,4 +20,26 @@ regress_qacc_ff: --tags @address_cleansing,@address_management,@print_priority_m
 regress_qacc_ie: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package,@print_parcel_select_package,@print_media_mail_package --guess URL=qacc BROWSER=ie
 
 wip: --tags @wip BROWSER=firefox URL=qacc
+
+# regression tests
+
+address_management_ie: --tags @address_management --guess URL=qacc BROWSER=ie
+address_management_ff: --tags @address_management --guess URL=qacc BROWSER=ff
+address_management_chrome: --tags @address_management --guess URL=qacc BROWSER=chrome
+
+print_priority_mail_package_ie: --tags @print_priority_mail_package --guess URL=qacc BROWSER=ie
+print_priority_mail_package_ff: --tags @print_priority_mail_package --guess URL=qacc BROWSER=ff
+print_priority_mail_package_chrome: --tags @print_priority_mail_package --guess URL=qacc BROWSER=chrome
+
+print_priority_mail_express_package_ie: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=ie
+print_priority_mail_express_package_ff: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=ff
+print_priority_mail_express_package_chrome: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=chrome
+
+print_parcel_select_package_ie: --tags @print_parcel_select_package --guess URL=qacc BROWSER=ie
+print_parcel_select_package_ff: --tags @print_parcel_select_package --guess URL=qacc BROWSER=ff
+print_parcel_select_package_chrome: --tags @print_parcel_select_package --guess URL=qacc BROWSER=chrome
+
+
+
+
 
