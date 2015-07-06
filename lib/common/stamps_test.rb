@@ -16,7 +16,7 @@ module Stamps
         rescue
           #ignore
         end
-        browser_name = 'Chrome'
+        browser_name = 'Google Chrome'
         chrome_data_dir = "C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data"
 
         chrome_driver_path = "C:\\selenium\\drivers\\chromedriver.exe"

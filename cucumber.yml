@@ -3,11 +3,11 @@ cuke_reports: --format json --out report.json --format progress --format html --
 
 default_profile: --tags @address_management --guess URL=qacc BROWSER=ie
 
-bvt_qacc_chrome: --tags @bvt --guess URL=qacc BROWSER=chrome
+bvt_qacc_chrome: --tags @bvt --guess URL=qacc BROWSER=gc
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie
 bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=firefox
 
-print_qacc_chrome:  --tags @print --guess URL=qacc BROWSER=chrome
+print_qacc_gc:  --tags @print --guess URL=qacc BROWSER=gc
 print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff
 print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie
 
@@ -15,7 +15,7 @@ address_cleansing_qacc_chrome:  --tags @address_cleansing --guess URL=qacc BROWS
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
-regress_qacc_chrome: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package,@print_parcel_select_package,@print_media_mail_package --guess URL=qacc BROWSER=chrome
+regress_qacc_gc: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package,@print_parcel_select_package,@print_media_mail_package --guess URL=qacc BROWSER=chrome
 regress_qacc_ff: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package,@print_parcel_select_package,@print_media_mail_package --guess URL=qacc BROWSER=ff
 regress_qacc_ie: --tags @address_cleansing,@address_management,@print_priority_mail_package,@print_priority_mail_express_package,@print_parcel_select_package,@print_media_mail_package --guess URL=qacc BROWSER=ie
 

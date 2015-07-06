@@ -17,8 +17,8 @@ Cucumber::Rake::Task.new(:bvt_qacc_ie) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_qacc_chrome) do |t|
-  t.profile = 'print_qacc_chrome'
+Cucumber::Rake::Task.new(:print_qacc_gc) do |t|
+  t.profile = 'print_qacc_gc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -47,8 +47,8 @@ Cucumber::Rake::Task.new(:address_cleansing_qacc_ff) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:regress_qacc_chrome) do |t|
-  t.profile = 'regress_qacc_chrome'
+Cucumber::Rake::Task.new(:regress_qacc_gc) do |t|
+  t.profile = 'regress_qacc_gc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
