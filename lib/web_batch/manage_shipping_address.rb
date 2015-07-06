@@ -1,5 +1,5 @@
 module Batch
-  class ManageShippingAddresses < BrowserField
+  class ManageShippingAddresses < BrowserObject
     public
 
     def name(row)
@@ -37,7 +37,7 @@ module Batch
     end
 
     def window_present?
-      field_helper.field_present?  add_button
+      browser_helper.field_present?  add_button
     end
 
     def add
@@ -45,7 +45,7 @@ module Batch
       5.times {
         begin
           break if @shipping_address_form.present?
-          field_helper.click add_button, "add_button"
+          browser_helper.click add_button, "add_button"
           add_button.wait_until
         rescue
           #ignore
@@ -103,7 +103,7 @@ module Batch
 
     def delete
       begin
-        field_helper.click(delete_button, "Delete") if field_helper.field_present?  delete_button
+        browser_helper.click(delete_button, "Delete") if browser_helper.field_present?  delete_button
       rescue
         #ignore
       end
@@ -117,7 +117,7 @@ module Batch
       cell = grid_cell(row_num, 1)
       5.times do
         begin
-          field_helper.click cell, "cell(#{row_num}, 1)"
+          browser_helper.click cell, "cell(#{row_num}, 1)"
           #log_browser_click(cell, attibute, attribute_value)
           break if row_checked? row_num
         rescue
@@ -150,8 +150,8 @@ module Batch
     def close_window
       begin
         10.times{
-          break unless field_helper.field_present? close_button
-          field_helper.click close_button, "Close"
+          break unless browser_helper.field_present? close_button
+          browser_helper.click close_button, "Close"
         }
       rescue
         #ignore
@@ -188,7 +188,7 @@ module Batch
     end
 
     def grid_cell_text(row, column)
-      field_helper.text grid_cell(row, column), "cell(#{row}, #{column})"
+      browser_helper.text grid_cell(row, column), "cell(#{row}, #{column})"
     end
 
     def close_button

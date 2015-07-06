@@ -1,5 +1,5 @@
 module Batch
-  class AddressNotFound < Stamps::BrowserField
+  class AddressNotFound < Stamps::BrowserObject
     include SingleOrderCommon
 
     private
@@ -9,7 +9,7 @@ module Batch
 
     public
     def exact_address_not_found?
-      field_helper.field_present?  exact_address_not_found_field
+      browser_helper.field_present?  exact_address_not_found_field
     end
 
     def row=(number=0)
@@ -34,10 +34,10 @@ module Batch
 
     def set(partial_addy)
       expand_ship_to
-      field_helper.set_text address_textbox, BatchHelper.instance.formatAddress(partial_addy), 'Address'
+      browser_helper.set_text address_textbox, BatchHelper.instance.formatAddress(partial_addy), 'Address'
       10.times {
         item_label.click
-        break if (field_helper.field_present?  exact_address_not_found_field) || (field_helper.field_present?  validate_address_link)
+        break if (browser_helper.field_present?  exact_address_not_found_field) || (browser_helper.field_present?  validate_address_link)
       }
       less
       self

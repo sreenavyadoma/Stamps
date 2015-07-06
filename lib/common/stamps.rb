@@ -1,16 +1,5 @@
 module Stamps
 
-  class BrowserField
-    def initialize(browser)
-      @browser = browser
-    end
-
-    protected
-    def field_helper
-      BrowserFieldHelper.instance #todo refactor to BatchHelper
-    end
-  end
-
   def service_to_sym(str)
     str.downcase.tr('()', '').tr('/-', '_').strip.tr(' ', '_').to_sym
   end
