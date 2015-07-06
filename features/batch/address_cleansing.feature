@@ -32,3 +32,4 @@ Feature: B-01603 As a batch shipper, I want Stamps.com to verify that my deliver
     * Click Ship To Less button
     * Set Service to Priority Mail Package
     * Sign out
+
