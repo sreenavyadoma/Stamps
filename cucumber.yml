@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile print_priority_mail_package_gc
+default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
 default_profile: --tags @printing_costs --guess URL=qacc BROWSER=ie
