@@ -37,7 +37,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 794-4522
     * Set Email to rtest@stamps.com
-    * Expect Service Rate to be 0.00
+
 
     * Expect Service in-line rate for First-Class Mail Large Envelope/Flat to be greater than $0.01
     * Expect Service in-line rate for First-Class Mail Package/Thick Envelope to be greater than $0.01
