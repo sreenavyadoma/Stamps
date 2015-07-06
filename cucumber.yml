@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile print_priority_mail_express_package_ie
 cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
-default_profile: --tags @address_management --guess URL=qacc BROWSER=ie
+default_profile: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=ie
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie
