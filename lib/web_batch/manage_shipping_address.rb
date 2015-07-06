@@ -169,6 +169,7 @@ module Batch
         break if @delete_shipping_address.present?
       }
       @delete_shipping_address.delete
+      sleep(3)
       @delete_shipping_address.close if @delete_shipping_address.present?
     end
 
