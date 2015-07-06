@@ -77,14 +77,14 @@ module Batch
 
     def check_row(number)
       field = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div"
-      unless field_helper.field_present?  field
+      unless browser_helper.field_present?  field
         raise("Order Grid Row number #{number} does not exist.")
       end
       5.times do
         if row_checked?(number)
           break
         else
-          field_helper.click field, "Row#{number}"
+          browser_helper.click field, "Row#{number}"
         end
       end
       log "Row #{number} checked."

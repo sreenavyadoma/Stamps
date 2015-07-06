@@ -2,7 +2,7 @@ module Batch
 
   module SingleOrderCommon
     def field_helper
-      BrowserFieldHelper.instance
+      BrowserHelper.instance
     end
 
     def ship_to_dropdown

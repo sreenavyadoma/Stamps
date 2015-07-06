@@ -1,5 +1,5 @@
 module Batch
-  class ServiceSelection < BrowserField
+  class ServiceSelection < BrowserObject
     def initialize(browser, selection)
       #select the service and get service cost
       super(browser)
@@ -35,11 +35,11 @@ module Batch
         begin
           service_dlist_field = @browser.div :css => 'div[id^=servicedroplist-][id$=-trigger-picker]'
           inline_service_selection_field = @browser.td :css => "tr[data-qtip*='#{@selection}']>td:nth-child(2)"
-          service_dlist_field.click unless field_helper.field_present?  inline_service_selection_field
+          service_dlist_field.click unless browser_helper.field_present?  inline_service_selection_field
           @inline_service_price = inline_service_price_field.text.gsub('$', '')
           #log "Service selection:  #{service_selection_field.text} Price: #{@inline_service_price}"
           inline_service_text = inline_service_selection_field.text
-          service_dlist_field.click unless field_helper.field_present?  inline_service_selection_field
+          service_dlist_field.click unless browser_helper.field_present?  inline_service_selection_field
           log_browser_set inline_service_selection_field, @selection, "Service"
           inline_service_selection_field.click
           inline_service_selection_field.wait_while_present(3)
@@ -47,7 +47,7 @@ module Batch
           # Click this field 3 times to make tool tip disapper, tool tip appears after setting service.
           3.times
           begin
-            field_helper.click single_order_form_item_label, "single_order_form_item_label" if field_helper.field_present?  single_order_form_item_label
+            browser_helper.click single_order_form_item_label, "single_order_form_item_label" if browser_helper.field_present?  single_order_form_item_label
           rescue
             #ignroe
           end

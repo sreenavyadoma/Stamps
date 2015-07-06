@@ -3,7 +3,7 @@ module Batch
   #
   # Navigation bar containing Sign-in, etc
   #
-  class NavigationBar < BrowserField
+  class NavigationBar < BrowserObject
     private
     def username_field
       @browser.span(:id => 'userNameText')
@@ -18,10 +18,10 @@ module Batch
     def sign_out
       begin
         2.times { #todo must hover over signout link
-          field_helper.click username_field, "userNameText" unless sign_out_link.present?
-          field_helper.click sign_out_link, "signOutLink"
+          browser_helper.click username_field, "userNameText" unless sign_out_link.present?
+          browser_helper.click sign_out_link, "signOutLink"
           sign_in_button_field.wait_until_present(3)
-          break field_helper.field_present?  sign_in_button_field
+          break browser_helper.field_present?  sign_in_button_field
         }
       rescue
         #ignore
@@ -37,7 +37,7 @@ module Batch
     end
 
     def present?
-      field_helper.field_present?  username_field
+      browser_helper.field_present?  username_field
     end
 
   end

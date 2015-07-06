@@ -1,11 +1,11 @@
 module Batch
-  class DeleteShippingAddress < Stamps::BrowserField
+  class DeleteShippingAddress < Stamps::BrowserObject
     public
     def delete
       5.times {
         begin
           log "Delete Shipping Address :: #{message_field.text}"
-          field_helper.click delete_button, 'DeleteShippnigAddress'
+          browser_helper.click delete_button, 'DeleteShippnigAddress'
         rescue
           #ignore
         end
@@ -14,7 +14,7 @@ module Batch
     end
 
     def present?
-      field_helper.field_present?  window_title
+      browser_helper.field_present?  window_title
     end
 
     def close

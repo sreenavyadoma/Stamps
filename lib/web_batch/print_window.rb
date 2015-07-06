@@ -1,5 +1,5 @@
 module Batch
-  class PrintWindow < Stamps::BrowserField
+  class PrintWindow < Stamps::BrowserObject
     def initialize(browser, *args)
       super(browser)
       print_options *args

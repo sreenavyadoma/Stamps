@@ -1,5 +1,5 @@
 module Batch
-  class ManageShippingAddresses < BrowserField
+  class ManageShippingAddresses < BrowserObject
     public
 
     def name(row)
@@ -37,7 +37,7 @@ module Batch
     end
 
     def window_present?
-      field_helper.field_present?  add_button
+      browser_helper.field_present?  add_button
     end
 
     def add
@@ -45,7 +45,7 @@ module Batch
       5.times {
         begin
           break if @shipping_address_form.present?
-          field_helper.click add_button, "add_button"
+          browser_helper.click add_button, "add_button"
           add_button.wait_until
         rescue
           #ignore
@@ -54,17 +54,14 @@ module Batch
     end
 
     def add_address(*args)
-      count_before = shipping_address_count
       add
       case args.length
         when 0
           @shipping_address_form
         when 1
-          log_param "row count before addition", count_before
           @shipping_address_form.shipping_address = args[0]
-          count_after = shipping_address_count
-          @added = (count_before + 1) == count_after
-          log_param "Address added successfully? #{@added}", "Row count before:  #{count_before}, Row cuont after: #{count_after}"
+          @test_status = locate_address(args[0][:name], args[0][:company], args[0][:city])
+          log "Add Status:  #{@test_status?"Success":"Failed"}"
           close_window
         else
           raise "Illegal number of arguments.  "
@@ -72,12 +69,8 @@ module Batch
       self
     end
 
-    def added?
-      @added
-    end
-
-    def edited?
-      @edited
+    def successful?
+      @test_status
     end
 
     def edit_address(name, company, city, new_address_details)
@@ -86,12 +79,14 @@ module Batch
         select_row row_num
         self.edit new_address_details
       end
-      @edited = row_number(new_address_details[:name], new_address_details[:company], new_address_details[:city]) > 0
+      @test_status = locate_address(new_address_details[:name], new_address_details[:company], new_address_details[:city])
       close_window
       self
     end
 
-
+    def locate_address(name, company, city)
+      row_number(name, company, city) > 0
+    end
 
     def edit(*args)
       edit_button.when_present.click
@@ -108,7 +103,7 @@ module Batch
 
     def delete
       begin
-        field_helper.click(delete_button, "Delete") if field_helper.field_present?  delete_button
+        browser_helper.click(delete_button, "Delete") if browser_helper.field_present?  delete_button
       rescue
         #ignore
       end
@@ -122,7 +117,7 @@ module Batch
       cell = grid_cell(row_num, 1)
       5.times do
         begin
-          field_helper.click cell, "cell(#{row_num}, 1)"
+          browser_helper.click cell, "cell(#{row_num}, 1)"
           #log_browser_click(cell, attibute, attribute_value)
           break if row_checked? row_num
         rescue
@@ -139,9 +134,9 @@ module Batch
       begin
         count = shipping_address_count
         if count > 1
-          for row in 1..(count+3)
+          for row in 1..(count)
             delete_row 1
-            log "Try #{row} :: Deleting row 1..."
+            log "Row #{row} :: Deleting row 1..."
             break if shipping_address_count == 1
           end
         end
@@ -155,8 +150,8 @@ module Batch
     def close_window
       begin
         10.times{
-          break unless field_helper.field_present? close_button
-          field_helper.click close_button, "Close"
+          break unless browser_helper.field_present? close_button
+          browser_helper.click close_button, "Close"
         }
       rescue
         #ignore
@@ -193,7 +188,7 @@ module Batch
     end
 
     def grid_cell_text(row, column)
-      field_helper.text grid_cell(row, column), "cell(#{row}, #{column})"
+      browser_helper.text grid_cell(row, column), "cell(#{row}, #{column})"
     end
 
     def close_button

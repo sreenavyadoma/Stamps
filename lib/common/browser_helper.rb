@@ -1,5 +1,5 @@
 module Stamps
-  class BrowserFieldHelper
+  class BrowserHelper
     include Singleton
     include DataMagic
 

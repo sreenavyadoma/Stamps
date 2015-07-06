@@ -4,7 +4,7 @@ module Batch
   #
   #  Contains Add/Edit buton for orders.
   #
-  class Toolbar < BrowserField
+  class Toolbar < BrowserObject
     include GridCommon
     private
     def add_field
@@ -20,7 +20,7 @@ module Batch
       printer_window = PrintWindow.new(@browser)
       7.times {
         break if printer_window.present?
-        field_helper.click print_button, "print_button"
+        browser_helper.click print_button, "print_button"
       }
       printer_window.print_options *args
     end
@@ -40,7 +40,7 @@ module Batch
     end
 
     def present?
-      field_helper.field_present?  add_field
+      browser_helper.field_present?  add_field
     end
   end
 
