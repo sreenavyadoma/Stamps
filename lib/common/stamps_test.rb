@@ -8,7 +8,7 @@ module Stamps
         browser = Watir::Browser.new :ie
         browser_name = 'Internet Explorer'
       when 'ff', 'firefox', 'Firefox'
-        browser = Watir::Browser.new :ff
+        browser = Watir::Browser.new :firefox, :profile => 'selenium'
         browser_name = 'Firefox'
       when 'chrome', 'gc', 'Chrome'
         begin
