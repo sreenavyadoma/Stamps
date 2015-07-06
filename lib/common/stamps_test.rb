@@ -5,6 +5,11 @@ module Stamps
     log "Begin..."
     case ENV['BROWSER']
       when 'ie', 'Internet Explorer'
+        begin
+          log "Executed Shell Command:  taskkill /im iexplore.exe /f [ #{system "taskkill /im iexplore.exe /f"} ]"
+        rescue
+          #ignore
+        end
         browser = Watir::Browser.new :ie
         browser_name = 'Internet Explorer'
       when 'ff', 'firefox', 'Firefox'
