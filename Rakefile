@@ -73,7 +73,7 @@ Cucumber::Rake::Task.new(:address_management_qacc_ff) do |t|
 end
 
 Cucumber::Rake::Task.new(:address_management_qacc_gc) do |t|
-  t.profile = 'address_management_qacc_qc'
+  t.profile = 'address_management_qacc_gc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -88,7 +88,7 @@ Cucumber::Rake::Task.new(:print_priority_mail_package_qacc_ff) do |t|
 end
 
 Cucumber::Rake::Task.new(:print_priority_mail_package_qacc_gc) do |t|
-  t.profile = 'print_priority_mail_package_qacc_qc'
+  t.profile = 'print_priority_mail_package_qacc_gc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -103,7 +103,7 @@ Cucumber::Rake::Task.new(:print_priority_mail_express_package_qacc_ff) do |t|
 end
 
 Cucumber::Rake::Task.new(:print_priority_mail_express_package_qacc_gc) do |t|
-  t.profile = 'print_priority_mail_express_package_qacc_qc'
+  t.profile = 'print_priority_mail_express_package_qacc_gc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -118,7 +118,7 @@ Cucumber::Rake::Task.new(:print_parcel_select_package_qacc_ff) do |t|
 end
 
 Cucumber::Rake::Task.new(:print_parcel_select_package_qacc_gc) do |t|
-  t.profile = 'print_parcel_select_package_qacc_qc'
+  t.profile = 'print_parcel_select_package_qacc_gc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -133,7 +133,7 @@ Cucumber::Rake::Task.new(:print_media_mail_package_qacc_ff) do |t|
 end
 
 Cucumber::Rake::Task.new(:print_media_mail_package_qacc_gc) do |t|
-  t.profile = 'print_media_mail_package_qacc_qc'
+  t.profile = 'print_media_mail_package_qacc_gc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
