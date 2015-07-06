@@ -6,7 +6,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
   Scenario:  User Views Price Next to Service Dropdown
     * Add new order
     * Expect new Order ID created
-    * Expect Service Rate to be $0.00
+    * Expect Service Rate to be 0.00
 
     * Set Ship From to default
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
