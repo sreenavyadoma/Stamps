@@ -11,7 +11,7 @@ Feature:
     * Expect new Order ID created
     * Expect Single Order Form - Service Rate to be $0.00
     * Set Ship From to default
-    * Set Recipient Complete Address to B-01625 Print Sample, Priority Mail Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Complete Address to B-01625 Print, Priority Mail Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
@@ -34,7 +34,7 @@ Feature:
     * Expect new Order ID created
     * Expect Single Order Form - Service Rate to be $0.00
     * Set Ship From to default
-    * Set Recipient Complete Address to B-01625 Print Sample, Priority Mail Large Flat Rate Box, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Complete Address to B-01625 Print, Priority Mail Large Flat Rate Box, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
@@ -57,7 +57,7 @@ Feature:
     * Expect new Order ID created
     * Expect Single Order Form - Service Rate to be $0.00
     * Set Ship From to default
-    * Set Recipient Complete Address to B-01625 Print Sample, Priority Mail Express Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Complete Address to B-01625 Print, Priority Mail Express Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
@@ -80,7 +80,7 @@ Feature:
     * Expect new Order ID created
     * Expect Single Order Form - Service Rate to be $0.00
     * Set Ship From to default
-    * Set Recipient Complete Address to B-01625 Print Sample, Media Mail Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Complete Address to B-01625 Print, Media Mail Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
@@ -103,12 +103,12 @@ Feature:
     * Expect new Order ID created
     * Expect Single Order Form - Service Rate to be $0.00
     * Set Ship From to default
-    * Set Recipient Complete Address to B-01625 Print Sample, Parcel Select Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Complete Address to B-01625 Print, Parcel Select Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Parcel Select Package
-    * Expect order-grid Recipient Name to be B-01625 Print Sample
+    * Expect order-grid Recipient Name to be B-01625 Print
     * Expect order-grid Company Name to be Parcel Select Package
     * Expect order-grid Street Address to be 1900 E Grand Ave
     * Expect order-grid City to be El Segundo
