@@ -1,8 +1,7 @@
-@B-01690
 Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Ship From address.
 
   Background:
-    Given I am signed in as a batch shipper auto01/password1
+    Given I am signed in as a batch shipper
 
   @address_management
   Scenario Outline: Address Management

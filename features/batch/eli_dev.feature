@@ -1,8 +1,7 @@
-@regression
 Feature:   B-01743 Show Cost of Order in Ship Cost Grid
 
   Background:
-    * I am signed in as a batch shipper auto05/password1
+    * I am signed in as a batch shipper
 
   @order_grid_service_price
   Scenario:

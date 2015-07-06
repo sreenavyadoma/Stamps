@@ -145,7 +145,9 @@ module Batch
       #@browser.elements(:text => 'Print').first
       span = @browser.span(:id => 'sdc-printwin-printbtn-btnInnerEl')
       exist = span.present?
+      log "Print button present? #{exist}"
       span
     end
   end
+
 end
