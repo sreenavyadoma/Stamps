@@ -17,7 +17,7 @@ Feature:
     * Set Service to <service>
     * Set Insured Value to <insure_for>
     * Expect Service Rate to be $<service_rate_expectation>
-    * Expect Insured Value to be <insured_value_expectation>
+    * Expect Insured Value to be <insure_for>
     * Sign out
 
     Examples:
