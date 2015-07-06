@@ -10,13 +10,13 @@ Then /^Expect Ounces tooltip to display - The maximum value for this field is ([
   expected_value.should eql actual_value
 end
 
-Then /^Expect Single Order Form - Service Rate to be \$([0-9.]+)$/ do |expected_value|
+Then /^Expect Service Rate to be \$([0-9.]+)$/ do |expected_value|
   actual_value = batch.single_order.service_price
   log_expectation_eql "Rate", expected_value, actual_value
   expected_value.should eql actual_value
 end
 
-Then /^Expect Single Order Form Service Rate to be greater than \$([0-9.]+)$/ do |expected_value|
+Then /^Expect Service Rate to be greater than \$([0-9.]+)$/ do |expected_value|
   actual_value = batch.single_order.service_price
   log_expectation "Single Order Form Rate", expected_value, actual_value, (actual_value.to_f >= expected_value.to_f)
   actual_value.to_f.should be >= expected_value.to_f

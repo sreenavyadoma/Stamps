@@ -6,7 +6,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
   Scenario:  User Views Price Next to Service Dropdown
     * Add new order
     * Expect new Order ID created
-    * Expect Single Order Form - Service Rate to be $0.00
+    * Expect Service Rate to be $0.00
 
     * Set Ship From to default
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
@@ -23,16 +23,16 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
 
     * Set Service to Priority Mail Package
 
-    * Expect order-grid Recipient Name to be B-01671
-    * Expect order-grid Company Name to be Inline Rates
-    * Expect order-grid Street Address to be 1900 E Grand Ave
-    * Expect order-grid City to be El Segundo
-    * Expect order-grid State to be CA
-    * Expect order-grid Zip Code to be 90245
-    * Expect order-grid Phone to be (415) 123-5555
-    * Expect order-grid Email to be rtest@stamps.com
-    * Expect order-grid Pounds to be 1
-    * Expect order-grid Ounces to be 1
-    * Expect order-grid Weight to be 1 lbs. 1 oz.
-    * Expect order-grid Insured Value to be 1.00
+    * Expect Recipient Name to be B-01671
+    * Expect Company Name to be Inline Rates
+    * Expect Street Address to be 1900 E Grand Ave
+    * Expect City to be El Segundo
+    * Expect State to be CA
+    * Expect Zip Code to be 90245
+    * Expect Phone to be (415) 123-5555
+    * Expect Email to be rtest@stamps.com
+    * Expect Pounds to be 1
+    * Expect Ounces to be 1
+    * Expect Weight to be 1 lbs. 1 oz.
+    * Expect Insured Value to be 1.00
     * Sign out
