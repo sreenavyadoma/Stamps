@@ -32,7 +32,7 @@ When /^Click Ship To Less button$/ do
   #end_step step
 end
 
-When /^Set Pounds to (\d+)$/ do |value|
+When /^Set Pounds to (\d*)$/ do |value|
   begin
     log "Set Pounds to \"#{value}\""
     batch.single_order.pounds = log_param "Pounds", value
@@ -53,14 +53,14 @@ When /^Set Length to (\d*)$/ do |value|
   end unless value.length == 0
 end
 
-When /^Set Width to (\d+)$/ do |value|
+When /^Set Width to (\d*)$/ do |value|
   begin
     log "Set Width to \"#{value}\""
     batch.single_order.width = log_param"Width", value
   end unless value.length == 0
 end
 
-When /^Set Height to (\d+)$/ do |value|
+When /^Set Height to (\d*)$/ do |value|
   begin
     log "Set Height to \"#{value}\""
     batch.single_order.height = log_param "Height", value

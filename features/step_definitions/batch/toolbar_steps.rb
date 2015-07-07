@@ -12,13 +12,14 @@ When /^Print$/ do
   batch.toolbar.print.print.should be_printed
 end
 
-Then /^Expect Print Window Total Cost to be \$([0-9.]+)$/ do |expected_value|
-  print_window = batch.toolbar.print
-  actual_value = print_window.total_cost
-  print_window.close
-  log_expectation_eql "Print Window Total Cost", expected_value, actual_value
-  actual_value.should eql expected_value
-
+Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expected|
+  begin
+    print_window = batch.toolbar.print
+    actual = print_window.total_cost
+    print_window.close
+    log_expectation_eql "Print Window Total Cost", expected, actual
+    actual.should eql expected
+  end unless expected.length == 0
 end
 
 When /^Print raises a Printing Error/ do
