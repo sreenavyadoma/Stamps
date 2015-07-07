@@ -46,16 +46,19 @@ Then /^Expect State to be ([a-zA-Z]+)$/ do |expected|
 end
 
 Then /^Expect Zip Code to be ([0-9]+)$/ do |expected|
-  #begin_step step =  "Expect Zip Code to be \"#{expected}\""
-  actual = batch.grid.zip(Batch.order_id)
-  log_expectation_eql "Zip", expected, actual
-  actual.should eql expected
+  begin
+    actual = batch.grid.zip(Batch.order_id)
+    log_expectation_eql "Zip", expected, actual
+    actual.should eql expected
+  end unless expected.length == 0
 end
 
 Then /^Expect Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expected|
-  actual = batch.grid.email(Batch.order_id)
-  log_expectation_eql "Email", expected, actual
-  actual.should eql expected
+  begin
+    actual = batch.grid.email(Batch.order_id)
+    log_expectation_eql "Email", expected, actual
+    actual.should eql expected
+  end unless expected.length == 0
 end
 
 Then /^Expect Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/ do |expected|
@@ -65,15 +68,19 @@ Then /^Expect Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/ do |
 end
 
 Then /^Expect Pounds to be (\d+)$/ do |expected|
-  actual = batch.grid.pounds(Batch.order_id)
-  log_expectation_eql "Pounds", expected, actual
-  actual.should eql expected
+  begin
+    actual = batch.grid.pounds(Batch.order_id)
+    log_expectation_eql "Pounds", expected, actual
+    actual.should eql expected
+  end unless expected.length == 0
 end
 
 Then /^Expect Ounces to be (\d+)$/ do |expected|
-  actual = batch.grid.ounces(Batch.order_id)
-  log_expectation_eql "Ounces", expected, actual
-  actual.should eql expected
+  begin
+    actual = batch.grid.ounces(Batch.order_id)
+    log_expectation_eql "Ounces", expected, actual
+    actual.should eql expected
+  end unless expected.length == 0
 end
 
 Then /^Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
@@ -91,9 +98,11 @@ Then /^Expect Order details to be;$/ do |table|
 end
 
 Then /^Expect Insured Value to be (\d*\.?\d*)$/ do |expected|
-  actual = batch.grid.insured_value(Batch.order_id)
-  log_expectation_eql "Insurance", expected, actual
-  actual.should eql expected
+  begin
+    actual = batch.grid.insured_value(Batch.order_id)
+    log_expectation_eql "Insurance", expected, actual
+    actual.should eql expected
+  end unless expected.length == 0
 end
 
 Then /^Expect new Order ID created$/ do
@@ -101,8 +110,10 @@ Then /^Expect new Order ID created$/ do
 end
 
 Then /^Expect Ship Cost to be \$([0-9.]*)$/ do |expected|
-  actual = batch.grid.ship_cost(Batch.order_id)
-  log_expectation_eql "Ship Cost", expected, actual
-  actual.should eql expected
+  begin
+    actual = batch.grid.ship_cost(Batch.order_id)
+    log_expectation_eql "Ship Cost", expected, actual
+    actual.should eql expected
+  end unless expected.length == 0
 end
 
