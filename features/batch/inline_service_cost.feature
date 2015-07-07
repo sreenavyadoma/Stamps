@@ -38,7 +38,6 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Set Phone to (415) 794-4522
     * Set Email to rtest@stamps.com
     * Expect Service Cost to be $0.00
-
     * Expect inline Service Cost for First-Class Mail Large Envelope/Flat to be greater than $0.01
     * Expect inline Service Cost for First-Class Mail Package/Thick Envelope to be greater than $0.01
     * Expect inline Service Cost for Priority Mail Large/Thick Envelope to be greater than $0.01
