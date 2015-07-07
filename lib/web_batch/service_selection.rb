@@ -15,17 +15,6 @@ module Batch
       @browser.label :text => 'Item:'
     end
 
-=begin
-    def service_dlist_field
-      log 'dlist:  div[id^=servicedroplist-][id$=-trigger-picker]'
-      @browser.div(:css => 'div[id^=servicedroplist-][id$=-trigger-picker]')
-    end
-=end
-
-    def inline_service_price
-      @inline_service_price
-    end
-
     def service_field
       @browser.text_field :css => 'input[name^=servicedroplist-]'
     end
@@ -36,7 +25,7 @@ module Batch
           service_dlist_field = @browser.div :css => 'div[id^=servicedroplist-][id$=-trigger-picker]'
           inline_service_selection_field = @browser.td :css => "tr[data-qtip*='#{@selection}']>td:nth-child(2)"
           service_dlist_field.click unless browser_helper.field_present?  inline_service_selection_field
-          @inline_service_price = inline_service_price_field.text.gsub('$', '')
+          @inline_service_cost = test_helper.remove_dollar_sign(inline_service_price_field.text)
           #log "Service selection:  #{service_selection_field.text} Price: #{@inline_service_price}"
           inline_service_text = inline_service_selection_field.text
           service_dlist_field.click unless browser_helper.field_present?  inline_service_selection_field
@@ -63,7 +52,7 @@ module Batch
           Watir::Wait.until {field.present?}
         end
       }
-      @inline_service_price
+      @inline_service_cost
     end
 
   end

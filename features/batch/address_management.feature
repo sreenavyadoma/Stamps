@@ -3,7 +3,6 @@ Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Sh
   Background:
     Given I am signed in as a batch shipper
 
-
   @address_management
   Scenario: Address Management
     * Add new order

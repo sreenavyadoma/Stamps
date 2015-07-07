@@ -110,7 +110,7 @@ module Batch
     end
 
     def insured_value(order_id)
-      grid_text(:insured_value, row_number(order_id)).gsub('$', '')
+      test_helper.remove_dollar_sign grid_text(:insured_value, row_number(order_id))
     end
 
     def list_all_fields(order_id)

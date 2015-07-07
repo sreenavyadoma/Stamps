@@ -1,7 +1,7 @@
 module Batch
 
   module SingleOrderCommon
-    def field_helper
+    def browser_helper
       BrowserHelper.instance
     end
 
@@ -16,13 +16,13 @@ module Batch
 
     def expand_ship_to
       10.times {
-        break if field_helper.field_present?  address_textbox
-        field_helper.click ship_to_dropdown, "ship_to_address_field" if field_helper.field_present?  ship_to_dropdown
+        break if browser_helper.field_present?  address_textbox
+        browser_helper.click ship_to_dropdown, "ship_to_address_field" if browser_helper.field_present?  ship_to_dropdown
       }
     end
 
     def less
-      field_helper.click less_dropdown, "Less" if field_helper.field_present?  less_dropdown
+      browser_helper.click less_dropdown, "Less" if browser_helper.field_present?  less_dropdown
     end
 
     def item_label
@@ -61,15 +61,41 @@ module Batch
       @services ||= Hash.new
     end
 
-    def total_amount
-      price_int  = total_price_label.text.to_i
-      log price_int
-      text
+    def service(selection)
+      log_param "Service Selection", selection
+      selection_sym = service_to_sym selection
+      #add service to hash unless it already exists
+      ServiceSelection.new(@browser, selection).select
+    end
+
+    def tracking=(selection)
+      log_param "Tracking Selection", selection
+      ServiceSelection.new(@browser, selection).select
+    end
+
+    def tracking
+      browser_helper.text tracking_textbox, 'Tracking'
+    end
+
+    def service_cost
+      test_helper.remove_dollar_sign(browser_helper.text(service_cost_label, 'service'))
+    end
+
+    def insurance_cost
+      test_helper.remove_dollar_sign(browser_helper.text(insurance_cost_label,'insurance'))
+    end
+
+    def tracking_cost
+      test_helper.remove_dollar_sign(browser_helper.text(tracking_cost_label, 'tracking'))
+    end
+
+    def total
+      test_helper.remove_dollar_sign(browser_helper.text(total_label, "total"))
     end
 
     def total_amount_calculation
-      total_amount = self.total_amount
-      log total_amount
+      total_cost = self.total
+      log total_cost
       # @correct = will add service price + insure for + tracking
 
     end
@@ -78,39 +104,8 @@ module Batch
       @correct
     end
 
-    def service(selection)
-      log_param "Service Selection", selection
-      selection_sym = service_to_sym selection
-      #add service to hash unless it already exists
-      ServiceSelection.new(@browser, selection).select
-    end
-
-    def tracking(selection)
-      log_param "Tracking Selection", selection
-      #add service to hash unless it already exists
-      ServiceSelection.new(@browser, selection).select
-    end
-
-    def service_price
-      text = service_price_label.text.gsub('$', '')
-      log_param "Service Price", text
-      text
-    end
-
-    def insured_price
-      text = insured_price_label.text.gsub('$', '')
-      log_param "Insured Price", text
-      text
-    end
-
-    def tracking_price
-      text = tracking_price_label.text.gsub('$', '')
-      log_param "Tracking Price", text
-      text
-    end
-
     def present?
-      field_helper.field_present?  height_textbox
+      browser_helper.field_present?  height_textbox
     end
 
     def wait_until_present(timeout)
@@ -151,7 +146,7 @@ module Batch
 
     def email=(email)
       expand_ship_to
-      field_helper.set_text email_textbox, email, 'Email'
+      browser_helper.set_text email_textbox, email, 'Email'
       less
     end
 
@@ -169,13 +164,13 @@ module Batch
 
     def phone=(phone)
       expand_ship_to
-      field_helper.set_text phone_textbox, phone, 'Phone'
+      browser_helper.set_text phone_textbox, phone, 'Phone'
       less
     end
 
     def address=(address)
       expand_ship_to
-      field_helper.set_text address_textbox, batch_helper.formatAddress(address), 'Address'
+      browser_helper.set_text address_textbox, batch_helper.formatAddress(address), 'Address'
       less
     end
 
@@ -211,8 +206,8 @@ module Batch
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
       5.times {
         begin
-          field_helper.click ship_from_dropdown, "ship_from_selection(#{selection})" unless field_helper.field_present?  ship_from_selection(selection)
-          field_helper.click ship_from_selection(selection), selection
+          browser_helper.click ship_from_dropdown, "ship_from_selection(#{selection})" unless browser_helper.field_present?  ship_from_selection(selection)
+          browser_helper.click ship_from_selection(selection), selection
           break if @manage_shipping_adddress.window_present?
         rescue
           #ignore
@@ -227,7 +222,7 @@ module Batch
     end
 
     def pounds=(pounds)
-      field_helper.set_text pounds_textbox, pounds, 'Pounds'
+      browser_helper.set_text pounds_textbox, pounds, 'Pounds'
       click_item_label
     end
 
@@ -248,7 +243,7 @@ module Batch
     end
 
     def ounces=(ounces)
-      field_helper.set_text ounces_textbox, ounces, 'Ounces'
+      browser_helper.set_text ounces_textbox, ounces, 'Ounces'
       click_item_label
     end
 
@@ -268,18 +263,12 @@ module Batch
       ounces_textbox.attribute_value('value')
     end
 
-=begin
-    def service
-      service_field.attribute_value("value")
-    end
-=end
-
     def service_default_text
       service_field.attribute_value("placeholder")
     end
 
     def insured_value=(amount)
-      field_helper.set_text insured_value_textbox, amount, 'Insurance'
+      browser_helper.set_text insured_value_textbox, amount, 'Insurance'
       click_item_label
     end
 
@@ -288,7 +277,7 @@ module Batch
     end
 
     def length=(length)
-      field_helper.set_text length_textbox, length, 'Length'
+      browser_helper.set_text length_textbox, length, 'Length'
       click_item_label
     end
 
@@ -297,7 +286,7 @@ module Batch
     end
 
     def width=(width)
-      field_helper.set_text width_textbox, width, 'Width'
+      browser_helper.set_text width_textbox, width, 'Width'
       click_item_label
     end
 
@@ -306,7 +295,7 @@ module Batch
     end
 
     def height=(height)
-      field_helper.set_text height_textbox, height, 'Height'
+      browser_helper.set_text height_textbox, height, 'Height'
       click_item_label
     end
 
@@ -319,6 +308,10 @@ module Batch
     end
 
     private
+
+    def insurance_cost_label
+      @browser.label :css => 'label[class*=insurance_cost]'
+    end
 
     def phone_textbox
       @browser.text_field :name => 'Phone'
@@ -381,7 +374,10 @@ module Batch
     end
 
     def tracking_textbox
-      @browser.text_field :name => 'Tracking'[0]
+      field = @browser.text_field :name => 'Tracking'
+      present = field.present?
+      text = field.text
+      field
     end
 
     def order_id_label
@@ -389,25 +385,20 @@ module Batch
       @browser.label :text => txt
     end
 
-    def service_price_label
+    def service_cost_label
       #@browser.label(:text => 'Service:').element(:xpath => './following-sibling::*[2]')
       @browser.label(:css => 'label[class*=selected_service_cost]')
     end
 
-    def insured_price_label
-      @browser.label :css => 'label[class*=insurance_cost]'
-    end
-
-    def tracking_price_label
+    def tracking_cost_label
       @browser.label(:css => 'label[class*=selected_tracking_cost]')
     end
 
-    def total_price_label
-      #@browser.label(:css => 'label[class*=selected_tracking_cost]')
-      labels = @browser.labels :css => "div[id^=orderDetailsPanel][class *='x-panel x-border-item x-box-item x-panel-default']>div>div[id ^=singleOrderDetailsForm]>div>div[id^=toolbar]>div>div>label"
-      total_price_label = labels.first
-      present = total_price_label.present?
-      total_price_label
+    def total_label
+      total= @browser.label(:text => 'Total').parent.labels.last
+      present = total.present?
+      text = total.text
+      total
     end
 
   end #SingleOrderEdit Module

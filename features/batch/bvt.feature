@@ -44,7 +44,7 @@ Feature:  Build Verification Test
   Scenario:  Add New Order
     * Add new order
     * Expect new Order ID created
-    * Expect Service Rate to be 0.00
+    * Expect Service Cost to be 0.00
     * Set Ship From to default
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555

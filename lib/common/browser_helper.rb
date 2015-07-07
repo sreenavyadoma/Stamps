@@ -18,7 +18,15 @@ module Stamps
       rescue
         #ignore
       end
-      text = field.text #field.attribute_value('value')
+      field_text = field.text
+      field_attribute_value = field.attribute_value('value')
+       if field_text.size > 0
+         text = field_text
+       elsif  field_attribute_value.size > 0
+         text = field_attribute_value
+       else
+         text = ""
+       end
       log_browser_get(field, text, field_name)
       text
     end
