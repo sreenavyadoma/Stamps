@@ -42,5 +42,7 @@ Feature:
     * Sign out
 
     Examples:
-      | service             | pounds | ounces | length | width | height | default_tracking | tracking   | service_rate_expectation | insure_for | insurance_cost | tracking_cost  | total_cost | complete_address                                                   | phone         | email             |
-      | Large Envelope/Flat |        | 1      |        |       |        | None             |            | 0.98                     | 1.00       |                | 0.00           | 3.18       | B-01631 B-01634 , B-01726, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
+      | service                 | pounds | ounces | length | width | height | default_tracking | tracking   | service_rate_expectation | insure_for | insurance_cost | tracking_cost  | total_cost | complete_address                                                   | phone         | email             |
+      | Large Envelope/Flat     |        | 1      |        |       |        | None             |            | 0.98                     | 1.00       |                | 0.00           | 3.18       | B-01631 B-01634 , B-01726, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
+      | Package                 | 1      | 1      |        |       |        | USPS Tracking    |            | 5.32                     | 10.00      |                | 0.00           | 7.52       | B-01631 B-01634 , B-01726, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
+      | Small Flat Rate Box     |        | 1      | 1      | 1     | 1      | USPS Tracking    |            | 5.25                     | 1.00       |                | 0.00           | 7.45       | B-01631 B-01634 , B-01726, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
