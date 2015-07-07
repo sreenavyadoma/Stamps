@@ -18,7 +18,11 @@ Feature:
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
+    * Set Pounds to <pounds>
     * Set Ounces to <ounces>
+    * Set Length to <length>
+    * Set Width to <width>
+    * Set Height to <height>
     * Set Service to <service>
     * Set Insured Value to <insure_for>
     * Expect Tracking to be <tracking_expectation>
@@ -32,6 +36,6 @@ Feature:
     * Sign out
 
     Examples:
-      | service             | ounces | tracking_expectation | service_rate_expectation | insure_for | insurance_cost | tracking_cost | total_cost |
-      | Large Envelope/Flat | 1      | None                 | 0.98                     | 1.00       | 2.20           | 0.00          | 3.18       |
+      | service             | pounds | ounces | length  |width  | height  | tracking_expectation | service_rate_expectation | insure_for | insurance_cost | tracking_cost | total_cost |
+      | Large Envelope/Flat | 0      | 1      | 0       | 0     | 0       | None                 | 0.98                     | 1.00       | 2.20           | 0.00          | 3.18       |
 

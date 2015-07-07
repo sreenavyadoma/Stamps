@@ -52,7 +52,7 @@ When /^Set Width to (\d+)$/ do |width|
   #end_step step
 end
 
-When /^Set Height to (\d*\.?\d*)$/ do |height|
+When /^Set Height to (\d+)$/ do |height|
   log "Set Height to \"#{height}\""
   batch.single_order.height = log_param "Height", height
   #end_step step
