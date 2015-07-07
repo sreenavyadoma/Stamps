@@ -9,8 +9,6 @@ Feature:
 
   Background:
     Given I am signed in as a batch shipper auto20/password1
-
-  Scenario Outline:
     * Add new order
     * Expect new Order ID created
     * Expect Service Cost to be $0.00
@@ -19,6 +17,8 @@ Feature:
     * Expect Total to be $0.00
     * Expect Tracking to be None
     * Set Ship From to default
+
+  Scenario Outline:v
     * Set Recipient Complete Address to <complete_address>
     * Set Phone to <phone>
     * Set Email to <email>
