@@ -106,10 +106,7 @@ module Batch
     private
 
     def total_label
-      total= @browser.label(:text => 'Total Cost:').parent.labels.last
-      present = total.present?
-      text = total.text
-      total
+      @browser.label(:text => 'Total Cost:').parent.labels.last
     end
 
     def print_result

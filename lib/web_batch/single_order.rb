@@ -374,10 +374,7 @@ module Batch
     end
 
     def tracking_textbox
-      field = @browser.text_field :name => 'Tracking'
-      present = field.present?
-      text = field.text
-      field
+      @browser.text_field :name => 'Tracking'
     end
 
     def order_id_label

@@ -7,9 +7,7 @@ module Batch
 
     public
     def ship_cost(order_id)
-      value = grid_text(:ship_cost, row_number(order_id))
-      arr = value.scan(/[^$]*$/)
-      arr[0]
+      grid_text(:ship_cost, row_number(order_id))
     end
 
     def age(order_id)

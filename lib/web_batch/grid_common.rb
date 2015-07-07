@@ -37,7 +37,7 @@ module Batch
     end
 
     def grid_text(column, row)
-      test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "grid.#{column}.Row#{row}")
+      test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}")
     end
 
     def grid_field(column, row)
