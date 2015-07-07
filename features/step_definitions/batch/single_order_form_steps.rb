@@ -74,12 +74,13 @@ And /^Set Service to (.*)$/ do |value|
 end
 
 Then /^Set Tracking to ([\w ]*)$/ do |value|
-  log "Set Tracking to \"#{value}\""
-  log "Tracking:  #{value}, Cost:  #{batch.single_order.tracking = log_param("Tracking", value)}"
-  #end_step step
+  begin
+    log "Set Tracking to \"#{value}\""
+    log "Tracking:  #{value}, Cost:  #{batch.single_order.tracking = log_param("Tracking", value)}"
+  end
 end
 
-And /^Set Insured Value to (\d*\.?\d*)$/ do |value|
+And /^Set Insured Value to ([\d*\.?\d*]*)$/ do |value|
   log "Set Insured Value to \"#{value}\""
   batch.single_order.insured_value = value
 end

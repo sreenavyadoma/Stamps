@@ -23,43 +23,51 @@ Then /^Expect inline Service Cost for ([a-zA-Z -\/]+) to be greater than \$([0-9
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
-  #expect(address_validation_form.exact_address_not_found?).to be true
   batch.single_order.partial_address.should be_exact_address_not_found
-  #expect(address_validation_form).to be_exact_address_not_found
 end
 
-Then /^Expect Service Cost to be \$([0-9.]+)$/ do |expected_value|
-  actual_value = batch.single_order.service_cost
-  log_expectation_eql "Service Cost", expected_value, actual_value
-  actual_value.should eql expected_value
+Then /^Expect Service Cost to be \$([0-9.]*)$/ do |expected_value|
+  begin
+    actual_value = batch.single_order.service_cost
+    log_expectation_eql "Service Cost", expected_value, actual_value
+    actual_value.should eql expected_value
+  end unless expected_value == 0
 end
 
-Then /^Expect Tracking Cost to be \$([0-9.]+)$/ do |expected_value|
-  actual_value = batch.single_order.tracking_cost
-  log_expectation_eql "Tracking Cost", expected_value, actual_value
-  actual_value.should eql expected_value
+Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected_value|
+  begin
+    actual_value = batch.single_order.tracking_cost
+    log_expectation_eql "Tracking Cost", expected_value, actual_value
+    actual_value.should eql expected_value
+  end unless expected_value == 0
 end
 
 Then /^Verify Single Order Form Total Amount$/ do
   batch.single_order.total_amount_calculation.should be_correct
 end
 
-Then /^Expect Insurance Cost to be \$([0-9.]+)$/ do |expected_value|
-  actual_value = batch.single_order.insurance_cost
-  log_expectation_eql "Insurance Cost", expected_value, actual_value
-  actual_value.should eql expected_value
+Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected_value|
+  begin
+    actual_value = batch.single_order.insurance_cost
+    log_expectation_eql "Insurance Cost", expected_value, actual_value
+    actual_value.should eql expected_value
+  end unless expected_value == 0
 end
 
-Then /^Expect Tracking to be ([\w\s]+)$/ do |expected_value|
-  actual_value = batch.single_order.tracking
-  log_expectation_eql "Tracking Selected", expected_value, actual_value
-  actual_value.should eql expected_value
+Then /^Expect Tracking to be ([\w\s]*)$/ do |expected_value|
+  begin
+    actual_value = batch.single_order.tracking
+    log_expectation_eql "Tracking Selected", expected_value, actual_value
+    actual_value.should eql expected_value
+  end unless expected_value == 0
 end
 
-Then /^Expect Total to be \$([0-9.]+)$/ do |expected_value|
-  actual_value = batch.single_order.total
-  log_expectation_eql "Total Cost", expected_value, actual_value
-  actual_value.should eql expected_value
+Then /^Expect Total to be \$([0-9.]*)$/ do |expected_value|
+  begin
+    actual_value = batch.single_order.total
+    log_expectation_eql "Total Cost", expected_value, actual_value
+    actual_value.should eql expected_value
+  end unless expected_value == 0
 end
 
 
