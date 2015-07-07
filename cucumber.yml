@@ -15,30 +15,30 @@ address_cleansing_qacc_gc:  --tags @address_cleansing --guess URL=qacc BROWSER=g
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
+# regression tests
 regress_qacc_gc: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=gc
 regress_qacc_ff: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ff
 regress_qacc_ie: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ie
-
-wip: --tags @wip BROWSER=firefox URL=qacc
-#
-
-# regression tests
 
 address_management_qacc_ie: --tags @address_management --guess URL=qacc BROWSER=ie
 address_management_qacc_ff: --tags @address_management --guess URL=qacc BROWSER=ff
 address_management_qacc_gc: --tags @address_management --guess URL=qacc BROWSER=gc
 
-print_qacc_ie: --tags @print --guess URL=qacc BROWSER=ie
-print_qacc_ff: --tags @print --guess URL=qacc BROWSER=ff
-print_qacc_gc: --tags @print --guess URL=qacc BROWSER=gc
+print_priority_mail_package_qacc_ie: --tags @print_priority_mail_package --guess URL=qacc BROWSER=ie
+print_priority_mail_package_qacc_ff: --tags @print_priority_mail_package --guess URL=qacc BROWSER=ff
+print_priority_mail_package_qacc_gc: --tags @print --guess URL=qacc BROWSER=gc
 
-print_sample_qacc_ie: --tags @print_sample --guess URL=qacc BROWSER=ie
-print_sample_qacc_ff: --tags @print_sample --guess URL=qacc BROWSER=ff
-print_sample_qacc_gc: --tags @print_sample --guess URL=qacc BROWSER=gc
+print_priority_mail_express_package_qacc_ie: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=ie
+print_priority_mail_express_package_qacc_ff: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=ff
+print_priority_mail_express_package_qacc_gc: --tags @print_priority_mail_express_package --guess URL=qacc BROWSER=gc
 
-user_views_price_next_to_service_dropdown_qacc_ie: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ie
-user_views_price_next_to_service_dropdown_qacc_ff: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ff
-user_views_price_next_to_service_dropdown_qacc_gc: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=gc
+print_parcel_select_package_qacc_ie: --tags @print_parcel_select_package --guess URL=qacc BROWSER=ie
+print_parcel_select_package_qacc_ff: --tags @print_parcel_select_package --guess URL=qacc BROWSER=ff
+print_parcel_select_package_qacc_gc: --tags @print_parcel_select_package --guess URL=qacc BROWSER=gc
+
+print_media_mail_package_qacc_ie: --tags @print_media_mail_package --guess URL=qacc BROWSER=ie
+print_media_mail_package_qacc_ff: --tags @print_media_mail_package --guess URL=qacc BROWSER=ff
+print_media_mail_package_qacc_gc: --tags @print_media_mail_package --guess URL=qacc BROWSER=gc
 
 
 
