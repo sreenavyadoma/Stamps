@@ -16,9 +16,9 @@ address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=i
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
 # regression tests
-regress_qacc_gc: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=gc
-regress_qacc_ff: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ff
-regress_qacc_ie: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ie
+regress_qacc_gc: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown,@printing_costs --guess URL=qacc BROWSER=gc
+regress_qacc_ff: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown,@printing_costs --guess URL=qacc BROWSER=ff
+regress_qacc_ie: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown,@printing_costs --guess URL=qacc BROWSER=ie
 
 address_management_qacc_ie: --tags @address_management --guess URL=qacc BROWSER=ie
 address_management_qacc_ff: --tags @address_management --guess URL=qacc BROWSER=ff
