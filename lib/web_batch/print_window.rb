@@ -80,7 +80,7 @@ module Batch
     end
 
     def present?
-      print_button.present?
+      browser_helper.field_present? print_button
     end
 
     def error_ok_button
