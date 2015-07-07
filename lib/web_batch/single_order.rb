@@ -395,10 +395,7 @@ module Batch
     end
 
     def total_label
-      total= @browser.label(:text => 'Total').parent.labels.last
-      present = total.present?
-      text = total.text
-      total
+      @browser.label(:text => 'Total').parent.labels.last
     end
 
   end #SingleOrderEdit Module

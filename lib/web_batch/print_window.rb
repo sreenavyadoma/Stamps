@@ -7,7 +7,6 @@ module Batch
 
     public
     def print_options(*args)
-
       case args.size
         when 0
           return self
@@ -100,7 +99,18 @@ module Batch
       end
     end
 
+    def total_cost
+      test_helper.remove_dollar_sign(browser_helper.text(total_label, "total"))
+    end
+
     private
+
+    def total_label
+      total= @browser.label(:text => 'Total Cost:').parent.labels.last
+      present = total.present?
+      text = total.text
+      total
+    end
 
     def print_result
       sleep(3)

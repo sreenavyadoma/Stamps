@@ -99,3 +99,10 @@ end
 Then /^Expect new Order ID created$/ do
   log Batch.order_id.to_i
 end
+
+Then /^Expect Ship Cost to be \$([0-9.]+)$/ do |expected_value|
+  actual_value = batch.grid.ship_cost(Batch.order_id)
+  log_expectation_eql "Ship Cost", expected_value, actual_value
+  actual_value.should eql expected_value
+end
+

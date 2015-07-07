@@ -1,5 +1,4 @@
 module Batch
-  #require_relative '../common/stamps'
   include Stamps
 
   def self.url_prefix

@@ -12,6 +12,15 @@ When /^Print$/ do
   batch.toolbar.print.print.should be_printed
 end
 
+Then /^Expect Print Window Total Cost to be \$([0-9.]+)$/ do |expected_value|
+  print_window = batch.toolbar.print
+  actual_value = print_window.total_cost
+  print_window.close
+  log_expectation_eql "Print Window Total Cost", expected_value, actual_value
+  actual_value.should eql expected_value
+
+end
+
 When /^Print raises a Printing Error/ do
   expect{batch.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end

@@ -27,8 +27,11 @@ Feature:
     * Expect Insurance Cost to be $<insurance_cost>
     * Expect Tracking Cost to be $<tracking_cost>
     * Expect Total to be $<total_cost>
+    * Expect Ship Cost to be $<total_cost>
+    * Expect Print Window Total Cost to be $<total_cost>
     * Sign out
 
     Examples:
       | service             | ounces | tracking_expectation | service_rate_expectation | insure_for | insurance_cost | tracking_cost | total_cost |
       | Large Envelope/Flat | 1      | None                 | 0.98                     | 1.00       | 2.20           | 0.00          | 3.18       |
+
