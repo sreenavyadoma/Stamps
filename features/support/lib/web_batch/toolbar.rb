@@ -23,7 +23,10 @@ module Batch
         begin
           browser_helper.click print_button, "print_button"
           if Stamps.browser.chrome?
-
+            plugin_error = @browser.span :text => 'OK'
+            begin
+              browser_helper.click plugin_error, "plugin_error_ok" if browser_helper.present? plugin_error
+            end
           end
         rescue
           #ignore
