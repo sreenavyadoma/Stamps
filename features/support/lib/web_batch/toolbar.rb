@@ -26,6 +26,8 @@ module Batch
             plugin_error = @browser.span :text => 'OK'
             begin
               browser_helper.click plugin_error, "plugin_error_ok" if browser_helper.present? plugin_error
+            rescue
+              #ignore
             end
           end
         rescue
