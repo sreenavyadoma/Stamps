@@ -25,7 +25,6 @@ When /^Set Email to (.*)$/ do |value|
 end
 
 When /^Click Ship To Less button$/ do
-  log "Click Ship To Less button"
   log "Click Ship To Less button..."
   batch.single_order.less
   log "done."

@@ -45,6 +45,7 @@ module Batch
 
           log "Service Selected?  #{(service_input_text.include?inline_service_text)?"Yes":"No"}. #{inline_service_text}  #{service_input_text}"
           #log "Service selected: #{service_selected} : Selected: #{selected}, Selection: #{selection}"
+
           break if service_input_text.include? inline_service_text
         rescue => exception
           #log exception.backtrace

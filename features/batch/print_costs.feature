@@ -3,12 +3,13 @@ Feature:
   B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
   B-01634 As a batch shipper, I want to be able to print postage for multiple selected orders
   B-01726 Update Postage Balance After Each Print
-  B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
   B-01736 Set Correct Default for Tracking
   B-01743 Show Cost of Order in Ship Cost Grid
 
   Background:
     Given I am signed in as a batch shipper auto20/password1
+
+  Scenario Outline:
     * Add new order
     * Expect new Order ID created
     * Expect Service Cost to be $0.00
@@ -17,8 +18,6 @@ Feature:
     * Expect Total to be $0.00
     * Expect Tracking to be None
     * Set Ship From to default
-
-  Scenario Outline:v
     * Set Recipient Complete Address to <complete_address>
     * Set Phone to <phone>
     * Set Email to <email>
@@ -42,7 +41,7 @@ Feature:
     * Sign out
 
     Examples:
-      | service                 | pounds | ounces | length | width | height | default_tracking | tracking   | service_rate_expectation | insure_for | insurance_cost | tracking_cost  | total_cost | complete_address                                                   | phone         | email             |
-      | Large Envelope/Flat     |        | 1      |        |       |        | None             |            | 0.98                     | 1.00       |                | 0.00           | 3.18       | B-01631 B-01634 , B-01726, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
-      | Package                 | 1      | 1      |        |       |        | USPS Tracking    |            | 5.84                     | 10.00      |                | 0.00           | 7.52       | B-01631 B-01634 , B-01726, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
-      | Small Flat Rate Box     |        | 1      | 1      | 1     | 1      | USPS Tracking    |            | 5.25                     | 1.00       |                | 0.00           | 7.45       | B-01631 B-01634 , B-01726, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
+      | service                                   | pounds | ounces | length | width | height | default_tracking | tracking   | service_rate_expectation | insure_for | insurance_cost | tracking_cost  | total_cost | complete_address                                                   | phone         | email             |
+      | First-Class Mail Large Envelope/Flat      |        | 1      |        |       |        | None             |            | 0.98                     | 1.00       | 2.20           | 0.00           | 3.18       | B-01631 B-01634 B-01726 B-01736 B-01743, B-01631 B-01634 B-01726 B-01736 B-01743, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
+      | Priority Mail Package                     | 1      | 1      |        |       |        | USPS Tracking    |            | 5.84                     | 10.00      | 2.20           | 0.00           | 7.55       | B-01736 B-01631 B-01634 B-01726 B-01743, B-01631 B-01634 B-01726 B-01736 B-01743, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
+      | Priority Mail Express Flat Rate Envelope  |        | 1      | 1      | 1     | 1      | USPS Tracking    |            | 18.11                    | 15.00      | 2.20           | 0.00           | 20.41      | B-01743 B-01634 B-01726 B-01736 B-01631, B-01631 B-01634 B-01726 B-01736 B-01743, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |

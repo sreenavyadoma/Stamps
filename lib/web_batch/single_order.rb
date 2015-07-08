@@ -63,14 +63,14 @@ module Batch
 
     def service(selection)
       log_param "Service Selection", selection
-      selection_sym = service_to_sym selection
-      #add service to hash unless it already exists
       ServiceSelection.new(@browser, selection).select
     end
 
     def tracking=(selection)
-      log_param "Tracking Selection", selection
-      ServiceSelection.new(@browser, selection).select
+      begin
+        log_param "Tracking Selection", selection
+        #ServiceSelection.new(@browser, selection).select
+      end unless selection.length == 0
     end
 
     def tracking
