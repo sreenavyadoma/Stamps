@@ -11,7 +11,7 @@ module Stamps
     end
 
     def firefox?
-      "ie|explorer|internet explorer".include? ENV['BROWSER'].downcase
+      "ff|firefox|mozilla".include? ENV['BROWSER'].downcase
     end
   end
 end
