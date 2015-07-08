@@ -7,6 +7,7 @@ require 'watir-webdriver'
 require 'log4r'
 require 'rspec'
 
+require_relative '../../lib/common/browser'
 require_relative '../../lib/common/test_helper'
 require_relative '../../lib/web_batch/batch_test'
 require_relative '../../lib/web_batch/batch_helper'

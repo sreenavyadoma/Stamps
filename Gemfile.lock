@@ -94,4 +94,7 @@ DEPENDENCIES
   rake
   rspec
   rspec-expectations
+  selenium-webdriver
   watir
+  watir-classic
+  watir-webdriver

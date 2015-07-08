@@ -1,7 +1,6 @@
 module Stamps
   class BrowserHelper
     include Singleton
-    include DataMagic
 
     def set_text(field, text, field_name)
       10.times do

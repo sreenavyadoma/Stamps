@@ -22,6 +22,9 @@ module Batch
         break if printer_window.present?
         begin
           browser_helper.click print_button, "print_button"
+          if Stamps.browser.chrome?
+
+          end
         rescue
           #ignore
         end
