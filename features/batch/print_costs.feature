@@ -1,10 +1,5 @@
 @printing_costs
 Feature:
-  B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
-  B-01634 As a batch shipper, I want to be able to print postage for multiple selected orders
-  B-01726 Update Postage Balance After Each Print
-  B-01736 Set Correct Default for Tracking
-  B-01743 Show Cost of Order in Ship Cost Grid
 
   Background:
     Given I am signed in as a batch shipper auto20/password1
@@ -42,6 +37,6 @@ Feature:
 
     Examples:
       | service                                   | pounds | ounces | length | width | height | default_tracking | tracking   | service_rate_expectation| insure_for  | insurance_cost | tracking_cost  | total_cost | complete_address                                                   | phone         | email             |
-      | First-Class Mail Large Envelope/Flat      |        | 1      |        |       |        | None             |            |                         |             |                | 0.00           |      | B-01631 B-01634 B-01726 B-01736 B-01743, B-01631 B-01634 B-01726 B-01736 B-01743, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
-      | Priority Mail Package                     | 1      | 1      |        |       |        | USPS Tracking    |            |                         |             |                | 0.00           |        | B-01736 B-01631 B-01634 B-01726 B-01743, B-01631 B-01634 B-01726 B-01736 B-01743, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
-      | Priority Mail Express Flat Rate Envelope  |        | 1      | 1      | 1     | 1      | USPS Tracking    |            |                         |             |                | 0.00           |       | B-01743 B-01634 B-01726 B-01736 B-01631, B-01631 B-01634 B-01726 B-01736 B-01743, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
+      | First-Class Mail Large Envelope/Flat      |        | 1      |        |       |        | None             |            |                         |             |                | 0.00           |      | B-01631, B-01631 , 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
+      | Priority Mail Package                     | 1      | 1      |        |       |        | USPS Tracking    |            |                         |             |                | 0.00           |        | B-01736, B-01631, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
+      | Priority Mail Express Flat Rate Envelope  |        | 1      | 1      | 1     | 1      | USPS Tracking    |            |                         |             |                | 0.00           |       | B-01743, B-01743, 1900 E Grand Ave, El Segundo, CA, 90245 |               | rtest@stamps.com  |
