@@ -5,7 +5,7 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
     Given I am signed in as a batch shipper auto20/password1
 
   @print_multiple_orders
-  Scenario:  Weight tooltip - negative test
+  Scenario:  Print 2 Orders
 
     * Add new order
     * Expect new Order ID created
