@@ -112,17 +112,27 @@ module Batch
     def check_naws_plugin_error
       begin
         error_window_label = @browser.div :text => 'Error'
-        begin
+        error_window_label_present = browser_helper.field_present? error_window_label
+        if error_window_label_present
           ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
+          log " ## BEGIN:  NAWS PLUGIN ERROR"
           ptags.each {|p_tag|
             if browser_helper.field_present? p_tag
               p_tag_text = browser_helper.text(p_tag,'p_tag')
-              log "ERROR:  NAWS plugin error: \n#{p_tag_text}"
+              log "\n#{p_tag_text}"
             end
           }
-          plugin_error_button = @browser.span :text => 'OK'
-          browser_helper.click plugin_error_button, "plugin_error_ok" if browser_helper.present? plugin_error_button
-        end unless browser_helper.field_present? error_window_label
+          log " ## END:  NAWS PLUGIN ERROR"
+          if error_ok_button.present?
+            error_message = self.error_message
+            5.times {
+              error_ok_button.click
+              break unless error_ok_button.present?
+            }
+            close
+          end
+          close
+        end
       rescue
         #ignore
       end

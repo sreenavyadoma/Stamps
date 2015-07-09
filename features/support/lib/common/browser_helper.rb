@@ -2,7 +2,20 @@ module Stamps
   class BrowserHelper
     include Singleton
 
-    def set_text(field, text, field_name)
+    def set_text(*args)
+      case args.length
+        when 2
+          field = args[0]
+          text = args[1]
+          field_name = ""
+        when 3
+          field = args[0]
+          text = args[1]
+          field_name = args[2]
+        else
+          raise "Wrong number of arguments for BrowserHelper.set_text method."
+      end
+
       10.times do
         field.focus
         field.set log_browser_set(field, text, field_name)
@@ -11,7 +24,17 @@ module Stamps
       end
     end
 
-    def text(field, field_name)
+    def text(*args)
+      case args.length
+        when 1
+          field = args[0]
+          field_name = ""
+        when 2
+          field = args[0]
+          field_name = args[1]
+        else
+          raise "Wrong number of arguments for BrowserHelper.text method."
+      end
       begin
         field.focus
       rescue
