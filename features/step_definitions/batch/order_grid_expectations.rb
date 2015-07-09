@@ -134,8 +134,8 @@ Then /^Expect Ounces to be (\d+)$/ do |expected|
 end
 
 Then /^Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
+  expected = "#{pounds} lbs. #{ounces} oz."
   begin
-    expected = "#{pounds} lbs. #{ounces} oz."
     actual = batch.grid.weight(Batch.order_id)
     5.times { |counter|
       log_expectation_eql "#{counter}. Weight", expected, actual
