@@ -5,7 +5,7 @@ Feature:
   Background:
     Given I am signed in as a batch shipper auto20/password1
 
-  Scenario Outline:
+  Scenario Outline: Print Costs
     * Add new order
     * Set Ship From to default
     * Set Recipient Complete Address to <complete_address>
