@@ -1,10 +1,11 @@
-@printing_costs
+@print_costs
 Feature:
+  As a batch shipper, I want to print shipping costs
 
   Background:
     Given I am signed in as a batch shipper auto20/password1
 
-  Scenario Outline:
+  Scenario Outline: Print Costs
     * Add new order
     * Expect new Order ID created
     * Expect Service Cost to be $0.00
