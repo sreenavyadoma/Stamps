@@ -1,5 +1,6 @@
 @printing_costs
 Feature:
+  As a batch shipper, I want to print shipping costs
 
   Background:
     Given I am signed in as a batch shipper auto20/password1
