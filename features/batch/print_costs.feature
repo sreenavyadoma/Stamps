@@ -1,5 +1,9 @@
 @print_costs
 Feature: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
+  B-01634 As a batch shipper, I want to be able to print postage for multiple selected orders
+  B-01726 Update Postage Balance After Each Print
+  B-01736 Set Correct Default for Tracking
+  B-01743 Show Cost of Order in Ship Cost Grid
 
   Background:
     Given I am signed in as a batch shipper auto20/password1
