@@ -1,4 +1,4 @@
-@printing_costs
+@print_costs
 Feature:
   As a batch shipper, I want to print shipping costs
 
