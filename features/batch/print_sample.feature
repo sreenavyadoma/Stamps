@@ -12,7 +12,7 @@ Feature: B-01625  As a batch shipper, I want to be able to print sample postage
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
-    * Set Service to First-Class Mail Envelope
+    * Set Service to Priority Mail Package
     * Print Sample
     * Sign out
 

@@ -18,22 +18,11 @@ module Batch
     public
     def print(*args)
       printer_window = PrintWindow.new(@browser)
-
       7.times {
         break if printer_window.present?
         begin
           browser_helper.click print_button, "print_button"
-          if Stamps.browser.chrome?
-            begin
-              error_window_label = @browser.div :text => 'Error'
-              begin
-                plugin_error_button = @browser.span :text => 'OK'
-                browser_helper.click plugin_error_button, "plugin_error_ok" if browser_helper.present? plugin_error_button
-              end unless browser_helper.present? error_window_label
-            rescue
-              #ignore
-            end
-          end
+          sleep(2)
         rescue
           #ignore
         end

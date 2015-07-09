@@ -1,9 +1,9 @@
 When /^Print on (.*)$/ do |printer|
-  batch.toolbar.print(printer).print.should be_printed
+  batch.toolbar.print(printer).print
 end
 
 When /^Print$/ do
-  batch.toolbar.print.print.should be_printed
+  batch.toolbar.print.print
 end
 
 Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expected|
@@ -25,7 +25,7 @@ Then /^Print raises a Printing Error/ do
 end
 
 Then /^Print Sample on (.*)$/ do |printer|
-  batch.toolbar.print(printer).print_sample.should be_printed
+  batch.toolbar.print(printer).print_sample
 end
 
 Then /^Print Sample on (.*) raises a PrintingError$/ do |printer|
@@ -33,7 +33,7 @@ Then /^Print Sample on (.*) raises a PrintingError$/ do |printer|
 end
 
 Then /^Print Sample$/ do
-  batch.toolbar.print.print_sample.should be_printed
+  batch.toolbar.print.print_sample
 end
 
 Then /^Print Sample raises a Printing Error/ do

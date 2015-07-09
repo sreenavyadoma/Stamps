@@ -109,8 +109,29 @@ module Batch
       @browser.label(:text => 'Total Cost:').parent.labels.last
     end
 
+    def check_naws_plugin_error
+      begin
+        error_window_label = @browser.div :text => 'Error'
+        begin
+          ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
+          ptags.each {|p_tag|
+            if browser_helper.field_present? p_tag
+              p_tag_text = browser_helper.text(p_tag,'p_tag')
+              log "ERROR:  NAWS plugin error: \n#{p_tag_text}"
+            end
+          }
+          plugin_error_button = @browser.span :text => 'OK'
+          browser_helper.click plugin_error_button, "plugin_error_ok" if browser_helper.present? plugin_error_button
+        end unless browser_helper.field_present? error_window_label
+      rescue
+        #ignore
+      end
+    end
+
     def print_result
-      sleep(3)
+      check_naws_plugin_error if Stamps.browser.chrome?
+=begin
+
       if error_ok_button.present?
         error_message = self.error_message
         log "!!!  PRINT ERROR !!!"
@@ -126,6 +147,7 @@ module Batch
       end
       @print_status = true
       close
+=end
     end
 
     def x_button
