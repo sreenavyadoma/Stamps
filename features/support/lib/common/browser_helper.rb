@@ -17,9 +17,12 @@ module Stamps
       end
 
       10.times do
-        field.focus
-        field.set log_browser_set(field, text, field_name)
-        field.focus
+        begin
+          field.focus
+          field.set log_browser_set(field, text, field_name)
+        rescue
+          #ignore
+        end
         break if field.attribute_value('value').include? text
       end
     end
@@ -54,7 +57,11 @@ module Stamps
     end
 
     def click(field, field_name)
-      field.focus
+      begin
+        field.focus
+      rescue
+        #ignore
+      end
       field.click
       log_browser_click field, field_name
     end
