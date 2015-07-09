@@ -79,8 +79,8 @@ Then /^Set Tracking to ([\w ]*)$/ do |value|
   end
 end
 
-And /^Set Insured Value to ([\d*\.?\d*]*)$/ do |value|
-  log "Set Insured Value to \"#{value}\""
+And /^Set Insured Value to \$([\d*\.?\d*]*)$/ do |value|
+  log "Set Insured Value to $\"#{value}\""
   batch.single_order.insured_value = value
 end
 

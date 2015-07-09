@@ -10,7 +10,7 @@ Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expected|
   begin
     print_window = batch.toolbar.print
     actual = print_window.total_cost
-    5.times { |counter|
+    10.times { |counter|
       log_expectation_eql "#{counter}. Print Window Total Cost", expected, actual
       break if actual.eql? expected
       actual = print_window.total_cost

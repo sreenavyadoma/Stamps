@@ -52,7 +52,7 @@ Feature:  Build Verification Test
     * Set Length to 1
     * Set Width to 1
     * Set Height to 1
-    * Set Insured Value to 1.00
+    * Set Insured Value to $1.00
     * Set Service to Priority Mail Package
     * Expect Recipient Name to be B-01671
     * Expect Company Name to be Inline Rates
@@ -65,5 +65,5 @@ Feature:  Build Verification Test
     * Expect Pounds to be 1
     * Expect Ounces to be 1
     * Expect Weight to be 1 lbs. 1 oz.
-    * Expect Insured Value to be 1.00
+    * Expect Insured Value to be $1.00
     * Sign out

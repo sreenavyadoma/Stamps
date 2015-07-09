@@ -39,7 +39,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Set Length to 1
     * Set Width to 1
     * Set Height to 1
-    * Set Insured Value to 1.09
+    * Set Insured Value to $1.09
     
     * Set Ship From to default
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
@@ -67,7 +67,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Expect Pounds to be 0
     * Expect Ounces to be 1
     * Expect Weight to be 0 lbs. 1 oz.
-    * Expect Insured Value to be 15.00
+    * Expect Insured Value to be $15.00
     * Expect Service Cost to be 0.00
     * Expect inline Service Cost for First-Class Mail Postcard to be greater than $0.35
     * Expect Service Cost to be 0.35

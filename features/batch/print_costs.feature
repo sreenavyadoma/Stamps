@@ -14,21 +14,15 @@ Feature:
     * Expect Total to be $0.00
     * Expect Tracking to be None
     * Set Ship From to default
-    * Set Recipient Complete Address to <complete_address>
-    * Set Phone to <phone>
-    * Set Email to <email>
+    * Set Recipient Complete Address to B-01631, B-01631 , 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Email to rtest@stamps.com
     * Click Ship To Less button
-    * Set Pounds to <pounds>
-    * Set Ounces to <ounces>
-    * Set Length to <length>
-    * Set Width to <width>
-    * Set Height to <height>
-    * Set Insured Value to <insure_for>
-    * Set Service to <service>
-    * Expect Tracking to be <default_tracking>
-    * Set Tracking to <tracking>
-    * Expect Service Cost to be $<service_rate_expectation>
-    * Expect Insured Value to be <insure_for>
+    * Set Ounces to 1
+    * Set Insured Value to $10
+    * Set Service to First-Class Mail Large Envelope/Flat
+    * Expect Tracking to be None
+    * Expect Service Cost to be $0.98
+    * Expect Insured Value to be $2.20
     * Expect Insurance Cost to be $<insurance_cost>
     * Expect Tracking Cost to be $<tracking_cost>
     * Expect Total to be $<total_cost>

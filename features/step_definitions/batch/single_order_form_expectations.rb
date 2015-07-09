@@ -12,7 +12,7 @@ end
 
 Then /^Expect Service Cost to be greater than \$([0-9.]+)$/ do |expected|
   actual = batch.single_order.service_cost
-  5.times { |counter|
+  10.times { |counter|
     log_expectation "#{counter}. Single Order Form Rate", expected, actual, (actual.to_f >= expected.to_f)
     break if actual.to_f >= expected.to_f
     actual = batch.single_order.service_cost
@@ -22,7 +22,7 @@ end
 
 Then /^Expect inline Service Cost for ([a-zA-Z -\/]+) to be greater than \$([0-9.]+)$/ do |service, expected|
   actual = batch.single_order.service service
-  5.times{ |counter|
+  10.times { |counter|
     log_expectation "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
     break if actual.to_f >= expected.to_f
     actual = batch.single_order.service service
@@ -37,7 +37,7 @@ end
 Then /^Expect Service Cost to be \$(.*)$/ do |expected|
   actual = batch.single_order.service_cost
   begin
-    5.times { |counter|
+    10.times { |counter|
       log_expectation_eql "#{counter}. Service Cost", expected, actual
       break if actual.eql? expected
       actual = batch.single_order.service_cost
@@ -49,7 +49,7 @@ end
 Then /^Expect Tracking Cost to be \$(.*)$/ do |expected|
   begin
     actual = batch.single_order.tracking_cost
-    5.times { |counter|
+    10.times { |counter|
       log_expectation_eql "#{counter}. Tracking Cost", expected, actual
       break if actual.eql? expected
       actual = batch.single_order.tracking_cost
@@ -65,7 +65,7 @@ end
 Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
   begin
     actual = batch.single_order.insurance_cost
-    5.times { |counter|
+    10.times { |counter|
       log_expectation_eql "#{counter}. Insurance Cost", expected, actual
       break if actual.eql? expected
       actual = batch.single_order.insurance_cost
@@ -77,7 +77,7 @@ end
 Then /^Expect Tracking to be ([\w\s]*)$/ do |expected|
   begin
     actual = batch.single_order.tracking
-    5.times { |counter|
+    10.times { |counter|
       log_expectation_eql "#{counter}. Tracking Selected", expected, actual
       break if actual.eql? expected
       actual = batch.single_order.tracking
@@ -89,7 +89,7 @@ end
 Then /^Expect Total to be \$(.*)$/ do |expected|
   begin
     actual = batch.single_order.total
-    5.times { |counter|
+    10.times { |counter|
       log_expectation_eql "#{counter}. Total Cost", expected, actual
       break if actual.eql? expected
       actual = batch.single_order.total
