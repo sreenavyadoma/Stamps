@@ -37,7 +37,6 @@ module Stamps
               :prompt_for_download => false,
               :default_directory => chrome_data_dir
           }
-
       }
 
       profile = Selenium::WebDriver::Chrome::Profile.new
@@ -51,6 +50,12 @@ module Stamps
       #browser = Watir::Browser.new :chrome, :switches => ["--user_data_dir=C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate]"]
       #browser = Watir::Browser.new :chrome, :prefs => prefs
     elsif Stamps.browser.firefox?
+      begin
+        log "Executed Shell Command:  taskkill /im firefox.exe /f [ #{system "taskkill /im firefox.exe /f"} ]"
+      rescue
+        #ignore
+      end
+
       browser = Watir::Browser.new :firefox, :profile => 'selenium'
       browser_name = 'Firefox'
     else
