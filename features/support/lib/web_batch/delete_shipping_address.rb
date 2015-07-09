@@ -5,7 +5,7 @@ module Batch
       5.times {
         begin
           log "Delete Shipping Address :: #{message_field.text}"
-          browser_helper.click delete_button, 'DeleteShippnigAddress'
+          browser_helper.click delete_button, 'Delete'
         rescue
           #ignore
         end
