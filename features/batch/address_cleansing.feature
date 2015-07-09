@@ -20,7 +20,6 @@ Feature: B-01603 As a batch shipper, I want Stamps.com to verify that my deliver
     * Select row 2 from Exact Address Not Found module
     * Expect Recipient Name to be B-01603
     * Expect Company Name to be Address Cleansing
-    * Expect Street Address to be 1390 Market Street Ste 702
     * Expect City to be San Francisco
     * Expect State to be CA
     * Expect Zip Code to be 94102

@@ -31,7 +31,6 @@ Feature:  Build Verification Test
     * Set Ounces to 1
     * Expect Recipient Name to be B-01603
     * Expect Company Name to be Address Cleansing
-    * Expect Street Address to be 1390 Market Street Ste 702
     * Expect City to be San Francisco
     * Expect State to be CA
     * Expect Zip Code to be 94102
@@ -44,7 +43,6 @@ Feature:  Build Verification Test
   Scenario:  Add New Order
     * Add new order
     * Expect new Order ID created
-    * Expect Service Cost to be 0.00
     * Set Ship From to default
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
