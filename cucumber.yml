@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
-default_profile: --tags @bvt --guess URL=qacc BROWSER=gc
+default_profile: --tags @address_management --guess URL=qacc BROWSER=gc
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie
@@ -39,8 +39,3 @@ user_views_price_next_to_service_dropdown_qacc_gc: --tags @user_views_price_next
 print_costs_qacc_ie: --tags @print_costs --guess URL=qacc BROWSER=ie
 print_costs_qacc_ff: --tags @print_costs --guess URL=qacc BROWSER=ff
 print_costs_qacc_gc: --tags @print_costs --guess URL=qacc BROWSER=gc
-
-
-
-
-
