@@ -21,6 +21,10 @@ Feature: Change Starting Label Position
     * Edit row 1 in the order grid
 	* Open Print Window
 	* Expect right pane selected
+    * Print Postage
+    * Edit row 1 in the order grid
+    * Open Print Window
 	* Select left pane
+    * Expect left pane selected
 	* Print Postage
     * Sign out
