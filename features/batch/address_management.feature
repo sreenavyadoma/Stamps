@@ -1,9 +1,9 @@
-@address_management
+@regression
 Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Ship From address.
 
   Background:
     Given I am signed in as a batch shipper
-
+  @address_management
   Scenario: Address Management
     * Add new order
     * Expect new Order ID created

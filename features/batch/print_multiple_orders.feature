@@ -1,9 +1,10 @@
-@print_multiple_orders
+@regression
 Feature: B-01634 As a batch shipper, I want to be able to print postage for multiple orders
 
   Background:
     Given I am signed in as a batch shipper auto20/password1
 
+  @print_multiple_orders
   Scenario:  Print 2 Orders
     * Add new order
     * Expect new Order ID created

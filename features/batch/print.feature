@@ -1,9 +1,10 @@
-@print
+@regression
 Feature: B-01625  As a batch shipper, I want to be able to print sample postage
 
   Background:
     Given I am signed in as a batch shipper auto20/password1
 
+  @print
   Scenario:  Print
     * Add new order
     * Expect new Order ID created

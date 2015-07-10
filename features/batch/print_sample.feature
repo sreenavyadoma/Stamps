@@ -1,10 +1,11 @@
-@print_sample
+@regression
 Feature: B-01625  As a batch shipper, I want to be able to print sample postage
 
   Background:
     Given I am signed in as a batch shipper
 
-  Scenario:  Print Sample
+  @print_sample
+  Scenario:  Print Sample - Priority Mail Package
     * Add new order
     * Expect new Order ID created
     * Set Ship From to default

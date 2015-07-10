@@ -1,9 +1,10 @@
-@print_costs
+@regression
 Feature: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
 
   Background:
     Given I am signed in as a batch shipper
 
+  @print_costs
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
     * Add new order
     * Expect new Order ID created

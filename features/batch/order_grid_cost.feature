@@ -1,9 +1,10 @@
-@print_costs
+@regression
 Feature: B-01743 Show Cost of Order in Ship Cost Grid
 
   Background:
     Given I am signed in as a batch shipper
 
+  @print_costs
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid
     * Add new order
     * Expect new Order ID created

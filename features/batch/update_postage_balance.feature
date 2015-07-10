@@ -1,9 +1,10 @@
-@print_costs
+@regression
 Feature: B-01726 Update Postage Balance After Each Print
 
   Background:
     Given I am signed in as a batch shipper auto20/password1
 
+  @print_costs
   Scenario: B-01726 Update Postage Balance After Each Print
     * Add new order
     * Expect new Order ID created
