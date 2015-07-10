@@ -78,7 +78,7 @@ Then /^Expect State to be ([a-zA-Z]+)$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Zip Code to be ([0-9]+)$/ do |expected|
+Then /^Expect Zip Code to be (\d+)$/ do |expected|
   begin
     actual = batch.grid.zip(Batch.order_id)
     10.times { |counter|
