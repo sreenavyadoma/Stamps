@@ -1,8 +1,8 @@
 @print_costs
-Feature: Printing Cost Tests
+Feature: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
 
   Background:
-    Given I am signed in as a batch shipper auto20/password1
+    Given I am signed in as a batch shipper
 
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
     * Add new order
