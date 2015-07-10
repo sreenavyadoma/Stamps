@@ -1,9 +1,9 @@
+@inline_service_rates
 Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an order
 
   Background:
     Given I am signed in as a batch shipper
 
-  @ship_to_address_get_rates
   Scenario: System Calls GetRates When "Ship To Address" is changed
     * Add new order
     * Expect new Order ID created
@@ -29,7 +29,6 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Change Ship-To Address to B-01671, Ship To Address is changed, 1901 Avenue Of The Stars, Los Angeles, CA, 90067-6001
     * Expect Service Cost to be greater than $0.00
 
-  @user_views_price_next_to_service_dropdown
   Scenario:  User Views Price Next to Service Dropdown
     * Add new order
     * Expect new Order ID created

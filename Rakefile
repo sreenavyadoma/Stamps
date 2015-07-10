@@ -107,18 +107,18 @@ Cucumber::Rake::Task.new(:print_sample_qacc_gc) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:user_views_price_next_to_service_dropdown_qacc_ie) do |t|
-  t.profile = 'user_views_price_next_to_service_dropdown_qacc_ie'
+Cucumber::Rake::Task.new(:inline_service_rates_qacc_ie) do |t|
+  t.profile = 'inline_service_rates_qacc_ie'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-  Cucumber::Rake::Task.new(:user_views_price_next_to_service_dropdown_qacc_ff) do |t|
-    t.profile = 'user_views_price_next_to_service_dropdown_qacc_ff'
+  Cucumber::Rake::Task.new(:inline_service_rates_qacc_ff) do |t|
+    t.profile = 'inline_service_rates_qacc_ff'
     t.cucumber_opts = "-p cuke_reports"
   end
 
-  Cucumber::Rake::Task.new(:user_views_price_next_to_service_dropdown_qacc_gc) do |t|
-    t.profile = 'user_views_price_next_to_service_dropdown_qacc_gc'
+  Cucumber::Rake::Task.new(:inline_service_rates_qacc_gc) do |t|
+    t.profile = 'inline_service_rates_qacc_gc'
     t.cucumber_opts = "-p cuke_reports"
   end
 

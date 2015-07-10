@@ -16,9 +16,9 @@ address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=i
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
 # regression tests
-regress_qacc_gc: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown,@printing_costs --guess URL=qacc BROWSER=gc
-regress_qacc_ff: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown,@printing_costs --guess URL=qacc BROWSER=ff
-regress_qacc_ie: --tags @address_cleansing,@address_management,@print,@print_sample,@user_views_price_next_to_service_dropdown,@printing_costs --guess URL=qacc BROWSER=ie
+regress_qacc_gc: --tags @address_cleansing,@address_management,@print,@print_sample,@inline_service_rates,@printing_costs --guess URL=qacc BROWSER=gc
+regress_qacc_ff: --tags @address_cleansing,@address_management,@print,@print_sample,@inline_service_rates,@printing_costs --guess URL=qacc BROWSER=ff
+regress_qacc_ie: --tags @address_cleansing,@address_management,@print,@print_sample,@inline_service_rates,@printing_costs --guess URL=qacc BROWSER=ie
 
 address_management_qacc_ie: --tags @address_management --guess URL=qacc BROWSER=ie
 address_management_qacc_ff: --tags @address_management --guess URL=qacc BROWSER=ff
@@ -32,9 +32,9 @@ print_sample_qacc_ie: --tags @print_sample --guess URL=qacc BROWSER=ie
 print_sample_qacc_ff: --tags @print_sample --guess URL=qacc BROWSER=ff
 print_sample_qacc_gc: --tags @print_sample --guess URL=qacc BROWSER=gc
 
-user_views_price_next_to_service_dropdown_qacc_ie: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ie
-user_views_price_next_to_service_dropdown_qacc_ff: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=ff
-user_views_price_next_to_service_dropdown_qacc_gc: --tags @user_views_price_next_to_service_dropdown --guess URL=qacc BROWSER=gc
+inline_service_rates_qacc_ie: --tags @inline_service_rates --guess URL=qacc BROWSER=ie
+inline_service_rates_qacc_ff: --tags @inline_service_rates --guess URL=qacc BROWSER=ff
+inline_service_rates_qacc_gc: --tags @inline_service_rates --guess URL=qacc BROWSER=gc
 
 print_costs_qacc_ie: --tags @print_costs --guess URL=qacc BROWSER=ie
 print_costs_qacc_ff: --tags @print_costs --guess URL=qacc BROWSER=ff
