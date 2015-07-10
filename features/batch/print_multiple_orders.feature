@@ -29,5 +29,6 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
 
     * Edit row 1 in the order grid
     * Edit row 2 in the order grid
+    * Expect 2 orders selected
     * Print
     * Sign out

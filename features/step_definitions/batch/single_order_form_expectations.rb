@@ -98,4 +98,9 @@ Then /^Expect Total to be \$(.*)$/ do |expected|
   end unless expected.length == 0
 end
 
+Then /^Expect ([0-9]+) orders selected$/ do |expected|
+  batch.multi_order.order_count.should eql expected
+end
+
+
 

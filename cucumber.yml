@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
-default_profile: --tags @address_management --guess URL=qacc BROWSER=gc
+default_profile: --tags @print_multiple_orders --guess URL=qacc BROWSER=gc
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie
@@ -16,9 +16,9 @@ address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=i
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff
 
 # regression tests
-regress_qacc_gc: --tags @address_cleansing,@address_management,@print,@print_sample,@inline_service_rates,@printing_costs --guess URL=qacc BROWSER=gc
-regress_qacc_ff: --tags @address_cleansing,@address_management,@print,@print_sample,@inline_service_rates,@printing_costs --guess URL=qacc BROWSER=ff
-regress_qacc_ie: --tags @address_cleansing,@address_management,@print,@print_sample,@inline_service_rates,@printing_costs --guess URL=qacc BROWSER=ie
+regress_qacc_gc: --tags @address_cleansing,@address_management,@print,@print_sample,@inline_service_rates,@printing_costs,@print_multiple_orders --guess URL=qacc BROWSER=gc
+regress_qacc_ff: --tags @address_cleansing,@address_management,@print,@print_sample,@inline_service_rates,@printing_costs,@print_multiple_orders --guess URL=qacc BROWSER=ff
+regress_qacc_ie: --tags @address_cleansing,@address_management,@print,@print_sample,@inline_service_rates,@printing_costs,@print_multiple_orders --guess URL=qacc BROWSER=ie
 
 address_management_qacc_ie: --tags @address_management --guess URL=qacc BROWSER=ie
 address_management_qacc_ff: --tags @address_management --guess URL=qacc BROWSER=ff

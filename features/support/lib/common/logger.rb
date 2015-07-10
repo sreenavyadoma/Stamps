@@ -56,9 +56,15 @@ module Stamps
     text
   end
 
-  def log_browser_get(field, text, field_name)
-    log "Browser.#{field_log_tag(field.to_s)}.#{field_name}.get \"#{text}\""
-    text
+  def log_browser_get(*args)
+    #field, text, field_name
+    case args.length
+      when 2
+        log "Browser.#{field_log_tag(args[0].to_s)}.get \"#{args[1]}\""
+      when 3
+        log "Browser.#{field_log_tag(args[0].to_s)}.#{args[2]}.get \"#{args[1]}\""
+    end
+    args[1]
   end
 
   def log_browser_click(field, field_name)
