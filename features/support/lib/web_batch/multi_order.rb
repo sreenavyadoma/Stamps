@@ -10,6 +10,5 @@ module Batch
       raise "Multi-order Count Label does not exist or Multi-order form not opened." unless browser_helper.field_present? order_count_label
       browser_helper.text(order_count_label).gsub(/\d+/).first
     end
-
   end
 end
