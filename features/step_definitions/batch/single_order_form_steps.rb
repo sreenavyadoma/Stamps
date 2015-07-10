@@ -92,7 +92,6 @@ And /^Set Receipient address to;$/ do |table|
 end
 
 When /^Set order details with;$/ do |table|
-  log "\"#{table.hashes.first}\""
   log "Set order details with;"
   batch.single_order.edit_details log_hash_param table.hashes.first
 end

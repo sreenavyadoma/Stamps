@@ -6,6 +6,11 @@ When /^Print$/ do
   batch.toolbar.print.print
 end
 
+When /^Open Print Window/ do
+  batch.toolbar.print
+end
+
+
 Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expected|
   begin
     print_window = batch.toolbar.print
@@ -39,3 +44,4 @@ end
 Then /^Print Sample raises a Printing Error/ do
   expect{batch.toolbar.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end
+

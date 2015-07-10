@@ -1,5 +1,5 @@
 @regression
-Feature: Service Control
+Feature: B-01588 As a batch shipper, I want to able to change the Domestic USPS service used to fulfill an order.
 
   Background:
     Given I am signed in as a batch shipper auto08/password1
@@ -394,16 +394,7 @@ Feature: Service Control
     * Set Receipient address to;
       | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Parcel Select Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-    * Set order details with;
-      | insured_value | pounds  | ounces | length  | width | height  |
-      | 0             | 0       | 1      | 0       | 0     | 0       |
     * Set Service to Parcel Select Package
-    * Expect Ship-To address to be;
-      | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-      | Parcel Select Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-    * Expect Order details to be;
-      | insured_value  | pounds  | ounces | length  | width | height  |
-      | 0.00           | 0       | 1      | 0       | 0     | 0     |
 
   @parcel_select_large_package
   Scenario: Parcel Select Large Package
