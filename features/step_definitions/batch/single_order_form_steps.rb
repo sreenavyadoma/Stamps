@@ -80,17 +80,14 @@ Then /^Set Tracking to ([\w ]*)$/ do |value|
 end
 
 And /^Set Insured Value to \$([\d*\.?\d*]*)$/ do |value|
-  log "Set Insured Value to $\"#{value}\""
   batch.single_order.insured_value = value
 end
 
 And /^Set Ship From to (\w+)$/ do |value|
-  log "Set Ship From to \"#{value}\""
   batch.single_order.ship_from_default
 end
 
 And /^Set Receipient address to;$/ do |table|
-  log "Set Receipient address to;\n#{table}"
   batch.single_order.recipient = log_hash_param table.hashes.first
 end
 
@@ -106,7 +103,6 @@ Then /^List all grid values for row (.*)$/ do |row|
 end
 
 When /^Set Receipient partial address to;$/ do |table|
-  log "Set Recipient partial address to \"#{table.hashes.first}\""
   batch.single_order.partial_address.set table.hashes.first
 end
 
