@@ -2,7 +2,7 @@ module Stamps
   class BrowserHelper
     include Singleton
 
-    def set_text(*args)
+    def set_text *args
       case args.length
         when 2
           field = args[0]
@@ -27,7 +27,7 @@ module Stamps
       end
     end
 
-    def text(*args)
+    def text *args
       case args.length
         when 1
           field = args[0]
@@ -56,23 +56,27 @@ module Stamps
       text
     end
 
-    def click(*args)
+    def click *args
       case args.length
         when 1
-          field = args[0]
+          begin
+            args[0].focus
+          rescue
+            #ignore
+          end
+          args[0].click
+          log_browser_click args[0]
         when 2
-          field = args[0]
-          field_name = args[1]
+          begin
+            args[0].focus
+          rescue
+            #ignore
+          end
+          args[0].click
+          log_browser_click args[0], args[1]
         else
           raise "Wrong number of arguments."
       end
-      begin
-        field.focus
-      rescue
-        #ignore
-      end
-      field.click
-      log_browser_click field, field_name
     end
 
     def field_present?(field)

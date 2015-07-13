@@ -188,7 +188,7 @@ module Batch
 
     private
     def window_title
-      @browser.divs(text => 'Manage Shipping Addresses').last
+      @browser.div :css => 'div[class*=x-window-header-title-default]>div'
     end
 
     def grid_cell(row, column)

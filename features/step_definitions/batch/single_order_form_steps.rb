@@ -119,7 +119,7 @@ Then /^Delete all shipping addresses$/ do
   batch.single_order.manage_shipping_addresses.delete_all #.should be_all_deleted
 end
 
-Then /^Delete Row (\d+)&/ do |row|
+Then /^Delete Row (\d+)$/ do |row|
   batch.single_order.manage_shipping_addresses.delete_row row
 end
 

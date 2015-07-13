@@ -16,6 +16,5 @@ Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Sh
     * Edit Ship-From address for name = "Joseph Balancio", company = "B-01690 Stamps.com" and city = "El Segundo" to;
       |ship_from_zip  | name                  | company                     | street_address1   | street_address2 | city       | state  | zip           | country         | phone           |
       |90245          | Euan Davidson  | B-01690 Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California    | 94105  | United States | (415) 123-5555  |
-    * Delete all shipping addresses
     * Delete Row 1
     * Sign out

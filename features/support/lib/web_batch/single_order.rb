@@ -217,6 +217,10 @@ module Batch
       @manage_shipping_adddress
     end
 
+    def manage_shipping_address
+      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+    end
+
     def manage_shipping_addresses
       self.ship_from "Manage Shipping Addresses..."
     end
