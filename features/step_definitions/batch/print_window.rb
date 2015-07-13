@@ -45,3 +45,17 @@ Then /^Print Sample raises a Printing Error/ do
   expect{batch.toolbar.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
+Then /^Expect (.*) pane selected$/ do |value|
+
+end
+
+Then /^Select (.*) pane$/ do |value|
+
+end
+
+Then /^Print Postage$/ do
+
+end
+
+
+
