@@ -1,14 +1,14 @@
 @regression
 Feature: B-01588 As a batch shipper, I want to able to change the Domestic USPS service used to fulfill an order.
   Background:
-    Given I am signed in as a batch shipper auto06/password1
+    Given I am signed in as a batch shipper
 
   @service_control
   Scenario:  Inline Rates
     * Add new order
     * Edit row 1 in the order grid
     * Set Ship From to default
-    * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Complete Address to B-01588, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
