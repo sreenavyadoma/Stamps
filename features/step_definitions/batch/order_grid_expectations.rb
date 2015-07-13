@@ -194,3 +194,14 @@ Then /^Expect Ship Cost to be \$([0-9.]*)$/ do |expected|
   end unless expected.length == 0
 end
 
+Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
+  log_param "Old Balance", @old_balance
+  @new_balance = batch.navigation_bar.balance
+  stat = @old_balance == @new_balance + expected.to_f
+  log stat
+  @old_balance.should eql @new_balance + expected.to_f
+end
+
+Then /^Expect Grid Ship Cost is deducted from customer balance if printing is successful$/ do
+
+end

@@ -30,6 +30,7 @@ module Batch
       log new_balance
       balance_f = new_balance.to_f
       log balance_f
+      balance_f
     end
 
     def sign_out

@@ -3,7 +3,9 @@ When /^Print on (.*)$/ do |printer|
 end
 
 When /^Print$/ do
-  batch.toolbar.print.print
+  @old_balance = batch.navigation_bar.balance
+  @printing_error = batch.toolbar.print.print
+  log @printing_error
 end
 
 When /^Open Print Window/ do

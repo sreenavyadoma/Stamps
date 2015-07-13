@@ -4,7 +4,7 @@ Feature: B-01726 Update Postage Balance After Each Print
   Background:
     Given I am signed in as a batch shipper auto20/password1
 
-  @print_costs
+  @update_postage_balance
   Scenario: B-01726 Update Postage Balance After Each Print
     * Add new order
     * Expect new Order ID created
@@ -14,6 +14,8 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Click Ship To Less button
     * Set Insured Value to $10.00
     * Set Service to First-Class Mail Large Envelope/Flat
+    * Expect Ship Cost to be $3.18
     * Print
-    * Expect $3.18 is deducted from customer balance
+    * Expect $3.18 is deducted from customer balance if printing is successful
+    * Expect Grid Ship Cost is deducted from customer balance if printing is successful
     * Sign out
