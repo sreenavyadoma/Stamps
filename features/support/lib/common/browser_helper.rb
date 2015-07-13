@@ -27,17 +27,7 @@ module Stamps
       end
     end
 
-    def text *args
-      case args.length
-        when 1
-          field = args[0]
-          field_name = ""
-        when 2
-          field = args[0]
-          field_name = args[1]
-        else
-          raise "Wrong number of arguments for BrowserHelper.text method."
-      end
+    def field_text field
       begin
         field.focus
       rescue
@@ -45,15 +35,26 @@ module Stamps
       end
       field_text = field.text
       field_attribute_value = field.attribute_value('value')
-       if field_text.size > 0
-         text = field_text
-       elsif  field_attribute_value.size > 0
-         text = field_attribute_value
-       else
-         text = ""
-       end
-      log_browser_get(field, text, field_name)
+      if field_text.size > 0
+        text = field_text
+      elsif  field_attribute_value.size > 0
+        text = field_attribute_value
+      else
+        text = ""
+      end
       text
+    end
+
+    def text *args
+      case args.length
+        when 1
+          field_text(args[0])
+        when 2
+          text = field_text(args[0])
+          log_browser_get(args[0], text, args[1])
+        else
+          raise "Wrong number of arguments for BrowserHelper.text method."
+      end
     end
 
     def click *args
