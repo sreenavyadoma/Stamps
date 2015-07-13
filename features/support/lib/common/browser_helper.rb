@@ -56,7 +56,16 @@ module Stamps
       text
     end
 
-    def click(field, field_name)
+    def click(*args)
+      case args.length
+        when 1
+          field = args[0]
+        when 2
+          field = args[0]
+          field_name = args[1]
+        else
+          raise "Wrong number of arguments."
+      end
       begin
         field.focus
       rescue

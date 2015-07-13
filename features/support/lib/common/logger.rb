@@ -63,12 +63,21 @@ module Stamps
         log "Browser.#{field_log_tag(args[0].to_s)}.get \"#{args[1]}\""
       when 3
         log "Browser.#{field_log_tag(args[0].to_s)}.#{args[2]}.get \"#{args[1]}\""
+      else
+        raise "Wrong number of arguments"
     end
     args[1]
   end
 
-  def log_browser_click(field, field_name)
-    log "Browser.#{field_log_tag(field.to_s)}.#{field_name}.click"
+  def log_browser_click(*args)
+    case args.length
+      when 1
+        log "Browser.#{field_log_tag(args[0].to_s)}.click"
+      when 2
+        log "Browser.#{field_log_tag(args[0].to_s)}.#{args[1].to_s}.click"
+      else
+        raise "Wrong number of arguments"
+    end
   end
 
   def log_browser_present(field, text, field_name)

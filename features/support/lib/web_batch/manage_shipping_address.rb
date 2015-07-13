@@ -21,6 +21,7 @@ module Batch
     def row_number(name, company, city)
       rows = shipping_address_count
       1.upto(rows) do |row|
+        browser_helper.click window_title
         grid_name = name row
         grid_company = company row
         grid_city = city row
@@ -186,12 +187,8 @@ module Batch
     end
 
     private
-
     def window_title
-      divs = @browser.divs :text => 'Manage Shipping Addresses'
-      title_div = divs.last
-      present = title_div.present?
-      title_div
+      @browser.divs(text => 'Manage Shipping Addresses').last
     end
 
     def grid_cell(row, column)

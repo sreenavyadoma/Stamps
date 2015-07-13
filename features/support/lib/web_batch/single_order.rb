@@ -206,7 +206,7 @@ module Batch
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
       5.times {
         begin
-          browser_helper.click ship_from_dropdown, "ship_from_selection(#{selection})" unless browser_helper.field_present?  ship_from_selection(selection)
+          browser_helper.click ship_from_dropdown, "ship_from_selection.[#{selection}]" unless browser_helper.field_present?  ship_from_selection(selection)
           browser_helper.click ship_from_selection(selection), selection
           break if @manage_shipping_adddress.window_present?
         rescue

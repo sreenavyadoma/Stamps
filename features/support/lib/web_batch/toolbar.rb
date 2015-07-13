@@ -15,7 +15,16 @@ module Batch
       @browser.elements(:text => 'Print').first
     end
 
+    def balance_label
+      balance = @browser.span(:id => 'postageBalanceAmt').text
+
+    end
+
     public
+    def balance
+      balance_label.text
+    end
+
     def print(*args)
       printer_window = PrintWindow.new(@browser)
       7.times {
