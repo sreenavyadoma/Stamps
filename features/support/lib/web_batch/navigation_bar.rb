@@ -19,6 +19,10 @@ module Batch
     end
 
     public
+    def buy_more
+      BuyPostage.new(@browser)
+    end
+
     def balance
       balance = balance_label.text
       log balance
