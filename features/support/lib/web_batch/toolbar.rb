@@ -15,19 +15,7 @@ module Batch
       @browser.elements(:text => 'Print').first
     end
 
-    def balance_label
-      @browser.span(:id => 'postageBalanceAmt')
-    end
-
     public
-    def balance
-      balance = balance_label.text
-      log balance
-      new_balance = test_helper.strip(test_helper.strip(balance, "$", ""), ",", "")
-      log new_balance
-      balance_f = new_balance.to_f
-      log balance_f
-    end
 
     def print(*args)
       printer_window = PrintWindow.new(@browser)

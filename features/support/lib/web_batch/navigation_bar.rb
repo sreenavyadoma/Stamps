@@ -5,6 +5,11 @@ module Batch
   #
   class NavigationBar < BrowserObject
     private
+
+    def balance_label
+      @browser.span(:id => 'postageBalanceAmt')
+    end
+
     def username_field
       @browser.span(:id => 'userNameText')
     end
@@ -14,6 +19,14 @@ module Batch
     end
 
     public
+    def balance
+      balance = balance_label.text
+      log balance
+      new_balance = test_helper.strip(test_helper.strip(balance, "$", ""), ",", "")
+      log new_balance
+      balance_f = new_balance.to_f
+      log balance_f
+    end
 
     def sign_out
       begin
