@@ -1,4 +1,4 @@
-Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an order
+Feature: Examples
 
   Background:
     Given I am signed in as a batch shipper auto06/password1
@@ -65,55 +65,55 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Expect Ounces to be 1
     * Expect Weight to be 0 lbs. 1 oz.
     * Expect Insured Value to be $15.00
-    * Expect Service Cost to be 0.00
+    * Expect Service Cost to be $0.00
     * Expect inline Service Cost for First-Class Mail Postcard to be greater than $0.35
-    * Expect Service Cost to be 0.35
+    * Expect Service Cost to be $0.35
     * Expect inline Service Cost for First Class Mail Package/Thick Envelope to be greater than $2.04
-    * Expect Service Cost to be 2.04
+    * Expect Service Cost to be $2.04
     * Expect inline Service Cost for First-Class Mail Envelope to be greater than $0.48
-    * Expect Service Cost to be 0.48
+    * Expect Service Cost to be $0.48
     * Expect inline Service Cost for First-Class Mail Large Envelope/Flat to be greater than $0.98
-    * Expect Service Cost to be 0.98
+    * Expect Service Cost to be $0.98
     * Expect inline Service Cost for Priority Mail Large/Thick Envelope to be greater than $5.05
-    * Expect Service Cost to be 5.05
+    * Expect Service Cost to be $5.05
     * Expect inline Service Cost for Priority Mail Package to be greater than $5.05
-    * Expect Service Cost to be 5.05
+    * Expect Service Cost to be $5.05
     * Expect inline Service Cost for Priority Mail Large Package to be greater than $5.54
-    * Expect Service Cost to be 5.54
+    * Expect Service Cost to be $5.54
     * Expect inline Service Cost for Priority Mail Flat Rate Envelope to be greater than $5.05
-    * Expect Service Cost to be 5.05
+    * Expect Service Cost to be $5.05
     * Expect inline Service Cost for Priority Mail Padded Flat Rate Envelope to be greater than $5.70
-    * Expect Service Cost to be 5.70
+    * Expect Service Cost to be $5.70
     * Expect inline Service Cost for Priority Mail Legal Flat Rate Envelope to be greater than $5.25
-    * Expect Service Cost to be 5.25
+    * Expect Service Cost to be $5.25
     * Expect inline Service Cost for Priority Mail Small Flat Rate Box to be greater than $5.25
-    * Expect Service Cost to be 5.25
+    * Expect Service Cost to be $5.25
     * Expect inline Service Cost for Medium Flat Rate Box to be greater than $11.30
-    * Expect Service Cost to be 11.30
+    * Expect Service Cost to be $11.30
     * Expect inline Service Cost for Priority Mail Large Flat Rate Box to be greater than $15.80
-    * Expect Service Cost to be 15.80
+    * Expect Service Cost to be $15.80
     * Expect inline Service Cost for Priority Mail Regional Rate Box A to be greater than $5.32
-    * Expect Service Cost to be 5.32
+    * Expect Service Cost to be $5.32
     * Expect inline Service Cost for Priority Mail Regional Rate Box B to be greater than $6.16
-    * Expect Service Cost to be 6.16
+    * Expect Service Cost to be $6.16
     * Expect inline Service Cost for Priority Mail Regional Rate Box C to be greater than $9.85
-    * Expect Service Cost to be 9.85
+    * Expect Service Cost to be $9.85
     * Expect inline Service Cost for Priority Mail Express Package to be greater than $13.09
-    * Expect Service Cost to be 13.09
+    * Expect Service Cost to be $13.09
     * Expect inline Service Cost for Priority Mail Express Flat Rate Envelope to be greater than $18.11
-    * Expect Service Cost to be 18.11
+    * Expect Service Cost to be $18.11
     * Expect inline Service Cost for Priority Mail Express Legal Flat Rate Envelope to be greater than $18.11
-    * Expect Service Cost to be 18.11
+    * Expect Service Cost to be $18.11
     * Expect inline Service Cost for Priority Mail Express Medium Flat Rate Box to be greater than $44.95
-    * Expect Service Cost to be 44.95
+    * Expect Service Cost to be $44.95
     * Expect inline Service Cost for Parcel Select Package to be greater than $5.70
-    * Expect Service Cost to be 5.70
+    * Expect Service Cost to be $5.70
     * Expect inline Service Cost for Parcel Select Large Package to be greater than $17.75
-    * Expect Service Cost to be 17.75
+    * Expect Service Cost to be $17.75
     * Expect inline Service Cost for Parcel Select Oversized Package to be greater than $62.99
-    * Expect Service Cost to be 62.99
+    * Expect Service Cost to be $62.99
     * Expect inline Service Cost for Media Mail Package to be greater than $2.72
-    * Expect Service Cost to be 2.72
+    * Expect Service Cost to be $2.72
 
     * Expect Ounces tooltip to display - The maximum value for this field is 15
     * Expect Pounds tooltip to display - The maximum value for this field is 70
@@ -126,14 +126,6 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
       | 0.00             | 0       | 1      | 0       | 0     | 0     |
     * Sign out
 
-
-  @regression
-  Feature: B-01588 As a batch shipper, I want to able to change the Domestic USPS service used to fulfill an order.
-
-  Background:
-    Given I am signed in as a batch shipper auto08/password1
-
-  @first_class_mail_package_thick_envelope
   Scenario: First-Class Mail Package/Thick Envelope
     * Add new order
     * Expect new Order ID created
@@ -152,7 +144,6 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
 
-  @first_class_mail_package_thick_envelope
   Scenario: First-Class Mail Package/Thick Envelope
     * Add new order
     * Expect new Order ID created
@@ -171,7 +162,6 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
 
-  @first_class_mail_large_envelope_flat
   Scenario: First-Class Mail Large Envelope/Flat
     * Add new order
     * Expect new Order ID created
@@ -190,7 +180,6 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00           | 0       | 1      | 0       | 0     | 0     |
 
-  @first_class_mail_package_thick_envelope
   Scenario: First-Class Mail Package/Thick Envelope
     * Add new order
     * Expect new Order ID created
