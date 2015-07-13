@@ -16,13 +16,17 @@ module Batch
     end
 
     def balance_label
-      balance = @browser.span(:id => 'postageBalanceAmt').text
-
+      @browser.span(:id => 'postageBalanceAmt')
     end
 
     public
     def balance
-      balance_label.text
+      balance = balance_label.text
+      log balance
+      new_balance = test_helper.strip(test_helper.strip(balance, "$", ""), ",", "")
+      log new_balance
+      balance_f = new_balance.to_f
+      log balance_f
     end
 
     def print(*args)
