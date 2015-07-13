@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
-default_profile: --tags @address_management --guess URL=qacc BROWSER=gc
+default_profile: --tags @print --guess URL=qacc BROWSER=gc
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie
