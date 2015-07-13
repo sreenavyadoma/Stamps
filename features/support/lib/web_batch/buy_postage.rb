@@ -8,7 +8,23 @@ class BuyPostage < BrowserObject
   end
 
   public
-  def buy value
+  def buy_10
+
+  end
+
+  def buy_25
+
+  end
+
+  def buy_50
+
+  end
+
+  def buy100
+
+  end
+
+  def buy_other value
 
   end
 

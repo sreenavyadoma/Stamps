@@ -5,7 +5,7 @@
 
  Then /^Buy \$(\d+) postage$/ do |amount|
    @old_balance = batch.navigation_bar.balance
-   batch.navigation_bar.buy_more.buy amount
+   batch.navigation_bar.buy_more.buy_other amount
  end
 
 
