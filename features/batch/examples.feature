@@ -1,14 +1,11 @@
-#@regression
 Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an order
 
   Background:
     Given I am signed in as a batch shipper auto06/password1
 
-  #@inline_rates
   Scenario:  Inline Rates
     * Add new order
     * Edit row 1 in the order grid
-    #  Setting Single order form values
     * Set Service to First Class Mail Package/Thick Envelope
     * Set Service to First-Class Mail Envelope
     * Set Service to First-Class Mail Large Envelope/Flat

@@ -55,7 +55,7 @@ end
 When /^Set Width to (\d*)$/ do |value|
   begin
     log "Set Width to \"#{value}\""
-    batch.single_order.width = log_param"Width", value
+    batch.single_order.width = log_param "Width", value
   end unless value.length == 0
 end
 
@@ -67,9 +67,7 @@ When /^Set Height to (\d*)$/ do |value|
 end
 
 And /^Set Service to (.*)$/ do |value|
-  log "Set Service to \"#{value}\""
-  cost = batch.single_order.service log_param "Service", value
-  log "Service:  #{value}, Cost:  #{cost}"
+  batch.single_order.service log_param "Service", value
 end
 
 Then /^Set Tracking to ([\w ]*)$/ do |value|

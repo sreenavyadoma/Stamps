@@ -1,7 +1,7 @@
 module Batch
   class LoginPage < BatchPage
     private
-    LOGIN_FIELDS = {
+    LOGIN_FIELDS ||= {
         :sign_in_link_loc => {:text => 'Sign In'},
         :username_loc => {:id => 'UserNameTextBox'},
         :password_loc => {:id => 'PasswordTextBox'},
