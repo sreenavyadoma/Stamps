@@ -40,9 +40,9 @@ module Batch
       case args.count
         when 0
           # user default sign in credentials
-          #credentials = batch_helper.rand_login_credentials
-          username = log_param "username", ENV["USR"] #credentials["username"]
-          password = log_param "password", ENV["PW"] #credentials["password"]
+          credentials = batch_helper.rand_login_credentials
+          username = log_param "username", credentials["username"]
+          password = log_param "password", credentials["password"]
         when 1
           if args[0].is_a? Hash
             username = args[0]['username']
