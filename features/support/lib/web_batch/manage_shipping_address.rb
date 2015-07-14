@@ -192,7 +192,7 @@ module Batch
     end
 
     def grid_cell(row, column)
-      @browser.td :css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-recordindex='#{row-1}'][data-boundview^=gridview]>tbody>tr>td:nth-child(#{column})"
+      @browser.td :css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-recordindex='#{row.to_i-1}'][data-boundview^=gridview]>tbody>tr>td:nth-child(#{column})"
     end
 
     def grid_cell_text(row, column)
@@ -203,10 +203,10 @@ module Batch
       @browser.image :css => "img[class*='x-tool-close']"
     end
 
-    def row_checked?(number)
-      field = @browser.table :css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-recordindex='#{number-1}'][data-boundview^=gridview]"
+    def row_checked?(row)
+      field = @browser.table :css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-recordindex='#{row.to_i-1}'][data-boundview^=gridview]"
       checked = field.attribute_value("class").include? "x-grid-item-selected"
-      log "Row #{number} checked? #{checked}"
+      log "Row #{row} checked? #{checked}"
       checked
     end
 
