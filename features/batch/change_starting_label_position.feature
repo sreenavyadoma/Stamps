@@ -2,7 +2,7 @@
 Feature: Change Starting Label Position
 
   Background:
-    Given I am signed in as a batch shipper auto20/password1
+    Given I am signed in as a batch shipper
 
   @change_starting_label_position
   Scenario: B-01633 As a batch shipper, I want to be able to change the starting label position

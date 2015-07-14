@@ -1,7 +1,7 @@
 Feature: Examples
 
   Background:
-    Given I am signed in as a batch shipper auto06/password1
+    Given I am signed in as a batch shipper
 
   Scenario:  Inline Rates
     * Add new order

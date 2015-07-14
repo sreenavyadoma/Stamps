@@ -2,7 +2,7 @@
 Feature: B-01726 Update Postage Balance After Each Print
 
   Background:
-    Given I am signed in as a batch shipper auto20/password1
+    Given I am signed in as a batch shipper
 
   @update_postage_balance
   Scenario: B-01726 Update Postage Balance After Each Print
