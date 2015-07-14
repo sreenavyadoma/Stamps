@@ -21,11 +21,11 @@ Then /^Expect Service Cost to be greater than \$([0-9.]+)$/ do |expected|
 end
 
 Then /^Expect inline Service Cost for ([a-zA-Z -\/]+) to be greater than \$([0-9.]+)$/ do |service, expected|
-  actual = batch.single_order.service = service
+  actual = batch.single_order.service service
   10.times { |counter|
     log_expectation "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
     break if actual.to_f >= expected.to_f
-    actual = batch.single_order.service = service
+    actual = batch.single_order.service service
   }
   actual.to_f.should be >= expected.to_f
 end
@@ -76,11 +76,11 @@ end
 
 Then /^Expect Service to be (.*)$/ do |expected|
   begin
-    actual = batch.single_order.service
+    actual = batch.single_order.service_Input_text
     10.times { |counter|
       included = actual.include? expected
       break if included
-      actual = batch.single_order.service
+      actual = batch.single_order.service_Input_text
     }
     expect(actual.include? expected).to be true
   end unless expected.length == 0

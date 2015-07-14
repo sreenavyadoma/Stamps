@@ -67,7 +67,7 @@ When /^Set Height to (\d*)$/ do |value|
 end
 
 And /^Set Service to (.*)$/ do |value|
-  batch.single_order.service = log_param "Service", value
+  batch.single_order.service log_param "Service", value
 end
 
 Then /^Set Tracking to ([\w ]*)$/ do |value|

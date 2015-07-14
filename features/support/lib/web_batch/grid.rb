@@ -67,7 +67,7 @@ module Batch
     end
 
     def service(order_id)
-      grid_text(:service, row_number(order_id))
+      grid_text(:service_Input_text, row_number(order_id))
     end
 
     def weight(order_id)

@@ -17,7 +17,7 @@ module Batch
         :item_sku => [15, 'Item SKU'],
         :item_name => [16, 'Item Name'],
         :ship_from => [17, 'Ship From'],
-        :service => [18, 'Service'],
+        :service_Input_text => [18, 'Service'],
         :weight => [19, 'Weight'],
         :insured_value => [20, 'Insured Value'],
         :reference_no => [21, 'Reference No.'],

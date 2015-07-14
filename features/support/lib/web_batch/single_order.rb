@@ -61,12 +61,16 @@ module Batch
       @services ||= Hash.new
     end
 
-    def service=(selection)
+    def service(selection)
       log_param "Service Selection", selection
-      ServiceSelection.new(@browser, selection).select
+      @service_cost = ServiceSelection.new(@browser, selection).select
     end
 
-    def service
+    def service_inline_cost
+      @service_cost
+    end
+
+    def service_Input_text
       browser_helper.text service_textbox, 'service'
     end
 

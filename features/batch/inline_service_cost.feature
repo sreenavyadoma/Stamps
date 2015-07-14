@@ -1,4 +1,4 @@
-
+@regression
 Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an order
 
   Background:
@@ -30,6 +30,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Change Ship-To Address to B-01671, Ship To Address is changed, 1901 Avenue Of The Stars, Los Angeles, CA, 90067-6001
     * Expect Service Cost to be greater than $0.00
 
+  @inline_service_rates
   Scenario:  User Views Price Next to Service Dropdown
     * Add new order
     * Expect new Order ID created
