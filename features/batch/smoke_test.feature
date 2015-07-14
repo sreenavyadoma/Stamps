@@ -1,7 +1,7 @@
 Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an order
 
   Background:
-    Given I am signed in as a batch shipper auto01/password1
+    Given I am signed in as a batch shipper
 
   Scenario:  User Views Price Next to Service Dropdown
     * Add new order
