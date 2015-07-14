@@ -61,15 +61,19 @@ module Batch
       @services ||= Hash.new
     end
 
-    def service(selection)
+    def service=(selection)
       log_param "Service Selection", selection
       ServiceSelection.new(@browser, selection).select
+    end
+
+    def service
+      browser_helper.text service_textbox, 'service'
     end
 
     def tracking=(selection)
       begin
         log_param "Tracking Selection", selection
-        #ServiceSelection.new(@browser, selection).select
+        TrackingSelection.new(@browser, selection).select
       end unless selection.length == 0
     end
 
@@ -268,7 +272,7 @@ module Batch
     end
 
     def service_default_text
-      service_field.attribute_value("placeholder")
+      service_textbox.attribute_value("placeholder")
     end
 
     def insured_value=(amount)
@@ -312,6 +316,10 @@ module Batch
     end
 
     private
+
+    def service_textbox
+      @browser.text_field :css => "input[componentid^=servicedroplist]"
+    end
 
     def insurance_cost_label
       @browser.label :css => 'label[class*=insurance_cost]'

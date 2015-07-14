@@ -67,14 +67,13 @@ When /^Set Height to (\d*)$/ do |value|
 end
 
 And /^Set Service to (.*)$/ do |value|
-  batch.single_order.service log_param "Service", value
+  batch.single_order.service = log_param "Service", value
 end
 
 Then /^Set Tracking to ([\w ]*)$/ do |value|
   begin
-    log "Set Tracking to \"#{value}\""
-    log "Tracking:  #{value}, Cost:  #{batch.single_order.tracking = log_param("Tracking", value)}"
-  end
+    batch.single_order.tracking = log_param "Tracking", value
+  end unless value.length == 0
 end
 
 And /^Set Insured Value to \$([\d*\.?\d*]*)$/ do |value|

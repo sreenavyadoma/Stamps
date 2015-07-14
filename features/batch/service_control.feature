@@ -1,5 +1,5 @@
-@regression
-Feature: B-01588 As a batch shipper, I want to able to change the Domestic USPS service used to fulfill an order.
+  @regression
+  Feature: B-01588 As a batch shipper, I want to able to change the Domestic USPS service used to fulfill an order.
   Background:
     Given I am signed in as a batch shipper
 
@@ -12,27 +12,48 @@ Feature: B-01588 As a batch shipper, I want to able to change the Domestic USPS 
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
-    * Set Service to First Class Mail Package/Thick Envelope
-    * Set Service to First-Class Mail Envelope
+
     * Set Service to First-Class Mail Large Envelope/Flat
+    * Expect Service to be First-Class Mail Large Envelope/Flat
+
     * Set Service to First-Class Mail Package/Thick Envelope
+    * Expect Service to be First-Class Mail Package/Thick Envelope
+
     * Set Service to Priority Mail Large/Thick Envelope
+    * Expect Service to be Priority Mail Large/Thick Envelope
+
     * Set Service to Priority Mail Package
+    * Expect Service to be Priority Mail Package
+
     * Set Service to Priority Mail Large Package
+    * Expect Service to be Priority Mail Large Package
+
     * Set Service to Priority Mail Flat Rate Envelope
+    * Expect Service to be Priority Mail Flat Rate Envelope
+
     * Set Service to Priority Mail Padded Flat Rate Envelope
+    * Expect Service to be Priority Mail Padded Flat Rate Envelope
+
     * Set Service to Priority Mail Legal Flat Rate Envelope
-    * Set Service to Priority Mail Small Flat Rate Box
-    * Set Service to Priority Mail Medium Flat Rate Box
-    * Set Service to Priority Mail Large Flat Rate Box
+    * Expect Service to be Priority Mail Legal Flat Rate Envelope
+
     * Set Service to Priority Mail Regional Rate Box A
+    * Expect Service to be Priority Mail Regional Rate Box A
+
     * Set Service to Priority Mail Regional Rate Box B
+    * Expect Service to be Priority Mail Regional Rate Box B
+
     * Set Service to Priority Mail Regional Rate Box C
+    * Expect Service to be Priority Mail Regional Rate Box C
+
     * Set Service to Priority Mail Express Package
+    * Expect Service to be Priority Mail Express Package
+
     * Set Service to Priority Mail Express Flat Rate Envelope
+    * Expect Service to be Priority Mail Express Flat Rate Envelope
+
+    * Set Service to Priority Mail Express Padded Flat Rate Envelope
+    * Expect Service to be Priority Mail Express Padded Flat Rate Envelope
+
     * Set Service to Priority Mail Express Legal Flat Rate Envelope
-    * Set Service to Priority Mail Express Medium Flat Rate Box
-    * Set Service to Parcel Select Package
-    * Set Service to Parcel Select Large Package
-    * Set Service to Parcel Select Oversized Package
-    * Set Service to Media Mail Package
+    * Expect Service to be Priority Mail Express Legal Flat Rate Envelope
