@@ -15,7 +15,6 @@ address_cleansing_qacc_gc:  --tags @address_cleansing --guess URL=qacc BROWSER=g
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie USR=auto08 PW=password1
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff USR=auto09 PW=password1
 
-# regression tests
 regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto10 PW=password1
 regress_qacc_ff: --tags @regression --guess URL=qacc BROWSER=ff USR=auto11 PW=password1
 regress_qacc_ie: --tags @regression --guess URL=qacc BROWSER=ie USR=auto12 PW=password1
