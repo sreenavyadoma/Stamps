@@ -1,10 +1,10 @@
-@regression
+
 Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an order
 
   Background:
     Given I am signed in as a batch shipper
 
-  @inline_service_rates
+
   Scenario: System Calls GetRates When "Ship To Address" is changed
     * Add new order
     * Expect new Order ID created
