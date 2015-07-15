@@ -28,7 +28,6 @@ Feature: Service Control
     * Set Service to Parcel Select Large Package
     * Set Service to Parcel Select Oversized Package
     * Set Service to Media Mail Package
-    * Set Ship From to default
     * Set Receipient address to;
       | name  | company    | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Package         | B-01588 Domestic USPS service  | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |

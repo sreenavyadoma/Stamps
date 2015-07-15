@@ -8,7 +8,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Expect new Order ID created
     * Expect Service Cost to be $0.00
 
-    * Set Ship From to default
+
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com

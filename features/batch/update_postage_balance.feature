@@ -8,7 +8,7 @@ Feature: B-01726 Update Postage Balance After Each Print
   Scenario: B-01726 Update Postage Balance After Each Print
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Recipient Complete Address to B-01726, Update Postage Balance After Each Print, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button

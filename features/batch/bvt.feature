@@ -17,7 +17,6 @@ Feature:  Build Verification Test
   Scenario: Address Cleansing
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
     * Set Receipient address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
@@ -43,7 +42,7 @@ Feature:  Build Verification Test
   Scenario:  Add New Order
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com

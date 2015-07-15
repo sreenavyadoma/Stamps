@@ -9,7 +9,7 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
     * Add new order
     * Expect new Order ID created
     * Expect Service Cost to be $0.00
-    * Set Ship From to default
+
     * Set Recipient Complete Address to B-01634 Print1, Priority Mail Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
@@ -19,7 +19,7 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
     * Add new order
     * Expect new Order ID created
     * Expect Service Cost to be $0.00
-    * Set Ship From to default
+
     * Set Recipient Complete Address to B-01634 Print2, Priority Mail Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com

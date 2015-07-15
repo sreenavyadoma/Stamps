@@ -13,7 +13,7 @@ Feature: B-01631 As a batch shipper, I want to be able to see the total cost of 
     * Expect Tracking Cost to be $0.00
     * Expect Total to be $0.00
     * Expect Tracking to be None
-    * Set Ship From to default
+
     * Set Recipient Complete Address to B-01631, I want to be able to see the total cost of my print job before I print, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button

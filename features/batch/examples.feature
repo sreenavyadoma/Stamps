@@ -38,7 +38,7 @@ Feature: Examples
     * Set Height to 1
     * Set Insured Value to $1.09
     
-    * Set Ship From to default
+
     * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
@@ -129,7 +129,7 @@ Feature: Examples
   Scenario: First-Class Mail Package/Thick Envelope
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | First-Class Mail Postcard | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -147,7 +147,7 @@ Feature: Examples
   Scenario: First-Class Mail Package/Thick Envelope
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | First-Class Mail Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -165,7 +165,7 @@ Feature: Examples
   Scenario: First-Class Mail Large Envelope/Flat
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                                 | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | First-Class Mail Large Envelope/Flat | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -183,7 +183,7 @@ Feature: Examples
   Scenario: First-Class Mail Package/Thick Envelope
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                                    | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | First-Class Mail Package/Thick Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -201,7 +201,7 @@ Feature: Examples
   Scenario: Priority Mail Large/Thick Envelope
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                                | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Large/Thick Envelope  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -219,7 +219,7 @@ Feature: Examples
   Scenario: Priority Mail Package
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -237,7 +237,7 @@ Feature: Examples
   Scenario: Priority Mail Large Package
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Large Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -255,7 +255,7 @@ Feature: Examples
   Scenario: Priority Mail Flat Rate Envelope
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -273,7 +273,7 @@ Feature: Examples
   Scenario: Priority Mail Padded Flat Rate Envelope
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Padded Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -291,7 +291,7 @@ Feature: Examples
   Scenario: Priority Mail Legal Flat Rate Envelope
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Legal Flat Rate Envelope| B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -309,7 +309,7 @@ Feature: Examples
   Scenario: Priority Mail Small Flat Rate Box
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Small Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -327,7 +327,7 @@ Feature: Examples
   Scenario: Priority Mail Medium Flat Rate Box
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                               | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Medium Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -345,7 +345,7 @@ Feature: Examples
   Scenario: Priority Mail Large Flat Rate Box
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Large Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -363,7 +363,7 @@ Feature: Examples
   Scenario: Priority Mail Regional Rate Box A
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Regional Rate Box A | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -381,7 +381,7 @@ Feature: Examples
   Scenario: Priority Mail Regional Rate Box B
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Regional Rate Box B | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -399,7 +399,7 @@ Feature: Examples
   Scenario: Priority Mail Regional Rate Box C
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Regional Rate Box C | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -417,7 +417,7 @@ Feature: Examples
   Scenario: Priority Mail Express Package
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                          | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Express Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -435,7 +435,7 @@ Feature: Examples
   Scenario: Priority Mail Express Flat Rate Envelope
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Express Flat Rate Envelope  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -455,7 +455,7 @@ Feature: Examples
   Scenario: Priority Mail Express Legal Flat Rate Envelope
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Express Legal Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -473,7 +473,7 @@ Feature: Examples
   Scenario: Priority Mail Express Medium Flat Rate Box
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Express Medium Flat Rate Box  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -491,7 +491,7 @@ Feature: Examples
   Scenario: Parcel Select Package
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Parcel Select Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -500,7 +500,7 @@ Feature: Examples
   Scenario: Parcel Select Large Package
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Parcel Select Large Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -518,7 +518,7 @@ Feature: Examples
   Scenario: Parcel Select Oversized Package
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name                            | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Parcel Select Oversized Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -536,7 +536,7 @@ Feature: Examples
   Scenario: Media Mail Package
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
+
     * Set Receipient address to;
       | name               | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Media Mail Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |

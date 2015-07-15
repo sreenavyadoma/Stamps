@@ -8,7 +8,6 @@ Feature: B-01603 As a batch shipper, I want Stamps.com to verify that my deliver
   Scenario: Address Cleansing
     * Add new order
     * Expect new Order ID created
-    * Set Ship From to default
     * Set Service to Priority Mail Package
     * Set Receipient address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
