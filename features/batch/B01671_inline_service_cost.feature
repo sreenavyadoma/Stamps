@@ -9,7 +9,7 @@ Feature: System Calls GetRates When "Ship To Address" is changed
     * Add new order
     * Expect new Order ID created
 
-    * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 794-4522
     * Set Email to rtest@stamps.com
     * Expect Service Cost to be $0.00
