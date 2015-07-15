@@ -19,10 +19,9 @@ Feature: B-01603 Address Cleansing
     * Expect State to be CA
     * Expect Phone to be (415) 123-5555
     * Expect Email to be rtest@stamps.com
-    * Set Recipient Complete Address to B-01603, Address Cleansing, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01603, Address Cleansing, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Priority Mail Package
     * Sign out
-
