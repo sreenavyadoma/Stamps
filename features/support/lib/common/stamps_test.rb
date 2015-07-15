@@ -51,7 +51,7 @@ module Stamps
       #browser = Watir::Browser.new :chrome, :prefs => prefs
     elsif Stamps.browser.firefox?
       begin
-        log "Executed Shell Command:  taskkill /im firefox.exe /f [ #{system "taskkill /im firefox.exe /f"} ]"
+        #log "Executed Shell Command:  taskkill /im firefox.exe /f [ #{system "taskkill /im firefox.exe /f"} ]"
       rescue
         #ignore
       end
