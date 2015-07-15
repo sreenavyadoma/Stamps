@@ -105,7 +105,6 @@ module Batch
     end
 
     def check_naws_plugin_error
-      @printing_error = false
       begin
         error_label = @browser.div :text => 'Error'
         if browser_helper.field_present? error_label
@@ -136,7 +135,6 @@ module Batch
     end
 
     def check_unauthenticated_error
-      @printing_error = false
       begin
         error_label = @browser.p :text => "Error code: [4522293]"
         if browser_helper.field_present? error_label
@@ -168,7 +166,6 @@ module Batch
     end
 
     def check_account_status_error
-      @printing_error = false
       begin
         error_label = @browser.p :text => "Error code: [4522357]"
         if browser_helper.field_present? error_label
@@ -200,10 +197,12 @@ module Batch
     end
 
     def printing_error_check
+      @printing_error = false
       check_naws_plugin_error if Stamps.browser.chrome?
       check_unauthenticated_error
       check_account_status_error
       log "Printing Error Encountered:  #{@printing_error}"
+      @printing_error
     end
 
     def x_button

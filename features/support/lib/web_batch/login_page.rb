@@ -24,7 +24,7 @@ module Batch
       @browser.text_field(LOGIN_FIELDS[:password_loc])
     end
 
-    def sign_in_button_field
+    def sign_in_btn
       @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
     end
 
@@ -40,7 +40,7 @@ module Batch
       case args.count
         when 0
           # user default sign in credentials
-          credentials = batch_helper.rand_login_credentials
+          # credentials = batch_helper.rand_login_credentials
           username = log_param "username", ENV["USR"] #credentials["username"]
           password = log_param "password", ENV["PW"] #credentials["password"]
         when 1
@@ -64,8 +64,8 @@ module Batch
             username_textbox.wait_until_present
             self.username = username
             self.password = password
-            browser_helper.click sign_in_button_field, "SignIn"
-            sign_in_button_field.wait_while_present(60)
+            browser_helper.click sign_in_button, "SignIn"
+            sign_in_button.wait_while_present(60)
           end
         rescue
           #ignore
@@ -83,7 +83,7 @@ module Batch
     end
 
     def sign_in_button
-      sign_in_button_field.click
+      sign_in_btn.click
     end
   end
 end

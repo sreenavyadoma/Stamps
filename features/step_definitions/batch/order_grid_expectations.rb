@@ -201,6 +201,7 @@ Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is succe
     test_result = @old_balance.to_f == @new_balance.to_f
     log "Printing error detected."
     log "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(test_result)?"Passed":"Failed"}"
+    expect(test_result).to be true
   else
     @new_balance = batch.navigation_bar.balance
     test_result = @old_balance.to_f == @new_balance.to_f + expected.to_f
@@ -216,6 +217,7 @@ Then /^Expect Printing cost is deducted from customer balance$/ do
     test_result = @old_balance.to_f == @new_balance.to_f
     log "Printing error detected."
     log "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(test_result)?"Passed":"Failed"}"
+    expect(test_result).to be true
   else
     @new_balance = batch.navigation_bar.balance
     @postage_total = batch.single_order.total

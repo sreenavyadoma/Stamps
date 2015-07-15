@@ -34,16 +34,17 @@ module Batch
     end
 
     def sign_out
-      begin
-        2.times { #todo must hover over signout link
+        5.times { #todo must hover over signout link
+          begin
           browser_helper.click username_field, "userNameText" unless sign_out_link.present?
+          sleep(1)
           browser_helper.click sign_out_link, "signOutLink"
-          sign_in_button_field.wait_until_present(3)
-          break browser_helper.field_present?  sign_in_button_field
+          username_field.wait_while_present
+          break browser_helper.field_present?  sign_in_button
+          rescue
+            #ignore
+          end
         }
-      rescue
-        #ignore
-      end
     end
 
     def username
