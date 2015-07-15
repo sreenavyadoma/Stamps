@@ -14,7 +14,7 @@ Feature: B-01671 User Views Price Next to Service Dropdown
     * Set Ounces to 1
     * Set Service to Priority Mail Package
     * Expect Recipient Name to be B-01671
-    * Expect Company Name to be Inline Rates
+    * Expect Company Name to be Service Inline Rates
     * Expect Street Address to be 1900 E Grand Ave
     * Expect City to be El Segundo
     * Expect State to be CA
