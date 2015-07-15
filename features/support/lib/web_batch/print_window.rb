@@ -43,7 +43,7 @@ module Batch
     def print
       begin
         print_button.when_present.click
-        @printing_error = print_result
+        @printing_error = printing_error_check
       rescue StandardError => print_error
         log print_error.message
         @printing_error = true
@@ -53,14 +53,14 @@ module Batch
 
     def print_expecting_error
       print_button.when_present.click
-      print_result
+      printing_error_check
       self
     end
 
     def print_sample
       begin
         print_sample_button.when_present.click #todo sometimes print says connecting to plugin
-        print_result
+        printing_error_check
       rescue StandardError => print_error
         log print_error.message
         @print_status = false
@@ -70,7 +70,7 @@ module Batch
 
     def print_sample_expecting_error
       print_sample_button.when_present.click
-      print_result
+      printing_error_check
       self
     end
 
@@ -105,9 +105,11 @@ module Batch
     end
 
     def check_naws_plugin_error
+      @printing_error = false
       begin
         error_label = @browser.div :text => 'Error'
         if browser_helper.field_present? error_label
+          @printing_error = true
           ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
           log "-- Chrome NAWS Plugin Error --"
           ptags.each {|p_tag|
@@ -130,23 +132,24 @@ module Batch
       rescue
         #ignore
       end
+      @printing_error
     end
 
-    def postage_rating_error
+    def check_unauthenticated_error
       @printing_error = false
       begin
-        error_label = @browser.div :text => 'Error'
+        error_label = @browser.p :text => "Error code: [4522293]"
         if browser_helper.field_present? error_label
           @printing_error = true
           ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
-          log "-- Postage Rating Error --"
+          log "-- Postage Rating Error (Error code: [4522293]) --"
           ptags.each {|p_tag|
             if browser_helper.field_present? p_tag
               p_tag_text = browser_helper.text p_tag
               log "\n#{p_tag_text}"
             end
           }
-          log "-- Postage Rating Error --"
+          log "-- Postage Rating Error (Error code: [4522293]) --"
           if error_ok_button.present?
             @printing_error = true
             error_message = self.error_message
@@ -164,9 +167,43 @@ module Batch
       @printing_error
     end
 
-    def print_result
+    def check_account_status_error
+      @printing_error = false
+      begin
+        error_label = @browser.p :text => "Error code: [4522357]"
+        if browser_helper.field_present? error_label
+          @printing_error = true
+          ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
+          log "-- Account Status Error (Error code: [4522357]) --"
+          ptags.each {|p_tag|
+            if browser_helper.field_present? p_tag
+              p_tag_text = browser_helper.text p_tag
+              log "\n#{p_tag_text}"
+            end
+          }
+          log "-- Account Status Error (Error code: [4522357]) --"
+          if error_ok_button.present?
+            @printing_error = true
+            error_message = self.error_message
+            5.times {
+              error_ok_button.click
+              break unless error_ok_button.present?
+            }
+            close
+          end
+          close
+        end
+      rescue
+        #ignore
+      end
+      @printing_error
+    end
+
+    def printing_error_check
       check_naws_plugin_error if Stamps.browser.chrome?
-      postage_rating_error
+      check_unauthenticated_error
+      check_account_status_error
+      log "Printing Error Encountered:  #{@printing_error}"
     end
 
     def x_button

@@ -17,5 +17,5 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Expect Ship Cost to be $3.18
     * Print
     * Expect $3.18 is deducted from customer balance if printing is successful
-    * Expect Grid Ship Cost is deducted from customer balance if printing is successful
+    * Expect Printing cost is deducted from customer balance
     * Sign out

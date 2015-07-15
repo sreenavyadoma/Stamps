@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
-default_profile: --tags @regression --guess URL=qacc BROWSER=ie USR=webbatch_0001 PW=password1
+default_profile: --tags @update_postage_balance --guess URL=qacc BROWSER=ie USR=auto01 PW=password1
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto01 PW=password1
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto02 PW=password1
