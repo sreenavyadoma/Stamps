@@ -3,7 +3,8 @@ cuke_reports: --format json --out report.json --format progress --format html --
 
 default_profile: --tags @inline_service_rates --guess URL=qacc BROWSER=ie USR=webbatch_0001 PW=password1
 
-orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ff USR=auto02 PW=password1
+orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ff USR=webbatch_0005 PW=password1
+orders_25: --tags @orders_25 --guess URL=qacc BROWSER=ff USR=cm_cpp_0002 PW=pass111
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto01 PW=password1
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto02 PW=password1
