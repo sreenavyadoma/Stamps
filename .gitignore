@@ -3,6 +3,10 @@
 .idea/
 *.png
 
+#reports
+*.html
+*.json
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
