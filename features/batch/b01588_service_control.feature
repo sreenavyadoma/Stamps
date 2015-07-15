@@ -1,5 +1,5 @@
   @regression
-  Feature: B-01588 As a batch shipper, I want to able to change the Domestic USPS service used to fulfill an order.
+  Feature: B-01588 Domestic USPS service used to fulfill an order.
   Background:
     Given I am signed in as a batch shipper
 
@@ -57,3 +57,5 @@
 
     * Set Service to Priority Mail Express Legal Flat Rate Envelope
     * Expect Service to be Priority Mail Express Legal Flat Rate Envelope
+
+    * Sign out
