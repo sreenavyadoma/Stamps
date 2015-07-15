@@ -1,5 +1,5 @@
 @regression
-Feature: B-01603 Exact Address Not Found
+Feature: B-01604 Orders with an ambiguous address
 
   Background:
     Given I am signed in as a batch shipper

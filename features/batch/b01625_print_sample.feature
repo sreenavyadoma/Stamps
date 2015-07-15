@@ -1,5 +1,5 @@
 @regression
-Feature: B-01625  As a batch shipper, I want to be able to print sample postage
+Feature: B-01625  Print Sample
 
   Background:
     Given I am signed in as a batch shipper
