@@ -73,3 +73,5 @@ Feature: B-01736 Set Correct Default for Tracking
     * Set Service to Priority Mail Express Legal Flat Rate Envelope
     * Expect Service to be Priority Mail Express Legal Flat Rate Envelope
     * Expect Tracking to be USPS Tracking
+
+    * Sign out
