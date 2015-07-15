@@ -178,7 +178,8 @@ Then /^Expect Insured Value to be \$(\d*\.?\d*)$/ do |expected|
 end
 
 Then /^Expect new Order ID created$/ do
-  log Batch.order_id.to_i
+  log "New Order ID created:  #{Batch.order_id.to_i>0}"
+  Batch.order_id.to_i.should be > 0
 end
 
 Then /^Expect Ship Cost to be \$([0-9.]*)$/ do |expected|

@@ -22,6 +22,7 @@ module Stamps
       rescue
         #ignore
       end
+
       browser_name = 'Google Chrome'
       chrome_data_dir = "C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data"
 
