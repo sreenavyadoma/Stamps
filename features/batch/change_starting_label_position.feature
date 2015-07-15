@@ -9,7 +9,7 @@ Feature: Change Starting Label Position
     * Add new order
     * Expect new Order ID created
 
-    * Set Recipient Address to B-01625 Print, Priority Mail Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01625 Print, Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Priority Mail Package

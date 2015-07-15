@@ -34,7 +34,7 @@ Feature: 10 orders
     * Add new order
     * Expect new Order ID created
     * Set Ship From to default
-    * Set Recipient Address to B-01756 Print, Priority Mail Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01756 Print, Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
@@ -44,7 +44,7 @@ Feature: 10 orders
     * Add new order
     * Expect new Order ID created
     * Set Ship From to default
-    * Set Recipient Address to B-01756 Print, Priority Mail Large Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01756 Print, Large Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
@@ -54,7 +54,7 @@ Feature: 10 orders
     * Add new order
     * Expect new Order ID created
     * Set Ship From to default
-    * Set Recipient Address to B-01756 Print, Priority Mail Legal Flat Rate Envelope, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01756 Print, Legal Flat Rate Envelope, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
@@ -64,7 +64,7 @@ Feature: 10 orders
     * Add new order
     * Expect new Order ID created
     * Set Ship From to default
-    * Set Recipient Address to B-01756 Print, Priority Mail Regional Rate Box A, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01756 Print, Regional Rate Box A, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
@@ -77,7 +77,7 @@ Feature: 10 orders
     * Add new order
     * Expect new Order ID created
     * Set Ship From to default
-    * Set Recipient Address to B-01756 Print, Priority Mail Express Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01756 Print, Express Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
@@ -87,7 +87,7 @@ Feature: 10 orders
     * Add new order
     * Expect new Order ID created
     * Set Ship From to default
-    * Set Recipient Address to B-01756 Print, Priority Mail Express Padded Flat Rate Envelope, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01756 Print, Express Padded Flat Rate Envelope, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 11
