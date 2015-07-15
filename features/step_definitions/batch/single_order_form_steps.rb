@@ -1,5 +1,5 @@
 
-When /^Set Recipient Complete Address to (.*)$/ do |address|
+When /^Set Recipient Address to (.*)$/ do |address|
   log "Set Recipient Address to \"#{address}\""
   batch.single_order.address = log_param "Address", address
 end

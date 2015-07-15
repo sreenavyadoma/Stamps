@@ -43,7 +43,7 @@ Feature:  Build Verification Test
     * Add new order
     * Expect new Order ID created
 
-    * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Set Pounds to 1

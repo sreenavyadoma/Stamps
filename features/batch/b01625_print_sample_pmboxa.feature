@@ -8,7 +8,7 @@ Feature: B-01625  Print Sample Priority Mail Regional Rate Box A
   Scenario:  Print Sample - Priority Mail Regional Rate Box A
     * Add new order
     * Expect new Order ID created
-    * Set Recipient Complete Address to B-01624, Print Priority Mail Regional Rate Box A, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01624, Print Priority Mail Regional Rate Box A, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Click Ship To Less button
     * Set Service to Priority Mail Regional Rate Box A

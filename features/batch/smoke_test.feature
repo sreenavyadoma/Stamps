@@ -9,7 +9,7 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
     * Expect Service Cost to be $0.00
 
 
-    * Set Recipient Complete Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button

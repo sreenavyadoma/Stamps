@@ -8,7 +8,7 @@
     * Add new order
     * Edit row 1 in the order grid
 
-    * Set Recipient Complete Address to B-01588, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01588, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
