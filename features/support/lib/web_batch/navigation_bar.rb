@@ -36,9 +36,11 @@ module Batch
     def sign_out
         5.times { #todo must hover over signout link
           begin
-          browser_helper.click username_field, "userNameText" unless sign_out_link.present?
+          @browser.action.move_to(username_field).click().perform
+          @browser.action.move_to(sign_out_link).click().perform
+          #browser_helper.click username_field, "userNameText" unless sign_out_link.present?
           sleep(1)
-          browser_helper.click sign_out_link, "signOutLink"
+          #browser_helper.click sign_out_link, "signOutLink"
           username_field.wait_while_present
           break browser_helper.field_present?  sign_in_button
           rescue

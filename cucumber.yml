@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
-default_profile: --tags @inline_service_rates --guess URL=qacc BROWSER=ie USR=webbatch_0001 PW=password1
+default_profile: --tags @wip --guess URL=qacc BROWSER=gc USR=webbatch_0001 PW=password1
 
 orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ff USR=auto02 PW=password1
 
