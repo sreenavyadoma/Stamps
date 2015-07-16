@@ -49,7 +49,7 @@ module Batch
           browser_helper.click sign_out_link, "signOutLink"
           username_field.wait_while_present
           @browser.window.move_to 0, 0
-          break browser_helper.field_present?  sign_in_btn
+          break if browser_helper.field_present? sign_in_btn
         rescue
           #ignore
         end
