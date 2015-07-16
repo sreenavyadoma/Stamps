@@ -147,4 +147,17 @@ Cucumber::Rake::Task.new(:print_costs_qacc_gc) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:purchasing_qacc_ie) do |t|
+  t.profile = 'purchasing_qacc_ie'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
+Cucumber::Rake::Task.new(:purchasing_qacc_ff) do |t|
+  t.profile = 'purchasing_qacc_ff'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:purchasing_qacc_gc) do |t|
+  t.profile = 'purchasing_qacc_gc'
+  t.cucumber_opts = "-p cuke_reports"
+end
