@@ -233,6 +233,7 @@ module Batch
       check_naws_plugin_error if Stamps.browser.chrome?
       check_unauthenticated_error
       check_account_status_error
+      check_rating_error
       log "Printing Error Encountered:  #{@printing_error}"
       @printing_error
     end
