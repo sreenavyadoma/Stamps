@@ -6,6 +6,17 @@ module Batch
   class NavigationBar < BrowserObject
     private
 
+    def login_div
+      div = @browser.div :id => "loginDiv"
+      begin
+        div.wait_until_present 30
+      rescue
+        #ignore
+      end
+      log "Logout successful?  #{(div.present?)? 'Yes': 'No'}"
+      div
+    end
+
     def balance_label
       @browser.span(:id => 'postageBalanceAmt')
     end
@@ -34,23 +45,22 @@ module Batch
     end
 
     def sign_out
-      @browser.window.move_to 0, 0
-      @browser.window.resize_to 1500, 850
-      @browser.window.move_to 1550, 500
       5.times { #todo must hover over signout link
         begin
+          @browser.window.move_to 0, 0
+          @browser.window.resize_to 1200, 750
+          @browser.window.move_to 1550, 500
           username_field.hover
           browser_helper.click username_field, "userNameText" unless sign_out_link.present?
-          sleep(1)
           sign_out_link.hover
           browser_helper.click sign_out_link, "signOutLink"
           username_field.wait_while_present
-          break browser_helper.field_present?  sign_in_button
+          @browser.window.move_to 0, 0
+          break if browser_helper.field_present? login_div
         rescue
           #ignore
         end
       }
-      @browser.window.move_to 0, 0
     end
 
     def username

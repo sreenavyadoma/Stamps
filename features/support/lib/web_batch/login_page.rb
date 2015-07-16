@@ -8,6 +8,7 @@ module Batch
         :sign_in_button_loc => {:id => 'signInButton'}
     }
 
+    public
     def page_title
       @browser.title
     end
@@ -28,7 +29,6 @@ module Batch
       @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
     end
 
-    public
 
     def visit
       @browser.goto url = "http://#{Batch.url_prefix}.stamps.com/webbatch/"
@@ -65,8 +65,7 @@ module Batch
             self.username = username
             self.password = password
             browser_helper.click sign_in_btn, "SignIn"
-            sign_in_button.wait_while_present(10)
-
+            sign_in_button.wait_while_present(30)
           end
         rescue
           #ignore
