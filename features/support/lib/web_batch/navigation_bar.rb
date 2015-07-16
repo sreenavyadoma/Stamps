@@ -37,7 +37,7 @@ module Batch
       5.times { #todo must hover over signout link
         begin
           @browser.window.move_to 0, 0
-          @browser.window.resize_to 1500, 850
+          @browser.window.resize_to 1200, 750
           @browser.window.move_to 1550, 500
           username_field.hover
           browser_helper.click username_field, "userNameText" unless sign_out_link.present?
