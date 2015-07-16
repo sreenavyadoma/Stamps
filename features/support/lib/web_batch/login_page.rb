@@ -8,6 +8,7 @@ module Batch
         :sign_in_button_loc => {:id => 'signInButton'}
     }
 
+    public
     def page_title
       @browser.title
     end
@@ -28,7 +29,6 @@ module Batch
       @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
     end
 
-    public
 
     def visit
       @browser.goto url = "http://#{Batch.url_prefix}.stamps.com/webbatch/"

@@ -6,6 +6,10 @@ module Batch
   class NavigationBar < BrowserObject
     private
 
+    def sign_in_btn
+      @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
+    end
+
     def balance_label
       @browser.span(:id => 'postageBalanceAmt')
     end
@@ -41,12 +45,11 @@ module Batch
           @browser.window.move_to 1550, 500
           username_field.hover
           browser_helper.click username_field, "userNameText" unless sign_out_link.present?
-          sleep(1)
           sign_out_link.hover
           browser_helper.click sign_out_link, "signOutLink"
           username_field.wait_while_present
           @browser.window.move_to 0, 0
-          break browser_helper.field_present?  sign_in_button
+          break browser_helper.field_present?  sign_in_btn
         rescue
           #ignore
         end
