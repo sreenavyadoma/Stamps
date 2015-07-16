@@ -21,6 +21,11 @@ module Batch
       @browser.span(:id => 'postageBalanceAmt')
     end
 
+
+    def buy_more_link
+      @browser.a(:id => 'buyMorePostageLnk')
+    end
+
     def username_field
       @browser.span(:id => 'userNameText')
     end
@@ -30,6 +35,27 @@ module Batch
     end
 
     public
+
+    def select_buy_more
+
+      @browser.window.move_to 0, 0
+      @browser.window.resize_to 1500, 850
+      @browser.window.move_to 3000, 500
+
+      balance_label.focus
+      browser_helper.click balance_label, "Balance"
+      balance_label.hover
+      buy_more_link.focus
+      buy_more_link.wait_until_present(10)
+      log "Clicking Buy More link"
+      browser_helper.click buy_more_link, "BuyMoreLink"
+
+
+      #balance_label.wait_while_present
+      @browser.window.move_to 0, 0
+
+    end
+
     def buy_more
       BuyPostage.new(@browser)
     end
@@ -49,7 +75,7 @@ module Batch
         begin
           @browser.window.move_to 0, 0
           @browser.window.resize_to 1200, 750
-          @browser.window.move_to 1550, 500
+          @browser.window.move_to 3000, 500
           username_field.hover
           browser_helper.click username_field, "userNameText" unless sign_out_link.present?
           sign_out_link.hover
