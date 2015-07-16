@@ -8,6 +8,11 @@ module Batch
 
     def login_div
       div = @browser.div :id => "loginDiv"
+      begin
+        div.wait_until_present 30
+      rescue
+        #ignore
+      end
       log "Logout successful?  #{(div.present?)? 'Yes': 'No'}"
       div
     end
