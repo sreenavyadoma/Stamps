@@ -64,8 +64,8 @@ module Batch
             username_textbox.wait_until_present
             self.username = username
             self.password = password
-            browser_helper.click sign_in_button, "SignIn"
-            sign_in_button.wait_while_present(60)
+            browser_helper.click sign_in_btn, "SignIn"
+            sign_in_button.wait_while_present(10)
 
           end
         rescue

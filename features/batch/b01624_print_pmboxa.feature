@@ -4,8 +4,10 @@ Feature: B-01624 Print Priority Mail Regional Rate Box A
   Background:
     Given I am signed in as a batch shipper
 
-  @print
+  @print_pmrrboxa
   Scenario:  Print Priority Mail Regional Rate Box A
+    * Sign out
+    * I am signed in as a batch shipper
     * Add new order
     * Expect new Order ID created
     * Set Recipient Address to B-01624, Regional Rate Box A, 1900 E Grand Ave, El Segundo, CA, 90245

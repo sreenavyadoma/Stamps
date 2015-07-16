@@ -65,7 +65,7 @@ module Stamps
     end
 
     log_param 'Browser', browser_name
-    browser.window.maximize
+    #browser.window.maximize
     @browser = browser
   end
 

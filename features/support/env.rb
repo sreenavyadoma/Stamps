@@ -3,6 +3,8 @@ $LOAD_PATH << File.expand_path('lib/web_batch', __FILE__)
 
 require 'data_magic'
 require 'rake'
+require 'watir'
+require 'selenium-webdriver'
 require 'watir-webdriver'
 require 'log4r'
 require 'rspec'
