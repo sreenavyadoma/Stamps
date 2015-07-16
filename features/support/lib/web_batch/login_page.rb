@@ -65,8 +65,7 @@ module Batch
             self.username = username
             self.password = password
             browser_helper.click sign_in_btn, "SignIn"
-            sign_in_button.wait_while_present(10)
-
+            sign_in_button.wait_while_present(30)
           end
         rescue
           #ignore
