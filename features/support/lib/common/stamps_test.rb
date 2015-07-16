@@ -67,7 +67,7 @@ module Stamps
     log_param 'Browser', browser_name
     browser.window.move_to 0, 0
     browser.window.resize_to 1500, 850
-    browser.window.move_to 1550, -500
+    browser.window.move_to 1550, 500
     @browser = browser
   end
 
