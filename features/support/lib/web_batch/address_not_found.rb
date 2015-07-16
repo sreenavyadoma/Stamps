@@ -36,8 +36,12 @@ module Batch
       expand_ship_to
       browser_helper.set_text address_textbox, BatchHelper.instance.formatAddress(partial_addy), 'Address'
       10.times {
-        item_label.click
-        break if (browser_helper.field_present?  exact_address_not_found_field) || (browser_helper.field_present?  validate_address_link)
+        begin
+          item_label.click
+          break if (browser_helper.field_present?  exact_address_not_found_field) || (browser_helper.field_present?  validate_address_link)
+        rescue
+          #ignore
+        end
       }
       less
       self
