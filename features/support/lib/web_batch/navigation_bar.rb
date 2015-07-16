@@ -6,8 +6,10 @@ module Batch
   class NavigationBar < BrowserObject
     private
 
-    def sign_in_btn
-      @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
+    def login_div
+      div = @browser.div :id => "loginDiv"
+      log "Logout successful?  #{(div.present?)? 'Yes': 'No'}"
+      div
     end
 
     def balance_label
@@ -49,7 +51,7 @@ module Batch
           browser_helper.click sign_out_link, "signOutLink"
           username_field.wait_while_present
           @browser.window.move_to 0, 0
-          break if browser_helper.field_present? sign_in_btn
+          break if browser_helper.field_present? login_div
         rescue
           #ignore
         end
