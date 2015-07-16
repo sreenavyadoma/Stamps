@@ -196,6 +196,38 @@ module Batch
       @printing_error
     end
 
+    def check_rating_error
+      begin
+        error_label = @browser.p :text => "Error code: [5177601]"
+        if browser_helper.field_present? error_label
+          @printing_error = true
+          ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
+          log "-- Rating Error code: [5177601] --"
+
+          ptags.each {|p_tag|
+            if browser_helper.field_present? p_tag
+              p_tag_text = browser_helper.text p_tag
+              log "\n#{p_tag_text}"
+            end
+          }
+          log "-- Rating Error code: [5177601] --"
+          if error_ok_button.present?
+            @printing_error = true
+            error_message = self.error_message
+            5.times {
+              error_ok_button.click
+              break unless error_ok_button.present?
+            }
+            close
+          end
+          close
+        end
+      rescue
+        #ignore
+      end
+      @printing_error
+    end
+
     def printing_error_check
       @printing_error = false
       check_naws_plugin_error if Stamps.browser.chrome?
