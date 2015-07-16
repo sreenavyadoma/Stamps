@@ -7,7 +7,6 @@ Feature:  BVT - Shipping Address Management
   @bvt_add_new_order
   Scenario:  Add New Order
     * Add new order
-    * Expect new Order ID created
     * Set Recipient Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com

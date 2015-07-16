@@ -52,7 +52,6 @@ Feature: Examples
       | 0             | 0       | 1      | 0       | 0     | 0       |
 
     # Expectations
-    * Expect new Order ID created
     * Expect Recipient Name to be B-01671
     * Expect Company Name to be Inline Rates
     * Expect Street Address to be 1900 E Grand Ave
@@ -128,7 +127,6 @@ Feature: Examples
 
   Scenario: First-Class Mail Package/Thick Envelope
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -146,7 +144,6 @@ Feature: Examples
 
   Scenario: First-Class Mail Package/Thick Envelope
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -164,7 +161,6 @@ Feature: Examples
 
   Scenario: First-Class Mail Large Envelope/Flat
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                                 | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -182,7 +178,6 @@ Feature: Examples
 
   Scenario: First-Class Mail Package/Thick Envelope
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                                    | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -200,7 +195,6 @@ Feature: Examples
 
   Scenario: Priority Mail Large/Thick Envelope
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                                | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -218,7 +212,6 @@ Feature: Examples
 
   Scenario: Priority Mail Package
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -236,7 +229,6 @@ Feature: Examples
 
   Scenario: Priority Mail Large Package
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -254,7 +246,6 @@ Feature: Examples
 
   Scenario: Priority Mail Flat Rate Envelope
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -272,7 +263,6 @@ Feature: Examples
 
   Scenario: Priority Mail Padded Flat Rate Envelope
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -290,7 +280,6 @@ Feature: Examples
 
   Scenario: Priority Mail Legal Flat Rate Envelope
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -308,7 +297,6 @@ Feature: Examples
 
   Scenario: Priority Mail Small Flat Rate Box
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -326,7 +314,6 @@ Feature: Examples
 
   Scenario: Priority Mail Medium Flat Rate Box
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                               | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -344,7 +331,6 @@ Feature: Examples
 
   Scenario: Priority Mail Large Flat Rate Box
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -362,7 +348,6 @@ Feature: Examples
 
   Scenario: Priority Mail Regional Rate Box A
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -380,7 +365,6 @@ Feature: Examples
 
   Scenario: Priority Mail Regional Rate Box B
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -398,7 +382,6 @@ Feature: Examples
 
   Scenario: Priority Mail Regional Rate Box C
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -416,7 +399,6 @@ Feature: Examples
 
   Scenario: Priority Mail Express Package
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                          | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -434,7 +416,6 @@ Feature: Examples
 
   Scenario: Priority Mail Express Flat Rate Envelope
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -454,7 +435,6 @@ Feature: Examples
 
   Scenario: Priority Mail Express Legal Flat Rate Envelope
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -472,7 +452,6 @@ Feature: Examples
 
   Scenario: Priority Mail Express Medium Flat Rate Box
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -490,7 +469,6 @@ Feature: Examples
 
   Scenario: Parcel Select Package
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -499,7 +477,6 @@ Feature: Examples
 
   Scenario: Parcel Select Large Package
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -517,7 +494,6 @@ Feature: Examples
 
   Scenario: Parcel Select Oversized Package
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name                            | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -535,7 +511,6 @@ Feature: Examples
 
   Scenario: Media Mail Package
     * Add new order
-    * Expect new Order ID created
 
     * Set Receipient address to;
       | name               | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |

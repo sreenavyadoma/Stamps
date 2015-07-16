@@ -7,7 +7,6 @@ Feature: B-01603 Address Cleansing
   @address_cleansing
   Scenario: Address Cleansing
     * Add new order
-    * Expect new Order ID created
     * Set Service to Priority Mail Package
     * Set Receipient address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |

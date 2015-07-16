@@ -7,7 +7,6 @@ Feature: B-01631 Printing total cost
   @print_costs
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
     * Add new order
-    * Expect new Order ID created
     * Expect Service Cost to be $0.00
     * Expect Insurance Cost to be $0.00
     * Expect Tracking Cost to be $0.00

@@ -7,7 +7,6 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
   @print_multiple_orders
   Scenario:  Print 2 Orders
     * Add new order
-    * Expect new Order ID created
     * Expect Service Cost to be $0.00
 
     * Set Recipient Address to B-01634 Print1, Package, 1900 E Grand Ave, El Segundo, CA, 90245
@@ -17,7 +16,6 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
     * Set Service to Priority Mail Package
 
     * Add new order
-    * Expect new Order ID created
     * Expect Service Cost to be $0.00
 
     * Set Recipient Address to B-01634 Print2, Package, 1900 E Grand Ave, El Segundo, CA, 90245

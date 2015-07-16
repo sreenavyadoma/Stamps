@@ -5,7 +5,6 @@ Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an or
 
   Scenario:  User Views Price Next to Service Dropdown
     * Add new order
-    * Expect new Order ID created
     * Expect Service Cost to be $0.00
 
 

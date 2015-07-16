@@ -7,7 +7,6 @@ Feature: B-01736 Set Correct Default for Tracking
   @tracking
   Scenario:  Print - First-Class Mail Envelope
     * Add new order
-    * Expect new Order ID created
     * Expect Service Cost to be $0.00
 
     * Set Recipient Address to B-01736, Default Tracking, 1900 E Grand Ave, El Segundo, CA, 90245

@@ -7,7 +7,6 @@ Feature:  BVT - Address Cleansing
   @bvt_address_cleansing
   Scenario: Address Cleansing
     * Add new order
-    * Expect new Order ID created
     * Set Receipient address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Cleansing Address | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |

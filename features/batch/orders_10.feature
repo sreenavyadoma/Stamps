@@ -9,7 +9,6 @@ Feature: 10 orders
     # First Class Mail
 
     * Add new order
-    * Expect new Order ID created
     * Set Ship From to default
     * Set Recipient Address to B-01756 Print, First-Class Mail Large Envelope/Flat, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
@@ -19,7 +18,6 @@ Feature: 10 orders
     * Set Insured Value to $15.00
 
     * Add new order
-    * Expect new Order ID created
     * Set Ship From to default
     * Set Recipient Address to B-01756 Print, First-Class Mail Package/Thick Envelope, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
@@ -32,7 +30,6 @@ Feature: 10 orders
     #Priority Mail
 
     * Add new order
-    * Expect new Order ID created
     * Set Ship From to default
     * Set Recipient Address to B-01756 Print, Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
@@ -42,7 +39,6 @@ Feature: 10 orders
     * Set Tracking to Signature Required
 
     * Add new order
-    * Expect new Order ID created
     * Set Ship From to default
     * Set Recipient Address to B-01756 Print, Large Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
@@ -52,7 +48,6 @@ Feature: 10 orders
     * Set Tracking to Signature Required
 
     * Add new order
-    * Expect new Order ID created
     * Set Ship From to default
     * Set Recipient Address to B-01756 Print, Legal Flat Rate Envelope, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
@@ -62,7 +57,6 @@ Feature: 10 orders
     * Set Tracking to Signature Required
 
     * Add new order
-    * Expect new Order ID created
     * Set Ship From to default
     * Set Recipient Address to B-01756 Print, Regional Rate Box A, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
@@ -75,7 +69,6 @@ Feature: 10 orders
     # Priority Mail Express
 
     * Add new order
-    * Expect new Order ID created
     * Set Ship From to default
     * Set Recipient Address to B-01756 Print, Express Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
@@ -85,7 +78,6 @@ Feature: 10 orders
     * Set Tracking to Signature Required
 
     * Add new order
-    * Expect new Order ID created
     * Set Ship From to default
     * Set Recipient Address to B-01756 Print, Express Padded Flat Rate Envelope, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
@@ -97,7 +89,6 @@ Feature: 10 orders
     # Media Mail
 
     * Add new order
-    * Expect new Order ID created
     * Set Ship From to default
     * Set Recipient Address to B-01756 Print, Media Mail Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
@@ -110,7 +101,6 @@ Feature: 10 orders
     # Parcel Select
 
     * Add new order
-    * Expect new Order ID created
     * Set Ship From to default
     * Set Recipient Address to B-01756 Print, Parcel Select Large Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com

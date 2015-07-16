@@ -8,7 +8,6 @@ Feature: B-01624 Print Priority Mail Express Medium Flat Rate Box
   Scenario:  Print Priority Mail Express Medium Flat Rate Box
 
     * Add new order
-    * Expect new Order ID created
     * Set Recipient Address to B-01624, Express Medium Flat Rate Box, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Click Ship To Less button

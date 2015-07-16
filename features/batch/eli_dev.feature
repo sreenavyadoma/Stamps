@@ -6,7 +6,6 @@ Feature:   B-01743 Show Cost of Order in Ship Cost Grid
   @order_grid_service_price
   Scenario:
     * Add new order
-    * Expect new Order ID created
     * Set Recipient Address to B-01625 Print Sample, Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Service to Priority Mail Package
     * Expect Service Cost to be $4.34

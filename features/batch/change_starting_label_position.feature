@@ -7,7 +7,6 @@ Feature: Change Starting Label Position
   @change_starting_label_position
   Scenario: B-01633 As a batch shipper, I want to be able to change the starting label position
     * Add new order
-    * Expect new Order ID created
 
     * Set Recipient Address to B-01625 Print, Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com

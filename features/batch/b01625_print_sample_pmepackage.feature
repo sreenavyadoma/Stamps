@@ -7,7 +7,6 @@ Feature: B-01625  Print Sample Priority Mail Express Package
   @print_sample
   Scenario:  Print Sample - Priority Mail Express Package
     * Add new order
-    * Expect new Order ID created
     * Set Recipient Address to B-01624, Express Package, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Click Ship To Less button

@@ -5,7 +5,6 @@ Feature: B-01726 Update Postage Balance After Each Print
   Scenario: B-01726 Update Postage Balance After Each Print
     * I am signed in as a batch shipper
     * Add new order
-    * Expect new Order ID created
     * Set Recipient Address to B-01726, Update Postage Balance, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
@@ -18,7 +17,6 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Sign out
     * I am signed in as a batch shipper webbatch_0001/password1
     * Add new order
-    * Expect new Order ID created
     * Set Recipient Address to B-01726, Update Postage Balance, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
@@ -29,7 +27,6 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Sign out
     * I am signed in as a batch shipper
     * Add new order
-    * Expect new Order ID created
     * Set Recipient Address to B-01726, Update Postage Balance, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button

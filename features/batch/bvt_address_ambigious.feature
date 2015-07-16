@@ -7,7 +7,6 @@ Feature:  BVT - Ambigious Address
   @bvt_ambigious_address
   Scenario: Ambigious Address
     * Add new order
-    * Expect new Order ID created
     * Set Receipient partial address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Ambigious Cleansing | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
