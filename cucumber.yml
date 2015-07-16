@@ -41,3 +41,7 @@ inline_service_rates_qacc_gc: --tags @inline_service_rates --guess URL=qacc BROW
 print_costs_qacc_ie: --tags @print_costs --guess URL=qacc BROWSER=ie USR=auto25 PW=password1
 print_costs_qacc_ff: --tags @print_costs --guess URL=qacc BROWSER=ff USR=auto26 PW=password1
 print_costs_qacc_gc: --tags @print_costs --guess URL=qacc BROWSER=gc USR=auto27 PW=password1
+
+purchasing_qacc_ie: --tags @purchasing --guess URL=qacc BROWSER=ie USR=auto28 PW=password1
+purchasing_qacc_ff: --tags @purchasing --guess URL=qacc BROWSER=ff USR=auto29 PW=password1
+purchasing_qacc_gc: --tags @purchasing --guess URL=qacc BROWSER=gc USR=auto30 PW=password1
