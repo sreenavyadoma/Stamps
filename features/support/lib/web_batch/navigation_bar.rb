@@ -36,12 +36,10 @@ module Batch
     def sign_out
       5.times { #todo must hover over signout link
         begin
-          driver.action.move_to(username_field).perform
-          driver.mouse.move_to(username_field)
+          username_field.hover
           browser_helper.click username_field, "userNameText" unless sign_out_link.present?
           sleep(1)
-          driver.action.move_to(sign_out_link).perform
-          driver.mouse.move_to(sign_out_link)
+          sign_out_link.hover
           browser_helper.click sign_out_link, "signOutLink"
           username_field.wait_while_present
           break browser_helper.field_present?  sign_in_button
