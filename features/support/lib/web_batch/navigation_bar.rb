@@ -34,6 +34,9 @@ module Batch
     end
 
     def sign_out
+      @browser.window.move_to 0, 0
+      @browser.window.resize_to 1500, 850
+      @browser.window.move_to 1550, 500
       5.times { #todo must hover over signout link
         begin
           username_field.hover
@@ -47,6 +50,7 @@ module Batch
           #ignore
         end
       }
+      @browser.window.maximize
     end
 
     def username
