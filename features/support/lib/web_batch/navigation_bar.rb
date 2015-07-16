@@ -50,7 +50,7 @@ module Batch
           #ignore
         end
       }
-      @browser.window.maximize
+      @browser.window.move_to 0, 0
     end
 
     def username
