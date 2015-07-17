@@ -1,10 +1,10 @@
 @regression
-Feature: B-01671 As a batch shipper, I want to see in-line rates as I edit an order
+Feature: Single Order Form Negative Tests
 
   Background:
     Given I am signed in as a batch shipper
 
-  @print_costs
+  @weight_negative_tests
   Scenario:  Weight tooltip - negative test
     * Edit row 1 in the order grid
     * Set Pounds to 71
