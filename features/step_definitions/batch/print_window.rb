@@ -8,6 +8,12 @@ When /^Print$/ do
   log @printing_error
 end
 
+When /^Print Multiple Orders with errors/ do
+  @old_balance = batch.navigation_bar.balance
+  @printing_error = batch.toolbar.print.print
+  log @printing_error
+end
+
 When /^Open Print Window$/ do
   log "Open Print Window"
   @print_window = batch.toolbar.print
@@ -19,24 +25,24 @@ end
 
 Then /^Expect Print Window label to be "You have (\d+) labels ready to print"$/ do |expectation|
   log "Expect Print Window label to be \"You have #{expectation} labels ready to print\""
-  step "Open Print Window"
-  labels_to_print_count = @print_window.labels_ready_to_print_count
-  step "Close Print Window"
-  labels_to_print_count.should eql expectation
+  print_window = batch.toolbar.print
+  actual = print_window.labels_ready_to_print
+  print_window.close
+  actual.should eql expectation
 end
 
-Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expected|
+Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expectation|
   begin
     print_window = batch.toolbar.print
-    actual = print_window.total_cost
+    actual_value = print_window.total_cost
     10.times { |counter|
-      log_expectation_eql "#{counter}. Print Window Total Cost", expected, actual
-      break if actual.eql? expected
-      actual = print_window.total_cost
+      log_expectation_eql "#{counter}. Print Window Total Cost", expectation, actual_value
+      break if actual_value.eql? expectation
+      actual_value = print_window.total_cost
     }
     print_window.close
-    actual.should eql expected
-  end unless expected.length == 0
+    actual_value.should eql expectation
+  end unless expectation.length == 0
 end
 
 Then /^Print raises a Printing Error/ do

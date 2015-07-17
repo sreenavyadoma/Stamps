@@ -6,8 +6,8 @@ module Batch
     end
 
     public
-    def labels_ready_to_print_count
-      labels_to_print_count = title[/\d+/]
+    def labels_ready_to_print
+      title[/\d+/]
     end
 
     def title

@@ -17,18 +17,24 @@ module Batch
 
     public
 
-    def print(*args)
+    def print *args
       printer_window = PrintWindow.new(@browser)
-      7.times {
+      printers_being_retrived = PluginErrorPrintersBeingRetrieved.new(@browser)
+      15.times {
         break if printer_window.present?
         begin
           browser_helper.click print_button, "print_button"
-          sleep(1)
+          if printers_being_retrived.present?
+            printers_being_retrived.print_error_message.okay
+          end
         rescue
           #ignore
         end
       }
-      printer_window.print_options *args
+      if args.length==1
+        printer_window.print_options *args
+      end
+      printer_window
     end
 
     def add
@@ -48,5 +54,4 @@ module Batch
       browser_helper.field_present?  add_field
     end
   end
-
 end
