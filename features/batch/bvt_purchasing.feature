@@ -1,4 +1,4 @@
-@bvt
+@bvt_exclude
 Feature: BVT - Purchasing
 
   Background:
