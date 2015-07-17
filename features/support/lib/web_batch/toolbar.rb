@@ -34,11 +34,10 @@ module Batch
     def add
       add_field.when_present.click
       3.times do
-        Batch.order_id = order_id(1)
-        unless Batch.order_id.size == 0
-          break
-        end
+        @order_id = order_id(1)
+        break unless @order_id.size == 0
       end
+      @order_id
     end
 
     def wait_until_present

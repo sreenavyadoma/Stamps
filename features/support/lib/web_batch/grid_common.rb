@@ -49,14 +49,10 @@ module Batch
     end
 
     def row_number(order_id)
-      row_offset = 1
-      css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{GRID_COLUMNS[:order_id].first})>div"
-      elements = @browser.divs :css => css
+      elements = @browser.divs :css => "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{GRID_COLUMNS[:order_id].first})>div"
       elements.each_with_index { |div, index|
-        id = div.text
-        id
-        if id.casecmp order_id
-          return index + row_offset
+        if div.text.casecmp order_id
+          return index + 1 #row offset
         end
       }
     end
