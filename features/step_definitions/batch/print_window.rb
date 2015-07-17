@@ -10,14 +10,18 @@ end
 
 When /^Open Print Window$/ do
   log "Open Print Window"
-  batch.toolbar.print
+  @print_window = batch.toolbar.print
+end
+
+Then /^Close Print Window$/ do
+  @print_window.close
 end
 
 Then /^Expect Print Window label to be "You have (\d+) labels ready to print"$/ do |expectation|
   log "Expect Print Window label to be \"You have #{expectation} labels ready to print\""
-  print_window = batch.toolbar.print
-  labels_to_print_count = print_window.labels_ready_to_print_count
-  print_window.close
+  step "Open Print Window"
+  labels_to_print_count = @print_window.labels_ready_to_print_count
+  step "Close Print Window"
   labels_to_print_count.should eql expectation
 end
 

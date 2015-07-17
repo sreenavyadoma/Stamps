@@ -13,7 +13,7 @@ module Batch
       rescue
         #ignore
       end
-      log "Logout successful?  #{(div.present?)? 'Yes': 'No'}"
+      log "Signout #{(div.present?)? 'Successful': 'Failed'}"
       div
     end
 
