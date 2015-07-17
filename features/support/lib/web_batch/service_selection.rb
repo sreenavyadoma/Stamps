@@ -11,7 +11,7 @@ module Batch
 
     def select
       browser_helper.click(drop_down, "ServiceDropDown")
-      3.times {
+      5.times {
         begin
           browser_helper.click(drop_down, "ServiceDropDown") unless browser_helper.field_present?  service
           @cost = test_helper.remove_dollar_sign(cost_label.text)
