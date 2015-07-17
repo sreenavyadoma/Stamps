@@ -33,16 +33,15 @@ module Stamps
       rescue
         #ignore
       end
-      field_text = field.text
-      field_attribute_value = field.attribute_value('value')
-      if field_text.size > 0
-        text = field_text
-      elsif  field_attribute_value.size > 0
-        text = field_attribute_value
+      text = field.text
+      value = field.attribute_value('value')
+      if text.size > 0
+        text
+      elsif  value.size > 0
+        value
       else
-        text = ""
+        ""
       end
-      text
     end
 
     def text *args

@@ -12,5 +12,5 @@ Feature:  B-01756 I want to be able to print postage for multiple selected order
     * Set Email to rtest@stamps.com
     * Set Insured Value to $1.00
     * Set Service to Priority Mail Package
-    * Print
+    * Expect Print Window label to be "You have 2 labels ready to print"
     * Sign out

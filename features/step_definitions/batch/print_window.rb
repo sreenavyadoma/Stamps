@@ -8,10 +8,15 @@ When /^Print$/ do
   log @printing_error
 end
 
-When /^Open Print Window/ do
+When /^Open Print Window$/ do
+  log "Open Print Window"
   batch.toolbar.print
 end
 
+Then /^Expect Print Window label to be "You have (\d+) labels ready to print"$/ do |expected|
+  log "Expect Print Window label to be \"You have #{expected} labels ready to print\""
+  batch.toolbar.print.title
+end
 
 Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expected|
   begin

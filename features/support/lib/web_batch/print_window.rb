@@ -6,6 +6,14 @@ module Batch
     end
 
     public
+    def title label_count
+      title = "You have #{label_count} labels ready to print"
+      label = @browser.div :text => title
+      present = label.present?
+      label_text = browser_helper.text label
+      label_text
+    end
+
     def print_options(*args)
       case args.size
         when 0
