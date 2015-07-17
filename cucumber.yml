@@ -10,6 +10,10 @@ bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto01 PW=password1
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto02 PW=password1
 bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto03 PW=password1
 
+regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto10 PW=password1
+regress_qacc_ff: --tags @regression --guess URL=qacc BROWSER=ff USR=auto11 PW=password1
+regress_qacc_ie: --tags @regression --guess URL=qacc BROWSER=ie USR=auto12 PW=password1
+
 print_qacc_gc:  --tags @print --guess URL=qacc BROWSER=gc USR=auto04 PW=password1
 print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff USR=auto05 PW=password1
 print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie USR=auto06 PW=password1
@@ -17,10 +21,6 @@ print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie USR=auto06 PW=password
 address_cleansing_qacc_gc:  --tags @address_cleansing --guess URL=qacc BROWSER=gc USR=auto07 PW=password1
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie USR=auto08 PW=password1
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff USR=auto09 PW=password1
-
-regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto10 PW=password1
-regress_qacc_ff: --tags @regression --guess URL=qacc BROWSER=ff USR=auto11 PW=password1
-regress_qacc_ie: --tags @regression --guess URL=qacc BROWSER=ie USR=auto12 PW=password1
 
 address_management_qacc_ie: --tags @address_management --guess URL=qacc BROWSER=ie USR=auto13 PW=password1
 address_management_qacc_ff: --tags @address_management --guess URL=qacc BROWSER=ff USR=auto14 PW=password1

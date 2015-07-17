@@ -86,7 +86,8 @@ module Batch
 
     def check(row_number)
       # is row checked?
-      # no?, check it.
+    end
+
+    # no?, check it.
     end
   end
-end
