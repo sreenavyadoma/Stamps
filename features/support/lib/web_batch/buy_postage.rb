@@ -1,72 +1,47 @@
 class BuyPostage < BrowserObject
   private
   def purchase_button
-    span = @browser.span :id => "sdc-purchasewin-purchasebtn-btnInnerEl"
-    present = span.present?
-    text = span.text
-    span
+    @browser.span :id => "sdc-purchasewin-purchasebtn-btnInnerEl"
   end
 
   def confirm_purchase_button
-    span_array = @browser.spans :text => 'Purchase'
-    span = span_array.last
-    present = span.present?
-    text = span.text
-    span
+    @browser.spans :text => 'Purchase'
   end
 
   def ok_button
     span_array = @browser.spans :text => 'OK'
-    span = span_array.last
-    present = span.present?
-    text = span.text
-    span
+    span_array.last
   end
 
   def buy_10_button
-    input = @browser.input :id => "sdc-purchasewin-10dradio"
-    present = input.present?
-    input
+    @browser.input :id => "sdc-purchasewin-10dradio"
   end
 
   def buy_25_button
-    input = @browser.input :id => "sdc-purchasewin-25dradio"
-    present = input.present?
-    input
+    @browser.input :id => "sdc-purchasewin-25dradio"
   end
 
   def buy_50_button
-    input = @browser.input :id => "sdc-purchasewin-50dradio"
-    present = input.present?
-    input
+    @browser.input :id => "sdc-purchasewin-50dradio"
   end
 
   def buy_100_button
-    input = @browser.input :id => "sdc-purchasewin-100dradio"
-    present = input.present?
-    input
+    @browser.input :id => "sdc-purchasewin-100dradio"
   end
 
   def buy_other_button
-    input = @browser.input :id => "sdc-purchasewin-otherdradio"
-    present = input.present?
-    input
+    @browser.input :id => "sdc-purchasewin-otherdradio"
   end
 
   def buy_other_textbox
-    input = @browser.text_field :id => "sdc-purchasewin-otheramount"
-    present = input.present?
-    input
+    @browser.text_field :id => "sdc-purchasewin-otheramount"
   end
 
   def purchase_processing
-    div = @browser.div :css => "div[id^=processingpurchasewindow][id$=innerCt]"
-    present = div.present?
-    div
+    @browser.div :css => "div[id^=processingpurchasewindow][id$=innerCt]"
   end
 
   public
-
 
   def buy_10
     buy_10_button.click
@@ -98,11 +73,11 @@ class BuyPostage < BrowserObject
   end
 
   def edit_payment_method
-
+    raise "Edit Payment Method is not yet implemented."
   end
 
   def autobuy
-
+    raise "AutoBuy is not implemented"
   end
 
   def wait_for_purchase_confirmation

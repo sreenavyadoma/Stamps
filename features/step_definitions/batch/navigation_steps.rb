@@ -28,6 +28,13 @@
    log "Purchase button clicked"
    batch.navigation_bar.buy_more.purchase
    log "Purchase confirmed"
+   #todo create a ConfirmPurchase object.
+   #2.  Ask confirmpurchase if it exist, (aka confirmPurchase.present?)
+   # if it does, click confirm, if not...
+   # check if Meter balance Limi
+   # check for MeterBalanceLimit
+   #if it exist, don't do expecation.
+   #if not, go ahead with expectation
    batch.navigation_bar.buy_more.confirm_purchase
    log "Waiting for purchase processing to complete"
    batch.navigation_bar.buy_more.wait_for_purchase_confirmation
