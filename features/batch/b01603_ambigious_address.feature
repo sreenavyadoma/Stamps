@@ -18,7 +18,6 @@ Feature: B-01604 Orders with an ambiguous address
     * Expect City to be San Francisco
     * Expect State to be CA
     * Expect Zip Code to be 94102
-    * Expect Phone to be (415) 123-5555
     * Expect Email to be rtest@stamps.com
     * Set Recipient Address to B-01603, Address Cleansing, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
