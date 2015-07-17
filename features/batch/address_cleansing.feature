@@ -24,3 +24,4 @@ Feature: B-01603 Address Cleansing
     * Click Ship To Less button
     * Set Service to Priority Mail Package
     * Sign out
+
