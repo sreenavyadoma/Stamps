@@ -23,7 +23,7 @@ module Batch
         break if printer_window.present?
         begin
           browser_helper.click print_button, "print_button"
-          sleep(2)
+          sleep(1)
         rescue
           #ignore
         end

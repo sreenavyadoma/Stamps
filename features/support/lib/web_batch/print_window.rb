@@ -6,12 +6,13 @@ module Batch
     end
 
     public
-    def title label_count
-      title = "You have #{label_count} labels ready to print"
-      label = @browser.div :text => title
-      present = label.present?
-      label_text = browser_helper.text label
-      label_text
+    def labels_ready_to_print_count
+      labels_to_print_count = title[/\d+/]
+    end
+
+    def title
+      div = @browser.div :css => "div[id^=printwindow]>div[id^=title]>div[id^=title]"
+      browser_helper.text div
     end
 
     def print_options(*args)
@@ -28,6 +29,7 @@ module Batch
         else
           raise "Invalid printer arguments."
       end
+      self
     end
 
     def open_printer_window

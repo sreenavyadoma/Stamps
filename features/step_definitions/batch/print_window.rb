@@ -13,9 +13,12 @@ When /^Open Print Window$/ do
   batch.toolbar.print
 end
 
-Then /^Expect Print Window label to be "You have (\d+) labels ready to print"$/ do |expected|
-  log "Expect Print Window label to be \"You have #{expected} labels ready to print\""
-  batch.toolbar.print.title
+Then /^Expect Print Window label to be "You have (\d+) labels ready to print"$/ do |expectation|
+  log "Expect Print Window label to be \"You have #{expectation} labels ready to print\""
+  print_window = batch.toolbar.print
+  labels_to_print_count = print_window.labels_ready_to_print_count
+  print_window.close
+  labels_to_print_count.should eql expectation
 end
 
 Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expected|
