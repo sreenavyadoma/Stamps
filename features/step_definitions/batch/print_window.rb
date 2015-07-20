@@ -10,8 +10,9 @@ end
 
 When /^Expect Print Error ([\w .]*)$/ do |error_message|
   @old_balance = batch.navigation_bar.balance
-  pass = batch.toolbar.print.error_message.include? error_message
+  actual_error_message = batch.toolbar.print.error_message
   batch.toolbar.print.ok
+  pass = actual_error_message.include? error_message
   pass.should be true
 end
 

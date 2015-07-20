@@ -48,7 +48,9 @@ module Batch
       rescue
         #ignore
       end
-      browser_helper.text error_message_label
+      error_message = browser_helper.text error_message_label
+      log error_message
+      error_message
     end
   end
 end
