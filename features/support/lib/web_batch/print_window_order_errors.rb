@@ -31,7 +31,14 @@ module Batch
     end
 
     def ok
-      browser_helper.click ok_button, 'OK'
+      5.times{
+        begin
+          browser_helper.click ok_button, 'OK'
+          break unless browser_helper.field_present? ok_button
+        rescue
+          #ignore
+        end
+      }
     end
 
     def continue

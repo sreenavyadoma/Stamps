@@ -10,10 +10,14 @@ end
 
 When /^Expect Print Error ([\w .]*)$/ do |error_message|
   @old_balance = batch.navigation_bar.balance
-  actual_error_message = batch.toolbar.print.error_message
-  batch.toolbar.print.ok
-  pass = actual_error_message.include? error_message
-  pass.should be true
+  if error_message.include? "selected orders have errors and cannot be printed"
+    @order_errors_window = batch.toolbar.print
+    expect(@order_errors_window.error_message.include? error_message).to be true
+  else
+    actual_error_message = batch.toolbar.print.error_message
+    batch.toolbar.print.ok
+    expect(actual_error_message.include? error_message).to be true
+  end
 end
 
 When /^Open Print Window$/ do
