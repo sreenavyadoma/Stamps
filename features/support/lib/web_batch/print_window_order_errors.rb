@@ -51,7 +51,7 @@ module Batch
         sleep(1)
         break unless browser_helper.field_present? continue_button
       }
-      new PrintWindow.new(@browser)
+      PrintWindow.new(@browser)
     end
 
     def cancel
