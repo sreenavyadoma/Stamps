@@ -4,7 +4,7 @@ Feature:  B-01636 Single Order Indicium Error
   Background:
     * I am signed in as a batch shipper
 
-  @multi_order_indicium_error
+  @multi_order_indicium_error @printing_errors
   Scenario:  B-01636 Multi Order Indicium Error
     * Add new order
     * Set Recipient Address to B-01754-1, Order Errors, 1900 E Grand Ave, El Segundo, CA, 90245
