@@ -5,52 +5,31 @@ module Batch
     private
 
     def ok_button
-      span = @browser.span :text => 'OK'
-      present = span.present?
-      span
+      @browser.span :text => 'OK'
     end
 
     def continue_button
-      span = @browser.span :text => 'Continue'
-      present = span.present?
-      span
+      @browser.span :text => 'Continue'
     end
 
     def cancel_button
-      span = @browser.span :text => 'Cancel'
-      present = span.present?
-      span
+      @browser.span :text => 'Cancel'
     end
 
-    def error_message_label1
-      div = @browser.div :css => 'div[id^=dialoguemodal][class=x-autocontainer-innerCt]'
-      present = div.present?
-      div
-    end
-
-    def error_message_label2
-      div = @browser.br :css => 'div[id^=dialoguemodal][class=x-autocontainer-innerCt]>br'
-      present = div.present?
-      div
-    end
-
-    def label_indicium_error_div
-      div = @browser.div :css => 'div[id^=dialoguemodal][class=x-autocontainer-innerCt]>br:nth-child(2)'
-      present = div.present?
-      div
+    def error_message_label
+      @browser.div :css => 'div[id^=dialoguemodal][class=x-autocontainer-innerCt]'
     end
 
     def window_title_div
-      div = @browser.div :text => 'Order Errors'
-      present = browser_helper.field_present?  div
-      div
+      @browser.div :text => 'Order Errors'
     end
 
     public
 
     def present?
-      browser_helper.field_present? error_message_label1
+      browser_helper.field_present? error_message_label
     end
+
     def ok
       browser_helper.click ok_button, 'OK'
     end
@@ -64,20 +43,12 @@ module Batch
     end
 
     def error_message
-      if browser_helper.field_present? error_message_label2
-        err =  "#{browser_helper.text error_message_label1}\n#{browser_helper.text error_message_label2}"
-        err
-      elsif browser_helper.field_present? label_indicium_error_div
-        err =  "#{browser_helper.text error_message_label1}\n#{browser_helper.text label_indicium_error_div}"
-        err
-      else
-        err = browser_helper.text error_message_label1
-        err
+      begin
+        error_message_label.wait_until_present
+      rescue
+        #ignore
       end
-    end
-
-    def label_indicium_error?
-      browser_helper.field_present? label_indicium_error_div
+      browser_helper.text error_message_label
     end
   end
 end

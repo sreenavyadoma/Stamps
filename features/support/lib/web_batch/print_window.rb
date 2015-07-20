@@ -13,6 +13,14 @@ module Batch
     def x_button_present?
       BrowserHelper.instance.field_present? window_x_button
     end
+
+    def wait_until_present
+      begin
+        window_x_button.wait_until_present
+      rescue
+        #ignore
+      end
+    end
   end
 
   class PrintWindow < Stamps::BrowserObject
