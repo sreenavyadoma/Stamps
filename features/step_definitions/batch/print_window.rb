@@ -18,7 +18,7 @@ When /^Expect Print Error (.+) selected orders have errors and cannot be printed
   @old_balance = batch.navigation_bar.balance
   actual_error_message = batch.toolbar.print.error_message
   batch.toolbar.print.continue.print
-  expect(actual_error_message.error_message.include? error_message).to be true
+  expect(actual_error_message.include? error_message).to be true
 end
 
 When /^Open Print Window$/ do

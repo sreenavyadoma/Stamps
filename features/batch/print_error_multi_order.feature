@@ -9,12 +9,6 @@ Feature:  B-01636 Single Order Indicium Error
     * Add new order
     * Set Recipient Address to B-01754-1, Order Errors, 1900 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
-    * Add a second order
-    * Set Recipient Address to B-01636-2, Order Errors, 1900 E Grand Ave, El Segundo, CA, 90245
-    * Set Phone to (415) 123-5555
-    * Set Service to Priority Mail Regional Rate Box A
-    * Edit row 1 in the order grid
-    * Edit row 2 in the order grid
     * Print
     * Add a second order
     * Set Recipient Address to B-01636-2, Order Errors, 1900 E Grand Ave, El Segundo, CA, 90245
