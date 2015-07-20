@@ -17,24 +17,36 @@ module Batch
 
     public
 
-    def print *args
+    def print
       printer_window = PrintWindow.new(@browser)
-      printers_being_retrived = PluginErrorPrintersBeingRetrieved.new(@browser)
-      15.times {
-        break if printer_window.present?
+      #return if print window is already present
+      if printer_window.present?
+        return printer_window
+      end
+
+      order_errors_window = PrintWindowOrderErrors.new(@browser)
+      #return if order errors windows is already present
+      if order_errors_window.present?
+        return order_errors_window
+      end
+
+      naws_plugin_issue = NawsPluginError.new(@browser)
+      5.times {
+        break if printer_window.x_button_present?
         begin
-          browser_helper.click print_button, "print_button"
-          if printers_being_retrived.present?
-            printers_being_retrived.print_error_message.okay
+          browser_helper.click print_button, "print"
+          if naws_plugin_issue.present?
+            naws_plugin_issue.print_error_message.okay
           end
         rescue
           #ignore
         end
       }
-      if args.length==1
-        printer_window.print_options *args
+      if printer_window.present?
+        printer_window
+      else order_errors_window.present?
+        order_errors_window
       end
-      printer_window
     end
 
     def add

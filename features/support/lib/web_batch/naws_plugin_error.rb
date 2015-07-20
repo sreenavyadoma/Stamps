@@ -1,5 +1,5 @@
 module Batch
-  class PluginErrorPrintersBeingRetrieved < Stamps::BrowserObject
+  class NawsPluginError < Stamps::BrowserObject
     private
     def error_code_p
       p = @browser.p :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p:nth-child(2)"

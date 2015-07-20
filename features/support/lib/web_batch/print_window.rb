@@ -1,11 +1,29 @@
 module Batch
+  module PrintWindowCommon
+    def window_x_button
+      img = @browser.img :css => "img[class*='x-tool-img x-tool-close']"
+      present = img.present?
+      img
+    end
+
+    def close_window
+      BrowserHelper.instance.click window_x_button, 'close_window'
+    end
+
+    def x_button_present?
+      BrowserHelper.instance.field_present? window_x_button
+    end
+  end
+
   class PrintWindow < Stamps::BrowserObject
+    include Batch::PrintWindowCommon
     def initialize(browser, *args)
       super(browser)
       print_options *args
     end
 
     public
+
     def labels_ready_to_print
       title[/\d+/]
     end
@@ -29,11 +47,6 @@ module Batch
         else
           raise "Invalid printer arguments."
       end
-      self
-    end
-
-    def open_printer_window
-
     end
 
     def printer=(printer)

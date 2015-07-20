@@ -4,14 +4,15 @@ end
 
 When /^Print$/ do
   @old_balance = batch.navigation_bar.balance
-  @printing_error = batch.toolbar.print.print
-  log @printing_error
+  batch.toolbar.print.print
+  log "Printing Error:  #{@printing_error}"
 end
 
-When /^Print Multiple Orders with errors/ do
+When /^Expect Print Error ([\w .]*)$/ do |error_message|
   @old_balance = batch.navigation_bar.balance
-  @printing_error = batch.toolbar.print.print
-  log @printing_error
+  pass = batch.toolbar.print.error_message.include? error_message
+  batch.toolbar.print.ok
+  pass.should be true
 end
 
 When /^Open Print Window$/ do
