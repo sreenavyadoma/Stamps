@@ -3,7 +3,6 @@ module Batch
     include Batch::PrintWindowCommon
 
     private
-
     def ok_button
       @browser.span :text => 'OK'
     end
@@ -33,8 +32,8 @@ module Batch
     def ok
       5.times{
         begin
-          browser_helper.click ok_button, 'OK'
           break unless browser_helper.field_present? ok_button
+          browser_helper.click ok_button, 'OK'
         rescue
           #ignore
         end
@@ -42,7 +41,17 @@ module Batch
     end
 
     def continue
-      browser_helper.click continue_button, 'continue'
+      5.times{
+        begin
+          continue_button.wait_until_present
+        rescue
+          #ignore
+        end
+        browser_helper.click continue_button, 'continue'
+        sleep(1)
+        break unless browser_helper.field_present? continue_button
+      }
+      new PrintWindow.new(@browser)
     end
 
     def cancel
