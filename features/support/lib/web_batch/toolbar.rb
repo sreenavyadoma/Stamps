@@ -34,7 +34,7 @@ module Batch
             naws_plugin_issue.print_error_message.okay
           end
           printer_window.wait_until_present
-
+          order_errors_window.wait_until_present
         rescue
           #ignore
         end
