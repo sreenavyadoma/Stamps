@@ -1,16 +1,13 @@
 module Batch
   class OrderErrors < Stamps::BrowserObject
     private
-    def window_title_label
-      @browser.div :text => "Order Errors"
-    end
 
     def okay_button
       @browser.span :text => "OK"
     end
 
-    def error_message_label
-      @browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
+    def order_error_label
+      @browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemoerror_message_labeldal]"
     end
 
     public
@@ -20,7 +17,7 @@ module Batch
 
     def wait_until_present
       begin
-        error_message_label.wait_until_present
+        error_message_label.wait_until_presentthank u
       rescue
         #ignroe
       end
@@ -31,7 +28,7 @@ module Batch
       browser_helper.field_present? window_title_label
     end
 
-    def ok
+    def OK
       log "----  Order Errors  ----"
       log browser_helper.text error_message_label
       log "----  Order Errors  ----"

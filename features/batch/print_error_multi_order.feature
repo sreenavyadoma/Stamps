@@ -16,5 +16,5 @@ Feature:  B-01636 Single Order Indicium Error
     * Set Service to Priority Mail Regional Rate Box A
     * Edit row 1 in the order grid
     * Edit row 2 in the order grid
-    * Print and expect error 1 of 2 selected orders have errors and cannot be printed.  To print the remaining orders, click Continue.
+    * Print expecting error 1 of 2 selected orders have errors and cannot be printed.  To print the remaining orders, click Continue.
     * Sign out

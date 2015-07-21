@@ -35,6 +35,12 @@ module Batch
     end
 
     public
+
+    def print_expecting_indicium_error
+      indicium_error = IndiciumError.new(@browser)
+      click_print indicium_error
+    end
+
     def print_expecting_order_errors
       order_errors = OrderErrors.new(@browser)
       click_print order_errors

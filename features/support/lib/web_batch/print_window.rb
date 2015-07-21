@@ -43,7 +43,6 @@ module Batch
         end
       }
     end
-
     def print_expecting_rating_error
       print
       RatingError.new(@browser).wait_until_present

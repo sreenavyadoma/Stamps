@@ -24,6 +24,9 @@ module Batch
     end
 
     def OK
+      log "----  Rating Error  ----"
+      log browser_helper.text rating_error_p
+      log "----  Rating Error  ----"
       5.times {
         browser_helper.click ok_button, 'OK'
         break unless present?
