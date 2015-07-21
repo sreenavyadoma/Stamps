@@ -11,6 +11,7 @@ end
 When /^Expect Print Error ([\w .]*)$/ do |error_message|
   actual_error_message = batch.toolbar.print.error_message
   batch.toolbar.print.ok
+  log "Error Message:  Actual Value: #{actual_error_message}, Expected Value: #{error_message} #{(actual_error_message.include? error_message)? 'Passed':'Failed'}"
   expect(actual_error_message.include? error_message).to be true
 end
 
@@ -18,6 +19,7 @@ When /^Expect Print Error (.+) selected orders have errors and cannot be printed
   @old_balance = batch.navigation_bar.balance
   actual_error_message = batch.toolbar.print.error_message
   batch.toolbar.print.continue.print
+  log "Error Message:  Actual Value: #{actual_error_message}, Expected Value: #{error_message} #{(actual_error_message.include? error_message)? 'Passed':'Failed'}"
   expect(actual_error_message.include? error_message).to be true
 end
 

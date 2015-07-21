@@ -37,6 +37,8 @@ module Batch
     end
 
     def sign_in(*args)
+      welcome_modal = WelcomeModal.new(@browser)
+      toolbar = self.toolbar
       case args.count
         when 0
           # user default sign in credentials
@@ -70,7 +72,12 @@ module Batch
         rescue
           #ignore
         end
+        if welcome_modal.present?
+          welcome_modal.OK
+          break
+        end
         break if toolbar.present?
+
       end
     end
 
