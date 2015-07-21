@@ -10,6 +10,7 @@ Feature:  B-01742 Show an Order's Most Recent GetRates(), CleanseAddress(), or C
     * Set Recipient Address to B-01742
     * Print expecting rating error
     * Edit row 1 in the order grid
-    * Set Recipient Address to B-01742, Invalid Address
+    * Set Recipient Address to B-01742 Invalid Address
+    * Set Phone to 4157984533
     * Print expecting invalid address error
     * Sign out
