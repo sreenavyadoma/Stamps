@@ -21,6 +21,7 @@ module Batch
       rescue
         #ignroe
       end
+      self
     end
 
     def present?
