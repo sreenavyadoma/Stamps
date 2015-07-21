@@ -11,5 +11,5 @@ Feature:  B-01636 Single Order Indicium Error
     * Set Phone to (415) 123-5555
     * Print
     * Edit row 1 in the order grid
-    * Expect Print Error createLabelIndicium Error.
+    * Print and expect error createLabelIndicium Error.
     * Sign out

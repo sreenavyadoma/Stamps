@@ -8,14 +8,23 @@ When /^Print$/ do
   log "Printing Error:  #{@printing_error}"
 end
 
-When /^Expect Print Error (.*)$/ do |error_message|
+When /^Print and expect error (.*)$/ do |error_message|
   actual_error_message = batch.toolbar.print.error_message
   batch.toolbar.print.ok
   log "Error Message:  Actual Value: #{actual_error_message}, Expected Value: #{error_message} #{(actual_error_message.include? error_message)? 'Passed':'Failed'}"
   expect(actual_error_message.include? error_message).to be true
 end
 
-When /^Expect Print Error (.+) selected orders have errors and cannot be printed.  To print the remaining orders, click Continue.$/ do |error_message|
+
+
+When /^Print expecting rating error$/ do |error_message|
+  actual_error_message = batch.toolbar.print.error_message
+  batch.toolbar.print.ok
+  log "Error Message:  Actual Value: #{actual_error_message}, Expected Value: #{error_message} #{(actual_error_message.include? error_message)? 'Passed':'Failed'}"
+  expect(actual_error_message.include? error_message).to be true
+end
+
+When /^Print and expect error (.+) selected orders have errors and cannot be printed.  To print the remaining orders, click Continue.$/ do |error_message|
   @old_balance = batch.navigation_bar.balance
   actual_error_message = batch.toolbar.print.error_message
   batch.toolbar.print.continue.print

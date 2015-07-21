@@ -15,30 +15,33 @@ module Batch
       @browser.elements(:text => 'Print').first
     end
 
+    def click_print window
+      naws_plugin_issue = NawsPluginError.new(@browser)
+    15.times {
+      begin
+        if window.present?
+          return window
+        end
+        browser_helper.click print_button, "print"
+        if naws_plugin_issue.present?
+          naws_plugin_issue.print_error_message.okay
+        end
+        window.wait_until_present
+      rescue
+        #ignore
+      end
+    }
+    end
+
     public
+    def print_expecting_rating_error
+      print_window = PrintWindow.new(@browser)
+      click_print print_window
+      print_window.print
+    end
 
     def print
-      printer_window = PrintWindow.new(@browser)
-      order_errors_window = PrintWindowOrderErrors.new(@browser)
-      naws_plugin_issue = NawsPluginError.new(@browser)
-
-      10.times {
-        begin
-          if printer_window.present?
-            return printer_window
-          elsif order_errors_window.present?
-            return order_errors_window
-          end
-          browser_helper.click print_button, "print"
-          if naws_plugin_issue.present?
-            naws_plugin_issue.print_error_message.okay
-          end
-          printer_window.wait_until_present
-          order_errors_window.wait_until_present
-        rescue
-          #ignore
-        end
-      }
+      click_print PrintWindow.new(@browser)
     end
 
     def add

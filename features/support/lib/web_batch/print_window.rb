@@ -72,29 +72,28 @@ module Batch
     end
 
     def print
-      begin
-        print_button.when_present.click
-        @printing_error = printing_error_check
-      rescue StandardError => print_error
-        log print_error.message
-        @printing_error = true
-      end
-      @printing_error
+      5.times {
+        begin
+          browser_helper.click print_button
+          printing_error_check
+          break unless browser_helper.field_present? print_button
+        rescue
+          #ignore
+        end
+      }
     end
 
-    def print_expecting_error
-      print_button.when_present.click
-      printing_error_check
-      self
+    def print_expecting_rating_error
+      print
+      RatingError.new(@browser).wait_until_present
     end
 
     def print_sample
       begin
-        print_sample_button.when_present.click #todo sometimes print says connecting to plugin
+        print_sample_button.when_present.click
         printing_error_check
-      rescue StandardError => print_error
-        log print_error.message
-        @print_status = false
+      rescue
+        #ignroe
       end
       self
     end
@@ -264,7 +263,6 @@ module Batch
       check_naws_plugin_error if Stamps.browser.chrome?
       check_unauthenticated_error
       check_account_status_error
-      check_rating_error
       log "Printing Error Encountered:  #{@printing_error}"
       @printing_error
     end
