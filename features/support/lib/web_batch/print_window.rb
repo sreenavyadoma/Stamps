@@ -1,5 +1,5 @@
 module Batch
-  module PrintWindowCommon
+  module PrintWindowBase
     def window_x_button
       img = @browser.img :css => "img[class*='x-tool-img x-tool-close']"
       present = img.present?
@@ -24,13 +24,30 @@ module Batch
   end
 
   class PrintWindow < Stamps::BrowserObject
-    include Batch::PrintWindowCommon
+    include Batch::PrintWindowBase
     def initialize(browser, *args)
       super(browser)
       print_options *args
     end
 
     public
+
+    def print
+      5.times {
+        begin
+          browser_helper.click print_button
+          printing_error_check
+          break unless browser_helper.field_present? print_button
+        rescue
+          #ignore
+        end
+      }
+    end
+
+    def print_expecting_rating_error
+      print
+      RatingError.new(@browser).wait_until_present
+    end
 
     def labels_ready_to_print
       title[/\d+/]
@@ -69,23 +86,6 @@ module Batch
       printer_label.click
       printer_label.click
       self
-    end
-
-    def print
-      5.times {
-        begin
-          browser_helper.click print_button
-          printing_error_check
-          break unless browser_helper.field_present? print_button
-        rescue
-          #ignore
-        end
-      }
-    end
-
-    def print_expecting_rating_error
-      print
-      RatingError.new(@browser).wait_until_present
     end
 
     def print_sample

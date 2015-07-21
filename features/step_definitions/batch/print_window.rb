@@ -9,16 +9,16 @@ When /^Print$/ do
 end
 
 When /^Print and expect error (.*)$/ do |error_message|
-  actual_error_message = batch.toolbar.print.error_message
-  batch.toolbar.print.ok
+  order_errors_window = batch.toolbar.print_expecting_order_errors
+  actual_error_message = order_errors_window.wait_until_present.error_message
+  order_errors_window.ok
   log "Error Message:  Actual Value: #{actual_error_message}, Expected Value: #{error_message} #{(actual_error_message.include? error_message)? 'Passed':'Failed'}"
   expect(actual_error_message.include? error_message).to be true
 end
 
-
-
 When /^Print expecting rating error$/ do |error_message|
-  actual_error_message = batch.toolbar.print.error_message
+  error_window = batch.toolbar.print.print_expecting_rating_error
+  actual_error_message = error_window.error_message
   batch.toolbar.print.ok
   log "Error Message:  Actual Value: #{actual_error_message}, Expected Value: #{error_message} #{(actual_error_message.include? error_message)? 'Passed':'Failed'}"
   expect(actual_error_message.include? error_message).to be true

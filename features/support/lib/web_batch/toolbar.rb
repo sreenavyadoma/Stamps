@@ -17,27 +17,27 @@ module Batch
 
     def click_print window
       naws_plugin_issue = NawsPluginError.new(@browser)
-    15.times {
-      begin
-        if window.present?
-          return window
+      15.times {
+        begin
+          if window.present?
+            return window
+          end
+          browser_helper.click print_button, "print"
+          if naws_plugin_issue.present?
+            naws_plugin_issue.print_error_message.okay
+          end
+          window.wait_until_present
+        rescue
+          #ignore
         end
-        browser_helper.click print_button, "print"
-        if naws_plugin_issue.present?
-          naws_plugin_issue.print_error_message.okay
-        end
-        window.wait_until_present
-      rescue
-        #ignore
-      end
-    }
+      }
+      window
     end
 
     public
-    def print_expecting_rating_error
-      print_window = PrintWindow.new(@browser)
-      click_print print_window
-      print_window.print
+    def print_expecting_order_errors
+      order_errors = OrderErrors.new(@browser)
+      click_print order_errors
     end
 
     def print
