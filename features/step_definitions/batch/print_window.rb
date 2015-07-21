@@ -12,7 +12,6 @@ Then /^Print expecting invalid address error$/ do
   error_window = batch.toolbar.print_expecting_invalid_address
   actual_error_message = error_window.error_message
   error_window.OK
-  expect(actual_error_message.include? 'Invalid Address:').to be true
 end
 
 Then /^Print expecting indicium error$/ do
