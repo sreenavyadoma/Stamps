@@ -14,7 +14,9 @@ regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto10 PW=pa
 regress_qacc_ff: --tags @regression --guess URL=qacc BROWSER=ff USR=auto11 PW=password1
 regress_qacc_ie: --tags @regression --guess URL=qacc BROWSER=ie USR=auto12 PW=password1
 
-printing_errors: --tags @printing_errors --guess URL=qacc BROWSER=gc USR=auto31 PW=password1
+printing_errors_qacc_gc: --tags @printing_errors --guess URL=qacc BROWSER=gc USR=auto31 PW=password1
+printing_errors_qacc_ie: --tags @printing_errors --guess URL=qacc BROWSER=ie USR=auto32 PW=password1
+printing_errors_qacc_ff: --tags @printing_errors --guess URL=qacc BROWSER=ff USR=auto33 PW=password1
 
 print_qacc_gc:  --tags @print --guess URL=qacc BROWSER=gc USR=auto04 PW=password1
 print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff USR=auto05 PW=password1
