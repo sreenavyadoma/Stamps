@@ -8,15 +8,12 @@ When /^Print$/ do
   log "Printing Error:  #{@printing_error}"
 end
 
-=begin
-When /^Print expecting error (.*)$/ do |error_message|
-  order_errors_window = batch.toolbar.print_expecting_order_errors
-  actual_error_message = order_errors_window.wait_until_present.error_message
-  order_errors_window.OK
-  log "Error Message:  Actual Value: #{actual_error_message}, Expected Value: #{error_message} #{(actual_error_message.include? error_message)? 'Passed':'Failed'}"
-  expect(actual_error_message.include? error_message).to be true
+Then /^Print expecting invalid address error$/ do
+  error_window = batch.toolbar.print_expecting_invalid_address
+  actual_error_message = error_window.error_message
+  error_window.OK
+  expect(actual_error_message.include? 'Invalid Address:').to be true
 end
-=end
 
 Then /^Print expecting indicium error$/ do
   error_window = batch.toolbar.print_expecting_indicium_error

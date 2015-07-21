@@ -41,6 +41,11 @@ module Batch
       click_print order_errors
     end
 
+    def print_expecting_invalid_address
+      indicium_error = InvalidAddressError.new(@browser)
+      click_print indicium_error
+    end
+
     def print_expecting_indicium_error
       indicium_error = IndiciumError.new(@browser)
       click_print indicium_error
