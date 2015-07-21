@@ -16,7 +16,7 @@ end
 Then /^Print expecting indicium error$/ do
   error_window = batch.toolbar.print_expecting_indicium_error
   actual_error_message = error_window.error_message
-  error_window.continue
+  error_window.OK
   expect(actual_error_message.include? 'createLabelIndicium Error').to be true
 end
 
