@@ -32,7 +32,14 @@ module Batch
       log "----  Order Errors  ----"
       log browser_helper.text error_message_label
       log "----  Order Errors  ----"
-      browser_helper.click okay_button, "OK"
+      5.times{
+        begin
+          browser_helper.click okay_button, "OK"
+          break unless browser_helper.field_present? okay_button
+        rescue
+          #ignore
+        end
+      }
       self
     end
 

@@ -8,7 +8,7 @@ When /^Print$/ do
   log "Printing Error:  #{@printing_error}"
 end
 
-When /^Expect Print Error ([\w .]*)$/ do |error_message|
+When /^Expect Print Error (.*)$/ do |error_message|
   actual_error_message = batch.toolbar.print.error_message
   batch.toolbar.print.ok
   log "Error Message:  Actual Value: #{actual_error_message}, Expected Value: #{error_message} #{(actual_error_message.include? error_message)? 'Passed':'Failed'}"

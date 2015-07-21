@@ -176,5 +176,3 @@ Cucumber::Rake::Task.new(:printing_errors_qacc_ff) do |t|
   t.profile = 'printing_errors_qacc_ff'
   t.cucumber_opts = "-p cuke_reports"
 end
-
-
