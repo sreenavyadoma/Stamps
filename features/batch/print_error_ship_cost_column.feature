@@ -9,7 +9,7 @@ Feature:  B-01742 Show an Order's Most Recent GetRates(), CleanseAddress(), or C
     * Add new order
     * Print
     * Edit row 1 in the order grid
-    * Print expecting error createLabelIndicium Error.
+    * Print expecting indicium error
     * Set Recipient Address to B-01742
     * Print
     * Edit row 1 in the order grid
@@ -18,5 +18,5 @@ Feature:  B-01742 Show an Order's Most Recent GetRates(), CleanseAddress(), or C
     * Set Phone to (415) 123-5555
     * Print
     * Edit row 1 in the order grid
-    * Print expecting error createLabelIndicium Error.
+    * Print expecting indicium error
     * Sign out

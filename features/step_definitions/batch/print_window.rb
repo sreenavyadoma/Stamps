@@ -8,6 +8,7 @@ When /^Print$/ do
   log "Printing Error:  #{@printing_error}"
 end
 
+=begin
 When /^Print expecting error (.*)$/ do |error_message|
   order_errors_window = batch.toolbar.print_expecting_order_errors
   actual_error_message = order_errors_window.wait_until_present.error_message
@@ -15,11 +16,12 @@ When /^Print expecting error (.*)$/ do |error_message|
   log "Error Message:  Actual Value: #{actual_error_message}, Expected Value: #{error_message} #{(actual_error_message.include? error_message)? 'Passed':'Failed'}"
   expect(actual_error_message.include? error_message).to be true
 end
+=end
 
 Then /^Print expecting indicium error$/ do
   error_window = batch.toolbar.print_expecting_indicium_error
   actual_error_message = error_window.error_message
-  error_window.OK
+  error_window.continue
   expect(actual_error_message.include? 'createLabelIndicium Error').to be true
 end
 
@@ -30,12 +32,11 @@ When /^Print expecting rating error$/ do
   expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
 end
 
-When /^Print expecting error (.+) selected orders have errors and cannot be printed.  To print the remaining orders, click Continue.$/ do |error_message|
-  @old_balance = batch.navigation_bar.balance
-  actual_error_message = batch.toolbar.print.error_message
-  batch.toolbar.print.continue.print
-  log "Error Message:  Actual Value: #{actual_error_message}, Expected Value: #{error_message} #{(actual_error_message.include? error_message)? 'Passed':'Failed'}"
-  expect(actual_error_message.include? error_message).to be true
+When /^Print expecting some orders can not be printed$/ do
+  error_window = batch.toolbar.print_expecting_errors
+  actual_error_message = error_window.error_message
+  error_window.continue.print
+  expect(actual_error_message.include? 'To print the remaining orders, click Continue').to be true
 end
 
 When /^Open Print Window$/ do

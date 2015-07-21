@@ -43,6 +43,7 @@ module Batch
         end
       }
     end
+
     def print_expecting_rating_error
       print
       RatingError.new(@browser).wait_until_present
@@ -259,7 +260,7 @@ module Batch
 
     def printing_error_check
       @printing_error = false
-      check_naws_plugin_error if Stamps.browser.chrome?
+      #check_naws_plugin_error if Stamps.browser.chrome?
       check_unauthenticated_error
       check_account_status_error
       log "Printing Error Encountered:  #{@printing_error}"
