@@ -1,7 +1,7 @@
 @regression
 Feature: B-01633 Change the starting label position I will print from - Default is Left Side
 
-  @print_label_default
+  @print_label_default @print_labels
   Scenario:  B-01633 - Default is Left Side
     * I am signed in as a batch shipper
     * Add new order

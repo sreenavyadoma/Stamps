@@ -12,7 +12,12 @@ module Batch
     end
 
     def print_button
-      @browser.elements(:text => 'Print').first
+      button1 = @browser.elements(:text => 'Print').first
+      button1_present = browser_helper.field_present? button1
+      button2 = @browser.elements(:text => 'Print').last
+      button2_present = browser_helper.field_present? button2
+      xbutton = (button1_present)? button1 : (button2_present) ? button2 : nil
+      xbutton
     end
 
     def open_print_window window

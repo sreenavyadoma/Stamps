@@ -33,7 +33,6 @@ Then /^Click Print Modal Print button$/ do
 end
 
 Then /^Expect default print label to be Left side$/ do
-  @print_window = batch.toolbar.print_window
   default_selected = @print_window.default_label_selected?
   default_selected.should be true
 end
