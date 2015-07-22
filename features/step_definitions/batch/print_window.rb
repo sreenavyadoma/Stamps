@@ -2,9 +2,20 @@ When /^Print on (.*)$/ do |printer|
   batch.toolbar.print(printer).print
 end
 
+When /^Open Print Window$/ do
+  log "Open Print Window"
+  @print_window
+  @print_window = batch.toolbar.print
+end
+
+Then /^Close Print Window$/ do
+  (@print_window.close if @print_window.present?) unless @print_window.nil?
+end
+
 When /^Print$/ do
   @old_balance = batch.navigation_bar.balance
-  batch.toolbar.print.print
+  @print_window = batch.toolbar.print_window if @print_window.nil?
+  @print_window.print
   log "Printing Error:  #{@printing_error}"
 end
 
@@ -32,15 +43,6 @@ When /^Print expecting some orders can not be printed$/ do
   actual_error_message = error_window.error_message
   error_window.continue.print
   expect(actual_error_message.include? 'To print the remaining orders, click Continue').to be true
-end
-
-When /^Open Print Window$/ do
-  log "Open Print Window"
-  @print_window = batch.toolbar.print
-end
-
-Then /^Close Print Window$/ do
-  @print_window.close
 end
 
 Then /^Expect Print Window label to be "You have (\d+) labels ready to print"$/ do |expectation|

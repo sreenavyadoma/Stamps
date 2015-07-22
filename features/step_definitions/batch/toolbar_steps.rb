@@ -1,5 +1,6 @@
 When /^Add new order$/ do
   log "Add new order"
+  @old_balance = batch.navigation_bar.balance
   first_row_order_id = batch.grid.order_id 1
   5.times{
     @order_id = batch.toolbar.add

@@ -12,5 +12,6 @@ Feature:  BVT - Printing
     * Set Email to rtest@stamps.com
     * Set Insured Value to $1.00
     * Set Service to Priority Mail Package
+    * Open Print Window
     * Print
     * Sign out

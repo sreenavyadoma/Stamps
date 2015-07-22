@@ -9,10 +9,10 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Insured Value to $10.00
-    * Set Service to First-Class Mail Large Envelope/Flat
-    * Expect Ship Cost to be $3.18
+    * Set Service to Priority Mail Package
+    * Expect Ship Cost to be $7.55
     * Print
-    * Expect $3.18 is deducted from customer balance if printing is successful
+    * Expect $7.55 is deducted from customer balance if printing is successful
     * Expect Printing cost is deducted from customer balance
     * Sign out
     * I am signed in as a batch shipper webbatch_0001/password1
@@ -21,7 +21,7 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Insured Value to $10.00
-    * Set Service to First-Class Mail Large Envelope/Flat
+    * Set Service to Priority Mail Package
     * Print
     * Expect Printing cost is deducted from customer balance
     * Sign out
@@ -31,9 +31,9 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Insured Value to $10.00
-    * Set Service to First-Class Mail Large Envelope/Flat
-    * Expect Ship Cost to be $3.18
+    * Set Service to Priority Mail Package
+    * Expect Ship Cost to be $7.55
     * Print
-    * Expect $3.18 is deducted from customer balance if printing is successful
+    * Expect $7.55 is deducted from customer balance if printing is successful
     * Expect Printing cost is deducted from customer balance
     * Sign out

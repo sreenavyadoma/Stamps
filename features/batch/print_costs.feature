@@ -18,7 +18,7 @@ Feature: B-01631 Printing total cost
     * Click Ship To Less button
     * Set Ounces to 1
     * Set Insured Value to $10.00
-    * Set Service to First-Class Mail Large Envelope/Flat
+    * Set Service to Priority Mail Package
     * Expect Tracking to be None
     * Expect Service Cost to be $0.98
     * Expect Insured Value to be $10.00

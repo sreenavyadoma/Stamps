@@ -13,7 +13,7 @@ Feature: B-01743 Show Cost of Order in Ship Cost Grid
     * Click Ship To Less button
     * Set Ounces to 1
     * Set Insured Value to $10.00
-    * Set Service to First-Class Mail Large Envelope/Flat
+    * Set Service to Priority Mail Package
     * Expect Ship Cost to be $3.18
     * Expect Print Window Total Cost to be $3.18
     * Sign out
