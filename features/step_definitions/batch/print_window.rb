@@ -32,7 +32,7 @@ Then /^Expect Printing cost is deducted from customer balance$/ do
     log "Postage total Calculation:  #{(postage_total_calculation)?'Passed':'Failed'}.  #{@postage_total} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
     expect(postage_total_calculation).to be true
     balance_deduction = @new_balance.to_f.round(2) == (@old_balance.to_f - @service_cost.to_f + @tracking_cost.to_f).round(2)
-    log "Customer Balance:  #{(balance_deduction)?'Passed':'Failed'}.  #{@new_balance} == #{@old_balance} - (#{@service_cost} + #{@tracking_cost})"
+    log "Customer Balance:  #{(balance_deduction)?'Passed':'Failed'}.  (New Balance)#{@new_balance} == (Old balance) #{@old_balance} - ((Service) #{@service_cost} + (Tracking) #{@tracking_cost})"
    expect(balance_deduction).to be true
   end
 end
