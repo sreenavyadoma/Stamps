@@ -1,5 +1,11 @@
-When /^Print on (.*)$/ do |printer|
-  batch.toolbar.print(printer).print
+When /^Select (\w+) side label$/ do |label_side|
+  if label_side.casecmp("left") == 0
+    @print_window.left_label
+  elsif label_side.casecmp("right") == 0
+    @print_window.right_label
+  else
+    raise "Label side #{label_side} is not a valid selection. Select either \"left\" or \"right\" side."
+  end
 end
 
 When /^Print$/ do
@@ -22,7 +28,7 @@ Then /^Close Print Window$/ do
   @print_window.close
 end
 
-Then /^Click Print Window Print button$/ do
+Then /^Click Print Modal Print button$/ do
   @print_window.print
 end
 

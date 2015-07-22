@@ -16,17 +16,17 @@ module Batch
     end
 
     def open_print_window window
+      browser_helper.click print_button, "print"
       naws_plugin_issue = NawsPluginError.new(@browser)
       15.times {
         begin
+          window.wait_until_present
           if window.present?
             return window
           end
-          browser_helper.click print_button, "print"
           if naws_plugin_issue.present?
             naws_plugin_issue.print_error_message.okay
           end
-          window.wait_until_present
         rescue
           #ignore
         end

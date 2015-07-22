@@ -1,9 +1,7 @@
 module Batch
   module PrintWindowBase
     def window_x_button
-      img = @browser.img :css => "img[class*='x-tool-img x-tool-close']"
-      present = img.present?
-      img
+      @browser.img :css => "img[class*='x-tool-img x-tool-close']"
     end
 
     def close_window
@@ -40,10 +38,26 @@ module Batch
 
     public
 
+    def left_label
+      5.times{
+        browser_helper.click left_label_div, "left_label"
+        break if label_selected? left_label_div
+      }
+    end
+
+    def right_label
+      5.times{
+        browser_helper.click right_label_div, "right_label"
+        break if label_selected? right_label_div
+      }
+    end
+
+    def label_selected? label
+      browser_helper.attribute(label, 'class').include? 'singleLabelChooser-selected'
+    end
+
     def default_label_selected?
-      value = browser_helper.attribute left_label_div, 'class'
-      selected = value.include? 'singleLabelChooser-selected'
-      selected
+      label_selected? left_label_div
     end
 
     def print
