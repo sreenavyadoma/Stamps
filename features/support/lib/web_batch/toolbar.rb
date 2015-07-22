@@ -15,7 +15,7 @@ module Batch
       @browser.elements(:text => 'Print').first
     end
 
-    def click_print window
+    def open_print_window window
       naws_plugin_issue = NawsPluginError.new(@browser)
       15.times {
         begin
@@ -37,22 +37,19 @@ module Batch
     public
 
     def print_expecting_errors
-      order_errors = OrderErrors.new(@browser)
-      click_print order_errors
+      open_print_window OrderErrors.new(@browser)
     end
 
     def print_expecting_invalid_address
-      indicium_error = InvalidAddressError.new(@browser)
-      click_print indicium_error
+      open_print_window InvalidAddressError.new(@browser)
     end
 
     def print_expecting_indicium_error
-      indicium_error = IndiciumError.new(@browser)
-      click_print indicium_error
+      open_print_window IndiciumError.new(@browser)
     end
 
-    def print
-      click_print PrintWindow.new(@browser)
+    def print_window
+      open_print_window PrintWindow.new(@browser)
     end
 
     def add

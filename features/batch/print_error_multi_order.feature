@@ -1,5 +1,5 @@
 @regression
-Feature:  B-01636 Single Order Indicium Error
+Feature:  B-01636 Multi Order Indicium Error
 
   Background:
     * I am signed in as a batch shipper
