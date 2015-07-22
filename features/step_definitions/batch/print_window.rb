@@ -2,21 +2,44 @@ When /^Print on (.*)$/ do |printer|
   batch.toolbar.print(printer).print
 end
 
+When /^Print$/ do
+  step "Open Print Window"
+  @print_window.print
+  log "Printing Error:  #{@printing_error}"
+end
+
 When /^Open Print Window$/ do
   log "Open Print Window"
-  @print_window
-  @print_window = batch.toolbar.print
+  @service_cost = batch.single_order.service_cost
+  @insurance_cost = batch.single_order.insurance_cost
+  @tracking_cost = batch.single_order.tracking_cost
+  @postage_total = batch.single_order.total
+  @old_balance = batch.navigation_bar.balance
+  @print_window = batch.toolbar.print_window
 end
+
+Then /^Expect Printing cost is deducted from customer balance$/ do
+  log_param "Old Balance", @old_balance
+  if @printing_error
+    @new_balance = batch.navigation_bar.balance
+    balance_deduction = @old_balance.to_f == @new_balance.to_f
+    log "Printing error detected."
+    log "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(balance_deduction)?"Passed":"Failed"}"
+    expect(balance_deduction).to be true
+  else
+    @new_balance = batch.navigation_bar.balance
+    postage_total_calculation = @postage_total.to_f == @service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f
+    log "Postage total Calculation:  #{(postage_total_calculation)?'Passed':'Failed'}.  #{@postage_total} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
+    expect(postage_total_calculation).to be true
+    balance_deduction = @new_balance == @old_balance.to_f - (@service_cost.to_f + @tracking_cost.to_f)
+    log "Customer Balance:  #{(balance_deduction)?'Passed':'Failed'}.  #{@new_balance} == #{@old_balance} - (#{@insurance_cost} + #{@tracking_cost})"
+   expect(balance_deduction).to be true
+  end
+end
+
 
 Then /^Close Print Window$/ do
   (@print_window.close if @print_window.present?) unless @print_window.nil?
-end
-
-When /^Print$/ do
-  @old_balance = batch.navigation_bar.balance
-  @print_window = batch.toolbar.print_window if @print_window.nil?
-  @print_window.print
-  log "Printing Error:  #{@printing_error}"
 end
 
 Then /^Print expecting invalid address error$/ do

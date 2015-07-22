@@ -37,7 +37,7 @@ module Stamps
       value = field.attribute_value('value')
       if text.size > 0
         text
-      elsif  value.size > 0
+      elsif  value.length > 0
         value
       else
         ""

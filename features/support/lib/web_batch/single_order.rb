@@ -86,14 +86,38 @@ module Batch
     end
 
     def service_cost
+      10.times{
+        begin
+          cost = service_cost_label.text
+        rescue
+          #ignore
+        end
+        break unless cost.include? "0.00"
+      }
       test_helper.remove_dollar_sign(browser_helper.text(service_cost_label, 'service'))
     end
 
     def insurance_cost
+      10.times{
+        begin
+          cost = insurance_cost_label.text
+        rescue
+          #ignore
+        end
+        break unless cost.include? "0.00"
+      }
       test_helper.remove_dollar_sign(browser_helper.text(insurance_cost_label,'insurance'))
     end
 
     def tracking_cost
+      10.times{
+        begin
+          cost = tracking_cost_label.text
+        rescue
+          #ignore
+        end
+        break unless cost.include? "0.00"
+      }
       test_helper.remove_dollar_sign(browser_helper.text(tracking_cost_label, 'tracking'))
     end
 

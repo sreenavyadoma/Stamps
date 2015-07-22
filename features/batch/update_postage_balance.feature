@@ -10,9 +10,7 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Click Ship To Less button
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package
-    * Expect Ship Cost to be $7.55
     * Print
-    * Expect $7.55 is deducted from customer balance if printing is successful
     * Expect Printing cost is deducted from customer balance
     * Sign out
     * I am signed in as a batch shipper webbatch_0001/password1
@@ -32,8 +30,6 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Click Ship To Less button
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package
-    * Expect Ship Cost to be $7.55
     * Print
-    * Expect $7.55 is deducted from customer balance if printing is successful
     * Expect Printing cost is deducted from customer balance
     * Sign out
