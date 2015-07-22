@@ -6,6 +6,27 @@ Feature: Purchasing
 
   @purchasing
   Scenario: $10
+    * Add new order
+    * Set Recipient Address to B-01726, Update Balance, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Email to rtest@stamps.com
+    * Click Ship To Less button
+    * Set Pounds to 20
+    * Set Insured Value to $10.00
+    * Set Service to Priority Mail Express Medium Flat Rate Box
+    * Add new order
+    * Set Recipient Address to B-01726, Update Balance, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Email to rtest@stamps.com
+    * Click Ship To Less button
+    * Set Pounds to 20
+    * Set Insured Value to $10.00
+    * Set Service to Priority Mail Express Medium Flat Rate Box
+    * Add new order
+    * Set Recipient Address to B-01726, Update Balance, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Email to rtest@stamps.com
+    * Click Ship To Less button
+    * Set Pounds to 20
+    * Set Insured Value to $10.00
+    * Set Service to Priority Mail Express Medium Flat Rate Box
     * Buy $10 postage
     * Expect $10 is added to customer balance
     * Buy $25 postage
