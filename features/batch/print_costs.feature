@@ -20,11 +20,5 @@ Feature: B-01631 Printing total cost
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package
     * Expect Tracking to be None
-    * Expect Service Cost to be $0.98
-    * Expect Insured Value to be $10.00
-    * Expect Insurance Cost to be $2.20
-    * Expect Tracking Cost to be $0.00
-    * Expect Total to be $3.18
-    * Expect Ship Cost to be $3.18
-    * Expect Print Window Total Cost to be $3.18
+    * Expect Printing cost is deducted from customer balance
     * Sign out
