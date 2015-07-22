@@ -60,14 +60,22 @@ module Batch
       BuyPostage.new(@browser)
     end
 
+    def wait_until_balance_updated old_balance
+      20.times{
+        balance = balance_str
+        break unless balance.include? old_balance.to_s
+        sleep(1)
+      }
+      self
+    end
+
+    def balance_str
+      balance = browser_helper.text balance_label, 'balance'
+      test_helper.strip(test_helper.strip(balance, "$", ""), ",", "")
+    end
+
     def balance
-      balance = balance_label.text
-      log balance
-      new_balance = test_helper.strip(test_helper.strip(balance, "$", ""), ",", "")
-      log new_balance
-      balance_f = new_balance.to_f
-      log balance_f
-      balance_f
+      balance_str.to_f
     end
 
     def sign_out

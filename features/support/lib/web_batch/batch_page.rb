@@ -2,11 +2,11 @@ module Batch
   class BatchPage < BrowserObject
     public
     def navigation_bar
-      @navigation ||= NavigationBar.new(@browser)
+      NavigationBar.new(@browser)
     end
 
     def toolbar
-      @toolbar ||= Toolbar.new(@browser)
+      Toolbar.new(@browser)
     end
 
     protected

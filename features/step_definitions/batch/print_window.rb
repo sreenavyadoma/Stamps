@@ -27,16 +27,15 @@ Then /^Expect Printing cost is deducted from customer balance$/ do
     log "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(balance_deduction)?"Passed":"Failed"}"
     expect(balance_deduction).to be true
   else
-    @new_balance = batch.navigation_bar.balance
-    postage_total_calculation = @postage_total.to_f == @service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f
+    @new_balance = batch.navigation_bar.wait_until_balance_updated(@old_balance).balance
+    postage_total_calculation = @postage_total.to_f.round(2) == (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
     log "Postage total Calculation:  #{(postage_total_calculation)?'Passed':'Failed'}.  #{@postage_total} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
     expect(postage_total_calculation).to be true
-    balance_deduction = @new_balance == @old_balance.to_f - (@service_cost.to_f + @tracking_cost.to_f)
-    log "Customer Balance:  #{(balance_deduction)?'Passed':'Failed'}.  #{@new_balance} == #{@old_balance} - (#{@insurance_cost} + #{@tracking_cost})"
+    balance_deduction = @new_balance.to_f.round(2) == (@old_balance.to_f - @service_cost.to_f + @tracking_cost.to_f).round(2)
+    log "Customer Balance:  #{(balance_deduction)?'Passed':'Failed'}.  #{@new_balance} == #{@old_balance} - (#{@service_cost} + #{@tracking_cost})"
    expect(balance_deduction).to be true
   end
 end
-
 
 Then /^Close Print Window$/ do
   (@print_window.close if @print_window.present?) unless @print_window.nil?
