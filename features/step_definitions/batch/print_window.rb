@@ -18,6 +18,20 @@ When /^Open Print Window$/ do
   @print_window = batch.toolbar.print_window
 end
 
+Then /^Close Print Window$/ do
+  @print_window.close
+end
+
+Then /^Click Print Window Print button$/ do
+  @print_window.print
+end
+
+Then /^Expect default print label to be Left side$/ do
+  @print_window = batch.toolbar.print_window
+  default_selected = @print_window.default_label_selected?
+  default_selected.should be true
+end
+
 Then /^Expect Printing cost is deducted from customer balance$/ do
   log_param "Old Balance", @old_balance
   if @printing_error
@@ -35,10 +49,6 @@ Then /^Expect Printing cost is deducted from customer balance$/ do
     log "Customer Balance:  #{(balance_deduction)?'Passed':'Failed'}.  (New Balance)#{@new_balance} == (Old balance) #{@old_balance} - ((Service) #{@service_cost} + (Tracking) #{@tracking_cost})"
    expect(balance_deduction).to be true
   end
-end
-
-Then /^Close Print Window$/ do
-  (@print_window.close if @print_window.present?) unless @print_window.nil?
 end
 
 Then /^Print expecting invalid address error$/ do

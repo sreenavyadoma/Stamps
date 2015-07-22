@@ -27,6 +27,20 @@ module Stamps
       end
     end
 
+    def attribute field, attribute
+      value = ""
+      begin
+        5.times{
+          value = field.attribute_value(attribute)
+          break unless value.length < 1
+        }
+      rescue
+        #ignroe
+      end
+      log_attribute_get field, attribute, value
+      value
+    end
+
     def field_text field
       begin
         field.focus

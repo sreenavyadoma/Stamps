@@ -30,7 +30,21 @@ module Batch
       print_options *args
     end
 
+    def left_label_div
+      @browser.div :css => "div[class*=singleLabelChooser-container]:nth-child(1)"
+    end
+
+    def right_label_div
+      @browser.div :css => "div[class*=singleLabelChooser-container]:nth-child(2)"
+    end
+
     public
+
+    def default_label_selected?
+      value = browser_helper.attribute left_label_div, 'class'
+      selected = value.include? 'singleLabelChooser-selected'
+      selected
+    end
 
     def print
       5.times {

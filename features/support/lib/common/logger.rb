@@ -80,6 +80,19 @@ module Stamps
     end
   end
 
+  def log_attribute_get (*args)
+    case args.length
+      when 1
+        log "Browser.#{field_log_tag(args[0].to_s)}.attribute.get"
+      when 2
+        log "Browser.#{field_log_tag(args[0].to_s)}.#{args[1].to_s}.get"
+      when 3
+        log "Browser.#{field_log_tag(args[0].to_s)}.#{args[1].to_s}.get #{args[2].to_s}"
+      else
+        raise "Wrong number of arguments"
+    end
+  end
+
   def log_browser_present(field, text, field_name)
     log "Browser.#{field_log_tag(field.to_s)}.#{field_name}.present? \"#{text}\""
     text
