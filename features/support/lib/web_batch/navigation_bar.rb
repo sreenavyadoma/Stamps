@@ -79,7 +79,7 @@ module Batch
     end
 
     def sign_out
-      3.times {
+      2.times {
         begin
           @browser.window.move_to 0, 0
           @browser.window.resize_to 1200, 750
