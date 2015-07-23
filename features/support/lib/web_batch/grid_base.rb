@@ -1,5 +1,5 @@
 module Batch
-  module GridCommon
+  module GridBase
     GRID_COLUMNS ||= {
         :ship_cost => [2, 'Ship Cost'],
         :age => [3, 'Age'],
@@ -45,7 +45,11 @@ module Batch
     end
 
     def order_id(row)
-      grid_text(:order_id, row)
+      begin
+        grid_text(:order_id, row)
+      rescue
+        return '0000'
+      end
     end
 
     def row_number(order_id)

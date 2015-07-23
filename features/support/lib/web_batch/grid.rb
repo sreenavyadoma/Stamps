@@ -3,7 +3,7 @@ module Batch
   # Orders Grid
   #
   class Grid < BrowserObject
-    include GridCommon
+    include GridBase
 
     public
     def ship_cost(order_id)

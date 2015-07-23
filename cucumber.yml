@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile default_profile
+default: --profile cuke_reports --profile bvt_qacc_ie
 cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
 
 default_profile: --tags @regression --guess URL=qacc BROWSER=gc USR=auto10 PW=password1

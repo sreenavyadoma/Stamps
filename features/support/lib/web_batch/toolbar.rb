@@ -5,7 +5,7 @@ module Batch
   #  Contains Add/Edit buton for orders.
   #
   class Toolbar < BrowserObject
-    include GridCommon
+    include GridBase
     private
     def add_field
       @browser.span :text => 'Add'

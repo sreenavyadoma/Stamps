@@ -52,7 +52,7 @@ module Batch
   #  Single Order Edit Form
   #
   class SingleOrder < BatchPage
-    include GridCommon
+    include GridBase
     include SingleOrderCommon
 
     public
