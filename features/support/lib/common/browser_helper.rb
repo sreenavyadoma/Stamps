@@ -49,9 +49,11 @@ module Stamps
       end
       text = field.text
       value = field.attribute_value('value')
-      if text.size > 0
+      if text.nil?
+        ""
+      elsif text.size > 0
         text
-      elsif  value.length > 0
+      elsif value.length > 0
         value
       else
         ""

@@ -8,7 +8,7 @@ Feature: Change Starting Label Position
   Scenario: B-01633 As a batch shipper, I want to be able to change the starting label position
     * Add new order
 
-    * Set Recipient Address to B-01625, Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01625, Package, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Priority Mail Package

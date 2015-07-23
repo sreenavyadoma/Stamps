@@ -9,7 +9,7 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
     * Add new order
     * Expect Service Cost to be $0.00
 
-    * Set Recipient Address to B-01634, Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01634, Package, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
@@ -18,7 +18,7 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
     * Add new order
     * Expect Service Cost to be $0.00
 
-    * Set Recipient Address to B-01634, Package, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01634, Package, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button

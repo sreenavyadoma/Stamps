@@ -7,7 +7,7 @@ Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Sh
   @address_management
   Scenario: Address Management
     * Add new order
-    * Set Recipient Address to B-01690, CRUD Ship-From, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01690, CRUD Ship-From, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Service to Priority Mail Large Package
     * Add new Ship-From address;

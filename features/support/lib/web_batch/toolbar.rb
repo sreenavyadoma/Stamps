@@ -26,11 +26,11 @@ module Batch
       15.times {
         begin
           window.wait_until_present
-          if window.present?
-            return window
-          end
           if naws_plugin_issue.present?
             naws_plugin_issue.print_error_message.okay
+          end
+          if window.present?
+            return window
           end
         rescue
           #ignore

@@ -7,7 +7,7 @@ Feature: B-01743 Show Cost of Order in Ship Cost Grid
   @print_costs
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid
     * Add new order
-    * Set Recipient Address to B-01743, Ship Cost, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01743, Ship Cost, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1

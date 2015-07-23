@@ -39,7 +39,7 @@ Feature: Examples
     * Set Insured Value to $1.09
     
 
-    * Set Recipient Address to B-01671, Inline Rates, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01671, Inline Rates, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
@@ -54,7 +54,7 @@ Feature: Examples
     # Expectations
     * Expect Recipient Name to be B-01671
     * Expect Company Name to be Inline Rates
-    * Expect Street Address to be 1900 E Grand Ave
+    * Expect Street Address to be 1990 E Grand Ave
     * Expect City to be El Segundo
     * Expect State to be CA
     * Expect Zip Code to be 90245

@@ -16,12 +16,15 @@ end
 
 When /^Open Print Window$/ do
   log "Open Print Window"
+  @print_window = batch.toolbar.print_window
+end
+
+Then /^Save All Shipping Costs Data$/ do
   @service_cost = batch.single_order.service_cost
   @insurance_cost = batch.single_order.insurance_cost
   @tracking_cost = batch.single_order.tracking_cost
   @postage_total = batch.single_order.total
   @old_balance = batch.navigation_bar.balance
-  @print_window = batch.toolbar.print_window
 end
 
 Then /^Close Print Window$/ do

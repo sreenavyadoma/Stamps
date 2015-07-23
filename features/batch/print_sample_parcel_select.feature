@@ -7,7 +7,7 @@ Feature: B-01625  Print Sample Parcel Select Large Package
   @print_sample
   Scenario:  Print Sample - Parcel Select Large Package
     * Add new order
-    * Set Recipient Address to B-01624, Parcel Large, 1900 E Grand Ave, El Segundo, CA, 90245
+    * Set Recipient Address to B-01624, Parcel Large, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555
     * Click Ship To Less button
     * Set Service to Parcel Select Large Package
