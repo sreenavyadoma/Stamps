@@ -6,7 +6,7 @@ Then /^Save Shipping Costs Data$/ do
   @old_balance = batch.navigation_bar.balance
 end
 
-Then /^Expect Ship Cost equals Total amoung$/ do
+Then /^Expect Ship Cost equals Total amount$/ do
   begin
     10.times { |counter|
       actual = batch.grid.ship_cost(@order_id)

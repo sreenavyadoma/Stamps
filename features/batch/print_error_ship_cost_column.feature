@@ -1,4 +1,4 @@
-
+@regression
 Feature:  B-01742 Show an Order's Most Recent GetRates(), CleanseAddress(), or CreateIndicium() Error in Ship Cost Column
 
   Background:
