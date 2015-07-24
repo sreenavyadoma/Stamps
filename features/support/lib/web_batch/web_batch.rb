@@ -8,7 +8,7 @@ module Batch
       MultiOrder.new(@browser)
     end
 
-    def single_order
+    def single_order_form
       SingleOrder.new(@browser)
     end
 

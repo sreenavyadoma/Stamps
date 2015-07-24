@@ -20,4 +20,5 @@ Feature: B-01631 Printing total cost
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package
     * Expect Tracking to be None
+
     * Sign out

@@ -19,14 +19,6 @@ When /^Open Print Window$/ do
   @print_window = batch.toolbar.print_window
 end
 
-Then /^Save All Shipping Costs Data$/ do
-  @service_cost = batch.single_order.service_cost
-  @insurance_cost = batch.single_order.insurance_cost
-  @tracking_cost = batch.single_order.tracking_cost
-  @postage_total = batch.single_order.total
-  @old_balance = batch.navigation_bar.balance
-end
-
 Then /^Close Print Window$/ do
   @print_window.close
 end
@@ -38,25 +30,6 @@ end
 Then /^Expect default print label to be Left side$/ do
   default_selected = @print_window.default_label_selected?
   default_selected.should be true
-end
-
-Then /^Expect Printing cost is deducted from customer balance$/ do
-  log_param "Old Balance", @old_balance
-  if @printing_error
-    @new_balance = batch.navigation_bar.balance
-    balance_deduction = @old_balance.to_f == @new_balance.to_f
-    log "Printing error detected."
-    log "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(balance_deduction)?"Passed":"Failed"}"
-    expect(balance_deduction).to be true
-  else
-    @new_balance = batch.navigation_bar.wait_until_balance_updated(@old_balance).balance
-    postage_total_calculation = @postage_total.to_f.round(2) == (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
-    log "Postage total Calculation:  #{(postage_total_calculation)?'Passed':'Failed'}.  #{@postage_total} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
-    expect(postage_total_calculation).to be true
-    balance_deduction = @new_balance.to_f.round(2) == (@old_balance.to_f - @service_cost.to_f + @tracking_cost.to_f).round(2)
-    log "Customer Balance:  #{(balance_deduction)?'Passed':'Failed'}.  (New Balance)#{@new_balance} == (Old balance) #{@old_balance} - ((Service) #{@service_cost} + (Tracking) #{@tracking_cost})"
-   expect(balance_deduction).to be true
-  end
 end
 
 Then /^Print expecting invalid address error$/ do
@@ -91,20 +64,6 @@ Then /^Expect Print Window label to be "You have (\d+) labels ready to print"$/ 
   actual = print_window.labels_ready_to_print
   print_window.close
   actual.should eql expectation
-end
-
-Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expectation|
-  begin
-    print_window = batch.toolbar.print
-    actual_value = print_window.total_cost
-    10.times { |counter|
-      log_expectation_eql "#{counter}. Print Window Total Cost", expectation, actual_value
-      break if actual_value.eql? expectation
-      actual_value = print_window.total_cost
-    }
-    print_window.close
-    actual_value.should eql expectation
-  end unless expectation.length == 0
 end
 
 Then /^Print raises a Printing Error/ do

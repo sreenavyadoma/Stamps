@@ -181,32 +181,3 @@ Then /^Expect new Order ID created$/ do
   log "New Order ID created:  #{@order_id.to_i>0}"
   @order_id.to_i.should be > 0
 end
-
-Then /^Expect Ship Cost to be \$([0-9.]*)$/ do |expected|
-  begin
-    actual = batch.grid.ship_cost(@order_id)
-    10.times { |counter|
-      sleep(2)
-      log_expectation_eql "#{counter}. Ship Cost", expected, actual
-      break if actual.eql? expected
-      actual = batch.grid.ship_cost(@order_id)
-    }
-    actual.should eql expected
-  end unless expected.length == 0
-end
-
-Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
-  log_param "Old Balance", @old_balance
-  if @printing_error
-    @new_balance = batch.navigation_bar.balance
-    test_result = @old_balance.to_f == @new_balance.to_f
-    log "Printing error detected."
-    log "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(test_result)?"Passed":"Failed"}"
-    expect(test_result).to be true
-  else
-    @new_balance = batch.navigation_bar.balance
-    test_result = @old_balance.to_f == @new_balance.to_f + expected.to_f
-    log "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(test_result)?"Passed":"Failed"}"
-    expect(test_result).to be true
-  end
-end

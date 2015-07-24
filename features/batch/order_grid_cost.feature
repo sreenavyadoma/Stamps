@@ -13,5 +13,5 @@ Feature: B-01743 Show Cost of Order in Ship Cost Grid
     * Set Ounces to 1
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package
-    * Expect Ship Cost to be $9
+    * Expect Ship Cost equals Total amoung
     * Sign out
