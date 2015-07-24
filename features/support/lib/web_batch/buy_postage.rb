@@ -5,7 +5,12 @@ class BuyPostage < BrowserObject
   end
 
   def confirm_purchase_button
-    @browser.spans :text => 'Purchase'
+    span_array = @browser.spans :text => 'Purchase'
+    span_array.last
+  end
+
+  def confirm_purchase_modal
+    @browser.div :text => 'Confirm Purchase'
   end
 
   def ok_button
@@ -69,6 +74,11 @@ class BuyPostage < BrowserObject
   end
 
   def confirm_purchase
+
+  end
+
+  def verify_confirm_modal
+    confirm_purchase_modal.wait_until_present(10)
     confirm_purchase_button.click
   end
 
