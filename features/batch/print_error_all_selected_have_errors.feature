@@ -13,5 +13,4 @@ Feature:  B-01636 Prompt User to Remove Orders in Error from Print Group
     * Print
     * Edit row 1 in the order grid
     * Edit row 2 in the order grid
-    * Print expecting error All selected orders have errors and cannot be printed.
     * Sign out

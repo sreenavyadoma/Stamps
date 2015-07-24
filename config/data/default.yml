@@ -133,6 +133,7 @@ login_credentials_invalid:
 
 url_prefix:
   qacc: printbatch100.qacc
+  stage: printbatch100.stage
 
 login_fields:
   sign_in_link_loc:
