@@ -4,7 +4,7 @@ Feature:  BVT - Printing
   Background:
     * I am signed in as a batch shipper
 
-  @bvt_order_printing
+  @bvt_printing
   Scenario:  Printing
     * Add new order
     * Set Recipient Address to B-01671, Inline Rates, 1990 E Grand Ave, El Segundo, CA, 90245
