@@ -20,6 +20,7 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Click Ship To Less button
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package
+    * Save Shipping Costs Data
     * Print
     * Expect Printing cost is deducted from customer balance
     * Sign out
@@ -30,6 +31,7 @@ Feature: B-01726 Update Postage Balance After Each Print
     * Click Ship To Less button
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package
+    * Save Shipping Costs Data
     * Print
     * Expect Printing cost is deducted from customer balance
     * Sign out

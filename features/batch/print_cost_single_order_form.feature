@@ -17,6 +17,7 @@ Feature: B-01631 Printing total cost
     * Click Ship To Less button
     * Set Ounces to 1
     * Set Insured Value to $10.00
+    * Set Tracking to Signature Required
     * Set Service to Priority Mail Package
     * Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost
     * Sign out
