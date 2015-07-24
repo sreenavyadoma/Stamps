@@ -4,7 +4,7 @@ Feature: B-01631 Printing total cost
   Background:
     Given I am signed in as a batch shipper
 
-  @cost_single_order_form
+  @print_costs
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
     * Add new order
     * Expect Service Cost to be $0.00
@@ -18,4 +18,5 @@ Feature: B-01631 Printing total cost
     * Set Ounces to 1
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package
+    * Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost
     * Sign out

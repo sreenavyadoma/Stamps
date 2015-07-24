@@ -6,6 +6,13 @@ Then /^Save Shipping Costs Data$/ do
   @old_balance = batch.navigation_bar.balance
 end
 
+Then /^Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost$/ do
+  @new_balance = batch.navigation_bar.wait_until_balance_updated(@old_balance).balance
+  total_amount_correct = @postage_total.to_f.round(2) == (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
+  log "Total Amount:  #{(total_amount_correct)?'Passed':'Failed'}.  #{@postage_total} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
+  expect(total_amount_correct).to be true
+end
+
 Then /^Expect Ship Cost equals Total amount$/ do
   total_amount = batch.single_order_form.total
   ship_cost = batch.grid.ship_cost(@order_id)
