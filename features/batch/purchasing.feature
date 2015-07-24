@@ -2,7 +2,7 @@
 Feature: Purchasing
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in as a batch shipper auto30/password1
 
   @purchasing
   Scenario: $10
