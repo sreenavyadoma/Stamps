@@ -16,7 +16,7 @@ Then /^Expect Recipient Name to be (.*)$/ do |expected|
   begin
     actual = batch.grid.recipient(@order_id)
     10.times { |counter|
-      sleep(2)
+      sleep(1)
       log_expectation_eql "#{counter}. Recipient Name", expected, actual
       break if actual.eql? expected
       actual = batch.grid.recipient(@order_id)

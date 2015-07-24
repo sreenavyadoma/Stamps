@@ -11,7 +11,6 @@ Feature: System Calls GetRates When "Ship To Address" is changed
     * Set Recipient Address to B-01671, Inline Rates, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 794-4522
     * Set Email to rtest@stamps.com
-    * Expect Service Cost to be $0.00
     * Expect inline Service Cost for First-Class Mail Large Envelope/Flat to be greater than $0.01
     * Expect inline Service Cost for First-Class Mail Package/Thick Envelope to be greater than $0.01
     * Expect inline Service Cost for Priority Mail Large/Thick Envelope to be greater than $0.01

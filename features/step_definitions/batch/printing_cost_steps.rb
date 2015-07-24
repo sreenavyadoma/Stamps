@@ -7,16 +7,20 @@ Then /^Save Shipping Costs Data$/ do
 end
 
 Then /^Expect Ship Cost equals Total amount$/ do
-  begin
-    10.times { |counter|
-      actual = batch.grid.ship_cost(@order_id)
-      sleep(2)
-      log_expectation_eql "#{counter}. Ship Cost", expected, actual
-      break if actual.eql? expected
-      actual = batch.grid.ship_cost(@order_id)
-    }
-    actual.should eql expected
-  end unless expected.length == 0
+  total_amount = batch.single_order_form.total
+  ship_cost = batch.grid.ship_cost(@order_id)
+  10.times { |counter|
+    begin
+      sleep(1)
+      log_expectation_eql "#{counter}. Ship Cost", total_amount, ship_cost
+      break if ship_cost.eql? total_amount
+      total_amount = batch.single_order_form.total
+      ship_cost = batch.grid.ship_cost(@order_id)
+    rescue
+      #ignore
+    end
+  }
+  ship_cost.should eql total_amount
 end
 
 Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|

@@ -7,7 +7,6 @@ Feature: B-01736 Set Correct Default for Tracking
   @tracking
   Scenario:  Print - First-Class Mail Envelope
     * Add new order
-    * Expect Service Cost to be $0.00
 
     * Set Recipient Address to B-01736, Default Tracking, 1990 E Grand Ave, El Segundo, CA, 90245
     * Set Phone to (415) 123-5555

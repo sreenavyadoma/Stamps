@@ -26,4 +26,3 @@ Feature: B-01671 User Views Price Next to Service Dropdown
 
     * Edit row 1 in the order grid
     * Change Ship-To Address to B-01671, Ship To Address is changed, 1901 Avenue Of The Stars, Los Angeles, CA, 90067-6001
-    * Expect Service Cost to be greater than $0.00
