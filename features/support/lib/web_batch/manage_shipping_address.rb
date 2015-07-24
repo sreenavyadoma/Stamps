@@ -58,14 +58,15 @@ module Batch
       add
       case args.length
         when 0
-          @shipping_address_form
+          @shipping_address_form = AddShippingAdress.new(@browser)
         when 1
+          @shipping_address_form = AddShippingAdress.new(@browser)
           @shipping_address_form.shipping_address = args[0]
           @test_status = locate_address(args[0][:name], args[0][:company], args[0][:city])
           log "Add Status:  #{@test_status?"Success":"Failed"}"
           close_window
         else
-          raise "Illegal number of arguments.  "
+          raise "Illegal number of arguments."
       end
       self
     end
@@ -180,10 +181,9 @@ module Batch
 
     def shipping_address_count
       wait_until_present
-      rows = @browser.trs(:css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-boundview^=gridview]>tbody>tr")
-      count = rows.length
-      log "Manage Shipping Address:: row count = #{count}"
-      count.to_i
+      rows = @browser.trs(:css => "div[style^='overflow: auto; margin: 0px; width: 623px; height: 292px;']>div>table")
+      log "Manage Shipping Address:: row count = #{rows.length.to_i}"
+      rows.length.to_i
     end
 
     private
@@ -192,7 +192,7 @@ module Batch
     end
 
     def grid_cell(row, column)
-      @browser.td :css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-recordindex='#{row.to_i-1}'][data-boundview^=gridview]>tbody>tr>td:nth-child(#{column})"
+      @browser.td :css => "div[style^='overflow: auto; margin: 0px; width: 623px; height: 292px;']>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})"
     end
 
     def grid_cell_text(row, column)

@@ -55,8 +55,15 @@ module Batch
     end
 
     def save
-      browser_helper.click save_button, "save_button"
-      save_button.wait_while_present
+      5.times{
+        begin
+          browser_helper.click save_button, "save_button"
+          save_button.wait_while_present
+          break unless browser_helper.field_present? save_button
+        rescue
+          #ignore
+        end
+      }
     end
 
     def present?
