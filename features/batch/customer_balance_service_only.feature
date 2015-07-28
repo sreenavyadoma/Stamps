@@ -13,3 +13,4 @@ Feature: B-01726-3 Update Postage Balance After Each Print (Service Only)
     * Print
     * Expect Printing cost is deducted from customer balance
     * Sign out
+
