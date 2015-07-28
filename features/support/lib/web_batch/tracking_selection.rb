@@ -40,6 +40,5 @@ module Batch
       }
       @cost
     end
-
   end
 end
