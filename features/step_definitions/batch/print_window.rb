@@ -79,7 +79,7 @@ Then /^Print Sample on (.*) raises a PrintingError$/ do |printer|
 end
 
 Then /^Print Sample$/ do
-  batch.toolbar.print.print_sample
+  batch.toolbar.print_window.print_sample
 end
 
 Then /^Print Sample raises a Printing Error/ do

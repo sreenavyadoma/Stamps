@@ -20,7 +20,7 @@ module Batch
 
     def select
       browser_helper.click(drop_down, "TrackingDropDown")
-      3.times {
+      5.times {
         begin
           browser_helper.click(drop_down, "TrackingDropDown") unless browser_helper.field_present?  tracking
           browser_helper.click tracking, "[#{@selection}]"
@@ -33,13 +33,12 @@ module Batch
             #ignroe
           end
 
-          break if tracking_textbox.text.include? @selection
+          break if browser_helper.text(tracking_textbox).include? @selection
         rescue
           #ignore
         end
       }
       @cost
     end
-
   end
 end

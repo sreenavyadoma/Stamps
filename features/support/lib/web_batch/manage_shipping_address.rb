@@ -20,7 +20,7 @@ module Batch
 
     def row_number(name, company, city)
       rows = shipping_address_count
-      1.upto(rows) do |row|
+      1.upto rows do |row|
         browser_helper.click window_title
         grid_name = name row
         grid_company = company row
@@ -181,7 +181,7 @@ module Batch
 
     def shipping_address_count
       wait_until_present
-      rows = @browser.trs(:css => "div[style^='overflow: auto; margin: 0px; width: 623px; height: 292px;']>div>table")
+      rows = @browser.trs(:css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
       log "Manage Shipping Address:: row count = #{rows.length.to_i}"
       rows.length.to_i
     end
@@ -192,7 +192,7 @@ module Batch
     end
 
     def grid_cell(row, column)
-      @browser.td :css => "div[style^='overflow: auto; margin: 0px; width: 623px; height: 292px;']>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})"
+      @browser.td :css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})"
     end
 
     def grid_cell_text(row, column)
