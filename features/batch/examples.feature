@@ -6,10 +6,6 @@ Feature: Examples
   Scenario:  Inline Rates
     * Add new order
     * Edit row 1 in the order grid
-    * Set Service to First Class Mail Package/Thick Envelope
-    * Set Service to First-Class Mail Envelope
-    * Set Service to First-Class Mail Large Envelope/Flat
-    * Set Service to First-Class Mail Package/Thick Envelope
     * Set Service to Priority Mail Large/Thick Envelope
     * Set Service to Priority Mail Package
     * Set Service to Priority Mail Large Package
@@ -67,12 +63,6 @@ Feature: Examples
     * Expect Service Cost to be $0.00
     * Expect inline Service Cost for First-Class Mail Postcard to be greater than $0.35
     * Expect Service Cost to be $0.35
-    * Expect inline Service Cost for First Class Mail Package/Thick Envelope to be greater than $2.04
-    * Expect Service Cost to be $2.04
-    * Expect inline Service Cost for First-Class Mail Envelope to be greater than $0.48
-    * Expect Service Cost to be $0.48
-    * Expect inline Service Cost for First-Class Mail Large Envelope/Flat to be greater than $0.98
-    * Expect Service Cost to be $0.98
     * Expect inline Service Cost for Priority Mail Large/Thick Envelope to be greater than $5.05
     * Expect Service Cost to be $5.05
     * Expect inline Service Cost for Priority Mail Package to be greater than $5.05
@@ -124,74 +114,6 @@ Feature: Examples
       | insured_value  | pounds  | ounces | length  | width | height  |
       | 0.00             | 0       | 1      | 0       | 0     | 0     |
     * Sign out
-
-  Scenario: First-Class Mail Package/Thick Envelope
-    * Add new order
-
-    * Set Receipient address to;
-      | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-      | First-Class Mail Postcard | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-    * Set order details with;
-      | insured_value | pounds  | ounces | length  | width | height  |
-      | 0             | 0       | 1      | 0       | 0     | 0       |
-    * Set Service to First-Class Mail Package/Thick Envelope
-    * Expect Ship-To address to be;
-      | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-      | First-Class Mail Postcard | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-    * Expect Order details to be;
-      | insured_value  | pounds  | ounces | length  | width | height  |
-      | 0.00           | 0       | 1      | 0       | 0     | 0     |
-
-  Scenario: First-Class Mail Package/Thick Envelope
-    * Add new order
-
-    * Set Receipient address to;
-      | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-      | First-Class Mail Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-    * Set order details with;
-      | insured_value | pounds  | ounces | length  | width | height  |
-      | 0             | 0       | 1      | 0       | 0     | 0       |
-    * Set Service to First-Class Mail Envelope
-    * Expect Ship-To address to be;
-      | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-      | First-Class Mail Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-    * Expect Order details to be;
-      | insured_value  | pounds  | ounces | length  | width | height  |
-      | 0.00           | 0       | 1      | 0       | 0     | 0     |
-
-  Scenario: First-Class Mail Large Envelope/Flat
-    * Add new order
-
-    * Set Receipient address to;
-      | name                                 | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-      | First-Class Mail Large Envelope/Flat | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-    * Set order details with;
-      | insured_value | pounds  | ounces | length  | width | height  |
-      | 0             | 0       | 1      | 0       | 0     | 0       |
-    * Set Service to First-Class Mail Large Envelope/Flat
-    * Expect Ship-To address to be;
-      | name                                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-      | First-Class Mail Large Envelope/Flat  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-    * Expect Order details to be;
-      | insured_value  | pounds  | ounces | length  | width | height  |
-      | 0.00           | 0       | 1      | 0       | 0     | 0     |
-
-  Scenario: First-Class Mail Package/Thick Envelope
-    * Add new order
-
-    * Set Receipient address to;
-      | name                                    | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-      | First-Class Mail Package/Thick Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-    * Set order details with;
-      | insured_value | pounds  | ounces | length  | width | height  |
-      | 0             | 0       | 1      | 0       | 0     | 0       |
-    * Set Service to First-Class Mail Package/Thick Envelope
-    * Expect Ship-To address to be;
-      | name                                    | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-      | First-Class Mail Package/Thick Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-    * Expect Order details to be;
-      | insured_value  | pounds  | ounces | length  | width | height  |
-      | 0.00           | 0       | 1      | 0       | 0     | 0     |
 
   Scenario: Priority Mail Large/Thick Envelope
     * Add new order

@@ -13,12 +13,6 @@
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
 
-    * Set Service to First-Class Mail Large Envelope/Flat
-    * Expect Service to be First-Class Mail Large Envelope/Flat
-
-    * Set Service to First-Class Mail Package/Thick Envelope
-    * Expect Service to be First-Class Mail Package/Thick Envelope
-
     * Set Service to Priority Mail Large/Thick Envelope
     * Expect Service to be Priority Mail Large/Thick Envelope
 
