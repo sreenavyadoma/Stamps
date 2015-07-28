@@ -9,7 +9,6 @@ Feature: B-01726-3 Update Postage Balance After Each Print (Service Only)
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Priority Mail Package
-    * Set Insured Value to $10.00
     * Save Shipping Costs Data
     * Print
     * Expect Printing cost is deducted from customer balance
