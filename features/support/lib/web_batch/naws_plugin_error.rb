@@ -2,9 +2,7 @@ module Batch
   class NawsPluginError < Stamps::BrowserObject
     private
     def error_code_p
-      p = @browser.p :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p:nth-child(2)"
-      present = p.present?
-      text = p.text
+      @browser.p :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p:nth-child(2)"
     end
 
     def error_ok_button
@@ -13,8 +11,8 @@ module Batch
 
     public
     def present?
-      error_code_p.present?
-    end
+      browser_helper.field_present? error_code_p
+  end
 
     def print_error_message
       ptags = @browser.ps :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p"
