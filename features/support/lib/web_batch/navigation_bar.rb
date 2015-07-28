@@ -61,9 +61,8 @@ module Batch
     end
 
     def wait_until_balance_updated old_balance
-      20.times{
-        balance = balance_str
-        break unless balance.include? old_balance.to_s
+      10.times{
+        break unless balance_str.include? old_balance.to_s
         sleep(1)
       }
       self
