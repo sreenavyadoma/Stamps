@@ -4,14 +4,7 @@ class BuyPostage < BrowserObject
     @browser.span :id => "sdc-purchasewin-purchasebtn-btnInnerEl"
   end
 
-  def confirm_purchase_button
-    span_array = @browser.spans :text => 'Purchase'
-    span_array.last
-  end
 
-  def confirm_purchase_modal
-    @browser.div :text => 'Confirm Purchase'
-  end
 
   def ok_button
     span_array = @browser.spans :text => 'OK'
@@ -42,9 +35,7 @@ class BuyPostage < BrowserObject
     @browser.text_field :id => "sdc-purchasewin-otheramount"
   end
 
-  def purchase_processing
-    @browser.div :css => "div[id^=processingpurchasewindow][id$=innerCt]"
-  end
+
 
   public
 
@@ -73,14 +64,7 @@ class BuyPostage < BrowserObject
     purchase_button.click
   end
 
-  def confirm_purchase
 
-  end
-
-  def verify_confirm_modal
-    confirm_purchase_modal.wait_until_present(10)
-    confirm_purchase_button.click
-  end
 
   def edit_payment_method
     raise "Edit Payment Method is not yet implemented."
@@ -90,10 +74,7 @@ class BuyPostage < BrowserObject
     raise "AutoBuy is not implemented"
   end
 
-  def wait_for_purchase_confirmation
-    purchase_processing.wait_until_present
-    purchase_processing.wait_while_present
-  end
+
 
   def complete_purchase
     ok_button.click

@@ -60,6 +60,18 @@ module Batch
       BuyPostage.new(@browser)
     end
 
+    def confirm_postage
+      ConfirmPostage.new(@browser)
+    end
+
+    def purchase_processing
+      PurchaseProcessing.new(@browser)
+    end
+
+    def purchase_complete
+      PurchaseComplete.new(@browser)
+    end
+
     def wait_until_balance_updated old_balance
       10.times{
         break unless balance_str.include? old_balance.to_s
