@@ -9,7 +9,7 @@ module Batch
 
     public
     def exact_address_not_found?
-      browser_helper.field_present?  exact_address_not_found_field
+      browser_helper.present?  exact_address_not_found_field
     end
 
     def row=(number=0)
@@ -38,7 +38,7 @@ module Batch
       10.times {
         begin
           item_label.click
-          break if (browser_helper.field_present?  exact_address_not_found_field) || (browser_helper.field_present?  validate_address_link)
+          break if (browser_helper.present?  exact_address_not_found_field) || (browser_helper.present?  validate_address_link)
         rescue
           #ignore
         end

@@ -20,7 +20,7 @@ module Batch
     end
 
     def present?
-      browser_helper.field_present? ok_button
+      browser_helper.present? ok_button
     end
 
     def OK

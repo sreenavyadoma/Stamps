@@ -14,7 +14,7 @@ module Batch
     end
 
     def present?
-      browser_helper.field_present?  window_title
+      browser_helper.present?  window_title
     end
 
     def close

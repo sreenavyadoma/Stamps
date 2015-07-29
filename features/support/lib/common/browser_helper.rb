@@ -95,7 +95,7 @@ module Stamps
       end
     end
 
-    def field_present?(field)
+    def present?(field)
       begin
         field.present?
       rescue

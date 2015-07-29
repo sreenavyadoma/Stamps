@@ -89,7 +89,7 @@ module Batch
           browser_helper.click sign_out_link, "signOutLink"
           username_field.wait_while_present
           @browser.window.move_to 0, 0
-          break if browser_helper.field_present? login_div
+          break if browser_helper.present? login_div
         rescue
           #ignore
         end
@@ -105,7 +105,7 @@ module Batch
     end
 
     def present?
-      browser_helper.field_present?  username_field
+      browser_helper.present?  username_field
     end
 
   end

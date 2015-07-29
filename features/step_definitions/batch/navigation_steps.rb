@@ -8,21 +8,21 @@
    log "Storing old postage amount"
    @old_balance = batch.navigation_bar.balance
    log "Buy More link selected"
-   batch.navigation_bar.select_buy_more
+   buy_postage_window = batch.navigation_bar.select_buy_more
 
    log "$#{amount} postage radio button selected"
 
    case amount
      when "10"
-       batch.navigation_bar.buy_more.buy_10
+       buy_postage_window.buy_more.buy_10
      when "25"
-       batch.navigation_bar.buy_more.buy_25
+       buy_postage_window.buy_more.buy_25
      when "50"
-       batch.navigation_bar.buy_more.buy_50
+       buy_postage_window.buy_more.buy_50
      when "100"
-       batch.navigation_bar.buy_more.buy_100
+       buy_postage_window.buy_more.buy_100
      else
-       batch.navigation_bar.buy_more.buy_other = amount
+       buy_postage_window.buy_more.buy_other = amount
    end
 
    log "Purchase button clicked"

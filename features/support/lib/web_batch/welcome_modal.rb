@@ -7,7 +7,7 @@ module Batch
 
     public
     def present?
-      browser_helper.field_present? okay_button
+      browser_helper.present? okay_button
     end
 
     def wait_until_present
@@ -21,7 +21,7 @@ module Batch
     def OK
       5.times{
         browser_helper.click okay_button, 'OK'
-        break unless browser_helper.field_present? okay_button
+        break unless browser_helper.present? okay_button
       }
     end
   end

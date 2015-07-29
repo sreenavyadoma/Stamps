@@ -35,8 +35,6 @@ class BuyPostage < BrowserObject
     @browser.text_field :id => "sdc-purchasewin-otheramount"
   end
 
-
-
   public
 
   def confirm_postage
@@ -68,8 +66,6 @@ class BuyPostage < BrowserObject
     purchase_button.click
   end
 
-
-
   def edit_payment_method
     raise "Edit Payment Method is not yet implemented."
   end
@@ -77,8 +73,6 @@ class BuyPostage < BrowserObject
   def autobuy
     raise "AutoBuy is not implemented"
   end
-
-
 
   def complete_purchase
     ok_button.click

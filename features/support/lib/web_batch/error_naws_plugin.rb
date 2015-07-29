@@ -5,20 +5,20 @@ module Batch
       @browser.p :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p:nth-child(2)"
     end
 
-    def error_ok_button
+    def ok_button
       @browser.span :text => 'OK'
     end
 
     public
     def present?
-      browser_helper.field_present? error_code_p
+      browser_helper.present? error_code_p
   end
 
     def print_error_message
       ptags = @browser.ps :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p"
       log "-- Print Plugin Error [Error code: [1009]]--"
       ptags.each {|p_tag|
-        if browser_helper.field_present? p_tag
+        if browser_helper.present? p_tag
           log "\n#{browser_helper.text p_tag}"
         end
       }
@@ -27,7 +27,7 @@ module Batch
     end
 
     def okay
-      browser_helper.click error_ok_button, "OK"
+      browser_helper.click ok_button, "OK"
       self
     end
   end

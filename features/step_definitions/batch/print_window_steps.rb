@@ -9,14 +9,14 @@ When /^Select (\w+) side label$/ do |label_side|
 end
 
 When /^Print$/ do
-  step "Open Print Window"
+  step "Click Toolbar Print Button"
   @print_window.print
   log "Printing Error:  #{@printing_error}"
 end
 
-When /^Open Print Window$/ do
-  log "Open Print Window"
-  @print_window = batch.toolbar.print_window
+When /^Click Toolbar Print Button$/ do
+  log "Click Toolbar Print Button"
+  @print_window = batch.toolbar.print
 end
 
 Then /^Close Print Window$/ do
@@ -32,38 +32,47 @@ Then /^Expect default print label to be Left side$/ do
   default_selected.should be true
 end
 
-Then /^Print expecting invalid address error$/ do
-  error_window = batch.toolbar.print_expecting_invalid_address
-  error_window.OK
+Then /^Print expecting error (.*)$/ do |error_message|
+  order_error = batch.toolbar.print_expecting_error
+  actual_error_message = order_error.error_message
+  order_error.ok
+  log "Print expecting error \"#{error_message}\".   \nActual Error Message:  #{actual_error_message}. #{(actual_error_message.include?error_message)?'Passed':'Failed'}"
+  actual_error_message.should eql error_message
 end
 
-Then /^Print expecting indicium error$/ do
-  error_window = batch.toolbar.print_expecting_indicium_error
-  actual_error_message = error_window.error_message
-  error_window.OK
-  expect(actual_error_message.include? 'createLabelIndicium Error').to be true
+Then /^Print expecting (.*) selected orders have errors and cannot be printed. To print the remaining orders, click Continue.$/ do |error_message|
+  order_errors = batch.toolbar.print_expecting_error
+  actual_error_message = order_errors.error_message
+  order_errors.continue.print
+  log "Print expecting error \"#{error_message}\" selected orders have errors and cannot be printed. To print the remaining orders, click Continue.   \nActual Error Message:  #{actual_error_message}. #{(actual_error_message.include?error_message)?'Passed':'Failed'}"
+  actual_error_message.should eql "#{error_message} selected orders have errors and cannot be printed.\nTo print the remaining orders, click Continue."
+end
+
+
+Then /^Print expecting invalid address error$/ do
+  error_window = batch.toolbar.print_invalid_address
+  error_window.ok
 end
 
 When /^Print expecting rating error$/ do
   error_window = batch.toolbar.print.print_expecting_rating_error
   actual_error_message = error_window.error_message
-  error_window.OK
+  error_window.ok
   expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
 end
 
 When /^Print expecting some orders can not be printed$/ do
-  error_window = batch.toolbar.print_expecting_errors
+  error_window = batch.toolbar.print_expecting_error
   actual_error_message = error_window.error_message
   error_window.continue.print
   expect(actual_error_message.include? 'To print the remaining orders, click Continue').to be true
 end
 
-Then /^Expect Print Window label to be "You have (\d+) labels ready to print"$/ do |expectation|
-  log "Expect Print Window label to be \"You have #{expectation} labels ready to print\""
+Then /^Expect Print Window title to be \"(.*)\"$/ do |title|
   print_window = batch.toolbar.print
   actual = print_window.labels_ready_to_print
   print_window.close
-  actual.should eql expectation
+  actual.should eql title
 end
 
 Then /^Print raises a Printing Error/ do
@@ -79,7 +88,7 @@ Then /^Print Sample on (.*) raises a PrintingError$/ do |printer|
 end
 
 Then /^Print Sample$/ do
-  batch.toolbar.print_window.print_sample
+  batch.toolbar.print.print_sample
 end
 
 Then /^Print Sample raises a Printing Error/ do
