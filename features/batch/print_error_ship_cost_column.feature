@@ -11,5 +11,8 @@ Feature:  B-01742 Show an Order's Most Recent GetRates(), CleanseAddress(), or C
     * Edit row 1 in the order grid
     * Set Recipient Address to B-01742 Invalid Address
     * Set Phone to 4157984533
-    * Print expecting invalid address error
+    * Click Ship To Less button
+    * Set Pounds to 1
+    * Set Ounces to 1
+    * Print expecting error Invalid
     * Sign out
