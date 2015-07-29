@@ -1,24 +1,46 @@
 module Batch
-  class OrderErrors < OrderErrorsBase
-    private
-    def continue_button
-      @browser.span :text => "Continue"
+  class OrderError < BrowserObject
+
+    protected
+
+    def window_title
+      #div[class*=x-window-header-title]>div[id^=title-][class*=x-title-item]
+      title = @browser.div :text => 'Order Error'
+      present = title.present?
+      title
     end
 
-    def cancel_button
-      @browser.span :text => "Cancel"
+    def ok_button_span
+      @browser.span :text => 'OK'
     end
+
+    def error_message_label
+      @browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
+    end
+
     public
-    def continue
-      5.times{
+
+    def present?
+      browser_helper.present? window_title
+    end
+
+    def ok
+      5.times {
         begin
-          browser_helper.click continue_button, "OK"
-          break unless browser_helper.present? continue_button
+          browser_helper.click ok_button_span, 'OK'
+          break unless browser_helper.present? ok_button_span
         rescue
           #ignore
         end
       }
-      PrintWindow.new(@browser)
+    end
+
+    def error_message
+      error_message = browser_helper.text error_message_label
+      log "----  Order Errors  ----"
+      log error_message
+      log "----  Order Errors  ----"
+      error_message
     end
 
   end

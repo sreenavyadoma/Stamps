@@ -33,19 +33,23 @@ Then /^Expect default print label to be Left side$/ do
 end
 
 Then /^Print expecting error (.*)$/ do |error_message|
-  batch.toolbar.print_expecting_error(error_message).should be true
+  error_window = batch.toolbar.print_expecting_error
+  actual_error_message = error_window.error_message
+  error_window.ok
+  log "Print expecting error \"#{error_message}\".   \nActual Error Message:  #{actual_error_message}. #{(actual_error_message.include?error_message)?'Passed':'Failed'}"
+  actual_error_message.should eql error_message
 end
+
+Then /^Print expecting (.*) selected orders have errors and cannot be printed. To print the remaining orders, click Continue.$/ do |error_message|
+  actual_error_message = batch.toolbar.print_expecting_error.error_message
+  log "Print expecting error \"#{error_message}\" selected orders have errors and cannot be printed. To print the remaining orders, click Continue.   \nActual Error Message:  #{actual_error_message}. #{(actual_error_message.include?error_message)?'Passed':'Failed'}"
+  actual_error_message.should eql "#{error_message} selected orders have errors and cannot be printed.\nTo print the remaining orders, click Continue."
+end
+
 
 Then /^Print expecting invalid address error$/ do
   error_window = batch.toolbar.print_invalid_address
   error_window.ok
-end
-
-Then /^Print expecting indicium error$/ do
-  error_window = batch.toolbar.print_expecting_indicium_error
-  actual_error_message = error_window.error_message
-  error_window.ok
-  expect(actual_error_message.include? 'createLabelIndicium Error').to be true
 end
 
 When /^Print expecting rating error$/ do

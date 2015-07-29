@@ -1,5 +1,5 @@
 module Batch
-  class InvalidAddressError < OrderErrorsBase
+  class InvalidAddressError < BrowserObject
     private
 
     def error_message_label
@@ -9,7 +9,6 @@ module Batch
     def ok_button
       @browser.span :text => 'OK'
     end
-
 
     public
     def error_message
@@ -29,7 +28,7 @@ module Batch
       browser_helper.present? error_message_label
     end
 
-    def OK
+    def ok
       log "----  Invalid Address Error  ----"
       log browser_helper.text error_message_label
       log "----  Invalid Address Error  ----"

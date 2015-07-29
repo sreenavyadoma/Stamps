@@ -40,18 +40,21 @@ module Batch
 
     public
 
-    def print_expecting_error error_message
+    def print_expecting_error *args
       error_window = OrderErrors.new(@browser)
       open_print_window error_window
-      error_window.error_message.include? error_message
+      case args.length
+        when 0
+          error_window
+        when 1
+          error_window.error_message.include? error_message
+        else
+          raise "Illegal number of arguments."
+      end
     end
 
     def print_invalid_address
       open_print_window InvalidAddressError.new(@browser)
-    end
-
-    def print_expecting_indicium_error
-      open_print_window IndiciumError.new(@browser)
     end
 
     def print
