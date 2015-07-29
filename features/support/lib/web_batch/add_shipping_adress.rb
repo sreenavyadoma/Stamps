@@ -59,7 +59,7 @@ module Batch
         begin
           browser_helper.click save_button, "save_button"
           save_button.wait_while_present
-          break unless browser_helper.field_present? save_button
+          break unless browser_helper.present? save_button
         rescue
           #ignore
         end

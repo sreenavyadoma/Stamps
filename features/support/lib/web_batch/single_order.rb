@@ -16,13 +16,13 @@ module Batch
 
     def expand_ship_to
       10.times {
-        break if browser_helper.field_present?  address_textbox
-        browser_helper.click ship_to_dropdown, "ship_to_address_field" if browser_helper.field_present?  ship_to_dropdown
+        break if browser_helper.present?  address_textbox
+        browser_helper.click ship_to_dropdown, "ship_to_address_field" if browser_helper.present?  ship_to_dropdown
       }
     end
 
     def less
-      browser_helper.click less_dropdown, "Less" if browser_helper.field_present?  less_dropdown
+      browser_helper.click less_dropdown, "Less" if browser_helper.present?  less_dropdown
     end
 
     def item_label
@@ -137,7 +137,7 @@ module Batch
     end
 
     def present?
-      browser_helper.field_present?  height_textbox
+      browser_helper.present?  height_textbox
     end
 
     def wait_until_present(timeout)
@@ -238,7 +238,7 @@ module Batch
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
       5.times {
         begin
-          browser_helper.click ship_from_dropdown, "ship_from_selection.[#{selection}]" unless browser_helper.field_present?  ship_from_selection(selection)
+          browser_helper.click ship_from_dropdown, "ship_from_selection.[#{selection}]" unless browser_helper.present?  ship_from_selection(selection)
           browser_helper.click ship_from_selection(selection), selection
           break if @manage_shipping_adddress.window_present?
         rescue

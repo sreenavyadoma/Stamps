@@ -13,16 +13,16 @@ module Batch
       browser_helper.click(drop_down, "ServiceDropDown")
       5.times {
         begin
-          browser_helper.click(drop_down, "ServiceDropDown") unless browser_helper.field_present?  service
+          browser_helper.click(drop_down, "ServiceDropDown") unless browser_helper.present?  service
           @cost = test_helper.remove_dollar_sign(cost_label.text)
-          drop_down.click unless browser_helper.field_present?  service
+          drop_down.click unless browser_helper.present?  service
           log_browser_set service, @selection, "Service[#{@cost}]"
           service.click
 
           # Click this field 3 times to make tool tip disapper, tool tip appears after setting service.
           3.times
           begin
-            browser_helper.click single_order_form_item_label if browser_helper.field_present?  single_order_form_item_label
+            browser_helper.click single_order_form_item_label if browser_helper.present?  single_order_form_item_label
           rescue
             #ignroe
           end

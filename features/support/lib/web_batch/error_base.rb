@@ -4,10 +4,13 @@ module Batch
     protected
 
     def window_title
-      @browser.div :text => 'Order Errors'
+      #div[class*=x-window-header-title]>div[id^=title-][class*=x-title-item]
+      title = @browser.div :text => 'Order Error'
+      present = title.present?
+      title
     end
 
-    def ok_button
+    def ok_button_span
       @browser.span :text => 'OK'
     end
 
@@ -17,10 +20,14 @@ module Batch
 
     public
 
+    def present?
+      browser_helper.present? window_title
+    end
+
     def ok
       5.times {
-        browser_helper.click ok_button, 'OK'
-        break unless browser_helper.field_present? ok_button
+        browser_helper.click ok_button_span, 'OK'
+        break unless browser_helper.present? ok_button_span
       }
     end
 

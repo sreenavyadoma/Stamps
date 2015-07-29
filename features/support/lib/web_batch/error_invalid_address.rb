@@ -26,7 +26,7 @@ module Batch
     end
 
     def present?
-      browser_helper.field_present? error_message_label
+      browser_helper.present? error_message_label
     end
 
     def OK

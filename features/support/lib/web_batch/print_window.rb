@@ -9,7 +9,7 @@ module Batch
     end
 
     def x_button_present?
-      BrowserHelper.instance.field_present? window_x_button
+      BrowserHelper.instance.present? window_x_button
     end
 
     def wait_until_present
@@ -65,7 +65,7 @@ module Batch
         begin
           browser_helper.click print_button
           printing_error_check
-          break unless browser_helper.field_present? print_button
+          break unless browser_helper.present? print_button
         rescue
           #ignore
         end
@@ -133,7 +133,7 @@ module Batch
     end
 
     def present?
-      browser_helper.field_present? print_button
+      browser_helper.present? print_button
     end
 
     def error_ok_button
@@ -165,12 +165,12 @@ module Batch
     def check_naws_plugin_error
       begin
         error_label = @browser.div :text => 'Error'
-        if browser_helper.field_present? error_label
+        if browser_helper.present? error_label
           @printing_error = true
           ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
           log "-- Chrome NAWS Plugin Error --"
           ptags.each {|p_tag|
-            if browser_helper.field_present? p_tag
+            if browser_helper.present? p_tag
               p_tag_text = browser_helper.text p_tag
               log "\n#{p_tag_text}"
             end
@@ -195,12 +195,12 @@ module Batch
     def check_unauthenticated_error
       begin
         error_label = @browser.p :text => "Error code: [4522293]"
-        if browser_helper.field_present? error_label
+        if browser_helper.present? error_label
           @printing_error = true
           ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
           log "-- Postage Rating Error (Error code: [4522293]) --"
           ptags.each {|p_tag|
-            if browser_helper.field_present? p_tag
+            if browser_helper.present? p_tag
               p_tag_text = browser_helper.text p_tag
               log "\n#{p_tag_text}"
             end
@@ -226,12 +226,12 @@ module Batch
     def check_account_status_error
       begin
         error_label = @browser.p :text => "Error code: [4522357]"
-        if browser_helper.field_present? error_label
+        if browser_helper.present? error_label
           @printing_error = true
           ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
           log "-- Account Status Error (Error code: [4522357]) --"
           ptags.each {|p_tag|
-            if browser_helper.field_present? p_tag
+            if browser_helper.present? p_tag
               p_tag_text = browser_helper.text p_tag
               log "\n#{p_tag_text}"
             end
@@ -257,13 +257,13 @@ module Batch
     def check_rating_error
       begin
         error_label = @browser.p :text => "Error code: [5177601]"
-        if browser_helper.field_present? error_label
+        if browser_helper.present? error_label
           @printing_error = true
           ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
           log "-- Rating Error code: [5177601] --"
 
           ptags.each {|p_tag|
-            if browser_helper.field_present? p_tag
+            if browser_helper.present? p_tag
               p_tag_text = browser_helper.text p_tag
               log "\n#{p_tag_text}"
             end

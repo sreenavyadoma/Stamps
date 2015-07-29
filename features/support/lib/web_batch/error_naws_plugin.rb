@@ -11,14 +11,14 @@ module Batch
 
     public
     def present?
-      browser_helper.field_present? error_code_p
+      browser_helper.present? error_code_p
   end
 
     def print_error_message
       ptags = @browser.ps :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p"
       log "-- Print Plugin Error [Error code: [1009]]--"
       ptags.each {|p_tag|
-        if browser_helper.field_present? p_tag
+        if browser_helper.present? p_tag
           log "\n#{browser_helper.text p_tag}"
         end
       }

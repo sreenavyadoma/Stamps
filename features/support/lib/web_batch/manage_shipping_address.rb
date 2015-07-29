@@ -38,7 +38,7 @@ module Batch
     end
 
     def window_present?
-      browser_helper.field_present?  add_button
+      browser_helper.present?  add_button
     end
 
     def add
@@ -105,7 +105,7 @@ module Batch
 
     def delete
       begin
-        browser_helper.click(delete_button, "Delete") if browser_helper.field_present?  delete_button
+        browser_helper.click(delete_button, "Delete") if browser_helper.present?  delete_button
         browser_helper.click window_title, 'window_title'
       rescue
         #ignore
@@ -155,7 +155,7 @@ module Batch
     def close_window
       begin
         10.times{
-          break unless browser_helper.field_present? close_button
+          break unless browser_helper.present? close_button
           browser_helper.click close_button, "Close"
         }
       rescue

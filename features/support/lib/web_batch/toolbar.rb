@@ -13,9 +13,9 @@ module Batch
 
     def print_button
       button1 = @browser.elements(:text => 'Print').first
-      button1_present = browser_helper.field_present? button1
+      button1_present = browser_helper.present? button1
       button2 = @browser.elements(:text => 'Print').last
-      button2_present = browser_helper.field_present? button2
+      button2_present = browser_helper.present? button2
       xbutton = (button1_present)? button1 : (button2_present) ? button2 : nil
       xbutton
     end
@@ -23,9 +23,8 @@ module Batch
     def open_print_window window
       browser_helper.click print_button, "print"
       naws_plugin_issue = NawsPluginError.new(@browser)
-      15.times {
+      3.times {
         begin
-          window.wait_until_present
           if naws_plugin_issue.present?
             naws_plugin_issue.print_error_message.okay
           end
@@ -73,7 +72,7 @@ module Batch
     end
 
     def present?
-      browser_helper.field_present?  add_field
+      browser_helper.present?  add_field
     end
   end
 end

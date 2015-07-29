@@ -13,7 +13,7 @@ module Batch
       5.times{
         begin
           browser_helper.click continue_button, "OK"
-          break unless browser_helper.field_present? continue_button
+          break unless browser_helper.present? continue_button
         rescue
           #ignore
         end
