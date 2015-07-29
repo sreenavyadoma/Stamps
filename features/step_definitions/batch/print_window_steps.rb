@@ -9,14 +9,14 @@ When /^Select (\w+) side label$/ do |label_side|
 end
 
 When /^Print$/ do
-  step "Open Print Window"
+  step "Click Toolbar Print Button"
   @print_window.print
   log "Printing Error:  #{@printing_error}"
 end
 
-When /^Open Print Window$/ do
-  log "Open Print Window"
-  @print_window = batch.toolbar.print_window
+When /^Click Toolbar Print Button$/ do
+  log "Click Toolbar Print Button"
+  @print_window = batch.toolbar.print
 end
 
 Then /^Close Print Window$/ do
@@ -32,27 +32,31 @@ Then /^Expect default print label to be Left side$/ do
   default_selected.should be true
 end
 
+Then /^Print expecting error (.*)$/ do |error_message|
+  batch.toolbar.print_expecting_error(error_message).should be true
+end
+
 Then /^Print expecting invalid address error$/ do
-  error_window = batch.toolbar.print_expecting_invalid_address
-  error_window.OK
+  error_window = batch.toolbar.print_invalid_address
+  error_window.ok
 end
 
 Then /^Print expecting indicium error$/ do
   error_window = batch.toolbar.print_expecting_indicium_error
   actual_error_message = error_window.error_message
-  error_window.OK
+  error_window.ok
   expect(actual_error_message.include? 'createLabelIndicium Error').to be true
 end
 
 When /^Print expecting rating error$/ do
   error_window = batch.toolbar.print.print_expecting_rating_error
   actual_error_message = error_window.error_message
-  error_window.OK
+  error_window.ok
   expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
 end
 
 When /^Print expecting some orders can not be printed$/ do
-  error_window = batch.toolbar.print_expecting_errors
+  error_window = batch.toolbar.print_expecting_error
   actual_error_message = error_window.error_message
   error_window.continue.print
   expect(actual_error_message.include? 'To print the remaining orders, click Continue').to be true
@@ -79,7 +83,7 @@ Then /^Print Sample on (.*) raises a PrintingError$/ do |printer|
 end
 
 Then /^Print Sample$/ do
-  batch.toolbar.print_window.print_sample
+  batch.toolbar.print.print_sample
 end
 
 Then /^Print Sample raises a Printing Error/ do

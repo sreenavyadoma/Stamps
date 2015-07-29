@@ -5,7 +5,7 @@ module Batch
       @browser.p :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p:nth-child(2)"
     end
 
-    def error_ok_button
+    def ok_button
       @browser.span :text => 'OK'
     end
 
@@ -27,7 +27,7 @@ module Batch
     end
 
     def okay
-      browser_helper.click error_ok_button, "OK"
+      browser_helper.click ok_button, "OK"
       self
     end
   end

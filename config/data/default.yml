@@ -132,8 +132,8 @@ login_credentials_invalid:
     password:  password1
 
 url_prefix:
-  qacc: printbatch100.qacc
-  stage: printbatch100.stage
+  qacc: print.qacc
+  stage: print.stage
 
 login_fields:
   sign_in_link_loc:

@@ -1,5 +1,5 @@
 module Batch
-  class InvalidAddressError < Stamps::BrowserObject
+  class InvalidAddressError < OrderErrorsBase
     private
 
     def error_message_label

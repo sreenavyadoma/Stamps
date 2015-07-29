@@ -41,11 +41,13 @@ module Batch
 
     public
 
-    def print_expecting_errors
-      open_print_window OrderErrors.new(@browser)
+    def print_expecting_error error_message
+      error_window = OrderErrors.new(@browser)
+      open_print_window error_window
+      error_window.error_message.include? error_message
     end
 
-    def print_expecting_invalid_address
+    def print_invalid_address
       open_print_window InvalidAddressError.new(@browser)
     end
 
@@ -53,7 +55,7 @@ module Batch
       open_print_window IndiciumError.new(@browser)
     end
 
-    def print_window
+    def print
       open_print_window PrintWindow.new(@browser)
     end
 

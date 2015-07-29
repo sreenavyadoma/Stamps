@@ -11,7 +11,7 @@ Feature: B-01633 Change the starting label position I will print from - Default 
     * Click Ship To Less button
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package
-    * Open Print Window
+    * Click Toolbar Print Button
     * Expect default print label to be Left side
     * Close Print Window
     * Sign out
