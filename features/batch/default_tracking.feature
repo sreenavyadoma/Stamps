@@ -12,14 +12,6 @@ Feature: B-01736 Set Correct Default for Tracking
     * Set Phone to (415) 123-5555
     * Click Ship To Less button
 
-    * Set Service to First-Class Mail Large Envelope/Flat
-    * Expect Service to be First-Class Mail Large Envelope/Flat
-    * Expect Tracking to be None
-
-    * Set Service to First-Class Mail Package/Thick Envelope
-    * Expect Service to be First-Class Mail Package/Thick Envelope
-    * Expect Tracking to be USPS Tracking
-
     * Set Service to Priority Mail Large/Thick Envelope
     * Expect Service to be Priority Mail Large/Thick Envelope
     * Expect Tracking to be USPS Tracking

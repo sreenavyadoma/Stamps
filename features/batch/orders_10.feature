@@ -14,7 +14,7 @@ Feature: 10 orders
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
-    * Set Service to First-Class Mail Large Envelope/Flat
+    * Set Service to Priority Mail Package
     * Set Insured Value to $15.00
 
     * Add new order
@@ -23,7 +23,7 @@ Feature: 10 orders
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
-    * Set Service to First-Class Mail Package/Thick Envelope
+    * Set Service to Priority Mail Package
     * Set Insured Value to $45.00
     * Set Tracking to USPS Tracking
 
