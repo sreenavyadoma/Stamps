@@ -1,4 +1,5 @@
 module Batch
+
   class OrderErrors < BrowserObject
     private
 
@@ -34,7 +35,7 @@ module Batch
     def continue
       5.times{
         begin
-          browser_helper.click continue_button, "ok"
+          browser_helper.click continue_button, "Continue"
           break unless browser_helper.present? continue_button
         rescue
           #ignore
@@ -55,4 +56,5 @@ module Batch
     end
 
   end
+
 end
