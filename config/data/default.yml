@@ -132,7 +132,7 @@ login_credentials_invalid:
     password:  password1
 
 url_prefix:
-  qacc: print.qacc
+  qacc: printext.qacc
   stage: print.stage
 
 login_fields:
