@@ -11,6 +11,10 @@ class PurchaseProcessing < BrowserObject
 
   public
 
+  def purchase_complete
+    PurchaseComplete.new(@browser)
+  end
+
   def wait_for_purchase_confirmation
     purchase_processing.wait_until_present(10)
     purchase_processing.wait_while_present

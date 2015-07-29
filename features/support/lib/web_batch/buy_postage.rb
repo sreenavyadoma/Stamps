@@ -39,6 +39,10 @@ class BuyPostage < BrowserObject
 
   public
 
+  def confirm_postage
+    ConfirmPostage.new(@browser)
+  end
+
   def buy_10
     buy_10_button.click
   end
