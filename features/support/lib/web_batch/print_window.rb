@@ -53,7 +53,9 @@ module Batch
     end
 
     def label_selected? label
-      browser_helper.attribute(label, 'class').include? 'singleLabelChooser-selected'
+      selected = browser_helper.attribute(label, 'class').include? 'singleLabelChooser-selected'
+      log "Label selected?  #{(selected)? 'Yes':'No'}"
+      selected
     end
 
     def default_label_selected?
