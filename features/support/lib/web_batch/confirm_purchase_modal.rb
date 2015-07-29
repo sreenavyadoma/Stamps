@@ -17,6 +17,10 @@ class ConfirmPostage < BrowserObject
 
   public
 
+  def purchase_processing
+    PurchaseProcessing.new(@browser)
+  end
+
   def exit_confirm_modal
     exit_button.click
   end
