@@ -43,27 +43,35 @@ class BuyPostage < BrowserObject
 
   def buy_10
     buy_10_button.click
+    self
   end
 
   def buy_25
     buy_25_button.click
+    self
   end
 
   def buy_50
     buy_50_button.click
+    self
   end
 
   def buy_100
     buy_100_button.click
+    self
   end
 
-  def buy_other=(value)
+  def buy_other(value)
     buy_other_button.click
     browser_helper.set_text buy_other_textbox, value, 'Buy'
+    self
   end
 
   def purchase
+    log "Purchase button clicked"
     purchase_button.click
+    log "Purchase confirmed"
+    self
   end
 
   def edit_payment_method
@@ -76,5 +84,6 @@ class BuyPostage < BrowserObject
 
   def complete_purchase
     ok_button.click
+    self
   end
 end

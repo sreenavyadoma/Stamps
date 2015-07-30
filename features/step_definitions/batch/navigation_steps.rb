@@ -14,22 +14,16 @@
 
    case amount
      when "10"
-       batch.navigation_bar.buy_more.buy_10
+       batch.navigation_bar.buy_more.buy_10.purchase
      when "25"
-       batch.navigation_bar.buy_more.buy_25
+       batch.navigation_bar.buy_more.buy_25.purchase
      when "50"
-       batch.navigation_bar.buy_more.buy_50
+       batch.navigation_bar.buy_more.buy_50.purchase
      when "100"
-       batch.navigation_bar.buy_more.buy_100
+       batch.navigation_bar.buy_more.buy_100.purchase
      else
-       batch.navigation_bar.buy_more.buy_other = amount
+       batch.navigation_bar.buy_more.buy_other(amount).purchase
    end
-
-   log "Purchase button clicked"
-   batch.navigation_bar.buy_more.purchase
-   log "Purchase confirmed"
-   #todo create a ConfirmPurchase object.
-
 
    #2.  Ask confirmpurchase if it exist, (aka confirmPurchase.present?)
    # if it does, click confirm, if not...

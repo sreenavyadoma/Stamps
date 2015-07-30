@@ -16,8 +16,14 @@ class PurchaseProcessing < BrowserObject
   end
 
   def wait_for_purchase_confirmation
-    purchase_processing.wait_until_present(10)
-    purchase_processing.wait_while_present
+    20.times {
+      begin
+        purchase_processing.wait_while_present
+        break unless browser_helper.present? purchase_processing
+      rescue
+        #ignroe
+      end
+    }
   end
 
 end

@@ -61,7 +61,6 @@ module Batch
     end
 
     def add
-      @order_id = ""
       3.times do
         begin
           browser_helper.click add_field, 'Add'

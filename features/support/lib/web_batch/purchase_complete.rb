@@ -13,8 +13,12 @@ class PurchaseComplete < BrowserObject
   public
 
   def complete_purchase
-    purchase_complete_header.wait_until_present(10)
-    ok_button.click
+    begin
+      purchase_complete_header.wait_until_present(10)
+    rescue
+      #ignore
+    end
+    browser_helper.click ok_button
   end
 
 end

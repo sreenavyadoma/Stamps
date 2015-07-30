@@ -5,6 +5,19 @@ module Batch
       BrowserHelper.instance
     end
 
+    def order_id_label
+      label = @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div:nth-child(1)>div>div>div>div>div>label:nth-child(1)"
+      present = label.present?
+      text = label.text
+      label
+    end
+
+    def order_id
+      order_id_str = browser_helper.text order_id_label
+      order_id = order_id_str.split('Order #').last
+      order_id
+    end
+
     def order_status_label
       label = @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div>div>div>label"
       present = label.present?
