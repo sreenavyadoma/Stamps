@@ -14,15 +14,15 @@
 
    case amount
      when "10"
-       buy_postage_window.buy_more.buy_10
+       batch.navigation_bar.buy_more.buy_10
      when "25"
-       buy_postage_window.buy_more.buy_25
+       batch.navigation_bar.buy_more.buy_25
      when "50"
-       buy_postage_window.buy_more.buy_50
+       batch.navigation_bar.buy_more.buy_50
      when "100"
-       buy_postage_window.buy_more.buy_100
+       batch.navigation_bar.buy_more.buy_100
      else
-       buy_postage_window.buy_more.buy_other = amount
+       batch.navigation_bar.buy_more.buy_other = amount
    end
 
    log "Purchase button clicked"
