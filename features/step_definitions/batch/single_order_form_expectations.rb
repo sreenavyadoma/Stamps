@@ -1,3 +1,9 @@
+Then /^Expect Order Status to be ([\w ]+)$/ do |expected_value|
+  actual_value = batch.single_order_form.order_status
+  log "Expect Order Status to be #{expected_value}.  Actual Value:  #{actual_value}.  Test #{(actual_value==expected_value)?'Passed':"Failed"}"
+  actual_value.should eql expected_value
+end
+
 Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
   actual = batch.single_order_form.pounds_max_value
   log_expectation_eql "Maximum Pounds", expected, actual

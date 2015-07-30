@@ -85,6 +85,7 @@ module Batch
 
     def title
       div = @browser.div :css => "div[id^=printwindow]>div[id^=title]>div[id^=title]"
+      log "Title: #{div}"
       browser_helper.text div
     end
 

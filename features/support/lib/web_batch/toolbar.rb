@@ -1,11 +1,10 @@
 module Batch
-  #require_relative 'grid'
-
   #
   #  Contains Add/Edit buton for orders.
   #
   class Toolbar < BrowserObject
     include GridBase
+    include SingleOrderCommon
     private
     def add_field
       @browser.span :text => 'Add'
@@ -62,10 +61,15 @@ module Batch
     end
 
     def add
-      add_field.when_present.click
+      @order_id = ""
       3.times do
-        @order_id = order_id(1)
-        break unless @order_id.size == 0
+        begin
+          browser_helper.click add_field, 'Add'
+          @order_id = order_id(1)
+          break if single_order_form_present?
+        rescue
+          #ignore
+        end
       end
       @order_id
     end
