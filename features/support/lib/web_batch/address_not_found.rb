@@ -1,6 +1,6 @@
 module Batch
   class AddressNotFound < Stamps::BrowserObject
-    include SingleOrderCommon
+    include SingleOrderFormBase
 
     private
     def exact_address_not_found_field

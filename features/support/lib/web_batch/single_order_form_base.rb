@@ -1,15 +1,12 @@
 module Batch
 
-  module SingleOrderCommon
+  module SingleOrderFormBase
     def browser_helper
       BrowserHelper.instance
     end
 
     def order_id_label
-      label = @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div:nth-child(1)>div>div>div>div>div>label:nth-child(1)"
-      present = label.present?
-      text = label.text
-      label
+      @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div:nth-child(1)>div>div>div>div>div>label:nth-child(1)"
     end
 
     def order_id

@@ -5,7 +5,7 @@ module Batch
   #
   class SingleOrder < BatchPage
     include GridBase
-    include SingleOrderCommon
+    include SingleOrderFormBase
 
     public
     def initialize(browser)
@@ -369,10 +369,12 @@ module Batch
       @browser.text_field :name => 'Tracking'
     end
 
+=begin
     def order_id_label
       txt = "Order ##{WebBatchHelper.order_id}"
       @browser.label :text => txt
     end
+=end
 
     def service_cost_label
       #@browser.label(:text => 'Service:').element(:xpath => './following-sibling::*[2]')
