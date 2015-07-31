@@ -8,6 +8,7 @@ require 'selenium-webdriver'
 require 'watir-webdriver'
 require 'log4r'
 require 'rspec'
+require 'date'
 
 require_relative 'lib/common/browser'
 require_relative 'lib/common/test_helper'

@@ -95,6 +95,29 @@ module Stamps
       end
     end
 
+    def wait_until_present *args
+      case args.length
+        when 1
+          begin
+            args[0].wait_until_present
+            true
+          rescue
+            false
+          end
+        when 2
+          begin
+            args[1].times{
+              args[0].wait_until_present
+              return true if present? args[0]
+            }
+          rescue
+            false
+          end
+        else
+          raise "Illegal number of arguments for BrowserHelper.wait_until_present"
+      end
+    end
+
     def present?(field)
       begin
         field.present?
