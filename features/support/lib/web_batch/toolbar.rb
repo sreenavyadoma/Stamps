@@ -65,7 +65,7 @@ module Batch
         begin
           browser_helper.click add_field, 'Add'
           begin
-            order_id_label.wait_until_present
+            browser_helper.wait_until_present order_id_label
           rescue
             #ignore
           end

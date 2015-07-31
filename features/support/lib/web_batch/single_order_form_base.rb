@@ -10,7 +10,14 @@ module Batch
     end
 
     def order_id
-      order_id_str = browser_helper.text order_id_label
+      5.times{
+        begin
+          order_id_str = browser_helper.text order_id_label
+          break if order_id_str.include? 'Order #'
+        rescue
+          #ignroe
+        end
+      }
       order_id = order_id_str.split('Order #').last
       order_id
     end
@@ -24,6 +31,16 @@ module Batch
 
     def order_status
       browser_helper.text order_status_label, 'order_status'
+    end
+
+    def wait_until_single_order_form_present
+      5.times{
+        begin
+
+        rescue
+          #ignore
+        end
+      }
     end
 
     def single_order_form_present?
