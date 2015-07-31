@@ -16,6 +16,7 @@ class PurchaseProcessing < BrowserObject
   end
 
   def wait_for_purchase_confirmation
+    log "Waiting for purchase processing to complete"
     20.times {
       begin
         purchase_processing.wait_while_present
@@ -24,6 +25,7 @@ class PurchaseProcessing < BrowserObject
         #ignroe
       end
     }
+    self
   end
 
 end

@@ -25,9 +25,11 @@ class ConfirmPostage < BrowserObject
     exit_button.click
   end
 
-  def verify_confirm_modal
+  def click_confirm_modal
+    log "Confirming Purchase"
     confirm_purchase_header.wait_until_present(10)
     confirm_purchase_button.click
+    self
   end
 
 
