@@ -36,7 +36,25 @@ module Batch
       @browser.div :css => "div[class*=singleLabelChooser-container]:nth-child(2)"
     end
 
+    def ship_date_input
+      @browser.text_field :name => 'sdc-printpostagewindow-shipdate-inputEl'
+    end
+
     public
+
+    def ship_date date
+      5.times{
+        begin
+          browser_helper.set_text ship_date_input, date
+          sleep(1)
+          text = browser_helper.text ship_date_input
+          done = text.include? date
+          break if done
+        rescue
+          #ignroe
+        end
+      }
+    end
 
     def left_label
       5.times{

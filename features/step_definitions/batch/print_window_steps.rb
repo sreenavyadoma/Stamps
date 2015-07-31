@@ -9,9 +9,16 @@ When /^Select (\w+) side label$/ do |label_side|
 end
 
 When /^Print$/ do
-  step "Click Toolbar Print Button"
+  present = @print_window.present?
+  if @print_window.nil? || !present
+    step 'Click Toolbar Print Button'
+  end
   @print_window.print
-  log "Printing Error:  #{@printing_error}"
+  #log "Printing Error:  #{@printing_error}" unless @printing_error.nil? || @printing_error.length > 0
+end
+
+Then /^Set Ship Date to (\d+) day from today$/ do |days|
+  @print_window.ship_date test_helper.date_from_today(days)
 end
 
 When /^Click Toolbar Print Button$/ do

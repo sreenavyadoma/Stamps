@@ -75,4 +75,9 @@ module Stamps
     @browser = nil
     log "Done!"
   end
+
+  def test_helper
+    TestHelper.instance
+  end
+
 end
