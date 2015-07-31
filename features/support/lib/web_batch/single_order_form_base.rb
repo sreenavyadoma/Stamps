@@ -18,6 +18,7 @@ module Batch
           #ignroe
         end
       }
+      order_id_str = browser_helper.text order_id_label
       order_id = order_id_str.split('Order #').last
       order_id
     end
