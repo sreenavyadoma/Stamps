@@ -28,17 +28,17 @@ module Batch
 
     def format_address(address)
       if address.is_a?(Hash)
-        name = address['name'].strip
+        name = address['name'].to_s.strip
         log "name: #{name}"
-        company = address['company'].strip
+        company = address['company'].to_s.strip
         log "company: #{company}"
-        street_address = address['street_address'].strip
+        street_address = address['street_address'].to_s.strip
         log "street_address: #{street_address}"
-        city = address['city'].strip
+        city = address['city'].to_s.strip
         log "city: #{city}"
-        state = address['state'].strip
+        state = address['state'].to_s.strip
         log "state: #{state}"
-        zip = address['zip'].strip
+        zip = address['zip'].to_s.strip
         log "zip: #{zip}"
         formatted = "#{name}\n#{company}\n#{street_address}\n #{city}, #{state}. #{zip}"
         log "Formatted Address:  #{formatted}"

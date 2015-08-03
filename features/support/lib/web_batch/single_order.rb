@@ -154,11 +154,13 @@ module Batch
 
     def address=(address)
       ship_to_address = address
-      if address.downcase.include? "random"
-        random_ship_to = test_helper.random_address_all_zone
-        random_ship_to["name"] = test_helper.random_name
-        random_ship_to["company"] = test_helper.random_company_name
-        ship_to_address = random_ship_to
+      if address.is_a?(String)
+        if address.downcase.include? "random"
+          random_ship_to = test_helper.random_address_all_zone
+          random_ship_to["name"] = test_helper.random_name
+          random_ship_to["company"] = test_helper.random_company_name
+          ship_to_address = random_ship_to
+        end
       end
 
       browser_helper.set_text address_textbox, batch_helper.format_address(ship_to_address), 'Address'
