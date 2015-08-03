@@ -11,22 +11,24 @@ module Stamps
       str.gsub(char_to_remove, substitute_char)
     end
 
-    def date_from_today *args
+    def date_now *args
       case args.length
         when 0
           now = Date.today
           log "Today:  #{now}"
-          month = (now.month.length==1)?"0#{now.month}":now.month
+          month = (now.month.to_s.length==1)?"0#{now.month}":now.month
           day = (now.day.length==1)?"0#{now.day}":now.day
           "#{month}/#{day}/#{now.year}"
         when 1
           now = Date.today
           log "Today:  #{now}"
-          new_date = now + args[0].to_i
+          days_to_add = args[0].to_i
+          new_date = now + days_to_add
           log "New Date:  #{new_date}"
-          month = (new_date.month.length==1)?"0#{new_date.month}":new_date.month
-          day = (new_date.day.length==1)?"0#{new_date.day}":new_date.day
-          "#{new_date.month}/#{new_date.day}/#{new_date.year}"
+          month = (new_date.month.to_s.length==1)?"0#{new_date.month}":new_date.month
+          day = (new_date.day.to_s.length==1)?"0#{new_date.day}":new_date.day
+          now = "#{month}/#{day}/#{new_date.year}"
+          now
         else
           raise "Illegal number of arguments for TestHelper.date_from_today"
       end

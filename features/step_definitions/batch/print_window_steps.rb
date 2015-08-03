@@ -17,7 +17,7 @@ When /^Print$/ do
 end
 
 Then /^Set Ship Date to (\d+) day from today$/ do |days|
-  @print_window.ship_date=test_helper.date_from_today(days)
+  @print_window.ship_date=test_helper.date_now(days)
 end
 
 Then /^Set Ship Date Picker to today$/ do
@@ -26,7 +26,7 @@ end
 
 Then /^Expect Print Window Ship Date to be today$/ do
   actual = @print_window.ship_date
-  expected = test_helper.date_from_today(0)
+  expected = test_helper.date_now 0
   actual.should eql expected
 end
 
