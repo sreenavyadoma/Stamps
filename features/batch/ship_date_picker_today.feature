@@ -4,7 +4,7 @@ Feature:  B-01630 Ship Date - Print 3 days from today
   Background:
     * I am signed in as a batch shipper
 
-  @print_date__picker_today @print_date
+  @print_date__picker_today @ship_date
   Scenario:  Print 3 days from today
     * Add new order
     * Set Ship From to default
