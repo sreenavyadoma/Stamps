@@ -7,7 +7,7 @@ Feature: B-01603 Address Cleansing
   @address_cleansing
   Scenario: Address Cleansing
     * Add new order
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
     * Set Service to Priority Mail Package
@@ -18,7 +18,7 @@ Feature: B-01603 Address Cleansing
     * Expect State to be CA
     * Expect Phone to be (415) 123-5555
     * Expect Email to be rtest@stamps.com
-    * Set Recipient Address to B-01603, Address Cleansing, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button

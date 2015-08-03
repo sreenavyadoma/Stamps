@@ -19,6 +19,7 @@ module Stamps
       10.times do
         begin
           field.focus
+          field.clear
           field.set log_browser_set(field, text, field_name)
         rescue
           #ignore

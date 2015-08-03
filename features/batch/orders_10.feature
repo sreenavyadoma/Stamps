@@ -10,7 +10,7 @@ Feature: 10 orders
 
     * Add new order
     * Set Ship From to default
-    * Set Recipient Address to B-01756, Large Envelope, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
@@ -19,7 +19,7 @@ Feature: 10 orders
 
     * Add new order
     * Set Ship From to default
-    * Set Recipient Address to B-01756, Thick Envelope, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
@@ -31,7 +31,7 @@ Feature: 10 orders
 
     * Add new order
     * Set Ship From to default
-    * Set Recipient Address to B-01756, Package, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
@@ -40,7 +40,7 @@ Feature: 10 orders
 
     * Add new order
     * Set Ship From to default
-    * Set Recipient Address to B-01756, Large Package, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
@@ -49,7 +49,7 @@ Feature: 10 orders
 
     * Add new order
     * Set Ship From to default
-    * Set Recipient Address to B-01756, Flat Envelope, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
@@ -58,7 +58,7 @@ Feature: 10 orders
 
     * Add new order
     * Set Ship From to default
-    * Set Recipient Address to B-01756, Box A, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
@@ -70,7 +70,7 @@ Feature: 10 orders
 
     * Add new order
     * Set Ship From to default
-    * Set Recipient Address to B-01756, Express Package, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
@@ -79,7 +79,7 @@ Feature: 10 orders
 
     * Add new order
     * Set Ship From to default
-    * Set Recipient Address to B-01756, Padded Envelope, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 11
@@ -90,7 +90,7 @@ Feature: 10 orders
 
     * Add new order
     * Set Ship From to default
-    * Set Recipient Address to B-01756, Media Mail, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 3
@@ -102,7 +102,7 @@ Feature: 10 orders
 
     * Add new order
     * Set Ship From to default
-    * Set Recipient Address to B-01756, Parcel Package, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 10

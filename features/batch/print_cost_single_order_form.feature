@@ -12,7 +12,7 @@ Feature: B-01631 Printing total cost
     * Expect Tracking Cost to be $0.00
     * Expect Total to be $0.00
 
-    * Set Recipient Address to B-01631, Total Cost, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1

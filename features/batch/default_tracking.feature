@@ -8,7 +8,7 @@ Feature: B-01736 Set Correct Default for Tracking
   Scenario:  Print - First-Class Mail Envelope
     * Add new order
 
-    * Set Recipient Address to B-01736, Default Tracking, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Phone to (415) 123-5555
     * Click Ship To Less button
 

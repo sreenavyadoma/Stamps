@@ -20,7 +20,7 @@ module Batch
         begin
           rox_input.click
           checked = rox_input.attribute_value("checked")
-          yyy=rox_input.attribute_value("checked").include? "checked"
+          rox_input.attribute_value("checked").include? "checked"
           if checked
             accept_button.click
             accept_button.wait_while_present

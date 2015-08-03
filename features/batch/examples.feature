@@ -35,12 +35,12 @@ Feature: Examples
     * Set Insured Value to $1.09
     
 
-    * Set Recipient Address to B-01671, Inline Rates, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Media Mail Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -118,7 +118,7 @@ Feature: Examples
   Scenario: Priority Mail Large/Thick Envelope
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                                | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Large/Thick Envelope  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -135,7 +135,7 @@ Feature: Examples
   Scenario: Priority Mail Package
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -152,7 +152,7 @@ Feature: Examples
   Scenario: Priority Mail Large Package
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Large Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -169,7 +169,7 @@ Feature: Examples
   Scenario: Priority Mail Flat Rate Envelope
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -186,7 +186,7 @@ Feature: Examples
   Scenario: Priority Mail Padded Flat Rate Envelope
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Padded Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -203,7 +203,7 @@ Feature: Examples
   Scenario: Priority Mail Legal Flat Rate Envelope
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Legal Flat Rate Envelope| B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -220,7 +220,7 @@ Feature: Examples
   Scenario: Priority Mail Small Flat Rate Box
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Small Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -237,7 +237,7 @@ Feature: Examples
   Scenario: Priority Mail Medium Flat Rate Box
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                               | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Medium Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -254,7 +254,7 @@ Feature: Examples
   Scenario: Priority Mail Large Flat Rate Box
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Large Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -271,7 +271,7 @@ Feature: Examples
   Scenario: Priority Mail Regional Rate Box A
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Regional Rate Box A | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -288,7 +288,7 @@ Feature: Examples
   Scenario: Priority Mail Regional Rate Box B
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Regional Rate Box B | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -305,7 +305,7 @@ Feature: Examples
   Scenario: Priority Mail Regional Rate Box C
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Regional Rate Box C | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -322,7 +322,7 @@ Feature: Examples
   Scenario: Priority Mail Express Package
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                          | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Express Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -339,7 +339,7 @@ Feature: Examples
   Scenario: Priority Mail Express Flat Rate Envelope
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Express Flat Rate Envelope  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -358,7 +358,7 @@ Feature: Examples
   Scenario: Priority Mail Express Legal Flat Rate Envelope
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Express Legal Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -375,7 +375,7 @@ Feature: Examples
   Scenario: Priority Mail Express Medium Flat Rate Box
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Priority Mail Express Medium Flat Rate Box  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -392,7 +392,7 @@ Feature: Examples
   Scenario: Parcel Select Package
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Parcel Select Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set Service to Parcel Select Package
@@ -400,7 +400,7 @@ Feature: Examples
   Scenario: Parcel Select Large Package
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Parcel Select Large Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -417,7 +417,7 @@ Feature: Examples
   Scenario: Parcel Select Oversized Package
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name                            | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Parcel Select Oversized Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;
@@ -434,7 +434,7 @@ Feature: Examples
   Scenario: Media Mail Package
     * Add new order
 
-    * Set Receipient address to;
+    * Set Ship-To address to;
       | name               | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
       | Media Mail Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
     * Set order details with;

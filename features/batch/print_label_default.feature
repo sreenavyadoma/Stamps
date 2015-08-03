@@ -7,7 +7,7 @@ Feature: B-01633 Change the starting label position I will print from - Default 
   @print_label_default @print_labels
   Scenario:  B-01633 - Default is Left Side
     * Add new order
-    * Set Recipient Address to B-01633, Default Label, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Phone to 415-795-5555
     * Set Email to rtest@stamps.com
     * Click Ship To Less button

@@ -1,6 +1,6 @@
 
-When /^Set Recipient Address to (.*)$/ do |address|
-  log "Set Recipient Address to \"#{address}\""
+When /^Set Ship-To address to (.*)$/ do |address|
+  log "Set Ship-To address to \"#{address}\""
   batch.single_order_form.address = log_param "Address", address
 end
 
@@ -84,7 +84,7 @@ And /^Set Ship From to (\w+)$/ do |value|
   batch.single_order_form.ship_from_default
 end
 
-And /^Set Receipient address to;$/ do |table|
+And /^Set Ship-To address to;$/ do |table|
   batch.single_order_form.recipient = log_hash_param table.hashes.first
 end
 

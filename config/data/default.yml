@@ -144,3 +144,53 @@ login_fields:
     id: PasswordTextBox
   sign_in_button_loc:
     id: signInButton
+
+shipping_addresses:
+    zone1:
+      1:
+        street_address:  530 K Street Unit 504
+        city:  San Diego
+        state: CA
+        zip: 92101-7060
+    zone2:
+      1:
+        street_address:  1390 Market Street Ste 1125
+        city: San Francisco
+        state: CA
+        zip: 94102
+    zone3:
+      1:
+        street_address:  1925 Florence Ave
+        city:  Kingman
+        state: AZ
+        zip: 86401-4617
+    zone5:
+      1:
+        street_address:  266 Swanlea Road North
+        city:  Bigfork
+        state: MT
+        zip: 59911
+    zone6:
+      1:
+        street_address: 101 Marcum Drive
+        city:  Hope
+        state: AZ
+        zip: 71801-9017
+    zone7:
+      1:
+        street_address:  3664 College Ln S
+        city:  Mobile
+        state: AL
+        zip: 36608-1240
+    zone8:
+      1:
+        street_address:  377 Santa Rosa Blvd
+        city:  Fort Walton Beach
+        state: FL
+        zip: 32548
+    zone9:
+      1:
+        street_address:  PO BOX 1257
+        city:  Pohnpei
+        state: FM
+        zip: 96941-1257

@@ -7,14 +7,14 @@ Feature:  B-01636 Multi Order Printing Error
   @multi_order_printing_error @printing_errors
   Scenario:  B-01636 Multi Order Printing Error
     * Add new order
-    * Set Recipient Address to B-01754-1, Order Errors, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Set Phone to 4159833422
     * Click Ship To Less button
     * Set Pounds to 1
     * Set Ounces to 1
     * Add a second order
-    * Set Recipient Address to B-01636-2, Order Errors, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Set Phone to 4159833422
     * Click Ship To Less button

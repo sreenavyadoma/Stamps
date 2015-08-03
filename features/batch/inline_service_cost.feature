@@ -8,7 +8,7 @@ Feature: System Calls GetRates When "Ship To Address" is changed
   Scenario:  System Calls GetRates When "Ship To Address" is changed
     * Add new order
 
-    * Set Recipient Address to B-01671, Inline Rates, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Phone to (415) 794-4522
     * Set Email to rtest@stamps.com
     * Expect inline Service Cost for Priority Mail Large/Thick Envelope to be greater than $0.01
@@ -31,14 +31,6 @@ Feature: System Calls GetRates When "Ship To Address" is changed
     * Expect inline Service Cost for Parcel Select Large Package to be greater than $0.01
     * Expect inline Service Cost for Parcel Select Oversized Package to be greater than $0.01
     * Expect inline Service Cost for Media Mail Package to be greater than $0.01
-    * Expect Recipient Name to be B-01671
-    * Expect Company Name to be Inline Rates
-    * Expect Street Address to be 1990 E Grand Ave
-    * Expect City to be El Segundo
-    * Expect State to be CA
-    * Expect Zip Code to be 90245
-    * Expect Phone to be (415) 794-4522
-    * Expect Email to be rtest@stamps.com
     * Expect Pounds to be 0
     * Expect Ounces to be 0
     * Expect Weight to be 0 lbs. 0 oz.

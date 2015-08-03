@@ -28,7 +28,9 @@ module Batch
 
     def formatAddress(address)
       if address.is_a?(Hash)
-        return "#{address['name'].strip}\n#{address['company'].strip}\n#{address['street_address'].strip}\n #{address['city'].strip}, #{address['state'].strip}. #{address['zip'].strip}"
+        formatted_address = "#{address['name'].strip}\n#{address['company'].strip}\n#{address['street_address'].strip}\n #{address['city'].strip}, #{address['state'].strip}. #{address['zip'].strip}"
+        log "Formatted Address:  #{formatted_address}"
+        return formatted_address
       elsif address.is_a?(Array)
         return format_address_arr(address)
       elsif address.include?(',')

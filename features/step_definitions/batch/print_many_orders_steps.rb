@@ -20,7 +20,7 @@ When /^Print (.*) new orders with Address set to (.*) and Service set to (.*)$/ 
     batch.grid.edit_order @order_id
 
     #SETTING RECIPIENT ADDRESS
-    log "Set Recipient Address to \"#{address}\""
+    log "Set Ship-To address to \"#{address}\""
     batch.single_order_form.address = log_param "Address", address
 
     #SETTING SERVICE

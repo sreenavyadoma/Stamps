@@ -7,7 +7,7 @@ Feature:  B-01756 I want to be able to print postage for multiple selected order
   @print_window
   Scenario:  Printing
     * Add new order
-    * Set Recipient Address to B-01636-1, Order Errors, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Set Phone to 4159833422
     * Click Ship To Less button
@@ -17,7 +17,7 @@ Feature:  B-01756 I want to be able to print postage for multiple selected order
     * Click Toolbar Print Button
     * Expect Print Window title to be "You have 1 label ready to print"
     * Add a second order
-    * Set Recipient Address to B-01636-2, Order Errors, 1990 E Grand Ave, El Segundo, CA, 90245
+    * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Set Phone to 4159833422
     * Click Ship To Less button

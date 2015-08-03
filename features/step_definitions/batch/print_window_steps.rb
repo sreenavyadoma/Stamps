@@ -9,8 +9,7 @@ When /^Select (\w+) side label$/ do |label_side|
 end
 
 When /^Print$/ do
-  present = @print_window.present?
-  if @print_window.nil? || !present
+  if @print_window.nil? || !@print_window.present?
     step 'Click Toolbar Print Button'
   end
   @print_window.print
@@ -18,7 +17,17 @@ When /^Print$/ do
 end
 
 Then /^Set Ship Date to (\d+) day from today$/ do |days|
-  @print_window.ship_date test_helper.date_from_today(days)
+  @print_window.ship_date=test_helper.date_from_today(days)
+end
+
+Then /^Set Ship Date Picker to today$/ do
+  @print_window.date_picker "today"
+end
+
+Then /^Expect Print Window Ship Date to be today$/ do
+  actual = @print_window.ship_date
+  expected = test_helper.date_from_today(0)
+  actual.should eql expected
 end
 
 When /^Click Toolbar Print Button$/ do
