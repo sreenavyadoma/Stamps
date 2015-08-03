@@ -7,6 +7,7 @@ Feature:  BVT - Add New Order
   @bvt_add_new_order
   Scenario:  Add New Order
     * Add new order
+    * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com

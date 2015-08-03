@@ -7,6 +7,7 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
   @print_multiple_orders
   Scenario:  Print 2 Orders
     * Add new order
+    * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com
@@ -14,6 +15,7 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
     * Set Service to Priority Mail Package
 
     * Add new order
+    * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com

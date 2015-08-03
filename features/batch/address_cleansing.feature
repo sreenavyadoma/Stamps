@@ -7,6 +7,7 @@ Feature: B-01603 Address Cleansing
   @address_cleansing
   Scenario: Address Cleansing
     * Add new order
+    * Set Ship From to default
     * Set Ship-To address to;
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |

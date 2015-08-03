@@ -5,6 +5,7 @@ Feature: B-01726-1 Update Postage Balance After Each Print (With Service, Insura
   Scenario: Update Postage Balance After Each Print
     * I am signed in as a batch shipper
     * Add new order
+    * Set Ship From to default
     * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Click Ship To Less button

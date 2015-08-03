@@ -7,7 +7,7 @@ Feature: B-01671 User Views Price Next to Service Dropdown
   @inline_service_rates
   Scenario:  User Views Price Next to Service Dropdown
     * Add new order
-    * Expect new Order ID created
+    * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 794-4522
     * Set Email to rtest@stamps.com

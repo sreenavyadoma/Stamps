@@ -7,6 +7,7 @@ Feature: B-01625  Print Sample Priority Mail Regional Rate Box A
   @print_sample
   Scenario:  Print Sample - Priority Mail Regional Rate Box A
     * Add new order
+    * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
     * Click Ship To Less button

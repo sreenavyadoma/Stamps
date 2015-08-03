@@ -7,6 +7,7 @@ Feature:  B-01630 Ship Date - Print 3 days from today
   @print_date__picker_today @print_date
   Scenario:  Print 3 days from today
     * Add new order
+    * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
     * Set Email to rtest@stamps.com

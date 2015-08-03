@@ -7,6 +7,7 @@ Feature:  B-01756 I want to be able to print postage for multiple selected order
   @print_window
   Scenario:  Printing
     * Add new order
+    * Set Ship From to default
     * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Set Phone to 4159833422

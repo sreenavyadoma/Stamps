@@ -7,6 +7,7 @@ Feature: B-01604 Orders with an ambiguous address
   @ambigious_address
   Scenario: Exact Address Not Found
     * Add new order
+    * Set Ship From to default
     * Set Service to Priority Mail Package
     * Set Receipient partial address to;
       | name    | company                 | street_address      | city          | state | zip   | country       | phone           |  email            |

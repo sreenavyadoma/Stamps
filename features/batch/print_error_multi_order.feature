@@ -7,6 +7,7 @@ Feature:  B-01636 Multi Order Printing Error
   @multi_order_printing_error @printing_errors
   Scenario:  B-01636 Multi Order Printing Error
     * Add new order
+    * Set Ship From to default
     * Set Ship-To address to random
     * Set Email to rtest@stamps.com
     * Set Phone to 4159833422

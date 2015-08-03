@@ -1,11 +1,13 @@
   @regression
   Feature: B-01588 Domestic USPS service used to fulfill an order.
+
   Background:
     Given I am signed in as a batch shipper
 
   @service_control
   Scenario:  Inline Rates
     * Add new order
+    * Set Ship From to default
     * Edit row 1 in the order grid
 
     * Set Ship-To address to random

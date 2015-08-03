@@ -7,6 +7,7 @@ Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Sh
   @address_management
   Scenario: Address Management
     * Add new order
+    * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
     * Set Service to Priority Mail Large Package
