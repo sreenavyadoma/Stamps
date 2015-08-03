@@ -40,9 +40,26 @@ module Batch
       @browser.text_field :name => 'sdc-printpostagewindow-shipdate-inputEl'
     end
 
+    def date_picker_div
+      @browser.div :id => "sdc-printpostagewindow-shipdate-trigger-picker"
+    end
+
     public
 
-    def ship_date date
+    def date_picker day
+      date_picker = PrintWindowDatePicker.new(@browser)
+      5.times{
+        browser_helper.click date_picker_div
+        break if date_picker.present?
+      }
+      date_picker.today if day.downcase.eql? "today"
+    end
+
+    def ship_date
+      browser_helper.text ship_date_input
+    end
+
+    def ship_date=date
       5.times{
         begin
           browser_helper.set_text ship_date_input, date
