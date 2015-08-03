@@ -12,14 +12,20 @@ module Stamps
     end
 
     def date_from_today *args
-      today = Date.today
-      log "Today:  #{today}"
       case args.length
         when 0
-          month = (today.month.length==1)?"0#{today.month}":today.month
-          "#{month}/#{today.day}/#{today.year}"
+          now = Date.today
+          log "Today:  #{now}"
+          month = (now.month.length==1)?"0#{now.month}":now.month
+          day = (now.day.length==1)?"0#{now.day}":now.day
+          "#{month}/#{day}/#{now.year}"
         when 1
-          new_date = today + args[0].to_i
+          now = Date.today
+          log "Today:  #{now}"
+          new_date = now + args[0].to_i
+          log "New Date:  #{new_date}"
+          month = (new_date.month.length==1)?"0#{new_date.month}":new_date.month
+          day = (new_date.day.length==1)?"0#{new_date.day}":new_date.day
           "#{new_date.month}/#{new_date.day}/#{new_date.year}"
         else
           raise "Illegal number of arguments for TestHelper.date_from_today"
@@ -39,8 +45,8 @@ module Stamps
     end
 
     def random_address_all_zone
-      @shipping_addresses_zones ||=  data_for(:shipping_addresses, {})
-      zones = @shipping_addresses_zones.values
+      shipping_addresses_zones = data_for(:shipping_addresses, {})
+      zones = shipping_addresses_zones.values
       zone_addresses = zones[rand(zones.size)]
       zone_addresses_values = zone_addresses.values
       zone_addresses_values[rand(zone_addresses_values.size)]

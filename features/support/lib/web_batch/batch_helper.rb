@@ -26,17 +26,18 @@ module Batch
       address
     end
 
-    def formatAddress(address)
+    def format_address(address)
       if address.is_a?(Hash)
-        formatted_address = "#{address['name'].strip}\n#{address['company'].strip}\n#{address['street_address'].strip}\n #{address['city'].strip}, #{address['state'].strip}. #{address['zip'].strip}"
-        log "Formatted Address:  #{formatted_address}"
-        return formatted_address
+        name = address['name'].strip
+        formatted_address_str = "#{name}\n#{address['company'].strip}\n#{address['street_address'].strip}\n #{address['city'].strip}, #{address['state'].strip}. #{address['zip'].strip}"
+        log "Formatted Address:  #{formatted_address_str}"
+        formatted_address_str
       elsif address.is_a?(Array)
-        return format_address_arr(address)
+        format_address_arr(address)
       elsif address.include?(',')
-        return format_address_arr address.split(/,/)
+        format_address_arr address.split(/,/)
       elsif address.is_a?(String)
-        return address
+        address
       else
         raise "Unsupported address format."
       end

@@ -34,7 +34,7 @@ module Batch
 
     def set(partial_addy)
       expand_ship_to
-      browser_helper.set_text address_textbox, BatchHelper.instance.formatAddress(partial_addy), 'Address'
+      browser_helper.set_text address_textbox, BatchHelper.instance.format_address(partial_addy), 'Address'
       10.times {
         begin
           item_label.click

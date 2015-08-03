@@ -161,7 +161,7 @@ module Batch
         ship_to_address = random_ship_to
       end
 
-      browser_helper.set_text address_textbox, batch_helper.formatAddress(ship_to_address), 'Address'
+      browser_helper.set_text address_textbox, batch_helper.format_address(ship_to_address), 'Address'
       less
     end
 
