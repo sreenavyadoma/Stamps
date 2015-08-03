@@ -13,6 +13,7 @@ class PurchaseComplete < BrowserObject
   public
 
   def complete_purchase
+    log "Purchase Complete, clicking OK"
     begin
       purchase_complete_header.wait_until_present(10)
     rescue
@@ -20,5 +21,5 @@ class PurchaseComplete < BrowserObject
     end
     browser_helper.click ok_button
   end
-
+  self
 end

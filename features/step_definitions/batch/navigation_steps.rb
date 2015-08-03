@@ -31,11 +31,8 @@
    # check for MeterBalanceLimit
    #if it exist, don't do expectation.
    #if not, go ahead with expectation
-   batch.navigation_bar.buy_more.confirm_postage.verify_confirm_modal
-   log "Waiting for purchase processing to complete"
-   batch.navigation_bar.buy_more.confirm_postage.purchase_processing.wait_for_purchase_confirmation
-   log "Purchase Complete, clicking OK"
-   batch.navigation_bar.buy_more.confirm_postage.purchase_processing.purchase_complete.complete_purchase
+   batch.navigation_bar.buy_more.confirm_postage.click_confirm_modal
+   batch.navigation_bar.buy_more.confirm_postage.purchase_processing.wait_for_purchase_confirmation.purchase_complete.complete_purchase
  end
 
 
