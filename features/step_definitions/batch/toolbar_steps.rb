@@ -10,7 +10,7 @@ When /^Add new order$/ do
     break unless first_row_order_id.include? @order_id
   }
   log "Order Id:  #{@order_id}"
-  batch.grid.edit_order @order_id
+  #batch.grid.edit_order @order_id
 end
 
 When /^Add a second order$/ do
