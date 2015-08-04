@@ -2,6 +2,7 @@ When /^Add new order$/ do
   log "Add new order"
   @old_balance = batch.navigation_bar.balance
   @single_order_form = batch.toolbar.add
+  @order_id = @single_order_form.order_id
   log "Order Id:  #{@order_id}"
 end
 

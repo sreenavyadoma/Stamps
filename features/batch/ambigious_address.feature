@@ -8,14 +8,13 @@ Feature: B-01604 Orders with an ambiguous address
   Scenario: Exact Address Not Found
     * Add new order
     * Set Ship From to default
-    * Set Service to Priority Mail Package
     * Set Receipient partial address to;
-      | name    | company                 | street_address      | city          | state | zip   | country       | phone           |  email            |
-      | B-01603 | Exact Address Not Found | 1390 Market Street  | San Francisco | CA    | 94102 | United States |   |   |
+      | name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
+      | Hillary Clinton | The White House         | 1390 Market Street  | San Francisco | CA    | 94102 | United States |        |        |
     * Expect "Exact Address Not Found" module to appear
-    * Select row 2 from Exact Address Not Found module
-    * Expect Recipient Name to be B-01603
-    * Expect Company Name to be Exact Address Not Found
+    * Select row 1 from Exact Address Not Found module
+    * Expect Recipient Name to be Hillary Clinton
+    * Expect Company Name to be The White House
     * Expect City to be San Francisco
     * Expect State to be CA
     * Expect Zip Code to be 94102

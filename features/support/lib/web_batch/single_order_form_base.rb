@@ -29,10 +29,7 @@ module Batch
     end
 
     def order_status_label
-      label = @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div>div>div>label"
-      present = label.present?
-      text = label.text
-      label
+      @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div>div>div>label"
     end
 
     def order_status
