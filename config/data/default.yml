@@ -194,3 +194,8 @@ shipping_addresses:
         city:  Pohnpei
         state: FM
         zip: 96941-1257
+      2:
+        street_address:  1600 Pennsylvania Ave NW
+        city:  Washington
+        state: DC
+        zip: 20500-0003
