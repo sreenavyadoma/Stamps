@@ -199,3 +199,8 @@ shipping_addresses:
         city:  Washington
         state: DC
         zip: 20500-0003
+      3:
+        street_address:  3 West 77th Street
+        city:  New York
+        state: NY
+        zip: 10024
