@@ -1,4 +1,4 @@
-@regression
+
 Feature:  B-01636 Prompt User to Remove Orders in Error from Print Group
 
   Background:

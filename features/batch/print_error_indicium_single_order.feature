@@ -1,4 +1,4 @@
-@regression
+
 Feature:  B-01636 Single Order Indicium Error
 
   Background:
