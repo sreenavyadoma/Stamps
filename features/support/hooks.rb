@@ -4,6 +4,14 @@ include RSpec
 include RSpec::Matchers
 include DataMagic
 
+log test_helper.random_address_all_zone
+log test_helper.random_address_all_zone
+log test_helper.random_address_all_zone
+log test_helper.random_address_all_zone
+log test_helper.random_address_all_zone
+log test_helper.random_address_all_zone
+log test_helper.random_address_all_zone
+
 Before do  |scenario|
   log_step "#{scenario.name} :: BEGIN"
   setup

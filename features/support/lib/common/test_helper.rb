@@ -51,7 +51,8 @@ module Stamps
       zones = shipping_addresses_zones.values
       zone_addresses = zones[rand(zones.size)]
       zone_addresses_values = zone_addresses.values
-      zone_addresses_values[rand(zone_addresses_values.size)]
+      address_hash = zone_addresses_values[rand(zone_addresses_values.size)]
+      address_hash
     end
 
   end
