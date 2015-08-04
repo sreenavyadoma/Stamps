@@ -3,7 +3,7 @@ module Batch
   #
   #  Single Order Edit Form
   #
-  class SingleOrder < BatchPage
+  class SingleOrderForm < BatchPage
     include GridBase
     include SingleOrderFormBase
 

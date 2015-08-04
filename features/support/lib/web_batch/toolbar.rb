@@ -4,7 +4,7 @@ module Batch
   #
   class Toolbar < BrowserObject
     include GridBase
-    include SingleOrderFormBase
+    #include SingleOrderFormBase
     private
     def add_field
       @browser.span :text => 'Add'
@@ -61,6 +61,7 @@ module Batch
     end
 
     def add
+      single_order_form = SingleOrderForm.new @browser
       3.times do
         begin
           browser_helper.click add_field, 'Add'
@@ -69,14 +70,14 @@ module Batch
           rescue
             #ignore
           end
-          break if single_order_form_present?
+          break if single_order_form.present?
         rescue
           #ignore
         end
       end
-      @order_id = order_id
+      @order_id = single_order_form.order_id
       log "New Order ID created:  #{@order_id}"
-      @order_id
+      single_order_form
     end
 
     def wait_until_present

@@ -9,7 +9,7 @@ module Batch
     end
 
     def single_order_form
-      SingleOrder.new(@browser)
+      SingleOrderForm.new(@browser)
     end
 
     def grid
