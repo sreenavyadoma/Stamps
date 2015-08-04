@@ -1,8 +1,22 @@
 When /^Select (\w+) side label$/ do |label_side|
   if label_side.casecmp("left") == 0
-    @print_window.left_label
+    selected = @print_window.left_label
+    log "#{label_side} side label was #{(selected)?'selected.':'not selected'}"
   elsif label_side.casecmp("right") == 0
-    @print_window.right_label
+    selected = @print_window.right_label
+    log "#{label_side} side label was #{(selected)?'selected.':'not selected'}"
+  else
+    raise "Label side #{label_side} is not a valid selection. Select either \"left\" or \"right\" side."
+  end
+end
+
+Then /^Expect (\w+) side label selected$/ do |label|
+  if label.casecmp("left") == 0
+    selected = @print_window.left_label_selected?
+    log "Expect #{label} side label selected.  Test #{(selected)?'Passed.':'Failed'}"
+  elsif label.casecmp("right") == 0
+    selected = @print_window.right_label_selected?
+    log "Expect #{label} side label selected.  Test #{(selected)?'Passed.':'Failed'}"
   else
     raise "Label side #{label_side} is not a valid selection. Select either \"left\" or \"right\" side."
   end
@@ -41,11 +55,6 @@ end
 
 Then /^Click Print Window - Print button$/ do
   @print_window.print
-end
-
-Then /^Expect default print label to be Left side$/ do
-  default_selected = @print_window.default_label_selected?
-  default_selected.should be true
 end
 
 Then /^Print expecting error (.*)$/ do |error_message|

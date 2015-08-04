@@ -15,6 +15,6 @@ Feature: B-01633 Change the starting label position I will print from - Default 
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package
     * Click Toolbar Print Button
-    * Expect default print label to be Left side
+    * Expect left side label selected
     * Close Print Window
     * Sign out

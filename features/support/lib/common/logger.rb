@@ -87,7 +87,7 @@ module Stamps
       when 2
         log "Browser.#{field_log_tag(args[0].to_s)}.#{args[1].to_s}.get"
       when 3
-        log "Browser.#{field_log_tag(args[0].to_s)}.#{args[1].to_s}.get #{args[2].to_s}"
+        log "Browser.#{field_log_tag(args[0].to_s)}.#{args[1].to_s}.get result={#{args[2].to_s}}"
       else
         raise "Wrong number of arguments"
     end

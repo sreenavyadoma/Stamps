@@ -74,26 +74,36 @@ module Batch
     end
 
     def left_label
-      5.times{
+      10.times{
         browser_helper.click left_label_div, "left_label"
-        break if label_selected? left_label_div
+        return true if label_selected? left_label_div
       }
+      false
     end
 
     def right_label
-      5.times{
+      10.times{
         browser_helper.click right_label_div, "right_label"
-        break if label_selected? right_label_div
+        return true if label_selected? right_label_div
       }
+      false
     end
 
-    def label_selected? label
+    def left_label_selected?
+      label_selected? left_label_div
+    end
+
+    def right_label_selected?
+      label_selected? right_label_div
+    end
+
+    def label_selected? div
       8.times{
-        selected = browser_helper.attribute(label, 'class').include? 'selected'
+        selected = browser_helper.attribute(div, 'class').include? 'selected'
         log "Label selected?  #{(selected)? 'Yes':'No'}"
         break if selected
       }
-      browser_helper.attribute(label, 'class').include? 'singleLabelChooser-selected'
+      browser_helper.attribute(div, 'class').include? 'singleLabelChooser-selected'
     end
 
     def default_label_selected?
