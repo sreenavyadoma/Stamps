@@ -27,7 +27,6 @@ When /^Print$/ do
     step 'Click Toolbar Print Button'
   end
   @print_window.print
-  #log "Printing Error:  #{@printing_error}" unless @printing_error.nil? || @printing_error.length > 0
 end
 
 Then /^Set Ship Date to (\d+) day from today$/ do |days|

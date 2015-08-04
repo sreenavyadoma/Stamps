@@ -18,6 +18,11 @@ module Batch
           #ignroe
         end
       }
+      begin
+        order_id_label.wait_until_present
+      rescue
+        log "Single Order Form Order ID label was not present"
+      end
       order_id_str = browser_helper.text order_id_label
       order_id = order_id_str.split('Order #').last
       order_id
@@ -34,18 +39,8 @@ module Batch
       browser_helper.text order_status_label, 'order_status'
     end
 
-    def wait_until_single_order_form_present
-      5.times{
-        begin
-
-        rescue
-          #ignore
-        end
-      }
-    end
-
     def single_order_form_present?
-      browser_helper.present? order_status_label
+      browser_helper.present? order_id_label
     end
 
     def ship_to_dropdown

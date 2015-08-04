@@ -46,6 +46,11 @@ module Batch
 
     def order_id(row)
       begin
+        grid_field(:order_id, row).wait_until_present
+      rescue
+        log "OrderID column on order grid is not present"
+      end
+      begin
         grid_text(:order_id, row)
       rescue
         return '0000'
