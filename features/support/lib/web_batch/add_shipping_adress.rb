@@ -2,15 +2,15 @@ module Batch
   class AddShippingAdress < BrowserObject
     public
     def shipping_address=(table)
-      self.origin_zip = table[:ship_from_zip]
-      self.name = table[:name]
-      self.company = table[:company]
-      self.street_address1 = table[:street_address1]
-      self.street_address2 = table[:street_address2]
-      self.city = table[:city]
-      self.state = table[:state]
-      self.zip = table[:zip]
-      self.phone = table[:phone]
+      self.origin_zip = table["ship_from_zip"]
+      self.name = table["name"]
+      self.company = table["company"]
+      self.street_address1 = table["street_address"]
+      self.street_address2 = table["street_address2"]
+      self.city = table["city"]
+      self.state = table["state"]
+      self.zip = table["zip"]
+      self.phone = table["phone"]
       self.save
     end
 
@@ -19,7 +19,7 @@ module Batch
     end
 
     def origin_zip
-
+      browser_helper.text origin_zip_field
     end
 
     def name=(name)

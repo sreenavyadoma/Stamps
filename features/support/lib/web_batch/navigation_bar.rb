@@ -34,7 +34,15 @@ module Batch
       @browser.link :id => "signOutLink"
     end
 
+    def orders_link
+      @browser.link :css => "a[rel=WebBatch]"
+    end
+
     public
+
+    def orders
+      browser_helper.click orders_link, 'orders'
+    end
 
     def select_buy_more
 

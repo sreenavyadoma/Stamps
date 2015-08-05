@@ -4,6 +4,7 @@ module Stamps
     Browser.instance
   end
 
+
   def self.setup
     log "Begin..."
     if Stamps.browser.explorer?
@@ -18,7 +19,7 @@ module Stamps
 
     elsif Stamps.browser.chrome?
       begin
-        log "Executed Shell Command:  taskkill /im chrome.exe /f [ #{system "taskkill /im chrome.exe /f"} ]"
+        log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "taskkill /im chrome.exe /f"} ]"
       rescue
         #ignore
       end

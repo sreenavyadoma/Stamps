@@ -3,8 +3,6 @@ module Batch
   #  Contains Add/Edit buton for orders.
   #
   class Toolbar < BrowserObject
-    include GridBase
-    #include SingleOrderFormBase
     private
     def add_field
       @browser.span :text => 'Add'
@@ -57,7 +55,7 @@ module Batch
     end
 
     def print
-      open_print_window PrintWindow.new(@browser)
+      open_print_window PrintWindow.new @browser
     end
 
     def add
@@ -82,11 +80,16 @@ module Batch
     end
 
     def wait_until_present
-      add_field.wait_until_present
+      begin
+        add_field.wait_until_present 15
+      rescue
+        #ignroe
+      end
+
     end
 
     def present?
-      browser_helper.present?  add_field
+      browser_helper.present? add_field
     end
   end
 end

@@ -10,6 +10,6 @@ Feature:  B-01636 Single Order Indicium Error
     * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
-    * Edit row 1 in the order grid
+    * Edit row 1 on the order grid
     * Print expecting error Indicium Error
     * Sign out

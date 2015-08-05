@@ -8,7 +8,7 @@
   Scenario:  Inline Rates
     * Add new order
     * Set Ship From to default
-    * Edit row 1 in the order grid
+    * Edit row 1 on the order grid
 
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555

@@ -58,21 +58,28 @@ module Batch
       add
       case args.length
         when 0
-          @shipping_address_form = AddShippingAdress.new(@browser)
+          AddShippingAdress.new(@browser)
         when 1
           @shipping_address_form = AddShippingAdress.new(@browser)
-          @shipping_address_form.shipping_address = args[0]
-          @test_status = locate_address(args[0][:name], args[0][:company], args[0][:city])
-          log "Add Status:  #{@test_status?"Success":"Failed"}"
-          close_window
+          address = args[0]
+          case address
+            when String
+              if address.downcase.include? "random"
+                @random_ship_from = test_helper.random_ship_from
+                @shipping_address_form.shipping_address = @random_ship_from
+              else
+                raise "Not yet implemented"
+                #@shipping_address_form.shipping_address = address
+              end
+            when Hash
+              @shipping_address_form.shipping_address = address
+            else
+              raise "Illegal Ship-to argument"
+          end
+          @shipping_address_form
         else
-          raise "Illegal number of arguments."
+          raise "add_address:  Illegal number of arguments #{args.length}"
       end
-      self
-    end
-
-    def successful?
-      @test_status
     end
 
     def edit_address(name, company, city, new_address_details)
@@ -81,7 +88,7 @@ module Batch
         select_row row_num
         self.edit new_address_details
       end
-      @test_status = locate_address(new_address_details[:name], new_address_details[:company], new_address_details[:city])
+      #@test_status = locate_address(new_address_details[:name], new_address_details[:company], new_address_details[:city])
       close_window
       self
     end

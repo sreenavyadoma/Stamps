@@ -24,8 +24,8 @@ Feature:  B-01756 I want to be able to print postage for multiple selected order
     * Click Ship To Less button
     * Set Pounds to 1
     * Set Ounces to 1
-    * Edit row 1 in the order grid
-    * Edit row 2 in the order grid
+    * Edit row 1 on the order grid
+    * Edit row 2 on the order grid
     * Click Toolbar Print Button
     * Expect Print Window title to be "You have 2 labels ready to print"
     * Sign out

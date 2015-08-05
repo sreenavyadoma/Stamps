@@ -1,11 +1,89 @@
 module Batch
 
+  class SingleOrderFormBase < BrowserObject
+
+    def order_id_label
+      @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div:nth-child(1)>div>div>div>div>div>label:nth-child(1)"
+    end
+
+    def order_id
+      5.times{
+        begin
+          order_id_str = browser_helper.text order_id_label
+          break if order_id_str.include? 'Order #'
+        rescue
+          #ignroe
+        end
+      }
+      begin
+        order_id_label.wait_until_present
+      rescue
+        log "Single Order Form Order ID label was not present"
+      end
+      order_id_str = browser_helper.text order_id_label
+      order_id = order_id_str.split('Order #').last
+      order_id
+    end
+
+    def order_status_label
+      @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div>div>div>label"
+    end
+
+    def order_status
+      browser_helper.text order_status_label, 'order_status'
+    end
+
+    def single_order_form_present?
+      browser_helper.present? order_id_label
+    end
+
+    def ship_to_dropdown
+      #@browser.span :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a>span>span>span:nth-child(2)'
+      @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
+    end
+
+    def less_dropdown
+      @browser.span :text => 'Less'
+    end
+
+    def expand_ship_to
+      5.times {
+        break if browser_helper.present?  address_textbox
+        browser_helper.click ship_to_dropdown, "ship_to_address_field" if browser_helper.present?  ship_to_dropdown
+      }
+    end
+
+    def less
+      browser_helper.click less_dropdown, "Less" if browser_helper.present?  less_dropdown
+    end
+
+    def item_label
+      @browser.label :text => 'Item:'
+    end
+
+    def click_item_label
+      3.times {
+        begin
+          item_label.click
+        rescue
+          #ignore
+        end
+      }
+    end
+
+    def address_textbox
+      @browser.textarea :name => 'FreeFormAddress'
+    end
+
+    def validate_address_link
+      @browser.span :text => 'Validate Address'
+    end
+  end
+
   #
   #  Single Order Edit Form
   #
-  class SingleOrderForm < BatchPage
-    include GridBase
-    include SingleOrderFormBase
+  class SingleOrderForm < SingleOrderFormBase
 
     public
     def initialize(browser)
@@ -22,7 +100,7 @@ module Batch
       @service_cost
     end
 
-    def service_Input_text
+    def service_input_text
       browser_helper.text service_textbox, 'service'
     end
 
@@ -120,12 +198,33 @@ module Batch
       self.height = data[:height]
     end
 
-    def recipient=(data={})
-      log_hash_param data
-      self.address = data
-      self.phone = data[:phone]
-      self.email = data[:email]
-      less
+    def ship_to *args
+      case args.length
+        when 0
+          expand_ship_to
+          browser_helper.text address_textbox
+          less
+        when 1
+          address = args[0]
+          case address
+            when String
+              if address.downcase.include? "random"
+                @random_ship_to = test_helper.random_ship_to
+                browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(@random_ship_to), 'Address'
+              else
+                browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(address), 'Address'
+              end
+            when Hash
+              browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(address), 'Address'
+              self.phone = address[:phone]
+              self.email = address[:email]
+            else
+              raise "Illegal Ship-to argument"
+          end
+          AddressNotFound.new(@browser)
+        else
+          raise "Wrong number of arguments for ship_to"
+      end
     end
 
     def email=(email)
@@ -150,35 +249,6 @@ module Batch
       expand_ship_to
       browser_helper.set_text phone_textbox, phone, 'Phone'
       less
-    end
-
-    def address=(address)
-      ship_to_address = address
-      if address.is_a?(String)
-        if address.downcase.include? "random"
-          random_ship_to = test_helper.random_address_all_zone
-          random_ship_to["name"] = test_helper.random_name
-          random_ship_to["company"] = test_helper.random_company_name
-          ship_to_address = random_ship_to
-        end
-      end
-
-      browser_helper.set_text address_textbox, batch_helper.format_address(ship_to_address), 'Address'
-      less
-    end
-
-    def partial_address
-      AddressNotFound.new(@browser)
-    end
-
-    def address
-      expand_ship_to
-      address_textbox.attribute_value('value')
-      less
-    end
-
-    def edit_address(address)
-      self.address=address
     end
 
     def manage_ship_from_address_field
@@ -377,13 +447,6 @@ module Batch
     def tracking_textbox
       @browser.text_field :name => 'Tracking'
     end
-
-=begin
-    def order_id_label
-      txt = "Order ##{WebBatchHelper.order_id}"
-      @browser.label :text => txt
-    end
-=end
 
     def service_cost_label
       #@browser.label(:text => 'Service:').element(:xpath => './following-sibling::*[2]')
