@@ -26,6 +26,10 @@ end
 
 Then /^Expect Recipient Name to be (.*)$/ do |expected|
   begin
+    if @order_id.nil?
+      @order_id = batch.grid.order_id 1
+    end
+
     actual = batch.grid.recipient(@order_id)
     5.times { |counter|
       sleep(1)

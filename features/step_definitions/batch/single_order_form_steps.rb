@@ -121,19 +121,22 @@ Then /^Expect (\w+) Ship-From address was added$/ do |address|
 end
 
 Then /^Delete (\w+) Ship-From address$/ do |address|
-  raise "Delete Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
-  batch.single_order_form.manage_shipping_addresses.delete (address.downcase.include?"random")?@ship_from_address:address
-end
-
-Then /^Delete all shipping addresses$/ do
-  batch.single_order_form.manage_shipping_addresses.delete_all
+  if address.downcase.include? "random"
+    raise "Illegal State Exception:  @ship_from_address is nil" if @ship_from_address.nil?
+    batch.single_order_form.manage_shipping_addresses.delete @ship_from_address
+    #batch.single_order_form.manage_shipping_addresses.delete (address.downcase.include?"random")?@ship_from_address:address
+  elsif address.downcase.include? "all"
+    batch.single_order_form.manage_shipping_addresses.delete_all
+  else
+    raise "Parameter Exception:  Unsupported parameter entry #{address}"
+  end
 end
 
 Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
   batch.single_order_form.manage_shipping_addresses.delete_row row
 end
 
-Then /^Delete all shipping addresses and fail test if delete fails$/ do
+Then /^Delete all Ship-From addresses and fail test if delete fails$/ do
   batch.single_order_form.manage_shipping_addresses.delete_all.should be_deleted
 end
 

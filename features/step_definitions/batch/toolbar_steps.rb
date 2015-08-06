@@ -2,7 +2,7 @@ When /^Add new order$/ do
   log "Add new order"
   @old_balance = batch.navigation_bar.balance
   @single_order_form = batch.toolbar.add
-  @single_order_form.order_id
+  @order_id = @single_order_form.order_id
 end
 
 When /^Add a second order$/ do

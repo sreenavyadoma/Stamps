@@ -132,7 +132,8 @@ login_credentials_invalid:
     password:  password1
 
 url_prefix:
-  qacc: printext.qacc
+  qacc: printbatch100.qacc
+  qacc2: printext.qacc
   stage: printext.stage
 
 login_fields:
