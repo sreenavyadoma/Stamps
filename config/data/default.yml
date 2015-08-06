@@ -212,7 +212,6 @@ shipping_addresses:
         state: CA
         zip: 95747-7312
 
-
     zone5:
       1:
         street_address:  530 9th Ave. N.

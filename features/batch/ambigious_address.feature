@@ -8,7 +8,7 @@ Feature: B-01604 Orders with an ambiguous address
   Scenario: Exact Address Not Found
     * Add new order
     * Set Ship From to default
-    * Set Receipient partial address to;
+    * Set Ship-To address to
       | name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
       | Hillary Clinton | The White House         | 1390 Market Street  | San Francisco | CA    | 94102 | United States |        |        |
     * Expect "Exact Address Not Found" module to appear

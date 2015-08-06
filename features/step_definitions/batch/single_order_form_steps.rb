@@ -1,12 +1,12 @@
 
 When /^Set Ship-To address to (.*)$/ do |address|
   log "Set Ship-To address to \"#{address}\""
-  batch.single_order_form.address = log_param "Address", address
+  batch.single_order_form.ship_to log_param "Address", address
 end
 
 When /^Change Ship-To Address to (.*)$/ do |value|
   log "Change Ship-To Address to \"#{value}\""
-  batch.single_order_form.address = log_param "Address", value
+  batch.single_order_form.ship_to log_param "Address", value
 end
 
 When /^Set Phone to (.*)$/ do |value|
@@ -84,12 +84,20 @@ And /^Set Ship From to (\w+)$/ do |value|
   batch.single_order_form.ship_from_default
 end
 
-And /^Set Ship-To address to;$/ do |table|
-  batch.single_order_form.recipient = log_hash_param table.hashes.first
+And /^Set Ship-To address to$/ do |table|
+  @ambiguous_address_module = batch.single_order_form.ship_to log_hash_param table.hashes.first
 end
 
-When /^Set order details with;$/ do |table|
-  log "Set order details with;"
+Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
+  @ambiguous_address_module.row = row
+end
+
+Then /^Expect "Exact Address Not Found" module to appear/ do
+  expect(@ambiguous_address_module.present?).to be true
+end
+
+When /^Set order details with$/ do |table|
+  log "Set order details with"
   batch.single_order_form.edit_details log_hash_param table.hashes.first
 end
 
@@ -98,20 +106,26 @@ Then /^List all grid values for row (.*)$/ do |row|
   batch.grid.list_all_fields row
 end
 
-When /^Set Receipient partial address to;$/ do |table|
-  batch.single_order_form.partial_address.set table.hashes.first
+Then /^Add new Ship-From address$/ do |ship_from|
+  batch.single_order_form.manage_shipping_addresses.add_address ship_from.hashes.first
 end
 
-Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
-  batch.single_order_form.partial_address.row = row
+Then /^Add new Ship-From address (\w+)$/ do |address|
+  @random_ship_from = batch.single_order_form.manage_shipping_addresses.add_address address
+  log "Random address added: #{@random_ship_from}"
 end
 
-Then /^Add new Ship-From address;$/ do |table|
-  batch.single_order_form.manage_shipping_addresses.add_address(table.hashes.first).should be_successful
+Then /^Expect (\w+) Ship-From address was added$/ do |address|
+  if address.downcase == "random"
+    search_address = @random_ship_from
+  else
+    raise "This address format is not yet supported: #{address}"
+  end
+  batch.single_order_form.manage_shipping_addresses.address_located?(search_address).should be true
 end
 
 Then /^Set Ship From to Manage Shipping Addresses$/ do
-  batch.single_order_form.manage_shipping_addresses.add_address(table.hashes.first).should be_successful
+  batch.single_order_form.manage_shipping_addresses.add_address table.hashes.first
 end
 
 Then /^Delete all shipping addresses$/ do
@@ -129,3 +143,123 @@ end
 Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
   batch.single_order_form.manage_shipping_addresses.edit_address(name, company, city,  new_address.hashes.first).should be_successful
 end
+Then /^Expect Order Status to be ([\w ]+)$/ do |expected_value|
+  actual_value = batch.single_order_form.order_status
+  log "Expect Order Status to be #{expected_value}.  Actual Value:  #{actual_value}.  Test #{(actual_value==expected_value)?'Passed':"Failed"}"
+  actual_value.should eql expected_value
+end
+
+Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
+  actual = batch.single_order_form.pounds_max_value
+  log_expectation_eql "Maximum Pounds", expected, actual
+  actual.should eql expected
+end
+
+Then /^Expect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
+  actual = batch.single_order_form.ounces_max_value
+  log_expectation_eql "Maximum Pounds", expected, actual
+  actual.should eql expected
+end
+
+Then /^Expect Service Cost to be greater than \$([0-9.]+)$/ do |expected|
+  actual = batch.single_order_form.service_cost
+  10.times { |counter|
+    log_expectation "#{counter}. Single Order Form Rate", expected, actual, (actual.to_f >= expected.to_f)
+    break if actual.to_f >= expected.to_f
+    actual = batch.single_order_form.service_cost
+  }
+  actual.to_f.should be >= expected.to_f
+end
+
+Then /^Expect inline Service Cost for ([a-zA-Z -\/]+) to be greater than \$([0-9.]+)$/ do |service, expected|
+  actual = batch.single_order_form.service service
+  10.times { |counter|
+    log_expectation "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
+    break if actual.to_f >= expected.to_f
+    actual = batch.single_order_form.service service
+  }
+  actual.to_f.should be >= expected.to_f
+end
+Then /^Expect Service Cost to be \$(.*)$/ do |expected|
+  actual = batch.single_order_form.service_cost
+  begin
+    10.times { |counter|
+      log_expectation_eql "#{counter}. Service Cost", expected, actual
+      break if actual.eql? expected
+      actual = batch.single_order_form.service_cost
+    }
+    actual.should eql expected
+  end unless expected.length == 0
+end
+
+Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
+  begin
+    actual = batch.single_order_form.tracking_cost
+    10.times { |counter|
+      log_expectation_eql "#{counter}. Tracking Cost", expected, actual
+      break if actual.eql? expected
+      actual = batch.single_order_form.tracking_cost
+    }
+    actual.should eql expected
+  end unless expected.length == 0
+end
+
+Then /^Verify Single Order Form Total Amount$/ do
+  batch.single_order_form.total_amount_calculation.should be_correct
+end
+
+Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
+  begin
+    actual = batch.single_order_form.insurance_cost
+    10.times { |counter|
+      log_expectation_eql "#{counter}. Insurance Cost", expected, actual
+      break if actual.eql? expected
+      actual = batch.single_order_form.insurance_cost
+    }
+    actual.should eql expected
+  end unless expected.length == 0
+end
+
+Then /^Expect Service to be (.*)$/ do |expected|
+  begin
+    actual = batch.single_order_form.service_input_text
+    10.times { |counter|
+      included = actual.include? expected
+      break if included
+      actual = batch.single_order_form.service_input_text
+    }
+    expect(actual.include? expected).to be true
+  end unless expected.length == 0
+end
+
+Then /^Expect Tracking to be ([\w\s]*)$/ do |expected|
+  begin
+    actual = batch.single_order_form.tracking
+    10.times { |counter|
+      log_expectation_eql "#{counter}. Tracking Selected", expected, actual
+      break if actual.eql? expected
+      actual = batch.single_order_form.tracking
+    }
+    actual.should eql expected
+  end unless expected.length == 0
+end
+
+Then /^Expect Total to be \$(.*)$/ do |expected|
+  begin
+    actual = batch.single_order_form.total
+    10.times { |counter|
+      log_expectation_eql "#{counter}. Total Cost", expected, actual
+      break if actual.eql? expected
+      actual = batch.single_order_form.total
+    }
+    actual.should eql expected
+  end unless expected.length == 0
+end
+
+Then /^Expect (\d+) orders selected$/ do |expected|
+  batch.multi_order.order_count.should eql expected
+end
+
+
+
+

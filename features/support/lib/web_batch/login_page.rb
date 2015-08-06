@@ -37,7 +37,9 @@ module Batch
     end
 
     def sign_in(*args)
+      navigation = self.navigation_bar
       welcome_modal = WelcomeModal.new(@browser)
+      welcome_orders_page = WelcomeOrdersPage.new(@browser)
       toolbar = self.toolbar
       case args.count
         when 0
@@ -73,11 +75,24 @@ module Batch
           #ignore
         end
         if welcome_modal.present?
-          welcome_modal.OK
+          welcome_modal.ok
           break
         end
+        if welcome_orders_page.present?
+          welcome_orders_page.continue
+          break
+        end
+        3.times{
+          toolbar.wait_until_present
+          if toolbar.present?
+            break
+          else
+            if navigation.present?
+              navigation.orders
+            end
+          end
+        }
         break if toolbar.present?
-
       end
     end
 

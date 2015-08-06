@@ -22,8 +22,8 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
     * Click Ship To Less button
     * Set Service to Priority Mail Package
 
-    * Edit row 1 in the order grid
-    * Edit row 2 in the order grid
+    * Edit row 1 on the order grid
+    * Edit row 2 on the order grid
     * Expect 2 orders selected
     * Print
     * Sign out

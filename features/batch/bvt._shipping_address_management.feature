@@ -7,8 +7,6 @@ Feature:  BVT - Shipping Address Management
   @bvt_shipping_address_management
   Scenario: Shipping Address Management
     * Add new order
-    * Set Ship From to default
-    * Add new Ship-From address;
-      |ship_from_zip  | name          | company     | street_address1    | street_address2 | city          | state         | zip    | country       | phone           |
-      |94105          | Euan | Betfair UK  | 201 Mission Street | Suite 700       | San Francisco | California    | 94105  | United States | (415) 123-5555  |
+    * Add new Ship-From address random
+    * Expect random Ship-From address was added
     * Sign out

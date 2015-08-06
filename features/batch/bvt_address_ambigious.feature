@@ -8,7 +8,7 @@ Feature:  BVT - Ambigious Address
   Scenario: Ambigious Address
     * Add new order
     * Set Ship From to default
-    * Set Receipient partial address to;
+    * Set Ship-To address to
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Company Name | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     * Expect "Exact Address Not Found" module to appear

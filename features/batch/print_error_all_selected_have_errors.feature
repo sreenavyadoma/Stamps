@@ -8,8 +8,8 @@ Feature:  B-01636 Prompt User to Remove Orders in Error from Print Group
   Scenario:  Printing
     * Add new order
     * Set Ship From to default
-    * Edit row 1 in the order grid
-    * Edit row 2 in the order grid
+    * Edit row 1 on the order grid
+    * Edit row 2 on the order grid
     * Click Toolbar Print Button
     * Print expecting error All selected orders have errors and cannot be printed.
     * Sign out

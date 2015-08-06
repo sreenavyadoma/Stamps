@@ -22,7 +22,7 @@ Feature:  B-01636 Multi Order Printing Error
     * Set Pounds to 1
     * Set Ounces to 1
     * Set Service to Priority Mail Regional Rate Box A
-    * Edit row 1 in the order grid
-    * Edit row 2 in the order grid
+    * Edit row 1 on the order grid
+    * Edit row 2 on the order grid
     * Print expecting 1 of 2 selected orders have errors and cannot be printed. To print the remaining orders, click Continue.
     * Sign out

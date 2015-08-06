@@ -1,6 +1,5 @@
 module Batch
   class AddressNotFound < Stamps::BrowserObject
-    include SingleOrderFormBase
 
     private
     def exact_address_not_found_field
@@ -8,8 +7,8 @@ module Batch
     end
 
     public
-    def exact_address_not_found?
-      browser_helper.present?  exact_address_not_found_field
+    def present?
+      browser_helper.present? exact_address_not_found_field
     end
 
     def row=(number=0)
@@ -32,18 +31,20 @@ module Batch
       end
     end
 
-    def set(partial_addy)
-      expand_ship_to
-      browser_helper.set_text address_textbox, BatchHelper.instance.format_address(partial_addy), 'Address'
-      10.times {
+    def set(partial_address_hash)
+      single_order_form = SingleOrderFormBase.new(@browser)
+      single_order_form.validate_address_link
+      single_order_form.expand_ship_to
+      browser_helper.set_text single_order_form.address_textbox, BatchHelper.instance.format_address(partial_address_hash), 'Address'
+      5.times {
         begin
           item_label.click
-          break if (browser_helper.present?  exact_address_not_found_field) || (browser_helper.present?  validate_address_link)
+          break if (browser_helper.present?  exact_address_not_found_field) || (browser_helper.present?  single_order_form.validate_address_link)
         rescue
           #ignore
         end
       }
-      less
+      single_order_form.less
       self
     end
   end
