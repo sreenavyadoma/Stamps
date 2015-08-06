@@ -74,8 +74,7 @@ module Batch
           #ignore
         end
       end
-      @order_id = single_order_form.order_id
-      log "New Order ID created:  #{@order_id}"
+      log "New Order ID created:  #{single_order_form.order_id}"
       single_order_form
     end
 

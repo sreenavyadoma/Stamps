@@ -93,6 +93,7 @@ module Batch
           end
         }
         break if toolbar.present?
+        visit
       end
     end
 

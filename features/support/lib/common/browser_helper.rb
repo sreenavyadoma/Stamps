@@ -29,7 +29,7 @@ module Stamps
       end
     end
 
-    def attribute field, attribute
+    def attribute_value field, attribute
       value = ""
       begin
         5.times{
@@ -39,7 +39,7 @@ module Stamps
       rescue
         #ignroe
       end
-      log_attribute_get field, attribute, value
+      #log_attribute_get field, attribute, value
       value
     end
 

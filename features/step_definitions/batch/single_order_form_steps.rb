@@ -107,37 +107,38 @@ Then /^List all grid values for row (.*)$/ do |row|
 end
 
 Then /^Add new Ship-From address$/ do |ship_from|
-  batch.single_order_form.manage_shipping_addresses.add_address ship_from.hashes.first
+  batch.single_order_form.manage_shipping_addresses.add ship_from.hashes.first
 end
 
-Then /^Add new Ship-From address (\w+)$/ do |address|
-  @random_ship_from = batch.single_order_form.manage_shipping_addresses.add_address address
-  log "Random address added: #{@random_ship_from}"
+Then /^Add new (\w+) Ship-From address$/ do |address|
+  @ship_from_address = batch.single_order_form.manage_shipping_addresses.add(randomize_ship_from(address))
+  log "Random address added: #{@ship_from_address}"
 end
 
 Then /^Expect (\w+) Ship-From address was added$/ do |address|
-  if address.downcase == "random"
-    search_address = @random_ship_from
-  else
-    raise "This address format is not yet supported: #{address}"
-  end
-  batch.single_order_form.manage_shipping_addresses.address_located?(search_address).should be true
+  raise "Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
+  batch.single_order_form.manage_shipping_addresses.address_located?(@ship_from_address).should be true
 end
 
-Then /^Set Ship From to Manage Shipping Addresses$/ do
-  batch.single_order_form.manage_shipping_addresses.add_address table.hashes.first
+Then /^Delete (\w+) Ship-From address$/ do |address|
+  raise "Delete Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
+  batch.single_order_form.manage_shipping_addresses.delete (address.downcase.include?"random")?@ship_from_address:address
 end
 
 Then /^Delete all shipping addresses$/ do
-  batch.single_order_form.manage_shipping_addresses.delete_all #.should be_all_deleted
+  batch.single_order_form.manage_shipping_addresses.delete_all
 end
 
-Then /^Delete Row (\d+)$/ do |row|
+Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
   batch.single_order_form.manage_shipping_addresses.delete_row row
 end
 
 Then /^Delete all shipping addresses and fail test if delete fails$/ do
   batch.single_order_form.manage_shipping_addresses.delete_all.should be_deleted
+end
+
+Then /^Set Ship From to Manage Shipping Addresses$/ do
+  batch.single_order_form.manage_shipping_addresses.add table.hashes.first
 end
 
 Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|

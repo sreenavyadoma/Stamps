@@ -7,8 +7,45 @@ module Batch
     @batch
   end
 
+  def single_order_form *args
+    case args.length
+      when 0
+        @single_order_form
+      when 1
+        @single_order_form = args[0]
+      else
+        raise "Parameter Error:  Illegal number of arguments.  single_order_form"
+    end
+
+  end
+
   def teardown
     Stamps.teardown
+  end
+
+  def randomize_ship_from *args
+    case args.length
+      when 1
+        address = args[0]
+        if address.downcase.include? "random"
+          @random_ship_from = test_helper.random_ship_from
+        else
+          @random_ship_from = address
+        end
+      else
+        raise "Parameter Exception:  Wrong number of arguments for random_ship_from"
+    end
+  end
+
+  def randomize_ship_to *args
+    case args.length
+      when 0
+        randomize_ship_to
+      when 1
+        random_ship_to = args[0]
+      else
+        raise "Parameter Exception:  Wrong number of arguments for random_ship_to"
+    end
   end
 
   def new_order_row

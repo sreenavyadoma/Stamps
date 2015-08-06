@@ -36,11 +36,65 @@ module Batch
       0
     end
 
-    def window_present?
+    def present?
       browser_helper.present?  add_button
     end
 
-    def add
+    def click_delete_button
+      begin
+        browser_helper.click(delete_button, "Delete") if browser_helper.present?  delete_button
+        browser_helper.click window_title, 'window_title'
+      rescue
+        #ignore
+      end
+    end
+
+    def delete *args
+      case args.length
+        when 1
+          address = args[0]
+          if address.is_a? Hash
+            delete_row(locate_address(address["name"], address["company"], address["city"]))
+          else
+            raise "Address format is not yet supported for this delete call."
+          end
+
+        else
+          raise "Parameter Exception: Paramter not supported."
+      end
+    end
+
+    def delete_row(number)
+      @delete_shipping_address = DeleteShippingAddress.new(@browser)
+      3.times {
+        select_row number
+        click_delete_button
+        break if @delete_shipping_address.present?
+      }
+      @delete_shipping_address.delete
+      @delete_shipping_address.close if @delete_shipping_address.present?
+    end
+
+    def add(*args)
+      add_shipping_address_window
+      case args.length
+        when 0
+          AddShippingAdress.new(@browser)
+        when 1
+          @shipping_address_form = AddShippingAdress.new(@browser)
+          address = args[0]
+          case address
+            when Hash
+              @shipping_address_form.shipping_address = address
+            else
+              raise "Illegal Ship-to argument"
+          end
+        else
+          raise "add_address:  Illegal number of arguments #{args.length}"
+      end
+    end
+
+    def add_shipping_address_window
       @shipping_address_form = AddShippingAdress.new(@browser)
       5.times {
         begin
@@ -51,34 +105,6 @@ module Batch
           #ignore
         end
       }
-    end
-
-    def add_address(*args)
-      add
-      case args.length
-        when 0
-          AddShippingAdress.new(@browser)
-        when 1
-          @shipping_address_form = AddShippingAdress.new(@browser)
-          address = args[0]
-          case address
-            when String
-              if address.downcase.include? "random"
-                @random_ship_from = test_helper.random_ship_from
-                @shipping_address_form.shipping_address = @random_ship_from
-                @random_ship_from
-              else
-                raise "Not yet implemented"
-                #@shipping_address_form.shipping_address = address
-              end
-            when Hash
-              @shipping_address_form.shipping_address = address
-            else
-              raise "Illegal Ship-to argument"
-          end
-        else
-          raise "add_address:  Illegal number of arguments #{args.length}"
-      end
     end
 
     def edit_address(name, company, city, new_address_details)
@@ -124,15 +150,6 @@ module Batch
           raise "Illegal number of arguments."
       end
       self
-    end
-
-    def delete
-      begin
-        browser_helper.click(delete_button, "Delete") if browser_helper.present?  delete_button
-        browser_helper.click window_title, 'window_title'
-      rescue
-        #ignore
-      end
     end
 
     def select_row(row_num)
@@ -186,18 +203,6 @@ module Batch
       end
     end
 
-    def delete_row(number)
-      @delete_shipping_address = DeleteShippingAddress.new(@browser)
-      3.times {
-        select_row number
-        delete
-        break if @delete_shipping_address.present?
-      }
-      @delete_shipping_address.delete
-      sleep(3)
-      @delete_shipping_address.close if @delete_shipping_address.present?
-    end
-
     def wait_until_present
       add_button.wait_until_present
     end
@@ -227,9 +232,10 @@ module Batch
     end
 
     def row_checked?(row)
-      field = @browser.table :css => "div>div[class=x-grid-item-container]:nth-child(2)>table[id^=gridview-][id*=-record-][data-recordindex='#{row.to_i-1}'][data-boundview^=gridview]"
-      checked = field.attribute_value("class").include? "x-grid-item-selected"
-      log "Row #{row} checked? #{checked}"
+      field = @browser.table :css => "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
+      value = browser_helper.attribute_value field, "class"
+      checked = value.include? "selected"
+      log "Row #{row} selected? #{checked}"
       checked
     end
 

@@ -209,7 +209,7 @@ module Batch
           case address
             when String
               if address.downcase.include? "random"
-                @random_ship_to = test_helper.random_ship_to
+                @random_ship_to = test_helper.randomize_ship_to
                 browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(@random_ship_to), 'Address'
               else
                 browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(address), 'Address'
@@ -269,9 +269,9 @@ module Batch
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
       5.times {
         begin
+          break if @manage_shipping_adddress.present?
           browser_helper.click ship_from_dropdown, "ship_from_selection.[#{selection}]" unless browser_helper.present?  ship_from_selection(selection)
           browser_helper.click ship_from_selection(selection), selection
-          break if @manage_shipping_adddress.window_present?
         rescue
           #ignore
         end
