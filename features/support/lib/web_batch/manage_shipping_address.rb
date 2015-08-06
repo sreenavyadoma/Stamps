@@ -18,7 +18,7 @@ module Batch
       grid_cell_text row, 4
     end
 
-    def row_number(name, company, city)
+    def locate_address(name, company, city)
       rows = shipping_address_count
       1.upto rows do |row|
         browser_helper.click window_title
@@ -26,8 +26,7 @@ module Batch
         grid_company = company row
         grid_city = city row
         grid_state = state row
-        found = (grid_name.casecmp(name)==0) && (grid_company.casecmp(company)==0) && (grid_city.casecmp(city)==0)
-        if found
+        if (grid_name.casecmp(name)==0) && (grid_company.casecmp(company)==0) && (grid_city.casecmp(city)==0)
           log "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
           return row
         else
@@ -67,6 +66,7 @@ module Batch
               if address.downcase.include? "random"
                 @random_ship_from = test_helper.random_ship_from
                 @shipping_address_form.shipping_address = @random_ship_from
+                @random_ship_from
               else
                 raise "Not yet implemented"
                 #@shipping_address_form.shipping_address = address
@@ -76,14 +76,13 @@ module Batch
             else
               raise "Illegal Ship-to argument"
           end
-          @shipping_address_form
         else
           raise "add_address:  Illegal number of arguments #{args.length}"
       end
     end
 
     def edit_address(name, company, city, new_address_details)
-      row_num = row_number(name, company, city)
+      row_num = locate_address(name, company, city)
       if row_num > 0
         select_row row_num
         self.edit new_address_details
@@ -93,8 +92,25 @@ module Batch
       self
     end
 
-    def locate_address(name, company, city)
-      row_number(name, company, city) > 0
+    def address_located? * args #name, company, city
+      case args.length
+        when 1
+          if args[0].is_a? Hash
+            address_hash = args[0]
+            name = address_hash["name"]
+            company = address_hash["company"]
+            city = address_hash["city"]
+          else
+            raise "Wrong number of arguments for locate_address" unless args.length == 3
+          end
+        when 3
+          name = args[0]
+          company = args[1]
+          city = args[2]
+        else
+          raise "Wrong number of arguments for locate_address" unless args.length == 3
+      end
+      locate_address(name, company, city) > 0
     end
 
     def edit(*args)
@@ -105,7 +121,7 @@ module Batch
         when 1
           AddShippingAdress.new(@browser).shipping_address = args[0]
         else
-          raise "Illegal number of arguments.  "
+          raise "Illegal number of arguments."
       end
       self
     end

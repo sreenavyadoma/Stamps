@@ -16,7 +16,7 @@ module Stamps
           raise "Wrong number of arguments for BrowserHelper.set_text method."
       end
 
-      10.times do
+      5.times do
         begin
           field.focus
           field.clear
@@ -24,7 +24,8 @@ module Stamps
         rescue
           #ignore
         end
-        break if field.attribute_value('value').include? text
+        actual_value =  field_text(field)
+        break if (actual_value.include? text) || (text.include? actual_value)
       end
     end
 

@@ -155,10 +155,8 @@ module Stamps
       shipping["company"] = random_company_name
       shipping["phone"] = random_phone
       shipping["email"] = random_email
-      state_abb = shipping["state"]
-      log state_abb
-      state = state_name state_abb
-      shipping["state"] = state
+      shipping["state_abbrev"] = shipping["state"]
+      shipping["state"] = state_name(shipping["state_abbrev"])
       shipping["street_address2"] = random_suite
       shipping
     end

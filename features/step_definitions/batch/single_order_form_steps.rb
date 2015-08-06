@@ -106,17 +106,22 @@ Then /^List all grid values for row (.*)$/ do |row|
   batch.grid.list_all_fields row
 end
 
-Then /^Add new random Ship-From address$/ do
-  batch.single_order_form.manage_shipping_addresses.add_address "random"
-  log "Random address added: #{@random_ship_from}"
-end
-
 Then /^Add new Ship-From address$/ do |ship_from|
   batch.single_order_form.manage_shipping_addresses.add_address ship_from.hashes.first
 end
 
-Then /^Expect new Ship-From address was added$/ do
-  #batch.single_order_form.manage_shipping_addresses.add_address table.hashes.first
+Then /^Add new Ship-From address (\w+)$/ do |address|
+  @random_ship_from = batch.single_order_form.manage_shipping_addresses.add_address address
+  log "Random address added: #{@random_ship_from}"
+end
+
+Then /^Expect (\w+) Ship-From address was added$/ do |address|
+  if address.downcase == "random"
+    search_address = @random_ship_from
+  else
+    raise "This address format is not yet supported: #{address}"
+  end
+  batch.single_order_form.manage_shipping_addresses.address_located?(search_address).should be true
 end
 
 Then /^Set Ship From to Manage Shipping Addresses$/ do
