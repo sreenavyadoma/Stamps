@@ -1,5 +1,5 @@
 default: --profile cuke_reports --profile default_profile
-cuke_reports: --format json --out report.json --format progress --format html --backtrace -f pretty --out=features_report.html
+cuke_reports: --format json --out report.json --backtrace -f pretty
 
 default_profile: --tags @bvt_shipping_address_management --guess URL=qacc BROWSER=gc USR=auto35 PW=password1
 
