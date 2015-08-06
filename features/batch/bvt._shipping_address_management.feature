@@ -10,6 +10,5 @@ Feature:  BVT - Shipping Address Management
     * Add new random Ship-From address
     * Expect random Ship-From address was added
     * Delete random Ship-From address
-    * Delete Ship-From Row 1 from Manage Shipping Addresses Modal
     * Delete all Ship-From address
     * Sign out

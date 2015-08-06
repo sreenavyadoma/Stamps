@@ -39,12 +39,15 @@ module Batch
 
   def randomize_ship_to *args
     case args.length
-      when 0
-        randomize_ship_to
       when 1
-        random_ship_to = args[0]
+        address = args[0]
+        if address.downcase.include? "random"
+          @ship_to = test_helper.random_ship_to
+        else
+          @ship_to = address
+        end
       else
-        raise "Parameter Exception:  Wrong number of arguments for random_ship_to"
+        raise "Parameter Exception:  Wrong number of arguments for random_ship_from"
     end
   end
 

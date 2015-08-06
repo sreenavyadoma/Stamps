@@ -142,6 +142,7 @@ module Stamps
       shipping["company"] = test_helper.random_company_name
       shipping["phone"] = test_helper.random_phone
       shipping["email"] = test_helper.random_email
+      shipping
     end
 
     def random_suite
@@ -166,8 +167,7 @@ module Stamps
       zones = shipping_addresses_zones.values
       zone_addresses = zones[rand(zones.size)]
       zone_addresses_values = zone_addresses.values
-      address_hash = zone_addresses_values[rand(zone_addresses_values.size)]
-      address_hash
+      zone_addresses_values[rand(zone_addresses_values.size)]
     end
 
   end

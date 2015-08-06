@@ -207,17 +207,10 @@ module Batch
         when 1
           address = args[0]
           case address
-            when String
-              if address.downcase.include? "random"
-                @random_ship_to = test_helper.randomize_ship_to
-                browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(@random_ship_to), 'Address'
-              else
-                browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(address), 'Address'
-              end
             when Hash
               browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(address), 'Address'
-              self.phone = address[:phone]
-              self.email = address[:email]
+              self.phone = address["phone"]
+              self.email = address["email"]
             else
               raise "Illegal Ship-to argument"
           end
