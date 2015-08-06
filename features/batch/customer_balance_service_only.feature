@@ -7,7 +7,6 @@ Feature: B-01726-3 Update Postage Balance After Each Print (Service Only)
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Priority Mail Package
     * Save Shipping Costs Data

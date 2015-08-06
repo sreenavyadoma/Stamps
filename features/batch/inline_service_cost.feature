@@ -9,8 +9,6 @@ Feature: System Calls GetRates When "Ship To Address" is changed
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Phone to (415) 794-4522
-    * Set Email to rtest@stamps.com
     * Expect inline Service Cost for Priority Mail Large/Thick Envelope to be greater than $0.01
     * Expect inline Service Cost for Priority Mail Package to be greater than $0.01
     * Expect inline Service Cost for Priority Mail Large Package to be greater than $0.01

@@ -7,7 +7,6 @@ Feature: B-01726-4 Update Postage Balance After Each Print (With Tracking)
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Priority Mail Package
     * Set Tracking to USPS Tracking

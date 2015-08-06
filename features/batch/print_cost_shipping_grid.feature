@@ -9,7 +9,6 @@ Feature: B-01743 Show Cost of Order in Ship Cost Grid
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
     * Set Insured Value to $10.00

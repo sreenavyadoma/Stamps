@@ -11,7 +11,6 @@ Feature: 10 orders
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
     * Set Service to Priority Mail Package
@@ -20,7 +19,6 @@ Feature: 10 orders
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
     * Set Service to Priority Mail Package
@@ -32,7 +30,6 @@ Feature: 10 orders
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
     * Set Service to Priority Mail Package
@@ -41,7 +38,6 @@ Feature: 10 orders
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
     * Set Service to Priority Mail Large Package
@@ -50,7 +46,6 @@ Feature: 10 orders
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
     * Set Service to Priority Mail Legal Flat Rate Envelope
@@ -59,7 +54,6 @@ Feature: 10 orders
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
     * Set Service to Priority Mail Regional Rate Box A
@@ -71,7 +65,6 @@ Feature: 10 orders
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 1
     * Set Service to Priority Mail Express Package
@@ -80,7 +73,6 @@ Feature: 10 orders
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 11
     * Set Service to Priority Mail Express Padded Flat Rate Envelope
@@ -91,7 +83,6 @@ Feature: 10 orders
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 3
     * Set Service to Media Mail Package
@@ -103,7 +94,6 @@ Feature: 10 orders
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Pounds to 10
     * Set Service to Parcel Select Large Package

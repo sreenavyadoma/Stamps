@@ -9,8 +9,6 @@ Feature: B-01671 User Views Price Next to Service Dropdown
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Phone to (415) 794-4522
-    * Set Email to rtest@stamps.com
     * Expect Service Cost to be $0.00
     * Expect inline Service Cost for First-Class Mail Large Envelope/Flat to be greater than $0.01
     * Expect inline Service Cost for First-Class Mail Package/Thick Envelope to be greater than $0.01

@@ -9,7 +9,6 @@ Feature: B-01633 Change the starting label position I will print from - Print Le
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Priority Mail Package
     * Click Toolbar Print Button
@@ -19,7 +18,6 @@ Feature: B-01633 Change the starting label position I will print from - Print Le
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Priority Mail Package
     * Click Toolbar Print Button

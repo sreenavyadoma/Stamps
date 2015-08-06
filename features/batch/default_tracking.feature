@@ -10,7 +10,6 @@ Feature: B-01736 Set Correct Default for Tracking
     * Set Ship From to default
 
     * Set Ship-To address to random
-    * Set Phone to (415) 123-5555
     * Click Ship To Less button
 
     * Set Service to Priority Mail Large/Thick Envelope

@@ -9,8 +9,6 @@ Feature:  B-01756 I want to be able to print postage for multiple selected order
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
-    * Set Phone to 4159833422
     * Click Ship To Less button
     * Set Pounds to 1
     * Set Ounces to 1
@@ -19,8 +17,6 @@ Feature:  B-01756 I want to be able to print postage for multiple selected order
     * Expect Print Window title to be "You have 1 label ready to print"
     * Add a second order
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
-    * Set Phone to 4159833422
     * Click Ship To Less button
     * Set Pounds to 1
     * Set Ounces to 1

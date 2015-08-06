@@ -20,8 +20,6 @@ Feature: B-01603 Address Cleansing
     * Expect Phone to be (415) 123-5555
     * Expect Email to be rtest@stamps.com
     * Set Ship-To address to random
-    * Set Phone to (415) 123-5555
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Priority Mail Package
     * Sign out

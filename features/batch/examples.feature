@@ -36,8 +36,6 @@ Feature: Examples
 
 
         * Set Ship-To address to random
-        * Set Phone to (415) 123-5555
-        * Set Email to rtest@stamps.com
         * Click Ship To Less button
 
         * Set Ship-To address to

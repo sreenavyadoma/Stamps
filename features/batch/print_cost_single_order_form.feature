@@ -14,7 +14,6 @@ Feature: B-01631 Printing total cost
     * Expect Total to be $0.00
 
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Ounces to 1
     * Set Insured Value to $10.00

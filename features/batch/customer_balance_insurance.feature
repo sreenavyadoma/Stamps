@@ -7,7 +7,6 @@ Feature: B-01726-2 Update Postage Balance After Each Print (With Insurance)
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Click Ship To Less button
     * Set Service to Priority Mail Package
     * Set Insured Value to $10.00
