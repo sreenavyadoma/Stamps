@@ -3,81 +3,6 @@ module Stamps
     include Singleton
     include DataMagic
 
-    def state_name abbrev
-      states ||= us_states
-      states[abbrev]
-    end
-
-    def us_states
-      states = Hash.new
-      states["AL"] = "Alabama"
-      states["AK"] = "Alaska"
-      states["AZ"] = "Arizona"
-      states["AR"] = "Arkansas"
-      states["CA"] = "California"
-      states["CO"] = "Colorado"
-      states["CT"] = "Connecticut"
-      states["DE"] = "Delaware"
-      states["FL"] = "Florida"
-      states["GA"] = "Georgia"
-      states["HI"] = "Hawaii"
-      states["ID"] = "Idaho"
-      states["IL"] = "Illinois"
-      states["IN"] = "Indiana"
-      states["IA"] = "Iowa"
-      states["KS"] = "Kansas"
-      states["KY"] = "Kentucky"
-      states["LA"] = "Louisiana"
-      states["ME"] = "Maine"
-      states["MD"] = "Maryland"
-      states["MA"] = "Massachusetts"
-      states["MI"] = "Michigan"
-      states["MN"] = "Minnesota"
-      states["MS"] = "Mississippi"
-      states["MO"] = "Missouri"
-      states["MT"] = "Montana"
-      states["NE"] = "Nebraska"
-      states["NV"] = "Nevada"
-      states["NH"] = "New Hampshire"
-      states["NJ"] = "New Jersey"
-      states["NM"] = "New Mexico"
-      states["NY"] = "New York"
-      states["NC"] = "North Carolina"
-      states["ND"] = "North Dakota"
-      states["OH"] = "Ohio"
-      states["OK"] = "Oklahoma"
-      states["OR"] = "Oregon"
-      states["PA"] = "Pennsylvania"
-      states["RI"] = "Rhode Island"
-      states["SC"] = "South Carolina"
-      states["SD"] = "South Dakota"
-      states["TN"] = "Tennessee"
-      states["TX"] = "Texas"
-      states["UT"] = "Utah"
-      states["VT"] = "Vermont"
-      states["VA"] = "Virginia"
-      states["WA"] = "Washington"
-      states["WV"] = "West Virginia"
-      states["WI"] = "Wisconsin"
-      states["WY"] = "Wyoming"
-      states["AS"] = "American Samoa"
-      states["DC"] = "District of Columbia"
-      states["FM"] = "Federated States of Micronesia"
-      states["GU"] = "Guam"
-      states["MH"] = "Marshall Islands"
-      states["MP"] = "Northern Mariana Islands"
-      states["PW"] = "Palau"
-      states["PR"] = "Puerto Rico"
-      states["VI"] = "Virgin Islands"
-      states["AE"] = "Armed Forces Africa"
-      states["AA"] = "Armed Forces Americas"
-      states["AE"] = "Armed Forces Canada"
-      states["AE"] = "Armed Forces Europe"
-      states["AE"] = "Armed Forces Middle East"
-      states["AP"] = "Armed Forces Pacific"
-      states
-    end
-
     def remove_dollar_sign str
       strip str, '$', ''
     end
@@ -150,6 +75,7 @@ module Stamps
     end
 
     def random_ship_from
+      us_states = data_for(:us_states, {}) if us_states.nil?
       shipping = random_address_all_zone
       shipping["ship_from_zip"] = shipping["zip"]
       shipping["name"] = random_name
@@ -157,7 +83,7 @@ module Stamps
       shipping["phone"] = random_phone
       shipping["email"] = random_email
       shipping["state_abbrev"] = shipping["state"]
-      shipping["state"] = state_name(shipping["state_abbrev"])
+      shipping["state"] = us_states[shipping["state_abbrev"]]
       shipping["street_address2"] = random_suite
       shipping
     end

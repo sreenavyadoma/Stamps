@@ -1,150 +1,75 @@
-login_credentials:
-  qacc:
-    01:
-      username:  auto01
-      password:  password1
-    02:
-      username:  auto02
-      password:  password1
-    03:
-      username:  auto03
-      password:  password1
-    04:
-      username:  auto04
-      password:  password1
-    05:
-      username:  auto05
-      password:  password1
-    06:
-      username:  auto06
-      password:  password1
-    07:
-      username:  auto07
-      password:  password1
-    08:
-      username:  auto08
-      password:  password1
-    09:
-      username:  auto09
-      password:  password1
-    10:
-      username:  auto10
-      password:  password1
-    11:
-      username:  auto11
-      password:  password1
-    12:
-      username:  auto12
-      password:  password1
-    13:
-      username:  auto13
-      password:  password1
-    14:
-      username:  auto14
-      password:  password1
-    15:
-      username:  auto15
-      password:  password1
-    16:
-      username:  auto16
-      password:  password1
-    17:
-      username:  auto17
-      password:  password1
-    18:
-      username:  auto18
-      password:  password1
-    19:
-      username:  auto19
-      password:  password1
-    20:
-      username:  auto20
-      password:  password1
-    21:
-      username:  auto21
-      password:  password1
-    22:
-      username:  auto22
-      password:  password1
-    23:
-      username:  auto23
-      password:  password1
-    24:
-      username:  auto24
-      password:  password1
-    25:
-      username:  auto25
-      password:  password1
-    26:
-      username:  auto26
-      password:  password1
-    27:
-      username:  auto27
-      password:  password1
-    28:
-      username:  auto28
-      password:  password1
-    29:
-      username:  auto29
-      password:  password1
-    30:
-      username:  auto30
-      password:  password1
-    31:
-      username:  auto31
-      password:  password1
-    32:
-      username:  auto32
-      password:  password1
-    33:
-      username:  auto33
-      password:  password1
-    34:
-      username:  auto34
-      password:  password1
-    35:
-      username:  auto35
-      password:  password1
-    36:
-      username:  auto36
-      password:  password1
-    37:
-      username:  auto37
-      password:  password1
-    38:
-      username:  auto38
-      password:  password1
-
-login_credentials_invalid:
-  qacc:
-    39:
-      username:  auto39
-      password:  password1
-    40:
-      username:  auto40
-      password:  password1
-
-  staging:
-    username:  wc102_cc
-    password:  password1
-  staging:
-    username:  webbatch_0001
-    password:  password1
-
 url_prefix:
-  qacc: printbatch100.qacc
+  qacc:  print.qacc
+  qacc3: printbatch100.qacc
   qacc2: printext.qacc
   stage: printext.stage
 
-login_fields:
-  sign_in_link_loc:
-    text: Sign In
-  username_loc:
-    id: UserNameTextBox
-  password_loc:
-    id: PasswordTextBox
-  sign_in_button_loc:
-    id: signInButton
+us_states:
+  AL:	Alabama
+  AK:	Alaska
+  AZ:	Arizona
+  AR:	Arkansas
+  CA:	California
+  CO:	Colorado
+  CT:	Connecticut
+  DE:	Delaware
+  FL:	Florida
+  GA:	Georgia
+  HI:	Hawaii
+  ID:	Idaho
+  IL:	Illinois
+  IN:	Indiana
+  IA:	Iowa
+  KS:	Kansas
+  KY:	Kentucky
+  LA:	Louisiana
+  ME:	Maine
+  MD:	Maryland
+  MA:	Massachusetts
+  MI:	Michigan
+  MN:	Minnesota
+  MS:	Mississippi
+  MO:	Missouri
+  MT:	Montana
+  NE:	Nebraska
+  NV:	Nevada
+  NH:	New Hampshire
+  NJ:	New Jersey
+  NM:	New Mexico
+  NY:	New York
+  NC:	North Carolina
+  ND:	North Dakota
+  OH:	Ohio
+  OK:	Oklahoma
+  OR:	Oregon
+  PA:	Pennsylvania
+  RI:	Rhode Island
+  SC:	South Carolina
+  SD:	South Dakota
+  TN:	Tennessee
+  TX:	Texas
+  UT:	Utah
+  VT:	Vermont
+  VA:	Virginia
+  WA:	Washington
+  WV:	West Virginia
+  WI:	Wisconsin
+  WY:	Wyoming
+  AS:	American Samoa
+  DC:	District of Columbia
+  FM:	Federated States of Micronesia
+  GU:	Guam
+  MH:	Marshall Islands
+  MP:	Northern Mariana Islands
+  PW:	Palau
+  PR:	Puerto Rico
+  VI:	Virgin Islands
+  AE:	Armed Forces Africa
+  AA:	Armed Forces Americas
+  AE:	Armed Forces Canada
+  AE:	Armed Forces Europe
+  AE:	Armed Forces Middle East
+  AP:	Armed Forces Pacific
 
 shipping_addresses:
     zone1or2:
@@ -322,3 +247,148 @@ shipping_addresses:
         city:  Palau
         state: PW
         zip: 96940-0871
+
+
+
+login_fields:
+  sign_in_link_loc:
+    text: Sign In
+  username_loc:
+    id: UserNameTextBox
+  password_loc:
+    id: PasswordTextBox
+  sign_in_button_loc:
+    id: signInButton
+
+login_credentials:
+  qacc:
+    01:
+      username:  auto01
+      password:  password1
+    02:
+      username:  auto02
+      password:  password1
+    03:
+      username:  auto03
+      password:  password1
+    04:
+      username:  auto04
+      password:  password1
+    05:
+      username:  auto05
+      password:  password1
+    06:
+      username:  auto06
+      password:  password1
+    07:
+      username:  auto07
+      password:  password1
+    08:
+      username:  auto08
+      password:  password1
+    09:
+      username:  auto09
+      password:  password1
+    10:
+      username:  auto10
+      password:  password1
+    11:
+      username:  auto11
+      password:  password1
+    12:
+      username:  auto12
+      password:  password1
+    13:
+      username:  auto13
+      password:  password1
+    14:
+      username:  auto14
+      password:  password1
+    15:
+      username:  auto15
+      password:  password1
+    16:
+      username:  auto16
+      password:  password1
+    17:
+      username:  auto17
+      password:  password1
+    18:
+      username:  auto18
+      password:  password1
+    19:
+      username:  auto19
+      password:  password1
+    20:
+      username:  auto20
+      password:  password1
+    21:
+      username:  auto21
+      password:  password1
+    22:
+      username:  auto22
+      password:  password1
+    23:
+      username:  auto23
+      password:  password1
+    24:
+      username:  auto24
+      password:  password1
+    25:
+      username:  auto25
+      password:  password1
+    26:
+      username:  auto26
+      password:  password1
+    27:
+      username:  auto27
+      password:  password1
+    28:
+      username:  auto28
+      password:  password1
+    29:
+      username:  auto29
+      password:  password1
+    30:
+      username:  auto30
+      password:  password1
+    31:
+      username:  auto31
+      password:  password1
+    32:
+      username:  auto32
+      password:  password1
+    33:
+      username:  auto33
+      password:  password1
+    34:
+      username:  auto34
+      password:  password1
+    35:
+      username:  auto35
+      password:  password1
+    36:
+      username:  auto36
+      password:  password1
+    37:
+      username:  auto37
+      password:  password1
+    38:
+      username:  auto38
+      password:  password1
+
+login_credentials_invalid:
+  qacc:
+    39:
+      username:  auto39
+      password:  password1
+    40:
+      username:  auto40
+      password:  password1
+
+  staging:
+    username:  wc102_cc
+    password:  password1
+  staging:
+    username:  webbatch_0001
+    password:  password1
