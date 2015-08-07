@@ -104,7 +104,8 @@ module Batch
     end
 
     def row_checked?(row)
-      @browser.table(:css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row})").attribute_value("class").include? 'item-selected'
+      table = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row})"
+      table.attribute_value("class").include? 'item-selected'
     end
 
     def check(row_number)

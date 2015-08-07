@@ -18,13 +18,14 @@ module Batch
     end
 
     def open_print_window window
-      browser_helper.click print_button, "print"
-      naws_plugin_issue = NawsPluginError.new(@browser)
-      3.times {
+      naws_plugin_error = NawsPluginError.new @browser
+      error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
+      5.times {
         begin
-          if naws_plugin_issue.present?
-            naws_plugin_issue.print_error_message.okay
-          end
+          browser_helper.click print_button, "print"
+          sleep(1)
+          naws_plugin_error.ok if naws_plugin_error.present?
+          error_connecting_to_plugin.ok if error_connecting_to_plugin.present?
           if window.present?
             return window
           end
@@ -32,7 +33,7 @@ module Batch
           #ignore
         end
       }
-      window
+      raise "Unable to open Print Window.  Naws Plugin Error? #{naws_plugin_error.present?} Error Connecting to Plugin? #{error_connecting_to_plugin.present?} "
     end
 
     public

@@ -26,7 +26,8 @@ module Batch
       self
     end
 
-    def okay
+    def ok
+      print_error_message
       browser_helper.click ok_button, "OK"
       self
     end

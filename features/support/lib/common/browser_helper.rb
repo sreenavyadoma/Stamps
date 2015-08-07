@@ -97,7 +97,7 @@ module Stamps
           end
           begin
             args[0].click
-          rescue err
+          rescue
             log "Unable to click #{args[1]} #{args[0]}"
             args[0].click
           end

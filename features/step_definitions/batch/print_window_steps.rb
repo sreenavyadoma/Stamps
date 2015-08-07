@@ -107,11 +107,15 @@ When /^Print expecting some orders can not be printed$/ do
   expect(actual_error_message.include? 'To print the remaining orders, click Continue').to be true
 end
 
-Then /^Expect Print Window title to be \"(.*)\"$/ do |title|
-  print_window = batch.toolbar.print
-  actual = print_window.labels_ready_to_print
-  print_window.close
-  actual.should eql title
+Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
+  #print_window = batch.toolbar.print
+  if @print_window.nil? || !@print_window.present?
+    raise "Print Window is not open."
+  end
+  actual = @print_window.labels_ready_to_print
+  @print_window.close
+  log "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
+  "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
 end
 
 Then /^Print raises a Printing Error/ do
