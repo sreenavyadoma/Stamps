@@ -51,6 +51,7 @@ Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is succe
 end
 
 Then /^Expect Printing cost is deducted from customer balance$/ do
+  log "Printing Error:  #{@printing_error}"
   log_param "Old Balance", @old_balance
   if @printing_error
     @new_balance = batch.navigation_bar.balance
