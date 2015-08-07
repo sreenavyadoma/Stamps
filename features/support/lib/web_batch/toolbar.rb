@@ -18,10 +18,12 @@ module Batch
     end
 
     def open_print_window window
+      order_grid = Grid.new @browser
       naws_plugin_error = NawsPluginError.new @browser
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
       5.times {
         begin
+          order_grid.check_row 1
           browser_helper.click print_button, "print"
           sleep(1)
           naws_plugin_error.ok if naws_plugin_error.present?

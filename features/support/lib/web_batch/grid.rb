@@ -81,18 +81,19 @@ module Batch
     end
 
     def row_div number
-      field = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div"
-      unless browser_helper.present? field
-        raise("Order Grid Row number #{number} does not exist.")
-      end
+      raise "row_div:  number can't be nil" if number.nil?
+      div = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div"
+      present = browser_helper.present? div
+      raise("Order Grid Row number #{number} is not present")unless browser_helper.present? div
+      div
     end
 
     def check_row(number)
-      div = row_div number
       5.times do
         if row_checked?(number)
           break
         else
+          div = row_div number
           browser_helper.click div, "Row#{number}"
         end
       end
