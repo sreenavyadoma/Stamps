@@ -122,8 +122,37 @@ module Batch
   # Orders Grid
   #
   class Grid < GridBase
-
     public
+    def checked_orders
+      checked_orders_set = Set.new
+      grid_order_count = total_grid_count
+      row_count = (grid_order_count>20)?20:grid_order_count
+      1.upto(row_count) { |row|
+        checked = row_checked? row
+        if checked
+          row_entry = row_div row
+          checked_orders_set.add row_entry
+        end
+      }
+      checked_orders_set
+    end
+
+    def check_orders orders_set
+      begin
+        orders_set.each do |row|
+          present = browser_helper.present? row
+          browser_helper.click row if present
+        end
+      end unless orders_set.nil?
+    end
+
+    def total_grid_count
+      tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
+      count = tables.length
+      log "Total Number of Orders on Grid:  #{count}"
+      count.to_i
+    end
+
     def ship_cost(order_id)
       grid_text(:ship_cost, row_number(order_id))
     end

@@ -21,15 +21,17 @@ module Batch
       order_grid = Grid.new @browser
       naws_plugin_error = NawsPluginError.new @browser
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
+      checked_orders_hash = order_grid.checked_orders
       5.times {
         begin
-          order_grid.check_row 1
           browser_helper.click print_button, "print"
           sleep(1)
           naws_plugin_error.ok if naws_plugin_error.present?
           error_connecting_to_plugin.ok if error_connecting_to_plugin.present?
           if window.present?
             return window
+          else
+            order_grid.check_orders checked_orders_hash
           end
         rescue
           #ignore
