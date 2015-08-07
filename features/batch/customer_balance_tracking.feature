@@ -1,7 +1,7 @@
 @regression
 Feature: B-01726-4 Update Postage Balance After Each Print (With Tracking)
 
-  @update_postage_balance
+  @update_postage_balance @update_postage_balance_with_tracking
   Scenario: B-01726 Update Postage Balance After Each Print
     * I am signed in as a batch shipper
     * Add new order

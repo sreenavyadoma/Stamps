@@ -113,6 +113,7 @@ module Batch
     def print
       5.times {
         begin
+          sleep(1)
           browser_helper.click print_button
           printing_error = printing_error_check
           return printing_error unless browser_helper.present? print_button
