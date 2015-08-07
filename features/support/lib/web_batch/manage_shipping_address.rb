@@ -3,18 +3,22 @@ module Batch
     public
 
     def name(row)
+      sleep(1)
       grid_cell_text row, 1
     end
 
     def company(row)
+      sleep(1)
       grid_cell_text row, 2
     end
 
     def city(row)
+      sleep(1)
       grid_cell_text row, 3
     end
 
     def state(row)
+      sleep(1)
       grid_cell_text row, 4
     end
 
