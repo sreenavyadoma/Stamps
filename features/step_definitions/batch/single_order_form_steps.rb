@@ -117,7 +117,10 @@ end
 
 Then /^Expect (\w+) Ship-From address was added$/ do |address|
   raise "Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
-  (batch.single_order_form.manage_shipping_addresses.address_located?(@ship_from_address).should be true) unless @ship_from_address.nil?
+  begin
+    log "Search for \n#{@ship_from_address}"
+    batch.single_order_form.manage_shipping_addresses.address_located?(@ship_from_address).should be true
+  end unless @ship_from_address.nil?
 end
 
 Then /^Delete (\w+) Ship-From address$/ do |address|
