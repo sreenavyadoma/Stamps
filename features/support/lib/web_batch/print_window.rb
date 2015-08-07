@@ -114,12 +114,13 @@ module Batch
       5.times {
         begin
           browser_helper.click print_button
-          printing_error_check
-          break unless browser_helper.present? print_button
+          printing_error = printing_error_check
+          return printing_error unless browser_helper.present? print_button
         rescue
-          #ignore
+          true
         end
       }
+      true
     end
 
     def print_expecting_rating_error
@@ -244,6 +245,7 @@ module Batch
     end
 
     def check_unauthenticated_error
+      @printing_error = false
       begin
         error_label = @browser.p :text => "Error code: [4522293]"
         if browser_helper.present? error_label
@@ -275,6 +277,7 @@ module Batch
     end
 
     def check_account_status_error
+      @printing_error = false
       begin
         error_label = @browser.p :text => "Error code: [4522357]"
         if browser_helper.present? error_label
@@ -306,6 +309,7 @@ module Batch
     end
 
     def check_rating_error
+      @printing_error = false
       begin
         error_label = @browser.p :text => "Error code: [5177601]"
         if browser_helper.present? error_label
@@ -337,13 +341,23 @@ module Batch
       @printing_error
     end
 
-    def printing_error_check
+    def check_error_ok_button
       @printing_error = false
-      #check_naws_plugin_error if Stamps.browser.chrome?
-      check_unauthenticated_error
-      check_account_status_error
-      log "Printing Error Encountered:  #{@printing_error}"
+      if browser_helper.present? error_ok_button
+        @printing_error = true
+        log "Error Window OK button detected"
+        @printing_error
+      end
       @printing_error
+    end
+
+    def printing_error_check
+      #check_naws_plugin_error if Stamps.browser.chrome?
+      unauthenticated_error = check_unauthenticated_error
+      account_status_error = check_account_status_error
+      error_ok_button = check_error_ok_button
+      log "Printing Error Encountered:  #{unauthenticated_error || account_status_error || error_ok_button}"
+      unauthenticated_error || account_status_error || error_ok_button
     end
 
     def x_button
