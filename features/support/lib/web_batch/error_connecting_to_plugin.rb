@@ -36,7 +36,7 @@ module Batch
       log "----  Invalid Address Error  ----"
       log browser_helper.text error_message_label
       log "----  Invalid Address Error  ----"
-      5.times {
+      10.times {
         browser_helper.click ok_button, 'OK'
         break unless present?
       }

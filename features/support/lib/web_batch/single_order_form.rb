@@ -2,6 +2,12 @@ module Batch
 
   class SingleOrderFormBase < BrowserObject
 
+    def ship_cost_span
+      span = @browser.span :text => "Ship Cost"
+      log "Single Order Form is #{(browser_helper.present? span)?'present':'NOT present'}"
+      span
+    end
+
     def order_id_label
       @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div:nth-child(1)>div>div>div>div>div>label:nth-child(1)"
     end
@@ -167,11 +173,17 @@ module Batch
     end
 
     def present?
-      browser_helper.present?  height_textbox
+      browser_helper.present?  grid_present_span
     end
 
-    def wait_until_present(timeout)
-      height_textbox.wait_until_present(timeout)
+    def grid_present_span
+      div = @browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]"
+      log "Single Order Form is #{(browser_helper.present? div)?'present':'NOT present'}"
+      div
+    end
+
+    def wait_until_present
+      browser_helper.wait_until_present grid_present_span
     end
 
     def edit_details(data = {})

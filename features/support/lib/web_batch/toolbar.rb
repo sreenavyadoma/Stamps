@@ -4,9 +4,6 @@ module Batch
   #
   class Toolbar < BrowserObject
     private
-    def add_field
-      @browser.span :text => 'Add'
-    end
 
     def print_button
       button1 = @browser.elements(:text => 'Print').first
@@ -18,29 +15,46 @@ module Batch
     end
 
     def open_print_window window
+      checked_orders = checked_rows
+      browser_helper.click print_button, "print"
       order_grid = Grid.new @browser
       naws_plugin_error = NawsPluginError.new @browser
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
-      checked_orders_hash = order_grid.checked_orders
-      5.times {
+      30.times {
         begin
-          browser_helper.click print_button, "print"
           sleep(1)
-          naws_plugin_error.ok if naws_plugin_error.present?
-          error_connecting_to_plugin.ok if error_connecting_to_plugin.present?
-          if window.present?
-            return window
-          else
-            order_grid.check_orders checked_orders_hash
+          if naws_plugin_error.present?
+            5.times{
+              naws_plugin_error.ok
+              break unless naws_plugin_error.present?
+              order_grid.check_orders checked_orders
+            }
           end
+          if error_connecting_to_plugin.present?
+            5.times{
+              error_connecting_to_plugin.ok
+              break unless error_connecting_to_plugin.present?
+              check_orders checked_orders
+            }
+          end
+          check_rows checked_orders
+
+          return window if window.present?
+
+          browser_helper.click print_button, "print"
         rescue
           #ignore
         end
       }
-      raise "Unable to open Print Window.  Naws Plugin Error? #{naws_plugin_error.present?} Error Connecting to Plugin? #{error_connecting_to_plugin.present?} "
+      nil
     end
 
     public
+    def add_button
+      span = @browser.span :text => 'Add'
+      log "Toolbar Add button is #{(browser_helper.present? span)?'present':'NOT present'}"
+      span
+    end
 
     def print_expecting_error *args
       error_window = OrderErrors.new(@browser)
@@ -65,27 +79,22 @@ module Batch
 
     def add
       single_order_form = SingleOrderForm.new @browser
-      3.times do
+      20.times do |count|
         begin
-          browser_helper.click add_field, 'Add'
-          begin
-            browser_helper.wait_until_present single_order_form.order_id_label
-            browser_helper.wait_until_present single_order_form.order_status_label
-          rescue
-            #ignore
-          end
-          break if single_order_form.present?
+          browser_helper.click add_button, 'Add'
+          log "#{count} Single Order Form present?  #{single_order_form.present?}"
+          sleep 1
+          return single_order_form if single_order_form.present?
         rescue
           #ignore
         end
       end
-      log "New Order ID created:  #{single_order_form.order_id}"
-      single_order_form
+      raise "Unable to add new orders!"
     end
 
     def wait_until_present
       begin
-        add_field.wait_until_present 15
+        add_button.wait_until_present 15
       rescue
         #ignroe
       end
@@ -93,7 +102,7 @@ module Batch
     end
 
     def present?
-      browser_helper.present? add_field
+      browser_helper.present? add_button
     end
   end
 end

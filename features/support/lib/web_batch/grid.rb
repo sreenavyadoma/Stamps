@@ -123,27 +123,34 @@ module Batch
   #
   class Grid < GridBase
     public
-    def checked_orders
-      checked_orders_set = Set.new
+    def checked_rows
+      log "Remembering checked orders..."
+      checked_rows = Hash.new
       grid_order_count = total_grid_count
-      row_count = (grid_order_count>20)?20:grid_order_count
+      row_count = (grid_order_count>50)?50:grid_order_count
+      log "Number of rows to check:  #{row_count}"
       1.upto(row_count) { |row|
         checked = row_checked? row
         if checked
-          row_entry = row_div row
-          checked_orders_set.add row_entry
+          checked_rows[row] = checked
         end
+        log "Row #{row} Checked? #{checked}.  Stored:  #{checked_rows[row]}"
       }
-      checked_orders_set
+      log "Remembering checked orders done."
+      checked_rows
     end
 
-    def check_orders orders_set
+    def check_rows rows
+      log "Restoring #{} checked orders..."
       begin
-        orders_set.each do |row|
-          present = browser_helper.present? row
-          browser_helper.click row if present
+        rows.each do |row|
+          checked = rows[row]
+          if checked
+            check_row row
+            log "Row #{row} #{row_checked? row}"
+          end
         end
-      end unless orders_set.nil?
+      end unless rows.nil?
     end
 
     def total_grid_count

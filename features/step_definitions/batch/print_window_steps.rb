@@ -52,21 +52,6 @@ Then /^Close Print Window$/ do
   @print_window.close
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Then /^Click Print Window - Print button$/ do
   @print_window.print
 end

@@ -37,6 +37,7 @@ module Batch
     end
 
     def sign_in(*args)
+      single_order_form = SingleOrderForm.new @browser
       navigation = self.navigation_bar
       welcome_modal = WelcomeModal.new(@browser)
       welcome_orders_page = WelcomeOrdersPage.new(@browser)
@@ -69,31 +70,36 @@ module Batch
             self.username = username
             self.password = password
             browser_helper.click sign_in_btn, "SignIn"
-            sign_in_btn.wait_while_present(30)
+            sign_in_btn.wait_while_present(5)
+
+            visit
+
+            toolbar.wait_until_present
+            if welcome_modal.present?
+              welcome_modal.ok
+              break
+            end
+
+            if welcome_orders_page.present?
+              welcome_orders_page.continue
+              break
+            end
           end
         rescue
           #ignore
         end
-        if welcome_modal.present?
-          welcome_modal.ok
-          break
-        end
-        if welcome_orders_page.present?
-          welcome_orders_page.continue
-          break
-        end
-        3.times{
-          toolbar.wait_until_present
-          if toolbar.present?
-            break
-          else
-            if navigation.present?
-              navigation.orders
-            end
-          end
-        }
-        break if toolbar.present?
+
         visit
+        toolbar.wait_until_present
+        begin
+          navigation.orders
+        rescue
+          #ignroe
+        end
+        single_order_form.wait_until_present
+        single_order_form.wait_until_present
+        single_order_form.wait_until_present
+        break if toolbar.present? || single_order_form.present?
       end
     end
 

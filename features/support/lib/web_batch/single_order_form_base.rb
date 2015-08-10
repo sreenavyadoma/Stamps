@@ -1,3 +1,0 @@
-module Batch
-
-end
