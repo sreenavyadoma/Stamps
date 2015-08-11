@@ -38,8 +38,9 @@ module Batch
 
       present = err.include? "Error code: [1010]"
       if present
-        log "Stamps.com is currently connecting to the plug-in. Error code: [1010]"
+        log "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
         log error_code
+        log "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
       end
       present
     end

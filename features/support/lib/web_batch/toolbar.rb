@@ -23,7 +23,8 @@ module Batch
       install_plugin_error = ErrorInstallPlugin.new @browser
 
       if install_plugin_error.present?
-        raise "Stamps.com Plug-in is NOT INSTALLED!!"
+        #raise "Stamps.com Plug-in is NOT INSTALLED!!"
+        return nil
       end
 
       10.times {
@@ -31,7 +32,7 @@ module Batch
           if error_connecting_to_plugin.present?
             5.times{
               error_connecting_to_plugin.ok
-              order_grid.check_orders checked_rows_hash
+              order_grid.check_rows checked_rows_hash
               break unless error_connecting_to_plugin.present?
             }
           end
@@ -39,7 +40,7 @@ module Batch
           if naws_plugin_error.present?
             5.times{
               naws_plugin_error.ok
-              order_grid.check_orders checked_rows_hash
+              order_grid.check_rows checked_rows_hash
               break unless naws_plugin_error.present?
             }
           end

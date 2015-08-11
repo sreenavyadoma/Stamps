@@ -45,7 +45,10 @@ When /^Print$/ do
   if @print_window.nil? || !@print_window.present?
     step 'Click Toolbar Print Button'
   end
-  @printing_error = @print_window.print
+  log "Print Window is Nil?  #{@print_window.nil?}"
+  begin
+    @printing_error = @print_window.print
+  end unless @print_window.nil?
 end
 
 Then /^Close Print Window$/ do
