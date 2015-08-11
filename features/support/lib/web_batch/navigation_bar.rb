@@ -82,7 +82,11 @@ module Batch
     end
 
     def balance
-      balance_str.to_f
+      5.times{
+        amount = balance_str.to_f
+        return amount if amount > 0
+      }
+
     end
 
     def sign_out

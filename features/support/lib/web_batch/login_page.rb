@@ -72,6 +72,7 @@ module Batch
             browser_helper.click sign_in_btn, "SignIn"
             sign_in_btn.wait_while_present(5)
             toolbar.wait_until_present
+            break if toolbar.present? || single_order_form.present?
             begin
               navigation.orders
             rescue
@@ -93,12 +94,13 @@ module Batch
 
         visit
         single_order_form.wait_until_present
+        break if toolbar.present? || single_order_form.present?
         begin
           navigation.orders
         rescue
           #ignroe
         end
-        single_order_form.wait_until_present 35
+        single_order_form.wait_until_present 45
         break if toolbar.present? || single_order_form.present?
       end
     end

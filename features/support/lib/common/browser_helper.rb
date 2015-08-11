@@ -51,15 +51,17 @@ module Stamps
       end
       text = field.text
       value = field.attribute_value('value')
-      if text.nil?
-        ""
-      elsif text.size > 0
-        text
-      elsif value.size > 0
-        value
-      else
-        ""
+      begin
+        return text if text.size > 0
+      rescue
+        #ignore
       end
+      begin
+        return value if value.size > 0
+      rescue
+        #ignore
+      end
+      ""
     end
 
     def text *args
