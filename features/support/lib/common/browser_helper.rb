@@ -55,7 +55,7 @@ module Stamps
         ""
       elsif text.size > 0
         text
-      elsif value.length > 0
+      elsif value.size > 0
         value
       else
         ""
@@ -118,10 +118,7 @@ module Stamps
           end
         when 2
           begin
-            args[1].times{
-              args[0].wait_until_present
-              return true if present? args[0]
-            }
+            args[0].wait_until_present args[1].to_i
           rescue
             false
           end

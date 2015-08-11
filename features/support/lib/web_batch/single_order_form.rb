@@ -182,8 +182,15 @@ module Batch
       div
     end
 
-    def wait_until_present
-      browser_helper.wait_until_present grid_present_span
+    def wait_until_present *args
+      case args.length
+        when 0
+          browser_helper.wait_until_present grid_present_span
+        when 1
+          browser_helper.wait_until_present grid_present_span, args[0].to_i
+        else
+          raise "Illegal number of arguments for wait_until_present"
+      end
     end
 
     def edit_details(data = {})

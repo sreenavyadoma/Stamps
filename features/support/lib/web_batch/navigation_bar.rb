@@ -108,8 +108,13 @@ module Batch
       username_field.when_present.text
     end
 
-    def wait_until_present(timeout)
-      username_field.wait_until_present(timeout)
+    def wait_until_present *args
+      case args.length
+        when 0
+          username_field.wait_until_present
+        when 1
+          username_field.wait_until_present args[0].to_i
+      end
     end
 
     def present?
