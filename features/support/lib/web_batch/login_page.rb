@@ -90,7 +90,7 @@ module Batch
             #ignroe
           end
 
-          grid.wait_until_present 60
+          grid.wait_until_present 40
           break if toolbar.present? || grid.present?
           visit
         rescue
