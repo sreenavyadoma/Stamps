@@ -24,6 +24,7 @@ module Batch
 
       if install_plugin_error.present?
         #raise "Stamps.com Plug-in is NOT INSTALLED!!"
+        install_plugin_error.close
         return nil
       end
 

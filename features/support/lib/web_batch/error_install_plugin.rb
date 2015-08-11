@@ -6,7 +6,16 @@ module Batch
       @browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
     end
 
+    def window_x_button
+      @browser.img :css => "img[class$=x-tool-close]"
+    end
+
     public
+    def close
+      log "Closing Plugin not Installed Window"
+      browser_helper.click window_x_button
+      log "Plugin not Installed Window Closed"
+    end
 
     def present?
       err = ""

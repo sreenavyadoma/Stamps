@@ -62,7 +62,7 @@ end
 Then /^Print expecting error (.*)$/ do |error_message|
   order_error = batch.toolbar.print_expecting_error
   actual_error_message = order_error.error_message
-  order_error.ok
+  order_error.close
   log "Print expecting error \"#{error_message}\".   \nActual Error Message:  #{actual_error_message}. #{(actual_error_message.include?error_message)?'Passed':'Failed'}"
   actual_error_message.should eql error_message
 end
@@ -78,13 +78,13 @@ end
 
 Then /^Print expecting invalid address error$/ do
   error_window = batch.toolbar.print_invalid_address
-  error_window.ok
+  error_window.close
 end
 
 When /^Print expecting rating error$/ do
   error_window = batch.toolbar.print.print_expecting_rating_error
   actual_error_message = error_window.error_message
-  error_window.ok
+  error_window.close
   expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
 end
 
