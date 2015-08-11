@@ -72,11 +72,6 @@ module Batch
             browser_helper.click sign_in_btn, "SignIn"
             sign_in_btn.wait_while_present(5)
             toolbar.wait_until_present
-            begin
-              navigation.orders
-            rescue
-              #ignroe
-            end
             if welcome_modal.present?
               welcome_modal.ok
               break
@@ -86,6 +81,12 @@ module Batch
               welcome_orders_page.continue
               break
             end
+          end
+
+          begin
+            navigation.orders
+          rescue
+            #ignroe
           end
 
           grid.wait_until_present 60
