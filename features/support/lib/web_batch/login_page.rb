@@ -77,6 +77,7 @@ module Batch
               break
             end
 
+            visit
             if welcome_orders_page.present?
               welcome_orders_page.continue
               break
