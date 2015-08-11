@@ -6,7 +6,6 @@ Feature: B-01624 Print Priority Mail Regional Rate Box A
 
   @print_pmrrboxa @print
   Scenario:  Print Priority Mail Regional Rate Box A
-    * Sign out
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random

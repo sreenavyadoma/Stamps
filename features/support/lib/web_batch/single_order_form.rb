@@ -176,18 +176,12 @@ module Batch
       browser_helper.present? total_label
     end
 
-    def grid_present_span
-      div = @browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]"
-      log "Single Order Form is #{(browser_helper.present? div)?'present':'NOT present'}"
-      div
-    end
-
     def wait_until_present *args
       case args.length
         when 0
-          browser_helper.wait_until_present grid_present_span
+          browser_helper.wait_until_present height_textbox
         when 1
-          browser_helper.wait_until_present grid_present_span, args[0].to_i
+          browser_helper.wait_until_present height_textbox, args[0].to_i
         else
           raise "Illegal number of arguments for wait_until_present"
       end

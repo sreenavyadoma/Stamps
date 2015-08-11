@@ -77,11 +77,17 @@ module Batch
     end
 
     def balance_str
-      balance = browser_helper.text balance_label, 'balance'
+      balance = "0"
+      begin
+        balance = browser_helper.text balance_label, 'balance'
+      rescue
+        #ignore
+      end
       test_helper.strip(test_helper.strip(balance, "$", ""), ",", "")
     end
 
     def balance
+      browser_helper.wait_until_present balance_label
       5.times{
         amount = balance_str.to_f
         return amount if amount > 0
