@@ -45,7 +45,7 @@ module Batch
           end
 
           return window if window.present?
-          check_rows checked_rows_hash
+          order_grid.check_rows checked_rows_hash
           browser_helper.click print_button, "print"
         rescue
           #ignore
