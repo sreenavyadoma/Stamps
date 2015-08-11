@@ -22,13 +22,14 @@ module Batch
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
       install_plugin_error = ErrorInstallPlugin.new @browser
 
-      if install_plugin_error.present?
-        #raise "Stamps.com Plug-in is NOT INSTALLED!!"
-        install_plugin_error.close
-        return nil
-      end
-
       10.times {
+
+        if install_plugin_error.present?
+          order_grid.check_rows checked_rows_hash
+          install_plugin_error.close
+          return nil
+        end
+
         begin
           if error_connecting_to_plugin.present?
             5.times{
