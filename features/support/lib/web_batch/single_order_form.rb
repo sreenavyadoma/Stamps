@@ -173,7 +173,7 @@ module Batch
     end
 
     def present?
-      browser_helper.present?  grid_present_span
+      browser_helper.present? total_label
     end
 
     def grid_present_span

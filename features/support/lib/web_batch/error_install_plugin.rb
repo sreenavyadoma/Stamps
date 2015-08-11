@@ -13,7 +13,7 @@ module Batch
       if present
         log "Plug-in is not installed.  Install  Plugin Window is Present"
         log error_message
-        raise "Install  Plugin!"
+        raise "Install  Plugin!\n#{error_message}"
       end
       present
     end
