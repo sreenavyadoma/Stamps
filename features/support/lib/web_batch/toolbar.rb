@@ -15,7 +15,7 @@ module Batch
     end
 
     def open_print_window window
-      checked_orders = checked_rows
+      checked_ros_hash = checked_rows
       browser_helper.click print_button, "print"
       order_grid = Grid.new @browser
       naws_plugin_error = NawsPluginError.new @browser
@@ -27,17 +27,17 @@ module Batch
             5.times{
               naws_plugin_error.ok
               break unless naws_plugin_error.present?
-              order_grid.check_orders checked_orders
+              order_grid.check_orders checked_ros_hash
             }
           end
           if error_connecting_to_plugin.present?
             5.times{
               error_connecting_to_plugin.ok
               break unless error_connecting_to_plugin.present?
-              check_orders checked_orders
+              check_orders checked_ros_hash
             }
           end
-          check_rows checked_orders
+          check_rows checked_ros_hash
 
           return window if window.present?
 
