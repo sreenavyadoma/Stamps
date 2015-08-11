@@ -9,11 +9,16 @@ module Batch
     public
 
     def present?
-      present = (browser_helper.text error_message_label).include? "Install Plugin"
+      err = ""
+      begin
+        err = browser_helper.text error_message_label
+      rescue
+        #ignore
+      end
+      present = (err).include? "Install Plugin"
       if present
         log "Plug-in is not installed.  Install  Plugin Window is Present"
         log error_message
-        raise "Install  Plugin!\n#{error_message}"
       end
       present
     end

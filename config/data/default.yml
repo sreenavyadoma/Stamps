@@ -1,5 +1,5 @@
 url_prefix:
-  qacc:  printext.qacc
+  qacc:  print.qacc
   qacc3: printbatch100.qacc
   qacc2: printext.qacc
   stage: printext.stage

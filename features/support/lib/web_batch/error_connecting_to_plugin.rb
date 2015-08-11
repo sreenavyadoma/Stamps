@@ -29,8 +29,14 @@ module Batch
     end
 
     def present?
-      browser_helper.present? error_code
-      present = (browser_helper.text error_code).include? "Error code: [1010]"
+      err = ""
+      begin
+        err = browser_helper.text error_code
+      rescue
+        #ignore
+      end
+
+      present = err.include? "Error code: [1010]"
       if present
         log "Stamps.com is currently connecting to the plug-in. Error code: [1010]"
         log error_code

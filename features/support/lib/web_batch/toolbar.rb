@@ -21,36 +21,36 @@ module Batch
       naws_plugin_error = NawsPluginError.new @browser
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
       install_plugin_error = ErrorInstallPlugin.new @browser
+
+      if install_plugin_error.present?
+        raise "Stamps.com Plug-in is NOT INSTALLED!!"
+      end
+
       10.times {
         begin
-          install_plugin_error.present?
-
           if error_connecting_to_plugin.present?
             5.times{
               error_connecting_to_plugin.ok
+              order_grid.check_orders checked_rows_hash
               break unless error_connecting_to_plugin.present?
-              check_orders checked_rows_hash
             }
-            check_rows checked_rows_hash
           end
 
           if naws_plugin_error.present?
             5.times{
               naws_plugin_error.ok
-              break unless naws_plugin_error.present?
               order_grid.check_orders checked_rows_hash
+              break unless naws_plugin_error.present?
             }
-            check_rows checked_rows_hash
           end
 
-          check_rows checked_rows_hash
           return window if window.present?
+          check_rows checked_rows_hash
           browser_helper.click print_button, "print"
         rescue
           #ignore
         end
       }
-      nil
     end
 
     public

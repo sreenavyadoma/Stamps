@@ -11,8 +11,14 @@ module Batch
 
     public
     def present?
-      browser_helper.present? error_code_p
-      present = (browser_helper.text error_code_p).include? "Error code: [1009]"
+      err = ""
+      begin
+        err = browser_helper.text error_code_p
+      rescue
+        #ignore
+      end
+
+      present = err.include? "Error code: [1009]"
       if present
         log "NAWS Plugin Error detected.  Error code: [1009]"
         log error_code_p

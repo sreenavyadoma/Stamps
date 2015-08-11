@@ -22,13 +22,6 @@ Then /^Expect (\w+) side label selected$/ do |label|
   end
 end
 
-When /^Print$/ do
-  if @print_window.nil? || !@print_window.present?
-    step 'Click Toolbar Print Button'
-  end
-  @printing_error = @print_window.print
-end
-
 Then /^Set Ship Date to (\d+) day from today$/ do |days|
   @print_window.ship_date=test_helper.date_now(days)
 end
@@ -46,6 +39,13 @@ end
 When /^Click Toolbar Print Button$/ do
   log "Click Toolbar Print Button"
   @print_window = batch.toolbar.print
+end
+
+When /^Print$/ do
+  if @print_window.nil? || !@print_window.present?
+    step 'Click Toolbar Print Button'
+  end
+  @printing_error = @print_window.print
 end
 
 Then /^Close Print Window$/ do
