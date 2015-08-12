@@ -1,4 +1,4 @@
-@regression
+
 Feature:  B-01630 Ship Date - Print 2 days from today
 
   Background:

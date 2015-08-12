@@ -1,4 +1,4 @@
-@regression
+
 Feature:  B-01630 Ship Date - Plus 1 day
 
   Background:
