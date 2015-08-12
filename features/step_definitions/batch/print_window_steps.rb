@@ -23,17 +23,17 @@ Then /^Expect (\w+) side label selected$/ do |label|
 end
 
 Then /^Set Ship Date to (\d+) day from today$/ do |days|
-  @print_window.ship_date = test_helper.date_now(days)
+  @print_window.ship_date = test_helper.print_date(days)
 end
 
-Then /^Set Ship Date Picker to today$/ do
-  @print_window.date_picker "today" unless @print_window.nil?
+Then /^Set Ship Date Picker to (\d+) day\(s\) from today$/ do |day|
+  @print_window.pick_date day unless @print_window.nil?
 end
 
-Then /^Expect Print Window Ship Date to be today$/ do
+Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
   begin
     actual = @print_window.ship_date
-    expected = test_helper.date_now 0
+    expected = test_helper.print_date day
     log "Expect Print Window Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
     actual.should eql expected
   end unless @print_window.nil?
