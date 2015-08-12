@@ -34,6 +34,7 @@ Then /^Expect Print Window Ship Date to be today$/ do
   begin
     actual = @print_window.ship_date
     expected = test_helper.date_now 0
+    log "Expect Print Window Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
     actual.should eql expected
   end unless @print_window.nil?
 end
