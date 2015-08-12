@@ -224,6 +224,8 @@ module Batch
               browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(address), 'Address'
               self.phone = address["phone"]
               self.email = address["email"]
+            when String
+              browser_helper.set_text self.address_textbox, address, 'Address'
             else
               raise "Illegal Ship-to argument"
           end

@@ -7,7 +7,6 @@ Then /^Save Shipping Costs Data$/ do
 end
 
 Then /^Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost$/ do
-  @old_balance = batch.navigation_bar.balance
   @total_amount = batch.single_order_form.total
   @service_cost = batch.single_order_form.service_cost
   @tracking_cost = batch.single_order_form.tracking_cost

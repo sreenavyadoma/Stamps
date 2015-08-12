@@ -11,7 +11,5 @@ Feature:  B-01742 Show an Order's Most Recent GetRates(), CleanseAddress(), or C
     * Set Ship-To address to B-01742 Invalid Address
     * Set Phone to 4157984533
     * Click Ship To Less button
-    * Set Pounds to 1
-    * Set Ounces to 1
     * Print expecting error Invalid
     * Sign out
