@@ -1,4 +1,4 @@
-@regression
+
 Feature: As a batch shipper, I want to be able to create and print many orders automatically
 
   Background:
