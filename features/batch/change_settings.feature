@@ -1,4 +1,4 @@
-@regression
+
 Feature: Change Settings
 
   Background:
