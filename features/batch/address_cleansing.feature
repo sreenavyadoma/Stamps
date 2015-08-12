@@ -17,8 +17,6 @@ Feature: B-01603 Address Cleansing
     * Expect Company Name to be Address Cleansing
     * Expect City to be San Francisco
     * Expect State to be CA
-    * Expect Phone to be (415) 123-5555
-    * Expect Email to be rtest@stamps.com
     * Set Ship-To address to random
     * Click Ship To Less button
     * Set Service to Priority Mail Package
