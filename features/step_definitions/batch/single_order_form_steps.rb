@@ -134,7 +134,7 @@ Then /^Delete (\w+) Ship-From address$/ do |address|
       batch.single_order_form.manage_shipping_addresses.delete_all
     end
   rescue
-    #ignore
+    #This is a housekeeping task and should never fail.
   end
 end
 
