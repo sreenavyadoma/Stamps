@@ -18,3 +18,9 @@ When /^Add a second order$/ do
   log "Second Order Id:  #{@order_id_2}"
   batch.grid.edit_order @order_id_2
 end
+
+Then /^Open Settings Modal$/ do
+
+  batch.toolbar.open_settings
+
+end

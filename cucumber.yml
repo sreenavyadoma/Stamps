@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
-default_profile: --tags @ship_date --guess URL=staging BROWSER=ie USR=auto39 PW=password1
+default_profile: --tags @bvt_shipping_address_management --guess URL=qacc BROWSER=gc USR=auto40 PW=password1
 
 orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ff USR=webbatch_0005 PW=password1
 orders_25: --tags @orders_25 --guess URL=qacc BROWSER=ff USR=cm_cpp_0002 PW=pass111
@@ -51,3 +51,7 @@ print_costs_qacc_gc: --tags @print_costs --guess URL=qacc BROWSER=gc USR=auto27 
 purchasing_qacc_ie: --tags @purchasing --guess URL=qacc BROWSER=ie USR=auto28 PW=password1
 purchasing_qacc_ff: --tags @purchasing --guess URL=qacc BROWSER=ff USR=auto29 PW=password1
 purchasing_qacc_gc: --tags @purchasing --guess URL=qacc BROWSER=gc USR=auto30 PW=password1
+
+change_settings_qacc_ie: --tags @settings --guess URL=qacc BROWSER=ie USR=auto31 PW=password1
+change_settings_qacc_ff: --tags @settings --guess URL=qacc BROWSER=ff USR=auto32 PW=password1
+change_settings_qacc_gc: --tags @settings --guess URL=qacc BROWSER=gc USR=auto33 PW=password1
