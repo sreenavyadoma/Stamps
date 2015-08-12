@@ -23,17 +23,19 @@ Then /^Expect (\w+) side label selected$/ do |label|
 end
 
 Then /^Set Ship Date to (\d+) day from today$/ do |days|
-  @print_window.ship_date=test_helper.date_now(days)
+  @print_window.ship_date = test_helper.date_now(days)
 end
 
 Then /^Set Ship Date Picker to today$/ do
-  @print_window.date_picker "today"
+  @print_window.date_picker "today" unless @print_window.nil?
 end
 
 Then /^Expect Print Window Ship Date to be today$/ do
-  actual = @print_window.ship_date
-  expected = test_helper.date_now 0
-  actual.should eql expected
+  begin
+    actual = @print_window.ship_date
+    expected = test_helper.date_now 0
+    actual.should eql expected
+  end unless @print_window.nil?
 end
 
 When /^Click Toolbar Print Button$/ do
@@ -46,17 +48,24 @@ When /^Print$/ do
     step 'Click Toolbar Print Button'
   end
   log "Print Window is Nil?  #{@print_window.nil?}"
-  begin
+
+  if @print_window.nil?
+    @printing_error =  true
+  else
     @printing_error = @print_window.print
-  end unless @print_window.nil?
+  end
 end
 
 Then /^Close Print Window$/ do
-  @print_window.close
+  @print_window.close unless @print_window.nil?
 end
 
 Then /^Click Print Window - Print button$/ do
-  @print_window.print
+  if @print_window.nil?
+    @printing_error =  true
+  else
+    @printing_error = @print_window.print
+  end
 end
 
 Then /^Print expecting error (.*)$/ do |error_message|

@@ -4,7 +4,7 @@ Feature:  B-01636 Single Order Indicium Error
   Background:
     * I am signed in as a batch shipper
 
-  @single_order_indicium_error @printing_errors
+  @single_order_indicium_error @printing_error
   Scenario:  B-01636 Single Order Indicium Error
     * Add new order
     * Set Ship From to default

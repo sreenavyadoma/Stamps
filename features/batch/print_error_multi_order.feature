@@ -4,7 +4,7 @@ Feature:  B-01636 Multi Order Printing Error
   Background:
     * I am signed in as a batch shipper
 
-  @multi_order_printing_error @printing_errors
+  @multi_order_printing_error @printing_error
   Scenario:  B-01636 Multi Order Printing Error
     * Add new order
     * Set Ship From to default

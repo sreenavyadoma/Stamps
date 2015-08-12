@@ -72,17 +72,19 @@ module Batch
             browser_helper.click sign_in_btn, "SignIn"
             sign_in_btn.wait_while_present(5)
             toolbar.wait_until_present
+
             if welcome_modal.present?
               welcome_modal.ok
               break
             end
 
-            visit
             if welcome_orders_page.present?
               welcome_orders_page.continue
               break
             end
           end
+
+          break if toolbar.present? || grid.present?
 
           begin
             navigation.orders
