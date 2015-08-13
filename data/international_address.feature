@@ -8,9 +8,10 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
   Scenario:  1 User Enters International Address, User Changes Ship To Country, Ship To Country is NOT United States, ser Edits Component Int'l Address Fields, Field Attributes
     * Add new order
     * Set Ship To country to Canada
-    * Expect system hides tracking
-    * Expect system hides dimentions
-    * Expect system hides ship-to
+    * Expect Tracking field is hidden
+    * Expect Dimentions field is hidden
+    * Expect Ship To field is hidden
+
     * Expect Edit Customs Form button is shown
     * Expect International Ship To address fields are shown
     * Expect International Ship To name field is constrained to 50 chars
@@ -42,27 +43,43 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
     * Open Customs Information Modal
 
-    * Set Package Contents to Merchandise
-    * Expect Package Contents set to Merchandise
-    * Set Package Contents to Document
-    * Expect Package Contents set to Document
-    * Set Package Contents to Gift
-    * Expect Package Contents set to Gift
-    * Set Package Contents to Humanitarian Donation
-    * Expect Package Contents set to Humanitarian Donation
-    * Set Package Contents to Returned Goods
-    * Expect Package Contents set to Returned Goods
-    * Set Package Contents to Other
-    * Expect Package Contents set to Other
+    * Expect Customs Form checkbox for "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions" is shown
+    * Expect Customs Form Add Item tooltip to be "Add another item"
+    * Expect Customs Form Package Contents set to Merchandise
+    * Expect Customs Form Non-Delivery Options set to Return to Sender
 
-    * Set Non-Delivery Options to Return to Sender
-    * Set Non-Delivery Options to Treat as abandoned
+    * Set Customs Form Package Contents to Merchandise
+    * Expect Customs Form Package Contents set to Merchandise
+    * Set Customs Form Package Contents to Document
+    * Expect Customs Form Package Contents set to Document
+    * Set Customs Form Package Contents to Gift
+    * Expect Customs Form Package Contents set to Gift
+    * Set Customs Form Package Contents to Humanitarian Donation
+    * Expect Customs Form Package Contents set to Humanitarian Donation
+    * Set Customs Form Package Contents to Returned Goods
+    * Expect Customs Form Package Contents set to Returned Goods
+    * Set Customs Form Package Contents to Other
+    * Expect Customs Form Package Contents set to Other
+    * Set Customs Form Package Contents to Merchandise
+
+    * Set Customs Form More Info to random
+
+    * Set Customs Form Non-Delivery Options to Return to Sender
+    * Expect Customs Form Non-Delivery Options set to Return to Sender
+    * Set Customs Form Non-Delivery Options to Treat as abandoned
+    * Expect Customs Form Non-Delivery Options set to Treat as abandoned
 
     * Set Internal Transaction # to Not Required
     * Set Internal Transaction # to Required
 
-    * Set More Info to random
-    * Set Customs Item 1 to
+    * Add Customs Item 1 to description=random, qty=1, price=10, lbs=0, oz=1 origin=United States, tariff=10
+    * Add Customs Item 2 to description=random, qty=1, price=10, lbs=0, oz=1 origin=United States, tariff=10
+    * Add Customs Item 3 to description=random, qty=1, price=10, lbs=0, oz=1 origin=United States, tariff=10
+    * Expect Customs Total Weight is correct
+    * Expect Customs Total Value is correct
+    * Delete Customs Item 1
+    * Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
+    * Close Customs Information Modal
 
   Scenario:  2 User Edits Customs Form - APO/FPO Address
     * Add new order
