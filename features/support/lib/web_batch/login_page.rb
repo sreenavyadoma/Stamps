@@ -39,8 +39,10 @@ module Batch
     def sign_in(*args)
       grid = Grid.new @browser
       navigation = self.navigation_bar
-      welcome_modal = WelcomeModal.new(@browser)
-      welcome_orders_page = WelcomeOrdersPage.new(@browser)
+      welcome_modal = WelcomeModal.new @browser
+      welcome_orders_page = WelcomeOrdersPage.new @browser
+      plugin_issue = ErrorStampsPluginIssue.new @browser
+
       toolbar = self.toolbar
       case args.count
         when 0
@@ -82,6 +84,11 @@ module Batch
               welcome_orders_page.continue
               break
             end
+
+            if plugin_issue.present?
+              plugin_issue.close
+              break
+            end
           end
 
           break if toolbar.present? || grid.present?
@@ -99,6 +106,11 @@ module Batch
           #ignore
         end
       end
+
+      if plugin_issue.present?
+        raise "Stamps.com Plugin Issue"
+      end
+
     end
 
     def username=(username)
