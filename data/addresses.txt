@@ -1,0 +1,181 @@
+
+
+Domestic Address
+201 Mission Street Ste 700
+San Francisco, CA 94105
+
+Domestic Partial Address 
+1390 Market Street
+San Francisco, CA 94102
+
+------------------------------------------------------------------------------
+ 
+International CP72
+234 Laurier Avenue West
+Ottawa
+Ontario
+K1A 0G9
+4157899655
+ 
+Print On:
+Shipping Label 8 ½” x 11” Paper
+Services:
+Priority Mail Express International Package/Flat/Thick Envelope (3 5 Days)
+ 
+------------------------------------------------------------------------------
+
+American Forces Korea Network
+Domestic APO
+Unit 15324
+APO, AP 96205-5324
+ 
+Print On:
+Shipping Label 8 ½” x 11” Paper
+Services:
+First-Class Mail Large Envelope/Flat (3 Days)
+Priority Mail Package (2 Days)
+Priority Mail Medium Flat Rate Box (2 Days)
+Priority Mail Regional Rate Box C (2 Days)
+Media Mail Package/Flat/Thick Envelope (6 Days)
+Parcel Select Package/Flat/Thick Envelope (6 Days)
+ 
+------------------------------------------------------------------------------
+ 
+Russell Browne
+Domestic FPO
+Uss Mason DDG 87
+FPO, AE 09578
+ 
+Print On:
+Shipping Label 8 ½” x 11” Paper
+Services:
+First-Class Mail Large Envelope/Flat (3 Days)
+Priority Mail Package (2 Days)
+Priority Mail Medium Flat Rate Box (2 Days)
+Priority Mail Regional Rate Box C (2 Days)
+Media Mail Package/Flat/Thick Envelope (6 Days)
+Parcel Select Package/Flat/Thick Envelope (6 Days)
+ 
+------------------------------------------------------------------------------
+ 
+Domestic DPO
+John Adams
+Unit 8400, Box 0000
+DPO AE 09498-9997
+ 
+Print On:
+Shipping Label 8 ½” x 11” Paper
+Services:
+First-Class Mail Large Envelope/Flat (3 Days)
+Priority Mail Package (2 Days)
+Priority Mail Medium Flat Rate Box (2 Days)
+Priority Mail Regional Rate Box C (2 Days)
+Media Mail Package/Flat/Thick Envelope (6 Days)
+Parcel Select Package/Flat/Thick Envelope (6 Days)
+ 
+------------------------------------------------------------------------------
+ 
+Domestic FAS
+Garden Villa Hotel
+800 Pale San Vitores Road
+Tumon, Guam 96913
+ 
+Print On:
+Shipping Label 8 ½” x 11” Paper
+Services:
+First-Class Mail Large Envelope/Flat (3 Days)
+Priority Mail Package (2 Days)
+Priority Mail Medium Flat Rate Box (2 Days)
+Priority Mail Regional Rate Box C (2 Days)
+Media Mail Package/Flat/Thick Envelope (6 Days)
+Parcel Select Package/Flat/Thick Envelope (6 Days)
+ 
+------------------------------------------------------------------------------
+ 
+International CN22
+234 Laurier Avenue West
+Ottawa
+Ontario
+K1A 0G9
+4157899655
+ 
+Print On:
+Shipping Label 8 ½” x 11” Paper
+Services:
+First-Class Mail International Large Envelope/Flat (Varies)
+ 
+------------------------------------------------------------------------------
+ 
+
+
+
+x-btn sdc-mainpanel-shiptolinkbtn form-field-button-link form-field-button-link-shipto x-unselectable x-box-item x-btn-default-medium x-noicon x-btn-noicon x-btn-default-medium-noicon
+
+
+Wchou@stamps.com,  hmaheryar@stamps.com, rcruz@stamps.com, eguzman@stamps.com, cchhay@stamps.com,
+
+
+//QA/Automation/stamps-test-framework/... //c:\jenkins\workspace\AllBVTTests/Automation/stamps-test-framework/...
+
+
+${NODE_NAME}.${JOB_NAME}
+//QA/Automation/stamps-test-framework/... //Jenkins999.qacc.stamps.com.AllBVTTests-2000523958/...
+
+
+
+Domestic APO
+Domestic FPO
+Domestic DPO
+International CN 22
+International CP 72
+
+Shipping Label 8 ½” x 11” Paper
+Services:
+First-Class Mail Large Envelope/Flat (3 Days)
+Priority Mail Package (2 Days)
+Priority Mail Medium Flat Rate Box (2 Days)
+Priority Mail Regional Rate Box C (2 Days)
+Media Mail Package/Flat/Thick Envelope (6 Days)
+Parcel Select Package/Flat/Thick Envelope (6 Days)
+
+DOMESTIC:
+Shipping Label 8 ½” x 11” Paper
+Services:
+Priority Mail Express Flat Rate Envelope (1-2 Days)
+
+Shipping Address:
+
+One Zone & Two Zone
+530 K Street Unit 504
+San Diego, CA 92101-7060
+
+Three Zone
+1925 Florence Ave
+Kingman AZ 86401-4617
+
+Four Zone
+American Forces Korea Network
+Unit 15324
+APO AP 96205-5324
+
+Five Zone
+266 Swanlea Road North
+Bigfork, MT 59911
+
+Six Zone 
+101 Marcum Drive
+Hope, AR 71801-9017
+
+Seven Zone
+3664 College Ln S
+Mobile AL 36608-1240
+
+Eight Zone
+377 Santa Rosa Blvd
+Fort Walton Beach FL 32548
+
+Nine Zone
+PO BOX 1257
+Pohnpei, FM 96941-1257
+
+
