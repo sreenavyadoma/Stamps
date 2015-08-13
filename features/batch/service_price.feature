@@ -32,8 +32,6 @@ Feature: B-01671 User Views Price Next to Service Dropdown
     * Expect inline Service Cost for Parcel Select Large Package to be greater than $0.01
     * Expect inline Service Cost for Parcel Select Oversized Package to be greater than $0.01
     * Expect inline Service Cost for Media Mail Package to be greater than $0.01
-    * Expect Phone to be (415) 794-4522
-    * Expect Email to be rtest@stamps.com
     * Expect Pounds to be 0
     * Expect Ounces to be 0
     * Expect Weight to be 0 lbs. 0 oz.

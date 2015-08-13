@@ -51,15 +51,17 @@ module Stamps
       end
       text = field.text
       value = field.attribute_value('value')
-      if text.nil?
-        ""
-      elsif text.size > 0
-        text
-      elsif value.length > 0
-        value
-      else
-        ""
+      begin
+        return text if text.size > 0
+      rescue
+        #ignore
       end
+      begin
+        return value if value.size > 0
+      rescue
+        #ignore
+      end
+      ""
     end
 
     def text *args
@@ -118,10 +120,7 @@ module Stamps
           end
         when 2
           begin
-            args[1].times{
-              args[0].wait_until_present
-              return true if present? args[0]
-            }
+            args[0].wait_until_present args[1].to_i
           rescue
             false
           end

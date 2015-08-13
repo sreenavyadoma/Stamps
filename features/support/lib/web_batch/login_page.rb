@@ -37,7 +37,7 @@ module Batch
     end
 
     def sign_in(*args)
-      single_order_form = SingleOrderForm.new @browser
+      grid = Grid.new @browser
       navigation = self.navigation_bar
       welcome_modal = WelcomeModal.new(@browser)
       welcome_orders_page = WelcomeOrdersPage.new(@browser)
@@ -62,7 +62,7 @@ module Batch
           raise 'Argument Parameter Error.'
       end
 
-      5.times do
+      20.times do
         visit
         begin
           if username_textbox.present?
@@ -71,10 +71,8 @@ module Batch
             self.password = password
             browser_helper.click sign_in_btn, "SignIn"
             sign_in_btn.wait_while_present(5)
-
-            visit
-
             toolbar.wait_until_present
+
             if welcome_modal.present?
               welcome_modal.ok
               break
@@ -85,21 +83,21 @@ module Batch
               break
             end
           end
+
+          break if toolbar.present? || grid.present?
+
+          begin
+            navigation.orders
+          rescue
+            #ignroe
+          end
+
+          grid.wait_until_present 40
+          break if toolbar.present? || grid.present?
+          visit
         rescue
           #ignore
         end
-
-        visit
-        toolbar.wait_until_present
-        begin
-          navigation.orders
-        rescue
-          #ignroe
-        end
-        single_order_form.wait_until_present
-        single_order_form.wait_until_present
-        single_order_form.wait_until_present
-        break if toolbar.present? || single_order_form.present?
       end
     end
 

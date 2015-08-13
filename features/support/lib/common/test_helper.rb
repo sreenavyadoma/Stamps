@@ -11,7 +11,12 @@ module Stamps
       str.gsub(char_to_remove, substitute_char)
     end
 
-    def date_now *args
+    def date_picker_calendar_date day
+      now = Date.today
+      "#{now.strftime("%B")} #{now.day + day.to_i}"
+    end
+
+    def print_date *args
       case args.length
         when 0
           now = Date.today

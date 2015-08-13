@@ -46,13 +46,16 @@ module Batch
 
     public
 
-    def date_picker day
+    def pick_date day
       date_picker = PrintWindowDatePicker.new(@browser)
       5.times{
-        browser_helper.click date_picker_div
-        break if date_picker.present?
+        if date_picker.present?
+          break
+        else
+          browser_helper.click date_picker_div
+        end
       }
-      date_picker.today if day.downcase.eql? "today"
+      date_picker.date day
     end
 
     def ship_date

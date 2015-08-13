@@ -77,12 +77,22 @@ module Batch
     end
 
     def balance_str
-      balance = browser_helper.text balance_label, 'balance'
+      balance = "0"
+      begin
+        balance = browser_helper.text balance_label, 'balance'
+      rescue
+        #ignore
+      end
       test_helper.strip(test_helper.strip(balance, "$", ""), ",", "")
     end
 
     def balance
-      balance_str.to_f
+      browser_helper.wait_until_present balance_label
+      5.times{
+        amount = balance_str.to_f
+        return amount if amount > 0
+      }
+
     end
 
     def sign_out
@@ -108,8 +118,13 @@ module Batch
       username_field.when_present.text
     end
 
-    def wait_until_present(timeout)
-      username_field.wait_until_present(timeout)
+    def wait_until_present *args
+      case args.length
+        when 0
+          username_field.wait_until_present
+        when 1
+          username_field.wait_until_present args[0].to_i
+      end
     end
 
     def present?

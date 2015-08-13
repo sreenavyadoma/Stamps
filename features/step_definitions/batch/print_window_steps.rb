@@ -22,25 +22,21 @@ Then /^Expect (\w+) side label selected$/ do |label|
   end
 end
 
-When /^Print$/ do
-  if @print_window.nil? || !@print_window.present?
-    step 'Click Toolbar Print Button'
-  end
-  @printing_error = @print_window.print
-end
-
 Then /^Set Ship Date to (\d+) day from today$/ do |days|
-  @print_window.ship_date=test_helper.date_now(days)
+  @print_window.ship_date = test_helper.print_date(days)
 end
 
-Then /^Set Ship Date Picker to today$/ do
-  @print_window.date_picker "today"
+Then /^Set Ship Date Picker to (\d+) day\(s\) from today$/ do |day|
+  @print_window.pick_date day unless @print_window.nil?
 end
 
-Then /^Expect Print Window Ship Date to be today$/ do
-  actual = @print_window.ship_date
-  expected = test_helper.date_now 0
-  actual.should eql expected
+Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
+  begin
+    actual = @print_window.ship_date
+    expected = test_helper.print_date day
+    log "Expect Print Window Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
+    actual.should eql expected
+  end unless @print_window.nil?
 end
 
 When /^Click Toolbar Print Button$/ do
@@ -48,18 +44,35 @@ When /^Click Toolbar Print Button$/ do
   @print_window = batch.toolbar.print
 end
 
+When /^Print$/ do
+  if @print_window.nil? || !@print_window.present?
+    step 'Click Toolbar Print Button'
+  end
+  log "Print Window is Nil?  #{@print_window.nil?}"
+
+  if @print_window.nil?
+    @printing_error =  true
+  else
+    @printing_error = @print_window.print
+  end
+end
+
 Then /^Close Print Window$/ do
-  @print_window.close
+  @print_window.close unless @print_window.nil?
 end
 
 Then /^Click Print Window - Print button$/ do
-  @print_window.print
+  if @print_window.nil?
+    @printing_error =  true
+  else
+    @printing_error = @print_window.print
+  end
 end
 
 Then /^Print expecting error (.*)$/ do |error_message|
   order_error = batch.toolbar.print_expecting_error
   actual_error_message = order_error.error_message
-  order_error.ok
+  order_error.close
   log "Print expecting error \"#{error_message}\".   \nActual Error Message:  #{actual_error_message}. #{(actual_error_message.include?error_message)?'Passed':'Failed'}"
   actual_error_message.should eql error_message
 end
@@ -75,13 +88,13 @@ end
 
 Then /^Print expecting invalid address error$/ do
   error_window = batch.toolbar.print_invalid_address
-  error_window.ok
+  error_window.close
 end
 
 When /^Print expecting rating error$/ do
   error_window = batch.toolbar.print.print_expecting_rating_error
   actual_error_message = error_window.error_message
-  error_window.ok
+  error_window.close
   expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
 end
 

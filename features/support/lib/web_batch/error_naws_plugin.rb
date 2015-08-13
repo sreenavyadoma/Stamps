@@ -2,7 +2,7 @@ module Batch
   class NawsPluginError < Stamps::BrowserObject
     private
     def error_code_p
-      @browser.p :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p:nth-child(2)"
+      @browser.p :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
     end
 
     def ok_button
@@ -11,7 +11,19 @@ module Batch
 
     public
     def present?
-      browser_helper.present? error_code_p
+      err = ""
+      begin
+        err = browser_helper.text error_code_p
+      rescue
+        #ignore
+      end
+
+      present = err.include? "Error code: [1009]"
+      if present
+        log "NAWS Plugin Error detected.  Error code: [1009]"
+        log error_code_p
+      end
+      present
   end
 
     def print_error_message

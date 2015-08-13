@@ -125,14 +125,16 @@ Then /^Expect (\w+) Ship-From address was added$/ do |address|
 end
 
 Then /^Delete (\w+) Ship-From address$/ do |address|
-  if address.downcase.include? "random"
-    raise "Illegal State Exception:  @ship_from_address is nil" if @ship_from_address.nil?
-    batch.single_order_form.manage_shipping_addresses.delete @ship_from_address
-    #batch.single_order_form.manage_shipping_addresses.delete (address.downcase.include?"random")?@ship_from_address:address
-  elsif address.downcase.include? "all"
-    batch.single_order_form.manage_shipping_addresses.delete_all
-  else
-    raise "Parameter Exception:  Unsupported parameter entry #{address}"
+  begin
+    if address.downcase.include? "random"
+      raise "Illegal State Exception:  @ship_from_address is nil" if @ship_from_address.nil?
+      batch.single_order_form.manage_shipping_addresses.delete @ship_from_address
+      #batch.single_order_form.manage_shipping_addresses.delete (address.downcase.include?"random")?@ship_from_address:address
+    elsif address.downcase.include? "all"
+      batch.single_order_form.manage_shipping_addresses.delete_all
+    end
+  rescue
+    #This is a housekeeping task and should never fail.
   end
 end
 

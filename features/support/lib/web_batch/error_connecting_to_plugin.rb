@@ -29,13 +29,23 @@ module Batch
     end
 
     def present?
-      browser_helper.present? error_code
+      err = ""
+      begin
+        err = browser_helper.text error_code
+      rescue
+        #ignore
+      end
+
+      present = err.include? "Error code: [1010]"
+      if present
+        log "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
+        log error_code
+        log "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
+      end
+      present
     end
 
     def ok
-      log "----  Invalid Address Error  ----"
-      log browser_helper.text error_message_label
-      log "----  Invalid Address Error  ----"
       10.times {
         browser_helper.click ok_button, 'OK'
         break unless present?

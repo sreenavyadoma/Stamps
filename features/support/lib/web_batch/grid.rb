@@ -123,6 +123,24 @@ module Batch
   #
   class Grid < GridBase
     public
+
+    def grid_present_span
+      div = @browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]"
+      log "Order Grid is #{(browser_helper.present? div)?'present':'NOT present'}"
+      div
+    end
+
+    def wait_until_present *args
+      case args.length
+        when 0
+          browser_helper.wait_until_present grid_present_span
+        when 1
+          browser_helper.wait_until_present grid_present_span, args[0].to_i
+        else
+          raise "Illegal number of arguments for wait_until_present"
+      end
+    end
+
     def checked_rows
       log "Remembering checked orders..."
       checked_rows = Hash.new
