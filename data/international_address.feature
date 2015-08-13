@@ -33,7 +33,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Set International Ship To phone to random
     * Set International Ship To email to random
 
-  Scenario:  2 User Edits Customs Form - International Address
+  Scenario:  Field Behavior and Validation Rules
     * Add new order
     * Set Ship To country to Canada
     * Set International Ship To recipient to random
@@ -47,6 +47,8 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Expect Customs Form Add Item tooltip to be "Add another item"
     * Expect Customs Form Package Contents set to Merchandise
     * Expect Customs Form Non-Delivery Options set to Return to Sender
+    * Expect Customs Total Weight is 0
+    * Expect Customs Total Value is 0.00
 
     * Set Customs Form Package Contents to Merchandise
     * Expect Customs Form Package Contents set to Merchandise
@@ -70,16 +72,33 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Expect Customs Form Non-Delivery Options set to Treat as abandoned
 
     * Set Internal Transaction # to Not Required
+    * Expect Internal Transaction # is Not Required
     * Set Internal Transaction # to Required
+    * Expect Internal Transaction # is Required
 
-    * Add Customs Item 1 to description=random, qty=1, price=10, lbs=0, oz=1 origin=United States, tariff=10
+    * Add Customs Item 1 to description=random, qty=1, price=2500, lbs=0, oz=1 origin=United States, tariff=10
     * Add Customs Item 2 to description=random, qty=1, price=10, lbs=0, oz=1 origin=United States, tariff=10
     * Add Customs Item 3 to description=random, qty=1, price=10, lbs=0, oz=1 origin=United States, tariff=10
+
+
     * Expect Customs Total Weight is correct
     * Expect Customs Total Value is correct
+
+    * Expect Internal Transaction # is Required
     * Delete Customs Item 1
+    * Expect Internal Transaction # is Not Required
+
+    * Close Customs Information Modal
+    * Expect Customs Information Modal is present
+
     * Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     * Close Customs Information Modal
 
+
+  Scenario: User Edits Customs Form - International Address
+    * Add new order
+
+
   Scenario:  2 User Edits Customs Form - APO/FPO Address
     * Add new order
+
