@@ -24,8 +24,8 @@ When /^Set Email to (.*)$/ do |value|
   #end_step step
 end
 
-When /^Click Ship To Less button$/ do
-  log "Click Ship To Less button..."
+When /^Hide Ship To text area$/ do
+  log "Hide Ship To text area..."
   batch.single_order_form.less
   log "done."
   #end_step step

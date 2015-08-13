@@ -18,7 +18,7 @@ Feature: B-01603 Address Cleansing
     * Expect City to be San Francisco
     * Expect State to be CA
     * Set Ship-To address to random
-    * Click Ship To Less button
+    * Hide Ship To text area
     * Set Service to Priority Mail Package
     * Sign out
 

@@ -10,7 +10,7 @@ Feature: B-01624 Print Priority Mail Express Medium Flat Rate Box
     * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
-    * Click Ship To Less button
+    * Hide Ship To text area
     * Set Service to Priority Mail Express Medium Flat Rate Box
     * Print
     * Sign out

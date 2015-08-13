@@ -7,7 +7,7 @@ Feature: B-01726-3 Update Postage Balance After Each Print (Service Only)
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Click Ship To Less button
+    * Hide Ship To text area
     * Set Service to Priority Mail Package
     * Save Shipping Costs Data
     * Print

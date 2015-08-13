@@ -9,18 +9,18 @@ Feature: B-01633 Change the starting label position I will print from - Print Le
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Click Ship To Less button
+    * Hide Ship To text area
     * Set Service to Priority Mail Package
-    * Click Toolbar Print Button
+    * Open Print Modal
     * Select left side label
     * Expect left side label selected
     * Click Print Window - Print button
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Click Ship To Less button
+    * Hide Ship To text area
     * Set Service to Priority Mail Package
-    * Click Toolbar Print Button
+    * Open Print Modal
     * Expect left side label selected
     * Click Print Window - Print button
     * Sign out

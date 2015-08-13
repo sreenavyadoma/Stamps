@@ -39,14 +39,14 @@ Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
   end unless @print_window.nil?
 end
 
-When /^Click Toolbar Print Button$/ do
-  log "Click Toolbar Print Button"
+When /^Open Print Modal$/ do
+  log "Open Print Modal"
   @print_window = batch.toolbar.print
 end
 
 When /^Print$/ do
   if @print_window.nil? || !@print_window.present?
-    step 'Click Toolbar Print Button'
+    step 'Open Print Modal'
   end
   log "Print Window is Nil?  #{@print_window.nil?}"
 

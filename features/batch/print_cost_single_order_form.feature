@@ -14,7 +14,7 @@ Feature: B-01631 Printing total cost
     * Expect Total to be $0.00
 
     * Set Ship-To address to random
-    * Click Ship To Less button
+    * Hide Ship To text area
     * Set Ounces to 1
     * Set Service to Priority Mail Package
     * Set Insured Value to $10.00

@@ -10,7 +10,8 @@ Feature: B-01625  Print Sample Parcel Select Large Package
     * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
-    * Click Ship To Less button
+    * Hide Ship To text area
+    * Open Print Modal
     * Set Service to Parcel Select Large Package
     * Print Sample
     * Sign out

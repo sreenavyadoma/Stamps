@@ -10,7 +10,7 @@ Feature: B-01625  Print Sample Priority Mail Express Package
     * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
-    * Click Ship To Less button
+    * Hide Ship To text area
     * Set Service to Priority Mail Express Package
     * Print Sample
     * Sign out

@@ -36,7 +36,7 @@ Feature: Examples
 
 
         * Set Ship-To address to random
-        * Click Ship To Less button
+        * Hide Ship To text area
 
         * Set Ship-To address to
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
