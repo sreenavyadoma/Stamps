@@ -1,5 +1,5 @@
 module Batch
-  class ErrorStampsPluginIssue
+  class ErrorStampsPluginIssue < BrowserObject
     private
     def close_window_button
       img = @browser.img :css => "img[class='x-tool-img x-tool-close']"

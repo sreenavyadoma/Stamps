@@ -7,6 +7,9 @@ module Stamps
 
   def self.setup
     log "Begin..."
+
+    log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "gem list"} ]"
+
     if Stamps.browser.explorer?
       begin
         log "Executed Shell Command:  taskkill /im iexplore.exe /f [ #{system "taskkill /im iexplore.exe /f"} ]"

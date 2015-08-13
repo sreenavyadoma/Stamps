@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile default_profile
+default: --profile cuke_reports --profile regress_qacc_ff
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
 default_profile: --tags @print_costs --guess URL=qacc BROWSER=gc USR=auto40 PW=password1
@@ -12,9 +12,9 @@ bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto28 PW=password1
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto29 PW=password1
 bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto30 PW=password1
 
-regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto10 PW=password1
-regress_qacc_ff: --tags @regression --guess URL=qacc BROWSER=ff USR=auto11 PW=password1
-regress_qacc_ie: --tags @regression --guess URL=qacc BROWSER=ie USR=auto12 PW=password1
+regress_qacc_gc: --tags @regression --guess URL=staging BROWSER=gc USR=auto10 PW=password1
+regress_qacc_ff: --tags @regression --guess URL=staging BROWSER=ff USR=auto11 PW=password1
+regress_qacc_ie: --tags @regression --guess URL=staging BROWSER=ie USR=auto12 PW=password1
 
 printing_errors_qacc_gc: --tags @printing_error --gu`ess URL=qacc BROWSER=gc USR=auto31 PW=password1
 printing_errors_qacc_ie: --tags @printing_error --guess URL=qacc BROWSER=ie USR=auto32 PW=password1
