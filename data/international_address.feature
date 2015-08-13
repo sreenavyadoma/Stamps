@@ -5,44 +5,45 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * I am signed in as a batch shipper
 
   @international_address
-  Scenario:  1 User Enters International Address, User Changes Ship To Country, Ship To Country is NOT United States, ser Edits Component Int'l Address Fields, Field Attributes
+  Scenario:  1 User Enters International Address, User Changes Ship-To Country, Ship-To Country is NOT United States, ser Edits Component Int'l Address Fields, Field Attributes
     * Add new order
-    * Set Ship To country to Canada
+    * Set Ship-To country to Canada
     * Expect Tracking field is hidden
     * Expect Dimentions field is hidden
-    * Expect Ship To field is hidden
+    * Expect Ship-To field is hidden
 
     * Expect Edit Customs Form button is shown
-    * Expect International Ship To address fields are shown
-    * Expect International Ship To name field is constrained to 50 chars
-    * Expect International Ship To company field is constrained to 50 chars
-    * Expect International Ship To address 1 field is constrained to 50 chars
-    * Expect International Ship To address 2 field is constrained to 50 chars
-    * Expect International Ship To city field is constrained to 50 chars
-    * Expect International Ship To province field is constrained to 50 chars
-    * Expect International Ship To postal code field is constrained to 50 chars
-    * Expect International Ship To phone field is constrained to 50 chars
-    * Expect International Ship To email field is constrained to 50 chars
-    * Set International Ship To name to random
-    * Set International Ship To company to random
-    * Set International Ship To address 1 to random
-    * Set International Ship To address 2 to random
-    * Set International Ship To city to random
-    * Set International Ship To province to random
-    * Set International Ship To postal code to random
-    * Set International Ship To phone to random
-    * Set International Ship To email to random
+    * Expect International Ship-To fields are shown
+    * Expect International Ship-To Name Field Attributes are correct
+    * Expect International Ship-To Company Field Attributes are correct
+    * Expect International Ship-To Address 1 Field Attributes are correct
+    * Expect International Ship-To Address 2 Field Attributes are correct
+    * Expect International Ship-To City Field Attributes are correct
+    * Expect International Ship-To Province Field Attributes are correct
+    * Expect International Ship-To Postal Code Field Attributes are correct
+    * Expect International Ship-To Phone Field Attributes are correct
+    * Expect International Ship-To Email Field Attributes are correct
+
+    * Set International Ship-To Name to random
+    * Set International Ship-To Company to random
+    * Set International Ship-To Address 1 to random
+    * Set International Ship-To Address 2 to random
+    * Set International Ship-To City to random
+    * Set International Ship-To Province to random
+    * Set International Ship-To Postal Code to random
+    * Set International Ship-To Phone to random
+    * Set International Ship-To Email to random
 
   Scenario:  Field Behavior and Validation Rules
     * Add new order
-    * Set Ship To country to Canada
-    * Set International Ship To recipient to random
-    * Add Item 1. Quantity=2, ID=random, Description=random
-    * Add Item 2. Quantity=2, ID=random, Description=random
+    * Set Ship-To country to Canada
+    * Set International Ship-To recipient to random
+    * Add Item 1. Quantity 2, ID random, Description random
+    * Add Item 2. Quantity 3, ID random, Description random
 
     * Open Customs Information Modal
 
-    * Expect Customs Form checkbox for "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions" is shown
+    * Expect Customs Form Checkbox "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions" is shown
     * Expect Customs Form Add Item tooltip to be "Add another item"
     * Expect Customs Form Package Contents set to Merchandise
     * Expect Customs Form Non-Delivery Options set to Return to Sender
@@ -85,9 +86,9 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Set Internal Transaction # to Required
     * Expect Internal Transaction # is Required
 
-    * Add Customs Item 1 to description=random, qty=1, price=2500, lbs=0, oz=1 origin=United States, tariff=10
-    * Add Customs Item 2 to description=random, qty=1, price=10, lbs=0, oz=1 origin=United States, tariff=10
-    * Add Customs Item 3 to description=random, qty=1, price=10, lbs=0, oz=1 origin=United States, tariff=10
+    * Add Customs Form Item 1 to Description=random, Qty 1, Unit Price 2500, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    * Add Customs Form Item 2 to Description=random, Qty 1, Unit Price 10, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    * Add Customs Form Item 3 to Description=random, Qty 1, Unit Price 10, Weight(lbs) 0, Weight(oz) 1 Origin United States, tTariff 10
 
 
     * Expect Customs Form Weight(lbs) is correct

@@ -9,7 +9,7 @@ Feature: B-01743 Show Cost of Order in Ship Cost Grid
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Hide Ship To text area
+    * Hide Ship-To text area
     * Set Ounces to 1
     * Set Insured Value to $10.00
     * Set Service to Priority Mail Package

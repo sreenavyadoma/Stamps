@@ -1,11 +1,11 @@
 @regression
-Feature: System Calls GetRates When "Ship To Address" is changed
+Feature: System Calls GetRates When "Ship-To Address" is changed
 
   Background:
     Given I am signed in as a batch shipper
 
   @inline_service_rates
-  Scenario:  System Calls GetRates When "Ship To Address" is changed
+  Scenario:  System Calls GetRates When "Ship-To Address" is changed
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random

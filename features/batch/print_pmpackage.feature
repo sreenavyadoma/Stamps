@@ -11,7 +11,7 @@ Feature: B-01624 Print Priority Mail Package
     * Set Ship From to default
     * Set Ship-To address to random
     * Set Phone to (415) 123-5555
-    * Hide Ship To text area
+    * Hide Ship-To text area
     * Set Service to Priority Mail Package
     * Print
     * Sign out

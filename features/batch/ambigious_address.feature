@@ -18,7 +18,7 @@ Feature: B-01604 Orders with an ambiguous address
     * Expect City to be San Francisco
     * Expect State to be CA
     * Expect Zip Code to be 94102
-    * Hide Ship To text area
+    * Hide Ship-To text area
     * Set Service to Priority Mail Package
     * Sign out
 

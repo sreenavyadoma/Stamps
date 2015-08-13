@@ -7,7 +7,7 @@ Feature: B-01726-2 Update Postage Balance After Each Print (With Insurance)
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Hide Ship To text area
+    * Hide Ship-To text area
     * Set Service to Priority Mail Package
     * Set Insured Value to $10.00
     * Save Shipping Costs Data

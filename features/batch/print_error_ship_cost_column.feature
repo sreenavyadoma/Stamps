@@ -10,6 +10,6 @@ Feature:  B-01742 Show an Order's Most Recent GetRates(), CleanseAddress(), or C
     * Set Ship From to default
     * Set Ship-To address to B-01742 Invalid Address
     * Set Phone to 4157984533
-    * Hide Ship To text area
+    * Hide Ship-To text area
     * Print expecting error Invalid
     * Sign out
