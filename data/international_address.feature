@@ -37,7 +37,6 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Add new order
     * Set Ship To country to Canada
     * Set International Ship To recipient to random
-    * Set Ounces to 1
     * Add Item 1. Quantity=2, ID=random, Description=random
     * Add Item 2. Quantity=2, ID=random, Description=random
 
@@ -47,8 +46,18 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Expect Customs Form Add Item tooltip to be "Add another item"
     * Expect Customs Form Package Contents set to Merchandise
     * Expect Customs Form Non-Delivery Options set to Return to Sender
-    * Expect Customs Total Weight is 0
+    * Expect Customs Form Weight(lbs) is 0
     * Expect Customs Total Value is 0.00
+
+    * Set Customs Form Weight(lbs) to 0
+    * Increment Customs Form Weight(lbs) by 2
+    * Decrement Customs Form Weight(lbs) by 1
+    * Expect Customs Form Weight(lbs)is 1
+
+    * Set Customs Form Weight(oz) to 0
+    * Increment Customs Form Weight(oz) by 2
+    * Decrement Customs Form Weight(oz) by 1
+    * Expect Customs Form Weight(oz)is 1
 
     * Set Customs Form Package Contents to Merchandise
     * Expect Customs Form Package Contents set to Merchandise
@@ -81,7 +90,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Add Customs Item 3 to description=random, qty=1, price=10, lbs=0, oz=1 origin=United States, tariff=10
 
 
-    * Expect Customs Total Weight is correct
+    * Expect Customs Form Weight(lbs) is correct
     * Expect Customs Total Value is correct
 
     * Expect Internal Transaction # is Required
