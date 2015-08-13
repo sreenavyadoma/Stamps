@@ -1,5 +1,4 @@
-Feature: I want Batch and Print Postage to use the same design conventions] B-01682
-  I want Batch and Print Postage to use the same design conventions
+  Feature: I want Batch and Print Postage to use the same design conventions] B-01682
 
   Background:
   I am signed in as a Batch user
@@ -30,7 +29,7 @@ Feature: I want Batch and Print Postage to use the same design conventions] B-01
     * Go to header
     * Expect background color to be same as specified in section 4.0 of Style Guide
 
-  Scenario: Link on header
+  Scenario: Links on header
     * Go to header
     * Expect links on header to be same as specified in section 4.1 of Style Guide
 
