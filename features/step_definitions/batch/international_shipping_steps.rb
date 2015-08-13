@@ -46,23 +46,3 @@ end
 Given /^yyy$/ do
 
 end
-
-Given /^yyy$/ do
-
-end
-
-Given /^yyy$/ do
-
-end
-
-Given /^yyy$/ do
-
-end
-
-Given /^yyy$/ do
-
-end
-
-Given /^yyy$/ do
-
-end
