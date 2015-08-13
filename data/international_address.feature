@@ -36,7 +36,33 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Add new order
     * Set Ship To country to Canada
     * Set International Ship To recipient to random
+    * Set Ounces to 1
+    * Add Item 1. Quantity=2, ID=random, Description=random
+    * Add Item 2. Quantity=2, ID=random, Description=random
 
+    * Open Customs Information Modal
+
+    * Set Package Contents to Merchandise
+    * Expect Package Contents set to Merchandise
+    * Set Package Contents to Document
+    * Expect Package Contents set to Document
+    * Set Package Contents to Gift
+    * Expect Package Contents set to Gift
+    * Set Package Contents to Humanitarian Donation
+    * Expect Package Contents set to Humanitarian Donation
+    * Set Package Contents to Returned Goods
+    * Expect Package Contents set to Returned Goods
+    * Set Package Contents to Other
+    * Expect Package Contents set to Other
+
+    * Set Non-Delivery Options to Return to Sender
+    * Set Non-Delivery Options to Treat as abandoned
+
+    * Set Internal Transaction # to Not Required
+    * Set Internal Transaction # to Required
+
+    * Set More Info to random
+    * Set Customs Item 1 to
 
   Scenario:  2 User Edits Customs Form - APO/FPO Address
     * Add new order
