@@ -43,6 +43,66 @@ Given /^Expect Customs Form Checkbox \"(.+)\" is shown$/ do |checkbox|
 
 end
 
+Given /^Expect Customs Form Add Item tooltip to be "(.+)"$/ do |tooltip|
+
+end
+
+Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
+
+end
+
+Given /^Set Customs Form (.+) to (.+)$/ do |field, value|
+
+end
+
+Given /^Increment Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
+
+end
+
+Given /^Decrement Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
+
+end
+
+Given /^yyy$/ do
+
+end
+
+Given /^yyy$/ do
+
+end
+
+Given /^yyy$/ do
+
+end
+
+Given /^yyy$/ do
+
+end
+
+Given /^yyy$/ do
+
+end
+
+Given /^yyy$/ do
+
+end
+
+Given /^yyy$/ do
+
+end
+
+Given /^yyy$/ do
+
+end
+
+Given /^yyy$/ do
+
+end
+
+Given /^yyy$/ do
+
+end
+
 Given /^yyy$/ do
 
 end

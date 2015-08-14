@@ -7,7 +7,7 @@ Feature: B-01726-4 Update Postage Balance After Each Print (With Tracking)
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Hide Ship-To text area
+    * Collapse Ship-To Address
     * Set Service to Priority Mail Package
     * Set Tracking to USPS Tracking
     * Save Shipping Costs Data

@@ -9,13 +9,13 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Hide Ship-To text area
+    * Collapse Ship-To Address
     * Set Service to Priority Mail Package
 
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Hide Ship-To text area
+    * Collapse Ship-To Address
     * Set Service to Priority Mail Package
 
     * Edit row 1 on the order grid

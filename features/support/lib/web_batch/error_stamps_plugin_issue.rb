@@ -8,9 +8,9 @@ module Batch
     end
 
     def window_title
-      span = @browser.span :text => "Stamps.com Plugin Issue"
-      log "#{(browser_helper.present? span)?'Stamps.com Plugin Issue':''}"
-      span
+      div = @browser.div :text => "Stamps.com Plugin Issue"
+      log "#{(browser_helper.present? div)?'Stamps.com Plugin Issue':''}"
+      div
     end
 
     public

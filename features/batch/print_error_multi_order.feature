@@ -9,12 +9,12 @@ Feature:  B-01636 Multi Order Printing Error
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Hide Ship-To text area
+    * Collapse Ship-To Address
     * Set Pounds to 1
     * Set Ounces to 1
     * Add a second order
     * Set Ship-To address to random
-    * Hide Ship-To text area
+    * Collapse Ship-To Address
     * Set Pounds to 1
     * Set Ounces to 1
     * Set Service to Priority Mail Regional Rate Box A

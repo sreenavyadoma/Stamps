@@ -9,7 +9,7 @@ Feature: B-01633 Change the starting label position I will print from - Print on
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Hide Ship-To text area
+    * Collapse Ship-To Address
     * Set Service to Priority Mail Package
     * Open Print Modal
     * Select right side label
@@ -18,7 +18,7 @@ Feature: B-01633 Change the starting label position I will print from - Print on
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to random
-    * Hide Ship-To text area
+    * Collapse Ship-To Address
     * Set Service to Priority Mail Package
     * Open Print Modal
     * Expect right side label selected

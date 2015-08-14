@@ -10,7 +10,7 @@ Feature: B-01736 Set Correct Default for Tracking
     * Set Ship From to default
 
     * Set Ship-To address to random
-    * Hide Ship-To text area
+    * Collapse Ship-To Address
 
     * Set Service to Priority Mail Large/Thick Envelope
     * Expect Service to be Priority Mail Large/Thick Envelope
