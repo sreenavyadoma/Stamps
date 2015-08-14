@@ -102,11 +102,10 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
     * Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
     * Close Customs Information Modal
-
+    * Collapse Ship-To Address
 
   Scenario: User Edits Customs Form - International Address
     * Add new order
-
 
   Scenario:  2 User Edits Customs Form - APO/FPO Address
     * Add new order
