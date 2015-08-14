@@ -63,23 +63,23 @@ Given /^Decrement Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
 
 end
 
-Given /^yyy$/ do
+Given /^Add Customs Form Item (\d+) to Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin, tariff|
 
 end
 
-Given /^yyy$/ do
+Given /^Delete Customs Form Item (\d+)$/ do |item_number|
 
 end
 
-Given /^yyy$/ do
+Given /^Close Customs Information Modal$/ do
 
 end
 
-Given /^yyy$/ do
+Given /^Expect Customs Information Modal to be present$/ do
 
 end
 
-Given /^yyy$/ do
+Given /^Check Customs Form \"(.+)\"$/ do |contract| #I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
 
 end
 
