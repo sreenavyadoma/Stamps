@@ -92,8 +92,8 @@ module Batch
   class SingleOrderForm < SingleOrderFormBase
 
     public
-    def initialize(browser)
-      super(browser)
+    def initialize browser
+      super browser
       @services ||= Hash.new
     end
 

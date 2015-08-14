@@ -23,8 +23,8 @@ module Batch
 
   class PrintWindow < Stamps::BrowserObject
     include Batch::PrintWindowBase
-    def initialize(browser, *args)
-      super(browser)
+    def initialize browser, *args
+      super browser
       print_options *args
     end
 

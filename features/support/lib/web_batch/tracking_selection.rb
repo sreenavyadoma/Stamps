@@ -1,7 +1,7 @@
 module Batch
   class TrackingSelection < BrowserObject
     def initialize(browser, selection)
-      super(browser)
+      super browser
       @selection = selection
       self
     end

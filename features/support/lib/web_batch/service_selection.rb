@@ -1,8 +1,8 @@
 module Batch
   class ServiceSelection < BrowserObject
-    def initialize(browser, selection)
+    def initialize browser, selection
       #select the service and get service cost
-      super(browser)
+      super browser
       @selection = selection
       self
     end
