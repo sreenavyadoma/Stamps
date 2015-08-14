@@ -4,8 +4,6 @@ class BuyPostage < BrowserObject
     @browser.span :id => "sdc-purchasewin-purchasebtn-btnInnerEl"
   end
 
-
-
   def ok_button
     span_array = @browser.spans :text => 'OK'
     span_array.last

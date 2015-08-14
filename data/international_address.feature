@@ -8,12 +8,11 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
   Scenario:  1 User Enters International Address, User Changes Ship-To Country, Ship-To Country is NOT United States, ser Edits Component Int'l Address Fields, Field Attributes
     * Add new order
     * Set Ship-To country to Canada
-    * Expect Tracking field is hidden
-    * Expect Dimentions field is hidden
-    * Expect Ship-To field is hidden
+    * Expect Customs  Edit Form button is visible
+    * Expect Single Order Form Tracking field is hidden
+    * Expect Single Order Form Dimensions field is hidden
+    * Expect Single Order Form Ship To field is hidden
 
-    * Expect Edit Customs Form button is shown
-    * Expect International Ship-To fields are shown
     * Expect International Ship-To Name Field Attributes are correct
     * Expect International Ship-To Company Field Attributes are correct
     * Expect International Ship-To Address 1 Field Attributes are correct
@@ -23,6 +22,27 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Expect International Ship-To Postal Code Field Attributes are correct
     * Expect International Ship-To Phone Field Attributes are correct
     * Expect International Ship-To Email Field Attributes are correct
+
+    * Open Customs Form
+
+    * Expect Customs Form field Package Contents behavior is correct
+    * Expect Customs Form field Non-Delivery Options behavior is correct
+    * Expect Customs Form field Internal Transaction # behavior is correct
+    * Expect Customs Form field ITN# behavior is correct
+    * Expect Customs Form field More Info behavior is correct
+    * Expect Customs Form field License # behavior is correct
+    * Expect Customs Form field Certificate # behavior is correct
+    * Expect Customs Form field Invoice # behavior is correct
+    * Expect Customs Form field Privacy Act Statement Checkbox behavior is correct
+    * Expect Customs Form field Item Description behavior is correct
+    * Expect Customs Form field Qty. behavior is correct
+    * Expect Customs Form field Unit Price behavior is correct
+    * Expect Customs Form field Unit Weight (lbs.) behavior is correct
+    * Expect Customs Form field Unit Weight (oz.) behavior is correct
+    * Expect Customs Form field HS Tariff behavior is correct
+    * Expect Customs Form field Origin behavior is correct
+    * Expect Customs Form field Total Weight behavior is correct
+    * Expect Customs Form field Total Value behavior is correct
 
     * Set International Ship-To Name to random
     * Set International Ship-To Company to random
@@ -41,9 +61,9 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Add Item 1. Quantity 2, ID random, Description random
     * Add Item 2. Quantity 3, ID random, Description random
 
-    * Open Customs Information Modal
+    * Open Customs Form
 
-    * Expect Customs Form Checkbox "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions" is shown
+    * Expect Customs Form Checkbox "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions" is visible
     * Expect Customs Form Add Item tooltip to be "Add another item"
     * Expect Customs Form Package Contents to be Merchandise
     * Expect Customs Form Non-Delivery Options to be Return to Sender
@@ -94,6 +114,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Expect Customs Form Total Value to be correct
 
     * Expect Customs Form Internal Transaction # to be Required
+    * Delete Customs Form Item 2
     * Delete Customs Form Item 1
     * Expect Customs Form Internal Transaction # to be Not Required
 
@@ -104,9 +125,21 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Close Customs Information Modal
     * Collapse Ship-To Address
 
-  Scenario: User Edits Customs Form - International Address
+  Scenario: User Prints International Address
     * Add new order
 
-  Scenario:  2 User Edits Customs Form - APO/FPO Address
+  Scenario:  User Prints APO/FPO Address
+    * Add new order
+    * Check Customs Form "I agree to the USPS Privacy Act Statement"
+
+  Scenario: Print single or multiple at once CN22 and CP72 labels (for both int'l and APO/FPO/etc... addresses)
     * Add new order
 
+  Scenario: Print mix of domestic and int'l/APO/FPO/etc... orders in one print group.
+    * Add new order
+
+  Scenario: Weight:  If Total Weight > Order Weight: Show error icon with the following hover over content: “The itemized weight exceeds the package weight.  Please verify that the package weight is accurate.”
+    * Add new order
+
+  Scenario: Total Value:  If Total Value > $400 AND Int’l Service is Any First-Class Mail International service or Priority Mail International Flat Rate Envelope, Padded Flat Rate Envelope, Legal Flat Rate Envelope, and Small Flat Rate Box: Show Warning icon with the following hover over content: “Total value cannot exceed $400 for this USPS service.  Consider using a different service that does not have limits on the value of the contents.”
+    * Add new order

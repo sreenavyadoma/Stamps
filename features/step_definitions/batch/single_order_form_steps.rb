@@ -81,7 +81,7 @@ And /^Set Insured Value to \$([\d*\.?\d*]*)$/ do |value|
 end
 
 And /^Set Ship From to (\w+)$/ do |value|
-  batch.single_order_form.ship_from_default
+  batch.single_order_form.ship_from value
 end
 
 And /^Set Ship-To address to$/ do |table|

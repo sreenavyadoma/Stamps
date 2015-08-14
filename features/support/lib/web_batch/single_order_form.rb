@@ -263,29 +263,29 @@ module Batch
       @browser.div :text => 'Manage Shipping Addresses...'
     end
 
-    def ship_from_default
-      ship_from_dropdown.when_present.click
-      ship_from_default_selection.click
-      click_item_label
-    end
-
-    def ship_from_selection(selection)
+    def ship_from_selection selection
       @browser.div :text => selection
     end
 
-    def ship_from(selection)
-      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
-      5.times {
-        begin
-          break if @manage_shipping_adddress.present?
-          browser_helper.click ship_from_dropdown, "ship_from_selection.[#{selection}]" unless browser_helper.present?  ship_from_selection(selection)
-          browser_helper.click ship_from_selection(selection), selection
-        rescue
-          #ignore
-        end
+    def ship_from selection
+      if selection.downcase.eql? "default"
+        ship_from_dropdown.when_present.click
+        ship_from_default_selection.click
         click_item_label
-      }
-      @manage_shipping_adddress
+      else
+        @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+        5.times {
+          begin
+            break if @manage_shipping_adddress.present?
+            browser_helper.click ship_from_dropdown, "ship_from_selection.[#{selection}]" unless browser_helper.present?  ship_from_selection(selection)
+            browser_helper.click ship_from_selection(selection), selection
+          rescue
+            #ignore
+          end
+          click_item_label
+        }
+        @manage_shipping_adddress
+      end
     end
 
     def manage_shipping_address

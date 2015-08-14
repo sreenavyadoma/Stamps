@@ -3,23 +3,11 @@ Given /^Set Ship-To country to (.*)$/ do |xxx|
 
 end
 
-Given /^Expect Tracking field is hidden$/ do
+Given /^Expect Single Order Form ([\w -]+) field is hidden$/ do |field_name|
 
 end
 
-Given /^Expect Dimentions field is hidden$/ do
-
-end
-
-Given /^Expect Ship-To field is hidden$/ do
-
-end
-
-Given /^Expect Edit Customs Form button is shown$/ do
-
-end
-
-Given /^Expect International Ship-To fields are shown$/ do
+Given /^Expect Customs  Edit Form button is visible$/ do
 
 end
 
@@ -35,11 +23,11 @@ Given /^Add Item (\d+). Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |
 
 end
 
-Given /^Open Customs Information Modal$/ do
+Given /^Open Customs Form$/ do
 
 end
 
-Given /^Expect Customs Form Checkbox \"(.+)\" is shown$/ do |checkbox|
+Given /^Expect Customs Form Checkbox \"(.+)\" is visible$/ do |checkbox|
 
 end
 
@@ -83,23 +71,7 @@ Given /^Check Customs Form \"(.+)\"$/ do |contract| #I agree to the USPS Privacy
 
 end
 
-Given /^yyy$/ do
-
-end
-
-Given /^yyy$/ do
-
-end
-
-Given /^yyy$/ do
-
-end
-
-Given /^yyy$/ do
-
-end
-
-Given /^yyy$/ do
+Given /^Expect Customs Form field (.+) behavior is correct$/ do |field|
 
 end
 
