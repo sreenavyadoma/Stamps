@@ -61,14 +61,14 @@ end
 Then /^Expect Show Unavailable Services Unchecked$/ do
 
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(2)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(1)
   log_expectation_eql "Show Unavailable Services", false, actual
   actual.should eql false
 end
 
 Then /^Expect Dont Show Print Confirmation Dialog Unchecked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(6)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(2)
   log_expectation_eql "Dont Show Print Confirmation Dialog", false, actual
   actual.should eql false
 
@@ -76,7 +76,7 @@ end
 
 Then /^Expect Save Delivery Addresses Unchecked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(8)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(3)
   log_expectation_eql "Save Delivery Addresses", false, actual
   actual.should eql false
 
@@ -84,7 +84,7 @@ end
 
 Then /^Expect Email Shipment Notifications Unchecked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(12)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(4)
   log_expectation_eql "Email Shipment Notifications", false, actual
   actual.should eql false
 
@@ -92,7 +92,7 @@ end
 
 Then /^Expect Email Shipment Deliveries Unchecked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(13)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(5)
   log_expectation_eql "Email Shipment Deliveries", false, actual
   actual.should eql false
 
@@ -101,7 +101,7 @@ end
 Then /^Expect Show Unavailable Services Checked$/ do
 
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(2)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(1)
   log_expectation_eql "Show Unavailable Services", true, actual
   actual.should eql true
 
@@ -109,7 +109,7 @@ end
 
 Then /^Expect Dont Show Print Confirmation Dialog Checked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(6)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(2)
   log_expectation_eql "Dont Show Print Confirmation Dialog", true, actual
   actual.should eql true
 
@@ -117,7 +117,7 @@ end
 
 Then /^Expect Save Delivery Addresses Checked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(8)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(3)
   log_expectation_eql "Save Delivery Addresses", true, actual
   actual.should eql true
 
@@ -125,7 +125,7 @@ end
 
 Then /^Expect Email Shipment Notifications Checked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(12)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(4)
   log_expectation_eql "Email Shipment Notifications", true, actual
   actual.should eql true
 
@@ -133,7 +133,7 @@ end
 
 Then /^Expect Email Shipment Deliveries Checked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(13)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(5)
   log_expectation_eql "Email Shipment Deliveries", true, actual
   actual.should eql true
 
@@ -187,6 +187,6 @@ Then /^Expect Postage Balance Notification Amount to be (.*)$/ do |amount|
 end
 
 Then /^Save Settings changes$/ do
-  log "Save settings changes..."
+  log "Saving settings changes..."
   batch.toolbar.settings_modal.save_changes
 end

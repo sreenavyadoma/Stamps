@@ -3,52 +3,68 @@ module Batch
   class SettingsModal < BrowserObject
     private
 
+    def checkbox_status_array
+      @browser.divs :css => 'div[class*=x-form-type-checkbox]'
+    end
+
+    def checkbox_array
+      @browser.inputs :css => 'input[id^=checkbox]'
+    end
+
+    def drop_down_arrow_array
+      @browser.divs :css => 'div[id*=trigger-picker]'
+    end
+
+    def selection_array
+      @browser.inputs :css => 'input[id*=combobox][class*=x-form-text-default]'
+    end
+
     def save_button
       @browser.span(:text => 'Save')
     end
 
     def unavailable_services_checkbox
-      @browser.input :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>input"
+      checkbox_array[1]
     end
 
     def print_confirm_dialog_checkbox
-      @browser.input :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>input"
+      checkbox_array[2]
     end
 
     def save_contacts_checkbox
-      @browser.input :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>input"
+      checkbox_array[3]
     end
 
     def shipment_email_checkbox
-      @browser.input :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(12)>div>div>div>div>div>div>div>input"
+      checkbox_array[4]
     end
 
     def shipment_delivery_checkbox
-      @browser.input :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(13)>div>div>div>div>div>div>div>input"
+      checkbox_array[5]
     end
 
     def logoff_time_combo
-      @browser.div :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div:nth-child(2)"
+      drop_down_arrow_array[4]
     end
 
     def postdate_time_combo
-      @browser.div :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div:nth-child(2)"
+      drop_down_arrow_array[5]
     end
 
     def balance_notification_combo
-      @browser.div :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div:nth-child(2)"
+      drop_down_arrow_array[6]
     end
 
     def logoff_time
-      @browser.input :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div:nth-child(1)>input"
+      selection_array[1]
     end
 
     def postdate_time
-      @browser.input :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div:nth-child(1)>input"
+      selection_array[2]
     end
 
     def balance_notification_amount
-      @browser.input :css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div:nth-child(1)>input"
+      selection_array[3]
     end
 
     #PUBLIC
@@ -86,53 +102,53 @@ module Batch
     end
 
     def check_unavail_services
-      check_settings(2,unavailable_services_checkbox)
+      check_settings(1,unavailable_services_checkbox)
       self
     end
 
     def check_print_confirm_dialog
-      check_settings(6,print_confirm_dialog_checkbox)
+      check_settings(2,print_confirm_dialog_checkbox)
       self
     end
 
     def check_save_contacts
-      check_settings(8,save_contacts_checkbox)
+      check_settings(3,save_contacts_checkbox)
       self
     end
 
     def check_shipment_email
-      check_settings(12,shipment_email_checkbox)
+      check_settings(4,shipment_email_checkbox)
       self
     end
 
     def check_shipment_delivery
-      check_settings(13,shipment_delivery_checkbox)
+      check_settings(5,shipment_delivery_checkbox)
       self
     end
 
 
     def uncheck_unavail_services
-      uncheck_settings(2,unavailable_services_checkbox)
+      uncheck_settings(1,unavailable_services_checkbox)
       self
     end
 
     def uncheck_print_confirm_dialog
-      uncheck_settings(6,print_confirm_dialog_checkbox)
+      uncheck_settings(2,print_confirm_dialog_checkbox)
       self
     end
 
     def uncheck_save_contacts
-      uncheck_settings(8,save_contacts_checkbox)
+      uncheck_settings(3,save_contacts_checkbox)
       self
     end
 
     def uncheck_shipment_email
-      uncheck_settings(12,shipment_email_checkbox)
+      uncheck_settings(4,shipment_email_checkbox)
       self
     end
 
     def uncheck_shipment_delivery
-      uncheck_settings(13,shipment_delivery_checkbox)
+      uncheck_settings(5,shipment_delivery_checkbox)
       self
     end
 
@@ -167,7 +183,10 @@ module Batch
     end
 
     def box_checked?(box_row)
-      @browser.div(:css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(#{box_row})>div>div>div>div>div").attribute_value("class").include? 'x-form-cb-checked'
+
+      checkbox_status_array[box_row].attribute_value("class").include? 'x-form-cb-checked'
+
+      #@browser.div(:css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(#{box_row})>div>div>div>div>div").attribute_value("class").include? 'x-form-cb-checked'
 
     end
 
