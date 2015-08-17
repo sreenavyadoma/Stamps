@@ -24,7 +24,12 @@ Feature:  B-01636 Prompt User to Remove Orders in Error from Print Group
     * Collapse Ship-To Address
     * Set Pounds to 1
     * Set Ounces to 1
-    * Add a second order
+
+    * Add new order
+    * Set Ship From to default
+    * Set Ship-To address to random
+    * Add new order
+    * Set Ship From to default
     * Set Ship-To address to random
     * Collapse Ship-To Address
     * Set Pounds to 1

@@ -8,7 +8,6 @@ module Batch
     end
 
     def window_title
-      #div[class*=x-window-header-title]>div[id^=title-][class*=x-title-item]
       order_errors = @browser.div :text => 'Order Errors'
       order_error = @browser.div :text => 'Order Error'
       error_window_title = (browser_helper.present?order_errors)?order_errors:(browser_helper.present?order_error)?order_error:nil
