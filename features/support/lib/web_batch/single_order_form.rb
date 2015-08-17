@@ -211,7 +211,7 @@ module Batch
       self.height = data[:height]
     end
 
-    def ship_to *args
+    def ship_to_address *args
       case args.length
         when 0
           expand_ship_to

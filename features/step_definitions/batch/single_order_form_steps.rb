@@ -1,12 +1,12 @@
 
 When /^Set Ship-To address to (.*)$/ do |address|
   log "Set Ship-To address to \"#{address}\""
-  batch.single_order_form.ship_to randomize_ship_to(address)
+  batch.single_order_form.ship_to_address randomize_ship_to(address)
 end
 
 When /^Change Ship-To Address to (.*)$/ do |value|
   log "Change Ship-To Address to \"#{value}\""
-  batch.single_order_form.ship_to log_param "Address", value
+  batch.single_order_form.ship_to_address log_param "Address", value
 end
 
 When /^Set Phone to (.*)$/ do |value|
@@ -85,7 +85,7 @@ And /^Set Ship From to (\w+)$/ do |value|
 end
 
 And /^Set Ship-To address to$/ do |table|
-  @ambiguous_address_module = batch.single_order_form.ship_to log_hash_param table.hashes.first
+  @ambiguous_address_module = batch.single_order_form.ship_to_address log_hash_param table.hashes.first
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|

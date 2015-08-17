@@ -74,7 +74,7 @@ Then /^Print expecting error (.*)$/ do |error_message|
   actual_error_message = order_error.error_message
   order_error.ok
   log "Print expecting error \"#{error_message}\".   \nActual Error Message:  #{actual_error_message}. #{(actual_error_message.include?error_message)?'Passed':'Failed'}"
-  actual_error_message.should eql error_message
+  actual_error_message.should include error_message
 end
 
 Then /^Print expecting (.*) selected orders have errors and cannot be printed. To print the remaining orders, click Continue.$/ do |error_message|
