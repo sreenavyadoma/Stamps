@@ -49,7 +49,7 @@ Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is succe
   end
 end
 
-Then /^Expect Printing cost is deducted from customer balance$/ do
+Then /^Expect Printing cost is deducted from customer balance if there were no printing errors$/ do
   log "Printing Error:  #{@printing_error}"
   log_param "Old Balance", @old_balance
   if @printing_error

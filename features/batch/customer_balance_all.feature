@@ -13,5 +13,6 @@ Feature: B-01726-1 Update Postage Balance After Each Print (With Service, Insura
     * Set Tracking to USPS Tracking
     * Save Shipping Costs Data
     * Print
-    * Expect Printing cost is deducted from customer balance
+    * Expect Printing cost is deducted from customer balance if there were no printing errors
     * Sign out
+
