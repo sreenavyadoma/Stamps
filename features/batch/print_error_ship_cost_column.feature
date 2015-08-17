@@ -9,7 +9,8 @@ Feature:  B-01742 Show an Order's Most Recent GetRates(), CleanseAddress(), or C
     * Add new order
     * Set Ship From to default
     * Set Ship-To address to B-01742 Invalid Address
-    * Set Phone to 4157984533
     * Collapse Ship-To Address
     * Print expecting error Invalid
+    * Set Ship-To address to random
+    * Set Service to Priority Mail Large Package
     * Sign out
