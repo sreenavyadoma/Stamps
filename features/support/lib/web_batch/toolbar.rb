@@ -5,6 +5,10 @@ module Batch
   class Toolbar < BrowserObject
     private
 
+    def settings_button
+      @browser.span :css => 'span[class*=sdc-btn-settings]'
+    end
+
     def print_button
       button1 = @browser.elements(:text => 'Print').first
       button1_present = browser_helper.present? button1
@@ -111,6 +115,15 @@ module Batch
 
     def present?
       browser_helper.present? add_button
+    end
+
+    def settings_modal
+      SettingsModal.new(@browser)
+    end
+
+    def open_settings
+      sleep 1
+      browser_helper.click settings_button, 'Settings'
     end
   end
 end
