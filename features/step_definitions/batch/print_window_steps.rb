@@ -72,7 +72,7 @@ end
 Then /^Print expecting error (.*)$/ do |error_message|
   order_error = batch.toolbar.print_expecting_error
   actual_error_message = order_error.error_message
-  order_error.close
+  order_error.ok
   log "Print expecting error \"#{error_message}\".   \nActual Error Message:  #{actual_error_message}. #{(actual_error_message.include?error_message)?'Passed':'Failed'}"
   actual_error_message.should eql error_message
 end

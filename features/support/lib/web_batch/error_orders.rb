@@ -22,7 +22,18 @@ module Batch
       @browser.span :text => "Cancel"
     end
 
+    def ok_button
+      @browser.span :text => "OK"
+    end
+
     public
+
+    def ok
+      5.times{
+        browser_helper.click ok_button, "ok"
+        break if browser_helper.present? ok_button
+      }
+    end
 
     def error_message
       browser_helper.text error_message_label
@@ -52,6 +63,13 @@ module Batch
         rescue
           #ignore
         end
+      }
+    end
+
+    def close_window
+      5.times{
+        browser_helper.click window_title
+        brea
       }
     end
 
