@@ -77,6 +77,7 @@ module Batch
       }
       @delete_shipping_address.delete
       @delete_shipping_address.close if @delete_shipping_address.present?
+      self
     end
 
     def add(*args)

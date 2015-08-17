@@ -139,7 +139,7 @@ Then /^Delete (\w+) Ship-From address$/ do |address|
 end
 
 Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
-  batch.single_order_form.manage_shipping_addresses.delete_row row
+  batch.single_order_form.manage_shipping_addresses.delete_row(row).close_window
 end
 
 Then /^Delete all Ship-From addresses and fail test if delete fails$/ do
