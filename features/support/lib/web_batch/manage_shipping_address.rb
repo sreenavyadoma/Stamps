@@ -199,6 +199,7 @@ module Batch
     def close_window
       begin
         10.times{
+          sleep(1)
           break unless browser_helper.present? close_button
           browser_helper.click close_button, "Close"
         }

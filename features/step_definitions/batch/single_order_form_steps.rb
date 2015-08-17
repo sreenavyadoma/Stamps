@@ -151,7 +151,7 @@ Then /^Set Ship From to Manage Shipping Addresses$/ do
 end
 
 Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
-  batch.single_order_form.manage_shipping_addresses.edit_address(name, company, city,  new_address.hashes.first).close
+  batch.single_order_form.manage_shipping_addresses.edit_address name, company, city,  new_address.hashes.first
 end
 Then /^Expect Order Status to be ([\w ]+)$/ do |expected_value|
   actual_value = batch.single_order_form.order_status
