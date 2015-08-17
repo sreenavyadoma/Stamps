@@ -226,10 +226,10 @@ module Batch
               self.email = address["email"]
             when String
               browser_helper.set_text self.address_textbox, address, 'Address'
+              AddressNotFound.new(@browser)
             else
               raise "Illegal Ship-to argument"
           end
-          AddressNotFound.new(@browser)
         else
           raise "Wrong number of arguments for ship_to"
       end

@@ -1,4 +1,5 @@
 url_prefix:
+  satya: svarma-win7.corp
   qacc:  printext.qacc
   qacc3: printbatch100.qacc
   qacc2: printext.qacc
