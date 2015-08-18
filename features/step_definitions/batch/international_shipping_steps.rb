@@ -1,6 +1,6 @@
 
-Given /^Set Ship-To country to (.*)$/ do |xxx|
-
+Given /^Set Ship-To country to (.*)$/ do |country|
+  batch.single_order_form.ship_to_country country
 end
 
 Given /^Expect Single Order Form ([\w -]+) field is hidden$/ do |field_name|
