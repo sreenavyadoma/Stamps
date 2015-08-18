@@ -18,4 +18,8 @@ module Stamps
     string.gsub(/\A[#{chars}]+|[#{chars}]+\z/, "")
   end
 
+  def browser_helper
+    BrowserHelper.instance
+  end
+
 end

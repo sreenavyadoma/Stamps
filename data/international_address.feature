@@ -8,7 +8,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
   Scenario:  1 User Enters International Address, User Changes Ship-To Country, Ship-To Country is NOT United States, ser Edits Component Int'l Address Fields, Field Attributes
     * Add new order
     * Set Ship-To country to Canada
-    * Expect Customs  Edit Form button is visible
+    * Expect Single Order Form International Address fields are visible
     * Expect Single Order Form Tracking field is hidden
     * Expect Single Order Form Dimensions field is hidden
     * Expect Single Order Form Ship To field is hidden
@@ -138,8 +138,8 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
   Scenario: Print mix of domestic and int'l/APO/FPO/etc... orders in one print group.
     * Add new order
 
-  Scenario: Weight:  If Total Weight > Order Weight: Show error icon with the following hover over content: “The itemized weight exceeds the package weight.  Please verify that the package weight is accurate.”
+  Scenario: Weight:  If Total Weight > Order Weight: Show error icon with the following hover over content: ï¿½The itemized weight exceeds the package weight.  Please verify that the package weight is accurate.ï¿½
     * Add new order
 
-  Scenario: Total Value:  If Total Value > $400 AND Int’l Service is Any First-Class Mail International service or Priority Mail International Flat Rate Envelope, Padded Flat Rate Envelope, Legal Flat Rate Envelope, and Small Flat Rate Box: Show Warning icon with the following hover over content: “Total value cannot exceed $400 for this USPS service.  Consider using a different service that does not have limits on the value of the contents.”
+  Scenario: Total Value:  If Total Value > $400 AND Intï¿½l Service is Any First-Class Mail International service or Priority Mail International Flat Rate Envelope, Padded Flat Rate Envelope, Legal Flat Rate Envelope, and Small Flat Rate Box: Show Warning icon with the following hover over content: ï¿½Total value cannot exceed $400 for this USPS service.  Consider using a different service that does not have limits on the value of the contents.ï¿½
     * Add new order

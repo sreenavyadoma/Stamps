@@ -4,10 +4,11 @@ Given /^Set Ship-To country to (.*)$/ do |country|
 end
 
 Given /^Expect Single Order Form ([\w -]+) field is hidden$/ do |field_name|
-
+  batch.single_order_form.international_address
 end
 
-Given /^Expect Customs  Edit Form button is visible$/ do
+Given /^Expect Single Order Form International Address fields are visible$/ do
+  #browser_helper
 
 end
 

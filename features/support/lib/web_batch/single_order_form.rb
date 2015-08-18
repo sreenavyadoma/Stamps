@@ -98,8 +98,16 @@ module Batch
       @services ||= Hash.new
     end
 
+    def customs_edit_form_button
+
+    end
+
     def ship_to_country country
       browser_helper.set_text country_textbox, "country"
+    end
+
+    def international_address
+      InternationalAddress.new @browser
     end
 
     def service(selection)
