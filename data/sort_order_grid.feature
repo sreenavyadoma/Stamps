@@ -135,7 +135,7 @@ Feature:  B-01774 - Sort Order Grid
     * Expect Country column sorted in descending order
 
 
-  Scenario: As a batch shipper, I want to be able to sort the orders grid by clicking on each column header
+  Scenario: As a batch shipper, I want to be able to sort the orders grid by clicking on the arrows in each column header
 
     * Click ascending arrow on Ship Cost column header
     * Expect Ship Cost column sorted in ascending order
