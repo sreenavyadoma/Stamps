@@ -137,127 +137,127 @@ Feature:  B-01774 - Sort Order Grid
 
   Scenario: As a batch shipper, I want to be able to sort the orders grid by clicking on each column header
 
-    * Sort by select - Ship Cost ascending
-    * Expect Ship Cost sorted - ascending
-    * Sort by select - Ship Cost descending
-    * Expect Ship Cost sorted - descending
+    * Click ascending arrow on Ship Cost column header
+    * Expect Ship Cost column sorted in ascending order
+    * Click descending arrow on Ship Cost column header
+    * Expect Ship Cost column sorted in descending order
 
-    * Sort by select - Age ascending
-    * Expect Age sorted - ascending
-    * Sort by select - Age descending
-    * Expect Age sorted - ascending
+    * Click ascending arrow on Age column header
+    * Expect Age column sorted in ascending order
+    * Click descending arrow on Age column header
+    * Expect Age column sorted in descending order
 
-    * Sort by select - Order ID ascending
-    * Expect Order ID sorted - ascending
-    * Sort by select - Order ID descending
-    * Expect Order ID sorted - descending
+    * Click ascending arrow on Order ID column header
+    * Expect Order ID column sorted in ascending order
+    * Click descending arrow on Order ID column header
+    * Expect Order ID column sorted in descending order
 
-    * Sort by select - Order Date ascending
-    * Expect Order Date sorted - ascending
-    * Sort by select - Order Date descending
-    * Expect Order Date sorted - ascending
+    * Click ascending arrow on Order Date column header
+    * Expect Order Date column sorted in ascending order
+    * Click descending arrow on Order Date column header
+    * Expect Order Date column sorted in descending order
 
-    * Sort by select - Recipient ascending
-    * Expect Recipient sorted - ascending
-    * Sort by select - Recipient descending
-    * Expect Recipient sorted - descending
+    * Click ascending arrow on Recipient column header
+    * Expect Recipient column sorted in ascending order
+    * Click descending arrow on Recipient column header
+    * Expect Recipient column sorted in descending order
 
-    * Sort by select - Address ascending
-    * Expect Address sorted - ascending
-    * Sort by select - Address descending
-    * Expect Address sorted - ascending
+    * Click ascending arrow on Address column header
+    * Expect Address column sorted in ascending order
+    * Click descending arrow on Address column header
+    * Expect Address column sorted in descending order
 
-    * Sort by select - City ascending
-    * Expect City sorted - ascending
-    * Sort by select - City descending
-    * Expect City sorted - descending
+    * Click ascending arrow on City column header
+    * Expect City column sorted in ascending order
+    * Click descending arrow on City column header
+    * Expect City column sorted in descending order
 
-    * Sort by select - State ascending
-    * Expect State sorted - ascending
-    * Sort by select - State descending
-    * Expect State sorted - ascending
+    * Click ascending arrow on State column header
+    * Expect State column sorted in ascending order
+    * Click descending arrow on State column header
+    * Expect State column sorted in descending order
 
-    * Sort by select - Zip ascending
-    * Expect Zip sorted - ascending
-    * Sort by select - Zip descending
-    * Expect Zip sorted - descending
+    * Click ascending arrow on Zip column header
+    * Expect Zip column sorted in ascending order
+    * Click descending arrow on Zip column header
+    * Expect Zip column sorted in descending order
 
-    * Sort by select - Phone ascending
-    * Expect Phone sorted - ascending
-    * Sort by select - Phone descending
-    * Expect Phone sorted - ascending
+    * Click ascending arrow on Phone column header
+    * Expect Phone column sorted in ascending order
+    * Click descending arrow on Phone column header
+    * Expect Phone column sorted in descending order
 
-    * Sort by select - Email ascending
-    * Expect Email sorted - ascending
-    * Sort by select - Email descending
-    * Expect Email sorted - descending
+    * Click ascending arrow on Email column header
+    * Expect Email column sorted in ascending order
+    * Click descending arrow on Email column header
+    * Expect Email column sorted in descending order
 
-    * Sort by select - Qty ascending
-    * Expect Qty sorted - ascending
-    * Sort by select - Qty descending
-    * Expect Qty sorted - ascending
+    * Click ascending arrow on Qty column header
+    * Expect Qty column sorted in ascending order
+    * Click descending arrow on Qty column header
+    * Expect Qty column sorted in descending order
 
-    * Sort by select - Item SKU ascending
-    * Expect Item SKU sorted - ascending
-    * Sort by select - Item SKU descending
-    * Expect Item SKU sorted - descending
+    * Click ascending arrow on Item SKU column header
+    * Expect Item SKU column sorted in ascending order
+    * Click descending arrow on Item SKU column header
+    * Expect Item SKU column sorted in descending order
 
-    * Sort by select - Item Name ascending
-    * Expect Item Name sorted - ascending
-    * Sort by select - Item Name descending
-    * Expect Item Name sorted - ascending
+    * Click ascending arrow on Item Name column header
+    * Expect Item Name column sorted in ascending order
+    * Click descending arrow on Item Name column header
+    * Expect Item Name column sorted in descending order
 
-    * Sort by select - Ship From ascending
-    * Expect Ship From sorted - ascending
-    * Sort by select - Ship From descending
-    * Expect Ship From sorted - descending
+    * Click ascending arrow on Ship From column header
+    * Expect Ship From column sorted in ascending order
+    * Click descending arrow on Ship From column header
+    * Expect Ship From column sorted in descending order
 
-    * Sort by select - Service ascending
-    * Expect Service sorted - ascending
-    * Sort by select - Service descending
-    * Expect Service sorted - ascending
+    * Click ascending arrow on Service column header
+    * Expect Service column sorted in ascending order
+    * Click descending arrow on Service column header
+    * Expect Service column sorted in descending order
 
-    * Sort by select - Weight ascending
-    * Expect Weight sorted - ascending
-    * Sort by select - Weight descending
-    * Expect Weight sorted - descending
+    * Click ascending arrow on Weight column header
+    * Expect Weight column sorted in ascending order
+    * Click descending arrow on Weight column header
+    * Expect Weight column sorted in descending order
 
-    * Sort by select - Insured Value ascending
-    * Expect Insured Value sorted - ascending
-    * Sort by select - Insured Value descending
-    * Expect Insured Value sorted - ascending
+    * Click ascending arrow on Insured Value column header
+    * Expect Insured Value column sorted in ascending order
+    * Click descending arrow on Insured Value column header
+    * Expect Insured Value column sorted in descending order
 
-    * Sort by select - Reference No. ascending
-    * Expect Reference No. sorted - ascending
-    * Sort by select - Reference No. descending
-    * Expect Reference No. sorted - descending
+    * Click ascending arrow on Reference No. column header
+    * Expect Reference No. column sorted in ascending order
+    * Click descending arrow on Reference No. column header
+    * Expect Reference No. column sorted in descending order
 
-    * Sort by selecte - Cost Code ascending
-    * Expect Cost Code sorted - ascending
-    * Sort by select - Cost Code descending
-    * Expect Cost Code sorted - ascending
+    * Click ascending arrow on Cost Code column header
+    * Expect Cost Code column sorted in ascending order
+    * Click descending arrow on Cost Code column header
+    * Expect Cost Code column sorted in descending order
 
-    * Sort by select - Order Status ascending
-    * Expect Order Status sorted - ascending
-    * Sort by select - Order Status descending
-    * Expect Order Status sorted - descending
+    * Click ascending arrow on Order Status column header
+    * Expect Order Status column sorted in ascending order
+    * Click descending arrow on Order Status column header
+    * Expect Order Status column sorted in descending order
 
-    * Sort by select - Ship Date ascending
-    * Expect Ship Date sorted - ascending
-    * Sort by select - Ship Date descending
-    * Expect Ship Date sorted - ascending
+    * Click ascending arrow on Ship Date column header
+    * Expect Ship Date column sorted in ascending order
+    * Click descending arrow on Ship Date column header
+    * Expect Ship Date column sorted in descending order
 
-    * Sort by select - Tracking # ascending
-    * Expect Tracking # sorted - ascending
-    * Sort by select - Tracking # descending
-    * Expect Tracking # sorted - descending
+    * Click ascending arrow on Tracking # column header
+    * Expect Tracking # column sorted in ascending order
+    * Click descending arrow on Tracking # column header
+    * Expect Tracking # column sorted in descending order
 
-    * Sort by select - Order Total ascending
-    * Expect Order Total sorted - ascending
-    * Sort by select - Order Total descending
-    * Expect Order Total sorted - ascending
+    * Click ascending arrow on Order Total column header
+    * Expect Order Total column sorted in ascending order
+    * Click descending arrow on Order Total column header
+    * Expect Order Total column sorted in descending order
 
-    * Sort by select - Country ascending
-    * Expect Country sorted - ascending
-    * Sort by select - Country descending
-    * Expect Country sorted - ascending
+    * Click ascending arrow on Country column header
+    * Expect Country column sorted in ascending order
+    * Click descending arrow on Country column header
+    * Expect Country column sorted in descending order
