@@ -98,6 +98,10 @@ module Batch
       @services ||= Hash.new
     end
 
+    def ship_to_country country
+      browser_helper.set_text country_textbox, "country"
+    end
+
     def service(selection)
       log_param "Service Selection", selection
       @service_cost = ServiceSelection.new(@browser, selection).select
@@ -384,6 +388,10 @@ module Batch
     end
 
     private
+
+    def country_textbox
+
+    end
 
     def service_textbox
       @browser.text_field :css => "input[componentid^=servicedroplist]"
