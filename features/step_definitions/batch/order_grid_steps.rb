@@ -205,3 +205,14 @@ Then /^Expect Single Order Form Order ID equals Grid order ID$/ do
   grid_order_id.should eql single_order_form_order_id
 end
 
+Given /^Click (.*) column header to sort in (.*) order$/ do |xxx,yyy|
+
+end
+
+Given /^Click (.*) arrow on (.*) column header$/ do |xxx,yyy|
+
+end
+
+Given /^Expect (.*) column sorted in (.*) order$/ do |xxx,yyy|
+
+end
