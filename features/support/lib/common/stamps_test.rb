@@ -28,6 +28,7 @@ module Stamps
       end
 
       browser_name = 'Google Chrome'
+      chrome_data_dir2 = "#{File.expand_path File.dirname("\%LOCALAPPDATA\%")}\\AppData\\Local\\Google\\Chrome\\User Data"
       chrome_data_dir = "C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data"
 
       chrome_driver_path = "C:\\selenium\\drivers\\chromedriver.exe"
@@ -50,7 +51,8 @@ module Stamps
       #--user-data-dir="C:\Users\rcruz\AppData\Local\Temp\scoped_dir19560_20237"
       log "Launching #{browser_name}..."
       Selenium::WebDriver::Chrome.driver_path = chrome_driver_path
-      browser = Watir::Browser.new :chrome #, :switches => ["--user-data-dir=#{chrome_data_dir}"]
+
+      browser = Watir::Browser.new :chrome , :switches => ["--user-data-dir=#{chrome_data_dir}"]
       log "#{browser_name} instantiated."
       #browser = Watir::Browser.new :chrome, :switches => ["--user_data_dir=C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate]"]
       #browser = Watir::Browser.new :chrome, :prefs => prefs
