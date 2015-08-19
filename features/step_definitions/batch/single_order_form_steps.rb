@@ -85,7 +85,7 @@ And /^Set Ship From to (\w+)$/ do |value|
 end
 
 And /^Set Ship-To address to$/ do |table|
-  @ambiguous_address_module = batch.single_order_form.ship_to_address log_hash_param table.hashes.first
+  @ambiguous_address_module = batch.single_order_form.ship_to_address table.hashes.first
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
@@ -93,7 +93,7 @@ Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
-  expect(@ambiguous_address_module.present?).to be true
+  @ambiguous_address_module.present?.should be true
 end
 
 When /^Set order details with$/ do |table|

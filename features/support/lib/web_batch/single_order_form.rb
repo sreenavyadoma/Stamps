@@ -237,6 +237,7 @@ module Batch
               browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(address), 'Address'
               self.phone = address["phone"]
               self.email = address["email"]
+              AddressNotFound.new(@browser)
             when String
               browser_helper.set_text self.address_textbox, address, 'Address'
               AddressNotFound.new(@browser)
