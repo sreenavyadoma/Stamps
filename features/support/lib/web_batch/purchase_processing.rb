@@ -2,7 +2,8 @@ class PurchaseProcessing < BrowserObject
   private
 
   def purchase_processing
-    @browser.div :css => "div[id^=processingpurchasewindow][id$=innerCt]"
+    div =@browser.div :css => "div[id^=processingpurchasewindow][id$=innerCt]"
+    div.style
   end
 
   def purchase_processing_header
