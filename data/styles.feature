@@ -92,7 +92,7 @@
 
   Scenario: Dropdown field
     * Find a dropdown field
-    * Expect dropdown field style to be same as specified in section 7.1.4 of Style Guide
+    * Expect dropdown field style to be same as specified in section 7.2 of Style Guide
 
   Scenario: Arrow Icon
     * Find an arrow icon
