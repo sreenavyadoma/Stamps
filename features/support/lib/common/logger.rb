@@ -12,11 +12,11 @@ module Stamps
     @logger ||= log_init
   end
 
-  def log_debug(message)
+  def log_debug message
     Stamps.logger.debug caller[0] + message
   end
 
-  def log(message)
+  def log message
     begin
       Stamps.logger.info message
     rescue
@@ -25,7 +25,7 @@ module Stamps
     message
   end
 
-  def log_hash_param(table)
+  def log_hash_param table
     table.each{|key, value| log "## #{key} :: #{value}"}
     table
   end
@@ -35,7 +35,7 @@ module Stamps
     value
   end
 
-  def field_log_tag(field)
+  def field_log_tag field
     begin
       if field.include? 'Watir::'
         arr = field.to_s.split(":")
@@ -47,7 +47,7 @@ module Stamps
     field
   end
 
-  def log_step(step)
+  def log_step step
     log "###########################################  ::  STEP  ::  #{step}  ::"
   end
 
@@ -56,7 +56,7 @@ module Stamps
     text
   end
 
-  def log_browser_get(*args)
+  def log_browser_get *args
     #field, text, field_name
     case args.length
       when 2
@@ -69,7 +69,7 @@ module Stamps
     args[1]
   end
 
-  def log_browser_click(*args)
+  def log_browser_click *args
     case args.length
       when 1
         log "Browser.#{field_log_tag(args[0].to_s)}.click"
@@ -80,7 +80,7 @@ module Stamps
     end
   end
 
-  def log_attribute_get (*args)
+  def log_attribute_get *args
     case args.length
       when 1
         log "Browser.#{field_log_tag(args[0].to_s)}.attribute.get"
@@ -93,17 +93,17 @@ module Stamps
     end
   end
 
-  def log_browser_present(field, text, field_name)
+  def log_browser_present field, text, field_name
     log "Browser.#{field_log_tag(field.to_s)}.#{field_name}.present? \"#{text}\""
     text
   end
 
 
-  def log_expectation(field, expected, actual, result)
+  def log_expectation field, expected, actual, result
     log "EXPECTATION :: #{field}:  #{expected}, Actual:  #{actual} # #{(result)?"Passed":"Failed"}"
   end
 
-  def log_expectation_eql(field, expected, actual)
+  def log_expectation_eql field, expected, actual
     log "EXPECTATION :: #{field}:  #{expected}, Actual:  #{actual} # #{actual.eql?(expected)?"Passed":"Failed"}"
   end
 end
