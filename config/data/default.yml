@@ -4,7 +4,29 @@ url_prefix:
   staging: print.staging
 
 shipping_addresses:
-    zone1or2:
+    zone1:
+      1:
+        street_address:  2791 Agoura Road
+        city:  Thousand Oaks
+        state: CA
+        zip: 91361-3101
+      2:
+        street_address:  12280 Perris Blvd
+        city: Moreno Valley
+        state: CA
+        zip: 92557-7418
+      3:
+        street_address:  610 W Tefft St
+        city:  Nipomo
+        state: CA
+        zip: 93444-9187
+      4:
+        street_address:  42136 Big Bear Blvd
+        city: Big Bear Lake
+        state: CA
+        zip: 92315-1530
+
+    zone2:
       1:
         street_address:  530 K Street Unit 504
         city:  San Diego

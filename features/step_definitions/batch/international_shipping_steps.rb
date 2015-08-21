@@ -4,7 +4,6 @@ Given /^Set Ship-To country to (.*)$/ do |country|
 end
 
 Given /^Expect Single Order Form ([\w -]+) field is hidden$/ do |field_name|
-  batch.single_order_form.international_address
 end
 
 Given /^Expect Single Order Form International Address fields are visible$/ do
@@ -21,7 +20,7 @@ Given /^Set International Ship-To ([\w ]+) to ([\w ]+)$/ do |field_name, value|
 end
 
 Given /^Add Item (\d+). Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |item_number, qty, id, description|
-
+  batch.single_order_form.add_item
 end
 
 Given /^Open Customs Form$/ do

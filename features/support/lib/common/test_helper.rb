@@ -67,7 +67,7 @@ module Stamps
     end
 
     def random_ship_to
-      shipping = random_address_all_zone
+      shipping = select_random_zone_random_address
       shipping["name"] = test_helper.random_name
       shipping["company"] = test_helper.random_company_name
       shipping["phone"] = test_helper.random_phone
@@ -81,7 +81,7 @@ module Stamps
 
     def random_ship_from
       us_states = data_for(:us_states, {}) if us_states.nil?
-      shipping = random_address_all_zone
+      shipping = select_random_zone_random_address
       shipping["ship_from_zip"] = shipping["zip"]
       shipping["name"] = random_name
       shipping["company"] = random_company_name
@@ -93,11 +93,13 @@ module Stamps
       shipping
     end
 
-    def random_address_all_zone
+    def select_random_zone_random_address
       shipping_addresses_zones = data_for(:shipping_addresses, {})
       zones = shipping_addresses_zones.values
+      #pick a random zone
       zone_addresses = zones[rand(zones.size)]
       zone_addresses_values = zone_addresses.values
+      #pick a random address from the zone selected above.
       zone_addresses_values[rand(zone_addresses_values.size)]
     end
 

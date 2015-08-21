@@ -92,14 +92,112 @@ module Batch
   #
   class SingleOrderForm < SingleOrderFormBase
 
+    privatex
+
+    def service_textbox
+      @browser.text_field :css => "input[componentid^=servicedroplist]"
+    end
+
+    def insurance_cost_label
+      @browser.label :css => 'label[class*=insurance_cost]'
+    end
+
+    def phone_textbox
+      @browser.text_field :name => 'Phone'
+    end
+
+    def email_textbox
+      @browser.text_field :name => 'Email'
+    end
+
+    def ship_from_dropdown
+      @browser.div :css => 'div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]'
+    end
+
+    def ship_from_default_selection
+      @browser.div :css => 'div[data-recordindex=\'0\']'
+    end
+
+    def insured_value_textbox
+      @browser.text_field :name => 'InsuranceAmount'
+    end
+
+    def pounds_textbox
+      @browser.text_field :name => 'WeightLbs'
+    end
+
+    def ounces_textbox
+      @browser.text_field :name => 'WeightOz'
+    end
+
+    def length_textbox
+      @browser.text_field :name => 'Length'
+    end
+
+    def width_textbox
+      @browser.text_field :name => 'Width'
+    end
+
+    def height_textbox
+      @browser.text_field :name => 'Height'
+    end
+
+    def country_textbox
+      @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div>input'
+    end
+
+    def country_dropdown
+      @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div:nth-child(2)'
+    end
+
+    def service_postcard_field
+      @browser.td :text => 'Postcard'
+    end
+
+    def tracking_dropdown
+      @browser.div :css => 'div[id^=trackingdroplist-][id$=-trigger-picker]'[0]
+    end
+
+    def tracking_usps_selection
+      @browser.td :text => 'USPS Tracking'
+    end
+
+    def tracking_textbox
+      @browser.text_field :name => 'Tracking'
+    end
+
+    def service_cost_label
+      #@browser.label(:text => 'Service:').element(:xpath => './following-sibling::*[2]')
+      @browser.label(:css => 'label[class*=selected_service_cost]')
+    end
+
+    def tracking_cost_label
+      @browser.label(:css => 'label[class*=selected_tracking_cost]')
+    end
+
+    def total_label
+      @browser.label(:text => 'Total').parent.labels.last
+    end
+
+    def country_textbox
+
+    end
+
+    def add_item_button
+
+    end
+
+    def customs_edit_form_button
+      add_item = @browser.span :text => "Add Item"
+      log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
+      add_item
+    end
+
+
     public
     def initialize browser
       super browser
       @services ||= Hash.new
-    end
-
-    def customs_edit_form_button
-
     end
 
     def ship_to_country country
@@ -108,6 +206,20 @@ module Batch
 
     def international_address
       InternationalAddress.new @browser
+    end
+
+    def add_item *args
+      line_item = LineItem.new @browser
+      5.times{
+
+      }
+      case args.length
+        when 0
+
+        when 1
+        else
+
+      end
     end
 
     def service(selection)
@@ -388,97 +500,6 @@ module Batch
 
     def country
       country_textbox.attribute_value('value')
-    end
-
-    private
-
-    def country_textbox
-
-    end
-
-    def service_textbox
-      @browser.text_field :css => "input[componentid^=servicedroplist]"
-    end
-
-    def insurance_cost_label
-      @browser.label :css => 'label[class*=insurance_cost]'
-    end
-
-    def phone_textbox
-      @browser.text_field :name => 'Phone'
-    end
-
-    def email_textbox
-      @browser.text_field :name => 'Email'
-    end
-
-    def ship_from_dropdown
-      @browser.div :css => 'div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]'
-    end
-
-    def ship_from_default_selection
-      @browser.div :css => 'div[data-recordindex=\'0\']'
-    end
-
-    def insured_value_textbox
-      @browser.text_field :name => 'InsuranceAmount'
-    end
-
-    def pounds_textbox
-      @browser.text_field :name => 'WeightLbs'
-    end
-
-    def ounces_textbox
-      @browser.text_field :name => 'WeightOz'
-    end
-
-    def length_textbox
-      @browser.text_field :name => 'Length'
-    end
-
-    def width_textbox
-      @browser.text_field :name => 'Width'
-    end
-
-    def height_textbox
-      @browser.text_field :name => 'Height'
-    end
-
-    def country_textbox
-      @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div>input'
-    end
-
-    def country_dropdown
-      @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div:nth-child(2)'
-    end
-
-    def service_postcard_field
-      @browser.td :text => 'Postcard'
-    end
-
-    def tracking_dropdown
-      @browser.div :css => 'div[id^=trackingdroplist-][id$=-trigger-picker]'[0]
-    end
-
-    def tracking_usps_selection
-      @browser.td :text => 'USPS Tracking'
-    end
-
-    def tracking_textbox
-      @browser.text_field :name => 'Tracking'
-    end
-
-    def service_cost_label
-      #@browser.label(:text => 'Service:').element(:xpath => './following-sibling::*[2]')
-      @browser.label(:css => 'label[class*=selected_service_cost]')
-    end
-
-    def tracking_cost_label
-      @browser.label(:css => 'label[class*=selected_tracking_cost]')
-    end
-
-    def total_label
-      @browser.label(:text => 'Total').parent.labels.last
     end
 
   end #SingleOrderEdit Module
