@@ -93,7 +93,7 @@ Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
-  @ambiguous_address_module.present?.should be true
+  expect(@ambiguous_address_module.present?).to be true
 end
 
 When /^Set order details with$/ do |table|

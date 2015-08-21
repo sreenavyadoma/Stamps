@@ -8,6 +8,11 @@ module Batch
 
     public
     def present?
+      begin
+        exact_address_not_found_field.wait_until_present
+      rescue
+        #ignore
+      end
       browser_helper.present? exact_address_not_found_field
     end
 
