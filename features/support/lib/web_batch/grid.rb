@@ -124,6 +124,8 @@ module Batch
   class Grid < GridBase
     public
 
+
+
     def grid_present_span
       div = @browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]"
       log "Order Grid is #{(browser_helper.present? div)?'present':'NOT present'}"
