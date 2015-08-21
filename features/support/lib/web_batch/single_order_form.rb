@@ -231,19 +231,13 @@ module Batch
           browser_helper.text address_textbox
           less
         when 1
-          address = args[0]
-          case address
-            when Hash
-              browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(address), 'Address'
-              self.phone = address["phone"]
-              self.email = address["email"]
-              AddressNotFound.new(@browser)
-            when String
-              browser_helper.set_text self.address_textbox, address, 'Address'
-              AddressNotFound.new(@browser)
-            else
-              raise "Illegal Ship-to argument"
+          expand_ship_to
+          browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(args[0]), 'Address'
+          if args[0].is_a? Hash
+            self.phone = args[0]["phone"]
+            self.email = args[0]["email"]
           end
+          AddressNotFound.new(@browser)
         else
           raise "Wrong number of arguments for ship_to"
       end

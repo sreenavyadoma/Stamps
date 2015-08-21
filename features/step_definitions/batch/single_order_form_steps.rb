@@ -1,7 +1,7 @@
 
 When /^Set Ship-To address to (.*)$/ do |address|
   log "Set Ship-To address to \"#{address}\""
-  batch.single_order_form.ship_to_address randomize_ship_to(address)
+  batch.single_order_form.ship_to_address random_ship_to(address)
 end
 
 When /^Change Ship-To Address to (.*)$/ do |value|
