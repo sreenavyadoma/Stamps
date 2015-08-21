@@ -15,5 +15,9 @@ module Batch
     def grid
       Grid.new(@browser)
     end
+
+    def styles
+      PageStyles.new @browser
+    end
   end
 end
