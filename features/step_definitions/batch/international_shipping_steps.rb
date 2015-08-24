@@ -24,7 +24,7 @@ Given /^Set Ship-To Recipient to International Address$/ do |table|
   log "International Ship-To Email: #{email}"
 
   step "Set Ship-To country to #{country}"
-  step ""
+  step "Set International Ship-To #{"Name"} to #{name}"
 end
 
 Then /^Set Ship-To country to (.*)$/ do |country|
