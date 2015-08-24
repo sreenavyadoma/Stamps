@@ -4,7 +4,7 @@ Feature: 10 orders
     Given I am signed in as a batch shipper
 
   @orders_10
-  Scenario:  Inline Rates
+  Scenario:  Order Creation
 
     # First Class Mail
 
