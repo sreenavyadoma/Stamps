@@ -2,44 +2,44 @@
 Feature: B-01633 Change the starting label position I will print from - Print Left Side
 
   Background:
-    * I am signed in as a batch shipper
+    Given I am signed in as a batch shipper
 
   @print_labels
   Scenario:  B-01633 - Print Left & Right Side
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Collapse Ship-To Address
-    * Set Service to Priority Mail Package
-    * Open Print Modal
-    * Select left side label
-    * Expect left side label selected
-    * Click Print Window - Print button
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Collapse Ship-To Address
-    * Set Service to Priority Mail Package
-    * Open Print Modal
-    * Expect left side label selected
-    * Click Print Window - Print button
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    And Collapse Ship-To Address
+    Then Set Service to Priority Mail Package
+    And Open Print Modal
+    And Select left side label
+    Then Expect left side label selected
+    And Click Print Window - Print button
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    And Collapse Ship-To Address
+    Then Set Service to Priority Mail Package
+    And Open Print Modal
+    Then Expect left side label selected
+    And Click Print Window - Print button
 
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Collapse Ship-To Address
-    * Set Service to Priority Mail Package
-    * Open Print Modal
-    * Select right side label
-    * Expect right side label selected
-    * Click Print Window - Print button
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Collapse Ship-To Address
-    * Set Service to Priority Mail Package
-    * Open Print Modal
-    * Expect right side label selected
-    * Click Print Window - Print button
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    And Collapse Ship-To Address
+    Then Set Service to Priority Mail Package
+    And Open Print Modal
+    And Select right side label
+    Then Expect right side label selected
+    And Click Print Window - Print button
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    And Collapse Ship-To Address
+    Then Set Service to Priority Mail Package
+    And Open Print Modal
+    Then Expect right side label selected
+    And Click Print Window - Print button
 
-    * Sign out
+    And Sign out

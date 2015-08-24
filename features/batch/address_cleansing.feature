@@ -6,19 +6,19 @@ Feature: B-01603 Address Cleansing
 
   @address_cleansing
   Scenario: Address Cleansing
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | B-01603 | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
-    * Set Service to Priority Mail Package
-    * Expect Zip Code to be 94102
-    * Expect Recipient Name to be B-01603
-    * Expect Company Name to be Address Cleansing
-    * Expect City to be San Francisco
-    * Expect State to be CA
-    * Set Ship-To address to random
-    * Collapse Ship-To Address
-    * Set Service to Priority Mail Package
-    * Sign out
+    Then Set Service to Priority Mail Package
+    Then Expect Zip Code to be 94102
+    Then Expect Recipient Name to be B-01603
+    Then Expect Company Name to be Address Cleansing
+    Then Expect City to be San Francisco
+    Then Expect State to be CA
+    Then Set Ship-To address to random
+    And Collapse Ship-To Address
+    Then Set Service to Priority Mail Package
+    And Sign out
 

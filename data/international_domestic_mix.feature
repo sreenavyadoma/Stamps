@@ -2,10 +2,10 @@
 Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    * I am signed in as a batch shipper
+    Given I am signed in as a batch shipper
 
   Scenario: Print mix of domestic and int'l/APO/FPO/etc... orders in one print group.
-    * Add new order
+    And I I Add a new order
     * Set Ship From to default
     * Set Ship-To country to United States
     * Set Ship-To address to APO Address
@@ -17,7 +17,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Close Customs Information Modal
     * Set Service to First-Class Mail International Large Envelope
 
-    * Add new order
+    And I I Add a new order
     * Set Ship From to default
     * Set Ship-To address to random
     * Set Service to Priority Mail Package

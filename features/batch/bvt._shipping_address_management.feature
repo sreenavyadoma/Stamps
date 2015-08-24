@@ -2,13 +2,13 @@
 Feature:  BVT - Shipping Address Management
 
   Background:
-    * I am signed in as a batch shipper
+    Given I am signed in as a batch shipper
 
   @bvt_shipping_address_management
   Scenario: Shipping Address Management
-    * Add new order
-    * Add new random Ship-From address
-    * Expect random Ship-From address was added
-    * Delete random Ship-From address
-    * Delete all Ship-From address
-    * Sign out
+    And I Add a new order
+    And Add new random Ship-From address
+    Then Expect random Ship-From address was added
+    And Delete random Ship-From address
+    And Delete all Ship-From address
+    And Sign out

@@ -2,10 +2,10 @@
 Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    * I am signed in as a batch shipper
+    Given I am signed in as a batch shipper
 
   Scenario: Print single or multiple at once CN22 and CP72 labels (for both int'l and APO/FPO/etc... addresses)
-    * Add new order
+    And I I Add a new order
     * Set Ship From to default
     * Set Ship-To country to United States
     * Set Ship-To address to APO Address

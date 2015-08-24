@@ -80,7 +80,7 @@ module Batch
           #ignore
         end
       end
-      raise "Unable to add new orders!"
+      raise "Unable to I Add a new orders!"
     end
 
     def print_expecting_error *args

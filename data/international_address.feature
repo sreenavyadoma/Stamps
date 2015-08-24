@@ -2,11 +2,11 @@
 Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    * I am signed in as a batch shipper
+    Given I am signed in as a batch shipper
 
   @international_address
   Scenario:  1 User Enters International Address, User Changes Ship-To Country, Ship-To Country is NOT United States, ser Edits Component Int'l Address Fields, Field Attributes
-    * Add new order
+    And I Add a new order
     * Set Ship-To country to Canada
     * Expect Single Order Form International Address fields are visible
     * Expect Single Order Form Tracking field is hidden

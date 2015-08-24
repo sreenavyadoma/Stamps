@@ -6,11 +6,11 @@ Feature: B-01624 Print Priority Mail Flat Rate Envelope
 
   @print
   Scenario:  Print Priority Mail Flat Rate Envelope
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Set Phone to (415) 123-5555
-    * Collapse Ship-To Address
-    * Set Service to Priority Mail Flat Rate Envelope
-    * Print
-    * Sign out
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Phone to (415) 123-5555
+    And Collapse Ship-To Address
+    Then Set Service to Priority Mail Flat Rate Envelope
+    Then Print
+    And Sign out

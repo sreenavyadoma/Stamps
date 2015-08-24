@@ -2,10 +2,10 @@
 Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    * I am signed in as a batch shipper
+    Given I am signed in as a batch shipper
 
   Scenario:  Field Behavior and Validation Rules
-    * Add new order
+    And I I Add a new order
     * Set Ship-To country to Canada
     * Set International Ship-To recipient to random
     * Add Item 1. Quantity 2, ID random, Description random

@@ -1,7 +1,7 @@
 Feature:  B-01774 - Sort Order Grid
 
   Background:
-    * I am signed in as a batch shipper
+    Given I am signed in as a batch shipper
 
   @sorting
   Scenario: As a batch shipper, I want the first page of orders to appear when I sort a column

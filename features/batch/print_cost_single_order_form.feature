@@ -6,18 +6,18 @@ Feature: B-01631 Printing total cost
 
   @print_costs
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
-    * Add new order
-    * Set Ship From to default
-    * Expect Service Cost to be $0.00
-    * Expect Insurance Cost to be $0.00
-    * Expect Tracking Cost to be $0.00
-    * Expect Total to be $0.00
+    And I Add a new order
+    Then Set Ship From to default
+    Then Expect Service Cost to be $0.00
+    Then Expect Insurance Cost to be $0.00
+    Then Expect Tracking Cost to be $0.00
+    Then Expect Total to be $0.00
 
-    * Set Ship-To address to random
-    * Collapse Ship-To Address
-    * Set Ounces to 1
-    * Set Service to Priority Mail Package
-    * Set Insured Value to $10.00
-    * Set Tracking to Signature Required
-    * Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost
-    * Sign out
+    Then Set Ship-To address to random
+    And Collapse Ship-To Address
+    Then Set Ounces to 1
+    Then Set Service to Priority Mail Package
+    Then Set Insured Value to $10.00
+    Then Set Tracking to Signature Required
+    Then Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost
+    And Sign out

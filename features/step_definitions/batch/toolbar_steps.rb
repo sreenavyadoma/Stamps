@@ -1,5 +1,5 @@
-When /^Add new order$/ do
-  log "Add new order"
+When /^I Add a new order$/ do
+  log "I Add a new order"
   @old_balance = batch.navigation_bar.balance
   @single_order_form = batch.toolbar.add
   @order_id = @single_order_form.order_id

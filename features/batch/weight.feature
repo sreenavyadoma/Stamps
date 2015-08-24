@@ -6,10 +6,10 @@ Feature: Single Order Form Negative Tests
 
   @weight_negative_tests
   Scenario:  Weight tooltip - negative test
-    * Edit row 1 on the order grid
-    * Set Pounds to 71
-    * Expect Pounds tooltip to display - The maximum value for this field is 70
-    * Set Ounces to 16
-    * Expect Ounces tooltip to display - The maximum value for this field is 15
-    * Sign out
+    And Edit row 1 on the order grid
+    Then Set Pounds to 71
+    Then Expect Pounds tooltip to display - The maximum value for this field is 70
+    Then Set Ounces to 16
+    Then Expect Ounces tooltip to display - The maximum value for this field is 15
+    And Sign out
 

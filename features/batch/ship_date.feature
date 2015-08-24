@@ -2,43 +2,47 @@
 Feature:  B-01630 Ship Date
 
   Background:
-    * I am signed in as a batch shipper
+    Given I am signed in as a batch shipper
 
   Scenario:  Set Ship Date to today
-    * Add new order
-    * Set Ship-To address to random
-    * Set Service to Priority Mail Package
-    * Open Print Modal
-    * Set Ship Date Picker to 0 day(s) from today
-    * Expect Print Window Ship Date to be 0 day(s) from today
-    * Print
+    And I Add a new order
+    Then Set Ship-To address to random
+    Then Set Service to Priority Mail Package
+    And Open Print Modal
+    Then Set Ship Date Picker to 0 day(s) from today
+    Then Expect Print Window Ship Date to be 0 day(s) from today
+    Then Print
+    And Sign out
 
   Scenario:  Set Ship Date to 1 day from today
-    * Add new order
-    * Set Ship-To address to random
-    * Set Service to Priority Mail Package
-    * Open Print Modal
-    * Set Ship Date Picker to 1 day(s) from today
-    * Expect Print Window Ship Date to be 1 day(s) from today
-    * Print
+    And I Add a new order
+    Then Set Ship-To address to random
+    Then Set Service to Priority Mail Package
+    And Open Print Modal
+    Then Set Ship Date Picker to 1 day(s) from today
+    Then Expect Print Window Ship Date to be 1 day(s) from today
+    Then Print
+    And Sign out
 
   Scenario:  Set Ship Date to 1 day from today
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Set Service to Priority Mail Package
-    * Open Print Modal
-    * Set Ship Date Picker to 2 day(s) from today
-    * Expect Print Window Ship Date to be 2 day(s) from today
-    * Print
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to Priority Mail Package
+    And Open Print Modal
+    Then Set Ship Date Picker to 2 day(s) from today
+    Then Expect Print Window Ship Date to be 2 day(s) from today
+    Then Print
+    And Sign out
 
   Scenario:  Set Ship Date to 1 day from today
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Set Service to Priority Mail Package
-    * Open Print Modal
-    * Set Ship Date Picker to 3 day(s) from today
-    * Expect Print Window Ship Date to be 3 day(s) from today
-    * Print
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to Priority Mail Package
+    And Open Print Modal
+    Then Set Ship Date Picker to 3 day(s) from today
+    Then Expect Print Window Ship Date to be 3 day(s) from today
+    Then Print
+    And Sign out
 

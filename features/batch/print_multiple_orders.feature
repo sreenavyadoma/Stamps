@@ -6,20 +6,20 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
 
   @print_multiple_orders
   Scenario:  Print 2 Orders
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Collapse Ship-To Address
-    * Set Service to Priority Mail Package
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    And Collapse Ship-To Address
+    Then Set Service to Priority Mail Package
 
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Collapse Ship-To Address
-    * Set Service to Priority Mail Package
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    And Collapse Ship-To Address
+    Then Set Service to Priority Mail Package
 
-    * Edit row 1 on the order grid
-    * Edit row 2 on the order grid
-    * Expect 2 orders selected
-    * Print
-    * Sign out
+    And Edit row 1 on the order grid
+    And Edit row 2 on the order grid
+    Then Expect 2 orders selected
+    Then Print
+    And Sign out

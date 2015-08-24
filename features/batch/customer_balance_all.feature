@@ -3,16 +3,16 @@ Feature: B-01726-1 Update Postage Balance After Each Print (With Service, Insura
 
   @update_postage_balance
   Scenario: Update Postage Balance After Each Print
-    * I am signed in as a batch shipper
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Collapse Ship-To Address
-    * Set Service to Priority Mail Package
-    * Set Insured Value to $10.00
-    * Set Tracking to USPS Tracking
-    * Save Shipping Costs Data
-    * Print
-    * Expect Printing cost is deducted from customer balance if there were no printing errors
-    * Sign out
+    Given I am signed in as a batch shipper
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    And Collapse Ship-To Address
+    Then Set Service to Priority Mail Package
+    Then Set Insured Value to $10.00
+    Then Set Tracking to USPS Tracking
+    And Save Shipping Costs Data
+    Then Print
+    Then Expect Printing cost is deducted from customer balance if there were no printing errors
+    And Sign out
 

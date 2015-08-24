@@ -7,39 +7,39 @@
   @print_sample
   Scenario:  Print Sample - Parcel Select Large Package
 
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Set Service to Parcel Select Large Package
-    * Collapse Ship-To Address
-    * Print Sample
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to Parcel Select Large Package
+    And Collapse Ship-To Address
+    Then Print Sample
 
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Set Service to Priority Mail Regional Rate Box A
-    * Open Print Modal
-    * Print Sample
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to Priority Mail Regional Rate Box A
+    And Open Print Modal
+    Then Print Sample
 
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Set Service to Priority Mail Express Medium Flat Rate Box
-    * Collapse Ship-To Address
-    * Print Sample
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to Priority Mail Express Medium Flat Rate Box
+    And Collapse Ship-To Address
+    Then Print Sample
 
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Set Service to Priority Mail Express Package
-    * Collapse Ship-To Address
-    * Print Sample
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to Priority Mail Express Package
+    And Collapse Ship-To Address
+    Then Print Sample
 
-    * Add new order
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Set Service to Priority Mail Flat Rate Envelope
-    * Collapse Ship-To Address
-    * Print Sample
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to Priority Mail Flat Rate Envelope
+    And Collapse Ship-To Address
+    Then Print Sample
 
-    * Sign out
+    And Sign out

@@ -2,10 +2,10 @@
 Feature:  Delete All Ship From
 
   Background:
-    * I am signed in as a batch shipper
+    Given I am signed in as a batch shipper
 
   @delete_all_shipping_addresses
   Scenario: regression
-    * Add new order
-    * Delete all Ship-From address
-    * Sign out
+    And I Add a new order
+    Then Delete all Ship-From address
+    And Sign out
