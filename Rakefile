@@ -12,8 +12,8 @@ Cucumber::Rake::Task.new(:orders_10) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_25) do |t|
-  t.profile = 'orders_25'
+Cucumber::Rake::Task.new(:orders_20) do |t|
+  t.profile = 'orders_20'
   t.cucumber_opts = "-p cuke_reports"
 end
 
