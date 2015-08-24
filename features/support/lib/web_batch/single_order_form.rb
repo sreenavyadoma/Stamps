@@ -252,7 +252,8 @@ module Batch
     end
 
     def ship_to_country country
-      browser_helper.set_text country_textbox, "country"
+      browser_helper.set_text country_textbox, country, "country"
+      InternationalAddress.new @browser
     end
 
     def international_address
