@@ -6,7 +6,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
 	
   Scenario:  User Prints FPO Address
-    And I I Add a new order
+    And I Add a new order
     * Set Ship From to default
     * Set Ship-To country to United States
     * Set Ship-To address to FPO address
