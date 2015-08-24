@@ -1,6 +1,6 @@
 url_prefix:
   satya: svarma-win7.corp
-  qacc:  print.qacc
+  qacc:  printext.qacc
   staging: print.staging
 
 shipping_addresses:

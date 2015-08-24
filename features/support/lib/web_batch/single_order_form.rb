@@ -1,5 +1,57 @@
 module Batch
 
+  class LineItem < BrowserObject
+
+    private
+
+    def quantity_textbox
+      text_field = @browser.text_field :name => "Quantity"
+      log "Quantity Textbox #{(browser_helper.present? text_field)?"Exist.":'DOES NOT EXIST!'}"
+      text_field
+    end
+
+    def sku_textbox
+      text_field = @browser.text_field :name => "Sku"
+      log "Sku Textbox #{(browser_helper.present? text_field)?"Exist.":'DOES NOT EXIST!'}"
+      text_field
+    end
+
+    def item_name_textbox
+      text_field = @browser.text_field :name => "ItemName"
+      log "Item Name Textbox #{(browser_helper.present? text_field)?"Exist.":'DOES NOT EXIST!'}"
+      text_field
+    end
+
+    def delete_button line_number
+      images = @browser.images :css => "img[data-qtip*='Delete Item']"
+      delete_image = images[line_number.to_i]
+      log "Line item #{line_number} exist?  #{browser_helper.present? delete_image}"
+      delete_image
+    end
+
+    public
+
+    def present?
+      browser_helper.present? quantity_textbox
+    end
+
+    def delete_line number
+
+    end
+
+    def quantity qty
+      browser_helper.set_text quantity_textbox, qty, "qty"
+    end
+
+    def sku id
+      browser_helper.set_text sku_textbox, id, "sku"
+    end
+
+    def item_name name
+      browser_helper.set_text item_name_textbox, name, "item_name"
+    end
+  end
+
   class SingleOrderFormBase < BrowserObject
 
     def ship_cost_span
@@ -92,7 +144,7 @@ module Batch
   #
   class SingleOrderForm < SingleOrderFormBase
 
-    privatex
+    private
 
     def service_textbox
       @browser.text_field :css => "input[componentid^=servicedroplist]"
@@ -184,13 +236,12 @@ module Batch
     end
 
     def add_item_button
-
-    end
-
-    def customs_edit_form_button
       add_item = @browser.span :text => "Add Item"
       log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
       add_item
+    end
+
+    def customs_edit_form_button
     end
 
 
@@ -210,13 +261,17 @@ module Batch
 
     def add_item *args
       line_item = LineItem.new @browser
-      5.times{
 
+      5.times{
+        browser_helper.click add_item_button, "add_item"
+        break if line_item.present?
       }
+
       case args.length
         when 0
-
+          line_item
         when 1
+          line_item.quantity ""
         else
 
       end
