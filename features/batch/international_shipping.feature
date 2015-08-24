@@ -7,9 +7,11 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
   Scenario:  Field Behavior and Validation Rules
     And I Add a new order
     Then Set Ship-To country to Canada
+
     Then Set Ship-To Recipient to International Address
-      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code     | country| phone   |  email  |
-      | random | random  | 234 Laurier Avenue West  | random        | Ottawa | Ontario  | K1A 0G9 | Canada | random  | random  |
+      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
+
     And Add Item 1. Quantity 2, ID random, Description random
     And Add Item 2. Quantity 3, ID random, Description random
 
