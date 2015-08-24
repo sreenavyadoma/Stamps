@@ -18,7 +18,7 @@
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Service to Priority Mail Regional Rate Box A
-    And Open Print Modal
+    And I Open Print Modal
     Then Print Sample
 
     And I Add a new order
