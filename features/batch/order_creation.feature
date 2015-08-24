@@ -100,7 +100,7 @@ Feature: 10 orders
     * Set Insured Value to $235.00
     * Set Tracking to USPS Tracking
 
-  @20
+  @orders_20
   Scenario:  Order Creation
 
     # First Class Mail
