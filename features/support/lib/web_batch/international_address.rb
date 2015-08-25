@@ -9,11 +9,11 @@ module Batch
 
     end
 
-    def address1_textbox
+    def address_1_textbox
 
     end
 
-    def address2_textbox
+    def address_2_textbox
 
     end
 
@@ -47,15 +47,31 @@ module Batch
 
     end
 
+    def name=value
+
+    end
+
     def company
 
     end
 
-    def address1
+    def company=value
 
     end
 
-    def address2
+    def address_1
+
+    end
+
+    def address_1=value
+
+    end
+
+    def address_2
+
+    end
+
+    def address_2=value
 
     end
 
@@ -63,7 +79,15 @@ module Batch
 
     end
 
+    def city=value
+
+    end
+
     def province
+
+    end
+
+    def province=value
 
     end
 
@@ -71,11 +95,23 @@ module Batch
 
     end
 
+    def postal_code=value
+
+    end
+
     def phone
 
     end
 
+    def phone=value
+
+    end
+
     def email
+
+    end
+
+    def email=value
 
     end
 

@@ -76,33 +76,36 @@ module Stamps
       end
     end
 
+    def safe_click *args
+      begin
+        click args
+      rescue
+        #ignore
+      end
+    end
+
     def click *args
       case args.length
         when 1
+
           begin
             args[0].focus
           rescue
             log "Unable to focus on browser field #{args[0]}"
           end
-          begin
-            args[0].click
-          rescue err
-            log "Unable to click #{args[0]}"
-            args[0].click
-          end
-          log_browser_click args[0]
+
+          args[0].click
+          var_name = %w(baz)[0]
+          log_browser_click args[0],var_name
+
         when 2
           begin
             args[0].focus
           rescue
             log "Unable to focus on browser field #{args[1]} #{args[0]}"
           end
-          begin
-            args[0].click
-          rescue
-            log "Unable to click #{args[1]} #{args[0]}"
-            args[0].click
-          end
+          args[0].click
+          var_name = %w(baz)[0]
           log_browser_click args[0], args[1]
         else
           raise "Wrong number of arguments."
