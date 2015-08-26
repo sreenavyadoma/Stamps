@@ -1,7 +1,8 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
-default_profile: --tags @bvt_shipping_address_management --guess URL=qacc BROWSER=ie USR=cctest1 PW=password1
+
+default_profile: --tags @bvt_shipping_address_management --guess URL=qacc BROWSER=ie USR=webbatch_0005 PW=password1
 
 orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ie USR=webbatch_0005 PW=password1
 orders_20: --tags @orders_20 --guess URL=qacc BROWSER=ie USR=cm_cpp_0002 PW=pass111
