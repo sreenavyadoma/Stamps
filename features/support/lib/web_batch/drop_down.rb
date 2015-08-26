@@ -23,6 +23,5 @@ module Batch
         break if input_text.include? selection
       }
     end
-
   end
 end
