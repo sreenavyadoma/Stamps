@@ -241,7 +241,10 @@ module Batch
       add_item
     end
 
-    def customs_edit_form_button
+    def edit_form_button
+      button = @browser.span :text => "Edit Form..."
+      log "Single Order Form Edit Form Button is #{(browser_helper.present?button)?'Present' : 'NOT Present'}"
+      button
     end
 
 
@@ -251,9 +254,17 @@ module Batch
       @services ||= Hash.new
     end
 
+    def edit_customs_form
+      customs_form = CustomsInformation.new @browser
+      5.times{
+        browser_helper.safe_click edit_form_button
+        break if customs_form.preesent?
+      }
+    end
+
     def ship_to_country country
       browser_helper.set_text country_textbox, country, "country"
-      InternationalAddress.new @browser
+      international_address
     end
 
     def international_address

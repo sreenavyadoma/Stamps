@@ -2,6 +2,11 @@ module Stamps
   class BrowserHelper
     include Singleton
 
+    def drop_down browser, drop_down_button, selection_field_type, drop_down_input, selection
+      dd = DropDown.new browser, drop_down_button, selection_field_type, drop_down_input
+      dd.select selection
+    end
+
     def set_text *args
       case args.length
         when 2
@@ -76,34 +81,51 @@ module Stamps
       end
     end
 
+    def safe_click *args
+      begin
+        click args
+      rescue
+        #ignore
+      end
+    end
+
+=begin
+      varone = 1
+      vartwo = 2
+      args = [varone, vartwo]
+      somevar = 3
+      name = get_varname args[0], binding
+      get_varname :somevar, binding   # Call the binding() method
+=end
+    def get_varname symb, the_binding
+      var_name  = symb.to_s
+      var_value = eval(var_name, the_binding)
+      puts "#{var_name} = #{var_value.inspect}"
+    end
+
     def click *args
       case args.length
         when 1
+
           begin
             args[0].focus
           rescue
             log "Unable to focus on browser field #{args[0]}"
           end
-          begin
-            args[0].click
-          rescue err
-            log "Unable to click #{args[0]}"
-            args[0].click
-          end
+
+          args[0].click
+          #var_name = get_varname :args[0],
           log_browser_click args[0]
+
         when 2
           begin
             args[0].focus
           rescue
             log "Unable to focus on browser field #{args[1]} #{args[0]}"
           end
-          begin
-            args[0].click
-          rescue
-            log "Unable to click #{args[1]} #{args[0]}"
-            args[0].click
-          end
-          log_browser_click args[0], args[1]
+          args[0].click
+          var_name = %w(args[0])
+          log_browser_click args[0], var_name
         else
           raise "Wrong number of arguments."
       end

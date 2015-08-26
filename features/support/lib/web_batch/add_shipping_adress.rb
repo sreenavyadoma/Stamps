@@ -38,12 +38,16 @@ module Batch
       browser_helper.set_text street_address2_field, street, "street_address2_field"
     end
 
+    def state_dd_button
+      @browser.div :css => "div[id^=statecombobox-][id$=-trigger-picker]"
+    end
+
     def city=(city)
-      browser_helper.set_text city_field, city, "city_field"
+      browser_helper.set_text city_text_field, city, "state_field"
     end
 
     def state=(state)
-      browser_helper.set_text state_field, state, "state_field"
+      browser_helper.drop_down @browser, state_dd_button, "li", state_field, state
     end
 
     def zip=(code)
@@ -76,11 +80,13 @@ module Batch
     end
 
     def name_field
-      @browser.text_field :name => 'FullName'
+      text_fields = @browser.text_fields :name => 'FullName'
+      text_fields.last
     end
 
     def company_field
-      @browser.text_field :name => 'Company'
+      text_fields = @browser.text_fields :name => 'Company'
+      text_fields.last
     end
 
     def street_address1_field
@@ -91,12 +97,15 @@ module Batch
       @browser.text_field :name => 'Street2'
     end
 
-    def city_field
-      @browser.text_field :name => 'City'
+    def city_text_field
+      text_fields = @browser.text_fields :name => 'City'
+      text_fields.last
     end
 
     def state_field
-      @browser.text_field :name => 'State'
+      field = @browser.text_field :name => 'State'
+      present = browser_helper.present? field
+      field
     end
 
     def zip_field

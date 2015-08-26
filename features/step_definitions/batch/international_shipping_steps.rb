@@ -1,4 +1,9 @@
 
+Then /^Set Ship-To country to (.*)$/ do |country|
+  @single_order_form = batch.single_order_form
+  @international_shipping = @single_order_form.ship_to_country country
+end
+
 # random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
 Given /^Set Ship-To Recipient to International Address$/ do |table|
   param_hash = table.hashes.first
@@ -24,15 +29,46 @@ Given /^Set Ship-To Recipient to International Address$/ do |table|
   log "International Ship-To Email: #{email}"
 
   step "Set Ship-To country to #{country}"
-  step "Set International Ship-To #{"Name"} to #{name}"
-end
-
-Then /^Set Ship-To country to (.*)$/ do |country|
-  @international_shipping = batch.single_order_form.ship_to_country country
+  step "Set International Ship-To Name to #{name}"
+  step "Set International Ship-To Company to #{company}"
+  step "Set International Ship-To Address 1 to #{street_address_1}"
+  step "Set International Ship-To Address 2 to #{street_address_2}"
+  step "Set International Ship-To Province to #{province}"
+  step "Set International Ship-To Postal Code to #{postal_code}"
+  step "Set International Ship-To Country to #{country}"
+  step "Set International Ship-To Phone to #{phone}"
+  step "Set International Ship-To Email to #{email}"
 end
 
 Then /^Set International Ship-To ([\w \d]+) to (.*)/ do |ship_to_field, value |
+  if @international_shipping.nil?
+    raise "Illegal State Exception.  @international_shipping is nil.  Set Ship-To Country first before populating international address fields"
+  end
 
+  case ship_to_field.downcase
+    when "name"
+      @international_shipping.name=(value.downcase == "random")? test_helper.random_name : value
+    when "company"
+      @international_shipping.company=(value.downcase == "random")? test_helper.random_company_name : value
+    when "address 1"
+      @international_shipping.address_1=value
+    when "address 2"
+      @international_shipping.address_2=(value.downcase == "random")? test_helper.random_suite : value
+    when "province"
+      @international_shipping.province=value
+    when "postal code"
+      @international_shipping.postal_code=value
+    when "phone"
+      @international_shipping.phone=(value.downcase == "random")? test_helper.random_phone : value
+    when "email"
+      @international_shipping.email=(value.downcase == "random")? test_helper.random_email : value
+    else
+      raise "Illegal Argument Exception.  #{ship_to_field} is not a valid Ship-To field"
+  end
+end
+
+Given /^Open Customs Form$/ do
+  @single_order_form.edit_customs_form
 end
 
 Given /^Expect Single Order Form ([\w -]+) field is hidden$/ do |field_name|
@@ -50,10 +86,6 @@ end
 
 Given /^Add Item (\d+). Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |item_number, qty, id, description|
   batch.single_order_form.add_item
-end
-
-Given /^Open Customs Form$/ do
-
 end
 
 Given /^Expect Customs Form Checkbox \"(.+)\" is visible$/ do |checkbox|
