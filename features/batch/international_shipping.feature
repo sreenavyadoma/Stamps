@@ -15,13 +15,13 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
       And Open Customs Form
 
-      Then Set Customs Form Package Contents to Merchandise
-      Then Set Customs Form Non-Delivery Options to Return to sender
-      Then Set Customs Form Internal Transaction # to Not required
-      Then Set Customs Form More Info to random
+      Then Set Customs Form Package Contents = Merchandise
+      Then Set Customs Form Non-Delivery Options = Return to sender
+      Then Set Customs Form Internal Transaction # = Required
+      Then Set Customs Form More Info = random
+      Then Set Customs Form ITN# = random
 
       And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-      And Add Customs Form Item 2; Description=random, Qty 1, Unit Price 100, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
 
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
@@ -41,8 +41,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set International Ship-To Phone to random
       Then Set International Ship-To Email to random
       And Open Customs Form
-      Then Set Customs Form Package Contents to Merchandise
-      Then Set Customs Form Weight(oz) to 1
+      Then Set Customs Form Package Contents = Merchandise
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
@@ -74,30 +73,30 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       And Decrement Customs Form Weight(oz) by 1
       Then Expect Customs Form Weight(oz ) to be 1
 
-      Then Set Customs Form Package Contents to Merchandise
+      Then Set Customs Form Package Contents = Merchandise
       Then Expect Customs Form Package Contents to be Merchandise
-      Then Set Customs Form Package Contents to Document
+      Then Set Customs Form Package Contents = Document
       Then Expect Customs Form Package Contents to be Document
-      Then Set Customs Form Package Contents to Gift
+      Then Set Customs Form Package Contents = Gift
       Then Expect Customs Form Package Contents to be Gift
-      Then Set Customs Form Package Contents to Humanitarian Donation
+      Then Set Customs Form Package Contents = Humanitarian Donation
       Then Expect Customs Form Package Contents to be Humanitarian Donation
-      Then Set Customs Form Package Contents to Returned Goods
+      Then Set Customs Form Package Contents = Returned Goods
       Then Expect Customs Form Package Contents to be Returned Goods
-      Then Set Customs Form Package Contents to Other
+      Then Set Customs Form Package Contents = Other
       Then Expect Customs Form Package Contents to be Other
-      Then Set Customs Form Package Contents to Merchandise
+      Then Set Customs Form Package Contents = Merchandise
 
-      Then Set Customs Form More Info to random
+      Then Set Customs Form More Info = random
 
-      Then Set Customs Form Non-Delivery Options to Return To Sender
+      Then Set Customs Form Non-Delivery Options = Return To Sender
       Then Expect Customs Form Non-Delivery Options to be Return To Sender
-      Then Set Customs Form Non-Delivery Options to Treat as abandoned
+      Then Set Customs Form Non-Delivery Options = Treat as abandoned
       Then Expect Customs Form Non-Delivery Options to be Treat as abandoned
 
-      Then Set Customs Form Internal Transaction # to Not Required
+      Then Set Customs Form Internal Transaction # = Not Required
       Then Expect Customs Form Internal Transaction # to be Not Required
-      Then Set Customs Form Internal Transaction # to Required
+      Then Set Customs Form Internal Transaction # = Required
       Then Expect Customs Form Internal Transaction # to be Required
 
       Then Expect Customs Form Weight(lbs) to be correct
@@ -170,7 +169,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Ship-To country to United States
       Then Set Ship-To address to APO Address
       And Open Customs Form
-      Then Set Customs Form Package Contents to Merchandise
+      Then Set Customs Form Package Contents = Merchandise
       Then Set Customs Form Weight(oz) to 1
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
@@ -183,7 +182,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Ship-To country to United States
       Then Set Ship-To address to APO Address
       And Open Customs Form
-      Then Set Customs Form Package Contents to Merchandise
+      Then Set Customs Form Package Contents = Merchandise
       Then Set Customs Form Weight(oz) to 1
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
@@ -196,7 +195,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Ship-To country to United States
       Then Set Ship-To address to FPO address
       And Open Customs Form
-      Then Set Customs Form Package Contents to Merchandise
+      Then Set Customs Form Package Contents = Merchandise
       Then Set Customs Form Weight(oz) to 1
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
@@ -209,7 +208,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Ship-To country to United States
       Then Set Ship-To address to APO Address
       And Open Customs Form
-      Then Set Customs Form Package Contents to Merchandise
+      Then Set Customs Form Package Contents = Merchandise
       Then Set Customs Form Weight(oz) to 1
 
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"

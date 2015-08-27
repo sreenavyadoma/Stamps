@@ -7,14 +7,6 @@ module Stamps
       dd.select selection
     end
 
-    def safe_click *args
-      begin
-        click args
-      rescue
-        #ignore
-      end
-    end
-
     def text *args
       case args.length
         when 1
@@ -107,10 +99,17 @@ module Stamps
       puts "#{var_name} = #{var_value.inspect}"
     end
 
+    def safe_click *args
+      begin
+        click *args
+      rescue
+        #ignore
+      end
+    end
+
     def click *args
       case args.length
         when 1
-
           begin
             args[0].focus
           rescue

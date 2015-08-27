@@ -225,26 +225,24 @@ module Batch
       add_item
     end
 
-    def edit_form_button
-      button = @browser.span :text => "Edit Form..."
-      log "Single Order Form Edit Form Button is #{(browser_helper.present?button)?'Present' : 'NOT Present'}"
-      button
-    end
-
-
     public
     def initialize browser
       super browser
       @services ||= Hash.new
     end
 
-    def edit_customs_form
-      customs_form = CustomsInformation.new @browser
+    def customs_info
+      CustomsInformation.new @browser
+    end
+
+    def edit_form
+      customs = customs_info
+      edit_form_button = @browser.span :text => "Edit Form..."
       5.times{
         browser_helper.safe_click edit_form_button
-        break if customs_form.preesent?
+        break if customs.present?
       }
-      raise "Customs Information Modal is not visible." unless customs_form.preesent?
+      raise "Customs Information Modal is not visible." unless customs.present?
     end
 
     def ship_to_dd

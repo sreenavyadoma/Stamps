@@ -17,6 +17,7 @@ module Batch
 
   class CustomsInformation < BrowserObject
     public
+
     def present?
       browser_helper.present? close_button
     end
@@ -24,16 +25,16 @@ module Batch
     def package_contents_dd
       drop_down = @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
-      input = @browser.text_field :name => "NonDeliveryOption"
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? input
+      input = @browser.text_field :name => "ContentType"
+      raise "ContentType is not present.  Check your CSS locator." unless browser_helper.present? input
       DropDown.new @browser, drop_down, "li", input
     end
 
     def non_delivery_options_dd
       drop_down = @browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
-      input = @browser.text_field :name => "ContentType"
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? input
+      input = @browser.text_field :name => "NonDeliveryOption"
+      raise "NonDeliveryOption is not present.  Check your CSS locator." unless browser_helper.present? input
       DropDown.new @browser, drop_down, "li", input
     end
 
@@ -42,21 +43,19 @@ module Batch
       drop_down = @browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
       input = @browser.text_field :name => "isITNRequired"
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? input
+      raise "isITNRequired is not present.  Check your CSS locator." unless browser_helper.present? input
       DropDown.new @browser, drop_down, "li", input
     end
 
     def more_info
       field = TextBox.new(@browser.text_field :name => "Comments")
       log "More Info present? #{browser_helper.present? field}"
-      raise "Customs Information text box More Info is not present." unless browser_helper.present? input
       field
     end
 
     def itn_number
       field = TextBox.new(@browser.text_field :css => "input[name=ITN][maxlength='50']")
       log "More Info present? #{browser_helper.present? field}"
-      raise "Customs Information text box More Info is not present." unless browser_helper.present? input
       field
     end
 

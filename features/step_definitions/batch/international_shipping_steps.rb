@@ -72,11 +72,11 @@ Then /^Set International Ship-To ([\w \d]+) to (.*)/ do |ship_to_field, value |
 end
 
 Given /^Open Customs Form$/ do
-  @customs_info = @single_order_form.edit_customs_form
+  @single_order_form.edit_form
 end
 
-Given /^Set Customs Form (.+) to (.+)$/ do |field, value|
-  raise "Customs Form is no visible" unless @customs_info.present?
+Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
+  @customs_info = @single_order_form.customs_info
 
   case field.downcase
     #Package Contents
@@ -141,7 +141,8 @@ end
 Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin, tariff|
   item = @customs_info.item
   item.description.set description
-  item.qty.unit_price.set qty
+  item.qty.set qty
+  item.unit_price.set price
   item.lbs.set lbs
   item.oz.set oz
   item.origin_dd.select origin
@@ -161,7 +162,7 @@ Given /^Expect Customs Information Modal to be present$/ do
 end
 
 Given /^Check Customs Form \"(.+)\"$/ do |contract| #I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-
+  log ""
 end
 
 Given /^Expect Customs Form field (.+) behavior is correct$/ do |field|

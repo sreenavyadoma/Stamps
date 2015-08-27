@@ -56,7 +56,7 @@ module Batch
 
     def email
       text_fields = @browser.text_fields :name => "Email"
-      field = TextBox.new(text_fields.first)
+      field = TextBox.new(text_fields.last)
       log "Email present? #{browser_helper.present? field}"
       field
     end
