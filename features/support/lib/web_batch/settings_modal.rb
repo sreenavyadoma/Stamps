@@ -90,15 +90,15 @@ module Batch
     end
 
     def get_logoff_time
-      logoff_time.value
+      logoff_time.text
     end
 
     def get_postdate_time
-      postdate_time.value
+      postdate_time.text
     end
 
     def get_balance_notification_amt
-      balance_notification_amount.value
+      balance_notification_amount.text
     end
 
     def check_unavail_services

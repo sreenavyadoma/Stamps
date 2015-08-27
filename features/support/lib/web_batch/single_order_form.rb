@@ -96,22 +96,6 @@ module Batch
       browser_helper.present? order_id_label
     end
 
-    def ship_to_dropdown
-      #@browser.span :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a>span>span>span:nth-child(2)'
-      @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
-    end
-
-    def less_dropdown
-      @browser.span :text => 'Less'
-    end
-
-    def expand_ship_to
-      5.times {
-        break if browser_helper.present?  address_textbox
-        browser_helper.click ship_to_dropdown, "ship_to_address_field" if browser_helper.present?  ship_to_dropdown
-      }
-    end
-
     def less
       browser_helper.click less_dropdown, "Less" if browser_helper.present?  less_dropdown
     end
@@ -260,11 +244,30 @@ module Batch
         browser_helper.safe_click edit_form_button
         break if customs_form.preesent?
       }
+      raise "Customs Information Modal is not visible." unless customs_form.preesent?
     end
 
-    def ship_to_country country
-      browser_helper.set_text country_textbox, country, "country"
-      international_address
+    def ship_to_dd
+      drop_down = (@browser.divs :css => "div[id^=combobox-][id$=-trigger-picker]")[1]
+      raise "Single Order Form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? drop_down
+      input = (@browser.text_fields :name => "CountryCode").first
+      raise "Single Order Form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
+      DropDown.new @browser, drop_down, "li", input
+    end
+
+    def ship_to_dropdown
+      @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
+    end
+
+    def less_dropdown
+      @browser.span :text => 'Less'
+    end
+
+    def expand_ship_to
+      5.times {
+        break if browser_helper.present?  address_textbox
+        browser_helper.click ship_to_dropdown, "ship_to_address_field" if browser_helper.present?  ship_to_dropdown
+      }
     end
 
     def international_address

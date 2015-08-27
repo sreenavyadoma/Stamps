@@ -9,18 +9,23 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       And I Add a new order
       Then Set Ship From to default
 
-      Then Set Ship-To Recipient to International Address
+      Then Set Ship-To Recipient to
         | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
         | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
       And Open Customs Form
+
       Then Set Customs Form Package Contents to Merchandise
-      Then Set Customs Form Weight(oz) to 1
-      And Add Customs Form Item 1 to Description=random, Qty 1, Unit Price 2500, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+      Then Set Customs Form Non-Delivery Options to Return to sender
+      Then Set Customs Form Internal Transaction # to Not required
+      Then Set Customs Form More Info to random
+
+      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+      And Add Customs Form Item 2; Description=random, Qty 1, Unit Price 100, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
-      Then Print
 
     Scenario: User Prints International Address 2
       And I Add a new order
@@ -38,7 +43,6 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       And Open Customs Form
       Then Set Customs Form Package Contents to Merchandise
       Then Set Customs Form Weight(oz) to 1
-      And Add Customs Form Item 1 to Description=random, Qty 1, Unit Price 2500, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
@@ -95,10 +99,6 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Not Required
       Then Set Customs Form Internal Transaction # to Required
       Then Expect Customs Form Internal Transaction # to be Required
-
-      And Add Customs Form Item 1 to Description=random, Qty 1, Unit Price 2500, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-      And Add Customs Form Item 2 to Description=random, Qty 1, Unit Price 10, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-      And Add Customs Form Item 3 to Description=random, Qty 1, Unit Price 10, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
 
       Then Expect Customs Form Weight(lbs) to be correct
       Then Expect Customs Form Total Value to be correct
@@ -172,7 +172,6 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       And Open Customs Form
       Then Set Customs Form Package Contents to Merchandise
       Then Set Customs Form Weight(oz) to 1
-      And Add Customs Form Item 1 to Description=random, Qty 1, Unit Price 2500, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
@@ -186,7 +185,6 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       And Open Customs Form
       Then Set Customs Form Package Contents to Merchandise
       Then Set Customs Form Weight(oz) to 1
-      And Add Customs Form Item 1 to Description=random, Qty 1, Unit Price 2500, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
@@ -200,7 +198,6 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       And Open Customs Form
       Then Set Customs Form Package Contents to Merchandise
       Then Set Customs Form Weight(oz) to 1
-      And Add Customs Form Item 1 to Description=random, Qty 1, Unit Price 2500, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
@@ -215,7 +212,6 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents to Merchandise
       Then Set Customs Form Weight(oz) to 1
 
-      And Add Customs Form Item 1 to Description=random, Qty 1, Unit Price 2500, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
