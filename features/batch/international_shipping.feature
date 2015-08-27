@@ -21,7 +21,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form More Info = random
       Then Set Customs Form ITN# = random
 
-      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
 
       And Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
       And Close Customs Information Modal
