@@ -7,13 +7,13 @@ default_profile: --tags @international_address_printing --guess URL=satya BROWSE
 orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ie USR=webbatch_0005 PW=password1
 orders_20: --tags @orders_20 --guess URL=qacc BROWSER=ie USR=cm_cpp_0002 PW=pass111
 
-print_many_orders_ie: --tags @print_many_orders --guess URL=qacc BROWSER=ie USR=auto40 PW=password1
+print_many_orders_ie: --tags @print_many_orders --guess URL=qacc BROWSER=ie USR=auto34 PW=password1
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto28 PW=password1
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto29 PW=password1
 bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto30 PW=password1
 
-regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto10 PW=password1
+regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto35 PW=password1
 regress_qacc_ff: --tags @regression --guess URL=qacc BROWSER=ff USR=auto11 PW=password1
 regress_qacc_ie: --tags @regression --guess URL=qacc BROWSER=ie USR=auto12 PW=password1
 
