@@ -37,6 +37,32 @@ module Stamps
 
   end
 
+  class Checkbox < ClickableField
+    def initialize checkbox, check_verify_field, attribute
+      super checkbox
+      @check_verify_field = check_verify_field
+      @attribute = attribute
+    end
+
+    def check
+      5.times{
+        click
+        break if checked?
+      }
+    end
+
+    def uncheck
+      5.times{
+        click
+        break unless checked?
+      }
+    end
+
+    def checked?
+      browser_helper.attribute_value @check_verify_field, @attribute
+    end
+  end
+
   class Label < ClickableField
     def text
       browser_helper.text @field

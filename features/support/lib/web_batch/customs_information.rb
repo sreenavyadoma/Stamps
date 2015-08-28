@@ -118,6 +118,9 @@ module Batch
     end
 
     def i_agree agree
+      checkbox_field = (@browser.text_fields :css => "input[id^=checkboxfield-]").last
+      verify_checked_field = (@browser.text_fields :css => "div[id^=checkboxfield][class*=x-field]").last
+      checkbox = Checkbox.new checkbox_field, verify_checked_field, "class"
       if agree
         #check i agree
       else

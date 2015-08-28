@@ -76,7 +76,7 @@ Given /^Open Customs Form$/ do
 end
 
 Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
-  @customs_info = @single_order_form.customs_info
+  @customs_info = @single_order_form.customs_info if @customs_info.nil?
 
   case field.downcase
     #Package Contents
@@ -99,6 +99,24 @@ Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
       raise "Illegal Argument Exception.  Field #{field} is not on the Customs Information Modal"
 
   end
+end
+
+Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin, tariff|
+  item = @customs_info.item
+  item.description.set description
+  item.qty.set qty
+  item.unit_price.set price
+  item.lbs.set lbs
+  item.oz.set oz
+  item.origin_dd.select origin
+  item.hs_tariff.set tariff
+end
+
+Given /^Set Customs Form I agree to (\w+)$/ do |agree_str|
+  i_agree = agree_str.downcase == "true"
+  @customs_info = @single_order_form.customs_info if @customs_info.nil?
+
+  @customs_info.i_agree i_agree
 end
 
 Given /^Add Item (\d+). Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |item_number, qty, id, description|
@@ -138,17 +156,6 @@ Given /^Decrement Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
 
 end
 
-Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin, tariff|
-  item = @customs_info.item
-  item.description.set description
-  item.qty.set qty
-  item.unit_price.set price
-  item.lbs.set lbs
-  item.oz.set oz
-  item.origin_dd.select origin
-  item.hs_tariff.set tariff
-end
-
 Given /^Delete Customs Form Item (\d+)$/ do |item_number|
 
 end
@@ -159,10 +166,6 @@ end
 
 Given /^Expect Customs Information Modal to be present$/ do
 
-end
-
-Given /^Check Customs Form \"(.+)\"$/ do |contract| #I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-  log ""
 end
 
 Given /^Expect Customs Form field (.+) behavior is correct$/ do |field|
