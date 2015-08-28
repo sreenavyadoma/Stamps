@@ -7,6 +7,22 @@ module Stamps
       dd.select selection
     end
 
+    def text *args
+      case args.length
+        when 1
+          field_text(args[0])
+        when 2
+          text = field_text(args[0])
+          log_browser_get(args[0], text, args[1])
+        else
+          raise "Wrong number of arguments for BrowserHelper.text method."
+      end
+    end
+
+    def text=(*args)
+      set_text args
+    end
+
     def set_text *args
       case args.length
         when 2
@@ -69,26 +85,6 @@ module Stamps
       ""
     end
 
-    def text *args
-      case args.length
-        when 1
-          field_text(args[0])
-        when 2
-          text = field_text(args[0])
-          log_browser_get(args[0], text, args[1])
-        else
-          raise "Wrong number of arguments for BrowserHelper.text method."
-      end
-    end
-
-    def safe_click *args
-      begin
-        click args
-      rescue
-        #ignore
-      end
-    end
-
 =begin
       varone = 1
       vartwo = 2
@@ -103,10 +99,17 @@ module Stamps
       puts "#{var_name} = #{var_value.inspect}"
     end
 
+    def safe_click *args
+      begin
+        click *args
+      rescue
+        #ignore
+      end
+    end
+
     def click *args
       case args.length
         when 1
-
           begin
             args[0].focus
           rescue

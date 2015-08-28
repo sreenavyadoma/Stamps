@@ -16,100 +16,59 @@ module Batch
   end
 
   class CustomsInformation < BrowserObject
-
-    private
-
     public
+
     def present?
-
+      browser_helper.present? close_button
     end
 
-    def package_contents=value
-
+    def package_contents_dd
+      drop_down = @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
+      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
+      input = @browser.text_field :name => "ContentType"
+      raise "ContentType is not present.  Check your CSS locator." unless browser_helper.present? input
+      DropDown.new @browser, drop_down, "li", input
     end
 
-    def non_delivery_options=value
-
+    def non_delivery_options_dd
+      drop_down = @browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
+      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
+      input = @browser.text_field :name => "NonDeliveryOption"
+      raise "NonDeliveryOption is not present.  Check your CSS locator." unless browser_helper.present? input
+      DropDown.new @browser, drop_down, "li", input
     end
 
-    def internal_transaction_number=value
 
+    def internal_transaction_dd
+      drop_down = @browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
+      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
+      input = @browser.text_field :name => "isITNRequired"
+      raise "isITNRequired is not present.  Check your CSS locator." unless browser_helper.present? input
+      DropDown.new @browser, drop_down, "li", input
     end
 
-    def more_info=value
-
+    def more_info
+      field = TextBox.new(@browser.text_field :name => "Comments")
+      log "More Info present? #{browser_helper.present? field}"
+      field
     end
 
-    def itn_number=value
-
+    def itn_number
+      field = TextBox.new(@browser.text_field :css => "input[name=ITN][maxlength='50']")
+      log "More Info present? #{browser_helper.present? field}"
+      field
     end
 
-    def plus_symbol
+    def item
+      CustomsItem.new @browser
+    end
+
+    def plus
 
     end
 
     def add_item
-
-    end
-
-    def item_description=value
-
-    end
-
-    def quantity=value
-
-    end
-
-    def quantity_increment value
-
-    end
-
-    def quantity_decrement value
-
-    end
-
-    def unit_price=value
-
-    end
-
-    def unit_price_increment value
-
-    end
-
-    def unit_price_decrement value
-
-    end
-
-    def weight_pounds=value
-
-    end
-
-    def weight_pounds_increment value
-
-    end
-
-    def weight_pounds_decrement value
-
-    end
-
-    def weight_ounces=value
-
-    end
-
-    def weight_ounces_increment value
-
-    end
-
-    def weight_ounces_decrement=value
-
-    end
-
-    def origin=value
-
-    end
-
-    def hs_tariff=value
-
+      ClickableField.new(@browser.spans :text => "Add Item")
     end
 
     def total_weight_label
@@ -120,13 +79,13 @@ module Batch
       div
     end
 
-    def total_weight_pounds
+    def total_weight_lbs
       lbs = total_weight_label.scan(/\d+/).first
       log "Pounds: #{lbs}"
       lbs
     end
 
-    def total_weight_ounces
+    def total_weight_oz
       oz = total_weight_label.scan(/\d+/).last
       log "Ounces: #{oz}"
       oz
@@ -159,6 +118,9 @@ module Batch
     end
 
     def i_agree agree
+      checkbox_field = (@browser.text_fields :css => "input[id^=checkboxfield-]").last
+      verify_checked_field = (@browser.text_fields :css => "div[id^=checkboxfield][class*=x-field]").last
+      checkbox = Checkbox.new checkbox_field, verify_checked_field, "class"
       if agree
         #check i agree
       else

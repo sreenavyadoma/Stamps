@@ -1,118 +1,64 @@
 module Batch
   class InternationalAddress < BrowserObject
 
-    def name_textbox
-
-    end
-
-    def company_textbox
-
-    end
-
-    def address_1_textbox
-
-    end
-
-    def address_2_textbox
-
-    end
-
-    def city_textbox
-
-    end
-
-    def province_textbox
-
-    end
-
-    def postal_code_textbox
-
-    end
-
-    def phone_textbox
-
-    end
-
-    def email_textbox
-
-    end
-
-
-
     def present?
       browser_helper.present? postal_code_textbox
     end
 
     def name
-
-    end
-
-    def name=value
-
+      field = TextBox.new(@browser.text_field :name => "FullName")
+      log "FullName present? #{browser_helper.present? field}"
+      field
     end
 
     def company
-
-    end
-
-    def company=value
-
+      field = TextBox.new(@browser.text_field :name => "Company")
+      log "Company present? #{browser_helper.present? field}"
+      field
     end
 
     def address_1
-
-    end
-
-    def address_1=value
-
+      field = TextBox.new(@browser.text_field :name => "Address1")
+      log "Address1 present? #{browser_helper.present? field}"
+      field
     end
 
     def address_2
-
-    end
-
-    def address_2=value
-
+      field = TextBox.new(@browser.text_field :name => "Address2")
+      log "Address2 present? #{browser_helper.present? field}"
+      field
     end
 
     def city
-
-    end
-
-    def city=value
-
+      field = TextBox.new(@browser.text_field :name => "City")
+      log "City present? #{browser_helper.present? field}"
+      field
     end
 
     def province
-
-    end
-
-    def province=value
-
+      field = TextBox.new(@browser.text_field :name => "Province")
+      log "Province present? #{browser_helper.present? field}"
+      field
     end
 
     def postal_code
-
-    end
-
-    def postal_code=value
-
+      field = TextBox.new(@browser.text_field :name => "PostalCode")
+      log "PostalCode present? #{browser_helper.present? field}"
+      field
     end
 
     def phone
-
-    end
-
-    def phone=value
-
+      text_fields = @browser.text_fields :name => "Phone"
+      field = TextBox.new(text_fields.last)
+      log "City present? #{browser_helper.present? field}"
+      field
     end
 
     def email
-
-    end
-
-    def email=value
-
+      text_fields = @browser.text_fields :name => "Email"
+      field = TextBox.new(text_fields.last)
+      log "Email present? #{browser_helper.present? field}"
+      field
     end
 
   end

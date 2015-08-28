@@ -96,22 +96,6 @@ module Batch
       browser_helper.present? order_id_label
     end
 
-    def ship_to_dropdown
-      #@browser.span :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a>span>span>span:nth-child(2)'
-      @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
-    end
-
-    def less_dropdown
-      @browser.span :text => 'Less'
-    end
-
-    def expand_ship_to
-      5.times {
-        break if browser_helper.present?  address_textbox
-        browser_helper.click ship_to_dropdown, "ship_to_address_field" if browser_helper.present?  ship_to_dropdown
-      }
-    end
-
     def less
       browser_helper.click less_dropdown, "Less" if browser_helper.present?  less_dropdown
     end
@@ -241,30 +225,47 @@ module Batch
       add_item
     end
 
-    def edit_form_button
-      button = @browser.span :text => "Edit Form..."
-      log "Single Order Form Edit Form Button is #{(browser_helper.present?button)?'Present' : 'NOT Present'}"
-      button
-    end
-
-
     public
     def initialize browser
       super browser
       @services ||= Hash.new
     end
 
-    def edit_customs_form
-      customs_form = CustomsInformation.new @browser
-      5.times{
-        browser_helper.safe_click edit_form_button
-        break if customs_form.preesent?
-      }
+    def customs_info
+      CustomsInformation.new @browser
     end
 
-    def ship_to_country country
-      browser_helper.set_text country_textbox, country, "country"
-      international_address
+    def edit_form
+      customs = customs_info
+      edit_form_button = @browser.span :text => "Edit Form..."
+      5.times{
+        browser_helper.safe_click edit_form_button
+        break if customs.present?
+      }
+      raise "Customs Information Modal is not visible." unless customs.present?
+    end
+
+    def ship_to_dd
+      drop_down = (@browser.divs :css => "div[id^=combobox-][id$=-trigger-picker]")[1]
+      raise "Single Order Form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? drop_down
+      input = (@browser.text_fields :name => "CountryCode").first
+      raise "Single Order Form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
+      DropDown.new @browser, drop_down, "li", input
+    end
+
+    def ship_to_dropdown
+      @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
+    end
+
+    def less_dropdown
+      @browser.span :text => 'Less'
+    end
+
+    def expand_ship_to
+      5.times {
+        break if browser_helper.present?  address_textbox
+        browser_helper.click ship_to_dropdown, "ship_to_address_field" if browser_helper.present?  ship_to_dropdown
+      }
     end
 
     def international_address
