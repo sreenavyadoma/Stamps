@@ -135,7 +135,6 @@ Given /^Expect International Ship-To ([\w ]+) Field Attributes are correct$/ do 
 
 end
 
-
 Given /^Expect Customs Form Checkbox \"(.+)\" is visible$/ do |checkbox|
 
 end
