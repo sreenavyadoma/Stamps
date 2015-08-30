@@ -6,16 +6,16 @@ module Stamps
       case args.length
         when 1
           field = args[0]
-          attribute = "class"
-          value = "enabled"
+          field_attribute = "class"
+          search_string = "enabled"
         when 3
           field = args[0]
-          attribute = args[1]
-          value = args[2]
+          field_attribute = args[1]
+          search_string = args[2]
         else
           raise "Wrong number of arguments for enabled?"
       end
-      enabled = attribute_value_inlude? field, attribute, value
+      enabled = attribute_value_inlude? field, field_attribute, search_string
       log "Field enabled? #{enabled}"
       enabled
     end
@@ -24,23 +24,23 @@ module Stamps
       case args.length
         when 1
           field = args[0]
-          attribute = "class"
-          value = "disabled"
+          field_attribute = "class"
+          search_string = "disabled"
         when 3
           field = args[0]
-          attribute = args[1]
-          value = args[2]
+          field_attribute = args[1]
+          search_string = args[2]
         else
           raise "Wrong number of arguments for enabled?"
       end
-      disabled = attribute_value_inlude? field, attribute, value
+      disabled = attribute_value_inlude? field, field_attribute, search_string
       log "Field disabled? #{disabled}"
       disabled
     end
 
-    def attribute_value_inlude? field, attribute, value
-      browser_value = attribute_value field, attribute
-      browser_value.include? value
+    def attribute_value_inlude? field, field_attribute, search_string
+      browser_value = attribute_value field, field_attribute
+      browser_value.include? search_string
     end
 
     def attribute_value field, attribute
