@@ -15,7 +15,7 @@ module Stamps
         else
           raise "Wrong number of arguments for enabled?"
       end
-      enabled = attribute_value_exist field, attribute, value
+      enabled = attribute_value_inlude? field, attribute, value
       log "Field enabled? #{enabled}"
       enabled
     end
@@ -33,12 +33,12 @@ module Stamps
         else
           raise "Wrong number of arguments for enabled?"
       end
-      disabled = attribute_value_exist field, attribute, value
+      disabled = attribute_value_inlude? field, attribute, value
       log "Field disabled? #{disabled}"
       disabled
     end
 
-    def attribute_value_exist field, attribute, value
+    def attribute_value_inlude? field, attribute, value
       browser_value = attribute_value field, attribute
       browser_value.include? value
     end
