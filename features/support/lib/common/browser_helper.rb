@@ -126,14 +126,6 @@ module Stamps
       ""
     end
 
-=begin
-      varone = 1
-      vartwo = 2
-      args = [varone, vartwo]
-      somevar = 3
-      name = get_varname args[0], binding
-      get_varname :somevar, binding   # Call the binding() method
-=end
     def get_varname symb, the_binding
       var_name  = symb.to_s
       var_value = eval(var_name, the_binding)
