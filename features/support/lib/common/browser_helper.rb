@@ -2,6 +2,61 @@ module Stamps
   class BrowserHelper
     include Singleton
 
+    def enabled? *args
+      case args.length
+        when 1
+          field = args[0]
+          field_attribute = "class"
+          search_string = "enabled"
+        when 3
+          field = args[0]
+          field_attribute = args[1]
+          search_string = args[2]
+        else
+          raise "Wrong number of arguments for enabled?"
+      end
+      enabled = attribute_value_inlude? field, field_attribute, search_string
+      log "Field enabled? #{enabled}"
+      enabled
+    end
+
+    def disabled? *args
+      case args.length
+        when 1
+          field = args[0]
+          field_attribute = "class"
+          search_string = "disabled"
+        when 3
+          field = args[0]
+          field_attribute = args[1]
+          search_string = args[2]
+        else
+          raise "Wrong number of arguments for enabled?"
+      end
+      disabled = attribute_value_inlude? field, field_attribute, search_string
+      log "Field disabled? #{disabled}"
+      disabled
+    end
+
+    def attribute_value_inlude? field, field_attribute, search_string
+      browser_value = attribute_value field, field_attribute
+      browser_value.include? search_string
+    end
+
+    def attribute_value field, attribute
+      value = ""
+      begin
+        5.times{
+          value = field.attribute_value(attribute)
+          break unless value.length < 1
+        }
+      rescue
+        #ignroe
+      end
+      #log_attribute_get field, attribute, value
+      value
+    end
+
     def drop_down browser, drop_down_button, selection_field_type, drop_down_input, selection
       dd = Dropdown.new browser, drop_down_button, selection_field_type, drop_down_input
       dd.select selection
@@ -48,20 +103,6 @@ module Stamps
         actual_value =  field_text(field)
         break if (actual_value.include? text) || (text.include? actual_value)
       end
-    end
-
-    def attribute_value field, attribute
-      value = ""
-      begin
-        5.times{
-          value = field.attribute_value(attribute)
-          break unless value.length < 1
-        }
-      rescue
-        #ignroe
-      end
-      #log_attribute_get field, attribute, value
-      value
     end
 
     def field_text field
