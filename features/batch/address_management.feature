@@ -16,6 +16,6 @@ Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Sh
     And Delete Ship-From Row 1 from Manage Shipping Addresses Modal
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Phone to (415) 123-5555
+    Then Set Phone to random
     Then Set Service to Priority Mail Large Package
     And Sign out

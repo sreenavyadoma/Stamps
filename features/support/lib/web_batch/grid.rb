@@ -16,7 +16,7 @@ module Batch
         :email => [13, 'Email'],
         :qty => [14, 'Qty.'],
         :item_sku => [15, 'Item SKU'],
-        :item_name => [16, 'Item Name'],
+        :description => [16, 'Item Name'],
         :ship_from => [17, 'Ship From'],
         :service_input_text => [18, 'Service'],
         :weight => [19, 'Weight'],
@@ -233,7 +233,7 @@ module Batch
     end
 
     def item_name(order_id)
-      grid_text(:item_name, row_number(order_id))
+      grid_text(:description, row_number(order_id))
     end
 
     def ship_from(order_id)

@@ -23,11 +23,12 @@ module Batch
     end
 
     def package_contents_dd
+
       drop_down = @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
       input = @browser.text_field :name => "ContentType"
       raise "ContentType is not present.  Check your CSS locator." unless browser_helper.present? input
-      DropDown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, drop_down, "li", input
     end
 
     def non_delivery_options_dd
@@ -35,7 +36,7 @@ module Batch
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
       input = @browser.text_field :name => "NonDeliveryOption"
       raise "NonDeliveryOption is not present.  Check your CSS locator." unless browser_helper.present? input
-      DropDown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, drop_down, "li", input
     end
 
 
@@ -44,17 +45,17 @@ module Batch
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
       input = @browser.text_field :name => "isITNRequired"
       raise "isITNRequired is not present.  Check your CSS locator." unless browser_helper.present? input
-      DropDown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, drop_down, "li", input
     end
 
     def more_info
-      field = TextBox.new(@browser.text_field :name => "Comments")
+      field = Textbox.new(@browser.text_field :name => "Comments")
       log "More Info present? #{browser_helper.present? field}"
       field
     end
 
     def itn_number
-      field = TextBox.new(@browser.text_field :css => "input[name=ITN][maxlength='50']")
+      field = Textbox.new(@browser.text_field :css => "input[name=ITN][maxlength='50']")
       log "More Info present? #{browser_helper.present? field}"
       field
     end
@@ -68,7 +69,7 @@ module Batch
     end
 
     def add_item
-      ClickableField.new(@browser.spans :text => "Add Item")
+      ClickableField.new @browser.spans :text => "Add Item"
     end
 
     def total_weight_label

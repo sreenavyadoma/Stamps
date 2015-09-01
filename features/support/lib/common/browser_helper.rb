@@ -3,7 +3,7 @@ module Stamps
     include Singleton
 
     def drop_down browser, drop_down_button, selection_field_type, drop_down_input, selection
-      dd = DropDown.new browser, drop_down_button, selection_field_type, drop_down_input
+      dd = Dropdown.new browser, drop_down_button, selection_field_type, drop_down_input
       dd.select selection
     end
 

@@ -49,23 +49,23 @@ Then /^Set International Ship-To ([\w \d]+) to (.*)/ do |ship_to_field, value |
 
   case ship_to_field.downcase
     when "name"
-      @international_address.name.set ((value.downcase == "random")? test_helper.random_name : value)
+      @international_address.name ((value.downcase == "random")? test_helper.random_name : value)
     when "company"
-      @international_address.company.set ((value.downcase == "random")? test_helper.random_company_name : value)
+      @international_address.company ((value.downcase == "random")? test_helper.random_company_name : value)
     when "address 1"
-      @international_address.address_1.set value
+      @international_address.address_1 value
     when "address 2"
-      @international_address.address_2.set ((value.downcase == "random")? test_helper.random_suite : value)
+      @international_address.address_2 ((value.downcase == "random")? test_helper.random_suite : value)
     when "city"
       @international_address.city.set value
     when "province"
-      @international_address.province.set value
+      @international_address.province value
     when "postal code"
-      @international_address.postal_code.set value
+      @international_address.postal_code value
     when "phone"
-      @international_address.phone.set ((value.downcase == "random")? test_helper.random_phone : value)
+      @international_address.phone ((value.downcase == "random")? test_helper.random_phone : value)
     when "email"
-      @international_address.email.set ((value.downcase == "random")? test_helper.random_email : value)
+      @international_address.email ((value.downcase == "random")? test_helper.random_email : value)
     else
       raise "Illegal Argument Exception.  #{ship_to_field} is not a valid Ship-To field"
   end
@@ -119,8 +119,11 @@ Given /^Set Customs Form I agree to (\w+)$/ do |agree_str|
   @customs_info.i_agree i_agree
 end
 
-Given /^Add Item (\d+). Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |item_number, qty, id, description|
-  batch.single_order_form.add_item
+Given /^Add Item with Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
+  line_item = batch.single_order_form.add_item
+  line_item.qty qty
+  line_item.id id
+  line_item.description description
 end
 
 Given /^Expect Single Order Form ([\w -]+) field is hidden$/ do |field_name|
