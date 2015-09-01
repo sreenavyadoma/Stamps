@@ -75,6 +75,8 @@ module Batch
             sign_in_btn.wait_while_present(5)
             toolbar.wait_until_present
 
+            sleep(1)
+
             if welcome_modal.present?
               welcome_modal.ok
               break
