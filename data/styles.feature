@@ -191,11 +191,11 @@
     * Expect Error icon on the top-left of dialog
     * Expect Error icon style to be same as specified in section 8.2.3 of Style Guide
 
-  Scenario: Filter Panel (left panel)
+  Scenario: Filter Panel Style (left panel)
     * Go to left panel
     * Expect filter panel(left panel) style to be same as specified in section 9 of Style Guide
 
-  Scenario: Filter Options (left panel)
+  Scenario: Filter Options Style (left panel)
     * Go to left panel
     * Expect option on filter panel style to be same as specified in section 9.1 of Style Guide
 
