@@ -167,6 +167,7 @@ module Batch
       table = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row})"
       class_attribute = browser_helper.attribute_value table, "class"
       selected = class_attribute.include? "selected"
+      log "Row #{row} checked? #{selected}"
       selected
     end
 
