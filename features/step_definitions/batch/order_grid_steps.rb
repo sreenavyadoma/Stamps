@@ -1,3 +1,31 @@
+Then /^Output all Grid values for row (\d+)$/ do |order_id|
+  log batch.grid.ship_cost order_id
+  log batch.grid.age order_id
+  log batch.grid.order_id 1
+  log batch.grid.recipient order_id
+  log batch.grid.company order_id
+  log batch.grid.address order_id
+  log batch.grid.city order_id
+  log batch.grid.state order_id
+  log batch.grid.zip order_id
+  log batch.grid.country order_id
+  log batch.grid.phone order_id
+  log batch.grid.email order_id
+  log batch.grid.qty order_id
+  log batch.grid.item_sku order_id
+  log batch.grid.item_name order_id
+  log batch.grid.ship_from order_id
+  log batch.grid.service order_id
+  log batch.grid.weight order_id
+  log batch.grid.insured_value order_id
+  log batch.grid.reference_no order_id
+  log batch.grid.cost_code order_id
+  log batch.grid.order_status order_id
+  log batch.grid.ship_date order_id
+  log batch.grid.tracking order_id
+  log batch.grid.order_total order_id
+end
+
 When /^Edit row (\d+) on the order grid$/ do |row|
   log "Edit row \"#{row}\" on the order grid"
   batch.grid.check_row row
@@ -10,13 +38,12 @@ When /^Uncheck row (\d+) on the order grid$/ do |row|
   #end_step step
 end
 
-
 # | name | company    | street_address      | city          | state | zip   | country       | phone       |  email
 Then /^Expect Ship-To address to be;$/ do |table|
   param_hash = table.hashes.first
   step "Expect Recipient Name to be #{param_hash[:name]}"
   step "Expect Company Name to be #{param_hash[:company]}"
-  step "Expect Street Address to be #{param_hash[:street_address]}"
+  step "Expect Street Address to be #{param_hash[:address]}"
   step "Expect City to be #{param_hash[:city]}"
   step "Expect State to be #{param_hash[:state]}"
   step "Expect Zip Code to be #{param_hash[:zip]}"
@@ -57,12 +84,12 @@ end
 
 Then /^Expect Street Address to be ([\w\s-]+)$/ do |expected|
   begin
-    actual = batch.grid.street_address(@order_id)
+    actual = batch.grid.address(@order_id)
     10.times { |counter|
       sleep(2)
       log_expectation_eql "#{counter}. Street Address", expected, actual
       break if actual.eql? expected
-      actual = batch.grid.street_address(@order_id)
+      actual = batch.grid.address(@order_id)
     }
     actual.should eql expected
   end unless expected.length == 0

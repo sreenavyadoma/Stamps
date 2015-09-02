@@ -6,6 +6,8 @@ Feature:  BVT - I Add a new order
 
   @bvt_add_new_order
   Scenario:  I Add a new order
+    Then Output all Grid values for row 29227
+    Then Output all Grid values for row 39448
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
