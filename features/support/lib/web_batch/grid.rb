@@ -245,7 +245,9 @@ module Batch
     end
 
     def weight(order_id)
-      grid_text(:weight, row_number(order_id))
+      weight = grid_text(:weight, row_number(order_id))
+      log "Weight: #{weight}"
+      weight
     end
 
     # 5 lbs. 10 oz.
