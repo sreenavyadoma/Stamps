@@ -101,11 +101,6 @@ When /^Set order details with$/ do |table|
   batch.single_order_form.edit_details log_hash_param table.hashes.first
 end
 
-Then /^List all grid values for row (.*)$/ do |row|
-  log "List all grid values for row  \"#{row}\""
-  batch.grid.list_all_fields row
-end
-
 Then /^Add new Ship-From address$/ do |ship_from|
   batch.single_order_form.manage_shipping_addresses.add ship_from.hashes.first
 end

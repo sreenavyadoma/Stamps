@@ -113,7 +113,7 @@ module Batch
     end
 
     def phone_field
-      @browser.text_field :css => "input[name=Phone][maxlength='14']"
+      (@browser.text_fields :css => "input[name=Phone]").last
     end
 
     def save_button

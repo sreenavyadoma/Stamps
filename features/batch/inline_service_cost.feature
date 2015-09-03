@@ -29,9 +29,9 @@ Feature: System Calls GetRates When "Ship-To Address" is changed
     Then Expect inline Service Cost for Parcel Select Large Package to be greater than $0.01
     Then Expect inline Service Cost for Parcel Select Oversized Package to be greater than $0.01
     Then Expect inline Service Cost for Media Mail Package to be greater than $0.01
-    Then Expect Pounds to be 0
-    Then Expect Ounces to be 0
-    Then Expect Weight to be 0 lbs. 0 oz.
+    Then Expect Order Grid - Pounds to be 0
+    Then Expect Order Grid - Ounces to be 0
+    Then Expect Order Grid - Weight to be 0 lbs. 0 oz.
     And Sign out
 
 

@@ -58,7 +58,7 @@ module Stamps
     end
 
     def drop_down browser, drop_down_button, selection_field_type, drop_down_input, selection
-      dd = DropDown.new browser, drop_down_button, selection_field_type, drop_down_input
+      dd = Dropdown.new browser, drop_down_button, selection_field_type, drop_down_input
       dd.select selection
     end
 
@@ -126,14 +126,6 @@ module Stamps
       ""
     end
 
-=begin
-      varone = 1
-      vartwo = 2
-      args = [varone, vartwo]
-      somevar = 3
-      name = get_varname args[0], binding
-      get_varname :somevar, binding   # Call the binding() method
-=end
     def get_varname symb, the_binding
       var_name  = symb.to_s
       var_value = eval(var_name, the_binding)

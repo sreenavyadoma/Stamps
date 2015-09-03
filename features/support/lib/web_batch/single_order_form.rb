@@ -1,54 +1,68 @@
 module Batch
 
-  class LineItem < BrowserObject
-
-    private
-
-    def quantity_textbox
-      text_field = @browser.text_field :name => "Quantity"
-      log "Quantity Textbox #{(browser_helper.present? text_field)?"Exist.":'DOES NOT EXIST!'}"
-      text_field
-    end
-
-    def sku_textbox
-      text_field = @browser.text_field :name => "Sku"
-      log "Sku Textbox #{(browser_helper.present? text_field)?"Exist.":'DOES NOT EXIST!'}"
-      text_field
-    end
-
-    def item_name_textbox
-      text_field = @browser.text_field :name => "ItemName"
-      log "Item Name Textbox #{(browser_helper.present? text_field)?"Exist.":'DOES NOT EXIST!'}"
-      text_field
-    end
-
-    def delete_button line_number
-      images = @browser.images :css => "img[data-qtip*='Delete Item']"
-      delete_image = images[line_number.to_i]
-      log "Line item #{line_number} exist?  #{browser_helper.present? delete_image}"
-      delete_image
+  class SingleOrderFormLineItem < BrowserObject
+    def remove_field
+      @browser.span :css => "span[class*=sdc-icon-remove]"
     end
 
     public
 
     def present?
-      browser_helper.present? quantity_textbox
+      browser_helper.present? remove_field
     end
 
-    def delete_line number
-
+    def wait_until_present
+      browser_helper.wait_until_present remove_field
     end
 
-    def quantity qty
-      browser_helper.set_text quantity_textbox, qty, "qty"
+    def delete_line *args
+      browser_fields = @browser.spans :css => "span[class*=sdc-icon-remove]"
+      browser_fields
+      browser_field = browser_fields
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
     end
 
-    def sku id
-      browser_helper.set_text sku_textbox, id, "sku"
+    def qty *args
+      browser_field = Textbox.new @browser.text_field :name => "Quantity"
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
     end
 
-    def item_name name
-      browser_helper.set_text item_name_textbox, name, "item_name"
+    def id *args
+      browser_field = Textbox.new @browser.text_field :name => "Sku"
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
+    end
+
+    def description *args
+      browser_field = Textbox.new @browser.text_field :name => "ItemName"
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
     end
   end
 
@@ -215,12 +229,8 @@ module Batch
       @browser.label(:text => 'Total').parent.labels.last
     end
 
-    def country_textbox
-
-    end
-
     def add_item_button
-      add_item = @browser.span :text => "Add Item"
+      add_item = ClickableField.new @browser.span :text => "Add Item"
       log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
       add_item
     end
@@ -250,7 +260,7 @@ module Batch
       raise "Single Order Form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? drop_down
       input = (@browser.text_fields :name => "CountryCode").first
       raise "Single Order Form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
-      DropDown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, drop_down, "li", input
     end
 
     def ship_to_dropdown
@@ -269,25 +279,17 @@ module Batch
     end
 
     def international_address
-      InternationalAddress.new @browser
+      InternationalShipAddress.new @browser
     end
 
-    def add_item *args
-      line_item = LineItem.new @browser
-
+    def add_item
+      line_item = SingleOrderFormLineItem.new @browser
       5.times{
-        browser_helper.click add_item_button, "add_item"
+        add_item_button.safe_click
+        line_item.wait_until_present
         break if line_item.present?
       }
-
-      case args.length
-        when 0
-          line_item
-        when 1
-          line_item.quantity ""
-        else
-
-      end
+      line_item
     end
 
     def service(selection)

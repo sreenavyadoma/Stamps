@@ -19,8 +19,8 @@ Feature: Change Settings
     Then Expect Show Unavailable Services Checked
     Then Expect Dont Show Print Confirmation Dialog Checked
     Then Expect Save Delivery Addresses Checked
-    Then Expect Email Shipment Notifications Checked
-    Then Expect Email Shipment Deliveries Checked
+    Then Expect Order Grid - Email Shipment Notifications Checked
+    Then Expect Order Grid - Email Shipment Deliveries Checked
     Then Uncheck Show Unavailable Services
     Then Uncheck Dont Show Print Confirmation Dialog
     Then Uncheck Save Delivery Addresses
@@ -32,8 +32,8 @@ Feature: Change Settings
     Then Expect Show Unavailable Services Unchecked
     Then Expect Dont Show Print Confirmation Dialog Unchecked
     Then Expect Save Delivery Addresses Unchecked
-    Then Expect Email Shipment Notifications Unchecked
-    Then Expect Email Shipment Deliveries Unchecked
+    Then Expect Order Grid - Email Shipment Notifications Unchecked
+    Then Expect Order Grid - Email Shipment Deliveries Unchecked
     Then Change Logoff Time to 10 min.
     Then Change Postdate Time to 4:00 p.m.
     Then Change Postage Balance Notification Amount to $50
