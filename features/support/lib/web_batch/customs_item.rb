@@ -2,13 +2,13 @@ module Batch
   class CustomsItem < BrowserObject
 
     def description
-      text_box = TextBox.new(@browser.text_field :name => "CustomsItemName")
+      text_box = Textbox.new(@browser.text_field :name => "CustomsItemName")
       log "CustomsItemName present? #{browser_helper.present? text_box}"
       text_box
     end
 
     def qty
-      text_box = TextBox.new(@browser.text_field :name => "CustomsItemQuantity")
+      text_box = Textbox.new(@browser.text_field :name => "CustomsItemQuantity")
       log "CustomsItemQuantity present? #{browser_helper.present? text_box}"
       text_box
     end
@@ -22,7 +22,7 @@ module Batch
     end
 
     def unit_price
-      text_box = TextBox.new(@browser.text_field :name => "CustomsItemPrice")
+      text_box = Textbox.new(@browser.text_field :name => "CustomsItemPrice")
       log "CustomsItemPrice present? #{browser_helper.present? text_box}"
       text_box
     end
@@ -36,7 +36,7 @@ module Batch
     end
 
     def lbs
-      text_box = TextBox.new(@browser.text_field :name => "CustomsItemWeightLb")
+      text_box = Textbox.new(@browser.text_field :name => "CustomsItemWeightLb")
       log "CustomsItemWeightLb present? #{browser_helper.present? text_box}"
       text_box
     end
@@ -50,7 +50,7 @@ module Batch
     end
 
     def oz
-      text_box = TextBox.new(@browser.text_field :name => "CustomsItemWeightOz")
+      text_box = Textbox.new(@browser.text_field :name => "CustomsItemWeightOz")
       log "CustomsItemWeightOz present? #{browser_helper.present? text_box}"
       text_box
     end
@@ -68,11 +68,11 @@ module Batch
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
       input = (@browser.text_fields :name => "OriginCountry").last
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? input
-      DropDown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, drop_down, "li", input
     end
 
     def hs_tariff
-      text_box = TextBox.new(@browser.text_field :name => "HSTariff")
+      text_box = Textbox.new(@browser.text_field :name => "HSTariff")
       log "HSTariff present? #{browser_helper.present? text_box}"
       text_box
     end

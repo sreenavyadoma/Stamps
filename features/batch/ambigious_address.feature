@@ -13,11 +13,11 @@ Feature: B-01604 Orders with an ambiguous address
       | Hillary Clinton | The White House         | 1390 Market Street  | San Francisco | CA    | 94102 | United States |        |        |
     Then Expect "Exact Address Not Found" module to appear
     And Select row 1 from Exact Address Not Found module
-    Then Expect Recipient Name to be Hillary Clinton
-    Then Expect Company Name to be The White House
-    Then Expect City to be San Francisco
-    Then Expect State to be CA
-    Then Expect Zip Code to be 94102
+    Then Expect Order Grid - Recipient to be Hillary Clinton
+    Then Expect Order Grid - Company to be The White House
+    Then Expect Order Grid - City to be San Francisco
+    Then Expect Order Grid - State to be CA
+    Then Expect Order Grid - Zip to be 94102
     And Collapse Ship-To Address
     Then Set Service to Priority Mail Package
     And Sign out

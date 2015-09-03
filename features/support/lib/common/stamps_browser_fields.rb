@@ -19,6 +19,10 @@ module Stamps
       @field = field
     end
 
+    def field
+      @field
+    end
+
     def browser_helper
       BrowserHelper.instance
     end
@@ -67,16 +71,25 @@ module Stamps
     def text
       browser_helper.text @field
     end
+
+    def enabled?
+      browser_helper.enabled? @field
+    end
+
+    def disabled?
+      browser_helper.disabled? @field
+    end
+
   end
 
-  class TextBox < Label
+  class Textbox < Label
     def set text
       browser_helper.set_text @field, text
       self
     end
   end
 
-  class DropDown < BrowserObject
+  class Dropdown < BrowserObject
     def initialize browser, drop_down_button, selection_field_type, drop_down_input
       super browser
       @drop_down = drop_down_button

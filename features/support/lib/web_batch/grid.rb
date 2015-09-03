@@ -2,31 +2,33 @@ module Batch
 
   class GridBase < BrowserObject
     GRID_COLUMNS ||= {
-        :ship_cost => [2, 'Ship Cost'],
-        :age => [3, 'Age'],
-        :order_id => [4, 'Order ID'],
-        :order_date => [5, 'Order Date'],
-        :recipient => [6, 'Receipient'],
-        :company => [7, 'Company'],
-        :street_address => [8, 'Address'],
-        :city => [9, 'City'],
-        :state => [10, 'State'],
-        :zip => [11, 'Zip'],
-        :phone => [12, 'Phone'],
-        :email => [13, 'Email'],
-        :qty => [14, 'Qty.'],
-        :item_sku => [15, 'Item SKU'],
-        :item_name => [16, 'Item Name'],
-        :ship_from => [17, 'Ship From'],
-        :service_input_text => [18, 'Service'],
-        :weight => [19, 'Weight'],
-        :insured_value => [20, 'Insured Value'],
-        :reference_no => [21, 'Reference No.'],
-        :cost_code => [22, 'Cost Code'],
-        :order_status => [23, 'Order Status'],
-        :ship_date => [24, 'Ship Date'],
-        :tracking => [25, 'Tracking #'],
-        :order_total => [26, 'Order Total']
+        :check_all => " ",
+        :ship_cost => "Ship Cost",
+        :age => "Age",
+        :order_id => "Order ID",
+        :order_date => "Order Date",
+        :recipient => "Recipient",
+        :company => "Company",
+        :address => "Address",
+        :city => "City",
+        :state => "State",
+        :zip => "Zip",
+        :country => "Country",
+        :phone => "Phone",
+        :email => "Email",
+        :qty => "Qty.",
+        :item_sku => "Item SKU",
+        :description => "Item Name",
+        :ship_from => "Ship From",
+        :service => "Service",
+        :weight => "Weight",
+        :insured_value => "Insured Value",
+        :reference_no => "Reference No.",
+        :cost_code => "Cost Code",
+        :order_status => "Order Status",
+        :ship_date => "Ship Date",
+        :tracking => "Tracking #",
+        :order_total => "Order Total"
     }
 
     def browser_helper
@@ -37,35 +39,92 @@ module Batch
       TestHelper.instance
     end
 
-    def grid_text(column, row)
-      test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}")
+    def grid_text column, row
+      text = test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}")
+      log text
+      text
     end
 
-    def grid_field(column, row)
-      @browser.div(:css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (row.to_s) +")>tbody>tr>td:nth-child("+GRID_COLUMNS[column].first.to_s+")>div")
-    end
-
-    def order_id(row)
+    def grid_field column, row
+      column_str = GRID_COLUMNS[column]
+      column_index = column_number(column_str).to_s
+      css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_index})>div"
+      log "#{column_str}, row #{row} CSS: #{css}"
+      field = @browser.div :css => css
+      log "#{column_str}, row #{row} field.present? #{browser_helper.present? field}"
       begin
-        grid_field(:order_id, row).wait_until_present
+        @browser.execute_script('arguments[0].scrollIntoView();', field)
       rescue
-        log "OrderID column on order grid is not present"
+        log "Unable to focus on #{column}, row #{row}"
       end
       begin
-        grid_text(:order_id, row)
+        log "Column: #{column}, Row: #{row} = #{browser_helper.text field}"
       rescue
-        return '0000'
+        #ignore
       end
+      field
     end
 
-    def row_number(order_id)
-      elements = @browser.divs :css => "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{GRID_COLUMNS[:order_id].first})>div"
-      elements.each_with_index { |div, index|
-        if div.text.casecmp order_id
-          return index + 1 #row offset
+    def column_number name
+      if Batch.grid_columns.nil?
+        Batch.grid_columns Hash.new
+        Batch.grid_column_fields @browser.spans :css => "span[id^=gridcolumn][class=x-column-header-text]"
+        log "Number of Grid Columns is #{Batch.grid_column_fields.size}"
+        Batch.grid_column_fields.each_with_index { |field, index|
+          begin
+            @browser.execute_script('arguments[0].scrollIntoView();', field)
+            log "Column #{name} - scrollIntoView(): #{browser_helper.present? field}"
+          rescue
+            log "Unable to focus on #{column}, row #{row}}"
+          end
+          column_name = browser_helper.text field
+          log "Grid Column Name:  #{column_name}, Index:  #{index}"
+          Batch.grid_columns[column_name] = (index+1).to_s
+
+        }
+        log Batch.grid_columns
+      end
+      log "#{name} => #{Batch.grid_columns[name]}"
+      index = Batch.grid_columns[name]
+      log "#{index}, #{index.class}"
+      begin
+        column_field = Batch.grid_column_fields[index.to_i]
+        @browser.execute_script('arguments[0].scrollIntoView();', column_field)
+        log "Grid #{name} Column visible? #{browser_helper.present? column_field}"
+      rescue
+        log "Failed to scroll column #{index} into view"
+      end
+      index
+    end
+
+    def row_number order_id
+      row = 1
+      css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_number(GRID_COLUMNS[:order_id])})>div"
+      log "Order ID: #{order_id} CSS: #{css}"
+      fields = @browser.divs :css => css
+      fields.each_with_index { |div, index|
+        row_text = browser_helper.text div
+        if row_text.include? order_id
+          row = index + 1 #row offset
+          log "Found it. Order ID #{order_id} is in Row #{row}"
+          break
         end
       }
+      row
     end
+
+      def order_id row
+        begin
+          grid_field(:order_id, row).wait_until_present
+        rescue
+          log "OrderID column on order grid is not present"
+        end
+        begin
+          grid_text(:order_id, row)
+        rescue
+          return '0000'
+        end
+      end
 
     def edit_order(order_id)
       check_row(row_number order_id)
@@ -108,6 +167,7 @@ module Batch
       table = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row})"
       class_attribute = browser_helper.attribute_value table, "class"
       selected = class_attribute.include? "selected"
+      log "Row #{row} checked? #{selected}"
       selected
     end
 
@@ -180,113 +240,164 @@ module Batch
       count.to_i
     end
 
-    def ship_cost(order_id)
-      grid_text(:ship_cost, row_number(order_id))
+    def ship_cost order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:ship_cost, row)
     end
 
-    def age(order_id)
-      grid_text(:age, row_number(order_id))
+    def age order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:age, row)
     end
 
-    def order_date(order_id)
-      grid_text(:order_date, row_number(order_id))
+    def order_date order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:order_date, row)
     end
 
-    def recipient(order_id)
-      grid_text(:recipient, row_number(order_id))
+    def recipient order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:recipient, row)
     end
 
-    def company(order_id)
-      grid_text(:company, row_number(order_id))
+    def company order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:company, row)
     end
 
-    def street_address(order_id)
-      grid_text(:street_address, row_number(order_id))
+    def address order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:address, row)
     end
 
-    def city(order_id)
-      grid_text(:city, row_number(order_id))
+    def city order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:city, row)
     end
 
-    def state(order_id)
-      grid_text(:state, row_number(order_id))
+    def state order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:state, row)
     end
 
-    def zip(order_id)
-      grid_text(:zip, row_number(order_id))
+    def zip order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:zip, row)
     end
 
-    def phone(order_id)
-      grid_text(:phone, row_number(order_id))
+
+    def country order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:country, row)
     end
 
-    def email(order_id)
-      grid_text(:email, row_number(order_id))
+    def phone order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:phone, row)
     end
 
-    def qty(order_id)
-      grid_text(:qty, row_number(order_id))
+    def email order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:email, row)
     end
 
-    def item_sku(order_id)
-      grid_text(:item_sku, row_number(order_id))
+    def qty order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:qty, row)
     end
 
-    def item_name(order_id)
-      grid_text(:item_name, row_number(order_id))
+    def item_sku order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:item_sku, row)
     end
 
-    def ship_from(order_id)
-      grid_text(:ship_from, row_number(order_id))
+    def item_name order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:description, row)
     end
 
-    def service(order_id)
-      grid_text(:service_input_text, row_number(order_id))
+    def ship_from order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:ship_from, row)
     end
 
-    def weight(order_id)
-      grid_text(:weight, row_number(order_id))
+    def service order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:service, row)
+    end
+
+    def weight order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      weight = grid_text(:weight, row)
+      log "Weight: #{weight}"
+      weight
     end
 
     # 5 lbs. 10 oz.
-    def pounds(order_id)
+    def pounds order_id
       weight(order_id).scan(/\d+ lbs./).first.scan(/\d/).first
     end
 
-    def ounces(order_id)
+    def ounces order_id
       weight(order_id).scan(/\d+ oz./).first.scan(/\d/).first
     end
 
-    def reference_no(order_id)
-      grid_text(:reference_no, row_number(order_id))
+    def reference_no order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:reference_no, row)
     end
 
-    def cost_code(order_id)
-      grid_text(:cost_code, row_number(order_id))
+    def cost_code order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:cost_code, row)
     end
 
-    def order_status(order_id)
-      grid_text(:order_status, row_number(order_id))
+    def order_status order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:order_status, row)
     end
 
-    def ship_date(order_id)
-      grid_text(:ship_date, row_number(order_id))
+    def ship_date order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:ship_date, row)
     end
 
-    def tracking_number(order_id)
-      grid_text(:tracking_number, row_number(order_id))
+    def tracking order_id
+      grid_text :tracking, row_number(order_id)
     end
 
-    def order_total(order_id)
-      grid_text(:order_total, row_number(order_id))
+    def order_total order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      grid_text(:order_total, row)
     end
 
-    def insured_value(order_id)
-      test_helper.remove_dollar_sign grid_text(:insured_value, row_number(order_id))
-    end
-
-    def list_all_fields(order_id)
-      GRID_COLUMNS.keys.each {|key| send(key, row_number(order_id))}
+    def insured_value order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+      test_helper.remove_dollar_sign grid_text(:insured_value, row)
     end
 
   end
