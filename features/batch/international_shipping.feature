@@ -15,6 +15,8 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
       Then Add Item with Quantity 1, ID random, Description random
 
+      And Open Customs Form
+
       Then Set Customs Form Package Contents = Commercial Sample
       Then Set Customs Form Package Contents = Document
       Then Set Customs Form Package Contents = Gift
@@ -22,12 +24,8 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents = Merchandise
       Then Set Customs Form Package Contents = Returned Goods
 
-
-
-
-
-
-
+  @international_address_printing
+  Scenario: User Prints International Address 1
       And I Add a new order
       Then Set Ship From to default
 
@@ -50,4 +48,4 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
-      Then Sign out
+
