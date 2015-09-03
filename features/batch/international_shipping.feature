@@ -15,6 +15,28 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
       Then Add Item with Quantity 1, ID random, Description random
 
+      Then Set Customs Form Package Contents = Commercial Sample
+      Then Set Customs Form Package Contents = Document
+      Then Set Customs Form Package Contents = Gift
+      Then Set Customs Form Package Contents = Humanitarian Donation
+      Then Set Customs Form Package Contents = Merchandise
+      Then Set Customs Form Package Contents = Returned Goods
+
+
+
+
+
+
+
+      And I Add a new order
+      Then Set Ship From to default
+
+      Then Set Ship-To Recipient to
+        | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+        | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
+
+      Then Add Item with Quantity 1, ID random, Description random
+
       And Open Customs Form
 
       Then Set Customs Form Package Contents = Merchandise

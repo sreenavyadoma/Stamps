@@ -23,12 +23,15 @@ module Batch
     end
 
     def package_contents_dd
-
       drop_down = @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
-      input = @browser.text_field :name => "ContentType"
+      input = pacakge_contents.field
       raise "ContentType is not present.  Check your CSS locator." unless browser_helper.present? input
       Dropdown.new @browser, drop_down, "li", input
+    end
+
+    def pacakge_contents
+      Textbox.new @browser.text_field :name => "ContentType"
     end
 
     def non_delivery_options_dd

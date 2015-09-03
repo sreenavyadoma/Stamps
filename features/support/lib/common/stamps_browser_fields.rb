@@ -19,6 +19,10 @@ module Stamps
       @field = field
     end
 
+    def field
+      @field
+    end
+
     def browser_helper
       BrowserHelper.instance
     end

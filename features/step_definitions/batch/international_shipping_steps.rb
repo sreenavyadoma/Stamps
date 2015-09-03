@@ -82,6 +82,8 @@ Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
     #Package Contents
     when "package contents"
       @customs_info.package_contents_dd.select value
+      contents = @customs_info.pacakge_contents.text
+      contents.should include value
       #Non-Delivery Options
     when "non-delivery options"
       @customs_info.non_delivery_options_dd.select value
