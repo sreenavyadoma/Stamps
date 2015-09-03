@@ -1,4 +1,4 @@
-@page
+@regression
 Feature: B-01746 Order Pagination
 
   Background:
