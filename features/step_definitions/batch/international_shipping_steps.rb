@@ -165,8 +165,8 @@ Given /^Delete Customs Form Item (\d+)$/ do |item_number|
 end
 
 Given /^Close Customs Information Modal$/ do
-  @customs_info = @single_order_form.customs_info if @customs_info.nil?
-  @customs_info.cancel
+  #@customs_info = @single_order_form.customs_info if @customs_info.nil?
+  #@customs_info.cancel
 end
 
 Given /^Expect Customs Information Modal to be present$/ do

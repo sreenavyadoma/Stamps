@@ -78,7 +78,7 @@ module Batch
             log "Unable to focus on #{column}, row #{row}}"
           end
           column_name = browser_helper.text field
-          log "Grid Column Name:  #{column_name}, Index:  #{index}"
+          log "#{column_name} is column #{index} on Order Grid."
           Batch.grid_columns[column_name] = (index+1).to_s
 
         }
