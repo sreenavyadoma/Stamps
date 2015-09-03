@@ -71,6 +71,15 @@ module Stamps
     def text
       browser_helper.text @field
     end
+
+    def enabled?
+      browser_helper.enabled? @field
+    end
+
+    def disabled?
+      browser_helper.disabled? @field
+    end
+
   end
 
   class Textbox < Label
