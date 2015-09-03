@@ -184,7 +184,9 @@ module Batch
   class Grid < GridBase
     public
 
-
+    def paging_toolbar
+      OrderGridPagingToolbar.new @browser
+    end
 
     def grid_present_span
       div = @browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]"
