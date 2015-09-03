@@ -25,4 +25,7 @@ Feature: B-01746 Order Pagination
     And Pagination control to go to page number is enabled
     Then Set Page Number to 2
 
+    And Sign out
+
+
 
