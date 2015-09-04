@@ -113,18 +113,26 @@ module Batch
       row
     end
 
-      def order_id row
-        begin
-          grid_field(:order_id, row).wait_until_present
-        rescue
-          log "OrderID column on order grid is not present"
-        end
-        begin
-          grid_text(:order_id, row)
-        rescue
-          return '0000'
-        end
+    def order_id row
+      begin
+        grid_field(:order_id, row).wait_until_present
+      rescue
+        log "OrderID column on order grid is not present"
       end
+      begin
+        grid_text(:order_id, row)
+      rescue
+        return '0000'
+      end
+    end
+
+    def row_div number
+      raise "row_div:  number can't be nil" if number.nil?
+      div = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div"
+      present = browser_helper.present? div
+      raise("Order Grid Row number #{number} is not present")unless browser_helper.present? div
+      div
+    end
 
     def edit_order(order_id)
       check_row(row_number order_id)
@@ -139,14 +147,6 @@ module Batch
       log "Row #{number} checked."
     end
 
-    def row_div number
-      raise "row_div:  number can't be nil" if number.nil?
-      div = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div"
-      present = browser_helper.present? div
-      raise("Order Grid Row number #{number} is not present")unless browser_helper.present? div
-      div
-    end
-
     def check_row(number)
       5.times do
         if row_checked?(number)
@@ -157,6 +157,23 @@ module Batch
         end
       end
       log "Row #{number} checked."
+    end
+
+    def select_all_checkbox
+      spans = @browser.spans :css => "span[class=x-column-header-text]"
+      checkbox_field = spans.first
+      check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
+      attribute = "class"
+      attrib_value_check = "checker-on"
+      Checkbox.new checkbox_field,check_verify_field, attribute, attrib_value_check
+    end
+
+    def select_all
+      select_all_checkbox.check
+    end
+
+    def unselect_all
+      select_all_checkbox.uncheck
     end
 
     def order_checked?(order_number)

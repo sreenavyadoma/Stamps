@@ -42,10 +42,11 @@ module Stamps
   end
 
   class Checkbox < ClickableField
-    def initialize checkbox, check_verify_field, attribute
-      super checkbox
-      @check_verify_field = check_verify_field
+    def initialize checkbox_field, verify_field, attribute, attrib_value_check
+      super checkbox_field
+      @verify_field = verify_field
       @attribute = attribute
+      @attrib_value_check = attrib_value_check
     end
 
     def check
@@ -63,7 +64,10 @@ module Stamps
     end
 
     def checked?
-      browser_helper.attribute_value @check_verify_field, @attribute
+      attrib_val = browser_helper.attribute_value @verify_field, @attribute
+      checked = attrib_val.include? @attrib_value_check
+      log "Checkbox checked? #{checked}"
+      checked
     end
   end
 
