@@ -1,14 +1,12 @@
 Feature: 10 orders
 
   Background:
-
-    Given Fail the test
+    Given I am signed in as a batch shipper
 
   @orders_10
   Scenario:  Order Creation
 
     # First Class Mail
-    Given I am signed in as a batch shipper
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
