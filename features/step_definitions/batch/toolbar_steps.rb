@@ -20,7 +20,9 @@ When /^Add a second order$/ do
 end
 
 Then /^Open Settings Modal$/ do
-
   batch.toolbar.open_settings
+end
 
+Then /^Fail the test$/ do
+  true.should eql  false
 end

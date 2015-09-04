@@ -7,7 +7,7 @@ Feature: 10 orders
   Scenario:  Order Creation
 
     # First Class Mail
-
+    Then Fail the test
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
