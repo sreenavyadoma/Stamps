@@ -7,5 +7,5 @@ Given /^I am signed in as a batch shipper$/ do
 end
 
 Then /^Sign out$/ do
-  batch.navigation_bar.sign_out
+  #batch.navigation_bar.sign_out
 end
