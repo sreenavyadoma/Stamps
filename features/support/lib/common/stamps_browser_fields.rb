@@ -91,6 +91,11 @@ module Stamps
       browser_helper.set_text @field, text
       self
     end
+
+    def send_keys special_char
+      browser_helper.send_keys @field, special_char
+      self
+    end
   end
 
   class Dropdown < BrowserObject

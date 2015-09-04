@@ -23,6 +23,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents = Humanitarian Donation
       Then Set Customs Form Package Contents = Merchandise
       Then Set Customs Form Package Contents = Returned Goods
+      Then Close Customs Information Modal
 
   @international_address_printing
   Scenario: User Prints International Address 1

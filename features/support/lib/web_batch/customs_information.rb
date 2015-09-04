@@ -122,6 +122,7 @@ module Batch
     end
 
     def i_agree agree
+=begin
       checkbox_field = (@browser.text_fields :css => "input[id^=checkboxfield-]").last
       verify_checked_field = (@browser.text_fields :css => "div[id^=checkboxfield][class*=x-field]").last
       checkbox = Checkbox.new checkbox_field, verify_checked_field, "class"
@@ -130,6 +131,7 @@ module Batch
       else
         #uncheck i agree
       end
+=end
     end
 
     def privacy_act_statement_link
@@ -173,15 +175,17 @@ module Batch
       }
     end
 
-    def x_window
-      img = @browser.img :css => "img[class*=x-tool-close]"
-      log "x button is #{(browser_helper.present? img)?'present' : 'not present'}"
+    def cancel
+      cancel_button = ClickableField.new @browser.img :css => "img[class$=x-tool-close]"
       5.times{
-        browser_helper.safe_click img
-        break unless browser_helper.present? img
+        begin
+          cancel_button.click
+          break unless cancel_button.present?
+        rescue
+          #ignore
+        end
       }
     end
-
   end
 
 end
