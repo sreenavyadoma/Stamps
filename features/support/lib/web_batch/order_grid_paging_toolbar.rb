@@ -76,7 +76,7 @@ module Batch
       #of 6
       number_str=label.text
       number = number_str.scan /\d+/
-      number.last.to_i
+      number.last.to_s
     end
 
     def per_page_dd

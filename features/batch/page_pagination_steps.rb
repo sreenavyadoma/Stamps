@@ -1,30 +1,10 @@
 #Pagination Controls are enabled
 
-Then /^Web Batch grid has more orders than value selected in 'number of orders per page' pagination control$/ do
-  #1 Count order grid items ordersgridpagingtoolbar
-  page_count = batch.grid.paging_toolbar.page_count.text
-  expect(page_count.to_i > 1).to be true
-  total_grid_count = batch.grid.total_grid_count
-  #2 Get per page count
-
-  #3 Compare
-end
-
-Then /^Set paging toolbar per page count to (\d+)$/ do |page_count|
-  log "Order Grid contains #{batch.grid.total_grid_count} orders"
-  batch.grid.paging_toolbar.per_page_dd.select page_count
-  log "Order Grid contains #{batch.grid.total_grid_count} orders"
-end
-
 Then /^User is on the first page of orders$/ do
-  log "Page Count = Page #{batch.grid.total_grid_count} orders"
+  log "Page Count = Page #{batch.grid.grid_page_order_count} orders"
   page_count = batch.grid.paging_toolbar.page_count.text
   log "Page Count = Page #{page_count}"
   expect(page_count.to_i = 1).to be true
-end
-
-Then /^User is not on the first page of orders$/ do
-
 end
 
 Then /^User clicks first page pagination control$/ do
@@ -45,10 +25,6 @@ end
 Then /^User clicks last page pagination control$/ do
   paging_toolbar = batch.grid.paging_toolbar
   paging_toolbar.last_page.click
-end
-
-Then /^Expect page toolbar pagination count to be correct$/ do
-
 end
 
 Then /^Pagination control to go to first page is (\w+)$/ do |first_pagination_enabled|
@@ -153,6 +129,15 @@ Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
   end
 end
 
+Then /^Set paging toolbar orders per page count to (\d+)$/ do |page_count|
+  #log "Order Grid contains #{batch.grid.grid_page_order_count} orders"
+  log "Per page count is #{batch.grid.paging_toolbar.page_count.text} orders"
+  batch.grid.paging_toolbar.per_page_dd.select page_count
+  #log "Order Grid contains #{batch.grid.grid_page_order_count} orders"
+  log "Per page count is #{batch.grid.paging_toolbar.page_count.text} orders"
+  expect(page_count.to_i > 1).to be true
+end
+
 When /^Set Page Number to (\d*)$/ do |value|
   begin
     log "Set Page Number to \"#{value}\""
@@ -172,6 +157,25 @@ When /^Set Page Number to (\d*)$/ do |value|
   end unless value.length == 0
 end
 
+Then /^Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
+  log "Passed value is #{total_number_of_pages}"
+  browser_total_number_of_pages = batch.grid.paging_toolbar.total_number_of_pages.to_s
+  log "DD value is #{browser_total_number_of_pages}"
+  test_result = browser_total_number_of_pages.include? total_number_of_pages
+  log "#{(test_result)?'Test Passed.':'Test Failed'}"
+  test_result.should be true
+  #expect(total_number_of_pages).should be eql expect(browser_total_number_of_pages)
+end
+
+Then /^Expect number of orders on page to be correct$/ do
+  batch.grid.select_all
+  multi_order_count = batch.multi_order.order_count.to_s
+  per_page_count = batch.grid.paging_toolbar.page_count.text
+  test_result = multi_order_count.include? per_page_count
+  log "#{(test_result)?'Test Passed.':'Test Failed'}"
+  batch.grid.unselect_all
+  test_result.should be true
+end
 
 #Pagination Controls are disabled
 
@@ -194,3 +198,14 @@ end
 Then /^pagination control to go to last page is disabled$/ do
 
 end
+
+Then /^Web Batch grid has more orders than value selected in 'number of orders per page' pagination control$/ do
+  #1 Count order grid items ordersgridpagingtoolbar
+  page_count = batch.grid.paging_toolbar.page_count.text
+  expect(page_count.to_i > 1).to be true
+  total_grid_count = batch.grid.grid_page_order_count
+  #2 Get per page count
+
+  #3 Compare
+end
+

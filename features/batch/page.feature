@@ -4,8 +4,20 @@ Feature: B-01746 Order Pagination
   Background:
     Given I am signed in as a batch shipper webbatch_0009/password1
 
-  @page_controls
-  Scenario: Go to Next, Last, Previous and First Pages
+  @page_count
+  Scenario: Set per page count
+    Then Set paging toolbar orders per page count to 500
+    Then Expect number of orders on page to be correct
+    Then Expect Total Number of Pages to be 2
+    Then Set paging toolbar orders per page count to 250
+    Then Expect Total Number of Pages to be 3
+    Then Expect number of orders on page to be correct
+    Then Set paging toolbar orders per page count to 100
+    Then Expect Total Number of Pages to be 6
+    Then Expect number of orders on page to be correct
+
+  #@page_controls
+  #Scenario: Go to Next, Last, Previous and First Pages
     Then Expect page toolbar First Page is disabled
     Then Expect page toolbar Previous Page is disabled
     And Pagination control to go to next page is enabled
