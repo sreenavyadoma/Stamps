@@ -167,6 +167,8 @@ module Stamps
       end
     end
 
+
+
     def click *args
       case args.length
         when 1

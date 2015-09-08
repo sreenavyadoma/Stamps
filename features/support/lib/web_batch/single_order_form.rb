@@ -229,12 +229,6 @@ module Batch
       @browser.label(:text => 'Total').parent.labels.last
     end
 
-    def add_item_button
-      add_item = ClickableField.new @browser.span :text => "Add Item"
-      log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
-      add_item
-    end
-
     public
     def initialize browser
       super browser
@@ -279,13 +273,17 @@ module Batch
     end
 
     def international_address
-      InternationalShipAddress.new @browser
+      InternationalShipping.new @browser
     end
 
     def add_item
+      add_item = ClickableField.new @browser.span :text => "Add Item"
+      log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
+      add_item
+
       line_item = SingleOrderFormLineItem.new @browser
       5.times{
-        add_item_button.safe_click
+        add_item.safe_click
         line_item.wait_until_present
         break if line_item.present?
       }

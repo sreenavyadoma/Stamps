@@ -15,6 +15,8 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
       Then Add Item with Quantity 1, ID random, Description random
 
+      Then Expect Single Order Form International Address fields are visible
+
       And Open Customs Form
 
       Then Set Customs Form Package Contents = Commercial Sample
@@ -24,6 +26,8 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents = Merchandise
       Then Set Customs Form Package Contents = Returned Goods
       Then Close Customs Information Modal
+
+      Then Set Ship-To Recipient to asdf
 
   @international_address_printing
   Scenario: User Prints International Address 1

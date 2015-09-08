@@ -5,6 +5,10 @@ Then /^Set Ship-To country to (.*)$/ do |country|
   @international_address = @single_order_form.international_address
 end
 
+Then /^Set Ship-To Recipient to (.*)$/ do |address|
+
+end
+
 # random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
 Given /^Set Ship-To Recipient to$/ do |table|
   param_hash = table.hashes.first
@@ -57,7 +61,7 @@ Then /^Set International Ship-To ([\w \d]+) to (.*)/ do |ship_to_field, value |
     when "address 2"
       @international_address.address_2 ((value.downcase == "random")? test_helper.random_suite : value)
     when "city"
-      @international_address.city.set value
+      @international_address.city value
     when "province"
       @international_address.province value
     when "postal code"
@@ -69,6 +73,18 @@ Then /^Set International Ship-To ([\w \d]+) to (.*)/ do |ship_to_field, value |
     else
       raise "Illegal Argument Exception.  #{ship_to_field} is not a valid Ship-To field"
   end
+end
+
+Given /^Expect Single Order Form International Address fields are visible$/ do
+  @international_address.name.present?.should be true
+  @international_address.company.present?.should be true
+  @international_address.address_1.present?.should be true
+  @international_address.address_2.present?.should be true
+  @international_address.city.present?.should be true
+  @international_address.province.present?.should be true
+  @international_address.postal_code.present?.should be true
+  @international_address.phone.present?.should be true
+  @international_address.email.present?.should be true
 end
 
 Given /^Open Customs Form$/ do
@@ -129,11 +145,6 @@ Given /^Add Item with Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qt
 end
 
 Given /^Expect Single Order Form ([\w -]+) field is hidden$/ do |field_name|
-end
-
-Given /^Expect Single Order Form International Address fields are visible$/ do
-  #browser_helper
-
 end
 
 Given /^Expect International Ship-To ([\w ]+) Field Attributes are correct$/ do |field_name|

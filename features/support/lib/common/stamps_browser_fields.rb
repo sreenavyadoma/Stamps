@@ -31,6 +31,10 @@ module Stamps
       browser_helper.present? @field
     end
 
+    def style style_property
+      browser_helper.style style_property
+    end
+
     def click
       browser_helper.click @field
     end
