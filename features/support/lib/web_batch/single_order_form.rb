@@ -227,6 +227,10 @@ module Batch
       CustomsInformation.new @browser
     end
 
+    def international
+      InternationalShipping.new @browser
+    end
+
     def edit_form
       customs = customs_info
       edit_form_button = @browser.span :text => "Edit Form..."
@@ -278,10 +282,6 @@ module Batch
         break if textbox.present?
         dd.safe_click
       }
-    end
-
-    def international_shipping
-      InternationalShipping.new @browser
     end
 
     def add_item
