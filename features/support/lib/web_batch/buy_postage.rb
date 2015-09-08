@@ -61,7 +61,7 @@ class BuyPostage < BrowserObject
 
   def buy_other(value)
     buy_other_button.click
-    browser_helper.set_text buy_other_textbox, value, 'Buy'
+    browser_helper.set buy_other_textbox, value, 'Buy'
     self
   end
 

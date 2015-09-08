@@ -15,7 +15,7 @@ module Batch
     end
 
     def origin_zip=(zip)
-      browser_helper.set_text origin_zip_field, zip, "origin_zip"
+      browser_helper.set origin_zip_field, zip, "origin_zip"
     end
 
     def origin_zip
@@ -23,19 +23,19 @@ module Batch
     end
 
     def name=(name)
-      browser_helper.set_text name_field, name, "name_field"
+      browser_helper.set name_field, name, "name_field"
     end
 
     def company=(company)
-      browser_helper.set_text company_field, company, "company_field"
+      browser_helper.set company_field, company, "company_field"
     end
 
     def street_address1=(street)
-      browser_helper.set_text street_address1_field, street, "street_address1_field"
+      browser_helper.set street_address1_field, street, "street_address1_field"
     end
 
     def street_address2=(street)
-      browser_helper.set_text street_address2_field, street, "street_address2_field"
+      browser_helper.set street_address2_field, street, "street_address2_field"
     end
 
     def state_dd_button
@@ -43,7 +43,7 @@ module Batch
     end
 
     def city=(city)
-      browser_helper.set_text city_text_field, city, "state_field"
+      browser_helper.set city_text_field, city, "state_field"
     end
 
     def state=(state)
@@ -51,11 +51,11 @@ module Batch
     end
 
     def zip=(code)
-      browser_helper.set_text zip_field, code, "zip_field"
+      browser_helper.set zip_field, code, "zip_field"
     end
 
     def phone=(number)
-      browser_helper.set_text phone_field, number, "phone_field"
+      browser_helper.set phone_field, number, "phone_field"
     end
 
     def save

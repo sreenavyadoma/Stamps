@@ -65,7 +65,7 @@ module Batch
     def ship_date=date
       5.times{
         begin
-          browser_helper.set_text ship_date_input, date
+          browser_helper.set ship_date_input, date
           sleep(1)
           text = browser_helper.text ship_date_input
           done = text.include? date

@@ -9,13 +9,15 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       And I Add a new order
       Then Set Ship From to default
 
+      Then Set Ship-To country to Canada
+      Then Expect Single Order Form International Address fields are visible
+      Then Expect Single Order Form Domestic Ship-To fields are hidden
+
       Then Set Ship-To Recipient to
         | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
         | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
       Then Add Item with Quantity 1, ID random, Description random
-
-      Then Expect Single Order Form International Address fields are visible
 
       And Open Customs Form
 
