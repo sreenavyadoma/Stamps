@@ -31,6 +31,10 @@ module Stamps
       browser_helper.present? @field
     end
 
+    def style style_property
+      browser_helper.style style_property
+    end
+
     def click
       browser_helper.click @field
     end
@@ -89,6 +93,11 @@ module Stamps
   class Textbox < Label
     def set text
       browser_helper.set_text @field, text
+      self
+    end
+
+    def send_keys special_char
+      browser_helper.send_keys @field, special_char
       self
     end
   end

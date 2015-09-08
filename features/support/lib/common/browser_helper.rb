@@ -78,6 +78,33 @@ module Stamps
       set_text args
     end
 
+    def send_keys *args
+      case args.length
+        when 2
+          field = args[0]
+          text = args[1]
+          field_name = ""
+        when 3
+          field = args[0]
+          text = args[1]
+          field_name = args[2]
+        else
+          raise "Wrong number of arguments for BrowserHelper.set_text method."
+      end
+
+      5.times do
+        begin
+          field.focus
+          field.clear
+          field.send_keys log_browser_set(field, text, field_name)
+        rescue
+          #ignore
+        end
+        actual_value =  field_text(field)
+        break if (actual_value.include? text) || (text.include? actual_value)
+      end
+    end
+
     def set_text *args
       case args.length
         when 2
@@ -139,6 +166,8 @@ module Stamps
         #ignore
       end
     end
+
+
 
     def click *args
       case args.length

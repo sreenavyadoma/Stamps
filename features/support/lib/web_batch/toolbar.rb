@@ -3,13 +3,12 @@ module Batch
   #  Contains Add/Edit buton for orders.
   #
   class Toolbar < BrowserObject
-    private
 
-    def settings_button
-      @browser.span :css => 'span[class*=sdc-btn-settings]'
+    def browser_settings_button
+      ClickableField.new @browser.span :css => 'span[class*=sdc-btn-settings]'
     end
 
-    def print_button
+    def browser_print_button
       button1 = @browser.elements(:text => 'Print').first
       button1_present = browser_helper.present? button1
       button2 = @browser.elements(:text => 'Print').last
@@ -21,7 +20,7 @@ module Batch
     def open_print_window window
       order_grid = Grid.new @browser
       checked_rows_hash = order_grid.checked_rows
-      browser_helper.click print_button, "print"
+      browser_helper.click browser_print_button, "print"
       naws_plugin_error = NawsPluginError.new @browser
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
       install_plugin_error = ErrorInstallPlugin.new @browser
@@ -53,26 +52,24 @@ module Batch
 
           return window if window.present?
           order_grid.check_rows checked_rows_hash
-          browser_helper.click print_button, "print"
+          browser_helper.click browser_print_button, "print"
         rescue
           #ignore
         end
       }
     end
 
-    public
-
-    def add_button
-      span = @browser.span :text => 'Add'
-      log "Toolbar Add button is #{(browser_helper.present? span)?'present':'NOT present'}"
-      span
+    def browser_add_button
+      field = ClickableField.new @browser.span :text => 'Add'
+      log "Toolbar Add button is #{(field.present?)?'present':'NOT present'}"
+      field
     end
 
     def add
       single_order_form = SingleOrderForm.new @browser
       20.times do |count|
         begin
-          browser_helper.click add_button, 'Add'
+          browser_helper.click browser_add_button, 'Add'
           log "#{count} Single Order Form present?  #{single_order_form.present?}"
           sleep 1
           return single_order_form if single_order_form.present?
@@ -106,7 +103,7 @@ module Batch
 
     def wait_until_present
       begin
-        add_button.wait_until_present 15
+        browser_add_button.wait_until_present 15
       rescue
         #ignroe
       end
@@ -114,7 +111,7 @@ module Batch
     end
 
     def present?
-      browser_helper.present? add_button
+      browser_helper.present? browser_add_button
     end
 
     def settings_modal
@@ -123,7 +120,7 @@ module Batch
 
     def open_settings
       sleep 1
-      browser_helper.click settings_button, 'Settings'
+      browser_settings_button.click
     end
   end
 end
