@@ -98,13 +98,17 @@ Then /^Expect Single Order Form Customs (.+) button is (.+)/ do |button, expecta
     when "restrictions"
       case expectation.downcase
         when "visible"
+          @single_order_form.customs.browser_restrictions_button.present?.should be true
+          @single_order_form.customs.restrictions.ok
         when "hidden"
+          @single_order_form.customs.browser_restrictions_button.present?.should be false
         else
           raise "Illegal argument exception"
       end
     when "edit form"
       case expectation.downcase
         when "visible"
+          @single_order_form.customs.browser_edit_form_button.present?.should be true
         when "hidden"
         else
           raise "Illegal argument exception"
@@ -115,11 +119,11 @@ Then /^Expect Single Order Form Customs (.+) button is (.+)/ do |button, expecta
 end
 
 Given /^Open Customs Form$/ do
-  @single_order_form.edit_form
+  @single_order_form.customs.edit_form
 end
 
 Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
-  @customs_info = @single_order_form.customs_info if @customs_info.nil?
+  @customs_info = @single_order_form.customs_form if @customs_info.nil?
 
   case field.downcase
     #Package Contents
@@ -159,7 +163,7 @@ end
 
 Given /^Set Customs Form I agree to (\w+)$/ do |agree_str|
   i_agree = agree_str.downcase == "true"
-  @customs_info = @single_order_form.customs_info if @customs_info.nil?
+  @customs_info = @single_order_form.customs_form if @customs_info.nil?
 
   @customs_info.i_agree i_agree
 end
@@ -203,7 +207,7 @@ Given /^Delete Customs Form Item (\d+)$/ do |item_number|
 end
 
 Given /^Close Customs Information Modal$/ do
-  @customs_info = @single_order_form.customs_info if @customs_info.nil?
+  @customs_info = @single_order_form.customs_form if @customs_info.nil?
   @customs_info.cancel
 end
 

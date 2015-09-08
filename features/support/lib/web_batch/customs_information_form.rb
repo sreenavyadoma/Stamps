@@ -15,7 +15,7 @@ module Batch
 
   end
 
-  class CustomsInformation < BrowserObject
+  class CustomsInformationForm < BrowserObject
     public
 
     def present?

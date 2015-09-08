@@ -1,5 +1,53 @@
 module Batch
 
+  class ViewRestrictions < BrowserObject
+    def browser_ok_button
+      ClickableField.new @browser.span :text => "OK"
+    end
+
+    def present?
+      browser_ok_button.present?
+    end
+
+    def ok
+      browser_ok_button.safe_click
+    end
+  end
+
+  class Customs < BrowserObject
+
+    def browser_edit_form_button
+      ClickableField.new @browser.span :text => "Edit Form..."
+    end
+
+    def edit_form
+      customs = CustomsInformationForm.new @browser
+      edit_form_button = browser_edit_form_button
+      5.times{
+        browser_helper.safe_click edit_form_button
+        break if customs.present?
+      }
+      raise "Customs Information Modal is not visible." unless customs.present?
+    end
+
+    def browser_restrictions_button
+      ClickableField.new @browser.span :text => "Restrictions..."
+    end
+
+    def restrictions
+      restrictions_button = browser_restrictions_button
+      view_restrictions = ViewRestrictions.new @browser
+      5.times{
+        restrictions_button.safe_click
+        if view_restrictions.present?
+          return view_restrictions
+        end
+      }
+      nil
+    end
+
+  end
+
   class SingleOrderFormLineItem < BrowserObject
     def remove_field
       @browser.span :css => "span[class*=sdc-icon-remove]"
@@ -218,27 +266,22 @@ module Batch
     end
 
     public
+
     def initialize browser
       super browser
       @services ||= Hash.new
-    end
-
-    def customs_info
-      CustomsInformation.new @browser
     end
 
     def international
       InternationalShipping.new @browser
     end
 
-    def edit_form
-      customs = customs_info
-      edit_form_button = @browser.span :text => "Edit Form..."
-      5.times{
-        browser_helper.safe_click edit_form_button
-        break if customs.present?
-      }
-      raise "Customs Information Modal is not visible." unless customs.present?
+    def customs_form
+      CustomsInformationForm.new @browser
+    end
+
+    def customs
+      Customs.new @browser
     end
 
     def ship_to_dd

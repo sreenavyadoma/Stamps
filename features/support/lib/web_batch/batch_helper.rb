@@ -9,7 +9,7 @@ module Batch
       credentials[rand(credentials.size)]
     end
 
-    def format_address_arr(address_array)
+    def format_address_arr address_array
       address = ""
       if address_array.is_a?(Array)
         address_array.each_with_index { |element, index|
@@ -26,7 +26,7 @@ module Batch
       address
     end
 
-    def format_address(address)
+    def format_address address
       if address.is_a?(Hash)
         name = address['name'].to_s.strip
         log "name: #{name}"
