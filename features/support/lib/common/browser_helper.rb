@@ -65,7 +65,7 @@ module Stamps
     def text *args
       case args.length
         when 1
-          field_text(args[0])
+          field_text args[0]
         when 2
           text = field_text(args[0])
           log_browser_get(args[0], text, args[1])
@@ -75,7 +75,7 @@ module Stamps
     end
 
     def text=(*args)
-      set_text args
+      set args
     end
 
     def send_keys *args
@@ -105,7 +105,7 @@ module Stamps
       end
     end
 
-    def set_text *args
+    def set *args
       case args.length
         when 2
           field = args[0]
@@ -216,7 +216,7 @@ module Stamps
       end
     end
 
-    def present?(field)
+    def present? field
       begin
         field.present?
       rescue

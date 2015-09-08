@@ -92,7 +92,7 @@ module Stamps
 
   class Textbox < Label
     def set text
-      browser_helper.set_text @field, text
+      browser_helper.set @field, text
       self
     end
 

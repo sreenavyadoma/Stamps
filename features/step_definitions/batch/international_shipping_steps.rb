@@ -2,7 +2,7 @@
 Then /^Set Ship-To country to (.*)$/ do |country|
   @single_order_form = batch.single_order_form
   @single_order_form.ship_to_dd.select country
-  @international_address = @single_order_form.international_address
+  @international_ship_to = @single_order_form.international_shipping
 end
 
 Then /^Set Ship-To Recipient to (.*)$/ do |address|
@@ -47,44 +47,50 @@ Given /^Set Ship-To Recipient to$/ do |table|
 end
 
 Then /^Set International Ship-To ([\w \d]+) to (.*)/ do |ship_to_field, value |
-  if @international_address.nil?
+  if @international_ship_to.nil?
     raise "Illegal State Exception.  @international_shipping is nil.  Set Ship-To Country first before populating international address fields"
   end
 
   case ship_to_field.downcase
     when "name"
-      @international_address.name ((value.downcase == "random")? test_helper.random_name : value)
+      @international_ship_to.name ((value.downcase == "random")? test_helper.random_name : value)
     when "company"
-      @international_address.company ((value.downcase == "random")? test_helper.random_company_name : value)
+      @international_ship_to.company ((value.downcase == "random")? test_helper.random_company_name : value)
     when "address 1"
-      @international_address.address_1 value
+      @international_ship_to.address_1 value
     when "address 2"
-      @international_address.address_2 ((value.downcase == "random")? test_helper.random_suite : value)
+      @international_ship_to.address_2 ((value.downcase == "random")? test_helper.random_suite : value)
     when "city"
-      @international_address.city value
+      @international_ship_to.city value
     when "province"
-      @international_address.province value
+      @international_ship_to.province value
     when "postal code"
-      @international_address.postal_code value
+      @international_ship_to.postal_code value
     when "phone"
-      @international_address.phone ((value.downcase == "random")? test_helper.random_phone : value)
+      @international_ship_to.phone ((value.downcase == "random")? test_helper.random_phone : value)
     when "email"
-      @international_address.email ((value.downcase == "random")? test_helper.random_email : value)
+      @international_ship_to.email ((value.downcase == "random")? test_helper.random_email : value)
     else
       raise "Illegal Argument Exception.  #{ship_to_field} is not a valid Ship-To field"
   end
 end
 
 Given /^Expect Single Order Form International Address fields are visible$/ do
-  @international_address.name.present?.should be true
-  @international_address.company.present?.should be true
-  @international_address.address_1.present?.should be true
-  @international_address.address_2.present?.should be true
-  @international_address.city.present?.should be true
-  @international_address.province.present?.should be true
-  @international_address.postal_code.present?.should be true
-  @international_address.phone.present?.should be true
-  @international_address.email.present?.should be true
+  @international_ship_to.name.present?.should be true
+  @international_ship_to.company.present?.should be true
+  @international_ship_to.address_1.present?.should be true
+  @international_ship_to.address_2.present?.should be true
+  @international_ship_to.city.present?.should be true
+  @international_ship_to.province.present?.should be true
+  @international_ship_to.postal_code.present?.should be true
+  @international_ship_to.phone.present?.should be true
+  @international_ship_to.email.present?.should be true
+end
+
+Then /^Expect Single Order Form Domestic Ship-To fields are hidden$/ do
+  @single_order_form.browser_ship_to_textbox.present?.should be false
+  @single_order_form.browser_email_textbox.present?.should be false
+  @single_order_form.browser_phone_textbox.present?.should be false
 end
 
 Given /^Open Customs Form$/ do

@@ -116,11 +116,11 @@ module Batch
     end
 
     def username=(username)
-      browser_helper.set_text username_textbox, username, 'Username'
+      browser_helper.set username_textbox, username, 'Username'
     end
 
     def password=(password)
-      browser_helper.set_text password_textbox, password, 'Password'
+      browser_helper.set password_textbox, password, 'Password'
     end
 
     def sign_in_button

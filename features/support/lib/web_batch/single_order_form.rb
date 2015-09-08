@@ -128,10 +128,6 @@ module Batch
       }
     end
 
-    def address_textbox
-      @browser.textarea :name => 'FreeFormAddress'
-    end
-
     def validate_address_link
       @browser.span :text => 'Validate Address'
     end
@@ -152,16 +148,8 @@ module Batch
       @browser.label :css => 'label[class*=insurance_cost]'
     end
 
-    def phone_textbox
-      @browser.text_field :name => 'Phone'
-    end
-
-    def email_textbox
-      @browser.text_field :name => 'Email'
-    end
-
     def ship_from_dropdown
-      @browser.div :css => 'div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]'
+      @browser.div :css => "div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]"
     end
 
     def ship_from_default_selection
@@ -169,7 +157,7 @@ module Batch
     end
 
     def insured_value_textbox
-      @browser.text_field :name => 'InsuranceAmount'
+      @browser.text_field :name => "InsuranceAmount"
     end
 
     def pounds_textbox
@@ -250,29 +238,49 @@ module Batch
     end
 
     def ship_to_dd
-      drop_down = (@browser.divs :css => "div[id^=combobox-][id$=-trigger-picker]")[1]
-      raise "Single Order Form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? drop_down
-      input = (@browser.text_fields :name => "CountryCode").first
+      domestic = @browser.div :css => "div[id=shiptoview-domestic-innerCt]>div:nth-child(1)>div>div>div:nth-child(1)>div>div>div:nth-child(2)"
+      international = @browser.div :css => "div[id=shiptoview-international-innerCt]>div:nth-child(1)>div>div>div:nth-child(1)>div>div>div:nth-child(2)"
+      if browser_helper.present? domestic
+        dd = domestic
+      elsif browser_helper.present? international
+        dd = international
+      end
+      raise "Single Order Form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? dd
+      text_fields = @browser.text_fields :name => "CountryCode"
+      domestic_input = text_fields.first
+      international_input = text_fields[1]
+      if browser_helper.present? domestic_input
+        input = domestic_input
+      elsif browser_helper.present? international_input
+        input = international_input
+      end
+
       raise "Single Order Form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, dd, "li", input
     end
 
-    def ship_to_dropdown
-      @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
+    def browser_ship_to_dd_button
+      ClickableField.new @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
     end
 
     def less_dropdown
       @browser.span :text => 'Less'
     end
 
+    def browser_ship_to_textbox
+      Textbox.new @browser.textarea :name => 'FreeFormAddress'
+    end
+
     def expand_ship_to
+      textbox = browser_ship_to_textbox
+      dd = browser_ship_to_dd_button
       5.times {
-        break if browser_helper.present?  address_textbox
-        browser_helper.click ship_to_dropdown, "ship_to_address_field" if browser_helper.present?  ship_to_dropdown
+        break if textbox.present?
+        dd.safe_click
       }
     end
 
-    def international_address
+    def international_shipping
       InternationalShipping.new @browser
     end
 
@@ -404,18 +412,19 @@ module Batch
       self.height = data[:height]
     end
 
-    def ship_to_address *args
+    def ship_to *args
+      textbox = browser_ship_to_textbox
       case args.length
         when 0
           expand_ship_to
-          browser_helper.text address_textbox
+          textbox.text
           less
         when 1
           expand_ship_to
-          browser_helper.set_text self.address_textbox, BatchHelper.instance.format_address(args[0]), 'Address'
+          textbox.set BatchHelper.instance.format_address(args[0])
           if args[0].is_a? Hash
-            self.phone = args[0]["phone"]
-            self.email = args[0]["email"]
+            self.phone args[0]["phone"]
+            self.email args[0]["email"]
           end
           AddressNotFound.new(@browser)
         else
@@ -423,27 +432,39 @@ module Batch
       end
     end
 
-    def email=(email)
+    def browser_email_textbox
+      Textbox.new @browser.text_field :name => 'Email'
+    end
+
+    def email *args
+      textbox = browser_email_textbox
       expand_ship_to
-      browser_helper.set_text email_textbox, email, 'Email'
+      case args.length
+        when 0
+          textbox.text
+        when 1
+          textbox.set args[0]
+        else
+          raise "Illegal number of argument exception"
+      end
       less
     end
 
-    def email
-      expand_ship_to
-      log email_textbox.attribute_value('value')
-      less
+    def browser_phone_textbox
+      Textbox.new @browser.text_field :name => 'Phone'
     end
 
-    def phone
+    def phone *args
+      textbox = browser_phone_textbox
       expand_ship_to
-      phone_textbox.attribute_value('value')
-      less
-    end
-
-    def phone=(phone)
-      expand_ship_to
-      browser_helper.set_text phone_textbox, phone, 'Phone'
+      case args.length
+        when 0
+          textbox.text
+        when 1
+          textbox.set args[0]
+        else
+          raise "Illegal number of argument exception"
+      end
       less
     end
 
@@ -485,7 +506,7 @@ module Batch
     end
 
     def pounds=(pounds)
-      browser_helper.set_text pounds_textbox, pounds, 'Pounds'
+      browser_helper.set pounds_textbox, pounds, 'Pounds'
       click_item_label
     end
 
@@ -506,7 +527,7 @@ module Batch
     end
 
     def ounces=(ounces)
-      browser_helper.set_text ounces_textbox, ounces, 'Ounces'
+      browser_helper.set ounces_textbox, ounces, 'Ounces'
       click_item_label
     end
 
@@ -531,7 +552,7 @@ module Batch
     end
 
     def insured_value=(amount)
-      browser_helper.set_text insured_value_textbox, amount, 'Insurance'
+      browser_helper.set insured_value_textbox, amount, 'Insurance'
       click_item_label
     end
 
@@ -540,7 +561,7 @@ module Batch
     end
 
     def length=(length)
-      browser_helper.set_text length_textbox, length, 'Length'
+      browser_helper.set length_textbox, length, 'Length'
       click_item_label
     end
 
@@ -549,7 +570,7 @@ module Batch
     end
 
     def width=(width)
-      browser_helper.set_text width_textbox, width, 'Width'
+      browser_helper.set width_textbox, width, 'Width'
       click_item_label
     end
 
@@ -558,7 +579,7 @@ module Batch
     end
 
     def height=(height)
-      browser_helper.set_text height_textbox, height, 'Height'
+      browser_helper.set height_textbox, height, 'Height'
       click_item_label
     end
 

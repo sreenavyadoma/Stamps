@@ -40,7 +40,7 @@ module Batch
       single_order_form = SingleOrderFormBase.new(@browser)
       single_order_form.validate_address_link
       single_order_form.expand_ship_to
-      browser_helper.set_text single_order_form.address_textbox, BatchHelper.instance.format_address(partial_address_hash), 'Address'
+      browser_helper.set single_order_form.browser_ship_to_textbox, BatchHelper.instance.format_address(partial_address_hash), 'Address'
       5.times {
         begin
           item_label.click
