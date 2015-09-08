@@ -225,7 +225,7 @@ module Batch
     def checked_rows
       log "Remembering checked orders..."
       checked_rows = Hash.new
-      grid_order_count = total_grid_count
+      grid_order_count = grid_page_order_count
       row_count = (grid_order_count>50)?50:grid_order_count
       log "Number of rows to check:  #{row_count}"
       1.upto(row_count) { |row|
@@ -252,7 +252,7 @@ module Batch
       end unless rows.nil?
     end
 
-    def total_grid_count
+    def grid_page_order_count
       tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
       count = tables.length
       log "Total Number of Orders on Grid:  #{count}"

@@ -1,10 +1,10 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
-default_profile: --tags @international_address_printing --guess URL=qacc BROWSER=ie USR=webbatch_0005 PW=password1
+default_profile: --tags @orders_25 --guess URL=qacc BROWSER=gc USR=webbatch_0009 PW=password1
 
-orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ie USR=auto38 PW=password1
-orders_20: --tags @orders_20 --guess URL=qacc BROWSER=ie USR=auto39 PW=pass111
+orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ie USR=webbatch_0005 PW=password1
+orders_20: --tags @orders_20 --guess URL=qacc BROWSER=ie USR=cm_cpp_0002 PW=pass111
 
 print_many_orders_ie: --tags @print_many_orders --guess URL=qacc BROWSER=ie USR=auto40 PW=password1
 

@@ -27,7 +27,7 @@ Then /^Fail the test$/ do
   true.should eql  false
 end
 
-Then /^Test Features/ do
+Then /^Test Features$/ do |count|
   batch.grid.select_all
   count = batch.multi_order.order_count
   log count
