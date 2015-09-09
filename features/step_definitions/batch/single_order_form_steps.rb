@@ -24,6 +24,17 @@ When /^Set Email to (.*)$/ do |value|
   #end_step step
 end
 
+When /^Expect system (.*) Single Order Form$/ do |status|
+  log "Confirmed system #{status} Single Order Form"
+
+  actual = batch.single_order_form.single_order_form_present
+  if status == 'hides'
+    actual.should eql false
+  elsif status == 'displays'
+    actual.should eql true
+  end
+end
+
 When /^Click Ship-To Less link$/ do
   log "Click Ship-To Less link..."
   batch.single_order_form.less
