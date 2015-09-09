@@ -41,7 +41,7 @@ end
 When /^Set Ounces to (\d*)$/ do |value|
   begin
     log "Set Ounces to \"#{value}\""
-    batch.single_order_form.ounces = log_param"Ounces", value
+    batch.single_order_form.ounces.set log_param"Ounces", value
   end unless value.length == 0
 end
 
