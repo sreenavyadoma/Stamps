@@ -6,50 +6,6 @@ Feature: 25 orders
   @orders_25
   Scenario:  Inline Rates
 
-    # International
-
-    And I Add a new order
-    Then Set Ship From to default
-
-    Then Set Ship-To Recipient to
-      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
-      | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
-
-    Then Add Item with Quantity 1, ID random, Description random
-
-    And Open Customs Form
-
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
-
-    Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
-    Then Set Service to First-Class Mail International Large Envelope
-
-    And I Add a new order
-    Then Set Ship From to default
-
-    Then Set Ship-To Recipient to
-      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
-      | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
-
-    Then Add Item with Quantity 1, ID random, Description random
-
-    And Open Customs Form
-
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
-
-    Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
-    Then Set Service to Priority Mail International Flat Rate Envelope
-
     # First Class Mail
 
     * I Add a new order
@@ -174,7 +130,6 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    
     * Collapse Ship-To Address
     * Set Ounces to 13
     * Set Service to Priority Mail Regional Rate Box B
@@ -185,7 +140,6 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Collapse Ship-To Address
     * Set Ounces to 14
     * Set Service to Priority Mail Regional Rate Box C
@@ -198,7 +152,6 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Collapse Ship-To Address
     * Set Ounces to 15
     * Set Service to Priority Mail Express Package
@@ -208,7 +161,6 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Collapse Ship-To Address
     * Set Pounds to 16
     * Set Service to Priority Mail Express Flat Rate Envelope
@@ -218,7 +170,6 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Collapse Ship-To Address
     * Set Pounds to 17
     * Set Service to Priority Mail Express Padded Flat Rate Envelope
@@ -228,7 +179,6 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Collapse Ship-To Address
     * Set Pounds to 18
     * Set Service to Priority Mail Express Legal Flat Rate Envelope
@@ -238,7 +188,6 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Collapse Ship-To Address
     * Set Pounds to 19
     * Set Service to Priority Mail Express Medium Flat Rate Box
@@ -250,7 +199,6 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Collapse Ship-To Address
     * Set Pounds to 20
     * Set Service to Media Mail Package
@@ -263,7 +211,6 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Collapse Ship-To Address
     * Set Pounds to 21
     * Set Service to Parcel Select Package
@@ -274,7 +221,6 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Collapse Ship-To Address
     * Set Pounds to 22
     * Set Service to Parcel Select Large Package
@@ -285,10 +231,53 @@ Feature: 25 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Set Email to rtest@stamps.com
     * Collapse Ship-To Address
     * Set Pounds to 23
     * Set Service to Parcel Select Oversized Package
     * Set Insured Value to $567.00
     * Set Tracking to Signature Required
+
+    # International
+
+    And I Add a new order
+    Then Set Ship From to default
+
+    Then Set Ship-To Recipient to
+      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
+
+    Then Add Item with Quantity 1, ID random, Description random
+
+    And Open Customs Form
+
+    Then Set Customs Form Package Contents = Merchandise
+    Then Set Customs Form Non-Delivery Options = Return to sender
+    Then Set Customs Form Internal Transaction # = Required
+    Then Set Customs Form More Info = random
+    Then Set Customs Form ITN# = random
+
+    Then Set Customs Form I agree to true
+    Then Close Customs Information Modal
+    Then Set Service to First-Class Mail International Large Envelope
+
+    And I Add a new order
+    Then Set Ship From to default
+
+    Then Set Ship-To Recipient to
+      | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
+      | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
+
+    Then Add Item with Quantity 1, ID random, Description random
+
+    And Open Customs Form
+
+    Then Set Customs Form Package Contents = Merchandise
+    Then Set Customs Form Non-Delivery Options = Return to sender
+    Then Set Customs Form Internal Transaction # = Required
+    Then Set Customs Form More Info = random
+    Then Set Customs Form ITN# = random
+
+    Then Set Customs Form I agree to true
+    Then Close Customs Information Modal
+    Then Set Service to Priority Mail International Flat Rate Envelope
 
