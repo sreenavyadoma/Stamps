@@ -2,7 +2,7 @@ module Batch
   #
   #  Contains Add/Edit buton for orders.
   #
-  class Toolbar < BrowserObject
+  class Toolbar < BatchObject
 
     def browser_settings_button
       ClickableField.new @browser.span :css => 'span[class*=sdc-btn-settings]'

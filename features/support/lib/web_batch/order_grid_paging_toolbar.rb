@@ -1,5 +1,5 @@
 module Batch
-  class OrderGridPagingToolbar < BrowserObject
+  class OrderGridPagingToolbar < BatchObject
     def present?
 
     end

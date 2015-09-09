@@ -1,13 +1,13 @@
 module Batch
 
-  class UspsPrivactActStatement < BrowserObject
+  class UspsPrivactActStatement < BatchObject
     def present?
 
     end
 
   end
 
-  class RestrictionsAndProhibitions < BrowserObject
+  class RestrictionsAndProhibitions < BatchObject
 
     def present?
 
@@ -15,7 +15,7 @@ module Batch
 
   end
 
-  class CustomsInformationForm < BrowserObject
+  class CustomsInformationForm < BatchObject
     public
 
     def present?

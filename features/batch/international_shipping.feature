@@ -1,4 +1,3 @@
-
 Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
   Background:
@@ -6,19 +5,24 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
     @international_address_printing
     Scenario: Single Order Form International Shipping fields and Customs Information fields validation
+
       And I Add a new order
       Then Set Ship From to default
+      Then Set Ship-To country to United States
+      Then Set Ship-To address to
+        | name   | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
+        | random | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
 
+      Then Expect Single Order Form Customs Edit Form button is visible
+      Then Expect Single Order Form Customs Restrictions button is hidden
+
+      And I Add a new order
+      Then Set Ship From to default
       Then Set Ship-To country to Canada
       Then Expect Single Order Form International Address fields are visible
       Then Expect Single Order Form Domestic Ship-To fields are hidden
       Then Expect Single Order Form Customs Restrictions button is visible
       Then Expect Single Order Form Customs Edit Form button is visible
-
-      Then Set Ship-To Recipient to Domestic APO, Unit 15324, APO AP 96205-5324
-      Then Expect Single Order Form Customs Restrictions button is hidden
-      Then Expect Single Order Form Customs Edit Form button is visible
-
       Then Set Ship-To Recipient to
         | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
         | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |

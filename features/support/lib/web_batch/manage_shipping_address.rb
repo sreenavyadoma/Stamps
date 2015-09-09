@@ -1,5 +1,5 @@
 module Batch
-  class ManageShippingAddresses < BrowserObject
+  class ManageShippingAddresses < BatchObject
     public
 
     def name(row)

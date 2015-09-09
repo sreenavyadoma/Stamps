@@ -1,6 +1,6 @@
 module Batch
 
-  class GridBase < BrowserObject
+  class GridBase < BatchObject
     GRID_COLUMNS ||= {
         :check_all => " ",
         :ship_cost => "Ship Cost",

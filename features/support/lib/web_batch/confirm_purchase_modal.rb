@@ -1,4 +1,4 @@
-class ConfirmPostage < BrowserObject
+class ConfirmPostage < BatchObject
   private
 
   def confirm_purchase_button

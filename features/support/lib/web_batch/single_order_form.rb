@@ -1,6 +1,6 @@
 module Batch
 
-  class ViewRestrictions < BrowserObject
+  class ViewRestrictions < BatchObject
     def browser_ok_button
       ClickableField.new @browser.span :text => "OK"
     end
@@ -14,7 +14,7 @@ module Batch
     end
   end
 
-  class Customs < BrowserObject
+  class Customs < BatchObject
 
     def browser_edit_form_button
       ClickableField.new @browser.span :text => "Edit Form..."
@@ -48,7 +48,7 @@ module Batch
 
   end
 
-  class SingleOrderFormLineItem < BrowserObject
+  class SingleOrderFormLineItem < BatchObject
     def remove_field
       @browser.span :css => "span[class*=sdc-icon-remove]"
     end
@@ -114,7 +114,7 @@ module Batch
     end
   end
 
-  class SingleOrderFormBase < BrowserObject
+  class SingleOrderFormBase < BatchObject
 
     def ship_cost_span
       span = @browser.span :text => "Ship Cost"

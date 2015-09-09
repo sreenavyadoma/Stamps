@@ -1,5 +1,5 @@
 module Batch
-  class InternationalShipping < BrowserObject
+  class InternationalShipping < BatchObject
 
     def present?
       Textbox.new(@browser.text_field :name => "FullName").present?

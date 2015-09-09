@@ -1,5 +1,5 @@
 module Batch
-  class CustomsItem < BrowserObject
+  class CustomsItem < BatchObject
 
     def description
       text_box = Textbox.new(@browser.text_field :name => "CustomsItemName")

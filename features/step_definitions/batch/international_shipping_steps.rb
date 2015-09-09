@@ -5,10 +5,6 @@ Then /^Set Ship-To country to (.*)$/ do |country|
   @international_ship_to = @single_order_form.international
 end
 
-Then /^Set Ship-To Recipient to (.*)$/ do |address|
-
-end
-
 # random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
 Given /^Set Ship-To Recipient to$/ do |table|
   param_hash = table.hashes.first

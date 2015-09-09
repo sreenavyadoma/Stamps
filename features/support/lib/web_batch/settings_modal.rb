@@ -1,6 +1,6 @@
 module Batch
 
-  class SettingsModal < BrowserObject
+  class SettingsModal < BatchObject
     private
 
     def checkbox_status_array

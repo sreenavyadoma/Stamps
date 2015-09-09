@@ -1,5 +1,5 @@
 module Batch
-  class InvalidAddressError < BrowserObject
+  class InvalidAddressError < BatchObject
     private
 
     def error_message_label

@@ -189,8 +189,7 @@ module Stamps
             log "Unable to focus on browser field #{args[1]} #{args[0]}"
           end
           args[0].click
-          var_name = %w(args[0])
-          log_browser_click args[0], var_name
+          log_browser_click args[0], args[1]
         else
           raise "Wrong number of arguments."
       end

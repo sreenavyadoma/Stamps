@@ -1,4 +1,4 @@
-class BuyPostage < BrowserObject
+class BuyPostage < BatchObject
   private
   def purchase_button
     @browser.span :id => "sdc-purchasewin-purchasebtn-btnInnerEl"

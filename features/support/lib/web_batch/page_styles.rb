@@ -1,5 +1,5 @@
 module Batch
-  class PageStyles < BrowserObject
+  class PageStyles < BatchObject
     def general
       GeneralStyles.new @browser
     end

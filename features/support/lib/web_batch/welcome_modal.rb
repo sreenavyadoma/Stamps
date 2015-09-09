@@ -1,5 +1,5 @@
 module Batch
-  class WelcomeOrdersPage < BrowserObject
+  class WelcomeOrdersPage < BatchObject
     private
     def continue_span
       @browser.span :text => "Continue"
@@ -28,7 +28,7 @@ module Batch
     end
   end
 
-  class WelcomeModal < BrowserObject
+  class WelcomeModal < BatchObject
     private
     def okay_button
       @browser.span :text => 'OK'

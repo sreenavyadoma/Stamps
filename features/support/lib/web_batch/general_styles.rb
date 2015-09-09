@@ -1,5 +1,5 @@
 module Batch
-  class GeneralStyles < BrowserObject
+  class GeneralStyles < BatchObject
     def font_family
       styles = app_content.style "font-family"
       log styles
