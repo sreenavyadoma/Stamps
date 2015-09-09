@@ -185,6 +185,10 @@ module Batch
       end
     end
 
+    def is_print_button_present
+      browser_helper.present? print_button
+    end
+
     def print_invalid_address
       open_print_window InvalidAddressError.new(@browser)
     end

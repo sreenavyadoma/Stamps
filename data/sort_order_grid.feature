@@ -3,10 +3,11 @@ Feature:  B-01774 - Sort Order Grid
   Background:
     Given I am signed in as a batch shipper
 
-  @sorting
+  @sorting1
   Scenario: As a batch shipper, I want the first page of orders to appear when I sort a column
 
-
+    * Expect Age column sorted in ascending order
+  @sorting2
   Scenario: As a batch shipper, I want to be able to sort the orders grid by clicking on each column header
 
     * Click Ship Cost column header to sort in ascending order
@@ -134,7 +135,7 @@ Feature:  B-01774 - Sort Order Grid
     * Click Country column header to sort in descending order
     * Expect Country column sorted in descending order
 
-
+  @sorting2
   Scenario: As a batch shipper, I want to be able to sort the orders grid by clicking on the arrows in each column header
 
     * Click ascending arrow on Ship Cost column header
