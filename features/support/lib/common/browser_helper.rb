@@ -206,7 +206,7 @@ module Stamps
       end
     end
 
-    def dblclick *args
+    def double_click *args
       case args.length
         when 1
           begin

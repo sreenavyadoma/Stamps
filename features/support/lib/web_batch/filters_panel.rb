@@ -126,7 +126,7 @@ module Batch
     end
 
     def double_click_border
-      browser_helper.dblclick filter_panel_border
+      browser_helper.double_click filter_panel_border
     end
 
     def click_filter_panel_name
