@@ -1,5 +1,5 @@
 @bvt
-Feature:  BVT - Address Cleansing
+Feature:  BVT Address Cleansing
 
   Background:
     Given I am signed in as a batch shipper

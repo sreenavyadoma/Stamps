@@ -1,5 +1,5 @@
 @regression
-Feature:  B-01690 As a Batch Shipper, I want to be able to delete or modify a Ship From address.
+Feature:  Address Management
 
   Background:
     Given I am signed in as a batch shipper

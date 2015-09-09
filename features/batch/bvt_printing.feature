@@ -1,5 +1,5 @@
 
-Feature:  BVT - Printing
+Feature:  BVT Printing
 
   Background:
     Given I am signed in as a batch shipper

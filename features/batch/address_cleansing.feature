@@ -1,5 +1,5 @@
 @regression
-Feature: B-01603 Address Cleansing
+Feature: Address Cleansing
 
   Background:
     Given I am signed in as a batch shipper

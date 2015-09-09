@@ -1,5 +1,5 @@
 @bvt
-Feature:  BVT - I Add a new order
+Feature:  BVT Order Creation
 
   Background:
     Given I am signed in as a batch shipper
