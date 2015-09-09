@@ -7,6 +7,7 @@ Feature: B-01634 As a batch shipper, I want to be able to print postage for mult
   @print_multiple_orders
   Scenario:  Print 2 Orders
     And I Add a new order
+    And I Add a second order
     Then Set Ship From to default
     Then Set Ship-To address to random
     And Collapse Ship-To Address
