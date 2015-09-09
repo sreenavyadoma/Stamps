@@ -3,7 +3,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
   Background:
     Given I am signed in as a batch shipper
 
-  @filters
+
   Scenario:
     And I Add a new order
     Then Set Ship From to default
