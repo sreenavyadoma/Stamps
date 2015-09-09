@@ -137,16 +137,14 @@ module Batch
 
     def awaiting_shipment
       #todo-elie here are your steps;
-      # 1. Click Awaiting shipment tab
-      # 2.  give back an instance of Grid.
+      batch.filters_panel.filter("Awaiting Shipment")
 
       Grid.new @browser
     end
 
     def shipped
       #todo-elie here are your steps;
-      # 1. Click Awaiting shipment tab
-      # 2.  give back an instance of Grid.
+      batch.filters_panel.filter("Shipped")
 
       Grid.new @browser
 
