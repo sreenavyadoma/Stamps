@@ -135,6 +135,10 @@ module Batch
       LoginPage.new(@browser).sign_in *args
     end
 
+    def filters_panel
+      Filters.new(@browser)
+    end
+
     def multi_order
       MultiOrder.new(@browser)
     end
