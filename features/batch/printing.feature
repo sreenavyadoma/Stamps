@@ -18,7 +18,6 @@ Feature: Printing
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Phone to (415) 123-5555
     And Click Ship-To Less link
     Then Set Service to Priority Mail Express Medium Flat Rate Box
     Then Print
@@ -28,7 +27,6 @@ Feature: Printing
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Phone to (415) 123-5555
     And Click Ship-To Less link
     Then Set Service to Priority Mail Express Package
     Then Print
@@ -38,7 +36,6 @@ Feature: Printing
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Phone to (415) 123-5555
     And Click Ship-To Less link
     Then Set Service to Priority Mail Flat Rate Envelope
     Then Print
