@@ -1,5 +1,5 @@
 @regression
-Feature: B-01631 Printing total cost
+Feature: Printing total cost
 
   Background:
     Given I am signed in as a batch shipper
@@ -14,7 +14,7 @@ Feature: B-01631 Printing total cost
     Then Expect Total to be $0.00
 
     Then Set Ship-To address to random
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Ounces to 1
     Then Set Service to Priority Mail Package
     Then Set Insured Value to $10.00

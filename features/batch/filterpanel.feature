@@ -74,7 +74,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to James Test, 600 Front St Apt 232, San Diego CA 92101
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Service to Priority Mail Express Medium Flat Rate Box
 
     Then Click on Awaiting Shipment Filter

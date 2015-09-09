@@ -17,8 +17,10 @@ Given /^Set Ship-To Recipient to$/ do |table|
   province = param_hash["province"]
   postal_code = param_hash["postal_code"]
   country = param_hash["country"]
-  phone = (param_hash["phone"].downcase.include? "random") ? test_helper.random_phone : param_hash["phone"]
-  email = (param_hash["email"].downcase.include? "random") ? test_helper.random_email : param_hash["email"]
+  phone_num = param_hash["phone"]
+  phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash["phone"]
+  email_addy = param_hash["email"]
+  email = (email_addy.downcase.include? "random") ? test_helper.random_email : param_hash["email"]
 
   log "International Ship-To Name: #{name}"
   log "International Ship-To Company: #{company}"
@@ -49,23 +51,23 @@ Then /^Set International Ship-To ([\w \d]+) to (.*)/ do |ship_to_field, value |
 
   case ship_to_field.downcase
     when "name"
-      @international_ship_to.name ((value.downcase == "random")? test_helper.random_name : value)
+      @international_ship_to.name.set ((value.downcase == "random")? test_helper.random_name : value)
     when "company"
-      @international_ship_to.company ((value.downcase == "random")? test_helper.random_company_name : value)
+      @international_ship_to.company.set ((value.downcase == "random")? test_helper.random_company_name : value)
     when "address 1"
-      @international_ship_to.address_1 value
+      @international_ship_to.address_1.set value
     when "address 2"
-      @international_ship_to.address_2 ((value.downcase == "random")? test_helper.random_suite : value)
+      @international_ship_to.address_2.set ((value.downcase == "random")? test_helper.random_suite : value)
     when "city"
-      @international_ship_to.city value
+      @international_ship_to.city.set value
     when "province"
-      @international_ship_to.province value
+      @international_ship_to.province.set value
     when "postal code"
-      @international_ship_to.postal_code value
+      @international_ship_to.postal_code.set value
     when "phone"
-      @international_ship_to.phone ((value.downcase == "random")? test_helper.random_phone : value)
+      @international_ship_to.phone.set ((value.downcase == "random")? test_helper.random_phone : value)
     when "email"
-      @international_ship_to.email ((value.downcase == "random")? test_helper.random_email : value)
+      @international_ship_to.email.set ((value.downcase == "random")? test_helper.random_email : value)
     else
       raise "Illegal Argument Exception.  #{ship_to_field} is not a valid Ship-To field"
   end
@@ -120,26 +122,26 @@ Given /^Open Customs Form$/ do
 end
 
 Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
-  @customs_info = @single_order_form.customs_form if @customs_info.nil?
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case field.downcase
     #Package Contents
     when "package contents"
-      @customs_info.package_contents_dd.select value
-      contents = @customs_info.pacakge_contents.text
+      @customs_form.package_contents_dd.select value
+      contents = @customs_form.pacakge_contents.text
       contents.should include value
       #Non-Delivery Options
     when "non-delivery options"
-      @customs_info.non_delivery_options_dd.select value
+      @customs_form.non_delivery_options_dd.select value
       #Internal Transaction #
     when "internal transaction #"
-      @customs_info.internal_transaction_dd.select value
+      @customs_form.internal_transaction_dd.select value
       #More Info
     when "more info"
-      @customs_info.more_info.set value
+      @customs_form.more_info.set value
       #ITN#
     when "itn#"
-      itn_number = @customs_info.itn_number
+      itn_number = @customs_form.itn_number
       itn_number.set value if itn_number.present?
     else
       raise "Illegal Argument Exception.  Field #{field} is not on the Customs Information Modal"
@@ -148,7 +150,7 @@ Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
 end
 
 Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin, tariff|
-  item = @customs_info.item
+  item = @customs_form.item
   item.description.set description
   item.qty.set qty
   item.unit_price.set price
@@ -160,9 +162,9 @@ end
 
 Given /^Set Customs Form I agree to (\w+)$/ do |agree_str|
   i_agree = agree_str.downcase == "true"
-  @customs_info = @single_order_form.customs_form if @customs_info.nil?
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
-  @customs_info.i_agree i_agree
+  @customs_form.i_agree i_agree
 end
 
 Given /^Add Item with Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
@@ -204,8 +206,8 @@ Given /^Delete Customs Form Item (\d+)$/ do |item_number|
 end
 
 Given /^Close Customs Information Modal$/ do
-  @customs_info = @single_order_form.customs_form if @customs_info.nil?
-  @customs_info.cancel
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form.cancel_until
 end
 
 Given /^Expect Customs Information Modal to be present$/ do

@@ -1,37 +1,32 @@
-Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
+Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
     Given I am signed in as a batch shipper
 
-    @international_address
+    @international_shipping
     Scenario: Single Order Form International Shipping fields and Customs Information fields validation
 
       And I Add a new order
       Then Set Ship From to default
-      Then Set Ship-To country to United States
-      Then Set Ship-To address to
-        | name   | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
-        | random | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
-
-      Then Expect Single Order Form Customs Edit Form button is visible
-      Then Expect Single Order Form Customs Restrictions button is hidden
-
-      And I Add a new order
-      Then Set Ship From to default
       Then Set Ship-To country to Canada
+      Then Set Ship-To Recipient to
+        | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+        | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
+
       Then Expect Single Order Form International Address fields are visible
       Then Expect Single Order Form Domestic Ship-To fields are hidden
       Then Expect Single Order Form Customs Restrictions button is visible
       Then Expect Single Order Form Customs Edit Form button is visible
-      Then Set Ship-To Recipient to
-        | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
-        | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
       Then Add Item with Quantity 1, ID random, Description random
 
       And Open Customs Form
 
       Then Set Customs Form Package Contents = Commercial Sample
+      Then Expect Customs Form License# to be visible
+      Then Expect Customs Form Certificate# to be visible
+      Then Expect Customs Form Invoice# to be visible
+
       Then Set Customs Form Package Contents = Document
       Then Set Customs Form Package Contents = Gift
       Then Set Customs Form Package Contents = Humanitarian Donation
@@ -39,8 +34,11 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents = Returned Goods
 
       Then Set Customs Form Non-Delivery Options = Return to sender
+      Then Set Customs Form Non-Delivery Options = Treat as abandoned
+      Then Set Customs Form Non-Delivery Options = Return to sender
 
       Then Set Customs Form Internal Transaction # = Required
+      Then Set Customs Form Internal Transaction # = Not required
 
       Then Set Customs Form More Info = random
 
@@ -48,9 +46,18 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
       Then Close Customs Information Modal
 
-      Then Set Ship-To Recipient to asdf
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To country to United States
+      Then Set Ship-To address to Domestic APO, Unit 15324, APO AP 96205-5324
+      Then Set Phone to random
+      Then Set Email to random
+      Then Click Ship-To Less link
 
-  @international_address_printing
+      Then Expect Single Order Form Customs Edit Form button is visible
+      Then Expect Single Order Form Customs Restrictions button is hidden
+
+
   Scenario: User Prints International Address 1
       And I Add a new order
       Then Set Ship From to default

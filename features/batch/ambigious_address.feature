@@ -1,5 +1,5 @@
 @regression
-Feature: B-01604 Orders with an ambiguous address
+Feature: Ambigious Address
 
   Background:
     Given I am signed in as a batch shipper
@@ -18,7 +18,7 @@ Feature: B-01604 Orders with an ambiguous address
     Then Expect Order Grid - City to be San Francisco
     Then Expect Order Grid - State to be CA
     Then Expect Order Grid - Zip to be 94102
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Service to Priority Mail Package
     And Sign out
 

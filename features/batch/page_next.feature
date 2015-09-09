@@ -1,4 +1,5 @@
-Feature: B-01746 Order Pagination
+@regression
+Feature: Order Pagination
 
   Background:
     Given I am signed in as a batch shipper

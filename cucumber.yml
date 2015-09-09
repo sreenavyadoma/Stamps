@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
-default_profile: --tags @filters --guess URL=qacc BROWSER=ff USR=auto30 PW=password1
+default_profile: --tags @print --guess URL=qacc BROWSER=ie USR=auto39 PW=password1
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto28 PW=password1
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto29 PW=password1
@@ -55,3 +55,4 @@ purchasing_qacc_gc: --tags @purchasing --guess URL=qacc BROWSER=gc USR=auto30 PW
 change_settings_qacc_ie: --tags @settings --guess URL=qacc BROWSER=ie USR=auto31 PW=password1
 change_settings_qacc_ff: --tags @settings --guess URL=qacc BROWSER=ff USR=auto32 PW=password1
 change_settings_qacc_gc: --tags @settings --guess URL=qacc BROWSER=gc USR=auto33 PW=password1
+

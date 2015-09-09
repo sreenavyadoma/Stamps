@@ -1,5 +1,5 @@
 @bvt
-Feature:  BVT - Shipping Address Management
+Feature:  BVT Address Management
 
   Background:
     Given I am signed in as a batch shipper

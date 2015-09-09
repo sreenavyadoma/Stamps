@@ -137,17 +137,14 @@ module Batch
 
     def awaiting_shipment
       #todo-elie here are your steps;
-      batch.filters_panel.filter("Awaiting Shipment")
-
+      Filters.new(@browser).filter("Awaiting Shipment")
       Grid.new @browser
     end
 
     def shipped
       #todo-elie here are your steps;
-      batch.filters_panel.filter("Shipped")
-
+      Filters.new(@browser).filter("Shipped")
       Grid.new @browser
-
     end
 
     def filters_panel

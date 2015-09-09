@@ -1,5 +1,5 @@
 @regression
-Feature: B-01726-1 Update Postage Balance After Each Print (With Service, Insurance & Tracking)
+Feature: Postage Balance
 
   @update_postage_balance
   Scenario: Update Postage Balance After Each Print
@@ -7,7 +7,7 @@ Feature: B-01726-1 Update Postage Balance After Each Print (With Service, Insura
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Service to Priority Mail Package
     Then Set Insured Value to $10.00
     Then Set Tracking to USPS Tracking

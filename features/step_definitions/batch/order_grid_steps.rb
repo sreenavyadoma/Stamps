@@ -207,12 +207,12 @@ end
 
 Then /^Expect Order Grid - Pounds to be (\d+)$/ do |expected|
   begin
-    actual = batch.grid.pounds @order_id
+    actual = batch.grid.lbs @order_id
     10.times { |counter|
       sleep(2)
       log_expectation_eql "#{counter}. Pounds", expected, actual
       break if actual.eql? expected
-      actual = batch.grid.pounds @order_id
+      actual = batch.grid.lbs @order_id
     }
     actual.should eql expected
   end unless expected.length == 0
@@ -220,12 +220,12 @@ end
 
 Then /^Expect Order Grid - Ounces to be (\d+)$/ do |expected|
   begin
-    actual = batch.grid.ounces @order_id
+    actual = batch.grid.oz @order_id
     10.times { |counter|
       sleep(2)
       log_expectation_eql "#{counter}. Ounces", expected, actual
       break if actual.eql? expected
-      actual = batch.grid.ounces @order_id
+      actual = batch.grid.oz @order_id
     }
     actual.should eql expected
   end unless expected.length == 0
@@ -405,7 +405,7 @@ end
 Then /^Expect Order details to be;$/ do |table|
   expected_hash = table.hashes.first
   step "Expect Order Grid - Insured Value to be $#{expected_hash[:insured_value]}"
-  step "Expect Order Grid - Weight to be #{expected_hash[:pounds]} lbs. #{expected_hash[:ounces]} oz."
+  step "Expect Order Grid - Weight to be #{expected_hash[:lbs]} lbs. #{expected_hash[:oz]} oz."
 end
 
 Then /^Expect Order Grid - Insured Value to be \$(\d*\.?\d*)$/ do |expected|

@@ -1,5 +1,5 @@
 
-Feature:  B-01636 Prompt User to Remove Orders in Error from Print Group
+Feature:  Prompt User to Remove Orders in Error from Print Group
 
   Background:
     Given I am signed in as a batch shipper
@@ -24,7 +24,7 @@ Feature:  B-01636 Prompt User to Remove Orders in Error from Print Group
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Pounds to 1
     Then Set Ounces to 1
     Then Set Service to Priority Mail Regional Rate Box A

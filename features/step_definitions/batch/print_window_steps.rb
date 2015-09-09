@@ -39,14 +39,14 @@ Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
   end unless @print_window.nil?
 end
 
-When /^I Open Print Modal$/ do
-  log "I Open Print Modal"
+When /^Open Print Modal$/ do
+  log "Open Print Modal"
   @print_window = batch.toolbar.print
 end
 
 When /^Print$/ do
   if @print_window.nil? || !@print_window.present?
-    step 'I Open Print Modal'
+    step 'Open Print Modal'
   end
   log "Print Window is Nil?  #{@print_window.nil?}"
 
@@ -58,10 +58,10 @@ When /^Print$/ do
 end
 
 Then /^Close Print Window$/ do
-  @print_window.close unless @print_window.nil?
+  @print_window.close_until unless @print_window.nil?
 end
 
-Then /^I Click Print Window - Print button$/ do
+Then /^Click Print Modal - Print button$/ do
   if @print_window.nil?
     @printing_error =  true
   else
@@ -88,13 +88,13 @@ end
 
 Then /^Print expecting invalid address error$/ do
   error_window = batch.toolbar.print_invalid_address
-  error_window.close
+  error_window.close_until
 end
 
 When /^Print expecting rating error$/ do
   error_window = batch.toolbar.print.print_expecting_rating_error
   actual_error_message = error_window.error_message
-  error_window.close
+  error_window.close_until
   expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
 end
 
@@ -111,7 +111,7 @@ Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print
     raise "Print Window is not open."
   end
   actual = @print_window.labels_ready_to_print
-  @print_window.close
+  @print_window.close_until
   log "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
   "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
 end

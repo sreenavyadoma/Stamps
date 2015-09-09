@@ -5,123 +5,40 @@ module Batch
       Textbox.new(@browser.text_field :name => "FullName").present?
     end
 
-    def name *args
-      browser_field = Textbox.new(@browser.text_field :name => "FullName")
-      log "FullName present? #{browser_field.present?}"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
+    def name
+      Textbox.new @browser.text_field :name => "FullName"
     end
 
-    def company *args
-      browser_field = Textbox.new(@browser.text_field :name => "Company")
-      log "Company present? #{browser_field.present?}"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
+    def company
+      Textbox.new @browser.text_field :name => "Company"
     end
 
-    def address_1 *args
-      browser_field = Textbox.new(@browser.text_field :name => "Address1")
-      log "Address1 present? #{browser_field.present?}"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
+    def address_1
+      Textbox.new @browser.text_field :name => "Address1"
     end
 
-    def address_2 *args
-      browser_field = Textbox.new(@browser.text_field :name => "Address2")
-      log "Address2 present? #{browser_field.present?}"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
+    def address_2
+      Textbox.new @browser.text_field :name => "Address2"
     end
 
-    def city *args
-      browser_field = Textbox.new(@browser.text_field :name => "City")
-      log "City present? #{browser_field.present?}"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
+    def city
+      Textbox.new @browser.text_field :name => "City"
     end
 
-    def province *args
-      browser_field = Textbox.new(@browser.text_field :name => "Province")
-      log "Province present? #{browser_field.present?}"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
+    def province
+      Textbox.new @browser.text_field :name => "Province"
     end
 
-    def postal_code *args
-      browser_field = Textbox.new(@browser.text_field :name => "PostalCode")
-      log "PostalCode present? #{browser_field.present?}"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
+    def postal_code
+      Textbox.new @browser.text_field :name => "PostalCode"
     end
 
-    def phone *args
-      text_fields = @browser.text_fields :name => "Phone"
-      browser_field = Textbox.new(text_fields.last)
-      log "City present? #{browser_field.present?}"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
+    def phone
+      Textbox.new (@browser.text_fields :name => "Phone").last
     end
 
-    def email *args
-      text_fields = @browser.text_fields :name => "Email"
-      browser_field = Textbox.new(text_fields.last)
-      log "Email present? #{browser_field.present?}"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
+    def email
+      Textbox.new (@browser.text_fields :name => "Email").last
     end
 
   end

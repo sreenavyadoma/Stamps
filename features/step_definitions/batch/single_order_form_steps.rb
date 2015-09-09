@@ -12,20 +12,20 @@ end
 When /^Set Phone to (.*)$/ do |value|
   begin
     log "Set Phone to \"#{value}\""
-    batch.single_order_form.phone = log_param "Phone", value
+    batch.single_order_form.phone.set log_param "Phone", value
   end unless value.length == 0
 end
 
 When /^Set Email to (.*)$/ do |value|
   begin
     log "Set Email to \"#{value}\""
-    batch.single_order_form.email = log_param "Email", value
+    batch.single_order_form.email.set log_param "Email", value
   end unless value.length == 0
   #end_step step
 end
 
-When /^Collapse Ship-To Address$/ do
-  log "Collapse Ship-To Address..."
+When /^Click Ship-To Less link$/ do
+  log "Click Ship-To Less link..."
   batch.single_order_form.less
   log "done."
   #end_step step
@@ -34,35 +34,35 @@ end
 When /^Set Pounds to (\d*)$/ do |value|
   begin
     log "Set Pounds to \"#{value}\""
-    batch.single_order_form.pounds = log_param "Pounds", value
+    batch.single_order_form.lbs.set log_param "Pounds", value
   end unless value.length == 0
 end
 
 When /^Set Ounces to (\d*)$/ do |value|
   begin
     log "Set Ounces to \"#{value}\""
-    batch.single_order_form.ounces = log_param"Ounces", value
+    batch.single_order_form.ounces.set log_param"Ounces", value
   end unless value.length == 0
 end
 
 When /^Set Length to (\d*)$/ do |value|
   begin
     log "Set Length to \"#{value}\""
-    batch.single_order_form.length = log_param "Length", value
+    batch.single_order_form.length.set log_param "Length", value
   end unless value.length == 0
 end
 
 When /^Set Width to (\d*)$/ do |value|
   begin
     log "Set Width to \"#{value}\""
-    batch.single_order_form.width = log_param "Width", value
+    batch.single_order_form.width.set log_param "Width", value
   end unless value.length == 0
 end
 
 When /^Set Height to (\d*)$/ do |value|
   begin
     log "Set Height to \"#{value}\""
-    batch.single_order_form.height = log_param "Height", value
+    batch.single_order_form.height.set log_param "Height", value
   end unless value.length == 0
 end
 
@@ -77,7 +77,7 @@ Then /^Set Tracking to ([\w ]*)$/ do |value|
 end
 
 And /^Set Insured Value to \$([\d*\.?\d*]*)$/ do |value|
-  batch.single_order_form.insured_value = value
+  batch.single_order_form.insured_value.set value
 end
 
 And /^Set Ship From to (\w+)$/ do |value|
