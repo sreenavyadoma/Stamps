@@ -49,23 +49,23 @@ Then /^Set International Ship-To ([\w \d]+) to (.*)/ do |ship_to_field, value |
 
   case ship_to_field.downcase
     when "name"
-      @international_ship_to.name ((value.downcase == "random")? test_helper.random_name : value)
+      @international_ship_to.name.set ((value.downcase == "random")? test_helper.random_name : value)
     when "company"
-      @international_ship_to.company ((value.downcase == "random")? test_helper.random_company_name : value)
+      @international_ship_to.company.set ((value.downcase == "random")? test_helper.random_company_name : value)
     when "address 1"
-      @international_ship_to.address_1 value
+      @international_ship_to.address_1.set value
     when "address 2"
-      @international_ship_to.address_2 ((value.downcase == "random")? test_helper.random_suite : value)
+      @international_ship_to.address_2.set ((value.downcase == "random")? test_helper.random_suite : value)
     when "city"
-      @international_ship_to.city value
+      @international_ship_to.city.set value
     when "province"
-      @international_ship_to.province value
+      @international_ship_to.province.set value
     when "postal code"
-      @international_ship_to.postal_code value
+      @international_ship_to.postal_code.set value
     when "phone"
-      @international_ship_to.phone ((value.downcase == "random")? test_helper.random_phone : value)
+      @international_ship_to.phone.set ((value.downcase == "random")? test_helper.random_phone : value)
     when "email"
-      @international_ship_to.email ((value.downcase == "random")? test_helper.random_email : value)
+      @international_ship_to.email.set ((value.downcase == "random")? test_helper.random_email : value)
     else
       raise "Illegal Argument Exception.  #{ship_to_field} is not a valid Ship-To field"
   end
