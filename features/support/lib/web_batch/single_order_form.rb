@@ -21,7 +21,7 @@ module Batch
     end
 
     def edit_form
-      customs = CustomsInformationForm.new @browser
+      customs = CustomsForm.new @browser
       edit_form_button = browser_edit_form_button
       5.times{
         browser_helper.safe_click edit_form_button
@@ -277,7 +277,7 @@ module Batch
     end
 
     def customs_form
-      CustomsInformationForm.new @browser
+      CustomsForm.new @browser
     end
 
     def customs
