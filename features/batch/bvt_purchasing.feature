@@ -1,5 +1,5 @@
 
-Feature: BVT - Purchasing
+Feature: BVT Purchasing
 
   Background:
     Given I am signed in as a batch shipper auto30/password1
