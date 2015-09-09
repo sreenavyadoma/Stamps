@@ -1,11 +1,11 @@
   @regression
-  Feature: B-01625  Print Sample Parcel Select Large Package
+  Feature: Print Sample
 
   Background:
     Given I am signed in as a batch shipper
 
   @print_sample
-  Scenario:  Print Sample - Parcel Select Large Package
+  Scenario:  B-01625 Print Sample - Parcel Select Large Package
 
     And I Add a new order
     Then Set Ship From to default
@@ -18,7 +18,7 @@
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Service to Priority Mail Regional Rate Box A
-    And I Open Print Modal
+    And Open Print Modal
     Then Print Sample
 
     And I Add a new order

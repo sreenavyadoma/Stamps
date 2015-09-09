@@ -1,5 +1,5 @@
 @regression
-Feature: B-01726-1 Update Postage Balance After Each Print (With Service, Insurance & Tracking)
+Feature: Postage Balance
 
   @update_postage_balance
   Scenario: Update Postage Balance After Each Print

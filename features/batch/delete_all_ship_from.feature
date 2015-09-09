@@ -1,5 +1,5 @@
 @regression
-Feature:  Delete All Ship From
+Feature:  Delete Ship From
 
   Background:
     Given I am signed in as a batch shipper

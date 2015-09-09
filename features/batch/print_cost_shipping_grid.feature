@@ -1,5 +1,5 @@
 @regression
-Feature: B-01743 Show Cost of Order in Ship Cost Grid
+Feature: Show Cost of Order in Ship Cost Grid
 
   Background:
     Given I am signed in as a batch shipper

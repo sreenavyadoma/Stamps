@@ -1,5 +1,5 @@
 @regression
-Feature: B-01736 Set Correct Default for Tracking
+Feature: Tracking
 
   Background:
     Given I am signed in as a batch shipper

@@ -1,5 +1,5 @@
 
-Feature:  B-01636 Prompt User to Remove Orders in Error from Print Group
+Feature:  Prompt User to Remove Orders in Error from Print Group
 
   Background:
     Given I am signed in as a batch shipper

@@ -1,4 +1,4 @@
-Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
+Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
     Given I am signed in as a batch shipper

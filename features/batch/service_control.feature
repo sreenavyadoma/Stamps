@@ -1,5 +1,5 @@
   @regression
-  Feature: B-01588 Domestic USPS service used to fulfill an order.
+  Feature: Domestic USPS service used to fulfill an order.
 
   Background:
     Given I am signed in as a batch shipper

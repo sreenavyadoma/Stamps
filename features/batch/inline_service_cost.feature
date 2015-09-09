@@ -1,5 +1,5 @@
 @regression
-Feature: System Calls GetRates When "Ship-To Address" is changed
+Feature: Ship-To Addresses
 
   Background:
     Given I am signed in as a batch shipper

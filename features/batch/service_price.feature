@@ -1,5 +1,5 @@
 @regression
-Feature: B-01671 User Views Price Next to Service Dropdown
+Feature: User Views Price Next to Service Dropdown
 
   Background:
     Given I am signed in as a batch shipper
