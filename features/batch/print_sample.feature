@@ -4,7 +4,7 @@
   Background:
     Given I am signed in as a batch shipper
 
-  @print_sample
+  @print_sample @print
   Scenario:  B-01625 Print Sample - Parcel Select Large Package
 
     And I Add a new order

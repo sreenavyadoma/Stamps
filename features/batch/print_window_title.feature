@@ -4,7 +4,7 @@ Feature:  Printing Multiple Orders
   Background:
     Given I am signed in as a batch shipper
 
-  @print_window
+  @print_window @print
   Scenario:  Printing
     And I Add a new order
     Then Set Ship From to default
