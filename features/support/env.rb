@@ -12,16 +12,11 @@ require 'date'
 require "set"
 
 require_relative 'lib/common/browser'
-require_relative 'lib/common/test_helper'
-require_relative 'lib/common/browser_fields'
+require_relative 'lib/common/stamps'
+require_relative 'lib/common/logger'
+
 require_relative 'lib/web_batch/helpers'
 require_relative 'lib/web_batch/fields'
-
-require_relative 'lib/common/logger'
-require_relative 'lib/common/stamps_test'
-require_relative 'lib/common/browser_object'
-require_relative 'lib/common/browser_helper'
-require_relative 'lib/common/stamps'
 
 require_relative 'lib/web_batch/batch'
 require_relative 'lib/web_batch/navigation_bar'
