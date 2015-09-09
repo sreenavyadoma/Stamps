@@ -122,26 +122,26 @@ Given /^Open Customs Form$/ do
 end
 
 Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
-  @customs_info = @single_order_form.customs_form if @customs_info.nil?
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case field.downcase
     #Package Contents
     when "package contents"
-      @customs_info.package_contents_dd.select value
-      contents = @customs_info.pacakge_contents.text
+      @customs_form.package_contents_dd.select value
+      contents = @customs_form.pacakge_contents.text
       contents.should include value
       #Non-Delivery Options
     when "non-delivery options"
-      @customs_info.non_delivery_options_dd.select value
+      @customs_form.non_delivery_options_dd.select value
       #Internal Transaction #
     when "internal transaction #"
-      @customs_info.internal_transaction_dd.select value
+      @customs_form.internal_transaction_dd.select value
       #More Info
     when "more info"
-      @customs_info.more_info.set value
+      @customs_form.more_info.set value
       #ITN#
     when "itn#"
-      itn_number = @customs_info.itn_number
+      itn_number = @customs_form.itn_number
       itn_number.set value if itn_number.present?
     else
       raise "Illegal Argument Exception.  Field #{field} is not on the Customs Information Modal"
@@ -150,7 +150,7 @@ Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
 end
 
 Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin, tariff|
-  item = @customs_info.item
+  item = @customs_form.item
   item.description.set description
   item.qty.set qty
   item.unit_price.set price
@@ -162,9 +162,9 @@ end
 
 Given /^Set Customs Form I agree to (\w+)$/ do |agree_str|
   i_agree = agree_str.downcase == "true"
-  @customs_info = @single_order_form.customs_form if @customs_info.nil?
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
-  @customs_info.i_agree i_agree
+  @customs_form.i_agree i_agree
 end
 
 Given /^Add Item with Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
@@ -206,8 +206,8 @@ Given /^Delete Customs Form Item (\d+)$/ do |item_number|
 end
 
 Given /^Close Customs Information Modal$/ do
-  @customs_info = @single_order_form.customs_form if @customs_info.nil?
-  @customs_info.cancel
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form.cancel_until
 end
 
 Given /^Expect Customs Information Modal to be present$/ do

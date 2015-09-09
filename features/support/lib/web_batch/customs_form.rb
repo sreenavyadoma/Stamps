@@ -3,15 +3,11 @@ module Batch
   class CustomsItem < BatchObject
 
     def description
-      text_box = Textbox.new(@browser.text_field :name => "CustomsItemName")
-      log "CustomsItemName present? #{browser_helper.present? text_box}"
-      text_box
+      Textbox.new @browser.text_field :name => "CustomsItemName"
     end
 
     def qty
-      text_box = Textbox.new(@browser.text_field :name => "CustomsItemQuantity")
-      log "CustomsItemQuantity present? #{browser_helper.present? text_box}"
-      text_box
+      Textbox.new @browser.text_field :name => "CustomsItemQuantity"
     end
 
     def qty_increment value
@@ -23,9 +19,7 @@ module Batch
     end
 
     def unit_price
-      text_box = Textbox.new(@browser.text_field :name => "CustomsItemPrice")
-      log "CustomsItemPrice present? #{browser_helper.present? text_box}"
-      text_box
+      Textbox.new @browser.text_field :name => "CustomsItemPrice"
     end
 
     def unit_price_increment value
@@ -37,9 +31,7 @@ module Batch
     end
 
     def lbs
-      text_box = Textbox.new(@browser.text_field :name => "CustomsItemWeightLb")
-      log "CustomsItemWeightLb present? #{browser_helper.present? text_box}"
-      text_box
+      Textbox.new @browser.text_field :name => "CustomsItemWeightLb"
     end
 
     def lbs_increment value
@@ -51,9 +43,7 @@ module Batch
     end
 
     def oz
-      text_box = Textbox.new(@browser.text_field :name => "CustomsItemWeightOz")
-      log "CustomsItemWeightOz present? #{browser_helper.present? text_box}"
-      text_box
+      Textbox.new @browser.text_field :name => "CustomsItemWeightOz"
     end
 
     def oz_increment value
@@ -73,9 +63,7 @@ module Batch
     end
 
     def hs_tariff
-      text_box = Textbox.new(@browser.text_field :name => "HSTariff")
-      log "HSTariff present? #{browser_helper.present? text_box}"
-      text_box
+      Textbox.new @browser.text_field :name => "HSTariff"
     end
 
   end
@@ -132,15 +120,11 @@ module Batch
     end
 
     def more_info
-      field = Textbox.new(@browser.text_field :name => "Comments")
-      log "More Info present? #{browser_helper.present? field}"
-      field
+      Textbox.new @browser.text_field :name => "Comments"
     end
 
     def itn_number
-      field = Textbox.new(@browser.text_field :css => "input[name=ITN][maxlength='50']")
-      log "More Info present? #{browser_helper.present? field}"
-      field
+      Textbox.new @browser.text_field :css => "input[name=ITN][maxlength='50']"
     end
 
     def item
@@ -242,21 +226,24 @@ module Batch
       }
     end
 
-    def close_button
-      button = @browser.span :text => "Close"
-      log "Close button is #{(browser_helper.present? button)?'present' : 'not present'}"
-      button
+    def close
+      ClickableField.new @browser.span :text => "Close"
     end
 
-    def close
+    def close_until
+      button = close
       3.times{
-        browser_helper.safe_click close_button
-        break unless browser_helper.present? close_button
+        button.safe_click
+        break unless button.present?
       }
     end
 
     def cancel
-      cancel_button = ClickableField.new @browser.img :css => "img[class$=x-tool-close]"
+      ClickableField.new @browser.img :css => "img[class$=x-tool-close]"
+    end
+
+    def cancel_until
+      cancel_button = cancel
       5.times{
         begin
           cancel_button.click

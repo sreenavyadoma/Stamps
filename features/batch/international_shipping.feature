@@ -23,6 +23,10 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       And Open Customs Form
 
       Then Set Customs Form Package Contents = Commercial Sample
+      Then Expect Customs Form License# to be visible
+      Then Expect Customs Form Certificate# to be visible
+      Then Expect Customs Form Invoice# to be visible
+
       Then Set Customs Form Package Contents = Document
       Then Set Customs Form Package Contents = Gift
       Then Set Customs Form Package Contents = Humanitarian Donation
@@ -30,8 +34,11 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents = Returned Goods
 
       Then Set Customs Form Non-Delivery Options = Return to sender
+      Then Set Customs Form Non-Delivery Options = Treat as abandoned
+      Then Set Customs Form Non-Delivery Options = Return to sender
 
       Then Set Customs Form Internal Transaction # = Required
+      Then Set Customs Form Internal Transaction # = Not required
 
       Then Set Customs Form More Info = random
 
