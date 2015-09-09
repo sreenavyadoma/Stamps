@@ -1,4 +1,11 @@
 module Batch
+
+  class PageStyles < BatchObject
+    def general
+      GeneralStyles.new @browser
+    end
+  end
+
   class GeneralStyles < BatchObject
     def font_family
       styles = app_content.style "font-family"

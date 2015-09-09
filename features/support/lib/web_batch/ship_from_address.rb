@@ -425,8 +425,6 @@ module Batch
     end
   end
 
-
-
   class AddressNotFound < Stamps::BrowserObject
 
     private
@@ -468,7 +466,7 @@ module Batch
       single_order_form = SingleOrderFormBase.new(@browser)
       single_order_form.validate_address_link
       single_order_form.expand_ship_to
-      browser_helper.set single_order_form.browser_ship_to_textbox, BatchHelper.instance.format_address(partial_address_hash), 'Address'
+      single_order_form.browser_ship_to_textbox.set BatchHelper.instance.format_address(partial_address_hash)
       5.times {
         begin
           item_label.click
