@@ -442,12 +442,8 @@ module Batch
       @browser.span :text => 'Less'
     end
 
-    def browser_ship_to_textbox
-      Textbox.new @browser.textarea :name => 'FreeFormAddress'
-    end
-
     def expand_ship_to
-      textbox = browser_ship_to_textbox
+      textbox = Textbox.new @browser.textarea :name => 'FreeFormAddress'
       dd = browser_ship_to_dd_button
       5.times {
         break if textbox.present?
@@ -456,18 +452,17 @@ module Batch
     end
 
     def ship_to *args
-      textbox = browser_ship_to_textbox
+      ship_to_textbox = Textbox.new @browser.textarea :name => 'FreeFormAddress'
       case args.length
         when 0
           expand_ship_to
-          textbox.text
-          less
+          return ship_to_textbox
         when 1
           expand_ship_to
-          textbox.set BatchHelper.instance.format_address(args[0])
+          ship_to_textbox.set BatchHelper.instance.format_address(args[0])
           if args[0].is_a? Hash
-            self.phone args[0]["phone"]
-            self.email args[0]["email"]
+            self.phone.set args[0]["phone"]
+            self.email.set args[0]["email"]
           end
           AddressNotFound.new(@browser)
         else
@@ -475,40 +470,16 @@ module Batch
       end
     end
 
-    def browser_email_textbox
-      Textbox.new @browser.text_field :name => 'Email'
-    end
-
-    def email *args
-      textbox = browser_email_textbox
+    def email
+      textbox = Textbox.new @browser.text_field :name => 'Email'
       expand_ship_to
-      case args.length
-        when 0
-          textbox.text
-        when 1
-          textbox.set args[0]
-        else
-          raise "Illegal number of argument exception"
-      end
-      less
+      textbox
     end
 
-    def browser_phone_textbox
-      Textbox.new @browser.text_field :name => 'Phone'
-    end
-
-    def phone *args
-      textbox = browser_phone_textbox
+    def phone
+      textbox = Textbox.new @browser.text_field :name => 'Phone'
       expand_ship_to
-      case args.length
-        when 0
-          textbox.text
-        when 1
-          textbox.set args[0]
-        else
-          raise "Illegal number of argument exception"
-      end
-      less
+      textbox
     end
 
     def manage_ship_from_address_field

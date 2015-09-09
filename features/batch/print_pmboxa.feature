@@ -12,5 +12,7 @@ Feature: B-01624 Print Priority Mail Regional Rate Box A
     Then Set Phone to (415) 123-5555
     And Collapse Ship-To Address
     Then Set Service to Priority Mail Regional Rate Box A
+
+    Then Select
     Then Print
     And Sign out

@@ -5,6 +5,16 @@ When /^I Add a new order$/ do
   @order_id = @single_order_form.order_id
 end
 
+Then /^I Add a second order$/ do
+  @single_order_form = batch.toolbar.add
+  @order_id_2 = @single_order_form.order_id
+end
+
+Then /^I Add a third order$/ do
+  @single_order_form = batch.toolbar.add
+  @order_id_3 = @single_order_form.order_id
+end
+
 When /^Add a second order$/ do
   log "Add a second order"
   first_row_order_id = batch.grid.order_id 1

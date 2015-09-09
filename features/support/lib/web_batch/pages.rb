@@ -135,8 +135,21 @@ module Batch
       LoginPage.new(@browser).sign_in *args
     end
 
-    def filters_panel
-      Filters.new(@browser)
+    def awaiting_shipment
+      #todo-elie here are your steps;
+      # 1. Click Awaiting shipment tab
+      # 2.  give back an instance of Grid.
+
+      Grid.new @browser
+    end
+
+    def shipped
+      #todo-elie here are your steps;
+      # 1. Click Awaiting shipment tab
+      # 2.  give back an instance of Grid.
+
+      Grid.new @browser
+
     end
 
     def multi_order

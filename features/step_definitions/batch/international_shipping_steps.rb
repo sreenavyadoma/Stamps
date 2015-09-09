@@ -84,9 +84,9 @@ Given /^Expect Single Order Form International Address fields are visible$/ do
 end
 
 Then /^Expect Single Order Form Domestic Ship-To fields are hidden$/ do
-  @single_order_form.browser_ship_to_textbox.present?.should be false
-  @single_order_form.browser_email_textbox.present?.should be false
-  @single_order_form.browser_phone_textbox.present?.should be false
+  @single_order_form.ship_to.present?.should be false
+  @single_order_form.email.present?.should be false
+  @single_order_form.phone.present?.should be false
 end
 
 Then /^Expect Single Order Form Customs (.+) button is (.+)/ do |button, expectation|

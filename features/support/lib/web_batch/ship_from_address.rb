@@ -466,7 +466,7 @@ module Batch
       single_order_form = SingleOrderFormBase.new(@browser)
       single_order_form.validate_address_link
       single_order_form.expand_ship_to
-      single_order_form.browser_ship_to_textbox.set BatchHelper.instance.format_address(partial_address_hash)
+      single_order_form.ship_to.set BatchHelper.instance.format_address(partial_address_hash)
       5.times {
         begin
           item_label.click
