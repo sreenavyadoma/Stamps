@@ -48,7 +48,7 @@ end
 When /^Set Length to (\d*)$/ do |value|
   begin
     log "Set Length to \"#{value}\""
-    batch.single_order_form.length = log_param "Length", value
+    batch.single_order_form.length.set log_param "Length", value
   end unless value.length == 0
 end
 
