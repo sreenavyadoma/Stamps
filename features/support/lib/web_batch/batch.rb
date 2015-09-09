@@ -36,84 +36,59 @@ module Batch
     @order_id
   end
 
-
-  class WebBatch < BatchPage
-    def sign_in(*args)
-      LoginPage.new(@browser).sign_in *args
-    end
-
-    def multi_order
-      MultiOrder.new(@browser)
-    end
-
-    def single_order_form
-      SingleOrderForm.new(@browser)
-    end
-
-    def grid
-      Grid.new(@browser)
-    end
-
-    def styles
-      PageStyles.new @browser
-    end
+  def setup
+    @batch = WebBatch.new(Stamps.setup)
   end
 
+  def batch
+    @batch
+  end
 
-  class WelcomeOrdersPage < BatchObject
-    private
-    def continue_span
-      @browser.span :text => "Continue"
+  def single_order_form *args
+    case args.length
+      when 0
+        @single_order_form
+      when 1
+        @single_order_form = args[0]
+      else
+        raise "Parameter Error:  Illegal number of arguments.  single_order_form"
     end
 
-    public
-    def present?
-      browser_helper.present? continue_span
-    end
+  end
 
-    def wait_until_present
-      begin
-        continue_span.wait_until_present
-      rescue
-        #ignore
-      end
-    end
+  def teardown
+    Stamps.teardown
+  end
 
-    def continue
-      5.times{
-        if browser_helper.present? continue_span
-          browser_helper.click continue_span, 'continue'
+  def randomize_ship_from *args
+    case args.length
+      when 1
+        address = args[0]
+        if address.downcase.include? "random"
+          @random_ship_from = test_helper.random_ship_from
+        else
+          @random_ship_from = address
         end
-        break unless browser_helper.present? continue_span
-      }
+      else
+        raise "Parameter Exception:  Wrong number of arguments for random_ship_from"
     end
   end
 
-  class WelcomeModal < BatchObject
-    private
-    def okay_button
-      @browser.span :text => 'OK'
-    end
-
-    public
-    def present?
-      browser_helper.present? okay_button
-    end
-
-    def wait_until_present
-      begin
-        okay_button.wait_until_present
-      rescue
-        #ignore
-      end
-    end
-
-    def ok
-      5.times{
-        browser_helper.click okay_button, 'OK'
-        break unless browser_helper.present? okay_button
-      }
+  def random_ship_to *args
+    case args.length
+      when 1
+        address = args[0]
+        if address.downcase.include? "random"
+          test_helper.random_ship_to
+        else
+          address
+        end
+      else
+        raise "Parameter Exception:  Wrong number of arguments for random_ship_from"
     end
   end
 
+  def new_order_row
+    1
+  end
 end
