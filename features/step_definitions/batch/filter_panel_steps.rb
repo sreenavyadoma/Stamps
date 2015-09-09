@@ -30,7 +30,7 @@ end
 Then /^Expect system (.*) "Print" button in control ribbon$/ do |status|
   log "Confirmed system #{status} Print button"
 
-  actual = batch.toolbar.is_print_button_present
+  actual = batch.toolbar.is_browser_print_button_present
   if status == 'hides'
     actual.should eql false
   elsif status == 'displays'
