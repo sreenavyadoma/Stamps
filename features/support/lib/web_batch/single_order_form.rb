@@ -310,23 +310,6 @@ module Batch
       ClickableField.new @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
     end
 
-    def less_dropdown
-      @browser.span :text => 'Less'
-    end
-
-    def browser_ship_to_textbox
-      Textbox.new @browser.textarea :name => 'FreeFormAddress'
-    end
-
-    def expand_ship_to
-      textbox = browser_ship_to_textbox
-      dd = browser_ship_to_dd_button
-      5.times {
-        break if textbox.present?
-        dd.safe_click
-      }
-    end
-
     def add_item
       add_item = ClickableField.new @browser.span :text => "Add Item"
       log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
@@ -453,6 +436,23 @@ module Batch
       self.length = data[:length]
       self.width = data[:width]
       self.height = data[:height]
+    end
+
+    def less_dropdown
+      @browser.span :text => 'Less'
+    end
+
+    def browser_ship_to_textbox
+      Textbox.new @browser.textarea :name => 'FreeFormAddress'
+    end
+
+    def expand_ship_to
+      textbox = browser_ship_to_textbox
+      dd = browser_ship_to_dd_button
+      5.times {
+        break if textbox.present?
+        dd.safe_click
+      }
     end
 
     def ship_to *args
