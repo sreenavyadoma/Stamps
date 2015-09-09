@@ -110,6 +110,7 @@ Then /^Expect Single Order Form Customs (.+) button is (.+)/ do |button, expecta
         when "visible"
           @single_order_form.customs.browser_edit_form_button.present?.should be true
         when "hidden"
+          @single_order_form.customs.browser_edit_form_button.present?.should be false
         else
           raise "Illegal argument exception"
       end
