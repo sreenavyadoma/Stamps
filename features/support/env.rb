@@ -23,6 +23,7 @@ require_relative 'lib/common/stamps_test'
 require_relative 'lib/common/browser_object'
 require_relative 'lib/common/browser_helper'
 require_relative 'lib/common/stamps'
+
 require_relative 'lib/web_batch/batch'
 require_relative 'lib/web_batch/navigation_bar'
 require_relative 'lib/web_batch/toolbar'
@@ -40,4 +41,4 @@ require_relative 'lib/web_batch/address_not_found'
 require_relative 'lib/web_batch/web_batch'
 require_relative 'lib/web_batch/purchasing'
 
-World(Batch)
+World(Stamps,Batch)
