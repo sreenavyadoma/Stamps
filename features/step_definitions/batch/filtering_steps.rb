@@ -15,3 +15,4 @@ Then /^Expect all printed Order IDs exist in Awaiting Shipment tab$/ do
   log "Row #{row} Order ID: #{row1_order_id}"
   @order_id.should include row1_order_id
 end
+
