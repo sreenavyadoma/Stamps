@@ -17,8 +17,10 @@ Given /^Set Ship-To Recipient to$/ do |table|
   province = param_hash["province"]
   postal_code = param_hash["postal_code"]
   country = param_hash["country"]
-  phone = (param_hash["phone"].downcase.include? "random") ? test_helper.random_phone : param_hash["phone"]
-  email = (param_hash["email"].downcase.include? "random") ? test_helper.random_email : param_hash["email"]
+  phone_num = param_hash["phone"]
+  phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash["phone"]
+  email_addy = param_hash["email"]
+  email = (email_addy.downcase.include? "random") ? test_helper.random_email : param_hash["email"]
 
   log "International Ship-To Name: #{name}"
   log "International Ship-To Company: #{company}"

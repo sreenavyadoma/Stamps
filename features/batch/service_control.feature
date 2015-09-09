@@ -11,7 +11,7 @@
     And Edit row 1 on the order grid
 
     Then Set Ship-To address to random
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
 
     Then Set Service to Priority Mail Large/Thick Envelope
     Then Expect Service to be Priority Mail Large/Thick Envelope

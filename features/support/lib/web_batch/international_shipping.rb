@@ -34,11 +34,11 @@ module Batch
     end
 
     def phone
-      @browser.text_fields :name => "Phone"
+      Textbox.new (@browser.text_fields :name => "Phone").last
     end
 
     def email
-      @browser.text_fields :name => "Email"
+      Textbox.new (@browser.text_fields :name => "Email").last
     end
 
   end

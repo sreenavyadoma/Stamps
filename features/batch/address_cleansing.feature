@@ -18,7 +18,7 @@ Feature: B-01603 Address Cleansing
     Then Expect Order Grid - City to be San Francisco
     Then Expect Order Grid - State to be CA
     Then Set Ship-To address to random
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Service to Priority Mail Package
     And Sign out
 

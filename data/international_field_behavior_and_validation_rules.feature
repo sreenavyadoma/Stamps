@@ -73,4 +73,4 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
     * Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
     * Close Customs Information Modal
-    * Collapse Ship-To Address
+    * Click Ship-To Less link

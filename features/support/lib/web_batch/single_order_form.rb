@@ -204,26 +204,6 @@ module Batch
       @browser.div :css => 'div[data-recordindex=\'0\']'
     end
 
-    def insured_value_textbox
-      @browser.text_field :name => "InsuranceAmount"
-    end
-
-    def pounds_textbox
-      @browser.text_field :name => 'WeightLbs'
-    end
-
-    def ounces_textbox
-      @browser.text_field :name => 'WeightOz'
-    end
-
-    def length_textbox
-      @browser.text_field :name => 'Length'
-    end
-
-    def width_textbox
-      @browser.text_field :name => 'Width'
-    end
-
     def height_textbox
       @browser.text_field :name => 'Height'
     end
@@ -417,25 +397,69 @@ module Batch
     def edit_details(data = {})
       #self.weight = {}
       log_hash_param data
-      self.insured_value = data[:insured_value]
-      self.pounds = data[:pounds]
-      self.ounces = data[:ounces]
-      self.length = data[:length]
-      self.width = data[:width]
-      self.height = data[:height]
+      self.insured_value.set data[:insured_value]
+      self.lbs.set data[:lbs]
+      self.oz.set data[:oz]
+      self.length.set data[:length]
+      self.width.set data[:width]
+      self.height.set data[:height]
     end
 
     def weight=(data={})
       log_hash_param data
-      self.pounds = data[:pounds]
-      self.ounces = data[:ounces]
+      self.lbs.set data[:lbs]
+      self.oz.set data[:oz]
+    end
+
+    def email
+      click_item_label
+      textbox = Textbox.new @browser.text_field :name => 'Email'
+      expand_ship_to
+      textbox
+    end
+
+    def phone
+      click_item_label
+      textbox = Textbox.new @browser.text_field :name => 'Phone'
+      expand_ship_to
+      textbox
     end
 
     def dimensions=(data={})
       log_hash_param data
-      self.length = data[:length]
-      self.width = data[:width]
-      self.height = data[:height]
+      self.length.set data[:length]
+      self.width.set data[:width]
+      self.height.set data[:height]
+    end
+
+    def oz
+      click_item_label
+      Textbox.new @browser.text_field :name => 'WeightOz'
+    end
+
+    def lbs
+      click_item_label
+      Textbox.new @browser.text_field :name => 'WeightLbs'
+    end
+
+    def insured_value
+      click_item_label
+      Textbox.new @browser.text_field :name => "InsuranceAmount"
+    end
+
+    def length
+      click_item_label
+      Textbox.new @browser.text_field :name => 'Length'
+    end
+
+    def width
+      click_item_label
+      Textbox.new @browser.text_field :name => 'Width'
+    end
+
+    def height
+      click_item_label
+      Textbox.new @browser.text_field :name => 'Height'
     end
 
     def less_dropdown
@@ -452,14 +476,14 @@ module Batch
     end
 
     def ship_to *args
-      ship_to_textbox = Textbox.new @browser.textarea :name => 'FreeFormAddress'
+      text_area = Textbox.new @browser.textarea :name => 'FreeFormAddress'
       case args.length
         when 0
           expand_ship_to
-          return ship_to_textbox
+          return text_area
         when 1
           expand_ship_to
-          ship_to_textbox.set BatchHelper.instance.format_address(args[0])
+          text_area.set BatchHelper.instance.format_address(args[0])
           if args[0].is_a? Hash
             self.phone.set args[0]["phone"]
             self.email.set args[0]["email"]
@@ -468,18 +492,6 @@ module Batch
         else
           raise "Wrong number of arguments for ship_to"
       end
-    end
-
-    def email
-      textbox = Textbox.new @browser.text_field :name => 'Email'
-      expand_ship_to
-      textbox
-    end
-
-    def phone
-      textbox = Textbox.new @browser.text_field :name => 'Phone'
-      expand_ship_to
-      textbox
     end
 
     def manage_ship_from_address_field
@@ -519,15 +531,6 @@ module Batch
       self.ship_from "Manage Shipping Addresses..."
     end
 
-    def pounds=(pounds)
-      browser_helper.set pounds_textbox, pounds, 'Pounds'
-      click_item_label
-    end
-
-    def pounds
-      pounds_textbox.attribute_value('value')
-    end
-
     def pounds_max_value
       pounds_qtip_error.scan(/The maximum value for this field is ([^>]*)<\/li><\/ul>/).last.first
     end
@@ -538,11 +541,6 @@ module Batch
 
     def pounds_qtip_error
       pounds_textbox.attribute_value('data-errorqtip')
-    end
-
-    def ounces=(ounces)
-      browser_helper.set ounces_textbox, ounces, 'Ounces'
-      click_item_label
     end
 
     def ounces_qtip_error
@@ -557,48 +555,8 @@ module Batch
       ounces_qtip_error.include?(message)
     end
 
-    def ounces
-      ounces_textbox.attribute_value('value')
-    end
-
     def service_default_text
       service_textbox.attribute_value("placeholder")
-    end
-
-    def insured_value=(amount)
-      browser_helper.set insured_value_textbox, amount, 'Insurance'
-      click_item_label
-    end
-
-    def insured_value
-      insured_value_textbox.attribute_value('value')
-    end
-
-    def length=(length)
-      browser_helper.set length_textbox, length, 'Length'
-      click_item_label
-    end
-
-    def length
-      length_textbox.attribute_value('value')
-    end
-
-    def width=(width)
-      browser_helper.set width_textbox, width, 'Width'
-      click_item_label
-    end
-
-    def width
-      width_textbox.attribute_value('value')
-    end
-
-    def height=(height)
-      browser_helper.set height_textbox, height, 'Height'
-      click_item_label
-    end
-
-    def height
-      height_textbox.attribute_value('value')
     end
 
     def country

@@ -9,7 +9,7 @@ Feature: B-01633 Change the starting label position I will print from - Print Le
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Service to Priority Mail Package
     And I Open Print Modal
     And Select left side label
@@ -18,7 +18,7 @@ Feature: B-01633 Change the starting label position I will print from - Print Le
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Service to Priority Mail Package
     And I Open Print Modal
     Then Expect left side label selected
@@ -27,7 +27,7 @@ Feature: B-01633 Change the starting label position I will print from - Print Le
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Service to Priority Mail Package
     And I Open Print Modal
     And Select right side label
@@ -36,7 +36,7 @@ Feature: B-01633 Change the starting label position I will print from - Print Le
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Service to Priority Mail Package
     And I Open Print Modal
     Then Expect right side label selected

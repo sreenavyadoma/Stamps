@@ -12,7 +12,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 1
     * Set Service to First-Class Mail Large Envelope/Flat
     * Set Insured Value to $15.00
@@ -22,7 +22,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 2
     * Set Service to First-Class Mail Package/Thick Envelope
     * Set Insured Value to $45.00
@@ -34,7 +34,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 3
     * Set Service to Priority Mail Large/Thick Envelope
     * Set Tracking to USPS Tracking
@@ -43,7 +43,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 4
     * Set Service to Priority Mail Package
     * Set Tracking to Signature Required
@@ -52,7 +52,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 5
     * Set Service to Priority Mail Large Package
     * Set Insured Value to $145.00
@@ -62,7 +62,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 6
     * Set Service to Priority Mail Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -71,7 +71,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 7
     * Set Service to Priority Mail Padded Flat Rate Envelope
     * Set Insured Value to $98.00
@@ -81,7 +81,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 8
     * Set Service to Priority Mail Legal Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -90,7 +90,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 9
     * Set Service to Priority Mail Small Flat Rate Box
     * Set Insured Value to $30.00
@@ -100,7 +100,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 10
     * Set Service to Priority Mail Medium Flat Rate Box
     * Set Insured Value to $45.00
@@ -110,7 +110,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 11
     * Set Service to Priority Mail Large Flat Rate Box
     * Set Insured Value to $239.00
@@ -120,7 +120,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 12
     * Set Service to Priority Mail Regional Rate Box A
     * Set Insured Value to $105.00
@@ -130,7 +130,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 13
     * Set Service to Priority Mail Regional Rate Box B
     * Set Insured Value to $205.00
@@ -140,7 +140,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 14
     * Set Service to Priority Mail Regional Rate Box C
     * Set Insured Value to $305.00
@@ -152,7 +152,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 15
     * Set Service to Priority Mail Express Package
     * Set Tracking to Signature Required
@@ -161,7 +161,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 16
     * Set Service to Priority Mail Express Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -170,7 +170,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 17
     * Set Service to Priority Mail Express Padded Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -179,7 +179,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 18
     * Set Service to Priority Mail Express Legal Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -188,7 +188,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 19
     * Set Service to Priority Mail Express Medium Flat Rate Box
     * Set Tracking to Signature Required
@@ -199,7 +199,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 20
     * Set Service to Media Mail Package
     * Set Insured Value to $56.00
@@ -211,7 +211,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 21
     * Set Service to Parcel Select Package
     * Set Insured Value to $345.00
@@ -221,7 +221,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 22
     * Set Service to Parcel Select Large Package
     * Set Insured Value to $456.00
@@ -231,7 +231,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 23
     * Set Service to Parcel Select Oversized Package
     * Set Insured Value to $567.00
@@ -287,7 +287,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 1
     * Set Service to First-Class Mail Large Envelope/Flat
     * Set Insured Value to $15.00
@@ -297,7 +297,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 2
     * Set Service to First-Class Mail Package/Thick Envelope
     * Set Insured Value to $45.00
@@ -309,7 +309,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 3
     * Set Service to Priority Mail Large/Thick Envelope
     * Set Tracking to USPS Tracking
@@ -318,7 +318,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 4
     * Set Service to Priority Mail Package
     * Set Tracking to Signature Required
@@ -327,7 +327,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 5
     * Set Service to Priority Mail Large Package
     * Set Insured Value to $145.00
@@ -337,7 +337,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 6
     * Set Service to Priority Mail Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -346,7 +346,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 7
     * Set Service to Priority Mail Padded Flat Rate Envelope
     * Set Insured Value to $98.00
@@ -356,7 +356,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 8
     * Set Service to Priority Mail Legal Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -365,7 +365,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 9
     * Set Service to Priority Mail Small Flat Rate Box
     * Set Insured Value to $30.00
@@ -375,7 +375,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 10
     * Set Service to Priority Mail Medium Flat Rate Box
     * Set Insured Value to $45.00
@@ -385,7 +385,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 11
     * Set Service to Priority Mail Large Flat Rate Box
     * Set Insured Value to $239.00
@@ -395,7 +395,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 12
     * Set Service to Priority Mail Regional Rate Box A
     * Set Insured Value to $105.00
@@ -405,7 +405,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 13
     * Set Service to Priority Mail Regional Rate Box B
     * Set Insured Value to $205.00
@@ -415,7 +415,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 14
     * Set Service to Priority Mail Regional Rate Box C
     * Set Insured Value to $305.00
@@ -427,7 +427,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 15
     * Set Service to Priority Mail Express Package
     * Set Tracking to Signature Required
@@ -436,7 +436,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 16
     * Set Service to Priority Mail Express Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -445,7 +445,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 17
     * Set Service to Priority Mail Express Padded Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -454,7 +454,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 18
     * Set Service to Priority Mail Express Legal Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -463,7 +463,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 19
     * Set Service to Priority Mail Express Medium Flat Rate Box
     * Set Tracking to Signature Required
@@ -474,7 +474,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 20
     * Set Service to Media Mail Package
     * Set Insured Value to $56.00
@@ -486,7 +486,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 21
     * Set Service to Parcel Select Package
     * Set Insured Value to $345.00
@@ -496,7 +496,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 22
     * Set Service to Parcel Select Large Package
     * Set Insured Value to $456.00
@@ -506,7 +506,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 23
     * Set Service to Parcel Select Oversized Package
     * Set Insured Value to $567.00
@@ -562,7 +562,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 1
     * Set Service to First-Class Mail Large Envelope/Flat
     * Set Insured Value to $15.00
@@ -572,7 +572,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 2
     * Set Service to First-Class Mail Package/Thick Envelope
     * Set Insured Value to $45.00
@@ -584,7 +584,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 3
     * Set Service to Priority Mail Large/Thick Envelope
     * Set Tracking to USPS Tracking
@@ -593,7 +593,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 4
     * Set Service to Priority Mail Package
     * Set Tracking to Signature Required
@@ -602,7 +602,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 5
     * Set Service to Priority Mail Large Package
     * Set Insured Value to $145.00
@@ -612,7 +612,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 6
     * Set Service to Priority Mail Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -621,7 +621,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 7
     * Set Service to Priority Mail Padded Flat Rate Envelope
     * Set Insured Value to $98.00
@@ -631,7 +631,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 8
     * Set Service to Priority Mail Legal Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -640,7 +640,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 9
     * Set Service to Priority Mail Small Flat Rate Box
     * Set Insured Value to $30.00
@@ -650,7 +650,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 10
     * Set Service to Priority Mail Medium Flat Rate Box
     * Set Insured Value to $45.00
@@ -660,7 +660,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 11
     * Set Service to Priority Mail Large Flat Rate Box
     * Set Insured Value to $239.00
@@ -670,7 +670,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 12
     * Set Service to Priority Mail Regional Rate Box A
     * Set Insured Value to $105.00
@@ -680,7 +680,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 13
     * Set Service to Priority Mail Regional Rate Box B
     * Set Insured Value to $205.00
@@ -690,7 +690,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 14
     * Set Service to Priority Mail Regional Rate Box C
     * Set Insured Value to $305.00
@@ -702,7 +702,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 15
     * Set Service to Priority Mail Express Package
     * Set Tracking to Signature Required
@@ -711,7 +711,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 16
     * Set Service to Priority Mail Express Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -720,7 +720,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 17
     * Set Service to Priority Mail Express Padded Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -729,7 +729,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 18
     * Set Service to Priority Mail Express Legal Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -738,7 +738,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 19
     * Set Service to Priority Mail Express Medium Flat Rate Box
     * Set Tracking to Signature Required
@@ -749,7 +749,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 20
     * Set Service to Media Mail Package
     * Set Insured Value to $56.00
@@ -761,7 +761,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 21
     * Set Service to Parcel Select Package
     * Set Insured Value to $345.00
@@ -771,7 +771,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 22
     * Set Service to Parcel Select Large Package
     * Set Insured Value to $456.00
@@ -781,7 +781,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 23
     * Set Service to Parcel Select Oversized Package
     * Set Insured Value to $567.00
@@ -837,7 +837,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 1
     * Set Service to First-Class Mail Large Envelope/Flat
     * Set Insured Value to $15.00
@@ -847,7 +847,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 2
     * Set Service to First-Class Mail Package/Thick Envelope
     * Set Insured Value to $45.00
@@ -859,7 +859,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 3
     * Set Service to Priority Mail Large/Thick Envelope
     * Set Tracking to USPS Tracking
@@ -868,7 +868,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 4
     * Set Service to Priority Mail Package
     * Set Tracking to Signature Required
@@ -877,7 +877,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 5
     * Set Service to Priority Mail Large Package
     * Set Insured Value to $145.00
@@ -887,7 +887,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 6
     * Set Service to Priority Mail Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -896,7 +896,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 7
     * Set Service to Priority Mail Padded Flat Rate Envelope
     * Set Insured Value to $98.00
@@ -906,7 +906,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 8
     * Set Service to Priority Mail Legal Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -915,7 +915,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 9
     * Set Service to Priority Mail Small Flat Rate Box
     * Set Insured Value to $30.00
@@ -925,7 +925,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 10
     * Set Service to Priority Mail Medium Flat Rate Box
     * Set Insured Value to $45.00
@@ -935,7 +935,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 11
     * Set Service to Priority Mail Large Flat Rate Box
     * Set Insured Value to $239.00
@@ -945,7 +945,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 12
     * Set Service to Priority Mail Regional Rate Box A
     * Set Insured Value to $105.00
@@ -955,7 +955,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 13
     * Set Service to Priority Mail Regional Rate Box B
     * Set Insured Value to $205.00
@@ -965,7 +965,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 14
     * Set Service to Priority Mail Regional Rate Box C
     * Set Insured Value to $305.00
@@ -977,7 +977,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 15
     * Set Service to Priority Mail Express Package
     * Set Tracking to Signature Required
@@ -986,7 +986,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 16
     * Set Service to Priority Mail Express Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -995,7 +995,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 17
     * Set Service to Priority Mail Express Padded Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -1004,7 +1004,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 18
     * Set Service to Priority Mail Express Legal Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -1013,7 +1013,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 19
     * Set Service to Priority Mail Express Medium Flat Rate Box
     * Set Tracking to Signature Required
@@ -1024,7 +1024,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 20
     * Set Service to Media Mail Package
     * Set Insured Value to $56.00
@@ -1036,7 +1036,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 21
     * Set Service to Parcel Select Package
     * Set Insured Value to $345.00
@@ -1046,7 +1046,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 22
     * Set Service to Parcel Select Large Package
     * Set Insured Value to $456.00
@@ -1056,7 +1056,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 23
     * Set Service to Parcel Select Oversized Package
     * Set Insured Value to $567.00
@@ -1112,7 +1112,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 1
     * Set Service to First-Class Mail Large Envelope/Flat
     * Set Insured Value to $15.00
@@ -1122,7 +1122,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 2
     * Set Service to First-Class Mail Package/Thick Envelope
     * Set Insured Value to $45.00
@@ -1134,7 +1134,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 3
     * Set Service to Priority Mail Large/Thick Envelope
     * Set Tracking to USPS Tracking
@@ -1143,7 +1143,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 4
     * Set Service to Priority Mail Package
     * Set Tracking to Signature Required
@@ -1152,7 +1152,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 5
     * Set Service to Priority Mail Large Package
     * Set Insured Value to $145.00
@@ -1162,7 +1162,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 6
     * Set Service to Priority Mail Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -1171,7 +1171,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 7
     * Set Service to Priority Mail Padded Flat Rate Envelope
     * Set Insured Value to $98.00
@@ -1181,7 +1181,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 8
     * Set Service to Priority Mail Legal Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -1190,7 +1190,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 9
     * Set Service to Priority Mail Small Flat Rate Box
     * Set Insured Value to $30.00
@@ -1200,7 +1200,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 10
     * Set Service to Priority Mail Medium Flat Rate Box
     * Set Insured Value to $45.00
@@ -1210,7 +1210,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 11
     * Set Service to Priority Mail Large Flat Rate Box
     * Set Insured Value to $239.00
@@ -1220,7 +1220,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 12
     * Set Service to Priority Mail Regional Rate Box A
     * Set Insured Value to $105.00
@@ -1230,7 +1230,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 13
     * Set Service to Priority Mail Regional Rate Box B
     * Set Insured Value to $205.00
@@ -1240,7 +1240,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 14
     * Set Service to Priority Mail Regional Rate Box C
     * Set Insured Value to $305.00
@@ -1252,7 +1252,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 15
     * Set Service to Priority Mail Express Package
     * Set Tracking to Signature Required
@@ -1261,7 +1261,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 16
     * Set Service to Priority Mail Express Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -1270,7 +1270,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 17
     * Set Service to Priority Mail Express Padded Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -1279,7 +1279,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 18
     * Set Service to Priority Mail Express Legal Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -1288,7 +1288,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 19
     * Set Service to Priority Mail Express Medium Flat Rate Box
     * Set Tracking to Signature Required
@@ -1299,7 +1299,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 20
     * Set Service to Media Mail Package
     * Set Insured Value to $56.00
@@ -1311,7 +1311,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 21
     * Set Service to Parcel Select Package
     * Set Insured Value to $345.00
@@ -1321,7 +1321,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 22
     * Set Service to Parcel Select Large Package
     * Set Insured Value to $456.00
@@ -1331,7 +1331,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 23
     * Set Service to Parcel Select Oversized Package
     * Set Insured Value to $567.00
@@ -1387,7 +1387,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 1
     * Set Service to First-Class Mail Large Envelope/Flat
     * Set Insured Value to $15.00
@@ -1397,7 +1397,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 2
     * Set Service to First-Class Mail Package/Thick Envelope
     * Set Insured Value to $45.00
@@ -1409,7 +1409,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 3
     * Set Service to Priority Mail Large/Thick Envelope
     * Set Tracking to USPS Tracking
@@ -1418,7 +1418,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 4
     * Set Service to Priority Mail Package
     * Set Tracking to Signature Required
@@ -1427,7 +1427,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 5
     * Set Service to Priority Mail Large Package
     * Set Insured Value to $145.00
@@ -1437,7 +1437,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 6
     * Set Service to Priority Mail Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -1446,7 +1446,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 7
     * Set Service to Priority Mail Padded Flat Rate Envelope
     * Set Insured Value to $98.00
@@ -1456,7 +1456,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 8
     * Set Service to Priority Mail Legal Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -1465,7 +1465,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 9
     * Set Service to Priority Mail Small Flat Rate Box
     * Set Insured Value to $30.00
@@ -1475,7 +1475,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 10
     * Set Service to Priority Mail Medium Flat Rate Box
     * Set Insured Value to $45.00
@@ -1485,7 +1485,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 11
     * Set Service to Priority Mail Large Flat Rate Box
     * Set Insured Value to $239.00
@@ -1495,7 +1495,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 12
     * Set Service to Priority Mail Regional Rate Box A
     * Set Insured Value to $105.00
@@ -1505,7 +1505,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 13
     * Set Service to Priority Mail Regional Rate Box B
     * Set Insured Value to $205.00
@@ -1515,7 +1515,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 14
     * Set Service to Priority Mail Regional Rate Box C
     * Set Insured Value to $305.00
@@ -1527,7 +1527,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Ounces to 15
     * Set Service to Priority Mail Express Package
     * Set Tracking to Signature Required
@@ -1536,7 +1536,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 16
     * Set Service to Priority Mail Express Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -1545,7 +1545,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 17
     * Set Service to Priority Mail Express Padded Flat Rate Envelope
     * Set Tracking to Signature Required
@@ -1554,7 +1554,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 18
     * Set Service to Priority Mail Express Legal Flat Rate Envelope
     * Set Tracking to USPS Tracking
@@ -1563,7 +1563,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 19
     * Set Service to Priority Mail Express Medium Flat Rate Box
     * Set Tracking to Signature Required
@@ -1574,7 +1574,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 20
     * Set Service to Media Mail Package
     * Set Insured Value to $56.00
@@ -1586,7 +1586,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 21
     * Set Service to Parcel Select Package
     * Set Insured Value to $345.00
@@ -1596,7 +1596,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 22
     * Set Service to Parcel Select Large Package
     * Set Insured Value to $456.00
@@ -1606,7 +1606,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Ship From to default
     * Set Ship-To address to random
-    * Collapse Ship-To Address
+    * Click Ship-To Less link
     * Set Pounds to 23
     * Set Service to Parcel Select Oversized Package
     * Set Insured Value to $567.00

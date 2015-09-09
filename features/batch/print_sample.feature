@@ -11,7 +11,7 @@
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Service to Parcel Select Large Package
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Print Sample
 
     And I Add a new order
@@ -25,21 +25,21 @@
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Service to Priority Mail Express Medium Flat Rate Box
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Print Sample
 
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Service to Priority Mail Express Package
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Print Sample
 
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Service to Priority Mail Flat Rate Envelope
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Print Sample
 
     And Sign out

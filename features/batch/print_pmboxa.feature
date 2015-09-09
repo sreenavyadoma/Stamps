@@ -10,7 +10,7 @@ Feature: B-01624 Print Priority Mail Regional Rate Box A
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Phone to (415) 123-5555
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Service to Priority Mail Regional Rate Box A
 
     Then Select
