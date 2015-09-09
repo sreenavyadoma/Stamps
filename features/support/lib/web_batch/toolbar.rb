@@ -97,7 +97,7 @@ module Batch
   class Toolbar < BatchObject
 
     def browser_settings_button
-      ClickableField.new @browser.span :css => 'span[class*=sdc-btn-settings]'
+      ClickableField.new @browser.span :css => 'span[class*=sdc-icon-settings]'
     end
 
     def browser_print_button
@@ -187,6 +187,10 @@ module Batch
 
     def is_print_button_present
       browser_helper.present? print_button
+    end
+
+    def is_browser_print_button_present
+      browser_helper.present? browser_print_button
     end
 
     def print_invalid_address
