@@ -84,7 +84,7 @@ end
 
 Then /^Expect Email Shipment Notifications Unchecked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(4)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(5)
   log_expectation_eql "Email Shipment Notifications", false, actual
   actual.should eql false
 
@@ -92,7 +92,7 @@ end
 
 Then /^Expect Email Shipment Deliveries Unchecked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(5)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(6)
   log_expectation_eql "Email Shipment Deliveries", false, actual
   actual.should eql false
 
@@ -125,7 +125,7 @@ end
 
 Then /^Expect Email Shipment Notifications Checked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(4)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(5)
   log_expectation_eql "Email Shipment Notifications", true, actual
   actual.should eql true
 
@@ -133,7 +133,7 @@ end
 
 Then /^Expect Email Shipment Deliveries Checked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(5)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(6)
   log_expectation_eql "Email Shipment Deliveries", true, actual
   actual.should eql true
 

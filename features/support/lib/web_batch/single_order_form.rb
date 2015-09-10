@@ -154,7 +154,7 @@ module Batch
       browser_helper.text order_status_label, 'order_status'
     end
 
-    def single_order_form_present?
+    def single_order_form_present
       browser_helper.present? order_id_label
     end
 

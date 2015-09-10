@@ -11,7 +11,6 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And Expect system selects the Awaiting Shipment filter by default
     Then Sign out
 
-  @filters
   Scenario: User opens and closes filters panel
 
     When Expect system displays expanded filters panel
@@ -51,22 +50,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And Expect system changes the panel arrow so that it is pointing to the left direction
     Then Sign out
 
-
-  Scenario: User clicks on Filters panel
-
-    When Expect system displays expanded filters panel
-    Then Click on the Filters panel border arrow
-    And Expect system closes Filters panel
-    Then Click on the closed Filters panel
-    And Expect system opens the Filters panel
-    Then Click on the Filters panel
-    And Expect system closes Filters panel
-    Then Click on the Filters panel
-    And Expect system opens the Filters panel
-
-    Then Sign out
-
-
+  @filters
   Scenario: User Changes filters
 
     When Expect system displays expanded filters panel
@@ -91,6 +75,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     Then Click on Shipped Filter
     And Expect system selects Shipped Filter and deselects the previous filter
+    And Expect system hides Single Order Form
 
     Then Expect Order Grid - Age to be 0 minutes ago
     Then Expect Order Grid - Recipient to be James Test
@@ -102,8 +87,5 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And I Add a new order
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
 
+
     Then Sign out
-
-
-
-
