@@ -12,7 +12,6 @@ Feature:  BVT International Shipping
     Then Set Ship-To Recipient to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-
     And Open Customs Form
     Then Set Customs Form Package Contents = Merchandise
     Then Set Customs Form Non-Delivery Options = Return to sender

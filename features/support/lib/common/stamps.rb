@@ -26,8 +26,10 @@ module Stamps
     Browser.instance
   end
 
-
-  def self.setup
+  def self.setup *args
+    if args.length == 1
+      ENV['BROWSER'] = args[0]
+    end
     log "Begin..."
 
     log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "gem list"} ]"

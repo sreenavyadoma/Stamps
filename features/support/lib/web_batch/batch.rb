@@ -41,7 +41,7 @@ module Batch
   end
 
   def batch
-    @batch
+    @batch ||= WebBatch.new(Stamps.setup)
   end
 
   def single_order_form *args
