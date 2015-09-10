@@ -2,7 +2,7 @@
 Feature: Show Cost of Order in Ship Cost Grid
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in as a batch shipper ie
 
   @print_costs
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid

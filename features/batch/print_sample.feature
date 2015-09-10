@@ -2,11 +2,13 @@
   Feature: Print Sample
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in as a batch shipper ie
 
   @print_sample @print
   Scenario:  B-01625 Print Sample - Parcel Select Large Package
 
+    @print
+    Scenario:
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
@@ -14,6 +16,9 @@
     And Click Ship-To Less link
     Then Print Sample
 
+
+    @print
+    Scenario:
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
@@ -21,6 +26,9 @@
     And Open Print Modal
     Then Print Sample
 
+
+    @print
+    Scenario:
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
@@ -28,6 +36,9 @@
     And Click Ship-To Less link
     Then Print Sample
 
+
+    @print
+    Scenario:
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
@@ -35,6 +46,9 @@
     And Click Ship-To Less link
     Then Print Sample
 
+
+    @print
+    Scenario:
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random

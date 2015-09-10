@@ -371,11 +371,11 @@ module Batch
     end
 
     # 5 lbs. 10 oz.
-    def pounds order_id
+    def lbs order_id
       weight(order_id).scan(/\d+ lbs./).first.scan(/\d/).first
     end
 
-    def ounces order_id
+    def oz order_id
       weight(order_id).scan(/\d+ oz./).first.scan(/\d/).first
     end
 

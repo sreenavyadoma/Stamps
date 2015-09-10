@@ -2,7 +2,7 @@
 Feature:  Prompt User to Remove Orders in Error from Print Group
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in as a batch shipper ie
 
   @printing_error
   Scenario:  Printing

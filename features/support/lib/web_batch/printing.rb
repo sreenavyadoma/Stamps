@@ -212,8 +212,6 @@ module Batch
       test_helper.remove_dollar_sign(browser_helper.text(total_label, "total"))
     end
 
-    private
-
     def total_label
       @browser.label(:text => 'Total Cost:').parent.labels.last
     end
@@ -395,7 +393,6 @@ module Batch
 
 
   class PrintWindowDatePicker < Stamps::BrowserObject
-    private
     def today_span
       span = @browser.span :css => "div[id^=datepicker][data-ref='footerEl']>a>span>span>span[class*=inner]"
       log "Today span present? #{browser_helper.present? span}"

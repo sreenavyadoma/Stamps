@@ -2,7 +2,7 @@
 Feature:  Printing Multiple Orders
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in as a batch shipper ie
 
   @print_window @print
   Scenario:  Printing
@@ -13,6 +13,7 @@ Feature:  Printing Multiple Orders
     And Open Print Modal
     Then Expect Print Window title to be "You have 1 label(s) ready to print"
 
+  Scenario:  Printing
     And I Add a new order
     Then Set Ship-To address to random
     Then Set Service to Priority Mail Package

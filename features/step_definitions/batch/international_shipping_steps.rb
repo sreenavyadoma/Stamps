@@ -161,10 +161,9 @@ Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\
 end
 
 Given /^Set Customs Form I agree to (\w+)$/ do |agree_str|
-  i_agree = agree_str.downcase == "true"
+  agree = agree_str.downcase == "true"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-
-  @customs_form.i_agree i_agree
+  @customs_form.i_agree agree
 end
 
 Given /^Add Item with Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
