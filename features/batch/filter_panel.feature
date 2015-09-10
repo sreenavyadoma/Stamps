@@ -1,4 +1,4 @@
-
+@regression
 Feature: As a batch shipper, I want to be able to filter orders by status [B-01621]
 
   Background:
