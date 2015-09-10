@@ -87,7 +87,7 @@ module Batch
     public
 
     def present?
-      browser_helper.present? close_button
+      ClickableField.new @browser.image :css => "img[class*='x-tool-close']"
     end
 
     def package_contents_dd
