@@ -2,14 +2,18 @@
 Feature: As a batch shipper, I want to be able to filter orders by status [B-01621]
 
   Background:
-    Given I am signed in as a batch shipper auto_paginate/password1
+    Given I am signed in as a batch shipper
 
-  @filters
-  Scenario: User opens and closes filters panel
 
+  Scenario: User Views Filter Panel Default
     When Expect system displays expanded filters panel
     Then Expect system displays "Awaiting Shipment" and "Shipped" filters in panel
     And Expect system selects the Awaiting Shipment filter by default
+    Then Sign out
+
+  Scenario: User opens and closes filters panel
+
+    When Expect system displays expanded filters panel
 
     Then Click on the Filters panel border arrow
     Then Expect system closes Filters panel
@@ -46,8 +50,6 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And Expect system changes the panel arrow so that it is pointing to the left direction
     Then Sign out
 
-
-
   @filters
   Scenario: User Changes filters
 
@@ -56,7 +58,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to James Test, 600 Front St Apt 232, San Diego CA 92101
-    And Collapse Ship-To Address
+    And Click Ship-To Less link
     Then Set Service to Priority Mail Express Medium Flat Rate Box
 
     Then Click on Awaiting Shipment Filter
@@ -73,9 +75,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     Then Click on Shipped Filter
     And Expect system selects Shipped Filter and deselects the previous filter
-    Then Expect system hides "Print" button in control ribbon
     And Expect system hides Single Order Form
-
 
     Then Expect Order Grid - Age to be 0 minutes ago
     Then Expect Order Grid - Recipient to be James Test
@@ -87,8 +87,5 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And I Add a new order
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
 
+
     Then Sign out
-
-
-
-
