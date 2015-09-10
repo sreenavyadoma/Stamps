@@ -111,7 +111,7 @@ Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print
     raise "Print Window is not open."
   end
   actual = @print_window.labels_ready_to_print
-  @print_window.close_until
+  @print_window.close
   log "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
   "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
 end
