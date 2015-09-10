@@ -186,16 +186,26 @@ module Batch
     end
 
     def i_agree agree
-=begin
-      checkbox_field = (@browser.text_fields :css => "input[id^=checkboxfield-]").last
-      verify_checked_field = (@browser.text_fields :css => "div[id^=checkboxfield][class*=x-field]").last
-      checkbox = Checkbox.new checkbox_field, verify_checked_field, "class"
+
+      checkbox_fields = @browser.inputs :css => "input[id^=checkbox-][id$=-inputEl]"
+      checkbox_field = checkbox_fields.last
+
+      verify_fields = @browser.inputs :css => "div[id^=checkbox][class*=x-form-type-checkbox]"
+      verify_field = verify_fields.last
+      checkbox = Checkbox.new checkbox_field, verify_field, "class", "checked"
       if agree
-        #check i agree
+        checkbox.check
+        log checkbox.checked?
+        checkbox.uncheck
+        log checkbox.checked?
+        checkbox.check
+        log checkbox.checked?
       else
-        #uncheck i agree
+        checkbox.uncheck
+        log checkbox.checked?
+        checkbox.uncheck
       end
-=end
+
     end
 
     def privacy_act_statement_link
