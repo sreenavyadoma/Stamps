@@ -5,10 +5,15 @@ module Batch
     end
 
     def page_count
-      field=@browser.text_field :css => "input[name^=combobox]"
-      text_box = Textbox.new field
-      log text_box.present?
-      text_box
+      #field=@browser.text_field :css => "input[name^=combobox]"
+      #text_box = Textbox.new field
+      #log text_box.present?
+      #text_box
+      divs = @browser.divs :css => "div[id^=tbtext]"
+      div = divs.last
+      present = browser_helper.present? div
+      log "Page count: #{browser_helper.text div}" # of X
+      div
     end
 
     def page_number
@@ -81,10 +86,10 @@ module Batch
 
     def per_page_dd
       #browser, drop_down_button, selection_field_type, drop_down_input
-      buttons = @browser.divs :css => "div[id^=combobox-][id$=trigger-picker]"
+      buttons = @browser.divs :css => "div[id^=combo-][id$=trigger-picker]"
       drop_down_button = buttons.first
       selection_field_type = "li"
-      drop_down_input = @browser.text_field :css => "input[name^=combobox]"
+      drop_down_input = @browser.text_field :css => "input[name^=combo]"
       dd=Dropdown.new @browser, drop_down_button, selection_field_type, drop_down_input
       dd
     end

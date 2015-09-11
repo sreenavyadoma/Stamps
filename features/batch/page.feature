@@ -2,7 +2,7 @@
 Feature: Order Pagination
 
   Background:
-    Given I am signed in as a batch shipper webbatch_0009/password1
+    Given I am signed in as a batch shipper gc/webbatch_0009/password1
 
   @page_count
   Scenario: B-01746 Set per page count
@@ -13,7 +13,7 @@ Feature: Order Pagination
     Then Expect Total Number of Pages to be 3
     Then Expect number of orders on page to be correct
     Then Set paging toolbar orders per page count to 100
-    Then Expect Total Number of Pages to be 6
+    Then Expect Total Number of Pages to be 7
     Then Expect number of orders on page to be correct
 
   #@page_controls

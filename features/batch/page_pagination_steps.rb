@@ -136,6 +136,7 @@ Then /^Set paging toolbar orders per page count to (\d+)$/ do |page_count|
   #log "Order Grid contains #{batch.grid.grid_page_order_count} orders"
   log "Per page count is #{batch.grid.paging_toolbar.page_count.text} orders"
   expect(page_count.to_i > 1).to be true
+  @per_page_count = page_count
 end
 
 When /^Set Page Number to (\d*)$/ do |value|
@@ -170,8 +171,10 @@ end
 Then /^Expect number of orders on page to be correct$/ do
   batch.grid.select_all
   multi_order_count = batch.multi_order.order_count.to_s
-  per_page_count = batch.grid.paging_toolbar.page_count.text
-  test_result = multi_order_count.include? per_page_count
+  log "Multi Order Count is #{multi_order_count}"
+  per_page_dd_count = @per_page_count
+  log "Per Page Count is #{per_page_dd_count}"
+  test_result = multi_order_count.include? per_page_dd_count
   log "#{(test_result)?'Test Passed.':'Test Failed'}"
   batch.grid.unselect_all
   test_result.should be true
