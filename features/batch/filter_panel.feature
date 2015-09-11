@@ -1,19 +1,16 @@
-
+@regression
 Feature: As a batch shipper, I want to be able to filter orders by status [B-01621]
 
   Background:
     Given I am signed in as a batch shipper
 
 
+
+  @filters
   Scenario: User Views Filter Panel Default
     When Expect system displays expanded filters panel
     Then Expect system displays "Awaiting Shipment" and "Shipped" filters in panel
     And Expect system selects the Awaiting Shipment filter by default
-    Then Sign out
-
-  Scenario: User opens and closes filters panel
-
-    When Expect system displays expanded filters panel
 
     Then Click on the Filters panel border arrow
     Then Expect system closes Filters panel

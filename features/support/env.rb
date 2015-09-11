@@ -19,6 +19,7 @@ require_relative 'lib/web_batch/helpers'
 require_relative 'lib/web_batch/fields'
 
 require_relative 'lib/web_batch/batch'
+require_relative 'lib/web_batch/modals'
 require_relative 'lib/web_batch/navigation_bar'
 require_relative 'lib/web_batch/toolbar'
 require_relative 'lib/web_batch/pages'

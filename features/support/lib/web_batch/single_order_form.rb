@@ -503,12 +503,12 @@ module Batch
     end
 
     def ship_from selection
+      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
       if selection.downcase.eql? "default"
         ship_from_dropdown.when_present.click
         ship_from_default_selection.click
         click_item_label
       else
-        @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
         5.times {
           begin
             break if @manage_shipping_adddress.present?
