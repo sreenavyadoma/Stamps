@@ -384,9 +384,7 @@ module Batch
 
   end
 
-
-
-  class DeleteShippingAddress < Stamps::BrowserObject
+  class DeleteShippingAddress < BatchObject
     public
     def delete
       5.times {
@@ -425,7 +423,7 @@ module Batch
     end
   end
 
-  class AddressNotFound < Stamps::BrowserObject
+  class AddressNotFound < BatchObject
 
     private
     def exact_address_not_found_field

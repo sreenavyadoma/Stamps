@@ -1,6 +1,6 @@
 module Batch
 
-  class BatchObject < Stamps::BrowserObject
+  class BatchObject < Stamps::Browser::BrowserObject
     def batch_helper
       BatchHelper.instance
     end

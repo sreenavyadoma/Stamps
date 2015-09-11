@@ -2,7 +2,7 @@ module Batch
 
   class ViewRestrictions < BatchObject
     def browser_ok_button
-      ClickableField.new @browser.span :text => "OK"
+      Button.new @browser.span :text => "OK"
     end
 
     def present?
@@ -17,7 +17,7 @@ module Batch
   class Customs < BatchObject
 
     def browser_edit_form_button
-      ClickableField.new @browser.span :text => "Edit Form..."
+      Button.new @browser.span :text => "Edit Form..."
     end
 
     def edit_form
@@ -31,7 +31,7 @@ module Batch
     end
 
     def browser_restrictions_button
-      ClickableField.new @browser.span :text => "Restrictions..."
+      Button.new @browser.span :text => "Restrictions..."
     end
 
     def restrictions
@@ -287,11 +287,11 @@ module Batch
     end
 
     def browser_ship_to_dd_button
-      ClickableField.new @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
+      Button.new @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
     end
 
     def add_item
-      add_item = ClickableField.new @browser.span :text => "Add Item"
+      add_item = Button.new @browser.span :text => "Add Item"
       log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
       add_item
 

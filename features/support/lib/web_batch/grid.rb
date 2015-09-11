@@ -31,10 +31,6 @@ module Batch
         :order_total => "Order Total"
     }
 
-    def browser_helper
-      BrowserHelper.instance
-    end
-
     def test_helper
       TestHelper.instance
     end
@@ -222,20 +218,31 @@ module Batch
       end
     end
 
-    def checked_rows
-      log "Remembering checked orders..."
+    def cache_checked_rows *args
+      cache_count = 2
+      if args.length == 1
+        cache_count = args[0]
+      end
+
+      log "Caching checked rows..."
       checked_rows = Hash.new
-      grid_order_count = grid_page_order_count
-      row_count = (grid_order_count>50)?50:grid_order_count
-      log "Number of rows to check:  #{row_count}"
-      1.upto(row_count) { |row|
+      grid_total = total_number_of_orders
+      if cache_count > 2 && cache_count < grid_total
+        cache_item_count = cache_count
+      elsif cache_count > grid_total
+        cache_item_count = grid_total
+      else
+        cache_item_count = cache_count
+      end
+      log "Number of rows to check:  #{cache_item_count}"
+      1.upto(cache_item_count) { |row|
         checked = row_checked? row
         if checked
           checked_rows[row] = checked
         end
         log "Row #{row} Checked? #{checked}.  Stored:  #{checked_rows[row]}"
       }
-      log "Remembering checked orders done."
+      log "Checked rows cached."
       checked_rows
     end
 
@@ -252,7 +259,7 @@ module Batch
       end unless rows.nil?
     end
 
-    def grid_page_order_count
+    def total_number_of_orders
       tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
       count = tables.length
       log "Total Number of Orders on Grid:  #{count}"

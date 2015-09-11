@@ -23,7 +23,7 @@ module Stamps
   end
 
   def self.browser
-    Browser.instance
+    Stamps::Browser::Browser.instance
   end
 
   def self.setup *args

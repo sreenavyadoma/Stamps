@@ -1,7 +1,7 @@
 #Pagination Controls are enabled
 
 Then /^User is on the first page of orders$/ do
-  log "Page Count = Page #{batch.grid.grid_page_order_count} orders"
+  log "Page Count = Page #{batch.grid.total_number_of_orders} orders"
   page_count = batch.grid.paging_toolbar.page_count.text
   log "Page Count = Page #{page_count}"
   expect(page_count.to_i = 1).to be true
@@ -206,7 +206,7 @@ Then /^Web Batch grid has more orders than value selected in 'number of orders p
   #1 Count order grid items ordersgridpagingtoolbar
   page_count = batch.grid.paging_toolbar.page_count.text
   expect(page_count.to_i > 1).to be true
-  total_grid_count = batch.grid.grid_page_order_count
+  total_grid_count = batch.grid.total_number_of_orders
   #2 Get per page count
 
   #3 Compare

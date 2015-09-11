@@ -68,14 +68,22 @@ module Batch
 
   end
 
-  class UspsPrivactActStatement < BatchObject
-    def present?
+  class UspsPrivactActStatementModal < BatchObject
+    def window_title
+      Label.new @browser.div :text => "USPS Privacy Act Statement"
+    end
 
+    def present?
+      window_title.present?
+    end
+
+    def okay
+      @browser.span :text => "OK"
     end
 
   end
 
-  class RestrictionsAndProhibitions < BatchObject
+  class RestrictionsAndProhibitionsModal < BatchObject
 
     def present?
 
@@ -87,7 +95,7 @@ module Batch
     public
 
     def present?
-      ClickableField.new @browser.image :css => "img[class*='x-tool-close']"
+      Button.new @browser.image :css => "img[class*='x-tool-close']"
     end
 
     def package_contents_dd
@@ -136,7 +144,7 @@ module Batch
     end
 
     def add_item
-      ClickableField.new @browser.spans :text => "Add Item"
+      Button.new @browser.spans :text => "Add Item"
     end
 
     def total_weight_label
@@ -215,7 +223,7 @@ module Batch
     end
 
     def usps_privacy_act_statement
-      privacy_statement = UspsPrivactActStatement.new @browser
+      privacy_statement = UspsPrivactActStatementModal.new @browser
       5.times{
         browser_helper.safe_click privacy_act_statement_link
         return privacy_statement if privacy_statement.present?
@@ -229,7 +237,7 @@ module Batch
     end
 
     def restrictions_and_prohibitions
-      restrictions_link = RestrictionsAndProhibitions.new @browser
+      restrictions_link = RestrictionsAndProhibitionsModal.new @browser
       5.times{
         browser_helper.safe_click restrictions_prohibitions_link
         return restrictions_link if restrictions_link.present?
@@ -237,31 +245,11 @@ module Batch
     end
 
     def close
-      ClickableField.new @browser.span :text => "Close"
-    end
-
-    def close_until
-      button = close
-      3.times{
-        button.safe_click
-        break unless button.present?
-      }
+      (Button.new @browser.span :text => "Close").click_while_present
     end
 
     def cancel
-      ClickableField.new @browser.img :css => "img[class$=x-tool-close]"
-    end
-
-    def cancel_until
-      cancel_button = cancel
-      5.times{
-        begin
-          cancel_button.click
-          break unless cancel_button.present?
-        rescue
-          #ignore
-        end
-      }
+      (Button.new @browser.img :css => "img[class$=x-tool-close]").click_while_present
     end
   end
 

@@ -1,5 +1,5 @@
 module Batch
-  module PrintWindowBase
+  class PrintWindowBase < BatchObject
     def window_x_button
       @browser.img :css => "img[class*='x-tool-img x-tool-close']"
     end
@@ -21,8 +21,7 @@ module Batch
     end
   end
 
-  class PrintWindow < Stamps::BrowserObject
-    include Batch::PrintWindowBase
+  class PrintWindow < PrintWindowBase
     def initialize browser, *args
       super browser
       print_options *args
@@ -392,7 +391,7 @@ module Batch
   end
 
 
-  class PrintWindowDatePicker < Stamps::BrowserObject
+  class PrintWindowDatePicker < BatchObject
     def today_span
       span = @browser.span :css => "div[id^=datepicker][data-ref='footerEl']>a>span>span>span[class*=inner]"
       log "Today span present? #{browser_helper.present? span}"

@@ -201,7 +201,7 @@ module Batch
     end
   end
 
-  class NawsPluginError < Stamps::BrowserObject
+  class NawsPluginError < BatchObject
     private
     def error_code_p
       @browser.p :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"

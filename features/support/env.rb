@@ -30,4 +30,4 @@ require_relative 'lib/web_batch/printing'
 require_relative 'lib/web_batch/ship_from_address'
 require_relative 'lib/web_batch/purchasing'
 
-World(Stamps,Batch)
+World(Stamps,Stamps::Browser,Batch)

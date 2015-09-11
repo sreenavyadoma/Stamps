@@ -66,13 +66,13 @@ module Batch
     def filter filter
       case filter.downcase
         when 'awaiting shipment'
-          awaiting_shipment_button = ClickableField.new @browser.div :text => "Awaiting Shipment"
+          awaiting_shipment_button = Button.new @browser.div :text => "Awaiting Shipment"
           5.times {
             awaiting_shipment_button.safe_click
             break if get_selected_filter_text == 'Awaiting Shipment'
           }
         when 'shipped'
-          awaiting_shipment_button = ClickableField.new @browser.div :text => "Shipped"
+          awaiting_shipment_button = Button.new @browser.div :text => "Shipped"
           5.times {
             awaiting_shipment_button.safe_click
             break if get_selected_filter_text == 'Shipped'

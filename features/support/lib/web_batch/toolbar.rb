@@ -102,7 +102,7 @@ module Batch
   class Toolbar < BatchObject
 
     def browser_settings_button
-      ClickableField.new @browser.span :css => 'span[class*=sdc-icon-settings]'
+      Button.new @browser.span :css => 'span[class*=sdc-icon-settings]'
     end
 
     def browser_print_button
@@ -116,16 +116,23 @@ module Batch
 
     def open_print_window window
       order_grid = Grid.new @browser
-      checked_rows_hash = order_grid.checked_rows
+      checked_rows_cache = order_grid.cache_checked_rows
       browser_helper.click browser_print_button, "print"
+
+      usps_terms = UspsTerms.new @browser
+      if usps_terms.present?
+        usps_terms.dont_show_this_again true
+        usps_terms.i_agree.click_while_present
+      end
+
       naws_plugin_error = NawsPluginError.new @browser
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
       install_plugin_error = ErrorInstallPlugin.new @browser
 
-      10.times {
+      5.times {
 
         if install_plugin_error.present?
-          order_grid.check_rows checked_rows_hash
+          order_grid.check_rows checked_rows_cache
           install_plugin_error.close
           return nil
         end
@@ -134,7 +141,7 @@ module Batch
           if error_connecting_to_plugin.present?
             5.times{
               error_connecting_to_plugin.ok
-              order_grid.check_rows checked_rows_hash
+              order_grid.check_rows checked_rows_cache
               break unless error_connecting_to_plugin.present?
             }
           end
@@ -142,13 +149,13 @@ module Batch
           if naws_plugin_error.present?
             5.times{
               naws_plugin_error.ok
-              order_grid.check_rows checked_rows_hash
+              order_grid.check_rows checked_rows_cache
               break unless naws_plugin_error.present?
             }
           end
 
           return window if window.present?
-          order_grid.check_rows checked_rows_hash
+          order_grid.check_rows checked_rows_cache
           browser_helper.click browser_print_button, "print"
         rescue
           #ignore
@@ -157,7 +164,7 @@ module Batch
     end
 
     def browser_add_button
-      field = ClickableField.new @browser.span :text => 'Add'
+      field = Button.new @browser.span :text => 'Add'
       log "Toolbar Add button is #{(field.present?)?'present':'NOT present'}"
       field
     end

@@ -80,7 +80,7 @@ Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expectation|
       break if actual_value.eql? expectation
       actual_value = print_window.total_cost
     }
-    print_window.close_until
+    print_window.close
     actual_value.should eql expectation
   end unless expectation.length == 0
 end

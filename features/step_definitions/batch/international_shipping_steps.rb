@@ -206,7 +206,7 @@ end
 
 Given /^Close Customs Information Modal$/ do
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  @customs_form.cancel_until
+  @customs_form.cancel
 end
 
 Given /^Expect Customs Information Modal to be present$/ do

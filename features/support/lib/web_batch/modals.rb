@@ -60,11 +60,11 @@ module Batch
     end
 
     def i_agree
-      ClickableField.new @browser.span :text => "I Agree"
+      Button.new @browser.span :text => "I Agree"
     end
 
     def cancel
-      ClickableField.new @browser.span :text => "Cancel"
+      Button.new @browser.span :text => "Cancel"
     end
   end
 

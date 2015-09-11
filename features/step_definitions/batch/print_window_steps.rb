@@ -58,7 +58,7 @@ When /^Print$/ do
 end
 
 Then /^Close Print Window$/ do
-  @print_window.close_until unless @print_window.nil?
+  @print_window.close unless @print_window.nil?
 end
 
 Then /^Click Print Modal - Print button$/ do
@@ -88,13 +88,13 @@ end
 
 Then /^Print expecting invalid address error$/ do
   error_window = batch.toolbar.print_invalid_address
-  error_window.close_until
+  error_window.close
 end
 
 When /^Print expecting rating error$/ do
   error_window = batch.toolbar.print.print_expecting_rating_error
   actual_error_message = error_window.error_message
-  error_window.close_until
+  error_window.close
   expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
 end
 
