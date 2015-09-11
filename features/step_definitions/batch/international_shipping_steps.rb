@@ -6,7 +6,7 @@ Then /^Set Ship-To country to (.*)$/ do |country|
 end
 
 # random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
-Given /^Set Ship-To Recipient to$/ do |table|
+Given /^Set Ship-To to international address$/ do |table|
   param_hash = table.hashes.first
 
   name = (param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]

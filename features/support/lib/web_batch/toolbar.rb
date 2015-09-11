@@ -115,9 +115,10 @@ module Batch
     end
 
     def open_print_window window
+      browser_helper.click browser_print_button, "print"
+
       order_grid = Grid.new @browser
       checked_rows_cache = order_grid.cache_checked_rows
-      browser_helper.click browser_print_button, "print"
 
       usps_terms = UspsTerms.new @browser
       if usps_terms.present?

@@ -1,20 +1,50 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as a batch shipper ie
+    Given I am signed in as a batch shipper ff
 
   @apo_shipping
   Scenario: APO Address
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To country to United States
-    Then Set Ship-To address to Domestic APO, Unit 15324, APO AP 96205-5324
-    Then Set Phone to random
-    Then Set Email to random
-    Then Click Ship-To Less link
-
+    Then Set Ship-To address to
+      | name   | company      | street_address | city | state | zip         | country       | phone  |  email |
+      | random | Domestic APO | Unit 15324     | APO  | AP    | 96205-5324  | United States | random | random |
+    Then Set Service to Priority Mail Package
     Then Print
 
+  @fpo_shipping
+  Scenario: APO Address
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To country to United States
+    Then Set Ship-To address to
+      | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
+      | random | Domestic FPO | Uss Mason DDG 87  | FPO  | AE    | 09578  | United States | random | random |
+    Then Set Service to Priority Mail Package
+    Then Print
+
+  @dpo_shipping
+  Scenario: APO Address
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To country to United States
+    Then Set Ship-To address to
+      | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
+      | random | Domestic DPO | Unit 8400, Box 0000 | DPO  | AE    | 09498-9997 | United States | random | random |
+    Then Set Service to Priority Mail Package
+    Then Print
+
+  @non_domestic_shipping
+  Scenario: APO Address
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To country to United States
+    Then Set Ship-To address to
+      | name   | company      | street_address | city | state | zip         | country       | phone  |  email |
+      | random | Domestic APO | Unit 15324     | APO  | AP    | 96205-5324  | United States | random | random |
+    Then Set Service to Priority Mail Package
     Then Expect Single Order Form Customs Edit Form button is visible
     Then Expect Single Order Form Customs Restrictions button is hidden
 
@@ -24,7 +54,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       And I Add a new order
       Then Set Ship From to default
       Then Set Ship-To country to Canada
-      Then Set Ship-To Recipient to
+      Then Set Ship-To to international address
         | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
         | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
@@ -66,7 +96,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       And I Add a new order
       Then Set Ship From to default
 
-      Then Set Ship-To Recipient to
+      Then Set Ship-To to international address
         | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
         | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 

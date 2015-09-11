@@ -4,9 +4,39 @@ When /^Set Ship-To address to (.*)$/ do |address|
   batch.single_order_form.ship_to random_ship_to(address)
 end
 
-When /^Change Ship-To Address to (.*)$/ do |value|
-  log "Change Ship-To Address to \"#{value}\""
-  batch.single_order_form.ship_to log_param "Address", value
+And /^Set Ship-To address to$/ do |table|
+  param_hash = table.hashes.first
+
+  name = (param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]
+  company = (param_hash["company"].downcase.include? "random") ? test_helper.random_company_name : param_hash["company"]
+  street_address = param_hash["street_address"]
+  city = param_hash["city"]
+  state = param_hash["state"]
+  zip = param_hash["zip"]
+  phone_num = param_hash["phone"]
+  phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash["phone"]
+  email_addy = param_hash["email"]
+  email = (email_addy.downcase.include? "random") ? test_helper.random_email : param_hash["email"]
+
+  param_hash["name"] = name
+  param_hash["company"] = company
+  param_hash["street_address"] = street_address
+  param_hash["city"] = city
+  param_hash["state"] = state
+  param_hash["zip"] = zip
+  param_hash["phone"] = phone
+  param_hash["email"] = email
+
+  log "Ship-To Name: #{param_hash["name"]}"
+  log "Ship-To Company: #{param_hash["company"]}"
+  log "Ship-To Address: #{param_hash["street_address"]}"
+  log "Ship-To City: #{param_hash["city"]}"
+  log "Ship-To State: #{param_hash["state"]}"
+  log "Ship-To Zip: #{param_hash["zip"]}"
+  log "Ship-To Phone: #{param_hash["phone"]}"
+  log "Ship-To Email: #{param_hash["email"]}"
+
+  @ambiguous_address_module = batch.single_order_form.ship_to param_hash
 end
 
 When /^Set Phone to (.*)$/ do |value|
@@ -93,10 +123,6 @@ end
 
 And /^Set Ship From to (\w+)$/ do |value|
   batch.single_order_form.ship_from value
-end
-
-And /^Set Ship-To address to$/ do |table|
-  @ambiguous_address_module = batch.single_order_form.ship_to table.hashes.first
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|

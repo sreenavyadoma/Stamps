@@ -5,7 +5,7 @@ Feature:  BVT Order Creation
     Given I am signed in as a batch shipper
 
   @bvt_add_new_order
-  Scenario:  I Add a new order
+  Scenario:  Add a new order
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
