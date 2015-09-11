@@ -1,5 +1,4 @@
 module Batch
-
   class GridBase < BatchObject
     GRID_COLUMNS ||= {
         :check_all => " ",
@@ -161,7 +160,7 @@ module Batch
       check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
       attribute = "class"
       attrib_value_check = "checker-on"
-      Checkbox.new checkbox_field,check_verify_field, attribute, attrib_value_check
+      Browser::Checkbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
     end
 
     def select_all

@@ -1,7 +1,7 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in as a batch shipper ie
 
   @apo_shipping
   Scenario: APO Address
@@ -12,6 +12,8 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Phone to random
     Then Set Email to random
     Then Click Ship-To Less link
+
+    Then Print
 
     Then Expect Single Order Form Customs Edit Form button is visible
     Then Expect Single Order Form Customs Restrictions button is hidden
