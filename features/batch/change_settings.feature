@@ -19,8 +19,7 @@ Feature: Change Settings
     Then Expect Show Unavailable Services Checked
     Then Expect Dont Show Print Confirmation Dialog Checked
     Then Expect Save Delivery Addresses Checked
-    Then Expect Email Shipment Notifications Checked
-    Then Expect Email Shipment Deliveries Checked
+    #Then Expect Email Shipment Notifications Checkedc
     Then Uncheck Show Unavailable Services
     Then Uncheck Dont Show Print Confirmation Dialog
     Then Uncheck Save Delivery Addresses

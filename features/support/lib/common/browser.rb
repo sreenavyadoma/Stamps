@@ -285,6 +285,14 @@ module Stamps
       browser_helper.safe_click @field
     end
 
+    def click_while_present
+      5.times{
+        safe_click
+        sleep 1
+        break unless present?
+      }
+    end
+
   end
 
   class Checkbox < ClickableField
