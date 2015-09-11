@@ -3,6 +3,19 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   Background:
     Given I am signed in as a batch shipper
 
+  @apo_shipping
+  Scenario: APO Address
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To country to United States
+    Then Set Ship-To address to Domestic APO, Unit 15324, APO AP 96205-5324
+    Then Set Phone to random
+    Then Set Email to random
+    Then Click Ship-To Less link
+
+    Then Expect Single Order Form Customs Edit Form button is visible
+    Then Expect Single Order Form Customs Restrictions button is hidden
+
     @international_shipping
     Scenario: Single Order Form International Shipping fields and Customs Information fields validation
 
@@ -45,17 +58,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form ITN# = random
 
       Then Close Customs Information Modal
-
-      And I Add a new order
-      Then Set Ship From to default
-      Then Set Ship-To country to United States
-      Then Set Ship-To address to Domestic APO, Unit 15324, APO AP 96205-5324
-      Then Set Phone to random
-      Then Set Email to random
-      Then Click Ship-To Less link
-
-      Then Expect Single Order Form Customs Edit Form button is visible
-      Then Expect Single Order Form Customs Restrictions button is hidden
 
 
   Scenario: User Prints International Address 1

@@ -31,8 +31,7 @@ module Batch
       (Label.new @browser.div :text => "USPS Terms").present?
     end
 
-    def dont_show_this_again show
-      dont_show_again = show.downcase == "true"
+    def dont_show_this_again dont_show
 
       chkbox_inputs = @browser.inputs :css => "input[id^=checkbox-][id$=-inputEl]"
       checkbox_field = chkbox_inputs.last
@@ -46,7 +45,7 @@ module Batch
 
       dont_show_checkbox = Stamps::Checkbox.new checkbox_field, verify_field, attribute, attrib_value_check
 
-      if dont_show_again
+      if dont_show
         dont_show_checkbox.check
         log "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
         dont_show_checkbox.uncheck
