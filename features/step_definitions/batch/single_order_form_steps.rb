@@ -43,14 +43,14 @@ When /^Set Phone to (.*)$/ do |value|
   begin
     log "Set Phone to \"#{value}\""
     batch.single_order_form.phone.set log_param "Phone", value
-  end unless value.length == 0
+  end unless value.str_length == 0
 end
 
 When /^Set Email to (.*)$/ do |value|
   begin
     log "Set Email to \"#{value}\""
     batch.single_order_form.email.set log_param "Email", value
-  end unless value.length == 0
+  end unless value.str_length == 0
   #end_step step
 end
 
@@ -76,35 +76,35 @@ When /^Set Pounds to (\d*)$/ do |value|
   begin
     log "Set Pounds to \"#{value}\""
     batch.single_order_form.lbs.set log_param "Pounds", value
-  end unless value.length == 0
+  end unless value.str_length == 0
 end
 
 When /^Set Ounces to (\d*)$/ do |value|
   begin
     log "Set Ounces to \"#{value}\""
     batch.single_order_form.oz.set log_param"Ounces", value
-  end unless value.length == 0
+  end unless value.str_length == 0
 end
 
 When /^Set Length to (\d*)$/ do |value|
   begin
     log "Set Length to \"#{value}\""
-    batch.single_order_form.length.set log_param "Length", value
-  end unless value.length == 0
+    batch.single_order_form.str_length.set log_param "Length", value
+  end unless value.str_length == 0
 end
 
 When /^Set Width to (\d*)$/ do |value|
   begin
     log "Set Width to \"#{value}\""
     batch.single_order_form.width.set log_param "Width", value
-  end unless value.length == 0
+  end unless value.str_length == 0
 end
 
 When /^Set Height to (\d*)$/ do |value|
   begin
     log "Set Height to \"#{value}\""
     batch.single_order_form.height.set log_param "Height", value
-  end unless value.length == 0
+  end unless value.str_length == 0
 end
 
 And /^Set Service to (.*)$/ do |value|
@@ -114,7 +114,7 @@ end
 Then /^Set Tracking to ([\w ]*)$/ do |value|
   begin
     batch.single_order_form.tracking = log_param "Tracking", value
-  end unless value.length == 0
+  end unless value.str_length == 0
 end
 
 And /^Set Insured Value to \$([\d*\.?\d*]*)$/ do |value|
@@ -231,7 +231,7 @@ Then /^Expect Service Cost to be \$(.*)$/ do |expected|
       actual = batch.single_order_form.service_cost
     }
     actual.should eql expected
-  end unless expected.length == 0
+  end unless expected.str_length == 0
 end
 
 Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
@@ -243,7 +243,7 @@ Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
       actual = batch.single_order_form.tracking_cost
     }
     actual.should eql expected
-  end unless expected.length == 0
+  end unless expected.str_length == 0
 end
 
 Then /^Verify Single Order Form Total Amount$/ do
@@ -259,7 +259,7 @@ Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
       actual = batch.single_order_form.insurance_cost
     }
     actual.should eql expected
-  end unless expected.length == 0
+  end unless expected.str_length == 0
 end
 
 Then /^Expect Service to be (.*)$/ do |expected|
@@ -271,7 +271,7 @@ Then /^Expect Service to be (.*)$/ do |expected|
       actual = batch.single_order_form.service_input_text
     }
     expect(actual.include? expected).to be true
-  end unless expected.length == 0
+  end unless expected.str_length == 0
 end
 
 Then /^Expect Tracking to be ([\w\s]*)$/ do |expected|
@@ -283,7 +283,7 @@ Then /^Expect Tracking to be ([\w\s]*)$/ do |expected|
       actual = batch.single_order_form.tracking
     }
     actual.should eql expected
-  end unless expected.length == 0
+  end unless expected.str_length == 0
 end
 
 Then /^Expect Total to be \$(.*)$/ do |expected|
@@ -295,7 +295,7 @@ Then /^Expect Total to be \$(.*)$/ do |expected|
       actual = batch.single_order_form.total
     }
     actual.should eql expected
-  end unless expected.length == 0
+  end unless expected.str_length == 0
 end
 
 Then /^Expect (\d+) orders selected$/ do |expected|

@@ -155,7 +155,7 @@ When /^Set Page Number to (\d*)$/ do |value|
     log "New page number #{page_number}"
     page_two_order_id = batch.grid.order_id 1
     page_one_order_id.should_not eql page_two_order_id
-  end unless value.length == 0
+  end unless value.str_length == 0
 end
 
 Then /^Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|

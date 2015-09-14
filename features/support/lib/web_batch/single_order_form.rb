@@ -21,13 +21,14 @@ module Batch
     end
 
     def edit_form
-      customs = CustomsForm.new @browser
+      @customs_form = CustomsForm.new @browser
       edit_form_button = browser_edit_form_button
       5.times{
         browser_helper.safe_click edit_form_button
-        break if customs.present?
+        break if @customs_form.present?
       }
-      raise "Customs Information Modal is not visible." unless customs.present?
+      raise "Customs Information Modal is not visible." unless @customs_form.present?
+      @customs_form
     end
 
     def browser_restrictions_button
@@ -253,11 +254,11 @@ module Batch
     end
 
     def international
-      InternationalShipping.new @browser
+      @international_shipping ||= InternationalShipping.new @browser
     end
 
     def customs_form
-      CustomsForm.new @browser
+      @customs_form ||= CustomsForm.new @browser
     end
 
     def customs
@@ -321,7 +322,7 @@ module Batch
       begin
         log_param "Tracking Selection", selection
         TrackingSelection.new(@browser, selection).select
-      end unless selection.length == 0
+      end unless selection.str_length == 0
     end
 
     def tracking
@@ -400,7 +401,7 @@ module Batch
       self.insured_value.set data[:insured_value]
       self.lbs.set data[:lbs]
       self.oz.set data[:oz]
-      self.length.set data[:length]
+      self.length.set data[:@str_length]
       self.width.set data[:width]
       self.height.set data[:height]
     end
@@ -427,7 +428,7 @@ module Batch
 
     def dimensions=(data={})
       log_hash_param data
-      self.length.set data[:length]
+      self.length.set data[:@str_length]
       self.width.set data[:width]
       self.height.set data[:height]
     end

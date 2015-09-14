@@ -1,6 +1,6 @@
 
 Given /^I am signed in as a batch shipper (.*)/ do |browser|
-  @browser = Stamps.setup browser
+  @browser = Stamps.setup(browser)
   batch.sign_in
 end
 

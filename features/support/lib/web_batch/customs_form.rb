@@ -132,8 +132,24 @@ module Batch
     end
 
     def itn_number
-      Textbox.new @browser.text_field :css => "input[name=ITN][maxlength='50']"
+      div = (@browser.divs :css => "div[id^=textfield][class*=x-hbox-form-item]").last
+      text_field = @browser.text_field :css => "input[name=ITN][maxlength='50']"
+      Textbox.new text_field, div
     end
+
+    def license
+      Textbox.new @browser.text_field :css => "input[name=LicenseNumber]"
+    end
+
+    def certificate
+      Textbox.new @browser.text_field :css => "input[name=CertificateNumber]"
+    end
+
+    def invoice
+      Textbox.new @browser.text_field :css => "input[name=InvoiceNumber]"
+    end
+
+
 
     def item
       CustomsItem.new @browser
