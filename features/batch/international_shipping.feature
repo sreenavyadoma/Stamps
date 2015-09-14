@@ -1,10 +1,32 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as a batch shipper ie/auto32/password1
+    Given I am signed in as a batch shipper ie/auto39/password1
 
     @international_shipping @international
     Scenario: Single Order Form International Shipping fields and Customs Information fields validation
+
+      #Iran - Internal Transaction # Required
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To country to Iran
+      And Open Customs Form
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Close Customs Information Modal
+
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To country to Sudan
+      And Open Customs Form
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Close Customs Information Modal
+
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To country to Syria
+      And Open Customs Form
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Close Customs Information Modal
 
       And I Add a new order
       Then Set Ship From to default
@@ -73,13 +95,17 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Internal Transaction # = Not required
       Then Expect Customs Form ITN# to be disabled
 
-      Then Set Customs Form More Info = random
-
+      Then Set Customs Form Internal Transaction # = Required
       Then Set Customs Form ITN# = random
 
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
+
+
+      #Then Set Customs Form More Info = random
+
+      #Then Set Customs Form ITN# = random
 
   @international
   Scenario: User Prints International Address 1

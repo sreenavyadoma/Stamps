@@ -394,6 +394,14 @@ module Stamps
         @input = drop_down_input
       end
 
+      def drop_down_caret
+        Button.new @drop_down
+      end
+
+      def text_box
+        Textbox.new @input
+      end
+
       def select selection
         case @selection_field_type
           when "li"

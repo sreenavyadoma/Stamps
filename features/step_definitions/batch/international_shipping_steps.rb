@@ -212,6 +212,10 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
       @customs_form_textbox = @customs_form.certificate
     when "invoice#"
       @customs_form_textbox = @customs_form.invoice
+    when "internal transaction #"
+      text = @customs_form.internal_transaction_dd.text_box.text
+      log "Internal Transaction # is #{text}.  Test #{(text.include? "Required")?'Passed':'Failed'}"
+      text.should include "Required"
     else
       raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
   end
@@ -226,7 +230,7 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
     when "disabled"
       @customs_form_textbox.second_disabled?.should be true
     else
-      raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
+      #do nothing.
   end
 end
 

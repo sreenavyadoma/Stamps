@@ -55,10 +55,10 @@ module Batch
     end
 
     def origin_dd
-      drop_down = (@browser.divs :css => "div[id^=combobox-][id$=-trigger-picker]").last
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
+      drop_down = (@browser.divs :css => "div[id^=combo-][id$=-trigger-picker]").last
+      raise "Drop-down button is not present.  Check your CSS locator." unless drop_down.present?
       input = (@browser.text_fields :name => "OriginCountry").last
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? input
+      raise "Drop-down button is not present.  Check your CSS locator." unless input.present?
       Dropdown.new @browser, drop_down, "li", input
     end
 
@@ -221,14 +221,9 @@ module Batch
       if user_agreed
         checkbox.check
         log checkbox.checked?
-        checkbox.uncheck
-        log checkbox.checked?
-        checkbox.check
-        log checkbox.checked?
       else
         checkbox.uncheck
         log checkbox.checked?
-        checkbox.uncheck
       end
 
     end
