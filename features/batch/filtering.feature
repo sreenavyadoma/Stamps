@@ -9,11 +9,8 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Service to First-Class Mail Large Envelope/Flat
-
     Then Edit row 1 on the order grid
-
     Then Print
-
     Then Expect printed Order ID does not exist in Awaiting Shipment tab
     Then Expect printed Order ID exists in Shipped tab
 
