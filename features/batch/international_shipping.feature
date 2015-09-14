@@ -1,9 +1,9 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as a batch shipper ie
+    Given I am signed in as a batch shipper ie/auto32/password1
 
-    @international_shipping
+    @international_shipping @international
     Scenario: Single Order Form International Shipping fields and Customs Information fields validation
 
       And I Add a new order
@@ -58,39 +58,30 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Certificate# to be hidden
       Then Expect Customs Form Invoice# to be hidden
 
-      Then Set Customs Form Non-Delivery Options = Treat as abandoned
-      Then Expect Customs Form More Info to be visible
-      Then Expect Customs Form License# to be hidden
-      Then Expect Customs Form Certificate# to be hidden
-      Then Expect Customs Form Invoice# to be hidden
+      Then Set Customs Form Package Contents = Commercial Sample
+      Then Expect Customs Form More Info to be hidden
+      Then Set Customs Form License# = random
+      Then Set Customs Form Certificate# = random
+      Then Set Customs Form Invoice# = random
 
+      Then Set Customs Form Non-Delivery Options = Treat as abandoned
       Then Set Customs Form Non-Delivery Options = Return to sender
-      Then Expect Customs Form More Info to be visible
-      Then Expect Customs Form License# to be hidden
-      Then Expect Customs Form Certificate# to be hidden
-      Then Expect Customs Form Invoice# to be hidden
 
       Then Set Customs Form Internal Transaction # = Required
       Then Expect Customs Form ITN# to be enabled
-      Then Expect Customs Form More Info to be visible
-      Then Expect Customs Form License# to be hidden
-      Then Expect Customs Form Certificate# to be hidden
-      Then Expect Customs Form Invoice# to be hidden
 
       Then Set Customs Form Internal Transaction # = Not required
       Then Expect Customs Form ITN# to be disabled
-      Then Expect Customs Form More Info to be visible
-      Then Expect Customs Form License# to be hidden
-      Then Expect Customs Form Certificate# to be hidden
-      Then Expect Customs Form Invoice# to be hidden
 
       Then Set Customs Form More Info = random
 
       Then Set Customs Form ITN# = random
 
+      Then Set Customs Form I agree to true
       Then Close Customs Information Modal
+      Then Set Service to First-Class Mail International Large Envelope
 
-
+  @international
   Scenario: User Prints International Address 1
       And I Add a new order
       Then Set Ship From to default
@@ -116,7 +107,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Service to First-Class Mail International Large Envelope
 
 
-  @apo_shipping
+  @apo_shipping @international
   Scenario: APO Address
     And I Add a new order
     Then Set Ship From to default
@@ -127,7 +118,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Service to Priority Mail Package
     Then Print
 
-  @fpo_shipping
+  @fpo_shipping @international
   Scenario: APO Address
     And I Add a new order
     Then Set Ship From to default
@@ -138,7 +129,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Service to Priority Mail Package
     Then Print
 
-  @dpo_shipping
+  @dpo_shipping @international
   Scenario: APO Address
     And I Add a new order
     Then Set Ship From to default
@@ -149,7 +140,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Service to Priority Mail Package
     Then Print
 
-  @non_domestic_shipping
+  @non_domestic_shipping @international
   Scenario: APO Address
     And I Add a new order
     Then Set Ship From to default
@@ -160,3 +151,4 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Service to Priority Mail Package
     Then Expect Single Order Form Customs Edit Form button is visible
     Then Expect Single Order Form Customs Restrictions button is hidden
+    Then Print

@@ -148,6 +148,12 @@ Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
       #ITN#
     when "itn#"
       @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
+    when "license#"
+      @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
+    when "certificate#"
+      @customs_form.certificate.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
+    when "invoice#"
+      @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
     else
       raise "Illegal Argument Exception.  Field #{field} is not on the Customs Information Modal"
 

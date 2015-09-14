@@ -216,7 +216,7 @@ module Batch
 
       verify_fields = @browser.inputs :css => "div[id^=checkbox][class*=x-form-type-checkbox]"
       verify_field = verify_fields.last
-      checkbox = Stamps::Browser::Checkbox.newCheckbox.new checkbox_field, verify_field, "class", "checked"
+      checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
       if agree
         checkbox.check
         log checkbox.checked?
