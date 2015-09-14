@@ -16,7 +16,7 @@ module Batch
     end
 
     def selection_array
-      @browser.inputs :css => 'input[id*=combobox][class*=x-form-text-default]'
+      @browser.inputs :css => 'input[id*=combo][class*=x-form-text-default]'
     end
 
     def save_button
@@ -32,39 +32,39 @@ module Batch
     end
 
     def save_contacts_checkbox
-      checkbox_array[3]
-    end
-
-    def shipment_email_checkbox
       checkbox_array[4]
     end
 
-    def shipment_delivery_checkbox
+    def shipment_email_checkbox
       checkbox_array[5]
     end
 
+    def shipment_delivery_checkbox
+      checkbox_array[6]
+    end
+
     def logoff_time_combo
-      drop_down_arrow_array[4]
-    end
-
-    def postdate_time_combo
-      drop_down_arrow_array[5]
-    end
-
-    def balance_notification_combo
       drop_down_arrow_array[6]
     end
 
+    def postdate_time_combo
+      drop_down_arrow_array[7]
+    end
+
+    def balance_notification_combo
+      drop_down_arrow_array[8]
+    end
+
     def logoff_time
-      selection_array[1]
+      selection_array[3]
     end
 
     def postdate_time
-      selection_array[2]
+      selection_array[4]
     end
 
     def balance_notification_amount
-      selection_array[3]
+      selection_array[5]
     end
 
     #PUBLIC
@@ -90,15 +90,16 @@ module Batch
     end
 
     def get_logoff_time
-      logoff_time.text
+
+      logoff_time.value
     end
 
     def get_postdate_time
-      postdate_time.text
+      postdate_time.value
     end
 
     def get_balance_notification_amt
-      balance_notification_amount.text
+      balance_notification_amount.value
     end
 
     def check_unavail_services
@@ -112,17 +113,17 @@ module Batch
     end
 
     def check_save_contacts
-      check_settings(3,save_contacts_checkbox)
+      check_settings(4,save_contacts_checkbox)
       self
     end
 
     def check_shipment_email
-      check_settings(4,shipment_email_checkbox)
+      check_settings(5,shipment_email_checkbox)
       self
     end
 
     def check_shipment_delivery
-      check_settings(5,shipment_delivery_checkbox)
+      check_settings(6,shipment_delivery_checkbox)
       self
     end
 
@@ -138,17 +139,17 @@ module Batch
     end
 
     def uncheck_save_contacts
-      uncheck_settings(3,save_contacts_checkbox)
+      uncheck_settings(4,save_contacts_checkbox)
       self
     end
 
     def uncheck_shipment_email
-      uncheck_settings(4,shipment_email_checkbox)
+      uncheck_settings(5,shipment_email_checkbox)
       self
     end
 
     def uncheck_shipment_delivery
-      uncheck_settings(5,shipment_delivery_checkbox)
+      uncheck_settings(6,shipment_delivery_checkbox)
       self
     end
 

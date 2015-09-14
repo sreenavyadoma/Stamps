@@ -76,7 +76,7 @@ end
 
 Then /^Expect Save Delivery Addresses Unchecked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(3)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(4)
   log_expectation_eql "Save Delivery Addresses", false, actual
   actual.should eql false
 
@@ -117,7 +117,7 @@ end
 
 Then /^Expect Save Delivery Addresses Checked$/ do
 
-  actual = batch.toolbar.settings_modal.get_checkbox_status(3)
+  actual = batch.toolbar.settings_modal.get_checkbox_status(4)
   log_expectation_eql "Save Delivery Addresses", true, actual
   actual.should eql true
 
