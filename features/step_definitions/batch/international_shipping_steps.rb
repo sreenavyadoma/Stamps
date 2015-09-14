@@ -197,28 +197,28 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   case field.downcase
     when "itn#"
-      @customs_form__textbox_field = @customs_form.itn_number
+      @customs_form_textbox = @customs_form.itn_number
     when "more info"
-      @customs_form__textbox_field = @customs_form.more_info
+      @customs_form_textbox = @customs_form.more_info
     when "license#"
-      @customs_form__textbox_field = @customs_form.license
+      @customs_form_textbox = @customs_form.license
     when "certificate#"
-      @customs_form__textbox_field = @customs_form.certificate
+      @customs_form_textbox = @customs_form.certificate
     when "invoice#"
-      @customs_form__textbox_field = @customs_form.invoice
+      @customs_form_textbox = @customs_form.invoice
     else
       raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
   end
 
   case value.downcase
     when "hidden"
-      @customs_form__textbox_field.present?.should be false
+      @customs_form_textbox.present?.should be false
     when "visible"
-      @customs_form__textbox_field.present?.should be true
+      @customs_form_textbox.present?.should be true
     when "enabled"
-      @customs_form__textbox_field.disabled?.should be false
+      @customs_form_textbox.second_disabled?.should be false
     when "disabled"
-      @customs_form__textbox_field.disabled?.should be true
+      @customs_form_textbox.second_disabled?.should be true
     else
       raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
   end

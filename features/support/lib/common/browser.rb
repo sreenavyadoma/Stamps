@@ -264,23 +264,25 @@ module Stamps
         case args.length
           when 1
             @field = args[0]
-            @enabled_field = nil
+            @second_field = nil
           when 2
             @field = args[0]
-            @enabled_field = args[1]
+            log browser_helper.present? @field
+            @second_field = args[1]
+            log browser_helper.present? @second_field
           else
             #do nothing.
         end
       end
 
-      def disabled?
-        raise "enabled field not set." if @enabled_field.nil?
-        browser_helper.disabled? @enabled_field
+      def second_disabled?
+        raise "enabled field not set." if @second_field.nil?
+        browser_helper.disabled? @second_field
       end
 
-      def enabled?
-        raise "enabled field not set." if @enabled_field.nil?
-        browser_helper.enabled? @enabled_field
+      def second_enabled?
+        raise "enabled field not set." if @second_field.nil?
+        browser_helper.enabled? @second_field
       end
 
       def field
