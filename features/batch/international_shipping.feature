@@ -6,6 +6,20 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     @international_shipping @international
     Scenario: Single Order Form International Shipping fields and Customs Information fields validation
 
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To country to Canada
+      Then Set Ship-To to international address
+        | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+        | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
+
+      Then Expect Single Order Form International Address fields are visible
+      Then Expect Single Order Form Domestic Ship-To fields are hidden
+      Then Expect Single Order Form Customs Restrictions button is visible
+      Then Expect Single Order Form Customs Edit Form button is visible
+
+      Then Add Item with Quantity 1, ID random, Description random
+
       #Iran - Internal Transaction # Required
       And I Add a new order
       Then Set Ship From to default
@@ -101,11 +115,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
-
-
-      #Then Set Customs Form More Info = random
-
-      #Then Set Customs Form ITN# = random
 
   @international
   Scenario: User Prints International Address 1
