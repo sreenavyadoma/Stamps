@@ -209,7 +209,7 @@ module Batch
       text_field
     end
 
-    def i_agree agree
+    def i_agree user_agreed
 
       checkbox_fields = @browser.inputs :css => "input[id^=checkbox-][id$=-inputEl]"
       checkbox_field = checkbox_fields.last
@@ -217,7 +217,8 @@ module Batch
       verify_fields = @browser.inputs :css => "div[id^=checkbox][class*=x-form-type-checkbox]"
       verify_field = verify_fields.last
       checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
-      if agree
+
+      if user_agreed
         checkbox.check
         log checkbox.checked?
         checkbox.uncheck
