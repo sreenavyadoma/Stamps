@@ -109,6 +109,10 @@ Then /^Expect Single Order Form Customs (.+) button is (.+)/ do |button, expecta
           @single_order_form.customs.browser_edit_form_button.present?.should be true
         when "hidden"
           @single_order_form.customs.browser_edit_form_button.present?.should be false
+        when "enabled"
+          @single_order_form.customs.browser_edit_form_button.present?.should be true
+        when "disabled"
+          @single_order_form.customs.browser_edit_form_button.present?.should be false
         else
           raise "Illegal argument exception"
       end
@@ -118,11 +122,12 @@ Then /^Expect Single Order Form Customs (.+) button is (.+)/ do |button, expecta
 end
 
 Given /^Open Customs Form$/ do
-  @single_order_form.customs.edit_form
+  @customs_form = @single_order_form.customs.edit_form
 end
 
 Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  step "Open Customs Form" unless @customs_form.present?
 
   case field.downcase
     #Package Contents
@@ -135,14 +140,14 @@ Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
       @customs_form.non_delivery_options_dd.select value
       #Internal Transaction #
     when "internal transaction #"
-      @customs_form.internal_transaction_dd.select value
+      @customs_form.internal_transaction_dd.select (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
+      sleep 1
       #More Info
     when "more info"
-      @customs_form.more_info.set value
+      @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
       #ITN#
     when "itn#"
-      itn_number = @customs_form.itn_number
-      itn_number.set value if itn_number.present?
+      @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
     else
       raise "Illegal Argument Exception.  Field #{field} is not on the Customs Information Modal"
 
@@ -169,8 +174,8 @@ end
 Given /^Add Item with Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
   line_item = batch.single_order_form.add_item
   line_item.qty qty
-  line_item.id id
-  line_item.description description
+  line_item.id (id.downcase.include? "random") ? test_helper.random_alpha_numberic : id
+  line_item.description (description.downcase.include? "random") ? test_helper.random_alpha_numberic : description
 end
 
 Given /^Expect Single Order Form ([\w -]+) field is hidden$/ do |field_name|
@@ -189,7 +194,34 @@ Given /^Expect Customs Form Add Item tooltip to be "(.+)"$/ do |tooltip|
 end
 
 Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  case field.downcase
+    when "itn#"
+      @customs_form__textbox_field = @customs_form.itn_number
+    when "more info"
+      @customs_form__textbox_field = @customs_form.more_info
+    when "license#"
+      @customs_form__textbox_field = @customs_form.license
+    when "certificate#"
+      @customs_form__textbox_field = @customs_form.certificate
+    when "invoice#"
+      @customs_form__textbox_field = @customs_form.invoice
+    else
+      raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
+  end
 
+  case value.downcase
+    when "hidden"
+      @customs_form__textbox_field.present?.should be false
+    when "visible"
+      @customs_form__textbox_field.present?.should be true
+    when "enabled"
+      @customs_form__textbox_field.disabled?.should be false
+    when "disabled"
+      @customs_form__textbox_field.disabled?.should be true
+    else
+      raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
+  end
 end
 
 Given /^Increment Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|

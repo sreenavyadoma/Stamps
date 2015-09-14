@@ -260,7 +260,7 @@ module Batch
 
     def total_number_of_orders
       tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
-      count = tables.length
+      count = tables.str_length
       log "Total Number of Orders on Grid:  #{count}"
       count.to_i
     end

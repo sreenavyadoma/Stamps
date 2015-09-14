@@ -32,7 +32,9 @@ module Stamps
           else
             raise "Wrong number of arguments for enabled?"
         end
-        enabled = attribute_value_inlude? field, field_attribute, search_string
+        attribute_value = attribute_value field, field_attribute
+        enabled = attribute_value.include? search_string
+
         log "Field enabled? #{enabled}"
         enabled
       end
@@ -50,7 +52,9 @@ module Stamps
           else
             raise "Wrong number of arguments for enabled?"
         end
-        disabled = attribute_value_inlude? field, field_attribute, search_string
+        attribute_value = attribute_value field, field_attribute
+        disabled = attribute_value.include? search_string
+
         log "Field disabled? #{disabled}"
         disabled
       end
@@ -65,7 +69,7 @@ module Stamps
         begin
           5.times{
             value = field.attribute_value(attribute)
-            break unless value.length < 1
+            break unless value.str_length < 1
           }
         rescue
           #ignroe
@@ -256,8 +260,27 @@ module Stamps
     end
 
     class ClickableField
-      def initialize field
-        @field = field
+      def initialize *args
+        case args.length
+          when 1
+            @field = args[0]
+            @enabled_field = nil
+          when 2
+            @field = args[0]
+            @enabled_field = args[1]
+          else
+            #do nothing.
+        end
+      end
+
+      def disabled?
+        raise "enabled field not set." if @enabled_field.nil?
+        browser_helper.disabled? @enabled_field
+      end
+
+      def enabled?
+        raise "enabled field not set." if @enabled_field.nil?
+        browser_helper.enabled? @enabled_field
       end
 
       def field
@@ -414,7 +437,9 @@ module Stamps
           else
             raise "Wrong number of arguments for enabled?"
         end
-        enabled = attribute_value_inlude? field, field_attribute, search_string
+        attribute_value = attribute_value field, field_attribute
+        enabled = attribute_value.include? search_string
+
         log "Field enabled? #{enabled}"
         enabled
       end
@@ -422,38 +447,35 @@ module Stamps
       def disabled? *args
         case args.length
           when 1
-            field = args[0]
-            field_attribute = "class"
-            search_string = "disabled"
+            @disabled_field = args[0]
+            @field_attribute = "class"
+            @search_string = "disabled"
           when 3
-            field = args[0]
-            field_attribute = args[1]
-            search_string = args[2]
+            @disabled_field = args[0]
+            @field_attribute = args[1]
+            @search_string = args[2]
           else
             raise "Wrong number of arguments for enabled?"
         end
-        disabled = attribute_value_inlude? field, field_attribute, search_string
+        attribute_value = attribute_value @disabled_field, @field_attribute
+        disabled = attribute_value.include? @search_string
+
         log "Field disabled? #{disabled}"
         disabled
       end
 
-      def attribute_value_inlude? field, field_attribute, search_string
-        browser_value = attribute_value field, field_attribute
-        browser_value.include? search_string
-      end
-
       def attribute_value field, attribute
-        value = ""
-        begin
           5.times{
-            value = field.attribute_value(attribute)
-            break unless value.length < 1
+            begin
+              @attribute_field_value = field.attribute_value(attribute)
+              return @attribute_field_value unless @attribute_field_value.length < 1
+            rescue => e
+              log "Attribute: #{attribute}, Field:  #{field}. #{e}"
+            #ignroe
+            end
           }
-        rescue
-          #ignroe
-        end
         #log_attribute_get field, attribute, value
-        value
+        @attribute_field_value
       end
 
       def drop_down browser, drop_down_button, selection_field_type, drop_down_input, selection
