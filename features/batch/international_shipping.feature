@@ -110,6 +110,8 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Document
       Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Merchandise
+      Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Gift
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Humanitarian Donation
@@ -130,6 +132,8 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents = Commercial Sample
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Document
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Merchandise
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Gift
       Then Expect Customs Form Internal Transaction # to be Required
@@ -152,6 +156,8 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Document
       Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Merchandise
+      Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Gift
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Humanitarian Donation
@@ -173,8 +179,10 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Document
       Then Expect Customs Form Internal Transaction # to be Required
-      Then Set Customs Form Package Contents = Gift
+      Then Set Customs Form Package Contents = Merchandise
       Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Gift
+      Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Humanitarian Donation
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Returned Goods
@@ -194,8 +202,10 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Document
       Then Expect Customs Form Internal Transaction # to be Required
-      Then Set Customs Form Package Contents = Gift
+      Then Set Customs Form Package Contents = Merchandise
       Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Gift
+      Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Humanitarian Donation
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Returned Goods
@@ -214,6 +224,8 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents = Commercial Sample
       Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Document
+      Then Expect Customs Form Internal Transaction # to be Not required
+      Then Set Customs Form Package Contents = Merchandise
       Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Gift
       Then Expect Customs Form Internal Transaction # to be Not required
