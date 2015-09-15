@@ -8,17 +8,16 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
       And I Add a new order
       Then Set Ship From to default
-      Then Set Ship-To country to Canada
       Then Set Ship-To to international address
         | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
         | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-
-      Then Expect Single Order Form International Address fields are visible
-      Then Expect Single Order Form Domestic Ship-To fields are hidden
-      Then Expect Single Order Form Customs Restrictions button is visible
-      Then Expect Single Order Form Customs Edit Form button is visible
-
+      Then Set Ounces to 1
+      Then Set Pounds to 1
+      Then Set Service to First-Class Mail International Large Envelope
       Then Add Item with Quantity 1, ID random, Description random
+      And Open Customs Form
+      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+      Then Expect Customs Form Internal Transaction # to be Required
 
       #Iran - Internal Transaction # Required
       And I Add a new order

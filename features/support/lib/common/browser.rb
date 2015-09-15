@@ -69,7 +69,7 @@ module Stamps
         begin
           5.times{
             value = field.attribute_value(attribute)
-            break unless value.str_length < 1
+            break unless value.length < 1
           }
         rescue
           #ignroe

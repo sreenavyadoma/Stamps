@@ -217,7 +217,7 @@ module Batch
     def shipping_address_count
       wait_until_present
       rows = @browser.trs(:css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
-      log "Manage Shipping Address:: row count = #{rows.str_length.to_i}"
+      log "Manage Shipping Address:: row count = #{rows.length.to_i}"
       rows.length.to_i
     end
 

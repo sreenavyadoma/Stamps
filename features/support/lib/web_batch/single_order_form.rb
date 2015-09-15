@@ -322,7 +322,7 @@ module Batch
       begin
         log_param "Tracking Selection", selection
         TrackingSelection.new(@browser, selection).select
-      end unless selection.str_length == 0
+      end unless selection.length == 0
     end
 
     def tracking
@@ -401,7 +401,7 @@ module Batch
       self.insured_value.set data[:insured_value]
       self.lbs.set data[:lbs]
       self.oz.set data[:oz]
-      self.length.set data[:@str_length]
+      self.length.set data[:@length]
       self.width.set data[:width]
       self.height.set data[:height]
     end
@@ -428,7 +428,7 @@ module Batch
 
     def dimensions=(data={})
       log_hash_param data
-      self.length.set data[:@str_length]
+      self.length.set data[:@length]
       self.width.set data[:width]
       self.height.set data[:height]
     end

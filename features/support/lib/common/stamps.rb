@@ -137,8 +137,8 @@ module Stamps
         when 0
           now = Date.today
           log "Today:  #{now}"
-          month = (now.month.to_s.str_length==1)?"0#{now.month}":now.month
-          day = (now.day.str_length==1)?"0#{now.day}":now.day
+          month = (now.month.to_s.length==1)?"0#{now.month}":now.month
+          day = (now.day.length==1)?"0#{now.day}":now.day
           "#{month}/#{day}/#{now.year}"
         when 1
           now = Date.today
@@ -146,8 +146,8 @@ module Stamps
           days_to_add = args[0].to_i
           new_date = now + days_to_add
           log "New Date:  #{new_date}"
-          month = (new_date.month.to_s.str_length==1)?"0#{new_date.month}":new_date.month
-          day = (new_date.day.to_s.str_length==1)?"0#{new_date.day}":new_date.day
+          month = (new_date.month.to_s.length==1)?"0#{new_date.month}":new_date.month
+          day = (new_date.day.to_s.length==1)?"0#{new_date.day}":new_date.day
           now = "#{month}/#{day}/#{new_date.year}"
           now
         else
@@ -166,14 +166,14 @@ module Stamps
     def random_alpha_numberic *args
       case args.length
         when 0
-          @str_length = 10
+          @length = 10
         when 1
-          @str_length = args[0]
+          @length = args[0]
         else
           raise "Illegal number of arguments for random_alpha_numberic"
 
       end
-      rstr = rand(36 ** @str_length - 1).to_s(36).rjust(@str_length, "0")
+      rstr = rand(36 ** @length - 1).to_s(36).rjust(@length, "0")
     end
 
     def random_string *args

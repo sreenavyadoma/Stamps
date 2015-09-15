@@ -66,7 +66,7 @@ Then /^Expect Order Grid - Age to be (.*)$/ do |expected|
       actual = batch.grid.age @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Order Date to be (.*)$/ do |expected|
@@ -82,7 +82,7 @@ Then /^Expect Order Grid - Order Date to be (.*)$/ do |expected|
       actual = batch.grid.order_date @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Recipient to be (.*)$/ do |expected|
@@ -98,7 +98,7 @@ Then /^Expect Order Grid - Recipient to be (.*)$/ do |expected|
       actual = batch.grid.recipient @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Company to be (.*)$/ do |expected|
@@ -111,7 +111,7 @@ Then /^Expect Order Grid - Company to be (.*)$/ do |expected|
       actual = batch.grid.company @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Address to be ([\w\s-]+)$/ do |expected|
@@ -124,7 +124,7 @@ Then /^Expect Order Grid - Address to be ([\w\s-]+)$/ do |expected|
       actual = batch.grid.address @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - City to be ([\w\s]+)$/ do |expected|
@@ -137,7 +137,7 @@ Then /^Expect Order Grid - City to be ([\w\s]+)$/ do |expected|
       actual = batch.grid.city @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - State to be ([a-zA-Z]+)$/ do |expected|
@@ -150,7 +150,7 @@ Then /^Expect Order Grid - State to be ([a-zA-Z]+)$/ do |expected|
       actual = batch.grid.state @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Zip to be ([\d -]+)$/ do |expected|
@@ -163,7 +163,7 @@ Then /^Expect Order Grid - Zip to be ([\d -]+)$/ do |expected|
       actual = batch.grid.zip @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Country to be ([a-zA-Z]+)$/ do |expected|
@@ -176,7 +176,7 @@ Then /^Expect Order Grid - Country to be ([a-zA-Z]+)$/ do |expected|
       actual = batch.grid.country @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expected|
@@ -189,7 +189,7 @@ Then /^Expect Order Grid - Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expected|
       actual = batch.grid.email @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/ do |expected|
@@ -202,7 +202,7 @@ Then /^Expect Order Grid - Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-
       actual = batch.grid.phone @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Pounds to be (\d+)$/ do |expected|
@@ -215,7 +215,7 @@ Then /^Expect Order Grid - Pounds to be (\d+)$/ do |expected|
       actual = batch.grid.lbs @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Ounces to be (\d+)$/ do |expected|
@@ -228,7 +228,7 @@ Then /^Expect Order Grid - Ounces to be (\d+)$/ do |expected|
       actual = batch.grid.oz @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
@@ -242,7 +242,7 @@ Then /^Expect Order Grid - Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounce
       actual = batch.grid.weight @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Qty. to be (.+)$/ do |expected|
@@ -255,7 +255,7 @@ Then /^Expect Order Grid - Qty. to be (.+)$/ do |expected|
       actual = batch.grid.qty @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Item SKU to be (.+)$/ do |expected|
@@ -268,7 +268,7 @@ Then /^Expect Order Grid - Item SKU to be (.+)$/ do |expected|
       actual = batch.grid.item_sku @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Item Name to be (.+)$/ do |expected|
@@ -281,7 +281,7 @@ Then /^Expect Order Grid - Item Name to be (.+)$/ do |expected|
       actual = batch.grid.item_name @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Ship From to be (.+)$/ do |expected|
@@ -294,7 +294,7 @@ Then /^Expect Order Grid - Ship From to be (.+)$/ do |expected|
       actual = batch.grid.ship_from @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Service to be (.+)$/ do |expected|
@@ -307,7 +307,7 @@ Then /^Expect Order Grid - Service to be (.+)$/ do |expected|
       actual = batch.grid.service @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Insured Value to be (.+)$/ do |expected|
@@ -320,7 +320,7 @@ Then /^Expect Order Grid - Insured Value to be (.+)$/ do |expected|
       actual = batch.grid.insured_value @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Reference No. to be (.+)$/ do |expected|
@@ -333,7 +333,7 @@ Then /^Expect Order Grid - Reference No. to be (.+)$/ do |expected|
       actual = batch.grid.reference_no @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Cost Code to be (.+)$/ do |expected|
@@ -346,7 +346,7 @@ Then /^Expect Order Grid - Cost Code to be (.+)$/ do |expected|
       actual = batch.grid.cost_code @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Order Status to be (.+)$/ do |expected|
@@ -359,7 +359,7 @@ Then /^Expect Order Grid - Order Status to be (.+)$/ do |expected|
       actual = batch.grid.order_status @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Ship Date to be (.+)$/ do |expected|
@@ -372,7 +372,7 @@ Then /^Expect Order Grid - Ship Date to be (.+)$/ do |expected|
       actual = batch.grid.ship_date @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Tracking # to be (.+)$/ do |expected|
@@ -385,7 +385,7 @@ Then /^Expect Order Grid - Tracking # to be (.+)$/ do |expected|
       actual = batch.grid.tracking @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect Order Grid - Order Total to be (.+)$/ do |expected|
@@ -398,7 +398,7 @@ Then /^Expect Order Grid - Order Total to be (.+)$/ do |expected|
       actual = batch.grid.order_total @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 # | insured_value  | pounds  | ounces | length  | width | height  |
@@ -418,7 +418,7 @@ Then /^Expect Order Grid - Insured Value to be \$(\d*\.?\d*)$/ do |expected|
       actual = batch.grid.insured_value @order_id
     }
     actual.should eql expected
-  end unless expected.str_length == 0
+  end unless expected.length == 0
 end
 
 Then /^Expect new Order ID created$/ do

@@ -82,5 +82,5 @@ Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expectation|
     }
     print_window.close
     actual_value.should eql expectation
-  end unless expectation.str_length == 0
+  end unless expectation.length == 0
 end
