@@ -4,7 +4,7 @@ Feature:  Address Management
   Background:
     Given I am signed in as a batch shipper
 
-  @address_management
+  @address_management @regression
   Scenario: Address Management
     And I Add a new order
     And Add new Ship-From address

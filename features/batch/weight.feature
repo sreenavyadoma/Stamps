@@ -1,10 +1,10 @@
-@regression
+
 Feature: Single Order Form Negative Tests
 
   Background:
     Given I am signed in as a batch shipper
 
-  @weight_negative_tests
+  @weight_negative_tests @regression
   Scenario:  Weight tooltip - negative test
     And Edit row 1 on the order grid
     Then Set Pounds to 71

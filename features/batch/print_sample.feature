@@ -1,13 +1,13 @@
-  @regression
+
   Feature: Print Sample
 
   Background:
     Given I am signed in as a batch shipper ie
 
-  @print_sample @print
+  @print_sample @print @regression
   Scenario:  B-01625 Print Sample - Parcel Select Large Package
 
-    @print
+    @print @regression
     Scenario:
     And I Add a new order
     Then Set Ship From to default
@@ -17,7 +17,7 @@
     Then Print Sample
 
 
-    @print
+    @print @regression
     Scenario:
     And I Add a new order
     Then Set Ship From to default
@@ -37,7 +37,7 @@
     Then Print Sample
 
 
-    @print
+    @print @regression
     Scenario:
     And I Add a new order
     Then Set Ship From to default
@@ -47,7 +47,7 @@
     Then Print Sample
 
 
-    @print
+    @print @regression
     Scenario:
     And I Add a new order
     Then Set Ship From to default

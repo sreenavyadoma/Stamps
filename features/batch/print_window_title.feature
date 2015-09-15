@@ -1,10 +1,10 @@
-@regression
+
 Feature:  Printing Multiple Orders
 
   Background:
     Given I am signed in as a batch shipper ie
 
-  @print_window @print
+  @print_window @print @regression
   Scenario:  Printing
     And I Add a new order
     Then Set Ship From to default
@@ -13,6 +13,7 @@ Feature:  Printing Multiple Orders
     And Open Print Modal
     Then Expect Print Window title to be "You have 1 label(s) ready to print"
 
+  @regression
   Scenario:  Printing
     And I Add a new order
     Then Set Ship-To address to random

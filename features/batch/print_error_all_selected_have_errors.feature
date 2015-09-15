@@ -4,7 +4,7 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
   Background:
     Given I am signed in as a batch shipper ie
 
-  @printing_error
+  @printing_error @regression
   Scenario:  Printing
     And I Add a new order
     Then Set Ship From to default

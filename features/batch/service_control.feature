@@ -1,10 +1,10 @@
-  @regression
+
   Feature: Domestic USPS service used to fulfill an order.
 
   Background:
     Given I am signed in as a batch shipper
 
-  @service_control
+  @service_control @regression
   Scenario:  Inline Rates
     And I Add a new order
     Then Set Ship From to default

@@ -82,6 +82,8 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     @international_rogue_countries @international @regression
     Scenario:
+
+      # Internal Transaction # Required for total over $2500
       And I Add a new order
       Then Set Ship From to default
       Then Set Ship-To to international address
@@ -89,8 +91,8 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
         | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
       Then Set Ounces to 1
       Then Set Pounds to 1
-      Then Set Service to First-Class Mail International Large Envelope
       Then Add Item with Quantity 1, ID random, Description random
+      Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
       And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
       Then Expect Customs Form Internal Transaction # to be Required
@@ -98,7 +100,9 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
-      #Iran - Internal Transaction # Required
+      # Iran - Internal Transaction #
+    @international_rogue_countries @international @regression
+    Scenario:
       And I Add a new order
       Then Set Ship From to default
       Then Set Ship-To to international address
@@ -127,12 +131,15 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
+      # Sudan - Internal Transaction # Required
+    @international_rogue_countries @international @regression
+    Scenario:
       And I Add a new order
       Then Set Ship From to default
       Then Set Ship-To to international address
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
         | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
-      Then Set Service to First-Class Mail International Large Envelope
+      #Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Commercial Sample
@@ -156,12 +163,15 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
-      And I Add a new order
+      # Syria - Internal Transaction # Required
+    @international_rogue_countries @international @regression
+    Scenario:
+    And I Add a new order
       Then Set Ship From to default
       Then Set Ship-To to international address
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
         | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
-      Then Set Service to First-Class Mail International Large Envelope
+      #Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Commercial Sample
@@ -185,12 +195,16 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
-      And I Add a new order
+      # Cuba - Internal Transaction # Required
+    @international_rogue_countries @international @regression
+    Scenario:
+    And I Add a new order
       Then Set Ship From to default
+      Then Set Ship-To country to Cuba
       Then Set Ship-To to international address
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
         | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
-      Then Set Service to First-Class Mail International Large Envelope
+      #Then Set Service to Priority Mail International Flat Rate Envelope
       And Open Customs Form
       Then Set Customs Form Package Contents = Commercial Sample
       Then Expect Customs Form Internal Transaction # to be Required
@@ -201,7 +215,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents = Gift
       Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Humanitarian Donation
-      Then Expect Customs Form Internal Transaction # to be Required
+      Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Returned Goods
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Other
@@ -213,12 +227,16 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
-      And I Add a new order
+      # North Korea - Internal Transaction # Required
+    @international_rogue_countries @international @regression
+    Scenario:
+    And I Add a new order
       Then Set Ship From to default
+      Then Set Ship-To country to Democratic People's Republic of (North) Korea
       Then Set Ship-To to international address
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
-        | random | random  | random           | random           | random | random  | random      | North Korea    | random  | random  |
-      Then Set Service to First-Class Mail International Large Envelope
+        | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea    | random  | random  |
+      #Then Set Service to Priority Mail International Flat Rate Envelope
       And Open Customs Form
       Then Set Customs Form Package Contents = Commercial Sample
       Then Expect Customs Form Internal Transaction # to be Required
@@ -229,7 +247,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents = Gift
       Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Humanitarian Donation
-      Then Expect Customs Form Internal Transaction # to be Required
+      Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Returned Goods
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Other
@@ -241,12 +259,15 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
+      # Philippines - Internal Transaction # Required
+    @international_rogue_countries @international @regression
+    Scenario:
       And I Add a new order
       Then Set Ship From to default
       Then Set Ship-To to international address
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
         | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
-      Then Set Service to First-Class Mail International Large Envelope
+      #Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
       Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Commercial Sample
@@ -270,7 +291,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
-  @apo_shipping @international @regression
+  @apo_shipping @c @regression
   Scenario: APO Address
     And I Add a new order
     Then Set Ship From to default

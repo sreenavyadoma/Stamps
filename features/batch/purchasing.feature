@@ -1,10 +1,10 @@
-@regression
+
 Feature: Purchasing
 
   Background:
     Given I am signed in as a batch shipper auto30/password1
 
-  @purchasing
+  @purchasing @regression
   Scenario:
     And Buy $10 postage
     Then Expect $10 is added to customer balance

@@ -1,10 +1,10 @@
-@regression
+
 Feature:  Delete Ship From
 
   Background:
     Given I am signed in as a batch shipper
 
-  @delete_all_shipping_addresses
+  @delete_all_shipping_addresses @regression
   Scenario: regression
     And I Add a new order
     Then Delete all Ship-From address

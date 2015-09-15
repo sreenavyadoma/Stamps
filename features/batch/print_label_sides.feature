@@ -1,10 +1,10 @@
-@regression
+
 Feature: Print Label Position
 
   Background:
     Given I am signed in as a batch shipper ie
 
-  @print_labels @print
+  @print_labels @print @regression
   Scenario:  B-01633 Change the starting label position I will print from - Print Left Side
     And I Add a new order
     Then Set Ship From to default

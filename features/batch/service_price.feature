@@ -1,10 +1,10 @@
-@regression
+
 Feature: User Views Price Next to Service Dropdown
 
   Background:
     Given I am signed in as a batch shipper
 
-  @inline_service_rates
+  @inline_service_rates @regression
   Scenario:  User Views Price Next to Service Dropdown
     And I Add a new order
     Then Set Ship From to default

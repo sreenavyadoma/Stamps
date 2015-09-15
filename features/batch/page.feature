@@ -1,10 +1,10 @@
-@regression
+
 Feature: Order Pagination
 
   Background:
     Given I am signed in as a batch shipper ff/webbatch_0009/password1
 
-  @page_count
+  @page_count @regression
   Scenario: B-01746 Set per page count
     Then Set paging toolbar orders per page count to 500
     Then Expect number of orders on page to be correct

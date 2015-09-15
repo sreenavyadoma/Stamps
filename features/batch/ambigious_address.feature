@@ -4,7 +4,7 @@ Feature: Ambigious Address
   Background:
     Given I am signed in as a batch shipper
 
-  @ambigious_address
+  @ambigious_address @regression
   Scenario: Exact Address Not Found
     And I Add a new order
     Then Set Ship From to default

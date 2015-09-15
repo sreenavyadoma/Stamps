@@ -1,10 +1,10 @@
-@regression
+
 Feature: Ship-To Addresses
 
   Background:
     Given I am signed in as a batch shipper
 
-  @inline_service_rates
+  @inline_service_rates @regression
   Scenario:  System Calls GetRates When "Ship-To Address" is changed
     And I Add a new order
     Then Set Ship From to default

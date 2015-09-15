@@ -381,7 +381,7 @@ module Batch
     end
 
     def present?
-      browser_helper.present? total_label
+      browser_helper.present? service_textbox
     end
 
     def wait_until_present *args

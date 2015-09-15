@@ -1,10 +1,10 @@
-@regression
+
 Feature: Show Cost of Order in Ship Cost Grid
 
   Background:
     Given I am signed in as a batch shipper ie
 
-  @print_costs
+  @print_costs @regression
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid
     And I Add a new order
     Then Set Ship From to default

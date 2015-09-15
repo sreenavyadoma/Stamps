@@ -1,9 +1,10 @@
-@regression @ship_date
+
 Feature:  B-01630 Ship Date
 
   Background:
     Given I am signed in as a batch shipper
 
+  @regression @ship_date
   Scenario:  Set Ship Date to today
     And I Add a new order
     Then Set Ship-To address to random
@@ -14,6 +15,7 @@ Feature:  B-01630 Ship Date
     Then Print
     And Sign out
 
+  @regression @ship_date
   Scenario:  Set Ship Date to 1 day from today
     And I Add a new order
     Then Set Ship-To address to random
@@ -35,6 +37,7 @@ Feature:  B-01630 Ship Date
     Then Print
     And Sign out
 
+  @regression @ship_date
   Scenario:  Set Ship Date to 1 day from today
     And I Add a new order
     Then Set Ship From to default

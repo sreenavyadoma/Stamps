@@ -1,10 +1,10 @@
-@regression
+
 Feature: Address Cleansing
 
   Background:
     Given I am signed in as a batch shipper
 
-  @address_cleansing
+  @address_cleansing @regression
   Scenario: Address Cleansing
     And I Add a new order
     Then Set Ship From to default

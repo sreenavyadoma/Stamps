@@ -1,10 +1,10 @@
-@regression
+
 Feature: New Order ID Created
 
   Background:
     Given I am signed in as a batch shipper
 
-  @order_id
+  @order_id @regression
   Scenario:  New Order ID Created
     And I Add a new order
     Then Expect new Order ID created

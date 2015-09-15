@@ -1,10 +1,10 @@
-@regression
+
 Feature: Tracking
 
   Background:
     Given I am signed in as a batch shipper
 
-  @tracking
+  @tracking @regression
   Scenario:  Print - First-Class Mail Envelope
     And I Add a new order
     Then Set Ship From to default
