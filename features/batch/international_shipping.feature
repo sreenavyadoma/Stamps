@@ -28,6 +28,14 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Delete Customs Form Item 1
     Then Expect Customs Form Item Grid count to be 1
 
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 200, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 5; Description=random, Qty 1, Unit Price 200, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 8; Description=random, Qty 1, Unit Price 200, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+
+
+    Then Set Customs Form I agree to true
+    Then Close Customs Information Modal
+
   @international_shipping_field_validation @international @regression
   Scenario: Single Order Form International Shipping fields and Customs Information fields validation
     And I Add a new order
