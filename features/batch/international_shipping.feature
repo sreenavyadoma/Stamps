@@ -4,7 +4,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Given I am signed in as a batch shipper ie/auto39/password1
 
   @international @regression @international_delete_line_items
-  Scenario:
+  Scenario:  Customs Form Grid Items Add/Delete
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To to international address
@@ -36,7 +36,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Customs Form I agree to true
     Then Close Customs Information Modal
 
-  @international_shipping_field_validation @international @regression
+  @international_shipping_field_validation @_international @regression
   Scenario: Single Order Form International Shipping fields and Customs Information fields validation
     And I Add a new order
     Then Set Ship From to default
@@ -112,7 +112,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Service to First-Class Mail International Large Envelope
 
   @international_rogue_countries @international @regression
-  Scenario:
+  Scenario: Customs Form - Internal Transaction # Required for total over $2500
 
     # Internal Transaction # Required for total over $2500
     And I Add a new order
@@ -133,7 +133,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
       # Iran - Internal Transaction #
   @international_rogue_countries @international @regression
-  Scenario:
+  Scenario: Iran - Internal Transaction # Required
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To to international address
@@ -164,7 +164,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
       # Sudan - Internal Transaction # Required
   @international_rogue_countries @international @regression
-  Scenario:
+  Scenario: Sudan - Internal Transaction # Required
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To to international address
@@ -196,7 +196,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
       # Syria - Internal Transaction # Required
   @international_rogue_countries @international @regression
-  Scenario:
+  Scenario: Syria - Internal Transaction # Required
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To to international address
@@ -228,7 +228,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
       # Cuba - Internal Transaction # Required
   @international_rogue_countries @international @regression
-  Scenario:
+  Scenario: Cuba - Internal Transaction # Required
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To country to Cuba
@@ -260,7 +260,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
       # North Korea - Internal Transaction # Required
   @international_rogue_countries @international @regression@international_rogue_countries_nk
-  Scenario:
+  Scenario: North Korea - Internal Transaction # Required
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To country to Democratic People's Republic of (North) Korea
@@ -292,7 +292,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
       # Philippines - Internal Transaction # Required
   @international_rogue_countries @international @regression
-  Scenario:
+  Scenario: Internal Transaction # Not Required
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To to international address
@@ -323,7 +323,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Close Customs Information Modal
 
   @apo_shipping @c @regression
-  Scenario: APO Address
+  Scenario: Domestic APO Address
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To country to United States
@@ -334,7 +334,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Print
 
   @fpo_shipping @international @regression
-  Scenario: APO Address
+  Scenario: Domestic FPO Address
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To country to United States
@@ -345,7 +345,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Print
 
   @dpo_shipping @international @regression
-  Scenario: APO Address
+  Scenario: Domestic DPO Address
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To country to United States
