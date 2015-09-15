@@ -228,7 +228,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Close Customs Information Modal
 
       # North Korea - Internal Transaction # Required
-    @international_rogue_countries @international @regression
+    @international_rogue_countries @international @regression@international_rogue_countries_nk
     Scenario:
     And I Add a new order
       Then Set Ship From to default
@@ -238,12 +238,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
         | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea    | random  | random  |
       #Then Set Service to Priority Mail International Flat Rate Envelope
       And Open Customs Form
-      Then Set Customs Form Package Contents = Commercial Sample
-      Then Expect Customs Form Internal Transaction # to be Required
-      Then Set Customs Form Package Contents = Document
-      Then Expect Customs Form Internal Transaction # to be Required
-      Then Set Customs Form Package Contents = Merchandise
-      Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Gift
       Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Humanitarian Donation
@@ -251,6 +245,12 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form Package Contents = Returned Goods
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Other
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Commercial Sample
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Document
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Merchandise
       Then Expect Customs Form Internal Transaction # to be Required
 
       And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
