@@ -403,11 +403,16 @@ module Stamps
       end
 
       def select selection
-        case @selection_field_type
-          when "li"
-            @selection_item = @browser.li :text => selection
+        case selection
+          when String
+            case @selection_field_type
+              when "li"
+                @selection_item = @browser.li :text => selection
+              else
+                raise "Unsupported HTML drop-down selection tag #{@selection_field_type}"
+            end
           else
-            raise "Unsupported HTML drop-down selection tag #{@selection_field_type}"
+            @selection_item = selection
         end
 
         5.times{

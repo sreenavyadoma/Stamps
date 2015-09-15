@@ -94,13 +94,17 @@ module Batch
     end
 
     def origin_country
-      Textbox.new (@browser.text_fields :name => "OriginCountry")[@number-1]
+      Textbox.new origin_country_input
+    end
+
+    def origin_country_input
+      (@browser.text_fields :name => "OriginCountry")[@number-1]
     end
 
     def origin_dd
-      drop_down = (@browser.divs :css => "div[id^=combo-][id$=-trigger-picker]").last
+      drop_down = (@browser.divs :css => "table[class*=x-grid-item]>tbody>tr>td[class*=x-grid-cell-widget]>div>div>div>div[id^=combo][id$=-triggerWrap]>div[class*=x-form-arrow-trigger-default]")[@number-1]
       raise "Drop-down button is not present.  Check your CSS locator." unless drop_down.present?
-      input = (@browser.text_fields :name => "OriginCountry").last
+      input = origin_country_input
       raise "Drop-down button is not present.  Check your CSS locator." unless input.present?
       Dropdown.new @browser, drop_down, "li", input
     end
