@@ -13,7 +13,7 @@ Given /^Set Ship-To to international address$/ do |table|
   company = (param_hash["company"].downcase.include? "random") ? test_helper.random_company_name : param_hash["company"]
   street_address_1 = (param_hash["street_address_1"].downcase.include? "random") ? test_helper.random_string : param_hash["street_address_1"]
   street_address_2 = (param_hash["street_address_2"].downcase.include? "random") ? test_helper.random_suite : param_hash["street_address_2"]
-  city = param_hash["city"]
+  city = (param_hash["city"].downcase.include? "random") ? test_helper.random_string : param_hash["city"]
   province = (param_hash["province"].downcase.include? "random") ? test_helper.random_string : param_hash["province"]
   postal_code = (param_hash["postal_code"].downcase.include? "random") ? test_helper.random_alpha_numeric : param_hash["postal_code"]
   country = param_hash["country"]

@@ -177,7 +177,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
         | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
       Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
-      Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Commercial Sample
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Document
@@ -201,7 +200,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
         | random | random  | random           | random           | random | random  | random      | North Korea    | random  | random  |
       Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
-      Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Commercial Sample
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Document
