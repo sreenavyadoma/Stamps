@@ -168,7 +168,9 @@ Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\
   item.unit_price.set price
   item.lbs.set lbs
   item.oz.set oz
-  item.origin_dd.select (@browser.lis :text => "#{origin} ").last
+  begin
+    item.origin_dd.select origin
+  end unless origin.downcase.include? "states"
   item.hs_tariff.set tariff
   log item.present?
   log ""

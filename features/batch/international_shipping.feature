@@ -16,7 +16,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     And Open Customs Form
 
-    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 200, Weight(lbs) 1, Weight(oz) 1 Origin Afghanistan , Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 200, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 10
     Then Expect Customs Form Item Grid count to be 1
     And Add Customs Form Item 2; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 2
     Then Expect Customs Form Item Grid count to be 2
@@ -29,10 +29,10 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Item Grid count to be 1
 
     And Add Customs Form Item 2; Description=random, Qty 1, Unit Price 50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 188
-    And Add Customs Form Item 3; Description=random, Qty 1, Unit Price 45, Weight(lbs) 1, Weight(oz) 1 Origin Afghanistan , Tariff 78
+    And Add Customs Form Item 3; Description=random, Qty 1, Unit Price 45, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 78
     And Add Customs Form Item 4; Description=random, Qty 1, Unit Price 188, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 8
-    And Add Customs Form Item 5; Description=random, Qty 1, Unit Price 23, Weight(lbs) 1, Weight(oz) 1 Origin France, Tariff 367
-    And Add Customs Form Item 6; Description=random, Qty 1, Unit Price 456, Weight(lbs) 1, Weight(oz) 1 Origin Phillipines, Tariff 88
+    And Add Customs Form Item 5; Description=random, Qty 1, Unit Price 23, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 367
+    And Add Customs Form Item 6; Description=random, Qty 1, Unit Price 456, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 88
     And Add Customs Form Item 7; Description=random, Qty 1, Unit Price 234, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 98
 
     Then Expect Customs Form Item Grid count to be 7
