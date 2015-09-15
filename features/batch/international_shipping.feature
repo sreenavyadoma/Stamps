@@ -3,7 +3,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   Background:
     Given I am signed in as a batch shipper ie/auto39/password1
 
-    @international_shipping_field_validation @international
+    @international_shipping_field_validation @international @regression
     Scenario: Single Order Form International Shipping fields and Customs Information fields validation
 
       And I Add a new order
@@ -80,7 +80,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
 
-    @international_rogue_countries @international
+    @international_rogue_countries @international @regression
     Scenario:
       And I Add a new order
       Then Set Ship From to default
@@ -106,6 +106,18 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
         | random | random  | random           | random           | random | random  | random      | Iran    | random  | random  |
       And Open Customs Form
       Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Commercial Sample
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Document
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Gift
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Humanitarian Donation
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Returned Goods
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Other
+      Then Expect Customs Form Internal Transaction # to be Required
       Then Close Customs Information Modal
 
       And I Add a new order
@@ -114,6 +126,18 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
         | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
       And Open Customs Form
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Commercial Sample
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Document
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Gift
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Humanitarian Donation
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Returned Goods
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Other
       Then Expect Customs Form Internal Transaction # to be Required
       Then Close Customs Information Modal
 
@@ -124,35 +148,84 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
         | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
       And Open Customs Form
       Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Commercial Sample
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Document
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Gift
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Humanitarian Donation
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Returned Goods
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Other
+      Then Expect Customs Form Internal Transaction # to be Required
       Then Close Customs Information Modal
 
-  @international
-  Scenario: User Prints International Address 1
       And I Add a new order
       Then Set Ship From to default
-
       Then Set Ship-To to international address
-        | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
-        | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-
-      Then Add Item with Quantity 1, ID random, Description random
-
+        | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+        | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
       And Open Customs Form
-
-      Then Set Customs Form Package Contents = Merchandise
-      Then Set Customs Form Non-Delivery Options = Return to sender
-      Then Set Customs Form Internal Transaction # = Required
-      Then Set Customs Form More Info = random
-      Then Set Customs Form ITN# = random
-
-      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-
-      Then Set Customs Form I agree to true
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Commercial Sample
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Document
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Gift
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Humanitarian Donation
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Returned Goods
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Other
+      Then Expect Customs Form Internal Transaction # to be Required
       Then Close Customs Information Modal
-      Then Set Service to First-Class Mail International Large Envelope
 
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To to international address
+        | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+        | random | random  | random           | random           | random | random  | random      | North Korea    | random  | random  |
+      And Open Customs Form
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Commercial Sample
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Document
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Gift
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Humanitarian Donation
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Returned Goods
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form Package Contents = Other
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Close Customs Information Modal
 
-  @apo_shipping @international
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To to international address
+        | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+        | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
+      And Open Customs Form
+      Then Expect Customs Form Internal Transaction # to be Not required
+      Then Set Customs Form Package Contents = Commercial Sample
+      Then Expect Customs Form Internal Transaction # to be Not required
+      Then Set Customs Form Package Contents = Document
+      Then Expect Customs Form Internal Transaction # to be Not required
+      Then Set Customs Form Package Contents = Gift
+      Then Expect Customs Form Internal Transaction # to be Not required
+      Then Set Customs Form Package Contents = Humanitarian Donation
+      Then Expect Customs Form Internal Transaction # to be Not required
+      Then Set Customs Form Package Contents = Returned Goods
+      Then Expect Customs Form Internal Transaction # to be Not required
+      Then Set Customs Form Package Contents = Other
+      Then Expect Customs Form Internal Transaction # to be Not required
+      Then Close Customs Information Modal
+
+  @apo_shipping @international @regression
   Scenario: APO Address
     And I Add a new order
     Then Set Ship From to default
@@ -163,7 +236,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Service to Priority Mail Package
     Then Print
 
-  @fpo_shipping @international
+  @fpo_shipping @international @regression
   Scenario: APO Address
     And I Add a new order
     Then Set Ship From to default
@@ -174,7 +247,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Service to Priority Mail Package
     Then Print
 
-  @dpo_shipping @international
+  @dpo_shipping @international @regression
   Scenario: APO Address
     And I Add a new order
     Then Set Ship From to default
@@ -185,7 +258,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Service to Priority Mail Package
     Then Print
 
-  @non_domestic_shipping @international
+  @non_domestic_shipping @international @regression
   Scenario: APO Address
     And I Add a new order
     Then Set Ship From to default
