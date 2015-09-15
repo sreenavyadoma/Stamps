@@ -172,7 +172,7 @@ module Batch
 
     def add
       single_order_form = SingleOrderForm.new @browser
-      10.times do |count|
+      3.times do |count|
         begin
           browser_helper.click browser_add_button, 'Add'
           log "#{count} Single Order Form present?  #{single_order_form.present?}"

@@ -1,13 +1,52 @@
 module Batch
 
-  class CustomsItem < BatchObject
+  class CustomsItemGrid < BatchObject
 
-    def description
-      Textbox.new @browser.text_field :name => "CustomsItemName"
+    def item_count
+      size = (@browser.tables :css => "div[id^=customsItemsGrid][id$=body]>div>div>table").size
+      log "Customs Item Count:  #{size}"
+      size
+    end
+
+    def add_item
+      Button.new (@browser.spans :text => "Add Item").last
+    end
+
+    def item number
+      log "Item Count: #{item_count}"
+      if number > item_count
+        begin
+          add_item.click
+          log "Item Count: #{item_count}"
+        end while number > item_count
+      end
+
+      log "User Entered Number: #{number}. Actual Item Count: #{item_count}"
+
+      CustomsLineItem.new(@browser).line_item number
+    end
+  end
+
+  class CustomsLineItem < BatchObject
+    def line_item number
+      @number = number
+      self
+    end
+
+    def present?
+      delete.present?
+    end
+
+    def delete
+      Button.new (@browser.spans :css => "span[class*=sdc-icon-remove]")[@number]
+    end
+
+    def item_description
+      Textbox.new (@browser.text_fields :name => "CustomsItemName")[@number-1]
     end
 
     def qty
-      Textbox.new @browser.text_field :name => "CustomsItemQuantity"
+      Textbox.new (@browser.text_fields :name => "CustomsItemQuantity")[@number-1]
     end
 
     def qty_increment value
@@ -19,7 +58,7 @@ module Batch
     end
 
     def unit_price
-      Textbox.new @browser.text_field :name => "CustomsItemPrice"
+      Textbox.new (@browser.text_fields :name => "CustomsItemPrice")[@number-1]
     end
 
     def unit_price_increment value
@@ -31,7 +70,7 @@ module Batch
     end
 
     def lbs
-      Textbox.new @browser.text_field :name => "CustomsItemWeightLb"
+      Textbox.new (@browser.text_fields :name => "CustomsItemWeightLb")[@number-1]
     end
 
     def lbs_increment value
@@ -43,7 +82,7 @@ module Batch
     end
 
     def oz
-      Textbox.new @browser.text_field :name => "CustomsItemWeightOz"
+      Textbox.new (@browser.text_fields :name => "CustomsItemWeightOz")[@number-1]
     end
 
     def oz_increment value
@@ -52,6 +91,10 @@ module Batch
 
     def oz_decrement value
 
+    end
+
+    def origin_country
+      Textbox.new (@browser.text_fields :name => "OriginCountry")[@number-1]
     end
 
     def origin_dd
@@ -63,7 +106,7 @@ module Batch
     end
 
     def hs_tariff
-      Textbox.new @browser.text_field :name => "HSTariff"
+      Textbox.new (@browser.text_fields :name => "HSTariff")[@number-1]
     end
 
   end
@@ -149,18 +192,12 @@ module Batch
       Textbox.new @browser.text_field :css => "input[name=InvoiceNumber]"
     end
 
-
-
-    def item
-      CustomsItem.new @browser
+    def item_grid
+      CustomsItemGrid.new @browser
     end
 
     def plus
 
-    end
-
-    def add_item
-      Button.new @browser.spans :text => "Add Item"
     end
 
     def total_weight_label

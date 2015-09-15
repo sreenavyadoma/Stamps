@@ -161,14 +161,27 @@ Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
 end
 
 Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin, tariff|
-  item = @customs_form.item
-  item.description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
+  @customs_item_grid = @customs_form.item_grid
+  item = @customs_item_grid.item item_number.to_i
+  item.item_description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
   item.qty.set qty
   item.unit_price.set price
   item.lbs.set lbs
   item.oz.set oz
-  item.origin_dd.select origin
+  item.origin_country.set origin
   item.hs_tariff.set tariff
+  log item.present?
+  log ""
+end
+
+Given /^Delete Customs Form Item (\d+)$/ do |item_number|
+  count = @customs_item_grid.item_count
+  item = @customs_item_grid.item item_number.to_i
+  if count > 1
+    item.delete.click_while_present
+  else
+    item.delete.safe_click
+  end
 end
 
 Given /^Set Customs Form I agree to (\w+)$/ do |agree_str|
@@ -216,6 +229,8 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
       text = @customs_form.internal_transaction_dd.text_box.text
       log "Internal Transaction # is #{text}.  Test #{(text.include? "Required")?'Passed':'Failed'}"
       text.should eql value
+    when "item grid count"
+      @customs_form.item_grid.item_count.should eql value.to_i
     else
       raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
   end
@@ -239,10 +254,6 @@ Given /^Increment Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
 end
 
 Given /^Decrement Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
-
-end
-
-Given /^Delete Customs Form Item (\d+)$/ do |item_number|
 
 end
 
