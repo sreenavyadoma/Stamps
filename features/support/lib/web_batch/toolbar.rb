@@ -176,6 +176,7 @@ module Batch
         begin
           browser_helper.click browser_add_button, 'Add'
           log "#{count} Single Order Form present?  #{single_order_form.present?}"
+          sleep 1
           single_order_form.wait_until_present
           break if single_order_form.present?
         rescue

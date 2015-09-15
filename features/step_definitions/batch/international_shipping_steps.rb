@@ -168,7 +168,7 @@ Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\
   item.unit_price.set price
   item.lbs.set lbs
   item.oz.set oz
-  item.origin_country.set origin
+  item.origin_dd.select origin
   item.hs_tariff.set tariff
   log item.present?
   log ""
