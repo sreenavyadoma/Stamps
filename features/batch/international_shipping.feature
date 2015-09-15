@@ -120,6 +120,11 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Other
       Then Expect Customs Form Internal Transaction # to be Required
+
+      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form ITN# = random
+      Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
       And I Add a new order
@@ -144,6 +149,11 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Other
       Then Expect Customs Form Internal Transaction # to be Required
+
+      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form ITN# = random
+      Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
       And I Add a new order
@@ -168,6 +178,11 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Other
       Then Expect Customs Form Internal Transaction # to be Required
+
+      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form ITN# = random
+      Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
       And I Add a new order
@@ -191,6 +206,11 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Other
       Then Expect Customs Form Internal Transaction # to be Required
+
+      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form ITN# = random
+      Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
       And I Add a new order
@@ -214,6 +234,11 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Other
       Then Expect Customs Form Internal Transaction # to be Required
+
+      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form ITN# = random
+      Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
       And I Add a new order
@@ -238,6 +263,11 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Other
       Then Expect Customs Form Internal Transaction # to be Not required
+
+      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form ITN# = random
+      Then Set Customs Form I agree to true
       Then Close Customs Information Modal
 
   @apo_shipping @international @regression

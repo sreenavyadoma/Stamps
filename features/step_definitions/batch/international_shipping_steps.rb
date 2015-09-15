@@ -215,7 +215,7 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
     when "internal transaction #"
       text = @customs_form.internal_transaction_dd.text_box.text
       log "Internal Transaction # is #{text}.  Test #{(text.include? "Required")?'Passed':'Failed'}"
-      text.should include value
+      text.should eql value
     else
       raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
   end
