@@ -11,11 +11,11 @@ Given /^Set Ship-To to international address$/ do |table|
 
   name = (param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]
   company = (param_hash["company"].downcase.include? "random") ? test_helper.random_company_name : param_hash["company"]
-  street_address_1 = param_hash["street_address_1"]
+  street_address_1 = (param_hash["street_address_1"].downcase.include? "random") ? test_helper.random_string : param_hash["street_address_1"]
   street_address_2 = (param_hash["street_address_2"].downcase.include? "random") ? test_helper.random_suite : param_hash["street_address_2"]
   city = param_hash["city"]
-  province = param_hash["province"]
-  postal_code = param_hash["postal_code"]
+  province = (param_hash["province"].downcase.include? "random") ? test_helper.random_string : param_hash["province"]
+  postal_code = (param_hash["postal_code"].downcase.include? "random") ? test_helper.random_alpha_numeric : param_hash["postal_code"]
   country = param_hash["country"]
   phone_num = param_hash["phone"]
   phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash["phone"]
@@ -140,20 +140,20 @@ Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
       @customs_form.non_delivery_options_dd.select value
       #Internal Transaction #
     when "internal transaction #"
-      @customs_form.internal_transaction_dd.select (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
+      @customs_form.internal_transaction_dd.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
       sleep 1
       #More Info
     when "more info"
-      @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
+      @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
       #ITN#
     when "itn#"
-      @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
+      @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
     when "license#"
-      @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
+      @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
     when "certificate#"
-      @customs_form.certificate.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
+      @customs_form.certificate.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
     when "invoice#"
-      @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numberic : value
+      @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
     else
       raise "Illegal Argument Exception.  Field #{field} is not on the Customs Information Modal"
 
@@ -162,7 +162,7 @@ end
 
 Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin, tariff|
   item = @customs_form.item
-  item.description.set description
+  item.description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
   item.qty.set qty
   item.unit_price.set price
   item.lbs.set lbs
@@ -180,8 +180,8 @@ end
 Given /^Add Item with Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
   line_item = batch.single_order_form.add_item
   line_item.qty qty
-  line_item.id (id.downcase.include? "random") ? test_helper.random_alpha_numberic : id
-  line_item.description (description.downcase.include? "random") ? test_helper.random_alpha_numberic : description
+  line_item.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
+  line_item.description (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
 end
 
 Given /^Expect Single Order Form ([\w -]+) field is hidden$/ do |field_name|

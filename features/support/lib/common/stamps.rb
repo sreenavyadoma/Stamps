@@ -163,14 +163,14 @@ module Stamps
       "#{random_string}#{random_string}".split.map(&:capitalize).join(' ')
     end
 
-    def random_alpha_numberic *args
+    def random_alpha_numeric *args
       case args.length
         when 0
           @length = 10
         when 1
           @length = args[0]
         else
-          raise "Illegal number of arguments for random_alpha_numberic"
+          raise "Illegal number of arguments for random_alpha_numeric"
 
       end
       rstr = rand(36 ** @length - 1).to_s(36).rjust(@length, "0")

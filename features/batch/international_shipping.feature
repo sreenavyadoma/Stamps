@@ -3,43 +3,8 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   Background:
     Given I am signed in as a batch shipper ie/auto39/password1
 
-    @international_shipping @international
+    @international_shipping_field_validation @international
     Scenario: Single Order Form International Shipping fields and Customs Information fields validation
-
-      And I Add a new order
-      Then Set Ship From to default
-      Then Set Ship-To to international address
-        | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
-        | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-      Then Set Ounces to 1
-      Then Set Pounds to 1
-      Then Set Service to First-Class Mail International Large Envelope
-      Then Add Item with Quantity 1, ID random, Description random
-      And Open Customs Form
-      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-      Then Expect Customs Form Internal Transaction # to be Required
-
-      #Iran - Internal Transaction # Required
-      And I Add a new order
-      Then Set Ship From to default
-      Then Set Ship-To country to Iran
-      And Open Customs Form
-      Then Expect Customs Form Internal Transaction # to be Required
-      Then Close Customs Information Modal
-
-      And I Add a new order
-      Then Set Ship From to default
-      Then Set Ship-To country to Sudan
-      And Open Customs Form
-      Then Expect Customs Form Internal Transaction # to be Required
-      Then Close Customs Information Modal
-
-      And I Add a new order
-      Then Set Ship From to default
-      Then Set Ship-To country to Syria
-      And Open Customs Form
-      Then Expect Customs Form Internal Transaction # to be Required
-      Then Close Customs Information Modal
 
       And I Add a new order
       Then Set Ship From to default
@@ -114,6 +79,52 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Customs Form I agree to true
       Then Close Customs Information Modal
       Then Set Service to First-Class Mail International Large Envelope
+
+    @international_rogue_countries @international
+    Scenario:
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To to international address
+        | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+        | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
+      Then Set Ounces to 1
+      Then Set Pounds to 1
+      Then Set Service to First-Class Mail International Large Envelope
+      Then Add Item with Quantity 1, ID random, Description random
+      And Open Customs Form
+      And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Set Customs Form ITN# = random
+      Then Set Customs Form I agree to true
+      Then Close Customs Information Modal
+
+      #Iran - Internal Transaction # Required
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To to international address
+        | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+        | random | random  | random           | random           | random | random  | random      | Iran    | random  | random  |
+      And Open Customs Form
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Close Customs Information Modal
+
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To to international address
+        | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+        | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
+      And Open Customs Form
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Close Customs Information Modal
+
+      And I Add a new order
+      Then Set Ship From to default
+      Then Set Ship-To to international address
+        | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+        | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
+      And Open Customs Form
+      Then Expect Customs Form Internal Transaction # to be Required
+      Then Close Customs Information Modal
 
   @international
   Scenario: User Prints International Address 1
