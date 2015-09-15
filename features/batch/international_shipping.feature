@@ -127,6 +127,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Ship-To to international address
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
         | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
+      Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Commercial Sample
@@ -150,6 +151,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Ship-To to international address
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
         | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
+      Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Commercial Sample
@@ -173,6 +175,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Ship-To to international address
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
         | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
+      Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Commercial Sample
@@ -196,6 +199,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Ship-To to international address
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
         | random | random  | random           | random           | random | random  | random      | North Korea    | random  | random  |
+      Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
       Then Expect Customs Form Internal Transaction # to be Required
       Then Set Customs Form Package Contents = Commercial Sample
@@ -219,6 +223,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       Then Set Ship-To to international address
         | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
         | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
+      Then Set Service to First-Class Mail International Large Envelope
       And Open Customs Form
       Then Expect Customs Form Internal Transaction # to be Not required
       Then Set Customs Form Package Contents = Commercial Sample
