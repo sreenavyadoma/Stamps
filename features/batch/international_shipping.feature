@@ -3,6 +3,25 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   Background:
     Given I am signed in as a batch shipper ie/auto39/password1
 
+  @international @regression @international_totals
+  Scenario:  Customs Form Grid Items Add/Delete
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To to international address
+      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
+    Then Set Ounces to 1
+    Then Set Pounds to 1
+    Then Add Item with Quantity 1, ID random, Description random
+
+    And Open Customs Form
+
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 1000.50, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 100
+    Then Expect Customs Form Total Value to be 1000.50
+
+    Then Set Customs Form I agree to true
+    Then Close Customs Information Modal
+
   @international @regression @international_delete_line_items
   Scenario:  Customs Form Grid Items Add/Delete
     And I Add a new order

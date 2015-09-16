@@ -381,18 +381,11 @@ module Batch
     end
 
     def present?
-      browser_helper.present? service_textbox
+      (Label.new @browser.label :text => "Ship From:").present?
     end
 
     def wait_until_present *args
-      case args.length
-        when 0
-          browser_helper.wait_until_present height_textbox
-        when 1
-          browser_helper.wait_until_present height_textbox, args[0].to_i
-        else
-          raise "Illegal number of arguments for wait_until_present"
-      end
+      (Label.new @browser.label :text => "Ship From:").wait_until_present
     end
 
     def edit_details(data = {})

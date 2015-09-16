@@ -225,15 +225,11 @@ module Batch
       oz
     end
 
-    def total_value_label
+    def total_value
       divs = @browser.divs :css => "div[class*=x-form-display-field-default]"
       div = divs.last
-      log "Total Value label is #{(browser_helper.present? div)? 'present' : 'not present'}"
-      div
-    end
-
-    def total_value
-      test_helper.remove_dollar_sign total_value_label
+      total_value_label = Label.new div
+      test_helper.remove_dollar_sign total_value_label.text
     end
 
     def verify_i_agree_checked

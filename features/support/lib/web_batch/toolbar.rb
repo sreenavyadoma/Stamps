@@ -172,9 +172,10 @@ module Batch
 
     def add
       single_order_form = SingleOrderForm.new @browser
+      add_button = Button.new @browser.span :text => 'Add'
       3.times do |count|
         begin
-          browser_helper.click browser_add_button, 'Add'
+          add_button.click
           log "#{count} Single Order Form present?  #{single_order_form.present?}"
           sleep 1
           single_order_form.wait_until_present

@@ -160,7 +160,7 @@ Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
   end
 end
 
-Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
+Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price ([\d.]+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i
   item.item_description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
@@ -235,6 +235,10 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
       text.should eql value
     when "item grid count"
       @customs_form.item_grid.item_count.should eql value.to_i
+    when "total value"
+      total_value = @customs_form.total_value
+      log "Custom Info Actual Total Value: #{total_value}.  Expected:  #{value}.  Test #{(total_value == value)?'Passed':'Failed'}"
+      total_value.should eql value
     else
       raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
   end
