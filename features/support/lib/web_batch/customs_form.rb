@@ -197,6 +197,7 @@ module Batch
     end
 
     def item_grid
+      sleep 2
       CustomsItemGrid.new @browser
     end
 

@@ -160,7 +160,7 @@ Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
   end
 end
 
-Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin, tariff|
+Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\d+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i
   item.item_description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
@@ -168,9 +168,11 @@ Given /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price (\
   item.unit_price.set price
   item.lbs.set lbs
   item.oz.set oz
-  begin
-    item.origin_dd.select origin
-  end unless origin.downcase.include? "states"
+  #begin
+  sleep 2
+  item.origin_dd.select origin_country
+  #end unless o#rigin.downcase.include? "states"
+  #item.origin_country.set origin_country
   item.hs_tariff.set tariff
   log item.present?
   log ""
