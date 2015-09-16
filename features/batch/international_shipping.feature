@@ -272,7 +272,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea    | random  | random  |
     #Then Set Service to Priority Mail International Flat Rate Envelope
-    And Open Customs Form
+    And Open Customs FormRequired
+    Then Set Customs Form Package Contents = Commercial Sample
+    Then Expect Customs Form Internal Transaction # to be Required
+    Then Set Customs Form Package Contents = Document
+    Then Expect Customs Form Internal Transaction # to be Required
+    Then Set Customs Form Package Contents = Merchandise
+    Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form Package Contents = Gift
     Then Expect Customs Form Internal Transaction # to be Not required
     Then Set Customs Form Package Contents = Humanitarian Donation
@@ -280,13 +286,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Customs Form Package Contents = Returned Goods
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form Package Contents = Other
-    Then Expect Customs Form Internal Transaction # to be Required
-    Then Set Customs Form Package Contents = Commercial Sample
-    Then Expect Customs Form Internal Transaction # to be Required
-    Then Set Customs Form Package Contents = Document
-    Then Expect Customs Form Internal Transaction # to be Required
-    Then Set Customs Form Package Contents = Merchandise
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be
 
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be Required
