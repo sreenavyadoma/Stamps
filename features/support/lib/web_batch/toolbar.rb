@@ -173,7 +173,7 @@ module Batch
     def add
       single_order_form = SingleOrderForm.new @browser
       add_button = Button.new @browser.span :text => 'Add'
-      3.times do |count|
+      7.times do |count|
         begin
           add_button.click
           log "#{count} Single Order Form present?  #{single_order_form.present?}"

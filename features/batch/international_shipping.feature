@@ -19,6 +19,9 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 1000.50, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 100
     Then Expect Customs Form Total Value to be 1000.50
 
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 1000.25, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 100
+    Then Expect Customs Form Total Value to be 2000.75
+
     Then Set Customs Form I agree to true
     Then Close Customs Information Modal
 
