@@ -384,7 +384,7 @@ module Batch
       (Label.new @browser.label :text => "Ship From:").present?
     end
 
-    def wait_until_present *args
+    def wait_until_present
       (Label.new @browser.label :text => "Ship From:").wait_until_present
     end
 

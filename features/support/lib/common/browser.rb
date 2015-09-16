@@ -297,6 +297,10 @@ module Stamps
         browser_helper.present? @field
       end
 
+      def wait_until_present
+        browser_helper.wait_until_present @field
+      end
+
       def style style_property
         browser_helper.style style_property
       end
