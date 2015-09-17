@@ -175,9 +175,11 @@ module Batch
       add_button = Button.new @browser.span :text => 'Add'
       7.times do |count|
         begin
+          sleep 1
           add_button.click unless single_order_form.present?
           log "#{count} Single Order Form present?  #{single_order_form.present?}"
           single_order_form.wait_until_present
+          sleep 1
           break if single_order_form.present?
         rescue
           #ignore
