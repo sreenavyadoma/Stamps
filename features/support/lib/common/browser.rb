@@ -423,7 +423,7 @@ module Stamps
             @selection_item = selection
         end
 
-        5.times{
+        2.times{
           browser_helper.click @drop_down, "drop-down"
           log "Selection is present? #{browser_helper.present? @selection_item}"
           browser_helper.click @selection_item if browser_helper.present? @selection_item
