@@ -18,7 +18,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 5, Weight(oz) 1 Origin United States , Tariff 100
 
-    Then Close Customs Information Modal
+    Then Close Customs Form
 
     And Open Customs Form
     
@@ -48,7 +48,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Total Ounces to be 2
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
 
   @international @regression @international_delete_line_items
   Scenario:  Customs Form Grid Items Add/Delete
@@ -76,7 +76,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Item Grid count to be 1
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
 
   @international_shipping_field_validation @_international @regression
   Scenario: Single Order Form International Shipping fields and Customs Information fields validation
@@ -150,7 +150,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to First-Class Mail International Large Envelope
 
   @international_internal_transaction_2500 @international @regression
@@ -175,7 +175,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form ITN# = random
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
 
       # Iran - Internal Transaction #
   @international_rogue_countries @international @regression
@@ -206,7 +206,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form ITN# = random
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
 
       # Sudan - Internal Transaction # Required
   @international_rogue_countries @international @regression
@@ -238,7 +238,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form ITN# = random
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
 
       # Syria - Internal Transaction # Required
   @international_rogue_countries @international @regression
@@ -270,7 +270,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form ITN# = random
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
 
       # Cuba - Internal Transaction # Required
   @international_rogue_countries @international @regression
@@ -302,7 +302,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form ITN# = random
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
 
       # North Korea - Internal Transaction # Required
   @international_rogue_countries @international @regression@international_rogue_countries_nk
@@ -334,7 +334,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form ITN# = random
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
 
       # Philippines - Internal Transaction # Required
   @international_rogue_countries @international @regression
@@ -366,7 +366,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form ITN# = random
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
 
   @apo_shipping @c @regression
   Scenario: Domestic APO Address

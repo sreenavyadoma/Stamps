@@ -257,7 +257,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to First-Class Mail International Large Envelope
 
     And I Add a new order
@@ -278,7 +278,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to Priority Mail International Flat Rate Envelope
 
     # First Class Mail
@@ -532,7 +532,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to First-Class Mail International Large Envelope
 
     And I Add a new order
@@ -553,7 +553,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to Priority Mail International Flat Rate Envelope
 
     # First Class Mail
@@ -807,7 +807,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to First-Class Mail International Large Envelope
 
     And I Add a new order
@@ -828,7 +828,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to Priority Mail International Flat Rate Envelope
 
     # First Class Mail
@@ -1082,7 +1082,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to First-Class Mail International Large Envelope
 
     And I Add a new order
@@ -1103,7 +1103,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to Priority Mail International Flat Rate Envelope
 
     # First Class Mail
@@ -1357,7 +1357,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to First-Class Mail International Large Envelope
 
     And I Add a new order
@@ -1378,7 +1378,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to Priority Mail International Flat Rate Envelope
 
     # First Class Mail
@@ -1632,7 +1632,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to First-Class Mail International Large Envelope
 
     And I Add a new order
@@ -1653,7 +1653,7 @@ Feature: 150 orders
     Then Set Customs Form ITN# = random
 
     Then Set Customs Form I agree to true
-    Then Close Customs Information Modal
+    Then Close Customs Form
     Then Set Service to Priority Mail International Flat Rate Envelope
 
     And Sign out

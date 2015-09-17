@@ -68,9 +68,9 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Delete Customs Form Item 1
     * Expect Customs Form Internal Transaction # to be Not Required
 
-    * Close Customs Information Modal
+    * Close Customs Form
     * Expect Customs Information Modal to be present
 
     * Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
-    * Close Customs Information Modal
+    * Close Customs Form
     * Click Ship-To Less link

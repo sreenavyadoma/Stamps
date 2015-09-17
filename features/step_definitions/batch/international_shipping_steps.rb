@@ -279,17 +279,22 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
   end
 end
 
+Given /^Close Customs Form$/ do
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form.close
+end
+
+Given /^Cancel Customs Form$/ do
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form.cancel
+end
+
 Given /^Increment Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
 
 end
 
 Given /^Decrement Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
 
-end
-
-Given /^Close Customs Information Modal$/ do
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  @customs_form.cancel
 end
 
 Given /^Expect Customs Information Modal to be present$/ do

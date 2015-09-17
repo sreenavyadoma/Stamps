@@ -15,6 +15,6 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Set Customs Form Weight(oz) to 1
     * Add or Edit Customs Form Item 1 to Description=random, Qty 1, Unit Price 2500, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     * Check Customs Form "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions"
-    * Close Customs Information Modal
+    * Close Customs Form
     * Set Service to First-Class Mail International Large Envelope
     * Print
