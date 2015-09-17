@@ -11,22 +11,13 @@ require 'rspec'
 require 'date'
 require "set"
 
+# Stamps module
 require_relative 'lib/common/browser'
 require_relative 'lib/common/stamps'
 require_relative 'lib/common/logger'
 
+# Batch module
 require_relative 'lib/web_batch/helpers'
 require_relative 'lib/web_batch/fields'
-
-require_relative 'lib/web_batch/batch'
-require_relative 'lib/web_batch/modals'
-require_relative 'lib/web_batch/navigation'
-require_relative 'lib/web_batch/pages'
-require_relative 'lib/web_batch/single_order'
-require_relative 'lib/web_batch/errors'
-require_relative 'lib/web_batch/grid'
-require_relative 'lib/web_batch/printing'
-require_relative 'lib/web_batch/address'
-require_relative 'lib/web_batch/purchasing'
 
 World(Stamps,Stamps::Browser,Batch)
