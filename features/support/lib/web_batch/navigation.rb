@@ -3,7 +3,7 @@ module Batch
   #
   # Navigation bar containing Sign-in, etc
   #
-  class NavigationBar < BatchObject
+  class Navigation < BatchObject
     private
 
     def login_div

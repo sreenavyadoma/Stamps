@@ -14,7 +14,7 @@ module Batch
     end
   end
 
-  class Customs < BatchObject
+  class CustomsFields < BatchObject
 
     def browser_edit_form_button
       Button.new @browser.span :text => "Edit Form..."
@@ -262,7 +262,7 @@ module Batch
     end
 
     def customs
-      Customs.new @browser
+      CustomsFields.new @browser
     end
 
     def ship_to_dd
