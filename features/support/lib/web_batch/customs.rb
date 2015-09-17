@@ -215,7 +215,8 @@ module Batch
       divs = @browser.divs :css => "div[id^=displayfield]>div[id^=displayfield]>div[id^=displayfield]"
       div = divs[divs.size-2]
       weight_label = Label.new div
-      log "Total Weight: #{weight_label.text}" # 0 lbs. 0 oz.
+      present = browser_helper.present? div
+      log "Total Weight: #{weight_label.text div}" # 0 lbs. 0 oz.
       weight_label
     end
 
