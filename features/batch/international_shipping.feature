@@ -1,8 +1,29 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as a batch shipper ie/auto39/password1
+    Given I am signed in as a batch shipper gc/auto39/password1
 
+  @international @regression @international_data_error
+  Scenario:  Customs Form Data Error
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To to international address
+      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
+    Then Set Ounces to 1
+    Then Set Pounds to 1
+    Then Add Item with Quantity 1, ID random, Description random
+
+    And Open Customs Form
+
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 5, Weight(oz) 1 Origin United States , Tariff 100
+
+    Then Close Customs Information Modal
+
+    And Open Customs Form
+    
+    Then Expect Customs Form Total Weight Data Error to be The itemized weight exceeds the package weight
+    
   @international @regression @international_totals
   Scenario:  Customs Form Grid Items Add/Delete
     And I Add a new order

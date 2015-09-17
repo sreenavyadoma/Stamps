@@ -205,22 +205,29 @@ module Batch
 
     end
 
-    def total_weight_label
+    def total_weight_error
+      qtip_error = total_weight.attribute_value "data-errorqtip"
+      log "Total Weight data error: #{qtip_error}"
+      qtip_error
+    end
+
+    def total_weight
       divs = @browser.divs :css => "div[id^=displayfield]>div[id^=displayfield]>div[id^=displayfield]"
       div = divs[divs.size-2]
+      weight_label = Label.new div
       present = browser_helper.present? div
-      log "Total Weight: #{browser_helper.text div}" # 0 lbs. 0 oz.
-      div
+      log "Total Weight: #{weight_label.text}" # 0 lbs. 0 oz.
+      weight_label
     end
 
     def total_weight_lbs
-      lbs = total_weight_label.text.scan(/\d+/).first
+      lbs = total_weight.text.scan(/\d+/).first
       log "Pounds: #{lbs}"
       lbs
     end
 
     def total_weight_oz
-      oz = total_weight_label.text.scan(/\d+/).last
+      oz = total_weight.text.scan(/\d+/).last
       log "Ounces: #{oz}"
       oz
     end
@@ -228,8 +235,7 @@ module Batch
     def total_value
       divs = @browser.divs :css => "div[class*=x-form-display-field-default]"
       div = divs.last
-      total_value_label = Label.new div
-      test_helper.remove_dollar_sign total_value_label.text
+      test_helper.remove_dollar_sign (Label.new div).text
     end
 
     def verify_i_agree_checked

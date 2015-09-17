@@ -243,20 +243,24 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
       @customs_form.item_grid.item_count.should eql value.to_i
 
     when "total value"
-      total_value = @customs_form.total_value
-      log "Custom Info Actual Total Value: #{total_value}.  Expected:  #{value}.  Test #{(total_value == value)?'Passed':'Failed'}"
-      total_value.should eql value
+      browser_value = @customs_form.total_value
+      log "Custom Info Actual Total Value: #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
+      browser_value.should eql value
 
     when "total pounds"
-      total_value = @customs_form.total_weight_lbs
-      log "Custom Info Actual Total Weight(lbs): #{total_value}.  Expected:  #{value}.  Test #{(total_value == value)?'Passed':'Failed'}"
-      total_value.should eql value
+      browser_value = @customs_form.total_weight_lbs
+      log "Custom Info Actual Total Weight(lbs): #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
+      browser_value.should eql value
 
     when "total ounces"
-      total_value = @customs_form.total_weight_oz
-      log "Custom Info Actual Total Weight(Oz): #{total_value}.  Expected:  #{value}.  Test #{(total_value == value)?'Passed':'Failed'}"
-      total_value.should eql value
+      browser_value = @customs_form.total_weight_oz
+      log "Custom Info Actual Total Weight(Oz): #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
+      browser_value.should eql value
 
+    when "total weight data error"
+      browser_value = @customs_form.total_weight_error
+      log "Custom Info Actual Total Weight Data Error. Test #{(browser_value.include? value)?'Passed':'Failed'}"
+      browser_value.should include value
     else
       raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
   end

@@ -275,6 +275,10 @@ module Stamps
         end
       end
 
+      def attribute_value attribute_str
+        browser_helper.attribute_value @field, attribute_str
+      end
+
       def second_disabled?
         raise "enabled field not set." if @second_field.nil?
         browser_helper.disabled? @second_field
@@ -579,7 +583,7 @@ module Stamps
           #ignore
         end
         text = field.text
-        value = field.attribute_value('value')
+        value = field.attribute_value 'value'
         begin
           return text if text.size > 0
         rescue
