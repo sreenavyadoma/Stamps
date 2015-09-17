@@ -65,7 +65,7 @@ module Batch
       when 1
         address = args[0]
         if address.downcase.include? "random"
-          @random_ship_from = test_helper.random_ship_from
+          @random_ship_from = TestHelper.instance.random_ship_from
         else
           @random_ship_from = address
         end
