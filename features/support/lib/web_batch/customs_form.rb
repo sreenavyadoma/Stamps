@@ -206,21 +206,21 @@ module Batch
     end
 
     def total_weight_label
-      divs = @browser.divs :css => "div[class*=x-form-display-field-default]"
-      div = divs[1]
+      divs = @browser.divs :css => "div[id^=displayfield]>div[id^=displayfield]>div[id^=displayfield]"
+      div = divs[divs.size-2]
       present = browser_helper.present? div
       log "Total Weight: #{browser_helper.text div}" # 0 lbs. 0 oz.
       div
     end
 
     def total_weight_lbs
-      lbs = total_weight_label.scan(/\d+/).first
+      lbs = total_weight_label.text.scan(/\d+/).first
       log "Pounds: #{lbs}"
       lbs
     end
 
     def total_weight_oz
-      oz = total_weight_label.scan(/\d+/).last
+      oz = total_weight_label.text.scan(/\d+/).last
       log "Ounces: #{oz}"
       oz
     end

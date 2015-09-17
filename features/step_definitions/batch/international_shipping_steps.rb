@@ -221,24 +221,42 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
   case field.downcase
     when "itn#"
       @customs_form_textbox = @customs_form.itn_number
+
     when "more info"
       @customs_form_textbox = @customs_form.more_info
+
     when "license#"
       @customs_form_textbox = @customs_form.license
+
     when "certificate#"
       @customs_form_textbox = @customs_form.certificate
+
     when "invoice#"
       @customs_form_textbox = @customs_form.invoice
+
     when "internal transaction #"
       text = @customs_form.internal_transaction_dd.text_box.text
       log "Internal Transaction # is #{text}.  Test #{(text.include? "Required")?'Passed':'Failed'}"
       text.should eql value
+
     when "item grid count"
       @customs_form.item_grid.item_count.should eql value.to_i
+
     when "total value"
       total_value = @customs_form.total_value
       log "Custom Info Actual Total Value: #{total_value}.  Expected:  #{value}.  Test #{(total_value == value)?'Passed':'Failed'}"
       total_value.should eql value
+
+    when "total pounds"
+      total_value = @customs_form.total_weight_lbs
+      log "Custom Info Actual Total Weight(lbs): #{total_value}.  Expected:  #{value}.  Test #{(total_value == value)?'Passed':'Failed'}"
+      total_value.should eql value
+
+    when "total ounces"
+      total_value = @customs_form.total_weight_oz
+      log "Custom Info Actual Total Weight(Oz): #{total_value}.  Expected:  #{value}.  Test #{(total_value == value)?'Passed':'Failed'}"
+      total_value.should eql value
+
     else
       raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
   end
