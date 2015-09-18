@@ -16,8 +16,8 @@ require_relative 'lib/common/browser'
 require_relative 'lib/common/stamps'
 require_relative 'lib/common/logger'
 
-# Batch module
-require_relative 'lib/web_batch/helpers'
+# BatchHelper module
+require_relative 'lib/web_batch/batch_helper'
 require_relative 'lib/web_batch/fields'
 
 World(Stamps,Stamps::Browser,Batch)

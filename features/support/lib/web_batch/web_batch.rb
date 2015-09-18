@@ -1,8 +1,19 @@
 module Batch
 
   class WebBatch < BatchPage
-    def sign_in(*args)
-      LoginPage.new(@browser).sign_in *args
+
+    def visit *args
+      if args.length == 1
+        ENV['URL'] = args[0]
+      end
+      url = "http://#{Batch.url_prefix}.stamps.com/webbatch/"
+      @browser.goto url
+      log "Page loaded.  #{url}"
+      self
+    end
+
+    def sign_in *args
+      LoginPage.new(@browser).sign_in args
     end
 
     def awaiting_shipment

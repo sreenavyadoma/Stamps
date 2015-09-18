@@ -1,6 +1,10 @@
 module Batch
   include Stamps
 
+  def batch
+    @batch ||= WebBatch.new(@browser)
+  end
+
   def self.grid_columns *args
     case args.length
       when 1
@@ -24,7 +28,7 @@ module Batch
   end
 
   def self.url_prefix
-    @url_prefix ||= data_for(:url_prefix, {})[ENV['URL']]
+    return data_for(:url_prefix, {})[ENV['URL']]
   end
 
   def self.order_id=(order_id)
@@ -34,22 +38,6 @@ module Batch
 
   def self.order_id
     @order_id
-  end
-
-  def batch
-    @batch ||= WebBatch.new(@browser)
-  end
-
-  def single_order_form *args
-    case args.length
-      when 0
-        @single_order_form
-      when 1
-        @single_order_form = args[0]
-      else
-        raise "Parameter Error:  Illegal number of arguments.  single_order_form"
-    end
-
   end
 
   def teardown

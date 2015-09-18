@@ -86,14 +86,7 @@ module Batch
       @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
     end
 
-
-    def visit
-      @browser.goto url = "http://#{Batch.url_prefix}.stamps.com/webbatch/"
-      log "Visited #{url}"
-      self
-    end
-
-    def sign_in(*args)
+    def sign_in *args
       grid = Grid.new @browser
       navigation = self.navigation_bar
       welcome_modal = WelcomeModal.new @browser
@@ -103,16 +96,18 @@ module Batch
       toolbar = self.toolbar
       case args.count
         when 0
-          # user default sign in credentials
-          # credentials = batch_helper.rand_login_credentials
-          username = log_param "username", ENV["USR"] #credentials["username"]
-          password = log_param "password", ENV["PW"] #credentials["password"]
+          username = log_param "username", ENV["USR"]
+          password = log_param "password", ENV["PW"]
         when 1
-          if args[0].is_a? Hash
-            username = args[0]['username']
-            password = args[0]['password']
-          else
-            raise 'Argument Parameter Error.'
+          case args[0]
+            when Hash
+              username = args[0]['username']
+              password = args[0]['password']
+            when Array
+              username = args[0][0]
+              password = args[0][1]
+            else
+              raise 'Argument Parameter Error.'
           end
         when 2
           username = args[0]
@@ -122,7 +117,6 @@ module Batch
       end
 
       20.times do
-        visit
         begin
           if username_textbox.present?
             username_textbox.wait_until_present

@@ -1,6 +1,6 @@
 module Stamps
 
-  def service_to_sym(str)
+  def str_to_sym(str)
     str.downcase.tr('()', '').tr('/-', '_').strip.tr(' ', '_').to_sym
   end
 
@@ -44,7 +44,6 @@ module Stamps
       elsif Stamps.browser.chrome?
         system "taskkill /im chrome.exe /f"
 
-        browser_name = 'Google Chrome'
         chrome_data_dir = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data")
         chrome_driver_path = File.join("C:", "selenium", "drivers", "chromedriver.exe")
 
