@@ -259,7 +259,6 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
 
     when "total weight data error"
       browser_value = @customs_form.total_weight_error
-      log "Custom Info Actual Total Weight Data Error. Test #{(browser_value.include? value)?'Passed':'Failed'}"
       browser_value.should include value
     else
       raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
