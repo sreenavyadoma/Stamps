@@ -38,8 +38,8 @@ module Stamps
       if Stamps.browser.explorer?
         system "taskkill /im iexplore.exe /f"
 
-        #browser = Watir::Browser.new :ie
-        driver = Selenium::WebDriver.for :ie
+        driver = Watir::Browser.new :ie
+        #driver = Selenium::WebDriver.for :ie
         browser_name = 'Internet Explorer'
 
       elsif Stamps.browser.chrome?
@@ -56,12 +56,13 @@ module Stamps
           raise log "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
         end unless File.exist? chrome_data_dir
 
-        Selenium::WebDriver::Chrome::Service.executable_path = chrome_driver_path
-        driver = Selenium::WebDriver.for :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}"]
+        #Selenium::WebDriver::Chrome::Service.executable_path = chrome_driver_path
+        #driver = Selenium::WebDriver.for :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}"]
+        driver = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
 
       elsif Stamps.browser.firefox?
         system "taskkill /im firefox.exe /f"
-        driver = Selenium::WebDriver.for :firefox, :profile => "selenium"
+        driver = Watir::Browser.new :firefox, :profile => "selenium"
         browser_name = 'Firefox'
       else
         driver = Watir::Browser.new :ie
@@ -69,15 +70,14 @@ module Stamps
       end
 
       log "#{browser_name} is ready."
-      driver.manage.window.resize_to 1250, 850
-      log driver.manage.window.size
-      driver.manage.window.move_to 0, 0
+      #driver.manage.window.resize_to 1250, 850
+      #log driver.manage.window.size
+      #driver.manage.window.move_to 0, 0
       @browser = driver
     rescue Exception => e
       log e
       raise e
     end
-
   end
 
   def self.teardown
