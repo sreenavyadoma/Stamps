@@ -6,6 +6,7 @@ module Batch
       if args.length == 1
         ENV['URL'] = args[0]
       end
+
       url = "http://#{Batch.url_prefix}.stamps.com/webbatch/"
       @browser.goto url
       log "Page loaded.  #{url}"

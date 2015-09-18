@@ -86,6 +86,12 @@ module Batch
       @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
     end
 
+    def load_url
+      url = "http://#{Batch.url_prefix}.stamps.com/webbatch/"
+      @browser.goto url
+      log "Page reloaded.  #{url}"
+    end
+
     def sign_in *args
       grid = Grid.new @browser
       navigation = self.navigation_bar
@@ -154,7 +160,8 @@ module Batch
 
           grid.wait_until_present 40
           break if toolbar.present? || grid.present?
-          visit
+
+          load_url
         rescue
           #ignore
         end
