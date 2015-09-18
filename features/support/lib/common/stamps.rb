@@ -31,31 +31,23 @@ module Stamps
       if args.length == 1
         ENV['BROWSER'] = args[0]
       end
-      log "Begin..."
+      log "Browser Selection: #{ENV['BROWSER']}"
 
-      log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "gem list"} ]"
+      # log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "gem list"} ]"
 
       if Stamps.browser.explorer?
-        begin
-          log "Executed Shell Command:  taskkill /im iexplore.exe /f [ #{system "taskkill /im iexplore.exe /f"} ]"
-        rescue
-          #ignore
-        end
+        system "taskkill /im iexplore.exe /f"
 
-
-        browser = Watir::Browser.new :ie
+        #browser = Watir::Browser.new :ie
+        driver = Selenium::WebDriver.for :ie
         browser_name = 'Internet Explorer'
 
       elsif Stamps.browser.chrome?
-        begin
-          log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "taskkill /im chrome.exe /f"} ]"
-        rescue
-          #ignore
-        end
+        system "taskkill /im chrome.exe /f"
 
         browser_name = 'Google Chrome'
-        chrome_data_dir = "C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data\\Default" #	C:\Users\rcruz\AppData\Local\Google\Chrome\User Data\Default
-        chrome_driver_path = "C:\\selenium\\drivers\\chromedriver.exe"
+        chrome_data_dir = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data")
+        chrome_driver_path = File.join("C:", "selenium", "drivers", "chromedriver.exe")
 
         log_param "chrome_driver:  exist?  #{File.exist? chrome_driver_path}  ##", chrome_driver_path
         log_param "chrome_data_dir:  exist?  #{File.exist? chrome_data_dir}  ##", chrome_data_dir
@@ -64,40 +56,23 @@ module Stamps
           raise log "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
         end unless File.exist? chrome_data_dir
 
-        prefs = {
-            :download => {
-                :prompt_for_download => false,
-                :default_directory => chrome_data_dir
-            }
-        }
+        Selenium::WebDriver::Chrome::Service.executable_path = chrome_driver_path
+        driver = Selenium::WebDriver.for :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}"]
 
-        profile = Selenium::WebDriver::Chrome::Profile.new
-#
-        user_data_dir = "user-data-dir=#{chrome_data_dir}"
-#--user-data-dir="C:\Users\rcruz\AppData\Local\Temp\scoped_dir19560_20237"
-        log "Launching #{browser_name}..."
-        Selenium::WebDriver::Chrome.driver_path = chrome_driver_path
-        browser = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}"]
-        log "#{browser_name} instantiated."
-        #browser = Watir::Browser.new :chrome, :switches => ["--user_data_dir=C:\\Users\\#{ENV['USERNAME']}\\AppData\\Local\\Google\\Chrome\\User Data", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate]"]
-        #browser = Watir::Browser.new :chrome, :prefs => prefs
       elsif Stamps.browser.firefox?
-        begin
-          #log "Executed Shell Command:  taskkill /im firefox.exe /f [ #{system "taskkill /im firefox.exe /f"} ]"
-        rescue
-          #ignore
-        end
-        browser = Watir::Browser.new :firefox, :profile => 'selenium'
+        system "taskkill /im firefox.exe /f"
+        driver = Selenium::WebDriver.for :firefox, :profile => "selenium"
         browser_name = 'Firefox'
       else
-        browser = Watir::Browser.new :ie
+        driver = Watir::Browser.new :ie
         browser_name = 'Internet Explorer'
       end
 
-      log_param 'Browser', browser_name
-      #browser.window.move_to 0, 0
-      #browser.window.resize_to 1250, 850
-      @browser = browser
+      log "#{browser_name} is ready."
+      driver.manage.window.resize_to 1250, 850
+      log driver.manage.window.size
+      driver.manage.window.move_to 0, 0
+      @browser = driver
     rescue Exception => e
       log e
       raise e
