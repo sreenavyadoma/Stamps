@@ -36,12 +36,8 @@ module Batch
     @order_id
   end
 
-  def setup
-    @batch = WebBatch.new(Stamps.setup)
-  end
-
   def batch
-    @batch ||= WebBatch.new(Stamps.setup)
+    @batch ||= WebBatch.new(@browser)
   end
 
   def single_order_form *args

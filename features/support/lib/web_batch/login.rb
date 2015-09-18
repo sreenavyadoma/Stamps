@@ -88,7 +88,7 @@ module Batch
 
 
     def visit
-      @browser.goto url = "http://#{Batch.url_prefix}.stamps.com/webbatch/"
+      @browser.navigate.to url = "http://#{Batch.url_prefix}.stamps.com/webbatch/"
       log "Visited #{url}"
       self
     end
