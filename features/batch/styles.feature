@@ -15,4 +15,5 @@ Feature: Web Batch Styles
     Then Expect Style General Fonts Size to be 14px
     Then Expect Style General Tooltip Border width to be 1
     Then Expect Style General Tooltip Border style to be solid
-    Then Expect Style General Tooltip Border padding to be 3px
+    Then Expect Style General Tooltip Border radius to be 3px
+    Then Expect Style Navigation Header Height to be 50px

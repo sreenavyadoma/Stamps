@@ -122,7 +122,7 @@ module Batch
           raise 'Argument Parameter Error.'
       end
 
-      20.times do
+      30.times do
         begin
           if username_textbox.present?
             username_textbox.wait_until_present
@@ -133,6 +133,12 @@ module Batch
             toolbar.wait_until_present
 
             sleep(1)
+
+            begin
+              navigation.orders
+            rescue
+              #ignroe
+            end
 
             if welcome_modal.present?
               welcome_modal.ok
@@ -158,7 +164,7 @@ module Batch
             #ignroe
           end
 
-          grid.wait_until_present 40
+          grid.wait_until_present
           break if toolbar.present? || grid.present?
 
           load_url

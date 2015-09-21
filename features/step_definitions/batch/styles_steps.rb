@@ -18,6 +18,10 @@ Then /^Expect Style General Tooltip Border style to be (.*)$/ do |border_style|
   batch.styles.general.tooltip.border_style.downcase.should eql border_style
 end
 
-Then /^Expect Style General Tooltip Border padding to be (.*)$/ do |border_style|
-  batch.styles.general.tooltip.padding.downcase.should include border_style
+Then /^Expect Style General Tooltip Border radius to be (.*)$/ do |border_style|
+  batch.styles.general.tooltip.border_radius.downcase.should include border_style
+end
+
+Then /^Expect Style Navigation Header Height to be (.*)$/ do |height|
+  batch.styles.general.navigation_header.height.downcase.should eql height
 end

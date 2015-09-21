@@ -46,6 +46,7 @@ module Batch
     end
 
     def styles
+      #(Navigation.new @browser).orders
       @page_styles ||= PageStyles.new @browser
     end
   end

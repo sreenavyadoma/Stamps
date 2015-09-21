@@ -8,6 +8,14 @@ module Batch
 
   class General < BatchObject
 
+    class NavigationHeader < BatchObject
+      def height
+        field = @browser.div :class => "navbar-inner"
+        browser_helper.wait_until_present field
+        field.style "height"
+      end
+    end
+
     class Fonts < BatchObject
       def font_family
         @browser.body.style "font-family"
@@ -33,7 +41,7 @@ module Batch
         field.style "border-width"
       end
       
-      def padding
+      def border_radius
         field = @browser.link :css => "a[data-qtip*='Configure your settings']"
         browser_helper.wait_until_present field
         field.style "padding"
@@ -52,6 +60,10 @@ module Batch
 
     def tooltip
       @tooltip ||= Tooltip.new @browser
+    end
+
+    def navigation_header
+      @navigation_header = NavigationHeader.new @browser
     end
 
   end
