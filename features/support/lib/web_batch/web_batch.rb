@@ -46,7 +46,7 @@ module Batch
     end
 
     def styles
-      PageStyles.new @browser
+      @page_styles ||= PageStyles.new @browser
     end
   end
 

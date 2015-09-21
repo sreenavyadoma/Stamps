@@ -1,17 +1,19 @@
-Then /^Expect General Styles are correct$/ do
-  # Inspect Font Family
-  font_family = batch.styles.general.font_family
-  font_family.downcase.should include "helvetica"
-  font_family.downcase.should include "arial"
-  font_family.downcase.should include "sans-serif"
-  font_family.downcase.should include "s60 sans"
+Then /^Expect Style General Fonts font-family to include (.*)$/ do |font|
+  batch.styles.general.fonts.font_family.downcase.should include font
+end
 
-  # Inspect font Size
-  font_size= batch.styles.general.font_size
-  font_size.downcase.should include "14px"
+Then /^Expect Style General Fonts Size to be (.*)$/ do |size|
+  batch.styles.general.fonts.font_size.downcase.should include size
+end
 
-  # Inspect Color
-  color = batch.styles.general.color
-  color.downcase.should include "black"
+Then /^Expect Style General Fonts Color to be (.*)$/ do |color|
+  batch.styles.general.fonts.color.downcase.should include color
+end
+
+Then /^Expect Style General Tooltip border width to be (\d+)$/ do |width|
+  batch.styles.general.tooltip.width
+end
+
+Then /^Expect Style General Tooltip border style to be (.*)$/ do |border_style|
 
 end
