@@ -7,5 +7,5 @@ Feature: I want Batch and Print Postage to use the same design conventions] B-01
 
     @styles @regression
   Scenario: Font and tool tips
-    Then Right-click on page and inspect element
+    Then Expect General Styles are correct
 

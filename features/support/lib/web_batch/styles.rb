@@ -2,28 +2,26 @@ module Batch
 
   class PageStyles < BatchObject
     def general
-      GeneralStyles.new @browser
+      @general ||= General.new @browser
     end
   end
 
-  class GeneralStyles < BatchObject
+  class General < BatchObject
     def font_family
-      styles = app_content.style "font-family"
-      log styles
-      styles
+      @browser.body.style "font-family"
     end
 
     def font_size
-      size = app_content.style "font-size"
-      log size
-      size
+      @browser.body.div.style "font-size"
     end
 
-    def app_content
-      div= @browser.div :id => "appContent"
-      present = browser_helper.present? div
-      log present
-      div
+    def color
+      body_color = @browser.body.style "color"
+      color_arr = body_color.scan /\d/
+      temp = ""
+      color_arr.each{|element| temp = temp + element}
+      temp
     end
+
   end
 end
