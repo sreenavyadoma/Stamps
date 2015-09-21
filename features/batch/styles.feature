@@ -13,5 +13,6 @@ Feature: Web Batch Styles
     Then Expect Style General Fonts font-family to include s60 sans
     Then Expect Style General Fonts Color to be 0001
     Then Expect Style General Fonts Size to be 14px
-    Then Expect Style General Tooltip border width to be 1
-    Then Expect Style General Tooltip border style to be solid
+    Then Expect Style General Tooltip Border width to be 1
+    Then Expect Style General Tooltip Border style to be solid
+    Then Expect Style General Tooltip Border padding to be 3px

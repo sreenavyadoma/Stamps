@@ -28,7 +28,21 @@ module Batch
 
     class Tooltip < BatchObject
       def width
-        @browser.link :css => "a[data-qtip*='Configure your settings']"
+        field = @browser.link :css => "a[data-qtip*='Configure your settings']"
+        browser_helper.wait_until_present field
+        field.style "border-width"
+      end
+      
+      def padding
+        field = @browser.link :css => "a[data-qtip*='Configure your settings']"
+        browser_helper.wait_until_present field
+        field.style "padding"
+      end
+
+      def border_style
+        field = @browser.link :css => "a[data-qtip*='Configure your settings']"
+        browser_helper.wait_until_present field
+        field.style "border-style"
       end
     end
 
@@ -37,7 +51,7 @@ module Batch
     end
 
     def tooltip
-      @fonts ||= Tooltip.new @browser
+      @tooltip ||= Tooltip.new @browser
     end
 
   end

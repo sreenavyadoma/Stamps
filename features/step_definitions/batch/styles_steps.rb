@@ -10,10 +10,14 @@ Then /^Expect Style General Fonts Color to be (.*)$/ do |color|
   batch.styles.general.fonts.color.downcase.should include color
 end
 
-Then /^Expect Style General Tooltip border width to be (\d+)$/ do |width|
-  batch.styles.general.tooltip.width
+Then /^Expect Style General Tooltip Border width to be (.*)$/ do |width|
+  batch.styles.general.tooltip.width.should eql "#{width}px"
 end
 
-Then /^Expect Style General Tooltip border style to be (.*)$/ do |border_style|
+Then /^Expect Style General Tooltip Border style to be (.*)$/ do |border_style|
+  batch.styles.general.tooltip.border_style.downcase.should eql border_style
+end
 
+Then /^Expect Style General Tooltip Border padding to be (.*)$/ do |border_style|
+  batch.styles.general.tooltip.padding.downcase.should include border_style
 end
