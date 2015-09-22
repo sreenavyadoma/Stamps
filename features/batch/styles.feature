@@ -17,3 +17,6 @@ Feature: Web Batch Styles
     Then Expect Style General Tooltip Border style to be solid
     Then Expect Style General Tooltip Border radius to be 3px
     Then Expect Style Navigation Header Height to be 50px
+    Then Expect Style Navigation Background Color to be rgba 33, 89, 168
+    Then Expect Style Navigation Links Color to be 255, 255, 255
+

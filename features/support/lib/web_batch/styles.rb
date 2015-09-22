@@ -8,11 +8,35 @@ module Batch
 
   class General < BatchObject
 
+    class Links < BatchObject
+      def color
+        field = @browser.link :css => "a[rel=WebBatch]"
+        browser_helper.wait_until_present field
+        style = field.style "color"
+        style
+      end
+
+      def padding
+
+      end
+
+      def background_color
+
+      end
+    end
+
     class NavigationHeader < BatchObject
       def height
         field = @browser.div :class => "navbar-inner"
         browser_helper.wait_until_present field
         field.style "height"
+      end
+
+      def background_color
+        field = @browser.div :class => "navbar-inner"
+        browser_helper.wait_until_present field
+        style = field.style "background-color"
+        style
       end
     end
 
@@ -64,6 +88,10 @@ module Batch
 
     def navigation_header
       @navigation_header = NavigationHeader.new @browser
+    end
+
+    def links
+      @links = Links.new @browser
     end
 
   end

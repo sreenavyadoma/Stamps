@@ -166,7 +166,7 @@ module Batch
 
     def browser_add_button
       field = Button.new @browser.span :text => 'Add'
-      log "Toolbar Add button is #{(field.present?)?'present':'NOT present'}"
+      log "Toolbar Add button is #{(browser_helper.present? field)?'present':'NOT present'}"
       field
     end
 

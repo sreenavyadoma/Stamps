@@ -94,12 +94,12 @@ module Batch
 
     def sign_in *args
       grid = Grid.new @browser
-      navigation = self.navigation_bar
+      navigation = Navigation.new @browser
       welcome_modal = WelcomeModal.new @browser
       welcome_orders_page = WelcomeOrdersPage.new @browser
       plugin_issue = ErrorStampsPluginIssue.new @browser
 
-      toolbar = self.toolbar
+      toolbar = Toolbar.new @browser
       case args.count
         when 0
           username = log_param "username", ENV["USR"]
@@ -156,7 +156,7 @@ module Batch
             end
           end
 
-          break if toolbar.present? || grid.present?
+          break if toolbar.present? #|| grid.present?
 
           begin
             navigation.orders
@@ -165,11 +165,11 @@ module Batch
           end
 
           grid.wait_until_present
-          break if toolbar.present? || grid.present?
+          break if toolbar.present? #|| grid.present?
 
           load_url
-        rescue
-          #ignore
+        rescue Exception => e
+          log e
         end
       end
 

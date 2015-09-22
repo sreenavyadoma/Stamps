@@ -9,11 +9,11 @@ module Batch
   class BatchPage < BatchObject
     public
     def navigation_bar
-      Navigation.new(@browser)
+      Navigation.new @browser
     end
 
     def toolbar
-      Toolbar.new(@browser)
+      Toolbar.new @browser
     end
   end
 
