@@ -318,9 +318,9 @@ module Stamps
       end
 
       def click_while_present
-        5.times{
+        20.times{
           safe_click
-          sleep 1
+          sleep 2
           break unless present?
         }
       end
@@ -610,8 +610,6 @@ module Stamps
           #ignore
         end
       end
-
-
 
       def click *args
         case args.length
