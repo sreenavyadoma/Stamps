@@ -88,13 +88,11 @@ module Batch
       username_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:username_loc])
       password_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:password_loc])
       sign_in_button = Button.new @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
-
       grid = Grid.new @browser
       navigation = Navigation.new @browser
       welcome_modal = WelcomeModal.new @browser
       welcome_orders_page = WelcomeOrdersPage.new @browser
       plugin_issue = ErrorStampsPluginIssue.new @browser
-
       toolbar = Toolbar.new @browser
 
       case args[0]
