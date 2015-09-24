@@ -82,8 +82,6 @@ module Batch
       @browser.div :id => "sdc-printpostagewindow-shipdate-trigger-picker"
     end
 
-    public
-
     def pick_date day
       date_picker = PrintWindowDatePicker.new(@browser)
       5.times{
@@ -449,8 +447,6 @@ module Batch
       present = browser_helper.present? td
       td
     end
-
-    public
 
     def date day
       date = date_td day

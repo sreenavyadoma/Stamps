@@ -56,7 +56,7 @@ module Batch
     end
   end
 
-  class LoginPage < BatchPage
+  class LoginPage < BatchObject
     private
     LOGIN_FIELDS ||= {
         :sign_in_link_loc => {:id => 'signInButton'},
@@ -73,11 +73,6 @@ module Batch
     def verify_page
       page_title
     end
-
-    def sign_in_button
-
-    end
-
     def load_url
       url = "http://#{Batch.url_prefix}.stamps.com/webbatch/"
       @browser.goto url
@@ -122,12 +117,12 @@ module Batch
             password_textbox.set password
             sign_in_button.click_while_present
 
-            sleep(1)
+            break if toolbar.present? #|| grid.present?
 
             begin
-              navigation.orders
-            rescue
-              #ignroe
+              navigation.orders.click
+            rescue Exception => e
+              log e
             end
 
             if welcome_modal.present?
@@ -149,9 +144,9 @@ module Batch
           break if toolbar.present? #|| grid.present?
 
           begin
-            navigation.orders
-          rescue
-            #ignroe
+            navigation.orders.click
+          rescue Exception => e
+            log e
           end
 
           grid.wait_until_present

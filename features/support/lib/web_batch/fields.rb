@@ -6,17 +6,6 @@ module Batch
     end
   end
 
-  class BatchPage < BatchObject
-    public
-    def navigation_bar
-      Navigation.new @browser
-    end
-
-    def toolbar
-      Toolbar.new @browser
-    end
-  end
-
   class BatchHelper
     include Singleton
     include DataMagic

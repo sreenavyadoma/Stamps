@@ -4,10 +4,10 @@
   Background:
     Given I am signed in as a batch shipper ie
 
-  @print_sample @print @regression
+  @print_sample @print_sample @regression
   Scenario:  B-01625 Print Sample - Parcel Select Large Package
 
-    @print @regression
+    @print_sample @regression
     Scenario:
     And I Add a new order
     Then Set Ship From to default
@@ -17,7 +17,7 @@
     Then Print Sample
 
 
-    @print @regression
+    @print_sample @regression
     Scenario:
     And I Add a new order
     Then Set Ship From to default
@@ -27,7 +27,7 @@
     Then Print Sample
 
 
-    @print
+    @print_sample
     Scenario:
     And I Add a new order
     Then Set Ship From to default
@@ -37,7 +37,7 @@
     Then Print Sample
 
 
-    @print @regression
+    @print_sample @regression
     Scenario:
     And I Add a new order
     Then Set Ship From to default
@@ -47,7 +47,7 @@
     Then Print Sample
 
 
-    @print @regression
+    @print_sample @regression
     Scenario:
     And I Add a new order
     Then Set Ship From to default
