@@ -548,11 +548,11 @@ module Batch
     end
 
     def pounds_qtip_error
-      pounds_textbox.attribute('data-errorqtip')
+      pounds_textbox.attribute_value('data-errorqtip')
     end
 
     def ounces_qtip_error
-      ounces_textbox.attribute('data-errorqtip')
+      ounces_textbox.attribute_value('data-errorqtip')
     end
 
     def ounces_max_value
@@ -564,11 +564,11 @@ module Batch
     end
 
     def service_default_text
-      service_textbox.attribute("placeholder")
+      service_textbox.attribute_value("placeholder")
     end
 
     def country
-      country_textbox.attribute('value')
+      country_textbox.attribute_value('value')
     end
 
     def click_auto_suggest_name index

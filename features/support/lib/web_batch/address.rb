@@ -240,7 +240,7 @@ module Batch
 
     def row_checked?(row)
       field = @browser.table :css => "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
-      value = browser_helper.attribute field, "class"
+      value = browser_helper.attribute_value field, "class"
       checked = value.include? "selected"
       log "Row #{row} selected? #{checked}"
       checked
@@ -447,7 +447,7 @@ module Batch
       3.times do
         begin
           rox_input.click
-          checked = rox_input.attribute("checked")
+          checked = rox_input.attribute_value("checked")
           rox_input.attribute("checked").include? "checked"
           if checked
             accept_button.click

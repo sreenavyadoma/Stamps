@@ -68,7 +68,7 @@ module Stamps
         value = ""
         begin
           5.times{
-            value = field.attribute(attribute)
+            value = field.attribute_value(attribute)
             break unless value.length < 1
           }
         rescue
@@ -160,7 +160,7 @@ module Stamps
           #ignore
         end
         text = field.text
-        value = field.attribute('value')
+        value = field.attribute_value('value')
         begin
           return text if text.size > 0
         rescue
@@ -276,8 +276,8 @@ module Stamps
         BrowserHelper.instance
       end
 
-      def attribute name
-        browser_helper.attribute @field, name
+      def attribute_value name
+        browser_helper.attribute_value @field, name
       end
 
       def style property
@@ -347,7 +347,7 @@ module Stamps
       end
 
       def checked?
-        attrib_val = browser_helper.attribute @verify_field, @attribute
+        attrib_val = browser_helper.attribute_value @verify_field, @attribute
         checked = attrib_val.include? @attrib_value_check
         log "Checkbox checked? #{checked}"
         checked
@@ -487,7 +487,7 @@ module Stamps
       def attribute_value field, attribute
           5.times{
             begin
-              @attribute_field_value = field.attribute(attribute)
+              @attribute_field_value = field.attribute_value(attribute)
               return @attribute_field_value unless @attribute_field_value.length < 1
             rescue => e
               log "Attribute: #{attribute}, Field:  #{field}. #{e}"
@@ -580,7 +580,7 @@ module Stamps
           #ignore
         end
         text = field.text
-        value = field.attribute 'value'
+        value = field.attribute_value 'value'
         begin
           return text if text.size > 0
         rescue

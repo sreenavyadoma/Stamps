@@ -138,11 +138,11 @@ module Batch
 
     def label_selected? div
       8.times{
-        selected = browser_helper.attribute(div, 'class').include? 'selected'
+        selected = browser_helper.attribute_value(div, 'class').include? 'selected'
         log "Label selected?  #{(selected)? 'Yes':'No'}"
         break if selected
       }
-      browser_helper.attribute(div, 'class').include? 'singleLabelChooser-selected'
+      browser_helper.attribute_value(div, 'class').include? 'singleLabelChooser-selected'
     end
 
     def default_label_selected?
