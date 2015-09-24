@@ -247,7 +247,7 @@ module Batch
     end
   end
 
-  class ErrorInstallPlugin < BatchPage
+  class ErrorInstallPlugin < BatchObject
     private
 
     def error_message_label

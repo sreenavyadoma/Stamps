@@ -45,20 +45,11 @@ When /^Open Print Modal$/ do
 end
 
 When /^Print$/ do
-  if @print_window.nil? || !@print_window.present?
-    step 'Open Print Modal'
-  end
-  log "Print Window is Nil?  #{@print_window.nil?}"
-
-  if @print_window.nil?
-    @printing_error =  true
-  else
-    @printing_error = @print_window.print
-  end
+  @printing_error = batch.toolbar.print.print
 end
 
 Then /^Close Print Window$/ do
-  @print_window.close unless @print_window.nil?
+  batch.toolbar.print.close
 end
 
 Then /^Click Print Modal - Print button$/ do

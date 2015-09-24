@@ -4,16 +4,15 @@ Feature: Printing
   Background:
     Given I am signed in as a batch shipper ie
 
-  @print @regression
+  @print @print1 @regression
   Scenario:  Print Priority Mail Package
-    Given I am signed in as a batch shipper
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Service to Priority Mail Package
     Then Print
 
-  @print @regression
+  @print @print_test @regression
   Scenario:  B-01624 Print Priority Mail Express Medium Flat Rate Box
     And I Add a new order
     Then Set Ship From to default
@@ -22,7 +21,7 @@ Feature: Printing
     Then Set Service to Priority Mail Express Medium Flat Rate Box
     Then Print
 
-  @print @regression
+  @print @print_test @regression
   Scenario:  Print Priority Mail Express Package
     And I Add a new order
     Then Set Ship From to default

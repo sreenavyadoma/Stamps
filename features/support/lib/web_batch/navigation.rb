@@ -35,13 +35,13 @@ module Batch
     end
 
     def orders_link
-      @browser.link :css => "a[rel=WebBatch]"
+
     end
 
     public
 
     def orders
-      browser_helper.click orders_link, 'orders'
+      Link.new @browser.link :css => "a[rel=WebBatch]"
     end
 
     def select_buy_more

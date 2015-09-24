@@ -1,6 +1,14 @@
 module Batch
 
-  class WebBatch < BatchPage
+  class WebBatch < BatchObject
+
+    def navigation_bar
+      @navigation_bar ||= Navigation.new @browser
+    end
+
+    def toolbar
+      @toolbar ||= Toolbar.new @browser
+    end
 
     def visit *args
       if args.length == 1
@@ -14,7 +22,7 @@ module Batch
     end
 
     def sign_in *args
-      LoginPage.new(@browser).sign_in args
+      @sign_in ||= LoginPage.new(@browser).sign_in args
     end
 
     def awaiting_shipment

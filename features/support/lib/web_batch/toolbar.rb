@@ -214,7 +214,8 @@ module Batch
     end
 
     def print
-      open_print_window PrintWindow.new @browser
+      @print_window ||= PrintWindow.new @browser
+      open_print_window @print_window
     end
 
     def wait_until_present

@@ -1,5 +1,5 @@
 module Batch
-  class MultiOrder < BatchPage
+  class MultiOrder < BatchObject
     private
     def order_count_label
       @browser.ps(:css => 'b').last
