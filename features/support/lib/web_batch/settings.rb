@@ -185,7 +185,7 @@ module Batch
 
     def box_checked?(box_row)
 
-      checkbox_status_array[box_row].attribute_value("class").include? 'x-form-cb-checked'
+      checkbox_status_array[box_row].attribute("class").include? 'x-form-cb-checked'
 
       #@browser.div(:css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(#{box_row})>div>div>div>div>div").attribute_value("class").include? 'x-form-cb-checked'
 

@@ -206,7 +206,7 @@ module Batch
     end
 
     def total_weight_error
-      qtip_error = total_weight.attribute_value "data-errorqtip"
+      qtip_error = total_weight.attribute "data-errorqtip"
       log "Total Weight data error: #{qtip_error}"
       qtip_error
     end
@@ -239,7 +239,7 @@ module Batch
 
     def verify_i_agree_checked
       div = @browser.div :css => "div[id^=checkboxfield][style^=right]"
-      attribute_value = browser_helper.attribute_value div
+      attribute_value = browser_helper.attribute div
       checked = attribute_value.include? "checked"
       log "I agree is #{(checked)? 'checked' : 'unchecked'}"
       checked
