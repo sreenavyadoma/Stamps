@@ -189,6 +189,10 @@ module Batch
 
     private
 
+    def address_textbox
+      Textbox.new @browser.textarea :name => 'FreeFormAddress'
+    end
+
     def service_textbox
       @browser.text_field :css => "input[componentid^=servicedroplist]"
     end
@@ -244,6 +248,16 @@ module Batch
 
     def total_label
       @browser.label(:text => 'Total').parent.labels.last
+    end
+
+    #Auto Suggest Elements
+
+    def auto_suggest_name_array
+      @browser.divs :css => 'div[class*=main-title]'
+    end
+
+    def auto_suggest_location_array
+      @browser.divs :css => 'div[class*=sub-title]'
     end
 
     public
@@ -556,6 +570,31 @@ module Batch
     def country
       country_textbox.attribute_value('value')
     end
+
+    def click_auto_suggest_name index
+      browser_helper.click auto_suggest_name_array[index.to_i-1]
+    end
+
+    def get_address_text
+      browser_helper.text address_textbox
+    end
+
+    def get_email_text
+      browser_helper.text email
+    end
+
+    def get_phone_text
+      browser_helper.text phone
+    end
+
+    def get_auto_suggest_name index
+      auto_suggest_name_array[index.to_i-1].text
+    end
+
+    def get_auto_suggest_location index
+      auto_suggest_location_array[index.to_i-1].text
+    end
+
 
   end #SingleOrderEdit Module
 end

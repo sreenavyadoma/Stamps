@@ -44,6 +44,56 @@ Given /^Set Ship-To to international address$/ do |table|
   step "Set International Ship-To Email to #{email}"
 end
 
+Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
+  @single_order_form = batch.single_order_form
+  @international_ship_to = @single_order_form.international
+
+  case ship_to_field.downcase
+    when "name"
+      actual = @international_ship_to.name.text
+      log_expectation_eql "Name", value, actual
+      actual.should eql value
+    when "company"
+      actual = @international_ship_to.company.text
+      log_expectation_eql "Company", value, actual
+      actual.should eql value
+    when "address 1"
+      actual = @international_ship_to.address_1.text
+      log_expectation_eql "Address 1", value, actual
+      actual.should eql value
+      sleep 5
+    when "address 2"
+      actual = @international_ship_to.address_2.text
+      log_expectation_eql "Address 2", value, actual
+      actual.should eql value    when "city"
+    when "province"
+      actual = @international_ship_to.province.text
+      log_expectation_eql "Province", value, actual
+      actual.should eql value    when "city"
+    when "postal code"
+      actual = @international_ship_to.postal_code.text
+      log_expectation_eql "Postal Code", value, actual
+      actual.should eql value
+    when "phone"
+      actual = @international_ship_to.phone.text
+      log_expectation_eql "Phone", value, actual
+      actual.should eql value
+    when "email"
+      actual = @international_ship_to.email.text
+      log_expectation_eql "Email", value, actual
+      actual.should eql value
+    when "country"
+      actual = @international_ship_to.country.text
+      if actual[-1] == ' '
+        actual = actual.chomp(' ')
+      end
+      log_expectation_eql "Country", value, actual
+      actual.should eql value
+    else
+      raise "Illegal Argument Exception.  #{ship_to_field} is not a valid Ship-To field"
+  end
+end
+
 Then /^Set International Ship-To ([\w \d]+) to (.*)/ do |ship_to_field, value |
   if @international_ship_to.nil?
     raise "Illegal State Exception.  @international_shipping is nil.  Set Ship-To Country first before populating international address fields"
