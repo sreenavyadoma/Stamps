@@ -115,6 +115,8 @@ module Batch
     end
 
     def open_print_window window
+      return window if window.present?
+
       browser_helper.click browser_print_button, "print"
 
       order_grid = Grid.new @browser
