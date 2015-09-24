@@ -17,7 +17,13 @@ Then /^Select entry (.*)$/ do |entry|
 end
 
 Then /^Expect Domestic Address field displays (.*)$/ do |value|
-  sleep 2
+  5.times{
+  begin
+    actual =  batch.single_order_form.get_address_text
+    actual_stripped = actual.gsub(/\n/,", ")
+    break if actual_stripped == value
+    sleep 2
+  end}
   actual =  batch.single_order_form.get_address_text
   actual_stripped = actual.gsub(/\n/,", ")
   log_expectation_eql "Address text", value, actual_stripped
