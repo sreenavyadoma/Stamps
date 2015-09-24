@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want to be able to use auto suggest to fill out address forms [B-01607]
 
   Background:
-    Given I am signed in as a batch shipper gc/autosuggest/password1
+    Given I am signed in as a batch shipper autosuggest/password1
 
   @auto_suggest @regression
   Scenario: Select Domestic Address
