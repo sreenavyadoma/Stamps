@@ -2,7 +2,7 @@
   Feature: Print Sample
 
   Background:
-    Given I am signed in as a batch shipper ie
+    Given I am signed in as a batch shipper ff
 
   @print_sample @print_sample @regression
   Scenario:  B-01625 Print Sample - Parcel Select Large Package

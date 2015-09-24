@@ -2,7 +2,7 @@
 Feature:  Printing Multiple Orders
 
   Background:
-    Given I am signed in as a batch shipper ie
+    Given I am signed in as a batch shipper ff
 
   @print_window @print @regression
   Scenario:  Printing

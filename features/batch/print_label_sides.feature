@@ -2,7 +2,7 @@
 Feature: Print Label Position
 
   Background:
-    Given I am signed in as a batch shipper ie
+    Given I am signed in as a batch shipper ff
 
   @print_labels @print @regression
   Scenario:  B-01633 Change the starting label position I will print from - Print Left Side
