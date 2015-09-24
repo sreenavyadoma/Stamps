@@ -5,4 +5,4 @@
     Given I am signed in as a batch shipper
 
   Scenario: Font and tool tips
-    * Expect General Styles are correct
+    * Expect Style for General Font font-family to include

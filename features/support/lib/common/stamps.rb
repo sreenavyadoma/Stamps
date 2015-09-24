@@ -41,6 +41,11 @@ module Stamps
         driver = Watir::Browser.new :ie
         browser_name = 'Internet Explorer'
 
+      elsif Stamps.browser.firefox?
+        system "taskkill /im firefox.exe /f"
+        driver = Watir::Browser.new :firefox, :profile => "selenium"
+        browser_name = 'Mozilla Firefox'
+
       elsif Stamps.browser.chrome?
         system "taskkill /im chrome.exe /f"
 
@@ -57,10 +62,6 @@ module Stamps
         driver = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
         browser_name = 'Google Chrome'
 
-      elsif Stamps.browser.firefox?
-        system "taskkill /im firefox.exe /f"
-        driver = Watir::Browser.new :firefox, :profile => "selenium"
-        browser_name = 'Mozilla Firefox'
       else
         driver = Watir::Browser.new :ie
         browser_name = 'Internet Explorer'

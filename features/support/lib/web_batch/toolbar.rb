@@ -166,7 +166,7 @@ module Batch
 
     def browser_add_button
       field = Button.new @browser.span :text => 'Add'
-      log "Toolbar Add button is #{(field.present?)?'present':'NOT present'}"
+      log "Toolbar Add button is #{(browser_helper.present? field)?'present':'NOT present'}"
       field
     end
 
@@ -180,13 +180,12 @@ module Batch
           log "#{count} Single Order Form present?  #{single_order_form.present?}"
           single_order_form.wait_until_present
           sleep 1
-          break if single_order_form.present?
+          return single_order_form if single_order_form.present?
         rescue
           #ignore
         end
       end
       raise "Unable to I Add a new orders!" unless single_order_form.present?
-      single_order_form
     end
 
     def print_expecting_error *args
