@@ -94,10 +94,8 @@ Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_
   end
 end
 
-Then /^Set International Ship-To ([\w \d]+) to (.*)/ do |ship_to_field, value |
-  if @international_ship_to.nil?
-    raise "Illegal State Exception.  @international_shipping is nil.  Set Ship-To Country first before populating international address fields"
-  end
+Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, value |
+  @international_ship_to = @single_order_form.international
 
   case ship_to_field.downcase
     when "name"
