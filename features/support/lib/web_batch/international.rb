@@ -41,5 +41,9 @@ module Batch
       Textbox.new (@browser.text_fields :name => "Email").last
     end
 
+    def country
+      Textbox.new (@browser.text_fields :name => "CountryCode").last
+    end
+
   end
 end
