@@ -14,7 +14,7 @@ module Batch
     end
 
     def filter_panel_border
-      @browser.div :css => 'div[id*=filterpanel][class*=x-splitter]'
+      @browser.div :css => 'div[id*=filterpanel][class*=x-splitter-vertical]'
     end
 
     def filter_panel_border_arrow
@@ -104,7 +104,7 @@ module Batch
     end
 
     def is_filter_panel_present
-      sleep 5
+      sleep 2
       browser_helper.present? filter_panel
     end
 
