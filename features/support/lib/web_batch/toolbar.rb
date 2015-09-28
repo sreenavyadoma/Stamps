@@ -102,7 +102,7 @@ module Batch
   class Toolbar < BatchObject
 
     def browser_settings_button
-      Button.new @browser.span :css => 'span[class*=sdc-icon-settings]'
+      Button.new (@browser.span :css => "span[class*=sdc-icon-settings]")
     end
 
     def browser_print_button
@@ -123,6 +123,7 @@ module Batch
       checked_rows_cache = order_grid.cache_checked_rows
 
       usps_terms = UspsTerms.new @browser
+
       if usps_terms.present?
         usps_terms.dont_show_this_again true
         usps_terms.i_agree.click_while_present
