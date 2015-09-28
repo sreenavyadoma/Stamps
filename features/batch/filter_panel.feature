@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want to be able to filter orders by status [B-01621]
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in as a batch shipper gc/auto39/password1
 
   @filters @regression
   Scenario: User Views Filter Panel Default
@@ -22,7 +22,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And Expect system changes the panel arrow so that it is pointing to the left direction
 
 
-    Then Double click on the Filters panel border
+    Then Click on the Filters panel border arrow
     Then Expect system closes Filters panel
     And Expect system shows name of Awaiting Shipment filter in closed panel
     Then Expect system shows an arrow above the Order Status filter name
@@ -52,7 +52,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     And I Add a new order
     Then Set Ship From to default
-    Then Set Ship-To address to James Test, 600 Front St Apt 232, San Diego CA 92101
+    Then Set Ship-To address to San
     And Click Ship-To Less link
     Then Set Service to Priority Mail Express Medium Flat Rate Box
 

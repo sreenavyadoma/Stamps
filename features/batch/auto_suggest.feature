@@ -102,7 +102,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Sign out
 
 
-  @auto_suggest @regression
+
   Scenario: Select International Address
 
     When I Add a new order
