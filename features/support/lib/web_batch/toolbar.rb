@@ -114,7 +114,7 @@ module Batch
       xbutton
     end
 
-    def open_print_window window
+    def open_window window
       return window if window.present?
 
       browser_helper.click browser_print_button, "print"
@@ -193,7 +193,7 @@ module Batch
 
     def print_expecting_error *args
       error_window = OrderErrors.new(@browser)
-      open_print_window error_window
+      open_window error_window
       case args.length
         when 0
           error_window
@@ -213,12 +213,12 @@ module Batch
     end
 
     def print_invalid_address
-      open_print_window InvalidAddressError.new(@browser)
+      open_window InvalidAddressError.new(@browser)
     end
 
-    def print
+    def print_modal
       @print_window ||= PrintWindow.new @browser
-      open_print_window @print_window
+      open_window @print_window
     end
 
     def wait_until_present

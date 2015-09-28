@@ -28,8 +28,10 @@ module Batch
       print_options *args
     end
 
-    def printing_on print_on
-
+    def print_media
+      drop_down = @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
+      input = @browser.text_field :css => "input[name^=printmediadroplist]"
+      Dropdown.new @browser, drop_down, "li", input
     end
 
     def left_label_div
@@ -115,7 +117,7 @@ module Batch
       label_selected? left_label_div
     end
 
-    def print
+    def print_modal
       5.times {
         begin
           sleep(1)
@@ -130,7 +132,7 @@ module Batch
     end
 
     def print_expecting_rating_error
-      print
+      print_modal
       RatingError.new(@browser).wait_until_present
     end
 
