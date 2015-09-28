@@ -471,11 +471,37 @@ module Batch
     end
 
     def less_dropdown
-      @browser.span :text => 'Less'
+      self.click_item_label
+      spans = @browser.spans :text => 'Less'
+      if spans.length == 2
+        if browser_helper.present? spans[0]
+          span = spans[0]
+        elsif browser_helper.present? spans[1]
+          span = spans[1]
+        else
+          span = spans{0}
+        end
+        # for domestic
+      else
+        span = spans{0}
+      end
+      Button.new span
     end
 
     def expand_ship_to
-      textbox = Textbox.new @browser.textarea :name => 'FreeFormAddress'
+      inputs = @browser.inputs :name => "Phone"
+      if inputs.length == 2
+        if browser_helper.present? inputs[0]
+          textbox = inputs[0]
+        elsif browser_helper.present? inputs[1]
+          textbox = inputs[1]
+        else
+          textbox = inputs{0}
+        end
+        # for domestic
+      else
+        textbox = inputs{0}
+      end
       dd = browser_ship_to_dd_button
       5.times {
         break if textbox.present?
