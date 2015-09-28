@@ -408,25 +408,46 @@ module Stamps
       end
 
       def select selection
+        3.times{
+          expose_selection_field selection
+          input_text = browser_helper.text @input
+          break if input_text.include? selection
+        }
+      end
+
+      def selection_field selection
         case selection
           when String
             case @selection_field_type
               when "li"
-                @selection_item = @browser.li :text => selection
+                return @browser.li :text => selection
               else
                 raise "Unsupported HTML drop-down selection tag #{@selection_field_type}"
             end
           else
-            @selection_item = selection
+            return selection
         end
+      end
 
-        2.times{
+      def expose_selection_field selection
+        @selection_field = selection_field selection
+        3.times{
           browser_helper.click @drop_down, "drop-down"
-          log "Selection is present? #{browser_helper.present? @selection_item}"
-          browser_helper.click @selection_item if browser_helper.present? @selection_item
-          input_text = browser_helper.text @input
-          break if input_text.include? selection
+          log "Selection is present? #{browser_helper.present? @selection_field}"
+          return @selection_field if browser_helper.present? @selection_field
         }
+      end
+
+      def selection operation, selection
+        case operation.downcase
+          when :field
+            return Label.new (expose_selection_field selection)
+          when :tooltip
+            selection_field = expose_selection_field selection
+            return browser_helper.attribute_value selection_field, "data-qtip"
+          else
+
+        end
       end
     end
 
