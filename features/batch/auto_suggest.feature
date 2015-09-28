@@ -18,6 +18,8 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Select entry 2
 
+
+    Then Set Pounds to 0
     And Expect Domestic Address field displays Sandy Jones, 1970 E. Grand Ave Ste 200, El Segundo, CA 90245-5018
 
     #Matching last name
@@ -28,10 +30,11 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 3
 
     Then Select entry 3
-
+    Then Set Pounds to 0
     And Expect Domestic Address field displays Mark Sanchez, 1970 E. Grand Ave Ste. 330, El Segundo, CA 90245-5038
 
     #Matching City
+
 
     Then Set Ship-To address to San
 
@@ -39,7 +42,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     And Expect Auto Suggest location shows San Diego, CA, United States for entry 1
 
     Then Select entry 1
-
+    Then Set Pounds to 0
     And Expect Domestic Address field displays James Jones, 600 Front St Apt 220, San Diego, CA 92101-6733
     Then Expect Domestic Phone field displays 5885559999
     Then Expect Domestic Email field displays autosuggest@stamps.com
@@ -52,7 +55,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest location shows El Segundo, CA, United States for entry 4
 
     Then Select entry 4
-
+    Then Set Pounds to 0
     And Expect Domestic Address field displays Albert Test, Santos Marketing, 1970 E. Grand Ave Ste 330, El Segundo, CA 90245-5038
 
     #Matching Zip Code
@@ -74,7 +77,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest location shows Lubbock, TX, United States for entry 1
 
     Then Select entry 1
-
+    Then Set Pounds to 0
     And Expect Domestic Address field displays Fred Davidson, 5912 83rd St, Lubbock, TX 79424-3608
 
     #Matching address2
@@ -85,7 +88,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 1
 
     Then Select entry 1
-
+    Then Set Pounds to 0
     And Expect Domestic Address field displays Mark Sanchez, 1970 E. Grand Ave Ste. 330, El Segundo, CA 90245-5038
 
     #Matching country
@@ -96,13 +99,13 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     And Expect Auto Suggest location shows San Diego, CA, United States for entry 3
 
     Then Select entry 3
-
+    Then Set Pounds to 0
     And Expect Domestic Address field displays James Jones, 600 Front St Apt 220, San Diego, CA 92101-6733
 
     Then Sign out
 
 
-
+  @auto_suggest @regression
   Scenario: Select International Address
 
     When I Add a new order
