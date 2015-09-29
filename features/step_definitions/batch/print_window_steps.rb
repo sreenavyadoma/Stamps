@@ -46,19 +46,21 @@ end
 
 Then /^Select Print Media \"(.*)\"$/ do |print_media|
   @print_window = batch.toolbar.print_modal
-
-  field = @print_window.print_media.selection :field, print_media
-  log field.present?
-
-  @print_window.print_media.selection :tooltip, print_media
   @print_window.print_media.select print_media
+end
+
+Then /^Expect Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, expected_value|
+  @print_window = batch.toolbar.print_modal
+  actual_value = @print_window.print_media.selection :tooltip, print_media
+  log "Expect Print Media \"#{print_media}\" tooltip to include \"#{expected_value}\" - Test #{(actual_value.include? expected_value)?"Passed":"Failed"}"
+  actual_value.should include expected_value
 end
 
 When /^Print$/ do
   @printing_error = batch.toolbar.print_modal.print
 end
 
-Then /^Close Print Window$/ do
+Then /^Close Print Modal$/ do
   batch.toolbar.print_modal.close
 end
 
