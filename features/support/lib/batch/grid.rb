@@ -63,12 +63,12 @@ module Batch
     def column_number name
       if Batch.grid_columns.nil?
         Batch.grid_columns Hash.new
-        Batch.grid_column_fields @browser.spans :css => "span[id^=gridcolumn][class=x-column-header-text]"
+        Batch.grid_column_fields @browser.spans :css => "div[componentid^=gridcolumn]"
         log "Number of Grid Columns is #{Batch.grid_column_fields.size}"
         Batch.grid_column_fields.each_with_index { |field, index|
           begin
             @browser.execute_script('arguments[0].scrollIntoView();', field)
-            log "Column #{name} - scrollIntoView(): #{browser_helper.present? field}"
+            log "#{name} : Column #{index}"
           rescue
             log "Unable to focus on #{column}, row #{row}}"
           end
@@ -94,7 +94,8 @@ module Batch
 
     def row_number order_id
       row = 1
-      css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_number(GRID_COLUMNS[:order_id])})>div"
+      column = column_number(GRID_COLUMNS[:order_id])
+      css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column})>div"
       log "Order ID: #{order_id} CSS: #{css}"
       fields = @browser.divs :css => css
       fields.each_with_index { |div, index|
