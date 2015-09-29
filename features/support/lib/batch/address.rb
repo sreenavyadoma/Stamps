@@ -309,7 +309,7 @@ module Batch
     end
 
     def state=(state)
-      browser_helper.drop_down @browser, state_dd_button, "li", state_field, state
+      browser_helper.drop_down @browser, state_dd_button, :li, state_field, state
     end
 
     def zip=(code)

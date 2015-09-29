@@ -88,9 +88,8 @@ module Batch
       #browser, drop_down_button, selection_field_type, drop_down_input
       buttons = @browser.divs :css => "div[id^=combo-][id$=trigger-picker]"
       drop_down_button = buttons.first
-      selection_field_type = "li"
       drop_down_input = @browser.text_field :css => "input[name^=combo]"
-      Dropdown.new @browser, drop_down_button, selection_field_type, drop_down_input
+      Dropdown.new @browser, drop_down_button, :li, drop_down_input
     end
 
   end
