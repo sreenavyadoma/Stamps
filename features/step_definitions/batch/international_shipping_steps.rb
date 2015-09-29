@@ -314,7 +314,7 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
       log "Custom Info Actual Total Weight(Oz): #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
       browser_value.should eql value
 
-    when "total weight data error"
+    when "total weight dev error"
       browser_value = @customs_form.total_weight_error
       browser_value.should include value
     else

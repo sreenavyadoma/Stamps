@@ -206,7 +206,7 @@ module Batch
     end
 
     def ship_from_default_selection
-      @browser.div :css => 'div[data-recordindex=\'0\']'
+      @browser.div :css => 'div[dev-recordindex=\'0\']'
     end
 
     def height_textbox
@@ -214,11 +214,11 @@ module Batch
     end
 
     def country_textbox
-      @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div>input'
+      @browser.div :css => 'div[dev-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div>input'
     end
 
     def country_dropdown
-      @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div:nth-child(2)'
+      @browser.div :css => 'div[dev-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div:nth-child(2)'
     end
 
     def service_postcard_field
@@ -574,11 +574,11 @@ module Batch
     end
 
     def pounds_qtip_error
-      pounds_textbox.attribute_value('data-errorqtip')
+      pounds_textbox.attribute_value('dev-errorqtip')
     end
 
     def ounces_qtip_error
-      ounces_textbox.attribute_value('data-errorqtip')
+      ounces_textbox.attribute_value('dev-errorqtip')
     end
 
     def ounces_max_value

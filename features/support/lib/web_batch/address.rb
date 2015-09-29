@@ -239,7 +239,7 @@ module Batch
     end
 
     def row_checked?(row)
-      field = @browser.table :css => "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
+      field = @browser.table :css => "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[dev-recordindex='#{row.to_i-1}']"
       value = browser_helper.attribute_value field, "class"
       checked = value.include? "selected"
       log "Row #{row} selected? #{checked}"

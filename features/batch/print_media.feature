@@ -9,7 +9,7 @@ Feature: Print Media
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
 

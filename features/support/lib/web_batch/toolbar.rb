@@ -17,7 +17,7 @@ module Batch
     end
 
     def page_number
-      field = @browser.text_field :css => "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
+      field = @browser.text_field :css => "div[id^=pagingtoolbar][dev-ref=innerCt]>div>div[id^=numberfield]>div[dev-ref=bodyEl]>div>div:nth-child(1)>input"
       text_box = Textbox.new field
       log text_box.present?
       text_box
@@ -31,7 +31,7 @@ module Batch
     end
 
     def first_page_disabled
-      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      field = @browser.a  :css => "div[id^=pagingtoolbar][dev-ref=targetEl]>[class*=x-btn-disabled]"
       label = Label.new field
       log label.disabled?
       label.disabled?
@@ -45,7 +45,7 @@ module Batch
     end
 
     def previous_page_disabled
-      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      field = @browser.a  :css => "div[id^=pagingtoolbar][dev-ref=targetEl]>[class*=x-btn-disabled]"
       label = Label.new field
       log label.disabled?
       label.disabled?
@@ -66,7 +66,7 @@ module Batch
     end
 
     def last_page_disabled
-      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      field = @browser.a  :css => "div[id^=pagingtoolbar][dev-ref=targetEl]>[class*=x-btn-disabled]"
       label = Label.new field
       log label.present?
       label

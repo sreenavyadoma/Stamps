@@ -146,7 +146,7 @@ module Batch
     private
 
     def cost_label
-      @browser.td :css => "tr[data-qtip*='#{@selection}']>td:nth-child(3)"
+      @browser.td :css => "tr[dev-qtip*='#{@selection}']>td:nth-child(3)"
     end
 
     def single_order_form_item_label
@@ -162,7 +162,7 @@ module Batch
     end
 
     def service
-      @browser.td :css => "tr[data-qtip*='#{@selection}']>td:nth-child(2)"
+      @browser.td :css => "tr[dev-qtip*='#{@selection}']>td:nth-child(2)"
     end
   end
 

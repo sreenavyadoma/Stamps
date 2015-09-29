@@ -445,7 +445,7 @@ module Stamps
             return Label.new (expose_selection_field selection)
           when :tooltip
             selection_field = expose_selection_field selection
-            return browser_helper.attribute_value selection_field, "data-qtip"
+            return browser_helper.attribute_value selection_field, "dev-qtip"
           else
 
         end
