@@ -14,8 +14,8 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Expect printed Order ID does not exist in Awaiting Shipment tab
     Then Expect printed Order ID exists in Shipped tab
 
-  #@filter3
-  #Scenario: Print 3 orders
+  @filter3
+  Scenario: Print 3 orders
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
@@ -24,7 +24,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     And I Add a second order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Service to Priority Mail Package
+    Then Set Service to First-Class Mail Large Envelope/Flat
 
     And I Add a third order
     Then Set Ship From to default

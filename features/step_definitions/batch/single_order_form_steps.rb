@@ -107,7 +107,7 @@ When /^Set Height to (\d*)$/ do |value|
   end unless value.length == 0
 end
 
-And /^Set Service to (.*)$/ do |value|
+And /^Set Service to \"(.*)\"$/ do |value|
   batch.single_order_form.service log_param "Service", value
 end
 

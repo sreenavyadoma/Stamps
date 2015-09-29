@@ -27,18 +27,18 @@ module Batch
 
     def awaiting_shipment
       #todo-elie here are your steps;
-      Filters.new(@browser).filter("Awaiting Shipment")
+      Filters.new(@browser).filter "Awaiting Shipment"
       Grid.new @browser
     end
 
     def shipped
       #todo-elie here are your steps;
-      Filters.new(@browser).filter("Shipped")
+      Filters.new(@browser).filter "Shipped"
       Grid.new @browser
     end
 
     def filters_panel
-      Filters.new(@browser)
+      Filters.new @browser
     end
 
     def multi_order

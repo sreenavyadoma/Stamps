@@ -17,7 +17,7 @@ Feature: Add Missing Field Validation
     Then Set International Ship-To postal code to "random"
     Then Set International Ship-To email to "random"
     Then Set International Ship-To phone to ""
-    Then Expect Single Order Form phone text box data error tooltip to be The ship to phone number is a required field
+    Then Expect Single Order Form phone text box data error tooltip to be "The ship to phone number is a required field"
 
   @validate_email
   Scenario: Add Missing Validation Logic for Domestic Email
@@ -25,7 +25,7 @@ Feature: Add Missing Field Validation
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Email to "@@"
-    Then Expect Single Order Form email text box data error tooltip to be Please enter a valid email address
+    Then Expect Single Order Form email text box data error tooltip to be "Please enter a valid email address"
 
   #Scenario: Add Missing Validation Logic for International Email
     And I Add a new order

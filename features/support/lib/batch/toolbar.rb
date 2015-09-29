@@ -17,7 +17,7 @@ module Batch
     end
 
     def page_number
-      field = @browser.text_field :css => "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
+      field = @browser.text_field :css => "div[id^=pagingtoolbar][dev-ref=innerCt]>div>div[id^=numberfield]>div[dev-ref=bodyEl]>div>div:nth-child(1)>input"
       text_box = Textbox.new field
       log text_box.present?
       text_box
@@ -31,7 +31,7 @@ module Batch
     end
 
     def first_page_disabled
-      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      field = @browser.a  :css => "div[id^=pagingtoolbar][dev-ref=targetEl]>[class*=x-btn-disabled]"
       label = Label.new field
       log label.disabled?
       label.disabled?
@@ -45,7 +45,7 @@ module Batch
     end
 
     def previous_page_disabled
-      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      field = @browser.a  :css => "div[id^=pagingtoolbar][dev-ref=targetEl]>[class*=x-btn-disabled]"
       label = Label.new field
       log label.disabled?
       label.disabled?
@@ -66,7 +66,7 @@ module Batch
     end
 
     def last_page_disabled
-      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      field = @browser.a  :css => "div[id^=pagingtoolbar][dev-ref=targetEl]>[class*=x-btn-disabled]"
       label = Label.new field
       log label.present?
       label
@@ -114,7 +114,7 @@ module Batch
       xbutton
     end
 
-    def open_print_window window
+    def open_window window
       return window if window.present?
 
       browser_helper.click browser_print_button, "print"
@@ -193,7 +193,7 @@ module Batch
 
     def print_expecting_error *args
       error_window = OrderErrors.new(@browser)
-      open_print_window error_window
+      open_window error_window
       case args.length
         when 0
           error_window
@@ -213,12 +213,12 @@ module Batch
     end
 
     def print_invalid_address
-      open_print_window InvalidAddressError.new(@browser)
+      open_window InvalidAddressError.new(@browser)
     end
 
-    def print
+    def print_modal
       @print_window ||= PrintWindow.new @browser
-      open_print_window @print_window
+      open_window @print_window
     end
 
     def wait_until_present

@@ -206,8 +206,8 @@ module Batch
     end
 
     def total_weight_error
-      qtip_error = total_weight.attribute_value "data-errorqtip"
-      log "Total Weight data error: #{qtip_error}"
+      qtip_error = total_weight.attribute_value "dev-errorqtip"
+      log "Total Weight dev error: #{qtip_error}"
       qtip_error
     end
 

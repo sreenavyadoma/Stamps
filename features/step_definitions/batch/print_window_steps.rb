@@ -41,15 +41,25 @@ end
 
 When /^Open Print Modal$/ do
   log "Open Print Modal"
-  @print_window = batch.toolbar.print
+  @print_window = batch.toolbar.print_modal
+end
+
+Then /^Select Print Media \"(.*)\"$/ do |print_media|
+  @print_window = batch.toolbar.print_modal
+
+  field = @print_window.print_media.selection :field, print_media
+  log field.present?
+
+  @print_window.print_media.selection :tooltip, print_media
+  @print_window.print_media.select print_media
 end
 
 When /^Print$/ do
-  @printing_error = batch.toolbar.print.print
+  @printing_error = batch.toolbar.print_modal.print
 end
 
 Then /^Close Print Window$/ do
-  batch.toolbar.print.close
+  batch.toolbar.print_modal.close
 end
 
 Then /^Click Print Modal - Print button$/ do
@@ -83,7 +93,7 @@ Then /^Print expecting invalid address error$/ do
 end
 
 When /^Print expecting rating error$/ do
-  error_window = batch.toolbar.print.print_expecting_rating_error
+  error_window = batch.toolbar.print_modal.print_expecting_rating_error
   actual_error_message = error_window.error_message
   error_window.close
   expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
@@ -97,7 +107,7 @@ When /^Print expecting some orders can not be printed$/ do
 end
 
 Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  #print_window = batch.toolbar.print
+  #print_window = batch.toolbar.print_modal
   if @print_window.nil? || !@print_window.present?
     raise "Print Window is not open."
   end
@@ -112,19 +122,19 @@ Then /^Print raises a Printing Error/ do
 end
 
 Then /^Print Sample on (.*)$/ do |printer|
-  batch.toolbar.print(printer).print_sample
+  batch.toolbar.print_modal(printer).print_sample
 end
 
 Then /^Print Sample on (.*) raises a PrintingError$/ do |printer|
-  expect{batch.toolbar.print(printer).print_sample_expecting_error}.to raise_error(PrintingError)
+  expect{batch.toolbar.print_modal(printer).print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Print Sample$/ do
-  batch.toolbar.print.print_sample
+  batch.toolbar.print_modal.print_sample
 end
 
 Then /^Print Sample raises a Printing Error/ do
-  expect{batch.toolbar.print.print_sample_expecting_error}.to raise_error(PrintingError)
+  expect{batch.toolbar.print_modal.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Expect (.*) pane selected$/ do |value|
