@@ -88,7 +88,6 @@ Then /^Print expecting (.*) selected orders have errors and cannot be printed. T
   actual_error_message.should eql "#{error_message} selected orders have errors and cannot be printed.\nTo print the remaining orders, click Continue."
 end
 
-
 Then /^Print expecting invalid address error$/ do
   error_window = batch.toolbar.print_invalid_address
   error_window.close
