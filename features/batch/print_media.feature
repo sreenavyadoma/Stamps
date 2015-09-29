@@ -32,5 +32,46 @@ Feature: Print Media
     Then Expect Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"" tooltip to include "Use these letter-sized label sheets with two 4 ¼” x 6 ¾” labels per sheet to print postage, addresses, tracking barcode, and customs form."
     Then Expect Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"" tooltip to include "Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. or international destination."
 
-
     Then Close Print Modal
+
+  Scenario:  As a batch shipper, I want to be able to change my print media
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to "Priority Mail Package"
+    Then Open Print Modal
+    Then Select Print Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
+    Then Click Print Modal - Print button
+
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to "Priority Mail Package"
+    Then Open Print Modal
+    Then Select Print Media "Roll - 4" x 6" Shipping Label"
+    Then Click Print Modal - Print button
+
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to "Priority Mail Package"
+    Then Open Print Modal
+    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Click Print Modal - Print button
+
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to "Priority Mail Package"
+    Then Open Print Modal
+    Then Select Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Click Print Modal - Print button
+
+    And I Add a new order
+    Then Set Ship From to default
+    Then Set Ship-To address to random
+    Then Set Service to "Priority Mail Package"
+    Then Open Print Modal
+    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Click Print Modal - Print button
+
