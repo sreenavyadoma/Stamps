@@ -167,7 +167,7 @@ module Batch
       @browser.label :text => 'Item:'
     end
 
-    def click_item_label
+    def click_form
       3.times {
         begin
           item_label.click
@@ -203,10 +203,6 @@ module Batch
 
     def ship_from_dropdown
       @browser.div :css => "div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]"
-    end
-
-    def ship_from_default_selection
-      @browser.div :css => 'div[dev-recordindex=\'0\']'
     end
 
     def height_textbox
@@ -302,11 +298,11 @@ module Batch
     end
 
     def browser_ship_to_dd_button
-      Link.new(@browser.link :css => "div[id=shiptoview-addressCollapsed-targetEl]>a")
+      Link.new @browser.link :css => "div[id=shiptoview-addressCollapsed-targetEl]>a"
     end
 
     def add_item
-      add_item = Link.new(@browser.span :text => "Add Item")
+      add_item = Link.new @browser.span :text => "Add Item"
       log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
       add_item
 
@@ -420,14 +416,14 @@ module Batch
     end
 
     def email
-      click_item_label
+      click_form
       textbox = Textbox.new @browser.text_field :name => 'Email'
       expand_ship_to
       textbox
     end
 
     def phone
-      click_item_label
+      click_form
       textbox = Textbox.new @browser.text_field :name => 'Phone'
       expand_ship_to
       textbox
@@ -441,37 +437,37 @@ module Batch
     end
 
     def oz
-      click_item_label
+      click_form
       Textbox.new @browser.text_field :name => 'WeightOz'
     end
 
     def lbs
-      click_item_label
+      click_form
       Textbox.new @browser.text_field :name => 'WeightLbs'
     end
 
     def insured_value
-      click_item_label
+      click_form
       Textbox.new @browser.text_field :name => "InsuranceAmount"
     end
 
     def length
-      click_item_label
+      click_form
       Textbox.new @browser.text_field :name => 'Length'
     end
 
     def width
-      click_item_label
+      click_form
       Textbox.new @browser.text_field :name => 'Width'
     end
 
     def height
-      click_item_label
+      click_form
       Textbox.new @browser.text_field :name => 'Height'
     end
 
     def less_dropdown
-      self.click_item_label
+      self.click_form
       spans = @browser.spans :text => 'Less'
       if spans.length == 2
         if browser_helper.present? spans[0]
@@ -538,10 +534,11 @@ module Batch
 
     def ship_from selection
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+      ship_from_default_selection = Label.new @browser.div :css => "div[data-recordindex='0']"
       if selection.downcase.eql? "default"
         ship_from_dropdown.when_present.click
         ship_from_default_selection.click
-        click_item_label
+        click_form
       else
         5.times {
           begin
@@ -551,7 +548,7 @@ module Batch
           rescue
             #ignore
           end
-          click_item_label
+          click_form
         }
         @manage_shipping_adddress
       end
