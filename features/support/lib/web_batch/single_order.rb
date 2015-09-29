@@ -302,11 +302,11 @@ module Batch
     end
 
     def browser_ship_to_dd_button
-      Button.new @browser.link :css => 'div[id=shiptoview-addressCollapsed-targetEl]>a'
+      Link.new(@browser.link :css => "div[id=shiptoview-addressCollapsed-targetEl]>a")
     end
 
     def add_item
-      add_item = Button.new @browser.span :text => "Add Item"
+      add_item = Link.new(@browser.span :text => "Add Item")
       log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
       add_item
 

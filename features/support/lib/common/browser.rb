@@ -408,8 +408,9 @@ module Stamps
       end
 
       def select selection
-        3.times{
-          expose_selection_field selection
+        5.times{
+          selection_field = expose_selection_field selection
+          browser_helper.safe_click selection_field
           input_text = browser_helper.text @input
           break if input_text.include? selection
         }
