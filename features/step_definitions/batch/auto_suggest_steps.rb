@@ -12,7 +12,7 @@ Then /^Expect Auto Suggest location shows (.*) for entry (.*)$/ do |value, entry
 
 end
 
-Then /^Select entry (.*)$/ do |entry|
+Then /^Select entry (.*) in the auto suggest drop down list$/ do |entry|
   batch.single_order_form.click_auto_suggest_name entry
 end
 
