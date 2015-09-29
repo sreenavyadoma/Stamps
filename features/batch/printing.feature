@@ -9,7 +9,7 @@ Feature: Printing
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Print
 
   @print @print_test @regression
@@ -18,7 +18,7 @@ Feature: Printing
     Then Set Ship From to default
     Then Set Ship-To address to random
     And Click Ship-To Less link
-    Then Set Service to Priority Mail Express Medium Flat Rate Box
+    Then Set Service to "Priority Mail Express Medium Flat Rate Box"
     Then Print
 
   @print @print_test @regression
@@ -27,7 +27,7 @@ Feature: Printing
     Then Set Ship From to default
     Then Set Ship-To address to random
     And Click Ship-To Less link
-    Then Set Service to Priority Mail Express Package
+    Then Set Service to "Priority Mail Express Package"
     Then Print
 
   @print @regression
@@ -36,7 +36,7 @@ Feature: Printing
     Then Set Ship From to default
     Then Set Ship-To address to random
     And Click Ship-To Less link
-    Then Set Service to Priority Mail Flat Rate Envelope
+    Then Set Service to "Priority Mail Flat Rate Envelope"
     Then Print
 
   @print @regression
@@ -44,5 +44,5 @@ Feature: Printing
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Service to Priority Mail Regional Rate Box A
+    Then Set Service to "Priority Mail Regional Rate Box A"
     Then Print

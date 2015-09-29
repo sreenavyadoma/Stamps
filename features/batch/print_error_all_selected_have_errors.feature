@@ -27,7 +27,7 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
     And Click Ship-To Less link
     Then Set Pounds to 1
     Then Set Ounces to 1
-    Then Set Service to Priority Mail Regional Rate Box A
+    Then Set Service to "Priority Mail Regional Rate Box A"
     And Edit row 1 on the order grid
     And Edit row 2 on the order grid
     Then Print expecting 1 of 2 selected orders have errors and cannot be printed. To print the remaining orders, click Continue.

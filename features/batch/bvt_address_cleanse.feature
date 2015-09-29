@@ -12,7 +12,7 @@ Feature:  BVT Address Cleansing
       | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect Order Grid - Zip to be 94102
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Expect Order Grid - Recipient to be Euan Davidson
     Then Expect Order Grid - Company to be Company Name
     Then Expect Order Grid - Address to be 1350 Market Street

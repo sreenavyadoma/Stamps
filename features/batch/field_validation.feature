@@ -41,7 +41,7 @@ Feature: Add Missing Field Validation
     Then Set Ship-To address to
       | name      | company    | street_address     | city    | state | zip        | country       | phone           |  email            |
       | Joe Shmoe | Seven Zone | 1925 Florence Ave  | Kingman | AZ    | 86401-4617 | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then Set Service to Priority Mail Large/Thick Envelope
+    Then Set Service to "Priority Mail Large/Thick Envelope"
     Then Set Length to 0
     Then Set Width to 1
     Then Set Height to 1
@@ -52,7 +52,7 @@ Feature: Add Missing Field Validation
     Then Set Ship-To address to
       | name      | company    | street_address     | city    | state | zip        | country       | phone           |  email            |
       | Joe Shmoe | Seven Zone | 1925 Florence Ave  | Kingman | AZ    | 86401-4617 | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Set Length to 0
     Then Set Width to 1
     Then Set Height to 1
@@ -65,7 +65,7 @@ Feature: Add Missing Field Validation
     Then Set Ship-To address to
       | name      | company    | street_address     | city    | state | zip        | country       | phone           |  email            |
       | Joe Shmoe | Seven Zone | 1925 Florence Ave  | Kingman | AZ    | 86401-4617 | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then Set Service to Priority Mail Large/Thick Envelope
+    Then Set Service to "Priority Mail Large/Thick Envelope"
     Then Set Length to 1
     Then Set Width to 0
     Then Set Height to 1
@@ -76,7 +76,7 @@ Feature: Add Missing Field Validation
     Then Set Ship-To address to
       | name      | company    | street_address     | city    | state | zip        | country       | phone           |  email            |
       | Joe Shmoe | Seven Zone | 1925 Florence Ave  | Kingman | AZ    | 86401-4617 | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Set Length to 1
     Then Set Width to 0
     Then Set Height to 1
@@ -89,7 +89,7 @@ Feature: Add Missing Field Validation
     Then Set Ship-To address to
       | name      | company    | street_address     | city    | state | zip        | country       | phone           |  email            |
       | Joe Shmoe | Seven Zone | 1925 Florence Ave  | Kingman | AZ    | 86401-4617 | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then Set Service to Priority Mail Large/Thick Envelope
+    Then Set Service to "Priority Mail Large/Thick Envelope"
     Then Set Length to 1
     Then Set Width to 1
     Then Set Height to 0
@@ -100,7 +100,7 @@ Feature: Add Missing Field Validation
     Then Set Ship-To address to
       | name      | company    | street_address     | city    | state | zip        | country       | phone           |  email            |
       | Joe Shmoe | Seven Zone | 1925 Florence Ave  | Kingman | AZ    | 86401-4617 | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Set Length to 1
     Then Set Width to 1
     Then Set Height to 0

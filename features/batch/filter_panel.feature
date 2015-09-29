@@ -54,7 +54,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     Then Set Ship From to default
     Then Set Ship-To address to San
     And Click Ship-To Less link
-    Then Set Service to Priority Mail Express Medium Flat Rate Box
+    Then Set Service to "Priority Mail Express Medium Flat Rate Box"
 
     Then Click on Awaiting Shipment Filter
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter

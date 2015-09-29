@@ -16,7 +16,7 @@ Feature: Printing total cost
     Then Set Ship-To address to random
     And Click Ship-To Less link
     Then Set Ounces to 1
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Set Insured Value to $10.00
     Then Set Tracking to Signature Required
     Then Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost

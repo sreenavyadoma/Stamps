@@ -147,7 +147,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     Then Set Customs Form I agree to true
     Then Close Customs Form
-    Then Set Service to First-Class Mail International Large Envelope
+    Then Set Service to "First-Class Mail International Large Envelope"
 
   @international_internal_transaction_2500 @international @regression
   Scenario: Customs Form - Internal Transaction # Required for total over $2500
@@ -161,7 +161,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ounces to 1
     Then Set Pounds to 1
     Then Add Item with Quantity 1, ID random, Description random
-    Then Set Service to First-Class Mail International Large Envelope
+    Then Set Service to "First-Class Mail International Large Envelope"
     And Open Customs Form
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be Required
@@ -212,7 +212,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
-    #Then Set Service to First-Class Mail International Large Envelope
+    #Then Set Service to "First-Class Mail International Large Envelope"
     And Open Customs Form
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form Package Contents = Commercial Sample
@@ -244,7 +244,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
-    #Then Set Service to First-Class Mail International Large Envelope
+    #Then Set Service to "First-Class Mail International Large Envelope"
     And Open Customs Form
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set Customs Form Package Contents = Commercial Sample
@@ -340,7 +340,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
-    #Then Set Service to First-Class Mail International Large Envelope
+    #Then Set Service to "First-Class Mail International Large Envelope"
     And Open Customs Form
     Then Expect Customs Form Internal Transaction # to be Not required
     Then Set Customs Form Package Contents = Commercial Sample
@@ -372,7 +372,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To address to
       | name   | company      | street_address | city | state | zip         | country       | phone  |  email |
       | random | Domestic APO | Unit 15324     | APO  | AP    | 96205-5324  | United States | random | random |
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Print
 
   @fpo_shipping @international @regression
@@ -383,7 +383,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | Uss Mason DDG 87  | FPO  | AE    | 09578  | United States | random | random |
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Print
 
   @dpo_shipping @international @regression
@@ -394,7 +394,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To address to
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | random | Domestic DPO | Unit 8400, Box 0000 | DPO  | AE    | 09498-9997 | United States | random | random |
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Print
 
   @non_domestic_shipping @international @regression
@@ -405,7 +405,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To address to
       | name   | company      | street_address | city | state | zip         | country       | phone  |  email |
       | random | Domestic APO | Unit 15324     | APO  | AP    | 96205-5324  | United States | random | random |
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Expect Single Order Form Customs Edit Form button is visible
     Then Expect Single Order Form Customs Restrictions button is hidden
     Then Print

@@ -8,7 +8,7 @@ Feature: Postage Balance
     Then Set Ship From to default
     Then Set Ship-To address to random
     And Click Ship-To Less link
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Set Insured Value to $10.00
     Then Set Tracking to USPS Tracking
     And Save Shipping Costs Data

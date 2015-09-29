@@ -19,5 +19,5 @@ Feature:  BVT International Shipping
     Then Set Customs Form More Info = BVT International Shipping
     Then Set Customs Form I agree to true
     Then Close Customs Form
-    Then Set Service to First-Class Mail International Large Envelope
+    Then Set Service to "First-Class Mail International Large Envelope"
     Then Sign out

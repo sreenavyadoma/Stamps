@@ -473,7 +473,7 @@ module Batch
           #ignore
         end
       }
-      single_order_form.less
+      single_order_form.hide_ship_to
       self
     end
   end

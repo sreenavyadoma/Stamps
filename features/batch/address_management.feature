@@ -17,5 +17,5 @@ Feature:  Address Management
     Then Set Ship From to default
     Then Set Ship-To address to random
     Then Set Phone to random
-    Then Set Service to Priority Mail Large Package
+    Then Set Service to "Priority Mail Large Package"
     And Sign out

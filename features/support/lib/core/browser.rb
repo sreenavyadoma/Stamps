@@ -432,7 +432,7 @@ module Stamps
 
       def expose_selection_field selection
         @selection_field = selection_field selection
-        3.times{
+        5.times{
           browser_helper.click @drop_down, "drop-down"
           log "Selection is present? #{browser_helper.present? @selection_field}"
           return @selection_field if browser_helper.present? @selection_field

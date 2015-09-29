@@ -9,12 +9,12 @@ Feature: Print Multiple Orders
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
 
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
 
     And Edit row 1 on the order grid
     And Edit row 2 on the order grid

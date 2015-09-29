@@ -159,10 +159,6 @@ module Batch
       browser_helper.present? order_id_label
     end
 
-    def less
-      browser_helper.click less_dropdown, "Less" if browser_helper.present?  less_dropdown
-    end
-
     def item_label
       @browser.label :text => 'Item:'
     end
@@ -295,10 +291,6 @@ module Batch
 
       raise "Single Order Form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
       Dropdown.new @browser, dd, "li", input
-    end
-
-    def browser_ship_to_dd_button
-      Link.new @browser.link :css => "div[id=shiptoview-addressCollapsed-targetEl]>a"
     end
 
     def add_item
@@ -466,42 +458,31 @@ module Batch
       Textbox.new @browser.text_field :name => 'Height'
     end
 
-    def less_dropdown
-      self.click_form
-      spans = @browser.spans :text => 'Less'
-      if spans.length == 2
-        if browser_helper.present? spans[0]
-          span = spans[0]
-        elsif browser_helper.present? spans[1]
-          span = spans[1]
-        else
-          span = spans{0}
-        end
-        # for domestic
-      else
-        span = spans{0}
+    def less_link
+      spans = @browser.spans :text => "Less"
+      less_button0 = Button.new spans[0]
+      less_button1 = Button.new spans[1]
+
+      if less_button0.present?
+        return less_button0
       end
-      Button.new span
+
+      if less_button1.present?
+        less_button1
+      end
+    end
+
+    def hide_ship_to
+      self.click_form
+      less_link.click_while_present
     end
 
     def expand_ship_to
-      inputs = @browser.inputs :name => "Phone"
-      if inputs.length == 2
-        if browser_helper.present? inputs[0]
-          textbox = inputs[0]
-        elsif browser_helper.present? inputs[1]
-          textbox = inputs[1]
-        else
-          textbox = inputs{0}
-        end
-        # for domestic
-      else
-        textbox = inputs{0}
-      end
-      dd = browser_ship_to_dd_button
+      ship_to_dd = Link.new @browser.link :css => "div[id=shiptoview-addressCollapsed-targetEl]>a"
+
       5.times {
-        break if textbox.present?
-        dd.safe_click
+        ship_to_dd.safe_click
+        break unless ship_to_dd.present?
       }
     end
 

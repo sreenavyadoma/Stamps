@@ -6,26 +6,26 @@ Feature: Examples
     Scenario:  Inline Rates
         And I Add a new order
         And Edit row 1 on the order grid
-        Then Set Service to Priority Mail Large/Thick Envelope
-        Then Set Service to Priority Mail Package
-        Then Set Service to Priority Mail Large Package
-        Then Set Service to Priority Mail Flat Rate Envelope
-        Then Set Service to Priority Mail Padded Flat Rate Envelope
-        Then Set Service to Priority Mail Legal Flat Rate Envelope
-        Then Set Service to Priority Mail Small Flat Rate Box
-        Then Set Service to Priority Mail Medium Flat Rate Box
-        Then Set Service to Priority Mail Large Flat Rate Box
-        Then Set Service to Priority Mail Regional Rate Box A
-        Then Set Service to Priority Mail Regional Rate Box B
-        Then Set Service to Priority Mail Regional Rate Box C
-        Then Set Service to Priority Mail Express Package
-        Then Set Service to Priority Mail Express Flat Rate Envelope
-        Then Set Service to Priority Mail Express Legal Flat Rate Envelope
-        Then Set Service to Priority Mail Express Medium Flat Rate Box
-        Then Set Service to Parcel Select Package
-        Then Set Service to Parcel Select Large Package
-        Then Set Service to Parcel Select Oversized Package
-        Then Set Service to Media Mail Package
+        Then Set Service to "Priority Mail Large/Thick Envelope"
+        Then Set Service to "Priority Mail Package"
+        Then Set Service to "Priority Mail Large Package"
+        Then Set Service to "Priority Mail Flat Rate Envelope"
+        Then Set Service to "Priority Mail Padded Flat Rate Envelope"
+        Then Set Service to "Priority Mail Legal Flat Rate Envelope"
+        Then Set Service to "Priority Mail Small Flat Rate Box"
+        Then Set Service to "Priority Mail Medium Flat Rate Box"
+        Then Set Service to "Priority Mail Large Flat Rate Box"
+        Then Set Service to "Priority Mail Regional Rate Box A"
+        Then Set Service to "Priority Mail Regional Rate Box B"
+        Then Set Service to "Priority Mail Regional Rate Box C"
+        Then Set Service to "Priority Mail Express Package"
+        Then Set Service to "Priority Mail Express Flat Rate Envelope"
+        Then Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+        Then Set Service to "Priority Mail Express Medium Flat Rate Box"
+        Then Set Service to "Parcel Select Package"
+        Then Set Service to "Parcel Select Large Package"
+        Then Set Service to "Parcel Select Oversized Package"
+        Then Set Service to "Media Mail Package"
 
         Then Set Pounds to 1
         Then Set Ounces to 1
@@ -122,7 +122,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Large/Thick Envelope
+        Then Set Service to "Priority Mail Large/Thick Envelope"
         Then Expect Ship-To address to be;
             | name                                | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Large/Thick Envelope  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -139,7 +139,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Package
+        Then Set Service to "Priority Mail Package"
         Then Expect Ship-To address to be;
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Package     | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -156,7 +156,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Large Package
+        Then Set Service to "Priority Mail Large Package"
         Then Expect Ship-To address to be;
             | name                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Large Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -173,7 +173,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Flat Rate Envelope
+        Then Set Service to "Priority Mail Flat Rate Envelope"
         Then Expect Ship-To address to be;
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -190,7 +190,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Padded Flat Rate Envelope
+        Then Set Service to "Priority Mail Padded Flat Rate Envelope"
         Then Expect Ship-To address to be;
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Padded Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -207,7 +207,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Legal Flat Rate Envelope
+        Then Set Service to "Priority Mail Legal Flat Rate Envelope"
         Then Expect Ship-To address to be;
             | name                                    | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Legal Flat Rate Envelope  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -224,7 +224,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Small Flat Rate Box
+        Then Set Service to "Priority Mail Small Flat Rate Box"
         Then Expect Ship-To address to be;
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Small Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -241,7 +241,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Medium Flat Rate Box
+        Then Set Service to "Priority Mail Medium Flat Rate Box"
         Then Expect Ship-To address to be;
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Medium Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -258,7 +258,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Large Flat Rate Box
+        Then Set Service to "Priority Mail Large Flat Rate Box"
         Then Expect Ship-To address to be;
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Large Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -275,7 +275,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Regional Rate Box A
+        Then Set Service to "Priority Mail Regional Rate Box A"
         Then Expect Ship-To address to be;
             | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Regional Rate Box A | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -292,7 +292,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Regional Rate Box B
+        Then Set Service to "Priority Mail Regional Rate Box B"
         Then Expect Ship-To address to be;
             | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Regional Rate Box B | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -309,7 +309,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Regional Rate Box C
+        Then Set Service to "Priority Mail Regional Rate Box C"
         Then Expect Ship-To address to be;
             | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Regional Rate Box C | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -326,7 +326,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Express Package
+        Then Set Service to "Priority Mail Express Package"
         Then Expect Ship-To address to be;
             | name                          | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Express Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -344,7 +344,7 @@ Feature: Examples
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
 
-        Then Set Service to Priority Mail Express Flat Rate Envelope
+        Then Set Service to "Priority Mail Express Flat Rate Envelope"
 
         Then Expect Ship-To address to be;
             | name                                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
@@ -362,7 +362,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Express Legal Flat Rate Envelope
+        Then Set Service to "Priority Mail Express Legal Flat Rate Envelope"
         Then Expect Ship-To address to be;
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Express Legal Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -379,7 +379,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Priority Mail Express Medium Flat Rate Box
+        Then Set Service to "Priority Mail Express Medium Flat Rate Box"
         Then Expect Ship-To address to be;
             | name                                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Express Medium Flat Rate Box  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -393,7 +393,7 @@ Feature: Examples
         Then Set Ship-To address to
             | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Parcel Select Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-        Then Set Service to Parcel Select Package
+        Then Set Service to "Parcel Select Package"
 
     Scenario: Parcel Select Large Package
         And I Add a new order
@@ -404,7 +404,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Parcel Select Large Package
+        Then Set Service to "Parcel Select Large Package"
         Then Expect Ship-To address to be;
             | name                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Parcel Select Large Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -421,7 +421,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Parcel Select Oversized Package
+        Then Set Service to "Parcel Select Oversized Package"
         Then Expect Ship-To address to be;
             | name                            | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Parcel Select Oversized Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
@@ -438,7 +438,7 @@ Feature: Examples
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Service to Media Mail Package
+        Then Set Service to "Media Mail Package"
         Then Expect Ship-To address to be;
             | name               | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Media Mail Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |

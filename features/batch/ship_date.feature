@@ -8,7 +8,7 @@ Feature:  B-01630 Ship Date
   Scenario:  Set Ship Date to today
     And I Add a new order
     Then Set Ship-To address to random
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     And Open Print Modal
     Then Set Ship Date Picker to 0 day(s) from today
     Then Expect Print Window Ship Date to be 0 day(s) from today
@@ -19,7 +19,7 @@ Feature:  B-01630 Ship Date
   Scenario:  Set Ship Date to 1 day from today
     And I Add a new order
     Then Set Ship-To address to random
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     And Open Print Modal
     Then Set Ship Date Picker to 1 day(s) from today
     Then Expect Print Window Ship Date to be 1 day(s) from today
@@ -30,7 +30,7 @@ Feature:  B-01630 Ship Date
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     And Open Print Modal
     Then Set Ship Date Picker to 2 day(s) from today
     Then Expect Print Window Ship Date to be 2 day(s) from today
@@ -42,7 +42,7 @@ Feature:  B-01630 Ship Date
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     And Open Print Modal
     Then Set Ship Date Picker to 3 day(s) from today
     Then Expect Print Window Ship Date to be 3 day(s) from today

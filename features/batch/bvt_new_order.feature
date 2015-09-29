@@ -15,7 +15,7 @@ Feature:  BVT Order Creation
     Then Set Width to 1
     Then Set Height to 1
     Then Set Insured Value to $1.00
-    Then Set Service to Priority Mail Package
+    Then Set Service to "Priority Mail Package"
     Then Expect Order Grid - Pounds to be 1
     Then Expect Order Grid - Ounces to be 1
     Then Expect Order Grid - Weight to be 1 lbs. 1 oz.

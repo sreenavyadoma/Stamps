@@ -67,7 +67,7 @@ end
 
 When /^Click Ship-To Less link$/ do
   log "Click Ship-To Less link..."
-  batch.single_order_form.less
+  batch.single_order_form.hide_ship_to
   log "done."
   #end_step step
 end
