@@ -16,7 +16,8 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Sandy Jones for entry 2
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 2
 
-    Then Select entry 2
+    Then Select entry 2 in the auto suggest drop down list
+
 
 
     Then Set Pounds to 0
@@ -29,7 +30,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Mark Sanchez for entry 3
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 3
 
-    Then Select entry 3
+    Then Select entry 3 in the auto suggest drop down list
     Then Set Pounds to 0
     And Expect Domestic Address field displays Mark Sanchez, 1970 E. Grand Ave Ste. 330, El Segundo, CA 90245-5038
 
@@ -41,7 +42,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows James Jones for entry 1
     And Expect Auto Suggest location shows San Diego, CA, United States for entry 1
 
-    Then Select entry 1
+    Then Select entry 1 in the auto suggest drop down list
     Then Set Pounds to 0
     And Expect Domestic Address field displays James Jones, 600 Front St Apt 220, San Diego, CA 92101-6733
     Then Expect Domestic Phone field displays 5885559999
@@ -54,7 +55,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Albert Test, Santos Marketing for entry 4
     Then Expect Auto Suggest location shows El Segundo, CA, United States for entry 4
 
-    Then Select entry 4
+    Then Select entry 4 in the auto suggest drop down list
     Then Set Pounds to 0
     And Expect Domestic Address field displays Albert Test, Santos Marketing, 1970 E. Grand Ave Ste 330, El Segundo, CA 90245-5038
 
@@ -65,7 +66,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Fred Davidson for entry 1
     Then Expect Auto Suggest location shows Lubbock, TX, United States for entry 1
 
-    Then Select entry 1
+    Then Select entry 1 in the auto suggest drop down list
 
     And Expect Domestic Address field displays Fred Davidson, 5912 83rd St, Lubbock, TX 79424-3608
 
@@ -76,7 +77,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Fred Davidson for entry 1
     Then Expect Auto Suggest location shows Lubbock, TX, United States for entry 1
 
-    Then Select entry 1
+    Then Select entry 1 in the auto suggest drop down list
     Then Set Pounds to 0
     And Expect Domestic Address field displays Fred Davidson, 5912 83rd St, Lubbock, TX 79424-3608
 
@@ -87,7 +88,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Mark Sanchez for entry 1
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 1
 
-    Then Select entry 1
+    Then Select entry 1 in the auto suggest drop down list
     Then Set Pounds to 0
     And Expect Domestic Address field displays Mark Sanchez, 1970 E. Grand Ave Ste. 330, El Segundo, CA 90245-5038
 
@@ -98,7 +99,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows James Jones for entry 3
     And Expect Auto Suggest location shows San Diego, CA, United States for entry 3
 
-    Then Select entry 3
+    Then Select entry 3 in the auto suggest drop down list
     Then Set Pounds to 0
     And Expect Domestic Address field displays James Jones, 600 Front St Apt 220, San Diego, CA 92101-6733
 
@@ -119,7 +120,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Jackie Frank for entry 1
     And Expect Auto Suggest location shows Juniper, Republic Of The Congo for entry 1
 
-    Then Select entry 1
+    Then Select entry 1 in the auto suggest drop down list
 
     Then Expect International Ship-To Country field displays Republic Of The Congo
     Then Expect International Ship-To Address 1 field displays 99021 Match Ln
@@ -134,7 +135,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Henry Franklin, Test Company for entry 2
     And Expect Auto Suggest location shows London, Test, Great Britain for entry 2
 
-    Then Select entry 2
+    Then Select entry 2 in the auto suggest drop down list
 
     Then Expect International Ship-To Country field displays Great Britain
     And Expect International Ship-To Address 1 field displays 12133 Monarchy Rd
@@ -151,7 +152,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Jackie Frank for entry 1
     And Expect Auto Suggest location shows Juniper, Republic Of The Congo for entry 1
 
-    Then Select entry 1
+    Then Select entry 1 in the auto suggest drop down list
 
     Then Expect International Ship-To Country field displays Republic Of The Congo
     Then Expect International Ship-To Address 1 field displays 99021 Match Ln
@@ -165,7 +166,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Henry Franklin, Test Company for entry 2
     And Expect Auto Suggest location shows London, Test, Great Britain for entry 2
 
-    Then Select entry 2
+    Then Select entry 2 in the auto suggest drop down list
 
     Then Expect International Ship-To Country field displays Great Britain
     And Expect International Ship-To Address 1 field displays 12133 Monarchy Rd
@@ -182,7 +183,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Jacque Snow for entry 3
     And Expect Auto Suggest location shows Toronto, ON, Canada for entry 3
 
-    Then Select entry 3
+    Then Select entry 3 in the auto suggest drop down list
 
     Then Expect International Ship-To Country field displays Canada
     And Expect International Ship-To Address 1 field displays 9902 Maple Rd
@@ -198,7 +199,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Jacque Snow for entry 1
     And Expect Auto Suggest location shows Toronto, ON, Canada for entry 1
 
-    Then Select entry 1
+    Then Select entry 1 in the auto suggest drop down list
 
     Then Expect International Ship-To Country field displays Canada
     And Expect International Ship-To Address 1 field displays 9902 Maple Rd
@@ -214,7 +215,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Expect Auto Suggest name shows Henry Franklin, Test Company for entry 1
     And Expect Auto Suggest location shows London, Test, Great Britain for entry 1
 
-    Then Select entry 1
+    Then Select entry 1 in the auto suggest drop down list
 
     Then Expect International Ship-To Country field displays Great Britain
     And Expect International Ship-To Address 1 field displays 12133 Monarchy Rd
