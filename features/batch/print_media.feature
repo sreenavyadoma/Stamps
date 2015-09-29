@@ -2,7 +2,7 @@
 Feature: Print Media
 
   Background:
-    Given I am signed in as a batch shipper ie/qacc/auto15/password1
+    Given I am signed in as a batch shipper ff/qacc/auto15/password1
 
   @print_media @regression
   Scenario:  As a batch shipper, I want to be able to change my print media
@@ -34,6 +34,7 @@ Feature: Print Media
 
     Then Close Print Modal
 
+  @print_media @print_media_1
   Scenario:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
     Then Set Ship From to default

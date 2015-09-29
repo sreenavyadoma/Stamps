@@ -145,8 +145,8 @@ module Batch
 
           begin
             navigation.orders.click
-          rescue Exception => e
-            log e
+          rescue
+            #ignore
           end
 
           grid.wait_until_present

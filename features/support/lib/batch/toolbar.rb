@@ -203,7 +203,7 @@ module Batch
     end
 
     def is_print_button_present
-      browser_helper.present? print_button
+      print_button.present?
     end
 
     def is_browser_print_button_present

@@ -387,7 +387,7 @@ module Batch
     end
 
     def print_button
-      @browser.span(:id => 'sdc-printwin-printbtn-btnInnerEl')
+      Button.new @browser.span :id => 'sdc-printwin-printbtn-btnInnerEl'
     end
   end
 

@@ -45,8 +45,7 @@ When /^Open Print Modal$/ do
 end
 
 Then /^Select Print Media \"(.*)\"$/ do |print_media|
-  @print_window = batch.toolbar.print_modal
-  @print_window.print_media.select print_media
+  batch.toolbar.print_modal.print_media.select print_media
 end
 
 Then /^Expect Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, expected_value|
@@ -68,7 +67,7 @@ Then /^Click Print Modal - Print button$/ do
   if @print_window.nil?
     @printing_error =  true
   else
-    @printing_error = @print_window.print
+    @printing_error = @print_window.print_button.click_while_present
   end
 end
 
