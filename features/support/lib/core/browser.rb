@@ -325,11 +325,11 @@ module Stamps
     end
 
     class Checkbox < ClickableField
-      def initialize checkbox_field, verify_field, attribute, attrib_value_check
+      def initialize checkbox_field, verify_field, attribute, checked_tester
         super checkbox_field
         @verify_field = verify_field
         @attribute = attribute
-        @attrib_value_check = attrib_value_check
+        @checked_tester = checked_tester
       end
 
       def check
@@ -347,10 +347,20 @@ module Stamps
       end
 
       def checked?
-        attrib_val = browser_helper.attribute_value @verify_field, @attribute
-        checked = attrib_val.include? @attrib_value_check
-        log "Checkbox checked? #{checked}"
-        checked
+        begin
+          attrib_val = browser_helper.attribute_value @verify_field, @attribute
+          if attrib_val == "true"
+            return true
+          elsif attrib_val == "false"
+            return false
+          else
+            checked = attrib_val.include? @checked_tester
+            log "Checkbox checked? #{checked}"
+            checked
+          end
+        rescue
+          false
+        end
       end
     end
 
@@ -442,7 +452,7 @@ module Stamps
       def expose_selection_field selection
         @selection_field = selection_field selection
         5.times{
-          browser_helper.click @drop_down, "drop-down"
+          browser_helper.safe_click @drop_down, "drop-down"
           log "Selection is present? #{browser_helper.present? @selection_field}"
           return @selection_field if browser_helper.present? @selection_field
         }
@@ -456,7 +466,7 @@ module Stamps
             selection_field = expose_selection_field selection
             return browser_helper.attribute_value selection_field, "data-qtip"
           else
-
+            #do nothing
         end
       end
     end

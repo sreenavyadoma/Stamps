@@ -442,22 +442,13 @@ module Batch
 
     def row=(number=0)
       row = number.to_i<=0?0:number.to_i-1
-      rox_input = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
-      accept_button = @browser.span :text => 'Accept'
-      3.times do
-        begin
-          rox_input.click
-          checked = rox_input.attribute_value("checked")
-          rox_input.attribute("checked").include? "checked"
-          if checked
-            accept_button.click
-            accept_button.wait_while_present
-            break
-          end
-        rescue
-          #ignore
-        end
-      end
+      checkbox_field = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
+
+      checkbox = Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
+      checkbox.check
+
+      accept_button = Button.new @browser.span :text => "Accept"
+      accept_button.click_while_present
     end
 
     def set(partial_address_hash)
