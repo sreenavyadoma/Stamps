@@ -1,4 +1,4 @@
-Given /^Expect Single Order Form (.+) text box data error tooltip to be (.+)$/ do |field, value|
+Given /^Expect Single Order Form (.+) text box data error tooltip to be \"(.+)\"$/ do |field, value|
   @international_ship_to = @single_order_form.international
   case field.downcase
     when "phone"

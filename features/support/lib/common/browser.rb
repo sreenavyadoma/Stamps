@@ -564,7 +564,11 @@ module Stamps
             #ignore
           end
           actual_value =  field_text(field)
-          break if (actual_value.include? text) || (text.include? actual_value)
+          begin
+            break if (actual_value.include? text) || (text.include? actual_value)
+          rescue Exception => e
+            #log e
+          end
         end
       end
 

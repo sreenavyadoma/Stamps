@@ -99,11 +99,16 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
 
   case ship_to_field.downcase
     when "name"
-      @international_ship_to.name.set ((value.downcase == "random")? test_helper.random_name : value)
+      name_textbox = @international_ship_to.name
+      name_textbox.set ((value.downcase == "random")? test_helper.random_name : value)
     when "company"
-      @international_ship_to.company.set ((value.downcase == "random")? test_helper.random_company_name : value)
+      company_textbox = @international_ship_to.company
+      company_textbox.send_keys :tab
+      company_textbox.set ((value.downcase == "random")? test_helper.random_company_name : value)
     when "address 1"
-      @international_ship_to.address_1.set value
+      address_1 = @international_ship_to.address_1
+      address_1.send_keys :tab
+      address_1.set value
     when "address 2"
       @international_ship_to.address_2.set ((value.downcase == "random")? test_helper.random_suite : value)
     when "city"
@@ -113,9 +118,13 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
     when "postal code"
       @international_ship_to.postal_code.set value
     when "phone"
-      @international_ship_to.phone.set ((value.downcase == "random")? test_helper.random_phone : value)
+      phone = @international_ship_to.phone
+      phone.send_keys :tab
+      phone.set ((value.downcase == "random")? test_helper.random_phone : value)
     when "email"
-      @international_ship_to.email.set ((value.downcase == "random")? test_helper.random_email : value)
+      email = @international_ship_to.email
+      email.send_keys :tab
+      email.set ((value.downcase == "random")? test_helper.random_email : value)
     else
       raise "Illegal Argument Exception.  #{ship_to_field} is not a valid Ship-To field"
   end
