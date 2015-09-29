@@ -33,15 +33,15 @@ Given /^Set Ship-To to international address$/ do |table|
   log "International Ship-To Email: #{email}"
 
   step "Set Ship-To country to #{country}"
-  step "Set International Ship-To Name to #{name}"
-  step "Set International Ship-To Company to #{company}"
-  step "Set International Ship-To Address 1 to #{street_address_1}"
-  step "Set International Ship-To Address 2 to #{street_address_2}"
-  step "Set International Ship-To City to #{city}"
-  step "Set International Ship-To Province to #{province}"
-  step "Set International Ship-To Postal Code to #{postal_code}"
-  step "Set International Ship-To Phone to #{phone}"
-  step "Set International Ship-To Email to #{email}"
+  step "Set International Ship-To Name to \"#{name}\""
+  step "Set International Ship-To Company to \"#{company}\""
+  step "Set International Ship-To Address 1 to \"#{street_address_1}\""
+  step "Set International Ship-To Address 2 to \"#{street_address_2}\""
+  step "Set International Ship-To City to \"#{city}\""
+  step "Set International Ship-To Province to \"#{province}\""
+  step "Set International Ship-To Postal Code to \"#{postal_code}\""
+  step "Set International Ship-To Phone to \"#{phone}\""
+  step "Set International Ship-To Email to \"#{email}\""
 end
 
 Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
