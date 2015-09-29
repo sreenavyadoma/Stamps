@@ -106,7 +106,7 @@ module Batch
       raise "Drop-down button is not present.  Check your CSS locator." unless drop_down.present?
       input = origin_country_input
       raise "Drop-down button is not present.  Check your CSS locator." unless input.present?
-      Dropdown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, drop_down, :li, input
     end
 
     def hs_tariff
@@ -150,7 +150,7 @@ module Batch
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
       input = pacakge_contents.field
       raise "ContentType is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, drop_down, :li, input
     end
 
     def pacakge_contents
@@ -162,7 +162,7 @@ module Batch
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
       input = @browser.text_field :name => "NonDeliveryOption"
       raise "NonDeliveryOption is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, drop_down, :li, input
     end
 
 
@@ -171,7 +171,7 @@ module Batch
       raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
       input = @browser.text_field :name => "isITNRequired"
       raise "isITNRequired is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, drop_down, :li, input
     end
 
     def more_info
@@ -206,7 +206,7 @@ module Batch
     end
 
     def total_weight_error
-      qtip_error = total_weight.attribute_value "dev-errorqtip"
+      qtip_error = total_weight.attribute_value "data-errorqtip"
       log "Total Weight dev error: #{qtip_error}"
       qtip_error
     end

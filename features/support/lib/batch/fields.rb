@@ -113,10 +113,8 @@ module Batch
       self
     end
 
-    public
-
     def select
-      browser_helper.click(drop_down, "ServiceDropDown")
+      browser_helper.click drop_down, "ServiceDropDown"
       5.times {
         begin
           browser_helper.click(drop_down, "ServiceDropDown") unless browser_helper.present?  service
@@ -143,10 +141,8 @@ module Batch
       @cost
     end
 
-    private
-
     def cost_label
-      @browser.td :css => "tr[dev-qtip*='#{@selection}']>td:nth-child(3)"
+      @browser.td :css => "tr[data-qtip*='#{@selection}']>td:nth-child(3)"
     end
 
     def single_order_form_item_label
@@ -162,7 +158,7 @@ module Batch
     end
 
     def service
-      @browser.td :css => "tr[dev-qtip*='#{@selection}']>td:nth-child(2)"
+      @browser.td :css => "tr[data-qtip*='#{@selection}']>td:nth-child(2)"
     end
   end
 

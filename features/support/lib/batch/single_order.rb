@@ -206,11 +206,11 @@ module Batch
     end
 
     def country_textbox
-      @browser.div :css => 'div[dev-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div>input'
+      @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div>input'
     end
 
     def country_dropdown
-      @browser.div :css => 'div[dev-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div:nth-child(2)'
+      @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div:nth-child(2)'
     end
 
     def service_postcard_field
@@ -290,7 +290,7 @@ module Batch
       end
 
       raise "Single Order Form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, dd, "li", input
+      Dropdown.new @browser, dd, :li, input
     end
 
     def add_item
@@ -307,9 +307,13 @@ module Batch
       line_item
     end
 
-    def service(selection)
-      log_param "Service Selection", selection
-      @service_cost = ServiceSelection.new(@browser, selection).select
+    def service service
+      log_param "Service Selection", service
+      dd = @browser.div :css => 'div[id^=servicedroplist-][id$=-trigger-picker]'
+      input = @browser.text_field :css => 'input[name^=servicedroplist-]'
+      service_dd = Dropdown.new @browser, dd, :li, input
+      selection_field = @browser.td :css => "tr[data-qtip*='#{service}']>td:nth-child(2)"
+      service_dd.select selection_field
     end
 
     def service_inline_cost
@@ -552,11 +556,11 @@ module Batch
     end
 
     def pounds_qtip_error
-      pounds_textbox.attribute_value('dev-errorqtip')
+      pounds_textbox.attribute_value('data-errorqtip')
     end
 
     def ounces_qtip_error
-      ounces_textbox.attribute_value('dev-errorqtip')
+      ounces_textbox.attribute_value('data-errorqtip')
     end
 
     def ounces_max_value

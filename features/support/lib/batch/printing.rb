@@ -31,7 +31,7 @@ module Batch
     def print_media
       drop_down = @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
       input = @browser.text_field :css => "input[name^=printmediadroplist]"
-      Dropdown.new @browser, drop_down, "li", input
+      Dropdown.new @browser, drop_down, :li, input
     end
 
     def left_label_div
@@ -394,7 +394,7 @@ module Batch
 
   class PrintWindowDatePicker < BatchObject
     def today_span
-      span = @browser.span :css => "div[id^=datepicker][dev-ref='footerEl']>a>span>span>span[class*=inner]"
+      span = @browser.span :css => "div[id^=datepicker][data-ref='footerEl']>a>span>span>span[class*=inner]"
       log "Today span present? #{browser_helper.present? span}"
       span
     end

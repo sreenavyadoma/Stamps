@@ -392,11 +392,11 @@ module Stamps
     end
 
     class Dropdown < BrowserObject
-      def initialize browser, drop_down_button, selection_field_type, drop_down_input
+      def initialize browser, dd, html_tag_symbol, input
         super browser
-        @drop_down = drop_down_button
-        @selection_field_type = selection_field_type.downcase
-        @input = drop_down_input
+        @drop_down = dd
+        @html_tag_symbol = html_tag_symbol
+        @input = input
       end
 
       def drop_down_caret
@@ -408,22 +408,31 @@ module Stamps
       end
 
       def select selection
-        5.times{
-          selection_field = expose_selection_field selection
-          browser_helper.safe_click selection_field
-          input_text = browser_helper.text @input
-          break if input_text.include? selection
-        }
+        case selection
+          when String
+            5.times{
+              selection_field = expose_selection_field selection
+              browser_helper.safe_click selection_field
+              input_text = text_box.text
+              break if input_text.include? selection
+            }
+          else
+            2.times {
+              selection_field = expose_selection_field selection
+              browser_helper.safe_click selection_field
+            }
+        end
       end
 
       def selection_field selection
         case selection
           when String
-            case @selection_field_type
-              when "li"
+            # Selection passed is String object.
+            case @html_tag_symbol
+              when :li
                 return @browser.li :text => selection
               else
-                raise "Unsupported HTML drop-down selection tag #{@selection_field_type}"
+                raise "Unsupported HTML drop-down selection tag #{@html_tag_symbol}"
             end
           else
             return selection
@@ -445,7 +454,7 @@ module Stamps
             return Label.new (expose_selection_field selection)
           when :tooltip
             selection_field = expose_selection_field selection
-            return browser_helper.attribute_value selection_field, "dev-qtip"
+            return browser_helper.attribute_value selection_field, "data-qtip"
           else
 
         end
