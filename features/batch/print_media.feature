@@ -9,6 +9,11 @@ Feature: Print Media
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
+    Then Set Pounds to 1
+    Then Set Ounces to 1
+    Then Set Width to 1
+    Then Set Height to 1
+    Then Set Length to 1
     Then Set Service to "Priority Mail Package"
     Then Open Print Modal
 
@@ -39,6 +44,11 @@ Feature: Print Media
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
+    Then Set Pounds to 1
+    Then Set Ounces to 1
+    Then Set Width to 1
+    Then Set Height to 1
+    Then Set Length to 1
     Then Set Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
@@ -47,6 +57,11 @@ Feature: Print Media
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
+    Then Set Pounds to 1
+    Then Set Ounces to 1
+    Then Set Width to 1
+    Then Set Height to 1
+    Then Set Length to 1
     Then Set Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Roll - 4" x 6" Shipping Label"
@@ -55,6 +70,11 @@ Feature: Print Media
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
+    Then Set Pounds to 1
+    Then Set Ounces to 1
+    Then Set Width to 1
+    Then Set Height to 1
+    Then Set Length to 1
     Then Set Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
@@ -63,6 +83,11 @@ Feature: Print Media
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
+    Then Set Pounds to 1
+    Then Set Ounces to 1
+    Then Set Width to 1
+    Then Set Height to 1
+    Then Set Length to 1
     Then Set Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
@@ -71,6 +96,11 @@ Feature: Print Media
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To address to random
+    Then Set Pounds to 1
+    Then Set Ounces to 1
+    Then Set Width to 1
+    Then Set Height to 1
+    Then Set Length to 1
     Then Set Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
