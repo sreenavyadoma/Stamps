@@ -112,19 +112,19 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
     when "address 2"
       address_2 = @international_ship_to.address_2
       address_2.send_keys :tab
-      @international_ship_to.address_2.set ((value.downcase == "random")? test_helper.random_suite : value)
+      @international_ship_to.address_2.set ((value.downcase == "random")? test_helper.random_name : value)
     when "city"
       city = @international_ship_to.city
       city.send_keys :tab
-      @international_ship_to.city.set ((value.downcase == "random")? test_helper.random_suite : value)
+      @international_ship_to.city.set ((value.downcase == "random")? test_helper.random_name : value)
     when "province"
       province = @international_ship_to.province
       province.send_keys :tab
-      @international_ship_to.province.set ((value.downcase == "random")? test_helper.random_suite : value)
+      @international_ship_to.province.set ((value.downcase == "random")? test_helper.random_name : value)
     when "postal code"
       postal_code = @international_ship_to.postal_code
       postal_code.send_keys :tab
-      @international_ship_to.postal_code.set ((value.downcase == "random")? test_helper.random_suite : value)
+      @international_ship_to.postal_code.set ((value.downcase == "random")? test_helper.random_name : value)
     when "phone"
       phone = @international_ship_to.phone
       phone.send_keys :tab
