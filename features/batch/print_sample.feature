@@ -10,19 +10,19 @@
     @print_sample @regression
     Scenario:
     And I Add a new order
-    Then Set Ship From to default
-    Then Set Ship-To address to random
-    Then Set Service to "Parcel Select Large Package"
-    And Click Ship-To Less link
+    Then Set single-order form Ship-From to default
+    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Service to "Parcel Select Large Package"
+    And Hide single-order form Ship-To fields
     Then Print Sample
 
 
     @print_sample @regression
     Scenario:
     And I Add a new order
-    Then Set Ship From to default
-    Then Set Ship-To address to random
-    Then Set Service to "Priority Mail Regional Rate Box A"
+    Then Set single-order form Ship-From to default
+    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Service to "Priority Mail Regional Rate Box A"
     And Open Print Modal
     Then Print Sample
 
@@ -30,30 +30,30 @@
     @print_sample
     Scenario:
     And I Add a new order
-    Then Set Ship From to default
-    Then Set Ship-To address to random
-    Then Set Service to "Priority Mail Express Medium Flat Rate Box"
-    And Click Ship-To Less link
+    Then Set single-order form Ship-From to default
+    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
+    And Hide single-order form Ship-To fields
     Then Print Sample
 
 
     @print_sample @regression
     Scenario:
     And I Add a new order
-    Then Set Ship From to default
-    Then Set Ship-To address to random
-    Then Set Service to "Priority Mail Express Package"
-    And Click Ship-To Less link
+    Then Set single-order form Ship-From to default
+    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Service to "Priority Mail Express Package"
+    And Hide single-order form Ship-To fields
     Then Print Sample
 
 
     @print_sample @regression
     Scenario:
     And I Add a new order
-    Then Set Ship From to default
-    Then Set Ship-To address to random
-    Then Set Service to "Priority Mail Flat Rate Envelope"
-    And Click Ship-To Less link
+    Then Set single-order form Ship-From to default
+    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Service to "Priority Mail Flat Rate Envelope"
+    And Hide single-order form Ship-To fields
     Then Print Sample
 
     And Sign out

@@ -186,13 +186,13 @@ Then /^Expect Single Order Form Customs (.+) button is (.+)/ do |button, expecta
   end
 end
 
-Given /^Open Customs Form$/ do
+Given /^Open customs form$/ do
   @customs_form = @single_order_form.customs.edit_form
 end
 
-Given /^Set Customs Form (.+) = (.+)$/ do |field, value|
+Given /^Set customs form (.+) = \"(.+)\"$/ do |field, value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  step "Open Customs Form" unless @customs_form.present?
+  step "Open customs form" unless @customs_form.present?
 
   case field.downcase
     #Package Contents
@@ -253,7 +253,7 @@ Given /^Delete Customs Form Item (\d+)$/ do |item_number|
   end
 end
 
-Given /^Set Customs Form I agree to (\w+)$/ do |agree_str|
+Given /^Set customs form I agree to (\w+)$/ do |agree_str|
   agree = agree_str.downcase == "true"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.i_agree agree
@@ -343,7 +343,7 @@ Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
   end
 end
 
-Given /^Close Customs Form$/ do
+Given /^Close customs form$/ do
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.close
 end

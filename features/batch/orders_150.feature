@@ -10,237 +10,237 @@ Feature: 150 orders
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 1
-    * Set Service to "First-Class Mail Large Envelope/Flat"
-    * Set Insured Value to $15.00
-    * Set Tracking to None
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 1
+    * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
+    * Set single-order form Insured Value to $15.00
+    * Set single-order form Tracking to None
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 2
-    * Set Service to "First-Class Mail Package/Thick Envelope"
-    * Set Insured Value to $45.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 2
+    * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to USPS Tracking
 
     #Priority Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 3
-    * Set Service to "Priority Mail Large/Thick Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 3
+    * Set single-order form Service to "Priority Mail Large/Thick Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 4
-    * Set Service to "Priority Mail Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 4
+    * Set single-order form Service to "Priority Mail Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 5
-    * Set Service to "Priority Mail Large Package"
-    * Set Insured Value to $145.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 5
+    * Set single-order form Service to "Priority Mail Large Package"
+    * Set single-order form Insured Value to $145.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 6
-    * Set Service to "Priority Mail Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 6
+    * Set single-order form Service to "Priority Mail Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 7
-    * Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Insured Value to $98.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 7
+    * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
+    * Set single-order form Insured Value to $98.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 8
-    * Set Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 8
+    * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 9
-    * Set Service to "Priority Mail Small Flat Rate Box"
-    * Set Insured Value to $30.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 9
+    * Set single-order form Service to "Priority Mail Small Flat Rate Box"
+    * Set single-order form Insured Value to $30.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 10
-    * Set Service to "Priority Mail Medium Flat Rate Box"
-    * Set Insured Value to $45.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 10
+    * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 11
-    * Set Service to "Priority Mail Large Flat Rate Box"
-    * Set Insured Value to $239.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 11
+    * Set single-order form Service to "Priority Mail Large Flat Rate Box"
+    * Set single-order form Insured Value to $239.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 12
-    * Set Service to "Priority Mail Regional Rate Box A"
-    * Set Insured Value to $105.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 12
+    * Set single-order form Service to "Priority Mail Regional Rate Box A"
+    * Set single-order form Insured Value to $105.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 13
-    * Set Service to "Priority Mail Regional Rate Box B"
-    * Set Insured Value to $205.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 13
+    * Set single-order form Service to "Priority Mail Regional Rate Box B"
+    * Set single-order form Insured Value to $205.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 14
-    * Set Service to "Priority Mail Regional Rate Box C"
-    * Set Insured Value to $305.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 14
+    * Set single-order form Service to "Priority Mail Regional Rate Box C"
+    * Set single-order form Insured Value to $305.00
+    * Set single-order form Tracking to Signature Required
 
     # Priority Mail Express
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 15
-    * Set Service to "Priority Mail Express Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 15
+    * Set single-order form Service to "Priority Mail Express Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 16
-    * Set Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 16
+    * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 17
-    * Set Service to Priority Mail Express Padded Flat Rate Envelope
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 17
+    * Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 18
-    * Set Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 18
+    * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 19
-    * Set Service to "Priority Mail Express Medium Flat Rate Box"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 19
+    * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set single-order form Tracking to Signature Required
 
     # Media Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 20
-    * Set Service to "Media Mail Package"
-    * Set Insured Value to $56.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 20
+    * Set single-order form Service to "Media Mail Package"
+    * Set single-order form Insured Value to $56.00
+    * Set single-order form Tracking to Signature Required
 
     # Parcel Select
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 21
-    * Set Service to "Parcel Select Package"
-    * Set Insured Value to $345.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 21
+    * Set single-order form Service to "Parcel Select Package"
+    * Set single-order form Insured Value to $345.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 22
-    * Set Service to "Parcel Select Large Package"
-    * Set Insured Value to $456.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 22
+    * Set single-order form Service to "Parcel Select Large Package"
+    * Set single-order form Insured Value to $456.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 23
-    * Set Service to "Parcel Select Oversized Package"
-    * Set Insured Value to $567.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 23
+    * Set single-order form Service to "Parcel Select Oversized Package"
+    * Set single-order form Insured Value to $567.00
+    * Set single-order form Tracking to Signature Required
 
     # International
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -248,20 +248,20 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -269,253 +269,253 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to Priority Mail International Flat Rate Envelope
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 1
-    * Set Service to "First-Class Mail Large Envelope/Flat"
-    * Set Insured Value to $15.00
-    * Set Tracking to None
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 1
+    * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
+    * Set single-order form Insured Value to $15.00
+    * Set single-order form Tracking to None
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 2
-    * Set Service to "First-Class Mail Package/Thick Envelope"
-    * Set Insured Value to $45.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 2
+    * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to USPS Tracking
 
     #Priority Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 3
-    * Set Service to "Priority Mail Large/Thick Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 3
+    * Set single-order form Service to "Priority Mail Large/Thick Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 4
-    * Set Service to "Priority Mail Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 4
+    * Set single-order form Service to "Priority Mail Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 5
-    * Set Service to "Priority Mail Large Package"
-    * Set Insured Value to $145.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 5
+    * Set single-order form Service to "Priority Mail Large Package"
+    * Set single-order form Insured Value to $145.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 6
-    * Set Service to "Priority Mail Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 6
+    * Set single-order form Service to "Priority Mail Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 7
-    * Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Insured Value to $98.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 7
+    * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
+    * Set single-order form Insured Value to $98.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 8
-    * Set Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 8
+    * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 9
-    * Set Service to "Priority Mail Small Flat Rate Box"
-    * Set Insured Value to $30.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 9
+    * Set single-order form Service to "Priority Mail Small Flat Rate Box"
+    * Set single-order form Insured Value to $30.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 10
-    * Set Service to "Priority Mail Medium Flat Rate Box"
-    * Set Insured Value to $45.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 10
+    * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 11
-    * Set Service to "Priority Mail Large Flat Rate Box"
-    * Set Insured Value to $239.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 11
+    * Set single-order form Service to "Priority Mail Large Flat Rate Box"
+    * Set single-order form Insured Value to $239.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 12
-    * Set Service to "Priority Mail Regional Rate Box A"
-    * Set Insured Value to $105.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 12
+    * Set single-order form Service to "Priority Mail Regional Rate Box A"
+    * Set single-order form Insured Value to $105.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 13
-    * Set Service to "Priority Mail Regional Rate Box B"
-    * Set Insured Value to $205.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 13
+    * Set single-order form Service to "Priority Mail Regional Rate Box B"
+    * Set single-order form Insured Value to $205.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 14
-    * Set Service to "Priority Mail Regional Rate Box C"
-    * Set Insured Value to $305.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 14
+    * Set single-order form Service to "Priority Mail Regional Rate Box C"
+    * Set single-order form Insured Value to $305.00
+    * Set single-order form Tracking to Signature Required
 
     # Priority Mail Express
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 15
-    * Set Service to "Priority Mail Express Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 15
+    * Set single-order form Service to "Priority Mail Express Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 16
-    * Set Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 16
+    * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 17
-    * Set Service to Priority Mail Express Padded Flat Rate Envelope
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 17
+    * Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 18
-    * Set Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 18
+    * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 19
-    * Set Service to "Priority Mail Express Medium Flat Rate Box"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 19
+    * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set single-order form Tracking to Signature Required
 
     # Media Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 20
-    * Set Service to "Media Mail Package"
-    * Set Insured Value to $56.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 20
+    * Set single-order form Service to "Media Mail Package"
+    * Set single-order form Insured Value to $56.00
+    * Set single-order form Tracking to Signature Required
 
     # Parcel Select
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 21
-    * Set Service to "Parcel Select Package"
-    * Set Insured Value to $345.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 21
+    * Set single-order form Service to "Parcel Select Package"
+    * Set single-order form Insured Value to $345.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 22
-    * Set Service to "Parcel Select Large Package"
-    * Set Insured Value to $456.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 22
+    * Set single-order form Service to "Parcel Select Large Package"
+    * Set single-order form Insured Value to $456.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 23
-    * Set Service to "Parcel Select Oversized Package"
-    * Set Insured Value to $567.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 23
+    * Set single-order form Service to "Parcel Select Oversized Package"
+    * Set single-order form Insured Value to $567.00
+    * Set single-order form Tracking to Signature Required
 
     # International
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country | phone       |  email           |
@@ -523,20 +523,20 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -544,253 +544,253 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to Priority Mail International Flat Rate Envelope
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 1
-    * Set Service to "First-Class Mail Large Envelope/Flat"
-    * Set Insured Value to $15.00
-    * Set Tracking to None
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 1
+    * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
+    * Set single-order form Insured Value to $15.00
+    * Set single-order form Tracking to None
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 2
-    * Set Service to "First-Class Mail Package/Thick Envelope"
-    * Set Insured Value to $45.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 2
+    * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to USPS Tracking
 
     #Priority Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 3
-    * Set Service to "Priority Mail Large/Thick Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 3
+    * Set single-order form Service to "Priority Mail Large/Thick Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 4
-    * Set Service to "Priority Mail Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 4
+    * Set single-order form Service to "Priority Mail Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 5
-    * Set Service to "Priority Mail Large Package"
-    * Set Insured Value to $145.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 5
+    * Set single-order form Service to "Priority Mail Large Package"
+    * Set single-order form Insured Value to $145.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 6
-    * Set Service to "Priority Mail Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 6
+    * Set single-order form Service to "Priority Mail Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 7
-    * Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Insured Value to $98.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 7
+    * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
+    * Set single-order form Insured Value to $98.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 8
-    * Set Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 8
+    * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 9
-    * Set Service to "Priority Mail Small Flat Rate Box"
-    * Set Insured Value to $30.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 9
+    * Set single-order form Service to "Priority Mail Small Flat Rate Box"
+    * Set single-order form Insured Value to $30.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 10
-    * Set Service to "Priority Mail Medium Flat Rate Box"
-    * Set Insured Value to $45.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 10
+    * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 11
-    * Set Service to "Priority Mail Large Flat Rate Box"
-    * Set Insured Value to $239.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 11
+    * Set single-order form Service to "Priority Mail Large Flat Rate Box"
+    * Set single-order form Insured Value to $239.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 12
-    * Set Service to "Priority Mail Regional Rate Box A"
-    * Set Insured Value to $105.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 12
+    * Set single-order form Service to "Priority Mail Regional Rate Box A"
+    * Set single-order form Insured Value to $105.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 13
-    * Set Service to "Priority Mail Regional Rate Box B"
-    * Set Insured Value to $205.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 13
+    * Set single-order form Service to "Priority Mail Regional Rate Box B"
+    * Set single-order form Insured Value to $205.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 14
-    * Set Service to "Priority Mail Regional Rate Box C"
-    * Set Insured Value to $305.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 14
+    * Set single-order form Service to "Priority Mail Regional Rate Box C"
+    * Set single-order form Insured Value to $305.00
+    * Set single-order form Tracking to Signature Required
 
     # Priority Mail Express
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 15
-    * Set Service to "Priority Mail Express Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 15
+    * Set single-order form Service to "Priority Mail Express Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 16
-    * Set Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 16
+    * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 17
-    * Set Service to Priority Mail Express Padded Flat Rate Envelope
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 17
+    * Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 18
-    * Set Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 18
+    * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 19
-    * Set Service to "Priority Mail Express Medium Flat Rate Box"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 19
+    * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set single-order form Tracking to Signature Required
 
     # Media Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 20
-    * Set Service to "Media Mail Package"
-    * Set Insured Value to $56.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 20
+    * Set single-order form Service to "Media Mail Package"
+    * Set single-order form Insured Value to $56.00
+    * Set single-order form Tracking to Signature Required
 
     # Parcel Select
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 21
-    * Set Service to "Parcel Select Package"
-    * Set Insured Value to $345.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 21
+    * Set single-order form Service to "Parcel Select Package"
+    * Set single-order form Insured Value to $345.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 22
-    * Set Service to "Parcel Select Large Package"
-    * Set Insured Value to $456.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 22
+    * Set single-order form Service to "Parcel Select Large Package"
+    * Set single-order form Insured Value to $456.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 23
-    * Set Service to "Parcel Select Oversized Package"
-    * Set Insured Value to $567.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 23
+    * Set single-order form Service to "Parcel Select Oversized Package"
+    * Set single-order form Insured Value to $567.00
+    * Set single-order form Tracking to Signature Required
 
     # International
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -798,20 +798,20 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -819,253 +819,253 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to Priority Mail International Flat Rate Envelope
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 1
-    * Set Service to "First-Class Mail Large Envelope/Flat"
-    * Set Insured Value to $15.00
-    * Set Tracking to None
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 1
+    * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
+    * Set single-order form Insured Value to $15.00
+    * Set single-order form Tracking to None
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 2
-    * Set Service to "First-Class Mail Package/Thick Envelope"
-    * Set Insured Value to $45.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 2
+    * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to USPS Tracking
 
     #Priority Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 3
-    * Set Service to "Priority Mail Large/Thick Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 3
+    * Set single-order form Service to "Priority Mail Large/Thick Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 4
-    * Set Service to "Priority Mail Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 4
+    * Set single-order form Service to "Priority Mail Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 5
-    * Set Service to "Priority Mail Large Package"
-    * Set Insured Value to $145.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 5
+    * Set single-order form Service to "Priority Mail Large Package"
+    * Set single-order form Insured Value to $145.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 6
-    * Set Service to "Priority Mail Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 6
+    * Set single-order form Service to "Priority Mail Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 7
-    * Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Insured Value to $98.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 7
+    * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
+    * Set single-order form Insured Value to $98.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 8
-    * Set Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 8
+    * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 9
-    * Set Service to "Priority Mail Small Flat Rate Box"
-    * Set Insured Value to $30.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 9
+    * Set single-order form Service to "Priority Mail Small Flat Rate Box"
+    * Set single-order form Insured Value to $30.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 10
-    * Set Service to "Priority Mail Medium Flat Rate Box"
-    * Set Insured Value to $45.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 10
+    * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 11
-    * Set Service to "Priority Mail Large Flat Rate Box"
-    * Set Insured Value to $239.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 11
+    * Set single-order form Service to "Priority Mail Large Flat Rate Box"
+    * Set single-order form Insured Value to $239.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 12
-    * Set Service to "Priority Mail Regional Rate Box A"
-    * Set Insured Value to $105.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 12
+    * Set single-order form Service to "Priority Mail Regional Rate Box A"
+    * Set single-order form Insured Value to $105.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 13
-    * Set Service to "Priority Mail Regional Rate Box B"
-    * Set Insured Value to $205.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 13
+    * Set single-order form Service to "Priority Mail Regional Rate Box B"
+    * Set single-order form Insured Value to $205.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 14
-    * Set Service to "Priority Mail Regional Rate Box C"
-    * Set Insured Value to $305.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 14
+    * Set single-order form Service to "Priority Mail Regional Rate Box C"
+    * Set single-order form Insured Value to $305.00
+    * Set single-order form Tracking to Signature Required
 
     # Priority Mail Express
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 15
-    * Set Service to "Priority Mail Express Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 15
+    * Set single-order form Service to "Priority Mail Express Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 16
-    * Set Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 16
+    * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 17
-    * Set Service to Priority Mail Express Padded Flat Rate Envelope
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 17
+    * Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 18
-    * Set Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 18
+    * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 19
-    * Set Service to "Priority Mail Express Medium Flat Rate Box"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 19
+    * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set single-order form Tracking to Signature Required
 
     # Media Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 20
-    * Set Service to "Media Mail Package"
-    * Set Insured Value to $56.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 20
+    * Set single-order form Service to "Media Mail Package"
+    * Set single-order form Insured Value to $56.00
+    * Set single-order form Tracking to Signature Required
 
     # Parcel Select
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 21
-    * Set Service to "Parcel Select Package"
-    * Set Insured Value to $345.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 21
+    * Set single-order form Service to "Parcel Select Package"
+    * Set single-order form Insured Value to $345.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 22
-    * Set Service to "Parcel Select Large Package"
-    * Set Insured Value to $456.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 22
+    * Set single-order form Service to "Parcel Select Large Package"
+    * Set single-order form Insured Value to $456.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 23
-    * Set Service to "Parcel Select Oversized Package"
-    * Set Insured Value to $567.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 23
+    * Set single-order form Service to "Parcel Select Oversized Package"
+    * Set single-order form Insured Value to $567.00
+    * Set single-order form Tracking to Signature Required
 
     # International
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country     | phone       |  email  |
@@ -1073,20 +1073,20 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -1094,253 +1094,253 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to Priority Mail International Flat Rate Envelope
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 1
-    * Set Service to "First-Class Mail Large Envelope/Flat"
-    * Set Insured Value to $15.00
-    * Set Tracking to None
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 1
+    * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
+    * Set single-order form Insured Value to $15.00
+    * Set single-order form Tracking to None
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 2
-    * Set Service to "First-Class Mail Package/Thick Envelope"
-    * Set Insured Value to $45.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 2
+    * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to USPS Tracking
 
     #Priority Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 3
-    * Set Service to "Priority Mail Large/Thick Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 3
+    * Set single-order form Service to "Priority Mail Large/Thick Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 4
-    * Set Service to "Priority Mail Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 4
+    * Set single-order form Service to "Priority Mail Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 5
-    * Set Service to "Priority Mail Large Package"
-    * Set Insured Value to $145.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 5
+    * Set single-order form Service to "Priority Mail Large Package"
+    * Set single-order form Insured Value to $145.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 6
-    * Set Service to "Priority Mail Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 6
+    * Set single-order form Service to "Priority Mail Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 7
-    * Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Insured Value to $98.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 7
+    * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
+    * Set single-order form Insured Value to $98.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 8
-    * Set Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 8
+    * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 9
-    * Set Service to "Priority Mail Small Flat Rate Box"
-    * Set Insured Value to $30.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 9
+    * Set single-order form Service to "Priority Mail Small Flat Rate Box"
+    * Set single-order form Insured Value to $30.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 10
-    * Set Service to "Priority Mail Medium Flat Rate Box"
-    * Set Insured Value to $45.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 10
+    * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 11
-    * Set Service to "Priority Mail Large Flat Rate Box"
-    * Set Insured Value to $239.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 11
+    * Set single-order form Service to "Priority Mail Large Flat Rate Box"
+    * Set single-order form Insured Value to $239.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 12
-    * Set Service to "Priority Mail Regional Rate Box A"
-    * Set Insured Value to $105.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 12
+    * Set single-order form Service to "Priority Mail Regional Rate Box A"
+    * Set single-order form Insured Value to $105.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 13
-    * Set Service to "Priority Mail Regional Rate Box B"
-    * Set Insured Value to $205.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 13
+    * Set single-order form Service to "Priority Mail Regional Rate Box B"
+    * Set single-order form Insured Value to $205.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 14
-    * Set Service to "Priority Mail Regional Rate Box C"
-    * Set Insured Value to $305.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 14
+    * Set single-order form Service to "Priority Mail Regional Rate Box C"
+    * Set single-order form Insured Value to $305.00
+    * Set single-order form Tracking to Signature Required
 
     # Priority Mail Express
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 15
-    * Set Service to "Priority Mail Express Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 15
+    * Set single-order form Service to "Priority Mail Express Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 16
-    * Set Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 16
+    * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 17
-    * Set Service to Priority Mail Express Padded Flat Rate Envelope
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 17
+    * Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 18
-    * Set Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 18
+    * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 19
-    * Set Service to "Priority Mail Express Medium Flat Rate Box"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 19
+    * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set single-order form Tracking to Signature Required
 
     # Media Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 20
-    * Set Service to "Media Mail Package"
-    * Set Insured Value to $56.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 20
+    * Set single-order form Service to "Media Mail Package"
+    * Set single-order form Insured Value to $56.00
+    * Set single-order form Tracking to Signature Required
 
     # Parcel Select
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 21
-    * Set Service to "Parcel Select Package"
-    * Set Insured Value to $345.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 21
+    * Set single-order form Service to "Parcel Select Package"
+    * Set single-order form Insured Value to $345.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 22
-    * Set Service to "Parcel Select Large Package"
-    * Set Insured Value to $456.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 22
+    * Set single-order form Service to "Parcel Select Large Package"
+    * Set single-order form Insured Value to $456.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 23
-    * Set Service to "Parcel Select Oversized Package"
-    * Set Insured Value to $567.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 23
+    * Set single-order form Service to "Parcel Select Oversized Package"
+    * Set single-order form Insured Value to $567.00
+    * Set single-order form Tracking to Signature Required
 
     # International
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -1348,20 +1348,20 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -1369,253 +1369,253 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to Priority Mail International Flat Rate Envelope
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 1
-    * Set Service to "First-Class Mail Large Envelope/Flat"
-    * Set Insured Value to $15.00
-    * Set Tracking to None
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 1
+    * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
+    * Set single-order form Insured Value to $15.00
+    * Set single-order form Tracking to None
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 2
-    * Set Service to "First-Class Mail Package/Thick Envelope"
-    * Set Insured Value to $45.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 2
+    * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to USPS Tracking
 
     #Priority Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 3
-    * Set Service to "Priority Mail Large/Thick Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 3
+    * Set single-order form Service to "Priority Mail Large/Thick Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 4
-    * Set Service to "Priority Mail Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 4
+    * Set single-order form Service to "Priority Mail Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 5
-    * Set Service to "Priority Mail Large Package"
-    * Set Insured Value to $145.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 5
+    * Set single-order form Service to "Priority Mail Large Package"
+    * Set single-order form Insured Value to $145.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 6
-    * Set Service to "Priority Mail Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 6
+    * Set single-order form Service to "Priority Mail Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 7
-    * Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Insured Value to $98.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 7
+    * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
+    * Set single-order form Insured Value to $98.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 8
-    * Set Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 8
+    * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 9
-    * Set Service to "Priority Mail Small Flat Rate Box"
-    * Set Insured Value to $30.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 9
+    * Set single-order form Service to "Priority Mail Small Flat Rate Box"
+    * Set single-order form Insured Value to $30.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 10
-    * Set Service to "Priority Mail Medium Flat Rate Box"
-    * Set Insured Value to $45.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 10
+    * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
+    * Set single-order form Insured Value to $45.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 11
-    * Set Service to "Priority Mail Large Flat Rate Box"
-    * Set Insured Value to $239.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 11
+    * Set single-order form Service to "Priority Mail Large Flat Rate Box"
+    * Set single-order form Insured Value to $239.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 12
-    * Set Service to "Priority Mail Regional Rate Box A"
-    * Set Insured Value to $105.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 12
+    * Set single-order form Service to "Priority Mail Regional Rate Box A"
+    * Set single-order form Insured Value to $105.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 13
-    * Set Service to "Priority Mail Regional Rate Box B"
-    * Set Insured Value to $205.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 13
+    * Set single-order form Service to "Priority Mail Regional Rate Box B"
+    * Set single-order form Insured Value to $205.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 14
-    * Set Service to "Priority Mail Regional Rate Box C"
-    * Set Insured Value to $305.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 14
+    * Set single-order form Service to "Priority Mail Regional Rate Box C"
+    * Set single-order form Insured Value to $305.00
+    * Set single-order form Tracking to Signature Required
 
     # Priority Mail Express
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Ounces to 15
-    * Set Service to "Priority Mail Express Package"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Ounces to 15
+    * Set single-order form Service to "Priority Mail Express Package"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 16
-    * Set Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 16
+    * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 17
-    * Set Service to Priority Mail Express Padded Flat Rate Envelope
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 17
+    * Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 18
-    * Set Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 18
+    * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 19
-    * Set Service to "Priority Mail Express Medium Flat Rate Box"
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 19
+    * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set single-order form Tracking to Signature Required
 
     # Media Mail
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 20
-    * Set Service to "Media Mail Package"
-    * Set Insured Value to $56.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 20
+    * Set single-order form Service to "Media Mail Package"
+    * Set single-order form Insured Value to $56.00
+    * Set single-order form Tracking to Signature Required
 
     # Parcel Select
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 21
-    * Set Service to "Parcel Select Package"
-    * Set Insured Value to $345.00
-    * Set Tracking to USPS Tracking
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 21
+    * Set single-order form Service to "Parcel Select Package"
+    * Set single-order form Insured Value to $345.00
+    * Set single-order form Tracking to USPS Tracking
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 22
-    * Set Service to "Parcel Select Large Package"
-    * Set Insured Value to $456.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 22
+    * Set single-order form Service to "Parcel Select Large Package"
+    * Set single-order form Insured Value to $456.00
+    * Set single-order form Tracking to Signature Required
 
     * I Add a new order
     * Expect new Order ID created
-    * Set Ship From to default
-    * Set Ship-To address to random
-    * Click Ship-To Less link
-    * Set Pounds to 23
-    * Set Service to "Parcel Select Oversized Package"
-    * Set Insured Value to $567.00
-    * Set Tracking to Signature Required
+    * Set single-order form Ship-From to default
+    * Set single-order sorm Ship-To address to random
+    * Hide single-order form Ship-To fields
+    * Set single-order form Pounds to 23
+    * Set single-order form Service to "Parcel Select Oversized Package"
+    * Set single-order form Insured Value to $567.00
+    * Set single-order form Tracking to Signature Required
 
     # International
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country   | phone       |  email  |
@@ -1623,20 +1623,20 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
     Then Set Ship-To to international address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country  | phone   |  email  |
@@ -1644,16 +1644,16 @@ Feature: 150 orders
 
     Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
-    Then Set Customs Form Non-Delivery Options = Return to sender
-    Then Set Customs Form Internal Transaction # = Required
-    Then Set Customs Form More Info = random
-    Then Set Customs Form ITN# = random
+    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form More Info = "random"
+    Then Set customs form ITN# = "random"
 
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-    Then Set Service to Priority Mail International Flat Rate Envelope
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "Priority Mail International Flat Rate Envelope"
 
     And Sign out
