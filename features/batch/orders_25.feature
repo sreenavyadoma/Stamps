@@ -250,11 +250,11 @@ Feature: 25 orders
 
     And Open customs form
 
-    Then Set customs form Package Contents = Merchandise
-    Then Set customs form Non-Delivery Options = Return to sender
-    Then Set customs form Internal Transaction # = Required
-    Then Set customs form More Info = random
-    Then Set customs form ITN# = random
+    Then Set customs form Package Contents to Merchandise
+    Then Set customs form Non-Delivery Options to Return to sender
+    Then Set customs form Internal Transaction Number to Required
+    Then Set customs form More Info to random
+    Then Set customs form ITN# to random
 
     Then Set customs form I agree to true
     Then Close customs form
@@ -271,11 +271,11 @@ Feature: 25 orders
 
     And Open customs form
 
-    Then Set customs form Package Contents = Merchandise
-    Then Set customs form Non-Delivery Options = Return to sender
-    Then Set customs form Internal Transaction # = Required
-    Then Set customs form More Info = random
-    Then Set customs form ITN# = random
+    Then Set customs form Package Contents to Merchandise
+    Then Set customs form Non-Delivery Options to Return to sender
+    Then Set customs form Internal Transaction Number to Required
+    Then Set customs form More Info to random
+    Then Set customs form ITN# to random
 
     Then Set customs form I agree to true
     Then Close customs form

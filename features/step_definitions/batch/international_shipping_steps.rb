@@ -190,39 +190,63 @@ Given /^Open customs form$/ do
   @customs_form = @single_order_form.customs.edit_form
 end
 
-Given /^Set customs form (.+) = \"(.+)\"$/ do |field, value|
+Given /^Set customs form Package Contents to \"(.+)\"$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
-  case field.downcase
-    #Package Contents
-    when "package contents"
-      @customs_form.package_contents_dd.select value
-      contents = @customs_form.pacakge_contents.text
-      contents.should include value
-      #Non-Delivery Options
-    when "non-delivery options"
-      @customs_form.non_delivery_options_dd.select value
-      #Internal Transaction #
-    when "internal transaction #"
-      @customs_form.internal_transaction_dd.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
-      sleep 1
-      #More Info
-    when "more info"
-      @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
-      #ITN#
-    when "itn#"
-      @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
-    when "license#"
-      @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
-    when "certificate#"
-      @customs_form.certificate.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
-    when "invoice#"
-      @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
-    else
-      raise "Illegal Argument Exception.  Field #{field} is not on the Customs Information Modal"
+  @customs_form.package_contents_dd.select value
+  contents = @customs_form.pacakge_contents.text
+  contents.should include value
+end
 
-  end
+Given /^Set customs form Non-Delivery Options to \"(.+)\"$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  step "Open customs form" unless @customs_form.present?
+
+  @customs_form.non_delivery_options_dd.select value
+end
+
+Given /^Set customs form Internal Transaction Number to \"(.+)\"$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  step "Open customs form" unless @customs_form.present?
+
+  @customs_form.internal_transaction_dd.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+  sleep 1
+end
+
+Given /^Set customs form More Info to \"(.+)\"$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  step "Open customs form" unless @customs_form.present?
+
+  @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Given /^Set customs form ITN# to \"(.+)\"$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  step "Open customs form" unless @customs_form.present?
+
+  @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Given /^Set customs form License# to \"(.+)\"$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  step "Open customs form" unless @customs_form.present?
+
+  @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Given /^Set customs form Certificate Number to \"(.+)\"$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  step "Open customs form" unless @customs_form.present?
+
+  @customs_form.certificate.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Given /^Set customs form Invoice Number to \"(.+)\"$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  step "Open customs form" unless @customs_form.present?
+
+  @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
 Given /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price ([\d.]+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|

@@ -91,59 +91,59 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     And Open customs form
 
-    Then Set customs form Package Contents = "Commercial Sample"
+    Then Set customs form Package Contents to "Commercial Sample"
     Then Expect Customs Form More Info to be hidden
     Then Expect Customs Form License# to be visible
     Then Expect Customs Form Certificate# to be visible
     Then Expect Customs Form Invoice# to be visible
 
-    Then Set customs form Package Contents = "Document"
+    Then Set customs form Package Contents to "Document"
     Then Expect Customs Form More Info to be visible
     Then Expect Customs Form License# to be hidden
     Then Expect Customs Form Certificate# to be hidden
     Then Expect Customs Form Invoice# to be hidden
 
-    Then Set customs form Package Contents = "Gift"
+    Then Set customs form Package Contents to "Gift"
     Then Expect Customs Form More Info to be visible
     Then Expect Customs Form License# to be hidden
     Then Expect Customs Form Certificate# to be hidden
     Then Expect Customs Form Invoice# to be hidden
 
-    Then Set customs form Package Contents = "Humanitarian Donation"
+    Then Set customs form Package Contents to "Humanitarian Donation"
     Then Expect Customs Form More Info to be visible
     Then Expect Customs Form License# to be hidden
     Then Expect Customs Form Certificate# to be hidden
     Then Expect Customs Form Invoice# to be hidden
 
-    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Package Contents to "Merchandise"
     Then Expect Customs Form More Info to be visible
     Then Expect Customs Form License# to be hidden
     Then Expect Customs Form Certificate# to be hidden
     Then Expect Customs Form Invoice# to be hidden
 
-    Then Set customs form Package Contents = "Returned Goods"
+    Then Set customs form Package Contents to "Returned Goods"
     Then Expect Customs Form More Info to be visible
     Then Expect Customs Form License# to be hidden
     Then Expect Customs Form Certificate# to be hidden
     Then Expect Customs Form Invoice# to be hidden
 
-    Then Set customs form Package Contents = "Commercial Sample"
+    Then Set customs form Package Contents to "Commercial Sample"
     Then Expect Customs Form More Info to be hidden
-    Then Set customs form License# = "random"
-    Then Set customs form Certificate# = "random"
-    Then Set customs form Invoice# = "random"
+    Then Set customs form License# to "random"
+    Then Set customs form Certificate Number to "random"
+    Then Set customs form Invoice Number to "random"
 
-    Then Set customs form Non-Delivery Options = "Treat as abandoned"
-    Then Set customs form Non-Delivery Options = "Return to sender"
+    Then Set customs form Non-Delivery Options to "Treat as abandoned"
+    Then Set customs form Non-Delivery Options to "Return to sender"
 
-    Then Set customs form Internal Transaction # = "Required"
+    Then Set customs form Internal Transaction Number to "Required"
     Then Expect Customs Form ITN# to be enabled
 
-    Then Set customs form Internal Transaction # = "Not required"
+    Then Set customs form Internal Transaction Number to "Not required"
     Then Expect Customs Form ITN# to be disabled
 
-    Then Set customs form Internal Transaction # = "Required"
-    Then Set customs form ITN# = "random"
+    Then Set customs form Internal Transaction Number to "Required"
+    Then Set customs form ITN# to "random"
 
     Then Set customs form I agree to true
     Then Close customs form
@@ -169,7 +169,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Internal Transaction # to be Not required
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 2501, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form ITN# = "random"
+    Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
 
@@ -183,24 +183,24 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Iran    | random  | random  |
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Commercial Sample"
+    Then Set customs form Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Document"
+    Then Set customs form Package Contents to "Document"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Package Contents to "Merchandise"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Gift"
+    Then Set customs form Package Contents to "Gift"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Humanitarian Donation"
+    Then Set customs form Package Contents to "Humanitarian Donation"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Returned Goods"
+    Then Set customs form Package Contents to "Returned Goods"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Other"
+    Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be Required
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form ITN# = "random"
+    Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
 
@@ -215,24 +215,24 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     #Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Commercial Sample"
+    Then Set customs form Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Document"
+    Then Set customs form Package Contents to "Document"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Package Contents to "Merchandise"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Gift"
+    Then Set customs form Package Contents to "Gift"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Humanitarian Donation"
+    Then Set customs form Package Contents to "Humanitarian Donation"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Returned Goods"
+    Then Set customs form Package Contents to "Returned Goods"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Other"
+    Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be Required
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form ITN# = "random"
+    Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
 
@@ -247,24 +247,24 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     #Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Commercial Sample"
+    Then Set customs form Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Document"
+    Then Set customs form Package Contents to "Document"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Package Contents to "Merchandise"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Gift"
+    Then Set customs form Package Contents to "Gift"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Humanitarian Donation"
+    Then Set customs form Package Contents to "Humanitarian Donation"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Returned Goods"
+    Then Set customs form Package Contents to "Returned Goods"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Other"
+    Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be Required
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form ITN# = "random"
+    Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
 
@@ -279,24 +279,24 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
     #Then Set single-order form Service to Priority Mail International Flat Rate Envelope
     And Open customs form
-    Then Set customs form Package Contents = "Commercial Sample"
+    Then Set customs form Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Document"
+    Then Set customs form Package Contents to "Document"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Package Contents to "Merchandise"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Gift"
+    Then Set customs form Package Contents to "Gift"
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Humanitarian Donation"
+    Then Set customs form Package Contents to "Humanitarian Donation"
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Returned Goods"
+    Then Set customs form Package Contents to "Returned Goods"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Other"
+    Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be Required
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form ITN# = "random"
+    Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
 
@@ -311,24 +311,24 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea    | random  | random  |
     #Then Set single-order form Service to Priority Mail International Flat Rate Envelope
     And Open customs form
-    Then Set customs form Package Contents = "Commercial Sample"
+    Then Set customs form Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Document"
+    Then Set customs form Package Contents to "Document"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Package Contents to "Merchandise"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Gift"
+    Then Set customs form Package Contents to "Gift"
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Humanitarian Donation"
+    Then Set customs form Package Contents to "Humanitarian Donation"
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Returned Goods"
+    Then Set customs form Package Contents to "Returned Goods"
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form Package Contents = "Other"
+    Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be Required
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form ITN# = "random"
+    Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
 
@@ -343,24 +343,24 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     #Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Commercial Sample"
+    Then Set customs form Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Document"
+    Then Set customs form Package Contents to "Document"
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Merchandise"
+    Then Set customs form Package Contents to "Merchandise"
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Gift"
+    Then Set customs form Package Contents to "Gift"
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Humanitarian Donation"
+    Then Set customs form Package Contents to "Humanitarian Donation"
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Returned Goods"
+    Then Set customs form Package Contents to "Returned Goods"
     Then Expect Customs Form Internal Transaction # to be Not required
-    Then Set customs form Package Contents = "Other"
+    Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be Not required
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be Required
-    Then Set customs form ITN# = "random"
+    Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
 
