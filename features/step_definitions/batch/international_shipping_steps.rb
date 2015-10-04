@@ -378,9 +378,9 @@ Given /^Expect Customs Form Internal Transaction # to be (.+)$/ do |value|
   text.should eql value
 end
 
-Given /^Expect Customs Form xxxx to be (.+)$/ do |value|
+Given /^Expect Customs Form Item Grid count to be (.+)$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-
+  @customs_form.item_grid.item_count.should eql value.to_i
 end
 
 Given /^Expect Customs Form Total Value to be (.+)$/ do |value|
