@@ -14,9 +14,9 @@ Feature:  BVT Ambigious Address
     Then Expect "Exact Address Not Found" module to appear
     And Select row 2 from Exact Address Not Found module
     Then Set single-order form Service to "Priority Mail Package"
-    Then Expect Order Grid - Recipient to be Joseph Balancio
-    Then Expect Order Grid - Company to be Company Name
-    Then Expect Order Grid - City to be San Francisco
-    Then Expect Order Grid - State to be CA
-    Then Expect Order Grid - Zip to be 94102
+    Then Expect order-grid Recipient to be Joseph Balancio
+    Then Expect order-grid Company to be Company Name
+    Then Expect order-grid City to be San Francisco
+    Then Expect order-grid State to be CA
+    Then Expect order-grid Zip to be 94102
     And Sign out

@@ -46,18 +46,18 @@ Feature: Examples
             | 0             | 0       | 1      | 0       | 0     | 0       |
 
       # Expectations
-        Then Expect Order Grid - Recipient to be B-01671
-        Then Expect Order Grid - Company to be Inline Rates
-        Then Expect Order Grid - Address to be 1990 E Grand Ave
-        Then Expect Order Grid - City to be El Segundo
-        Then Expect Order Grid - State to be CA
-        Then Expect Order Grid - Zip to be 90245
-        Then Expect Order Grid - Phone to be (415) 123-5555
-        Then Expect Order Grid - Email to be rtest@stamps.com
-        Then Expect Order Grid - Pounds to be 0
-        Then Expect Order Grid - Ounces to be 1
-        Then Expect Order Grid - Weight to be 0 lbs. 1 oz.
-        Then Expect Order Grid - Insured Value to be $15.00
+        Then Expect order-grid Recipient to be B-01671
+        Then Expect order-grid Company to be Inline Rates
+        Then Expect order-grid Address to be 1990 E Grand Ave
+        Then Expect order-grid City to be El Segundo
+        Then Expect order-grid State to be CA
+        Then Expect order-grid Zip to be 90245
+        Then Expect order-grid Phone to be (415) 123-5555
+        Then Expect order-grid Email to be rtest@stamps.com
+        Then Expect order-grid Pounds to be 0
+        Then Expect order-grid Ounces to be 1
+        Then Expect order-grid Weight to be 0 lbs. 1 oz.
+        Then Expect order-grid Insured Value to be $15.00
         Then Expect Service Cost to be $0.00
         Then Expect inline Service Cost for First-Class Mail Postcard to be greater than $0.35
         Then Expect Service Cost to be $0.35

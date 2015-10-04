@@ -60,11 +60,11 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
 
     And Expect Single Order Form Order ID equals Grid order ID
-    Then Expect Order Grid - Recipient to be James Test
-    Then Expect Order Grid - Address to be 600 Front St Apt 232
-    Then Expect Order Grid - City to be San Diego
-    Then Expect Order Grid - State to be CA
-    Then Expect Order Grid - Zip to be 92101
+    Then Expect order-grid Recipient to be James Test
+    Then Expect order-grid Address to be 600 Front St Apt 232
+    Then Expect order-grid City to be San Diego
+    Then Expect order-grid State to be CA
+    Then Expect order-grid Zip to be 92101
 
     Then Print
 
@@ -72,12 +72,12 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And Expect system selects Shipped Filter and deselects the previous filter
     And Expect system hides Single Order Form
 
-    Then Expect Order Grid - Age to be 0 minutes ago
-    Then Expect Order Grid - Recipient to be James Test
-    Then Expect Order Grid - Address to be 600 Front St Apt 232
-    Then Expect Order Grid - City to be San Diego
-    Then Expect Order Grid - State to be CA
-    Then Expect Order Grid - Zip to be 92101
+    Then Expect order-grid Age to be 0 minutes ago
+    Then Expect order-grid Recipient to be James Test
+    Then Expect order-grid Address to be 600 Front St Apt 232
+    Then Expect order-grid City to be San Diego
+    Then Expect order-grid State to be CA
+    Then Expect order-grid Zip to be 92101
 
     And I Add a new order
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
