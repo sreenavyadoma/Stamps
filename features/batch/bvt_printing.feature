@@ -7,8 +7,8 @@ Feature:  BVT Printing
   @bvt_printing
   Scenario:  Printing
     And I Add a new order
-    Then Set Ship From to default
-    Then Set Ship-To address to random
-    Then Set Service to "Priority Mail Package"
+    Then Set single-order form Ship-From to default
+    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Service to "Priority Mail Package"
     Then Print
     And Sign out
