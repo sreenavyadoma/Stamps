@@ -283,7 +283,7 @@ Given /^Set customs form I agree to (\w+)$/ do |agree_str|
   @customs_form.i_agree agree
 end
 
-Given /^Add Item with Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
+Given /^Add single-order form Item - Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
   line_item = batch.single_order_form.add_item
   line_item.qty qty
   line_item.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
@@ -305,66 +305,113 @@ Given /^Expect Customs Form Add Item tooltip to be "(.+)"$/ do |tooltip|
 
 end
 
-Given /^Expect Customs Form (.+) to be (.+)$/ do |field, value|
+Given /^Expect Customs Form More Info to be (.+)$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  case field.downcase
-    when "itn#"
-      @customs_form_textbox = @customs_form.itn_number
-
-    when "more info"
-      @customs_form_textbox = @customs_form.more_info
-
-    when "license#"
-      @customs_form_textbox = @customs_form.license
-
-    when "certificate#"
-      @customs_form_textbox = @customs_form.certificate
-
-    when "invoice#"
-      @customs_form_textbox = @customs_form.invoice
-
-    when "internal transaction #"
-      text = @customs_form.internal_transaction_dd.text_box.text
-      log "Internal Transaction # is #{text}.  Test #{(text.include? "Required")?'Passed':'Failed'}"
-      text.should eql value
-
-    when "item grid count"
-      @customs_form.item_grid.item_count.should eql value.to_i
-
-    when "total value"
-      browser_value = @customs_form.total_value
-      log "Custom Info Actual Total Value: #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
-      browser_value.should eql value
-
-    when "total pounds"
-      browser_value = @customs_form.total_weight_lbs
-      log "Custom Info Actual Total Weight(lbs): #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
-      browser_value.should eql value
-
-    when "total ounces"
-      browser_value = @customs_form.total_weight_oz
-      log "Custom Info Actual Total Weight(Oz): #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
-      browser_value.should eql value
-
-    when "total weight dev error"
-      browser_value = @customs_form.total_weight_error
-      browser_value.should include value
-    else
-      raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Customs Form #{field} to be #{value}"
-  end
 
   case value.downcase
     when "hidden"
-      @customs_form_textbox.present?.should be false
+      @customs_form.more_info.present?.should be false
     when "visible"
-      @customs_form_textbox.present?.should be true
-    when "enabled"
-      @customs_form_textbox.second_disabled?.should be false
-    when "disabled"
-      @customs_form_textbox.second_disabled?.should be true
+      @customs_form.more_info.present?.should be true
     else
-      #do nothing.
+      raise "Illegal Parameter Exception. Customs Form More Info \"#{value}\" is not a valid test parameter"
   end
+end
+
+Given /^Expect Customs Form License# to be (.+)$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+
+  case value.downcase
+    when "hidden"
+      @customs_form.license.present?.should be false
+    when "visible"
+      @customs_form.license.present?.should be true
+    else
+      raise "Illegal Parameter Exception. Customs Form More Info \"#{value}\" is not a valid test parameter"
+  end
+end
+
+Given /^Expect Customs Form Certificate# to be (.+)$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+
+  case value.downcase
+    when "hidden"
+      @customs_form.certificate.present?.should be false
+    when "visible"
+      @customs_form.certificate.present?.should be true
+    else
+      raise "Illegal Parameter Exception. Customs Form More Info \"#{value}\" is not a valid test parameter"
+  end
+end
+
+Given /^Expect Customs Form Invoice# to be (.+)$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+
+  case value.downcase
+    when "hidden"
+      @customs_form.invoice.present?.should be false
+    when "visible"
+      @customs_form.invoice.present?.should be true
+    else
+      raise "Illegal Parameter Exception. Customs Form More Info \"#{value}\" is not a valid test parameter"
+  end
+end
+
+Given /^Expect Customs Form ITN# to be (.+)$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+
+  case value.downcase
+    when "hidden"
+      @customs_form.itn_number.present?.should be false
+    when "visible"
+      @customs_form.itn_number.present?.should be true
+    else
+      raise "Illegal Parameter Exception. Customs Form More Info \"#{value}\" is not a valid test parameter"
+  end
+end
+
+Given /^Expect Customs Form Internal Transaction # to be (.+)$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+
+  text = @customs_form.internal_transaction_dd.text_box.text
+  log "Internal Transaction # is #{text}.  Test #{(text.include? "Required")?'Passed':'Failed'}"
+  text.should eql value
+end
+
+Given /^Expect Customs Form xxxx to be (.+)$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+
+end
+
+Given /^Expect Customs Form Total Value to be (.+)$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+
+  browser_value = @customs_form.total_value
+  log "Custom Info Actual Total Value: #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
+  browser_value.should eql value
+end
+
+Given /^Expect Customs Form Total Pounds to be (.+)$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+
+  browser_value = @customs_form.total_weight_lbs
+  log "Custom Info Actual Total Weight(lbs): #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
+  browser_value.should eql value
+end
+
+Given /^Expect Customs Form Total Ounces to be (.+)$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+
+  browser_value = @customs_form.total_weight_oz
+  log "Custom Info Actual Total Weight(Oz): #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
+  browser_value.should eql value
+end
+
+Given /^Expect Customs Form Total Weight Data Error to be (.+)$/ do |value|
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+
+  browser_value = @customs_form.total_weight_error
+  browser_value.should include value
 end
 
 Given /^Close customs form$/ do

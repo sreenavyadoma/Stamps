@@ -12,7 +12,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
     Then Set single-order form Ounces to 1
     Then Set single-order form Pounds to 1
-    Then Add Item with Quantity 1, ID random, Description random
+    Then Add single-order form Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
@@ -29,7 +29,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
     Then Set single-order form Ounces to 1
     Then Set single-order form Pounds to 1
-    Then Add Item with Quantity 1, ID random, Description random
+    Then Add single-order form Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
@@ -55,7 +55,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
     Then Set single-order form Ounces to 1
     Then Set single-order form Pounds to 1
-    Then Add Item with Quantity 1, ID random, Description random
+    Then Add single-order form Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
@@ -87,7 +87,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Single Order Form Customs Restrictions button is visible
     Then Expect Single Order Form Customs Edit Form button is visible
 
-    Then Add Item with Quantity 1, ID random, Description random
+    Then Add single-order form Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
@@ -160,7 +160,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then Set single-order form Ounces to 1
     Then Set single-order form Pounds to 1
-    Then Add Item with Quantity 1, ID random, Description random
+    Then Add single-order form Item - Quantity 1, ID random, Description random
     Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
