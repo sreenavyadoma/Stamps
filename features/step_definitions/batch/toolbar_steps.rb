@@ -10,6 +10,11 @@ Then /^I Add a second order$/ do
   @order_id_2 = @single_order_form.order_id
 end
 
+When /^Click Print Button$/ do
+  log "Click Print Button"
+  batch.toolbar.click_print_button
+end
+
 Then /^I Add a third order$/ do
   @single_order_form = batch.toolbar.add
   @order_id_3 = @single_order_form.order_id
