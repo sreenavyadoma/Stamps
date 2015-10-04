@@ -15,24 +15,22 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Save Settings changes
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Australia | random  | random  |
-    
-    Then Set Ounces to 2
-    
-    Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    Then Set single-order form Ounces to 2
 
-    Then Set Customs Form Package Contents = Merchandise
+    And Open customs form
+
+    Then Set customs form Package Contents to "Merchandise"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
 
-    Then Close Customs Form
+    Then Close customs form
 
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And Click Print Button
 
@@ -45,24 +43,22 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     #Print an Int'l order and turn Auto-Confirm on
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Australia | random  | random  |
 
-    Then Set Ounces to 2
+    Then Set single-order form Ounces to 2
 
-    Then Add Item with Quantity 1, ID random, Description random
+    And Open customs form
 
-    And Open Customs Form
-
-    Then Set Customs Form Package Contents = Merchandise
+    Then Set customs form Package Contents to "Merchandise"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
 
-    Then Close Customs Form
+    Then Close customs form
 
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And Click Print Button
 
@@ -76,24 +72,23 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Save Settings changes
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Australia | random  | random  |
 
-    Then Set Ounces to 2
+    Then Set single-order form Ounces to 2
 
-    Then Add Item with Quantity 1, ID random, Description random
 
-    And Open Customs Form
+    And Open customs form
 
-    Then Set Customs Form Package Contents = Merchandise
+    Then Set customs form Package Contents to "Merchandise"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
 
-    Then Close Customs Form
+    Then Close customs form
 
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And Print
 
@@ -105,24 +100,21 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Save Settings changes
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Australia | random  | random  |
 
-    Then Set Ounces to 2
+    Then Set single-order form Ounces to 2
 
-    Then Add Item with Quantity 1, ID random, Description random
+    And Open customs form
 
-    And Open Customs Form
-
-    Then Set Customs Form Package Contents = Merchandise
+    Then Set customs form Package Contents to "Merchandise"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
-
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set customs form I agree to true
+    Then Close customs form
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And Print
 
@@ -134,24 +126,23 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Save Settings changes
 
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Australia | random  | random  |
 
-    Then Set Ounces to 2
+    Then Set single-order form Ounces to 2
 
-    Then Add Item with Quantity 1, ID random, Description random
+    And Open customs form
 
-    And Open Customs Form
-
-    Then Set Customs Form Package Contents = Merchandise
+    Then Set customs form Package Contents to "Merchandise"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set Customs Form I agree to true
-    Then Close Customs Form
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set customs form I agree to true
+    Then Close customs form
 
-    Then Set Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And Print
 
