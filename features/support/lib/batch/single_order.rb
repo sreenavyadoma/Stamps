@@ -520,9 +520,14 @@ module Batch
     def ship_from selection
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
       ship_from_default_selection = Label.new @browser.div :css => "div[data-recordindex='0']"
+      ship_from_dropdown = @browser.div :css => "div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]"
+      ship_from_textbox = Textbox.new @browser.text_field :css => "input[name^=shipfromdroplist]"
       if selection.downcase.eql? "default"
-        ship_from_dropdown.when_present.click
-        ship_from_default_selection.click
+        5.times{
+          ship_from_dropdown.safe_click
+          ship_from_default_selection.safe_click
+          break if ship_from_textbox.text.length > 2
+        }
         click_form
       else
         5.times {
