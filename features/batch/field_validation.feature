@@ -27,46 +27,46 @@ Feature: Add Missing Field Validation
 
   #@validate_length
   #Scenario: Add Missing Validation Logic for Dimensions (Length) where Service = Priority Mail AND Zone > 5
-    Then Set Ship-To address to
+    Then Set single-order form Ship-To address to
       | name      | company    | street_address     | city    | state | zip        | country       | phone           |  email            |
       | Joe Shmoe | Seven Zone | 1925 Florence Ave  | Kingman | AZ    | 86401-4617 | United States | (415) 123-5555  | rtest@stamps.com  |
 
-    Then Set Service to "Priority Mail Large/Thick Envelope"
-    Then Set Length to 0
-    Then Set Width to 1
-    Then Set Height to 1
+    Then Set single-order form Service to "Priority Mail Large/Thick Envelope"
+    Then Set single-order form Length to 0
+    Then Set single-order form Width to 1
+    Then Set single-order form Height to 1
     Then Expect Single Order Form length text box data error tooltip to be "Each dimension must be greater than 0"
 
-    Then Set Service to "Priority Mail Package"
-    Then Set Length to 0
-    Then Set Width to 2
-    Then Set Height to 2
+    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Length to 0
+    Then Set single-order form Width to 2
+    Then Set single-order form Height to 2
     Then Expect Single Order Form length text box data error tooltip to be "Each dimension must be greater than 0"
 
   #@validate_width
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where Service = Priority Mail AND Zone > 5
-    Then Set Service to "Priority Mail Large/Thick Envelope"
-    Then Set Length to 1
-    Then Set Width to 0
-    Then Set Height to 1
+    Then Set single-order form Service to "Priority Mail Large/Thick Envelope"
+    Then Set single-order form Length to 1
+    Then Set single-order form Width to 0
+    Then Set single-order form Height to 1
     Then Expect Single Order Form width text box data error tooltip to be "Each dimension must be greater than 0"
 
-    Then Set Service to "Priority Mail Package"
-    Then Set Length to 2
-    Then Set Width to 0
-    Then Set Height to 2
+    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Length to 2
+    Then Set single-order form Width to 0
+    Then Set single-order form Height to 2
     Then Expect Single Order Form width text box data error tooltip to be "Each dimension must be greater than 0"
 
   #@validate_height
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where Service = Priority Mail Large Envelope/Thick Envelope AND Zone ? 5
-    Then Set Service to "Priority Mail Large/Thick Envelope"
-    Then Set Length to 1
-    Then Set Width to 1
-    Then Set Height to 0
+    Then Set single-order form Service to "Priority Mail Large/Thick Envelope"
+    Then Set single-order form Length to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Height to 0
     Then Expect Single Order Form height text box data error tooltip to be "Each dimension must be greater than 0"
 
-    Then Set Service to "Priority Mail Package"
-    Then Set Length to 2
-    Then Set Width to 2
-    Then Set Height to 0
+    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Length to 2
+    Then Set single-order form Width to 2
+    Then Set single-order form Height to 0
     Then Expect Single Order Form height text box data error tooltip to be "Each dimension must be greater than 0"
