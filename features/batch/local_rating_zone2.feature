@@ -6,6 +6,7 @@ Feature: Local Rating Zone 1
   Background:
     Given I am signed in as a batch shipper gc/qacc/auto15/password1
 
+    @local_rating_zone_1
   Scenario Outline:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
     Then Set single-order form Ship-From to <ship_from>
@@ -16,7 +17,7 @@ Feature: Local Rating Zone 1
     Then Set single-order form Length to <length>
     Then Set single-order form Height to <height>
     Then Set single-order form Width to <width>
-    Then Expect Total to be $<total>
+    Then Expect single-order form Total to be $<total>
 
     Examples:
       | ship_from | ship_to                               | service               | weight_lbs  | weight_oz | length  | height  | width   | total   |

@@ -16,7 +16,7 @@ Feature: Local Rating Zone 1
     Then Set single-order form Length to <length>
     Then Set single-order form Height to <height>
     Then Set single-order form Width to <width>
-    Then Expect Total to be $<total>
+    Then Expect single-order form Total to be $<total>
 
     Examples:
       | ship_from | ship_to                               | service               | weight_lbs  | weight_oz | length  | height  | width   | total   |

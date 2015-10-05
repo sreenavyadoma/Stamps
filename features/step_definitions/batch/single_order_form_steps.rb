@@ -286,7 +286,7 @@ Then /^Expect Tracking to be ([\w\s]*)$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Total to be \$(.*)$/ do |expected|
+Then /^Expect single-order form Total to be \$(.*)$/ do |expected|
   begin
     actual = batch.single_order_form.total
     10.times { |counter|

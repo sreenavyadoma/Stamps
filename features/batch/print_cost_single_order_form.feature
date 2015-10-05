@@ -11,7 +11,7 @@ Feature: Printing total cost
     Then Expect Service Cost to be $0.00
     Then Expect Insurance Cost to be $0.00
     Then Expect Tracking Cost to be $0.00
-    Then Expect Total to be $0.00
+    Then Expect single-order form Total to be $0.00
 
     Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
