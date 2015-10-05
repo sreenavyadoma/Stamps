@@ -427,6 +427,10 @@ module Batch
     def print_button
       Button.new @browser.span :id => 'sdc-printwin-printbtn-btnInnerEl'
     end
+
+    def click_print_button
+      browser_helper.click print_button
+    end
   end
 
 
