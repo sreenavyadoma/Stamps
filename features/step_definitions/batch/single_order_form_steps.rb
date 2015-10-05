@@ -1,4 +1,9 @@
 
+
+And /^Set single-order form Ship-From to (\w+)$/ do |value|
+  batch.single_order_form.ship_from value
+end
+
 When /^Set single-order form Ship-To address to (.*)$/ do |address|
   log "Set single-order form Ship-To address to \"#{address}\""
   batch.single_order_form.ship_to random_ship_to(address)
@@ -119,10 +124,6 @@ end
 
 And /^Set single-order form Insured Value to \$([\d*\.?\d*]*)$/ do |value|
   batch.single_order_form.insured_value.set value
-end
-
-And /^Set single-order form Ship-From to (\w+)$/ do |value|
-  batch.single_order_form.ship_from value
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|

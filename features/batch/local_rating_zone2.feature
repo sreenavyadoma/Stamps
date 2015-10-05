@@ -1,5 +1,5 @@
 
-Feature: Local Rating Zone 1
+Feature: Local Rating Zone 2
   The automated tests should use the three from addresses in the "Zones" tab to test each of the 9 postal zones for accuracy.
   Ratesets CBP, CPP and the most common of the SAS rates should be tested.
 
