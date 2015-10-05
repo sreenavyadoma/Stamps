@@ -8,12 +8,12 @@ Feature: Print Multiple Orders
   Scenario:  Print 2 Orders
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Package"
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Package"
 
     And Edit row 1 on the order grid

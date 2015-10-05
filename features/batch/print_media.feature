@@ -8,7 +8,7 @@ Feature: Print Media
   Scenario:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Pounds to 1
     Then Set single-order form Ounces to 1
     Then Set single-order form Width to 1
@@ -43,7 +43,7 @@ Feature: Print Media
   Scenario:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Pounds to 1
     Then Set single-order form Ounces to 1
     Then Set single-order form Width to 1
@@ -56,7 +56,7 @@ Feature: Print Media
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Pounds to 1
     Then Set single-order form Ounces to 1
     Then Set single-order form Width to 1
@@ -69,7 +69,7 @@ Feature: Print Media
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Pounds to 1
     Then Set single-order form Ounces to 1
     Then Set single-order form Width to 1
@@ -82,7 +82,7 @@ Feature: Print Media
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Pounds to 1
     Then Set single-order form Ounces to 1
     Then Set single-order form Width to 1
@@ -95,7 +95,7 @@ Feature: Print Media
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Pounds to 1
     Then Set single-order form Ounces to 1
     Then Set single-order form Width to 1

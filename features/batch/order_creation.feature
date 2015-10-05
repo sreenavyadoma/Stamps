@@ -9,7 +9,7 @@ Feature: 10 orders
     # First Class Mail
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Package"
@@ -17,7 +17,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Package"
@@ -28,7 +28,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Package"
@@ -36,7 +36,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Large Package"
@@ -44,7 +44,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
@@ -52,7 +52,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Regional Rate Box A"
@@ -63,7 +63,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Express Package"
@@ -71,7 +71,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 11
     Then Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
@@ -81,7 +81,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 3
     Then Set single-order form Service to "Media Mail Package"
@@ -92,7 +92,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 10
     Then Set single-order form Service to "Parcel Select Large Package"
@@ -106,7 +106,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Package"
@@ -114,7 +114,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Package"
@@ -125,7 +125,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Package"
@@ -133,7 +133,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Large Package"
@@ -141,7 +141,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
@@ -149,7 +149,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Regional Rate Box A"
@@ -160,7 +160,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Express Package"
@@ -168,7 +168,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 11
     Then Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
@@ -178,7 +178,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 3
     Then Set single-order form Service to "Media Mail Package"
@@ -189,7 +189,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 10
     Then Set single-order form Service to "Parcel Select Large Package"
@@ -201,7 +201,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Package"
@@ -209,7 +209,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Package"
@@ -220,7 +220,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Package"
@@ -228,7 +228,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Large Package"
@@ -236,7 +236,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
@@ -244,7 +244,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Regional Rate Box A"
@@ -255,7 +255,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Service to "Priority Mail Express Package"
@@ -263,7 +263,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 11
     Then Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
@@ -273,7 +273,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 3
     Then Set single-order form Service to "Media Mail Package"
@@ -284,7 +284,7 @@ Feature: 10 orders
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 10
     Then Set single-order form Service to "Parcel Select Large Package"

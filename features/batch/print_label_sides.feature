@@ -8,7 +8,7 @@ Feature: Print Label Position
   Scenario:  B-01633 Change the starting label position I will print from - Print Left Side
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Service to "Priority Mail Package"
     And Open Print Modal
@@ -17,7 +17,7 @@ Feature: Print Label Position
     And Click Print Modal - Print button
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Service to "Priority Mail Package"
     And Open Print Modal
@@ -26,7 +26,7 @@ Feature: Print Label Position
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Service to "Priority Mail Package"
     And Open Print Modal
@@ -35,7 +35,7 @@ Feature: Print Label Position
     And Click Print Modal - Print button
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Service to "Priority Mail Package"
     And Open Print Modal

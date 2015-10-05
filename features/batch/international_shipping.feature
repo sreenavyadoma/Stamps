@@ -1,7 +1,7 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as a batch shipper gc/qacc/auto39/password1
+    Given I am signed in as a batch shipper ff/qacc/auto39/password1
 
   @international @regression @international_data_error @international_failure
   Scenario:  Customs Form Data Error
@@ -369,7 +369,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set Ship-To country to United States
-    Then Set single-order sorm Ship-To address to
+    Then Set single-order form Ship-To address to
       | name   | company      | street_address | city | state | zip         | country       | phone  |  email |
       | random | Domestic APO | Unit 15324     | APO  | AP    | 96205-5324  | United States | random | random |
     Then Set single-order form Service to "Priority Mail Package"
@@ -380,7 +380,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set Ship-To country to United States
-    Then Set single-order sorm Ship-To address to
+    Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | Uss Mason DDG 87  | FPO  | AE    | 09578  | United States | random | random |
     Then Set single-order form Service to "Priority Mail Package"
@@ -391,18 +391,18 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set Ship-To country to United States
-    Then Set single-order sorm Ship-To address to
+    Then Set single-order form Ship-To address to
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | random | Domestic DPO | Unit 8400, Box 0000 | DPO  | AE    | 09498-9997 | United States | random | random |
     Then Set single-order form Service to "Priority Mail Package"
     Then Print
 
-  @non_domestic_shipping @international @regression
+  @non_domestic_shipping @international @regression @apo_printing
   Scenario: APO Address
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set Ship-To country to United States
-    Then Set single-order sorm Ship-To address to
+    Then Set single-order form Ship-To address to
       | name   | company      | street_address | city | state | zip         | country       | phone  |  email |
       | random | Domestic APO | Unit 15324     | APO  | AP    | 96205-5324  | United States | random | random |
     Then Set single-order form Service to "Priority Mail Package"

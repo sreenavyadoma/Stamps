@@ -6,7 +6,7 @@ Feature: Postage Balance
     Given I am signed in as a batch shipper
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Service to "Priority Mail Package"
     Then Set single-order form Insured Value to $10.00

@@ -3,6 +3,7 @@ url_prefix:
   qacc:  printext.qacc
   qasc:  printext.qasc
   staging: print.staging
+  rating: printext.qacc
 
 shipping_addresses:
     zone1:

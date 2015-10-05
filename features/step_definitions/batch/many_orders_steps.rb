@@ -3,7 +3,7 @@ When /^Print (\d+) new orders with Address set to (.*) and Service set to (.*)$/
     step "I Add a new order"
     step "Set single-order form Ship-From to default"
     #SETTING RECIPIENT ADDRESS
-    step "Set single-order sorm Ship-To address to #{address}"
+    step "Set single-order form Ship-To address to #{address}"
     #SETTING SERVICE
     step "Set single-order form Service to #{service}"
     #PRINTING
@@ -16,7 +16,7 @@ Then /^Create (\d+) new orders with Address set to (.*) and Service set to (.*)$
     step "I Add a new order"
     step "Set single-order form Ship-From to default"
     #SETTING RECIPIENT ADDRESS
-    step "Set single-order sorm Ship-To address to #{address}"
+    step "Set single-order form Ship-To address to #{address}"
     #SETTING SERVICE
     step "Set single-order form Service to #{service}"
     log "Order #{iteration} created."

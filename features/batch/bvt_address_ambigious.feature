@@ -8,7 +8,7 @@ Feature:  BVT Ambigious Address
   Scenario: Ambigious Address
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to
+    Then Set single-order form Ship-To address to
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Joseph Balancio | Company Name | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect "Exact Address Not Found" module to appear

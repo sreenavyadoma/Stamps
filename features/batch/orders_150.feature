@@ -11,7 +11,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 1
     * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
@@ -21,7 +21,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 2
     * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
@@ -33,7 +33,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 3
     * Set single-order form Service to "Priority Mail Large/Thick Envelope"
@@ -42,7 +42,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 4
     * Set single-order form Service to "Priority Mail Package"
@@ -51,7 +51,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 5
     * Set single-order form Service to "Priority Mail Large Package"
@@ -61,7 +61,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 6
     * Set single-order form Service to "Priority Mail Flat Rate Envelope"
@@ -70,7 +70,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 7
     * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
@@ -80,7 +80,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 8
     * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
@@ -89,7 +89,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 9
     * Set single-order form Service to "Priority Mail Small Flat Rate Box"
@@ -99,7 +99,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 10
     * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
@@ -109,7 +109,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 11
     * Set single-order form Service to "Priority Mail Large Flat Rate Box"
@@ -119,7 +119,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 12
     * Set single-order form Service to "Priority Mail Regional Rate Box A"
@@ -129,7 +129,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 13
     * Set single-order form Service to "Priority Mail Regional Rate Box B"
@@ -139,7 +139,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 14
     * Set single-order form Service to "Priority Mail Regional Rate Box C"
@@ -151,7 +151,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 15
     * Set single-order form Service to "Priority Mail Express Package"
@@ -160,7 +160,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 16
     * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
@@ -169,7 +169,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 17
     * Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
@@ -178,7 +178,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 18
     * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -187,7 +187,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 19
     * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
@@ -198,7 +198,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 20
     * Set single-order form Service to "Media Mail Package"
@@ -210,7 +210,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 21
     * Set single-order form Service to "Parcel Select Package"
@@ -220,7 +220,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 22
     * Set single-order form Service to "Parcel Select Large Package"
@@ -230,7 +230,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 23
     * Set single-order form Service to "Parcel Select Oversized Package"
@@ -286,7 +286,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 1
     * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
@@ -296,7 +296,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 2
     * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
@@ -308,7 +308,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 3
     * Set single-order form Service to "Priority Mail Large/Thick Envelope"
@@ -317,7 +317,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 4
     * Set single-order form Service to "Priority Mail Package"
@@ -326,7 +326,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 5
     * Set single-order form Service to "Priority Mail Large Package"
@@ -336,7 +336,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 6
     * Set single-order form Service to "Priority Mail Flat Rate Envelope"
@@ -345,7 +345,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 7
     * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
@@ -355,7 +355,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 8
     * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
@@ -364,7 +364,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 9
     * Set single-order form Service to "Priority Mail Small Flat Rate Box"
@@ -374,7 +374,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 10
     * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
@@ -384,7 +384,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 11
     * Set single-order form Service to "Priority Mail Large Flat Rate Box"
@@ -394,7 +394,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 12
     * Set single-order form Service to "Priority Mail Regional Rate Box A"
@@ -404,7 +404,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 13
     * Set single-order form Service to "Priority Mail Regional Rate Box B"
@@ -414,7 +414,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 14
     * Set single-order form Service to "Priority Mail Regional Rate Box C"
@@ -426,7 +426,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 15
     * Set single-order form Service to "Priority Mail Express Package"
@@ -435,7 +435,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 16
     * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
@@ -444,7 +444,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 17
     * Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
@@ -453,7 +453,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 18
     * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -462,7 +462,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 19
     * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
@@ -473,7 +473,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 20
     * Set single-order form Service to "Media Mail Package"
@@ -485,7 +485,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 21
     * Set single-order form Service to "Parcel Select Package"
@@ -495,7 +495,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 22
     * Set single-order form Service to "Parcel Select Large Package"
@@ -505,7 +505,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 23
     * Set single-order form Service to "Parcel Select Oversized Package"
@@ -561,7 +561,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 1
     * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
@@ -571,7 +571,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 2
     * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
@@ -583,7 +583,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 3
     * Set single-order form Service to "Priority Mail Large/Thick Envelope"
@@ -592,7 +592,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 4
     * Set single-order form Service to "Priority Mail Package"
@@ -601,7 +601,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 5
     * Set single-order form Service to "Priority Mail Large Package"
@@ -611,7 +611,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 6
     * Set single-order form Service to "Priority Mail Flat Rate Envelope"
@@ -620,7 +620,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 7
     * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
@@ -630,7 +630,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 8
     * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
@@ -639,7 +639,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 9
     * Set single-order form Service to "Priority Mail Small Flat Rate Box"
@@ -649,7 +649,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 10
     * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
@@ -659,7 +659,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 11
     * Set single-order form Service to "Priority Mail Large Flat Rate Box"
@@ -669,7 +669,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 12
     * Set single-order form Service to "Priority Mail Regional Rate Box A"
@@ -679,7 +679,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 13
     * Set single-order form Service to "Priority Mail Regional Rate Box B"
@@ -689,7 +689,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 14
     * Set single-order form Service to "Priority Mail Regional Rate Box C"
@@ -701,7 +701,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 15
     * Set single-order form Service to "Priority Mail Express Package"
@@ -710,7 +710,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 16
     * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
@@ -719,7 +719,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 17
     * Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -728,7 +728,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 18
     * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -737,7 +737,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 19
     * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
@@ -748,7 +748,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 20
     * Set single-order form Service to "Media Mail Package"
@@ -760,7 +760,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 21
     * Set single-order form Service to "Parcel Select Package"
@@ -770,7 +770,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 22
     * Set single-order form Service to "Parcel Select Large Package"
@@ -780,7 +780,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 23
     * Set single-order form Service to "Parcel Select Oversized Package"
@@ -836,7 +836,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 1
     * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
@@ -846,7 +846,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 2
     * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
@@ -858,7 +858,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 3
     * Set single-order form Service to "Priority Mail Large/Thick Envelope"
@@ -867,7 +867,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 4
     * Set single-order form Service to "Priority Mail Package"
@@ -876,7 +876,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 5
     * Set single-order form Service to "Priority Mail Large Package"
@@ -886,7 +886,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 6
     * Set single-order form Service to "Priority Mail Flat Rate Envelope"
@@ -895,7 +895,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 7
     * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
@@ -905,7 +905,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 8
     * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
@@ -914,7 +914,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 9
     * Set single-order form Service to "Priority Mail Small Flat Rate Box"
@@ -924,7 +924,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 10
     * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
@@ -934,7 +934,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 11
     * Set single-order form Service to "Priority Mail Large Flat Rate Box"
@@ -944,7 +944,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 12
     * Set single-order form Service to "Priority Mail Regional Rate Box A"
@@ -954,7 +954,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 13
     * Set single-order form Service to "Priority Mail Regional Rate Box B"
@@ -964,7 +964,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 14
     * Set single-order form Service to "Priority Mail Regional Rate Box C"
@@ -976,7 +976,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 15
     * Set single-order form Service to "Priority Mail Express Package"
@@ -985,7 +985,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 16
     * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
@@ -994,7 +994,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 17
     * Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -1003,7 +1003,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 18
     * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -1012,7 +1012,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 19
     * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
@@ -1023,7 +1023,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 20
     * Set single-order form Service to "Media Mail Package"
@@ -1035,7 +1035,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 21
     * Set single-order form Service to "Parcel Select Package"
@@ -1045,7 +1045,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 22
     * Set single-order form Service to "Parcel Select Large Package"
@@ -1055,7 +1055,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 23
     * Set single-order form Service to "Parcel Select Oversized Package"
@@ -1111,7 +1111,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 1
     * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
@@ -1121,7 +1121,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 2
     * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
@@ -1133,7 +1133,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 3
     * Set single-order form Service to "Priority Mail Large/Thick Envelope"
@@ -1142,7 +1142,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 4
     * Set single-order form Service to "Priority Mail Package"
@@ -1151,7 +1151,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 5
     * Set single-order form Service to "Priority Mail Large Package"
@@ -1161,7 +1161,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 6
     * Set single-order form Service to "Priority Mail Flat Rate Envelope"
@@ -1170,7 +1170,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 7
     * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
@@ -1180,7 +1180,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 8
     * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
@@ -1189,7 +1189,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 9
     * Set single-order form Service to "Priority Mail Small Flat Rate Box"
@@ -1199,7 +1199,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 10
     * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
@@ -1209,7 +1209,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 11
     * Set single-order form Service to "Priority Mail Large Flat Rate Box"
@@ -1219,7 +1219,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 12
     * Set single-order form Service to "Priority Mail Regional Rate Box A"
@@ -1229,7 +1229,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 13
     * Set single-order form Service to "Priority Mail Regional Rate Box B"
@@ -1239,7 +1239,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 14
     * Set single-order form Service to "Priority Mail Regional Rate Box C"
@@ -1251,7 +1251,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 15
     * Set single-order form Service to "Priority Mail Express Package"
@@ -1260,7 +1260,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 16
     * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
@@ -1269,7 +1269,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 17
     * Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -1278,7 +1278,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 18
     * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -1287,7 +1287,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 19
     * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
@@ -1298,7 +1298,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 20
     * Set single-order form Service to "Media Mail Package"
@@ -1310,7 +1310,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 21
     * Set single-order form Service to "Parcel Select Package"
@@ -1320,7 +1320,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 22
     * Set single-order form Service to "Parcel Select Large Package"
@@ -1330,7 +1330,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 23
     * Set single-order form Service to "Parcel Select Oversized Package"
@@ -1386,7 +1386,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 1
     * Set single-order form Service to "First-Class Mail Large Envelope/Flat"
@@ -1396,7 +1396,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 2
     * Set single-order form Service to "First-Class Mail Package/Thick Envelope"
@@ -1408,7 +1408,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 3
     * Set single-order form Service to "Priority Mail Large/Thick Envelope"
@@ -1417,7 +1417,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 4
     * Set single-order form Service to "Priority Mail Package"
@@ -1426,7 +1426,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 5
     * Set single-order form Service to "Priority Mail Large Package"
@@ -1436,7 +1436,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 6
     * Set single-order form Service to "Priority Mail Flat Rate Envelope"
@@ -1445,7 +1445,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 7
     * Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
@@ -1455,7 +1455,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 8
     * Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
@@ -1464,7 +1464,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 9
     * Set single-order form Service to "Priority Mail Small Flat Rate Box"
@@ -1474,7 +1474,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 10
     * Set single-order form Service to "Priority Mail Medium Flat Rate Box"
@@ -1484,7 +1484,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 11
     * Set single-order form Service to "Priority Mail Large Flat Rate Box"
@@ -1494,7 +1494,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 12
     * Set single-order form Service to "Priority Mail Regional Rate Box A"
@@ -1504,7 +1504,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 13
     * Set single-order form Service to "Priority Mail Regional Rate Box B"
@@ -1514,7 +1514,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 14
     * Set single-order form Service to "Priority Mail Regional Rate Box C"
@@ -1526,7 +1526,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Ounces to 15
     * Set single-order form Service to "Priority Mail Express Package"
@@ -1535,7 +1535,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 16
     * Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
@@ -1544,7 +1544,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 17
     * Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -1553,7 +1553,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 18
     * Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -1562,7 +1562,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 19
     * Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
@@ -1573,7 +1573,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 20
     * Set single-order form Service to "Media Mail Package"
@@ -1585,7 +1585,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 21
     * Set single-order form Service to "Parcel Select Package"
@@ -1595,7 +1595,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 22
     * Set single-order form Service to "Parcel Select Large Package"
@@ -1605,7 +1605,7 @@ Feature: 150 orders
     * I Add a new order
     * Expect new Order ID created
     * Set single-order form Ship-From to default
-    * Set single-order sorm Ship-To address to random
+    * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 23
     * Set single-order form Service to "Parcel Select Oversized Package"

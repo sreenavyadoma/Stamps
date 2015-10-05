@@ -13,7 +13,7 @@ Feature: Printing total cost
     Then Expect Tracking Cost to be $0.00
     Then Expect Total to be $0.00
 
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Package"

@@ -52,7 +52,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to San
+    Then Set single-order form Ship-To address to San
     And Hide single-order form Ship-To fields
     Then Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
 

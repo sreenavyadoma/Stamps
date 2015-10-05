@@ -10,7 +10,7 @@
     Then Set single-order form Ship-From to default
     And Edit row 1 on the order grid
 
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
 
     Then Set single-order form Service to "Priority Mail Large/Thick Envelope"

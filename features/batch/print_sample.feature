@@ -11,7 +11,7 @@
     Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Parcel Select Large Package"
     And Hide single-order form Ship-To fields
     Then Print Sample
@@ -21,7 +21,7 @@
     Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Regional Rate Box A"
     And Open Print Modal
     Then Print Sample
@@ -31,7 +31,7 @@
     Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
     And Hide single-order form Ship-To fields
     Then Print Sample
@@ -41,7 +41,7 @@
     Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Express Package"
     And Hide single-order form Ship-To fields
     Then Print Sample
@@ -51,7 +51,7 @@
     Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Flat Rate Envelope"
     And Hide single-order form Ship-To fields
     Then Print Sample

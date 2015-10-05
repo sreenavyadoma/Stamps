@@ -8,7 +8,7 @@ Feature:  BVT Address Cleansing
   Scenario: Address Cleansing
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to
+    Then Set single-order form Ship-To address to
       | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect order-grid Zip to be 94102

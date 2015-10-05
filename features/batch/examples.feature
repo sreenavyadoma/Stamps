@@ -35,10 +35,10 @@ Feature: Examples
         Then Set single-order form Insured Value to $1.09
 
 
-        Then Set single-order sorm Ship-To address to random
+        Then Set single-order form Ship-To address to random
         And Hide single-order form Ship-To fields
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Media Mail Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -116,7 +116,7 @@ Feature: Examples
     Scenario: Priority Mail Large/Thick Envelope
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                                | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Large/Thick Envelope  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -133,7 +133,7 @@ Feature: Examples
     Scenario: Priority Mail Package
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -150,7 +150,7 @@ Feature: Examples
     Scenario: Priority Mail Large Package
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Large Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -167,7 +167,7 @@ Feature: Examples
     Scenario: Priority Mail Flat Rate Envelope
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -184,7 +184,7 @@ Feature: Examples
     Scenario: Priority Mail Padded Flat Rate Envelope
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Padded Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -201,7 +201,7 @@ Feature: Examples
     Scenario: Priority Mail Legal Flat Rate Envelope
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Legal Flat Rate Envelope| B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -218,7 +218,7 @@ Feature: Examples
     Scenario: Priority Mail Small Flat Rate Box
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Small Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -235,7 +235,7 @@ Feature: Examples
     Scenario: Priority Mail Medium Flat Rate Box
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                               | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Medium Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -252,7 +252,7 @@ Feature: Examples
     Scenario: Priority Mail Large Flat Rate Box
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Large Flat Rate Box | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -269,7 +269,7 @@ Feature: Examples
     Scenario: Priority Mail Regional Rate Box A
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Regional Rate Box A | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -286,7 +286,7 @@ Feature: Examples
     Scenario: Priority Mail Regional Rate Box B
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Regional Rate Box B | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -303,7 +303,7 @@ Feature: Examples
     Scenario: Priority Mail Regional Rate Box C
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Regional Rate Box C | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -320,7 +320,7 @@ Feature: Examples
     Scenario: Priority Mail Express Package
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                          | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Express Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -337,7 +337,7 @@ Feature: Examples
     Scenario: Priority Mail Express Flat Rate Envelope
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Express Flat Rate Envelope  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -356,7 +356,7 @@ Feature: Examples
     Scenario: Priority Mail Express Legal Flat Rate Envelope
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                      | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Express Legal Flat Rate Envelope | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -373,7 +373,7 @@ Feature: Examples
     Scenario: Priority Mail Express Medium Flat Rate Box
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Express Medium Flat Rate Box  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -390,7 +390,7 @@ Feature: Examples
     Scenario: Parcel Select Package
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                  | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Parcel Select Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set single-order form Service to "Parcel Select Package"
@@ -398,7 +398,7 @@ Feature: Examples
     Scenario: Parcel Select Large Package
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Parcel Select Large Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -415,7 +415,7 @@ Feature: Examples
     Scenario: Parcel Select Oversized Package
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name                            | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Parcel Select Oversized Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
@@ -432,7 +432,7 @@ Feature: Examples
     Scenario: Media Mail Package
         And I Add a new order
 
-        Then Set single-order sorm Ship-To address to
+        Then Set single-order form Ship-To address to
             | name               | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Media Mail Package | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with

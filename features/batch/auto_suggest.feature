@@ -11,7 +11,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching first name
 
-    Then Set single-order sorm Ship-To address to San
+    Then Set single-order form Ship-To address to San
 
     Then Expect Auto Suggest name shows Sandy Jones for entry 2
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 2
@@ -25,7 +25,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching last name
 
-    Then Set single-order sorm Ship-To address to San
+    Then Set single-order form Ship-To address to San
 
     Then Expect Auto Suggest name shows Mark Sanchez for entry 3
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 3
@@ -37,7 +37,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     #Matching City
 
 
-    Then Set single-order sorm Ship-To address to San
+    Then Set single-order form Ship-To address to San
 
     Then Expect Auto Suggest name shows James Jones for entry 1
     And Expect Auto Suggest location shows San Diego, CA, United States for entry 1
@@ -50,7 +50,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching Company
 
-    Then Set single-order sorm Ship-To address to San
+    Then Set single-order form Ship-To address to San
 
     Then Expect Auto Suggest name shows Albert Test, Santos Marketing for entry 4
     Then Expect Auto Suggest location shows El Segundo, CA, United States for entry 4
@@ -61,7 +61,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching Zip Code
 
-    Then Set single-order sorm Ship-To address to 794
+    Then Set single-order form Ship-To address to 794
 
     Then Expect Auto Suggest name shows Fred Davidson for entry 1
     Then Expect Auto Suggest location shows Lubbock, TX, United States for entry 1
@@ -72,7 +72,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching address1
 
-    Then Set single-order sorm Ship-To address to 591
+    Then Set single-order form Ship-To address to 591
 
     Then Expect Auto Suggest name shows Fred Davidson for entry 1
     Then Expect Auto Suggest location shows Lubbock, TX, United States for entry 1
@@ -83,7 +83,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching address2
 
-    Then Set single-order sorm Ship-To address to 330
+    Then Set single-order form Ship-To address to 330
 
     Then Expect Auto Suggest name shows Mark Sanchez for entry 1
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 1
@@ -94,7 +94,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching country
 
-    Then Set single-order sorm Ship-To address to Uni
+    Then Set single-order form Ship-To address to Uni
 
     Then Expect Auto Suggest name shows James Jones for entry 3
     And Expect Auto Suggest location shows San Diego, CA, United States for entry 3

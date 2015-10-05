@@ -1,10 +1,10 @@
 
-When /^Set single-order sorm Ship-To address to (.*)$/ do |address|
-  log "Set single-order sorm Ship-To address to \"#{address}\""
+When /^Set single-order form Ship-To address to (.*)$/ do |address|
+  log "Set single-order form Ship-To address to \"#{address}\""
   batch.single_order_form.ship_to random_ship_to(address)
 end
 
-And /^Set single-order sorm Ship-To address to$/ do |table|
+And /^Set single-order form Ship-To address to$/ do |table|
   param_hash = table.hashes.first
 
   name = (param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]

@@ -8,7 +8,7 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
   Scenario:  Printing
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Edit row 1 on the order grid
     Then Print expecting error A Service must be selected before printing.
 
@@ -20,10 +20,10 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Pounds to 1
     Then Set single-order form Ounces to 1

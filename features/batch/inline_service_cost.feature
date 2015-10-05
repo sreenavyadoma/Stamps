@@ -8,7 +8,7 @@ Feature: Ship-To Addresses
   Scenario:  System Calls GetRates When "Ship-To Address" is changed
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Expect inline Service Cost for Priority Mail Large/Thick Envelope to be greater than $0.01
     Then Expect inline Service Cost for Priority Mail Package to be greater than $0.01
     Then Expect inline Service Cost for Priority Mail Large Package to be greater than $0.01

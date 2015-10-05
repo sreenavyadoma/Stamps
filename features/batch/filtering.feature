@@ -7,7 +7,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
   Scenario: Print 1 order
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "First-Class Mail Large Envelope/Flat"
     Then Edit row 1 on the order grid
     Then Print
@@ -18,17 +18,17 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
   Scenario: Print 3 orders
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a second order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a third order
     Then Set single-order form Ship-From to default
-    Then Set single-order sorm Ship-To address to random
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Media Mail Package"
 
     Then Edit row 1 on the order grid
