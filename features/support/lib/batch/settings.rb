@@ -8,7 +8,7 @@ module Batch
     end
 
     def checkbox_array
-      @browser.inputs :css => 'input[id^=checkbox]'
+      @browser.spans :css => 'span[id^=checkbox]'
     end
 
     def drop_down_arrow_array
@@ -31,6 +31,10 @@ module Batch
       checkbox_array[2]
     end
 
+    def usps_terms_checkbox
+      checkbox_array[3]
+    end
+
     def save_contacts_checkbox
       checkbox_array[4]
     end
@@ -44,15 +48,15 @@ module Batch
     end
 
     def logoff_time_combo
-      drop_down_arrow_array[6]
+      drop_down_arrow_array[8]
     end
 
     def postdate_time_combo
-      drop_down_arrow_array[7]
+      drop_down_arrow_array[9]
     end
 
     def balance_notification_combo
-      drop_down_arrow_array[8]
+      drop_down_arrow_array[10]
     end
 
     def logoff_time
@@ -112,6 +116,11 @@ module Batch
       self
     end
 
+    def check_usps_terms
+      check_settings(3,usps_terms_checkbox)
+      self
+    end
+
     def check_save_contacts
       check_settings(4,save_contacts_checkbox)
       self
@@ -135,6 +144,11 @@ module Batch
 
     def uncheck_print_confirm_dialog
       uncheck_settings(2,print_confirm_dialog_checkbox)
+      self
+    end
+
+    def uncheck_usps_terms
+      uncheck_settings(3,usps_terms_checkbox)
       self
     end
 
