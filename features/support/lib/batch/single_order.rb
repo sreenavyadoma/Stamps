@@ -238,10 +238,6 @@ module Batch
       @browser.label(:css => 'label[class*=selected_tracking_cost]')
     end
 
-    def total_label
-      @browser.label(:text => 'Total').parent.labels.last
-    end
-
     #Auto Suggest Elements
 
     def auto_suggest_name_array
@@ -372,7 +368,8 @@ module Batch
     end
 
     def total
-      test_helper.remove_dollar_sign(browser_helper.text(total_label, "total"))
+      total_label = Label.new @browser.labels(:css => "label[class*='total_cost']").first
+      test_helper.remove_dollar_sign total_label.text
     end
 
     def total_amount_calculation
@@ -520,7 +517,7 @@ module Batch
     def ship_from selection
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
       ship_from_default_selection = Label.new @browser.div :css => "div[data-recordindex='0']"
-      ship_from_dropdown = Button.new @browser.div :css => "div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]"
+      ship_from_dropdown = Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
       ship_from_textbox = Textbox.new @browser.text_field :css => "input[name^=shipfromdroplist]"
       if selection.downcase.eql? "default"
         5.times{

@@ -4,7 +4,7 @@ Feature: Local Rating Zone 1
   Ratesets CBP, CPP and the most common of the SAS rates should be tested.
 
   Background:
-    Given I am signed in as a batch shipper ff/qacc/auto15/password1
+    Given I am signed in as a batch shipper gc/qacc/auto15/password1
 
   Scenario Outline:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
