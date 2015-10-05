@@ -373,6 +373,10 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | name   | company      | street_address | city | state | zip         | country       | phone  |  email |
       | random | Domestic APO | Unit 15324     | APO  | AP    | 96205-5324  | United States | random | random |
     Then Set single-order form Service to "Priority Mail Package"
+    And Open customs form
+    Then Set customs form Package Contents to "Merchandise"
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Close customs form
     Then Print
 
   @fpo_shipping @international @regression
@@ -384,6 +388,10 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | Uss Mason DDG 87  | FPO  | AE    | 09578  | United States | random | random |
     Then Set single-order form Service to "Priority Mail Package"
+    And Open customs form
+    Then Set customs form Package Contents to "Merchandise"
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Close customs form
     Then Print
 
   @dpo_shipping @international @regression
@@ -395,6 +403,10 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | random | Domestic DPO | Unit 8400, Box 0000 | DPO  | AE    | 09498-9997 | United States | random | random |
     Then Set single-order form Service to "Priority Mail Package"
+    And Open customs form
+    Then Set customs form Package Contents to "Merchandise"
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Close customs form
     Then Print
 
   @non_domestic_shipping @international @regression @apo_printing
@@ -408,4 +420,8 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Service to "Priority Mail Package"
     Then Expect Single Order Form Customs Edit Form button is visible
     Then Expect Single Order Form Customs Restrictions button is hidden
+    And Open customs form
+    Then Set customs form Package Contents to "Merchandise"
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Close customs form
     Then Print
