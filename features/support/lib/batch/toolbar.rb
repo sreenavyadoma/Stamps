@@ -112,20 +112,28 @@ module Batch
       xbutton
     end
 
+    def click_print_button
+      browser_helper.click browser_print_button
+    end
+
+    def usps_intl_terms
+      USPSTermsModal.new @browser
+    end
+
     def open_window window
       return window if window.present?
 
       browser_helper.click browser_print_button, "print"
 
+      usps_terms = USPSTermsModal.new @browser
+
+      if usps_terms.is_usps_terms_modal_present
+        usps_terms.check_dont_show_again_checkbox
+        usps_terms.click_i_agree_button
+      end
+
       order_grid = Grid.new @browser
       checked_rows_cache = order_grid.cache_checked_rows
-
-      usps_terms = UspsTerms.new @browser
-
-      if usps_terms.present?
-        usps_terms.dont_show_this_again true
-        usps_terms.i_agree.click_while_present
-      end
 
       naws_plugin_error = NawsPluginError.new @browser
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser

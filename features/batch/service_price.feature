@@ -7,8 +7,8 @@ Feature: User Views Price Next to Service Dropdown
   @inline_service_rates @regression
   Scenario:  User Views Price Next to Service Dropdown
     And I Add a new order
-    Then Set Ship From to default
-    Then Set Ship-To address to random
+    Then Set single-order form Ship-From to default
+    Then Set single-order form Ship-To address to random
     Then Expect Service Cost to be $0.00
     Then Expect inline Service Cost for First-Class Mail Large Envelope/Flat to be greater than $0.01
     Then Expect inline Service Cost for First-Class Mail Package/Thick Envelope to be greater than $0.01
@@ -32,7 +32,7 @@ Feature: User Views Price Next to Service Dropdown
     Then Expect inline Service Cost for Parcel Select Large Package to be greater than $0.01
     Then Expect inline Service Cost for Parcel Select Oversized Package to be greater than $0.01
     Then Expect inline Service Cost for Media Mail Package to be greater than $0.01
-    Then Expect Order Grid - Pounds to be 0
-    Then Expect Order Grid - Ounces to be 0
-    Then Expect Order Grid - Weight to be 0 lbs. 0 oz.
+    Then Expect order-grid Pounds to be 0
+    Then Expect order-grid Ounces to be 0
+    Then Expect order-grid Weight to be 0 lbs. 0 oz.
     And Sign out

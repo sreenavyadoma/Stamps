@@ -7,8 +7,8 @@ Feature: Ship-To Addresses
   @inline_service_rates @regression
   Scenario:  System Calls GetRates When "Ship-To Address" is changed
     And I Add a new order
-    Then Set Ship From to default
-    Then Set Ship-To address to random
+    Then Set single-order form Ship-From to default
+    Then Set single-order form Ship-To address to random
     Then Expect inline Service Cost for Priority Mail Large/Thick Envelope to be greater than $0.01
     Then Expect inline Service Cost for Priority Mail Package to be greater than $0.01
     Then Expect inline Service Cost for Priority Mail Large Package to be greater than $0.01
@@ -29,9 +29,9 @@ Feature: Ship-To Addresses
     Then Expect inline Service Cost for Parcel Select Large Package to be greater than $0.01
     Then Expect inline Service Cost for Parcel Select Oversized Package to be greater than $0.01
     Then Expect inline Service Cost for Media Mail Package to be greater than $0.01
-    Then Expect Order Grid - Pounds to be 0
-    Then Expect Order Grid - Ounces to be 0
-    Then Expect Order Grid - Weight to be 0 lbs. 0 oz.
+    Then Expect order-grid Pounds to be 0
+    Then Expect order-grid Ounces to be 0
+    Then Expect order-grid Weight to be 0 lbs. 0 oz.
     And Sign out
 
 

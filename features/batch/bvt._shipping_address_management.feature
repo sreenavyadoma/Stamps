@@ -7,7 +7,7 @@ Feature:  BVT Address Management
   @bvt_shipping_address_management
   Scenario: Shipping Address Management
     And I Add a new order
-    And Add new random Ship-From address
+    And Add Ship-From address random
     Then Expect random Ship-From address was added
     And Delete random Ship-From address
     And Delete all Ship-From address

@@ -1,10 +1,15 @@
 
-When /^Set Ship-To address to (.*)$/ do |address|
-  log "Set Ship-To address to \"#{address}\""
+
+And /^Set single-order form Ship-From to (\w+)$/ do |value|
+  batch.single_order_form.ship_from value
+end
+
+When /^Set single-order form Ship-To address to (.*)$/ do |address|
+  log "Set single-order form Ship-To address to \"#{address}\""
   batch.single_order_form.ship_to random_ship_to(address)
 end
 
-And /^Set Ship-To address to$/ do |table|
+And /^Set single-order form Ship-To address to$/ do |table|
   param_hash = table.hashes.first
 
   name = (param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]
@@ -39,9 +44,9 @@ And /^Set Ship-To address to$/ do |table|
   @ambiguous_address_module = batch.single_order_form.ship_to param_hash
 end
 
-When /^Set Phone to (.*)$/ do |value|
+When /^Set single-order form Phone to (.*)$/ do |value|
   begin
-    log "Set Phone to \"#{value}\""
+    log "Set single-order form Phone to \"#{value}\""
     batch.single_order_form.phone.set log_param "Phone", value
   end unless value.length == 0
 end
@@ -65,64 +70,60 @@ When /^Expect system (.*) Single Order Form$/ do |status|
   end
 end
 
-When /^Click Ship-To Less link$/ do
-  log "Click Ship-To Less link..."
+When /^Hide single-order form Ship-To fields$/ do
+  log "Hide single-order form Ship-To fields..."
   batch.single_order_form.hide_ship_to
   log "done."
   #end_step step
 end
 
-When /^Set Pounds to (\d*)$/ do |value|
+When /^Set single-order form Pounds to (\d*)$/ do |value|
   begin
-    log "Set Pounds to \"#{value}\""
+    log "Set single-order form Pounds to \"#{value}\""
     batch.single_order_form.lbs.set log_param "Pounds", value
   end unless value.length == 0
 end
 
-When /^Set Ounces to (\d*)$/ do |value|
+When /^Set single-order form Ounces to (\d*)$/ do |value|
   begin
-    log "Set Ounces to \"#{value}\""
+    log "Set single-order form Ounces to \"#{value}\""
     batch.single_order_form.oz.set log_param"Ounces", value
   end unless value.length == 0
 end
 
-When /^Set Length to (\d*)$/ do |value|
+When /^Set single-order form Length to (\d*)$/ do |value|
   begin
-    log "Set Length to \"#{value}\""
+    log "Set single-order form Length to \"#{value}\""
     batch.single_order_form.length.set log_param "Length", value
   end unless value.length == 0
 end
 
-When /^Set Width to (\d*)$/ do |value|
+When /^Set single-order form Width to (\d*)$/ do |value|
   begin
-    log "Set Width to \"#{value}\""
+    log "Set single-order form Width to \"#{value}\""
     batch.single_order_form.width.set log_param "Width", value
   end unless value.length == 0
 end
 
-When /^Set Height to (\d*)$/ do |value|
+When /^Set single-order form Height to (\d*)$/ do |value|
   begin
-    log "Set Height to \"#{value}\""
+    log "Set single-order form Height to \"#{value}\""
     batch.single_order_form.height.set log_param "Height", value
   end unless value.length == 0
 end
 
-And /^Set Service to \"(.*)\"$/ do |service|
+And /^Set single-order form Service to \"(.*)\"$/ do |service|
   batch.single_order_form.service service
 end
 
-Then /^Set Tracking to ([\w ]*)$/ do |value|
+Then /^Set single-order form Tracking to ([\w ]*)$/ do |value|
   begin
     batch.single_order_form.tracking = log_param "Tracking", value
   end unless value.length == 0
 end
 
-And /^Set Insured Value to \$([\d*\.?\d*]*)$/ do |value|
+And /^Set single-order form Insured Value to \$([\d*\.?\d*]*)$/ do |value|
   batch.single_order_form.insured_value.set value
-end
-
-And /^Set Ship From to (\w+)$/ do |value|
-  batch.single_order_form.ship_from value
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
@@ -138,11 +139,11 @@ When /^Set order details with$/ do |table|
   batch.single_order_form.edit_details log_hash_param table.hashes.first
 end
 
-Then /^Add new Ship-From address$/ do |ship_from|
+Then /^Add Ship-From address$/ do |ship_from|
   batch.single_order_form.manage_shipping_addresses.add ship_from.hashes.first
 end
 
-Then /^Add new (\w+) Ship-From address$/ do |address|
+Then /^Add Ship-From address (\w+)$/ do |address|
   @ship_from_address = batch.single_order_form.manage_shipping_addresses.add(randomize_ship_from(address))
   log "Random address added: #{@ship_from_address}"
 end
@@ -178,7 +179,7 @@ Then /^Delete all Ship-From addresses and fail test if delete fails$/ do
   batch.single_order_form.manage_shipping_addresses.delete_all.should be_deleted
 end
 
-Then /^Set Ship From to Manage Shipping Addresses$/ do
+Then /^Set single-order form Ship-From to Manage Shipping Addresses$/ do
   batch.single_order_form.manage_shipping_addresses.add table.hashes.first
 end
 
@@ -286,7 +287,7 @@ Then /^Expect Tracking to be ([\w\s]*)$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Total to be \$(.*)$/ do |expected|
+Then /^Expect single-order form Total to be \$(.*)$/ do |expected|
   begin
     actual = batch.single_order_form.total
     10.times { |counter|

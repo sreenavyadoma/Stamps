@@ -6,7 +6,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international @regression @international_data_error @international_failure
   Scenario:  Customs Form Data Error
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
