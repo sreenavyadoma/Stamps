@@ -19,9 +19,9 @@ Feature: Local Rating Zone 1
     Then Expect single-order form Total to be $<total>
 
     Examples:
-      | ship_from | ship_to                               | service               | weight_lbs  | weight_oz | length  | height  | width   | total   |
-      | default   | 1339 W Willow St, Long Beach, CA 90810| Priority Mail Package | 1           | 0         | 1       | 1       | 1       | 5.05    |
-      | default   | 1339 W Willow St, Long Beach, CA 90810| Priority Mail Package | 2           | 0         | 1       | 0       | 0       | 5.05    |
+      | ship_from | ship_to                                                       |service                            |weight_lbs |weight_oz  |length |height |width  |total  |
+      | default   | TestName, TestCompany, 1339 W Willow St, Long Beach, CA 90810 | Priority Mail Package             | 1         | 0         | 1     | 1     | 1     | 5.05  |
+      | default   | TestCompany, 1339 W Willow St, Long Beach, CA 90810           | Priority Mail Package             | 2         | 0         | 1     | 0     | 0     | 5.05  |
 
 
 

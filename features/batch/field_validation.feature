@@ -6,7 +6,7 @@ Feature: Add Missing Field Validation
   @validate_international
   Scenario: Add Missing Validation Logic for Phone and International Email
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
     Then Set Ship-To country to Australia
     Then Set International Ship-To name to "random"
     Then Set International Ship-To phone to ""
@@ -19,7 +19,7 @@ Feature: Add Missing Field Validation
   @validate_domestic
   Scenario: Add Missing Validation Logic for Domestic Fields
     And I Add a new order
-    Then Set Ship From to default
+    Then Set single-order form Ship-From to default
 
   #  Add Missing Validation Logic for Email
     Then Set Email to @@
