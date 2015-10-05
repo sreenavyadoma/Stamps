@@ -29,5 +29,12 @@ Given /^Expect Single Order Form (.+) text box data error tooltip to be \"(.+)\"
     else
       raise "Illegal Argument Exception.  #{field} is not a valid field. - Expect Validation Error #{field} to be #{value}"
   end
+end
 
+Given /^Expect Grid ship cost data error tooltip to be \"(.+)\"$/ do |value|
+  grid_order_id = batch.grid.order_id 1
+  grid_ship_cost = batch.grid.ship_cost grid_order_id
+  browser_error_message = grid_ship_cost.attribute_value "data-errorqtip"
+  browser_error_message.should include value
+  log "Error message is #{browser_error_message}"
 end

@@ -11,6 +11,7 @@ Feature: Add Missing Field Validation
     Then Set International Ship-To name to "random"
     Then Set International Ship-To phone to ""
     Then Expect Single Order Form phone text box data error tooltip to be "The ship to phone number is a required field"
+    Then Expect Grid ship cost data error tooltip to be "The ship to phone number is a required field"
     Then Set International Ship-To email to "@@"
     Then Expect Single Order Form email text box data error tooltip to be "Please enter a valid email address"
 
@@ -18,6 +19,7 @@ Feature: Add Missing Field Validation
   Scenario: Add Missing Validation Logic for Domestic Fields
     And I Add a new order
     Then Set Ship From to default
+
   #  Add Missing Validation Logic for Email
     Then Set Email to @@
     Then Expect Single Order Form email text box data error tooltip to be "Please enter a valid email address"
@@ -36,8 +38,8 @@ Feature: Add Missing Field Validation
 
     Then Set Service to "Priority Mail Package"
     Then Set Length to 0
-    Then Set Width to 1
-    Then Set Height to 1
+    Then Set Width to 2
+    Then Set Height to 2
     Then Expect Single Order Form length text box data error tooltip to be "Each dimension must be greater than 0"
 
   #@validate_width
@@ -49,9 +51,9 @@ Feature: Add Missing Field Validation
     Then Expect Single Order Form width text box data error tooltip to be "Each dimension must be greater than 0"
 
     Then Set Service to "Priority Mail Package"
-    Then Set Length to 1
+    Then Set Length to 2
     Then Set Width to 0
-    Then Set Height to 1
+    Then Set Height to 2
     Then Expect Single Order Form width text box data error tooltip to be "Each dimension must be greater than 0"
 
   #@validate_height
@@ -63,7 +65,7 @@ Feature: Add Missing Field Validation
     Then Expect Single Order Form height text box data error tooltip to be "Each dimension must be greater than 0"
 
     Then Set Service to "Priority Mail Package"
-    Then Set Length to 1
-    Then Set Width to 1
+    Then Set Length to 2
+    Then Set Width to 2
     Then Set Height to 0
     Then Expect Single Order Form height text box data error tooltip to be "Each dimension must be greater than 0"
