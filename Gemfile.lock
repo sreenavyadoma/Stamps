@@ -44,13 +44,13 @@ GEM
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
     rubyzip (1.1.7)
-    selenium-webdriver (2.47.1)
+    selenium-webdriver (2.45.0)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    watir-webdriver (0.8.0)
-      selenium-webdriver (>= 2.46.2)
+    watir-webdriver (0.7.0)
+      selenium-webdriver (>= 2.45)
     websocket (1.2.2)
     yml_reader (0.5)
 
@@ -65,8 +65,8 @@ DEPENDENCIES
   rake
   rspec
   rspec-expectations
-  selenium-webdriver
-  watir-webdriver
+  selenium-webdriver (= 2.45.0)
+  watir-webdriver (= 0.7.0)
 
 BUNDLED WITH
    1.10.6

@@ -21,6 +21,7 @@ require_relative 'lib/batch/batch_helper'
 require_relative 'lib/batch/fields'
 
 #Profile Patch
+
 module Selenium
   module WebDriver
     module Firefox
