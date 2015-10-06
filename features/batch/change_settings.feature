@@ -10,6 +10,7 @@ Feature: Change Settings
     Then Open Settings Modal
     Then Check Show Unavailable Services
     Then Check Dont Show Print Confirmation Dialog
+    Then Check USPS Terms in Settings Modal
     Then Check Save Delivery Addresses
     Then Check Email Shipment Notifications
     Then Check Email Shipment Deliveries
@@ -18,10 +19,13 @@ Feature: Change Settings
     Then Open Settings Modal
     Then Expect Show Unavailable Services Checked
     Then Expect Dont Show Print Confirmation Dialog Checked
+    Then Expect USPS Terms Checked in Settings Modal
     Then Expect Save Delivery Addresses Checked
-    #Then Expect Email Shipment Notifications Checkedc
+    Then Expect Email Shipment Notifications Checked
+    Then Expect Email Shipment Deliveries Checked
     Then Uncheck Show Unavailable Services
     Then Uncheck Dont Show Print Confirmation Dialog
+    Then Uncheck USPS Terms in Settings Modal
     Then Uncheck Save Delivery Addresses
     Then Uncheck Email Shipment Notifications
     Then Uncheck Email Shipment Deliveries
@@ -30,6 +34,7 @@ Feature: Change Settings
     Then Open Settings Modal
     Then Expect Show Unavailable Services Unchecked
     Then Expect Dont Show Print Confirmation Dialog Unchecked
+    Then Expect USPS Terms Unchecked in Settings Modal
     Then Expect Save Delivery Addresses Unchecked
     Then Expect Email Shipment Notifications Unchecked
     Then Expect Email Shipment Deliveries Unchecked
