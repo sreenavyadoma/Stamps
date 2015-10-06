@@ -52,19 +52,25 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order form Ship-To address to San
-    And Hide single-order form Ship-To fields
-    Then Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
+    Then Set Ship-To country to United States
+    Then Set single-order form Ship-To address to
+      | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
+      | James Test | Domestic Company | 600 Front St Apt 220 | San Diego | CA | 92101-6733 | United States | 8885551212 | test@stamps.com |
+    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Ounces to 1
 
     Then Click on Awaiting Shipment Filter
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
 
     And Expect Single Order Form Order ID equals Grid order ID
     Then Expect order-grid Recipient to be James Test
-    Then Expect order-grid Address to be 600 Front St Apt 232
+    Then Expect order-grid Company to be Domestic Company
+    Then Expect order-grid Address to be 600 Front St Apt 220
     Then Expect order-grid City to be San Diego
     Then Expect order-grid State to be CA
     Then Expect order-grid Zip to be 92101
+    Then Expect order-grid Phone to be 8885551212
+    Then Expect order-grid Email to be test@stamps.com
 
     Then Print
 
@@ -72,12 +78,15 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And Expect system selects Shipped Filter and deselects the previous filter
     And Expect system hides Single Order Form
 
-    Then Expect order-grid Age to be 0 minutes ago
     Then Expect order-grid Recipient to be James Test
-    Then Expect order-grid Address to be 600 Front St Apt 232
+    Then Expect order-grid Company to be Domestic Company
+    Then Expect order-grid Address to be 600 Front St Apt 220
     Then Expect order-grid City to be San Diego
     Then Expect order-grid State to be CA
     Then Expect order-grid Zip to be 92101
+    Then Expect order-grid Phone to be 8885551212
+    Then Expect order-grid Email to be test@stamps.com
+
 
     And I Add a new order
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
