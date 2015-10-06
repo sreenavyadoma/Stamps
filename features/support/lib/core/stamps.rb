@@ -42,22 +42,8 @@ module Stamps
         browser_name = 'Internet Explorer'
 
       elsif Stamps.browser.firefox?
-        system "gem list"
         system "taskkill /im firefox.exe /f"
-        #Selenium::WebDriver::Firefox::Profile.webdriver_profile_directory = 'C:/selenium/firefox/test-profile'
-        #disk = Selenium::WebDriver::Firefox::Profile.new
-        #dir = disk.layout_on_disk
-        #driver = Watir::Browser.new :firefox
-        Selenium::WebDriver::Firefox::Profile.webdriver_profile_directory = 'C:/selenium/firefox/test-profile'
-        profile = Selenium::WebDriver::Firefox::Profile.new 'C:/selenium/firefox/test-profile'
-        profile.layout_on_disk
-        profile.native_events = false
-
-        driver = Watir::Browser.new :firefox, :profile => profile
-
-        #driver = Watir::Browser.new WEB_DRIVER, :profile => profile
-
-        #driver = Watir::Browser.new :firefox, :profile => Selenium::WebDriver::Firefox::Profile.webdriver_profile_directory
+        driver = Watir::Browser.new :firefox, :profile => "selenium"
         browser_name = 'Mozilla Firefox'
 
       elsif Stamps.browser.chrome?
@@ -90,8 +76,6 @@ module Stamps
       raise e
     end
   end
-
-
 
   def self.teardown
     @browser.quit unless @browser == nil
