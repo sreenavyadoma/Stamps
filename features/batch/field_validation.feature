@@ -3,7 +3,7 @@ Feature: Add Missing Field Validation
   Background:
     Given I am signed in as a batch shipper ff/webpost_0001/pass111
 
-  @validate_international
+  @validate_international @rob_test1
   Scenario: Add Missing Validation Logic for Phone and International Email
     And I Add a new order
     Then Set single-order form Ship-From to default

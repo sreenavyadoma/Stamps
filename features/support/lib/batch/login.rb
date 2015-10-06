@@ -115,6 +115,11 @@ module Batch
             username_textbox.wait_until_present
             username_textbox.set username
             password_textbox.set password
+
+            sign_in_button.safe_click
+            sign_in_button.safe_double_click
+            sign_in_button.safe_click
+            sign_in_button.safe_double_click
             sign_in_button.click_while_present
 
             break if toolbar.present? #|| grid.present?

@@ -99,8 +99,12 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
 
   case ship_to_field.downcase
     when "name"
-      name_textbox = @international_ship_to.name
-      name_textbox.set ((value.downcase == "random")? test_helper.random_name : value)
+      if value.length == 0
+        @international_ship_to.name.send_keys :tab
+        @international_ship_to.name.send_keys :tab
+      else
+        @international_ship_to.name.set ((value.downcase == "random")? test_helper.random_name : value)
+      end
     when "company"
       company_textbox = @international_ship_to.company
       company_textbox.send_keys :tab
@@ -126,9 +130,12 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
       postal_code.send_keys :tab
       @international_ship_to.postal_code.set ((value.downcase == "random")? test_helper.random_name : value)
     when "phone"
-      phone = @international_ship_to.phone
-      phone.send_keys :tab
-      phone.set ((value.downcase == "random")? test_helper.random_phone : value)
+      if value.length == 0
+        @international_ship_to.phone.send_keys :tab
+        @international_ship_to.phone.send_keys :tab
+      else
+        @international_ship_to.phone.set ((value.downcase == "random")? test_helper.random_name : value)
+      end
     when "email"
       email = @international_ship_to.email
       email.send_keys :tab

@@ -314,6 +314,14 @@ module Stamps
         browser_helper.safe_click @field
       end
 
+      def double_click
+        browser_helper.double_click @field
+      end
+
+      def safe_double_click
+        browser_helper.safe_double_click @field
+      end
+
       def click_while_present
         20.times{
           safe_click
@@ -349,10 +357,8 @@ module Stamps
       def checked?
         begin
           attrib_val = browser_helper.attribute_value @verify_field, @attribute
-          if attrib_val == "true"
-            return true
-          elsif attrib_val == "false"
-            return false
+          if attrib_val == "true" || attrib_val == "false"
+            return attrib_val == "true"
           else
             checked = attrib_val.include? @checked_tester
             log "Checkbox checked? #{checked}"
@@ -678,6 +684,14 @@ module Stamps
             log_browser_click args[0], args[1]
           else
             raise "Wrong number of arguments."
+        end
+      end
+
+      def safe_double_click *args
+        begin
+          double_click *args
+        rescue
+          #ignore
         end
       end
 
