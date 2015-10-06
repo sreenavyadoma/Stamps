@@ -15,7 +15,6 @@ Feature: Add Missing Field Validation
     Then Set International Ship-To email to "@@"
     Then Expect Single Order Form email text box data error tooltip to be "Please enter a valid email address"
 
-
   @validate_domestic
   Scenario: Add Missing Validation Logic for Domestic Fields
     And I Add a new order
