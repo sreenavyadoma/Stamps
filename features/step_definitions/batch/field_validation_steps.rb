@@ -1,21 +1,28 @@
 
-Given /^Expect Single Order Form Phone data error tooltip to be \"(.+)\"$/ do |value|
-  phone_text_box = @international_ship_to.phone
-  browser_error_message = phone_text_box.attribute_value "data-errorqtip"
+Given /^Expect Single Order Form International Name data error tooltip to be \"(.+)\"$/ do |value|
+  text_box = @international_ship_to.name
+  browser_error_message = text_box.data_error_qtip
   browser_error_message.should include value
   log "Error message is #{browser_error_message}"
 end
 
-Given /^Expect Single Order Form Email data error tooltip to be \"(.+)\"$/ do |value|
-  email_text_box = @single_order_form.email
-  browser_error_message = email_text_box.attribute_value "data-errorqtip"
+Given /^Expect Single Order Form International Phone data error tooltip to be \"(.+)\"$/ do |value|
+  text_box = @international_ship_to.phone
+  browser_error_message = text_box.attribute_value "data-errorqtip"
+  browser_error_message.should include value
+  log "Error message is #{browser_error_message}"
+end
+
+Given /^Expect Single Order Form International Email data error tooltip to be \"(.+)\"$/ do |value|
+  text_box = @single_order_form.email
+  browser_error_message = text_box.attribute_value "data-errorqtip"
   browser_error_message.should include value
   log "Error message is #{browser_error_message}"
 end
 
 Given /^Expect Single Order Form Length data error tooltip to be \"(.+)\"$/ do |value|
-  length_text_box = @single_order_form.length
-  browser_error_message = length_text_box.attribute_value "data-errorqtip"
+  text_box = @single_order_form.length
+  browser_error_message = text_box.attribute_value "data-errorqtip"
   browser_error_message.should include value
   log "Error message is #{browser_error_message}"
 end
