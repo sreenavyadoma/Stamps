@@ -17,6 +17,7 @@ Feature: 25 orders
     And Set single-order form Service to "First-Class Mail Large Envelope/Flat"
     And Set single-order form Insured Value to $15.00
     And Set single-order form Tracking to None
+    Then Uncheck row 1 on the order grid
 
     Then I Add a new order
     And Expect new Order ID created
@@ -27,6 +28,7 @@ Feature: 25 orders
     And Set single-order form Service to "First-Class Mail Package/Thick Envelope"
     And Set single-order form Insured Value to $45.00
     And Set single-order form Tracking to USPS Tracking
+    Then Uncheck row 1 on the order grid
 
     #Priority Mail
 
@@ -34,7 +36,8 @@ Feature: 25 orders
     And Expect new Order ID created
     And Set single-order form Ship-From to default
     And Set single-order form Ship-To address to random
-    
+    Then Uncheck row 1 on the order grid
+
     And Set single-order form Ounces to 3
     And Set single-order form Service to "Priority Mail Large/Thick Envelope"
     And Set single-order form Tracking to USPS Tracking
