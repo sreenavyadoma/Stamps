@@ -155,7 +155,7 @@ module Batch
       label_selected? left_label_div
     end
 
-    def print_modal
+    def print
       5.times {
         begin
           sleep(1)
