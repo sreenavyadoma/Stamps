@@ -50,7 +50,7 @@ module Stamps
         profile.layout_on_disk
         profile.native_events = false
 
-        driver = Watir::Browser.new :firefox, :profile => profile
+        driver = Watir::Browser.new :firefox #, :profile => profile
 
         #driver = Watir::Browser.new WEB_DRIVER, :profile => profile
 
