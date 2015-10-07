@@ -42,7 +42,6 @@ module Stamps
         browser_name = 'Internet Explorer'
 
       elsif Stamps.browser.firefox?
-        system "gem list"
         system "taskkill /im firefox.exe /f"
         #driver = Watir::Browser.new :firefox
         firefox_profile_dir = File.join("C:", "watir-webdriver", "firefox", "test-profile")
