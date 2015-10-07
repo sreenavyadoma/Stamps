@@ -399,6 +399,7 @@ module Stamps
       def data_error_field data_error_field, error_attribute
         @data_error_field = data_error_field
         @error_attribute = error_attribute
+        self
       end
 
       def data_error_qtip

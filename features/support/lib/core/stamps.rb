@@ -45,16 +45,15 @@ module Stamps
         system "gem list"
         system "taskkill /im firefox.exe /f"
         #driver = Watir::Browser.new :firefox
-        Selenium::WebDriver::Firefox::Profile.webdriver_profile_directory = 'C:/selenium/firefox/test-profile'
-        profile = Selenium::WebDriver::Firefox::Profile.new 'C:/selenium/firefox/test-profile'
+        firefox_profile_dir = File.join("C:", "watir-webdriver", "firefox", "test-profile")
+        Dir.mkdir firefox_profile_dir unless Dir.exist? firefox_profile_dir
+        Selenium::WebDriver::Firefox::Profile.webdriver_profile_directory = firefox_profile_dir
+        profile = Selenium::WebDriver::Firefox::Profile.new firefox_profile_dir
         profile.layout_on_disk
         profile.native_events = false
 
-        driver = Watir::Browser.new :firefox #, :profile => profile
+        driver = Watir::Browser.new :firefox
 
-        #driver = Watir::Browser.new WEB_DRIVER, :profile => profile
-
-        #driver = Watir::Browser.new :firefox, :profile => Selenium::WebDriver::Firefox::Profile.webdriver_profile_directory
         browser_name = 'Mozilla Firefox'
 
       elsif Stamps.browser.chrome?
