@@ -4,7 +4,7 @@ Feature: Thermal Printer
   Background:
     Given I am signed in as a batch shipper ff/qacc/auto15/password1
 
-  @thermal_printing
+  @thermal_printing @rob_test1
   Scenario:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
     Then Set single-order form Ship-From to default
