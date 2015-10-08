@@ -13,7 +13,7 @@ Feature: Add Missing Field Validation
     Then Expect Single Order Form International Phone data error tooltip to be "The ship to phone number is a required field"
     Then Expect Grid ship cost data error tooltip to be "The ship to phone number is a required field"
     Then Set International Ship-To email to "@@"
-    Then Expect Single Order Form Email data error tooltip to be "Please enter a valid email address"
+    Then Expect Single Order Form International Email data error tooltip to be "Please enter a valid email address"
 
   @validate_domestic
   Scenario: Add Missing Validation Logic for Domestic Fields
@@ -22,7 +22,7 @@ Feature: Add Missing Field Validation
 
   #  Add Missing Validation Logic for Email
     Then Set Email to @@
-    Then Expect Single Order Form Email data error tooltip to be "Please enter a valid email address"
+    Then Expect Single Order Form International Email data error tooltip to be "Please enter a valid email address"
 
   #@validate_length
   #Scenario: Add Missing Validation Logic for Dimensions (Length) where Service = Priority Mail AND Zone > 5
