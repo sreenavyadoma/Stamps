@@ -1,8 +1,8 @@
 Feature: Test Development
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in as a batch shipper ff/qacc/auto40/password1
 
     @rob_dev
   Scenario:
-    Then Test Features
+    Then Expect order-grid Ship Cost error to contain "Some error"

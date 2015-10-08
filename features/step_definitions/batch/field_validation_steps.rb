@@ -76,3 +76,17 @@ Given /^Expect Grid ship cost data error tooltip to be \"(.+)\"$/ do |value|
   browser_error_message.should include value
   log "Error message is #{browser_error_message}"
 end
+
+Then /^Expect order-grid Ship Cost error to contain \"(.*)\"$/ do |expectation|
+  # 81453
+  # 81408
+  # 81407
+  ship_cost_error = batch.grid.ship_cost_error "81453"
+  log ship_cost_error
+
+  ship_cost_error = batch.grid.ship_cost_error "81408"
+  log ship_cost_error
+
+  ship_cost_error = batch.grid.ship_cost_error "81407"
+  log ship_cost_error
+end

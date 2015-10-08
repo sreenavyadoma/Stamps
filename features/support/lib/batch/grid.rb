@@ -272,6 +272,18 @@ module Batch
       grid_text(:ship_cost, row)
     end
 
+
+    def ship_cost_error order_id
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}"
+
+      ship_cost_field = grid_field :ship_cost, row
+      div = ship_cost_field.div
+      data_error = browser_helper.attribute_value div, "data-qtip"
+      log data_error
+      data_error
+    end
+
     def age order_id
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
