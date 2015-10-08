@@ -16,8 +16,4 @@ Feature:  BVT Wonderment
     Then Set single-order form Height to 1
     Then Set single-order form Insured Value to $1.00
     Then Set single-order form Service to "Priority Mail Package"
-    Then Expect order-grid Pounds to be 1
-    Then Expect order-grid Ounces to be 1
-    Then Expect order-grid Weight to be 1 lbs. 1 oz.
-    Then Expect order-grid Insured Value to be $1.00
     And Sign out
