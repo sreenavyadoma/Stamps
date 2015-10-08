@@ -13,11 +13,19 @@ module Batch
     end
 
     def company
-      Textbox.new @browser.text_field :name => "Company"
+      field = Textbox.new @browser.text_field :name => "Company"
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[1]
+      field.data_error_field data_error_field, "data-errorqtip"
+      field
     end
 
     def address_1
-      Textbox.new @browser.text_field :name => "Address1"
+      field = Textbox.new @browser.text_field :name => "Address1"
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[2]
+      field.data_error_field data_error_field, "data-errorqtip"
+      field
     end
 
     def address_2
@@ -25,7 +33,11 @@ module Batch
     end
 
     def city
-      Textbox.new @browser.text_field :name => "City"
+      field = Textbox.new @browser.text_field :name => "City"
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[3]
+      field.data_error_field data_error_field, "data-errorqtip"
+      field
     end
 
     def province
@@ -37,11 +49,19 @@ module Batch
     end
 
     def phone
-      Textbox.new (@browser.text_fields :name => "Phone").last
+      field = Textbox.new (@browser.text_fields :name => "Phone").last
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[5]
+      field.data_error_field data_error_field, "data-errorqtip"
+      field
     end
 
     def email
-      Textbox.new (@browser.text_fields :name => "Email").last
+      field = Textbox.new (@browser.text_fields :name => "Email").last
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[6]
+      field.data_error_field data_error_field, "data-errorqtip"
+      field
     end
 
     def country

@@ -412,6 +412,9 @@ module Batch
       click_form
       textbox = Textbox.new @browser.text_field :name => 'Email'
       expand_ship_to
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[0]
+      textbox.data_error_field data_error_field, "data-errorqtip"
       textbox
     end
 
