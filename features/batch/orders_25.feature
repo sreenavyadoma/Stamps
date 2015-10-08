@@ -1,7 +1,7 @@
 Feature: 25 orders
 
   Background:
-    Given I am signed in as a batch shipper ff/joeshmoe_0027/pass111
+    Given I am signed in as a batch shipper ff/auto01/password1
 
   @orders_25
   Scenario:  Inline Rates

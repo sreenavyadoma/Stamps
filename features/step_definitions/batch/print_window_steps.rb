@@ -48,6 +48,10 @@ Then /^Select Print Media \"(.*)\"$/ do |print_media|
   batch.toolbar.print_modal.print_media.select print_media
 end
 
+Then /^Select Printer \"(.*)\"$/ do |printer|
+  batch.toolbar.print_modal.printer.select printer
+end
+
 Then /^Expect Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, expected_value|
   @print_window = batch.toolbar.print_modal
   actual_value = @print_window.print_media.selection :tooltip, print_media

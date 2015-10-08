@@ -7,7 +7,7 @@ end
 
 When /^Uncheck row (\d+) on the order grid$/ do |row|
   log "Uncheck row \"#{row}\" on the order grid"
-  batch.grid.uncheck row
+  batch.grid.uncheck_row row
   #end_step step
 end
 

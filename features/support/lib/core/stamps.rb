@@ -61,6 +61,7 @@ module Stamps
 
       elsif Stamps.browser.firefox?
         system "taskkill /im firefox.exe /f"
+        sleep 2
         #driver = Watir::Browser.new :firefox
         firefox_profile_dir = File.join("C:", "watir-webdriver", "firefox", "test-profile")
         Dir.mkdir firefox_profile_dir unless Dir.exist? firefox_profile_dir

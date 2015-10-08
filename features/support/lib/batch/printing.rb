@@ -66,6 +66,12 @@ module Batch
       print_options *args
     end
 
+    def printer
+      drop_down = @browser.div :id => "div#sdc-printpostagewindow-printerdroplist-trigger-picker"
+      input = @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
+      Dropdown.new @browser, drop_down, :li, input
+    end
+
     def print_media
       drop_down = @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
       input = @browser.text_field :css => "input[name^=printmediadroplist]"
