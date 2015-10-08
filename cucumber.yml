@@ -1,11 +1,16 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
-default_profile: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=auto39 PW=password1
+default_profile: --tags @validate_international --guess URL=qacc BROWSER=ff USR=auto01 PW=password1
+
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto28 PW=password1
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto29 PW=password1
 bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto30 PW=password1
+
+validate_international_qacc_ff: --tags @validate_international --guess URL=qacc BROWSER=ff USR=webpost_0001 PW=pass111
+validate_international_qacc_gc: --tags @validate_international --guess URL=qacc BROWSER=gc USR=webpost_0001 PW=pass111
+validate_international_qacc_ie: --tags @validate_international --guess URL=qacc BROWSER=ie USR=webpost_0001 PW=pass111
 
 regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto35 PW=password1
 regress_qacc_ff: --tags @regression --guess URL=qacc BROWSER=ff USR=auto11 PW=password1
