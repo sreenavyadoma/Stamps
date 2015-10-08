@@ -1,19 +1,7 @@
-Feature: Add Missing Field Validation
+Feature: Domestic Field Validation
 
   Background:
     Given I am signed in as a batch shipper
-
-  @validate_international @rob_test1
-  Scenario: Add Missing Validation Logic for Phone and International Email
-    And I Add a new order
-    Then Set single-order form Ship-From to default
-    Then Set Ship-To country to Australia
-    Then Set International Ship-To name to "random"
-    Then Set International Ship-To phone to ""
-    Then Expect Single Order Form International Phone data error tooltip to be "The ship to phone number is a required field"
-    Then Expect Grid ship cost data error tooltip to be "The ship to phone number is a required field"
-    Then Set International Ship-To email to "@@"
-    Then Expect Single Order Form Email data error tooltip to be "Please enter a valid email address"
 
   @validate_domestic
   Scenario: Add Missing Validation Logic for Domestic Fields
@@ -22,7 +10,8 @@ Feature: Add Missing Field Validation
 
   #  Add Missing Validation Logic for Email
     Then Set Email to @@
-    Then Expect Single Order Form Email data error tooltip to be "Please enter a valid email address"
+    Then Set single-order form Service to "Priority Mail Large/Thick Envelope"
+    Then Expect Single Order Form Domestic Email data error tooltip to be "Please enter a valid email address"
 
   #@validate_length
   #Scenario: Add Missing Validation Logic for Dimensions (Length) where Service = Priority Mail AND Zone > 5
@@ -45,27 +34,27 @@ Feature: Add Missing Field Validation
   #@validate_width
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where Service = Priority Mail AND Zone > 5
     Then Set single-order form Service to "Priority Mail Large/Thick Envelope"
-    Then Set single-order form Length to 1
+    Then Set single-order form Length to 3
     Then Set single-order form Width to 0
-    Then Set single-order form Height to 1
+    Then Set single-order form Height to 3
     Then Expect Single Order Form Width data error tooltip to be "Each dimension must be greater than 0"
 
     Then Set single-order form Service to "Priority Mail Package"
-    Then Set single-order form Length to 2
+    Then Set single-order form Length to 4
     Then Set single-order form Width to 0
-    Then Set single-order form Height to 2
+    Then Set single-order form Height to 4
     Then Expect Single Order Form Width data error tooltip to be "Each dimension must be greater than 0"
 
   #@validate_height
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where Service = Priority Mail Large Envelope/Thick Envelope AND Zone ? 5
     Then Set single-order form Service to "Priority Mail Large/Thick Envelope"
-    Then Set single-order form Length to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Height to 0
+    Then Set single-order form Length to 5
+    Then Set single-order form Width to 5
     Then Expect Single Order Form Height data error tooltip to be "Each dimension must be greater than 0"
 
     Then Set single-order form Service to "Priority Mail Package"
-    Then Set single-order form Length to 2
-    Then Set single-order form Width to 2
     Then Set single-order form Height to 0
+    Then Set single-order form Length to 6
+    Then Set single-order form Width to 6
     Then Expect Single Order Form Height data error tooltip to be "Each dimension must be greater than 0"
