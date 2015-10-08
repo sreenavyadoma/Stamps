@@ -3,7 +3,7 @@ require 'cucumber'
 require 'cucumber/rake/task'
 
 Cucumber::Rake::Task.new(:wonderment_bvt_qacc_ff) do |t|
-  t.profile = 'validate_international_qacc_ff'
+  t.profile = 'wonderment_bvt_qacc_ff'
   t.cucumber_opts = "-p cuke_reports"
 end
 
