@@ -6,6 +6,7 @@ include RSpec
 include RSpec::Matchers
 include DataMagic
 
+log Stamps.os
 
 Before do  |scenario|
   log_step "#{scenario.name} :: BEGIN"

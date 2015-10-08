@@ -10,6 +10,8 @@ require 'rspec'
 require 'date'
 require "set"
 require 'fileutils'
+require 'rbconfig'
+
 
 # Stamps module
 require_relative 'lib/core/browser'
