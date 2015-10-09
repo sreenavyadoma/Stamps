@@ -35,9 +35,9 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
     Then Set single-order form Service to "Priority Mail Package"
-    Then Open Print Settings
-    Then Select new option "Shipping Label 5.5 x 8.5"
-    Then Click Save button
+    #Then Open Print Settings
+    #Then Select new option "Shipping Label 5.5 x 8.5"
+    #Then Click Save button
     Then Expect saves settings to "5.5 x 8.5 Shipping Labels"
 
   Scenario: Shipping Label 5.5 x 8.5 layout is printed
