@@ -21,6 +21,7 @@ Feature: International Field Validation
     Then Set International Ship-To email to "@@"
     Then Set single-order form Service to "First-Class Mail International Large Envelope"
     Then Expect Single Order Form International Email data error tooltip to be "Please enter a valid email address"
+    Then Expect order-grid Ship Cost error to contain "A First Name and Last Name or Company are required"
     #Then Expect Grid ship cost data error tooltip to be "The ship to phone number is a required field"
     #Then Set International Ship-To email to "@@"
     #Then Expect Single Order Form International Email data error tooltip to be "Please enter a valid email address"
