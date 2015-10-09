@@ -9,7 +9,6 @@ Feature: Local Rating Zone 1
     Then I Add a new order
     Then Set single-order form Ship-From to <ship_from>
     Then Set single-order form Ship-To address to <ship_to>
-    Then delete this
     Then Set single-order form Service to "<service>"
     Then Set single-order form Pounds to <weight_lbs>
     Then Set single-order form Ounces to <weight_oz>
@@ -27,5 +26,4 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810|Priority Mail Large/Thick Envelope|3|0|0|0|0|USPS Tracking|5.49|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810|Priority Mail Large/Thick Envelope|4|0|0|0|0|USPS Tracking|6.16|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810|Priority Mail Large/Thick Envelope|5|0|0|0|0|USPS Tracking|6.78|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810|Priority Mail Large/Thick Envelope|6|0|0|0|0|USPS Tracking|6.95|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810|Priority Mail Large/Thick Envelope|6|0|0|0|0|USPS Tracking|6.95|
