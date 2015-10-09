@@ -62,3 +62,8 @@ change_settings_qacc_ie: --tags @settings --guess URL=qacc BROWSER=ie USR=auto31
 change_settings_qacc_ff: --tags @settings --guess URL=qacc BROWSER=ff USR=auto32 PW=password1
 change_settings_qacc_gc: --tags @settings --guess URL=qacc BROWSER=gc USR=auto33 PW=password1
 
+
+thermal_printing_qacc_ie: --tags @thermal_printing --guess URL=qacc BROWSER=ie USR=auto19 PW=password1
+thermal_printing_qacc_ff: --tags @thermal_printing --guess URL=qacc BROWSER=ff USR=auto20 PW=password1
+thermal_printing_qacc_gc: --tags @thermal_printing --guess URL=qacc BROWSER=gc USR=auto21 PW=password1
+

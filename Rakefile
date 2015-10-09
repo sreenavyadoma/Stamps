@@ -221,3 +221,18 @@ Cucumber::Rake::Task.new(:change_settings_qacc_ff) do |t|
   t.profile = 'change_settings_qacc_ff'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:thermal_printing_qacc_ie) do |t|
+  t.profile = 'thermal_printing_qacc_ie'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:thermal_printing_qacc_gc) do |t|
+  t.profile = 'thermal_printing_qacc_gc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:thermal_printing_qacc_ff) do |t|
+  t.profile = 'thermal_printing_qacc_ff'
+  t.cucumber_opts = "-p cuke_reports"
+end
