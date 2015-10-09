@@ -278,9 +278,15 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}"
 
       ship_cost_field = grid_field :ship_cost, row
-      div = ship_cost_field.div
-      data_error = browser_helper.attribute_value div, "data-qtip"
-      log data_error
+
+      begin
+        div = ship_cost_field.div
+        data_error = browser_helper.attribute_value div, "data-qtip"
+      rescue
+        data_error = ""
+      end
+
+      log "#{order_id} data-qtip error:  #{(data_error.length==0)?"None":data_error}"
       data_error
     end
 
