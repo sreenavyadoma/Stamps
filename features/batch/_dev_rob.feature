@@ -5,4 +5,5 @@ Feature: Test Development
 
     @rob_dev
   Scenario:
+    And I Add a new order
     Then Expect order-grid Ship Cost error to contain "Some error"

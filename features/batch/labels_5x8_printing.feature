@@ -13,10 +13,10 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Set single-order form Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
-    Then View Print On option Shipping Label 5.5 x 8.5 tooltip
-    Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Use these letter-sized label sheets with two 5 ½” x 8 ½” labels per sheet to print postage, addresses, and tracking barcode."
-    Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. destination."
-    Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783"
+    #Then View Print On option Shipping Label 5.5 x 8.5 tooltip
+    #Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Use these letter-sized label sheets with two 5 ½” x 8 ½” labels per sheet to print postage, addresses, and tracking barcode."
+   # Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. destination."
+    #Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783"
     Then Click Print Modal - Print button
 
 
@@ -103,6 +103,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario:  User prints postage for domestic on Shipping Label 5.5 x 8.5
     And I Add a new order
     Then Set single-order form Ship-From to default
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -115,22 +116,15 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to
-      | name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
-      | Jessie Joe      | The House               | 330 Island  Ave     | Wilmington    | CA    | 90744 | United States |        |        |
+      | name            | company                 | street_address      | city          | state | zip        | country       | phone  |  email |
+      | Jessie Joe      | The CN 22 House         | PSC 819 BOX 1       | FPO           | AE    | 09645-0001 | United States |        |        |
     Then Set single-order form Service to "Priority Mail Package"
     Then Set single-order form Ounces to 5
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
-
     And Open customs form
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 20, Weight(lbs) 0, Weight(oz) 5 Origin United States, Tariff 10
-
-
-
-
-
-
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
     Then Click Print Modal - Print button
@@ -140,19 +134,17 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to
-      | name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
-      | Jessie Joe      | The House               | 330 Island  Ave     | Wilmington    | CA    | 90744 | United States |        |        |
+      | name            | company                 | street_address      | city          | state | zip        | country       | phone  |  email |
+      | Tammmy Moo      | The CP72 House          | Unit 15324          | APO           | AP    | 96205-5324 | United States |        |        |
     Then Set single-order form Service to "Priority Mail Package"
     Then Set single-order form Pounds to 3
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
-
     And Open customs form
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 20, Weight(lbs) 1, Weight(oz) 0 Origin United States, Tariff 10
     Then Set customs form I agree to true
     Then Close customs form
-
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
     Then Click Print Modal - Print button

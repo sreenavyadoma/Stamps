@@ -84,6 +84,12 @@ Then /^Expect order-grid Ship Cost error to contain \"(.*)\"$/ do |expectation|
 
   #  Ray, pass the order id of the order you're expecting to have errors, it wlll give you the error string from the data-qtip property for that div.
 
+  grid_order_id = batch.grid.order_id 1
+  log "Grid order id is #{grid_order_id}"
+  ship_cost_error = batch.grid.ship_cost_error grid_order_id
+  log ship_cost_error
+  ship_cost_error.should include expectation
+
   ship_cost_error = batch.grid.ship_cost_error "81453"
   log ship_cost_error
 
