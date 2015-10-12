@@ -11,7 +11,7 @@ require 'date'
 require "set"
 require 'fileutils'
 require 'rbconfig'
-
+require "csv"
 
 # Stamps module
 require_relative 'lib/core/browser'

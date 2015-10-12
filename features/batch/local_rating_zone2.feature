@@ -11,7 +11,7 @@ Feature: Local Rating Zone 2
     And I Add a new order
     Then Set single-order form Ship-From to <ship_from>
     Then Set single-order form Ship-To address to <ship_to>
-    Then Set single-order form Service to <service>
+    Then Set single-order form Service to "<service>"
     Then Set single-order form Pounds to <weight_lbs>
     Then Set single-order form Ounces to <weight_oz>
     Then Set single-order form Length to <length>

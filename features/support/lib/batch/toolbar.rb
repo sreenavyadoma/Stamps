@@ -181,15 +181,19 @@ module Batch
 
     def add
       single_order_form = SingleOrderForm.new @browser
+      order_grid = Grid.new @browser
       add_button = Button.new @browser.span :text => 'Add'
       7.times do |count|
         begin
-          sleep 1
-          add_button.click unless single_order_form.present?
+          old_grid_order_id = order_grid.order_id 1
+          add_button.safe_click
+          sleep 2
           log "#{count} Single Order Form present?  #{single_order_form.present?}"
           single_order_form.wait_until_present
-          sleep 1
-          return single_order_form if single_order_form.present?
+          new_grid_order_id = order_grid.order_id 1
+          single_order_form_order_id = single_order_form.order_id
+          new_id = old_grid_order_id != new_grid_order_id && new_grid_order_id == single_order_form_order_id
+          return single_order_form if new_id
         rescue
           #ignore
         end
