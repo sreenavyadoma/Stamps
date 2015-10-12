@@ -10,7 +10,11 @@ Feature: Test Development
     Then Set Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
-      | random | Domestic FPO | Uss Mason DDG 87  | FPO  | AE    | 09578  | United States | random | random |
+      | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail Package"
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"

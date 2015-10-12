@@ -10,8 +10,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
-    Then Set single-order form Ounces to 1
-    Then Set single-order form Pounds to 1
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
+
     Then Add single-order form Item - Quantity 1, ID random, Description random
 
     And Open customs form
@@ -27,8 +32,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
-    Then Set single-order form Ounces to 1
-    Then Set single-order form Pounds to 1
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
+
     Then Add single-order form Item - Quantity 1, ID random, Description random
 
     And Open customs form
@@ -53,8 +63,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
-    Then Set single-order form Ounces to 1
-    Then Set single-order form Pounds to 1
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
+
     Then Add single-order form Item - Quantity 1, ID random, Description random
 
     And Open customs form
@@ -81,6 +96,12 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
 
     Then Expect Single Order Form International Address fields are visible
     Then Expect Single Order Form Domestic Ship-To fields are hidden
@@ -158,8 +179,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-    Then Set single-order form Ounces to 1
-    Then Set single-order form Pounds to 1
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
+
     Then Add single-order form Item - Quantity 1, ID random, Description random
     Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
@@ -181,6 +207,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Iran    | random  | random  |
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
+
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be Required
     Then Set customs form Package Contents to "Commercial Sample"
@@ -212,6 +245,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
+
     #Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be Required
@@ -244,6 +284,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
+
     #Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be Required
@@ -277,6 +324,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
+
     #Then Set single-order form Service to Priority Mail International Flat Rate Envelope
     And Open customs form
     Then Set customs form Package Contents to "Commercial Sample"
@@ -310,6 +364,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea    | random  | random  |
     #Then Set single-order form Service to Priority Mail International Flat Rate Envelope
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
+
     And Open customs form
     Then Set customs form Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be Required
@@ -341,6 +402,14 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
     #Then Set single-order form Service to "First-Class Mail International Large Envelope"
+
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Service to "Priority Mail Package"
+
+    Then Set single-order form Ounces to 5
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be Not required
     Then Set customs form Package Contents to "Commercial Sample"
@@ -371,8 +440,13 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
-      | random | Domestic FPO | Uss Mason DDG 87  | FPO  | AE    | 09578  | United States | random | random |
+      | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
+    Then Set single-order form Ounces to 5
+    Then Set single-order form Length to 1
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail Package"
+
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
