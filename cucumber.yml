@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
-default_profile: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=auto01 PW=password1
+default_profile: --tags @canadian_address_rob --guess URL=qacc BROWSER=ff USR=auto01 PW=password1
 
 add_new_order_eva_qacc: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cctest1 PW=password1
 
