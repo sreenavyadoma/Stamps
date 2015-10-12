@@ -17,7 +17,8 @@ module Batch
   class CustomsFields < BatchObject
 
     def browser_edit_form_button
-      Button.new @browser.span :text => "Edit Form..."
+      links = @browser.links :css => "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
+      Link.new links.first
     end
 
     def edit_form
@@ -308,8 +309,8 @@ module Batch
 
     def service service
       log_param "Service Selection", service
-      dd = @browser.div :css => 'div[id^=servicedroplist-][id$=-trigger-picker]'
-      input = @browser.text_field :css => 'input[name^=servicedroplist-]'
+      dd = @browser.div(:css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]")
+      input = @browser.text_field :css => "input[name^=servicedroplist]"
       service_dd = Dropdown.new @browser, dd, :li, input
       selection_field = @browser.td :css => "tr[data-qtip*='#{service}']>td:nth-child(2)"
       service_dd.select selection_field

@@ -82,7 +82,7 @@ module Batch
     def sign_in *args
       username_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:username_loc])
       password_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:password_loc])
-      sign_in_button = Button.new @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
+      sign_in_button = Button.new @browser.button :id => "signInButton"
       grid = Grid.new @browser
       navigation = Navigation.new @browser
       welcome_modal = WelcomeModal.new @browser
@@ -124,12 +124,6 @@ module Batch
 
             break if toolbar.present? #|| grid.present?
 
-            begin
-              navigation.orders.click
-            rescue Exception => e
-              log e
-            end
-
             if welcome_modal.present?
               welcome_modal.ok
               break
@@ -154,7 +148,7 @@ module Batch
             #ignore
           end
 
-          grid.wait_until_present
+          sleep 1
           break if toolbar.present? #|| grid.present?
 
           load_url
