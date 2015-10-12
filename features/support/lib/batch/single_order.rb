@@ -23,8 +23,8 @@ module Batch
     def edit_form
       @customs_form = CustomsForm.new @browser
       edit_form_button = browser_edit_form_button
-      5.times{
-        browser_helper.safe_click edit_form_button
+      20.times{
+        edit_form_button.safe_click
         break if @customs_form.present?
       }
       raise "Customs Information Modal is not visible." unless @customs_form.present?
