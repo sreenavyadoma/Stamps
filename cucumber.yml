@@ -3,7 +3,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty
 
 default_profile: --tags @_dev_rob --guess URL=qacc BROWSER=gc USR=auto01 PW=password1
 
-add_new_order_eva_qacc: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cctest1 PW=password1
+add_new_order_eva_qacc: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cctest2 PW=password1
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto28 PW=password1
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto29 PW=password1
