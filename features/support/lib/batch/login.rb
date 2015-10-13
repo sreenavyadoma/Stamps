@@ -121,6 +121,11 @@ module Batch
 
               begin
                 (@browser.input :id => "signInButton").send_keys :enter
+              rescue
+                #ignore
+              end
+
+              begin
                 (@browser.input :id => "signInButton").send_keys :enter
               rescue
                 #ignore
