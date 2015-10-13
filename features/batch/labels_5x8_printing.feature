@@ -1,8 +1,10 @@
 Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Background:
-  Given I am signed in as a batch shipper ie/satya/cctest1/password1
+  Given I am signed in as a batch shipper
 
+
+  @label_5x8_printing
   Scenario: User can select a new option in the Print Postage On combobox: Shipping Label - 5.5 x 8.5
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -19,7 +21,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     #Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783"
     Then Click Print Modal - Print button
 
-
+  @label_5x8_printing
   Scenario: User can select this new option by searching in the combobox or selecting it via the combobox menu.
     And I Add a new order
     Then Set single-order form Width to 1
@@ -29,6 +31,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
 
+  @label_5x8_printing
   Scenario: Able to save print setting for Shipping Labels 5.5 x 8.5
     And I Add a new order
     Then Set single-order form Width to 1
@@ -40,6 +43,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     #Then Click Save button
     Then Expect saves settings to "5.5 x 8.5 Shipping Labels"
 
+  @label_5x8_printing
   Scenario: Shipping Label 5.5 x 8.5 layout is printed
     And I Add a new order
     Then Set single-order form Width to 1
@@ -51,6 +55,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Click Print Modal - Print button
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
 
+  @label_5x8_printing
   Scenario: Print Shipping Label 5.5 x 8.5 Sample
     And I Add a new order
     Then Set single-order form Width to 1
@@ -61,7 +66,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
     Then Print Sample
 
-
+  @label_5x8_printing
   Scenario: When select to print multiple Shipping Label 5.5 x 8.5 labels, only one Sample prints
     #Create order 1
     And I Add a new order
@@ -99,7 +104,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Print Sample
     Then Expect system will only print first order
 
-
+  @label_5x8_printing
   Scenario:  User prints postage for domestic on Shipping Label 5.5 x 8.5
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -112,6 +117,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
     Then Click Print Modal - Print button
 
+  @label_5x8_printing
   Scenario:  User prints postage for CN22 Shipping Label 5.5 x 8.5
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -129,7 +135,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
     Then Click Print Modal - Print button
 
-
+  @label_5x8_printing
   Scenario:  User prints postage for CP72 Shipping Label 5.5 x 8.5
     And I Add a new order
     Then Set single-order form Ship-From to default
