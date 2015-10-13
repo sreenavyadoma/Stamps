@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
-default_profile: --tags @international_shipping_field_validation --guess URL=qacc BROWSER=gc USR=auto01 PW=password1
+default_profile: --tags @local_rating --guess URL=qacc BROWSER=gc USR=auto01 PW=password1
 
 add_new_order_eva_qacc: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cctest2 PW=password1
 
