@@ -175,7 +175,7 @@ module Batch
             break if toolbar.present? #|| grid.present?
 
             log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
-            load_url
+            #load_url
           rescue Exception => e
             log e
           end
