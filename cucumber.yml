@@ -1,13 +1,15 @@
 default: --profile cuke_reports --profile default_profile
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
-default_profile: --tags @local_rating --guess URL=qacc BROWSER=gc USR=auto01 PW=password1
+default_profile: --tags @local_rating_zone1 --guess URL=qacc BROWSER=gc USR=auto01 PW=password1
 
 add_new_order_eva_qacc: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cctest2 PW=password1
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto28 PW=password1
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto29 PW=password1
 bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto30 PW=password1
+
+local_rating_qacc_ff: --tags @local_rating --guess URL=qacc BROWSER=ff USR=dj_cctest-01 PW=postage1
 
 wonderment_bvt_qacc_ff: --tags @wonderment_bvt --guess URL=qacc BROWSER=ff USR=auto05 PW=password1
 

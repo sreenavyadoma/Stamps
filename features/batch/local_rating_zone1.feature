@@ -6,7 +6,7 @@ Feature: Local Rating Zone 1
   Background:
     Given I am signed in as a batch shipper ff/qacc/dj_cctest-01/postage1
 
-  @local_rating
+  @local_rating_zone1 @local_rating
   Scenario:
     Then I Add a new order
     Then Verify Local Rating

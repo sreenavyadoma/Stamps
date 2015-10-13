@@ -15,7 +15,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
 
@@ -37,7 +37,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
 
@@ -68,7 +68,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
 
@@ -101,7 +101,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     Then Expect Single Order Form International Address fields are visible
     Then Expect Single Order Form Domestic Ship-To fields are hidden
@@ -184,7 +184,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
     Then Set single-order form Service to "First-Class Mail International Large Envelope"
@@ -212,7 +212,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be Required
@@ -250,7 +250,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     #Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
@@ -289,7 +289,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     #Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
@@ -329,7 +329,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     #Then Set single-order form Service to Priority Mail International Flat Rate Envelope
     And Open customs form
@@ -369,7 +369,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     And Open customs form
     Then Set customs form Package Contents to "Commercial Sample"
@@ -407,7 +407,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     Then Set single-order form Ounces to 5
     And Open customs form
@@ -445,7 +445,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Length to 1
     Then Set single-order form Height to 1
     Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Service to "Priority Mail International Package"
 
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"

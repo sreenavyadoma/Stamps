@@ -3,7 +3,7 @@ Feature: Test Development
   Background:
     Given I am signed in as a batch shipper
 
-  @local_rating_zone1
+  @local_rating_rob
   Scenario:
     Then I Add a new order
     Then Verify Local Rating

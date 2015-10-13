@@ -242,3 +242,9 @@ Cucumber::Rake::Task.new(:add_new_order_eva_qacc) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:local_rating_qacc_ff) do |t|
+  t.profile = 'local_rating_qacc_ff'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+

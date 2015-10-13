@@ -1,24 +1,14 @@
-
 Feature: Local Rating Zone 2
   The automated tests should use the three from addresses in the "Zones" tab to test each of the 9 postal zones for accuracy.
   Ratesets CBP, CPP and the most common of the SAS rates should be tested.
 
   Background:
-    Given I am signed in as a batch shipper gc/qacc/auto15/password1
+    Given I am signed in as a batch shipper ff/qacc/dj_cctest-01/postage1
 
-  Scenario Outline:  As a batch shipper, I want to be able to change my print media
-    And I Add a new order
-    Then Set single-order form Ship-From to <ship_from>
-    Then Set single-order form Ship-To address to <ship_to>
-    Then Set single-order form Service to "<service>"
-    Then Set single-order form Pounds to <weight_lbs>
-    Then Set single-order form Ounces to <weight_oz>
-    Then Set single-order form Length to <length>
-    Then Set single-order form Height to <height>
-    Then Set single-order form Width to <width>
-    Then Expect single-order form Total to be $<total>
-
-    Examples:
+  @local_rating_zone2 @local_rating
+  Scenario:
+    Then I Add a new order
+    Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd, Palmdale CA 93550|Priority Mail Large/Thick Envelope|1|0|1|1|1|Signature Required|7.03|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd, Palmdale CA 93550|Priority Mail Large/Thick Envelope|1|0|2|2|2|USPS Tracking|4.58|

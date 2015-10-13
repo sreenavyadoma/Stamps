@@ -312,7 +312,7 @@ module Batch
       dd = @browser.div(:css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]")
       input = @browser.text_field :css => "input[name^=servicedroplist]"
       service_dd = Dropdown.new @browser, dd, :li, input
-      selection_field = @browser.td :css => "tr[data-qtip*='#{service}']>td:nth-child(2)"
+      selection_field = @browser.td :css => "tr[data-qtip*='#{service}']>td:nth-child(1)"
       service_dd.select selection_field
     end
 
