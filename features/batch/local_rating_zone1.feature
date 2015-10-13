@@ -3,7 +3,7 @@ Feature: Local Rating Zone 1
   The automated tests should use the three from addresses in the "Zones" tab to test each of the 9 postal zones for accuracy.
   Ratesets CBP, CPP and the most common of the SAS rates should be tested.
 
-  @local_rating_zone1
+
   Scenario Outline:  As a batch shipper, I want to be able to change my print media
     Then I am signed in as a batch shipper ie/qacc/dj_cctest-01/postage1
     Then I Add a new order

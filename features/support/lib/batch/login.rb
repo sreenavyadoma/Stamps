@@ -120,7 +120,7 @@ module Batch
             sign_in_button.safe_double_click
             sign_in_button.safe_click
             sign_in_button.safe_double_click
-            sign_in_button.click_while_present
+            #sign_in_button.click_while_present
 
             break if toolbar.present? #|| grid.present?
 
