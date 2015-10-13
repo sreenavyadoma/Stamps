@@ -241,7 +241,7 @@ module Batch
     end
 
     def present?
-      browser_helper.present? browser_add_button
+      browser_add_button.present?
     end
 
     def settings_modal

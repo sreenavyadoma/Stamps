@@ -193,6 +193,7 @@ module Stamps
           when 1
             begin
               args[0].focus
+              args[0].focus
             rescue
               log "Unable to focus on browser field #{args[0]}"
             end

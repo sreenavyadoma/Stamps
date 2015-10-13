@@ -6,7 +6,6 @@ Feature: Local Rating Zone 2
   Background:
     Given I am signed in as a batch shipper gc/qacc/auto15/password1
 
-    @local_rating_zone_1
   Scenario Outline:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
     Then Set single-order form Ship-From to <ship_from>

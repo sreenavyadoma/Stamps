@@ -82,7 +82,7 @@ module Batch
     def sign_in *args
       username_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:username_loc])
       password_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:password_loc])
-      sign_in_button = Button.new @browser.button(LOGIN_FIELDS[:sign_in_button_loc])
+      sign_in_input = Button.new @browser.input :id => "signInButton"
       grid = Grid.new @browser
       navigation = Navigation.new @browser
       welcome_modal = WelcomeModal.new @browser
@@ -109,59 +109,73 @@ module Batch
           password = ENV["PW"]
       end
 
-      30.times do
-        begin
-          if username_textbox.present?
-            username_textbox.wait_until_present
-            username_textbox.set username
-            password_textbox.set password
+      if username_textbox.present?
+        10.times do
+          begin
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            break if toolbar.present? #|| grid.present?
+            if username_textbox.present?
+              username_textbox.wait_until_present
+              username_textbox.set username
+              password_textbox.set password
 
-            sign_in_button.safe_click
-            sign_in_button.safe_double_click
-            sign_in_button.safe_click
-            sign_in_button.safe_double_click
-            sign_in_button.click_while_present
+              begin
+                (@browser.input :id => "signInButton").send_keys :enter
+              rescue
+                #ignore
+              end
+              #sign_in_input.safe_click
+
+              sleep 3
+
+              #toolbar.wait_until_present
+              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+              break if toolbar.present? #|| grid.present?
+              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+
+              if welcome_modal.present?
+                welcome_modal.ok
+                break
+              end
+
+              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+              if welcome_orders_page.present?
+                welcome_orders_page.continue
+                break
+              end
+
+              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+              break if toolbar.present? #|| grid.present?
+
+              if plugin_issue.present?
+                plugin_issue.close
+                break
+              end
+
+            end
 
             break if toolbar.present? #|| grid.present?
 
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
             begin
               navigation.orders.click
-            rescue Exception => e
-              log e
+            rescue
+              #ignore
             end
 
-            if welcome_modal.present?
-              welcome_modal.ok
-              break
-            end
+            sleep 1
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            break if toolbar.present? #|| grid.present?
 
-            if welcome_orders_page.present?
-              welcome_orders_page.continue
-              break
-            end
-
-            if plugin_issue.present?
-              plugin_issue.close
-              break
-            end
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            load_url
+          rescue Exception => e
+            log e
           end
-
-          break if toolbar.present? #|| grid.present?
-
-          begin
-            navigation.orders.click
-          rescue
-            #ignore
-          end
-
-          grid.wait_until_present
-          break if toolbar.present? #|| grid.present?
-
-          load_url
-        rescue Exception => e
-          log e
         end
       end
+
+      log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
 
       if plugin_issue.present?
         raise "Stamps.com Plugin Issue"

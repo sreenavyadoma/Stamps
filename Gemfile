@@ -1,10 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'cucumber', '2.0.0'
-gem 'rspec'
-gem 'rake'
-gem 'selenium-webdriver'
-gem 'watir-webdriver'
-gem 'rspec-expectations'
+gem 'rspec', '2.99.0'
+gem 'rake', '10.0.0'
+gem 'watir-webdriver', '0.8.0'
 gem 'data_magic'
 gem 'log4r'
