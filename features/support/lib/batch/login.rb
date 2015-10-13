@@ -111,24 +111,22 @@ module Batch
 
       30.times do
         begin
+          break if toolbar.present? #|| grid.present?
           if username_textbox.present?
             username_textbox.wait_until_present
             username_textbox.set username
             password_textbox.set password
 
-            sign_in_input.safe_click
-            sign_in_input.safe_double_click
-            sign_in_input.safe_click
-            sign_in_input.safe_double_click
             begin
-              (@browser.input :id => "signInButton").send_keys :enter
               (@browser.input :id => "signInButton").send_keys :enter
             rescue
               #ignore
             end
+            sign_in_input.safe_click
 
             #sign_in_button.click_while_present
 
+            toolbar.wait_until_present
             break if toolbar.present? #|| grid.present?
 
             if welcome_modal.present?
