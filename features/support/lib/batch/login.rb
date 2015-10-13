@@ -121,18 +121,12 @@ module Batch
 
               begin
                 (@browser.input :id => "signInButton").send_keys :enter
-              rescue
-                #ignore
-              end
-              #sign_in_input.safe_click
-
-              sleep 3
-
-              begin
                 (@browser.input :id => "signInButton").send_keys :enter
               rescue
                 #ignore
               end
+
+              sleep 6
 
               toolbar.wait_until_present
 
