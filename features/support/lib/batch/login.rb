@@ -109,58 +109,73 @@ module Batch
           password = ENV["PW"]
       end
 
-      30.times do
-        begin
-          break if toolbar.present? #|| grid.present?
-          if username_textbox.present?
-            username_textbox.wait_until_present
-            username_textbox.set username
-            password_textbox.set password
+      if username_textbox.present?
+        10.times do
+          begin
+            log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            break if toolbar.present? #|| grid.present?
+            if username_textbox.present?
+              username_textbox.wait_until_present
+              username_textbox.set username
+              password_textbox.set password
 
+              begin
+                (@browser.input :id => "signInButton").send_keys :enter
+              rescue
+                #ignore
+              end
+              #sign_in_input.safe_click
+
+              sleep 3
+
+              #toolbar.wait_until_present
+              log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+              break if toolbar.present? #|| grid.present?
+              log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+
+              if welcome_modal.present?
+                welcome_modal.ok
+                break
+              end
+
+              log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+              if welcome_orders_page.present?
+                welcome_orders_page.continue
+                break
+              end
+
+              log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+              break if toolbar.present? #|| grid.present?
+
+              if plugin_issue.present?
+                plugin_issue.close
+                break
+              end
+
+            end
+
+            break if toolbar.present? #|| grid.present?
+
+            log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
             begin
-              (@browser.input :id => "signInButton").send_keys :enter
+              navigation.orders.click
             rescue
               #ignore
             end
-            sign_in_input.safe_click
 
-            #sign_in_button.click_while_present
-
-            toolbar.wait_until_present
+            sleep 1
+            log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
             break if toolbar.present? #|| grid.present?
 
-            if welcome_modal.present?
-              welcome_modal.ok
-              break
-            end
-
-            if welcome_orders_page.present?
-              welcome_orders_page.continue
-              break
-            end
-
-            if plugin_issue.present?
-              plugin_issue.close
-              break
-            end
+            log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            load_url
+          rescue Exception => e
+            log e
           end
-
-          break if toolbar.present? #|| grid.present?
-
-          begin
-            navigation.orders.click
-          rescue
-            #ignore
-          end
-
-          sleep 1
-          break if toolbar.present? #|| grid.present?
-
-          load_url
-        rescue Exception => e
-          log e
         end
       end
+
+      log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
 
       if plugin_issue.present?
         raise "Stamps.com Plugin Issue"
