@@ -1,9 +1,10 @@
 Then /^Verify Local Rating$/ do |table|
+  results_file = "local_rating_results.csv"
   @single_order_form = batch.single_order_form
   parameter_array = table.hashes
   results = Hash.new
 
-  CSV.open("local_rating_results.csv", "wb") do |csv|
+  CSV.open(results_file, "wb") do |csv|
     log "| test_result | ship_from | ship_to | service | weight_lbs | weight_oz | length | height | width | tracking | total |"
     csv << ["test_number", "ship_from", "ship_to", "service", "weight_lbs", "weight_oz", "length", "height", "width", "tracking", "total"]
     parameter_array.each_with_index { |element, index|
@@ -16,7 +17,6 @@ Then /^Verify Local Rating$/ do |table|
       step "Set single-order form Height to #{element["height"]}"
       step "Set single-order form Width to #{element["width"]}"
       step "Set single-order form Tracking to #{element["tracking"]}"
-      #step "Expect single-order form Total to be $#{element["total"]} |"
 
       10.times { |counter|
         @single_order_form.click_form
@@ -34,7 +34,7 @@ Then /^Verify Local Rating$/ do |table|
 
       csv << [index, (results[index])?"Passed":"Failed", "Expectation=#{element["total"]},Actual=#{total}", element["ship_from"], element["ship_to"], element["service"], element["weight_lbs"], element["weight_oz"], element["length"], element["height"], element["width"], element["tracking"], element["total"]]
 
-
+      step "Expect single-order form Total to be $#{element["total"]}"
     }
   end
 

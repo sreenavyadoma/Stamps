@@ -290,10 +290,12 @@ end
 Then /^Expect single-order form Total to be \$(.*)$/ do |expected|
   begin
     10.times { |counter|
+      batch.single_order_form.click_form
       actual = batch.single_order_form.total
       log_expectation_eql "#{counter}. Total Cost", expected, actual
       break if actual.eql? expected
     }
+    actual = batch.single_order_form.total
     actual.should eql expected
   end unless expected.length == 0
 end
