@@ -112,7 +112,7 @@ module Batch
       if username_textbox.present?
         10.times do
           begin
-            log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
             break if toolbar.present? #|| grid.present?
             if username_textbox.present?
               username_textbox.wait_until_present
@@ -129,22 +129,22 @@ module Batch
               sleep 3
 
               #toolbar.wait_until_present
-              log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
               break if toolbar.present? #|| grid.present?
-              log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
 
               if welcome_modal.present?
                 welcome_modal.ok
                 break
               end
 
-              log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
               if welcome_orders_page.present?
                 welcome_orders_page.continue
                 break
               end
 
-              log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
               break if toolbar.present? #|| grid.present?
 
               if plugin_issue.present?
@@ -156,7 +156,7 @@ module Batch
 
             break if toolbar.present? #|| grid.present?
 
-            log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
             begin
               navigation.orders.click
             rescue
@@ -164,10 +164,10 @@ module Batch
             end
 
             sleep 1
-            log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
             break if toolbar.present? #|| grid.present?
 
-            log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
             load_url
           rescue Exception => e
             log e
@@ -175,7 +175,7 @@ module Batch
         end
       end
 
-      log "User is #{(toolbar.present?)?"logged in.":"not logged in."}"
+      log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
 
       if plugin_issue.present?
         raise "Stamps.com Plugin Issue"
