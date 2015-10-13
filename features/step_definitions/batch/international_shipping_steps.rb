@@ -1,7 +1,7 @@
 
 Then /^Set Ship-To country to (.*)$/ do |country|
   @single_order_form = batch.single_order_form
-  @single_order_form.ship_to_dd.select country
+  @single_order_form.ship_to_country.select country
   @international_ship_to = @single_order_form.international
 end
 

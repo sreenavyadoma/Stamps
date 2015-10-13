@@ -268,7 +268,7 @@ module Batch
       CustomsFields.new @browser
     end
 
-    def ship_to_dd
+    def ship_to_country
       dd_divs = @browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
       domestic_drop_down_btn = dd_divs.first
       international_drop_down_btn = dd_divs.last
@@ -282,7 +282,7 @@ module Batch
       raise "Single Order Form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? dd
       text_fields = @browser.text_fields :name => "CountryCode"
       domestic_input = text_fields.first
-      international_input = text_fields[1]
+      international_input = text_fields.last
       if browser_helper.present? domestic_input
         input = domestic_input
       elsif browser_helper.present? international_input
