@@ -19,6 +19,7 @@ Then /^Verify Local Rating$/ do |table|
       #step "Expect single-order form Total to be $#{element["total"]} |"
 
       10.times { |counter|
+        @single_order_form.click_form
         total = @single_order_form.total
         if total.eql? element["total"]
           results[index] = total.eql? element["total"]
