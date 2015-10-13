@@ -184,6 +184,10 @@ module Batch
       title[/\d+/]
     end
 
+    def labels_required
+      @browser.div(:css => 'div[class*=label-sheets-requred]').text
+    end
+
     def title
       div = @browser.div :css => "div[id^=printwindow]>div[id^=title]>div[id^=title]"
       log "Title: #{div}"
