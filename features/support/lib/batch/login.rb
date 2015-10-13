@@ -128,7 +128,14 @@ module Batch
 
               sleep 3
 
-              #toolbar.wait_until_present
+              begin
+                (@browser.input :id => "signInButton").send_keys :enter
+              rescue
+                #ignore
+              end
+
+              toolbar.wait_until_present
+
               log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
               break if toolbar.present? #|| grid.present?
               log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
