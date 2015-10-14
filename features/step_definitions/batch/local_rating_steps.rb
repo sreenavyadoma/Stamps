@@ -38,7 +38,21 @@ Then /^Verify Local Rating$/ do |table|
     #csv << [index, (results[index])?"Passed":"Failed", "Expectation=#{element["total"]},Actual=#{total}", element["ship_from"], element["ship_to"], element["service"], element["weight_lbs"], element["weight_oz"], element["length"], element["height"], element["width"], element["tracking"], element["total"]]
     #log [index, (results[index])?"Passed":"Failed", "Expectation=#{element["total"]},Actual=#{total}", element["ship_from"], element["ship_to"], element["service"], element["weight_lbs"], element["weight_oz"], element["length"], element["height"], element["width"], element["tracking"], element["total"]]
 
-    step "Expect single-order form Total to be $#{element["total"]}"
+    #step "Expect single-order form Total to be $#{element["total"]}"
+    expected_total_amount = element["total"]
+
+    5.times { |counter|
+      batch.single_order_form.click_form
+      sleep 1
+      actual = batch.single_order_form.total
+      batch.single_order_form.click_form
+      log_expectation_eql "#{counter}. Total Cost", expected_total_amount, actual
+      batch.single_order_form.click_form
+      sleep 1
+      break if actual.eql? expected_total_amount
+    }
+    actual = batch.single_order_form.total
+    actual.should eql expected_total_amount
   }
 
 end
