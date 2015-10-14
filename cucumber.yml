@@ -5,69 +5,69 @@ default_profile: --tags @local_rating_zone1 --guess URL=qacc BROWSER=gc USR=auto
 
 add_new_order_eva_qacc: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cctest2 PW=password1
 
-bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto20 PW=password1
-bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto29 PW=password1
-bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto30 PW=password1
+bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto01 PW=password1
+bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto02 PW=password1
+bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto03 PW=password1
 
 local_rating_qacc_ff: --tags @local_rating --guess URL=qacc BROWSER=ff USR=dj_cctest-01 PW=postage1
 
-wonderment_bvt_qacc_ff: --tags @wonderment_bvt --guess URL=qacc BROWSER=ff USR=auto05 PW=password1
+wonderment_bvt_qacc_ff: --tags @wonderment_bvt --guess URL=qacc BROWSER=ff USR=auto04 PW=password1
 
 validate_international_qacc_ff: --tags @validate_international --guess URL=qacc BROWSER=ff USR=webpost_0001 PW=pass111
 validate_international_qacc_gc: --tags @validate_international --guess URL=qacc BROWSER=gc USR=webpost_0001 PW=pass111
 validate_international_qacc_ie: --tags @validate_international --guess URL=qacc BROWSER=ie USR=webpost_0001 PW=pass111
 
-regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto35 PW=password1
-regress_qacc_ff: --tags @regression --guess URL=qacc BROWSER=ff USR=auto11 PW=password1
-regress_qacc_ie: --tags @regression --guess URL=qacc BROWSER=ie USR=auto12 PW=password1
+regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto05 PW=password1
+regress_qacc_ff: --tags @regression --guess URL=qacc BROWSER=ff USR=auto06 PW=password1
+regress_qacc_ie: --tags @regression --guess URL=qacc BROWSER=ie USR=auto07 PW=password1
 
 orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ie USR=webbatch_0005 PW=password1
 orders_20: --tags @orders_20 --guess URL=qacc BROWSER=ie USR=cm_cpp_0002 PW=pass111
 
-print_many_orders_ie: --tags @print_many_orders --guess URL=qacc BROWSER=ie USR=auto34 PW=password1
+print_many_orders_ie: --tags @print_many_orders --guess URL=qacc BROWSER=ie USR=auto08 PW=password1
 
-printing_errors_qacc_gc: --tags @printing_error --guess URL=qacc BROWSER=gc USR=auto31 PW=password1
-printing_errors_qacc_ie: --tags @printing_error --guess URL=qacc BROWSER=ie USR=auto32 PW=password1
-printing_errors_qacc_ff: --tags @printing_error --guess URL=qacc BROWSER=ff USR=auto33 PW=password1
+printing_errors_qacc_gc: --tags @printing_error --guess URL=qacc BROWSER=gc USR=auto09 PW=password1
+printing_errors_qacc_ie: --tags @printing_error --guess URL=qacc BROWSER=ie USR=auto10 PW=password1
+printing_errors_qacc_ff: --tags @printing_error --guess URL=qacc BROWSER=ff USR=auto11 PW=password1
 
-print_qacc_gc:  --tags @print --guess URL=qacc BROWSER=gc USR=auto04 PW=password1
-print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff USR=auto05 PW=password1
-print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie USR=auto06 PW=password1
+print_qacc_gc:  --tags @print --guess URL=qacc BROWSER=gc USR=auto12 PW=password1
+print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff USR=auto13 PW=password1
+print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie USR=auto14 PW=password1
 
-address_cleansing_qacc_gc:  --tags @address_cleansing --guess URL=qacc BROWSER=gc USR=auto07 PW=password1
-address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie USR=auto08 PW=password1
-address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff USR=auto09 PW=password1
+address_cleansing_qacc_gc:  --tags @address_cleansing --guess URL=qacc BROWSER=gc USR=auto15 PW=password1
+address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie USR=auto16 PW=password1
+address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff USR=auto17 PW=password1
 
-address_management_qacc_ie: --tags @address_management --guess URL=qacc BROWSER=ie USR=auto13 PW=password1
-address_management_qacc_ff: --tags @address_management --guess URL=qacc BROWSER=ff USR=auto14 PW=password1
-address_management_qacc_gc: --tags @address_management --guess URL=qacc BROWSER=gc USR=auto15 PW=password1
+address_management_qacc_ie: --tags @address_management --guess URL=qacc BROWSER=ie USR=auto18 PW=password1
+address_management_qacc_ff: --tags @address_management --guess URL=qacc BROWSER=ff USR=auto19 PW=password1
+address_management_qacc_gc: --tags @address_management --guess URL=qacc BROWSER=gc USR=auto20 PW=password1
 
-print_qacc_ie: --tags @print --guess URL=qacc BROWSER=ie USR=auto16 PW=password1
-print_qacc_ff: --tags @print --guess URL=qacc BROWSER=ff USR=auto17 PW=password1
-print_qacc_gc: --tags @print --guess URL=qacc BROWSER=gc USR=auto18 PW=password1
+print_qacc_ie: --tags @print --guess URL=qacc BROWSER=ie USR=auto21 PW=password1
+print_qacc_ff: --tags @print --guess URL=qacc BROWSER=ff USR=auto22 PW=password1
+print_qacc_gc: --tags @print --guess URL=qacc BROWSER=gc USR=auto23 PW=password1
 
-print_sample_qacc_ie: --tags @print_sample --guess URL=qacc BROWSER=ie USR=auto19 PW=password1
-print_sample_qacc_ff: --tags @print_sample --guess URL=qacc BROWSER=ff USR=auto20 PW=password1
-print_sample_qacc_gc: --tags @print_sample --guess URL=qacc BROWSER=gc USR=auto21 PW=password1
+print_sample_qacc_ie: --tags @print_sample --guess URL=qacc BROWSER=ie USR=auto24 PW=password1
+print_sample_qacc_ff: --tags @print_sample --guess URL=qacc BROWSER=ff USR=auto25 PW=password1
+print_sample_qacc_gc: --tags @print_sample --guess URL=qacc BROWSER=gc USR=auto26 PW=password1
 
-inline_service_rates_qacc_ie: --tags @inline_service_rates --guess URL=qacc BROWSER=ie USR=auto22 PW=password1
-inline_service_rates_qacc_ff: --tags @inline_service_rates --guess URL=qacc BROWSER=ff USR=auto23 PW=password1
-inline_service_rates_qacc_gc: --tags @inline_service_rates --guess URL=qacc BROWSER=gc USR=auto24 PW=password1
+inline_service_rates_qacc_ie: --tags @inline_service_rates --guess URL=qacc BROWSER=ie USR=auto27 PW=password1
+inline_service_rates_qacc_ff: --tags @inline_service_rates --guess URL=qacc BROWSER=ff USR=auto28 PW=password1
+inline_service_rates_qacc_gc: --tags @inline_service_rates --guess URL=qacc BROWSER=gc USR=auto29 PW=password1
 
-print_costs_qacc_ie: --tags @print_costs --guess URL=qacc BROWSER=ie USR=auto25 PW=password1
-print_costs_qacc_ff: --tags @print_costs --guess URL=qacc BROWSER=ff USR=auto26 PW=password1
-print_costs_qacc_gc: --tags @print_costs --guess URL=qacc BROWSER=gc USR=auto27 PW=password1
+print_costs_qacc_ie: --tags @print_costs --guess URL=qacc BROWSER=ie USR=auto30 PW=password1
+print_costs_qacc_ff: --tags @print_costs --guess URL=qacc BROWSER=ff USR=auto31 PW=password1
+print_costs_qacc_gc: --tags @print_costs --guess URL=qacc BROWSER=gc USR=auto32 PW=password1
 
-purchasing_qacc_ie: --tags @purchasing --guess URL=qacc BROWSER=ie USR=auto28 PW=password1
-purchasing_qacc_ff: --tags @purchasing --guess URL=qacc BROWSER=ff USR=auto29 PW=password1
-purchasing_qacc_gc: --tags @purchasing --guess URL=qacc BROWSER=gc USR=auto30 PW=password1
+purchasing_qacc_ie: --tags @purchasing --guess URL=qacc BROWSER=ie USR=auto33 PW=password1
+purchasing_qacc_ff: --tags @purchasing --guess URL=qacc BROWSER=ff USR=auto34 PW=password1
+purchasing_qacc_gc: --tags @purchasing --guess URL=qacc BROWSER=gc USR=auto35 PW=password1
 
-change_settings_qacc_ie: --tags @settings --guess URL=qacc BROWSER=ie USR=auto31 PW=password1
-change_settings_qacc_ff: --tags @settings --guess URL=qacc BROWSER=ff USR=auto32 PW=password1
-change_settings_qacc_gc: --tags @settings --guess URL=qacc BROWSER=gc USR=auto33 PW=password1
+change_settings_qacc_ie: --tags @settings --guess URL=qacc BROWSER=ie USR=auto36 PW=password1
+change_settings_qacc_ff: --tags @settings --guess URL=qacc BROWSER=ff USR=auto37 PW=password1
+change_settings_qacc_gc: --tags @settings --guess URL=qacc BROWSER=gc USR=auto38 PW=password1
 
 
-thermal_printing_qacc_ie: --tags @thermal_printing --guess URL=qacc BROWSER=ie USR=auto19 PW=password1
-thermal_printing_qacc_ff: --tags @thermal_printing --guess URL=qacc BROWSER=ff USR=auto20 PW=password1
-thermal_printing_qacc_gc: --tags @thermal_printing --guess URL=qacc BROWSER=gc USR=auto21 PW=password1
+thermal_printing_qacc_ie: --tags @thermal_printing --guess URL=qacc BROWSER=ie USR=auto39 PW=password1
+thermal_printing_qacc_ff: --tags @thermal_printing --guess URL=qacc BROWSER=ff USR=auto40 PW=password1
+thermal_printing_qacc_gc: --tags @thermal_printing --guess URL=qacc BROWSER=gc USR=auto04 PW=password1
 
