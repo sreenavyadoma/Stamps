@@ -1,8 +1,7 @@
-Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-01667
+Feature: I want to be able to print to 5.5 x 8.5 labels single or multi B-01667
 
   Background:
   Given I am signed in as a batch shipper
-
 
   @label_5x8_printing
   Scenario: User can select a new option in the Print Postage On combobox: Shipping Label - 5.5 x 8.5
@@ -14,7 +13,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Set single-order form Length to 1
     Then Set single-order form Service to "Priority Mail Package"
     Then Open Print Modal
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    #Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
     #Then View Print On option Shipping Label 5.5 x 8.5 tooltip
     #Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Use these letter-sized label sheets with two 5 ½” x 8 ½” labels per sheet to print postage, addresses, and tracking barcode."
    # Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. destination."
@@ -29,7 +28,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Set single-order form Length to 1
     Then Set single-order form Service to "Priority Mail Package"
     Then Open Print Modal
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    #Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
 
   @label_5x8_printing
   Scenario: Able to save print setting for Shipping Labels 5.5 x 8.5

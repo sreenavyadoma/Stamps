@@ -3,7 +3,7 @@ Feature: Local Rating Zone 2
   Ratesets CBP, CPP and the most common of the SAS rates should be tested.
 
   Background:
-    Given I am signed in as a batch shipper ff/qacc/dj_cctest-01/postage1
+    Given I am signed in as a batch shipper ff/qacc/auto05/password1
 
   @local_rating_zone2 @local_rating
   Scenario:
