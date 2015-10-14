@@ -50,7 +50,7 @@ module Batch
       begin
         @browser.execute_script('arguments[0].scrollIntoView();', field)
       rescue
-        log "Unable to focus on #{column}, row #{row}"
+        #log "Unable to focus on #{column}, row #{row}"
       end
       begin
         log "Column: #{column}, Row: #{row} = #{browser_helper.text field}"
@@ -70,7 +70,7 @@ module Batch
             @browser.execute_script('arguments[0].scrollIntoView();', field)
             log "#{name} : Column #{index}"
           rescue
-            log "Unable to focus on #{column}, row #{row}}"
+            #log "Unable to focus on #{column}, row #{row}}"
           end
           column_name = browser_helper.text field
           log "#{column_name} is column #{index} on Order Grid."

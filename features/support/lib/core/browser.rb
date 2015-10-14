@@ -195,7 +195,7 @@ module Stamps
               args[0].focus
               args[0].focus
             rescue
-              log "Unable to focus on browser field #{args[0]}"
+              #log "Unable to focus on browser field #{args[0]}"
             end
 
             args[0].click
@@ -206,7 +206,7 @@ module Stamps
             begin
               args[0].focus
             rescue
-              log "Unable to focus on browser field #{args[1]} #{args[0]}"
+              #log "Unable to focus on browser field #{args[1]} #{args[0]}"
             end
             args[0].click
             log_browser_click args[0], args[1]
@@ -678,7 +678,7 @@ module Stamps
             begin
               args[0].focus
             rescue
-              log "Unable to focus on browser field #{args[0]}"
+              #log "Unable to focus on browser field #{args[0]}"
             end
 
             args[0].click
@@ -689,7 +689,7 @@ module Stamps
             begin
               args[0].focus
             rescue
-              log "Unable to focus on browser field #{args[1]} #{args[0]}"
+              #log "Unable to focus on browser field #{args[1]} #{args[0]}"
             end
             args[0].click
             log_browser_click args[0], args[1]
@@ -712,7 +712,7 @@ module Stamps
             begin
               args[0].focus
             rescue
-              log "Unable to focus on browser field #{args[0]}"
+              #log "Unable to focus on browser field #{args[0]}"
             end
 
             args[0].double_click
@@ -723,7 +723,7 @@ module Stamps
             begin
               args[0].focus
             rescue
-              log "Unable to focus on browser field #{args[1]} #{args[0]}"
+              #log "Unable to focus on browser field #{args[1]} #{args[0]}"
             end
             args[0].double_click
             var_name = %w(args[0])
