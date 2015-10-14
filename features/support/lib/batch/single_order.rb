@@ -309,11 +309,16 @@ module Batch
 
     def service service
       log_param "Service Selection", service
-      dd = @browser.div(:css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]")
-      input = @browser.text_field :css => "input[name^=servicedroplist]"
-      service_dd = Dropdown.new @browser, dd, :li, input
-      selection_field = @browser.td :css => "tr[data-qtip*='#{service}']>td:nth-child(1)"
-      service_dd.select selection_field
+      dd = Button.new @browser.div(:css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]")
+      input = Textbox.new @browser.text_field :css => "input[name^=servicedroplist]"
+      selection_field = Label.new @browser.td :css => "tr[data-qtip*='#{service}']>td:nth-child(1)"
+
+      15.times{
+        dd.safe_click unless selection_field.present?
+        selection_field.safe_click
+        selected = input.text
+        break if selected.include? service
+      }
     end
 
     def service_inline_cost
