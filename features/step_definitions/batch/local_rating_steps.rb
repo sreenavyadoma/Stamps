@@ -36,7 +36,7 @@ Then /^Verify Local Rating$/ do |table|
     log "| #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | ##{index} | |#{element["ship_from"]} | #{element["ship_to"]} | #{element["service"]} | #{element["weight_lbs"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |"
 
     #csv << [index, (results[index])?"Passed":"Failed", "Expectation=#{element["total"]},Actual=#{total}", element["ship_from"], element["ship_to"], element["service"], element["weight_lbs"], element["weight_oz"], element["length"], element["height"], element["width"], element["tracking"], element["total"]]
-    log [index, (results[index])?"Passed":"Failed", "Expectation=#{element["total"]},Actual=#{total}", element["ship_from"], element["ship_to"], element["service"], element["weight_lbs"], element["weight_oz"], element["length"], element["height"], element["width"], element["tracking"], element["total"]]
+    #log [index, (results[index])?"Passed":"Failed", "Expectation=#{element["total"]},Actual=#{total}", element["ship_from"], element["ship_to"], element["service"], element["weight_lbs"], element["weight_oz"], element["length"], element["height"], element["width"], element["tracking"], element["total"]]
 
     step "Expect single-order form Total to be $#{element["total"]}"
   }
