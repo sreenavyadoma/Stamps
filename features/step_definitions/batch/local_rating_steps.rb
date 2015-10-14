@@ -53,7 +53,11 @@ Then /^Verify Local Rating$/ do |table|
       break if actual.eql? expected_total_amount
     }
     actual = batch.single_order_form.total
-    actual.should eql expected_total_amount
+    actual.should == expected_total_amount
+
+    if actual != expected_total_amount
+      raise "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lbs"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |"
+    end
   }
 
 end
