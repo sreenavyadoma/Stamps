@@ -13,12 +13,12 @@ Then /^Verify Local Rating$/ do |table|
   parameter_array.each_with_index { |element, index|
     step "Set single-order form Ship-From to #{element["ship_from"]}"
     step "Set single-order form Ship-To address to #{element["ship_to"]}"
-    step "Set single-order form Service to \"#{element["service"]}\""
     step "Set single-order form Ounces to #{element["weight_oz"]}"
     step "Set single-order form Pounds to #{element["weight_lbs"]}"
     step "Set single-order form Length to #{element["length"]}"
     step "Set single-order form Height to #{element["height"]}"
     step "Set single-order form Width to #{element["width"]}"
+    step "Set single-order form Service to \"#{element["service"]}\""
     step "Set single-order form Tracking to #{element["tracking"]}"
 
     10.times { |counter|
