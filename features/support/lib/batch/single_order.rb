@@ -319,6 +319,7 @@ module Batch
         selected = input.text
         break if selected.include? service
       }
+
     end
 
     def service_inline_cost
