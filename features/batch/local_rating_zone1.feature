@@ -4,9 +4,9 @@ Feature: Local Rating Zone 1
   Ratesets CBP, CPP and the most common of the SAS rates should be tested.
 
   Background:
-    Given I am signed in as a batch shipper ff/qacc/auto04/password1
+    Given I am signed in as a batch shipper ff/qacc/dj_cctest_01/postage1
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -85,7 +85,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|70|0|11|11|11|USPS Tracking|34.41|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|71|0|12|12|12|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -164,7 +164,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Package|70|0|11|11|11|USPS Tracking|34.41|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Package|71|0|12|12|12|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -242,7 +242,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|70|0|11|11|11|USPS Tracking|34.41|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|71|0|12|12|12|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -314,7 +314,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|25|0|1|1|1|USPS Tracking|9.85|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|26|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -392,7 +392,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Flat Rate Envelope|70|0|1|1|1|USPS Tracking|5.05|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -470,7 +470,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Padded Flat Rate Envelope|70|0|1|1|1|USPS Tracking|5.70|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Padded Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -548,7 +548,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Legal Flat Rate Envelope|70|0|1|1|1|USPS Tracking|5.25|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Legal Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -626,7 +626,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Small Flat Rate Box|70|0|1|1|1|USPS Tracking|5.25|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Small Flat Rate Box|71|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -704,7 +704,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Medium Flat Rate Box|70|0|1|1|1|USPS Tracking|11.30|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Medium Flat Rate Box|71|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -782,7 +782,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Flat Rate Box|70|0|1|1|1|USPS Tracking|15.80|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Flat Rate Box|71|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -861,7 +861,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Package|70|0|1|1|1|USPS Tracking|75.18|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Package|71|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -939,7 +939,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Flat Rate Envelope|70|0|1|1|1|USPS Tracking|18.11|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -1017,7 +1017,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Padded Flat Rate Envelope|70|0|1|1|1|USPS Tracking|18.11|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Padded Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -1095,7 +1095,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Legal Flat Rate Envelope|70|0|1|1|1|USPS Tracking|18.11|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Legal Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario:
     Then I Add a new order
     Then Verify Local Rating

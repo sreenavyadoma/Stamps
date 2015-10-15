@@ -5,7 +5,7 @@ Feature: Local Rating Zone 2
   Background:
     Given I am signed in as a batch shipper ff/qacc/auto05/password1
 
-  @local_rating_zone2
+  @local_rating
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
