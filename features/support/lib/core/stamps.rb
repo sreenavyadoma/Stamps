@@ -77,7 +77,7 @@ module Stamps
       elsif Stamps.browser.chrome?
         system "taskkill /im chrome.exe /f"
 
-        chrome_data_dir = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data")
+        chrome_data_dir = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data", "Default")
         chrome_driver_path = File.join("C:", "watir-webdriver", "drivers", "chromedriver.exe")
 
         log_param "chrome_driver:  exist?  #{File.exist? chrome_driver_path}  ##", chrome_driver_path
