@@ -1,9 +1,10 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
-rob_dev: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=password1
+rob_dev: --tags @rob_dev1 --guess URL=qacc BROWSER=ff USR=auto21 PW=password1
 eli_dev: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=password1
 ray_dev: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=password1
+eva_dev: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=password1
 
 default_profile: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=password1
 

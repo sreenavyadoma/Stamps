@@ -1,8 +1,4 @@
 Feature: Test Development
-
-  Background:
-    Given I am signed in as a batch shipper
-
   @_dev_rob
   Scenario: Domestic FPO Address
     And I Add a new order
