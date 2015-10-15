@@ -6,7 +6,7 @@ Feature: Local Rating Zone 2
     Given I am signed in as a batch shipper ff/qacc/auto05/password1
 
   @local_rating_zone2
-  Scenario:
+  Scenario:  Zone 2 - Priority Mail Large/Thick Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -84,7 +84,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd, Palmdale CA 93550|Priority Mail Large/Thick Envelope|71|0|12|12|12|USPS Tracking|33.20|
 
   @local_rating_zone2
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
