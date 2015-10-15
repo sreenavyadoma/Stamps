@@ -15,6 +15,7 @@ bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto02 PW=password1
 bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto03 PW=password1
 
 local_rating_zone1_qacc_ff: --tags @local_rating_zone1 --guess URL=qacc BROWSER=ff USR=auto05 PW=password1
+local_rating_zone2_qacc_ff: --tags @local_rating_zone2 --guess URL=qacc BROWSER=ff USR=auto05 PW=password1
 
 wonderment_bvt_qacc_ff: --tags @wonderment_bvt --guess URL=qacc BROWSER=ff USR=auto04 PW=password1
 

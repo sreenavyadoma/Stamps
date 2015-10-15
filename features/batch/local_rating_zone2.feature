@@ -5,7 +5,7 @@ Feature: Local Rating Zone 2
   Background:
     Given I am signed in as a batch shipper ff/qacc/auto05/password1
 
-  @local_rating
+  @local_rating_zone2
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
@@ -83,7 +83,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd, Palmdale CA 93550|Priority Mail Large/Thick Envelope|70|0|11|11|11|USPS Tracking|32.82|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd, Palmdale CA 93550|Priority Mail Large/Thick Envelope|71|0|12|12|12|USPS Tracking|33.20|
 
-  @local_rating_zone2 @local_rating
+  @local_rating_zone2
   Scenario:
     Then I Add a new order
     Then Verify Local Rating
