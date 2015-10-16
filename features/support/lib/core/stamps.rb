@@ -97,8 +97,9 @@ module Stamps
       end
 
       log "#{browser_name} is ready."
-      driver.window.move_to 0, 0
-      driver.window.resize_to 1250, 850
+      #driver.window.move_to 0, 0
+      #driver.window.resize_to 1250, 850
+      driver.window.maximize
       @browser = driver
     rescue Exception => e
       log e
