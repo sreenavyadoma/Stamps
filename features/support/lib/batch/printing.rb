@@ -78,12 +78,16 @@ module Batch
       Dropdown.new @browser, drop_down, :li, input
     end
 
+    def label_divs
+      @browser.divs :css => "div[class*=label-chooser-image]"
+    end
+
     def left_label_div
-      @browser.div :css => "div[class*=singleLabelChooser-container]:nth-child(1)"
+      label_divs[1]
     end
 
     def right_label_div
-      @browser.div :css => "div[class*=singleLabelChooser-container]:nth-child(2)"
+      label_divs[2]
     end
 
     def ship_date_input
@@ -154,7 +158,7 @@ module Batch
         log "Label selected?  #{(selected)? 'Yes':'No'}"
         break if selected
       }
-      browser_helper.attribute_value(div, 'class').include? 'singleLabelChooser-selected'
+      browser_helper.attribute_value(div, 'class').include? 'selected'
     end
 
     def default_label_selected?
@@ -185,7 +189,7 @@ module Batch
     end
 
     def labels_required
-      @browser.div(:css => 'div[class*=label-sheets-requred]').text
+      @browser.label(:css => 'label[class*=label-sheets-requred]').text
     end
 
     def title
