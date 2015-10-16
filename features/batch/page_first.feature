@@ -15,12 +15,16 @@ Feature: B-01746 Order Pagination
     And Set paging toolbar per page count to 100
     Then Expect page toolbar pagination count to be correct
 
+    And Sign out
+
   @page_first_on_first_page
   Scenario: Go to first page - User is on first page
     Then Web Batch grid has more orders than value selected in 'number of orders per page' pagination control
     And User is on the first page of orders
     And Pagination control to go to first page is disabled
     And page control will state "Page 1 of x (where x is determined by server to be the last page)"
+
+    And Sign out
 
 
 

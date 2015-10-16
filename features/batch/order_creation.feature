@@ -99,6 +99,8 @@ Feature: 10 orders
     Then Set single-order form Insured Value to $235.00
     Then Set single-order form Tracking to USPS Tracking
 
+    And Sign out
+
   @orders_20
   Scenario:  Order Creation
 

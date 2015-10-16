@@ -284,3 +284,5 @@ Feature: 25 orders
     Then Close customs form
     Then Set single-order form Service to "Priority Mail International Flat Rate Envelope"
 
+
+    And Sign out

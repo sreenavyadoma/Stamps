@@ -8,6 +8,8 @@ Feature: B-01746 Order Pagination
     And Pagination control to go to last page is enabled
     Then User clicks last page pagination control
 
+    And Sign out
+
 
   @page_last
   Scenario: Go to last page
@@ -20,4 +22,6 @@ Feature: B-01746 Order Pagination
     And Server provides a new set of orders for the grid
     And Set paging toolbar per page count to 100
     Then Expect page toolbar pagination count to be correct
+
+    And Sign out
 

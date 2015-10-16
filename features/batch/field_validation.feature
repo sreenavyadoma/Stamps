@@ -60,3 +60,5 @@ Feature: Add Missing Field Validation
     Then Set single-order form Width to 6
     Then Expect Single Order Form Height data error tooltip to be "Each dimension must be greater than 0"
     Then Expect order-grid Ship Cost error to contain "Each dimension must be greater than 0"
+
+    And Sign out

@@ -99,14 +99,14 @@ module Batch
       2.times {
         begin
           @browser.window.move_to 0, 0
-          @browser.window.resize_to 1200, 750
-          @browser.window.move_to 3000, 500
+          #@browser.window.resize_to 1200, 750
+          #@browser.window.move_to 3000, 500
           username_field.hover
           browser_helper.click username_field, "userNameText" unless sign_out_link.present?
           sign_out_link.hover
           browser_helper.click sign_out_link, "signOutLink"
           username_field.wait_while_present
-          @browser.window.move_to 0, 0
+          #@browser.window.move_to 0, 0
           break if browser_helper.present? login_div
         rescue
           #ignore

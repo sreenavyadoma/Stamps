@@ -13,6 +13,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Print
     Then Expect printed Order ID does not exist in Awaiting Shipment tab
     Then Expect printed Order ID exists in Shipped tab
+    And Sign out
 
   @filter3
   Scenario: Print 3 orders
@@ -39,3 +40,4 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
 
     Then Expect all printed Order IDs do not exist in Awaiting Shipment tab
     Then Expect all printed Order IDs exist in Shipped tab
+    And Sign out

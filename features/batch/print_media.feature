@@ -39,6 +39,8 @@ Feature: Print Media
 
     Then Close Print Modal
 
+    And Sign out
+
   @print_media @print_media_1
   Scenario:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
@@ -105,4 +107,6 @@ Feature: Print Media
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
     Then Click Print Modal - Print button
+
+    And Sign out
 

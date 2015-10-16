@@ -13,6 +13,8 @@ Feature:  Printing Multiple Orders
     And Open Print Modal
     Then Expect Print Window title to be "You have 1 label(s) ready to print"
 
+    And Sign out
+
   @regression
   Scenario:  Printing
     And I Add a new order
@@ -25,4 +27,6 @@ Feature:  Printing Multiple Orders
     Then Expect Print Window title to be "You have 2 label(s) ready to print"
 
     Then Click Print Modal - Print button
+
+    And Sign out
 

@@ -145,6 +145,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Set single-order form Service to "First-Class Mail International Large Envelope"
 
     And Print
+    And Sign out
 
 
 

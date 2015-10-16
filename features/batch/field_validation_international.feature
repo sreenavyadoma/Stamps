@@ -29,3 +29,5 @@ Feature: International Field Validation
     #Then Set International Ship-To email to "@@"
     #Then Expect Single Order Form International Email data error tooltip to be "Please enter a valid email address"
 
+
+    And Sign out

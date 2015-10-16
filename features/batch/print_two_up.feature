@@ -70,11 +70,13 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Edit row 5 on the order grid
     Then Edit row 6 on the order grid
     Then Open Print Modal
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Select Print Media "Shipping Label - 5 ï¿½" x 8 ï¿½""
     Then Select right side label
     And Expect right side label selected
     And Expect Print Window requires 7 label sheets
     Then Click Print Modal - Print button
+
+    And Sign out
 
 
 

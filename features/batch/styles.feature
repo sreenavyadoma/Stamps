@@ -20,6 +20,8 @@ Feature: Web Batch Styles
     Then Expect Style for Navigation Background Color to be rgba 33, 89, 168
     Then Expect Style for Navigation Links Color to be 255, 255, 255
 
+    And Sign out
+
 
 
 

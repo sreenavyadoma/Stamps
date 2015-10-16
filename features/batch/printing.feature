@@ -12,6 +12,8 @@ Feature: Printing
     Then Set single-order form Service to "Priority Mail Package"
     Then Print
 
+    And Sign out
+
   @print @print_test @regression
   Scenario:  B-01624 Print Priority Mail Express Medium Flat Rate Box
     And I Add a new order
@@ -20,6 +22,8 @@ Feature: Printing
     And Hide single-order form Ship-To fields
     Then Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
     Then Print
+
+    And Sign out
 
   @print @print_test @regression
   Scenario:  Print Priority Mail Express Package
@@ -30,6 +34,8 @@ Feature: Printing
     Then Set single-order form Service to "Priority Mail Express Package"
     Then Print
 
+    And Sign out
+
   @print @regression
   Scenario:  Print Priority Mail Flat Rate Envelope
     And I Add a new order
@@ -39,6 +45,8 @@ Feature: Printing
     Then Set single-order form Service to "Priority Mail Flat Rate Envelope"
     Then Print
 
+    And Sign out
+
   @print @regression
   Scenario:  Print Priority Mail Regional Rate Box A
     And I Add a new order
@@ -46,3 +54,5 @@ Feature: Printing
     Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Regional Rate Box A"
     Then Print
+
+    And Sign out

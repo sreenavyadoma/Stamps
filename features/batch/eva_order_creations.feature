@@ -795,3 +795,5 @@ Feature:  Add Orders
     Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail Package"
     Then Set single-order form Insured Value to $1.00
+
+    And Sign out

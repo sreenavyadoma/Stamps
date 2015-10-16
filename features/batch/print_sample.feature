@@ -1,5 +1,5 @@
 
-  Feature: Print Sample
+Feature: Print Sample
 
   Background:
     Given I am signed in as a batch shipper ff
@@ -7,8 +7,8 @@
   @print_sample @print_sample @regression
   Scenario:  B-01625 Print Sample - Parcel Select Large Package
 
-    @print_sample @regression
-    Scenario:
+  @print_sample @regression
+  Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
@@ -16,9 +16,11 @@
     And Hide single-order form Ship-To fields
     Then Print Sample
 
+    And Sign out
 
-    @print_sample @regression
-    Scenario:
+
+  @print_sample @regression
+  Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
@@ -26,9 +28,11 @@
     And Open Print Modal
     Then Print Sample
 
+    And Sign out
 
-    @print_sample
-    Scenario:
+
+  @print_sample
+  Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
@@ -36,9 +40,11 @@
     And Hide single-order form Ship-To fields
     Then Print Sample
 
+    And Sign out
 
-    @print_sample @regression
-    Scenario:
+
+  @print_sample @regression
+  Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
@@ -47,8 +53,8 @@
     Then Print Sample
 
 
-    @print_sample @regression
-    Scenario:
+  @print_sample @regression
+  Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random

@@ -20,3 +20,4 @@ Feature: Print Multiple Orders
     And Edit row 2 on the order grid
 
     Then Print
+    And Sign out

@@ -8,3 +8,4 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     * System displays expanded filters panel.
     * System displays "Awaiting Shipment" and "Shipped" filters in panel.
     * System selects the "Awaiting Shipment" filter by default.
+    And Sign out

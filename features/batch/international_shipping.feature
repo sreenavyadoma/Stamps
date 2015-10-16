@@ -24,6 +24,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 5, Weight(oz) 1 Origin United States , Tariff 100
 
     Then Expect Customs Form Total Weight Data Error to be The itemized weight exceeds the package weight
+    And Sign out
     
   @international @regression @international_totals
   Scenario:  Customs Form Grid Items Add/Delete
@@ -55,6 +56,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     Then Set customs form I agree to true
     Then Close customs form
+    And Sign out
 
   @international @regression @international_delete_line_items
   Scenario:  Customs Form Grid Items Add/Delete
@@ -88,6 +90,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     Then Set customs form I agree to true
     Then Close customs form
+    And Sign out
 
   @international_shipping_field_validation @_international @regression
   Scenario: Single Order Form International Shipping fields and Customs Information fields validation
@@ -169,6 +172,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set customs form I agree to true
     Then Close customs form
     Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    And Sign out
 
   @international_internal_transaction_2500 @international @regression
   Scenario: Customs Form - Internal Transaction # Required for total over $2500
@@ -198,6 +202,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
+    And Sign out
 
       # Iran - Internal Transaction #
   @international_rogue_countries @international @regression
@@ -236,6 +241,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
+    And Sign out
 
       # Sudan - Internal Transaction # Required
   @international_rogue_countries @international @regression
@@ -275,6 +281,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
+    And Sign out
 
       # Syria - Internal Transaction # Required
   @international_rogue_countries @international @regression
@@ -314,6 +321,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
+    And Sign out
 
       # Cuba - Internal Transaction # Required
   @international_rogue_countries @international @regression
@@ -353,6 +361,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
+    And Sign out
 
       # North Korea - Internal Transaction # Required
   @international_rogue_countries @international @regression@international_rogue_countries_nk @international_failure
@@ -392,6 +401,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
+    And Sign out
 
       # Philippines - Internal Transaction # Required
   @international_rogue_countries @international @regression
@@ -432,6 +442,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
+    And Sign out
 
   @fpo_shipping @international @regression
   Scenario: Domestic FPO Address
@@ -452,3 +463,4 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Close customs form
     Then Print
+    And Sign out
