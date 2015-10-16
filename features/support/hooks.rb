@@ -15,6 +15,6 @@ end
 
 After do |scenario|
   log_step "#{scenario.name} :: END"
-  teardown
+  Stamps.teardown
   $start = false
 end

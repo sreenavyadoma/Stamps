@@ -109,75 +109,74 @@ module Batch
           password = ENV["PW"]
       end
 
-      if username_textbox.present?
-        10.times do
-          begin
-            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
-            break if toolbar.present? #|| grid.present?
-            if username_textbox.present?
-              username_textbox.wait_until_present
-              username_textbox.set username
-              password_textbox.set password
+      10.times do
+        begin
+          log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+          break if toolbar.present? #|| grid.present?
+          if username_textbox.present?
+            username_textbox.wait_until_present
+            username_textbox.set username
+            password_textbox.set password
 
-              begin
-                (@browser.input :id => "signInButton").send_keys :enter
-              rescue
-                #ignore
-              end
-
-              begin
-                (@browser.input :id => "signInButton").send_keys :enter
-              rescue
-                #ignore
-              end
-
-              sleep 6
-
-              toolbar.wait_until_present
-
-              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
-              break if toolbar.present? #|| grid.present?
-              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
-
-              if welcome_modal.present?
-                welcome_modal.ok
-                break
-              end
-
-              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
-              if welcome_orders_page.present?
-                welcome_orders_page.continue
-                break
-              end
-
-              log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
-              break if toolbar.present? #|| grid.present?
-
-              if plugin_issue.present?
-                plugin_issue.close
-                break
-              end
-
-            end
-
-            break if toolbar.present? #|| grid.present?
-
-            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
             begin
-              navigation.orders.click
+              (@browser.input :id => "signInButton").send_keys :enter
             rescue
               #ignore
             end
 
-            sleep 1
+            begin
+              (@browser.input :id => "signInButton").send_keys :enter
+            rescue
+              #ignore
+            end
+
+            sleep 6
+
+            toolbar.wait_until_present
+
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            break if toolbar.present? #|| grid.present?
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+
+            if welcome_modal.present?
+              welcome_modal.ok
+              break
+            end
+
+            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            if welcome_orders_page.present?
+              welcome_orders_page.continue
+              break
+            end
+
             log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
             break if toolbar.present? #|| grid.present?
 
-            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
-            #load_url
-          rescue Exception => e
-            log e
+            if plugin_issue.present?
+              plugin_issue.close
+              break
+            end
+          else
+            load_url
           end
+
+          break if toolbar.present? #|| grid.present?
+
+          log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+          begin
+            navigation.orders.click
+          rescue
+            #ignore
+          end
+
+          sleep 4
+          log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+          break if toolbar.present? #|| grid.present?
+
+          log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+          load_url
+        rescue Exception => e
+          log e
         end
       end
 

@@ -70,7 +70,7 @@ module Stamps
         profile.layout_on_disk
         profile.native_events = false
 
-        driver = Watir::Browser.new :firefox
+        driver = Watir::Browser.new :firefox, :profile => 'selenium'
 
         browser_name = 'Mozilla Firefox'
 

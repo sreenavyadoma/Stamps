@@ -21,8 +21,6 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Click Print Modal - Print button
 
 
-
-
   @label_5x8_printing
   Scenario: Print - Shipping Label - 8 ½" x 11" Paper
     And I Add a new order
