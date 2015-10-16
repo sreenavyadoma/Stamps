@@ -1,9 +1,9 @@
-default: --profile cuke_reports --profile rob_dev
+default: --profile cuke_reports --profile ray_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
 rob_dev: --tags @bvt_add_new_order --guess URL=qacc BROWSER=ie USR=auto21 PW=password1
 eli_dev: --tags @filters --guess URL=qacc BROWSER=ff USR=auto21 PW=password1
-ray_dev: --tags @validate_international --guess URL=qacc BROWSER=ff USR=auto21 PW=password1
+ray_dev: --tags @ray_test --guess URL=qacc BROWSER=ff USR=webpost_0003 PW=pass111
 eva_dev: --tags @label_5x8_printing --guess URL=qacc BROWSER=ff USR=auto21 PW=password1
 daniel_dev: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=password1
 
