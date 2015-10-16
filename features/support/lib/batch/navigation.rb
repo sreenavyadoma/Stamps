@@ -27,11 +27,7 @@ module Batch
     end
 
     def username_field
-      @browser.span(:id => 'userNameText')
-    end
-
-    def sign_out_link
-      @browser.link :id => "signOutLink"
+      @browser.span :id => 'userNameText'
     end
 
     def orders_link
@@ -96,22 +92,19 @@ module Batch
     end
 
     def sign_out
-      2.times {
+      sign_out_link = Link.new @browser.link :id => "signOutLink"
+      signed_in_username = Label.new @browser.span :id => 'userNameText'
+      20.times {
         begin
-          @browser.window.move_to 0, 0
-          #@browser.window.resize_to 1200, 750
-          #@browser.window.move_to 3000, 500
-          username_field.hover
-          browser_helper.click username_field, "userNameText" unless sign_out_link.present?
-          sign_out_link.hover
-          browser_helper.click sign_out_link, "signOutLink"
-          username_field.wait_while_present
-          #@browser.window.move_to 0, 0
-          break if browser_helper.present? login_div
+          log "#{ENV["SIGNED_IN_USER"]} #{(signed_in_username.present?)?"is signed in":"was signed out"}"
+          signed_in_username.safe_click unless sign_out_link.present?
+          sign_out_link.safe_click
+          break unless signed_in_username.present?
         rescue
           #ignore
         end
       }
+      log "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?": Sign-out failed":" was signed out"}"
     end
 
     def username

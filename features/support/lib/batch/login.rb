@@ -186,6 +186,8 @@ module Batch
         raise "Stamps.com Plugin Issue"
       end
 
+      ENV["SIGNED_IN_USER"] = username
+
     end
   end
 
