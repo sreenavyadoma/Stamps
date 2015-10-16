@@ -3,7 +3,7 @@ Feature: Add Missing Field Validation
   Background:
     Given I am signed in as a batch shipper
 
-  @validate_domestic
+  @validate_domestic @ray_test
   Scenario: Add Missing Validation Logic for Domestic Fields
     And I Add a new order
     Then Set single-order form Ship-From to default

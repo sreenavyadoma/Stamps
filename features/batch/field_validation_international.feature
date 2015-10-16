@@ -3,7 +3,7 @@ Feature: International Field Validation
   Background:
     Given I am signed in as a batch shipper
 
-  @validate_international @rob_test1
+  @validate_international @ray_test
   Scenario: Add Missing Validation Logic for Phone and International Email
     And I Add a new order
     Then Set single-order form Ship-From to default
