@@ -1510,20 +1510,19 @@ Feature: Local Rating Zone 1
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|1|1|1|1|Signature Required|100020.45|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|1|1|1|1|USPS Tracking|100018.00|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|2|1|1|1|USPS Tracking|100018.00|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|3|1|1|1|USPS Tracking|100018.00|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|4|1|1|1|USPS Tracking|3.44|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|5|1|1|1|USPS Tracking|4.05|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|6|1|1|1|USPS Tracking|100018.00|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|7|1|1|1|USPS Tracking|100018.00|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|8|1|1|1|USPS Tracking|100018.00|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|9|1|1|1|USPS Tracking|100018.00|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|10|1|1|1|USPS Tracking|4.05|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|11|1|1|1|USPS Tracking|2.04|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|12|1|1|1|USPS Tracking|100018.00|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|13|1|1|1|USPS Tracking|2.04|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|14|1|1|1|USPS Tracking|0.00|
-
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|1|1|1|1|Signature Required|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|1|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|2|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|3|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|4|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|5|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|6|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|7|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|8|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|9|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|10|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|11|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|12|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|13|1|1|1|USPS Tracking|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|14|1|1|1|USPS Tracking|
 
