@@ -109,7 +109,7 @@ module Batch
           password = ENV["PW"]
       end
 
-      10.times do
+      20.times do
         begin
           log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
           break if toolbar.present? #|| grid.present?
@@ -124,33 +124,45 @@ module Batch
               #ignore
             end
 
+            log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
+            log "#{username} Grid is #{(toolbar.present?)?"not ready.":"ready."}"
+
             begin
               (@browser.input :id => "signInButton").send_keys :enter
             rescue
               #ignore
             end
 
+            log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
+            log "#{username} Grid is #{(toolbar.present?)?"not ready.":"ready."}"
+
             sleep 6
 
             toolbar.wait_until_present
 
-            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
+            log "#{username} Grid is #{(toolbar.present?)?"not ready.":"ready."}"
             break if toolbar.present? #|| grid.present?
-            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
+            log "#{username} Grid is #{(toolbar.present?)?"not ready.":"ready."}"
 
             if welcome_modal.present?
               welcome_modal.ok
               break
             end
 
-            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
+            log "#{username} Grid is #{(toolbar.present?)?"not ready.":"ready."}"
             if welcome_orders_page.present?
               welcome_orders_page.continue
               break
             end
 
-            log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+            log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
+            log "#{username} Grid is #{(toolbar.present?)?"not ready.":"ready."}"
             break if toolbar.present? #|| grid.present?
+            log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
+            log "#{username} Grid is #{(toolbar.present?)?"not ready.":"ready."}"
 
             if plugin_issue.present?
               plugin_issue.close
@@ -160,9 +172,12 @@ module Batch
             load_url
           end
 
+          log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
+          log "#{username} Grid is #{(toolbar.present?)?"not ready.":"ready."}"
           break if toolbar.present? #|| grid.present?
 
-          log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+          log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
+          log "#{username} Grid is #{(toolbar.present?)?"not ready.":"ready."}"
           begin
             navigation.orders.click
           rescue
@@ -170,9 +185,11 @@ module Batch
           end
 
           sleep 4
-          log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
+          log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
+          log "#{username} Grid is #{(toolbar.present?)?"not ready.":"ready."}"
           break if toolbar.present? #|| grid.present?
 
+          log "#{username} is #{(navigation.is_signed_in?)?"logged in.":"not logged in."}"
           log "#{username} is #{(toolbar.present?)?"logged in.":"not logged in."}"
           load_url
         rescue Exception => e

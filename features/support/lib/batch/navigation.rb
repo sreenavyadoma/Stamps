@@ -91,6 +91,10 @@ module Batch
 
     end
 
+    def is_signed_in?
+      Link.new( @browser.link :id => "signOutLink").present?
+    end
+
     def sign_out
       sign_out_link = Link.new @browser.link :id => "signOutLink"
       signed_in_username = Label.new @browser.span :id => 'userNameText'
