@@ -54,6 +54,7 @@ module Stamps
       # log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "gem list"} ]"
 
       if Stamps.browser.explorer?
+        system "taskkill /im IEDriverServer.exe /f"
         system "taskkill /im iexplore.exe /f"
 
         driver = Watir::Browser.new :ie
