@@ -81,7 +81,7 @@ module Batch
       self
     end
 
-    def add(*args)
+    def add *args
       add_shipping_address_window
       case args.length
         when 0

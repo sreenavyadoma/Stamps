@@ -174,15 +174,15 @@ module Batch
     end
 
     def browser_add_button
-      field = Button.new @browser.span :text => 'Add'
-      log "Toolbar Add button is #{(browser_helper.present? field)?'present':'NOT present'}"
-      field
+      #field =
+      #log "Toolbar Add button is #{(browser_helper.present? field)?'present':'NOT present'}"
+      Button.new (@browser.spans :text => 'Add').first
     end
 
     def add
       single_order_form = SingleOrderForm.new @browser
       order_grid = Grid.new @browser
-      add_button = Button.new @browser.span :text => 'Add'
+      add_button = Button.new (@browser.spans :text => 'Add').first
       7.times do |count|
         begin
           old_grid_order_id = order_grid.order_id 1
