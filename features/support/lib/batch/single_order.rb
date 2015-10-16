@@ -124,26 +124,26 @@ module Batch
       span
     end
 
-    def order_id_label
-      @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div:nth-child(1)>div>div>div>div>div>label:nth-child(1)"
-    end
-
     def order_id
+      order_id_label = Label.new @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div:nth-child(1)>div>div>div>div>div>label:nth-child(1)"
       5.times{
         begin
-          order_id_str = browser_helper.text order_id_label
+          order_id_str = order_id_label.text
           break if order_id_str.include? 'Order #'
         rescue
           #ignroe
         end
       }
+
+      return "Empty Grid" unless order_id_label.present?
+
       begin
         order_id_label.wait_until_present
       rescue
         log "Single Order Form Order ID label was not present"
       end
       #(browser_helper.text order_id_label).split('Order #').last
-      order_id_str = browser_helper.text order_id_label
+      order_id_str = order_id_label.text
       order_id = order_id_str.split('Order #').last
       order_id
     end
