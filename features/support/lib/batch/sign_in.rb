@@ -74,7 +74,7 @@ module Batch
       page_title
     end
     def load_url
-      url = "https://#{Batch.url_prefix}.stamps.com/webbatch/"
+      url = "https://#{Stamps.url_prefix}.stamps.com/webbatch/"
       @browser.goto url
       log "Page reloaded.  #{url}"
     end

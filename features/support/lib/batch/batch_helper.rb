@@ -27,10 +27,6 @@ module Batch
     end
   end
 
-  def self.url_prefix
-    return data_for(:url_prefix, {})[ENV['URL']]
-  end
-
   def self.order_id=(order_id)
     @order_id = order_id
     log "New Order ID:  #{order_id}"
