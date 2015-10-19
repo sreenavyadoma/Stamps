@@ -21,6 +21,8 @@ require_relative 'lib/core/logger'
 # BatchHelper module
 require_relative 'lib/batch/batch_helper'
 require_relative 'lib/batch/fields'
+require_relative 'lib/postage/postage_helper'
+require_relative 'lib/postage/fields'
 
 #Profile Patch
 

@@ -215,6 +215,26 @@ module Stamps
         end
       end
 
+      def wait_while_present *args
+        case args.length
+          when 1
+            begin
+              args[0].wait_while_present
+              true
+            rescue
+              false
+            end
+          when 2
+            begin
+              args[0].wait_while_present args[1].to_i
+            rescue
+              false
+            end
+          else
+            raise "Illegal number of arguments for BrowserHelper.wait_while_present"
+        end
+      end
+
       def wait_until_present *args
         case args.length
           when 1
@@ -306,6 +326,10 @@ module Stamps
 
       def present?
         browser_helper.present? @field
+      end
+
+      def wait_while_present
+        browser_helper.wait_while_present @field
       end
 
       def wait_until_present
