@@ -88,12 +88,12 @@ module Batch
     def sign_in *args
       case args[0]
         when Hash
-          username = args[0]['username']
-          password = args[0]['password']
+          username = args['username']
+          password = args['password']
         when Array
           if args[0].length == 2
-            username = args[0][0]
-            password = args[0][1]
+            username = args[0]
+            password = args[1]
           else
             log "Using Default Sign-in Credentials: #{ENV["USR"]}/#{ENV["PW"]}"
             username = ENV["USR"]

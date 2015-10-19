@@ -1,7 +1,7 @@
 module Postage
   include Stamps
 
-  def postage
-    @batch ||= WebPostage.new(@browser)
+  def print_postage
+    @batch ||= PrintPostage.new(@browser)
   end
 end

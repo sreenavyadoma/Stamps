@@ -12,14 +12,14 @@ module Postage
     end
 
     def sign_in *args
-      case args[0]
+      case args
         when Hash
           username = args[0]['username']
           password = args[0]['password']
         when Array
-          if args[0].length == 2
-            username = args[0][0]
-            password = args[0][1]
+          if args.length == 2
+            username = args[0]
+            password = args[1]
           else
             log "Using Default Sign-in Credentials: #{ENV["USR"]}/#{ENV["PW"]}"
             username = ENV["USR"]
@@ -44,6 +44,9 @@ module Postage
         if username_textbox.present?
           username_textbox.set username
           password_textbox.set password
+          sign_in_button.safe_click
+          sign_in_button.safe_click
+          sign_in_button.safe_click
           sign_in_button.safe_click
           sleep 2
           verifying_account_info.wait_while_present
