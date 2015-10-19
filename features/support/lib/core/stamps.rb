@@ -1,4 +1,5 @@
 module Stamps
+  include DataMagic
 
   def str_to_sym(str)
     str.downcase.tr('()', '').tr('/-', '_').strip.tr(' ', '_').to_sym
@@ -18,8 +19,14 @@ module Stamps
     string.gsub(/\A[#{chars}]+|[#{chars}]+\z/, "")
   end
 
-  def self.url_prefix
-    return data_for(:url_prefix, {})[ENV['URL']]
+  def self.url_prefix *args
+    @url_hash = data_for(:url_prefix, {})
+    case args.length
+      when 1
+        return @url_hash[args[0]]
+      else
+        return @url_hash[ENV['URL']]
+    end
   end
 
   def browser_helper

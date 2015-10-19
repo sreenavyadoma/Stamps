@@ -5,7 +5,7 @@ module Postage
           ENV['URL'] = args[0]
         end
 
-        url = "https://#{Stamps.url_prefix}.stamps.com/webbatch/"
+        url = "https://#{Stamps.url_prefix}.stamps.com/webpostage/"
         @browser.goto url
         log "Page loaded.  #{url}"
         self

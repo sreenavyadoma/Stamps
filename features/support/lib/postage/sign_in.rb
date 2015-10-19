@@ -1,5 +1,5 @@
 module Postage
-  class SignInPage < BatchObject
+  class SignInPage < PostageObject
 
   end
 end
