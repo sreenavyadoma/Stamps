@@ -2,8 +2,8 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-Cucumber::Rake::Task.new(:wonderment_bvt_qacc_ff) do |t|
-  t.profile = 'wonderment_bvt_qacc_ff'
+Cucumber::Rake::Task.new(:wonder_bvt) do |t|
+  t.profile = 'wonder_bvt'
   t.cucumber_opts = "-p cuke_reports"
 end
 
