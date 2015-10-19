@@ -12,7 +12,7 @@ module Postage
       end
 
     def sign_in *args
-      @sign_in ||= SignInPage.new(@browser).sign_in args
+      @sign_in ||= Postage::SignInPage.new(@browser).sign_in args
     end
   end
 end
