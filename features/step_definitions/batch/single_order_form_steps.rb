@@ -152,7 +152,7 @@ Then /^Expect (\w+) Ship-From address was added$/ do |address|
   raise "Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
   begin
     log "Search for \n#{@ship_from_address}.  Address was #{(batch.single_order_form.manage_shipping_addresses.address_located?(@ship_from_address))?'Located':'Not Located'}"
-    #batch.single_order_form.manage_shipping_addresses.address_located?(@ship_from_address).should be true
+    #features.batch.single_order_form.manage_shipping_addresses.address_located?(@ship_from_address).should be true
 
   end unless @ship_from_address.nil?
 end
@@ -162,7 +162,7 @@ Then /^Delete (\w+) Ship-From address$/ do |address|
     if address.downcase.include? "random"
       raise "Illegal State Exception:  @ship_from_address is nil" if @ship_from_address.nil?
       batch.single_order_form.manage_shipping_addresses.delete @ship_from_address
-      #batch.single_order_form.manage_shipping_addresses.delete (address.downcase.include?"random")?@ship_from_address:address
+      #features.batch.single_order_form.manage_shipping_addresses.delete (address.downcase.include?"random")?@ship_from_address:address
     elsif address.downcase.include? "all"
       batch.single_order_form.manage_shipping_addresses.delete_all
     end

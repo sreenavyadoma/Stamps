@@ -115,7 +115,7 @@ When /^Print expecting some orders can not be printed$/ do
 end
 
 Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  #print_window = batch.toolbar.print_modal
+  #print_window = features.batch.toolbar.print_modal
   if @print_window.nil? || !@print_window.present?
     raise "Print Window is not open."
   end

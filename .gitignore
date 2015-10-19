@@ -52,4 +52,4 @@ Temporary Items
 .apdisk
 *.iml
 
-features/batch/print_multiple_orders.feature
+features/features.batch/print_multiple_orders.feature

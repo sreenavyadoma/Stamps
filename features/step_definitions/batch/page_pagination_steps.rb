@@ -130,10 +130,10 @@ Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
 end
 
 Then /^Set paging toolbar orders per page count to (\d+)$/ do |page_count|
-  #log "Order Grid contains #{batch.grid.grid_page_order_count} orders"
+  #log "Order Grid contains #{features.batch.grid.grid_page_order_count} orders"
   log "Per page count is #{batch.grid.paging_toolbar.page_count.text} orders"
   batch.grid.paging_toolbar.per_page_dd.select page_count
-  #log "Order Grid contains #{batch.grid.grid_page_order_count} orders"
+  #log "Order Grid contains #{features.batch.grid.grid_page_order_count} orders"
   log "Per page count is #{batch.grid.paging_toolbar.page_count.text} orders"
   expect(page_count.to_i > 1).to be true
   @per_page_count = page_count

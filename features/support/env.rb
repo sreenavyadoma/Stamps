@@ -1,5 +1,5 @@
 $LOAD_PATH << File.expand_path('../../lib', __FILE__)
-$LOAD_PATH << File.expand_path('lib/batch', __FILE__)
+$LOAD_PATH << File.expand_path('lib/features.batch', __FILE__)
 
 require 'data_magic'
 require 'rake'
@@ -82,4 +82,4 @@ module Selenium
   end # WebDriver
 end # Selenium
 
-World(Stamps,Batch,Wonder)
+World(Stamps,Batch)

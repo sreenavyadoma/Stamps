@@ -1,5 +1,5 @@
 
-# batch.navigation_bar.sign_out
+# features.batch.navigation_bar.sign_out
 #* Buy postage
 #* Expect value is added to customer balance
 
