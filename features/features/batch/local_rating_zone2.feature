@@ -166,7 +166,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Large Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -246,7 +246,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Regional Rate Boxes
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -320,7 +320,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Express Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -401,7 +401,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Parcel Select Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -481,7 +481,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Parcel Select Large Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -561,7 +561,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Parcel Select Oversized Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -641,7 +641,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -721,7 +721,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Padded Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -801,7 +801,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Legal Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -882,7 +882,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Small Flat Rate Box
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -961,7 +961,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Medium Flat Rate Box
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1041,7 +1041,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Large Flat Rate Box
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1121,7 +1121,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Express Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1201,7 +1201,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Express Padded Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1281,7 +1281,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Express Legal Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1362,7 +1362,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Priority Mail Express Medium Flat Rate Box
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1441,7 +1441,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - Media Mail Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1521,7 +1521,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - First-Class Mail Large Envelope/Flat
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1543,7 +1543,7 @@ Feature: Local Rating Zone 2
     And Sign out
 
   @local_rating_zone2 @local_rating
-  Scenario:
+  Scenario: Zone 2 - First-Class Mail Package/Thick Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|

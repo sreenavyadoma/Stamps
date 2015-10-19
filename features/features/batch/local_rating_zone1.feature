@@ -7,7 +7,7 @@ Feature: Local Rating Zone 1
     Given I am signed in as a batch shipper ff/qacc/dj_cctest_01/postage1
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Large/Thick Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -88,7 +88,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -169,7 +169,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Large Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -249,7 +249,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Regional Rate Boxes
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -323,7 +323,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -403,7 +403,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Padded Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -483,7 +483,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Legal Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -563,7 +563,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Small Flat Rate Box
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -643,7 +643,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Medium Flat Rate Box
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -723,7 +723,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Large Flat Rate Box
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -803,7 +803,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Express Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -884,7 +884,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Express Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -964,7 +964,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Express Padded Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1044,7 +1044,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Express Legal Flat Rate Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1124,7 +1124,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1
-  Scenario:
+  Scenario: Zone 1 - Priority Mail Express Medium Flat Rate Box
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1204,7 +1204,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1 @local_rating
-  Scenario:
+  Scenario: Zone 1 - Media Mail Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1284,7 +1284,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1 @local_rating
-  Scenario:
+  Scenario: Zone 1 - Parcel Select Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1364,7 +1364,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1 @local_rating
-  Scenario:
+  Scenario: Zone 1 - Parcel Select Large Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1444,7 +1444,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1 @local_rating
-  Scenario:
+  Scenario: Zone 1 - Parcel Select Oversized Package
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1524,7 +1524,7 @@ Feature: Local Rating Zone 1
     And Sign out
 
   @local_rating_zone1 @local_rating
-  Scenario:
+  Scenario: Zone 1 - First-Class Mail Large Envelope/Flat
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
@@ -1542,5 +1542,28 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|12|1|1|1|None|3.40|
       |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|13|1|1|1|None|3.62|
       |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|14|1|1|1|None|0.00|
+
+    And Sign out
+
+  @local_rating_zone1 @local_rating
+  Scenario: Zone 1 - First-Class Mail Package/Thick Envelope
+    Then I Add a new order
+    Then Verify Local Rating
+      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|1|1|1|1|Signature Required|4.49|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|1|1|1|1|USPS Tracking|2.04|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|2|1|1|1|USPS Tracking|2.04|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|3|1|1|1|USPS Tracking|2.04|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|4|1|1|1|USPS Tracking|2.13|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|5|1|1|1|USPS Tracking|2.22|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|6|1|1|1|USPS Tracking|2.35|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|7|1|1|1|USPS Tracking|2.53|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|8|1|1|1|USPS Tracking|2.71|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|9|1|1|1|USPS Tracking|2.89|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|10|1|1|1|USPS Tracking|3.07|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|11|1|1|1|USPS Tracking|3.25|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|12|1|1|1|USPS Tracking|3.44|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|13|1|1|1|USPS Tracking|3.63|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|14|1|1|1|USPS Tracking|0.00|
 
     And Sign out
