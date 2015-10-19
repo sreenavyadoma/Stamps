@@ -38,7 +38,7 @@ module Postage
       verifying_account_info = Label.new @browser.div :text => "Verifying account information..."
       signed_in_user = Label.new @browser.span :id => "userNameText"
 
-      log "#{username} is #{(sign_in_button.present?)?"signed-in!":"not signed-in."}"
+      log "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
       sign_in_link.safe_click
       15.times {
         if username_textbox.present?
@@ -57,9 +57,9 @@ module Postage
         elsif signed_in_user.present?
           break
         end
-        log "#{username} is #{(sign_in_button.present?)?"signed-in!":"not signed-in."}"
+        log "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
       }
-      log "#{username} is #{(sign_in_button.present?)?"signed-in!":"not signed-in."}"
+      log "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
       ENV["SIGNED_IN_USER"] = username
 
