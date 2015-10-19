@@ -22,7 +22,7 @@ module Batch
     end
 
     def sign_in *args
-      @sign_in ||= LoginPage.new(@browser).sign_in args
+      @sign_in ||= SignInPage.new(@browser).sign_in args
     end
 
     def awaiting_shipment

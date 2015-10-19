@@ -56,7 +56,7 @@ module Batch
     end
   end
 
-  class LoginPage < BatchObject
+  class SignInPage < BatchObject
     private
     LOGIN_FIELDS ||= {
         :sign_in_link_loc => {:id => 'signInButton'},
