@@ -73,23 +73,14 @@ module Batch
     def verify_page
       page_title
     end
-    def load_url
+
+    def visit
       url = "https://#{Stamps.url_prefix}.stamps.com/webbatch/"
       @browser.goto url
       log "Page reloaded.  #{url}"
     end
 
     def sign_in *args
-      username_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:username_loc])
-      password_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:password_loc])
-      sign_in_input = Button.new @browser.input :id => "signInButton"
-      grid = Grid.new @browser
-      navigation = Navigation.new @browser
-      welcome_modal = WelcomeModal.new @browser
-      welcome_orders_page = WelcomeOrdersPage.new @browser
-      plugin_issue = ErrorStampsPluginIssue.new @browser
-      toolbar = Toolbar.new @browser
-
       case args[0]
         when Hash
           username = args[0]['username']
@@ -109,6 +100,16 @@ module Batch
           password = ENV["PW"]
       end
 
+      username_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:username_loc])
+      password_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:password_loc])
+      sign_in = Button.new @browser.input :id => "signInButton"
+      grid = Grid.new @browser
+      navigation = Navigation.new @browser
+      welcome_modal = WelcomeModal.new @browser
+      welcome_orders_page = WelcomeOrdersPage.new @browser
+      plugin_issue = ErrorStampsPluginIssue.new @browser
+      toolbar = Toolbar.new @browser
+
       20.times do
         begin
           log "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}"
@@ -119,32 +120,32 @@ module Batch
             password_textbox.set password
             sleep 1
             begin
-              (@browser.input :id => "signInButton").send_keys :enter
+              sign_in.send_keys :enter
             rescue
               #ignore
             end
             sleep 6
             log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
-            log "#{username} Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+            log "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             begin
-              (@browser.input :id => "signInButton").send_keys :enter
+              sign_in.send_keys :enter
             rescue
               #ignore
             end
 
             log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
-            log "#{username} Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+            log "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             sleep 6
 
             toolbar.wait_until_present
 
             log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
-            log "#{username} Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+            log "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
             break if toolbar.present? #|| grid.present?
             log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
-            log "#{username} Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+            log "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             if welcome_modal.present?
               welcome_modal.ok
@@ -152,32 +153,32 @@ module Batch
             end
 
             log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
-            log "#{username} Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+            log "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
             if welcome_orders_page.present?
               welcome_orders_page.continue
               break
             end
 
             log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
-            log "#{username} Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+            log "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
             break if toolbar.present? #|| grid.present?
             log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
-            log "#{username} Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+            log "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             if plugin_issue.present?
               plugin_issue.close
               break
             end
           else
-            load_url
+            visit
           end
 
           log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
-          log "#{username} Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+          log "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
           break if toolbar.present? #|| grid.present?
 
           log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
-          log "#{username} Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+          log "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
           begin
             navigation.orders.click
           rescue
@@ -186,12 +187,12 @@ module Batch
 
           sleep 4
           log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
-          log "#{username} Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+          log "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
           break if toolbar.present? #|| grid.present?
 
           log "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
           log "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}"
-          load_url
+          visit
         rescue Exception => e
           log e
         end

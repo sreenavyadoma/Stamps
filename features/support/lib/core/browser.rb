@@ -273,6 +273,11 @@ module Stamps
         end
       end
 
+      def send_keys special_char
+        browser_helper.send_keys @field, special_char
+        self
+      end
+
       def browser_helper
         BrowserHelper.instance
       end
@@ -387,7 +392,6 @@ module Stamps
     end
 
     class Button < ClickableField
-
     end
 
     class Link < Label
@@ -409,11 +413,6 @@ module Stamps
 
       def set text
         browser_helper.set @field, text
-        self
-      end
-
-      def send_keys special_char
-        browser_helper.send_keys @field, special_char
         self
       end
     end
@@ -597,6 +596,10 @@ module Stamps
           begin
             field.focus
             field.clear
+          rescue
+            #ignore
+          end
+          begin
             field.send_keys log_browser_set(field, text, field_name)
           rescue
             #ignore
