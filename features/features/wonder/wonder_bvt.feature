@@ -8,3 +8,4 @@ Feature: Verify QASC, QACC and Staging environments are up and running.
 
   Scenario: Staging Web Postage Sign-in
     Then Sign-in to staging webpostage as auto40/password using firefox
+

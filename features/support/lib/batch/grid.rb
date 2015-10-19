@@ -87,7 +87,7 @@ module Batch
         @browser.execute_script('arguments[0].scrollIntoView();', column_field)
         log "Grid #{name} Column visible? #{browser_helper.present? column_field}"
       rescue
-        log "Failed to scroll column #{index} into view"
+        #log "Failed to scroll column #{index} into view"
       end
       index
     end
