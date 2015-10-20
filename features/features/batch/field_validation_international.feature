@@ -25,9 +25,6 @@ Feature: International Field Validation
     Then Expect order-grid Ship Cost error to contain "The ship to address is a required field"
     Then Expect order-grid Ship Cost error to contain "The ship to city is a required field"
     Then Expect order-grid Ship Cost error to contain "The ship to phone number is a required field"
-    #Then Expect Grid ship cost data error tooltip to be "The ship to phone number is a required field"
-    #Then Set International Ship-To email to "@@"
-    #Then Expect Single Order Form International Email data error tooltip to be "Please enter a valid email address"
-
+    Then Expect order-grid Ship Cost error to contain "Please enter a valid email address"
 
     And Sign out
