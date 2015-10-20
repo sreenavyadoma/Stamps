@@ -86,12 +86,12 @@ module Batch
     end
 
     def sign_in *args
-      case args[0]
+      case args
         when Hash
           username = args['username']
           password = args['password']
         when Array
-          if args[0].length == 2
+          if args.length == 2
             username = args[0]
             password = args[1]
           else

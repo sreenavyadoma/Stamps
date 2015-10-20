@@ -8,6 +8,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -27,6 +28,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -38,6 +40,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -49,6 +52,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -61,6 +65,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -72,6 +77,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -85,6 +91,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -98,6 +105,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -111,6 +119,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -124,6 +133,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -138,6 +148,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -148,6 +159,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1
@@ -158,6 +170,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
+    Then Set single-order form Ounces to 2
     Then Set single-order form Width to 1
     Then Set single-order form Height to 1
     Then Set single-order form Length to 1

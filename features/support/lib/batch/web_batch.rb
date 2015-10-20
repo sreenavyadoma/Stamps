@@ -2,7 +2,7 @@ module Batch
 
   class WebBatch < BatchObject
 
-    def navigation_bar
+    def navigation
       @navigation_bar ||= Navigation.new @browser
     end
 
@@ -10,6 +10,11 @@ module Batch
       @toolbar ||= Toolbar.new @browser
     end
 
+    def sign_in_page
+      @sign_in ||= Batch::SignInPage.new @browser
+    end
+
+=begin
     def visit *args
       @sign_in ||= Batch::SignInPage.new(@browser)
       @sign_in.visit *args
@@ -20,6 +25,7 @@ module Batch
       @sign_in ||= Batch::SignInPage.new(@browser)
       @sign_in.sign_in *args
     end
+=end
 
     def awaiting_shipment
       #todo-elie here are your steps;

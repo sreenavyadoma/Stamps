@@ -3,7 +3,7 @@ Then /^Save Shipping Costs Data$/ do
   @insurance_cost = batch.single_order_form.insurance_cost
   @tracking_cost = batch.single_order_form.tracking_cost
   @total_amount = batch.single_order_form.total
-  @old_balance = batch.navigation_bar.balance
+  @old_balance = batch.navigation.balance
 end
 
 Then /^Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost$/ do
@@ -36,13 +36,13 @@ end
 Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
   log_param "Old Balance", @old_balance
   if @printing_error
-    @new_balance = batch.navigation_bar.balance
+    @new_balance = batch.navigation.balance
     test_result = @old_balance.to_f == @new_balance.to_f
     log "Printing error detected."
     log "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(test_result)?"Passed":"Failed"}"
     expect(test_result).to be true
   else
-    @new_balance = batch.navigation_bar.balance
+    @new_balance = batch.navigation.balance
     test_result = @old_balance.to_f == @new_balance.to_f + expected.to_f
     log "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(test_result)?"Passed":"Failed"}"
     expect(test_result).to be true
@@ -53,13 +53,13 @@ Then /^Expect Printing cost is deducted from customer balance if there were no p
   log "Printing Error:  #{@printing_error}"
   log_param "Old Balance", @old_balance
   if @printing_error
-    @new_balance = batch.navigation_bar.balance
+    @new_balance = batch.navigation.balance
     balance_deduction = @old_balance.to_f == @new_balance.to_f
     log "Printing error detected."
     log "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(balance_deduction)?"Passed":"Failed"}"
     expect(balance_deduction).to be true
   else
-    @new_balance = batch.navigation_bar.wait_until_balance_updated(@old_balance).balance
+    @new_balance = batch.navigation.wait_until_balance_updated(@old_balance).balance
     postage_total_calculation = @total_amount.to_f.round(2) == (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
     log "Postage total Calculation:  #{(postage_total_calculation)?'Passed':'Failed'}.  #{@total_amount} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
     expect(postage_total_calculation).to be true
