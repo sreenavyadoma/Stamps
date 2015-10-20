@@ -38,26 +38,35 @@ module Postage
       verifying_account_info = Label.new @browser.div :text => "Verifying account information..."
       signed_in_user = Label.new @browser.span :id => "userNameText"
 
-      log "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
-      sign_in_link.safe_click
-      15.times {
-        if username_textbox.present?
-          username_textbox.set username
-          password_textbox.set password
-          sign_in_button.safe_click
-          sign_in_button.safe_click
-          sign_in_button.safe_click
-          sign_in_button.safe_click
-          sleep 2
-          verifying_account_info.wait_while_present
-          signed_in_user.wait_until_present
-          break if signed_in_user.present?
-        elsif sign_in_link.present?
-          sign_in_link.safe_click
-        elsif signed_in_user.present?
-          break
-        end
+
+      10.times {
+
+        sign_in_link.safe_click unless username_textbox.present?
+        username_textbox.set username
+
+        sign_in_link.safe_click unless password_textbox.present?
+        password_textbox.set password
+
+        sign_in_link.safe_click unless sign_in_button.present?
+        sign_in_button.safe_click
+        sleep 1
+        sign_in_link.safe_click unless sign_in_button.present?
+        sign_in_button.safe_click
+        sleep 1
+        sign_in_link.safe_click unless sign_in_button.present?
+        sign_in_button.safe_click
+        sleep 1
+        sign_in_link.safe_click unless sign_in_button.present?
+        sign_in_button.safe_click
+        sleep 1
+        sign_in_link.safe_click unless sign_in_button.present?
+        sleep 1
+
         log "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
+        verifying_account_info.wait_while_present
+        signed_in_user.wait_until_present
+        log "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
+        break if signed_in_user.present?
       }
       log "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
