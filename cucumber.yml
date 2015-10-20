@@ -12,7 +12,7 @@ default_profile: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=
 add_new_order_eva_qacc: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cctest2 PW=password1
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto17 PW=password1
-bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto20 PW=password1
+bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto01 PW=password1
 bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto19 PW=password1
 
 local_rating_zone1_qacc_ff: --tags @local_rating_zone1 --guess URL=qacc BROWSER=ff USR=dj_cctest_01 PW=postage1
