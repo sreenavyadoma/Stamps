@@ -113,10 +113,10 @@ When /^Set single-order form Height to (\d*)$/ do |value|
 end
 
 And /^Set single-order form Service to \"(.*)\"$/ do |service|
-  batch.single_order_form.service service
+  batch.single_order_form.service.select service
 end
 
-Then /^Set single-order form Tracking to ([\w ]*)$/ do |value|
+Then /^Set single-order form Tracking to \"([\w ]*)\"$/ do |value|
   begin
     batch.single_order_form.tracking = log_param "Tracking", value
   end unless value.length == 0
@@ -215,11 +215,11 @@ Then /^Expect Service Cost to be greater than \$([0-9.]+)$/ do |expected|
 end
 
 Then /^Expect inline Service Cost for ([a-zA-Z -\/]+) to be greater than \$([0-9.]+)$/ do |service, expected|
-  actual = batch.single_order_form.service service
+  actual = batch.single_order_form.service.cost service
   10.times { |counter|
     log_expectation "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
     break if actual.to_f >= expected.to_f
-    actual = batch.single_order_form.service service
+    actual = batch.single_order_form.service.cost service
   }
   actual.to_f.should be >= expected.to_f
 end

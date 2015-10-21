@@ -18,7 +18,7 @@ bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto19 PW=326tsetaqcdS!
 local_rating_zone1_qacc_ff: --tags @local_rating_zone1 --guess URL=qacc BROWSER=ff USR=dj_cctest_01 PW=postage1
 local_rating_zone2_qacc_ff: --tags @local_rating_zone2 --guess URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
-wonder_bvt: --tags @wonder_bvt --guess URL=qacc BROWSER=ff USR=auto04 PW=password1
+wonder_bvt: --tags @wonder_bvt --guess URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
 validate_international_qacc_ff: --tags @validate_international --guess URL=qacc BROWSER=ff USR=webpost_0001 PW=pass111
 validate_international_qacc_gc: --tags @validate_international --guess URL=qacc BROWSER=gc USR=webpost_0001 PW=pass111

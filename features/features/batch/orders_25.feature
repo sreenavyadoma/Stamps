@@ -1,7 +1,7 @@
 Feature: 25 orders
 
   Background:
-    Given I am signed in as a batch shipper ff/auto01/password1
+    Given I am signed in as a batch shipper ff/auto01/326tsetaqcdS!
 
   @orders_25
   Scenario:  Inline Rates
@@ -27,7 +27,7 @@ Feature: 25 orders
     And Set single-order form Ounces to 2
     And Set single-order form Service to "First-Class Mail Package/Thick Envelope"
     And Set single-order form Insured Value to $45.00
-    And Set single-order form Tracking to USPS Tracking
+    And Set single-order form Tracking to "USPS Tracking"
     Then Uncheck row 1 on the order grid
 
     #Priority Mail
@@ -40,7 +40,7 @@ Feature: 25 orders
 
     And Set single-order form Ounces to 3
     And Set single-order form Service to "Priority Mail Large/Thick Envelope"
-    And Set single-order form Tracking to USPS Tracking
+    And Set single-order form Tracking to "USPS Tracking"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -49,7 +49,7 @@ Feature: 25 orders
     
     And Set single-order form Pounds to 4
     And Set single-order form Service to "Priority Mail Package"
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -59,7 +59,7 @@ Feature: 25 orders
     And Set single-order form Pounds to 5
     And Set single-order form Service to "Priority Mail Large Package"
     And Set single-order form Insured Value to $145.00
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -68,7 +68,7 @@ Feature: 25 orders
     
     And Set single-order form Ounces to 6
     And Set single-order form Service to "Priority Mail Flat Rate Envelope"
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -78,7 +78,7 @@ Feature: 25 orders
     And Set single-order form Ounces to 7
     And Set single-order form Service to "Priority Mail Padded Flat Rate Envelope"
     And Set single-order form Insured Value to $98.00
-    And Set single-order form Tracking to USPS Tracking
+    And Set single-order form Tracking to "USPS Tracking"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -87,7 +87,7 @@ Feature: 25 orders
     
     And Set single-order form Ounces to 8
     And Set single-order form Service to "Priority Mail Legal Flat Rate Envelope"
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -97,7 +97,7 @@ Feature: 25 orders
     And Set single-order form Ounces to 9
     And Set single-order form Service to "Priority Mail Small Flat Rate Box"
     And Set single-order form Insured Value to $30.00
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -107,7 +107,7 @@ Feature: 25 orders
     And Set single-order form Ounces to 10
     And Set single-order form Service to "Priority Mail Medium Flat Rate Box"
     And Set single-order form Insured Value to $45.00
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -117,7 +117,7 @@ Feature: 25 orders
     And Set single-order form Pounds to 11
     And Set single-order form Service to "Priority Mail Large Flat Rate Box"
     And Set single-order form Insured Value to $239.00
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -127,7 +127,7 @@ Feature: 25 orders
     And Set single-order form Ounces to 12
     And Set single-order form Service to "Priority Mail Regional Rate Box A"
     And Set single-order form Insured Value to $105.00
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -137,7 +137,7 @@ Feature: 25 orders
     And Set single-order form Ounces to 13
     And Set single-order form Service to "Priority Mail Regional Rate Box B"
     And Set single-order form Insured Value to $205.00
-    And Set single-order form Tracking to USPS Tracking
+    And Set single-order form Tracking to "USPS Tracking"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -147,7 +147,7 @@ Feature: 25 orders
     And Set single-order form Ounces to 14
     And Set single-order form Service to "Priority Mail Regional Rate Box C"
     And Set single-order form Insured Value to $305.00
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     # Priority Mail Express
 
@@ -158,7 +158,7 @@ Feature: 25 orders
     
     And Set single-order form Ounces to 15
     And Set single-order form Service to "Priority Mail Express Package"
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -167,7 +167,7 @@ Feature: 25 orders
     
     And Set single-order form Pounds to 16
     And Set single-order form Service to "Priority Mail Express Flat Rate Envelope"
-    And Set single-order form Tracking to USPS Tracking
+    And Set single-order form Tracking to "USPS Tracking"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -176,7 +176,7 @@ Feature: 25 orders
     
     And Set single-order form Pounds to 17
     And Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -185,7 +185,7 @@ Feature: 25 orders
     
     And Set single-order form Pounds to 18
     And Set single-order form Service to "Priority Mail Express Legal Flat Rate Envelope"
-    And Set single-order form Tracking to USPS Tracking
+    And Set single-order form Tracking to "USPS Tracking"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -194,7 +194,7 @@ Feature: 25 orders
     
     And Set single-order form Pounds to 19
     And Set single-order form Service to "Priority Mail Express Medium Flat Rate Box"
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     # Media Mail
 
@@ -206,7 +206,7 @@ Feature: 25 orders
     And Set single-order form Pounds to 20
     And Set single-order form Service to "Media Mail Package"
     And Set single-order form Insured Value to $56.00
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     # Parcel Select
 
@@ -218,7 +218,7 @@ Feature: 25 orders
     And Set single-order form Pounds to 21
     And Set single-order form Service to "Parcel Select Package"
     And Set single-order form Insured Value to $345.00
-    And Set single-order form Tracking to USPS Tracking
+    And Set single-order form Tracking to "USPS Tracking"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -228,7 +228,7 @@ Feature: 25 orders
     And Set single-order form Pounds to 22
     And Set single-order form Service to "Parcel Select Large Package"
     And Set single-order form Insured Value to $456.00
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     Then I Add a new order
     And Expect new Order ID created
@@ -238,7 +238,7 @@ Feature: 25 orders
     And Set single-order form Pounds to 23
     And Set single-order form Service to "Parcel Select Oversized Package"
     And Set single-order form Insured Value to $567.00
-    And Set single-order form Tracking to Signature Required
+    And Set single-order form Tracking to "Signature Required"
 
     # International
 

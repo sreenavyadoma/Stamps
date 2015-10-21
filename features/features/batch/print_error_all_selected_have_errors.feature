@@ -2,7 +2,7 @@
 Feature:  Prompt User to Remove Orders in Error from Print Group
 
   Background:
-    Given I am signed in as a batch shipper ff/qacc/auto01/password1
+    Given I am signed in as a batch shipper ff/qacc/auto01/326tsetaqcdS!
 
   @printing_error @regression
   Scenario:  Printing

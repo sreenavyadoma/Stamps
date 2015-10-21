@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want to be able to filter orders by status [B-01621]
 
   Background:
-    Given I am signed in as a batch shipper gc/auto39/password1
+    Given I am signed in as a batch shipper gc/auto39/326tsetaqcdS!
 
   @filters @regression
   Scenario: User Views Filter Panel Default

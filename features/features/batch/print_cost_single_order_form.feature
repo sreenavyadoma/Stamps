@@ -18,6 +18,6 @@ Feature: Printing total cost
     Then Set single-order form Ounces to 1
     Then Set single-order form Service to "Priority Mail Package"
     Then Set single-order form Insured Value to $10.00
-    Then Set single-order form Tracking to Signature Required
+    Then Set single-order form Tracking to "Signature Required"
     Then Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost
     And Sign out

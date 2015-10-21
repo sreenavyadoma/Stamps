@@ -10,7 +10,7 @@ Feature: Postage Balance
     And Hide single-order form Ship-To fields
     Then Set single-order form Service to "Priority Mail Package"
     Then Set single-order form Insured Value to $10.00
-    Then Set single-order form Tracking to USPS Tracking
+    Then Set single-order form Tracking to "USPS Tracking"
     And Save Shipping Costs Data
     Then Print
     Then Expect Printing cost is deducted from customer balance if there were no printing errors

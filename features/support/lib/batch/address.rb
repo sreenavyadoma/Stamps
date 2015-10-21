@@ -452,7 +452,7 @@ module Batch
     end
 
     def set(partial_address_hash)
-      single_order_form = SingleOrderFormBase.new(@browser)
+      single_order_form = SingleOrderForm.new(@browser)
       single_order_form.validate_address_link
       single_order_form.expand_ship_to
       single_order_form.ship_to.set BatchHelper.instance.format_address(partial_address_hash)
