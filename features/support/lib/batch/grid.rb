@@ -156,7 +156,7 @@ module Batch
     end
 
     def select_all_checkbox
-      spans = @browser.spans :css => "span[class=x-column-header-text]"
+      spans = @browser.spans :css => "span[class=x-column-header-text-inner]"
       checkbox_field = spans.first
       check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
       attribute = "class"
