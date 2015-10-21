@@ -10,80 +10,80 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Large/Thick Envelope
     Then I Add a new order
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|1|0|1|1|1|Signature Required|7.50|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|0|8|2|2|2|USPS Tracking|5.05|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|1|0|2|2|2|USPS Tracking|5.05|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|2|0|3|3|3|USPS Tracking|5.32|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|3|0|4|4|4|USPS Tracking|5.49|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|4|0|5|5|5|USPS Tracking|6.16|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|5|0|6|6|6|USPS Tracking|6.78|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|6|0|7|7|7|USPS Tracking|6.95|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|7|0|8|8|8|USPS Tracking|7.27|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|8|0|9|9|9|USPS Tracking|7.54|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|9|0|10|10|10|USPS Tracking|8.02|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|10|0|11|11|11|USPS Tracking|8.28|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|11|0|12|12|12|USPS Tracking|8.57|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|12|0|1|1|1|USPS Tracking|8.78|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|13|0|2|2|2|USPS Tracking|8.99|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|14|0|3|3|3|USPS Tracking|9.14|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|15|0|4|4|4|USPS Tracking|9.27|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|16|0|5|5|5|USPS Tracking|9.77|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|17|0|6|6|6|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|18|0|7|7|7|USPS Tracking|9.96|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|19|0|8|8|8|USPS Tracking|10.08|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|20|0|9|9|9|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|21|0|10|10|10|USPS Tracking|11.76|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|22|0|11|11|11|USPS Tracking|13.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|23|0|12|12|12|USPS Tracking|14.76|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|24|0|1|1|1|USPS Tracking|16.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|25|0|2|2|2|USPS Tracking|17.76|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|26|0|3|3|3|USPS Tracking|18.77|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|27|0|4|4|4|USPS Tracking|19.31|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|28|0|5|5|5|USPS Tracking|19.90|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|29|0|6|6|6|USPS Tracking|20.50|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|30|0|7|7|7|USPS Tracking|21.13|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|31|0|8|8|8|USPS Tracking|21.71|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|32|0|9|9|9|USPS Tracking|21.96|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|33|0|10|10|10|USPS Tracking|22.30|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|34|0|11|11|11|USPS Tracking|22.50|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|35|0|12|12|12|USPS Tracking|22.77|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|36|0|1|1|1|USPS Tracking|23.05|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|37|0|2|2|2|USPS Tracking|23.29|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|38|0|3|3|3|USPS Tracking|23.50|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|39|0|4|4|4|USPS Tracking|23.75|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|40|0|5|5|5|USPS Tracking|23.99|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|41|0|6|6|6|USPS Tracking|24.25|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|42|0|7|7|7|USPS Tracking|24.43|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|43|0|8|8|8|USPS Tracking|24.71|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|44|0|9|9|9|USPS Tracking|24.87|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|45|0|10|10|10|USPS Tracking|25.04|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|46|0|11|11|11|USPS Tracking|25.25|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|47|0|12|12|12|USPS Tracking|25.46|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|48|0|1|1|1|USPS Tracking|25.66|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|49|0|2|2|2|USPS Tracking|25.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|50|0|3|3|3|USPS Tracking|25.96|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|51|0|4|4|4|USPS Tracking|26.34|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|52|0|5|5|5|USPS Tracking|26.75|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|53|0|6|6|6|USPS Tracking|27.23|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|54|0|7|7|7|USPS Tracking|27.63|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|55|0|8|8|8|USPS Tracking|28.06|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|56|0|9|9|9|USPS Tracking|28.45|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|57|0|10|10|10|USPS Tracking|28.90|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|58|0|11|11|11|USPS Tracking|29.33|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|59|0|12|12|12|USPS Tracking|29.76|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|60|0|1|1|1|USPS Tracking|30.14|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|61|0|2|2|2|USPS Tracking|30.61|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|62|0|3|3|3|USPS Tracking|30.99|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|63|0|4|4|4|USPS Tracking|31.54|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|64|0|5|5|5|USPS Tracking|31.83|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|65|0|6|6|6|USPS Tracking|32.29|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|66|0|7|7|7|USPS Tracking|32.72|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|67|0|8|8|8|USPS Tracking|33.20|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|68|0|9|9|9|USPS Tracking|33.59|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|69|0|10|10|10|USPS Tracking|34.06|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|70|0|11|11|11|USPS Tracking|34.41|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large/Thick Envelope|71|0|12|12|12|USPS Tracking|0.00|
+      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|rate0|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|1|0|1|1|1|Signature Required|7.50|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|0|8|2|2|2|USPS Tracking|5.05|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|1|0|2|2|2|USPS Tracking|5.05|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|2|0|3|3|3|USPS Tracking|5.32|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|3|0|4|4|4|USPS Tracking|5.49|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|4|0|5|5|5|USPS Tracking|6.16|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|5|0|6|6|6|USPS Tracking|6.78|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|6|0|7|7|7|USPS Tracking|6.95|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|7|0|8|8|8|USPS Tracking|7.27|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|8|0|9|9|9|USPS Tracking|7.54|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|9|0|10|10|10|USPS Tracking|8.02|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|10|0|11|11|11|USPS Tracking|8.28|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|11|0|12|12|12|USPS Tracking|8.57|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|12|0|1|1|1|USPS Tracking|8.78|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|13|0|2|2|2|USPS Tracking|8.99|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|14|0|3|3|3|USPS Tracking|9.14|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|15|0|4|4|4|USPS Tracking|9.27|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|16|0|5|5|5|USPS Tracking|9.77|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|17|0|6|6|6|USPS Tracking|9.85|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|18|0|7|7|7|USPS Tracking|9.96|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|19|0|8|8|8|USPS Tracking|10.08|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|20|0|9|9|9|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|21|0|10|10|10|USPS Tracking|11.76|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|22|0|11|11|11|USPS Tracking|13.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|23|0|12|12|12|USPS Tracking|14.76|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|24|0|1|1|1|USPS Tracking|16.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|25|0|2|2|2|USPS Tracking|17.76|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|26|0|3|3|3|USPS Tracking|18.77|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|27|0|4|4|4|USPS Tracking|19.31|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|28|0|5|5|5|USPS Tracking|19.90|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|29|0|6|6|6|USPS Tracking|20.50|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|30|0|7|7|7|USPS Tracking|21.13|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|31|0|8|8|8|USPS Tracking|21.71|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|32|0|9|9|9|USPS Tracking|21.96|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|33|0|10|10|10|USPS Tracking|22.30|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|34|0|11|11|11|USPS Tracking|22.50|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|35|0|12|12|12|USPS Tracking|22.77|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|36|0|1|1|1|USPS Tracking|23.05|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|37|0|2|2|2|USPS Tracking|23.29|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|38|0|3|3|3|USPS Tracking|23.50|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|39|0|4|4|4|USPS Tracking|23.75|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|40|0|5|5|5|USPS Tracking|23.99|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|41|0|6|6|6|USPS Tracking|24.25|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|42|0|7|7|7|USPS Tracking|24.43|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|43|0|8|8|8|USPS Tracking|24.71|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|44|0|9|9|9|USPS Tracking|24.87|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|45|0|10|10|10|USPS Tracking|25.04|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|46|0|11|11|11|USPS Tracking|25.25|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|47|0|12|12|12|USPS Tracking|25.46|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|48|0|1|1|1|USPS Tracking|25.66|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|49|0|2|2|2|USPS Tracking|25.85|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|50|0|3|3|3|USPS Tracking|25.96|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|51|0|4|4|4|USPS Tracking|26.34|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|52|0|5|5|5|USPS Tracking|26.75|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|53|0|6|6|6|USPS Tracking|27.23|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|54|0|7|7|7|USPS Tracking|27.63|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|55|0|8|8|8|USPS Tracking|28.06|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|56|0|9|9|9|USPS Tracking|28.45|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|57|0|10|10|10|USPS Tracking|28.90|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|58|0|11|11|11|USPS Tracking|29.33|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|59|0|12|12|12|USPS Tracking|29.76|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|60|0|1|1|1|USPS Tracking|30.14|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|61|0|2|2|2|USPS Tracking|30.61|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|62|0|3|3|3|USPS Tracking|30.99|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|63|0|4|4|4|USPS Tracking|31.54|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|64|0|5|5|5|USPS Tracking|31.83|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|65|0|6|6|6|USPS Tracking|32.29|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|66|0|7|7|7|USPS Tracking|32.72|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|67|0|8|8|8|USPS Tracking|33.20|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|68|0|9|9|9|USPS Tracking|33.59|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|69|0|10|10|10|USPS Tracking|34.06|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|70|0|11|11|11|USPS Tracking|34.41|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|71|0|12|12|12|USPS Tracking|0.00|
 
     And Sign out
 
@@ -173,78 +173,78 @@ Feature: Local Rating Zone 1
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|1|0|1|1|1|Signature Required|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|1|0|2|2|2|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|2|0|3|3|3|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|3|0|4|4|4|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|4|0|5|5|5|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|5|0|6|6|6|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|6|0|7|7|7|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|7|0|8|8|8|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|8|0|9|9|9|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|9|0|10|10|10|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|10|0|11|11|11|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|11|0|12|12|12|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|12|0|1|1|1|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|13|0|2|2|2|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|14|0|3|3|3|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|15|0|4|4|4|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|16|0|5|5|5|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|17|0|6|6|6|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|18|0|7|7|7|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|19|0|8|8|8|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|20|0|9|9|9|USPS Tracking|10.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|21|0|10|10|10|USPS Tracking|11.76|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|22|0|11|11|11|USPS Tracking|13.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|23|0|12|12|12|USPS Tracking|14.76|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|24|0|1|1|1|USPS Tracking|16.26|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|25|0|2|2|2|USPS Tracking|17.76|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|26|0|3|3|3|USPS Tracking|18.77|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|27|0|4|4|4|USPS Tracking|19.31|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|28|0|5|5|5|USPS Tracking|19.90|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|29|0|6|6|6|USPS Tracking|20.50|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|30|0|7|7|7|USPS Tracking|21.13|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|31|0|8|8|8|USPS Tracking|21.71|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|32|0|9|9|9|USPS Tracking|21.96|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|33|0|10|10|10|USPS Tracking|22.30|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|34|0|11|11|11|USPS Tracking|22.50|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|35|0|12|12|12|USPS Tracking|22.77|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|36|0|1|1|1|USPS Tracking|23.05|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|37|0|2|2|2|USPS Tracking|23.29|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|38|0|3|3|3|USPS Tracking|23.50|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|39|0|4|4|4|USPS Tracking|23.75|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|40|0|5|5|5|USPS Tracking|23.99|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|41|0|6|6|6|USPS Tracking|24.25|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|42|0|7|7|7|USPS Tracking|24.43|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|43|0|8|8|8|USPS Tracking|24.71|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|44|0|9|9|9|USPS Tracking|24.87|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|45|0|10|10|10|USPS Tracking|25.04|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|46|0|11|11|11|USPS Tracking|25.25|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|47|0|12|12|12|USPS Tracking|25.46|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|48|0|1|1|1|USPS Tracking|25.66|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|49|0|2|2|2|USPS Tracking|25.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|50|0|3|3|3|USPS Tracking|25.96|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|51|0|4|4|4|USPS Tracking|26.34|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|52|0|5|5|5|USPS Tracking|26.75|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|53|0|6|6|6|USPS Tracking|27.23|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|54|0|7|7|7|USPS Tracking|27.63|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|55|0|8|8|8|USPS Tracking|28.06|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|56|0|9|9|9|USPS Tracking|28.45|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|57|0|10|10|10|USPS Tracking|28.90|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|58|0|11|11|11|USPS Tracking|29.33|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|59|0|12|12|12|USPS Tracking|29.76|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|60|0|1|1|1|USPS Tracking|30.14|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|61|0|2|2|2|USPS Tracking|30.61|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|62|0|3|3|3|USPS Tracking|30.99|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|63|0|4|4|4|USPS Tracking|31.54|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|64|0|5|5|5|USPS Tracking|31.83|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|65|0|6|6|6|USPS Tracking|32.29|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|66|0|7|7|7|USPS Tracking|32.72|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|67|0|8|8|8|USPS Tracking|33.20|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|68|0|9|9|9|USPS Tracking|33.59|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|69|0|10|10|10|USPS Tracking|34.06|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|70|0|11|11|11|USPS Tracking|34.41|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Package|71|0|12|12|12|USPS Tracking|0.00|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|1|0|1|1|1|Signature Required|12.71|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|1|0|2|2|2|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|2|0|3|3|3|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|3|0|4|4|4|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|4|0|5|5|5|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|5|0|6|6|6|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|6|0|7|7|7|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|7|0|8|8|8|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|8|0|9|9|9|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|9|0|10|10|10|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|10|0|11|11|11|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|11|0|12|12|12|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|12|0|1|1|1|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|13|0|2|2|2|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|14|0|3|3|3|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|15|0|4|4|4|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|16|0|5|5|5|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|17|0|6|6|6|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|18|0|7|7|7|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|19|0|8|8|8|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|20|0|9|9|9|USPS Tracking|10.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|21|0|10|10|10|USPS Tracking|11.76|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|22|0|11|11|11|USPS Tracking|13.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|23|0|12|12|12|USPS Tracking|14.76|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|24|0|1|1|1|USPS Tracking|16.26|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|25|0|2|2|2|USPS Tracking|17.76|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|26|0|3|3|3|USPS Tracking|18.77|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|27|0|4|4|4|USPS Tracking|19.31|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|28|0|5|5|5|USPS Tracking|19.90|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|29|0|6|6|6|USPS Tracking|20.50|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|30|0|7|7|7|USPS Tracking|21.13|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|31|0|8|8|8|USPS Tracking|21.71|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|32|0|9|9|9|USPS Tracking|21.96|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|33|0|10|10|10|USPS Tracking|22.30|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|34|0|11|11|11|USPS Tracking|22.50|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|35|0|12|12|12|USPS Tracking|22.77|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|36|0|1|1|1|USPS Tracking|23.05|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|37|0|2|2|2|USPS Tracking|23.29|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|38|0|3|3|3|USPS Tracking|23.50|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|39|0|4|4|4|USPS Tracking|23.75|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|40|0|5|5|5|USPS Tracking|23.99|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|41|0|6|6|6|USPS Tracking|24.25|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|42|0|7|7|7|USPS Tracking|24.43|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|43|0|8|8|8|USPS Tracking|24.71|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|44|0|9|9|9|USPS Tracking|24.87|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|45|0|10|10|10|USPS Tracking|25.04|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|46|0|11|11|11|USPS Tracking|25.25|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|47|0|12|12|12|USPS Tracking|25.46|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|48|0|1|1|1|USPS Tracking|25.66|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|49|0|2|2|2|USPS Tracking|25.85|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|50|0|3|3|3|USPS Tracking|25.96|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|51|0|4|4|4|USPS Tracking|26.34|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|52|0|5|5|5|USPS Tracking|26.75|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|53|0|6|6|6|USPS Tracking|27.23|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|54|0|7|7|7|USPS Tracking|27.63|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|55|0|8|8|8|USPS Tracking|28.06|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|56|0|9|9|9|USPS Tracking|28.45|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|57|0|10|10|10|USPS Tracking|28.90|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|58|0|11|11|11|USPS Tracking|29.33|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|59|0|12|12|12|USPS Tracking|29.76|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|60|0|1|1|1|USPS Tracking|30.14|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|61|0|2|2|2|USPS Tracking|30.61|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|62|0|3|3|3|USPS Tracking|30.99|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|63|0|4|4|4|USPS Tracking|31.54|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|64|0|5|5|5|USPS Tracking|31.83|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|65|0|6|6|6|USPS Tracking|32.29|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|66|0|7|7|7|USPS Tracking|32.72|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|67|0|8|8|8|USPS Tracking|33.20|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|68|0|9|9|9|USPS Tracking|33.59|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|69|0|10|10|10|USPS Tracking|34.06|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|70|0|11|11|11|USPS Tracking|34.41|
+      |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|71|0|12|12|12|USPS Tracking|0.00|
 
     And Sign out
 
@@ -1288,78 +1288,78 @@ Feature: Local Rating Zone 1
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|1|0|1|1|1|Signature Required|34.02|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|1|0|1|1|1|USPS Tracking|31.57|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|2|0|1|1|1|USPS Tracking|26.85|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|3|0|1|1|1|USPS Tracking|15.50|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|4|0|1|1|1|USPS Tracking|36.35|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|5|0|1|1|1|USPS Tracking|9.84|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|6|0|1|1|1|USPS Tracking|7.50|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|7|0|1|1|1|USPS Tracking|14.37|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|8|0|1|1|1|USPS Tracking|19.83|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|9|0|1|1|1|USPS Tracking|37.80|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|10|0|1|1|1|USPS Tracking|7.73|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|11|0|1|1|1|USPS Tracking|19.06|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|12|0|1|1|1|USPS Tracking|25.39|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|13|0|1|1|1|USPS Tracking|40.45|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|14|0|1|1|1|USPS Tracking|33.27|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|15|0|1|1|1|USPS Tracking|31.57|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|16|0|1|1|1|USPS Tracking|33.27|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|17|0|1|1|1|USPS Tracking|19.25|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|18|0|1|1|1|USPS Tracking|38.93|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|19|0|1|1|1|USPS Tracking|21.37|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|20|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|21|0|1|1|1|USPS Tracking|25.39|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|22|0|1|1|1|USPS Tracking|26.45|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|23|0|1|1|1|USPS Tracking|26.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|24|0|1|1|1|USPS Tracking|12.95|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|25|0|1|1|1|USPS Tracking|33.73|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|26|0|1|1|1|USPS Tracking|27.91|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|27|0|1|1|1|USPS Tracking|36.75|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|28|0|1|1|1|USPS Tracking|40.85|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|29|0|1|1|1|USPS Tracking|34.30|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|30|0|1|1|1|USPS Tracking|16.74|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|31|0|1|1|1|USPS Tracking|29.77|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|32|0|1|1|1|USPS Tracking|9.55|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|33|0|1|1|1|USPS Tracking|28.53|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|34|0|1|1|1|USPS Tracking|16.25|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|35|0|1|1|1|USPS Tracking|11.74|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|36|0|1|1|1|USPS Tracking|28.55|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|37|0|1|1|1|USPS Tracking|35.35|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|38|0|1|1|1|USPS Tracking|39.96|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|39|0|1|1|1|USPS Tracking|23.23|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|40|0|1|1|1|USPS Tracking|31.31|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|41|0|1|1|1|USPS Tracking|31.10|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|42|0|1|1|1|USPS Tracking|36.41|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|43|0|1|1|1|USPS Tracking|11.23|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|44|0|1|1|1|USPS Tracking|9.84|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|45|0|1|1|1|USPS Tracking|20.81|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|46|0|1|1|1|USPS Tracking|16.43|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|47|0|1|1|1|USPS Tracking|39.96|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|48|0|1|1|1|USPS Tracking|19.31|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|49|0|1|1|1|USPS Tracking|38.57|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|50|0|1|1|1|USPS Tracking|32.03|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|51|0|1|1|1|USPS Tracking|29.41|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|52|0|1|1|1|USPS Tracking|30.28|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|53|0|1|1|1|USPS Tracking|12.46|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|54|0|1|1|1|USPS Tracking|23.90|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|55|0|1|1|1|USPS Tracking|13.75|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|56|0|1|1|1|USPS Tracking|30.64|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|57|0|1|1|1|USPS Tracking|35.28|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|58|0|1|1|1|USPS Tracking|6.64|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|59|0|1|1|1|USPS Tracking|17.00|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|60|0|1|1|1|USPS Tracking|17.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|61|0|1|1|1|USPS Tracking|23.20|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|62|0|1|1|1|USPS Tracking|31.40|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|63|0|1|1|1|USPS Tracking|37.45|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|64|0|1|1|1|USPS Tracking|37.44|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|65|0|1|1|1|USPS Tracking|31.80|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|66|0|1|1|1|USPS Tracking|28.25|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|67|0|1|1|1|USPS Tracking|10.45|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|68|0|1|1|1|USPS Tracking|35.84|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|69|0|1|1|1|USPS Tracking|20.14|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|70|0|1|1|1|USPS Tracking|10.90|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Package|71|0|1|1|1|USPS Tracking|0.00|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|1|0|1|1|1|Signature Required|8.15|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|1|0|1|1|1|USPS Tracking|5.70|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|2|0|1|1|1|USPS Tracking|5.90|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|3|0|1|1|1|USPS Tracking|6.65|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|4|0|1|1|1|USPS Tracking|7.50|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|5|0|1|1|1|USPS Tracking|8.90|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|6|0|1|1|1|USPS Tracking|9.55|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|7|0|1|1|1|USPS Tracking|10.15|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|8|0|1|1|1|USPS Tracking|10.90|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|9|0|1|1|1|USPS Tracking|11.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|10|0|1|1|1|USPS Tracking|12.10|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|11|0|1|1|1|USPS Tracking|12.95|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|12|0|1|1|1|USPS Tracking|13.35|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|13|0|1|1|1|USPS Tracking|13.50|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|14|0|1|1|1|USPS Tracking|13.70|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|15|0|1|1|1|USPS Tracking|13.95|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|16|0|1|1|1|USPS Tracking|14.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|17|0|1|1|1|USPS Tracking|15.50|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|18|0|1|1|1|USPS Tracking|16.25|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|19|0|1|1|1|USPS Tracking|17.00|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|20|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|21|0|1|1|1|USPS Tracking|18.50|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|22|0|1|1|1|USPS Tracking|19.25|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|23|0|1|1|1|USPS Tracking|20.00|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|24|0|1|1|1|USPS Tracking|20.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|25|0|1|1|1|USPS Tracking|22.15|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|26|0|1|1|1|USPS Tracking|22.55|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|27|0|1|1|1|USPS Tracking|23.20|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|28|0|1|1|1|USPS Tracking|23.95|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|29|0|1|1|1|USPS Tracking|24.65|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|30|0|1|1|1|USPS Tracking|25.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|31|0|1|1|1|USPS Tracking|26.15|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|32|0|1|1|1|USPS Tracking|26.45|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|33|0|1|1|1|USPS Tracking|26.85|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|34|0|1|1|1|USPS Tracking|27.10|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|35|0|1|1|1|USPS Tracking|27.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|36|0|1|1|1|USPS Tracking|27.70|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|37|0|1|1|1|USPS Tracking|28.00|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|38|0|1|1|1|USPS Tracking|28.25|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|39|0|1|1|1|USPS Tracking|28.55|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|40|0|1|1|1|USPS Tracking|28.90|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|41|0|1|1|1|USPS Tracking|29.20|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|42|0|1|1|1|USPS Tracking|29.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|43|0|1|1|1|USPS Tracking|29.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|44|0|1|1|1|USPS Tracking|29.95|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|45|0|1|1|1|USPS Tracking|30.15|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|46|0|1|1|1|USPS Tracking|30.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|47|0|1|1|1|USPS Tracking|30.65|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|48|0|1|1|1|USPS Tracking|30.90|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|49|0|1|1|1|USPS Tracking|31.10|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|50|0|1|1|1|USPS Tracking|31.25|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|51|0|1|1|1|USPS Tracking|31.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|52|0|1|1|1|USPS Tracking|31.80|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|53|0|1|1|1|USPS Tracking|32.30|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|54|0|1|1|1|USPS Tracking|32.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|55|0|1|1|1|USPS Tracking|33.30|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|56|0|1|1|1|USPS Tracking|33.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|57|0|1|1|1|USPS Tracking|34.25|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|58|0|1|1|1|USPS Tracking|34.80|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|59|0|1|1|1|USPS Tracking|35.35|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|60|0|1|1|1|USPS Tracking|35.80|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|61|0|1|1|1|USPS Tracking|36.35|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|62|0|1|1|1|USPS Tracking|36.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|63|0|1|1|1|USPS Tracking|37.45|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|64|0|1|1|1|USPS Tracking|37.80|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|65|0|1|1|1|USPS Tracking|38.30|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|66|0|1|1|1|USPS Tracking|38.80|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|67|0|1|1|1|USPS Tracking|39.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|68|0|1|1|1|USPS Tracking|39.90|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|69|0|1|1|1|USPS Tracking|40.45|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|70|0|1|1|1|USPS Tracking|40.85|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Package|71|0|1|1|1|USPS Tracking|0.00|
 
     And Sign out
 
@@ -1368,79 +1368,78 @@ Feature: Local Rating Zone 1
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|1|0|1|1|1|Signature Required|12.60|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|1|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|2|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|3|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|4|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|5|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|6|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|7|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|8|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|9|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|10|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|11|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|12|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|13|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|14|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|15|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|16|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|17|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|18|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|19|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|20|0|1|1|1|USPS Tracking|10.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|21|0|1|1|1|USPS Tracking|25.39|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|22|0|1|1|1|USPS Tracking|26.45|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|23|0|1|1|1|USPS Tracking|26.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|24|0|1|1|1|USPS Tracking|12.95|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|25|0|1|1|1|USPS Tracking|33.73|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|26|0|1|1|1|USPS Tracking|27.91|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|27|0|1|1|1|USPS Tracking|36.75|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|28|0|1|1|1|USPS Tracking|40.85|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|29|0|1|1|1|USPS Tracking|34.30|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|30|0|1|1|1|USPS Tracking|16.74|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|31|0|1|1|1|USPS Tracking|29.77|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|32|0|1|1|1|USPS Tracking|9.55|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|33|0|1|1|1|USPS Tracking|28.53|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|34|0|1|1|1|USPS Tracking|16.25|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|35|0|1|1|1|USPS Tracking|11.74|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|36|0|1|1|1|USPS Tracking|28.55|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|37|0|1|1|1|USPS Tracking|35.35|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|38|0|1|1|1|USPS Tracking|39.96|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|39|0|1|1|1|USPS Tracking|23.23|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|40|0|1|1|1|USPS Tracking|31.31|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|41|0|1|1|1|USPS Tracking|31.10|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|42|0|1|1|1|USPS Tracking|36.41|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|43|0|1|1|1|USPS Tracking|11.23|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|44|0|1|1|1|USPS Tracking|9.84|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|45|0|1|1|1|USPS Tracking|20.81|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|46|0|1|1|1|USPS Tracking|16.43|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|47|0|1|1|1|USPS Tracking|39.96|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|48|0|1|1|1|USPS Tracking|19.31|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|49|0|1|1|1|USPS Tracking|38.57|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|50|0|1|1|1|USPS Tracking|32.03|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|51|0|1|1|1|USPS Tracking|29.41|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|52|0|1|1|1|USPS Tracking|30.28|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|53|0|1|1|1|USPS Tracking|12.46|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|54|0|1|1|1|USPS Tracking|23.90|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|55|0|1|1|1|USPS Tracking|13.75|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|56|0|1|1|1|USPS Tracking|30.64|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|57|0|1|1|1|USPS Tracking|35.28|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|58|0|1|1|1|USPS Tracking|6.64|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|59|0|1|1|1|USPS Tracking|17.00|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|60|0|1|1|1|USPS Tracking|17.15|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|61|0|1|1|1|USPS Tracking|23.20|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|62|0|1|1|1|USPS Tracking|31.40|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|63|0|1|1|1|USPS Tracking|37.45|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|64|0|1|1|1|USPS Tracking|37.44|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|65|0|1|1|1|USPS Tracking|31.80|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|66|0|1|1|1|USPS Tracking|28.25|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|67|0|1|1|1|USPS Tracking|10.45|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|68|0|1|1|1|USPS Tracking|35.84|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|69|0|1|1|1|USPS Tracking|20.14|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|70|0|1|1|1|USPS Tracking|10.90|
-      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Large Package|71|0|1|1|1|USPS Tracking|0.00|
-
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|1|0|1|1|1|Signature Required|20.20|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|1|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|2|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|3|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|4|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|5|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|6|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|7|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|8|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|9|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|10|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|11|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|12|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|13|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|14|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|15|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|16|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|17|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|18|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|19|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|20|0|1|1|1|USPS Tracking|17.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|21|0|1|1|1|USPS Tracking|18.50|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|22|0|1|1|1|USPS Tracking|19.25|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|23|0|1|1|1|USPS Tracking|20.00|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|24|0|1|1|1|USPS Tracking|20.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|25|0|1|1|1|USPS Tracking|22.15|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|26|0|1|1|1|USPS Tracking|22.55|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|27|0|1|1|1|USPS Tracking|23.20|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|28|0|1|1|1|USPS Tracking|23.95|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|29|0|1|1|1|USPS Tracking|24.65|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|30|0|1|1|1|USPS Tracking|25.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|31|0|1|1|1|USPS Tracking|26.15|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|32|0|1|1|1|USPS Tracking|26.45|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|33|0|1|1|1|USPS Tracking|26.85|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|34|0|1|1|1|USPS Tracking|27.10|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|35|0|1|1|1|USPS Tracking|27.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|36|0|1|1|1|USPS Tracking|27.70|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|37|0|1|1|1|USPS Tracking|28.00|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|38|0|1|1|1|USPS Tracking|28.25|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|39|0|1|1|1|USPS Tracking|28.55|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|40|0|1|1|1|USPS Tracking|28.90|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|41|0|1|1|1|USPS Tracking|29.20|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|42|0|1|1|1|USPS Tracking|29.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|43|0|1|1|1|USPS Tracking|29.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|44|0|1|1|1|USPS Tracking|29.95|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|45|0|1|1|1|USPS Tracking|30.15|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|46|0|1|1|1|USPS Tracking|30.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|47|0|1|1|1|USPS Tracking|30.65|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|48|0|1|1|1|USPS Tracking|30.90|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|49|0|1|1|1|USPS Tracking|31.10|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|50|0|1|1|1|USPS Tracking|31.25|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|51|0|1|1|1|USPS Tracking|31.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|52|0|1|1|1|USPS Tracking|31.80|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|53|0|1|1|1|USPS Tracking|32.30|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|54|0|1|1|1|USPS Tracking|32.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|55|0|1|1|1|USPS Tracking|33.30|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|56|0|1|1|1|USPS Tracking|33.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|57|0|1|1|1|USPS Tracking|34.25|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|58|0|1|1|1|USPS Tracking|34.80|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|59|0|1|1|1|USPS Tracking|35.35|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|60|0|1|1|1|USPS Tracking|35.80|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|61|0|1|1|1|USPS Tracking|36.35|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|62|0|1|1|1|USPS Tracking|36.75|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|63|0|1|1|1|USPS Tracking|37.45|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|64|0|1|1|1|USPS Tracking|37.80|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|65|0|1|1|1|USPS Tracking|38.30|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|66|0|1|1|1|USPS Tracking|38.80|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|67|0|1|1|1|USPS Tracking|39.40|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|68|0|1|1|1|USPS Tracking|39.90|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|69|0|1|1|1|USPS Tracking|40.45|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|70|0|1|1|1|USPS Tracking|40.85|
+      |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Large Package|71|0|1|1|1|USPS Tracking|0.00|
     And Sign out
 
   @local_rating_zone1 @local_rating
