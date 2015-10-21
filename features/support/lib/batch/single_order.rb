@@ -209,17 +209,15 @@ module Batch
     end
 
     def field selection
-      @browser.td :css => "tr[data-qtip*='#{selection}']"
+      @browser.tr :css => "tr[data-qtip*='#{selection}']"
     end
 
     def selection_field selection
-      parent = field selection
-      parent.tds[1]
+      field(selection).tr.tds[1]
     end
 
     def selection_cost_field selection
-      parent = field selection
-      parent.tds[2]
+      field(selection).tr.tds[2]
     end
 
     public
@@ -227,7 +225,10 @@ module Batch
     def select selection
       box = textbox
       button = drop_down
-      selection_label = selection_field selection
+      button.safe_click
+      button.safe_click
+      button.safe_click
+      selection_label = Label.new(selection_field(selection))
       5.times {
         begin
           button.safe_click unless selection_label.present?
@@ -243,7 +244,7 @@ module Batch
 
     def cost selection
       button = drop_down
-      cost_label = selection_cost_field selection
+      cost_label = Label.new selection_cost_field selection
       5.times {
         begin
           button.safe_click unless cost_label.present?
@@ -260,12 +261,12 @@ module Batch
 
     def data_qtip selection
       button = drop_down
-      selection_label = @browser.td :text => selection
+      selection_label = Label.new field selection
       5.times {
         begin
           button.safe_click unless selection_label.present?
           if selection_label.present?
-            qtip = selection_label.parent.attribute_value "data-qtip"
+            qtip = selection_label.attribute_value "data-qtip"
             log "#{qtip}"
             return qtip
           end
@@ -284,7 +285,7 @@ module Batch
   class SingleOrderForm < OrderDetails
 
     def service
-      new Service.new @browser
+      Service.new @browser
     end
 
     def tracking
