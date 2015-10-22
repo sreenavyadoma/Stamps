@@ -399,7 +399,7 @@ Given /^Expect Customs Form ITN# to be (.+)$/ do |value|
   end
 end
 
-Given /^Expect Customs Form Internal Transaction # to be (.+)$/ do |value|
+Given /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   text = @customs_form.internal_transaction_dd.text_box.text

@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:tracking_qacc_ff) do |t|
+  t.profile = 'tracking_qacc_ff'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:wonder_bvt) do |t|
   t.profile = 'wonder_bvt'
   t.cucumber_opts = "-p cuke_reports"
