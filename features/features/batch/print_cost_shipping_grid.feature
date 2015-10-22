@@ -4,7 +4,7 @@ Feature: Show Cost of Order in Ship Cost Grid
   Background:
     Given I am signed in as a batch shipper ff
 
-  @print_costs @regression
+  @print_costs
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid
     And I Add a new order
     Then Set single-order form Ship-From to default

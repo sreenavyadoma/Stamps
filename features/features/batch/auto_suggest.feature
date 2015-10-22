@@ -4,7 +4,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
   Background:
     Given I am signed in as a batch shipper autosuggest/password1
 
-  @auto_suggest @regression
+  @auto_suggest
   Scenario: Select Domestic Address
 
     When I Add a new order
@@ -106,7 +106,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Sign out
 
 
-  @auto_suggest @regression
+  @auto_suggest
   Scenario: Select International Address
 
     When I Add a new order

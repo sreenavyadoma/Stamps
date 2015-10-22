@@ -4,7 +4,7 @@ Feature: Address Cleansing
   Background:
     Given I am signed in as a batch shipper
 
-  @address_cleansing @regression
+  @address_cleansing
   Scenario: Address Cleansing
     And I Add a new order
     Then Set single-order form Ship-From to default

@@ -1,7 +1,7 @@
 
 Feature: Postage Balance
 
-  @update_postage_balance @regression @regression
+  @update_postage_balance
   Scenario: Update Postage Balance After Each Print
     Given I am signed in as a batch shipper
     And I Add a new order

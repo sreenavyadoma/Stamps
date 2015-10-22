@@ -4,7 +4,7 @@ Feature: Printing
   Background:
     Given I am signed in as a batch shipper ff
 
-  @print @print1 @regression
+  @print @print1
   Scenario:  Print Priority Mail Package
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -14,7 +14,7 @@ Feature: Printing
 
     And Sign out
 
-  @print @print_test @regression
+  @print @print_test
   Scenario:  B-01624 Print Priority Mail Express Medium Flat Rate Box
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -25,7 +25,7 @@ Feature: Printing
 
     And Sign out
 
-  @print @print_test @regression
+  @print @print_test
   Scenario:  Print Priority Mail Express Package
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -36,7 +36,7 @@ Feature: Printing
 
     And Sign out
 
-  @print @regression
+  @print
   Scenario:  Print Priority Mail Flat Rate Envelope
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -47,7 +47,7 @@ Feature: Printing
 
     And Sign out
 
-  @print @regression
+  @print
   Scenario:  Print Priority Mail Regional Rate Box A
     And I Add a new order
     Then Set single-order form Ship-From to default

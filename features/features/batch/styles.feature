@@ -5,7 +5,7 @@ Feature: Web Batch Styles
   Background:
     Given I am signed in as a batch shipper gc/qacc/cctest1/password1
 
-  @styles @regression
+  @styles
   Scenario: Font and tool tips
     Then Expect Style for General Fonts font-family to include helvetica
     Then Expect Style for General Fonts font-family to include arial

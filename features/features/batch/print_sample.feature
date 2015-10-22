@@ -4,10 +4,10 @@ Feature: Print Sample
   Background:
     Given I am signed in as a batch shipper ff
 
-  @print_sample @print_sample @regression
+  @print_sample @print_sample
   Scenario:  B-01625 Print Sample - Parcel Select Large Package
 
-  @print_sample @regression
+  @print_sample
   Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -19,7 +19,7 @@ Feature: Print Sample
     And Sign out
 
 
-  @print_sample @regression
+  @print_sample
   Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -43,7 +43,7 @@ Feature: Print Sample
     And Sign out
 
 
-  @print_sample @regression
+  @print_sample
   Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -53,7 +53,7 @@ Feature: Print Sample
     Then Print Sample
 
 
-  @print_sample @regression
+  @print_sample
   Scenario:
     And I Add a new order
     Then Set single-order form Ship-From to default

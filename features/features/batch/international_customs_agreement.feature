@@ -5,7 +5,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Given I am signed in as a batch shipper gc/autosuggest/password1
 
 
-  @usps_terms @regression
+  @usps_terms
   Scenario: User Accepts Permanent USPS Terms Agreement
 
     #Print an Int'l order with Auto-Confirm turned off

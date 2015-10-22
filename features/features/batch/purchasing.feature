@@ -4,7 +4,7 @@ Feature: Purchasing
   Background:
     Given I am signed in as a batch shipper auto30/326tsetaqcdS!
 
-  @purchasing @regression
+  @purchasing
   Scenario:
     And Buy $10 postage
     Then Expect $10 is added to customer balance

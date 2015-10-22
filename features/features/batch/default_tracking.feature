@@ -4,7 +4,7 @@ Feature: Tracking
   Background:
     Given I am signed in as a batch shipper
 
-  @tracking @regression
+  @tracking
   Scenario:  Print - First-Class Mail Envelope
     And I Add a new order
     Then Set single-order form Ship-From to default

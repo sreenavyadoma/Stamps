@@ -5,7 +5,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
   Background:
     Given I am signed in as a batch shipper ff/autosuggest/password1
 
-  @two_up @regression
+  @two_up
   Scenario: User Prints multiple Domestic labels
 
     When I Add a new order

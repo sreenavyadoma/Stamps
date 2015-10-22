@@ -3,7 +3,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
   Background:
     Given I am signed in as a batch shipper ff/webpost_0001/pass111
 
-  @filter @regression
+  @filter
   Scenario: Print 1 order
     And I Add a new order
     Then Set single-order form Ship-From to default

@@ -4,7 +4,7 @@ Feature: Printing total cost
   Background:
     Given I am signed in as a batch shipper ff
 
-  @print_costs @regression
+  @print_costs
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
     And I Add a new order
     Then Set single-order form Ship-From to default
