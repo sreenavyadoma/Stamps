@@ -9,6 +9,8 @@ daniel_dev: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=326ts
 
 default_profile: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
+address_cleansing: --tags @address_cleansing --guess URL=qacc BROWSER=ff USR=auto17 PW=326tsetaqcdS!
+
 add_new_order_eva_qacc: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cctest2 PW=password1
 
 bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto17 PW=326tsetaqcdS!
@@ -42,10 +44,6 @@ printing_errors_qacc_ff: --tags @printing_error --guess URL=qacc BROWSER=ff USR=
 print_qacc_gc:  --tags @print --guess URL=qacc BROWSER=gc USR=auto12 PW=326tsetaqcdS!
 print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff USR=auto13 PW=326tsetaqcdS!
 print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie USR=auto14 PW=326tsetaqcdS!
-
-address_cleansing_qacc_gc:  --tags @address_cleansing --guess URL=qacc BROWSER=ff USR=auto15 PW=326tsetaqcdS!
-address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie USR=auto16 PW=326tsetaqcdS!
-address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff USR=auto17 PW=326tsetaqcdS!
 
 address_management_qacc_ie: --tags @address_management --guess URL=qacc BROWSER=ie USR=auto18 PW=326tsetaqcdS!
 address_management_qacc_ff: --tags @address_management --guess URL=qacc BROWSER=ff USR=auto19 PW=326tsetaqcdS!
