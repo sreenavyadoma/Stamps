@@ -2,7 +2,7 @@
 Feature: Order Pagination
 
   Background:
-    Given I am signed in as a batch shipper ff/webbatch_0009/password1
+    Given I am signed in as a batch shipper ff/webbatch_0009/326tsetaqcdS!
 
   @page_count @regression
   Scenario: B-01746 Set per page count

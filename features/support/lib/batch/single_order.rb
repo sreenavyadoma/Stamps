@@ -116,75 +116,193 @@ module Batch
     end
   end
 
-  class SingleOrderFormBase < BatchObject
-
-    def ship_cost_span
-      span = @browser.span :text => "Ship Cost"
-      log "Single Order Form is #{(browser_helper.present? span)?'present':'NOT present'}"
-      span
-    end
-
-    def order_id
-      order_id_label = Label.new @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div:nth-child(1)>div>div>div>div>div>label:nth-child(1)"
-      5.times{
+  class OrderDetails < BatchObject
+    def click_form
+      item_label = Label.new @browser.label :text => 'Item:'
+      10.times {
         begin
-          order_id_str = order_id_label.text
-          break if order_id_str.include? 'Order #'
+          item_label.safe_click
         rescue
-          #ignroe
+          #ignore
         end
       }
+    end
+  end
 
-      return "Empty Grid" unless order_id_label.present?
+  class Tracking < OrderDetails
 
-      begin
-        order_id_label.wait_until_present
-      rescue
-        log "Single Order Form Order ID label was not present"
-      end
-      #(browser_helper.text order_id_label).split('Order #').last
-      order_id_str = order_id_label.text
-      order_id = order_id_str.split('Order #').last
-      order_id
+    private
+
+    def textbox
+      Textbox.new @browser.text_field :name => 'Tracking'
     end
 
-    def order_status_label
-      @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div>div>div>label"
+    def drop_down
+      Button.new @browser.div :css => "div[id^=trackingdroplist-][id$=-trigger-picker]"
     end
 
-    def order_status
-      browser_helper.text order_status_label, 'order_status'
+    public
+
+    def text
+      textbox.text
     end
 
-    def single_order_form_present
-      browser_helper.present? order_id_label
-    end
-
-    def item_label
-      @browser.label :text => 'Item:'
-    end
-
-    def click_form
-      3.times {
+    def select selection
+      box = textbox
+      button = drop_down
+      selection_label = Label.new @browser.td :text => selection
+      5.times {
         begin
-          item_label.click
+          button.safe_click unless selection_label.present?
+          selection_label.safe_click
+          click_form
+          break if box.text.include? selection
+        rescue
+          #ignore
+        end
+      }
+      selection_label
+    end
+
+    def cost selection
+      button = drop_down
+      selection_label = @browser.td :text => selection
+      5.times {
+        begin
+          button.safe_click unless selection_label.present?
+          if selection_label.present?
+            selection_cost = selection_label.parent.tds[1].text
+            log "#{selection_cost}"
+            return selection_cost
+          end
         rescue
           #ignore
         end
       }
     end
 
-    def validate_address_link
-      @browser.span :text => 'Validate Address'
+    def data_qtip selection
+      button = drop_down
+      selection_label = @browser.td :text => selection
+      5.times {
+        begin
+          button.safe_click unless selection_label.present?
+          if selection_label.present?
+            qtip = selection_label.parent.parent.parent.parent.attribute_value "data-qtip"
+            log "#{qtip}"
+            return qtip
+          end
+        rescue
+          #ignore
+        end
+      }
     end
+
   end
+
+  class Service < OrderDetails
+
+    private
+
+    def textbox
+      Textbox.new @browser.text_field :css => "input[name^=servicedroplist]"
+    end
+
+    def drop_down
+      Button.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
+    end
+
+    def field selection
+      @browser.tr :css => "tr[data-qtip*='#{selection}']"
+    end
+
+    def selection_field selection
+      field(selection).tds[1]
+    end
+
+    def selection_cost_field selection
+      field(selection).tds[2]
+    end
+
+    public
+
+    def text
+      textbox.text
+    end
+
+    def select selection
+      box = textbox
+      button = drop_down
+      button.safe_click
+      button.safe_click
+      button.safe_click
+      selection_label = Label.new(selection_field(selection))
+      5.times {
+        begin
+          button.safe_click unless selection_label.present?
+          selection_label.safe_click
+          click_form
+          break if box.text.include? selection
+        rescue
+          #ignore
+        end
+      }
+      selection_label
+    end
+
+    def cost selection
+      button = drop_down
+      button.safe_click
+      button.safe_click
+      button.safe_click
+      cost_label = Label.new(selection_cost_field(selection))
+      10.times {
+        begin
+          if cost_label.present?
+            selection_cost = test_helper.remove_dollar_sign cost_label.text
+            log "#{selection_cost}"
+            return selection_cost
+          else
+            button.safe_click
+          end
+        rescue
+          #ignore
+        end
+      }
+    end
+
+    def data_qtip selection
+      button = drop_down
+      selection_label = Label.new field selection
+      5.times {
+        begin
+          button.safe_click unless selection_label.present?
+          if selection_label.present?
+            qtip = selection_label.attribute_value "data-qtip"
+            log "#{qtip}"
+            return qtip
+          end
+        rescue
+          #ignore
+        end
+      }
+    end
+
+  end
+
 
   #
   #  Single Order Edit Form
   #
-  class SingleOrderForm < SingleOrderFormBase
+  class SingleOrderForm < OrderDetails
 
-    private
+    def service
+      Service.new @browser
+    end
+
+    def tracking
+      Tracking.new @browser
+    end
 
     def address_textbox
       Textbox.new @browser.textarea :name => 'FreeFormAddress'
@@ -214,10 +332,6 @@ module Batch
       @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div:nth-child(2)'
     end
 
-    def service_postcard_field
-      @browser.td :text => 'Postcard'
-    end
-
     def tracking_dropdown
       @browser.div :css => 'div[id^=trackingdroplist-][id$=-trigger-picker]'[0]
     end
@@ -226,7 +340,7 @@ module Batch
       @browser.td :text => 'USPS Tracking'
     end
 
-    def tracking_textbox
+    def textbox
       @browser.text_field :name => 'Tracking'
     end
 
@@ -247,13 +361,6 @@ module Batch
 
     def auto_suggest_location_array
       @browser.divs :css => 'div[class*=sub-title]'
-    end
-
-    public
-
-    def initialize browser
-      super browser
-      @services ||= Hash.new
     end
 
     def international
@@ -279,7 +386,7 @@ module Batch
         dd = international_drop_down_btn
       end
 
-      raise "Single Order Form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? dd
+      raise "single-order form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? dd
       text_fields = @browser.text_fields :name => "CountryCode"
       domestic_input = text_fields.first
       international_input = text_fields.last
@@ -289,7 +396,7 @@ module Batch
         input = international_input
       end
 
-      raise "Single Order Form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
+      raise "single-order form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
       Dropdown.new @browser, dd, :li, input
     end
 
@@ -307,38 +414,12 @@ module Batch
       line_item
     end
 
-    def service service
-      log_param "Service Selection", service
-      dd = Button.new @browser.div(:css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]")
-      input = Textbox.new @browser.text_field :css => "input[name^=servicedroplist]"
-      selection_field = Label.new @browser.td :css => "tr[data-qtip*='#{service}']>td:nth-child(1)"
-
-      15.times{
-        dd.safe_click unless selection_field.present?
-        selection_field.safe_click
-        selected = input.text
-        break if selected.include? service
-      }
-
-    end
-
     def service_inline_cost
       @service_cost
     end
 
     def service_input_text
       browser_helper.text service_textbox, 'service'
-    end
-
-    def tracking=(selection)
-      begin
-        log_param "Tracking Selection", selection
-        TrackingSelection.new(@browser, selection).select
-      end unless selection.length == 0
-    end
-
-    def tracking
-      browser_helper.text tracking_textbox, 'Tracking'
     end
 
     def service_cost
@@ -616,6 +697,51 @@ module Batch
 
     def get_auto_suggest_location index
       auto_suggest_location_array[index.to_i-1].text
+    end
+    def ship_cost_span
+      span = @browser.span :text => "Ship Cost"
+      log "single-order form is #{(browser_helper.present? span)?'present':'NOT present'}"
+      span
+    end
+
+    def order_id
+      order_id_label = Label.new @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div:nth-child(1)>div>div>div>div>div>label:nth-child(1)"
+      5.times{
+        begin
+          order_id_str = order_id_label.text
+          break if order_id_str.include? 'Order #'
+        rescue
+          #ignroe
+        end
+      }
+
+      return "Empty Grid" unless order_id_label.present?
+
+      begin
+        order_id_label.wait_until_present
+      rescue
+        log "single-order form Order ID label was not present"
+      end
+      #(browser_helper.text order_id_label).split('Order #').last
+      order_id_str = order_id_label.text
+      order_id = order_id_str.split('Order #').last
+      order_id
+    end
+
+    def order_status_label
+      @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div>div>div>label"
+    end
+
+    def order_status
+      browser_helper.text order_status_label, 'order_status'
+    end
+
+    def single_order_form_present
+      browser_helper.present? order_id_label
+    end
+
+    def validate_address_link
+      @browser.span :text => 'Validate Address'
     end
 
 

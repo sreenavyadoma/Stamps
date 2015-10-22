@@ -3,14 +3,14 @@ Feature: Local Rating Zone 2
   Ratesets CBP, CPP and the most common of the SAS rates should be tested.
 
   Background:
-    Given I am signed in as a batch shipper ff/qacc/auto04/password1
+    Given I am signed in as a batch shipper ff/qasc/auto04/326tsetaqcdS!
 
   @local_rating_zone2
   Scenario:  Zone 2 - Priority Mail Large/Thick Envelope
     Then I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large/Thick Envelope|1|0|1|1|1|Signature Required|7.03|
+      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large/Thick Envelope|1|0|1|1|1|Signature Required|7.50|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large/Thick Envelope|1|0|2|2|2|USPS Tracking|4.58|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large/Thick Envelope|2|0|3|3|3|USPS Tracking|4.95|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large/Thick Envelope|3|0|4|4|4|USPS Tracking|5.09|

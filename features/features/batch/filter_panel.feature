@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want to be able to filter orders by status [B-01621]
 
   Background:
-    Given I am signed in as a batch shipper gc/auto39/password1
+    Given I am signed in as a batch shipper gc/auto39/326tsetaqcdS!
 
   @filters @regression
   Scenario: User Views Filter Panel Default
@@ -62,7 +62,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     Then Click on Awaiting Shipment Filter
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
 
-    And Expect Single Order Form Order ID equals Grid order ID
+    And Expect single-order form Order ID equals Grid order ID
     Then Expect order-grid Recipient to be James Test
     Then Expect order-grid Company to be Domestic Company
     Then Expect order-grid Address to be 600 Front St Apt 220
@@ -76,7 +76,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     Then Click on Shipped Filter
     And Expect system selects Shipped Filter and deselects the previous filter
-    And Expect system hides Single Order Form
+    And Expect system hides single-order form
 
     Then Expect order-grid Recipient to be James Test
     Then Expect order-grid Company to be Domestic Company

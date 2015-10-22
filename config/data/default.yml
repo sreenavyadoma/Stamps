@@ -1,4 +1,5 @@
 url_prefix:
+  shipstation: printss600.qacc
   satya: svarma-win7.corp
   qacc:  printext.qacc
   qasc:  printext.qasc
@@ -263,43 +264,43 @@ login_credentials:
   qacc:
     01:
       username:  auto01
-      password:  password1
+      password:  326tsetaqcdS!
     02:
       username:  auto02
-      password:  password1
+      password:  326tsetaqcdS!
     03:
       username:  auto03
-      password:  password1
+      password:  326tsetaqcdS!
     04:
       username:  auto04
-      password:  password1
+      password:  326tsetaqcdS!
     05:
       username:  auto05
-      password:  password1
+      password:  326tsetaqcdS!
     06:
       username:  auto06
-      password:  password1
+      password:  326tsetaqcdS!
     07:
       username:  auto07
-      password:  password1
+      password:  326tsetaqcdS!
     08:
       username:  auto08
-      password:  password1
+      password:  326tsetaqcdS!
     09:
       username:  auto09
-      password:  password1
+      password:  326tsetaqcdS!
     10:
       username:  auto10
-      password:  password1
+      password:  326tsetaqcdS!
     11:
       username:  auto11
-      password:  password1
+      password:  326tsetaqcdS!
     12:
       username:  auto12
-      password:  password1
+      password:  326tsetaqcdS!
     13:
       username:  auto13
-      password:  password1
+      password:  326tsetaqcdS!
     14:
       username:  auto14
       password:  password1

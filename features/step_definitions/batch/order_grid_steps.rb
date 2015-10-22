@@ -426,10 +426,10 @@ Then /^Expect new Order ID created$/ do
   @order_id.to_i.should be > 0
 end
 
-Then /^Expect Single Order Form Order ID equals Grid order ID$/ do
+Then /^Expect single-order form Order ID equals Grid order ID$/ do
   grid_order_id = batch.grid.order_id 1
   single_order_form_order_id = batch.single_order_form.order_id
-  log "Grid Order ID: #{grid_order_id}.  Single Order Form Order ID:  #{single_order_form_order_id}.  Test #{(grid_order_id==single_order_form_order_id)?'Passed':'Failed'}"
+  log "Grid Order ID: #{grid_order_id}.  single-order form Order ID:  #{single_order_form_order_id}.  Test #{(grid_order_id==single_order_form_order_id)?'Passed':'Failed'}"
   grid_order_id.should eql single_order_form_order_id
 end
 

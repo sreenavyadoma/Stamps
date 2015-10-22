@@ -1,7 +1,7 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as a batch shipper gc/qacc/auto39/password1
+    Given I am signed in as a batch shipper gc/qacc/auto39/326tsetaqcdS!
 
   @international @regression @international_data_error @international_failure
   Scenario:  Customs Form Data Error
@@ -93,7 +93,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Sign out
 
   @international_shipping_field_validation @_international @regression
-  Scenario: Single Order Form International Shipping fields and Customs Information fields validation
+  Scenario: single-order form International Shipping fields and Customs Information fields validation
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set Ship-To to international address
@@ -106,10 +106,10 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
-    Then Expect Single Order Form International Address fields are visible
-    Then Expect Single Order Form Domestic Ship-To fields are hidden
-    Then Expect Single Order Form Customs Restrictions button is visible
-    Then Expect Single Order Form Customs Edit Form button is visible
+    Then Expect single-order form International Address fields are visible
+    Then Expect single-order form Domestic Ship-To fields are hidden
+    Then Expect single-order form Customs Restrictions button is visible
+    Then Expect single-order form Customs Edit Form button is visible
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
 

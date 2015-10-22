@@ -2,7 +2,7 @@
 Feature: BVT Purchasing
 
   Background:
-    Given I am signed in as a batch shipper auto30/password1
+    Given I am signed in as a batch shipper auto30/326tsetaqcdS!
 
   @bvt_purchasing
   Scenario: Purchasing $10

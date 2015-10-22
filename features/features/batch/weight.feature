@@ -1,5 +1,5 @@
 
-Feature: Single Order Form Negative Tests
+Feature: single-order form Negative Tests
 
   Background:
     Given I am signed in as a batch shipper
