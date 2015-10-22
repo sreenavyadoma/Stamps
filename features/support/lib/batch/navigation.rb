@@ -112,7 +112,7 @@ module Batch
           #ignore
         end
       }
-      log "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" was signed out.  Goodbye.":" - sign-out failed"}"
+      log "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" - sign-out failed":" was signed out.  Goodbye."}"
     end
 
     def username
