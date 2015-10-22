@@ -74,7 +74,7 @@ Feature: 10 orders
     Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 11
-    Then Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
+    Then Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set single-order form Tracking to "Signature Required"
 
     # Media Mail
@@ -173,7 +173,7 @@ Feature: 10 orders
     Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 11
-    Then Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
+    Then Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set single-order form Tracking to "Signature Required"
 
     # Media Mail
@@ -268,7 +268,7 @@ Feature: 10 orders
     Then Set single-order form Ship-To address to random
     And Hide single-order form Ship-To fields
     Then Set single-order form Ounces to 11
-    Then Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
+    Then Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set single-order form Tracking to "Signature Required"
 
     # Media Mail

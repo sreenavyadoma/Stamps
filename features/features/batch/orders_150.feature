@@ -172,7 +172,7 @@ Feature: 150 orders
     * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 17
-    * Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
+    * Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set single-order form Tracking to "Signature Required"
 
     * I Add a new order
@@ -447,7 +447,7 @@ Feature: 150 orders
     * Set single-order form Ship-To address to random
     * Hide single-order form Ship-To fields
     * Set single-order form Pounds to 17
-    * Set single-order form Service to Priority Mail Express Padded Flat Rate Envelope
+    * Set single-order form Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set single-order form Tracking to "Signature Required"
 
     * I Add a new order

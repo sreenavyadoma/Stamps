@@ -118,7 +118,7 @@ end
 
 Then /^Set single-order form Tracking to \"([\w ]*)\"$/ do |value|
   begin
-    batch.single_order_form.tracking = log_param "Tracking", value
+    batch.single_order_form.tracking.select value
   end unless value.length == 0
 end
 
@@ -203,17 +203,6 @@ Then /^Expect Ounces tooltip to display - The maximum value for this field is ([
   log_expectation_eql "Maximum Pounds", expected, actual
   actual.should eql expected
 end
-
-Then /^Expect Service Cost to be greater than \$([0-9.]+)$/ do |expected|
-  actual = batch.single_order_form.service_cost
-  10.times { |counter|
-    log_expectation "#{counter}. Single Order Form Rate", expected, actual, (actual.to_f >= expected.to_f)
-    break if actual.to_f >= expected.to_f
-    actual = batch.single_order_form.service_cost
-  }
-  actual.to_f.should be >= expected.to_f
-end
-
 Then /^Expect inline Service Cost for ([a-zA-Z -\/]+) to be greater than \$([0-9.]+)$/ do |service, expected|
   actual = batch.single_order_form.service.cost service
   10.times { |counter|
@@ -263,25 +252,25 @@ Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Service to be (.*)$/ do |expected|
+Then /^Expect single-order form Service to be \"(.*)\"$/ do |expected|
   begin
-    actual = batch.single_order_form.service_input_text
+    actual = batch.single_order_form.service.text
     10.times { |counter|
       included = actual.include? expected
       break if included
-      actual = batch.single_order_form.service_input_text
+      actual = batch.single_order_form.service.text
     }
     expect(actual.include? expected).to be true
   end unless expected.length == 0
 end
 
-Then /^Expect Tracking to be ([\w\s]*)$/ do |expected|
+Then /^Expect single-order form Tracking to be \"([\w\s]*)\"$/ do |expected|
   begin
-    actual = batch.single_order_form.tracking
+    actual = batch.single_order_form.tracking.text
     10.times { |counter|
       log_expectation_eql "#{counter}. Tracking Selected", expected, actual
       break if actual.eql? expected
-      actual = batch.single_order_form.tracking
+      actual = batch.single_order_form.tracking.text
     }
     actual.should eql expected
   end unless expected.length == 0

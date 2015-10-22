@@ -41,7 +41,7 @@ print_qacc_gc:  --tags @print --guess URL=qacc BROWSER=gc USR=auto12 PW=326tseta
 print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff USR=auto13 PW=326tsetaqcdS!
 print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie USR=auto14 PW=326tsetaqcdS!
 
-address_cleansing_qacc_gc:  --tags @address_cleansing --guess URL=qacc BROWSER=gc USR=auto15 PW=326tsetaqcdS!
+address_cleansing_qacc_gc:  --tags @address_cleansing --guess URL=qacc BROWSER=ff USR=auto15 PW=326tsetaqcdS!
 address_cleansing_qacc_ie:  --tags @address_cleansing --guess URL=qacc BROWSER=ie USR=auto16 PW=326tsetaqcdS!
 address_cleansing_qacc_ff:  --tags @address_cleansing --guess URL=qacc BROWSER=ff USR=auto17 PW=326tsetaqcdS!
 

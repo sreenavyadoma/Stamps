@@ -143,6 +143,10 @@ module Batch
 
     public
 
+    def text
+      textbox.text
+    end
+
     def select selection
       box = textbox
       button = drop_down
@@ -213,14 +217,18 @@ module Batch
     end
 
     def selection_field selection
-      field(selection).tr.tds[1]
+      field(selection).tds[1]
     end
 
     def selection_cost_field selection
-      field(selection).tr.tds[2]
+      field(selection).tds[2]
     end
 
     public
+
+    def text
+      textbox.text
+    end
 
     def select selection
       box = textbox
@@ -244,14 +252,18 @@ module Batch
 
     def cost selection
       button = drop_down
-      cost_label = Label.new selection_cost_field selection
-      5.times {
+      button.safe_click
+      button.safe_click
+      button.safe_click
+      cost_label = Label.new(selection_cost_field(selection))
+      10.times {
         begin
-          button.safe_click unless cost_label.present?
           if cost_label.present?
-            selection_cost = cost_label.parent.tds[2].text
+            selection_cost = test_helper.remove_dollar_sign cost_label.text
             log "#{selection_cost}"
             return selection_cost
+          else
+            button.safe_click
           end
         rescue
           #ignore

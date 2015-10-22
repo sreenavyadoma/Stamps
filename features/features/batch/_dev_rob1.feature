@@ -6,8 +6,24 @@ Feature: Test Development
   @rob_dev1
   Scenario:
     And I Add a new order
+    Then Set single-order form Ship-From to default
+    Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Package"
+    Then Expect single-order form Service to be "Priority Mail Package"
+
+    Then Set single-order form Tracking to "USPS Tracking"
+    Then Expect single-order form Tracking to be "USPS Tracking"
+    Then Set single-order form Tracking to "Signature Required"
+    Then Expect single-order form Tracking to be "Signature Required"
+
+    Then Set single-order form Service to "Priority Mail Package"
+    Then Expect single-order form Service to be "Priority Mail Package"
+    Then Expect single-order form Tracking to be "USPS Tracking"
+
+    Then Set single-order form Service to "Priority Mail Package"
+    Then Expect single-order form Service to be "Priority Mail Package"
     Then Set single-order form Service to "Priority Mail Large Package"
+    Then Expect single-order form Service to be "Priority Mail Large Package"
 
     Then Expect inline Service Cost for Priority Mail Large/Thick Envelope to be greater than $0.01
     Then Expect inline Service Cost for Priority Mail Package to be greater than $0.01
@@ -32,6 +48,3 @@ Feature: Test Development
     Then Expect order-grid Pounds to be 0
     Then Expect order-grid Ounces to be 0
     Then Expect order-grid Weight to be 0 lbs. 0 oz.
-
-    Then Set single-order form Tracking to "USPS Tracking"
-    Then Set single-order form Tracking to "Signature Required"
