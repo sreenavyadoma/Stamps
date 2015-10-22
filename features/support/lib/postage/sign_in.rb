@@ -46,7 +46,6 @@ module Postage
 
 
       10.times {
-
         sign_in_link.safe_click unless username_textbox.present?
         username_textbox.set username
 

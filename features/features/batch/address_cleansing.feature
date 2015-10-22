@@ -18,7 +18,10 @@ Feature: Address Cleansing
     Then Expect order-grid City to be San Francisco
     Then Expect order-grid State to be CA
     Then Set single-order form Ship-To address to random
-    And Hide single-order form Ship-To fields
     Then Set single-order form Service to "Priority Mail Package"
+    Then Set single-order form Height to 1
+    Then Set single-order form Width to 1
+    Then Set single-order form Length to 1
+    And Hide single-order form Ship-To fields
     And Sign out
 

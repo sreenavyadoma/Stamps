@@ -110,11 +110,15 @@ module Batch
     end
 
     def order_id row
-      begin
-        grid_field(:order_id, row).wait_until_present
-      rescue
-        log "OrderID column on order grid is not present"
+      8.times{
+        break if row_count > 0
+        sleep 1
+      }
+
+      if row_count == 0
+        return '0000'
       end
+
       begin
         grid_text(:order_id, row)
       rescue
@@ -442,6 +446,10 @@ module Batch
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       test_helper.remove_dollar_sign grid_text(:insured_value, row)
+    end
+
+    def row_count
+      @browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size
     end
 
   end
