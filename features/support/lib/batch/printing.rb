@@ -166,10 +166,13 @@ module Batch
     end
 
     def print
+      button = print_button
       8.times {
         begin
           sleep(1)
-          browser_helper.click print_button
+          button.safe_click
+          button.safe_click
+          sleep(1)
           printing_error = printing_error_check
           return printing_error unless browser_helper.present? print_button
         rescue

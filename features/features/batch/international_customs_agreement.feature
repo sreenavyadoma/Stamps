@@ -38,7 +38,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Click Cancel on USPS Terms modal
     Then Click Print Button
     And Click I Agree on USPS Terms modal
-    Then Click Print button in Modal
+    Then Click Print Modal - Print button
 
     #Print an Int'l order and turn Auto-Confirm on
 
