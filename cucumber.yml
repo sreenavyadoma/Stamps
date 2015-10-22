@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
-rob_dev: --tags @orders_25 --guess URL=qacc BROWSER=gc USR=auto38 PW=326tsetaqcdS!
+rob_dev: --tags @validate_domestic --guess URL=qacc BROWSER=gc USR=auto38 PW=326tsetaqcdS!
 eli_dev: --tags @sorting2 --guess URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 ray_dev: --tags @ray_test --guess URL=qacc BROWSER=ff USR=webpost_0003 PW=pass111
 eva_dev: --tags @label_5x8_printing --guess URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
@@ -45,3 +45,6 @@ add_new_order_eva: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cct
 
 orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ie USR=webbatch_0005 PW=password1
 orders_20: --tags @orders_20 --guess URL=qacc BROWSER=ie USR=cm_cpp_0002 PW=pass111
+
+jenkins_orders: --tags @jenkins_orders --guess URL=qacc BROWSER=ff
+

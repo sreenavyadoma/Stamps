@@ -1,9 +1,9 @@
 Feature: 25 orders
 
   Background:
-    Given I am signed in as a batch shipper ff/auto38/326tsetaqcdS!
+    Given I am signed in as a batch shipper
 
-  @orders_25
+  @orders_25 @jenkins_orders
   Scenario:  Inline Rates
 
     # First Class Mail
