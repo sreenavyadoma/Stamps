@@ -9,70 +9,39 @@ daniel_dev: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=326ts
 
 default_profile: --tags @local_rating --guess URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
-bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto01 PW=326tsetaqcdS!
-bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto02 PW=326tsetaqcdS!
+bvt_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto01 PW=326tsetaqcdS!
+bvt_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto02 PW=326tsetaqcdS!
+wonder_bvt: --tags @wonder_bvt --guess URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
 address_cleansing: --tags @address_cleansing --guess URL=qacc BROWSER=ff USR=auto03 PW=326tsetaqcdS!
 address_management: --tags @address_management --guess URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
-tracking_qacc: --tags @tracking --guess URL=qacc BROWSER=ff USR=auto05 PW=326tsetaqcdS!
-
-add_new_order_eva_qacc: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cctest2 PW=password1
+tracking: --tags @tracking --guess URL=qacc BROWSER=ff USR=auto05 PW=326tsetaqcdS!
+inline_service_rates: --tags @inline_service_rates --guess URL=qacc BROWSER=ff USR=auto06 PW=326tsetaqcdS!
 
 local_rating_zone1: --tags @local_rating_zone1 --guess URL=qasc BROWSER=ff USR=dj_cctest_01 PW=postage1
 local_rating_zone2: --tags @local_rating_zone2 --guess URL=qasc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
-wonder_bvt: --tags @wonder_bvt --guess URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
+validate_international: --tags @validate_international --guess URL=qacc BROWSER=ff USR=webpost_0001 PW=pass111
 
-validate_international_qacc_ff: --tags @validate_international --guess URL=qacc BROWSER=ff USR=webpost_0001 PW=pass111
-validate_international_qacc_gc: --tags @validate_international --guess URL=qacc BROWSER=gc USR=webpost_0001 PW=pass111
-validate_international_qacc_ie: --tags @validate_international --guess URL=qacc BROWSER=ie USR=webpost_0001 PW=pass111
+print_many_orders: --tags @print_many_orders --guess URL=qacc BROWSER=ff USR=auto08 PW=326tsetaqcdS!
 
-regress_qacc_gc: --tags @regression --guess URL=qacc BROWSER=gc USR=auto05 PW=326tsetaqcdS!
-regress_qacc_ff: --tags @regression --guess URL=qacc BROWSER=ff USR=auto06 PW=326tsetaqcdS!
-regress_qacc_ie: --tags @regression --guess URL=qacc BROWSER=ie USR=auto07 PW=326tsetaqcdS!
+printing_errors: --tags @printing_error --guess URL=qacc BROWSER=ff USR=auto11 PW=326tsetaqcdS!
+
+printing:  --tags @print --guess URL=qacc BROWSER=ff USR=auto13 PW=326tsetaqcdS!
+
+print_sample: --tags @print_sample --guess URL=qacc BROWSER=ff USR=auto25 PW=326tsetaqcdS!
+
+print_costs: --tags @print_costs --guess URL=qacc BROWSER=ff USR=auto31 PW=326tsetaqcdS!
+
+purchasing: --tags @purchasing --guess URL=qacc BROWSER=gc USR=auto35 PW=326tsetaqcdS!
+
+change_settings: --tags @settings --guess URL=qacc BROWSER=ff USR=auto37 PW=326tsetaqcdS!
+
+thermal_printing: --tags @thermal_printing --guess URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
+
+print_two_up: --tags @two_up --guess URL=qacc BROWSER=ie USR=auto02 PW=326tsetaqcdS!
+
+add_new_order_eva: --tags @add_new_order_eva --guess URL=qacc BROWSER=ff USR=cctest2 PW=password1
 
 orders_10: --tags @orders_10 --guess URL=qacc BROWSER=ie USR=webbatch_0005 PW=password1
 orders_20: --tags @orders_20 --guess URL=qacc BROWSER=ie USR=cm_cpp_0002 PW=pass111
-
-print_many_orders_ie: --tags @print_many_orders --guess URL=qacc BROWSER=ie USR=auto08 PW=326tsetaqcdS!
-
-printing_errors_qacc_gc: --tags @printing_error --guess URL=qacc BROWSER=gc USR=auto09 PW=326tsetaqcdS!
-printing_errors_qacc_ie: --tags @printing_error --guess URL=qacc BROWSER=ie USR=auto10 PW=326tsetaqcdS!
-printing_errors_qacc_ff: --tags @printing_error --guess URL=qacc BROWSER=ff USR=auto11 PW=326tsetaqcdS!
-
-print_qacc_gc:  --tags @print --guess URL=qacc BROWSER=gc USR=auto12 PW=326tsetaqcdS!
-print_qacc_ff:  --tags @print --guess URL=qacc BROWSER=ff USR=auto13 PW=326tsetaqcdS!
-print_qacc_ie:  --tags @print --guess URL=qacc BROWSER=ie USR=auto14 PW=326tsetaqcdS!
-
-print_qacc_ie: --tags @print --guess URL=qacc BROWSER=ie USR=auto21 PW=326tsetaqcdS!
-print_qacc_ff: --tags @print --guess URL=qacc BROWSER=ff USR=auto22 PW=326tsetaqcdS!
-print_qacc_gc: --tags @print --guess URL=qacc BROWSER=gc USR=auto23 PW=326tsetaqcdS!
-
-print_sample_qacc_ie: --tags @print_sample --guess URL=qacc BROWSER=ie USR=auto24 PW=326tsetaqcdS!
-print_sample_qacc_ff: --tags @print_sample --guess URL=qacc BROWSER=ff USR=auto25 PW=326tsetaqcdS!
-print_sample_qacc_gc: --tags @print_sample --guess URL=qacc BROWSER=gc USR=auto26 PW=326tsetaqcdS!
-
-inline_service_rates_qacc_ie: --tags @inline_service_rates --guess URL=qacc BROWSER=ie USR=auto27 PW=326tsetaqcdS!
-inline_service_rates_qacc_ff: --tags @inline_service_rates --guess URL=qacc BROWSER=ff USR=auto28 PW=326tsetaqcdS!
-inline_service_rates_qacc_gc: --tags @inline_service_rates --guess URL=qacc BROWSER=gc USR=auto29 PW=326tsetaqcdS!
-
-print_costs_qacc_ie: --tags @print_costs --guess URL=qacc BROWSER=ie USR=auto30 PW=326tsetaqcdS!
-print_costs_qacc_ff: --tags @print_costs --guess URL=qacc BROWSER=ff USR=auto31 PW=326tsetaqcdS!
-print_costs_qacc_gc: --tags @print_costs --guess URL=qacc BROWSER=gc USR=auto32 PW=326tsetaqcdS!
-
-purchasing_qacc_ie: --tags @purchasing --guess URL=qacc BROWSER=ie USR=auto33 PW=326tsetaqcdS!
-purchasing_qacc_ff: --tags @purchasing --guess URL=qacc BROWSER=ff USR=auto34 PW=326tsetaqcdS!
-purchasing_qacc_gc: --tags @purchasing --guess URL=qacc BROWSER=gc USR=auto35 PW=326tsetaqcdS!
-
-change_settings_qacc_ie: --tags @settings --guess URL=qacc BROWSER=ie USR=auto36 PW=326tsetaqcdS!
-change_settings_qacc_ff: --tags @settings --guess URL=qacc BROWSER=ff USR=auto37 PW=326tsetaqcdS!
-change_settings_qacc_gc: --tags @settings --guess URL=qacc BROWSER=gc USR=auto38 PW=326tsetaqcdS!
-
-thermal_printing_qacc_ie: --tags @thermal_printing --guess URL=qacc BROWSER=ie USR=auto39 PW=326tsetaqcdS!
-thermal_printing_qacc_ff: --tags @thermal_printing --guess URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
-thermal_printing_qacc_gc: --tags @thermal_printing --guess URL=qacc BROWSER=gc USR=auto04 PW=326tsetaqcdS!
-
-print_two_up_qacc_ie: --tags @two_up --guess URL=qacc BROWSER=ie USR=auto01 PW=326tsetaqcdS!
-print_two_up_qacc_ff: --tags @two_up --guess URL=qacc BROWSER=ie USR=auto02 PW=326tsetaqcdS!
-print_two_up_qacc_gc: --tags @two_up --guess URL=qacc BROWSER=ie USR=auto03 PW=326tsetaqcdS!
-
