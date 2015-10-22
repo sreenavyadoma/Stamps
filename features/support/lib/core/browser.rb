@@ -74,7 +74,7 @@ module Stamps
         rescue
           #ignroe
         end
-        ##log_attribute_get field, attribute, value
+        #log_attribute_get field, attribute, value
         value
       end
 
@@ -117,7 +117,7 @@ module Stamps
           begin
             field.focus
             field.clear
-            field.send_keys #log_browser_set(field, text, field_name)
+            field.send_keys text #log_browser_set(field, text, field_name)
           rescue
             #ignore
           end
@@ -144,7 +144,7 @@ module Stamps
           begin
             field.focus
             field.clear
-            field.set #log_browser_set(field, text, field_name)
+            field.set text #log_browser_set(field, text, field_name)
           rescue
             #ignore
           end
@@ -195,7 +195,7 @@ module Stamps
               args[0].focus
               args[0].focus
             rescue
-              ##log "Unable to focus on browser field #{args[0]}"
+              #log "Unable to focus on browser field #{args[0]}"
             end
 
             args[0].click
@@ -206,7 +206,7 @@ module Stamps
             begin
               args[0].focus
             rescue
-              ##log "Unable to focus on browser field #{args[1]} #{args[0]}"
+              #log "Unable to focus on browser field #{args[1]} #{args[0]}"
             end
             args[0].click
             #log_browser_click args[0], args[1]
@@ -577,7 +577,7 @@ module Stamps
             #ignroe
             end
           }
-        ##log_attribute_get field, attribute, value
+        #log_attribute_get field, attribute, value
         @attribute_field_value
       end
 
@@ -624,7 +624,7 @@ module Stamps
             #ignore
           end
           begin
-            field.send_keys #log_browser_set(field, text, field_name)
+            field.send_keys text #log_browser_set(field, text, field_name)
           rescue
             #ignore
           end
@@ -632,7 +632,7 @@ module Stamps
           begin
             break if (actual_value.include? text) || (text.include? actual_value)
           rescue Exception => e
-            ##log e
+            #log e
           end
         end
       end
@@ -655,7 +655,7 @@ module Stamps
           begin
             field.focus
             field.clear
-            field.set #log_browser_set(field, text, field_name)
+            field.set text #log_browser_set(field, text, field_name)
           rescue
             #ignore
           end
@@ -705,7 +705,7 @@ module Stamps
             begin
               args[0].focus
             rescue
-              ##log "Unable to focus on browser field #{args[0]}"
+              #log "Unable to focus on browser field #{args[0]}"
             end
 
             args[0].click
@@ -716,7 +716,7 @@ module Stamps
             begin
               args[0].focus
             rescue
-              ##log "Unable to focus on browser field #{args[1]} #{args[0]}"
+              #log "Unable to focus on browser field #{args[1]} #{args[0]}"
             end
             args[0].click
             #log_browser_click args[0], args[1]
@@ -739,7 +739,7 @@ module Stamps
             begin
               args[0].focus
             rescue
-              ##log "Unable to focus on browser field #{args[0]}"
+              #log "Unable to focus on browser field #{args[0]}"
             end
 
             args[0].double_click
@@ -750,7 +750,7 @@ module Stamps
             begin
               args[0].focus
             rescue
-              ##log "Unable to focus on browser field #{args[1]} #{args[0]}"
+              #log "Unable to focus on browser field #{args[1]} #{args[0]}"
             end
             args[0].double_click
             var_name = %w(args[0])
