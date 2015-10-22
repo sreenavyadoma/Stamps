@@ -79,7 +79,13 @@ module Batch
         ENV['URL'] = args[0]
       end
 
-      url = "https://#{Stamps.url_prefix}.stamps.com/webbatch/"
+      if ENV['URL'] == "shipstation"
+        url = "http://#{Stamps.url_prefix}.stamps.com/webbatch/"
+      else
+        url = "https://#{Stamps.url_prefix}.stamps.com/webbatch/"
+      end
+
+      #url = "https://#{Stamps.url_prefix}.stamps.com/webbatch/"
       @browser.goto url
       log "Page loaded.  #{url}"
       self
