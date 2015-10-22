@@ -183,7 +183,8 @@ module Batch
       single_order_form = SingleOrderForm.new @browser
       order_grid = Grid.new @browser
       add_button = Button.new (@browser.spans :text => 'Add').first
-      7.times do |count|
+
+      10.times do |count|
         begin
           old_grid_order_id = order_grid.order_id 1
           add_button.safe_click

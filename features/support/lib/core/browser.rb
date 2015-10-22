@@ -35,7 +35,7 @@ module Stamps
         attribute_value = attribute_value field, field_attribute
         enabled = attribute_value.include? search_string
 
-        log "Field enabled? #{enabled}"
+        #log "Field enabled? #{enabled}"
         enabled
       end
 
@@ -55,7 +55,7 @@ module Stamps
         attribute_value = attribute_value field, field_attribute
         disabled = attribute_value.include? search_string
 
-        log "Field disabled? #{disabled}"
+        #log "Field disabled? #{disabled}"
         disabled
       end
 
@@ -89,7 +89,7 @@ module Stamps
             field_text args[0]
           when 2
             text = field_text(args[0])
-            log_browser_get(args[0], text, args[1])
+            #log_browser_get(args[0], text, args[1])
           else
             raise "Wrong number of arguments for BrowserHelper.text method."
         end
@@ -117,7 +117,7 @@ module Stamps
           begin
             field.focus
             field.clear
-            field.send_keys log_browser_set(field, text, field_name)
+            field.send_keys text #log_browser_set(field, text, field_name)
           rescue
             #ignore
           end
@@ -144,7 +144,7 @@ module Stamps
           begin
             field.focus
             field.clear
-            field.set log_browser_set(field, text, field_name)
+            field.set text #log_browser_set(field, text, field_name)
           rescue
             #ignore
           end
@@ -200,7 +200,7 @@ module Stamps
 
             args[0].click
             #var_name = get_varname :args[0],
-            log_browser_click args[0]
+            #log_browser_click args[0]
 
           when 2
             begin
@@ -209,7 +209,7 @@ module Stamps
               #log "Unable to focus on browser field #{args[1]} #{args[0]}"
             end
             args[0].click
-            log_browser_click args[0], args[1]
+            #log_browser_click args[0], args[1]
           else
             raise "Wrong number of arguments."
         end
@@ -285,9 +285,9 @@ module Stamps
             @second_field = nil
           when 2
             @field = args[0]
-            log browser_helper.present? @field
+            #log browser_helper.present? @field
             @second_field = args[1]
-            log browser_helper.present? @second_field
+            #log browser_helper.present? @second_field
           else
             #do nothing.
         end
@@ -355,7 +355,6 @@ module Stamps
       def click_while_present
         20.times{
           safe_click
-          sleep 2
           break unless present?
         }
       end
@@ -391,7 +390,7 @@ module Stamps
             return attrib_val == "true"
           else
             checked = attrib_val.include? @checked_tester
-            log "Checkbox checked? #{checked}"
+            #log "Checkbox checked? #{checked}"
             checked
           end
         rescue
@@ -493,7 +492,7 @@ module Stamps
         @selection_field = selection_field selection
         5.times{
           browser_helper.safe_click @drop_down, "drop-down"
-          log "Selection is present? #{browser_helper.present? @selection_field}"
+          #log "Selection is present? #{browser_helper.present? @selection_field}"
           return @selection_field if browser_helper.present? @selection_field
         }
       end
@@ -505,7 +504,7 @@ module Stamps
           when :tooltip
             selection_field = expose_selection_field selection
             tooltip = browser_helper.attribute_value selection_field, "data-qtip"
-            log "Field Selection Tooltip (data-qtip):  #{tooltip}"
+            #log "Field Selection Tooltip (data-qtip):  #{tooltip}"
             tooltip
           else
             #do nothing
@@ -519,7 +518,7 @@ module Stamps
       def style field, var_name
         begin
           style = field.style(var_name)
-          log "Field Style:  #{style}"
+          #log "Field Style:  #{style}"
           return style
         rescue
           #
@@ -543,7 +542,7 @@ module Stamps
         attribute_value = attribute_value field, field_attribute
         enabled = attribute_value.include? search_string
 
-        log "Field enabled? #{enabled}"
+        #log "Field enabled? #{enabled}"
         enabled
       end
 
@@ -563,7 +562,7 @@ module Stamps
         attribute_value = attribute_value @disabled_field, @field_attribute
         disabled = attribute_value.include? @search_string
 
-        log "Field disabled? #{disabled}"
+        #log "Field disabled? #{disabled}"
         disabled
       end
 
@@ -573,7 +572,7 @@ module Stamps
               @attribute_field_value = field.attribute_value(attribute)
               return @attribute_field_value unless @attribute_field_value.length < 1
             rescue => e
-              log "Attribute: #{attribute}, Field:  #{field}. #{e}"
+              #log "Attribute: #{attribute}, Field:  #{field}. #{e}"
             #ignroe
             end
           }
@@ -592,7 +591,7 @@ module Stamps
             field_text args[0]
           when 2
             text = field_text(args[0])
-            log_browser_get(args[0], text, args[1])
+            #log_browser_get(args[0], text, args[1])
           else
             raise "Wrong number of arguments for BrowserHelper.text method."
         end
@@ -624,7 +623,7 @@ module Stamps
             #ignore
           end
           begin
-            field.send_keys log_browser_set(field, text, field_name)
+            field.send_keys text #log_browser_set(field, text, field_name)
           rescue
             #ignore
           end
@@ -655,7 +654,7 @@ module Stamps
           begin
             field.focus
             field.clear
-            field.set log_browser_set(field, text, field_name)
+            field.set text #log_browser_set(field, text, field_name)
           rescue
             #ignore
           end
@@ -710,7 +709,7 @@ module Stamps
 
             args[0].click
             #var_name = get_varname :args[0],
-            log_browser_click args[0]
+            #log_browser_click args[0]
 
           when 2
             begin
@@ -719,7 +718,7 @@ module Stamps
               #log "Unable to focus on browser field #{args[1]} #{args[0]}"
             end
             args[0].click
-            log_browser_click args[0], args[1]
+            #log_browser_click args[0], args[1]
           else
             raise "Wrong number of arguments."
         end
@@ -744,7 +743,7 @@ module Stamps
 
             args[0].double_click
             #var_name = get_varname :args[0],
-            log_browser_click args[0]
+            #log_browser_click args[0]
 
           when 2
             begin
@@ -754,7 +753,7 @@ module Stamps
             end
             args[0].double_click
             var_name = %w(args[0])
-            log_browser_click args[0], var_name
+            #log_browser_click args[0], var_name
           else
             raise "Wrong number of arguments."
         end

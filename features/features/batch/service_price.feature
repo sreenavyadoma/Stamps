@@ -4,7 +4,7 @@ Feature: User Views Price Next to Service Dropdown
   Background:
     Given I am signed in as a batch shipper
 
-  @inline_service_rates @regression
+  @inline_service_rates
   Scenario:  User Views Price Next to Service Dropdown
     And I Add a new order
     Then Set single-order form Ship-From to default

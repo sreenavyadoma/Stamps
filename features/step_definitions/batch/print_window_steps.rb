@@ -1,9 +1,9 @@
 When /^Select (\w+) side label$/ do |label_side|
   if label_side.casecmp("left") == 0
-    selected = @print_window.left_label
+    selected = batch.toolbar.print_modal.left_label
     log "#{label_side} side label was #{(selected)?'selected.':'not selected'}"
   elsif label_side.casecmp("right") == 0
-    selected = @print_window.right_label
+    selected = batch.toolbar.print_modal.right_label
     log "#{label_side} side label was #{(selected)?'selected.':'not selected'}"
   else
     raise "Label side #{label_side} is not a valid selection. Select either \"left\" or \"right\" side."
@@ -12,10 +12,10 @@ end
 
 Then /^Expect (\w+) side label selected$/ do |label|
   if label.casecmp("left") == 0
-    selected = @print_window.left_label_selected?
+    selected = batch.toolbar.print_modal.left_label_selected?
     log "Expect #{label} side label selected.  Test #{(selected)?'Passed.':'Failed'}"
   elsif label.casecmp("right") == 0
-    selected = @print_window.right_label_selected?
+    selected = batch.toolbar.print_modal.right_label_selected?
     log "Expect #{label} side label selected.  Test #{(selected)?'Passed.':'Failed'}"
   else
     raise "Label side #{label_side} is not a valid selection. Select either \"left\" or \"right\" side."
@@ -23,20 +23,18 @@ Then /^Expect (\w+) side label selected$/ do |label|
 end
 
 Then /^Set Ship Date to (\d+) day from today$/ do |days|
-  @print_window.ship_date = test_helper.print_date(days)
+  batch.toolbar.print_modal.ship_date = test_helper.print_date(days)
 end
 
 Then /^Set Ship Date Picker to (\d+) day\(s\) from today$/ do |day|
-  @print_window.pick_date day unless @print_window.nil?
+  batch.toolbar.print_modal.pick_date day
 end
 
 Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
-  begin
-    actual = @print_window.ship_date
-    expected = test_helper.print_date day
-    log "Expect Print Window Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
-    actual.should eql expected
-  end unless @print_window.nil?
+  actual = batch.toolbar.print_modal.ship_date
+  expected = test_helper.print_date day
+  log "Expect Print Window Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
+  actual.should eql expected
 end
 
 When /^Open Print Modal$/ do
@@ -53,8 +51,7 @@ Then /^Select Printer \"(.*)\"$/ do |printer|
 end
 
 Then /^Expect Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, expected_value|
-  @print_window = batch.toolbar.print_modal
-  actual_value = @print_window.print_media.selection :tooltip, print_media
+  actual_value = batch.toolbar.print_modal.print_media.selection :tooltip, print_media
   log "Expect Print Media \"#{print_media}\" tooltip to include \"#{expected_value}\" - Test #{(actual_value.include? expected_value)?"Passed":"Failed"}"
   actual_value.should include expected_value
 end
@@ -68,11 +65,7 @@ Then /^Close Print Modal$/ do
 end
 
 Then /^Click Print Modal - Print button$/ do
-  if @print_window.nil?
-    @printing_error =  true
-  else
-    @printing_error = @print_window.print_button.click_while_present
-  end
+  @printing_error = batch.toolbar.print_modal.print_button.click_while_present
 end
 
 Then /^Click Print button in Modal$/ do
@@ -115,26 +108,19 @@ When /^Print expecting some orders can not be printed$/ do
 end
 
 Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  #print_window = features.batch.toolbar.print_modal
-  if @print_window.nil? || !@print_window.present?
-    raise "Print Window is not open."
-  end
-  actual = @print_window.labels_ready_to_print
-  @print_window.close
+  actual = batch.toolbar.print_modal.labels_ready_to_print
+  batch.toolbar.print_modal.close
   log "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
   "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
 end
 
 Then /^Expect Print Window requires (.*) label sheets$/ do |sheets|
-  if @print_window.nil? || !@print_window.present?
-    raise "Print Window is not open."
-  end
   if sheets == 1
     sheet_text = "Requires #{sheets} label sheet"
   else
     sheet_text = "Requires #{sheets} label sheets"
   end
-  actual = @print_window.labels_required
+  actual = batch.toolbar.print_modal.labels_required
   log "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheet_text==actual)?'Passed':'Failed'}"
   "#{actual}".should eql "#{sheet_text}"
 

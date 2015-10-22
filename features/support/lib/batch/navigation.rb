@@ -100,15 +100,19 @@ module Batch
       signed_in_username = Label.new @browser.span :id => 'userNameText'
       20.times {
         begin
-          log "#{ENV["SIGNED_IN_USER"]} #{(signed_in_username.present?)?"is signed in":"was signed out"}"
           signed_in_username.safe_click unless sign_out_link.present?
           sign_out_link.safe_click
+          sign_out_link.safe_click
+          signed_in_username.safe_click unless sign_out_link.present?
+          sign_out_link.safe_click
+          sign_out_link.safe_click
+          sleep 2
           break unless signed_in_username.present?
         rescue
           #ignore
         end
       }
-      log "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?": Sign-out failed":" was signed out"}"
+      log "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" - sign-out failed":" was signed out.  Goodbye."}"
     end
 
     def username

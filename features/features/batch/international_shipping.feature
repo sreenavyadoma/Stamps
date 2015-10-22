@@ -3,7 +3,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   Background:
     Given I am signed in as a batch shipper gc/qacc/auto39/326tsetaqcdS!
 
-  @international @regression @international_data_error @international_failure
+  @international @international_data_error @international_failure
   Scenario:  Customs Form Data Error
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -26,7 +26,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Total Weight Data Error to be The itemized weight exceeds the package weight
     And Sign out
     
-  @international @regression @international_totals
+  @international @international_totals
   Scenario:  Customs Form Grid Items Add/Delete
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -58,7 +58,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Close customs form
     And Sign out
 
-  @international @regression @international_delete_line_items
+  @international @international_delete_line_items
   Scenario:  Customs Form Grid Items Add/Delete
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -92,7 +92,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Close customs form
     And Sign out
 
-  @international_shipping_field_validation @_international @regression
+  @international_shipping_field_validation @_international
   Scenario: single-order form International Shipping fields and Customs Information fields validation
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -171,10 +171,10 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     Then Set customs form I agree to true
     Then Close customs form
-    Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
     And Sign out
 
-  @international_internal_transaction_2500 @international @regression
+  @international_internal_transaction_2500 @international
   Scenario: Customs Form - Internal Transaction # Required for total over $2500
 
     # Internal Transaction # Required for total over $2500
@@ -191,7 +191,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
-    Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
@@ -205,7 +205,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Sign out
 
       # Iran - Internal Transaction #
-  @international_rogue_countries @international @regression
+  @international_rogue_countries @international
   Scenario: Iran - Internal Transaction # Required
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -244,7 +244,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Sign out
 
       # Sudan - Internal Transaction # Required
-  @international_rogue_countries @international @regression
+  @international_rogue_countries @international
   Scenario: Sudan - Internal Transaction # Required
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -258,7 +258,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
-    #Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Commercial Sample"
@@ -284,7 +284,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Sign out
 
       # Syria - Internal Transaction # Required
-  @international_rogue_countries @international @regression
+  @international_rogue_countries @international
   Scenario: Syria - Internal Transaction # Required
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -298,7 +298,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
-    #Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Commercial Sample"
@@ -324,7 +324,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Sign out
 
       # Cuba - Internal Transaction # Required
-  @international_rogue_countries @international @regression
+  @international_rogue_countries @international
   Scenario: Cuba - Internal Transaction # Required
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -364,7 +364,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Sign out
 
       # North Korea - Internal Transaction # Required
-  @international_rogue_countries @international @regression@international_rogue_countries_nk @international_failure
+  @international_rogue_countries @international@international_rogue_countries_nk @international_failure
   Scenario: North Korea - Internal Transaction # Required
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -404,14 +404,14 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Sign out
 
       # Philippines - Internal Transaction # Required
-  @international_rogue_countries @international @regression
+  @international_rogue_countries @international
   Scenario: Internal Transaction # Not Required
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
-    #Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     Then Set single-order form Ounces to 5
     Then Set single-order form Length to 1
@@ -444,7 +444,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Close customs form
     And Sign out
 
-  @fpo_shipping @international @regression
+  @fpo_shipping @international
   Scenario: Domestic FPO Address
     And I Add a new order
     Then Set single-order form Ship-From to default

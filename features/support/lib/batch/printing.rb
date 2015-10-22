@@ -166,7 +166,7 @@ module Batch
     end
 
     def print
-      5.times {
+      8.times {
         begin
           sleep(1)
           browser_helper.click print_button
@@ -400,10 +400,15 @@ module Batch
     end
 
     def check_error_ok_button
+      ok_button = Button.new error_ok_button
+      sleep 1
       @printing_error = false
-      if browser_helper.present? error_ok_button
+      if ok_button.present?
         @printing_error = true
         log "Error Window OK button detected"
+        ok_button.safe_click
+        ok_button.safe_click
+        ok_button.safe_click
         @printing_error
       end
       @printing_error

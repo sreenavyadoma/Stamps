@@ -4,7 +4,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
   Background:
     Given I am signed in as a batch shipper gc/auto39/326tsetaqcdS!
 
-  @filters @regression
+  @filters
   Scenario: User Views Filter Panel Default
     When Expect system displays expanded filters panel
     Then Expect system displays "Awaiting Shipment" and "Shipped" filters in panel
@@ -45,7 +45,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And Expect system changes the panel arrow so that it is pointing to the left direction
     Then Sign out
 
-  @filters @regression
+  @filters
   Scenario: User Changes filters
 
     When Expect system displays expanded filters panel

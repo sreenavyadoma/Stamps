@@ -4,7 +4,7 @@ Feature: Change Settings
   Background:
     Given I am signed in as a batch shipper
 
-  @settings @regression
+  @settings
   Scenario: As a batch shipper, I want to change the settings for the batch shipping page.
 
     Then Open Settings Modal

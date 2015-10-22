@@ -4,7 +4,7 @@ Feature: Print Media
   Background:
     Given I am signed in as a batch shipper ff/qacc/auto15/326tsetaqcdS!
 
-  @print_media @regression
+  @print_media
   Scenario:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
     Then Set single-order form Ship-From to default

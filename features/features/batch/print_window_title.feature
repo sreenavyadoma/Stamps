@@ -4,7 +4,7 @@ Feature:  Printing Multiple Orders
   Background:
     Given I am signed in as a batch shipper ff
 
-  @print_window @print @regression
+  @print_window @print
   Scenario:  Printing
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -15,7 +15,7 @@ Feature:  Printing Multiple Orders
 
     And Sign out
 
-  @regression
+
   Scenario:  Printing
     And I Add a new order
     Then Set single-order form Ship-To address to random

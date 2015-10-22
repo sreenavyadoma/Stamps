@@ -4,7 +4,7 @@ Feature: Print Label Position
   Background:
     Given I am signed in as a batch shipper ff
 
-  @print_labels @print @regression
+  @print_labels @print
   Scenario:  B-01633 Change the starting label position I will print from - Print Left Side
     And I Add a new order
     Then Set single-order form Ship-From to default

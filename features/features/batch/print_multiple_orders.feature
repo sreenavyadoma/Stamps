@@ -4,7 +4,7 @@ Feature: Print Multiple Orders
   Background:
     Given I am signed in as a batch shipper ff
 
-  @print_multiple_orders @print @regression
+  @print_multiple_orders @print
   Scenario:  Print 2 Orders
     And I Add a new order
     Then Set single-order form Ship-From to default
