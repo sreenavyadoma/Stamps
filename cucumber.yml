@@ -15,7 +15,7 @@ bvt_qacc_gc: --tags @bvt --guess URL=qacc BROWSER=gc USR=auto17 PW=326tsetaqcdS!
 bvt_qacc_ie: --tags @bvt --guess URL=qacc BROWSER=ie USR=auto20 PW=326tsetaqcdS!
 bvt_qacc_ff: --tags @bvt --guess URL=qacc BROWSER=ff USR=auto19 PW=326tsetaqcdS!
 
-tracking_qacc_ff: --tags @tracking --guess URL=qacc BROWSER=ff USR=auto8 PW=326tsetaqcdS!
+tracking_qacc_ff: --tags @tracking --guess URL=qacc BROWSER=ff USR=auto08 PW=326tsetaqcdS!
 
 local_rating_zone1_qacc_ff: --tags @local_rating_zone1 --guess URL=qacc BROWSER=ff USR=dj_cctest_01 PW=postage1
 local_rating_zone2_qacc_ff: --tags @local_rating_zone2 --guess URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
