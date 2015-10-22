@@ -261,7 +261,7 @@ Feature: 25 orders
 
     Then Set customs form I agree to true
     Then Close customs form
-    Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     And I Add a new order
     Then Set single-order form Ship-From to default

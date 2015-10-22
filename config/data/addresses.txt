@@ -102,7 +102,7 @@ K1A 0G9
 Print On:
 Shipping Label 8 ½” x 11” Paper
 Services:
-First-Class Mail International Large Envelope/Flat (Varies)
+First-Class Mail International Large Envelope/Flat/Flat (Varies)
  
 ------------------------------------------------------------------------------
  

@@ -171,7 +171,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     Then Set customs form I agree to true
     Then Close customs form
-    Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
     And Sign out
 
   @international_internal_transaction_2500 @international
@@ -191,7 +191,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
-    Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
@@ -258,7 +258,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
-    #Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Commercial Sample"
@@ -298,7 +298,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
-    #Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Commercial Sample"
@@ -411,7 +411,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
-    #Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     Then Set single-order form Ounces to 5
     Then Set single-order form Length to 1

@@ -30,7 +30,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Close customs form
 
-    Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     And Click Print Button
 
@@ -58,7 +58,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Close customs form
 
-    Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     And Click Print Button
 
@@ -88,7 +88,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Close customs form
 
-    Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     And Print
 
@@ -114,7 +114,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Set customs form I agree to true
     Then Close customs form
-    Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     And Print
 
@@ -142,7 +142,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Set customs form I agree to true
     Then Close customs form
 
-    Then Set single-order form Service to "First-Class Mail International Large Envelope"
+    Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     And Print
     And Sign out
