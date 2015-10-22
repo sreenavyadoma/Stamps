@@ -194,11 +194,11 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 1, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 2501, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
@@ -220,24 +220,24 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set single-order form Service to "Priority Mail International Package"
 
     And Open customs form
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Commercial Sample"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Document"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Merchandise"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Gift"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Humanitarian Donation"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Returned Goods"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Other"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
@@ -260,24 +260,24 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     #Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Commercial Sample"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Document"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Merchandise"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Gift"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Humanitarian Donation"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Returned Goods"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Other"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
@@ -300,24 +300,24 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     #Then Set single-order form Service to "First-Class Mail International Large Envelope"
     And Open customs form
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Commercial Sample"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Document"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Merchandise"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Gift"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Humanitarian Donation"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Returned Goods"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Other"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
@@ -342,22 +342,22 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     #Then Set single-order form Service to Priority Mail International Flat Rate Envelope
     And Open customs form
     Then Set customs form Package Contents to "Commercial Sample"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Document"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Merchandise"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Gift"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Humanitarian Donation"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Returned Goods"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Other"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
@@ -382,22 +382,22 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     And Open customs form
     Then Set customs form Package Contents to "Commercial Sample"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Document"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Merchandise"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Gift"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Humanitarian Donation"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Returned Goods"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Other"
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
@@ -421,24 +421,24 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     Then Set single-order form Ounces to 5
     And Open customs form
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Commercial Sample"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Document"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Merchandise"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Gift"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Humanitarian Donation"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Returned Goods"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Other"
-    Then Expect Customs Form Internal Transaction # to be Not required
+    Then Expect Customs Form Internal Transaction # to be "Not required"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # to be Required
+    Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form

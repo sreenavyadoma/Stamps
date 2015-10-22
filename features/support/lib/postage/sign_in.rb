@@ -5,7 +5,13 @@ module Postage
       if args.length == 1
         ENV['URL'] = args[0]
       end
-      url = "https://#{Stamps.url_prefix}.stamps.com/webpostage/"
+
+      if ENV['URL'].includes? "shipstation"
+        url = "http://#{Stamps.url_prefix}.stamps.com/webpostage/"
+      else
+        url = "https://#{Stamps.url_prefix}.stamps.com/webpostage/"
+      end
+
       @browser.goto url
       log "Page loaded.  #{url}"
       self
