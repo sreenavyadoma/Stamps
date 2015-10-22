@@ -18,7 +18,7 @@ Feature: Test Development
 
     Then Set single-order form Service to "Priority Mail Package"
     Then Expect single-order form Service to be "Priority Mail Package"
-    Then Expect single-order form Tracking to be "USPS Tracking"
+    Then Expect single-order form Tracking to be "Signature Required"
 
     Then Set single-order form Service to "Priority Mail Package"
     Then Expect single-order form Service to be "Priority Mail Package"
