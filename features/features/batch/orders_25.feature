@@ -16,7 +16,7 @@ Feature: 25 orders
     And Set single-order form Ounces to 1
     And Set single-order form Service to "First-Class Mail Large Envelope/Flat"
     And Set single-order form Insured Value to $15.00
-    And Set single-order form Tracking to None
+    And Set single-order form Tracking to "None"
     Then Uncheck row 1 on the order grid
 
     Then I Add a new order
@@ -253,11 +253,11 @@ Feature: 25 orders
 
     And Open customs form
 
-    Then Set customs form Package Contents to Merchandise
-    Then Set customs form Non-Delivery Options to Return to sender
-    Then Set customs form Internal Transaction Number to Required
-    Then Set customs form More Info to random
-    Then Set customs form ITN# to random
+    Then Set customs form Package Contents to "Merchandise"
+    Then Set customs form Non-Delivery Options to "Return to sender"
+    Then Set customs form Internal Transaction Number to "Required"
+    Then Set customs form More Info to "random"
+    Then Set customs form ITN# to "random"
 
     Then Set customs form I agree to true
     Then Close customs form
@@ -274,11 +274,11 @@ Feature: 25 orders
 
     And Open customs form
 
-    Then Set customs form Package Contents to Merchandise
-    Then Set customs form Non-Delivery Options to Return to sender
-    Then Set customs form Internal Transaction Number to Required
-    Then Set customs form More Info to random
-    Then Set customs form ITN# to random
+    Then Set customs form Package Contents to "Merchandise"
+    Then Set customs form Non-Delivery Options to "Return to sender"
+    Then Set customs form Internal Transaction Number to "Required"
+    Then Set customs form More Info to "random"
+    Then Set customs form ITN# to "random"
 
     Then Set customs form I agree to true
     Then Close customs form
