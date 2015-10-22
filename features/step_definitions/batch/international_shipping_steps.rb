@@ -167,7 +167,7 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
   end
 end
 
-Given /^Expect Single Order Form International Address fields are visible$/ do
+Given /^Expect single-order form International Address fields are visible$/ do
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true
   @international_ship_to.address_1.present?.should be true
@@ -179,13 +179,13 @@ Given /^Expect Single Order Form International Address fields are visible$/ do
   @international_ship_to.email.present?.should be true
 end
 
-Then /^Expect Single Order Form Domestic Ship-To fields are hidden$/ do
+Then /^Expect single-order form Domestic Ship-To fields are hidden$/ do
   @single_order_form.ship_to.present?.should be false
   @single_order_form.email.present?.should be false
   @single_order_form.phone.present?.should be false
 end
 
-Then /^Expect Single Order Form Customs (.+) button is (.+)/ do |button, expectation|
+Then /^Expect single-order form Customs (.+) button is (.+)/ do |button, expectation|
   case button.downcase
     when "restrictions"
       case expectation.downcase
@@ -319,7 +319,7 @@ Given /^Add single-order form Item - Quantity (\d+), ID ([\w ]+), Description ([
   line_item.description (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
 end
 
-Given /^Expect Single Order Form ([\w -]+) field is hidden$/ do |field_name|
+Given /^Expect single-order form ([\w -]+) field is hidden$/ do |field_name|
 end
 
 Given /^Expect International Ship-To ([\w ]+) Field Attributes are correct$/ do |field_name|

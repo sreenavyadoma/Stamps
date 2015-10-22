@@ -386,7 +386,7 @@ module Batch
         dd = international_drop_down_btn
       end
 
-      raise "Single Order Form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? dd
+      raise "single-order form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? dd
       text_fields = @browser.text_fields :name => "CountryCode"
       domestic_input = text_fields.first
       international_input = text_fields.last
@@ -396,7 +396,7 @@ module Batch
         input = international_input
       end
 
-      raise "Single Order Form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
+      raise "single-order form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
       Dropdown.new @browser, dd, :li, input
     end
 
@@ -700,7 +700,7 @@ module Batch
     end
     def ship_cost_span
       span = @browser.span :text => "Ship Cost"
-      log "Single Order Form is #{(browser_helper.present? span)?'present':'NOT present'}"
+      log "single-order form is #{(browser_helper.present? span)?'present':'NOT present'}"
       span
     end
 
@@ -720,7 +720,7 @@ module Batch
       begin
         order_id_label.wait_until_present
       rescue
-        log "Single Order Form Order ID label was not present"
+        log "single-order form Order ID label was not present"
       end
       #(browser_helper.text order_id_label).split('Order #').last
       order_id_str = order_id_label.text

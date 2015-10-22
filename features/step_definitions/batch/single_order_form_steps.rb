@@ -59,8 +59,8 @@ When /^Set Email to (.*)$/ do |value|
   #end_step step
 end
 
-When /^Expect system (.*) Single Order Form$/ do |status|
-  log "Confirmed system #{status} Single Order Form"
+When /^Expect system (.*) single-order form$/ do |status|
+  log "Confirmed system #{status} single-order form"
 
   actual = batch.single_order_form.single_order_form_present
   if status == 'hides'
@@ -203,7 +203,7 @@ Then /^Expect Ounces tooltip to display - The maximum value for this field is ([
   log_expectation_eql "Maximum Pounds", expected, actual
   actual.should eql expected
 end
-Then /^Expect inline Service Cost for ([a-zA-Z -\/]+) to be greater than \$([0-9.]+)$/ do |service, expected|
+Then /^Expect single-order form Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
   actual = batch.single_order_form.service.cost service
   10.times { |counter|
     log_expectation "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
@@ -236,7 +236,7 @@ Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Verify Single Order Form Total Amount$/ do
+Then /^Verify single-order form Total Amount$/ do
   batch.single_order_form.total_amount_calculation.should be_correct
 end
 

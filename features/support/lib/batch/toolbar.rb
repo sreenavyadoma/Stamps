@@ -188,7 +188,7 @@ module Batch
           old_grid_order_id = order_grid.order_id 1
           add_button.safe_click
           sleep 2
-          log "#{count} Single Order Form present?  #{single_order_form.present?}"
+          log "#{count} single-order form present?  #{single_order_form.present?}"
           single_order_form.wait_until_present
           new_grid_order_id = order_grid.order_id 1
           single_order_form_order_id = single_order_form.order_id
