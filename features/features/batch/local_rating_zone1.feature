@@ -4,7 +4,7 @@ Feature: Local Rating Zone 1
   Ratesets CBP, CPP and the most common of the SAS rates should be tested.
 
   Background:
-    Given I am signed in as a batch shipper ff/qacc/dj_cctest_01/postage1
+    Given I am signed in as a batch shipper ff/qasc/dj_cctest_01/postage1
 
   @local_rating_zone1
   Scenario: Zone 1 - Priority Mail Large/Thick Envelope
