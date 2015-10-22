@@ -560,16 +560,19 @@ module Batch
 
       if less_button0.present?
         return less_button0
+      else
+        return less_button1
       end
 
-      if less_button1.present?
-        less_button1
-      end
     end
 
     def hide_ship_to
       self.click_form
-      less_link.click_while_present
+      begin
+        less_link.click_while_present
+      rescue
+        #ignore
+      end
     end
 
     def expand_ship_to

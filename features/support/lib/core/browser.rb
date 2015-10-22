@@ -355,7 +355,6 @@ module Stamps
       def click_while_present
         20.times{
           safe_click
-          sleep 2
           break unless present?
         }
       end
