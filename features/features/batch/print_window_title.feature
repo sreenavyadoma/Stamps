@@ -26,7 +26,7 @@ Feature:  Printing Multiple Orders
     And Open Print Modal
     Then Expect Print Window title to be "You have 2 label(s) ready to print"
 
-    Then Click Print Modal - Print button
+    Then Print
 
     And Sign out
 

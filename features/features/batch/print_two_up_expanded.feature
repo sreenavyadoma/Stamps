@@ -19,7 +19,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 1 Domestic label 8 ½" x 11 right side
     And I Add a new order
@@ -31,7 +31,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select right side label
     Then Expect right side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 2 Domestic labels 8 ½" x 11"
     And I Add a new order
@@ -49,7 +49,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 2 Domestic labels 8 ½" x 11" right side
     And I Add a new order
@@ -67,7 +67,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select right side label
     And Expect right side label selected
     And Expect Print Window requires 2 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 3 Domestic labels 8 ½" x 11"
     And I Add a new order
@@ -90,7 +90,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 2 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 1 CN22 label 8 ½" x 11"
     And I Add a new order
@@ -110,7 +110,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     #Then Select left side label
     #Then Expect left side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 1 CN22 label 8 ½" x 11" right side
     And I Add a new order
@@ -130,7 +130,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     #Then Select right side label
     #Then Expect right side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 2 CN22 labels 8 ½" x 11"
     And I Add a new order
@@ -164,7 +164,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 2 CN22 labels 8 ½" x 11" right side
     And I Add a new order
@@ -198,7 +198,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select right side label
     And Expect right side label selected
     And Expect Print Window requires 2 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 3 CN22 labels 8 ½" x 11"
     And I Add a new order
@@ -246,7 +246,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 2 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 3 Domestic and 3 CN22 labels 8 ½" x 11"
 
@@ -309,7 +309,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 3 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 1 Domestic label 5 ½" x 8 ½"
     And I Add a new order
@@ -321,7 +321,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 1 Domestic label 5 ½" x 8 ½" right side
     And I Add a new order
@@ -333,7 +333,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select right side label
     Then Expect right side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 2 Domestic labels 5 ½" x 8 ½"
     And I Add a new order
@@ -351,7 +351,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 2 Domestic labels 5 ½" x 8 ½" right side
     And I Add a new order
@@ -369,7 +369,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select right side label
     And Expect right side label selected
     And Expect Print Window requires 2 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 3 Domestic labels 5 ½" x 8 ½"
     And I Add a new order
@@ -392,7 +392,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 2 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 1 CN22 label 5 ½" x 8 ½"
     And I Add a new order
@@ -412,7 +412,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     #Then Select left side label
     #Then Expect left side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 1 CN22 label 5 ½" x 8 ½" right side
     And I Add a new order
@@ -432,7 +432,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     #Then Select right side label
     #Then Expect right side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 2 CN22 labels 5 ½" x 8 ½"
     And I Add a new order
@@ -466,7 +466,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 1 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 2 CN22 labels 5 ½" x 8 ½" right side
     And I Add a new order
@@ -500,7 +500,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select right side label
     And Expect right side label selected
     And Expect Print Window requires 2 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 3 CN22 labels 5 ½" x 8 ½"
     And I Add a new order
@@ -547,7 +547,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 2 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     # 3 Domestic and 3 CN22 labels 5 ½" x 8 ½"
 
@@ -610,7 +610,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select left side label
     Then Expect left side label selected
     And Expect Print Window requires 3 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     Then Sign out
 

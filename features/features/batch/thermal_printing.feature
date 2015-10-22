@@ -18,5 +18,5 @@ Feature: Thermal Printer
     Then Open Print Modal
     Then Select Print Media "Roll - 4" x 6" Shipping Label"
     Then Select Printer "DYMO LabelWriter 4XL"
-    Then Click Print Modal - Print button
+    Then Print
     And Sign out

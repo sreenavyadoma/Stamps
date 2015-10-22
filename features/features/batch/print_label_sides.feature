@@ -14,7 +14,7 @@ Feature: Print Label Position
     And Open Print Modal
     And Select left side label
     Then Expect left side label selected
-    And Click Print Modal - Print button
+    And Print
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
@@ -22,7 +22,7 @@ Feature: Print Label Position
     Then Set single-order form Service to "Priority Mail Package"
     And Open Print Modal
     Then Expect left side label selected
-    And Click Print Modal - Print button
+    And Print
 
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -32,7 +32,7 @@ Feature: Print Label Position
     And Open Print Modal
     And Select right side label
     Then Expect right side label selected
-    And Click Print Modal - Print button
+    And Print
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
@@ -40,6 +40,6 @@ Feature: Print Label Position
     Then Set single-order form Service to "Priority Mail Package"
     And Open Print Modal
     Then Expect right side label selected
-    And Click Print Modal - Print button
+    And Print
 
     And Sign out

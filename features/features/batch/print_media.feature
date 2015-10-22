@@ -54,7 +54,7 @@ Feature: Print Media
     Then Set single-order form Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
-    Then Click Print Modal - Print button
+    Then Print
 
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -67,7 +67,7 @@ Feature: Print Media
     Then Set single-order form Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Roll - 4" x 6" Shipping Label"
-    Then Click Print Modal - Print button
+    Then Print
 
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -80,7 +80,7 @@ Feature: Print Media
     Then Set single-order form Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
-    Then Click Print Modal - Print button
+    Then Print
 
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -93,7 +93,7 @@ Feature: Print Media
     Then Set single-order form Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
-    Then Click Print Modal - Print button
+    Then Print
 
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -106,7 +106,7 @@ Feature: Print Media
     Then Set single-order form Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
-    Then Click Print Modal - Print button
+    Then Print
 
     And Sign out
 
