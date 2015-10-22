@@ -97,21 +97,10 @@ Cucumber::Rake::Task.new(:regress_qacc_ie) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:address_management_qacc_ie) do |t|
-  t.profile = 'address_management_qacc_ie'
+Cucumber::Rake::Task.new(:address_management) do |t|
+  t.profile = 'address_management'
   t.cucumber_opts = "-p cuke_reports"
 end
-
-Cucumber::Rake::Task.new(:address_management_qacc_ff) do |t|
-  t.profile = 'address_management_qacc_ff'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:address_management_qacc_gc) do |t|
-  t.profile = 'address_management_qacc_gc'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:print_qacc_ie) do |t|
   t.profile = 'print_qacc_ie'
   t.cucumber_opts = "-p cuke_reports"
