@@ -212,18 +212,6 @@ module Batch
       Button.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
     end
 
-    def field selection
-      @browser.tr :css => "tr[data-qtip*='#{selection}']"
-    end
-
-    def selection_field selection
-      field(selection).tds[1]
-    end
-
-    def selection_cost_field selection
-      field(selection).tds[2]
-    end
-
     public
 
     def text
@@ -231,61 +219,60 @@ module Batch
     end
 
     def select selection
+      log "Select Service #{selection}"
       box = textbox
       button = drop_down
-      button.safe_click
-      button.safe_click
-      button.safe_click
-      selection_label = Label.new(selection_field(selection))
-      5.times {
+      selection_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
+      10.times {
         begin
           button.safe_click unless selection_label.present?
           selection_label.safe_click
           click_form
-          break if box.text.include? selection
+          selected_service = box.text
+          log "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
+          break if selected_service.include? selection
         rescue
           #ignore
         end
       }
+      log "#{selection} service selected."
       selection_label
     end
 
     def cost selection
       button = drop_down
-      button.safe_click
-      button.safe_click
-      button.safe_click
-      cost_label = Label.new(selection_cost_field(selection))
+      cost_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(3)"
       10.times {
         begin
+          button.safe_click unless cost_label.present?
           if cost_label.present?
-            selection_cost = test_helper.remove_dollar_sign cost_label.text
-            log "#{selection_cost}"
-            return selection_cost
-          else
-            button.safe_click
+            service_cost = test_helper.remove_dollar_sign cost_label.text
+            log "Service Cost for \"#{selection}\" is #{service_cost}"
+            return service_cost
           end
         rescue
           #ignore
         end
       }
+      click_form
     end
 
-    def data_qtip selection
+    def tooltip selection
       button = drop_down
-      selection_label = Label.new field selection
+      selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
       5.times {
         begin
           button.safe_click unless selection_label.present?
           if selection_label.present?
-            qtip = selection_label.attribute_value "data-qtip"
-            log "#{qtip}"
-            return qtip
+            tooltip = selection_label.attribute_value "data-qtip"
+            log "Service Tooltip for \"#{selection}\" is #{tooltip}"
+            return tooltip
           end
         rescue
           #ignore
         end
       }
+      click_form
     end
 
   end

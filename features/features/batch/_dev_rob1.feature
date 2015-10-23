@@ -10,6 +10,8 @@ Feature: Test Development
     Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Package"
     Then Expect single-order form Service to be "Priority Mail Package"
+    Then Expect single-order form Service Cost inline price for "Priority Mail Package" to be greater than $0.01
+
 
     Then Set single-order form Tracking to "USPS Tracking"
     Then Expect single-order form Tracking to be "USPS Tracking"

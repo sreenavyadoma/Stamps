@@ -205,6 +205,8 @@ Then /^Expect Ounces tooltip to display - The maximum value for this field is ([
 end
 Then /^Expect single-order form Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
   actual = batch.single_order_form.service.cost service
+  tooltip = batch.single_order_form.service.tooltip service
+  log "#{service} tooltip:  #{tooltip}"
   10.times { |counter|
     log_expectation "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
     break if actual.to_f >= expected.to_f
