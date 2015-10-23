@@ -203,10 +203,9 @@ Then /^Expect Ounces tooltip to display - The maximum value for this field is ([
   log_expectation_eql "Maximum Pounds", expected, actual
   actual.should eql expected
 end
+
 Then /^Expect single-order form Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
   actual = batch.single_order_form.service.cost service
-  tooltip = batch.single_order_form.service.tooltip service
-  log "#{service} tooltip:  #{tooltip}"
   10.times { |counter|
     log_expectation "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
     break if actual.to_f >= expected.to_f
@@ -214,6 +213,16 @@ Then /^Expect single-order form Service Cost inline price for "([a-zA-Z -\/]+)" 
   }
   actual.to_f.should be >= expected.to_f
 end
+
+Then /^Expect single-order form Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
+  tooltips = tooltip_content.split ","
+  actual_tooltip = batch.single_order_form.service.tooltip service
+  tooltips.each { |tooltip|
+    log "Does #{tooltip} exist in tooltip?  #{(actual_tooltip.include? tooltip)?"Yes.":"No."}"
+    actual_tooltip.should include tooltip
+  }
+end
+
 Then /^Expect Service Cost to be \$(.*)$/ do |expected|
   actual = batch.single_order_form.service_cost
   begin

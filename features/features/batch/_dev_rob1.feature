@@ -11,7 +11,7 @@ Feature: Test Development
     Then Set single-order form Service to "Priority Mail Package"
     Then Expect single-order form Service to be "Priority Mail Package"
     Then Expect single-order form Service Cost inline price for "Priority Mail Package" to be greater than $0.01
-
+    Then Expect single-order form Service Tooltip for "Priority Mail Package" to include "Priority Mail Package,Ship up to 70 lbs. using any box with pricing that varies by weight and distance,The USPS provides free packaging for Priority Mail which can be ordered from Stamps.com."
 
     Then Set single-order form Tracking to "USPS Tracking"
     Then Expect single-order form Tracking to be "USPS Tracking"
