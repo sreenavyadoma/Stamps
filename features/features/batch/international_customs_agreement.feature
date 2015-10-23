@@ -32,13 +32,13 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
-    And Click Print Button
+    And Open Print Modal
 
     Then Expect USPS Terms modal appears
     Then Click Cancel on USPS Terms modal
-    Then Click Print Button
+    Then Open Print Modal
     And Click I Agree on USPS Terms modal
-    Then Click Print button in Modal
+    Then Print
 
     #Print an Int'l order and turn Auto-Confirm on
 
@@ -60,12 +60,12 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
-    And Click Print Button
+    And Open Print Modal
 
     Then Expect USPS Terms modal appears
     Then Check Do Not Show Again checkbox in USPS Terms modal
     And Click I Agree on USPS Terms modal
-    Then Click Print Modal - Print button
+    Then Print
 
     When Open Settings Modal
     Then Expect USPS Terms Checked in Settings Modal

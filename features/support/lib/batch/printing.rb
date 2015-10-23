@@ -166,12 +166,16 @@ module Batch
     end
 
     def print
+      button = print_button
       8.times {
         begin
           sleep(1)
-          browser_helper.click print_button
+          button.safe_click
+          sleep 1
+          button.safe_click
+          sleep(1)
           printing_error = printing_error_check
-          return printing_error unless browser_helper.present? print_button
+          return printing_error if printing_error.length > 1
         rescue
           true
         end
@@ -302,6 +306,8 @@ module Batch
       @printing_error
     end
 
+=begin
+
     def check_unauthenticated_error
       @printing_error = false
       begin
@@ -401,8 +407,16 @@ module Batch
 
     def check_error_ok_button
       ok_button = Button.new error_ok_button
-      sleep 1
+      message_label = Label.new(@browser.div :css => "div[id^=dialoguemodal][class=x-autocontainer-innerCt]")
+      sleep 2
       @printing_error = false
+
+      if message_label.present?
+        err_msg = message_label.text
+        log "Printing Error Message:  #{(err_msg)}"
+        @printing_error = true
+      end
+
       if ok_button.present?
         @printing_error = true
         log "Error Window OK button detected"
@@ -414,13 +428,41 @@ module Batch
       @printing_error
     end
 
+
     def printing_error_check
       #check_naws_plugin_error if Stamps.browser.chrome?
-      unauthenticated_error = check_unauthenticated_error
-      account_status_error = check_account_status_error
-      error_ok_button = check_error_ok_button
-      log "Printing Error Encountered:  #{unauthenticated_error || account_status_error || error_ok_button}"
-      unauthenticated_error || account_status_error || error_ok_button
+      #unauthenticated_error = check_unauthenticated_error
+      #account_status_error = check_account_status_error
+      #error_ok_button = check_error_ok_button
+      #log "Printing Error Encountered:  #{unauthenticated_error || account_status_error || error_ok_button}"
+      #unauthenticated_error || account_status_error || error_ok_button
+
+    end
+=end
+
+    def printing_error_check
+      @printing_error = ""
+      incomplete_order_window = Label.new(@browser.div :text => "Incomplete Order")
+      error_window = Label.new(@browser.div :text => "Error")
+      ok_button = Button.new(@browser.span :text => 'OK')
+      message_label = Label.new((@browser.divs :css => "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
+
+      sleep 2
+
+      if error_window.present? || incomplete_order_window.present?
+        window_text = error_window.text
+        err_msg = message_label.text
+        @printing_error = "#{window_text} \n #{(err_msg)}"
+        log "Printing Error: \n#{@printing_error}"
+      end
+
+      if ok_button.present?
+        log "Error Window OK button"
+        ok_button.safe_click
+        ok_button.safe_click
+        ok_button.safe_click
+      end
+      @printing_error
     end
 
     def x_button

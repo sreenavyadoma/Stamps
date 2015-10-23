@@ -27,7 +27,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Select right side label
     And Expect right side label selected
     Then Expect Print Window requires 2 label sheets
-    Then Click Print Modal - Print button
+    Then Print
 
     Then Sign out
 

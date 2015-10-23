@@ -58,19 +58,19 @@ end
 
 When /^Print$/ do
   @printing_error = batch.toolbar.print_modal.print
+  @printing_error.should eql ""
 end
 
 Then /^Close Print Modal$/ do
   batch.toolbar.print_modal.close
 end
 
-Then /^Click Print Modal - Print button$/ do
-  @printing_error = batch.toolbar.print_modal.print_button.click_while_present
+=begin
+Then /^Print$/ do
+  @printing_error = batch.toolbar.print_modal.print
+  @printing_error.should eql ""
 end
-
-Then /^Click Print button in Modal$/ do
-  batch.toolbar.print_modal.click_print_button
-end
+=end
 
 Then /^Print expecting error (.*)$/ do |error_message|
   order_error = batch.toolbar.print_expecting_error
