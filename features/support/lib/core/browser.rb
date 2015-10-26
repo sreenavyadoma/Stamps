@@ -3,6 +3,11 @@ module Stamps
     class Browser
       include Singleton
 
+      def safari?
+        "apple|osx|safari|mac".include? ENV['BROWSER'].downcase
+      end
+
+
       def chrome?
         "chrome|gc|google".include? ENV['BROWSER'].downcase
       end

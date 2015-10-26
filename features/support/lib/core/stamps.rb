@@ -102,6 +102,12 @@ module Stamps
         driver = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
         browser_name = 'Google Chrome'
 
+      elsif Stamps.browser.safari?
+
+        driver = Watir::Browser.new :safari
+        driver.goto "www.cnn.com"
+
+
       else
         driver = Watir::Browser.new :ie
         browser_name = 'Internet Explorer'
