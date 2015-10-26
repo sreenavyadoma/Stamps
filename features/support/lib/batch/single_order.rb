@@ -133,7 +133,7 @@ module Batch
 
     private
 
-    def textbox
+    def text_box
       Textbox.new @browser.text_field :name => 'Tracking'
     end
 
@@ -144,11 +144,11 @@ module Batch
     public
 
     def text
-      textbox.text
+      text_box.text
     end
 
     def select selection
-      box = textbox
+      box = text_box
       button = drop_down
       selection_label = Label.new @browser.td :text => selection
       5.times {
@@ -204,7 +204,7 @@ module Batch
 
     private
 
-    def textbox
+    def text_box
       Textbox.new @browser.text_field :css => "input[name^=servicedroplist]"
     end
 
@@ -215,12 +215,12 @@ module Batch
     public
 
     def text
-      textbox.text
+      text_box.text
     end
 
     def select selection
       log "Select Service #{selection}"
-      box = textbox
+      box = text_box
       button = drop_down
       selection_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
       10.times {
@@ -277,6 +277,47 @@ module Batch
 
   end
 
+  class ShipToCountry < OrderDetails
+
+    def drop_down
+      divs = @browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
+      domestic = Button.new divs.first
+      international = Button.new divs.last
+
+      if domestic.present?
+        domestic
+      elsif international.present?
+        international
+      else
+        raise "Unable to located Ship-To drop-down button."
+      end
+    end
+
+    def text_box
+      Textbox.new (@browser.text_fields :name => "CountryCode")[1]
+    end
+
+    def select country
+      log "Select Country #{country}"
+      box = text_box
+      selection_label = Label.new @browser.li :text => country
+      10.times {
+        begin
+          selected_country = box.text
+          log "Selected Country  #{selected_country} - #{(selected_country.include? country)?"#{selected_country} selected": "#{selected_country} not selected"}"
+          break if selected_country.include? country
+
+          drop_down.safe_click unless selected_country.include? country
+          selection_label.safe_click
+          click_form
+        rescue
+          #ignore
+        end
+      }
+      log "#{country} Country selected."
+      selection_label
+    end
+  end
 
   #
   #  Single Order Edit Form
@@ -327,7 +368,7 @@ module Batch
       @browser.td :text => 'USPS Tracking'
     end
 
-    def textbox
+    def text_box
       @browser.text_field :name => 'Tracking'
     end
 
@@ -363,28 +404,7 @@ module Batch
     end
 
     def ship_to_country
-      dd_divs = @browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
-      domestic_drop_down_btn = dd_divs.first
-      international_drop_down_btn = dd_divs.last
-
-      if browser_helper.present? domestic_drop_down_btn
-        dd = domestic_drop_down_btn
-      elsif browser_helper.present? international_drop_down_btn
-        dd = international_drop_down_btn
-      end
-
-      raise "single-order form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? dd
-      text_fields = @browser.text_fields :name => "CountryCode"
-      domestic_input = text_fields.first
-      international_input = text_fields.last
-      if browser_helper.present? domestic_input
-        input = domestic_input
-      elsif browser_helper.present? international_input
-        input = international_input
-      end
-
-      raise "single-order form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, dd, :li, input
+      ShipToCountry.new @browser
     end
 
     def add_item

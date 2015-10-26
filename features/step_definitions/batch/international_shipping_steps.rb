@@ -1,5 +1,5 @@
 
-Then /^Set Ship-To country to (.*)$/ do |country|
+Then /^Set single-order Ship-To country to (.*)$/ do |country|
   @single_order_form = batch.single_order_form
   @single_order_form.ship_to_country.select country
   @international_ship_to = @single_order_form.international
@@ -32,7 +32,7 @@ Given /^Set Ship-To to international address$/ do |table|
   log "International Ship-To Phone: #{phone}"
   log "International Ship-To Email: #{email}"
 
-  step "Set Ship-To country to #{country}"
+  step "Set single-order Ship-To country to #{country}"
   step "Set International Ship-To Name to \"#{name}\""
   step "Set International Ship-To Company to \"#{company}\""
   step "Set International Ship-To Address 1 to \"#{street_address_1}\""

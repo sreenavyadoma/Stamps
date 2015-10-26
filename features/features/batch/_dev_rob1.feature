@@ -6,6 +6,10 @@ Feature: Test Development
   @rob_dev1
   Scenario:
     And I Add a new order
+    Then Set single-order Ship-To country to Canada
+
+  Scenario:
+    And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Package"

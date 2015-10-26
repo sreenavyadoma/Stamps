@@ -95,7 +95,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     # 1 CN22 label 8 ½" x 11"
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -115,7 +115,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     # 1 CN22 label 8 ½" x 11" right side
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -135,7 +135,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     # 2 CN22 labels 8 ½" x 11"
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -147,7 +147,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -169,7 +169,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     # 2 CN22 labels 8 ½" x 11" right side
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -181,7 +181,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -203,7 +203,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     # 3 CN22 labels 8 ½" x 11"
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -215,7 +215,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -227,7 +227,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -264,7 +264,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Set single-order form Service to "Priority Mail Flat Rate Envelope"
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -276,7 +276,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -288,7 +288,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -397,7 +397,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     # 1 CN22 label 5 ½" x 8 ½"
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -417,7 +417,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     # 1 CN22 label 5 ½" x 8 ½" right side
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -437,7 +437,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     # 2 CN22 labels 5 ½" x 8 ½"
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -449,7 +449,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -471,7 +471,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     # 2 CN22 labels 5 ½" x 8 ½" right side
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -483,7 +483,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -505,7 +505,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     # 3 CN22 labels 5 ½" x 8 ½"
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -517,7 +517,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -529,7 +529,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -565,7 +565,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Set single-order form Service to "Priority Mail Flat Rate Envelope"
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -577,7 +577,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -589,7 +589,7 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Close customs form
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |

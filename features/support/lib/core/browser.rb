@@ -674,14 +674,23 @@ module Stamps
         rescue
           #ignore
         end
-        text = field.text
-        value = field.attribute_value 'value'
+
         begin
+          text = field.text
           return text if text.size > 0
         rescue
           #ignore
         end
+
         begin
+          value = field.value
+          return value if value.size > 0
+        rescue
+          #ignore
+        end
+
+        begin
+          value = field.attribute_value 'value'
           return value if value.size > 0
         rescue
           #ignore
