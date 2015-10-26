@@ -105,8 +105,7 @@ module Stamps
       elsif Stamps.browser.safari?
 
         driver = Watir::Browser.new :safari
-        driver.goto "www.cnn.com"
-
+        browser_name = 'Safari'
 
       else
         driver = Watir::Browser.new :ie
