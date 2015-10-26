@@ -103,7 +103,6 @@ module Stamps
         browser_name = 'Google Chrome'
 
       elsif Stamps.browser.safari?
-
         driver = Watir::Browser.new :safari
         browser_name = 'Safari'
 
