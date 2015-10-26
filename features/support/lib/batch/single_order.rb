@@ -304,7 +304,7 @@ module Batch
       10.times {
         begin
           selected_country = box.text
-          log "Selected Country  #{selected_country} - #{(selected_country.include? country)?"#{selected_country} selected": "#{selected_country} not selected"}"
+          log "Selected Country  #{selected_country} - #{(selected_country.include? country)?"#{country} selected": "#{country} not selected"}"
           break if selected_country.include? country
 
           drop_down.safe_click unless selected_country.include? country
