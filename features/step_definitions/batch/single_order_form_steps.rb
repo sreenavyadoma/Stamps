@@ -120,6 +120,11 @@ Then /^Set single-order form Tracking to \"([\w ]*)\"$/ do |value|
   begin
     batch.single_order_form.tracking.select value
   end unless value.length == 0
+
+  actual_tooltip = batch.single_order_form.tracking.tooltip value
+  log actual_tooltip
+  cost = batch.single_order_form.tracking.cost value
+  log cost
 end
 
 And /^Set single-order form Insured Value to \$([\d*\.?\d*]*)$/ do |value|

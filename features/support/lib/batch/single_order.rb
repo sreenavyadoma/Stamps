@@ -181,7 +181,7 @@ module Batch
       }
     end
 
-    def data_qtip selection
+    def tooltip selection
       button = drop_down
       selection_label = @browser.td :text => selection
       5.times {
