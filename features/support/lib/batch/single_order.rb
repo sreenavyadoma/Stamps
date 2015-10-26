@@ -314,7 +314,7 @@ module Batch
           #ignore
         end
       }
-      log "#{country} Country selected."
+      log "Ship-To country now set to #{country}"
       selection_label
     end
   end
