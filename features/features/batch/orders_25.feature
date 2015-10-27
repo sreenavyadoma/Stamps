@@ -4,10 +4,9 @@ Feature: 25 orders
     Given I am signed in as a batch shipper
 
   @orders_25 @jenkins_orders
-  Scenario:  Inline Rates
+  Scenario:  25 orders
 
     # First Class Mail
-
     Then I Add a new order
     And Expect new Order ID created
     And Set single-order form Ship-From to default
