@@ -7,6 +7,13 @@ Feature: Test Development
   Scenario:
     And I Add a new order
     Then Set single-order Ship-To country to Canada
+    Then Set single-order Ship-To country to United States
+    Then Set Ship-To to international address
+      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
+    Then Set single-order form Ship-To address to random
+    Then Set single-order form Ship-To address to San
+    Then
 
   Scenario:
     And I Add a new order

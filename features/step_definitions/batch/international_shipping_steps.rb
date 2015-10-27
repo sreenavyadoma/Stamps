@@ -1,7 +1,6 @@
 
 Then /^Set single-order Ship-To country to (.*)$/ do |country|
-  @single_order_form = batch.single_order_form
-  @single_order_form.ship_to_country.select country
+  batch.single_order_form.ship_to.country.select country
   @international_ship_to = @single_order_form.international
 end
 
@@ -180,12 +179,14 @@ Given /^Expect single-order form International Address fields are visible$/ do
 end
 
 Then /^Expect single-order form Domestic Ship-To fields are hidden$/ do
+  @single_order_form = batch.single_order_form
   @single_order_form.ship_to.present?.should be false
   @single_order_form.email.present?.should be false
   @single_order_form.phone.present?.should be false
 end
 
 Then /^Expect single-order form Customs (.+) button is (.+)/ do |button, expectation|
+  @single_order_form = batch.single_order_form
   case button.downcase
     when "restrictions"
       case expectation.downcase

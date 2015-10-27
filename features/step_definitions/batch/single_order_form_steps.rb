@@ -1,5 +1,3 @@
-
-
 And /^Set single-order form Ship-From to (\w+)$/ do |value|
   batch.single_order_form.ship_from value
 end
@@ -7,6 +5,10 @@ end
 When /^Set single-order form Ship-To address to (.*)$/ do |address|
   log "Set single-order form Ship-To address to \"#{address}\""
   batch.single_order_form.ship_to random_ship_to(address)
+end
+
+And /^Set single-order form Ship-To to ambiguous address$/ do |table|
+  step "Set single-order form Ship-To address to #{table}"
 end
 
 And /^Set single-order form Ship-To address to$/ do |table|
@@ -47,14 +49,14 @@ end
 When /^Set single-order form Phone to (.*)$/ do |value|
   begin
     log "Set single-order form Phone to \"#{value}\""
-    batch.single_order_form.phone.set log_param "Phone", value
+    batch.single_order_form.ship_to.phone.set log_param "Phone", value
   end unless value.length == 0
 end
 
 When /^Set Email to (.*)$/ do |value|
   begin
     log "Set Email to \"#{value}\""
-    batch.single_order_form.email.set log_param "Email", value
+    batch.single_order_form.ship_to.email.set log_param "Email", value
   end unless value.length == 0
   #end_step step
 end
@@ -72,7 +74,7 @@ end
 
 When /^Hide single-order form Ship-To fields$/ do
   log "Hide single-order form Ship-To fields..."
-  batch.single_order_form.hide_ship_to
+  batch.single_order_form.ship_to.hide
   log "done."
   #end_step step
 end
@@ -164,12 +166,13 @@ end
 
 Then /^Delete (\w+) Ship-From address$/ do |address|
   begin
-    if address.downcase.include? "random"
+    if address.downcase == "random"
       raise "Illegal State Exception:  @ship_from_address is nil" if @ship_from_address.nil?
       batch.single_order_form.manage_shipping_addresses.delete @ship_from_address
-      #features.batch.single_order_form.manage_shipping_addresses.delete (address.downcase.include?"random")?@ship_from_address:address
-    elsif address.downcase.include? "all"
-      batch.single_order_form.manage_shipping_addresses.delete_all
+    elsif address.downcase == "all"
+      batch.single_order_form.manage_shipping_addresses.delete_all.close_window
+    else
+      raise "Test parameter exception.  #{address} is not a valid parameter for this test."
     end
   rescue
     #This is a housekeeping task and should never fail.
@@ -177,11 +180,7 @@ Then /^Delete (\w+) Ship-From address$/ do |address|
 end
 
 Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
-  batch.single_order_form.manage_shipping_addresses.delete_row(row).close_window
-end
-
-Then /^Delete all Ship-From addresses and fail test if delete fails$/ do
-  batch.single_order_form.manage_shipping_addresses.delete_all.should be_deleted
+  batch.single_order_form.manage_shipping_addresses.delete_row(row)
 end
 
 Then /^Set single-order form Ship-From to Manage Shipping Addresses$/ do

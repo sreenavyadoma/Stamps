@@ -34,7 +34,6 @@ Feature: 25 orders
     Then Uncheck row 1 on the order grid
 
     #Priority Mail
-
     Then I Add a new order
     And Expect new Order ID created
     And Set single-order form Ship-From to default
@@ -177,7 +176,6 @@ Feature: 25 orders
     And Set single-order form Tracking to "Signature Required"
 
     # Priority Mail Express
-
     Then I Add a new order
     And Expect new Order ID created
     And Set single-order form Ship-From to default
@@ -234,7 +232,6 @@ Feature: 25 orders
     And Set single-order form Tracking to "Signature Required"
 
     # Media Mail
-
     Then I Add a new order
     And Expect new Order ID created
     And Set single-order form Ship-From to default
@@ -248,7 +245,6 @@ Feature: 25 orders
     And Set single-order form Tracking to "Signature Required"
 
     # Parcel Select
-
     Then I Add a new order
     And Expect new Order ID created
     And Set single-order form Ship-From to default
@@ -286,24 +282,21 @@ Feature: 25 orders
     And Set single-order form Tracking to "Signature Required"
 
     # International
-
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
     Then Add single-order form Item - Quantity 1, ID random, Description random
-    And Open customs form
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
-    Then Set customs form I agree to true
-    Then Close customs form
+    Then Set single-order form Ounces to 2
+    And Set single-order form Pounds to 2
     And Set single-order form Length to 1
     And Set single-order form Width to 1
     And Set single-order form Height to 1
+    And Open customs form
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 100
+    Then Set customs form I agree to true
+    Then Close customs form
     Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     And I Add a new order
@@ -313,16 +306,15 @@ Feature: 25 orders
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
     Then Add single-order form Item - Quantity 1, ID random, Description random
     And Open customs form
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
-    Then Set customs form I agree to true
-    Then Close customs form
+    And Set single-order form Ounces to 2
+    And Set single-order form Pounds to 2
     And Set single-order form Length to 1
     And Set single-order form Width to 1
     And Set single-order form Height to 1
+    And Open customs form
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 100
+    Then Set customs form I agree to true
+    Then Close customs form
     Then Set single-order form Service to "Priority Mail International Flat Rate Envelope"
 
     And Sign out

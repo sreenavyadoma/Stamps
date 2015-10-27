@@ -429,14 +429,14 @@ module Stamps
     end
 
     class Textbox < Label
-      def data_error_field data_error_field, error_attribute
-        @data_error_field = data_error_field
-        @error_attribute = error_attribute
+      def data_qtip_field data_qtip_field, attribute_value
+        @data_qtip_field = data_qtip_field
+        @attribute_value = attribute_value
         self
       end
 
       def data_error_qtip
-        browser_helper.attribute_value @data_error_field, @error_attribute
+        browser_helper.attribute_value @data_qtip_field, @attribute_value
       end
 
       def set text
