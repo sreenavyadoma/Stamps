@@ -375,17 +375,21 @@ module Stamps
       end
 
       def check
-        5.times{
-          click
-          break if checked?
-        }
+        unless checked?
+          5.times{
+            click
+            break if checked?
+          }
+        end
       end
 
       def uncheck
-        5.times{
-          click
-          break unless checked?
-        }
+        if checked?
+          5.times{
+            click
+            break unless checked?
+          }
+        end
       end
 
       def checked?
@@ -442,6 +446,16 @@ module Stamps
       def set text
         browser_helper.set @field, text
         self
+      end
+
+      def set_until text
+        20.times{
+          set text
+          sleep 1
+          from_textbox = browser_helper.text @field
+          from_textbox == "" if from_textbox.nil?
+          break if from_textbox.include? text
+        }
       end
     end
 

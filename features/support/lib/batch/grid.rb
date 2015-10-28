@@ -1,5 +1,9 @@
 module Batch
-  class GridBase < BatchObject
+  #
+  # Orders Grid
+  #
+  class Grid < BatchObject
+    public
     GRID_COLUMNS ||= {
         :check_all => " ",
         :ship_cost => "Ship Cost",
@@ -111,11 +115,11 @@ module Batch
 
     def order_id row
       8.times{
-        break if row_count > 0
+        break if size > 0
         sleep 1
       }
 
-      if row_count == 0
+      if size == 0
         return '0000'
       end
 
@@ -128,7 +132,7 @@ module Batch
 
     def row_div number
       raise "row_div:  number can't be nil" if number.nil?
-      div = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div"
+      div = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]"
       present = browser_helper.present? div
       raise("Order Grid Row number #{number} is not present")unless browser_helper.present? div
       div
@@ -138,25 +142,35 @@ module Batch
       check_row(row_number order_id)
     end
 
-    def uncheck_row(number)
-      div = row_div number
-      5.times do
-        browser_helper.click div, "Row#{number}"
-        break unless row_checked?(number)
+    def uncheck_row number
+      if size > 0
+        checkbox_field = row_div number
+        verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
+        checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+        checkbox.uncheck
+        log "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
+      else
+        log "Grid is empty"
       end
-      log "Row #{number} checked."
     end
 
-    def check_row(number)
-      5.times do
-        if row_checked?(number)
-          break
-        else
-          div = row_div number
-          browser_helper.click div, "Row#{number}"
-        end
+    def check_row number
+      if size > 0
+        checkbox_field = row_div number
+        verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
+        checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+        checkbox.check
+        log "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
+      else
+        log "Grid is empty"
       end
-      log "Row #{number} checked."
+    end
+
+    def row_checked? number
+        checkbox_field = row_div number
+        verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
+        checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+        checkbox.checked?
     end
 
     def select_all_checkbox
@@ -180,26 +194,9 @@ module Batch
       row_checked? row_number order_number
     end
 
-    def row_checked?(row)
-      table = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row})"
-      class_attribute = browser_helper.attribute_value table, "class"
-      selected = class_attribute.include? "selected"
-      log "Row #{row} checked? #{selected}"
-      selected
+    def size
+      @browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size
     end
-
-    def check(row_number)
-      # is row checked?
-    end
-
-    # no?, check it.
-  end
-
-  #
-  # Orders Grid
-  #
-  class Grid < GridBase
-    public
 
     def paging_toolbar
       OrderGridPagingToolbar.new @browser
@@ -446,10 +443,6 @@ module Batch
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       test_helper.remove_dollar_sign grid_text(:insured_value, row)
-    end
-
-    def row_count
-      @browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size
     end
 
   end

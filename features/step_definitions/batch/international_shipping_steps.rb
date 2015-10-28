@@ -1,7 +1,6 @@
 
 Then /^Set single-order Ship-To country to (.*)$/ do |country|
-  batch.single_order_form.ship_to.country.select country
-  @international_ship_to = @single_order_form.international
+  @international_ship_to = batch.single_order_form.ship_to.country.select country
 end
 
 # random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
@@ -44,8 +43,7 @@ Given /^Set Ship-To to international address$/ do |table|
 end
 
 Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
-  @single_order_form = batch.single_order_form
-  @international_ship_to = @single_order_form.international
+  @international_ship_to = batch.single_order_form.ship_to.international_address if @international_ship_to.nil?
 
   case ship_to_field.downcase
     when "name"
@@ -94,7 +92,7 @@ Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_
 end
 
 Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, value |
-  @international_ship_to = @single_order_form.international
+  @international_ship_to = batch.single_order_form.ship_to.international_address if @international_ship_to.nil?
 
   case ship_to_field.downcase
 
@@ -167,6 +165,8 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
 end
 
 Given /^Expect single-order form International Address fields are visible$/ do
+  @international_ship_to = batch.single_order_form.ship_to.international_address if @international_ship_to.nil?
+
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true
   @international_ship_to.address_1.present?.should be true

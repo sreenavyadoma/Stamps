@@ -1,12 +1,35 @@
 module Batch
 
+  class OrderDetails < BatchObject
+    def click_form
+      item_label = Label.new @browser.label :text => 'Item:'
+      10.times {
+        begin
+          item_label.safe_click
+          item_label.safe_double_click
+        rescue
+          #ignore
+        end
+      }
+    end
+  end
 
   class ShipToAddress < OrderDetails
 
+    def international_address
+      @international_shipping ||= InternationalShipping.new @browser
+    end
+
     def hide
       click_form
-      less_button1 = Button.new (@browser.spans :text => "Less")[1]
-      less_button1.click_while_present
+      less_button1 = Button.new (@browser.spans :text => "Less").first
+      less_button2 = Button.new (@browser.spans :text => "Less").last
+      if less_button1.present?
+        less_button1.click_while_present
+      end
+      if less_button2.present?
+        less_button2.click_while_present
+      end
     end
 
     def expand
@@ -24,54 +47,28 @@ module Batch
       ShipToCountry.new @browser
     end
 
-    def address *args
-      text_area = Textbox.new @browser.textarea :name => 'FreeFormAddress'
-      case args.length
-        when 0
-          expand
-          return text_area
-        when 1
-          expand
-          name = (args["name"].downcase.include? "random") ? test_helper.random_name : args["name"]
-          company = (args["company"].downcase.include? "random") ? test_helper.random_company_name : args["company"]
-          street_address = args["street_address"]
-          city = args["city"]
-          state = args["state"]
-          zip = args["zip"]
-          phone_num = args["phone"]
-          phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : args["phone"]
-          email_addy = args["email"]
-          email = (email_addy.downcase.include? "random") ? test_helper.random_email : args["email"]
-
-          args["name"] = name
-          args["company"] = company
-          args["street_address"] = street_address
-          args["city"] = city
-          args["state"] = state
-          args["zip"] = zip
-          args["phone"] = phone
-          args["email"] = email
-
-          log "Ship-To Name: #{args["name"]}"
-          log "Ship-To Company: #{args["company"]}"
-          log "Ship-To Address: #{args["street_address"]}"
-          log "Ship-To City: #{args["city"]}"
-          log "Ship-To State: #{args["state"]}"
-          log "Ship-To Zip: #{args["zip"]}"
-          log "Ship-To Phone: #{args["phone"]}"
-          log "Ship-To Email: #{args["email"]}"
-
-
-
-          text_area.set BatchHelper.instance.format_address(args[0])
-          if args[0].is_a? Hash
-            self.phone.set args[0]["phone"]
-            self.email.set args[0]["email"]
-          end
-          ExactAddressNotFound.new @browser
-        else
-          raise "Wrong number of arguments for ship_to"
-      end
+    def address address
+      click_form
+      expand
+      click_form
+      text_box = Textbox.new @browser.textarea :name => 'FreeFormAddress'
+      text_box.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
+      text_box.set address
+      click_form
+      click_form
+      text_box.set address
+      click_form
+      click_form
+      text_box.set address
+      click_form
+      click_form
+      click_form
+      click_form
+      click_form
+      click_form
+      click_form
+      click_form
+      hide
     end
 
     def ambiguous_address
@@ -83,26 +80,24 @@ module Batch
       Link.new @browser.span(:text => "View Suggested Address Corrections")
     end
 
-    def tooltip
-      data_qtip = (@browser.link :css => "a[data-qtip*='Ambiguous']").attribute_value "data-qtip"
-      log "Ship-To Tooltip error:  #{data_qtip}"
-      data_qtip
-    end
-
-    def email
+    def email email
       click_form
-      textbox = Textbox.new @browser.text_field :name => 'Email'
+      text_box = Textbox.new @browser.text_field :name => 'Email'
       expand
       data_qtip_field = (@browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]")[0]
-      textbox.data_qtip_field data_qtip_field, "data-errorqtip"
-      textbox
+      text_box.data_qtip_field data_qtip_field, "data-errorqtip"
+      text_box.set email
+      click_form
+      hide
     end
 
-    def phone
+    def phone phone
       click_form
-      textbox = Textbox.new @browser.text_field :name => 'Phone'
+      text_box = Textbox.new @browser.text_field :name => 'Phone'
       expand
-      textbox
+      text_box.set phone
+      click_form
+      hide
     end
   end
 
@@ -691,19 +686,6 @@ module Batch
     end
   end
 
-  class OrderDetails < BatchObject
-    def click_form
-      item_label = Label.new @browser.label :text => 'Item:'
-      10.times {
-        begin
-          item_label.safe_click
-        rescue
-          #ignore
-        end
-      }
-    end
-  end
-
   class Tracking < OrderDetails
 
     private
@@ -874,23 +856,25 @@ module Batch
 
     def select country
       log "Select Country #{country}"
+
+      dd_button = drop_down
       box = text_box
-      selection_label = Label.new @browser.li :text => country
+      dd_button.safe_click
+      selection_label = Label.new @browser.li(:text => /#{country}/)
       10.times {
         begin
-          selected_country = box.text
-          log "Selected Country  #{selected_country} - #{(selected_country.include? country)?"#{country} selected": "#{country} not selected"}"
-          break if selected_country.include? country
-
-          drop_down.safe_click unless selected_country.include? country
+          dd_button.safe_click unless selection_label.present?
           selection_label.safe_click
           click_form
+          selected_country_text = box.text
+          log "Selected Country  #{selected_country_text} - #{(selected_country_text.include? country)?"#{country} selected": "#{country} not selected"}"
+          break if selected_country_text.include? country
         rescue
           #ignore
         end
       }
       log "Ship-To country now set to #{country}"
-      selection_label
+      InternationalShipping.new @browser
     end
   end
 
@@ -964,10 +948,6 @@ module Batch
 
     def auto_suggest_location_array
       @browser.divs :css => 'div[class*=sub-title]'
-    end
-
-    def international
-      @international_shipping ||= InternationalShipping.new @browser
     end
 
     def customs_form

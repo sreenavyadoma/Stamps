@@ -4,7 +4,17 @@ end
 
 When /^Set single-order form Ship-To address to (.*)$/ do |address|
   log "Set single-order form Ship-To address to \"#{address}\""
-  batch.single_order_form.ship_to random_ship_to(address)
+  formatted_address = BatchHelper.instance.format_address(random_ship_to(address))
+
+  log "Set single-order form Ship-To address to \"#{formatted_address}\""
+  ship_to = batch.single_order_form.ship_to
+  ship_to.address formatted_address
+  sleep 2
+  ship_to.phone test_helper.random_phone
+  ship_to.email test_helper.random_email
+  ship_to.hide
+  ship_to.expand
+  ship_to.hide
 end
 
 And /^Set single-order form Ship-To to ambiguous address$/ do |table|
@@ -25,39 +35,38 @@ And /^Set single-order form Ship-To address to$/ do |table|
   email_addy = param_hash["email"]
   email = (email_addy.downcase.include? "random") ? test_helper.random_email : param_hash["email"]
 
-  param_hash["name"] = name
-  param_hash["company"] = company
-  param_hash["street_address"] = street_address
-  param_hash["city"] = city
-  param_hash["state"] = state
-  param_hash["zip"] = zip
-  param_hash["phone"] = phone
-  param_hash["email"] = email
+  log "Ship-To Name: #{name}"
+  log "Ship-To Company: #{company}"
+  log "Ship-To Address: #{street_address}"
+  log "Ship-To City: #{city}"
+  log "Ship-To State: #{state}"
+  log "Ship-To Zip: #{zip}"
+  log "Ship-To Phone: #{phone}"
+  log "Ship-To Email: #{email}"
 
-  log "Ship-To Name: #{param_hash["name"]}"
-  log "Ship-To Company: #{param_hash["company"]}"
-  log "Ship-To Address: #{param_hash["street_address"]}"
-  log "Ship-To City: #{param_hash["city"]}"
-  log "Ship-To State: #{param_hash["state"]}"
-  log "Ship-To Zip: #{param_hash["zip"]}"
-  log "Ship-To Phone: #{param_hash["phone"]}"
-  log "Ship-To Email: #{param_hash["email"]}"
-
-  @ambiguous_address_module = batch.single_order_form.ship_to param_hash
+  formatted_address = BatchHelper.instance.format_address("#{name}, #{company}, #{street_address}, #{city}, #{state}, #{zip}")
+  ship_to = batch.single_order_form.ship_to
+  ship_to.address formatted_address
+  sleep 2
+  ship_to.phone phone
+  ship_to.email email
+  ship_to.hide
+  ship_to.expand
+  ship_to.hide
 end
 
-When /^Set single-order form Phone to (.*)$/ do |value|
+When /^Set single-order form Phone to (.*)$/ do |phone|
   begin
-    log "Set single-order form Phone to \"#{value}\""
-    batch.single_order_form.ship_to.phone.set log_param "Phone", value
-  end unless value.length == 0
+    log "Set single-order form Phone to \"#{phone}\""
+    batch.single_order_form.ship_to.phone.set phone
+  end unless phone.length == 0
 end
 
-When /^Set Email to (.*)$/ do |value|
+When /^Set Email to (.*)$/ do |email|
   begin
-    log "Set Email to \"#{value}\""
-    batch.single_order_form.ship_to.email.set log_param "Email", value
-  end unless value.length == 0
+    log "Set Email to \"#{email}\""
+    batch.single_order_form.ship_to.email.set email
+  end unless email.length == 0
   #end_step step
 end
 
