@@ -288,8 +288,8 @@ Given /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit 
   item.lbs.set lbs
   item.oz.set oz
   #begin
-  sleep 2
-  item.origin_dd.select origin_country
+  #sleep 2
+  item.origin_country.select origin_country
   #end unless o#rigin.downcase.include? "states"
   #item.origin_country.set origin_country
   item.hs_tariff.set tariff

@@ -1,5 +1,32 @@
 module Batch
 
+  class OriginCountry < BatchObject
+    def select country
+      log "Select Country #{country}"
+
+      text_box_field = @browser.text_field :name => "OriginCountry"
+      drop_down =text_box_field.parent.parent.divs[1]
+
+      box = Textbox.new text_box_field
+      dd_button = Button.new drop_down
+      dd_button.safe_click
+      selection_label = Label.new @browser.li(:text => /#{country}/)
+      10.times {
+        begin
+          dd_button.safe_click unless selection_label.present?
+          selection_label.safe_click
+          click_form
+          selected_country_text = box.text
+          log "Selected Country  #{selected_country_text} - #{(selected_country_text.include? country)?"#{country} selected": "#{country} not selected"}"
+          break if selected_country_text.include? country
+        rescue
+          #ignore
+        end
+      }
+      log "Ship-To country now set to #{country}"
+    end
+  end
+
   class CustomsItemGrid < BatchObject
 
     def item_count
@@ -101,12 +128,8 @@ module Batch
       (@browser.text_fields :name => "OriginCountry")[@number-1]
     end
 
-    def origin_dd
-      drop_down = (@browser.divs :css => "table[class*=x-grid-item]>tbody>tr>td[class*=x-grid-cell-widget]>div>div>div>div[id^=combo][id$=-triggerWrap]>div[class*=x-form-arrow-trigger-default]")[@number-1]
-      raise "Drop-down button is not present.  Check your CSS locator." unless drop_down.present?
-      input = origin_country_input
-      raise "Drop-down button is not present.  Check your CSS locator." unless input.present?
-      Dropdown.new @browser, drop_down, :li, input
+    def origin_country
+      OriginCountry.new @browser
     end
 
     def hs_tariff
