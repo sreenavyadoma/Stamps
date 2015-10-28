@@ -1,5 +1,5 @@
 And /^Set single-order form Ship-From to (\w+)$/ do |value|
-  batch.single_order_form.ship_from value
+  batch.single_order_form.ship_from.select value
 end
 
 When /^Set single-order form Ship-To address to (.*)$/ do |address|
@@ -52,14 +52,14 @@ end
 When /^Set single-order form Phone to (.*)$/ do |phone|
   begin
     log "Set single-order form Phone to \"#{phone}\""
-    batch.single_order_form.ship_to.phone.set phone
+    batch.single_order_form.ship_to.phone phone
   end unless phone.length == 0
 end
 
 When /^Set Email to (.*)$/ do |email|
   begin
     log "Set Email to \"#{email}\""
-    batch.single_order_form.ship_to.email.set email
+    batch.single_order_form.ship_to.email email
   end unless email.length == 0
   #end_step step
 end
@@ -150,20 +150,19 @@ When /^Set order details with$/ do |table|
 end
 
 Then /^Add Ship-From address$/ do |ship_from|
-  batch.single_order_form.manage_shipping_addresses.add ship_from.hashes.first
+  #batch.single_order_form.manage_shipping_addresses.add ship_from.hashes.first
+  batch.single_order_form.ship_from.select("Manage Shipping Addresses...").add ship_from.hashes.first
 end
 
 Then /^Add Ship-From address (\w+)$/ do |address|
-  @ship_from_address = batch.single_order_form.manage_shipping_addresses.add(randomize_ship_from(address))
+  @ship_from_address = batch.single_order_form.ship_from.select("Manage Shipping Addresses...").add(randomize_ship_from(address))
   log "Random address added: #{@ship_from_address}"
 end
 
 Then /^Expect (\w+) Ship-From address was added$/ do |address|
   raise "Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
   begin
-    log "Search for \n#{@ship_from_address}.  Address was #{(batch.single_order_form.manage_shipping_addresses.address_located?(@ship_from_address))?'Located':'Not Located'}"
-    #features.batch.single_order_form.manage_shipping_addresses.address_located?(@ship_from_address).should be true
-
+    log "Search for \n#{@ship_from_address}.  Address was #{(batch.single_order_form.ship_from.select("Manage Shipping Addresses...").address_located?(@ship_from_address))?'Located':'Not Located'}"
   end unless @ship_from_address.nil?
 end
 
@@ -171,9 +170,9 @@ Then /^Delete (\w+) Ship-From address$/ do |address|
   begin
     if address.downcase == "random"
       raise "Illegal State Exception:  @ship_from_address is nil" if @ship_from_address.nil?
-      batch.single_order_form.manage_shipping_addresses.delete @ship_from_address
+      batch.single_order_form.ship_from.select("Manage Shipping Addresses...").delete @ship_from_address
     elsif address.downcase == "all"
-      batch.single_order_form.manage_shipping_addresses.delete_all.close_window
+      batch.single_order_form.ship_from.select("Manage Shipping Addresses...").delete_all.close_window
     else
       raise "Test parameter exception.  #{address} is not a valid parameter for this test."
     end
@@ -183,15 +182,15 @@ Then /^Delete (\w+) Ship-From address$/ do |address|
 end
 
 Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
-  batch.single_order_form.manage_shipping_addresses.delete_row(row)
+  batch.single_order_form.ship_from.select("Manage Shipping Addresses...").delete_row(row)
 end
 
 Then /^Set single-order form Ship-From to Manage Shipping Addresses$/ do
-  batch.single_order_form.manage_shipping_addresses.add table.hashes.first
+  batch.single_order_form.ship_from.select("Manage Shipping Addresses...").add table.hashes.first
 end
 
 Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
-  batch.single_order_form.manage_shipping_addresses.edit_address name, company, city,  new_address.hashes.first
+  batch.single_order_form.ship_from.select("Manage Shipping Addresses...").edit_address name, company, city,  new_address.hashes.first
 end
 Then /^Expect Order Status to be ([\w ]+)$/ do |expected_value|
   actual_value = batch.single_order_form.order_status

@@ -193,7 +193,7 @@ module Batch
     end
 
     def add_shipping_address_window
-      @shipping_address_form = AddShippingAdress.new(@browser)
+      @shipping_address_form = AddShippingAdress.new @browser
       5.times {
         begin
           break if @shipping_address_form.present?
@@ -869,10 +869,77 @@ module Batch
     end
   end
 
+  class ShipFromAddress < OrderDetails
+
+    def ship_from_dropdown
+      @browser.div :css => "div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]"
+    end
+
+    def manage_ship_from_address_field
+      @browser.div :text => 'Manage Shipping Addresses...'
+    end
+
+    def ship_from_selection selection
+      @browser.div :text => selection
+    end
+
+    def manage_shipping_address
+      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+    end
+
+    def manage_shipping_addresses
+      self.ship_from "Manage Shipping Addresses..."
+    end
+
+    def select selection
+      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+
+      return @manage_shipping_adddress if @manage_shipping_adddress.present?
+
+      ship_from_default_selection_field = @browser.div :css => "div[data-recordindex='0']"
+      ship_from_dropdown = Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
+      ship_from_textbox = Textbox.new @browser.text_field :css => "input[name^=shipfromdroplist]"
+
+      if selection.downcase == "default"
+        ship_from_selection_field = ship_from_default_selection_field
+      elsif selection.downcase.include? "manage shipping"
+        ship_from_selection_field = @browser.div :text => "Manage Shipping Addresses..."
+      else
+        ship_from_selection_field = @browser.div :text => "#{selection}"
+      end
+
+      ship_from_selection_label = Label.new ship_from_selection_field
+
+      if selection.downcase.include? "manage shipping"
+        10.times{
+          begin
+            ship_from_dropdown.safe_click unless ship_from_selection_label.present?
+            ship_from_selection_label.safe_click
+            return @manage_shipping_adddress if @manage_shipping_adddress.present?
+          rescue
+            #ignore
+          end
+          click_form
+        }
+      else
+        10.times{
+          ship_from_dropdown.safe_click unless ship_from_selection_label.present?
+          ship_from_selection_label.safe_click
+          break if ship_from_textbox.text.length > 3
+        }
+      end
+    end
+
+  end
+
   #
   #  Single Order Edit Form
   #
   class SingleOrderForm < OrderDetails
+
+    def ship_from
+      ShipFromAddress.new @browser
+    end
 
     def service
       Service.new @browser
@@ -892,10 +959,6 @@ module Batch
 
     def insurance_cost_label
       @browser.label :css => 'label[class*=insurance_cost]'
-    end
-
-    def ship_from_dropdown
-      @browser.div :css => "div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]"
     end
 
     def height_textbox
@@ -948,6 +1011,7 @@ module Batch
     def customs
       CustomsFields.new @browser
     end
+
     def add_item
       add_item = Link.new @browser.span :text => "Add Item"
       log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
@@ -1086,49 +1150,6 @@ module Batch
 
     def ship_to
       ShipToAddress.new @browser
-    end
-
-    def manage_ship_from_address_field
-      @browser.div :text => 'Manage Shipping Addresses...'
-    end
-
-    def ship_from_selection selection
-      @browser.div :text => selection
-    end
-
-    def ship_from selection
-      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
-      ship_from_default_selection = Label.new @browser.div :css => "div[data-recordindex='0']"
-      ship_from_dropdown = Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
-      ship_from_textbox = Textbox.new @browser.text_field :css => "input[name^=shipfromdroplist]"
-      if selection.downcase.eql? "default"
-        5.times{
-          ship_from_dropdown.safe_click
-          ship_from_default_selection.safe_click
-          break if ship_from_textbox.text.length > 2
-        }
-        click_form
-      else
-        5.times {
-          begin
-            break if @manage_shipping_adddress.present?
-            browser_helper.click ship_from_dropdown, "ship_from_selection.[#{selection}]" unless browser_helper.present?  ship_from_selection(selection)
-            browser_helper.click ship_from_selection(selection), selection
-          rescue
-            #ignore
-          end
-          click_form
-        }
-        @manage_shipping_adddress
-      end
-    end
-
-    def manage_shipping_address
-      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
-    end
-
-    def manage_shipping_addresses
-      self.ship_from "Manage Shipping Addresses..."
     end
 
     def pounds_max_value
