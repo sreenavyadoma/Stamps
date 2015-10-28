@@ -9,12 +9,8 @@ When /^Set single-order form Ship-To address to (.*)$/ do |address|
   log "Set single-order form Ship-To address to \"#{formatted_address}\""
   ship_to = batch.single_order_form.ship_to
   ship_to.address formatted_address
-  sleep 2
   ship_to.phone test_helper.random_phone
   ship_to.email test_helper.random_email
-  ship_to.hide
-  ship_to.expand
-  ship_to.hide
 end
 
 And /^Set single-order form Ship-To to ambiguous address$/ do |table|
@@ -47,12 +43,8 @@ And /^Set single-order form Ship-To address to$/ do |table|
   formatted_address = BatchHelper.instance.format_address("#{name}, #{company}, #{street_address}, #{city}, #{state}, #{zip}")
   ship_to = batch.single_order_form.ship_to
   ship_to.address formatted_address
-  sleep 2
   ship_to.phone phone
   ship_to.email email
-  ship_to.hide
-  ship_to.expand
-  ship_to.hide
 end
 
 When /^Set single-order form Phone to (.*)$/ do |phone|

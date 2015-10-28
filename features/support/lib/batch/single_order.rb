@@ -6,7 +6,6 @@ module Batch
       10.times {
         begin
           item_label.safe_click
-          item_label.safe_double_click
         rescue
           #ignore
         end
@@ -53,11 +52,9 @@ module Batch
       text_box.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
       text_box.set address
       country_drop_down.drop_down.safe_click
-      click_form
       country_drop_down.drop_down.safe_click
       click_form
       country_drop_down.drop_down.safe_click
-      click_form
       hide
     end
 
@@ -71,9 +68,8 @@ module Batch
     end
 
     def email email
-      click_form
-      text_box = Textbox.new @browser.text_field :name => 'Email'
       expand
+      text_box = Textbox.new @browser.text_field :name => 'Email'
       data_qtip_field = (@browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]")[0]
       text_box.data_qtip_field data_qtip_field, "data-errorqtip"
       text_box.set email
@@ -82,9 +78,8 @@ module Batch
     end
 
     def phone phone
-      click_form
-      text_box = Textbox.new @browser.text_field :name => 'Phone'
       expand
+      text_box = Textbox.new @browser.text_field :name => 'Phone'
       text_box.set phone
       click_form
       hide
