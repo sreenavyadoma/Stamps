@@ -49,11 +49,9 @@ module Batch
       text_box = Textbox.new @browser.textarea :name => 'FreeFormAddress'
       text_box.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
 
-      50.times{
+      75.times{
         text_box.set address
-        sleep 1
         text_box.send_keys :enter
-        sleep 1
         text_box.send_keys address
         sleep 1
         country_drop_down.drop_down.safe_click
