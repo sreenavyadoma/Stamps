@@ -11,6 +11,7 @@ When /^Set single-order form Ship-To address to (.*)$/ do |address|
   ship_to.address formatted_address
   ship_to.phone test_helper.random_phone
   ship_to.email test_helper.random_email
+  ship_to.hide
 end
 
 And /^Set single-order form Ship-To to ambiguous address$/ do |table|
@@ -45,6 +46,7 @@ And /^Set single-order form Ship-To address to$/ do |table|
   ship_to.address formatted_address
   ship_to.phone phone
   ship_to.email email
+  ship_to.hide
 end
 
 When /^Set single-order form Phone to (.*)$/ do |phone|

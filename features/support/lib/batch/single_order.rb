@@ -61,7 +61,7 @@ module Batch
         country_drop_down.drop_down.safe_click
         break if less.present?
       }
-      hide
+      #hide
     end
 
     def ambiguous_address
@@ -80,7 +80,7 @@ module Batch
       text_box.data_qtip_field data_qtip_field, "data-errorqtip"
       text_box.set email
       click_form
-      hide
+      #hide
     end
 
     def phone phone
@@ -88,7 +88,7 @@ module Batch
       text_box = Textbox.new @browser.text_field :name => 'Phone'
       text_box.set phone
       click_form
-      hide
+      #hide
     end
   end
 
