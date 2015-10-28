@@ -33,7 +33,7 @@ module Batch
 
     def expand
       click_form
-      ship_to_dd = Link.new @browser.link :css => "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)"
+      ship_to_dd = Link.new @browser.span :css => "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)"
 
       5.times {
         ship_to_dd.safe_click
@@ -54,6 +54,7 @@ module Batch
       country_drop_down.drop_down.safe_click
       country_drop_down.drop_down.safe_click
       click_form
+      country_drop_down.drop_down.safe_click
       country_drop_down.drop_down.safe_click
       hide
     end
