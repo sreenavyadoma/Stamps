@@ -19,16 +19,13 @@ module Batch
       @international_shipping ||= InternationalShipping.new @browser
     end
 
+    def less_link
+      Link.new (@browser.spans :text => "Less").first
+    end
+
     def hide
       click_form
-      less_button1 = Button.new (@browser.spans :text => "Less").first
-      less_button2 = Button.new (@browser.spans :text => "Less").last
-      if less_button1.present?
-        less_button1.click_while_present
-      end
-      if less_button2.present?
-        less_button2.click_while_present
-      end
+      less_link.click_while_present
     end
 
     def expand
@@ -47,15 +44,25 @@ module Batch
     end
 
     def address address
+      less = less_link
       country_drop_down = country
       text_box = Textbox.new @browser.textarea :name => 'FreeFormAddress'
       text_box.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
-      text_box.set address
-      country_drop_down.drop_down.safe_click
-      country_drop_down.drop_down.safe_click
-      click_form
-      country_drop_down.drop_down.safe_click
-      country_drop_down.drop_down.safe_click
+
+      50.times{
+        text_box.set address
+        sleep 1
+        text_box.send_keys :enter
+        sleep 1
+        text_box.send_keys address
+        sleep 1
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        click_form
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        break if less.present?
+      }
       hide
     end
 
