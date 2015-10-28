@@ -34,7 +34,7 @@ module Batch
 
     def expand
       click_form
-      ship_to_dd = Link.new @browser.link :css => "div[id=shiptoview-addressCollapsed-targetEl]>a"
+      ship_to_dd = Link.new @browser.link :css => "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)"
 
       5.times {
         ship_to_dd.safe_click
@@ -48,25 +48,15 @@ module Batch
     end
 
     def address address
-      click_form
-      expand
-      click_form
+      country_drop_down = country
       text_box = Textbox.new @browser.textarea :name => 'FreeFormAddress'
       text_box.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
       text_box.set address
+      country_drop_down.drop_down.safe_click
       click_form
+      country_drop_down.drop_down.safe_click
       click_form
-      text_box.set address
-      click_form
-      click_form
-      text_box.set address
-      click_form
-      click_form
-      click_form
-      click_form
-      click_form
-      click_form
-      click_form
+      country_drop_down.drop_down.safe_click
       click_form
       hide
     end
