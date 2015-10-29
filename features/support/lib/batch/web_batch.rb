@@ -27,6 +27,10 @@ module Batch
     end
 =end
 
+    def filter
+      FilterPanel.new @browser
+    end
+
     def awaiting_shipment
       #todo-elie here are your steps;
       Filters.new(@browser).filter "Awaiting Shipment"
