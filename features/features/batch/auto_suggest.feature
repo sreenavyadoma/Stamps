@@ -111,7 +111,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     When I Add a new order
 
-    Then Set Ship-To country to Cuba
+    Then Set single-order Ship-To country to Cuba
 
     #Matching first name
 

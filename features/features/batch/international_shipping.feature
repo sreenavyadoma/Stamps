@@ -328,7 +328,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   Scenario: Cuba - Internal Transaction # Required
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to Cuba
+    Then Set single-order Ship-To country to Cuba
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
@@ -368,7 +368,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   Scenario: North Korea - Internal Transaction # Required
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to Democratic People's Republic of (North) Korea
+    Then Set single-order Ship-To country to Democratic People's Republic of (North) Korea
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea    | random  | random  |
@@ -448,7 +448,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   Scenario: Domestic FPO Address
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |

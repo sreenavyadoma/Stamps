@@ -1,5 +1,566 @@
 module Batch
 
+  class OrderDetails < BatchObject
+    def click_form
+      item_label = Label.new @browser.label :text => 'Item:'
+      10.times {
+        begin
+          item_label.safe_click
+        rescue
+          #ignore
+        end
+      }
+    end
+  end
+
+  class ShipToAddress < OrderDetails
+
+    def international_address
+      @international_shipping ||= InternationalShipping.new @browser
+    end
+
+    def less_link
+      Link.new (@browser.spans :text => "Less").first
+    end
+
+    def hide
+      click_form
+      less_link.click_while_present
+    end
+
+    def expand
+      click_form
+      ship_to_dd = Link.new @browser.span :css => "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)"
+
+      5.times {
+        ship_to_dd.safe_click
+        break unless ship_to_dd.present?
+      }
+    end
+
+
+    def country
+      ShipToCountry.new @browser
+    end
+
+    def address address
+      less = less_link
+      country_drop_down = country
+      text_box = Textbox.new @browser.textarea :name => 'FreeFormAddress'
+      text_box.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
+
+      75.times{
+        text_box.set address
+        text_box.send_keys :enter
+        text_box.send_keys address
+        sleep 1
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        click_form
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        break if less.present?
+      }
+      #hide
+    end
+
+    def ambiguous_address
+      suggested_address_corrections.safe_click
+      ExactAddressNotFound.new @browser
+    end
+
+    def suggested_address_corrections
+      Link.new @browser.span(:text => "View Suggested Address Corrections")
+    end
+
+    def email email
+      expand
+      text_box = Textbox.new @browser.text_field :name => 'Email'
+      data_qtip_field = (@browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]")[0]
+      text_box.data_qtip_field data_qtip_field, "data-errorqtip"
+      text_box.set email
+      click_form
+      #hide
+    end
+
+    def phone phone
+      expand
+      text_box = Textbox.new @browser.text_field :name => 'Phone'
+      text_box.set phone
+      click_form
+      #hide
+    end
+  end
+
+  class ManageShippingAddresses < BatchObject
+    public
+
+    def name(row)
+      sleep(1)
+      grid_cell_text row, 1
+    end
+
+    def company(row)
+      sleep(1)
+      grid_cell_text row, 2
+    end
+
+    def city(row)
+      sleep(1)
+      grid_cell_text row, 3
+    end
+
+    def state(row)
+      sleep(1)
+      grid_cell_text row, 4
+    end
+
+    def locate_address(name, company, city)
+      rows = shipping_address_count
+      1.upto rows do |row|
+        browser_helper.click window_title
+        grid_name = name row
+        grid_company = company row
+        grid_city = city row
+        grid_state = state row
+        if (grid_name.casecmp(name)==0) && (grid_company.casecmp(company)==0) && (grid_city.casecmp(city)==0)
+          log "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
+          return row
+        else
+          log "No match - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
+        end
+      end
+      0
+    end
+
+    def present?
+      browser_helper.present?  add_button
+    end
+
+    def click_delete_button
+      begin
+        browser_helper.click(delete_button, "Delete") if browser_helper.present?  delete_button
+        browser_helper.click window_title, 'window_title'
+      rescue
+        #ignore
+      end
+    end
+
+    def delete *args
+      case args.length
+        when 1
+          address = args[0]
+          if address.is_a? Hash
+            delete_row(locate_address(address["name"], address["company"], address["city"]))
+          else
+            raise "Address format is not yet supported for this delete call."
+          end
+
+        else
+          raise "Parameter Exception: Paramter not supported."
+      end
+    end
+
+    def delete_row(number)
+      @delete_shipping_address = DeleteShippingAddress.new(@browser)
+      3.times {
+        select_row number
+        click_delete_button
+        break if @delete_shipping_address.present?
+      }
+      @delete_shipping_address.delete
+      @delete_shipping_address.close if @delete_shipping_address.present?
+      self
+    end
+
+    def add *args
+      add_shipping_address_window
+      case args.length
+        when 0
+          AddShippingAdress.new(@browser)
+        when 1
+          @shipping_address_form = AddShippingAdress.new(@browser)
+          address = args[0]
+          case address
+            when Hash
+              @shipping_address_form.shipping_address = address
+            else
+              raise "Illegal Ship-to argument"
+          end
+        else
+          raise "add_address:  Illegal number of arguments #{args.length}"
+      end
+    end
+
+    def add_shipping_address_window
+      @shipping_address_form = AddShippingAdress.new @browser
+      5.times {
+        begin
+          break if @shipping_address_form.present?
+          browser_helper.click add_button, "add_button"
+          add_button.wait_until
+        rescue
+          #ignore
+        end
+      }
+    end
+
+    def edit_address(name, company, city, new_address_details)
+      row_num = locate_address(name, company, city)
+      if row_num > 0
+        select_row row_num
+        self.edit new_address_details
+      end
+      #@test_status = locate_address(new_address_details[:name], new_address_details[:company], new_address_details[:city])
+      close_window
+      self
+    end
+
+    def address_located? * args #name, company, city
+      case args.length
+        when 1
+          if args[0].is_a? Hash
+            address_hash = args[0]
+            name = address_hash["name"]
+            company = address_hash["company"]
+            city = address_hash["city"]
+          else
+            raise "Wrong number of arguments for locate_address" unless args.length == 3
+          end
+        when 3
+          name = args[0]
+          company = args[1]
+          city = args[2]
+        else
+          raise "Wrong number of arguments for locate_address" unless args.length == 3
+      end
+      locate_address(name, company, city) > 0
+    end
+
+    def edit(*args)
+      edit_button.when_present.click
+      case args.length
+        when 0
+          AddShippingAdress.new(@browser)
+        when 1
+          AddShippingAdress.new(@browser).shipping_address = args[0]
+        else
+          raise "Illegal number of arguments."
+      end
+      self
+    end
+
+    def select_row(row_num)
+      click_row_until_selected(row_num, "class", "x-grid-item-selected")
+      browser_helper.click window_title, 'window_title'
+    end
+
+    def click_row_until_selected(row_num, attibute, attribute_value)
+      cell = grid_cell(row_num, 1)
+      5.times do
+        begin
+          browser_helper.click cell, "cell(#{row_num}, 1)"
+          #log_browser_click(cell, attibute, attribute_value)
+          break if row_checked? row_num
+        rescue
+          #ignore
+        end
+      end
+    end
+
+    def deleted?
+      @deleted
+    end
+
+    def delete_all
+      begin
+        count = shipping_address_count
+        if count > 1
+          for row in 1..(count)
+            browser_helper.click window_title, 'window_title'
+            delete_row 1
+            log "Row #{row} :: Deleting row 1..."
+            break if shipping_address_count == 1
+          end
+        end
+      rescue
+        #
+      end
+      @deleted = shipping_address_count == 1
+      self
+    end
+
+    def close_window
+      begin
+        10.times{
+          sleep(1)
+          break unless browser_helper.present? close_button
+          browser_helper.click close_button, "Close"
+        }
+      rescue
+        #ignore
+      end
+    end
+
+    def wait_until_present
+      add_button.wait_until_present
+    end
+
+    def shipping_address_count
+      wait_until_present
+      rows = @browser.trs(:css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
+      log "Manage Shipping Address:: row count = #{rows.length.to_i}"
+      rows.length.to_i
+    end
+
+    private
+    def window_title
+      @browser.div :css => 'div[class*=x-window-header-title-default]>div'
+    end
+
+    def grid_cell(row, column)
+      @browser.td :css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})"
+    end
+
+    def grid_cell_text(row, column)
+      browser_helper.text grid_cell(row, column), "grid.row#{row}.column#{column})"
+    end
+
+    def close_button
+      @browser.image :css => "img[class*='x-tool-close']"
+    end
+
+    def row_checked?(row)
+      field = @browser.table :css => "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
+      value = browser_helper.attribute_value field, "class"
+      checked = value.include? "selected"
+      log "Row #{row} selected? #{checked}"
+      checked
+    end
+
+    def add_button
+      @browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"
+    end
+
+    def edit_button
+      @browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
+    end
+
+
+    def delete_button
+      @browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
+    end
+
+  end
+
+  class AddShippingAdress < BatchObject
+    public
+    def shipping_address=(table)
+      self.origin_zip = table["ship_from_zip"]
+      self.name = table["name"]
+      self.company = table["company"]
+      self.street_address1 = table["street_address"]
+      self.street_address2 = table["street_address2"]
+      self.city = table["city"]
+      self.state = table["state"]
+      self.zip = table["zip"]
+      self.phone = table["phone"]
+      self.save
+    end
+
+    def origin_zip=(zip)
+      browser_helper.set origin_zip_field, zip, "origin_zip"
+    end
+
+    def origin_zip
+      browser_helper.text origin_zip_field
+    end
+
+    def name=(name)
+      browser_helper.set name_field, name, "name_field"
+    end
+
+    def company=(company)
+      browser_helper.set company_field, company, "company_field"
+    end
+
+    def street_address1=(street)
+      browser_helper.set street_address1_field, street, "street_address1_field"
+    end
+
+    def street_address2=(street)
+      browser_helper.set street_address2_field, street, "street_address2_field"
+    end
+
+    def state_dd_button
+      @browser.div :css => "div[id^=statecombobox-][id$=-trigger-picker]"
+    end
+
+    def city=(city)
+      browser_helper.set city_text_field, city, "state_field"
+    end
+
+    def state=(state)
+      browser_helper.drop_down @browser, state_dd_button, :li, state_field, state
+    end
+
+    def zip=(code)
+      browser_helper.set zip_field, code, "zip_field"
+    end
+
+    def phone=(number)
+      browser_helper.set phone_field, number, "phone_field"
+    end
+
+    def save
+      5.times{
+        begin
+          browser_helper.click save_button, "save_button"
+          save_button.wait_while_present
+          break unless browser_helper.present? save_button
+        rescue
+          #ignore
+        end
+      }
+    end
+
+    def present?
+      save_button.present?
+    end
+
+    private
+    def origin_zip_field
+      @browser.text_field :name => 'OriginZip'
+    end
+
+    def name_field
+      text_fields = @browser.text_fields :name => 'FullName'
+      text_fields.last
+    end
+
+    def company_field
+      text_fields = @browser.text_fields :name => 'Company'
+      text_fields.last
+    end
+
+    def street_address1_field
+      @browser.text_field :name => 'Street1'
+    end
+
+    def street_address2_field
+      @browser.text_field :name => 'Street2'
+    end
+
+    def city_text_field
+      text_fields = @browser.text_fields :name => 'City'
+      text_fields.last
+    end
+
+    def state_field
+      field = @browser.text_field :name => 'State'
+      present = browser_helper.present? field
+      field
+    end
+
+    def zip_field
+      @browser.text_field :name => 'Zip'
+    end
+
+    def phone_field
+      (@browser.text_fields :css => "input[name=Phone]").last
+    end
+
+    def save_button
+      @browser.span :text => 'Save'
+    end
+
+  end
+
+  class DeleteShippingAddress < BatchObject
+    public
+    def delete
+      5.times {
+        begin
+          log "Delete Shipping Address :: #{message_field.text}"
+          browser_helper.click delete_button, 'Delete'
+        rescue
+          #ignore
+        end
+        break unless present?
+      }
+    end
+
+    def present?
+      browser_helper.present?  window_title
+    end
+
+    def close
+      field = @browser.elements(:css => 'img[class$=close]').last
+      present = field.present?
+      field.click if present
+    end
+
+    private
+    def window_title
+      @browser.div :text => "Delete Shipping Address"
+    end
+    def message_field
+      @browser.div :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
+    end
+
+    def delete_button
+      field = @browser.elements(:text => 'Delete').last
+      present = field.present?
+      field
+    end
+  end
+
+  class ExactAddressNotFound < BatchObject
+
+    private
+    def exact_address_not_found_field
+      @browser.div :text => 'Exact Address Not Found'
+    end
+
+    public
+    def present?
+      begin
+        exact_address_not_found_field.wait_until_present
+      rescue
+        #ignore
+      end
+      browser_helper.present? exact_address_not_found_field
+    end
+
+    def row=(number=0)
+      row = number.to_i<=0?0:number.to_i-1
+      checkbox_field = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
+
+      checkbox = Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
+      checkbox.check
+
+      accept_button = Button.new @browser.span :text => "Accept"
+      accept_button.click_while_present
+    end
+
+    def set(partial_address_hash)
+      single_order_form = SingleOrderForm.new(@browser)
+      single_order_form.validate_address_link
+      #single_order_form.expand
+      single_order_form.ship_to.set BatchHelper.instance.format_address(partial_address_hash)
+      5.times {
+        begin
+          item_label.click
+          break if (browser_helper.present?  exact_address_not_found_field) || (browser_helper.present?  single_order_form.validate_address_link)
+        rescue
+          #ignore
+        end
+      }
+      #single_order_form.hide_ship_to
+      self
+    end
+  end
+
   class ViewRestrictions < BatchObject
     def browser_ok_button
       Button.new @browser.span :text => "OK"
@@ -116,24 +677,11 @@ module Batch
     end
   end
 
-  class OrderDetails < BatchObject
-    def click_form
-      item_label = Label.new @browser.label :text => 'Item:'
-      10.times {
-        begin
-          item_label.safe_click
-        rescue
-          #ignore
-        end
-      }
-    end
-  end
-
   class Tracking < OrderDetails
 
     private
 
-    def textbox
+    def text_box
       Textbox.new @browser.text_field :name => 'Tracking'
     end
 
@@ -144,11 +692,11 @@ module Batch
     public
 
     def text
-      textbox.text
+      text_box.text
     end
 
     def select selection
-      box = textbox
+      box = text_box
       button = drop_down
       selection_label = Label.new @browser.td :text => selection
       5.times {
@@ -181,7 +729,7 @@ module Batch
       }
     end
 
-    def data_qtip selection
+    def tooltip selection
       button = drop_down
       selection_label = @browser.td :text => selection
       5.times {
@@ -204,7 +752,7 @@ module Batch
 
     private
 
-    def textbox
+    def text_box
       Textbox.new @browser.text_field :css => "input[name^=servicedroplist]"
     end
 
@@ -212,89 +760,186 @@ module Batch
       Button.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
     end
 
-    def field selection
-      @browser.tr :css => "tr[data-qtip*='#{selection}']"
-    end
-
-    def selection_field selection
-      field(selection).tds[1]
-    end
-
-    def selection_cost_field selection
-      field(selection).tds[2]
-    end
-
     public
 
     def text
-      textbox.text
+      text_box.text
     end
 
     def select selection
-      box = textbox
+      log "Select Service #{selection}"
+      box = text_box
       button = drop_down
-      button.safe_click
-      button.safe_click
-      button.safe_click
-      selection_label = Label.new(selection_field(selection))
-      5.times {
+      selection_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
+      10.times {
         begin
           button.safe_click unless selection_label.present?
           selection_label.safe_click
           click_form
-          break if box.text.include? selection
+          selected_service = box.text
+          log "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
+          break if selected_service.include? selection
         rescue
           #ignore
         end
       }
+      log "#{selection} service selected."
       selection_label
     end
 
     def cost selection
       button = drop_down
-      button.safe_click
-      button.safe_click
-      button.safe_click
-      cost_label = Label.new(selection_cost_field(selection))
+      cost_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(3)"
       10.times {
         begin
+          button.safe_click unless cost_label.present?
           if cost_label.present?
-            selection_cost = test_helper.remove_dollar_sign cost_label.text
-            log "#{selection_cost}"
-            return selection_cost
-          else
-            button.safe_click
+            service_cost = test_helper.remove_dollar_sign cost_label.text
+            log "Service Cost for \"#{selection}\" is #{service_cost}"
+            return service_cost
           end
         rescue
           #ignore
         end
       }
+      click_form
     end
 
-    def data_qtip selection
+    def tooltip selection
       button = drop_down
-      selection_label = Label.new field selection
+      selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
       5.times {
         begin
           button.safe_click unless selection_label.present?
           if selection_label.present?
-            qtip = selection_label.attribute_value "data-qtip"
-            log "#{qtip}"
-            return qtip
+            tooltip = selection_label.attribute_value "data-qtip"
+            log "Service Tooltip for \"#{selection}\" is #{tooltip}"
+            return tooltip
           end
         rescue
           #ignore
         end
       }
+      click_form
     end
 
   end
 
+  class ShipToCountry < OrderDetails
+
+    def drop_down
+      divs = @browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
+      domestic = Button.new divs.first
+      international = Button.new divs.last
+
+      if domestic.present?
+        domestic
+      elsif international.present?
+        international
+      else
+        raise "Unable to located Ship-To drop-down button."
+      end
+    end
+
+    def text_box
+      Textbox.new (@browser.text_fields :name => "CountryCode")[1]
+    end
+
+    def select country
+      log "Select Country #{country}"
+
+      dd_button = drop_down
+      box = text_box
+      dd_button.safe_click
+      selection_label = Label.new @browser.li(:text => /#{country}/)
+      10.times {
+        begin
+          dd_button.safe_click unless selection_label.present?
+          selection_label.safe_click
+          click_form
+          selected_country_text = box.text
+          log "Selected Country  #{selected_country_text} - #{(selected_country_text.include? country)?"#{country} selected": "#{country} not selected"}"
+          break if selected_country_text.include? country
+        rescue
+          #ignore
+        end
+      }
+      log "Ship-To country now set to #{country}"
+      InternationalShipping.new @browser
+    end
+  end
+
+  class ShipFromAddress < OrderDetails
+
+    def ship_from_dropdown
+      @browser.div :css => "div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]"
+    end
+
+    def manage_ship_from_address_field
+      @browser.div :text => 'Manage Shipping Addresses...'
+    end
+
+    def ship_from_selection selection
+      @browser.div :text => selection
+    end
+
+    def manage_shipping_address
+      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+    end
+
+    def manage_shipping_addresses
+      self.ship_from "Manage Shipping Addresses..."
+    end
+
+    def select selection
+      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+
+      return @manage_shipping_adddress if @manage_shipping_adddress.present?
+
+      ship_from_default_selection_field = @browser.div :css => "div[data-recordindex='0']"
+      ship_from_dropdown = Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
+      ship_from_textbox = Textbox.new @browser.text_field :css => "input[name^=shipfromdroplist]"
+
+      if selection.downcase == "default"
+        ship_from_selection_field = ship_from_default_selection_field
+      elsif selection.downcase.include? "manage shipping"
+        ship_from_selection_field = @browser.div :text => "Manage Shipping Addresses..."
+      else
+        ship_from_selection_field = @browser.div :text => "#{selection}"
+      end
+
+      ship_from_selection_label = Label.new ship_from_selection_field
+
+      if selection.downcase.include? "manage shipping"
+        10.times{
+          begin
+            ship_from_dropdown.safe_click unless ship_from_selection_label.present?
+            ship_from_selection_label.safe_click
+            return @manage_shipping_adddress if @manage_shipping_adddress.present?
+          rescue
+            #ignore
+          end
+          click_form
+        }
+      else
+        10.times{
+          ship_from_dropdown.safe_click unless ship_from_selection_label.present?
+          ship_from_selection_label.safe_click
+          break if ship_from_textbox.text.length > 3
+        }
+      end
+    end
+
+  end
 
   #
   #  Single Order Edit Form
   #
   class SingleOrderForm < OrderDetails
+
+    def ship_from
+      ShipFromAddress.new @browser
+    end
 
     def service
       Service.new @browser
@@ -314,10 +959,6 @@ module Batch
 
     def insurance_cost_label
       @browser.label :css => 'label[class*=insurance_cost]'
-    end
-
-    def ship_from_dropdown
-      @browser.div :css => "div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]"
     end
 
     def height_textbox
@@ -340,7 +981,7 @@ module Batch
       @browser.td :text => 'USPS Tracking'
     end
 
-    def textbox
+    def text_box
       @browser.text_field :name => 'Tracking'
     end
 
@@ -363,41 +1004,12 @@ module Batch
       @browser.divs :css => 'div[class*=sub-title]'
     end
 
-    def international
-      @international_shipping ||= InternationalShipping.new @browser
-    end
-
     def customs_form
       @customs_form ||= CustomsForm.new @browser
     end
 
     def customs
       CustomsFields.new @browser
-    end
-
-    def ship_to_country
-      dd_divs = @browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
-      domestic_drop_down_btn = dd_divs.first
-      international_drop_down_btn = dd_divs.last
-
-      if browser_helper.present? domestic_drop_down_btn
-        dd = domestic_drop_down_btn
-      elsif browser_helper.present? international_drop_down_btn
-        dd = international_drop_down_btn
-      end
-
-      raise "single-order form Country drop-down is not present.  Check your CSS locator." unless browser_helper.present? dd
-      text_fields = @browser.text_fields :name => "CountryCode"
-      domestic_input = text_fields.first
-      international_input = text_fields.last
-      if browser_helper.present? domestic_input
-        input = domestic_input
-      elsif browser_helper.present? international_input
-        input = international_input
-      end
-
-      raise "single-order form Country textbox is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, dd, :li, input
     end
 
     def add_item
@@ -499,23 +1111,6 @@ module Batch
       self.oz.set data[:oz]
     end
 
-    def email
-      click_form
-      textbox = Textbox.new @browser.text_field :name => 'Email'
-      expand_ship_to
-      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
-      data_error_field = data_error_collection[0]
-      textbox.data_error_field data_error_field, "data-errorqtip"
-      textbox
-    end
-
-    def phone
-      click_form
-      textbox = Textbox.new @browser.text_field :name => 'Phone'
-      expand_ship_to
-      textbox
-    end
-
     def dimensions=(data={})
       log_hash_param data
       self.length.set data[:@length]
@@ -553,97 +1148,8 @@ module Batch
       Textbox.new @browser.text_field :name => 'Height'
     end
 
-    def less_link
-      spans = @browser.spans :text => "Less"
-      less_button0 = Button.new spans[0]
-      less_button1 = Button.new spans[1]
-
-      if less_button0.present?
-        return less_button0
-      else
-        return less_button1
-      end
-
-    end
-
-    def hide_ship_to
-      self.click_form
-      begin
-        less_link.click_while_present
-      rescue
-        #ignore
-      end
-    end
-
-    def expand_ship_to
-      ship_to_dd = Link.new @browser.link :css => "div[id=shiptoview-addressCollapsed-targetEl]>a"
-
-      5.times {
-        ship_to_dd.safe_click
-        break unless ship_to_dd.present?
-      }
-    end
-
-    def ship_to *args
-      text_area = Textbox.new @browser.textarea :name => 'FreeFormAddress'
-      case args.length
-        when 0
-          expand_ship_to
-          return text_area
-        when 1
-          expand_ship_to
-          text_area.set BatchHelper.instance.format_address(args[0])
-          if args[0].is_a? Hash
-            self.phone.set args[0]["phone"]
-            self.email.set args[0]["email"]
-          end
-          AddressNotFound.new(@browser)
-        else
-          raise "Wrong number of arguments for ship_to"
-      end
-    end
-
-    def manage_ship_from_address_field
-      @browser.div :text => 'Manage Shipping Addresses...'
-    end
-
-    def ship_from_selection selection
-      @browser.div :text => selection
-    end
-
-    def ship_from selection
-      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
-      ship_from_default_selection = Label.new @browser.div :css => "div[data-recordindex='0']"
-      ship_from_dropdown = Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
-      ship_from_textbox = Textbox.new @browser.text_field :css => "input[name^=shipfromdroplist]"
-      if selection.downcase.eql? "default"
-        5.times{
-          ship_from_dropdown.safe_click
-          ship_from_default_selection.safe_click
-          break if ship_from_textbox.text.length > 2
-        }
-        click_form
-      else
-        5.times {
-          begin
-            break if @manage_shipping_adddress.present?
-            browser_helper.click ship_from_dropdown, "ship_from_selection.[#{selection}]" unless browser_helper.present?  ship_from_selection(selection)
-            browser_helper.click ship_from_selection(selection), selection
-          rescue
-            #ignore
-          end
-          click_form
-        }
-        @manage_shipping_adddress
-      end
-    end
-
-    def manage_shipping_address
-      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
-    end
-
-    def manage_shipping_addresses
-      self.ship_from "Manage Shipping Addresses..."
+    def ship_to
+      ShipToAddress.new @browser
     end
 
     def pounds_max_value

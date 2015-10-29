@@ -52,7 +52,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | James Test | Domestic Company | 600 Front St Apt 220 | San Diego | CA | 92101-6733 | United States | 8885551212 | test@stamps.com |

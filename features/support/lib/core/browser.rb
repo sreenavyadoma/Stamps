@@ -3,6 +3,11 @@ module Stamps
     class Browser
       include Singleton
 
+      def safari?
+        "apple|osx|safari|mac".include? ENV['BROWSER'].downcase
+      end
+
+
       def chrome?
         "chrome|gc|google".include? ENV['BROWSER'].downcase
       end
@@ -293,6 +298,10 @@ module Stamps
         end
       end
 
+      def scroll_into_view browser
+        browser.execute_script('arguments[0].scrollIntoView();', @field)
+      end
+
       def send_keys special_char
         browser_helper.send_keys @field, special_char
         self
@@ -370,17 +379,21 @@ module Stamps
       end
 
       def check
-        5.times{
-          click
-          break if checked?
-        }
+        unless checked?
+          5.times{
+            click
+            break if checked?
+          }
+        end
       end
 
       def uncheck
-        5.times{
-          click
-          break unless checked?
-        }
+        if checked?
+          5.times{
+            click
+            break unless checked?
+          }
+        end
       end
 
       def checked?
@@ -424,19 +437,29 @@ module Stamps
     end
 
     class Textbox < Label
-      def data_error_field data_error_field, error_attribute
-        @data_error_field = data_error_field
-        @error_attribute = error_attribute
+      def data_qtip_field data_qtip_field, attribute_value
+        @data_qtip_field = data_qtip_field
+        @attribute_value = attribute_value
         self
       end
 
       def data_error_qtip
-        browser_helper.attribute_value @data_error_field, @error_attribute
+        browser_helper.attribute_value @data_qtip_field, @attribute_value
       end
 
       def set text
         browser_helper.set @field, text
         self
+      end
+
+      def set_until text
+        20.times{
+          set text
+          sleep 1
+          from_textbox = browser_helper.text @field
+          from_textbox == "" if from_textbox.nil?
+          break if from_textbox.include? text
+        }
       end
     end
 
@@ -669,14 +692,23 @@ module Stamps
         rescue
           #ignore
         end
-        text = field.text
-        value = field.attribute_value 'value'
+
         begin
+          text = field.text
           return text if text.size > 0
         rescue
           #ignore
         end
+
         begin
+          value = field.value
+          return value if value.size > 0
+        rescue
+          #ignore
+        end
+
+        begin
+          value = field.attribute_value 'value'
           return value if value.size > 0
         rescue
           #ignore

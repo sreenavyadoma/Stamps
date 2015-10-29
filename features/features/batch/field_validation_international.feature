@@ -7,7 +7,7 @@ Feature: International Field Validation
   Scenario: Add Missing Validation Logic for Phone and International Email
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to Australia
+    Then Set single-order Ship-To country to Australia
     Then Set International Ship-To name to ""
     Then Expect single-order form International Name data error tooltip to be "A First Name and Last Name or Company are required"
     Then Set International Ship-To company to ""

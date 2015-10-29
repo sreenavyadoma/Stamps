@@ -1,4 +1,3 @@
-
 Feature: Test Development
   Background:
     Given I am signed in as a batch shipper
@@ -6,10 +5,33 @@ Feature: Test Development
   @rob_dev1
   Scenario:
     And I Add a new order
+    Then Set single-order Ship-To country to Canada
+    Then Set single-order Ship-To country to United States
+
+    Then Set single-order form Ship-To address to random
+
+    Then Set single-order form Ship-To address to
+      | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
+      | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
+    And I Add a new order
+    Then Set Ship-To to international address
+      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
+    And I Add a new order
+    Then Set single-order form Ship-To address to random
+    And I Add a new order
+    Then Set single-order form Ship-To address to San
+    And I Add a new order
+    Then Set single-order form Ship-To address to San
+
+  Scenario:
+    And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To address to random
     Then Set single-order form Service to "Priority Mail Package"
     Then Expect single-order form Service to be "Priority Mail Package"
+    Then Expect single-order form Service Cost inline price for "Priority Mail Package" to be greater than $0.01
+    Then Expect single-order form Service Tooltip for "Priority Mail Package" to include "Priority Mail Package,Ship up to 70 lbs. using any box with pricing that varies by weight and distance,The USPS provides free packaging for Priority Mail which can be ordered from Stamps.com."
 
     Then Set single-order form Tracking to "USPS Tracking"
     Then Expect single-order form Tracking to be "USPS Tracking"

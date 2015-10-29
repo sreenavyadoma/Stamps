@@ -1,8 +1,6 @@
 
-Then /^Set Ship-To country to (.*)$/ do |country|
-  @single_order_form = batch.single_order_form
-  @single_order_form.ship_to_country.select country
-  @international_ship_to = @single_order_form.international
+Then /^Set single-order Ship-To country to (.*)$/ do |country|
+  @international_ship_to = batch.single_order_form.ship_to.country.select country
 end
 
 # random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
@@ -32,7 +30,7 @@ Given /^Set Ship-To to international address$/ do |table|
   log "International Ship-To Phone: #{phone}"
   log "International Ship-To Email: #{email}"
 
-  step "Set Ship-To country to #{country}"
+  step "Set single-order Ship-To country to #{country}"
   step "Set International Ship-To Name to \"#{name}\""
   step "Set International Ship-To Company to \"#{company}\""
   step "Set International Ship-To Address 1 to \"#{street_address_1}\""
@@ -45,8 +43,7 @@ Given /^Set Ship-To to international address$/ do |table|
 end
 
 Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
-  @single_order_form = batch.single_order_form
-  @international_ship_to = @single_order_form.international
+  @international_ship_to = batch.single_order_form.ship_to.international_address if @international_ship_to.nil?
 
   case ship_to_field.downcase
     when "name"
@@ -95,7 +92,7 @@ Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_
 end
 
 Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, value |
-  @international_ship_to = @single_order_form.international
+  @international_ship_to = batch.single_order_form.ship_to.international_address if @international_ship_to.nil?
 
   case ship_to_field.downcase
 
@@ -168,6 +165,8 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
 end
 
 Given /^Expect single-order form International Address fields are visible$/ do
+  @international_ship_to = batch.single_order_form.ship_to.international_address if @international_ship_to.nil?
+
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true
   @international_ship_to.address_1.present?.should be true
@@ -180,12 +179,14 @@ Given /^Expect single-order form International Address fields are visible$/ do
 end
 
 Then /^Expect single-order form Domestic Ship-To fields are hidden$/ do
+  @single_order_form = batch.single_order_form
   @single_order_form.ship_to.present?.should be false
   @single_order_form.email.present?.should be false
   @single_order_form.phone.present?.should be false
 end
 
 Then /^Expect single-order form Customs (.+) button is (.+)/ do |button, expectation|
+  @single_order_form = batch.single_order_form
   case button.downcase
     when "restrictions"
       case expectation.downcase
@@ -287,8 +288,8 @@ Given /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit 
   item.lbs.set lbs
   item.oz.set oz
   #begin
-  sleep 2
-  item.origin_dd.select origin_country
+  #sleep 2
+  item.origin_country.select origin_country
   #end unless o#rigin.downcase.include? "states"
   #item.origin_country.set origin_country
   item.hs_tariff.set tariff

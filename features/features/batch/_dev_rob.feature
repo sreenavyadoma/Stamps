@@ -3,7 +3,7 @@ Feature: Test Development
   Scenario: Domestic FPO Address
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set Ship-To country to United States
+    Then Set single-order Ship-To country to United States
     Then Set single-order form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
