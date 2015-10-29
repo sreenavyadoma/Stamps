@@ -10,6 +10,10 @@ module Batch
     include Singleton
     include DataMagic
 
+    def test_helper
+      TestHelper.instance
+    end
+
     def rand_login_credentials
       login_credentials = data_for(:login_credentials, {})[ENV['URL']]
       credentials = login_credentials.values
@@ -17,44 +21,55 @@ module Batch
     end
 
     def format_address_arr address_array
-      address = ""
+      formatted_address = ""
+
       if address_array.is_a?(Array)
         address_array.each_with_index { |element, index|
-          if index==address_array.size-1
-            address = address + element.to_s.strip
-          else
-            address = address + element.to_s.strip + "\n"
+          if index==address_array.size-1 #if this is the last item in the string, don't append a new line
+            formatted_address = formatted_address + element.to_s.strip
+          else #(param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]
+            formatted_address = formatted_address + ((element.to_s.strip.downcase.include? "random") ? test_helper.random_name : element.to_s.strip) + "\n"
           end
         }
       else
         raise "Unsupported address format."
       end
-      log address
-      address
+      log "Formatted Shipping Address:  \n#{formatted_address}"
+      formatted_address
     end
 
     def format_address address
       if address.is_a?(Hash)
-        name = address['name'].to_s.strip
-        log "name: #{name}"
-        company = address['company'].to_s.strip
-        log "company: #{company}"
-        street_address = address['street_address'].to_s.strip
-        log "street_address: #{street_address}"
-        city = address['city'].to_s.strip
-        log "city: #{city}"
-        state = address['state'].to_s.strip
-        log "state: #{state}"
-        zip = address['zip'].to_s.strip
-        log "zip: #{zip}"
-        formatted = "#{name}\n#{company}\n#{street_address}\n #{city}, #{state}. #{zip}"
-        log "Formatted Address:  #{formatted}"
-        formatted
+        name = (address["name"].downcase.include? "random") ? test_helper.random_name : address["name"]
+        company = (address["company"].downcase.include? "random") ? test_helper.random_company_name : address["company"]
+        street_address = address["street_address"]
+        city = address["city"]
+        state = address["state"]
+        zip = address["zip"]
+        phone_num = address["phone"]
+        phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : address["phone"]
+        email_addy = address["email"]
+        email = (email_addy.downcase.include? "random") ? test_helper.random_email : address["email"]
+
+        log "Ship-To Name: #{name}"
+        log "Ship-To Company: #{company}"
+        log "Ship-To Address: #{street_address}"
+        log "Ship-To City: #{city}"
+        log "Ship-To State: #{state}"
+        log "Ship-To Zip: #{zip}"
+        log "Ship-To Phone: #{phone}"
+        log "Ship-To Email: #{email}"
+
+        formatted_address = "#{name},#{company},#{street_address},#{city} #{state} #{zip}"
+
+        log "Formatted Address: #{formatted_address}"
+        formatted_address
       elsif address.is_a?(Array)
         format_address_arr(address)
       elsif address.include?(',')
         format_address_arr address.split(/,/)
       elsif address.is_a?(String)
+        log "Address #{address} was not formatted."
         address
       else
         raise "Unsupported address format."

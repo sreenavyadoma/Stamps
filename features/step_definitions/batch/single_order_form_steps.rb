@@ -2,50 +2,28 @@ And /^Set single-order form Ship-From to (\w+)$/ do |value|
   batch.single_order_form.ship_from.select value
 end
 
+And /^Set single-order form Ship-To to ambiguous address$/ do |table|
+  step "Set single-order form Ship-To address to #{table}"
+end
+
+And /^Set single-order form Ship-To address to$/ do |table|
+  step "Set single-order form Ship-To address to #{BatchHelper.instance.format_address table.hashes.first}"
+end
+
 When /^Set single-order form Ship-To address to (.*)$/ do |address|
   log "Set single-order form Ship-To address to \"#{address}\""
-  formatted_address = BatchHelper.instance.format_address(random_ship_to(address))
+
+  if address.downcase.include? "random"
+    address = BatchHelper.instance.format_address(test_helper.random_ship_to)
+  end
+
+  formatted_address = BatchHelper.instance.format_address random_ship_to address
 
   log "Set single-order form Ship-To address to \"#{formatted_address}\""
   ship_to = batch.single_order_form.ship_to
   ship_to.address formatted_address
   ship_to.phone test_helper.random_phone
   ship_to.email test_helper.random_email
-  ship_to.hide
-end
-
-And /^Set single-order form Ship-To to ambiguous address$/ do |table|
-  step "Set single-order form Ship-To address to #{table}"
-end
-
-And /^Set single-order form Ship-To address to$/ do |table|
-  param_hash = table.hashes.first
-
-  name = (param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]
-  company = (param_hash["company"].downcase.include? "random") ? test_helper.random_company_name : param_hash["company"]
-  street_address = param_hash["street_address"]
-  city = param_hash["city"]
-  state = param_hash["state"]
-  zip = param_hash["zip"]
-  phone_num = param_hash["phone"]
-  phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash["phone"]
-  email_addy = param_hash["email"]
-  email = (email_addy.downcase.include? "random") ? test_helper.random_email : param_hash["email"]
-
-  log "Ship-To Name: #{name}"
-  log "Ship-To Company: #{company}"
-  log "Ship-To Address: #{street_address}"
-  log "Ship-To City: #{city}"
-  log "Ship-To State: #{state}"
-  log "Ship-To Zip: #{zip}"
-  log "Ship-To Phone: #{phone}"
-  log "Ship-To Email: #{email}"
-
-  formatted_address = BatchHelper.instance.format_address("#{name}, #{company}, #{street_address}, #{city}, #{state}, #{zip}")
-  ship_to = batch.single_order_form.ship_to
-  ship_to.address formatted_address
-  ship_to.phone phone
-  ship_to.email email
   ship_to.hide
 end
 

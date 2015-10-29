@@ -5,7 +5,7 @@ module Batch
   class Grid < BatchObject
     public
     GRID_COLUMNS ||= {
-        :check_all => " ",
+        :check => " ",
         :ship_cost => "Ship Cost",
         :age => "Age",
         :order_id => "Order ID",
@@ -133,7 +133,6 @@ module Batch
     def row_div number
       raise "row_div:  number can't be nil" if number.nil?
       div = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]"
-      present = browser_helper.present? div
       raise("Order Grid Row number #{number} is not present")unless browser_helper.present? div
       div
     end
@@ -142,7 +141,12 @@ module Batch
       check_row(row_number order_id)
     end
 
+    def scroll_into_view column, row
+      grid_field column, row
+    end
+
     def uncheck_row number
+      scroll_into_view GRID_COLUMNS[:check], 0
       if size > 0
         checkbox_field = row_div number
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
@@ -155,6 +159,7 @@ module Batch
     end
 
     def check_row number
+      scroll_into_view GRID_COLUMNS[:check], 0
       if size > 0
         checkbox_field = row_div number
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
