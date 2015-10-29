@@ -482,7 +482,6 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}"
       test_helper.remove_dollar_sign grid_text(:insured_value, row)
     end
-
   end
 
 end
