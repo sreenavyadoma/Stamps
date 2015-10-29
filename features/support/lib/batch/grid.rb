@@ -114,6 +114,7 @@ module Batch
     end
 
     def order_id row
+      scroll_into_view GRID_COLUMNS[:order_id], 0
       8.times{
         break if size > 0
         sleep 1
@@ -142,7 +143,8 @@ module Batch
     end
 
     def scroll_into_view column, row
-      grid_field column, row
+      field = grid_field column, row
+      log "Column #{column} is #{(field.present?)?"scrolled into view.":"not visible"}"
     end
 
     def uncheck_row number
@@ -172,13 +174,15 @@ module Batch
     end
 
     def row_checked? number
-        checkbox_field = row_div number
-        verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-        checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
-        checkbox.checked?
+      scroll_into_view GRID_COLUMNS[:check], 0
+      checkbox_field = row_div number
+      verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
+      checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+      checkbox.checked?
     end
 
     def select_all_checkbox
+      scroll_into_view GRID_COLUMNS[:check], 0
       spans = @browser.spans :css => "span[class=x-column-header-text]"
       checkbox_field = spans.first
       check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
@@ -188,14 +192,17 @@ module Batch
     end
 
     def select_all
+      scroll_into_view GRID_COLUMNS[:check], 0
       select_all_checkbox.check
     end
 
     def unselect_all
+      scroll_into_view GRID_COLUMNS[:check], 0
       select_all_checkbox.uncheck
     end
 
     def order_checked?(order_number)
+      scroll_into_view GRID_COLUMNS[:check], 0
       row_checked? row_number order_number
     end
 
@@ -253,6 +260,7 @@ module Batch
     end
 
     def check_rows rows
+      scroll_into_view GRID_COLUMNS[:check], 0
       log "Restoring #{} checked orders..."
       begin
         rows.each do |row|
@@ -273,6 +281,7 @@ module Batch
     end
 
     def ship_cost order_id
+      scroll_into_view GRID_COLUMNS[:ship_cost], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:ship_cost, row)
@@ -280,6 +289,7 @@ module Batch
 
 
     def ship_cost_error order_id
+      scroll_into_view GRID_COLUMNS[:ship_cost], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
 
@@ -297,103 +307,119 @@ module Batch
     end
 
     def age order_id
+      scroll_into_view GRID_COLUMNS[:age], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:age, row)
     end
 
     def order_date order_id
+      scroll_into_view GRID_COLUMNS[:order_date], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:order_date, row)
     end
 
     def recipient order_id
+      scroll_into_view GRID_COLUMNS[:recipient], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:recipient, row)
     end
 
     def company order_id
+      scroll_into_view GRID_COLUMNS[:company], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:company, row)
     end
 
     def address order_id
+      scroll_into_view GRID_COLUMNS[:address], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:address, row)
     end
 
     def city order_id
+      scroll_into_view GRID_COLUMNS[:city], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:city, row)
     end
 
     def state order_id
+      scroll_into_view GRID_COLUMNS[:state], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:state, row)
     end
 
     def zip order_id
+      scroll_into_view GRID_COLUMNS[:zip], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:zip, row)
     end
 
-
     def country order_id
+      scroll_into_view GRID_COLUMNS[:country], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:country, row)
     end
 
     def phone order_id
+      scroll_into_view GRID_COLUMNS[:phone], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:phone, row)
     end
 
     def email order_id
+      scroll_into_view GRID_COLUMNS[:email], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:email, row)
     end
 
     def qty order_id
+      scroll_into_view GRID_COLUMNS[:qty], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:qty, row)
     end
 
     def item_sku order_id
+      scroll_into_view GRID_COLUMNS[:item_sku], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:item_sku, row)
     end
 
     def item_name order_id
+      scroll_into_view GRID_COLUMNS[:item_name], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:description, row)
     end
 
     def ship_from order_id
+      scroll_into_view GRID_COLUMNS[:ship_from], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:ship_from, row)
     end
 
     def service order_id
+      scroll_into_view GRID_COLUMNS[:service], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:service, row)
     end
 
     def weight order_id
+      scroll_into_view GRID_COLUMNS[:weight], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       weight = grid_text(:weight, row)
@@ -411,40 +437,47 @@ module Batch
     end
 
     def reference_no order_id
+      scroll_into_view GRID_COLUMNS[:reference_no], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:reference_no, row)
     end
 
     def cost_code order_id
+      scroll_into_view GRID_COLUMNS[:cost_code], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:cost_code, row)
     end
 
     def order_status order_id
+      scroll_into_view GRID_COLUMNS[:order_status], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:order_status, row)
     end
 
     def ship_date order_id
+      scroll_into_view GRID_COLUMNS[:ship_date], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:ship_date, row)
     end
 
     def tracking order_id
+      scroll_into_view GRID_COLUMNS[:tracking], 0
       grid_text :tracking, row_number(order_id)
     end
 
     def order_total order_id
+      scroll_into_view GRID_COLUMNS[:order_total], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:order_total, row)
     end
 
     def insured_value order_id
+      scroll_into_view GRID_COLUMNS[:insured_value], 0
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       test_helper.remove_dollar_sign grid_text(:insured_value, row)
