@@ -4,6 +4,8 @@ module Batch
   #
   class Grid < BatchObject
     public
+    MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
     GRID_COLUMNS ||= {
         :check => " ",
         :ship_cost => "Ship Cost",
@@ -464,6 +466,190 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}"
       test_helper.remove_dollar_sign grid_text(:insured_value, row)
     end
+
+
+    def check_sorted_column(name, sort_order)   #function to verify that order column is sorted
+      id = nil
+      if name.eql? 'Order Date'
+        name = 'Age'
+      end
+
+      GRID_COLUMNS.each do |key, value|         #Iterate through hash of column names and values
+        if value.eql? name                     #If the column name text matches the column name we want to sort
+          id = key                              #Set the id variable to the key for that column
+          break
+        end
+      end
+
+      check_sort = true
+
+      case name
+        when 'Weight'
+          check_sort = compare_sorted_weight(id, sort_order)
+        when 'Item SKU'
+          check_sort = compare_sorted_items(id, sort_order)
+        when 'Item Name'
+          check_sort = compare_sorted_items(id, sort_order)
+        when 'Order Date'
+          check_sort = compare_sorted_ages(id, sort_order)
+        when 'Age'
+          check_sort = compare_sorted_ages(id, sort_order)
+        when 'Insured Value'
+          check_sort = compare_sorted_money(id, sort_order)
+        when 'Order Total'
+          check_sort = compare_sorted_money(id, sort_order)
+        else
+          if sort_order == 'ascending'                #check if sort check is for s or ascending order
+            check_sort = compare_cells(id,1)          #call function to compare first ten cells in column for ascending order
+          elsif sort_order == 'descending'
+            check_sort = compare_cells(id,-1)         #call function to compare first ten cells in column for descending order
+          end
+      end
+      check_sort
+    end
+
+    def compare_sorted_money(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
+      compare = true
+      for index in 1..5
+        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}"
+
+        no_sign_cost_1 = grid_text(id, index).gsub('$','')
+        no_sign_cost_2 = grid_text(id, index+1).gsub('$','')
+
+        cost_stripped_1 = no_sign_cost_1.gsub('.','')
+        cost_stripped_2 = no_sign_cost_2.gsub('.','')
+
+        log "COMPARING #{cost_stripped_1} and #{cost_stripped_2}"
+
+        if (cost_stripped_1 <=> cost_stripped_2) == direction       #compare text in current cell with next cell
+          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
+          break
+        end
+
+      end
+      compare
+    end
+
+    def compare_sorted_items(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
+      compare = true
+      for index in 1..5
+        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}"
+        item_1=grid_text(id, index).downcase
+        item_2=grid_text(id, index+1).downcase
+
+        if item_1.eql 'multiple'
+          item_1 = '1'
+        end
+
+        if item_2.eql 'multiple'
+          item_2 = '1'
+        end
+
+        if (item_1 <=> item_2) == direction       #compare text in current cell with next cell
+          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
+          break
+        end
+
+      end
+      compare
+    end
+
+    def compare_sorted_weight(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
+      compare = true
+      for index in 1..5
+        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}"
+
+        weight_array_1 = grid_text(id, index).split(" ")
+        weight_array_2= grid_text(id, index+1).split(" ")
+
+        pounds_1 = get_time_index(weight_array_1[0]).to_i
+        pounds_2 = get_time_index(weight_array_2[0]).to_i
+
+        ounces_1 = weight_array_1[2].to_i
+        ounces_2 = weight_array_2[2].to_i
+
+        total_ounces_1 =  pounds_1*16 + ounces_1
+        total_ounces_2 =  pounds_2*16 + ounces_2
+
+
+        if (total_ounces_1 <=> total_ounces_2) == direction       #compare text in current cell with next cell
+          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
+          break
+        end
+
+      end
+      compare
+    end
+
+    def compare_cells(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
+      compare = true
+      for index in 1..5
+        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}"
+        if (grid_text(id, index).downcase <=> grid_text(id, index+1).downcase) == direction       #compare text in current cell with next cell
+          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
+          break
+        end
+
+      end
+      compare
+    end
+
+
+    def compare_sorted_ages(id, sort_order)
+      compare = true
+      for index in 1..5
+
+        age_array_1 = grid_text(id, index).split(" ")
+        age_array_2 = grid_text(id, index+1).split(" ")
+
+        if age_array_1.eql? ''
+          age_array_1 = '1000000 days ago'
+        end
+        if age_array_2.eql? ''
+          age_array_2 = '1000000 days ago'
+        end
+
+        time_unit_1 = get_time_index(age_array_1[1])
+        time_unit_2 = get_time_index(age_array_2[1])
+
+        time_amount_1 = age_array_1[0].to_i
+        time_amount_2 = age_array_2[0].to_i
+        log "COMPARING #{time_amount_1} #{age_array_1[1]} and #{time_amount_2} #{age_array_2[1]} for #{sort_order} order"
+
+        if sort_order == 'ascending'
+          if (time_unit_1 <=> time_unit_2) == -1
+            return false
+          elsif (time_unit_1 <=> time_unit_2) == 0 && (time_amount_1 <=> time_amount_2) == -1
+            return false
+          end
+        elsif sort_order == 'descending'
+          if (time_unit_1 <=> time_unit_2) == 1
+            return false
+          elsif (time_unit_1 <=> time_unit_2) == 0 && (time_amount_1 <=> time_amount_2) == 1
+            return false
+            break
+          end
+        end
+      end
+      compare
+    end
+
+    def get_time_index(time_text)
+      TIME_UNITS_ARRAY.each_with_index do |time,index|
+        if time_text == time
+          return index
+        end
+      end
+      return 0
+    end
+
+
+    def column
+      Column.new @browser
+    end
+
+
+
   end
 
 end
