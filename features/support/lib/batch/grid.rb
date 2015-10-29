@@ -39,65 +39,53 @@ module Batch
     end
 
     def grid_text column, row
-      text = test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}")
-      log text
-      text
+      test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}")
     end
 
     def grid_field column, row
-      column_str = GRID_COLUMNS[column]
-      column_index = column_number(column_str).to_s
-      css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_index})>div"
-      log "#{column_str}, row #{row} CSS: #{css}"
-      field = @browser.div :css => css
-      log "#{column_str}, row #{row} field.present? #{browser_helper.present? field}"
-      begin
-        @browser.execute_script('arguments[0].scrollIntoView();', field)
-      rescue
-        #log "Unable to focus on #{column}, row #{row}"
-      end
-      begin
-        log "Column: #{column}, Row: #{row} = #{browser_helper.text field}"
-      rescue
-        #ignore
-      end
-      field
+      @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column).to_s})>div"
     end
 
-    def column_number name
-      if Batch.grid_columns.nil?
-        Batch.grid_columns Hash.new
-        Batch.grid_column_fields @browser.spans :css => "div[componentid^=gridcolumn]"
-        log "Number of Grid Columns is #{Batch.grid_column_fields.size}"
-        Batch.grid_column_fields.each_with_index { |field, index|
-          begin
-            @browser.execute_script('arguments[0].scrollIntoView();', field)
-            log "#{name} : Column #{index}"
-          rescue
-            #log "Unable to focus on #{column}, row #{row}}"
-          end
-          column_name = browser_helper.text field
-          log "#{column_name} is column #{index} on Order Grid."
-          Batch.grid_columns[column_name] = (index+1).to_s
-
-        }
-        log Batch.grid_columns
-      end
-      log "#{name} => #{Batch.grid_columns[name]}"
-      index = Batch.grid_columns[name]
+    def column_number column_name
       begin
-        column_field = Batch.grid_column_fields[index.to_i]
-        @browser.execute_script('arguments[0].scrollIntoView();', column_field)
-        log "Grid #{name} Column visible? #{browser_helper.present? column_field}"
-      rescue
-        #log "Failed to scroll column #{index} into view"
+        column_str = GRID_COLUMNS[column_name]
+        columns = column_fields
+        columns.each_with_index { |column_field, index|
+          column_text = browser_helper.text column_field
+          if column_text == column_str
+            return index+1
+          end
+        }
+      rescue Exception => e
+        log e
       end
-      index
+    end
+
+    def column_fields
+      @browser.spans :css => "div[componentid^=gridcolumn]"
+    end
+
+    def column_header_field column
+      column_str = GRID_COLUMNS[column]
+      columns = column_fields
+      columns.each{ |column_field|
+        column_text = browser_helper.text column_field
+        log "#{column_text} == #{column_str} ? #{column_text == column_str}"
+        if column_text.downcase == column_str.downcase
+          return column_field
+        end
+      }
+    end
+
+    def scroll_into_view column
+      field = Label.new column_header_field column
+      field.scroll_into_view @browser
+      log "Grid Column #{column} #{((field.present?)? 'scrolled into view' :'not visible')}"
     end
 
     def row_number order_id
       row = 1
-      column = column_number(GRID_COLUMNS[:order_id])
+      column = column_number(:order_id)
       css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column})>div"
       log "Order ID: #{order_id} CSS: #{css}"
       fields = @browser.divs :css => css
@@ -139,23 +127,6 @@ module Batch
 
     def edit_order(order_id)
       check_row(row_number order_id)
-    end
-
-    def column_header_field column
-      column_str = GRID_COLUMNS[column]
-      column_fields = @browser.spans :css => "div[componentid^=gridcolumn]"
-      column_fields.each{ |column_field|
-        column_text = browser_helper.text column_field
-        if column_text.downcase == column_str.downcase
-          return column_field
-        end
-      }
-    end
-
-    def scroll_into_view column
-      field = column_header_field column
-      @browser.execute_script('arguments[0].scrollIntoView();', field)
-      log "Grid Column #{column} #{((field.present?)? 'scrolled into view' :'not visible')}"
     end
 
     def uncheck_row number
