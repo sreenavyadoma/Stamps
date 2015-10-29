@@ -104,8 +104,7 @@ module Stamps
 
       elsif Stamps.browser.safari?
         driver = Watir::Browser.new :safari
-        browser_name = 'Safari'
-
+        browser_name = 'Mac OS X - Safari'
       else
         driver = Watir::Browser.new :ie
         browser_name = 'Internet Explorer'
