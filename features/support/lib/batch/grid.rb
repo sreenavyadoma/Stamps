@@ -144,7 +144,7 @@ module Batch
 
     def scroll_into_view column, row
       field = grid_field column, row
-      log "Column #{column} is #{(field.present?)?"scrolled into view.":"not visible"}"
+      log "Column #{column} is #{((field.present?)?"scrolled into view.":"not visible")}"
     end
 
     def uncheck_row number
