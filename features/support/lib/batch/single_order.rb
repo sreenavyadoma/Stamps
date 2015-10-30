@@ -52,7 +52,7 @@ module Batch
       text_box
     end
 
-    def phone phone
+    def phone
       expand
       Textbox.new(@browser.text_field :name => 'Phone')
     end
@@ -1370,4 +1370,5 @@ module Batch
 
 
   end #SingleOrderEdit Module
+
 end
