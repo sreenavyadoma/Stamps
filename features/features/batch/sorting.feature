@@ -1,9 +1,9 @@
 Feature: Sorting.
 
   Background:
-    Given I am signed in as a batch shipper ff/shipstation/autosuggest/326tsetaqcdS!
+    Given I am signed in as a batch shipper gc/shipstation/autosuggest/326tsetaqcdS!
 
-  @sort
+  @sort @regression
   Scenario: Sorting
     Then Sort Order Grid Age in ascending order
     Then Sort Order Grid Age in descending order
