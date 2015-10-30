@@ -15,14 +15,14 @@ module Batch
 
   class ShipToFields < OrderDetails
 
+    def country
+      ShipToCountry.new @browser
+    end
+
     def text_area
       input = Textbox.new @browser.textarea :name => 'FreeFormAddress'
       input.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
       input
-    end
-
-    def country
-      ShipToCountry.new @browser
     end
 
     def less_link
@@ -137,8 +137,8 @@ module Batch
       text_box = self.text_area
 
       50.times{
-        text_box.set address
         text_box.send_keys :enter
+        text_box.set address
         text_box.send_keys address
         sleep 1
         country_drop_down.drop_down.safe_click
