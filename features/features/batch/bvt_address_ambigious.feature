@@ -9,8 +9,8 @@ Feature:  BVT Ambigious Address
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order form Ship-To to ambiguous address
-      | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
-      | Joseph Balancio | Company Name | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
+      | name            | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
+      | Joseph Balancio | Company Name  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect "Exact Address Not Found" module to appear
     And Select row 2 from Exact Address Not Found module
     Then Set single-order form Service to "Priority Mail Package"

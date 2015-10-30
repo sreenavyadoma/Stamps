@@ -14,7 +14,7 @@ module Batch
         :order_date => "Order Date",
         :recipient => "Recipient",
         :company => "Company",
-        :address => "Address",
+        :domestic => "Address",
         :city => "City",
         :state => "State",
         :zip => "Zip",
@@ -318,11 +318,11 @@ module Batch
       grid_text(:company, row)
     end
 
-    def address order_id
-      scroll_into_view :address
+    def domestic order_id
+      scroll_into_view :domestic
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
-      grid_text(:address, row)
+      grid_text(:domestic, row)
     end
 
     def city order_id

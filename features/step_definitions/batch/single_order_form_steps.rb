@@ -3,27 +3,27 @@ And /^Set single-order form Ship-From to (\w+)$/ do |value|
 end
 
 And /^Set single-order form Ship-To address to$/ do |table|
-  step "Set single-order form Ship-To address to #{BatchHelper.instance.format_address table.hashes.first}"
+  step "Set single-order form Ship-To address to #{BatchHelper.instance.address_hash_to_str table.hashes.first}"
 end
 
 When /^Set single-order form Ship-To address to (.*)$/ do |address|
   log "Set single-order form Ship-To address to \"#{address}\""
 
   if address.downcase.include? "random"
-    address = BatchHelper.instance.format_address(test_helper.random_ship_to)
+    formatted_address = BatchHelper.instance.format_address(test_helper.random_ship_to)
+  else
+    formatted_address = BatchHelper.instance.format_address random_ship_to address
   end
-
-  formatted_address = BatchHelper.instance.format_address random_ship_to address
 
   log "Set single-order form Ship-To address to \"#{formatted_address}\""
   ship_to = batch.single_order_form.ship_to
-  ship_to.address formatted_address
+  ship_to.domestic.set formatted_address
 end
 
 And /^Set single-order form Ship-To to ambiguous address$/ do |table|
   ambiguous_address = BatchHelper.instance.format_address table.hashes.first
   ship_to = batch.single_order_form.ship_to
-  ship_to.ambiguous_address ambiguous_address
+  @ambiguous_address_module = ship_to.ambiguous.set ambiguous_address
 
 end
 

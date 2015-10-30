@@ -15,7 +15,7 @@ module Batch
     def recipient
       Recipient.new @browser
     end
-    def address
+    def domestic
       Address.new @browser
     end
     def city

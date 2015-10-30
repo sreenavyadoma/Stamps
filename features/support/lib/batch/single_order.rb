@@ -13,14 +13,16 @@ module Batch
     end
   end
 
-  class ShipToAddress < OrderDetails
+  class ShipToFields < OrderDetails
+
+    def text_area
+      input = Textbox.new @browser.textarea :name => 'FreeFormAddress'
+      input.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
+      input
+    end
 
     def country
       ShipToCountry.new @browser
-    end
-
-    def international
-      InternationalAddress.new @browser
     end
 
     def less_link
@@ -42,52 +44,6 @@ module Batch
       }
     end
 
-    def address address
-      less = less_link
-      country_drop_down = country
-      text_box = Textbox.new @browser.textarea :name => 'FreeFormAddress'
-      text_box.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
-
-      50.times{
-        text_box.set address
-        text_box.send_keys :enter
-        text_box.send_keys address
-        sleep 1
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        click_form
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        break if less.present?
-      }
-    end
-
-    def suggested_address_corrections
-      Link.new @browser.span(:text => "View Suggested Address Corrections")
-    end
-
-    def ambiguous_address
-      suggested_address_corrections.safe_click
-
-      less = ExactAddressNotFound.new @browser
-      country_drop_down = country
-      text_box = Textbox.new @browser.textarea :name => 'FreeFormAddress'
-      text_box.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
-
-      50.times{
-        text_box.set address
-        text_box.send_keys :enter
-        text_box.send_keys address
-        sleep 1
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        click_form
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        break if less.present?
-      }
-    end
-
     def email
       expand
       text_box = Textbox.new @browser.text_field :name => 'Email'
@@ -99,6 +55,155 @@ module Batch
     def phone phone
       expand
       Textbox.new(@browser.text_field :name => 'Phone')
+    end
+
+  end
+
+  class InternationalShipTo < ShipToFields
+
+    def present?
+      Textbox.new(@browser.text_field :name => "FullName").present?
+    end
+
+    def name
+      field = Textbox.new @browser.text_field :name => "FullName"
+      data_error_field = @browser.div :css => "div[data-anchortarget^=autosuggest]"
+      field.data_qtip_field data_error_field, "data-errorqtip"
+      field
+    end
+
+    def company
+      field = Textbox.new @browser.text_field :name => "Company"
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[1]
+      field.data_qtip_field data_error_field, "data-errorqtip"
+      field
+    end
+
+    def address_1
+      field = Textbox.new @browser.text_field :name => "Address1"
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[2]
+      field.data_qtip_field data_error_field, "data-errorqtip"
+      field
+    end
+
+    def address_2
+      Textbox.new @browser.text_field :name => "Address2"
+    end
+
+    def city
+      field = Textbox.new @browser.text_field :name => "City"
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[3]
+      field.data_qtip_field data_error_field, "data-errorqtip"
+      field
+    end
+
+    def province
+      Textbox.new @browser.text_field :name => "Province"
+    end
+
+    def postal_code
+      Textbox.new @browser.text_field :name => "PostalCode"
+    end
+
+    def phone
+      field = Textbox.new (@browser.text_fields :name => "Phone").last
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[5]
+      field.data_qtip_field data_error_field, "data-errorqtip"
+      field
+    end
+
+    def email
+      field = Textbox.new (@browser.text_fields :name => "Email").last
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[6]
+      field.data_qtip_field data_error_field, "data-errorqtip"
+      field
+    end
+
+    def country
+      Textbox.new (@browser.text_fields :name => "CountryCode").last
+    end
+  end
+
+  class DomesticShipTo < ShipToFields
+
+    def set address
+      less = less_link
+      country_drop_down = self.country
+      text_box = self.text_area
+
+      50.times{
+        text_box.set address
+        text_box.send_keys :enter
+        text_box.send_keys address
+        sleep 1
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        click_form
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        break if less.present?
+      }
+    end
+
+  end
+
+  class AmbiguousShipTo < ShipToFields
+    def set address
+      suggested_address_corrections.safe_click
+
+      exact_address_not_found = ExactAddressNotFound.new @browser
+      country_drop_down = self.country
+      text_box = self.text_area
+
+      50.times{
+        text_box.set address
+        text_box.send_keys :enter
+        text_box.send_keys address
+        sleep 1
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        click_form
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        return exact_address_not_found if exact_address_not_found.present?
+      }
+    end
+
+    def suggested_address_corrections
+      Link.new @browser.span(:text => "View Suggested Address Corrections")
+    end
+
+    def data_error
+      self.text_area.data_error_qtip
+    end
+
+  end
+
+  class SuggestShipTo < ShipToFields
+
+  end
+
+  class ShipTo < ShipToFields
+
+    def international
+      InternationalShipTo.new @browser
+    end
+
+    def domestic
+      DomesticShipTo.new @browser
+    end
+
+    def ambiguous
+      AmbiguousShipTo.new @browser
+    end
+
+    def suggest
+      SuggestShipTo.new @browser
     end
   end
 
@@ -875,7 +980,7 @@ module Batch
         end
       }
       log "Ship-To country now set to #{country}"
-      InternationalAddress.new @browser unless country.include? "United States"
+      InternationalShipTo.new @browser unless country.include? "United States"
     end
   end
 
@@ -1159,7 +1264,7 @@ module Batch
     end
 
     def ship_to
-      ShipToAddress.new @browser
+      ShipTo.new @browser
     end
 
     def pounds_max_value

@@ -9,7 +9,7 @@ Then /^Sort Order Grid (.*) in (.*) order$/ do |column, sort_order|
     when "recipient"
       batch.filter.awaiting_shipment.column.recipient.sort_order(sort_order).should be true
     when "address"
-      batch.filter.awaiting_shipment.column.address.sort_order(sort_order).should be true
+      batch.filter.awaiting_shipment.column.domestic.sort_order(sort_order).should be true
     when "city"
       batch.filter.awaiting_shipment.column.city.sort_order(sort_order).should be true
     when "state"

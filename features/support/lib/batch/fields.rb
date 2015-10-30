@@ -38,32 +38,36 @@ module Batch
       formatted_address
     end
 
+    def address_hash_to_str address
+      name = (address["name"].downcase.include? "random") ? test_helper.random_name : address["name"]
+      company = (address["company"].downcase.include? "random") ? test_helper.random_company_name : address["company"]
+      street_address = address["street_address"]
+      city = address["city"]
+      state = address["state"]
+      zip = address["zip"]
+      phone_num = address["phone"]
+      phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : address["phone"]
+      email_addy = address["email"]
+      email = (email_addy.downcase.include? "random") ? test_helper.random_email : address["email"]
+
+      log "Ship-To Name: #{name}"
+      log "Ship-To Company: #{company}"
+      log "Ship-To Address: #{street_address}"
+      log "Ship-To City: #{city}"
+      log "Ship-To State: #{state}"
+      log "Ship-To Zip: #{zip}"
+      log "Ship-To Phone: #{phone}"
+      log "Ship-To Email: #{email}"
+
+      formatted_address = "#{name},#{company},#{street_address},#{city} #{state} #{zip}"
+
+      log "Formatted Address: #{formatted_address}"
+      formatted_address
+    end
+
     def format_address address
       if address.is_a?(Hash)
-        name = (address["name"].downcase.include? "random") ? test_helper.random_name : address["name"]
-        company = (address["company"].downcase.include? "random") ? test_helper.random_company_name : address["company"]
-        street_address = address["street_address"]
-        city = address["city"]
-        state = address["state"]
-        zip = address["zip"]
-        phone_num = address["phone"]
-        phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : address["phone"]
-        email_addy = address["email"]
-        email = (email_addy.downcase.include? "random") ? test_helper.random_email : address["email"]
-
-        log "Ship-To Name: #{name}"
-        log "Ship-To Company: #{company}"
-        log "Ship-To Address: #{street_address}"
-        log "Ship-To City: #{city}"
-        log "Ship-To State: #{state}"
-        log "Ship-To Zip: #{zip}"
-        log "Ship-To Phone: #{phone}"
-        log "Ship-To Email: #{email}"
-
-        formatted_address = "#{name},#{company},#{street_address},#{city} #{state} #{zip}"
-
-        log "Formatted Address: #{formatted_address}"
-        formatted_address
+        format_address_arr address_hash_to_str(address).split(/,/)
       elsif address.is_a?(Array)
         format_address_arr(address)
       elsif address.include?(',')
