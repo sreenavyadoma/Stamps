@@ -35,14 +35,14 @@ end
 When /^Set single-order form Phone to (.*)$/ do |phone|
   begin
     log "Set single-order form Phone to \"#{phone}\""
-    batch.single_order_form.ship_to.phone.set phone
+    batch.single_order_form.ship_to.domestic.phone.set phone
   end unless phone.length == 0
 end
 
 When /^Set Email to (.*)$/ do |email|
   begin
     log "Set Email to \"#{email}\""
-    batch.single_order_form.ship_to.email.set email
+    batch.single_order_form.ship_to.domestic.email.set email
   end unless email.length == 0
   #end_step step
 end
