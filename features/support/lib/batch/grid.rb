@@ -72,7 +72,7 @@ module Batch
       columns = column_fields
       columns.each{ |column_field|
         column_text = browser_helper.text column_field
-        log "#{column_text} == #{column_str} ? #{column_text == column_str}"
+        #log "#{column_text} == #{column_str} ? #{column_text == column_str}"
         if column_text.downcase == column_str.downcase
           return column_field
         end
