@@ -15,8 +15,12 @@ module Batch
 
   class ShipToAddress < OrderDetails
 
-    def international_address
-      @international_shipping ||= InternationalShipping.new @browser
+    def country
+      ShipToCountry.new @browser
+    end
+
+    def international
+      InternationalAddress.new @browser
     end
 
     def less_link
@@ -38,18 +42,13 @@ module Batch
       }
     end
 
-
-    def country
-      ShipToCountry.new @browser
-    end
-
     def address address
       less = less_link
       country_drop_down = country
       text_box = Textbox.new @browser.textarea :name => 'FreeFormAddress'
       text_box.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
 
-      75.times{
+      50.times{
         text_box.set address
         text_box.send_keys :enter
         text_box.send_keys address
@@ -61,34 +60,45 @@ module Batch
         country_drop_down.drop_down.safe_click
         break if less.present?
       }
-      #hide
-    end
-
-    def ambiguous_address
-      suggested_address_corrections.safe_click
-      ExactAddressNotFound.new @browser
     end
 
     def suggested_address_corrections
       Link.new @browser.span(:text => "View Suggested Address Corrections")
     end
 
-    def email email
+    def ambiguous_address
+      suggested_address_corrections.safe_click
+
+      less = ExactAddressNotFound.new @browser
+      country_drop_down = country
+      text_box = Textbox.new @browser.textarea :name => 'FreeFormAddress'
+      text_box.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
+
+      50.times{
+        text_box.set address
+        text_box.send_keys :enter
+        text_box.send_keys address
+        sleep 1
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        click_form
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        break if less.present?
+      }
+    end
+
+    def email
       expand
       text_box = Textbox.new @browser.text_field :name => 'Email'
       data_qtip_field = (@browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]")[0]
       text_box.data_qtip_field data_qtip_field, "data-errorqtip"
-      text_box.set email
-      click_form
-      #hide
+      text_box
     end
 
     def phone phone
       expand
-      text_box = Textbox.new @browser.text_field :name => 'Phone'
-      text_box.set phone
-      click_form
-      #hide
+      Textbox.new(@browser.text_field :name => 'Phone')
     end
   end
 
@@ -865,7 +875,7 @@ module Batch
         end
       }
       log "Ship-To country now set to #{country}"
-      InternationalShipping.new @browser
+      InternationalAddress.new @browser unless country.include? "United States"
     end
   end
 
