@@ -1,5 +1,5 @@
 @bvt
-Feature:  BVT Ambigious Address
+Feature:  Ambigious Address
 
   Background:
     Given I am signed in as a batch shipper
