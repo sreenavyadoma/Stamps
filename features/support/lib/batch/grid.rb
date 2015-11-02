@@ -110,13 +110,13 @@ module Batch
       }
 
       if size == 0
-        return '0000'
+        return ""
       end
 
       begin
         grid_text(:order_id, row)
       rescue
-        return '0000'
+        return ""
       end
     end
 

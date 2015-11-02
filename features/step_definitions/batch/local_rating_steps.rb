@@ -4,12 +4,6 @@ Then /^Verify Local Rating$/ do |table|
   parameter_array = table.hashes
   results = Hash.new
 
-  #CSV.open(results_file, "wb") do |csv|
-  #end
-
-
-  #log "| test_result | ship_from | ship_to | service | weight_lbs | weight_oz | length | height | width | tracking | total |"
-  #csv << ["test_number", "ship_from", "ship_to", "service", "weight_lbs", "weight_oz", "length", "height", "width", "tracking", "total"]
   parameter_array.each_with_index { |element, index|
     step "Set single-order form Ship-From to #{element["ship_from"]}"
     step "Set single-order form Ship-To address to #{element["ship_to"]}"
@@ -35,10 +29,6 @@ Then /^Verify Local Rating$/ do |table|
 
     log "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lbs"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |"
 
-    #csv << [index, (results[index])?"Passed":"Failed", "Expectation=#{element["total"]},Actual=#{total}", element["ship_from"], element["ship_to"], element["service"], element["weight_lbs"], element["weight_oz"], element["length"], element["height"], element["width"], element["tracking"], element["total"]]
-    #log [index, (results[index])?"Passed":"Failed", "Expectation=#{element["total"]},Actual=#{total}", element["ship_from"], element["ship_to"], element["service"], element["weight_lbs"], element["weight_oz"], element["length"], element["height"], element["width"], element["tracking"], element["total"]]
-
-    #step "Expect single-order form Total to be $#{element["total"]}"
 
     expected_total_amount = element["total"]
 
