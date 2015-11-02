@@ -57,12 +57,8 @@ module Batch
       20.times{
         add_button.safe_click
         log "Item Count: #{item_count}"
+        break if item_count >= number
       }
-
-      if number > item_count
-        begin
-        end while number > item_count
-      end
 
       log "User Entered Number: #{number}. Actual Item Count: #{item_count}"
 

@@ -1,4 +1,8 @@
 Feature: Test Development
+
+  Background:
+    Given I am signed in as a batch shipper
+
   @_dev_rob
   Scenario: Domestic FPO Address
     And I Add a new order
@@ -18,7 +22,8 @@ Feature: Test Development
     Then Close customs form
     Then Print
 
-
+  @rob_dev_int
+  Scenario:
     # International
     And I Add a new order
     Then Set single-order form Ship-From to default
@@ -28,9 +33,6 @@ Feature: Test Development
     Then Add single-order form Item - Quantity 1, ID random, Description random
     Then Set single-order form Ounces to 2
     And Set single-order form Pounds to 2
-    And Set single-order form Length to 1
-    And Set single-order form Width to 1
-    And Set single-order form Height to 1
     And Open customs form
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
     Then Set customs form I agree to true
@@ -45,9 +47,6 @@ Feature: Test Development
     Then Add single-order form Item - Quantity 1, ID random, Description random
     And Set single-order form Ounces to 2
     And Set single-order form Pounds to 2
-    And Set single-order form Length to 1
-    And Set single-order form Width to 1
-    And Set single-order form Height to 1
     And Open customs form
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
     Then Set customs form I agree to true
