@@ -287,14 +287,8 @@ Given /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit 
   item.unit_price.set price
   item.lbs.set lbs
   item.oz.set oz
-  #begin
-  #sleep 2
   item.origin_country.select origin_country
-  #end unless o#rigin.downcase.include? "states"
-  #item.origin_country.set origin_country
   item.hs_tariff.set tariff
-  log item.present?
-  log ""
 end
 
 Given /^Delete Customs Form Item (\d+)$/ do |item_number|
@@ -318,21 +312,6 @@ Given /^Add single-order form Item - Quantity (\d+), ID ([\w ]+), Description ([
   line_item.qty qty
   line_item.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
   line_item.description (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
-end
-
-Given /^Expect single-order form ([\w -]+) field is hidden$/ do |field_name|
-end
-
-Given /^Expect International Ship-To ([\w ]+) Field Attributes are correct$/ do |field_name|
-
-end
-
-Given /^Expect Customs Form Checkbox \"(.+)\" is visible$/ do |checkbox|
-
-end
-
-Given /^Expect Customs Form Add Item tooltip to be "(.+)"$/ do |tooltip|
-
 end
 
 Given /^Expect Customs Form More Info to be (.+)$/ do |value|
@@ -452,20 +431,4 @@ end
 Given /^Cancel Customs Form$/ do
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.cancel
-end
-
-Given /^Increment Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
-
-end
-
-Given /^Decrement Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
-
-end
-
-Given /^Expect Customs Information Modal to be present$/ do
-
-end
-
-Given /^Expect Customs Form field (.+) behavior is correct$/ do |field|
-
 end

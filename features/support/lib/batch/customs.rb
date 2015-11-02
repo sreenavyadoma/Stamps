@@ -51,10 +51,11 @@ module Batch
     end
 
     def item number
+      add_button = add_item
       log "Item Count: #{item_count}"
       if number > item_count
         begin
-          add_item.click
+          add_button.safe_click
           log "Item Count: #{item_count}"
         end while number > item_count
       end
