@@ -41,7 +41,7 @@ module Batch
   class CustomsItemGrid < BatchObject
 
     def item_count
-      size = (@browser.tables :css => "div[id^=customsItemsGrid][id$=body]>div>div>table").size
+      size = (@browser.tables :css => "div[id^=customsItemsGrid-]>div>div>table").size
       log "Customs Item Count:  #{size}"
       size
     end
@@ -53,10 +53,14 @@ module Batch
     def item number
       add_button = add_item
       log "Item Count: #{item_count}"
+
+      20.times{
+        add_button.safe_click
+        log "Item Count: #{item_count}"
+      }
+
       if number > item_count
         begin
-          add_button.safe_click
-          log "Item Count: #{item_count}"
         end while number > item_count
       end
 
