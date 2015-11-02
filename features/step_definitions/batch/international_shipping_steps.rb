@@ -43,7 +43,7 @@ Given /^Set Ship-To to international address$/ do |table|
 end
 
 Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
-  @international_ship_to = batch.single_order_form.ship_to.international_address if @international_ship_to.nil?
+  @international_ship_to = batch.single_order_form.ship_to.international if @international_ship_to.nil?
 
   case ship_to_field.downcase
     when "name"
@@ -92,7 +92,7 @@ Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_
 end
 
 Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, value |
-  @international_ship_to = batch.single_order_form.ship_to.international_address if @international_ship_to.nil?
+  @international_ship_to = batch.single_order_form.ship_to.international if @international_ship_to.nil?
 
   case ship_to_field.downcase
 
@@ -165,7 +165,7 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
 end
 
 Given /^Expect single-order form International Address fields are visible$/ do
-  @international_ship_to = batch.single_order_form.ship_to.international_address if @international_ship_to.nil?
+  @international_ship_to = batch.single_order_form.ship_to.international if @international_ship_to.nil?
 
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true

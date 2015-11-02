@@ -2,42 +2,47 @@ And /^Set single-order form Ship-From to (\w+)$/ do |value|
   batch.single_order_form.ship_from.select value
 end
 
-And /^Set single-order form Ship-To to ambiguous address$/ do |table|
-  step "Set single-order form Ship-To address to #{table}"
-end
-
 And /^Set single-order form Ship-To address to$/ do |table|
-  step "Set single-order form Ship-To address to #{BatchHelper.instance.format_address table.hashes.first}"
+  step "Set single-order form Ship-To address to #{BatchHelper.instance.address_hash_to_str table.hashes.first}"
 end
 
 When /^Set single-order form Ship-To address to (.*)$/ do |address|
   log "Set single-order form Ship-To address to \"#{address}\""
 
   if address.downcase.include? "random"
-    address = BatchHelper.instance.format_address(test_helper.random_ship_to)
+    formatted_address = BatchHelper.instance.format_address(test_helper.random_ship_to)
+  else
+    formatted_address = BatchHelper.instance.format_address random_ship_to address
   end
-
-  formatted_address = BatchHelper.instance.format_address random_ship_to address
 
   log "Set single-order form Ship-To address to \"#{formatted_address}\""
   ship_to = batch.single_order_form.ship_to
-  ship_to.address formatted_address
-  ship_to.phone test_helper.random_phone
-  ship_to.email test_helper.random_email
-  ship_to.hide
+  ship_to.domestic.set formatted_address
+end
+
+And /^Set single-order form Ship-To to ambiguous address$/ do |table|
+  @ambiguous_address_module = batch.single_order_form.ship_to.ambiguous.set BatchHelper.instance.format_address table.hashes.first
+end
+
+Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
+  @ambiguous_address_module.row = row
+end
+
+Then /^Expect "Exact Address Not Found" module to appear/ do
+  expect(@ambiguous_address_module.present?).to be true
 end
 
 When /^Set single-order form Phone to (.*)$/ do |phone|
   begin
     log "Set single-order form Phone to \"#{phone}\""
-    batch.single_order_form.ship_to.phone phone
+    batch.single_order_form.ship_to.domestic.phone.set phone
   end unless phone.length == 0
 end
 
 When /^Set Email to (.*)$/ do |email|
   begin
     log "Set Email to \"#{email}\""
-    batch.single_order_form.ship_to.email email
+    batch.single_order_form.ship_to.domestic.email.set email
   end unless email.length == 0
   #end_step step
 end
@@ -112,14 +117,6 @@ end
 
 And /^Set single-order form Insured Value to \$([\d*\.?\d*]*)$/ do |value|
   batch.single_order_form.insured_value.set value
-end
-
-Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
-  @ambiguous_address_module.row = row
-end
-
-Then /^Expect "Exact Address Not Found" module to appear/ do
-  expect(@ambiguous_address_module.present?).to be true
 end
 
 When /^Set order details with$/ do |table|

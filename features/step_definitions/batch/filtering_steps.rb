@@ -1,5 +1,5 @@
 Then /^Expect printed Order ID does not exist in Awaiting Shipment tab$/ do
-  grid = batch.awaiting_shipment
+  grid = batch.filter.awaiting_shipment
   log "First Order ID: #{@order_id} in Awaiting Shipment tab"
   row = 1
   row1_order_id = grid.order_id row
@@ -8,7 +8,7 @@ Then /^Expect printed Order ID does not exist in Awaiting Shipment tab$/ do
 end
 
 Then /^Expect all printed Order IDs do not exist in Awaiting Shipment tab$/ do
-  grid = batch.awaiting_shipment
+  grid = batch.filter.awaiting_shipment
 
   log "First Order ID: #{@order_id} in Awaiting Shipment tab"
   row = 1

@@ -102,6 +102,12 @@ Cucumber::Rake::Task.new(:print_two_up) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:sorting) do |t|
+  t.profile = 'sorting'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
 Cucumber::Rake::Task.new(:add_new_order_eva) do |t|
   t.profile = 'add_new_order_eva'
   t.cucumber_opts = "-p cuke_reports"

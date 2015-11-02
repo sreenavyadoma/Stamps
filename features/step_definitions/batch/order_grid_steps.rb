@@ -16,7 +16,7 @@ Then /^Expect Ship-To address to be;$/ do |table|
   param_hash = table.hashes.first
   step "Expect order-grid Recipient to be #{param_hash[:name]}"
   step "Expect order-grid Company to be #{param_hash[:company]}"
-  step "Expect order-grid Address to be #{param_hash[:address]}"
+  step "Expect order-grid Address to be #{param_hash[:domestic]}"
   step "Expect order-grid City to be #{param_hash[:city]}"
   step "Expect order-grid State to be #{param_hash[:state]}"
   step "Expect order-grid Zip to be #{param_hash[:zip]}"
@@ -31,7 +31,7 @@ Then /^Output all Grid values for row (\d+)$/ do |order_id|
   log batch.grid.order_date order_id
   log batch.grid.recipient order_id
   log batch.grid.company order_id
-  log batch.grid.address order_id
+  log batch.grid.domestic order_id
   log batch.grid.city order_id
   log batch.grid.state order_id
   log batch.grid.zip order_id
@@ -116,12 +116,12 @@ end
 
 Then /^Expect order-grid Address to be ([\w\s-]+)$/ do |expected|
   begin
-    actual = batch.grid.address @order_id
+    actual = batch.grid.domestic @order_id
     10.times { |counter|
       sleep(2)
       log_expectation_eql "#{counter}. Street Address", expected, actual
       break if actual.eql? expected
-      actual = batch.grid.address @order_id
+      actual = batch.grid.domestic @order_id
     }
     actual.should eql expected
   end unless expected.length == 0

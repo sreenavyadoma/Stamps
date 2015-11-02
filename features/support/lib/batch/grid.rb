@@ -4,6 +4,8 @@ module Batch
   #
   class Grid < BatchObject
     public
+    MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
     GRID_COLUMNS ||= {
         :check => " ",
         :ship_cost => "Ship Cost",
@@ -12,7 +14,7 @@ module Batch
         :order_date => "Order Date",
         :recipient => "Recipient",
         :company => "Company",
-        :address => "Address",
+        :domestic => "Address",
         :city => "City",
         :state => "State",
         :zip => "Zip",
@@ -39,66 +41,53 @@ module Batch
     end
 
     def grid_text column, row
-      text = test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}")
-      log text
-      text
+      test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}")
     end
 
     def grid_field column, row
-      column_str = GRID_COLUMNS[column]
-      column_index = column_number(column_str).to_s
-      css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_index})>div"
-      log "#{column_str}, row #{row} CSS: #{css}"
-      field = @browser.div :css => css
-      log "#{column_str}, row #{row} field.present? #{browser_helper.present? field}"
-      begin
-        @browser.execute_script('arguments[0].scrollIntoView();', field)
-      rescue
-        #log "Unable to focus on #{column}, row #{row}"
-      end
-      begin
-        log "Column: #{column}, Row: #{row} = #{browser_helper.text field}"
-      rescue
-        #ignore
-      end
-      field
+      @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column).to_s})>div"
     end
 
-    def column_number name
-      if Batch.grid_columns.nil?
-        Batch.grid_columns Hash.new
-        Batch.grid_column_fields @browser.spans :css => "div[componentid^=gridcolumn]"
-        log "Number of Grid Columns is #{Batch.grid_column_fields.size}"
-        Batch.grid_column_fields.each_with_index { |field, index|
-          begin
-            @browser.execute_script('arguments[0].scrollIntoView();', field)
-            log "#{name} : Column #{index}"
-          rescue
-            #log "Unable to focus on #{column}, row #{row}}"
-          end
-          column_name = browser_helper.text field
-          log "#{column_name} is column #{index} on Order Grid."
-          Batch.grid_columns[column_name] = (index+1).to_s
-
-        }
-        log Batch.grid_columns
-      end
-      log "#{name} => #{Batch.grid_columns[name]}"
-      index = Batch.grid_columns[name]
-      log "#{index}, #{index.class}"
+    def column_number column_name
       begin
-        column_field = Batch.grid_column_fields[index.to_i]
-        @browser.execute_script('arguments[0].scrollIntoView();', column_field)
-        log "Grid #{name} Column visible? #{browser_helper.present? column_field}"
-      rescue
-        #log "Failed to scroll column #{index} into view"
+        column_str = GRID_COLUMNS[column_name]
+        columns = column_fields
+        columns.each_with_index { |column_field, index|
+          column_text = browser_helper.text column_field
+          if column_text == column_str
+            return index+1
+          end
+        }
+      rescue Exception => e
+        log e
       end
-      index
+    end
+
+    def column_fields
+      @browser.spans :css => "div[componentid^=gridcolumn]"
+    end
+
+    def column_header_field column
+      column_str = GRID_COLUMNS[column]
+      columns = column_fields
+      columns.each{ |column_field|
+        column_text = browser_helper.text column_field
+        #log "#{column_text} == #{column_str} ? #{column_text == column_str}"
+        if column_text.downcase == column_str.downcase
+          return column_field
+        end
+      }
+    end
+
+    def scroll_into_view column
+      field = Label.new column_header_field column
+      field.scroll_into_view @browser
+      log "Grid Column #{column} #{((field.present?)? 'scrolled into view' :'not visible')}"
     end
 
     def row_number order_id
       row = 1
-      column = column_number(GRID_COLUMNS[:order_id])
+      column = column_number(:order_id)
       css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column})>div"
       log "Order ID: #{order_id} CSS: #{css}"
       fields = @browser.divs :css => css
@@ -114,20 +103,20 @@ module Batch
     end
 
     def order_id row
-      scroll_into_view GRID_COLUMNS[:order_id], 0
+      scroll_into_view :order_id
       8.times{
         break if size > 0
         sleep 1
       }
 
       if size == 0
-        return '0000'
+        return ""
       end
 
       begin
         grid_text(:order_id, row)
       rescue
-        return '0000'
+        return ""
       end
     end
 
@@ -142,13 +131,8 @@ module Batch
       check_row(row_number order_id)
     end
 
-    def scroll_into_view column, row
-      field = grid_field column, row
-      log "Column #{column} is #{((field.present?)?"scrolled into view.":"not visible")}"
-    end
-
     def uncheck_row number
-      scroll_into_view GRID_COLUMNS[:check], 0
+      scroll_into_view :check
       if size > 0
         checkbox_field = row_div number
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
@@ -161,7 +145,7 @@ module Batch
     end
 
     def check_row number
-      scroll_into_view GRID_COLUMNS[:check], 0
+      scroll_into_view :check
       if size > 0
         checkbox_field = row_div number
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
@@ -174,7 +158,7 @@ module Batch
     end
 
     def row_checked? number
-      scroll_into_view GRID_COLUMNS[:check], 0
+      scroll_into_view :check
       checkbox_field = row_div number
       verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
       checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
@@ -182,7 +166,7 @@ module Batch
     end
 
     def select_all_checkbox
-      scroll_into_view GRID_COLUMNS[:check], 0
+      scroll_into_view :check
       spans = @browser.spans :css => "span[class=x-column-header-text]"
       checkbox_field = spans.first
       check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
@@ -192,17 +176,17 @@ module Batch
     end
 
     def select_all
-      scroll_into_view GRID_COLUMNS[:check], 0
+      scroll_into_view :check
       select_all_checkbox.check
     end
 
     def unselect_all
-      scroll_into_view GRID_COLUMNS[:check], 0
+      scroll_into_view :check
       select_all_checkbox.uncheck
     end
 
     def order_checked?(order_number)
-      scroll_into_view GRID_COLUMNS[:check], 0
+      scroll_into_view :check
       row_checked? row_number order_number
     end
 
@@ -260,7 +244,7 @@ module Batch
     end
 
     def check_rows rows
-      scroll_into_view GRID_COLUMNS[:check], 0
+      scroll_into_view :check
       log "Restoring #{} checked orders..."
       begin
         rows.each do |row|
@@ -281,7 +265,7 @@ module Batch
     end
 
     def ship_cost order_id
-      scroll_into_view GRID_COLUMNS[:ship_cost], 0
+      scroll_into_view :ship_cost
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:ship_cost, row)
@@ -289,7 +273,7 @@ module Batch
 
 
     def ship_cost_error order_id
-      scroll_into_view GRID_COLUMNS[:ship_cost], 0
+      scroll_into_view :ship_cost
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
 
@@ -307,119 +291,119 @@ module Batch
     end
 
     def age order_id
-      scroll_into_view GRID_COLUMNS[:age], 0
+      scroll_into_view :age
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:age, row)
     end
 
     def order_date order_id
-      scroll_into_view GRID_COLUMNS[:order_date], 0
+      scroll_into_view :order_date
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:order_date, row)
     end
 
     def recipient order_id
-      scroll_into_view GRID_COLUMNS[:recipient], 0
+      scroll_into_view :recipient
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:recipient, row)
     end
 
     def company order_id
-      scroll_into_view GRID_COLUMNS[:company], 0
+      scroll_into_view :company
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:company, row)
     end
 
-    def address order_id
-      scroll_into_view GRID_COLUMNS[:address], 0
+    def domestic order_id
+      scroll_into_view :domestic
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
-      grid_text(:address, row)
+      grid_text(:domestic, row)
     end
 
     def city order_id
-      scroll_into_view GRID_COLUMNS[:city], 0
+      scroll_into_view :city
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:city, row)
     end
 
     def state order_id
-      scroll_into_view GRID_COLUMNS[:state], 0
+      scroll_into_view :state
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:state, row)
     end
 
     def zip order_id
-      scroll_into_view GRID_COLUMNS[:zip], 0
+      scroll_into_view :zip
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:zip, row)
     end
 
     def country order_id
-      scroll_into_view GRID_COLUMNS[:country], 0
+      scroll_into_view :country
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:country, row)
     end
 
     def phone order_id
-      scroll_into_view GRID_COLUMNS[:phone], 0
+      scroll_into_view :phone
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:phone, row)
     end
 
     def email order_id
-      scroll_into_view GRID_COLUMNS[:email], 0
+      scroll_into_view :email
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:email, row)
     end
 
     def qty order_id
-      scroll_into_view GRID_COLUMNS[:qty], 0
+      scroll_into_view :qty
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:qty, row)
     end
 
     def item_sku order_id
-      scroll_into_view GRID_COLUMNS[:item_sku], 0
+      scroll_into_view :item_sku
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:item_sku, row)
     end
 
     def item_name order_id
-      scroll_into_view GRID_COLUMNS[:item_name], 0
+      scroll_into_view :item_name
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:description, row)
     end
 
     def ship_from order_id
-      scroll_into_view GRID_COLUMNS[:ship_from], 0
+      scroll_into_view :ship_from
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:ship_from, row)
     end
 
     def service order_id
-      scroll_into_view GRID_COLUMNS[:service], 0
+      scroll_into_view :service
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:service, row)
     end
 
     def weight order_id
-      scroll_into_view GRID_COLUMNS[:weight], 0
+      scroll_into_view :weight
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       weight = grid_text(:weight, row)
@@ -437,51 +421,235 @@ module Batch
     end
 
     def reference_no order_id
-      scroll_into_view GRID_COLUMNS[:reference_no], 0
+      scroll_into_view :reference_no
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:reference_no, row)
     end
 
     def cost_code order_id
-      scroll_into_view GRID_COLUMNS[:cost_code], 0
+      scroll_into_view :cost_code
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:cost_code, row)
     end
 
     def order_status order_id
-      scroll_into_view GRID_COLUMNS[:order_status], 0
+      scroll_into_view :order_status
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:order_status, row)
     end
 
     def ship_date order_id
-      scroll_into_view GRID_COLUMNS[:ship_date], 0
+      scroll_into_view :ship_date
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:ship_date, row)
     end
 
     def tracking order_id
-      scroll_into_view GRID_COLUMNS[:tracking], 0
+      scroll_into_view :tracking
       grid_text :tracking, row_number(order_id)
     end
 
     def order_total order_id
-      scroll_into_view GRID_COLUMNS[:order_total], 0
+      scroll_into_view :order_total
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:order_total, row)
     end
 
     def insured_value order_id
-      scroll_into_view GRID_COLUMNS[:insured_value], 0
+      scroll_into_view :insured_value
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       test_helper.remove_dollar_sign grid_text(:insured_value, row)
     end
+
+
+    def check_sorted_column(name, sort_order)   #function to verify that order column is sorted
+      id = nil
+      if name.eql? 'Order Date'
+        name = 'Age'
+      end
+
+      GRID_COLUMNS.each do |key, value|         #Iterate through hash of column names and values
+        if value.eql? name                     #If the column name text matches the column name we want to sort
+          id = key                              #Set the id variable to the key for that column
+          break
+        end
+      end
+
+      check_sort = true
+
+      case name
+        when 'Weight'
+          check_sort = compare_sorted_weight(id, sort_order)
+        when 'Item SKU'
+          check_sort = compare_sorted_items(id, sort_order)
+        when 'Item Name'
+          check_sort = compare_sorted_items(id, sort_order)
+        when 'Order Date'
+          check_sort = compare_sorted_ages(id, sort_order)
+        when 'Age'
+          check_sort = compare_sorted_ages(id, sort_order)
+        when 'Insured Value'
+          check_sort = compare_sorted_money(id, sort_order)
+        when 'Order Total'
+          check_sort = compare_sorted_money(id, sort_order)
+        else
+          if sort_order == 'ascending'                #check if sort check is for s or ascending order
+            check_sort = compare_cells(id,1)          #call function to compare first ten cells in column for ascending order
+          elsif sort_order == 'descending'
+            check_sort = compare_cells(id,-1)         #call function to compare first ten cells in column for descending order
+          end
+      end
+      check_sort
+    end
+
+    def compare_sorted_money(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
+      compare = true
+      for index in 1..5
+        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}"
+
+        no_sign_cost_1 = grid_text(id, index).gsub('$','')
+        no_sign_cost_2 = grid_text(id, index+1).gsub('$','')
+
+        cost_stripped_1 = no_sign_cost_1.gsub('.','')
+        cost_stripped_2 = no_sign_cost_2.gsub('.','')
+
+        log "COMPARING #{cost_stripped_1} and #{cost_stripped_2}"
+
+        if (cost_stripped_1 <=> cost_stripped_2) == direction       #compare text in current cell with next cell
+          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
+          break
+        end
+
+      end
+      compare
+    end
+
+    def compare_sorted_items(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
+      compare = true
+      for index in 1..5
+        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}"
+        item_1=grid_text(id, index).downcase
+        item_2=grid_text(id, index+1).downcase
+
+        if item_1.eql 'multiple'
+          item_1 = '1'
+        end
+
+        if item_2.eql 'multiple'
+          item_2 = '1'
+        end
+
+        if (item_1 <=> item_2) == direction       #compare text in current cell with next cell
+          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
+          break
+        end
+
+      end
+      compare
+    end
+
+    def compare_sorted_weight(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
+      compare = true
+      for index in 1..5
+        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}"
+
+        weight_array_1 = grid_text(id, index).split(" ")
+        weight_array_2= grid_text(id, index+1).split(" ")
+
+        pounds_1 = get_time_index(weight_array_1[0]).to_i
+        pounds_2 = get_time_index(weight_array_2[0]).to_i
+
+        ounces_1 = weight_array_1[2].to_i
+        ounces_2 = weight_array_2[2].to_i
+
+        total_ounces_1 =  pounds_1*16 + ounces_1
+        total_ounces_2 =  pounds_2*16 + ounces_2
+
+
+        if (total_ounces_1 <=> total_ounces_2) == direction       #compare text in current cell with next cell
+          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
+          break
+        end
+
+      end
+      compare
+    end
+
+    def compare_cells(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
+      compare = true
+      for index in 1..5
+        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}"
+        if (grid_text(id, index).downcase <=> grid_text(id, index+1).downcase) == direction       #compare text in current cell with next cell
+          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
+          break
+        end
+
+      end
+      compare
+    end
+
+
+    def compare_sorted_ages(id, sort_order)
+      compare = true
+      for index in 1..5
+
+        age_array_1 = grid_text(id, index).split(" ")
+        age_array_2 = grid_text(id, index+1).split(" ")
+
+        if age_array_1.eql? ''
+          age_array_1 = '1000000 days ago'
+        end
+        if age_array_2.eql? ''
+          age_array_2 = '1000000 days ago'
+        end
+
+        time_unit_1 = get_time_index(age_array_1[1])
+        time_unit_2 = get_time_index(age_array_2[1])
+
+        time_amount_1 = age_array_1[0].to_i
+        time_amount_2 = age_array_2[0].to_i
+        log "COMPARING #{time_amount_1} #{age_array_1[1]} and #{time_amount_2} #{age_array_2[1]} for #{sort_order} order"
+
+        if sort_order == 'ascending'
+          if (time_unit_1 <=> time_unit_2) == -1
+            return false
+          elsif (time_unit_1 <=> time_unit_2) == 0 && (time_amount_1 <=> time_amount_2) == -1
+            return false
+          end
+        elsif sort_order == 'descending'
+          if (time_unit_1 <=> time_unit_2) == 1
+            return false
+          elsif (time_unit_1 <=> time_unit_2) == 0 && (time_amount_1 <=> time_amount_2) == 1
+            return false
+            break
+          end
+        end
+      end
+      compare
+    end
+
+    def get_time_index(time_text)
+      TIME_UNITS_ARRAY.each_with_index do |time,index|
+        if time_text == time
+          return index
+        end
+      end
+      return 0
+    end
+
+
+    def column
+      Column.new @browser
+    end
+
+
+
   end
 
 end
