@@ -123,10 +123,12 @@ module Batch
       field.data_qtip_field data_error_field, "data-errorqtip"
       field
     end
+=begin
 
     def country
       Textbox.new (@browser.text_fields :name => "CountryCode").last
     end
+=end
   end
 
   class DomesticShipTo < ShipToFields
@@ -817,6 +819,7 @@ module Batch
       5.times {
         begin
           button.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
           selection_label.safe_click
           click_form
           break if box.text.include? selection
@@ -889,6 +892,7 @@ module Batch
       10.times {
         begin
           button.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
           selection_label.safe_click
           click_form
           selected_service = box.text
@@ -970,6 +974,7 @@ module Batch
       10.times {
         begin
           dd_button.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
           selection_label.safe_click
           click_form
           selected_country_text = box.text
@@ -1023,13 +1028,14 @@ module Batch
         ship_from_selection_field = @browser.div :text => "#{selection}"
       end
 
-      ship_from_selection_label = Label.new ship_from_selection_field
+      selection_label = Label.new ship_from_selection_field
 
       if selection.downcase.include? "manage shipping"
         10.times{
           begin
-            ship_from_dropdown.safe_click unless ship_from_selection_label.present?
-            ship_from_selection_label.safe_click
+            ship_from_dropdown.safe_click unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
             return @manage_shipping_adddress if @manage_shipping_adddress.present?
           rescue
             #ignore
@@ -1038,8 +1044,9 @@ module Batch
         }
       else
         10.times{
-          ship_from_dropdown.safe_click unless ship_from_selection_label.present?
-          ship_from_selection_label.safe_click
+          ship_from_dropdown.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
+          selection_label.safe_click
           break if ship_from_textbox.text.length > 3
         }
       end

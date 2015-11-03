@@ -1,40 +1,33 @@
 module Batch
 
   class OriginCountry < BatchObject
+
     def select country
       log "Select Country #{country}"
 
-      text_box_field = @browser.text_field :name => "OriginCountry"
-      drop_down =text_box_field.parent.parent.divs[1]
-
-      box = Textbox.new text_box_field
-      dd_button = Button.new drop_down
-      dd_button.safe_click
-
+      # create selection country text
       if country == "United States"
         selection_country = country
       else
         selection_country = "#{country} "
       end
 
+      log "Select Internal Transaction Number: #{selection}"
+      text_box = Textbox.new text_box_field
+      drop_down = text_box_field.parent.parent.divs[1]
+      selection_label = Label.new @browser.li :text => selection_country
       10.times {
         begin
-          selection_field = (@browser.lis(:text => selection_country)).last
-          log browser_helper.present? selection_field
-          if browser_helper.present? selection_field
-            browser_helper.safe_click selection_field
-            sleep 1
-            selected_country_text = box.text
-            log "Selected Country  #{selected_country_text} - #{(selected_country_text.include? country)?"#{country} selected": "#{country} not selected"}"
-            break if selected_country_text.include? country
-          else
-            dd_button.safe_click
-          end
+          drop_down.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
+          selection_label.safe_click
+          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
+          break if text_box.text.include? selection
         rescue
           #ignore
         end
       }
-      log "Ship-To country now set to #{country}"
+      log "#{selection} selected."
     end
   end
 
@@ -189,6 +182,7 @@ module Batch
       10.times {
         begin
           drop_down.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
           selection_label.safe_click
           log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
           break if text_box.text.include? selection
@@ -215,6 +209,7 @@ module Batch
       10.times {
         begin
           drop_down.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
           selection_label.safe_click
           log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
           break if text_box.text.include? selection
@@ -241,6 +236,7 @@ module Batch
       10.times {
         begin
           drop_down.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
           selection_label.safe_click
           log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
           break if text_box.text.include? selection

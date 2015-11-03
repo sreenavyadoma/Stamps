@@ -287,6 +287,7 @@ module Stamps
         case args.length
           when 1
             @field = args[0]
+            @browser = @field.browser
             @second_field = nil
           when 2
             @field = args[0]
@@ -302,8 +303,8 @@ module Stamps
         browser_helper.attribute_value @field, "data-errorqtip"
       end
 
-      def scroll_into_view browser
-        browser.execute_script('arguments[0].scrollIntoView();', @field)
+      def scroll_into_view
+        @browser.execute_script('arguments[0].scrollIntoView();', @field)
       end
 
       def send_keys special_char

@@ -1,5 +1,6 @@
 
 Then /^Set single-order Ship-To country to (.*)$/ do |country|
+  log "Set single-order Ship-To country to #{country}"
   @international_ship_to = batch.single_order_form.ship_to.country.select country
 end
 

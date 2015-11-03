@@ -80,9 +80,7 @@ module Batch
     end
 
     def scroll_into_view column
-      field = Label.new column_header_field column
-      field.scroll_into_view @browser
-      #log "Grid Column #{column} #{((field.present?)? 'scrolled into view' :'not visible')}"
+      Label.new(column_header_field column).scroll_into_view
     end
 
     def row_number order_id
