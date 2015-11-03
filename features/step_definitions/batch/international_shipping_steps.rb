@@ -425,8 +425,10 @@ Given /^Expect Customs Form Total Weight Data Error to be (.+)$/ do |value|
 end
 
 Given /^Close customs form$/ do
+  log "Closing customs form..."
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.close
+  log "Customs form #{(@customs_form.present?)?'closed':'is still open.'}"
 end
 
 Given /^Cancel Customs Form$/ do
