@@ -141,8 +141,8 @@ module Batch
       50.times{
         text_box.send_keys :enter
         text_box.set address
-        text_box.send_keys address
-        sleep 1
+        #text_box.send_keys address
+        sleep 2
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         click_form
