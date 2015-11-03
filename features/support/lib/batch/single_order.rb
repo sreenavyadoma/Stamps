@@ -25,13 +25,13 @@ module Batch
       input
     end
 
-    def less_link
+    def less
       Link.new (@browser.spans :text => "Less").first
     end
 
     def hide
       click_form
-      less_link.click_while_present
+      less.click_while_present
     end
 
     def expand
@@ -134,7 +134,7 @@ module Batch
   class DomesticShipTo < ShipToFields
 
     def set address
-      less = less_link
+      less = self.less
       country_drop_down = self.country
       text_box = self.text_area
 
@@ -145,18 +145,28 @@ module Batch
 
         sleep 1
         country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        click_form
         click_form
         break if less.present?
         sleep 1
         country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        click_form
+        click_form
         break if less.present?
+        click_form
         click_form
         sleep 1
         country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        click_form
         click_form
         break if less.present?
         sleep 1
         country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        click_form
         click_form
         break if less.present?
       }
