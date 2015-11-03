@@ -12,7 +12,6 @@ module Batch
         selection_country = "#{country} "
       end
 
-      log "Select Internal Transaction Number: #{selection}"
       text_box = Textbox.new text_box_field
       drop_down = text_box_field.parent.parent.divs[1]
       selection_label = Label.new @browser.li :text => selection_country
