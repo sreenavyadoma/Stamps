@@ -2,6 +2,11 @@ module Batch
 
   class OriginCountry < BatchObject
 
+    def initialize(browser, index)
+      super browser
+      @index = index
+    end
+
     def select country
       log "Select Country #{country}"
 
@@ -12,47 +17,43 @@ module Batch
         selection_country = "#{country} "
       end
 
+      text_box_field = @browser.text_field :name => "OriginCountry"
+
       text_box = Textbox.new text_box_field
-      drop_down = text_box_field.parent.parent.divs[1]
-      selection_label = Label.new @browser.li :text => selection_country
+      drop_down = Button.new text_box_field.parent.parent.divs[1]
+      selection_label = Label.new ((@browser.lis :text => selection_country)[@index])
       10.times {
         begin
           drop_down.safe_click unless selection_label.present?
           selection_label.scroll_into_view
           selection_label.safe_click
-          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
-          break if text_box.text.include? selection
+          log "Selection #{text_box.text} - #{(text_box.text.include? selection_country)?"was selected": "not selected"}"
+          break if text_box.text.include? selection_country
         rescue
           #ignore
         end
       }
-      log "#{selection} selected."
+      log "#{selection_country} selected."
     end
   end
 
   class CustomsItemGrid < BatchObject
 
-    def item_count
-      size = (@browser.tables :css => "div[id^=customsItemsGrid-]>div>div>table").size
-      log "Customs Item Count:  #{size}"
-      size
-    end
-
-    def add_item
-      Button.new (@browser.spans :text => "Add Item").last
+    def line_item_count
+      (@browser.tables :css => "div[id^=customsItemsGrid-]>div>div>table").size
     end
 
     def item number
-      add_button = add_item
-      log "Item Count: #{item_count}"
+      add_button = Button.new (@browser.spans :text => "Add Item").last
+      log "Item Count: #{line_item_count}"
 
       20.times{
-        add_button.safe_click
-        log "Item Count: #{item_count}"
-        break if item_count >= number
+        add_button.safe_click if (number>line_item_count)
+        log "Item Count: #{line_item_count}"
+        break if line_item_count >= number
       }
 
-      log "User Entered Number: #{number}. Actual Item Count: #{item_count}"
+      log "User Entered Number: #{number}. Actual Item Count: #{line_item_count}"
 
       CustomsLineItem.new(@browser).line_item number
     end
@@ -135,7 +136,7 @@ module Batch
     end
 
     def origin_country
-      OriginCountry.new @browser
+      OriginCountry.new @browser, @number
     end
 
     def hs_tariff

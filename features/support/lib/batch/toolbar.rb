@@ -186,7 +186,7 @@ module Batch
 
       old_grid_row_1_id = order_grid.order_id 1
       log "Grid 1 order ID #{old_grid_row_1_id}"
-      10.times do |count|
+      20.times do |count|
         begin
           add_button.safe_click
           5.times{

@@ -293,7 +293,7 @@ Given /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit 
 end
 
 Given /^Delete Customs Form Item (\d+)$/ do |item_number|
-  count = @customs_item_grid.item_count
+  count = @customs_item_grid.line_item_count
   item = @customs_item_grid.item item_number.to_i
   if count > 1
     item.delete.click_while_present
@@ -390,7 +390,7 @@ end
 
 Given /^Expect Customs Form Item Grid count to be (.+)$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  @customs_form.item_grid.item_count.should eql value.to_i
+  @customs_form.item_grid.line_item_count.should eql value.to_i
 end
 
 Given /^Expect Customs Form Total Value to be (.+)$/ do |value|
