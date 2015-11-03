@@ -175,6 +175,84 @@ module Batch
 
   end
 
+  class InternalTransaction < BatchObject
+
+    def text_box
+      Textbox.new @browser.text_field :name => "isITNRequired"
+    end
+
+    def select selection
+      log "Select Internal Transaction Number: #{selection}"
+      text_box = self.text_box
+      drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
+      selection_label = Label.new @browser.li :text => selection
+      10.times {
+        begin
+          drop_down.safe_click unless selection_label.present?
+          selection_label.safe_click
+          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
+          break if text_box.text.include? selection
+        rescue
+          #ignore
+        end
+      }
+      log "#{selection} selected."
+      selection_label
+    end
+  end
+
+  class PackageContents < BatchObject
+
+    def text_box
+      Textbox.new @browser.text_field :name => "ContentType"
+    end
+
+    def select selection
+      log "Select Internal Transaction Number: #{selection}"
+      text_box = self.text_box
+      drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
+      selection_label = Label.new @browser.li :text => selection
+      10.times {
+        begin
+          drop_down.safe_click unless selection_label.present?
+          selection_label.safe_click
+          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
+          break if text_box.text.include? selection
+        rescue
+          #ignore
+        end
+      }
+      log "#{selection} selected."
+      selection_label
+    end
+  end
+
+  class NonDeliveryOptions < BatchObject
+
+    def text_box
+      Textbox.new @browser.text_field :name => "NonDeliveryOption"
+    end
+
+    def select selection
+      log "Select Internal Transaction Number: #{selection}"
+      text_box = self.text_box
+      drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
+      selection_label = Label.new @browser.li :text => selection
+      10.times {
+        begin
+          drop_down.safe_click unless selection_label.present?
+          selection_label.safe_click
+          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
+          break if text_box.text.include? selection
+        rescue
+          #ignore
+        end
+      }
+      log "#{selection} selected."
+      selection_label
+    end
+  end
+
   class CustomsForm < BatchObject
     public
 
@@ -182,33 +260,17 @@ module Batch
       Button.new @browser.image :css => "img[class*='x-tool-close']"
     end
 
-    def package_contents_dd
-      drop_down = @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
-      input = pacakge_contents.field
-      raise "ContentType is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, drop_down, :li, input
+    def package_contents
+      PackageContents.new @browser
     end
 
-    def pacakge_contents
-      Textbox.new @browser.text_field :name => "ContentType"
-    end
-
-    def non_delivery_options_dd
-      drop_down = @browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
-      input = @browser.text_field :name => "NonDeliveryOption"
-      raise "NonDeliveryOption is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, drop_down, :li, input
+    def non_delivery_options
+      NonDeliveryOptions.new @browser
     end
 
 
-    def internal_transaction_dd
-      drop_down = @browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
-      input = @browser.text_field :name => "isITNRequired"
-      raise "isITNRequired is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, drop_down, :li, input
+    def internal_transaction
+      InternalTransaction.new @browser
     end
 
     def more_info

@@ -224,8 +224,8 @@ Given /^Set customs form Package Contents to \"(.+)\"$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
-  @customs_form.package_contents_dd.select value
-  contents = @customs_form.pacakge_contents.text
+  @customs_form.package_contents.select value
+  contents = @customs_form.package_contents.text_box.text
   contents.should include value
 end
 
@@ -233,14 +233,14 @@ Given /^Set customs form Non-Delivery Options to \"(.+)\"$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
-  @customs_form.non_delivery_options_dd.select value
+  @customs_form.non_delivery_options.select value
 end
 
 Given /^Set customs form Internal Transaction Number to \"(.+)\"$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
-  @customs_form.internal_transaction_dd.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+  @customs_form.internal_transaction.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
   sleep 1
 end
 
@@ -382,7 +382,7 @@ end
 Given /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
-  text = @customs_form.internal_transaction_dd.text_box.text
+  text = @customs_form.internal_transaction.text_box.text
   log "Internal Transaction # is #{text}.  Test #{(text.include? "Required")?'Passed':'Failed'}"
   text.should eql value
 end
