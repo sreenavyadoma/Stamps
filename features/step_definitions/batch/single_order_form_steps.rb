@@ -16,8 +16,7 @@ When /^Set single-order form Ship-To address to (.*)$/ do |address|
   end
 
   log "Set single-order form Ship-To address to \"#{formatted_address}\""
-  ship_to = batch.single_order_form.ship_to
-  ship_to.domestic.set formatted_address
+  batch.single_order_form.ship_to.domestic.set formatted_address
 end
 
 And /^Set single-order form Ship-To to ambiguous address$/ do |table|

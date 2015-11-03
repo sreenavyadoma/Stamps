@@ -141,13 +141,23 @@ module Batch
       50.times{
         text_box.send_keys :enter
         text_box.set address
-        #text_box.send_keys address
-        sleep 2
+        text_box.send_keys address
+
+        sleep 1
         country_drop_down.drop_down.safe_click
-        #country_drop_down.drop_down.safe_click
         click_form
-        #country_drop_down.drop_down.safe_click
+        break if less.present?
+        sleep 1
         country_drop_down.drop_down.safe_click
+        break if less.present?
+        click_form
+        sleep 1
+        country_drop_down.drop_down.safe_click
+        click_form
+        break if less.present?
+        sleep 1
+        country_drop_down.drop_down.safe_click
+        click_form
         break if less.present?
       }
     end
