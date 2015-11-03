@@ -12,9 +12,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
@@ -36,9 +33,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
@@ -68,9 +62,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
@@ -102,9 +93,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Expect single-order form International Address fields are visible
@@ -186,9 +174,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
@@ -254,9 +239,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
@@ -294,9 +276,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
@@ -335,9 +314,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     #Then Set single-order form Service to Priority Mail International Flat Rate Envelope
@@ -376,9 +352,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     #Then Set single-order form Service to Priority Mail International Flat Rate Envelope
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     And Open customs form
@@ -415,9 +388,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Set single-order form Ounces to 5
@@ -454,9 +424,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     And Open customs form
