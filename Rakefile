@@ -52,8 +52,8 @@ Cucumber::Rake::Task.new(:local_rating_zone2) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:validate_international) do |t|
-  t.profile = 'validate_international'
+Cucumber::Rake::Task.new(:international) do |t|
+  t.profile = 'international'
   t.cucumber_opts = "-p cuke_reports"
 end
 

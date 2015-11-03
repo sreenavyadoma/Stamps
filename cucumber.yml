@@ -22,7 +22,7 @@ inline_service_rates: --tags @inline_service_rates --guess URL=qacc BROWSER=ff U
 local_rating_zone1: --tags @local_rating_zone1 --guess URL=qasc BROWSER=ff USR=dj_cctest_01 PW=postage1
 local_rating_zone2: --tags @local_rating_zone2 --guess URL=qasc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
-validate_international: --tags @validate_international --guess URL=qacc BROWSER=ff USR=webpost_0001 PW=pass111
+international: --tags @international --guess URL=qacc BROWSER=ff USR=auto08 PW=326tsetaqcdS!
 
 print_many_orders: --tags @print_many_orders --guess URL=qacc BROWSER=ff USR=auto08 PW=326tsetaqcdS!
 
