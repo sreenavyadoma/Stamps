@@ -141,33 +141,44 @@ module Batch
       50.times{
         text_box.send_keys :enter
         text_box.set address
+        text_box.scroll_into_view
         text_box.send_keys address
+        text_box.scroll_into_view
 
         sleep 1
+        text_box.scroll_into_view
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
         click_form
         click_form
         break if less.present?
         sleep 1
+        text_box.scroll_into_view
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
         click_form
         click_form
         break if less.present?
         click_form
         click_form
         sleep 1
+        text_box.scroll_into_view
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
         click_form
         click_form
         break if less.present?
         sleep 1
+        text_box.scroll_into_view
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
         click_form
         click_form
+        text_box.scroll_into_view
         break if less.present?
       }
     end
