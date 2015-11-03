@@ -144,9 +144,9 @@ module Batch
         #text_box.send_keys address
         sleep 2
         country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
+        #country_drop_down.drop_down.safe_click
         click_form
-        country_drop_down.drop_down.safe_click
+        #country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         break if less.present?
       }
