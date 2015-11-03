@@ -56,7 +56,6 @@ module Batch
       expand
       Textbox.new(@browser.text_field :name => 'Phone')
     end
-
   end
 
   class InternationalShipTo < ShipToFields
@@ -152,21 +151,6 @@ module Batch
         text_box.scroll_into_view
         click_form
         click_form
-        break if less.present?
-        sleep 1
-        text_box.scroll_into_view
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        break if less.present?
-        click_form
-        click_form
-        sleep 1
-        text_box.scroll_into_view
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
         text_box.scroll_into_view
         click_form
         click_form
@@ -175,6 +159,33 @@ module Batch
         text_box.scroll_into_view
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
+        text_box.scroll_into_view
+        click_form
+        click_form
+        break if less.present?
+        click_form
+        click_form
+        sleep 1
+        text_box.scroll_into_view
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
+        text_box.scroll_into_view
+        click_form
+        click_form
+        break if less.present?
+        sleep 1
+        text_box.scroll_into_view
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
         text_box.scroll_into_view
         click_form
         click_form
