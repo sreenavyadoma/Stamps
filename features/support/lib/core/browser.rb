@@ -298,6 +298,10 @@ module Stamps
         end
       end
 
+      def data_error
+        browser_helper.attribute_value @field, "data-errorqtip"
+      end
+
       def scroll_into_view browser
         browser.execute_script('arguments[0].scrollIntoView();', @field)
       end

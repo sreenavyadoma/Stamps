@@ -3,7 +3,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   Background:
     Given I am signed in as a batch shipper gc/qacc/auto39/326tsetaqcdS!
 
-  @international @international_data_error @international_failure
+  @international @international_data_error_x @international_failure_x
   Scenario:  Customs Form Data Error
     And I Add a new order
     Then Set single-order form Ship-From to default

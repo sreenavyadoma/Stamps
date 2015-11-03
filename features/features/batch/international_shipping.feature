@@ -24,6 +24,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 5, Weight(oz) 1 Origin United States , Tariff 100
 
     Then Expect Customs Form Total Weight Data Error to be The itemized weight exceeds the package weight
+    Then Close customs form
     And Sign out
     
   @international @international_totals
