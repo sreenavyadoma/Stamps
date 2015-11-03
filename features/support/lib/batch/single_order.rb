@@ -1142,8 +1142,7 @@ module Batch
 
     def add_item
       add_item = Link.new @browser.span :text => "Add Item"
-      log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
-      add_item
+      log "Add Item Button #{(add_item.present?)?"Exist!":'DOES NOT EXIST!'}"
 
       line_item = SingleOrderFormLineItem.new @browser
       5.times{
