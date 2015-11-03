@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile rob_dev
+default: --profile cuke_reports --profile international
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
 rob_dev: --tags @rob_int --guess URL=qacc BROWSER=ff USR=auto33 PW=326tsetaqcdS!
