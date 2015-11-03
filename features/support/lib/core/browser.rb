@@ -307,6 +307,14 @@ module Stamps
         @browser.execute_script('arguments[0].scrollIntoView();', @field)
       end
 
+      def safe_scroll_into_view
+        begin
+          scroll_into_view
+        rescue
+          #ignore
+        end
+      end
+
       def send_keys special_char
         browser_helper.send_keys @field, special_char
         self

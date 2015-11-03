@@ -10,30 +10,36 @@ module Batch
     def select country
       log "Select Country #{country}"
 
-      # create selection country text
-      if country == "United States"
-        selection_country = country
-      else
-        selection_country = "#{country} "
-      end
+      selection_1 = Label.new ((@browser.lis :text => country)[@index+1])
+      selection_2 = Label.new ((@browser.lis :text => "#{country} ")[@index+1])
+
 
       text_box_field = @browser.text_field :name => "OriginCountry"
 
       text_box = Textbox.new text_box_field
       drop_down = Button.new text_box_field.parent.parent.divs[1]
-      selection_label = Label.new ((@browser.lis :text => selection_country)[@index])
+
       10.times {
         begin
-          drop_down.safe_click unless selection_label.present?
-          selection_label.scroll_into_view
-          selection_label.safe_click
-          log "Selection #{text_box.text} - #{(text_box.text.include? selection_country)?"was selected": "not selected"}"
-          break if text_box.text.include? selection_country
+          drop_down.safe_click unless selection_1.present? || selection_2.present?
+          if selection_1.present?
+            selection_1.scroll_into_view
+            selection_1.safe_click
+          elsif selection_2.present?
+            selection_2.scroll_into_view
+            selection_2.safe_click
+          end
+
+          log "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
+          break if text_box.text.include? country
         rescue
           #ignore
         end
       }
-      log "#{selection_country} selected."
+      log "#{country} selected."
+
+
+
     end
   end
 
@@ -48,7 +54,7 @@ module Batch
       log "Item Count: #{line_item_count}"
 
       20.times{
-        add_button.safe_click if (number>line_item_count)
+        add_button.safe_click if number > line_item_count
         log "Item Count: #{line_item_count}"
         break if line_item_count >= number
       }

@@ -968,24 +968,29 @@ module Batch
     def select country
       log "Select Country #{country}"
 
-      dd_button = drop_down
-      box = text_box
-      dd_button.safe_click
-      selection_label = Label.new @browser.li(:text => /#{country}/)
+      selection_1 = Label.new @browser.li :text => country
+      selection_2 = Label.new @browser.li :text => "#{country} "
+
+      text_box = self.text_box
+      drop_down = self.drop_down
       10.times {
         begin
-          dd_button.safe_click unless selection_label.present?
-          selection_label.scroll_into_view
-          selection_label.safe_click
-          click_form
-          selected_country_text = box.text
-          log "Selected Country  #{selected_country_text} - #{(selected_country_text.include? country)?"#{country} selected": "#{country} not selected"}"
-          break if selected_country_text.include? country
+          drop_down.safe_click unless selection_1.present? || selection_2.present?
+          if selection_1.present?
+            selection_1.scroll_into_view
+            selection_1.safe_click
+          elsif selection_2.present?
+            selection_2.scroll_into_view
+            selection_2.safe_click
+          end
+
+          log "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
+          break if text_box.text.include? country
         rescue
           #ignore
         end
       }
-      log "Ship-To country now set to #{country}"
+      log "#{country} selected."
       InternationalShipTo.new @browser unless country.include? "United States"
     end
   end
