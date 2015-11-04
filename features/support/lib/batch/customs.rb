@@ -1,65 +1,65 @@
 module Batch
 
   class OriginCountry < BatchObject
+
+    def initialize(browser, index)
+      super browser
+      @index = index
+    end
+
     def select country
       log "Select Country #{country}"
 
+      selection_1 = Label.new ((@browser.lis :text => country)[@index+1])
+      selection_2 = Label.new ((@browser.lis :text => "#{country} ")[@index+1])
+
+
       text_box_field = @browser.text_field :name => "OriginCountry"
-      drop_down =text_box_field.parent.parent.divs[1]
 
-      box = Textbox.new text_box_field
-      dd_button = Button.new drop_down
-      dd_button.safe_click
-
-      if country == "United States"
-        selection_country = country
-      else
-        selection_country = "#{country} "
-      end
+      text_box = Textbox.new text_box_field
+      drop_down = Button.new text_box_field.parent.parent.divs[1]
 
       10.times {
         begin
-          selection_field = (@browser.lis(:text => selection_country)).last
-          log browser_helper.present? selection_field
-          if browser_helper.present? selection_field
-            browser_helper.safe_click selection_field
-            sleep 1
-            selected_country_text = box.text
-            log "Selected Country  #{selected_country_text} - #{(selected_country_text.include? country)?"#{country} selected": "#{country} not selected"}"
-            break if selected_country_text.include? country
-          else
-            dd_button.safe_click
+          drop_down.safe_click unless selection_1.present? || selection_2.present?
+          if selection_1.present?
+            selection_1.scroll_into_view
+            selection_1.safe_click
+          elsif selection_2.present?
+            selection_2.scroll_into_view
+            selection_2.safe_click
           end
+
+          log "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
+          break if text_box.text.include? country
         rescue
           #ignore
         end
       }
-      log "Ship-To country now set to #{country}"
+      log "#{country} selected."
+
+
+
     end
   end
 
   class CustomsItemGrid < BatchObject
 
-    def item_count
-      size = (@browser.tables :css => "div[id^=customsItemsGrid][id$=body]>div>div>table").size
-      log "Customs Item Count:  #{size}"
-      size
-    end
-
-    def add_item
-      Button.new (@browser.spans :text => "Add Item").last
+    def line_item_count
+      (@browser.tables :css => "div[id^=customsItemsGrid-]>div>div>table").size
     end
 
     def item number
-      log "Item Count: #{item_count}"
-      if number > item_count
-        begin
-          add_item.click
-          log "Item Count: #{item_count}"
-        end while number > item_count
-      end
+      add_button = Button.new (@browser.spans :text => "Add Item").last
+      log "Item Count: #{line_item_count}"
 
-      log "User Entered Number: #{number}. Actual Item Count: #{item_count}"
+      20.times{
+        add_button.safe_click if number > line_item_count
+        log "Item Count: #{line_item_count}"
+        break if line_item_count >= number
+      }
+
+      log "User Entered Number: #{number}. Actual Item Count: #{line_item_count}"
 
       CustomsLineItem.new(@browser).line_item number
     end
@@ -142,7 +142,7 @@ module Batch
     end
 
     def origin_country
-      OriginCountry.new @browser
+      OriginCountry.new @browser, @number
     end
 
     def hs_tariff
@@ -174,6 +174,87 @@ module Batch
 
   end
 
+  class InternalTransaction < BatchObject
+
+    def text_box
+      Textbox.new @browser.text_field :name => "isITNRequired"
+    end
+
+    def select selection
+      log "Select Internal Transaction Number: #{selection}"
+      text_box = self.text_box
+      drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
+      selection_label = Label.new @browser.li :text => selection
+      10.times {
+        begin
+          drop_down.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
+          selection_label.safe_click
+          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
+          break if text_box.text.include? selection
+        rescue
+          #ignore
+        end
+      }
+      log "#{selection} selected."
+      selection_label
+    end
+  end
+
+  class PackageContents < BatchObject
+
+    def text_box
+      Textbox.new @browser.text_field :name => "ContentType"
+    end
+
+    def select selection
+      log "Select Internal Transaction Number: #{selection}"
+      text_box = self.text_box
+      drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
+      selection_label = Label.new @browser.li :text => selection
+      10.times {
+        begin
+          drop_down.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
+          selection_label.safe_click
+          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
+          break if text_box.text.include? selection
+        rescue
+          #ignore
+        end
+      }
+      log "#{selection} selected."
+      selection_label
+    end
+  end
+
+  class NonDeliveryOptions < BatchObject
+
+    def text_box
+      Textbox.new @browser.text_field :name => "NonDeliveryOption"
+    end
+
+    def select selection
+      log "Select Internal Transaction Number: #{selection}"
+      text_box = self.text_box
+      drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
+      selection_label = Label.new @browser.li :text => selection
+      10.times {
+        begin
+          drop_down.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
+          selection_label.safe_click
+          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
+          break if text_box.text.include? selection
+        rescue
+          #ignore
+        end
+      }
+      log "#{selection} selected."
+      selection_label
+    end
+  end
+
   class CustomsForm < BatchObject
     public
 
@@ -181,33 +262,17 @@ module Batch
       Button.new @browser.image :css => "img[class*='x-tool-close']"
     end
 
-    def package_contents_dd
-      drop_down = @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
-      input = pacakge_contents.field
-      raise "ContentType is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, drop_down, :li, input
+    def package_contents
+      PackageContents.new @browser
     end
 
-    def pacakge_contents
-      Textbox.new @browser.text_field :name => "ContentType"
-    end
-
-    def non_delivery_options_dd
-      drop_down = @browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
-      input = @browser.text_field :name => "NonDeliveryOption"
-      raise "NonDeliveryOption is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, drop_down, :li, input
+    def non_delivery_options
+      NonDeliveryOptions.new @browser
     end
 
 
-    def internal_transaction_dd
-      drop_down = @browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
-      raise "Drop-down button is not present.  Check your CSS locator." unless browser_helper.present? drop_down
-      input = @browser.text_field :name => "isITNRequired"
-      raise "isITNRequired is not present.  Check your CSS locator." unless browser_helper.present? input
-      Dropdown.new @browser, drop_down, :li, input
+    def internal_transaction
+      InternalTransaction.new @browser
     end
 
     def more_info

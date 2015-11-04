@@ -186,12 +186,12 @@ module Batch
 
       old_grid_row_1_id = order_grid.order_id 1
       log "Grid 1 order ID #{old_grid_row_1_id}"
-      10.times do |count|
+      20.times do |count|
         begin
           add_button.safe_click
           5.times{
             sleep 1
-            log "#{count} single-order form present?  #{single_order_form.present?}"
+            #log "#{count} single-order form present?  #{single_order_form.present?}"
             break if single_order_form.present?
           }
           new_id = old_grid_row_1_id != order_grid.order_id(1) && order_grid.order_id(1) == single_order_form.order_id

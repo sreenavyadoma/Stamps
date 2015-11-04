@@ -2,7 +2,6 @@ Feature: Test Development
   Background:
     Given I am signed in as a batch shipper
 
-  @rob_dev1
   Scenario:
     And I Add a new order
     Then Set single-order Ship-To country to Canada

@@ -1,7 +1,7 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as a batch shipper gc/qacc/auto39/326tsetaqcdS!
+    Given I am signed in as a batch shipper gc/qacc/auto06/326tsetaqcdS!
 
   @international @international_data_error @international_failure
   Scenario:  Customs Form Data Error
@@ -12,18 +12,16 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 5, Weight(oz) 1 Origin United States , Tariff 100
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 5, Weight(oz) 1 Origin United States, Tariff 100
 
     Then Expect Customs Form Total Weight Data Error to be The itemized weight exceeds the package weight
+    Then Close customs form
     And Sign out
     
   @international @international_totals
@@ -35,21 +33,18 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 100
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
     Then Expect Customs Form Total Value to be 100.50
     Then Expect Customs Form Total Pounds to be 1
     Then Expect Customs Form Total Ounces to be 1
 
-    And Add or Edit Customs Form Item 2; Description=random, Qty 1, Unit Price 100.25, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 100
+    And Add or Edit Customs Form Item 2; Description=random, Qty 1, Unit Price 100.25, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
     Then Expect Customs Form Total Value to be 200.75
     Then Expect Customs Form Total Pounds to be 2
     Then Expect Customs Form Total Ounces to be 2
@@ -67,20 +62,17 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 1000, Weight(lbs) 1, Weight(oz) 1 Origin United States , Tariff 100
     Then Expect Customs Form Item Grid count to be 1
-    And Add or Edit Customs Form Item 2; Description=random, Qty 2, Unit Price 2000, Weight(lbs) 2, Weight(oz) 2 Origin United States , Tariff 200
+    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 1000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
+    And Add or Edit Customs Form Item 2; Description=random, Qty 2, Unit Price 2000, Weight(lbs) 2, Weight(oz) 2 Origin United States, Tariff 200
     Then Expect Customs Form Item Grid count to be 2
-    And Add or Edit Customs Form Item 3; Description=random, Qty 3, Unit Price 3000, Weight(lbs) 3, Weight(oz) 3 Origin United States , Tariff 300
+    And Add or Edit Customs Form Item 3; Description=random, Qty 3, Unit Price 3000, Weight(lbs) 3, Weight(oz) 3 Origin United States, Tariff 300
     Then Expect Customs Form Item Grid count to be 3
 
     Then Delete Customs Form Item 3
@@ -101,9 +93,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Expect single-order form International Address fields are visible
@@ -185,9 +174,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Add single-order form Item - Quantity 1, ID random, Description random
@@ -253,9 +239,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
@@ -293,9 +276,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
@@ -334,9 +314,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     #Then Set single-order form Service to Priority Mail International Flat Rate Envelope
@@ -364,20 +341,17 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     And Sign out
 
       # North Korea - Internal Transaction # Required
-  @international_rogue_countries @international@international_rogue_countries_nk @international_failure
+  @international_rogue_countries @international@international_rogue_countries_nk @international_failure @rob_int
   Scenario: North Korea - Internal Transaction # Required
     And I Add a new order
     Then Set single-order form Ship-From to default
     Then Set single-order Ship-To country to Democratic People's Republic of (North) Korea
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
-      | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea    | random  | random  |
+      | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea| random  | random  |
     #Then Set single-order form Service to Priority Mail International Flat Rate Envelope
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     And Open customs form
@@ -414,9 +388,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     #Then Set single-order form Service to "First-Class Mail International Large Envelope/Flat"
 
     Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
     Then Set single-order form Service to "Priority Mail International Package"
 
     Then Set single-order form Ounces to 5
@@ -442,25 +413,4 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set customs form ITN# to "random"
     Then Set customs form I agree to true
     Then Close customs form
-    And Sign out
-
-  @fpo_shipping @international
-  Scenario: Domestic FPO Address
-    And I Add a new order
-    Then Set single-order form Ship-From to default
-    Then Set single-order Ship-To country to United States
-    Then Set single-order form Ship-To address to
-      | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
-      | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
-    Then Set single-order form Ounces to 5
-    Then Set single-order form Length to 1
-    Then Set single-order form Height to 1
-    Then Set single-order form Width to 1
-    Then Set single-order form Service to "Priority Mail International Package"
-
-    And Open customs form
-    Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Close customs form
-    Then Print
     And Sign out

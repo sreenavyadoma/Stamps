@@ -25,13 +25,13 @@ module Batch
       input
     end
 
-    def less_link
+    def less
       Link.new (@browser.spans :text => "Less").first
     end
 
     def hide
       click_form
-      less_link.click_while_present
+      less.click_while_present
     end
 
     def expand
@@ -56,7 +56,6 @@ module Batch
       expand
       Textbox.new(@browser.text_field :name => 'Phone')
     end
-
   end
 
   class InternationalShipTo < ShipToFields
@@ -123,29 +122,68 @@ module Batch
       field.data_qtip_field data_error_field, "data-errorqtip"
       field
     end
-
+=begin
     def country
       Textbox.new (@browser.text_fields :name => "CountryCode").last
     end
+=end
   end
 
   class DomesticShipTo < ShipToFields
 
     def set address
-      less = less_link
+      less = self.less
       country_drop_down = self.country
       text_box = self.text_area
 
-      50.times{
+      30.times{
         text_box.send_keys :enter
         text_box.set address
+        text_box.scroll_into_view
         text_box.send_keys address
+        text_box.scroll_into_view
+
         sleep 1
+        text_box.scroll_into_view
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
+        text_box.scroll_into_view
+        click_form
+        click_form
+        break if less.present?
+        text_box.scroll_into_view
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
         click_form
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
+        break if less.present?
+        click_form
+        click_form
+        text_box.scroll_into_view
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
+        text_box.scroll_into_view
+        click_form
+        click_form
+        break if less.present?
+        text_box.scroll_into_view
+        country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
+        country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
+        text_box.scroll_into_view
         break if less.present?
       }
     end
@@ -162,14 +200,37 @@ module Batch
 
       50.times{
         text_box.set address
-        text_box.send_keys :enter
+        text_box.scroll_into_view
+        click_form
+        click_form
+        return exact_address_not_found if exact_address_not_found.present?
         text_box.send_keys address
+        text_box.scroll_into_view
+        click_form
+        click_form
+        return exact_address_not_found if exact_address_not_found.present?
         sleep 1
         country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
         click_form
+        click_form
+        return exact_address_not_found if exact_address_not_found.present?
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
+        return exact_address_not_found if exact_address_not_found.present?
+        click_form
+        return exact_address_not_found if exact_address_not_found.present?
         country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
+        return exact_address_not_found if exact_address_not_found.present?
+        country_drop_down.drop_down.safe_click
+        text_box.scroll_into_view
+        click_form
+        click_form
         return exact_address_not_found if exact_address_not_found.present?
       }
     end
@@ -185,6 +246,7 @@ module Batch
   end
 
   class SuggestShipTo < ShipToFields
+
 
   end
 
@@ -817,6 +879,7 @@ module Batch
       5.times {
         begin
           button.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
           selection_label.safe_click
           click_form
           break if box.text.include? selection
@@ -889,6 +952,7 @@ module Batch
       10.times {
         begin
           button.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
           selection_label.safe_click
           click_form
           selected_service = box.text
@@ -963,23 +1027,29 @@ module Batch
     def select country
       log "Select Country #{country}"
 
-      dd_button = drop_down
-      box = text_box
-      dd_button.safe_click
-      selection_label = Label.new @browser.li(:text => /#{country}/)
+      selection_1 = Label.new @browser.li :text => country
+      selection_2 = Label.new @browser.li :text => "#{country} "
+
+      text_box = self.text_box
+      drop_down = self.drop_down
       10.times {
         begin
-          dd_button.safe_click unless selection_label.present?
-          selection_label.safe_click
-          click_form
-          selected_country_text = box.text
-          log "Selected Country  #{selected_country_text} - #{(selected_country_text.include? country)?"#{country} selected": "#{country} not selected"}"
-          break if selected_country_text.include? country
+          drop_down.safe_click unless selection_1.present? || selection_2.present?
+          if selection_1.present?
+            selection_1.scroll_into_view
+            selection_1.safe_click
+          elsif selection_2.present?
+            selection_2.scroll_into_view
+            selection_2.safe_click
+          end
+
+          log "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
+          break if text_box.text.include? country
         rescue
           #ignore
         end
       }
-      log "Ship-To country now set to #{country}"
+      log "#{country} selected."
       InternationalShipTo.new @browser unless country.include? "United States"
     end
   end
@@ -1023,13 +1093,14 @@ module Batch
         ship_from_selection_field = @browser.div :text => "#{selection}"
       end
 
-      ship_from_selection_label = Label.new ship_from_selection_field
+      selection_label = Label.new ship_from_selection_field
 
       if selection.downcase.include? "manage shipping"
         10.times{
           begin
-            ship_from_dropdown.safe_click unless ship_from_selection_label.present?
-            ship_from_selection_label.safe_click
+            ship_from_dropdown.safe_click unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
             return @manage_shipping_adddress if @manage_shipping_adddress.present?
           rescue
             #ignore
@@ -1038,8 +1109,9 @@ module Batch
         }
       else
         10.times{
-          ship_from_dropdown.safe_click unless ship_from_selection_label.present?
-          ship_from_selection_label.safe_click
+          ship_from_dropdown.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
+          selection_label.safe_click
           break if ship_from_textbox.text.length > 3
         }
       end
@@ -1129,8 +1201,7 @@ module Batch
 
     def add_item
       add_item = Link.new @browser.span :text => "Add Item"
-      log "Add Item Button #{(browser_helper.present? add_item)?"Exist!":'DOES NOT EXIST!'}"
-      add_item
+      log "Add Item Button #{(add_item.present?)?"Exist!":'DOES NOT EXIST!'}"
 
       line_item = SingleOrderFormLineItem.new @browser
       5.times{

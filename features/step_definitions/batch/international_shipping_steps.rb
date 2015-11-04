@@ -1,5 +1,6 @@
 
 Then /^Set single-order Ship-To country to (.*)$/ do |country|
+  log "Set single-order Ship-To country to #{country}"
   @international_ship_to = batch.single_order_form.ship_to.country.select country
 end
 
@@ -224,8 +225,8 @@ Given /^Set customs form Package Contents to \"(.+)\"$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
-  @customs_form.package_contents_dd.select value
-  contents = @customs_form.pacakge_contents.text
+  @customs_form.package_contents.select value
+  contents = @customs_form.package_contents.text_box.text
   contents.should include value
 end
 
@@ -233,14 +234,14 @@ Given /^Set customs form Non-Delivery Options to \"(.+)\"$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
-  @customs_form.non_delivery_options_dd.select value
+  @customs_form.non_delivery_options.select value
 end
 
 Given /^Set customs form Internal Transaction Number to \"(.+)\"$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
-  @customs_form.internal_transaction_dd.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+  @customs_form.internal_transaction.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
   sleep 1
 end
 
@@ -287,18 +288,12 @@ Given /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit 
   item.unit_price.set price
   item.lbs.set lbs
   item.oz.set oz
-  #begin
-  #sleep 2
   item.origin_country.select origin_country
-  #end unless o#rigin.downcase.include? "states"
-  #item.origin_country.set origin_country
   item.hs_tariff.set tariff
-  log item.present?
-  log ""
 end
 
 Given /^Delete Customs Form Item (\d+)$/ do |item_number|
-  count = @customs_item_grid.item_count
+  count = @customs_item_grid.line_item_count
   item = @customs_item_grid.item item_number.to_i
   if count > 1
     item.delete.click_while_present
@@ -318,21 +313,6 @@ Given /^Add single-order form Item - Quantity (\d+), ID ([\w ]+), Description ([
   line_item.qty qty
   line_item.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
   line_item.description (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
-end
-
-Given /^Expect single-order form ([\w -]+) field is hidden$/ do |field_name|
-end
-
-Given /^Expect International Ship-To ([\w ]+) Field Attributes are correct$/ do |field_name|
-
-end
-
-Given /^Expect Customs Form Checkbox \"(.+)\" is visible$/ do |checkbox|
-
-end
-
-Given /^Expect Customs Form Add Item tooltip to be "(.+)"$/ do |tooltip|
-
 end
 
 Given /^Expect Customs Form More Info to be (.+)$/ do |value|
@@ -403,14 +383,14 @@ end
 Given /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
-  text = @customs_form.internal_transaction_dd.text_box.text
+  text = @customs_form.internal_transaction.text_box.text
   log "Internal Transaction # is #{text}.  Test #{(text.include? "Required")?'Passed':'Failed'}"
   text.should eql value
 end
 
 Given /^Expect Customs Form Item Grid count to be (.+)$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  @customs_form.item_grid.item_count.should eql value.to_i
+  @customs_form.item_grid.line_item_count.should eql value.to_i
 end
 
 Given /^Expect Customs Form Total Value to be (.+)$/ do |value|
@@ -440,32 +420,19 @@ end
 Given /^Expect Customs Form Total Weight Data Error to be (.+)$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
-  browser_value = @customs_form.total_weight_error
+  browser_value = @customs_form.total_weight.data_error
+  log "Total Weight Data Error - #{(browser_value.include?value)?'Passed':'Failed'}.  Expectation:  #{value}, Actual Result:  #{browser_value}"
   browser_value.should include value
 end
 
 Given /^Close customs form$/ do
+  log "Closing customs form..."
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.close
+  log "Customs form #{(@customs_form.present?)?'closed':'is still open.'}"
 end
 
 Given /^Cancel Customs Form$/ do
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.cancel
-end
-
-Given /^Increment Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
-
-end
-
-Given /^Decrement Customs Form Weight\((\w+)\) by (\d+)$/ do |field, value|
-
-end
-
-Given /^Expect Customs Information Modal to be present$/ do
-
-end
-
-Given /^Expect Customs Form field (.+) behavior is correct$/ do |field|
-
 end
