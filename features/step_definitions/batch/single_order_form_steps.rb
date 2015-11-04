@@ -16,6 +16,7 @@ When /^Set single-order form Ship-To address to (.*)$/ do |address|
   end
 
   log "Set single-order form Ship-To address to \"#{formatted_address}\""
+
   batch.single_order_form.ship_to.domestic.set formatted_address
 end
 

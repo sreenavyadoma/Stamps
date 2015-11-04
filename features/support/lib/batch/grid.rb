@@ -943,6 +943,13 @@ module Batch
         checked_rows
       end
 
+      def total_number_of_orders
+        tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
+        count = tables.size
+        log "Total Number of Orders on Grid:  #{count}"
+        count.to_i
+      end
+
       def check_rows rows
         scroll_into_view :check_box
         log "Restoring #{} checked orders..."
@@ -956,15 +963,7 @@ module Batch
           end
         end unless rows.nil?
       end
-
     end
-
-
-
-
-
-
-    #-------------------------
 
     def age
       Age.new @browser
@@ -1074,27 +1073,8 @@ module Batch
       FirstColumn.new @browser
     end
 
-
-
-
-
-
-
-
-
-
-
-
-
     def paging_toolbar
       OrderGridPagingToolbar.new @browser
-    end
-
-    def total_number_of_orders
-      tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
-      count = tables.size
-      log "Total Number of Orders on Grid:  #{count}"
-      count.to_i
     end
 
     def wait_until_present *args

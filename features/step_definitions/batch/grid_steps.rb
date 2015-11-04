@@ -10,7 +10,6 @@ When /^Uncheck row (\d+) on the order grid$/ do |row|
   #end_step step
 end
 
-# | name | company    | street_address      | city          | state | zip   | country       | phone       |  email
 Then /^Expect Ship-To address to be;$/ do |table|
   param_hash = table.hashes.first
   step "Expect order-grid Recipient to be #{param_hash[:name]}"
@@ -459,7 +458,6 @@ Then /^Expect order-grid Order Total to be (.+)$/ do |expected|
   end unless expected.length == 0
 end
 
-# | insured_value  | pounds  | ounces | length  | width | height  |
 Then /^Expect Order details to be;$/ do |table|
   expected_hash = table.hashes.first
   step "Expect order-grid Insured Value to be $#{expected_hash[:insured_value]}"
@@ -490,5 +488,3 @@ Then /^Expect single-order form Order ID equals Grid order ID$/ do
   log "Grid Order ID: #{grid_order_id}.  single-order form Order ID:  #{single_order_form_order_id}.  Test #{(grid_order_id==single_order_form_order_id) ? 'Passed' : 'Failed'}"
   grid_order_id.should eql single_order_form_order_id
 end
-
-
