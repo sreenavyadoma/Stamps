@@ -18,14 +18,14 @@ end
 
 Then /^Expect Ship Cost equals Total amount$/ do
   total_amount = batch.single_order_form.total
-  ship_cost = batch.grid.ship_cost(@order_id)
+  ship_cost = batch.grid.ship_cost.data @order_id
   10.times { |counter|
     begin
       sleep(1)
       log_expectation_eql "#{counter}. Ship Cost", total_amount, ship_cost
       break if ship_cost.eql? total_amount
       total_amount = batch.single_order_form.total
-      ship_cost = batch.grid.ship_cost(@order_id)
+      ship_cost = batch.grid.ship_cost.data @order_id
     rescue
       #ignore
     end

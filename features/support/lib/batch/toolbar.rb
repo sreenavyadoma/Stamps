@@ -133,7 +133,7 @@ module Batch
       end
 
       order_grid = Grid.new @browser
-      checked_rows_cache = order_grid.cache_checked_rows
+      checked_rows_cache = order_grid.first_column.cache_checked_rows
 
       naws_plugin_error = NawsPluginError.new @browser
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
@@ -142,7 +142,7 @@ module Batch
       5.times {
 
         if install_plugin_error.present?
-          order_grid.check_rows checked_rows_cache
+          order_grid.first_column.check_rows checked_rows_cache
           install_plugin_error.close
           return nil
         end
@@ -151,7 +151,7 @@ module Batch
           if error_connecting_to_plugin.present?
             5.times{
               error_connecting_to_plugin.ok
-              order_grid.check_rows checked_rows_cache
+              order_grid.first_column.check_rows checked_rows_cache
               break unless error_connecting_to_plugin.present?
             }
           end
@@ -159,13 +159,13 @@ module Batch
           if naws_plugin_error.present?
             5.times{
               naws_plugin_error.ok
-              order_grid.check_rows checked_rows_cache
+              order_grid.first_column.check_rows checked_rows_cache
               break unless naws_plugin_error.present?
             }
           end
 
           return window if window.present?
-          order_grid.check_rows checked_rows_cache
+          order_grid.first_column.check_rows checked_rows_cache
           browser_helper.click browser_print_button, "print"
         rescue
           #ignore
@@ -181,10 +181,10 @@ module Batch
 
     def add
       single_order_form = SingleOrderForm.new @browser
-      order_grid = Grid.new @browser
+      grid = Grid.new @browser
       add_button = Button.new (@browser.spans :text => 'Add').first
 
-      old_grid_row_1_id = order_grid.order_id 1
+      old_grid_row_1_id = grid.order_id.row 1
       log "Grid 1 order ID #{old_grid_row_1_id}"
       20.times do |count|
         begin
@@ -194,8 +194,8 @@ module Batch
             #log "#{count} single-order form present?  #{single_order_form.present?}"
             break if single_order_form.present?
           }
-          new_id = old_grid_row_1_id != order_grid.order_id(1) && order_grid.order_id(1) == single_order_form.order_id
-          log "Old Grid 1 ID: #{old_grid_row_1_id}, New Grid 1 ID: #{order_grid.order_id(1)}, Order Details Order ID:  #{order_grid.order_id(1)} - Add #{(new_id)?"successful":"failed"}"
+          new_id = old_grid_row_1_id != grid.order_id.row(1) && grid.order_id.row(1) == single_order_form.order_id
+          log "Old Grid 1 ID: #{old_grid_row_1_id}, New Grid 1 ID: #{grid.order_id.row(1)}, Order Details Order ID:  #{grid.order_id.row(1)} - Add #{(new_id)?"successful":"failed"}"
           return single_order_form if new_id
         rescue
           #ignore

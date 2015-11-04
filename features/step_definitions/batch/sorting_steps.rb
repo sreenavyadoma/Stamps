@@ -1,45 +1,46 @@
 Then /^Sort Order Grid (.*) in (.*) order$/ do |column, sort_order|
+  @grid = batch.filter.awaiting_shipment
   case column.downcase
     when "age"
-      batch.filter.awaiting_shipment.column.age.sort_order(sort_order).should be true
+      @grid.age.sort(sort_order).should be true
     when "order id"
-      batch.filter.awaiting_shipment.column.order_id.sort_order(sort_order).should be true
+      @grid.order_id.sort(sort_order).should be true
     when "order date"
-      batch.filter.awaiting_shipment.column.order_date.sort_order(sort_order).should be true
+      @grid.order_date.sort(sort_order).should be true
     when "recipient"
-      batch.filter.awaiting_shipment.column.recipient.sort_order(sort_order).should be true
+      @grid.recipient.sort(sort_order).should be true
     when "address"
-      batch.filter.awaiting_shipment.column.domestic.sort_order(sort_order).should be true
+      @grid.domestic.sort(sort_order).should be true
     when "city"
-      batch.filter.awaiting_shipment.column.city.sort_order(sort_order).should be true
+      @grid.city.sort(sort_order).should be true
     when "state"
-      batch.filter.awaiting_shipment.column.state.sort_order(sort_order).should be true
+      @grid.state.sort(sort_order).should be true
     when "zip"
-      batch.filter.awaiting_shipment.column.zip.sort_order(sort_order).should be true
+      @grid.zip.sort(sort_order).should be true
     when "phone"
-      batch.filter.awaiting_shipment.column.phone.sort_order(sort_order).should be true
+      @grid.phone.sort(sort_order).should be true
     when "email"
-      batch.filter.awaiting_shipment.column.email.sort_order(sort_order).should be true
+      @grid.email.sort(sort_order).should be true
     when "qty"
-      batch.filter.awaiting_shipment.column.qty.sort_order(sort_order).should be true
+      @grid.qty.sort(sort_order).should be true
     when "item sku"
-      batch.filter.awaiting_shipment.column.item_sku.sort_order(sort_order).should be true
+      @grid.item_sku.sort(sort_order).should be true
     when "item name"
-      batch.filter.awaiting_shipment.column.item_name.sort_order(sort_order).should be true
+      @grid.item_name.sort(sort_order).should be true
     when "ship from"
-      batch.filter.awaiting_shipment.column.ship_from.sort_order(sort_order).should be true
+      @grid.ship_from.sort(sort_order).should be true
     when "weight"
-      batch.filter.awaiting_shipment.column.weight.sort_order(sort_order).should be true
+      @grid.weight.sort(sort_order).should be true
     when "insured value"
-      batch.filter.awaiting_shipment.column.insured_value.sort_order(sort_order).should be true
+      @grid.insured_value.sort(sort_order).should be true
     when "order status"
-      batch.filter.awaiting_shipment.column.order_status.sort_order(sort_order).should be true
+      @grid.order_status.sort(sort_order).should be true
     when "ship date"
-      batch.filter.awaiting_shipment.column.ship_date.sort_order(sort_order).should be true
+      @grid.ship_date.sort(sort_order).should be true
     when "order total"
-      batch.filter.awaiting_shipment.column.order_total.sort_order(sort_order).should be true
+      @grid.order_total.sort(sort_order).should be true
     when "country"
-      batch.filter.awaiting_shipment.column.country.sort_order(sort_order).should be true
+      @grid.country.sort(sort_order).should be true
 
     else
       raise "The error lay between the chair and the keyboard... know how to use the API pls."
