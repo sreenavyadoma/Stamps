@@ -4,7 +4,7 @@ Feature:  BVT Order Creation
   Background:
     Given I am signed in as a batch shipper
 
-  @bvt_add_new_order
+  @update_orders_to_shipstation
   Scenario:  Add a new order
     And I Add a new order
     Then Set single-order form Ship-From to default
