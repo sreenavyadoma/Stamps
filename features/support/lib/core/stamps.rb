@@ -247,6 +247,7 @@ module Stamps
       #pick a random address from the zone selected above.
       zone_addresses_values[rand(zone_addresses_values.size)]
     end
+
   end
 
 end
