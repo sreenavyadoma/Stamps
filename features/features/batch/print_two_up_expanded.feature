@@ -6,7 +6,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Given I am signed in as a batch shipper ff/autosuggest/326tsetaqcdS!
 
 
-  @two_up_expanded
+  @two_up_expanded @two_up_expanded_1
   Scenario: User Prints 1 Domestic label on 8.5x11 - left side
 
     And I Add a new order
@@ -106,8 +106,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print Sample
     Then Print
 
-    Then Expect all printed Order IDs do not exist in Awaiting Shipment tab
-    Then Expect all printed Order IDs exist in Shipped tab
     Then Sign out
 
   @two_up_expanded
@@ -253,7 +251,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI SFR Box | 8.5x11  | random           | random           | random | random  | random      | Mexico | random  | random  |
-    Then Set single-order form Service to "Priority Mail Express Package"
+    Then Set single-order form Service to "Priority Mail Express International Package"
     Then Set single-order form Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"

@@ -44,7 +44,6 @@ module Postage
       verifying_account_info = Label.new @browser.div :text => "Verifying account information..."
       signed_in_user = Label.new @browser.span :id => "userNameText"
 
-
       10.times {
         sign_in_link.safe_click unless username_textbox.present?
         username_textbox.set username
