@@ -70,8 +70,8 @@ Given /^Expect single-order form Height data error tooltip to be \"(.+)\"$/ do |
 end
 
 Given /^Expect Grid ship cost data error tooltip to be \"(.+)\"$/ do |value|
-  grid_order_id = batch.grid.order_id 1
-  grid_ship_cost = batch.grid.ship_cost grid_order_id
+  grid_order_id = batch.grid.order_id.row 1
+  grid_ship_cost = batch.grid.ship_cost.data grid_order_id
   browser_error_message = grid_ship_cost.attribute_value "data-errorqtip"
   browser_error_message.should include value
   log "Error message is #{browser_error_message}"
@@ -84,18 +84,18 @@ Then /^Expect order-grid Ship Cost error to contain \"(.*)\"$/ do |expectation|
 
   #  Ray, pass the order id of the order you're expecting to have errors, it wlll give you the error string from the data-qtip property for that div.
 
-  grid_order_id = batch.grid.order_id 1
+  grid_order_id = batch.grid.order_id.row 1
   log "Grid order id is #{grid_order_id}"
-  ship_cost_error = batch.grid.ship_cost_error grid_order_id
+  ship_cost_error = batch.grid.ship_cost.data_error grid_order_id
   log ship_cost_error
   ship_cost_error.should include expectation
 
-  ship_cost_error = batch.grid.ship_cost_error "81453"
+  ship_cost_error = batch.grid.ship_cost.data_error "81453"
   log ship_cost_error
 
-  ship_cost_error = batch.grid.ship_cost_error "81408"
+  ship_cost_error = batch.grid.ship_cost.data_error "81408"
   log ship_cost_error
 
-  ship_cost_error = batch.grid.ship_cost_error "81407"
+  ship_cost_error = batch.grid.ship_cost.data_error "81407"
   log ship_cost_error
 end

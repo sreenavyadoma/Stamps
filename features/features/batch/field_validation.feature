@@ -9,7 +9,7 @@ Feature: Add Missing Field Validation
     Then Set single-order form Ship-From to default
 
   #  Add Missing Validation Logic for Email
-    Then Set Email to @@
+    Then Set single-order form Email to @@
     Then Set single-order form Service to "Priority Mail Large/Thick Envelope"
     Then Expect single-order form Domestic Email data error tooltip to be "Please enter a valid email address"
     Then Expect order-grid Ship Cost error to contain "Please enter a valid email address"

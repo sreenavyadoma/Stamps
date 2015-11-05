@@ -10,12 +10,16 @@ When /^Set single-order form Ship-To address to (.*)$/ do |address|
   log "Set single-order form Ship-To address to \"#{address}\""
 
   if address.downcase.include? "random"
-    formatted_address = BatchHelper.instance.format_address(test_helper.random_ship_to)
+    random_ship_to_address = test_helper.random_ship_to
+    formatted_address = BatchHelper.instance.format_address(random_ship_to_address)
+    step "Set single-order form Phone to #{random_ship_to_address["phone"]}"
+    step "Set single-order form Email to #{random_ship_to_address["email"]}"
   else
-    formatted_address = BatchHelper.instance.format_address random_ship_to address
+    formatted_address = BatchHelper.instance.format_address address
   end
 
   log "Set single-order form Ship-To address to \"#{formatted_address}\""
+
   batch.single_order_form.ship_to.domestic.set formatted_address
 end
 
@@ -38,9 +42,9 @@ When /^Set single-order form Phone to (.*)$/ do |phone|
   end unless phone.length == 0
 end
 
-When /^Set Email to (.*)$/ do |email|
+When /^Set single-order form Email to (.*)$/ do |email|
   begin
-    log "Set Email to \"#{email}\""
+    log "Set single-order form Email to \"#{email}\""
     batch.single_order_form.ship_to.domestic.email.set email
   end unless email.length == 0
   #end_step step
