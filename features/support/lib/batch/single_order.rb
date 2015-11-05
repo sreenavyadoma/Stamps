@@ -1,5 +1,6 @@
 module Batch
 
+
   class OrderDetails < BatchObject
     def click_form
       item_label = Label.new @browser.label :text => 'Item:'
@@ -107,18 +108,18 @@ module Batch
       Textbox.new @browser.text_field :name => "PostalCode"
     end
 
-    def phone
-      field = Textbox.new (@browser.text_fields :name => "Phone").last
-      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
-      data_error_field = data_error_collection[5]
-      field.data_qtip_field data_error_field, "data-errorqtip"
-      field
-    end
-
     def email
       field = Textbox.new (@browser.text_fields :name => "Email").last
       data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
       data_error_field = data_error_collection[6]
+      field.data_qtip_field data_error_field, "data-errorqtip"
+      field
+    end
+
+    def phone
+      field = Textbox.new (@browser.text_fields :name => "Phone").last
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[5]
       field.data_qtip_field data_error_field, "data-errorqtip"
       field
     end
@@ -153,7 +154,7 @@ module Batch
         text_box.send_keys :enter
         text_box.send_keys address
         grid_recipient.scroll_into_view
-        grid_recipient.grid_company
+        grid_address.grid_company
         grid_recipient.grid_address
         text_box.scroll_into_view
 
@@ -775,43 +776,7 @@ module Batch
     end
   end
 
-  class CustomsFields < BatchObject
-
-    def browser_edit_form_button
-      links = @browser.links :css => "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
-      Link.new links.first
-    end
-
-    def edit_form
-      @customs_form = CustomsForm.new @browser
-      edit_form_button = browser_edit_form_button
-      20.times{
-        edit_form_button.safe_click
-        break if @customs_form.present?
-      }
-      raise "Customs Information Modal is not visible." unless @customs_form.present?
-      @customs_form
-    end
-
-    def browser_restrictions_button
-      Button.new @browser.span :text => "Restrictions..."
-    end
-
-    def restrictions
-      restrictions_button = browser_restrictions_button
-      view_restrictions = ViewRestrictions.new @browser
-      5.times{
-        restrictions_button.safe_click
-        if view_restrictions.present?
-          return view_restrictions
-        end
-      }
-      nil
-    end
-
-  end
-
-  class Tracking < OrderDetails
+  class BatchTracking < OrderDetails
     def text_box
       Textbox.new @browser.text_field :name => 'Tracking'
     end
@@ -878,7 +843,7 @@ module Batch
 
   end
 
-  class Service < OrderDetails
+  class BatchService < OrderDetails
 
     private
 
@@ -1137,9 +1102,6 @@ module Batch
     end
   end
 
-  #
-  #  Single Order Edit Form
-  #
   class SingleOrderForm < OrderDetails
 
     def ship_from
@@ -1147,11 +1109,11 @@ module Batch
     end
 
     def service
-      Service.new @browser
+      BatchService.new @browser
     end
 
     def tracking
-      Tracking.new @browser
+      BatchTracking.new @browser
     end
 
     def address_textbox
@@ -1458,6 +1420,6 @@ module Batch
     end
 
 
-  end #SingleOrderEdit Module
+  end
 
 end

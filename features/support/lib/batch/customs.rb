@@ -43,6 +43,42 @@ module Batch
     end
   end
 
+  class CustomsFields < BatchObject
+
+    def browser_edit_form_button
+      links = @browser.links :css => "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
+      Link.new links.first
+    end
+
+    def edit_form
+      @customs_form = CustomsForm.new @browser
+      edit_form_button = browser_edit_form_button
+      20.times{
+        edit_form_button.safe_click
+        break if @customs_form.present?
+      }
+      raise "Customs Information Modal is not visible." unless @customs_form.present?
+      @customs_form
+    end
+
+    def browser_restrictions_button
+      Button.new @browser.span :text => "Restrictions..."
+    end
+
+    def restrictions
+      restrictions_button = browser_restrictions_button
+      view_restrictions = ViewRestrictions.new @browser
+      5.times{
+        restrictions_button.safe_click
+        if view_restrictions.present?
+          return view_restrictions
+        end
+      }
+      nil
+    end
+
+  end
+
   class CustomsItemGrid < BatchObject
 
     def line_item_count

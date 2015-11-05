@@ -1,5 +1,6 @@
 $LOAD_PATH << File.expand_path('../../lib', __FILE__)
-$LOAD_PATH << File.expand_path('lib/features.batch', __FILE__)
+$LOAD_PATH << File.expand_path('lib/features/batch', __FILE__)
+$LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
 require 'data_magic'
 require 'rake'
@@ -22,9 +23,6 @@ require_relative 'lib/core/logger'
 require_relative 'lib/batch/batch_helper'
 require_relative 'lib/batch/fields'
 require_relative 'lib/postage/postage_helper'
-require_relative 'lib/postage/fields'
-
-#Profile Patch
 
 module Selenium
   module WebDriver
