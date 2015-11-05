@@ -40,7 +40,7 @@ change_settings: --tags @settings --guess URL=qacc BROWSER=ff USR=auto37 PW=326t
 
 thermal_printing: --tags @thermal_printing --guess URL=qacc BROWSER=ff USR=auto040 PW=326tsetaqcdS!
 
-print_two_up: --tags @two_up --guess URL=qacc BROWSER=ie USR=auto02 PW=326tsetaqcdS!
+two_up_expanded: --tags @two_up_expanded --guess URL=qacc BROWSER=ie USR=auto02 PW=326tsetaqcdS!
 
 sorting: --tags @sort --guess URL=shipstation BROWSER=ff USR=autosuggest PW=326tsetaqcdS!
 
