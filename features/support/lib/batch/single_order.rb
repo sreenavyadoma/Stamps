@@ -134,12 +134,16 @@ module Batch
     def set address
       less = self.less
       country_drop_down = self.country
+      phone = self.phone
       text_box = self.text_area
 
       30.times{
         text_box.send_keys :enter
         text_box.set address
         text_box.scroll_into_view
+        text_box.send_keys address
+        text_box.send_keys :tab
+        text_box.send_keys :enter
         text_box.send_keys address
         text_box.scroll_into_view
 

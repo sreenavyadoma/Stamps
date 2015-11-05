@@ -6,7 +6,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Given I am signed in as a batch shipper ff/autosuggest/326tsetaqcdS!
 
 
-  @two_up_expanded
+  @two_up_expanded @two_up_expanded_1
   Scenario: User Prints 1 Domestic label on 8.5x11 - left side
 
     And I Add a new order
