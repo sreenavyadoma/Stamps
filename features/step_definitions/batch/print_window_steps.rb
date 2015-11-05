@@ -120,7 +120,6 @@ Then /^Expect Print Window requires (\d+) label sheets$/ do |sheets|
   actual.should eql sheets
 end
 
-
 Then /^Print raises a Printing Error/ do
   expect{batch.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end

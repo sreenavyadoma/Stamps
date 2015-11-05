@@ -811,76 +811,7 @@ module Batch
 
   end
 
-  class SingleOrderFormLineItem < BatchObject
-    def remove_field
-      @browser.span :css => "span[class*=sdc-icon-remove]"
-    end
-
-    public
-
-    def present?
-      browser_helper.present? remove_field
-    end
-
-    def wait_until_present
-      browser_helper.wait_until_present remove_field
-    end
-
-    def delete_line *args
-      browser_fields = @browser.spans :css => "span[class*=sdc-icon-remove]"
-      browser_fields
-      browser_field = browser_fields
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
-    end
-
-    def qty *args
-      browser_field = Textbox.new @browser.text_field :name => "Quantity"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
-    end
-
-    def id *args
-      browser_field = Textbox.new @browser.text_field :name => "Sku"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
-    end
-
-    def description *args
-      browser_field = Textbox.new @browser.text_field :name => "ItemName"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
-    end
-  end
-
   class Tracking < OrderDetails
-
-    private
-
     def text_box
       Textbox.new @browser.text_field :name => 'Tracking'
     end
@@ -888,8 +819,6 @@ module Batch
     def drop_down
       Button.new @browser.div :css => "div[id^=trackingdroplist-][id$=-trigger-picker]"
     end
-
-    public
 
     def text
       text_box.text
@@ -1140,6 +1069,72 @@ module Batch
       end
     end
 
+  end
+
+  class SingleOrderFormLineItem < BatchObject
+    def remove_field
+      @browser.span :css => "span[class*=sdc-icon-remove]"
+    end
+
+    public
+
+    def present?
+      browser_helper.present? remove_field
+    end
+
+    def wait_until_present
+      browser_helper.wait_until_present remove_field
+    end
+
+    def delete_line *args
+      browser_fields = @browser.spans :css => "span[class*=sdc-icon-remove]"
+      browser_fields
+      browser_field = browser_fields
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
+    end
+
+    def qty *args
+      browser_field = Textbox.new @browser.text_field :name => "Quantity"
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
+    end
+
+    def id *args
+      browser_field = Textbox.new @browser.text_field :name => "Sku"
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
+    end
+
+    def description *args
+      browser_field = Textbox.new @browser.text_field :name => "ItemName"
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
+    end
   end
 
   #
