@@ -64,13 +64,6 @@ Then /^Close Print Modal$/ do
   batch.toolbar.print_modal.close
 end
 
-=begin
-Then /^Print$/ do
-  @printing_error = batch.toolbar.print_modal.print
-  @printing_error.should eql ""
-end
-=end
-
 Then /^Print expecting error (.*)$/ do |error_message|
   order_error = batch.toolbar.print_expecting_error
   actual_error_message = order_error.error_message

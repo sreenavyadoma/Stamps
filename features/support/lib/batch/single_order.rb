@@ -154,6 +154,26 @@ module Batch
         email.send_keys :tab
         email.send_keys :enter
         break if less.present?
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        email.send_keys :tab
+        email.send_keys :enter
+        break if less.present?
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        email.send_keys :tab
+        email.send_keys :enter
+        break if less.present?
 
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
