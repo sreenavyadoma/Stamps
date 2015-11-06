@@ -28,7 +28,8 @@ And /^Set Order Details Form Ship-To to ambiguous address$/ do |table|
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
-  @ambiguous_address_module.row = row
+  log "Start:  Select row #{row} from Exact Address Not Found module"
+  batch.single_order_form.ship_to.ambiguous.row = row
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
