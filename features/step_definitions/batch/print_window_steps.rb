@@ -43,7 +43,7 @@ When /^Open Print Modal$/ do
 end
 
 Then /^Select Print Media \"(.*)\"$/ do |print_media|
-  batch.toolbar.print_modal.print_media.select print_media
+  batch.toolbar.print_modal.printing_on.select print_media
 end
 
 Then /^Select Printer \"(.*)\"$/ do |printer|
@@ -51,7 +51,7 @@ Then /^Select Printer \"(.*)\"$/ do |printer|
 end
 
 Then /^Expect Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, expected_value|
-  actual_value = batch.toolbar.print_modal.print_media.selection :tooltip, print_media
+  actual_value = batch.toolbar.print_modal.printing_on.selection :tooltip, print_media
   log "Expect Print Media \"#{print_media}\" tooltip to include \"#{expected_value}\" - Test #{(actual_value.include? expected_value)?"Passed":"Failed"}"
   actual_value.should include expected_value
 end

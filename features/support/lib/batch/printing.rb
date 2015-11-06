@@ -156,6 +156,21 @@ module Batch
     end
   end
 
+  class PrintingOn < BatchObject
+    def select selection
+      drop_down = Button.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
+      text_box = Textbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
+      selection_field = Label.new @browser.li :text => selection
+
+      10.times{
+        drop_down.safe_click unless selection_field.present?
+        selection_field.safe_click
+        input_text = text_box.text
+        break if input_text.include? selection
+      }
+    end
+  end
+
   class PrintWindow < PrintWindowBase
     def initialize browser, *args
       super browser
@@ -172,10 +187,8 @@ module Batch
       Dropdown.new @browser, drop_down, :li, input
     end
 
-    def print_media
-      drop_down = @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
-      input = @browser.text_field :css => "input[name^=printmediadroplist]"
-      Dropdown.new @browser, drop_down, :li, input
+    def printing_on
+      PrintingOn.new @browser
     end
 
     def ship_date_input
