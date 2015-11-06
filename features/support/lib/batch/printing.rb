@@ -193,7 +193,7 @@ module Batch
     end
 
     def labels_required
-      @browser.label(:css => 'label[class*=label-sheets-requred]').text
+      @browser.label(:css => 'label[class*=label-sheets-requred]').text.gsub(/[^\d]/, '')
     end
 
     def title

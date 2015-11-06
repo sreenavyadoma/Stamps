@@ -107,18 +107,18 @@ module Batch
       Textbox.new @browser.text_field :name => "PostalCode"
     end
 
-    def phone
-      field = Textbox.new (@browser.text_fields :name => "Phone").last
-      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
-      data_error_field = data_error_collection[5]
-      field.data_qtip_field data_error_field, "data-errorqtip"
-      field
-    end
-
     def email
       field = Textbox.new (@browser.text_fields :name => "Email").last
       data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
       data_error_field = data_error_collection[6]
+      field.data_qtip_field data_error_field, "data-errorqtip"
+      field
+    end
+
+    def phone
+      field = Textbox.new (@browser.text_fields :name => "Phone").last
+      data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
+      data_error_field = data_error_collection[5]
       field.data_qtip_field data_error_field, "data-errorqtip"
       field
     end
@@ -134,58 +134,255 @@ module Batch
     def set address
       less = self.less
       country_drop_down = self.country
+      phone = self.phone
+      email = self.email
       text_box = self.text_area
+      grid_recipient = Recipient.new @browser
+      grid_company = Company.new @browser
+      grid_address = Address.new @browser
+      first_column = FirstColumn.new @browser
 
       30.times{
-        text_box.send_keys :enter
-        text_box.set address
-        text_box.scroll_into_view
         text_box.send_keys address
-        text_box.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        break if less.present?
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        break if less.present?
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        email.send_keys :tab
+        email.send_keys :enter
+        break if less.present?
 
-        sleep 1
-        text_box.scroll_into_view
         country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        text_box.scroll_into_view
-        click_form
-        click_form
+        country_drop_down.drop_down.safe_click
+        first_column.scroll_into_view
+        grid_recipient.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        email.send_keys :tab
+        email.send_keys :enter
         break if less.present?
-        text_box.scroll_into_view
+        phone.set test_helper.random_phone
+        phone.set test_helper.random_phone
+        grid_address.scroll_into_view
         country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
         country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
+        email.send_keys :tab
+        email.send_keys :enter
+        first_column.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        grid_recipient.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        text_box.safe_double_click
+        text_box.safe_double_click
+        grid_address.scroll_into_view
+        phone .safe_double_click
+        email .safe_double_click
+        grid_recipient.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        first_column.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        grid_recipient.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        grid_address.scroll_into_view
+        phone .safe_double_click
+        email .safe_double_click
         break if less.present?
-        click_form
-        click_form
-        text_box.scroll_into_view
-        country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        text_box.scroll_into_view
-        click_form
-        click_form
+
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        email.send_keys :tab
+        email.send_keys :enter
+        grid_recipient.scroll_into_view
         break if less.present?
-        text_box.scroll_into_view
-        country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        text_box.scroll_into_view
+
+        phone .safe_double_click
+        email .safe_double_click
+
         break if less.present?
+        grid_recipient.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        grid_address.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone.send_keys :enter
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        first_column.scroll_into_view
+        click_form
+        phone.send_keys :tab
+        grid_company.scroll_into_view
+        click_form
+        first_column.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        text_box.safe_double_click
+        text_box.safe_double_click
+        grid_address.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        email .safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        email.send_keys :tab
+        email.send_keys :enter
+        click_form
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        break if less.present?
+
       }
+      phone.set ""
+      email.set ""
     end
 
   end
@@ -752,112 +949,7 @@ module Batch
     end
   end
 
-  class CustomsFields < BatchObject
-
-    def browser_edit_form_button
-      links = @browser.links :css => "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
-      Link.new links.first
-    end
-
-    def edit_form
-      @customs_form = CustomsForm.new @browser
-      edit_form_button = browser_edit_form_button
-      20.times{
-        edit_form_button.safe_click
-        break if @customs_form.present?
-      }
-      raise "Customs Information Modal is not visible." unless @customs_form.present?
-      @customs_form
-    end
-
-    def browser_restrictions_button
-      Button.new @browser.span :text => "Restrictions..."
-    end
-
-    def restrictions
-      restrictions_button = browser_restrictions_button
-      view_restrictions = ViewRestrictions.new @browser
-      5.times{
-        restrictions_button.safe_click
-        if view_restrictions.present?
-          return view_restrictions
-        end
-      }
-      nil
-    end
-
-  end
-
-  class SingleOrderFormLineItem < BatchObject
-    def remove_field
-      @browser.span :css => "span[class*=sdc-icon-remove]"
-    end
-
-    public
-
-    def present?
-      browser_helper.present? remove_field
-    end
-
-    def wait_until_present
-      browser_helper.wait_until_present remove_field
-    end
-
-    def delete_line *args
-      browser_fields = @browser.spans :css => "span[class*=sdc-icon-remove]"
-      browser_fields
-      browser_field = browser_fields
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
-    end
-
-    def qty *args
-      browser_field = Textbox.new @browser.text_field :name => "Quantity"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
-    end
-
-    def id *args
-      browser_field = Textbox.new @browser.text_field :name => "Sku"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
-    end
-
-    def description *args
-      browser_field = Textbox.new @browser.text_field :name => "ItemName"
-      case args.length
-        when 0
-          return browser_field
-        when 1
-          browser_field.set args[0]
-        else
-          raise "Illegal number of arguments"
-      end
-    end
-  end
-
-  class Tracking < OrderDetails
-
-    private
-
+  class BatchTracking < OrderDetails
     def text_box
       Textbox.new @browser.text_field :name => 'Tracking'
     end
@@ -865,8 +957,6 @@ module Batch
     def drop_down
       Button.new @browser.div :css => "div[id^=trackingdroplist-][id$=-trigger-picker]"
     end
-
-    public
 
     def text
       text_box.text
@@ -926,7 +1016,7 @@ module Batch
 
   end
 
-  class Service < OrderDetails
+  class BatchService < OrderDetails
 
     private
 
@@ -1119,9 +1209,72 @@ module Batch
 
   end
 
-  #
-  #  Single Order Edit Form
-  #
+  class SingleOrderFormLineItem < BatchObject
+    def remove_field
+      @browser.span :css => "span[class*=sdc-icon-remove]"
+    end
+
+    public
+
+    def present?
+      browser_helper.present? remove_field
+    end
+
+    def wait_until_present
+      browser_helper.wait_until_present remove_field
+    end
+
+    def delete_line *args
+      browser_fields = @browser.spans :css => "span[class*=sdc-icon-remove]"
+      browser_fields
+      browser_field = browser_fields
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
+    end
+
+    def qty *args
+      browser_field = Textbox.new @browser.text_field :name => "Quantity"
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
+    end
+
+    def id *args
+      browser_field = Textbox.new @browser.text_field :name => "Sku"
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
+    end
+
+    def description *args
+      browser_field = Textbox.new @browser.text_field :name => "ItemName"
+      case args.length
+        when 0
+          return browser_field
+        when 1
+          browser_field.set args[0]
+        else
+          raise "Illegal number of arguments"
+      end
+    end
+  end
+
   class SingleOrderForm < OrderDetails
 
     def ship_from
@@ -1129,11 +1282,11 @@ module Batch
     end
 
     def service
-      Service.new @browser
+      BatchService.new @browser
     end
 
     def tracking
-      Tracking.new @browser
+      BatchTracking.new @browser
     end
 
     def address_textbox
@@ -1440,6 +1593,6 @@ module Batch
     end
 
 
-  end #SingleOrderEdit Module
+  end
 
 end

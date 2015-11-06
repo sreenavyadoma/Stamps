@@ -3,10 +3,10 @@
 Feature:  As a batch shipper, I want to be able to print multiple labels
 
   Background:
-    Given I am signed in as a batch shipper ff/autosuggest/326tsetaqcdS!
+    Given I am signed in as a batch shipper
 
 
-  @two_up_expanded
+  @two_up_expanded @two_up_expanded_1
   Scenario: User Prints 1 Domestic label on 8.5x11 - left side
 
     And I Add a new order
@@ -475,7 +475,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Select right side label
     Then Expect right side label selected
     Then Print
-    Then Print Sample
     Then Sign out
 
   @two_up_expanded

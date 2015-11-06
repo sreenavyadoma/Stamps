@@ -58,19 +58,11 @@ end
 
 When /^Print$/ do
   @printing_error = batch.toolbar.print_modal.print
-  @printing_error.should eql ""
 end
 
 Then /^Close Print Modal$/ do
   batch.toolbar.print_modal.close
 end
-
-=begin
-Then /^Print$/ do
-  @printing_error = batch.toolbar.print_modal.print
-  @printing_error.should eql ""
-end
-=end
 
 Then /^Print expecting error (.*)$/ do |error_message|
   order_error = batch.toolbar.print_expecting_error
@@ -114,18 +106,11 @@ Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print
   "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
 end
 
-Then /^Expect Print Window requires (.*) label sheets$/ do |sheets|
-  if sheets == 1
-    sheet_text = "Requires #{sheets} label sheet"
-  else
-    sheet_text = "Requires #{sheets} label sheets"
-  end
+Then /^Expect Print Window requires (\d+) label sheets$/ do |sheets|
   actual = batch.toolbar.print_modal.labels_required
-  log "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheet_text==actual)?'Passed':'Failed'}"
-  "#{actual}".should eql "#{sheet_text}"
-
+  log "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheets==actual)?'Passed':'Failed'}"
+  actual.should eql sheets
 end
-
 
 Then /^Print raises a Printing Error/ do
   expect{batch.print.print_sample_expecting_error}.to raise_error(PrintingError)
