@@ -58,7 +58,6 @@ end
 
 When /^Print$/ do
   @printing_error = batch.toolbar.print_modal.print
-  @printing_error.should eql ""
 end
 
 Then /^Close Print Modal$/ do
