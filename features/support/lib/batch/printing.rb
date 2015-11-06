@@ -191,10 +191,6 @@ module Batch
       PrintingOn.new @browser
     end
 
-    def ship_date_input
-      @browser.text_field :name => 'sdc-printpostagewindow-shipdate-inputEl'
-    end
-
     def date_picker_div
       @browser.div :id => "sdc-printpostagewindow-shipdate-trigger-picker"
     end
@@ -212,21 +208,7 @@ module Batch
     end
 
     def ship_date
-      browser_helper.text ship_date_input
-    end
-
-    def ship_date=date
-      5.times{
-        begin
-          browser_helper.set ship_date_input, date
-          sleep(1)
-          text = browser_helper.text ship_date_input
-          done = text.include? date
-          break if done
-        rescue
-          #ignroe
-        end
-      }
+      Textbox.new @browser.text_field :name => 'sdc-printpostagewindow-shipdate-inputEl'
     end
 
     def print
