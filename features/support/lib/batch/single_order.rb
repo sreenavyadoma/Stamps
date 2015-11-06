@@ -381,6 +381,7 @@ module Batch
         break if less.present?
 
       }
+
       phone.set ""
       email.set ""
     end

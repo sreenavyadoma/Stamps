@@ -1,9 +1,9 @@
 When /^Select (\w+) side label$/ do |label_side|
   if label_side.casecmp("left") == 0
-    selected = batch.toolbar.print_modal.left_label
+    selected = batch.toolbar.print_modal.starting_label.left
     log "#{label_side} side label was #{(selected)?'selected.':'not selected'}"
   elsif label_side.casecmp("right") == 0
-    selected = batch.toolbar.print_modal.right_label
+    selected = batch.toolbar.print_modal.starting_label.right
     log "#{label_side} side label was #{(selected)?'selected.':'not selected'}"
   else
     raise "Label side #{label_side} is not a valid selection. Select either \"left\" or \"right\" side."
@@ -12,10 +12,10 @@ end
 
 Then /^Expect (\w+) side label selected$/ do |label|
   if label.casecmp("left") == 0
-    selected = batch.toolbar.print_modal.left_label_selected?
+    selected = batch.toolbar.print_modal.starting_label.left_selected?
     log "Expect #{label} side label selected.  Test #{(selected)?'Passed.':'Failed'}"
   elsif label.casecmp("right") == 0
-    selected = batch.toolbar.print_modal.right_label_selected?
+    selected = batch.toolbar.print_modal.starting_label.right_selected?
     log "Expect #{label} side label selected.  Test #{(selected)?'Passed.':'Failed'}"
   else
     raise "Label side #{label_side} is not a valid selection. Select either \"left\" or \"right\" side."
