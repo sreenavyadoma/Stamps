@@ -34,7 +34,7 @@ module Batch
         :order_total => "Order Total"
     }
 
-    def scroll_into_view column
+    def scroll column
       Label.new(column_header_field column).scroll_into_view
     end
 
@@ -352,7 +352,7 @@ module Batch
 
   class OrderId < Column
     def scroll_into_view
-      self.scroll_into_view(:order_id)
+      scroll :order_id
     end
     
     def row row
@@ -385,7 +385,7 @@ module Batch
 
   class Age < Column
     def scroll_into_view
-      self.scroll_into_view(:age)
+      scroll :age
     end
 
     def data order_id
@@ -407,7 +407,7 @@ module Batch
 
   class OrderDate < Column
     def scroll_into_view
-      self.scroll_into_view(:order_date)
+      scroll :order_date
     end
 
     def data order_id
@@ -430,7 +430,7 @@ module Batch
 
   class Recipient < Column
     def scroll_into_view
-      self.scroll_into_view(:recipient)
+      scroll :recipient
     end
     
     def data order_id
@@ -453,7 +453,7 @@ module Batch
 
   class Company < Column
     def scroll_into_view
-      self.scroll_into_view(:company)
+      scroll :company
     end
 
     def sort order
@@ -469,7 +469,7 @@ module Batch
 
   class Address < Column
     def scroll_into_view
-      self.scroll_into_view(:domestic)
+      scroll :domestic
     end
 
     def data order_id
@@ -492,7 +492,7 @@ module Batch
 
   class City < Column
     def scroll_into_view
-      self.scroll_into_view(:city)
+      scroll :city
     end
 
     def data order_id
@@ -514,7 +514,7 @@ module Batch
 
   class State < Column
     def scroll_into_view
-      self.scroll_into_view(:state)
+      scroll :state
     end
 
     def data order_id
@@ -536,7 +536,7 @@ module Batch
 
   class Zip < Column
     def scroll_into_view
-      self.scroll_into_view(:zip)
+      scroll :zip
     end
 
     def data order_id
@@ -559,7 +559,7 @@ module Batch
 
   class Phone < Column
     def scroll_into_view
-      self.scroll_into_view(:phone)
+      scroll :phone
     end
 
     def data order_id
@@ -582,7 +582,7 @@ module Batch
 
   class Email < Column
     def scroll_into_view
-      self.scroll_into_view(:email)
+      scroll :email
     end
 
     def data order_id
@@ -605,7 +605,7 @@ module Batch
 
   class Qty < Column
     def scroll_into_view
-      self.scroll_into_view(:qty)
+      scroll :qty
     end
 
     def data order_id
@@ -628,7 +628,7 @@ module Batch
 
   class ItemSKU < Column
     def scroll_into_view
-      self.scroll_into_view(:item_sku)
+      scroll :item_sku
     end
 
     def data order_id
@@ -651,7 +651,7 @@ module Batch
 
   class ItemName < Column
     def scroll_into_view
-      self.scroll_into_view(:item_name)
+      scroll :item_name
     end
 
     def data order_id
@@ -673,7 +673,7 @@ module Batch
 
   class Weight < Column
     def scroll_into_view
-      self.scroll_into_view(:weight)
+      scroll :weight
     end
 
     def data order_id
@@ -707,7 +707,7 @@ module Batch
 
   class InsuredValue < Column
     def scroll_into_view
-      self.scroll_into_view(:insured_value)
+      scroll :insured_value
     end
 
     def data order_id
@@ -730,7 +730,7 @@ module Batch
 
   class OrderStatus < Column
     def scroll_into_view
-      self.scroll_into_view(:order_status)
+      scroll :order_status
     end
 
     def data order_id
@@ -753,7 +753,7 @@ module Batch
 
   class ShipDate < Column
     def scroll_into_view
-      self.scroll_into_view(:ship_date)
+      scroll :ship_date
     end
 
     def data order_id
@@ -770,7 +770,7 @@ module Batch
 
   class ShipFrom < Column
     def scroll_into_view
-      self.scroll_into_view(:ship_from)
+      scroll :ship_from
     end
 
     def data order_id
@@ -787,7 +787,7 @@ module Batch
 
   class OrderTotal < Column
     def scroll_into_view
-      self.scroll_into_view(:order_total)
+      scroll :order_total
     end
 
     def data order_id
@@ -810,7 +810,7 @@ module Batch
 
   class Country < Column
     def scroll_into_view
-      self.scroll_into_view(:country)
+      scroll :country
     end
 
     def data order_id
@@ -833,7 +833,7 @@ module Batch
 
   class ShipCost < Column
     def scroll_into_view
-      self.scroll_into_view(:ship_cost)
+      scroll :ship_cost
     end
 
     def data order_id
@@ -868,7 +868,7 @@ module Batch
 
   class Company < Column
     def scroll_into_view
-      self.scroll_into_view(:company)
+      scroll :company
     end
 
     def data order_id
@@ -886,7 +886,7 @@ module Batch
 
   class Service < Column
     def scroll_into_view
-      self.scroll_into_view(:service)
+      scroll :service
     end
 
     def data order_id
@@ -904,7 +904,7 @@ module Batch
 
   class ReferenceNo < Column
     def scroll_into_view
-      self.scroll_into_view(:reference_no)
+      scroll :reference_no
     end
 
     def data order_id
@@ -922,7 +922,7 @@ module Batch
 
   class CostCode < Column
     def scroll_into_view
-      self.scroll_into_view(:cost_code)
+      scroll :cost_code
     end
 
     def data order_id
@@ -940,7 +940,7 @@ module Batch
 
   class Tracking < Column
     def scroll_into_view
-      self.scroll_into_view(:tracking)
+      scroll :tracking
     end
 
     def data order_id
@@ -956,7 +956,7 @@ module Batch
 
   class FirstColumn < Column
     def scroll_into_view
-      self.scroll_into_view(:check_box)
+      scroll :check_box
     end
 
     def edit order_id
@@ -964,7 +964,7 @@ module Batch
     end
 
     def uncheck number
-      scroll_into_view
+      self.scroll_into_view
       if size > 0
         checkbox_field = row_div number
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"

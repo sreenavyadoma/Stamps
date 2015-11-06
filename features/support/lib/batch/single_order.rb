@@ -1,6 +1,5 @@
 module Batch
 
-
   class OrderDetails < BatchObject
     def click_form
       item_label = Label.new @browser.label :text => 'Item:'
