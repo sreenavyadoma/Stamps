@@ -154,6 +154,7 @@ module Batch
         email .safe_double_click
         phone.send_keys :tab
         email.send_keys :enter
+        break if less.present?
         text_box.safe_double_click
         text_box.safe_double_click
         text_box.safe_double_click
@@ -175,6 +176,7 @@ module Batch
         text_box.safe_double_click
         text_box.safe_double_click
         text_box.safe_double_click
+        break if less.present?
         email .safe_double_click
         text_box.safe_double_click
         text_box.safe_double_click

@@ -95,7 +95,7 @@ module Batch
         row_text = browser_helper.text div
         if row_text.include? order_id
           row = index + 1 #row offset
-          log "Order ID #{order_id} is in Row #{row}"
+          #log "Order ID #{order_id} is in Row #{row}"
           break
         end
       }
