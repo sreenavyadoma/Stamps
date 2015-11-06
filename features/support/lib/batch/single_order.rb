@@ -144,6 +144,7 @@ module Batch
 
       30.times{
         text_box.send_keys address
+        text_box.set address
         text_box.safe_double_click
         text_box.safe_double_click
         text_box.safe_double_click
