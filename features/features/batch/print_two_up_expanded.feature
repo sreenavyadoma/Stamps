@@ -11,7 +11,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
 
     And I Add a new order
     Then Set single-order form Ship-From to default
-    Then Set single-order form Ship-To address to PM FR Envelope, SDC-1200 Right Side, 5912 83rd St., Lubbock TX 79424-3608
+    Then Set single-order form Ship-To address to PM FR Envelope, SDC-1200 Left Side, 5912 83rd St., Lubbock TX 79424-3608
     Then Set single-order form Service to "Priority Mail Flat Rate Envelope"
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
