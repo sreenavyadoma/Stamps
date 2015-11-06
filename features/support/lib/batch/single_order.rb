@@ -140,25 +140,35 @@ module Batch
       grid_recipient = Recipient.new @browser
       grid_company = Company.new @browser
       grid_address = Address.new @browser
+      first_column = FirstColumn.new @browser
 
       30.times{
         text_box.send_keys :enter
         text_box.set address
         text_box.scroll_into_view
         text_box.send_keys address
+
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
+
         grid_recipient.scroll_into_view
-        grid_recipient.grid_company
-        grid_recipient.grid_address
+        first_column.scroll_into_view
+        grid_company.scroll_into_view
+        first_column.scroll_into_view
+        grid_address.scroll_into_view
+        first_column.scroll_into_view
+        grid_address.scroll_into_view
         text_box.send_keys :tab
         text_box.send_keys :enter
         text_box.send_keys address
         grid_recipient.scroll_into_view
-        grid_address.grid_company
-        grid_recipient.grid_address
+        first_column.scroll_into_view
+        grid_company.scroll_into_view
+        first_column.scroll_into_view
+        grid_address.scroll_into_view
+        first_column.scroll_into_view
+        grid_address.scroll_into_view
         text_box.scroll_into_view
-
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
 
         grid_recipient.scroll_into_view
         grid_recipient.grid_company
