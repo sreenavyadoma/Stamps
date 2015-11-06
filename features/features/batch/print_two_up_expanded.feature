@@ -475,7 +475,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Select right side label
     Then Expect right side label selected
     Then Print
-    Then Print Sample
     Then Sign out
 
   @two_up_expanded
