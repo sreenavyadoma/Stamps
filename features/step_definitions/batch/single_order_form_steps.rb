@@ -133,7 +133,9 @@ Then /^Add Ship-From address$/ do |ship_from|
 end
 
 Then /^Add Ship-From address (\w+)$/ do |address|
-  @ship_from_address = batch.single_order_form.ship_from.select("Manage Shipping Addresses...").add(randomize_ship_from(address))
+  ship_from = (address.include?'random')?(test_helper.random_ship_from):address
+  log "Start:  Add Ship-From address #{(address.include?'random')?ship_from:address}"
+  @ship_from_address = batch.single_order_form.ship_from.select("Manage Shipping Addresses...").add ship_from
   log "Random address added: #{@ship_from_address}"
 end
 

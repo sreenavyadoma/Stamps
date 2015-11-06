@@ -230,7 +230,7 @@ module Batch
     end
 
     def print_modal
-      @print_window ||= PrintWindow.new @browser
+      @print_window ||= PrintModal.new @browser
       open_window @print_window
     end
 

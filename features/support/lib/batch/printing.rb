@@ -171,7 +171,7 @@ module Batch
     end
   end
 
-  class PrintWindow < PrintWindowBase
+  class PrintModal < PrintWindowBase
     def initialize browser, *args
       super browser
       print_options *args

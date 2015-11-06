@@ -1,4 +1,5 @@
 When /^Select (\w+) side label$/ do |label_side|
+  log "Start:  Select #{label_side} side label"
   if label_side.casecmp("left") == 0
     selected = batch.toolbar.print_modal.starting_label.left
     log "#{label_side} side label was #{(selected)?'selected.':'not selected'}"
@@ -11,6 +12,7 @@ When /^Select (\w+) side label$/ do |label_side|
 end
 
 Then /^Expect (\w+) side label selected$/ do |label|
+  log "Start:  Expect #{label} side label selected"
   if label.casecmp("left") == 0
     selected = batch.toolbar.print_modal.starting_label.left_selected?
     log "Expect #{label} side label selected.  Test #{(selected)?'Passed.':'Failed'}"
@@ -23,14 +25,17 @@ Then /^Expect (\w+) side label selected$/ do |label|
 end
 
 Then /^Set Ship Date to (\d+) day from today$/ do |days|
+  log "Start:  Set Ship Date to #{days} day from today"
   batch.toolbar.print_modal.ship_date = test_helper.print_date(days)
 end
 
 Then /^Set Ship Date Picker to (\d+) day\(s\) from today$/ do |day|
+  log "Start:  Set Ship Date Picker to #{day} day(s) from today"
   batch.toolbar.print_modal.pick_date day
 end
 
 Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
+  log "Start:  Expect Print Window Ship Date to be #{day} day(s) from today"
   actual = batch.toolbar.print_modal.ship_date
   expected = test_helper.print_date day
   log "Expect Print Window Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
@@ -38,15 +43,17 @@ Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
 end
 
 When /^Open Print Modal$/ do
-  log "Open Print Modal"
+  log "Start:  Open Print Modal"
   @print_window = batch.toolbar.print_modal
 end
 
 Then /^Select Print Media \"(.*)\"$/ do |print_media|
+  log "Select Print Media #{print_media}"
   batch.toolbar.print_modal.printing_on.select print_media
 end
 
 Then /^Select Printer \"(.*)\"$/ do |printer|
+  log "Select Printer #{printer}"
   batch.toolbar.print_modal.printer.select printer
 end
 
