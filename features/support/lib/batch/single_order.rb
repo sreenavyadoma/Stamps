@@ -689,7 +689,6 @@ module Batch
 
   class SuggestShipTo < ShipToFields
 
-
   end
 
   class ShipTo < ShipToFields
