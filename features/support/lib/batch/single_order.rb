@@ -155,24 +155,23 @@ module Batch
         first_column.scroll_into_view
         grid_company.scroll_into_view
         first_column.scroll_into_view
+        country_drop_down.drop_down.safe_click
+        sleep 1
         grid_address.scroll_into_view
         first_column.scroll_into_view
         grid_address.scroll_into_view
-        text_box.send_keys :tab
-        text_box.send_keys :enter
-        text_box.send_keys address
+        country_drop_down.drop_down.safe_click
         grid_recipient.scroll_into_view
         first_column.scroll_into_view
         grid_company.scroll_into_view
+        country_drop_down.drop_down.safe_click
+        sleep 1
         first_column.scroll_into_view
         grid_address.scroll_into_view
         first_column.scroll_into_view
         grid_address.scroll_into_view
         text_box.scroll_into_view
-
-        grid_recipient.scroll_into_view
-        grid_recipient.grid_company
-        grid_recipient.grid_address
+        break if less.present?
 
         sleep 1
         text_box.scroll_into_view
