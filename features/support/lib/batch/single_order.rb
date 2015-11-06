@@ -147,74 +147,45 @@ module Batch
         text_box.set address
         text_box.scroll_into_view
         text_box.send_keys address
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone .safe_double_click
+        email .safe_double_click
+        email.send_keys :tab
+        email.send_keys :enter
 
+        break if less.present?
         phone.set test_helper.random_phone
+        phone .safe_double_click
         email.set test_helper.random_email
+        email .safe_double_click
 
+        break if less.present?
         grid_recipient.scroll_into_view
+        grid_address.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        phone.send_keys :enter
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        text_box.safe_double_click
+        text_box.safe_double_click
         first_column.scroll_into_view
+        click_form
+        phone.send_keys :tab
         grid_company.scroll_into_view
+        click_form
         first_column.scroll_into_view
+        text_box.safe_double_click
+        text_box.safe_double_click
+        grid_address.scroll_into_view
+        email.send_keys :tab
+        email.send_keys :enter
+        click_form
         country_drop_down.drop_down.safe_click
-        sleep 1
-        grid_address.scroll_into_view
-        first_column.scroll_into_view
-        grid_address.scroll_into_view
         country_drop_down.drop_down.safe_click
-        grid_recipient.scroll_into_view
-        first_column.scroll_into_view
-        grid_company.scroll_into_view
-        country_drop_down.drop_down.safe_click
-        sleep 1
-        first_column.scroll_into_view
-        grid_address.scroll_into_view
-        first_column.scroll_into_view
-        grid_address.scroll_into_view
-        text_box.scroll_into_view
         break if less.present?
 
-        sleep 1
-        text_box.scroll_into_view
-        country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        text_box.scroll_into_view
-        click_form
-        click_form
-        break if less.present?
-        text_box.scroll_into_view
-        country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        break if less.present?
-        click_form
-        click_form
-        text_box.scroll_into_view
-        country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        text_box.scroll_into_view
-        click_form
-        click_form
-        break if less.present?
-        text_box.scroll_into_view
-        country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        country_drop_down.drop_down.safe_click
-        text_box.scroll_into_view
-        click_form
-        click_form
-        text_box.scroll_into_view
-        break if less.present?
       }
       phone.set ""
       email.set ""
