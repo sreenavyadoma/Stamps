@@ -1,29 +1,29 @@
-And /^Set single-order form Ship-From to (\w+)$/ do |value|
+And /^Set Order Details Form Ship-From to (\w+)$/ do |value|
   batch.single_order_form.ship_from.select value
 end
 
-And /^Set single-order form Ship-To address to$/ do |table|
-  step "Set single-order form Ship-To address to #{BatchHelper.instance.address_hash_to_str table.hashes.first}"
+And /^Set Order Details Form Ship-To address to$/ do |table|
+  step "Set Order Details Form Ship-To address to #{BatchHelper.instance.address_hash_to_str table.hashes.first}"
 end
 
-When /^Set single-order form Ship-To address to (.*)$/ do |address|
-  log "Set single-order form Ship-To address to \"#{address}\""
+When /^Set Order Details Form Ship-To address to (.*)$/ do |address|
+  log "Set Order Details Form Ship-To address to \"#{address}\""
 
   if address.downcase.include? "random"
     random_ship_to_address = test_helper.random_ship_to
     formatted_address = BatchHelper.instance.format_address(random_ship_to_address)
-    step "Set single-order form Phone to #{random_ship_to_address["phone"]}"
-    step "Set single-order form Email to #{random_ship_to_address["email"]}"
+    step "Set Order Details Form Phone to #{random_ship_to_address["phone"]}"
+    step "Set Order Details Form Email to #{random_ship_to_address["email"]}"
   else
     formatted_address = BatchHelper.instance.format_address address
   end
 
-  log "Set single-order form Ship-To address to \"#{formatted_address}\""
+  log "Set Order Details Form Ship-To address to \"#{formatted_address}\""
 
   batch.single_order_form.ship_to.domestic.set formatted_address
 end
 
-And /^Set single-order form Ship-To to ambiguous address$/ do |table|
+And /^Set Order Details Form Ship-To to ambiguous address$/ do |table|
   @ambiguous_address_module = batch.single_order_form.ship_to.ambiguous.set BatchHelper.instance.format_address table.hashes.first
 end
 
@@ -35,23 +35,23 @@ Then /^Expect "Exact Address Not Found" module to appear/ do
   expect(@ambiguous_address_module.present?).to be true
 end
 
-When /^Set single-order form Phone to (.*)$/ do |phone|
+When /^Set Order Details Form Phone to (.*)$/ do |phone|
   begin
-    log "Set single-order form Phone to \"#{phone}\""
+    log "Set Order Details Form Phone to \"#{phone}\""
     batch.single_order_form.ship_to.domestic.phone.set phone
   end unless phone.length == 0
 end
 
-When /^Set single-order form Email to (.*)$/ do |email|
+When /^Set Order Details Form Email to (.*)$/ do |email|
   begin
-    log "Set single-order form Email to \"#{email}\""
+    log "Set Order Details Form Email to \"#{email}\""
     batch.single_order_form.ship_to.domestic.email.set email
   end unless email.length == 0
   #end_step step
 end
 
-When /^Expect system (.*) single-order form$/ do |status|
-  log "Confirmed system #{status} single-order form"
+When /^Expect system (.*) Order Details Form$/ do |status|
+  log "Confirmed system #{status} Order Details Form"
 
   actual = batch.single_order_form.single_order_form_present
   if status == 'hides'
@@ -61,53 +61,53 @@ When /^Expect system (.*) single-order form$/ do |status|
   end
 end
 
-When /^Hide single-order form Ship-To fields$/ do
-  log "Hide single-order form Ship-To fields..."
+When /^Hide Order Details Form Ship-To fields$/ do
+  log "Hide Order Details Form Ship-To fields..."
   batch.single_order_form.ship_to.hide
   log "done."
   #end_step step
 end
 
-When /^Set single-order form Pounds to (\d*)$/ do |value|
+When /^Set Order Details Form Pounds to (\d*)$/ do |value|
   begin
-    log "Set single-order form Pounds to \"#{value}\""
+    log "Set Order Details Form Pounds to \"#{value}\""
     batch.single_order_form.lbs.set log_param "Pounds", value
   end unless value.length == 0
 end
 
-When /^Set single-order form Ounces to (\d*)$/ do |value|
+When /^Set Order Details Form Ounces to (\d*)$/ do |value|
   begin
-    log "Set single-order form Ounces to \"#{value}\""
+    log "Set Order Details Form Ounces to \"#{value}\""
     batch.single_order_form.oz.set log_param"Ounces", value
   end unless value.length == 0
 end
 
-When /^Set single-order form Length to (\d*)$/ do |value|
+When /^Set Order Details Form Length to (\d*)$/ do |value|
   begin
-    log "Set single-order form Length to \"#{value}\""
+    log "Set Order Details Form Length to \"#{value}\""
     batch.single_order_form.length.set log_param "Length", value
   end unless value.length == 0
 end
 
-When /^Set single-order form Width to (\d*)$/ do |value|
+When /^Set Order Details Form Width to (\d*)$/ do |value|
   begin
-    log "Set single-order form Width to \"#{value}\""
+    log "Set Order Details Form Width to \"#{value}\""
     batch.single_order_form.width.set log_param "Width", value
   end unless value.length == 0
 end
 
-When /^Set single-order form Height to (\d*)$/ do |value|
+When /^Set Order Details Form Height to (\d*)$/ do |value|
   begin
-    log "Set single-order form Height to \"#{value}\""
+    log "Set Order Details Form Height to \"#{value}\""
     batch.single_order_form.height.set log_param "Height", value
   end unless value.length == 0
 end
 
-And /^Set single-order form Service to \"(.*)\"$/ do |service|
+And /^Set Order Details Form Service to \"(.*)\"$/ do |service|
   batch.single_order_form.service.select service
 end
 
-Then /^Set single-order form Tracking to \"([\w ]*)\"$/ do |value|
+Then /^Set Order Details Form Tracking to \"([\w ]*)\"$/ do |value|
   begin
     batch.single_order_form.tracking.select value
   end unless value.length == 0
@@ -118,7 +118,7 @@ Then /^Set single-order form Tracking to \"([\w ]*)\"$/ do |value|
   log cost
 end
 
-And /^Set single-order form Insured Value to \$([\d*\.?\d*]*)$/ do |value|
+And /^Set Order Details Form Insured Value to \$([\d*\.?\d*]*)$/ do |value|
   batch.single_order_form.insured_value.set value
 end
 
@@ -165,7 +165,7 @@ Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
   batch.single_order_form.ship_from.select("Manage Shipping Addresses...").delete_row(row)
 end
 
-Then /^Set single-order form Ship-From to Manage Shipping Addresses$/ do
+Then /^Set Order Details Form Ship-From to Manage Shipping Addresses$/ do
   batch.single_order_form.ship_from.select("Manage Shipping Addresses...").add table.hashes.first
 end
 
@@ -190,7 +190,7 @@ Then /^Expect Ounces tooltip to display - The maximum value for this field is ([
   actual.should eql expected
 end
 
-Then /^Expect single-order form Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
+Then /^Expect Order Details Form Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
   actual = batch.single_order_form.service.cost service
   10.times { |counter|
     log_expectation "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
@@ -200,7 +200,7 @@ Then /^Expect single-order form Service Cost inline price for "([a-zA-Z -\/]+)" 
   actual.to_f.should be >= expected.to_f
 end
 
-Then /^Expect single-order form Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
+Then /^Expect Order Details Form Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
   tooltips = tooltip_content.split ","
   actual_tooltip = batch.single_order_form.service.tooltip service
   tooltips.each { |tooltip|
@@ -233,7 +233,7 @@ Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Verify single-order form Total Amount$/ do
+Then /^Verify Order Details Form Total Amount$/ do
   batch.single_order_form.total_amount_calculation.should be_correct
 end
 
@@ -249,7 +249,7 @@ Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect single-order form Service to be \"(.*)\"$/ do |expected|
+Then /^Expect Order Details Form Service to be \"(.*)\"$/ do |expected|
   begin
     actual = batch.single_order_form.service.text
     10.times { |counter|
@@ -261,7 +261,7 @@ Then /^Expect single-order form Service to be \"(.*)\"$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect single-order form Tracking to be \"([\w\s]*)\"$/ do |expected|
+Then /^Expect Order Details Form Tracking to be \"([\w\s]*)\"$/ do |expected|
   begin
     actual = batch.single_order_form.tracking.text
     10.times { |counter|
@@ -273,7 +273,7 @@ Then /^Expect single-order form Tracking to be \"([\w\s]*)\"$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect single-order form Total to be \$(.*)$/ do |expected|
+Then /^Expect Order Details Form Total to be \$(.*)$/ do |expected|
   begin
     10.times { |counter|
       batch.single_order_form.click_form

@@ -416,15 +416,25 @@ module Batch
         text_box.safe_double_click
         text_box.safe_double_click
         text_box.safe_double_click
+        grid_recipient.scroll_into_view
+        grid_recipient.safe_click
+        phone.send_keys :tab
+        email.send_keys :enter
         text_box.safe_double_click
+        phone.send_keys :tab
+        email.send_keys :enter
         text_box.safe_double_click
         phone .safe_double_click
         email .safe_double_click
+        first_column.scroll_into_view
+        grid_recipient.scroll_into_view
         phone.send_keys :tab
         email.send_keys :enter
         text_box.safe_double_click
         text_box.safe_double_click
         text_box.safe_double_click
+        grid_recipient.scroll_into_view
+        grid_recipient.safe_click
         phone .safe_double_click
         email .safe_double_click
         phone.send_keys :tab

@@ -63,14 +63,14 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
 
     And Expect single-order form Order ID equals Grid order ID
-    Then Expect order-grid Recipient to be James Test
-    Then Expect order-grid Company to be Domestic Company
-    Then Expect order-grid Address to be 600 Front St Apt 220
-    Then Expect order-grid City to be San Diego
-    Then Expect order-grid State to be CA
-    Then Expect order-grid Zip to be 92101
-    Then Expect order-grid Phone to be 8885551212
-    Then Expect order-grid Email to be test@stamps.com
+    Then Expect Grid Recipient to be James Test
+    Then Expect Grid Company to be Domestic Company
+    Then Expect Grid Address to be 600 Front St Apt 220
+    Then Expect Grid City to be San Diego
+    Then Expect Grid State to be CA
+    Then Expect Grid Zip to be 92101
+    Then Expect Grid Phone to be 8885551212
+    Then Expect Grid Email to be test@stamps.com
 
     Then Print
 
@@ -78,14 +78,14 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     And Expect system selects Shipped Filter and deselects the previous filter
     And Expect system hides single-order form
 
-    Then Expect order-grid Recipient to be James Test
-    Then Expect order-grid Company to be Domestic Company
-    Then Expect order-grid Address to be 600 Front St Apt 220
-    Then Expect order-grid City to be San Diego
-    Then Expect order-grid State to be CA
-    Then Expect order-grid Zip to be 92101
-    Then Expect order-grid Phone to be 8885551212
-    Then Expect order-grid Email to be test@stamps.com
+    Then Expect Grid Recipient to be James Test
+    Then Expect Grid Company to be Domestic Company
+    Then Expect Grid Address to be 600 Front St Apt 220
+    Then Expect Grid City to be San Diego
+    Then Expect Grid State to be CA
+    Then Expect Grid Zip to be 92101
+    Then Expect Grid Phone to be 8885551212
+    Then Expect Grid Email to be test@stamps.com
 
 
     And I Add a new order
