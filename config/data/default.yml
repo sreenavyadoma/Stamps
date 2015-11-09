@@ -10,7 +10,7 @@ shipping_addresses:
     zone1:
       1:
         street_address:  2791 Agoura Road
-        city:  Thousand Oaks
+        city: Thousand Oaks
         state: CA
         zip: 91361-3101
       2:
@@ -20,7 +20,7 @@ shipping_addresses:
         zip: 92557-7418
       3:
         street_address:  610 W Tefft St
-        city:  Nipomo
+        city: Nipomo
         state: CA
         zip: 93444-9187
       4:
@@ -32,7 +32,7 @@ shipping_addresses:
     zone2:
       1:
         street_address:  530 K Street Unit 504
-        city:  San Diego
+        city: San Diego
         state: CA
         zip: 92101-7060
       2:
@@ -42,7 +42,7 @@ shipping_addresses:
         zip: 90065-4807
       3:
         street_address:  618 Falconer Rd
-        city:  Escondido
+        city: Escondido
         state: CA
         zip: 92027-4229
       4:
@@ -54,132 +54,132 @@ shipping_addresses:
     zone3:
       1:
         street_address:  3555 Las Vegas Blvd S
-        city:  Las Vegas
+        city: Las Vegas
         state: NV
         zip: 89109-8901
       2:
         street_address:  7065 N Ingram Ave
-        city:  Fresno
+        city: Fresno
         state: CA
         zip: 93650-1083
       3:
         street_address:  1804 E Ashlan Ave
-        city:  Fresno
+        city: Fresno
         state: CA
         zip: 93726-2019
       4:
         street_address:  6301 W Charleston Blvd
-        city:  Las Vegas
+        city: Las Vegas
         state: NV
         zip: 89146-1124
 
     zone4:
       1:
         street_address:  PO Box 567
-        city:  Kelseyville
+        city: Kelseyville
         state: CA
         zip: 95451-0567
       2:
         street_address:  2105 Kietzke Ln
-        city:  Reno
+        city: Reno
         state: NV
         zip: 89502-3602
       3:
         street_address:  4937 79th St.
-        city:  Sacramento
+        city: Sacramento
         state: CA
         zip: 95820-6213
       4:
         street_address:  1406 Long Creek Way
-        city:  Roseville
+        city: Roseville
         state: CA
         zip: 95747-7312
 
     zone5:
       1:
         street_address:  530 9th Ave. N.
-        city:  Buhl
+        city: Buhl
         state: ID
         zip: 83316-1115
       2:
         street_address:  26930 NE 152nd St.
-        city:  Duvall
+        city: Duvall
         state: WA
         zip: 98019-8316
       3:
         street_address:  3232 SE 89th Ave.
-        city:  Portland
+        city: Portland
         state: OR
         zip: 97266-1911
       4:
         street_address:  648 Gehr St.
-        city:  Wenatchee
+        city: Wenatchee
         state: WA
         zip: 98801-8011
 
     zone6:
       1:
         street_address:  11 Laguna Madre Dr.
-        city:  Laguna Vista
+        city: Laguna Vista
         state: TX
         zip: 78578-2602
       2:
         street_address:  204 Nursery Ln.
-        city:  Ft Worth
+        city: Ft Worth
         state: TX
         zip: 76114-4348
       3:
         street_address:  1327 Yates Dr.
-        city:  Hurst
+        city: Hurst
         state: TX
         zip: 76053-4038
       4:
         street_address:  5912 83rd St.
-        city:  Lubbock
+        city: Lubbock
         state: TX
         zip: 79424-3608
 
     zone7:
       1:
         street_address:  9435 Pettit Rd.
-        city:  Baker
+        city: Baker
         state: LA
         zip: 70714-6434
       2:
         street_address:  1071 Trelane Ave.
-        city:  Saint Louis
+        city: Saint Louis
         state: MO
         zip: 63126-1117
       3:
         street_address:  557 County Rd. H
-        city:  Fredonia
+        city: Fredonia
         state: WI
         zip: 53021-9634
       4:
         street_address:  725 Winterwind Way
-        city:  Roswell
+        city: Roswell
         state: GA
         zip: 30075-1853
 
     zone8:
       1:
         street_address:  2622 New Banner Ln.
-        city:  Herndon
+        city: Herndon
         state: VA
         zip: 20171-2659
       2:
         street_address:  401 Sherborne Dr.
-        city:  Columbus
+        city: Columbus
         state: OH
         zip: 43219-2971
       3:
         street_address:  2775 Stark Dr.
-        city:  Willoughby Hills
+        city: Willoughby Hills
         state: OH
         zip: 44094-9113
       4:
         street_address:  283 Chinquapin Rd.
-        city:  Mocksville
+        city: Mocksville
         state: NC
         zip: 27028-4708
 

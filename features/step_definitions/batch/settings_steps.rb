@@ -28,6 +28,12 @@ Then /^Check Email Shipment Deliveries$/ do
 
 end
 
+Then /^Check USPS Terms in Settings Modal$/ do
+  log "Check USPS Terms checkbox in Settings Modal..."
+  batch.toolbar.settings_modal.check_usps_terms
+
+end
+
 Then /^Uncheck Show Unavailable Services$/ do
   log "Uncheck Show Unavailable Services checkbox..."
   batch.toolbar.settings_modal.uncheck_unavail_services
@@ -58,6 +64,12 @@ Then /^Uncheck Email Shipment Deliveries$/ do
 
 end
 
+Then /^Uncheck USPS Terms in Settings Modal$/ do
+  log "Uncheck USPS Terms checkbox in Settings Modal..."
+  batch.toolbar.settings_modal.uncheck_usps_terms
+
+end
+
 Then /^Expect Show Unavailable Services Unchecked$/ do
 
 
@@ -70,6 +82,14 @@ Then /^Expect Dont Show Print Confirmation Dialog Unchecked$/ do
 
   actual = batch.toolbar.settings_modal.get_checkbox_status(2)
   log_expectation_eql "Dont Show Print Confirmation Dialog", false, actual
+  actual.should eql false
+
+end
+
+Then /^Expect USPS Terms Unchecked in Settings Modal$/ do
+
+  actual = batch.toolbar.settings_modal.get_checkbox_status(3)
+  log_expectation_eql "USPS Restrictions", false, actual
   actual.should eql false
 
 end
@@ -98,6 +118,7 @@ Then /^Expect Email Shipment Deliveries Unchecked$/ do
 
 end
 
+
 Then /^Expect Show Unavailable Services Checked$/ do
 
 
@@ -111,6 +132,14 @@ Then /^Expect Dont Show Print Confirmation Dialog Checked$/ do
 
   actual = batch.toolbar.settings_modal.get_checkbox_status(2)
   log_expectation_eql "Dont Show Print Confirmation Dialog", true, actual
+  actual.should eql true
+
+end
+
+Then /^Expect USPS Terms Checked in Settings Modal$/ do
+
+  actual = batch.toolbar.settings_modal.get_checkbox_status(3)
+  log_expectation_eql "USPS Restrictions", true, actual
   actual.should eql true
 
 end
@@ -138,10 +167,6 @@ Then /^Expect Email Shipment Deliveries Checked$/ do
   actual.should eql true
 
 end
-
-
-
-
 
 
 
@@ -190,3 +215,11 @@ Then /^Save Settings changes$/ do
   log "Saving settings changes..."
   batch.toolbar.settings_modal.save_changes
 end
+
+Then /^Expect USPS terms setting is displayed$/ do
+
+
+end
+
+
+
