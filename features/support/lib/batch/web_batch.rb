@@ -32,7 +32,6 @@ module Batch
     end
 
     def awaiting_shipment
-      #todo-elie here are your steps;
       Filters.new(@browser).filter "Awaiting Shipment"
       Grid.new @browser
     end
