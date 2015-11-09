@@ -56,7 +56,7 @@ module Batch
     end
 
     def grid
-      Grid.new(@browser)
+      @grid ||= Grid.new(@browser)
     end
 
     def styles

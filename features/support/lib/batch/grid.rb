@@ -655,7 +655,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view :item_name
+      scroll_into_view
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:item_name, row)
@@ -844,7 +844,7 @@ module Batch
     end
 
     def ship_cost_error order_id
-      scroll_into_view :ship_cost
+      scroll_into_view
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
 
@@ -1013,7 +1013,7 @@ module Batch
     end
 
     def unselect_all
-      scroll_into_view :check_box
+      scroll_into_view
       select_all_checkbox.uncheck
     end
 
@@ -1058,7 +1058,7 @@ module Batch
     end
 
     def check_rows rows
-      scroll_into_view :check_box
+      scroll_into_view
       log "Restoring #{} checked orders..."
       begin
         rows.each do |row|

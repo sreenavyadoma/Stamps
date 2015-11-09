@@ -22,11 +22,14 @@ Then /^Expect Ship-To address to be;$/ do |table|
   step "Expect Grid Email to be #{param_hash[:email]}"
 end
 
-Then /^Output all Grid values for Order ID (\w+)$/ do |order_id|
+Then /^List all Grid column values for row (\d+)/ do |row|
+  step "List all Grid column values for Order ID #{batch.grid.order_id.row(row)}"
+end
+
+
+Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
   @grid = batch.grid
-  order_id = @grid.order_id.row 3
   log @grid.item_name.data order_id
-
   log @grid.ship_cost.data order_id
   log @grid.age.data order_id
   log @grid.order_date.data order_id
@@ -41,62 +44,6 @@ Then /^Output all Grid values for Order ID (\w+)$/ do |order_id|
   log @grid.email.data order_id
   log @grid.qty.data order_id
   log @grid.item_sku.data order_id
-  log @grid.ship_from.data order_id
-  log @grid.service.data order_id
-  log @grid.weight.data order_id
-  log @grid.insured_value.data order_id
-  log @grid.reference_no.data order_id
-  log @grid.cost_code.data order_id
-  log @grid.order_status.data order_id
-  log @grid.ship_date.data order_id
-  log @grid.tracking.data order_id
-  log @grid.order_total.data order_id
-
-  order_id = @grid.order_id.row 1
-
-  log @grid.ship_cost.data order_id
-  log @grid.age.data order_id
-  log @grid.order_date.data order_id
-  log @grid.recipient.data order_id
-  log @grid.company.data order_id
-  log @grid.domestic.data order_id
-  log @grid.city.data order_id
-  log @grid.state.data order_id
-  log @grid.zip.data order_id
-  log @grid.country.data order_id
-  log @grid.phone.data order_id
-  log @grid.email.data order_id
-  log @grid.qty.data order_id
-  log @grid.item_sku.data order_id
-  log @grid.item_name.data order_id
-  log @grid.ship_from.data order_id
-  log @grid.service.data order_id
-  log @grid.weight.data order_id
-  log @grid.insured_value.data order_id
-  log @grid.reference_no.data order_id
-  log @grid.cost_code.data order_id
-  log @grid.order_status.data order_id
-  log @grid.ship_date.data order_id
-  log @grid.tracking.data order_id
-  log @grid.order_total.data order_id
-
-  order_id = @grid.order_id.row 2
-
-  log @grid.ship_cost.data order_id
-  log @grid.age.data order_id
-  log @grid.order_date.data order_id
-  log @grid.recipient.data order_id
-  log @grid.company.data order_id
-  log @grid.domestic.data order_id
-  log @grid.city.data order_id
-  log @grid.state.data order_id
-  log @grid.zip.data order_id
-  log @grid.country.data order_id
-  log @grid.phone.data order_id
-  log @grid.email.data order_id
-  log @grid.qty.data order_id
-  log @grid.item_sku.data order_id
-  log @grid.item_name.data order_id
   log @grid.ship_from.data order_id
   log @grid.service.data order_id
   log @grid.weight.data order_id
