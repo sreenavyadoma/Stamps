@@ -5,10 +5,10 @@ Feature: B-01746 Order Pagination
 
   @page_first
   Scenario: Go to first page
-    And Set paging toolbar per page count to 500
+    And Set paging toolbar orders per page count to 500
     Then Web Batch grid has more orders than value selected in 'number of orders per page' pagination control
     And Pagination control to go to first page is enabled
-    And User is not on the first page of orders
+    And User is on the first page of orders
     And User clicks first page pagination control
     And User is taken to the first page of orders
     And Server provides a new set of orders for the grid
