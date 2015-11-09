@@ -227,7 +227,7 @@ module Batch
         phone.set test_helper.random_phone
         phone.set test_helper.random_phone
         grid_address.scroll_into_view
-        grid_address.safe_click
+        
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         email.send_keys :tab
@@ -262,7 +262,7 @@ module Batch
         text_box.safe_double_click
         text_box.safe_double_click
         grid_address.scroll_into_view
-        grid_address.safe_click
+        
         phone .safe_double_click
         email .safe_double_click
         text_box.safe_double_click
@@ -297,7 +297,7 @@ module Batch
         text_box.safe_double_click
         text_box.safe_double_click
         grid_address.scroll_into_view
-        grid_address.safe_click
+        
         phone .safe_double_click
         email .safe_double_click
         break if less.present?
@@ -331,7 +331,7 @@ module Batch
         email.send_keys :tab
         email.send_keys :enter
         grid_address.scroll_into_view
-        grid_address.safe_click
+        
         text_box.safe_double_click
         text_box.safe_double_click
         email .safe_double_click
@@ -373,7 +373,7 @@ module Batch
         text_box.safe_double_click
         text_box.safe_double_click
         grid_address.scroll_into_view
-        grid_address.safe_click
+        
         text_box.safe_double_click
         text_box.safe_double_click
         email .safe_double_click
@@ -509,7 +509,7 @@ module Batch
         phone.set test_helper.random_phone
         phone.set test_helper.random_phone
         grid_address.scroll_into_view
-        grid_address.safe_click
+        
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         email.send_keys :tab
@@ -544,7 +544,7 @@ module Batch
         text_box.safe_double_click
         text_box.safe_double_click
         grid_address.scroll_into_view
-        grid_address.safe_click
+        
         phone .safe_double_click
         email .safe_double_click
         grid_recipient.scroll_into_view
@@ -579,7 +579,7 @@ module Batch
         text_box.safe_double_click
         text_box.safe_double_click
         grid_address.scroll_into_view
-        grid_address.safe_click
+        
         phone .safe_double_click
         email .safe_double_click
         return exact_address_not_found if exact_address_not_found.present?
@@ -613,7 +613,7 @@ module Batch
         email.send_keys :tab
         email.send_keys :enter
         grid_address.scroll_into_view
-        grid_address.safe_click
+        
         text_box.safe_double_click
         text_box.safe_double_click
         email .safe_double_click
@@ -655,7 +655,7 @@ module Batch
         text_box.safe_double_click
         text_box.safe_double_click
         grid_address.scroll_into_view
-        grid_address.safe_click
+        
         text_box.safe_double_click
         text_box.safe_double_click
         email .safe_double_click
