@@ -1,18 +1,27 @@
-Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|
-  actual =  batch.single_order_form.get_auto_suggest_name entry
+
+
+
+Then /^Set single-order form Ship-To partial address to (.*)$/ do |partial_address|
+  @auto_suggest = batch.single_order_form.ship_to.suggest.set partial_address
+end
+
+
+Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, index|
+  actual = @auto_suggest.name index
   log_expectation_eql "Auto Suggest Name", value, actual
   actual.should eql value
 
 end
 
-Then /^Expect Auto Suggest location shows (.*) for entry (.*)$/ do |value, entry|
-  actual =  batch.single_order_form.get_auto_suggest_location entry
+Then /^Expect Auto Suggest location shows (.*) for entry (.*)$/ do |value, index|
+  actual = @auto_suggest.location index
   log_expectation_eql "Auto Suggest Name", value, actual
   actual.should eql value
 
 end
 
 Then /^Select entry (.*) in the auto suggest drop down list$/ do |entry|
+  log "Selecting entry \"#{entry}\" from drop down list"
   batch.single_order_form.click_auto_suggest_name entry
 end
 

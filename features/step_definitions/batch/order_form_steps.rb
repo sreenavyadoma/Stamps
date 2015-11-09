@@ -135,7 +135,6 @@ end
 
 Then /^Add Ship-From address (\w+)$/ do |address|
   ship_from = (address.include?'random')?(test_helper.random_ship_from):address
-  log "Start:  Add Ship-From address #{(address.include?'random')?ship_from:address}"
   @ship_from_address = batch.single_order_form.ship_from.select("Manage Shipping Addresses...").add ship_from
   log "Random address added: #{@ship_from_address}"
 end
@@ -159,6 +158,12 @@ Then /^Delete (\w+) Ship-From address$/ do |address|
     end
   rescue
     #This is a housekeeping task and should never fail.
+  end
+end
+
+Then /^Close Ship-From modal$/ do
+  begin
+    batch.single_order_form.ship_from.manage_shipping_address.close_window
   end
 end
 
