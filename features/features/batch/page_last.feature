@@ -13,7 +13,7 @@ Feature: B-01746 Order Pagination
 
   @page_last
   Scenario: Go to last page
-    And Set paging toolbar per page count to 500
+    And Set paging toolbar orders per page count to
     Then Web Batch grid has more orders than value selected in 'number of orders per page' pagination control
     And Pagination control to go to last page is enabled
     And User is not on the last page of orders
