@@ -2,7 +2,7 @@ When /^I Add a new order$/ do
   log "I Add a new order"
 
   @old_balance = batch.navigation.balance
-  batch.grid.first_column.uncheck 1
+  batch.grid.check.uncheck 1
   @single_order_form = batch.toolbar.add
   @order_id = @single_order_form.order_id
 end
@@ -28,7 +28,7 @@ When /^Add a second order$/ do
     break unless first_row_order_id.include? @order_id_2
   }
   log "Second Order Id:  #{@order_id_2}"
-  batch.grid.first_column.edit @order_id_2
+  batch.grid.check.edit @order_id_2
 end
 
 Then /^Open Settings Modal$/ do
@@ -40,8 +40,8 @@ Then /^Fail the test$/ do
 end
 
 Then /^Test Features$/ do |count|
-  batch.grid.first_column.select_all
+  batch.grid.check.select_all
   count = batch.multi_order.order_count
   log count
-  batch.grid.first_column.unselect_all
+  batch.grid.check.unselect_all
 end
