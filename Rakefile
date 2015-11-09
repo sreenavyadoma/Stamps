@@ -127,3 +127,13 @@ Cucumber::Rake::Task.new(:orders_20) do |t|
   t.profile = 'orders_20'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:auto_suggest) do |t|
+  t.profile = 'auto_suggest'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_regression) do |t|
+  t.profile = 'print_regression'
+  t.cucumber_opts = "-p cuke_reports"
+end
