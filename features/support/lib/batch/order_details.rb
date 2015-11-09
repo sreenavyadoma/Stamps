@@ -356,375 +356,146 @@ module Batch
       phone = self.phone
       email = self.email
 
-      15.times{
+      20.times{
         text_box.send_keys address
         text_box.set address
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        text_box.safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        return exact_address_not_found if exact_address_not_found.present?
-        phone .safe_double_click
-        email .safe_double_click
-        check_column.scroll_into_view
-        grid_recipient.scroll_into_view
-        phone.send_keys :tab
-        email.send_keys :enter
-        text_box.send_keys address
-        text_box.set address
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        text_box.safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.send_keys address
-        text_box.set address
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        email .safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        email.send_keys :tab
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        email.send_keys :enter
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        text_box.safe_double_click
-        email .safe_double_click
-        email.send_keys :tab
-        email.send_keys :enter
-        return exact_address_not_found if exact_address_not_found.present?
 
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        check_column.scroll_into_view
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         grid_recipient.scroll_into_view
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        email .safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        text_box.safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        text_box.send_keys address
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.set address
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        email.send_keys :tab
-        email.send_keys :enter
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone .safe_double_click
-        phone.set test_helper.random_phone
-        return exact_address_not_found if exact_address_not_found.present?
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        text_box.safe_double_click
-        email .safe_double_click
-        email.send_keys :tab
-        email.send_keys :enter
-        return exact_address_not_found if exact_address_not_found.present?
-        phone.set test_helper.random_phone
-        phone.set test_helper.random_phone
+        check_column.scroll_into_view
         grid_address.scroll_into_view
-
-        return exact_address_not_found if exact_address_not_found.present?
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        email.send_keys :tab
-        email.send_keys :enter
-        check_column.scroll_into_view
-        text_box.safe_double_click
-        text_box.safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        email .safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        text_box.send_keys address
-        text_box.set address
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        return exact_address_not_found if exact_address_not_found.present?
-        email.send_keys :tab
-        email.send_keys :enter
-        grid_recipient.scroll_into_view
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        return exact_address_not_found if exact_address_not_found.present?
-        email.set test_helper.random_email
-        email .safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.send_keys address
-        text_box.set address
-        country_drop_down.drop_down.safe_click
-        return exact_address_not_found if exact_address_not_found.present?
-        country_drop_down.drop_down.safe_click
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        phone.send_keys :tab
-        email.send_keys :enter
-        email.send_keys :tab
-        email.send_keys :enter
-        text_box.safe_double_click
-        text_box.safe_double_click
-        grid_address.scroll_into_view
-        
-        phone .safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        email .safe_double_click
-        grid_recipient.scroll_into_view
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        email .safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.send_keys address
-        text_box.set address
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        return exact_address_not_found if exact_address_not_found.present?
-        email.send_keys :tab
-        email.send_keys :enter
-        check_column.scroll_into_view
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        return exact_address_not_found if exact_address_not_found.present?
-        email.set test_helper.random_email
-        email .safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.send_keys address
-        text_box.set address
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        email.send_keys :tab
-        return exact_address_not_found if exact_address_not_found.present?
-        email.send_keys :enter
-        grid_recipient.scroll_into_view
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        grid_address.scroll_into_view
-        
-        phone .safe_double_click
-        email .safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        phone .safe_double_click
-        email .safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-        email.send_keys :tab
-        email.send_keys :enter
-        grid_recipient.scroll_into_view
-        text_box.safe_double_click
-        return exact_address_not_found if exact_address_not_found.present?
-
-        phone .safe_double_click
-        email .safe_double_click
-
-        return exact_address_not_found if exact_address_not_found.present?
-        grid_recipient.scroll_into_view
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        email .safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.send_keys address
-        text_box.set address
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        email.send_keys :tab
-        email.send_keys :enter
-        grid_address.scroll_into_view
-        
-        text_box.safe_double_click
-        text_box.safe_double_click
-        email .safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        email.send_keys :tab
-        email.send_keys :enter
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.send_keys :enter
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        check_column.scroll_into_view
-        click_form
-        phone.send_keys :tab
         grid_company.scroll_into_view
-        grid_company.safe_click
-        click_form
+        break if exact_address_not_found.present?
+        text_box.safe_double_click
+        text_box.safe_double_click
+        grid_recipient.scroll_into_view
         check_column.scroll_into_view
-        text_box.safe_double_click
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        email .safe_double_click
-        text_box.safe_double_click
-        text_box.send_keys address
-        text_box.set address
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        email.send_keys :tab
-        email.send_keys :enter
-        text_box.safe_double_click
-        text_box.safe_double_click
         grid_address.scroll_into_view
-        
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
         text_box.safe_double_click
         text_box.safe_double_click
-        email .safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
         phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        phone .safe_double_click
-        email .safe_double_click
+        phone.send_keys :enter
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        country_drop_down.drop_down.safe_click
+        country_drop_down.drop_down.safe_click
         phone.send_keys :tab
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        email.set test_helper.random_email
         email.send_keys :enter
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
         email.send_keys :tab
-        text_box.send_keys address
-        text_box.set address
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        text_box.safe_double_click
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        text_box.safe_double_click
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        text_box.safe_double_click
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        text_box.safe_double_click
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        grid_recipient.scroll_into_view
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        text_box.safe_double_click
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        phone.send_keys :tab
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
         email.send_keys :enter
-        email.send_keys :tab
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if exact_address_not_found.present?
+        text_box.safe_double_click
+        break if exact_address_not_found.present?
+        phone.send_keys :tab
+        break if exact_address_not_found.present?
         email.send_keys :enter
-        click_form
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        return exact_address_not_found if exact_address_not_found.present?
+        break if exact_address_not_found.present?
+        text_box.safe_double_click
+        break if exact_address_not_found.present?
+        phone.set test_helper.random_phone
+        break if exact_address_not_found.present?
+        email.set test_helper.random_email
+        break if exact_address_not_found.present?
+        phone .safe_double_click
+        break if exact_address_not_found.present?
+        email .safe_double_click
+        break if exact_address_not_found.present?
+        check_column.scroll_into_view
+        break if exact_address_not_found.present?
+        grid_recipient.scroll_into_view
+        break if exact_address_not_found.present?
+        phone.send_keys :tab
+        break if exact_address_not_found.present?
       }
+      phone.set ""
+      email.set ""
+      if exact_address_not_found.present?
+        exact_address_not_found
+      else
+        raise "Exact Address Not Found module did not appear."
+      end
     end
 
     def data_error
@@ -1188,12 +959,7 @@ module Batch
 
     public
     def present?
-      begin
-        exact_address_not_found_field.wait_until_present
-      rescue
-        #ignore
-      end
-      browser_helper.present? exact_address_not_found_field
+      browser_helper.present? @browser.div :text => 'Exact Address Not Found'
     end
 
     def row number
@@ -1207,7 +973,7 @@ module Batch
       accept_button.click_while_present
     end
 
-    def set(partial_address_hash)
+    def set partial_address_hash
       single_order_form = OrderDetails.new @browser
       single_order_form.validate_address_link
       #single_order_form.expand
