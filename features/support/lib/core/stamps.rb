@@ -7,7 +7,7 @@ module Stamps
     end
 
     def self.verbose
-      ENV["VERBOSE"].downcase == "true"
+      @verbose ||= ENV["VERBOSE"].downcase == "true"
     end
 
     def self.os
@@ -33,9 +33,7 @@ module Stamps
         if args.length == 1
           ENV['BROWSER'] = args[0]
         end
-        log "Browser Selection: #{ENV['BROWSER']}"
-
-        # log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "gem list"} ]"
+        log "Browser Selection: #{ENV['BROWSER']}" if Stamps::Test.verbose
 
         if Test.browser.explorer?
           system "taskkill /im IEDriverServer.exe /f"
@@ -89,7 +87,7 @@ module Stamps
         driver.window.maximize
         @browser = driver
       rescue Exception => e
-        log e
+        log e if Stamps::Test.verbose
         raise e
       end
     end
@@ -159,16 +157,16 @@ module Stamps
       case args.length
         when 0
           now = Date.today
-          log "Today:  #{now}"
+          log "Today:  #{now}" if Stamps::Test.verbose
           month = (now.month.to_s.length==1)?"0#{now.month}":now.month
           day = (now.day.length==1)?"0#{now.day}":now.day
           "#{month}/#{day}/#{now.year}"
         when 1
           now = Date.today
-          log "Today:  #{now}"
+          log "Today:  #{now}" if Stamps::Test.verbose
           days_to_add = args[0].to_i
           new_date = now + days_to_add
-          log "New Date:  #{new_date}"
+          log "New Date:  #{new_date}" if Stamps::Test.verbose
           month = (new_date.month.to_s.length==1)?"0#{new_date.month}":new_date.month
           day = (new_date.day.to_s.length==1)?"0#{new_date.day}":new_date.day
           now = "#{month}/#{day}/#{new_date.year}"
