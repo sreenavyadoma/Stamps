@@ -476,7 +476,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Order ID for #{order} sort order"
-      batch.grid.first_column.check_sorted_column("Order ID", order)
+      batch.grid.check.check_sorted_column("Order ID", order)
     end
   end
 
@@ -498,7 +498,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       #log "Checking Age for #{order} sort order"
-      batch.grid.first_column.check_sorted_column("Age", order)
+      batch.grid.check.check_sorted_column("Age", order)
     end
   end
 
@@ -521,7 +521,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Order Date for #{order} sort order"
-      batch.grid.first_column.check_sorted_column("Order Date", order)
+      batch.grid.check.check_sorted_column("Order Date", order)
     end
   end
 
@@ -544,7 +544,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Recipient for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Recipient', order)
+      batch.grid.check.check_sorted_column('Recipient', order)
     end
   end
 
@@ -560,7 +560,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Company for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Company', order)
+      batch.grid.check.check_sorted_column('Company', order)
     end
   end
 
@@ -583,7 +583,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Address for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Address', order)
+      batch.grid.check.check_sorted_column('Address', order)
     end
   end
 
@@ -605,7 +605,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking City for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('City', order)
+      batch.grid.check.check_sorted_column('City', order)
     end
   end
 
@@ -627,7 +627,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking State for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('State', order)
+      batch.grid.check.check_sorted_column('State', order)
     end
   end
 
@@ -650,7 +650,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Zip for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Zip', order)
+      batch.grid.check.check_sorted_column('Zip', order)
     end
   end
 
@@ -673,7 +673,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Phone for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Phone', order)
+      batch.grid.check.check_sorted_column('Phone', order)
     end
   end
 
@@ -696,7 +696,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Email for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Email', order)
+      batch.grid.check.check_sorted_column('Email', order)
     end
   end
 
@@ -719,7 +719,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Qty for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Qty.', order)
+      batch.grid.check.check_sorted_column('Qty.', order)
     end
   end
 
@@ -742,7 +742,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Item SKU for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Item SKU', order)
+      batch.grid.check.check_sorted_column('Item SKU', order)
     end
   end
 
@@ -764,7 +764,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Item Name for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Item Name', order)
+      batch.grid.check.check_sorted_column('Item Name', order)
     end
   end
 
@@ -798,7 +798,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Weight for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Weight', order)
+      batch.grid.check.check_sorted_column('Weight', order)
     end
   end
 
@@ -821,7 +821,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Insured Value for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Insured Value', order)
+      batch.grid.check.check_sorted_column('Insured Value', order)
     end
   end
 
@@ -844,7 +844,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Order Status for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Order Status', order)
+      batch.grid.check.check_sorted_column('Order Status', order)
     end
   end
 
@@ -901,7 +901,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Order Total for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Order Total', order)
+      batch.grid.check.check_sorted_column('Order Total', order)
     end
   end
 
@@ -924,7 +924,7 @@ module Batch
       click_sort_drop_down id
       click_sort_option order
       log "Checking Country for #{order} sort order"
-      batch.grid.first_column.check_sorted_column('Country', order)
+      batch.grid.check.check_sorted_column('Country', order)
     end
   end
 
@@ -1051,7 +1051,7 @@ module Batch
 
   end
 
-  class FirstColumn < Column
+  class CheckColumn < Column
     def scroll_into_view
       scroll :check_box
     end
@@ -1275,8 +1275,8 @@ module Batch
       @tracking ||= Tracking.new @browser
     end
 
-    def first_column
-      @first_column ||= FirstColumn.new @browser
+    def check
+      @check ||= CheckColumn.new @browser
     end
 
     def toolbar
@@ -1291,4 +1291,5 @@ module Batch
     end
 
   end
+
 end
