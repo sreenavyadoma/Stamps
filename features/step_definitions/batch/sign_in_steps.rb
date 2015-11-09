@@ -1,5 +1,5 @@
 Given /^I launch browser (\w+)$/ do |browser|
-  @browser = Stamps::Test.setup(browser)
+  @browser = Stamps::Test.setup browser
 end
 
 Given /^I launch default browser$/ do
