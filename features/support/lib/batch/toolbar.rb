@@ -101,7 +101,7 @@ module Batch
             break if single_order_form.present?
           }
           new_id = old_grid_row_1_id != grid.order_id.row(1) && grid.order_id.row(1) == single_order_form.order_id
-          log "Old Grid 1 ID: #{old_grid_row_1_id}, New Grid 1 ID: #{grid.order_id.row(1)}, Order Details Order ID:  #{grid.order_id.row(1)} - Add #{(new_id)?"successful":"failed"}"
+          log "Add #{(new_id)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_grid_row_1_id}, New Grid 1 ID: #{grid.order_id.row(1)}, Order Details Order ID:  #{grid.order_id.row(1)}"
           return single_order_form if new_id
         rescue
           #ignore
