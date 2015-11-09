@@ -331,67 +331,6 @@ module Batch
         email.send_keys :tab
         email.send_keys :enter
         grid_address.scroll_into_view
-        
-        text_box.safe_double_click
-        text_box.safe_double_click
-        email .safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        email.send_keys :tab
-        email.send_keys :enter
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone.send_keys :enter
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        first_column.scroll_into_view
-        click_form
-        phone.send_keys :tab
-        grid_company.scroll_into_view
-        grid_company.safe_click
-        click_form
-        first_column.scroll_into_view
-        text_box.safe_double_click
-        text_box.safe_double_click
-        email .safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        email.send_keys :tab
-        email.send_keys :enter
-        text_box.safe_double_click
-        text_box.safe_double_click
-        grid_address.scroll_into_view
-        
-        text_box.safe_double_click
-        text_box.safe_double_click
-        email .safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        text_box.safe_double_click
-        phone .safe_double_click
-        email .safe_double_click
-        phone.send_keys :tab
-        email.send_keys :enter
-        email.send_keys :tab
-        email.send_keys :enter
-        email.send_keys :tab
-        email.send_keys :enter
-        click_form
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        break if less.present?
 
       }
 
