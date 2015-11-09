@@ -86,7 +86,7 @@ module Batch
     end
 
     def add
-      single_order_form = SingleOrderForm.new @browser
+      single_order_form = OrderDetails.new @browser
       grid = Grid.new @browser
       add_button = Button.new (@browser.spans :text => 'Add').first
 

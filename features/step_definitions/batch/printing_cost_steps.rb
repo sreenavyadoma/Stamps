@@ -1,30 +1,30 @@
 Then /^Save Shipping Costs Data$/ do
-  @service_cost = batch.single_order_form.service_cost
-  @insurance_cost = batch.single_order_form.insurance_cost
-  @tracking_cost = batch.single_order_form.tracking_cost
-  @total_amount = batch.single_order_form.total
+  @service_cost = batch.order_details.service_cost
+  @insurance_cost = batch.order_details.insurance_cost
+  @tracking_cost = batch.order_details.tracking_cost
+  @total_amount = batch.order_details.total
   @old_balance = batch.navigation.balance
 end
 
 Then /^Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost$/ do
-  @total_amount = batch.single_order_form.total
-  @service_cost = batch.single_order_form.service_cost
-  @tracking_cost = batch.single_order_form.tracking_cost
-  @insurance_cost = batch.single_order_form.insurance_cost
+  @total_amount = batch.order_details.total
+  @service_cost = batch.order_details.service_cost
+  @tracking_cost = batch.order_details.tracking_cost
+  @insurance_cost = batch.order_details.insurance_cost
   total_amount_correct = @total_amount.to_f.round(2) == (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
   log "Total Amount:  #{(total_amount_correct)?'Passed':'Failed'}.  #{@total_amount} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
   expect(total_amount_correct).to be true
 end
 
 Then /^Expect Ship Cost equals Total amount$/ do
-  total_amount = batch.single_order_form.total
+  total_amount = batch.order_details.total
   ship_cost = batch.grid.ship_cost.data @order_id
   10.times { |counter|
     begin
       sleep(1)
       log_expectation_eql "#{counter}. Ship Cost", total_amount, ship_cost
       break if ship_cost.eql? total_amount
-      total_amount = batch.single_order_form.total
+      total_amount = batch.order_details.total
       ship_cost = batch.grid.ship_cost.data @order_id
     rescue
       #ignore

@@ -1,6 +1,6 @@
 module Batch
 
-  class OrderDetails < BatchObject
+  class OrderForm < BatchObject
     def click_form
       item_label = Label.new @browser.label :text => 'Item:'
       10.times {
@@ -13,7 +13,7 @@ module Batch
     end
   end
 
-  class ShipToFields < OrderDetails
+  class ShipToFields < OrderForm
 
     def country
       ShipToCountry.new @browser
@@ -1162,7 +1162,7 @@ module Batch
     end
 
     def set(partial_address_hash)
-      single_order_form = SingleOrderForm.new(@browser)
+      single_order_form = OrderDetails.new @browser
       single_order_form.validate_address_link
       #single_order_form.expand
       single_order_form.ship_to.set BatchHelper.instance.format_address(partial_address_hash)
@@ -1193,7 +1193,7 @@ module Batch
     end
   end
 
-  class BatchTracking < OrderDetails
+  class BatchTracking < OrderForm
     def text_box
       Textbox.new @browser.text_field :name => 'Tracking'
     end
@@ -1260,7 +1260,7 @@ module Batch
 
   end
 
-  class BatchService < OrderDetails
+  class BatchService < OrderForm
 
     private
 
@@ -1338,7 +1338,7 @@ module Batch
 
   end
 
-  class ShipToCountry < OrderDetails
+  class ShipToCountry < OrderForm
 
     def drop_down
       divs = @browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
@@ -1388,7 +1388,7 @@ module Batch
     end
   end
 
-  class ShipFromAddress < OrderDetails
+  class ShipFromAddress < OrderForm
 
     def ship_from_dropdown
       @browser.div :css => "div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]"
@@ -1519,7 +1519,7 @@ module Batch
     end
   end
 
-  class SingleOrderForm < OrderDetails
+  class OrderDetails < OrderForm
 
     def ship_from
       ShipFromAddress.new @browser
