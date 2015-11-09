@@ -1,5 +1,5 @@
 Then /^Sign-in to (\w+) webpostage as (.*)\/(.*) using (\w+)$/ do |environment, username, password, browser|
-  @browser = Stamps.setup browser
+  @browser = Stamps::Test.setup browser
   print_postage.sign_in_page.visit(environment).sign_in username, password
 end
 
