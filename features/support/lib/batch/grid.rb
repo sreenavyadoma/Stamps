@@ -391,16 +391,16 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log "Order ID: #{order_id} = Row #{row}"
+      #log "Order ID: #{order_id} = Row #{row}"
       grid_text(:age, row)
     end
 
     def sort order
       id = get_header_id "Age"
-      log "Sorting Age in #{order} order"
+      #log "Sorting Age in #{order} order"
       click_sort_drop_down id
       click_sort_option order
-      log "Checking Age for #{order} sort order"
+      #log "Checking Age for #{order} sort order"
       batch.grid.first_column.check_sorted_column("Age", order)
     end
   end

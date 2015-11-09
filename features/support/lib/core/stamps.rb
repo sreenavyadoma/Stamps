@@ -1,6 +1,107 @@
 module Stamps
   include DataMagic
 
+  class Test
+    def self.browser
+      Stamps::Browser::Browser.instance
+    end
+
+    def self.verbose
+      ENV["VERBOSE"].downcase == "true"
+    end
+
+    def self.os
+      @os ||= (
+      host_os = RbConfig::CONFIG['host_os']
+      case host_os
+        when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
+          :windows
+        when /darwin|mac os/
+          :macosx
+        when /linux/
+          :linux
+        when /solaris|bsd/
+          :unix
+        else
+          raise Error::WebDriverError, "unknown os: #{host_os.inspect}"
+      end
+      )
+    end
+
+    def self.setup *args
+      begin
+        if args.length == 1
+          ENV['BROWSER'] = args[0]
+        end
+        log "Browser Selection: #{ENV['BROWSER']}"
+
+        # log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "gem list"} ]"
+
+        if Test.browser.explorer?
+          system "taskkill /im IEDriverServer.exe /f"
+          system "taskkill /im iexplore.exe /f"
+
+          driver = Watir::Browser.new :ie
+          browser_name = 'Internet Explorer'
+
+        elsif Test.browser.firefox?
+          system "taskkill /im firefox.exe /f"
+          sleep 2
+          #driver = Watir::Browser.new :firefox
+          firefox_profile_dir = File.join("C:", "watir-webdriver", "firefox", "test-profile")
+          Dir.mkdir firefox_profile_dir unless Dir.exist? firefox_profile_dir
+          Selenium::WebDriver::Firefox::Profile.webdriver_profile_directory = firefox_profile_dir
+          profile = Selenium::WebDriver::Firefox::Profile.new firefox_profile_dir
+          profile.layout_on_disk
+          profile.native_events = false
+
+          driver = Watir::Browser.new :firefox, :profile => 'selenium'
+
+          browser_name = 'Mozilla Firefox'
+
+        elsif Test.browser.chrome?
+          system "taskkill /im chrome.exe /f"
+
+          chrome_data_dir = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data", "Default")
+          chrome_driver_path = File.join("C:", "watir-webdriver", "drivers", "chromedriver.exe")
+
+          log_param "chrome_driver:  exist?  #{File.exist? chrome_driver_path}  ##", chrome_driver_path
+          log_param "chrome_data_dir:  exist?  #{File.exist? chrome_data_dir}  ##", chrome_data_dir
+
+          begin
+            raise log "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
+          end unless File.exist? chrome_data_dir
+
+          driver = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
+          browser_name = 'Google Chrome'
+
+        elsif Test.browser.safari?
+          driver = Watir::Browser.new :safari
+          browser_name = 'Mac OS X - Safari'
+        else
+          driver = Watir::Browser.new :ie
+          browser_name = 'Internet Explorer'
+        end
+
+        log "#{browser_name} is ready."
+        #driver.window.move_to 0, 0
+        #driver.window.resize_to 1250, 850
+        driver.window.maximize
+        @browser = driver
+      rescue Exception => e
+        log e
+        raise e
+      end
+    end
+
+    def self.teardown
+      @browser.quit unless @browser == nil
+      @browser = nil
+      log "Done!"
+    end
+
+  end
+
   def str_to_sym(str)
     str.downcase.tr('()', '').tr('/-', '_').strip.tr(' ', '_').to_sym
   end
@@ -31,100 +132,6 @@ module Stamps
 
   def browser_helper
     BrowserHelper.instance
-  end
-
-  def self.browser
-    Stamps::Browser::Browser.instance
-  end
-
-  def self.os
-    @os ||= (
-    host_os = RbConfig::CONFIG['host_os']
-    case host_os
-      when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
-        :windows
-      when /darwin|mac os/
-        :macosx
-      when /linux/
-        :linux
-      when /solaris|bsd/
-        :unix
-      else
-        raise Error::WebDriverError, "unknown os: #{host_os.inspect}"
-    end
-    )
-  end
-
-  def self.setup *args
-    begin
-      if args.length == 1
-        ENV['BROWSER'] = args[0]
-      end
-      log "Browser Selection: #{ENV['BROWSER']}"
-
-      # log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "gem list"} ]"
-
-      if Stamps.browser.explorer?
-        system "taskkill /im IEDriverServer.exe /f"
-        system "taskkill /im iexplore.exe /f"
-
-        driver = Watir::Browser.new :ie
-        browser_name = 'Internet Explorer'
-
-      elsif Stamps.browser.firefox?
-        system "taskkill /im firefox.exe /f"
-        sleep 2
-        #driver = Watir::Browser.new :firefox
-        firefox_profile_dir = File.join("C:", "watir-webdriver", "firefox", "test-profile")
-        Dir.mkdir firefox_profile_dir unless Dir.exist? firefox_profile_dir
-        Selenium::WebDriver::Firefox::Profile.webdriver_profile_directory = firefox_profile_dir
-        profile = Selenium::WebDriver::Firefox::Profile.new firefox_profile_dir
-        profile.layout_on_disk
-        profile.native_events = false
-
-        driver = Watir::Browser.new :firefox, :profile => 'selenium'
-
-        browser_name = 'Mozilla Firefox'
-
-      elsif Stamps.browser.chrome?
-        system "taskkill /im chrome.exe /f"
-
-        chrome_data_dir = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data", "Default")
-        chrome_driver_path = File.join("C:", "watir-webdriver", "drivers", "chromedriver.exe")
-
-        log_param "chrome_driver:  exist?  #{File.exist? chrome_driver_path}  ##", chrome_driver_path
-        log_param "chrome_data_dir:  exist?  #{File.exist? chrome_data_dir}  ##", chrome_data_dir
-
-        begin
-          raise log "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
-        end unless File.exist? chrome_data_dir
-
-        driver = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
-        browser_name = 'Google Chrome'
-
-      elsif Stamps.browser.safari?
-        driver = Watir::Browser.new :safari
-        browser_name = 'Mac OS X - Safari'
-      else
-        driver = Watir::Browser.new :ie
-        browser_name = 'Internet Explorer'
-      end
-
-      log "#{browser_name} is ready."
-      #driver.window.move_to 0, 0
-      #driver.window.resize_to 1250, 850
-      driver.window.maximize
-      @browser = driver
-    rescue Exception => e
-      log e
-      raise e
-    end
-  end
-
-  def self.teardown
-    @browser.quit unless @browser == nil
-    @browser = nil
-    log "Done!"
   end
 
   def test_helper
