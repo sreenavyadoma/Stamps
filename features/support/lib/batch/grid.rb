@@ -1172,115 +1172,115 @@ module Batch
   # Order Grid
   class Grid < BatchObject
     def age
-      Age.new @browser
+      @age ||= Age.new @browser
     end
 
     def order_id
-      OrderId.new @browser
+      @order_id ||= OrderId.new @browser
     end
 
     def order_date
-      OrderDate.new @browser
+      @order_date ||= OrderDate.new @browser
     end
 
     def recipient
-      Recipient.new @browser
+      @recipient ||= Recipient.new @browser
     end
 
     def domestic
-      Address.new @browser
+      @address ||= Address.new @browser
     end
 
     def city
-      City.new @browser
+      @city ||= City.new @browser
     end
 
     def state
-      State.new @browser
+      @state ||= State.new @browser
     end
 
     def zip
-      Zip.new @browser
+      @zip ||= Zip.new @browser
     end
 
     def phone
-      Phone.new @browser
+      @phone ||= Phone.new @browser
     end
 
     def email
-      Email.new @browser
+      @email ||= Email.new @browser
     end
 
     def qty
-      Qty.new @browser
+      @qty ||= Qty.new @browser
     end
 
     def item_sku
-      ItemSKU.new @browser
+      @item_sku ||= ItemSKU.new @browser
     end
 
     def item_name
-      ItemName.new @browser
+      @item_name ||= ItemName.new @browser
     end
 
     def weight
-      Weight.new @browser
+      @weight ||= Weight.new @browser
     end
 
     def insured_value
-      InsuredValue.new @browser
+      @insured_value ||= InsuredValue.new @browser
     end
 
     def order_status
-      OrderStatus.new @browser
+      @order_status ||= OrderStatus.new @browser
     end
 
     def ship_date
-      ShipDate.new @browser
+      @ship_date ||= ShipDate.new @browser
     end
 
     def ship_from
-      ShipFrom.new @browser
+      @ship_from ||= ShipFrom.new @browser
     end
 
     def order_total
-      OrderTotal.new @browser
+      @order_total ||= OrderTotal.new @browser
     end
 
     def country
-      Country.new @browser
+      @country ||= Country.new @browser
     end
 
     def ship_cost
-      ShipCost.new @browser
+      @ship_cost ||= ShipCost.new @browser
     end
 
     def company
-      Company.new @browser
+      @company ||= Company.new @browser
     end
 
     def service
-      Service.new @browser
+      @service ||= Service.new @browser
     end
 
     def reference_no
-      ReferenceNo.new @browser
+      @reference_no ||= ReferenceNo.new @browser
     end
 
     def cost_code
-      CostCode.new @browser
+      @cost_code ||= CostCode.new @browser
     end
 
     def tracking
-      Tracking.new @browser
+      @tracking ||= Tracking.new @browser
     end
 
     def first_column
-      FirstColumn.new @browser
+      @first_column ||= FirstColumn.new @browser
     end
 
     def toolbar
-      GridToolbar.new @browser
+      @grid_toolbar ||= GridToolbar.new @browser
     end
 
     def wait_until_present *args

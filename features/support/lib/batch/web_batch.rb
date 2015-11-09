@@ -51,8 +51,8 @@ module Batch
       MultiOrder.new(@browser)
     end
 
-    def single_order_form
-      @single_order_form ||= SingleOrderForm.new(@browser)
+    def order_details
+      @order_details ||= OrderDetails.new @browser
     end
 
     def grid

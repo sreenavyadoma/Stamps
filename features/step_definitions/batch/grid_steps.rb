@@ -431,7 +431,7 @@ end
 
 Then /^Expect Order Form Order ID equals Grid order ID$/ do
   grid_order_id = batch.grid.order_id.row 1
-  single_order_form_order_id = batch.single_order_form.order_id
+  single_order_form_order_id = batch.order_details.order_id
   log "Grid Order ID: #{grid_order_id}.  Order Form Order ID:  #{single_order_form_order_id}.  Test #{(grid_order_id==single_order_form_order_id) ? 'Passed' : 'Failed'}"
   grid_order_id.should eql single_order_form_order_id
 end
