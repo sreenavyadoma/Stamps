@@ -52,7 +52,7 @@ orders_20: --tags @orders_20 --guess VERBOSE=false URL=qacc BROWSER=ie USR=cm_cp
 
 jenkins_orders: --tags @jenkins_orders --guess VERBOSE=false URL=qacc BROWSER=ff
 
-print_regression: --tags @print_regression --guess VERBOSE=false URL=qacc BROWSER=ff USR=autosuggest PW=326tsetaqcdS!
+print_regression: --tags @two_up_expanded --guess VERBOSE=false URL=qacc BROWSER=ff USR=autosuggest PW=326tsetaqcdS!
 
 auto_suggest: --tags @auto_suggest --guess VERBOSE=false URL=qacc BROWSER=ff USR=autosuggest PW=326tsetaqcdS!
 
