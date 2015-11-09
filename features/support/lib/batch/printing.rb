@@ -1,43 +1,5 @@
 module Batch
 
-  class UspsTerms < BatchObject
-    def present?
-      (Label.new @browser.div :text => "USPS Terms").present?
-    end
-
-    def dont_show_this_again dont_show
-
-      chkbox_inputs = @browser.inputs :css => "input[id^=checkbox-][id$=-inputEl]"
-      checkbox_field = chkbox_inputs.last
-      raise "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? checkbox_field
-
-      verify_field = @browser.div :css => "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
-      raise "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? verify_field
-
-      attribute = "class"
-      attrib_value_check = "checked"
-
-      dont_show_checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, attribute, attrib_value_check
-
-      if dont_show
-        dont_show_checkbox.check
-        log "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
-      else
-        dont_show_checkbox.uncheck
-        log "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
-      end
-
-    end
-
-    def i_agree
-      Button.new @browser.span :text => "I Agree"
-    end
-
-    def cancel
-      Button.new @browser.span :text => "Cancel"
-    end
-  end
-
   class PrintWindowBase < BatchObject
     def window_x_button
       @browser.img :css => "img[class*='x-tool-img x-tool-close']"
@@ -60,26 +22,92 @@ module Batch
     end
   end
 
-  class PrintWindow < PrintWindowBase
-    def initialize browser, *args
-      super browser
-      print_options *args
+  class PrintWindowDatePicker < BatchObject
+    def today_span
+      span = @browser.span :css => "div[id^=datepicker][data-ref='footerEl']>a>span>span>span[class*=inner]"
+      log "Today span present? #{browser_helper.present? span}"
+      span
     end
 
-    def printer
-      drop_down = @browser.div :id => "div#sdc-printpostagewindow-printerdroplist-trigger-picker"
-      input = @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
-      Dropdown.new @browser, drop_down, :li, input
+    def todays_date_div
+      div = @browser.div :css => "div[title='Today']"
+      log "Today div present? #{browser_helper.present? div}"
+      div
     end
 
-    def print_media
-      drop_down = @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
-      input = @browser.text_field :css => "input[name^=printmediadroplist]"
-      Dropdown.new @browser, drop_down, :li, input
+    def date_td day
+      css = "td[aria-label='#{test_helper.date_picker_calendar_date day.to_i}']"
+      td = @browser.td :css => css
+      present = browser_helper.present? td
+      td
     end
 
+    def date day
+      date = date_td day
+      browser_helper.click date
+    end
+
+    def present?
+      browser_helper.present? todays_date_div
+    end
+
+    def today
+      5.times{
+        begin
+          browser_helper.click today_span, "today"
+          break unless browser_helper.present? today_span
+        rescue
+          #ignroe
+        end
+      }
+    end
+
+  end
+
+  class UspsTerms < BatchObject
+    def present?
+      (Label.new @browser.div :text => "USPS Terms").present?
+    end
+
+    def agree_and_dont_show_again
+      dont_show_this_again true
+      i_agree.click_while_present
+    end
+
+    def dont_show_this_again dont_show
+      chkbox_inputs = @browser.inputs :css => "input[id^=checkbox-][id$=-inputEl]"
+      checkbox_field = chkbox_inputs.last
+      raise "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? checkbox_field
+
+      verify_field = @browser.div :css => "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
+      raise "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? verify_field
+
+      attribute = "class"
+      attrib_value_check = "checked"
+
+      dont_show_checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, attribute, attrib_value_check
+
+      if dont_show
+        dont_show_checkbox.check
+        log "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
+      else
+        dont_show_checkbox.uncheck
+        log "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
+      end
+    end
+
+    def i_agree
+      Button.new @browser.span :text => "I Agree"
+    end
+
+    def cancel
+      Button.new @browser.span :text => "Cancel"
+    end
+  end
+
+  class StartingLabel < BatchObject
     def label_divs
-      @browser.divs :css => "div[class*=label-chooser-image]"
+      @browser.divs :css => "div[class*='label-chooser-selectable-box']"
     end
 
     def left_label_div
@@ -90,8 +118,77 @@ module Batch
       label_divs[2]
     end
 
-    def ship_date_input
-      @browser.text_field :name => 'sdc-printpostagewindow-shipdate-inputEl'
+    def left
+      10.times{
+        browser_helper.click left_label_div, "left_label"
+        return true if label_selected? left_label_div
+      }
+      false
+    end
+
+    def right
+      10.times{
+        browser_helper.click right_label_div, "right_label"
+        return true if label_selected? right_label_div
+      }
+      false
+    end
+
+    def left_selected?
+      label_selected? left_label_div
+    end
+
+    def right_selected?
+      label_selected? right_label_div
+    end
+
+    def label_selected? div
+      8.times{
+        selected = browser_helper.attribute_value(div, 'class').include? 'selected'
+        log "Label selected?  #{(selected)? 'Yes':'No'}"
+        break if selected
+      }
+      browser_helper.attribute_value(div, 'class').include? 'selected'
+    end
+
+    def default_selected?
+      label_selected? left_label_div
+    end
+  end
+
+  class PrintingOn < BatchObject
+    def select selection
+      drop_down = Button.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
+      text_box = Textbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
+      selection_field = Label.new @browser.li :text => selection
+
+      10.times{
+        drop_down.safe_click unless selection_field.present?
+        selection_field.safe_click
+        input_text = text_box.text
+        break if input_text.include? selection
+      }
+    end
+  end
+
+  class PrintModal < PrintWindowBase
+    def initialize browser, *args
+      super browser
+      print_options *args
+    end
+
+    def starting_label
+      StartingLabel.new @browser
+    end
+
+    def printer
+      drop_down = @browser.div :id => "div#sdc-printpostagewindow-printerdroplist-trigger-picker"
+      input = @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
+      Dropdown.new @browser, drop_down, :li, input
+    end
+
+    def printing_on
+      PrintingOn.new @browser
     end
 
     def date_picker_div
@@ -111,58 +208,7 @@ module Batch
     end
 
     def ship_date
-      browser_helper.text ship_date_input
-    end
-
-    def ship_date=date
-      5.times{
-        begin
-          browser_helper.set ship_date_input, date
-          sleep(1)
-          text = browser_helper.text ship_date_input
-          done = text.include? date
-          break if done
-        rescue
-          #ignroe
-        end
-      }
-    end
-
-    def left_label
-      10.times{
-        browser_helper.click left_label_div, "left_label"
-        return true if label_selected? left_label_div
-      }
-      false
-    end
-
-    def right_label
-      10.times{
-        browser_helper.click right_label_div, "right_label"
-        return true if label_selected? right_label_div
-      }
-      false
-    end
-
-    def left_label_selected?
-      label_selected? left_label_div
-    end
-
-    def right_label_selected?
-      label_selected? right_label_div
-    end
-
-    def label_selected? div
-      8.times{
-        selected = browser_helper.attribute_value(div, 'class').include? 'selected'
-        log "Label selected?  #{(selected)? 'Yes':'No'}"
-        break if selected
-      }
-      browser_helper.attribute_value(div, 'class').include? 'selected'
-    end
-
-    def default_label_selected?
-      label_selected? left_label_div
+      Textbox.new @browser.text_field :name => 'sdc-printpostagewindow-shipdate-inputEl'
     end
 
     def print
@@ -306,140 +352,6 @@ module Batch
       @printing_error
     end
 
-=begin
-
-    def check_unauthenticated_error
-      @printing_error = false
-      begin
-        error_label = @browser.p :text => "Error code: [4522293]"
-        if browser_helper.present? error_label
-          @printing_error = true
-          ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
-          log "-- Postage Rating Error (Error code: [4522293]) --"
-          ptags.each {|p_tag|
-            if browser_helper.present? p_tag
-              p_tag_text = browser_helper.text p_tag
-              log "\n#{p_tag_text}"
-            end
-          }
-          log "-- Postage Rating Error (Error code: [4522293]) --"
-          if error_ok_button.present?
-            @printing_error = true
-            error_message = self.error_message
-            5.times {
-              error_ok_button.click
-              break unless error_ok_button.present?
-            }
-            close
-          end
-          close
-        end
-      rescue
-        #ignore
-      end
-      @printing_error
-    end
-
-    def check_account_status_error
-      @printing_error = false
-      begin
-        error_label = @browser.p :text => "Error code: [4522357]"
-        if browser_helper.present? error_label
-          @printing_error = true
-          ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
-          log "-- Account Status Error (Error code: [4522357]) --"
-          ptags.each {|p_tag|
-            if browser_helper.present? p_tag
-              p_tag_text = browser_helper.text p_tag
-              log "\n#{p_tag_text}"
-            end
-          }
-          log "-- Account Status Error (Error code: [4522357]) --"
-          if error_ok_button.present?
-            @printing_error = true
-            error_message = self.error_message
-            5.times {
-              error_ok_button.click
-              break unless error_ok_button.present?
-            }
-            close
-          end
-          close
-        end
-      rescue
-        #ignore
-      end
-      @printing_error
-    end
-
-    def check_rating_error
-      @printing_error = false
-      begin
-        error_label = @browser.p :text => "Error code: [5177601]"
-        if browser_helper.present? error_label
-          @printing_error = true
-          ptags = @browser.ps :css => 'div[id^=dialoguemodal]>p'
-          log "-- Rating Error code: [5177601] --"
-
-          ptags.each {|p_tag|
-            if browser_helper.present? p_tag
-              p_tag_text = browser_helper.text p_tag
-              log "\n#{p_tag_text}"
-            end
-          }
-          log "-- Rating Error code: [5177601] --"
-          if error_ok_button.present?
-            @printing_error = true
-            error_message = self.error_message
-            5.times {
-              error_ok_button.click
-              break unless error_ok_button.present?
-            }
-            close
-          end
-          close
-        end
-      rescue
-        #ignore
-      end
-      @printing_error
-    end
-
-    def check_error_ok_button
-      ok_button = Button.new error_ok_button
-      message_label = Label.new(@browser.div :css => "div[id^=dialoguemodal][class=x-autocontainer-innerCt]")
-      sleep 2
-      @printing_error = false
-
-      if message_label.present?
-        err_msg = message_label.text
-        log "Printing Error Message:  #{(err_msg)}"
-        @printing_error = true
-      end
-
-      if ok_button.present?
-        @printing_error = true
-        log "Error Window OK button detected"
-        ok_button.safe_click
-        ok_button.safe_click
-        ok_button.safe_click
-        @printing_error
-      end
-      @printing_error
-    end
-
-
-    def printing_error_check
-      #check_naws_plugin_error if Stamps.browser.chrome?
-      #unauthenticated_error = check_unauthenticated_error
-      #account_status_error = check_account_status_error
-      #error_ok_button = check_error_ok_button
-      #log "Printing Error Encountered:  #{unauthenticated_error || account_status_error || error_ok_button}"
-      #unauthenticated_error || account_status_error || error_ok_button
-
-    end
-=end
-
     def printing_error_check
       @printing_error = ""
       incomplete_order_window = Label.new(@browser.div :text => "Incomplete Order")
@@ -494,58 +406,13 @@ module Batch
     end
   end
 
+end
 
-  class PrintWindowDatePicker < BatchObject
-    def today_span
-      span = @browser.span :css => "div[id^=datepicker][data-ref='footerEl']>a>span>span>span[class*=inner]"
-      log "Today span present? #{browser_helper.present? span}"
-      span
-    end
-
-    def todays_date_div
-      div = @browser.div :css => "div[title='Today']"
-      log "Today div present? #{browser_helper.present? div}"
-      div
-    end
-
-    def date_td day
-      css = "td[aria-label='#{test_helper.date_picker_calendar_date day.to_i}']"
-      td = @browser.td :css => css
-      present = browser_helper.present? td
-      td
-    end
-
-    def date day
-      date = date_td day
-      browser_helper.click date
-    end
-
-    def present?
-      browser_helper.present? todays_date_div
-    end
-
-    def today
-      5.times{
-        begin
-          browser_helper.click today_span, "today"
-          break unless browser_helper.present? today_span
-        rescue
-          #ignroe
-        end
-      }
-    end
-
-  end
-
+=begin
 
   class UspsTerms < BatchObject
     def present?
       (Label.new @browser.div :text => "USPS Terms").present?
-    end
-
-    def agree_and_dont_show_again
-      dont_show_this_again true
-      i_agree.click_while_present
     end
 
     def dont_show_this_again dont_show
@@ -581,4 +448,4 @@ module Batch
     end
   end
 
-end
+=end

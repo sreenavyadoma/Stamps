@@ -1,19 +1,19 @@
 Then /^Verify Local Rating$/ do |table|
   #results_file = "local_rating_results.csv"
-  @single_order_form = batch.single_order_form
+  @single_order_form = batch.order_details
   parameter_array = table.hashes
   results = Hash.new
 
   parameter_array.each_with_index { |element, index|
-    step "Set single-order form Ship-From to #{element["ship_from"]}"
-    step "Set single-order form Ship-To address to #{element["ship_to"]}"
-    step "Set single-order form Ounces to #{element["weight_oz"]}"
-    step "Set single-order form Pounds to #{element["weight_lbs"]}"
-    step "Set single-order form Length to #{element["length"]}"
-    step "Set single-order form Height to #{element["height"]}"
-    step "Set single-order form Width to #{element["width"]}"
-    step "Set single-order form Service to \"#{element["service"]}\""
-    step "Set single-order form Tracking to #{element["tracking"]}"
+    step "Set Order Form Ship-From to #{element["ship_from"]}"
+    step "Set Order Form Ship-To address to #{element["ship_to"]}"
+    step "Set Order Form Ounces to #{element["weight_oz"]}"
+    step "Set Order Form Pounds to #{element["weight_lbs"]}"
+    step "Set Order Form Length to #{element["length"]}"
+    step "Set Order Form Height to #{element["height"]}"
+    step "Set Order Form Width to #{element["width"]}"
+    step "Set Order Form Service to \"#{element["service"]}\""
+    step "Set Order Form Tracking to #{element["tracking"]}"
 
     10.times { |counter|
       @single_order_form.click_form
@@ -33,16 +33,16 @@ Then /^Verify Local Rating$/ do |table|
     expected_total_amount = element["total"]
 
     5.times { |counter|
-      batch.single_order_form.click_form
+      batch.order_details.click_form
       sleep 1
-      actual = batch.single_order_form.total
-      batch.single_order_form.click_form
+      actual = batch.order_details.total
+      batch.order_details.click_form
       log_expectation_eql "#{counter}. Total Cost", expected_total_amount, actual
-      batch.single_order_form.click_form
+      batch.order_details.click_form
       sleep 1
       break if actual.eql? expected_total_amount
     }
-    actual = batch.single_order_form.total
+    actual = batch.order_details.total
     actual.should == expected_total_amount
 
     if actual != expected_total_amount

@@ -8,5 +8,5 @@ Feature: New Order ID Created
   Scenario:  New Order ID Created
     And I Add a new order
     Then Expect new Order ID created
-    Then Expect single-order form Order ID equals Grid order ID
+    Then Expect Order Form Order ID equals Grid order ID
     And Sign out

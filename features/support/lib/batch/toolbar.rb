@@ -1,98 +1,4 @@
 module Batch
-  class OrderGridPagingToolbar < BatchObject
-    def present?
-
-    end
-
-    def page_count
-      #field=@browser.text_field :css => "input[name^=combobox]"
-      #text_box = Textbox.new field
-      #log text_box.present?
-      #text_box
-      divs = @browser.divs :css => "div[id^=tbtext]"
-      div = divs.last
-      present = browser_helper.present? div
-      log "Page count: #{browser_helper.text div}" # of X
-      div
-    end
-
-    def page_number
-      field = @browser.text_field :css => "div[id^=sdc-batch-grid-pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
-      text_box = Textbox.new field
-      log text_box.present?
-      text_box
-    end
-
-    def first_page
-      field = @browser.span :css => "span[class*=x-tbar-page-first]"
-      label = Label.new field
-      log label.present?
-      label
-    end
-
-    def first_page_disabled
-      field = @browser.a  :css => "div[id^=sdc-batch-grid-pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-      label = Label.new field
-      log label.disabled?
-      label.disabled?
-    end
-
-    def previous_page
-      field = @browser.span :css => "span[class*=x-tbar-page-prev]"
-      label = Label.new field
-      log label.present?
-      label
-    end
-
-    def previous_page_disabled
-      field = @browser.a  :css => "div[id^=sdc-batch-grid-pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-      label = Label.new field
-      log label.disabled?
-      label.disabled?
-    end
-
-    def next_page
-      field = @browser.span :css => "span[class*=x-tbar-page-next]"
-      label = Label.new field
-      log label.present?
-      label
-    end
-
-    def last_page
-      field = @browser.span :css => "span[class*=x-tbar-page-last]"
-      label = Label.new field
-      log label.present?
-      label
-    end
-
-    def last_page_disabled
-      field = @browser.a  :css => "div[id^=sdc-batch-grid-pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-      label = Label.new field
-      log label.present?
-      label
-    end
-
-    def total_number_of_pages
-      fields = @browser.divs :css => "div[id^=tbtext-]"
-      field=fields.last
-      label = Label.new field
-      log label.present?
-      label
-      #of 6
-      number_str=label.text
-      number = number_str.scan /\d+/
-      number.last.to_s
-    end
-
-    def per_page_dd
-      #browser, drop_down_button, selection_field_type, drop_down_input
-      buttons = @browser.divs :css => "div[id^=sdc-batch-grid-pagingtoolbar-combo][id$=trigger-picker]"
-      drop_down_button = buttons.first
-      drop_down_input = @browser.text_field :css => "input[name^=sdc-batch-grid-pagingtoolbar-combo]"
-      Dropdown.new @browser, drop_down_button, :li, drop_down_input
-    end
-
-  end
 
   #
   #  Contains Add/Edit buton for orders.
@@ -180,7 +86,7 @@ module Batch
     end
 
     def add
-      single_order_form = SingleOrderForm.new @browser
+      single_order_form = OrderDetails.new @browser
       grid = Grid.new @browser
       add_button = Button.new (@browser.spans :text => 'Add').first
 
@@ -230,7 +136,7 @@ module Batch
     end
 
     def print_modal
-      @print_window ||= PrintWindow.new @browser
+      @print_window ||= PrintModal.new @browser
       open_window @print_window
     end
 

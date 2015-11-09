@@ -1,5 +1,102 @@
 module Batch
 
+  # Order Grid Toolbar
+  class GridToolbar < BatchObject
+    def present?
+
+    end
+
+    def page_count
+      #field=@browser.text_field :css => "input[name^=combobox]"
+      #text_box = Textbox.new field
+      #log text_box.present?
+      #text_box
+      divs = @browser.divs :css => "div[id^=tbtext]"
+      div = divs.last
+      present = browser_helper.present? div
+      log "Page count: #{browser_helper.text div}" # of X
+      div
+    end
+
+    def page_number
+      field = @browser.text_field :css => "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
+      text_box = Textbox.new field
+      log text_box.present?
+      text_box
+    end
+
+    def first_page
+      field = @browser.span :css => "span[class*=x-tbar-page-first]"
+      label = Label.new field
+      log label.present?
+      label
+    end
+
+    def first_page_disabled
+      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      label = Label.new field
+      log label.disabled?
+      label.disabled?
+    end
+
+    def previous_page
+      field = @browser.span :css => "span[class*=x-tbar-page-prev]"
+      label = Label.new field
+      log label.present?
+      label
+    end
+
+    def previous_page_disabled
+      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      label = Label.new field
+      log label.disabled?
+      label.disabled?
+    end
+
+    def next_page
+      field = @browser.span :css => "span[class*=x-tbar-page-next]"
+      label = Label.new field
+      log label.present?
+      label
+    end
+
+    def last_page
+      field = @browser.span :css => "span[class*=x-tbar-page-last]"
+      label = Label.new field
+      log label.present?
+      label
+    end
+
+    def last_page_disabled
+      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      label = Label.new field
+      log label.present?
+      label
+    end
+
+    def total_number_of_pages
+      fields = @browser.divs :css => "div[id^=tbtext-]"
+      field=fields.last
+      label = Label.new field
+      log label.present?
+      label
+      #of 6
+      number_str=label.text
+      number = number_str.scan /\d+/
+      number.last.to_s
+    end
+
+    def per_page_dd
+      #browser, drop_down_button, selection_field_type, drop_down_input
+      buttons = @browser.divs :css => "div[id^=combo-][id$=trigger-picker]"
+      drop_down_button = buttons.first
+      drop_down_input = @browser.text_field :css => "input[name^=combo]"
+      Dropdown.new @browser, drop_down_button, :li, drop_down_input
+    end
+
+  end
+
+  # Grid Columns
   class Column < BatchObject
 
     MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
@@ -34,7 +131,7 @@ module Batch
         :order_total => "Order Total"
     }
 
-    def scroll_into_view column
+    def scroll column
       Label.new(column_header_field column).scroll_into_view
     end
 
@@ -95,7 +192,7 @@ module Batch
         row_text = browser_helper.text div
         if row_text.include? order_id
           row = index + 1 #row offset
-          log "Order ID #{order_id} is in Row #{row}"
+          #log "Order ID #{order_id} is in Row #{row}"
           break
         end
       }
@@ -352,7 +449,7 @@ module Batch
 
   class OrderId < Column
     def scroll_into_view
-      self.scroll_into_view(:order_id)
+      scroll :order_id
     end
     
     def row row
@@ -385,29 +482,29 @@ module Batch
 
   class Age < Column
     def scroll_into_view
-      self.scroll_into_view(:age)
+      scroll :age
     end
 
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log "Order ID: #{order_id} = Row #{row}"
+      #log "Order ID: #{order_id} = Row #{row}"
       grid_text(:age, row)
     end
 
     def sort order
       id = get_header_id "Age"
-      log "Sorting Age in #{order} order"
+      #log "Sorting Age in #{order} order"
       click_sort_drop_down id
       click_sort_option order
-      log "Checking Age for #{order} sort order"
+      #log "Checking Age for #{order} sort order"
       batch.grid.first_column.check_sorted_column("Age", order)
     end
   end
 
   class OrderDate < Column
     def scroll_into_view
-      self.scroll_into_view(:order_date)
+      scroll :order_date
     end
 
     def data order_id
@@ -430,7 +527,7 @@ module Batch
 
   class Recipient < Column
     def scroll_into_view
-      self.scroll_into_view(:recipient)
+      scroll :recipient
     end
     
     def data order_id
@@ -453,7 +550,7 @@ module Batch
 
   class Company < Column
     def scroll_into_view
-      self.scroll_into_view(:company)
+      scroll :company
     end
 
     def sort order
@@ -469,7 +566,7 @@ module Batch
 
   class Address < Column
     def scroll_into_view
-      self.scroll_into_view(:domestic)
+      scroll :domestic
     end
 
     def data order_id
@@ -492,7 +589,7 @@ module Batch
 
   class City < Column
     def scroll_into_view
-      self.scroll_into_view(:city)
+      scroll :city
     end
 
     def data order_id
@@ -514,7 +611,7 @@ module Batch
 
   class State < Column
     def scroll_into_view
-      self.scroll_into_view(:state)
+      scroll :state
     end
 
     def data order_id
@@ -536,7 +633,7 @@ module Batch
 
   class Zip < Column
     def scroll_into_view
-      self.scroll_into_view(:zip)
+      scroll :zip
     end
 
     def data order_id
@@ -559,7 +656,7 @@ module Batch
 
   class Phone < Column
     def scroll_into_view
-      self.scroll_into_view(:phone)
+      scroll :phone
     end
 
     def data order_id
@@ -582,7 +679,7 @@ module Batch
 
   class Email < Column
     def scroll_into_view
-      self.scroll_into_view(:email)
+      scroll :email
     end
 
     def data order_id
@@ -605,7 +702,7 @@ module Batch
 
   class Qty < Column
     def scroll_into_view
-      self.scroll_into_view(:qty)
+      scroll :qty
     end
 
     def data order_id
@@ -628,7 +725,7 @@ module Batch
 
   class ItemSKU < Column
     def scroll_into_view
-      self.scroll_into_view(:item_sku)
+      scroll :item_sku
     end
 
     def data order_id
@@ -651,11 +748,11 @@ module Batch
 
   class ItemName < Column
     def scroll_into_view
-      self.scroll_into_view(:item_name)
+      scroll :item_name
     end
 
     def data order_id
-      scroll_into_view :item_name
+      scroll_into_view
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
       grid_text(:item_name, row)
@@ -673,7 +770,7 @@ module Batch
 
   class Weight < Column
     def scroll_into_view
-      self.scroll_into_view(:weight)
+      scroll :weight
     end
 
     def data order_id
@@ -707,7 +804,7 @@ module Batch
 
   class InsuredValue < Column
     def scroll_into_view
-      self.scroll_into_view(:insured_value)
+      scroll :insured_value
     end
 
     def data order_id
@@ -730,7 +827,7 @@ module Batch
 
   class OrderStatus < Column
     def scroll_into_view
-      self.scroll_into_view(:order_status)
+      scroll :order_status
     end
 
     def data order_id
@@ -753,7 +850,7 @@ module Batch
 
   class ShipDate < Column
     def scroll_into_view
-      self.scroll_into_view(:ship_date)
+      scroll :ship_date
     end
 
     def data order_id
@@ -770,7 +867,7 @@ module Batch
 
   class ShipFrom < Column
     def scroll_into_view
-      self.scroll_into_view(:ship_from)
+      scroll :ship_from
     end
 
     def data order_id
@@ -787,7 +884,7 @@ module Batch
 
   class OrderTotal < Column
     def scroll_into_view
-      self.scroll_into_view(:order_total)
+      scroll :order_total
     end
 
     def data order_id
@@ -810,7 +907,7 @@ module Batch
 
   class Country < Column
     def scroll_into_view
-      self.scroll_into_view(:country)
+      scroll :country
     end
 
     def data order_id
@@ -833,7 +930,7 @@ module Batch
 
   class ShipCost < Column
     def scroll_into_view
-      self.scroll_into_view(:ship_cost)
+      scroll :ship_cost
     end
 
     def data order_id
@@ -844,7 +941,7 @@ module Batch
     end
 
     def ship_cost_error order_id
-      scroll_into_view :ship_cost
+      scroll_into_view
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}"
 
@@ -868,7 +965,7 @@ module Batch
 
   class Company < Column
     def scroll_into_view
-      self.scroll_into_view(:company)
+      scroll :company
     end
 
     def data order_id
@@ -886,7 +983,7 @@ module Batch
 
   class Service < Column
     def scroll_into_view
-      self.scroll_into_view(:service)
+      scroll :service
     end
 
     def data order_id
@@ -904,7 +1001,7 @@ module Batch
 
   class ReferenceNo < Column
     def scroll_into_view
-      self.scroll_into_view(:reference_no)
+      scroll :reference_no
     end
 
     def data order_id
@@ -922,7 +1019,7 @@ module Batch
 
   class CostCode < Column
     def scroll_into_view
-      self.scroll_into_view(:cost_code)
+      scroll :cost_code
     end
 
     def data order_id
@@ -940,7 +1037,7 @@ module Batch
 
   class Tracking < Column
     def scroll_into_view
-      self.scroll_into_view(:tracking)
+      scroll :tracking
     end
 
     def data order_id
@@ -956,7 +1053,7 @@ module Batch
 
   class FirstColumn < Column
     def scroll_into_view
-      self.scroll_into_view(:check_box)
+      scroll :check_box
     end
 
     def edit order_id
@@ -964,7 +1061,7 @@ module Batch
     end
 
     def uncheck number
-      scroll_into_view
+      self.scroll_into_view
       if size > 0
         checkbox_field = row_div number
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
@@ -1013,7 +1110,7 @@ module Batch
     end
 
     def unselect_all
-      scroll_into_view :check_box
+      scroll_into_view
       select_all_checkbox.uncheck
     end
 
@@ -1058,7 +1155,7 @@ module Batch
     end
 
     def check_rows rows
-      scroll_into_view :check_box
+      scroll_into_view
       log "Restoring #{} checked orders..."
       begin
         rows.each do |row|
@@ -1072,118 +1169,118 @@ module Batch
     end
   end
 
-
+  # Order Grid
   class Grid < BatchObject
     def age
-      Age.new @browser
+      @age ||= Age.new @browser
     end
 
     def order_id
-      OrderId.new @browser
+      @order_id ||= OrderId.new @browser
     end
 
     def order_date
-      OrderDate.new @browser
+      @order_date ||= OrderDate.new @browser
     end
 
     def recipient
-      Recipient.new @browser
+      @recipient ||= Recipient.new @browser
     end
 
     def domestic
-      Address.new @browser
+      @address ||= Address.new @browser
     end
 
     def city
-      City.new @browser
+      @city ||= City.new @browser
     end
 
     def state
-      State.new @browser
+      @state ||= State.new @browser
     end
 
     def zip
-      Zip.new @browser
+      @zip ||= Zip.new @browser
     end
 
     def phone
-      Phone.new @browser
+      @phone ||= Phone.new @browser
     end
 
     def email
-      Email.new @browser
+      @email ||= Email.new @browser
     end
 
     def qty
-      Qty.new @browser
+      @qty ||= Qty.new @browser
     end
 
     def item_sku
-      ItemSKU.new @browser
+      @item_sku ||= ItemSKU.new @browser
     end
 
     def item_name
-      ItemName.new @browser
+      @item_name ||= ItemName.new @browser
     end
 
     def weight
-      Weight.new @browser
+      @weight ||= Weight.new @browser
     end
 
     def insured_value
-      InsuredValue.new @browser
+      @insured_value ||= InsuredValue.new @browser
     end
 
     def order_status
-      OrderStatus.new @browser
+      @order_status ||= OrderStatus.new @browser
     end
 
     def ship_date
-      ShipDate.new @browser
+      @ship_date ||= ShipDate.new @browser
     end
 
     def ship_from
-      ShipFrom.new @browser
+      @ship_from ||= ShipFrom.new @browser
     end
 
     def order_total
-      OrderTotal.new @browser
+      @order_total ||= OrderTotal.new @browser
     end
 
     def country
-      Country.new @browser
+      @country ||= Country.new @browser
     end
 
     def ship_cost
-      ShipCost.new @browser
+      @ship_cost ||= ShipCost.new @browser
     end
 
     def company
-      Company.new @browser
+      @company ||= Company.new @browser
     end
 
     def service
-      Service.new @browser
+      @service ||= Service.new @browser
     end
 
     def reference_no
-      ReferenceNo.new @browser
+      @reference_no ||= ReferenceNo.new @browser
     end
 
     def cost_code
-      CostCode.new @browser
+      @cost_code ||= CostCode.new @browser
     end
 
     def tracking
-      Tracking.new @browser
+      @tracking ||= Tracking.new @browser
     end
 
     def first_column
-      FirstColumn.new @browser
+      @first_column ||= FirstColumn.new @browser
     end
 
-    def paging_toolbar
-      OrderGridPagingToolbar.new @browser
+    def toolbar
+      @grid_toolbar ||= GridToolbar.new @browser
     end
 
     def wait_until_present *args

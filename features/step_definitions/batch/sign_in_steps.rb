@@ -1,9 +1,9 @@
 Given /^I launch browser (\w+)$/ do |browser|
-  @browser = Stamps.setup(browser)
+  @browser = Stamps::Test.setup browser
 end
 
 Given /^I launch default browser$/ do
-  @browser = Stamps.setup
+  @browser = Stamps::Test.setup
 end
 
 Given /^I visit url for (\w+)$/ do |url_prefix|

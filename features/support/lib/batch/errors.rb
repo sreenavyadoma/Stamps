@@ -114,7 +114,7 @@ module Batch
           #ignore
         end
       }
-      PrintWindow.new(@browser)
+      PrintModal.new(@browser)
     end
 
     def cancel
