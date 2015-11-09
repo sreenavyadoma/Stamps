@@ -1,4 +1,5 @@
 And /^Set Order Form Ship-From to (\w+)$/ do |value|
+  log "Test: Set Order Form Ship-From to #{value}"
   batch.order_details.ship_from.select value
 end
 
