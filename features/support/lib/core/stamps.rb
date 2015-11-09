@@ -102,20 +102,20 @@ module Stamps
 
   end
 
-  def str_to_sym(str)
+  def str_to_sym str
     str.downcase.tr('()', '').tr('/-', '_').strip.tr(' ', '_').to_sym
   end
 
-  def service_to_words(str)
+  def service_to_words str
     str.tr('()', '').tr(' /-', ' ')
   end
 
-  def to_sym(str, delim)
+  def to_sym str, delim
     #str.gsub(/[^0-9A-Za-z -]/, '').gsub(/\s+/,'_').gsub(/-+/, '_').downcase.to_sym
     (strip str.gsub(/\W/, delim), delim).downcase.to_sym
   end
 
-  def strip(string, chars)
+  def strip string, chars
     chars = Regexp.escape(chars)
     string.gsub(/\A[#{chars}]+|[#{chars}]+\z/, "")
   end

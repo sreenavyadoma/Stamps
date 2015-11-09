@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile rob_dev
+default: --profile cuke_reports --profile wonder_bvt
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
 ship_date:
