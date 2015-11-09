@@ -165,7 +165,7 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
   end
 end
 
-Given /^Expect Order Details Form International Address fields are visible$/ do
+Given /^Expect Order Form International Address fields are visible$/ do
   @international_ship_to = batch.single_order_form.ship_to.international if @international_ship_to.nil?
 
   @international_ship_to.name.present?.should be true
@@ -179,14 +179,14 @@ Given /^Expect Order Details Form International Address fields are visible$/ do
   @international_ship_to.email.present?.should be true
 end
 
-Then /^Expect Order Details Form Domestic Ship-To fields are hidden$/ do
+Then /^Expect Order Form Domestic Ship-To fields are hidden$/ do
   @single_order_form = batch.single_order_form
   @single_order_form.ship_to.present?.should be false
   @single_order_form.email.present?.should be false
   @single_order_form.phone.present?.should be false
 end
 
-Then /^Expect Order Details Form Customs (.+) button is (.+)/ do |button, expectation|
+Then /^Expect Order Form Customs (.+) button is (.+)/ do |button, expectation|
   @single_order_form = batch.single_order_form
   case button.downcase
     when "restrictions"
@@ -308,7 +308,7 @@ Given /^Set customs form I agree to (\w+)$/ do |agree_str|
   @customs_form.i_agree agree
 end
 
-Given /^Add Order Details Form Item - Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
+Given /^Add Order Form Item - Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
   line_item = batch.single_order_form.add_item
   line_item.qty qty
   line_item.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
