@@ -23,13 +23,12 @@ When /^Set Order Form Ship-To address to (.*)$/ do |address|
   batch.order_details.ship_to.domestic.set formatted_address
 end
 
-And /^Set Order Form Ship-To to ambiguous address$/ do |table|
-  @ambiguous_address_module = batch.order_details.ship_to.ambiguous.set BatchHelper.instance.format_address table.hashes.first
+And /^Set Order Form Ship-To to ambiguous address$/ do |table| @ambiguous_address_module = batch.order_details.ship_to.ambiguous.set BatchHelper.instance.format_address table.hashes.first
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
   log "Start:  Select row #{row} from Exact Address Not Found module"
-  batch.order_details.ship_to.ambiguous.row = row
+  @ambiguous_address_module.row row
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
