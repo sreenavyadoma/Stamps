@@ -1,6 +1,5 @@
 When /^I Add a new order$/ do
   log "I Add a new order"
-
   @old_balance = batch.navigation.balance
   batch.grid.check.uncheck 1
   @single_order_form = batch.toolbar.add

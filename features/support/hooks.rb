@@ -12,7 +12,7 @@ Before do  |scenario|
 end
 
 After do |scenario|
-  log "Before:  #{scenario.name}"
+  log "After:  #{scenario.name}"
   Stamps::Test.teardown
   $start = false
 end
