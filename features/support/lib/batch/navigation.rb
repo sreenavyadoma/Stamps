@@ -13,7 +13,7 @@ module Batch
       rescue
         #ignore
       end
-      log "Signout #{(div.present?)? 'Successful': 'Failed'}"
+      log "Signout #{(div.present?)? 'Successful': 'Failed'}" if Stamps::Test.verbose
       div
     end
 
@@ -51,7 +51,7 @@ module Batch
       balance_label.hover
       buy_more_link.focus
       buy_more_link.wait_until_present(10)
-      log "Clicking Buy More link"
+      log "Clicking Buy More link" if Stamps::Test.verbose
       browser_helper.click buy_more_link, "BuyMoreLink"
 
 
@@ -112,7 +112,7 @@ module Batch
           #ignore
         end
       }
-      log "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" - sign-out failed":" was signed out.  Goodbye."}"
+      log "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" - sign-out failed":" was signed out.  Goodbye."}" if Stamps::Test.verbose
     end
 
     def username

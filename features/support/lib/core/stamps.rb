@@ -7,7 +7,7 @@ module Stamps
     end
 
     def self.verbose
-      ENV["VERBOSE"].downcase == "true"
+      @verbose ||= ENV["VERBOSE"].downcase == "true"
     end
 
     def self.os
@@ -33,16 +33,14 @@ module Stamps
         if args.length == 1
           ENV['BROWSER'] = args[0]
         end
-        log "Browser Selection: #{ENV['BROWSER']}"
-
-        # log "Executed Shell Command:  taskkill /im chrome.exe /f Result=[ #{system "gem list"} ]"
+        log "Browser Selection: #{ENV['BROWSER']}" if Stamps::Test.verbose
 
         if Test.browser.explorer?
           system "taskkill /im IEDriverServer.exe /f"
           system "taskkill /im iexplore.exe /f"
 
           driver = Watir::Browser.new :ie
-          browser_name = 'Internet Explorer'
+          @browser_name = 'Internet Explorer'
 
         elsif Test.browser.firefox?
           system "taskkill /im firefox.exe /f"
@@ -57,7 +55,7 @@ module Stamps
 
           driver = Watir::Browser.new :firefox, :profile => 'selenium'
 
-          browser_name = 'Mozilla Firefox'
+          @browser_name = 'Mozilla Firefox'
 
         elsif Test.browser.chrome?
           system "taskkill /im chrome.exe /f"
@@ -73,31 +71,33 @@ module Stamps
           end unless File.exist? chrome_data_dir
 
           driver = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
-          browser_name = 'Google Chrome'
+          @browser_name = 'Google Chrome'
 
         elsif Test.browser.safari?
           driver = Watir::Browser.new :safari
-          browser_name = 'Mac OS X - Safari'
+          @browser_name = 'Mac OS X - Safari'
         else
           driver = Watir::Browser.new :ie
-          browser_name = 'Internet Explorer'
+          @browser_name = 'Internet Explorer'
         end
 
-        log "#{browser_name} is ready."
+        log "#{@browser_name} is ready."
         #driver.window.move_to 0, 0
         #driver.window.resize_to 1250, 850
         driver.window.maximize
         @browser = driver
       rescue Exception => e
-        log e
+        log e if Stamps::Test.verbose
         raise e
       end
     end
 
     def self.teardown
+      log "Step:  Teardown test"
       @browser.quit unless @browser == nil
       @browser = nil
-      log "Done!"
+      log "#{@browser_name} closed."
+      log "Test Done!"
     end
 
   end
@@ -159,16 +159,16 @@ module Stamps
       case args.length
         when 0
           now = Date.today
-          log "Today:  #{now}"
+          log "Today:  #{now}" if Stamps::Test.verbose
           month = (now.month.to_s.length==1)?"0#{now.month}":now.month
           day = (now.day.length==1)?"0#{now.day}":now.day
           "#{month}/#{day}/#{now.year}"
         when 1
           now = Date.today
-          log "Today:  #{now}"
+          log "Today:  #{now}" if Stamps::Test.verbose
           days_to_add = args[0].to_i
           new_date = now + days_to_add
-          log "New Date:  #{new_date}"
+          log "New Date:  #{new_date}" if Stamps::Test.verbose
           month = (new_date.month.to_s.length==1)?"0#{new_date.month}":new_date.month
           day = (new_date.day.to_s.length==1)?"0#{new_date.day}":new_date.day
           now = "#{month}/#{day}/#{new_date.year}"

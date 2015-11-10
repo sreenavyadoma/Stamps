@@ -44,7 +44,6 @@ module Stamps
             @second_field = nil
           when 2
             @field = args[0]
-            #log browser_helper.present? @field
             @second_field = args[1]
             #log browser_helper.present? @second_field
           else
@@ -169,7 +168,6 @@ module Stamps
             return attrib_val == "true"
           else
             checked = attrib_val.include? @checked_tester
-            #log "Checkbox checked? #{checked}"
             checked
           end
         rescue

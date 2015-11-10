@@ -5,19 +5,18 @@ Feature: Sorting.
 
   @sort @regression
   Scenario: Sorting
-    Then Sort Order Grid Age in ascending order
-    Then Sort Order Grid Age in descending order
+
 
     Then Sort Order Grid Order ID in ascending order
     Then Sort Order Grid Order ID in descending order
 
-    Then Sort Order Grid Recipient in ascending order
+
     Then Sort Order Grid Recipient in descending order
 
-    Then Sort Order Grid Address in ascending order
+
     Then Sort Order Grid Address in descending order
 
-    Then Sort Order Grid City in ascending order
+
     Then Sort Order Grid City in descending order
 
     Then Sort Order Grid State in ascending order

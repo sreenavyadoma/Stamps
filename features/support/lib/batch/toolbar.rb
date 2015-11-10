@@ -39,7 +39,7 @@ module Batch
       end
 
       order_grid = Grid.new @browser
-      checked_rows_cache = order_grid.first_column.cache_checked_rows
+      checked_rows_cache = order_grid.check.cache_checked_rows
 
       naws_plugin_error = NawsPluginError.new @browser
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
@@ -48,7 +48,7 @@ module Batch
       5.times {
 
         if install_plugin_error.present?
-          order_grid.first_column.check_rows checked_rows_cache
+          order_grid.check.check_rows checked_rows_cache
           install_plugin_error.close
           return nil
         end
@@ -57,7 +57,7 @@ module Batch
           if error_connecting_to_plugin.present?
             5.times{
               error_connecting_to_plugin.ok
-              order_grid.first_column.check_rows checked_rows_cache
+              order_grid.check.check_rows checked_rows_cache
               break unless error_connecting_to_plugin.present?
             }
           end
@@ -65,13 +65,13 @@ module Batch
           if naws_plugin_error.present?
             5.times{
               naws_plugin_error.ok
-              order_grid.first_column.check_rows checked_rows_cache
+              order_grid.check.check_rows checked_rows_cache
               break unless naws_plugin_error.present?
             }
           end
 
           return window if window.present?
-          order_grid.first_column.check_rows checked_rows_cache
+          order_grid.check.check_rows checked_rows_cache
           browser_helper.click browser_print_button, "print"
         rescue
           #ignore
@@ -80,8 +80,6 @@ module Batch
     end
 
     def browser_add_button
-      #field =
-      #log "Toolbar Add button is #{(browser_helper.present? field)?'present':'NOT present'}"
       Button.new (@browser.spans :text => 'Add').first
     end
 
@@ -91,17 +89,17 @@ module Batch
       add_button = Button.new (@browser.spans :text => 'Add').first
 
       old_grid_row_1_id = grid.order_id.row 1
-      log "Grid 1 order ID #{old_grid_row_1_id}"
+      log "Grid 1 order ID #{old_grid_row_1_id}" if Stamps::Test.verbose
       20.times do |count|
         begin
           add_button.safe_click
           5.times{
             sleep 1
-            #log "#{count} single-order form present?  #{single_order_form.present?}"
+            log "#{count} single-order form present?  #{single_order_form.present?}" if Stamps::Test.verbose
             break if single_order_form.present?
           }
           new_id = old_grid_row_1_id != grid.order_id.row(1) && grid.order_id.row(1) == single_order_form.order_id
-          log "Add #{(new_id)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_grid_row_1_id}, New Grid 1 ID: #{grid.order_id.row(1)}, Order Details Order ID:  #{grid.order_id.row(1)}"
+          log "Add #{(new_id)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_grid_row_1_id}, New Grid 1 ID: #{grid.order_id.row(1)}, Order Details Order ID:  #{grid.order_id.row(1)}" if Stamps::Test.verbose
           return single_order_form if new_id
         rescue
           #ignore

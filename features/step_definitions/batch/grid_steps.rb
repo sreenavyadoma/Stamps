@@ -1,12 +1,12 @@
 When /^Edit row (\d+) on the order grid$/ do |row|
   log "Edit row \"#{row}\" on the order grid"
-  batch.grid.first_column.check row
+  batch.grid.check.check row
   #end_step step
 end
 
 When /^Uncheck row (\d+) on the order grid$/ do |row|
   log "Uncheck row \"#{row}\" on the order grid"
-  batch.grid.first_column.uncheck row
+  batch.grid.check.uncheck row
   #end_step step
 end
 

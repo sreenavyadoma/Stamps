@@ -34,7 +34,7 @@ module Batch
       else
         raise "Unsupported address format."
       end
-      log "Formatted Shipping Address:  \n#{formatted_address}"
+      log "Formatted Shipping Address:  \n#{formatted_address}" if Stamps::Test.verbose
       formatted_address
     end
 
@@ -50,18 +50,20 @@ module Batch
       email_addy = address["email"]
       email = (email_addy.downcase.include? "random") ? test_helper.random_email : address["email"]
 
-      log "Ship-To Name: #{name}"
-      log "Ship-To Company: #{company}"
-      log "Ship-To Address: #{street_address}"
-      log "Ship-To City: #{city}"
-      log "Ship-To State: #{state}"
-      log "Ship-To Zip: #{zip}"
-      log "Ship-To Phone: #{phone}"
-      log "Ship-To Email: #{email}"
+      if Stamps::Test.verbose
+        log "Ship-To Name: #{name}"
+        log "Ship-To Company: #{company}"
+        log "Ship-To Address: #{street_address}"
+        log "Ship-To City: #{city}"
+        log "Ship-To State: #{state}"
+        log "Ship-To Zip: #{zip}"
+        log "Ship-To Phone: #{phone}"
+        log "Ship-To Email: #{email}"
+      end
 
       formatted_address = "#{name},#{company},#{street_address},#{city} #{state} #{zip}"
 
-      log "Formatted Address: #{formatted_address}"
+      log "Formatted Address: #{formatted_address}" if Stamps::Test.verbose
       formatted_address
     end
 
@@ -73,7 +75,7 @@ module Batch
       elsif address.include?(',')
         format_address_arr address.split(/,/)
       elsif address.is_a?(String)
-        log "Address #{address} was not formatted."
+        log "Address #{address} was not formatted." if Stamps::Test.verbose
         address
       else
         raise "Unsupported address format."

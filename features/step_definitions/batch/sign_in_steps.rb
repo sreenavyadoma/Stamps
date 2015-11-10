@@ -45,5 +45,6 @@ Given /^I am signed in as a batch shipper (.*)\/(.*)\/(.*)\/(.*)/ do |browser, u
 end
 
 Then /^Sign out$/ do
-  batch.navigation.sign_out
+  log "Step:  Sign out"
+  #batch.navigation.sign_out
 end

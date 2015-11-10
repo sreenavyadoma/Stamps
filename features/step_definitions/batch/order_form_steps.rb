@@ -1,9 +1,12 @@
 And /^Set Order Form Ship-From to (\w+)$/ do |value|
+  log "Test: Set Order Form Ship-From to #{value}"
   batch.order_details.ship_from.select value
 end
 
 And /^Set Order Form Ship-To address to$/ do |table|
-  step "Set Order Form Ship-To address to #{BatchHelper.instance.address_hash_to_str table.hashes.first}"
+  ship_to = BatchHelper.instance.address_hash_to_str table.hashes.first
+  log "Test: Set Order Form Ship-To address to \n#{ship_to}"
+  step "Set Order Form Ship-To address to #{ship_to}"
 end
 
 When /^Set Order Form Ship-To address to (.*)$/ do |address|
@@ -24,12 +27,14 @@ When /^Set Order Form Ship-To address to (.*)$/ do |address|
 end
 
 And /^Set Order Form Ship-To to ambiguous address$/ do |table|
-  @ambiguous_address_module = batch.order_details.ship_to.ambiguous.set BatchHelper.instance.format_address table.hashes.first
+  ambiguous_address = BatchHelper.instance.format_address table.hashes.first
+  log "Step:  Set Order Form Ship-To to ambiguous address \n#{ambiguous_address}"
+  @ambiguous_address_module = batch.order_details.ship_to.ambiguous.set ambiguous_address
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
   log "Start:  Select row #{row} from Exact Address Not Found module"
-  batch.order_details.ship_to.ambiguous.row = row
+  @ambiguous_address_module.row row
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do

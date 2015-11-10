@@ -13,6 +13,8 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Set Order Form Ship-To address to San
 
+    Then Set single-order form Ship-To partial address to san
+
     Then Expect Auto Suggest name shows Sandy Jones for entry 2
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 2
 
@@ -111,7 +113,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     When I Add a new order
 
-    Then Set single-order Ship-To country to Cuba
+    Then Set Ship-To country to Cuba
 
     #Matching first name
 

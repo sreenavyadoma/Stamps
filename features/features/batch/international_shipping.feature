@@ -95,10 +95,10 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Order Form Ounces to 5
     Then Set Order Form Service to "Priority Mail International Package"
 
-    Then Expect single-order form International Address fields are visible
-    Then Expect single-order form Domestic Ship-To fields are hidden
-    Then Expect single-order form Customs Restrictions button is visible
-    Then Expect single-order form Customs Edit Form button is visible
+    Then Expect Order Form International Address fields are visible
+    Then Expect Order Form Domestic Ship-To fields are hidden
+    Then Expect Order Form Customs Restrictions button is visible
+    Then Expect Order Form Customs Edit Form button is visible
 
     Then Add Order Form Item - Quantity 1, ID random, Description random
 

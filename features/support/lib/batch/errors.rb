@@ -45,9 +45,11 @@ module Batch
 
     def error_message
       error_message = browser_helper.text error_message_label
-      log "----  Order Errors  ----"
-      log error_message
-      log "----  Order Errors  ----"
+      if Stamps::Test.verbose
+        log "----  Order Errors  ----"
+        log error_message
+        log "----  Order Errors  ----"
+      end
       error_message
     end
 
@@ -181,13 +183,13 @@ module Batch
     private
     def close_window_button
       img = @browser.img :css => "img[class='x-tool-img x-tool-close']"
-      log "#{(browser_helper.present? img)?'Stamps.com Plugin Issue':''}"
+      log "#{(browser_helper.present? img)?'Stamps.com Plugin Issue':''}" if Stamps::Test.verbose
       img
     end
 
     def window_title
       div = @browser.div :text => "Stamps.com Plugin Issue"
-      log "#{(browser_helper.present? div)?'Stamps.com Plugin Issue':''}"
+      log "#{(browser_helper.present? div)?'Stamps.com Plugin Issue':''}" if Stamps::Test.verbose
       div
     end
 
@@ -222,21 +224,23 @@ module Batch
 
       present = err.include? "Error code: [1009]"
       if present
-        log "NAWS Plugin Error detected.  Error code: [1009]"
-        log error_code_p
+        if Stamps::Test.verbose
+          log "NAWS Plugin Error detected.  Error code: [1009]"
+          log error_code_p
+        end
       end
       present
     end
 
     def print_error_message
       ptags = @browser.ps :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p"
-      log "-- Print Plugin Error [Error code: [1009]]--"
+      log "-- Print Plugin Error [Error code: [1009]]--" if Stamps::Test.verbose
       ptags.each {|p_tag|
         if browser_helper.present? p_tag
-          log "\n#{browser_helper.text p_tag}"
+          log "\n#{browser_helper.text p_tag}" if Stamps::Test.verbose
         end
       }
-      log "-- Print Plugin Error [Error code: [1009]]--"
+      log "-- Print Plugin Error [Error code: [1009]]--" if Stamps::Test.verbose
       self
     end
 
@@ -260,9 +264,9 @@ module Batch
 
     public
     def close
-      log "Closing Plugin not Installed Window"
+      log "Closing Plugin not Installed Window" if Stamps::Test.verbose
       browser_helper.click window_x_button
-      log "Plugin not Installed Window Closed"
+      log "Plugin not Installed Window Closed" if Stamps::Test.verbose
     end
 
     def present?
@@ -274,8 +278,8 @@ module Batch
       end
       present = (err).include? "Install Plugin"
       if present
-        log "Plug-in is not installed.  Install  Plugin Window is Present"
-        log error_message
+        log "Plug-in is not installed.  Install  Plugin Window is Present" if Stamps::Test.verbose
+        log error_message if Stamps::Test.verbose
       end
       present
     end
@@ -324,9 +328,11 @@ module Batch
 
       present = err.include? "Error code: [1010]"
       if present
-        log "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
-        log error_code
-        log "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
+        if Stamps::Test.verbose
+          log "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
+          log error_code
+          log "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
+        end
       end
       present
     end
