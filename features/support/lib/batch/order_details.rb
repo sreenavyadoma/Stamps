@@ -153,6 +153,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         text_box.safe_double_click
         text_box.safe_double_click
         grid_recipient.scroll_into_view
@@ -160,6 +162,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         text_box.safe_double_click
         text_box.safe_double_click
         grid_recipient.scroll_into_view
@@ -167,6 +171,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         grid_recipient.scroll_into_view
@@ -174,6 +180,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         phone.set test_helper.random_phone
@@ -183,6 +191,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         phone.send_keys :tab
@@ -191,6 +201,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         email.set test_helper.random_email
         email.send_keys :enter
         grid_recipient.scroll_into_view
@@ -198,12 +210,32 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         email.send_keys :tab
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
+        text_box.safe_double_click
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
+        text_box.safe_double_click
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
@@ -216,60 +248,68 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
+        grid_recipient.scroll_into_view
+        grid_recipient.scroll_into_view
+        check_column.scroll_into_view
+        grid_address.scroll_into_view
+        grid_company.scroll_into_view
+        break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if less.present?
-        grid_recipient.scroll_into_view
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if less.present?
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         phone.send_keys :tab
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         email.send_keys :enter
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if less.present?
-        text_box.safe_double_click
-        break if less.present?
-        phone.send_keys :tab
-        break if less.present?
-        email.send_keys :enter
         break if less.present?
         text_box.safe_double_click
         break if less.present?
         phone.set test_helper.random_phone
+        email.set test_helper.random_email
+        phone.send_keys :tab
         break if less.present?
+        email.send_keys :enter
+        break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
+        text_box.safe_double_click
+        break if less.present?
+        phone.set test_helper.random_phone
+        break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         email.set test_helper.random_email
         break if less.present?
         phone .safe_double_click
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         email .safe_double_click
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         check_column.scroll_into_view
         break if less.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         grid_recipient.scroll_into_view
         break if less.present?
         phone.send_keys :tab
@@ -308,6 +348,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if exact_address_not_found.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         text_box.safe_double_click
         text_box.safe_double_click
         grid_recipient.scroll_into_view
@@ -315,6 +357,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if exact_address_not_found.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         text_box.safe_double_click
         text_box.safe_double_click
         grid_recipient.scroll_into_view
@@ -322,6 +366,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if exact_address_not_found.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         grid_recipient.scroll_into_view
@@ -329,6 +375,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if exact_address_not_found.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         phone.set test_helper.random_phone
@@ -346,6 +394,8 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if exact_address_not_found.present?
+        phone.set test_helper.random_phone
+        email.set test_helper.random_email
         email.set test_helper.random_email
         email.send_keys :enter
         grid_recipient.scroll_into_view
