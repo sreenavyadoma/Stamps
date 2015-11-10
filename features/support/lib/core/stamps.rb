@@ -96,7 +96,8 @@ module Stamps
       log "Step:  Teardown test"
       @browser.quit unless @browser == nil
       @browser = nil
-      log "#{@browser_name} closed. Test Done!"
+      log "#{@browser_name} closed."
+      log "Test Done!"
     end
 
   end
