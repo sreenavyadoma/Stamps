@@ -79,7 +79,7 @@ module Batch
         ENV['URL'] = args[0]
       end
 
-      if ENV['URL'] == "shipstation"
+      if ENV['URL'] == "ss"
         url = "http://#{Stamps.url_prefix}.stamps.com/webbatch/"
       else
         url = "https://#{Stamps.url_prefix}.stamps.com/webbatch/"

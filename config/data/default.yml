@@ -1,5 +1,5 @@
 url_prefix:
-  shipstation: printss600.qacc
+  ss: printss600.qacc
   satya: svarma-win7.corp
   qacc:  printext.qacc
   qasc:  printext.qasc
