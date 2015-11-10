@@ -140,7 +140,7 @@ module Batch
       grid_recipient = Recipient.new @browser
       grid_company = Company.new @browser
       grid_address = Address.new @browser
-      first_column = CheckColumn.new @browser
+      check_column = CheckColumn.new @browser
 
       20.times{
         text_box.send_keys address
