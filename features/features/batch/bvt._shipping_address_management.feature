@@ -11,4 +11,5 @@ Feature:  BVT Address Management
     Then Expect random Ship-From address was added
     And Delete random Ship-From address
     And Delete all Ship-From address
+
     And Sign out
