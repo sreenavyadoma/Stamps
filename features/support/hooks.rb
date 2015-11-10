@@ -8,11 +8,11 @@ include RSpec::Matchers
 include DataMagic
 
 Before do  |scenario|
-  log_step "#{scenario.name} :: BEGIN"
+  log "Before:  #{scenario.name}"
 end
 
 After do |scenario|
-  log_step "#{scenario.name} :: END"
+  log "Before:  #{scenario.name}"
   Stamps::Test.teardown
   $start = false
 end
