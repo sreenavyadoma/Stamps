@@ -281,7 +281,7 @@ module Batch
 
     def print_sample
       begin
-        print_sample_button.when_present.click
+        print_sample_button.safe_click
         printing_error_check
       rescue
         #ignroe
