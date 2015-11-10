@@ -1,11 +1,12 @@
 
 Then /^Set single-order Ship-To country to (.*)$/ do |country|
-  log "Set single-order Ship-To country to #{country}"
+  log "Test: Set single-order Ship-To country to #{country}"
   @international_ship_to = batch.order_details.ship_to.country.select country
 end
 
 # random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
 Given /^Set Ship-To to international address$/ do |table|
+  log "Test: Set Ship-To to international address..."
   param_hash = table.hashes.first
 
   name = (param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]
@@ -44,6 +45,8 @@ Given /^Set Ship-To to international address$/ do |table|
 end
 
 Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
+  log "Test: Expect International Ship-To #{ship_to_field} field displays #{value}"
+
   @international_ship_to = batch.order_details.ship_to.international if @international_ship_to.nil?
 
   case ship_to_field.downcase
@@ -92,7 +95,8 @@ Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_
   end
 end
 
-Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, value |
+Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, value|
+  log "Test: Set International Ship-To #{ship_to_field} to #{value}"
   @international_ship_to = batch.order_details.ship_to.international if @international_ship_to.nil?
 
   case ship_to_field.downcase
@@ -166,6 +170,7 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
 end
 
 Given /^Expect Order Form International Address fields are visible$/ do
+  log "Test: Expect Order Form International Address fields are visible"
   @international_ship_to = batch.order_details.ship_to.international if @international_ship_to.nil?
 
   @international_ship_to.name.present?.should be true
@@ -180,6 +185,8 @@ Given /^Expect Order Form International Address fields are visible$/ do
 end
 
 Then /^Expect Order Form Domestic Ship-To fields are hidden$/ do
+  log "Test: Expect Order Form Domestic Ship-To fields are hidden"
+
   @single_order_form = batch.order_details
   @single_order_form.ship_to.present?.should be false
   @single_order_form.email.present?.should be false
@@ -187,6 +194,7 @@ Then /^Expect Order Form Domestic Ship-To fields are hidden$/ do
 end
 
 Then /^Expect Order Form Customs (.+) button is (.+)/ do |button, expectation|
+  log "Test: Expect Order Form Customs #{button} button is #{expectation}"
   @single_order_form = batch.order_details
   case button.downcase
     when "restrictions"
@@ -218,10 +226,12 @@ Then /^Expect Order Form Customs (.+) button is (.+)/ do |button, expectation|
 end
 
 Given /^Open customs form$/ do
+  log "Test: Open customs form"
   @customs_form = @single_order_form.customs.edit_form
 end
 
 Given /^Set customs form Package Contents to \"(.+)\"$/ do |value|
+  log "Test: Set customs form Package Contents to #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
@@ -231,6 +241,7 @@ Given /^Set customs form Package Contents to \"(.+)\"$/ do |value|
 end
 
 Given /^Set customs form Non-Delivery Options to \"(.+)\"$/ do |value|
+  log "Test: Set customs form Non-Delivery Options to #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
@@ -238,6 +249,7 @@ Given /^Set customs form Non-Delivery Options to \"(.+)\"$/ do |value|
 end
 
 Given /^Set customs form Internal Transaction Number to \"(.+)\"$/ do |value|
+  log "Test: Set customs form Internal Transaction Number to #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
@@ -246,6 +258,7 @@ Given /^Set customs form Internal Transaction Number to \"(.+)\"$/ do |value|
 end
 
 Given /^Set customs form More Info to \"(.+)\"$/ do |value|
+  log "Test: Set customs form More Info to #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
@@ -253,6 +266,7 @@ Given /^Set customs form More Info to \"(.+)\"$/ do |value|
 end
 
 Given /^Set customs form ITN# to \"(.+)\"$/ do |value|
+  log "Test: Set customs form ITN# to #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
@@ -260,6 +274,7 @@ Given /^Set customs form ITN# to \"(.+)\"$/ do |value|
 end
 
 Given /^Set customs form License# to \"(.+)\"$/ do |value|
+  log "Test: Set customs form License# to #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
@@ -267,6 +282,7 @@ Given /^Set customs form License# to \"(.+)\"$/ do |value|
 end
 
 Given /^Set customs form Certificate Number to \"(.+)\"$/ do |value|
+  log "Test: Set customs form Certificate Number to #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
@@ -274,6 +290,7 @@ Given /^Set customs form Certificate Number to \"(.+)\"$/ do |value|
 end
 
 Given /^Set customs form Invoice Number to \"(.+)\"$/ do |value|
+  log "Test: Set customs form Invoice Number to #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
@@ -281,6 +298,7 @@ Given /^Set customs form Invoice Number to \"(.+)\"$/ do |value|
 end
 
 Given /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price ([\d.]+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
+  log "Test: Add or Edit Customs Form Item #{item_number}; Description=#{description}, Qty #{qty}, Unit Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i
   item.item_description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
@@ -293,6 +311,7 @@ Given /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit 
 end
 
 Given /^Delete Customs Form Item (\d+)$/ do |item_number|
+  log "Test: Delete Customs Form Item #{item_number}"
   count = @customs_item_grid.line_item_count
   item = @customs_item_grid.item item_number.to_i
   if count > 1
@@ -303,12 +322,14 @@ Given /^Delete Customs Form Item (\d+)$/ do |item_number|
 end
 
 Given /^Set customs form I agree to (\w+)$/ do |agree_str|
+  log "Test: Set customs form I agree to #{agree_str}"
   agree = agree_str.downcase == "true"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.i_agree agree
 end
 
 Given /^Add Order Form Item - Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
+  log "Test: Add Order Form Item - Quantity #{qty}, ID #{id}, Description #{description}"
   line_item = batch.order_details.add_item
   line_item.qty qty
   line_item.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
@@ -316,6 +337,7 @@ Given /^Add Order Form Item - Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$
 end
 
 Given /^Expect Customs Form More Info to be (.+)$/ do |value|
+  log "Test: Expect Customs Form More Info to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case value.downcase
@@ -329,6 +351,7 @@ Given /^Expect Customs Form More Info to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form License# to be (.+)$/ do |value|
+  log "Test: Expect Customs Form License# to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case value.downcase
@@ -342,6 +365,7 @@ Given /^Expect Customs Form License# to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Certificate# to be (.+)$/ do |value|
+  log "Test: Expect Customs Form Certificate# to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case value.downcase
@@ -355,6 +379,7 @@ Given /^Expect Customs Form Certificate# to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Invoice# to be (.+)$/ do |value|
+  log "Test: Expect Customs Form Invoice# to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case value.downcase
@@ -368,6 +393,7 @@ Given /^Expect Customs Form Invoice# to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form ITN# to be (.+)$/ do |value|
+  log "Test: Expect Customs Form ITN# to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case value.downcase
@@ -381,6 +407,7 @@ Given /^Expect Customs Form ITN# to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |value|
+  log "Test: Expect Customs Form Internal Transaction # to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   text = @customs_form.internal_transaction.text_box.text
@@ -389,11 +416,13 @@ Given /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |value|
 end
 
 Given /^Expect Customs Form Item Grid count to be (.+)$/ do |value|
+  log "Test: Expect Customs Form Item Grid count to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.item_grid.line_item_count.should eql value.to_i
 end
 
 Given /^Expect Customs Form Total Value to be (.+)$/ do |value|
+  log "Test: Expect Customs Form Total Value to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_value
@@ -402,6 +431,7 @@ Given /^Expect Customs Form Total Value to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Total Pounds to be (.+)$/ do |value|
+  log "Test: Expect Customs Form Total Pounds to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_weight_lbs
@@ -410,6 +440,7 @@ Given /^Expect Customs Form Total Pounds to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Total Ounces to be (.+)$/ do |value|
+  log "Test: Expect Customs Form Total Ounces to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_weight_oz
@@ -418,6 +449,7 @@ Given /^Expect Customs Form Total Ounces to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Total Weight Data Error to be (.+)$/ do |value|
+  log "Test: Expect Customs Form Total Weight Data Error to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_weight.data_error
@@ -426,13 +458,14 @@ Given /^Expect Customs Form Total Weight Data Error to be (.+)$/ do |value|
 end
 
 Given /^Close customs form$/ do
-  log "Closing customs form..."
+  log "Test: Closing customs form"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.close
   log "Customs form #{(@customs_form.present?)?'closed':'is still open.'}"
 end
 
 Given /^Cancel Customs Form$/ do
+  log "Test: Cancel customs form"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.cancel
 end

@@ -1,4 +1,5 @@
 Then /^Verify Local Rating$/ do |table|
+  log "Test: Verify Local Rating..."
   #results_file = "local_rating_results.csv"
   @single_order_form = batch.order_details
   parameter_array = table.hashes

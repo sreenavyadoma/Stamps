@@ -4,6 +4,7 @@ And /^Set Order Form Ship-From to (\w+)$/ do |value|
 end
 
 And /^Set Order Form Ship-To address to$/ do |table|
+  log "Test:  Set Order Form Ship-To address to"
   step "Set Order Form Ship-To address to #{BatchHelper.instance.address_hash_to_str table.hashes.first}"
 end
 
@@ -29,7 +30,7 @@ And /^Set Order Form Ship-To to ambiguous address$/ do |table|
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
-  log "Start:  Select row #{row} from Exact Address Not Found module"
+  log "Test: Select row #{row} from Exact Address Not Found module"
   @ambiguous_address_module.row row
 end
 
@@ -136,7 +137,7 @@ end
 
 Then /^Add Ship-From address (\w+)$/ do |address|
   ship_from = (address.include?'random')?(test_helper.random_ship_from):address
-  log "Start:  Add Ship-From address #{(address.include?'random')?ship_from:address}"
+  #log "Start:  Add Ship-From address #{(address.include?'random')?ship_from:address}"
   @ship_from_address = batch.order_details.ship_from.select("Manage Shipping Addresses...").add ship_from
   log "Random address added: #{@ship_from_address}"
 end

@@ -1,4 +1,5 @@
 Then /^Sort Order Grid (.*) in (.*) order$/ do |column, sort_order|
+  log "Test: Sort Order Grid #{column} in #{sort_order} order"
   @grid = batch.filter.awaiting_shipment
   case column.downcase
     when "age"
