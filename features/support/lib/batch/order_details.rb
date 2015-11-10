@@ -173,7 +173,7 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         phone.set test_helper.random_phone
