@@ -73,7 +73,6 @@ module Batch
 
   # Grid Columns
   class Column < BatchObject
-
     MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
     TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
     GRID_COLUMNS ||= {
@@ -110,6 +109,10 @@ module Batch
       Label.new(column_header_field column).scroll_into_view
     end
 
+    def empty?
+      size == 0
+    end
+
     def size
       @browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size
     end
@@ -122,8 +125,12 @@ module Batch
       test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}")
     end
 
-    def grid_field column, row
-      @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column).to_s})>div"
+    def grid_field column_number, row
+      @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div"
+    end
+
+    def grid_field_column_name column_name, row
+      grid_text column_number(column_name), row
     end
 
     def column_number column_name
@@ -426,6 +433,10 @@ module Batch
     def scroll_into_view
       scroll :order_id
     end
+
+    def field row
+      grid_field_column_name :order_id, row
+    end
     
     def row row
       scroll_into_view
@@ -460,6 +471,10 @@ module Batch
       scroll :age
     end
 
+    def field row
+      grid_field_column_name :age, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -480,6 +495,10 @@ module Batch
   class OrderDate < Column
     def scroll_into_view
       scroll :order_date
+    end
+
+    def field row
+      grid_field_column_name :order_date, row
     end
 
     def data order_id
@@ -503,11 +522,15 @@ module Batch
     def scroll_into_view
       scroll :recipient
     end
+
+    def field row
+      grid_field_column_name :recipient, row
+    end
     
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log "Order ID: #{order_id}, Row #{row}" if Stamps::Test.verbose
       grid_text(:recipient, row)
     end
 
@@ -527,6 +550,17 @@ module Batch
       scroll :company
     end
 
+    def field row
+      grid_field_column_name :company, row
+    end
+
+    def data order_id
+      scroll_into_view
+      row = row_number(order_id)
+      log "Order ID: #{order_id}, Row #{row}" if Stamps::Test.verbose
+      grid_text(:company, row)
+    end
+
     def sort order
       scroll_into_view
       id = get_header_id "Company"
@@ -541,6 +575,10 @@ module Batch
   class Address < Column
     def scroll_into_view
       scroll :domestic
+    end
+
+    def field row
+      grid_field_column_name :domestic, row
     end
 
     def data order_id
@@ -566,6 +604,10 @@ module Batch
       scroll :city
     end
 
+    def field row
+      grid_field_column_name :city, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -588,8 +630,8 @@ module Batch
       scroll :state
     end
 
-    def field
-
+    def field row
+      grid_field_column_name :state, row
     end
 
     def data order_id
@@ -612,6 +654,10 @@ module Batch
   class Zip < Column
     def scroll_into_view
       scroll :zip
+    end
+
+    def field row
+      grid_field_column_name :zip, row
     end
 
     def data order_id
@@ -637,6 +683,10 @@ module Batch
       scroll :phone
     end
 
+    def field row
+      grid_field_column_name :phone, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -658,6 +708,10 @@ module Batch
   class Email < Column
     def scroll_into_view
       scroll :email
+    end
+
+    def field row
+      grid_field_column_name :email, row
     end
 
     def data order_id
@@ -683,6 +737,10 @@ module Batch
       scroll :qty
     end
 
+    def field row
+      grid_field_column_name :qty, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -704,6 +762,10 @@ module Batch
   class ItemSKU < Column
     def scroll_into_view
       scroll :item_sku
+    end
+
+    def field row
+      grid_field_column_name :item_sku, row
     end
 
     def data order_id
@@ -729,6 +791,10 @@ module Batch
       scroll :item_name
     end
 
+    def field row
+      grid_field_column_name :item_name, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -749,6 +815,10 @@ module Batch
   class Weight < Column
     def scroll_into_view
       scroll :weight
+    end
+
+    def field row
+      grid_field_column_name :weight, row
     end
 
     def data order_id
@@ -784,6 +854,10 @@ module Batch
       scroll :insured_value
     end
 
+    def field row
+      grid_field_column_name :insured_value, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -805,6 +879,10 @@ module Batch
   class OrderStatus < Column
     def scroll_into_view
       scroll :order_status
+    end
+
+    def field row
+      grid_field_column_name :order_status, row
     end
 
     def data order_id
@@ -830,6 +908,10 @@ module Batch
       scroll :ship_date
     end
 
+    def field row
+      grid_field_column_name :ship_date, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -847,6 +929,10 @@ module Batch
       scroll :ship_from
     end
 
+    def field row
+      grid_field_column_name :ship_from, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -862,6 +948,10 @@ module Batch
   class OrderTotal < Column
     def scroll_into_view
       scroll :order_total
+    end
+
+    def field row
+      grid_field_column_name :order_total, row
     end
 
     def data order_id
@@ -887,6 +977,10 @@ module Batch
       scroll :country
     end
 
+    def field row
+      grid_field_column_name :country, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -908,6 +1002,10 @@ module Batch
   class ShipCost < Column
     def scroll_into_view
       scroll :ship_cost
+    end
+
+    def field row
+      grid_field_column_name :ship_cost, row
     end
 
     def data order_id
@@ -945,6 +1043,10 @@ module Batch
       scroll :company
     end
 
+    def field row
+      grid_field_column_name :company, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -961,6 +1063,10 @@ module Batch
   class Service < Column
     def scroll_into_view
       scroll :service
+    end
+
+    def field row
+      grid_field_column_name :service, row
     end
 
     def data order_id
@@ -981,6 +1087,10 @@ module Batch
       scroll :reference_no
     end
 
+    def field row
+      grid_field_column_name :reference_no, row
+    end
+
     def data order_id
       scroll_into_view
       row = row_number(order_id)
@@ -997,6 +1107,10 @@ module Batch
   class CostCode < Column
     def scroll_into_view
       scroll :cost_code
+    end
+
+    def field row
+      grid_field_column_name :cost_code, row
     end
 
     def data order_id
@@ -1017,6 +1131,10 @@ module Batch
       scroll :tracking
     end
 
+    def field row
+      grid_field_column_name :tracking, row
+    end
+
     def data order_id
       scroll_into_view
       grid_text :tracking, row_number(order_id)
@@ -1031,6 +1149,10 @@ module Batch
   class CheckColumn < Column
     def scroll_into_view
       scroll :check_box
+    end
+
+    def field row
+      grid_field_column_name :check_box, row
     end
 
     def edit order_id

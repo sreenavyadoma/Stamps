@@ -1,7 +1,7 @@
 Feature: Sorting.
 
   Background:
-    Given I am signed in as a batch shipper gc/shipstation/autosuggest/326tsetaqcdS!
+    Given I am signed in as a batch shipper
 
   @sort @regression
   Scenario: Sorting
