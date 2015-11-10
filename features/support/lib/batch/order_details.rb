@@ -152,21 +152,21 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         text_box.safe_double_click
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         text_box.safe_double_click
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         grid_recipient.scroll_into_view
@@ -182,7 +182,7 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         phone.send_keys :tab
@@ -190,93 +190,93 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         email.set test_helper.random_email
         email.send_keys :enter
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         email.send_keys :tab
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         grid_recipient.scroll_into_view
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         phone.send_keys :tab
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         email.send_keys :enter
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         text_box.safe_double_click
-        break if exact_address_not_found.present?
+        break if less.present?
         phone.send_keys :tab
-        break if exact_address_not_found.present?
+        break if less.present?
         email.send_keys :enter
-        break if exact_address_not_found.present?
+        break if less.present?
         text_box.safe_double_click
-        break if exact_address_not_found.present?
+        break if less.present?
         phone.set test_helper.random_phone
-        break if exact_address_not_found.present?
+        break if less.present?
         email.set test_helper.random_email
-        break if exact_address_not_found.present?
+        break if less.present?
         phone .safe_double_click
-        break if exact_address_not_found.present?
+        break if less.present?
         email .safe_double_click
-        break if exact_address_not_found.present?
+        break if less.present?
         check_column.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         grid_recipient.scroll_into_view
-        break if exact_address_not_found.present?
+        break if less.present?
         phone.send_keys :tab
-        break if exact_address_not_found.present?
+        break if less.present?
       }
       phone.set ""
-      email.set ""
+
     end
 
   end
