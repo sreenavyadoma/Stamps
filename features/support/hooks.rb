@@ -14,5 +14,5 @@ end
 After do |scenario|
   Stamps::Test.teardown
   $start = false
-  log "End Test Scenario:  -----------------------------------  #{scenario.name}"
+  log "End Test Scenario:  -------------------------------------  #{scenario.name}"
 end
