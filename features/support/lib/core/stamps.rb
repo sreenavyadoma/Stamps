@@ -40,7 +40,7 @@ module Stamps
           system "taskkill /im iexplore.exe /f"
 
           driver = Watir::Browser.new :ie
-          browser_name = 'Internet Explorer'
+          @browser_name = 'Internet Explorer'
 
         elsif Test.browser.firefox?
           system "taskkill /im firefox.exe /f"
@@ -55,7 +55,7 @@ module Stamps
 
           driver = Watir::Browser.new :firefox, :profile => 'selenium'
 
-          browser_name = 'Mozilla Firefox'
+          @browser_name = 'Mozilla Firefox'
 
         elsif Test.browser.chrome?
           system "taskkill /im chrome.exe /f"
@@ -71,17 +71,17 @@ module Stamps
           end unless File.exist? chrome_data_dir
 
           driver = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
-          browser_name = 'Google Chrome'
+          @browser_name = 'Google Chrome'
 
         elsif Test.browser.safari?
           driver = Watir::Browser.new :safari
-          browser_name = 'Mac OS X - Safari'
+          @browser_name = 'Mac OS X - Safari'
         else
           driver = Watir::Browser.new :ie
-          browser_name = 'Internet Explorer'
+          @browser_name = 'Internet Explorer'
         end
 
-        log "#{browser_name} is ready."
+        log "#{@browser_name} is ready."
         #driver.window.move_to 0, 0
         #driver.window.resize_to 1250, 850
         driver.window.maximize
@@ -93,9 +93,10 @@ module Stamps
     end
 
     def self.teardown
+      "Step:  Teardown test"
       @browser.quit unless @browser == nil
       @browser = nil
-      log "Done!"
+      log "#{@browser_name} closed."
     end
 
   end
