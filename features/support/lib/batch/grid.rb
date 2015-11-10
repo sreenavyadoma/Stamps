@@ -411,7 +411,7 @@ module Batch
       compare
     end
 
-    def get_time_index(time_text)
+    def get_time_index time_text
       TIME_UNITS_ARRAY.each_with_index do |time,index|
         if time_text == time
           return index
