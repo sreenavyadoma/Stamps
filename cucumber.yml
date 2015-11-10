@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile print_regression
+default: --profile cuke_reports --profile thermal_printing
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
 rob_dev: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
@@ -38,7 +38,7 @@ purchasing: --tags @purchasing --guess VERBOSE=false URL=qacc BROWSER=gc USR=aut
 
 change_settings: --tags @settings --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto37 PW=326tsetaqcdS!
 
-thermal_printing: --tags @thermal_printing --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto040 PW=326tsetaqcdS!
+thermal_printing: --tags @thermal_printing --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
 
 two_up_expanded: --tags @two_up_expanded --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto06 PW=326tsetaqcdS!
 

@@ -383,7 +383,7 @@ login_credentials_invalid:
       username:  auto39
       password:  password1
     40:
-      username:  auto040
+      username:  auto40
       password:  password1
 
   staging:
