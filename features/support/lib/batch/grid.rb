@@ -411,7 +411,7 @@ module Batch
       compare
     end
 
-    def get_time_index(time_text)
+    def get_time_index time_text
       TIME_UNITS_ARRAY.each_with_index do |time,index|
         if time_text == time
           return index
@@ -490,7 +490,6 @@ module Batch
     end
 
     def sort order
-
       id = get_header_id "Order Date"
       log "Sorting Order Date in #{order} order" if Stamps::Test.verbose
       click_sort_drop_down id
@@ -587,6 +586,10 @@ module Batch
   class State < Column
     def scroll_into_view
       scroll :state
+    end
+
+    def field
+
     end
 
     def data order_id
