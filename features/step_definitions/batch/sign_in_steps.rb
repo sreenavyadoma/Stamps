@@ -46,5 +46,5 @@ end
 
 Then /^Sign out$/ do
   log "Step:  Sign out"
-  batch.navigation.sign_out
+  #batch.navigation.sign_out
 end

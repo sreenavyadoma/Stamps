@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile rob_dev
+default: --profile cuke_reports --profile print_regression
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
 rob_dev: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
