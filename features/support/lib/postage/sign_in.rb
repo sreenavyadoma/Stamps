@@ -7,9 +7,9 @@ module Postage
       end
 
       if ENV['URL'] == "shipstation"
-        url = "http://#{Stamps.url_prefix}.stamps.com/webpostage/"
+        url = "http://#{Stamps::Test.url_prefix}.stamps.com/webpostage/"
       else
-        url = "https://#{Stamps.url_prefix}.stamps.com/webpostage/"
+        url = "https://#{Stamps::Test.url_prefix}.stamps.com/webpostage/"
       end
 
       @browser.goto url

@@ -111,16 +111,16 @@ module Batch
     end
 
     def left_label_div
-      label_divs[1]
+      label_divs[0]
     end
 
     def right_label_div
-      label_divs[2]
+      label_divs[1]
     end
 
     def left
       10.times{
-        browser_helper.click left_label_div, "left_label"
+        browser_helper.safe_click left_label_div, "left_label"
         return true if label_selected? left_label_div
       }
       false
@@ -178,7 +178,7 @@ module Batch
     end
 
     def starting_label
-      StartingLabel.new @browser
+      @printing_label ||= StartingLabel.new @browser
     end
 
     def printer
@@ -188,7 +188,7 @@ module Batch
     end
 
     def printing_on
-      PrintingOn.new @browser
+      @printing_on ||= PrintingOn.new @browser
     end
 
     def date_picker_div
@@ -213,7 +213,7 @@ module Batch
 
     def print
       button = print_button
-      8.times {
+      5.times {
         begin
           sleep(1)
           button.safe_click
@@ -222,11 +222,12 @@ module Batch
           sleep(1)
           printing_error = printing_error_check
           return printing_error if printing_error.length > 1
+          break unless button.present?
         rescue
           true
         end
       }
-      true
+      ""
     end
 
     def print_expecting_rating_error
@@ -280,7 +281,7 @@ module Batch
 
     def print_sample
       begin
-        print_sample_button.when_present.click
+        print_sample_button.safe_click
         printing_error_check
       rescue
         #ignroe

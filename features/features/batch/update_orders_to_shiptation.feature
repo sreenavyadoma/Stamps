@@ -1,5 +1,5 @@
-@bvt
-Feature:  BVT Order Creation
+
+Feature:  Update Order to ShipStation
 
   Background:
     Given I am signed in as a batch shipper
@@ -27,6 +27,6 @@ Feature:  BVT Order Creation
     #click awaiting shipment tab a few times.
     Then Edit row 1 on the order grid
     # Verify pounds, ounces height width length from Order Form
-    Then Expect single-order form Service to be "Priority Mail Package"
-    Then Expect single-order form Tracking to be "Signature Required"
+    Then Expect Order Form Service to be "Priority Mail Package"
+    Then Expect Order Form Tracking to be "Signature Required"
     And Sign out

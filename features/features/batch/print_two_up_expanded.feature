@@ -219,7 +219,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     And Expect right side label selected
     And Expect Print Window requires 2 label sheets
     Then Print
-    Then Print Sample
     Then Sign out
 
   @two_up_expanded
@@ -548,5 +547,5 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Sign out
 
 
-######################################################################################################################
+
 
