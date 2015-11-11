@@ -1,16 +1,16 @@
 And /^Set Order Form Ship-From to (\w+)$/ do |value|
-  log "Test: Set Order Form Ship-From to #{value}"
+  log "Step: Set Order Form Ship-From to #{value}"
   batch.order_details.ship_from.select value
 end
 
 And /^Set Order Form Ship-To address to$/ do |table|
   ship_to = BatchHelper.instance.address_hash_to_str table.hashes.first
-  log "Test: Set Order Form Ship-To address to \n#{ship_to}"
+  log "Step: Set Order Form Ship-To address to \n#{ship_to}"
   step "Set Order Form Ship-To address to #{ship_to}"
 end
 
 When /^Set Order Form Ship-To address to (.*)$/ do |address|
-  log "Test: Set Order Form Ship-To address to \"#{address}\""
+  log "Step: Set Order Form Ship-To address to \"#{address}\""
 
   if address.downcase.include? "random"
     random_ship_to_address = test_helper.random_ship_to
@@ -28,37 +28,37 @@ end
 
 And /^Set Order Form Ship-To to ambiguous address$/ do |table|
   ambiguous_address = BatchHelper.instance.format_address table.hashes.first
-  log "Test: Set Order Form Ship-To to ambiguous address \n#{ambiguous_address}"
+  log "Step: Set Order Form Ship-To to ambiguous address \n#{ambiguous_address}"
   @ambiguous_address_module = batch.order_details.ship_to.ambiguous.set ambiguous_address
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
-  log "Test: Select row #{row} from Exact Address Not Found module"
+  log "Step: Select row #{row} from Exact Address Not Found module"
   @ambiguous_address_module.row row
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
-  log "Test: Expect \"Exact Address Not Found\" module to appear"
+  log "Step: Expect \"Exact Address Not Found\" module to appear"
   expect(@ambiguous_address_module.present?).to be true
 end
 
 When /^Set Order Form Phone to (.*)$/ do |phone|
   begin
-    log "Test: Order Form Phone to \"#{phone}\""
+    log "Step: Order Form Phone to \"#{phone}\""
     batch.order_details.ship_to.domestic.phone.set phone
   end unless phone.length == 0
 end
 
 When /^Set Order Form Email to (.*)$/ do |email|
   begin
-    log "Test: Set Order Form Email to \"#{email}\""
+    log "Step: Set Order Form Email to \"#{email}\""
     batch.order_details.ship_to.domestic.email.set email
   end unless email.length == 0
   #end_step step
 end
 
 When /^Expect system (.*) Order Form$/ do |status|
-  log "Test: Expect system #{status} Order Form"
+  log "Step: Expect system #{status} Order Form"
 
   actual = batch.order_details.single_order_form_present
   if status == 'hides'
@@ -69,7 +69,7 @@ When /^Expect system (.*) Order Form$/ do |status|
 end
 
 When /^Hide Order Form Ship-To fields$/ do
-  log "Test: Hide Order Form Ship-To fields"
+  log "Step: Hide Order Form Ship-To fields"
   batch.order_details.ship_to.hide
   log "done."
   #end_step step
@@ -77,46 +77,46 @@ end
 
 When /^Set Order Form Pounds to (\d*)$/ do |value|
   begin
-    log "Test: Set Order Form Pounds to \"#{value}\""
+    log "Step: Set Order Form Pounds to \"#{value}\""
     batch.order_details.lbs.set log_param "Pounds", value
   end unless value.length == 0
 end
 
 When /^Set Order Form Ounces to (\d*)$/ do |value|
   begin
-    log "Test: Set Order Form Ounces to \"#{value}\""
+    log "Step: Set Order Form Ounces to \"#{value}\""
     batch.order_details.oz.set log_param"Ounces", value
   end unless value.length == 0
 end
 
 When /^Set Order Form Length to (\d*)$/ do |value|
   begin
-    log "Test: Set Order Form Length to \"#{value}\""
+    log "Step: Set Order Form Length to \"#{value}\""
     batch.order_details.length.set log_param "Length", value
   end unless value.length == 0
 end
 
 When /^Set Order Form Width to (\d*)$/ do |value|
   begin
-    log "Test: Set Order Form Width to \"#{value}\""
+    log "Step: Set Order Form Width to \"#{value}\""
     batch.order_details.width.set log_param "Width", value
   end unless value.length == 0
 end
 
 When /^Set Order Form Height to (\d*)$/ do |value|
   begin
-    log "Test: Set Order Form Height to \"#{value}\""
+    log "Step: Set Order Form Height to \"#{value}\""
     batch.order_details.height.set log_param "Height", value
   end unless value.length == 0
 end
 
 And /^Set Order Form Service to \"(.*)\"$/ do |service|
-  log "Test: Set Order Form Service to #{service}"
+  log "Step: Set Order Form Service to #{service}"
   batch.order_details.service.select service
 end
 
 Then /^Set Order Form Tracking to \"([\w ]*)\"$/ do |value|
-  log "Test: Set Order Form Tracking to #{value}"
+  log "Step: Set Order Form Tracking to #{value}"
   begin
     batch.order_details.tracking_no.select value
   end unless value.length == 0
@@ -128,30 +128,30 @@ Then /^Set Order Form Tracking to \"([\w ]*)\"$/ do |value|
 end
 
 And /^Set Order Form Insured Value to \$([\d*\.?\d*]*)$/ do |value|
-  log "Test: Set Order Form Insured Value to #{value}"
+  log "Step: Set Order Form Insured Value to #{value}"
   batch.order_details.insured_value.set value
 end
 
 When /^Set order details with$/ do |table|
-  log "Test: Set order details with..."
+  log "Step: Set order details with..."
   batch.order_details.edit_details log_hash_param table.hashes.first
 end
 
 Then /^Add Ship-From address$/ do |ship_from|
-  log "Test: Add Ship-From address #{ship_from}"
+  log "Step: Add Ship-From address #{ship_from}"
   #batch.order_details.manage_shipping_addresses.add ship_from.hashes.first
   batch.order_details.ship_from.select("Manage Shipping Addresses...").add ship_from.hashes.first
 end
 
 Then /^Add Ship-From address (\w+)$/ do |address|
   ship_from = (address.include?'random')?(test_helper.random_ship_from):address
-  log "Test:  Add Ship-From address #{(address.include?'random')?ship_from:(address)}"
+  log "Step:  Add Ship-From address #{(address.include?'random')?ship_from:(address)}"
   @ship_from_address = batch.order_details.ship_from.select("Manage Shipping Addresses...").add ship_from
   log "Random address added: #{@ship_from_address}"
 end
 
 Then /^Expect (\w+) Ship-From address was added$/ do |address|
-  log "Test: Expect #{address} Ship-From address was added"
+  log "Step: Expect #{address} Ship-From address was added"
   raise "Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
   begin
     log "Search for \n#{@ship_from_address}.  Address was #{(batch.order_details.ship_from.select("Manage Shipping Addresses...").address_located?(@ship_from_address))?'Located':'Not Located'}"
@@ -159,7 +159,7 @@ Then /^Expect (\w+) Ship-From address was added$/ do |address|
 end
 
 Then /^Delete (\w+) Ship-From address$/ do |address|
-  log "Test: Delete #{address} Ship-From address"
+  log "Step: Delete #{address} Ship-From address"
   begin
     if address.downcase == "random"
       raise "Illegal State Exception:  @ship_from_address is nil" if @ship_from_address.nil?
@@ -175,42 +175,42 @@ Then /^Delete (\w+) Ship-From address$/ do |address|
 end
 
 Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
-  log "Test: Delete Ship-From Row #{row} from Manage Shipping Addresses Modal"
+  log "Step: Delete Ship-From Row #{row} from Manage Shipping Addresses Modal"
   batch.order_details.ship_from.select("Manage Shipping Addresses...").delete_row(row)
 end
 
 Then /^Set Order Form Ship-From to Manage Shipping Addresses$/ do
-  log "Test: Set Order Form Ship-From to Manage Shipping Addresses"
+  log "Step: Set Order Form Ship-From to Manage Shipping Addresses"
   batch.order_details.ship_from.select("Manage Shipping Addresses...").add table.hashes.first
 end
 
 Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
-  log "Test: Edit Ship-From address for name = \"#{name}\", company = \"#{company}\" and city = \"#{city}\" to #{new_address}"
+  log "Step: Edit Ship-From address for name = \"#{name}\", company = \"#{company}\" and city = \"#{city}\" to #{new_address}"
   batch.order_details.ship_from.select("Manage Shipping Addresses...").edit_address name, company, city,  new_address.hashes.first
 end
 Then /^Expect Order Status to be ([\w ]+)$/ do |expected_value|
-  log "Test: Expect Order Status to be #{expected_value}"
+  log "Step: Expect Order Status to be #{expected_value}"
   actual_value = batch.order_details.order_status
   log "Expect Order Status to be #{expected_value}.  Actual Value:  #{actual_value}.  Test #{(actual_value==expected_value)?'Passed':"Failed"}"
   actual_value.should eql expected_value
 end
 
 Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
-  log "Test: Expect Pounds tooltip to display - The maximum value for this field is #{expected}"
+  log "Step: Expect Pounds tooltip to display - The maximum value for this field is #{expected}"
   actual = batch.order_details.pounds_max_value
   log_expectation_eql "Maximum Pounds", expected, actual
   actual.should eql expected
 end
 
 Then /^Expect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
-  log "Test: Expect Ounces tooltip to display - The maximum value for this field is #{expected}"
+  log "Step: Expect Ounces tooltip to display - The maximum value for this field is #{expected}"
   actual = batch.order_details.ounces_max_value
   log_expectation_eql "Maximum Pounds", expected, actual
   actual.should eql expected
 end
 
 Then /^Expect Order Form Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
-  log "Test: Expect Order Form Service Cost inline price for #{service} to be greater than #{expected}"
+  log "Step: Expect Order Form Service Cost inline price for #{service} to be greater than #{expected}"
   actual = batch.order_details.service.cost service
   10.times { |counter|
     log_expectation "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
@@ -221,7 +221,7 @@ Then /^Expect Order Form Service Cost inline price for "([a-zA-Z -\/]+)" to be g
 end
 
 Then /^Expect Order Form Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
-  log "Test: Expect Order Form Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
+  log "Step: Expect Order Form Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
   tooltips = tooltip_content.split ","
   actual_tooltip = batch.order_details.service.tooltip service
   tooltips.each { |tooltip|
@@ -231,7 +231,7 @@ Then /^Expect Order Form Service Tooltip for "(.*)" to include "(.*)"$/ do |serv
 end
 
 Then /^Expect Service Cost to be \$(.*)$/ do |expected|
-  log "Test: Expect Service Cost to be $#{expected}"
+  log "Step: Expect Service Cost to be $#{expected}"
   actual = batch.order_details.service_cost
   begin
     10.times { |counter|
@@ -244,7 +244,7 @@ Then /^Expect Service Cost to be \$(.*)$/ do |expected|
 end
 
 Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
-  log "Test: Expect Tracking Cost to be #{expected}"
+  log "Step: Expect Tracking Cost to be #{expected}"
   begin
     actual = batch.order_details.tracking_cost
     10.times { |counter|
@@ -257,12 +257,12 @@ Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
 end
 
 Then /^Verify Order Form Total Amount$/ do
-  log "Test: Verify Order Form Total Amount"
+  log "Step: Verify Order Form Total Amount"
   batch.order_details.total_amount_calculation.should be_correct
 end
 
 Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
-  log "Test: Expect Insurance Cost to be #{expected}"
+  log "Step: Expect Insurance Cost to be #{expected}"
   begin
     actual = batch.order_details.insurance_cost
     10.times { |counter|
@@ -275,7 +275,7 @@ Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
 end
 
 Then /^Expect Order Form Service to be \"(.*)\"$/ do |expected|
-  log "Test: Expect Order Form Service to be #{expected}"
+  log "Step: Expect Order Form Service to be #{expected}"
   begin
     actual = batch.order_details.service.text
     10.times { |counter|
@@ -288,7 +288,7 @@ Then /^Expect Order Form Service to be \"(.*)\"$/ do |expected|
 end
 
 Then /^Expect Order Form Tracking to be \"([\w\s]*)\"$/ do |expected|
-  log "Test: Expect Order Form Tracking to be #{expected}"
+  log "Step: Expect Order Form Tracking to be #{expected}"
   begin
     actual = batch.order_details.tracking_no.text
     10.times { |counter|
@@ -301,7 +301,7 @@ Then /^Expect Order Form Tracking to be \"([\w\s]*)\"$/ do |expected|
 end
 
 Then /^Expect Order Form Total to be \$(.*)$/ do |expected|
-  log "Test: Expect Order Form Total to be $#{expected}"
+  log "Step: Expect Order Form Total to be $#{expected}"
   begin
     10.times { |counter|
       batch.order_details.click_form
@@ -319,7 +319,7 @@ Then /^Expect Order Form Total to be \$(.*)$/ do |expected|
 end
 
 Then /^Expect (\d+) orders selected$/ do |expected|
-  log "Test: Expect #{expected} orders selected"
+  log "Step: Expect #{expected} orders selected"
   batch.multi_order.order_count.should eql expected
 end
 

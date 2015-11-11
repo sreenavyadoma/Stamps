@@ -1,5 +1,5 @@
 Then /^Save Shipping Costs Data$/ do
-  log "Test: Save Shipping Costs Data"
+  log "Step: Save Shipping Costs Data"
   @service_cost = batch.order_details.service_cost
   @insurance_cost = batch.order_details.insurance_cost
   @tracking_cost = batch.order_details.tracking_cost
@@ -8,7 +8,7 @@ Then /^Save Shipping Costs Data$/ do
 end
 
 Then /^Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost$/ do
-  log "Test: Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost"
+  log "Step: Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost"
   @total_amount = batch.order_details.total
   @service_cost = batch.order_details.service_cost
   @tracking_cost = batch.order_details.tracking_cost
@@ -19,7 +19,7 @@ Then /^Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost
 end
 
 Then /^Expect Ship Cost equals Total amount$/ do
-  log "Test: Expect Ship Cost equals Total amount"
+  log "Step: Expect Ship Cost equals Total amount"
   total_amount = batch.order_details.total
   ship_cost = batch.grid.ship_cost.data @order_id
   10.times { |counter|
@@ -37,7 +37,7 @@ Then /^Expect Ship Cost equals Total amount$/ do
 end
 
 Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
-  log "Test: Expect \$#{expected} is deducted from customer balance if printing is successful"
+  log "Step: Expect \$#{expected} is deducted from customer balance if printing is successful"
   log_param "Old Balance", @old_balance
   if @printing_error
     @new_balance = batch.navigation.balance
@@ -54,7 +54,7 @@ Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is succe
 end
 
 Then /^Expect Printing cost is deducted from customer balance if there were no printing errors$/ do
-  log "Test: Expect Printing cost is deducted from customer balance if there were no printing errors"
+  log "Step: Expect Printing cost is deducted from customer balance if there were no printing errors"
   log "Printing Error:  #{@printing_error}"
   log_param "Old Balance", @old_balance
   if @printing_error
@@ -77,7 +77,7 @@ Then /^Expect Printing cost is deducted from customer balance if there were no p
 end
 
 Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expectation|
-  log "Test: Expect Print Window Total Cost to be #{expectation}"
+  log "Step: Expect Print Window Total Cost to be #{expectation}"
   begin
     print_window = batch.toolbar.print_modal
     actual_value = print_window.total_cost

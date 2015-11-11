@@ -105,6 +105,13 @@ module Batch
         :order_total => "Order Total"
     }
 
+    def row_count
+      tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
+      count = tables.size
+      log "Total Number of Orders on Grid:  #{count}" if Stamps::Test.verbose
+      count.to_i
+    end
+
     def scroll column
       field = Label.new column_name_field column
       field.scroll_into_view
@@ -135,37 +142,6 @@ module Batch
         return true if sort_verify_field.attribute_value("class").include? verify_sort
       }
       false
-    end
-
-
-    def xsort_ascending column
-      column_field = column_name_field column
-      sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[1]
-      sort_field = Label.new @browser.span :text => "Sort Ascending"
-      sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
-
-      5.times{
-        sort_drop_down.safe_click unless sort_field.present?
-        sort_field.safe_click
-        sorted = sort_verify_field.attribute_value("class").downcase.include? "asc"
-        break if sorted
-      }
-      sorted
-    end
-
-    def xsort_descending column
-      column_field = column_name_field column
-      sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[1]
-      sort_field = Label.new @browser.span :text => "Sort Descending"
-      sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
-
-      5.times{
-        sort_drop_down.safe_click unless sort_field.present?
-        sort_field.safe_click
-        sorted = sort_verify_field.attribute_value("class").downcase.include? "asc"
-        break if sorted
-      }
-      sorted
     end
 
     def column_name_field column
@@ -995,7 +971,20 @@ module Batch
     end
   end
 
-  class CheckColumn < Column
+  class CheckBox < Column
+    private
+    def checkbox_header
+      scroll_into_view
+      spans = @browser.spans :css => "span[class=x-column-header-text]"
+      checkbox_field = spans.first
+      check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
+      attribute = "class"
+      attrib_value_check = "checker-on"
+      Stamps::Browser::Checkbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
+    end
+
+    public
+
     def scroll_into_view
       field = Label.new((@browser.spans :css => "div[componentid^=gridcolumn]").first)
       field.scroll_into_view
@@ -1010,8 +999,21 @@ module Batch
       check(row_number order_id)
     end
 
+    def check number
+      scroll_into_view
+      if size > 0
+        checkbox_field = row_div number
+        verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
+        checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+        checkbox.checkbox
+        log "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}." if Stamps::Test.verbose
+      else
+        log "Grid is empty" if Stamps::Test.verbose
+      end
+    end
+
     def uncheck number
-      self.scroll_into_view
+      scroll_into_view
       if size > 0
         checkbox_field = row_div number
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
@@ -1023,20 +1025,7 @@ module Batch
       end
     end
 
-    def check number
-      scroll_into_view
-      if size > 0
-        checkbox_field = row_div number
-        verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-        checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
-        checkbox.check
-        log "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}." if Stamps::Test.verbose
-      else
-        log "Grid is empty" if Stamps::Test.verbose
-      end
-    end
-
-    def row_checked? number
+    def checked? number
       scroll_into_view
       checkbox_field = row_div number
       verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
@@ -1044,40 +1033,48 @@ module Batch
       checkbox.checked?
     end
 
-    def select_all_checkbox
+    def order_id_checked? order_number
       scroll_into_view
-      spans = @browser.spans :css => "span[class=x-column-header-text]"
-      checkbox_field = spans.first
-      check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
-      attribute = "class"
-      attrib_value_check = "checker-on"
-      Stamps::Browser::Checkbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
+      checked? row_number order_number
     end
 
-    def select_all
+    def check_all *args
       scroll_into_view
-      select_all_checkbox.check
+      if args.length==1
+        log "Restoring #{} checked orders..." if Stamps::Test.verbose
+        begin
+          if args[0].is_a? Hash
+            row_collection = args[0]
+          else
+            raise "Invalid parameter exception.  This method expects a Hash of Web Elements."
+          end
+          row_collection.each do |row|
+            checked = row_collection[row]
+            if checked
+              checkbox row
+              log "Row #{row} #{checked? row}" if Stamps::Test.verbose
+            end
+          end
+        end unless row_collection.nil?
+      else
+        checkbox_header.checkbox
+      end
     end
 
-    def unselect_all
+    def uncheck_all
       scroll_into_view
-      select_all_checkbox.uncheck
+      checkbox_header.uncheck
     end
 
-    def order_checked? order_number
-      scroll_into_view
-      row_checked? row_number order_number
-    end
-
-    def cache_checked_rows *args
-      cache_count = 2
+    def checked_rows *args
+      cache_count = 10
       if args.length == 1
         cache_count = args[0]
       end
 
       log "Caching checked rows..." if Stamps::Test.verbose
       checked_rows = Hash.new
-      grid_total = total_number_of_orders
+      grid_total = row_count
       if cache_count > 2 && cache_count < grid_total
         cache_item_count = cache_count
       elsif cache_count > grid_total
@@ -1087,7 +1084,7 @@ module Batch
       end
       log "Number of rows to check:  #{cache_item_count}" if Stamps::Test.verbose
       1.upto(cache_item_count) { |row|
-        checked = row_checked? row
+        checked = checked? row
         if checked
           checked_rows[row] = checked
         end
@@ -1097,26 +1094,6 @@ module Batch
       checked_rows
     end
 
-    def total_number_of_orders
-      tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
-      count = tables.size
-      log "Total Number of Orders on Grid:  #{count}" if Stamps::Test.verbose
-      count.to_i
-    end
-
-    def check_rows rows
-      scroll_into_view
-      log "Restoring #{} checked orders..." if Stamps::Test.verbose
-      begin
-        rows.each do |row|
-          checked = rows[row]
-          if checked
-            check row
-            log "Row #{row} #{row_checked? row}" if Stamps::Test.verbose
-          end
-        end
-      end unless rows.nil?
-    end
   end
 
   # Order Grid
@@ -1229,8 +1206,8 @@ module Batch
       @tracking ||= Tracking.new @browser
     end
 
-    def check
-      @check ||= CheckColumn.new @browser
+    def checkbox
+      @check ||= CheckBox.new @browser
     end
 
     def toolbar

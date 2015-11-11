@@ -3,11 +3,11 @@ Feature: Test Development
   Background:
     Given I am signed in as a batch shipper
 
-  @rob_grid
   Scenario:
     Then Sort Grid by Ship Cost in Ascending order
     Then Sort Grid by Ship Cost in Descending order
 
+  @rob_grid
   Scenario:
     Then List all Grid column values for row 1
     Then List all Grid column values for row 2

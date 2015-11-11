@@ -88,7 +88,7 @@ module Batch
       dont_show_checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, attribute, attrib_value_check
 
       if dont_show
-        dont_show_checkbox.check
+        dont_show_checkbox.checkbox
         log "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}" if Stamps::Test.verbose
       else
         dont_show_checkbox.uncheck

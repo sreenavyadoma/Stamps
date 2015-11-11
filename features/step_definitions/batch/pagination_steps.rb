@@ -1,39 +1,39 @@
 #Pagination Controls are enabled
 
 Then /^User is on the first page of orders$/ do
-  log "Test: User is on the first page of orders"
-  log "Page Count = Page #{batch.grid.total_number_of_orders} orders"
+  log "Step: User is on the first page of orders"
+  log "Page Count = Page #{batch.grid.row_count} orders"
   page_count = batch.grid.toolbar.page_count.text
   log "Page Count = Page #{page_count}"
   expect(page_count.to_i = 1).to be true
 end
 
 Then /^User clicks first page pagination control$/ do
-  log "Test: User clicks first page pagination control"
+  log "Step: User clicks first page pagination control"
   paging_toolbar = batch.grid.toolbar
   paging_toolbar.first_page.click
 end
 
 Then /^User clicks previous page pagination control$/ do
-  log "Test: User clicks previous page pagination control"
+  log "Step: User clicks previous page pagination control"
   paging_toolbar = batch.grid.toolbar
   paging_toolbar.previous_page.click
 end
 
 Then /^User clicks next page pagination control$/ do
-  log "Test: User clicks next page pagination control"
+  log "Step: User clicks next page pagination control"
   paging_toolbar = batch.grid.toolbar
   paging_toolbar.next_page.click
 end
 
 Then /^User clicks last page pagination control$/ do
-  log "Test: User clicks last page pagination control"
+  log "Step: User clicks last page pagination control"
   paging_toolbar = batch.grid.toolbar
   paging_toolbar.last_page.click
 end
 
 Then /^Pagination control to go to first page is (\w+)$/ do |first_pagination_enabled|
-  log "Test: Pagination control to go to first page is #{first_pagination_enabled}"
+  log "Step: Pagination control to go to first page is #{first_pagination_enabled}"
   enabled = batch.grid.toolbar.first_page.present?
   if first_pagination_enabled.downcase == "enabled"
     log "Pagination control to go to first page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
@@ -42,7 +42,7 @@ Then /^Pagination control to go to first page is (\w+)$/ do |first_pagination_en
 end
 
 Then /^Pagination control to go to previous page is (\w+)$/ do |previous_pagination_enabled|
-  log "Test: Pagination control to go to previous page is #{previous_pagination_enabled}"
+  log "Step: Pagination control to go to previous page is #{previous_pagination_enabled}"
   enabled = batch.grid.toolbar.previous_page.present?
   if previous_pagination_enabled.downcase == "enabled"
     log "Pagination control to go to previous page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
@@ -51,7 +51,7 @@ Then /^Pagination control to go to previous page is (\w+)$/ do |previous_paginat
 end
 
 Then /^Pagination control to go to page number is (\w+$)/ do |page_number_enabled|
-  log "Test: Pagination control to go to page number is #{page_number_enabled}"
+  log "Step: Pagination control to go to page number is #{page_number_enabled}"
   enabled = batch.grid.toolbar.page_number.present?
   if page_number_enabled.downcase == "enabled"
     log "Pagination control to go to page number is enabled.  Test #{(enabled)?'Passed':'Failed'}"
@@ -60,7 +60,7 @@ Then /^Pagination control to go to page number is (\w+$)/ do |page_number_enable
 end
 
 Then /^Pagination control to go to next page is (\w+)$/ do |next_pagination_enabled|
-  log "Test: Pagination control to go to next page is #{next_pagination_enabled}"
+  log "Step: Pagination control to go to next page is #{next_pagination_enabled}"
   enabled = batch.grid.toolbar.next_page.present?
   if next_pagination_enabled.downcase == "enabled"
     log "Pagination control to go to next page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
@@ -69,7 +69,7 @@ Then /^Pagination control to go to next page is (\w+)$/ do |next_pagination_enab
 end
 
 Then /^Pagination control to go to last page is (\w+)$/ do |last_pagination_enabled|
-  log "Test: Pagination control to go to last page is #{last_pagination_enabled}"
+  log "Step: Pagination control to go to last page is #{last_pagination_enabled}"
   enabled = batch.grid.toolbar.last_page.present?
   if last_pagination_enabled.downcase == "enabled"
     log "Pagination control to go to last page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
@@ -78,7 +78,7 @@ Then /^Pagination control to go to last page is (\w+)$/ do |last_pagination_enab
 end
 
 Then /^Expect page toolbar First Page is (\w+)$/  do |expectation|
-  log "Test: Expect page toolbar First Page is #{expectation}"
+  log "Step: Expect page toolbar First Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.first_page.present?
@@ -92,7 +92,7 @@ Then /^Expect page toolbar First Page is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Previous Page is (\w+)$/  do |expectation|
-  log "Test: Expect page toolbar Previous Page is #{expectation}"
+  log "Step: Expect page toolbar Previous Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.previous_page.present?
@@ -106,7 +106,7 @@ Then /^Expect page toolbar Previous Page is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Page Number is (\w+)$/  do |expectation|
-  log "Test: Expect page toolbar Page Number is #{expectation}"
+  log "Step: Expect page toolbar Page Number is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.page_number.present?
@@ -117,7 +117,7 @@ Then /^Expect page toolbar Page Number is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Next Page is (\w+)$/  do |expectation|
-  log "Test: Expect page toolbar Next Page is #{expectation}"
+  log "Step: Expect page toolbar Next Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.next_page.present?
@@ -131,7 +131,7 @@ Then /^Expect page toolbar Next Page is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
-  log "Test: Expect page toolbar Last Page is #{expectation}"
+  log "Step: Expect page toolbar Last Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.last_page.present?
@@ -145,7 +145,7 @@ Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
 end
 
 Then /^Set paging toolbar orders per page count to (\d+)$/ do |page_count|
-  log "Test: Set paging toolbar orders per page count to #{page_count}"
+  log "Step: Set paging toolbar orders per page count to #{page_count}"
   #log "Order Grid contains #{features.batch.grid.grid_page_order_count} orders"
   log "Per page count is #{batch.grid.toolbar.page_count.text} orders"
   batch.grid.toolbar.per_page_dd.select page_count
@@ -156,7 +156,7 @@ Then /^Set paging toolbar orders per page count to (\d+)$/ do |page_count|
 end
 
 When /^Set Page Number to (\d*)$/ do |value|
-  log "Test: Set Page Number to #{value}"
+  log "Step: Set Page Number to #{value}"
   begin
     log "Set Page Number to \"#{value}\""
     page_one_order_id = batch.grid.order_id.row 1
@@ -176,7 +176,7 @@ When /^Set Page Number to (\d*)$/ do |value|
 end
 
 Then /^Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
-  log "Test: Expect Total Number of Pages to be #{total_number_of_pages}"
+  log "Step: Expect Total Number of Pages to be #{total_number_of_pages}"
   log "Passed value is #{total_number_of_pages}"
   browser_total_number_of_pages = batch.grid.toolbar.total_number_of_pages.to_s
   log "DD value is #{browser_total_number_of_pages}"
@@ -187,15 +187,15 @@ Then /^Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
 end
 
 Then /^Expect number of orders on page to be correct$/ do
-  log "Test: Expect number of orders on page to be correct"
-  batch.grid.check.select_all
+  log "Step: Expect number of orders on page to be correct"
+  batch.grid.checkbox.check_all
   multi_order_count = batch.multi_order.order_count.to_s
   log "Multi Order Count is #{multi_order_count}"
   per_page_dd_count = @per_page_count
   log "Per Page Count is #{per_page_dd_count}"
   test_result = multi_order_count.include? per_page_dd_count
   log "#{(test_result)?'Test Passed.':'Test Failed'}"
-  batch.grid.check.unselect_all
+  batch.grid.checkbox.uncheck_all
   test_result.should be true
 end
 
@@ -222,11 +222,11 @@ Then /^pagination control to go to last page is disabled$/ do
 end
 
 Then /^Web Batch grid has more orders than value selected in 'number of orders per page' pagination control$/ do
-  log "Test: Web Batch grid has more orders than value selected in 'number of orders per page' pagination control"
+  log "Step: Web Batch grid has more orders than value selected in 'number of orders per page' pagination control"
   #1 Count order grid items ordersgridpagingtoolbar
   page_count = batch.grid.toolbar.page_count.text
   expect(page_count.to_i > 1).to be true
-  total_grid_count = batch.grid.total_number_of_orders
+  total_grid_count = batch.grid.row_count
   #2 Get per page count
 
   #3 Compare

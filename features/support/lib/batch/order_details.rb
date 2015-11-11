@@ -140,7 +140,7 @@ module Batch
       grid_recipient = Recipient.new @browser
       grid_company = Company.new @browser
       grid_address = Address.new @browser
-      check_column = CheckColumn.new @browser
+      check_column = CheckBox.new @browser
 
       20.times{
         text_box.send_keys address
@@ -389,7 +389,7 @@ module Batch
       grid_recipient = Recipient.new @browser
       grid_company = Company.new @browser
       grid_address = Address.new @browser
-      check_column = CheckColumn.new @browser
+      check_column = CheckBox.new @browser
 
       phone = self.phone
       email = self.email
@@ -746,7 +746,7 @@ module Batch
         begin
           browser_helper.click cell, "cell(#{row_num}, 1)"
           #log_browser_click(cell, attibute, attribute_value)
-          break if row_checked? row_num
+          break if checked? row_num
         rescue
           #ignore
         end
@@ -815,7 +815,7 @@ module Batch
       @browser.image :css => "img[class*='x-tool-close']"
     end
 
-    def row_checked?(row)
+    def checked?(row)
       field = @browser.table :css => "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
       value = browser_helper.attribute_value field, "class"
       checked = value.include? "selected"
@@ -1017,7 +1017,7 @@ module Batch
       checkbox_field = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
 
       checkbox = Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
-      checkbox.check
+      checkbox.checkbox
 
       accept_button = Button.new @browser.span :text => "Accept"
       accept_button.click_while_present

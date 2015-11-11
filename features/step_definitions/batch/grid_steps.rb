@@ -1,17 +1,17 @@
 When /^Edit row (\d+) on the order grid$/ do |row|
-  log "Test: Edit row #{row} on the order grid"
-  batch.grid.check.check row
+  log "Step: Edit row #{row} on the order grid"
+  batch.grid.checkbox.checkbox row
   #end_step step
 end
 
 When /^Uncheck row (\d+) on the order grid$/ do |row|
-  log "Test: Uncheck row #{row} on the order grid"
-  batch.grid.check.uncheck row
+  log "Step: Uncheck row #{row} on the order grid"
+  batch.grid.checkbox.uncheck row
   #end_step step
 end
 
 Then /^Expect Ship-To address to be;$/ do |table|
-  log "Test: Expect Ship-To address to be..."
+  log "Step: Expect Ship-To address to be..."
   param_hash = table.hashes.first
   step "Expect Grid Recipient to be #{param_hash[:name]}"
   step "Expect Grid Company to be #{param_hash[:company]}"
@@ -24,13 +24,53 @@ Then /^Expect Ship-To address to be;$/ do |table|
 end
 
 Then /^List all Grid column values for row (\d+)/ do |row|
-  log "Test: List all Grid column values for row #{row}"
-  step "List all Grid column values for Order ID #{batch.grid.order_id.row(row)}"
+  log "Step: List all Grid column values for row #{row}"
+  order_id = batch.grid.order_id.row row
+  step "List all Grid column values for Order ID #{order_id}"
 end
 
 Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
-  log "Test: List all Grid column values for Order ID #{order_id}"
+  log "Step: List all Grid column values for Order ID #{order_id}"
   @grid = batch.grid
+
+  row2_order_id = @grid.order_id.row 2
+  log @grid.checkbox.order_id_checked? row2_order_id
+
+  row1_checkbox = @grid.checkbox.field 1
+  row1_checkbox.safe_click
+  row1_checkbox.safe_click
+
+
+  @grid.checkbox.check 1
+  log @grid.checkbox.checked? 1
+  @grid.checkbox.check 2
+  log @grid.checkbox.checked? 2
+  @grid.checkbox.check 3
+  log @grid.checkbox.checked? 3
+
+  @grid.checkbox.uncheck 1
+  log @grid.checkbox.checked? 1
+  @grid.checkbox.uncheck 2
+  log @grid.checkbox.checked? 2
+  @grid.checkbox.uncheck 3
+  log @grid.checkbox.checked? 3
+
+  @grid.checkbox.check 2
+  log @grid.checkbox.checked? 2
+  @grid.checkbox.check 4
+  log @grid.checkbox.checked? 4
+  @grid.checkbox.check 6
+  log @grid.checkbox.checked? 6
+
+  checked_hash = @grid.checkbox.checked_rows
+
+  @grid.checkbox.check_all
+  @grid.checkbox.uncheck_all
+
+  @grid.checkbox.check_all checked_hash
+
+
+
   log @grid.item_name.data order_id
   log @grid.ship_cost.data order_id
   log @grid.age.data order_id
@@ -60,7 +100,7 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
 end
 
 Then /^Expect Grid Age to be (.*)$/ do |expected|
-  log "Test: Expect Grid Age to be #{expected}"
+  log "Step: Expect Grid Age to be #{expected}"
   begin
     if @order_id.nil?
       @order_id = batch.grid.order_id.row 1
@@ -77,7 +117,7 @@ Then /^Expect Grid Age to be (.*)$/ do |expected|
 end
 
 Then /^Expect Grid Order Date to be (.*)$/ do |expected|
-  log "Test: Expect Grid Order Date to be #{expected}"
+  log "Step: Expect Grid Order Date to be #{expected}"
   begin
     if @order_id.nil?
       @order_id = batch.grid.order_id.row 1
@@ -94,7 +134,7 @@ Then /^Expect Grid Order Date to be (.*)$/ do |expected|
 end
 
 Then /^Expect Grid Recipient to be (.*)$/ do |expected|
-  log "Test: Expect Grid Recipient to be #{expected}"
+  log "Step: Expect Grid Recipient to be #{expected}"
   begin
     if @order_id.nil?
       @order_id = batch.grid.order_id.row 1
@@ -111,7 +151,7 @@ Then /^Expect Grid Recipient to be (.*)$/ do |expected|
 end
 
 Then /^Expect Grid Company to be (.*)$/ do |expected|
-  log "Test: Expect Grid Company to be #{expected}"
+  log "Step: Expect Grid Company to be #{expected}"
   begin
     actual = batch.grid.company.data @order_id
     10.times { |counter|
@@ -125,7 +165,7 @@ Then /^Expect Grid Company to be (.*)$/ do |expected|
 end
 
 Then /^Expect Grid Address to be ([\w\s-]+)$/ do |expected|
-  log "Test: Expect Grid Address to be #{expected}"
+  log "Step: Expect Grid Address to be #{expected}"
   begin
     actual = batch.grid.domestic.data @order_id
     10.times { |counter|
@@ -139,7 +179,7 @@ Then /^Expect Grid Address to be ([\w\s-]+)$/ do |expected|
 end
 
 Then /^Expect Grid City to be ([\w\s]+)$/ do |expected|
-  log "Test: Expect Grid City to be #{expected}"
+  log "Step: Expect Grid City to be #{expected}"
   begin
     actual = batch.grid.city.data @order_id
     10.times { |counter|
@@ -153,7 +193,7 @@ Then /^Expect Grid City to be ([\w\s]+)$/ do |expected|
 end
 
 Then /^Expect Grid State to be ([a-zA-Z]+)$/ do |expected|
-  log "Test: Expect Grid State to be #{expected}"
+  log "Step: Expect Grid State to be #{expected}"
   begin
     actual = batch.grid.state.data @order_id
     10.times { |counter|
@@ -167,7 +207,7 @@ Then /^Expect Grid State to be ([a-zA-Z]+)$/ do |expected|
 end
 
 Then /^Expect Grid Zip to be ([\d -]+)$/ do |expected|
-  log "Test: Expect Grid Zip to be #{expected}"
+  log "Step: Expect Grid Zip to be #{expected}"
   begin
     actual = batch.grid.zip.data @order_id
     10.times { |counter|
@@ -181,7 +221,7 @@ Then /^Expect Grid Zip to be ([\d -]+)$/ do |expected|
 end
 
 Then /^Expect Grid Country to be ([a-zA-Z]+)$/ do |expected|
-  log "Test: Expect Grid Country to be #{expected}"
+  log "Step: Expect Grid Country to be #{expected}"
   begin
     actual = batch.grid.country.data @order_id
     10.times { |counter|
@@ -195,7 +235,7 @@ Then /^Expect Grid Country to be ([a-zA-Z]+)$/ do |expected|
 end
 
 Then /^Expect Grid Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expected|
-  log "Test: Expect Grid Email to be #{expected}"
+  log "Step: Expect Grid Email to be #{expected}"
   begin
     actual = batch.grid.country.data @order_id
     10.times { |counter|
@@ -209,7 +249,7 @@ Then /^Expect Grid Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expected|
 end
 
 Then /^Expect Grid Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/ do |expected|
-  log "Test: Expect Grid Phone to be #{expected}"
+  log "Step: Expect Grid Phone to be #{expected}"
   begin
     actual = batch.grid.phone.data @order_id
     10.times { |counter|
@@ -223,7 +263,7 @@ Then /^Expect Grid Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/
 end
 
 Then /^Expect Grid Pounds to be (\d+)$/ do |expected|
-  log "Test: Expect Grid Pounds to be #{expected}"
+  log "Step: Expect Grid Pounds to be #{expected}"
   begin
     actual = batch.grid.weight.lbs @order_id
     10.times { |counter|
@@ -237,7 +277,7 @@ Then /^Expect Grid Pounds to be (\d+)$/ do |expected|
 end
 
 Then /^Expect Grid Ounces to be (\d+)$/ do |expected|
-  log "Test: Expect Grid Ounces to be #{expected}"
+  log "Step: Expect Grid Ounces to be #{expected}"
   begin
     actual = batch.grid.weight.oz @order_id
     10.times { |counter|
@@ -251,7 +291,7 @@ Then /^Expect Grid Ounces to be (\d+)$/ do |expected|
 end
 
 Then /^Expect Grid Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
-  log "Test: Expect Grid Weight to be #{expected}"
+  log "Step: Expect Grid Weight to be #{expected}"
   expected = "#{pounds} lbs. #{ounces} oz."
   begin
     actual = batch.grid.weight.data @order_id
@@ -266,7 +306,7 @@ Then /^Expect Grid Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
 end
 
 Then /^Expect Grid Qty. to be (.+)$/ do |expected|
-  log "Test: Expect Grid Qty. to be #{expected}"
+  log "Step: Expect Grid Qty. to be #{expected}"
   begin
     actual = batch.grid.qty.data @order_id
     10.times { |counter|
@@ -280,7 +320,7 @@ Then /^Expect Grid Qty. to be (.+)$/ do |expected|
 end
 
 Then /^Expect Grid Item SKU to be (.+)$/ do |expected|
-  log "Test: Expect Grid SKU to be #{expected}"
+  log "Step: Expect Grid SKU to be #{expected}"
   begin
     actual = batch.grid.item_sku.data @order_id
     10.times { |counter|
@@ -294,7 +334,7 @@ Then /^Expect Grid Item SKU to be (.+)$/ do |expected|
 end
 
 Then /^Expect Grid Item Name to be (.+)$/ do |expected|
-  log "Test: Expect Grid Name to be #{expected}"
+  log "Step: Expect Grid Name to be #{expected}"
   begin
     actual = batch.grid.item_name.data @order_id
     10.times { |counter|
@@ -308,7 +348,7 @@ Then /^Expect Grid Item Name to be (.+)$/ do |expected|
 end
 
 Then /^Expect Grid Ship From to be (.+)$/ do |expected|
-  log "Test: Expect Grid Ship to be #{expected}"
+  log "Step: Expect Grid Ship to be #{expected}"
   begin
     actual = batch.grid.ship_from.data @order_id
     10.times { |counter|
@@ -322,7 +362,7 @@ Then /^Expect Grid Ship From to be (.+)$/ do |expected|
 end
 
 Then /^Expect Grid Service to be (.+)$/ do |expected|
-  log "Test: Expect Grid Service to be #{expected}"
+  log "Step: Expect Grid Service to be #{expected}"
   begin
     actual = batch.grid.service.data @order_id
     10.times { |counter|
@@ -336,7 +376,7 @@ Then /^Expect Grid Service to be (.+)$/ do |expected|
 end
 
 Then /^Expect Grid Insured Value to be (.+)$/ do |expected|
-  log "Test: Expect Grid Insured Value to be #{expected}"
+  log "Step: Expect Grid Insured Value to be #{expected}"
   begin
     actual = batch.grid.insured_value.data @order_id
     10.times { |counter|
@@ -351,7 +391,7 @@ end
 
 Then /^Expect Grid Reference No. to be (.+)$/ do |expected|
 
-  log "Test: Expect Grid Reference No. to be #{expected}"
+  log "Step: Expect Grid Reference No. to be #{expected}"
   begin
     actual = batch.grid.reference_no.data @order_id
     10.times { |counter|
@@ -365,7 +405,7 @@ Then /^Expect Grid Reference No. to be (.+)$/ do |expected|
 end
 
 Then /^Expect Grid Cost Code to be (.+)$/ do |expected|
-  log "Test: Expect Grid Cost Code to be #{expected}"
+  log "Step: Expect Grid Cost Code to be #{expected}"
   begin
     actual = batch.grid.cost_code.data @order_id
     10.times { |counter|
@@ -379,7 +419,7 @@ Then /^Expect Grid Cost Code to be (.+)$/ do |expected|
 end
 
 Then /^Expect Grid Order Status to be (.+)$/ do |expected|
-  log "Test: Expect Grid Order Status to be #{expected}"
+  log "Step: Expect Grid Order Status to be #{expected}"
   begin
     actual = batch.grid.cost_code.data @order_id
     10.times { |counter|
@@ -393,7 +433,7 @@ Then /^Expect Grid Order Status to be (.+)$/ do |expected|
 end
 
 Then /^Expect Grid Ship Date to be (.+)$/ do |expected|
-  log "Test: Expect Grid Ship Date to be #{expected}"
+  log "Step: Expect Grid Ship Date to be #{expected}"
   begin
     actual = batch.grid.cost_code.data @order_id
     10.times { |counter|
@@ -407,7 +447,7 @@ Then /^Expect Grid Ship Date to be (.+)$/ do |expected|
 end
 
 Then /^Expect Grid Tracking # to be (.+)$/ do |expected|
-  log "Test: Expect Grid Tracking # to be #{expected}"
+  log "Step: Expect Grid Tracking # to be #{expected}"
   begin
     actual = batch.grid.tracking_no.data @order_id
     10.times { |counter|
@@ -421,7 +461,7 @@ Then /^Expect Grid Tracking # to be (.+)$/ do |expected|
 end
 
 Then /^Expect Grid Order Total to be (.+)$/ do |expected|
-  log "Test: Expect Grid Order Total to be #{expected}"
+  log "Step: Expect Grid Order Total to be #{expected}"
   begin
     actual = batch.grid.order_total.data @order_id
     10.times { |counter|
@@ -435,14 +475,14 @@ Then /^Expect Grid Order Total to be (.+)$/ do |expected|
 end
 
 Then /^Expect Order details to be;$/ do |table|
-  log "Test: Expect Order details to be..."
+  log "Step: Expect Order details to be..."
   expected_hash = table.hashes.first
   step "Expect Grid Insured Value to be $#{expected_hash[:insured_value]}"
   step "Expect Grid Weight to be #{expected_hash[:lbs]} lbs. #{expected_hash[:oz]} oz."
 end
 
 Then /^Expect Grid Insured Value to be \$(\d*\.?\d*)$/ do |expected|
-  log "Test: Expect Grid Insured Value to be #{expected}"
+  log "Step: Expect Grid Insured Value to be #{expected}"
   begin
     actual = batch.grid.insured_value.data @order_id
     10.times { |counter|
@@ -456,13 +496,13 @@ Then /^Expect Grid Insured Value to be \$(\d*\.?\d*)$/ do |expected|
 end
 
 Then /^Expect new Order ID created$/ do
-  log "Test: Expect new Order ID created"
+  log "Step: Expect new Order ID created"
   log "New Order ID created:  #{@order_id.to_i>0}"
   @order_id.to_i.should be > 0
 end
 
 Then /^Expect Order Form Order ID equals Grid order ID$/ do
-  log "Test: Expect Order Form Order ID equals Grid order ID"
+  log "Step: Expect Order Form Order ID equals Grid order ID"
   grid_order_id = batch.grid.order_id.row 1
   single_order_form_order_id = batch.order_details.order_id
   log "Grid Order ID: #{grid_order_id}.  Order Form Order ID:  #{single_order_form_order_id}.  Test #{(grid_order_id==single_order_form_order_id) ? 'Passed' : 'Failed'}"
