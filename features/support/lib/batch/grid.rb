@@ -125,6 +125,9 @@ module Batch
       15.times{
         sort_drop_down.safe_click unless sort_field.present?
         sort_field.safe_click
+        sleep 2
+        return true if sort_verify_field.attribute_value("class").include? verify_sort
+        sleep 2
         return true if sort_verify_field.attribute_value("class").include? verify_sort
       }
       false
