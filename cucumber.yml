@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile sorting
+default: --profile cuke_reports --profile wonder_bvt
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
 rob_dev: --tags @rob_grid --guess VERBOSE=false URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
