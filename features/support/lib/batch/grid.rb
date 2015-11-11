@@ -106,7 +106,9 @@ module Batch
     }
 
     def scroll column
-      Label.new(column_name_field column).scroll_into_view
+      field = Label.new column_name_field column
+      field.scroll_into_view
+      field
     end
 
     # x-column-header-sort-ASC
@@ -354,6 +356,10 @@ module Batch
       grid_text(:recipient, row)
     end
 
+    def data_for row
+      grid_text(:recipient, row)
+    end
+
   end
 
   class Company < Column
@@ -372,6 +378,10 @@ module Batch
 
     def field row
       grid_field_column_name :company, row
+    end
+
+    def data_for row
+      grid_text(:company, row)
     end
 
     def data order_id
@@ -404,6 +414,10 @@ module Batch
       scroll_into_view
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      grid_text(:domestic, row)
+    end
+
+    def data_for row
       grid_text(:domestic, row)
     end
   end
@@ -983,7 +997,9 @@ module Batch
 
   class CheckColumn < Column
     def scroll_into_view
-      Label.new((@browser.spans :css => "div[componentid^=gridcolumn]").first).scroll_into_view
+      field = Label.new((@browser.spans :css => "div[componentid^=gridcolumn]").first)
+      field.scroll_into_view
+      field
     end
 
     def field row

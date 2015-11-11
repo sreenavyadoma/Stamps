@@ -152,24 +152,39 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         text_box.safe_double_click
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
         text_box.safe_double_click
         text_box.safe_double_click
         grid_recipient.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
@@ -180,12 +195,18 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         phone.set test_helper.random_phone
         email.set test_helper.random_email
         country_drop_down.drop_down.safe_click
         country_drop_down.drop_down.safe_click
         phone.set test_helper.random_phone
         phone.send_keys :enter
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
@@ -200,6 +221,9 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
@@ -209,6 +233,9 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
@@ -217,6 +244,9 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
@@ -225,6 +255,9 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
@@ -233,6 +266,9 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
@@ -241,12 +277,18 @@ module Batch
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         text_box.safe_double_click
         grid_recipient.scroll_into_view
         check_column.scroll_into_view
         grid_address.scroll_into_view
         grid_company.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
@@ -256,6 +298,9 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         phone.set test_helper.random_phone
         email.set test_helper.random_email
         text_box.safe_double_click
@@ -264,6 +309,9 @@ module Batch
         grid_address.scroll_into_view
         grid_company.scroll_into_view
         break if less.present?
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         phone.set test_helper.random_phone
         email.set test_helper.random_email
         phone.send_keys :tab
@@ -289,6 +337,9 @@ module Batch
         email.send_keys :enter
         break if less.present?
         phone.set test_helper.random_phone
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         email.set test_helper.random_email
         text_box.safe_double_click
         break if less.present?
@@ -299,6 +350,9 @@ module Batch
         email.set test_helper.random_email
         break if less.present?
         phone .safe_double_click
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
@@ -307,6 +361,9 @@ module Batch
         phone.set test_helper.random_phone
         email.set test_helper.random_email
         check_column.scroll_into_view
+        break if address.include? grid_recipient.data_for 1
+        break if address.include? grid_address.data_for 1
+        break if address.include? grid_company.data_for 1
         break if less.present?
         phone.set test_helper.random_phone
         email.set test_helper.random_email
