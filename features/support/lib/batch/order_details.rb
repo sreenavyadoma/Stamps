@@ -563,7 +563,7 @@ module Batch
       InternationalShipTo.new @browser
     end
 
-    def domestic
+    def address
       DomesticShipTo.new @browser
     end
 

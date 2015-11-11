@@ -83,7 +83,7 @@ module Batch
         :order_date => "Order Date",
         :recipient => "Recipient",
         :company => "Company",
-        :domestic => "Address",
+        :address => "Address",
         :city => "City",
         :state => "State",
         :zip => "Zip",
@@ -100,6 +100,7 @@ module Batch
         :reference_no => "Reference No.",
         :cost_code => "Cost Code",
         :order_status => "Order Status",
+        :date_printed => "Date Printed",
         :ship_date => "Ship Date",
         :tracking_no => "Tracking #",
         :order_total => "Order Total"
@@ -113,7 +114,7 @@ module Batch
     end
 
     def scroll column
-      field = Label.new column_name_field column
+      field = Label.new column_name_field(column)
       field.scroll_into_view
       field
     end
@@ -370,30 +371,30 @@ module Batch
   class Address < Column
 
     def sort_ascending
-      sort :domestic, :ascending
+      sort :address, :ascending
     end
 
     def sort_descending
-      sort :domestic, :descending
+      sort :address, :descending
     end
 
     def scroll_into_view
-      scroll :domestic
+      scroll :address
     end
 
     def field row
-      grid_field_column_name :domestic, row
+      grid_field_column_name :address, row
     end
 
     def data order_id
       scroll_into_view
       row = row_number(order_id)
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
-      grid_text(:domestic, row)
+      grid_text(:address, row)
     end
 
     def data_for row
-      grid_text(:domestic, row)
+      grid_text(:address, row)
     end
   end
 
@@ -1096,14 +1097,49 @@ module Batch
 
   end
 
+  class DatePrinted < Column
+
+    def sort_ascending
+      sort :date_printed, :ascending
+    end
+
+    def sort_descending
+      sort :date_printed, :descending
+    end
+
+    def scroll_into_view
+      scroll :date_printed
+    end
+
+    def field row
+      grid_field_column_name :ship_date, row
+    end
+
+    def data order_id
+      scroll_into_view
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      grid_text(:date_printed, row)
+    end
+  end
+
   # Order Grid
   class Grid < BatchObject
-    def age
-      @age ||= Age.new @browser
+
+    def checkbox
+      @check ||= CheckBox.new @browser
     end
 
     def order_id
       @order_id ||= OrderId.new @browser
+    end
+
+    def ship_cost
+      @ship_cost ||= ShipCost.new @browser
+    end
+
+    def age
+      @age ||= Age.new @browser
     end
 
     def order_date
@@ -1114,7 +1150,11 @@ module Batch
       @recipient ||= Recipient.new @browser
     end
 
-    def domestic
+    def company
+      @company ||= Company.new @browser
+    end
+
+    def address
       @address ||= Address.new @browser
     end
 
@@ -1128,6 +1168,10 @@ module Batch
 
     def zip
       @zip ||= Zip.new @browser
+    end
+
+    def country
+      @country ||= Country.new @browser
     end
 
     def phone
@@ -1150,48 +1194,20 @@ module Batch
       @item_name ||= ItemName.new @browser
     end
 
+    def ship_from
+      @ship_from ||= ShipFrom.new @browser
+    end
+
+    def service
+      @service ||= Service.new @browser
+    end
+
     def weight
       @weight ||= Weight.new @browser
     end
 
     def insured_value
       @insured_value ||= InsuredValue.new @browser
-    end
-
-    def order_status
-      @order_status ||= OrderStatus.new @browser
-    end
-
-    def ship_date
-      @ship_date ||= ShipDate.new @browser
-    end
-
-    def ship_from
-      @ship_from ||= ShipFrom.new @browser
-    end
-
-    def order_total
-      @order_total ||= OrderTotal.new @browser
-    end
-
-    def country
-      @country ||= Country.new @browser
-    end
-
-    def ship_cost
-      @ship_cost ||= ShipCost.new @browser
-    end
-
-    def company
-      @company ||= Company.new @browser
-    end
-
-    def address
-      @address ||= Address.new @browser
-    end
-
-    def service
-      @service ||= Service.new @browser
     end
 
     def reference_no
@@ -1202,12 +1218,24 @@ module Batch
       @cost_code ||= CostCode.new @browser
     end
 
+    def order_status
+      @order_status ||= OrderStatus.new @browser
+    end
+
+    def date_printed
+      @date_printed ||= DatePrinted.new @browser
+    end
+
+    def ship_date
+      @ship_date ||= ShipDate.new @browser
+    end
+
     def tracking_no
       @tracking ||= Tracking.new @browser
     end
 
-    def checkbox
-      @check ||= CheckBox.new @browser
+    def order_total
+      @order_total ||= OrderTotal.new @browser
     end
 
     def toolbar

@@ -23,7 +23,7 @@ When /^Set Order Form Ship-To address to (.*)$/ do |address|
 
   log "Set Order Form Ship-To address to \"#{formatted_address}\""
 
-  batch.order_details.ship_to.domestic.set formatted_address
+  batch.order_details.ship_to.address.set formatted_address
 end
 
 And /^Set Order Form Ship-To to ambiguous address$/ do |table|
@@ -45,14 +45,14 @@ end
 When /^Set Order Form Phone to (.*)$/ do |phone|
   begin
     log "Step: Order Form Phone to \"#{phone}\""
-    batch.order_details.ship_to.domestic.phone.set phone
+    batch.order_details.ship_to.address.phone.set phone
   end unless phone.length == 0
 end
 
 When /^Set Order Form Email to (.*)$/ do |email|
   begin
     log "Step: Set Order Form Email to \"#{email}\""
-    batch.order_details.ship_to.domestic.email.set email
+    batch.order_details.ship_to.address.email.set email
   end unless email.length == 0
   #end_step step
 end
