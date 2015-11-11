@@ -42,7 +42,7 @@ thermal_printing: --tags @thermal_printing --guess VERBOSE=false URL=qacc BROWSE
 
 two_up_expanded: --tags @two_up_expanded --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto06 PW=326tsetaqcdS!
 
-sorting: --tags @sort --guess VERBOSE=false URL=qacc BROWSER=ff USR=autosuggest PW=326tsetaqcdS!
+sorting: --tags @sort --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto30 PW=326tsetaqcdS!
 
 add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false URL=qacc BROWSER=ff USR=cctest2 PW=password1
 

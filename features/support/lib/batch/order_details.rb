@@ -1334,7 +1334,7 @@ module Batch
       @batch_service ||= BatchService.new @browser
     end
 
-    def tracking
+    def tracking_no
       @batch_tracking ||= BatchTracking.new @browser
     end
 

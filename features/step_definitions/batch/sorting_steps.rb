@@ -308,14 +308,14 @@ end
 
 Then /^Sort Grid by Order Status in Ascending order$/ do
   log "Step: Sort Grid by Order Status in Ascending order"
-  sorted = batch.filter.awaiting_shipment.status.sort_ascending
+  sorted = batch.filter.awaiting_shipment.order_status.sort_ascending
   log "Sorting #{(sorted)?'Passed':'Failed'}"
   sorted.should be true
 end
 
 Then /^Sort Grid by Order Status in Descending order$/ do
   log "Step: Sort Grid by Order Status in Descending order"
-  sorted = batch.filter.awaiting_shipment.status.sort_descending
+  sorted = batch.filter.awaiting_shipment.order_status.sort_descending
   log "Sorting #{(sorted)?'Passed':'Failed'}"
   sorted.should be true
 end

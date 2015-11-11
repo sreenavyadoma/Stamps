@@ -37,7 +37,7 @@ Cucumber::Rake::Task.new(:address_management) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:tracking) do |t|
+Cucumber::Rake::Task.new(:tracking_no) do |t|
   t.profile = 'tracking'
   t.cucumber_opts = "-p cuke_reports"
 end

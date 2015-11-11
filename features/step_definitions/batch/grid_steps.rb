@@ -54,7 +54,7 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
   log @grid.cost_code.data order_id
   log @grid.order_status.data order_id
   log @grid.ship_date.data order_id
-  log @grid.tracking.data order_id
+  log @grid.tracking_no.data order_id
   log @grid.order_total.data order_id
 
 end
@@ -409,12 +409,12 @@ end
 Then /^Expect Grid Tracking # to be (.+)$/ do |expected|
   log "Test: Expect Grid Tracking # to be #{expected}"
   begin
-    actual = batch.grid.tracking.data @order_id
+    actual = batch.grid.tracking_no.data @order_id
     10.times { |counter|
       sleep(2)
       log_expectation_eql "#{counter}. Tracking #", expected, actual
       break if actual.eql? expected
-      actual = batch.grid.tracking.data @order_id
+      actual = batch.grid.tracking_no.data @order_id
     }
     actual.should eql expected
   end unless expected.length == 0

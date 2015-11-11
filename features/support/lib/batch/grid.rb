@@ -101,7 +101,7 @@ module Batch
         :cost_code => "Cost Code",
         :order_status => "Order Status",
         :ship_date => "Ship Date",
-        :tracking => "Tracking #",
+        :tracking_no => "Tracking #",
         :order_total => "Order Total"
     }
 
@@ -962,24 +962,24 @@ module Batch
   class Tracking < Column
 
     def sort_ascending
-      sort :tracking, :ascending
+      sort :tracking_no, :ascending
     end
 
     def sort_descending
-      sort :tracking, :descending
+      sort :tracking_no, :descending
     end
 
     def scroll_into_view
-      scroll :tracking
+      scroll :tracking_no
     end
 
     def field row
-      grid_field_column_name :tracking, row
+      grid_field_column_name :tracking_no, row
     end
 
     def data order_id
       scroll_into_view
-      grid_text :tracking, row_number(order_id)
+      grid_text :tracking_no, row_number(order_id)
     end
   end
 
@@ -1211,7 +1211,7 @@ module Batch
       @cost_code ||= CostCode.new @browser
     end
 
-    def tracking
+    def tracking_no
       @tracking ||= Tracking.new @browser
     end
 
