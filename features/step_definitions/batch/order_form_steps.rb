@@ -145,7 +145,7 @@ end
 
 Then /^Add Ship-From address (\w+)$/ do |address|
   ship_from = (address.include?'random')?(test_helper.random_ship_from):address
-  log "Test:  Add Ship-From address #{(address.include?'random')?ship_from:address}"
+  log "Test:  Add Ship-From address #{(address.include?'random')?ship_from:(address)}"
   @ship_from_address = batch.order_details.ship_from.select("Manage Shipping Addresses...").add ship_from
   log "Random address added: #{@ship_from_address}"
 end
