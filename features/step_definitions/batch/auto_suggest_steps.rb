@@ -1,4 +1,5 @@
 Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|
+  log "Test: Expect Auto Suggest name shows #{value} for entry #{entry}"
   actual =  batch.order_details.get_auto_suggest_name entry
   log_expectation_eql "Auto Suggest Name", value, actual
   actual.should eql value
@@ -6,6 +7,7 @@ Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|
 end
 
 Then /^Expect Auto Suggest location shows (.*) for entry (.*)$/ do |value, entry|
+  log "Test: Expect Auto Suggest location shows #{value} for entry #{entry}"
   actual =  batch.order_details.get_auto_suggest_location entry
   log_expectation_eql "Auto Suggest Name", value, actual
   actual.should eql value
@@ -13,10 +15,12 @@ Then /^Expect Auto Suggest location shows (.*) for entry (.*)$/ do |value, entry
 end
 
 Then /^Select entry (.*) in the auto suggest drop down list$/ do |entry|
+  log "Test: Select entry #{entry} in the auto suggest drop down list"
   batch.order_details.click_auto_suggest_name entry
 end
 
 Then /^Expect Domestic Address field displays (.*)$/ do |value|
+  log "Test: Expect Domestic Address field displays #{value}"
   5.times{
   begin
     actual =  batch.order_details.get_address_text
@@ -31,66 +35,77 @@ Then /^Expect Domestic Address field displays (.*)$/ do |value|
 end
 
 Then /^Expect Domestic Phone field displays (.*)$/ do |value|
+  log "Test: Expect Domestic Phone field displays #{value}"
   actual =  batch.order_details.get_phone_text
   log_expectation_eql "Phone text", value, actual
   actual.should eql value
 end
 
 Then /^Expect Domestic Email field displays (.*)$/ do |value|
+  log "Test: Expect Domestic Email field displays #{value}"
   actual =  batch.order_details.get_email_text
   log_expectation_eql "Email text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Name field displays (.*)$/ do |value|
+  log "Test: Expect International Name field displays #{value}"
   actual =  batch.order_details.get_phone_text
   log_expectation_eql "Name text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Company field displays (.*)$/ do |value|
+  log "Test: Expect International Company field displays #{value}"
   actual =  batch.order_details.get_phone_text
   log_expectation_eql "Company text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Address 1 field displays (.*)$/ do |value|
+  log "Test: Expect International Address 1 field displays #{value}"
   actual =  batch.order_details.get_email_text
   log_expectation_eql "Address 1 text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Address 2 field displays (.*)$/ do |value|
+  log "Test: Expect International Address 2 field displays #{value}"
   actual =  batch.order_details.get_email_text
   log_expectation_eql "Address 2 text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International City field displays (.*)$/ do |value|
+  log "Test: Expect International City field displays #{value}"
   actual =  batch.order_details.get_email_text
   log_expectation_eql "City text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Province field displays (.*)$/ do |value|
+  log "Test: Expect International Province field displays #{value}"
   actual =  batch.order_details.get_email_text
   log_expectation_eql "Province text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Postal Code field displays (.*)$/ do |value|
+  log "Test: Expect International Postal Code field displays #{value}"
   actual =  batch.order_details.get_email_text
   log_expectation_eql "Postal Code text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Phone field displays (.*)$/ do |value|
+  log "Test: Expect International Postal Code field displays #{value}"
   actual =  batch.order_details.get_email_text
   log_expectation_eql "Phone text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Email field displays (.*)$/ do |value|
+  log "Test: Expect International Email field displays #{value}"
   actual =  batch.order_details.get_email_text
   log_expectation_eql "Email text", value, actual
   actual.should eql value
