@@ -1,15 +1,3 @@
-Then /^Sort Grid by Ship Cost in Ascending order$/ do
-  sorted = batch.grid.ship_cost.sort_ascending
-  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Ship Cost in Ascending order"
-  sorted.should be true
-end
-
-Then /^Sort Grid by Ship Cost in Descending order$/ do
-  sorted = batch.grid.ship_cost.sort_descending
-  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Ship Cost in Descending order"
-  sorted.should be true
-end
-
 Then /^Sort Grid by Age in Ascending order$/ do
   sorted = batch.grid.age.sort_ascending
   log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Age in Ascending order"
@@ -191,30 +179,6 @@ Then /^Sort Grid by Item Name in Descending order$/ do
   sorted.should be true
 end
 
-Then /^Sort Grid by Ship From in Ascending order$/ do
-  sorted = batch.grid.ship_from.sort_ascending
-  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Ship From in Ascending order"
-  sorted.should be true
-end
-
-Then /^Sort Grid by Ship From in Descending order$/ do
-  sorted = batch.grid.ship_from.sort_descending
-  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Ship From in Descending order"
-  sorted.should be true
-end
-
-Then /^Sort Grid by Service in Ascending order$/ do
-  sorted = batch.grid.service.sort_ascending
-  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Service in Ascending order"
-  sorted.should be true
-end
-
-Then /^Sort Grid by Service in Descending order$/ do
-  sorted = batch.grid.service.sort_descending
-  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Service in Descending order"
-  sorted.should be true
-end
-
 Then /^Sort Grid by Weight in Ascending order$/ do
   sorted = batch.grid.weight.sort_ascending
   log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Weight in Ascending order"
@@ -251,17 +215,7 @@ Then /^Sort Grid by Reference No. in Descending order$/ do
   sorted.should be true
 end
 
-Then /^Sort Grid by Cost Code in Ascending order$/ do
-  sorted = batch.grid.cost_code.sort_ascending
-  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Cost Code in Ascending order"
-  sorted.should be true
-end
 
-Then /^Sort Grid by Cost Code in Descending order$/ do
-  sorted = batch.grid.cost_code.sort_descending
-  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Cost Code in Descending order"
-  sorted.should be true
-end
 
 Then /^Sort Grid by Order Status in Ascending order$/ do
   sorted = batch.grid.order_status.sort_ascending
@@ -299,6 +253,56 @@ Then /^Sort Grid by Ship Date in Descending order$/ do
   sorted.should be true
 end
 
+Then /^Sort Grid by Order Total in Ascending order$/ do
+  sorted = batch.grid.order_total.sort_ascending
+  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Order Total in Ascending order"
+  sorted.should be true
+end
+
+Then /^Sort Grid by Order Total in Descending order$/   do
+  sorted = batch.grid.order_total.sort_descending
+  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Order Total in Descending order"
+  sorted.should be true
+end
+
+
+=begin
+Then /^Sort Grid by Ship Cost in Ascending order$/ do
+  sorted = batch.grid.ship_cost.sort_ascending
+  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Ship Cost in Ascending order"
+  sorted.should be true
+end
+
+Then /^Sort Grid by Ship Cost in Descending order$/ do
+  sorted = batch.grid.ship_cost.sort_descending
+  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Ship Cost in Descending order"
+  sorted.should be true
+end
+
+Then /^Sort Grid by Ship From in Ascending order$/ do
+  sorted = batch.grid.ship_from.sort_ascending
+  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Ship From in Ascending order"
+  sorted.should be true
+end
+
+Then /^Sort Grid by Ship From in Descending order$/ do
+  sorted = batch.grid.ship_from.sort_descending
+  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Ship From in Descending order"
+  sorted.should be true
+end
+
+Then /^Sort Grid by Service in Ascending order$/ do
+  sorted = batch.grid.service.sort_ascending
+  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Service in Ascending order"
+  sorted.should be true
+end
+
+Then /^Sort Grid by Service in Descending order$/ do
+  sorted = batch.grid.service.sort_descending
+  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Service in Descending order"
+  sorted.should be true
+end
+
 Then /^Sort Grid by Tracking No. in Ascending order$/ do
   sorted = batch.grid.tracking_no.sort_ascending
   log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Tracking No. in Ascending order"
@@ -311,14 +315,16 @@ Then /^Sort Grid by Tracking No. in Descending order$/ do
   sorted.should be true
 end
 
-Then /^Sort Grid by Order Total in Ascending order$/ do
-  sorted = batch.grid.order_total.sort_ascending
-  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Order Total in Ascending order"
+Then /^Sort Grid by Cost Code in Ascending order$/ do
+  sorted = batch.grid.cost_code.sort_ascending
+  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Cost Code in Ascending order"
   sorted.should be true
 end
 
-Then /^Sort Grid by Order Total in Descending order$/   do
-  sorted = batch.grid.order_total.sort_descending
-  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Order Total in Descending order"
+Then /^Sort Grid by Cost Code in Descending order$/ do
+  sorted = batch.grid.cost_code.sort_descending
+  log "Step #{(sorted)?'Passed':'Failed'} - Sort Grid by Cost Code in Descending order"
   sorted.should be true
 end
+
+=end

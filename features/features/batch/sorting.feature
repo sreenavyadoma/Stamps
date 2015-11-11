@@ -69,8 +69,8 @@ Feature: Sorting.
     Then Sort Grid by Age in Ascending order
     Then Sort Grid by Age in Descending order
 
-    Then Sort Grid by Ship Cost in Ascending order
-    Then Sort Grid by Ship Cost in Descending order
+    #Then Sort Grid by Ship Cost in Ascending order
+    #Then Sort Grid by Ship Cost in Descending order
 
     #Then Sort Grid by Tracking No. in Ascending order
     #Then Sort Grid by Tracking No. in Descending order
