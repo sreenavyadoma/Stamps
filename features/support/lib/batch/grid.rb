@@ -123,6 +123,7 @@ module Batch
       sort_field = Label.new @browser.span :text => sort_field_id
 
       15.times{
+        sort_drop_down.scroll_into_view
         sort_drop_down.safe_click unless sort_field.present?
         sort_field.safe_click
         sleep 1
