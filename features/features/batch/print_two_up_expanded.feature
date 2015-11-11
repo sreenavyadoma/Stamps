@@ -6,69 +6,17 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Given I am signed in as a batch shipper
 
 
-  @two_up_expanded @two_up_expanded_1
-  Scenario: User Prints 1 Domestic label on 8.5x11 - left side
 
-    And I Add a new order
-    Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to PM FR Envelope, SDC-1200 Left Side, 5912 83rd St., Lubbock TX 79424-3608
-    Then Set Order Form Service to "Priority Mail Flat Rate Envelope"
-    Then Open Print Modal
-    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
-    Then Select left side label
-    Then Expect left side label selected
-    And Expect Print Window requires 1 label sheets
-    Then Print
-    Then Sign out
-
-  @two_up_expanded
-  Scenario: User Prints 1 Domestic label on SDC-1200 - right side
-
-    And I Add a new order
-    Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to PM Package, SDC-1200 Right Side 1, 5912 83rd St., Lubbock TX 79424-3608
-    Then Set Order Form Service to "Priority Mail Package"
-    Then Set Order Form Length to 1
-    Then Set Order Form Width to 1
-    Then Set Order Form Height to 1
-    Then Set Order Form Insured Value to $1.09
-    Then Open Print Modal
-    Then Select Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
-    Then Select right side label
-    Then Expect right side label selected
-    And Expect Print Window requires 1 label sheets
-    Then Print
-    Then Sign out
-
-  @two_up_expanded
-  Scenario: User Prints 2 Domestic labels on 8.5x11 - left side
-    And I Add a new order
-    Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to PM FR Envelope, 8.5x11, 2105 Kietzke Ln, Reno NV 89502-3602
-    Then Set Order Form Service to "Priority Mail Flat Rate Envelope"
-    And I Add a new order
-    Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to PM PFR Envelope, 8.5x11, 557 County Rd. H, Fredonia WI 53021-9634
-    Then Set Order Form Service to "Priority Mail Padded Flat Rate Envelope"
-    Then Edit row 1 on the order grid
-    Then Edit row 2 on the order grid
-    Then Open Print Modal
-    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
-    Then Select left side label
-    Then Expect left side label selected
-    And Expect Print Window requires 1 label sheets
-    Then Print
-    Then Sign out
 
   @two_up_expanded
   Scenario: User Prints 2 Domestic labels on 8.5x11 - right side
     And I Add a new order
     Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to PM LFR Envelope, 8.5x11 Right Side 1, 2775 Stark Dr., Willoughby Hills OH 44094-9113
+    Then Set Order Form Ship-To address to PM LFR Envelope, 8.5x11 Right Side 2, 2775 Stark Dr., Willoughby Hills OH 44094-9113
     Then Set Order Form Service to "Priority Mail Legal Flat Rate Envelope"
     And I Add a new order
     Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to PM SFR Box, 8.5x11 Right Side 2, 610 W Tefft St, Nipomo, CA 93444-9187
+    Then Set Order Form Ship-To address to PM SFR Box, 8.5x11 Right Side 1, 610 W Tefft St, Nipomo, CA 93444-9187
     Then Set Order Form Service to "Priority Mail Small Flat Rate Box"
     Then Set Order Form Ounces to 3
     Then Edit row 1 on the order grid
@@ -193,7 +141,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
-      | PMI PFR Envelope | 8.5x11 Right Side 1 | random           | random           | random | random  | random      | Australia | random  | random  |
+      | PMI PFR Envelope | 8.5x11 Right Side 2 | random           | random           | random | random  | random      | Australia | random  | random  |
     Then Set Order Form Service to "Priority Mail International Padded Flat Rate Envelope"
     Then Set Order Form Ounces to 1
     And Open customs form
@@ -204,7 +152,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
-      | PMI LFR Envelope | 8.5x11 Right Side 2 | random           | random           | random | random  | random      | Japan | random  | random  |
+      | PMI LFR Envelope | 8.5x11 Right Side 1 | random           | random           | random | random  | random      | Japan | random  | random  |
     Then Set Order Form Service to "Priority Mail International Legal Flat Rate Envelope"
     Then Set Order Form Ounces to 1
     And Open customs form
@@ -386,7 +334,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     # 2 Domestic labels 5 ½" x 8 ½" right side
     And I Add a new order
     Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to MM Package, 5.5x8.5 Right Side 1, 4937 79th St., Sacramento CA 95820-6213
+    Then Set Order Form Ship-To address to MM Package, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
     Then Set Order Form Service to "Media Mail Package"
     And I Add a new order
     Then Set Order Form Ship-From to default
@@ -516,7 +464,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
-      | FCMI Lg Env-Flat | 5.5x8.5  | random           | random           | random | random  | random      | Croatia | random  | random  |
+      | FCMI Lg Env-Flat | 5.5x8.5 Right Side 2 | random           | random           | random | random  | random      | Croatia | random  | random  |
     Then Set Order Form Service to "First-Class Mail International Large Envelope/Flat"
     Then Set Order Form Ounces to 1
     And Open customs form
@@ -527,7 +475,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Form Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
-      | FCMI Pkg-Thick Env | 5.5x8.5  | random           | random           | random | random  | random      | India | random  | random  |
+      | FCMI Pkg-Thick Env | 5.5x8.5 Right Side 1 | random           | random           | random | random  | random      | India | random  | random  |
     Then Set Order Form Service to "First-Class Mail International Package/Thick Envelope"
     Then Set Order Form Ounces to 1
     And Open customs form
