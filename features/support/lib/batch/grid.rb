@@ -996,7 +996,7 @@ module Batch
     end
 
     def edit order_id
-      check(row_number order_id)
+      check row_number order_id
     end
 
     def check number
@@ -1041,21 +1041,22 @@ module Batch
     def check_all *args
       scroll_into_view
       if args.length==1
-        log "Restoring #{} checked orders..." if Stamps::Test.verbose
-        begin
-          if args[0].is_a? Hash
-            row_collection = args[0]
-          else
-            raise "Invalid parameter exception.  This method expects a Hash of Web Elements."
+        if args[0].is_a? Hash
+          rows = args[0]
+          log "Restoring #{} checked orders..." if Stamps::Test.verbose
+        else
+          raise "Invalid parameter exception.  This method expects a Hash of Web Elements."
+        end
+
+        rows.each do |hash_element|
+          row_number = hash_element[0]
+          checked = hash_element[1]
+          if checked
+            check row_number
+            log "Row #{row_number} #{row_checked? row_number}" if Stamps::Test.verbose
           end
-          row_collection.each do |row|
-            checked = row_collection[row]
-            if checked
-              checkbox row
-              log "Row #{row} #{checked? row}" if Stamps::Test.verbose
-            end
-          end
-        end unless row_collection.nil?
+
+        end
       else
         checkbox_header.check
       end
