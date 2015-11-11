@@ -65,8 +65,6 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
 
   @grid.checkbox.check_all checked_hash
 
-
-
   log @grid.item_name.data order_id
   log @grid.ship_cost.data order_id
   log @grid.age.data order_id
