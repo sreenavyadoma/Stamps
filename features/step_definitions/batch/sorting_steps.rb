@@ -79,11 +79,11 @@ Then /^Sort Grid by Zip in Descending order$/ do
 end
 
 Then /^Sort Grid by Country in Ascending order$/ do
-  batch.filter.awaiting_shipment.xxxxx.sort_ascending.should be true
+  batch.filter.awaiting_shipment.country.sort_ascending.should be true
 end
 
 Then /^Sort Grid by Country in Descending order$/ do
-  batch.filter.awaiting_shipment.order_id.sort_descending.should be true
+  batch.filter.awaiting_shipment.country.sort_descending.should be true
 end
 
 Then /^Sort Grid by Phone in Ascending order$/ do
@@ -119,7 +119,7 @@ Then /^Sort Grid by Item SKU in Descending order$/ do
 end
 
 Then /^Sort Grid by Item Name in Ascending order$/ do
-  batch.filter.awaiting_shipment.xxxxx.sort_ascending.should be true
+  batch.filter.awaiting_shipment.item_name.sort_ascending.should be true
 end
 
 Then /^Sort Grid by Item Name in Descending order$/ do
@@ -127,11 +127,11 @@ Then /^Sort Grid by Item Name in Descending order$/ do
 end
 
 Then /^Sort Grid by Ship From in Ascending order$/ do
-  batch.filter.awaiting_shipment.item_name.sort_ascending.should be true
+  batch.filter.awaiting_shipment.ship_from.sort_ascending.should be true
 end
 
 Then /^Sort Grid by Ship From in Descending order$/ do
-  batch.filter.awaiting_shipment.order_id.sort_descending.should be true
+  batch.filter.awaiting_shipment.ship_from.sort_descending.should be true
 end
 
 Then /^Sort Grid by Service in Ascending order$/ do
