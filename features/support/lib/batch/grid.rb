@@ -120,7 +120,6 @@ module Batch
 
     # x-column-header-sort-ASC
     # x-column-header-sort-DESC
-
     def sort column, sort_order
       scroll column
       column_field = column_name_field column
