@@ -143,7 +143,7 @@ module Stamps
         @checked_tester = checked_tester
       end
 
-      def checkbox
+      def check
         unless checked?
           5.times{
             click

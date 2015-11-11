@@ -1,6 +1,6 @@
 When /^Edit row (\d+) on the order grid$/ do |row|
   log "Step: Edit row #{row} on the order grid"
-  batch.grid.checkbox.checkbox row
+  batch.grid.checkbox.check row
   #end_step step
 end
 
@@ -35,10 +35,6 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
 
   row2_order_id = @grid.order_id.row 2
   log @grid.checkbox.order_id_checked? row2_order_id
-
-  row1_checkbox = @grid.checkbox.field 1
-  row1_checkbox.safe_click
-  row1_checkbox.safe_click
 
 
   @grid.checkbox.check 1

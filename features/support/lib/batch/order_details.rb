@@ -1017,7 +1017,7 @@ module Batch
       checkbox_field = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
 
       checkbox = Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
-      checkbox.checkbox
+      checkbox.check
 
       accept_button = Button.new @browser.span :text => "Accept"
       accept_button.click_while_present

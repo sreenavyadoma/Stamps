@@ -975,8 +975,8 @@ module Batch
     private
     def checkbox_header
       scroll_into_view
-      spans = @browser.spans :css => "span[class=x-column-header-text]"
-      checkbox_field = spans.first
+
+      checkbox_field = (@browser.spans :css => "div[componentid^=gridcolumn]").first
       check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
       attribute = "class"
       attrib_value_check = "checker-on"
@@ -1005,7 +1005,7 @@ module Batch
         checkbox_field = row_div number
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
         checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
-        checkbox.checkbox
+        checkbox.check
         log "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}." if Stamps::Test.verbose
       else
         log "Grid is empty" if Stamps::Test.verbose
@@ -1057,7 +1057,7 @@ module Batch
           end
         end unless row_collection.nil?
       else
-        checkbox_header.checkbox
+        checkbox_header.check
       end
     end
 

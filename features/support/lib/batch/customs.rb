@@ -396,7 +396,7 @@ module Batch
       checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
 
       if user_agreed
-        checkbox.checkbox
+        checkbox.check
         log checkbox.checked? if Stamps::Test.verbose
       else
         checkbox.uncheck
