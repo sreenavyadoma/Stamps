@@ -4,7 +4,7 @@
 #* Expect value is added to customer balance
 
  Then /^Buy \$(\d+) postage$/ do |amount|
-
+   log "Step: Buy \$#{amount} postage"
    log "Storing old postage amount"
    @old_balance = batch.navigation.balance
    log "Buy More link selected"
@@ -37,6 +37,7 @@
 
 
 Then /^Expect \$(\d+) is added to customer balance$/ do |balance|
+  log "Step: Expect \$#{balance} is added to customer balance"
   log "Store new balance"
   @new_balance = batch.navigation.balance
   log "Compare old and new balance"

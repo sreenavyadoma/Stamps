@@ -178,7 +178,7 @@ module Batch
     end
 
     def starting_label
-      @printing_label ||= StartingLabel.new @browser
+      StartingLabel.new @browser
     end
 
     def printer
@@ -188,7 +188,7 @@ module Batch
     end
 
     def printing_on
-      @printing_on ||= PrintingOn.new @browser
+      PrintingOn.new @browser
     end
 
     def date_picker_div

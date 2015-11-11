@@ -73,7 +73,6 @@ module Batch
 
   # Grid Columns
   class Column < BatchObject
-
     MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
     TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
     GRID_COLUMNS ||= {
@@ -102,12 +101,57 @@ module Batch
         :cost_code => "Cost Code",
         :order_status => "Order Status",
         :ship_date => "Ship Date",
-        :tracking => "Tracking #",
+        :tracking_no => "Tracking #",
         :order_total => "Order Total"
     }
 
+    def row_count
+      tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
+      count = tables.size
+      log "Total Number of Orders on Grid:  #{count}" if Stamps::Test.verbose
+      count.to_i
+    end
+
     def scroll column
-      Label.new(column_header_field column).scroll_into_view
+      field = Label.new column_name_field column
+      field.scroll_into_view
+      field
+    end
+
+    # x-column-header-sort-ASC
+    # x-column-header-sort-DESC
+
+    def sort column, sort_order
+      scroll column
+      column_field = column_name_field column
+      sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
+      sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[3]
+
+      sort_field_id = (sort_order==:ascending)?"Sort Ascending":"Sort Descending"
+      verify_sort = (sort_order==:ascending)?"ASC":"DESC"
+      sort_field = Label.new @browser.span :text => sort_field_id
+
+      15.times{
+        sort_drop_down.scroll_into_view
+        sort_drop_down.safe_click unless sort_field.present?
+        sort_field.safe_click
+        sleep 1
+        return true if sort_verify_field.attribute_value("class").include? verify_sort
+        return true if sort_verify_field.attribute_value("class").include? verify_sort
+        return true if sort_verify_field.attribute_value("class").include? verify_sort
+        return true if sort_verify_field.attribute_value("class").include? verify_sort
+      }
+      false
+    end
+
+    def column_name_field column
+      column_name = @browser.span :text => GRID_COLUMNS[column]
+      log "Column Name:  #{browser_helper.text column_name}" if Stamps::Test.verbose
+      column_name
+    end
+
+    def empty?
+      size == 0
     end
 
     def size
@@ -122,8 +166,12 @@ module Batch
       test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}")
     end
 
-    def grid_field column, row
-      @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column).to_s})>div"
+    def grid_field column_number, row
+      @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div"
+    end
+
+    def grid_field_column_name column_name, row
+      grid_text column_number(column_name), row
     end
 
     def column_number column_name
@@ -143,18 +191,6 @@ module Batch
 
     def column_fields
       @column_fields ||= @browser.spans :css => "div[componentid^=gridcolumn]"
-    end
-
-    def column_header_field column
-      column_str = GRID_COLUMNS[column]
-      columns = column_fields
-      columns.each{ |column_field|
-        column_text = browser_helper.text column_field
-        log "#{column_text} == #{column_str} ? #{column_text == column_str}" if Stamps::Test.verbose
-        if column_text.downcase == column_str.downcase
-          return column_field
-        end
-      }
     end
 
     def row_number order_id
@@ -180,251 +216,23 @@ module Batch
       raise("Order Grid Row number #{number} is not present")unless browser_helper.present? div
       div
     end
-
-    #------------------------------------
-
-
-    def click_sort_drop_down id
-
-      sort_array = @browser.divs :css => "div[class*=x-column-header-trigger]"
-
-      log "This is #{id}" if Stamps::Test.verbose
-
-      sort_array.each_with_index do |arrow, index|
-        if browser_helper.attribute_value(sort_array[index], 'id').include? id
-          @browser.execute_script('arguments[0].scrollIntoView();', sort_array[index])
-          browser_helper.click sort_array[index]
-        end
-
-      end
-    end
-
-    def click_sort_option sort
-
-      ascending_array = @browser.spans(:text => "Sort Ascending")
-      descending_array = @browser.spans(:text => "Sort Descending")
-
-      if sort.eql? "ascending"
-        ascending_array.each_with_index do |name, index|
-          if name.visible?
-            browser_helper.click ascending_array[index]
-          end
-        end
-
-      elsif sort.eql? "descending"
-        descending_array.each_with_index do |name, index|
-          if name.visible?
-            browser_helper.click descending_array[index]
-          end
-        end
-      end
-      sleep 5
-    end
-
-    def hover_over_header header_name
-      header = column_header header_name
-      header.click
-      header.focus
-    end
-
-    def get_header_id header_name
-      header = column_header header_name
-      parent_header=header.parent
-      whole_id = browser_helper.attribute_value(parent_header, 'id')
-      whole_id_array = whole_id.split("-")
-      whole_id_array[1]
-
-
-    end
-
-    def click_header header_name
-      browser_helper.click column_header header_name
-    end
-
-    def column_header header_name
-      @browser.span(:text => header_name)
-    end
-
-    def check_sorted_column(name, sort)   #function to verify that order column is sorted
-      id = nil
-      if name.eql? 'Order Date'
-        name = 'Age'
-      end
-
-      GRID_COLUMNS.each do |key, value|         #Iterate through hash of column names and values
-        if value.eql? name                     #If the column name text matches the column name we want to sort
-          id = key                              #Set the id variable to the key for that column
-          break
-        end
-      end
-
-      check_sort = true
-
-      case name
-        when 'Weight'
-          check_sort = compare_sorted_weight(id, sort)
-        when 'Item SKU'
-          check_sort = compare_sorted_items(id, sort)
-        when 'Item Name'
-          check_sort = compare_sorted_items(id, sort)
-        when 'Order Date'
-          check_sort = compare_sorted_ages(id, sort)
-        when 'Age'
-          check_sort = compare_sorted_ages(id, sort)
-        when 'Insured Value'
-          check_sort = compare_sorted_money(id, sort)
-        when 'Order Total'
-          check_sort = compare_sorted_money(id, sort)
-        else
-          if sort == 'ascending'                #check if sort check is for s or ascending order
-            check_sort = compare_cells(id,1)          #call function to compare first ten cells in column for ascending order
-          elsif sort == 'descending'
-            check_sort = compare_cells(id,-1)         #call function to compare first ten cells in column for descending order
-          end
-      end
-      check_sort
-    end
-
-    def compare_sorted_money(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
-      compare = true
-      for index in 1..5
-        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}" if Stamps::Test.verbose
-
-        no_sign_cost_1 = grid_text(id, index).gsub('$','')
-        no_sign_cost_2 = grid_text(id, index+1).gsub('$','')
-
-        cost_stripped_1 = no_sign_cost_1.gsub('.','')
-        cost_stripped_2 = no_sign_cost_2.gsub('.','')
-
-        log "COMPARING #{cost_stripped_1} and #{cost_stripped_2}" if Stamps::Test.verbose
-
-        if (cost_stripped_1 <=> cost_stripped_2) == direction       #compare text in current cell with next cell
-          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
-          break
-        end
-
-      end
-      compare
-    end
-
-    def compare_sorted_items(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
-      compare = true
-      for index in 1..5
-        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}" if Stamps::Test.verbose
-        item_1=grid_text(id, index).downcase
-        item_2=grid_text(id, index+1).downcase
-
-        if item_1.eql 'multiple'
-          item_1 = '1'
-        end
-
-        if item_2.eql 'multiple'
-          item_2 = '1'
-        end
-
-        if (item_1 <=> item_2) == direction       #compare text in current cell with next cell
-          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
-          break
-        end
-
-      end
-      compare
-    end
-
-    def compare_sorted_weight(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
-      compare = true
-      for index in 1..5
-        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}" if Stamps::Test.verbose
-
-        weight_array_1 = grid_text(id, index).split(" ")
-        weight_array_2= grid_text(id, index+1).split(" ")
-
-        pounds_1 = get_time_index(weight_array_1[0]).to_i
-        pounds_2 = get_time_index(weight_array_2[0]).to_i
-
-        ounces_1 = weight_array_1[2].to_i
-        ounces_2 = weight_array_2[2].to_i
-
-        total_ounces_1 =  pounds_1*16 + ounces_1
-        total_ounces_2 =  pounds_2*16 + ounces_2
-
-
-        if (total_ounces_1 <=> total_ounces_2) == direction       #compare text in current cell with next cell
-          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
-          break
-        end
-
-      end
-      compare
-    end
-
-    def compare_cells(id, direction)              #function to verify that text in column cells are sorted in alphanumeric order
-      compare = true
-      for index in 1..5
-        log "COMPARING #{grid_text(id, index)} and #{grid_text(id, index+1)}" if Stamps::Test.verbose
-        if (grid_text(id, index).downcase <=> grid_text(id, index+1).downcase) == direction       #compare text in current cell with next cell
-          compare = false                                                           #set comparison check to 0 if current cell and next cell are in wrong sort order
-          break
-        end
-
-      end
-      compare
-    end
-
-
-    def compare_sorted_ages(id, sort)
-      compare = true
-      for index in 1..5
-
-        age_array_1 = grid_text(id, index).split(" ")
-        age_array_2 = grid_text(id, index+1).split(" ")
-
-        if age_array_1.eql? ''
-          age_array_1 = '1000000 days ago'
-        end
-        if age_array_2.eql? ''
-          age_array_2 = '1000000 days ago'
-        end
-
-        time_unit_1 = get_time_index(age_array_1[1])
-        time_unit_2 = get_time_index(age_array_2[1])
-
-        time_amount_1 = age_array_1[0].to_i
-        time_amount_2 = age_array_2[0].to_i
-        log "COMPARING #{time_amount_1} #{age_array_1[1]} and #{time_amount_2} #{age_array_2[1]} for #{sort} order" if Stamps::Test.verbose
-
-        if sort == 'ascending'
-          if (time_unit_1 <=> time_unit_2) == -1
-            return false
-          elsif (time_unit_1 <=> time_unit_2) == 0 && (time_amount_1 <=> time_amount_2) == -1
-            return false
-          end
-        elsif sort == 'descending'
-          if (time_unit_1 <=> time_unit_2) == 1
-            return false
-          elsif (time_unit_1 <=> time_unit_2) == 0 && (time_amount_1 <=> time_amount_2) == 1
-            return false
-            break
-          end
-        end
-      end
-      compare
-    end
-
-    def get_time_index time_text
-      TIME_UNITS_ARRAY.each_with_index do |time,index|
-        if time_text == time
-          return index
-        end
-      end
-      return 0
-    end
-
   end
 
   class OrderId < Column
+
+    def sort_ascending
+      sort :order_id, :ascending
+    end
+
+    def sort_descending
+      sort :order_id, :descending
+    end
+
     def scroll_into_view
       scroll :order_id
+    end
+    def field row
+      grid_field_column_name :order_id, row
     end
     
     def row row
@@ -445,19 +253,24 @@ module Batch
       end
     end
 
-    def sort order
-      id = get_header_id "Order ID"
-      log "Sorting Order ID in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Order ID for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column("Order ID", order)
-    end
   end
 
   class Age < Column
+
+    def sort_ascending
+      sort :age, :ascending
+    end
+
+    def sort_descending
+      sort :age, :descending
+    end
+
     def scroll_into_view
       scroll :age
+    end
+
+    def field row
+      grid_field_column_name :age, row
     end
 
     def data order_id
@@ -466,20 +279,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:age, row)
     end
-
-    def sort order
-      id = get_header_id "Age"
-      log "Sorting Age in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Age for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column("Age", order)
-    end
   end
 
   class OrderDate < Column
+
+    def sort_ascending
+      sort :order_date, :ascending
+    end
+
+    def sort_descending
+      sort :order_date, :descending
+    end
+
     def scroll_into_view
       scroll :order_date
+    end
+
+    def field row
+      grid_field_column_name :order_date, row
     end
 
     def data order_id
@@ -488,59 +305,85 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:order_date, row)
     end
-
-    def sort order
-      id = get_header_id "Order Date"
-      log "Sorting Order Date in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Order Date for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column("Order Date", order)
-    end
   end
 
   class Recipient < Column
+
+    def sort_ascending
+      sort :recipient, :ascending
+    end
+
+    def sort_descending
+      sort :recipient, :descending
+    end
+
     def scroll_into_view
       scroll :recipient
+    end
+
+    def field row
+      grid_field_column_name :recipient, row
     end
     
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log "Order ID: #{order_id}, Row #{row}" if Stamps::Test.verbose
       grid_text(:recipient, row)
     end
 
-    def sort order
-
-      id = get_header_id "Recipient"
-      log "Sorting Recipient in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Recipient for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Recipient', order)
+    def data_for row
+      grid_text(:recipient, row)
     end
+
   end
 
   class Company < Column
+
+    def sort_ascending
+      sort :company, :ascending
+    end
+
+    def sort_descending
+      sort :company, :descending
+    end
+
     def scroll_into_view
       scroll :company
     end
 
-    def sort order
+    def field row
+      grid_field_column_name :company, row
+    end
+
+    def data_for row
+      grid_text(:company, row)
+    end
+
+    def data order_id
       scroll_into_view
-      id = get_header_id "Company"
-      log "Sorting Company in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Company for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Company', order)
+      row = row_number(order_id)
+      log "Order ID: #{order_id}, Row #{row}" if Stamps::Test.verbose
+      grid_text(:company, row)
     end
   end
 
   class Address < Column
+
+    def sort_ascending
+      sort :domestic, :ascending
+    end
+
+    def sort_descending
+      sort :domestic, :descending
+    end
+
     def scroll_into_view
       scroll :domestic
+    end
+
+    def field row
+      grid_field_column_name :domestic, row
     end
 
     def data order_id
@@ -550,20 +393,27 @@ module Batch
       grid_text(:domestic, row)
     end
 
-    def sort order
-
-      id = get_header_id "Address"
-      log "Sorting Address in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Address for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Address', order)
+    def data_for row
+      grid_text(:domestic, row)
     end
   end
 
   class City < Column
+
+    def sort_ascending
+      sort :city, :ascending
+    end
+
+    def sort_descending
+      sort :city, :descending
+    end
+
     def scroll_into_view
       scroll :city
+    end
+
+    def field row
+      grid_field_column_name :city, row
     end
 
     def data order_id
@@ -572,24 +422,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:city, row)
     end
-
-    def sort order
-      id = get_header_id "City"
-      log "Sorting City in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking City for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('City', order)
-    end
   end
 
   class State < Column
+
+    def sort_ascending
+      sort :state, :ascending
+    end
+
+    def sort_descending
+      sort :state, :descending
+    end
+
     def scroll_into_view
       scroll :state
     end
 
-    def field
-
+    def field row
+      grid_field_column_name :state, row
     end
 
     def data order_id
@@ -598,20 +448,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:state, row)
     end
-
-    def sort order
-      id = get_header_id "State"
-      log "Sorting State in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking State for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('State', order)
-    end
   end
 
   class Zip < Column
+
+    def sort_ascending
+      sort :zip, :ascending
+    end
+
+    def sort_descending
+      sort :zip, :descending
+    end
+
     def scroll_into_view
       scroll :zip
+    end
+
+    def field row
+      grid_field_column_name :zip, row
     end
 
     def data order_id
@@ -620,21 +474,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:zip, row)
     end
-
-    def sort order
-
-      id = get_header_id "Zip"
-      log "Sorting Zip in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Zip for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Zip', order)
-    end
   end
 
   class Phone < Column
+
+    def sort_ascending
+      sort :phone, :ascending
+    end
+
+    def sort_descending
+      sort :phone, :descending
+    end
+
     def scroll_into_view
       scroll :phone
+    end
+
+    def field row
+      grid_field_column_name :phone, row
     end
 
     def data order_id
@@ -643,21 +500,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:phone, row)
     end
-
-    def sort order
-
-      id = get_header_id "Phone"
-      log "Sorting Phone in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Phone for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Phone', order)
-    end
   end
 
   class Email < Column
+
+    def sort_ascending
+      sort :email, :ascending
+    end
+
+    def sort_descending
+      sort :email, :descending
+    end
+
     def scroll_into_view
       scroll :email
+    end
+
+    def field row
+      grid_field_column_name :email, row
     end
 
     def data order_id
@@ -666,21 +526,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:email, row)
     end
-
-    def sort order
-
-      id = get_header_id "Email"
-      log "Sorting Email in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Email for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Email', order)
-    end
   end
 
   class Qty < Column
+
+    def sort_ascending
+      sort :qty, :ascending
+    end
+
+    def sort_descending
+      sort :qty, :descending
+    end
+
     def scroll_into_view
       scroll :qty
+    end
+
+    def field row
+      grid_field_column_name :qty, row
     end
 
     def data order_id
@@ -689,21 +552,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:qty, row)
     end
-
-    def sort order
-
-      id = get_header_id "Qty."
-      log "Sorting Qty in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Qty for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Qty.', order)
-    end
   end
 
   class ItemSKU < Column
+
+    def sort_ascending
+      sort :item_sku, :ascending
+    end
+
+    def sort_descending
+      sort :item_sku, :descending
+    end
+
     def scroll_into_view
       scroll :item_sku
+    end
+
+    def field row
+      grid_field_column_name :item_sku, row
     end
 
     def data order_id
@@ -712,21 +578,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:item_sku, row)
     end
-
-    def sort order
-
-      id = get_header_id "Item SKU"
-      log "Sorting Item SKU in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Item SKU for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Item SKU', order)
-    end
   end
 
   class ItemName < Column
+
+    def sort_ascending
+      sort :item_name, :ascending
+    end
+
+    def sort_descending
+      sort :item_name, :descending
+    end
+
     def scroll_into_view
       scroll :item_name
+    end
+
+    def field row
+      grid_field_column_name :item_name, row
     end
 
     def data order_id
@@ -735,20 +604,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:item_name, row)
     end
-
-    def sort order
-      id = get_header_id "Item Name"
-      log "Sorting Item Name in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Item Name for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Item Name', order)
-    end
   end
 
   class Weight < Column
+
+    def sort_ascending
+      sort :weight, :ascending
+    end
+
+    def sort_descending
+      sort :weight, :descending
+    end
+
     def scroll_into_view
       scroll :weight
+    end
+
+    def field row
+      grid_field_column_name :weight, row
     end
 
     def data order_id
@@ -767,21 +640,24 @@ module Batch
     def oz order_id
       data(order_id).scan(/\d+ oz./).first.scan(/\d/).first
     end
-
-    def sort order
-
-      id = get_header_id "Weight"
-      log "Sorting Weight in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Weight for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Weight', order)
-    end
   end
 
   class InsuredValue < Column
+
+    def sort_ascending
+      sort :insured_value, :ascending
+    end
+
+    def sort_descending
+      sort :insured_value, :descending
+    end
+
     def scroll_into_view
       scroll :insured_value
+    end
+
+    def field row
+      grid_field_column_name :insured_value, row
     end
 
     def data order_id
@@ -790,21 +666,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       test_helper.remove_dollar_sign grid_text(:insured_value, row)
     end
-
-    def sort order
-
-      id = get_header_id "Insured Value"
-      log "Sorting Insured Value in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Insured Value for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Insured Value', order)
-    end
   end
 
   class OrderStatus < Column
+
+    def sort_ascending
+      sort :order_status, :ascending
+    end
+
+    def sort_descending
+      sort :order_status, :descending
+    end
+
     def scroll_into_view
       scroll :order_status
+    end
+
+    def field row
+      grid_field_column_name :order_status, row
     end
 
     def data order_id
@@ -813,21 +692,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:order_status, row)
     end
-
-    def sort order
-
-      id = get_header_id "Order Status"
-      log "Sorting Order Status in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Order Status for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Order Status', order)
-    end
   end
 
   class ShipDate < Column
+
+    def sort_ascending
+      sort :ship_date, :ascending
+    end
+
+    def sort_descending
+      sort :ship_date, :descending
+    end
+
     def scroll_into_view
       scroll :ship_date
+    end
+
+    def field row
+      grid_field_column_name :ship_date, row
     end
 
     def data order_id
@@ -836,15 +718,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:ship_date, row)
     end
-
-    def sort order
-
-    end
   end
 
   class ShipFrom < Column
+
+    def sort_ascending
+      sort :ship_from, :ascending
+    end
+
+    def sort_descending
+      sort :ship_from, :descending
+    end
+
     def scroll_into_view
       scroll :ship_from
+    end
+
+    def field row
+      grid_field_column_name :ship_from, row
     end
 
     def data order_id
@@ -853,15 +744,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:ship_from, row)
     end
-
-    def sort order
-
-    end
   end
 
   class OrderTotal < Column
+
+    def sort_ascending
+      sort :order_total, :ascending
+    end
+
+    def sort_descending
+      sort :order_total, :descending
+    end
+
     def scroll_into_view
       scroll :order_total
+    end
+
+    def field row
+      grid_field_column_name :order_total, row
     end
 
     def data order_id
@@ -870,21 +770,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:order_total, row)
     end
-
-    def sort order
-
-      id = get_header_id "Order Total"
-      log "Sorting Order Total in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Order Total for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Order Total', order)
-    end
   end
 
   class Country < Column
+
+    def sort_ascending
+      sort :country, :ascending
+    end
+
+    def sort_descending
+      sort :country, :descending
+    end
+
     def scroll_into_view
       scroll :country
+    end
+
+    def field row
+      grid_field_column_name :country, row
     end
 
     def data order_id
@@ -893,21 +796,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:country, row)
     end
-
-    def sort order
-
-      id = get_header_id "Country"
-      log "Sorting Country in #{order} order" if Stamps::Test.verbose
-      click_sort_drop_down id
-      click_sort_option order
-      log "Checking Country for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column('Country', order)
-    end
   end
 
   class ShipCost < Column
+
+    def sort_ascending
+      sort :ship_cost, :ascending
+    end
+
+    def sort_descending
+      sort :ship_cost, :descending
+    end
+
     def scroll_into_view
       scroll :ship_cost
+    end
+
+    def field row
+      grid_field_column_name :ship_cost, row
     end
 
     def data order_id
@@ -935,14 +841,24 @@ module Batch
       data_error
     end
 
-    def sort order
-
-    end
   end
 
   class Company < Column
+
+    def sort_ascending
+      sort :company, :ascending
+    end
+
+    def sort_descending
+      sort :company, :descending
+    end
+
     def scroll_into_view
       scroll :company
+    end
+
+    def field row
+      grid_field_column_name :company, row
     end
 
     def data order_id
@@ -951,16 +867,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:company, row)
     end
-
-    def sort order
-
-    end
-
   end
 
   class Service < Column
+
+    def sort_ascending
+      sort :service, :ascending
+    end
+
+    def sort_descending
+      sort :service, :descending
+    end
+
     def scroll_into_view
       scroll :service
+    end
+
+    def field row
+      grid_field_column_name :service, row
     end
 
     def data order_id
@@ -969,16 +893,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:service, row)
     end
-
-    def sort order
-
-    end
-
   end
 
   class ReferenceNo < Column
+
+    def sort_ascending
+      sort :reference_no, :ascending
+    end
+
+    def sort_descending
+      sort :reference_no, :descending
+    end
+
     def scroll_into_view
       scroll :reference_no
+    end
+
+    def field row
+      grid_field_column_name :reference_no, row
     end
 
     def data order_id
@@ -987,16 +919,24 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:reference_no, row)
     end
-
-    def sort order
-
-    end
-
   end
 
   class CostCode < Column
+
+    def sort_ascending
+      sort :cost_code, :ascending
+    end
+
+    def sort_descending
+      sort :cost_code, :descending
+    end
+
     def scroll_into_view
       scroll :cost_code
+    end
+
+    def field row
+      grid_field_column_name :cost_code, row
     end
 
     def data order_id
@@ -1005,49 +945,58 @@ module Batch
       log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
       grid_text(:cost_code, row)
     end
-
-    def sort order
-
-    end
-
   end
 
   class Tracking < Column
+
+    def sort_ascending
+      sort :tracking_no, :ascending
+    end
+
+    def sort_descending
+      sort :tracking_no, :descending
+    end
+
     def scroll_into_view
-      scroll :tracking
+      scroll :tracking_no
+    end
+
+    def field row
+      grid_field_column_name :tracking_no, row
     end
 
     def data order_id
       scroll_into_view
-      grid_text :tracking, row_number(order_id)
+      grid_text :tracking_no, row_number(order_id)
     end
-
-    def sort order
-
-    end
-
   end
 
-  class CheckColumn < Column
+  class CheckBox < Column
+    private
+    def checkbox_header
+      scroll_into_view
+
+      checkbox_field = (@browser.spans :css => "div[componentid^=gridcolumn]").first
+      check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
+      attribute = "class"
+      attrib_value_check = "checker-on"
+      Stamps::Browser::Checkbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
+    end
+
+    public
+
     def scroll_into_view
-      scroll :check_box
+      field = Label.new((@browser.spans :css => "div[componentid^=gridcolumn]").first)
+      field.scroll_into_view
+      field
+    end
+
+    def field row
+      grid_field_column_name :check_box, row
     end
 
     def edit order_id
-      check(row_number order_id)
-    end
-
-    def uncheck number
-      self.scroll_into_view
-      if size > 0
-        checkbox_field = row_div number
-        verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-        checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
-        checkbox.uncheck
-        log "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}." if Stamps::Test.verbose
-      else
-        log "Grid is empty" if Stamps::Test.verbose
-      end
+      check row_number order_id
     end
 
     def check number
@@ -1063,7 +1012,20 @@ module Batch
       end
     end
 
-    def row_checked? number
+    def uncheck number
+      scroll_into_view
+      if size > 0
+        checkbox_field = row_div number
+        verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
+        checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+        checkbox.uncheck
+        log "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}." if Stamps::Test.verbose
+      else
+        log "Grid is empty" if Stamps::Test.verbose
+      end
+    end
+
+    def checked? number
       scroll_into_view
       checkbox_field = row_div number
       verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
@@ -1071,40 +1033,49 @@ module Batch
       checkbox.checked?
     end
 
-    def select_all_checkbox
+    def order_id_checked? order_number
       scroll_into_view
-      spans = @browser.spans :css => "span[class=x-column-header-text]"
-      checkbox_field = spans.first
-      check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
-      attribute = "class"
-      attrib_value_check = "checker-on"
-      Stamps::Browser::Checkbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
+      checked? row_number order_number
     end
 
-    def select_all
+    def check_all *args
       scroll_into_view
-      select_all_checkbox.check
+      if args.length==1
+        if args[0].is_a? Hash
+          rows = args[0]
+          log "Restoring #{} checked orders..." if Stamps::Test.verbose
+        else
+          raise "Invalid parameter exception.  This method expects a Hash of Web Elements."
+        end
+
+        rows.each do |hash_element|
+          row_number = hash_element[0]
+          checked = hash_element[1]
+          if checked
+            check row_number
+            log "Row #{row_number} #{row_checked? row_number}" if Stamps::Test.verbose
+          end
+
+        end
+      else
+        checkbox_header.check
+      end
     end
 
-    def unselect_all
+    def uncheck_all
       scroll_into_view
-      select_all_checkbox.uncheck
+      checkbox_header.uncheck
     end
 
-    def order_checked? order_number
-      scroll_into_view
-      row_checked? row_number order_number
-    end
-
-    def cache_checked_rows *args
-      cache_count = 2
+    def checked_rows *args
+      cache_count = 10
       if args.length == 1
         cache_count = args[0]
       end
 
       log "Caching checked rows..." if Stamps::Test.verbose
       checked_rows = Hash.new
-      grid_total = total_number_of_orders
+      grid_total = row_count
       if cache_count > 2 && cache_count < grid_total
         cache_item_count = cache_count
       elsif cache_count > grid_total
@@ -1114,7 +1085,7 @@ module Batch
       end
       log "Number of rows to check:  #{cache_item_count}" if Stamps::Test.verbose
       1.upto(cache_item_count) { |row|
-        checked = row_checked? row
+        checked = checked? row
         if checked
           checked_rows[row] = checked
         end
@@ -1124,26 +1095,6 @@ module Batch
       checked_rows
     end
 
-    def total_number_of_orders
-      tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
-      count = tables.size
-      log "Total Number of Orders on Grid:  #{count}" if Stamps::Test.verbose
-      count.to_i
-    end
-
-    def check_rows rows
-      scroll_into_view
-      log "Restoring #{} checked orders..." if Stamps::Test.verbose
-      begin
-        rows.each do |row|
-          checked = rows[row]
-          if checked
-            check row
-            log "Row #{row} #{row_checked? row}" if Stamps::Test.verbose
-          end
-        end
-      end unless rows.nil?
-    end
   end
 
   # Order Grid
@@ -1236,6 +1187,10 @@ module Batch
       @company ||= Company.new @browser
     end
 
+    def address
+      @address ||= Address.new @browser
+    end
+
     def service
       @service ||= Service.new @browser
     end
@@ -1248,12 +1203,12 @@ module Batch
       @cost_code ||= CostCode.new @browser
     end
 
-    def tracking
+    def tracking_no
       @tracking ||= Tracking.new @browser
     end
 
-    def check
-      @check ||= CheckColumn.new @browser
+    def checkbox
+      @check ||= CheckBox.new @browser
     end
 
     def toolbar

@@ -1,4 +1,5 @@
 When /^Print (\d+) new orders with Address set to (.*) and Service set to (.*)$/ do |count, address, service|
+  log "Step: Print #{count} new orders with Address set to #{address} and Service set to #{service}"
   count.to_i.times {
     step "I Add a new order"
     step "Set Order Form Ship-From to default"
@@ -12,6 +13,7 @@ When /^Print (\d+) new orders with Address set to (.*) and Service set to (.*)$/
 end
 
 Then /^Create (\d+) new orders with Address set to (.*) and Service set to (.*)$/ do |count, address, service|
+  log "Step: Create #{count} new orders with Address set to #{address} and Service set to #{service}"
   count.to_i.times { |iteration|
     step "I Add a new order"
     step "Set Order Form Ship-From to default"
