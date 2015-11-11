@@ -47,14 +47,14 @@ module Stamps
         log "Browser Selection: #{ENV['BROWSER']}" if Stamps::Test.verbose
 
         if Test.browser.explorer?
-          system "taskkill /im IEDriverServer.exe /f"
-          system "taskkill /im iexplore.exe /f"
+          system "taskkill /im IEDriverServer.exe /f 2>nul"
+          system "taskkill /im iexplore.exe /f 2>nul"
 
           driver = Watir::Browser.new :ie
           @browser_name = 'Internet Explorer'
 
         elsif Test.browser.firefox?
-          system "taskkill /im firefox.exe /f"
+          system "taskkill /im firefox.exe /f 2>nul"
           sleep 2
           #driver = Watir::Browser.new :firefox
           firefox_profile_dir = File.join("C:", "watir-webdriver", "firefox", "test-profile")
@@ -69,7 +69,7 @@ module Stamps
           @browser_name = 'Mozilla Firefox'
 
         elsif Test.browser.chrome?
-          system "taskkill /im chrome.exe /f"
+          system "taskkill /im chrome.exe /f 2>nul"
 
           chrome_data_dir = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data", "Default")
           chrome_driver_path = File.join("C:", "watir-webdriver", "drivers", "chromedriver.exe")
