@@ -983,7 +983,7 @@ module Batch
 
   class CheckColumn < Column
     def scroll_into_view
-      scroll :check_box
+      Label.new((@browser.spans :css => "div[componentid^=gridcolumn]").first).scroll_into_view
     end
 
     def field row
