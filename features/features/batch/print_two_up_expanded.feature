@@ -6,7 +6,59 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Given I am signed in as a batch shipper
 
 
+  @two_up_expanded @two_up_expanded_1
+  Scenario: User Prints 1 Domestic label on 8.5x11 - left side
 
+    And I Add a new order
+    Then Set Order Form Ship-From to default
+    Then Set Order Form Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then Set Order Form Service to "Priority Mail Flat Rate Envelope"
+    Then Open Print Modal
+    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Select left side label
+    Then Expect left side label selected
+    And Expect Print Window requires 1 label sheets
+    Then Print
+    Then Sign out
+
+  @two_up_expanded
+  Scenario: User Prints 1 Domestic label on SDC-1200 - right side
+
+    And I Add a new order
+    Then Set Order Form Ship-From to default
+    Then Set Order Form Ship-To address to PM Package, SDC-1200 Right Side 1, 5912 83rd St., Lubbock TX 79424-3608
+    Then Set Order Form Service to "Priority Mail Package"
+    Then Set Order Form Length to 1
+    Then Set Order Form Width to 1
+    Then Set Order Form Height to 1
+    Then Set Order Form Insured Value to $1.09
+    Then Open Print Modal
+    Then Select Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Select right side label
+    Then Expect right side label selected
+    And Expect Print Window requires 1 label sheets
+    Then Print
+    Then Sign out
+
+  @two_up_expanded
+  Scenario: User Prints 2 Domestic labels on 8.5x11 - left side
+    And I Add a new order
+    Then Set Order Form Ship-From to default
+    Then Set Order Form Ship-To address to PM FR Envelope, 8.5x11, 2105 Kietzke Ln, Reno NV 89502-3602
+    Then Set Order Form Service to "Priority Mail Flat Rate Envelope"
+    And I Add a new order
+    Then Set Order Form Ship-From to default
+    Then Set Order Form Ship-To address to PM PFR Envelope, 8.5x11, 557 County Rd. H, Fredonia WI 53021-9634
+    Then Set Order Form Service to "Priority Mail Padded Flat Rate Envelope"
+    Then Edit row 1 on the order grid
+    Then Edit row 2 on the order grid
+    Then Open Print Modal
+    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Select left side label
+    Then Expect left side label selected
+    And Expect Print Window requires 1 label sheets
+    Then Print
+    Then Sign out
 
   @two_up_expanded
   Scenario: User Prints 2 Domestic labels on 8.5x11 - right side
