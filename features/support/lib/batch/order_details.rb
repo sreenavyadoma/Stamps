@@ -480,6 +480,7 @@ module Batch
         phone.send_keys :tab
         break if exact_address_not_found.present?
       }
+
       phone.set ""
       email.set ""
       if exact_address_not_found.present?

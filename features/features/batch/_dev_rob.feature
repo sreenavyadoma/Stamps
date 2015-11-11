@@ -5,6 +5,10 @@ Feature: Test Development
 
   @rob_grid
   Scenario:
+    Then Sort Grid by Ship Cost in Ascending order
+    Then Sort Grid by Ship Cost in Descending order
+
+  Scenario:
     Then List all Grid column values for row 1
     Then List all Grid column values for row 2
     Then List all Grid column values for row 3

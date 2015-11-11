@@ -14,21 +14,8 @@ module Batch
       @sign_in ||= Batch::SignInPage.new @browser
     end
 
-=begin
-    def visit *args
-      @sign_in ||= Batch::SignInPage.new(@browser)
-      @sign_in.visit *args
-      self
-    end
-
-    def sign_in *args
-      @sign_in ||= Batch::SignInPage.new(@browser)
-      @sign_in.sign_in *args
-    end
-=end
-
     def filter
-      FilterPanel.new @browser
+      @filter ||= FilterPanel.new @browser
     end
 
     def awaiting_shipment
@@ -37,7 +24,6 @@ module Batch
     end
 
     def shipped
-      #todo-elie here are your steps;
       Filters.new(@browser).filter "Shipped"
       Grid.new @browser
     end

@@ -106,7 +106,65 @@ module Batch
     }
 
     def scroll column
-      Label.new(column_header_field column).scroll_into_view
+      Label.new(column_name_field column).scroll_into_view
+    end
+
+    # x-column-header-sort-ASC
+    # x-column-header-sort-DESC
+
+    def sort column, sort_order
+      scroll column
+      column_field = column_name_field column
+      sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
+      sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[3]
+
+      sort_field_id = (sort_order==:ascending)?"Sort Ascending":"Sort Descending"
+      verify_sort = (sort_order==:ascending)?"ASC":"DESC"
+      sort_field = Label.new @browser.span :text => sort_field_id
+
+      15.times{
+        sort_drop_down.safe_click unless sort_field.present?
+        sort_field.safe_click
+        return true if sort_verify_field.attribute_value("class").include? verify_sort
+      }
+      false
+    end
+
+
+    def xsort_ascending column
+      column_field = column_name_field column
+      sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[1]
+      sort_field = Label.new @browser.span :text => "Sort Ascending"
+      sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
+
+      5.times{
+        sort_drop_down.safe_click unless sort_field.present?
+        sort_field.safe_click
+        sorted = sort_verify_field.attribute_value("class").downcase.include? "asc"
+        break if sorted
+      }
+      sorted
+    end
+
+    def xsort_descending column
+      column_field = column_name_field column
+      sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[1]
+      sort_field = Label.new @browser.span :text => "Sort Descending"
+      sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
+
+      5.times{
+        sort_drop_down.safe_click unless sort_field.present?
+        sort_field.safe_click
+        sorted = sort_verify_field.attribute_value("class").downcase.include? "asc"
+        break if sorted
+      }
+      sorted
+    end
+
+    def column_name_field column
+      column_name = @browser.span :text => GRID_COLUMNS[column]
+      log "Column Name:  #{browser_helper.text column_name}" if Stamps::Test.verbose
+      column_name
     end
 
     def empty?
@@ -150,18 +208,6 @@ module Batch
 
     def column_fields
       @column_fields ||= @browser.spans :css => "div[componentid^=gridcolumn]"
-    end
-
-    def column_header_field column
-      column_str = GRID_COLUMNS[column]
-      columns = column_fields
-      columns.each{ |column_field|
-        column_text = browser_helper.text column_field
-        log "#{column_text} == #{column_str} ? #{column_text == column_str}" if Stamps::Test.verbose
-        if column_text.downcase == column_str.downcase
-          return column_field
-        end
-      }
     end
 
     def row_number order_id
@@ -434,6 +480,14 @@ module Batch
       scroll :order_id
     end
 
+    def sort_ascending
+      sort :order_id, :ascending
+    end
+
+    def sort_descending
+      sort :order_id, :descending
+    end
+
     def field row
       grid_field_column_name :order_id, row
     end
@@ -456,14 +510,16 @@ module Batch
       end
     end
 
+=begin
     def sort order
       id = get_header_id "Order ID"
       log "Sorting Order ID in #{order} order" if Stamps::Test.verbose
       click_sort_drop_down id
       click_sort_option order
       log "Checking Order ID for #{order} sort order" if Stamps::Test.verbose
-      batch.grid.check.check_sorted_column("Order ID", order)
+      check_sorted_column("Order ID", order)
     end
+=end
   end
 
   class Age < Column
@@ -1000,6 +1056,15 @@ module Batch
   end
 
   class ShipCost < Column
+
+    def sort_ascending
+      sort :order_id, :ascending
+    end
+
+    def sort_descending
+      sort :order_id, :descending
+    end
+
     def scroll_into_view
       scroll :ship_cost
     end
@@ -1033,9 +1098,6 @@ module Batch
       data_error
     end
 
-    def sort order
-
-    end
   end
 
   class Company < Column
