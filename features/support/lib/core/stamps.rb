@@ -44,7 +44,7 @@ module Stamps
         if args.length == 1
           ENV['BROWSER'] = args[0]
         end
-        log "Browser Selection: #{ENV['BROWSER']}" if Stamps::Test.verbose
+        log.info "Browser Selection: #{ENV['BROWSER']}" if Stamps::Test.verbose
 
         if Test.browser.explorer?
           system "taskkill /im IEDriverServer.exe /f 2>nul"
@@ -74,11 +74,11 @@ module Stamps
           chrome_data_dir = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data", "Default")
           chrome_driver_path = File.join("C:", "watir-webdriver", "drivers", "chromedriver.exe")
 
-          log "chrome_driver path:  #{chrome_driver_path} - #{(File.exist? chrome_driver_path)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'} "
-          log "chrome_data_dir path:  #{chrome_data_dir}  #{(File.exist? chrome_data_dir)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'}"
+          log.info "chrome_driver path:  #{chrome_driver_path} - #{(File.exist? chrome_driver_path)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'} "
+          log.info "chrome_data_dir path:  #{chrome_data_dir}  #{(File.exist? chrome_data_dir)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'}"
 
           begin
-            raise log "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
+            raise log.info "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
           end unless File.exist? chrome_data_dir
 
           driver = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
@@ -92,7 +92,7 @@ module Stamps
           @browser_name = 'Internet Explorer'
         end
 
-        log "#{@browser_name} is ready."
+        log.info "#{@browser_name} is ready."
         #driver.window.move_to 0, 0
         #driver.window.resize_to 1250, 850
         driver.window.maximize
@@ -104,11 +104,11 @@ module Stamps
     end
 
     def self.teardown
-      log "Step:  Teardown test"
+      log.info "Step:  Teardown test"
       @browser.quit unless @browser == nil
       @browser = nil
-      log "#{@browser_name} closed."
-      log "Test Done!"
+      log.info "#{@browser_name} closed."
+      log.info "Test Done!"
     end
 
   end
@@ -160,16 +160,16 @@ module Stamps
       case args.length
         when 0
           now = Date.today
-          log "Today:  #{now}" if Stamps::Test.verbose
+          log.info "Today:  #{now}" if Stamps::Test.verbose
           month = (now.month.to_s.length==1)?"0#{now.month}":now.month
           day = (now.day.length==1)?"0#{now.day}":now.day
           "#{month}/#{day}/#{now.year}"
         when 1
           now = Date.today
-          log "Today:  #{now}" if Stamps::Test.verbose
+          log.info "Today:  #{now}" if Stamps::Test.verbose
           days_to_add = args[0].to_i
           new_date = now + days_to_add
-          log "New Date:  #{new_date}" if Stamps::Test.verbose
+          log.info "New Date:  #{new_date}" if Stamps::Test.verbose
           month = (new_date.month.to_s.length==1)?"0#{new_date.month}":new_date.month
           day = (new_date.day.to_s.length==1)?"0#{new_date.day}":new_date.day
           now = "#{month}/#{day}/#{new_date.year}"

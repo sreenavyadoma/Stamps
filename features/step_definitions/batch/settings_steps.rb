@@ -1,77 +1,77 @@
 Then /^Check Show Unavailable Services$/ do
-  log "Step: Check Show Unavailable Services checkbox"
+  log.info "Step: Check Show Unavailable Services checkbox"
   batch.toolbar.settings_modal.check_unavail_services
 
 end
 
 Then /^Check Dont Show Print Confirmation Dialog$/ do
-  log "Step: Check Dont Show Print Confirmation Dialog checkbox"
+  log.info "Step: Check Dont Show Print Confirmation Dialog checkbox"
   batch.toolbar.settings_modal.check_print_confirm_dialog
 
 end
 
 Then /^Check Save Delivery Addresses$/ do
-  log "Step: Check Save Delivery Addresses"
+  log.info "Step: Check Save Delivery Addresses"
   batch.toolbar.settings_modal.check_save_contacts
 
 end
 
 Then /^Check Email Shipment Notifications$/ do
-  log "Step: Check Email Shipment Notifications"
+  log.info "Step: Check Email Shipment Notifications"
   batch.toolbar.settings_modal.check_shipment_email
 
 end
 
 Then /^Check Email Shipment Deliveries$/ do
-  log "Step: Check Email Shipment Deliveries checkbox"
+  log.info "Step: Check Email Shipment Deliveries checkbox"
   batch.toolbar.settings_modal.check_shipment_delivery
 
 end
 
 Then /^Check USPS Terms in Settings Modal$/ do
-  log "Step: Check USPS Terms checkbox in Settings Modal"
+  log.info "Step: Check USPS Terms checkbox in Settings Modal"
   batch.toolbar.settings_modal.check_usps_terms
 
 end
 
 Then /^Uncheck Show Unavailable Services$/ do
-  log "Step: Uncheck Show Unavailable Services"
+  log.info "Step: Uncheck Show Unavailable Services"
   batch.toolbar.settings_modal.uncheck_unavail_services
 
 end
 
 Then /^Uncheck Dont Show Print Confirmation Dialog$/ do
-  log "Step: Uncheck Dont Show Print Confirmation Dialog"
+  log.info "Step: Uncheck Dont Show Print Confirmation Dialog"
   batch.toolbar.settings_modal.uncheck_print_confirm_dialog
 
 end
 
 Then /^Uncheck Save Delivery Addresses$/ do
-  log "Step: Uncheck Save Delivery Addresses"
+  log.info "Step: Uncheck Save Delivery Addresses"
   batch.toolbar.settings_modal.uncheck_save_contacts
 
 end
 
 Then /^Uncheck Email Shipment Notifications$/ do
-  log "Step: Uncheck Email Shipment Notifications checkbox"
+  log.info "Step: Uncheck Email Shipment Notifications checkbox"
   batch.toolbar.settings_modal.uncheck_shipment_email
 
 end
 
 Then /^Uncheck Email Shipment Deliveries$/ do
-  log "Step: Uncheck Email Shipment Deliveries checkbox"
+  log.info "Step: Uncheck Email Shipment Deliveries checkbox"
   batch.toolbar.settings_modal.uncheck_shipment_delivery
 
 end
 
 Then /^Uncheck USPS Terms in Settings Modal$/ do
-  log "Step: Uncheck USPS Terms checkbox in Settings Modal"
+  log.info "Step: Uncheck USPS Terms checkbox in Settings Modal"
   batch.toolbar.settings_modal.uncheck_usps_terms
 
 end
 
 Then /^Expect Show Unavailable Services Unchecked$/ do
-  log "Step: Expect Show Unavailable Services Unchecked"
+  log.info "Step: Expect Show Unavailable Services Unchecked"
 
   actual = batch.toolbar.settings_modal.get_checkbox_status(1)
   log_expectation_eql "Show Unavailable Services", false, actual
@@ -79,7 +79,7 @@ Then /^Expect Show Unavailable Services Unchecked$/ do
 end
 
 Then /^Expect Dont Show Print Confirmation Dialog Unchecked$/ do
-  log "Step: Expect Dont Show Print Confirmation Dialog Unchecked"
+  log.info "Step: Expect Dont Show Print Confirmation Dialog Unchecked"
   actual = batch.toolbar.settings_modal.get_checkbox_status(2)
   log_expectation_eql "Dont Show Print Confirmation Dialog", false, actual
   actual.should eql false
@@ -87,7 +87,7 @@ Then /^Expect Dont Show Print Confirmation Dialog Unchecked$/ do
 end
 
 Then /^Expect USPS Terms Unchecked in Settings Modal$/ do
-  log "Step: Expect USPS Terms Unchecked in Settings Modal"
+  log.info "Step: Expect USPS Terms Unchecked in Settings Modal"
   actual = batch.toolbar.settings_modal.get_checkbox_status(3)
   log_expectation_eql "USPS Restrictions", false, actual
   actual.should eql false
@@ -95,7 +95,7 @@ Then /^Expect USPS Terms Unchecked in Settings Modal$/ do
 end
 
 Then /^Expect Save Delivery Addresses Unchecked$/ do
-  log "Step: Expect Save Delivery Addresses Unchecked"
+  log.info "Step: Expect Save Delivery Addresses Unchecked"
   actual = batch.toolbar.settings_modal.get_checkbox_status(4)
   log_expectation_eql "Save Delivery Addresses", false, actual
   actual.should eql false
@@ -103,7 +103,7 @@ Then /^Expect Save Delivery Addresses Unchecked$/ do
 end
 
 Then /^Expect Email Shipment Notifications Unchecked$/ do
-  log "Step: Expect Email Shipment Notifications Unchecked"
+  log.info "Step: Expect Email Shipment Notifications Unchecked"
   actual = batch.toolbar.settings_modal.get_checkbox_status(5)
   log_expectation_eql "Email Shipment Notifications", false, actual
   actual.should eql false
@@ -111,7 +111,7 @@ Then /^Expect Email Shipment Notifications Unchecked$/ do
 end
 
 Then /^Expect Email Shipment Deliveries Unchecked$/ do
-  log "Step: Expect Email Shipment Deliveries Unchecked"
+  log.info "Step: Expect Email Shipment Deliveries Unchecked"
   actual = batch.toolbar.settings_modal.get_checkbox_status(6)
   log_expectation_eql "Email Shipment Deliveries", false, actual
   actual.should eql false
@@ -120,7 +120,7 @@ end
 
 
 Then /^Expect Show Unavailable Services Checked$/ do
-  log "Step: Expect Show Unavailable Services Checked"
+  log.info "Step: Expect Show Unavailable Services Checked"
 
   actual = batch.toolbar.settings_modal.get_checkbox_status(1)
   log_expectation_eql "Show Unavailable Services", true, actual
@@ -129,7 +129,7 @@ Then /^Expect Show Unavailable Services Checked$/ do
 end
 
 Then /^Expect Dont Show Print Confirmation Dialog Checked$/ do
-  log "Step: Expect Dont Show Print Confirmation Dialog Checked"
+  log.info "Step: Expect Dont Show Print Confirmation Dialog Checked"
   actual = batch.toolbar.settings_modal.get_checkbox_status(2)
   log_expectation_eql "Dont Show Print Confirmation Dialog", true, actual
   actual.should eql true
@@ -137,7 +137,7 @@ Then /^Expect Dont Show Print Confirmation Dialog Checked$/ do
 end
 
 Then /^Expect USPS Terms Checked in Settings Modal$/ do
-  log "Step: Expect USPS Terms Checked in Settings Modal"
+  log.info "Step: Expect USPS Terms Checked in Settings Modal"
   actual = batch.toolbar.settings_modal.get_checkbox_status(3)
   log_expectation_eql "USPS Restrictions", true, actual
   actual.should eql true
@@ -145,7 +145,7 @@ Then /^Expect USPS Terms Checked in Settings Modal$/ do
 end
 
 Then /^Expect Save Delivery Addresses Checked$/ do
-  log "Step: Expect Save Delivery Addresses Checked"
+  log.info "Step: Expect Save Delivery Addresses Checked"
   actual = batch.toolbar.settings_modal.get_checkbox_status(4)
   log_expectation_eql "Save Delivery Addresses", true, actual
   actual.should eql true
@@ -153,7 +153,7 @@ Then /^Expect Save Delivery Addresses Checked$/ do
 end
 
 Then /^Expect Email Shipment Notifications Checked$/ do
-  log "Step: Expect Email Shipment Notifications Checked"
+  log.info "Step: Expect Email Shipment Notifications Checked"
   actual = batch.toolbar.settings_modal.get_checkbox_status(5)
   log_expectation_eql "Email Shipment Notifications", true, actual
   actual.should eql true
@@ -161,7 +161,7 @@ Then /^Expect Email Shipment Notifications Checked$/ do
 end
 
 Then /^Expect Email Shipment Deliveries Checked$/ do
-  log "Step: Expect Email Shipment Deliveries Checked"
+  log.info "Step: Expect Email Shipment Deliveries Checked"
   actual = batch.toolbar.settings_modal.get_checkbox_status(6)
   log_expectation_eql "Email Shipment Deliveries", true, actual
   actual.should eql true
@@ -171,24 +171,24 @@ end
 
 
 Then /^Change Logoff Time to (.*)$/ do |duration|
-  log "Step: Change Logoff Time to \"#{duration}\""
+  log.info "Step: Change Logoff Time to \"#{duration}\""
   batch.toolbar.settings_modal.select_logoff_time(duration)
 
 end
 
 Then /^Change Postdate Time to (.*)$/ do |time|
-  log "Step: Change Postdate Time to \"#{time}\""
+  log.info "Step: Change Postdate Time to \"#{time}\""
   batch.toolbar.settings_modal.select_postdate_time(time)
 
 end
 
 Then /^Change Postage Balance Notification Amount to (.*)$/ do |amount|
-  log "Step: Change Postage Balance Notification Amount to \"#{amount}\""
+  log.info "Step: Change Postage Balance Notification Amount to \"#{amount}\""
   batch.toolbar.settings_modal.select_balance_notification(amount)
 end
 
 Then /^Expect Logoff Time to be (.*)$/ do |duration|
-  log "Step: Expect Logoff Time to be #{duration}"
+  log.info "Step: Expect Logoff Time to be #{duration}"
   actual = batch.toolbar.settings_modal.get_logoff_time
   log_expectation_eql "Logoff Time", duration, actual
   actual.should eql duration
@@ -196,7 +196,7 @@ Then /^Expect Logoff Time to be (.*)$/ do |duration|
 end
 
 Then /^Expect Postdate Time to be (.*)$/ do |time|
-  log "Step: Expect Postdate Time to be #{time}"
+  log.info "Step: Expect Postdate Time to be #{time}"
   actual = batch.toolbar.settings_modal.get_postdate_time
   log_expectation_eql "Postdate Time", time, actual
   actual.should eql time
@@ -204,7 +204,7 @@ Then /^Expect Postdate Time to be (.*)$/ do |time|
 end
 
 Then /^Expect Postage Balance Notification Amount to be (.*)$/ do |amount|
-  log "Step: Expect Postage Balance Notification Amount to be #{amount}"
+  log.info "Step: Expect Postage Balance Notification Amount to be #{amount}"
   actual = batch.toolbar.settings_modal.get_balance_notification_amt
   log_expectation_eql "Balance Notification Amount", amount, actual
   actual.should eql amount
@@ -212,7 +212,7 @@ Then /^Expect Postage Balance Notification Amount to be (.*)$/ do |amount|
 end
 
 Then /^Save Settings changes$/ do
-  log "Step: Save settings changes"
+  log.info "Step: Save settings changes"
   batch.toolbar.settings_modal.save_changes
 end
 

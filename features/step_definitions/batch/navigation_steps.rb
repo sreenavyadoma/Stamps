@@ -4,13 +4,13 @@
 #* Expect value is added to customer balance
 
  Then /^Buy \$(\d+) postage$/ do |amount|
-   log "Step: Buy \$#{amount} postage"
-   log "Storing old postage amount"
+   log.info "Step: Buy \$#{amount} postage"
+   log.info "Storing old postage amount"
    @old_balance = batch.navigation.balance
-   log "Buy More link selected"
+   log.info "Buy More link selected"
    buy_postage_window = batch.navigation.select_buy_more
 
-   log "$#{amount} postage radio button selected"
+   log.info "$#{amount} postage radio button selected"
 
    case amount
      when "10"
@@ -37,15 +37,15 @@
 
 
 Then /^Expect \$(\d+) is added to customer balance$/ do |balance|
-  log "Step: Expect \$#{balance} is added to customer balance"
-  log "Store new balance"
+  log.info "Step: Expect \$#{balance} is added to customer balance"
+  log.info "Store new balance"
   @new_balance = batch.navigation.balance
-  log "Compare old and new balance"
+  log.info "Compare old and new balance"
   match = @new_balance - @old_balance
   match_float = match.to_f
   balance_float = balance.to_f
-  log "Verify correct postage amount added to balance"
+  log.info "Verify correct postage amount added to balance"
   match_float.should eql  balance_float
-  log "Postage purchase verified"
+  log.info "Postage purchase verified"
 end
 

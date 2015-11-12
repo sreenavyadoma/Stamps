@@ -1,5 +1,5 @@
 Then /^Verify Local Rating$/ do |table|
-  log "Step: Verify Local Rating..."
+  log.info "Step: Verify Local Rating..."
   #results_file = "local_rating_results.csv"
   @single_order_form = batch.order_details
   parameter_array = table.hashes
@@ -28,7 +28,7 @@ Then /^Verify Local Rating$/ do |table|
     }
     total = @single_order_form.total
 
-    log "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lbs"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |"
+    log.info "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lbs"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |"
 
 
     expected_total_amount = element["total"]
