@@ -210,7 +210,7 @@ Then /^Expect Grid Zip to be ([\d -]+)$/ do |expected|
       break if actual.eql? expected
       actual = batch.grid.zip.data @order_id
     }
-    actual.should eql expected
+    actual.should include expected
   end unless expected.length == 0
 end
 

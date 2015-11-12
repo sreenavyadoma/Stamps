@@ -119,31 +119,6 @@ module Batch
       field
     end
 
-    # x-column-header-sort-ASC
-    # x-column-header-sort-DESC
-    def sort column, sort_order
-      scroll column
-      column_field = column_name_field column
-      sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
-      sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[3]
-
-      sort_field_id = (sort_order==:ascending)?"Sort Ascending":"Sort Descending"
-      verify_sort = (sort_order==:ascending)?"ASC":"DESC"
-      sort_field = Label.new @browser.span :text => sort_field_id
-
-      15.times{
-        sort_drop_down.scroll_into_view
-        sort_drop_down.safe_click unless sort_field.present?
-        sort_field.safe_click
-        sleep 1
-        return true if sort_verify_field.attribute_value("class").include? verify_sort
-        return true if sort_verify_field.attribute_value("class").include? verify_sort
-        return true if sort_verify_field.attribute_value("class").include? verify_sort
-        return true if sort_verify_field.attribute_value("class").include? verify_sort
-      }
-      false
-    end
-
     def column_name_field column
       column_name = @browser.span :text => GRID_COLUMNS[column]
       log "Column Name:  #{browser_helper.text column_name}" if Stamps::Test.verbose
@@ -220,12 +195,8 @@ module Batch
 
   class OrderId < Column
 
-    def sort_ascending
-      sort :order_id, :ascending
-    end
-
-    def sort_descending
-      sort :order_id, :descending
+    def sort
+      Sort.new @browser, :order_id
     end
 
     def scroll_into_view
@@ -257,12 +228,8 @@ module Batch
 
   class Age < Column
 
-    def sort_ascending
-      sort :age, :ascending
-    end
-
-    def sort_descending
-      sort :age, :descending
+    def sort
+      Sort.new @browser, :age
     end
 
     def scroll_into_view
@@ -283,12 +250,8 @@ module Batch
 
   class OrderDate < Column
 
-    def sort_ascending
-      sort :order_date, :ascending
-    end
-
-    def sort_descending
-      sort :order_date, :descending
+    def sort
+      Sort.new @browser, :order_date
     end
 
     def scroll_into_view
@@ -307,18 +270,55 @@ module Batch
     end
   end
 
+  class Sort < Column
+    private
+
+    # x-column-header-sort-ASC
+    # x-column-header-sort-DESC
+    def sort column, sort_order
+      scroll column
+      column_field = column_name_field column
+      sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
+      sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[3]
+
+      sort_field_id = (sort_order==:ascending)?"Sort Ascending":"Sort Descending"
+      verify_sort = (sort_order==:ascending)?"ASC":"DESC"
+      sort_field = Label.new @browser.span :text => sort_field_id
+
+      15.times{
+        sort_drop_down.scroll_into_view
+        sort_drop_down.safe_click unless sort_field.present?
+        sort_field.safe_click
+        sleep 1
+        return true if sort_verify_field.attribute_value("class").include? verify_sort
+        return true if sort_verify_field.attribute_value("class").include? verify_sort
+        return true if sort_verify_field.attribute_value("class").include? verify_sort
+        return true if sort_verify_field.attribute_value("class").include? verify_sort
+      }
+      false
+    end
+
+    public
+
+    def initialize browser, column
+      super browser
+      @column = column
+    end
+
+    def ascending
+      sort @column, :ascending
+    end
+
+    def descending
+      sort @column, :descending
+    end
+
+  end
+
   class Recipient < Column
 
-    def sort_ascending
-      sort :recipient, :ascending
-    end
-
-    def sort_descending
-      sort :recipient, :descending
-    end
-
-    def scroll_into_view
-      scroll :recipient
+    def sort
+      Sort.new @browser, :recipient
     end
 
     def field row
@@ -340,12 +340,8 @@ module Batch
 
   class Company < Column
 
-    def sort_ascending
-      sort :company, :ascending
-    end
-
-    def sort_descending
-      sort :company, :descending
+    def sort
+      Sort.new @browser, :company
     end
 
     def scroll_into_view
@@ -370,12 +366,8 @@ module Batch
 
   class Address < Column
 
-    def sort_ascending
-      sort :address, :ascending
-    end
-
-    def sort_descending
-      sort :address, :descending
+    def sort
+      Sort.new @browser, :address
     end
 
     def scroll_into_view
@@ -400,12 +392,8 @@ module Batch
 
   class City < Column
 
-    def sort_ascending
-      sort :city, :ascending
-    end
-
-    def sort_descending
-      sort :city, :descending
+    def sort
+      Sort.new @browser, :city
     end
 
     def scroll_into_view
@@ -426,12 +414,8 @@ module Batch
 
   class State < Column
 
-    def sort_ascending
-      sort :state, :ascending
-    end
-
-    def sort_descending
-      sort :state, :descending
+    def sort
+      Sort.new @browser, :state
     end
 
     def scroll_into_view
@@ -452,12 +436,8 @@ module Batch
 
   class Zip < Column
 
-    def sort_ascending
-      sort :zip, :ascending
-    end
-
-    def sort_descending
-      sort :zip, :descending
+    def sort
+      Sort.new @browser, :zip
     end
 
     def scroll_into_view
@@ -478,12 +458,8 @@ module Batch
 
   class Phone < Column
 
-    def sort_ascending
-      sort :phone, :ascending
-    end
-
-    def sort_descending
-      sort :phone, :descending
+    def sort
+      Sort.new @browser, :phone
     end
 
     def scroll_into_view
@@ -504,12 +480,8 @@ module Batch
 
   class Email < Column
 
-    def sort_ascending
-      sort :email, :ascending
-    end
-
-    def sort_descending
-      sort :email, :descending
+    def sort
+      Sort.new @browser, :email
     end
 
     def scroll_into_view
@@ -530,12 +502,8 @@ module Batch
 
   class Qty < Column
 
-    def sort_ascending
-      sort :qty, :ascending
-    end
-
-    def sort_descending
-      sort :qty, :descending
+    def sort
+      Sort.new @browser, :qty
     end
 
     def scroll_into_view
@@ -556,12 +524,8 @@ module Batch
 
   class ItemSKU < Column
 
-    def sort_ascending
-      sort :item_sku, :ascending
-    end
-
-    def sort_descending
-      sort :item_sku, :descending
+    def sort
+      Sort.new @browser, :item_sku
     end
 
     def scroll_into_view
@@ -582,12 +546,8 @@ module Batch
 
   class ItemName < Column
 
-    def sort_ascending
-      sort :item_name, :ascending
-    end
-
-    def sort_descending
-      sort :item_name, :descending
+    def sort
+      Sort.new @browser, :item_name
     end
 
     def scroll_into_view
@@ -608,12 +568,8 @@ module Batch
 
   class Weight < Column
 
-    def sort_ascending
-      sort :weight, :ascending
-    end
-
-    def sort_descending
-      sort :weight, :descending
+    def sort
+      Sort.new @browser, :weight
     end
 
     def scroll_into_view
@@ -644,12 +600,8 @@ module Batch
 
   class InsuredValue < Column
 
-    def sort_ascending
-      sort :insured_value, :ascending
-    end
-
-    def sort_descending
-      sort :insured_value, :descending
+    def sort
+      Sort.new @browser, :insured_value
     end
 
     def scroll_into_view
@@ -670,12 +622,8 @@ module Batch
 
   class OrderStatus < Column
 
-    def sort_ascending
-      sort :order_status, :ascending
-    end
-
-    def sort_descending
-      sort :order_status, :descending
+    def sort
+      Sort.new @browser, :order_status
     end
 
     def scroll_into_view
@@ -696,12 +644,8 @@ module Batch
 
   class ShipDate < Column
 
-    def sort_ascending
-      sort :ship_date, :ascending
-    end
-
-    def sort_descending
-      sort :ship_date, :descending
+    def sort
+      Sort.new @browser, :ship_date
     end
 
     def scroll_into_view
@@ -722,12 +666,8 @@ module Batch
 
   class ShipFrom < Column
 
-    def sort_ascending
-      sort :ship_from, :ascending
-    end
-
-    def sort_descending
-      sort :ship_from, :descending
+    def sort
+      Sort.new @browser, :ship_from
     end
 
     def scroll_into_view
@@ -748,12 +688,8 @@ module Batch
 
   class OrderTotal < Column
 
-    def sort_ascending
-      sort :order_total, :ascending
-    end
-
-    def sort_descending
-      sort :order_total, :descending
+    def sort
+      Sort.new @browser, :order_total
     end
 
     def scroll_into_view
@@ -774,12 +710,8 @@ module Batch
 
   class Country < Column
 
-    def sort_ascending
-      sort :country, :ascending
-    end
-
-    def sort_descending
-      sort :country, :descending
+    def sort
+      Sort.new @browser, :country
     end
 
     def scroll_into_view
@@ -800,12 +732,8 @@ module Batch
 
   class ShipCost < Column
 
-    def sort_ascending
-      sort :ship_cost, :ascending
-    end
-
-    def sort_descending
-      sort :ship_cost, :descending
+    def sort
+      Sort.new @browser, :ship_cost
     end
 
     def scroll_into_view
@@ -845,12 +773,8 @@ module Batch
 
   class Company < Column
 
-    def sort_ascending
-      sort :company, :ascending
-    end
-
-    def sort_descending
-      sort :company, :descending
+    def sort
+      Sort.new @browser, :company
     end
 
     def scroll_into_view
@@ -871,12 +795,8 @@ module Batch
 
   class Service < Column
 
-    def sort_ascending
-      sort :service, :ascending
-    end
-
-    def sort_descending
-      sort :service, :descending
+    def sort
+      Sort.new @browser, :service
     end
 
     def scroll_into_view
@@ -897,12 +817,8 @@ module Batch
 
   class ReferenceNo < Column
 
-    def sort_ascending
-      sort :reference_no, :ascending
-    end
-
-    def sort_descending
-      sort :reference_no, :descending
+    def sort
+      Sort.new @browser, :reference_no
     end
 
     def scroll_into_view
@@ -923,12 +839,8 @@ module Batch
 
   class CostCode < Column
 
-    def sort_ascending
-      sort :cost_code, :ascending
-    end
-
-    def sort_descending
-      sort :cost_code, :descending
+    def sort
+      Sort.new @browser, :cost_code
     end
 
     def scroll_into_view
@@ -949,12 +861,8 @@ module Batch
 
   class Tracking < Column
 
-    def sort_ascending
-      sort :tracking_no, :ascending
-    end
-
-    def sort_descending
-      sort :tracking_no, :descending
+    def sort
+      Sort.new @browser, :tracking_no
     end
 
     def scroll_into_view
@@ -968,6 +876,27 @@ module Batch
     def data order_id
       scroll_into_view
       grid_text :tracking_no, row_number(order_id)
+    end
+  end
+
+  class DatePrinted < Column
+
+    def sort
+      Sort.new @browser, :date_printed
+    end
+    def scroll_into_view
+      scroll :date_printed
+    end
+
+    def field row
+      grid_field_column_name :ship_date, row
+    end
+
+    def data order_id
+      scroll_into_view
+      row = row_number(order_id)
+      log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      grid_text(:date_printed, row)
     end
   end
 
@@ -1095,32 +1024,6 @@ module Batch
       checked_rows
     end
 
-  end
-
-  class DatePrinted < Column
-
-    def sort_ascending
-      sort :date_printed, :ascending
-    end
-
-    def sort_descending
-      sort :date_printed, :descending
-    end
-
-    def scroll_into_view
-      scroll :date_printed
-    end
-
-    def field row
-      grid_field_column_name :ship_date, row
-    end
-
-    def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
-      grid_text(:date_printed, row)
-    end
   end
 
   # Order Grid
