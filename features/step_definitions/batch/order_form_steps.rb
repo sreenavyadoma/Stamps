@@ -78,35 +78,35 @@ end
 When /^Set Order Form Pounds to (\d*)$/ do |value|
   begin
     log "Step: Set Order Form Pounds to \"#{value}\""
-    batch.order_details.lbs.set log_param "Pounds", value
+    batch.order_details.lbs.set value
   end unless value.length == 0
 end
 
 When /^Set Order Form Ounces to (\d*)$/ do |value|
   begin
     log "Step: Set Order Form Ounces to \"#{value}\""
-    batch.order_details.oz.set log_param"Ounces", value
+    batch.order_details.oz.set value
   end unless value.length == 0
 end
 
 When /^Set Order Form Length to (\d*)$/ do |value|
   begin
     log "Step: Set Order Form Length to \"#{value}\""
-    batch.order_details.length.set log_param "Length", value
+    batch.order_details.length.set value
   end unless value.length == 0
 end
 
 When /^Set Order Form Width to (\d*)$/ do |value|
   begin
     log "Step: Set Order Form Width to \"#{value}\""
-    batch.order_details.width.set log_param "Width", value
+    batch.order_details.width.set value
   end unless value.length == 0
 end
 
 When /^Set Order Form Height to (\d*)$/ do |value|
   begin
     log "Step: Set Order Form Height to \"#{value}\""
-    batch.order_details.height.set log_param "Height", value
+    batch.order_details.height.set value
   end unless value.length == 0
 end
 
@@ -134,7 +134,7 @@ end
 
 When /^Set order details with$/ do |table|
   log "Step: Set order details with..."
-  batch.order_details.edit_details log_hash_param table.hashes.first
+  batch.order_details.edit_details table.hashes.first
 end
 
 Then /^Add Ship-From address$/ do |ship_from|

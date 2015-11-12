@@ -38,7 +38,7 @@ end
 
 Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
   log "Step: Expect \$#{expected} is deducted from customer balance if printing is successful"
-  log_param "Old Balance", @old_balance
+  log "Old Balance: #{@old_balance}"
   if @printing_error
     @new_balance = batch.navigation.balance
     test_result = @old_balance.to_f == @new_balance.to_f
@@ -56,7 +56,7 @@ end
 Then /^Expect Printing cost is deducted from customer balance if there were no printing errors$/ do
   log "Step: Expect Printing cost is deducted from customer balance if there were no printing errors"
   log "Printing Error:  #{@printing_error}"
-  log_param "Old Balance", @old_balance
+  log "Old Balance: #{@old_balance}"
   if @printing_error
     @new_balance = batch.navigation.balance
     balance_deduction = @old_balance.to_f == @new_balance.to_f

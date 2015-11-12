@@ -1,33 +1,41 @@
 module Stamps
-  private
-  def log_init
-    logger = Log4r::Logger.new ":"
-    logger.outputters = Outputter.stdout
-    logger.level = Log4r::INFO
-    logger
-  end
-
-  public
-  def self.logger
-    @logger ||= log_init
-  end
-
-  def log_debug message
-    Stamps.logger.debug caller[0] + message
-  end
-
-  def log message
-    begin
-      Stamps.logger.info message
-    rescue
-      # ignore
+  class Logger
+    private
+    def init
+      logger = Log4r::Logger.new ":"
+      logger.outputters = Outputter.stdout
+      logger.level = Log4r::INFO
+      logger
     end
-    message
+
+    def logger
+      @logger ||= init
+    end
+
+    public
+
+    def info message
+      begin
+        logger.info message
+      rescue
+        # ignore
+      end
+      message
+    end
+
+    def debug message
+      logger.debug caller[0] + message
+    end
+
+    def hash_param table
+      table.each{|key, value| log "## #{key} :: #{value}"}
+      table
+    end
+
   end
 
-  def log_hash_param table
-    table.each{|key, value| log "## #{key} :: #{value}"}
-    table
+  def log
+    @logger ||= Stamps::Logger.new
   end
 
   def log_param(param_name, value)

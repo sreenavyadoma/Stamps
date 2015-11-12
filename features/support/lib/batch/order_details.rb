@@ -1537,8 +1537,6 @@ module Batch
     end
 
     def edit_details(data = {})
-      #self.weight = {}
-      log_hash_param data
       self.insured_value.set data[:insured_value]
       self.lbs.set data[:lbs]
       self.oz.set data[:oz]
@@ -1548,13 +1546,11 @@ module Batch
     end
 
     def weight=(data={})
-      log_hash_param data
       self.lbs.set data[:lbs]
       self.oz.set data[:oz]
     end
 
     def dimensions=(data={})
-      log_hash_param data
       self.length.set data[:@length]
       self.width.set data[:width]
       self.height.set data[:height]

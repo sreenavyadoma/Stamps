@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile rob_dev
+default: --profile cuke_reports --profile sorting
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
 rob_dev: --tags @bvt_ambigious_address --guess VERBOSE=false URL=ss BROWSER=ff USR=autobase PW=326tsetaqcdS!
@@ -42,7 +42,7 @@ thermal_printing: --tags @thermal_printing --guess VERBOSE=false URL=qacc BROWSE
 
 two_up_expanded: --tags @two_up_expanded --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto06 PW=326tsetaqcdS!
 
-sorting: --tags @sort --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto30 PW=326tsetaqcdS!
+sorting: --tags @sort --guess VERBOSE=false URL=ss BROWSER=ff USR=auto30 PW=326tsetaqcdS!
 
 add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false URL=qacc BROWSER=ff USR=cctest2 PW=password1
 
