@@ -66,9 +66,9 @@ module Postage
         sign_in_link.safe_click unless sign_in_button.present?
         sleep 1
 
-        log "Verifying account info... #{(verifying_account_info.present?)?"true":"false"}"
+        #log "Verifying account info... #{(verifying_account_info.present?)?"true":"false"}"
         if verifying_account_info.present?
-          log "#{(verifying_account_info.present?)?"Verifying account info....":"Verifying account info done or not visible"}"
+          #log "#{(verifying_account_info.present?)?"Verifying account info....":"Verifying account info done or not visible"}"
           verifying_account_info.wait_while_present
           signed_in_user.wait_until_present
           log "Signed in username is #{signed_in_user.text}"

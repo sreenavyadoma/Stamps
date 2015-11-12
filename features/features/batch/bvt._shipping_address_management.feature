@@ -5,7 +5,7 @@ Feature:  BVT Address Management
     Given I am signed in as a batch shipper
 
   @bvt_shipping_address_management
-  Scenario: Shipping Address Management
+  Scenario: Add and Delete Ship-From Address
     And I Add a new order
     And Add Ship-From address random
     Then Expect random Ship-From address was added
