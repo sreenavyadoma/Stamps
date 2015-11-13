@@ -172,7 +172,7 @@ Then /^Expect Grid Address to be ([\w\s-]+)$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Expectation City to be ([\w\s]+)$/ do |expected|
+Then /^Expect Grid City to be ([\w\s]+)$/ do |expected|
   log.info "Expectation: Expect Grid City to be #{expected}"
   begin
     actual = batch.grid.city.data @order_id
