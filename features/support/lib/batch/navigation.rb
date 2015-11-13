@@ -53,8 +53,6 @@ module Batch
       log.info "Clicking Buy More link"
       browser_helper.click buy_more_link, "BuyMoreLink"
 
-
-      #balance_label.wait_while_present
       @browser.window.move_to 0, 0
 
     end

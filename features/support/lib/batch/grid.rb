@@ -322,6 +322,10 @@ module Batch
       Sort.new @browser, :recipient
     end
 
+    def scroll_into_view
+      scroll :recipient
+    end
+
     def field row
       grid_field_column_name :recipient, row
     end
