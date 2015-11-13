@@ -563,7 +563,7 @@ module Batch
       InternationalShipTo.new @browser
     end
 
-    def domestic
+    def address
       DomesticShipTo.new @browser
     end
 
@@ -608,10 +608,10 @@ module Batch
         grid_city = city row
         grid_state = state row
         if (grid_name.casecmp(name)==0) && (grid_company.casecmp(company)==0) && (grid_city.casecmp(city)==0)
-          log "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: " if Stamps::Test.verbose
+          log.info "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
           return row
         else
-          log "No match - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: " if Stamps::Test.verbose
+          log.info "No match - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
         end
       end
       0
@@ -764,7 +764,7 @@ module Batch
           for row in 1..(count)
             browser_helper.click window_title, 'window_title'
             delete_row 1
-            log "Row #{row} :: Deleting row 1..." if Stamps::Test.verbose
+            log.info "Row #{row} :: Deleting row 1..."
             break if shipping_address_count == 1
           end
         end
@@ -794,7 +794,7 @@ module Batch
     def shipping_address_count
       wait_until_present
       rows = @browser.trs(:css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
-      log "Manage Shipping Address:: row count = #{rows.length.to_i}" if Stamps::Test.verbose
+      log.info "Manage Shipping Address:: row count = #{rows.length.to_i}"
       rows.length.to_i
     end
 
@@ -819,7 +819,7 @@ module Batch
       field = @browser.table :css => "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
       value = browser_helper.attribute_value field, "class"
       checked = value.include? "selected"
-      log "Row #{row} selected? #{checked}" if Stamps::Test.verbose
+      log.info "Row #{row} selected? #{checked}"
       checked
     end
 
@@ -966,7 +966,7 @@ module Batch
     def delete
       5.times {
         begin
-          log "Delete Shipping Address :: #{message_field.text}" if Stamps::Test.verbose
+          log.info "Delete Shipping Address :: #{message_field.text}"
           browser_helper.click delete_button, 'Delete'
         rescue
           #ignore
@@ -1094,7 +1094,7 @@ module Batch
           button.safe_click unless selection_label.present?
           if selection_label.present?
             selection_cost = selection_label.parent.tds[1].text
-            log "#{selection_cost}" if Stamps::Test.verbose
+            log.info "#{selection_cost}"
             return selection_cost
           end
         rescue
@@ -1111,7 +1111,7 @@ module Batch
           button.safe_click unless selection_label.present?
           if selection_label.present?
             qtip = selection_label.parent.parent.parent.parent.attribute_value "data-qtip"
-            log "#{qtip}" if Stamps::Test.verbose
+            log.info "#{qtip}"
             return qtip
           end
         rescue
@@ -1141,7 +1141,7 @@ module Batch
     end
 
     def select selection
-      log "Select Service #{selection}" if Stamps::Test.verbose
+      log.info "Select Service #{selection}"
       box = text_box
       button = drop_down
       selection_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
@@ -1152,13 +1152,13 @@ module Batch
           selection_label.safe_click
           click_form
           selected_service = box.text
-          log "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}" if Stamps::Test.verbose
+          log.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
           break if selected_service.include? selection
         rescue
           #ignore
         end
       }
-      log "#{selection} service selected." if Stamps::Test.verbose
+      log.info "#{selection} service selected."
       selection_label
     end
 
@@ -1170,7 +1170,7 @@ module Batch
           button.safe_click unless cost_label.present?
           if cost_label.present?
             service_cost = test_helper.remove_dollar_sign cost_label.text
-            log "Service Cost for \"#{selection}\" is #{service_cost}" if Stamps::Test.verbose
+            log.info "Service Cost for \"#{selection}\" is #{service_cost}"
             return service_cost
           end
         rescue
@@ -1188,7 +1188,7 @@ module Batch
           button.safe_click unless selection_label.present?
           if selection_label.present?
             tooltip = selection_label.attribute_value "data-qtip"
-            log "Service Tooltip for \"#{selection}\" is #{tooltip}" if Stamps::Test.verbose
+            log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
             return tooltip
           end
         rescue
@@ -1221,7 +1221,7 @@ module Batch
     end
 
     def select country
-      log "Select Country #{country}" if Stamps::Test.verbose
+      log.info "Select Country #{country}"
 
       selection_1 = Label.new @browser.li :text => country
       selection_2 = Label.new @browser.li :text => "#{country} "
@@ -1239,13 +1239,13 @@ module Batch
             selection_2.safe_click
           end
 
-          log "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}" if Stamps::Test.verbose
+          log.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
           break if text_box.text.include? country
         rescue
           #ignore
         end
       }
-      log "#{country} selected." if Stamps::Test.verbose
+      log.info "#{country} selected."
       InternationalShipTo.new @browser unless country.include? "United States"
     end
   end
@@ -1460,7 +1460,7 @@ module Batch
 
     def add_item
       add_item = Link.new @browser.span :text => "Add Item"
-      log "Add Item Button #{(add_item.present?)?"Exist!":'DOES NOT EXIST!'}" if Stamps::Test.verbose
+      log.info "Add Item Button #{(add_item.present?)?"Exist!":'DOES NOT EXIST!'}"
 
       line_item = SingleOrderFormLineItem.new @browser
       5.times{
@@ -1529,7 +1529,7 @@ module Batch
     end
 
     def present?
-      (Label.new @browser.label :text => "Ship From:").present?
+      (Label.new @browser.label :text => "Awaiting Shipment'").present?
     end
 
     def wait_until_present
@@ -1537,8 +1537,6 @@ module Batch
     end
 
     def edit_details(data = {})
-      #self.weight = {}
-      log_hash_param data
       self.insured_value.set data[:insured_value]
       self.lbs.set data[:lbs]
       self.oz.set data[:oz]
@@ -1548,13 +1546,11 @@ module Batch
     end
 
     def weight=(data={})
-      log_hash_param data
       self.lbs.set data[:lbs]
       self.oz.set data[:oz]
     end
 
     def dimensions=(data={})
-      log_hash_param data
       self.length.set data[:@length]
       self.width.set data[:width]
       self.height.set data[:height]
@@ -1651,7 +1647,7 @@ module Batch
     end
     def ship_cost_span
       span = @browser.span :text => "Ship Cost"
-      log "single-order form is #{(browser_helper.present? span)?'present':'NOT present'}" if Stamps::Test.verbose
+      log.info "single-order form is #{(browser_helper.present? span)?'present':'NOT present'}"
       span
     end
 
@@ -1671,7 +1667,7 @@ module Batch
       begin
         order_id_label.wait_until_present
       rescue
-        log "single-order form Order ID label was not present" if Stamps::Test.verbose
+        log.info "single-order form Order ID label was not present"
       end
       #(browser_helper.text order_id_label).split('Order #').last
       order_id_str = order_id_label.text

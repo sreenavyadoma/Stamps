@@ -8,7 +8,7 @@ module Batch
     end
 
     def select country
-      log "Select Country #{country}" if Stamps::Test.verbose
+      log.info "Select Country #{country}"
 
       selection_1 = Label.new ((@browser.lis :text => country)[@index+1])
       selection_2 = Label.new ((@browser.lis :text => "#{country} ")[@index+1])
@@ -30,13 +30,13 @@ module Batch
             selection_2.safe_click
           end
 
-          log "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}" if Stamps::Test.verbose
+          log.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
           break if text_box.text.include? country
         rescue
           #ignore
         end
       }
-      log "#{country} selected." if Stamps::Test.verbose
+      log.info "#{country} selected."
     end
   end
 
@@ -84,15 +84,15 @@ module Batch
 
     def item number
       add_button = Button.new (@browser.spans :text => "Add Item").last
-      log "Item Count: #{line_item_count}" if Stamps::Test.verbose
+      log.info "Item Count: #{line_item_count}"
 
       20.times{
         add_button.safe_click if number > line_item_count
-        log "Item Count: #{line_item_count}" if Stamps::Test.verbose
+        log.info "Item Count: #{line_item_count}"
         break if line_item_count >= number
       }
 
-      log "User Entered Number: #{number}. Actual Item Count: #{line_item_count}" if Stamps::Test.verbose
+      log.info "User Entered Number: #{number}. Actual Item Count: #{line_item_count}"
 
       CustomsLineItem.new(@browser).line_item number
     end
@@ -214,7 +214,7 @@ module Batch
     end
 
     def select selection
-      log "Select Internal Transaction Number: #{selection}" if Stamps::Test.verbose
+      log.info "Select Internal Transaction Number: #{selection}"
       text_box = self.text_box
       drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
       selection_label = Label.new @browser.li :text => selection
@@ -223,13 +223,13 @@ module Batch
           drop_down.safe_click unless selection_label.present?
           selection_label.scroll_into_view
           selection_label.safe_click
-          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}" if Stamps::Test.verbose
+          log.info "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
           break if text_box.text.include? selection
         rescue
           #ignore
         end
       }
-      log "#{selection} selected." if Stamps::Test.verbose
+      log.info "#{selection} selected."
       selection_label
     end
   end
@@ -241,7 +241,7 @@ module Batch
     end
 
     def select selection
-      log "Select Internal Transaction Number: #{selection}" if Stamps::Test.verbose
+      log.info "Select Internal Transaction Number: #{selection}"
       text_box = self.text_box
       drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
       selection_label = Label.new @browser.li :text => selection
@@ -250,13 +250,13 @@ module Batch
           drop_down.safe_click unless selection_label.present?
           selection_label.scroll_into_view
           selection_label.safe_click
-          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}" if Stamps::Test.verbose
+          log.info "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
           break if text_box.text.include? selection
         rescue
           #ignore
         end
       }
-      log "#{selection} selected." if Stamps::Test.verbose
+      log.info "#{selection} selected."
       selection_label
     end
   end
@@ -268,7 +268,7 @@ module Batch
     end
 
     def select selection
-      log "Select Internal Transaction Number: #{selection}" if Stamps::Test.verbose
+      log.info "Select Internal Transaction Number: #{selection}"
       text_box = self.text_box
       drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
       selection_label = Label.new @browser.li :text => selection
@@ -277,13 +277,13 @@ module Batch
           drop_down.safe_click unless selection_label.present?
           selection_label.scroll_into_view
           selection_label.safe_click
-          log "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}" if Stamps::Test.verbose
+          log.info "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
           break if text_box.text.include? selection
         rescue
           #ignore
         end
       }
-      log "#{selection} selected." if Stamps::Test.verbose
+      log.info "#{selection} selected."
       selection_label
     end
   end
@@ -341,7 +341,7 @@ module Batch
 
     def total_weight_error
       qtip_error = total_weight.attribute_value "data-errorqtip"
-      log "Total Weight dev error: #{qtip_error}" if Stamps::Test.verbose
+      log.info "Total Weight dev error: #{qtip_error}"
       qtip_error
     end
 
@@ -349,19 +349,19 @@ module Batch
       divs = @browser.divs :css => "div[id^=displayfield]>div[id^=displayfield]>div[id^=displayfield]"
       div = divs[divs.size-2]
       weight_label = Label.new div
-      log "Total Weight: #{weight_label.text}" if Stamps::Test.verbose
+      log.info "Total Weight: #{weight_label.text}"
       weight_label
     end
 
     def total_weight_lbs
       lbs = total_weight.text.scan(/\d+/).first
-      log "Pounds: #{lbs}" if Stamps::Test.verbose
+      log.info "Pounds: #{lbs}"
       lbs
     end
 
     def total_weight_oz
       oz = total_weight.text.scan(/\d+/).last
-      log "Ounces: #{oz}" if Stamps::Test.verbose
+      log.info "Ounces: #{oz}"
       oz
     end
 
@@ -375,14 +375,14 @@ module Batch
       div = @browser.div :css => "div[id^=checkboxfield][style^=right]"
       attribute_value = browser_helper.attribute_value div
       checked = attribute_value.include? "checked"
-      log "I agree is #{(checked)? 'checked' : 'unchecked'}" if Stamps::Test.verbose
+      log.info "I agree is #{(checked)? 'checked' : 'unchecked'}"
       checked
     end
 
     def i_agree_checkbox
       text_fields = @browser.text_fields :css => "input[id^=checkboxfield]"
       text_field = text_fields.last
-      log "I Agree Checkbox is #{(browser_helper.present? text_field)?'Present' : 'Not Present'}" if Stamps::Test.verbose
+      log.info "I Agree Checkbox is #{(browser_helper.present? text_field)?'Present' : 'Not Present'}"
       text_field
     end
 
@@ -397,17 +397,17 @@ module Batch
 
       if user_agreed
         checkbox.check
-        log checkbox.checked? if Stamps::Test.verbose
+        log.info checkbox.checked?
       else
         checkbox.uncheck
-        log checkbox.checked? if Stamps::Test.verbose
+        log.info checkbox.checked?
       end
 
     end
 
     def privacy_act_statement_link
       link = @browser.span :text => "USPS Privacy Act Statement"
-      log "USPS Privacy Act Statement is #{(browser_helper.present? link)?'Present' : 'Not Present'}" if Stamps::Test.verbose
+      log.info "USPS Privacy Act Statement is #{(browser_helper.present? link)?'Present' : 'Not Present'}"
       link
     end
 
@@ -421,7 +421,7 @@ module Batch
 
     def restrictions_prohibitions_link
       link = @browser.span :text => "Restrictions and Prohibitions"
-      log "Restrictions and Prohibitions is #{(browser_helper.present? link)?'Present' : 'Not Present'}" if Stamps::Test.verbose
+      log.info "Restrictions and Prohibitions is #{(browser_helper.present? link)?'Present' : 'Not Present'}"
       link
     end
 

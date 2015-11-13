@@ -13,7 +13,7 @@ module Postage
       end
 
       @browser.goto url
-      log "Page loaded.  #{url}"
+      log.info "Page loaded.  #{url}"
       self
     end
 
@@ -27,12 +27,12 @@ module Postage
             username = args[0]
             password = args[1]
           else
-            log "Using Default Sign-in Credentials: #{ENV["USR"]}/#{ENV["PW"]}"
+            log.info "Using Default Sign-in Credentials: #{ENV["USR"]}/#{ENV["PW"]}"
             username = ENV["USR"]
             password = ENV["PW"]
           end
         else
-          log "Using Default Sign-in Credentials: #{ENV["USR"]}/#{ENV["PW"]}"
+          log.info "Using Default Sign-in Credentials: #{ENV["USR"]}/#{ENV["PW"]}"
           username = ENV["USR"]
           password = ENV["PW"]
       end
@@ -66,19 +66,19 @@ module Postage
         sign_in_link.safe_click unless sign_in_button.present?
         sleep 1
 
-        log "Verifying account info... #{(verifying_account_info.present?)?"true":"false"}"
+        #log.info "Verifying account info... #{(verifying_account_info.present?)?"true":"false"}"
         if verifying_account_info.present?
-          log "#{(verifying_account_info.present?)?"Verifying account info....":"Verifying account info done or not visible"}"
+          #log.info "#{(verifying_account_info.present?)?"Verifying account info....":"Verifying account info done or not visible"}"
           verifying_account_info.wait_while_present
           signed_in_user.wait_until_present
-          log "Signed in username is #{signed_in_user.text}"
+          log.info "Signed in username is #{signed_in_user.text}"
         end
 
-        log "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
+        log.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
         break if signed_in_user.present?
       }
-      log "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
+      log.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
       ENV["SIGNED_IN_USER"] = username
 

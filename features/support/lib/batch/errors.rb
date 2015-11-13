@@ -45,11 +45,11 @@ module Batch
 
     def error_message
       error_message = browser_helper.text error_message_label
-      if Stamps::Test.verbose
-        log "----  Order Errors  ----"
-        log error_message
-        log "----  Order Errors  ----"
-      end
+
+      log.info "----  Order Errors  ----"
+      log.info error_message
+      log.info "----  Order Errors  ----"
+
       error_message
     end
 
@@ -164,9 +164,9 @@ module Batch
     end
 
     def OK
-      log "----  Rating Error  ----"
-      log browser_helper.text rating_error_p
-      log "----  Rating Error  ----"
+      log.info "----  Rating Error  ----"
+      log.info browser_helper.text rating_error_p
+      log.info "----  Rating Error  ----"
       5.times {
         browser_helper.click ok_button, 'OK'
         break unless present?
@@ -183,13 +183,13 @@ module Batch
     private
     def close_window_button
       img = @browser.img :css => "img[class='x-tool-img x-tool-close']"
-      log "#{(browser_helper.present? img)?'Stamps.com Plugin Issue':''}" if Stamps::Test.verbose
+      log.info "#{(browser_helper.present? img)?'Stamps.com Plugin Issue':''}"
       img
     end
 
     def window_title
       div = @browser.div :text => "Stamps.com Plugin Issue"
-      log "#{(browser_helper.present? div)?'Stamps.com Plugin Issue':''}" if Stamps::Test.verbose
+      log.info "#{(browser_helper.present? div)?'Stamps.com Plugin Issue':''}"
       div
     end
 
@@ -224,125 +224,121 @@ module Batch
 
       present = err.include? "Error code: [1009]"
       if present
-        if Stamps::Test.verbose
-          log "NAWS Plugin Error detected.  Error code: [1009]"
-          log error_code_p
-        end
+        log.info "NAWS Plugin Error detected.  Error code: [1009]"
+        log.info error_code_p
       end
       present
-    end
-
-    def print_error_message
-      ptags = @browser.ps :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p"
-      log "-- Print Plugin Error [Error code: [1009]]--" if Stamps::Test.verbose
-      ptags.each {|p_tag|
-        if browser_helper.present? p_tag
-          log "\n#{browser_helper.text p_tag}" if Stamps::Test.verbose
-        end
-      }
-      log "-- Print Plugin Error [Error code: [1009]]--" if Stamps::Test.verbose
-      self
-    end
-
-    def ok
-      print_error_message
-      browser_helper.click ok_button, "OK"
-      self
     end
   end
 
-  class ErrorInstallPlugin < BatchObject
-    private
-
-    def error_message_label
-      @browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
-    end
-
-    def window_x_button
-      @browser.img :css => "img[class$=x-tool-close]"
-    end
-
-    public
-    def close
-      log "Closing Plugin not Installed Window" if Stamps::Test.verbose
-      browser_helper.click window_x_button
-      log "Plugin not Installed Window Closed" if Stamps::Test.verbose
-    end
-
-    def present?
-      err = ""
-      begin
-        err = browser_helper.text error_message_label
-      rescue
-        #ignore
+  def print_error_message
+    ptags = @browser.ps :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p"
+    log.info "-- Print Plugin Error [Error code: [1009]]--"
+    ptags.each {|p_tag|
+      if browser_helper.present? p_tag
+        log.info "\n#{browser_helper.text p_tag}"
       end
-      present = (err).include? "Install Plugin"
-      if present
-        log "Plug-in is not installed.  Install  Plugin Window is Present" if Stamps::Test.verbose
-        log error_message if Stamps::Test.verbose
-      end
-      present
-    end
-
-    def error_message
-      browser_helper.text error_message_label
-    end
+    }
+    log.info "-- Print Plugin Error [Error code: [1009]]--"
+    self
   end
 
-  class ErrorConnectingToPlugin < BatchObject
-    private
-
-    def error_message_label
-      @browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
-    end
-
-    def error_code
-	  @browser.p :text => "Error code: [1010]"
-    end
-
-    def ok_button
-      @browser.span :text => 'OK'
-    end
-
-    public
-    def error_message
-      browser_helper.text error_message_label
-    end
-
-    def wait_until_present
-      begin
-        error_message_label.wait_until_present
-      rescue
-        #ignroe
-      end
-      self
-    end
-
-    def present?
-      err = ""
-      begin
-        err = browser_helper.text error_code
-      rescue
-        #ignore
-      end
-
-      present = err.include? "Error code: [1010]"
-      if present
-        if Stamps::Test.verbose
-          log "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
-          log error_code
-          log "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
-        end
-      end
-      present
-    end
-
-    def ok
-      10.times {
-        browser_helper.click ok_button, 'OK'
-        break unless present?
-      }
-    end
-
+  def ok
+    print_error_message
+    browser_helper.click ok_button, "OK"
+    self
   end
 end
+
+class ErrorInstallPlugin < BatchObject
+  private
+
+  def error_message_label
+    @browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
+  end
+
+  def window_x_button
+    @browser.img :css => "img[class$=x-tool-close]"
+  end
+
+  public
+  def close
+    log.info "Closing Plugin not Installed Window"
+    browser_helper.click window_x_button
+    log.info "Plugin not Installed Window Closed"
+  end
+
+  def present?
+    err = ""
+    begin
+      err = browser_helper.text error_message_label
+    rescue
+      #ignore
+    end
+    present = (err).include? "Install Plugin"
+    if present
+      log.info "Plug-in is not installed.  Install  Plugin Window is Present"
+      log.info error_message
+    end
+    present
+  end
+
+  def error_message
+    browser_helper.text error_message_label
+  end
+end
+
+class ErrorConnectingToPlugin < BatchObject
+  private
+
+  def error_message_label
+    @browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
+  end
+
+  def error_code
+    @browser.p :text => "Error code: [1010]"
+  end
+
+  def ok_button
+    @browser.span :text => 'OK'
+  end
+
+  public
+  def error_message
+    browser_helper.text error_message_label
+  end
+
+  def wait_until_present
+    begin
+      error_message_label.wait_until_present
+    rescue
+      #ignroe
+    end
+    self
+  end
+
+  def present?
+    err = ""
+    begin
+      err = browser_helper.text error_code
+    rescue
+      #ignore
+    end
+
+    present = err.include? "Error code: [1010]"
+    if present
+      log.info "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
+      log.info error_code
+      log.info "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
+    end
+    present
+  end
+
+  def ok
+    10.times {
+      browser_helper.click ok_button, 'OK'
+      break unless present?
+    }
+  end
+end
+

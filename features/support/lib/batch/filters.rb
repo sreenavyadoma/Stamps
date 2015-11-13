@@ -51,7 +51,7 @@ module Batch
 
     def get_arrow_direction
       style =  browser_helper.style filter_panel_border_arrow, "background-image"
-      log style if Stamps::Test.verbose
+      log.info style
       if style.include? 'mini-left.png'
         return 'left'
       elsif style.include? 'mini-right.png'
