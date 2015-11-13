@@ -12,7 +12,7 @@ When /^Select (\w+) side label$/ do |label_side|
 end
 
 Then /^Expect (\w+) side label selected$/ do |label|
-  log.info "Step: Expect #{label} side label selected"
+  log.info "Expectation: Expect #{label} side label selected"
   if label.casecmp("left") == 0
     selected = batch.toolbar.print_modal.starting_label.left_selected?
     log.info "Expect #{label} side label selected.  Test #{(selected)?'Passed.':'Failed'}"
@@ -35,7 +35,7 @@ Then /^Set Ship Date Picker to (\d+) day\(s\) from today$/ do |day|
 end
 
 Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
-  log.info "Step: Expect Print Window Ship Date to be #{day} day(s) from today"
+  log.info "Expectation: Expect Print Window Ship Date to be #{day} day(s) from today"
   actual = batch.toolbar.print_modal.ship_date.text
   expected = test_helper.print_date day
   log.info "Expect Print Window Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
@@ -58,7 +58,7 @@ Then /^Select Printer \"(.*)\"$/ do |printer|
 end
 
 Then /^Expect Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, expected_value|
-  log.info "Step: Expect Print Media #{print_media} tooltip to include #{expected_value}"
+  log.info "Expectation: Expect Print Media #{print_media} tooltip to include #{expected_value}"
   actual_value = batch.toolbar.print_modal.printing_on.selection :tooltip, print_media
   log.info "Expect Print Media \"#{print_media}\" tooltip to include \"#{expected_value}\" - Test #{(actual_value.include? expected_value)?"Passed":"Failed"}"
   actual_value.should include expected_value
@@ -115,7 +115,7 @@ When /^Print expecting some orders can not be printed$/ do
 end
 
 Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  log.info "Step: Expect Print Window title to be \"You have #{expectation} label\(s\) ready to print\""
+  log.info "Expectation: Expect Print Window title to be \"You have #{expectation} label\(s\) ready to print\""
   actual = batch.toolbar.print_modal.labels_ready_to_print
   batch.toolbar.print_modal.close
   log.info "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
@@ -123,7 +123,7 @@ Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print
 end
 
 Then /^Expect Print Window requires (\d+) label sheets$/ do |sheets|
-  log.info "Step: Expect Print Window requires #{sheets} label sheets"
+  log.info "Expectation: Expect Print Window requires #{sheets} label sheets"
   actual = batch.toolbar.print_modal.labels_required
   log.info "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheets==actual)?'Passed':'Failed'}"
   actual.should eql sheets

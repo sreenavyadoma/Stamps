@@ -78,7 +78,7 @@ Then /^Pagination control to go to last page is (\w+)$/ do |last_pagination_enab
 end
 
 Then /^Expect page toolbar First Page is (\w+)$/  do |expectation|
-  log.info "Step: Expect page toolbar First Page is #{expectation}"
+  log.info "Expectation: Expect page toolbar First Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.first_page.present?
@@ -92,7 +92,7 @@ Then /^Expect page toolbar First Page is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Previous Page is (\w+)$/  do |expectation|
-  log.info "Step: Expect page toolbar Previous Page is #{expectation}"
+  log.info "Expectation: Expect page toolbar Previous Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.previous_page.present?
@@ -106,7 +106,7 @@ Then /^Expect page toolbar Previous Page is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Page Number is (\w+)$/  do |expectation|
-  log.info "Step: Expect page toolbar Page Number is #{expectation}"
+  log.info "Expectation: Expect page toolbar Page Number is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.page_number.present?
@@ -117,7 +117,7 @@ Then /^Expect page toolbar Page Number is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Next Page is (\w+)$/  do |expectation|
-  log.info "Step: Expect page toolbar Next Page is #{expectation}"
+  log.info "Expectation: Expect page toolbar Next Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.next_page.present?
@@ -131,7 +131,7 @@ Then /^Expect page toolbar Next Page is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
-  log.info "Step: Expect page toolbar Last Page is #{expectation}"
+  log.info "Expectation: Expect page toolbar Last Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.last_page.present?
@@ -176,7 +176,7 @@ When /^Set Page Number to (\d*)$/ do |value|
 end
 
 Then /^Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
-  log.info "Step: Expect Total Number of Pages to be #{total_number_of_pages}"
+  log.info "Expectation: Expect Total Number of Pages to be #{total_number_of_pages}"
   log.info "Passed value is #{total_number_of_pages}"
   browser_total_number_of_pages = batch.grid.toolbar.total_number_of_pages.to_s
   log.info "DD value is #{browser_total_number_of_pages}"
@@ -187,7 +187,7 @@ Then /^Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
 end
 
 Then /^Expect number of orders on page to be correct$/ do
-  log.info "Step: Expect number of orders on page to be correct"
+  log.info "Expectation: Expect number of orders on page to be correct"
   batch.grid.checkbox.check_all
   multi_order_count = batch.multi_order.order_count.to_s
   log.info "Multi Order Count is #{multi_order_count}"

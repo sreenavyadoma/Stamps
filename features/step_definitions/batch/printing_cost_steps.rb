@@ -8,7 +8,7 @@ Then /^Save Shipping Costs Data$/ do
 end
 
 Then /^Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost$/ do
-  log.info "Step: Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost"
+  log.info "Expectation: Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost"
   @total_amount = batch.order_details.total
   @service_cost = batch.order_details.service_cost
   @tracking_cost = batch.order_details.tracking_cost
@@ -19,7 +19,7 @@ Then /^Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost
 end
 
 Then /^Expect Ship Cost equals Total amount$/ do
-  log.info "Step: Expect Ship Cost equals Total amount"
+  log.info "Expectation: Expect Ship Cost equals Total amount"
   total_amount = batch.order_details.total
   ship_cost = batch.grid.ship_cost.data @order_id
   10.times { |counter|
@@ -37,7 +37,7 @@ Then /^Expect Ship Cost equals Total amount$/ do
 end
 
 Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
-  log.info "Step: Expect \$#{expected} is deducted from customer balance if printing is successful"
+  log.info "Expectation: Expect \$#{expected} is deducted from customer balance if printing is successful"
   log.info "Old Balance: #{@old_balance}"
   if @printing_error
     @new_balance = batch.navigation.balance
@@ -54,7 +54,7 @@ Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is succe
 end
 
 Then /^Expect Printing cost is deducted from customer balance if there were no printing errors$/ do
-  log.info "Step: Expect Printing cost is deducted from customer balance if there were no printing errors"
+  log.info "Expectation: Expect Printing cost is deducted from customer balance if there were no printing errors"
   log.info "Printing Error:  #{@printing_error}"
   log.info "Old Balance: #{@old_balance}"
   if @printing_error
@@ -77,7 +77,7 @@ Then /^Expect Printing cost is deducted from customer balance if there were no p
 end
 
 Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expectation|
-  log.info "Step: Expect Print Window Total Cost to be #{expectation}"
+  log.info "Expectation: Expect Print Window Total Cost to be #{expectation}"
   begin
     print_window = batch.toolbar.print_modal
     actual_value = print_window.total_cost
