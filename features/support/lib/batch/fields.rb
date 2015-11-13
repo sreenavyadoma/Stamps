@@ -81,6 +81,5 @@ module Batch
         raise "Unsupported address format."
       end
     end
-  end
 
 end
