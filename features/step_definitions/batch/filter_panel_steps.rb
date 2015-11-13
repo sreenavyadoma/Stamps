@@ -1,14 +1,14 @@
 Then /^Expect system shows name of (.*) filter in closed panel$/ do |filter|
   log.info "Step: Expect system shows name of #{filter} filter in closed panel"
   actual = batch.filters_panel.get_closed_filter_name
-  log_expectation_eql "Closed Filter Panel Name", filter, actual
+  #log_expectation_eql "Closed Filter Panel Name", filter, actual
   actual.should eql filter
 end
 
 Then /^Expect system changes the panel arrow so that it is pointing to the (.*) direction$/ do |direction|
   log.info "Step: Expect system changes the panel arrow so that it is pointing to the #{direction} direction"
   actual = batch.filters_panel.get_arrow_direction
-  log_expectation_eql "Border arrow direction", direction, actual
+  #log_expectation_eql "Border arrow direction", direction, actual
   actual.should eql direction
 end
 

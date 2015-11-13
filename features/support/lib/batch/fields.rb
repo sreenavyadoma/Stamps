@@ -60,7 +60,7 @@ module Batch
 
     def address_hash_to_str address
       name = (address["name"].downcase.include? "random") ? test_helper.random_name : address["name"]
-      company1 = (address["company"].downcase.include? "random") ? test_helper.random_company_name : address["company"]
+      company_name = (address["company"].downcase.include? "random") ? test_helper.random_company_name : address["company"]
       street_address = address["street_address"]
       city = address["city"]
       state = address["state"]
@@ -72,7 +72,7 @@ module Batch
 
 
         log.info "Ship-To Name: #{name}"
-        log.info "Ship-To Company: #{company1}"
+        log.info "Ship-To Company: #{company_name}"
         log.info "Ship-To Address: #{street_address}"
         log.info "Ship-To City: #{city}"
         log.info "Ship-To State: #{state}"
@@ -80,8 +80,7 @@ module Batch
         log.info "Ship-To Phone: #{phone}"
         log.info "Ship-To Email: #{email}"
 
-      formatted_address = "#{name},#{company},#{street_address},#{city} #{state} #{zip}"
-
+      formatted_address = "#{name},#{company_name},#{street_address},#{city} #{state} #{zip}"
       log.info "Formatted Address: #{formatted_address}"
       formatted_address
     end
