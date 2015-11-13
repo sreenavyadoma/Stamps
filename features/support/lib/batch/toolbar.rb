@@ -89,7 +89,7 @@ module Batch
       add_button = Button.new (@browser.spans :text => 'Add').first
 
       old_grid_row_1_id = grid.order_id.row 1
-      log.info "Grid 1 order ID #{old_grid_row_1_id}"
+      log.info "Row 1 Order ID #{old_grid_row_1_id}"
       20.times do |count|
         begin
           add_button.safe_click
