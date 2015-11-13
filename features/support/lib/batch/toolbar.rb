@@ -89,19 +89,19 @@ module Batch
       add_button = Button.new (@browser.spans :text => 'Add').first
 
       old_grid_row_1_id = grid.order_id.row 1
-      log.info "Grid 1 order ID #{old_grid_row_1_id}" if Stamps::Test.verbose
+      log.info "Grid 1 order ID #{old_grid_row_1_id}"
       20.times do |count|
         begin
           add_button.safe_click
           5.times{
             sleep 1
-            log.info "#{count} single-order form present?  #{single_order_form.present?}" if Stamps::Test.verbose
+            log.info "#{count} single-order form present?  #{single_order_form.present?}"
             break if single_order_form.present?
             break if single_order_form.present?
             break if single_order_form.present?
           }
           new_id = old_grid_row_1_id != grid.order_id.row(1) && grid.order_id.row(1) == single_order_form.order_id
-          log.info "Add #{(new_id)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_grid_row_1_id}, New Grid 1 ID: #{grid.order_id.row(1)}, Order Details Order ID:  #{grid.order_id.row(1)}" if Stamps::Test.verbose
+          log.info "Add #{(new_id)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_grid_row_1_id}, New Grid 1 ID: #{grid.order_id.row(1)}, Order Details Order ID:  #{grid.order_id.row(1)}"
           return single_order_form if new_id
         rescue
           #ignore

@@ -15,7 +15,7 @@ module Batch
     public
 
     def complete_purchase
-      log.info "Purchase Complete, clicking OK" if Stamps::Test.verbose
+      log.info "Purchase Complete, clicking OK"
       begin
         purchase_complete_header.wait_until_present(10)
       rescue
@@ -164,9 +164,9 @@ module Batch
     end
 
     def purchase
-      log.info "Purchase button clicked" if Stamps::Test.verbose
+      log.info "Purchase button clicked"
       purchase_button.click
-      log.info "Purchase confirmed" if Stamps::Test.verbose
+      log.info "Purchase confirmed"
       self
     end
 

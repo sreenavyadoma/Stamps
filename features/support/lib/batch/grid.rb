@@ -10,7 +10,7 @@ module Batch
       divs = @browser.divs :css => "div[id^=tbtext]"
       div = divs.last
       present = browser_helper.present? div
-      log.info "Page count: #{browser_helper.text div}" if Stamps::Test.verbose
+      log.info "Page count: #{browser_helper.text div}"
       div
     end
 
@@ -109,7 +109,7 @@ module Batch
     def row_count
       tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
       count = tables.size
-      log.info "Total Number of Orders on Grid:  #{count}" if Stamps::Test.verbose
+      log.info "Total Number of Orders on Grid:  #{count}"
       count.to_i
     end
 
@@ -121,7 +121,7 @@ module Batch
 
     def column_name_field column
       column_name = @browser.span :text => GRID_COLUMNS[column]
-      log.info "Column Name:  #{browser_helper.text column_name}" if Stamps::Test.verbose
+      log.info "Column Name:  #{browser_helper.text column_name}"
       column_name
     end
 
@@ -160,7 +160,7 @@ module Batch
           end
         }
       rescue Exception => e
-        log e if Stamps::Test.verbose
+        log e
       end
     end
 
@@ -172,13 +172,13 @@ module Batch
       row = 1
       column = column_number(:order_id)
       css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column})>div"
-      log.info "Order ID: #{order_id} CSS: #{css}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} CSS: #{css}"
       fields = @browser.divs :css => css
       fields.each_with_index { |div, index|
         row_text = browser_helper.text div
         if row_text.include? order_id
           row = index + 1 #row offset
-          log.info "Order ID #{order_id} is in Row #{row}" if Stamps::Test.verbose
+          log.info "Order ID #{order_id} is in Row #{row}"
           break
         end
       }
@@ -243,7 +243,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:age, row)
     end
   end
@@ -265,7 +265,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:order_date, row)
     end
   end
@@ -328,7 +328,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id}, Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id}, Row #{row}"
       grid_text(:recipient, row)
     end
 
@@ -359,7 +359,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id}, Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id}, Row #{row}"
       grid_text(:company, row)
     end
   end
@@ -381,7 +381,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:address, row)
     end
 
@@ -407,7 +407,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:city, row)
     end
   end
@@ -429,7 +429,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:state, row)
     end
   end
@@ -451,7 +451,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:zip, row)
     end
   end
@@ -473,7 +473,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:phone, row)
     end
   end
@@ -495,7 +495,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:email, row)
     end
   end
@@ -517,7 +517,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:qty, row)
     end
   end
@@ -539,7 +539,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:item_sku, row)
     end
   end
@@ -561,7 +561,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:item_name, row)
     end
   end
@@ -583,9 +583,9 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       weight = grid_text(:weight, row)
-      log.info "Weight: #{weight}" if Stamps::Test.verbose
+      log.info "Weight: #{weight}"
       weight
     end
 
@@ -615,7 +615,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       test_helper.remove_dollar_sign grid_text(:insured_value, row)
     end
   end
@@ -637,7 +637,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:order_status, row)
     end
   end
@@ -659,7 +659,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:ship_date, row)
     end
   end
@@ -681,7 +681,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:ship_from, row)
     end
   end
@@ -703,7 +703,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:order_total, row)
     end
   end
@@ -725,7 +725,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:country, row)
     end
   end
@@ -747,14 +747,14 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:ship_cost, row)
     end
 
     def ship_cost_error order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
 
       ship_cost_field = grid_field :ship_cost, row
 
@@ -788,7 +788,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:company, row)
     end
   end
@@ -810,7 +810,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:service, row)
     end
   end
@@ -832,7 +832,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:reference_no, row)
     end
   end
@@ -854,7 +854,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:cost_code, row)
     end
   end
@@ -895,7 +895,7 @@ module Batch
     def data order_id
       scroll_into_view
       row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}" if Stamps::Test.verbose
+      log.info "Order ID: #{order_id} = Row #{row}"
       grid_text(:date_printed, row)
     end
   end
@@ -935,9 +935,9 @@ module Batch
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
         checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
         checkbox.check
-        log.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}." if Stamps::Test.verbose
+        log.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
       else
-        log.info "Grid is empty" if Stamps::Test.verbose
+        log.info "Grid is empty"
       end
     end
 
@@ -948,9 +948,9 @@ module Batch
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
         checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
         checkbox.uncheck
-        log.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}." if Stamps::Test.verbose
+        log.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
       else
-        log.info "Grid is empty" if Stamps::Test.verbose
+        log.info "Grid is empty"
       end
     end
 
@@ -972,7 +972,7 @@ module Batch
       if args.length==1
         if args[0].is_a? Hash
           rows = args[0]
-          log.info "Restoring #{} checked orders..." if Stamps::Test.verbose
+          log.info "Restoring #{} checked orders..."
         else
           raise "Invalid parameter exception.  This method expects a Hash of Web Elements."
         end
@@ -982,7 +982,7 @@ module Batch
           checked = hash_element[1]
           if checked
             check row_number
-            log.info "Row #{row_number} #{row_checked? row_number}" if Stamps::Test.verbose
+            log.info "Row #{row_number} #{row_checked? row_number}"
           end
 
         end
@@ -1002,7 +1002,7 @@ module Batch
         cache_count = args[0]
       end
 
-      log.info "Caching checked rows..." if Stamps::Test.verbose
+      log.info "Caching checked rows..."
       checked_rows = Hash.new
       grid_total = row_count
       if cache_count > 2 && cache_count < grid_total
@@ -1012,15 +1012,15 @@ module Batch
       else
         cache_item_count = cache_count
       end
-      log.info "Number of rows to check:  #{cache_item_count}" if Stamps::Test.verbose
+      log.info "Number of rows to check:  #{cache_item_count}"
       1.upto(cache_item_count) { |row|
         checked = checked? row
         if checked
           checked_rows[row] = checked
         end
-        log.info "Row #{row} Checked? #{checked}.  Stored:  #{checked_rows[row]}" if Stamps::Test.verbose
+        log.info "Row #{row} Checked? #{checked}.  Stored:  #{checked_rows[row]}"
       }
-      log.info "Checked rows cached." if Stamps::Test.verbose
+      log.info "Checked rows cached."
       checked_rows
     end
 
@@ -1147,9 +1147,9 @@ module Batch
 
     def wait_until_present *args
       grid_present_span = Label.new (@browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]")
-      log.info "Order Grid is #{(grid_present_span.present?)?'present':'NOT present'}" if Stamps::Test.verbose
+      log.info "Order Grid is #{(grid_present_span.present?)?'present':'NOT present'}"
       grid_present_span.wait_until_present
-      log.info "Order Grid is #{(grid_present_span.present?)?'present':'NOT present'}" if Stamps::Test.verbose
+      log.info "Order Grid is #{(grid_present_span.present?)?'present':'NOT present'}"
     end
 
   end

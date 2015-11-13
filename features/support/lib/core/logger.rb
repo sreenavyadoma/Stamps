@@ -16,7 +16,7 @@ module Stamps
 
     def info message
       begin
-        logger.info message
+        (logger.info message) if Stamps::Test.verbose
       rescue
         # ignore
       end
@@ -24,7 +24,7 @@ module Stamps
     end
 
     def debug message
-      logger.debug caller[0] + message
+      (logger.debug caller[0] + message) if Stamps::Test.verbose
     end
 
     def hash_param table

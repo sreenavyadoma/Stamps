@@ -44,7 +44,7 @@ module Stamps
         if args.length == 1
           ENV['BROWSER'] = args[0]
         end
-        log.info "Browser Selection: #{ENV['BROWSER']}" if Stamps::Test.verbose
+        log.info "Browser Selection: #{ENV['BROWSER']}"
 
         if Test.browser.explorer?
           system "taskkill /im IEDriverServer.exe /f 2>nul"
@@ -98,7 +98,7 @@ module Stamps
         driver.window.maximize
         @browser = driver
       rescue Exception => e
-        log e if Stamps::Test.verbose
+        log e
         raise e
       end
     end
@@ -160,16 +160,16 @@ module Stamps
       case args.length
         when 0
           now = Date.today
-          log.info "Today:  #{now}" if Stamps::Test.verbose
+          log.info "Today:  #{now}"
           month = (now.month.to_s.length==1)?"0#{now.month}":now.month
           day = (now.day.length==1)?"0#{now.day}":now.day
           "#{month}/#{day}/#{now.year}"
         when 1
           now = Date.today
-          log.info "Today:  #{now}" if Stamps::Test.verbose
+          log.info "Today:  #{now}"
           days_to_add = args[0].to_i
           new_date = now + days_to_add
-          log.info "New Date:  #{new_date}" if Stamps::Test.verbose
+          log.info "New Date:  #{new_date}"
           month = (new_date.month.to_s.length==1)?"0#{new_date.month}":new_date.month
           day = (new_date.day.to_s.length==1)?"0#{new_date.day}":new_date.day
           now = "#{month}/#{day}/#{new_date.year}"

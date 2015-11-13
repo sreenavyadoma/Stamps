@@ -25,13 +25,13 @@ module Batch
   class PrintWindowDatePicker < BatchObject
     def today_span
       span = @browser.span :css => "div[id^=datepicker][data-ref='footerEl']>a>span>span>span[class*=inner]"
-      log.info "Today span present? #{browser_helper.present? span}" if Stamps::Test.verbose
+      log.info "Today span present? #{browser_helper.present? span}"
       span
     end
 
     def todays_date_div
       div = @browser.div :css => "div[title='Today']"
-      log.info "Today div present? #{browser_helper.present? div}" if Stamps::Test.verbose
+      log.info "Today div present? #{browser_helper.present? div}"
       div
     end
 
@@ -89,10 +89,10 @@ module Batch
 
       if dont_show
         dont_show_checkbox.check
-        log.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}" if Stamps::Test.verbose
+        log.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
       else
         dont_show_checkbox.uncheck
-        log.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}" if Stamps::Test.verbose
+        log.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
       end
     end
 
@@ -145,7 +145,7 @@ module Batch
     def label_selected? div
       8.times{
         selected = browser_helper.attribute_value(div, 'class').include? 'selected'
-        log.info "Label selected?  #{(selected)? 'Yes':'No'}" if Stamps::Test.verbose
+        log.info "Label selected?  #{(selected)? 'Yes':'No'}"
         break if selected
       }
       browser_helper.attribute_value(div, 'class').include? 'selected'
@@ -245,7 +245,7 @@ module Batch
 
     def title
       div = @browser.div :css => "div[id^=printwindow]>div[id^=title]>div[id^=title]"
-      log.info "Title: #{div}" if Stamps::Test.verbose
+      log.info "Title: #{div}"
       browser_helper.text div
     end
 
@@ -333,7 +333,7 @@ module Batch
           ptags.each {|p_tag|
             if browser_helper.present? p_tag
               p_tag_text = browser_helper.text p_tag
-              log.info "\n#{p_tag_text}" if Stamps::Test.verbose
+              log.info "\n#{p_tag_text}"
             end
           }
           log.info "-- Chrome NAWS Plugin Error --"

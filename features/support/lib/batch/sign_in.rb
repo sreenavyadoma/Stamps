@@ -123,7 +123,7 @@ module Batch
 
       20.times do
         begin
-          log.info "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
+          log.info "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}"
           break if toolbar.present? #|| grid.present?
           if username_textbox.present?
             username_textbox.wait_until_present
@@ -136,8 +136,8 @@ module Batch
               #ignore
             end
             sleep 6
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}" if Stamps::Test.verbose
+            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             begin
               sign_in.send_keys :enter
@@ -145,36 +145,36 @@ module Batch
               #ignore
             end
 
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}" if Stamps::Test.verbose
+            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             sleep 6
 
             toolbar.wait_until_present
 
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}" if Stamps::Test.verbose
+            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
             break if toolbar.present? #|| grid.present?
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}" if Stamps::Test.verbose
+            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             if welcome_modal.present?
               welcome_modal.ok
               break
             end
 
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}" if Stamps::Test.verbose
+            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
             if welcome_orders_page.present?
               welcome_orders_page.continue
               break
             end
 
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}" if Stamps::Test.verbose
+            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
             break if toolbar.present?
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}" if Stamps::Test.verbose
+            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             if plugin_issue.present?
               plugin_issue.close
@@ -184,12 +184,12 @@ module Batch
             visit
           end
 
-          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-          log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}" if Stamps::Test.verbose
+          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+          log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
           break if toolbar.present? #|| grid.present?
 
-          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-          log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}" if Stamps::Test.verbose
+          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+          log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
           begin
             navigation.orders.click
           rescue
@@ -197,15 +197,15 @@ module Batch
           end
 
           sleep 4
-          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-          log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}" if Stamps::Test.verbose
+          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+          log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
           break if toolbar.present? #|| grid.present?
 
-          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
-          log.info "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}" if Stamps::Test.verbose
+          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+          log.info "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}"
           visit
         rescue Exception => e
-          log e if Stamps::Test.verbose
+          log e
         end
       end
 
