@@ -1,7 +1,7 @@
 Then /^Expect USPS Terms modal appears$/ do
   log.info "Step: Expect USPS Terms modal appears"
   actual = batch.toolbar.usps_intl_terms.is_usps_terms_modal_present
-  log_expectation_eql "Expect USPS Terms modal appears", true, actual
+  #log_expectation_eql "Expect USPS Terms modal appears", true, actual
   actual.should eql true
 
 end

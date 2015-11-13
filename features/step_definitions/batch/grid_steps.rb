@@ -102,7 +102,7 @@ Then /^Expect Grid Age to be (.*)$/ do |expected|
     actual = batch.grid.age @order_id
     5.times { |counter|
       sleep(1)
-      log_expectation_eql "#{counter}. Age", expected, actual
+      #log_expectation_eql "#{counter}. Age", expected, actual
       break if actual.eql? expected
       actual = batch.grid.age @order_id
     }
@@ -119,7 +119,7 @@ Then /^Expect Grid Order Date to be (.*)$/ do |expected|
     actual = batch.grid.order_date @order_id
     5.times { |counter|
       sleep(1)
-      log_expectation_eql "#{counter}. Order Date", expected, actual
+      #log_expectation_eql "#{counter}. Order Date", expected, actual
       break if actual.eql? expected
       actual = batch.grid.order_date @order_id
     }
@@ -136,7 +136,7 @@ Then /^Expect Grid Recipient to be (.*)$/ do |expected|
     actual = batch.grid.recipient.data @order_id
     5.times { |counter|
       sleep(1)
-      log_expectation_eql "#{counter}. Recipient Name", expected, actual
+      #log_expectation_eql "#{counter}. Recipient Name", expected, actual
       break if actual.eql? expected
       actual = batch.grid.recipient.data @order_id
     }
@@ -150,7 +150,7 @@ Then /^Expect Grid Company to be (.*)$/ do |expected|
     actual = batch.grid.company.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Company Name", expected, actual
+      #log_expectation_eql "#{counter}. Company Name", expected, actual
       break if actual.eql? expected
       actual = batch.grid.company.data @order_id
     }
@@ -164,7 +164,7 @@ Then /^Expect Grid Address to be ([\w\s-]+)$/ do |expected|
     actual = batch.grid.address.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Street Address", expected, actual
+      #log_expectation_eql "#{counter}. Street Address", expected, actual
       break if actual.eql? expected
       actual = batch.grid.address.data @order_id
     }
@@ -178,7 +178,7 @@ Then /^Expect Grid City to be ([\w\s]+)$/ do |expected|
     actual = batch.grid.city.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. City", expected, actual
+      #log_expectation_eql "#{counter}. City", expected, actual
       break if actual.eql? expected
       actual = batch.grid.city.data @order_id
     }
@@ -192,7 +192,7 @@ Then /^Expect Grid State to be ([a-zA-Z]+)$/ do |expected|
     actual = batch.grid.state.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. State", expected, actual
+      #log_expectation_eql "#{counter}. State", expected, actual
       break if actual.eql? expected
       actual = batch.grid.state.data @order_id
     }
@@ -206,7 +206,7 @@ Then /^Expect Grid Zip to be ([\d -]+)$/ do |expected|
     actual = batch.grid.zip.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Zip", expected, actual
+      #log_expectation_eql "#{counter}. Zip", expected, actual
       break if actual.eql? expected
       actual = batch.grid.zip.data @order_id
     }
@@ -220,7 +220,7 @@ Then /^Expect Grid Country to be ([a-zA-Z]+)$/ do |expected|
     actual = batch.grid.country.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Country", expected, actual
+      #log_expectation_eql "#{counter}. Country", expected, actual
       break if actual.eql? expected
       actual = batch.grid.country.data @order_id
     }
@@ -234,7 +234,7 @@ Then /^Expect Grid Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expected|
     actual = batch.grid.country.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Email", expected, actual
+      #log_expectation_eql "#{counter}. Email", expected, actual
       break if actual.eql? expected
       actual = batch.grid.country.data @order_id
     }
@@ -248,7 +248,7 @@ Then /^Expect Grid Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/
     actual = batch.grid.phone.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Phone", expected, actual
+      #log_expectation_eql "#{counter}. Phone", expected, actual
       break if actual.eql? expected
       actual = batch.grid.phone.data @order_id
     }
@@ -262,7 +262,7 @@ Then /^Expect Grid Pounds to be (\d+)$/ do |expected|
     actual = batch.grid.weight.lbs @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Pounds", expected, actual
+      #log_expectation_eql "#{counter}. Pounds", expected, actual
       break if actual.eql? expected
       actual = batch.grid.weight.lbs @order_id
     }
@@ -276,7 +276,7 @@ Then /^Expect Grid Ounces to be (\d+)$/ do |expected|
     actual = batch.grid.weight.oz @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Ounces", expected, actual
+      #log_expectation_eql "#{counter}. Ounces", expected, actual
       break if actual.eql? expected
       actual = batch.grid.weight.oz @order_id
     }
@@ -291,7 +291,7 @@ Then /^Expect Grid Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
     actual = batch.grid.weight.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Weight", expected, actual
+      #log_expectation_eql "#{counter}. Weight", expected, actual
       break if actual.eql? expected
       actual = batch.grid.weight.data @order_id
     }
@@ -305,7 +305,7 @@ Then /^Expect Grid Qty. to be (.+)$/ do |expected|
     actual = batch.grid.qty.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Qty.", expected, actual
+      #log_expectation_eql "#{counter}. Qty.", expected, actual
       break if actual.eql? expected
       actual = batch.grid.qty.data @order_id
     }
@@ -319,7 +319,7 @@ Then /^Expect Grid Item SKU to be (.+)$/ do |expected|
     actual = batch.grid.item_sku.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Item SKU", expected, actual
+      #log_expectation_eql "#{counter}. Item SKU", expected, actual
       break if actual.eql? expected
       actual = batch.grid.item_sku.data @order_id
     }
@@ -333,7 +333,7 @@ Then /^Expect Grid Item Name to be (.+)$/ do |expected|
     actual = batch.grid.item_name.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Item Name", expected, actual
+      #log_expectation_eql "#{counter}. Item Name", expected, actual
       break if actual.eql? expected
       actual = batch.grid.item_name.data @order_id
     }
@@ -347,7 +347,7 @@ Then /^Expect Grid Ship From to be (.+)$/ do |expected|
     actual = batch.grid.ship_from.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Ship From", expected, actual
+      #log_expectation_eql "#{counter}. Ship From", expected, actual
       break if actual.eql? expected
       actual = batch.grid.ship_from.data @order_id
     }
@@ -361,7 +361,7 @@ Then /^Expect Grid Service to be (.+)$/ do |expected|
     actual = batch.grid.service.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Service", expected, actual
+      #log_expectation_eql "#{counter}. Service", expected, actual
       break if actual.eql? expected
       actual = batch.grid.service.data @order_id
     }
@@ -375,7 +375,7 @@ Then /^Expect Grid Insured Value to be (.+)$/ do |expected|
     actual = batch.grid.insured_value.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Insured Value", expected, actual
+      #log_expectation_eql "#{counter}. Insured Value", expected, actual
       break if actual.eql? expected
       actual = batch.grid.insured_value.data @order_id
     }
@@ -390,7 +390,7 @@ Then /^Expect Grid Reference No. to be (.+)$/ do |expected|
     actual = batch.grid.reference_no.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Reference No.", expected, actual
+      #log_expectation_eql "#{counter}. Reference No.", expected, actual
       break if actual.eql? expected
       actual = batch.grid.reference_no.data @order_id
     }
@@ -404,7 +404,7 @@ Then /^Expect Grid Cost Code to be (.+)$/ do |expected|
     actual = batch.grid.cost_code.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Cost Code", expected, actual
+      #log_expectation_eql "#{counter}. Cost Code", expected, actual
       break if actual.eql? expected
       actual = batch.grid.cost_code.data @order_id
     }
@@ -418,7 +418,7 @@ Then /^Expect Grid Order Status to be (.+)$/ do |expected|
     actual = batch.grid.cost_code.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Order Status", expected, actual
+      #log_expectation_eql "#{counter}. Order Status", expected, actual
       break if actual.eql? expected
       actual = batch.grid.cost_code.data @order_id
     }
@@ -432,7 +432,7 @@ Then /^Expect Grid Ship Date to be (.+)$/ do |expected|
     actual = batch.grid.cost_code.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Ship Date", expected, actual
+      #log_expectation_eql "#{counter}. Ship Date", expected, actual
       break if actual.eql? expected
       actual = batch.grid.cost_code.data @order_id
     }
@@ -446,7 +446,7 @@ Then /^Expect Grid Tracking # to be (.+)$/ do |expected|
     actual = batch.grid.tracking_no.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Tracking #", expected, actual
+      #log_expectation_eql "#{counter}. Tracking #", expected, actual
       break if actual.eql? expected
       actual = batch.grid.tracking_no.data @order_id
     }
@@ -460,7 +460,7 @@ Then /^Expect Grid Order Total to be (.+)$/ do |expected|
     actual = batch.grid.order_total.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Order Total", expected, actual
+      #log_expectation_eql "#{counter}. Order Total", expected, actual
       break if actual.eql? expected
       actual = batch.grid.order_total.data @order_id
     }
@@ -481,7 +481,7 @@ Then /^Expect Grid Insured Value to be \$(\d*\.?\d*)$/ do |expected|
     actual = batch.grid.insured_value.data @order_id
     10.times { |counter|
       sleep(2)
-      log_expectation_eql "#{counter}. Insurance", expected, actual
+      #log_expectation_eql "#{counter}. Insurance", expected, actual
       break if actual.eql? expected
       actual = batch.grid.insured_value.data @order_id
     }

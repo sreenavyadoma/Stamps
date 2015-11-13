@@ -25,7 +25,7 @@ Then /^Expect Ship Cost equals Total amount$/ do
   10.times { |counter|
     begin
       sleep(1)
-      log_expectation_eql "#{counter}. Ship Cost", total_amount, ship_cost
+      #log_expectation_eql "#{counter}. Ship Cost", total_amount, ship_cost
       break if ship_cost.eql? total_amount
       total_amount = batch.order_details.total
       ship_cost = batch.grid.ship_cost.data @order_id
@@ -82,7 +82,7 @@ Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expectation|
     print_window = batch.toolbar.print_modal
     actual_value = print_window.total_cost
     10.times { |counter|
-      log_expectation_eql "#{counter}. Print Window Total Cost", expectation, actual_value
+      #log_expectation_eql "#{counter}. Print Window Total Cost", expectation, actual_value
       break if actual_value.eql? expectation
       actual_value = print_window.total_cost
     }

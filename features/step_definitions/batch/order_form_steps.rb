@@ -198,14 +198,14 @@ end
 Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
   log.info "Step: Expect Pounds tooltip to display - The maximum value for this field is #{expected}"
   actual = batch.order_details.pounds_max_value
-  log_expectation_eql "Maximum Pounds", expected, actual
+  #log_expectation_eql "Maximum Pounds", expected, actual
   actual.should eql expected
 end
 
 Then /^Expect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
   log.info "Step: Expect Ounces tooltip to display - The maximum value for this field is #{expected}"
   actual = batch.order_details.ounces_max_value
-  log_expectation_eql "Maximum Pounds", expected, actual
+  #log_expectation_eql "Maximum Pounds", expected, actual
   actual.should eql expected
 end
 
@@ -235,7 +235,7 @@ Then /^Expect Service Cost to be \$(.*)$/ do |expected|
   actual = batch.order_details.service_cost
   begin
     10.times { |counter|
-      log_expectation_eql "#{counter}. Service Cost", expected, actual
+      #log_expectation_eql "#{counter}. Service Cost", expected, actual
       break if actual.eql? expected
       actual = batch.order_details.service_cost
     }
@@ -248,7 +248,7 @@ Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
   begin
     actual = batch.order_details.tracking_cost
     10.times { |counter|
-      log_expectation_eql "#{counter}. Tracking Cost", expected, actual
+      #log_expectation_eql "#{counter}. Tracking Cost", expected, actual
       break if actual.eql? expected
       actual = batch.order_details.tracking_cost
     }
@@ -266,7 +266,7 @@ Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
   begin
     actual = batch.order_details.insurance_cost
     10.times { |counter|
-      log_expectation_eql "#{counter}. Insurance Cost", expected, actual
+      #log_expectation_eql "#{counter}. Insurance Cost", expected, actual
       break if actual.eql? expected
       actual = batch.order_details.insurance_cost
     }
@@ -292,7 +292,7 @@ Then /^Expect Order Details Form Tracking to be \"([\w\s]*)\"$/ do |expected|
   begin
     actual = batch.order_details.tracking_no.text
     10.times { |counter|
-      log_expectation_eql "#{counter}. Tracking Selected", expected, actual
+      #log_expectation_eql "#{counter}. Tracking Selected", expected, actual
       break if actual.eql? expected
       actual = batch.order_details.tracking_no.text
     }
@@ -308,7 +308,7 @@ Then /^Expect Order Details Form Total to be \$(.*)$/ do |expected|
       sleep 1
       actual = batch.order_details.total
       batch.order_details.click_form
-      log_expectation_eql "#{counter}. Total Cost", expected, actual
+      #log_expectation_eql "#{counter}. Total Cost", expected, actual
       batch.order_details.click_form
       sleep 1
       break if actual.eql? expected
