@@ -1,22 +1,26 @@
 module Stamps
   class Logger
-    private
-    def init
-      logger = Log4r::Logger.new ":"
+    private 
+    def init_info
+      logger ||= Log4r::Logger.new ":"
       logger.outputters = Outputter.stdout
-      logger.level = Log4r::INFO
+      logger.level = Log4r::DEBUG
       logger
     end
 
-    def logger
-      @logger ||= init
+    def init_debug
+      logger ||= Log4r::Logger.new ":"
+      logger.outputters = Outputter.stdout
+      logger.level = Log4r::DEBUG
+      logger
     end
 
     public
 
     def info message
+      @logger_info ||= init_info
       begin
-        (logger.info message) if Stamps::Test.verbose
+        (@logger_info.info message) if Stamps::Test.verbose
       rescue
         # ignore
       end
@@ -24,16 +28,17 @@ module Stamps
     end
 
     def debug message
-      (logger.debug caller[0] + message) if Stamps::Test.verbose
+      @logger_debug ||= init_debug
+      @logger_debug.debug message if Stamps::Test.verbose
     end
 
     def hash_param table
-      table.each{|key, value| log.info "## #{key} :: #{value}"}
+      table.each{|key, value| info "## #{key} :: #{value}"}
       table
     end
 
     def param param_name, value
-      log.info "## #{param_name} :: #{value}"
+      info "## #{param_name} :: #{value}"
       value
     end
 
@@ -50,7 +55,7 @@ module Stamps
     end
 
     def browser_field_set field, text, field_name
-      log.info "Browser.#{log.field_tag(field.to_s)}.#{field_name}.set  \"#{text}\""
+      info "Browser.#{log.field_tag(field.to_s)}.#{field_name}.set  \"#{text}\""
       text
     end
 
@@ -58,9 +63,9 @@ module Stamps
       #field, text, field_name
       case args.length
         when 2
-          log.info "Browser.#{log.field_tag(args[0].to_s)}.get \"#{args[1]}\""
+          info "Browser.#{log.field_tag(args[0].to_s)}.get \"#{args[1]}\""
         when 3
-          log.info "Browser.#{log.field_tag(args[0].to_s)}.#{args[2]}.get \"#{args[1]}\""
+          info "Browser.#{log.field_tag(args[0].to_s)}.#{args[2]}.get \"#{args[1]}\""
         else
           raise "Wrong number of arguments"
       end
@@ -70,9 +75,9 @@ module Stamps
     def browser_field_click *args
       case args.length
         when 1
-          log.info "Browser.#{log.field_tag(args[0].to_s)}.click"
+          info "Browser.#{log.field_tag(args[0].to_s)}.click"
         when 2
-          log.info "Browser.#{log.field_tag(args[0].to_s)}.#{args[1].to_s}.click"
+          info "Browser.#{log.field_tag(args[0].to_s)}.#{args[1].to_s}.click"
         else
           raise "Wrong number of arguments"
       end
@@ -81,28 +86,28 @@ module Stamps
     def log_attribute_get *args
       case args.length
         when 1
-          log.info "Browser.#{log.field_tag(args[0].to_s)}.attribute.get"
+          info "Browser.#{log.field_tag(args[0].to_s)}.attribute.get"
         when 2
-          log.info "Browser.#{log.field_tag(args[0].to_s)}.#{args[1].to_s}.get"
+          info "Browser.#{log.field_tag(args[0].to_s)}.#{args[1].to_s}.get"
         when 3
-          log.info "Browser.#{log.field_tag(args[0].to_s)}.#{args[1].to_s}.get result={#{args[2].to_s}}"
+          info "Browser.#{log.field_tag(args[0].to_s)}.#{args[1].to_s}.get result={#{args[2].to_s}}"
         else
           raise "Wrong number of arguments"
       end
     end
 
     def log_browser_present field, text, field_name
-      log.info "Browser.#{log.field_tag(field.to_s)}.#{field_name}.present? \"#{text}\""
+      info "Browser.#{log.field_tag(field.to_s)}.#{field_name}.present? \"#{text}\""
       text
     end
 
 
     def log_expectation field, expected, actual, result
-      log.info "EXPECTATION :: #{field}:  #{expected}, Actual:  #{actual} # #{(result)?"Passed":"Failed"}"
+      info "EXPECTATION :: #{field}:  #{expected}, Actual:  #{actual} # #{(result)?"Passed":"Failed"}"
     end
 
     def log_expectation_eql field, expected, actual
-      log.info "EXPECTATION :: #{field}:  #{expected}, Actual:  #{actual} # #{actual.eql?(expected)?"Passed":"Failed"}"
+      info "EXPECTATION :: #{field}:  #{expected}, Actual:  #{actual} # #{actual.eql?(expected)?"Passed":"Failed"}"
     end
 
   end
