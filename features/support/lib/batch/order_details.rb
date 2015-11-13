@@ -1568,7 +1568,7 @@ module Batch
 
     def insured_value
       click_form
-      Textbox.new @browser.text_field :name => "InsuranceAmount"
+      Textbox.new @browser.text_field :name => "InsuredValue"
     end
 
     def length
