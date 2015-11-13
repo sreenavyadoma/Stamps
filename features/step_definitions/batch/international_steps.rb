@@ -1,4 +1,3 @@
-
 Then /^Set Order Details Form Ship-To country to (.*)$/ do |country|
   log.info "Step: Set Order Details Form Ship-To country to #{country}"
   @international_ship_to = batch.order_details.ship_to.country.select country
@@ -45,7 +44,7 @@ Given /^Set Ship-To to international address$/ do |table|
 end
 
 Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
-  log.info "Step: Expect International Ship-To #{ship_to_field} field displays #{value}"
+  log.info "Expectation: Expect International Ship-To #{ship_to_field} field displays #{value}"
 
   @international_ship_to = batch.order_details.ship_to.international if @international_ship_to.nil?
 
@@ -170,9 +169,8 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
 end
 
 Given /^Expect Order Details Form International Address fields are visible$/ do
-  log.info "Step: Expect Order Details Form International Address fields are visible"
+  log.info "Expectation: Expect Order Details Form International Address fields are visible"
   @international_ship_to = batch.order_details.ship_to.international if @international_ship_to.nil?
-
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true
   @international_ship_to.address_1.present?.should be true
@@ -186,7 +184,6 @@ end
 
 Then /^Expect Order Details Form Domestic Ship-To fields are hidden$/ do
   log.info "Step: Expect Order Details Form Domestic Ship-To fields are hidden"
-
   @single_order_form = batch.order_details
   @single_order_form.ship_to.present?.should be false
   @single_order_form.email.present?.should be false

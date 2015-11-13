@@ -1,5 +1,5 @@
 Then /^Expect printed Order ID does not exist in Awaiting Shipment tab$/ do
-  log.info "Step: Expect printed Order ID does not exist in Awaiting Shipment tab"
+  log.info "Expectation: Expect printed Order ID does not exist in Awaiting Shipment tab"
   grid = batch.filter.awaiting_shipment
   log.info "First Order ID: #{@order_id} in Awaiting Shipment tab"
   row = 1
@@ -9,7 +9,7 @@ Then /^Expect printed Order ID does not exist in Awaiting Shipment tab$/ do
 end
 
 Then /^Expect all printed Order IDs do not exist in Awaiting Shipment tab$/ do
-  log.info "Step: Expect all printed Order IDs do not exist in Awaiting Shipment tab"
+  log.info "Expectation: Expect all printed Order IDs do not exist in Awaiting Shipment tab"
   grid = batch.filter.awaiting_shipment
 
   log.info "First Order ID: #{@order_id} in Awaiting Shipment tab"
@@ -33,7 +33,7 @@ Then /^Expect all printed Order IDs do not exist in Awaiting Shipment tab$/ do
 end
 
 Then /^Expect printed Order ID exists in Shipped tab$/ do
-  log.info "Step: Expect printed Order ID exists in Shipped tab"
+  log.info "Expectation: Expect printed Order ID exists in Shipped tab"
   grid = batch.shipped
   log.info "Order ID: #{@order_id} Shipped tab"
   row = 1
@@ -43,7 +43,7 @@ Then /^Expect printed Order ID exists in Shipped tab$/ do
 end
 
 Then /^Expect all printed Order IDs exist in Shipped tab$/ do
-  log.info "Step: Expect all printed Order IDs exist in Shipped tab"
+  log.info "Expectation: Expect all printed Order IDs exist in Shipped tab"
   grid = batch.shipped
 
   log.info "First Order ID: #{@order_id} Shipped tab"
