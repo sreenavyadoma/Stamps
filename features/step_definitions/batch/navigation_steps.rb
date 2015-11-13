@@ -37,7 +37,7 @@
 
 
 Then /^Expect \$(\d+) is added to customer balance$/ do |balance|
-  log.info "Step: Expect \$#{balance} is added to customer balance"
+  log.info "Expectation: Expect \$#{balance} is added to customer balance"
   log.info "Store new balance"
   @new_balance = batch.navigation.balance
   log.info "Compare old and new balance"
