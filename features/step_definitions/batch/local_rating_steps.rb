@@ -6,15 +6,15 @@ Then /^Verify Local Rating$/ do |table|
   results = Hash.new
 
   parameter_array.each_with_index { |element, index|
-    step "Set Order Form Ship-From to #{element["ship_from"]}"
-    step "Set Order Form Ship-To address to #{element["ship_to"]}"
-    step "Set Order Form Ounces to #{element["weight_oz"]}"
-    step "Set Order Form Pounds to #{element["weight_lbs"]}"
-    step "Set Order Form Length to #{element["length"]}"
-    step "Set Order Form Height to #{element["height"]}"
-    step "Set Order Form Width to #{element["width"]}"
-    step "Set Order Form Service to \"#{element["service"]}\""
-    step "Set Order Form Tracking to #{element["tracking"]}"
+    step "Set Order Details Form Ship-From to #{element["ship_from"]}"
+    step "Set Order Details Form Ship-To address to #{element["ship_to"]}"
+    step "Set Order Details Form Ounces to #{element["weight_oz"]}"
+    step "Set Order Details Form Pounds to #{element["weight_lbs"]}"
+    step "Set Order Details Form Length to #{element["length"]}"
+    step "Set Order Details Form Height to #{element["height"]}"
+    step "Set Order Details Form Width to #{element["width"]}"
+    step "Set Order Details Form Service to \"#{element["service"]}\""
+    step "Set Order Details Form Tracking to #{element["tracking"]}"
 
     10.times { |counter|
       @single_order_form.click_form

@@ -75,8 +75,8 @@ module Batch
     def balance
       balance_field = Label.new balance_label
       10.times{
-        amount = balance_field.text.to_f
-        return amount if amount > 0
+        amount = balance_field.text
+        return amount if amount.length > 0
       }
     end
 

@@ -6,9 +6,9 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
   @filter
   Scenario: Print 1 order
     And I Add a new order
-    Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to random
-    Then Set Order Form Service to "First-Class Mail Large Envelope/Flat"
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
     Then Edit row 1 on the order grid
     Then Print
     Then Expect printed Order ID does not exist in Awaiting Shipment tab
@@ -18,19 +18,19 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
   @filter3
   Scenario: Print 3 orders
     And I Add a new order
-    Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to random
-    Then Set Order Form Service to "First-Class Mail Large Envelope/Flat"
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a second order
-    Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to random
-    Then Set Order Form Service to "First-Class Mail Large Envelope/Flat"
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a third order
-    Then Set Order Form Ship-From to default
-    Then Set Order Form Ship-To address to random
-    Then Set Order Form Service to "Media Mail Package"
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Form Service to "Media Mail Package"
 
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid

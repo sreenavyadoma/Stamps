@@ -1647,7 +1647,7 @@ module Batch
     end
     def ship_cost_span
       span = @browser.span :text => "Ship Cost"
-      log.info "single-order form is #{(browser_helper.present? span)?'present':'NOT present'}"
+      log.info "Order Details Form  is #{(browser_helper.present? span)?'present':'NOT present'}"
       span
     end
 
@@ -1667,7 +1667,7 @@ module Batch
       begin
         order_id_label.wait_until_present
       rescue
-        log.info "single-order form Order ID label was not present"
+        log.info "Order Details Form  Order ID label was not present"
       end
       #(browser_helper.text order_id_label).split('Order #').last
       order_id_str = order_id_label.text
