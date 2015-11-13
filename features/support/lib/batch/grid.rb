@@ -138,7 +138,7 @@ module Batch
     end
 
     def grid_text column, row
-      test_helper.remove_dollar_sign(browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}")
+      browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}"
     end
 
     def grid_field column_number, row
@@ -202,6 +202,7 @@ module Batch
     def scroll_into_view
       scroll :order_id
     end
+
     def field row
       grid_field_column_name :order_id, row
     end

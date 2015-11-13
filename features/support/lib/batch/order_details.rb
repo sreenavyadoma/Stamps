@@ -1529,7 +1529,7 @@ module Batch
     end
 
     def present?
-      (Label.new @browser.label :text => "Awaiting Shipment'").present?
+      Label.new(@browser.label :text => "Awaiting Shipment").present?
     end
 
     def wait_until_present

@@ -95,7 +95,7 @@ module Batch
           add_button.safe_click
           5.times{
             sleep 1
-            log.info "#{count} single-order form present?  #{single_order_form.present?}"
+            log.info "#{count} Order Details form  #{(single_order_form.present?)?'not present':'is present'}"
             break if single_order_form.present?
             break if single_order_form.present?
             break if single_order_form.present?

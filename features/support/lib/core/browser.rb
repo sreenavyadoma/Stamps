@@ -378,7 +378,7 @@ module Stamps
             field_text args[0]
           when 2
             text = field_text(args[0])
-            browser_field(args[0], text, args[1])
+            #log.browser_field args[0], text, args[1]
           else
             raise "Wrong number of arguments for BrowserHelper.text method."
         end
