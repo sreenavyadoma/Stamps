@@ -122,9 +122,9 @@ Then /^Set Order Form Tracking to \"([\w ]*)\"$/ do |value|
   end unless value.length == 0
 
   actual_tooltip = batch.order_details.tracking_no.tooltip value
-  log actual_tooltip
+  log.info actual_tooltip
   cost = batch.order_details.tracking_no.cost value
-  log cost
+  log.info cost
 end
 
 And /^Set Order Form Insured Value to \$([\d*\.?\d*]*)$/ do |value|

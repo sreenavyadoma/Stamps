@@ -45,7 +45,7 @@ module Stamps
           when 2
             @field = args[0]
             @second_field = args[1]
-            #log browser_helper.present? @second_field
+            #log.info browser_helper.present? @second_field
           else
             #do nothing.
         end
@@ -418,7 +418,7 @@ module Stamps
           begin
             break if (actual_value.include? text) || (text.include? actual_value)
           rescue Exception => e
-            #log e
+            #log.info e
           end
         end
       end

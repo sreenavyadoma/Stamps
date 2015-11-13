@@ -82,10 +82,10 @@ Then /^Expect page toolbar First Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.first_page.present?
-      log enabled
+      log.info enabled
     when "disabled"
       disabled = batch.grid.toolbar.first_page_disabled
-      log disabled
+      log.info disabled
     else
       raise "Illegal argument exception"
   end
@@ -96,10 +96,10 @@ Then /^Expect page toolbar Previous Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.previous_page.present?
-      log enabled
+      log.info enabled
     when "disabled"
       disabled = batch.grid.toolbar.first_page_disabled
-      log disabled
+      log.info disabled
     else
       raise "Illegal argument exception"
   end
@@ -110,7 +110,7 @@ Then /^Expect page toolbar Page Number is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.page_number.present?
-      log enabled
+      log.info enabled
     else
       raise "Illegal argument exception"
   end
@@ -121,10 +121,10 @@ Then /^Expect page toolbar Next Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.next_page.present?
-      log enabled
+      log.info enabled
     when "disabled"
       disabled = batch.grid.toolbar.last_page_disabled
-      log disabled
+      log.info disabled
     else
       raise "Illegal argument exception"
   end
@@ -135,10 +135,10 @@ Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
   case expectation.downcase
     when "enabled"
       enabled = batch.grid.toolbar.last_page.present?
-      log enabled
+      log.info enabled
     when "disabled"
       disabled = batch.grid.toolbar.last_page_disabled
-      log disabled
+      log.info disabled
     else
       raise "Illegal argument exception"
   end

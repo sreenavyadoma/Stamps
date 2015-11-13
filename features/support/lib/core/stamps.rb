@@ -98,7 +98,7 @@ module Stamps
         driver.window.maximize
         @browser = driver
       rescue Exception => e
-        log e
+        log.info e
         raise e
       end
     end

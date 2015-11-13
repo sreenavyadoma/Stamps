@@ -47,7 +47,7 @@ module Batch
       error_message = browser_helper.text error_message_label
 
       log.info "----  Order Errors  ----"
-      log error_message
+      log.info error_message
       log.info "----  Order Errors  ----"
 
       error_message
@@ -165,7 +165,7 @@ module Batch
 
     def OK
       log.info "----  Rating Error  ----"
-      log browser_helper.text rating_error_p
+      log.info browser_helper.text rating_error_p
       log.info "----  Rating Error  ----"
       5.times {
         browser_helper.click ok_button, 'OK'
@@ -224,12 +224,11 @@ module Batch
 
       present = err.include? "Error code: [1009]"
       if present
-
         log.info "NAWS Plugin Error detected.  Error code: [1009]"
-        log error_code_p
+        log.info error_code_p
       end
+      present
     end
-    present
   end
 
   def print_error_message
@@ -279,7 +278,7 @@ class ErrorInstallPlugin < BatchObject
     present = (err).include? "Install Plugin"
     if present
       log.info "Plug-in is not installed.  Install  Plugin Window is Present"
-      log error_message
+      log.info error_message
     end
     present
   end
@@ -329,7 +328,7 @@ class ErrorConnectingToPlugin < BatchObject
     present = err.include? "Error code: [1010]"
     if present
       log.info "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
-      log error_code
+      log.info error_code
       log.info "Stamps.com is currently connecting to the plug-in. Error code: [1010]\n#############################################"
     end
     present

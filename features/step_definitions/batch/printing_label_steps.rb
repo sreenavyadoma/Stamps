@@ -10,8 +10,8 @@ end
 #Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783
 Then /^Expect (.*) tool-tip to contain \"(.*)\"$/ do |label, tooltip_message|
   log.info "Step: Expect #{label} tool-tip to contain #{tooltip_message}"
-  log label
-  log tooltip_message
+  log.info label
+  log.info tooltip_message
 end
 
 

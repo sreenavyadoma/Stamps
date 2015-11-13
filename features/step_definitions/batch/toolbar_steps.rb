@@ -47,6 +47,6 @@ Then /^Test Features$/ do |count|
   log.info "Step: Test Features"
   batch.grid.checkbox.check_all
   count = batch.multi_order.order_count
-  log count
+  log.info count
   batch.grid.checkbox.uncheck_all
 end

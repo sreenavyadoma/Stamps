@@ -205,7 +205,7 @@ module Batch
           log.info "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}"
           visit
         rescue Exception => e
-          log e
+          log.info e
         end
       end
 

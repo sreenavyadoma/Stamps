@@ -34,29 +34,29 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
   @grid = batch.grid
 
   row2_order_id = @grid.order_id.row 2
-  log @grid.checkbox.order_id_checked? row2_order_id
+  log.info @grid.checkbox.order_id_checked? row2_order_id
 
 
   @grid.checkbox.check 1
-  log @grid.checkbox.checked? 1
+  log.info @grid.checkbox.checked? 1
   @grid.checkbox.check 2
-  log @grid.checkbox.checked? 2
+  log.info @grid.checkbox.checked? 2
   @grid.checkbox.check 3
-  log @grid.checkbox.checked? 3
+  log.info @grid.checkbox.checked? 3
 
   @grid.checkbox.uncheck 1
-  log @grid.checkbox.checked? 1
+  log.info @grid.checkbox.checked? 1
   @grid.checkbox.uncheck 2
-  log @grid.checkbox.checked? 2
+  log.info @grid.checkbox.checked? 2
   @grid.checkbox.uncheck 3
-  log @grid.checkbox.checked? 3
+  log.info @grid.checkbox.checked? 3
 
   @grid.checkbox.check 2
-  log @grid.checkbox.checked? 2
+  log.info @grid.checkbox.checked? 2
   @grid.checkbox.check 4
-  log @grid.checkbox.checked? 4
+  log.info @grid.checkbox.checked? 4
   @grid.checkbox.check 6
-  log @grid.checkbox.checked? 6
+  log.info @grid.checkbox.checked? 6
 
   checked_hash = @grid.checkbox.checked_rows
 
@@ -65,31 +65,31 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
 
   @grid.checkbox.check_all checked_hash
 
-  log @grid.item_name.data order_id
-  log @grid.ship_cost.data order_id
-  log @grid.age.data order_id
-  log @grid.order_date.data order_id
-  log @grid.recipient.data order_id
-  log @grid.company.data order_id
-  log @grid.address.data order_id
-  log @grid.city.data order_id
-  log @grid.state.data order_id
-  log @grid.zip.data order_id
-  log @grid.country.data order_id
-  log @grid.phone.data order_id
-  log @grid.email.data order_id
-  log @grid.qty.data order_id
-  log @grid.item_sku.data order_id
-  log @grid.ship_from.data order_id
-  log @grid.service.data order_id
-  log @grid.weight.data order_id
-  log @grid.insured_value.data order_id
-  log @grid.reference_no.data order_id
-  log @grid.cost_code.data order_id
-  log @grid.order_status.data order_id
-  log @grid.ship_date.data order_id
-  log @grid.tracking_no.data order_id
-  log @grid.order_total.data order_id
+  log.info @grid.item_name.data order_id
+  log.info @grid.ship_cost.data order_id
+  log.info @grid.age.data order_id
+  log.info @grid.order_date.data order_id
+  log.info @grid.recipient.data order_id
+  log.info @grid.company.data order_id
+  log.info @grid.address.data order_id
+  log.info @grid.city.data order_id
+  log.info @grid.state.data order_id
+  log.info @grid.zip.data order_id
+  log.info @grid.country.data order_id
+  log.info @grid.phone.data order_id
+  log.info @grid.email.data order_id
+  log.info @grid.qty.data order_id
+  log.info @grid.item_sku.data order_id
+  log.info @grid.ship_from.data order_id
+  log.info @grid.service.data order_id
+  log.info @grid.weight.data order_id
+  log.info @grid.insured_value.data order_id
+  log.info @grid.reference_no.data order_id
+  log.info @grid.cost_code.data order_id
+  log.info @grid.order_status.data order_id
+  log.info @grid.ship_date.data order_id
+  log.info @grid.tracking_no.data order_id
+  log.info @grid.order_total.data order_id
 
 end
 

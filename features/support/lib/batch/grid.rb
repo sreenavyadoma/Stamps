@@ -160,7 +160,7 @@ module Batch
           end
         }
       rescue Exception => e
-        log e
+        log.info e
       end
     end
 

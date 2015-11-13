@@ -99,15 +99,15 @@ Then /^Expect Grid Ship Cost error to contain \"(.*)\"$/ do |expectation|
   grid_order_id = batch.grid.order_id.row 1
   log.info "Grid order id is #{grid_order_id}"
   ship_cost_error = batch.grid.ship_cost.data_error grid_order_id
-  log ship_cost_error
+  log.info ship_cost_error
   ship_cost_error.should include expectation
 
   ship_cost_error = batch.grid.ship_cost.data_error "81453"
-  log ship_cost_error
+  log.info ship_cost_error
 
   ship_cost_error = batch.grid.ship_cost.data_error "81408"
-  log ship_cost_error
+  log.info ship_cost_error
 
   ship_cost_error = batch.grid.ship_cost.data_error "81407"
-  log ship_cost_error
+  log.info ship_cost_error
 end

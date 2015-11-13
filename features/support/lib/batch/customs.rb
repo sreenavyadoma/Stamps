@@ -397,10 +397,10 @@ module Batch
 
       if user_agreed
         checkbox.check
-        log checkbox.checked?
+        log.info checkbox.checked?
       else
         checkbox.uncheck
-        log checkbox.checked?
+        log.info checkbox.checked?
       end
 
     end
