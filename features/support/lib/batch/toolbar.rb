@@ -97,6 +97,8 @@ module Batch
             sleep 1
             log.info "#{count} single-order form present?  #{single_order_form.present?}" if Stamps::Test.verbose
             break if single_order_form.present?
+            break if single_order_form.present?
+            break if single_order_form.present?
           }
           new_id = old_grid_row_1_id != grid.order_id.row(1) && grid.order_id.row(1) == single_order_form.order_id
           log.info "Add #{(new_id)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_grid_row_1_id}, New Grid 1 ID: #{grid.order_id.row(1)}, Order Details Order ID:  #{grid.order_id.row(1)}" if Stamps::Test.verbose
