@@ -18,7 +18,7 @@ module Batch
     end
 
     def balance_label
-      @browser.span(:id => 'postageBalanceAmt')
+      @browser.span :id => 'postageBalanceAmt'
     end
 
 
@@ -41,7 +41,6 @@ module Batch
     end
 
     def select_buy_more
-
       @browser.window.move_to 0, 0
       @browser.window.resize_to 1500, 850
       @browser.window.move_to 3000, 500
@@ -65,33 +64,23 @@ module Batch
     end
 
     def wait_until_balance_updated old_balance
+      balance_field = Label.new balance_label
       10.times{
-        break unless balance_str.include? old_balance.to_s
+        break unless balance_field.text.include? old_balance.to_s
         sleep(1)
       }
       self
     end
 
-    def balance_str
-      balance = "0"
-      begin
-        balance = browser_helper.text balance_label, 'balance'
-      rescue
-        #ignore
-      end
-      test_helper.strip(test_helper.strip(balance, "$", ""), ",", "")
-    end
-
     def balance
-      browser_helper.wait_until_present balance_label
-      5.times{
-        amount = balance_str.to_f
+      balance_field = Label.new balance_label
+      10.times{
+        amount = balance_field.text.to_f
         return amount if amount > 0
       }
-
     end
 
-    def is_signed_in?
+    def signed_in?
       Label.new(@browser.span :id => 'userNameText').present?
     end
 

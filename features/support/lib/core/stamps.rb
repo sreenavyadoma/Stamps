@@ -243,9 +243,21 @@ module Stamps
       (strip str.gsub(/\W/, delim), delim).downcase.to_sym
     end
 
-    def strip string, chars
-      chars = Regexp.escape(chars)
-      string.gsub(/\A[#{chars}]+|[#{chars}]+\z/, "")
+    def strip * args
+      case args.length
+        when 2
+          string = args[0]
+          chars = args[1]
+          chars = Regexp.escape(chars)
+          string.gsub(/\A[#{chars}]+|[#{chars}]+\z/, "")
+        when 3
+          str = args[0]
+          char_to_remove = args[1]
+          substitute_char = args[2]
+          str.gsub(char_to_remove, substitute_char)
+        else
+          rasie "Illegal number of arguments for strip method."
+      end
     end
 
   end

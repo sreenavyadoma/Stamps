@@ -136,7 +136,7 @@ module Batch
               #ignore
             end
             sleep 6
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
             log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             begin
@@ -145,17 +145,17 @@ module Batch
               #ignore
             end
 
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
             log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             sleep 6
 
             toolbar.wait_until_present
 
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
             log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
             break if toolbar.present? #|| grid.present?
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
             log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             if welcome_modal.present?
@@ -163,17 +163,17 @@ module Batch
               break
             end
 
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
             log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
             if welcome_orders_page.present?
               welcome_orders_page.continue
               break
             end
 
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
             log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
             break if toolbar.present?
-            log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
             log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             if plugin_issue.present?
@@ -184,11 +184,11 @@ module Batch
             visit
           end
 
-          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+          log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
           log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
           break if toolbar.present? #|| grid.present?
 
-          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+          log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
           log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
           begin
             navigation.orders.click
@@ -197,11 +197,11 @@ module Batch
           end
 
           sleep 4
-          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+          log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
           log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
           break if toolbar.present? #|| grid.present?
 
-          log.info "#{username} is #{(navigation.is_signed_in?)?"signed-in!":"not signed-in."}"
+          log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
           log.info "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}"
           visit
         rescue Exception => e
