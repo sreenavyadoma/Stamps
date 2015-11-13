@@ -29,7 +29,12 @@ module Stamps
 
     def debug message
       @logger_debug ||= init_debug
-      @logger_debug.debug message if Stamps::Test.verbose
+      begin
+        @logger_debug.debug message if Stamps::Test.verbose
+      rescue
+        #ignroe
+      end
+      message
     end
 
     def hash_param table

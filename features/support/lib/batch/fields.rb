@@ -4,6 +4,10 @@ module Batch
     def batch_helper
       BatchHelper.instance
     end
+
+    def test_helper
+      TestHelper.instance
+    end
   end
 
   class BatchHelper
