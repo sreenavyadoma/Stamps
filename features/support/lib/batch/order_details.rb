@@ -599,7 +599,7 @@ module Batch
       grid_cell_text row, 4
     end
 
-    def locate_address(name, company, city)
+    def locate_ship_from(name, company, city)
       rows = shipping_address_count
       1.upto rows do |row|
         browser_helper.click window_title
@@ -635,7 +635,7 @@ module Batch
         when 1
           address = args[0]
           if address.is_a? Hash
-            delete_row(locate_address(address["name"], address["company"], address["city"]))
+            delete_row(locate_ship_from(address["name"], address["company"], address["city"]))
           else
             raise "Address format is not yet supported for this delete call."
           end
@@ -690,7 +690,7 @@ module Batch
     end
 
     def edit_address(name, company, city, new_address_details)
-      row_num = locate_address(name, company, city)
+      row_num = locate_ship_from(name, company, city)
       if row_num > 0
         select_row row_num
         self.edit new_address_details
@@ -718,7 +718,7 @@ module Batch
         else
           raise "Wrong number of arguments for locate_address" unless args.length == 3
       end
-      locate_address(name, company, city) > 0
+      locate_ship_from(name, company, city) > 0
     end
 
     def edit *args
