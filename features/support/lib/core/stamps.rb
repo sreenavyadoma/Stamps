@@ -113,32 +113,6 @@ module Stamps
 
   end
 
-  def str_to_sym str
-    str.downcase.tr('()', '').tr('/-', '_').strip.tr(' ', '_').to_sym
-  end
-
-  def service_to_words str
-    str.tr('()', '').tr(' /-', ' ')
-  end
-
-  def to_sym str, delim
-    #str.gsub(/[^0-9A-Za-z -]/, '').gsub(/\s+/,'_').gsub(/-+/, '_').downcase.to_sym
-    (strip str.gsub(/\W/, delim), delim).downcase.to_sym
-  end
-
-  def strip string, chars
-    chars = Regexp.escape(chars)
-    string.gsub(/\A[#{chars}]+|[#{chars}]+\z/, "")
-  end
-
-  def browser_helper
-    BrowserHelper.instance
-  end
-
-  def test_helper
-    TestHelper.instance
-  end
-
   class TestHelper
     include Singleton
     include DataMagic
@@ -256,6 +230,31 @@ module Stamps
       zone_addresses_values[rand(zone_addresses_values.size)]
     end
 
+    def str_to_sym str
+      str.downcase.tr('()', '').tr('/-', '_').strip.tr(' ', '_').to_sym
+    end
+
+    def service_to_words str
+      str.tr('()', '').tr(' /-', ' ')
+    end
+
+    def to_sym str, delim
+      #str.gsub(/[^0-9A-Za-z -]/, '').gsub(/\s+/,'_').gsub(/-+/, '_').downcase.to_sym
+      (strip str.gsub(/\W/, delim), delim).downcase.to_sym
+    end
+
+    def strip string, chars
+      chars = Regexp.escape(chars)
+      string.gsub(/\A[#{chars}]+|[#{chars}]+\z/, "")
+    end
+
   end
 
+  def browser_helper
+    BrowserHelper.instance
+  end
+
+  def test_helper
+    TestHelper.instance
+  end
 end
