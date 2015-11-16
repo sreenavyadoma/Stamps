@@ -6,7 +6,7 @@ module Postage
         ENV['URL'] = args[0]
       end
 
-      if ENV['URL'] == "shipstation"
+      if ENV['URL'] == "ss"
         url = "http://#{Stamps::Test.url_prefix}.stamps.com/webpostage/"
       else
         url = "https://#{Stamps::Test.url_prefix}.stamps.com/webpostage/"
