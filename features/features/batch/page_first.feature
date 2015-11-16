@@ -1,7 +1,7 @@
 Feature: B-01746 Order Pagination
 
   Background:
-    Given I am signed in as a batch shipper webbatch_0009/password1
+    Given I am signed in as batch shipper webbatch_0009/password1
 
   @page_first
   Scenario: Go to first page

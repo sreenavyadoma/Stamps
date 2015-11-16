@@ -1,7 +1,7 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as a batch shipper gc/qacc/auto06/326tsetaqcdS!
+    Given I am signed in as batch shipper gc/qacc/auto06/326tsetaqcdS!
 
   @international @international_data_error @international_failure
   Scenario:  Customs Form Data Error

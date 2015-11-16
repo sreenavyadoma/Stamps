@@ -1,7 +1,7 @@
 Feature: 150 orders
 
   Background:
-    Given I am signed in as a batch shipper webpost_0001/pass111
+    Given I am signed in as batch shipper webpost_0001/pass111
 
   @orders_150
   Scenario:  Inline Rates

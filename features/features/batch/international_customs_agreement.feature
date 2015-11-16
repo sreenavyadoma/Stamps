@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want to be able to permanently agree to international customs privacy policy and restrictions [B-01830]
 
   Background:
-    Given I am signed in as a batch shipper gc/autosuggest/password1
+    Given I am signed in as batch shipper gc/autosuggest/password1
 
 
   @usps_terms

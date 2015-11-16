@@ -2,7 +2,7 @@
 Feature: Print Multiple Orders
 
   Background:
-    Given I am signed in as a batch shipper ff
+    Given I am signed in as batch shipper ff
 
   @print_multiple_orders @print
   Scenario:  Print 2 Orders

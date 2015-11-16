@@ -2,7 +2,7 @@
 Feature: Printing total cost
 
   Background:
-    Given I am signed in as a batch shipper ff
+    Given I am signed in as batch shipper ff
 
   @print_costs
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
