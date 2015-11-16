@@ -2,7 +2,7 @@
 Feature:  Add Orders
 
   Background:
-    Given I am signed in as a batch shipper cctest2/password1
+    Given I am signed in as batch shipper cctest2/password1
 
   @add_new_order_eva
   Scenario:  I Add a new order

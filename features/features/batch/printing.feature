@@ -2,7 +2,7 @@
 Feature: Printing
 
   Background:
-    Given I am signed in as a batch shipper ff
+    Given I am signed in as batch shipper ff
 
   @print @print1
   Scenario:  Print Priority Mail Package

@@ -82,4 +82,4 @@ module Selenium
   end # WebDriver
 end # Selenium
 
-World(Stamps,Batch)
+World(Stamps,Batch,Postage)

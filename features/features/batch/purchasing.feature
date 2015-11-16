@@ -2,7 +2,7 @@
 Feature: Purchasing
 
   Background:
-    Given I am signed in as a batch shipper auto30/326tsetaqcdS!
+    Given I am signed in as batch shipper auto30/326tsetaqcdS!
 
   @purchasing
   Scenario:

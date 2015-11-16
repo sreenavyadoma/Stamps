@@ -1,4 +1,3 @@
-
 Then /^Set Order Details Form Ship-To country to (.*)$/ do |country|
   log.info "Step: Set Order Details Form Ship-To country to #{country}"
   @international_ship_to = batch.order_details.ship_to.country.select country
@@ -45,7 +44,7 @@ Given /^Set Ship-To to international address$/ do |table|
 end
 
 Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
-  log.info "Step: Expect International Ship-To #{ship_to_field} field displays #{value}"
+  log.info "Expectation: Expect International Ship-To #{ship_to_field} field displays #{value}"
 
   @international_ship_to = batch.order_details.ship_to.international if @international_ship_to.nil?
 
@@ -170,9 +169,8 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
 end
 
 Given /^Expect Order Details Form International Address fields are visible$/ do
-  log.info "Step: Expect Order Details Form International Address fields are visible"
+  log.info "Expectation: Expect Order Details Form International Address fields are visible"
   @international_ship_to = batch.order_details.ship_to.international if @international_ship_to.nil?
-
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true
   @international_ship_to.address_1.present?.should be true
@@ -185,8 +183,7 @@ Given /^Expect Order Details Form International Address fields are visible$/ do
 end
 
 Then /^Expect Order Details Form Domestic Ship-To fields are hidden$/ do
-  log.info "Step: Expect Order Details Form Domestic Ship-To fields are hidden"
-
+  log.info "Expectation: Expect Order Details Form Domestic Ship-To fields are hidden"
   @single_order_form = batch.order_details
   @single_order_form.ship_to.present?.should be false
   @single_order_form.email.present?.should be false
@@ -194,7 +191,7 @@ Then /^Expect Order Details Form Domestic Ship-To fields are hidden$/ do
 end
 
 Then /^Expect Order Details Form Customs (.+) button is (.+)/ do |button, expectation|
-  log.info "Step: Expect Order Details Form Customs #{button} button is #{expectation}"
+  log.info "Expectation: Expect Order Details Form Customs #{button} button is #{expectation}"
   @single_order_form = batch.order_details
   case button.downcase
     when "restrictions"
@@ -337,7 +334,7 @@ Given /^Add Order Details Form Item - Quantity (\d+), ID ([\w ]+), Description (
 end
 
 Given /^Expect Customs Form More Info to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form More Info to be #{value}"
+  log.info "Expectation: Expect Customs Form More Info to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case value.downcase
@@ -351,7 +348,7 @@ Given /^Expect Customs Form More Info to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form License# to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form License# to be #{value}"
+  log.info "Expectation: Expect Customs Form License# to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case value.downcase
@@ -365,7 +362,7 @@ Given /^Expect Customs Form License# to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Certificate# to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Certificate# to be #{value}"
+  log.info "Expectation: Expect Customs Form Certificate# to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case value.downcase
@@ -379,7 +376,7 @@ Given /^Expect Customs Form Certificate# to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Invoice# to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Invoice# to be #{value}"
+  log.info "Expectation: Expect Customs Form Invoice# to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case value.downcase
@@ -393,7 +390,7 @@ Given /^Expect Customs Form Invoice# to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form ITN# to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form ITN# to be #{value}"
+  log.info "Expectation: Expect Customs Form ITN# to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   case value.downcase
@@ -407,7 +404,7 @@ Given /^Expect Customs Form ITN# to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |value|
-  log.info "Step: Expect Customs Form Internal Transaction # to be #{value}"
+  log.info "Expectation: Expect Customs Form Internal Transaction # to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   text = @customs_form.internal_transaction.text_box.text
@@ -416,13 +413,13 @@ Given /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |value|
 end
 
 Given /^Expect Customs Form Item Grid count to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Item Grid count to be #{value}"
+  log.info "Expectation: Expect Customs Form Item Grid count to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.item_grid.line_item_count.should eql value.to_i
 end
 
 Given /^Expect Customs Form Total Value to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Total Value to be #{value}"
+  log.info "Expectation: Expect Customs Form Total Value to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_value
@@ -431,7 +428,7 @@ Given /^Expect Customs Form Total Value to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Total Pounds to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Total Pounds to be #{value}"
+  log.info "Expectation: Expect Customs Form Total Pounds to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_weight_lbs
@@ -440,7 +437,7 @@ Given /^Expect Customs Form Total Pounds to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Total Ounces to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Total Ounces to be #{value}"
+  log.info "Expectation: Expect Customs Form Total Ounces to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_weight_oz
@@ -449,7 +446,7 @@ Given /^Expect Customs Form Total Ounces to be (.+)$/ do |value|
 end
 
 Given /^Expect Customs Form Total Weight Data Error to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Total Weight Data Error to be #{value}"
+  log.info "Expectation: Expect Customs Form Total Weight Data Error to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_weight.data_error
