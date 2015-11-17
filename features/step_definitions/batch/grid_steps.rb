@@ -1,3 +1,11 @@
+Then /^Filter Shipped Orders orders in the filter panel$/ do
+  batch.filter
+end
+
+Then /^Expect Grid Date Printed to be today$/ do
+
+end
+
 When /^Edit row (\d+) on the order grid$/ do |row|
   log.info "Step: Edit row #{row} on the order grid"
   batch.grid.checkbox.check row

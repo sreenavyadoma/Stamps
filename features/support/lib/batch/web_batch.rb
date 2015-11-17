@@ -14,22 +14,18 @@ module Batch
       @sign_in ||= Batch::SignInPage.new @browser
     end
 
-    def filter
-      @filter ||= FilterPanel.new @browser
-    end
-
     def awaiting_shipment
-      Filters.new(@browser).filter "Awaiting Shipment"
+      FilterPanel.new(@browser).filter "Awaiting Shipment"
       Grid.new @browser
     end
 
     def shipped
-      Filters.new(@browser).filter "Shipped"
+      FilterPanel.new(@browser).filter "Shipped"
       Grid.new @browser
     end
 
-    def filters_panel
-      Filters.new @browser
+    def filter
+      Batch::FilterPanel.new @browser
     end
 
     def multi_order
