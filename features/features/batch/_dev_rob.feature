@@ -3,9 +3,65 @@ Feature: Test Development
   Background:
     Given I am signed in as a batch shipper
 
+  @rob_dev_filter
   Scenario:
-    Then Sort Grid by Ship Cost in Ascending order
-    Then Sort Grid by Ship Cost in Descending order
+    Then Filter Cancelled Orders
+    Then Filter Awaiting Shipment Orders
+    Then Filter Cancelled Orders
+    Then Filter Shipped Orders
+    Then Filter Cancelled Orders
+    Then Filter Cancelled Orders
+    Then Filter Awaiting Shipment Orders
+    Then Filter Shipped Orders
+    Then Filter Awaiting Shipment Orders
+    Then Filter Shipped Orders
+    Then Filter Cancelled Orders
+    Then Filter Awaiting Shipment Orders
+    Then Filter Shipped Orders
+    Then Filter Cancelled Orders
+
+    And I Add a new order
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
+
+    Then Print
+
+    Then Expect Awaiting Shipment count to be less by 1
+    Then Expect printed Order ID is in Shipped tab
+
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
+    Then Edit row 1 on the order grid
+    Then Print
+    Then Expect printed Order ID is not in Awaiting Shipment tab
+    Then Expect printed Order ID is in Shipped tab
+
+    And I Add a new order
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
+
+    And I Add a second order
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
+
+    And I Add a third order
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Form Service to "Media Mail Package"
+
+    Then Edit row 1 on the order grid
+    Then Edit row 2 on the order grid
+    Then Edit row 3 on the order grid
+
+    Then Print
+
+    Then Expect all printed Order IDs do not exist in Awaiting Shipment tab
+    Then Expect all printed Order IDs are in Shipped tab
+
 
   @rob_grid
   Scenario:
@@ -13,7 +69,7 @@ Feature: Test Development
     Then List all Grid column values for row 2
     Then List all Grid column values for row 3
 
-    @rob_dev_customs_form_dropdowns
+  @rob_dev_customs_form_dropdowns
   Scenario: Syria - Internal Transaction # Required
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -27,7 +83,7 @@ Feature: Test Development
     Then Set Order Details Form Width to 1
     Then Set Order Details Form Service to "Priority Mail International Package"
 
-    #Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+  #Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Commercial Sample"

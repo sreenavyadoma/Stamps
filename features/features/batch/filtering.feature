@@ -11,8 +11,8 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
     Then Edit row 1 on the order grid
     Then Print
-    Then Expect printed Order ID does not exist in Awaiting Shipment tab
-    Then Expect printed Order ID exists in Shipped tab
+    Then Expect printed Order ID is not in Awaiting Shipment tab
+    Then Expect printed Order ID is in Shipped tab
     And Sign out
 
   @filter3
@@ -39,5 +39,5 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Print
 
     Then Expect all printed Order IDs do not exist in Awaiting Shipment tab
-    Then Expect all printed Order IDs exist in Shipped tab
+    Then Expect all printed Order IDs are in Shipped tab
     And Sign out

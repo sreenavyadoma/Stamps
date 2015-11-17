@@ -31,32 +31,57 @@ module Batch
       @browser.table :css => "table[id*=badgebutton][class*=sdc-badgebutton-selected]"
     end
 
-
-
-
-    def awaiting_shipment_tab
-      div = @browser.div :text => "Awaiting Shipment"
-      table = div.parent.parent.parent.parent
-    end
-
-    def shipped_tab
-      @browser.div :text => "Shipped"
-    end
-
-    def cancelled_tab
+    def awaiting_shipment_field
       @browser.div :text => "Awaiting Shipment"
     end
 
+    def shipped_field
+      @browser.div :text => "Shipped"
+    end
+
+    def cancelled_field
+      @browser.div :text => "Canceled"
+    end
+
     public
+
+    def awaiting_shipment_count
+      browser_helper.text @browser.div :css => "div.sdc-badge"
+    end
+
+    def awaiting_shipment_tab
+      div = awaiting_shipment_field
+      table = div.parent.parent.parent.parent
+      Stamps::Browser::Selection.new div, table, "class", "selected"
+    end
+
     def awaiting_shipment
+      awaiting_shipment_tab.select
+      sleep 1
       @grid ||= Grid.new @browser
+    end
+
+    def shipped_tab
+      div = shipped_field
+      table = div.parent.parent.parent.parent
+      Stamps::Browser::Selection.new div, table, "class", "selected"
     end
 
     def shipped
+      shipped_tab.select
+      sleep 1
       @grid ||= Grid.new @browser
     end
 
+    def cancelled_tab
+      div = cancelled_field
+      table = div.parent.parent.parent.parent
+      Stamps::Browser::Selection.new div, table, "class", "selected"
+    end
+
     def cancelled
+      cancelled_tab.select
+      sleep 1
       @grid ||= Grid.new @browser
     end
 

@@ -144,12 +144,10 @@ module Stamps
       end
 
       def select
-        unless selected
-          10.times{
-            click
-            break if selected?
-          }
-        end
+        10.times{
+          break if selected?
+          click
+        }
       end
 
       def selected?
@@ -175,12 +173,10 @@ module Stamps
       end
 
       def check
-        unless checked?
-          5.times{
-            click
-            break if checked?
-          }
-        end
+        5.times{
+          break if checked?
+          click
+        }
       end
 
       def uncheck
