@@ -1,64 +1,38 @@
 module Postage
   class PrintOn < PostageObject
 
-
     def drop_down
-      divs = @browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
-      domestic = Button.new divs.first
-      international = Button.new divs.last
-
-      if domestic.present?
-        domestic
-      elsif international.present?
-        international
-      else
-        raise "Unable to located Ship-To drop-down button."
-      end
+      Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[0]
     end
 
     def text_box
-      Textbox.new (@browser.text_fields :name => "CountryCode")[1]
+      Textbox.new (@browser.text_field :name => "media")
     end
 
     def select selection
-      log.info "Select Country #{country}"
-
-      selection_1 = Label.new @browser.li :text => country
-      selection_2 = Label.new @browser.li :text => "#{country} "
-
-      text_box = self.text_box
-      drop_down = self.drop_down
-      10.times {
+      box = text_box
+      button = drop_down
+      selection_label = Label.new @browser.div :text => selection
+      5.times {
         begin
-          drop_down.safe_click unless selection_1.present? || selection_2.present?
-          if selection_1.present?
-            selection_1.scroll_into_view
-            selection_1.safe_click
-          elsif selection_2.present?
-            selection_2.scroll_into_view
-            selection_2.safe_click
-          end
-
-          log.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
-          break if text_box.text.include? country
+          button.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
+          selection_label.safe_click
+          break if box.text.include? selection
         rescue
           #ignore
         end
       }
-      log.info "#{country} selected."
-      InternationalShipTo.new @browser unless country.include? "United States"
     end
 
     def tooltip selection
-      drop_down = Button.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
-      text_box = Textbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
-      selection_field = Label.new @browser.li :text => selection
+      drop_down = Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[0]
+      text_box = Textbox.new (@browser.text_field :name => "media")
+      selection_field = Label.new @browser.div :text => selection
 
       10.times{
         drop_down.safe_click unless selection_field.present?
-        selection_field.safe_click
-        input_text = text_box.text
-        break if input_text.include? selection
+        return selection_field.attribute_value "data-qtip" if selection_field.present?
       }
 
     end

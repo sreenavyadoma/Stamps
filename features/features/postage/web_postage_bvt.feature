@@ -4,5 +4,5 @@ Feature: Test Development
     Given I am signed in as a postage shipper
 
   @print_postage_page_objects
-  Scenario:
+  Scenario: Page Object Creation
     Then Create page objects for Print On Shipping Label
