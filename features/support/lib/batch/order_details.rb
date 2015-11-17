@@ -104,7 +104,7 @@ module Batch
     end
 
     def postal_code
-      Textbox.new @browser.text_field :name => "hipPostalCode"
+      Textbox.new @browser.text_field :name => "ShipPostalCode"
     end
 
     def email
@@ -1217,7 +1217,7 @@ module Batch
     end
 
     def text_box
-      Textbox.new (@browser.text_fields :name => "CountryCode")[1]
+      Textbox.new (@browser.text_fields :name => "ShipCountryCode")[1]
     end
 
     def select country
@@ -1277,9 +1277,9 @@ module Batch
 
       return @manage_shipping_adddress if @manage_shipping_adddress.present?
 
-      ship_from_default_selection_field = @browser.div :css => "div[data-recordindex='0']"
+      ship_from_default_selection_field = @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
       ship_from_dropdown = Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
-      ship_from_textbox = Textbox.new @browser.text_field :css => "input[name^=shipfromdroplist]"
+      ship_from_textbox = Textbox.new @browser.text_field :name => "ShipFrom"
 
       if selection.downcase == "default"
         ship_from_selection_field = ship_from_default_selection_field

@@ -113,11 +113,11 @@ module Batch
     end
 
     def item_description
-      Textbox.new (@browser.text_fields :name => "CustomsItemName")[@number-1]
+      Textbox.new (@browser.text_fields :name => "Description")[@number-1]
     end
 
     def qty
-      Textbox.new (@browser.text_fields :name => "CustomsItemQuantity")[@number-1]
+      Textbox.new (@browser.text_fields :name => "Quantity")[@number-1]
     end
 
     def qty_increment value
@@ -129,7 +129,7 @@ module Batch
     end
 
     def unit_price
-      Textbox.new (@browser.text_fields :name => "CustomsItemPrice")[@number-1]
+      Textbox.new (@browser.text_fields :name => "Value")[@number-1]
     end
 
     def unit_price_increment value
@@ -141,7 +141,7 @@ module Batch
     end
 
     def lbs
-      Textbox.new (@browser.text_fields :name => "CustomsItemWeightLb")[@number-1]
+      Textbox.new (@browser.text_fields :name => "lbs")[@number-1]
     end
 
     def lbs_increment value
@@ -153,7 +153,7 @@ module Batch
     end
 
     def oz
-      Textbox.new (@browser.text_fields :name => "CustomsItemWeightOz")[@number-1]
+      Textbox.new (@browser.text_fields :name => "oz")[@number-1]
     end
 
     def oz_increment value
@@ -171,7 +171,7 @@ module Batch
 =end
 
     def origin_country_input
-      (@browser.text_fields :name => "OriginCountry")[@number-1]
+      (@browser.text_fields :name => "OriginCountryCode")[@number-1]
     end
 
     def origin_country
@@ -179,7 +179,7 @@ module Batch
     end
 
     def hs_tariff
-      Textbox.new (@browser.text_fields :name => "HSTariff")[@number-1]
+      Textbox.new (@browser.text_fields :name => "TariffNo")[@number-1]
     end
 
   end
@@ -210,7 +210,7 @@ module Batch
   class InternalTransaction < BatchObject
 
     def text_box
-      Textbox.new @browser.text_field :name => "isITNRequired"
+      Textbox.new @browser.text_field :name => "IsITNRequired"
     end
 
     def select selection
@@ -237,7 +237,7 @@ module Batch
   class PackageContents < BatchObject
 
     def text_box
-      Textbox.new @browser.text_field :name => "ContentType"
+      Textbox.new @browser.text_field :name => "CustomsContents"
     end
 
     def select selection
@@ -264,7 +264,7 @@ module Batch
   class NonDeliveryOptions < BatchObject
 
     def text_box
-      Textbox.new @browser.text_field :name => "NonDeliveryOption"
+      Textbox.new @browser.text_field :name => "NonDelivery"
     end
 
     def select selection
@@ -309,13 +309,11 @@ module Batch
     end
 
     def more_info
-      Textbox.new @browser.text_field :name => "Comments"
+      Textbox.new @browser.text_field :name => "CustomsComments"
     end
 
     def itn_number
-      div = (@browser.divs :css => "div[id^=textfield][class*=x-hbox-form-item]").last
-      text_field = @browser.text_field :css => "input[name=ITN][maxlength='50']"
-      Textbox.new text_field, div
+      Textbox.new @browser.text_field :name => "AES"
     end
 
     def license
