@@ -57,7 +57,6 @@ module Batch
       end
     end
 
-
     def address_hash_to_str address
       name = (address["name"].downcase.include? "random") ? test_helper.random_name : address["name"]
       company_name = (address["company"].downcase.include? "random") ? test_helper.random_company_name : address["company"]

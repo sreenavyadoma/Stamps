@@ -24,6 +24,13 @@ require_relative 'lib/batch/batch_helper'
 require_relative 'lib/batch/fields'
 require_relative 'lib/postage/postage_helper'
 
+# PostageHelper module
+require_relative "lib/postage/postage_helper"
+require_relative "lib/postage/fields"
+require_relative "lib/postage/print_postage"
+require_relative "lib/postage/navigation"
+require_relative "../support/lib/postage/sign_in"
+
 module Selenium
   module WebDriver
     module Firefox

@@ -80,12 +80,10 @@ module Postage
         end
       }
 
-
       if selection.downcase.includes? "shipping label"
         return ShippingLabel.new @browser
       else
         raise "Print On #{selection} not yet supported."
-
       end
 
       def tooltip selection
@@ -99,23 +97,23 @@ module Postage
         }
 
       end
-
-    end
-
-    class PrintPostage < PostageObject
-
-      def sign_in_page
-        @sign_in ||= Postage::SignInPage.new @browser
-      end
-
-      def navigation
-        @navigation ||= Postage::Navigation.new @browser
-      end
-
-      def print_on
-        PrintOn.new @browser
-      end
-
     end
   end
+
+  class PrintPostage < PostageObject
+
+    def sign_in_page
+      @sign_in ||= Postage::SignInPage.new @browser
+    end
+
+    def navigation
+      @navigation ||= Postage::Navigation.new @browser
+    end
+
+    def print_on
+      PrintOn.new @browser
+    end
+
+  end
+
 end
