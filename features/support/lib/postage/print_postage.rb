@@ -35,7 +35,7 @@ module Postage
     end
   end
 
-  class PostageShipTo < PostageObject
+  class PostageShipTo < ShipToBase
     def domestic
       PostageShipToDomestic.new @browser
     end
