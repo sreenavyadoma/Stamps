@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Then /^Create page objects for Print On Shipping Label$/ do
+Then /^This works$/ do
   print_postage.print_on.select "Shipping Label - 8 ½” x 11” Paper"
   log.info print_postage.print_on.tooltip "Shipping Label - 8 ½” x 11” Paper"
   log.info print_postage.print_on.text_box.text
@@ -68,4 +68,25 @@ Then /^Create page objects for Print On Shipping Label$/ do
   print_postage.print_on.select "Roll - 4 ⅛” x 6 ¼” Shipping Label"
   log.info print_postage.print_on.tooltip "Roll - 4 ⅛” x 6 ¼” Shipping Label"
   log.info print_postage.print_on.text_box.text
+
 end
+
+Then /^Create page objects for Print On Shipping Label$/ do
+  random_ship_to_address = test_helper.random_ship_to
+  formatted_address = BatchHelper.instance.format_address(random_ship_to_address)
+
+  shipping_label = print_postage.print_on.select "Shipping Label - 8 ½” x 11” Paper"
+
+  shipping_label.ship_to.domestic.text_box.set formatted_address
+  log shipping_label.ship_to.domestic.text_box.text
+
+  shipping_label.email_tracking.check
+  shipping_label.email_tracking.un_check
+  log shipping_label.email_tracking.tooltip
+
+
+  #international_shipping_address = shipping_label.country.select "Canada"
+  #shipping_label.ship_from.select ""
+end
+
+
