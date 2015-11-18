@@ -25,7 +25,7 @@ module Batch
     end
 
     def filter
-      Batch::FilterPanel.new @browser
+      @filter ||= Batch::FilterPanel.new @browser
     end
 
     def multi_order

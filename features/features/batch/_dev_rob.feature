@@ -30,6 +30,9 @@ Feature: Test Development
     Then Expect Awaiting Shipment count to be less by 1
     Then Expect printed Order ID is in Shipped tab
 
+  Scenario: blah
+
+    And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
     Then Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"

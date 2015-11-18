@@ -46,7 +46,7 @@ module Batch
     public
 
     def awaiting_shipment_count
-      browser_helper.text @browser.div :css => "div.sdc-badge"
+      browser_helper.text(@browser.div :css => "div.sdc-badge").to_i
     end
 
     def awaiting_shipment_tab

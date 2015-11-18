@@ -13,10 +13,11 @@ Then /^Filter Cancelled Orders$/ do
   batch.filter.cancelled
 end
 
-
 Then /^Expect Awaiting Shipment count to be less by (\d+)$/ do |count|
   log.info "Expect Awaiting Shipment count to be less by #{count}"
-  batch.filter.awaiting_shipment_count
+  awaiting_shipment_count = batch.filter.awaiting_shipment_count
+  log.info "Test #{(awaiting_shipment_count = @awaiting_shipment_count.to_i - count.to_i)?'Passed':'Failed'}"
+  awaiting_shipment_count.should eql @awaiting_shipment_count.to_i - count.to_i
 end
 
 Then /^Expect system shows name of (.*) filter in closed panel$/ do |expectation|
@@ -161,8 +162,12 @@ end
 Then /^Expect printed Order ID is in Shipped tab$/ do
   log.info "Expectation: Expect printed Order ID is in Shipped tab"
   grid = batch.filter.shipped
+  grid.order_id.sort.descending
+  sleep 1
+  grid.order_id.sort.descending
   row1_order_id = grid.order_id.row 1
   log.info "Shipped - Row #{1} Order ID: #{row1_order_id}"
+  log.info "Test #{(@order_id==row1_order_id)?'Passed':'Failed'}"
   @order_id.should eql row1_order_id
 end
 
