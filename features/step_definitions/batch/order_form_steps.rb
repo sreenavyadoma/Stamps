@@ -1,5 +1,5 @@
 And /^Set Order Details Form Ship-From to (\w+)$/ do |value|
-  log.info "Step: Set Order Details Form Ship-From to #{value}"
+  log.info "Step: Set Order Details Form Ship-From to: \n #{value}"
   batch.order_details.ship_from.select value
 end
 

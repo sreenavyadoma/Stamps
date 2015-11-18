@@ -26,7 +26,7 @@ require_relative 'lib/postage/postage_helper'
 
 # PostageHelper module
 require_relative "lib/postage/postage_helper"
-require_relative "lib/postage/fields"
+require_relative "lib/postage/field_locators"
 require_relative "lib/postage/print_postage"
 require_relative "lib/postage/navigation"
 require_relative "../support/lib/postage/sign_in"

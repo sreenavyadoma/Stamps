@@ -1,5 +1,4 @@
 module Postage
-
   class PostageObject < Stamps::Browser::BrowserObject
   end
 

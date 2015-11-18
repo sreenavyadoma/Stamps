@@ -30,8 +30,6 @@ Feature: Test Development
     Then Expect Awaiting Shipment count to be less by 1
     Then Expect printed Order ID is in Shipped tab
 
-  Scenario: blah
-
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
@@ -62,7 +60,7 @@ Feature: Test Development
 
     Then Print
 
-    Then Expect all printed Order IDs do not exist in Awaiting Shipment tab
+    Then Expect all printed Order IDs not in Awaiting Shipment tab
     Then Expect all printed Order IDs are in Shipped tab
 
 

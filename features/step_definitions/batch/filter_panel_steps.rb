@@ -1,20 +1,20 @@
 Then /^Filter Awaiting Shipment Orders$/ do
-  log.info "Filter Awaiting Shipment Orders"
+  log.info "Step:  Filter Awaiting Shipment Orders"
   batch.filter.awaiting_shipment
 end
 
 Then /^Filter Shipped Orders$/ do
-  log.info "Filter Shipped Orders"
+  log.info "Step:  Filter Shipped Orders"
   batch.filter.shipped
 end
 
 Then /^Filter Cancelled Orders$/ do
-  log.info "Filter Cancelled Orders"
+  log.info "Step:  Filter Cancelled Orders"
   batch.filter.cancelled
 end
 
 Then /^Expect Awaiting Shipment count to be less by (\d+)$/ do |count|
-  log.info "Expect Awaiting Shipment count to be less by #{count}"
+  log.info "Expectation: Expect Awaiting Shipment count to be less by #{count}"
   awaiting_shipment_count = batch.filter.awaiting_shipment_count
   log.info "Test #{(awaiting_shipment_count = @awaiting_shipment_count.to_i - count.to_i)?'Passed':'Failed'}"
   awaiting_shipment_count.should eql @awaiting_shipment_count.to_i - count.to_i
@@ -135,8 +135,8 @@ Then /^Expect printed Order ID is not in Awaiting Shipment tab$/ do
   expect(@order_id.include? row1_order_id).to be false
 end
 
-Then /^Expect all printed Order IDs do not exist in Awaiting Shipment tab$/ do
-  log.info "Expectation: Expect all printed Order IDs do not exist in Awaiting Shipment tab"
+Then /^Expect all printed Order IDs not in Awaiting Shipment tab$/ do
+  log.info "Expectation: Expect all printed Order IDs not in Awaiting Shipment tab"
   grid = batch.filter.awaiting_shipment
 
   log.info "First Order ID: #{@order_id} in Awaiting Shipment tab"

@@ -1002,7 +1002,7 @@ module Batch
     end
 
     def checked_rows *args
-      cache_count = 10
+      cache_count = 5
       if args.length == 1
         cache_count = args[0]
       end

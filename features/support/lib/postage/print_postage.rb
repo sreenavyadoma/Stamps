@@ -9,6 +9,7 @@ module Postage
       verify_field_attrib = "checked"
       Stamps::Browser::Checkbox.new checkbox_field, verify_field, attribute, verify_field_attrib
     end
+
     def text_box
       Textbox.new @browser.text_field :name => "recipientEmail"
     end
@@ -89,7 +90,7 @@ module Postage
   class PrintOn < PostageObject
 
     def drop_down
-      Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[0]
+      Button.new (@browser.divs FieldLocators::PrintOn.drop_down_divs)[0]
     end
 
     def text_box
