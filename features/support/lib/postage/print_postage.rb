@@ -1,6 +1,32 @@
 # encoding: utf-8
 module Postage
 
+  ######Parent Class for Print On Types
+
+  class PostageBase < Postage::PostageObject
+    # all common fields goes here including service drop down
+
+    def country
+      Country.new @browser
+    end
+
+    def service
+      Service.new @browser
+    end
+
+    def ship_from
+      ShipFrom.new @browser
+    end
+
+    def weight
+      Weight.new @browser
+    end
+
+    def print_on
+      PrintOn.new @browser
+    end
+  end
+
   ######Class for Print Postage page, Incl. toolbars and navigation. Instantiates objects for Print On selections
 
   class PrintPostage < PostageBase
@@ -51,32 +77,6 @@ module Postage
       CertifiedMail.new @browser
     end
 
-  end
-
-  ######Parent Class for Print On Types
-
-  class PostageBase < PostageObject
-    # all common fields goes here including service drop down
-
-    def country
-      Country.new @browser
-    end
-
-    def service
-      Service.new @browser
-    end
-
-    def ship_from
-      ShipFrom.new @browser
-    end
-
-    def weight
-      Weight.new @browser
-    end
-
-    def print_on
-      PrintOn.new @browser
-    end
   end
 
   ######Classes for each Print On Type, containing the print postage form elements specific to that print on type
