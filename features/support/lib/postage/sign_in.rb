@@ -38,8 +38,8 @@ module Postage
       end
 
       sign_in_link = Link.new @browser.link :text => "Sign In"
-      username_textbox = Textbox.new @browser.text_field FieldLocators::SignIn.username_text_field
-      password_textbox = Textbox.new @browser.text_field FieldLocators::SignIn.password_text_field
+      username_textbox = Textbox.new @browser.text_field Locators::SignIn.username_text_field
+      password_textbox = Textbox.new @browser.text_field Locators::SignIn.password_text_field
       sign_in_button = Button.new @browser.button :id => "signInButton"
       verifying_account_info = Label.new @browser.div :text => "Verifying account information..."
       signed_in_user = Label.new @browser.span :id => "userNameText"

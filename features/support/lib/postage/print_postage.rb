@@ -1,6 +1,174 @@
 # encoding: utf-8
 module Postage
 
+  ######Class for Print Postage page, Incl. toolbars and navigation. Instantiates objects for Print On selections
+
+  class PrintPostage < PostageBase
+
+    def sign_in_page
+      @sign_in ||= PostageBase::SignInPage.new @browser
+    end
+
+    def navigation
+      @navigation ||= PostageBase::Navigation.new @browser
+    end
+
+    def toolbar
+      #we'll get to this when it comes time to buy stamps and prefs
+    end
+
+    def print_on selection
+      PrintOn.new(@browser).select selection
+
+      if selection.downcase.include? "shipping label"
+        shipping_label
+      elsif selection.downcase.include? "stamps"
+        stamps
+      elsif selection.downcase.include? "envelope"
+        envelope
+      elsif selection.downcase.include? "certified"
+        certified_mail
+      elsif selection.downcase.include? "roll"
+        shipping_label
+      else
+        raise "Print On #{selection} not yet supported."
+      end
+    end
+
+    def shipping_label
+      ShippingLabel.new @browser
+    end
+
+    def stamps
+      NetStamps.new @browser
+    end
+
+    def envelope
+      Envelope.new @browser
+    end
+
+    def certified_mail
+      CertifiedMail.new @browser
+    end
+
+  end
+
+  ######Parent Class for Print On Types
+
+  class PostageBase < PostageObject
+    # all common fields goes here including service drop down
+
+    def country
+      Country.new @browser
+    end
+
+    def service
+      Service.new @browser
+    end
+
+    def ship_from
+      ShipFrom.new @browser
+    end
+
+    def weight
+      Weight.new @browser
+    end
+
+    def print_on
+      PrintOn.new @browser
+    end
+  end
+
+  ######Classes for each Print On Type, containing the print postage form elements specific to that print on type
+
+  class ShippingLabel < PostageBase
+
+    def email_tracking
+      EmailTracking.new @browser
+    end
+
+    def ship_to
+      PostageShipTo.new @browser
+    end
+
+    def insure_for
+      InsureFor.new @browser
+    end
+
+    def extra_services
+      ExtraServices.new @browser
+    end
+
+    def ship_date
+      ShipDate.new @browser
+    end
+
+  end
+
+  class NetStamps < PostageBase
+
+    def serial
+      Serial.new @browser
+    end
+
+    def extra_services
+      ExtraServices.new @browser
+    end
+
+    def calculate_postage
+      CalculatePostage.new @browser
+    end
+
+    def specify_postage
+      SpecifyPostage.new @browser
+    end
+
+    def stamp_amount
+      StampAmount.new @browser
+    end
+
+  end
+
+  class Envelope < PostageBase
+
+    def ship_to
+      PostageShipTo.new @browser
+    end
+
+    def insure_for
+      InsureFor.new @browser
+    end
+
+    def extra_services
+      ExtraServices.new @browser
+    end
+
+    def ship_date
+      ShipDate.new @browser
+    end
+  end
+
+  class CertifiedMail < PostageBase
+
+    def ship_to
+      PostageShipTo.new @browser
+    end
+
+    def insure_for
+      InsureFor.new @browser
+    end
+
+    def cm_extra_services
+      CMExtraServices.new @browser
+    end
+
+    def ship_date
+      ShipDate.new @browser
+    end
+  end
+
+  ######Classes for Elements contained in Print Postage form
+
   class EmailTracking < PostageObject
     def checkbox
       checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
@@ -90,7 +258,7 @@ module Postage
   class PrintOn < PostageObject
 
     def drop_down
-      Button.new (@browser.divs FieldLocators::PrintOn.drop_down_divs)[0]
+      Button.new (@browser.divs Locators::PrintOn.drop_down_divs)[0]
     end
 
     def text_box
@@ -127,90 +295,5 @@ module Postage
     end
   end
 
-  class PostageBase < PostageObject
-
-    # all common fields goes here including service drop down
-
-    def print_on selection
-      PrintOn.new(@browser).select selection
-    end
-
-  end
-
-  class ShippingLabel < PostageBase
-    def email_tracking
-      EmailTracking.new @browser
-    end
-
-    def ship_to
-      PostageShipTo.new @browser
-    end
-  end
-
-  class NetStamps < PostageBase
-
-  end
-
-  class Envelope < PostageBase
-
-  end
-
-  class CertifiedMail < PostageBase
-
-  end
-
-  class Roll < PostageBase
-
-  end
-
-  class PrintPostage < PostageBase
-
-    def sign_in_page
-      @sign_in ||= PostageBase::SignInPage.new @browser
-    end
-
-    def navigation
-      @navigation ||= PostageBase::Navigation.new @browser
-    end
-
-    def toolbar
-      #we'll get to this when it comes time to buy stamps and prefs
-    end
-
-    def print_on selection
-      PrintOn.new(@browser).select selection
-
-      if selection.downcase.include? "shipping label"
-        shipping_label
-      elsif selection.downcase.include? "stamps"
-        stamps
-      elsif selection.downcase.include? "envelope"
-        envelope
-      else
-        raise "Print On #{selection} not yet supported."
-      end
-    end
-
-    def shipping_label
-      ShippingLabel.new @browser
-    end
-
-    def stamps
-      NetStamps.new @browser
-    end
-
-    def envelope
-      Envelope.new @browser
-    end
-
-    def certified_mail
-      CertifiedMail.new @browser
-    end
-
-    def roll
-      Roll.new @browser
-    end
-
-  end
 
 end

@@ -1,5 +1,5 @@
 module Postage
-  module FieldLocators
+  module Locators
     class SignIn
       def self.username_text_field
         {:id => "UserNameTextBox"}
@@ -23,3 +23,4 @@ module Postage
     end
   end
 end
+
