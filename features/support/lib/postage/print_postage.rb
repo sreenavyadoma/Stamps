@@ -258,11 +258,11 @@ module Postage
   class PrintOn < PostageObject
 
     def drop_down
-      Button.new (@browser.divs Locators::PrintOn.drop_down_divs)[0]
+      Button.new (@browser.divs Locators::FormBody.print_on_drop_down_divs)[0]
     end
 
     def text_box
-      Textbox.new (@browser.text_field :name => "media")
+      Textbox.new (@browser.text_field Locators::FormBody.print_on_text_field)
     end
 
     def select selection
