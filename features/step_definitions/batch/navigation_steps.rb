@@ -43,13 +43,9 @@ Then /^Expect \$(\d+) is added to customer balance$/ do |balance|
   @new_balance = batch.navigation.balance
   log.info "Compare old and new balance"
   match = @new_balance.to_f - @old_balance.to_f
-  log.info "#{@new_balance}"
-  log.info "#{@old_balance}"
-  log.info "#{match}"
-  match_float = match.to_f
   balance_float = balance.to_f
   log.info "Verify correct postage amount added to balance"
-  match_float.should eql  balance_float
+  match.should eql  balance_float
   log.info "Postage purchase verified"
 end
 
