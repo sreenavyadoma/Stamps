@@ -42,6 +42,12 @@ Then /^Set Print Modal Ship Date to today plus two days$/ do |day|
   @ship_date = batch.toolbar.print_modal.date_picker.todays_date # returns string of format, Nov 19
 end
 
+Then /^Set Print Modal Ship Date to today plus three days$/ do |day|
+  log.info "Set Print Modal Ship Date to today plus #{day}"
+  @ship_date = batch.toolbar.print_modal.date_picker.today # returns string of format, Nov 19
+  @ship_date = batch.toolbar.print_modal.date_picker.todays_date # returns string of format, Nov 19
+end
+
 Then /^Expect Shipped Tab Date Printed to be today&/ do
 
 end
@@ -60,12 +66,6 @@ end
 
 Then /^Expect Shipped Tab Ship Date to be today plus three&/ do
 
-end
-
-Then /^Set Print Modal Ship Date to today plus three days$/ do |day|
-  log.info "Set Print Modal Ship Date to today plus #{day}"
-  @ship_date = batch.toolbar.print_modal.date_picker.today # returns string of format, Nov 19
-  @ship_date = batch.toolbar.print_modal.date_picker.todays_date # returns string of format, Nov 19
 end
 
 Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
