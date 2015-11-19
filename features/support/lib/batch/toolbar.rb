@@ -136,7 +136,7 @@ module Batch
     end
 
     def print_modal
-      @print_window ||= PrintModal.new @browser
+      @print_window ||= Batch::PrintModal.new @browser
       open_window @print_window
     end
 
