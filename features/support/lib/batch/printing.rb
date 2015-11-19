@@ -164,7 +164,7 @@ module Batch
         picker.safe_click unless today.present?
         today.safe_click
         sleep 1
-        return test_helper.today_plus_abbrev_month 0
+        return test_helper.today_plus_abbrev_month 0 #get ship date text box value and return it in correct format or not...
       }
       raise "Unable to select today's date from date picker object in Print Modal."
     end
@@ -209,7 +209,7 @@ module Batch
     end
 
     def starting_label
-      StartingLabel.new @browser
+      @starting_label ||= StartingLabel.new @browser
     end
 
     def printer
@@ -222,8 +222,8 @@ module Batch
       PrintingOn.new @browser
     end
 
-    def date_picker day
-      PrintWindowDatePicker.new @browser
+    def date_picker
+      @date_picker ||= PrintWindowDatePicker.new @browser
     end
 
     def ship_date

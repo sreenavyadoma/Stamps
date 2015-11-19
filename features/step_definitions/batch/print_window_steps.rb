@@ -1,70 +1,72 @@
-When /^Select (\w+) side label$/ do |label_side|
-  log.info "Step: Select #{label_side} side label"
-  if label_side.casecmp("left") == 0
-    selected = batch.toolbar.print_modal.starting_label.left
-    log.info "#{label_side} side label was #{(selected)?'selected.':'not selected'}"
-  elsif label_side.casecmp("right") == 0
-    selected = batch.toolbar.print_modal.starting_label.right
-    log.info "#{label_side} side label was #{(selected)?'selected.':'not selected'}"
-  else
-    raise "Label side #{label_side} is not a valid selection. Select either \"left\" or \"right\" side."
-  end
+
+When /^Select Print Modal left-side label$/ do
+  log.info "Step: Select Print Modal - Left side label"
+  selected = batch.toolbar.print_modal.starting_label.left
+  log.info "left-side label was #{(selected)?'selected.':'not selected'}"
 end
 
-Then /^Expect (\w+) side label selected$/ do |label|
-  log.info "Expectation: Expect #{label} side label selected"
-  if label.casecmp("left") == 0
-    selected = batch.toolbar.print_modal.starting_label.left_selected?
-    log.info "Expect #{label} side label selected.  Test #{(selected)?'Passed.':'Failed'}"
-  elsif label.casecmp("right") == 0
-    selected = batch.toolbar.print_modal.starting_label.right_selected?
-    log.info "Expect #{label} side label selected.  Test #{(selected)?'Passed.':'Failed'}"
-  else
-    raise "Label side #{label_side} is not a valid selection. Select either \"left\" or \"right\" side."
-  end
+When /^Select Print Modal right-side label$/ do
+  log.info "Step: Select Print Modal - Right side label"
+  selected = batch.toolbar.print_modal.starting_label.right
+  log.info "Print Modal right-side label was #{(selected)?'selected.':'not selected'}"
+end
+
+Then /^Expect Print Modal right-side label selected$/ do
+  log.info "Expectation: Expect Print Modal right-side label selected"
+  selected = batch.toolbar.print_modal.starting_label.right_selected?
+  log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
+end
+
+Then /^Expect Print Modal left-side label selected$/ do
+  log.info "Expectation: Expect Print Modal left-side label selected"
+  selected = batch.toolbar.print_modal.starting_label.left_selected?
+  log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
 end
 
 Then /^Set Print Modal Ship Date to today$/ do
-  #log.info "Step: Set Print Modal Ship Date to today:"
-  #batch.toolbar.print_modal.ship_date.set test_helper.print_date(days)
+  today = test_helper.today_plus_abbrev_month 0
+  log.info "Step: Set Print Modal Ship Date to #{today}"
+  @ship_date_today = batch.toolbar.print_modal.date_picker.today
 end
 
-Then /^Set Print Modal Ship Date to today plus one day$/ do |day|
-  log.info "Set Print Modal Ship Date to today plus #{day}"
-  @ship_date = batch.toolbar.print_modal.date_picker.today # returns string of format, Nov 19
-  @ship_date = batch.toolbar.print_modal.date_picker.todays_date # returns string of format, Nov 19
-
+Then /^Set Print Modal Ship Date to today plus one day$/ do
+  today = test_helper.today_plus_abbrev_month 1
+  log.info "Set Print Modal Ship Date to today plus #{today}"
+  @ship_date_today_plus_1 = batch.toolbar.print_modal.date_picker.today_plus_1
 end
 
-Then /^Set Print Modal Ship Date to today plus two days$/ do |day|
-  log.info "Set Print Modal Ship Date to today plus #{day}"
-  @ship_date = batch.toolbar.print_modal.date_picker.today # returns string of format, Nov 19
-  @ship_date = batch.toolbar.print_modal.date_picker.todays_date # returns string of format, Nov 19
+Then /^Set Print Modal Ship Date to today plus two days$/ do
+  today = test_helper.today_plus_abbrev_month 2
+  log.info "Set Print Modal Ship Date to today plus #{today}"
+  @ship_date_today_plus_2 = batch.toolbar.print_modal.date_picker.today_plus_2
 end
 
-Then /^Set Print Modal Ship Date to today plus three days$/ do |day|
-  log.info "Set Print Modal Ship Date to today plus #{day}"
-  @ship_date = batch.toolbar.print_modal.date_picker.today # returns string of format, Nov 19
-  @ship_date = batch.toolbar.print_modal.date_picker.todays_date # returns string of format, Nov 19
+Then /^Set Print Modal Ship Date to today plus three days$/ do
+  today = test_helper.today_plus_abbrev_month 3
+  log.info "Set Print Modal Ship Date to today plus #{today}"
+  @ship_date_today_plus_3 = batch.toolbar.print_modal.date_picker.today_plus_3
 end
 
-Then /^Expect Shipped Tab Date Printed to be today&/ do
-
-end
-
-Then /^Expect Shipped Tab Ship Date to be today&/ do
-
-end
-
-Then /^Expect Shipped Tab Ship Date to be today plus one&/ do
+Then /^Expect Shipped Tab Date Printed to be today$/ do
+  today = test_helper.today_plus_abbrev_month 0
+  log.info "Expectation: Set Print Modal Ship Date to #{today}"
+  actual_date_printed = batch.filter.shipped.date_printed
 
 end
 
-Then /^Expect Shipped Tab Ship Date to be today plus two&/ do
+Then /^Expect Shipped Tab Ship Date to be today$/ do
 
 end
 
-Then /^Expect Shipped Tab Ship Date to be today plus three&/ do
+Then /^Expect Shipped Tab Ship Date to be today plus one$/ do
+
+end
+
+Then /^Expect Shipped Tab Ship Date to be today plus two$/ do
+
+end
+
+Then /^Expect Shipped Tab Ship Date to be today plus three$/ do
 
 end
 
