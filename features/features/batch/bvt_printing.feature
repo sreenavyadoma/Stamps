@@ -4,7 +4,7 @@ Feature:  BVT Printing
   Background:
     Given I am signed in as a batch shipper
 
-  @bvt_printing
+  @bvt
   Scenario:  Printing
     And I Add a new order
     Then Set Order Details Form Ship-From to default

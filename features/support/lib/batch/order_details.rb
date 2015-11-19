@@ -1127,7 +1127,7 @@ module Batch
     private
 
     def text_box
-      Textbox.new @browser.text_field :css => "input[name^=servicedroplist]"
+      Textbox.new @browser.text_field :name => "Service"
     end
 
     def drop_down
