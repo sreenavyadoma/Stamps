@@ -14,7 +14,7 @@ module Batch
       selection_2 = Label.new ((@browser.lis :text => "#{country} ")[@index+1])
 
 
-      text_box_field = @browser.text_field :name => "OriginCountry"
+      text_box_field = @browser.text_field :name => "OriginCountryCode"
 
       text_box = Textbox.new text_box_field
       drop_down = Button.new text_box_field.parent.parent.divs[1]
