@@ -5,6 +5,8 @@ When /^I Add a new order$/ do
   batch.grid.checkbox.uncheck 1
   @single_order_form = batch.toolbar.add
   @order_id = @single_order_form.order_id
+  log.info "New Order ID"
+  @awaiting_shipment_count = batch.filter.awaiting_shipment_count
 end
 
 Then /^I Add a second order$/ do

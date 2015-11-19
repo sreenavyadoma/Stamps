@@ -135,21 +135,48 @@ module Stamps
 
     end
 
+    class Selection < ClickableField
+      def initialize clickable_field, verify_field, attribute, verify_field_attrib
+        super clickable_field
+        @verify_field = verify_field
+        @attribute = attribute
+        @verify_field_attrib = verify_field_attrib
+      end
+
+      def select
+        10.times{
+          break if selected?
+          click
+        }
+      end
+
+      def selected?
+        begin
+          value = browser_helper.attribute_value @verify_field, @attribute
+          if value == "true" || value == "false"
+            return value == "true"
+          else
+            value.include? @verify_field_attrib
+          end
+        rescue
+          false
+        end
+      end
+    end
+
     class Checkbox < ClickableField
-      def initialize checkbox_field, verify_field, attribute, checked_tester
+      def initialize checkbox_field, verify_field, attribute, verify_field_attrib
         super checkbox_field
         @verify_field = verify_field
         @attribute = attribute
-        @checked_tester = checked_tester
+        @verify_field_attrib = verify_field_attrib
       end
 
       def check
-        unless checked?
-          5.times{
-            click
-            break if checked?
-          }
-        end
+        5.times{
+          break if checked?
+          click
+        }
       end
 
       def uncheck
@@ -167,8 +194,7 @@ module Stamps
           if attrib_val == "true" || attrib_val == "false"
             return attrib_val == "true"
           else
-            checked = attrib_val.include? @checked_tester
-            checked
+            attrib_val.include? @verify_field_attrib
           end
         rescue
           false
@@ -276,11 +302,11 @@ module Stamps
       end
 
       def expose_selection_field selection
-        @selection_field = selection_field selection
+        @verify_field_attrib = selection_field selection
         5.times{
           browser_helper.safe_click @drop_down, "drop-down"
           #log.info "Selection is present? #{browser_helper.present? @selection_field}"
-          return @selection_field if browser_helper.present? @selection_field
+          return @verify_field_attrib if browser_helper.present? @verify_field_attrib
         }
       end
 
@@ -597,6 +623,5 @@ module Stamps
         end
       end
     end
-
   end
 end

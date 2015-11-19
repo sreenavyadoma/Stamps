@@ -65,14 +65,14 @@ module Batch
     end
 
     def name
-      field = Textbox.new @browser.text_field :name => "FullName"
+      field = Textbox.new @browser.text_field :name => "ShipName"
       data_error_field = @browser.div :css => "div[data-anchortarget^=autosuggest]"
       field.data_qtip_field data_error_field, "data-errorqtip"
       field
     end
 
     def company
-      field = Textbox.new @browser.text_field :name => "Company"
+      field = Textbox.new @browser.text_field :name => "ShipCompany"
       data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
       data_error_field = data_error_collection[1]
       field.data_qtip_field data_error_field, "data-errorqtip"
@@ -80,7 +80,7 @@ module Batch
     end
 
     def address_1
-      field = Textbox.new @browser.text_field :name => "Address1"
+      field = Textbox.new @browser.text_field :name => "ShipStreet1"
       data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
       data_error_field = data_error_collection[2]
       field.data_qtip_field data_error_field, "data-errorqtip"
@@ -88,11 +88,11 @@ module Batch
     end
 
     def address_2
-      Textbox.new @browser.text_field :name => "Address2"
+      Textbox.new @browser.text_field :name => "ShipStreet2"
     end
 
     def city
-      field = Textbox.new @browser.text_field :name => "City"
+      field = Textbox.new @browser.text_field :name => "ShipCity"
       data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
       data_error_field = data_error_collection[3]
       field.data_qtip_field data_error_field, "data-errorqtip"
@@ -100,15 +100,15 @@ module Batch
     end
 
     def province
-      Textbox.new @browser.text_field :name => "Province"
+      Textbox.new @browser.text_field :name => "ShipState"
     end
 
     def postal_code
-      Textbox.new @browser.text_field :name => "PostalCode"
+      Textbox.new @browser.text_field :name => "ShipPostalCode"
     end
 
     def email
-      field = Textbox.new (@browser.text_fields :name => "Email").last
+      field = Textbox.new (@browser.text_fields :name => "BuyerEmail").last
       data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
       data_error_field = data_error_collection[6]
       field.data_qtip_field data_error_field, "data-errorqtip"
@@ -116,7 +116,7 @@ module Batch
     end
 
     def phone
-      field = Textbox.new (@browser.text_fields :name => "Phone").last
+      field = Textbox.new (@browser.text_fields :name => "ShipPhone").last
       data_error_collection = @browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]"
       data_error_field = data_error_collection[5]
       field.data_qtip_field data_error_field, "data-errorqtip"
@@ -1217,7 +1217,7 @@ module Batch
     end
 
     def text_box
-      Textbox.new (@browser.text_fields :name => "CountryCode")[1]
+      Textbox.new (@browser.text_fields :name => "ShipCountryCode")[1]
     end
 
     def select country
@@ -1277,9 +1277,9 @@ module Batch
 
       return @manage_shipping_adddress if @manage_shipping_adddress.present?
 
-      ship_from_default_selection_field = @browser.div :css => "div[data-recordindex='0']"
+      ship_from_default_selection_field = @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
       ship_from_dropdown = Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
-      ship_from_textbox = Textbox.new @browser.text_field :css => "input[name^=shipfromdroplist]"
+      ship_from_textbox = Textbox.new @browser.text_field :name => "ShipFrom"
 
       if selection.downcase == "default"
         ship_from_selection_field = ship_from_default_selection_field

@@ -39,7 +39,7 @@ module Batch
       end
 
       order_grid = Grid.new @browser
-      checked_rows_cache = order_grid.checkbox.checked_rows
+      #checked_rows_cache = order_grid.checkbox.checked_rows
 
       naws_plugin_error = NawsPluginError.new @browser
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
@@ -48,7 +48,7 @@ module Batch
       5.times {
 
         if install_plugin_error.present?
-          order_grid.checkbox.check_all checked_rows_cache
+          #order_grid.checkbox.check_all checked_rows_cache
           install_plugin_error.close
           return nil
         end
@@ -57,7 +57,7 @@ module Batch
           if error_connecting_to_plugin.present?
             5.times{
               error_connecting_to_plugin.ok
-              order_grid.checkbox.check_all checked_rows_cache
+              #order_grid.checkbox.check_all checked_rows_cache
               break unless error_connecting_to_plugin.present?
             }
           end
@@ -65,13 +65,13 @@ module Batch
           if naws_plugin_error.present?
             5.times{
               naws_plugin_error.ok
-              order_grid.checkbox.check_all checked_rows_cache
+              #order_grid.checkbox.check_all checked_rows_cache
               break unless naws_plugin_error.present?
             }
           end
 
           return window if window.present?
-          order_grid.checkbox.check_all checked_rows_cache
+          #order_grid.checkbox.check_all checked_rows_cache
           browser_helper.click browser_print_button, "print"
         rescue
           #ignore

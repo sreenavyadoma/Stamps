@@ -39,7 +39,7 @@ end
 Given /^I am signed in as batch shipper (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, username, password|
   log.info "Step: I am signed in as batch shipper #{browser}/#{url}/#{username}/#{password}"
   step "I launch browser #{browser}"
-  step "I visit batch #{url}"
+  step "I visit batch sign-in page #{url}"
   batch.sign_in_page.sign_in username, password
 end
 
