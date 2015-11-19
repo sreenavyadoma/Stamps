@@ -12,8 +12,8 @@ Feature: Print Label Position
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Service to "Priority Mail Package"
     And Open Print Modal
-    And Select left side label
-    Then Expect left side label selected
+    And Select Print Modal left-side label
+    Then Expect Print Modal left-side label selected
     And Print
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -21,7 +21,7 @@ Feature: Print Label Position
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Service to "Priority Mail Package"
     And Open Print Modal
-    Then Expect left side label selected
+    Then Expect Print Modal left-side label selected
     And Print
 
     And I Add a new order
@@ -30,8 +30,8 @@ Feature: Print Label Position
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Service to "Priority Mail Package"
     And Open Print Modal
-    And Select right side label
-    Then Expect right side label selected
+    And Select Print Modal right-side label
+    Then Expect Print Modal right-side label selected
     And Print
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -39,7 +39,7 @@ Feature: Print Label Position
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Service to "Priority Mail Package"
     And Open Print Modal
-    Then Expect right side label selected
+    Then Expect Print Modal right-side label selected
     And Print
 
     And Sign out
