@@ -5,7 +5,7 @@ Feature: Ship Date
     Given I am signed in as a batch shipper
 
   @ship_date
-  Scenario:  Set Ship Date to today
+  Scenario:  Set Print Modal Ship Date to today
     And I Add a new order
     Then Set Order Details Form Ship-To address to random
     Then Set Order Details Form Service to "Priority Mail Package"
@@ -16,7 +16,7 @@ Feature: Ship Date
     And Sign out
 
   @ship_date
-  Scenario:  Set Ship Date to 1 day from today
+  Scenario:  Set Print Modal Ship Date to 1 day from today
     And I Add a new order
     Then Set Order Details Form Ship-To address to random
     Then Set Order Details Form Service to "Priority Mail Package"
@@ -27,7 +27,7 @@ Feature: Ship Date
     And Sign out
 
   @ship_date
-  Scenario:  Set Ship Date to 1 day from today
+  Scenario:  Set Print Modal Ship Date to 1 day from today
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
@@ -39,7 +39,7 @@ Feature: Ship Date
     And Sign out
 
   @ship_date
-  Scenario:  Set Ship Date to 1 day from today
+  Scenario:  Set Print Modal Ship Date to 1 day from today
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random

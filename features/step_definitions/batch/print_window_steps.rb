@@ -24,14 +24,15 @@ Then /^Expect (\w+) side label selected$/ do |label|
   end
 end
 
-Then /^Set Ship Date to (\d+) day from today$/ do |days|
-  log.info "Step: Set Ship Date to #{days} day from today"
+Then /^Set Print Modal Ship Date to today$/ do
+  today =
+  log.info "Step: Set Print Modal Ship Date to today:"
   batch.toolbar.print_modal.ship_date.set test_helper.print_date(days)
 end
 
 Then /^Set Ship Date Picker to (\d+) day\(s\) from today$/ do |day|
   log.info "Step: Set Ship Date Picker to #{day} day(s) from today"
-  batch.toolbar.print_modal.pick_date day
+  batch.toolbar.print_modal.date_picker day
 end
 
 Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
