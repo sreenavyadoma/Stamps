@@ -24,14 +24,48 @@ Then /^Expect (\w+) side label selected$/ do |label|
   end
 end
 
-Then /^Set Ship Date to (\d+) day from today$/ do |days|
-  log.info "Step: Set Ship Date to #{days} day from today"
-  batch.toolbar.print_modal.ship_date.set test_helper.print_date(days)
+Then /^Set Print Modal Ship Date to today$/ do
+  #log.info "Step: Set Print Modal Ship Date to today:"
+  #batch.toolbar.print_modal.ship_date.set test_helper.print_date(days)
 end
 
-Then /^Set Ship Date Picker to (\d+) day\(s\) from today$/ do |day|
-  log.info "Step: Set Ship Date Picker to #{day} day(s) from today"
-  batch.toolbar.print_modal.pick_date day
+Then /^Set Print Modal Ship Date to today plus one day$/ do |day|
+  log.info "Set Print Modal Ship Date to today plus #{day}"
+  @ship_date = batch.toolbar.print_modal.date_picker.today # returns string of format, Nov 19
+  @ship_date = batch.toolbar.print_modal.date_picker.todays_date # returns string of format, Nov 19
+
+end
+
+Then /^Set Print Modal Ship Date to today plus two days$/ do |day|
+  log.info "Set Print Modal Ship Date to today plus #{day}"
+  @ship_date = batch.toolbar.print_modal.date_picker.today # returns string of format, Nov 19
+  @ship_date = batch.toolbar.print_modal.date_picker.todays_date # returns string of format, Nov 19
+end
+
+Then /^Set Print Modal Ship Date to today plus three days$/ do |day|
+  log.info "Set Print Modal Ship Date to today plus #{day}"
+  @ship_date = batch.toolbar.print_modal.date_picker.today # returns string of format, Nov 19
+  @ship_date = batch.toolbar.print_modal.date_picker.todays_date # returns string of format, Nov 19
+end
+
+Then /^Expect Shipped Tab Date Printed to be today&/ do
+
+end
+
+Then /^Expect Shipped Tab Ship Date to be today&/ do
+
+end
+
+Then /^Expect Shipped Tab Ship Date to be today plus one&/ do
+
+end
+
+Then /^Expect Shipped Tab Ship Date to be today plus two&/ do
+
+end
+
+Then /^Expect Shipped Tab Ship Date to be today plus three&/ do
+
 end
 
 Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
