@@ -6,6 +6,10 @@ module Postage
 
   class PrintPostage
 
+    def initialize browser
+      @browser = browser
+    end
+
     def sign_in_page
       @sign_in ||= PostageBase::SignInPage.new @browser
     end
