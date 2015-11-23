@@ -1127,7 +1127,7 @@ module Batch
     private
 
     def text_box
-      Textbox.new @browser.text_field :css => "input[name^=servicedroplist]"
+      Textbox.new @browser.text_field :name => "Service"
     end
 
     def drop_down
@@ -1529,7 +1529,7 @@ module Batch
     end
 
     def present?
-      Label.new(@browser.label :text => "Awaiting Shipment").present?
+      browser_helper.present? @browser.div :css => "div[id^=singleOrderDetailsForm][id$=body]"
     end
 
     def wait_until_present
@@ -1652,7 +1652,7 @@ module Batch
     end
 
     def order_id
-      order_id_label = Label.new @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div:nth-child(1)>div>div>div>div>div>label:nth-child(1)"
+      order_id_label = Label.new @browser.b :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div:nth-child(1)>div>div>label:nth-child(1)>b"
       5.times{
         begin
           order_id_str = order_id_label.text

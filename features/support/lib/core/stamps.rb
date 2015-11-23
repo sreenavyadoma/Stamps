@@ -113,6 +113,10 @@ module Stamps
 
   end
 
+  class StampsDate
+
+  end
+
   class TestHelper
     include Singleton
     include DataMagic
@@ -125,9 +129,14 @@ module Stamps
       str.gsub(char_to_remove, substitute_char)
     end
 
-    def date_picker_calendar_date day
+    def today_plus day
       now = Date.today
       "#{now.strftime("%B")} #{now.day + day.to_i}"
+    end
+
+    def today_plus_abbrev_month day
+      now = Date.today
+      "#{now.strftime('%b')} #{now.day + day.to_i}"
     end
 
     def print_date *args

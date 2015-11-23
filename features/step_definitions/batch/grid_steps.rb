@@ -3,7 +3,7 @@ Then /^Filter Shipped Orders orders in the filter panel$/ do
 end
 
 Then /^Expect Grid Date Printed to be today$/ do
-
+  batch.filter.grid
 end
 
 Then /^Expect Grid Date Printed to be today plus (\d+)$/ do |count|

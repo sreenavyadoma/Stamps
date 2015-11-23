@@ -1,35 +1,10 @@
 # encoding: utf-8
 module Postage
 
-  ######Parent Class for Print On Types
 
-  class PostageBase < Postage::PostageObject
-    # all common fields goes here including service drop down
+  ######Class for Print Postage page, Incl. toolbars and navigation. Instantiates postage form objects for Print On selections
 
-    def country
-      Country.new @browser
-    end
-
-    def service
-      Service.new @browser
-    end
-
-    def ship_from
-      ShipFrom.new @browser
-    end
-
-    def weight
-      Weight.new @browser
-    end
-
-    def print_on
-      PrintOn.new @browser
-    end
-  end
-
-  ######Class for Print Postage page, Incl. toolbars and navigation. Instantiates objects for Print On selections
-
-  class PrintPostage < PostageBase
+  class PrintPostage < PostageObject
 
     def sign_in_page
       @sign_in ||= PostageBase::SignInPage.new @browser
@@ -79,7 +54,37 @@ module Postage
 
   end
 
-  ######Classes for each Print On Type, containing the print postage form elements specific to that print on type
+
+  ######Parent Class for Postage Form Types
+
+  class PostageBase < Postage::PostageObject
+    # all common fields goes here including service drop down
+
+    def country
+      Country.new @browser
+    end
+
+    def service
+      Service.new @browser
+    end
+
+    def ship_from
+      ShipFrom.new @browser
+    end
+
+    def weight
+      Weight.new @browser
+    end
+
+    def print_on
+      PrintOn.new @browser
+    end
+  end
+
+
+
+  ######Classes for each Postage Form type, containing the form elements specific to that Print On selection
+
 
   class ShippingLabel < PostageBase
 
@@ -116,11 +121,11 @@ module Postage
     end
 
     def calculate_postage
-      CalculatePostage.new @browser
+
     end
 
     def specify_postage
-      SpecifyPostage.new @browser
+
     end
 
     def stamp_amount
@@ -167,93 +172,11 @@ module Postage
     end
   end
 
-  ######Classes for Elements contained in Print Postage form
+  ######  CLASSES FOR ELEMENTS CONTAINED IN PRINT POSTAGE FORM   ######
 
-  class EmailTracking < PostageObject
-    def checkbox
-      checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
-      verify_field = checkbox_field.parent.parent.parent.parent
-      attribute = "class"
-      verify_field_attrib = "checked"
-      Stamps::Browser::Checkbox.new checkbox_field, verify_field, attribute, verify_field_attrib
-    end
 
-    def text_box
-      Textbox.new @browser.text_field :name => "recipientEmail"
-    end
+  ###### Classes common to every Print On type
 
-    def tooltip
-      Label.new(@browser.label :id => "sdc-mainpanel-emailcheckbox-boxLabelEl").attribute_value "data-qtip"
-    end
-
-    def data_error_tooltip
-      tooltip = browser.div :css => "div[id=sdc-mainpanel-emailtextfield-errorEl]"
-    end
-  end
-
-  class ShipToBase < PostageObject
-    def country selection
-      PostageShipToDomestic.new @browser
-    end
-  end
-
-  class PostageShipToDomestic < ShipToBase
-    def delivery_address
-      Textbox.new @browser.text_field :name => "sdc-mainpanel-shiptotextarea-inputEl"
-    end
-
-    def data_error_tooltip
-      tooltip = browser.div :css => "div[id=sdc-mainpanel-shiptotextarea-errorEl]"
-    end
-  end
-
-  class PostageShipToInternational < ShipToBase
-    def name
-      name_input = Textbox.new @browser.text_field :text => ""
-      name_input.data_qtip_field "the browser field containing the data error", "data-errorqtip"
-      name_input
-    end
-
-    def company
-
-    end
-  end
-
-  class PostageShipTo < ShipToBase
-    def domestic
-      PostageShipToDomestic.new @browser
-    end
-
-    def international
-      PostageShipToInternational.new @browser
-    end
-  end
-
-  class Country < PostageObject
-    def drop_down
-      Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
-    end
-
-    def text_box
-      Textbox.new (@browser.text_field :name => "mailToCountry")
-    end
-
-    def select selection
-      box = text_box
-      button = drop_down
-      selection_label = Label.new @browser.div :text => selection
-      5.times {
-        begin
-          button.safe_click unless selection_label.present?
-          selection_label.scroll_into_view
-          selection_label.safe_click
-          break if box.text.include? selection
-        rescue
-          #ignore
-        end
-      }
-    end
-  end
 
   class PrintOn < PostageObject
 
@@ -295,5 +218,182 @@ module Postage
     end
   end
 
+  class ShipFrom < PostageObject
+
+  end
+
+  class Country < PostageObject
+    def drop_down
+      Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
+    end
+
+    def text_box
+      Textbox.new (@browser.text_field :name => "mailToCountry")
+    end
+
+    def select selection
+      box = text_box
+      button = drop_down
+      selection_label = Label.new @browser.div :text => selection
+      5.times {
+        begin
+          button.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
+          selection_label.safe_click
+          break if box.text.include? selection
+        rescue
+          #ignore
+        end
+      }
+    end
+  end
+
+  class Weight < PostageObject
+
+  end
+
+  class Service < PostageObject
+
+  end
+
+
+  ###### Classes unique to specific Print On types
+
+ ## class PostageShipTo < ShipToBase
+ #   def domestic
+ #     PostageShipToDomestic.new @browser
+  #  end
+
+ #   def international
+ #     PostageShipToInternational.new @browser
+  #  end
+ # end
+
+  class ShipToBase < PostageObject
+    def email
+      EmailTracking.new @browser
+    end
+  end
+
+  class PostageShipToDomestic < ShipToBase
+    def delivery_address
+      Textbox.new @browser.text_field :name => "sdc-mainpanel-shiptotextarea-inputEl"
+    end
+
+    def data_error_tooltip
+      tooltip = browser.div :css => "div[id=sdc-mainpanel-shiptotextarea-errorEl]"
+    end
+  end
+
+  class PostageShipToInternational < ShipToBase
+    def name
+      name_input = Textbox.new @browser.text_field :text => ""
+      name_input.data_qtip_field "the browser field containing the data error", "data-errorqtip"
+      name_input
+    end
+
+    def name_data_error_tooltip
+
+    end
+
+    def company
+
+    end
+
+    def address_1
+
+    end
+
+    def address_1_data_error_tooltip
+
+    end
+
+    def address_2
+
+    end
+
+    def city
+
+    end
+
+    def city_data_error_tooltip
+
+    end
+
+    def province
+
+    end
+
+    def province_data_error_tooltip
+
+    end
+
+    def postal_code
+
+    end
+
+    def postal_code_data_error_tooltip
+
+    end
+
+    def phone
+
+    end
+
+    def phone_data_error_tooltip
+
+    end
+
+  end
+
+  class EmailTracking < PostageObject
+    def checkbox
+      checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
+      verify_field = checkbox_field.parent.parent.parent.parent
+      attribute = "class"
+      verify_field_attrib = "checked"
+      Stamps::Browser::Checkbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+    end
+
+    def text_box
+      Textbox.new @browser.text_field :name => "recipientEmail"
+    end
+
+    def tooltip
+      Label.new(@browser.label :id => "sdc-mainpanel-emailcheckbox-boxLabelEl").attribute_value "data-qtip"
+    end
+
+    def data_error_tooltip
+      tooltip = browser.div :css => "div[id=sdc-mainpanel-emailtextfield-errorEl]"
+    end
+  end
+
+  class InsureFor < PostageObject
+
+  end
+
+  class ExtraServices < PostageObject
+
+  end
+
+  class ShipDate < PostageObject
+
+  end
+
+  class Serial < PostageObject
+
+  end
+
+  class ExtraServices < PostageObject
+
+  end
+
+  class StampAmount < PostageObject
+
+  end
+
+  class CMExtraServices < PostageObject
+
+  end
 
 end

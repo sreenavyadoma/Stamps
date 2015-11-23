@@ -74,7 +74,9 @@ module Batch
       balance_field = Label.new balance_label
       10.times{
         amount = balance_field.text
-        return amount if amount.length > 0
+        amount_stripped_dollar = amount.gsub("$","")
+        amount_stripped_all = amount_stripped_dollar.gsub(",","")
+        return amount_stripped_all if amount_stripped_all.length > 0
       }
     end
 
