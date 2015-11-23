@@ -49,9 +49,9 @@ end
 
 Then /^Expect Shipped Tab Date Printed to be today$/ do
   today = test_helper.today_plus_abbrev_month 0
-  log.info "Expectation: Set Print Modal Ship Date to #{today}"
   actual_date_printed = batch.filter.shipped.date_printed
-
+  log.info "#{(actual_date_printed)}"
+  log.info "Expectation: Shipped Tab Date Printed to be today #{today}"
 end
 
 Then /^Expect Shipped Tab Ship Date to be today$/ do

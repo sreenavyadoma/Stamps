@@ -4,7 +4,7 @@ module Postage
 
   ######Class for Print Postage page, Incl. toolbars and navigation. Instantiates postage form objects for Print On selections
 
-  class PrintPostage
+  class PrintPostage < PostageObject
 
     def sign_in_page
       @sign_in ||= PostageBase::SignInPage.new @browser
