@@ -4,7 +4,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty
 # bvt_shipping_address_management
 
 rob_dev: --tags @wonder_bvt --guess VERBOSE=true URL=qacc BROWSER=gc USR=autobase PW=326tsetaqcdS!
-eli_dev: --tags @international_totals --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
+eli_dev: --tags @purchasing --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
 ray_dev: --tags @ray_test --guess VERBOSE=false URL=qacc BROWSER=ff USR=webpost_0003 PW=pass111
 eva_dev: --tags   @bvt_international_shipping --guess VERBOSE=true URL=qacc BROWSER=ff USR=mysstest_0007 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
@@ -36,7 +36,7 @@ print_sample: --tags @print_sample --guess VERBOSE=false URL=qacc BROWSER=ff USR
 
 print_costs: --tags @print_costs --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto31 PW=326tsetaqcdS!
 
-purchasing: --tags @purchasing --guess VERBOSE=false URL=qacc BROWSER=gc USR=auto35 PW=326tsetaqcdS!
+purchasing: --tags @purchasing --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto35 PW=326tsetaqcdS!
 
 change_settings: --tags @settings --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto37 PW=326tsetaqcdS!
 
