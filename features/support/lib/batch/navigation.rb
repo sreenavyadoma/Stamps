@@ -43,7 +43,7 @@ module Batch
     def select_buy_more
       @browser.window.move_to 0, 0
       @browser.window.resize_to 1500, 850
-      @browser.window.move_to 1500, 500
+      @browser.window.move_to 800, 500
 
       balance_label.focus
       browser_helper.click balance_label, "Balance"
