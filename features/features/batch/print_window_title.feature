@@ -9,7 +9,8 @@ Feature:  Printing Multiple Orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    Then Set Order Details Form Service to "Priority Mail Package"
+    Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
+    Then Set Order Details Form Ounces to 1
     And Open Print Modal
     Then Expect Print Window title to be "You have 1 label(s) ready to print"
 
@@ -19,7 +20,8 @@ Feature:  Printing Multiple Orders
   Scenario:  Printing
     And I Add a new order
     Then Set Order Details Form Ship-To address to random
-    Then Set Order Details Form Service to "Priority Mail Package"
+    Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
+    Then Set Order Details Form Ounces to 1
     And Edit row 1 on the order grid
     And Edit row 2 on the order grid
 
