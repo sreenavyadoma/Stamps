@@ -12,7 +12,7 @@ daniel_dev: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff USR=a
 default_profile: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
 bvt_gc: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=gc USR=auto02 PW=326tsetaqcdS!
-bvt_ff: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto02 PW=326tsetaqcdS!
+bvt_ff: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto30 PW=326tsetaqcdS!
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
 address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto03 PW=326tsetaqcdS!
