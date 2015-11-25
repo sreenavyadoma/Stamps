@@ -450,7 +450,7 @@ Given /^Expect Customs Form Total Weight Data Error to be (.+)$/ do |value|
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_weight.data_error
-  log.info "Total Weight Data Error - #{(browser_value.include?value)?'Passed':'Failed'}.  Expectation:  #{value}, Actual Result:  #{browser_value}"
+  log.info "Total Weight Data Error - #{(browser_value.include? value)?'Passed':'Failed'}.  Expectation:  #{value}, Actual Result:  #{browser_value}"
   browser_value.should include value
 end
 
