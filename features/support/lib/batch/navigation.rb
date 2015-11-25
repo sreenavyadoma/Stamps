@@ -41,7 +41,7 @@ module Batch
     end
 
     def select_buy_more
-      @browser.window.move_to 0, 0
+
 
 
       balance_label.focus
@@ -52,7 +52,7 @@ module Batch
       log.info "Clicking Buy More link"
       browser_helper.click buy_more_link, "BuyMoreLink"
 
-      @browser.window.move_to 0, 0
+
 
     end
 
