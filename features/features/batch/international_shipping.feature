@@ -24,7 +24,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Close customs form
     And Sign out
     
-  @international @international_totals
+  @international_totals
   Scenario:  Customs Form Grid Items Add/Delete
     And I Add a new order
     Then Set Order Details Form Ship-From to default
