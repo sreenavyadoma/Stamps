@@ -19,7 +19,7 @@ address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERB
 address_management: --tags @address_management --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
 tracking: --tags @tracking --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto05 PW=326tsetaqcdS!
-inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto06 PW=326tsetaqcdS!
+inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto33 PW=326tsetaqcdS!
 
 local_rating_zone1: --tags @local_rating_zone1 --guess VERBOSE=false URL=qasc BROWSER=ff USR=dj_cctest_01 PW=postage1
 local_rating_zone2: --tags @local_rating_zone2 --guess VERBOSE=false URL=qasc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
@@ -42,7 +42,7 @@ change_settings: --tags @settings --guess VERBOSE=false URL=qacc BROWSER=ff USR=
 
 thermal_printing: --tags @thermal_printing --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
 
-two_up_expanded: --tags @two_up_expanded --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto38 PW=326tsetaqcdS!
+two_up_expanded: --tags @two_up_expanded --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto36 PW=326tsetaqcdS!
 
 sorting: --tags @sort --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto30 PW=326tsetaqcdS!
 
