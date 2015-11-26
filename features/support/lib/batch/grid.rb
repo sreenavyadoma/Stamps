@@ -753,7 +753,7 @@ module Batch
       scroll_into_view
       row = row_number(order_id)
       log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:ship_cost, row)
+      test_helper.remove_dollar_sign grid_text(:ship_cost, row)
     end
 
     def ship_cost_error order_id
