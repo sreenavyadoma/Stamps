@@ -23,7 +23,7 @@ Given /^I am signed in as batch shipper (.*)\/(.*)/ do |username, password|
 end
 
 Given /^I am signed in as batch shipper (.*)/ do |browser|
-  log.info "Step: I am signed in as batch shipper #{broswer}"
+  log.info "Step: I am signed in as batch shipper #{browser}"
   step "I launch browser #{browser}"
   step "I visit batch sign-in page"
   batch.sign_in_page.sign_in
