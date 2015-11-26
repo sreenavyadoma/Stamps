@@ -213,7 +213,7 @@ Then /^Expect Order Details Form Service Cost inline price for "([a-zA-Z -\/]+)"
   log.info "Expectation: Expect Order Details Form Service Cost inline price for #{service} to be greater than #{expected}"
   actual = batch.order_details.service.cost service
   10.times { |counter|
-    log_expectation "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
+    #log_expectation_eql "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
     break if actual.to_f >= expected.to_f
     actual = batch.order_details.service.cost service
   }
