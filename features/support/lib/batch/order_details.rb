@@ -1331,7 +1331,7 @@ module Batch
     end
 
     def delete_line *args
-      browser_fields = @browser.spans :css => "span[class*=sdc-icon-remove]"
+      browser_fields = @browser.spans :css => "div[id*=detailItemsGrid] span[class*=sdc-icon-remove]"
       browser_fields
       browser_field = browser_fields
       case args.length
@@ -1345,7 +1345,7 @@ module Batch
     end
 
     def qty *args
-      browser_field = Textbox.new @browser.text_field :name => "Quantity"
+      browser_field = Textbox.new @browser.text_field :css => "div[id*=detailItemsGrid] input[name=Quantity]"
       case args.length
         when 0
           return browser_field
@@ -1357,7 +1357,7 @@ module Batch
     end
 
     def id *args
-      browser_field = Textbox.new @browser.text_field :name => "Sku"
+      browser_field = Textbox.new @browser.text_field :name => "SKU"
       case args.length
         when 0
           return browser_field
@@ -1369,7 +1369,7 @@ module Batch
     end
 
     def description *args
-      browser_field = Textbox.new @browser.text_field :name => "ItemName"
+      browser_field = Textbox.new @browser.text_field :css => "div[id*=detailItemsGrid] input[name=Description]"
       case args.length
         when 0
           return browser_field
