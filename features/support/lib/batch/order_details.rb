@@ -1055,7 +1055,7 @@ module Batch
     end
   end
 
-  class BatchTracking < OrderForm
+  class Tracking < OrderForm
     def text_box
       Textbox.new @browser.text_field :name => 'Tracking'
     end
@@ -1122,10 +1122,7 @@ module Batch
 
   end
 
-  class BatchService < OrderForm
-
-    private
-
+  class Service < OrderForm
     def text_box
       Textbox.new @browser.text_field :name => "Service"
     end
@@ -1133,9 +1130,6 @@ module Batch
     def drop_down
       Button.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
     end
-
-    public
-
     def text
       text_box.text
     end
@@ -1396,11 +1390,11 @@ module Batch
     end
 
     def service
-      @batch_service ||= BatchService.new @browser
+      @batch_service ||= Batch::Service.new @browser
     end
 
-    def tracking_no
-      @batch_tracking ||= BatchTracking.new @browser
+    def tracking
+      @batch_tracking ||= Batch::Tracking.new @browser
     end
 
     def address_textbox

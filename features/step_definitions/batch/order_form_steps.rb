@@ -118,12 +118,12 @@ end
 Then /^Set Order Details Form Tracking to \"([\w ]*)\"$/ do |value|
   log.info "Step: Set Order Details Form Tracking to #{value}"
   begin
-    batch.order_details.tracking_no.select value
+    batch.order_details.tracking.select value
   end unless value.length == 0
 
-  actual_tooltip = batch.order_details.tracking_no.tooltip value
+  actual_tooltip = batch.order_details.tracking.tooltip value
   log.info actual_tooltip
-  cost = batch.order_details.tracking_no.cost value
+  cost = batch.order_details.tracking.cost value
   log.info cost
 end
 
@@ -290,11 +290,11 @@ end
 Then /^Expect Order Details Form Tracking to be \"([\w\s]*)\"$/ do |expected|
   log.info "Expectation: Expect Order Details Form Tracking to be #{expected}"
   begin
-    actual = batch.order_details.tracking_no.text
+    actual = batch.order_details.tracking.text
     10.times { |counter|
       #log_expectation_eql "#{counter}. Tracking Selected", expected, actual
       break if actual.eql? expected
-      actual = batch.order_details.tracking_no.text
+      actual = batch.order_details.tracking.text
     }
     actual.should eql expected
   end unless expected.length == 0
