@@ -1,6 +1,6 @@
 module Batch
 
-  class PrintWindowBase < BatchObject
+  class PrintModalObject < BatchObject
     def window_x_button
       @browser.img :css => "img[class*='x-tool-img x-tool-close']"
     end
@@ -129,7 +129,7 @@ module Batch
     end
   end
 
-  class PrintWindowDatePicker < BatchObject
+  class DatePicker < PrintModalObject
 
     def date_picker_button
       Button.new @browser.div :id => "sdc-printpostagewindow-shipdate-trigger-picker"
@@ -202,7 +202,7 @@ module Batch
 
   end
 
-  class PrintModal < PrintWindowBase
+  class PrintModal < PrintModalObject
     def initialize browser, *args
       super browser
       print_options *args
@@ -223,7 +223,7 @@ module Batch
     end
 
     def date_picker
-      @date_picker ||= PrintWindowDatePicker.new @browser
+      @date_picker ||= DatePicker.new @browser
     end
 
     def ship_date
