@@ -1055,7 +1055,7 @@ module Batch
     end
   end
 
-  class Tracking < OrderForm
+  class TrackingDropDown < OrderForm
     def text_box
       Textbox.new @browser.text_field :name => 'Tracking'
     end
@@ -1118,7 +1118,7 @@ module Batch
 
   end
 
-  class Service < OrderForm
+  class ServiceDropDown < OrderForm
     def text_box
       Textbox.new @browser.text_field :name => "Service"
     end
@@ -1383,11 +1383,11 @@ module Batch
     end
 
     def service
-      @batch_service ||= Batch::Service.new @browser
+      @batch_service ||= ServiceDropDown.new @browser
     end
 
     def tracking
-      @batch_tracking ||= Batch::Tracking.new @browser
+      @batch_tracking ||= TrackingDropDown.new @browser
     end
 
     def address_textbox

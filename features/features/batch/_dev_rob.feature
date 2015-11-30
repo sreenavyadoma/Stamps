@@ -4,7 +4,7 @@ Feature: Test Development
   Background:
     Given I am signed in as a batch shipper
 
-  @rob_dev_filter
+  @rob_dev1
   Scenario:
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -72,6 +72,9 @@ Feature: Test Development
     Then Expect Shipped Tab Date Printed to be today
     Then Expect Shipped Tab Ship Date to be today plus three
 
+
+
+  @rob_dev2
   Scenario:
     Then Filter Cancelled Orders
     Then Filter Awaiting Shipment Orders
@@ -130,7 +133,6 @@ Feature: Test Development
 
     Then Expect all printed Order IDs not in Awaiting Shipment tab
     Then Expect all printed Order IDs are in Shipped tab
-
 
   @rob_grid
   Scenario:
