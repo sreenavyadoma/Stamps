@@ -6,26 +6,6 @@ Feature: Test Development
 
   @rob_dev1
   Scenario:
-    And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
-    Then Set Order Details Form Service to "Priority Mail Package"
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Length to 1
-    Then Set Order Details Form Height to 1
-    Then Set Order Details Form Width to 1
-    And Open Print Modal
-    And Select Print Modal left-side label
-    Then Expect Print Modal left-side label selected
-
-    And Select Print Modal right-side label
-    Then Expect Print Modal right-side label selected
-
-    Then Set Print Modal Ship Date to today
-    And Print
-    Then Expect Shipped Tab Date Printed to be today
-    Then Expect Shipped Tab Ship Date to be today
 
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -72,7 +52,27 @@ Feature: Test Development
     Then Expect Shipped Tab Date Printed to be today
     Then Expect Shipped Tab Ship Date to be today plus three
 
+  Scenario:
+    And I Add a new order
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    And Hide Order Details Form Ship-To fields
+    Then Set Order Details Form Service to "Priority Mail Package"
+    Then Set Order Details Form Ounces to 5
+    Then Set Order Details Form Length to 1
+    Then Set Order Details Form Height to 1
+    Then Set Order Details Form Width to 1
+    And Open Print Modal
+    And Select Print Modal left-side label
+    Then Expect Print Modal left-side label selected
 
+    And Select Print Modal right-side label
+    Then Expect Print Modal right-side label selected
+
+    Then Set Print Modal Ship Date to today
+    And Print
+    Then Expect Shipped Tab Date Printed to be today
+    Then Expect Shipped Tab Ship Date to be today
 
   @rob_dev2
   Scenario:

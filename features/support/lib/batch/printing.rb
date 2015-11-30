@@ -223,7 +223,7 @@ module Batch
     end
 
     def date_picker
-      @date_picker ||= DatePicker.new @browser
+      DatePicker.new @browser
     end
 
     def ship_date

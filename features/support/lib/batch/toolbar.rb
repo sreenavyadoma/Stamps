@@ -98,11 +98,8 @@ module Batch
           add_button.safe_click
           5.times{
             sleep 1
-            log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"
             break if order_details.present?
-            log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"
             break if order_details.present?
-            log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"
             break if order_details.present?
             log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"
           }

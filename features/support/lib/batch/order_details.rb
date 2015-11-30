@@ -1586,11 +1586,11 @@ module Batch
     end
 
     def order_id
-      order_id_label = Label.new @browser.b :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div:nth-child(1)>div>div>label:nth-child(1)>b"
+      order_id_label = Label.new @browser.bs(:css => "label>b").first
       5.times{
         begin
           order_id_str = order_id_label.text
-          break if order_id_str.include? 'Order #'
+          break if order_id_str.include? '#'
         rescue
           #ignroe
         end
@@ -1603,10 +1603,8 @@ module Batch
       rescue
         log.info "Order Details Form  Order ID label was not present"
       end
-      #(browser_helper.text order_id_label).split('Order #').last
-      order_id_str = order_id_label.text
-      order_id = order_id_str.split('Order #').last
-      order_id
+
+      order_id_label.text.split('#').last
     end
 
     def order_status
