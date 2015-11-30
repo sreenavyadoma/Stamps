@@ -203,7 +203,7 @@ module Batch
       scroll :order_id
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :order_id, row
     end
     
@@ -237,7 +237,7 @@ module Batch
       scroll :age
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :age, row
     end
 
@@ -259,7 +259,7 @@ module Batch
       scroll :order_date
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :order_date, row
     end
 
@@ -326,7 +326,7 @@ module Batch
       scroll :recipient
     end
 
-    def field row
+    def data_at_row row
       grid_field_column_name :recipient, row
     end
     
@@ -353,7 +353,7 @@ module Batch
       scroll :company
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :company, row
     end
 
@@ -379,7 +379,7 @@ module Batch
       scroll :address
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :address, row
     end
 
@@ -405,7 +405,7 @@ module Batch
       scroll :city
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :city, row
     end
 
@@ -427,7 +427,7 @@ module Batch
       scroll :state
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :state, row
     end
 
@@ -449,7 +449,7 @@ module Batch
       scroll :zip
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :zip, row
     end
 
@@ -471,7 +471,7 @@ module Batch
       scroll :phone
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :phone, row
     end
 
@@ -493,7 +493,7 @@ module Batch
       scroll :email
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :email, row
     end
 
@@ -515,7 +515,7 @@ module Batch
       scroll :qty
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :qty, row
     end
 
@@ -537,7 +537,7 @@ module Batch
       scroll :item_sku
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :item_sku, row
     end
 
@@ -559,7 +559,7 @@ module Batch
       scroll :item_name
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :item_name, row
     end
 
@@ -581,7 +581,7 @@ module Batch
       scroll :weight
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :weight, row
     end
 
@@ -613,7 +613,7 @@ module Batch
       scroll :insured_value
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :insured_value, row
     end
 
@@ -635,7 +635,7 @@ module Batch
       scroll :order_status
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :order_status, row
     end
 
@@ -657,7 +657,7 @@ module Batch
       scroll :ship_date
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :ship_date, row
     end
 
@@ -679,7 +679,7 @@ module Batch
       scroll :ship_from
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :ship_from, row
     end
 
@@ -701,7 +701,7 @@ module Batch
       scroll :order_total
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :order_total, row
     end
 
@@ -723,7 +723,7 @@ module Batch
       scroll :country
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :country, row
     end
 
@@ -745,7 +745,7 @@ module Batch
       scroll :ship_cost
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :ship_cost, row
     end
 
@@ -786,7 +786,7 @@ module Batch
       scroll :company
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :company, row
     end
 
@@ -808,7 +808,7 @@ module Batch
       scroll :service
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :service, row
     end
 
@@ -830,7 +830,7 @@ module Batch
       scroll :reference_no
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :reference_no, row
     end
 
@@ -852,7 +852,7 @@ module Batch
       scroll :cost_code
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :cost_code, row
     end
 
@@ -874,7 +874,7 @@ module Batch
       scroll :tracking_no
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :tracking_no, row
     end
 
@@ -889,11 +889,12 @@ module Batch
     def sort
       Sort.new @browser, :date_printed
     end
+    
     def scroll_into_view
       scroll :date_printed
     end
 
-    def field row
+    def data_at_row row
       grid_field_column_name :ship_date, row
     end
 
@@ -925,7 +926,7 @@ module Batch
       field
     end
 
-    def field row
+    def data_for_row row
       grid_field_column_name :check_box, row
     end
 
