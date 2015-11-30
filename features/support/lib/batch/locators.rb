@@ -20,6 +20,12 @@ module Batch
 
     end
 
+    module PrintModal
+      def self.date_picker_button
+        {:id => "sdc-printpostagewindow-shipdate-trigger-picker"}
+      end
+    end
+
     module SignIn
 
     end

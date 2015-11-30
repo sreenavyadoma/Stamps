@@ -131,10 +131,6 @@ module Batch
 
   class DatePicker < PrintModalObject
 
-    def date_picker_button
-      Button.new @browser.div :id => "sdc-printpostagewindow-shipdate-trigger-picker"
-    end
-
     def todays_date_div
       div = @browser.div :css => "div[title='Today']"
       log.info "Today div present? #{browser_helper.present? div}"
@@ -158,7 +154,7 @@ module Batch
     end
 
     def today
-      picker = date_picker_button
+      picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
       today = Button.new @browser.span :css => "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
       10.times {
         picker.safe_click unless today.present?
@@ -170,7 +166,7 @@ module Batch
     end
 
     def todays_date
-      picker = date_picker_button
+      picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
       today = Button.new Button.new @browser.div :css => "div[title=Today]"
       10.times {
         picker.safe_click unless today.present?
@@ -182,7 +178,7 @@ module Batch
     end
 
     def today_plus_1
-      picker = date_picker_button
+      picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
       today = Button.new @browser.div :css => "div[title=Today]"
       10.times {
         picker.safe_click unless today.present?

@@ -31,7 +31,7 @@ end
 
 Then /^Set Print Modal Ship Date to today plus one day$/ do
   today = test_helper.today_plus_abbrev_month 1
-  log.info "Set Print Modal Ship Date to#{today}"
+  log.info "Set Print Modal Ship Date to #{today}"
   @ship_date_today_plus_1 = batch.toolbar.print_modal.date_picker.today_plus_1
 end
 
