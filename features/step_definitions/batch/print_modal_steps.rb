@@ -31,19 +31,19 @@ end
 
 Then /^Set Print Modal Ship Date to today plus one day$/ do
   today = test_helper.today_plus_abbrev_month 1
-  log.info "Set Print Modal Ship Date to today plus #{today}"
+  log.info "Set Print Modal Ship Date to#{today}"
   @ship_date_today_plus_1 = batch.toolbar.print_modal.date_picker.today_plus_1
 end
 
 Then /^Set Print Modal Ship Date to today plus two days$/ do
   today = test_helper.today_plus_abbrev_month 2
-  log.info "Set Print Modal Ship Date to today plus #{today}"
+  log.info "Set Print Modal Ship Date to #{today}"
   @ship_date_today_plus_2 = batch.toolbar.print_modal.date_picker.today_plus_2
 end
 
 Then /^Set Print Modal Ship Date to today plus three days$/ do
   today = test_helper.today_plus_abbrev_month 3
-  log.info "Set Print Modal Ship Date to today plus #{today}"
+  log.info "Set Print Modal Ship Date to #{today}"
   @ship_date_today_plus_3 = batch.toolbar.print_modal.date_picker.today_plus_3
 end
 

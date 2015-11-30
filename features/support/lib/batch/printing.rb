@@ -183,7 +183,7 @@ module Batch
 
     def today_plus_1
       picker = date_picker_button
-      today = Button.new Button.new @browser.div :css => "div[title=Today]"
+      today = Button.new @browser.div :css => "div[title=Today]"
       10.times {
         picker.safe_click unless today.present?
         today.safe_click
