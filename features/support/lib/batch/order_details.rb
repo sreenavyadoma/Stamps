@@ -1272,14 +1272,22 @@ module Batch
       self.ship_from "Manage Shipping Addresses..."
     end
 
+    def text_box
+      Textbox.new @browser.text_field :name => "ShipFrom"
+    end
+
+    def drop_down
+      Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
+    end
+
     def select selection
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
 
       return @manage_shipping_adddress if @manage_shipping_adddress.present?
 
       ship_from_default_selection_field = @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
-      ship_from_dropdown = Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
-      ship_from_textbox = Textbox.new @browser.text_field :name => "ShipFrom"
+      ship_from_dropdown = self.drop_down
+      ship_from_textbox = self.text_box
 
       if selection.downcase == "default"
         ship_from_selection_field = ship_from_default_selection_field
