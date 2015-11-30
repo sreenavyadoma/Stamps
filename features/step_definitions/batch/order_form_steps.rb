@@ -277,11 +277,11 @@ end
 Then /^Expect Order Details Form Service to be \"(.*)\"$/ do |expected|
   log.info "Expectation: Expect Order Details Form Service to be #{expected}"
   begin
-    actual = batch.order_details.service.text
+    actual = batch.order_details.service.text_box.text
     10.times { |counter|
       included = actual.include? expected
       break if included
-      actual = batch.order_details.service.text
+      actual = batch.order_details.service.text_box.text
     }
     expect(actual.include? expected).to be true
   end unless expected.length == 0
@@ -290,11 +290,11 @@ end
 Then /^Expect Order Details Form Tracking to be \"([\w\s]*)\"$/ do |expected|
   log.info "Expectation: Expect Order Details Form Tracking to be #{expected}"
   begin
-    actual = batch.order_details.tracking.text
+    actual = batch.order_details.tracking.text_box.text
     10.times { |counter|
       #log_expectation_eql "#{counter}. Tracking Selected", expected, actual
       break if actual.eql? expected
-      actual = batch.order_details.tracking.text
+      actual = batch.order_details.tracking.text_box.text
     }
     actual.should eql expected
   end unless expected.length == 0

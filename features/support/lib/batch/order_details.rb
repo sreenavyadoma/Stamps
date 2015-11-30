@@ -1064,10 +1064,6 @@ module Batch
       Button.new @browser.div :css => "div[id^=trackingdroplist-][id$=-trigger-picker]"
     end
 
-    def text
-      text_box.text
-    end
-
     def select selection
       box = text_box
       button = drop_down
@@ -1130,6 +1126,7 @@ module Batch
     def drop_down
       Button.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
     end
+
     def text
       text_box.text
     end
