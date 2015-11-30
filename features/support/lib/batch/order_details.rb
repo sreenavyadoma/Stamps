@@ -1127,10 +1127,6 @@ module Batch
       Button.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
     end
 
-    def text
-      text_box.text
-    end
-
     def select selection
       log.info "Select Service #{selection}"
       box = text_box
