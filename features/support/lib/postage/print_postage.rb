@@ -281,67 +281,67 @@ module Postage
     end
 
     def data_error_tooltip
-      tooltip = browser.div :css => "div[id=sdc-mainpanel-shiptotextarea-errorEl]"
+      tooltip = browser.div :id => "sdc-mainpanel-shiptotextarea-errorEl"
     end
   end
 
   class PostageShipToInternational < ShipToBase
     def name
-      name_input = Textbox.new @browser.text_field :text => ""
+      name_input = Textbox.new @browser.text_field :id => "sdc-intlform-shiptonamefield-inputEl"
       name_input.data_qtip_field "the browser field containing the data error", "data-errorqtip"
       name_input
     end
 
     def name_data_error_tooltip
-
+      tooltip = browser.div :id => "sdc-intlform-shiptonamefield-errorEl"
     end
 
     def company
-
+      Textbox.new @browser.text_field :id => "sdc-intlform-shiptocompanyfield-inputEl"
     end
 
     def address_1
-
+      Textbox.new @browser.text_field :id => "sdc-intlform-shiptoaddress1field-inputEl"
     end
 
     def address_1_data_error_tooltip
-
+      tooltip = browser.div :id => "sdc-intlform-shiptoaddress1field-errorEl"
     end
 
     def address_2
-
+      Textbox.new @browser.text_field :id => "sdc-intlform-shiptoaddress2field-inputEl"
     end
 
     def city
-
+      Textbox.new @browser.text_field :id => "sdc-intlform-shiptocityfield-inputEl"
     end
 
     def city_data_error_tooltip
-
+      tooltip = browser.div :id => "sdc-intlform-shiptocityfield-errorEl"
     end
 
     def province
-
+      Textbox.new @browser.text_field :id => "sdc-intlform-shiptoprovincefield-inputEl"
     end
 
     def province_data_error_tooltip
-
+      tooltip = browser.div :id => "sdc-intlform-shiptoprovincefield-errorEl"
     end
 
     def postal_code
-
+      Textbox.new @browser.text_field :id => "sdc-intlform-shiptopostcodefield-inputEl"
     end
 
     def postal_code_data_error_tooltip
-
+      tooltip = browser.div :id => "sdc-intlform-shiptopostcodefield-errorEl"
     end
 
     def phone
-
+      Textbox.new @browser.text_field :id => "sdc-intlform-shiptophonefield-inputEl"
     end
 
     def phone_data_error_tooltip
-
+      tooltip = browser.div :id => "sdc-intlform-shiptophonefield-errorEl"
     end
 
   end
@@ -369,10 +369,24 @@ module Postage
   end
 
   class InsureFor < PostageObject
+    def textbox
+      Textbox.new @browser.text_field :name => "insureAmt"
+    end
+
+    def more_button
+      Button.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[3]
+    end
+
+    def less_button
+      Button.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[3]
+    end
 
   end
 
   class ExtraServices < PostageObject
+    def button
+      Button.new (@browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl")
+    end
 
   end
 
@@ -389,7 +403,17 @@ module Postage
   end
 
   class StampAmount < PostageObject
+    def textbox
+      Textbox.new @browser.text_field :name => "insureAmt"
+    end
 
+    def more_button
+      Button.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[3]
+    end
+
+    def less_button
+      Button.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[3]
+    end
   end
 
   class CMExtraServices < PostageObject
