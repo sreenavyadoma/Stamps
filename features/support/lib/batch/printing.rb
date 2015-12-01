@@ -179,14 +179,17 @@ module Batch
 
     def today_plus_1
       picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
-      today = Button.new @browser.div :css => "div[title=Today]"
+      date_str = test_helper.today_plus 1
+      date = Label.new @browser.div :css => "td[aria-label='#{date_str}']>div"
       10.times {
-        picker.safe_click unless today.present?
-        today.safe_click
+        picker.safe_click unless date.present?
+        date.safe_click
         sleep 1
-        return test_helper.today_plus_abbrev_month 0
+        return test_helper.today_plus_abbrev_month 1
       }
     end
+
+    def
 
     def today_plus_2
 

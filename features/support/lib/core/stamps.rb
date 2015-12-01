@@ -135,7 +135,11 @@ module Stamps
 
     def today_plus day
       now = Date.today + day
-      "#{now.strftime("%B")} #{now.day}"
+      if now.day < 10
+        "#{now.strftime("%B")} 0#{now.day}"
+      else
+        "#{now.strftime("%B")} #{now.day}"
+      end
     end
 
     def today_plus_abbrev_month day
