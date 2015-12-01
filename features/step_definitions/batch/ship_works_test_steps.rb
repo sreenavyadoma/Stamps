@@ -24,11 +24,11 @@ And /^Expect Order Details Form Phone Textbox to be enabled/ do
 end
 
 And /^Expect Order Details Form Email Textbox to be enabled/ do
-  expect(batch.order_details.ship_to.address.email.phone.field.visible?).to be true
+  expect(batch.order_details.ship_to.address.email.field.visible?).to be true
 end
 
 And /^Expect Order Details Form Service Textbox to be enabled/ do
-  expect(batch.order_details.service_textbox.text_box.field.visible?).to be true
+  expect(batch.order_details.service.text_box.field.visible?).to be true
 end
 
 And /^Expect Order Details Form Service drop-down to be enabled/ do
