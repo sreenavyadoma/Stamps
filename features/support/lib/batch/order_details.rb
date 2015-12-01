@@ -46,7 +46,7 @@ module Batch
 
     def email
       expand
-      text_box = Textbox.new @browser.text_field :name => 'Email'
+      text_box = Textbox.new @browser.text_field :name => 'BuyerEmail'
       data_qtip_field = (@browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]")[0]
       text_box.data_qtip_field data_qtip_field, "data-errorqtip"
       text_box
@@ -54,7 +54,7 @@ module Batch
 
     def phone
       expand
-      Textbox.new(@browser.text_field :name => 'Phone')
+      Textbox.new @browser.text_field :name => "ShipPhone"
     end
   end
 
@@ -1272,7 +1272,7 @@ module Batch
 
       return @manage_shipping_adddress if @manage_shipping_adddress.present?
 
-      ship_from_default_selection_field = @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
+      ship_from_default_selection_field = @browser.div :css => "div[data-recordindex='0']" #"div[id^=shipfromdroplist][id$=trigger-picker]"
       ship_from_dropdown = self.drop_down
       ship_from_textbox = self.text_box
 
@@ -1299,11 +1299,16 @@ module Batch
           click_form
         }
       else
+        ship_from_dropdown.safe_click unless selection_label.present?
+        if selection_label.present?
+          selection_label.scroll_into_view
+          selection_text = selection_label.text
+        end
         10.times{
           ship_from_dropdown.safe_click unless selection_label.present?
           selection_label.scroll_into_view
           selection_label.safe_click
-          break if ship_from_textbox.text.length > 3
+          break if ship_from_textbox.text.include? selection_text
         }
       end
     end

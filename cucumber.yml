@@ -1,7 +1,5 @@
-default: --profile cuke_reports --profile eva_dev
+default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
-
-# bvt_shipping_address_management
 
 rob_dev: --tags @rob_dev1 --guess VERBOSE=true URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
 eli_dev: --tags @purchasing --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
@@ -14,6 +12,8 @@ default_profile: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff 
 bvt_gc: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=gc USR=auto02 PW=326tsetaqcdS!
 bvt_ff: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto30 PW=326tsetaqcdS!
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
+
+# bvt_shipping_address_management
 
 address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto03 PW=326tsetaqcdS!
 address_management: --tags @address_management --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
