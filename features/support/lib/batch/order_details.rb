@@ -46,7 +46,7 @@ module Batch
 
     def email
       expand
-      text_box = Textbox.new @browser.text_field :name => 'Email'
+      text_box = Textbox.new @browser.text_field :name => 'BuyerEmail'
       data_qtip_field = (@browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]")[0]
       text_box.data_qtip_field data_qtip_field, "data-errorqtip"
       text_box
@@ -54,7 +54,7 @@ module Batch
 
     def phone
       expand
-      Textbox.new(@browser.text_field :name => 'Phone')
+      Textbox.new @browser.text_field :name => "ShipPhone"
     end
   end
 
