@@ -1055,17 +1055,13 @@ module Batch
     end
   end
 
-  class BatchTracking < OrderForm
+  class TrackingDropDown < OrderForm
     def text_box
       Textbox.new @browser.text_field :name => 'Tracking'
     end
 
     def drop_down
       Button.new @browser.div :css => "div[id^=trackingdroplist-][id$=-trigger-picker]"
-    end
-
-    def text
-      text_box.text
     end
 
     def select selection
@@ -1122,22 +1118,13 @@ module Batch
 
   end
 
-  class BatchService < OrderForm
-
-    private
-
+  class ServiceDropDown < OrderForm
     def text_box
       Textbox.new @browser.text_field :name => "Service"
     end
 
     def drop_down
       Button.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
-    end
-
-    public
-
-    def text
-      text_box.text
     end
 
     def select selection
@@ -1272,14 +1259,22 @@ module Batch
       self.ship_from "Manage Shipping Addresses..."
     end
 
+    def text_box
+      Textbox.new @browser.text_field :name => "ShipFrom"
+    end
+
+    def drop_down
+      Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
+    end
+
     def select selection
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
 
       return @manage_shipping_adddress if @manage_shipping_adddress.present?
 
       ship_from_default_selection_field = @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
-      ship_from_dropdown = Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
-      ship_from_textbox = Textbox.new @browser.text_field :name => "ShipFrom"
+      ship_from_dropdown = self.drop_down
+      ship_from_textbox = self.text_box
 
       if selection.downcase == "default"
         ship_from_selection_field = ship_from_default_selection_field
@@ -1331,7 +1326,7 @@ module Batch
     end
 
     def delete_line *args
-      browser_fields = @browser.spans :css => "span[class*=sdc-icon-remove]"
+      browser_fields = @browser.spans :css => "div[id*=detailItemsGrid] span[class*=sdc-icon-remove]"
       browser_fields
       browser_field = browser_fields
       case args.length
@@ -1345,7 +1340,7 @@ module Batch
     end
 
     def qty *args
-      browser_field = Textbox.new @browser.text_field :name => "Quantity"
+      browser_field = Textbox.new @browser.text_field :css => "div[id*=detailItemsGrid] input[name=Quantity]"
       case args.length
         when 0
           return browser_field
@@ -1357,7 +1352,7 @@ module Batch
     end
 
     def id *args
-      browser_field = Textbox.new @browser.text_field :name => "Sku"
+      browser_field = Textbox.new @browser.text_field :name => "SKU"
       case args.length
         when 0
           return browser_field
@@ -1369,7 +1364,7 @@ module Batch
     end
 
     def description *args
-      browser_field = Textbox.new @browser.text_field :name => "ItemName"
+      browser_field = Textbox.new @browser.text_field :css => "div[id*=detailItemsGrid] input[name=Description]"
       case args.length
         when 0
           return browser_field
@@ -1388,11 +1383,11 @@ module Batch
     end
 
     def service
-      @batch_service ||= BatchService.new @browser
+      @batch_service ||= ServiceDropDown.new @browser
     end
 
-    def tracking_no
-      @batch_tracking ||= BatchTracking.new @browser
+    def tracking
+      @batch_tracking ||= TrackingDropDown.new @browser
     end
 
     def address_textbox
@@ -1401,10 +1396,6 @@ module Batch
 
     def service_textbox
       @browser.text_field :css => "input[componentid^=servicedroplist]"
-    end
-
-    def insurance_cost_label
-      @browser.label :css => 'label[class*=insurance_cost]'
     end
 
     def height_textbox
@@ -1419,28 +1410,6 @@ module Batch
       @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div:nth-child(2)'
     end
 
-    def tracking_dropdown
-      @browser.div :css => 'div[id^=trackingdroplist-][id$=-trigger-picker]'[0]
-    end
-
-    def tracking_usps_selection
-      @browser.td :text => 'USPS Tracking'
-    end
-
-    def text_box
-      @browser.text_field :name => 'Tracking'
-    end
-
-    def service_cost_label
-      #@browser.label(:text => 'Service:').element(:xpath => './following-sibling::*[2]')
-      @browser.label(:css => 'label[class*=selected_service_cost]')
-    end
-
-    def tracking_cost_label
-      @browser.label(:css => 'label[class*=selected_tracking_cost]')
-    end
-
-    #Auto Suggest Elements
 
     def auto_suggest_name_array
       @browser.divs :css => 'div[class*=main-title]'
@@ -1471,61 +1440,48 @@ module Batch
       line_item
     end
 
-    def service_inline_cost
-      @service_cost
-    end
-
-    def service_input_text
-      browser_helper.text service_textbox, 'service'
-    end
-
     def service_cost
+      cost_label = Label.new @browser.label :css => "label[class*=selected_service_cost]"
       10.times{
         begin
-          cost = service_cost_label.text
+          cost = cost_label.text
         rescue
           #ignore
         end
         break unless cost.include? "0.00"
       }
-      test_helper.remove_dollar_sign(browser_helper.text(service_cost_label, 'service'))
+      test_helper.remove_dollar_sign(cost_label.text)
     end
 
     def insurance_cost
+      cost_label = Label.new @browser.label :css => 'label[class*=insurance_cost]'
       10.times{
         begin
-          cost = insurance_cost_label.text
+          cost = cost_label.text
         rescue
           #ignore
         end
         break unless cost.include? "0.00"
       }
-      test_helper.remove_dollar_sign(browser_helper.text(insurance_cost_label,'insurance'))
+      test_helper.remove_dollar_sign(cost_label.text)
     end
 
     def tracking_cost
+      cost_label = Label.new @browser.label :css => "label[class*=selected_tracking_cost]"
       10.times{
         begin
-          cost = tracking_cost_label.text
+          cost = cost_label.text
         rescue
           #ignore
         end
         break unless cost.include? "0.00"
       }
-      test_helper.remove_dollar_sign(browser_helper.text(tracking_cost_label, 'tracking'))
+      test_helper.remove_dollar_sign(cost_label.text)
     end
 
     def total
       total_label = Label.new @browser.labels(:css => "label[class*='total_cost']").first
       test_helper.remove_dollar_sign total_label.text
-    end
-
-    def total_amount_calculation
-      self.total
-    end
-
-    def correct?
-      @correct
     end
 
     def present?
@@ -1613,29 +1569,12 @@ module Batch
     def ounces_qtip_error_displayed?(message) # "The maximum value for this field is 70"
       ounces_qtip_error.include?(message)
     end
-
-    def service_default_text
-      service_textbox.attribute_value("placeholder")
-    end
-
-    def country
-      country_textbox.attribute_value('value')
-    end
-
     def click_auto_suggest_name index
       browser_helper.click auto_suggest_name_array[index.to_i-1]
     end
 
     def get_address_text
       browser_helper.text address_textbox
-    end
-
-    def get_email_text
-      browser_helper.text email
-    end
-
-    def get_phone_text
-      browser_helper.text phone
     end
 
     def get_auto_suggest_name index
@@ -1645,18 +1584,13 @@ module Batch
     def get_auto_suggest_location index
       auto_suggest_location_array[index.to_i-1].text
     end
-    def ship_cost_span
-      span = @browser.span :text => "Ship Cost"
-      log.info "Order Details Form  is #{(browser_helper.present? span)?'present':'NOT present'}"
-      span
-    end
 
     def order_id
-      order_id_label = Label.new @browser.b :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div:nth-child(1)>div>div>label:nth-child(1)>b"
+      order_id_label = Label.new @browser.bs(:css => "label>b").first
       5.times{
         begin
           order_id_str = order_id_label.text
-          break if order_id_str.include? 'Order #'
+          break if order_id_str.include? '#'
         rescue
           #ignroe
         end
@@ -1669,22 +1603,13 @@ module Batch
       rescue
         log.info "Order Details Form  Order ID label was not present"
       end
-      #(browser_helper.text order_id_label).split('Order #').last
-      order_id_str = order_id_label.text
-      order_id = order_id_str.split('Order #').last
-      order_id
-    end
 
-    def order_status_label
-      @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div>div>div>label"
+      order_id_label.text.split('#').last
     end
 
     def order_status
-      browser_helper.text order_status_label, 'order_status'
-    end
-
-    def single_order_form_present
-      browser_helper.present? order_id_label
+      label = Label.new @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div>div>div>label"
+      label.text
     end
 
     def validate_address_link

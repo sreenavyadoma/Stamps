@@ -36,77 +36,77 @@ end
 
 Then /^Expect Domestic Phone field displays (.*)$/ do |value|
   log.info "Expectation: Expect Domestic Phone field displays #{value}"
-  actual =  batch.order_details.get_phone_text
+  actual =  batch.order_details.ship_to.address.phone.text
   #log_expectation_eql "Phone text", value, actual
   actual.should eql value
 end
 
 Then /^Expect Domestic Email field displays (.*)$/ do |value|
   log.info "Expectation: Expect Domestic Email field displays #{value}"
-  actual =  batch.order_details.get_email_text
+  actual =  batch.order_details.ship_to.address.email.text
   #log_expectation_eql "Email text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Name field displays (.*)$/ do |value|
   log.info "Expectation: Expect International Name field displays #{value}"
-  actual =  batch.order_details.get_phone_text
+  actual =  batch.order_details.ship_to.address.phone.text
   #log_expectation_eql "Name text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Company field displays (.*)$/ do |value|
   log.info "Expectation: Expect International Company field displays #{value}"
-  actual =  batch.order_details.get_phone_text
+  actual =  batch.order_details.ship_to.address.phone.text
   #log_expectation_eql "Company text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Address 1 field displays (.*)$/ do |value|
   log.info "Expectation: Expect International Address 1 field displays #{value}"
-  actual =  batch.order_details.get_email_text
+  actual =  batch.order_details.ship_to.address.email.text
   #log_expectation_eql "Address 1 text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Address 2 field displays (.*)$/ do |value|
   log.info "Expectation: Expect International Address 2 field displays #{value}"
-  actual =  batch.order_details.get_email_text
+  actual =  batch.order_details.ship_to.address.email.text
   #log_expectation_eql "Address 2 text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International City field displays (.*)$/ do |value|
   log.info "Expectation: Expect International City field displays #{value}"
-  actual =  batch.order_details.get_email_text
+  actual =  batch.order_details.ship_to.address.email.text
   #log_expectation_eql "City text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Province field displays (.*)$/ do |value|
   log.info "Expectation: Expect International Province field displays #{value}"
-  actual =  batch.order_details.get_email_text
+  actual =  batch.order_details.ship_to.address.email.text
   #log_expectation_eql "Province text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Postal Code field displays (.*)$/ do |value|
   log.info "Expectation: Expect International Postal Code field displays #{value}"
-  actual =  batch.order_details.get_email_text
+  actual =  batch.order_details.ship_to.address.email.text
   #log_expectation_eql "Postal Code text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Phone field displays (.*)$/ do |value|
   log.info "Expectation: Expect International Postal Code field displays #{value}"
-  actual =  batch.order_details.get_email_text
+  actual =  batch.order_details.ship_to.address.email.text
   #log_expectation_eql "Phone text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Email field displays (.*)$/ do |value|
   log.info "Expectation: Expect International Email field displays #{value}"
-  actual =  batch.order_details.get_email_text
+  actual =  batch.order_details.ship_to.address.email.text
   #log_expectation_eql "Email text", value, actual
   actual.should eql value
 end

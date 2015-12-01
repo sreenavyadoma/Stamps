@@ -6,7 +6,15 @@ Then /^Expect Grid Date Printed to be today$/ do
   batch.filter.grid
 end
 
-Then /^Expect Grid Date Printed to be today plus (\d+)$/ do |count|
+Then /^Expect Grid Date Printed to be today plus one$/ do
+
+end
+
+Then /^Expect Grid Date Printed to be today plus two$/ do
+
+end
+
+Then /^Expect Grid Date Printed to be today plus three$/ do
 
 end
 
@@ -14,6 +22,11 @@ When /^Edit row (\d+) on the order grid$/ do |row|
   log.info "Step: Edit row #{row} on the order grid"
   batch.grid.checkbox.check row
   #end_step step
+end
+
+When /^Check row (\d+) on the order grid$/ do |row|
+  log.info "Step: Check row #{row} on the order grid"
+  step "Edit row #{row} on the order grid"
 end
 
 When /^Uncheck row (\d+) on the order grid$/ do |row|

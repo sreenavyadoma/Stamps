@@ -84,30 +84,34 @@ module Batch
     end
 
     def add
-      single_order_form = OrderDetails.new @browser
-      grid = Grid.new @browser
+      order_details = OrderDetails.new @browser
+      grid = Batch::Grid.new @browser
       add_button = Button.new (@browser.spans :text => 'Add').first
 
-      old_grid_row_1_id = grid.order_id.row 1
-      log.info "Row 1 Order ID #{old_grid_row_1_id}"
+      #uncheck first row in the grid
+      grid.checkbox.uncheck 1
+
+      old_id = grid.order_id.row 1
+      log.info "Row 1 Order ID #{old_id}"
       20.times do |count|
         begin
           add_button.safe_click
           5.times{
             sleep 1
-            log.info "#{count} Order Details form  #{(single_order_form.present?)?'not present':'is present'}"
-            break if single_order_form.present?
-            break if single_order_form.present?
-            break if single_order_form.present?
+            break if order_details.present?
+            break if order_details.present?
+            break if order_details.present?
+            log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"
           }
-          new_id = old_grid_row_1_id != grid.order_id.row(1) && grid.order_id.row(1) == single_order_form.order_id
-          log.info "Add #{(new_id)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_grid_row_1_id}, New Grid 1 ID: #{grid.order_id.row(1)}, Order Details Order ID:  #{grid.order_id.row(1)}"
-          return single_order_form if new_id
+          new_id = grid.order_id.row 1
+          add_successful = old_id != new_id
+          log.info "Add #{(add_successful)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
+          return order_details if add_successful
         rescue
           #ignore
         end
       end
-      raise "Unable to I Add a new orders!" unless single_order_form.present?
+      raise "Unable to I Add a new orders!" unless order_details.present?
     end
 
     def print_expecting_error *args

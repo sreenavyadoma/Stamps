@@ -13,6 +13,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
+    Then Set Order Details Form Ounces to 1
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal left-side label
@@ -28,6 +29,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM Package, SDC-1200 Right Side 1, 5912 83rd St., Lubbock TX 79424-3608
     Then Set Order Details Form Service to "Priority Mail Package"
+    Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Length to 1
     Then Set Order Details Form Width to 1
     Then Set Order Details Form Height to 1
@@ -46,10 +48,12 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM FR Envelope, 8.5x11, 2105 Kietzke Ln, Reno NV 89502-3602
     Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
+    Then Set Order Details Form Ounces to 1
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM PFR Envelope, 8.5x11, 557 County Rd. H, Fredonia WI 53021-9634
     Then Set Order Details Form Service to "Priority Mail Padded Flat Rate Envelope"
+    Then Set Order Details Form Ounces to 1
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Open Print Modal
@@ -66,6 +70,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM LFR Envelope, 8.5x11 Right Side 2, 2775 Stark Dr., Willoughby Hills OH 44094-9113
     Then Set Order Details Form Service to "Priority Mail Legal Flat Rate Envelope"
+    Then Set Order Details Form Ounces to 1
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM SFR Box, 8.5x11 Right Side 1, 610 W Tefft St, Nipomo, CA 93444-9187
@@ -87,14 +92,17 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM Med FR Box, SDC-1200, 530 K Street Unit 504, San Diego CA 92101-7060
     Then Set Order Details Form Service to "Priority Mail Medium Flat Rate Box"
+    Then Set Order Details Form Ounces to 1
     And I Add a second order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM Lg FR Box, SDC-1200, 7065 N Ingram Ave, Fresno CA 93650-1083
     Then Set Order Details Form Service to "Priority Mail Large Flat Rate Box"
+    Then Set Order Details Form Ounces to 1
     And I Add a third order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM RR Box A, SDC-1200, 4937 79th St., Sacramento CA 95820-6213
     Then Set Order Details Form Service to "Priority Mail Regional Rate Box A"
+    Then Set Order Details Form Ounces to 1
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Edit row 3 on the order grid
@@ -273,14 +281,17 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
     Then Set Order Details Form Service to "Priority Mail Express Flat Rate Envelope"
+    Then Set Order Details Form Ounces to 1
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
     Then Set Order Details Form Service to "Priority Mail Express Legal Flat Rate Envelope"
+    Then Set Order Details Form Ounces to 1
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
     Then Set Order Details Form Service to "Priority Mail Express Padded Flat Rate Envelope"
+    Then Set Order Details Form Ounces to 1
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Ship-To to international address
@@ -335,6 +346,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PME MFR Box, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
     Then Set Order Details Form Service to "Priority Mail Express Medium Flat Rate Box"
+    Then Set Order Details Form Ounces to 1
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal left-side label
@@ -351,6 +363,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PS Package, 5.5x8.5 Right Side 1, 610 W Tefft St, Nipomo, CA 93444-9187
     Then Set Order Details Form Service to "Parcel Select Package"
+    Then Set Order Details Form Ounces to 1
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal right-side label
@@ -366,10 +379,12 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PS Large Package, 5.5x8.5, 530 K Street Unit 504, San Diego CA 92101-7060
     Then Set Order Details Form Service to "Parcel Select Large Package"
+    Then Set Order Details Form Ounces to 1
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PS Large Package, 5.5x8.5, 7065 N Ingram Ave, Fresno CA 93650-1083
     Then Set Order Details Form Service to "Parcel Select Oversized Package"
+    Then Set Order Details Form Ounces to 1
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Open Print Modal
@@ -388,10 +403,12 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to MM Package, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
     Then Set Order Details Form Service to "Media Mail Package"
+    Then Set Order Details Form Ounces to 1
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM Large Package, 5.5x8.5 Right Side 1, 26930 NE 152nd St., Duvall WA 98019-8316
     Then Set Order Details Form Service to "Priority Mail Large Package"
+    Then Set Order Details Form Ounces to 1
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Open Print Modal
@@ -410,10 +427,12 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to FCM Lg Env-Flat, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
     Then Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
+    Then Set Order Details Form Ounces to 1
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM Lg-Thick Env, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
     Then Set Order Details Form Service to "Priority Mail Large/Thick Envelope"
+    Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Length to 1
     Then Set Order Details Form Width to 1
     Then Set Order Details Form Height to 1
@@ -421,6 +440,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to FCM Pkg-Thick Env, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
     Then Set Order Details Form Service to "First-Class Mail Package/Thick Envelope"
+    Then Set Order Details Form Ounces to 1
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Edit row 3 on the order grid

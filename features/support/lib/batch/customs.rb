@@ -109,15 +109,15 @@ module Batch
     end
 
     def delete
-      Button.new (@browser.spans :css => "span[class*=sdc-icon-remove]")[@number]
+      Button.new (@browser.spans :css => "div[id*=customswindow] span[class*=sdc-icon-remove]")[@number-1]
     end
 
     def item_description
-      Textbox.new (@browser.text_fields :name => "Description")[@number-1]
+      Textbox.new (@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]
     end
 
     def qty
-      Textbox.new (@browser.text_fields :name => "Quantity")[@number-1]
+      Textbox.new (@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]
     end
 
     def qty_increment value

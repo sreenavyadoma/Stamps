@@ -129,14 +129,18 @@ module Stamps
       str.gsub(char_to_remove, substitute_char)
     end
 
+    def today
+      today_plus 0
+    end
+
     def today_plus day
-      now = Date.today
-      "#{now.strftime("%B")} #{now.day + day.to_i}"
+      now = Date.today + day
+      "#{now.strftime("%B")} #{now.day}"
     end
 
     def today_plus_abbrev_month day
-      now = Date.today
-      "#{now.strftime('%b')} #{now.day + day.to_i}"
+      now = Date.today + day
+      "#{now.strftime('%b')} #{now.day}"
     end
 
     def print_date *args

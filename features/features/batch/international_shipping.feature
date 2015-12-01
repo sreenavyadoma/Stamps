@@ -1,7 +1,7 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as batch shipper gc/qacc/auto06/326tsetaqcdS!
+    Given I am signed in as a batch shipper
 
   @international @international_data_error @international_failure
   Scenario:  Customs Form Data Error
@@ -24,7 +24,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Close customs form
     And Sign out
     
-  @international @international_totals
+  @international_totals
   Scenario:  Customs Form Grid Items Add/Delete
     And I Add a new order
     Then Set Order Details Form Ship-From to default
