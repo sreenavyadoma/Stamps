@@ -51,6 +51,14 @@ module Stamps
         end
       end
 
+      def attribute_enabled?
+        browser_helper.attribute_enabled? @field
+      end
+
+      def disabled?
+        browser_helper.disabled? @field
+      end
+
       def data_error
         browser_helper.attribute_value @field, "data-errorqtip"
       end
@@ -91,7 +99,7 @@ module Stamps
 
       def second_enabled?
         raise "enabled field not set." if @second_field.nil?
-        browser_helper.enabled? @second_field
+        browser_helper.attribute_enabled? @second_field
       end
 
       def field
@@ -205,14 +213,6 @@ module Stamps
     class Label < ClickableField
       def text
         browser_helper.text @field
-      end
-
-      def enabled?
-        browser_helper.enabled? @field
-      end
-
-      def disabled?
-        browser_helper.disabled? @field
       end
 
     end
@@ -339,7 +339,7 @@ module Stamps
         nil
       end
 
-      def enabled? *args
+      def attribute_enabled? *args
         case args.length
           when 1
             field = args[0]
