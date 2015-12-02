@@ -21,8 +21,8 @@ Feature: Ship Date
     Then Set Order Details Form Ship-To address to random
     Then Set Order Details Form Service to "Priority Mail Package"
     And Open Print Modal
-    Then Set Print Modal Ship Date to today plus one day
-    Then Expect Shipped Tab Ship Date to be today plus one
+    Then Set Print Modal Ship Date to today plus 1
+    Then Set Print Modal Ship Date to today plus 3
     Then Print
     And Sign out
 
@@ -33,8 +33,8 @@ Feature: Ship Date
     Then Set Order Details Form Ship-To address to random
     Then Set Order Details Form Service to "Priority Mail Package"
     And Open Print Modal
-    Then Set Print Modal Ship Date to today plus two days
-    Then Expect Shipped Tab Ship Date to be today plus two
+    Then Set Print Modal Ship Date to today plus 2
+    Then Expect Shipped Tab Ship Date to be today plus 2
     Then Print
     And Sign out
 
@@ -45,8 +45,8 @@ Feature: Ship Date
     Then Set Order Details Form Ship-To address to random
     Then Set Order Details Form Service to "Priority Mail Package"
     And Open Print Modal
-    Then Set Print Modal Ship Date to today plus three days
-    Then Expect Shipped Tab Ship Date to be today plus three
+    Then Set Print Modal Ship Date to today plus 3
+    Then Expect Shipped Tab Ship Date to be today plus 3
     Then Print
     And Sign out
 

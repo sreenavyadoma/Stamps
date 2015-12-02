@@ -15,8 +15,6 @@ When /^Set Order Details Form Ship-To address to (.*)$/ do |address|
   if address.downcase.include? "random"
     random_ship_to_address = test_helper.random_ship_to
     formatted_address = BatchHelper.instance.format_address(random_ship_to_address)
-    step "Set Order Details Form Phone to #{random_ship_to_address["phone"]}"
-    step "Set Order Details Form Email to #{random_ship_to_address["email"]}"
   else
     formatted_address = BatchHelper.instance.format_address address
   end
@@ -24,6 +22,12 @@ When /^Set Order Details Form Ship-To address to (.*)$/ do |address|
   log.info "Set Order Details Form Ship-To address to \"#{formatted_address}\""
 
   batch.order_details.ship_to.address.set formatted_address
+  begin
+    step "Set Order Details Form Phone to #{random_ship_to_address["phone"]}"
+    step "Set Order Details Form Email to #{random_ship_to_address["email"]}"
+  rescue
+    #ignroe
+  end
 end
 
 And /^Set Order Details Form Ship-To to ambiguous address$/ do |table|

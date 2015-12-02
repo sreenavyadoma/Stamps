@@ -143,234 +143,238 @@ module Batch
       check_column = CheckBox.new @browser
 
       20.times{
-        text_box.send_keys address
-        text_box.set address
+        begin
+          text_box.send_keys address
+          text_box.set address
 
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        text_box.safe_double_click
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if less.present?
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        phone.set test_helper.random_phone
-        phone.send_keys :enter
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        country_drop_down.drop_down.safe_click
-        country_drop_down.drop_down.safe_click
-        phone.send_keys :tab
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        email.set test_helper.random_email
-        email.send_keys :enter
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        email.send_keys :tab
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        grid_recipient.scroll_into_view
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if less.present?
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if less.present?
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        phone.send_keys :tab
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        email.send_keys :enter
-        grid_recipient.scroll_into_view
-        check_column.scroll_into_view
-        grid_address.scroll_into_view
-        grid_company.scroll_into_view
-        break if less.present?
-        text_box.safe_double_click
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        phone.send_keys :tab
-        break if less.present?
-        email.send_keys :enter
-        break if less.present?
-        phone.set test_helper.random_phone
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        email.set test_helper.random_email
-        text_box.safe_double_click
-        break if less.present?
-        phone.set test_helper.random_phone
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        email.set test_helper.random_email
-        break if less.present?
-        phone .safe_double_click
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        email .safe_double_click
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        check_column.scroll_into_view
-        break if address.include? grid_recipient.data_for 1
-        break if address.include? grid_address.data_for 1
-        break if address.include? grid_company.data_for 1
-        break if less.present?
-        phone.set test_helper.random_phone
-        email.set test_helper.random_email
-        grid_recipient.scroll_into_view
-        break if less.present?
-        phone.send_keys :tab
-        break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          text_box.safe_double_click
+          text_box.safe_double_click
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          text_box.safe_double_click
+          text_box.safe_double_click
+          grid_recipient.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          country_drop_down.drop_down.safe_click
+          country_drop_down.drop_down.safe_click
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if less.present?
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          country_drop_down.drop_down.safe_click
+          country_drop_down.drop_down.safe_click
+          phone.set test_helper.random_phone
+          phone.send_keys :enter
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          country_drop_down.drop_down.safe_click
+          country_drop_down.drop_down.safe_click
+          phone.send_keys :tab
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          email.set test_helper.random_email
+          email.send_keys :enter
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          email.send_keys :tab
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          text_box.safe_double_click
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          text_box.safe_double_click
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          text_box.safe_double_click
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          text_box.safe_double_click
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          grid_recipient.scroll_into_view
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if less.present?
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          text_box.safe_double_click
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if less.present?
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          phone.send_keys :tab
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          email.send_keys :enter
+          grid_recipient.scroll_into_view
+          check_column.scroll_into_view
+          grid_address.scroll_into_view
+          grid_company.scroll_into_view
+          break if less.present?
+          text_box.safe_double_click
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          phone.send_keys :tab
+          break if less.present?
+          email.send_keys :enter
+          break if less.present?
+          phone.set test_helper.random_phone
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          email.set test_helper.random_email
+          text_box.safe_double_click
+          break if less.present?
+          phone.set test_helper.random_phone
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          email.set test_helper.random_email
+          break if less.present?
+          phone .safe_double_click
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          email .safe_double_click
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          check_column.scroll_into_view
+          break if (grid_recipient.row 1).length > 1
+          break if (grid_address.row 1).length > 1
+          break if (grid_company.row 1).length > 1
+          break if less.present?
+          phone.set test_helper.random_phone
+          email.set test_helper.random_email
+          grid_recipient.scroll_into_view
+          break if less.present?
+          phone.send_keys :tab
+          break if less.present?
+        rescue
+          #ignore
+        end
       }
       phone.set ""
       email.set ""

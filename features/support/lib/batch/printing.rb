@@ -138,7 +138,7 @@ module Batch
     end
 
     def date_field day
-      css = "td[aria-label='#{test_helper.today_plus day.to_i}']"
+      css = "td[aria-label='#{test_helper.now_plus_month_dd day.to_i}']"
       td = @browser.td :css => css
       present = browser_helper.present? td
       td
@@ -153,14 +153,14 @@ module Batch
       date_picker_button.present?
     end
 
-    def today
+    def now_month_dd
       picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
       today = Button.new @browser.span :css => "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
       10.times {
         picker.safe_click unless today.present?
         today.safe_click
         sleep 1
-        return test_helper.today_plus_abbrev_month 0 #get ship date text box value and return it in correct format or not...
+        return test_helper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
       }
       raise "Unable to select today's date from date picker object in Print Modal."
     end
@@ -172,33 +172,32 @@ module Batch
         picker.safe_click unless today.present?
         today.safe_click
         sleep 1
-        return test_helper.today_plus_abbrev_month 0
+        return test_helper.now_plus_mon_dd 0
       }
       raise "Unable to select today's date from date picker object in Print Modal."
     end
 
-    def today_plus_1
+    def today_button
+
+    end
+
+    def today
+      today_plus
+    end
+
+    def today_plus day
       picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
-      date_str = test_helper.today_plus 1
+      ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"
+      date_str = test_helper.now_plus_month_dd day
+      ship_date = test_helper.now_plus_mm_dd day
       date = Label.new @browser.div :css => "td[aria-label='#{date_str}']>div"
       10.times {
         picker.safe_click unless date.present?
         date.safe_click
         sleep 1
-        return test_helper.today_plus_abbrev_month 1
+        return ship_date_textbox.text if ship_date_textbox.text == ship_date
       }
     end
-
-    def
-
-    def today_plus_2
-
-    end
-
-    def today_plus_3
-
-    end
-
   end
 
   class PrintModal < PrintModalObject
