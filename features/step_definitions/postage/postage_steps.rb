@@ -1,6 +1,18 @@
 # encoding: utf-8
 
-Then /^Set Print Postage print media(.*)/ do |media|
+Then /^Select Print Postage print media(.*)/ do |media|
+
+end
+
+Then /^Set Print Postage Form Ship-To to international address/ do |table|
+
+end
+
+Then /^Set Print Postage Form Ship-To address to (.*)/ do |address|
+
+end
+
+Then /^Set Print Postage Form Ship-To address to$/ do |table|
 
 end
 
@@ -16,7 +28,7 @@ Then /^Select Calculate Postage Amount/ do
 
 end
 
-Then /^Set Print Postage Form Ship From to (.*)/ do |address|
+Then /^Set Print Postage Form Ship-From to (.*)/ do |address|
 
 end
 
@@ -37,6 +49,38 @@ Then /^Set Print Postage Form Ounces to (.*)/ do |ounces|
 end
 
 Then /^Set Print Postage Form Pounds to (.*)/ do |pounds|
+
+end
+
+Then /^Expect Print Postage Form Ship-To address to be (.*)/ do |address|
+
+end
+
+Then /^Open Extra Services/ do
+
+end
+
+Then /^Set Extra Services COD to (.*)/ do |amount|
+
+end
+
+Then /^Save Extra Services/ do
+
+end
+
+Then /^Search Contacts by group - (.*)/ do |filter|
+
+end
+
+Then /^Search Contacts by cost code - (.*)/ do |filter|
+
+end
+
+Then /^Open Contacts modal/ do
+
+end
+
+Then /Cancel Contacts modal/ do
 
 end
 
