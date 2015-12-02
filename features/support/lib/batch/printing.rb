@@ -218,10 +218,31 @@ module Batch
     end
   end
 
+  class PrinterDropDown < PrintModalObject
+    def drop_down
+      Button.new @browser.div :id => "div#sdc-printpostagewindow-printerdroplist-trigger-picker"
+    end
+
+    def text_box
+      Textbox.new @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
+    end
+
+    def select selection
+      dd = self.drop_down
+      input = self.text_box
+      selection_label = Label.new @browser.li :text => selection
+
+      5.times{
+        dd.safe_click unless selection_label.present?
+        selection_label.safe_click
+        return if input.text.include? selection
+      }
+    end
+  end
+
   class PrintModal < PrintModalObject
-    def initialize browser, *args
+    def initialize browser
       super browser
-      print_options *args
     end
 
     def starting_label
@@ -229,9 +250,7 @@ module Batch
     end
 
     def printer
-      drop_down = @browser.div :id => "div#sdc-printpostagewindow-printerdroplist-trigger-picker"
-      input = @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
-      Dropdown.new @browser, drop_down, :li, input
+      PrinterDropDown.new @browser
     end
 
     def printing_on
@@ -282,36 +301,6 @@ module Batch
       div = @browser.div :css => "div[id^=printwindow]>div[id^=title]>div[id^=title]"
       log.info "Title: #{div}"
       browser_helper.text div
-    end
-
-    def print_options(*args)
-      case args.size
-        when 0
-          return self
-        when 1
-          self.printer = args[0]
-          return self
-        when 2
-          self.printer = args[0]
-          self.paper_trail = args[1]
-          return self
-        else
-          raise "Invalid printer arguments."
-      end
-    end
-
-    def printer=(printer)
-      printer_field.when_present.set printer
-      printer_label.click
-      printer_label.click
-      self
-    end
-
-    def paper_trail=(tray)
-      paper_tray_field.when_present.set tray
-      printer_label.click
-      printer_label.click
-      self
     end
 
     def print_sample

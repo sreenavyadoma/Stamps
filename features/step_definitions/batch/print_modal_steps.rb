@@ -83,6 +83,7 @@ When /^Print$/ do
   log.info "Step: Print"
   print_modal = batch.toolbar.print_modal
   @ship_date = print_modal.ship_date.text
+  #@printer = print_modal.printer.text
   @printing_error = print_modal.print
 end
 

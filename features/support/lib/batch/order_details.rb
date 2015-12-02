@@ -147,8 +147,10 @@ module Batch
 
       ship_to_drop_down = Button.new @browser.span :css => "span[class*=sdc-icon-down-arrow]"
 
-      #order_details.ship_to.country.select
 
+      text_area.set address
+
+=begin
       5.times{
         begin
           text_area.send_keys address
@@ -617,6 +619,8 @@ module Batch
       phone.set ""
       ship_to_drop_down.safe_click unless email.field.visible?
       email.set ""
+=end
+
     end
 
   end

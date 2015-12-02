@@ -23,11 +23,11 @@ end
 
 Then /^Expect Grid Ship Date to be today plus (\d+)$/ do |day|
   log.info "Expect Grid Ship Date to be today plus #{day}"
-  grid = batch.filter.shipped
+  grid = batch.filter.shipped    UNCOMMENT THIS!
   grid.ship_date.sort.descending
   grid_ship_date = grid.ship_date.data @order_id # Dec 3
 
-  collection = date_str.split "/"
+  collection = @ship_date.split "/"
   date = Date.new collection[2].to_i, collection[0].to_i, collection[1].to_i
 
   expected_ship_date = date.strftime "%b %d"
@@ -463,20 +463,6 @@ Then /^Expect Grid Order Status to be (.+)$/ do |expected|
     10.times { |counter|
       sleep(2)
       #log_expectation_eql "#{counter}. Order Status", expected, actual
-      break if actual.eql? expected
-      actual = batch.grid.cost_code.data @order_id
-    }
-    actual.should eql expected
-  end unless expected.length == 0
-end
-
-Then /^Expect Grid Ship Date to be (.+)$/ do |expected|
-  log.info "Expectation: Expect Grid Ship Date to be #{expected}"
-  begin
-    actual = batch.grid.cost_code.data @order_id
-    10.times { |counter|
-      sleep(2)
-      #log_expectation_eql "#{counter}. Ship Date", expected, actual
       break if actual.eql? expected
       actual = batch.grid.cost_code.data @order_id
     }

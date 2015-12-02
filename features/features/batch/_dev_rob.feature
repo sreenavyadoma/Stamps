@@ -5,6 +5,30 @@ Feature: Test Development
     Given I am signed in as a batch shipper
 
   @rob_dev1
+    Scenario:
+
+    Then Print
+    Then Expect Grid Ship Date to be today
+    Then Expect Grid Date Printed to be today
+
+    Then Open Print Modal
+    Then Set Print Modal Ship Date to today plus 1
+    Then Print
+    Then Expect Grid Date Printed to be today
+    Then Expect Grid Ship Date to be today plus 1
+
+    Then Open Print Modal
+    Then Set Print Modal Ship Date to today plus 2
+    Then Print
+    Then Expect Grid Date Printed to be today
+    Then Expect Grid Ship Date to be today plus 2
+
+    Then Open Print Modal
+    Then Set Print Modal Ship Date to today plus 3
+    Then Print
+    Then Expect Grid Date Printed to be today
+    Then Expect Grid Ship Date to be today plus 3
+
   Scenario:
 
     And I Add a new order
