@@ -81,7 +81,9 @@ end
 
 When /^Print$/ do
   log.info "Step: Print"
-  @printing_error = batch.toolbar.print_modal.print
+  print_modal = batch.toolbar.print_modal
+  @ship_date = print_modal.ship_date.text
+  @printing_error = print_modal.print
 end
 
 Then /^Close Print Modal$/ do

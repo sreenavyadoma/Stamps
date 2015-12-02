@@ -3,19 +3,38 @@ Then /^Filter Shipped Orders orders in the filter panel$/ do
 end
 
 Then /^Expect Grid Date Printed to be today$/ do
-  batch.filter.shipped
+  log.info "Expect Grid Date Printed to be today"
+  grid = batch.filter.shipped
+  grid.date_printed.sort.descending
+  grid_date_printed = grid.date_printed.data @order_id # Dec 3
+
+  today = Date.today
+  expected_date_printed = today.strftime "%b %d"
+
+  log.info "Ship Date:  #{@ship_date} converted to #{expected_date_printed}"  #12/03/2015
+  log.info "Test #{(grid_date_printed==expected_date_printed)?"Passed":"Failed"}"
+  grid_date_printed.should eql expected_date_printed
 end
 
-Then /^Expect Grid Date Printed to be today plus one$/ do
-
+Then /^Expect Grid Ship Date to be today$/ do
+  log.info "Expect Grid Ship Date to be today"
+  step "Expect Grid Ship Date to be today plus 0"
 end
 
-Then /^Expect Grid Date Printed to be today plus two$/ do
+Then /^Expect Grid Ship Date to be today plus (\d+)$/ do |day|
+  log.info "Expect Grid Ship Date to be today plus #{day}"
+  grid = batch.filter.shipped
+  grid.ship_date.sort.descending
+  grid_ship_date = grid.ship_date.data @order_id # Dec 3
 
-end
+  collection = date_str.split "/"
+  date = Date.new collection[2].to_i, collection[0].to_i, collection[1].to_i
 
-Then /^Expect Grid Date Printed to be today plus three$/ do
+  expected_ship_date = date.strftime "%b %d"
 
+  log.info "Ship Date:  #{@ship_date} converted to #{expected_ship_date}"  #12/03/2015
+  log.info "Test #{(grid_ship_date==expected_ship_date)?"Passed":"Failed"}"
+  grid_ship_date.should eql expected_ship_date
 end
 
 When /^Edit row (\d+) on the order grid$/ do |row|

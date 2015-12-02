@@ -133,7 +133,7 @@ module Batch
 
     def set address
       less = self.less
-      country_drop_down = self.country
+      ship_to_country = self.country
       phone = self.phone
       email = self.email
       text_area = self.text_area
@@ -147,13 +147,19 @@ module Batch
 
       ship_to_drop_down = Button.new @browser.span :css => "span[class*=sdc-icon-down-arrow]"
 
+      #order_details.ship_to.country.select
+
       5.times{
         begin
           text_area.send_keys address
           text_area.set address
 
+          ship_to_country.select "United States"
+          break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          ship_to_country.select "United States"
+          break if less.present?
           grid_recipient.scroll_into_view
           check_column.scroll_into_view
           grid_address.scroll_into_view
@@ -166,6 +172,8 @@ module Batch
           text_area.safe_click
           ship_to_area1.safe_double_click
           ship_to_area2.safe_double_click
+          ship_to_country.select "United States"
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -176,6 +184,9 @@ module Batch
           text_area.safe_click
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -193,6 +204,8 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -200,6 +213,8 @@ module Batch
           ship_to_area2.safe_click
           ship_to_area1.safe_double_click
           ship_to_area2.safe_double_click
+          break if less.present?
+          ship_to_country.select "United States"
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
@@ -212,6 +227,8 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -235,8 +252,6 @@ module Batch
           text_area.set address
           phone.set test_helper.random_phone
           email.set test_helper.random_email
-          country_drop_down.drop_down.safe_click
-          country_drop_down.drop_down.safe_click
           grid_recipient.scroll_into_view
           check_column.scroll_into_view
           grid_address.scroll_into_view
@@ -257,14 +272,18 @@ module Batch
           text_area.set address
           phone.set test_helper.random_phone
           email.set test_helper.random_email
-          country_drop_down.drop_down.safe_click
-          country_drop_down.drop_down.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           phone.set test_helper.random_phone
           phone.send_keys :enter
           less.safe_double_click
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -275,10 +294,14 @@ module Batch
           grid_address.scroll_into_view
           grid_company.scroll_into_view
           break if less.present?
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
-          country_drop_down.drop_down.safe_click
-          country_drop_down.drop_down.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           ship_to_area1.safe_click
           ship_to_area2.safe_click
           ship_to_area1.safe_double_click
@@ -292,6 +315,9 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -312,6 +338,9 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -320,6 +349,8 @@ module Batch
           ship_to_area1.safe_double_click
           ship_to_area2.safe_double_click
           text_area.set address
+          break if less.present?
+          ship_to_country.select "United States"
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
@@ -332,6 +363,9 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -350,6 +384,9 @@ module Batch
           less.safe_double_click
           less.safe_click
           text_area.safe_double_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
@@ -370,6 +407,9 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -389,6 +429,9 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -407,6 +450,9 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -419,6 +465,9 @@ module Batch
           email.set test_helper.random_email
           grid_recipient.scroll_into_view
           grid_recipient.scroll_into_view
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
@@ -426,6 +475,9 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          break if less.present?
+          ship_to_country.select "United States"
+          break if less.present?
           break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
@@ -446,6 +498,10 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -471,9 +527,15 @@ module Batch
           break if less.present?
           text_area.safe_double_click
           break if less.present?
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
           phone.send_keys :tab
+          break if less.present?
+          ship_to_country.select "United States"
+          break if less.present?
           break if less.present?
           email.send_keys :enter
           break if less.present?
@@ -482,6 +544,9 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -503,6 +568,9 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
@@ -522,6 +590,9 @@ module Batch
           less.safe_click
           text_area.safe_double_click
           text_area.safe_click
+          ship_to_country.select "United States"
+          break if less.present?
+          break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1

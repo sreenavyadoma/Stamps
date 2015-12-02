@@ -194,11 +194,10 @@ module Batch
       ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
       date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
 
-
       10.times{
-        picker_button.safe_click unless date_picker_header.enabled?
+        picker_button.safe_click unless date_picker_header.field.present?
 
-        if date_field.field.enabled?
+        if date_field.field.present?
           break
         else
           day += 1
