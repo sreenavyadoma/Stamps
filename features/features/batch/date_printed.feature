@@ -13,7 +13,7 @@ Feature: Date Printed
     Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     Then Open Print Modal
     Then Print
-    Then Filter Shipped Orders orders in the filter panel
+    Then Expect Grid Ship Date to be today
     Then Expect Grid Date Printed to be today
 
     And I Add a new order
@@ -23,9 +23,8 @@ Feature: Date Printed
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 1
     Then Print
-    Then Filter Shipped Orders orders in the filter panel
-    Then Expect Grid Date Printed to be today plus one
-    Then Expect Grid Date Printed to be today plus three
+    Then Expect Grid Date Printed to be today
+    Then Expect Grid Ship Date to be today plus 1
 
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -34,8 +33,8 @@ Feature: Date Printed
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 2
     Then Print
-    Then Filter Shipped Orders orders in the filter panel
-    Then Expect Grid Date Printed to be today plus two
+    Then Expect Grid Date Printed to be today
+    Then Expect Grid Ship Date to be today plus 2
 
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -44,9 +43,8 @@ Feature: Date Printed
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 3
     Then Print
-    Then Filter Shipped Orders orders in the filter panel
-
-
+    Then Expect Grid Date Printed to be today
+    Then Expect Grid Ship Date to be today plus 3
 
     Then Sign out
 
