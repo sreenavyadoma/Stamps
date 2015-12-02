@@ -156,6 +156,7 @@ module Batch
         columns.each_with_index { |column_field, index|
           column_text = browser_helper.text column_field
           if column_text == column_str
+            log.info "Grid:  #{column_str} is in column #{index+1}"
             return index+1
           end
         }

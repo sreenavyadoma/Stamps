@@ -136,16 +136,21 @@ module Batch
       country_drop_down = self.country
       phone = self.phone
       email = self.email
-      text_box = self.text_area
+      text_area = self.text_area
       grid_recipient = Recipient.new @browser
       grid_company = Company.new @browser
       grid_address = Address.new @browser
       check_column = CheckBox.new @browser
 
-      20.times{
+      ship_to_area1 = Button.new @browser.div :css => "div[id=shiptoview-domestic-targetEl]>div:nth-child(2)>div>div>div:nth-child(1)"
+      ship_to_area2 = Button.new @browser.div :css => "div#shiptoview-domestic-innerCt"
+
+      ship_to_drop_down = Button.new @browser.span :css => "span[class*=sdc-icon-down-arrow]"
+
+      5.times{
         begin
-          text_box.send_keys address
-          text_box.set address
+          text_area.send_keys address
+          text_area.set address
 
           phone.set test_helper.random_phone
           email.set test_helper.random_email
@@ -153,40 +158,81 @@ module Batch
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
           break if less.present?
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           phone.set test_helper.random_phone
           email.set test_helper.random_email
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
-          text_box.safe_double_click
-          text_box.safe_double_click
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          text_area.safe_double_click
+          text_area.safe_double_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           grid_recipient.scroll_into_view
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
-          text_box.safe_double_click
-          text_box.safe_double_click
+          text_area.safe_double_click
+          text_area.safe_double_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           grid_recipient.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
           break if less.present?
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
+          text_area.set address
           phone.set test_helper.random_phone
           email.set test_helper.random_email
           country_drop_down.drop_down.safe_click
@@ -196,18 +242,34 @@ module Batch
           grid_address.scroll_into_view
           grid_company.scroll_into_view
           break if less.present?
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          text_area.send_keys address
+          text_area.set address
           phone.set test_helper.random_phone
           email.set test_helper.random_email
           country_drop_down.drop_down.safe_click
           country_drop_down.drop_down.safe_click
           phone.set test_helper.random_phone
           phone.send_keys :enter
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          text_area.send_keys address
+          text_area.set address
           grid_recipient.scroll_into_view
           check_column.scroll_into_view
           grid_address.scroll_into_view
@@ -217,14 +279,26 @@ module Batch
           email.set test_helper.random_email
           country_drop_down.drop_down.safe_click
           country_drop_down.drop_down.safe_click
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           phone.send_keys :tab
           grid_recipient.scroll_into_view
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
@@ -234,9 +308,18 @@ module Batch
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
+          text_area.set address
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
@@ -245,51 +328,92 @@ module Batch
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
-          text_box.safe_double_click
+          text_area.safe_double_click
           grid_recipient.scroll_into_view
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
-          text_box.safe_double_click
+          text_area.safe_double_click
           grid_recipient.scroll_into_view
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
-          text_box.safe_double_click
+          text_area.safe_double_click
           grid_recipient.scroll_into_view
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
+          text_area.set address
           break if less.present?
-          text_box.safe_double_click
+          text_area.safe_double_click
           grid_recipient.scroll_into_view
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
@@ -298,21 +422,37 @@ module Batch
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if less.present?
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           phone.set test_helper.random_phone
           email.set test_helper.random_email
-          text_box.safe_double_click
+          text_area.safe_double_click
           grid_recipient.scroll_into_view
           check_column.scroll_into_view
           grid_address.scroll_into_view
           grid_company.scroll_into_view
           break if less.present?
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           phone.set test_helper.random_phone
           email.set test_helper.random_email
           phone.send_keys :tab
@@ -329,7 +469,7 @@ module Batch
           grid_address.scroll_into_view
           grid_company.scroll_into_view
           break if less.present?
-          text_box.safe_double_click
+          text_area.safe_double_click
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
@@ -338,11 +478,19 @@ module Batch
           email.send_keys :enter
           break if less.present?
           phone.set test_helper.random_phone
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           email.set test_helper.random_email
-          text_box.safe_double_click
+          text_area.safe_double_click
           break if less.present?
           phone.set test_helper.random_phone
           break if less.present?
@@ -351,9 +499,17 @@ module Batch
           email.set test_helper.random_email
           break if less.present?
           phone .safe_double_click
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
@@ -362,9 +518,17 @@ module Batch
           phone.set test_helper.random_phone
           email.set test_helper.random_email
           check_column.scroll_into_view
+          less.safe_double_click
+          less.safe_click
+          text_area.safe_double_click
+          text_area.safe_click
           break if (grid_recipient.row 1).length > 1
           break if (grid_address.row 1).length > 1
           break if (grid_company.row 1).length > 1
+          ship_to_area1.safe_click
+          ship_to_area2.safe_click
+          ship_to_area1.safe_double_click
+          ship_to_area2.safe_double_click
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
@@ -372,11 +536,15 @@ module Batch
           break if less.present?
           phone.send_keys :tab
           break if less.present?
+          phone.set ""
+          email.set ""
         rescue
           #ignore
         end
       }
+      ship_to_drop_down.safe_click unless phone.field.visible?
       phone.set ""
+      ship_to_drop_down.safe_click unless email.field.visible?
       email.set ""
     end
 

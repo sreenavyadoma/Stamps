@@ -182,21 +182,40 @@ module Batch
     end
 
     def today
-      today_plus
+      today_plus 0
     end
 
     def today_plus day
-      picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
+      date_picker_header = Label.new @browser.div :class => "div[class=x-datepicker-header]"
+      picker_button = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
       ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"
-      date_str = test_helper.now_plus_month_dd day
-      ship_date = test_helper.now_plus_mm_dd day
-      date = Label.new @browser.div :css => "td[aria-label='#{date_str}']>div"
-      10.times {
-        picker.safe_click unless date.present?
-        date.safe_click
-        sleep 1
-        return ship_date_textbox.text if ship_date_textbox.text == ship_date
+
+      ship_date_str = test_helper.now_plus_month_dd day
+      ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
+      date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
+
+
+      10.times{
+        picker_button.safe_click unless date_picker_header.enabled?
+
+        if date_field.field.enabled?
+          break
+        else
+          day += 1
+          ship_date_str = test_helper.now_plus_month_dd day
+          ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
+          date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
+        end
       }
+
+      10.times {
+        picker_button.safe_click unless date_field.present?
+        date_field.safe_click
+        sleep 1
+        return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
+      }
+
+      ship_date_mmddyy
     end
   end
 
