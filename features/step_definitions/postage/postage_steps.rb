@@ -1,5 +1,45 @@
 # encoding: utf-8
 
+Then /^Set Print Postage print media(.*)/ do |media|
+
+end
+
+Then /^Enter Serial Number (.*)/ do |serial|
+
+end
+
+Then /^Select Specify Postage Amount/ do
+
+end
+
+Then /^Select Calculate Postage Amount/ do
+
+end
+
+Then /^Set Print Postage Form Ship From to (.*)/ do |address|
+
+end
+
+Then /^Set Print Postage Form Ship-To country to (.*)/ do |country|
+
+end
+
+Then /^Set Print Postage Form Service to (.*)/ do |service|
+
+end
+
+Then /^Set Print Postage Form Stamp Amount to (.*)/ do |amount|
+
+end
+
+Then /^Set Print Postage Form Ounces to (.*)/ do |ounces|
+
+end
+
+Then /^Set Print Postage Form Pounds to (.*)/ do |pounds|
+
+end
+
 Then /^This works$/ do
   print_postage.print_on "Shipping Label - 8 ½” x 11” Paper"
   log.info print_postage.print_on.tooltip "Shipping Label - 8 ½” x 11” Paper"
