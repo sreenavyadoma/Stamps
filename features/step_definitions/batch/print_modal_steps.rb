@@ -24,31 +24,17 @@ Then /^Expect Print Modal left-side label selected$/ do
 end
 
 Then /^Set Print Modal Ship Date to today$/ do
-  today = test_helper.today_plus_abbrev_month 0
-  log.info "Step: Set Print Modal Ship Date to #{today}"
-  @ship_date_today = batch.toolbar.print_modal.date_picker.today
+  step "Set Print Modal Ship Date to today plus #{1}"
 end
 
-Then /^Set Print Modal Ship Date to today plus one day$/ do
-  today = test_helper.today_plus_abbrev_month 1
-  log.info "Set Print Modal Ship Date to #{today}"
-  @ship_date_today_plus_1 = batch.toolbar.print_modal.date_picker.today_plus_1
-end
-
-Then /^Set Print Modal Ship Date to today plus two days$/ do
-  today = test_helper.today_plus_abbrev_month 2
-  log.info "Set Print Modal Ship Date to #{today}"
-  @ship_date_today_plus_2 = batch.toolbar.print_modal.date_picker.today_plus_2
-end
-
-Then /^Set Print Modal Ship Date to today plus three days$/ do
-  today = test_helper.today_plus_abbrev_month 3
-  log.info "Set Print Modal Ship Date to #{today}"
-  @ship_date_today_plus_3 = batch.toolbar.print_modal.date_picker.today_plus_3
+Then /^Set Print Modal Ship Date to today plus (\d+)$/ do |day|
+  ship_date = test_helper.now_plus_mon_dd day
+  log.info "Set Print Modal Ship Date to #{ship_date}"
+  @ship_date = batch.toolbar.print_modal.date_picker.today_plus day
 end
 
 Then /^Expect Shipped Tab Date Printed to be today$/ do
-  today = test_helper.today_plus_abbrev_month 0
+  today = test_helper.now_plus_mon_dd 0
   batch.filter.shipped.date_printed.sort.descending
   actual_date_printed = batch.filter.shipped.date_printed.row 1
   log.info "#{(actual_date_printed)}"
@@ -59,15 +45,7 @@ Then /^Expect Shipped Tab Ship Date to be today$/ do
 
 end
 
-Then /^Expect Shipped Tab Ship Date to be today plus one$/ do
-
-end
-
-Then /^Expect Shipped Tab Ship Date to be today plus two$/ do
-
-end
-
-Then /^Expect Shipped Tab Ship Date to be today plus three$/ do
+Then /^Expect Shipped Tab Ship Date to be today plus (\d+)/ do |day|
 
 end
 

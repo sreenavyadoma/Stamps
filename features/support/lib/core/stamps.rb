@@ -129,11 +129,20 @@ module Stamps
       str.gsub(char_to_remove, substitute_char)
     end
 
-    def today
-      today_plus 0
+    def now_plus_mm_dd
+      now_plus_mm_dd_yy 0
     end
 
-    def today_plus day
+    def now_plus_mm_dd_yy day
+      now = Date.today + day
+      "#{month}/#{"#{month}/#{(now.day<10)?("0"+now.day.to_s):now.day}/#{now.year}"}/#{now.year}"
+    end
+
+    def now_month_dd
+      now_plus_month_dd 0
+    end
+
+    def now_plus_month_dd day
       now = Date.today + day
       if now.day < 10
         "#{now.strftime("%B")} 0#{now.day}"
@@ -142,7 +151,7 @@ module Stamps
       end
     end
 
-    def today_plus_abbrev_month day
+    def now_plus_mon_dd day
       now = Date.today + day
       "#{now.strftime('%b')} #{now.day}"
     end
