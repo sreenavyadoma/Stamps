@@ -1060,7 +1060,7 @@ module Batch
   class OrdersGrid < BatchObject
 
     def present?
-      browser_helper.present? @browser.div Locators::OrdersGrid.present
+      browser_helper.present? @browser.div Locators::OrdersGrid::present
     end
 
     def checkbox

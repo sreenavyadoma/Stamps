@@ -1,48 +1,64 @@
 module Batch
   module Locators
     module OrderDetails
+      class << self
+
+      end
 
     end
 
     module OrdersGrid
-      def self.present
-        {:css => "div[id^=ordersGrid][id$=body]"}
+      class << self
+        def present
+          {:css => "div[id^=ordersGrid][id$=body]"}
+        end
       end
     end
 
     module FilterPanel
+      class << self
+
+      end
 
     end
 
     module NavBar
-      def self.username
-        {:id => "userNameText"}
+      class << self
+        def username
+          {:id => "userNameText"}
+        end
       end
     end
 
     module ToolBar
+      class << self
 
+      end
     end
 
     module PrintModal
-      def self.date_picker_button
-        {:id => "sdc-printpostagewindow-shipdate-trigger-picker"}
+      class << self
+        def date_picker_button
+          {:id => "sdc-printpostagewindow-shipdate-trigger-picker"}
+        end
       end
     end
 
     module SignIn
-      def self.username
-        {:id => 'UserNameTextBox'}
-      end
+      class << self
+        def username
+          {:id => 'UserNameTextBox'}
+        end
 
-      def self.password
-        {:id => 'PasswordTextBox'}
-      end
+        def password
+          {:id => 'PasswordTextBox'}
+        end
 
-      def self.sign_in
-        {:id => 'signInButton'}
-      end
+        def sign_in
+          {:id => 'signInButton'}
+        end
 
+      end
     end
 
   end

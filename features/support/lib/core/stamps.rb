@@ -41,6 +41,7 @@ module Stamps
 
     def self.setup *args
       begin
+        Watir::always_locate = true
         if args.length == 1
           ENV['BROWSER'] = args[0]
         end
