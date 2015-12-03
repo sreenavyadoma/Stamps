@@ -5,6 +5,30 @@ Feature: Test Development
     Given I am signed in as a batch shipper
 
   @rob_dev1
+    Scenario:
+
+    Then Print
+    Then Expect Grid Ship Date to be today
+    Then Expect Grid Date Printed to be today
+
+    Then Open Print Modal
+    Then Set Print Modal Ship Date to today plus 1
+    Then Print
+    Then Expect Grid Date Printed to be today
+    Then Expect Grid Ship Date to be today plus 1
+
+    Then Open Print Modal
+    Then Set Print Modal Ship Date to today plus 2
+    Then Print
+    Then Expect Grid Date Printed to be today
+    Then Expect Grid Ship Date to be today plus 2
+
+    Then Open Print Modal
+    Then Set Print Modal Ship Date to today plus 3
+    Then Print
+    Then Expect Grid Date Printed to be today
+    Then Expect Grid Ship Date to be today plus 3
+
   Scenario:
 
     And I Add a new order
@@ -17,10 +41,10 @@ Feature: Test Development
     Then Set Order Details Form Height to 1
     Then Set Order Details Form Width to 1
     And Open Print Modal
-    Then Set Print Modal Ship Date to today plus one day
+    Then Set Print Modal Ship Date to today plus 1
     And Print
     Then Expect Shipped Tab Date Printed to be today
-    Then Expect Shipped Tab Ship Date to be today plus one
+    Then Set Print Modal Ship Date to today plus 3
 
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -32,10 +56,10 @@ Feature: Test Development
     Then Set Order Details Form Height to 1
     Then Set Order Details Form Width to 1
     And Open Print Modal
-    Then Set Print Modal Ship Date to today plus two days
+    Then Set Print Modal Ship Date to today plus 2
     And Print
     Then Expect Shipped Tab Date Printed to be today
-    Then Expect Shipped Tab Ship Date to be today plus two
+    Then Expect Shipped Tab Ship Date to be today plus 2
 
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -47,10 +71,10 @@ Feature: Test Development
     Then Set Order Details Form Height to 1
     Then Set Order Details Form Width to 1
     And Open Print Modal
-    Then Set Print Modal Ship Date to today plus three days
+    Then Set Print Modal Ship Date to today plus 3
     And Print
     Then Expect Shipped Tab Date Printed to be today
-    Then Expect Shipped Tab Ship Date to be today plus three
+    Then Expect Shipped Tab Ship Date to be today plus 3
 
   Scenario:
     And I Add a new order
@@ -76,6 +100,9 @@ Feature: Test Development
 
   @rob_dev2
   Scenario:
+    And List all Grid column values for row 1
+    And List all Grid column values for row 2
+
     Then Filter Cancelled Orders
     Then Filter Awaiting Shipment Orders
     Then Filter Cancelled Orders

@@ -138,7 +138,7 @@ module Batch
     end
 
     def date_field day
-      css = "td[aria-label='#{test_helper.today_plus day.to_i}']"
+      css = "td[aria-label='#{test_helper.now_plus_month_dd day.to_i}']"
       td = @browser.td :css => css
       present = browser_helper.present? td
       td
@@ -153,14 +153,14 @@ module Batch
       date_picker_button.present?
     end
 
-    def today
+    def now_month_dd
       picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
       today = Button.new @browser.span :css => "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
       10.times {
         picker.safe_click unless today.present?
         today.safe_click
         sleep 1
-        return test_helper.today_plus_abbrev_month 0 #get ship date text box value and return it in correct format or not...
+        return test_helper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
       }
       raise "Unable to select today's date from date picker object in Print Modal."
     end
@@ -172,39 +172,77 @@ module Batch
         picker.safe_click unless today.present?
         today.safe_click
         sleep 1
-        return test_helper.today_plus_abbrev_month 0
+        return test_helper.now_plus_mon_dd 0
       }
       raise "Unable to select today's date from date picker object in Print Modal."
     end
 
-    def today_plus_1
-      picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
-      date_str = test_helper.today_plus 1
-      date = Label.new @browser.div :css => "td[aria-label='#{date_str}']>div"
+    def today_button
+
+    end
+
+    def today
+      today_plus 0
+    end
+
+    def today_plus day
+      date_picker_header = Label.new @browser.div :class => "div[class=x-datepicker-header]"
+      picker_button = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
+      ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"
+
+      ship_date_str = test_helper.now_plus_month_dd day
+      ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
+      date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
+
+      10.times{
+        picker_button.safe_click unless date_picker_header.field.present?
+
+        if date_field.field.present?
+          break
+        else
+          day += 1
+          ship_date_str = test_helper.now_plus_month_dd day
+          ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
+          date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
+        end
+      }
+
       10.times {
-        picker.safe_click unless date.present?
-        date.safe_click
+        picker_button.safe_click unless date_field.present?
+        date_field.safe_click
         sleep 1
-        return test_helper.today_plus_abbrev_month 1
+        return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
+      }
+
+      ship_date_mmddyy
+    end
+  end
+
+  class PrinterDropDown < PrintModalObject
+    def drop_down
+      Button.new @browser.div :id => "div#sdc-printpostagewindow-printerdroplist-trigger-picker"
+    end
+
+    def text_box
+      Textbox.new @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
+    end
+
+    def select selection
+      dd = self.drop_down
+      input = self.text_box
+      selection_label = Label.new @browser.li :text => selection
+
+      5.times{
+        dd.safe_click unless selection_label.present?
+        selection_label.safe_click
+        return if input.text.include? selection
       }
     end
-
-    def
-
-    def today_plus_2
-
-    end
-
-    def today_plus_3
-
-    end
-
   end
 
   class PrintModal < PrintModalObject
-    def initialize browser, *args
+    def initialize browser
       super browser
-      print_options *args
     end
 
     def starting_label
@@ -212,9 +250,7 @@ module Batch
     end
 
     def printer
-      drop_down = @browser.div :id => "div#sdc-printpostagewindow-printerdroplist-trigger-picker"
-      input = @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
-      Dropdown.new @browser, drop_down, :li, input
+      PrinterDropDown.new @browser
     end
 
     def printing_on
@@ -265,36 +301,6 @@ module Batch
       div = @browser.div :css => "div[id^=printwindow]>div[id^=title]>div[id^=title]"
       log.info "Title: #{div}"
       browser_helper.text div
-    end
-
-    def print_options(*args)
-      case args.size
-        when 0
-          return self
-        when 1
-          self.printer = args[0]
-          return self
-        when 2
-          self.printer = args[0]
-          self.paper_trail = args[1]
-          return self
-        else
-          raise "Invalid printer arguments."
-      end
-    end
-
-    def printer=(printer)
-      printer_field.when_present.set printer
-      printer_label.click
-      printer_label.click
-      self
-    end
-
-    def paper_trail=(tray)
-      paper_tray_field.when_present.set tray
-      printer_label.click
-      printer_label.click
-      self
     end
 
     def print_sample

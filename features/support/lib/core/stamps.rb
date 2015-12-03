@@ -129,21 +129,33 @@ module Stamps
       str.gsub(char_to_remove, substitute_char)
     end
 
-    def today
-      today_plus 0
+    # Convert date string from format 12/3/2015 to Dec 03
+    def mmddyy_to_mondd date_str
+      collection = date_str.split "/"
+      date = Date.new collection[2].to_i, collection[0].to_i, collection[1].to_i
+      date.strftime "%b %d"
     end
 
-    def today_plus day
-      now = Date.today + day
-      if now.day < 10
-        "#{now.strftime("%B")} 0#{now.day}"
-      else
-        "#{now.strftime("%B")} #{now.day}"
-      end
+    def now_plus_mm_dd
+      now_plus_mm_dd_yy 0
     end
 
-    def today_plus_abbrev_month day
-      now = Date.today + day
+    def now_plus_mm_dd_yy day
+      now = Date.today + day.to_i
+      "#{now.month}/#{(now.day<10)?("0"+now.day.to_s):now.day}/#{now.year}"
+    end
+
+    def now_month_dd
+      now_plus_month_dd 0
+    end
+
+    def now_plus_month_dd day
+      now = Date.today + day.to_i
+      "#{now.strftime "%B"} #{}"
+    end
+
+    def now_plus_mon_dd day
+      now = Date.today + day.to_i
       "#{now.strftime('%b')} #{now.day}"
     end
 
