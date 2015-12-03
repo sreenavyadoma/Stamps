@@ -194,7 +194,7 @@ module Batch
 
     def today_plus day
       day = day.to_i
-      date_picker_header = Label.new @browser.div :class => "div[class=x-datepicker-header]"
+      date_picker_header = Label.new @browser.div :class => "x-datepicker-header"
       picker_button = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
       ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"
 
@@ -203,7 +203,7 @@ module Batch
       date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
 
       10.times{
-        picker_button.safe_click unless date_picker_header.field.present?
+        picker_button.safe_click unless date_picker_header.present?
 
         if date_field.field.present?
           break

@@ -41,7 +41,7 @@ Feature: Date Printed
     Then Expect Grid Date Printed to be today
     Then Expect Grid Ship Date to be today plus 2
 
-  @date_printed
+  @date_printed @date_printed_plus3
   Scenario: Set Ship Date to today + 3
     And I Add a new order
     Then Set Order Details Form Ship-From to default
