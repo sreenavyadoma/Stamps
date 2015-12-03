@@ -129,11 +129,11 @@ module Stamps
       str.gsub(char_to_remove, substitute_char)
     end
 
-    # Convert date string from format 12/3/2015 to Dec 03
+    # Convert date string from format 12/3/2015 to Dec 3
     def mmddyy_to_mondd date_str
       collection = date_str.split "/"
       date = Date.new collection[2].to_i, collection[0].to_i, collection[1].to_i
-      date.strftime "%b %d"
+      date.strftime "%b %-d"
     end
 
     def now_plus_mm_dd
@@ -151,12 +151,13 @@ module Stamps
 
     def now_plus_month_dd day
       now = Date.today + day.to_i
-      "#{now.strftime "%B"} #{}"
+      now.strftime "%B %d"
     end
 
     def now_plus_mon_dd day
       now = Date.today + day.to_i
       "#{now.strftime('%b')} #{now.day}"
+
     end
 
     def print_date *args
