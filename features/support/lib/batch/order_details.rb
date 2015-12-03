@@ -149,6 +149,8 @@ module Batch
 
       5.times{
         begin
+          text_area.safe_send_keys :enter
+          text_area.safe_send_keys :tab
           text_area.send_keys address
           text_area.set address
 
@@ -156,7 +158,15 @@ module Batch
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          break if less.present?
+
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          break if less.present?
           sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          break if less.present?
           ship_to_country.select "United States"
           break if less.present?
           orders_grid.order_total.scroll_into_view
@@ -186,6 +196,11 @@ module Batch
           text_area.safe_double_click
           text_area.safe_click
           phone.set test_helper.random_phone
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           email.set test_helper.random_email
           sleep 1
           ship_to_country.select "United States"
@@ -225,6 +240,11 @@ module Batch
           break if less.present?
           ship_to_country.select "United States"
           break if less.present?
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           phone.set test_helper.random_phone
           email.set test_helper.random_email
           sleep 1
@@ -266,6 +286,11 @@ module Batch
           text_area.set address
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           orders_grid.order_total.scroll_into_view
           orders_grid.recipient.scroll_into_view
@@ -291,6 +316,11 @@ module Batch
           text_area.set address
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           ship_to_country.select "United States"
           break if less.present?
@@ -323,6 +353,11 @@ module Batch
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           ship_to_country.select "United States"
           break if less.present?
@@ -356,7 +391,17 @@ module Batch
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           email.send_keys :enter
           orders_grid.order_total.scroll_into_view
@@ -387,6 +432,11 @@ module Batch
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           email.send_keys :tab
           orders_grid.order_total.scroll_into_view
@@ -414,6 +464,11 @@ module Batch
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           text_area.safe_double_click
           orders_grid.order_total.scroll_into_view
@@ -441,6 +496,11 @@ module Batch
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           text_area.safe_double_click
           orders_grid.order_total.scroll_into_view
@@ -468,6 +528,11 @@ module Batch
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           text_area.safe_double_click
           orders_grid.order_total.scroll_into_view
@@ -520,6 +585,11 @@ module Batch
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           orders_grid.order_total.scroll_into_view
           orders_grid.recipient.scroll_into_view
@@ -551,6 +621,11 @@ module Batch
           ship_to_area2.safe_double_click
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           text_area.safe_double_click
           orders_grid.order_total.scroll_into_view
@@ -579,6 +654,11 @@ module Batch
           ship_to_area2.safe_double_click
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           phone.send_keys :tab
           orders_grid.order_total.scroll_into_view
@@ -593,6 +673,11 @@ module Batch
           phone.set test_helper.random_phone
           sleep 1
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           email.send_keys :enter
           orders_grid.order_total.scroll_into_view
@@ -611,6 +696,11 @@ module Batch
           break if less.present?
           phone.set test_helper.random_phone
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           phone.send_keys :tab
           break if less.present?
@@ -635,6 +725,11 @@ module Batch
           ship_to_area1.safe_double_click
           ship_to_area2.safe_double_click
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           text_area.safe_double_click
           break if less.present?
@@ -644,6 +739,11 @@ module Batch
           email.set test_helper.random_email
           sleep 1
           email.set test_helper.random_email
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
+          sleep 1
+          email.safe_send_keys :enter
+          phone.safe_send_keys :tab
           sleep 1
           break if less.present?
           phone .safe_double_click
