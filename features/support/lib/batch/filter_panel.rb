@@ -58,7 +58,7 @@ module Batch
     def awaiting_shipment
       awaiting_shipment_tab.select
       sleep 1
-      @grid ||= Grid.new @browser
+      @grid ||= OrdersGrid.new @browser
     end
 
     def shipped_tab
@@ -70,7 +70,7 @@ module Batch
     def shipped
       shipped_tab.select
       sleep 1
-      @grid ||= Grid.new @browser
+      @grid ||= OrdersGrid.new @browser
     end
 
     def cancelled_tab
@@ -82,7 +82,7 @@ module Batch
     def cancelled
       cancelled_tab.select
       sleep 1
-      @grid ||= Grid.new @browser
+      @grid ||= OrdersGrid.new @browser
     end
 
     def get_closed_filter_name

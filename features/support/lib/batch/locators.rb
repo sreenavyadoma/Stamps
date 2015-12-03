@@ -4,8 +4,10 @@ module Batch
 
     end
 
-    module Grid
-
+    module OrdersGrid
+      def self.present
+        {:css => "div[id^=ordersGrid][id$=body]"}
+      end
     end
 
     module FilterPanel
@@ -13,7 +15,9 @@ module Batch
     end
 
     module NavBar
-
+      def self.username
+        {:id => "userNameText"}
+      end
     end
 
     module ToolBar
@@ -27,6 +31,17 @@ module Batch
     end
 
     module SignIn
+      def self.username
+        {:id => 'UserNameTextBox'}
+      end
+
+      def self.password
+        {:id => 'PasswordTextBox'}
+      end
+
+      def self.sign_in
+        {:id => 'signInButton'}
+      end
 
     end
 

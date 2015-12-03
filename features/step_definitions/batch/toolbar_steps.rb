@@ -1,7 +1,7 @@
 When /^I Add a new order$/ do
   log.info "Step: I Add a new order"
   log.info "I Add a new order"
-  @old_balance = batch.navigation.balance
+  @old_balance = batch.navbar.balance
   batch.grid.checkbox.uncheck 1
   @single_order_form = batch.toolbar.add
   @order_id = @single_order_form.order_id

@@ -38,7 +38,7 @@ module Batch
         usps_terms.click_i_agree_button
       end
 
-      order_grid = Grid.new @browser
+      order_grid = OrdersGrid.new @browser
       #checked_rows_cache = order_grid.checkbox.checked_rows
 
       naws_plugin_error = NawsPluginError.new @browser
@@ -85,7 +85,7 @@ module Batch
 
     def add
       order_details = OrderDetails.new @browser
-      grid = Batch::Grid.new @browser
+      grid = Batch::OrdersGrid.new @browser
       add_button = Button.new (@browser.spans :text => 'Add').first
 
       #uncheck first row in the grid

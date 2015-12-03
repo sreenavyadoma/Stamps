@@ -5,7 +5,7 @@ Feature: Date Printed
 
 
   @date_printed
-  Scenario: Verify Date Printed column on Order Grid
+  Scenario: Verify Date Printed column on Orders Grid
 
     And I Add a new order
     Then Set Order Details Form Ship-From to default

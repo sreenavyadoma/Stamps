@@ -10,8 +10,8 @@ module Postage
       @sign_in ||= PostageBase::SignInPage.new @browser
     end
 
-    def navigation
-      @navigation ||= PostageBase::Navigation.new @browser
+    def navbar
+      @navigation ||= PostageBase::NavBar.new @browser
     end
 
     def toolbar

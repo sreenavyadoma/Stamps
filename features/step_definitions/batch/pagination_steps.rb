@@ -146,10 +146,10 @@ end
 
 Then /^Set paging toolbar orders per page count to (\d+)$/ do |page_count|
   log.info "Step: Set paging toolbar orders per page count to #{page_count}"
-  #log.info "Order Grid contains #{features.batch.grid.grid_page_order_count} orders"
+  #log.info "Orders Grid contains #{features.batch.grid.grid_page_order_count} orders"
   log.info "Per page count is #{batch.grid.toolbar.page_count.text} orders"
   batch.grid.toolbar.per_page_dd.select page_count
-  #log.info "Order Grid contains #{features.batch.grid.grid_page_order_count} orders"
+  #log.info "Orders Grid contains #{features.batch.grid.grid_page_order_count} orders"
   log.info "Per page count is #{batch.grid.toolbar.page_count.text} orders"
   expect(page_count.to_i > 1).to be true
   @per_page_count = page_count

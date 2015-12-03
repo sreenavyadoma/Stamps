@@ -3,9 +3,7 @@ module Batch
   #
   # Navigation bar containing Sign-in, etc
   #
-  class Navigation < BatchObject
-    private
-
+  class NavBar < BatchObject
     def login_div
       div = @browser.div :id => "loginDiv"
       begin
@@ -21,20 +19,13 @@ module Batch
       @browser.span :id => 'postageBalanceAmt'
     end
 
-
     def buy_more_link
       @browser.a(:id => 'buyMorePostageLnk')
     end
 
-    def username_field
-      @browser.span :id => 'userNameText'
+    def username
+      Label.new @browser.span Locators::NavBar.username
     end
-
-    def orders_link
-
-    end
-
-    public
 
     def orders
       Link.new @browser.link :css => "a[rel=WebBatch]"
@@ -80,10 +71,6 @@ module Batch
       }
     end
 
-    def signed_in?
-      Label.new(@browser.span :id => 'userNameText').present?
-    end
-
     def sign_out
       sign_out_link = Link.new @browser.link :id => "signOutLink"
       signed_in_username = Label.new @browser.span :id => 'userNameText'
@@ -105,20 +92,22 @@ module Batch
     end
 
     def username_text_field
-      username_field.when_present.text
+      username.field.when_present.text
     end
 
     def wait_until_present *args
       case args.length
         when 0
-          username_field.wait_until_present
+          username.wait_until_present
         when 1
-          username_field.wait_until_present args[0].to_i
+          username.wait_until_present args[0].to_i
+        else
+          raise "Wrong number of arguments."
       end
     end
 
     def present?
-      browser_helper.present?  username_field
+      username.present?
     end
 
   end

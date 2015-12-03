@@ -17,7 +17,7 @@ module Postage
       self
     end
 
-    def sign_in *args
+    def sign_in_with_credentials *args
       case args
         when Hash
           username = args[0]['username']
