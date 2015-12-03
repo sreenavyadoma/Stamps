@@ -213,8 +213,6 @@ module Batch
         sleep 1
         return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
       }
-
-      ship_date_mmddyy
     end
   end
 

@@ -142,8 +142,7 @@ module Stamps
     end
 
     def now_plus_mm_dd_yy day
-      now = Date.today + day.to_i
-      "#{now.month}/#{(now.day<10)?("0"+now.day.to_s):now.day}/#{now.year}"
+      (Date.today + day.to_i).strftime "%m/%d/%Y"
     end
 
     def now_month_dd
@@ -151,14 +150,11 @@ module Stamps
     end
 
     def now_plus_month_dd day
-      now = Date.today + day.to_i
-      now.strftime "%B %d"
+      (Date.today + day.to_i).strftime "%B %d"
     end
 
     def now_plus_mon_dd day
-      now = Date.today + day.to_i
-      "#{now.strftime('%b')} #{now.day}"
-
+      (Date.today + day.to_i).strftime "%b %-d"
     end
 
     def print_date *args
