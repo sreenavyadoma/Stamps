@@ -5,7 +5,7 @@ end
 Then /^Expect Grid Date Printed to be today$/ do
   log.info "Expect Grid Date Printed to be today"
   grid = batch.filter.shipped
-  grid.date_printed.sort.descending
+  grid.order_id.sort.ascending
   grid_date_printed = grid.date_printed.data @order_id # Dec 3
   expected_date_printed = Date.today.strftime "%b %-d"
 
@@ -22,7 +22,7 @@ end
 Then /^Expect Grid Ship Date to be today plus (\d+)$/ do |day|
   log.info "Expect Grid Ship Date to be today plus #{day}"
   grid = batch.filter.shipped
-  grid.ship_date.sort.descending
+  grid.order_id.sort.ascending
   grid_ship_date = grid.ship_date.data @order_id # Dec 3
   log.info "Order ID:  #{@order_id} - Print Modal Saved Ship Date: #{@ship_date} - Orders Grid Ship Date:  #{grid_ship_date}"
   expected_ship_date = test_helper.mmddyy_to_mondd @ship_date
