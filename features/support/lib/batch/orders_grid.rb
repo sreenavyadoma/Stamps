@@ -1181,9 +1181,7 @@ module Batch
 
     def wait_until_present *args
       grid_present_span = Label.new (@browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]")
-      log.info "Orders Grid is #{(grid_present_span.present?)?'present':'NOT present'}"
       grid_present_span.wait_until_present
-      log.info "Orders Grid is #{(grid_present_span.present?)?'present':'NOT present'}"
     end
 
   end

@@ -150,7 +150,6 @@ module Batch
 
       text_area.set address
 
-=begin
       5.times{
         begin
           text_area.send_keys address
@@ -609,18 +608,17 @@ module Batch
           break if less.present?
           phone.send_keys :tab
           break if less.present?
-          phone.set ""
-          email.set ""
+          phone.safe_set ""
+          email.safe_set ""
         rescue
           #ignore
         end
       }
-      ship_to_drop_down.safe_click unless phone.field.visible?
-      phone.set ""
-      ship_to_drop_down.safe_click unless email.field.visible?
-      email.set ""
-=end
-
+      ship_to_drop_down.safe_click unless phone.present?
+      phone.safe_set ""
+      ship_to_drop_down.safe_click unless email.present?
+      email.safe_set ""
+      less.safe_click if phone.present?
     end
 
   end

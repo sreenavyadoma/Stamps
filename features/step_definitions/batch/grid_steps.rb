@@ -9,7 +9,7 @@ Then /^Expect Grid Date Printed to be today$/ do
   grid_date_printed = grid.date_printed.data @order_id # Dec 3
 
   today = Date.today
-  expected_date_printed = today.strftime "%b %d"
+  expected_date_printed = today.strftime "%b %-d"
 
   log.info "Ship Date:  #{@ship_date} converted to #{expected_date_printed}"  #12/03/2015
   log.info "Test #{(grid_date_printed==expected_date_printed)?"Passed":"Failed"}"
@@ -23,14 +23,14 @@ end
 
 Then /^Expect Grid Ship Date to be today plus (\d+)$/ do |day|
   log.info "Expect Grid Ship Date to be today plus #{day}"
-  grid = batch.filter.shipped    UNCOMMENT THIS!
+  grid = batch.filter.shipped
   grid.ship_date.sort.descending
   grid_ship_date = grid.ship_date.data @order_id # Dec 3
 
   collection = @ship_date.split "/"
   date = Date.new collection[2].to_i, collection[0].to_i, collection[1].to_i
 
-  expected_ship_date = date.strftime "%b %d"
+  expected_ship_date = date.strftime "%b %-d"
 
   log.info "Ship Date:  #{@ship_date} converted to #{expected_ship_date}"  #12/03/2015
   log.info "Test #{(grid_ship_date==expected_ship_date)?"Passed":"Failed"}"
