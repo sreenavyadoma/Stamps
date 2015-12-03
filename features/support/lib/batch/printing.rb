@@ -193,6 +193,7 @@ module Batch
     end
 
     def today_plus day
+      day = day.to_i
       date_picker_header = Label.new @browser.div :class => "div[class=x-datepicker-header]"
       picker_button = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
       ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"

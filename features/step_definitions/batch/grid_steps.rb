@@ -28,7 +28,7 @@ Then /^Expect Grid Ship Date to be today plus (\d+)$/ do |day|
   expected_ship_date = test_helper.mmddyy_to_mondd @ship_date
 
   log.info "Test #{(grid_ship_date==expected_ship_date)?"Passed":"Failed"}"
-  #grid_ship_date.should eql expected_ship_date
+  grid_ship_date.should eql expected_ship_date
 end
 
 When /^Edit row (\d+) on the order grid$/ do |row|
