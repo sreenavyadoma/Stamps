@@ -21,12 +21,19 @@ end
 
 Then /^Expect Grid Ship Date to be today plus (\d+)$/ do |day|
   log.info "Expect Grid Ship Date to be today plus #{day}"
-  grid = batch.filter.shipped
-  grid.order_id.sort.descending
-  grid_ship_date = grid.ship_date.data @order_id # Dec 3
-  log.info "Order ID:  #{@order_id} - Print Modal Saved Ship Date: #{@ship_date} - Orders Grid Ship Date:  #{grid_ship_date}"
   expected_ship_date = test_helper.mmddyy_to_mondd @ship_date
 
+  grid = batch.filter.shipped
+
+  5.times{
+    grid.order_id.sort.descending
+    grid_ship_date = grid.ship_date.data @order_id # Dec 3
+    log.info "Order ID:  #{@order_id} - Print Modal Saved Ship Date: #{@ship_date} - Orders Grid Ship Date:  #{grid_ship_date}"
+
+    break if grid_ship_date==expected_ship_date
+  }
+
+  grid_ship_date = grid.ship_date.data @order_id
   log.info "Test #{(grid_ship_date==expected_ship_date)?"Passed":"Failed"}"
   grid_ship_date.should eql expected_ship_date
 end
@@ -34,7 +41,6 @@ end
 When /^Edit row (\d+) on the order grid$/ do |row|
   log.info "Step: Edit row #{row} on the order grid"
   batch.grid.checkbox.check row
-  #end_step step
 end
 
 When /^Check row (\d+) on the order grid$/ do |row|
