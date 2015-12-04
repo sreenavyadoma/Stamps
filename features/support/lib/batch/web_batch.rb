@@ -2,8 +2,8 @@ module Batch
 
   class WebBatch < BatchObject
 
-    def navigation
-      @navigation_bar ||= Navigation.new @browser
+    def navbar
+      @navigation_bar ||= Batch::NavBar.new @browser
     end
 
     def toolbar
@@ -16,12 +16,12 @@ module Batch
 
     def awaiting_shipment
       FilterPanel.new(@browser).filter "Awaiting Shipment"
-      Grid.new @browser
+      OrdersGrid.new @browser
     end
 
     def shipped
       FilterPanel.new(@browser).filter "Shipped"
-      Grid.new @browser
+      OrdersGrid.new @browser
     end
 
     def filter
@@ -37,7 +37,7 @@ module Batch
     end
 
     def grid
-      @grid ||= Grid.new(@browser)
+      @grid ||= OrdersGrid.new(@browser)
     end
 
     def styles

@@ -1,6 +1,6 @@
 module Batch
 
-  # Order Grid Toolbar
+  # Orders Grid Toolbar
   class GridToolbar < BatchObject
     def present?
 
@@ -189,7 +189,7 @@ module Batch
     def row_div number
       raise "row_div:  number can't be nil" if number.nil?
       div = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]"
-      raise("Order Grid Row number #{number} is not present")unless browser_helper.present? div
+      raise("Orders Grid Row number #{number} is not present")unless browser_helper.present? div
       div
     end
   end
@@ -1056,8 +1056,12 @@ module Batch
 
   end
 
-  # Order Grid
-  class Grid < BatchObject
+  # Orders Grid
+  class OrdersGrid < BatchObject
+
+    def present?
+      browser_helper.present? @browser.div Locators::OrdersGrid::present
+    end
 
     def checkbox
       @check ||= CheckBox.new @browser
@@ -1177,9 +1181,7 @@ module Batch
 
     def wait_until_present *args
       grid_present_span = Label.new (@browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]")
-      log.info "Order Grid is #{(grid_present_span.present?)?'present':'NOT present'}"
       grid_present_span.wait_until_present
-      log.info "Order Grid is #{(grid_present_span.present?)?'present':'NOT present'}"
     end
 
   end

@@ -63,7 +63,7 @@ module Batch
     end
   end
 
-  class StartingLabel < BatchObject
+  class StartingLabel < PrintModalObject
     def label_divs
       @browser.divs :css => "div[class*='label-chooser-selectable-box']"
     end
@@ -114,12 +114,19 @@ module Batch
     end
   end
 
-  class PrintingOn < BatchObject
-    def select selection
-      drop_down = Button.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
-      text_box = Textbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
-      selection_field = Label.new @browser.li :text => selection
+  class PrintingOn < PrintModalObject
+    def text_box
+      Textbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
+    end
 
+    def drop_down
+      Button.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
+    end
+
+    def select selection
+      drop_down = self.drop_down
+      text_box = self.text_box
+      selection_field = Label.new @browser.li :text => selection
       10.times{
         drop_down.safe_click unless selection_field.present?
         selection_field.safe_click
@@ -186,7 +193,8 @@ module Batch
     end
 
     def today_plus day
-      date_picker_header = Label.new @browser.div :class => "div[class=x-datepicker-header]"
+      day = day.to_i
+      date_picker_header = Label.new @browser.div :class => "x-datepicker-header"
       picker_button = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
       ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"
 
@@ -195,7 +203,7 @@ module Batch
       date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
 
       10.times{
-        picker_button.safe_click unless date_picker_header.field.present?
+        picker_button.safe_click unless date_picker_header.present?
 
         if date_field.field.present?
           break
@@ -213,14 +221,12 @@ module Batch
         sleep 1
         return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
       }
-
-      ship_date_mmddyy
     end
   end
 
-  class PrinterDropDown < PrintModalObject
+  class Printer < PrintModalObject
     def drop_down
-      Button.new @browser.div :id => "div#sdc-printpostagewindow-printerdroplist-trigger-picker"
+      Button.new @browser.div :id => "sdc-printpostagewindow-printerdroplist-trigger-picker"
     end
 
     def text_box
@@ -240,6 +246,29 @@ module Batch
     end
   end
 
+  class PaperTray < PrintModalObject
+    def text_box
+      Textbox.new @browser.text_field :css => "div[id^=form-][id$=-body]>div>div>div[id^=combo]>div>div>div>input"
+    end
+
+    def drop_down
+      Button.new @browser.div :css => "div[id^=form-][id$=-body]>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"
+    end
+
+    def select selection
+      text_box = self.text_box
+      drop_down = self.drop_down
+      selection_label = Label.new @browser.li :text => selection
+
+      5.times{
+        drop_down.safe_click unless selection_label.present?
+        selection_label.safe_click
+        break if text_box.text.include? selection
+      }
+
+    end
+  end
+
   class PrintModal < PrintModalObject
     def initialize browser
       super browser
@@ -249,8 +278,12 @@ module Batch
       @starting_label ||= StartingLabel.new @browser
     end
 
+    def paper_tray
+      Batch::PaperTray.new @browser
+    end
+
     def printer
-      PrinterDropDown.new @browser
+      Batch::Printer.new @browser
     end
 
     def printing_on
@@ -432,45 +465,3 @@ module Batch
   end
 
 end
-
-=begin
-
-  class UspsTerms < BatchObject
-    def present?
-      (Label.new @browser.div :text => "USPS Terms").present?
-    end
-
-    def dont_show_this_again dont_show
-
-      chkbox_inputs = @browser.inputs :css => "input[id^=checkbox-][id$=-inputEl]"
-      checkbox_field = chkbox_inputs.last
-      raise "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? checkbox_field
-
-      verify_field = @browser.div :css => "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
-      raise "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? verify_field
-
-      attribute = "class"
-      attrib_value_check = "checked"
-
-      dont_show_checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, attribute, attrib_value_check
-
-      if dont_show
-        dont_show_checkbox.check
-        log.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
-      else
-        dont_show_checkbox.uncheck
-        log.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
-      end
-
-    end
-
-    def i_agree
-      Button.new @browser.span :text => "I Agree"
-    end
-
-    def cancel
-      Button.new @browser.span :text => "Cancel"
-    end
-  end
-
-=end

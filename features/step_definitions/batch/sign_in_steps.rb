@@ -12,35 +12,35 @@ Given /^I am signed in as a batch shipper$/ do
   log.info "Step: I am signed in as a batch shipper"
   step "I launch default browser"
   step "I visit batch sign-in page"
-  batch.sign_in_page.sign_in
+  batch.sign_in_page.sign_in_with_credentials
 end
 
 Given /^I am signed in as batch shipper (.*)\/(.*)/ do |username, password|
   log.info "Step: I am signed in as batch shipper #{username}/#{password}"
   step "I launch default browser"
   step "I visit batch sign-in page"
-  batch.sign_in_page.sign_in username, password
+  batch.sign_in_page.sign_in_with_credentials username, password
 end
 
 Given /^I am signed in as batch shipper (.*)/ do |browser|
   log.info "Step: I am signed in as batch shipper #{browser}"
   step "I launch browser #{browser}"
   step "I visit batch sign-in page"
-  batch.sign_in_page.sign_in
+  batch.sign_in_page.sign_in_with_credentials
 end
 
 Given /^I am signed in as batch shipper (.*)\/(.*)\/(.*)/ do |browser, username, password|
   log.info "Step: I am signed in as batch shipper #{browser}/#{username}/#{password}"
   step "I launch browser #{browser}"
   step "I visit batch sign-in page"
-  batch.sign_in_page.sign_in username, password
+  batch.sign_in_page.sign_in_with_credentials username, password
 end
 
 Given /^I am signed in as batch shipper (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, username, password|
   log.info "Step: I am signed in as batch shipper #{browser}/#{url}/#{username}/#{password}"
   step "I launch browser #{browser}"
   step "I visit batch sign-in page #{url}"
-  batch.sign_in_page.sign_in username, password
+  batch.sign_in_page.sign_in_with_credentials username, password
 end
 
 Then /^Sign out$/ do

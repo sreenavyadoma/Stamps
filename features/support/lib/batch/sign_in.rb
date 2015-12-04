@@ -57,21 +57,21 @@ module Batch
   end
 
   class SignInPage < BatchObject
-    private
-    LOGIN_FIELDS ||= {
-        :sign_in_link_loc => {:id => 'signInButton'},
-        :username_loc => {:id => 'UserNameTextBox'},
-        :password_loc => {:id => 'PasswordTextBox'},
-        :sign_in_button_loc => {:id => 'signInButton'}
-    }
 
-    public
-    def page_title
-      @browser.title
+    def username
+      Textbox.new @browser.text_field Locators::SignIn::username
     end
 
-    def verify_page
-      page_title
+    def password
+      Textbox.new @browser.text_field Locators::SignIn::password
+    end
+
+    def sign_in
+      Input.new @browser.input Locators::SignIn::sign_in
+    end
+
+    def remember_my_username
+      raise "Not yet implemented."
     end
 
     def visit *args
@@ -91,7 +91,7 @@ module Batch
       self
     end
 
-    def sign_in *args
+    def sign_in_with_credentials *args
       case args
         when Hash
           username = args['username']
@@ -111,11 +111,12 @@ module Batch
           password = ENV["PW"]
       end
 
-      username_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:username_loc])
-      password_textbox = Textbox.new @browser.text_field(LOGIN_FIELDS[:password_loc])
-      sign_in = Button.new @browser.input :id => "signInButton"
-      grid = Grid.new @browser
-      navigation = Navigation.new @browser
+      username_textbox = self.username
+      password_textbox = self.password
+      sign_in_button = self.sign_in
+
+      grid = OrdersGrid.new @browser
+      navbar = NavBar.new @browser
       welcome_modal = WelcomeModal.new @browser
       welcome_orders_page = WelcomeOrdersPage.new @browser
       plugin_issue = ErrorStampsPluginIssue.new @browser
@@ -123,99 +124,59 @@ module Batch
 
       20.times do
         begin
-          log.info "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}"
-          break if toolbar.present? #|| grid.present?
+          break if grid.present?
           if username_textbox.present?
             username_textbox.wait_until_present
             username_textbox.set username
             password_textbox.set password
-            sleep 1
-            begin
-              sign_in.send_keys :enter
-            rescue
-              #ignore
-            end
-            sleep 6
-            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+            sign_in_button.safe_send_keys :enter
+            sign_in_button.safe_send_keys :enter
 
-            begin
-              sign_in.send_keys :enter
-            rescue
-              #ignore
-            end
+            log.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 
-            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+            grid.wait_until_present
+            log.info "#{username} Orders Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
-            sleep 6
-
-            toolbar.wait_until_present
-
-            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
-            break if toolbar.present? #|| grid.present?
-            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+            break if grid.present?
 
             if welcome_modal.present?
               welcome_modal.ok
               break
             end
 
-            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
             if welcome_orders_page.present?
               welcome_orders_page.continue
               break
             end
 
-            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
-            break if toolbar.present?
-            log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-            log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
-
             if plugin_issue.present?
               plugin_issue.close
               break
             end
+
+            log.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
+            log.info "#{username} Orders Grid is #{(toolbar.present?)?"ready.":"not ready."}"
+
+            break if grid.present?
+
+            begin
+              navbar.orders.click
+              toolbar.wait_until_present
+            rescue
+              visit
+            end
+            visit
           else
             visit
           end
-
-          log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-          log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
-          break if toolbar.present? #|| grid.present?
-
-          log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-          log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
-          begin
-            navigation.orders.click
-          rescue
-            #ignore
-          end
-
-          sleep 4
-          log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-          log.info "#{username} Order Grid is #{(toolbar.present?)?"ready.":"not ready."}"
-          break if toolbar.present? #|| grid.present?
-
-          log.info "#{username} is #{(navigation.signed_in?)?"signed-in!":"not signed-in."}"
-          log.info "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}"
-          visit
         rescue Exception => e
           log.info e
         end
       end
 
-      log.info "#{username} is #{(toolbar.present?)?"signed-in!":"not signed-in."}"
-
       if plugin_issue.present?
         raise "Stamps.com Plugin Issue"
       end
-
-      ENV["SIGNED_IN_USER"] = username
 
     end
   end

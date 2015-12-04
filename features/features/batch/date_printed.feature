@@ -5,19 +5,22 @@ Feature: Date Printed
 
 
   @date_printed
-  Scenario: Verify Date Printed column on Order Grid
-
+  Scenario: Set Ship Date to today
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then Set Order Details Form Ounces to 4
     Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     Then Print
     Then Expect Grid Ship Date to be today
     Then Expect Grid Date Printed to be today
 
+  @date_printed
+  Scenario: Set Ship Date to today + 1
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then Set Order Details Form Ounces to 4
     Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 1
@@ -25,9 +28,12 @@ Feature: Date Printed
     Then Expect Grid Date Printed to be today
     Then Expect Grid Ship Date to be today plus 1
 
+  @date_printed
+  Scenario: Set Ship Date to today + 2
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then Set Order Details Form Ounces to 4
     Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 2
@@ -35,9 +41,12 @@ Feature: Date Printed
     Then Expect Grid Date Printed to be today
     Then Expect Grid Ship Date to be today plus 2
 
+  @date_printed @date_printed_plus3
+  Scenario: Set Ship Date to today + 3
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then Set Order Details Form Ounces to 4
     Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 3

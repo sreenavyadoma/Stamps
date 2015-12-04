@@ -226,7 +226,22 @@ module Stamps
       end
     end
 
-    class Textbox < Label
+    class Input < Label
+      def send_keys special_char
+        browser_helper.send_keys @field, special_char
+        self
+      end
+
+      def safe_send_keys special_char
+        begin
+          self.send_keys special_char
+        rescue
+          #ignore
+        end
+      end
+    end
+
+    class Textbox < Input
       def data_qtip_field data_qtip_field, attribute_value
         @data_qtip_field = data_qtip_field
         @attribute_value = attribute_value
@@ -240,6 +255,14 @@ module Stamps
       def set text
         browser_helper.set @field, text
         self
+      end
+
+      def safe_set text
+        begin
+          self.set text
+        rescue
+          #ignore
+        end
       end
 
       def set_until text
@@ -427,7 +450,6 @@ module Stamps
           else
             raise "Wrong number of arguments for BrowserHelper.set_text method."
         end
-
         5.times do
           begin
             field.focus

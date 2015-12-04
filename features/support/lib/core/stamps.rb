@@ -41,6 +41,7 @@ module Stamps
 
     def self.setup *args
       begin
+        Watir::always_locate = true
         if args.length == 1
           ENV['BROWSER'] = args[0]
         end
@@ -129,11 +130,11 @@ module Stamps
       str.gsub(char_to_remove, substitute_char)
     end
 
-    # Convert date string from format 12/3/2015 to Dec 03
+    # Convert date string from format 12/3/2015 to Dec 3
     def mmddyy_to_mondd date_str
       collection = date_str.split "/"
       date = Date.new collection[2].to_i, collection[0].to_i, collection[1].to_i
-      date.strftime "%b %d"
+      date.strftime "%b %-d"
     end
 
     def now_plus_mm_dd
@@ -141,8 +142,7 @@ module Stamps
     end
 
     def now_plus_mm_dd_yy day
-      now = Date.today + day.to_i
-      "#{now.month}/#{(now.day<10)?("0"+now.day.to_s):now.day}/#{now.year}"
+      (Date.today + day.to_i).strftime "%m/%d/%Y"
     end
 
     def now_month_dd
@@ -150,13 +150,11 @@ module Stamps
     end
 
     def now_plus_month_dd day
-      now = Date.today + day.to_i
-      "#{now.strftime "%B"} #{}"
+      (Date.today + day.to_i).strftime "%B %d"
     end
 
     def now_plus_mon_dd day
-      now = Date.today + day.to_i
-      "#{now.strftime('%b')} #{now.day}"
+      (Date.today + day.to_i).strftime "%b %-d"
     end
 
     def print_date *args
