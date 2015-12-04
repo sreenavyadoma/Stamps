@@ -106,7 +106,7 @@ module Batch
         :order_total => "Order Total"
     }
 
-    def data_coordinate column, order_id
+    def grid_text_by_id column, order_id
       scroll column
       row = row_number(order_id)
       log.info "Retrieving data for Order ID #{order_id}...."
@@ -249,7 +249,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :age, order_id
+      grid_text_by_id :age, order_id
     end
   end
 
@@ -268,7 +268,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :order_date, order_id
+      grid_text_by_id :order_date, order_id
     end
   end
 
@@ -328,7 +328,7 @@ module Batch
     end
     
     def data order_id
-      data_coordinate :recipient, order_id
+      grid_text_by_id :recipient, order_id
     end
 
     def row row
@@ -352,7 +352,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :company, order_id
+      grid_text_by_id :company, order_id
     end
   end
 
@@ -371,7 +371,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :address, order_id
+      grid_text_by_id :address, order_id
     end
   end
 
@@ -390,7 +390,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :city, order_id
+      grid_text_by_id :city, order_id
     end
   end
 
@@ -409,7 +409,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :state, order_id
+      grid_text_by_id :state, order_id
     end
   end
 
@@ -428,7 +428,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :zip, order_id
+      grid_text_by_id :zip, order_id
     end
   end
 
@@ -447,7 +447,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :phone, order_id
+      grid_text_by_id :phone, order_id
     end
   end
 
@@ -466,7 +466,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :email, order_id
+      grid_text_by_id :email, order_id
     end
   end
 
@@ -485,7 +485,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :qty, order_id
+      grid_text_by_id :qty, order_id
     end
   end
 
@@ -504,7 +504,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :item_sku, order_id
+      grid_text_by_id :item_sku, order_id
     end
   end
 
@@ -523,7 +523,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :item_name, order_id
+      grid_text_by_id :item_name, order_id
     end
   end
 
@@ -542,7 +542,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :weight, order_id
+      grid_text_by_id :weight, order_id
     end
 
     def lbs order_id
@@ -569,7 +569,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :insured_value, order_id
+      grid_text_by_id :insured_value, order_id
     end
   end
 
@@ -588,7 +588,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :order_status, order_id
+      grid_text_by_id :order_status, order_id
     end
   end
 
@@ -607,7 +607,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :ship_date, order_id
+      grid_text_by_id :ship_date, order_id
     end
   end
 
@@ -626,7 +626,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :ship_from, order_id
+      grid_text_by_id :ship_from, order_id
     end
   end
 
@@ -645,7 +645,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :order_total, order_id
+      grid_text_by_id :order_total, order_id
     end
   end
 
@@ -664,7 +664,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :country, order_id
+      grid_text_by_id :country, order_id
     end
   end
 
@@ -683,7 +683,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :ship_cost, order_id
+      grid_text_by_id :ship_cost, order_id
     end
 
     def ship_cost_error order_id
@@ -721,7 +721,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :company, order_id
+      grid_text_by_id :company, order_id
     end
   end
 
@@ -740,7 +740,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :service, order_id
+      grid_text_by_id :service, order_id
     end
   end
 
@@ -759,7 +759,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :reference_no, order_id
+      grid_text_by_id :reference_no, order_id
     end
   end
 
@@ -778,7 +778,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :cost_code, order_id
+      grid_text_by_id :cost_code, order_id
     end
   end
 
@@ -797,7 +797,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :tracking_no, order_id
+      grid_text_by_id :tracking_no, order_id
     end
   end
 
@@ -816,7 +816,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :date_printed, order_id
+      grid_text_by_id :date_printed, order_id
     end
   end
 
