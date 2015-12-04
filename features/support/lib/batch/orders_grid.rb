@@ -147,6 +147,7 @@ module Batch
     end
 
     def grid_text column, row
+      scroll column
       browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}"
     end
 
@@ -244,12 +245,7 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      begin
-        grid_text(:age, row)
-      rescue
-        return ""
-      end
+      grid_text(:age, row)
     end
 
     def data order_id
@@ -268,12 +264,7 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      begin
-        grid_text(:order_date, row)
-      rescue
-        return ""
-      end
+      grid_text(:order_date, row)
     end
 
     def data order_id
@@ -341,7 +332,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:recipient, row)
     end
 
@@ -358,7 +348,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:company, row)
     end
 
@@ -378,7 +367,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:address, row)
     end
 
@@ -398,7 +386,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:city, row)
     end
 
@@ -418,7 +405,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:state, row)
     end
 
@@ -438,7 +424,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:zip, row)
     end
 
@@ -458,7 +443,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:phone, row)
     end
 
@@ -478,7 +462,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:email, row)
     end
 
@@ -498,7 +481,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:qty, row)
     end
 
@@ -518,7 +500,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:item_sku, row)
     end
 
@@ -538,7 +519,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:item_name, row)
     end
 
@@ -558,7 +538,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:weight, row)
     end
 
@@ -586,7 +565,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:insured_value, row)
     end
 
@@ -606,7 +584,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:order_status, row)
     end
 
@@ -626,7 +603,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:ship_date, row)
     end
 
@@ -646,7 +622,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:ship_from, row)
     end
 
@@ -666,7 +641,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:order_total, row)
     end
 
@@ -686,7 +660,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:country, row)
     end
 
@@ -706,7 +679,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:ship_cost, row)
     end
 
@@ -745,7 +717,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:company, row)
     end
 
@@ -765,7 +736,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:service, row)
     end
 
@@ -785,7 +755,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:reference_no, row)
     end
 
@@ -805,7 +774,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:cost_code, row)
     end
 
@@ -825,7 +793,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:tracking_no, row)
     end
 
@@ -874,7 +841,6 @@ module Batch
     end
 
     def row row
-      scroll_into_view
       grid_text(:check_box, row)
     end
 
