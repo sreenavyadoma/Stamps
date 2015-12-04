@@ -200,7 +200,6 @@ Feature: 25 orders
     And Set Order Details Form Length to 1
     And Set Order Details Form Width to 1
     And Set Order Details Form Height to 1
-    And Set Order Details Form Service to "Priority Mail Regional Rate Box C"
     And Set Order Details Form Insured Value to $305.00
     And Set Order Details Form Tracking to "Signature Required"
 

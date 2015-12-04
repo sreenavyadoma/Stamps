@@ -25,7 +25,7 @@ Then /^Expect Grid Ship Date to be today plus (\d+)$/ do |day|
 
   grid = batch.filter.shipped
 
-  5.times{
+  10.times{
     grid.order_id.sort.descending
     grid_ship_date = grid.ship_date.data @order_id # Dec 3
     log.info "Order ID:  #{@order_id} - Print Modal Saved Ship Date: #{@ship_date} - Orders Grid Ship Date:  #{grid_ship_date}"

@@ -289,33 +289,6 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box B|19|0|1|1|1|USPS Tracking|6.16|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box B|20|0|1|1|1|USPS Tracking|6.16|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box B|21|0|1|1|1|USPS Tracking|0.00|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|1|0|1|1|1|Signature Required|12.30|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|1|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|2|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|3|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|4|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|5|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|6|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|7|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|8|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|9|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|10|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|11|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|12|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|13|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|14|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|15|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|16|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|17|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|18|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|19|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|20|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|21|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|22|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|23|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|24|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|25|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box C|26|0|1|1|1|USPS Tracking|0.00|
 
     And Sign out
 

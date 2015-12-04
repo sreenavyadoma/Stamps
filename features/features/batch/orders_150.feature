@@ -12,17 +12,17 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 1
     * Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
     * Set Order Details Form Insured Value to $15.00
-    * Set Order Details Form Tracking to None
+    * Set Order Details Form Tracking to "None"
 
     * I Add a new order
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 2
     * Set Order Details Form Service to "First-Class Mail Package/Thick Envelope"
     * Set Order Details Form Insured Value to $45.00
@@ -34,7 +34,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 3
     * Set Order Details Form Service to "Priority Mail Large/Thick Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -43,7 +43,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 4
     * Set Order Details Form Service to "Priority Mail Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -52,7 +52,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 5
     * Set Order Details Form Service to "Priority Mail Large Package"
     * Set Order Details Form Insured Value to $145.00
@@ -62,7 +62,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 6
     * Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -71,7 +71,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 7
     * Set Order Details Form Service to "Priority Mail Padded Flat Rate Envelope"
     * Set Order Details Form Insured Value to $98.00
@@ -81,7 +81,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 8
     * Set Order Details Form Service to "Priority Mail Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -90,7 +90,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 9
     * Set Order Details Form Service to "Priority Mail Small Flat Rate Box"
     * Set Order Details Form Insured Value to $30.00
@@ -100,7 +100,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 10
     * Set Order Details Form Service to "Priority Mail Medium Flat Rate Box"
     * Set Order Details Form Insured Value to $45.00
@@ -110,7 +110,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 11
     * Set Order Details Form Service to "Priority Mail Large Flat Rate Box"
     * Set Order Details Form Insured Value to $239.00
@@ -120,7 +120,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 12
     * Set Order Details Form Service to "Priority Mail Regional Rate Box A"
     * Set Order Details Form Insured Value to $105.00
@@ -130,7 +130,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 13
     * Set Order Details Form Service to "Priority Mail Regional Rate Box B"
     * Set Order Details Form Insured Value to $205.00
@@ -140,9 +140,8 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 14
-    * Set Order Details Form Service to "Priority Mail Regional Rate Box C"
     * Set Order Details Form Insured Value to $305.00
     * Set Order Details Form Tracking to "Signature Required"
 
@@ -152,7 +151,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 15
     * Set Order Details Form Service to "Priority Mail Express Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -161,7 +160,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 16
     * Set Order Details Form Service to "Priority Mail Express Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -170,7 +169,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 17
     * Set Order Details Form Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -179,7 +178,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 18
     * Set Order Details Form Service to "Priority Mail Express Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -188,7 +187,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 19
     * Set Order Details Form Service to "Priority Mail Express Medium Flat Rate Box"
     * Set Order Details Form Tracking to "Signature Required"
@@ -199,7 +198,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 20
     * Set Order Details Form Service to "Media Mail Package"
     * Set Order Details Form Insured Value to $56.00
@@ -211,7 +210,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 21
     * Set Order Details Form Service to "Parcel Select Package"
     * Set Order Details Form Insured Value to $345.00
@@ -221,7 +220,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 22
     * Set Order Details Form Service to "Parcel Select Large Package"
     * Set Order Details Form Insured Value to $456.00
@@ -231,7 +230,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 23
     * Set Order Details Form Service to "Parcel Select Oversized Package"
     * Set Order Details Form Insured Value to $567.00
@@ -287,17 +286,17 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 1
     * Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
     * Set Order Details Form Insured Value to $15.00
-    * Set Order Details Form Tracking to None
+    * Set Order Details Form Tracking to "None"
 
     * I Add a new order
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 2
     * Set Order Details Form Service to "First-Class Mail Package/Thick Envelope"
     * Set Order Details Form Insured Value to $45.00
@@ -309,7 +308,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 3
     * Set Order Details Form Service to "Priority Mail Large/Thick Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -318,7 +317,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 4
     * Set Order Details Form Service to "Priority Mail Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -327,7 +326,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 5
     * Set Order Details Form Service to "Priority Mail Large Package"
     * Set Order Details Form Insured Value to $145.00
@@ -337,7 +336,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 6
     * Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -346,7 +345,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 7
     * Set Order Details Form Service to "Priority Mail Padded Flat Rate Envelope"
     * Set Order Details Form Insured Value to $98.00
@@ -356,7 +355,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 8
     * Set Order Details Form Service to "Priority Mail Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -365,7 +364,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 9
     * Set Order Details Form Service to "Priority Mail Small Flat Rate Box"
     * Set Order Details Form Insured Value to $30.00
@@ -375,7 +374,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 10
     * Set Order Details Form Service to "Priority Mail Medium Flat Rate Box"
     * Set Order Details Form Insured Value to $45.00
@@ -385,7 +384,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 11
     * Set Order Details Form Service to "Priority Mail Large Flat Rate Box"
     * Set Order Details Form Insured Value to $239.00
@@ -395,7 +394,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 12
     * Set Order Details Form Service to "Priority Mail Regional Rate Box A"
     * Set Order Details Form Insured Value to $105.00
@@ -405,7 +404,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 13
     * Set Order Details Form Service to "Priority Mail Regional Rate Box B"
     * Set Order Details Form Insured Value to $205.00
@@ -415,9 +414,8 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 14
-    * Set Order Details Form Service to "Priority Mail Regional Rate Box C"
     * Set Order Details Form Insured Value to $305.00
     * Set Order Details Form Tracking to "Signature Required"
 
@@ -427,7 +425,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 15
     * Set Order Details Form Service to "Priority Mail Express Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -436,7 +434,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 16
     * Set Order Details Form Service to "Priority Mail Express Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -445,7 +443,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 17
     * Set Order Details Form Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -454,7 +452,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 18
     * Set Order Details Form Service to "Priority Mail Express Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -463,7 +461,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 19
     * Set Order Details Form Service to "Priority Mail Express Medium Flat Rate Box"
     * Set Order Details Form Tracking to "Signature Required"
@@ -474,7 +472,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 20
     * Set Order Details Form Service to "Media Mail Package"
     * Set Order Details Form Insured Value to $56.00
@@ -486,7 +484,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 21
     * Set Order Details Form Service to "Parcel Select Package"
     * Set Order Details Form Insured Value to $345.00
@@ -496,7 +494,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 22
     * Set Order Details Form Service to "Parcel Select Large Package"
     * Set Order Details Form Insured Value to $456.00
@@ -506,7 +504,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 23
     * Set Order Details Form Service to "Parcel Select Oversized Package"
     * Set Order Details Form Insured Value to $567.00
@@ -562,17 +560,17 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 1
     * Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
     * Set Order Details Form Insured Value to $15.00
-    * Set Order Details Form Tracking to None
+    * Set Order Details Form Tracking to "None"
 
     * I Add a new order
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 2
     * Set Order Details Form Service to "First-Class Mail Package/Thick Envelope"
     * Set Order Details Form Insured Value to $45.00
@@ -584,7 +582,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 3
     * Set Order Details Form Service to "Priority Mail Large/Thick Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -593,7 +591,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 4
     * Set Order Details Form Service to "Priority Mail Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -602,7 +600,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 5
     * Set Order Details Form Service to "Priority Mail Large Package"
     * Set Order Details Form Insured Value to $145.00
@@ -612,7 +610,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 6
     * Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -621,7 +619,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 7
     * Set Order Details Form Service to "Priority Mail Padded Flat Rate Envelope"
     * Set Order Details Form Insured Value to $98.00
@@ -631,7 +629,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 8
     * Set Order Details Form Service to "Priority Mail Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -640,7 +638,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 9
     * Set Order Details Form Service to "Priority Mail Small Flat Rate Box"
     * Set Order Details Form Insured Value to $30.00
@@ -650,7 +648,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 10
     * Set Order Details Form Service to "Priority Mail Medium Flat Rate Box"
     * Set Order Details Form Insured Value to $45.00
@@ -660,7 +658,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 11
     * Set Order Details Form Service to "Priority Mail Large Flat Rate Box"
     * Set Order Details Form Insured Value to $239.00
@@ -670,7 +668,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 12
     * Set Order Details Form Service to "Priority Mail Regional Rate Box A"
     * Set Order Details Form Insured Value to $105.00
@@ -680,7 +678,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 13
     * Set Order Details Form Service to "Priority Mail Regional Rate Box B"
     * Set Order Details Form Insured Value to $205.00
@@ -690,9 +688,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
     * Set Order Details Form Ounces to 14
-    * Set Order Details Form Service to "Priority Mail Regional Rate Box C"
     * Set Order Details Form Insured Value to $305.00
     * Set Order Details Form Tracking to "Signature Required"
 
@@ -702,7 +698,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 15
     * Set Order Details Form Service to "Priority Mail Express Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -711,7 +707,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 16
     * Set Order Details Form Service to "Priority Mail Express Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -720,7 +716,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 17
     * Set Order Details Form Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -729,7 +725,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 18
     * Set Order Details Form Service to "Priority Mail Express Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -738,7 +734,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 19
     * Set Order Details Form Service to "Priority Mail Express Medium Flat Rate Box"
     * Set Order Details Form Tracking to "Signature Required"
@@ -749,7 +745,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 20
     * Set Order Details Form Service to "Media Mail Package"
     * Set Order Details Form Insured Value to $56.00
@@ -761,7 +757,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 21
     * Set Order Details Form Service to "Parcel Select Package"
     * Set Order Details Form Insured Value to $345.00
@@ -771,7 +767,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 22
     * Set Order Details Form Service to "Parcel Select Large Package"
     * Set Order Details Form Insured Value to $456.00
@@ -781,7 +777,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 23
     * Set Order Details Form Service to "Parcel Select Oversized Package"
     * Set Order Details Form Insured Value to $567.00
@@ -837,17 +833,17 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 1
     * Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
     * Set Order Details Form Insured Value to $15.00
-    * Set Order Details Form Tracking to None
+    * Set Order Details Form Tracking to "None"
 
     * I Add a new order
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 2
     * Set Order Details Form Service to "First-Class Mail Package/Thick Envelope"
     * Set Order Details Form Insured Value to $45.00
@@ -859,7 +855,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 3
     * Set Order Details Form Service to "Priority Mail Large/Thick Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -868,7 +864,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 4
     * Set Order Details Form Service to "Priority Mail Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -877,7 +873,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 5
     * Set Order Details Form Service to "Priority Mail Large Package"
     * Set Order Details Form Insured Value to $145.00
@@ -887,7 +883,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 6
     * Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -896,7 +892,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 7
     * Set Order Details Form Service to "Priority Mail Padded Flat Rate Envelope"
     * Set Order Details Form Insured Value to $98.00
@@ -906,7 +902,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 8
     * Set Order Details Form Service to "Priority Mail Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -915,7 +911,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 9
     * Set Order Details Form Service to "Priority Mail Small Flat Rate Box"
     * Set Order Details Form Insured Value to $30.00
@@ -925,7 +921,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 10
     * Set Order Details Form Service to "Priority Mail Medium Flat Rate Box"
     * Set Order Details Form Insured Value to $45.00
@@ -935,7 +931,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 11
     * Set Order Details Form Service to "Priority Mail Large Flat Rate Box"
     * Set Order Details Form Insured Value to $239.00
@@ -945,7 +941,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 12
     * Set Order Details Form Service to "Priority Mail Regional Rate Box A"
     * Set Order Details Form Insured Value to $105.00
@@ -955,7 +951,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 13
     * Set Order Details Form Service to "Priority Mail Regional Rate Box B"
     * Set Order Details Form Insured Value to $205.00
@@ -965,9 +961,8 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 14
-    * Set Order Details Form Service to "Priority Mail Regional Rate Box C"
     * Set Order Details Form Insured Value to $305.00
     * Set Order Details Form Tracking to "Signature Required"
 
@@ -977,7 +972,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 15
     * Set Order Details Form Service to "Priority Mail Express Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -986,7 +981,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 16
     * Set Order Details Form Service to "Priority Mail Express Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -995,7 +990,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 17
     * Set Order Details Form Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1004,7 +999,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 18
     * Set Order Details Form Service to "Priority Mail Express Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -1013,7 +1008,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 19
     * Set Order Details Form Service to "Priority Mail Express Medium Flat Rate Box"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1024,7 +1019,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 20
     * Set Order Details Form Service to "Media Mail Package"
     * Set Order Details Form Insured Value to $56.00
@@ -1036,7 +1031,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 21
     * Set Order Details Form Service to "Parcel Select Package"
     * Set Order Details Form Insured Value to $345.00
@@ -1046,7 +1041,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 22
     * Set Order Details Form Service to "Parcel Select Large Package"
     * Set Order Details Form Insured Value to $456.00
@@ -1056,7 +1051,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 23
     * Set Order Details Form Service to "Parcel Select Oversized Package"
     * Set Order Details Form Insured Value to $567.00
@@ -1112,17 +1107,17 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 1
     * Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
     * Set Order Details Form Insured Value to $15.00
-    * Set Order Details Form Tracking to None
+    * Set Order Details Form Tracking to "None"
 
     * I Add a new order
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 2
     * Set Order Details Form Service to "First-Class Mail Package/Thick Envelope"
     * Set Order Details Form Insured Value to $45.00
@@ -1134,7 +1129,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 3
     * Set Order Details Form Service to "Priority Mail Large/Thick Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -1143,7 +1138,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 4
     * Set Order Details Form Service to "Priority Mail Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1152,7 +1147,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 5
     * Set Order Details Form Service to "Priority Mail Large Package"
     * Set Order Details Form Insured Value to $145.00
@@ -1162,7 +1157,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 6
     * Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1171,7 +1166,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 7
     * Set Order Details Form Service to "Priority Mail Padded Flat Rate Envelope"
     * Set Order Details Form Insured Value to $98.00
@@ -1181,7 +1176,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 8
     * Set Order Details Form Service to "Priority Mail Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1190,7 +1185,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 9
     * Set Order Details Form Service to "Priority Mail Small Flat Rate Box"
     * Set Order Details Form Insured Value to $30.00
@@ -1200,7 +1195,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 10
     * Set Order Details Form Service to "Priority Mail Medium Flat Rate Box"
     * Set Order Details Form Insured Value to $45.00
@@ -1210,7 +1205,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 11
     * Set Order Details Form Service to "Priority Mail Large Flat Rate Box"
     * Set Order Details Form Insured Value to $239.00
@@ -1220,7 +1215,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 12
     * Set Order Details Form Service to "Priority Mail Regional Rate Box A"
     * Set Order Details Form Insured Value to $105.00
@@ -1230,7 +1225,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 13
     * Set Order Details Form Service to "Priority Mail Regional Rate Box B"
     * Set Order Details Form Insured Value to $205.00
@@ -1240,9 +1235,8 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 14
-    * Set Order Details Form Service to "Priority Mail Regional Rate Box C"
     * Set Order Details Form Insured Value to $305.00
     * Set Order Details Form Tracking to "Signature Required"
 
@@ -1252,7 +1246,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 15
     * Set Order Details Form Service to "Priority Mail Express Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1261,7 +1255,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 16
     * Set Order Details Form Service to "Priority Mail Express Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -1270,7 +1264,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 17
     * Set Order Details Form Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1279,7 +1273,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 18
     * Set Order Details Form Service to "Priority Mail Express Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -1288,7 +1282,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 19
     * Set Order Details Form Service to "Priority Mail Express Medium Flat Rate Box"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1299,7 +1293,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 20
     * Set Order Details Form Service to "Media Mail Package"
     * Set Order Details Form Insured Value to $56.00
@@ -1311,7 +1305,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 21
     * Set Order Details Form Service to "Parcel Select Package"
     * Set Order Details Form Insured Value to $345.00
@@ -1321,7 +1315,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 22
     * Set Order Details Form Service to "Parcel Select Large Package"
     * Set Order Details Form Insured Value to $456.00
@@ -1331,7 +1325,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 23
     * Set Order Details Form Service to "Parcel Select Oversized Package"
     * Set Order Details Form Insured Value to $567.00
@@ -1387,17 +1381,17 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 1
     * Set Order Details Form Service to "First-Class Mail Large Envelope/Flat"
     * Set Order Details Form Insured Value to $15.00
-    * Set Order Details Form Tracking to None
+    * Set Order Details Form Tracking to "None"
 
     * I Add a new order
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 2
     * Set Order Details Form Service to "First-Class Mail Package/Thick Envelope"
     * Set Order Details Form Insured Value to $45.00
@@ -1409,7 +1403,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 3
     * Set Order Details Form Service to "Priority Mail Large/Thick Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -1418,7 +1412,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 4
     * Set Order Details Form Service to "Priority Mail Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1427,7 +1421,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 5
     * Set Order Details Form Service to "Priority Mail Large Package"
     * Set Order Details Form Insured Value to $145.00
@@ -1437,7 +1431,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 6
     * Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1446,7 +1440,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 7
     * Set Order Details Form Service to "Priority Mail Padded Flat Rate Envelope"
     * Set Order Details Form Insured Value to $98.00
@@ -1456,7 +1450,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 8
     * Set Order Details Form Service to "Priority Mail Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1465,7 +1459,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 9
     * Set Order Details Form Service to "Priority Mail Small Flat Rate Box"
     * Set Order Details Form Insured Value to $30.00
@@ -1475,7 +1469,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 10
     * Set Order Details Form Service to "Priority Mail Medium Flat Rate Box"
     * Set Order Details Form Insured Value to $45.00
@@ -1485,7 +1479,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 11
     * Set Order Details Form Service to "Priority Mail Large Flat Rate Box"
     * Set Order Details Form Insured Value to $239.00
@@ -1495,7 +1489,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 12
     * Set Order Details Form Service to "Priority Mail Regional Rate Box A"
     * Set Order Details Form Insured Value to $105.00
@@ -1505,7 +1499,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 13
     * Set Order Details Form Service to "Priority Mail Regional Rate Box B"
     * Set Order Details Form Insured Value to $205.00
@@ -1515,9 +1509,8 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 14
-    * Set Order Details Form Service to "Priority Mail Regional Rate Box C"
     * Set Order Details Form Insured Value to $305.00
     * Set Order Details Form Tracking to "Signature Required"
 
@@ -1527,7 +1520,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Ounces to 15
     * Set Order Details Form Service to "Priority Mail Express Package"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1536,7 +1529,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 16
     * Set Order Details Form Service to "Priority Mail Express Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -1545,7 +1538,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 17
     * Set Order Details Form Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1554,7 +1547,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 18
     * Set Order Details Form Service to "Priority Mail Express Legal Flat Rate Envelope"
     * Set Order Details Form Tracking to "USPS Tracking"
@@ -1563,7 +1556,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 19
     * Set Order Details Form Service to "Priority Mail Express Medium Flat Rate Box"
     * Set Order Details Form Tracking to "Signature Required"
@@ -1574,7 +1567,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 20
     * Set Order Details Form Service to "Media Mail Package"
     * Set Order Details Form Insured Value to $56.00
@@ -1586,7 +1579,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 21
     * Set Order Details Form Service to "Parcel Select Package"
     * Set Order Details Form Insured Value to $345.00
@@ -1596,7 +1589,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 22
     * Set Order Details Form Service to "Parcel Select Large Package"
     * Set Order Details Form Insured Value to $456.00
@@ -1606,7 +1599,7 @@ Feature: 150 orders
     * Expect new Order ID created
     * Set Order Details Form Ship-From to default
     * Set Order Details Form Ship-To address to random
-    * Hide Order Details Form  Ship-To fields
+
     * Set Order Details Form Pounds to 23
     * Set Order Details Form Service to "Parcel Select Oversized Package"
     * Set Order Details Form Insured Value to $567.00

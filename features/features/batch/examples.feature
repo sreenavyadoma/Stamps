@@ -17,7 +17,6 @@ Feature: Examples
         Then Set Order Details Form Service to "Priority Mail Large Flat Rate Box"
         Then Set Order Details Form Service to "Priority Mail Regional Rate Box A"
         Then Set Order Details Form Service to "Priority Mail Regional Rate Box B"
-        Then Set Order Details Form Service to "Priority Mail Regional Rate Box C"
         Then Set Order Details Form Service to "Priority Mail Express Package"
         Then Set Order Details Form Service to "Priority Mail Express Flat Rate Envelope"
         Then Set Order Details Form Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -83,8 +82,6 @@ Feature: Examples
         Then Expect Service Cost to be $5.32
         Then Expect Order Details Form Service Cost inline price for "Priority Mail Regional Rate Box B" to be greater than $6.16
         Then Expect Service Cost to be $6.16
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Regional Rate Box C" to be greater than $9.85
-        Then Expect Service Cost to be $9.85
         Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Package" to be greater than $13.09
         Then Expect Service Cost to be $13.09
         Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Flat Rate Envelope" to be greater than $18.11
@@ -296,23 +293,6 @@ Feature: Examples
         Then Expect Ship-To address to be;
             | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
             | Priority Mail Regional Rate Box B | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-        Then Expect Order details to be;
-            | insured_value  | pounds  | ounces | length  | width | height  |
-            | 0.00           | 0       | 1      | 0       | 0     | 0     |
-
-    Scenario: Priority Mail Regional Rate Box C
-        And I Add a new order
-
-        Then Set Order Details Form Ship-To address to
-            | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-            | Priority Mail Regional Rate Box C | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
-        Then Set order details with
-            | insured_value | pounds  | ounces | length  | width | height  |
-            | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Order Details Form Service to "Priority Mail Regional Rate Box C"
-        Then Expect Ship-To address to be;
-            | name                              | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-            | Priority Mail Regional Rate Box C | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Expect Order details to be;
             | insured_value  | pounds  | ounces | length  | width | height  |
             | 0.00           | 0       | 1      | 0       | 0     | 0     |

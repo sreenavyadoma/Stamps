@@ -37,9 +37,6 @@
     Then Set Order Details Form Service to "Priority Mail Regional Rate Box B"
     Then Expect Order Details Form Service to be "Priority Mail Regional Rate Box B"
 
-    Then Set Order Details Form Service to "Priority Mail Regional Rate Box C"
-    Then Expect Order Details Form Service to be "Priority Mail Regional Rate Box C"
-
     Then Set Order Details Form Service to "Priority Mail Express Package"
     Then Expect Order Details Form Service to be "Priority Mail Express Package"
 

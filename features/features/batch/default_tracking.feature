@@ -44,8 +44,6 @@ Feature: Tracking
     Then Expect Order Details Form Service to be "Priority Mail Regional Rate Box B"
     Then Expect Order Details Form Tracking to be "USPS Tracking"
 
-    Then Set Order Details Form Service to "Priority Mail Regional Rate Box C"
-    Then Expect Order Details Form Service to be "Priority Mail Regional Rate Box C"
     Then Expect Order Details Form Tracking to be "USPS Tracking"
 
     Then Set Order Details Form Service to "Priority Mail Express Package"

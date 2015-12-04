@@ -3,7 +3,6 @@ Feature: Date Printed
   Background:
     Given I am signed in as a batch shipper
 
-
   @date_printed
   Scenario: Set Ship Date to today
     And I Add a new order
