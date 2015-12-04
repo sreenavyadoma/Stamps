@@ -385,10 +385,6 @@ module Batch
     def data order_id
       data_coordinate :address, order_id
     end
-
-    def row row
-      grid_text(:address, row)
-    end
   end
 
   class City < Column
@@ -595,11 +591,7 @@ module Batch
     end
 
     def data order_id
-      data_coordinate :weight, order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      test_helper.remove_dollar_sign grid_text(:insured_value, row)
+      data_coordinate :insured_value, order_id
     end
   end
 
@@ -619,10 +611,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:order_status, row)
+      data_coordinate :order_status, order_id
     end
   end
 
@@ -642,11 +631,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      ship_date = grid_text(:ship_date, row)
-      log.info "Order ID: #{order_id}, Row #{row}, Data: #{ship_date}"
-      ship_date
+      data_coordinate :ship_date, order_id
     end
   end
 
@@ -666,10 +651,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:ship_from, row)
+      data_coordinate :ship_from, order_id
     end
   end
 
@@ -689,10 +671,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:order_total, row)
+      data_coordinate :order_total, order_id
     end
   end
 
@@ -712,10 +691,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:country, row)
+      data_coordinate :country, order_id
     end
   end
 
@@ -735,10 +711,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      test_helper.remove_dollar_sign grid_text(:ship_cost, row)
+      data_coordinate :ship_cost, order_id
     end
 
     def ship_cost_error order_id
@@ -777,10 +750,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:company, row)
+      data_coordinate :company, order_id
     end
   end
 
@@ -800,10 +770,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:service, row)
+      data_coordinate :service, order_id
     end
   end
 
@@ -823,10 +790,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:reference_no, row)
+      data_coordinate :reference_no, order_id
     end
   end
 
@@ -846,10 +810,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:cost_code, row)
+      data_coordinate :cost_code, order_id
     end
   end
 
@@ -869,8 +830,7 @@ module Batch
     end
 
     def data order_id
-      scroll_into_view
-      grid_text :tracking_no, row_number(order_id)
+      data_coordinate :tracking_no, order_id
     end
   end
 
@@ -885,14 +845,11 @@ module Batch
     end
 
     def data_at_row row
-      grid_field_column_name :ship_date, row
+      grid_field_column_name :date_printed, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:date_printed, row)
+      data_coordinate :date_printed, order_id
     end
   end
 
