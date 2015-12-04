@@ -110,7 +110,7 @@ module Batch
       scroll column
       row = row_number(order_id)
       log.info "Retrieving data for Order ID #{order_id}...."
-      data = grid_text(column, row)
+      data = grid_text column, row
       log.info "Order ID #{order_id}, Row #{row}, Data #{data}"
       data
     end
@@ -226,7 +226,7 @@ module Batch
       end
 
       begin
-        grid_text(:order_id, row)
+        grid_text :order_id, row
       rescue
         return ""
       end
@@ -245,7 +245,7 @@ module Batch
     end
 
     def row row
-      grid_text(:age, row)
+      grid_text :age, row
     end
 
     def data order_id
@@ -264,7 +264,7 @@ module Batch
     end
 
     def row row
-      grid_text(:order_date, row)
+      grid_text :order_date, row
     end
 
     def data order_id
@@ -332,7 +332,7 @@ module Batch
     end
 
     def row row
-      grid_text(:recipient, row)
+      grid_text :recipient, row
     end
 
   end
@@ -348,7 +348,7 @@ module Batch
     end
 
     def row row
-      grid_text(:company, row)
+      grid_text :company, row
     end
 
     def data order_id
@@ -367,7 +367,7 @@ module Batch
     end
 
     def row row
-      grid_text(:address, row)
+      grid_text :address, row
     end
 
     def data order_id
@@ -386,7 +386,7 @@ module Batch
     end
 
     def row row
-      grid_text(:city, row)
+      grid_text :city, row
     end
 
     def data order_id
@@ -405,7 +405,7 @@ module Batch
     end
 
     def row row
-      grid_text(:state, row)
+      grid_text :state, row
     end
 
     def data order_id
@@ -424,7 +424,7 @@ module Batch
     end
 
     def row row
-      grid_text(:zip, row)
+      grid_text :zip, row
     end
 
     def data order_id
@@ -443,7 +443,7 @@ module Batch
     end
 
     def row row
-      grid_text(:phone, row)
+      grid_text :phone, row
     end
 
     def data order_id
@@ -462,7 +462,7 @@ module Batch
     end
 
     def row row
-      grid_text(:email, row)
+      grid_text :email, row
     end
 
     def data order_id
@@ -481,7 +481,7 @@ module Batch
     end
 
     def row row
-      grid_text(:qty, row)
+      grid_text :qty, row
     end
 
     def data order_id
@@ -500,7 +500,7 @@ module Batch
     end
 
     def row row
-      grid_text(:item_sku, row)
+      grid_text :item_sku, row
     end
 
     def data order_id
@@ -519,7 +519,7 @@ module Batch
     end
 
     def row row
-      grid_text(:item_name, row)
+      grid_text :item_name, row
     end
 
     def data order_id
@@ -538,7 +538,7 @@ module Batch
     end
 
     def row row
-      grid_text(:weight, row)
+      grid_text :weight, row
     end
 
     def data order_id
@@ -565,7 +565,7 @@ module Batch
     end
 
     def row row
-      grid_text(:insured_value, row)
+      grid_text :insured_value, row
     end
 
     def data order_id
@@ -584,7 +584,7 @@ module Batch
     end
 
     def row row
-      grid_text(:order_status, row)
+      grid_text :order_status, row
     end
 
     def data order_id
@@ -603,7 +603,7 @@ module Batch
     end
 
     def row row
-      grid_text(:ship_date, row)
+      grid_text :ship_date, row
     end
 
     def data order_id
@@ -622,7 +622,7 @@ module Batch
     end
 
     def row row
-      grid_text(:ship_from, row)
+      grid_text :ship_from, row
     end
 
     def data order_id
@@ -641,7 +641,7 @@ module Batch
     end
 
     def row row
-      grid_text(:order_total, row)
+      grid_text :order_total, row
     end
 
     def data order_id
@@ -660,7 +660,7 @@ module Batch
     end
 
     def row row
-      grid_text(:country, row)
+      grid_text :country, row
     end
 
     def data order_id
@@ -679,7 +679,7 @@ module Batch
     end
 
     def row row
-      grid_text(:ship_cost, row)
+      grid_text :ship_cost, row
     end
 
     def data order_id
@@ -717,7 +717,7 @@ module Batch
     end
 
     def row row
-      grid_text(:company, row)
+      grid_text :company, row
     end
 
     def data order_id
@@ -736,7 +736,7 @@ module Batch
     end
 
     def row row
-      grid_text(:service, row)
+      grid_text :service, row
     end
 
     def data order_id
@@ -755,7 +755,7 @@ module Batch
     end
 
     def row row
-      grid_text(:reference_no, row)
+      grid_text :reference_no, row
     end
 
     def data order_id
@@ -774,7 +774,7 @@ module Batch
     end
 
     def row row
-      grid_text(:cost_code, row)
+      grid_text :cost_code, row
     end
 
     def data order_id
@@ -793,7 +793,7 @@ module Batch
     end
 
     def row row
-      grid_text(:tracking_no, row)
+      grid_text :tracking_no, row
     end
 
     def data order_id
@@ -841,7 +841,7 @@ module Batch
     end
 
     def row row
-      grid_text(:check_box, row)
+      grid_text :check_box, row
     end
 
     def edit order_id
