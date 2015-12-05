@@ -52,6 +52,17 @@ module Batch
           {:text => "Move to Canceled"}
         end
 
+        def move_to_awaiting_shipment
+          {:text => "Move to Awaiting Shipment"}
+        end
+
+        def confirmation_modal_move_label
+          {:css => "span[class*='x-btn-inner-primary-blue-medium']"}
+        end
+
+        def confirmation_modal_cancel_label
+          {:css => "span[class*='x-btn-inner-primary-blue-medium']"}
+        end
       end
     end
 

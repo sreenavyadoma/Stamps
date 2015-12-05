@@ -1,5 +1,62 @@
 module Batch
 
+  class MoveConfirmation < BatchObject
+    def move_label
+      Label.new @browser.span Locators::ToolBar::confirmation_modal_move_label
+    end
+
+    def cancel_label
+      Label.new @browser.span Locators::ToolBar::confirmation_modal_cancel_label
+    end
+
+    def move
+      label = move_label
+      label.click_while_present
+      Batch::FilterPanel.new @browser
+    end
+
+    def cancel
+      label = cancel_label
+      label.click_while_present
+      Batch::FilterPanel.new @browser
+    end
+  end
+
+  class MoveMenu < BatchObject
+    def move_to_shipped_label
+      Label.new @browser.span Locators::ToolBar::move_to_shipped
+    end
+
+    def move_to_cancelled_label
+      Label.new @browser.span Locators::ToolBar::move_to_cancelled
+    end
+
+    def move_to_awaiting_shipment_label
+      Label.new @browser.span Locators::ToolBar::move_to_awaiting_shipment
+    end
+
+    def move_to_shipped
+      label = move_to_shipped_label
+      raise "Move to Shipped is not present in the Move menu.  Verify that your test is correct." unless label.present?
+      label.click_while_present
+      MoveConfirmation.new @browser
+    end
+
+    def move_to_cancelled
+      label = move_to_cancelled_label
+      raise "Move to Cancelled is not present in the Move menu.  Verify that your test is correct." unless label.present?
+      label.click_while_present
+      MoveConfirmation.new @browser
+    end
+
+    def move_to_awaiting_shipment
+      label = move_to_awaiting_shipment_label
+      raise "Move to Awaiting Shipment is not present in the Move menu.  Verify that your test is correct." unless label.present?
+      label.click_while_present
+      MoveConfirmation.new @browser
+    end
+  end
+
   #
   #  Contains Add/Edit buton for orders.
   #
@@ -38,6 +95,10 @@ module Batch
         end
       end
       raise "Unable to I Add a new orders!" unless order_details.present?
+    end
+
+    def move
+
     end
 
     def browser_settings_button
