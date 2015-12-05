@@ -7,7 +7,7 @@ module Batch
     end
 
     def toolbar
-      @toolbar ||= Toolbar.new @browser
+      @toolbar ||= Batch::Toolbar.new @browser
     end
 
     def sign_in_page

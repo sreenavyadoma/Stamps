@@ -115,10 +115,6 @@ module Batch
       end
     end
 
-    def get_print_button_status
-      is_print_button_present
-    end
-
     def is_filter_panel_present
       sleep 2
       browser_helper.present? filter_panel

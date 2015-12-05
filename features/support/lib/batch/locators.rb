@@ -32,6 +32,25 @@ module Batch
 
     module ToolBar
       class << self
+        def add
+          {:text => 'Add'}
+        end
+
+        def print
+
+        end
+
+        def move
+          {:text => "Move"}
+        end
+
+        def move_to_shipped
+          {:text => "Move to Shipped"}
+        end
+
+        def move_to_cancelled
+          {:text => "Move to Canceled"}
+        end
 
       end
     end

@@ -47,17 +47,6 @@ Then /^Expect system updates the grid to show only orders that match the (.*) fi
   actual.should eql true
 end
 
-Then /^Expect system (.*) "Print" button in control ribbon$/ do |status|
-  log.info "Expectation: Expect system #{status} Print button in control ribbon"
-
-  actual = batch.toolbar.is_browser_print_button_present
-  if status == 'hides'
-    actual.should eql false
-  elsif status == 'displays'
-    actual.should eql true
-  end
-end
-
 Then /^Expect system displays expanded filters panel$/ do
   log.info "Expectation: Expect system displays expanded filters panel"
   actual = batch.filter.is_filter_panel_present

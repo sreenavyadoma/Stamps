@@ -1,27 +1,5 @@
 module Batch
 
-  class PrintModalObject < BatchObject
-    def window_x_button
-      @browser.img :css => "img[class*='x-tool-img x-tool-close']"
-    end
-
-    def close_window
-      BrowserHelper.instance.click window_x_button, 'close_window'
-    end
-
-    def x_button_present?
-      BrowserHelper.instance.present? window_x_button
-    end
-
-    def wait_until_present
-      begin
-        window_x_button.wait_until_present
-      rescue
-        #ignore
-      end
-    end
-  end
-
   class UspsTerms < BatchObject
     def present?
       (Label.new @browser.div :text => "USPS Terms").present?
@@ -269,6 +247,28 @@ module Batch
     end
   end
 
+  class PrintModalObject < BatchObject
+    def window_x_button
+      @browser.img :css => "img[class*='x-tool-img x-tool-close']"
+    end
+
+    def close_window
+      BrowserHelper.instance.click window_x_button, 'close_window'
+    end
+
+    def x_button_present?
+      BrowserHelper.instance.present? window_x_button
+    end
+
+    def wait_until_present
+      begin
+        window_x_button.wait_until_present
+      rescue
+        #ignore
+      end
+    end
+  end
+
   class PrintModal < PrintModalObject
     def initialize browser
       super browser
@@ -318,7 +318,7 @@ module Batch
     end
 
     def print_expecting_rating_error
-      print_modal
+      print
       RatingError.new(@browser).wait_until_present
     end
 

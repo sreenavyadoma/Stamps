@@ -1,25 +1,25 @@
 
 When /^Select Print Modal left-side label$/ do
   log.info "Step: Select Print Modal - Left side label"
-  selected = batch.toolbar.print_modal.starting_label.left
+  selected = batch.toolbar.print.starting_label.left
   log.info "left-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 When /^Select Print Modal right-side label$/ do
   log.info "Step: Select Print Modal - Right side label"
-  selected = batch.toolbar.print_modal.starting_label.right
+  selected = batch.toolbar.print.starting_label.right
   log.info "Print Modal right-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 Then /^Expect Print Modal right-side label selected$/ do
   log.info "Expectation: Expect Print Modal right-side label selected"
-  selected = batch.toolbar.print_modal.starting_label.right_selected?
+  selected = batch.toolbar.print.starting_label.right_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
 end
 
 Then /^Expect Print Modal left-side label selected$/ do
   log.info "Expectation: Expect Print Modal left-side label selected"
-  selected = batch.toolbar.print_modal.starting_label.left_selected?
+  selected = batch.toolbar.print.starting_label.left_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
 end
 
@@ -30,7 +30,7 @@ end
 Then /^Set Print Modal Ship Date to today plus (\d+)$/ do |day|
   ship_date = test_helper.now_plus_mon_dd day
   log.info "Set Print Modal Ship Date to #{ship_date}"
-  @ship_date = batch.toolbar.print_modal.date_picker.today_plus day
+  @ship_date = batch.toolbar.print.date_picker.today_plus day
 end
 
 Then /^Expect Shipped Tab Date Printed to be today$/ do
@@ -51,7 +51,7 @@ end
 
 Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
   log.info "Expectation: Expect Print Window Ship Date to be #{day} day(s) from today"
-  actual = batch.toolbar.print_modal.ship_date.text
+  actual = batch.toolbar.print.ship_date.text
   expected = test_helper.print_date day
   log.info "Expect Print Window Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
   actual.should eql expected
@@ -59,29 +59,29 @@ end
 
 When /^Open Print Modal$/ do
   log.info "Step: Open Print Modal"
-  @print_window = batch.toolbar.print_modal
+  @print_window = batch.toolbar.print
 end
 
 Then /^Select Print Media \"(.*)\"$/ do |print_media|
   log.info "Step: Select Print Media #{print_media}"
-  batch.toolbar.print_modal.printing_on.select print_media
+  batch.toolbar.print.printing_on.select print_media
 end
 
 Then /^Select Printer \"(.*)\"$/ do |printer|
   log.info "Step: Select Printer #{printer}"
-  batch.toolbar.print_modal.printer.select printer
+  batch.toolbar.print.printer.select printer
 end
 
 Then /^Expect Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, expected_value|
   log.info "Expectation: Expect Print Media #{print_media} tooltip to include #{expected_value}"
-  actual_value = batch.toolbar.print_modal.printing_on.selection :tooltip, print_media
+  actual_value = batch.toolbar.print.printing_on.selection :tooltip, print_media
   log.info "Expect Print Media \"#{print_media}\" tooltip to include \"#{expected_value}\" - Test #{(actual_value.include? expected_value)?"Passed":"Failed"}"
   actual_value.should include expected_value
 end
 
 When /^Print$/ do
   log.info "Step: Print"
-  print_modal = batch.toolbar.print_modal
+  print_modal = batch.toolbar.print
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.text_box.text
   @printer = print_modal.printer.text_box.text
@@ -91,7 +91,7 @@ end
 
 Then /^Close Print Modal$/ do
   log.info "Step: Close Print Modal"
-  batch.toolbar.print_modal.close
+  batch.toolbar.print.close
 end
 
 Then /^Print expecting error (.*)$/ do |error_message|
@@ -120,7 +120,7 @@ end
 
 When /^Print expecting rating error$/ do
   log.info "Step: Print expecting rating error"
-  error_window = batch.toolbar.print_modal.print_expecting_rating_error
+  error_window = batch.toolbar.print.print_expecting_rating_error
   actual_error_message = error_window.error_message
   error_window.close
   expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
@@ -136,15 +136,15 @@ end
 
 Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
   log.info "Expectation: Expect Print Window title to be \"You have #{expectation} label\(s\) ready to print\""
-  actual = batch.toolbar.print_modal.labels_ready_to_print
-  batch.toolbar.print_modal.close
+  actual = batch.toolbar.print.labels_ready_to_print
+  batch.toolbar.print.close
   log.info "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
   "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
 end
 
 Then /^Expect Print Window requires (\d+) label sheets$/ do |sheets|
   log.info "Expectation: Expect Print Window requires #{sheets} label sheets"
-  actual = batch.toolbar.print_modal.labels_required
+  actual = batch.toolbar.print.labels_required
   log.info "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheets==actual)?'Passed':'Failed'}"
   actual.should eql sheets
 end
@@ -156,22 +156,22 @@ end
 
 Then /^Print Sample on (.*)$/ do |printer|
   log.info "Step: Print Sample on #{printer}"
-  batch.toolbar.print_modal(printer).print_sample
+  batch.toolbar.print(printer).print_sample
 end
 
 Then /^Print Sample on (.*) raises a PrintingError$/ do |printer|
   log.info "Step: Print Sample on #{printer} raises a PrintingError"
-  expect{batch.toolbar.print_modal(printer).print_sample_expecting_error}.to raise_error(PrintingError)
+  expect{batch.toolbar.print(printer).print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Print Sample$/ do
   log.info "Step: Print Sample"
-  batch.toolbar.print_modal.print_sample
+  batch.toolbar.print.print_sample
 end
 
 Then /^Print Sample raises a Printing Error/ do
   log.info "Step: Print Sample raises a Printing Error"
-  expect{batch.toolbar.print_modal.print_sample_expecting_error}.to raise_error(PrintingError)
+  expect{batch.toolbar.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Expect (.*) pane selected$/ do |value|

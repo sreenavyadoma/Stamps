@@ -120,7 +120,7 @@ module Batch
       welcome_modal = WelcomeModal.new @browser
       welcome_orders_page = WelcomeOrdersPage.new @browser
       plugin_issue = ErrorStampsPluginIssue.new @browser
-      toolbar = Toolbar.new @browser
+      toolbar = Batch::Toolbar.new @browser
 
       20.times do
         begin

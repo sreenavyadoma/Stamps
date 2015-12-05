@@ -5,6 +5,41 @@ module Batch
   #
   class Toolbar < BatchObject
 
+    def print
+      @print_window ||= Batch::PrintModal.new @browser
+      open_window @print_window
+    end
+
+    def add
+      order_details = OrderDetails.new @browser
+      grid = Batch::OrdersGrid.new @browser
+      add_button = Button.new @browser.span Locators::ToolBar::add
+
+      grid.checkbox.uncheck 1
+
+      old_id = grid.order_id.row 1
+      log.info "Row 1 Order ID #{old_id}"
+      20.times do |count|
+        begin
+          add_button.safe_click
+          5.times{
+            sleep 1
+            break if order_details.present?
+            break if order_details.present?
+            break if order_details.present?
+            log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"
+          }
+          new_id = grid.order_id.row 1
+          add_successful = old_id != new_id
+          log.info "Add #{(add_successful)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
+          return order_details if add_successful
+        rescue
+          #ignore
+        end
+      end
+      raise "Unable to I Add a new orders!" unless order_details.present?
+    end
+
     def browser_settings_button
       Button.new (@browser.span :css => "span[class*=sdc-icon-settings]")
     end
@@ -79,41 +114,6 @@ module Batch
       }
     end
 
-    def browser_add_button
-      Button.new (@browser.spans :text => 'Add').first
-    end
-
-    def add
-      order_details = OrderDetails.new @browser
-      grid = Batch::OrdersGrid.new @browser
-      add_button = Button.new (@browser.spans :text => 'Add').first
-
-      #uncheck first row in the grid
-      grid.checkbox.uncheck 1
-
-      old_id = grid.order_id.row 1
-      log.info "Row 1 Order ID #{old_id}"
-      20.times do |count|
-        begin
-          add_button.safe_click
-          5.times{
-            sleep 1
-            break if order_details.present?
-            break if order_details.present?
-            break if order_details.present?
-            log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"
-          }
-          new_id = grid.order_id.row 1
-          add_successful = old_id != new_id
-          log.info "Add #{(add_successful)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
-          return order_details if add_successful
-        rescue
-          #ignore
-        end
-      end
-      raise "Unable to I Add a new orders!" unless order_details.present?
-    end
-
     def print_expecting_error *args
       error_window = OrderErrors.new(@browser)
       open_window error_window
@@ -127,34 +127,16 @@ module Batch
       end
     end
 
-    def is_print_button_present
-      print_button.present?
-    end
-
-    def is_browser_print_button_present
-      browser_helper.present? browser_print_button
-    end
-
     def print_invalid_address
       open_window InvalidAddressError.new(@browser)
     end
 
-    def print_modal
-      @print_window ||= Batch::PrintModal.new @browser
-      open_window @print_window
-    end
-
     def wait_until_present
-      begin
-        browser_add_button.wait_until_present 15
-      rescue
-        #ignroe
-      end
-
+      browser_helper.wait_until_present @browser.span Locators::ToolBar::add
     end
 
     def present?
-      browser_add_button.present?
+      browser_helper.present? @browser.span Locators::ToolBar::add
     end
 
     def settings_modal

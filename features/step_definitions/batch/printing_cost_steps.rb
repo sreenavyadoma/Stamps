@@ -79,7 +79,7 @@ end
 Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expectation|
   log.info "Expectation: Expect Print Window Total Cost to be #{expectation}"
   begin
-    print_window = batch.toolbar.print_modal
+    print_window = batch.toolbar.print
     actual_value = print_window.total_cost
     10.times { |counter|
       #log_expectation_eql "#{counter}. Print Window Total Cost", expectation, actual_value
