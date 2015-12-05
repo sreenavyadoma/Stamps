@@ -206,12 +206,20 @@ module Batch
 
   class OrderId < Column
 
+    def exist? order_id
+      row_number order_id > 0
+    end
+
     def sort
       Sort.new @browser, :order_id
     end
 
     def scroll_into_view
       scroll :order_id
+    end
+
+    def row_num order_id
+      row_number order_id
     end
 
     def row row
