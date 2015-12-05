@@ -209,4 +209,5 @@ module Batch
       browser_settings_button.click
     end
   end
+
 end
