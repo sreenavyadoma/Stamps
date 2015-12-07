@@ -91,7 +91,7 @@ module Batch
       log.info "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" - sign-out failed":" was signed out.  Goodbye."}"
     end
 
-    def username_text_field
+    def username
       username.field.when_present.text
     end
 
