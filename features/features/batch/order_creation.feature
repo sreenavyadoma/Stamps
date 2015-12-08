@@ -10,7 +10,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Service to "Priority Mail Package"
     Then Set Order Details Form Insured Value to $15.00
@@ -18,7 +17,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Service to "Priority Mail Package"
     Then Set Order Details Form Insured Value to $45.00
@@ -29,7 +27,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Package"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -37,7 +34,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Large Package"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -45,7 +41,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Service to "Priority Mail Legal Flat Rate Envelope"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -53,7 +48,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Regional Rate Box A"
     Then Set Order Details Form Insured Value to $105.00
@@ -64,7 +58,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Express Package"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -72,7 +65,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 11
     Then Set Order Details Form Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -82,7 +74,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 3
     Then Set Order Details Form Service to "Media Mail Package"
     Then Set Order Details Form Insured Value to $56.00
@@ -93,7 +84,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 10
     Then Set Order Details Form Service to "Parcel Select Large Package"
     Then Set Order Details Form Insured Value to $235.00
@@ -109,7 +99,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Service to "Priority Mail Package"
     Then Set Order Details Form Insured Value to $15.00
@@ -117,7 +106,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Service to "Priority Mail Package"
     Then Set Order Details Form Insured Value to $45.00
@@ -128,7 +116,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Package"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -136,7 +123,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Large Package"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -144,7 +130,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Service to "Priority Mail Legal Flat Rate Envelope"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -152,7 +137,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Regional Rate Box A"
     Then Set Order Details Form Insured Value to $105.00
@@ -163,7 +147,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Express Package"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -171,7 +154,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 11
     Then Set Order Details Form Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -181,7 +163,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 3
     Then Set Order Details Form Service to "Media Mail Package"
     Then Set Order Details Form Insured Value to $56.00
@@ -192,7 +173,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 10
     Then Set Order Details Form Service to "Parcel Select Large Package"
     Then Set Order Details Form Insured Value to $235.00
@@ -204,7 +184,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Service to "Priority Mail Package"
     Then Set Order Details Form Insured Value to $15.00
@@ -212,7 +191,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Service to "Priority Mail Package"
     Then Set Order Details Form Insured Value to $45.00
@@ -223,7 +201,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Package"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -231,7 +208,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Large Package"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -239,7 +215,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Service to "Priority Mail Legal Flat Rate Envelope"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -247,7 +222,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Regional Rate Box A"
     Then Set Order Details Form Insured Value to $105.00
@@ -258,7 +232,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Service to "Priority Mail Express Package"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -266,7 +239,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 11
     Then Set Order Details Form Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set Order Details Form Tracking to "Signature Required"
@@ -276,7 +248,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Ounces to 3
     Then Set Order Details Form Service to "Media Mail Package"
     Then Set Order Details Form Insured Value to $56.00
@@ -287,7 +258,6 @@ Feature: 10 orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random
-    And Hide Order Details Form Ship-To fields
     Then Set Order Details Form Pounds to 10
     Then Set Order Details Form Service to "Parcel Select Large Package"
     Then Set Order Details Form Insured Value to $235.00
