@@ -15,7 +15,7 @@ wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=aut
 
 # bvt_shipping_address_management
 
-date_printed: --tags @date_printed --guess VERBOSE=true URL=qasc BROWSER=ff USR=qasc800  PW=password1
+date_printed: --tags @date_printed --guess VERBOSE=true
 
 address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto03 PW=326tsetaqcdS!
 address_management: --tags @address_management --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
