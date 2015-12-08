@@ -174,6 +174,9 @@ module Batch
         end
       end
 
+
+      log.info "Signed-in Username is #{navbar.username.text}"
+
       if plugin_issue.present?
         raise "Stamps.com Plugin Issue"
       end
