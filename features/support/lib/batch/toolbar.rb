@@ -89,7 +89,9 @@ module Batch
             break if order_details.present?
 
             if initializing_db.present?
-              raise "User #{nav_bar.username.text} is NOT setup correctly in ShipStation.  Check that this user's email is unique."
+              message = "\n*****  #{initializing_db.text}  *****\nUser #{nav_bar.username.text} is NOT setup correctly in ShipStation.  Check that this user's email is unique."
+              log.info message
+              raise message
             end
 
             log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"

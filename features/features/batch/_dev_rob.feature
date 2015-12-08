@@ -5,7 +5,17 @@ Feature: Test Development
     Given I am signed in as a batch shipper
 
   @rob_dev1
-    Scenario:
+  Scenario:
+    And I Add a new order
+    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Form Ounces to 5
+    Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
+    And Set Order Details Form Tracking to "USPS Tracking"
+    And Set Order Details Form Insured Value to $205.00
+    And Set Order Details Form Tracking to "USPS Tracking"
+
+  Scenario:
 
     And I Add a new order
     Then Set Order Details Form Ship-From to default
