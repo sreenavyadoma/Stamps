@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:date_printed) do |t|
+  t.profile = 'date_printed'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:two_up_expanded) do |t|
   t.profile = 'two_up_expanded'
   t.cucumber_opts = "-p cuke_reports"
