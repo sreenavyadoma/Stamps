@@ -183,7 +183,7 @@ module Batch
       row = 1
       column = column_number(:order_id)
       css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column})>div"
-      log.info "Order ID: #{order_id} CSS: #{css}"
+      #log.info "Order ID: #{order_id} CSS: #{css}"
       fields = @browser.divs :css => css
       fields.each_with_index { |div, index|
         row_text = browser_helper.text div
