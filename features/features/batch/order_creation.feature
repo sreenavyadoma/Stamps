@@ -3,7 +3,7 @@ Feature: 10 orders
   Background:
     Given I am signed in as a batch shipper
 
-  @orders_10
+  @orders_10 @order_creation
   Scenario:  Order Creation
 
     # First Class Mail
@@ -91,7 +91,7 @@ Feature: 10 orders
 
     And Sign out
 
-  @orders_20
+  @orders_20 @order_creation
   Scenario:  Order Creation
 
     # First Class Mail
