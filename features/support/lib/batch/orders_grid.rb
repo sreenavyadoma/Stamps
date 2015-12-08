@@ -130,7 +130,7 @@ module Batch
 
     def column_name_field column
       column_name = @browser.span :text => GRID_COLUMNS[column]
-      log.info "Column symbol \"#{column}\" is \"#{browser_helper.text column_name}\""
+      #log.info "Column symbol \"#{column}\" is \"#{browser_helper.text column_name}\""
       column_name
     end
 
