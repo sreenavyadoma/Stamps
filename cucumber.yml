@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile wonder_bvt
+default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 
 rob_dev: --tags @date_printed --guess VERBOSE=true URL=qasc BROWSER=ff USR=qasc800  PW=password1

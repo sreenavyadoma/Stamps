@@ -80,9 +80,9 @@ module Batch
       end
 
       if ENV['URL'] == "ss"
-        url = "http://#{Stamps::Test.url_prefix}.stamps.com/webbatch/"
+        url = "http://#{Stamps::Test.url_prefix}.stamps.com/orders/"
       else
-        url = "https://#{Stamps::Test.url_prefix}.stamps.com/webbatch/"
+        url = "https://#{Stamps::Test.url_prefix}.stamps.com/orders/"
       end
 
       #url = "https://#{Stamps::Test.url_prefix}.stamps.com/webbatch/"
