@@ -53,18 +53,18 @@ module Postage
 
         sign_in_link.safe_click unless sign_in_button.present?
         sign_in_button.safe_click
-        sleep 1
+        break if signed_in_user.present?
         sign_in_link.safe_click unless sign_in_button.present?
         sign_in_button.safe_click
-        sleep 1
+        break if signed_in_user.present?
         sign_in_link.safe_click unless sign_in_button.present?
         sign_in_button.safe_click
-        sleep 1
+        break if signed_in_user.present?
         sign_in_link.safe_click unless sign_in_button.present?
         sign_in_button.safe_click
-        sleep 1
+        break if signed_in_user.present?
         sign_in_link.safe_click unless sign_in_button.present?
-        sleep 1
+        break if signed_in_user.present?
 
         #log.info "Verifying account info... #{(verifying_account_info.present?)?"true":"false"}"
         if verifying_account_info.present?
