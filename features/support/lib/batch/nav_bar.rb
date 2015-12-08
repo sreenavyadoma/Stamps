@@ -77,8 +77,8 @@ module Batch
           sign_out_link.safe_click
           signed_in_username.safe_click unless sign_out_link.present?
           sign_out_link.safe_click
+          sleep 1
           sign_out_link.safe_click
-          sleep 2
           break unless signed_in_username.present?
         rescue
           #ignore

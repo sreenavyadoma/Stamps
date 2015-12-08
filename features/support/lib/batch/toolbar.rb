@@ -72,6 +72,10 @@ module Batch
       grid = Batch::OrdersGrid.new @browser
       add_button = Button.new @browser.span Locators::ToolBar::add
 
+      # Initializing Order Database
+      initializing_db = Label.new @browser.div :text => "Initializing Order Database"
+      nav_bar = NavBar.new @browser
+
       grid.checkbox.uncheck 1
 
       old_id = grid.order_id.row 1
@@ -80,10 +84,14 @@ module Batch
         begin
           add_button.safe_click
           5.times{
-            sleep 1
             break if order_details.present?
             break if order_details.present?
             break if order_details.present?
+
+            if initializing_db.present?
+              raise "User #{nav_bar.username.text} is NOT setup correctly in ShipStation.  Check that this user's email is unique."
+            end
+
             log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"
           }
           new_id = grid.order_id.row 1
