@@ -23,10 +23,6 @@ module Batch
       @browser.a(:id => 'buyMorePostageLnk')
     end
 
-    def username
-      Label.new @browser.span Locators::NavBar.username
-    end
-
     def orders
       Link.new @browser.link :css => "a[rel=WebBatch]"
     end
@@ -92,22 +88,24 @@ module Batch
     end
 
     def username
-      username.field.when_present.text
+      Label.new @browser.span Locators::NavBar.username
     end
 
     def wait_until_present *args
+      wait_field = @browser.span Locators::NavBar.username
       case args.length
         when 0
-          username.wait_until_present
+          browser_helper.wait_until_present wait_field
         when 1
-          username.wait_until_present args[0].to_i
+          browser_helper.wait_until_present wait_field args[0].to_i
         else
           raise "Wrong number of arguments."
       end
     end
 
     def present?
-      username.present?
+      present_field = @browser.span Locators::NavBar.username
+      browser_helper.present? present_field
     end
 
   end
