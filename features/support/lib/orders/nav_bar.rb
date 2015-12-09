@@ -1,9 +1,9 @@
-module Batch
+module Orders
 
   #
   # Navigation bar containing Sign-in, etc
   #
-  class NavBar < BatchObject
+  class NavBar < OrdersObject
     def login_div
       div = @browser.div :id => "loginDiv"
       begin

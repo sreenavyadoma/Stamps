@@ -1,6 +1,6 @@
-module Batch
+module Orders
 
-  class USPSTermsModal < BatchObject
+  class USPSTermsModal < OrdersObject
     private
 
     def usps_terms_modal

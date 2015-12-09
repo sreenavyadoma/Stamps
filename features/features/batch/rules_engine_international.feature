@@ -1,7 +1,7 @@
 Feature: International Field Validation
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @rules_engine @rules_engine_international
   Scenario: Add Missing Validation Logic for Phone and International Email

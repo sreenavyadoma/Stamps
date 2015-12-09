@@ -2,7 +2,7 @@
 Feature: Orders Grid - Tracking & Order Status
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @grid_tracking_order_status
   Scenario: Tracking & Order Status

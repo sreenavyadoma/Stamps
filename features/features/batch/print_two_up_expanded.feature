@@ -3,7 +3,7 @@
 Feature:  As a batch shipper, I want to be able to print multiple labels
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
 
   @two_up_expanded @two_up_expanded_1

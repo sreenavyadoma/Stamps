@@ -2,7 +2,7 @@
 Feature: Ambigious Address
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @ambigious_address
   Scenario: Exact Address Not Found

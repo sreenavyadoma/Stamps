@@ -1,7 +1,7 @@
-module Batch
+module Orders
 
   # Orders Grid Toolbar
-  class GridToolbar < BatchObject
+  class GridToolbar < OrdersObject
     def present?
 
     end
@@ -72,7 +72,7 @@ module Batch
   end
 
   # Grid Columns
-  class Column < BatchObject
+  class Column < OrdersObject
     MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
     TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
     GRID_COLUMNS ||= {
@@ -955,7 +955,7 @@ module Batch
   end
 
   # Orders Grid
-  class OrdersGrid < BatchObject
+  class OrdersGrid < OrdersObject
 
     def present?
       browser_helper.present? @browser.div Locators::OrdersGrid::present

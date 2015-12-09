@@ -1,4 +1,4 @@
-module Batch
+module Orders
   module Locators
     module OrderDetails
       class << self

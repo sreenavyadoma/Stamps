@@ -2,7 +2,7 @@
 Feature: Verify Ship Works Integration
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @ship_works
   Scenario:  Order Details Form

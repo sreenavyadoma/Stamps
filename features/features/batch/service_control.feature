@@ -2,7 +2,7 @@
   Feature: Domestic USPS service used to fulfill an order.
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @service_control
   Scenario:  Inline Rates

@@ -2,7 +2,7 @@
 Feature: User Views Price Next to Service Dropdown
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @inline_service_rates
   Scenario:  User Views Price Next to Service Dropdown

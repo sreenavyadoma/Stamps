@@ -81,8 +81,8 @@ end
 
 Given /^Expect Grid ship cost data error tooltip to be \"(.+)\"$/ do |value|
   log.info "Expectation: Expect Grid ship cost data error tooltip to be #{value}"
-  grid_order_id = batch.grid.order_id.row 1
-  grid_ship_cost = batch.grid.ship_cost.data grid_order_id
+  grid_order_id = orders.grid.order_id.row 1
+  grid_ship_cost = orders.grid.ship_cost.data grid_order_id
   browser_error_message = grid_ship_cost.attribute_value "data-errorqtip"
   browser_error_message.should include value
   log.info "Error message is #{browser_error_message}"
@@ -90,18 +90,18 @@ end
 
 Then /^Expect Grid Ship Cost error to contain \"(.*)\"$/ do |expectation|
   log.info "Expectation: Expect Grid Ship Cost error to contain #{expectation}"
-  grid_order_id = batch.grid.order_id.row 1
+  grid_order_id = orders.grid.order_id.row 1
   log.info "Grid order id is #{grid_order_id}"
-  ship_cost_error = batch.grid.ship_cost.data_error grid_order_id
+  ship_cost_error = orders.grid.ship_cost.data_error grid_order_id
   log.info ship_cost_error
   ship_cost_error.should include expectation
 
-  ship_cost_error = batch.grid.ship_cost.data_error "81453"
+  ship_cost_error = orders.grid.ship_cost.data_error "81453"
   log.info ship_cost_error
 
-  ship_cost_error = batch.grid.ship_cost.data_error "81408"
+  ship_cost_error = orders.grid.ship_cost.data_error "81408"
   log.info ship_cost_error
 
-  ship_cost_error = batch.grid.ship_cost.data_error "81407"
+  ship_cost_error = orders.grid.ship_cost.data_error "81407"
   log.info ship_cost_error
 end

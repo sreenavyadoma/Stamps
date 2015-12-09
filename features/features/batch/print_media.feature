@@ -2,7 +2,7 @@
 Feature: Print Media
 
   Background:
-    Given I am signed in as batch shipper ff/qacc/auto15/326tsetaqcdS!
+    Given I am signed in to Orders as ff/qacc/auto15/326tsetaqcdS!
 
   @print_media
   Scenario:  As a batch shipper, I want to be able to change my print media

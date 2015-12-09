@@ -1,7 +1,7 @@
 Feature: 25 orders
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @orders_25 @jenkins_orders
   Scenario:  25 orders

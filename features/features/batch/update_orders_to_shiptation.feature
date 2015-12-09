@@ -2,7 +2,7 @@
 Feature:  Update Order to ShipStation
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @update_orders_to_shipstation
   Scenario:  Add a new order

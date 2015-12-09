@@ -1,6 +1,6 @@
-module Batch
+module Orders
 
-  class OrderForm < BatchObject
+  class OrderForm < OrdersObject
     def click_form
       item_label = Label.new @browser.label :text => 'Item:'
       10.times {
@@ -1009,7 +1009,7 @@ module Batch
     end
   end
 
-  class ManageShippingAddresses < BatchObject
+  class ManageShippingAddresses < OrdersObject
     public
 
     def name(row)
@@ -1271,7 +1271,7 @@ module Batch
 
   end
 
-  class AddShippingAdress < BatchObject
+  class AddShippingAdress < OrdersObject
     public
     def shipping_address=(table)
       self.origin_zip = table["ship_from_zip"]
@@ -1394,7 +1394,7 @@ module Batch
 
   end
 
-  class DeleteShippingAddress < BatchObject
+  class DeleteShippingAddress < OrdersObject
     public
     def delete
       5.times {
@@ -1433,7 +1433,7 @@ module Batch
     end
   end
 
-  class ExactAddressNotFound < BatchObject
+  class ExactAddressNotFound < OrdersObject
 
     private
     def exact_address_not_found_field
@@ -1460,7 +1460,7 @@ module Batch
       single_order_form = OrderDetails.new @browser
       single_order_form.validate_address_link
       #single_order_form.expand
-      single_order_form.ship_to.set BatchHelper.instance.format_address(partial_address_hash)
+      single_order_form.ship_to.set OrdersHelper.instance.format_address(partial_address_hash)
       5.times {
         begin
           item_label.click
@@ -1474,7 +1474,7 @@ module Batch
     end
   end
 
-  class ViewRestrictions < BatchObject
+  class ViewRestrictions < OrdersObject
     def browser_ok_button
       Button.new @browser.span :text => "OK"
     end
@@ -1748,7 +1748,7 @@ module Batch
 
   end
 
-  class SingleOrderFormLineItem < BatchObject
+  class SingleOrderFormLineItem < OrdersObject
     def remove_field
       @browser.span :css => "span[class*=sdc-icon-remove]"
     end
@@ -1821,11 +1821,11 @@ module Batch
     end
 
     def service
-      @batch_service ||= ServiceDropDown.new @browser
+      @orders_service ||= ServiceDropDown.new @browser
     end
 
     def tracking
-      @batch_tracking ||= TrackingDropDown.new @browser
+      @orders_tracking ||= TrackingDropDown.new @browser
     end
 
     def address_textbox

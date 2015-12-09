@@ -1,6 +1,6 @@
-module Batch
+module Orders
 
-  class WelcomeModal < BatchObject
+  class WelcomeModal < OrdersObject
     private
     def okay_button
       @browser.span :text => 'OK'
@@ -27,7 +27,7 @@ module Batch
     end
   end
 
-  class WelcomeOrdersPage < BatchObject
+  class WelcomeOrdersPage < OrdersObject
     private
     def continue_span
       @browser.span :text => "Continue"
@@ -56,7 +56,7 @@ module Batch
     end
   end
 
-  class SignInPage < BatchObject
+  class SignInPage < OrdersObject
 
     def username
       Textbox.new @browser.text_field Locators::SignIn::username
@@ -85,7 +85,6 @@ module Batch
         url = "https://#{Stamps::Test.url_prefix}.stamps.com/orders/"
       end
 
-      #url = "https://#{Stamps::Test.url_prefix}.stamps.com/webbatch/"
       @browser.goto url
       log.info "Page loaded.  #{url}"
       self
@@ -120,7 +119,7 @@ module Batch
       welcome_modal = WelcomeModal.new @browser
       welcome_orders_page = WelcomeOrdersPage.new @browser
       plugin_issue = ErrorStampsPluginIssue.new @browser
-      toolbar = Batch::Toolbar.new @browser
+      toolbar = Orders::Toolbar.new @browser
 
       20.times do
         begin

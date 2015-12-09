@@ -1,7 +1,7 @@
 Feature: Date Printed
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @date_printed
   Scenario: Set Ship Date to today

@@ -2,7 +2,7 @@
 Feature: Tracking
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @tracking
   Scenario:  Print - First-Class Mail Envelope

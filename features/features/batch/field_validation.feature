@@ -1,7 +1,7 @@
 Feature: Add Missing Field Validation
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @validate_domestic @ray_test
   Scenario: Add Missing Validation Logic for Domestic Fields

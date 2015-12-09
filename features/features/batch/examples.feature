@@ -1,7 +1,7 @@
 Feature: Examples
 
     Background:
-        Given I am signed in as a batch shipper
+        Given I am signed in to Orders
 
     Scenario:  Inline Rates
         And I Add a new order

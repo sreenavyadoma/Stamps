@@ -1,7 +1,7 @@
 Feature: 10 orders
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @orders_10 @order_creation
   Scenario:  Order Creation

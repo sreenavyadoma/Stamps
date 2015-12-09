@@ -2,7 +2,7 @@
 Feature: Ship-To Addresses
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @inline_service_rates
   Scenario:  System Calls GetRates When "Ship-To Address" is changed

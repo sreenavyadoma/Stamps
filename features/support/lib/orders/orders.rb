@@ -1,17 +1,17 @@
-module Batch
+module Orders
 
-  class WebBatch < BatchObject
+  class Orders < OrdersObject
 
     def navbar
-      @navigation_bar ||= Batch::NavBar.new @browser
+      @navigation_bar ||= Orders::NavBar.new @browser
     end
 
     def toolbar
-      @toolbar ||= Batch::Toolbar.new @browser
+      @toolbar ||= Orders::Toolbar.new @browser
     end
 
     def sign_in_page
-      @sign_in ||= Batch::SignInPage.new @browser
+      @sign_in ||= Orders::SignInPage.new @browser
     end
 
     def awaiting_shipment
@@ -25,7 +25,7 @@ module Batch
     end
 
     def filter
-      @filter ||= Batch::FilterPanel.new @browser
+      @filter ||= Orders::FilterPanel.new @browser
     end
 
     def multi_order

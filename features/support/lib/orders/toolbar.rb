@@ -1,6 +1,6 @@
-module Batch
+module Orders
 
-  class MoveConfirmation < BatchObject
+  class MoveConfirmation < OrdersObject
     def move_label
       Label.new @browser.span Locators::ToolBar::confirmation_modal_move_label
     end
@@ -12,17 +12,17 @@ module Batch
     def move
       label = move_label
       label.click_while_present
-      Batch::FilterPanel.new @browser
+      Orders::FilterPanel.new @browser
     end
 
     def cancel
       label = cancel_label
       label.click_while_present
-      Batch::FilterPanel.new @browser
+      Orders::FilterPanel.new @browser
     end
   end
 
-  class MoveMenu < BatchObject
+  class MoveMenu < OrdersObject
     def move_to_shipped_label
       Label.new @browser.span Locators::ToolBar::move_to_shipped
     end
@@ -60,16 +60,16 @@ module Batch
   #
   #  Contains Add/Edit buton for orders.
   #
-  class Toolbar < BatchObject
+  class Toolbar < OrdersObject
 
     def print
-      @print_window ||= Batch::PrintModal.new @browser
+      @print_window ||= Orders::PrintModal.new @browser
       open_window @print_window
     end
 
     def add
       order_details = OrderDetails.new @browser
-      grid = Batch::OrdersGrid.new @browser
+      grid = Orders::OrdersGrid.new @browser
       add_button = Button.new @browser.span Locators::ToolBar::add
 
       # Initializing Order Database

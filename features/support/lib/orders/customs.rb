@@ -1,6 +1,6 @@
-module Batch
+module Orders
 
-  class OriginCountry < BatchObject
+  class OriginCountry < OrdersObject
 
     def initialize(browser, index)
       super browser
@@ -40,7 +40,7 @@ module Batch
     end
   end
 
-  class CustomsFields < BatchObject
+  class CustomsFields < OrdersObject
 
     def browser_edit_form_button
       links = @browser.links :css => "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
@@ -76,7 +76,7 @@ module Batch
 
   end
 
-  class CustomsItemGrid < BatchObject
+  class CustomsItemGrid < OrdersObject
 
     def line_item_count
       (@browser.tables :css => "div[id^=customsItemsGrid-]>div>div>table").size
@@ -98,7 +98,7 @@ module Batch
     end
   end
 
-  class CustomsLineItem < BatchObject
+  class CustomsLineItem < OrdersObject
     def line_item number
       @number = number
       self
@@ -184,7 +184,7 @@ module Batch
 
   end
 
-  class UspsPrivactActStatementModal < BatchObject
+  class UspsPrivactActStatementModal < OrdersObject
     def window_title
       Label.new @browser.div :text => "USPS Privacy Act Statement"
     end
@@ -199,7 +199,7 @@ module Batch
 
   end
 
-  class RestrictionsAndProhibitionsModal < BatchObject
+  class RestrictionsAndProhibitionsModal < OrdersObject
 
     def present?
 
@@ -207,7 +207,7 @@ module Batch
 
   end
 
-  class InternalTransaction < BatchObject
+  class InternalTransaction < OrdersObject
 
     def text_box
       Textbox.new @browser.text_field :name => "IsITNRequired"
@@ -234,7 +234,7 @@ module Batch
     end
   end
 
-  class PackageContents < BatchObject
+  class PackageContents < OrdersObject
 
     def text_box
       Textbox.new @browser.text_field :name => "CustomsContents"
@@ -261,7 +261,7 @@ module Batch
     end
   end
 
-  class NonDeliveryOptions < BatchObject
+  class NonDeliveryOptions < OrdersObject
 
     def text_box
       Textbox.new @browser.text_field :name => "NonDelivery"
@@ -288,7 +288,7 @@ module Batch
     end
   end
 
-  class CustomsForm < BatchObject
+  class CustomsForm < OrdersObject
     public
 
     def present?

@@ -2,7 +2,7 @@
 Feature: Test Development
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @rob_dev1
   Scenario:

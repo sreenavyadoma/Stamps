@@ -1,7 +1,7 @@
 Feature: Test Development
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @local_rating_rob
   Scenario:

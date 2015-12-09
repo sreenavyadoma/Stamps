@@ -1,6 +1,6 @@
-module Batch
+module Orders
 
-  class PrintModalObject < BatchObject
+  class PrintModalObject < OrdersObject
     def window_x_button
       @browser.img :css => "img[class*='x-tool-img x-tool-close']"
     end
@@ -22,7 +22,7 @@ module Batch
     end
   end
 
-  class UspsTerms < BatchObject
+  class UspsTerms < OrdersObject
     def present?
       (Label.new @browser.div :text => "USPS Terms").present?
     end
@@ -161,7 +161,7 @@ module Batch
     end
 
     def now_month_dd
-      picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
+      picker = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
       today = Button.new @browser.span :css => "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
       10.times {
         picker.safe_click unless today.present?
@@ -173,7 +173,7 @@ module Batch
     end
 
     def todays_date
-      picker = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
+      picker = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
       today = Button.new Button.new @browser.div :css => "div[title=Today]"
       10.times {
         picker.safe_click unless today.present?
@@ -195,7 +195,7 @@ module Batch
     def today_plus day
       day = day.to_i
       date_picker_header = Label.new @browser.div :class => "x-datepicker-header"
-      picker_button = Button.new @browser.div Batch::Locators::PrintModal.date_picker_button
+      picker_button = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
       ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"
 
       ship_date_str = test_helper.now_plus_month_dd day
@@ -279,11 +279,11 @@ module Batch
     end
 
     def paper_tray
-      Batch::PaperTray.new @browser
+      Orders::PaperTray.new @browser
     end
 
     def printer
-      Batch::Printer.new @browser
+      Orders::Printer.new @browser
     end
 
     def printing_on

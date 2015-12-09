@@ -2,7 +2,7 @@
 Feature: Order Status - Awaiting Shipment
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @order_status
   Scenario: Order Status - Awaiting Shipment

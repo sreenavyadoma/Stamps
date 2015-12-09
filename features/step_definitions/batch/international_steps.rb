@@ -1,6 +1,6 @@
 Then /^Set Order Details Form Ship-To country to (.*)$/ do |country|
   log.info "Step: Set Order Details Form Ship-To country to #{country}"
-  @international_ship_to = batch.order_details.ship_to.country.select country
+  @international_ship_to = orders.order_details.ship_to.country.select country
 end
 
 # random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
@@ -46,7 +46,7 @@ end
 Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
   log.info "Expectation: Expect International Ship-To #{ship_to_field} field displays #{value}"
 
-  @international_ship_to = batch.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
 
   case ship_to_field.downcase
     when "name"
@@ -96,7 +96,7 @@ end
 
 Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, value|
   log.info "Step: Set International Ship-To #{ship_to_field} to #{value}"
-  @international_ship_to = batch.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
 
   case ship_to_field.downcase
 
@@ -170,7 +170,7 @@ end
 
 Given /^Expect Order Details Form International Address fields are visible$/ do
   log.info "Expectation: Expect Order Details Form International Address fields are visible"
-  @international_ship_to = batch.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true
   @international_ship_to.address_1.present?.should be true
@@ -184,7 +184,7 @@ end
 
 Then /^Expect Order Details Form Domestic Ship-To fields are hidden$/ do
   log.info "Expectation: Expect Order Details Form Domestic Ship-To fields are hidden"
-  @single_order_form = batch.order_details
+  @single_order_form = orders.order_details
   @single_order_form.ship_to.present?.should be false
   @single_order_form.email.present?.should be false
   @single_order_form.phone.present?.should be false
@@ -192,7 +192,7 @@ end
 
 Then /^Expect Order Details Form Customs (.+) button is (.+)/ do |button, expectation|
   log.info "Expectation: Expect Order Details Form Customs #{button} button is #{expectation}"
-  @single_order_form = batch.order_details
+  @single_order_form = orders.order_details
   case button.downcase
     when "restrictions"
       case expectation.downcase
@@ -327,7 +327,7 @@ end
 
 Given /^Add Order Details Form Item - Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
   log.info "Step: Add Order Details Form Item - Quantity #{qty}, ID #{id}, Description #{description}"
-  line_item = batch.order_details.add_item
+  line_item = orders.order_details.add_item
   line_item.qty qty
   line_item.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
   line_item.description (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description

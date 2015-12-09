@@ -1,7 +1,7 @@
 Feature: Sorting.
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @sort @regression
   Scenario: Orders Grid Sorting

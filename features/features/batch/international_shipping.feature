@@ -1,7 +1,7 @@
 Feature:  International and APO/FPO Printing (CN22 and CP72)
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @international @international_data_error @international_failure
   Scenario:  Customs Form Data Error

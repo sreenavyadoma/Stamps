@@ -1,4 +1,4 @@
-module Batch
+module Orders
 
   class FilterPanel < BrowserObject
     private

@@ -1,7 +1,7 @@
 # encoding: utf-8
 include Stamps
 include Stamps::Browser
-include Batch
+include Orders
 include Postage
 include Log4r
 include RSpec

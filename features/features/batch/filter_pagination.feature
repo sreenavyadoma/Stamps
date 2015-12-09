@@ -1,7 +1,7 @@
 Feature: As a batch shipper, I want to be able to filter orders by status [B-01621]
 
   Background:
-    Given I am signed in as batch shipper auto_paginate/password1
+    Given I am signed in to Orders as auto_paginate/password1
 
 
 

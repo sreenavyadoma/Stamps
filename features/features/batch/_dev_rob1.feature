@@ -1,6 +1,6 @@
 Feature: Test Development
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   Scenario:
     And I Add a new order

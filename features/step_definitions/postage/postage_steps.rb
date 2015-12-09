@@ -157,7 +157,7 @@ end
 
 Then /^Create page objects for Print On Shipping Label$/ do
   random_ship_to_address = test_helper.random_ship_to
-  formatted_address = BatchHelper.instance.format_address(random_ship_to_address)
+  formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
 
   shipping_label = print_postage.print_on "Shipping Label - 8 ½” x 11” Paper"
 
