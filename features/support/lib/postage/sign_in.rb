@@ -27,18 +27,18 @@ module Postage
             username = args[0]
             password = args[1]
           else
-            log.info "Using Default Sign-in Credentials: #{ENV["USR"]}/#{ENV["PW"]}"
+            log.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
             username = ENV["USR"]
             password = ENV["PW"]
           end
         else
-          log.info "Using Default Sign-in Credentials: #{ENV["USR"]}/#{ENV["PW"]}"
+          log.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
           username = ENV["USR"]
           password = ENV["PW"]
       end
 
       sign_in_link = Link.new @browser.link :text => "Sign In"
-      username_textbox = Textbox.new @browser.text_field Locators::SignIn.username_text_field
+      username_textbox = Textbox.new @browser.text_field Locators::SignIn.username
       password_textbox = Textbox.new @browser.text_field Locators::SignIn.password_text_field
       sign_in_button = Button.new @browser.button Locators::SignIn.button
       verifying_account_info = Label.new @browser.div :text => "Verifying account information..."
@@ -53,18 +53,18 @@ module Postage
 
         sign_in_link.safe_click unless sign_in_button.present?
         sign_in_button.safe_click
-        sleep 1
+        break if signed_in_user.present?
         sign_in_link.safe_click unless sign_in_button.present?
         sign_in_button.safe_click
-        sleep 1
+        break if signed_in_user.present?
         sign_in_link.safe_click unless sign_in_button.present?
         sign_in_button.safe_click
-        sleep 1
+        break if signed_in_user.present?
         sign_in_link.safe_click unless sign_in_button.present?
         sign_in_button.safe_click
-        sleep 1
+        break if signed_in_user.present?
         sign_in_link.safe_click unless sign_in_button.present?
-        sleep 1
+        break if signed_in_user.present?
 
         #log.info "Verifying account info... #{(verifying_account_info.present?)?"true":"false"}"
         if verifying_account_info.present?

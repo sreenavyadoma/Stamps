@@ -2,7 +2,7 @@
 Feature: Ship-To Addresses
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @inline_service_rates
   Scenario:  System Calls GetRates When "Ship-To Address" is changed
@@ -20,7 +20,6 @@ Feature: Ship-To Addresses
     Then Expect Order Details Form Service Cost inline price for "Priority Mail Large Flat Rate Box" to be greater than $0.01
     Then Expect Order Details Form Service Cost inline price for "Priority Mail Regional Rate Box A" to be greater than $0.01
     Then Expect Order Details Form Service Cost inline price for "Priority Mail Regional Rate Box B" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Regional Rate Box C" to be greater than $0.01
     Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Package" to be greater than $0.01
     Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Flat Rate Envelope" to be greater than $0.01
     Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Legal Flat Rate Envelope" to be greater than $0.01

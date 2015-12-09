@@ -11,7 +11,7 @@ module Postage
     end
 
     def navbar
-      @navigation ||= PostageBase::NavBar.new @browser
+     Postage::NavBar.new @browser
     end
 
     def toolbar

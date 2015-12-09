@@ -4,7 +4,7 @@ Company Name
 201 Mission Street Ste 700
 San Francisco, CA 94105
 
-Domestic Partial Address 
+Domestic Partial Address
 1390 Market Street
 San Francisco, CA 94102
 
@@ -35,7 +35,6 @@ Services:
 First-Class Mail Large Envelope/Flat (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
-Priority Mail Regional Rate Box C (2 Days)
 Media Mail Package/Flat/Thick Envelope (6 Days)
 Parcel Select Package/Flat/Thick Envelope (6 Days)
  
@@ -52,7 +51,6 @@ Services:
 First-Class Mail Large Envelope/Flat (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
-Priority Mail Regional Rate Box C (2 Days)
 Media Mail Package/Flat/Thick Envelope (6 Days)
 Parcel Select Package/Flat/Thick Envelope (6 Days)
  
@@ -69,7 +67,6 @@ Services:
 First-Class Mail Large Envelope/Flat (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
-Priority Mail Regional Rate Box C (2 Days)
 Media Mail Package/Flat/Thick Envelope (6 Days)
 Parcel Select Package/Flat/Thick Envelope (6 Days)
  
@@ -86,7 +83,6 @@ Services:
 First-Class Mail Large Envelope/Flat (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
-Priority Mail Regional Rate Box C (2 Days)
 Media Mail Package/Flat/Thick Envelope (6 Days)
 Parcel Select Package/Flat/Thick Envelope (6 Days)
  
@@ -129,14 +125,6 @@ Domestic DPO
 International CN 22
 International CP 72
 
-Shipping Label 8 ½” x 11” Paper
-Services:
-First-Class Mail Large Envelope/Flat (3 Days)
-Priority Mail Package (2 Days)
-Priority Mail Medium Flat Rate Box (2 Days)
-Priority Mail Regional Rate Box C (2 Days)
-Media Mail Package/Flat/Thick Envelope (6 Days)
-Parcel Select Package/Flat/Thick Envelope (6 Days)
 
 DOMESTIC:
 Shipping Label 8 ½” x 11” Paper

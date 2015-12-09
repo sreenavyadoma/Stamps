@@ -3,7 +3,7 @@ Feature: Postage Balance
 
   @update_postage_balance
   Scenario: Update Postage Balance After Each Print
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
     And I Add a new order
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to random

@@ -4,7 +4,7 @@ Feature: Local Rating Zone 1
   Ratesets CBP, CPP and the most common of the SAS rates should be tested.
 
   Background:
-    Given I am signed in as batch shipper ff/qacc/auto30/326tsetaqcdS!
+    Given I am signed in to Orders as ff/qacc/auto30/326tsetaqcdS!
 
   @local_rating_zone1
   Scenario: Zone 1 - Priority Mail Large/Thick Envelope
@@ -291,34 +291,6 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box B|18|0|1|1|1|USPS Tracking|6.16|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box B|19|0|1|1|1|USPS Tracking|6.16|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box B|20|0|1|1|1|USPS Tracking|6.16|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box B|21|0|1|1|1|USPS Tracking|0.00|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|1|0|1|1|1|Signature Required|12.30|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|1|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|2|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|3|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|4|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|5|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|6|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|7|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|8|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|9|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|10|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|11|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|12|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|13|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|14|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|15|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|16|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|17|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|18|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|19|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|20|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|21|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|22|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|23|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|24|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|25|0|1|1|1|USPS Tracking|9.85|
-      |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box C|26|0|1|1|1|USPS Tracking|0.00|
 
     And Sign out
 

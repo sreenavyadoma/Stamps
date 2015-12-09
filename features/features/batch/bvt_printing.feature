@@ -2,7 +2,7 @@
 Feature:  BVT Printing
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @bvt_printing
   Scenario:  Printing

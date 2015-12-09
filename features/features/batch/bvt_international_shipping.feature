@@ -2,7 +2,7 @@
 Feature:  BVT International Shipping
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @bvt_international_shipping
   Scenario: International Shipping

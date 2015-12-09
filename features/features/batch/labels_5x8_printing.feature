@@ -2,7 +2,7 @@
 Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Background:
-  Given I am signed in as a batch shipper
+  Given I am signed in to Orders
 
   Scenario: Print - Shipping Label - 5 ½" x 8 ½"
     And I Add a new order

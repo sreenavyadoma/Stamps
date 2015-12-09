@@ -1,8 +1,8 @@
-module Batch
+module Orders
 
-  class BatchObject < Stamps::Browser::BrowserObject
-    def batch_helper
-      BatchHelper.instance
+  class OrdersObject < Stamps::Browser::BrowserObject
+    def orders_helper
+      OrdersHelper.instance
     end
 
     def test_helper
@@ -10,7 +10,7 @@ module Batch
     end
   end
 
-  class BatchHelper
+  class OrdersHelper
     include Singleton
     include DataMagic
 

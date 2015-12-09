@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want to be able to create and print many orders automatically
 
   Background:
-    Given I am signed in as batch shipper ff
+    Given I am signed in to Orders as ff
 
   @print_many_orders
   Scenario:  Print Specified Number of Orders

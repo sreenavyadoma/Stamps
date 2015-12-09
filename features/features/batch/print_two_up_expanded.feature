@@ -3,7 +3,7 @@
 Feature:  As a batch shipper, I want to be able to print multiple labels
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
 
   @two_up_expanded @two_up_expanded_1
@@ -147,7 +147,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Form Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | PM RR Box C | 8.5x11 Right Side 1 | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
-    Then Set Order Details Form Service to "Priority Mail Regional Rate Box C"
     Then Set Order Details Form Ounces to 3
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
@@ -504,7 +503,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | PMEI MFR Box | SDC-1200  | 234 Laurier Avenue West  | random     | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-    Then Set Order Details Form Service to "Priority Mail Express International Flat Rate Box"
     Then Set Order Details Form Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"

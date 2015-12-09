@@ -1,6 +1,6 @@
-module Batch
+module Orders
 
-  class PurchaseComplete < BatchObject
+  class PurchaseComplete < OrdersObject
     private
 
     def ok_button
@@ -26,7 +26,7 @@ module Batch
     self
   end
 
-  class PurchaseProcessing < BatchObject
+  class PurchaseProcessing < OrdersObject
     private
 
     def purchase_processing
@@ -59,7 +59,7 @@ module Batch
 
   end
 
-  class ConfirmPostage < BatchObject
+  class ConfirmPostage < OrdersObject
     private
 
     def confirm_purchase_button
@@ -96,7 +96,7 @@ module Batch
 
   end
 
-  class BuyPostage < BatchObject
+  class BuyPostage < OrdersObject
     private
     def purchase_button
       @browser.span :id => "sdc-purchasewin-purchasebtn-btnInnerEl"

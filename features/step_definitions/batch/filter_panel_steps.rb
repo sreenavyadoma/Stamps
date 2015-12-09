@@ -1,133 +1,122 @@
 Then /^Filter Awaiting Shipment Orders$/ do
   log.info "Step:  Filter Awaiting Shipment Orders"
-  batch.filter.awaiting_shipment
+  orders.filter.awaiting_shipment
 end
 
 Then /^Filter Shipped Orders$/ do
   log.info "Step:  Filter Shipped Orders"
-  batch.filter.shipped
+  orders.filter.shipped
 end
 
 Then /^Filter Cancelled Orders$/ do
   log.info "Step:  Filter Cancelled Orders"
-  batch.filter.cancelled
+  orders.filter.cancelled
 end
 
 Then /^Expect Awaiting Shipment count to be less by (\d+)$/ do |count|
   log.info "Expectation: Expect Awaiting Shipment count to be less by #{count}"
-  awaiting_shipment_count = batch.filter.awaiting_shipment_count
+  awaiting_shipment_count = orders.filter.awaiting_shipment_count
   log.info "Test #{(awaiting_shipment_count = @awaiting_shipment_count.to_i - count.to_i)?'Passed':'Failed'}"
   awaiting_shipment_count.should eql @awaiting_shipment_count.to_i - count.to_i
 end
 
 Then /^Expect system shows name of (.*) filter in closed panel$/ do |expectation|
   log.info "Expectation: Expect system shows name of #{expectation} filter in closed panel"
-  actual = batch.filter.get_closed_filter_name
+  actual = orders.filter.get_closed_filter_name
   log.info "Test #{(actual==expectation)?'Passed':'Failed'}"
   actual.should eql expectation
 end
 
 Then /^Expect system changes the panel arrow so that it is pointing to the (.*) direction$/ do |expectation|
   log.info "Expectation: Expect system changes the panel arrow so that it is pointing to the #{expectation} direction"
-  actual = batch.filter.get_arrow_direction
+  actual = orders.filter.get_arrow_direction
   log.info "Test #{(actual==expectation)?'Passed':'Failed'}"
   actual.should eql expectation
 end
 
 Then /^Expect system selects (.*) Filter and deselects the previous filter$/ do |filter|
   log.info "Expectation: Expect system selects #{filter} Filter and deselects the previous filter"
-  actual = batch.filter.get_selected_filter_text
+  actual = orders.filter.get_selected_filter_text
   actual.should eql filter
 end
 
 Then /^Expect system updates the grid to show only orders that match the (.*) filter$/ do |expectation|
   log.info "Expectation: Expect system updates the grid to show only orders that match the #{expectation} filter"
-  actual = batch.filter.is_order_grid_filtered(expectation)
+  actual = orders.filter.is_order_grid_filtered(expectation)
   log.info "Test #{(actual==expectation)?'Passed':'Failed'}"
   actual.should eql true
 end
 
-Then /^Expect system (.*) "Print" button in control ribbon$/ do |status|
-  log.info "Expectation: Expect system #{status} Print button in control ribbon"
-
-  actual = batch.toolbar.is_browser_print_button_present
-  if status == 'hides'
-    actual.should eql false
-  elsif status == 'displays'
-    actual.should eql true
-  end
-end
-
 Then /^Expect system displays expanded filters panel$/ do
   log.info "Expectation: Expect system displays expanded filters panel"
-  actual = batch.filter.is_filter_panel_present
+  actual = orders.filter.is_filter_panel_present
   log.info "Test #{(actual==true)?'Passed':'Failed'}"
   actual.should eql true
 end
 
 Then /^Expect system displays "Awaiting Shipment" and "Shipped" filters in panel$/ do
   log.info "Expectation: Expect system displays Awaiting Shipment and Shipped filters in panel"
-  actual = batch.filter.are_filter_buttons_present
+  actual = orders.filter.are_filter_buttons_present
   log.info "Test #{(actual==true)?'Passed':'Failed'}"
   actual.should eql true
 end
 
 Then /^Expect system selects the (.*) filter by default$/ do |expectation|
   log.info "Expectation: Expect system selects the #{expectation} filter by default"
-  actual = batch.filter.get_selected_filter_text
+  actual = orders.filter.get_selected_filter_text
   log.info "Test #{(actual==expectation)?'Passed':'Failed'}"
   actual.should eql expectation
 end
 
 Then /^Click on the Filters panel border arrow$/ do
   log.info "Step: Click on the Filters panel border arrow"
-  batch.filter.click_border_arrow
+  orders.filter.click_border_arrow
 end
 
 Then /^Expect system closes Filters panel$/ do
   log.info "Expectation: Expect system closes Filters panel"
-  actual = batch.filter.is_filter_panel_present
+  actual = orders.filter.is_filter_panel_present
   actual.should eql false
 end
 
 Then /^Expect system shows an arrow above the Order Status filter name$/ do
   log.info "Expectation: Expect system shows an arrow above the Order Status filter name"
-  batch.filter.is_header_arrow_present
+  orders.filter.is_header_arrow_present
 end
 
 Then /^Expect system opens the Filters panel$/ do
   log.info "Expectation: Expect system opens the Filters panel"
-  actual = batch.filter.is_filter_panel_present
+  actual = orders.filter.is_filter_panel_present
   log.info "Test #{(actual==true)?'Passed':'Failed'}"
   actual.should eql true
 end
 
 Then /^Expect system hides the header arrow and Order Status filter name$/ do
   log.info "Expectation: Expect system hides the header arrow and Order Status filter name"
-  actual = batch.filter.are_filter_links_present
+  actual = orders.filter.are_filter_links_present
   log.info "Test #{(actual==false)?'Passed':'Failed'}"
   actual.should eql false
 end
 
 Then /^Double click on the Filters panel border$/ do
   log.info "Step: Double click on the Filters panel border"
-  batch.filter.double_click_border
+  orders.filter.double_click_border
 end
 
 Then /^Click on the Filters panel name$/ do
   log.info "Step: Click on the Filters panel name"
-  batch.filter.click_filter_panel_name
+  orders.filter.click_filter_panel_name
 end
 
 Then /^Click on the closed Filters panel$/ do
   log.info "Step: Click on the closed Filters panel"
-  batch.filter.click_closed_filter_panel
+  orders.filter.click_closed_filter_panel
 end
 
 
 Then /^Expect printed Order ID is not in Awaiting Shipment tab$/ do
   log.info "Expectation: Expect printed Order ID is not in Awaiting Shipment tab"
-  grid = batch.filter.awaiting_shipment
+  grid = orders.filter.awaiting_shipment
   log.info "First Order ID: #{@order_id} in Awaiting Shipment tab"
   row = 1
   row1_order_id = grid.order_id.row row
@@ -137,7 +126,7 @@ end
 
 Then /^Expect all printed Order IDs not in Awaiting Shipment tab$/ do
   log.info "Expectation: Expect all printed Order IDs not in Awaiting Shipment tab"
-  grid = batch.filter.awaiting_shipment
+  grid = orders.filter.awaiting_shipment
 
   log.info "First Order ID: #{@order_id} in Awaiting Shipment tab"
   row = 1
@@ -161,7 +150,7 @@ end
 
 Then /^Expect printed Order ID is in Shipped tab$/ do
   log.info "Expectation: Expect printed Order ID is in Shipped tab"
-  grid = batch.filter.shipped
+  grid = orders.filter.shipped
   grid.order_id.sort.descending
   sleep 1
   grid.order_id.sort.descending
@@ -173,7 +162,7 @@ end
 
 Then /^Expect all printed Order IDs are in Shipped tab$/ do
   log.info "Expectation: Expect all printed Order IDs are in Shipped tab"
-  grid = batch.filter.shipped
+  grid = orders.filter.shipped
 
   log.info "First Order ID: #{@order_id} Shipped tab"
   row = 3

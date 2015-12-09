@@ -1,5 +1,5 @@
 $LOAD_PATH << File.expand_path('../../lib', __FILE__)
-$LOAD_PATH << File.expand_path('lib/features/batch', __FILE__)
+$LOAD_PATH << File.expand_path('lib/features/orders', __FILE__)
 $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
 require 'data_magic'
@@ -19,9 +19,9 @@ require_relative 'lib/core/browser'
 require_relative 'lib/core/stamps'
 require_relative 'lib/core/logger'
 
-# BatchHelper module
-require_relative 'lib/batch/batch_helper'
-require_relative 'lib/batch/fields'
+# OrdersHelper module
+require_relative 'lib/orders/orders_helper'
+require_relative 'lib/orders/fields'
 require_relative 'lib/postage/postage_helper'
 
 
@@ -83,4 +83,4 @@ module Selenium
   end # WebDriver
 end # Selenium
 
-World(Stamps,Batch,Postage)
+World(Stamps,Orders,Postage)

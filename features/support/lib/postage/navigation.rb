@@ -1,6 +1,6 @@
 module Postage
-  class Navigation < PostageObject
-    def username_text_field
+  class NavBar < PostageObject
+    def username
       Label.new @browser.span :id => "userNameText"
     end
   end

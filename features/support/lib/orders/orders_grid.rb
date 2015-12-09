@@ -1,7 +1,7 @@
-module Batch
+module Orders
 
   # Orders Grid Toolbar
-  class GridToolbar < BatchObject
+  class GridToolbar < OrdersObject
     def present?
 
     end
@@ -72,7 +72,7 @@ module Batch
   end
 
   # Grid Columns
-  class Column < BatchObject
+  class Column < OrdersObject
     MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
     TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
     GRID_COLUMNS ||= {
@@ -106,10 +106,19 @@ module Batch
         :order_total => "Order Total"
     }
 
+    def grid_text_by_id column, order_id
+      scroll column
+      row = row_number(order_id)
+      log.info "Retrieving data for Column #{GRID_COLUMNS[column]} with Order ID #{order_id}...."
+      data = grid_text column, row
+      log.info "Column:  #{GRID_COLUMNS[column]}, Order ID #{order_id}, Row #{row}, Data #{data}"
+      data
+    end
+
     def row_count
       tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
       count = tables.size
-      log.info "Total Number of Orders on Grid:  #{count}"
+      #log.info "Total Number of Orders on Grid:  #{count}"
       count.to_i
     end
 
@@ -121,7 +130,7 @@ module Batch
 
     def column_name_field column
       column_name = @browser.span :text => GRID_COLUMNS[column]
-      log.info "Column symbol \"#{column}\" is \"#{browser_helper.text column_name}\""
+      #log.info "Column symbol \"#{column}\" is \"#{browser_helper.text column_name}\""
       column_name
     end
 
@@ -138,6 +147,7 @@ module Batch
     end
 
     def grid_text column, row
+      scroll column
       browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}"
     end
 
@@ -156,7 +166,7 @@ module Batch
         columns.each_with_index { |column_field, index|
           column_text = browser_helper.text column_field
           if column_text == column_str
-            log.info "Grid:  #{column_str} is in column #{index+1}"
+            #log.info "Grid:  #{column_str} is in column #{index+1}"
             return index+1
           end
         }
@@ -173,7 +183,7 @@ module Batch
       row = 1
       column = column_number(:order_id)
       css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column})>div"
-      log.info "Order ID: #{order_id} CSS: #{css}"
+      #log.info "Order ID: #{order_id} CSS: #{css}"
       fields = @browser.divs :css => css
       fields.each_with_index { |div, index|
         row_text = browser_helper.text div
@@ -196,12 +206,20 @@ module Batch
 
   class OrderId < Column
 
+    def exist? order_id
+      row_number order_id > 0
+    end
+
     def sort
       Sort.new @browser, :order_id
     end
 
     def scroll_into_view
       scroll :order_id
+    end
+
+    def row_num order_id
+      row_number order_id
     end
 
     def row row
@@ -216,7 +234,7 @@ module Batch
       end
 
       begin
-        grid_text(:order_id, row)
+        grid_text :order_id, row
       rescue
         return ""
       end
@@ -235,19 +253,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      begin
-        grid_text(:age, row)
-      rescue
-        return ""
-      end
+      grid_text :age, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:age, row)
+      grid_text_by_id :age, order_id
     end
   end
 
@@ -262,19 +272,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      begin
-        grid_text(:order_date, row)
-      rescue
-        return ""
-      end
+      grid_text :order_date, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:order_date, row)
+      grid_text_by_id :order_date, order_id
     end
   end
 
@@ -334,15 +336,11 @@ module Batch
     end
     
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id}, Row #{row}"
-      grid_text(:recipient, row)
+      grid_text_by_id :recipient, order_id
     end
 
     def row row
-      scroll_into_view
-      grid_text(:recipient, row)
+      grid_text :recipient, row
     end
 
   end
@@ -358,15 +356,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:company, row)
+      grid_text :company, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id}, Row #{row}"
-      grid_text(:company, row)
+      grid_text_by_id :company, order_id
     end
   end
 
@@ -381,19 +375,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:address, row)
+      grid_text :address, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:address, row)
-    end
-
-    def row row
-      grid_text(:address, row)
+      grid_text_by_id :address, order_id
     end
   end
 
@@ -408,15 +394,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:city, row)
+      grid_text :city, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:city, row)
+      grid_text_by_id :city, order_id
     end
   end
 
@@ -431,15 +413,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:state, row)
+      grid_text :state, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:state, row)
+      grid_text_by_id :state, order_id
     end
   end
 
@@ -454,15 +432,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:zip, row)
+      grid_text :zip, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:zip, row)
+      grid_text_by_id :zip, order_id
     end
   end
 
@@ -477,15 +451,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:phone, row)
+      grid_text :phone, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:phone, row)
+      grid_text_by_id :phone, order_id
     end
   end
 
@@ -500,15 +470,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:email, row)
+      grid_text :email, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:email, row)
+      grid_text_by_id :email, order_id
     end
   end
 
@@ -523,15 +489,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:qty, row)
+      grid_text :qty, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:qty, row)
+      grid_text_by_id :qty, order_id
     end
   end
 
@@ -546,15 +508,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:item_sku, row)
+      grid_text :item_sku, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:item_sku, row)
+      grid_text_by_id :item_sku, order_id
     end
   end
 
@@ -569,15 +527,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:item_name, row)
+      grid_text :item_name, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:item_name, row)
+      grid_text_by_id :item_name, order_id
     end
   end
 
@@ -592,17 +546,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:weight, row)
+      grid_text :weight, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      weight = grid_text(:weight, row)
-      log.info "Weight: #{weight}"
-      weight
+      grid_text_by_id :weight, order_id
     end
 
     def lbs order_id
@@ -625,15 +573,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:insured_value, row)
+      grid_text :insured_value, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      test_helper.remove_dollar_sign grid_text(:insured_value, row)
+      grid_text_by_id :insured_value, order_id
     end
   end
 
@@ -648,15 +592,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:order_status, row)
+      grid_text :order_status, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:order_status, row)
+      grid_text_by_id :order_status, order_id
     end
   end
 
@@ -671,15 +611,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:ship_date, row)
+      grid_text :ship_date, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:ship_date, row)
+      grid_text_by_id :ship_date, order_id
     end
   end
 
@@ -694,15 +630,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:ship_from, row)
+      grid_text :ship_from, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:ship_from, row)
+      grid_text_by_id :ship_from, order_id
     end
   end
 
@@ -717,15 +649,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:order_total, row)
+      grid_text :order_total, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:order_total, row)
+      grid_text_by_id :order_total, order_id
     end
   end
 
@@ -740,15 +668,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:country, row)
+      grid_text :country, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:country, row)
+      grid_text_by_id :country, order_id
     end
   end
 
@@ -763,15 +687,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:ship_cost, row)
+      grid_text :ship_cost, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      test_helper.remove_dollar_sign grid_text(:ship_cost, row)
+      grid_text_by_id :ship_cost, order_id
     end
 
     def ship_cost_error order_id
@@ -805,15 +725,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:company, row)
+      grid_text :company, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:company, row)
+      grid_text_by_id :company, order_id
     end
   end
 
@@ -828,15 +744,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:service, row)
+      grid_text :service, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:service, row)
+      grid_text_by_id :service, order_id
     end
   end
 
@@ -851,15 +763,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:reference_no, row)
+      grid_text :reference_no, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:reference_no, row)
+      grid_text_by_id :reference_no, order_id
     end
   end
 
@@ -874,15 +782,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:cost_code, row)
+      grid_text :cost_code, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:cost_code, row)
+      grid_text_by_id :cost_code, order_id
     end
   end
 
@@ -897,13 +801,11 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:tracking_no, row)
+      grid_text :tracking_no, row
     end
 
     def data order_id
-      scroll_into_view
-      grid_text :tracking_no, row_number(order_id)
+      grid_text_by_id :tracking_no, order_id
     end
   end
 
@@ -918,14 +820,11 @@ module Batch
     end
 
     def data_at_row row
-      grid_field_column_name :ship_date, row
+      grid_field_column_name :date_printed, row
     end
 
     def data order_id
-      scroll_into_view
-      row = row_number(order_id)
-      log.info "Order ID: #{order_id} = Row #{row}"
-      grid_text(:date_printed, row)
+      grid_text_by_id :date_printed, order_id
     end
   end
 
@@ -950,8 +849,7 @@ module Batch
     end
 
     def row row
-      scroll_into_view
-      grid_text(:check_box, row)
+      grid_text :check_box, row
     end
 
     def edit order_id
@@ -1057,7 +955,7 @@ module Batch
   end
 
   # Orders Grid
-  class OrdersGrid < BatchObject
+  class OrdersGrid < OrdersObject
 
     def present?
       browser_helper.present? @browser.div Locators::OrdersGrid::present

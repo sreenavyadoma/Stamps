@@ -2,7 +2,7 @@
   Feature: Domestic USPS service used to fulfill an order.
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @service_control
   Scenario:  Inline Rates
@@ -36,9 +36,6 @@
 
     Then Set Order Details Form Service to "Priority Mail Regional Rate Box B"
     Then Expect Order Details Form Service to be "Priority Mail Regional Rate Box B"
-
-    Then Set Order Details Form Service to "Priority Mail Regional Rate Box C"
-    Then Expect Order Details Form Service to be "Priority Mail Regional Rate Box C"
 
     Then Set Order Details Form Service to "Priority Mail Express Package"
     Then Expect Order Details Form Service to be "Priority Mail Express Package"

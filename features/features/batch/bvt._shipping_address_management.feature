@@ -2,7 +2,7 @@
 Feature:  BVT Address Management
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @bvt_shipping_address_management
   Scenario: Add and Delete Ship-From Address

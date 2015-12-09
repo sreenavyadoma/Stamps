@@ -2,6 +2,26 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:grid_tracking_order_status) do |t|
+  t.profile = 'grid_tracking_order_status'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:order_creation) do |t|
+  t.profile = 'order_creation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_jenkins_dev) do |t|
+  t.profile = 'rob_jenkins_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:date_printed) do |t|
+  t.profile = 'date_printed'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:two_up_expanded) do |t|
   t.profile = 'two_up_expanded'
   t.cucumber_opts = "-p cuke_reports"

@@ -1,4 +1,4 @@
-module Batch
+module Orders
   class PrintingError < StandardError
     attr_reader :object
 
@@ -7,7 +7,7 @@ module Batch
     end
   end
 
-  class OrderError < BatchObject
+  class OrderError < OrdersObject
 
     protected
 
@@ -55,7 +55,7 @@ module Batch
 
   end
 
-  class OrderErrors < BatchObject
+  class OrderErrors < OrdersObject
     private
 
     def error_message_label
@@ -139,7 +139,7 @@ module Batch
 
   end
 
-  class RatingError < BatchObject
+  class RatingError < OrdersObject
     private
     def rating_error_p
       @browser.p :css => 'div[class=x-autocontainer-innerCt]>p:nth-child(1)'
@@ -179,7 +179,7 @@ module Batch
 
   end
 
-  class ErrorStampsPluginIssue < BatchObject
+  class ErrorStampsPluginIssue < OrdersObject
     private
     def close_window_button
       img = @browser.img :css => "img[class='x-tool-img x-tool-close']"
@@ -203,7 +203,7 @@ module Batch
     end
   end
 
-  class NawsPluginError < BatchObject
+  class NawsPluginError < OrdersObject
     private
     def error_code_p
       @browser.p :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
@@ -250,7 +250,7 @@ module Batch
   end
 end
 
-class ErrorInstallPlugin < BatchObject
+class ErrorInstallPlugin < OrdersObject
   private
 
   def error_message_label
@@ -288,7 +288,7 @@ class ErrorInstallPlugin < BatchObject
   end
 end
 
-class ErrorConnectingToPlugin < BatchObject
+class ErrorConnectingToPlugin < OrdersObject
   private
 
   def error_message_label

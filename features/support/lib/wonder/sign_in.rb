@@ -1,5 +1,5 @@
 module Wonder
-  class SignInPage < BatchObject
+  class SignInPage < OrdersObject
 
   end
 end

@@ -1,28 +1,27 @@
 
-# features.batch.navigation_bar.sign_out
 #* Buy postage
 #* Expect value is added to customer balance
 
  Then /^Buy \$(\d+) postage$/ do |amount|
    log.info "Step: Buy \$#{amount} postage"
    log.info "Storing old postage amount"
-   @old_balance = batch.navbar.balance
+   @old_balance = orders.navbar.balance
    log.info "Buy More link selected"
-   buy_postage_window = batch.navbar.select_buy_more
+   buy_postage_window = orders.navbar.select_buy_more
 
    log.info "$#{amount} postage radio button selected"
 
    case amount
      when "10"
-       batch.navbar.buy_more.buy_10.purchase
+       orders.navbar.buy_more.buy_10.purchase
      when "25"
-       batch.navbar.buy_more.buy_25.purchase
+       orders.navbar.buy_more.buy_25.purchase
      when "50"
-       batch.navbar.buy_more.buy_50.purchase
+       orders.navbar.buy_more.buy_50.purchase
      when "100"
-       batch.navbar.buy_more.buy_100.purchase
+       orders.navbar.buy_more.buy_100.purchase
      else
-       batch.navbar.buy_more.buy_other(amount).purchase
+       orders.navbar.buy_more.buy_other(amount).purchase
    end
 
    #2.  Ask confirmpurchase if it exist, (aka confirmPurchase.present?)
@@ -31,8 +30,8 @@
    # check for MeterBalanceLimit
    #if it exist, don't do expectation.
    #if not, go ahead with expectation
-   batch.navbar.buy_more.confirm_postage.click_confirm_modal
-   batch.navbar.buy_more.confirm_postage.purchase_processing.wait_for_purchase_confirmation.purchase_complete.complete_purchase
+   orders.navbar.buy_more.confirm_postage.click_confirm_modal
+   orders.navbar.buy_more.confirm_postage.purchase_processing.wait_for_purchase_confirmation.purchase_complete.complete_purchase
  end
 
 
@@ -40,7 +39,7 @@ Then /^Expect \$(\d+) is added to customer balance$/ do |balance|
   log.info "Expectation: Expect \$#{balance} is added to customer balance"
   log.info "Store new balance"
   sleep 4
-  @new_balance = batch.navbar.balance
+  @new_balance = orders.navbar.balance
   log.info "Compare old and new balance"
   match = @new_balance.to_f - @old_balance.to_f
   balance_float = balance.to_f

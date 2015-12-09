@@ -2,7 +2,7 @@
 Feature: Order Details Form Negative Tests
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @weight_negative_tests
   Scenario:  Weight tooltip - negative test

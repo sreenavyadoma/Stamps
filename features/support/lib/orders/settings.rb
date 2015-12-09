@@ -1,6 +1,6 @@
-module Batch
+module Orders
 
-  class SettingsModal < BatchObject
+  class SettingsModal < OrdersObject
     private
 
     def checkbox_status_array

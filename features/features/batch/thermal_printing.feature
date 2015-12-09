@@ -2,7 +2,7 @@
 Feature: Thermal Printer
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @thermal_printing
   Scenario:  As a batch shipper, I want to be able to change my print media

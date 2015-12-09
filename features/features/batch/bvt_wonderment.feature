@@ -2,7 +2,7 @@
 Feature:  BVT Wonderment
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @wonderment_bvt
   Scenario:  Add a new order

@@ -2,7 +2,7 @@
 Feature:  Address Management
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @address_management
   Scenario: Address Management

@@ -1,14 +1,14 @@
-module Batch
+module Orders
 
-  class PageStyles < BatchObject
+  class PageStyles < OrdersObject
     def general
       @general ||= General.new @browser
     end
   end
 
-  class General < BatchObject
+  class General < OrdersObject
 
-    class Links < BatchObject
+    class Links < OrdersObject
       def color
         field = @browser.link :css => "a[rel=WebBatch]"
         browser_helper.wait_until_present field
@@ -25,7 +25,7 @@ module Batch
       end
     end
 
-    class NavigationHeader < BatchObject
+    class NavigationHeader < OrdersObject
       def height
         field = @browser.div :class => "navbar-inner"
         browser_helper.wait_until_present field
@@ -40,7 +40,7 @@ module Batch
       end
     end
 
-    class Fonts < BatchObject
+    class Fonts < OrdersObject
       def font_family
         @browser.body.style "font-family"
       end
@@ -58,7 +58,7 @@ module Batch
       end
     end
 
-    class Tooltip < BatchObject
+    class Tooltip < OrdersObject
       def width
         field = @browser.link :css => "a[data-qtip*='Configure your settings']"
         browser_helper.wait_until_present field

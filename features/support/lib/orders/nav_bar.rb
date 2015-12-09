@@ -1,9 +1,9 @@
-module Batch
+module Orders
 
   #
   # Navigation bar containing Sign-in, etc
   #
-  class NavBar < BatchObject
+  class NavBar < OrdersObject
     def login_div
       div = @browser.div :id => "loginDiv"
       begin
@@ -21,10 +21,6 @@ module Batch
 
     def buy_more_link
       @browser.a(:id => 'buyMorePostageLnk')
-    end
-
-    def username
-      Label.new @browser.span Locators::NavBar.username
     end
 
     def orders
@@ -81,8 +77,8 @@ module Batch
           sign_out_link.safe_click
           signed_in_username.safe_click unless sign_out_link.present?
           sign_out_link.safe_click
+          sleep 1
           sign_out_link.safe_click
-          sleep 2
           break unless signed_in_username.present?
         rescue
           #ignore
@@ -91,23 +87,25 @@ module Batch
       log.info "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" - sign-out failed":" was signed out.  Goodbye."}"
     end
 
-    def username_text_field
-      username.field.when_present.text
+    def username
+      Label.new @browser.span Locators::NavBar.username
     end
 
     def wait_until_present *args
+      wait_field = @browser.span Locators::NavBar.username
       case args.length
         when 0
-          username.wait_until_present
+          browser_helper.wait_until_present wait_field
         when 1
-          username.wait_until_present args[0].to_i
+          browser_helper.wait_until_present wait_field args[0].to_i
         else
           raise "Wrong number of arguments."
       end
     end
 
     def present?
-      username.present?
+      present_field = @browser.span Locators::NavBar.username
+      browser_helper.present? present_field
     end
 
   end

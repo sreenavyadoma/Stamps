@@ -2,7 +2,7 @@
 Feature: New Order ID Created
 
   Background:
-    Given I am signed in as a batch shipper
+    Given I am signed in to Orders
 
   @order_id
   Scenario:  New Order ID Created
