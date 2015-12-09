@@ -101,12 +101,12 @@ module Batch
             username = args[0]
             password = args[1]
           else
-            log.info "Using Default Sign-in Credentials: #{ENV["USR"]}/#{ENV["PW"]}"
+            log.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
             username = ENV["USR"]
             password = ENV["PW"]
           end
         else
-          log.info "Using Default Sign-in Credentials: #{ENV["USR"]}/#{ENV["PW"]}"
+          log.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
           username = ENV["USR"]
           password = ENV["PW"]
       end
