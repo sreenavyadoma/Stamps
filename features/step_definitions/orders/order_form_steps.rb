@@ -1,3 +1,55 @@
+
+
+Then /^Set Order Details Add Item$/ do
+  orders.order_details.add_item
+  @item_count += 1
+  log.info "Item #{@item_count} added."
+end
+
+Then /^Set Order Details Line Item Quantity to (\d+)$/ do |qty|
+  step "Set Order Details Line Item #{@item_count} Quantity to #{qty}"
+end
+
+Then /^Set Order Details Line Item (\d+) Quantity to (\d+)$/ do |line_item, qty|
+  @line_item_qty = qty
+  log.info "Set Order Details Line Item #{line_item} Quantity to #{@line_item_qty}"
+
+  item_object = orders.order_details.item line_item
+  item_object.qty qty
+end
+
+Then /^Set Order Details Line Item ID to (\w+)$/ do |id|
+  step "Set Order Details Line Item #{@item_count} ID to #{id}"
+end
+
+Then /^Set Order Details Line Item (\d+) ID to (\d+)$/ do |line_item, id|
+  @line_item_id = id
+  log.info "Set Order Details Line Item #{line_item} ID to #{@line_item_id}"
+
+  item_object = orders.order_details.item line_item
+  item_object.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
+end
+
+Then /^Set Order Details Line Item Description to (\w+)$/ do |description|
+  step "Set Order Details Line Item #{@item_count} Description to #{description}"
+end
+
+Then /^Set Order Details Line Item (\d+) Description to (\d+)$/ do |line_item, description|
+  @line_item_description = description
+  log.info "Set Order Details Line Item #{line_item} Description to #{@line_item_description}"
+
+  item_object = orders.order_details.item line_item
+  item_object.description (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
+end
+
+Given /^Add Order Details Form Item - Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
+  log.info "Step: Add Order Details Form Item - Quantity #{qty}, ID #{id}, Description #{description}"
+  step "Set Order Details Add Item"
+  step "Set Order Details Line Item Quantity to #{qty}"
+  step "Set Order Details Line Item ID to #{id}"
+  step "Set Order Details Line Item Description to #{description}"
+end
+
 And /^Set Order Details Form Ship-From to (\w+)$/ do |value|
   log.info "Step: Set Order Details Form Ship-From to: \n #{value}"
   orders.order_details.ship_from.select value

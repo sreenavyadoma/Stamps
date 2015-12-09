@@ -6,7 +6,6 @@ Feature: Test Development
     And I Add a new order
     Then Set Order Details Form Ship-To country to Canada
     Then Set Order Details Form Ship-To country to United States
-
     Then Set Order Details Form Ship-From to default
 
     Then Set Order Details Form Ship-From to default

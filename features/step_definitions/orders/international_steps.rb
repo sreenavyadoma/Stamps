@@ -325,14 +325,6 @@ Given /^Set customs form I agree to (\w+)$/ do |agree_str|
   @customs_form.i_agree agree
 end
 
-Given /^Add Order Details Form Item - Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
-  log.info "Step: Add Order Details Form Item - Quantity #{qty}, ID #{id}, Description #{description}"
-  line_item = orders.order_details.add_item
-  line_item.qty qty
-  line_item.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
-  line_item.description (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
-end
-
 Given /^Expect Customs Form More Info to be (.+)$/ do |value|
   log.info "Expectation: Expect Customs Form More Info to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?

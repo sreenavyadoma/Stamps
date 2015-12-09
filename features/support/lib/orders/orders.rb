@@ -1,9 +1,9 @@
 module Orders
 
-  class Orders < OrdersObject
+  class PrintOrders < OrdersObject
 
     def navbar
-      @navigation_bar ||= Orders::NavBar.new @browser
+      @navbar ||= Orders::NavBar.new @browser
     end
 
     def toolbar

@@ -23,9 +23,10 @@ module Stamps
     end
 
     class BrowserObject
-      def initialize(browser)
+      def initialize browser
         @browser = browser
       end
+
       def browser_helper
         BrowserHelper.instance
       end

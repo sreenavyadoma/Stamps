@@ -1748,7 +1748,12 @@ module Orders
 
   end
 
-  class SingleOrderFormLineItem < OrdersObject
+  class OrderDetailsItem < OrdersObject
+    def initialize browser, line_item
+      super browser
+      @line_item = line_item - 1 #index of a collection starts at 0, so we need  subtract 1 to refer to first item on the details form.
+    end
+
     def remove_field
       @browser.span :css => "span[class*=sdc-icon-remove]"
     end
@@ -1778,7 +1783,7 @@ module Orders
     end
 
     def qty *args
-      browser_field = Textbox.new @browser.text_field :css => "div[id*=detailItemsGrid] input[name=Quantity]"
+      browser_field = Textbox.new (@browser.text_fields :css => "div[id*=detailItemsGrid] input[name=Quantity]")[@line_item]
       case args.length
         when 0
           return browser_field
@@ -1790,7 +1795,7 @@ module Orders
     end
 
     def id *args
-      browser_field = Textbox.new @browser.text_field :name => "SKU"
+      browser_field = Textbox.new (@browser.text_fields :name => "SKU")[@line_item]
       case args.length
         when 0
           return browser_field
@@ -1802,7 +1807,7 @@ module Orders
     end
 
     def description *args
-      browser_field = Textbox.new @browser.text_field :css => "div[id*=detailItemsGrid] input[name=Description]"
+      browser_field = Textbox.new (@browser.text_field :css => "div[id*=detailItemsGrid] input[name=Description]")[@line_item]
       case args.length
         when 0
           return browser_field
@@ -1865,17 +1870,29 @@ module Orders
       CustomsFields.new @browser
     end
 
+    def items_count
+      begin
+        count = (@browser.text_fields :css => "div[id*=detailItemsGrid] input[name=Quantity]").size
+        log.info "Order Details Item Count: #{count}"
+        count
+      rescue
+        0
+      end
+    end
+
     def add_item
       add_item = Link.new @browser.span :text => "Add Item"
-      log.info "Add Item Button #{(add_item.present?)?"Exist!":'DOES NOT EXIST!'}"
-
-      line_item = SingleOrderFormLineItem.new @browser
+      raise "Add Item button is not present in Order Details form!" unless add_item.present?
+      count = items_count
       5.times{
         add_item.safe_click
-        line_item.wait_until_present
-        break if line_item.present?
+        sleep 1
+        return if items_count == count + 1
       }
-      line_item
+    end
+
+    def item line_item
+      OrderDetailsItem.new @browser, line_item
     end
 
     def service_cost
