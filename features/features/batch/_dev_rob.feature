@@ -39,8 +39,8 @@ Feature: Test Development
     Then Set Order Details Form Ounces to 5
     Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     Then Print
-    Then Expect Grid Ship Date to be today
-    Then Expect Grid Date Printed to be today
+    Then Expect Grid Ship Date for this order to be today
+    Then Expect Grid Date Printed for this order to be today
 
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -49,8 +49,8 @@ Feature: Test Development
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 1
     Then Print
-    Then Expect Grid Date Printed to be today
-    Then Expect Grid Ship Date to be today plus 1
+    Then Expect Grid Date Printed for this order to be today
+    Then Expect Grid Ship Date for this order to be today plus 1
 
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -60,8 +60,8 @@ Feature: Test Development
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 2
     Then Print
-    Then Expect Grid Date Printed to be today
-    Then Expect Grid Ship Date to be today plus 2
+    Then Expect Grid Date Printed for this order to be today
+    Then Expect Grid Ship Date for this order to be today plus 2
 
     And I Add a new order
     Then Set Order Details Form Ship-From to default
@@ -71,8 +71,8 @@ Feature: Test Development
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 3
     Then Print
-    Then Expect Grid Date Printed to be today
-    Then Expect Grid Ship Date to be today plus 3
+    Then Expect Grid Date Printed for this order to be today
+    Then Expect Grid Ship Date for this order to be today plus 3
   Scenario:
 
     And I Add a new order

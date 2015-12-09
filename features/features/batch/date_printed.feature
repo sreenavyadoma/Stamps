@@ -11,8 +11,9 @@ Feature: Date Printed
     Then Set Order Details Form Ounces to 4
     Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
     Then Print
-    Then Expect Grid Ship Date to be today
-    Then Expect Grid Date Printed to be today
+    Then Filter Shipped Orders
+    Then Expect Grid Ship Date for this order to be today
+    Then Expect Grid Date Printed for this order to be today
 
   @date_printed
   Scenario: Set Ship Date to today + 1
@@ -24,8 +25,9 @@ Feature: Date Printed
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 1
     Then Print
-    Then Expect Grid Date Printed to be today
-    Then Expect Grid Ship Date to be today plus 1
+    Then Filter Shipped Orders
+    Then Expect Grid Date Printed for this order to be today
+    Then Expect Grid Ship Date for this order to be today plus 1
 
   @date_printed
   Scenario: Set Ship Date to today + 2
@@ -37,8 +39,9 @@ Feature: Date Printed
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 2
     Then Print
-    Then Expect Grid Date Printed to be today
-    Then Expect Grid Ship Date to be today plus 2
+    Then Filter Shipped Orders
+    Then Expect Grid Date Printed for this order to be today
+    Then Expect Grid Ship Date for this order to be today plus 2
 
   @date_printed @date_printed_plus3
   Scenario: Set Ship Date to today + 3
@@ -50,8 +53,9 @@ Feature: Date Printed
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 3
     Then Print
-    Then Expect Grid Date Printed to be today
-    Then Expect Grid Ship Date to be today plus 3
+    Then Filter Shipped Orders
+    Then Expect Grid Date Printed for this order to be today
+    Then Expect Grid Ship Date for this order to be today plus 3
 
     Then Sign out
 

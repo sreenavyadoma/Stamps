@@ -2,8 +2,8 @@ Then /^Filter Shipped Orders orders in the filter panel$/ do
   batch.filter
 end
 
-Then /^Expect Grid Date Printed to be today$/ do
-  log.info "Expect Grid Date Printed to be today"
+Then /^Expect Grid Date Printed for this order to be today$/ do
+  log.info "Expect Grid Date Printed for this order to be today"
   grid = batch.filter.shipped
   grid.order_id.sort.descending
   grid_date_printed = grid.date_printed.data @order_id # Dec 3
@@ -14,13 +14,13 @@ Then /^Expect Grid Date Printed to be today$/ do
   grid_date_printed.should eql expected_date_printed
 end
 
-Then /^Expect Grid Ship Date to be today$/ do
-  log.info "Expect Grid Ship Date to be today"
-  step "Expect Grid Ship Date to be today plus 0"
+Then /^Expect Grid Ship Date for this order to be today$/ do
+  log.info "Expect Grid Ship Date for this order to be today"
+  step "Expect Grid Ship Date for this order to be today plus 0"
 end
 
-Then /^Expect Grid Ship Date to be today plus (\d+)$/ do |day|
-  log.info "Expect Grid Ship Date to be today plus #{day}"
+Then /^Expect Grid Ship Date for this order to be today plus (\d+)$/ do |day|
+  log.info "Expect Grid Ship Date for this order to be today plus #{day}"
   expected_ship_date = test_helper.mmddyy_to_mondd @ship_date
 
   grid = batch.filter.shipped
