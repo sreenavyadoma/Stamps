@@ -10,9 +10,9 @@ Feature: Test Development
     Then Filter Awaiting Shipment Orders
     Then Set Order Details Form Ship-From to default
     Then Set Order Details Form Ship-To address to Eight Zone,377 Santa Rosa Blvd,Fort Walton Beach, FL 32548
-    Then Set Order Details Form Service to "Priority Mail Large Package"
     Then Set Order Details Form Email to random
     Then Set Order Details Form Phone to random
+    Then Set Order Details Form Service to "Priority Mail Large Package"
     Then Set Order Details Form Pounds to 1
     Then Set Order Details Form Ounces to 1
     Then Set Order Details Form Height to 1
@@ -20,10 +20,10 @@ Feature: Test Development
     Then Set Order Details Form Width to 1
     Then Set Order Details Form Tracking to "USPS Tracking"
     Then Set Order Details Form Insured Value to $50.25
-    Then Set Order Details Add Item
-    Then Add Order Details Form Item - Quantity 1, ID random, Description random
-    Then Set Order Details Add Item
-    Then Add Order Details Form Item - Quantity 1, ID random, Description random
+    Then Add Order Details Form Item - Quantity 1, ID ID1, Description Line Item 1
+    Then Add Order Details Form Item - Quantity 2, ID ID2, Description Line Item 2
+    Then Add Order Details Form Item - Quantity 3, ID ID3, Description Line Item 3
+
 
   Scenario:
     And I Add a new order

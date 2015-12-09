@@ -22,7 +22,7 @@ Then /^Set Order Details Line Item ID to (\w+)$/ do |id|
   step "Set Order Details Line Item #{@item_count} ID to #{id}"
 end
 
-Then /^Set Order Details Line Item (\d+) ID to (\d+)$/ do |line_item, id|
+Then /^Set Order Details Line Item (\d+) ID to (\w+)$/ do |line_item, id|
   @line_item_id = id
   log.info "Set Order Details Line Item #{line_item} ID to #{@line_item_id}"
 
@@ -34,7 +34,7 @@ Then /^Set Order Details Line Item Description to (\w+)$/ do |description|
   step "Set Order Details Line Item #{@item_count} Description to #{description}"
 end
 
-Then /^Set Order Details Line Item (\d+) Description to (\d+)$/ do |line_item, description|
+Then /^Set Order Details Line Item (\d+) Description to (\w+)$/ do |line_item, description|
   @line_item_description = description
   log.info "Set Order Details Line Item #{line_item} Description to #{@line_item_description}"
 
@@ -99,18 +99,19 @@ Then /^Expect "Exact Address Not Found" module to appear/ do
 end
 
 When /^Set Order Details Form Phone to (.*)$/ do |phone|
+  @order_details_phone = (phone.to_s.strip.downcase.include? "random")?(test_helper.random_phone):phone
   begin
-    log.info "Step: Order Details Form Phone to \"#{phone}\""
-    orders.order_details.ship_to.address.phone.set phone
-  end unless phone.length == 0
+    log.info "Step: Order Details Form Phone to \"#{@order_details_phone}\""
+    orders.order_details.ship_to.address.phone.set @order_details_phone
+  end unless @order_details_phone.length == 0
 end
 
 When /^Set Order Details Form Email to (.*)$/ do |email|
+  @order_details_email = (email.to_s.strip.downcase.include? "random")?(test_helper.random_email):email
   begin
-    log.info "Step: Set Order Details Form Email to \"#{email}\""
-    orders.order_details.ship_to.address.email.set email
-  end unless email.length == 0
-  #end_step step
+    log.info "Step: Set Order Details Form Email to \"#{@order_details_email}\""
+    orders.order_details.ship_to.address.email.set @order_details_email
+  end unless @order_details_email.length == 0
 end
 
 When /^Expect system (.*) Order Form$/ do |status|
