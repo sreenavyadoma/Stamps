@@ -1789,6 +1789,9 @@ module Orders
           return browser_field
         when 1
           browser_field.set args[0]
+          click_form
+          click_form
+          click_form
         else
           raise "Illegal number of arguments"
       end
@@ -1801,18 +1804,24 @@ module Orders
           return browser_field
         when 1
           browser_field.set args[0]
+          click_form
+          click_form
+          click_form
         else
           raise "Illegal number of arguments"
       end
     end
 
     def description *args
-      browser_field = Textbox.new (@browser.text_field :css => "div[id*=detailItemsGrid] input[name=Description]")[@line_item]
+      browser_field = Textbox.new (@browser.text_fields :css => "div[id*=detailItemsGrid] input[name=Description]")[@line_item]
       case args.length
         when 0
           return browser_field
         when 1
           browser_field.set args[0]
+          click_form
+          click_form
+          click_form
         else
           raise "Illegal number of arguments"
       end

@@ -6,11 +6,11 @@ Then /^Set Order Details Add Item$/ do
   log.info "Item #{@item_count} added."
 end
 
-Then /^Set Order Details Line Item Quantity to (\d+)$/ do |qty|
+Then /^Set Order Details Line Item Quantity to (.*)$/ do |qty|
   step "Set Order Details Line Item #{@item_count} Quantity to #{qty}"
 end
 
-Then /^Set Order Details Line Item (\d+) Quantity to (\d+)$/ do |line_item, qty|
+Then /^Set Order Details Line Item (\d+) Quantity to (.*)$/ do |line_item, qty|
   @line_item_qty = qty
   log.info "Set Order Details Line Item #{line_item} Quantity to #{@line_item_qty}"
 
@@ -18,11 +18,11 @@ Then /^Set Order Details Line Item (\d+) Quantity to (\d+)$/ do |line_item, qty|
   item_object.qty qty
 end
 
-Then /^Set Order Details Line Item ID to (\w+)$/ do |id|
+Then /^Set Order Details Line Item ID to (.*)$/ do |id|
   step "Set Order Details Line Item #{@item_count} ID to #{id}"
 end
 
-Then /^Set Order Details Line Item (\d+) ID to (\w+)$/ do |line_item, id|
+Then /^Set Order Details Line Item (\d+) ID to (.*)$/ do |line_item, id|
   @line_item_id = id
   log.info "Set Order Details Line Item #{line_item} ID to #{@line_item_id}"
 
@@ -30,11 +30,11 @@ Then /^Set Order Details Line Item (\d+) ID to (\w+)$/ do |line_item, id|
   item_object.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
 end
 
-Then /^Set Order Details Line Item Description to (\w+)$/ do |description|
+Then /^Set Order Details Line Item Description to (.*)$/ do |description|
   step "Set Order Details Line Item #{@item_count} Description to #{description}"
 end
 
-Then /^Set Order Details Line Item (\d+) Description to (\w+)$/ do |line_item, description|
+Then /^Set Order Details Line Item (\d+) Description to (.*)$/ do |line_item, description|
   @line_item_description = description
   log.info "Set Order Details Line Item #{line_item} Description to #{@line_item_description}"
 
@@ -42,7 +42,7 @@ Then /^Set Order Details Line Item (\d+) Description to (\w+)$/ do |line_item, d
   item_object.description (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
 end
 
-Given /^Add Order Details Form Item - Quantity (\d+), ID ([\w ]+), Description ([\w ]+)$/ do |qty, id, description|
+Given /^Add Order Details Form Item - Quantity (.*), ID (.*), Description (.*)$/ do |qty, id, description|
   log.info "Step: Add Order Details Form Item - Quantity #{qty}, ID #{id}, Description #{description}"
   step "Set Order Details Add Item"
   step "Set Order Details Line Item Quantity to #{qty}"
@@ -177,6 +177,9 @@ Then /^Set Order Details Form Tracking to \"([\w ]*)\"$/ do |value|
   begin
     orders.order_details.tracking.select value
   end unless value.length == 0
+end
+
+Then /^Expect Order Details Tracking tooltip for (.*) to be (.*)$/ do |lov, expectation|
 
   actual_tooltip = orders.order_details.tracking.tooltip value
   #log.info actual_tooltip

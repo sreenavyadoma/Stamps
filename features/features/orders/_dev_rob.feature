@@ -18,6 +18,7 @@ Feature: Test Development
     Then Set Order Details Form Height to 1
     Then Set Order Details Form Length to 1
     Then Set Order Details Form Width to 1
+    And Set Order Details Form Tracking to "Signature Required"
     Then Set Order Details Form Tracking to "USPS Tracking"
     Then Set Order Details Form Insured Value to $50.25
     Then Add Order Details Form Item - Quantity 1, ID ID1, Description Line Item 1
