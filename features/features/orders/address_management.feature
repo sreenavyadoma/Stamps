@@ -15,8 +15,8 @@ Feature:  Address Management
       |90245          | Euan  | B-01690 Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California    | 94105  | United States | (415) 123-5555  |
     And Delete Ship-From Row 1 from Manage Shipping Addresses Modal
     Then Delete all Ship-From address
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to random
-    Then Set Order Details Form Phone to random
-    Then Set Order Details Form Service to "Priority Mail Large Package"
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to random
+    Then Set Order Details Phone to random
+    Then Set Order Details Service to "Priority Mail Large Package"
     And Sign out

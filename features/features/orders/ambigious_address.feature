@@ -7,8 +7,8 @@ Feature: Ambigious Address
   @ambigious_address
   Scenario: Exact Address Not Found
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to
       | name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
       | Hillary Clinton | The White House         | 1390 Market Street  | San Francisco | CA    | 94102 | United States |        |        |
     Then Expect "Exact Address Not Found" module to appear
@@ -19,6 +19,6 @@ Feature: Ambigious Address
     Then Expect Grid State to be CA
     Then Expect Grid Zip to be 94102
     And Hide Order Details Form Ship-To fields
-    Then Set Order Details Form Service to "Priority Mail Package"
+    Then Set Order Details Service to "Priority Mail Package"
     And Sign out
 

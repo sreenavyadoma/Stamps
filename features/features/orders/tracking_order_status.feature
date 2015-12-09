@@ -8,11 +8,11 @@ Feature: Orders Grid - Tracking & Order Status
   Scenario: Tracking & Order Status
     And I Add a new order
     Then Expect Order Status to be "Awaiting Shipment"
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to random
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
-    And Set Order Details Form Tracking to "USPS Tracking"
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
+    And Set Order Details Tracking to "USPS Tracking"
     Then Print
     Then Filter Shipped Orders
     Then Expect Grid Tracking Number is populated
@@ -20,11 +20,11 @@ Feature: Orders Grid - Tracking & Order Status
 
     And I Add a new order
     Then Expect Order Status to be "Awaiting Shipment"
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to random
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
-    And Set Order Details Form Tracking to "Signature Required"
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
+    And Set Order Details Tracking to "Signature Required"
     Then Print
     Then Filter Shipped Orders
     Then Expect Grid Tracking Number is populated

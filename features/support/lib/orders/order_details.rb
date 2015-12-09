@@ -1748,7 +1748,7 @@ module Orders
 
   end
 
-  class OrderDetailsItem < OrdersObject
+  class OrderDetailsItem < OrderForm
     def initialize browser, line_item
       super browser
       @line_item = line_item.to_i - 1 #index of a collection starts at 0, so we need  subtract 1 to refer to first item on the details form.

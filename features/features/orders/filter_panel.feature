@@ -51,13 +51,13 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     When Expect system displays expanded filters panel
 
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To country to United States
-    Then Set Order Details Form Ship-To address to
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To country to United States
+    Then Set Order Details Ship-To address to
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | James Test | Domestic Company | 600 Front St Apt 220 | San Diego | CA | 92101-6733 | United States | 8885551212 | test@stamps.com |
-    Then Set Order Details Form Service to "Priority Mail Package"
-    Then Set Order Details Form Ounces to 1
+    Then Set Order Details Service to "Priority Mail Package"
+    Then Set Order Details Ounces to 1
 
     Then Filter Awaiting Shipment Orders
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter

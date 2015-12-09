@@ -6,8 +6,8 @@ Feature: International Field Validation
   @rules_engine @rules_engine_international
   Scenario: Add Missing Validation Logic for Phone and International Email
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To country to Australia
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To country to Australia
     Then Set International Ship-To name to ""
     Then Expect Order Details Form International Name data error tooltip to be "A First Name and Last Name or Company are required"
     Then Set International Ship-To company to ""
@@ -19,7 +19,7 @@ Feature: International Field Validation
     Then Set International Ship-To phone to ""
     Then Expect Order Details Form International Phone data error tooltip to be "The ship to phone number is a required field"
     Then Set International Ship-To email to "@@"
-    Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     Then Expect Order Details Form International Email data error tooltip to be "Please enter a valid email address"
     Then Expect Grid Ship Cost error to contain "A First Name and Last Name or Company are required"
     Then Expect Grid Ship Cost error to contain "The ship to address is a required field"

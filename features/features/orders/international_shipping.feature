@@ -6,15 +6,15 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international @international_data_error @international_failure
   Scenario:  Customs Form Data Error
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail International Package"
 
-    Then Add Order Details Form Item - Quantity 1, ID random, Description random
+    Then Set Order Details Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
@@ -27,15 +27,15 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international_totals
   Scenario:  Customs Form Grid Items Add/Delete
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail International Package"
 
-    Then Add Order Details Form Item - Quantity 1, ID random, Description random
+    Then Set Order Details Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
@@ -56,15 +56,15 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international @international_delete_line_items
   Scenario:  Customs Form Grid Items Add/Delete
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail International Package"
 
-    Then Add Order Details Form Item - Quantity 1, ID random, Description random
+    Then Set Order Details Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
@@ -87,20 +87,20 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international_shipping_field_validation @_international
   Scenario: Order Details Form  International Shipping fields and Customs Information fields validation
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail International Package"
 
     Then Expect Order Details Form International Address fields are visible
     Then Expect Order Details Form Domestic Ship-To fields are hidden
     Then Expect Order Details Form Customs Restrictions button is visible
     Then Expect Order Details Form Customs Edit Form button is visible
 
-    Then Add Order Details Form Item - Quantity 1, ID random, Description random
+    Then Set Order Details Item - Quantity 1, ID random, Description random
 
     And Open customs form
 
@@ -160,7 +160,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     Then Set customs form I agree to true
     Then Close customs form
-    Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Sign out
 
   @international_internal_transaction_2500 @international
@@ -168,16 +168,16 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
     # Internal Transaction # Required for total over $2500
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail International Package"
 
-    Then Add Order Details Form Item - Quantity 1, ID random, Description random
-    Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    Then Set Order Details Item - Quantity 1, ID random, Description random
+    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
@@ -194,16 +194,16 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international_rogue_countries @international
   Scenario: Iran - Internal Transaction # Required
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Iran    | random  | random  |
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Length to 1
-    Then Set Order Details Form Height to 1
-    Then Set Order Details Form Width to 1
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Length to 1
+    Then Set Order Details Height to 1
+    Then Set Order Details Width to 1
+    Then Set Order Details Service to "Priority Mail International Package"
 
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be "Required"
@@ -233,15 +233,15 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international_rogue_countries @international
   Scenario: Sudan - Internal Transaction # Required
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail International Package"
 
-    #Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    #Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Commercial Sample"
@@ -270,15 +270,15 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international_rogue_countries @international
   Scenario: Syria - Internal Transaction # Required
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail International Package"
 
-    #Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    #Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form Package Contents to "Commercial Sample"
@@ -307,16 +307,16 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international_rogue_countries @international
   Scenario: Cuba - Internal Transaction # Required
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To country to Cuba
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To country to Cuba
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail International Package"
 
-    #Then Set Order Details Form Service to Priority Mail International Flat Rate Envelope
+    #Then Set Order Details Service to Priority Mail International Flat Rate Envelope
     And Open customs form
     Then Set customs form Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be "Required"
@@ -344,15 +344,15 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international_rogue_countries @international@international_rogue_countries_nk @international_failure @rob_int
   Scenario: North Korea - Internal Transaction # Required
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To country to Democratic People's Republic of (North) Korea
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To country to Democratic People's Republic of (North) Korea
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea| random  | random  |
-    #Then Set Order Details Form Service to Priority Mail International Flat Rate Envelope
+    #Then Set Order Details Service to Priority Mail International Flat Rate Envelope
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail International Package"
 
     And Open customs form
     Then Set customs form Package Contents to "Commercial Sample"
@@ -381,16 +381,16 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
   @international_rogue_countries @international
   Scenario: Internal Transaction # Not Required
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
-    #Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    #Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
-    Then Set Order Details Form Ounces to 5
-    Then Set Order Details Form Service to "Priority Mail International Package"
+    Then Set Order Details Ounces to 5
+    Then Set Order Details Service to "Priority Mail International Package"
 
-    Then Set Order Details Form Ounces to 5
+    Then Set Order Details Ounces to 5
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Set customs form Package Contents to "Commercial Sample"

@@ -15,12 +15,12 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Save Settings changes
 
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Australia | random  | random  |
 
-    Then Set Order Details Form Ounces to 2
+    Then Set Order Details Ounces to 2
 
     And Open customs form
 
@@ -30,7 +30,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Close customs form
 
-    Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And Click Print Button
 
@@ -43,12 +43,12 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     #Print an Int'l order and turn Auto-Confirm on
 
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Australia | random  | random  |
 
-    Then Set Order Details Form Ounces to 2
+    Then Set Order Details Ounces to 2
 
     And Open customs form
 
@@ -58,7 +58,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Close customs form
 
-    Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And Click Print Button
 
@@ -72,12 +72,12 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Save Settings changes
 
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Australia | random  | random  |
 
-    Then Set Order Details Form Ounces to 2
+    Then Set Order Details Ounces to 2
 
 
     And Open customs form
@@ -88,7 +88,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Close customs form
 
-    Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And Print
 
@@ -100,12 +100,12 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Save Settings changes
 
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Australia | random  | random  |
 
-    Then Set Order Details Form Ounces to 2
+    Then Set Order Details Ounces to 2
 
     And Open customs form
 
@@ -114,7 +114,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Set customs form I agree to true
     Then Close customs form
-    Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And Print
 
@@ -126,12 +126,12 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Save Settings changes
 
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
+    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Australia | random  | random  |
 
-    Then Set Order Details Form Ounces to 2
+    Then Set Order Details Ounces to 2
 
     And Open customs form
 
@@ -142,7 +142,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Set customs form I agree to true
     Then Close customs form
 
-    Then Set Order Details Form Service to "First-Class Mail International Large Envelope/Flat"
+    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And Print
     And Sign out

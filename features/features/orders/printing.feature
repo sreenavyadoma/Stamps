@@ -7,10 +7,10 @@ Feature: Printing
   @print @print1
   Scenario:  Print Priority Mail Package
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to random
-    Then Set Order Details Form Service to "Priority Mail Express Medium Flat Rate Box"
-    Then Set Order Details Form Ounces to 1
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to random
+    Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    Then Set Order Details Ounces to 1
     Then Print
 
     And Sign out
@@ -18,11 +18,11 @@ Feature: Printing
   @print @print_test
   Scenario:  B-01624 Print Priority Mail Express Medium Flat Rate Box
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to random
     And Hide Order Details Form Ship-To fields
-    Then Set Order Details Form Service to "Priority Mail Express Medium Flat Rate Box"
-    Then Set Order Details Form Ounces to 1
+    Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    Then Set Order Details Ounces to 1
     Then Print
 
     And Sign out
@@ -30,11 +30,11 @@ Feature: Printing
   @print @print_test
   Scenario:  Print Priority Mail Express Package
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to random
     And Hide Order Details Form Ship-To fields
-    Then Set Order Details Form Service to "Priority Mail Express Package"
-    Then Set Order Details Form Ounces to 1
+    Then Set Order Details Service to "Priority Mail Express Package"
+    Then Set Order Details Ounces to 1
     Then Print
 
     And Sign out
@@ -42,11 +42,11 @@ Feature: Printing
   @print
   Scenario:  Print Priority Mail Flat Rate Envelope
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to random
     And Hide Order Details Form Ship-To fields
-    Then Set Order Details Form Service to "Priority Mail Flat Rate Envelope"
-    Then Set Order Details Form Ounces to 1
+    Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
+    Then Set Order Details Ounces to 1
     Then Print
 
     And Sign out
@@ -54,10 +54,10 @@ Feature: Printing
   @print
   Scenario:  Print Priority Mail Regional Rate Box A
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to random
-    Then Set Order Details Form Service to "Priority Mail Regional Rate Box A"
-    Then Set Order Details Form Ounces to 1
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to random
+    Then Set Order Details Service to "Priority Mail Regional Rate Box A"
+    Then Set Order Details Ounces to 1
     Then Print
 
     And Sign out

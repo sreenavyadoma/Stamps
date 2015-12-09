@@ -7,8 +7,8 @@ Feature: User Views Price Next to Service Dropdown
   @inline_service_rates
   Scenario:  User Views Price Next to Service Dropdown
     And I Add a new order
-    Then Set Order Details Form Ship-From to default
-    Then Set Order Details Form Ship-To address to random
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to random
     Then Expect Service Cost to be $0.00
     Then Expect Order Details Form Service Cost inline price for "First-Class Mail Large Envelope/Flat" to be greater than $0.01
     Then Expect Order Details Form Service Cost inline price for "First-Class Mail Package/Thick Envelope" to be greater than $0.01

@@ -11,10 +11,10 @@ Feature:  BVT Address Management
     Then Expect random Ship-From address was added
     And Delete random Ship-From address
     And Delete all Ship-From address
-    Then Set Order Details Form Ship-To address to random
-    Then Set Order Details Form Service to "Priority Mail Package"
-    Then Set Order Details Form Height to 1
-    Then Set Order Details Form Width to 1
-    Then Set Order Details Form Length to 1
+    Then Set Order Details Ship-To address to random
+    Then Set Order Details Service to "Priority Mail Package"
+    Then Set Order Details Height to 1
+    Then Set Order Details Width to 1
+    Then Set Order Details Length to 1
 
     And Sign out

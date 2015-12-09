@@ -1,5 +1,5 @@
-Then /^Set Order Details Form Ship-To country to (.*)$/ do |country|
-  log.info "Step: Set Order Details Form Ship-To country to #{country}"
+Then /^Set Order Details Ship-To country to (.*)$/ do |country|
+  log.info "Step: Set Order Details Ship-To country to #{country}"
   @international_ship_to = orders.order_details.ship_to.country.select country
 end
 
@@ -31,7 +31,7 @@ Given /^Set Ship-To to international address$/ do |table|
   log.info "International Ship-To Phone: #{phone}"
   log.info "International Ship-To Email: #{email}"
 
-  step "Set Order Details Form Ship-To country to #{country}"
+  step "Set Order Details Ship-To country to #{country}"
   step "Set International Ship-To Name to \"#{name}\""
   step "Set International Ship-To Company to \"#{company}\""
   step "Set International Ship-To Address 1 to \"#{street_address_1}\""
