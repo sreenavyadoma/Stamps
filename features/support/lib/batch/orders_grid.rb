@@ -109,9 +109,9 @@ module Batch
     def grid_text_by_id column, order_id
       scroll column
       row = row_number(order_id)
-      log.info "Retrieving data for Column #{column} with Order ID #{order_id}...."
+      log.info "Retrieving data for Column #{GRID_COLUMNS[column]} with Order ID #{order_id}...."
       data = grid_text column, row
-      log.info "Column:  #{column}, Order ID #{order_id}, Row #{row}, Data #{data}"
+      log.info "Column:  #{GRID_COLUMNS[column]}, Order ID #{order_id}, Row #{row}, Data #{data}"
       data
     end
 
