@@ -470,18 +470,22 @@ Then /^Expect Grid Order Status to be (.+)$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Grid Tracking # to be (.+)$/ do |expected|
-  log.info "Expectation: Expect Grid Tracking # to be #{expected}"
-  begin
+Then /^Expect Grid Tracking Number is populated$/ do
+  log.info "Expect Grid Tracking Number is populated"
+  actual = batch.grid.tracking_no.data @order_id
+  10.times {
+    log.info "Tracking number is #{actual}"
+    break if actual.length > 5
     actual = batch.grid.tracking_no.data @order_id
-    10.times { |counter|
-      sleep(2)
-      #log_expectation_eql "#{counter}. Tracking #", expected, actual
-      break if actual.eql? expected
-      actual = batch.grid.tracking_no.data @order_id
-    }
-    actual.should eql expected
-  end unless expected.length == 0
+  }
+  actual.length.should be > 6
+end
+
+Then /^Expect Order Status to be \"([\w ]*)\"$/ do |expected_value|
+  log.info "Expectation: Expect Order Status to be #{expected_value}"
+  actual = batch.grid.order_status.data @order_id
+  log.info "Expect Order Status to be #{expected_value}.  Actual Value:  #{actual}.  Test #{(actual==expected_value)?'Passed':"Failed"}"
+  actual.should eql expected_value
 end
 
 Then /^Expect Grid Order Total to be (.+)$/ do |expected|

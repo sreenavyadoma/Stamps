@@ -126,9 +126,9 @@ Then /^Set Order Details Form Tracking to \"([\w ]*)\"$/ do |value|
   end unless value.length == 0
 
   actual_tooltip = batch.order_details.tracking.tooltip value
-  log.info actual_tooltip
+  #log.info actual_tooltip
   cost = batch.order_details.tracking.cost value
-  log.info cost
+  #log.info cost
 end
 
 And /^Set Order Details Form Insured Value to \$([\d*\.?\d*]*)$/ do |value|
@@ -191,12 +191,6 @@ end
 Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
   log.info "Step: Edit Ship-From address for name = \"#{name}\", company = \"#{company}\" and city = \"#{city}\" to #{new_address}"
   batch.order_details.ship_from.select("Manage Shipping Addresses...").edit_address name, company, city,  new_address.hashes.first
-end
-Then /^Expect Order Status to be ([\w ]+)$/ do |expected_value|
-  log.info "Expectation: Expect Order Status to be #{expected_value}"
-  actual_value = batch.order_details.order_status
-  log.info "Expect Order Status to be #{expected_value}.  Actual Value:  #{actual_value}.  Test #{(actual_value==expected_value)?'Passed':"Failed"}"
-  actual_value.should eql expected_value
 end
 
 Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|

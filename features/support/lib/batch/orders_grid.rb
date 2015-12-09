@@ -118,7 +118,7 @@ module Batch
     def row_count
       tables = @browser.tables :css => "div[id^=ordersGrid]>div>div>table"
       count = tables.size
-      log.info "Total Number of Orders on Grid:  #{count}"
+      #log.info "Total Number of Orders on Grid:  #{count}"
       count.to_i
     end
 
@@ -166,7 +166,7 @@ module Batch
         columns.each_with_index { |column_field, index|
           column_text = browser_helper.text column_field
           if column_text == column_str
-            log.info "Grid:  #{column_str} is in column #{index+1}"
+            #log.info "Grid:  #{column_str} is in column #{index+1}"
             return index+1
           end
         }
