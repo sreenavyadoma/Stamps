@@ -249,7 +249,12 @@ module Postage
   end
 
   class Weight < PostageObject
+    def ounces
 
+    end
+    def pounds
+
+    end
   end
 
   class Service < PostageObject
