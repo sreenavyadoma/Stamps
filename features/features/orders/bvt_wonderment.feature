@@ -8,7 +8,7 @@ Feature:  BVT Wonderment
   Scenario:  Add a new order
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Ounces to 1
     Then Set Order Details Length to 1

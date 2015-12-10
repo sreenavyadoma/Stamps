@@ -31,13 +31,6 @@ module Orders
       @browser.table :css => "table[id*=badgebutton][class*=sdc-badgebutton-selected]"
     end
 
-    def awaiting_shipment_field
-      @browser.div :text => "Awaiting Shipment"
-    end
-
-    def shipped_field
-      @browser.div :text => "Shipped"
-    end
 
     def cancelled_field
       @browser.div :text => "Canceled"
@@ -49,25 +42,22 @@ module Orders
       browser_helper.text(@browser.div :css => "div.sdc-badge").to_i
     end
 
-    def awaiting_shipment_tab
-      div = awaiting_shipment_field
-      table = div.parent.parent.parent.parent
-      Stamps::Browser::Selection.new div, table, "class", "selected"
-    end
-
     def awaiting_shipment
-      awaiting_shipment_tab.select
-      sleep 1
-      @grid ||= OrdersGrid.new @browser
-    end
+      #div = @browser.div :css => "table[class*='sdc-badgebutton-first x-box-item sdc-badgebutton-default']>tbody>tr>td>div[class*='sdc-badgebutton-text']"
+      #table = div.parent.parent.parent.parent
 
-    def shipped_tab
-      div = shipped_field
-      table = div.parent.parent.parent.parent
-      Stamps::Browser::Selection.new div, table, "class", "selected"
+      table = (@browser.tables :css => "table[class*='sdc-badgebutton']").first
+      div = table.tbody.tr.tds[0].div
+      tab = Stamps::Browser::Selection.new div, table, "class", "selected"
+      tab.select
+      sleep 1
+      OrdersGrid.new @browser
     end
 
     def shipped
+      div = shipped_field
+      table = div.parent.parent.parent.parent
+      shipped_tab = Stamps::Browser::Selection.new div, table, "class", "selected"
       shipped_tab.select
       sleep 1
       @grid ||= OrdersGrid.new @browser
