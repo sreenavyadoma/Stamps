@@ -1,9 +1,9 @@
 module Orders
 
-  class Orders < OrdersObject
+  class PrintOrders < OrdersObject
 
     def navbar
-      @navigation_bar ||= Orders::NavBar.new @browser
+      Orders::NavBar.new @browser
     end
 
     def toolbar
@@ -11,7 +11,7 @@ module Orders
     end
 
     def sign_in_page
-      @sign_in ||= Orders::SignInPage.new @browser
+      Orders::SignInPage.new @browser
     end
 
     def awaiting_shipment
@@ -25,7 +25,7 @@ module Orders
     end
 
     def filter
-      @filter ||= Orders::FilterPanel.new @browser
+      Orders::FilterPanel.new @browser
     end
 
     def multi_order

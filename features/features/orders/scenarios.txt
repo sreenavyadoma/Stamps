@@ -1,0 +1,91 @@
+Feature:  B-01604 As a features.orders shipper, when I have an order with an ambiguous address, I want to be able to view a list of potentially-valid addresses.
+
+
+Scenario: # 1.  Systems Triggers Address Cleanse for Ambiguous Address
+Given User has one order selected in the Orders Grid View
+And Order Details Panel is Displayed
+When User clicks on the Ship-To Down Arrow
+Then Ship-To Text Field Expands for user to modify Ship-To Address
+And User inputs an ambiguous STREET address in the Ship-To Address Order Details Panel
+
+------------------------------------------------------------------------------------------------
+
+
+Scenario: # 2a.  System Cannot verify the apartment or suite number, but does verify the street address, city, state, zip
+Given User has an ambiguous STREET address entered in the Ship-To Address Order Details Panel
+
+	Examples:
+	|Name				|Company				|Address						|City			|State			|Zip
+	|QA Tester			|Stamps.com				|12959 Coral Tree Pl			|Los Angeles	|CA				|90066
+	|Testing Company	|Null					|MS-44, P.O.BOX 1892			|Houston		|TX				|77251
+	|Null				|Another Test Address	|988 Market Street, Floor 5		|San Francisco	|CA				|94102
+	|QA Tester			|Null					|205 N 1105 W 					|Beverly Hills 	|CA				|90210
+	|QA Tester			|Null					|333 Market St					|San Francisco 	|CA				|94124
+
+When User Blurs out of the Ship-To Address Field
+And System Cleanse address through AMS
+Then System displays "Exact Address Not Found" Dialog
+
+
+Scenario: # 2b.  System Cannot verify the apartment or suite number, but does verify the street address, city, state, zip -- User dismisses "Exact Address Not Found Modal" by Clicking "X"
+Given User views the "Exact Address Not Found Modal"
+When User Blurs out of the Ship-To Address Field
+And User clicks "X" to close the "Exact Address Not Found" modal without choosing an address.
+Then System shows existing "Ambiguous Address" error on the order.
+And User can hover over icon to view existing "Ambiguous Address" error tooltip: Ambiguous Address: The USPS address matching system was unable to find an exact match for the street address. Only the City, State and ZIP Code have been validated.
+
+
+Scenario: # 2c.  System Cannot verify the apartment or suite number, but does verify the street address, city, state, zip -- User dismisses "Exact Address Not Found Modal" by Clicking Pressing "Esc" Key
+Given User views the "Exact Address Not Found Modal"
+When User Blurs out of the Ship-To Address Field
+And Presses Esc key to close the "Exact Address Not Found" modal without choosing an address.
+Then System shows existing "Ambiguous Address" error on the order.
+And User can hover over icon to view existing "Ambiguous Address" error tooltip: Ambiguous Address: The USPS address matching system was unable to find an exact match for the street address. Only the City, State and ZIP Code have been validated.
+
+------------------------------------------------------------------------------------------------
+
+
+Scenario: # 3a.  System Cannot verify the apartment or suite number, but does verify the street address, city, state, zip
+Given User has an ambiguous STREET address entered in the Ship-To Address Order Details Panel
+
+	Examples:
+	|Name				|Company				|Address						|City			|State			|Zip
+	|QA Tester			|Stamps.com				|12959 Coral Tree Pl			|Los Angeles	|CA				|90066
+	|Testing Company	|Null					|MS-44, P.O.BOX 1892			|Houston		|TX				|77251
+	|Null				|Another Test Address	|988 Market Street, Floor 5		|San Francisco	|CA				|94102
+	|QA Tester			|Null					|205 N 1105 W 					|Beverly Hills 	|CA				|90210
+	|QA Tester			|Null					|333 Market St					|San Francisco 	|CA				|94124
+
+When User Blurs out of the Ship-To Address Field
+And System Cleanse address through AMS
+Then System displays "Exact Address Not Found" Dialog
+
+Scenario: # 3b.  System Cannot verify the apartment or suite number, but does verify the street address, city, state, zip -- User Views "Validate Address" button
+Given User views the "Exact Address Not Found Modal"
+When User Blurs out of the Ship-To Address Field
+And User dismisses "Exact Address Not Found" modal for an order
+And User views Order Details Panel for that order (e.g. by selecting it in the grid).
+Then In Order Details Panel, System displays "Validate Address" button below the Ship-To address field.
+
+
+Scenario: # 3b.  System Cannot verify the apartment or suite number, but does verify the street address, city, state, zip -- User Views "Validate Address" button tooltip
+Given User views the "Exact Address Not Found Modal"
+When User Blurs out of the Ship-To Address Field
+And User dismisses "Exact Address Not Found" modal for an order
+And User views Order Details Panel for that order (e.g. by selecting it in the grid).
+Then In Order Details Panel, System displays "Validate Address" button below the Ship-To address field.
+And User User hovers over "Validate Address" button.
+Then Color of Validate Address Ucib and text changes to light blue
+And System displays the following tooltip:
+"The USPS address standardization system could not find this exact address.  Click here if you wish to view a list of possible matching addresses."
+
+
+Scenario: # 3b.  System Cannot verify the apartment or suite number, but does verify the street address, city, state, zip -- User Clicks on  "Validate Address" button
+Given User views the "Exact Address Not Found Modal"
+When User Blurs out of the Ship-To Address Field
+And User dismisses "Exact Address Not Found" modal for an order
+And User views Order Details Panel for that order (e.g. by selecting it in the grid).
+Then In Order Details Panel, System displays "Validate Address" button below the Ship-To address field.
+And User User hovers over "Validate Address" button.
+Then System displays "Exact Address Not Found" modal
+
