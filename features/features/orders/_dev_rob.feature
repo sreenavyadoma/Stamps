@@ -18,11 +18,12 @@ Feature: Test Development
     Then Move order to Awaiting Shipment
     Then Expect order moved to Awaiting Shipment
 
+    @rand_ship_to_zone_5_8
   Scenario:
     And I Add a new order
     Then Filter Awaiting Shipment
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to Eight Zone,377 Santa Rosa Blvd,Fort Walton Beach, FL 32548
+    Then Set Order Details Ship-To address to random ship to zone 5 through 8
     Then Set Order Details Email to random
     Then Set Order Details Phone to random
     Then Set Order Details Service to "Priority Mail Large Package"
