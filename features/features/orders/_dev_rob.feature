@@ -18,9 +18,11 @@ Feature: Test Development
     Then Move order to Awaiting Shipment
     Then Expect order moved to Awaiting Shipment
 
-    @rand_ship_to_zone_5_8
+  @rand_ship_to_zone_5_8
   Scenario:
     And I Add a new order
+    Then Filter Shipped
+    Then Filter Cancelled
     Then Filter Awaiting Shipment
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random ship to zone 5 through 8
@@ -32,7 +34,7 @@ Feature: Test Development
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
-    And Set Order Details Tracking to "Signature Required"
+    Then Set Order Details Tracking to "Signature Required"
     Then Set Order Details Insured Value to $50.25
     Then Set Order Details Add Item
     Then Set Order Details Line Item Quantity to 1
