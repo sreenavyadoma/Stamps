@@ -8,13 +8,13 @@ Feature: Print Multiple Orders
   Scenario:  Print 2 Orders
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
     Then Set Order Details Ounces to 1
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
     Then Set Order Details Ounces to 1
 

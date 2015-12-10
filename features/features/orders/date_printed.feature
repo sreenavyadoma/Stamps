@@ -11,7 +11,7 @@ Feature: Date Printed
     Then Set Order Details Ounces to 4
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     Then Print
-    Then Filter Shipped Orders
+    Then Filter Shipped
     Then Expect Grid Ship Date for this order to be today
     Then Expect Grid Date Printed for this order to be today
 
@@ -25,7 +25,7 @@ Feature: Date Printed
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 1
     Then Print
-    Then Filter Shipped Orders
+    Then Filter Shipped
     Then Expect Grid Date Printed for this order to be today
     Then Expect Grid Ship Date for this order to be today plus 1
 
@@ -39,7 +39,7 @@ Feature: Date Printed
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 2
     Then Print
-    Then Filter Shipped Orders
+    Then Filter Shipped
     Then Expect Grid Date Printed for this order to be today
     Then Expect Grid Ship Date for this order to be today plus 2
 
@@ -53,7 +53,7 @@ Feature: Date Printed
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 3
     Then Print
-    Then Filter Shipped Orders
+    Then Filter Shipped
     Then Expect Grid Date Printed for this order to be today
     Then Expect Grid Ship Date for this order to be today plus 3
 

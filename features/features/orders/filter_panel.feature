@@ -59,7 +59,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 1
 
-    Then Filter Awaiting Shipment Orders
+    Then Filter Awaiting Shipment
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
 
     And Expect Order Details Form Order ID equals Grid order ID
@@ -74,7 +74,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     Then Print
 
-    Then Filter Shipped Orders
+    Then Filter Shipped
     And Expect system selects Shipped Filter and deselects the previous filter
     And Expect system hides Order Details Form
 

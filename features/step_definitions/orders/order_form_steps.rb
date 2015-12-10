@@ -64,14 +64,18 @@ end
 When /^Set Order Details Ship-To address to (.*)$/ do |address|
   log.info "Step: Set Order Details Ship-To address to \"#{address}\""
 
-  if address.downcase.include? "random"
-    random_ship_to_address = test_helper.random_ship_to
-    formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
-  else
-    formatted_address = OrdersHelper.instance.format_address address
+  case address
+    when "random ship to zone 1 through 4"
+      random_ship_to_address = test_helper.rand_ship_to_zone_1_4
+      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      log.info "Set Order Details Ship-To random zone 1 through 4 address to \"#{formatted_address}\""
+    when "random ship to zone 5 through 8"
+      random_ship_to_address = test_helper.rand_ship_to_zone_5_8
+      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      log.info "Set Order Details Ship-To random zone 5 through 8 address to \"#{formatted_address}\""
+    else
+      formatted_address = OrdersHelper.instance.format_address address
   end
-
-  log.info "Set Order Details Ship-To address to \"#{formatted_address}\""
 
   orders.order_details.ship_to.address.set formatted_address
   begin
@@ -203,7 +207,7 @@ Then /^Add Ship-From address$/ do |ship_from|
 end
 
 Then /^Add Ship-From address (\w+)$/ do |address|
-  ship_from = (address.include?'random')?(test_helper.random_ship_from):address
+  ship_from = (address.include?'random ship from zone 1 through 4')?(test_helper.rand_ship_from_zone_1_4):address
   log.info "Step:  Add Ship-From address #{(address.include?'random')?ship_from:(address)}"
   @ship_from_address = orders.order_details.ship_from.select("Manage Shipping Addresses...").add ship_from
   log.info "Random address added: #{@ship_from_address}"

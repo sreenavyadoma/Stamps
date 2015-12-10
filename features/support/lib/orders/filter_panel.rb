@@ -31,14 +31,6 @@ module Orders
       @browser.table :css => "table[id*=badgebutton][class*=sdc-badgebutton-selected]"
     end
 
-    def awaiting_shipment_field
-      @browser.div :text => "Awaiting Shipment"
-    end
-
-    def shipped_field
-      @browser.div :text => "Shipped"
-    end
-
     def cancelled_field
       @browser.div :text => "Canceled"
     end
@@ -49,40 +41,31 @@ module Orders
       browser_helper.text(@browser.div :css => "div.sdc-badge").to_i
     end
 
-    def awaiting_shipment_tab
-      div = awaiting_shipment_field
-      table = div.parent.parent.parent.parent
-      Stamps::Browser::Selection.new div, table, "class", "selected"
-    end
-
     def awaiting_shipment
-      awaiting_shipment_tab.select
+      table = (@browser.tables :css => "table[id^=badgebutton]").first
+      div = table.tbody.tr.tds.first.div
+      tab = Stamps::Browser::Selection.new div, table, "class", "selected"
+      tab.select
       sleep 1
-      @grid ||= OrdersGrid.new @browser
-    end
-
-    def shipped_tab
-      div = shipped_field
-      table = div.parent.parent.parent.parent
-      Stamps::Browser::Selection.new div, table, "class", "selected"
+      OrdersGrid.new @browser
     end
 
     def shipped
-      shipped_tab.select
+      table = (@browser.tables :css => "table[id^=badgebutton]")[1]
+      div = table.tbody.tr.tds.first.div
+      tab = Stamps::Browser::Selection.new div, table, "class", "selected"
+      tab.select
       sleep 1
-      @grid ||= OrdersGrid.new @browser
-    end
-
-    def cancelled_tab
-      div = cancelled_field
-      table = div.parent.parent.parent.parent
-      Stamps::Browser::Selection.new div, table, "class", "selected"
+      OrdersGrid.new @browser
     end
 
     def cancelled
-      cancelled_tab.select
+      table = (@browser.tables :css => "table[id^=badgebutton]").last
+      div = table.tbody.tr.tds.first.div
+      tab = Stamps::Browser::Selection.new div, table, "class", "selected"
+      tab.select
       sleep 1
-      @grid ||= OrdersGrid.new @browser
+      OrdersGrid.new @browser
     end
 
     def get_closed_filter_name

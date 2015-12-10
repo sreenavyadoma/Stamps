@@ -16,7 +16,7 @@ Feature:  Address Management
     And Delete Ship-From Row 1 from Manage Shipping Addresses Modal
     Then Delete all Ship-From address
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Phone to random
     Then Set Order Details Service to "Priority Mail Large Package"
     And Sign out

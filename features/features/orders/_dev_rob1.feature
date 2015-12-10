@@ -21,7 +21,7 @@ Feature: Test Development
     Then Expect Grid State to be CA
     Then Expect Grid Zip to be 94102
 
-    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
 
     Then Set Order Details Ship-To address to
       | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
@@ -31,7 +31,7 @@ Feature: Test Development
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     And I Add a new order
-    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
     And I Add a new order
     Then Set Order Details Ship-To address to San
     And I Add a new order
@@ -40,7 +40,7 @@ Feature: Test Development
   Scenario:
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Expect Order Details Form Service to be "Priority Mail Package"
     Then Expect Order Details Form Service Cost inline price for "Priority Mail Package" to be greater than $0.01

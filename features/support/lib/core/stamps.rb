@@ -220,8 +220,17 @@ module Stamps
       "#{random_string}@#{random_string}.com".downcase
     end
 
-    def random_ship_to
-      shipping = select_random_zone_random_address
+    def rand_ship_to_zone_1_4
+      shipping = data_rand_zone_1_4
+      shipping["name"] = test_helper.random_name
+      shipping["company"] = test_helper.random_company_name
+      shipping["phone"] = test_helper.random_phone
+      shipping["email"] = test_helper.random_email
+      shipping
+    end
+
+    def rand_ship_to_zone_5_8
+      shipping = data_rand_zone_5_8
       shipping["name"] = test_helper.random_name
       shipping["company"] = test_helper.random_company_name
       shipping["phone"] = test_helper.random_phone
@@ -233,9 +242,9 @@ module Stamps
       "Suite #{Random.rand(1..999)}"
     end
 
-    def random_ship_from
+    def rand_ship_from_zone_1_4
       us_states = data_for(:us_states, {}) if us_states.nil?
-      shipping = select_random_zone_random_address
+      shipping = data_rand_zone_1_4
       shipping["ship_from_zip"] = shipping["zip"]
       shipping["name"] = random_name
       shipping["company"] = random_company_name
@@ -247,8 +256,32 @@ module Stamps
       shipping
     end
 
-    def select_random_zone_random_address
-      shipping_addresses_zones = data_for(:shipping_addresses, {})
+    def rand_ship_from_zone_5_8
+      us_states = data_for(:us_states, {}) if us_states.nil?
+      shipping = data_rand_zone_5_8
+      shipping["ship_from_zip"] = shipping["zip"]
+      shipping["name"] = random_name
+      shipping["company"] = random_company_name
+      shipping["phone"] = random_phone
+      shipping["email"] = random_email
+      shipping["state_abbrev"] = shipping["state"]
+      shipping["state"] = us_states[shipping["state_abbrev"]]
+      shipping["street_address2"] = random_suite
+      shipping
+    end
+
+    def data_rand_zone_1_4
+      shipping_addresses_zones = data_for(:zone_1_through_4, {})
+      zones = shipping_addresses_zones.values
+      #pick a random zone
+      zone_addresses = zones[rand(zones.size)]
+      zone_addresses_values = zone_addresses.values
+      #pick a random address from the zone selected above.
+      zone_addresses_values[rand(zone_addresses_values.size)]
+    end
+
+    def data_rand_zone_5_8
+      shipping_addresses_zones = data_for(:zone_5_through_8, {})
       zones = shipping_addresses_zones.values
       #pick a random zone
       zone_addresses = zones[rand(zones.size)]

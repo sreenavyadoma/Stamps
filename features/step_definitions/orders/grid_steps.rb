@@ -1,5 +1,32 @@
-Then /^Filter Shipped Orders orders in the filter panel$/ do
-  orders.filter
+Then /^Move order to Shipped$/ do
+  grid = orders.grid
+  grid.order_date.sort.descending
+  grid.checkbox.check_order_id @order_id
+  grid.toolbar.move.to_shipped
+end
+
+Then /^Expect order moved to Shipped$/ do
+  grid = orders.filter.shipped
+  grid.order_date.sort.descending
+  row = grid.order_id.row_num @order_id
+  log.info "Test #{row > 0}"
+  log.info "Test #{(row > 0)?"Passed":"Failed"}"
+end
+
+Then /^Move order to Canceled/ do
+
+end
+
+Then /^Expect order moved to Canceled/ do
+
+end
+
+Then /^Move order to Awaiting Shipment/ do
+
+end
+
+Then /^Expect order moved to Awaiting Shipment/ do
+
 end
 
 Then /^Expect Grid Date Printed for this order to be today$/ do
