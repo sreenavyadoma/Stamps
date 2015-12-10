@@ -8,7 +8,7 @@ Feature:  Printing Multiple Orders
   Scenario:  Printing
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     Then Set Order Details Ounces to 1
     And Open Print Modal
@@ -19,7 +19,7 @@ Feature:  Printing Multiple Orders
 
   Scenario:  Printing
     And I Add a new order
-    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     Then Set Order Details Ounces to 1
     And Edit row 1 on the order grid

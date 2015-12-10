@@ -23,38 +23,48 @@ module Orders
   end
 
   class MoveMenu < OrdersObject
-    def move_to_shipped_label
-      Label.new @browser.span Locators::ToolBar::move_to_shipped
+
+    def drop_down
+      Button.new @browser.span Locators::ToolBar::move
     end
 
-    def move_to_cancelled_label
-      Label.new @browser.span Locators::ToolBar::move_to_cancelled
+    def select selection
+      case selection
+        when :shipped
+          selection_str = "Move to Shipped"
+        when :cancelled
+          selection_str = "Move to Canceled"
+        when :awaiting_shipment
+          selection_str = "Move to Awaiting Shipment"
+        else
+          raise "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment"
+      end
+
+      confirmation = MoveConfirmation.new @browser
+      dd = drop_down
+      selection_label = Label.new @browser.span :text => selection_str
+
+      10.times{
+        dd.safe_click unless selection_label.present?
+        selection_label.safe_click
+        return confirmation if confirmation.present?
+      }
+
+      raise "Unable to select #{selection} from Move menu."
     end
 
-    def move_to_awaiting_shipment_label
-      Label.new @browser.span Locators::ToolBar::move_to_awaiting_shipment
+    def to_shipped
+      select :shipped
     end
 
-    def move_to_shipped
-      label = move_to_shipped_label
-      raise "Move to Shipped is not present in the Move menu.  Verify that your test is correct." unless label.present?
-      label.click_while_present
-      MoveConfirmation.new @browser
+    def to_cancelled
+      select :cancelled
     end
 
-    def move_to_cancelled
-      label = move_to_cancelled_label
-      raise "Move to Cancelled is not present in the Move menu.  Verify that your test is correct." unless label.present?
-      label.click_while_present
-      MoveConfirmation.new @browser
+    def to_awaiting_shipment
+      select :awaiting_shipment
     end
 
-    def move_to_awaiting_shipment
-      label = move_to_awaiting_shipment_label
-      raise "Move to Awaiting Shipment is not present in the Move menu.  Verify that your test is correct." unless label.present?
-      label.click_while_present
-      MoveConfirmation.new @browser
-    end
   end
 
   #
@@ -108,7 +118,7 @@ module Orders
     end
 
     def move
-
+      Orders::MoveMenu.new @browser
     end
 
     def browser_settings_button
@@ -217,6 +227,69 @@ module Orders
     def open_settings
       sleep 1
       browser_settings_button.click
+    end
+
+    def page_count
+      divs = @browser.divs :css => "div[id^=tbtext]"
+      div = divs.last
+      present = browser_helper.present? div
+      log.info "Page count: #{browser_helper.text div}"
+      div
+    end
+
+    def page_number
+      field = @browser.text_field :css => "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
+      text_box = Textbox.new field
+      text_box
+    end
+
+    def first_page
+      field = @browser.span :css => "span[class*=x-tbar-page-first]"
+      label = Label.new field
+      label
+    end
+
+    def first_page_disabled
+      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      label = Label.new field
+      label.disabled?
+    end
+
+    def previous_page
+      Label.new field @browser.span :css => "span[class*=x-tbar-page-prev]"
+    end
+
+    def previous_page_disabled
+      field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+      label = Label.new field
+      label.disabled?
+    end
+
+    def next_page
+      Label.new field @browser.span :css => "span[class*=x-tbar-page-next]"
+    end
+
+    def last_page
+      Label.new field @browser.span :css => "span[class*=x-tbar-page-last]"
+    end
+
+    def last_page_disabled
+      Label.new @browser.a :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+    end
+
+    def total_number_of_pages
+      label = (Label.new @browser.divs :css => "div[id^=tbtext-]").last
+      number_str=label.text
+      number = number_str.scan /\d+/
+      number.last.to_s
+    end
+
+    def per_page_dd
+      #browser, drop_down_button, selection_field_type, drop_down_input
+      buttons = @browser.divs :css => "div[id^=combo-][id$=trigger-picker]"
+      drop_down_button = buttons.first
+      drop_down_input = @browser.text_field :css => "input[name^=combo]"
+      Dropdown.new @browser, drop_down_button, :li, drop_down_input
     end
   end
 

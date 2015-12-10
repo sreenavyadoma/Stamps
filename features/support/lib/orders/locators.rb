@@ -44,18 +44,6 @@ module Orders
           {:text => "Move"}
         end
 
-        def move_to_shipped
-          {:text => "Move to Shipped"}
-        end
-
-        def move_to_cancelled
-          {:text => "Move to Canceled"}
-        end
-
-        def move_to_awaiting_shipment
-          {:text => "Move to Awaiting Shipment"}
-        end
-
         def confirmation_modal_move_label
           {:css => "span[class*='x-btn-inner-primary-blue-medium']"}
         end

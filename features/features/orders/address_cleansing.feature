@@ -18,7 +18,7 @@ Feature: Address Cleansing
     Then Expect Grid City to be San Francisco
     Then Expect Grid State to be CA
     And I Add a new order
-    Then Set Order Details Ship-To address to random
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Height to 1
     Then Set Order Details Width to 1

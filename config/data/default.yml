@@ -6,7 +6,96 @@ url_prefix:
   staging: print.staging
   rating: printext.qacc
 
-shipping_addresses:
+zone_5_through_8:
+    zone5:
+      1:
+        street_address:  530 9th Ave. N.
+        city: Buhl
+        state: ID
+        zip: 83316-1115
+      2:
+        street_address:  26930 NE 152nd St.
+        city: Duvall
+        state: WA
+        zip: 98019-8316
+      3:
+        street_address:  3232 SE 89th Ave.
+        city: Portland
+        state: OR
+        zip: 97266-1911
+      4:
+        street_address:  648 Gehr St.
+        city: Wenatchee
+        state: WA
+        zip: 98801-8011
+
+    zone6:
+      1:
+        street_address:  11 Laguna Madre Dr.
+        city: Laguna Vista
+        state: TX
+        zip: 78578-2602
+      2:
+        street_address:  204 Nursery Ln.
+        city: Ft Worth
+        state: TX
+        zip: 76114-4348
+      3:
+        street_address:  1327 Yates Dr.
+        city: Hurst
+        state: TX
+        zip: 76053-4038
+      4:
+        street_address:  5912 83rd St.
+        city: Lubbock
+        state: TX
+        zip: 79424-3608
+
+    zone7:
+      1:
+        street_address:  9435 Pettit Rd.
+        city: Baker
+        state: LA
+        zip: 70714-6434
+      2:
+        street_address:  1071 Trelane Ave.
+        city: Saint Louis
+        state: MO
+        zip: 63126-1117
+      3:
+        street_address:  557 County Rd. H
+        city: Fredonia
+        state: WI
+        zip: 53021-9634
+      4:
+        street_address:  725 Winterwind Way
+        city: Roswell
+        state: GA
+        zip: 30075-1853
+
+    zone8:
+      1:
+        street_address:  2622 New Banner Ln.
+        city: Herndon
+        state: VA
+        zip: 20171-2659
+      2:
+        street_address:  401 Sherborne Dr.
+        city: Columbus
+        state: OH
+        zip: 43219-2971
+      3:
+        street_address:  2775 Stark Dr.
+        city: Willoughby Hills
+        state: OH
+        zip: 44094-9113
+      4:
+        street_address:  283 Chinquapin Rd.
+        city: Mocksville
+        state: NC
+        zip: 27028-4708
+
+zone_1_through_4:
     zone1:
       1:
         street_address:  2791 Agoura Road
@@ -95,93 +184,6 @@ shipping_addresses:
         state: CA
         zip: 95747-7312
 
-    zone5:
-      1:
-        street_address:  530 9th Ave. N.
-        city: Buhl
-        state: ID
-        zip: 83316-1115
-      2:
-        street_address:  26930 NE 152nd St.
-        city: Duvall
-        state: WA
-        zip: 98019-8316
-      3:
-        street_address:  3232 SE 89th Ave.
-        city: Portland
-        state: OR
-        zip: 97266-1911
-      4:
-        street_address:  648 Gehr St.
-        city: Wenatchee
-        state: WA
-        zip: 98801-8011
-
-    zone6:
-      1:
-        street_address:  11 Laguna Madre Dr.
-        city: Laguna Vista
-        state: TX
-        zip: 78578-2602
-      2:
-        street_address:  204 Nursery Ln.
-        city: Ft Worth
-        state: TX
-        zip: 76114-4348
-      3:
-        street_address:  1327 Yates Dr.
-        city: Hurst
-        state: TX
-        zip: 76053-4038
-      4:
-        street_address:  5912 83rd St.
-        city: Lubbock
-        state: TX
-        zip: 79424-3608
-
-    zone7:
-      1:
-        street_address:  9435 Pettit Rd.
-        city: Baker
-        state: LA
-        zip: 70714-6434
-      2:
-        street_address:  1071 Trelane Ave.
-        city: Saint Louis
-        state: MO
-        zip: 63126-1117
-      3:
-        street_address:  557 County Rd. H
-        city: Fredonia
-        state: WI
-        zip: 53021-9634
-      4:
-        street_address:  725 Winterwind Way
-        city: Roswell
-        state: GA
-        zip: 30075-1853
-
-    zone8:
-      1:
-        street_address:  2622 New Banner Ln.
-        city: Herndon
-        state: VA
-        zip: 20171-2659
-      2:
-        street_address:  401 Sherborne Dr.
-        city: Columbus
-        state: OH
-        zip: 43219-2971
-      3:
-        street_address:  2775 Stark Dr.
-        city: Willoughby Hills
-        state: OH
-        zip: 44094-9113
-      4:
-        street_address:  283 Chinquapin Rd.
-        city: Mocksville
-        state: NC
-        zip: 27028-4708
 
 us_states:
   AL:	Alabama

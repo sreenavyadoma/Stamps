@@ -9,7 +9,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
   Scenario: User Views Filter Panel Default
     When Expect system displays expanded filters panel
 
-    Then Filter Shipped Orders
+    Then Filter Shipped
     And Expect system selects Shipped Filter and deselects the previous filter
 
     Then Set paging toolbar orders per page count to 500
