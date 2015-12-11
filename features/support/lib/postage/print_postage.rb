@@ -553,8 +553,7 @@ module Postage
   end
 
   class ShipDate < PostageObject
-    Textbox.new @browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl"
-
+    #Textbox.new @browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl"
   end
 
   class StampAmount < PostageObject
