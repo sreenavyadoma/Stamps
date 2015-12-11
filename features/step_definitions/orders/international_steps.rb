@@ -168,8 +168,8 @@ Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, val
   end
 end
 
-Given /^Expect Order Details Form International Address fields are visible$/ do
-  log.info "Expectation: Expect Order Details Form International Address fields are visible"
+Given /^Expect Order Details International Address fields are visible$/ do
+  log.info "Expectation: Expect Order Details International Address fields are visible"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true
@@ -182,16 +182,16 @@ Given /^Expect Order Details Form International Address fields are visible$/ do
   @international_ship_to.email.present?.should be true
 end
 
-Then /^Expect Order Details Form Domestic Ship-To fields are hidden$/ do
-  log.info "Expectation: Expect Order Details Form Domestic Ship-To fields are hidden"
+Then /^Expect Order Details Domestic Ship-To fields are hidden$/ do
+  log.info "Expectation: Expect Order Details Domestic Ship-To fields are hidden"
   @single_order_form = orders.order_details
   @single_order_form.ship_to.present?.should be false
   @single_order_form.email.present?.should be false
   @single_order_form.phone.present?.should be false
 end
 
-Then /^Expect Order Details Form Customs (.+) button is (.+)/ do |button, expectation|
-  log.info "Expectation: Expect Order Details Form Customs #{button} button is #{expectation}"
+Then /^Expect Order Details Customs (.+) button is (.+)/ do |button, expectation|
+  log.info "Expectation: Expect Order Details Customs #{button} button is #{expectation}"
   @single_order_form = orders.order_details
   case button.downcase
     when "restrictions"

@@ -582,8 +582,8 @@ Then /^Expect new Order ID created$/ do
   @order_id.to_i.should be > 0
 end
 
-Then /^Expect Order Details Form Order ID equals Grid order ID$/ do
-  log.info "Expectation: Expect Order Details Form Order ID equals Grid order ID"
+Then /^Expect Order Details Order ID equals Grid order ID$/ do
+  log.info "Expectation: Expect Order Details Order ID equals Grid order ID"
   grid_order_id = orders.grid.order_id.row 1
   single_order_form_order_id = orders.order_details.order_id
   log.info "Grid Order ID: #{grid_order_id}.  Order Details Form Order ID:  #{single_order_form_order_id}.  Test #{(grid_order_id==single_order_form_order_id) ? 'Passed' : 'Failed'}"

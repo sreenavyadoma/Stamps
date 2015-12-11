@@ -27,6 +27,6 @@ Feature:  Update Order to ShipStation
     #click awaiting shipment tab a few times.
     Then Edit row 1 on the order grid
     # Verify pounds, ounces height width length from Order Form
-    Then Expect Order Details Form Service to be "Priority Mail Package"
-    Then Expect Order Details Form Tracking to be "Signature Required"
+    Then Expect Order Details Service to be "Priority Mail Package"
+    Then Expect Order Details Tracking to be "Signature Required"
     And Sign out

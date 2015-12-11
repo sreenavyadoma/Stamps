@@ -1,78 +1,78 @@
 
-Given /^Expect Order Details Form International Name data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Form International Name data error tooltip to be #{value}"
+Given /^Expect Order Details International Name data error tooltip to be \"(.+)\"$/ do |value|
+  log.info "Expectation: Expect Order Details International Name data error tooltip to be #{value}"
   text_box = @international_ship_to.name
   browser_error_message = text_box.data_error_qtip
   browser_error_message.should include value
   log.info "Error message is #{browser_error_message}"
 end
 
-Given /^Expect Order Details Form International Company data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Form International Company data error tooltip to be #{value}"
+Given /^Expect Order Details International Company data error tooltip to be \"(.+)\"$/ do |value|
+  log.info "Expectation: Expect Order Details International Company data error tooltip to be #{value}"
   text_box = @international_ship_to.company
   browser_error_message = text_box.data_error_qtip
   browser_error_message.should include value
   log.info "Error message is #{browser_error_message}"
 end
 
-Given /^Expect Order Details Form International Address 1 data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Form International Address 1 data error tooltip to be #{value}"
+Given /^Expect Order Details International Address 1 data error tooltip to be \"(.+)\"$/ do |value|
+  log.info "Expectation: Expect Order Details International Address 1 data error tooltip to be #{value}"
   text_box = @international_ship_to.address_1
   browser_error_message = text_box.data_error_qtip
   browser_error_message.should include value
   log.info "Error message is #{browser_error_message}"
 end
 
-Given /^Expect Order Details Form International City data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Form International City data error tooltip to be #{value}"
+Given /^Expect Order Details International City data error tooltip to be \"(.+)\"$/ do |value|
+  log.info "Expectation: Expect Order Details International City data error tooltip to be #{value}"
   text_box = @international_ship_to.city
   browser_error_message = text_box.data_error_qtip
   browser_error_message.should include value
   log.info "Error message is #{browser_error_message}"
 end
 
-Given /^Expect Order Details Form International Phone data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Form International Phone data error tooltip to be #{value}"
+Given /^Expect Order Details International Phone data error tooltip to be \"(.+)\"$/ do |value|
+  log.info "Expectation: Expect Order Details International Phone data error tooltip to be #{value}"
   text_box = @international_ship_to.phone
   browser_error_message = text_box.data_error_qtip
   browser_error_message.should include value
   log.info "Error message is #{browser_error_message}"
 end
 
-Given /^Expect Order Details Form International Email data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Form International Email data error tooltip to be #{value}"
+Given /^Expect Order Details International Email data error tooltip to be \"(.+)\"$/ do |value|
+  log.info "Expectation: Expect Order Details International Email data error tooltip to be #{value}"
   text_box = @international_ship_to.email
   browser_error_message = text_box.data_error_qtip
   browser_error_message.should include value
   log.info "Error message is #{browser_error_message}"
 end
 
-Given /^Expect Order Details Form Domestic Email data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Form Domestic Email data error tooltip to be #{value}"
+Given /^Expect Order Details Domestic Email data error tooltip to be \"(.+)\"$/ do |value|
+  log.info "Expectation: Expect Order Details Domestic Email data error tooltip to be #{value}"
   text_box = @single_order_form.email
   browser_error_message = text_box.data_error_qtip
   browser_error_message.should include value
   log.info "Error message is #{browser_error_message}"
 end
 
-Given /^Expect Order Details Form Length data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Form Length data error tooltip to be #{value}"
+Given /^Expect Order Details Length data error tooltip to be \"(.+)\"$/ do |value|
+  log.info "Expectation: Expect Order Details Length data error tooltip to be #{value}"
   text_box = @single_order_form.length
   browser_error_message = text_box.attribute_value "data-errorqtip"
   browser_error_message.should include value
   log.info "Error message is #{browser_error_message}"
 end
 
-Given /^Expect Order Details Form Width data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Form Width data error tooltip to be #{value}"
+Given /^Expect Order Details Width data error tooltip to be \"(.+)\"$/ do |value|
+  log.info "Expectation: Expect Order Details Width data error tooltip to be #{value}"
   width_text_box = @single_order_form.width
   browser_error_message = width_text_box.attribute_value "data-errorqtip"
   browser_error_message.should include value
   log.info "Error message is #{browser_error_message}"
 end
 
-Given /^Expect Order Details Form Height data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Form Height data error tooltip to be #{value}"
+Given /^Expect Order Details Height data error tooltip to be \"(.+)\"$/ do |value|
+  log.info "Expectation: Expect Order Details Height data error tooltip to be #{value}"
   height_text_box = @single_order_form.height
   browser_error_message = height_text_box.attribute_value "data-errorqtip"
   browser_error_message.should include value
