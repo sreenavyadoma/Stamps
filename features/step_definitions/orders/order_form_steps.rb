@@ -1,5 +1,4 @@
 
-
 Then /^Set Order Details Add Item$/ do
   orders.order_details.add_item
   @item_count += 1
@@ -184,7 +183,6 @@ Then /^Set Order Details Tracking to \"([\w ]*)\"$/ do |value|
 end
 
 Then /^Expect Order Details Tracking tooltip for (.*) to be (.*)$/ do |lov, expectation|
-
   actual_tooltip = orders.order_details.tracking.tooltip value
   #log.info actual_tooltip
   cost = orders.order_details.tracking.cost value

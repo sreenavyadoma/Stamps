@@ -71,7 +71,7 @@ Feature: Test Development
   Scenario:
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4 ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     And Set Order Details Tracking to "USPS Tracking"

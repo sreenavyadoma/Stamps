@@ -1,6 +1,10 @@
 module Orders
 
   class MoveConfirmation < OrdersObject
+    def present?
+      browser_helper.present? @browser.span Locators::ToolBar::confirmation_modal_move_label
+    end
+
     def move_label
       Label.new @browser.span Locators::ToolBar::confirmation_modal_move_label
     end
@@ -57,7 +61,7 @@ module Orders
       select :shipped
     end
 
-    def to_cancelled
+    def to_canceled
       select :cancelled
     end
 
