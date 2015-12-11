@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:service_tooltip) do |t|
+  t.profile = 'service_tooltip'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:change_order_status) do |t|
   t.profile = 'change_order_status'
   t.cucumber_opts = "-p cuke_reports"

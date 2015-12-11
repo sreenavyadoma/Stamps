@@ -1609,7 +1609,7 @@ module Orders
           if selection_label.present?
             tooltip = selection_label.attribute_value "data-qtip"
             log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
-            return tooltip
+            return tooltip if tooltip.include? "<strong>"
           end
         rescue
           #ignore

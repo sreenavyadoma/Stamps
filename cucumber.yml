@@ -15,6 +15,8 @@ bvt_gc: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=gc USR=auto02 PW=326t
 bvt_ff: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto30 PW=326tsetaqcdS!
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
+
+service_tooltip: --tags @service_tooltip --guess VERBOSE=true
 change_order_status: --tags @change_order_status --guess VERBOSE=true
 grid_tracking_order_status: --tags @grid_tracking_order_status --guess VERBOSE=true
 date_printed: --tags @date_printed --guess VERBOSE=true
