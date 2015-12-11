@@ -113,19 +113,19 @@ module Postage
   class NetStamps < PostageBase
 
     def serial
-      Serial.new @browser
+      Textbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
     end
 
     def extra_services
       ExtraServices.new @browser
     end
 
-    def calculate_postage
-      CalculatePostage.new @browser
+    def calculate_postage_button
+      @browser.input :id => "sdc-mainpanel-calculatepostageradio-inputEl"
     end
 
-    def specify_postage
-      SpecifyPostage.new @browser
+    def specify_postage_button
+      @browser.input :id => "sdc-mainpanel-specifypostageradio-inputEl"
     end
 
     def stamp_amount
@@ -505,21 +505,6 @@ module Postage
 
   end
 
-  class SpecifyPostage < PostageObject
-    def button
-      @browser.input :id => "sdc-mainpanel-specifypostageradio-inputEl"
-    end
-  end
-
-  class SpecifyPostage < PostageObject
-    def button
-      @browser.input :id => "sdc-mainpanel-calculatepostageradio-inputEl"
-    end
-
-    def stamp_amount
-      StampAmount.new @browser
-    end
-  end
 
   class EmailTracking < PostageObject
     def checkbox
@@ -570,10 +555,6 @@ module Postage
   class ShipDate < PostageObject
     Textbox.new @browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl"
 
-  end
-
-  class Serial < PostageObject
-    Textbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
   end
 
   class StampAmount < PostageObject

@@ -7,7 +7,7 @@ Feature: NetStamps BVT
 
   @wp_bvt
   Scenario: NetStamps Specify Postage
-    Then Select Print Postage print media <media>
+    Then Select Print Postage print media Stamps
     Then Enter Serial Number <number>
     Then Select Specify Postage Amount
     Then Set Print Postage Form Ship-From to <address>
