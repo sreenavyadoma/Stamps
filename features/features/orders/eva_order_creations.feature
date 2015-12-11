@@ -2,7 +2,7 @@
 Feature:  Add Orders
 
   Background:
-    Given I am signed in to Orders mysstest_0007/password1
+    Given I am signed in to Orders
 
   @add_new_order_eva
   Scenario:  I Add a new order

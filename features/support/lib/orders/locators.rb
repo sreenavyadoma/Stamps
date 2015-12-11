@@ -49,7 +49,7 @@ module Orders
         end
 
         def confirmation_modal_cancel_label
-          {:css => "span[class*='x-btn-inner-primary-blue-medium']"}
+          {:text => "Cancel"}
         end
       end
     end

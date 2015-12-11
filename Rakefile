@@ -2,6 +2,16 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:change_order_status) do |t|
+  t.profile = 'change_order_status'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:new_country_code) do |t|
+  t.profile = 'new_country_code'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:grid_tracking_order_status) do |t|
   t.profile = 'grid_tracking_order_status'
   t.cucumber_opts = "-p cuke_reports"

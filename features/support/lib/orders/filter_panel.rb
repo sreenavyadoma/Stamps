@@ -31,7 +31,6 @@ module Orders
       @browser.table :css => "table[id*=badgebutton][class*=sdc-badgebutton-selected]"
     end
 
-
     def cancelled_field
       @browser.div :text => "Canceled"
     end
@@ -43,11 +42,8 @@ module Orders
     end
 
     def awaiting_shipment
-      #div = @browser.div :css => "table[class*='sdc-badgebutton-first x-box-item sdc-badgebutton-default']>tbody>tr>td>div[class*='sdc-badgebutton-text']"
-      #table = div.parent.parent.parent.parent
-
-      table = (@browser.tables :css => "table[class*='sdc-badgebutton']").first
-      div = table.tbody.tr.tds[0].div
+      table = (@browser.tables :css => "table[id^=badgebutton]").first
+      div = table.tbody.tr.tds.first.div
       tab = Stamps::Browser::Selection.new div, table, "class", "selected"
       tab.select
       sleep 1
@@ -55,24 +51,21 @@ module Orders
     end
 
     def shipped
-      div = shipped_field
-      table = div.parent.parent.parent.parent
-      shipped_tab = Stamps::Browser::Selection.new div, table, "class", "selected"
-      shipped_tab.select
+      table = (@browser.tables :css => "table[id^=badgebutton]")[1]
+      div = table.tbody.tr.tds.first.div
+      tab = Stamps::Browser::Selection.new div, table, "class", "selected"
+      tab.select
       sleep 1
-      @grid ||= OrdersGrid.new @browser
-    end
-
-    def cancelled_tab
-      div = cancelled_field
-      table = div.parent.parent.parent.parent
-      Stamps::Browser::Selection.new div, table, "class", "selected"
+      OrdersGrid.new @browser
     end
 
     def cancelled
-      cancelled_tab.select
+      table = (@browser.tables :css => "table[id^=badgebutton]").last
+      div = table.tbody.tr.tds.first.div
+      tab = Stamps::Browser::Selection.new div, table, "class", "selected"
+      tab.select
       sleep 1
-      @grid ||= OrdersGrid.new @browser
+      OrdersGrid.new @browser
     end
 
     def get_closed_filter_name
