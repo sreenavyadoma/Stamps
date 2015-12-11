@@ -13,7 +13,6 @@ Then /^Expect order moved to Shipped$/ do
   grid = orders.filter.shipped
   grid.order_date.sort.descending
   row = grid.order_id.row_num @order_id
-  log.info "Test #{row > 0}"
   log.info "Test #{(row > 0)?"Passed":"Failed"}"
   row.should be > 0
 end
@@ -33,7 +32,6 @@ Then /^Expect order moved to Canceled$/ do
   grid = orders.filter.shipped
   grid.order_date.sort.descending
   row = grid.order_id.row_num @order_id
-  log.info "Test #{row > 0}"
   log.info "Test #{(row > 0)?"Passed":"Failed"}"
   row.should be > 0
 end
@@ -53,7 +51,6 @@ Then /^Expect order moved to Awaiting Shipment$/ do
   grid = orders.filter.shipped
   grid.order_date.sort.descending
   row = grid.order_id.row_num @order_id
-  log.info "Test #{row > 0}"
   log.info "Test #{(row > 0)?"Passed":"Failed"}"
   row.should be > 0
 end
