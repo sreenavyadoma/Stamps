@@ -4,11 +4,14 @@ Feature: Service Tooltip
   Background:
     Given I am signed in to Orders
 
-  @inline_service_rates
+  @service_tooltip
   Scenario:  User Views Price Next to Service Dropdown
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To country to Canada
+    Then Expect Order Details Service Tooltip for "Priority Mail International Package" to include "Ship up to 70 lbs. using any large or thick envelope or box with pricing that varies by weight and country.  The USPS provides free packaging for Priority Mail which can be ordered from Stamps.com.||Tip: This service includes free insurance of up to $100 for documents and $200 for merchandise."
+    Then Expect Order Details Service Tooltip for "Priority Mail International Package" to include "Ship up to 70 lbs. using any large or thick envelope or box with pricing that varies by weight and country.  The USPS provides free packaging for Priority Mail which can be ordered from Stamps.com.||Tip: This service includes free insurance of up to $100 for documents and $200 for merchandise."
+    Then Expect Order Details Service Tooltip for "Priority Mail International Package" to include "Ship up to 70 lbs. using any large or thick envelope or box with pricing that varies by weight and country.  The USPS provides free packaging for Priority Mail which can be ordered from Stamps.com.||Tip: This service includes free insurance of up to $100 for documents and $200 for merchandise."
 
-    Then Expect Order Details Customs <string> button is <string>
-    Then Expect Order Details Service Cost inline price for "First-Class Mail Large Envelope/Flat" to be greater than $0.01
+
+

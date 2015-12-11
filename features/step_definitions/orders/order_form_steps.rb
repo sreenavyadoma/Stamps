@@ -277,7 +277,7 @@ end
 
 Then /^Expect Order Details Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
   log.info "Expectation: Expect Order Details Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
-  tooltips = tooltip_content.split ","
+  tooltips = tooltip_content.split "||"
   actual_tooltip = orders.order_details.service.tooltip service
   tooltips.each { |tooltip|
     log.info "Does #{tooltip} exist in tooltip?  #{(actual_tooltip.include? tooltip)?"Yes.":"No."}"
