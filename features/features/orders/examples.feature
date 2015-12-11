@@ -58,45 +58,45 @@ Feature: Examples
         Then Expect Grid Weight to be 0 lbs. 1 oz.
         Then Expect Grid Insured Value to be $15.00
         Then Expect Service Cost to be $0.00
-        Then Expect Order Details Form Service Cost inline price for "First-Class Mail Postcard" to be greater than $0.35
+        Then Expect Order Details Service Cost inline price for "First-Class Mail Postcard" to be greater than $0.35
         Then Expect Service Cost to be $0.35
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Large/Thick Envelope" to be greater than $5.05
+        Then Expect Order Details Service Cost inline price for "Priority Mail Large/Thick Envelope" to be greater than $5.05
         Then Expect Service Cost to be $5.05
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Package" to be greater than $5.05
+        Then Expect Order Details Service Cost inline price for "Priority Mail Package" to be greater than $5.05
         Then Expect Service Cost to be $5.05
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Large Package" to be greater than $5.54
+        Then Expect Order Details Service Cost inline price for "Priority Mail Large Package" to be greater than $5.54
         Then Expect Service Cost to be $5.54
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Flat Rate Envelope" to be greater than $5.05
+        Then Expect Order Details Service Cost inline price for "Priority Mail Flat Rate Envelope" to be greater than $5.05
         Then Expect Service Cost to be $5.05
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Padded Flat Rate Envelope" to be greater than $5.70
+        Then Expect Order Details Service Cost inline price for "Priority Mail Padded Flat Rate Envelope" to be greater than $5.70
         Then Expect Service Cost to be $5.70
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Legal Flat Rate Envelope" to be greater than $5.25
+        Then Expect Order Details Service Cost inline price for "Priority Mail Legal Flat Rate Envelope" to be greater than $5.25
         Then Expect Service Cost to be $5.25
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Small Flat Rate Box" to be greater than $5.25
+        Then Expect Order Details Service Cost inline price for "Priority Mail Small Flat Rate Box" to be greater than $5.25
         Then Expect Service Cost to be $5.25
-        Then Expect Order Details Form Service Cost inline price for "Medium Flat Rate Box" to be greater than $11.30
+        Then Expect Order Details Service Cost inline price for "Medium Flat Rate Box" to be greater than $11.30
         Then Expect Service Cost to be $11.30
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Large Flat Rate Box" to be greater than $15.80
+        Then Expect Order Details Service Cost inline price for "Priority Mail Large Flat Rate Box" to be greater than $15.80
         Then Expect Service Cost to be $15.80
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Regional Rate Box A" to be greater than $5.32
+        Then Expect Order Details Service Cost inline price for "Priority Mail Regional Rate Box A" to be greater than $5.32
         Then Expect Service Cost to be $5.32
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Regional Rate Box B" to be greater than $6.16
+        Then Expect Order Details Service Cost inline price for "Priority Mail Regional Rate Box B" to be greater than $6.16
         Then Expect Service Cost to be $6.16
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Package" to be greater than $13.09
+        Then Expect Order Details Service Cost inline price for "Priority Mail Express Package" to be greater than $13.09
         Then Expect Service Cost to be $13.09
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Flat Rate Envelope" to be greater than $18.11
+        Then Expect Order Details Service Cost inline price for "Priority Mail Express Flat Rate Envelope" to be greater than $18.11
         Then Expect Service Cost to be $18.11
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Legal Flat Rate Envelope" to be greater than $18.11
+        Then Expect Order Details Service Cost inline price for "Priority Mail Express Legal Flat Rate Envelope" to be greater than $18.11
         Then Expect Service Cost to be $18.11
-        Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Medium Flat Rate Box" to be greater than $44.95
+        Then Expect Order Details Service Cost inline price for "Priority Mail Express Medium Flat Rate Box" to be greater than $44.95
         Then Expect Service Cost to be $44.95
-        Then Expect Order Details Form Service Cost inline price for "Parcel Select Package" to be greater than $5.70
+        Then Expect Order Details Service Cost inline price for "Parcel Select Package" to be greater than $5.70
         Then Expect Service Cost to be $5.70
-        Then Expect Order Details Form Service Cost inline price for "Parcel Select Large Package" to be greater than $17.75
+        Then Expect Order Details Service Cost inline price for "Parcel Select Large Package" to be greater than $17.75
         Then Expect Service Cost to be $17.75
-        Then Expect Order Details Form Service Cost inline price for "Parcel Select Oversized Package" to be greater than $62.99
+        Then Expect Order Details Service Cost inline price for "Parcel Select Oversized Package" to be greater than $62.99
         Then Expect Service Cost to be $62.99
-        Then Expect Order Details Form Service Cost inline price for "Media Mail Package" to be greater than $2.72
+        Then Expect Order Details Service Cost inline price for "Media Mail Package" to be greater than $2.72
         Then Expect Service Cost to be $2.72
 
         Then Expect Ounces tooltip to display - The maximum value for this field is 15

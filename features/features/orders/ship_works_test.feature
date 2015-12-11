@@ -7,20 +7,20 @@ Feature: Verify Ship Works Integration
   @ship_works
   Scenario:  Order Details Form
     When I Add a new order
-    And Expect Order Details Form Ship-From Textbox to be enabled
-    And Expect Order Details Form Ship-From drop-down be enabled
-    And Expect Order Details Form Ship-To Textbox to be enabled
-    And Expect Order Details Form Ship-To drop-down to be enabled
-    And Expect Order Details Form Ship-To text area to be enabled
-    And Expect Order Details Form Phone Textbox to be enabled
-    And Expect Order Details Form Email Textbox to be enabled
-    And Expect Order Details Form Pounds Textbox to be enabled
-    And Expect Order Details Form Ounces Textbox to be enabled
-    And Expect Order Details Form Service Textbox to be enabled
-    And Expect Order Details Form Service drop-down to be enabled
-    And Expect Order Details Form Insured Textbox to be enabled
+    And Expect Order Details Ship-From Textbox to be enabled
+    And Expect Order Details Ship-From drop-down be enabled
+    And Expect Order Details Ship-To Textbox to be enabled
+    And Expect Order Details Ship-To drop-down to be enabled
+    And Expect Order Details Ship-To text area to be enabled
+    And Expect Order Details Phone Textbox to be enabled
+    And Expect Order Details Email Textbox to be enabled
+    And Expect Order Details Pounds Textbox to be enabled
+    And Expect Order Details Ounces Textbox to be enabled
+    And Expect Order Details Service Textbox to be enabled
+    And Expect Order Details Service drop-down to be enabled
+    And Expect Order Details Insured Textbox to be enabled
     And Expect Order Detials Form Tracking Textbox to be enabled
-    And Expect Order Details Form Tracking drop-down to be enabled
+    And Expect Order Details Tracking drop-down to be enabled
     And Sign out
 
 
