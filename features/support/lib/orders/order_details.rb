@@ -1603,9 +1603,10 @@ module Orders
     def tooltip selection
       button = drop_down
       selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
-      5.times {
+      10.times {
         begin
           button.safe_click unless selection_label.present?
+          sleep 1
           if selection_label.present?
             tooltip = selection_label.attribute_value "data-qtip"
             log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
