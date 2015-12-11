@@ -2038,6 +2038,7 @@ module Orders
       browser_helper.click auto_suggest_name_array[index.to_i-1]
     end
 
+=begin
     def get_address_text
       browser_helper.text address_textbox
     end
@@ -2045,6 +2046,7 @@ module Orders
     def get_auto_suggest_name index
       auto_suggest_name_array[index.to_i-1].text
     end
+=end
 
     def get_auto_suggest_location index
       auto_suggest_location_array[index.to_i-1].text

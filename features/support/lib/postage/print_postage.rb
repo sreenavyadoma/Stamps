@@ -113,19 +113,19 @@ module Postage
   class NetStamps < PostageBase
 
     def serial
-      Serial.new @browser
+      Textbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
     end
 
     def extra_services
       ExtraServices.new @browser
     end
 
-    def calculate_postage
-
+    def calculate_postage_button
+      @browser.input :id => "sdc-mainpanel-calculatepostageradio-inputEl"
     end
 
-    def specify_postage
-
+    def specify_postage_button
+      @browser.input :id => "sdc-mainpanel-specifypostageradio-inputEl"
     end
 
     def stamp_amount
@@ -218,9 +218,80 @@ module Postage
     end
   end
 
-  class ShipFrom < PostageObject
+  class ShipFromAddress < PostageObject
+
+    def drop_down
+      Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[1]
+    end
+
+    def manage_ship_from_address_field
+      @browser.div :text => 'Manage Shipping Addresses...'
+    end
+
+    def ship_from_selection selection
+      @browser.div :text => selection
+    end
+
+    def manage_shipping_address
+      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+    end
+
+    def manage_shipping_addresses
+      self.ship_from "Manage Shipping Addresses..."
+    end
+
+    def text_box
+      Textbox.new @browser.text_field :name => "shipFrom"
+    end
+
+    def select selection
+      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+
+      return @manage_shipping_adddress if @manage_shipping_adddress.present?
+
+      ship_from_default_selection_field = @browser.div :css => "div[data-recordindex='0']" #"div[id^=shipfromdroplist][id$=trigger-picker]"
+      ship_from_dropdown = self.drop_down
+      ship_from_textbox = self.text_box
+
+      if selection.downcase == "default"
+        ship_from_selection_field = ship_from_default_selection_field
+      elsif selection.downcase.include? "manage shipping"
+        ship_from_selection_field = @browser.div :text => "Manage Shipping Addresses..."
+      else
+        ship_from_selection_field = @browser.div :text => "#{selection}"
+      end
+
+      selection_label = Label.new ship_from_selection_field
+
+      if selection.downcase.include? "manage shipping"
+        10.times{
+          begin
+            ship_from_dropdown.safe_click unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
+            return @manage_shipping_adddress if @manage_shipping_adddress.present?
+          rescue
+            #ignore
+          end
+          click_form
+        }
+      else
+        ship_from_dropdown.safe_click unless selection_label.present?
+        if selection_label.present?
+          selection_label.scroll_into_view
+          selection_text = selection_label.text
+        end
+        10.times{
+          ship_from_dropdown.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
+          selection_label.safe_click
+          break if ship_from_textbox.text.include? selection_text
+        }
+      end
+    end
 
   end
+
 
   class Country < PostageObject
     def drop_down
@@ -249,10 +320,98 @@ module Postage
   end
 
   class Weight < PostageObject
+    def ounces
+      Textbox.new @browser.text_field :id => "sdc-mainpanel-ouncesnumberfield-inputEl"
+    end
+
+    def increment_ounces
+      Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[0]
+    end
+
+    def decrement_ounces
+      Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[0]
+    end
+
+    def pounds
+      Textbox.new @browser.text_field :id => "sdc-mainpanel-poundsnumberfield-inputEl"
+    end
+
+    def increment_pounds
+      Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[1]
+    end
+
+    def decrement_pounds
+      Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[1]
+    end
 
   end
 
-  class Service < PostageObject
+  class ServiceDropDown < PostageObject
+    def text_box
+      Textbox.new @browser.text_field :name => "Service"
+    end
+
+    def drop_down
+      Button.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
+    end
+
+    def select selection
+      log.info "Select Service #{selection}"
+      box = text_box
+      button = drop_down
+      selection_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
+      10.times {
+        begin
+          button.safe_click unless selection_label.present?
+          selection_label.scroll_into_view
+          selection_label.safe_click
+          click_form
+          selected_service = box.text
+          log.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
+          break if selected_service.include? selection
+        rescue
+          #ignore
+        end
+      }
+      log.info "#{selection} service selected."
+      selection_label
+    end
+
+    def cost selection
+      button = drop_down
+      cost_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(3)"
+      10.times {
+        begin
+          button.safe_click unless cost_label.present?
+          if cost_label.present?
+            service_cost = test_helper.remove_dollar_sign cost_label.text
+            log.info "Service Cost for \"#{selection}\" is #{service_cost}"
+            return service_cost
+          end
+        rescue
+          #ignore
+        end
+      }
+      click_form
+    end
+
+    def tooltip selection
+      button = drop_down
+      selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
+      5.times {
+        begin
+          button.safe_click unless selection_label.present?
+          if selection_label.present?
+            tooltip = selection_label.attribute_value "data-qtip"
+            log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
+            return tooltip
+          end
+        rescue
+          #ignore
+        end
+      }
+      click_form
+    end
 
   end
 
@@ -346,6 +505,7 @@ module Postage
 
   end
 
+
   class EmailTracking < PostageObject
     def checkbox
       checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
@@ -367,6 +527,8 @@ module Postage
       tooltip = browser.div :css => "div[id=sdc-mainpanel-emailtextfield-errorEl]"
     end
   end
+
+
 
   class InsureFor < PostageObject
     def textbox
@@ -391,20 +553,13 @@ module Postage
   end
 
   class ShipDate < PostageObject
-
-  end
-
-  class Serial < PostageObject
-
-  end
-
-  class ExtraServices < PostageObject
+    Textbox.new @browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl"
 
   end
 
   class StampAmount < PostageObject
     def textbox
-      Textbox.new @browser.text_field :name => "insureAmt"
+      Textbox.new @browser.text_field :name => "stampAmount"
     end
 
     def more_button
@@ -417,7 +572,17 @@ module Postage
   end
 
   class CMExtraServices < PostageObject
+    def cm_checkbox
+      @browser.input :id => "sdc-mainpanel-cmcheckbox-inputEl"
+    end
 
+    def rre_checkbox
+      @browser.input :id => "sdc-mainpanel-rrecheckbox-inputEl"
+    end
+
+    def rd_checkbox
+      @browser.input :css => "input[class*=sdc-mainpanel-rdcheckbox]"
+    end
   end
 
 end

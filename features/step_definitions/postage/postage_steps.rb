@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 Then /^Select Print Postage print media(.*)/ do |media|
-
+  @netstamps = print_postage.print_on media
 end
 
 Then /^Set Print Postage Form Ship-To to international address/ do |table|
@@ -17,15 +17,15 @@ Then /^Set Print Postage Form Ship-To address to$/ do |table|
 end
 
 Then /^Enter Serial Number (.*)/ do |serial|
-
+  @netstamps.serial.set serial
 end
 
 Then /^Select Specify Postage Amount/ do
-
+  @netstamps.specify_postage_button.click
 end
 
 Then /^Select Calculate Postage Amount/ do
-
+  @netstamps.calculate_postage_button.click
 end
 
 Then /^Set Print Postage Form Ship-From to (.*)/ do |address|
