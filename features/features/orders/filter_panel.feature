@@ -62,7 +62,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     Then Filter Awaiting Shipment
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
 
-    And Expect Order Details Form Order ID equals Grid order ID
+    And Expect Order Details Order ID equals Grid order ID
     Then Expect Grid Recipient to be James Test
     Then Expect Grid Company to be Domestic Company
     Then Expect Grid Address to be 600 Front St Apt 220

@@ -264,8 +264,8 @@ Then /^Expect Ounces tooltip to display - The maximum value for this field is ([
   actual.should eql expected
 end
 
-Then /^Expect Order Details Form Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
-  log.info "Expectation: Expect Order Details Form Service Cost inline price for #{service} to be greater than #{expected}"
+Then /^Expect Order Details Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
+  log.info "Expectation: Expect Order Details Service Cost inline price for #{service} to be greater than #{expected}"
   actual = orders.order_details.service.cost service
   10.times { |counter|
     #log_expectation_eql "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
@@ -275,9 +275,9 @@ Then /^Expect Order Details Form Service Cost inline price for "([a-zA-Z -\/]+)"
   actual.to_f.should be >= expected.to_f
 end
 
-Then /^Expect Order Details Form Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
-  log.info "Expectation: Expect Order Details Form Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
-  tooltips = tooltip_content.split ","
+Then /^Expect Order Details Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
+  log.info "Expectation: Expect Order Details Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
+  tooltips = tooltip_content.split "||"
   actual_tooltip = orders.order_details.service.tooltip service
   tooltips.each { |tooltip|
     log.info "Does #{tooltip} exist in tooltip?  #{(actual_tooltip.include? tooltip)?"Yes.":"No."}"
@@ -328,8 +328,8 @@ Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Order Details Form Service to be \"(.*)\"$/ do |expected|
-  log.info "Expectation: Expect Order Details Form Service to be #{expected}"
+Then /^Expect Order Details Service to be \"(.*)\"$/ do |expected|
+  log.info "Expectation: Expect Order Details Service to be #{expected}"
   begin
     actual = orders.order_details.service.text_box.text
     10.times { |counter|
@@ -341,8 +341,8 @@ Then /^Expect Order Details Form Service to be \"(.*)\"$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Order Details Form Tracking to be \"([\w\s]*)\"$/ do |expected|
-  log.info "Expectation: Expect Order Details Form Tracking to be #{expected}"
+Then /^Expect Order Details Tracking to be \"([\w\s]*)\"$/ do |expected|
+  log.info "Expectation: Expect Order Details Tracking to be #{expected}"
   begin
     actual = orders.order_details.tracking.text_box.text
     10.times { |counter|
@@ -354,8 +354,8 @@ Then /^Expect Order Details Form Tracking to be \"([\w\s]*)\"$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Order Details Form Total to be \$(.*)$/ do |expected|
-  log.info "Expectation: Expect Order Details Form Total to be $#{expected}"
+Then /^Expect Order Details Total to be \$(.*)$/ do |expected|
+  log.info "Expectation: Expect Order Details Total to be $#{expected}"
   begin
     10.times { |counter|
       orders.order_details.click_form

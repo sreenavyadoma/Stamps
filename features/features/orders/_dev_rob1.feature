@@ -42,43 +42,43 @@ Feature: Test Development
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
-    Then Expect Order Details Form Service to be "Priority Mail Package"
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Package" to be greater than $0.01
-    Then Expect Order Details Form Service Tooltip for "Priority Mail Package" to include "Priority Mail Package,Ship up to 70 lbs. using any box with pricing that varies by weight and distance,The USPS provides free packaging for Priority Mail which can be ordered from Stamps.com."
+    Then Expect Order Details Service to be "Priority Mail Package"
+    Then Expect Order Details Service Cost inline price for "Priority Mail Package" to be greater than $0.01
+    Then Expect Order Details Service Tooltip for "Priority Mail Package" to include "Priority Mail Package,Ship up to 70 lbs. using any box with pricing that varies by weight and distance,The USPS provides free packaging for Priority Mail which can be ordered from Stamps.com."
 
     Then Set Order Details Tracking to "USPS Tracking"
-    Then Expect Order Details Form Tracking to be "USPS Tracking"
+    Then Expect Order Details Tracking to be "USPS Tracking"
     Then Set Order Details Tracking to "Signature Required"
-    Then Expect Order Details Form Tracking to be "Signature Required"
+    Then Expect Order Details Tracking to be "Signature Required"
 
     Then Set Order Details Service to "Priority Mail Package"
-    Then Expect Order Details Form Service to be "Priority Mail Package"
-    Then Expect Order Details Form Tracking to be "Signature Required"
+    Then Expect Order Details Service to be "Priority Mail Package"
+    Then Expect Order Details Tracking to be "Signature Required"
 
     Then Set Order Details Service to "Priority Mail Package"
-    Then Expect Order Details Form Service to be "Priority Mail Package"
+    Then Expect Order Details Service to be "Priority Mail Package"
     Then Set Order Details Service to "Priority Mail Large Package"
-    Then Expect Order Details Form Service to be "Priority Mail Large Package"
+    Then Expect Order Details Service to be "Priority Mail Large Package"
 
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Large/Thick Envelope" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Package" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Large Package" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Flat Rate Envelope" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Padded Flat Rate Envelope" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Legal Flat Rate Envelope" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Small Flat Rate Box" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Medium Flat Rate Box" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Large Flat Rate Box" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Regional Rate Box A" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Regional Rate Box B" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Package" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Flat Rate Envelope" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Legal Flat Rate Envelope" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Priority Mail Express Medium Flat Rate Box" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Parcel Select Package" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Parcel Select Large Package" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Parcel Select Oversized Package" to be greater than $0.01
-    Then Expect Order Details Form Service Cost inline price for "Media Mail Package" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Large/Thick Envelope" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Package" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Large Package" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Flat Rate Envelope" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Padded Flat Rate Envelope" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Legal Flat Rate Envelope" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Small Flat Rate Box" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Medium Flat Rate Box" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Large Flat Rate Box" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Regional Rate Box A" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Regional Rate Box B" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Express Package" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Express Flat Rate Envelope" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Express Legal Flat Rate Envelope" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Express Medium Flat Rate Box" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Parcel Select Package" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Parcel Select Large Package" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Parcel Select Oversized Package" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Media Mail Package" to be greater than $0.01
 
     Then Expect Grid Pounds to be 0
     Then Expect Grid Ounces to be 0
