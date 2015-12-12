@@ -32,4 +32,12 @@ Feature:  Service Selection & Order Grid Values
     Then Filter Shipped
     Then Expect Grid Service to be Parcel Select Ground
 
+    Then Move order to Awaiting Shipment
+    Then Filter Awaiting Shipment
+    Then Expect Grid Service to be Parcel Select Ground
+
+    Then Move order to Canceled
+    Then Filter Cancelled
+    Then Expect Grid Service to be Parcel Select Ground
+
     And Sign out
