@@ -295,7 +295,7 @@ module Orders
     end
 
     def ship_date
-      Textbox.new @browser.text_field :name => 'sdc-printpostagewindow-shipdate-inputEl'
+      Textbox.new @browser.text_field :name => "sdc-printpostagewindow-shipdate-inputEl"
     end
 
     def print
