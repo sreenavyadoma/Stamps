@@ -1603,9 +1603,10 @@ module Orders
     def tooltip selection
       button = drop_down
       selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
-      5.times {
+      10.times {
         begin
           button.safe_click unless selection_label.present?
+          sleep 1
           if selection_label.present?
             tooltip = selection_label.attribute_value "data-qtip"
             log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
@@ -2037,6 +2038,7 @@ module Orders
       browser_helper.click auto_suggest_name_array[index.to_i-1]
     end
 
+=begin
     def get_address_text
       browser_helper.text address_textbox
     end
@@ -2044,6 +2046,7 @@ module Orders
     def get_auto_suggest_name index
       auto_suggest_name_array[index.to_i-1].text
     end
+=end
 
     def get_auto_suggest_location index
       auto_suggest_location_array[index.to_i-1].text
