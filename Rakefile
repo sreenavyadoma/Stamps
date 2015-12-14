@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:parcel_select) do |t|
+  t.profile = 'parcel_select'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:service_tooltip) do |t|
   t.profile = 'service_tooltip'
   t.cucumber_opts = "-p cuke_reports"
