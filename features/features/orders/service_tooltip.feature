@@ -5,7 +5,7 @@ Feature: Service Tooltip
     Given I am signed in to Orders
 
   @service_tooltip
-  Scenario:  User Views Price Next to Service Dropdown
+  Scenario:
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To country to Canada
