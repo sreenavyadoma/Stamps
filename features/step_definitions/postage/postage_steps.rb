@@ -28,12 +28,14 @@ Then /^Select Calculate Postage Amount/ do
   @netstamps.calculate_postage_button.click
 end
 
-Then /^Set Print Postage Form Ship-From to (.*)/ do |address|
-
+Then /^Set Print Postage Form Ship-From to (.*)/ do |value|
+  log.info "Step: Set Print Postage Ship-From to: \n #{value}"
+  @netstamps.ship_from.select value
 end
 
 Then /^Set Print Postage Form Ship-To country to (.*)/ do |country|
-
+  log.info "Step: Set Print Postage Ship-From to: \n #{value}"
+  @netstamps.country.select country
 end
 
 Then /^Set Print Postage Form Service to (.*)/ do |service|

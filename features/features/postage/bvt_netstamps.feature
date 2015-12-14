@@ -8,10 +8,10 @@ Feature: NetStamps BVT
   @wp_bvt
   Scenario: NetStamps Specify Postage
     Then Select Print Postage print media Stamps
-    Then Enter Serial Number <number>
+    Then Enter Serial Number B12345
     Then Select Specify Postage Amount
-    Then Set Print Postage Form Ship-From to <address>
-    Then Set Print Postage Form Ship-To country to <country>
+    Then Set Print Postage Form Ship-From to default
+    Then Set Print Postage Form Ship-To country to Afghanistan
     Then Set Print Postage Form Service to <service>
     Then Set Print Postage Form Stamp Amount to <number>
     Then Print Postage
