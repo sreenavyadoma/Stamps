@@ -69,7 +69,7 @@ module Postage
     end
 
     def ship_from
-      ShipFrom.new @browser
+      ShipFromAddress.new @browser
     end
 
     def weight
