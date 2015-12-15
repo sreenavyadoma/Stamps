@@ -1645,7 +1645,7 @@ module Orders
           end
         else
           sleep 1
-          return true if index ==3 #try to look for service in Service selection drop-down 3 times before declaring it's disabled.
+          return true if index == 5 #try to look for service in Service selection drop-down 3 times before declaring it's disabled.
         end
       end
 
