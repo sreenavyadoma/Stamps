@@ -1619,6 +1619,36 @@ module Orders
       click_form
     end
 
+    def disabled? service
+      dd_btn = self.drop_down
+      selection_field = @browser.tr :css => "tr[data-qtip*='#{service}']"
+      selection_label = Label.new selection_field
+
+      10.times do |index|
+        dd_btn.safe_click unless selection_label.present?
+        if selection_field.present?
+          disabled_field = Label.new (selection_field.parent.parent.parent)
+          begin
+            if selection_label.present?
+              result = disabled_field.attribute_value("class").include? "disabled"
+              dd_btn.safe_click
+              return result
+            end
+          rescue
+            #ignore
+          end
+        else
+          return true if index ==3 #try to look for service in Service selection drop-down 3 times before declaring it's disabled.
+        end
+      end
+
+      click_form
+    end
+
+    def enabled? service
+      return !(self.disabled? service)
+    end
+
   end
 
   class ShipToCountry < OrderForm
