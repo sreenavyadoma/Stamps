@@ -1626,18 +1626,25 @@ module Orders
 
       10.times do |index|
         dd_btn.safe_click unless selection_label.present?
+        sleep 1
         if selection_field.present?
           disabled_field = Label.new (selection_field.parent.parent.parent)
           begin
             if selection_label.present?
-              result = disabled_field.attribute_value("class").include? "disabled"
-              dd_btn.safe_click
-              return result
+              if disabled_field.present?
+                result = disabled_field.attribute_value("class").include? "disabled"
+                sleep 1
+                result = disabled_field.attribute_value("class").include? "disabled"
+                result = disabled_field.attribute_value("class").include? "disabled"
+                dd_btn.safe_click
+                return result
+              end
             end
           rescue
             #ignore
           end
         else
+          sleep 1
           return true if index ==3 #try to look for service in Service selection drop-down 3 times before declaring it's disabled.
         end
       end
