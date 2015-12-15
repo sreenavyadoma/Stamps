@@ -398,7 +398,8 @@ end
 Given /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |value|
   log.info "Expectation: Expect Customs Form Internal Transaction # to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-
+  sleep 1
+  text = @customs_form.internal_transaction.text_box.text
   text = @customs_form.internal_transaction.text_box.text
   log.info "Internal Transaction # is #{text}.  Test #{(text.include? "Required")?'Passed':'Failed'}"
   text.should eql value

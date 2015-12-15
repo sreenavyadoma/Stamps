@@ -122,11 +122,6 @@ module Orders
       field.data_qtip_field data_error_field, "data-errorqtip"
       field
     end
-=begin
-    def country
-      Textbox.new (@browser.text_fields :name => "CountryCode").last
-    end
-=end
   end
 
   class DomesticShipTo < ShipToFields
