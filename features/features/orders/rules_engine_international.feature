@@ -3,7 +3,21 @@ Feature: International Field Validation
   Background:
     Given I am signed in to Orders
 
-  @rules_engine @international_rules_engine
+  @international_rules_engine_name_stuff @international_rules_engine
+  Scenario: Two character minimum for Name & Company
+    And I Add a new order
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To country to Australia
+    Then Set International Ship-To name to "a"
+    Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
+    Then Set International Ship-To name to "a b"
+    Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
+
+    Then Set International Ship-To name to ""
+    Then Set International Ship-To company to ""
+    Then Expect Order Details International Company data error tooltip to be "Company name must be at least two characters long"
+
+  @international_rules_engine_1 @international_rules_engine
   Scenario: Add Missing Validation Logic for Phone and International Email
     And I Add a new order
     Then Set Order Details Ship-From to default
