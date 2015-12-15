@@ -805,12 +805,6 @@ module Orders
       text_box = self.text_area
       
       orders_grid = OrdersGrid.new @browser
-
-      orders_grid.recipient = Recipient.new @browser
-      orders_grid.company = Company.new @browser
-      orders_grid.address = Address.new @browser
-      orders_grid.checkbox = CheckBox.new @browser
-
       phone = self.phone
       email = self.email
 
