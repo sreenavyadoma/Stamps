@@ -142,7 +142,7 @@ When /^Set Order Details Pounds to (\d*)$/ do |value|
   end unless value.length == 0
 end
 
-When /^Set Order Details Ounces to (\d*)$/ do |value|
+When /^Set Order Details Ounces to (.*)$/ do |value|
   begin
     log.info "Step: Set Order Details Ounces to \"#{value}\""
     orders.order_details.oz.set value
@@ -181,6 +181,21 @@ Then /^Set Order Details Tracking to \"([\w ]*)\"$/ do |value|
     orders.order_details.tracking.select value
   end unless value.length == 0
 end
+
+Then /^Expect Order details Service \"(.*)\" to be disabled/ do |service|
+  log.info "Expect Order details Service \"#{service}\" to be disabled"
+  selection_disabled = orders.order_details.service.disabled? service
+  log.info "Test #{(selection_disabled)?"Passed":"Failed"}"
+  selection_disabled.should be true
+end
+
+Then /^Expect Order details Service \"(.*)\" to be enabled/ do |service|
+  log.info "Expect Order details Service \"#{service}\" to be enabled"
+  selection_enabled = orders.order_details.service.enabled? service
+  log.info "Test #{(selection_enabled)?"Passed":"Failed"}"
+  selection_enabled.should be true
+end
+
 
 Then /^Expect Order Details Tracking tooltip for (.*) to be (.*)$/ do |lov, expectation|
   actual_tooltip = orders.order_details.tracking.tooltip value
