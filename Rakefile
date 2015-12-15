@@ -178,3 +178,7 @@ Cucumber::Rake::Task.new(:auto_suggest) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:fcm_selection_enabled) do |t|
+  t.profile = 'fcm_selection_enabled'
+  t.cucumber_opts = "-p cuke_reports"
+end
