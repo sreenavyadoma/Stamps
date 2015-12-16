@@ -13,9 +13,12 @@ Feature: International Field Validation
     Then Set International Ship-To name to "a b"
     Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
 
+    Then Set International Ship-To name to "abc def"
+
     Then Set International Ship-To name to ""
     Then Set International Ship-To company to ""
     Then Expect Order Details International Company data error tooltip to be "Company name must be at least two characters long"
+
 
   @international_rules_engine_1 @international_rules_engine
   Scenario: Add Missing Validation Logic for Phone and International Email
