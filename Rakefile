@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:bvt) do |t|
+  t.profile = 'bvt'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:international_rules_engine) do |t|
   t.profile = 'international_rules_engine'
   t.cucumber_opts = "-p cuke_reports"
