@@ -8,15 +8,15 @@ Feature: International Field Validation
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To country to Australia
-    Then Set International Ship-To name to "a"
+    Then Set International Ship-To Name to "a"
     Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
-    Then Set International Ship-To name to "a b"
+    Then Set International Ship-To Name to "a b"
     Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
 
-    Then Set International Ship-To name to "abc def"
+    Then Set International Ship-To Name to "abc def"
 
-    Then Set International Ship-To name to ""
-    Then Set International Ship-To company to ""
+    Then Set International Ship-To Name to ""
+    Then Set International Ship-To Company to ""
     Then Expect Order Details International Company data error tooltip to be "Company name must be at least two characters long"
 
 
@@ -25,17 +25,17 @@ Feature: International Field Validation
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To country to Australia
-    Then Set International Ship-To name to ""
+    Then Set International Ship-To Name to ""
     Then Expect Order Details International Name data error tooltip to be "A First Name and Last Name or Company are required"
-    Then Set International Ship-To company to ""
+    Then Set International Ship-To Company to ""
     Then Expect Order Details International Company data error tooltip to be "A First Name and Last Name or Company are required"
-    Then Set International Ship-To address 1 to ""
+    Then Set International Ship-To Address 1 to ""
     Then Expect Order Details International Address 1 data error tooltip to be "The ship to address is a required field"
-    Then Set International Ship-To city to ""
+    Then Set International Ship-To City to ""
     Then Expect Order Details International City data error tooltip to be "The ship to city is a required field"
-    Then Set International Ship-To phone to ""
+    Then Set International Ship-To Phone to ""
     Then Expect Order Details International Phone data error tooltip to be "The ship to phone number is a required field"
-    Then Set International Ship-To email to "@@"
+    Then Set International Ship-To Email to "@@"
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     Then Expect Order Details International Email data error tooltip to be "Please enter a valid email address"
     Then Expect Grid Ship Cost error to contain "A First Name and Last Name or Company are required"
