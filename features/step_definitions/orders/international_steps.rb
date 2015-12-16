@@ -43,7 +43,87 @@ Given /^Set Ship-To to international address$/ do |table|
   step "Set International Ship-To Email to \"#{email}\""
 end
 
-Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
+Then /^Expect International Ship-To name field displays (.*)/ do |value|
+  log.info "Expectation: Expect International Ship-To name field displays #{value}"
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  actual = @international_ship_to.name.text
+  log.info "Test #{(actual == value)?"Passed":"Failed"}"
+  actual.should eql value
+end
+
+Then /^Expect International Ship-To company field displays (.*)/ do |value|
+  log.info "Expectation: Expect International Ship-To company field displays #{value}"
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  actual = @international_ship_to.company.text
+  log.info "Test #{(actual == value)?"Passed":"Failed"}"
+  actual.should eql value
+end
+
+Then /^Expect International Ship-To Address 1 field displays (.*)/ do |value|
+  log.info "Expectation: Expect International Ship-To Address 1 field displays #{value}"
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  actual = @international_ship_to.address_1.text
+  log.info "Test #{(actual == value)?"Passed":"Failed"}"
+  actual.should eql value
+end
+
+Then /^Expect International Ship-To Address 2 field displays (.*)/ do |value|
+  log.info "Expectation: Expect International Ship-To address 2 field displays #{value}"
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  actual = @international_ship_to.address_2.text
+  log.info "Test #{(actual == value)?"Passed":"Failed"}"
+  actual.should eql value
+end
+
+Then /^Expect International Ship-To Province field displays (.*)/ do |value|
+  log.info "Expectation: Expect International Ship-To province field displays #{value}"
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  actual = @international_ship_to.province.text
+  log.info "Test #{(actual == value)?"Passed":"Failed"}"
+  actual.should eql value
+end
+
+Then /^Expect International Ship-To Postal Code field displays (.*)/ do |value|
+  log.info "Expectation: Expect International Ship-To postal code field displays #{value}"
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  actual = @international_ship_to.postal_code.text
+  log.info "Test #{(actual == value)?"Passed":"Failed"}"
+  actual.should eql value
+end
+
+Then /^Expect International Ship-To Phone field displays (.*)/ do |value|
+  log.info "Expectation: Expect International Ship-To phone field displays #{value}"
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  actual = @international_ship_to.phone.text
+  log.info "Test #{(actual == value)?"Passed":"Failed"}"
+  actual.should eql value
+end
+
+Then /^Expect International Ship-To Email field displays (.*)/ do |value|
+  log.info "Expectation: Expect International Ship-To Email field displays #{value}"
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  actual = @international_ship_to.email.text
+  log.info "Test #{(actual == value)?"Passed":"Failed"}"
+  actual.should eql value
+end
+
+Then /^Expect International Ship-To Country field displays (.*)/ do |value|
+  log.info "Expectation: Expect International Ship-To Country field displays #{value}"
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  actual = @international_ship_to.country.text
+  log.info "Test #{(actual == value)?"Passed":"Failed"}"
+  actual.should eql value
+end
+
+Then /^Expect International Ship-To City field displays (.*)/ do |value|
+  log.info "Expectation: Expect International Ship-To City field displays #{value}"
+  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  actual = @international_ship_to.city.text
+  log.info "Test #{(actual == value)?"Passed":"Failed"}"
+  actual.should eql value
+end
+
+Then /^DEPRECATED! Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
   log.info "Expectation: Expect International Ship-To #{ship_to_field} field displays #{value}"
 
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
@@ -65,11 +145,12 @@ Then /^Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_
     when "address 2"
       actual = @international_ship_to.address_2.text
       #log_expectation_eql "Address 2", value, actual
-      actual.should eql value    when "city"
+      actual.should eql value
+    when "city"
     when "province"
       actual = @international_ship_to.province.text
       #log_expectation_eql "Province", value, actual
-      actual.should eql value    when "city"
+      actual.should eql value
     when "postal code"
       actual = @international_ship_to.postal_code.text
       #log_expectation_eql "Postal Code", value, actual
