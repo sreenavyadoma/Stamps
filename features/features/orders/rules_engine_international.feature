@@ -112,10 +112,10 @@ Feature: International Field Validation
     Then Set customs form Non-Delivery Options to "Return to sender"
 
     Then Set customs form Internal Transaction Number to "Required"
-    Then Expect Customs Form ITN# to be enabled
+    Then Expect Customs Form ITN# to be visible
 
     Then Set customs form Internal Transaction Number to "Not required"
-    Then Expect Customs Form ITN# to be disabled
+    Then Expect Customs Form ITN# to be hidden
 
     Then Set customs form Internal Transaction Number to "Required"
     Then Set customs form ITN# to "random"
