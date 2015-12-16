@@ -1,4 +1,4 @@
-
+# encoding: utf-8
 
 Feature:  As a batch shipper, I want to be able to print multiple labels
 
@@ -194,7 +194,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @two_up_expanded  @two_up_expanded_cn22_right
   Scenario: User Prints 2 Intl CN22 labels on 8.5x11 - right side
     And I Add a new order
     Then Set Order Details Ship-From to default

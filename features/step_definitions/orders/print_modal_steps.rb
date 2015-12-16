@@ -1,4 +1,4 @@
-
+# encoding: utf-8
 When /^Select Print Modal left-side label$/ do
   log.info "Step: Select Print Modal - Left side label"
   selected = orders.toolbar.print.starting_label.left

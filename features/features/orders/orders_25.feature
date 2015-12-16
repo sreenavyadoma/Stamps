@@ -1,3 +1,4 @@
+# encoding: utf-8
 Feature: 25 orders
 
   Background:
