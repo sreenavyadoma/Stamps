@@ -7,9 +7,11 @@ Feature: International Field Validation
   Scenario: Two character minimum for Name & Company
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to Australia
+    Then Set Order Details Ship-To country to Antigua & Barbuda
     Then Set International Ship-To Name to "a"
     Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
+
+    Then Set International Ship-To Name to ""
     Then Set International Ship-To Name to "a b"
     Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
 

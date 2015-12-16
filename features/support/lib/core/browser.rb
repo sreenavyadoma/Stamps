@@ -243,14 +243,27 @@ module Stamps
     end
 
     class Textbox < Input
-      def data_qtip_field data_qtip_field, attribute_value
-        @data_qtip_field = data_qtip_field
+      def data_error_qtip_field field, attribute_value
+        @data_qtip_field = field
         @attribute_value = attribute_value
         self
       end
 
       def data_error_qtip
         browser_helper.attribute_value @data_qtip_field, @attribute_value
+      end
+
+      def data_error_text_field field
+        @data_error_text_field
+      end
+
+      def data_error_text
+        begin
+          browser_helper.text @data_error_text_field
+        rescue
+          #if data error field does not exist, return an empty string
+          return ''
+        end
       end
 
       def set text

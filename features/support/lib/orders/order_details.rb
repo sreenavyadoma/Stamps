@@ -21,7 +21,7 @@ module Orders
 
     def text_area
       input = Textbox.new @browser.textarea :name => 'FreeFormAddress'
-      input.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
+      input.data_error_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
       input
     end
 
@@ -48,7 +48,7 @@ module Orders
       expand
       text_box = Textbox.new @browser.text_field :name => 'BuyerEmail'
       data_qtip_field = (@browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]")[0]
-      text_box.data_qtip_field data_qtip_field, "data-errorqtip"
+      text_box.data_error_qtip_field data_qtip_field, "data-errorqtip"
       text_box
     end
 
@@ -66,22 +66,22 @@ module Orders
 
     def name
       field = Textbox.new @browser.text_field :name => "ShipName"
-      data_error_field = @browser.divs(:css => "div[data-errorqtip*='First Name']").first
-      field.data_qtip_field data_error_field, "data-errorqtip"
+      error_field = @browser.li :css => "div[data-anchortarget^=autosuggest][data-anchortarget$=inputEl]>ul>li"
+      field.data_error_text_field error_field
       field
     end
 
     def company
       field = Textbox.new @browser.text_field :name => "ShipCompany"
-      data_error_field = @browser.divs(:css => "div[data-errorqtip*='First Name']").last
-      field.data_qtip_field data_error_field, "data-errorqtip"
+      error_field = (@browser.divs :css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[1]
+      field.data_error_text_field error_field
       field
     end
 
     def address_1
       field = Textbox.new @browser.text_field :name => "ShipStreet1"
-      data_error_field = @browser.div :css => "div[data-errorqtip*='ship to address']"
-      field.data_qtip_field data_error_field, "data-errorqtip"
+      error_field = (@browser.lis :css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[2]
+      field.data_error_text_field error_field
       field
     end
 
@@ -91,8 +91,15 @@ module Orders
 
     def city
       field = Textbox.new @browser.text_field :name => "ShipCity"
-      data_error_field = @browser.div :css => "div[data-errorqtip*='ship to city']"
-      field.data_qtip_field data_error_field, "data-errorqtip"
+      error_field = (@browser.lis :css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]>ul>li")[3]
+      field.data_error_text_field error_field
+      field
+    end
+
+    def phone
+      field = Textbox.new (@browser.text_fields :name => "ShipPhone").last
+      error_field = (@browser.lis :css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]>ul>li")[4]
+      field.data_error_text_field error_field
       field
     end
 
@@ -106,13 +113,6 @@ module Orders
 
     def email
       Textbox.new (@browser.text_fields :name => "BuyerEmail").last
-    end
-
-    def phone
-      field = Textbox.new (@browser.text_fields :name => "ShipPhone").last
-      data_error_field = (@browser.divs :css => "div[data-errorqtip*='phone number']").last
-      field.data_qtip_field data_error_field, "data-errorqtip"
-      field
     end
   end
 

@@ -1,21 +1,17 @@
-
+#try 10 times before finally failing a test.
 Given /^Expect Order Details International Name data error tooltip to be \"(.+)\"$/ do |value|
   log.info "Expectation: Expect Order Details International Name data error tooltip to be #{value}"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   text_box = @international_ship_to.name
   10.times do
     text_box.safe_double_click
-    text_box.set value
-    sleep 1
     text_box.safe_double_click
     sleep 1
-    text_box.send_keys :tab
     text_box.safe_double_click
-    text_box.send_keys :enter
     text_box.safe_double_click
     sleep 1
-    error_msg = text_box.data_error_qtip
-    break if error_msg.include? value
+    error_msg = text_box.data_error_text
+    break if error_msg.include? (value.size>10)?value[0..9]:value
   end
   error_msg = text_box.data_error_qtip
   log.info "Test #{(error_msg.include? value)?"Passed":"Failed"}"

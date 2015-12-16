@@ -18,5 +18,5 @@ Feature:  Service enabled/disabled tests
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Ounces to 15.9
     Then Expect Order details Service "First-Class Mail Package/Thick Envelope" to be enabled
-    Then Expect Order details Service "First-Class Mail Large Envelope/Flat" to be enabled
+    #Then Expect Order details Service "First-Class Mail Large Envelope/Flat" to be enabled
 
