@@ -32,7 +32,7 @@ module Orders
       MultiOrder.new(@browser)
     end
 
-    def order_details
+    def details
       @order_details ||= OrderDetails.new @browser
     end
 

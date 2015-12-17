@@ -41,14 +41,30 @@ module Stamps
         case args.length
           when 1
             @field = args[0]
-            @browser = @field.browser
-            @second_field = nil
-          when 2
+          when 2 #use this when data error qtip is found in the field
             @field = args[0]
-            @second_field = args[1]
-            #log.info browser_helper.present? @second_field
+            @data_error_field_attribute = args[1]
+          when 3 # use this when data error qtip is in a another field
+            @field = args[0]
+            @data_error_field = args[1]
+            @data_error_field_attribute = args[2]
           else
-            #do nothing.
+            raise "Illegal number of arguments.  Unable to create field."
+        end
+        @browser = @field.browser
+      end
+
+      def data_error_qtip
+        begin
+          # if data qtip field was not set or is nil, try to get data error qtip from the field representing this textbox.
+          if @data_error_field.nil?
+            return browser_helper.attribute_value @field, @data_error_field_attribute
+          else
+            return browser_helper.attribute_value @data_error_field, @data_error_field_attribute
+          end
+        rescue
+          #if data error field does not exist, return an empty string
+          return ""
         end
       end
 
@@ -91,16 +107,6 @@ module Stamps
 
       def style property
         browser_helper.style property
-      end
-
-      def second_disabled?
-        raise "enabled field not set." if @second_field.nil?
-        browser_helper.disabled? @second_field
-      end
-
-      def second_enabled?
-        raise "enabled field not set." if @second_field.nil?
-        browser_helper.attribute_enabled? @second_field
       end
 
       def field
@@ -243,34 +249,6 @@ module Stamps
     end
 
     class Textbox < Input
-      def data_error_qtip_field field, attribute_value
-        @data_qtip_field = field
-        @attribute_value = attribute_value
-        self
-      end
-
-      def data_error_qtip
-        begin
-          return browser_helper.attribute_value @data_qtip_field, @attribute_value
-        rescue
-          #if data error field does not exist, return an empty string
-          return ""
-        end
-        return ""
-      end
-
-      def data_error_text_field field
-        @data_error_text_field
-      end
-
-      def data_error_text
-        begin
-          browser_helper.text @data_error_text_field
-        rescue
-          #if data error field does not exist, return an empty string
-          return ''
-        end
-      end
 
       def set text
         browser_helper.set @field, text
@@ -425,7 +403,7 @@ module Stamps
       def attribute_value field, attribute
           5.times{
             begin
-              @attribute_field_value = field.attribute_value(attribute)
+              @attribute_field_value = field.attribute_value attribute
               return @attribute_field_value unless @attribute_field_value.length < 1
             rescue => e
               #log.info "Attribute: #{attribute}, Field:  #{field}. #{e}"

@@ -790,7 +790,11 @@ module Orders
     end
 
     def check_order_id order_id
-      edit order_id
+      check row_number(order_id)
+    end
+
+    def uncheck_order_id order_id
+      uncheck row_number(order_id)
     end
 
     def check number

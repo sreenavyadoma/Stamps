@@ -91,6 +91,26 @@ Then /^Expect Grid Ship Date for this order to be today plus (\d+)$/ do |day|
   grid_ship_date.should eql expected_ship_date
 end
 
+Then /^Set Orders Grid New Order ID to uncheck$/ do
+  log.info "Set Orders Grid New Order ID to uncheck"
+  orders.grid.checkbox.uncheck_order_id @order_id
+end
+
+Then /^Set Orders Grid New Order ID to check$/ do
+  log.info "Set Orders Grid New Order ID to check"
+  orders.grid.checkbox.check_order_id @order_id
+end
+
+Then /^Set Orders Grid Row (\d+) to uncheck$/ do |row|
+  log.info "Set Orders Grid Row #{row} to uncheck"
+  orders.grid.checkbox.uncheck row
+end
+
+Then /^Set Orders Grid Row (\d+) to check$/ do |row|
+  log.info "Set Orders Grid Row #{row} to check"
+  orders.grid.checkbox.check row
+end
+
 When /^Edit row (\d+) on the order grid$/ do |row|
   log.info "Step: Edit row #{row} on the order grid"
   orders.grid.checkbox.check row
@@ -585,7 +605,7 @@ end
 Then /^Expect Order Details Order ID equals Grid order ID$/ do
   log.info "Expectation: Expect Order Details Order ID equals Grid order ID"
   grid_order_id = orders.grid.order_id.row 1
-  single_order_form_order_id = orders.order_details.order_id
+  single_order_form_order_id = orders.details.order_id
   log.info "Grid Order ID: #{grid_order_id}.  Order Details Form Order ID:  #{single_order_form_order_id}.  Test #{(grid_order_id==single_order_form_order_id) ? 'Passed' : 'Failed'}"
   grid_order_id.should eql single_order_form_order_id
 end
