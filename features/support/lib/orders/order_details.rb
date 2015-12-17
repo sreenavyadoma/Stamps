@@ -66,22 +66,22 @@ module Orders
 
     def name
       field = Textbox.new @browser.text_field :name => "ShipName"
-      error_field = @browser.li :css => "div[data-anchortarget^=autosuggest][data-anchortarget$=inputEl]>ul>li"
-      field.data_error_text_field error_field
+      error_field = @browser.div :css => "div[data-anchortarget^=autosuggest][data-anchortarget$=inputEl]"
+      field.data_error_qtip_field error_field, "data-errorqtip"
       field
     end
 
     def company
       field = Textbox.new @browser.text_field :name => "ShipCompany"
-      error_field = (@browser.divs :css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[1]
-      field.data_error_text_field error_field
+      error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[2]
+      field.data_error_qtip_field error_field, "data-errorqtip"
       field
     end
 
     def address_1
       field = Textbox.new @browser.text_field :name => "ShipStreet1"
-      error_field = (@browser.lis :css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[2]
-      field.data_error_text_field error_field
+      error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[3]
+      field.data_error_qtip_field error_field, "data-errorqtip"
       field
     end
 
@@ -91,15 +91,15 @@ module Orders
 
     def city
       field = Textbox.new @browser.text_field :name => "ShipCity"
-      error_field = (@browser.lis :css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]>ul>li")[3]
-      field.data_error_text_field error_field
+      error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[5]
+      field.data_error_qtip_field error_field, "data-errorqtip"
       field
     end
 
     def phone
       field = Textbox.new (@browser.text_fields :name => "ShipPhone").last
-      error_field = (@browser.lis :css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]>ul>li")[4]
-      field.data_error_text_field error_field
+      error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[8]
+      field.data_error_qtip_field error_field, "data-errorqtip"
       field
     end
 

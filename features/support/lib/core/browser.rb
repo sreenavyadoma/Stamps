@@ -250,7 +250,13 @@ module Stamps
       end
 
       def data_error_qtip
-        browser_helper.attribute_value @data_qtip_field, @attribute_value
+        begin
+          return browser_helper.attribute_value @data_qtip_field, @attribute_value
+        rescue
+          #if data error field does not exist, return an empty string
+          return ""
+        end
+        return ""
       end
 
       def data_error_text_field field
