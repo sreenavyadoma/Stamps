@@ -100,8 +100,8 @@ Then /^Expect Order Details Domestic Service data error tooltip to be \"(.*)\"$/
   expect(data_error_tooltip).to include expectation
 end
 
-Then /^Expect Order Details Length data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Expectation: Expect Order Details Length data error tooltip to be #{expectation}"
+Then /^Expect Order Details Dimensions Length data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Dimensions Length data error tooltip to be #{expectation}"
   text_box = orders.details.length
 
   20.times do
@@ -124,8 +124,8 @@ Then /^Expect Order Details Length data error tooltip to be \"(.*)\"$/ do |expec
   expect(data_error_tooltip).to include expectation
 end
 
-Then /^Expect Order Details Width data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Expectation: Expect Order Details Width data error tooltip to be #{expectation}"
+Then /^Expect Order Details Dimensions Width data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Dimensions Width data error tooltip to be #{expectation}"
   width_text_box = orders.details.width
 
   20.times do
@@ -148,8 +148,8 @@ Then /^Expect Order Details Width data error tooltip to be \"(.*)\"$/ do |expect
   expect(data_error_tooltip).to include expectation
 end
 
-Then /^Expect Order Details Height data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Expectation: Expect Order Details Height data error tooltip to be #{expectation}"
+Then /^Expect Order Details Dimensions Height data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Dimensions Height data error tooltip to be #{expectation}"
   height_text_box = orders.details.height
 
   20.times do

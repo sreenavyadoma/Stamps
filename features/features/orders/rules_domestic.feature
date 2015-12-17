@@ -38,4 +38,9 @@ Feature:  Service enabled/disabled tests
     Then Set Order Details Email to random
     Then Set Order Details Phone to random
     Then Set Order Details Service to "Priority Mail Large Package"
+    Then Set Orders Grid New Order ID to uncheck
+    Then Set Orders Grid New Order ID to check
+    Then Expect Order Details Dimensions Length data error tooltip to be "Dimensions are required"
+    Then Expect Order Details Dimensions Width data error tooltip to be "Dimensions are required"
+    Then Expect Order Details Dimensions Height data error tooltip to be "Dimensions are required"
 
