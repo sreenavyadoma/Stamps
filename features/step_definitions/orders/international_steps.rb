@@ -128,7 +128,7 @@ Then /^Set International Ship-To Name to \"(.*)\"$/ do |value|
   log.info "Step: Set International Ship-To Name to #{value}"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.name.send_keys :tab
+    @international_ship_to.name.send_keys :enter
   else
     @international_ship_to.name.set ((value.downcase == "random")? test_helper.random_name : value)
   end
@@ -139,7 +139,7 @@ Then /^Set International Ship-To Company to \"(.*)\"$/ do |value|
   log.info "Step: Set International Ship-To Company to #{value}"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.company.send_keys :tab
+    @international_ship_to.company.send_keys :enter
   else
     @international_ship_to.company.set ((value.downcase == "random")? test_helper.random_name : value)
   end
@@ -150,7 +150,7 @@ Then /^Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
   log.info "Step: Set International Ship-To Address 1 to #{value}"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.address_1.send_keys :tab
+    @international_ship_to.address_1.send_keys :enter
   else
     @international_ship_to.address_1.set ((value.downcase == "random")? test_helper.random_name : value)
   end
@@ -161,7 +161,7 @@ Then /^Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
   log.info "Step: Set International Ship-To Address 2 to #{value}"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.address_2.send_keys :tab
+    @international_ship_to.address_2.send_keys :enter
   else
     @international_ship_to.address_2.set ((value.downcase == "random")? test_helper.random_name : value)
   end
@@ -172,7 +172,7 @@ Then /^Set International Ship-To City to \"(.*)\"$/ do |value|
   log.info "Step: Set International Ship-To City to #{value}"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.city.send_keys :tab
+    @international_ship_to.city.send_keys :enter
   else
     @international_ship_to.city.set ((value.downcase == "random")? test_helper.random_name : value)
   end
@@ -183,7 +183,7 @@ Then /^Set International Ship-To Province to \"(.*)\"$/ do |value|
   log.info "Step: Set International Ship-To Province to #{value}"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.province.send_keys :tab
+    @international_ship_to.province.send_keys :enter
   else
     @international_ship_to.province.set ((value.downcase == "random")? test_helper.random_name : value)
   end
@@ -193,7 +193,7 @@ Then /^Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
   log.info "Step: Set International Ship-To Postal Code to #{value}"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.postal_code.send_keys :tab
+    @international_ship_to.postal_code.send_keys :enter
   else
     @international_ship_to.postal_code.set ((value.downcase == "random")? test_helper.random_name : value)
   end
@@ -204,7 +204,7 @@ Then /^Set International Ship-To Phone to \"(.*)\"$/ do |value|
   log.info "Step: Set International Ship-To Phone to #{value}"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.phone.send_keys :tab
+    @international_ship_to.phone.send_keys :enter
   else
     @international_ship_to.phone.set ((value.downcase == "random")? test_helper.random_name : value)
   end
@@ -215,7 +215,7 @@ Then /^Set International Ship-To Email to \"(.*)\"$/ do |value|
   log.info "Step: Set International Ship-To Email to #{value}"
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.email.send_keys :tab
+    @international_ship_to.email.send_keys :enter
   else
     @international_ship_to.email.set ((value.downcase == "random")? test_helper.random_name : value)
   end

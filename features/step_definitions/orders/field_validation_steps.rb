@@ -4,6 +4,9 @@ Given /^Expect Order Details International Name data error tooltip to be \"(.*)\
   @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
   text_box = @international_ship_to.name
   20.times do
+    text_box.send_keys :enter
+    text_box.send_keys :tab
+    text_box.safe_double_click
     @international_ship_to.click_form
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click
@@ -29,6 +32,9 @@ Given /^Expect Order Details International Company data error tooltip to be \"(.
   text_box = @international_ship_to.company
 
   20.times do
+    text_box.send_keys :enter
+    text_box.send_keys :tab
+    text_box.safe_double_click
     @international_ship_to.click_form
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click
@@ -54,6 +60,9 @@ Given /^Expect Order Details International Address 1 data error tooltip to be \"
   text_box = @international_ship_to.address_1
 
   20.times do
+    text_box.send_keys :enter
+    text_box.send_keys :tab
+    text_box.safe_double_click
     @international_ship_to.click_form
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click
@@ -79,9 +88,11 @@ Given /^Expect Order Details International City data error tooltip to be \"(.*)\
   text_box = @international_ship_to.city
 
   20.times do
+    text_box.send_keys :enter
+    text_box.send_keys :tab
+    text_box.safe_double_click
     @international_ship_to.click_form
     @international_ship_to.name.scroll_into_view
-    text_box.safe_double_click
     @international_ship_to.click_form
     @international_ship_to.name.scroll_into_view
     sleep 1
@@ -104,6 +115,9 @@ Given /^Expect Order Details International Phone data error tooltip to be \"(.*)
   text_box = @international_ship_to.phone
 
   20.times do
+    text_box.send_keys :enter
+    text_box.send_keys :tab
+    text_box.safe_double_click
     @international_ship_to.click_form
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click
@@ -129,6 +143,9 @@ Given /^Expect Order Details International Email data error tooltip to be \"(.*)
   text_box = @international_ship_to.email
 
   20.times do
+    text_box.send_keys :enter
+    text_box.send_keys :tab
+    text_box.safe_double_click
     @international_ship_to.click_form
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click

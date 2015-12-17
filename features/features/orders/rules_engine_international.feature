@@ -29,7 +29,7 @@ Feature: International Field Validation
     #Then Expect Order Details International Name data error tooltip to be "A First Name and Last Name or Company are required"
     #Then Expect Order Details International Company data error tooltip to be "A First Name and Last Name or Company are required"
 
-  @international_rules_engine_1 @international_rules_engine_broken
+  @international_rules_engine_1 @international_rules_engine_failing_tests
   Scenario: Add Missing Validation Logic for Phone and International Email
     And I Add a new order
     Then Set Order Details Ship-From to default
@@ -38,12 +38,21 @@ Feature: International Field Validation
     Then Expect Order Details International Name data error tooltip to be "A First Name and Last Name or Company are required"
     Then Set International Ship-To Company to ""
     Then Expect Order Details International Company data error tooltip to be "A First Name and Last Name or Company are required"
+
+    Then Set International Ship-To Name to "random"
+    Then Set International Ship-To Company to "random"
     Then Set International Ship-To Address 1 to ""
     Then Expect Order Details International Address 1 data error tooltip to be "The ship to address is a required field"
+
+    Then Set International Ship-To Address 1 to "random"
     Then Set International Ship-To City to ""
     Then Expect Order Details International City data error tooltip to be "The ship to city is a required field"
+
+    Then Set International Ship-To City to "random"
     Then Set International Ship-To Phone to ""
     Then Expect Order Details International Phone data error tooltip to be "The ship to phone number is a required field"
+
+    Then Set International Ship-To Phone to "random"
     Then Set International Ship-To Email to "@@"
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     Then Expect Order Details International Email data error tooltip to be "Please enter a valid email address"
@@ -55,7 +64,7 @@ Feature: International Field Validation
     And Sign out
 
 
-  @international_shipping_field_validation @international_rules_engine_broken
+  @international_shipping_field_validation @international_rules_engine_failing_tests
   Scenario: Order Details Form  International Shipping fields and Customs Information fields validation
     And I Add a new order
     Then Set Order Details Ship-From to default
@@ -134,7 +143,7 @@ Feature: International Field Validation
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Sign out
 
-  @international_internal_transaction_2500 @international_rules_engine_broken
+  @international_internal_transaction_2500 @international_rules_engine_failing_tests
   Scenario: Customs Form - Internal Transaction # Required for total over $2500
 
     # Internal Transaction # Required for total over $2500
@@ -349,7 +358,7 @@ Feature: International Field Validation
     And Sign out
 
       # Philippines - Internal Transaction # Required
-  @international_rogue_countries @international_rules_engine_broken
+  @international_rogue_countries @international_rules_engine_failing_tests
   Scenario: Internal Transaction # Not Required
     And I Add a new order
     Then Set Order Details Ship-From to default
