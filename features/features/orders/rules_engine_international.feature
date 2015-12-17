@@ -20,16 +20,16 @@ Feature: International Field Validation
     Then Expect Order Details International Name data error tooltip to be ""
     #Then Expect Order Details International Company data error tooltip to be ""
 
-    Then Set International Ship-To Name to ""
-    Then Set International Ship-To Company to "a"
-    Then Expect Order Details International Company data error tooltip to be "Company name must be at least two characters long"
+    #Then Set International Ship-To Name to ""
+    #Then Set International Ship-To Company to "a"
+    #Then Expect Order Details International Company data error tooltip to be "Company name must be at least two characters long"
 
-    Then Set International Ship-To Name to "a"
-    Then Set International Ship-To Company to ""
-    Then Expect Order Details International Name data error tooltip to be "A First Name and Last Name or Company are required"
-    Then Expect Order Details International Company data error tooltip to be "A First Name and Last Name or Company are required"
+    #Then Set International Ship-To Name to "a"
+    #Then Set International Ship-To Company to ""
+    #Then Expect Order Details International Name data error tooltip to be "A First Name and Last Name or Company are required"
+    #Then Expect Order Details International Company data error tooltip to be "A First Name and Last Name or Company are required"
 
-  @international_rules_engine_1 @international_rules_engine
+  @international_rules_engine_1 @international_rules_engine_broken
   Scenario: Add Missing Validation Logic for Phone and International Email
     And I Add a new order
     Then Set Order Details Ship-From to default
@@ -55,7 +55,7 @@ Feature: International Field Validation
     And Sign out
 
 
-  @international_shipping_field_validation @international_rules_engine
+  @international_shipping_field_validation @international_rules_engine_broken
   Scenario: Order Details Form  International Shipping fields and Customs Information fields validation
     And I Add a new order
     Then Set Order Details Ship-From to default
@@ -134,7 +134,7 @@ Feature: International Field Validation
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Sign out
 
-  @international_internal_transaction_2500 @international_rules_engine
+  @international_internal_transaction_2500 @international_rules_engine_broken
   Scenario: Customs Form - Internal Transaction # Required for total over $2500
 
     # Internal Transaction # Required for total over $2500
@@ -349,7 +349,7 @@ Feature: International Field Validation
     And Sign out
 
       # Philippines - Internal Transaction # Required
-  @international_rogue_countries @international_rules_engine
+  @international_rogue_countries @international_rules_engine_broken
   Scenario: Internal Transaction # Not Required
     And I Add a new order
     Then Set Order Details Ship-From to default
