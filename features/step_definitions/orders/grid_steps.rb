@@ -547,7 +547,7 @@ Then /^Expect Grid Tracking Number is populated$/ do
   log.info "Expect Grid Tracking Number is populated"
   sleep 2
   actual = orders.grid.tracking_no.data @order_id
-  30.times {
+  20.times {
     log.info "Tracking number is #{actual}"
     break if actual.length > 3
     sleep 1
