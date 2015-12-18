@@ -34,13 +34,16 @@ Feature:  Service enabled/disabled tests
     Then Expect Order Details Domestic Service data error tooltip to be "Service is required"
     Then Set Orders Grid New Order ID to check
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 5 through 8
+    Then Set Order Details Ship-To address to random,PO BOX 1257,Pohnpei, FM 96941-1257
     Then Set Order Details Email to random
     Then Set Order Details Phone to random
     Then Set Order Details Service to "Priority Mail Large Package"
     Then Set Order Details Pounds to 5
     Then Set Orders Grid New Order ID to uncheck
     Then Set Orders Grid New Order ID to check
+    Then Set Order Details Length to 0
+    Then Set Order Details Width to 0
+    Then Set Order Details Height to 0
     Then Expect Order Details Dimensions Length data error tooltip to be "Dimensions are required"
     Then Expect Order Details Dimensions Width data error tooltip to be "Dimensions are required"
     Then Expect Order Details Dimensions Height data error tooltip to be "Dimensions are required"

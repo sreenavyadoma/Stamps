@@ -585,7 +585,7 @@ end
 Then /^Expect Grid Insured Value to be \$(\d*\.?\d*)$/ do |expected|
   log.info "Expectation: Expect Grid Insured Value to be #{expected}"
   begin
-    actual = orders.grid.insured_value.data @order_id
+    actual = test_helper.remove_dollar_sign orders.grid.insured_value.data @order_id
     10.times { |counter|
       sleep(2)
       #log_expectation_eql "#{counter}. Insurance", expected, actual

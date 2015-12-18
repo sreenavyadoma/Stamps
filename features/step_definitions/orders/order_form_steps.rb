@@ -139,6 +139,9 @@ When /^Set Order Details Pounds to (\d*)$/ do |value|
   begin
     log.info "Step: Set Order Details Pounds to \"#{value}\""
     orders.details.lbs.set value
+    orders.details.click_form
+    orders.details.click_form
+    orders.details.click_form
   end unless value.length == 0
 end
 
@@ -146,6 +149,9 @@ When /^Set Order Details Ounces to (.*)$/ do |value|
   begin
     log.info "Step: Set Order Details Ounces to \"#{value}\""
     orders.details.oz.set value
+    orders.details.click_form
+    orders.details.click_form
+    orders.details.click_form
   end unless value.length == 0
 end
 
@@ -153,6 +159,9 @@ When /^Set Order Details Length to (\d*)$/ do |value|
   begin
     log.info "Step: Set Order Details Length to \"#{value}\""
     orders.details.length.set value
+    orders.details.click_form
+    orders.details.click_form
+    orders.details.click_form
   end unless value.length == 0
 end
 
@@ -160,6 +169,9 @@ When /^Set Order Details Width to (\d*)$/ do |value|
   begin
     log.info "Step: Set Order Details Width to \"#{value}\""
     orders.details.width.set value
+    orders.details.click_form
+    orders.details.click_form
+    orders.details.click_form
   end unless value.length == 0
 end
 
@@ -167,6 +179,9 @@ When /^Set Order Details Height to (\d*)$/ do |value|
   begin
     log.info "Step: Set Order Details Height to \"#{value}\""
     orders.details.height.set value
+    orders.details.click_form
+    orders.details.click_form
+    orders.details.click_form
   end unless value.length == 0
 end
 
@@ -389,7 +404,7 @@ end
 
 Then /^Expect (\d+) orders selected$/ do |expected|
   log.info "Expectation: Expect #{expected} orders selected"
-  orders.multi_order.order_count.should eql expected
+  orders.multi_orders.order_count.should eql expected
 end
 
 
