@@ -94,7 +94,7 @@ module Orders
 
       old_id = grid.order_id.row 1
       log.info "Row 1 Order ID #{old_id}"
-      20.times do |count|
+      5.times do |count|
         begin
           add_button.safe_click
           5.times{
