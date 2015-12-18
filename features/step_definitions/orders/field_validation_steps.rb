@@ -1,142 +1,184 @@
+#domestic
 
-Given /^Expect Order Details International Name data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details International Name data error tooltip to be #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-  text_box = @international_ship_to.name
-  10.times do
+Then /^Expect Order Details Domestic Address data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Domestic Address data error tooltip to be #{expectation}"
+  text_box = orders.details.ship_to.address.text_area
+  20.times do
     text_box.safe_double_click
-    text_box.set value
+    orders.details.click_form
+    text_box.scroll_into_view
+    text_box.safe_double_click
+    orders.details.click_form
     sleep 1
-    text_box.safe_double_click
-    sleep 1
-    text_box.send_keys :tab
-    text_box.safe_double_click
-    text_box.send_keys :enter
-    text_box.safe_double_click
-    sleep 1
-    error_msg = text_box.data_error_qtip
-    break if error_msg.include? value
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
   end
-  error_msg = text_box.data_error_qtip
-  log.info "Test #{(error_msg.include? value)?"Passed":"Failed"}"
-  expect(error_msg).to include value
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
 end
 
-Given /^Expect Order Details International Company data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details International Company data error tooltip to be #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-  text_box = @international_ship_to.company
-  text_box.send_keys :tab
-  text_box.send_keys :enter
-  sleep 1
-  error = text_box.data_error_qtip
-  log.info "Test #{(error.include? value)?"Passed":"Failed"}"
-  expect(error).to include value
+Then /^Expect Order Details Domestic Email data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Domestic Email data error tooltip to be #{expectation}"
+  text_box = orders.details.ship_to.email
+  20.times do
+    text_box.safe_double_click
+    orders.details.click_form
+    text_box.scroll_into_view
+    text_box.safe_double_click
+    orders.details.click_form
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
 end
 
-Given /^Expect Order Details International Address 1 data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details International Address 1 data error tooltip to be #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-  text_box = @international_ship_to.address_1
-  text_box.send_keys :tab
-  text_box.send_keys :enter
-  sleep 1
-  error = text_box.data_error_qtip
-  log.info "Test #{(error.include? value)?"Passed":"Failed"}"
-  expect(error).to include value
+Then /^Expect Order Details Domestic Weight lbs data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Domestic  Weight lbs data error tooltip to be #{expectation}"
+  text_box = orders.details.lbs
+  20.times do
+    text_box.safe_double_click
+    orders.details.click_form
+    text_box.scroll_into_view
+    text_box.safe_double_click
+    orders.details.click_form
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
 end
 
-Given /^Expect Order Details International City data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details International City data error tooltip to be #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-  text_box = @international_ship_to.city
-  text_box.send_keys :tab
-  text_box.send_keys :enter
-  sleep 1
-  error = text_box.data_error_qtip
-  log.info "Test #{(error.include? value)?"Passed":"Failed"}"
-  expect(error).to include value
+Then /^Expect Order Details Domestic Weight oz data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Domestic Weight oz data error tooltip to be #{expectation}"
+  text_box = orders.details.oz
+  20.times do
+    text_box.safe_double_click
+    orders.details.click_form
+    text_box.scroll_into_view
+    text_box.safe_double_click
+    orders.details.click_form
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
 end
 
-Given /^Expect Order Details International Phone data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details International Phone data error tooltip to be #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-  text_box = @international_ship_to.phone
-  text_box.send_keys :tab
-  text_box.send_keys :enter
-  sleep 1
-  error = text_box.data_error_qtip
-  log.info "Test #{(error.include? value)?"Passed":"Failed"}"
-  expect(error).to include value
+Then /^Expect Order Details Domestic Service data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Domestic Weight oz data error tooltip to be #{expectation}"
+  text_box = orders.details.service.text_box
+  20.times do
+    text_box.safe_double_click
+    orders.details.click_form
+    text_box.scroll_into_view
+    text_box.safe_double_click
+    orders.details.click_form
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
 end
 
-Given /^Expect Order Details International Email data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details International Email data error tooltip to be #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-  text_box = @international_ship_to.email
-  text_box.send_keys :tab
-  text_box.send_keys :enter
-  sleep 1
-  error = text_box.data_error_qtip
-  log.info "Test #{(error.include? value)?"Passed":"Failed"}"
-  expect(error).to include value
+Then /^Expect Order Details Dimensions Length data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Dimensions Length data error tooltip to be #{expectation}"
+  text_box = orders.details.length
+
+  20.times do
+    text_box.safe_double_click
+    orders.details.click_form
+    text_box.scroll_into_view
+    text_box.safe_double_click
+    orders.details.click_form
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      orders.details.name.scroll_into_view
+      sleep 1
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  orders.details.name.scroll_into_view
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
 end
 
-Given /^Expect Order Details Domestic Email data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Domestic Email data error tooltip to be #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-  text_box = @single_order_form.email
-  text_box.send_keys :tab
-  text_box.send_keys :enter
-  sleep 1
-  error = text_box.data_error_qtip
-  log.info "Test #{(error.include? value)?"Passed":"Failed"}"
-  expect(error).to include value
+Then /^Expect Order Details Dimensions Width data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Dimensions Width data error tooltip to be #{expectation}"
+  width_text_box = orders.details.width
+
+  20.times do
+    text_box.safe_double_click
+    orders.details.click_form
+    text_box.scroll_into_view
+    text_box.safe_double_click
+    orders.details.click_form
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      orders.details.name.scroll_into_view
+      sleep 1
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  orders.details.name.scroll_into_view
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
 end
 
-Given /^Expect Order Details Length data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Length data error tooltip to be #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-  text_box = @single_order_form.length
-  text_box.send_keys :tab
-  text_box.send_keys :enter
-  sleep 1
-  error = text_box.attribute_value "data-errorqtip"
-  log.info "Test #{(error.include? value)?"Passed":"Failed"}"
-  expect(error).to include value
+Then /^Expect Order Details Dimensions Height data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details Dimensions Height data error tooltip to be #{expectation}"
+  height_text_box = orders.details.height
+
+  20.times do
+    text_box.safe_double_click
+    orders.details.click_form
+    text_box.scroll_into_view
+    text_box.safe_double_click
+    orders.details.click_form
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      orders.details.name.scroll_into_view
+      sleep 1
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  orders.details.name.scroll_into_view
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
 end
 
-Given /^Expect Order Details Width data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Width data error tooltip to be #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-  width_text_box = @single_order_form.width
-  text_box.send_keys :tab
-  text_box.send_keys :enter
-  sleep 1
-  error = width_text_box.attribute_value "data-errorqtip"
-  log.info "Test #{(error.include? value)?"Passed":"Failed"}"
-  expect(error).to include value
-end
-
-Given /^Expect Order Details Height data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Order Details Height data error tooltip to be #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-  height_text_box = @single_order_form.height
-  text_box.send_keys :tab
-  text_box.send_keys :enter
-  sleep 1
-  error = height_text_box.attribute_value "data-errorqtip"
-  log.info "Test #{(error.include? value)?"Passed":"Failed"}"
-  expect(error).to include value
-end
-
-Given /^Expect Grid ship cost data error tooltip to be \"(.+)\"$/ do |value|
-  log.info "Expectation: Expect Grid ship cost data error tooltip to be #{value}"
+Then /^Expect Grid ship cost data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Grid ship cost data error tooltip to be #{expectation}"
   grid_order_id = orders.grid.order_id.row 1
   grid_ship_cost = orders.grid.ship_cost.data grid_order_id
-  error = grid_ship_cost.attribute_value "data-errorqtip"
-  log.info "Test #{(error.include? value)?"Passed":"Failed"}"
-  expect(error).to include value
+  error = grid_ship_cost.attribute_expectation "data-errorqtip"
+  log.info "Test #{(error.include? expectation)?"Passed":"Failed"}"
+  expect(error).to include expectation
 end
 
 Then /^Expect Grid Ship Cost error to contain \"(.*)\"$/ do |expectation|
@@ -155,4 +197,159 @@ Then /^Expect Grid Ship Cost error to contain \"(.*)\"$/ do |expectation|
 
   ship_cost_error = orders.grid.ship_cost.data_error "81407"
   log.info ship_cost_error
+end
+
+#International
+Then /^Expect Order Details International Name data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details International Name data error tooltip to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  text_box = @international_ship_to.name
+  20.times do
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      @international_ship_to.name.scroll_into_view
+      sleep 1
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  @international_ship_to.name.scroll_into_view
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
+end
+
+Then /^Expect Order Details International Company data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details International Company data error tooltip to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  text_box = @international_ship_to.company
+
+  20.times do
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      @international_ship_to.name.scroll_into_view
+      sleep 1
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  @international_ship_to.name.scroll_into_view
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
+end
+
+Then /^Expect Order Details International Address 1 data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details International Address 1 data error tooltip to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  text_box = @international_ship_to.address_1
+
+  20.times do
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      @international_ship_to.name.scroll_into_view
+      sleep 1
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  @international_ship_to.name.scroll_into_view
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
+end
+
+Then /^Expect Order Details International City data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details International City data error tooltip to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  text_box = @international_ship_to.city
+
+  20.times do
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      @international_ship_to.name.scroll_into_view
+      sleep 1
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  @international_ship_to.name.scroll_into_view
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
+end
+
+Then /^Expect Order Details International Phone data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details International Phone data error tooltip to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  text_box = @international_ship_to.phone
+
+  20.times do
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      @international_ship_to.name.scroll_into_view
+      sleep 1
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  @international_ship_to.name.scroll_into_view
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
+end
+
+Then /^Expect Order Details International Email data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Expectation: Expect Order Details International Email data error tooltip to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  text_box = @international_ship_to.email
+
+  20.times do
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    text_box.safe_double_click
+    @international_ship_to.click_form
+    @international_ship_to.name.scroll_into_view
+    sleep 1
+    data_error_tooltip = text_box.data_error_qtip
+    begin
+      @international_ship_to.name.scroll_into_view
+      sleep 1
+      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+    end unless data_error_tooltip.nil?
+  end
+  @international_ship_to.name.scroll_into_view
+  data_error_tooltip = text_box.data_error_qtip
+  log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
+  expect(data_error_tooltip).to include expectation
 end

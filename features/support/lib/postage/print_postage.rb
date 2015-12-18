@@ -446,9 +446,7 @@ module Postage
 
   class PostageShipToInternational < ShipToBase
     def name
-      name_input = Textbox.new @browser.text_field :id => "sdc-intlform-shiptonamefield-inputEl"
-      name_input.data_qtip_field "the browser field containing the data error", "data-errorqtip"
-      name_input
+      Textbox.new @browser.text_field :id => "sdc-intlform-shiptonamefield-inputEl"
     end
 
     def name_data_error_tooltip

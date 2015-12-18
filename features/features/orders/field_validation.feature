@@ -24,13 +24,13 @@ Feature: Add Missing Field Validation
     Then Set Order Details Length to 0
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
-    Then Expect Order Details Length data error tooltip to be "Each dimension must be greater than 0"
+    Then Expect Order Details Dimensions Length data error tooltip to be "Each dimension must be greater than 0"
 
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Length to 0
     Then Set Order Details Width to 2
     Then Set Order Details Height to 2
-    Then Expect Order Details Length data error tooltip to be "Each dimension must be greater than 0"
+    Then Expect Order Details Dimensions Length data error tooltip to be "Each dimension must be greater than 0"
 
   #@validate_width
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where Service = Priority Mail AND Zone > 5
@@ -38,13 +38,13 @@ Feature: Add Missing Field Validation
     Then Set Order Details Length to 3
     Then Set Order Details Width to 0
     Then Set Order Details Height to 3
-    Then Expect Order Details Width data error tooltip to be "Each dimension must be greater than 0"
+    Then Expect Order Details Dimensions Width data error tooltip to be "Each dimension must be greater than 0"
 
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Length to 4
     Then Set Order Details Width to 0
     Then Set Order Details Height to 4
-    Then Expect Order Details Width data error tooltip to be "Each dimension must be greater than 0"
+    Then Expect Order Details Dimensions Width data error tooltip to be "Each dimension must be greater than 0"
 
   #@validate_height
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where Service = Priority Mail Large Envelope/Thick Envelope AND Zone ? 5
@@ -52,13 +52,13 @@ Feature: Add Missing Field Validation
     Then Set Order Details Height to 0
     Then Set Order Details Length to 5
     Then Set Order Details Width to 5
-    Then Expect Order Details Height data error tooltip to be "Each dimension must be greater than 0"
+    Then Expect Order Details Dimensions Height data error tooltip to be "Each dimension must be greater than 0"
 
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Height to 0
     Then Set Order Details Length to 6
     Then Set Order Details Width to 6
-    Then Expect Order Details Height data error tooltip to be "Each dimension must be greater than 0"
+    Then Expect Order Details Dimensions Height data error tooltip to be "Each dimension must be greater than 0"
     Then Expect Grid Ship Cost error to contain "Each dimension must be greater than 0"
 
     And Sign out

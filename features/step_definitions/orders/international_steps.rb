@@ -1,6 +1,6 @@
 Then /^Set Order Details Ship-To country to (.*)$/ do |country|
   log.info "Step: Set Order Details Ship-To country to #{country}"
-  @international_ship_to = orders.order_details.ship_to.country.select country
+  @international_ship_to = orders.details.ship_to.country.select country
 end
 
 # random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
@@ -45,7 +45,7 @@ end
 
 Then /^Expect International Ship-To name field displays (.*)/ do |value|
   log.info "Expectation: Expect International Ship-To name field displays #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.name.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
@@ -53,7 +53,7 @@ end
 
 Then /^Expect International Ship-To company field displays (.*)/ do |value|
   log.info "Expectation: Expect International Ship-To company field displays #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.company.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
@@ -61,7 +61,7 @@ end
 
 Then /^Expect International Ship-To Address 1 field displays (.*)/ do |value|
   log.info "Expectation: Expect International Ship-To Address 1 field displays #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.address_1.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
@@ -69,7 +69,7 @@ end
 
 Then /^Expect International Ship-To Address 2 field displays (.*)/ do |value|
   log.info "Expectation: Expect International Ship-To address 2 field displays #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.address_2.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
@@ -77,7 +77,7 @@ end
 
 Then /^Expect International Ship-To Province field displays (.*)/ do |value|
   log.info "Expectation: Expect International Ship-To province field displays #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.province.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
@@ -85,7 +85,7 @@ end
 
 Then /^Expect International Ship-To Postal Code field displays (.*)/ do |value|
   log.info "Expectation: Expect International Ship-To postal code field displays #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.postal_code.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
@@ -93,7 +93,7 @@ end
 
 Then /^Expect International Ship-To Phone field displays (.*)/ do |value|
   log.info "Expectation: Expect International Ship-To phone field displays #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.phone.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
@@ -101,7 +101,7 @@ end
 
 Then /^Expect International Ship-To Email field displays (.*)/ do |value|
   log.info "Expectation: Expect International Ship-To Email field displays #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.email.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
@@ -109,7 +109,7 @@ end
 
 Then /^Expect International Ship-To Country field displays (.*)/ do |value|
   log.info "Expectation: Expect International Ship-To Country field displays #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.country.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
@@ -117,141 +117,113 @@ end
 
 Then /^Expect International Ship-To City field displays (.*)/ do |value|
   log.info "Expectation: Expect International Ship-To City field displays #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.city.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
 end
 
-Then /^DEPRECATED! Expect International Ship-To ([\w \d]+) field displays (.*)/ do |ship_to_field, value|
-  log.info "Expectation: Expect International Ship-To #{ship_to_field} field displays #{value}"
 
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
-
-  case ship_to_field.downcase
-    when "name"
-      actual = @international_ship_to.name.text
-      #log_expectation_eql "Name", value, actual
-      actual.should eql value
-    when "company"
-      actual = @international_ship_to.company.text
-      #log_expectation_eql "Company", value, actual
-      actual.should eql value
-    when "address 1"
-      actual = @international_ship_to.address_1.text
-      #log_expectation_eql "Address 1", value, actual
-      actual.should eql value
-      sleep 5
-    when "address 2"
-      actual = @international_ship_to.address_2.text
-      #log_expectation_eql "Address 2", value, actual
-      actual.should eql value
-    when "city"
-    when "province"
-      actual = @international_ship_to.province.text
-      #log_expectation_eql "Province", value, actual
-      actual.should eql value
-    when "postal code"
-      actual = @international_ship_to.postal_code.text
-      #log_expectation_eql "Postal Code", value, actual
-      actual.should eql value
-    when "phone"
-      actual = @international_ship_to.phone.text
-      #log_expectation_eql "Phone", value, actual
-      actual.should eql value
-    when "email"
-      actual = @international_ship_to.email.text
-      #log_expectation_eql "Email", value, actual
-      actual.should eql value
-    when "country"
-      actual = @international_ship_to.country.text
-      if actual[-1] == ' '
-        actual = actual.chomp(' ')
-      end
-      #log_expectation_eql "Country", value, actual
-      actual.should eql value
-    else
-      raise "Illegal Argument Exception.  #{ship_to_field} is not a valid Ship-To field"
+Then /^Set International Ship-To Name to \"(.*)\"$/ do |value|
+  log.info "Step: Set International Ship-To Name to #{value}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  if value.length == 0
+    @international_ship_to.name.send_keys :enter
+  else
+    @international_ship_to.name.set ((value.downcase == "random")? test_helper.random_name : value)
   end
 end
 
-Then /^Set International Ship-To ([\w \d]+) to \"(.*)\"$/ do |ship_to_field, value|
-  log.info "Step: Set International Ship-To #{ship_to_field} to #{value}"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
 
-  case ship_to_field.downcase
+Then /^Set International Ship-To Company to \"(.*)\"$/ do |value|
+  log.info "Step: Set International Ship-To Company to #{value}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  if value.length == 0
+    @international_ship_to.company.send_keys :enter
+  else
+    @international_ship_to.company.set ((value.downcase == "random")? test_helper.random_name : value)
+  end
+end
 
-    when "name"
-      if value.length == 0
-        @international_ship_to.name.send_keys :tab
-      else
-        @international_ship_to.name.set ((value.downcase == "random")? test_helper.random_name : value)
-      end
 
-    when "company"
-      if value.length == 0
-        @international_ship_to.company.send_keys :tab
-      else
-        @international_ship_to.company.set ((value.downcase == "random")? test_helper.random_name : value)
-      end
+Then /^Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
+  log.info "Step: Set International Ship-To Address 1 to #{value}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  if value.length == 0
+    @international_ship_to.address_1.send_keys :enter
+  else
+    @international_ship_to.address_1.set ((value.downcase == "random")? test_helper.random_name : value)
+  end
+end
 
-    when "address 1"
-      if value.length == 0
-        @international_ship_to.address_1.send_keys :tab
-      else
-        @international_ship_to.address_1.set ((value.downcase == "random")? test_helper.random_name : value)
-      end
 
-    when "address 2"
-      if value.length == 0
-        @international_ship_to.address_2.send_keys :tab
-      else
-        @international_ship_to.address_2.set ((value.downcase == "random")? test_helper.random_name : value)
-      end
+Then /^Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
+  log.info "Step: Set International Ship-To Address 2 to #{value}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  if value.length == 0
+    @international_ship_to.address_2.send_keys :enter
+  else
+    @international_ship_to.address_2.set ((value.downcase == "random")? test_helper.random_name : value)
+  end
+end
 
-    when "city"
-      if value.length == 0
-        @international_ship_to.city.send_keys :tab
-      else
-        @international_ship_to.city.set ((value.downcase == "random")? test_helper.random_name : value)
-      end
 
-    when "province"
-      if value.length == 0
-        @international_ship_to.province.send_keys :tab
-      else
-        @international_ship_to.province.set ((value.downcase == "random")? test_helper.random_name : value)
-      end
+Then /^Set International Ship-To City to \"(.*)\"$/ do |value|
+  log.info "Step: Set International Ship-To City to #{value}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  if value.length == 0
+    @international_ship_to.city.send_keys :enter
+  else
+    @international_ship_to.city.set ((value.downcase == "random")? test_helper.random_name : value)
+  end
+end
 
-    when "postal code"
-      if value.length == 0
-        @international_ship_to.postal_code.send_keys :tab
-      else
-        @international_ship_to.postal_code.set ((value.downcase == "random")? test_helper.random_name : value)
-      end
 
-    when "phone"
-      if value.length == 0
-        @international_ship_to.phone.send_keys :tab
-      else
-        @international_ship_to.phone.set ((value.downcase == "random")? test_helper.random_name : value)
-      end
+Then /^Set International Ship-To Province to \"(.*)\"$/ do |value|
+  log.info "Step: Set International Ship-To Province to #{value}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  if value.length == 0
+    @international_ship_to.province.send_keys :enter
+  else
+    @international_ship_to.province.set ((value.downcase == "random")? test_helper.random_name : value)
+  end
+end
 
-    when "email"
-      if value.length == 0
-        @international_ship_to.email.send_keys :tab
-      else
-        @international_ship_to.email.set ((value.downcase == "random")? test_helper.random_name : value)
-      end
+Then /^Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
+  log.info "Step: Set International Ship-To Postal Code to #{value}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  if value.length == 0
+    @international_ship_to.postal_code.send_keys :enter
+  else
+    @international_ship_to.postal_code.set ((value.downcase == "random")? test_helper.random_name : value)
+  end
+end
 
-    else
-      raise "Illegal Argument Exception.  #{ship_to_field} is not a valid Ship-To field"
+
+Then /^Set International Ship-To Phone to \"(.*)\"$/ do |value|
+  log.info "Step: Set International Ship-To Phone to #{value}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  if value.length == 0
+    @international_ship_to.phone.send_keys :enter
+  else
+    @international_ship_to.phone.set ((value.downcase == "random")? test_helper.random_name : value)
+  end
+end
+
+
+Then /^Set International Ship-To Email to \"(.*)\"$/ do |value|
+  log.info "Step: Set International Ship-To Email to #{value}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  if value.length == 0
+    @international_ship_to.email.send_keys :enter
+  else
+    @international_ship_to.email.set ((value.downcase == "random")? test_helper.random_name : value)
   end
 end
 
 Given /^Expect Order Details International Address fields are visible$/ do
   log.info "Expectation: Expect Order Details International Address fields are visible"
-  @international_ship_to = orders.order_details.ship_to.international if @international_ship_to.nil?
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true
   @international_ship_to.address_1.present?.should be true
@@ -265,42 +237,47 @@ end
 
 Then /^Expect Order Details Domestic Ship-To fields are hidden$/ do
   log.info "Expectation: Expect Order Details Domestic Ship-To fields are hidden"
-  @single_order_form = orders.order_details
+  @single_order_form = orders.details
   @single_order_form.ship_to.present?.should be false
   @single_order_form.email.present?.should be false
   @single_order_form.phone.present?.should be false
 end
 
-Then /^Expect Order Details Customs (.+) button is (.+)/ do |button, expectation|
-  log.info "Expectation: Expect Order Details Customs #{button} button is #{expectation}"
-  @single_order_form = orders.order_details
-  case button.downcase
-    when "restrictions"
-      case expectation.downcase
-        when "visible"
-          @single_order_form.customs.browser_restrictions_button.present?.should be true
-          @single_order_form.customs.restrictions.ok
-        when "hidden"
-          @single_order_form.customs.browser_restrictions_button.present?.should be false
-        else
-          raise "Illegal argument exception"
-      end
-    when "edit form"
-      case expectation.downcase
-        when "visible"
-          @single_order_form.customs.browser_edit_form_button.present?.should be true
-        when "hidden"
-          @single_order_form.customs.browser_edit_form_button.present?.should be false
-        when "enabled"
-          @single_order_form.customs.browser_edit_form_button.present?.should be true
-        when "disabled"
-          @single_order_form.customs.browser_edit_form_button.present?.should be false
-        else
-          raise "Illegal argument exception"
-      end
-    else
-      raise "Illegal argument exception"
-  end
+Then /^Expect Order Details Customs Restrictions button is visible/ do
+  log.info "Expectation: Expect Order Details Customs Restrictions button is visible"
+  @single_order_form = orders.details
+  @single_order_form.customs.browser_restrictions_button.present?.should be true
+  @single_order_form.customs.restrictions.ok
+end
+
+Then /^Expect Order Details Customs Restrictions button is hidden/ do
+  log.info "Expectation: Expect Order Details Customs Restrictions button is hidden"
+  @single_order_form = orders.details
+  @single_order_form.customs.browser_restrictions_button.present?.should be false
+end
+
+Then /^Expect Order Details Customs Edit Form button is visible/ do
+  log.info "Expectation: Expect Order Details Customs Edit Form button is visible"
+  @single_order_form = orders.details
+  @single_order_form.customs.browser_edit_form_button.present?.should be true
+end
+
+Then /^Expect Order Details Customs Edit Form button is hidden/ do
+  log.info "Expectation: Expect Order Details Customs Edit Form button is hidden"
+  @single_order_form = orders.details
+  @single_order_form.customs.browser_edit_form_button.present?.should be false
+end
+
+Then /^Expect Order Details Customs Edit Form button is enabled/ do
+  log.info "Expectation: Expect Order Details Customs Edit Form button is enabled"
+  @single_order_form = orders.details
+  @single_order_form.customs.browser_edit_form_button.present?.should be true
+end
+
+Then /^Expect Order Details Customs Edit Form button is disabled/ do
+  log.info "Expectation: Expect Order Details Customs Edit Form button is disabled"
+  @single_order_form = orders.details
+  @single_order_form.customs.browser_edit_form_button.present?.should be false
 end
 
 Given /^Open customs form$/ do
@@ -406,74 +383,64 @@ Given /^Set customs form I agree to (\w+)$/ do |agree_str|
   @customs_form.i_agree agree
 end
 
-Given /^Expect Customs Form More Info to be (.+)$/ do |value|
-  log.info "Expectation: Expect Customs Form More Info to be #{value}"
+Given /^Expect Customs Form More Info to be hidden$/ do
+  log.info "Expectation: Expect Customs Form More Info to be hidden"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-
-  case value.downcase
-    when "hidden"
-      @customs_form.more_info.present?.should be false
-    when "visible"
-      @customs_form.more_info.present?.should be true
-    else
-      raise "Illegal Parameter Exception. Customs Form More Info \"#{value}\" is not a valid test parameter"
-  end
+  @customs_form.more_info.present?.should be false
 end
 
-Given /^Expect Customs Form License# to be (.+)$/ do |value|
+Given /^Expect Customs Form More Info to be visible$/ do
+  log.info "Expectation: Expect Customs Form More Info to be visible"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form.more_info.present?.should be true
+end
+
+Given /^Expect Customs Form License# to be visible$/ do
+  log.info "Expectation: Expect Customs Form License# to be visible"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form.license.present?.should be true
+end
+
+Given /^Expect Customs Form License# to be hidden$/ do |value|
   log.info "Expectation: Expect Customs Form License# to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-
-  case value.downcase
-    when "hidden"
-      @customs_form.license.present?.should be false
-    when "visible"
-      @customs_form.license.present?.should be true
-    else
-      raise "Illegal Parameter Exception. Customs Form More Info \"#{value}\" is not a valid test parameter"
-  end
+  @customs_form.license.present?.should be false
 end
 
-Given /^Expect Customs Form Certificate# to be (.+)$/ do |value|
-  log.info "Expectation: Expect Customs Form Certificate# to be #{value}"
+Given /^Expect Customs Form Certificate# to be hidden$/ do
+  log.info "Expectation: Expect Customs Form Certificate# to be hidden"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-
-  case value.downcase
-    when "hidden"
-      @customs_form.certificate.present?.should be false
-    when "visible"
-      @customs_form.certificate.present?.should be true
-    else
-      raise "Illegal Parameter Exception. Customs Form More Info \"#{value}\" is not a valid test parameter"
-  end
+  @customs_form.certificate.present?.should be false
 end
 
-Given /^Expect Customs Form Invoice# to be (.+)$/ do |value|
-  log.info "Expectation: Expect Customs Form Invoice# to be #{value}"
+Given /^Expect Customs Form Certificate# to be visible$/ do
+  log.info "Expectation: Expect Customs Form Certificate# to be visible"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-
-  case value.downcase
-    when "hidden"
-      @customs_form.invoice.present?.should be false
-    when "visible"
-      @customs_form.invoice.present?.should be true
-    else
-      raise "Illegal Parameter Exception. Customs Form More Info \"#{value}\" is not a valid test parameter"
-  end
+  @customs_form.certificate.present?.should be true
 end
 
-Given /^Expect Customs Form ITN# to be (.+)$/ do |value|
+Given /^Expect Customs Form Invoice# to be hidden$/ do
+  log.info "Expectation: Expect Customs Form Invoice# to be hidden"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form.invoice.present?.should be false
+end
+
+Given /^Expect Customs Form Invoice# to be visible$/ do
+  log.info "Expectation: Expect Customs Form Invoice# to be visible"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form.invoice.present?.should be true
+end
+
+Given /^Expect Customs Form ITN# to be hidden$/ do
+  log.info "Expectation: Expect Customs Form ITN# to be hidden"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form.itn_number.present?.should be false
+end
+
+Given /^Expect Customs Form ITN# to be visible$/ do |value|
   log.info "Expectation: Expect Customs Form ITN# to be #{value}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-
-  case value.downcase
-    when "hidden"
-      @customs_form.itn_number.present?.should be false
-    when "visible"
-      @customs_form.itn_number.present?.should be true
-    else
-      raise "Illegal Parameter Exception. Customs Form More Info \"#{value}\" is not a valid test parameter"
-  end
+  @customs_form.itn_number.present?.should be true
 end
 
 Given /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |value|

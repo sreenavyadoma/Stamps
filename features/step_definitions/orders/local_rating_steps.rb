@@ -1,7 +1,7 @@
 Then /^Verify Local Rating$/ do |table|
   log.info "Step: Verify Local Rating..."
   #results_file = "local_rating_results.csv"
-  @single_order_form = orders.order_details
+  @single_order_form = orders.details
   parameter_array = table.hashes
   results = Hash.new
 
@@ -34,16 +34,16 @@ Then /^Verify Local Rating$/ do |table|
     expected_total_amount = element["total"]
 
     5.times { |counter|
-      orders.order_details.click_form
+      orders.details.click_form
       sleep 1
-      actual = orders.order_details.total
-      orders.order_details.click_form
+      actual = orders.details.total
+      orders.details.click_form
       #log_expectation_eql "#{counter}. Total Cost", expected_total_amount, actual
-      orders.order_details.click_form
+      orders.details.click_form
       sleep 1
       break if actual.eql? expected_total_amount
     }
-    actual = orders.order_details.total
+    actual = orders.details.total
     actual.should == expected_total_amount
 
     if actual != expected_total_amount

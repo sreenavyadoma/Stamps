@@ -20,9 +20,10 @@ module Orders
     end
 
     def text_area
-      input = Textbox.new @browser.textarea :name => 'FreeFormAddress'
-      input.data_qtip_field @browser.link(:css => "a[data-qtip*='Ambiguous']"), "data-qtip"
-      input
+      field = @browser.textarea :name => "FreeFormAddress"
+      error_field = @browser.a :css => "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
+      error_field_attribute = "data-errorqtip"
+      Textbox.new field, error_field, error_field_attribute
     end
 
     def less
@@ -46,10 +47,10 @@ module Orders
 
     def email
       expand
-      text_box = Textbox.new @browser.text_field :name => 'BuyerEmail'
-      data_qtip_field = (@browser.divs :css => "div[data-anchortarget^=textfield-][data-anchortarget$=-inputEl]")[0]
-      text_box.data_qtip_field data_qtip_field, "data-errorqtip"
-      text_box
+      field = @browser.text_field :name => 'BuyerEmail'
+      error_field = (@browser.divs :css => "div[data-errorqtip*=email]")[0]
+      error_field_attribute = "data-errorqtip"
+      Textbox.new field, error_field, error_field_attribute
     end
 
     def phone
@@ -65,24 +66,24 @@ module Orders
     end
 
     def name
-      field = Textbox.new @browser.text_field :name => "ShipName"
-      data_error_field = @browser.divs(:css => "div[data-errorqtip*='First Name']").first
-      field.data_qtip_field data_error_field, "data-errorqtip"
-      field
+      field = @browser.text_field :name => "ShipName"
+      error_field = @browser.div :css => "div[data-anchortarget^=autosuggest][data-anchortarget$=inputEl]"
+      error_field_attribute = "data-errorqtip"
+      Textbox.new field, error_field, error_field_attribute
     end
 
     def company
-      field = Textbox.new @browser.text_field :name => "ShipCompany"
-      data_error_field = @browser.divs(:css => "div[data-errorqtip*='First Name']").last
-      field.data_qtip_field data_error_field, "data-errorqtip"
-      field
+      field = @browser.text_field :name => "ShipCompany"
+      error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[2]
+      error_field_attribute = "data-errorqtip"
+      Textbox.new field, error_field, error_field_attribute
     end
 
     def address_1
-      field = Textbox.new @browser.text_field :name => "ShipStreet1"
-      data_error_field = @browser.div :css => "div[data-errorqtip*='ship to address']"
-      field.data_qtip_field data_error_field, "data-errorqtip"
-      field
+      field = @browser.text_field :name => "ShipStreet1"
+      error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[3]
+      error_field_attribute = "data-errorqtip"
+      Textbox.new field, error_field, error_field_attribute
     end
 
     def address_2
@@ -90,10 +91,17 @@ module Orders
     end
 
     def city
-      field = Textbox.new @browser.text_field :name => "ShipCity"
-      data_error_field = @browser.div :css => "div[data-errorqtip*='ship to city']"
-      field.data_qtip_field data_error_field, "data-errorqtip"
-      field
+      field = @browser.text_field :name => "ShipCity"
+      error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[5]
+      error_field_attribute = "data-errorqtip"
+      Textbox.new field, error_field, error_field_attribute
+    end
+
+    def phone
+      field = (@browser.text_fields :name => "ShipPhone").last
+      error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[8]
+      error_field_attribute = "data-errorqtip"
+      Textbox.new field, error_field, error_field_attribute
     end
 
     def province
@@ -106,13 +114,6 @@ module Orders
 
     def email
       Textbox.new (@browser.text_fields :name => "BuyerEmail").last
-    end
-
-    def phone
-      field = Textbox.new (@browser.text_fields :name => "ShipPhone").last
-      data_error_field = (@browser.divs :css => "div[data-errorqtip*='phone number']").last
-      field.data_qtip_field data_error_field, "data-errorqtip"
-      field
     end
   end
 
@@ -1534,7 +1535,7 @@ module Orders
 
   class ServiceDropDown < OrderForm
     def text_box
-      Textbox.new @browser.text_field :name => "Service"
+      Textbox.new (@browser.text_field :name => "Service"), (@browser.div :css => "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
     end
 
     def drop_down
@@ -1997,12 +1998,12 @@ module Orders
 
     def oz
       click_form
-      Textbox.new @browser.text_field :name => 'WeightOz'
+      Textbox.new (@browser.text_field :name => 'WeightOz'), "data-errorqtip"
     end
 
     def lbs
       click_form
-      Textbox.new @browser.text_field :name => 'WeightLbs'
+      Textbox.new (@browser.text_field :name => 'WeightLbs'), "data-errorqtip"
     end
 
     def insured_value
