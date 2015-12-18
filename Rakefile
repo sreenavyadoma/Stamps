@@ -192,3 +192,23 @@ Cucumber::Rake::Task.new(:fcm_selection_enabled) do |t|
   t.profile = 'fcm_selection_enabled'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:rob_dev) do |t|
+  t.profile = 'rob_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:eli_dev) do |t|
+  t.profile = 'eli_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:ray_dev) do |t|
+  t.profile = 'ray_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:eva_dev) do |t|
+  t.profile = 'eva_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
