@@ -204,7 +204,7 @@ module Stamps
     def random_string *args
       case args.length
         when 0
-          (0...rand(2..9)).map { (65 + rand(26)).chr }.join
+          (0...rand(2..5)).map { (65 + rand(26)).chr }.join
         when 2
           (0...rand(args{0}.to_i..args{1}.to_i)).map { (65 + rand(26)).chr }.join
         else
