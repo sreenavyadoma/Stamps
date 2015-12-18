@@ -545,13 +545,16 @@ end
 
 Then /^Expect Grid Tracking Number is populated$/ do
   log.info "Expect Grid Tracking Number is populated"
+  sleep 2
   actual = orders.grid.tracking_no.data @order_id
-  10.times {
+  20.times {
     log.info "Tracking number is #{actual}"
-    break if actual.length > 5
+    break if actual.length > 3
+    sleep 1
     actual = orders.grid.tracking_no.data @order_id
   }
-  actual.length.should be > 6
+  log.info "Test #{(actual.length > 3)?"Passed":"Failed"}"
+  actual.length.should be > 3
 end
 
 Then /^Expect Order Status to be \"([\w ]*)\"$/ do |expected_value|
