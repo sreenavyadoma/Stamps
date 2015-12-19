@@ -1,4 +1,5 @@
 # encoding: utf-8
+  @print_cn22_cp72_layouts
 Feature: Print CN22 and CP72 Layouts
 
   Background:

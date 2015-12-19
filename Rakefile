@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:print_cn22_cp72_layouts) do |t|
+  t.profile = 'print_cn22_cp72_layouts'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:domestic_rules_validation) do |t|
   t.profile = 'domestic_rules_validation'
   t.cucumber_opts = "-p cuke_reports"
