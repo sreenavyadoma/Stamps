@@ -81,6 +81,76 @@ module Orders
       open_window @print_window
     end
 
+    def print_invalid_address
+      open_window InvalidAddressError.new(@browser)
+    end
+
+    def print_expecting_error *args
+      error_window = OrderErrors.new(@browser)
+      open_window error_window
+      case args.length
+        when 0
+          error_window
+        when 1
+          error_window.error_message.include? error_message
+        else
+          raise "Illegal number of arguments."
+      end
+    end
+
+    def open_window window
+      return window if window.present?
+
+      browser_helper.click browser_print_button, "print"
+
+      usps_terms = USPSTermsModal.new @browser
+
+      if usps_terms.is_usps_terms_modal_present
+        usps_terms.check_dont_show_again_checkbox
+        usps_terms.click_i_agree_button
+      end
+
+      order_grid = OrdersGrid.new @browser
+      #checked_rows_cache = order_grid.checkbox.checked_rows
+
+      naws_plugin_error = NawsPluginError.new @browser
+      error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
+      install_plugin_error = ErrorInstallPlugin.new @browser
+
+      5.times do
+        if install_plugin_error.present?
+          install_plugin_error.close
+          return nil
+        end
+        begin
+          if error_connecting_to_plugin.present?
+            5.times{
+              error_connecting_to_plugin.ok
+              #order_grid.checkbox.check_all checked_rows_cache
+              break unless error_connecting_to_plugin.present?
+            }
+          end
+
+          if naws_plugin_error.present?
+            5.times{
+              naws_plugin_error.ok
+              #order_grid.checkbox.check_all checked_rows_cache
+              break unless naws_plugin_error.present?
+            }
+          end
+
+          return window if window.present?
+          #order_grid.checkbox.check_all checked_rows_cache
+          browser_helper.click browser_print_button, "print"
+        rescue
+          #ignore
+        end
+      end
+
+      raise "Unable to open Print Window.  There might be errors in printing of order is not ready for printing.  Check your test."
+    end
+
+
     def add
       order_details = OrderDetails.new @browser
       grid = Orders::OrdersGrid.new @browser
@@ -144,76 +214,6 @@ module Orders
 
     def usps_intl_terms
       USPSTermsModal.new @browser
-    end
-
-    def open_window window
-      return window if window.present?
-
-      browser_helper.click browser_print_button, "print"
-
-      usps_terms = USPSTermsModal.new @browser
-
-      if usps_terms.is_usps_terms_modal_present
-        usps_terms.check_dont_show_again_checkbox
-        usps_terms.click_i_agree_button
-      end
-
-      order_grid = OrdersGrid.new @browser
-      #checked_rows_cache = order_grid.checkbox.checked_rows
-
-      naws_plugin_error = NawsPluginError.new @browser
-      error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
-      install_plugin_error = ErrorInstallPlugin.new @browser
-
-      5.times {
-
-        if install_plugin_error.present?
-          #order_grid.checkbox.check_all checked_rows_cache
-          install_plugin_error.close
-          return nil
-        end
-
-        begin
-          if error_connecting_to_plugin.present?
-            5.times{
-              error_connecting_to_plugin.ok
-              #order_grid.checkbox.check_all checked_rows_cache
-              break unless error_connecting_to_plugin.present?
-            }
-          end
-
-          if naws_plugin_error.present?
-            5.times{
-              naws_plugin_error.ok
-              #order_grid.checkbox.check_all checked_rows_cache
-              break unless naws_plugin_error.present?
-            }
-          end
-
-          return window if window.present?
-          #order_grid.checkbox.check_all checked_rows_cache
-          browser_helper.click browser_print_button, "print"
-        rescue
-          #ignore
-        end
-      }
-    end
-
-    def print_expecting_error *args
-      error_window = OrderErrors.new(@browser)
-      open_window error_window
-      case args.length
-        when 0
-          error_window
-        when 1
-          error_window.error_message.include? error_message
-        else
-          raise "Illegal number of arguments."
-      end
-    end
-
-    def print_invalid_address
-      open_window InvalidAddressError.new(@browser)
     end
 
     def wait_until_present

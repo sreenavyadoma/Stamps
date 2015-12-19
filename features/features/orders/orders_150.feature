@@ -255,7 +255,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -276,7 +276,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
@@ -529,7 +529,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -550,7 +550,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
@@ -802,7 +802,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -823,7 +823,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
@@ -1076,7 +1076,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -1097,7 +1097,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
@@ -1350,7 +1350,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -1371,7 +1371,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
@@ -1624,7 +1624,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -1645,7 +1645,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
