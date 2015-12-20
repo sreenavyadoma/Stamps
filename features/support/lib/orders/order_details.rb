@@ -994,39 +994,39 @@ module Orders
   class ManageShippingAddresses < OrdersObject
     public
 
-    def name(row)
+    def name row
       sleep(1)
       grid_cell_text row, 1
     end
 
-    def company(row)
+    def company row
       sleep(1)
       grid_cell_text row, 2
     end
 
-    def city(row)
-      sleep(1)
+    def city row
+      sleep 1
       grid_cell_text row, 3
     end
 
-    def state(row)
-      sleep(1)
+    def state row
+      sleep 1
       grid_cell_text row, 4
     end
 
-    def locate_ship_from(name, company, city)
+    def locate_ship_from name, company, city
       rows = shipping_address_count
       1.upto rows do |row|
         browser_helper.click window_title
         grid_name = name row
-        orders_grid.company = company row
+        grid_company = company row
         grid_city = city row
         grid_state = state row
-        if (grid_name.casecmp(name)==0) && (orders_grid.company.casecmp(company)==0) && (grid_city.casecmp(city)==0)
-          log.info "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{orders_grid.company} :: City=#{grid_city} ::  State=#{grid_state} :: "
+        if (grid_name.casecmp(name)==0) && (grid_company.casecmp(company)==0) && (grid_city.casecmp(city)==0)
+          log.info "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
           return row
         else
-          log.info "No match - Row #{row} :: Name=#{grid_name} :: Company=#{orders_grid.company} :: City=#{grid_city} ::  State=#{grid_state} :: "
+          log.info "No match - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
         end
       end
       0
