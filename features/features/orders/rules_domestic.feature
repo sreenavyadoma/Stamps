@@ -44,7 +44,7 @@ Feature:  Service enabled/disabled tests
     Then Set Order Details Length to 0
     Then Set Order Details Width to 0
     Then Set Order Details Height to 0
-    Then Expect Order Details Dimensions Length data error tooltip to be "Dimensions are required"
-    Then Expect Order Details Dimensions Width data error tooltip to be "Dimensions are required"
-    Then Expect Order Details Dimensions Height data error tooltip to be "Dimensions are required"
+    #Then Expect Order Details Dimensions Length data error tooltip to be "Dimensions are required"
+    #Then Expect Order Details Dimensions Width data error tooltip to be "Dimensions are required"
+    #Then Expect Order Details Dimensions Height data error tooltip to be "Dimensions are required"
 
