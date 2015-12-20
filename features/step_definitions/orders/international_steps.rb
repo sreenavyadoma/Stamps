@@ -292,6 +292,7 @@ Then /^Set customs form Package Contents to \"(.+)\"$/ do |value|
 
   @customs_form.package_contents.select value
   contents = @customs_form.package_contents.text_box.text
+  log.info "Test #{(contents.include? value)?"Passed":"Failed"}"
   contents.should include value
 end
 
