@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile eva_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @domestic_rules_validation --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto30  PW=326tsetaqcdS!
+rob_dev: --tags @inline_service_rates_work --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto30  PW=326tsetaqcdS!
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
 eli_dev: --tags @purchasing --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!

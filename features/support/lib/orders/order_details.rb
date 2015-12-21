@@ -1573,6 +1573,7 @@ module Orders
           if cost_label.present?
             service_cost = test_helper.remove_dollar_sign cost_label.text
             log.info "Service Cost for \"#{selection}\" is #{service_cost}"
+            button.safe_click if cost_label.present?
             return service_cost
           end
         rescue
@@ -1720,7 +1721,7 @@ module Orders
       Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
     end
 
-    def select selection
+    def select service
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
 
       return @manage_shipping_adddress if @manage_shipping_adddress.present?
@@ -1729,17 +1730,17 @@ module Orders
       ship_from_dropdown = self.drop_down
       ship_from_textbox = self.text_box
 
-      if selection.downcase == "default"
+      if service.downcase == "default"
         ship_from_selection_field = ship_from_default_selection_field
-      elsif selection.downcase.include? "manage shipping"
+      elsif service.downcase.include? "manage shipping"
         ship_from_selection_field = @browser.div :text => "Manage Shipping Addresses..."
       else
-        ship_from_selection_field = @browser.div :text => "#{selection}"
+        ship_from_selection_field = @browser.div :text => "#{service}"
       end
 
       selection_label = Label.new ship_from_selection_field
 
-      if selection.downcase.include? "manage shipping"
+      if service.downcase.include? "manage shipping"
         10.times{
           begin
             ship_from_dropdown.safe_click unless selection_label.present?
@@ -1755,17 +1756,17 @@ module Orders
         ship_from_dropdown.safe_click unless selection_label.present?
         if selection_label.present?
           selection_label.scroll_into_view
-          selection_text = selection_label.text
+          service_text = selection_label.text
         end
         10.times{
           ship_from_dropdown.safe_click unless selection_label.present?
           selection_label.scroll_into_view
           selection_label.safe_click
-          break if ship_from_textbox.text.include? selection_text
+          return if ship_from_textbox.text.include? service_text
         }
       end
+      raise "Unable to select service #{service}"
     end
-
   end
 
   class OrderDetailsItem < OrderForm
@@ -1925,7 +1926,8 @@ module Orders
     end
 
     def service_cost
-      cost_label = Label.new @browser.label :css => "label[class*=selected_service_cost]"
+      cost_label = Label.new (@browser.label :text => "Service:").parent.labels[2]
+
       10.times{
         begin
           cost = cost_label.text
