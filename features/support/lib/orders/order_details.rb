@@ -1927,47 +1927,54 @@ module Orders
 
     def service_cost
       cost_label = Label.new (@browser.label :text => "Service:").parent.labels[2]
-
-      10.times{
+      10.times do
         begin
           cost = cost_label.text
         rescue
           #ignore
         end
-        break unless cost.include? "0.00"
-      }
+        break unless cost.include? "$"
+      end
       test_helper.remove_dollar_sign(cost_label.text)
     end
 
     def insurance_cost
-      cost_label = Label.new @browser.label :css => 'label[class*=insurance_cost]'
-      10.times{
+      cost_label = Label.new (@browser.label :text => "Insure For $:").parent.labels[2]
+      10.times do
         begin
           cost = cost_label.text
         rescue
           #ignore
         end
-        break unless cost.include? "0.00"
-      }
+        break unless cost.include? "$"
+      end
       test_helper.remove_dollar_sign(cost_label.text)
     end
 
     def tracking_cost
-      cost_label = Label.new @browser.label :css => "label[class*=selected_tracking_cost]"
-      10.times{
+      cost_label = Label.new (@browser.label :text => "Tracking:").parent.labels[2]
+      10.times do
         begin
           cost = cost_label.text
         rescue
           #ignore
         end
-        break unless cost.include? "0.00"
-      }
+        break unless cost.include? "$"
+      end
       test_helper.remove_dollar_sign(cost_label.text)
     end
 
     def total
-      total_label = Label.new @browser.labels(:css => "label[class*='total_cost']").first
-      test_helper.remove_dollar_sign total_label.text
+      cost_label = Label.new (@browser.labels :css => "label[class*=total_cost]")[0]
+      10.times do
+        begin
+          cost = cost_label.text
+        rescue
+          #ignore
+        end
+        break unless cost.include? "$"
+      end
+      test_helper.remove_dollar_sign cost_label.text
     end
 
     def present?

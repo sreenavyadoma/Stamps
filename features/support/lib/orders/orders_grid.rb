@@ -620,7 +620,8 @@ module Orders
     end
 
     def data order_id
-      grid_text_by_id :ship_cost, order_id
+      cost = grid_text_by_id :ship_cost, order_id
+      (cost.include? "$")?test_helper.remove_dollar_sign(cost):cost
     end
 
     def ship_cost_error order_id

@@ -319,27 +319,15 @@ end
 Then /^Expect Service Cost to be \$(.*)$/ do |expected|
   log.info "Expectation: Expect Service Cost to be $#{expected}"
   actual = orders.details.service_cost
-  begin
-    10.times { |counter|
-      #log_expectation_eql "#{counter}. Service Cost", expected, actual
-      break if actual.eql? expected
-      actual = orders.details.service_cost
-    }
-    actual.should eql expected
-  end unless expected.length == 0
+  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
+  actual.should eql expected
 end
 
 Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
   log.info "Expectation: Expect Tracking Cost to be #{expected}"
-  begin
-    actual = orders.details.tracking_cost
-    10.times { |counter|
-      #log_expectation_eql "#{counter}. Tracking Cost", expected, actual
-      break if actual.eql? expected
-      actual = orders.details.tracking_cost
-    }
-    actual.should eql expected
-  end unless expected.length == 0
+  actual = orders.details.tracking_cost
+  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
+  actual.should eql expected
 end
 
 Then /^Verify Order Details Form Total Amount$/ do
@@ -348,15 +336,9 @@ end
 
 Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
   log.info "Expectation: Expect Insurance Cost to be #{expected}"
-  begin
-    actual = orders.details.insurance_cost
-    10.times { |counter|
-      #log_expectation_eql "#{counter}. Insurance Cost", expected, actual
-      break if actual.eql? expected
-      actual = orders.details.insurance_cost
-    }
-    actual.should eql expected
-  end unless expected.length == 0
+  actual = orders.details.insurance_cost
+  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
+  actual.should eql expected
 end
 
 Then /^Expect Order Details Service to be \"(.*)\"$/ do |expected|
