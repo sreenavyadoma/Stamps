@@ -11,6 +11,8 @@ Feature: International Field Validation
     Then Set International Ship-To Name to "a"
     Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
 
+
+    Then Set Order Details Ship-From to default
     Then Set International Ship-To Name to "abc def"
     Then Expect Order Details International Name data error tooltip to be ""
     #Then Expect Order Details International Company data error tooltip to be ""
