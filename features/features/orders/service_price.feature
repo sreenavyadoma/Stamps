@@ -4,7 +4,7 @@ Feature: User Views Price Next to Service Dropdown
   Background:
     Given I am signed in to Orders
 
-  @inline_service_rates
+  @inline_service_rates @inline_service_rates_work
   Scenario:  User Views Price Next to Service Dropdown
     And I Add a new order
     Then Set Order Details Ship-From to default

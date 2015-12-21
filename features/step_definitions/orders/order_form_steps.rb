@@ -302,6 +302,7 @@ Then /^Expect Order Details Service Cost inline price for "([a-zA-Z -\/]+)" to b
     break if actual.to_f >= expected.to_f
     actual = orders.details.service.cost service
   }
+  log.info "Test #{(actual.to_f > expected.to_f)?"Passed":"Failed"}"
   actual.to_f.should be >= expected.to_f
 end
 
