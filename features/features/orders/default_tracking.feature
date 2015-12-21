@@ -10,7 +10,18 @@ Feature: Tracking
     Then Set Order Details Ship-From to default
 
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
-    And Hide Order Details Form Ship-To fields
+
+    Then Set Order Details Service to "Priority Mail Express Flat Rate Envelope"
+    Then Expect Order Details Service to be "Priority Mail Express Flat Rate Envelope"
+    Then Expect Order Details Tracking to be "USPS Tracking"
+
+    Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
+    Then Expect Order Details Service to be "Priority Mail Express Padded Flat Rate Envelope"
+    Then Expect Order Details Tracking to be "USPS Tracking"
+
+    Then Set Order Details Service to "Priority Mail Express Legal Flat Rate Envelope"
+    Then Expect Order Details Service to be "Priority Mail Express Legal Flat Rate Envelope"
+    Then Expect Order Details Tracking to be "USPS Tracking"
 
     Then Set Order Details Service to "Priority Mail Large/Thick Envelope"
     Then Expect Order Details Service to be "Priority Mail Large/Thick Envelope"
@@ -49,17 +60,4 @@ Feature: Tracking
     Then Set Order Details Service to "Priority Mail Express Package"
     Then Expect Order Details Service to be "Priority Mail Express Package"
     Then Expect Order Details Tracking to be "USPS Tracking"
-
-    Then Set Order Details Service to "Priority Mail Express Flat Rate Envelope"
-    Then Expect Order Details Service to be "Priority Mail Express Flat Rate Envelope"
-    Then Expect Order Details Tracking to be "USPS Tracking"
-
-    Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    Then Expect Order Details Service to be "Priority Mail Express Padded Flat Rate Envelope"
-    Then Expect Order Details Tracking to be "USPS Tracking"
-
-    Then Set Order Details Service to "Priority Mail Express Legal Flat Rate Envelope"
-    Then Expect Order Details Service to be "Priority Mail Express Legal Flat Rate Envelope"
-    Then Expect Order Details Tracking to be "USPS Tracking"
-
     And Sign out
