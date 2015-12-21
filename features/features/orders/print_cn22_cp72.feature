@@ -5,7 +5,7 @@ Feature: Print CN22 and CP72 Layouts
   Background:
     Given I am signed in to Orders
 
-  @cn22_8_5x11 @new_customs_forms
+  @cn22_8_5x11 @new_customs_forms_dev
   Scenario: User Prints 2 Intl CN22 labels on 8.5x11 - left side
     And I Add a new order
     Then Set Order Details Ship-From to default
@@ -37,7 +37,7 @@ Feature: Print CN22 and CP72 Layouts
     Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal left-side label
     And Expect Print Modal left-side label selected
-    And Expect Print Window requires 2 label sheets
+    And Expect Print Window requires 1 label sheets
     Then Print
     Then Sign out
 
