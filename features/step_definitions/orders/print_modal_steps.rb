@@ -1,4 +1,23 @@
 
+
+#Set Print Modal Printer to "factory"
+
+
+Then /^Set Print Modal Printer to \"(.*)\"$/ do |printer|
+  log.info "Set Print Modal Printer to \"#{printer}\""
+  orders.toolbar.print.printer.select printer
+end
+
+Then /^Set Print Modal Ship Date to today$/ do
+  step "Set Print Modal Ship Date to today plus #{1}"
+end
+
+Then /^Set Print Modal Ship Date to today plus (\d+)$/ do |day|
+  ship_date = test_helper.now_plus_mon_dd day
+  log.info "Set Print Modal Ship Date to #{ship_date}"
+  @ship_date = orders.toolbar.print.date_picker.today_plus day
+end
+
 When /^Select Print Modal left-side label$/ do
   log.info "Step: Select Print Modal - Left side label"
   selected = orders.toolbar.print.starting_label.left
@@ -21,16 +40,6 @@ Then /^Expect Print Modal left-side label selected$/ do
   log.info "Expectation: Expect Print Modal left-side label selected"
   selected = orders.toolbar.print.starting_label.left_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
-end
-
-Then /^Set Print Modal Ship Date to today$/ do
-  step "Set Print Modal Ship Date to today plus #{1}"
-end
-
-Then /^Set Print Modal Ship Date to today plus (\d+)$/ do |day|
-  ship_date = test_helper.now_plus_mon_dd day
-  log.info "Set Print Modal Ship Date to #{ship_date}"
-  @ship_date = orders.toolbar.print.date_picker.today_plus day
 end
 
 Then /^Expect Shipped Tab Date Printed to be today$/ do
