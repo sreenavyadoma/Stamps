@@ -117,7 +117,7 @@ module Orders
       error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
       install_plugin_error = ErrorInstallPlugin.new @browser
 
-      5.times do
+      20.times do
         if install_plugin_error.present?
           install_plugin_error.close
           return nil

@@ -189,7 +189,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Tracking to "Signature Required"
 
     # Media Mail
@@ -463,7 +463,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Tracking to "Signature Required"
 
     # Media Mail
@@ -736,7 +736,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Tracking to "Signature Required"
 
     # Media Mail
@@ -1010,7 +1010,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Tracking to "Signature Required"
 
     # Media Mail
@@ -1284,7 +1284,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Tracking to "Signature Required"
 
     # Media Mail
@@ -1558,7 +1558,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     * Set Order Details Tracking to "Signature Required"
 
     # Media Mail

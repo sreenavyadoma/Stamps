@@ -4,20 +4,27 @@ Feature: Print Sample
   Background:
     Given I am signed in to Orders
 
+  @print_sample_dev
+  Scenario:  B-01625 Print Sample - Priority Mail Express Padded Flat Rate Envelope
+    And I Add a new order
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
+    Then Set Order Details Ounces to 1
+    And Hide Order Details Form Ship-To fields
+    Then Print Sample
+    And Sign out
+
   @print_sample @print_sample_dev
   Scenario:  B-01625 Print Sample - Parcel Select Ground Large Package
-
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Parcel Select Ground Large Package"
-
     Then Set Order Details Ounces to 1
     And Open Print Modal
     Then Print Sample
-
     And Sign out
-
 
   @print_sample
   Scenario:  B-01625 Print Sample - Priority Mail Regional Rate Box A
@@ -28,22 +35,7 @@ Feature: Print Sample
     Then Set Order Details Ounces to 1
     And Open Print Modal
     Then Print Sample
-
     And Sign out
-
-
-  @print_sample
-  Scenario:  B-01625 Print Sample - Priority Mail Express Medium Flat Rate Box
-    And I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
-    Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
-    Then Set Order Details Ounces to 1
-    And Hide Order Details Form Ship-To fields
-    Then Print Sample
-
-    And Sign out
-
 
   @print_sample
   Scenario:  B-01625 Print Sample - Priority Mail Express Package
@@ -55,7 +47,6 @@ Feature: Print Sample
     And Hide Order Details Form Ship-To fields
     Then Print Sample
 
-
   @print_sample
   Scenario:  B-01625 Print Sample - Priority Mail Flat Rate Envelope
     And I Add a new order
@@ -65,5 +56,4 @@ Feature: Print Sample
     Then Set Order Details Ounces to 1
     And Hide Order Details Form Ship-To fields
     Then Print Sample
-
     And Sign out

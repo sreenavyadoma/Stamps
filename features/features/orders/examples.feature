@@ -20,7 +20,7 @@ Feature: Examples
         Then Set Order Details Service to "Priority Mail Express Package"
         Then Set Order Details Service to "Priority Mail Express Flat Rate Envelope"
         Then Set Order Details Service to "Priority Mail Express Legal Flat Rate Envelope"
-        Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+        Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
         Then Set Order Details Service to "Parcel Select Ground Package"
         Then Set Order Details Service to "Parcel Select Ground Large Package"
         Then Set Order Details Service to "Parcel Select Ground Oversized Package"
@@ -88,7 +88,7 @@ Feature: Examples
         Then Expect Service Cost to be $18.11
         Then Expect Order Details Service Cost inline price for "Priority Mail Express Legal Flat Rate Envelope" to be greater than $18.11
         Then Expect Service Cost to be $18.11
-        Then Expect Order Details Service Cost inline price for "Priority Mail Express Medium Flat Rate Box" to be greater than $44.95
+        Then Expect Order Details Service Cost inline price for "Priority Mail Express Padded Flat Rate Envelope" to be greater than $44.95
         Then Expect Service Cost to be $44.95
         Then Expect Order Details Service Cost inline price for "Parcel Select Ground Package" to be greater than $5.70
         Then Expect Service Cost to be $5.70
@@ -350,19 +350,19 @@ Feature: Examples
             | insured_value  | pounds  | ounces | length  | width | height  |
             | 0.00             | 0       | 1      | 0       | 0     | 0     |
 
-    Scenario: Priority Mail Express Medium Flat Rate Box
+    Scenario: Priority Mail Express Padded Flat Rate Envelope
         And I Add a new order
 
         Then Set Order Details Ship-To address to
             | name                                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-            | Priority Mail Express Medium Flat Rate Box  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
+            | Priority Mail Express Padded Flat Rate Envelope  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Set order details with
             | insured_value | pounds  | ounces | length  | width | height  |
             | 0             | 0       | 1      | 0       | 0     | 0       |
-        Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+        Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
         Then Expect Ship-To address to be;
             | name                                        | company                       | street_address      | city          | state | zip   | country       | phone       |  email            |
-            | Priority Mail Express Medium Flat Rate Box  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
+            | Priority Mail Express Padded Flat Rate Envelope  | B-01588 Domestic USPS service | 1350 Market Street  | San Francisco | CA    | 94102 | United States | 4157988344  | rtest@stamps.com  |
         Then Expect Order details to be;
             | insured_value  | pounds  | ounces | length  | width | height  |
             | 0.00           | 0       | 1      | 0       | 0     | 0     |

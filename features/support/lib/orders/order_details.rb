@@ -1554,7 +1554,7 @@ module Orders
           selection_label.safe_click
           click_form
           selected_service = box.text
-          log.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
+          log.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"success": "service not selected"}"
           break if selected_service.include? selection
         rescue
           #ignore

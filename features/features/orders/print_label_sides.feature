@@ -10,7 +10,7 @@ Feature: Print Label Position
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     And Hide Order Details Form Ship-To fields
-    Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set Order Details Ounces to 1
     And Open Print Modal
     And Select Print Modal left-side label
@@ -20,7 +20,7 @@ Feature: Print Label Position
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     And Hide Order Details Form Ship-To fields
-    Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set Order Details Ounces to 1
     And Open Print Modal
     Then Expect Print Modal left-side label selected
@@ -30,7 +30,7 @@ Feature: Print Label Position
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     And Hide Order Details Form Ship-To fields
-    Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set Order Details Ounces to 1
     And Open Print Modal
     And Select Print Modal right-side label

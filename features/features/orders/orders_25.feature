@@ -256,7 +256,7 @@ Feature: 25 orders
     And Set Order Details Length to 1
     And Set Order Details Width to 1
     And Set Order Details Height to 1
-    And Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    And Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     And Set Order Details Tracking to "Signature Required"
 
     # Media Mail
