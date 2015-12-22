@@ -356,7 +356,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to PME MFR Box, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
-    Then Set Order Details Service to "Priority Mail Express Medium Flat Rate Box"
+    Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set Order Details Ounces to 1
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""

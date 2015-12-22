@@ -23,7 +23,7 @@ Feature: Ship-To Addresses
     Then Expect Order Details Service Cost inline price for "Priority Mail Express Package" to be greater than $0.01
     Then Expect Order Details Service Cost inline price for "Priority Mail Express Flat Rate Envelope" to be greater than $0.01
     Then Expect Order Details Service Cost inline price for "Priority Mail Express Legal Flat Rate Envelope" to be greater than $0.01
-    Then Expect Order Details Service Cost inline price for "Priority Mail Express Medium Flat Rate Box" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Priority Mail Express Padded Flat Rate Envelope" to be greater than $0.01
     Then Expect Order Details Service Cost inline price for "Parcel Select Ground Package" to be greater than $0.01
     Then Expect Order Details Service Cost inline price for "Parcel Select Ground Large Package" to be greater than $0.01
     Then Expect Order Details Service Cost inline price for "Parcel Select Ground Oversized Package" to be greater than $0.01

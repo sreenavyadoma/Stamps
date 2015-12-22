@@ -452,7 +452,7 @@ module Orders
     end
 
     def print_sample_button
-      @browser.span :text => 'Print Sample'
+      Button.new @browser.span :text => 'Print Sample'
     end
 
     def print_button
