@@ -6,6 +6,7 @@ Then /^Verify Local Rating$/ do |table|
   results = Hash.new
 
   parameter_array.each_with_index { |element, index|
+    log.info "Test #{index}  ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lbs"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
     step "Set Order Details Ship-From to #{element["ship_from"]}"
     step "Set Order Details Ship-To address to #{element["ship_to"]}"
     step "Set Order Details Ounces to #{element["weight_oz"]}"
@@ -40,7 +41,7 @@ Then /^Verify Local Rating$/ do |table|
       break if actual.eql? expected_total_amount
     end
 
-    log.info "#{index}  ||  #{(results[index])?"Passed":"Failed"} ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lbs"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
+    log.info "Test #{index} #{(results[index])?"Passed":"Failed"}"
 
     actual = orders.details.total
     actual.should == expected_total_amount
