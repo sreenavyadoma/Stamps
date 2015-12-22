@@ -33,6 +33,7 @@ Then /^Expect Ship Cost equals Total amount$/ do
       #ignore
     end
   }
+  log.info "Test #{(ship_cost==total_amount)?"Passed":"Failed"}"
   ship_cost.should eql total_amount
 end
 

@@ -32,7 +32,7 @@ Feature:  New Country Code for Curacao and Country Bonaire, Sint Eustatius, and 
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     And Print
 
@@ -49,6 +49,6 @@ Feature:  New Country Code for Curacao and Country Bonaire, Sint Eustatius, and 
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     And Print

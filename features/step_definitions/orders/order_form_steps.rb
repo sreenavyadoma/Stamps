@@ -139,6 +139,9 @@ When /^Set Order Details Pounds to (\d*)$/ do |value|
   begin
     log.info "Step: Set Order Details Pounds to \"#{value}\""
     orders.details.lbs.set value
+    orders.details.click_form
+    orders.details.click_form
+    orders.details.click_form
   end unless value.length == 0
 end
 
@@ -146,6 +149,9 @@ When /^Set Order Details Ounces to (.*)$/ do |value|
   begin
     log.info "Step: Set Order Details Ounces to \"#{value}\""
     orders.details.oz.set value
+    orders.details.click_form
+    orders.details.click_form
+    orders.details.click_form
   end unless value.length == 0
 end
 
@@ -153,6 +159,9 @@ When /^Set Order Details Length to (\d*)$/ do |value|
   begin
     log.info "Step: Set Order Details Length to \"#{value}\""
     orders.details.length.set value
+    orders.details.click_form
+    orders.details.click_form
+    orders.details.click_form
   end unless value.length == 0
 end
 
@@ -160,6 +169,9 @@ When /^Set Order Details Width to (\d*)$/ do |value|
   begin
     log.info "Step: Set Order Details Width to \"#{value}\""
     orders.details.width.set value
+    orders.details.click_form
+    orders.details.click_form
+    orders.details.click_form
   end unless value.length == 0
 end
 
@@ -167,6 +179,9 @@ When /^Set Order Details Height to (\d*)$/ do |value|
   begin
     log.info "Step: Set Order Details Height to \"#{value}\""
     orders.details.height.set value
+    orders.details.click_form
+    orders.details.click_form
+    orders.details.click_form
   end unless value.length == 0
 end
 
@@ -195,7 +210,6 @@ Then /^Expect Order details Service \"(.*)\" to be enabled/ do |service|
   log.info "Test #{(selection_enabled)?"Passed":"Failed"}"
   selection_enabled.should be true
 end
-
 
 Then /^Expect Order Details Tracking tooltip for (.*) to be (.*)$/ do |lov, expectation|
   actual_tooltip = orders.details.tracking.tooltip value
@@ -268,14 +282,14 @@ end
 Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
   log.info "Expectation: Expect Pounds tooltip to display - The maximum value for this field is #{expected}"
   actual = orders.details.pounds_max_value
-  #log_expectation_eql "Maximum Pounds", expected, actual
+  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
 end
 
 Then /^Expect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
   log.info "Expectation: Expect Ounces tooltip to display - The maximum value for this field is #{expected}"
   actual = orders.details.ounces_max_value
-  #log_expectation_eql "Maximum Pounds", expected, actual
+  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
 end
 
@@ -287,6 +301,7 @@ Then /^Expect Order Details Service Cost inline price for "([a-zA-Z -\/]+)" to b
     break if actual.to_f >= expected.to_f
     actual = orders.details.service.cost service
   }
+  log.info "Test #{(actual.to_f > expected.to_f)?"Passed":"Failed"}"
   actual.to_f.should be >= expected.to_f
 end
 
@@ -303,27 +318,15 @@ end
 Then /^Expect Service Cost to be \$(.*)$/ do |expected|
   log.info "Expectation: Expect Service Cost to be $#{expected}"
   actual = orders.details.service_cost
-  begin
-    10.times { |counter|
-      #log_expectation_eql "#{counter}. Service Cost", expected, actual
-      break if actual.eql? expected
-      actual = orders.details.service_cost
-    }
-    actual.should eql expected
-  end unless expected.length == 0
+  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
+  actual.should eql expected
 end
 
 Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
   log.info "Expectation: Expect Tracking Cost to be #{expected}"
-  begin
-    actual = orders.details.tracking_cost
-    10.times { |counter|
-      #log_expectation_eql "#{counter}. Tracking Cost", expected, actual
-      break if actual.eql? expected
-      actual = orders.details.tracking_cost
-    }
-    actual.should eql expected
-  end unless expected.length == 0
+  actual = orders.details.tracking_cost
+  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
+  actual.should eql expected
 end
 
 Then /^Verify Order Details Form Total Amount$/ do
@@ -332,26 +335,20 @@ end
 
 Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
   log.info "Expectation: Expect Insurance Cost to be #{expected}"
-  begin
-    actual = orders.details.insurance_cost
-    10.times { |counter|
-      #log_expectation_eql "#{counter}. Insurance Cost", expected, actual
-      break if actual.eql? expected
-      actual = orders.details.insurance_cost
-    }
-    actual.should eql expected
-  end unless expected.length == 0
+  actual = orders.details.insurance_cost
+  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
+  actual.should eql expected
 end
 
 Then /^Expect Order Details Service to be \"(.*)\"$/ do |expected|
   log.info "Expectation: Expect Order Details Service to be #{expected}"
   begin
-    actual = orders.details.service.text_box.text
-    10.times { |counter|
-      included = actual.include? expected
-      break if included
+    10.times do
       actual = orders.details.service.text_box.text
-    }
+      break if actual.include? expected
+    end
+    actual = orders.details.service.text_box.text
+    log.info "Test #{(actual.include? expected)?"Passed":"Failed"}"
     expect(actual.include? expected).to be true
   end unless expected.length == 0
 end
@@ -359,12 +356,12 @@ end
 Then /^Expect Order Details Tracking to be \"([\w\s]*)\"$/ do |expected|
   log.info "Expectation: Expect Order Details Tracking to be #{expected}"
   begin
-    actual = orders.details.tracking.text_box.text
-    10.times { |counter|
-      #log_expectation_eql "#{counter}. Tracking Selected", expected, actual
-      break if actual.eql? expected
+    10.times do
       actual = orders.details.tracking.text_box.text
-    }
+      break if actual.include? expected
+    end
+    actual = orders.details.tracking.text_box.text
+    log.info "Test #{(actual == expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -372,16 +369,14 @@ end
 Then /^Expect Order Details Total to be \$(.*)$/ do |expected|
   log.info "Expectation: Expect Order Details Total to be $#{expected}"
   begin
-    10.times { |counter|
+    10.times do
       orders.details.click_form
       sleep 1
       actual = orders.details.total
       orders.details.click_form
-      #log_expectation_eql "#{counter}. Total Cost", expected, actual
-      orders.details.click_form
       sleep 1
       break if actual.eql? expected
-    }
+    end
     actual = orders.details.total
     actual.should eql expected
   end unless expected.length == 0
@@ -389,7 +384,7 @@ end
 
 Then /^Expect (\d+) orders selected$/ do |expected|
   log.info "Expectation: Expect #{expected} orders selected"
-  orders.multi_order.order_count.should eql expected
+  orders.multi_orders.order_count.should eql expected
 end
 
 

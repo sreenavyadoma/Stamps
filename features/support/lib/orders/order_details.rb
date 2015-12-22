@@ -994,39 +994,39 @@ module Orders
   class ManageShippingAddresses < OrdersObject
     public
 
-    def name(row)
+    def name row
       sleep(1)
       grid_cell_text row, 1
     end
 
-    def company(row)
+    def company row
       sleep(1)
       grid_cell_text row, 2
     end
 
-    def city(row)
-      sleep(1)
+    def city row
+      sleep 1
       grid_cell_text row, 3
     end
 
-    def state(row)
-      sleep(1)
+    def state row
+      sleep 1
       grid_cell_text row, 4
     end
 
-    def locate_ship_from(name, company, city)
+    def locate_ship_from name, company, city
       rows = shipping_address_count
       1.upto rows do |row|
         browser_helper.click window_title
         grid_name = name row
-        orders_grid.company = company row
+        grid_company = company row
         grid_city = city row
         grid_state = state row
-        if (grid_name.casecmp(name)==0) && (orders_grid.company.casecmp(company)==0) && (grid_city.casecmp(city)==0)
-          log.info "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{orders_grid.company} :: City=#{grid_city} ::  State=#{grid_state} :: "
+        if (grid_name.casecmp(name)==0) && (grid_company.casecmp(company)==0) && (grid_city.casecmp(city)==0)
+          log.info "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
           return row
         else
-          log.info "No match - Row #{row} :: Name=#{grid_name} :: Company=#{orders_grid.company} :: City=#{grid_city} ::  State=#{grid_state} :: "
+          log.info "No match - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
         end
       end
       0
@@ -1547,7 +1547,7 @@ module Orders
       box = text_box
       button = drop_down
       selection_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
-      10.times {
+      20.times {
         begin
           button.safe_click unless selection_label.present?
           selection_label.scroll_into_view
@@ -1573,6 +1573,7 @@ module Orders
           if cost_label.present?
             service_cost = test_helper.remove_dollar_sign cost_label.text
             log.info "Service Cost for \"#{selection}\" is #{service_cost}"
+            button.safe_click if cost_label.present?
             return service_cost
           end
         rescue
@@ -1720,7 +1721,7 @@ module Orders
       Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
     end
 
-    def select selection
+    def select service
       @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
 
       return @manage_shipping_adddress if @manage_shipping_adddress.present?
@@ -1729,17 +1730,17 @@ module Orders
       ship_from_dropdown = self.drop_down
       ship_from_textbox = self.text_box
 
-      if selection.downcase == "default"
+      if service.downcase == "default"
         ship_from_selection_field = ship_from_default_selection_field
-      elsif selection.downcase.include? "manage shipping"
+      elsif service.downcase.include? "manage shipping"
         ship_from_selection_field = @browser.div :text => "Manage Shipping Addresses..."
       else
-        ship_from_selection_field = @browser.div :text => "#{selection}"
+        ship_from_selection_field = @browser.div :text => "#{service}"
       end
 
       selection_label = Label.new ship_from_selection_field
 
-      if selection.downcase.include? "manage shipping"
+      if service.downcase.include? "manage shipping"
         10.times{
           begin
             ship_from_dropdown.safe_click unless selection_label.present?
@@ -1755,17 +1756,17 @@ module Orders
         ship_from_dropdown.safe_click unless selection_label.present?
         if selection_label.present?
           selection_label.scroll_into_view
-          selection_text = selection_label.text
+          service_text = selection_label.text
         end
         10.times{
           ship_from_dropdown.safe_click unless selection_label.present?
           selection_label.scroll_into_view
           selection_label.safe_click
-          break if ship_from_textbox.text.include? selection_text
+          return if ship_from_textbox.text.include? service_text
         }
       end
+      raise "Unable to select service #{service}"
     end
-
   end
 
   class OrderDetailsItem < OrderForm
@@ -1925,47 +1926,55 @@ module Orders
     end
 
     def service_cost
-      cost_label = Label.new @browser.label :css => "label[class*=selected_service_cost]"
-      10.times{
+      cost_label = Label.new (@browser.label :text => "Service:").parent.labels[2]
+      10.times do
         begin
           cost = cost_label.text
         rescue
           #ignore
         end
-        break unless cost.include? "0.00"
-      }
+        break unless cost.include? "$"
+      end
       test_helper.remove_dollar_sign(cost_label.text)
     end
 
     def insurance_cost
-      cost_label = Label.new @browser.label :css => 'label[class*=insurance_cost]'
-      10.times{
+      cost_label = Label.new (@browser.label :text => "Insure For $:").parent.labels[2]
+      10.times do
         begin
           cost = cost_label.text
         rescue
           #ignore
         end
-        break unless cost.include? "0.00"
-      }
+        break unless cost.include? "$"
+      end
       test_helper.remove_dollar_sign(cost_label.text)
     end
 
     def tracking_cost
-      cost_label = Label.new @browser.label :css => "label[class*=selected_tracking_cost]"
-      10.times{
+      cost_label = Label.new (@browser.label :text => "Tracking:").parent.labels[2]
+      10.times do
         begin
           cost = cost_label.text
         rescue
           #ignore
         end
-        break unless cost.include? "0.00"
-      }
+        break unless cost.include? "$"
+      end
       test_helper.remove_dollar_sign(cost_label.text)
     end
 
     def total
-      total_label = Label.new @browser.labels(:css => "label[class*='total_cost']").first
-      test_helper.remove_dollar_sign total_label.text
+      cost_label = Label.new (@browser.labels :css => "label[class*=total_cost]")[0]
+      10.times do
+        begin
+          cost = cost_label.text
+        rescue
+          #ignore
+        end
+        break unless cost.include? "$"
+      end
+      test_helper.remove_dollar_sign cost_label.text
     end
 
     def present?

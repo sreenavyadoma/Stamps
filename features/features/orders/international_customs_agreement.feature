@@ -27,6 +27,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Set customs form Package Contents to "Merchandise"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
 
     Then Close customs form
 
@@ -55,6 +56,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Set customs form Package Contents to "Merchandise"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
 
     Then Close customs form
 
@@ -112,7 +114,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Set customs form Package Contents to "Merchandise"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -139,7 +141,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
 
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"

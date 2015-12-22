@@ -85,7 +85,7 @@ Feature: 10 orders
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Pounds to 10
-    Then Set Order Details Service to "Parcel Select Large Package"
+    Then Set Order Details Service to "Parcel Select Ground Large Package"
     Then Set Order Details Insured Value to $235.00
     Then Set Order Details Tracking to "USPS Tracking"
 
@@ -174,7 +174,7 @@ Feature: 10 orders
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Pounds to 10
-    Then Set Order Details Service to "Parcel Select Large Package"
+    Then Set Order Details Service to "Parcel Select Ground Large Package"
     Then Set Order Details Insured Value to $235.00
     Then Set Order Details Tracking to "USPS Tracking"
 
@@ -259,7 +259,7 @@ Feature: 10 orders
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Pounds to 10
-    Then Set Order Details Service to "Parcel Select Large Package"
+    Then Set Order Details Service to "Parcel Select Ground Large Package"
     Then Set Order Details Insured Value to $235.00
     Then Set Order Details Tracking to "USPS Tracking"
 

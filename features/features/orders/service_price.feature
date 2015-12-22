@@ -4,7 +4,7 @@ Feature: User Views Price Next to Service Dropdown
   Background:
     Given I am signed in to Orders
 
-  @inline_service_rates
+  @inline_service_rates @inline_service_rates_work
   Scenario:  User Views Price Next to Service Dropdown
     And I Add a new order
     Then Set Order Details Ship-From to default
@@ -27,9 +27,9 @@ Feature: User Views Price Next to Service Dropdown
     Then Expect Order Details Service Cost inline price for "Priority Mail Express Flat Rate Envelope" to be greater than $0.01
     Then Expect Order Details Service Cost inline price for "Priority Mail Express Legal Flat Rate Envelope" to be greater than $0.01
     Then Expect Order Details Service Cost inline price for "Priority Mail Express Medium Flat Rate Box" to be greater than $0.01
-    Then Expect Order Details Service Cost inline price for "Parcel Select Package" to be greater than $0.01
-    Then Expect Order Details Service Cost inline price for "Parcel Select Large Package" to be greater than $0.01
-    Then Expect Order Details Service Cost inline price for "Parcel Select Oversized Package" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Parcel Select Ground Package" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Parcel Select Ground Large Package" to be greater than $0.01
+    Then Expect Order Details Service Cost inline price for "Parcel Select Ground Oversized Package" to be greater than $0.01
     Then Expect Order Details Service Cost inline price for "Media Mail Package" to be greater than $0.01
     Then Expect Grid Pounds to be 0
     Then Expect Grid Ounces to be 0

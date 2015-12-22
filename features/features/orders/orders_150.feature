@@ -212,7 +212,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Package"
+    * Set Order Details Service to "Parcel Select Ground Package"
     * Set Order Details Insured Value to $345.00
     * Set Order Details Tracking to "USPS Tracking"
 
@@ -222,7 +222,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Large Package"
+    * Set Order Details Service to "Parcel Select Ground Large Package"
     * Set Order Details Insured Value to $456.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -232,7 +232,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Oversized Package"
+    * Set Order Details Service to "Parcel Select Ground Oversized Package"
     * Set Order Details Insured Value to $567.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -255,7 +255,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -276,7 +276,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
@@ -486,7 +486,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Package"
+    * Set Order Details Service to "Parcel Select Ground Package"
     * Set Order Details Insured Value to $345.00
     * Set Order Details Tracking to "USPS Tracking"
 
@@ -496,7 +496,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Large Package"
+    * Set Order Details Service to "Parcel Select Ground Large Package"
     * Set Order Details Insured Value to $456.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -506,7 +506,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Oversized Package"
+    * Set Order Details Service to "Parcel Select Ground Oversized Package"
     * Set Order Details Insured Value to $567.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -529,7 +529,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -550,7 +550,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
@@ -759,7 +759,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Package"
+    * Set Order Details Service to "Parcel Select Ground Package"
     * Set Order Details Insured Value to $345.00
     * Set Order Details Tracking to "USPS Tracking"
 
@@ -769,7 +769,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Large Package"
+    * Set Order Details Service to "Parcel Select Ground Large Package"
     * Set Order Details Insured Value to $456.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -779,7 +779,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Oversized Package"
+    * Set Order Details Service to "Parcel Select Ground Oversized Package"
     * Set Order Details Insured Value to $567.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -802,7 +802,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -823,7 +823,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
@@ -1033,7 +1033,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Package"
+    * Set Order Details Service to "Parcel Select Ground Package"
     * Set Order Details Insured Value to $345.00
     * Set Order Details Tracking to "USPS Tracking"
 
@@ -1043,7 +1043,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Large Package"
+    * Set Order Details Service to "Parcel Select Ground Large Package"
     * Set Order Details Insured Value to $456.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -1053,7 +1053,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Oversized Package"
+    * Set Order Details Service to "Parcel Select Ground Oversized Package"
     * Set Order Details Insured Value to $567.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -1076,7 +1076,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -1097,7 +1097,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
@@ -1307,7 +1307,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Package"
+    * Set Order Details Service to "Parcel Select Ground Package"
     * Set Order Details Insured Value to $345.00
     * Set Order Details Tracking to "USPS Tracking"
 
@@ -1317,7 +1317,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Large Package"
+    * Set Order Details Service to "Parcel Select Ground Large Package"
     * Set Order Details Insured Value to $456.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -1327,7 +1327,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Oversized Package"
+    * Set Order Details Service to "Parcel Select Ground Oversized Package"
     * Set Order Details Insured Value to $567.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -1350,7 +1350,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -1371,7 +1371,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
@@ -1581,7 +1581,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Package"
+    * Set Order Details Service to "Parcel Select Ground Package"
     * Set Order Details Insured Value to $345.00
     * Set Order Details Tracking to "USPS Tracking"
 
@@ -1591,7 +1591,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Large Package"
+    * Set Order Details Service to "Parcel Select Ground Large Package"
     * Set Order Details Insured Value to $456.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -1601,7 +1601,7 @@ Feature: 150 orders
     * Set Order Details Ship-To address to random ship to zone 1 through 4
 
     * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Oversized Package"
+    * Set Order Details Service to "Parcel Select Ground Oversized Package"
     * Set Order Details Insured Value to $567.00
     * Set Order Details Tracking to "Signature Required"
 
@@ -1624,7 +1624,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -1645,7 +1645,7 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Set customs form I agree to true
+    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 

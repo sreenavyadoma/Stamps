@@ -2,6 +2,21 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:tracking_defaults) do |t|
+  t.profile = 'tracking_defaults'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_cn22_cp72_layouts) do |t|
+  t.profile = 'print_cn22_cp72_layouts'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:domestic_rules_validation) do |t|
+  t.profile = 'domestic_rules_validation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:bvt) do |t|
   t.profile = 'bvt'
   t.cucumber_opts = "-p cuke_reports"
@@ -190,5 +205,25 @@ end
 
 Cucumber::Rake::Task.new(:fcm_selection_enabled) do |t|
   t.profile = 'fcm_selection_enabled'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_dev) do |t|
+  t.profile = 'rob_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:eli_dev) do |t|
+  t.profile = 'eli_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:ray_dev) do |t|
+  t.profile = 'ray_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:eva_dev) do |t|
+  t.profile = 'eva_dev'
   t.cucumber_opts = "-p cuke_reports"
 end

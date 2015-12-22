@@ -209,7 +209,7 @@ Then /^Expect Order Details International Name data error tooltip to be \"(.*)\"
     @international_ship_to.click_form
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click
-    @international_ship_to.click_form
+    #@international_ship_to.click_form
     @international_ship_to.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
