@@ -4,7 +4,7 @@ Feature: Tracking
   Background:
     Given I am signed in to Orders
 
-  @tracking
+  @tracking_defaults
   Scenario:  Print - First-Class Mail Envelope
     And I Add a new order
     Then Set Order Details Ship-From to default

@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:tracking_defaults) do |t|
+  t.profile = 'tracking_defaults'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_cn22_cp72_layouts) do |t|
   t.profile = 'print_cn22_cp72_layouts'
   t.cucumber_opts = "-p cuke_reports"

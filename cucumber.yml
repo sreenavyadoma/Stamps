@@ -17,7 +17,7 @@ bvt_gc: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=gc USR=auto02 PW=326t
 bvt_ff: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto30 PW=326tsetaqcdS!
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
-
+tracking_defaults: --tags @tracking_defaults --guess VERBOSE=true
 print_cn22_cp72_layouts: --tags @print_cn22_cp72_layouts --guess VERBOSE=true
 domestic_rules_validation: --tags @domestic_rules_validation --guess VERBOSE=true
 parcel_select: --tags @parcel_select --guess VERBOSE=true
