@@ -281,7 +281,7 @@ Feature: 25 orders
     And Set Order Details Length to 1
     And Set Order Details Width to 1
     And Set Order Details Height to 1
-    And Set Order Details Service to "Parcel Select Package"
+    And Set Order Details Service to "Parcel Select Ground Package"
     And Set Order Details Insured Value to $345.00
     And Set Order Details Tracking to "USPS Tracking"
 
@@ -293,7 +293,7 @@ Feature: 25 orders
     And Set Order Details Length to 1
     And Set Order Details Width to 1
     And Set Order Details Height to 1
-    And Set Order Details Service to "Parcel Select Large Package"
+    And Set Order Details Service to "Parcel Select Ground Large Package"
     And Set Order Details Insured Value to $456.00
     And Set Order Details Tracking to "Signature Required"
 
@@ -305,7 +305,7 @@ Feature: 25 orders
     And Set Order Details Length to 1
     And Set Order Details Width to 1
     And Set Order Details Height to 1
-    And Set Order Details Service to "Parcel Select Oversized Package"
+    And Set Order Details Service to "Parcel Select Ground Oversized Package"
     And Set Order Details Insured Value to $567.00
     And Set Order Details Tracking to "Signature Required"
     And Sign out

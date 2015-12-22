@@ -1547,7 +1547,7 @@ module Orders
       box = text_box
       button = drop_down
       selection_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
-      10.times {
+      20.times {
         begin
           button.safe_click unless selection_label.present?
           selection_label.scroll_into_view

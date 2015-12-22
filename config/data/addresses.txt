@@ -36,7 +36,7 @@ First-Class Mail Large Envelope/Flat (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
 Media Mail Package/Flat/Thick Envelope (6 Days)
-Parcel Select Package/Flat/Thick Envelope (6 Days)
+Parcel Select Ground Package/Flat/Thick Envelope (6 Days)
  
 ------------------------------------------------------------------------------
  
@@ -52,7 +52,7 @@ First-Class Mail Large Envelope/Flat (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
 Media Mail Package/Flat/Thick Envelope (6 Days)
-Parcel Select Package/Flat/Thick Envelope (6 Days)
+Parcel Select Ground Package/Flat/Thick Envelope (6 Days)
  
 ------------------------------------------------------------------------------
  
@@ -68,7 +68,7 @@ First-Class Mail Large Envelope/Flat (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
 Media Mail Package/Flat/Thick Envelope (6 Days)
-Parcel Select Package/Flat/Thick Envelope (6 Days)
+Parcel Select Ground Package/Flat/Thick Envelope (6 Days)
  
 ------------------------------------------------------------------------------
  
@@ -84,7 +84,7 @@ First-Class Mail Large Envelope/Flat (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
 Media Mail Package/Flat/Thick Envelope (6 Days)
-Parcel Select Package/Flat/Thick Envelope (6 Days)
+Parcel Select Ground Package/Flat/Thick Envelope (6 Days)
  
 ------------------------------------------------------------------------------
  

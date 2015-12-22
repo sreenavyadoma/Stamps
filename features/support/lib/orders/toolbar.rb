@@ -122,6 +122,7 @@ module Orders
           install_plugin_error.close
           return nil
         end
+
         begin
           if error_connecting_to_plugin.present?
             5.times{
@@ -147,6 +148,7 @@ module Orders
         end
       end
 
+      return window if window.present?
       raise "Unable to open Print Window.  There might be errors in printing of order is not ready for printing.  Check your test."
     end
 

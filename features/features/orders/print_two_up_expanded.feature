@@ -373,7 +373,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to PS Package, 5.5x8.5 Right Side 1, 610 W Tefft St, Nipomo, CA 93444-9187
-    Then Set Order Details Service to "Parcel Select Package"
+    Then Set Order Details Service to "Parcel Select Ground Package"
     Then Set Order Details Ounces to 1
     Then Open Print Modal
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
@@ -389,12 +389,12 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to PS Large Package, 5.5x8.5, 530 K Street Unit 504, San Diego CA 92101-7060
-    Then Set Order Details Service to "Parcel Select Large Package"
+    Then Set Order Details Service to "Parcel Select Ground Large Package"
     Then Set Order Details Ounces to 1
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to PS Large Package, 5.5x8.5, 7065 N Ingram Ave, Fresno CA 93650-1083
-    Then Set Order Details Service to "Parcel Select Oversized Package"
+    Then Set Order Details Service to "Parcel Select Ground Oversized Package"
     Then Set Order Details Ounces to 1
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
