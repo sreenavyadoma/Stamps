@@ -14,9 +14,9 @@ Then /^Verify Local Rating$/ do |table|
     step "Set Order Details Height to #{element["height"]}"
     step "Set Order Details Width to #{element["width"]}"
     step "Set Order Details Service to \"#{element["service"]}\""
-    step "Set Order Details Tracking to #{element["tracking"]}"
+    step "Set Order Details Tracking to \"#{element["tracking"]}\""
 
-    10.times { |counter|
+    10.times do
       @single_order_form.click_form
       total = @single_order_form.total
       if total.eql? element["total"]
@@ -25,24 +25,23 @@ Then /^Verify Local Rating$/ do |table|
       else
         results[index] = total.eql? element["total"]
       end
-    }
+    end
     total = @single_order_form.total
-
-    log.info "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lbs"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |"
-
 
     expected_total_amount = element["total"]
 
-    5.times { |counter|
+    5.times do
       orders.details.click_form
       sleep 1
       actual = orders.details.total
       orders.details.click_form
-      #log_expectation_eql "#{counter}. Total Cost", expected_total_amount, actual
       orders.details.click_form
       sleep 1
       break if actual.eql? expected_total_amount
-    }
+    end
+
+    log.info "#{index}  ||  #{(results[index])?"Passed":"Failed"} ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lbs"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
+
     actual = orders.details.total
     actual.should == expected_total_amount
 

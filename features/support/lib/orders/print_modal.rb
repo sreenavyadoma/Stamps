@@ -233,15 +233,25 @@ module Orders
       Textbox.new @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
     end
 
-    def select selection
+    def select printer
       dd = self.drop_down
       input = self.text_box
-      selection_label = Label.new @browser.li :text => selection
+
+      case printer.downcase
+        when /fac/
+          selection_label = Label.new @browser.li :text => /fac/
+        when /kyocera/
+          selection_label = Label.new @browser.li :text => /Kyocera/
+        when /kyocera/
+          selection_label = Label.new @browser.li :text => /EPSON/
+        else
+          raise "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
+      end
 
       5.times{
         dd.safe_click unless selection_label.present?
         selection_label.safe_click
-        return if input.text.include? selection
+        return if input.text.include? printer
       }
     end
   end
