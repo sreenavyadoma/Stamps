@@ -6,6 +6,7 @@ Then /^Verify Local Rating$/ do |table|
   results = Hash.new
 
   parameter_array.each_with_index { |element, index|
+    log.info "  --------------------------------------------------------------------------- "
     log.info "Test #{index}  ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lbs"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
     step "Set Order Details Ship-From to #{element["ship_from"]}"
     step "Set Order Details Ship-To address to #{element["ship_to"]}"
@@ -42,6 +43,7 @@ Then /^Verify Local Rating$/ do |table|
     end
 
     log.info "Test #{index} #{(results[index])?"Passed":"Failed"}"
+    log.info "  --------------------------------------------------------------------------- "
 
     actual = orders.details.total
     actual.should == expected_total_amount
