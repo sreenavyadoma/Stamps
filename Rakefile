@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:print_labels) do |t|
+  t.profile = 'print_labels'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:local_rating_smoke_test) do |t|
   t.profile = 'local_rating_smoke_test'
   t.cucumber_opts = "-p cuke_reports"
