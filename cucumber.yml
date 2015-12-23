@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile rob_dev
+default: --profile cuke_reports --profile print_labels
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
 rob_dev: --tags @print_labels --guess VERBOSE=true URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
