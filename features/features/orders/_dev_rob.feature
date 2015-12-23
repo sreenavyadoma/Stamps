@@ -147,7 +147,7 @@ Feature: Test Development
     Then Set Order Details Length to 1
     Then Set Order Details Height to 1
     Then Set Order Details Width to 1
-    And Open Print Modal
+    Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 1
     And Print
     Then Expect Shipped Tab Date Printed to be today
@@ -162,7 +162,7 @@ Feature: Test Development
     Then Set Order Details Length to 1
     Then Set Order Details Height to 1
     Then Set Order Details Width to 1
-    And Open Print Modal
+    Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 2
     And Print
     Then Expect Shipped Tab Date Printed to be today
@@ -177,7 +177,7 @@ Feature: Test Development
     Then Set Order Details Length to 1
     Then Set Order Details Height to 1
     Then Set Order Details Width to 1
-    And Open Print Modal
+    Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 3
     And Print
     Then Expect Shipped Tab Date Printed to be today
@@ -193,7 +193,7 @@ Feature: Test Development
     Then Set Order Details Length to 1
     Then Set Order Details Height to 1
     Then Set Order Details Width to 1
-    And Open Print Modal
+    Then Open Print Modal
     And Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
 

@@ -11,7 +11,8 @@ Feature: Print Sample
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Set Order Details Ounces to 1
-    And Hide Order Details Form Ship-To fields
+    Then Open Print Modal
+    Then Set Print Modal Printer to "factory"
     Then Print Sample
     And Sign out
 
@@ -22,7 +23,8 @@ Feature: Print Sample
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Parcel Select Ground Large Package"
     Then Set Order Details Ounces to 1
-    And Open Print Modal
+    Then Open Print Modal
+    Then Set Print Modal Printer to "factory"
     Then Print Sample
     And Sign out
 
@@ -33,7 +35,8 @@ Feature: Print Sample
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Regional Rate Box A"
     Then Set Order Details Ounces to 1
-    And Open Print Modal
+    Then Open Print Modal
+    Then Set Print Modal Printer to "factory"
     Then Print Sample
     And Sign out
 
@@ -44,7 +47,8 @@ Feature: Print Sample
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Express Package"
     Then Set Order Details Ounces to 1
-    And Hide Order Details Form Ship-To fields
+    Then Open Print Modal
+    Then Set Print Modal Printer to "factory"
     Then Print Sample
 
   @print_sample
@@ -54,6 +58,7 @@ Feature: Print Sample
     Then Set Order Details Ship-To address to random ship to zone 1 through 4
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     Then Set Order Details Ounces to 1
-    And Hide Order Details Form Ship-To fields
+    Then Open Print Modal
+    Then Set Print Modal Printer to "factory"
     Then Print Sample
     And Sign out
