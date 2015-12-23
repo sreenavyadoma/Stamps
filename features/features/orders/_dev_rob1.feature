@@ -13,7 +13,8 @@ Feature: Test Development
     Then Set Print Modal Ship Date to today
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Printer to "Kyocera"
-    Then Set Print Modal Printer to "factory"
+    Then Set Print Modal Printer to "Brother"
+    Then Set Print Modal Printer to "HP Officejet Pro 8600"
     Then Print
 
   Scenario:
