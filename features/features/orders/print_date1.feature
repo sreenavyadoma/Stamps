@@ -1,4 +1,4 @@
-Feature: Date Printed
+Feature: Date Printed - Today
 
   Background:
     Given I am signed in to Orders
