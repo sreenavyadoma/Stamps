@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @rob_dev_printer --guess VERBOSE=true URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
+rob_dev: --tags @print_date --guess VERBOSE=true URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
 eli_dev: --tags @purchasing --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
@@ -29,52 +29,30 @@ change_order_status: --tags @change_order_status --guess VERBOSE=true
 grid_tracking_order_status: --tags @grid_tracking_order_status --guess VERBOSE=true
 print_date: --tags @print_date --guess VERBOSE=true
 order_creation: --tags @order_creation --guess VERBOSE=true
-
-address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto03 PW=326tsetaqcdS!
-address_management: --tags @address_management --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
-
-tracking: --tags @tracking --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto05 PW=326tsetaqcdS!
-inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto33 PW=326tsetaqcdS!
-
-local_rating_zone1: --tags @local_rating_zone1 --guess VERBOSE=false URL=qasc BROWSER=ff USR=dj_cctest_01 PW=postage1
-local_rating_zone2: --tags @local_rating_zone2 --guess VERBOSE=false URL=qasc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
-
-international: --tags @international --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto08 PW=326tsetaqcdS!
-
-print_many_orders: --tags @print_many_orders --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto08 PW=326tsetaqcdS!
-
-printing_errors: --tags @printing_error --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto11 PW=326tsetaqcdS!
-
-printing:  --tags @print --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto13 PW=326tsetaqcdS!
-
-print_sample: --tags @print_sample --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto25 PW=326tsetaqcdS!
-
-print_costs: --tags @print_costs --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto31 PW=326tsetaqcdS!
-
-purchasing: --tags @purchasing --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto35 PW=326tsetaqcdS!
-
-change_settings: --tags @settings --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto37 PW=326tsetaqcdS!
-
-thermal_printing: --tags @thermal_printing --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
-
-two_up_expanded: --tags @two_up_expanded --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto36 PW=326tsetaqcdS!
-
-sorting: --tags @sort --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto30 PW=326tsetaqcdS!
-
-add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false URL=qacc BROWSER=ff USR=cctest2 PW=password1
-
-orders_10: --tags @orders_10 --guess VERBOSE=false URL=qacc BROWSER=ie USR=webbatch_0005 PW=password1
-orders_20: --tags @orders_20 --guess VERBOSE=false URL=qacc BROWSER=ie USR=cm_cpp_0002 PW=pass111
-
-jenkins_orders: --tags @jenkins_orders --guess VERBOSE=false URL=qacc BROWSER=ff
-
-print_regression: --tags @two_up_expanded --guess VERBOSE=false URL=qacc BROWSER=ff USR=autosuggest PW=326tsetaqcdS!
-
-auto_suggest: --tags @auto_suggest --guess VERBOSE=false URL=qacc BROWSER=ff USR=autosuggest PW=326tsetaqcdS!
-
+address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false
+address_management: --tags @address_management --guess VERBOSE=false
+tracking: --tags @tracking --guess VERBOSE=false
+inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false
+local_rating_zone1: --tags @local_rating_zone1 --guess VERBOSE=false
+local_rating_zone2: --tags @local_rating_zone2 --guess VERBOSE=false
+international: --tags @international --guess VERBOSE=false
+print_many_orders: --tags @print_many_orders --guess VERBOSE=false
+printing_errors: --tags @printing_error --guess VERBOSE=false
+printing:  --tags @print --guess VERBOSE=false
+print_sample: --tags @print_sample --guess VERBOSE=false
+print_costs: --tags @print_costs --guess VERBOSE=false
+purchasing: --tags @purchasing --guess VERBOSE=false
+change_settings: --tags @settings --guess VERBOSE=false
+thermal_printing: --tags @thermal_printing --guess VERBOSE=false
+two_up_expanded: --tags @two_up_expanded --guess VERBOSE=false
+sorting: --tags @sort --guess VERBOSE=false
+add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false
+orders_10: --tags @orders_10 --guess VERBOSE=false
+orders_20: --tags @orders_20 --guess VERBOSE=false
+jenkins_orders: --tags @jenkins_orders --guess VERBOSE=false
+print_regression: --tags @two_up_expanded --guess VERBOSE=false
+auto_suggest: --tags @auto_suggest --guess VERBOSE=false
 new_country_code: --tags  @new_country_code --guess VERBOSE=false
-
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false
-
 international_rules_engine: --tags  @international_rules_engine --guess VERBOSE=false
 
