@@ -1,4 +1,4 @@
-Feature: Print Sample
+Feature: Print Sample - Priority Mail Flat Rate Envelope
 
   Background:
     Given I am signed in to Orders

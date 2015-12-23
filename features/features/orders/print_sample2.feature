@@ -1,4 +1,4 @@
-Feature: Print Sample
+Feature: Print Sample - Parcel Select Ground Large Package
 
   Background:
     Given I am signed in to Orders

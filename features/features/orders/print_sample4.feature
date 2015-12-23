@@ -1,4 +1,4 @@
-Feature: Print Sample
+Feature: Print Sample - Priority Mail Express Package
 
   Background:
     Given I am signed in to Orders

@@ -1,4 +1,4 @@
-Feature: Print Sample
+Feature: Print Sample - Priority Mail Regional Rate Box A
 
   Background:
     Given I am signed in to Orders
