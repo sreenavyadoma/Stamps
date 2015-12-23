@@ -26,7 +26,7 @@ parcel_select: --tags @parcel_select --guess VERBOSE=true
 service_tooltip: --tags @service_tooltip --guess VERBOSE=true
 change_order_status: --tags @change_order_status --guess VERBOSE=true
 grid_tracking_order_status: --tags @grid_tracking_order_status --guess VERBOSE=true
-date_printed: --tags @date_printed --guess VERBOSE=true
+print_date: --tags @print_date --guess VERBOSE=true
 order_creation: --tags @order_creation --guess VERBOSE=true
 
 address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto03 PW=326tsetaqcdS!

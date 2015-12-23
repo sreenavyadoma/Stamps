@@ -72,8 +72,8 @@ Cucumber::Rake::Task.new(:rob_jenkins_dev) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:date_printed) do |t|
-  t.profile = 'date_printed'
+Cucumber::Rake::Task.new(:print_date) do |t|
+  t.profile = 'print_date'
   t.cucumber_opts = "-p cuke_reports"
 end
 
