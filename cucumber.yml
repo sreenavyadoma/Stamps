@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @print_sample_dev --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto30  PW=326tsetaqcdS!
+rob_dev: --tags @local_rating_smoke_test --guess VERBOSE=true URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
 eli_dev: --tags @purchasing --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
@@ -17,6 +17,7 @@ bvt_gc: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=gc USR=auto02 PW=326t
 bvt_ff: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto30 PW=326tsetaqcdS!
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
+local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=true
 tracking_defaults: --tags @tracking_defaults --guess VERBOSE=true
 print_cn22_cp72_layouts: --tags @print_cn22_cp72_layouts --guess VERBOSE=true
 domestic_rules_validation: --tags @domestic_rules_validation --guess VERBOSE=true
