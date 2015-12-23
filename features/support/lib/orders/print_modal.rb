@@ -242,7 +242,7 @@ module Orders
           selection_label = Label.new @browser.li :text => /fac/
         when /kyocera/
           selection_label = Label.new @browser.li :text => /Kyocera/
-        when /EPSON/
+        when /epson/
           selection_label = Label.new @browser.li :text => /EPSON/
         when /brother/
           selection_label = Label.new @browser.li :text => /Brother/
