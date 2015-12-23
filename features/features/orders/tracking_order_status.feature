@@ -9,7 +9,7 @@ Feature: Orders Grid - Tracking & Order Status
     And I Add a new order
     Then Expect Order Status to be "Awaiting Shipment"
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     And Set Order Details Tracking to "USPS Tracking"
@@ -21,7 +21,7 @@ Feature: Orders Grid - Tracking & Order Status
     And I Add a new order
     Then Expect Order Status to be "Awaiting Shipment"
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     And Set Order Details Tracking to "Signature Required"

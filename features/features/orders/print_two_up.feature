@@ -9,13 +9,13 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
 
     When I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     Then Set Order Details Ounces to 3
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     Then Set Order Details Ounces to 2
 

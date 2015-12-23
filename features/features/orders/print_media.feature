@@ -8,10 +8,9 @@ Feature: Print Media
   Scenario:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
-    Then Set Order Details Height to 1
-    Then Set Order Details Length to 1
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
+    Then Set Order Details Ounces to 1
     Then Open Print Modal
 
     Then Select Print Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
@@ -42,7 +41,7 @@ Feature: Print Media
   Scenario:  As a batch shipper, I want to be able to change my print media
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 1
     Then Open Print Modal
@@ -52,7 +51,7 @@ Feature: Print Media
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 5
     Then Open Print Modal
@@ -62,7 +61,7 @@ Feature: Print Media
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 4
     Then Open Print Modal
@@ -72,7 +71,7 @@ Feature: Print Media
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 2
     Then Open Print Modal
@@ -82,7 +81,7 @@ Feature: Print Media
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Pounds to 1
     Then Set Order Details Ounces to 1

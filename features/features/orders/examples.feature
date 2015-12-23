@@ -34,7 +34,7 @@ Feature: Examples
         Then Set Order Details Insured Value to $1.09
 
 
-        Then Set Order Details Ship-To address to random ship to zone 1 through 4
+        Then Set Order Details Ship-To address to random zone 1 through 4
         And Hide Order Details Form Ship-To fields
 
         Then Set Order Details Ship-To address to
