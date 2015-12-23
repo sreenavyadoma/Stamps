@@ -123,16 +123,35 @@ module Orders
       Button.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
     end
 
-    def select selection
+    def select media
       drop_down = self.drop_down
       text_box = self.text_box
-      selection_field = Label.new @browser.li :text => selection
+      selection_field = Label.new @browser.li :text => media
       10.times{
         drop_down.safe_click unless selection_field.present?
         selection_field.safe_click
         input_text = text_box.text
-        break if input_text.include? selection
+        break if input_text.include? media
       }
+    end
+
+    def tooltip media
+      button = drop_down
+      selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{media}']"
+      10.times {
+        begin
+          button.safe_click unless selection_label.present?
+          sleep 1
+          if selection_label.present?
+            tooltip = selection_label.attribute_value "data-qtip"
+            log.info "Service Tooltip for \"#{media}\" is #{tooltip}"
+            return tooltip if tooltip.include? "<strong>"
+          end
+        rescue
+          #ignore
+        end
+      }
+      click_form
     end
   end
 

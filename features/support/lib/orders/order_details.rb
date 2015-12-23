@@ -1533,7 +1533,7 @@ module Orders
 
   end
 
-  class ServiceDropDown < OrderForm
+  class Service < OrderForm
     def text_box
       Textbox.new (@browser.text_field :name => "Service"), (@browser.div :css => "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
     end
@@ -1856,7 +1856,7 @@ module Orders
     end
 
     def service
-      @orders_service ||= ServiceDropDown.new @browser
+      @orders_service ||= Orders::Service.new @browser
     end
 
     def tracking
