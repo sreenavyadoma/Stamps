@@ -11,9 +11,15 @@ Feature: Test Development
     Then Set Order Details Ounces to 1
     Then Open Print Modal
     Then Set Print Modal Ship Date to today
+    # factory selection sends printout to PDF Factory.  You will need to rename your PDF Factory printer to factory.
     Then Set Print Modal Printer to "factory"
+    # Sends your printouts to Kyocera printer next to the post office.
     Then Set Print Modal Printer to "Kyocera"
+    # Sends your printouts to Brother MFC-7840W Printer
     Then Set Print Modal Printer to "Brother"
+    # Sends your printouts to EPSON printer in eva's cube.
+    Then Set Print Modal Printer to "EPSON"
+    # Sends your printouts to Officejet Pro in elie's cube.
     Then Set Print Modal Printer to "HP Officejet Pro 8600"
     Then Print
 
