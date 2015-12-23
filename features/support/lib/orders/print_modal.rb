@@ -248,11 +248,11 @@ module Orders
           raise "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
       end
 
-      5.times{
+      5.times do
         dd.safe_click unless selection_label.present?
         selection_label.safe_click
         return if input.text.include? printer
-      }
+      end
     end
   end
 

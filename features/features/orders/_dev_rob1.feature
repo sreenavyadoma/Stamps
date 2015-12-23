@@ -12,7 +12,7 @@ Feature: Test Development
     Then Open Print Modal
     Then Set Print Modal Ship Date to today
     Then Set Print Modal Printer to "factory"
-    Then Set Print Modal Printer to "\\CORP-FILES02\Kyocera-2"
+    Then Set Print Modal Printer to "Kyocera"
 
   Scenario:
     And I Add a new order
