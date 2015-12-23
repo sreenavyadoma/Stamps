@@ -242,17 +242,21 @@ module Orders
           selection_label = Label.new @browser.li :text => /fac/
         when /kyocera/
           selection_label = Label.new @browser.li :text => /Kyocera/
-        when /kyocera/
+        when /EPSON/
           selection_label = Label.new @browser.li :text => /EPSON/
+        when /brother/
+          selection_label = Label.new @browser.li :text => /Brother/
+        when /officejet/
+          selection_label = Label.new @browser.li :text => /Officejet/
         else
           raise "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
       end
 
-      5.times{
+      5.times do
         dd.safe_click unless selection_label.present?
         selection_label.safe_click
         return if input.text.include? printer
-      }
+      end
     end
   end
 

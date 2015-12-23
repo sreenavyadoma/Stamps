@@ -87,11 +87,8 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Set customs form Package Contents to "Merchandise"
 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-
     Then Close customs form
-
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
-
     And Print
 
     #Turn off auto Confirm and manually check USPS Restrictions box in Customs Modal

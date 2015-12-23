@@ -29,7 +29,7 @@ module Orders
         :reference_no => "Reference No.",
         :cost_code => "Cost Code",
         :order_status => "Order Status",
-        :date_printed => "Date Printed",
+        :print_date => "Date Printed",
         :ship_date => "Ship Date",
         :tracking_no => "Tracking #",
         :order_total => "Order Total"
@@ -742,19 +742,19 @@ module Orders
   class DatePrinted < Column
 
     def sort
-      Sort.new @browser, :date_printed
+      Sort.new @browser, :print_date
     end
     
     def scroll_into_view
-      scroll :date_printed
+      scroll :print_date
     end
 
     def data_at_row row
-      grid_field_column_name :date_printed, row
+      grid_field_column_name :print_date, row
     end
 
     def data order_id
-      grid_text_by_id :date_printed, order_id
+      grid_text_by_id :print_date, order_id
     end
   end
 
@@ -999,8 +999,8 @@ module Orders
       @order_status ||= OrderStatus.new @browser
     end
 
-    def date_printed
-      @date_printed ||= DatePrinted.new @browser
+    def print_date
+      @print_date ||= DatePrinted.new @browser
     end
 
     def ship_date

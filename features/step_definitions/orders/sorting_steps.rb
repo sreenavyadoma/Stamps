@@ -230,13 +230,13 @@ Then /^Sort Orders Grid by Order Status in Descending order$/ do
 end
 
 Then /^Sort Orders Grid by Date Printed in Ascending order$/ do
-  sorted = orders.grid.date_printed.sort.ascending
+  sorted = orders.grid.print_date.sort.ascending
   log.info "Step #{(sorted)?'Passed':'Failed'} - Sort Orders Grid by Date Printed in Ascending order"
   sorted.should be true
 end
 
 Then /^Sort Orders Grid by Date Printed in Descending order$/ do
-  sorted = orders.grid.date_printed.sort.descending
+  sorted = orders.grid.print_date.sort.descending
   log.info "Step #{(sorted)?'Passed':'Failed'} - Sort Orders Grid by Date Printed in Descending order"
   sorted.should be true
 end

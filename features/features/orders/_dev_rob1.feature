@@ -2,7 +2,7 @@ Feature: Test Development
   Background:
     Given I am signed in to Orders
 
-    @rob_dev_printer
+  @rob_dev_printer
   Scenario:
     And I Add a new order
     Then Set Order Details Ship-From to default
@@ -12,7 +12,10 @@ Feature: Test Development
     Then Open Print Modal
     Then Set Print Modal Ship Date to today
     Then Set Print Modal Printer to "factory"
-    Then Set Print Modal Printer to "\\CORP-FILES02\Kyocera-2"
+    Then Set Print Modal Printer to "Kyocera"
+    Then Set Print Modal Printer to "Brother"
+    Then Set Print Modal Printer to "HP Officejet Pro 8600"
+    Then Print
 
   Scenario:
     And I Add a new order

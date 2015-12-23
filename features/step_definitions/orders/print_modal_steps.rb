@@ -44,9 +44,9 @@ end
 
 Then /^Expect Shipped Tab Date Printed to be today$/ do
   today = test_helper.now_plus_mon_dd 0
-  orders.filter.shipped.date_printed.sort.descending
-  actual_date_printed = orders.filter.shipped.date_printed.row 1
-  log.info "#{(actual_date_printed)}"
+  orders.filter.shipped.print_date.sort.descending
+  actual_print_date = orders.filter.shipped.print_date.row 1
+  log.info "#{(actual_print_date)}"
   log.info "Expectation: Shipped Tab Date Printed to be today #{today}"
 end
 

@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @local_rating_smoke_test --guess VERBOSE=true URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
+rob_dev: --tags @rob_dev_printer --guess VERBOSE=true URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
 eli_dev: --tags @purchasing --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
@@ -17,6 +17,8 @@ bvt_gc: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=gc USR=auto02 PW=326t
 bvt_ff: --tags @bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto30 PW=326tsetaqcdS!
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
+print_two_up: --tags @print_two_up --guess VERBOSE=true
+print_labels: --tags @print_labels --guess VERBOSE=true
 local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=true
 tracking_defaults: --tags @tracking_defaults --guess VERBOSE=true
 print_cn22_cp72_layouts: --tags @print_cn22_cp72_layouts --guess VERBOSE=true
@@ -25,7 +27,7 @@ parcel_select: --tags @parcel_select --guess VERBOSE=true
 service_tooltip: --tags @service_tooltip --guess VERBOSE=true
 change_order_status: --tags @change_order_status --guess VERBOSE=true
 grid_tracking_order_status: --tags @grid_tracking_order_status --guess VERBOSE=true
-date_printed: --tags @date_printed --guess VERBOSE=true
+print_date: --tags @print_date --guess VERBOSE=true
 order_creation: --tags @order_creation --guess VERBOSE=true
 
 address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto03 PW=326tsetaqcdS!

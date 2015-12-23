@@ -10,9 +10,6 @@ Feature:  New Country Code for Curacao and Country Bonaire, Sint Eustatius, and 
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To country to Curacao
-
- # User Able to Selects new Country Bonaire, Sint Eustatius, and Saba
-
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To country to Bonaire, Sint Eustatius and Saba
@@ -34,7 +31,10 @@ Feature:  New Country Code for Curacao and Country Bonaire, Sint Eustatius, and 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
+    Then Open Print Modal
+    Then Set Print Modal Printer to "factory"
     And Print
+    Then Sign out
 
 
      #User Able to Print with  new   country Country Bonaire, Sint Eustatius, and Saba
@@ -51,4 +51,7 @@ Feature:  New Country Code for Curacao and Country Bonaire, Sint Eustatius, and 
     And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
+    Then Open Print Modal
+    Then Set Print Modal Printer to "factory"
     And Print
+    Then Sign out

@@ -59,12 +59,12 @@ Then /^Expect Grid Date Printed for this order to be today$/ do
   log.info "Expect Grid Date Printed for this order to be today"
   grid = orders.filter.shipped
   grid.order_id.sort.descending
-  grid_date_printed = grid.date_printed.data @order_id # Dec 3
-  expected_date_printed = Date.today.strftime "%b %-d"
+  grid_print_date = grid.print_date.data @order_id # Dec 3
+  expected_print_date = Date.today.strftime "%b %-d"
 
-  log.info "Order ID:  #{@order_id} - Orders Grid Date Printed:  #{grid_date_printed} - Today's date:  #{expected_date_printed}"
-  log.info "Test #{(grid_date_printed==expected_date_printed)?"Passed":"Failed"}"
-  grid_date_printed.should eql expected_date_printed
+  log.info "Order ID:  #{@order_id} - Orders Grid Date Printed:  #{grid_print_date} - Today's date:  #{expected_print_date}"
+  log.info "Test #{(grid_print_date==expected_print_date)?"Passed":"Failed"}"
+  grid_print_date.should eql expected_print_date
 end
 
 Then /^Expect Grid Ship Date for this order to be today$/ do
