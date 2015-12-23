@@ -17,6 +17,5 @@ Feature: Thermal Printer
     Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Select Print Media "Roll - 4" x 6" Shipping Label"
-    Then Select Printer "DYMO LabelWriter 4XL"
     Then Print
     And Sign out

@@ -13,7 +13,6 @@ Feature: Print Media
     Then Set Order Details Ounces to 1
     Then Open Print Modal
 
-    Then Select Print Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
     Then Expect Print Media "Roll - 4 ⅛" x 6 ¼" Shipping Label" tooltip to include "Use these 4⅛” x 6¼” thermal label rolls to print postage, addresses, tracking barcode, and customs form."
     Then Expect Print Media "Roll - 4 ⅛" x 6 ¼" Shipping Label" tooltip to include "Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. or international destination."
 

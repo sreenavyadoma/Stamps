@@ -3,7 +3,7 @@ Feature: Print Sample
   Background:
     Given I am signed in to Orders
 
-  @print_sample_dev
+  @print_sample
   Scenario:  Priority Mail Express Padded Flat Rate Envelope
     And I Add a new order
     Then Set Order Details Ship-From to default
