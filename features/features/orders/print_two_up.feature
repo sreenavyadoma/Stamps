@@ -23,7 +23,6 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Edit row 2 on the order grid
 
     Then Open Print Modal
-    Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
 
