@@ -4,7 +4,7 @@ Feature: Print Media Tooltips
     Given I am signed in to Orders
 
   @print_media_tooltips
-  Scenario:  As a batch shipper, I want to be able to change my print media
+  Scenario:  Verify tooltips for all Print Media selections
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random zone 1 through 4
