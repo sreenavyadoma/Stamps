@@ -7,7 +7,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
   Scenario: Print 1 order
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
     Then Edit row 1 on the order grid
     Then Print
@@ -19,17 +19,17 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
   Scenario: Print 3 orders
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a second order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a third order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random ship to zone 1 through 4
+    Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Media Mail Package"
 
     Then Edit row 1 on the order grid

@@ -40,7 +40,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 1
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -53,7 +53,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 2
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -67,7 +67,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     Then Uncheck row 1 on the order grid
     And Set Order Details Ounces to 3
     And Set Order Details Length to 1
@@ -79,7 +79,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 4
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -90,7 +90,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 5
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -102,7 +102,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 6
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -113,7 +113,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 7
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -125,7 +125,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 8
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -136,7 +136,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 9
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -148,7 +148,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 10
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -160,7 +160,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 11
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -172,7 +172,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 12
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -184,7 +184,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 13
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -196,7 +196,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 14
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -208,7 +208,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Ounces to 15
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -219,7 +219,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 16
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -230,7 +230,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 17
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -241,7 +241,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 18
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -252,7 +252,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 19
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -264,7 +264,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 20
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -277,7 +277,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 21
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -289,7 +289,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 22
     And Set Order Details Length to 1
     And Set Order Details Width to 1
@@ -301,7 +301,7 @@ Feature: 25 orders
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
-    And Set Order Details Ship-To address to random ship to zone 1 through 4
+    And Set Order Details Ship-To address to random zone 1 through 4
     And Set Order Details Pounds to 23
     And Set Order Details Length to 1
     And Set Order Details Width to 1

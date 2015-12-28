@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Orders
 
   class PrintModalObject < OrdersObject
@@ -115,6 +116,34 @@ module Orders
   end
 
   class PrintingOn < PrintModalObject
+    private
+    def selection media
+      case media
+        # Shipping Label - 8 ½" x 11" Paper
+        when /Paper/
+          return Label.new (@browser.li :text => /Paper/)
+
+        # Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+        when /SDC-1200/
+          return Label.new (@browser.li :text => /SDC-1200/)
+
+        # Shipping Label - 5 ½" x 8 ½"
+        when /x 8/
+          return Label.new (@browser.li :text => /x 8/)
+
+        # Roll - 4 ⅛" x 6 ¼" Shipping Label
+        when /x 6 ¼/
+          return Label.new (@browser.li :text => /x 6 ¼/)
+
+        # Roll - 4" x 6" Shipping Label
+        when /4" x 6"/
+          return Label.new (@browser.li :text => /4" x 6"/)
+        else
+          raise "Invalid Media Selection.  Don't know what to do with #{media}."
+      end
+    end
+
+    public
     def text_box
       Textbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
     end
@@ -123,16 +152,38 @@ module Orders
       Button.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
     end
 
-    def select selection
+    def select media
       drop_down = self.drop_down
       text_box = self.text_box
-      selection_field = Label.new @browser.li :text => selection
-      10.times{
-        drop_down.safe_click unless selection_field.present?
-        selection_field.safe_click
+      media_selection = selection media
+
+      10.times do
+        drop_down.safe_click unless media_selection.present?
+        media_selection.safe_click
         input_text = text_box.text
-        break if input_text.include? selection
-      }
+        break if input_text.include? media
+      end
+    end
+
+    def tooltip media
+      drop_down = self.drop_down
+      media_selection = selection media
+
+      10.times do
+        begin
+          drop_down.safe_click unless media_selection.present?
+          if media_selection.present?
+            tooltip = media_selection.attribute_value "data-qtip"
+            log.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
+            if tooltip.include? "<strong>"
+              drop_down.safe_click if media_selection.present?
+              return tooltip
+            end
+          end
+        rescue
+          return ""
+        end
+      end
     end
   end
 
@@ -242,7 +293,7 @@ module Orders
           selection_label = Label.new @browser.li :text => /fac/
         when /kyocera/
           selection_label = Label.new @browser.li :text => /Kyocera/
-        when /EPSON/
+        when /epson/
           selection_label = Label.new @browser.li :text => /EPSON/
         when /brother/
           selection_label = Label.new @browser.li :text => /Brother/

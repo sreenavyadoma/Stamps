@@ -81,11 +81,14 @@ Then /^Select Printer \"(.*)\"$/ do |printer|
   orders.toolbar.print.printer.select printer
 end
 
-Then /^Expect Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, expected_value|
-  log.info "Expectation: Expect Print Media #{print_media} tooltip to include #{expected_value}"
-  actual_value = orders.toolbar.print.printing_on.selection :tooltip, print_media
-  log.info "Expect Print Media \"#{print_media}\" tooltip to include \"#{expected_value}\" - Test #{(actual_value.include? expected_value)?"Passed":"Failed"}"
-  actual_value.should include expected_value
+Then /^Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, data_qtip|
+  log.info "Expect Print Modal Print Media #{print_media} tooltip to include #{data_qtip}"
+  tooltips = data_qtip.split "||"
+  actual_tooltip = orders.toolbar.print.printing_on.tooltip print_media
+  tooltips.each { |tooltip|
+    log.info "Test #{(actual_tooltip.include? tooltip)?"Passed":"Failed"}"
+    actual_tooltip.should include tooltip
+  }
 end
 
 When /^Print$/ do
