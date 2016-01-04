@@ -531,11 +531,11 @@ Then /^Expect Customs Form Total Weight Data Error to be (.+)$/ do |value|
 end
 
 Then /^Sleep (\d+)$/ do |seconds|
-  sleep seconds
+  step "Wait #{seconds}"
 end
 
 Then /^Wait (\d+)$/ do |seconds|
-  sleep seconds
+  sleep seconds.to_i
 end
 
 Then /^Close customs form$/ do
