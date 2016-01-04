@@ -15,10 +15,10 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
     Then Set Order Details Pounds to 2
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
-    Then Wait 3
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
+    Then Wait in seconds 3
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"

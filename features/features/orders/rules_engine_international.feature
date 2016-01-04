@@ -135,8 +135,8 @@ Feature: International Field Validation
     Then Set customs form Internal Transaction Number to "Required"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Sign out
 
@@ -156,15 +156,15 @@ Feature: International Field Validation
     Then Set Order Details Item - Quantity 1, ID random, Description random
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 1, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 1, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 2501, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 2501, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And Sign out
 
       # Iran - Internal Transaction #
@@ -199,11 +199,11 @@ Feature: International Field Validation
     Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And Sign out
 
       # Sudan - Internal Transaction # Required
@@ -236,11 +236,11 @@ Feature: International Field Validation
     Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And Sign out
 
       # Syria - Internal Transaction # Required
@@ -273,11 +273,11 @@ Feature: International Field Validation
     Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And Sign out
 
       # Cuba - Internal Transaction # Required
@@ -310,11 +310,11 @@ Feature: International Field Validation
     Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And Sign out
 
       # North Korea - Internal Transaction # Required
@@ -347,11 +347,11 @@ Feature: International Field Validation
     Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And Sign out
 
       # Philippines - Internal Transaction # Required
@@ -385,9 +385,9 @@ Feature: International Field Validation
     Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Not required"
 
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And Sign out

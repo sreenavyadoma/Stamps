@@ -110,11 +110,11 @@ module Orders
     end
 
     def item_description
-      Textbox.new (@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]
+      Textbox.new ((@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]), "data-errorqtip"
     end
 
     def qty
-      Textbox.new (@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]
+      Textbox.new ((@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]), "data-errorqtip"
     end
 
     def qty_increment value
@@ -126,7 +126,7 @@ module Orders
     end
 
     def unit_price
-      Textbox.new (@browser.text_fields :name => "Value")[@number-1]
+      Textbox.new ((@browser.text_fields :name => "Value")[@number-1]), "data-errorqtip"
     end
 
     def unit_price_increment value
@@ -138,7 +138,7 @@ module Orders
     end
 
     def lbs
-      Textbox.new (@browser.text_fields :name => "lbs")[@number-1]
+      Textbox.new ((@browser.text_fields :name => "lbs")[@number-1]), "data-errorqtip"
     end
 
     def lbs_increment value
@@ -150,7 +150,7 @@ module Orders
     end
 
     def oz
-      Textbox.new (@browser.text_fields :name => "oz")[@number-1]
+      Textbox.new ((@browser.text_fields :name => "oz")[@number-1]), "data-errorqtip"
     end
 
     def oz_increment value
@@ -281,6 +281,10 @@ module Orders
 
   class CustomsForm < OrdersObject
 
+    def usps_privacy_act_warning
+      Label.new (@browser.label :text => "You must agree to the USPS Privacy Act Statement")
+    end
+
     def present?
       Button.new @browser.image :css => "img[class*='x-tool-close']"
     end
@@ -319,18 +323,8 @@ module Orders
     end
 
     def item_grid
-      sleep 2
+      sleep 1
       CustomsItemGrid.new @browser
-    end
-
-    def plus
-
-    end
-
-    def total_weight_error
-      qtip_error = total_weight.attribute_value "data-errorqtip"
-      log.info "Total Weight dev error: #{qtip_error}"
-      qtip_error
     end
 
     def total_weight
@@ -357,21 +351,6 @@ module Orders
       divs = @browser.divs :css => "div[class*=x-form-display-field-default]"
       div = divs.last
       test_helper.remove_dollar_sign (Label.new div).text
-    end
-
-    def verify_i_agree_checked
-      div = @browser.div :css => "div[id^=checkboxfield][style^=right]"
-      attribute_value = browser_helper.attribute_value div
-      checked = attribute_value.include? "checked"
-      log.info "I agree is #{(checked)? 'checked' : 'unchecked'}"
-      checked
-    end
-
-    def i_agree_checkbox
-      text_fields = @browser.text_fields :css => "input[id^=checkboxfield]"
-      text_field = text_fields.last
-      log.info "I Agree Checkbox is #{(browser_helper.present? text_field)?'Present' : 'Not Present'}"
-      text_field
     end
 
     def i_agree user_agreed

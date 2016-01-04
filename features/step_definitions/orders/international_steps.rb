@@ -360,8 +360,8 @@ Then /^Set customs form Invoice Number to \"(.+)\"$/ do |value|
   @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price ([\d.]+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
-  log.info "Step: Add or Edit Customs Form Item #{item_number}; Description=#{description}, Qty #{qty}, Unit Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
+Then /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price ([\d.]+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
+  log.info "Step: Add Customs Form Item #{item_number}; Description=#{description}, Qty #{qty}, Unit Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i
   item.item_description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
@@ -400,22 +400,30 @@ Then /^Delete Customs Form Item (\d+)$/ do |item_number|
   end
 end
 
-Then /^Set customs form I agree to (\w+)$/ do |agree_str|
-  log.info "Step: Set customs form I agree to #{agree_str}"
-  agree = agree_str.downcase == "true"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  sleep 1
-  @customs_form.i_agree agree
-end
-
-Then /^Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions$/ do
-  log.info "Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
+Then /^Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked$/ do
+  log.info "Step: Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @single_order_form.customs_form.i_agree true
 end
 
-Then /^Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions$/ do
-  log.info "Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
+Then /^Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Unchecked$/ do
+  log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @single_order_form.customs_form.i_agree false
+end
+
+Then /^Expect Customs Form USPS Privacy Act Warning to be visible$/ do
+  log.info "Step: Expect Customs Form USPS Privacy Act Warning to be visible"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  usps_privacy_act_warning = @customs_form.usps_privacy_act_warning.visible?
+  log.info "Test #{(usps_privacy_act_warning)?"Passed":"Failed"}"
+  usps_privacy_act_warning.should be true
+end
+
+Then /^Expect Customs Form USPS Privacy Act Warning to be hidden/ do
+  log.info "Step: Expect Customs Form USPS Privacy Act Warning to be hidden"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  usps_privacy_act_warning = @customs_form.usps_privacy_act_warning.visible?
+  log.info "Test #{(usps_privacy_act_warning)?"Failed":"Passed"}"
+  usps_privacy_act_warning.should be false
 end
 
 Then /^Expect Customs Form More Info to be hidden$/ do
@@ -436,8 +444,8 @@ Then /^Expect Customs Form License# to be visible$/ do
   @customs_form.license.present?.should be true
 end
 
-Then /^Expect Customs Form License# to be hidden$/ do |value|
-  log.info "Step: Expect Customs Form License# to be #{value}"
+Then /^Expect Customs Form License# to be hidden$/ do |expectation|
+  log.info "Step: Expect Customs Form License# to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.license.present?.should be false
 end
@@ -472,73 +480,113 @@ Then /^Expect Customs Form ITN# to be hidden$/ do
   @customs_form.itn_number.present?.should be false
 end
 
-Then /^Expect Customs Form ITN# to be visible$/ do |value|
-  log.info "Step: Expect Customs Form ITN# to be #{value}"
+Then /^Expect Customs Form ITN# to be visible$/ do |expectation|
+  log.info "Step: Expect Customs Form ITN# to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.itn_number.present?.should be true
 end
 
-Then /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |value|
-  log.info "Step: Expect Customs Form Internal Transaction # to be #{value}"
+Then /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |expectation|
+  log.info "Step: Expect Customs Form Internal Transaction # to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   sleep 1
   text = @customs_form.internal_transaction.text_box.text
   text = @customs_form.internal_transaction.text_box.text
   log.info "Internal Transaction # is #{text}.  Test #{(text.include? "Required")?'Passed':'Failed'}"
-  text.should eql value
+  text.should eql expectation
 end
 
-Then /^Expect Customs Form Item Grid count to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Item Grid count to be #{value}"
+Then /^Expect Customs Form Item Grid count to be (.+)$/ do |expectation|
+  log.info "Step: Expect Customs Form Item Grid count to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  @customs_form.item_grid.line_item_count.should eql value.to_i
+  @customs_form.item_grid.line_item_count.should eql expectation.to_i
 end
 
-Then /^Expect Customs Form Total Value to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Total Value to be #{value}"
+Then /^Expect Customs Form Total Value to be (.+)$/ do |expectation|
+  log.info "Step: Expect Customs Form Total Value to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_value
-  log.info "Custom Info Actual Total Value: #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
-  browser_value.should eql value
+  log.info "Custom Info Actual Total Value: #{browser_value}.  Expected:  #{expectation}.  Test #{(browser_value == expectation)?'Passed':'Failed'}"
+  browser_value.should eql expectation
 end
 
-Then /^Expect Customs Form Total Pounds to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Total Pounds to be #{value}"
+Then /^Expect Customs Form Total Pounds to be (.+)$/ do |expectation|
+  log.info "Step: Expect Customs Form Total Pounds to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_weight_lbs
-  log.info "Custom Info Actual Total Weight(lbs): #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
-  browser_value.should eql value
+  log.info "Custom Info Actual Total Weight(lbs): #{browser_value}.  Expected:  #{expectation}.  Test #{(browser_value == expectation)?'Passed':'Failed'}"
+  browser_value.should eql expectation
 end
 
-Then /^Expect Customs Form Total Ounces to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Total Ounces to be #{value}"
+Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
+  log.info "Step: Expect Customs Form Total Ounces to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
 
   browser_value = @customs_form.total_weight_oz
-  log.info "Custom Info Actual Total Weight(Oz): #{browser_value}.  Expected:  #{value}.  Test #{(browser_value == value)?'Passed':'Failed'}"
-  browser_value.should eql value
+  log.info "Custom Info Actual Total Weight(Oz): #{browser_value}.  Expected:  #{expectation}.  Test #{(browser_value == expectation)?'Passed':'Failed'}"
+  browser_value.should eql expectation
 end
 
-Then /^Expect Customs Form Total Weight Data Error to be (.+)$/ do |value|
-  log.info "Step: Expect Customs Form Total Weight Data Error to be #{value}"
+Then /^Expect Customs Form Tooltip Error for Total Weight to be (.+)$/ do |expectation|
+  log.info "Step: Expect Customs Form Tooltip Error for Total Weight to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  data_error_qtip = @customs_form.total_weight.data_error
+  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
+  data_error_qtip.should include expectation
+end
 
-  browser_value = @customs_form.total_weight.data_error
-  log.info "Total Weight Data Error - #{(browser_value.include? value)?'Passed':'Failed'}.  Expectation:  #{value}, Actual Result:  #{browser_value}"
-  browser_value.should include value
+Then /^Expect Customs Form Tooltip Error for Item Description to be (.*)$/ do |expectation|
+  log.info "Step: Expect Customs Form Tooltip Error for Item Description to be #{expectation}"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  data_error_qtip = @customs_form.item_grid.item(1).item_description.data_error_qtip
+  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
+  data_error_qtip.should include expectation
+end
+
+
+Then /^Expect Customs Form Tooltip Error for Qty to be (.*)$/ do |expectation|
+  log.info "Step: Expect Customs Form Tooltip Error for Qty to be #{expectation}"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  data_error_qtip = @customs_form.item_grid.item(1).qty.data_error_qtip
+  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
+  data_error_qtip.should include expectation
+end
+
+Then /^Expect Customs Form Tooltip Error for Unit Price to be (.*)$/ do |expectation|
+  log.info "Step: Expect Customs Form Tooltip Error for Unit Price to be #{expectation}"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  data_error_qtip = @customs_form.item_grid.item(1).unit_price.data_error_qtip
+  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
+  data_error_qtip.should include expectation
+end
+
+Then /^Expect Customs Form Tooltip Error for Pounds to be (.*)$/ do |expectation|
+  log.info "Step: Expect Customs Form Tooltip Error for Pounds to be #{expectation}"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  data_error_qtip = @customs_form.item_grid.item(1).lbs.data_error_qtip
+  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
+  data_error_qtip.should include expectation
+end
+
+Then /^Expect Customs Form Tooltip Error for Ounces to be (.*)$/ do |expectation|
+  log.info "Step: Expect Customs Form Tooltip Error for Ounces to be #{expectation}"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  data_error_qtip = @customs_form.item_grid.item(1).oz.data_error_qtip
+  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
+  data_error_qtip.should include expectation
 end
 
 Then /^Sleep (\d+)$/ do |seconds|
-  step "Wait #{seconds}"
+  step "Wait in seconds #{seconds}"
 end
 
-Then /^Wait (\d+)$/ do |seconds|
+Then /^Wait in seconds (\d+)$/ do |seconds|
   sleep seconds.to_i
 end
 
-Then /^Close customs form$/ do
+Then /^Close Customs Form$/ do
   log.info "Step: Closing customs form"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_form.close

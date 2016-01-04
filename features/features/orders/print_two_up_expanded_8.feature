@@ -128,9 +128,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Item - Quantity 1, ID random, Description random
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
@@ -151,9 +151,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 3
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
@@ -175,9 +175,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
@@ -187,9 +187,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Open Print Modal
@@ -211,9 +211,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
@@ -223,9 +223,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Open Print Modal
@@ -248,9 +248,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
@@ -260,9 +260,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
@@ -272,9 +272,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Edit row 3 on the order grid
@@ -313,9 +313,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
@@ -325,9 +325,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
@@ -337,9 +337,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Edit row 3 on the order grid
@@ -485,9 +485,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
@@ -508,9 +508,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
@@ -530,9 +530,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
@@ -542,9 +542,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Open Print Modal
@@ -565,9 +565,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
@@ -577,9 +577,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Open Print Modal

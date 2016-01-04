@@ -1851,6 +1851,31 @@ module Orders
 
   class OrderDetails < OrderForm
 
+    def items_count
+      begin
+        count = (@browser.text_fields :css => "div[id^=singleorderitem][id$=innerCt]").size
+        log.info "Order Details Item Count: #{count}"
+        count
+      rescue
+        0
+      end
+    end
+
+    def add_item
+      add_item = Link.new @browser.span :text => "Add Item"
+      raise "Add Item button is not present in Order Details form!" unless add_item.present?
+      count = items_count
+      5.times{
+        add_item.safe_click
+        sleep 1
+        return if items_count == count + 1
+      }
+    end
+
+    def item line_item
+      OrderDetailsItem.new @browser, line_item
+    end
+
     def ship_from
       ShipFromAddress.new @browser
     end
@@ -1898,31 +1923,6 @@ module Orders
 
     def customs
       CustomsFields.new @browser
-    end
-
-    def items_count
-      begin
-        count = (@browser.text_fields :css => "div[id*=detailItemsGrid] input[name=Quantity]").size
-        log.info "Order Details Item Count: #{count}"
-        count
-      rescue
-        0
-      end
-    end
-
-    def add_item
-      add_item = Link.new @browser.span :text => "Add Item"
-      raise "Add Item button is not present in Order Details form!" unless add_item.present?
-      count = items_count
-      5.times{
-        add_item.safe_click
-        sleep 1
-        return if items_count == count + 1
-      }
-    end
-
-    def item line_item
-      OrderDetailsItem.new @browser, line_item
     end
 
     def service_cost
@@ -2062,19 +2062,10 @@ module Orders
     def ounces_qtip_error_displayed?(message) # "The maximum value for this field is 70"
       ounces_qtip_error.include?(message)
     end
+
     def click_auto_suggest_name index
       browser_helper.click auto_suggest_name_array[index.to_i-1]
     end
-
-=begin
-    def get_address_text
-      browser_helper.text address_textbox
-    end
-
-    def get_auto_suggest_name index
-      auto_suggest_name_array[index.to_i-1].text
-    end
-=end
 
     def get_auto_suggest_location index
       auto_suggest_location_array[index.to_i-1].text

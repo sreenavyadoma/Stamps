@@ -255,8 +255,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And I Add a new order
@@ -276,8 +276,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
@@ -529,8 +529,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And I Add a new order
@@ -550,8 +550,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
@@ -802,8 +802,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And I Add a new order
@@ -823,8 +823,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
@@ -1076,8 +1076,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And I Add a new order
@@ -1097,8 +1097,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
@@ -1350,8 +1350,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And I Add a new order
@@ -1371,8 +1371,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
@@ -1624,8 +1624,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And I Add a new order
@@ -1645,8 +1645,8 @@ Feature: 150 orders
     Then Set customs form More Info to "random"
     Then Set customs form ITN# to "random"
 
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     And Sign out

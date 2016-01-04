@@ -54,13 +54,30 @@ module Stamps
         @browser = @field.browser
       end
 
+      def disabled?
+        browser_helper.disabled? @field
+      end
+
+      def visible?
+        browser_helper.visible? @field
+      end
+
+      def exist?
+        browser_helper.exist? @field
+      end
+
+      def present?
+        browser_helper.present? @field
+      end
+
+
       def data_error_qtip
         begin
           # if data qtip field was not set or is nil, try to get data error qtip from the field representing this textbox.
           if @data_error_field.nil?
-            return browser_helper.attribute_value @field, @data_error_field_attribute
+            return browser_helper.attribute_value @field, (@data_error_field_attribute.nil?)?"data-errorqtip":@data_error_field_attribute
           else
-            return browser_helper.attribute_value @data_error_field, @data_error_field_attribute
+            return browser_helper.attribute_value @data_error_field, (@data_error_field_attribute.nil?)?"data-errorqtip":@data_error_field_attribute
           end
         rescue
           #if data error field does not exist, return an empty string
@@ -71,11 +88,6 @@ module Stamps
       def attribute_enabled?
         browser_helper.attribute_enabled? @field
       end
-
-      def disabled?
-        browser_helper.disabled? @field
-      end
-
       def data_error
         browser_helper.attribute_value @field, "data-errorqtip"
       end
@@ -111,10 +123,6 @@ module Stamps
 
       def field
         @field
-      end
-
-      def present?
-        browser_helper.present? @field
       end
 
       def wait_while_present
@@ -221,7 +229,6 @@ module Stamps
       def text
         browser_helper.text @field
       end
-
     end
 
     class Button < ClickableField
@@ -378,26 +385,6 @@ module Stamps
 
         #log.info "Field enabled? #{enabled}"
         enabled
-      end
-
-      def disabled? *args
-        case args.length
-          when 1
-            @disabled_field = args[0]
-            @field_attribute = "class"
-            @search_string = "disabled"
-          when 3
-            @disabled_field = args[0]
-            @field_attribute = args[1]
-            @search_string = args[2]
-          else
-            raise "Wrong number of arguments for enabled?"
-        end
-        attribute_value = attribute_value @disabled_field, @field_attribute
-        disabled = attribute_value.include? @search_string
-
-        #log.info "Field disabled? #{disabled}"
-        disabled
       end
 
       def attribute_value field, attribute
@@ -638,6 +625,42 @@ module Stamps
       def present? field
         begin
           field.present?
+        rescue
+          return false
+        end
+      end
+
+      def disabled? *args
+        case args.length
+          when 1
+            @disabled_field = args[0]
+            @field_attribute = "class"
+            @search_string = "disabled"
+          when 3
+            @disabled_field = args[0]
+            @field_attribute = args[1]
+            @search_string = args[2]
+          else
+            raise "Wrong number of arguments for enabled?"
+        end
+        attribute_value = attribute_value @disabled_field, @field_attribute
+        disabled = attribute_value.include? @search_string
+
+        #log.info "Field disabled? #{disabled}"
+        disabled
+      end
+
+      def exist? field
+        begin
+          field.exist?
+        rescue
+          return false
+        end
+      end
+
+      def visible? field
+        begin
+          field.visible?
         rescue
           return false
         end
