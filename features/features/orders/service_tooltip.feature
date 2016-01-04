@@ -26,7 +26,7 @@ Feature: Service Tooltip
     Then Expect Order Details Service Tooltip for "Priority Mail Express International Padded Flat Rate Envelope" to include "Ship up to 4 lbs. with pricing that varies by country, not weight.  You must use the 9 1/2" x 12 1/2" USPS-provided padded envelope which can be ordered for free from Stamps.com."
     Then Expect Order Details Service Tooltip for "Priority Mail Express International Legal Flat Rate Envelope" to include "Ship up to 4 lbs. with pricing that varies by country, not weight.  You must use the 9 1/2" x 15" USPS-provided envelopes which can be ordered for free from Stamps.com."
 
-
+  @service_tooltip
   Scenario: Domestic Service Tooltip Tests
     And I Add a new order
 

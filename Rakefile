@@ -252,8 +252,3 @@ Cucumber::Rake::Task.new(:eva_dev) do |t|
   t.profile = 'eva_dev'
   t.cucumber_opts = "-p cuke_reports"
 end
-
-Cucumber::Rake::Task.new(:service_tooltip) do |t|
-  t.profile = 'service_tooltip'
-  t.cucumber_opts = "-p cuke_reports"
-end

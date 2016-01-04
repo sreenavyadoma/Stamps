@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @new_country_code_2 --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
+rob_dev: --tags @service_tooltip --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
 eli_dev: --tags @purchasing --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
@@ -52,6 +52,5 @@ auto_suggest: --tags @auto_suggest --guess VERBOSE=false
 new_country_code: --tags  @new_country_code --guess VERBOSE=false
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false
 international_rules_engine: --tags  @international_rules_engine --guess VERBOSE=false
-service_tooltip: --tags  @service_tooltip --guess VERBOSE=false
 
 
