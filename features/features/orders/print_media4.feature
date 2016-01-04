@@ -11,7 +11,7 @@ Feature: Print Media - Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 2
     Then Open Print Modal
-    Then Select Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print
     And Sign out
 

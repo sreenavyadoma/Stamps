@@ -34,7 +34,7 @@ Feature: Print CN22 and CP72 Layouts
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
     Then Open Print Modal
-    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal left-side label
     And Expect Print Modal left-side label selected
     And Expect Print Window requires 1 label sheets
@@ -57,7 +57,7 @@ Feature: Print CN22 and CP72 Layouts
     Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Open Print Modal
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     Then Print
@@ -79,7 +79,7 @@ Feature: Print CN22 and CP72 Layouts
     Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Open Print Modal
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal right-side label
     Then Expect Print Modal right-side label selected
     Then Print
@@ -101,7 +101,7 @@ Feature: Print CN22 and CP72 Layouts
     Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Open Print Modal
-    Then Select Print Media "Roll - 4" x 6" Shipping Label"
+    Then Set Print Modal Media "Roll - 4" x 6" Shipping Label"
     Then Print
     Then Sign out
 
@@ -121,6 +121,6 @@ Feature: Print CN22 and CP72 Layouts
     Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Open Print Modal
-    Then Select Print Media "Roll - 4" x 6" Shipping Label"
+    Then Set Print Modal Media "Roll - 4" x 6" Shipping Label"
     Then Print
     Then Sign out

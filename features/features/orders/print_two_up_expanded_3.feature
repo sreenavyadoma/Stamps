@@ -13,7 +13,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     And Expect Print Window requires 1 label sheets
@@ -31,7 +31,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Insured Value to $1.09
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Select Print Modal right-side label
     Then Expect Print Modal right-side label selected
     And Expect Print Window requires 1 label sheets
@@ -54,7 +54,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 2 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     And Expect Print Window requires 1 label sheets
@@ -77,7 +77,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 2 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal right-side label
     And Expect Print Modal right-side label selected
     And Expect Print Window requires 2 label sheets
@@ -106,7 +106,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 3 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     And Expect Print Window requires 2 label sheets
@@ -133,7 +133,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Close customs form
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     And Expect Print Window requires 1 label sheets
@@ -156,7 +156,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Close customs form
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal right-side label
     Then Expect Print Modal right-side label selected
     And Expect Print Window requires 1 label sheets
@@ -194,7 +194,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 2 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     Then Print
@@ -230,7 +230,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 2 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal right-side label
     And Expect Print Modal right-side label selected
     And Expect Print Window requires 2 label sheets
@@ -280,7 +280,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 3 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     Then Print
@@ -348,7 +348,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 6 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     Then Print
@@ -365,7 +365,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     And Expect Print Window requires 1 label sheets
@@ -383,7 +383,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ounces to 1
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal right-side label
     Then Expect Print Modal right-side label selected
     And Expect Print Window requires 1 label sheets
@@ -407,7 +407,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 2 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     And Expect Print Window requires 1 label sheets
@@ -432,7 +432,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 2 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal right-side label
     And Expect Print Modal right-side label selected
     And Expect Print Window requires 2 label sheets
@@ -466,7 +466,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 3 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     And Expect Print Window requires 2 label sheets
@@ -490,7 +490,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Close customs form
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     Then Print
@@ -513,7 +513,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Close customs form
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal right-side label
     Then Expect Print Modal right-side label selected
     Then Print
@@ -549,7 +549,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 2 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     Then Print
@@ -584,7 +584,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Edit row 2 on the order grid
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Select Print Modal right-side label
     And Expect Print Modal right-side label selected
     And Expect Print Window requires 2 label sheets

@@ -34,6 +34,7 @@ Feature:  New Country Code for Curacao and Country Bonaire, Sint Eustatius, and 
     Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Open Print Modal
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"
     And Print
     Then Sign out
@@ -55,6 +56,7 @@ Feature:  New Country Code for Curacao and Country Bonaire, Sint Eustatius, and 
     Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
     Then Close customs form
     Then Open Print Modal
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"
     And Print
     Then Sign out

@@ -16,6 +16,6 @@ Feature: Thermal Printer
     Then Set Order Details Length to 1
     Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
-    Then Select Print Media "Roll - 4" x 6" Shipping Label"
+    Then Set Print Modal Media "Roll - 4" x 6" Shipping Label"
     Then Print
     And Sign out

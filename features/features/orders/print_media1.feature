@@ -11,7 +11,7 @@ Feature: Print Media - Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 1
     Then Open Print Modal
-    Then Select Print Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
+    Then Set Print Modal Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
     Then Print
     And Sign out
 

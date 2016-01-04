@@ -369,6 +369,7 @@ Then /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit P
   item.unit_price.set price
   item.lbs.set lbs
   item.oz.set oz
+  sleep 2
   item.origin_country.select origin_country
   item.hs_tariff.set tariff
 end
@@ -388,6 +389,7 @@ Then /^Set customs form I agree to (\w+)$/ do |agree_str|
   log.info "Step: Set customs form I agree to #{agree_str}"
   agree = agree_str.downcase == "true"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  sleep 1
   @customs_form.i_agree agree
 end
 

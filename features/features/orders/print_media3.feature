@@ -11,7 +11,7 @@ Feature: Print Media - Shipping Label - 5 ½" x 8 ½"
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 4
     Then Open Print Modal
-    Then Select Print Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Print
     And Sign out
 

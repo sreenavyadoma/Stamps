@@ -71,8 +71,8 @@ When /^Open Print Modal$/ do
   @print_window = orders.toolbar.print
 end
 
-Then /^Select Print Media \"(.*)\"$/ do |print_media|
-  log.info "Step: Select Print Media #{print_media}"
+Then /^Set Print Modal Media \"(.*)\"$/ do |print_media|
+  log.info "Step: Set Print Modal Media #{print_media}"
   orders.toolbar.print.printing_on.select print_media
 end
 
