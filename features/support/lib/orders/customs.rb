@@ -74,7 +74,7 @@ module Orders
   class CustomsItemGrid < OrdersObject
 
     def line_item_count
-      (@browser.tables :css => "div[id^=customsItemsGrid-]>div>div>table").size
+      (@browser.tables :css => "div[id^=associatedcustomsitems]>div[id^=singlecustomsitem]").size
     end
 
     def item number
@@ -82,9 +82,11 @@ module Orders
       log.info "Item Count: #{line_item_count}"
 
       20.times{
+        break if line_item_count >= number
+        sleep 1
+        break if line_item_count >= number
         add_button.safe_click if number > line_item_count
         log.info "Item Count: #{line_item_count}"
-        break if line_item_count >= number
       }
 
       log.info "User Entered Number: #{number}. Actual Item Count: #{line_item_count}"

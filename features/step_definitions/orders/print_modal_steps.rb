@@ -31,13 +31,13 @@ When /^Select Print Modal right-side label$/ do
 end
 
 Then /^Expect Print Modal right-side label selected$/ do
-  log.info "Expectation: Expect Print Modal right-side label selected"
+  log.info "Step: Expect Print Modal right-side label selected"
   selected = orders.toolbar.print.starting_label.right_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
 end
 
 Then /^Expect Print Modal left-side label selected$/ do
-  log.info "Expectation: Expect Print Modal left-side label selected"
+  log.info "Step: Expect Print Modal left-side label selected"
   selected = orders.toolbar.print.starting_label.left_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
 end
@@ -47,7 +47,7 @@ Then /^Expect Shipped Tab Date Printed to be today$/ do
   orders.filter.shipped.print_date.sort.descending
   actual_print_date = orders.filter.shipped.print_date.row 1
   log.info "#{(actual_print_date)}"
-  log.info "Expectation: Shipped Tab Date Printed to be today #{today}"
+  log.info "Step: Shipped Tab Date Printed to be today #{today}"
 end
 
 Then /^Expect Shipped Tab Ship Date to be today$/ do
@@ -59,7 +59,7 @@ Then /^Expect Shipped Tab Ship Date to be today plus (\d+)/ do |day|
 end
 
 Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
-  log.info "Expectation: Expect Print Window Ship Date to be #{day} day(s) from today"
+  log.info "Step: Expect Print Window Ship Date to be #{day} day(s) from today"
   actual = orders.toolbar.print.ship_date.text
   expected = test_helper.print_date day
   log.info "Expect Print Window Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
@@ -147,7 +147,7 @@ When /^Print expecting some orders can not be printed$/ do
 end
 
 Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  log.info "Expectation: Expect Print Window title to be \"You have #{expectation} label\(s\) ready to print\""
+  log.info "Step: Expect Print Window title to be \"You have #{expectation} label\(s\) ready to print\""
   actual = orders.toolbar.print.labels_ready_to_print
   orders.toolbar.print.close
   log.info "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
@@ -155,7 +155,7 @@ Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print
 end
 
 Then /^Expect Print Window requires (\d+) label sheets$/ do |sheets|
-  log.info "Expectation: Expect Print Window requires #{sheets} label sheets"
+  log.info "Step: Expect Print Window requires #{sheets} label sheets"
   actual = orders.toolbar.print.labels_required
   log.info "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheets==actual)?'Passed':'Failed'}"
   actual.should eql sheets

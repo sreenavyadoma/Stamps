@@ -4,25 +4,27 @@ Feature:  New Country Code for Curacao and Country Bonaire, Sint Eustatius, and 
   Background:
     Given I am signed in to Orders
 
-  @new_country_code
+  @new_country_code @new_country_code_1
   Scenario: User Able to Selects new Country Curacao
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to Curacao
+    Then Set Order Details Ship-To Country to Curacao
+    Then Expect Order Details Ship-To Country is Curacao
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to Bonaire, Sint Eustatius and Saba
+    Then Set Order Details Ship-To Country to Bonaire, Sint Eustatius and Saba
+    Then Expect Order Details Ship-To Country is Bonaire, Sint Eustatius and Saba
 
 
-
-  #User Able to Print with  new   country Curacao
+  @new_country_code @new_country_code_2
+  Scenario: Print Curacao orders
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Curacao | random  | random  |
-    Then Set Order Details Ship-To country to Curacao
+    Then Set Order Details Ship-To Country to Curacao
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     Then Set Order Details Ounces to 2
     Then Set Order Details Pounds to 2
@@ -36,8 +38,9 @@ Feature:  New Country Code for Curacao and Country Bonaire, Sint Eustatius, and 
     And Print
     Then Sign out
 
-
      #User Able to Print with  new   country Country Bonaire, Sint Eustatius, and Saba
+  @new_country_code @new_country_code_3
+  Scenario: Print Bonaire, Sint Eustatius, and Saba orders
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address

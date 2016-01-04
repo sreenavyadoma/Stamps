@@ -317,7 +317,7 @@ Feature: Test Development
   Scenario: Domestic FPO Address
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to United States
+    Then Set Order Details Ship-To Country to United States
     Then Set Order Details Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |

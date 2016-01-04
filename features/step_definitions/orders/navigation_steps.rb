@@ -36,7 +36,7 @@
 
 
 Then /^Expect \$(\d+) is added to customer balance$/ do |balance|
-  log.info "Expectation: Expect \$#{balance} is added to customer balance"
+  log.info "Step: Expect \$#{balance} is added to customer balance"
   log.info "Store new balance"
   sleep 4
   @new_balance = orders.navbar.balance

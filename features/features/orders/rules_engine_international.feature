@@ -7,7 +7,7 @@ Feature: International Field Validation
   Scenario: Two character minimum for Name & Company
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to Antigua & Barbuda
+    Then Set Order Details Ship-To Country to Antigua & Barbuda
     Then Set International Ship-To Name to "a"
     Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
 
@@ -30,7 +30,7 @@ Feature: International Field Validation
   Scenario: Add Missing Validation Logic for Phone and International Email
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to Australia
+    Then Set Order Details Ship-To Country to Australia
     Then Set International Ship-To Name to ""
     Then Expect Order Details International Name data error tooltip to be "A First Name and Last Name or Company are required"
     Then Set International Ship-To Company to ""
@@ -285,7 +285,7 @@ Feature: International Field Validation
   Scenario: Cuba - Internal Transaction # Required
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to Cuba
+    Then Set Order Details Ship-To Country to Cuba
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
@@ -322,7 +322,7 @@ Feature: International Field Validation
   Scenario: North Korea - Internal Transaction # Required
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to Democratic People's Republic of (North) Korea
+    Then Set Order Details Ship-To Country to Democratic People's Republic of (North) Korea
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea| random  | random  |

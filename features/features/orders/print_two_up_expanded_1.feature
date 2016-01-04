@@ -1,9 +1,7 @@
-
 Feature:  As a batch shipper, I want to be able to print multiple labels
 
   Background:
     Given I am signed in to Orders
-
 
   @two_up_expanded @two_up_expanded_1
   Scenario: User Prints 1 Domestic label on 8.5x11 - left side
@@ -30,9 +28,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ship-To address to PM Package, SDC-1200 Right Side 1, 5912 83rd St., Lubbock TX 79424-3608
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 1
-    Then Set Order Details Length to 1
-    Then Set Order Details Width to 1
-    Then Set Order Details Height to 1
     Then Set Order Details Insured Value to $1.09
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
@@ -124,7 +119,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
   Scenario: User Prints 1 FPO CN22 Label on 8.5x11 - left side
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to United States
+    Then Set Order Details Ship-To Country to United States
     Then Set Order Details Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | PM RR Box B | Domestic FPO 8.5x11 | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -149,7 +144,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
   Scenario: User Prints 1 FPO CN22 label on 8.5x11 - right side
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to United States
+    Then Set Order Details Ship-To Country to United States
     Then Set Order Details Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | PM RR Box C | 8.5x11 Right Side 1 | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -478,7 +473,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-
   @two_up_expanded
   Scenario: User Prints 1 Intl CP72 label on 5.5x8.5 - left side
     # 1 CP72 label 5 ½" x 8 ½"
@@ -501,7 +495,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Expect Print Modal left-side label selected
     Then Print
     Then Sign out
-
 
   @two_up_expanded
   Scenario: User Prints 1 Intl CP72 label on 5.5x8.5 - right side
@@ -561,7 +554,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Expect Print Modal left-side label selected
     Then Print
     Then Sign out
-
 
   Scenario: User Prints 2 Intl CN22 labels on 5.5x8.5 - right side
     And I Add a new order

@@ -71,7 +71,7 @@ Then /^Uncheck USPS Terms in Settings Modal$/ do
 end
 
 Then /^Expect Show Unavailable Services Unchecked$/ do
-  log.info "Expectation: Expect Show Unavailable Services Unchecked"
+  log.info "Step: Expect Show Unavailable Services Unchecked"
 
   actual = orders.toolbar.settings_modal.get_checkbox_status(1)
   #log_expectation_eql "Show Unavailable Services", false, actual
@@ -79,7 +79,7 @@ Then /^Expect Show Unavailable Services Unchecked$/ do
 end
 
 Then /^Expect Dont Show Print Confirmation Dialog Unchecked$/ do
-  log.info "Expectation: Expect Dont Show Print Confirmation Dialog Unchecked"
+  log.info "Step: Expect Dont Show Print Confirmation Dialog Unchecked"
   actual = orders.toolbar.settings_modal.get_checkbox_status(2)
   #log_expectation_eql "Dont Show Print Confirmation Dialog", false, actual
   actual.should eql false
@@ -87,7 +87,7 @@ Then /^Expect Dont Show Print Confirmation Dialog Unchecked$/ do
 end
 
 Then /^Expect USPS Terms Unchecked in Settings Modal$/ do
-  log.info "Expectation: Expect USPS Terms Unchecked in Settings Modal"
+  log.info "Step: Expect USPS Terms Unchecked in Settings Modal"
   actual = orders.toolbar.settings_modal.get_checkbox_status(3)
   #log_expectation_eql "USPS Restrictions", false, actual
   actual.should eql false
@@ -95,7 +95,7 @@ Then /^Expect USPS Terms Unchecked in Settings Modal$/ do
 end
 
 Then /^Expect Save Delivery Addresses Unchecked$/ do
-  log.info "Expectation: Expect Save Delivery Addresses Unchecked"
+  log.info "Step: Expect Save Delivery Addresses Unchecked"
   actual = orders.toolbar.settings_modal.get_checkbox_status(4)
   #log_expectation_eql "Save Delivery Addresses", false, actual
   actual.should eql false
@@ -111,7 +111,7 @@ Then /^Expect Email Shipment Notifications Unchecked$/ do
 end
 
 Then /^Expect Email Shipment Deliveries Unchecked$/ do
-  log.info "Expectation: Expect Email Shipment Deliveries Unchecked"
+  log.info "Step: Expect Email Shipment Deliveries Unchecked"
   actual = orders.toolbar.settings_modal.get_checkbox_status(6)
   #log_expectation_eql "Email Shipment Deliveries", false, actual
   actual.should eql false
@@ -120,7 +120,7 @@ end
 
 
 Then /^Expect Show Unavailable Services Checked$/ do
-  log.info "Expectation: Expect Show Unavailable Services Checked"
+  log.info "Step: Expect Show Unavailable Services Checked"
 
   actual = orders.toolbar.settings_modal.get_checkbox_status(1)
   #log_expectation_eql "Show Unavailable Services", true, actual
@@ -129,7 +129,7 @@ Then /^Expect Show Unavailable Services Checked$/ do
 end
 
 Then /^Expect Dont Show Print Confirmation Dialog Checked$/ do
-  log.info "Expectation: Expect Dont Show Print Confirmation Dialog Checked"
+  log.info "Step: Expect Dont Show Print Confirmation Dialog Checked"
   actual = orders.toolbar.settings_modal.get_checkbox_status(2)
   #log_expectation_eql "Dont Show Print Confirmation Dialog", true, actual
   actual.should eql true
@@ -137,7 +137,7 @@ Then /^Expect Dont Show Print Confirmation Dialog Checked$/ do
 end
 
 Then /^Expect USPS Terms Checked in Settings Modal$/ do
-  log.info "Expectation: Expect USPS Terms Checked in Settings Modal"
+  log.info "Step: Expect USPS Terms Checked in Settings Modal"
   actual = orders.toolbar.settings_modal.get_checkbox_status(3)
   #log_expectation_eql "USPS Restrictions", true, actual
   actual.should eql true
@@ -145,7 +145,7 @@ Then /^Expect USPS Terms Checked in Settings Modal$/ do
 end
 
 Then /^Expect Save Delivery Addresses Checked$/ do
-  log.info "Expectation: Expect Save Delivery Addresses Checked"
+  log.info "Step: Expect Save Delivery Addresses Checked"
   actual = orders.toolbar.settings_modal.get_checkbox_status(4)
   #log_expectation_eql "Save Delivery Addresses", true, actual
   actual.should eql true
@@ -153,7 +153,7 @@ Then /^Expect Save Delivery Addresses Checked$/ do
 end
 
 Then /^Expect Email Shipment Notifications Checked$/ do
-  log.info "Expectation: Expect Email Shipment Notifications Checked"
+  log.info "Step: Expect Email Shipment Notifications Checked"
   actual = orders.toolbar.settings_modal.get_checkbox_status(5)
   #log_expectation_eql "Email Shipment Notifications", true, actual
   actual.should eql true
@@ -161,7 +161,7 @@ Then /^Expect Email Shipment Notifications Checked$/ do
 end
 
 Then /^Expect Email Shipment Deliveries Checked$/ do
-  log.info "Expectation: Expect Email Shipment Deliveries Checked"
+  log.info "Step: Expect Email Shipment Deliveries Checked"
   actual = orders.toolbar.settings_modal.get_checkbox_status(6)
   #log_expectation_eql "Email Shipment Deliveries", true, actual
   actual.should eql true
@@ -188,7 +188,7 @@ Then /^Change Postage Balance Notification Amount to (.*)$/ do |amount|
 end
 
 Then /^Expect Logoff Time to be (.*)$/ do |duration|
-  log.info "Expectation: Expect Logoff Time to be #{duration}"
+  log.info "Step: Expect Logoff Time to be #{duration}"
   actual = orders.toolbar.settings_modal.get_logoff_time
   #log_expectation_eql "Logoff Time", duration, actual
   actual.should eql duration
@@ -196,7 +196,7 @@ Then /^Expect Logoff Time to be (.*)$/ do |duration|
 end
 
 Then /^Expect Postdate Time to be (.*)$/ do |time|
-  log.info "Expectation: Expect Postdate Time to be #{time}"
+  log.info "Step: Expect Postdate Time to be #{time}"
   actual = orders.toolbar.settings_modal.get_postdate_time
   #log_expectation_eql "Postdate Time", time, actual
   actual.should eql time
@@ -204,7 +204,7 @@ Then /^Expect Postdate Time to be (.*)$/ do |time|
 end
 
 Then /^Expect Postage Balance Notification Amount to be (.*)$/ do |amount|
-  log.info "Expectation: Expect Postage Balance Notification Amount to be #{amount}"
+  log.info "Step: Expect Postage Balance Notification Amount to be #{amount}"
   actual = orders.toolbar.settings_modal.get_balance_notification_amt
   #log_expectation_eql "Balance Notification Amount", amount, actual
   actual.should eql amount

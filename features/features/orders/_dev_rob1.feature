@@ -25,8 +25,8 @@ Feature: Test Development
 
   Scenario:
     And I Add a new order
-    Then Set Order Details Ship-To country to Canada
-    Then Set Order Details Ship-To country to United States
+    Then Set Order Details Ship-To Country to Canada
+    Then Set Order Details Ship-To Country to United States
     Then Set Order Details Ship-From to default
 
     Then Set Order Details Ship-From to default
