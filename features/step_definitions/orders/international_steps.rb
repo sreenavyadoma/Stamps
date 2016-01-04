@@ -366,12 +366,27 @@ Then /^Add or Edit Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit P
   item = @customs_item_grid.item item_number.to_i
   item.item_description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
   item.qty.set qty
+  item.qty.safe_double_click
+  item.qty.safe_click
+  sleep 1
   item.unit_price.set price
+  item.unit_price.safe_double_click
+  item.unit_price.safe_click
+  sleep 1
   item.lbs.set lbs
+  item.lbs.safe_double_click
+  item.lbs.safe_click
+  sleep 1
   item.oz.set oz
-  sleep 2
+  item.oz.safe_double_click
+  item.oz.safe_click
+  sleep 1
   item.origin_country.select origin_country
+  sleep 1
   item.hs_tariff.set tariff
+  item.hs_tariff.safe_double_click
+  item.hs_tariff.safe_click
+  sleep 1
 end
 
 Then /^Delete Customs Form Item (\d+)$/ do |item_number|
@@ -513,6 +528,14 @@ Then /^Expect Customs Form Total Weight Data Error to be (.+)$/ do |value|
   browser_value = @customs_form.total_weight.data_error
   log.info "Total Weight Data Error - #{(browser_value.include? value)?'Passed':'Failed'}.  Expectation:  #{value}, Actual Result:  #{browser_value}"
   browser_value.should include value
+end
+
+Then /^Sleep (\d+)$/ do |seconds|
+  step "Wait #{seconds}"
+end
+
+Then /^Wait (\d+)$/ do |seconds|
+  sleep seconds.to_i
 end
 
 Then /^Close customs form$/ do

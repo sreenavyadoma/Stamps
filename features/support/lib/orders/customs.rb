@@ -160,12 +160,6 @@ module Orders
     def oz_decrement value
 
     end
-=begin
-
-    def origin_country
-      Textbox.new origin_country_input
-    end
-=end
 
     def origin_country_input
       (@browser.text_fields :name => "OriginCountryCode")[@number-1]
@@ -286,7 +280,6 @@ module Orders
   end
 
   class CustomsForm < OrdersObject
-    public
 
     def present?
       Button.new @browser.image :css => "img[class*='x-tool-close']"
@@ -383,7 +376,7 @@ module Orders
 
     def i_agree user_agreed
 
-      checkbox_fields = @browser.inputs :css => "input[id^=checkbox-][id$=-inputEl]"
+      checkbox_fields = @browser.inputs :css => "input[id^=checkbox-]"
       checkbox_field = checkbox_fields.last
 
       verify_fields = @browser.inputs :css => "div[id^=checkbox][class*=x-form-type-checkbox]"
