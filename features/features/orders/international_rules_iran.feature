@@ -1,11 +1,10 @@
-Feature: Iran - Internal Transaction Number Required
+Feature: Iran Internal Transaction Number Required
 
   Background:
     Given I am signed in to Orders
 
   @international_rules_engine
-  # Iran - Internal Transaction #
-  Scenario: Iran - Internal Transaction Number Required
+  Scenario: Iran Internal Transaction Number Required
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
