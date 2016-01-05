@@ -522,7 +522,7 @@ Then /^Expect Customs Form Total Pounds to be (.+)$/ do |expectation|
   20.times do
     sleep 1
     item.qty.safe_click
-    item.qty.double_safe_click
+    item.qty.safe_double_click
     item.hs_tariff.safe_double_click
     item.hs_tariff.safe_click
     actual_value = @customs_form.total_weight_lbs
@@ -540,7 +540,7 @@ Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
   20.times do
     sleep 1
     item.qty.safe_click
-    item.qty.double_safe_click
+    item.qty.safe_double_click
     item.hs_tariff.safe_double_click
     item.hs_tariff.safe_click
     actual_value = @customs_form.total_weight_oz
