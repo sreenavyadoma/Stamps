@@ -395,7 +395,7 @@ end
 
 Then /^Delete Customs Form Item (\d+)$/ do |item_number|
   log.info "Step: Delete Customs Form Item #{item_number}"
-  count = @customs_item_grid.line_item_count
+  count = @customs_item_grid.size
   item = @customs_item_grid.item item_number.to_i
   if count > 1
     item.delete.click_while_present
@@ -503,7 +503,7 @@ end
 Then /^Expect Customs Form Item Grid count to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Item Grid count to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  @customs_form.item_grid.line_item_count.should eql expectation.to_i
+  @customs_form.item_grid.size.should eql expectation.to_i
 end
 
 Then /^Expect Customs Form Total Value to be (.+)$/ do |expectation|
@@ -521,10 +521,6 @@ Then /^Expect Customs Form Total Pounds to be (.+)$/ do |expectation|
   item = @customs_item_grid.item 1
   20.times do
     sleep 1
-    item.qty.safe_click
-    item.qty.safe_double_click
-    item.hs_tariff.safe_double_click
-    item.hs_tariff.safe_click
     actual_value = @customs_form.total_weight_lbs
     log.info "Custom Info Actual Total Weight(lbs): #{actual_value}.  Expected:  #{expectation}"
     break if actual_value == expectation
@@ -539,10 +535,6 @@ Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
   item = @customs_item_grid.item 1
   20.times do
     sleep 1
-    item.qty.safe_click
-    item.qty.safe_double_click
-    item.hs_tariff.safe_double_click
-    item.hs_tariff.safe_click
     actual_value = @customs_form.total_weight_oz
     log.info "Custom Info Actual Total Weight(Oz): #{actual_value}.  Expected:  #{expectation}"
     break if actual_value == expectation
@@ -571,7 +563,7 @@ end
 Then /^Expect Customs Form Tooltip Error for Qty to be (.*)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Qty to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  data_error_qtip = @customs_form.item_grid.item(1).qty.data_error_qtip
+  data_error_qtip = @customs_form.item_grid.item(1).qty.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end

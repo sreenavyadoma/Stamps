@@ -67,32 +67,56 @@ module Orders
 
   class CustomsItemGrid < OrdersObject
 
-    def line_item_count
+    def size
       (@browser.tables :css => "div[id^=associatedcustomsitems]>div[id^=singlecustomsitem]").size
     end
 
     def item number
       add_button = Button.new (@browser.spans :text => "Add Item").last
-      log.info "Item Count: #{line_item_count}"
+      log.info "Item Count: #{size}"
 
       20.times{
-        break if line_item_count >= number
+        break if size >= number
         sleep 1
-        break if line_item_count >= number
-        add_button.safe_click if number > line_item_count
-        log.info "Item Count: #{line_item_count}"
+        break if size >= number
+        add_button.safe_click if number > size
+        log.info "Item Count: #{size}"
       }
 
-      log.info "User Entered Number: #{number}. Actual Item Count: #{line_item_count}"
+      log.info "User Entered Number: #{number}. Actual Item Count: #{size}"
 
-      CustomsLineItem.new(@browser).line_item number
+      CustomsLineItem.new @browser, number
     end
   end
 
   class CustomsLineItem < OrdersObject
-    def line_item number
+
+    class Qty < OrdersObject
+      def initialize browser, number
+        super browser
+        @number = number
+      end
+
+      def text_box
+        Textbox.new ((@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]), "data-errorqtip"
+      end
+
+      def set value
+        text_box.set value
+      end
+
+      def increment value
+
+      end
+
+      def decrement value
+
+      end
+    end
+
+    def initialize browser, number
+      super browser
       @number = number
-      self
     end
 
     def present?
@@ -108,15 +132,7 @@ module Orders
     end
 
     def qty
-      Textbox.new ((@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]), "data-errorqtip"
-    end
-
-    def qty_increment value
-
-    end
-
-    def qty_decrement value
-
+      Qty.new @browser, @number
     end
 
     def unit_price
