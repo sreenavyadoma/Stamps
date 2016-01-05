@@ -342,9 +342,7 @@ module Orders
     end
 
     def total_value
-      divs = @browser.divs :css => "div[class*=x-form-display-field-default]"
-      div = divs.last
-      test_helper.remove_dollar_sign (Label.new div).text
+      test_helper.remove_dollar_sign (Label.new (@browser.divs :css => "div[class*=x-form-display-field-default]").last).text
     end
 
     def i_agree user_agreed
