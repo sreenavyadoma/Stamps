@@ -518,8 +518,13 @@ end
 Then /^Expect Customs Form Total Pounds to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Total Pounds to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  item = @customs_item_grid.item 1
   20.times do
     sleep 1
+    item.qty.safe_click
+    item.qty.double_safe_click
+    item.hs_tariff.safe_double_click
+    item.hs_tariff.safe_click
     actual_value = @customs_form.total_weight_lbs
     log.info "Custom Info Actual Total Weight(lbs): #{actual_value}.  Expected:  #{expectation}"
     break if actual_value == expectation
@@ -531,8 +536,13 @@ end
 Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Total Ounces to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  item = @customs_item_grid.item 1
   20.times do
     sleep 1
+    item.qty.safe_click
+    item.qty.double_safe_click
+    item.hs_tariff.safe_double_click
+    item.hs_tariff.safe_click
     actual_value = @customs_form.total_weight_oz
     log.info "Custom Info Actual Total Weight(Oz): #{actual_value}.  Expected:  #{expectation}"
     break if actual_value == expectation
