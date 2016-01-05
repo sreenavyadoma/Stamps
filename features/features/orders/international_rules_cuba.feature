@@ -1,10 +1,10 @@
-Feature: Cuba - Internal Transaction # Required
+Feature: Cuba - Internal Transaction Number Required
 
   Background:
     Given I am signed in to Orders
 
   @international_rules_engine
-  Scenario: Cuba - Internal Transaction # Required
+  Scenario: Cuba - Internal Transaction Number Required
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To Country to Cuba

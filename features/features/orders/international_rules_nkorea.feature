@@ -1,10 +1,10 @@
-Feature: North Korea - Internal Transaction # Required
+Feature: North Korea - Internal Transaction Number Required
 
   Background:
     Given I am signed in to Orders
 
   @international_rules_engine
-  Scenario: North Korea - Internal Transaction # Required
+  Scenario: North Korea - Internal Transaction Number Required
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To Country to Democratic People's Republic of (North) Korea

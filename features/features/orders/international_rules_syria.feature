@@ -1,10 +1,10 @@
-Feature: Syria - Internal Transaction # Required
+Feature: Syria - Internal Transaction Number Required
 
   Background:
     Given I am signed in to Orders
 
   @international_rules_engine
-  Scenario: Syria - Internal Transaction # Required
+  Scenario: Syria - Internal Transaction Number Required
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address

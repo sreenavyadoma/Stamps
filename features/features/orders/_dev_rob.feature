@@ -275,7 +275,7 @@ Feature: Test Development
     Then List all Grid column values for row 3
 
   @rob_dev_customs_form_dropdowns
-  Scenario: Syria - Internal Transaction # Required
+  Scenario: Syria - Internal Transaction Number Required
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address

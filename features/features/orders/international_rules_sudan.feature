@@ -1,11 +1,11 @@
-Feature: Sudan - Internal Transaction # Required
+Feature: Sudan - Internal Transaction Number Required
 
   Background:
     Given I am signed in to Orders
 
-      # Sudan - Internal Transaction # Required
+      # Sudan - Internal Transaction Number Required
   @international_rogue_countries @international_rules_engine
-  Scenario: Sudan - Internal Transaction # Required
+  Scenario: Sudan - Internal Transaction Number Required
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
