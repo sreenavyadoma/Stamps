@@ -15,17 +15,41 @@ Feature:  Customs Form Totals
     Then Set Order Details Item - Quantity 1, ID random, Description random
     Then Open customs form
     Then Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin Zimbabwe, Tariff 100
-    Then Wait in seconds 2
+    Then Wait in seconds 1
+    Then Close Customs Form
+    Then Wait in seconds 1
+    Then Open customs form
+    Then Wait in seconds 1
     Then Expect Customs Form Total Value to be 100.50
     Then Wait in seconds 1
+    Then Close Customs Form
+    Then Wait in seconds 1
+    Then Open customs form
+    Then Wait in seconds 1
     Then Expect Customs Form Total Pounds to be 1
+    Then Wait in seconds 1
+    Then Close Customs Form
+    Then Wait in seconds 1
+    Then Open customs form
     Then Wait in seconds 1
     Then Expect Customs Form Total Ounces to be 1
     Then Add Customs Form Item 2; Description=random, Qty 1, Unit Price 100.25, Weight(lbs) 1, Weight(oz) 1 Origin Afghanistan, Tariff 100
     Then Wait in seconds 2
+    Then Close Customs Form
+    Then Wait in seconds 1
+    Then Open customs form
+    Then Wait in seconds 1
     Then Expect Customs Form Total Value to be 200.75
     Then Wait in seconds 1
+    Then Close Customs Form
+    Then Wait in seconds 1
+    Then Open customs form
+    Then Wait in seconds 1
     Then Expect Customs Form Total Pounds to be 2
+    Then Wait in seconds 1
+    Then Close Customs Form
+    Then Wait in seconds 1
+    Then Open customs form
     Then Wait in seconds 1
     Then Expect Customs Form Total Ounces to be 2
     Then Set Customs Form I agree to Checked

@@ -513,20 +513,28 @@ end
 
 Then /^Expect Customs Form Total Pounds to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Total Pounds to be #{expectation}"
-  sleep 2
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  actual_value = @customs_form.total_weight_lbs
-  log.info "Custom Info Actual Total Weight(lbs): #{actual_value}.  Expected:  #{expectation}.  Test #{(actual_value == expectation)?'Passed':'Failed'}"
+  20.times do
+    sleep 1
+    actual_value = @customs_form.total_weight_lbs
+    log.info "Custom Info Actual Total Weight(lbs): #{actual_value}.  Expected:  #{expectation}"
+    break if actual_value == expectation
+  end
+  log.info "Test #{(actual_value == expectation)?'Passed':'Failed'}"
   actual_value.should eql expectation
-end
+  end
 
 Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Total Ounces to be #{expectation}"
-  sleep 2
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  browser_value = @customs_form.total_weight_oz
-  log.info "Custom Info Actual Total Weight(Oz): #{browser_value}.  Expected:  #{expectation}.  Test #{(browser_value == expectation)?'Passed':'Failed'}"
-  browser_value.should eql expectation
+  20.times do
+    sleep 1
+    actual_value = @customs_form.total_weight_oz
+    log.info "Custom Info Actual Total Weight(Oz): #{actual_value}.  Expected:  #{expectation}"
+    break if actual_value == expectation
+  end
+  log.info "Test #{(actual_value == expectation)?'Passed':'Failed'}"
+  actual_value.should eql expectation
 end
 
 Then /^Expect Customs Form Tooltip Error for Total Weight to be (.+)$/ do |expectation|
