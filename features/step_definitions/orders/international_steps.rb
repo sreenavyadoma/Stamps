@@ -364,6 +364,18 @@ Then /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price ([\
   log.info "Step: Add Customs Form Item #{item_number}; Description=#{description}, Qty #{qty}, Unit Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i
+  sleep 1
+  item.lbs.set lbs
+  item.lbs.send_keys :enter
+  item.lbs.set lbs
+  item.lbs.safe_double_click
+  item.lbs.safe_click
+  sleep 1
+  item.oz.set oz
+  item.oz.send_keys :enter
+  item.oz.set oz
+  item.oz.safe_double_click
+  item.oz.safe_click
   item.item_description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
   item.qty.set qty
   item.qty.safe_double_click
@@ -372,14 +384,6 @@ Then /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price ([\
   item.unit_price.set price
   item.unit_price.safe_double_click
   item.unit_price.safe_click
-  sleep 1
-  item.lbs.set lbs
-  item.lbs.safe_double_click
-  item.lbs.safe_click
-  sleep 1
-  item.oz.set oz
-  item.oz.safe_double_click
-  item.oz.safe_click
   sleep 1
   item.origin_country.select origin_country
   sleep 1
@@ -522,7 +526,7 @@ Then /^Expect Customs Form Total Pounds to be (.+)$/ do |expectation|
   end
   log.info "Test #{(actual_value == expectation)?'Passed':'Failed'}"
   actual_value.should eql expectation
-  end
+end
 
 Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Total Ounces to be #{expectation}"

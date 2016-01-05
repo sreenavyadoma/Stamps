@@ -10,8 +10,9 @@ Feature:  Customs Form Totals
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
-    Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail International Package"
+    Then Set Order Details Pounds to 3
+    Then Set Order Details Ounces to 3
     Then Set Order Details Item - Quantity 1, ID random, Description random
     Then Open customs form
     Then Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin Zimbabwe, Tariff 100
