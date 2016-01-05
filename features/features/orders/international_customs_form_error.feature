@@ -31,5 +31,5 @@ Feature:  Customs Form Data Tooltip Error
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 50, Weight(lbs) 9, Weight(oz) 9 Origin United States, Tariff 100
     Then Wait in seconds 2
     Then Expect Customs Form Tooltip Error for Total Weight to be The itemized weight exceeds the package weight
-    Then Cancel Customs Form
+    Then Close Customs Form
     And Sign out

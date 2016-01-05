@@ -9,22 +9,16 @@ module Orders
 
     def select country
       log.info "Select Country #{country}"
-
-      selection = Label.new ((@browser.lis :text => country)[@index])
-
-      text_box_field = @browser.text_field :name => "OriginCountryCode"
-
+      selection = Label.new (@browser.lis :text => country)[@index]
+      text_box_field = (@browser.text_fields :name => "OriginCountryCode")[@index-1]
       text_box = Textbox.new text_box_field
       drop_down = Button.new text_box_field.parent.parent.divs[1]
 
       10.times {
         begin
           drop_down.safe_click unless selection.present?
-          if selection.present?
-            selection.scroll_into_view
-            selection.safe_click
-          end
-
+          selection.scroll_into_view
+          selection.safe_click
           log.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
           break if text_box.text.include? country
         rescue
