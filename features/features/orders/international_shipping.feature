@@ -15,7 +15,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Set Order Details Service to "Priority Mail International Package"
 
     Then Set Order Details Item - Quantity 1, ID random, Description random
-
     And Open customs form
 
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
@@ -28,7 +27,7 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Expect Customs Form Total Pounds to be 2
     Then Expect Customs Form Total Ounces to be 2
 
-    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Set Customs Form I agree to Checked
     Then Close Customs Form
     And Sign out
 
@@ -59,6 +58,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Delete Customs Form Item 1
     Then Expect Customs Form Item Grid count to be 1
 
-    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Set Customs Form I agree to Checked
     Then Close Customs Form
     And Sign out

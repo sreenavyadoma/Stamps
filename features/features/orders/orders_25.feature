@@ -17,7 +17,7 @@ Feature: 25 orders
     And Set Order Details Pounds to 2
     And Open customs form
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
-    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Set Customs Form I agree to Checked
     Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -31,7 +31,7 @@ Feature: 25 orders
     And Set Order Details Pounds to 2
     And Open customs form
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
-    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Set Customs Form I agree to Checked
     Then Close Customs Form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 

@@ -400,12 +400,12 @@ Then /^Delete Customs Form Item (\d+)$/ do |item_number|
   end
 end
 
-Then /^Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked$/ do
+Then /^Set Customs Form I agree to Checked$/ do
   log.info "Step: Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @single_order_form.customs_form.i_agree true
 end
 
-Then /^Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Unchecked$/ do
+Then /^Set Customs Form I agree to Unchecked$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @single_order_form.customs_form.i_agree false
 end

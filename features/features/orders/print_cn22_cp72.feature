@@ -17,7 +17,7 @@ Feature: Print CN22 and CP72 Layouts
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Set Customs Form I agree to Checked
     Then Close Customs Form
     And I Add a new order
     Then Set Order Details Ship-From to default
@@ -29,7 +29,7 @@ Feature: Print CN22 and CP72 Layouts
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Set Customs Form I agree to Checked
     Then Close Customs Form
     Then Edit row 1 on the order grid
     Then Edit row 2 on the order grid
@@ -54,7 +54,7 @@ Feature: Print CN22 and CP72 Layouts
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Set Customs Form I agree to Checked
     Then Close Customs Form
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
@@ -76,7 +76,7 @@ Feature: Print CN22 and CP72 Layouts
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Set Customs Form I agree to Checked
     Then Close Customs Form
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
@@ -98,7 +98,7 @@ Feature: Print CN22 and CP72 Layouts
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Set Customs Form I agree to Checked
     Then Close Customs Form
     Then Open Print Modal
     Then Set Print Modal Media "Roll - 4" x 6" Shipping Label"
@@ -118,7 +118,7 @@ Feature: Print CN22 and CP72 Layouts
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set Customs Form I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions to Checked
+    Then Set Customs Form I agree to Checked
     Then Close Customs Form
     Then Open Print Modal
     Then Set Print Modal Media "Roll - 4" x 6" Shipping Label"
