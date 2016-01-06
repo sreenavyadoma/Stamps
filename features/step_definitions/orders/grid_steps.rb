@@ -111,18 +111,18 @@ Then /^Set Orders Grid Row (\d+) to check$/ do |row|
   orders.grid.checkbox.check row
 end
 
-When /^Edit row (\d+) on the order grid$/ do |row|
-  log.info "Step: Edit row #{row} on the order grid"
+When /^Edit row (\d+) on the Orders Grid$/ do |row|
+  log.info "Step: Edit row #{row} on the Orders Grid"
   orders.grid.checkbox.check row
 end
 
-When /^Check row (\d+) on the order grid$/ do |row|
-  log.info "Step: Check row #{row} on the order grid"
-  step "Edit row #{row} on the order grid"
+When /^Check row (\d+) on the Orders Grid$/ do |row|
+  log.info "Step: Check row #{row} on the Orders Grid"
+  step "Edit row #{row} on the Orders Grid"
 end
 
-When /^Uncheck row (\d+) on the order grid$/ do |row|
-  log.info "Step: Uncheck row #{row} on the order grid"
+When /^Uncheck row (\d+) on the Orders Grid$/ do |row|
+  log.info "Step: Uncheck row #{row} on the Orders Grid"
   orders.grid.checkbox.uncheck row
   #end_step step
 end

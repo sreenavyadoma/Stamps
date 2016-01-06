@@ -31,8 +31,8 @@ Feature: Print CN22 and CP72 Layouts
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
-    Then Edit row 1 on the order grid
-    Then Edit row 2 on the order grid
+    Then Edit row 1 on the Orders Grid
+    Then Edit row 2 on the Orders Grid
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Select Print Modal left-side label

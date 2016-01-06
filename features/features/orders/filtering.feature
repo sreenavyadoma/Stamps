@@ -9,7 +9,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    Then Edit row 1 on the order grid
+    Then Edit row 1 on the Orders Grid
     Then Print
     Then Expect printed Order ID is not in Awaiting Shipment tab
     Then Expect printed Order ID is in Shipped tab
@@ -32,9 +32,9 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Media Mail Package"
 
-    Then Edit row 1 on the order grid
-    Then Edit row 2 on the order grid
-    Then Edit row 3 on the order grid
+    Then Edit row 1 on the Orders Grid
+    Then Edit row 2 on the Orders Grid
+    Then Edit row 3 on the Orders Grid
 
     Then Print
 

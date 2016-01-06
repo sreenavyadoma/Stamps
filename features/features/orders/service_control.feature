@@ -8,7 +8,7 @@
   Scenario:  Inline Rates
     And I Add a new order
     Then Set Order Details Ship-From to default
-    And Edit row 1 on the order grid
+    And Edit row 1 on the Orders Grid
 
     Then Set Order Details Ship-To address to random zone 1 through 4
     And Hide Order Details Form Ship-To fields

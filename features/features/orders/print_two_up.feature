@@ -19,8 +19,8 @@ Feature:  As a batch shipper, I want to be able to print two labels on one sheet
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     Then Set Order Details Ounces to 2
 
-    Then Edit row 1 on the order grid
-    Then Edit row 2 on the order grid
+    Then Edit row 1 on the Orders Grid
+    Then Edit row 2 on the Orders Grid
 
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"

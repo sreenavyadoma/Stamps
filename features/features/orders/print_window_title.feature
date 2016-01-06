@@ -22,8 +22,8 @@ Feature:  Printing Multiple Orders
     Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     Then Set Order Details Ounces to 1
-    And Edit row 1 on the order grid
-    And Edit row 2 on the order grid
+    And Edit row 1 on the Orders Grid
+    And Edit row 2 on the Orders Grid
 
     Then Open Print Modal
     Then Expect Print Window title to be "You have 2 label(s) ready to print"

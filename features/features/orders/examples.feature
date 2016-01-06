@@ -5,7 +5,7 @@ Feature: Examples
 
     Scenario:  Inline Rates
         And I Add a new order
-        And Edit row 1 on the order grid
+        And Edit row 1 on the Orders Grid
         Then Set Order Details Service to "Priority Mail Large/Thick Envelope"
         Then Set Order Details Service to "Priority Mail Package"
         Then Set Order Details Service to "Priority Mail Large Package"
