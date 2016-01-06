@@ -1,28 +1,6 @@
 # encoding: utf-8
 module Orders
 
-  class PrintModalObject < OrdersObject
-    def window_x_button
-      @browser.img :css => "img[class*='x-tool-img x-tool-close']"
-    end
-
-    def close_window
-      BrowserHelper.instance.click window_x_button, 'close_window'
-    end
-
-    def x_button_present?
-      BrowserHelper.instance.present? window_x_button
-    end
-
-    def wait_until_present
-      begin
-        window_x_button.wait_until_present
-      rescue
-        #ignore
-      end
-    end
-  end
-
   class UspsTerms < OrdersObject
     def present?
       (Label.new @browser.div :text => "USPS Terms").present?
@@ -64,277 +42,300 @@ module Orders
     end
   end
 
-  class StartingLabel < PrintModalObject
-    def label_divs
-      @browser.divs :css => "div[class*='label-chooser-selectable-box']"
+  class PrintModalObject < OrdersObject
+    def window_x_button
+      @browser.img :css => "img[class*='x-tool-img x-tool-close']"
     end
 
-    def left_label_div
-      label_divs[0]
+    def close_window
+      BrowserHelper.instance.click window_x_button, 'close_window'
     end
 
-    def right_label_div
-      label_divs[1]
+    def x_button_present?
+      BrowserHelper.instance.present? window_x_button
     end
 
-    def left
-      10.times{
-        browser_helper.safe_click left_label_div, "left_label"
-        return true if label_selected? left_label_div
-      }
-      false
-    end
-
-    def right
-      10.times{
-        browser_helper.click right_label_div, "right_label"
-        return true if label_selected? right_label_div
-      }
-      false
-    end
-
-    def left_selected?
-      label_selected? left_label_div
-    end
-
-    def right_selected?
-      label_selected? right_label_div
-    end
-
-    def label_selected? div
-      8.times{
-        selected = browser_helper.attribute_value(div, 'class').include? 'selected'
-        log.info "Label selected?  #{(selected)? 'Yes':'No'}"
-        break if selected
-      }
-      browser_helper.attribute_value(div, 'class').include? 'selected'
-    end
-
-    def default_selected?
-      label_selected? left_label_div
-    end
-  end
-
-  class PrintingOn < PrintModalObject
-    private
-    def selection media
-      case media
-        # Shipping Label - 8 ½" x 11" Paper
-        when /Paper/
-          return Label.new (@browser.li :text => /Paper/)
-
-        # Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-        when /SDC-1200/
-          return Label.new (@browser.li :text => /SDC-1200/)
-
-        # Shipping Label - 5 ½" x 8 ½"
-        when /x 8/
-          return Label.new (@browser.li :text => /x 8/)
-
-        # Roll - 4 ⅛" x 6 ¼" Shipping Label
-        when /x 6 ¼/
-          return Label.new (@browser.li :text => /x 6 ¼/)
-
-        # Roll - 4" x 6" Shipping Label
-        when /4" x 6"/
-          return Label.new (@browser.li :text => /4" x 6"/)
-        else
-          raise "Invalid Media Selection.  Don't know what to do with #{media}."
+    def wait_until_present
+      begin
+        window_x_button.wait_until_present
+      rescue
+        #ignore
       end
-    end
-
-    public
-    def text_box
-      Textbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
-    end
-
-    def drop_down
-      Button.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
-    end
-
-    def select media
-      drop_down = self.drop_down
-      text_box = self.text_box
-      media_selection = selection media
-
-      10.times do
-        drop_down.safe_click unless media_selection.present?
-        media_selection.safe_click
-        input_text = text_box.text
-        break if input_text.include? media
-      end
-    end
-
-    def tooltip media
-      drop_down = self.drop_down
-      media_selection = selection media
-
-      10.times do
-        begin
-          drop_down.safe_click unless media_selection.present?
-          if media_selection.present?
-            tooltip = media_selection.attribute_value "data-qtip"
-            log.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
-            if tooltip.include? "<strong>"
-              drop_down.safe_click if media_selection.present?
-              return tooltip
-            end
-          end
-        rescue
-          return ""
-        end
-      end
-    end
-  end
-
-  class DatePicker < PrintModalObject
-
-    def todays_date_div
-      div = @browser.div :css => "div[title='Today']"
-      log.info "Today div present? #{browser_helper.present? div}"
-      div
-    end
-
-    def date_field day
-      css = "td[aria-label='#{test_helper.now_plus_month_dd day.to_i}']"
-      td = @browser.td :css => css
-      present = browser_helper.present? td
-      td
-    end
-
-    def date day
-      date = date_field day
-      browser_helper.click date
-    end
-
-    def present?
-      date_picker_button.present?
-    end
-
-    def now_month_dd
-      picker = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
-      today = Button.new @browser.span :css => "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
-      10.times {
-        picker.safe_click unless today.present?
-        today.safe_click
-        sleep 1
-        return test_helper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
-      }
-      raise "Unable to select today's date from date picker object in Print Modal."
-    end
-
-    def todays_date
-      picker = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
-      today = Button.new Button.new @browser.div :css => "div[title=Today]"
-      10.times {
-        picker.safe_click unless today.present?
-        today.safe_click
-        sleep 1
-        return test_helper.now_plus_mon_dd 0
-      }
-      raise "Unable to select today's date from date picker object in Print Modal."
-    end
-
-    def today_button
-
-    end
-
-    def today
-      today_plus 0
-    end
-
-    def today_plus day
-      day = day.to_i
-      date_picker_header = Label.new @browser.div :class => "x-datepicker-header"
-      picker_button = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
-      ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"
-
-      ship_date_str = test_helper.now_plus_month_dd day
-      ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
-      date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
-
-      10.times{
-        picker_button.safe_click unless date_picker_header.present?
-
-        if date_field.field.present?
-          break
-        else
-          day += 1
-          ship_date_str = test_helper.now_plus_month_dd day
-          ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
-          date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
-        end
-      }
-
-      10.times {
-        picker_button.safe_click unless date_field.present?
-        date_field.safe_click
-        sleep 1
-        return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
-      }
-    end
-  end
-
-  class Printer < PrintModalObject
-    def drop_down
-      Button.new @browser.div :id => "sdc-printpostagewindow-printerdroplist-trigger-picker"
-    end
-
-    def text_box
-      Textbox.new @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
-    end
-
-    def select printer
-      dd = self.drop_down
-      input = self.text_box
-
-      case printer.downcase
-        when /fac/
-          selection_label = Label.new @browser.li :text => /fac/
-        when /kyocera/
-          selection_label = Label.new @browser.li :text => /Kyocera/
-        when /epson/
-          selection_label = Label.new @browser.li :text => /EPSON/
-        when /brother/
-          selection_label = Label.new @browser.li :text => /Brother/
-        when /officejet/
-          selection_label = Label.new @browser.li :text => /Officejet/
-        else
-          raise "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
-      end
-
-      5.times do
-        dd.safe_click unless selection_label.present?
-        selection_label.safe_click
-        return if input.text.include? printer
-      end
-    end
-  end
-
-  class PaperTray < PrintModalObject
-    def text_box
-      Textbox.new @browser.text_field :css => "div[id^=form-][id$=-body]>div>div>div[id^=combo]>div>div>div>input"
-    end
-
-    def drop_down
-      Button.new @browser.div :css => "div[id^=form-][id$=-body]>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"
-    end
-
-    def select selection
-      text_box = self.text_box
-      drop_down = self.drop_down
-      selection_label = Label.new @browser.li :text => selection
-
-      5.times{
-        drop_down.safe_click unless selection_label.present?
-        selection_label.safe_click
-        break if text_box.text.include? selection
-      }
-
     end
   end
 
   class PrintModal < PrintModalObject
+
+    class StartingLabel < PrintModalObject
+      def label_divs
+        @browser.divs :css => "div[class*='label-chooser-selectable-box']"
+      end
+
+      def left_label_div
+        label_divs[0]
+      end
+
+      def right_label_div
+        label_divs[1]
+      end
+
+      def left
+        10.times{
+          browser_helper.safe_click left_label_div, "left_label"
+          return true if label_selected? left_label_div
+        }
+        false
+      end
+
+      def right
+        10.times{
+          browser_helper.click right_label_div, "right_label"
+          return true if label_selected? right_label_div
+        }
+        false
+      end
+
+      def left_selected?
+        label_selected? left_label_div
+      end
+
+      def right_selected?
+        label_selected? right_label_div
+      end
+
+      def label_selected? div
+        8.times{
+          selected = browser_helper.attribute_value(div, 'class').include? 'selected'
+          log.info "Label selected?  #{(selected)? 'Yes':'No'}"
+          break if selected
+        }
+        browser_helper.attribute_value(div, 'class').include? 'selected'
+      end
+
+      def default_selected?
+        label_selected? left_label_div
+      end
+    end
+
+    class PrintingOn < PrintModalObject
+      private
+      def selection media
+        case media
+          # Shipping Label - 8 ½" x 11" Paper
+          when /Paper/
+            return Label.new (@browser.li :text => /Paper/)
+
+          # Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+          when /SDC-1200/
+            return Label.new (@browser.li :text => /SDC-1200/)
+
+          # Shipping Label - 5 ½" x 8 ½"
+          when /x 8/
+            return Label.new (@browser.li :text => /x 8/)
+
+          # Roll - 4 ⅛" x 6 ¼" Shipping Label
+          when /x 6 ¼/
+            return Label.new (@browser.li :text => /x 6 ¼/)
+
+          # Roll - 4" x 6" Shipping Label
+          when /4" x 6"/
+            return Label.new (@browser.li :text => /4" x 6"/)
+          else
+            raise "Invalid Media Selection.  Don't know what to do with #{media}."
+        end
+      end
+
+      public
+      def text_box
+        Textbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
+      end
+
+      def drop_down
+        Button.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
+      end
+
+      def select media
+        drop_down = self.drop_down
+        text_box = self.text_box
+        media_selection = selection media
+
+        10.times do
+          drop_down.safe_click unless media_selection.present?
+          media_selection.safe_click
+          input_text = text_box.text
+          break if input_text.include? media
+        end
+      end
+
+      def tooltip media
+        drop_down = self.drop_down
+        media_selection = selection media
+
+        10.times do
+          begin
+            drop_down.safe_click unless media_selection.present?
+            if media_selection.present?
+              tooltip = media_selection.attribute_value "data-qtip"
+              log.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
+              if tooltip.include? "<strong>"
+                drop_down.safe_click if media_selection.present?
+                return tooltip
+              end
+            end
+          rescue
+            return ""
+          end
+        end
+      end
+    end
+
+    class DatePicker < PrintModalObject
+
+      def todays_date_div
+        div = @browser.div :css => "div[title='Today']"
+        log.info "Today div present? #{browser_helper.present? div}"
+        div
+      end
+
+      def date_field day
+        css = "td[aria-label='#{test_helper.now_plus_month_dd day.to_i}']"
+        td = @browser.td :css => css
+        present = browser_helper.present? td
+        td
+      end
+
+      def date day
+        date = date_field day
+        browser_helper.click date
+      end
+
+      def present?
+        date_picker_button.present?
+      end
+
+      def now_month_dd
+        picker = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
+        today = Button.new @browser.span :css => "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
+        10.times {
+          picker.safe_click unless today.present?
+          today.safe_click
+          sleep 1
+          return test_helper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
+        }
+        raise "Unable to select today's date from date picker object in Print Modal."
+      end
+
+      def todays_date
+        picker = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
+        today = Button.new Button.new @browser.div :css => "div[title=Today]"
+        10.times {
+          picker.safe_click unless today.present?
+          today.safe_click
+          sleep 1
+          return test_helper.now_plus_mon_dd 0
+        }
+        raise "Unable to select today's date from date picker object in Print Modal."
+      end
+
+      def today_button
+
+      end
+
+      def today
+        today_plus 0
+      end
+
+      def today_plus day
+        day = day.to_i
+        date_picker_header = Label.new @browser.div :class => "x-datepicker-header"
+        picker_button = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
+        ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"
+
+        ship_date_str = test_helper.now_plus_month_dd day
+        ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
+        date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
+
+        10.times{
+          picker_button.safe_click unless date_picker_header.present?
+
+          if date_field.field.present?
+            break
+          else
+            day += 1
+            ship_date_str = test_helper.now_plus_month_dd day
+            ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
+            date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
+          end
+        }
+
+        10.times {
+          picker_button.safe_click unless date_field.present?
+          date_field.safe_click
+          sleep 1
+          return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
+        }
+      end
+    end
+
+    class Printer < PrintModalObject
+      def drop_down
+        Button.new @browser.div :id => "sdc-printpostagewindow-printerdroplist-trigger-picker"
+      end
+
+      def text_box
+        Textbox.new @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
+      end
+
+      def select printer
+        dd = self.drop_down
+        input = self.text_box
+
+        case printer.downcase
+          when /fac/
+            selection_label = Label.new @browser.li :text => /fac/
+          when /kyocera/
+            selection_label = Label.new @browser.li :text => /Kyocera/
+          when /epson/
+            selection_label = Label.new @browser.li :text => /EPSON/
+          when /brother/
+            selection_label = Label.new @browser.li :text => /Brother/
+          when /officejet/
+            selection_label = Label.new @browser.li :text => /Officejet/
+          else
+            raise "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
+        end
+
+        5.times do
+          dd.safe_click unless selection_label.present?
+          selection_label.safe_click
+          return if input.text.include? printer
+        end
+      end
+    end
+
+    class PaperTray < PrintModalObject
+      def text_box
+        Textbox.new @browser.text_field :css => "div[id^=form-][id$=-body]>div>div>div[id^=combo]>div>div>div>input"
+      end
+
+      def drop_down
+        Button.new @browser.div :css => "div[id^=form-][id$=-body]>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"
+      end
+
+      def select selection
+        text_box = self.text_box
+        drop_down = self.drop_down
+        selection_label = Label.new @browser.li :text => selection
+
+        5.times{
+          drop_down.safe_click unless selection_label.present?
+          selection_label.safe_click
+          break if text_box.text.include? selection
+        }
+
+      end
+    end
+
     def initialize browser
       super browser
     end

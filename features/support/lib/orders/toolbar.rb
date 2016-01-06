@@ -100,8 +100,9 @@ module Orders
 
     def open_window window
       return window if window.present?
+      print = print_button
 
-      browser_helper.click browser_print_button, "print"
+      print.click
 
       usps_terms = USPSTermsModal.new @browser
 
@@ -142,7 +143,7 @@ module Orders
 
           return window if window.present?
           #order_grid.checkbox.check_all checked_rows_cache
-          browser_helper.click browser_print_button, "print"
+          print.click
         rescue
           #ignore
         end
@@ -151,7 +152,6 @@ module Orders
       return window if window.present?
       raise "Unable to open Print Window.  There might be errors in printing of order is not ready for printing.  Check your test."
     end
-
 
     def add
       order_details = OrderDetails.new @browser
@@ -201,17 +201,8 @@ module Orders
       Button.new (@browser.span :css => "span[class*=sdc-icon-settings]")
     end
 
-    def browser_print_button
-      button1 = @browser.elements(:text => 'Print').first
-      button1_present = browser_helper.present? button1
-      button2 = @browser.elements(:text => 'Print').last
-      button2_present = browser_helper.present? button2
-      xbutton = (button1_present)? button1 : (button2_present) ? button2 : nil
-      xbutton
-    end
-
-    def click_print_button
-      browser_helper.click browser_print_button
+    def print_button
+      Button.new ((@browser.spans :css => "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
     end
 
     def usps_intl_terms
