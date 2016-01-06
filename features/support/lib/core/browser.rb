@@ -198,14 +198,14 @@ module Stamps
       def check
         5.times{
           break if checked?
-          click
+          safe_click
         }
       end
 
       def uncheck
         if checked?
           5.times{
-            click
+            safe_click
             break unless checked?
           }
         end

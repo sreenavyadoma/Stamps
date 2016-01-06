@@ -17,6 +17,8 @@ Feature:  Customs Form Data Tooltip Error
     Then Cancel Customs Form
     Then Wait in seconds 2
     Then Open customs form
+    Then Set Customs Form I agree to Checked
+    Then Set Customs Form I agree to Unchecked
     Then Wait in seconds 2
     Then Expect Customs Form USPS Privacy Act Warning to be visible
     Then Set Customs Form I agree to Checked
