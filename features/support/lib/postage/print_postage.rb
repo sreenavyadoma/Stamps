@@ -7,7 +7,7 @@ module Postage
   class PrintPostage < PostageObject
 
     def sign_in_page
-      @sign_in ||= PostageBase::SignInPage.new @browser
+      @sign_in ||= Postage::SignInPage.new @browser
     end
 
     def navbar

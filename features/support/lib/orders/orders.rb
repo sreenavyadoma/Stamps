@@ -11,7 +11,7 @@ module Orders
     end
 
     def sign_in_page
-      Orders::SignInPage.new @browser
+      Orders::LandingPage::SignInPage.new @browser
     end
 
     def awaiting_shipment
