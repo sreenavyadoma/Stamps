@@ -429,15 +429,15 @@ module Orders
     end
 
     def license
-      Textbox.new @browser.text_field :css => "input[name=LicenseNumber]"
+      Textbox.new @browser.text_field :name => "CustomsLicenseNumber"
     end
 
     def certificate
-      Textbox.new @browser.text_field :css => "input[name=CertificateNumber]"
+      Textbox.new @browser.text_field :name => "CustomsCertificateNumber"
     end
 
     def invoice
-      Textbox.new @browser.text_field :css => "input[name=InvoiceNumber]"
+      Textbox.new @browser.text_field :name => "CustomsInvoiceNumber"
     end
 
     def item_grid

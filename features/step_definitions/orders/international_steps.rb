@@ -428,8 +428,8 @@ Then /^Expect Customs Form License# to be visible$/ do
   @customs_form.license.present?.should be true
 end
 
-Then /^Expect Customs Form License# to be hidden$/ do |expectation|
-  log.info "Step: Expect Customs Form License# to be #{expectation}"
+Then /^Expect Customs Form License# to be hidden$/ do
+  log.info "Step: Expect Customs Form License# to be hidden"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.license.present?.should be false
 end
