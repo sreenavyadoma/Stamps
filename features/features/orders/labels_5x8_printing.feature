@@ -14,7 +14,8 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Set Order Details Length to 1
     Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
-    Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Printer to "factory"
     #Then View Print On option Shipping Label 5.5 x 8.5 tooltip
     #Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Use these letter-sized label sheets with two 5 ½” x 8 ½” labels per sheet to print postage, addresses, and tracking barcode."
    # Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. destination."
@@ -35,6 +36,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Printer to "factory"
     Then Print
 
     And I Add a new order

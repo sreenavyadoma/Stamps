@@ -10,6 +10,9 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Set Order Details Ship-To address to random zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
     Then Edit row 1 on the Orders Grid
+    Then Open Print Modal
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Printer to "factory"
     Then Print
     Then Expect printed Order ID is not in Awaiting Shipment tab
     Then Expect printed Order ID is in Shipped tab
@@ -36,8 +39,13 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Edit row 2 on the Orders Grid
     Then Edit row 3 on the Orders Grid
 
+    Then Open Print Modal
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Printer to "factory"
     Then Print
 
     Then Expect all printed Order IDs not in Awaiting Shipment tab
     Then Expect all printed Order IDs are in Shipped tab
     And Sign out
+
+    #todo -rob

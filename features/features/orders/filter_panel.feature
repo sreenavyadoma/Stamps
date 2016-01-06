@@ -72,11 +72,13 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     Then Expect Grid Phone to be 8885551212
     Then Expect Grid Email to be test@stamps.com
 
+    Then Open Print Modal
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Printer to "factory"
     Then Print
 
     Then Filter Shipped
     And Expect system selects Shipped Filter and deselects the previous filter
-    And Expect system hides Order Details Form
 
     Then Expect Grid Recipient to be James Test
     Then Expect Grid Company to be Domestic Company
@@ -93,3 +95,5 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
 
     Then Sign out
+
+    #todo - rob

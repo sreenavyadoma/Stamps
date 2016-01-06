@@ -12,7 +12,11 @@ Feature: Postage Balance
     Then Set Order Details Insured Value to $10.00
     Then Set Order Details Tracking to "USPS Tracking"
     And Save Shipping Costs Data
+    Then Open Print Modal
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Printer to "factory"
     Then Print
     Then Expect Printing cost is deducted from customer balance if there were no printing errors
     And Sign out
 
+#todo - rob
