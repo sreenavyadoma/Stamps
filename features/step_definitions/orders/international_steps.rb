@@ -464,8 +464,8 @@ Then /^Expect Customs Form ITN# to be hidden$/ do
   @customs_form.itn_number.present?.should be false
 end
 
-Then /^Expect Customs Form ITN# to be visible$/ do |expectation|
-  log.info "Step: Expect Customs Form ITN# to be #{expectation}"
+Then /^Expect Customs Form ITN# to be visible$/ do
+  log.info "Step: Expect Customs Form ITN# to be visible"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.itn_number.present?.should be true
 end
