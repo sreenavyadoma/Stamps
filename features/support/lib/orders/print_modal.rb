@@ -345,11 +345,11 @@ module Orders
     end
 
     def paper_tray
-      Orders::PaperTray.new @browser
+      PaperTray.new @browser
     end
 
     def printer
-      Orders::Printer.new @browser
+      Printer.new @browser
     end
 
     def printing_on
