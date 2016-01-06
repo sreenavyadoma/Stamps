@@ -6,7 +6,6 @@ Feature:  Customs Form Item Grid - Edit/Delete
   @international @customs_form_edit_delete_items
   Scenario:  Customs Form Item Grid - Edit/Delete
     And I Add a new order
-    Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
@@ -27,3 +26,4 @@ Feature:  Customs Form Item Grid - Edit/Delete
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
     And Sign out
+

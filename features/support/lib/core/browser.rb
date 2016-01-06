@@ -475,11 +475,11 @@ module Stamps
             field.focus
             field.clear
             field.set text
+            actual_value =  field_text(field)
+            break if (actual_value.to_s.include? text) || (text.to_s.include? actual_value)
           rescue
             #ignore
           end
-          actual_value =  field_text(field)
-          break if (actual_value.include? text) || (text.include? actual_value)
         end
       end
 

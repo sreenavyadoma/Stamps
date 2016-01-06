@@ -362,35 +362,17 @@ end
 
 Then /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price ([\d.]+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
   log.info "Step: Add Customs Form Item #{item_number}; Description=#{description}, Qty #{qty}, Unit Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
+  @customs_form = @single_order_form.customs_form if @customs_form.nil?
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i
-  sleep 1
-  item.lbs.set lbs
-  item.lbs.send_keys :enter
-  item.lbs.set lbs
-  item.lbs.safe_double_click
-  item.lbs.safe_click
-  sleep 1
-  item.oz.set oz
-  item.oz.send_keys :enter
-  item.oz.set oz
-  item.oz.safe_double_click
-  item.oz.safe_click
+
   item.item_description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
   item.qty.set qty
-  item.qty.safe_double_click
-  item.qty.safe_click
-  sleep 1
   item.unit_price.set price
-  item.unit_price.safe_double_click
-  item.unit_price.safe_click
-  sleep 1
-  item.origin_country.select origin_country
-  sleep 1
+  item.lbs.set lbs
+  item.oz.set oz
+  item.origin.select origin_country
   item.hs_tariff.set tariff
-  item.hs_tariff.safe_double_click
-  item.hs_tariff.safe_click
-  sleep 1
 end
 
 Then /^Delete Customs Form Item (\d+)$/ do |item_number|
@@ -558,7 +540,6 @@ Then /^Expect Customs Form Tooltip Error for Item Description to be (.*)$/ do |e
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end
-
 
 Then /^Expect Customs Form Tooltip Error for Qty to be (.*)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Qty to be #{expectation}"

@@ -102,15 +102,151 @@ module Orders
       end
 
       def set value
-        text_box.set value
+        text_field = text_box
+        value = value.to_i
+        max = value + text_field.text.to_i
+        max.times do
+          current_value = text_field.text.to_i
+          break if value == current_value
+          if value > current_value
+            increment 1
+          else
+            decrement 1
+          end
+          break if value == current_value
+        end
+        sleep 1
+        log.info "Qty set to #{text_field.text}"
       end
 
       def increment value
-
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
       end
 
       def decrement value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
 
+    class UnitPrice < OrdersObject
+      def initialize browser, number
+        super browser
+        @number = number
+      end
+
+      def text_box
+        Textbox.new ((@browser.text_fields :name => "Value")[@number-1]), "data-errorqtip"
+      end
+
+      def set value
+        text_box.set value
+        log.info "Ounces set to #{text_box.text}"
+      end
+
+      def increment value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
+
+    class UnitWeightLbs < OrdersObject
+      def initialize browser, number
+        super browser
+        @number = number
+      end
+
+      def text_box
+        Textbox.new ((@browser.text_fields :name => "lbs")[@number-1]), "data-errorqtip"
+      end
+
+      def set value
+        text_field = text_box
+        value = value.to_i
+        max = value + text_field.text.to_i
+        max.times do
+          current_value = text_field.text.to_i
+          break if value == current_value
+          if value > current_value
+            increment 1
+          else
+            decrement 1
+          end
+          break if value == current_value
+        end
+        sleep 1
+        log.info "Pounds set to #{text_field.text}"
+      end
+
+      def increment value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
+
+    class UnitWeightOz < OrdersObject
+      def initialize browser, number
+        super browser
+        @number = number
+      end
+
+      def text_box
+        Textbox.new ((@browser.text_fields :name => "oz")[@number-1]), "data-errorqtip"
+      end
+
+      def set value
+        text_field = text_box
+        value = value.to_i
+        max = value + text_field.text.to_i
+        max.times do
+          current_value = text_field.text.to_i
+          break if value == current_value
+          if value > current_value
+            increment 1
+          else
+            decrement 1
+          end
+          break if value == current_value
+        end
+        sleep 1
+        log.info "Ounces set to #{text_field.text}"
+      end
+
+      def increment value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
       end
     end
 
@@ -136,46 +272,18 @@ module Orders
     end
 
     def unit_price
-      Textbox.new ((@browser.text_fields :name => "Value")[@number-1]), "data-errorqtip"
-    end
-
-    def unit_price_increment value
-
-    end
-
-    def unit_price_decrement value
-
+      UnitPrice.new @browser, @number
     end
 
     def lbs
-      Textbox.new ((@browser.text_fields :name => "lbs")[@number-1]), "data-errorqtip"
-    end
-
-    def lbs_increment value
-
-    end
-
-    def lbs_decrement value
-
+      UnitWeightLbs.new @browser, @number
     end
 
     def oz
-      Textbox.new ((@browser.text_fields :name => "oz")[@number-1]), "data-errorqtip"
+      UnitWeightOz.new @browser, @number
     end
 
-    def oz_increment value
-
-    end
-
-    def oz_decrement value
-
-    end
-
-    def origin_country_input
-      (@browser.text_fields :name => "OriginCountryCode")[@number-1]
-    end
-
-    def origin_country
+    def origin
       OriginCountry.new @browser, @number
     end
 
