@@ -3,7 +3,7 @@ Feature:  Customs Form Data Tooltip Error
   Background:
     Given I am signed in to Orders
 
-  @international
+  @international @international_customs_form_data_tooltip
   Scenario:  Customs Form Data Error
     And I Add a new order
     Then Set Order Details Ship-From to default

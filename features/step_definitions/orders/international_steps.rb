@@ -552,7 +552,7 @@ end
 Then /^Expect Customs Form Tooltip Error for Unit Price to be (.*)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Unit Price to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  data_error_qtip = @customs_form.item_grid.item(1).unit_price.data_error_qtip
+  data_error_qtip = @customs_form.item_grid.item(1).unit_price.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end
@@ -560,7 +560,7 @@ end
 Then /^Expect Customs Form Tooltip Error for Pounds to be (.*)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Pounds to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  data_error_qtip = @customs_form.item_grid.item(1).lbs.data_error_qtip
+  data_error_qtip = @customs_form.item_grid.item(1).lbs.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end
@@ -568,7 +568,7 @@ end
 Then /^Expect Customs Form Tooltip Error for Ounces to be (.*)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Ounces to be #{expectation}"
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
-  data_error_qtip = @customs_form.item_grid.item(1).oz.data_error_qtip
+  data_error_qtip = @customs_form.item_grid.item(1).oz.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end
