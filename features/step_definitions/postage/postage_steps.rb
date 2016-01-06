@@ -4,6 +4,10 @@ Then /^Select Print Postage print media(.*)/ do |media|
   @netstamps = print_postage.print_on media
 end
 
+Then /^Select Service (.*)$/ do |service|
+
+end
+
 Then /^Set Print Postage Form Ship-To to international address/ do |table|
 
 end
