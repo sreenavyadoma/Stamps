@@ -15,7 +15,7 @@ Feature: Iran Internal Transaction Number Required
     Then Set Order Details Length to 1
     Then Set Order Details Height to 1
     Then Set Order Details Width to 1
-    Then Set Order Details Service to "Priority Mail International Package"
+    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     And Open customs form
     Then Expect Customs Form Internal Transaction # to be "Required"

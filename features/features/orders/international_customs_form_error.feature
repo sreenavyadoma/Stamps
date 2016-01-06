@@ -11,7 +11,7 @@ Feature:  Customs Form Data Tooltip Error
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
     Then Set Order Details Ounces to 5
-    Then Set Order Details Service to "Priority Mail International Package"
+    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
     Then Open customs form
     Then Wait in seconds 2
     Then Cancel Customs Form

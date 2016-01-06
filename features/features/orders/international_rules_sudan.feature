@@ -13,7 +13,7 @@ Feature: Sudan Internal Transaction Number Required
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
 
     Then Set Order Details Ounces to 5
-    Then Set Order Details Service to "Priority Mail International Package"
+    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     #Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form

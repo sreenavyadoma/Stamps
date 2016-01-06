@@ -171,7 +171,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI Pkg-Flat-Env | SDC-1200  | random           | random           | random | random  | random      | Australia | random  | random  |
-    Then Set Order Details Service to "Priority Mail International Package"
+    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
     Then Set Order Details Ounces to 1
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"

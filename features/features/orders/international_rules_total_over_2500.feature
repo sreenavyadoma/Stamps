@@ -11,7 +11,7 @@ Feature: Internal Transaction Number Required for total over $2500
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then Set Order Details Ounces to 5
-    Then Set Order Details Service to "Priority Mail International Package"
+    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
     Then Set Order Details Item - Quantity 1, ID random, Description random
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form

@@ -12,7 +12,7 @@ Feature: International Shipping fields and Customs Information fields validation
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
     Then Set Order Details Ounces to 5
-    Then Set Order Details Service to "Priority Mail International Package"
+    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     Then Expect Order Details International Address fields are visible
     Then Expect Order Details Domestic Ship-To fields are hidden

@@ -10,7 +10,7 @@ Feature:  Customs Form Totals
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
-    Then Set Order Details Service to "Priority Mail International Package"
+    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
     Then Set Order Details Pounds to 3
     Then Set Order Details Ounces to 3
     Then Set Order Details Item - Quantity 1, ID random, Description random

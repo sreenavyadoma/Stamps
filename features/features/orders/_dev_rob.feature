@@ -286,7 +286,7 @@ Feature: Test Development
     Then Set Order Details Length to 1
     Then Set Order Details Height to 1
     Then Set Order Details Width to 1
-    Then Set Order Details Service to "Priority Mail International Package"
+    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
   #Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
