@@ -12,6 +12,7 @@ Feature: Print Media - Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then Set Order Details Ounces to 1
     Then Open Print Modal
     Then Set Print Modal Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
+    Then Set Print Modal Printer to "factory"
     Then Print
     And Sign out
 

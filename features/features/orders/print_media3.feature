@@ -12,6 +12,7 @@ Feature: Print Media - Shipping Label - 5 ½" x 8 ½"
     Then Set Order Details Ounces to 4
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
+    Then Set Print Modal Printer to "factory"
     Then Print
     And Sign out
 
