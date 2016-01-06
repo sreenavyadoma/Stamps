@@ -1,7 +1,7 @@
 Then /^Verify Local Rating$/ do |table|
   log.info "Step: Verify Local Rating..."
   #results_file = "local_rating_results.csv"
-  @single_order_form = orders.details
+  @order_details = orders.details
   parameter_array = table.hashes
   results = Hash.new
 
@@ -20,8 +20,8 @@ Then /^Verify Local Rating$/ do |table|
     step "Set Order Details Tracking to \"#{element["tracking"]}\""
 
     10.times do
-      @single_order_form.click_form
-      total = @single_order_form.total
+      @order_details.click_form
+      total = @order_details.total
       if total.eql? element["total"]
         results[index] = total.eql? element["total"]
         break
@@ -29,7 +29,7 @@ Then /^Verify Local Rating$/ do |table|
         results[index] = total.eql? element["total"]
       end
     end
-    total = @single_order_form.total
+    total = @order_details.total
 
     expected_total_amount = element["total"]
 

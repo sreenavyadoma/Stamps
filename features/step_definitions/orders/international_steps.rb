@@ -244,57 +244,55 @@ end
 
 Then /^Expect Order Details Domestic Ship-To fields are hidden$/ do
   log.info "Step: Expect Order Details Domestic Ship-To fields are hidden"
-  @single_order_form = orders.details
-  @single_order_form.ship_to.present?.should be false
-  @single_order_form.email.present?.should be false
-  @single_order_form.phone.present?.should be false
+  order_details = orders.details
+  order_details.ship_to.address.text_area.present?.should be false
 end
 
 Then /^Expect Order Details Customs Restrictions button is visible/ do
   log.info "Step: Expect Order Details Customs Restrictions button is visible"
-  @single_order_form = orders.details
-  @single_order_form.customs.browser_restrictions_button.present?.should be true
-  @single_order_form.customs.restrictions.ok
+  order_details = orders.details
+  order_details.customs.browser_restrictions_button.present?.should be true
+  order_details.customs.restrictions.ok
 end
 
 Then /^Expect Order Details Customs Restrictions button is hidden/ do
   log.info "Step: Expect Order Details Customs Restrictions button is hidden"
-  @single_order_form = orders.details
-  @single_order_form.customs.browser_restrictions_button.present?.should be false
+  order_details = orders.details
+  order_details.customs.browser_restrictions_button.present?.should be false
 end
 
 Then /^Expect Order Details Customs Edit Form button is visible/ do
   log.info "Step: Expect Order Details Customs Edit Form button is visible"
-  @single_order_form = orders.details
-  @single_order_form.customs.browser_edit_form_button.present?.should be true
+  order_details = orders.details
+  order_details.customs.browser_edit_form_button.present?.should be true
 end
 
 Then /^Expect Order Details Customs Edit Form button is hidden/ do
   log.info "Step: Expect Order Details Customs Edit Form button is hidden"
-  @single_order_form = orders.details
-  @single_order_form.customs.browser_edit_form_button.present?.should be false
+  order_details = orders.details
+  order_details.customs.browser_edit_form_button.present?.should be false
 end
 
 Then /^Expect Order Details Customs Edit Form button is enabled/ do
   log.info "Step: Expect Order Details Customs Edit Form button is enabled"
-  @single_order_form = orders.details
-  @single_order_form.customs.browser_edit_form_button.present?.should be true
+  order_details = orders.details
+  order_details.customs.browser_edit_form_button.present?.should be true
 end
 
 Then /^Expect Order Details Customs Edit Form button is disabled/ do
   log.info "Step: Expect Order Details Customs Edit Form button is disabled"
-  @single_order_form = orders.details
-  @single_order_form.customs.browser_edit_form_button.present?.should be false
+  order_details = orders.details
+  order_details.customs.browser_edit_form_button.present?.should be false
 end
 
 Then /^Open customs form$/ do
   log.info "Step: Open customs form"
-  @customs_form = @single_order_form.customs.edit_form
+  @customs_form = @order_details.customs.edit_form
 end
 
 Then /^Set customs form Package Contents to \"(.+)\"$/ do |value|
   log.info "Step: Set customs form Package Contents to #{value}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
   @customs_form.package_contents.select value
@@ -305,7 +303,7 @@ end
 
 Then /^Set customs form Non-Delivery Options to \"(.+)\"$/ do |value|
   log.info "Step: Set customs form Non-Delivery Options to #{value}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
   @customs_form.non_delivery_options.select value
@@ -313,7 +311,7 @@ end
 
 Then /^Set customs form Internal Transaction Number to \"(.+)\"$/ do |value|
   log.info "Step: Set customs form Internal Transaction Number to #{value}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
   @customs_form.internal_transaction.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
@@ -322,7 +320,7 @@ end
 
 Then /^Set customs form More Info to \"(.+)\"$/ do |value|
   log.info "Step: Set customs form More Info to #{value}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
   @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
@@ -330,7 +328,7 @@ end
 
 Then /^Set customs form ITN# to \"(.+)\"$/ do |value|
   log.info "Step: Set customs form ITN# to #{value}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
   @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
@@ -338,7 +336,7 @@ end
 
 Then /^Set customs form License# to \"(.+)\"$/ do |value|
   log.info "Step: Set customs form License# to #{value}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
   @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
@@ -346,7 +344,7 @@ end
 
 Then /^Set customs form Certificate Number to \"(.+)\"$/ do |value|
   log.info "Step: Set customs form Certificate Number to #{value}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
   @customs_form.certificate.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
@@ -354,7 +352,7 @@ end
 
 Then /^Set customs form Invoice Number to \"(.+)\"$/ do |value|
   log.info "Step: Set customs form Invoice Number to #{value}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open customs form" unless @customs_form.present?
 
   @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
@@ -362,7 +360,7 @@ end
 
 Then /^Add Customs Form Item (\d+); Description=(\w+), Qty (\d+), Unit Price ([\d.]+), Weight\(lbs\) (\d+), Weight\(oz\) (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
   log.info "Step: Add Customs Form Item #{item_number}; Description=#{description}, Qty #{qty}, Unit Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i
 
@@ -388,17 +386,17 @@ end
 
 Then /^Set Customs Form I agree to Checked$/ do
   log.info "Step: Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
-  @single_order_form.customs_form.i_agree true
+  @order_details.customs_form.i_agree true
 end
 
 Then /^Set Customs Form I agree to Unchecked$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
-  @single_order_form.customs_form.i_agree false
+  @order_details.customs_form.i_agree false
 end
 
 Then /^Expect Customs Form USPS Privacy Act Warning to be visible$/ do
   log.info "Step: Expect Customs Form USPS Privacy Act Warning to be visible"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   usps_privacy_act_warning = @customs_form.usps_privacy_act_warning.visible?
   log.info "Test #{(usps_privacy_act_warning)?"Passed":"Failed"}"
   usps_privacy_act_warning.should be true
@@ -406,7 +404,7 @@ end
 
 Then /^Expect Customs Form USPS Privacy Act Warning to be hidden/ do
   log.info "Step: Expect Customs Form USPS Privacy Act Warning to be hidden"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   usps_privacy_act_warning = @customs_form.usps_privacy_act_warning.visible?
   log.info "Test #{(usps_privacy_act_warning)?"Failed":"Passed"}"
   usps_privacy_act_warning.should be false
@@ -414,67 +412,67 @@ end
 
 Then /^Expect Customs Form More Info to be hidden$/ do
   log.info "Step: Expect Customs Form More Info to be hidden"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.more_info.present?.should be false
 end
 
 Then /^Expect Customs Form More Info to be visible$/ do
   log.info "Step: Expect Customs Form More Info to be visible"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.more_info.present?.should be true
 end
 
 Then /^Expect Customs Form License# to be visible$/ do
   log.info "Step: Expect Customs Form License# to be visible"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.license.present?.should be true
 end
 
 Then /^Expect Customs Form License# to be hidden$/ do |expectation|
   log.info "Step: Expect Customs Form License# to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.license.present?.should be false
 end
 
 Then /^Expect Customs Form Certificate# to be hidden$/ do
   log.info "Step: Expect Customs Form Certificate# to be hidden"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.certificate.present?.should be false
 end
 
 Then /^Expect Customs Form Certificate# to be visible$/ do
   log.info "Step: Expect Customs Form Certificate# to be visible"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.certificate.present?.should be true
 end
 
 Then /^Expect Customs Form Invoice# to be hidden$/ do
   log.info "Step: Expect Customs Form Invoice# to be hidden"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.invoice.present?.should be false
 end
 
 Then /^Expect Customs Form Invoice# to be visible$/ do
   log.info "Step: Expect Customs Form Invoice# to be visible"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.invoice.present?.should be true
 end
 
 Then /^Expect Customs Form ITN# to be hidden$/ do
   log.info "Step: Expect Customs Form ITN# to be hidden"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.itn_number.present?.should be false
 end
 
 Then /^Expect Customs Form ITN# to be visible$/ do |expectation|
   log.info "Step: Expect Customs Form ITN# to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.itn_number.present?.should be true
 end
 
 Then /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |expectation|
   log.info "Step: Expect Customs Form Internal Transaction # to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   sleep 1
   text = @customs_form.internal_transaction.text_box.text
   text = @customs_form.internal_transaction.text_box.text
@@ -484,13 +482,13 @@ end
 
 Then /^Expect Customs Form Item Grid count to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Item Grid count to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.item_grid.size.should eql expectation.to_i
 end
 
 Then /^Expect Customs Form Total Value to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Total Value to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   sleep 2
   browser_value = @customs_form.total_value
   log.info "Custom Info Actual Total Value: #{browser_value}.  Expected:  #{expectation}.  Test #{(browser_value == expectation)?'Passed':'Failed'}"
@@ -499,7 +497,7 @@ end
 
 Then /^Expect Customs Form Total Pounds to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Total Pounds to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   item = @customs_item_grid.item 1
   20.times do
     sleep 1
@@ -514,7 +512,7 @@ end
 
 Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Total Ounces to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   item = @customs_item_grid.item 1
   20.times do
     sleep 1
@@ -529,7 +527,7 @@ end
 
 Then /^Expect Customs Form Tooltip Error for Total Weight to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Total Weight to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.total_weight.data_error
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
@@ -537,7 +535,7 @@ end
 
 Then /^Expect Customs Form Tooltip Error for Item Description to be (.*)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Item Description to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.item_grid.item(1).item_description.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
@@ -545,7 +543,7 @@ end
 
 Then /^Expect Customs Form Tooltip Error for Qty to be (.*)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Qty to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.item_grid.item(1).qty.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
@@ -553,7 +551,7 @@ end
 
 Then /^Expect Customs Form Tooltip Error for Unit Price to be (.*)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Unit Price to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.item_grid.item(1).unit_price.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
@@ -561,7 +559,7 @@ end
 
 Then /^Expect Customs Form Tooltip Error for Pounds to be (.*)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Pounds to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.item_grid.item(1).lbs.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
@@ -569,7 +567,7 @@ end
 
 Then /^Expect Customs Form Tooltip Error for Ounces to be (.*)$/ do |expectation|
   log.info "Step: Expect Customs Form Tooltip Error for Ounces to be #{expectation}"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.item_grid.item(1).oz.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
@@ -585,13 +583,13 @@ end
 
 Then /^Close Customs Form$/ do
   log.info "Step: Closing customs form"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.close
   log.info "Customs form #{(@customs_form.present?)?'closed':'is still open.'}"
 end
 
 Then /^Cancel Customs Form$/ do
   log.info "Step: Cancel customs form"
-  @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.cancel
 end
