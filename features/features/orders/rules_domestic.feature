@@ -29,9 +29,9 @@ Feature:  Service enabled/disabled tests
     Then Set Orders Grid New Order ID to check
     Then Expect Order Details Domestic Address data error tooltip to be "Ship To address is required"
     Then Expect Order Details Domestic Email data error tooltip to be "Please enter a valid email address"
-    Then Expect Order Details Domestic Weight lbs data error tooltip to be "Weight cannot be 0"
-    Then Expect Order Details Domestic Weight oz data error tooltip to be "Weight cannot be 0"
-    Then Expect Order Details Domestic Service data error tooltip to be "Service is required"
+    Then Expect Order Details Weight Lbs data error tooltip to be "Weight cannot be 0"
+    Then Expect Order Details Weight Oz data error tooltip to be "Weight cannot be 0"
+    Then Expect Order Details Service data error tooltip to be "Service is required"
     Then Set Orders Grid New Order ID to check
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to random,PO BOX 1257,Pohnpei, FM 96941-1257

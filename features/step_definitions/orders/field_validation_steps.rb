@@ -40,7 +40,7 @@ Then /^Expect Order Details Domestic Email data error tooltip to be \"(.*)\"$/ d
   expect(data_error_tooltip).to include expectation
 end
 
-Then /^Expect Order Details Domestic Weight lbs data error tooltip to be \"(.*)\"$/ do |expectation|
+Then /^Expect Order Details Weight Lbs data error tooltip to be \"(.*)\"$/ do |expectation|
   log.info "Step: Expect Order Details Domestic  Weight lbs data error tooltip to be #{expectation}"
   text_box = orders.details.lbs
   20.times do
@@ -60,8 +60,8 @@ Then /^Expect Order Details Domestic Weight lbs data error tooltip to be \"(.*)\
   expect(data_error_tooltip).to include expectation
 end
 
-Then /^Expect Order Details Domestic Weight oz data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Expect Order Details Domestic Weight oz data error tooltip to be #{expectation}"
+Then /^Expect Order Details Weight Oz data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Step: Expect Order Details Weight Oz data error tooltip to be #{expectation}"
   text_box = orders.details.oz
   20.times do
     text_box.safe_double_click
@@ -80,8 +80,8 @@ Then /^Expect Order Details Domestic Weight oz data error tooltip to be \"(.*)\"
   expect(data_error_tooltip).to include expectation
 end
 
-Then /^Expect Order Details Domestic Service data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Expect Order Details Domestic Weight oz data error tooltip to be #{expectation}"
+Then /^Expect Order Details Service data error tooltip to be \"(.*)\"$/ do |expectation|
+  log.info "Step: Expect Order Details Weight Oz data error tooltip to be #{expectation}"
   text_box = orders.details.service.text_box
   20.times do
     text_box.safe_double_click
@@ -199,7 +199,6 @@ Then /^Expect Grid Ship Cost error to contain \"(.*)\"$/ do |expectation|
   log.info ship_cost_error
 end
 
-#International
 Then /^Expect Order Details International Name data error tooltip to be \"(.*)\"$/ do |expectation|
   log.info "Step: Expect Order Details International Name data error tooltip to be #{expectation}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
