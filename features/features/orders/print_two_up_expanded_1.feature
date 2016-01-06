@@ -12,8 +12,8 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     Then Set Order Details Ounces to 1
     Then Open Print Modal
-    Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Printer to "factory"
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     And Expect Print Window requires 1 label sheets
