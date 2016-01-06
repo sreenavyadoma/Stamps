@@ -70,6 +70,11 @@ module Stamps
         browser_helper.present? @field
       end
 
+      def enabled?
+        browser_helper.enabled? @field
+      end
+
+
 
       def data_error_qtip
         begin
@@ -661,6 +666,14 @@ module Stamps
       def visible? field
         begin
           field.visible?
+        rescue
+          return false
+        end
+      end
+
+      def enabled? field
+        begin
+          field.enabled?
         rescue
           return false
         end

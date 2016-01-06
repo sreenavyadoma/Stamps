@@ -461,13 +461,13 @@ end
 Then /^Expect Customs Form ITN# to be hidden$/ do
   log.info "Step: Expect Customs Form ITN# to be hidden"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  @customs_form.itn_number.present?.should be false
+  @customs_form.itn_number.enabled?.should be false
 end
 
 Then /^Expect Customs Form ITN# to be visible$/ do
   log.info "Step: Expect Customs Form ITN# to be visible"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  @customs_form.itn_number.present?.should be true
+  @customs_form.itn_number.enabled?.should be true
 end
 
 Then /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |expectation|
