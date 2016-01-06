@@ -116,12 +116,12 @@ module Orders
       password_textbox = self.password
       sign_in_button = self.sign_in
 
-      grid = OrdersGrid.new @browser
+      grid = Orders::Grid::OrdersGrid.new @browser
       navbar = NavBar.new @browser
       welcome_modal = WelcomeModal.new @browser
       welcome_orders_page = WelcomeOrdersPage.new @browser
       plugin_issue = ErrorStampsPluginIssue.new @browser
-      toolbar = Orders::Toolbar.new @browser
+      toolbar = Orders::Toolbar::Toolbar.new @browser
 
       20.times do
         begin
@@ -174,7 +174,6 @@ module Orders
           log.info e
         end
       end
-
 
       log.info "Signed-in Username is #{navbar.username.text}"
 
