@@ -490,8 +490,8 @@ end
 
 Then /^Expect Customs Form Total Value to be (.+)$/ do |expectation|
   log.info "Step: Expect Customs Form Total Value to be #{expectation}"
-  sleep 2
   @customs_form = @single_order_form.customs_form if @customs_form.nil?
+  sleep 2
   browser_value = @customs_form.total_value
   log.info "Custom Info Actual Total Value: #{browser_value}.  Expected:  #{expectation}.  Test #{(browser_value == expectation)?'Passed':'Failed'}"
   browser_value.should eql expectation
@@ -507,6 +507,7 @@ Then /^Expect Customs Form Total Pounds to be (.+)$/ do |expectation|
     log.info "Custom Info Actual Total Weight(lbs): #{actual_value}.  Expected:  #{expectation}"
     break if actual_value == expectation
   end
+  actual_value = @customs_form.total_weight_lbs
   log.info "Test #{(actual_value == expectation)?'Passed':'Failed'}"
   actual_value.should eql expectation
 end
@@ -521,6 +522,7 @@ Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
     log.info "Custom Info Actual Total Weight(Oz): #{actual_value}.  Expected:  #{expectation}"
     break if actual_value == expectation
   end
+  actual_value = @customs_form.total_weight_oz
   log.info "Test #{(actual_value == expectation)?'Passed':'Failed'}"
   actual_value.should eql expectation
 end
