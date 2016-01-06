@@ -7,17 +7,19 @@ Feature: International Shipping fields and Customs Information fields validation
   Scenario: International Shipping fields and Customs Information fields validation
     And I Add a new order
     Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To Country to Japan
+
+    Then Expect Order Details International Address fields are visible
+    Then Expect Order Details Domestic Ship-To fields are hidden
+    Then Expect Order Details Customs Restrictions button is visible
+    Then Expect Order Details Customs Edit Form button is visible
+
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
     Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
-
-    Then Expect Order Details International Address fields are visible
-    Then Expect Order Details Domestic Ship-To fields are hidden
-    Then Expect Order Details Customs Restrictions button is visible
-    Then Expect Order Details Customs Edit Form button is visible
 
     Then Set Order Details Item - Quantity 1, ID random, Description random
 
