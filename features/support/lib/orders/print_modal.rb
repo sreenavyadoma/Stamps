@@ -160,10 +160,10 @@ module Orders
         media_selection = selection media
 
         10.times do
-          drop_down.safe_click unless media_selection.present?
-          media_selection.safe_click
           input_text = text_box.text
           break if input_text.include? media
+          drop_down.safe_click unless media_selection.present?
+          media_selection.safe_click
         end
       end
 
@@ -290,6 +290,8 @@ module Orders
         dd = self.drop_down
         input = self.text_box
 
+        return if input.text.include? printer
+
         case printer.downcase
           when /fac/
             selection_label = Label.new @browser.li :text => /fac/
@@ -306,9 +308,9 @@ module Orders
         end
 
         5.times do
+          return if input.text.include? printer
           dd.safe_click unless selection_label.present?
           selection_label.safe_click
-          return if input.text.include? printer
         end
       end
     end
