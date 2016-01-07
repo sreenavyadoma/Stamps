@@ -194,7 +194,7 @@ module Orders
       end
 
       def move
-        Orders::MoveMenu.new @browser
+        Orders::Toolbar::MoveMenu.new @browser
       end
 
       def browser_settings_button
