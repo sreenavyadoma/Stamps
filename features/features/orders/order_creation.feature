@@ -12,14 +12,14 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $15.00
+    Then Set Order Details Insure For to $15.00
 
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $45.00
+    Then Set Order Details Insure For to $45.00
     Then Set Order Details Tracking to "USPS Tracking"
 
     #Priority Mail
@@ -50,7 +50,7 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Regional Rate Box A"
-    Then Set Order Details Insured Value to $105.00
+    Then Set Order Details Insure For to $105.00
     Then Set Order Details Tracking to "Signature Required"
 
     # Priority Mail Express
@@ -76,7 +76,7 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 3
     Then Set Order Details Service to "Media Mail Package"
-    Then Set Order Details Insured Value to $56.00
+    Then Set Order Details Insure For to $56.00
     Then Set Order Details Tracking to "Signature Required"
 
     # Parcel Select
@@ -86,7 +86,7 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 10
     Then Set Order Details Service to "Parcel Select Ground Large Package"
-    Then Set Order Details Insured Value to $235.00
+    Then Set Order Details Insure For to $235.00
     Then Set Order Details Tracking to "USPS Tracking"
 
     And Sign out
@@ -101,14 +101,14 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $15.00
+    Then Set Order Details Insure For to $15.00
 
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $45.00
+    Then Set Order Details Insure For to $45.00
     Then Set Order Details Tracking to "USPS Tracking"
 
     #Priority Mail
@@ -139,7 +139,7 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Regional Rate Box A"
-    Then Set Order Details Insured Value to $105.00
+    Then Set Order Details Insure For to $105.00
     Then Set Order Details Tracking to "Signature Required"
 
     # Priority Mail Express
@@ -165,7 +165,7 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 3
     Then Set Order Details Service to "Media Mail Package"
-    Then Set Order Details Insured Value to $56.00
+    Then Set Order Details Insure For to $56.00
     Then Set Order Details Tracking to "Signature Required"
 
     # Parcel Select
@@ -175,7 +175,7 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 10
     Then Set Order Details Service to "Parcel Select Ground Large Package"
-    Then Set Order Details Insured Value to $235.00
+    Then Set Order Details Insure For to $235.00
     Then Set Order Details Tracking to "USPS Tracking"
 
 
@@ -186,14 +186,14 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $15.00
+    Then Set Order Details Insure For to $15.00
 
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $45.00
+    Then Set Order Details Insure For to $45.00
     Then Set Order Details Tracking to "USPS Tracking"
 
     #Priority Mail
@@ -224,7 +224,7 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Regional Rate Box A"
-    Then Set Order Details Insured Value to $105.00
+    Then Set Order Details Insure For to $105.00
     Then Set Order Details Tracking to "Signature Required"
 
     # Priority Mail Express
@@ -250,7 +250,7 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 3
     Then Set Order Details Service to "Media Mail Package"
-    Then Set Order Details Insured Value to $56.00
+    Then Set Order Details Insure For to $56.00
     Then Set Order Details Tracking to "Signature Required"
 
     # Parcel Select
@@ -260,7 +260,7 @@ Feature: 10 orders
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 10
     Then Set Order Details Service to "Parcel Select Ground Large Package"
-    Then Set Order Details Insured Value to $235.00
+    Then Set Order Details Insure For to $235.00
     Then Set Order Details Tracking to "USPS Tracking"
 
 

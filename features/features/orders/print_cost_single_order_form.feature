@@ -17,7 +17,7 @@ Feature: Printing total cost
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $10.00
+    Then Set Order Details Insure For to $10.00
     Then Set Order Details Tracking to "Signature Required"
     Then Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost
     And Sign out

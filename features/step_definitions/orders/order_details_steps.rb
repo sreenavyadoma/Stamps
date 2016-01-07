@@ -226,8 +226,8 @@ Then /^Expect Order Details Tracking tooltip for (.*) to be (.*)$/ do |lov, expe
   #log.info cost
 end
 
-Then /^Set Order Details Insured Value to \$([\d*\.?\d*]*)$/ do |value|
-  log.info "Step: Set Order Details Insured Value to #{value}"
+Then /^Set Order Details Insure For to \$([\d*\.?\d*]*)$/ do |value|
+  log.info "Step: Set Order Details Insure For to #{value}"
   orders.details.insure_for.set value
 end
 

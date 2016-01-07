@@ -28,7 +28,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ship-To address to PM Package, SDC-1200 Right Side 1, 5912 83rd St., Lubbock TX 79424-3608
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 1
-    Then Set Order Details Insured Value to $1.09
+    Then Set Order Details Insure For to $1.09
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""

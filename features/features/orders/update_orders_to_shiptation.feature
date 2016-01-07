@@ -15,7 +15,7 @@ Feature:  Update Order to ShipStation
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Tracking to "Signature Required"
     Then Expect Grid Pounds to be 1
     Then Expect Grid Ounces to be 1

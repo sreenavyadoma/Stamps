@@ -15,5 +15,5 @@ Feature:  BVT Wonderment
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     And Sign out

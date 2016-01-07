@@ -12,7 +12,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -23,7 +23,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -34,7 +34,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -45,7 +45,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -56,7 +56,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -67,7 +67,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -78,7 +78,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -89,7 +89,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -100,7 +100,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -111,7 +111,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -122,7 +122,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -133,7 +133,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -144,7 +144,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -155,7 +155,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -166,7 +166,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -177,7 +177,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -188,7 +188,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -199,7 +199,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -210,7 +210,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -221,7 +221,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -232,7 +232,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -243,7 +243,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -254,7 +254,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -265,7 +265,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -276,7 +276,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -287,7 +287,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -298,7 +298,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -309,7 +309,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -320,7 +320,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -331,7 +331,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -342,7 +342,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -353,7 +353,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -364,7 +364,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -375,7 +375,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -386,7 +386,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -397,7 +397,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -408,7 +408,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -419,7 +419,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -430,7 +430,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -441,7 +441,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -452,7 +452,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -463,7 +463,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -474,7 +474,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -485,7 +485,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -496,7 +496,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -507,7 +507,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -518,7 +518,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -529,7 +529,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -540,7 +540,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -551,7 +551,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -562,7 +562,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -573,7 +573,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -584,7 +584,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -595,7 +595,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -606,7 +606,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -617,7 +617,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -628,7 +628,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -639,7 +639,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -650,7 +650,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -661,7 +661,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -672,7 +672,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -683,7 +683,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -694,7 +694,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -705,7 +705,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -716,7 +716,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -727,7 +727,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -738,7 +738,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -749,7 +749,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -760,7 +760,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -771,7 +771,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -782,7 +782,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
@@ -793,7 +793,7 @@ Feature:  Add Orders
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $1.00
+    Then Set Order Details Insure For to $1.00
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1

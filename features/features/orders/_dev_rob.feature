@@ -35,7 +35,7 @@ Feature: Test Development
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
     Then Set Order Details Tracking to "Signature Required"
-    Then Set Order Details Insured Value to $50.25
+    Then Set Order Details Insure For to $50.25
     Then Set Order Details Add Item
     Then Set Order Details Line Item Quantity to 1
     Then Set Order Details Line Item ID to ID1
@@ -56,7 +56,7 @@ Feature: Test Development
     Then Set Order Details Width to 1
     And Set Order Details Tracking to "Signature Required"
     Then Set Order Details Tracking to "USPS Tracking"
-    Then Set Order Details Insured Value to $50.25
+    Then Set Order Details Insure For to $50.25
     Then Set Order Details Item - Quantity 1, ID ID1, Description Line Item 1
     Then Set Order Details Item - Quantity 2, ID ID2, Description Line Item 2
     Then Set Order Details Item - Quantity 3, ID ID3, Description Line Item 3

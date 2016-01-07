@@ -9,7 +9,7 @@ Feature: Postage Balance
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Insured Value to $10.00
+    Then Set Order Details Insure For to $10.00
     Then Set Order Details Tracking to "USPS Tracking"
     And Save Shipping Costs Data
     Then Open Print Modal
