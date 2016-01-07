@@ -44,10 +44,8 @@ Then /^Expect Order Details Weight Lbs data error tooltip to be \"(.*)\"$/ do |e
   log.info "Step: Expect Order Details Domestic  Weight lbs data error tooltip to be #{expectation}"
   text_box = orders.details.weight.lbs
   20.times do
-    text_box.safe_double_click
     orders.details.click_form
     text_box.scroll_into_view
-    text_box.safe_double_click
     orders.details.click_form
     sleep 1
     data_error_tooltip = text_box.data_error_qtip

@@ -7,7 +7,7 @@ module Orders
     end
 
     def toolbar
-      @toolbar ||= Orders::Toolbar::Toolbar.new @browser
+      Orders::Toolbar::Toolbar.new @browser
     end
 
     def sign_in_page
@@ -29,11 +29,11 @@ module Orders
     end
 
     def multi_order
-      MultiOrder.new(@browser)
+      Orders::Details::MultiOrder.new(@browser)
     end
 
     def details
-      @order_details ||= Orders::Details::OrderDetails.new @browser
+      Orders::Details::OrderDetails.new @browser
     end
 
     def grid

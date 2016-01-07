@@ -53,7 +53,7 @@ module Orders
 
     def restrictions
       restrictions_button = browser_restrictions_button
-      view_restrictions = ViewRestrictions.new @browser
+      view_restrictions = Orders::Details::ViewRestrictions.new @browser
       5.times{
         restrictions_button.safe_click
         if view_restrictions.present?
