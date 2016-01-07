@@ -118,13 +118,12 @@ end
 
 When /^Check Orders Grid row (\d+)$/ do |row|
   log.info "Edit Orders Grid row #{row}"
-  step "Edit Orders Grid row #{row}"
+  orders.grid.checkbox.check row
 end
 
 When /^Uncheck Orders Grid row (\d+)$/ do |row|
   log.info "Step: Uncheck row #{row} on the Orders Grid"
   orders.grid.checkbox.uncheck row
-  #end_step step
 end
 
 Then /^Expect Ship-To address to be;$/ do |table|
