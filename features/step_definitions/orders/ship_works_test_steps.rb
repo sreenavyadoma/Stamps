@@ -29,11 +29,11 @@ And /^Expect Order Details Email Textbox to be enabled/ do
 end
 
 And /^Expect Order Details Pounds Textbox to be enabled/ do
-  expect(orders.details.lbs.field.visible?).to be true
+  expect(orders.details.weight.lbs.field.visible?).to be true
 end
 
 And /^Expect Order Details Ounces Textbox to be enabled/ do
-  expect(orders.details.oz.field.visible?).to be true
+  expect(orders.details.weight.oz.field.visible?).to be true
 end
 
 And /^Expect Order Details Service Textbox to be enabled/ do
@@ -45,7 +45,7 @@ And /^Expect Order Details Service drop-down to be enabled/ do
 end
 
 And /^Expect Order Details Insured Textbox to be enabled/ do
-  expect(orders.details.insured_value.field.visible?).to be true
+  expect(orders.details.insured_for.text_box.field.visible?).to be true
 end
 
 And /^Expect Order Detials Form Tracking Textbox to be enabled/ do

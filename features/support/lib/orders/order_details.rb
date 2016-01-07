@@ -1856,37 +1856,77 @@ module Orders
       class Weight < OrdersObject
         class Pounds < OrdersObject
           def text_box
-
+            Textbox.new (@browser.text_field :name => 'WeightLbs'), "data-errorqtip"
           end
 
           def set value
-
+            text_field = text_box
+            value = value.to_i
+            max = value + text_field.text.to_i
+            max.times do
+              current_value = text_field.text.to_i
+              break if value == current_value
+              if value > current_value
+                increment 1
+              else
+                decrement 1
+              end
+              break if value == current_value
+            end
+            sleep 1
+            log.info "Pounds set to #{text_field.text}"
           end
 
           def increment value
-
+            button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
+            value.to_i.times do
+              button.safe_click
+            end
           end
 
           def decrement value
-
+            button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
+            value.to_i.times do
+              button.safe_click
+            end
           end
         end
 
         class Ounces < OrdersObject
           def text_box
-
+            Textbox.new (@browser.text_field :name => 'WeightOz'), "data-errorqtip"
           end
 
           def set value
-
+            text_field = text_box
+            value = value.to_i
+            max = value + text_field.text.to_i
+            max.times do
+              current_value = text_field.text.to_i
+              break if value == current_value
+              if value > current_value
+                increment 1
+              else
+                decrement 1
+              end
+              break if value == current_value
+            end
+            sleep 1
+            log.info "Pounds set to #{text_field.text}"
           end
 
           def increment value
-
+            button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
+            value.to_i.times do
+              button.safe_click
+            end
           end
 
           def decrement value
-
+            button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
+            value.to_i.times do
+              button.safe_click
+            end
           end
         end
 
@@ -1903,55 +1943,115 @@ module Orders
 
         class Length < OrdersObject
           def text_box
-
+            Textbox.new @browser.text_field :name => 'Length'
           end
 
           def set value
-
+            text_field = text_box
+            value = value.to_i
+            max = value + text_field.text.to_i
+            max.times do
+              current_value = text_field.text.to_i
+              break if value == current_value
+              if value > current_value
+                increment 1
+              else
+                decrement 1
+              end
+              break if value == current_value
+            end
+            sleep 1
+            log.info "Pounds set to #{text_field.text}"
           end
 
           def increment value
-
+            button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
+            value.to_i.times do
+              button.safe_click
+            end
           end
 
           def decrement value
-
+            button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
+            value.to_i.times do
+              button.safe_click
+            end
           end
         end
 
         class Width < OrdersObject
           def text_box
-
+            Textbox.new @browser.text_field :name => 'Width'
           end
 
           def set value
-
+            text_field = text_box
+            value = value.to_i
+            max = value + text_field.text.to_i
+            max.times do
+              current_value = text_field.text.to_i
+              break if value == current_value
+              if value > current_value
+                increment 1
+              else
+                decrement 1
+              end
+              break if value == current_value
+            end
+            sleep 1
+            log.info "Pounds set to #{text_field.text}"
           end
 
           def increment value
-
+            button = Button.new ((@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]")[1])
+            value.to_i.times do
+              button.safe_click
+            end
           end
 
           def decrement value
-
+            button = Button.new ((@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]")[1])
+            value.to_i.times do
+              button.safe_click
+            end
           end
         end
 
         class Height < OrdersObject
           def text_box
-
+            Textbox.new @browser.text_field :name => 'Height'
           end
 
           def set value
-
+            text_field = text_box
+            value = value.to_i
+            max = value + text_field.text.to_i
+            max.times do
+              current_value = text_field.text.to_i
+              break if value == current_value
+              if value > current_value
+                increment 1
+              else
+                decrement 1
+              end
+              break if value == current_value
+            end
+            sleep 1
+            log.info "Pounds set to #{text_field.text}"
           end
 
           def increment value
-
+            button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
+            value.to_i.times do
+              button.safe_click
+            end
           end
 
           def decrement value
-
+            button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
+            value.to_i.times do
+              button.safe_click
+            end
           end
         end
 
@@ -1969,102 +2069,27 @@ module Orders
       end
 
       class InsuredValue < OrdersObject
+        def text_box
+          Textbox.new @browser.text_field :name => "InsuredValue"
+        end
 
-        class Length < OrdersObject
-          def text_box
+        def set value
+          text_box.set value
+        end
 
-          end
-
-          def set value
-
-          end
-
-          def increment value
-
-          end
-
-          def decrement value
-
+        def increment value
+          button = Button.new @browser.divs :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]"
+          value.to_i.times do
+            button.safe_click
           end
         end
 
-        class Width < OrdersObject
-          def text_box
-
-          end
-
-          def set value
-
-          end
-
-          def increment value
-
-          end
-
-          def decrement value
-
+        def decrement value
+          button = Button.new @browser.divs :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]"
+          value.to_i.times do
+            button.safe_click
           end
         end
-
-        class Height < OrdersObject
-          def text_box
-
-          end
-
-          def set value
-
-          end
-
-          def increment value
-
-          end
-
-          def decrement value
-
-          end
-        end
-
-        def length
-          Length.new @browser
-        end
-
-        def width
-          Width.new @browser
-        end
-
-        def height
-          Height.new @browser
-        end
-      end
-
-      def oz
-        click_form
-        Textbox.new (@browser.text_field :name => 'WeightOz'), "data-errorqtip"
-      end
-
-      def lbs
-        click_form
-        Textbox.new (@browser.text_field :name => 'WeightLbs'), "data-errorqtip"
-      end
-
-      def length
-        click_form
-        Textbox.new @browser.text_field :name => 'Length'
-      end
-
-      def width
-        click_form
-        Textbox.new @browser.text_field :name => 'Width'
-      end
-
-      def height
-        click_form
-        Textbox.new @browser.text_field :name => 'Height'
-      end
-
-      def insured_value
-        click_form
-        Textbox.new @browser.text_field :name => "InsuredValue"
       end
 
       def insure_for

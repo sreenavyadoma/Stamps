@@ -42,7 +42,7 @@ end
 
 Then /^Expect Order Details Weight Lbs data error tooltip to be \"(.*)\"$/ do |expectation|
   log.info "Step: Expect Order Details Domestic  Weight lbs data error tooltip to be #{expectation}"
-  text_box = orders.details.lbs
+  text_box = orders.details.weight.lbs
   20.times do
     text_box.safe_double_click
     orders.details.click_form
@@ -62,7 +62,7 @@ end
 
 Then /^Expect Order Details Weight Oz data error tooltip to be \"(.*)\"$/ do |expectation|
   log.info "Step: Expect Order Details Weight Oz data error tooltip to be #{expectation}"
-  text_box = orders.details.oz
+  text_box = orders.details.weight.oz
   20.times do
     text_box.safe_double_click
     orders.details.click_form
@@ -102,7 +102,7 @@ end
 
 Then /^Expect Order Details Dimensions Length data error tooltip to be \"(.*)\"$/ do |expectation|
   log.info "Step: Expect Order Details Dimensions Length data error tooltip to be #{expectation}"
-  text_box = orders.details.length
+  text_box = orders.details.dimensions.length
 
   20.times do
     text_box.safe_double_click
@@ -126,7 +126,7 @@ end
 
 Then /^Expect Order Details Dimensions Width data error tooltip to be \"(.*)\"$/ do |expectation|
   log.info "Step: Expect Order Details Dimensions Width data error tooltip to be #{expectation}"
-  width_text_box = orders.details.width
+  width_text_box = orders.details.dimensions.width
 
   20.times do
     text_box.safe_double_click
@@ -150,7 +150,7 @@ end
 
 Then /^Expect Order Details Dimensions Height data error tooltip to be \"(.*)\"$/ do |expectation|
   log.info "Step: Expect Order Details Dimensions Height data error tooltip to be #{expectation}"
-  height_text_box = orders.details.height
+  height_text_box = orders.details.dimensions.height
 
   20.times do
     text_box.safe_double_click
