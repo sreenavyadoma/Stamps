@@ -1,6 +1,5 @@
 module Orders
   module Details
-
     class OrderForm < OrdersObject
       def click_form
         item_label = Label.new @browser.label :text => 'Item:'
@@ -1854,6 +1853,163 @@ module Orders
 
     class OrderDetails < OrderForm
 
+      class Weight < OrdersObject
+        class Pounds < OrdersObject
+          def text_box
+
+          end
+
+          def set value
+
+          end
+
+          def increment value
+
+          end
+
+          def decrement value
+
+          end
+        end
+
+        class Ounces < OrdersObject
+          def text_box
+
+          end
+
+          def set value
+
+          end
+
+          def increment value
+
+          end
+
+          def decrement value
+
+          end
+        end
+
+        def lbs
+          Pounds.new @browser
+        end
+
+        def oz
+          Ounces.new @browser
+        end
+      end
+
+      class Dimensions < OrdersObject
+
+        class Length < OrdersObject
+          def text_box
+
+          end
+
+          def set value
+
+          end
+
+          def increment value
+
+          end
+
+          def decrement value
+
+          end
+        end
+
+        class Width < OrdersObject
+          def text_box
+
+          end
+
+          def set value
+
+          end
+
+          def increment value
+
+          end
+
+          def decrement value
+
+          end
+        end
+
+        class Height < OrdersObject
+          def text_box
+
+          end
+
+          def set value
+
+          end
+
+          def increment value
+
+          end
+
+          def decrement value
+
+          end
+        end
+
+        def length
+          Length.new @browser
+        end
+
+        def width
+          Width.new @browser
+        end
+
+        def height
+          Height.new @browser
+        end
+      end
+
+      def oz
+        click_form
+        Textbox.new (@browser.text_field :name => 'WeightOz'), "data-errorqtip"
+      end
+
+      def lbs
+        click_form
+        Textbox.new (@browser.text_field :name => 'WeightLbs'), "data-errorqtip"
+      end
+
+      def length
+        click_form
+        Textbox.new @browser.text_field :name => 'Length'
+      end
+
+      def width
+        click_form
+        Textbox.new @browser.text_field :name => 'Width'
+      end
+
+      def height
+        click_form
+        Textbox.new @browser.text_field :name => 'Height'
+      end
+
+      def insured_value
+        click_form
+        Textbox.new @browser.text_field :name => "InsuredValue"
+      end
+
+      def weight
+        Weight.new @browser
+      end
+
+      def dimensions
+        Dimensions.new @browser
+      end
+
+      def insure_for
+
+      end
+
       def items_count
         begin
           count = (@browser.text_fields :css => "div[id^=singleorderitem][id$=innerCt]").size
@@ -1986,56 +2142,6 @@ module Orders
 
       def wait_until_present
         (Label.new @browser.label :text => "Ship From:").wait_until_present
-      end
-
-      def edit_details(data = {})
-        self.insured_value.set data[:insured_value]
-        self.lbs.set data[:lbs]
-        self.oz.set data[:oz]
-        self.length.set data[:@length]
-        self.width.set data[:width]
-        self.height.set data[:height]
-      end
-
-      def weight=(data={})
-        self.lbs.set data[:lbs]
-        self.oz.set data[:oz]
-      end
-
-      def dimensions=(data={})
-        self.length.set data[:@length]
-        self.width.set data[:width]
-        self.height.set data[:height]
-      end
-
-      def oz
-        click_form
-        Textbox.new (@browser.text_field :name => 'WeightOz'), "data-errorqtip"
-      end
-
-      def lbs
-        click_form
-        Textbox.new (@browser.text_field :name => 'WeightLbs'), "data-errorqtip"
-      end
-
-      def insured_value
-        click_form
-        Textbox.new @browser.text_field :name => "InsuredValue"
-      end
-
-      def length
-        click_form
-        Textbox.new @browser.text_field :name => 'Length'
-      end
-
-      def width
-        click_form
-        Textbox.new @browser.text_field :name => 'Width'
-      end
-
-      def height
-        click_form
-        Textbox.new @browser.text_field :name => 'Height'
       end
 
       def ship_to

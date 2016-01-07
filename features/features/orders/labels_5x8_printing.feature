@@ -7,12 +7,12 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Shipping Label - 5 ½" x 8 ½"
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"
@@ -28,12 +28,12 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Shipping Label - 8 ½" x 11" Paper
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"
@@ -41,24 +41,24 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
     Then Print
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Roll - 4" x 6" Shipping Label"
     Then Print
@@ -66,24 +66,24 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Print
@@ -92,12 +92,12 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print
@@ -106,12 +106,12 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Shipping Label - 5 ½" x 8 ½"
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
     Then Print
@@ -120,12 +120,12 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Roll - 4" x 6" Shipping Label
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Roll - 4" x 6" Shipping Label"
     Then Print
@@ -134,12 +134,12 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Roll - 4 ⅛" x 6 ¼" Shipping Label
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
     Then Print
@@ -149,34 +149,34 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     #Create order 1
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Uncheck row 1 on the Orders Grid
 
     #Create order 2
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Uncheck row 1 on the Orders Grid
 
     #Create order 3
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Ounces to 2
+    Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Set Order Details Service to "Priority Mail Package"
     Then Uncheck row 1 on the Orders Grid
 
     Then Edit row 1 on the Orders Grid

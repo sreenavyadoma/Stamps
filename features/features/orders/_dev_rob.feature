@@ -71,7 +71,7 @@ Feature: Test Development
   Scenario:
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     And Set Order Details Tracking to "USPS Tracking"
@@ -82,7 +82,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     And Set Order Details Tracking to "Signature Required"
@@ -140,7 +140,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 5
@@ -155,7 +155,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 5
@@ -170,7 +170,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 5
@@ -186,7 +186,7 @@ Feature: Test Development
   Scenario:
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 5
@@ -227,7 +227,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
 
     Then Print
@@ -237,7 +237,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
     Then Edit row 1 on the Orders Grid
     Then Print
@@ -246,17 +246,17 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a second order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a third order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Media Mail Package"
 
     Then Edit row 1 on the Orders Grid

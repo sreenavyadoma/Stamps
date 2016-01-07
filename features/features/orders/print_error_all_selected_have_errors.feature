@@ -8,7 +8,7 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
   Scenario:  Printing
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Edit row 1 on the Orders Grid
     Then Print expecting error A Service must be selected before printing.
 
@@ -20,10 +20,10 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Pounds to 1
     Then Set Order Details Ounces to 1

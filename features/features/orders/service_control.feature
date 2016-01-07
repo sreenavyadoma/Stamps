@@ -10,7 +10,7 @@
     Then Set Order Details Ship-From to default
     And Edit row 1 on the Orders Grid
 
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
 
     Then Set Order Details Service to "Priority Mail Large/Thick Envelope"

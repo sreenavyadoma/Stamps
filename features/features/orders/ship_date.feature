@@ -7,7 +7,7 @@ Feature: Ship Date
   @ship_date
   Scenario:  Set Print Modal Ship Date to today
     And I Add a new order
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Ship Date to today
@@ -18,7 +18,7 @@ Feature: Ship Date
   @ship_date
   Scenario:  Set Print Modal Ship Date to 1 day from today
     And I Add a new order
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 1
@@ -30,7 +30,7 @@ Feature: Ship Date
   Scenario:  Set Print Modal Ship Date to 1 day from today
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 2
@@ -42,7 +42,7 @@ Feature: Ship Date
   Scenario:  Set Print Modal Ship Date to 1 day from today
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
     Then Open Print Modal
     Then Set Print Modal Ship Date to today plus 3

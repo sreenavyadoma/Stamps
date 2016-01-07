@@ -10,11 +10,7 @@ Feature: Iran Internal Transaction Number Required
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Iran    | random  | random  |
-
     Then Set Order Details Ounces to 5
-    Then Set Order Details Length to 1
-    Then Set Order Details Height to 1
-    Then Set Order Details Width to 1
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     And Open customs form
