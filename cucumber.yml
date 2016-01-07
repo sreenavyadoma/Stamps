@@ -1,17 +1,18 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @print_media --guess VERBOSE=true URL=qacc BROWSER=ff USR=autobase PW=326tsetaqcdS!
+rob_dev: --tags @bvt --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
-eli_dev: --tags @purchasing --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
+eli_dev: --tags @netstamps --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
 ray_dev: --tags @ray_test --guess VERBOSE=false URL=qacc BROWSER=ff USR=webpost_0003 PW=pass111
-eva_dev: --tags   @dpo_print_error --guess VERBOSE=true URL=qacc BROWSER=ff USR=cctest2 PW=password1
+eva_dev: --tags   @service_tooltip --guess VERBOSE=true URL=qacc BROWSER=gc USR=cctestcorp1 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
 bvt: --tags @bvt --guess VERBOSE=false
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
+cn22_cp72: --tags @cn22_cp72 --guess VERBOSE=true
 print_media: --tags @print_media --guess VERBOSE=true
 print_media_tooltips: --tags @print_media_tooltips --guess VERBOSE=true
 print_two_up: --tags @print_two_up --guess VERBOSE=true
@@ -52,4 +53,5 @@ auto_suggest: --tags @auto_suggest --guess VERBOSE=false
 new_country_code: --tags  @new_country_code --guess VERBOSE=false
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false
 international_rules_engine: --tags  @international_rules_engine --guess VERBOSE=false
+
 

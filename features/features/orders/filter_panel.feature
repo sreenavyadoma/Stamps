@@ -52,7 +52,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to United States
+    Then Set Order Details Ship-To Country to United States
     Then Set Order Details Ship-To address to
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | James Test | Domestic Company | 600 Front St Apt 220 | San Diego | CA | 92101-6733 | United States | 8885551212 | test@stamps.com |
@@ -72,11 +72,13 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     Then Expect Grid Phone to be 8885551212
     Then Expect Grid Email to be test@stamps.com
 
+    Then Open Print Modal
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Printer to "factory"
     Then Print
 
     Then Filter Shipped
     And Expect system selects Shipped Filter and deselects the previous filter
-    And Expect system hides Order Details Form
 
     Then Expect Grid Recipient to be James Test
     Then Expect Grid Company to be Domestic Company
@@ -93,3 +95,5 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
 
     Then Sign out
+
+    #todo - rob

@@ -15,9 +15,9 @@ Feature: Print Validation Errors
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to Checked
+    Then Close Customs Form
     Then Print expecting error "First and Last Name, with two chars each or Full Name with two char First and Last Name or Company Name with two chars is required for both sender and recipient"
 
 

@@ -8,7 +8,7 @@ Feature: Ship-To Addresses
   Scenario:  System Calls GetRates When "Ship-To Address" is changed
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Expect Order Details Service Cost inline price for "Priority Mail Large/Thick Envelope" to be greater than $0.01
     Then Expect Order Details Service Cost inline price for "Priority Mail Package" to be greater than $0.01
     Then Expect Order Details Service Cost inline price for "Priority Mail Large Package" to be greater than $0.01

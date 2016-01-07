@@ -897,136 +897,135 @@ module Orders
 
     end
 
-  end
+    # Orders Grid
+    class OrdersGrid < OrdersObject
 
-  # Orders Grid
-  class OrdersGrid < OrdersObject
+      def present?
+        browser_helper.present? @browser.div Locators::OrdersGrid::present
+      end
 
-    def present?
-      browser_helper.present? @browser.div Locators::OrdersGrid::present
+      def checkbox
+        @check ||= Grid::CheckBox.new @browser
+      end
+
+      def order_id
+        @order_id ||= Grid::OrderId.new @browser
+      end
+
+      def ship_cost
+        @ship_cost ||= Grid::ShipCost.new @browser
+      end
+
+      def age
+        @age ||= Grid::Age.new @browser
+      end
+
+      def order_date
+        @order_date ||= Grid::OrderDate.new @browser
+      end
+
+      def recipient
+        @recipient ||= Grid::Recipient.new @browser
+      end
+
+      def company
+        @company ||= Grid::Company.new @browser
+      end
+
+      def address
+        @address ||= Grid::Address.new @browser
+      end
+
+      def city
+        @city ||= Grid::City.new @browser
+      end
+
+      def state
+        @state ||= Grid::State.new @browser
+      end
+
+      def zip
+        @zip ||= Grid::Zip.new @browser
+      end
+
+      def country
+        @country ||= Grid::Country.new @browser
+      end
+
+      def phone
+        @phone ||= Grid::Phone.new @browser
+      end
+
+      def email
+        @email ||= Grid::Email.new @browser
+      end
+
+      def qty
+        @qty ||= Grid::Qty.new @browser
+      end
+
+      def item_sku
+        @item_sku ||= Grid::ItemSKU.new @browser
+      end
+
+      def item_name
+        @item_name ||= Grid::ItemName.new @browser
+      end
+
+      def ship_from
+        @ship_from ||= Grid::ShipFrom.new @browser
+      end
+
+      def service
+        @service ||= Grid::Service.new @browser
+      end
+
+      def weight
+        @weight ||= Grid::Weight.new @browser
+      end
+
+      def insured_value
+        @insured_value ||= Grid::InsuredValue.new @browser
+      end
+
+      def reference_no
+        @reference_no ||= Grid::ReferenceNo.new @browser
+      end
+
+      def cost_code
+        @cost_code ||= Grid::CostCode.new @browser
+      end
+
+      def order_status
+        @order_status ||= Grid::OrderStatus.new @browser
+      end
+
+      def print_date
+        @print_date ||= Grid::DatePrinted.new @browser
+      end
+
+      def ship_date
+        @ship_date ||= Grid::ShipDate.new @browser
+      end
+
+      def tracking_no
+        @tracking ||= Grid::Tracking.new @browser
+      end
+
+      def order_total
+        @order_total ||= Grid::OrderTotal.new @browser
+      end
+
+      def toolbar
+        @grid_toolbar ||= Orders::Toolbar::Toolbar.new @browser
+      end
+
+      def wait_until_present *args
+        grid_present_span = Label.new (@browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]")
+        grid_present_span.wait_until_present
+      end
+
     end
-
-    def checkbox
-      @check ||= Grid::CheckBox.new @browser
-    end
-
-    def order_id
-      @order_id ||= Grid::OrderId.new @browser
-    end
-
-    def ship_cost
-      @ship_cost ||= Grid::ShipCost.new @browser
-    end
-
-    def age
-      @age ||= Grid::Age.new @browser
-    end
-
-    def order_date
-      @order_date ||= Grid::OrderDate.new @browser
-    end
-
-    def recipient
-      @recipient ||= Grid::Recipient.new @browser
-    end
-
-    def company
-      @company ||= Grid::Company.new @browser
-    end
-
-    def address
-      @address ||= Grid::Address.new @browser
-    end
-
-    def city
-      @city ||= Grid::City.new @browser
-    end
-
-    def state
-      @state ||= Grid::State.new @browser
-    end
-
-    def zip
-      @zip ||= Grid::Zip.new @browser
-    end
-
-    def country
-      @country ||= Grid::Country.new @browser
-    end
-
-    def phone
-      @phone ||= Grid::Phone.new @browser
-    end
-
-    def email
-      @email ||= Grid::Email.new @browser
-    end
-
-    def qty
-      @qty ||= Grid::Qty.new @browser
-    end
-
-    def item_sku
-      @item_sku ||= Grid::ItemSKU.new @browser
-    end
-
-    def item_name
-      @item_name ||= Grid::ItemName.new @browser
-    end
-
-    def ship_from
-      @ship_from ||= Grid::ShipFrom.new @browser
-    end
-
-    def service
-      @service ||= Grid::Service.new @browser
-    end
-
-    def weight
-      @weight ||= Grid::Weight.new @browser
-    end
-
-    def insured_value
-      @insured_value ||= Grid::InsuredValue.new @browser
-    end
-
-    def reference_no
-      @reference_no ||= Grid::ReferenceNo.new @browser
-    end
-
-    def cost_code
-      @cost_code ||= Grid::CostCode.new @browser
-    end
-
-    def order_status
-      @order_status ||= Grid::OrderStatus.new @browser
-    end
-
-    def print_date
-      @print_date ||= Grid::DatePrinted.new @browser
-    end
-
-    def ship_date
-      @ship_date ||= Grid::ShipDate.new @browser
-    end
-
-    def tracking_no
-      @tracking ||= Grid::Tracking.new @browser
-    end
-
-    def order_total
-      @order_total ||= Grid::OrderTotal.new @browser
-    end
-
-    def toolbar
-      @grid_toolbar ||= Grid::Orders::Toolbar.new @browser
-    end
-
-    def wait_until_present *args
-      grid_present_span = Label.new (@browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]")
-      grid_present_span.wait_until_present
-    end
-
   end
 
 end

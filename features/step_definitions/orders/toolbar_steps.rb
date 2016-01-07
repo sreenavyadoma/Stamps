@@ -3,8 +3,8 @@ When /^I Add a new order$/ do
   log.info "I Add a new order"
   @old_balance = orders.navbar.balance
   orders.grid.checkbox.uncheck 1
-  @single_order_form = orders.toolbar.add
-  @order_id = @single_order_form.order_id
+  @order_details = orders.toolbar.add
+  @order_id = @order_details.order_id
   log.info "New Order ID #{@order_id}"
   @awaiting_shipment_count = orders.filter.awaiting_shipment_count
   @item_count = 0
@@ -13,14 +13,14 @@ end
 
 Then /^I Add a second order$/ do
   log.info "Step: I Add a second order"
-  @single_order_form = orders.toolbar.add
-  @order_id_2 = @single_order_form.order_id
+  @order_details = orders.toolbar.add
+  @order_id_2 = @order_details.order_id
 end
 
 Then /^I Add a third order$/ do
   log.info "Step: I Add a third order"
-  @single_order_form = orders.toolbar.add
-  @order_id_3 = @single_order_form.order_id
+  @order_details = orders.toolbar.add
+  @order_id_3 = @order_details.order_id
 end
 
 When /^Add a second order$/ do

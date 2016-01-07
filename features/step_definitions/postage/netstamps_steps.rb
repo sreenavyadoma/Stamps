@@ -4,87 +4,25 @@ Then /^Select Print Postage print media(.*)/ do |media|
   @netstamps = print_postage.print_on media
 end
 
-Then /^Set Print Postage Form Ship-To to international address/ do |table|
-
-end
-
-Then /^Set Print Postage Form Ship-To address to (.*)/ do |address|
-
-end
-
-Then /^Set Print Postage Form Ship-To address to$/ do |table|
-
-end
 
 Then /^Enter Serial Number (.*)/ do |serial|
-  @netstamps.serial.set serial
+  @postage_form = print_postage.postage_base.stamps
+  @postage_form.serial.set serial
 end
 
 Then /^Select Specify Postage Amount/ do
-  @netstamps.specify_postage_button.click
+  @postage_form.specify_postage_button.click
 end
 
 Then /^Select Calculate Postage Amount/ do
-  @netstamps.calculate_postage_button.click
-end
-
-Then /^Set Print Postage Form Ship-From to (.*)/ do |value|
-  log.info "Step: Set Print Postage Ship-From to: \n #{value}"
-  @netstamps.ship_from.select value
-end
-
-Then /^Set Print Postage Form Ship-To country to (.*)/ do |country|
-  log.info "Step: Set Print Postage Ship-From to: \n #{value}"
-  @netstamps.country.select country
-end
-
-Then /^Set Print Postage Form Service to (.*)/ do |service|
-
+  @postage_form.calculate_postage_button.click
 end
 
 Then /^Set Print Postage Form Stamp Amount to (.*)/ do |amount|
-
+  @postage_form.stamp_amount.textbox.set amount
+  log.info "done"
 end
 
-Then /^Set Print Postage Form Ounces to (.*)/ do |ounces|
-
-end
-
-Then /^Set Print Postage Form Pounds to (.*)/ do |pounds|
-
-end
-
-Then /^Expect Print Postage Form Ship-To address to be (.*)/ do |address|
-
-end
-
-Then /^Open Extra Services/ do
-
-end
-
-Then /^Set Extra Services COD to (.*)/ do |amount|
-
-end
-
-Then /^Save Extra Services/ do
-
-end
-
-Then /^Search Contacts by group - (.*)/ do |filter|
-
-end
-
-Then /^Search Contacts by cost code - (.*)/ do |filter|
-
-end
-
-Then /^Open Contacts modal/ do
-
-end
-
-Then /Cancel Contacts modal/ do
-
-end
 
 Then /^This works$/ do
   print_postage.print_on "Shipping Label - 8 ½” x 11” Paper"

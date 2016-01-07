@@ -35,7 +35,7 @@ Feature: Test Development
     Then Set Order Details Length to 1
     Then Set Order Details Width to 1
     Then Set Order Details Tracking to "Signature Required"
-    Then Set Order Details Insured Value to $50.25
+    Then Set Order Details Insure For to $50.25
     Then Set Order Details Add Item
     Then Set Order Details Line Item Quantity to 1
     Then Set Order Details Line Item ID to ID1
@@ -56,7 +56,7 @@ Feature: Test Development
     Then Set Order Details Width to 1
     And Set Order Details Tracking to "Signature Required"
     Then Set Order Details Tracking to "USPS Tracking"
-    Then Set Order Details Insured Value to $50.25
+    Then Set Order Details Insure For to $50.25
     Then Set Order Details Item - Quantity 1, ID ID1, Description Line Item 1
     Then Set Order Details Item - Quantity 2, ID ID2, Description Line Item 2
     Then Set Order Details Item - Quantity 3, ID ID3, Description Line Item 3
@@ -71,7 +71,7 @@ Feature: Test Development
   Scenario:
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     And Set Order Details Tracking to "USPS Tracking"
@@ -82,7 +82,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
     And Set Order Details Tracking to "Signature Required"
@@ -140,7 +140,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 5
@@ -155,7 +155,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 5
@@ -170,7 +170,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 5
@@ -186,7 +186,7 @@ Feature: Test Development
   Scenario:
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Ounces to 5
@@ -227,7 +227,7 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
 
     Then Print
@@ -237,31 +237,31 @@ Feature: Test Development
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    Then Edit row 1 on the order grid
+    Then Check Orders Grid row 1
     Then Print
     Then Expect printed Order ID is not in Awaiting Shipment tab
     Then Expect printed Order ID is in Shipped tab
 
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a second order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a third order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 1 through 4
+    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Media Mail Package"
 
-    Then Edit row 1 on the order grid
-    Then Edit row 2 on the order grid
-    Then Edit row 3 on the order grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
+    Then Check Orders Grid row 3
 
     Then Print
 
@@ -275,7 +275,7 @@ Feature: Test Development
     Then List all Grid column values for row 3
 
   @rob_dev_customs_form_dropdowns
-  Scenario: Syria - Internal Transaction # Required
+  Scenario: Syria Internal Transaction Number Required
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
@@ -286,7 +286,7 @@ Feature: Test Development
     Then Set Order Details Length to 1
     Then Set Order Details Height to 1
     Then Set Order Details Width to 1
-    Then Set Order Details Service to "Priority Mail International Package"
+    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
   #Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
     And Open customs form
@@ -306,18 +306,18 @@ Feature: Test Development
     Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    Then Set Customs Form I agree to Checked
+    Then Close Customs Form
     And Sign out
 
   @_dev_rob
   Scenario: Domestic FPO Address
     And I Add a new order
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To country to United States
+    Then Set Order Details Ship-To Country to United States
     Then Set Order Details Ship-To address to
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
@@ -328,8 +328,8 @@ Feature: Test Development
     Then Set Order Details Service to "Priority Mail Package"
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Close Customs Form
     Then Print
 
   @rob_dev_int
@@ -344,9 +344,9 @@ Feature: Test Development
     Then Set Order Details Ounces to 2
     And Set Order Details Pounds to 2
     And Open customs form
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
+    Then Set Customs Form I agree to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
     And I Add a new order
@@ -358,7 +358,7 @@ Feature: Test Development
     And Set Order Details Ounces to 2
     And Set Order Details Pounds to 2
     And Open customs form
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    Then Close customs form
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
+    Then Set Customs Form I agree to Checked
+    Then Close Customs Form
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"

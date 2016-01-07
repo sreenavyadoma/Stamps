@@ -106,7 +106,6 @@ module Stamps
       text
     end
 
-
     def log_expectation field, expected, actual, result
       info "EXPECTATION :: #{field}:  #{expected}, Actual:  #{actual} # #{(result)?"Passed":"Failed"}"
     end
@@ -114,7 +113,6 @@ module Stamps
     def log_expectation_eql field, expected, actual
       info "EXPECTATION :: #{field}:  #{expected}, Actual:  #{actual} # #{actual.eql?(expected)?"Passed":"Failed"}"
     end
-
   end
 
   def log

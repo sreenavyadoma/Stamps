@@ -9,22 +9,16 @@ module Orders
 
     def select country
       log.info "Select Country #{country}"
-
-      selection = Label.new ((@browser.lis :text => country)[@index])
-
-      text_box_field = @browser.text_field :name => "OriginCountryCode"
-
+      selection = Label.new (@browser.lis :text => country)[@index]
+      text_box_field = (@browser.text_fields :name => "OriginCountryCode")[@index-1]
       text_box = Textbox.new text_box_field
       drop_down = Button.new text_box_field.parent.parent.divs[1]
 
       10.times {
         begin
           drop_down.safe_click unless selection.present?
-          if selection.present?
-            selection.scroll_into_view
-            selection.safe_click
-          end
-
+          selection.scroll_into_view
+          selection.safe_click
           log.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
           break if text_box.text.include? country
         rescue
@@ -59,7 +53,7 @@ module Orders
 
     def restrictions
       restrictions_button = browser_restrictions_button
-      view_restrictions = ViewRestrictions.new @browser
+      view_restrictions = Orders::Details::ViewRestrictions.new @browser
       5.times{
         restrictions_button.safe_click
         if view_restrictions.present?
@@ -73,30 +67,192 @@ module Orders
 
   class CustomsItemGrid < OrdersObject
 
-    def line_item_count
-      (@browser.tables :css => "div[id^=customsItemsGrid-]>div>div>table").size
+    def size
+      (@browser.tables :css => "div[id^=associatedcustomsitems]>div[id^=singlecustomsitem]").size
     end
 
     def item number
       add_button = Button.new (@browser.spans :text => "Add Item").last
-      log.info "Item Count: #{line_item_count}"
+      log.info "Item Count: #{size}"
 
       20.times{
-        add_button.safe_click if number > line_item_count
-        log.info "Item Count: #{line_item_count}"
-        break if line_item_count >= number
+        break if size >= number
+        sleep 1
+        break if size >= number
+        add_button.safe_click if number > size
+        log.info "Item Count: #{size}"
       }
 
-      log.info "User Entered Number: #{number}. Actual Item Count: #{line_item_count}"
+      log.info "User Entered Number: #{number}. Actual Item Count: #{size}"
 
-      CustomsLineItem.new(@browser).line_item number
+      CustomsLineItem.new @browser, number
     end
   end
 
   class CustomsLineItem < OrdersObject
-    def line_item number
+
+    class Qty < OrdersObject
+      def initialize browser, number
+        super browser
+        @number = number
+      end
+
+      def text_box
+        Textbox.new ((@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]), "data-errorqtip"
+      end
+
+      def set value
+        text_field = text_box
+        value = value.to_i
+        max = value + text_field.text.to_i
+        max.times do
+          current_value = text_field.text.to_i
+          break if value == current_value
+          if value > current_value
+            increment 1
+          else
+            decrement 1
+          end
+          break if value == current_value
+        end
+        sleep 1
+        log.info "Qty set to #{text_field.text}"
+      end
+
+      def increment value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
+
+    class UnitPrice < OrdersObject
+      def initialize browser, number
+        super browser
+        @number = number
+      end
+
+      def text_box
+        Textbox.new ((@browser.text_fields :name => "Value")[@number-1]), "data-errorqtip"
+      end
+
+      def set value
+        text_box.set value
+        log.info "Ounces set to #{text_box.text}"
+      end
+
+      def increment value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
+
+    class UnitWeightLbs < OrdersObject
+      def initialize browser, number
+        super browser
+        @number = number
+      end
+
+      def text_box
+        Textbox.new ((@browser.text_fields :name => "lbs")[@number-1]), "data-errorqtip"
+      end
+
+      def set value
+        text_field = text_box
+        value = value.to_i
+        max = value + text_field.text.to_i
+        max.times do
+          current_value = text_field.text.to_i
+          break if value == current_value
+          if value > current_value
+            increment 1
+          else
+            decrement 1
+          end
+          break if value == current_value
+        end
+        sleep 1
+        log.info "Pounds set to #{text_field.text}"
+      end
+
+      def increment value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
+
+    class UnitWeightOz < OrdersObject
+      def initialize browser, number
+        super browser
+        @number = number
+      end
+
+      def text_box
+        Textbox.new ((@browser.text_fields :name => "oz")[@number-1]), "data-errorqtip"
+      end
+
+      def set value
+        text_field = text_box
+        value = value.to_i
+        max = value + text_field.text.to_i
+        max.times do
+          current_value = text_field.text.to_i
+          break if value == current_value
+          if value > current_value
+            increment 1
+          else
+            decrement 1
+          end
+          break if value == current_value
+        end
+        sleep 1
+        log.info "Ounces set to #{text_field.text}"
+      end
+
+      def increment value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
+
+    def initialize browser, number
+      super browser
       @number = number
-      self
     end
 
     def present?
@@ -108,68 +264,26 @@ module Orders
     end
 
     def item_description
-      Textbox.new (@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]
+      Textbox.new ((@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]), "data-errorqtip"
     end
 
     def qty
-      Textbox.new (@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]
-    end
-
-    def qty_increment value
-
-    end
-
-    def qty_decrement value
-
+      Qty.new @browser, @number
     end
 
     def unit_price
-      Textbox.new (@browser.text_fields :name => "Value")[@number-1]
-    end
-
-    def unit_price_increment value
-
-    end
-
-    def unit_price_decrement value
-
+      UnitPrice.new @browser, @number
     end
 
     def lbs
-      Textbox.new (@browser.text_fields :name => "lbs")[@number-1]
-    end
-
-    def lbs_increment value
-
-    end
-
-    def lbs_decrement value
-
+      UnitWeightLbs.new @browser, @number
     end
 
     def oz
-      Textbox.new (@browser.text_fields :name => "oz")[@number-1]
+      UnitWeightOz.new @browser, @number
     end
 
-    def oz_increment value
-
-    end
-
-    def oz_decrement value
-
-    end
-=begin
-
-    def origin_country
-      Textbox.new origin_country_input
-    end
-=end
-
-    def origin_country_input
-      (@browser.text_fields :name => "OriginCountryCode")[@number-1]
-    end
-
-    def origin_country
+    def origin
       OriginCountry.new @browser, @number
     end
 
@@ -284,7 +398,10 @@ module Orders
   end
 
   class CustomsForm < OrdersObject
-    public
+
+    def usps_privacy_act_warning
+      Label.new (@browser.label :text => "You must agree to the USPS Privacy Act Statement")
+    end
 
     def present?
       Button.new @browser.image :css => "img[class*='x-tool-close']"
@@ -312,30 +429,20 @@ module Orders
     end
 
     def license
-      Textbox.new @browser.text_field :css => "input[name=LicenseNumber]"
+      Textbox.new @browser.text_field :name => "CustomsLicenseNumber"
     end
 
     def certificate
-      Textbox.new @browser.text_field :css => "input[name=CertificateNumber]"
+      Textbox.new @browser.text_field :name => "CustomsCertificateNumber"
     end
 
     def invoice
-      Textbox.new @browser.text_field :css => "input[name=InvoiceNumber]"
+      Textbox.new @browser.text_field :name => "CustomsInvoiceNumber"
     end
 
     def item_grid
-      sleep 2
+      sleep 1
       CustomsItemGrid.new @browser
-    end
-
-    def plus
-
-    end
-
-    def total_weight_error
-      qtip_error = total_weight.attribute_value "data-errorqtip"
-      log.info "Total Weight dev error: #{qtip_error}"
-      qtip_error
     end
 
     def total_weight
@@ -359,29 +466,12 @@ module Orders
     end
 
     def total_value
-      divs = @browser.divs :css => "div[class*=x-form-display-field-default]"
-      div = divs.last
-      test_helper.remove_dollar_sign (Label.new div).text
-    end
-
-    def verify_i_agree_checked
-      div = @browser.div :css => "div[id^=checkboxfield][style^=right]"
-      attribute_value = browser_helper.attribute_value div
-      checked = attribute_value.include? "checked"
-      log.info "I agree is #{(checked)? 'checked' : 'unchecked'}"
-      checked
-    end
-
-    def i_agree_checkbox
-      text_fields = @browser.text_fields :css => "input[id^=checkboxfield]"
-      text_field = text_fields.last
-      log.info "I Agree Checkbox is #{(browser_helper.present? text_field)?'Present' : 'Not Present'}"
-      text_field
+      test_helper.remove_dollar_sign (Label.new (@browser.divs :css => "div[class*=x-form-display-field-default]").last).text
     end
 
     def i_agree user_agreed
 
-      checkbox_fields = @browser.inputs :css => "input[id^=checkbox-][id$=-inputEl]"
+      checkbox_fields = @browser.inputs :css => "input[id^=checkbox-]"
       checkbox_field = checkbox_fields.last
 
       verify_fields = @browser.inputs :css => "div[id^=checkbox][class*=x-form-type-checkbox]"

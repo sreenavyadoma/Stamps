@@ -1,5 +1,7 @@
 module Orders
 
+
+#todo-rob
   class FilterPanel < BrowserObject
     private
 
@@ -47,7 +49,7 @@ module Orders
       tab = Stamps::Browser::Selection.new div, table, "class", "selected"
       tab.select
       sleep 1
-      OrdersGrid.new @browser
+      Orders::Grid::OrdersGrid.new @browser
     end
 
     def shipped
@@ -56,7 +58,7 @@ module Orders
       tab = Stamps::Browser::Selection.new div, table, "class", "selected"
       tab.select
       sleep 1
-      OrdersGrid.new @browser
+      Orders::Grid::OrdersGrid.new @browser
     end
 
     def cancelled
@@ -65,7 +67,7 @@ module Orders
       tab = Stamps::Browser::Selection.new div, table, "class", "selected"
       tab.select
       sleep 1
-      OrdersGrid.new @browser
+      Orders::Grid::OrdersGrid.new @browser
     end
 
     def get_closed_filter_name

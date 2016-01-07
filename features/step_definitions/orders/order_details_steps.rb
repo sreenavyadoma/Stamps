@@ -41,7 +41,7 @@ Then /^Set Order Details Line Item (\d+) Description to (.*)$/ do |line_item, de
   item_object.description (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
 end
 
-Given /^Set Order Details Item - Quantity (.*), ID (.*), Description (.*)$/ do |qty, id, description|
+Then /^Set Order Details Item - Quantity (.*), ID (.*), Description (.*)$/ do |qty, id, description|
   log.info "Step: Set Order Details Item - Quantity #{qty}, ID #{id}, Description #{description}"
   step "Set Order Details Add Item"
   step "Set Order Details Line Item Quantity to #{qty}"
@@ -49,18 +49,26 @@ Given /^Set Order Details Item - Quantity (.*), ID (.*), Description (.*)$/ do |
   step "Set Order Details Line Item Description to #{description}"
 end
 
-And /^Set Order Details Ship-From to (\w+)$/ do |value|
+Then /^Set Order Details Ship-From to (\w+)$/ do |value|
   log.info "Step: Set Order Details Ship-From to: \n #{value}"
   orders.details.ship_from.select value
 end
 
-And /^Set Order Details Ship-To address to$/ do |table|
+Then /^Set Order Details Ship-To address to$/ do |table|
   ship_to = OrdersHelper.instance.address_hash_to_str table.hashes.first
   log.info "Step: Set Order Details Ship-To address to \n#{ship_to}"
   step "Set Order Details Ship-To address to #{ship_to}"
 end
 
-When /^Set Order Details Ship-To address to (.*)$/ do |address|
+Then /^Set Order Details Ship-To to Random Address Between Zone 1 through 4$/ do
+  step "Set Order Details Ship-To address to zone 1 through 4"
+end
+
+Then /^Set Order Details Ship-To to Random Address Between Zone 5 through 8$/ do
+  step "Set Order Details Ship-To address to zone 5 through 8"
+end
+
+Then /^Set Order Details Ship-To address to (.*)$/ do |address|
   log.info "Step: Set Order Details Ship-To address to \"#{address}\""
 
   case address
@@ -85,7 +93,7 @@ When /^Set Order Details Ship-To address to (.*)$/ do |address|
   end
 end
 
-And /^Set Order Details Ship-To to ambiguous address$/ do |table|
+Then /^Set Order Details Ship-To to ambiguous address$/ do |table|
   ambiguous_address = OrdersHelper.instance.format_address table.hashes.first
   log.info "Step: Set Order Details Ship-To to ambiguous address \n#{ambiguous_address}"
   @ambiguous_address_module = orders.details.ship_to.ambiguous.set ambiguous_address
@@ -97,11 +105,11 @@ Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
-  log.info "Expectation: Expect \"Exact Address Not Found\" module to appear"
+  log.info "Step: Expect \"Exact Address Not Found\" module to appear"
   expect(@ambiguous_address_module.present?).to be true
 end
 
-When /^Set Order Details Phone to (.*)$/ do |phone|
+Then /^Set Order Details Phone to (.*)$/ do |phone|
   @order_details_phone = (phone.to_s.strip.downcase.include? "random")?(test_helper.random_phone):phone
   begin
     log.info "Step: Order Details Form Phone to \"#{@order_details_phone}\""
@@ -109,7 +117,7 @@ When /^Set Order Details Phone to (.*)$/ do |phone|
   end unless @order_details_phone.length == 0
 end
 
-When /^Set Order Details Email to (.*)$/ do |email|
+Then /^Set Order Details Email to (.*)$/ do |email|
   @order_details_email = (email.to_s.strip.downcase.include? "random")?(test_helper.random_email):email
   begin
     log.info "Step: Set Order Details Email to \"#{@order_details_email}\""
@@ -117,8 +125,8 @@ When /^Set Order Details Email to (.*)$/ do |email|
   end unless @order_details_email.length == 0
 end
 
-When /^Expect system (.*) Order Form$/ do |status|
-  log.info "Expectation: Expect system #{status} Order Form"
+Then /^Expect system (.*) Order Form$/ do |status|
+  log.info "Step: Expect system #{status} Order Form"
 
   actual = orders.details.present?
   if status == 'hides'
@@ -128,73 +136,106 @@ When /^Expect system (.*) Order Form$/ do |status|
   end
 end
 
-When /^Hide Order Details Form Ship-To fields$/ do
+Then /^Hide Order Details Form Ship-To fields$/ do
   log.info "Step: Hide Order Details Form Ship-To fields"
   orders.details.ship_to.hide
   log.info "done."
   #end_step step
 end
 
-When /^Set Order Details Pounds to (\d*)$/ do |value|
-  begin
-    log.info "Step: Set Order Details Pounds to \"#{value}\""
-    orders.details.lbs.set value
-    orders.details.click_form
-    orders.details.click_form
-    orders.details.click_form
-  end unless value.length == 0
+Then /^Increment Order Details Pounds by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Pounds by \"#{value}\""
+  orders.details.weight.lbs.increment value
 end
 
-When /^Set Order Details Ounces to (.*)$/ do |value|
-  begin
-    log.info "Step: Set Order Details Ounces to \"#{value}\""
-    orders.details.oz.set value
-    orders.details.click_form
-    orders.details.click_form
-    orders.details.click_form
-  end unless value.length == 0
+Then /^Decrement Order Details Pounds by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Pounds by \"#{value}\""
+  orders.details.weight.lbs.decrement value
 end
 
-When /^Set Order Details Length to (\d*)$/ do |value|
-  begin
-    log.info "Step: Set Order Details Length to \"#{value}\""
-    orders.details.length.set value
-    orders.details.click_form
-    orders.details.click_form
-    orders.details.click_form
-  end unless value.length == 0
+Then /^Increment Order Details Ounces by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Ounces by \"#{value}\""
+  orders.details.weight.oz.increment value
 end
 
-When /^Set Order Details Width to (\d*)$/ do |value|
-  begin
-    log.info "Step: Set Order Details Width to \"#{value}\""
-    orders.details.width.set value
-    orders.details.click_form
-    orders.details.click_form
-    orders.details.click_form
-  end unless value.length == 0
+Then /^Decrement Order Details Ounces by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Ounces by \"#{value}\""
+  orders.details.weight.oz.decrement value
 end
 
-When /^Set Order Details Height to (\d*)$/ do |value|
-  begin
-    log.info "Step: Set Order Details Height to \"#{value}\""
-    orders.details.height.set value
-    orders.details.click_form
-    orders.details.click_form
-    orders.details.click_form
-  end unless value.length == 0
+Then /^Increment Order Details Length by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Length by \"#{value}\""
+  orders.details.dimensions.length.increment value
 end
 
-And /^Set Order Details Service to \"(.*)\"$/ do |service|
+Then /^Decrement Order Details Length by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Length by \"#{value}\""
+  orders.details.dimensions.length.decrement value
+end
+
+Then /^Increment Order Details Width by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Width by \"#{value}\""
+  orders.details.dimensions.width.increment value
+end
+
+Then /^Decrement Order Details Width by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Width by \"#{value}\""
+  orders.details.dimensions.width.decrement value
+end
+
+Then /^Increment Order Details Height by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Height by \"#{value}\""
+  orders.details.dimensions.height.increment value
+end
+
+Then /^Decrement Order Details Height by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Height by \"#{value}\""
+  orders.details.dimensions.height.decrement value
+end
+
+Then /^Increment Order Details Insure For by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Insure For by \"#{value}\""
+  orders.details.insure_for.increment value
+end
+
+Then /^Decrement Order Details Insure For by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Insure For by \"#{value}\""
+  orders.details.insure_for.decrement value
+end
+
+Then /^Set Order Details Pounds to (\d*)$/ do |value|
+  log.info "Step: Set Order Details Pounds to \"#{value}\""
+  orders.details.weight.lbs.set value
+end
+
+Then /^Set Order Details Ounces to (.*)$/ do |value|
+  log.info "Step: Set Order Details Ounces to \"#{value}\""
+  orders.details.weight.oz.set value
+end
+
+Then /^Set Order Details Length to (\d*)$/ do |value|
+  log.info "Step: Set Order Details Length to \"#{value}\""
+  orders.details.dimensions.length.set value
+end
+
+Then /^Set Order Details Width to (\d*)$/ do |value|
+  log.info "Step: Set Order Details Width to \"#{value}\""
+  orders.details.dimensions.width.set value
+end
+
+Then /^Set Order Details Height to (\d*)$/ do |value|
+  log.info "Step: Set Order Details Height to \"#{value}\""
+  orders.details.dimensions.height.set value
+end
+
+Then /^Set Order Details Service to \"(.*)\"$/ do |service|
   log.info "Step: Set Order Details Service to #{service}"
   orders.details.service.select service
 end
 
 Then /^Set Order Details Tracking to \"([\w ]*)\"$/ do |value|
   log.info "Step: Set Order Details Tracking to #{value}"
-  begin
-    orders.details.tracking.select value
-  end unless value.length == 0
+  orders.details.tracking.select value
 end
 
 Then /^Expect Order details Service \"(.*)\" to be disabled/ do |service|
@@ -210,7 +251,7 @@ Then /^Expect Order details Service \"(.*)\" to be enabled/ do |service|
   log.info "Test #{(selection_enabled)?"Passed":"Failed"}"
   selection_enabled.should be true
 end
-
+#todo-rob
 Then /^Expect Order Details Tracking tooltip for (.*) to be (.*)$/ do |lov, expectation|
   actual_tooltip = orders.details.tracking.tooltip value
   #log.info actual_tooltip
@@ -218,14 +259,9 @@ Then /^Expect Order Details Tracking tooltip for (.*) to be (.*)$/ do |lov, expe
   #log.info cost
 end
 
-And /^Set Order Details Insured Value to \$([\d*\.?\d*]*)$/ do |value|
-  log.info "Step: Set Order Details Insured Value to #{value}"
-  orders.details.insured_value.set value
-end
-
-When /^Set order details with$/ do |table|
-  log.info "Step: Set order details with..."
-  orders.details.edit_details table.hashes.first
+Then /^Set Order Details Insure For to \$([\d*\.?\d*]*)$/ do |value|
+  log.info "Step: Set Order Details Insure For to #{value}"
+  orders.details.insure_for.set value
 end
 
 Then /^Add Ship-From address$/ do |ship_from|
@@ -241,7 +277,7 @@ Then /^Add Ship-From address (\w+)$/ do |address|
 end
 
 Then /^Expect (\w+) Ship-From address was added$/ do |address|
-  log.info "Expectation: Expect #{address} Ship-From address was added"
+  log.info "Step: Expect #{address} Ship-From address was added"
   raise "Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
   begin
     log.info "Search for \n#{@ship_from_address}.  Address was #{(orders.details.ship_from.select("Manage Shipping Addresses...").address_located?(@ship_from_address))?'Located':'Not Located'}"
@@ -280,21 +316,21 @@ Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city =
 end
 
 Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
-  log.info "Expectation: Expect Pounds tooltip to display - The maximum value for this field is #{expected}"
+  log.info "Step: Expect Pounds tooltip to display - The maximum value for this field is #{expected}"
   actual = orders.details.pounds_max_value
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
 end
 
 Then /^Expect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
-  log.info "Expectation: Expect Ounces tooltip to display - The maximum value for this field is #{expected}"
+  log.info "Step: Expect Ounces tooltip to display - The maximum value for this field is #{expected}"
   actual = orders.details.ounces_max_value
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
 end
 
 Then /^Expect Order Details Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
-  log.info "Expectation: Expect Order Details Service Cost inline price for #{service} to be greater than #{expected}"
+  log.info "Step: Expect Order Details Service Cost inline price for #{service} to be greater than #{expected}"
   actual = orders.details.service.cost service
   10.times { |counter|
     #log_expectation_eql "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
@@ -306,7 +342,7 @@ Then /^Expect Order Details Service Cost inline price for "([a-zA-Z -\/]+)" to b
 end
 
 Then /^Expect Order Details Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
-  log.info "Expectation: Expect Order Details Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
+  log.info "Step: Expect Order Details Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
   tooltips = tooltip_content.split "||"
   actual_tooltip = orders.details.service.tooltip service
   tooltips.each { |tooltip|
@@ -316,14 +352,14 @@ Then /^Expect Order Details Service Tooltip for "(.*)" to include "(.*)"$/ do |s
 end
 
 Then /^Expect Service Cost to be \$(.*)$/ do |expected|
-  log.info "Expectation: Expect Service Cost to be $#{expected}"
+  log.info "Step: Expect Service Cost to be $#{expected}"
   actual = orders.details.service_cost
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
 end
 
 Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
-  log.info "Expectation: Expect Tracking Cost to be #{expected}"
+  log.info "Step: Expect Tracking Cost to be #{expected}"
   actual = orders.details.tracking_cost
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
@@ -334,14 +370,14 @@ Then /^Verify Order Details Form Total Amount$/ do
 end
 
 Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
-  log.info "Expectation: Expect Insurance Cost to be #{expected}"
+  log.info "Step: Expect Insurance Cost to be #{expected}"
   actual = orders.details.insurance_cost
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
 end
 
 Then /^Expect Order Details Service to be \"(.*)\"$/ do |expected|
-  log.info "Expectation: Expect Order Details Service to be #{expected}"
+  log.info "Step: Expect Order Details Service to be #{expected}"
   begin
     10.times do
       actual = orders.details.service.text_box.text
@@ -354,7 +390,7 @@ Then /^Expect Order Details Service to be \"(.*)\"$/ do |expected|
 end
 
 Then /^Expect Order Details Tracking to be \"([\w\s]*)\"$/ do |expected|
-  log.info "Expectation: Expect Order Details Tracking to be #{expected}"
+  log.info "Step: Expect Order Details Tracking to be #{expected}"
   begin
     10.times do
       actual = orders.details.tracking.text_box.text
@@ -367,7 +403,7 @@ Then /^Expect Order Details Tracking to be \"([\w\s]*)\"$/ do |expected|
 end
 
 Then /^Expect Order Details Total to be \$(.*)$/ do |expected|
-  log.info "Expectation: Expect Order Details Total to be $#{expected}"
+  log.info "Step: Expect Order Details Total to be $#{expected}"
   begin
     10.times do
       orders.details.click_form
@@ -383,7 +419,7 @@ Then /^Expect Order Details Total to be \$(.*)$/ do |expected|
 end
 
 Then /^Expect (\d+) orders selected$/ do |expected|
-  log.info "Expectation: Expect #{expected} orders selected"
+  log.info "Step: Expect #{expected} orders selected"
   orders.multi_orders.order_count.should eql expected
 end
 

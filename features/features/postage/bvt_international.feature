@@ -20,9 +20,9 @@ Feature: International Shipping BVT
     Then Set customs form Non-Delivery Options to "Return to sender"
     Then Set customs form Internal Transaction Number to "Not required"
     Then Set customs form More Info to "BVT International Shipping"
-    Then Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions
-    And Add or Edit Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
-    Then Close customs form
+    Then Set Customs Form I agree to Checked
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 100.50, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 100
+    Then Close Customs Form
     Then Print Postage
     Then Sign out
 
