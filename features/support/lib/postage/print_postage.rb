@@ -4,7 +4,7 @@ module Postage
 
   ######Class for Print Postage page, Incl. toolbars and navigation. Instantiates postage form objects for Print On selections
 
-  class PrintPostage < PostageObject
+  class PrintPostage < Postage::PostageObject
 
     def sign_in_page
       @sign_in ||= Postage::SignInPage.new @browser
@@ -18,22 +18,48 @@ module Postage
       #we'll get to this when it comes time to buy stamps and prefs
     end
 
-    def print_on selection
-      PrintOn.new(@browser).select selection
+    def postage_base
+      PostageBase.new @browser
+    end
 
-      if selection.downcase.include? "shipping label"
-        shipping_label
-      elsif selection.downcase.include? "stamps"
-        stamps
-      elsif selection.downcase.include? "envelope"
-        envelope
-      elsif selection.downcase.include? "certified"
-        certified_mail
-      elsif selection.downcase.include? "roll"
-        shipping_label
-      else
-        raise "Print On #{selection} not yet supported."
-      end
+  end
+
+
+  ######Parent Class for Postage Form Types
+
+  class PostageBase < PrintPostage
+    # all common fields goes here including service drop down
+
+    def country
+      Country.new @browser
+    end
+
+    def service
+      ServiceDropDown.new @browser
+    end
+
+    def ship_from
+      ShipFromAddress.new @browser
+    end
+
+    def weight
+      Weight.new @browser
+    end
+
+    def print_on
+      PrintOn.new @browser
+    end
+
+    def total
+      @browser.label :css => "label[id*=sdc-printpanel-totalcostlabel]"
+    end
+
+    def print_sample_button
+      Button.new (@browser.a :css => "a[class*=sdc-printpanel-printsamplebtn]")
+    end
+
+    def print_button
+      Button.new (@browser.a :css => "a[class*=sdc-printpanel-printpostagebtn]")
     end
 
     def shipping_label
@@ -52,33 +78,88 @@ module Postage
       CertifiedMail.new @browser
     end
 
-  end
-
-
-  ######Parent Class for Postage Form Types
-
-  class PostageBase < Postage::PostageObject
-    # all common fields goes here including service drop down
-
-    def country
-      Country.new @browser
+    def print
+      @print_window ||= Postage::PrintPostageModal.new @browser
+      open_window @print_window
     end
 
-    def service
-      Service.new @browser
+    def print_invalid_address
+      open_window InvalidAddressError.new(@browser)
     end
 
-    def ship_from
-      ShipFromAddress.new @browser
+    def print_expecting_error *args
+      error_window = OrderErrors.new(@browser)
+      open_window error_window
+      case args.length
+        when 0
+          error_window
+        when 1
+          error_window.error_message.include? error_message
+        else
+          raise "Illegal number of arguments."
+      end
     end
 
-    def weight
-      Weight.new @browser
+    def open_window window
+      return window if window.present?
+
+      browser_helper.click print_button, "print"
+
+
+
+      naws_plugin_error = NawsPluginError.new @browser
+      error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
+      install_plugin_error = ErrorInstallPlugin.new @browser
+
+      20.times do
+        if install_plugin_error.present?
+          install_plugin_error.close
+          return nil
+        end
+
+        begin
+          if error_connecting_to_plugin.present?
+            5.times{
+              error_connecting_to_plugin.ok
+              break unless error_connecting_to_plugin.present?
+            }
+          end
+
+          if naws_plugin_error.present?
+            5.times{
+              naws_plugin_error.ok
+              break unless naws_plugin_error.present?
+            }
+          end
+
+          return window if window.present?
+          browser_helper.click browser_print_button, "print"
+        rescue
+          #ignore
+        end
+      end
+
+      return window if window.present?
+      raise "Unable to open Print Window.  There might be errors in printing of order is not ready for printing.  Check your test."
     end
 
-    def print_on
-      PrintOn.new @browser
+    def browser_settings_button
+      Button.new (@browser.span :css => "span[class*=sdc-icon-settings]")
     end
+
+    def click_print_button
+      browser_helper.click print_button
+    end
+
+    #def wait_until_present
+    #  browser_helper.wait_until_present @browser.span Locators::ToolBar::add
+    #end
+
+    #def present?
+    #  browser_helper.present? @browser.span Locators::ToolBar::add
+    #end
+
+
   end
 
 
@@ -202,7 +283,6 @@ module Postage
           #ignore
         end
       }
-
     end
 
     def tooltip selection
@@ -214,6 +294,13 @@ module Postage
         drop_down.safe_click unless selection_field.present?
         return selection_field.attribute_value "data-qtip" if selection_field.present?
       }
+    end
+
+    def enabled? selection
+
+    end
+
+    def disabled? selection
 
     end
   end
@@ -249,7 +336,7 @@ module Postage
 
       return @manage_shipping_adddress if @manage_shipping_adddress.present?
 
-      ship_from_default_selection_field = @browser.div :css => "div[data-recordindex='0']" #"div[id^=shipfromdroplist][id$=trigger-picker]"
+      ship_from_default_selection_field = (@browser.divs :css => "div[class*=x-boundlist-item]")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
       ship_from_dropdown = self.drop_down
       ship_from_textbox = self.text_box
 
@@ -285,7 +372,7 @@ module Postage
           ship_from_dropdown.safe_click unless selection_label.present?
           selection_label.scroll_into_view
           selection_label.safe_click
-          break if ship_from_textbox.text.include? selection_text
+          break if ship_from_textbox.text.include? selection_label.text
         }
       end
     end
@@ -348,25 +435,27 @@ module Postage
 
   class ServiceDropDown < PostageObject
     def text_box
-      Textbox.new @browser.text_field :name => "Service"
+      Textbox.new @browser.text_field :name => "nsService"
     end
 
     def drop_down
-      Button.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
+      Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[6]
     end
 
     def select selection
       log.info "Select Service #{selection}"
       box = text_box
       button = drop_down
-      selection_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
+      selection_label = Label.new @browser.div :css => "div[data-qtip*='#{selection}']"
       10.times {
         begin
-          button.safe_click unless selection_label.present?
+          button.safe_click #unless selection_label.present?
           selection_label.scroll_into_view
           selection_label.safe_click
-          click_form
           selected_service = box.text
+          if selected_service == "First Class (1 - 3 Days)"
+            selected_service = "First Class Mail (1 - 3 Days)"
+          end
           log.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
           break if selected_service.include? selection
         rescue
