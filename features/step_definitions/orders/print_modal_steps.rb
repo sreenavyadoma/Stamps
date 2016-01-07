@@ -194,9 +194,5 @@ Then /^Select (.*) pane$/ do |value|
 
 end
 
-Then /^Print Postage$/ do
-
-end
-
 
 
