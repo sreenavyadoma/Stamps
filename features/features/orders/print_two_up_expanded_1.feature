@@ -3,7 +3,62 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
   Background:
     Given I am signed in to Orders
 
-  @two_up_expanded @two_up_expanded_1
+  @two_up_expanded @two_up_expanded_test
+  Scenario: User Prints 3 Domestic labels on SDC-1200 - left side
+    And I Add a new order
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to PM Med FR Box, SDC-1200, 530 K Street Unit 504, San Diego CA 92101-7060
+    Then Set Order Details Service to "Priority Mail Medium Flat Rate Box"
+    Then Set Order Details Ounces to 1
+    And I Add a new order
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to PM Lg FR Box, SDC-1200, 7065 N Ingram Ave, Fresno CA 93650-1083
+    Then Set Order Details Service to "Priority Mail Large Flat Rate Box"
+    Then Set Order Details Ounces to 1
+    And I Add a new order
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To address to PM RR Box A, SDC-1200, 4937 79th St., Sacramento CA 95820-6213
+    Then Set Order Details Service to "Priority Mail Regional Rate Box A"
+    Then Set Order Details Ounces to 1
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
+    Then Check Orders Grid row 3
+    Then Open Print Modal
+    Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Set Print Modal Printer to "factory"
+    Then Select Print Modal left-side label
+    Then Expect Print Modal left-side label selected
+    And Expect Print Window requires 2 label sheets
+    Then Print Sample
+    Then Print
+
+    Then Sign out
+
+  @two_up_expanded
+  Scenario: User Prints 1 FPO CN22 label on 8.5x11 - right side
+    And I Add a new order
+    Then Set Order Details Ship-From to default
+    Then Set Order Details Ship-To Country to United States
+    Then Set Order Details Ship-To address to
+      | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
+      | PM RR Box C | 8.5x11 Right Side 1 | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
+    Then Set Order Details Ounces to 3
+    And Open customs form
+    Then Set customs form Package Contents to "Merchandise"
+    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
+    Then Set Customs Form I agree to Checked
+    Then Close Customs Form
+    Then Open Print Modal
+    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Set Print Modal Printer to "factory"
+    Then Select Print Modal right-side label
+    Then Expect Print Modal right-side label selected
+    And Expect Print Window requires 1 label sheets
+    Then Print Sample
+    Then Print
+    Then Sign out
+
+  @two_up_expanded
   Scenario: User Prints 1 Domestic label on 8.5x11 - left side
 
     And I Add a new order
@@ -85,37 +140,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Sign out
 
   @two_up_expanded
-  Scenario: User Prints 3 Domestic labels on SDC-1200 - left side
-    And I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to PM Med FR Box, SDC-1200, 530 K Street Unit 504, San Diego CA 92101-7060
-    Then Set Order Details Service to "Priority Mail Medium Flat Rate Box"
-    Then Set Order Details Ounces to 1
-    And I Add a second order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to PM Lg FR Box, SDC-1200, 7065 N Ingram Ave, Fresno CA 93650-1083
-    Then Set Order Details Service to "Priority Mail Large Flat Rate Box"
-    Then Set Order Details Ounces to 1
-    And I Add a third order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to PM RR Box A, SDC-1200, 4937 79th St., Sacramento CA 95820-6213
-    Then Set Order Details Service to "Priority Mail Regional Rate Box A"
-    Then Set Order Details Ounces to 1
-    Then Check Orders Grid row 1
-    Then Check Orders Grid row 2
-    Then Check Orders Grid row 3
-    Then Open Print Modal
-    Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
-    Then Set Print Modal Printer to "factory"
-    Then Select Print Modal left-side label
-    Then Expect Print Modal left-side label selected
-    And Expect Print Window requires 2 label sheets
-    Then Print Sample
-    Then Print
-
-    Then Sign out
-
-  @two_up_expanded
   Scenario: User Prints 1 FPO CN22 Label on 8.5x11 - left side
     And I Add a new order
     Then Set Order Details Ship-From to default
@@ -137,30 +161,6 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
     And Expect Print Window requires 1 label sheets
-    Then Print
-    Then Sign out
-
-  @two_up_expanded
-  Scenario: User Prints 1 FPO CN22 label on 8.5x11 - right side
-    And I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To Country to United States
-    Then Set Order Details Ship-To address to
-      | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
-      | PM RR Box C | 8.5x11 Right Side 1 | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
-    Then Set Order Details Ounces to 3
-    And Open customs form
-    Then Set customs form Package Contents to "Merchandise"
-    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
-    Then Set Customs Form I agree to Checked
-    Then Close Customs Form
-    Then Open Print Modal
-    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
-    Then Set Print Modal Printer to "factory"
-    Then Select Print Modal right-side label
-    Then Expect Print Modal right-side label selected
-    And Expect Print Window requires 1 label sheets
-    Then Print Sample
     Then Print
     Then Sign out
 
@@ -555,6 +555,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
+  @two_up_expanded
   Scenario: User Prints 2 Intl CN22 labels on 5.5x8.5 - right side
     And I Add a new order
     Then Set Order Details Ship-From to default

@@ -162,34 +162,41 @@ module Orders
         initializing_db = Label.new @browser.div :text => "Initializing Order Database"
         nav_bar = NavBar.new @browser
 
+        grid.order_id.sort.descending
+        sleep 2
         grid.checkbox.uncheck 1
 
         old_id = grid.order_id.row 1
         log.info "Row 1 Order ID #{old_id}"
-        5.times do |count|
+        10.times do |count|
           begin
             add_button.safe_click
             5.times{
               break if order_details.present?
+              sleep 1
               break if order_details.present?
+              sleep 1
               break if order_details.present?
-
-              if initializing_db.present?
-                message = "\n*****  #{initializing_db.text}  *****\nUser #{nav_bar.username.text} is NOT setup correctly in ShipStation.  Check that this user's email is unique."
-                log.info message
-                raise message
-              end
 
               log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"
             }
-            new_id = grid.order_id.row 1
-            add_successful = old_id != new_id
-            log.info "Add #{(add_successful)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
-            return order_details if add_successful
+            if order_details.present?
+              new_id = grid.order_id.row 1
+              add_successful = old_id != new_id
+              log.info "Add #{(add_successful)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
+              return order_details if add_successful
+            end
           rescue
             #ignore
           end
         end
+
+        if initializing_db.present?
+          message = "\n*****  #{initializing_db.text}  *****\nUser #{nav_bar.username.text} is NOT setup correctly in ShipStation.  Check that this user's email is unique."
+          log.info message
+          raise message
+        end
+
         raise "Unable to I Add a new orders!" unless order_details.present?
       end
 
