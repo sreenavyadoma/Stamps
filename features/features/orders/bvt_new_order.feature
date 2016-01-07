@@ -24,8 +24,8 @@ Feature:  BVT Order Creation
     Then Increment Order Details Height by 7
     Then Decrement Order Details Height by 6
 
-    Then Increment Order Details Height by 7
-    Then Decrement Order Details Height by 6
+    Then Increment Order Details Insure For by 7
+    Then Decrement Order Details Insure For by 6
 
     Then Set Order Details Pounds to 10
     Then Set Order Details Ounces to 10

@@ -2068,7 +2068,7 @@ module Orders
         end
       end
 
-      class InsuredValue < OrdersObject
+      class InsureFor < OrdersObject
         def text_box
           Textbox.new @browser.text_field :name => "InsuredValue"
         end
@@ -2078,14 +2078,14 @@ module Orders
         end
 
         def increment value
-          button = Button.new @browser.divs :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]"
+          button = Button.new (@browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]")
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new @browser.divs :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]"
+          button = Button.new (@browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]")
           value.to_i.times do
             button.safe_click
           end
@@ -2093,7 +2093,7 @@ module Orders
       end
 
       def insure_for
-        InsuredValue.new @browser
+        InsureFor.new @browser
       end
 
       def weight

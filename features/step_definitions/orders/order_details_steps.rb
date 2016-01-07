@@ -143,54 +143,89 @@ Then /^Hide Order Details Form Ship-To fields$/ do
   #end_step step
 end
 
+Then /^Increment Order Details Pounds by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Pounds by \"#{value}\""
+  orders.details.weight.lbs.increment value
+end
+
+Then /^Decrement Order Details Pounds by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Pounds by \"#{value}\""
+  orders.details.weight.lbs.decrement value
+end
+
+Then /^Increment Order Details Ounces by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Ounces by \"#{value}\""
+  orders.details.weight.oz.increment value
+end
+
+Then /^Decrement Order Details Ounces by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Ounces by \"#{value}\""
+  orders.details.weight.oz.decrement value
+end
+
+Then /^Increment Order Details Length by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Length by \"#{value}\""
+  orders.details.dimensions.length.increment value
+end
+
+Then /^Decrement Order Details Length by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Length by \"#{value}\""
+  orders.details.dimensions.length.decrement value
+end
+
+Then /^Increment Order Details Width by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Width by \"#{value}\""
+  orders.details.dimensions.width.increment value
+end
+
+Then /^Decrement Order Details Width by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Width by \"#{value}\""
+  orders.details.dimensions.width.decrement value
+end
+
+Then /^Increment Order Details Height by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Height by \"#{value}\""
+  orders.details.dimensions.height.increment value
+end
+
+Then /^Decrement Order Details Height by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Height by \"#{value}\""
+  orders.details.dimensions.height.decrement value
+end
+
+Then /^Increment Order Details Insure For by (\d*)$/ do |value|
+  log.info "Step: Increment Order Details Insure For by \"#{value}\""
+  orders.details.insure_for.increment value
+end
+
+Then /^Decrement Order Details Insure For by (\d*)$/ do |value|
+  log.info "Step: Decrement Order Details Insure For by \"#{value}\""
+  orders.details.insure_for.decrement value
+end
+
 Then /^Set Order Details Pounds to (\d*)$/ do |value|
-  begin
-    log.info "Step: Set Order Details Pounds to \"#{value}\""
-    orders.details.weight.lbs.set value
-    orders.details.click_form
-    orders.details.click_form
-    orders.details.click_form
-  end unless value.length == 0
+  log.info "Step: Set Order Details Pounds to \"#{value}\""
+  orders.details.weight.lbs.set value
 end
 
 Then /^Set Order Details Ounces to (.*)$/ do |value|
-  begin
-    log.info "Step: Set Order Details Ounces to \"#{value}\""
-    orders.details.weight.oz.set value
-    orders.details.click_form
-    orders.details.click_form
-    orders.details.click_form
-  end unless value.length == 0
+  log.info "Step: Set Order Details Ounces to \"#{value}\""
+  orders.details.weight.oz.set value
 end
 
 Then /^Set Order Details Length to (\d*)$/ do |value|
-  begin
-    log.info "Step: Set Order Details Length to \"#{value}\""
-    orders.details.dimensions.length.set value
-    orders.details.click_form
-    orders.details.click_form
-    orders.details.click_form
-  end unless value.length == 0
+  log.info "Step: Set Order Details Length to \"#{value}\""
+  orders.details.dimensions.length.set value
 end
 
 Then /^Set Order Details Width to (\d*)$/ do |value|
-  begin
-    log.info "Step: Set Order Details Width to \"#{value}\""
-    orders.details.dimensions.width.set value
-    orders.details.click_form
-    orders.details.click_form
-    orders.details.click_form
-  end unless value.length == 0
+  log.info "Step: Set Order Details Width to \"#{value}\""
+  orders.details.dimensions.width.set value
 end
 
 Then /^Set Order Details Height to (\d*)$/ do |value|
-  begin
-    log.info "Step: Set Order Details Height to \"#{value}\""
-    orders.details.dimensions.height.set value
-    orders.details.click_form
-    orders.details.click_form
-    orders.details.click_form
-  end unless value.length == 0
+  log.info "Step: Set Order Details Height to \"#{value}\""
+  orders.details.dimensions.height.set value
 end
 
 Then /^Set Order Details Service to \"(.*)\"$/ do |service|
@@ -200,9 +235,7 @@ end
 
 Then /^Set Order Details Tracking to \"([\w ]*)\"$/ do |value|
   log.info "Step: Set Order Details Tracking to #{value}"
-  begin
-    orders.details.tracking.select value
-  end unless value.length == 0
+  orders.details.tracking.select value
 end
 
 Then /^Expect Order details Service \"(.*)\" to be disabled/ do |service|
