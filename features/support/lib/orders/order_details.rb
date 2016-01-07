@@ -1968,6 +1968,75 @@ module Orders
         end
       end
 
+      class InsuredValue < OrdersObject
+
+        class Length < OrdersObject
+          def text_box
+
+          end
+
+          def set value
+
+          end
+
+          def increment value
+
+          end
+
+          def decrement value
+
+          end
+        end
+
+        class Width < OrdersObject
+          def text_box
+
+          end
+
+          def set value
+
+          end
+
+          def increment value
+
+          end
+
+          def decrement value
+
+          end
+        end
+
+        class Height < OrdersObject
+          def text_box
+
+          end
+
+          def set value
+
+          end
+
+          def increment value
+
+          end
+
+          def decrement value
+
+          end
+        end
+
+        def length
+          Length.new @browser
+        end
+
+        def width
+          Width.new @browser
+        end
+
+        def height
+          Height.new @browser
+        end
+      end
+
       def oz
         click_form
         Textbox.new (@browser.text_field :name => 'WeightOz'), "data-errorqtip"
@@ -1998,16 +2067,16 @@ module Orders
         Textbox.new @browser.text_field :name => "InsuredValue"
       end
 
+      def insure_for
+        InsuredValue.new @browser
+      end
+
       def weight
         Weight.new @browser
       end
 
       def dimensions
         Dimensions.new @browser
-      end
-
-      def insure_for
-
       end
 
       def items_count

@@ -228,7 +228,7 @@ end
 
 Then /^Set Order Details Insured Value to \$([\d*\.?\d*]*)$/ do |value|
   log.info "Step: Set Order Details Insured Value to #{value}"
-  orders.details.insured_value.set value
+  orders.details.insure_for.set value
 end
 
 Then /^Add Ship-From address$/ do |ship_from|
