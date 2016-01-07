@@ -47,7 +47,7 @@ Feature: 25 orders
     And Set Order Details Service to "First-Class Mail Large Envelope/Flat"
     And Set Order Details Insure For to $15.00
     And Set Order Details Tracking to "None"
-    Then Uncheck row 1 on the Orders Grid
+    Then Uncheck Orders Grid row 1
 
     Then I Add a new order
     And Expect new Order ID created
@@ -60,14 +60,14 @@ Feature: 25 orders
     And Set Order Details Service to "First-Class Mail Package/Thick Envelope"
     And Set Order Details Insure For to $45.00
     And Set Order Details Tracking to "USPS Tracking"
-    Then Uncheck row 1 on the Orders Grid
+    Then Uncheck Orders Grid row 1
 
     #Priority Mail
     Then I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
-    Then Uncheck row 1 on the Orders Grid
+    Then Uncheck Orders Grid row 1
     And Set Order Details Ounces to 3
     And Set Order Details Length to 1
     And Set Order Details Width to 1

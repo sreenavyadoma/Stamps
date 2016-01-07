@@ -239,7 +239,7 @@ Feature: Test Development
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    Then Edit row 1 on the Orders Grid
+    Then Check Orders Grid row 1
     Then Print
     Then Expect printed Order ID is not in Awaiting Shipment tab
     Then Expect printed Order ID is in Shipped tab
@@ -259,9 +259,9 @@ Feature: Test Development
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Media Mail Package"
 
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
-    Then Edit row 3 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
+    Then Check Orders Grid row 3
 
     Then Print
 

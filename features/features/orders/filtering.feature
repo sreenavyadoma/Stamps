@@ -9,7 +9,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    Then Edit row 1 on the Orders Grid
+    Then Check Orders Grid row 1
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"
@@ -35,9 +35,9 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Media Mail Package"
 
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
-    Then Edit row 3 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
+    Then Check Orders Grid row 3
 
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"

@@ -155,7 +155,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Uncheck row 1 on the Orders Grid
+    Then Uncheck Orders Grid row 1
 
     #Create order 2
     And I Add a new order
@@ -166,7 +166,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Uncheck row 1 on the Orders Grid
+    Then Uncheck Orders Grid row 1
 
     #Create order 3
     And I Add a new order
@@ -177,11 +177,11 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Set Order Details Width to 1
     Then Set Order Details Height to 1
     Then Set Order Details Length to 1
-    Then Uncheck row 1 on the Orders Grid
+    Then Uncheck Orders Grid row 1
 
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
-    Then Edit row 3 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
+    Then Check Orders Grid row 3
 
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""

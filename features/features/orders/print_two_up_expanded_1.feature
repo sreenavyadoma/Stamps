@@ -50,8 +50,8 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ship-To address to PM PFR Envelope, 8.5x11, 557 County Rd. H, Fredonia WI 53021-9634
     Then Set Order Details Service to "Priority Mail Padded Flat Rate Envelope"
     Then Set Order Details Ounces to 1
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"
@@ -73,8 +73,8 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ship-To address to PM SFR Box, 8.5x11 Right Side 1, 610 W Tefft St, Nipomo, CA 93444-9187
     Then Set Order Details Service to "Priority Mail Small Flat Rate Box"
     Then Set Order Details Ounces to 3
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"
@@ -101,9 +101,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ship-To address to PM RR Box A, SDC-1200, 4937 79th St., Sacramento CA 95820-6213
     Then Set Order Details Service to "Priority Mail Regional Rate Box A"
     Then Set Order Details Ounces to 1
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
-    Then Edit row 3 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
+    Then Check Orders Grid row 3
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
@@ -190,8 +190,8 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
@@ -226,8 +226,8 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"
@@ -275,9 +275,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
-    Then Edit row 3 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
+    Then Check Orders Grid row 3
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
@@ -340,9 +340,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
-    Then Edit row 3 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
+    Then Check Orders Grid row 3
     Then Edit row 4 on the Orders Grid
     Then Edit row 5 on the Orders Grid
     Then Edit row 6 on the Orders Grid
@@ -403,8 +403,8 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ship-To address to PS Large Package, 5.5x8.5, 7065 N Ingram Ave, Fresno CA 93650-1083
     Then Set Order Details Service to "Parcel Select Ground Oversized Package"
     Then Set Order Details Ounces to 1
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
@@ -428,8 +428,8 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ship-To address to PM Large Package, 5.5x8.5 Right Side 1, 26930 NE 152nd St., Duvall WA 98019-8316
     Then Set Order Details Service to "Priority Mail Large Package"
     Then Set Order Details Ounces to 1
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
@@ -461,9 +461,9 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Set Order Details Ship-To address to FCM Pkg-Thick Env, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
     Then Set Order Details Service to "First-Class Mail Package/Thick Envelope"
     Then Set Order Details Ounces to 1
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
-    Then Edit row 3 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
+    Then Check Orders Grid row 3
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""
@@ -545,8 +545,8 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
@@ -580,8 +580,8 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
-    Then Edit row 1 on the Orders Grid
-    Then Edit row 2 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
     Then Open Print Modal
     Then Set Print Modal Printer to "factory"
     Then Set Print Modal Media "Shipping Label - 5 ½" x 8 ½""

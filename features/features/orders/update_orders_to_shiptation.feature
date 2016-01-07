@@ -23,9 +23,9 @@ Feature:  Update Order to ShipStation
     Then Expect Grid Insured Value to be $1.00
 
     #here's the shipstation part.
-    Then Uncheck row 1 on the Orders Grid
+    Then Uncheck Orders Grid row 1
     #click awaiting shipment tab a few times.
-    Then Edit row 1 on the Orders Grid
+    Then Check Orders Grid row 1
     # Verify pounds, ounces height width length from Order Form
     Then Expect Order Details Service to be "Priority Mail Package"
     Then Expect Order Details Tracking to be "Signature Required"

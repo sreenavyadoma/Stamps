@@ -8,9 +8,10 @@ Feature: Add Missing Validation Logic for Phone and International Email
     And I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To Country to Australia
-    Then Uncheck row 1 on the Orders Grid
+    Then Uncheck Orders Grid row 1
+    Then Uncheck Orders Grid row 1
     Then Wait in seconds 2
-    Then Check row 1 on the Orders Grid
+    Then Check Orders Grid row 1
 
     Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
     Then Expect Order Details International Company data error tooltip to be "Company name must be at least two characters long"

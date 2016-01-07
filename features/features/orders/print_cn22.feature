@@ -34,8 +34,8 @@ Feature: Print CN22
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
 
-    Then Check row 1 on the Orders Grid
-    Then Check row 2 on the Orders Grid
+    Then Check Orders Grid row 1
+    Then Check Orders Grid row 2
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"
