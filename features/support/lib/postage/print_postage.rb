@@ -287,7 +287,8 @@ module Postage
 
     def tooltip selection
       drop_down = Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[0]
-      text_box = Textbox.new (@browser.text_field :name => "media")  #todo-Elie you don't need this.
+      #todo-elie you don't need this.
+      text_box = Textbox.new (@browser.text_field :name => "media")
       selection_field = Label.new @browser.div :text => selection
 
       10.times {
