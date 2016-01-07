@@ -24,11 +24,11 @@ Feature:  BVT Order Creation
     Then Increment Order Details Insure For by 7
     Then Decrement Order Details Insure For by 6
 
-    Then Set Order Details Pounds to 10
-    Then Set Order Details Ounces to 10
-    Then Set Order Details Length to 10
-    Then Set Order Details Width to 10
-    Then Set Order Details Height to 10
+    Then Set Order Details Pounds to 1
+    Then Set Order Details Ounces to 1
+    Then Set Order Details Length to 1
+    Then Set Order Details Width to 1
+    Then Set Order Details Height to 1
     Then Set Order Details Insure For to $1.00
     Then Expect Grid Pounds to be 1
     Then Expect Grid Ounces to be 1
