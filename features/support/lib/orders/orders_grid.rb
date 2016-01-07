@@ -985,7 +985,7 @@ module Orders
       end
 
       def insured_value
-        @insured_value ||= Grid::InsureFor.new @browser
+        @insured_value ||= Grid::InsuredValue.new @browser
       end
 
       def reference_no

@@ -11,6 +11,19 @@ Feature:  BVT Order Creation
     Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Service to "Priority Mail Package"
 
+    Then Increment Order Details Pounds by 7
+    Then Decrement Order Details Pounds by 6
+    Then Increment Order Details Ounces by 7
+    Then Decrement Order Details Ounces by 6
+    Then Increment Order Details Length by 7
+    Then Decrement Order Details Length by 6
+    Then Increment Order Details Width by 7
+    Then Decrement Order Details Width by 6
+    Then Increment Order Details Height by 7
+    Then Decrement Order Details Height by 6
+    Then Increment Order Details Insure For by 7
+    Then Decrement Order Details Insure For by 6
+
     Then Set Order Details Pounds to 1
     Then Set Order Details Ounces to 1
     Then Set Order Details Length to 1
