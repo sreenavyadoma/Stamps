@@ -168,24 +168,17 @@ module Orders
 
         old_id = grid.order_id.row 1
         log.info "Row 1 Order ID #{old_id}"
-        10.times do |count|
+        20.times do |count|
           begin
             add_button.safe_click
-            5.times{
-              break if order_details.present?
-              sleep 1
-              break if order_details.present?
-              sleep 1
-              break if order_details.present?
-
-              log.info "#{count} Order Details form  #{(order_details.present?)?'not present':'is present'}"
-            }
+            log.info initializing_db.text if initializing_db.present?
             if order_details.present?
               new_id = grid.order_id.row 1
               add_successful = old_id != new_id
               log.info "Add #{(add_successful)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
               return order_details if add_successful
             end
+            sleep 1
           rescue
             #ignore
           end
