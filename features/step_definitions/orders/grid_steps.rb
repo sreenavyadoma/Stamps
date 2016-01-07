@@ -117,8 +117,8 @@ When /^Edit Orders Grid row (\d+)$/ do |row|
 end
 
 When /^Check Orders Grid row (\d+)$/ do |row|
-  log.info "Step: Check row #{row} on the Orders Grid"
-  step "Edit row #{row} on the Orders Grid"
+  log.info "Edit Orders Grid row #{row}"
+  step "Edit Orders Grid row #{row}"
 end
 
 When /^Uncheck Orders Grid row (\d+)$/ do |row|
