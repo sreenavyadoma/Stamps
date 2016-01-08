@@ -162,7 +162,7 @@ module Orders
         initializing_db = Label.new @browser.div :text => "Initializing Order Database"
         nav_bar = NavBar.new @browser
 
-        grid.order_id.sort.descending
+        grid.order_date.sort.descending
         sleep 2
         grid.checkbox.uncheck 1
 
