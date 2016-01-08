@@ -16,7 +16,6 @@ Feature:  BVT Address Cleansing
     Then Set Order Details Pounds to 1
     Then Set Order Details Insure For to $200
     Then Wait in seconds 2
-    Then Expect Grid Zip to be 94102
     Then Expect Grid Recipient to be Euan Davidson
     Then Expect Grid Company to be Company Name
     Then Expect Grid Address to be 1350 Market Street
