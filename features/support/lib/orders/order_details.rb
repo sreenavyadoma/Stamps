@@ -2279,21 +2279,13 @@ module Orders
         5.times{
           begin
             order_id_str = order_id_label.text
-            break if order_id_str.include? '#'
+            return order_id_str.split('#').last if order_id_str.include? '#'
           rescue
             #ignroe
           end
         }
 
-        return "Empty Grid" unless order_id_label.present?
-
-        begin
-          order_id_label.wait_until_present
-        rescue
-          log.info "Order Details Form  Order ID label was not present"
-        end
-
-        order_id_label.text.split('#').last
+        raise "Unable to obtain Order ID from Single Order Details Form"
       end
 
       def order_status

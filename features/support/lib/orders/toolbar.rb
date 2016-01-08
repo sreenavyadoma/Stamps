@@ -171,6 +171,7 @@ module Orders
         20.times do |count|
           begin
             add_button.safe_click
+            sleep 1
             log.info initializing_db.text if initializing_db.present?
             if order_details.present?
               new_id = grid.order_id.row 1
