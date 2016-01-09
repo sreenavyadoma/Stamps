@@ -9,12 +9,6 @@ Feature: Select All Print Ons and Services
   Scenario: Select Print Media and Services
 
     Then Select Print Postage print media Stamps
-    Then Select Service Postcard
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
 
     Then Select Print Postage print media 8 ½” x 11” Paper
 
@@ -41,21 +35,7 @@ Feature: Select All Print Ons and Services
     Then Select Print Postage print media Roll - 4 ⅛” x 6 ¼” Shipping Label
 
 
-    Then Select Service First-Class Mail Large Envelope/Flat
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
-    Then Select Service <string>
+    #Then Select Service First-Class Mail Large Envelope/Flat
 
 
 
@@ -65,7 +45,7 @@ Feature: Select All Print Ons and Services
     Then Set Print Postage Form Ship-To address to
       | name              | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Ambiguous Address | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then Set Print Postage Form Service to <service>
+    #Then Set Print Postage Form Service to <service>
     Then Expect Print Postage Form Ship-To address to be <address>
     And Sign out
 
