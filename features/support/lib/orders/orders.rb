@@ -37,7 +37,7 @@ module Orders
     end
 
     def grid
-      @grid ||= Orders::Grid::OrdersGrid.new(@browser)
+      Orders::Grid::OrdersGrid.new(@browser)
     end
 
     def styles

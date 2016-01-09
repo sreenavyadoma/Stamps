@@ -8,7 +8,7 @@ When /^I Add a new order$/ do
   log.info "New Order ID #{@order_id}"
   @awaiting_shipment_count = orders.filter.awaiting_shipment_count
   @item_count = 0
-  @line_item = 0
+  @number = 0
 end
 
 Then /^I Add a second order$/ do

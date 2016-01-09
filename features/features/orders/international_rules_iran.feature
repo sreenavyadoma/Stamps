@@ -30,7 +30,7 @@ Feature: Iran Internal Transaction Number Required
     Then Set customs form Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 3000, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1 - Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Set customs form ITN# to "random"
     Then Set Customs Form I agree to Checked

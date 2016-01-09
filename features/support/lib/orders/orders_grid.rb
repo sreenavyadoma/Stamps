@@ -945,15 +945,15 @@ module Orders
       end
 
       def zip
-        @zip ||= Grid::Zip.new @browser
+        Grid::Zip.new @browser
       end
 
       def country
-        @country ||= Grid::Country.new @browser
+        Grid::Country.new @browser
       end
 
       def phone
-        @phone ||= Grid::Phone.new @browser
+        Grid::Phone.new @browser
       end
 
       def email
@@ -1001,23 +1001,23 @@ module Orders
       end
 
       def print_date
-        @print_date ||= Grid::DatePrinted.new @browser
+        Grid::DatePrinted.new @browser
       end
 
       def ship_date
-        @ship_date ||= Grid::ShipDate.new @browser
+        Grid::ShipDate.new @browser
       end
 
       def tracking_no
-        @tracking ||= Grid::Tracking.new @browser
+        Grid::Tracking.new @browser
       end
 
       def order_total
-        @order_total ||= Grid::OrderTotal.new @browser
+        Grid::OrderTotal.new @browser
       end
 
       def toolbar
-        @grid_toolbar ||= Orders::Toolbar::Toolbar.new @browser
+        Orders::Toolbar::Toolbar.new @browser
       end
 
       def wait_until_present *args
