@@ -321,7 +321,7 @@ Then /^Expect Grid Zip to be ([\d -]+)$/ do |expected|
   begin
     actual = orders.grid.zip.data @order_id
     10.times { |counter|
-      sleep(2)
+      sleep 1
       #log_expectation_eql "#{counter}. Zip", expected, actual
       break if actual.eql? expected
       actual = orders.grid.zip.data @order_id

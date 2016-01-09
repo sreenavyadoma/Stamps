@@ -1,5 +1,6 @@
 module Orders
   module Details
+
     class OrderForm < OrdersObject
       def click_form
         item_label = Label.new @browser.label :text => 'Item:'
@@ -14,6 +15,56 @@ module Orders
     end
 
     class ShipToFields < OrderForm
+
+      class ShipToCountry < OrderForm
+
+        def drop_down
+          divs = @browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
+          domestic = Button.new divs.first
+          international = Button.new divs.last
+
+          if domestic.present?
+            domestic
+          elsif international.present?
+            international
+          else
+            raise "Unable to located Ship-To drop-down button."
+          end
+        end
+
+        def text_box
+          Textbox.new (@browser.text_fields :name => "ShipCountryCode")[1]
+        end
+
+        def select country
+          log.info "Select Country #{country}"
+
+          selection_1 = Label.new @browser.li :text => country
+          selection_2 = Label.new @browser.li :text => "#{country} "
+
+          text_box = self.text_box
+          drop_down = self.drop_down
+          10.times {
+            begin
+              drop_down.safe_click unless selection_1.present? || selection_2.present?
+              if selection_1.present?
+                selection_1.scroll_into_view
+                selection_1.safe_click
+              elsif selection_2.present?
+                selection_2.scroll_into_view
+                selection_2.safe_click
+              end
+
+              log.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
+              break if text_box.text.include? country
+            rescue
+              #ignore
+            end
+          }
+          log.info "#{country} selected."
+          InternationalShipTo.new @browser unless country.include? "United States"
+        end
+      end
 
       def country
         ShipToCountry.new @browser
@@ -991,6 +1042,223 @@ module Orders
       end
     end
 
+    class AddShippingAdress < OrdersObject
+      public
+      def shipping_address=(table)
+        self.origin_zip = table["ship_from_zip"]
+        self.name = table["name"]
+        self.company = table["company"]
+        self.street_address1 = table["street_address"]
+        self.street_address2 = table["street_address2"]
+        self.city = table["city"]
+        self.state = table["state"]
+        self.zip = table["zip"]
+        self.phone = table["phone"]
+        self.save
+      end
+
+      def origin_zip=(zip)
+        browser_helper.set origin_zip_field, zip, "origin_zip"
+      end
+
+      def origin_zip
+        browser_helper.text origin_zip_field
+      end
+
+      def name=(name)
+        browser_helper.set name_field, name, "name_field"
+      end
+
+      def company=(company)
+        browser_helper.set company_field, company, "company_field"
+      end
+
+      def street_address1=(street)
+        browser_helper.set street_address1_field, street, "street_address1_field"
+      end
+
+      def street_address2=(street)
+        browser_helper.set street_address2_field, street, "street_address2_field"
+      end
+
+      def state_dd_button
+        @browser.div :css => "div[id^=statecombobox-][id$=-trigger-picker]"
+      end
+
+      def city=(city)
+        browser_helper.set city_text_field, city, "state_field"
+      end
+
+      def state=(state)
+        browser_helper.drop_down @browser, state_dd_button, :li, state_field, state
+      end
+
+      def zip=(code)
+        browser_helper.set zip_field, code, "zip_field"
+      end
+
+      def phone=(number)
+        browser_helper.set phone_field, number, "phone_field"
+      end
+
+      def save
+        5.times{
+          begin
+            browser_helper.click save_button, "save_button"
+            save_button.wait_while_present
+            break unless browser_helper.present? save_button
+          rescue
+            #ignore
+          end
+        }
+      end
+
+      def present?
+        save_button.present?
+      end
+
+      private
+      def origin_zip_field
+        @browser.text_field :name => 'OriginZip'
+      end
+
+      def name_field
+        text_fields = @browser.text_fields :name => 'FullName'
+        text_fields.last
+      end
+
+      def company_field
+        text_fields = @browser.text_fields :name => 'Company'
+        text_fields.last
+      end
+
+      def street_address1_field
+        @browser.text_field :name => 'Street1'
+      end
+
+      def street_address2_field
+        @browser.text_field :name => 'Street2'
+      end
+
+      def city_text_field
+        text_fields = @browser.text_fields :name => 'City'
+        text_fields.last
+      end
+
+      def state_field
+        field = @browser.text_field :name => 'State'
+        present = browser_helper.present? field
+        field
+      end
+
+      def zip_field
+        @browser.text_field :name => 'Zip'
+      end
+
+      def phone_field
+        (@browser.text_fields :css => "input[name=Phone]").last
+      end
+
+      def save_button
+        @browser.span :text => 'Save'
+      end
+
+    end
+
+    class DeleteShippingAddress < OrdersObject
+      public
+      def delete
+        5.times {
+          begin
+            log.info "Delete Shipping Address :: #{message_field.text}"
+            browser_helper.click delete_button, 'Delete'
+          rescue
+            #ignore
+          end
+          break unless present?
+        }
+      end
+
+      def present?
+        browser_helper.present?  window_title
+      end
+
+      def close
+        field = @browser.elements(:css => 'img[class$=close]').last
+        present = field.present?
+        field.click if present
+      end
+
+      private
+      def window_title
+        @browser.div :text => "Delete Shipping Address"
+      end
+      def message_field
+        @browser.div :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
+      end
+
+      def delete_button
+        field = @browser.elements(:text => 'Delete').last
+        present = field.present?
+        field
+      end
+    end
+
+    class ExactAddressNotFound < OrdersObject
+
+      private
+      def exact_address_not_found_field
+        @browser.div :text => 'Exact Address Not Found'
+      end
+
+      public
+      def present?
+        browser_helper.present? @browser.div :text => 'Exact Address Not Found'
+      end
+
+      def row number
+        row = number.to_i<=0?0:number.to_i-1
+        checkbox_field = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
+
+        checkbox = Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
+        checkbox.check
+
+        accept_button = Button.new @browser.span :text => "Accept"
+        accept_button.click_while_present
+      end
+
+      def set partial_address_hash
+        single_order_form = OrderDetails.new @browser
+        single_order_form.validate_address_link
+        #single_order_form.expand
+        single_order_form.ship_to.set OrdersHelper.instance.format_address(partial_address_hash)
+        5.times {
+          begin
+            item_label.click
+            break if (browser_helper.present?  exact_address_not_found_field) || (browser_helper.present?  single_order_form.validate_address_link)
+          rescue
+            #ignore
+          end
+        }
+        #single_order_form.hide_ship_to
+        self
+      end
+    end
+
+    class ViewRestrictions < OrdersObject
+      def browser_ok_button
+        Button.new @browser.span :text => "OK"
+      end
+
+      def present?
+        browser_ok_button.present?
+      end
+
+      def ok
+        browser_ok_button.safe_click
+      end
+    end
+
     class ManageShippingAddresses < OrdersObject
       public
 
@@ -1246,227 +1514,69 @@ module Orders
         @browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
       end
 
-
       def delete_button
         @browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
       end
 
     end
 
-    class AddShippingAdress < OrdersObject
-      public
-      def shipping_address=(table)
-        self.origin_zip = table["ship_from_zip"]
-        self.name = table["name"]
-        self.company = table["company"]
-        self.street_address1 = table["street_address"]
-        self.street_address2 = table["street_address2"]
-        self.city = table["city"]
-        self.state = table["state"]
-        self.zip = table["zip"]
-        self.phone = table["phone"]
-        self.save
+    class ShipFromAddress < OrderForm
+
+      def text_box
+        Textbox.new @browser.text_field :name => "ShipFrom"
       end
 
-      def origin_zip=(zip)
-        browser_helper.set origin_zip_field, zip, "origin_zip"
+      def drop_down
+        Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
       end
 
-      def origin_zip
-        browser_helper.text origin_zip_field
-      end
+      def select service
+        @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
 
-      def name=(name)
-        browser_helper.set name_field, name, "name_field"
-      end
+        return @manage_shipping_adddress if @manage_shipping_adddress.present?
 
-      def company=(company)
-        browser_helper.set company_field, company, "company_field"
-      end
+        ship_from_default_selection_field = @browser.div :css => "div[data-recordindex='0']"
+        ship_from_dropdown = drop_down
+        ship_from_textbox = text_box
 
-      def street_address1=(street)
-        browser_helper.set street_address1_field, street, "street_address1_field"
-      end
+        if service.downcase == "default"
+          ship_from_selection_field = ship_from_default_selection_field
+        elsif service.downcase.include? "manage shipping"
+          ship_from_selection_field = @browser.div :text => "Manage Shipping Addresses..."
+        else
+          ship_from_selection_field = @browser.div :text => "#{service}"
+        end
 
-      def street_address2=(street)
-        browser_helper.set street_address2_field, street, "street_address2_field"
-      end
+        selection_label = Label.new ship_from_selection_field
 
-      def state_dd_button
-        @browser.div :css => "div[id^=statecombobox-][id$=-trigger-picker]"
-      end
-
-      def city=(city)
-        browser_helper.set city_text_field, city, "state_field"
-      end
-
-      def state=(state)
-        browser_helper.drop_down @browser, state_dd_button, :li, state_field, state
-      end
-
-      def zip=(code)
-        browser_helper.set zip_field, code, "zip_field"
-      end
-
-      def phone=(number)
-        browser_helper.set phone_field, number, "phone_field"
-      end
-
-      def save
-        5.times{
-          begin
-            browser_helper.click save_button, "save_button"
-            save_button.wait_while_present
-            break unless browser_helper.present? save_button
-          rescue
-            #ignore
+        if service.downcase.include? "manage shipping"
+          10.times{
+            begin
+              ship_from_dropdown.safe_click unless selection_label.present?
+              selection_label.scroll_into_view
+              selection_label.safe_click
+              return @manage_shipping_adddress if @manage_shipping_adddress.present?
+            rescue
+              #ignore
+            end
+            click_form
+          }
+        else
+          ship_from_dropdown.safe_click unless selection_label.present?
+          if selection_label.present?
+            selection_label.scroll_into_view
+            service_text = selection_label.text
           end
-        }
-      end
-
-      def present?
-        save_button.present?
-      end
-
-      private
-      def origin_zip_field
-        @browser.text_field :name => 'OriginZip'
-      end
-
-      def name_field
-        text_fields = @browser.text_fields :name => 'FullName'
-        text_fields.last
-      end
-
-      def company_field
-        text_fields = @browser.text_fields :name => 'Company'
-        text_fields.last
-      end
-
-      def street_address1_field
-        @browser.text_field :name => 'Street1'
-      end
-
-      def street_address2_field
-        @browser.text_field :name => 'Street2'
-      end
-
-      def city_text_field
-        text_fields = @browser.text_fields :name => 'City'
-        text_fields.last
-      end
-
-      def state_field
-        field = @browser.text_field :name => 'State'
-        present = browser_helper.present? field
-        field
-      end
-
-      def zip_field
-        @browser.text_field :name => 'Zip'
-      end
-
-      def phone_field
-        (@browser.text_fields :css => "input[name=Phone]").last
-      end
-
-      def save_button
-        @browser.span :text => 'Save'
-      end
-
-    end
-
-    class DeleteShippingAddress < OrdersObject
-      public
-      def delete
-        5.times {
-          begin
-            log.info "Delete Shipping Address :: #{message_field.text}"
-            browser_helper.click delete_button, 'Delete'
-          rescue
-            #ignore
-          end
-          break unless present?
-        }
-      end
-
-      def present?
-        browser_helper.present?  window_title
-      end
-
-      def close
-        field = @browser.elements(:css => 'img[class$=close]').last
-        present = field.present?
-        field.click if present
-      end
-
-      private
-      def window_title
-        @browser.div :text => "Delete Shipping Address"
-      end
-      def message_field
-        @browser.div :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
-      end
-
-      def delete_button
-        field = @browser.elements(:text => 'Delete').last
-        present = field.present?
-        field
-      end
-    end
-
-    class ExactAddressNotFound < OrdersObject
-
-      private
-      def exact_address_not_found_field
-        @browser.div :text => 'Exact Address Not Found'
-      end
-
-      public
-      def present?
-        browser_helper.present? @browser.div :text => 'Exact Address Not Found'
-      end
-
-      def row number
-        row = number.to_i<=0?0:number.to_i-1
-        checkbox_field = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
-
-        checkbox = Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
-        checkbox.check
-
-        accept_button = Button.new @browser.span :text => "Accept"
-        accept_button.click_while_present
-      end
-
-      def set partial_address_hash
-        single_order_form = OrderDetails.new @browser
-        single_order_form.validate_address_link
-        #single_order_form.expand
-        single_order_form.ship_to.set OrdersHelper.instance.format_address(partial_address_hash)
-        5.times {
-          begin
-            item_label.click
-            break if (browser_helper.present?  exact_address_not_found_field) || (browser_helper.present?  single_order_form.validate_address_link)
-          rescue
-            #ignore
-          end
-        }
-        #single_order_form.hide_ship_to
-        self
-      end
-    end
-
-    class ViewRestrictions < OrdersObject
-      def browser_ok_button
-        Button.new @browser.span :text => "OK"
-      end
-
-      def present?
-        browser_ok_button.present?
-      end
-
-      def ok
-        browser_ok_button.safe_click
+          10.times{
+            ship_from_dropdown.safe_click unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
+            sleep 1
+            text_box_text = ship_from_textbox.text
+            return if text_box_text.include? service_text
+          }
+        end
+        raise "Unable to select service #{service}"
       end
     end
 
@@ -1641,468 +1751,396 @@ module Orders
 
     end
 
-    class ShipToCountry < OrderForm
-
-      def drop_down
-        divs = @browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
-        domestic = Button.new divs.first
-        international = Button.new divs.last
-
-        if domestic.present?
-          domestic
-        elsif international.present?
-          international
-        else
-          raise "Unable to located Ship-To drop-down button."
-        end
-      end
-
-      def text_box
-        Textbox.new (@browser.text_fields :name => "ShipCountryCode")[1]
-      end
-
-      def select country
-        log.info "Select Country #{country}"
-
-        selection_1 = Label.new @browser.li :text => country
-        selection_2 = Label.new @browser.li :text => "#{country} "
-
-        text_box = self.text_box
-        drop_down = self.drop_down
-        10.times {
-          begin
-            drop_down.safe_click unless selection_1.present? || selection_2.present?
-            if selection_1.present?
-              selection_1.scroll_into_view
-              selection_1.safe_click
-            elsif selection_2.present?
-              selection_2.scroll_into_view
-              selection_2.safe_click
-            end
-
-            log.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
-            break if text_box.text.include? country
-          rescue
-            #ignore
-          end
-        }
-        log.info "#{country} selected."
-        InternationalShipTo.new @browser unless country.include? "United States"
-      end
-    end
-
-    class ShipFromAddress < OrderForm
-
-      def ship_from_dropdown
-        @browser.div :css => "div[id^=shipfromdroplist][class*=x-form-arrow-trigger-default]"
-      end
-
-      def manage_ship_from_address_field
-        @browser.div :text => 'Manage Shipping Addresses...'
-      end
-
-      def ship_from_selection selection
-        @browser.div :text => selection
-      end
-
-      def manage_shipping_address
-        @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
-      end
-
-      def manage_shipping_addresses
-        self.ship_from "Manage Shipping Addresses..."
-      end
-
-      def text_box
-        Textbox.new @browser.text_field :name => "ShipFrom"
-      end
-
-      def drop_down
-        Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
-      end
-
-      def select service
-        @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
-
-        return @manage_shipping_adddress if @manage_shipping_adddress.present?
-
-        ship_from_default_selection_field = @browser.div :css => "div[data-recordindex='0']"
-        ship_from_dropdown = drop_down
-        ship_from_textbox = text_box
-
-        if service.downcase == "default"
-          ship_from_selection_field = ship_from_default_selection_field
-        elsif service.downcase.include? "manage shipping"
-          ship_from_selection_field = @browser.div :text => "Manage Shipping Addresses..."
-        else
-          ship_from_selection_field = @browser.div :text => "#{service}"
-        end
-
-        selection_label = Label.new ship_from_selection_field
-
-        if service.downcase.include? "manage shipping"
-          10.times{
-            begin
-              ship_from_dropdown.safe_click unless selection_label.present?
-              selection_label.scroll_into_view
-              selection_label.safe_click
-              return @manage_shipping_adddress if @manage_shipping_adddress.present?
-            rescue
-              #ignore
-            end
-            click_form
-          }
-        else
-          ship_from_dropdown.safe_click unless selection_label.present?
-          if selection_label.present?
-            selection_label.scroll_into_view
-            service_text = selection_label.text
-          end
-          10.times{
-            ship_from_dropdown.safe_click unless selection_label.present?
-            selection_label.scroll_into_view
-            selection_label.safe_click
-            sleep 1
-            text_box_text = ship_from_textbox.text
-            return if text_box_text.include? service_text
-          }
-        end
-        raise "Unable to select service #{service}"
-      end
-    end
-
-    class OrderDetailsItem < OrderForm
-      def initialize browser, line_item
-        super browser
-        @line_item = line_item.to_i - 1 #index of a collection starts at 0, so we need  subtract 1 to refer to first item on the details form.
-      end
-
-      def remove_field
-        @browser.span :css => "span[class*=sdc-icon-remove]"
-      end
-
-      public
-
-      def present?
-        browser_helper.present? remove_field
-      end
-
-      def wait_until_present
-        browser_helper.wait_until_present remove_field
-      end
-
-      def delete_line *args
-        browser_fields = @browser.spans :css => "div[id*=detailItemsGrid] span[class*=sdc-icon-remove]"
-        browser_fields
-        browser_field = browser_fields
-        case args.length
-          when 0
-            return browser_field
-          when 1
-            browser_field.set args[0]
-          else
-            raise "Illegal number of arguments"
-        end
-      end
-
-      def qty *args
-        browser_field = Textbox.new (@browser.text_fields :css => "div[id*=detailItemsGrid] input[name=Quantity]")[@line_item]
-        case args.length
-          when 0
-            return browser_field
-          when 1
-            browser_field.set args[0]
-            click_form
-            click_form
-            click_form
-          else
-            raise "Illegal number of arguments"
-        end
-      end
-
-      def id *args
-        browser_field = Textbox.new (@browser.text_fields :name => "SKU")[@line_item]
-        case args.length
-          when 0
-            return browser_field
-          when 1
-            browser_field.set args[0]
-            click_form
-            click_form
-            click_form
-          else
-            raise "Illegal number of arguments"
-        end
-      end
-
-      def description *args
-        browser_field = Textbox.new (@browser.text_fields :css => "div[id*=detailItemsGrid] input[name=Description]")[@line_item]
-        case args.length
-          when 0
-            return browser_field
-          when 1
-            browser_field.set args[0]
-            click_form
-            click_form
-            click_form
-          else
-            raise "Illegal number of arguments"
-        end
-      end
-    end
-
-    class OrderDetails < OrderForm
-
-      class Weight < OrdersObject
-        class Pounds < OrdersObject
-          def text_box
-            Textbox.new (@browser.text_field :name => 'WeightLbs'), "data-errorqtip"
-          end
-
-          def set value
-            text_field = text_box
-            value = value.to_i
-            max = value + text_field.text.to_i
-            max.times do
-              current_value = text_field.text.to_i
-              break if value == current_value
-              if value > current_value
-                increment 1
-              else
-                decrement 1
-              end
-              break if value == current_value
-            end
-            sleep 1
-            log.info "Pounds set to #{text_field.text}"
-          end
-
-          def increment value
-            button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
-            value.to_i.times do
-              button.safe_click
-            end
-          end
-
-          def decrement value
-            button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
-            value.to_i.times do
-              button.safe_click
-            end
-          end
-        end
-
-        class Ounces < OrdersObject
-          def text_box
-            Textbox.new (@browser.text_field :name => 'WeightOz'), "data-errorqtip"
-          end
-
-          def set value
-            text_field = text_box
-            value = value.to_i
-            max = value + text_field.text.to_i
-            max.times do
-              current_value = text_field.text.to_i
-              break if value == current_value
-              if value > current_value
-                increment 1
-              else
-                decrement 1
-              end
-              break if value == current_value
-            end
-            sleep 1
-            log.info "Pounds set to #{text_field.text}"
-          end
-
-          def increment value
-            button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
-            value.to_i.times do
-              button.safe_click
-            end
-          end
-
-          def decrement value
-            button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
-            value.to_i.times do
-              button.safe_click
-            end
-          end
-        end
-
-        def lbs
-          Pounds.new @browser
-        end
-
-        def oz
-          Ounces.new @browser
-        end
-      end
-
-      class Dimensions < OrdersObject
-
-        class Length < OrdersObject
-          def text_box
-            Textbox.new @browser.text_field :name => 'Length'
-          end
-
-          def set value
-            text_field = text_box
-            value = value.to_i
-            max = value + text_field.text.to_i
-            max.times do
-              current_value = text_field.text.to_i
-              break if value == current_value
-              if value > current_value
-                increment 1
-              else
-                decrement 1
-              end
-              break if value == current_value
-            end
-            sleep 1
-            log.info "Pounds set to #{text_field.text}"
-          end
-
-          def increment value
-            button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
-            value.to_i.times do
-              button.safe_click
-            end
-          end
-
-          def decrement value
-            button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
-            value.to_i.times do
-              button.safe_click
-            end
-          end
-        end
-
-        class Width < OrdersObject
-          def text_box
-            Textbox.new @browser.text_field :name => 'Width'
-          end
-
-          def set value
-            text_field = text_box
-            value = value.to_i
-            max = value + text_field.text.to_i
-            max.times do
-              current_value = text_field.text.to_i
-              break if value == current_value
-              if value > current_value
-                increment 1
-              else
-                decrement 1
-              end
-              break if value == current_value
-            end
-            sleep 1
-            log.info "Pounds set to #{text_field.text}"
-          end
-
-          def increment value
-            button = Button.new ((@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]")[1])
-            value.to_i.times do
-              button.safe_click
-            end
-          end
-
-          def decrement value
-            button = Button.new ((@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]")[1])
-            value.to_i.times do
-              button.safe_click
-            end
-          end
-        end
-
-        class Height < OrdersObject
-          def text_box
-            Textbox.new @browser.text_field :name => 'Height'
-          end
-
-          def set value
-            text_field = text_box
-            value = value.to_i
-            max = value + text_field.text.to_i
-            max.times do
-              current_value = text_field.text.to_i
-              break if value == current_value
-              if value > current_value
-                increment 1
-              else
-                decrement 1
-              end
-              break if value == current_value
-            end
-            sleep 1
-            log.info "Pounds set to #{text_field.text}"
-          end
-
-          def increment value
-            button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
-            value.to_i.times do
-              button.safe_click
-            end
-          end
-
-          def decrement value
-            button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
-            value.to_i.times do
-              button.safe_click
-            end
-          end
-        end
-
-        def length
-          Length.new @browser
-        end
-
-        def width
-          Width.new @browser
-        end
-
-        def height
-          Height.new @browser
-        end
-      end
-
-      class InsureFor < OrdersObject
+    class Weight < OrdersObject
+      class Pounds < OrdersObject
         def text_box
-          Textbox.new @browser.text_field :name => "InsuredValue"
+          Textbox.new (@browser.text_field :name => 'WeightLbs'), "data-errorqtip"
         end
 
         def set value
-          text_box.set value
+          text_field = text_box
+          value = value.to_i
+          max = value + text_field.text.to_i
+          max.times do
+            current_value = text_field.text.to_i
+            break if value == current_value
+            if value > current_value
+              increment 1
+            else
+              decrement 1
+            end
+            break if value == current_value
+          end
+          sleep 1
+          log.info "Pounds set to #{text_field.text}"
         end
 
         def increment value
-          button = Button.new (@browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]")
+          button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]")
+          button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
           value.to_i.times do
             button.safe_click
           end
         end
       end
 
-      def insure_for
-        InsureFor.new @browser
+      class Ounces < OrdersObject
+        def text_box
+          Textbox.new (@browser.text_field :name => 'WeightOz'), "data-errorqtip"
+        end
+
+        def set value
+          text_field = text_box
+          value = value.to_i
+          max = value + text_field.text.to_i
+          max.times do
+            current_value = text_field.text.to_i
+            break if value == current_value
+            if value > current_value
+              increment 1
+            else
+              decrement 1
+            end
+            break if value == current_value
+          end
+          sleep 1
+          log.info "Pounds set to #{text_field.text}"
+        end
+
+        def increment value
+          button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+
+        def decrement value
+          button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+      end
+
+      def lbs
+        Pounds.new @browser
+      end
+
+      def oz
+        Ounces.new @browser
+      end
+    end
+
+    class Dimensions < OrdersObject
+
+      class Length < OrdersObject
+        def text_box
+          Textbox.new @browser.text_field :name => 'Length'
+        end
+
+        def set value
+          text_field = text_box
+          value = value.to_i
+          max = value + text_field.text.to_i
+          max.times do
+            current_value = text_field.text.to_i
+            break if value == current_value
+            if value > current_value
+              increment 1
+            else
+              decrement 1
+            end
+            break if value == current_value
+          end
+          sleep 1
+          log.info "Pounds set to #{text_field.text}"
+        end
+
+        def increment value
+          button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+
+        def decrement value
+          button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+      end
+
+      class Width < OrdersObject
+        def text_box
+          Textbox.new @browser.text_field :name => 'Width'
+        end
+
+        def set value
+          text_field = text_box
+          value = value.to_i
+          max = value + text_field.text.to_i
+          max.times do
+            current_value = text_field.text.to_i
+            break if value == current_value
+            if value > current_value
+              increment 1
+            else
+              decrement 1
+            end
+            break if value == current_value
+          end
+          sleep 1
+          log.info "Pounds set to #{text_field.text}"
+        end
+
+        def increment value
+          button = Button.new ((@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]")[1])
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+
+        def decrement value
+          button = Button.new ((@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]")[1])
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+      end
+
+      class Height < OrdersObject
+        def text_box
+          Textbox.new @browser.text_field :name => 'Height'
+        end
+
+        def set value
+          text_field = text_box
+          value = value.to_i
+          max = value + text_field.text.to_i
+          max.times do
+            current_value = text_field.text.to_i
+            break if value == current_value
+            if value > current_value
+              increment 1
+            else
+              decrement 1
+            end
+            break if value == current_value
+          end
+          sleep 1
+          log.info "Pounds set to #{text_field.text}"
+        end
+
+        def increment value
+          button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+
+        def decrement value
+          button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+      end
+
+      def length
+        Length.new @browser
+      end
+
+      def width
+        Width.new @browser
+      end
+
+      def height
+        Height.new @browser
+      end
+    end
+
+    class InsureFor < OrdersObject
+      def text_box
+        Textbox.new @browser.text_field :name => "InsuredValue"
+      end
+
+      def set value
+        text_box.set value
+      end
+
+      def increment value
+        button = Button.new (@browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]")
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = Button.new (@browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]")
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
+
+    class ItemGrid < OrdersObject
+
+      class OrderDetailsItem < OrdersObject
+
+        class Qty < OrdersObject
+          def initialize browser, number
+            super browser
+            @number = number
+          end
+
+          def text_box
+            Textbox.new ((@browser.text_fields :name => "Quantity")[@number-1]), "data-errorqtip"
+          end
+
+          def set value
+            text_field = text_box
+            value = value.to_i
+            max = value + text_field.text.to_i
+            max.times do
+              current_value = text_field.text.to_i
+              break if value == current_value
+              if value > current_value
+                increment 1
+              else
+                decrement 1
+              end
+              break if value == current_value
+            end
+            log.info "Qty set to #{text_field.text}"
+          end
+
+          def increment value
+            button = Button.new (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@number-1]
+            value.to_i.times do
+              button.safe_click
+            end
+          end
+
+          def decrement value
+            button = Button.new (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@number-1]
+            value.to_i.times do
+              button.safe_click
+            end
+          end
+        end
+
+        def initialize browser, number
+          super browser
+          @number = number
+        end
+
+        def present?
+          browser_helper.present? ((@browser.text_fields :name => "SKU")[@number-1])
+        end
+
+        def qty
+          Qty.new @browser, @number
+        end
+
+        def id
+          Textbox.new (@browser.text_fields :name => "SKU")[@number-1]
+        end
+
+        def description
+          Textbox.new (@browser.text_fields :name => "Description")[@number-1]
+        end
+
+        def delete
+          Button.new (@browser.spans :css => "span[class*=sdc-icon-remove]")[@number-1]
+        end
+      end
+
+      def size
+        (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]").size
+      end
+
+      def item number
+        add_button = Button.new (@browser.span :css => "span[class*=sdc-icon-add]")
+        log.info "Item Count: #{size}"
+
+        20.times{
+          break if size >= number
+          sleep 1
+          break if size >= number
+          add_button.safe_click if number > size
+          log.info "Item Count: #{size}"
+        }
+
+        OrderDetailsItem.new @browser, number
+      end
+    end
+
+    class OrderDetails < OrderForm
+
+      def ship_from
+        ShipFromAddress.new @browser
+      end
+
+      def ship_to
+        ShipTo.new @browser
       end
 
       def weight
         Weight.new @browser
       end
 
+      def service
+        Service.new @browser
+      end
+
+      def insure_for
+        InsureFor.new @browser
+      end
+
+      def tracking
+        TrackingDropDown.new @browser
+      end
+
       def dimensions
         Dimensions.new @browser
       end
+
+      def total
+        cost_label = Label.new (@browser.labels :css => "label[class*=total_cost]")[0]
+        10.times do
+          begin
+            cost = cost_label.text
+          rescue
+            #ignore
+          end
+          break unless cost.include? "$"
+        end
+        test_helper.remove_dollar_sign cost_label.text
+      end
+
+      def present?
+        browser_helper.present? @browser.div :css => "div[id^=singleOrderDetailsForm][id$=body]"
+      end
+
+      #todo-rob add
+
+      def item_grid
+        ItemGrid.new @browser
+      end
+
+
+
+
+
+
+
 
       def items_count
         begin
@@ -2114,53 +2152,21 @@ module Orders
         end
       end
 
+
       def add_item
         add_item = Link.new @browser.span :text => "Add Item"
         raise "Add Item button is not present in Order Details form!" unless add_item.present?
         count = items_count
-        5.times{
+        5.times do
           add_item.safe_click
           sleep 1
           return if items_count == count + 1
-        }
+        end
       end
 
       def item line_item
         OrderDetailsItem.new @browser, line_item
       end
-
-      def ship_from
-        ShipFromAddress.new @browser
-      end
-
-      def service
-        Orders::Details::Service.new @browser
-      end
-
-      def tracking
-        @orders_tracking ||= TrackingDropDown.new @browser
-      end
-
-      def address_textbox
-        Textbox.new @browser.textarea :name => 'FreeFormAddress'
-      end
-
-      def service_textbox
-        @browser.text_field :css => "input[componentid^=servicedroplist]"
-      end
-
-      def height_textbox
-        @browser.text_field :name => 'Height'
-      end
-
-      def country_textbox
-        @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div>input'
-      end
-
-      def country_dropdown
-        @browser.div :css => 'div[data-ref=triggerWrap][id^=combobox-][id$=-triggerWrap]>div:nth-child(2)'
-      end
-
 
       def auto_suggest_name_array
         @browser.divs :css => 'div[class*=main-title]'
@@ -2217,29 +2223,8 @@ module Orders
         test_helper.remove_dollar_sign(cost_label.text)
       end
 
-      def total
-        cost_label = Label.new (@browser.labels :css => "label[class*=total_cost]")[0]
-        10.times do
-          begin
-            cost = cost_label.text
-          rescue
-            #ignore
-          end
-          break unless cost.include? "$"
-        end
-        test_helper.remove_dollar_sign cost_label.text
-      end
-
-      def present?
-        browser_helper.present? @browser.div :css => "div[id^=singleOrderDetailsForm][id$=body]"
-      end
-
       def wait_until_present
         (Label.new @browser.label :text => "Ship From:").wait_until_present
-      end
-
-      def ship_to
-        ShipTo.new @browser
       end
 
       def pounds_max_value

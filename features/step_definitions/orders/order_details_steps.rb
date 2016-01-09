@@ -1,52 +1,51 @@
-
-Then /^Set Order Details Add Item$/ do
-  orders.details.add_item
-  @item_count += 1
-  log.info "Item #{@item_count} added."
+Then /^Add Order Details Item (\d+) - Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
+  log.info "Step: Add Order Details Item #{item_number} - Qty #{qty}, ID #{id} Description #{description}"
+  item = orders.details.item_grid.item item_number.to_i
+  item.qty.set qty
+  item.id.set (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
+  item.description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
 end
 
-Then /^Set Order Details Line Item Quantity to (\d+)$/ do |qty|
-  step "Set Order Details Line Item #{@item_count} Quantity to #{qty}"
+Then /^Delete Order Details Item (\d+)$/ do |item_number|
+  log.info "Step: Delete Order Details Item #{item_number}"
+  item = orders.details.item_grid.item item_number.to_i
+  item.delete.safe_click
 end
 
-Then /^Set Order Details Line Item (\d+) Quantity to (.*)$/ do |line_item, qty|
-  @line_item_qty = qty
-  log.info "Set Order Details Line Item #{line_item} Quantity to #{@line_item_qty}"
-
-  item_object = orders.details.item line_item
-  item_object.qty qty
+Then /^Set Order Details Weight to (\d+) lbs (\d+) oz$/ do |pounds, ounces|
+  log.info "Step:  Set Order Details Weight to #{pounds} Pounds and #{ounces} Ounces"
+  orders.details.weight.lbs.set pounds
+  orders.details.weight.oz.set ounces
 end
 
-Then /^Set Order Details Line Item ID to (.*)$/ do |id|
-  step "Set Order Details Line Item #{@item_count} ID to #{id}"
+Then /^Set Order Details Pounds to (\d*)$/ do |value|
+  log.info "Step: Set Order Details Pounds to \"#{value}\""
+  orders.details.weight.lbs.set value
 end
 
-Then /^Set Order Details Line Item (\d+) ID to (.*)$/ do |line_item, id|
-  @line_item_id = id
-  log.info "Set Order Details Line Item #{line_item} ID to #{@line_item_id}"
-
-  item_object = orders.details.item line_item
-  item_object.id (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
+Then /^Set Order Details Ounces to (.*)$/ do |value|
+  log.info "Step: Set Order Details Ounces to \"#{value}\""
+  orders.details.weight.oz.set value
 end
 
-Then /^Set Order Details Line Item Description to (.*)$/ do |description|
-  step "Set Order Details Line Item #{@item_count} Description to #{description}"
+Then /^Set Order Details Length to (\d*)$/ do |value|
+  log.info "Step: Set Order Details Length to \"#{value}\""
+  orders.details.dimensions.length.set value
 end
 
-Then /^Set Order Details Line Item (\d+) Description to (.*)$/ do |line_item, description|
-  @line_item_description = description
-  log.info "Set Order Details Line Item #{line_item} Description to #{@line_item_description}"
-
-  item_object = orders.details.item line_item
-  item_object.description (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
+Then /^Set Order Details Width to (\d*)$/ do |value|
+  log.info "Step: Set Order Details Width to \"#{value}\""
+  orders.details.dimensions.width.set value
 end
 
-Then /^Set Order Details Item - Quantity (.*), ID (.*), Description (.*)$/ do |qty, id, description|
-  log.info "Step: Set Order Details Item - Quantity #{qty}, ID #{id}, Description #{description}"
-  step "Set Order Details Add Item"
-  step "Set Order Details Line Item Quantity to #{qty}"
-  step "Set Order Details Line Item ID to #{id}"
-  step "Set Order Details Line Item Description to #{description}"
+Then /^Set Order Details Height to (\d*)$/ do |value|
+  log.info "Step: Set Order Details Height to \"#{value}\""
+  orders.details.dimensions.height.set value
+end
+
+Then /^Set Order Details Service to \"(.*)\"$/ do |service|
+  log.info "Step: Set Order Details Service to #{service}"
+  orders.details.service.select service
 end
 
 Then /^Set Order Details Ship-From to (\w+)$/ do |value|
@@ -85,11 +84,12 @@ Then /^Set Order Details Ship-To address to (.*)$/ do |address|
   end
 
   orders.details.ship_to.address.set formatted_address
+
   begin
     step "Set Order Details Phone to #{random_ship_to_address["phone"]}"
     step "Set Order Details Email to #{random_ship_to_address["email"]}"
   rescue
-    #ignroe
+    #ignore
   end
 end
 
@@ -201,36 +201,6 @@ end
 Then /^Decrement Order Details Insure For by (\d*)$/ do |value|
   log.info "Step: Decrement Order Details Insure For by \"#{value}\""
   orders.details.insure_for.decrement value
-end
-
-Then /^Set Order Details Pounds to (\d*)$/ do |value|
-  log.info "Step: Set Order Details Pounds to \"#{value}\""
-  orders.details.weight.lbs.set value
-end
-
-Then /^Set Order Details Ounces to (.*)$/ do |value|
-  log.info "Step: Set Order Details Ounces to \"#{value}\""
-  orders.details.weight.oz.set value
-end
-
-Then /^Set Order Details Length to (\d*)$/ do |value|
-  log.info "Step: Set Order Details Length to \"#{value}\""
-  orders.details.dimensions.length.set value
-end
-
-Then /^Set Order Details Width to (\d*)$/ do |value|
-  log.info "Step: Set Order Details Width to \"#{value}\""
-  orders.details.dimensions.width.set value
-end
-
-Then /^Set Order Details Height to (\d*)$/ do |value|
-  log.info "Step: Set Order Details Height to \"#{value}\""
-  orders.details.dimensions.height.set value
-end
-
-Then /^Set Order Details Service to \"(.*)\"$/ do |service|
-  log.info "Step: Set Order Details Service to #{service}"
-  orders.details.service.select service
 end
 
 Then /^Set Order Details Tracking to \"([\w ]*)\"$/ do |value|

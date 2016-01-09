@@ -16,7 +16,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
     Then Set Order Details Pounds to 2
     And Open customs form
     Then Set customs form Package Contents to "Merchandise"
-    And Add Customs Form Item 1; Description=random, Qty 1, Unit Price 30, Weight(lbs) 1, Weight(oz) 1 Origin United States, Tariff 10
+    And Add Customs Form Item 1 - Description random, Qty 1, Price 30, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
     Then Wait in seconds 3

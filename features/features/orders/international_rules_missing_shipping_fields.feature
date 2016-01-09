@@ -20,9 +20,8 @@ Feature: International Shipping fields and Customs Information fields validation
 
     Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
-
-    Then Set Order Details Item - Quantity 1, ID random, Description random
-
+    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+#todo-rob affected
     And Open customs form
 
     Then Set customs form Package Contents to "Commercial Sample"

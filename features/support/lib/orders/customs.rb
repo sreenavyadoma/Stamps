@@ -263,7 +263,7 @@ module Orders
       Button.new (@browser.spans :css => "div[id*=customswindow] span[class*=sdc-icon-remove]")[@number-1]
     end
 
-    def item_description
+    def description
       Textbox.new ((@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]), "data-errorqtip"
     end
 
@@ -526,3 +526,4 @@ module Orders
   end
 
 end
+#todo-rob refactor into Customs module

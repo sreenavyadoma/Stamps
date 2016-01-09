@@ -111,7 +111,7 @@ module Orders
           usps_terms.click_i_agree_button
         end
 
-        order_grid = Orders::Grid::OrdersGrid.new @browser
+        #order_grid = Orders::Grid::OrdersGrid.new @browser
         #checked_rows_cache = order_grid.checkbox.checked_rows
 
         naws_plugin_error = NawsPluginError.new @browser
@@ -171,7 +171,7 @@ module Orders
         20.times do |count|
           begin
             add_button.safe_click
-            sleep 1
+            sleep 3
             log.info initializing_db.text if initializing_db.present?
             if order_details.present?
               new_id = grid.order_id.row 1
