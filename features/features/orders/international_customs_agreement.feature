@@ -14,7 +14,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Uncheck USPS Terms in Settings Modal
     Then Save Settings changes
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -43,7 +43,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     #Print an Int'l order and turn Auto-Confirm on
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -73,7 +73,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Expect USPS Terms Checked in Settings Modal
     Then Save Settings changes
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -98,7 +98,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Uncheck USPS Terms in Settings Modal
     Then Save Settings changes
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -124,7 +124,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Check USPS Terms in Settings Modal
     Then Save Settings changes
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |

@@ -6,7 +6,7 @@ Feature: Orders Grid - Tracking & Order Status
 
   @grid_tracking_order_status
   Scenario: Tracking & Order Status
-    And I Add a new order
+    When I Add a new order
     Then Expect Order Status to be "Awaiting Shipment"
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -18,7 +18,7 @@ Feature: Orders Grid - Tracking & Order Status
     Then Expect Grid Tracking Number is populated
     Then Expect Order Status to be "Shipped"
 
-    And I Add a new order
+    When I Add a new order
     Then Expect Order Status to be "Awaiting Shipment"
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4

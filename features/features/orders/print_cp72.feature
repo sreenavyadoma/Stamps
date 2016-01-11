@@ -9,7 +9,7 @@ Feature: Print CP72 Layouts
   @cp72_left @new_customs_forms @cn22_cp72
   Scenario: User Prints 1 Intl CP72 label on 5.5x8.5 - left side
      # 1 CP72 label 5 ½" x 8 ½"
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -31,7 +31,7 @@ Feature: Print CP72 Layouts
   @cp72_right @new_customs_forms @cn22_cp72
   Scenario: User Prints 1 Intl CP72 label on 5.5x8.5 - right side
     # 1 CP72 label 5 ½" x 8 ½" right side
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -53,7 +53,7 @@ Feature: Print CP72 Layouts
   @roll_4x6_cp72 @new_customs_forms @cn22_cp72
   Scenario: User Prints 1 Intl CP72 label on 4x6 Roll
 # 1 CP72 label 4" x 6" Roll
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |

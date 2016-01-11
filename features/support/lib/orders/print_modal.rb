@@ -214,7 +214,7 @@ module Orders
       end
 
       def now_month_dd
-        picker = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
+        picker = Button.new @browser.div Orders::Orders::Locators::PrintModal.date_picker_button
         today = Button.new @browser.span :css => "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
         10.times {
           picker.safe_click unless today.present?
@@ -226,7 +226,7 @@ module Orders
       end
 
       def todays_date
-        picker = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
+        picker = Button.new @browser.div Orders::Orders::Locators::PrintModal.date_picker_button
         today = Button.new Button.new @browser.div :css => "div[title=Today]"
         10.times {
           picker.safe_click unless today.present?
@@ -248,7 +248,7 @@ module Orders
       def today_plus day
         day = day.to_i
         date_picker_header = Label.new @browser.div :class => "x-datepicker-header"
-        picker_button = Button.new @browser.div Orders::Locators::PrintModal.date_picker_button
+        picker_button = Button.new @browser.div Orders::Orders::Locators::PrintModal.date_picker_button
         ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"
 
         ship_date_str = test_helper.now_plus_month_dd day

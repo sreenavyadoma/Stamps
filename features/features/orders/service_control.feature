@@ -6,7 +6,7 @@
 
   @service_control
   Scenario:  Inline Rates
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     And Check Orders Grid row 1
 

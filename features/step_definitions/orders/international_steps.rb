@@ -414,6 +414,10 @@ end
 Then /^Expect Customs Form USPS Privacy Act Warning to be visible$/ do
   log.info "Step: Expect Customs Form USPS Privacy Act Warning to be visible"
   @customs_form = @order_details.customs_form if @customs_form.nil?
+  10.times do
+    break if @customs_form.usps_privacy_act_warning.visible?
+    sleep 1
+  end
   usps_privacy_act_warning = @customs_form.usps_privacy_act_warning.visible?
   log.info "Test #{(usps_privacy_act_warning)?"Passed":"Failed"}"
   usps_privacy_act_warning.should be true
@@ -422,6 +426,10 @@ end
 Then /^Expect Customs Form USPS Privacy Act Warning to be hidden/ do
   log.info "Step: Expect Customs Form USPS Privacy Act Warning to be hidden"
   @customs_form = @order_details.customs_form if @customs_form.nil?
+  10.times do
+    break if @customs_form.usps_privacy_act_warning.visible?
+    sleep 1
+  end
   usps_privacy_act_warning = @customs_form.usps_privacy_act_warning.visible?
   log.info "Test #{(usps_privacy_act_warning)?"Failed":"Passed"}"
   usps_privacy_act_warning.should be false

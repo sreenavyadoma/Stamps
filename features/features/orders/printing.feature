@@ -6,7 +6,7 @@ Feature: Printing
 
   @print @print1
   Scenario:  Print Priority Mail Package
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -17,7 +17,7 @@ Feature: Printing
 
   @print @print_test
   Scenario:  B-01624 Print Priority Mail Express Padded Flat Rate Envelope
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
@@ -29,7 +29,7 @@ Feature: Printing
 
   @print @print_test
   Scenario:  Print Priority Mail Express Package
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
@@ -41,7 +41,7 @@ Feature: Printing
 
   @print
   Scenario:  Print Priority Mail Flat Rate Envelope
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
@@ -53,7 +53,7 @@ Feature: Printing
 
   @print
   Scenario:  Print Priority Mail Regional Rate Box A
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Regional Rate Box A"

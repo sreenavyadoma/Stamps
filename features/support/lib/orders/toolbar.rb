@@ -2,15 +2,15 @@ module Orders
   module Toolbar
     class MoveConfirmation < OrdersObject
       def present?
-        browser_helper.present? @browser.span Locators::ToolBar::confirmation_modal_move_label
+        browser_helper.present? @browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
       end
 
       def move_label
-        Label.new @browser.span Locators::ToolBar::confirmation_modal_move_label
+        Label.new @browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
       end
 
       def cancel_label
-        Label.new @browser.span Locators::ToolBar::confirmation_modal_cancel_label
+        Label.new @browser.span Orders::Locators::ToolBar::confirmation_modal_cancel_label
       end
 
       def move
@@ -29,7 +29,7 @@ module Orders
     class MoveMenu < OrdersObject
 
       def drop_down
-        Button.new @browser.span Locators::ToolBar::move
+        Button.new @browser.span Orders::Locators::ToolBar::move
       end
 
       def select selection
@@ -156,7 +156,7 @@ module Orders
       def add
         order_details = Orders::Details::OrderDetails.new @browser
         grid = Orders::Grid::OrdersGrid.new @browser
-        add_button = Button.new @browser.span Locators::ToolBar::add
+        add_button = Button.new @browser.span Orders::Locators::ToolBar::add
 
         # Initializing Order Database
         initializing_db = Label.new @browser.div :text => "Initializing Order Database"
@@ -210,11 +210,11 @@ module Orders
       end
 
       def wait_until_present
-        browser_helper.wait_until_present @browser.span Locators::ToolBar::add
+        browser_helper.wait_until_present @browser.span Orders::Locators::ToolBar::add
       end
 
       def present?
-        browser_helper.present? @browser.span Locators::ToolBar::add
+        browser_helper.present? @browser.span Orders::Locators::ToolBar::add
       end
 
       def settings_modal

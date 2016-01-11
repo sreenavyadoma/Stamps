@@ -5,7 +5,7 @@ Feature: Two character minimum for Name & Company
 
   @international_rules_engine @international_rules_engine_name_stuff
   Scenario: Two character minimum for Name & Company
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To Country to Antigua & Barbuda
     Then Set International Ship-To Name to "a"

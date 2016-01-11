@@ -7,14 +7,14 @@ Feature: 10 orders
   Scenario:  Order Creation
 
     # First Class Mail
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Insure For to $15.00
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
@@ -24,28 +24,28 @@ Feature: 10 orders
 
     #Priority Mail
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Large Package"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Legal Flat Rate Envelope"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
@@ -55,14 +55,14 @@ Feature: 10 orders
 
     # Priority Mail Express
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Express Package"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 11
@@ -71,7 +71,7 @@ Feature: 10 orders
 
     # Media Mail
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 3
@@ -81,7 +81,7 @@ Feature: 10 orders
 
     # Parcel Select
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 10
@@ -96,14 +96,14 @@ Feature: 10 orders
 
     # First Class Mail
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Insure For to $15.00
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
@@ -113,28 +113,28 @@ Feature: 10 orders
 
     #Priority Mail
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Large Package"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Legal Flat Rate Envelope"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
@@ -144,14 +144,14 @@ Feature: 10 orders
 
     # Priority Mail Express
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Express Package"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 11
@@ -160,7 +160,7 @@ Feature: 10 orders
 
     # Media Mail
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 3
@@ -170,7 +170,7 @@ Feature: 10 orders
 
     # Parcel Select
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 10
@@ -181,14 +181,14 @@ Feature: 10 orders
 
     # First Class Mail
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Insure For to $15.00
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
@@ -198,28 +198,28 @@ Feature: 10 orders
 
     #Priority Mail
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Package"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Large Package"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 1
     Then Set Order Details Service to "Priority Mail Legal Flat Rate Envelope"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
@@ -229,14 +229,14 @@ Feature: 10 orders
 
     # Priority Mail Express
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 1
     Then Set Order Details Service to "Priority Mail Express Package"
     Then Set Order Details Tracking to "Signature Required"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 11
@@ -245,7 +245,7 @@ Feature: 10 orders
 
     # Media Mail
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 3
@@ -255,7 +255,7 @@ Feature: 10 orders
 
     # Parcel Select
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Pounds to 10

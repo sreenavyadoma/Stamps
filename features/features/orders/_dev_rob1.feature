@@ -4,7 +4,7 @@ Feature: Test Development
 
   @rob_dev_printer
   Scenario:
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"
@@ -24,7 +24,7 @@ Feature: Test Development
     Then Print
 
   Scenario:
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-To Country to Canada
     Then Set Order Details Ship-To Country to United States
     Then Set Order Details Ship-From to default
@@ -47,19 +47,19 @@ Feature: Test Development
     Then Set Order Details Ship-To address to
       | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
-    And I Add a new order
+    When I Add a new order
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-To address to San
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-To address to San
 
   Scenario:
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"

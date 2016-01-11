@@ -5,7 +5,7 @@ Feature: Add Missing Field Validation
 
   @validate_domestic @ray_test
   Scenario: Add Missing Validation Logic for Domestic Fields
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
 
   #  Add Missing Validation Logic for Email

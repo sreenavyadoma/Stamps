@@ -5,7 +5,7 @@ Feature: Syria Internal Transaction Number Required
 
   @international_rules_engine
   Scenario: Syria Internal Transaction Number Required
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |

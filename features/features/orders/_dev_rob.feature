@@ -5,7 +5,7 @@ Feature: Test Development
     Given I am signed in to Orders
 
   Scenario:
-    And I Add a new order
+    When I Add a new order
 
     Then Filter Awaiting Shipment
     Then Move order to Shipped
@@ -20,7 +20,7 @@ Feature: Test Development
 
   @rand_ship_to_zone_5_8
   Scenario:
-    And I Add a new order
+    When I Add a new order
     Then Filter Shipped
     Then Filter Cancelled
     Then Filter Awaiting Shipment
@@ -39,7 +39,7 @@ Feature: Test Development
     Then Add Order Details Item 1 - Qty 1, ID random, Description random
 
   Scenario:
-    And I Add a new order
+    When I Add a new order
     Then Filter Awaiting Shipment
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to Eight Zone,377 Santa Rosa Blvd,Fort Walton Beach, FL 32548
@@ -57,7 +57,7 @@ Feature: Test Development
     Then Add Order Details Item 1 - Qty 1, ID random, Description random
 
   Scenario:
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 5
@@ -68,7 +68,7 @@ Feature: Test Development
     Then Expect Grid Tracking Number is populated
     Then Expect Order Status to be "Shipped"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 5
@@ -84,7 +84,7 @@ Feature: Test Development
 
   Scenario:
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then Set Order Details Ounces to 5
@@ -93,7 +93,7 @@ Feature: Test Development
     Then Expect Grid Ship Date for this order to be today
     Then Expect Grid Date Printed for this order to be today
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
@@ -103,7 +103,7 @@ Feature: Test Development
     Then Expect Grid Date Printed for this order to be today
     Then Expect Grid Ship Date for this order to be today plus 1
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then Set Order Details Ounces to 5
@@ -114,7 +114,7 @@ Feature: Test Development
     Then Expect Grid Date Printed for this order to be today
     Then Expect Grid Ship Date for this order to be today plus 2
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then Set Order Details Ounces to 5
@@ -126,7 +126,7 @@ Feature: Test Development
     Then Expect Grid Ship Date for this order to be today plus 3
   Scenario:
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
@@ -141,7 +141,7 @@ Feature: Test Development
     Then Expect Shipped Tab Date Printed to be today
     Then Set Print Modal Ship Date to today plus 3
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
@@ -156,7 +156,7 @@ Feature: Test Development
     Then Expect Shipped Tab Date Printed to be today
     Then Expect Shipped Tab Ship Date to be today plus 2
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
@@ -172,7 +172,7 @@ Feature: Test Development
     Then Expect Shipped Tab Ship Date to be today plus 3
 
   Scenario:
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
@@ -213,7 +213,7 @@ Feature: Test Development
     Then Filter Shipped
     Then Filter Cancelled
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
@@ -223,7 +223,7 @@ Feature: Test Development
     Then Expect Awaiting Shipment count to be less by 1
     Then Expect printed Order ID is in Shipped tab
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
@@ -232,7 +232,7 @@ Feature: Test Development
     Then Expect printed Order ID is not in Awaiting Shipment tab
     Then Expect printed Order ID is in Shipped tab
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
@@ -264,7 +264,7 @@ Feature: Test Development
 
   @rob_dev_customs_form_dropdowns
   Scenario: Syria Internal Transaction Number Required
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
@@ -303,7 +303,7 @@ Feature: Test Development
 
   @_dev_rob
   Scenario: Domestic FPO Address
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To Country to United States
     Then Set Order Details Ship-To address to
@@ -323,7 +323,7 @@ Feature: Test Development
   @rob_dev_int
   Scenario:
     # International
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -336,7 +336,7 @@ Feature: Test Development
     Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |

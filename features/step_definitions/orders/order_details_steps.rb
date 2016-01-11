@@ -28,6 +28,13 @@ Then /^Set Order Details Ounces to (.*)$/ do |value|
   orders.details.weight.oz.set value
 end
 
+Then /^Set Order Details Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
+  log.info "Set Order Details Dimensions to Length #{length} Width #{width} Height #{height}"
+  orders.details.dimensions.length.set length
+  orders.details.dimensions.width.set width
+  orders.details.dimensions.height.set height
+end
+
 Then /^Set Order Details Length to (\d*)$/ do |value|
   log.info "Step: Set Order Details Length to \"#{value}\""
   orders.details.dimensions.length.set value

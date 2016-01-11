@@ -5,7 +5,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
 
   @new_country_code @new_country_code_2
   Scenario: Print Bonaire, Sint Eustatius, and Saba orders
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |

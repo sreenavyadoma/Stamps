@@ -6,7 +6,7 @@ Feature: Thermal Printer
 
   @thermal_printing
   Scenario:  As a batch shipper, I want to be able to change my print media
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Pounds to 1

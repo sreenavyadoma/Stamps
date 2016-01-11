@@ -59,15 +59,15 @@ module Orders
     class SignInPage < OrdersObject
 
       def username
-        Textbox.new @browser.text_field Locators::SignIn::username
+        Textbox.new @browser.text_field Orders::Locators::SignIn::username
       end
 
       def password
-        Textbox.new @browser.text_field Locators::SignIn::password
+        Textbox.new @browser.text_field Orders::Locators::SignIn::password
       end
 
       def sign_in
-        Input.new @browser.input Locators::SignIn::sign_in
+        Input.new @browser.input Orders::Locators::SignIn::sign_in
       end
 
       def remember_my_username

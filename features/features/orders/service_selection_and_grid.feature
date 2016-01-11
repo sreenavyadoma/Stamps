@@ -5,7 +5,7 @@ Feature:  Service Selection & Order Grid Values
 
   @parcel_select
   Scenario:  Rename Parcel Select
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Parcel Select Ground Package"
@@ -17,7 +17,7 @@ Feature:  Service Selection & Order Grid Values
     Then Filter Shipped
     Then Expect Grid Service to be Parcel Select Ground
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Parcel Select Ground Large Package"
@@ -29,7 +29,7 @@ Feature:  Service Selection & Order Grid Values
     Then Filter Shipped
     Then Expect Grid Service to be Parcel Select Ground
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Parcel Select Ground Oversized Package"

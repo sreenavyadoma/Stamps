@@ -152,11 +152,11 @@ module Postage
     end
 
     #def wait_until_present
-    #  browser_helper.wait_until_present @browser.span Locators::ToolBar::add
+    #  browser_helper.wait_until_present @browser.span Orders::Locators::ToolBar::add
     #end
 
     #def present?
-    #  browser_helper.present? @browser.span Locators::ToolBar::add
+    #  browser_helper.present? @browser.span Orders::Locators::ToolBar::add
     #end
 
 
@@ -262,11 +262,11 @@ module Postage
   class PrintOn < PostageObject
 
     def drop_down
-      Button.new (@browser.divs Locators::FormBody.print_on_drop_down_divs)[0]
+      Button.new (@browser.divs Orders::Locators::FormBody.print_on_drop_down_divs)[0]
     end
 
     def text_box
-      Textbox.new (@browser.text_field Locators::FormBody.print_on_text_field)
+      Textbox.new (@browser.text_field Orders::Locators::FormBody.print_on_text_field)
     end
 
     def select selection
