@@ -22,8 +22,8 @@ Cucumber::Rake::Task.new(:print_two_up) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_labels) do |t|
-  t.profile = 'print_labels'
+Cucumber::Rake::Task.new(:print_label_position) do |t|
+  t.profile = 'print_label_position'
   t.cucumber_opts = "-p cuke_reports"
 end
 

@@ -4,7 +4,7 @@ Feature: Change the starting label position I will print from
   Background:
     Given I am signed in to Orders
 
-  @print_labels
+  @print_label_position
   Scenario:  Print Label - Left Side
     When I Add a new order
     Then Set Order Details Ship-From to default
