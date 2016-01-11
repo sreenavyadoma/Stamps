@@ -1,12 +1,9 @@
-# encoding: utf-8
-  @print_cn22_cp72_layouts
-  @cn22_cp72
 Feature: Print CN22
 
   Background:
     Given I am signed in to Orders
 
-  @cn22_8_5x11 @new_customs_forms_dev_1 @cn22_cp72
+  @print_layouts_cn22_cp72
   Scenario: User Prints 2 Intl CN22 labels on 8.5x11 - left side
     When I Add a new order
     Then Set Order Details Ship-From to default
@@ -44,7 +41,7 @@ Feature: Print CN22
     Then Print
     Then Sign out
 
-  @roll_4x6_cn22 @new_customs_forms @cn22_cp72
+  @roll_4x6_cn22 @new_customs_forms @print_label_position
   Scenario: User Prints 1 Intl CN22 label on 4x6 Roll
     # 1 CN22 label 4" x 6" Roll
     When I Add a new order

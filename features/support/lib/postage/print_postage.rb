@@ -794,28 +794,48 @@ module Postage
   end
 
   class Weight < PostageObject
+    class Ounces < PostageObject
+      def text_box
+        Textbox.new (@browser.text_field :id => "sdc-mainpanel-ouncesnumberfield-inputEl"), "data-erroqtip"
+      end
+
+      def set value
+
+      end
+
+      def increment
+        Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[0]
+      end
+
+      def decrement
+        Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[0]
+      end
+    end
+
+    class Pounds <PostageObject
+      def text_box
+        Textbox.new @browser.text_field :id => "sdc-mainpanel-poundsnumberfield-inputEl"
+      end
+
+      def set value
+
+      end
+
+      def increment
+        Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[1]
+      end
+
+      def decrement
+        Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[1]
+      end
+    end
+
     def ounces
-      Textbox.new @browser.text_field :id => "sdc-mainpanel-ouncesnumberfield-inputEl"
-    end
-
-    def increment_ounces
-      Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[0]
-    end
-
-    def decrement_ounces
-      Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[0]
+      Ounces.new @browser
     end
 
     def pounds
-      Textbox.new @browser.text_field :id => "sdc-mainpanel-poundsnumberfield-inputEl"
-    end
-
-    def increment_pounds
-      Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[1]
-    end
-
-    def decrement_pounds
-      Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[1]
+      Pounds.new @browser
     end
 
   end

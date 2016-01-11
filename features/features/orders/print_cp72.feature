@@ -1,12 +1,12 @@
 # encoding: utf-8
-  @print_cn22_cp72_layouts
-@cn22_cp72
+  @print_print_label_position_layouts
+@print_label_position
 Feature: Print CP72 Layouts
 
   Background:
     Given I am signed in to Orders
 
-  @cp72_left @new_customs_forms @cn22_cp72
+  @cp72_left @new_customs_forms @print_label_position
   Scenario: User Prints 1 Intl CP72 label on 5.5x8.5 - left side
      # 1 CP72 label 5 ½" x 8 ½"
     When I Add a new order
@@ -28,7 +28,7 @@ Feature: Print CP72 Layouts
     Then Print
     Then Sign out
 
-  @cp72_right @new_customs_forms @cn22_cp72
+  @cp72_right @new_customs_forms @print_label_position
   Scenario: User Prints 1 Intl CP72 label on 5.5x8.5 - right side
     # 1 CP72 label 5 ½" x 8 ½" right side
     When I Add a new order
@@ -50,7 +50,7 @@ Feature: Print CP72 Layouts
     Then Print
     Then Sign out
 
-  @roll_4x6_cp72 @new_customs_forms @cn22_cp72
+  @roll_4x6_cp72 @new_customs_forms @print_label_position
   Scenario: User Prints 1 Intl CP72 label on 4x6 Roll
 # 1 CP72 label 4" x 6" Roll
     When I Add a new order

@@ -95,6 +95,13 @@ Then /^This works$/ do
 
 end
 
+Then /^example$/ do
+  print_postage.netstamps.weight.ounces.increment 5
+  print_postage.netstamps.weight.ounces.decrement 5
+  print_postage.netstamps.weight.ounces.set 5
+  print_postage.netstamps.weight.ounces.text_box.tooltip
+end
+
 Then /^Create page objects for Print On Shipping Label$/ do
   random_ship_to_address = test_helper.rand_ship_to_zone_1_4
   formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
