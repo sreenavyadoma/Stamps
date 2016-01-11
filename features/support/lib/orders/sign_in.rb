@@ -175,6 +175,8 @@ module Orders
           end
         end
 
+        raise "Sign-in failed!  Username #{username} is unable to sign-in on #{ENV[URL]}" unless navbar.present?
+
         log.info "Signed-in Username is #{navbar.username.text}"
 
         if plugin_issue.present?
