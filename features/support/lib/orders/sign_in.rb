@@ -123,7 +123,7 @@ module Orders
         plugin_issue = ErrorStampsPluginIssue.new @browser
         toolbar = Orders::Toolbar::Toolbar.new @browser
 
-        20.times do
+        5.times do
           begin
             break if grid.present?
             if username_textbox.present?
