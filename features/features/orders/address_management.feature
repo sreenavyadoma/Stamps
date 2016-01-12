@@ -6,7 +6,7 @@ Feature:  Address Management
 
   @address_management
   Scenario: Address Management
-    And I Add a new order
+    When I Add a new order
     And Add Ship-From address
       |ship_from_zip  | name   | company | street_address  | street_address2  | city       | state         | zip    | country       | phone           |
       |90245          | Joseph | B-01690 Betfair US| 530 K Street Unit 504 |               | San Diego | California    | 92101  | United States | (323) 123-5555  |

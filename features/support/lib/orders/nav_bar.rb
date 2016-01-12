@@ -88,11 +88,11 @@ module Orders
     end
 
     def username
-      Label.new @browser.span Locators::NavBar.username
+      Label.new @browser.span Orders::Locators::NavBar.username
     end
 
     def wait_until_present *args
-      wait_field = @browser.span Locators::NavBar.username
+      wait_field = @browser.span Orders::Locators::NavBar.username
       case args.length
         when 0
           browser_helper.wait_until_present wait_field
@@ -104,7 +104,7 @@ module Orders
     end
 
     def present?
-      present_field = @browser.span Locators::NavBar.username
+      present_field = @browser.span Orders::Locators::NavBar.username
       browser_helper.present? present_field
     end
 

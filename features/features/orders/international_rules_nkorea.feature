@@ -5,7 +5,7 @@ Feature: North Korea Internal Transaction Number Required
 
   @international_rules_engine
   Scenario: North Korea Internal Transaction Number Required
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To Country to Democratic People's Republic of (North) Korea
     Then Set Ship-To to international address

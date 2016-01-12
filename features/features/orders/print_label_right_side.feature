@@ -4,9 +4,9 @@ Feature: Change the starting label position I will print from
   Background:
     Given I am signed in to Orders
 
-  @print_labels
+  @print_label_position
   Scenario:  Print Label - Right Side
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields
@@ -18,7 +18,7 @@ Feature: Change the starting label position I will print from
     Then Expect Print Modal right-side label selected
     And Print
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields

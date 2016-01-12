@@ -5,7 +5,7 @@ Feature:  Service enabled/disabled tests
 
   @fcm_selection_enabled
   Scenario:  First Class Mail over 16 ounces disabled
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 17
@@ -13,7 +13,7 @@ Feature:  Service enabled/disabled tests
     Then Expect Order details Service "First-Class Mail Package/Thick Envelope" to be disabled
 
     #First Class Mail up to 15.9 ounces enabled
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Ounces to 15.9
@@ -22,7 +22,7 @@ Feature:  Service enabled/disabled tests
 
   @domestic_rules_validation
   Scenario: Domestic Rules Engine Validation
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Email to bademail
     Then Set Orders Grid New Order ID to uncheck
     Then Set Orders Grid New Order ID to check

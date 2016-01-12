@@ -2,11 +2,11 @@
 Feature: Show Cost of Order in Ship Cost Grid
 
   Background:
-    Given I am signed in to Orders as ff
+    Given I am signed in to Orders using ff
 
   @print_costs
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields

@@ -6,7 +6,7 @@ Feature: Local Rating Smoke Test
 
   @local_rating_smoke_test
   Scenario: Local Rating Smoke Test
-    Then I Add a new order
+    When I Add a new order
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|1|0|0|0|0|Signature Required|8.20|

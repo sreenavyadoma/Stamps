@@ -5,7 +5,7 @@ Feature:  Customs Form Data Tooltip Error
 
   @international @international_customs_form_data_tooltip
   Scenario:  Customs Form Data Error
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -35,3 +35,5 @@ Feature:  Customs Form Data Tooltip Error
     Then Expect Customs Form Tooltip Error for Total Weight to be The itemized weight exceeds the package weight
     Then Close Customs Form
     And Sign out
+
+

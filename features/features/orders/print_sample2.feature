@@ -5,7 +5,7 @@ Feature: Print Sample - Parcel Select Ground Large Package
 
   @print_sample @print_sample_dev
   Scenario:  Parcel Select Ground Large Package
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Parcel Select Ground Large Package"

@@ -9,8 +9,26 @@ Feature: Select All Print Ons and Services
   Scenario: Select Print Media and Services
 
     Then Select Print Postage print media Stamps
+    Then Set Print Postage Form Service to "Postcard"
+    Then Set Print Postage Form Service to "<string>"
+    Then Set Print Postage Form Service to "<string>"
+    Then Set Print Postage Form Service to "<string>"
+    Then Set Print Postage Form Service to "<string>"
+    Then Set Print Postage Form Service to "<string>"
+
+
     Then Select Print Postage print media 8 ½” x 11” Paper
+    Then Set Print Postage Form Service to "<string>"
+    Then Set Print Postage Form Service to "<string>"
+    Then Set Print Postage Form Service to "<string>"
+    Then Set Print Postage Form Service to "<string>"
+    Then Set Print Postage Form Service to "<string>"
+
+
     Then Select Print Postage print media 4 ¼” x 6 ¾” Shipping Label
+    Then Set Print Postage Form Service to "<string>"
+    Then Set Print Postage Form Service to "<string>"
+
     Then Select Print Postage print media Shipping Label - Stamps.com SDC-1200, 4 ¼” x 6 ¾”
     Then Select Print Postage print media Shipping Label - 5 ½” x 8 ½”
     Then Select Print Postage print media Envelope - #10, 4 ⅛” x 9 ½”
@@ -28,7 +46,7 @@ Feature: Select All Print Ons and Services
     Then Select Print Postage print media Roll - 4” x 6” Shipping Label
     Then Select Print Postage print media Roll - 4 ⅛” x 6 ¼” Shipping Label
 
-    #Then Select Service First-Class Mail Large Envelope/Flat
+
 
     Then Set Print Postage Form Ship-From to <address>
     Then Set Print Postage Form Ship-To address to

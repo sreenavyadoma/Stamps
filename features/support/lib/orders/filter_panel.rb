@@ -1,6 +1,5 @@
 module Orders
 
-
 #todo-rob
   class FilterPanel < BrowserObject
     private

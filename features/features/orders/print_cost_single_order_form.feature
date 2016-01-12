@@ -2,11 +2,11 @@
 Feature: Printing total cost
 
   Background:
-    Given I am signed in to Orders as ff
+    Given I am signed in to Orders using ff
 
   @print_costs
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Expect Service Cost to be $0.00
     Then Expect Insurance Cost to be $0.00

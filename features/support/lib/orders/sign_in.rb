@@ -59,15 +59,15 @@ module Orders
     class SignInPage < OrdersObject
 
       def username
-        Textbox.new @browser.text_field Locators::SignIn::username
+        Textbox.new @browser.text_field Orders::Locators::SignIn::username
       end
 
       def password
-        Textbox.new @browser.text_field Locators::SignIn::password
+        Textbox.new @browser.text_field Orders::Locators::SignIn::password
       end
 
       def sign_in
-        Input.new @browser.input Locators::SignIn::sign_in
+        Input.new @browser.input Orders::Locators::SignIn::sign_in
       end
 
       def remember_my_username
@@ -123,7 +123,7 @@ module Orders
         plugin_issue = ErrorStampsPluginIssue.new @browser
         toolbar = Orders::Toolbar::Toolbar.new @browser
 
-        20.times do
+        5.times do
           begin
             break if grid.present?
             if username_textbox.present?
@@ -174,6 +174,8 @@ module Orders
             log.info e
           end
         end
+
+        raise "Sign-in failed!  Username #{username} is unable to sign-in on #{ENV[URL]}" unless navbar.present?
 
         log.info "Signed-in Username is #{navbar.username.text}"
 

@@ -1,11 +1,11 @@
-module Postage
+module Print
   module Locators
     class SignIn
       def self.username
         {:id => "UserNameTextBox"}
       end
 
-      def self.password_text_field
+      def self.password
         {:id => "PasswordTextBox"}
       end
 

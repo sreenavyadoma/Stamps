@@ -5,7 +5,7 @@ Feature: Print Sample - Priority Mail Express Padded Flat Rate Envelope
 
   @print_sample
   Scenario:  Priority Mail Express Padded Flat Rate Envelope
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"

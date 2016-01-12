@@ -6,7 +6,7 @@ end
 
 
 Then /^Enter Serial Number (.*)/ do |serial|
-  @postage_form = print_postage.postage_base.stamps
+  @postage_form = print_postage.postage_base.stampsQAPost15-EPre
   @postage_form.serial.set serial
 end
 
@@ -93,6 +93,13 @@ Then /^This works$/ do
   log.info print_postage.print_on.tooltip "Roll - 4 ⅛” x 6 ¼” Shipping Label"
   log.info print_postage.print_on.text_box.text
 
+end
+
+Then /^example$/ do
+  print_postage.netstamps.weight.ounces.increment 5
+  print_postage.netstamps.weight.ounces.decrement 5
+  print_postage.netstamps.weight.ounces.set 5
+  print_postage.netstamps.weight.ounces.text_box.tooltip
 end
 
 Then /^Create page objects for Print On Shipping Label$/ do

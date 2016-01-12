@@ -10,7 +10,7 @@ Feature: Add Canceled Filter and Allow User to Manually Change Order Status
     Then Filter Cancelled
     Then Filter Awaiting Shipment
 
-    And I Add a new order
+    When I Add a new order
 
     Then Move order to Shipped
     Then Filter Shipped

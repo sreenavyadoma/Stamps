@@ -154,8 +154,8 @@ Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print
   "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
 end
 
-Then /^Expect Print Window requires (\d+) label sheets$/ do |sheets|
-  log.info "Step: Expect Print Window requires #{sheets} label sheets"
+Then /^Expect Print Window Requires (\d+) label sheets$/ do |sheets|
+  log.info "Step: Expect Print Window Requires #{sheets} label sheets"
   actual = orders.toolbar.print.labels_required
   log.info "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheets==actual)?'Passed':'Failed'}"
   actual.should eql sheets

@@ -4,7 +4,7 @@ Feature: Postage Balance
   @update_postage_balance
   Scenario: Update Postage Balance After Each Print
     Given I am signed in to Orders
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     And Hide Order Details Form Ship-To fields

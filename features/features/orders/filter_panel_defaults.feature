@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want to be able to filter orders by status [B-01621]
 
   Background:
-    Given I am signed in to Orders as gc/auto39/326tsetaqcdS!
+    Given I am signed in to Orders
 
   @filters
   Scenario: User Views Filter Panel Default
@@ -50,7 +50,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     When Expect system displays expanded filters panel
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To Country to United States
     Then Set Order Details Ship-To address to
@@ -90,7 +90,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     Then Expect Grid Email to be test@stamps.com
 
 
-    And I Add a new order
+    When I Add a new order
     And Expect system selects Awaiting Shipment Filter and deselects the previous filter
 
 

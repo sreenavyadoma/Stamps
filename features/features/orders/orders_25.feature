@@ -8,7 +8,7 @@ Feature: 25 orders
   Scenario:  25 orders
 
     # International
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -22,7 +22,7 @@ Feature: 25 orders
     Then Close Customs Form
     Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
 
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -37,7 +37,7 @@ Feature: 25 orders
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -50,7 +50,7 @@ Feature: 25 orders
     And Set Order Details Tracking to "None"
     Then Uncheck Orders Grid row 1
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -64,7 +64,7 @@ Feature: 25 orders
     Then Uncheck Orders Grid row 1
 
     #Priority Mail
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -76,7 +76,7 @@ Feature: 25 orders
     And Set Order Details Service to "Priority Mail Large/Thick Envelope"
     And Set Order Details Tracking to "USPS Tracking"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -87,7 +87,7 @@ Feature: 25 orders
     And Set Order Details Service to "Priority Mail Package"
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -99,7 +99,7 @@ Feature: 25 orders
     And Set Order Details Insure For to $145.00
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -110,7 +110,7 @@ Feature: 25 orders
     And Set Order Details Service to "Priority Mail Flat Rate Envelope"
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -122,7 +122,7 @@ Feature: 25 orders
     And Set Order Details Insure For to $98.00
     And Set Order Details Tracking to "USPS Tracking"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -133,7 +133,7 @@ Feature: 25 orders
     And Set Order Details Service to "Priority Mail Legal Flat Rate Envelope"
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -145,7 +145,7 @@ Feature: 25 orders
     And Set Order Details Insure For to $30.00
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -157,7 +157,7 @@ Feature: 25 orders
     And Set Order Details Insure For to $45.00
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -169,7 +169,7 @@ Feature: 25 orders
     And Set Order Details Insure For to $239.00
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -181,7 +181,7 @@ Feature: 25 orders
     And Set Order Details Insure For to $105.00
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -193,7 +193,7 @@ Feature: 25 orders
     And Set Order Details Insure For to $205.00
     And Set Order Details Tracking to "USPS Tracking"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -205,7 +205,7 @@ Feature: 25 orders
     And Set Order Details Tracking to "Signature Required"
 
     # Priority Mail Express
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -216,7 +216,7 @@ Feature: 25 orders
     And Set Order Details Service to "Priority Mail Express Package"
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -227,7 +227,7 @@ Feature: 25 orders
     And Set Order Details Service to "Priority Mail Express Flat Rate Envelope"
     And Set Order Details Tracking to "USPS Tracking"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -238,7 +238,7 @@ Feature: 25 orders
     And Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -249,7 +249,7 @@ Feature: 25 orders
     And Set Order Details Service to "Priority Mail Express Legal Flat Rate Envelope"
     And Set Order Details Tracking to "USPS Tracking"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -261,7 +261,7 @@ Feature: 25 orders
     And Set Order Details Tracking to "Signature Required"
 
     # Media Mail
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -274,7 +274,7 @@ Feature: 25 orders
     And Set Order Details Tracking to "Signature Required"
 
     # Parcel Select
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -286,7 +286,7 @@ Feature: 25 orders
     And Set Order Details Insure For to $345.00
     And Set Order Details Tracking to "USPS Tracking"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4
@@ -298,7 +298,7 @@ Feature: 25 orders
     And Set Order Details Insure For to $456.00
     And Set Order Details Tracking to "Signature Required"
 
-    Then I Add a new order
+    When I Add a new order
     And Expect new Order ID created
     And Set Order Details Ship-From to default
     And Set Order Details Ship-To to Random Address Between Zone 1 through 4

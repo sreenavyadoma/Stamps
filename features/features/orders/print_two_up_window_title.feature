@@ -1,34 +1,29 @@
 
-Feature:  Printing Multiple Orders
+Feature:  Print Window Title - You have x-number of labels ready to print
 
   Background:
-    Given I am signed in to Orders as ff
+    Given I am signed in to Orders
 
-  @print_window @print
+  @print_two_up
   Scenario:  Printing
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
-    Then Set Order Details Ounces to 1
+    Then Set Order Details Weight to 1 lbs 1 oz
     Then Open Print Modal
     Then Expect Print Window title to be "You have 1 label(s) ready to print"
+    Then Close Print Modal
 
-    And Sign out
-
-
-  Scenario:  Printing
-    And I Add a new order
-    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    When I Add a new order
+    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
     Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
-    Then Set Order Details Ounces to 1
+    Then Set Order Details Weight to 1 lbs 1 oz
+    Then Set Order Details Dimensions to Length 1 Width 1 Height 1
     And Check Orders Grid row 1
     And Check Orders Grid row 2
-
     Then Open Print Modal
     Then Expect Print Window title to be "You have 2 label(s) ready to print"
-
-    Then Print
+    Then Close Print Modal
 
     And Sign out
-

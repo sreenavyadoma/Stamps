@@ -22,7 +22,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
   orders.sign_in_page.sign_in_with_credentials username, password
 end
 
-Given /^I am signed in to Orders as (.*)/ do |browser|
+Given /^I am signed in to Orders using (.*)/ do |browser|
   log.info "Step: I am signed in to Orders as #{browser}"
   step "I launch browser #{browser}"
   step "I visit Orders sign-in page"

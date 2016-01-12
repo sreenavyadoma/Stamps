@@ -28,6 +28,13 @@ Then /^Set Order Details Ounces to (.*)$/ do |value|
   orders.details.weight.oz.set value
 end
 
+Then /^Set Order Details Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
+  log.info "Set Order Details Dimensions to Length #{length} Width #{width} Height #{height}"
+  orders.details.dimensions.length.set length
+  orders.details.dimensions.width.set width
+  orders.details.dimensions.height.set height
+end
+
 Then /^Set Order Details Length to (\d*)$/ do |value|
   log.info "Step: Set Order Details Length to \"#{value}\""
   orders.details.dimensions.length.set value
@@ -96,17 +103,22 @@ end
 Then /^Set Order Details Ship-To to ambiguous address$/ do |table|
   ambiguous_address = OrdersHelper.instance.format_address table.hashes.first
   log.info "Step: Set Order Details Ship-To to ambiguous address \n#{ambiguous_address}"
-  @ambiguous_address_module = orders.details.ship_to.ambiguous.set ambiguous_address
+  orders.details.ship_to.ambiguous.set ambiguous_address
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
   log.info "Step: Select row #{row} from Exact Address Not Found module"
-  @ambiguous_address_module.row row
+  address_not_found_module = orders.details.ship_to.ambiguous.address_not_found
+  log.info "Test #{(address_not_found_module.present?)?"Passed":"Failed"}"
+  raise "Ambiguous Address Module is not present.  Unable to set Ambiguous Address Row to #{row}" unless address_not_found_module.present?
+  address_not_found_module.row row
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
   log.info "Step: Expect \"Exact Address Not Found\" module to appear"
-  expect(@ambiguous_address_module.present?).to be true
+  address_not_found_module = orders.details.ship_to.ambiguous.address_not_found
+  log.info "Test #{(address_not_found_module.present?)?"Passed":"Failed"}"
+  address_not_found_module.present?.should be true
 end
 
 Then /^Set Order Details Phone to (.*)$/ do |phone|

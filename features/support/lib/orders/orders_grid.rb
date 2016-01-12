@@ -901,7 +901,7 @@ module Orders
     class OrdersGrid < OrdersObject
 
       def present?
-        browser_helper.present? @browser.div Locators::OrdersGrid::present
+        browser_helper.present? @browser.div Orders::Locators::OrdersGrid::present
       end
 
       def checkbox

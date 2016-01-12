@@ -5,7 +5,7 @@ Feature: Print Media - Shipping Label - 8 ½" x 11" Paper
 
   @print_media
   Scenario:  Shipping Label - 8 ½" x 11" Paper
-    And I Add a new order
+    When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
     Then Set Order Details Service to "Priority Mail Package"

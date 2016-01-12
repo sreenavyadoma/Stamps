@@ -849,10 +849,56 @@ module Orders
     end
 
     class AmbiguousShipTo < ShipToFields
+
+      class AddressNotFound < OrdersObject
+
+        private
+        def exact_address_not_found_field
+          @browser.div :text => 'Exact Address Not Found'
+        end
+
+        public
+        def present?
+          browser_helper.present? @browser.div :text => 'Exact Address Not Found'
+        end
+
+        def row number
+          row = number.to_i<=0?0:number.to_i-1
+          checkbox_field = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
+
+          checkbox = Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
+          checkbox.check
+
+          accept_button = Button.new @browser.span :text => "Accept"
+          accept_button.click_while_present
+        end
+
+        def set partial_address_hash
+          single_order_form = OrderDetails.new @browser
+          single_order_form.validate_address_link
+          #single_order_form.expand
+          single_order_form.ship_to.set OrdersHelper.instance.format_address(partial_address_hash)
+          5.times {
+            begin
+              item_label.click
+              break if (browser_helper.present?  exact_address_not_found_field) || (browser_helper.present?  single_order_form.validate_address_link)
+            rescue
+              #ignore
+            end
+          }
+          #single_order_form.hide_ship_to
+          self
+        end
+      end
+
+      def address_not_found
+        AddressNotFound.new @browser
+      end
+
       def set address
         suggested_address_corrections = Link.new @browser.span(:text => "View Suggested Address Corrections")
 
-        exact_address_not_found = ExactAddressNotFound.new @browser
+        exact_address_not_found = address_not_found
         country_drop_down = self.country
         text_box = self.text_area
 
@@ -1201,47 +1247,6 @@ module Orders
         field = @browser.elements(:text => 'Delete').last
         present = field.present?
         field
-      end
-    end
-
-    class ExactAddressNotFound < OrdersObject
-
-      private
-      def exact_address_not_found_field
-        @browser.div :text => 'Exact Address Not Found'
-      end
-
-      public
-      def present?
-        browser_helper.present? @browser.div :text => 'Exact Address Not Found'
-      end
-
-      def row number
-        row = number.to_i<=0?0:number.to_i-1
-        checkbox_field = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
-
-        checkbox = Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
-        checkbox.check
-
-        accept_button = Button.new @browser.span :text => "Accept"
-        accept_button.click_while_present
-      end
-
-      def set partial_address_hash
-        single_order_form = OrderDetails.new @browser
-        single_order_form.validate_address_link
-        #single_order_form.expand
-        single_order_form.ship_to.set OrdersHelper.instance.format_address(partial_address_hash)
-        5.times {
-          begin
-            item_label.click
-            break if (browser_helper.present?  exact_address_not_found_field) || (browser_helper.present?  single_order_form.validate_address_link)
-          rescue
-            #ignore
-          end
-        }
-        #single_order_form.hide_ship_to
-        self
       end
     end
 

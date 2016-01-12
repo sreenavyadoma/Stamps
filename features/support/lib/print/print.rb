@@ -1,17 +1,17 @@
 # encoding: utf-8
-module Postage
+module Print
 
 
   ######Class for Print Postage page, Incl. toolbars and navigation. Instantiates postage form objects for Print On selections
 
-  class PrintPostage < Postage::PostageObject
+  class PrintPostage < Print::PrintObject
 
     def sign_in_page
-      @sign_in ||= Postage::SignInPage.new @browser
+      @sign_in ||= Print::SignInPage.new @browser
     end
 
     def navbar
-     Postage::NavBar.new @browser
+     Print::NavBar.new @browser
     end
 
     def toolbar
@@ -79,7 +79,7 @@ module Postage
     end
 
     def print
-      @print_window ||= Postage::PrintPostageModal.new @browser
+      @print_window ||= Print::PrintPostageModal.new @browser
       open_window @print_window
     end
 
@@ -152,11 +152,11 @@ module Postage
     end
 
     #def wait_until_present
-    #  browser_helper.wait_until_present @browser.span Locators::ToolBar::add
+    #  browser_helper.wait_until_present @browser.span Orders::Locators::ToolBar::add
     #end
 
     #def present?
-    #  browser_helper.present? @browser.span Locators::ToolBar::add
+    #  browser_helper.present? @browser.span Orders::Locators::ToolBar::add
     #end
 
 
@@ -259,14 +259,14 @@ module Postage
   ###### Classes common to every Print On type
 
 
-  class PrintOn < PostageObject
+  class PrintOn < PrintObject
 
     def drop_down
-      Button.new (@browser.divs Locators::FormBody.print_on_drop_down_divs)[0]
+      Button.new (@browser.divs Print::Locators::FormBody.print_on_drop_down_divs)[0]
     end
 
     def text_box
-      Textbox.new (@browser.text_field Locators::FormBody.print_on_text_field)
+      Textbox.new (@browser.text_field Print::Locators::FormBody.print_on_text_field)
     end
 
     def select selection
@@ -306,7 +306,7 @@ module Postage
     end
   end
 
-  class ManageShippingAddresses < PostageObject
+  class ManageShippingAddresses < PrintObject
     public
 
     def name row
@@ -692,7 +692,7 @@ module Postage
   end
 
 
-  class ShipFromAddress < PostageObject
+  class ShipFromAddress < PrintObject
 
     def drop_down
       Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[1]
@@ -767,7 +767,7 @@ module Postage
   end
 
 
-  class Country < PostageObject
+  class Country < PrintObject
     def drop_down
       Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
     end
@@ -793,34 +793,54 @@ module Postage
     end
   end
 
-  class Weight < PostageObject
+  class Weight < PrintObject
+    class Ounces < PrintObject
+      def text_box
+        Textbox.new (@browser.text_field :id => "sdc-mainpanel-ouncesnumberfield-inputEl"), "data-erroqtip"
+      end
+
+      def set value
+
+      end
+
+      def increment
+        Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[0]
+      end
+
+      def decrement
+        Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[0]
+      end
+    end
+
+    class Pounds <PrintObject
+      def text_box
+        Textbox.new @browser.text_field :id => "sdc-mainpanel-poundsnumberfield-inputEl"
+      end
+
+      def set value
+
+      end
+
+      def increment
+        Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[1]
+      end
+
+      def decrement
+        Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[1]
+      end
+    end
+
     def ounces
-      Textbox.new @browser.text_field :id => "sdc-mainpanel-ouncesnumberfield-inputEl"
-    end
-
-    def increment_ounces
-      Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[0]
-    end
-
-    def decrement_ounces
-      Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[0]
+      Ounces.new @browser
     end
 
     def pounds
-      Textbox.new @browser.text_field :id => "sdc-mainpanel-poundsnumberfield-inputEl"
-    end
-
-    def increment_pounds
-      Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[1]
-    end
-
-    def decrement_pounds
-      Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[1]
+      Pounds.new @browser
     end
 
   end
 
-  class ServiceDropDown < PostageObject
+  class ServiceDropDown < PrintObject
     def text_box
       Textbox.new @browser.text_field :name => "nsService"
     end
@@ -904,7 +924,7 @@ module Postage
   #  end
  # end
 
-  class ShipToBase < PostageObject
+  class ShipToBase < PrintObject
     def email
       EmailTracking.new @browser
     end
@@ -980,7 +1000,7 @@ module Postage
   end
 
 
-  class EmailTracking < PostageObject
+  class EmailTracking < PrintObject
     def checkbox
       checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
       verify_field = checkbox_field.parent.parent.parent.parent
@@ -1004,7 +1024,7 @@ module Postage
 
 
 
-  class InsureFor < PostageObject
+  class InsureFor < PrintObject
     def textbox
       Textbox.new @browser.text_field :name => "insureAmt"
     end
@@ -1019,18 +1039,18 @@ module Postage
 
   end
 
-  class ExtraServices < PostageObject
+  class ExtraServices < PrintObject
     def button
       Button.new (@browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl")
     end
 
   end
 
-  class ShipDate < PostageObject
+  class ShipDate < PrintObject
     #Textbox.new @browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl"
   end
 
-  class StampAmount < PostageObject
+  class StampAmount < PrintObject
     def textbox
       Textbox.new @browser.text_field :name => "stampAmount"
     end
@@ -1044,7 +1064,7 @@ module Postage
     end
   end
 
-  class CMExtraServices < PostageObject
+  class CMExtraServices < PrintObject
     def cm_checkbox
       @browser.input :id => "sdc-mainpanel-cmcheckbox-inputEl"
     end
