@@ -127,7 +127,4 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Then Sign out
 
 
-
-
-
 #todo-rob

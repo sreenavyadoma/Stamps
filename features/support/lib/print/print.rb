@@ -262,11 +262,11 @@ module Print
   class PrintOn < PrintObject
 
     def drop_down
-      Button.new (@browser.divs Orders::Locators::FormBody.print_on_drop_down_divs)[0]
+      Button.new (@browser.divs Print::Locators::FormBody.print_on_drop_down_divs)[0]
     end
 
     def text_box
-      Textbox.new (@browser.text_field Orders::Locators::FormBody.print_on_text_field)
+      Textbox.new (@browser.text_field Print::Locators::FormBody.print_on_text_field)
     end
 
     def select selection

@@ -5,7 +5,7 @@ module Print
         {:id => "UserNameTextBox"}
       end
 
-      def self.password_text_field
+      def self.password
         {:id => "PasswordTextBox"}
       end
 
