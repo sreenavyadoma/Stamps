@@ -31,7 +31,7 @@ Feature: NetStamps BVT
     Then Set Print Postage Form Ship-To country to <country>
     Then Set Print Postage Form Ounces to <number>
     Then Set Print Postage Form Pounds to <number>
-    Then Set Print Postage Form Service to <service>
+    #Then Set Print Postage Form Service to <service>
     Then Print Postage
     And Sign out
 

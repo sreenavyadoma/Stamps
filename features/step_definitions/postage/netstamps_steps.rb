@@ -6,7 +6,7 @@ end
 
 
 Then /^Enter Serial Number (.*)/ do |serial|
-  @postage_form = print_postage.postage_base.stamps
+  @postage_form = print_postage.postage_base.stampsQAPost15-EPre
   @postage_form.serial.set serial
 end
 

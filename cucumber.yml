@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile eva_dev
+default: --profile cuke_reports --profile eli_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
 rob_dev: --tags @print_layouts_cn22_cp72 --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!

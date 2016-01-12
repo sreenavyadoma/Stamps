@@ -22,7 +22,8 @@ require_relative 'lib/core/logger'
 # OrdersHelper module
 require_relative 'lib/orders/orders_helper'
 require_relative 'lib/orders/fields'
-require_relative 'lib/postage/postage_helper'
+require_relative 'lib/print/print_helper'
+require_relative 'lib/print/helpers'
 
 
 module Selenium
@@ -83,4 +84,4 @@ module Selenium
   end # WebDriver
 end # Selenium
 
-World(Stamps,Orders,Postage)
+World(Stamps,Orders,Print)

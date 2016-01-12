@@ -1,4 +1,4 @@
-module Postage
+module Print
   module Locators
     class SignIn
       def self.username

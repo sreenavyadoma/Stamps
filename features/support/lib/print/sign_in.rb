@@ -1,5 +1,5 @@
-module Postage
-  class SignInPage < PostageObject
+module Print
+  class SignInPage < PrintObject
 
     def visit *args
       if args.length == 1

@@ -2,7 +2,7 @@
 include Stamps
 include Stamps::Browser
 include Orders
-include Postage
+include Print
 include Log4r
 include RSpec
 include RSpec::Matchers

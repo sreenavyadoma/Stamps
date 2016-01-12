@@ -1,7 +1,7 @@
 # encoding: utf-8
-module Postage
+module Print
 
-  class PrintPostageModalObject < PostageObject
+  class PrintPostageModalObject < PrintObject
     def window_x_button
       @browser.img :css => "img[class*='x-tool-img x-tool-close']"
     end
@@ -88,11 +88,11 @@ module Postage
     end
 
     def paper_tray
-      Postage::PaperTray.new @browser
+      Print::PaperTray.new @browser
     end
 
     def printer
-      Postage::Printer.new @browser
+      Print::Printer.new @browser
     end
 
     def print
