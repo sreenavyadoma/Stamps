@@ -8,8 +8,8 @@ Feature: International Shipping BVT
   @wp_bvt
   Scenario: International Shipping
 
-    Then Select Print Postage print media <media>
-    Then Set Print Postage Form Ship-From to <address>
+    Then Select Print Postage Print On <media>
+    Then Set Print Postage Ship-From to <address>
     Then Set Print Postage Form Ship-To to international address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |

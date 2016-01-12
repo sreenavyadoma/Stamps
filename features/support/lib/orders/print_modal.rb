@@ -366,7 +366,7 @@ module Orders
       Textbox.new @browser.text_field :name => "sdc-printpostagewindow-shipdate-inputEl"
     end
 
-    def print
+    def postage
       button = print_button
       5.times {
         begin
@@ -386,7 +386,7 @@ module Orders
     end
 
     def print_expecting_rating_error
-      print
+      postage
       RatingError.new(@browser).wait_until_present
     end
 

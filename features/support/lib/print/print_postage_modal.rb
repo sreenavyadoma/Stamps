@@ -95,7 +95,7 @@ module Print
       Print::Printer.new @browser
     end
 
-    def print
+    def postage
       button = print_button
       5.times {
         begin
@@ -115,7 +115,7 @@ module Print
     end
 
     def print_expecting_rating_error
-      print
+      postage
       RatingError.new(@browser).wait_until_present
     end
 

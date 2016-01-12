@@ -7,8 +7,8 @@ Feature: Envelopes BVT
 
   @wp_bvt
   Scenario: Envelope
-    Then Select Print Postage print media <media>
-    Then Set Print Postage Form Ship-From to <address>
+    Then Select Print Postage Print On <media>
+    Then Set Print Postage Ship-From to <address>
     Then Set Print Postage Form Ship-To country to <country>
     Then Set Print Postage Form Ship-To address to <address>
     Then Set Print Postage Form Ounces to <number>

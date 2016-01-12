@@ -18,10 +18,13 @@ module Print
       #we'll get to this when it comes time to buy stamps and prefs
     end
 
-    def postage_base
-      PostageBase.new @browser
+    def print_on
+      PrintOn.new @browser
     end
 
+    def stamps
+      NetStamps.new @browser
+    end
   end
 
 
@@ -46,10 +49,6 @@ module Print
       Weight.new @browser
     end
 
-    def print_on
-      PrintOn.new @browser
-    end
-
     def total
       @browser.label :css => "label[id*=sdc-printpanel-totalcostlabel]"
     end
@@ -66,10 +65,6 @@ module Print
       ShippingLabel.new @browser
     end
 
-    def stamps
-      NetStamps.new @browser
-    end
-
     def envelope
       Envelope.new @browser
     end
@@ -78,7 +73,7 @@ module Print
       CertifiedMail.new @browser
     end
 
-    def print
+    def postage
       @print_window ||= Print::PrintPostageModal.new @browser
       open_window @print_window
     end
@@ -287,8 +282,6 @@ module Print
 
     def tooltip selection
       drop_down = Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[0]
-      #todo-elie you don't need this.
-      text_box = Textbox.new (@browser.text_field :name => "media")
       selection_field = Label.new @browser.div :text => selection
 
       10.times {
