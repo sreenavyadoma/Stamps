@@ -3,7 +3,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
   Background:
     Given I am signed in to Orders
 
-  @two_up_expanded @two_up_expanded_test
+  @print_two_up_expanded @print_two_up_expanded_test
   Scenario: User Prints 1 FPO CN22 Label on 8.5x11 - left side
     When I Add a new order
     Then Set Order Details Ship-From to default
@@ -34,7 +34,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 1 Intl CP72, 1 Intl CN22 label on SDC-1200 - left side
     When I Add a new order
     Then Set Order Details Ship-From to default
@@ -70,7 +70,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 2 Intl CN22 labels on 8.5x11 - right side
     When I Add a new order
     Then Set Order Details Ship-From to default
@@ -107,7 +107,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 1 Intl CP72, 2 Intl CN22 labels on 8.5x11 - left side
     When I Add a new order
     Then Set Order Details Ship-From to default
@@ -156,7 +156,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
 
     When I Add a new order
@@ -224,7 +224,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 3 Domestic labels on SDC-1200 - left side
     When I Add a new order
     Then Set Order Details Ship-From to default
@@ -255,7 +255,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
 
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 1 FPO CN22 label on 8.5x11 - right side
     When I Add a new order
     Then Set Order Details Ship-From to default
@@ -279,7 +279,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 1 Domestic label on 8.5x11 - left side
 
     When I Add a new order
@@ -296,7 +296,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 1 Domestic label on SDC-1200 - right side
 
     When I Add a new order
@@ -314,7 +314,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 2 Domestic labels on 8.5x11 - left side
     When I Add a new order
     Then Set Order Details Ship-From to default
@@ -337,7 +337,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 2 Domestic labels on 8.5x11 - right side
     When I Add a new order
     Then Set Order Details Ship-From to default
@@ -360,7 +360,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 1 Domestic label on 5.5x8.5 - left side
 
     # 1 Domestic label 5 ½" x 8 ½"
@@ -378,7 +378,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 1 Domestic label on 5.5x8.5 - right side
 
     # 1 Domestic label 5 ½" x 8 ½" right side
@@ -396,7 +396,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 2 Domestic labels on 5.5x8.5 - left side
     # 2 Domestic labels 5 ½" x 8 ½"
     When I Add a new order
@@ -420,7 +420,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 2 Domestic labels on 5.5x8.5 - right side
 
     # 2 Domestic labels 5 ½" x 8 ½" right side
@@ -445,7 +445,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 3 Domestic labels on 5.5x8.5 - left side
 
     # 3 Domestic labels 5 ½" x 8 ½"
@@ -479,7 +479,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 1 Intl CP72 label on 5.5x8.5 - left side
     # 1 CP72 label 5 ½" x 8 ½"
     When I Add a new order
@@ -502,7 +502,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 1 Intl CP72 label on 5.5x8.5 - right side
     # 1 CP72 label 5 ½" x 8 ½" right side
     When I Add a new order
@@ -525,7 +525,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 1 Intl CN22, 1 Intl CP72 label on SDC-1200 - left side
 
     When I Add a new order
@@ -561,7 +561,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Print
     Then Sign out
 
-  @two_up_expanded
+  @print_two_up_expanded
   Scenario: User Prints 2 Intl CN22 labels on 5.5x8.5 - right side
     When I Add a new order
     Then Set Order Details Ship-From to default

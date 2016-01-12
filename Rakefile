@@ -97,8 +97,8 @@ Cucumber::Rake::Task.new(:print_date) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:two_up_expanded) do |t|
-  t.profile = 'two_up_expanded'
+Cucumber::Rake::Task.new(:print_two_up_expanded) do |t|
+  t.profile = 'print_two_up_expanded'
   t.cucumber_opts = "-p cuke_reports"
 end
 
