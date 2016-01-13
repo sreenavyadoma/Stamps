@@ -146,7 +146,7 @@ module Print
       end
 
       def drop_down
-        Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[6]
+        Button.new @browser.input :css => "input[id*=netstampsservicedroplist]"
       end
 
       def select selection
