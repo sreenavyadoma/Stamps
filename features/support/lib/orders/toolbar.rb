@@ -76,7 +76,7 @@ module Orders
     #
     class Toolbar < OrdersObject
 
-      def print
+      def postage
         @print_window ||= Orders::PrintModal.new @browser
         open_window @print_window
       end

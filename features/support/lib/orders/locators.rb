@@ -36,7 +36,7 @@ module Orders
           {:text => 'Add'}
         end
 
-        def print
+        def postage
 
         end
 

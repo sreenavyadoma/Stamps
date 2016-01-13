@@ -1,18 +1,19 @@
-
-Then /^Select Print Postage print media (.*)/ do |selection|
-  print_postage.postage_base.print_on.select selection
+#todo-rob fix postage print-on
+Then /^Select Print Postage Print On (.*)/ do |media|
+  log.info "Select Print Postage Print On #{media}"
+  postage.print_on.select media
 end
 
 Then /^Expect Print Media Tooltip to be (.*)$/ do |selection|
-  print_postage.print_on.tooltip selection
+  postage.print_on.tooltip selection
 end
 
 Then /^Expect Print Media (.*) to be disabled$/ do |selection|
-  print_postage.print_on.disabled? selection
+  postage.print_on.disabled? selection
 end
 
 Then /^Expect Print Media (.*) to be enabled$/ do |selection|
-  print_postage.print_on.enabled? selection
+  postage.print_on.enabled? selection
 end
 
 Then /^Set Print Postage Form Service to \"(.*)\"/ do |service|
@@ -30,9 +31,10 @@ Then /^Set Print Postage Form Pounds to (.*)/ do |pounds|
   @postage_form.weight.pounds.set pounds
 end
 
-Then /^Set Print Postage Form Ship-From to (.*)/ do |value|
+#todo-rob Fix ship_from
+Then /^Set Print Postage Ship-From to (.*)/ do |value|
   log.info "Step: Set Print Postage Ship-From to: \n #{value}"
-  @postage_form.ship_from.select value
+  #@postage_form.ship_from.select value
 end
 
 Then /^Set Print Postage Form Ship-To country to (.*)/ do |country|
