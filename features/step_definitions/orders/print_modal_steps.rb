@@ -1,8 +1,3 @@
-
-
-#Set Print Modal Printer to "factory"
-
-
 Then /^Set Print Modal Printer to \"(.*)\"$/ do |printer|
   log.info "Set Print Modal Printer to \"#{printer}\""
   orders.toolbar.print.printer.select printer

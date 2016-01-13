@@ -1,8 +1,9 @@
 # encoding: utf-8
 
-Then /^Set NetStamps Serial Number to (.*)/ do |serial|
-  @stamps = postage.stamps if @stamps.nil?
-  @stamps.serial.set serial
+Then /^Set Stamps Serial Number to (.*)/ do |serial|
+  log.info "Set Stamps Serial Number to #{serial}"
+  @postage_form = postage.stamps if @postage_form.nil?
+  @postage_form.serial.set serial
 end
 
 

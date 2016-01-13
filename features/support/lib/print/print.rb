@@ -1,13 +1,397 @@
 # encoding: utf-8
 module Print
 
+  module Postage
+    class PrintOn < PrintObject
+
+      def drop_down
+        Button.new (@browser.divs Print::Locators::FormBody.print_on_drop_down_divs)[0]
+      end
+
+      def text_box
+        Textbox.new (@browser.text_field Print::Locators::FormBody.print_on_text_field)
+      end
+
+      def select selection
+        box = text_box
+        button = drop_down
+        selection_label = Label.new @browser.div :text => selection
+        5.times {
+          begin
+            button.safe_click unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
+            break if box.text.include? selection
+          rescue
+            #ignore
+          end
+        }
+      end
+
+      def tooltip selection
+        drop_down = Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[0]
+        selection_field = Label.new @browser.div :text => selection
+
+        10.times {
+          drop_down.safe_click unless selection_field.present?
+          return selection_field.attribute_value "data-qtip" if selection_field.present?
+        }
+      end
+
+      def enabled? selection
+
+      end
+
+      def disabled? selection
+
+      end
+    end
+
+    class Weight < PrintObject
+      class Pounds < PrintObject
+        def text_box
+          Textbox.new (@browser.text_field :id => 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
+        end
+
+        def set value
+          text_field = text_box
+          value = value.to_i
+          max = value + text_field.text.to_i
+          max.times do
+            current_value = text_field.text.to_i
+            break if value == current_value
+            if value > current_value
+              increment 1
+            else
+              decrement 1
+            end
+            break if value == current_value
+          end
+          sleep 1
+          log.info "Pounds set to #{text_field.text}"
+        end
+
+        def increment value
+          button = Button.new @browser.div :css => "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+
+        def decrement value
+          button = Button.new @browser.div :css => "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+      end
+
+      class Ounces < PrintObject
+        def text_box
+          Textbox.new (@browser.text_field :id => 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
+        end
+
+        def set value
+          text_field = text_box
+          value = value.to_i
+          max = value + text_field.text.to_i
+          max.times do
+            current_value = text_field.text.to_i
+            break if value == current_value
+            if value > current_value
+              increment 1
+            else
+              decrement 1
+            end
+            break if value == current_value
+          end
+          sleep 1
+          log.info "Pounds set to #{text_field.text}"
+        end
+
+        def increment value
+          button = Button.new @browser.div :css => "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+
+        def decrement value
+          button = Button.new @browser.div :css => "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
+          value.to_i.times do
+            button.safe_click
+          end
+        end
+      end
+
+      def lbs
+        Pounds.new @browser
+      end
+
+      def oz
+        Ounces.new @browser
+      end
+    end
+
+    class ExtraServices < PrintObject
+      def button
+        Button.new (@browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl")
+      end
+
+    end
+
+    class Service < PrintObject
+      def text_box
+        Textbox.new @browser.text_field :name => "nsService"
+      end
+
+      def drop_down
+        Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[6]
+      end
+
+      def select selection
+        log.info "Select Service #{selection}"
+        box = text_box
+        button = drop_down
+        selection_label = Label.new @browser.div :css => "div[data-qtip*='#{selection}']"
+        10.times {
+          begin
+            button.safe_click #unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
+            selected_service = box.text
+            if selected_service == "First Class (1 - 3 Days)"
+              selected_service = "First Class Mail (1 - 3 Days)"
+            end
+            log.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
+            break if selected_service.include? selection
+          rescue
+            #ignore
+          end
+        }
+        log.info "#{selection} service selected."
+        selection_label
+      end
+
+      def cost selection
+        button = drop_down
+        cost_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(3)"
+        10.times {
+          begin
+            button.safe_click unless cost_label.present?
+            if cost_label.present?
+              service_cost = test_helper.remove_dollar_sign cost_label.text
+              log.info "Service Cost for \"#{selection}\" is #{service_cost}"
+              return service_cost
+            end
+          rescue
+            #ignore
+          end
+        }
+        click_form
+      end
+
+      def tooltip selection
+        button = drop_down
+        selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
+        5.times {
+          begin
+            button.safe_click unless selection_label.present?
+            if selection_label.present?
+              tooltip = selection_label.attribute_value "data-qtip"
+              log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
+              return tooltip
+            end
+          rescue
+            #ignore
+          end
+        }
+        click_form
+      end
+
+    end
+
+    class ShipFromAddress < PrintObject
+
+      def drop_down
+        Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[1]
+      end
+
+      def manage_ship_from_address_field
+        @browser.div :text => 'Manage Shipping Addresses...'
+      end
+
+      def ship_from_selection selection
+        @browser.div :text => selection
+      end
+
+      def manage_shipping_address
+        @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+      end
+
+      def manage_shipping_addresses
+        self.ship_from "Manage Shipping Addresses..."
+      end
+
+      def text_box
+        Textbox.new @browser.text_field :name => "shipFrom"
+      end
+
+      def select selection
+        @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
+
+        return @manage_shipping_adddress if @manage_shipping_adddress.present?
+
+        ship_from_default_selection_field = (@browser.divs :css => "div[class*=x-boundlist-item]")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
+        ship_from_dropdown = self.drop_down
+        ship_from_textbox = self.text_box
+
+        if selection.downcase == "default"
+          ship_from_selection_field = ship_from_default_selection_field
+        elsif selection.downcase.include? "manage shipping"
+          ship_from_selection_field = @browser.div :text => "Manage Shipping Addresses..."
+        else
+          ship_from_selection_field = @browser.div :text => "#{selection}"
+        end
+
+        selection_label = Label.new ship_from_selection_field
+
+        if selection.downcase.include? "manage shipping"
+          10.times{
+            begin
+              ship_from_dropdown.safe_click unless selection_label.present?
+              selection_label.scroll_into_view
+              selection_label.safe_click
+              return @manage_shipping_adddress if @manage_shipping_adddress.present?
+            rescue
+              #ignore
+            end
+            click_form
+          }
+        else
+          ship_from_dropdown.safe_click unless selection_label.present?
+          if selection_label.present?
+            selection_label.scroll_into_view
+            selection_text = selection_label.text
+          end
+          10.times{
+            ship_from_dropdown.safe_click unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
+            break if ship_from_textbox.text.include? selection_label.text
+          }
+        end
+      end
+
+    end
+
+    class StampAmount < PrintObject
+      def text_box
+        Textbox.new (@browser.text_field :name => "stampAmount"), "data-errorqtip"
+      end
+
+      def set value
+        text_field = text_box
+        text_field.set value
+        log.info "Pounds set to #{text_field.text}"
+      end
+
+      def increment value
+        button = Button.new @browser.div :css => "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=up]"
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = Button.new @browser.div :css => "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=down]"
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
+
+    class Country < PrintObject
+      def drop_down
+        Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
+      end
+
+      def text_box
+        Textbox.new (@browser.text_field :name => "mailToCountry")
+      end
+
+      def select selection
+        box = text_box
+        button = drop_down
+        selection_label = Label.new @browser.div :text => selection
+        5.times {
+          begin
+            button.safe_click unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
+            break if box.text.include? selection
+          rescue
+            #ignore
+          end
+        }
+      end
+    end
+  end
+
+  class Stamps < PrintObject
+    class CalculatePostageAmount < PrintObject
+      def weight
+        Print::Postage::Weight.new @browser
+      end
+
+      def extra_services
+        Print::Postage::Weight.new @browser
+      end
+    end
+
+    class SpecifyPostageAmount < PrintObject
+      def stamp_amount
+        Print::Postage::StampAmount.new @browser
+      end
+    end
+
+    def country
+      Print::Postage::Country.new @browser
+    end
+
+    def serial
+      Textbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
+    end
+
+
+    def service
+      Print::Postage::Service.new @browser
+    end
+
+    def ship_from
+      Print::Postage::ShipFromAddress.new @browser
+    end
+
+    def calculate_postage_amount
+      checkbox = Checkbox.new (@browser.input :id => "sdc-mainpanel-calculatepostageradio-inputEl"), (@browser.table :id => "sdc-mainpanel-calculatepostageradio"), "class", "checked"
+      checkbox.check
+      CalculatePostageAmount.new @browser
+    end
+
+    def specify_postage_amount
+      checkbox = Checkbox.new (@browser.input :id => "sdc-mainpanel-specifypostageradio-inputEl"), (@browser.table :id => "sdc-mainpanel-specifypostageradio"), "class", "checked"
+      checkbox.check
+      SpecifyPostageAmount.new @browser
+    end
+
+  end
 
   ######Class for Print Postage page, Incl. toolbars and navigation. Instantiates postage form objects for Print On selections
 
   class PrintPostage < Print::PrintObject
 
     def sign_in_page
-      @sign_in ||= Print::SignInPage.new @browser
+      Print::SignInPage.new @browser
     end
 
     def navbar
@@ -19,35 +403,19 @@ module Print
     end
 
     def print_on
-      PrintOn.new @browser
+      Print::Postage::PrintOn.new @browser
     end
 
     def stamps
-      NetStamps.new @browser
+      Stamps.new @browser
     end
   end
-
 
   ######Parent Class for Postage Form Types
 
   class PostageBase < PrintPostage
     # all common fields goes here including service drop down
 
-    def country
-      Country.new @browser
-    end
-
-    def service
-      ServiceDropDown.new @browser
-    end
-
-    def ship_from
-      ShipFromAddress.new @browser
-    end
-
-    def weight
-      Weight.new @browser
-    end
 
     def total
       @browser.label :css => "label[id*=sdc-printpanel-totalcostlabel]"
@@ -157,11 +525,6 @@ module Print
 
   end
 
-
-
-  ######Classes for each Postage Form type, containing the form elements specific to that Print On selection
-
-
   class ShippingLabel < PostageBase
 
     def email_tracking
@@ -177,35 +540,11 @@ module Print
     end
 
     def extra_services
-      ExtraServices.new @browser
+      Print::Postage::ExtraServices.new @browser
     end
 
     def ship_date
       ShipDate.new @browser
-    end
-
-  end
-
-  class NetStamps < PostageBase
-
-    def serial
-      Textbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
-    end
-
-    def extra_services
-      ExtraServices.new @browser
-    end
-
-    def calculate_postage_button
-      @browser.input :id => "sdc-mainpanel-calculatepostageradio-inputEl"
-    end
-
-    def specify_postage_button
-      @browser.input :id => "sdc-mainpanel-specifypostageradio-inputEl"
-    end
-
-    def stamp_amount
-      StampAmount.new @browser
     end
 
   end
@@ -221,7 +560,7 @@ module Print
     end
 
     def extra_services
-      ExtraServices.new @browser
+      Print::Postage::ExtraServices.new @browser
     end
 
     def ship_date
@@ -245,57 +584,6 @@ module Print
 
     def ship_date
       ShipDate.new @browser
-    end
-  end
-
-  ######  CLASSES FOR ELEMENTS CONTAINED IN PRINT POSTAGE FORM   ######
-
-
-  ###### Classes common to every Print On type
-
-
-  class PrintOn < PrintObject
-
-    def drop_down
-      Button.new (@browser.divs Print::Locators::FormBody.print_on_drop_down_divs)[0]
-    end
-
-    def text_box
-      Textbox.new (@browser.text_field Print::Locators::FormBody.print_on_text_field)
-    end
-
-    def select selection
-      box = text_box
-      button = drop_down
-      selection_label = Label.new @browser.div :text => selection
-      5.times {
-        begin
-          button.safe_click unless selection_label.present?
-          selection_label.scroll_into_view
-          selection_label.safe_click
-          break if box.text.include? selection
-        rescue
-          #ignore
-        end
-      }
-    end
-
-    def tooltip selection
-      drop_down = Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[0]
-      selection_field = Label.new @browser.div :text => selection
-
-      10.times {
-        drop_down.safe_click unless selection_field.present?
-        return selection_field.attribute_value "data-qtip" if selection_field.present?
-      }
-    end
-
-    def enabled? selection
-
-    end
-
-    def disabled? selection
-
     end
   end
 
@@ -684,239 +972,6 @@ module Print
 
   end
 
-
-  class ShipFromAddress < PrintObject
-
-    def drop_down
-      Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[1]
-    end
-
-    def manage_ship_from_address_field
-      @browser.div :text => 'Manage Shipping Addresses...'
-    end
-
-    def ship_from_selection selection
-      @browser.div :text => selection
-    end
-
-    def manage_shipping_address
-      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
-    end
-
-    def manage_shipping_addresses
-      self.ship_from "Manage Shipping Addresses..."
-    end
-
-    def text_box
-      Textbox.new @browser.text_field :name => "shipFrom"
-    end
-
-    def select selection
-      @manage_shipping_adddress = ManageShippingAddresses.new(@browser)
-
-      return @manage_shipping_adddress if @manage_shipping_adddress.present?
-
-      ship_from_default_selection_field = (@browser.divs :css => "div[class*=x-boundlist-item]")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
-      ship_from_dropdown = self.drop_down
-      ship_from_textbox = self.text_box
-
-      if selection.downcase == "default"
-        ship_from_selection_field = ship_from_default_selection_field
-      elsif selection.downcase.include? "manage shipping"
-        ship_from_selection_field = @browser.div :text => "Manage Shipping Addresses..."
-      else
-        ship_from_selection_field = @browser.div :text => "#{selection}"
-      end
-
-      selection_label = Label.new ship_from_selection_field
-
-      if selection.downcase.include? "manage shipping"
-        10.times{
-          begin
-            ship_from_dropdown.safe_click unless selection_label.present?
-            selection_label.scroll_into_view
-            selection_label.safe_click
-            return @manage_shipping_adddress if @manage_shipping_adddress.present?
-          rescue
-            #ignore
-          end
-          click_form
-        }
-      else
-        ship_from_dropdown.safe_click unless selection_label.present?
-        if selection_label.present?
-          selection_label.scroll_into_view
-          selection_text = selection_label.text
-        end
-        10.times{
-          ship_from_dropdown.safe_click unless selection_label.present?
-          selection_label.scroll_into_view
-          selection_label.safe_click
-          break if ship_from_textbox.text.include? selection_label.text
-        }
-      end
-    end
-
-  end
-
-
-  class Country < PrintObject
-    def drop_down
-      Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
-    end
-
-    def text_box
-      Textbox.new (@browser.text_field :name => "mailToCountry")
-    end
-
-    def select selection
-      box = text_box
-      button = drop_down
-      selection_label = Label.new @browser.div :text => selection
-      5.times {
-        begin
-          button.safe_click unless selection_label.present?
-          selection_label.scroll_into_view
-          selection_label.safe_click
-          break if box.text.include? selection
-        rescue
-          #ignore
-        end
-      }
-    end
-  end
-
-  class Weight < PrintObject
-    class Ounces < PrintObject
-      def text_box
-        Textbox.new (@browser.text_field :id => "sdc-mainpanel-ouncesnumberfield-inputEl"), "data-erroqtip"
-      end
-
-      def set value
-
-      end
-
-      def increment
-        Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[0]
-      end
-
-      def decrement
-        Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[0]
-      end
-    end
-
-    class Pounds <PrintObject
-      def text_box
-        Textbox.new @browser.text_field :id => "sdc-mainpanel-poundsnumberfield-inputEl"
-      end
-
-      def set value
-
-      end
-
-      def increment
-        Button.new (@browser.divs :css => "div[class*=x-form-spinner_up]")[1]
-      end
-
-      def decrement
-        Button.new (@browser.divs :css => "div[class*=x-form-spinner_down]")[1]
-      end
-    end
-
-    def ounces
-      Ounces.new @browser
-    end
-
-    def pounds
-      Pounds.new @browser
-    end
-
-  end
-
-  class ServiceDropDown < PrintObject
-    def text_box
-      Textbox.new @browser.text_field :name => "nsService"
-    end
-
-    def drop_down
-      Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[6]
-    end
-
-    def select selection
-      log.info "Select Service #{selection}"
-      box = text_box
-      button = drop_down
-      selection_label = Label.new @browser.div :css => "div[data-qtip*='#{selection}']"
-      10.times {
-        begin
-          button.safe_click #unless selection_label.present?
-          selection_label.scroll_into_view
-          selection_label.safe_click
-          selected_service = box.text
-          if selected_service == "First Class (1 - 3 Days)"
-            selected_service = "First Class Mail (1 - 3 Days)"
-          end
-          log.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
-          break if selected_service.include? selection
-        rescue
-          #ignore
-        end
-      }
-      log.info "#{selection} service selected."
-      selection_label
-    end
-
-    def cost selection
-      button = drop_down
-      cost_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(3)"
-      10.times {
-        begin
-          button.safe_click unless cost_label.present?
-          if cost_label.present?
-            service_cost = test_helper.remove_dollar_sign cost_label.text
-            log.info "Service Cost for \"#{selection}\" is #{service_cost}"
-            return service_cost
-          end
-        rescue
-          #ignore
-        end
-      }
-      click_form
-    end
-
-    def tooltip selection
-      button = drop_down
-      selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
-      5.times {
-        begin
-          button.safe_click unless selection_label.present?
-          if selection_label.present?
-            tooltip = selection_label.attribute_value "data-qtip"
-            log.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
-            return tooltip
-          end
-        rescue
-          #ignore
-        end
-      }
-      click_form
-    end
-
-  end
-
-
-  ###### Classes unique to specific Print On types
-
- ## class PostageShipTo < ShipToBase
- #   def domestic
- #     PostageShipToDomestic.new @browser
-  #  end
-
- #   def international
- #     PostageShipToInternational.new @browser
-  #  end
- # end
-
   class ShipToBase < PrintObject
     def email
       EmailTracking.new @browser
@@ -1015,8 +1070,6 @@ module Print
     end
   end
 
-
-
   class InsureFor < PrintObject
     def textbox
       Textbox.new @browser.text_field :name => "insureAmt"
@@ -1032,29 +1085,8 @@ module Print
 
   end
 
-  class ExtraServices < PrintObject
-    def button
-      Button.new (@browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl")
-    end
-
-  end
-
   class ShipDate < PrintObject
     #Textbox.new @browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl"
-  end
-
-  class StampAmount < PrintObject
-    def textbox
-      Textbox.new @browser.text_field :name => "stampAmount"
-    end
-
-    def more_button
-      Button.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[3]
-    end
-
-    def less_button
-      Button.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[3]
-    end
   end
 
   class CMExtraServices < PrintObject

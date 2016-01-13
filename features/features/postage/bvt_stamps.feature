@@ -1,4 +1,4 @@
-Feature: NetStamps BVT
+Feature: Stamps BVT
 
 
 
@@ -7,9 +7,9 @@ Feature: NetStamps BVT
 
   @wp_bvt
   @netstamps
-  Scenario: NetStamps Specify Postage
+  Scenario: Stamps Specify Postage
     Then Select Print Postage Print On Stamps
-    Then Set NetStamps Serial Number to B12345
+    Then Set Stamps Serial Number to B12345
     Then Select Stamps Specify Postage Amount
     Then Set Print Postage Ship-From to default
     Then Set Print Postage Form Ship-To country to United States
@@ -19,10 +19,10 @@ Feature: NetStamps BVT
     And Sign out
 
   @wp_bvt
-  Scenario: NetStamps Calculate Postage
+  Scenario: Stamps Calculate Postage
     Then Select Print Postage Print On Envelope - #10, 4 ⅛” x 9 ½”
     Then Select Print Postage Print On Stamps
-    Then Set NetStamps Serial Number to <number>
+    Then Set Stamps Serial Number to <number>
     Then Select Stamps Calculate Postage Amount
     Then Set Print Postage Ship-From to <address>
     Then Set Print Postage Form Ship-To country to <country>

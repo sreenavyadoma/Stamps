@@ -1,6 +1,7 @@
 
-Then /^Select Print Postage Print On(.*)/ do |media|
-  @netstamps = postage.print_on media
+Then /^Select Print Postage Print On (.*)/ do |media|
+  log.info "Select Print Postage Print On #{media}"
+  postage.print_on.select media
 end
 
 Then /^Expect Print Media Tooltip to be (.*)$/ do |selection|
