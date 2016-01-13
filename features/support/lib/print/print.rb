@@ -338,6 +338,29 @@ module Print
     end
   end
 
+  class PrintPostage < Print::PrintObject
+
+    def sign_in_page
+      Print::SignInPage.new @browser
+    end
+
+    def navbar
+      Print::NavBar.new @browser
+    end
+
+    def toolbar
+      #we'll get to this when it comes time to buy stamps and prefs
+    end
+
+    def print_on
+      Print::Postage::PrintOn.new @browser
+    end
+
+    def stamps
+      Stamps.new @browser
+    end
+  end
+
   class Stamps < PrintObject
     class CalculatePostageAmount < PrintObject
       def weight
@@ -384,31 +407,6 @@ module Print
       SpecifyPostageAmount.new @browser
     end
 
-  end
-
-  ######Class for Print Postage page, Incl. toolbars and navigation. Instantiates postage form objects for Print On selections
-
-  class PrintPostage < Print::PrintObject
-
-    def sign_in_page
-      Print::SignInPage.new @browser
-    end
-
-    def navbar
-     Print::NavBar.new @browser
-    end
-
-    def toolbar
-      #we'll get to this when it comes time to buy stamps and prefs
-    end
-
-    def print_on
-      Print::Postage::PrintOn.new @browser
-    end
-
-    def stamps
-      Stamps.new @browser
-    end
   end
 
   ######Parent Class for Postage Form Types
