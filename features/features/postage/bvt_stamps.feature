@@ -15,6 +15,15 @@ Feature: Stamps BVT
     Then Set Print Postage Form Ship-To country to United States
     Then Set Print Postage Form Service to "First Class Mail (1 - 3 Days)"
     Then Set Stamps Stamp Amount to $4.65
+
+    Then Select Print Postage Print On Stamps
+    Then Set Stamps Serial Number to B12345
+    Then Select Stamps Calculate Postage Amount
+    Then Set Print Postage Ship-From to default
+    Then Set Print Postage Form Ship-To country to United States
+    Then Set Print Postage Form Service to "First Class Mail (1 - 3 Days)"
+    Then Set Stamps Weight 2 lbs 5 oz
+
     #Then Print Postage
     And Sign out
 
