@@ -338,7 +338,7 @@ module Print
     end
   end
 
-  class PrintPostage < Print::PrintObject
+  class PrintPostage < PrintObject
 
     def sign_in_page
       Print::SignInPage.new @browser
