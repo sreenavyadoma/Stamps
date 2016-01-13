@@ -15,7 +15,7 @@ Feature: Stamps BVT
     Then Set Print Postage Form Ship-To country to United States
     Then Set Print Postage Form Service to "First Class Mail (1 - 3 Days)"
     Then Set Stamps Stamp Amount to $4.65
-    Then Print Postage
+    #Then Print Postage
     And Sign out
 
   @wp_bvt
@@ -29,6 +29,6 @@ Feature: Stamps BVT
     Then Set Print Postage Form Ounces to <number>
     Then Set Print Postage Form Pounds to <number>
     #Then Set Print Postage Form Service to <service>
-    Then Print Postage
+    #Then Print Postage
     And Sign out
 
