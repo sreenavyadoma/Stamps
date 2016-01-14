@@ -1,7 +1,7 @@
-default: --profile cuke_reports --profile eli_dev
+default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @netstamps --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
+rob_dev: --tags @print_two_up_test --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto03 PW=326tsetaqcdS!
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
 eli_dev: --tags @netstamps --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
@@ -23,7 +23,7 @@ printing:  --tags @print --guess VERBOSE=false
 print_sample: --tags @print_sample --guess VERBOSE=false
 print_costs: --tags @print_costs --guess VERBOSE=false
 print_date: --tags @print_date --guess VERBOSE=true
-print_regression: --tags @print_two_up_expanded --guess VERBOSE=false
+print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false
 print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=true
 
 local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=true
@@ -44,7 +44,6 @@ international: --tags @international --guess VERBOSE=false
 purchasing: --tags @purchasing --guess VERBOSE=false
 change_settings: --tags @settings --guess VERBOSE=false
 thermal_printing: --tags @thermal_printing --guess VERBOSE=false
-print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false
 sorting: --tags @sort --guess VERBOSE=false
 add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false
 orders_10: --tags @orders_10 --guess VERBOSE=false

@@ -76,9 +76,8 @@ module Orders
     #
     class Toolbar < OrdersObject
 
-      def postage
-        @print_window ||= Orders::PrintModal.new @browser
-        open_window @print_window
+      def print
+        open_window Orders::PrintModal.new @browser
       end
 
       def print_invalid_address
@@ -162,7 +161,6 @@ module Orders
         initializing_db = Label.new @browser.div :text => "Initializing Order Database"
         nav_bar = NavBar.new @browser
 
-        grid.order_date.sort.descending
         sleep 2
         grid.checkbox.uncheck 1
 

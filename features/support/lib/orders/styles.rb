@@ -2,7 +2,7 @@ module Orders
 
   class PageStyles < OrdersObject
     def general
-      @general ||= General.new @browser
+      General.new @browser
     end
   end
 
@@ -79,11 +79,11 @@ module Orders
     end
 
     def fonts
-      @fonts ||= Fonts.new @browser
+      Fonts.new @browser
     end
 
     def tooltip
-      @tooltip ||= Tooltip.new @browser
+      Tooltip.new @browser
     end
 
     def navigation_header
