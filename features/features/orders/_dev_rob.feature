@@ -25,7 +25,7 @@ Feature: Test Development
     Then Filter Cancelled
     Then Filter Awaiting Shipment
     Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To address to random zone 5 through 8
+    Then Set Order Details Ship-To address to random zrtone 5 through 8
     Then Set Order Details Email to random
     Then Set Order Details Phone to random
     Then Set Order Details Service to "Priority Mail Large Package"

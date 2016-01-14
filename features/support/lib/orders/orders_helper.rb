@@ -2,6 +2,6 @@ module Orders
   include Stamps
 
   def orders
-    @orders ||= PrintOrders.new @browser
+    PrintOrders.new @browser
   end
 end

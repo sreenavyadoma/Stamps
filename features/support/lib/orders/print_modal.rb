@@ -343,7 +343,7 @@ module Orders
     end
 
     def starting_label
-      @starting_label ||= StartingLabel.new @browser
+      StartingLabel.new @browser
     end
 
     def paper_tray
@@ -366,7 +366,7 @@ module Orders
       Textbox.new @browser.text_field :name => "sdc-printpostagewindow-shipdate-inputEl"
     end
 
-    def postage
+    def print
       button = print_button
       5.times {
         begin
