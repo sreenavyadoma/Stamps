@@ -76,9 +76,8 @@ module Orders
     #
     class Toolbar < OrdersObject
 
-      def postage
-        @print_window ||= Orders::PrintModal.new @browser
-        open_window @print_window
+      def print
+        open_window Orders::PrintModal.new @browser
       end
 
       def print_invalid_address
