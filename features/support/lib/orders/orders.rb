@@ -41,8 +41,7 @@ module Orders
     end
 
     def styles
-      #(Navigation.new @browser).orders
-      @page_styles ||= PageStyles.new @browser
+      PageStyles.new @browser
     end
   end
 

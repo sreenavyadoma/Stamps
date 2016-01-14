@@ -71,7 +71,7 @@ module Orders
       end
 
       def text_area
-        field = @browser.textarea :name => "FreeFormAddress"
+        field = @browser.textarea :name => "freeFormAddress"
         error_field = @browser.a :css => "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
         error_field_attribute = "data-errorqtip"
         Textbox.new field, error_field, error_field_attribute

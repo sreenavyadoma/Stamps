@@ -343,7 +343,7 @@ module Orders
     end
 
     def starting_label
-      @starting_label ||= StartingLabel.new @browser
+      StartingLabel.new @browser
     end
 
     def paper_tray
