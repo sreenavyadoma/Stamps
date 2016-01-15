@@ -60,6 +60,3 @@ DEPENDENCIES
   rake (= 10.0.0)
   rspec (= 2.99.0)
   watir-webdriver (= 0.8.0)
-
-BUNDLED WITH
-   1.10.6

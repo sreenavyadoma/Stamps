@@ -9,8 +9,8 @@ Feature: Select All Print Ons and Services
   Scenario: Select Print Media and Services
 
     Then Select Print Postage Print On Stamps
-    Then Set Print Postage Form Service to "Postcard"
-    Then Set Print Postage Form Service to "<string>"
+    Then Set Print Postage Form Service to "First-Class Mail Postcard"
+    Then Set Print Postage Form Service to "First-Class Mail Envelope"
     Then Set Print Postage Form Service to "<string>"
     Then Set Print Postage Form Service to "<string>"
     Then Set Print Postage Form Service to "<string>"
