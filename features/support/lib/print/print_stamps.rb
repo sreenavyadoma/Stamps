@@ -8,7 +8,7 @@ module Print
         end
 
         def extra_services
-          Postage::Weight.new @browser
+          Postage::ExtraServices.new @browser
         end
       end
 
@@ -25,7 +25,6 @@ module Print
       def serial
         Textbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
       end
-
 
       def service
         Postage::Service.new @browser

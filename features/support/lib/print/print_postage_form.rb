@@ -4,36 +4,53 @@ module Print
     class ShipTo < PrintObject
       class ShipToDomestic < PrintObject
         def country
-          # cpy that country class here
+          Country.new @browser
         end
 
         def text_area
-          #Textbox.new blah blah
+          Textbox.new (@browser.text_field :id => "sdc-mainpanel-shiptotextarea-inputEl")
         end
       end
 
       class ShipToInternational < PrintObject
         def country
-          # cpy that country class here
+          Country.new @browser
         end
 
-        def textbox1
-
+        def name
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptonamefield-inputEl")
         end
 
-        def textbox2
+        def company
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptocompanyfield-inputEl")
+        end
 
+        def address1
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress1field-inputEl")
+        end
+
+        def address2
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress2field-inputEl")
+        end
+
+        def city
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptocityfield-inputEl")
+        end
+
+        def province
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoprovincefield-inputEl")
+        end
+
+        def postal_code
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptopostcodefield-inputEl")
+        end
+
+        def phone
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptophonefield-inputEl")
         end
 
       end
 
-      def domestic
-        ShipToDomestic.new @browser
-      end
-
-      def international
-        ShipToInternational @browser
-      end
     end
 
     class PrintOn < PrintObject
@@ -371,8 +388,42 @@ module Print
       end
     end
 
-    class ShipTo < PrintObject
-      
+    class Email < PrintObject
+      def checkbox select
+
+        checkbox_fields = @browser.inputs :css => "input[id^=checkboxfield]"
+        checkbox_field = checkbox_fields.last
+
+        verify_fields = @browser.inputs :css => "div[id^=checkboxfield][class*=x-form-type-checkbox]"
+        verify_field = verify_fields.last
+        checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+
+        if select
+          checkbox.check
+          log.info checkbox.checked?
+        else
+          checkbox.uncheck
+          log.info checkbox.checked?
+        end
+
+      end
+
+      def textbox
+        Textbox.new (@browser.text_field :id => "sdc-mainpanel-emailtextfield-inputEl")
+      end
+
+    end
+
+    class ShipDate < PrintObject
+
+      def text_box
+        Textbox.new (@browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl")
+      end
+
+      def date_picker
+
+      end
+
     end
   end
 end
