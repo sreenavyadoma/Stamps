@@ -36,7 +36,6 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5 - right side
     Then Set Print Modal Printer to "factory"
     Then Select Print Modal right-side label
     Then Expect Print Modal right-side label selected
-    Then Expect Print Window Requires 2 label sheets
     Then Print
 
 

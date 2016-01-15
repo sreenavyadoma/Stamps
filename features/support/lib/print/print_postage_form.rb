@@ -1,6 +1,41 @@
 # encoding: utf-8
 module Print
   module Postage
+    class ShipTo < PrintObject
+      class ShipToDomestic < PrintObject
+        def country
+          # cpy that country class here
+        end
+
+        def text_area
+          #Textbox.new blah blah
+        end
+      end
+
+      class ShipToInternational < PrintObject
+        def country
+          # cpy that country class here
+        end
+
+        def textbox1
+
+        end
+
+        def textbox2
+
+        end
+
+      end
+
+      def domestic
+        ShipToDomestic.new @browser
+      end
+
+      def international
+        ShipToInternational @browser
+      end
+    end
+
     class PrintOn < PrintObject
 
       def drop_down

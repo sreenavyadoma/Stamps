@@ -17,6 +17,5 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾" right side
     Then Set Print Modal Printer to "factory"
     Then Select Print Modal right-side label
     Then Expect Print Modal right-side label selected
-    Then Expect Print Window Requires 1 label sheets
     Then Print
     Then Sign out

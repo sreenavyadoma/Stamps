@@ -3,7 +3,7 @@ Feature: User Prints 3 Domestic labels on SDC-1200 - left side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded
+  @print_two_up_expanded @print_two_up_expanded_dev
   Scenario: User Prints 3 Domestic labels on SDC-1200 - left side
     When I Add a new order
     Then Set Order Details Ship-From to default
@@ -28,7 +28,6 @@ Feature: User Prints 3 Domestic labels on SDC-1200 - left side
     Then Set Print Modal Printer to "factory"
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
-    Then Expect Print Window Requires 2 label sheets
     Then Print Sample
     Then Print
 
