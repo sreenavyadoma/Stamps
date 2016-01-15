@@ -1815,7 +1815,7 @@ module Orders
             break if value == current_value
           end
           sleep 1
-          log.info "Pounds set to #{text_field.text}"
+          log.info "Ounces set to #{text_field.text}"
         end
 
         def increment value
@@ -1864,7 +1864,7 @@ module Orders
             break if value == current_value
           end
           sleep 1
-          log.info "Pounds set to #{text_field.text}"
+          log.info "Length set to #{text_field.text}"
         end
 
         def increment value
@@ -1902,7 +1902,7 @@ module Orders
             break if value == current_value
           end
           sleep 1
-          log.info "Pounds set to #{text_field.text}"
+          log.info "Width set to #{text_field.text}"
         end
 
         def increment value
@@ -1940,7 +1940,7 @@ module Orders
             break if value == current_value
           end
           sleep 1
-          log.info "Pounds set to #{text_field.text}"
+          log.info "Height set to #{text_field.text}"
         end
 
         def increment value
