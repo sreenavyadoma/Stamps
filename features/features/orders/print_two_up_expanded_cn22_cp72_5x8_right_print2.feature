@@ -17,6 +17,7 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
     Then Add Customs Form Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
+
     When I Add a new order
     Then Set Order Details Ship-From to default
     Then Set Ship-To to international address
