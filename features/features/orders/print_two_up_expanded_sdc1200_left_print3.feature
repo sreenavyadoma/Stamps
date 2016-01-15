@@ -3,7 +3,7 @@ Feature: User Prints 3 Domestic labels on SDC-1200 - left side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded @print_two_up_expanded_dev
+  @print_two_up_expanded
   Scenario: User Prints 3 Domestic labels on SDC-1200 - left side
     When I Add a new order
     Then Set Order Details Ship-From to default
