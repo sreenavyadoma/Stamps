@@ -26,7 +26,6 @@ module Print
         Textbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
       end
 
-
       def service
         Postage::Service.new @browser
       end
