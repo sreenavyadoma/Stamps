@@ -1,13 +1,9 @@
 module Print
   module Postage
-    class Envelope < PrintObject
+    class Envelope < DomesticCommon
 
       def ship_from
         Postage::ShipFrom.new @browser
-      end
-
-      def ship_to_domestic
-        Postage::ShipToDomestic.new @browser
       end
 
       def weight

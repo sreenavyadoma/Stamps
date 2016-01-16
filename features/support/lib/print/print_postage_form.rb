@@ -51,6 +51,13 @@ module Print
 
       end
 
+      def domestic
+        ShipToDomestic.new @browser
+      end
+
+      def international
+        ShipToInternational.new @browser
+      end
     end
 
     class PrintOn < PrintObject

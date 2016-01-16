@@ -1,80 +1,227 @@
 module Orders
   module Toolbar
-    class MoveConfirmation < OrdersObject
+    class AmazonStore < OrdersObject
+      def window_title
+        Label.new(@browser.div :text => "Connect your Amazon Store")
+      end
+
       def present?
-        browser_helper.present? @browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
+        window_title.present?
       end
 
-      def move_label
-        Label.new @browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
+      def seller_id
+        Textbox.new @browser.text_field(:name => "AmazonSellerID")
       end
 
-      def cancel_label
-        Label.new @browser.span Orders::Locators::ToolBar::confirmation_modal_cancel_label
+      def auth_token
+        Textbox.new @browser.text_field(:name => "AuthToken")
       end
 
-      def move
-        label = move_label
-        label.click_while_present
-        Orders::FilterPanel.new @browser
+      def verify_seller_id
+        Button.new @browser.span(:name => "Verify Seller ID")
       end
 
-      def cancel
-        label = cancel_label
-        label.click_while_present
-        Orders::FilterPanel.new @browser
+      def product_identifier
+
+      end
+
+      def connect
+        #click while present
+      end
+
+    end
+
+    class AddStoreOrMarketplace < OrdersObject
+
+      def window_title
+
+      end
+
+      def present?
+        window_title.present?
+      end
+
+      def search_textbox
+        Textbox.new (@browser.text_fields :css => "input[placeholder='Search by Name']").last
+      end
+
+      def search search_str
+        search_textbox.set search_str
+      end
+
+      def amazon_button
+        Button.new (@browser.imgs :css => "img[src*=amazon]").last
+      end
+
+      def amazon
+        button = amazon_button
+        store = AmazonStore.new @browser
+        10.times do
+          button.safe_click
+          sleep 1
+          return store if store.present?
+        end
       end
     end
 
-    class MoveMenu < OrdersObject
-
-      def drop_down
-        Button.new @browser.span Orders::Locators::ToolBar::move
+    class ManageStores < OrdersObject
+      def window_title
+        Label.new(@browser.div :text => "Manage Stores")
       end
 
-      def select selection
-        case selection
-          when :shipped
-            selection_str = "Move to Shipped"
-          when :cancelled
-            selection_str = "Move to Canceled"
-          when :awaiting_shipment
-            selection_str = "Move to Awaiting Shipment"
-          else
-            raise "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment"
+      def present?
+        window_title.present?
+      end
+
+      def add_button
+        Button.new (@browser.spans :css => "span[class*=sdc-icon-add]").last
+      end
+
+      def add_store
+        button = add_button
+        marketplace = store
+        10.times do
+          button.safe_click
+          sleep 1
+          return marketplace if marketplace.present?
+        end
+      end
+
+      def store
+        AddStoreOrMarketplace.new @browser
+      end
+
+      def edit
+
+      end
+
+      def reconnect
+
+      end
+
+      def delete
+
+      end
+
+      def manual_orders
+
+      end
+    end
+
+    class GeneralSettings < OrdersObject
+
+    end
+
+    class Toolbar < OrdersObject
+
+      class SettingsMenu < PrintObject
+        def button
+          Button.new @browser.span :css => "span[class*=sdc-icon-settings]"
         end
 
-        confirmation = MoveConfirmation.new @browser
-        dd = drop_down
-        selection_label = Label.new @browser.span :text => selection_str
+        def select menu_item
+          dd = button
+          case menu_item.downcase
+            when /settings/
+              selection = Label.new(@browser.span :text => "General Settings")
+              modal = GeneralSettings.new @browser
+            when /stores/
+              selection = Label.new(@browser.span :text => "Add/Edit Stores")
+              modal = ManageStores.new @browser
+            else
+              raise "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores."
+          end
 
-        10.times{
-          dd.safe_click unless selection_label.present?
-          selection_label.safe_click
-          return confirmation if confirmation.present?
-        }
+          20.times do
+            return modal if modal.present?
+            dd.safe_click unless selection.present?
+            selection.safe_click
+          end
+          raise "Unable to Toolbar Settings Menu Selection - #{menu_item}"
+        end
 
-        raise "Unable to select #{selection} from Move menu."
+        def general_settings
+          select "Settings"
+        end
+
+        def manage_stores
+          select "Stores"
+        end
       end
 
-      def to_shipped
-        select :shipped
+      class MoveMenu < OrdersObject
+        class MoveConfirmation < OrdersObject
+          def present?
+            browser_helper.present? @browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
+          end
+
+          def move_label
+            Label.new @browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
+          end
+
+          def cancel_label
+            Label.new @browser.span Orders::Locators::ToolBar::confirmation_modal_cancel_label
+          end
+
+          def move
+            label = move_label
+            label.click_while_present
+            Orders::FilterPanel.new @browser
+          end
+
+          def cancel
+            label = cancel_label
+            label.click_while_present
+            Orders::FilterPanel.new @browser
+          end
+        end
+
+        def drop_down
+          Button.new @browser.span Orders::Locators::ToolBar::move
+        end
+
+        def select selection
+          case selection
+            when :shipped
+              selection_str = "Move to Shipped"
+            when :cancelled
+              selection_str = "Move to Canceled"
+            when :awaiting_shipment
+              selection_str = "Move to Awaiting Shipment"
+            else
+              raise "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment"
+          end
+
+          confirmation = MoveConfirmation.new @browser
+          dd = drop_down
+          selection_label = Label.new @browser.span :text => selection_str
+
+          10.times{
+            dd.safe_click unless selection_label.present?
+            selection_label.safe_click
+            return confirmation if confirmation.present?
+          }
+
+          raise "Unable to select #{selection} from Move menu."
+        end
+
+        def to_shipped
+          select :shipped
+        end
+
+        def to_canceled
+          select :cancelled
+        end
+
+        def to_awaiting_shipment
+          select :awaiting_shipment
+        end
+
       end
 
-      def to_canceled
-        select :cancelled
+      def settings
+        SettingsMenu.new @browser
       end
-
-      def to_awaiting_shipment
-        select :awaiting_shipment
-      end
-
-    end
-
-    #
-    #  Contains Add/Edit buton for orders.
-    #
-    class Toolbar < OrdersObject
 
       def print
         open_window Orders::PrintModal.new @browser
