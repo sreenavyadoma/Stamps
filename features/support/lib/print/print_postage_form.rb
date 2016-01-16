@@ -421,7 +421,7 @@ module Print
 
     end
 
-    sdc-mainpanel-emailcheckbox
+    #sdc-mainpanel-emailcheckbox
 
     class ShipDate < Print::Postage::PrintObject
 
