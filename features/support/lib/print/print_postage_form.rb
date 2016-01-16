@@ -396,23 +396,8 @@ module Print
     end
 
     class Email < PrintObject
-      def checkbox select
-
-        checkbox_fields = @browser.inputs :css => "input[id^=checkboxfield]"
-        checkbox_field = checkbox_fields.last
-
-        verify_fields = @browser.inputs :css => "div[id^=checkboxfield][class*=x-form-type-checkbox]"
-        verify_field = verify_fields.last
-        checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
-
-        if select
-          checkbox.check
-          log.info checkbox.checked?
-        else
-          checkbox.uncheck
-          log.info checkbox.checked?
-        end
-
+      def checkbox
+        checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
       end
 
       def textbox
