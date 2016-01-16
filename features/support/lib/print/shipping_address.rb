@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Print
   module Postage
-    class ManageShippingAddresses < PrintObject
+    class ManageShippingAddresses < Print::Postage::PrintObject
 
     end
   end

@@ -1,5 +1,5 @@
 module Print
-  class SignInPage < PrintObject
+  class SignInPage < Print::Postage::PrintObject
 
     def visit *args
       if args.length == 1

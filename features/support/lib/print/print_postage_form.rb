@@ -1,7 +1,66 @@
 # encoding: utf-8
 module Print
   module Postage
-    class PrintOn < PrintObject
+    class ShipTo < Print::Postage::PrintObject
+      class ShipToDomestic < Print::Postage::PrintObject
+        def country
+          Country.new @browser
+        end
+
+        def text_area
+          Textbox.new (@browser.text_field :id => "sdc-mainpanel-shiptotextarea-inputEl")
+        end
+      end
+
+      class ShipToInternational < Print::Postage::PrintObject
+        def country
+          Country.new @browser
+        end
+
+        def name
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptonamefield-inputEl")
+        end
+
+        def company
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptocompanyfield-inputEl")
+        end
+
+        def address1
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress1field-inputEl")
+        end
+
+        def address2
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress2field-inputEl")
+        end
+
+        def city
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptocityfield-inputEl")
+        end
+
+        def province
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoprovincefield-inputEl")
+        end
+
+        def postal_code
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptopostcodefield-inputEl")
+        end
+
+        def phone
+          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptophonefield-inputEl")
+        end
+
+      end
+
+      def domestic
+        ShipToDomestic.new @browser
+      end
+
+      def international
+        ShipToInternational.new @browser
+      end
+    end
+
+    class PrintOn < Print::Postage::PrintObject
 
       def drop_down
         Button.new (@browser.divs Print::Locators::FormBody.print_on_drop_down_divs)[0]
@@ -46,8 +105,8 @@ module Print
       end
     end
 
-    class Weight < PrintObject
-      class Pounds < PrintObject
+    class Weight < Print::Postage::PrintObject
+      class Pounds < Print::Postage::PrintObject
         def text_box
           Textbox.new (@browser.text_field :id => 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
         end
@@ -85,7 +144,7 @@ module Print
         end
       end
 
-      class Ounces < PrintObject
+      class Ounces < Print::Postage::PrintObject
         def text_box
           Textbox.new (@browser.text_field :id => 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
         end
@@ -132,14 +191,14 @@ module Print
       end
     end
 
-    class ExtraServices < PrintObject
+    class ExtraServices < Print::Postage::PrintObject
       def button
         Button.new (@browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl")
       end
 
     end
 
-    class Service < PrintObject
+    class Service < Print::Postage::PrintObject
       def text_box
         Textbox.new @browser.text_field :name => "nsService"
       end
@@ -210,7 +269,7 @@ module Print
 
     end
 
-    class ShipFrom < PrintObject
+    class ShipFrom < Print::Postage::PrintObject
 
       def drop_down
         Button.new (@browser.divs :css => "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
@@ -284,7 +343,7 @@ module Print
 
     end
 
-    class StampAmount < PrintObject
+    class StampAmount < Print::Postage::PrintObject
       def text_box
         Textbox.new (@browser.text_field :name => "stampAmount"), "data-errorqtip"
       end
@@ -310,7 +369,7 @@ module Print
       end
     end
 
-    class Country < PrintObject
+    class Country < Print::Postage::PrintObject
       def drop_down
         Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
       end
@@ -336,8 +395,44 @@ module Print
       end
     end
 
-    class ShipTo < PrintObject
-      
+
+
+    class Email < Print::Postage::PrintObject
+
+      def checkbox select
+
+        checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
+        verify_field = @browser.table :id => "sdc-mainpanel-emailcheckbox"
+        checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+
+        if select
+          checkbox.check
+          log.info checkbox.checked?
+        else
+          checkbox.uncheck
+          log.info checkbox.checked?
+        end
+
+      end
+
+      def textbox
+        Textbox.new (@browser.text_field :id => "sdc-mainpanel-emailtextfield-inputEl")
+      end
+
+    end
+
+    #sdc-mainpanel-emailcheckbox
+
+    class ShipDate < Print::Postage::PrintObject
+
+      def text_box
+        Textbox.new (@browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl")
+      end
+
+      def date_picker
+
+      end
+
     end
   end
 end

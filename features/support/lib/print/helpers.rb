@@ -1,6 +1,8 @@
 module Print
 
-  class PrintObject < Stamps::Browser::BrowserObject
+  module Postage
+    class PrintObject < Stamps::Browser::BrowserObject
+    end
   end
 
   class PostageHelper

@@ -1,6 +1,6 @@
 # encoding: utf-8
 module Print
-  class PrintPostage < PrintObject
+  class PrintPostage < Print::Postage::PrintObject
 
     def sign_in_page
       Print::SignInPage.new @browser
@@ -19,11 +19,15 @@ module Print
     end
 
     def stamps
-      Postage::Stamps.new @browser
+      Print::Postage::Stamps.new @browser
     end
 
     def shipping_label
-      Postage::ShippingLabel.new @browser
+      Print::Postage::ShippingLabel.new @browser
+    end
+
+    def envelope
+      Print::Postage::Envelope.new @browser
     end
   end
 end

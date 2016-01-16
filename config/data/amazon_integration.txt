@@ -1,0 +1,31 @@
+
+SellerID: A1BX1F0B3I9QDV
+AuthToken: amzn.mws.20a589f0-ccb4-ac6f-1289-5115163052f0
+
+Amazon Seller
+Website - http://sellercentral.amazon.com/
+o    Credentials - qsun@stamps.com / mws123
+
+Amazon Buyer
+Website - http://mt.amazon.com (Login - merchant / C0nt!nt? )  (for login to Amazon staging)
+o    Credentials - jvalles@stamps.com / myamazon       (Login to MT account and check out)
+
+
+Steps
+1. Login into the seller profile in one browser.
+
+Go to INVENTORY – Manage Inventor. Get ASIN/ISBN number :  for example  B00K7ABADO
+2. In another browser, login into the buyer account and use the ASIN/ISBN B00K7ABADO to  select the item you wish to purchase.    Mt.amazon.com
+and  buy the item  from seller  e-stamps MWS Test
+
+3.       Add the desired item to the cart.
+4.       Now login into http://amazon.com using the same buyer credentials and select the cart.
+5.       The item you placed in the cart should be available. Go ahead and purchase the item and make note of the ORDER ID.
+6.       Now head over to the seller profile, select Manage Orders and search for your order based on the ORDERID ,. It will take up to 30 minutes for the order to show up as shipping on seller’s side
+
+
+Rob Robinson
+Web Developer
+Stamps.com
+rrobinson@stamps.com
+
