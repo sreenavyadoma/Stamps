@@ -3,27 +3,27 @@ module Print
     class Envelope < DomesticCommon
 
       def ship_from
-        Postage::ShipFrom.new @browser
+        Print::Postage::ShipFrom.new @browser
       end
 
       def weight
-        Postage::Weight.new @browser
+        Print::Postage::Weight.new @browser
       end
 
       def service
-        Postage::Service.new @browser
+        Print::Postage::Service.new @browser
       end
 
       def insure_for
-        Postage::InsureFor.new @browser
+        Print::Postage::InsureFor.new @browser
       end
 
       def extra_services
-        Postage::ExtraServices.new @browser
+        Print::Postage::ExtraServices.new @browser
       end
 
       def ship_date
-        Postage::ShipDate.new @browser
+        Print::Postage::ShipDate.new @browser
       end
 
     end

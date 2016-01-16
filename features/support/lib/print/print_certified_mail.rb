@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Print
   module Postage
-    class ShippingLabel < DomesticCommon
+    class CertifiedMail < DomesticCommon
 
       def ship_from
         Print::Postage::ShipFrom.new @browser
@@ -28,12 +28,28 @@ module Print
       end
 
       def extra_services
-        Print::Postage::ExtraServices.new @browser
+        Print::Postage::ExtraServicesCM.new @browser
       end
 
       def ship_date
         Print::Postage::ShipDate.new @browser
       end
+
+      class ExtraServicesCM < PrintObject
+
+        def cm_checkbox
+          checkbox_field = @browser.input :id => "sdc-mainpanel-cmcheckbox-inputEl"
+        end
+
+        def err_checkbox
+          checkbox_field = @browser.input :id => "sdc-mainpanel-rrecheckbox-inputEl"
+        end
+
+        def rd_checkbox
+          checkbox_field = @browser.input :css => "input[class*=sdc-mainpanel-rdcheckbox]"
+        end
+      end
+
 
     end
   end
