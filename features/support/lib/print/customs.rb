@@ -1,8 +1,8 @@
 module Print
   module Customs
-    class CustomsInformation < PrintObject
+    class CustomsInformation < Print::Postage::PrintObject
 
-      class AddItem < PrintObject
+      class AddItem < Print::Postage::PrintObject
 
         def customs_item=(table)
           self.origin_zip = table["ship_from_zip"]
@@ -17,7 +17,7 @@ module Print
           self.save
         end
 
-        class Qty < PrintObject
+        class Qty < Print::Postage::PrintObject
           def text_box
             Textbox.new @browser.text_field :name => "Quantity"
           end
@@ -32,7 +32,7 @@ module Print
 
         end
 
-        class Value < PrintObject
+        class Value < Print::Postage::PrintObject
           def text_box
             Textbox.new @browser.text_field :name => "Value"
           end
@@ -47,7 +47,7 @@ module Print
 
         end
 
-        class Weight < PrintObject
+        class Weight < Print::Postage::PrintObject
 
           def pounds
             Pounds.new @browser
@@ -57,7 +57,7 @@ module Print
             Ounces.new @browser
           end
 
-          class Pounds < PrintObject
+          class Pounds < Print::Postage::PrintObject
             def text_box
               Textbox.new @browser.text_field :name => "WeightLb"
             end
@@ -72,7 +72,7 @@ module Print
 
           end
 
-          class Ounces < PrintObject
+          class Ounces < Print::Postage::PrintObject
             def text_box
               Textbox.new @browser.text_field :name => "WeightOz"
             end
@@ -89,7 +89,7 @@ module Print
 
         end
 
-        class Origin < PrintObject
+        class Origin < Print::Postage::PrintObject
           def text_box
             Textbox.new @browser.text_field :name => "CountryOfOrigin"
           end
@@ -156,7 +156,7 @@ module Print
 
       end
 
-      class PackageContents < PrintObject
+      class PackageContents < Print::Postage::PrintObject
         def text_box
           Textbox.new @browser.text_field :name => "ContentType"
         end
@@ -188,7 +188,7 @@ module Print
         end
       end
 
-      class NonDeliveryOptions < PrintObject
+      class NonDeliveryOptions < Print::Postage::PrintObject
         def text_box
           Textbox.new @browser.text_field :name => "NonDeliveryOption"
         end
@@ -220,7 +220,7 @@ module Print
         end
       end
 
-      class ITNRequirement< PrintObject
+      class ITNRequirement< Print::Postage::PrintObject
         def text_box
           Textbox.new @browser.text_field :name => "isITNRequired"
         end
@@ -254,7 +254,7 @@ module Print
 
 
 
-      class ItemGrid < PrintObject
+      class ItemGrid < Print::Postage::PrintObject
 
 
 
@@ -649,7 +649,7 @@ module Print
 
     end
 
-    class UspsPrivacyActModal < PrintObject
+    class UspsPrivacyActModal < Print::Postage::PrintObject
       def window_title
         Label.new @browser.div :text => "USPS Privacy Act Statement"
       end
@@ -664,7 +664,7 @@ module Print
 
     end
 
-    class RestrictionsProhibitionsModal < PrintObject
+    class RestrictionsProhibitionsModal < Print::Postage::PrintObject
 
       def present?
 

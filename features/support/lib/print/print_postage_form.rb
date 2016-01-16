@@ -1,8 +1,8 @@
 # encoding: utf-8
 module Print
   module Postage
-    class ShipTo < PrintObject
-      class ShipToDomestic < PrintObject
+    class ShipTo < Print::Postage::PrintObject
+      class ShipToDomestic < Print::Postage::PrintObject
         def country
           Country.new @browser
         end
@@ -12,7 +12,7 @@ module Print
         end
       end
 
-      class ShipToInternational < PrintObject
+      class ShipToInternational < Print::Postage::PrintObject
         def country
           Country.new @browser
         end
@@ -60,7 +60,7 @@ module Print
       end
     end
 
-    class PrintOn < PrintObject
+    class PrintOn < Print::Postage::PrintObject
 
       def drop_down
         Button.new (@browser.divs Print::Locators::FormBody.print_on_drop_down_divs)[0]
@@ -105,8 +105,8 @@ module Print
       end
     end
 
-    class Weight < PrintObject
-      class Pounds < PrintObject
+    class Weight < Print::Postage::PrintObject
+      class Pounds < Print::Postage::PrintObject
         def text_box
           Textbox.new (@browser.text_field :id => 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
         end
@@ -144,7 +144,7 @@ module Print
         end
       end
 
-      class Ounces < PrintObject
+      class Ounces < Print::Postage::PrintObject
         def text_box
           Textbox.new (@browser.text_field :id => 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
         end
@@ -191,14 +191,14 @@ module Print
       end
     end
 
-    class ExtraServices < PrintObject
+    class ExtraServices < Print::Postage::PrintObject
       def button
         Button.new (@browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl")
       end
 
     end
 
-    class Service < PrintObject
+    class Service < Print::Postage::PrintObject
       def text_box
         Textbox.new @browser.text_field :name => "nsService"
       end
@@ -269,7 +269,7 @@ module Print
 
     end
 
-    class ShipFrom < PrintObject
+    class ShipFrom < Print::Postage::PrintObject
 
       def drop_down
         Button.new (@browser.divs :css => "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
@@ -343,7 +343,7 @@ module Print
 
     end
 
-    class StampAmount < PrintObject
+    class StampAmount < Print::Postage::PrintObject
       def text_box
         Textbox.new (@browser.text_field :name => "stampAmount"), "data-errorqtip"
       end
@@ -369,7 +369,7 @@ module Print
       end
     end
 
-    class Country < PrintObject
+    class Country < Print::Postage::PrintObject
       def drop_down
         Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
       end
@@ -395,7 +395,7 @@ module Print
       end
     end
 
-    class Email < PrintObject
+    class Email < Print::Postage::PrintObject
       def checkbox
         checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
       end
@@ -406,7 +406,7 @@ module Print
 
     end
 
-    class ShipDate < PrintObject
+    class ShipDate < Print::Postage::PrintObject
 
       def text_box
         Textbox.new (@browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl")

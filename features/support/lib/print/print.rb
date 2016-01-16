@@ -1,6 +1,6 @@
 # encoding: utf-8
 module Print
-  class PrintPostage < PrintObject
+  class PrintPostage < Print::Postage::PrintObject
 
     def sign_in_page
       Print::SignInPage.new @browser

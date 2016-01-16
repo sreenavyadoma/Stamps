@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Print
   module Postage
-    class Roll < DomesticCommon
+    class Roll < Print::Postage::DomesticCommon
 
       def ship_from
         Print::Postage::ShipFrom.new @browser

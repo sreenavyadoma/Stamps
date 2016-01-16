@@ -1,6 +1,6 @@
 module Print
   module Postage
-    class Envelope < DomesticCommon
+    class Envelope < Print::Postage::DomesticCommon
 
       def ship_from
         Print::Postage::ShipFrom.new @browser

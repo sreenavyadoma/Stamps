@@ -1,5 +1,5 @@
 module Print
-  class NavBar < PrintObject
+  class NavBar < Print::Postage::PrintObject
     def username
       Label.new @browser.span :id => "userNameText"
     end

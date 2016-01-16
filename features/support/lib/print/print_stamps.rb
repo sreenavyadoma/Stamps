@@ -1,8 +1,8 @@
 # encoding: utf-8
 module Print
   module Postage
-    class Stamps < PrintObject
-      class CalculatePostageAmount < PrintObject
+    class Stamps < Print::Postage::PrintObject
+      class CalculatePostageAmount < Print::Postage::PrintObject
         def weight
           Print::Postage::Weight.new @browser
         end
@@ -12,7 +12,7 @@ module Print
         end
       end
 
-      class SpecifyPostageAmount < PrintObject
+      class SpecifyPostageAmount < Print::Postage::PrintObject
         def stamp_amount
           Print::Postage::StampAmount.new @browser
         end

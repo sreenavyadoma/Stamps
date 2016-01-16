@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Print
   module Postage
-    class CertifiedMail < DomesticCommon
+    class CertifiedMail < Print::Postage::DomesticCommon
 
       def ship_from
         Print::Postage::ShipFrom.new @browser
@@ -35,7 +35,7 @@ module Print
         Print::Postage::ShipDate.new @browser
       end
 
-      class ExtraServicesCM < PrintObject
+      class ExtraServicesCM < Print::Postage::PrintObject
 
         def cm_checkbox
           checkbox_field = @browser.input :id => "sdc-mainpanel-cmcheckbox-inputEl"

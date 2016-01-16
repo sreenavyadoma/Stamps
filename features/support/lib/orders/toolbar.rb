@@ -114,7 +114,7 @@ module Orders
 
     class Toolbar < OrdersObject
 
-      class SettingsMenu < PrintObject
+      class SettingsMenu < Print::Postage::PrintObject
         def button
           Button.new @browser.span :css => "span[class*=sdc-icon-settings]"
         end
