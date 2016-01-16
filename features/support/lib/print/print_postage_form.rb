@@ -395,9 +395,24 @@ module Print
       end
     end
 
+
+
     class Email < Print::Postage::PrintObject
-      def checkbox
+
+      def checkbox select
+
         checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
+        verify_field = @browser.table :id => "sdc-mainpanel-emailcheckbox"
+        checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+
+        if select
+          checkbox.check
+          log.info checkbox.checked?
+        else
+          checkbox.uncheck
+          log.info checkbox.checked?
+        end
+
       end
 
       def textbox
@@ -405,6 +420,8 @@ module Print
       end
 
     end
+
+    sdc-mainpanel-emailcheckbox
 
     class ShipDate < Print::Postage::PrintObject
 

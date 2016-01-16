@@ -37,16 +37,52 @@ module Print
 
       class ExtraServicesCM < Print::Postage::PrintObject
 
-        def cm_checkbox
+        def cm_checkbox select
+
           checkbox_field = @browser.input :id => "sdc-mainpanel-cmcheckbox-inputEl"
+          verify_field = @browser.table :id => "sdc-mainpanel-cmcheckbox"
+          checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+
+          if select
+            checkbox.check
+            log.info checkbox.checked?
+          else
+            checkbox.uncheck
+            log.info checkbox.checked?
+          end
+
         end
 
-        def err_checkbox
+        def err_checkbox select
+
           checkbox_field = @browser.input :id => "sdc-mainpanel-rrecheckbox-inputEl"
+          verify_field = @browser.table :id => "sdc-mainpanel-rrecheckbox"
+          checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+
+          if select
+            checkbox.check
+            log.info checkbox.checked?
+          else
+            checkbox.uncheck
+            log.info checkbox.checked?
+          end
+
         end
 
-        def rd_checkbox
+        def rd_checkbox select
+
           checkbox_field = @browser.input :css => "input[class*=sdc-mainpanel-rdcheckbox]"
+          #verify_field = @browser.table :id => "sdc-mainpanel-rdcheckbox"
+          checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+
+          if select
+            checkbox.check
+            log.info checkbox.checked?
+          else
+            checkbox.uncheck
+            log.info checkbox.checked?
+          end
+
         end
       end
 
