@@ -18,7 +18,7 @@ module Orders
           10.times do
             dd.safe_click unless selection_field.present?
             selection_field.safe_click
-            text_field break if text_field.text.include? selection
+            break if text_field.text.include? selection
           end
 
           log.info "Order Source #{selection} was #{(text_field.text.include? selection)?"Selected":"NOT selected"}"
@@ -36,7 +36,7 @@ module Orders
 
       class ProductIdentifier < OrdersObject
         def text_box
-          Textbox.new (@browser.text_field :name => "AmazonMarketplace")
+          Textbox.new (@browser.text_field :css => "div[id^=connectamazonwindow-][id$=-body][class$=resizable]>div>div>div>div>div>div>div>div>div>div:nth-child(9)>div>div>div>div>div>div>input")
         end
 
         def drop_down
@@ -51,7 +51,7 @@ module Orders
           10.times do
             dd.safe_click unless selection_field.present?
             selection_field.safe_click
-            text_field break if text_field.text.include? selection
+            break if text_field.text.include? selection
           end
 
           log.info "Product Identifier #{selection} was #{(text_field.text.include? selection)?"Selected":"NOT selected"}"
