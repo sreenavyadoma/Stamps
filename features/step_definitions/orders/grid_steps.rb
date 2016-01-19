@@ -126,19 +126,6 @@ When /^Uncheck Orders Grid row (\d+)$/ do |row|
   orders.grid.checkbox.uncheck row
 end
 
-Then /^Expect Ship-To address to be;$/ do |table|
-  log.info "Step: Expect Ship-To address to be..."
-  param_hash = table.hashes.first
-  step "Expect Grid Recipient to be #{param_hash[:name]}"
-  step "Expect Grid Company to be #{param_hash[:company]}"
-  step "Expect Grid Address to be #{param_hash[:address]}"
-  step "Expect Grid City to be #{param_hash[:city]}"
-  step "Expect Grid State to be #{param_hash[:state]}"
-  step "Expect Grid Zip to be #{param_hash[:zip]}"
-  step "Expect Grid Phone to be #{param_hash[:phone]}"
-  step "Expect Grid Email to be #{param_hash[:email]}"
-end
-
 Then /^List all Grid column values for row (\d+)/ do |row|
   log.info "Step: List all Grid column values for row #{row}"
   order_id = orders.grid.order_id.row row
@@ -209,18 +196,45 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
 
 end
 
+Then /^Expect Ship-To address to be;$/ do |table|
+  log.info "Step: Expect Ship-To address to be..."
+  param_hash = table.hashes.first
+  step "Expect Grid Recipient to be #{param_hash[:name]}"
+  step "Expect Grid Company to be #{param_hash[:company]}"
+  step "Expect Grid Address to be #{param_hash[:address]}"
+  step "Expect Grid City to be #{param_hash[:city]}"
+  step "Expect Grid State to be #{param_hash[:state]}"
+  step "Expect Grid Zip to be #{param_hash[:zip]}"
+  step "Expect Grid Phone to be #{param_hash[:phone]}"
+  step "Expect Grid Email to be #{param_hash[:email]}"
+end
+
+Then /^Expect Grid Store to be (.*)$/ do |expected|
+  log.info "Step: Expect Grid Store to be #{expected}"
+  begin
+    actual = orders.grid.store.data @order_id
+    10.times { |counter|
+      sleep(2)
+      #log_expectation_eql "#{counter}. Pounds", expected, actual
+      break if actual.eql? expected
+      actual = orders.grid.store.data @order_id
+    }
+    actual.should eql expected
+  end unless expected.length == 0
+end
+
 Then /^Expect Grid Age to be (.*)$/ do |expected|
   log.info "Step: Expect Grid Age to be #{expected}"
   begin
     if @order_id.nil?
       @order_id = orders.grid.order_id.row 1
     end
-    actual = orders.grid.age @order_id
+    actual = orders.grid.age.data @order_id
     5.times { |counter|
       sleep(1)
       #log_expectation_eql "#{counter}. Age", expected, actual
       break if actual.eql? expected
-      actual = orders.grid.age @order_id
+      actual = orders.grid.age.data @order_id
     }
     actual.should eql expected
   end unless expected.length == 0
@@ -232,12 +246,12 @@ Then /^Expect Grid Order Date to be (.*)$/ do |expected|
     if @order_id.nil?
       @order_id = orders.grid.order_id.row 1
     end
-    actual = orders.grid.order_date @order_id
+    actual = orders.grid.order_date.data @order_id
     5.times { |counter|
       sleep(1)
       #log_expectation_eql "#{counter}. Order Date", expected, actual
       break if actual.eql? expected
-      actual = orders.grid.order_date @order_id
+      actual = orders.grid.order_date.data @order_id
     }
     actual.should eql expected
   end unless expected.length == 0
