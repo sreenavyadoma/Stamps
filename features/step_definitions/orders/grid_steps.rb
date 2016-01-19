@@ -212,12 +212,9 @@ end
 Then /^Expect Grid Store to be (.*)$/ do |expected|
   log.info "Step: Expect Grid Store to be #{expected}"
   begin
-    actual = orders.grid.store.data @order_id
-    10.times { |counter|
-      sleep(2)
-      #log_expectation_eql "#{counter}. Pounds", expected, actual
-      break if actual.eql? expected
+    10.times {
       actual = orders.grid.store.data @order_id
+      break if actual.eql? expected
     }
     actual.should eql expected
   end unless expected.length == 0

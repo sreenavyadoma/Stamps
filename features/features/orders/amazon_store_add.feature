@@ -18,5 +18,8 @@ Feature:  Store Management - Add Amazon Store
       Then Set Amazon Store - Product Identifier to Use SKU
       Then Click Amazon Store Connect button
       Then Close Manage Stores modal
-      Then Expect Grid Pounds to be 1
+      Then Sort Orders Grid by State in Descending order
+      Then Sort Orders Grid by State in Ascending order
+      Then Expect Grid Store to be Manual Orders
+      Then Sort Orders Grid by Age in Descending order
 

@@ -1,3 +1,15 @@
+Then /^Sort Orders Grid by Store in Ascending order$/ do
+  sorted = orders.grid.store.sort.ascending
+  log.info "Step #{(sorted)?'Passed':'Failed'} - Sort Orders Grid by Store in Ascending order"
+  sorted.should be true
+end
+
+Then /^Sort Orders Grid by Store in Descending order$/ do
+  sorted = orders.grid.store.sort.descending
+  log.info "Step #{(sorted)?'Passed':'Failed'} - Sort Orders Grid by Store in Descending order"
+  sorted.should be true
+end
+
 Then /^Sort Orders Grid by Age in Ascending order$/ do
   sorted = orders.grid.age.sort.ascending
   log.info "Step #{(sorted)?'Passed':'Failed'} - Sort Orders Grid by Age in Ascending order"
