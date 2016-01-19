@@ -7,6 +7,7 @@ module Orders
       TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
       GRID_COLUMNS ||= {
           :check_box => " ",
+          :store => "Store",
           :ship_cost => "Ship Cost",
           :age => "Age",
           :order_id => "Order ID",
@@ -170,6 +171,25 @@ module Orders
         end
       end
 
+    end
+
+    class Store < Column
+
+      def sort
+        Sort.new @browser, :store
+      end
+
+      def scroll_into_view
+        scroll :store
+      end
+
+      def row row
+        grid_text :store, row
+      end
+
+      def data order_id
+        grid_text_by_id :store, order_id
+      end
     end
 
     class Age < Column
@@ -905,43 +925,47 @@ module Orders
       end
 
       def checkbox
-        @check ||= Grid::CheckBox.new @browser
+        Grid::CheckBox.new @browser
+      end
+
+      def store
+        Grid::Store.new @browser
       end
 
       def order_id
-        @order_id ||= Grid::OrderId.new @browser
+        Grid::OrderId.new @browser
       end
 
       def ship_cost
-        @ship_cost ||= Grid::ShipCost.new @browser
+        Grid::ShipCost.new @browser
       end
 
       def age
-        @age ||= Grid::Age.new @browser
+        Grid::Age.new @browser
       end
 
       def order_date
-        @order_date ||= Grid::OrderDate.new @browser
+        Grid::OrderDate.new @browser
       end
 
       def recipient
-        @recipient ||= Grid::Recipient.new @browser
+        Grid::Recipient.new @browser
       end
 
       def company
-        @company ||= Grid::Company.new @browser
+        Grid::Company.new @browser
       end
 
       def address
-        @address ||= Grid::Address.new @browser
+        Grid::Address.new @browser
       end
 
       def city
-        @city ||= Grid::City.new @browser
+       Grid::City.new @browser
       end
 
       def state
-        @state ||= Grid::State.new @browser
+        Grid::State.new @browser
       end
 
       def zip
@@ -957,47 +981,47 @@ module Orders
       end
 
       def email
-        @email ||= Grid::Email.new @browser
+        Grid::Email.new @browser
       end
 
       def qty
-        @qty ||= Grid::Qty.new @browser
+        Grid::Qty.new @browser
       end
 
       def item_sku
-        @item_sku ||= Grid::ItemSKU.new @browser
+       Grid::ItemSKU.new @browser
       end
 
       def item_name
-        @item_name ||= Grid::ItemName.new @browser
+        Grid::ItemName.new @browser
       end
 
       def ship_from
-        @ship_from ||= Grid::ShipFrom.new @browser
+        Grid::ShipFrom.new @browser
       end
 
       def service
-        @service ||= Grid::Service.new @browser
+        Grid::Service.new @browser
       end
 
       def weight
-        @weight ||= Grid::Weight.new @browser
+        Grid::Weight.new @browser
       end
 
       def insured_value
-        @insured_value ||= Grid::InsuredValue.new @browser
+        Grid::InsuredValue.new @browser
       end
 
       def reference_no
-        @reference_no ||= Grid::ReferenceNo.new @browser
+        Grid::ReferenceNo.new @browser
       end
 
       def cost_code
-        @cost_code ||= Grid::CostCode.new @browser
+        Grid::CostCode.new @browser
       end
 
       def order_status
-        @order_status ||= Grid::OrderStatus.new @browser
+        Grid::OrderStatus.new @browser
       end
 
       def print_date
