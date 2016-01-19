@@ -25,11 +25,11 @@ module Orders
         end
 
         def amazon
-          select "Non-Amazon"
+          select "Amazon.com"
         end
 
         def non_amazon
-          select "Amazon.com"
+          select "Non-Amazon"
         end
 
       end
@@ -100,8 +100,10 @@ module Orders
 
       def connect
         button = (Button.new(@browser.span :text => "Connect"))
-        button.click_while_present
-        log.info "#{button.present?}"
+        5.times do
+          button.safe_click
+          break unless button.present?
+        end
       end
 
     end
@@ -142,7 +144,10 @@ module Orders
     class ManageStores < OrdersObject
       def close
         button = Button.new (@browser.imgs :css => "img[id^=tool][src*='R0lGODlhAQABAID']").first
-        button.click_while_present
+        5.times do
+          button.safe_click
+          return unless button.present?
+        end
       end
 
       def window_title

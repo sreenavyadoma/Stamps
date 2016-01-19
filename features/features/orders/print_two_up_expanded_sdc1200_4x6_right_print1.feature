@@ -14,7 +14,7 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾" right side
     Then Set Order Details Insure For to $1.09
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
-    Then Set Print Modal Printer to "factory"
+    Then Set Print Modal Printer to "Designer"
     Then Select Print Modal right-side label
     Then Expect Print Modal right-side label selected
     Then Print
