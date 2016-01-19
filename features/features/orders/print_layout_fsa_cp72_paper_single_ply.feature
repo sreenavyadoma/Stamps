@@ -3,7 +3,7 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
   Background:
     Given I am signed in to Orders
 
-  @print_layouts_cp72_single_ply_test
+  @print_layouts_cp72_single_ply
   Scenario: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
     When I Add a new order
     Then Set Order Details Ship-From to default
