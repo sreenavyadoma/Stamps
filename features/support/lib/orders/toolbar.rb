@@ -17,6 +17,7 @@ module Orders
 
           10.times do
             dd.safe_click unless selection_field.present?
+            sleep 1
             selection_field.safe_click
             break if text_field.text.include? selection
           end
@@ -50,6 +51,7 @@ module Orders
 
           10.times do
             dd.safe_click unless selection_field.present?
+            sleep 1
             selection_field.safe_click
             break if text_field.text.include? selection
           end
