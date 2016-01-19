@@ -303,6 +303,8 @@ module Orders
             selection_label = Label.new @browser.li :text => /Brother/
           when /officejet/
             selection_label = Label.new @browser.li :text => /Officejet/
+          when /designer/
+            selection_label = Label.new @browser.li :text => /Designer/
           else
             raise "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
         end
