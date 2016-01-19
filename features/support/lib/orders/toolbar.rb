@@ -1,6 +1,72 @@
 module Orders
   module Toolbar
     class AmazonStore < OrdersObject
+      class OrderSource < OrdersObject
+        def text_box
+          Textbox.new (@browser.text_field :name => "AmazonMarketplace")
+        end
+
+        def drop_down
+          Button.new (@browser.divs :css => "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2]
+        end
+
+        def select selection
+          dd = drop_down
+          text_field = text_box
+          selection_field = Label.new (@browser.li :text => selection)
+
+          10.times do
+            dd.safe_click unless selection_field.present?
+            selection_field.safe_click
+            text_field break if text_field.text.include? selection
+          end
+
+          log.info "Order Source #{selection} was #{(text_field.text.include? selection)?"Selected":"NOT selected"}"
+        end
+
+        def amazon
+          select "Non-Amazon"
+        end
+
+        def non_amazon
+          select "Amazon.com"
+        end
+
+      end
+
+      class ProductIdentifier < OrdersObject
+        def text_box
+          Textbox.new (@browser.text_field :name => "AmazonMarketplace")
+        end
+
+        def drop_down
+          Button.new (@browser.divs :css => "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[3]
+        end
+
+        def select selection
+          dd = drop_down
+          text_field = text_box
+          selection_field = Label.new (@browser.li :text => selection)
+
+          10.times do
+            dd.safe_click unless selection_field.present?
+            selection_field.safe_click
+            text_field break if text_field.text.include? selection
+          end
+
+          log.info "Product Identifier #{selection} was #{(text_field.text.include? selection)?"Selected":"NOT selected"}"
+        end
+
+        def use_sku
+          select "Use SKU"
+        end
+
+        def use_asin
+          select "Use the ASIN"
+        end
+
+      end
+
       def window_title
         Label.new(@browser.div :text => "Connect your Amazon Store")
       end
@@ -18,15 +84,24 @@ module Orders
       end
 
       def verify_seller_id
-        Button.new @browser.span(:name => "Verify Seller ID")
+        button = Button.new (@browser.span :text => "Verify Seller ID")
+        3.times do
+          button.safe_click
+        end
+      end
+
+      def order_source
+        OrderSource.new @browser
       end
 
       def product_identifier
-
+        ProductIdentifier.new @browser
       end
 
       def connect
-        #click while present
+        button = (Button.new(@browser.span :text => "Connect"))
+        button.click_while_present
+        log.info "#{button.present?}"
       end
 
     end
@@ -34,7 +109,7 @@ module Orders
     class AddStoreOrMarketplace < OrdersObject
 
       def window_title
-
+        Label.new (@browser.divs :text => "Add your Store or Marketplace").first
       end
 
       def present?
@@ -65,6 +140,11 @@ module Orders
     end
 
     class ManageStores < OrdersObject
+      def close
+        button = Button.new (@browser.imgs :css => "img[id^=tool][src*='R0lGODlhAQABAID']").first
+        button.click_while_present
+      end
+
       def window_title
         Label.new(@browser.div :text => "Manage Stores")
       end
@@ -77,7 +157,7 @@ module Orders
         Button.new (@browser.spans :css => "span[class*=sdc-icon-add]").last
       end
 
-      def add_store
+      def add
         button = add_button
         marketplace = store
         10.times do

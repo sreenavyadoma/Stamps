@@ -1,4 +1,4 @@
-#todo-rob fix postage print-on
+#todo-elie make sure changing print ons only happens in one place... here.  so check stamps_step definitions, envelope stap definitions etc.
 Then /^Select Print Postage Print On (.*)/ do |media|
   log.info "Select Print Postage Print On #{media}"
   postage.print_on.select media
@@ -31,7 +31,7 @@ Then /^Set Print Postage Form Pounds to (.*)/ do |pounds|
   @postage_form.weight.pounds.set pounds
 end
 
-#todo-rob Fix ship_from
+#todo-elie Fix ship_from
 Then /^Set Print Postage Ship-From to (.*)/ do |value|
   log.info "Step: Set Print Postage Ship-From to: \n #{value}"
   #@postage_form.ship_from.select value
