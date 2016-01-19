@@ -30,6 +30,5 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
     Then Set Print Modal Printer to "factory"
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
-    Then Expect Print Window Requires 1 label sheets
     Then Print
     Then Sign out

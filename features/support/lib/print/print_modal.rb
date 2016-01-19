@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Print
 
-  class PrintPostageModalObject < PrintObject
+  class PrintPostageModalObject < Print::Postage::PrintObject
     def window_x_button
       @browser.img :css => "img[class*='x-tool-img x-tool-close']"
     end

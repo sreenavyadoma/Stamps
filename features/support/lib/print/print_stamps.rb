@@ -1,38 +1,37 @@
 # encoding: utf-8
 module Print
   module Postage
-    class Stamps < PrintObject
-      class CalculatePostageAmount < PrintObject
+    class Stamps < Print::Postage::PrintObject
+      class CalculatePostageAmount < Print::Postage::PrintObject
         def weight
-          Postage::Weight.new @browser
+          Print::Postage::Weight.new @browser
         end
 
         def extra_services
-          Postage::Weight.new @browser
+          Print::Postage::ExtraServices.new @browser
         end
       end
 
-      class SpecifyPostageAmount < PrintObject
+      class SpecifyPostageAmount < Print::Postage::PrintObject
         def stamp_amount
-          Postage::StampAmount.new @browser
+          Print::Postage::StampAmount.new @browser
         end
       end
 
       def country
-        Postage::Country.new @browser
+        Print::Postage::Country.new @browser
       end
 
       def serial
         Textbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
       end
 
-
       def service
-        Postage::Service.new @browser
+        Print::Postage::Service.new @browser
       end
 
       def ship_from
-        Print::Postage::ShipFrom.new @browser
+        Print::Print::Postage::ShipFrom.new @browser
       end
 
       def calculate_postage_amount

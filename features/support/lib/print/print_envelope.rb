@@ -1,18 +1,9 @@
-# encoding: utf-8
 module Print
   module Postage
-    class ShippingLabel < Print::Postage::DomesticCommon
+    class Envelope < Print::Postage::DomesticCommon
 
       def ship_from
         Print::Postage::ShipFrom.new @browser
-      end
-
-      def ship_to
-        Print::Postage::ShipToDomestic.new @browser
-      end
-
-      def email_tracking
-        Print::Postage::Email.new @browser
       end
 
       def weight

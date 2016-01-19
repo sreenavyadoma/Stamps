@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Print
   module Postage
-    class ShippingLabel < Print::Postage::DomesticCommon
+    class Roll < Print::Postage::DomesticCommon
 
       def ship_from
         Print::Postage::ShipFrom.new @browser
@@ -34,7 +34,6 @@ module Print
       def ship_date
         Print::Postage::ShipDate.new @browser
       end
-
     end
   end
 end

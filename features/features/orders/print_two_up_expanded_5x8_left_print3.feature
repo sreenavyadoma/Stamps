@@ -33,6 +33,5 @@ Feature: Print 3 Domestic labels on 5.5x8.5 - left side
     Then Set Print Modal Printer to "factory"
     Then Select Print Modal left-side label
     Then Expect Print Modal left-side label selected
-    Then Expect Print Window Requires 2 label sheets
     Then Print
     Then Sign out

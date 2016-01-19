@@ -22,8 +22,10 @@ require_relative 'lib/core/logger'
 # OrdersHelper module
 require_relative 'lib/orders/orders_helper'
 require_relative 'lib/orders/fields'
+
 require_relative 'lib/print/print_helper'
 require_relative 'lib/print/helpers'
+require_relative 'lib/print/print_common_form_elements'
 
 
 module Selenium
