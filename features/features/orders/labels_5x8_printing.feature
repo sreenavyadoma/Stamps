@@ -202,6 +202,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Order Details - Set Length to 1
     And Open Customs Form
     And Customs Form - Add Item 1, Description random, Qty 1, Price 20, Lbs 0, Oz 5 Origin United States, Tariff 10
+    Then Close Customs Form
     Then Open Print Modal
     Then Print Modal - Set Media "Shipping Label - 5 ½" x 8 ½""
     Then Toolbar - Print
