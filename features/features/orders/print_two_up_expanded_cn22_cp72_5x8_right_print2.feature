@@ -15,7 +15,7 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
     Then Open Customs Form
     Then Customs Form - Set Package Contents to "Merchandise"
-    Then Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 1, Oz 1 Origin United States, Tariff 10
+    Then Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
 
@@ -28,7 +28,7 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
     Then Order Details - Set Weight to 1 lbs 1 oz
     Then Open Customs Form
     Then Customs Form - Set Package Contents to "Merchandise"
-    Then Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 1, Oz 1 Origin United States, Tariff 10
+    Then Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
 

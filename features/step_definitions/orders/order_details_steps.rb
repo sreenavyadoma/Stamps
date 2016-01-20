@@ -1,5 +1,5 @@
-Then /^Order Details - Add Item (\d+) - Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
-  log.info "Step: Order Details - Add Item #{item_number} - Qty #{qty}, ID #{id} Description #{description}"
+Then /^Order Details - Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
+  log.info "Step: Order Details - Add Item #{item_number}, Qty #{qty}, ID #{id} Description #{description}"
   item = orders.details.item_grid.item item_number.to_i
   item.qty.set qty
   item.id.set (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id

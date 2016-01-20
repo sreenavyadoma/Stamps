@@ -36,7 +36,7 @@ Feature: Test Development
     Then Order Details - Set Width to 1
     Then Order Details - Set Tracking to "Signature Required"
     Then Order Details - Set Insure For to $50.25
-    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1, Qty 1, ID random, Description random
 
   Scenario:
     Then Add New Order
@@ -54,7 +54,7 @@ Feature: Test Development
     Then Order Details - Set Tracking to "Signature Required"
     Then Order Details - Set Tracking to "USPS Tracking"
     Then Order Details - Set Insure For to $50.25
-    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1, Qty 1, ID random, Description random
 
   Scenario:
     Then Add New Order
@@ -294,7 +294,7 @@ Feature: Test Development
     Then Customs Form - Set Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs Form - Set ITN# to "random"
     Then Customs Form - Set I agree to Checked
@@ -316,7 +316,7 @@ Feature: Test Development
     Then Order Details - Set Service to "Priority Mail Package"
     And Open Customs Form
     Then Customs Form - Set Package Contents to "Merchandise"
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Close Customs Form
     Then Toolbar - Print
 
@@ -331,7 +331,7 @@ Feature: Test Development
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Pounds to 2
     And Open Customs Form
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
@@ -344,7 +344,7 @@ Feature: Test Development
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Pounds to 2
     And Open Customs Form
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
     Then Order Details - Set Service to "Priority Mail International Flat Rate Envelope"

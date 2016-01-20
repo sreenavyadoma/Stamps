@@ -13,11 +13,11 @@ Feature: 25 orders
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
-    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1, Qty 1, ID random, Description random
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Pounds to 2
     And Open Customs Form
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
@@ -27,11 +27,11 @@ Feature: 25 orders
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
-    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1, Qty 1, ID random, Description random
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Pounds to 2
     And Open Customs Form
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
     Then Order Details - Set Service to "Priority Mail International Flat Rate Envelope"

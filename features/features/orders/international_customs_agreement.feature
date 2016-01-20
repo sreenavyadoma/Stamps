@@ -26,7 +26,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Customs Form - Set Package Contents to "Merchandise"
 
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
 
     Then Close Customs Form
@@ -55,7 +55,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Customs Form - Set Package Contents to "Merchandise"
 
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
 
     Then Close Customs Form
@@ -86,7 +86,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Customs Form - Set Package Contents to "Merchandise"
 
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
     Then Toolbar - Print
@@ -110,7 +110,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Customs Form - Set Package Contents to "Merchandise"
 
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
@@ -136,8 +136,8 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Customs Form - Set Package Contents to "Merchandise"
 
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
 
