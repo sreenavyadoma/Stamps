@@ -217,8 +217,8 @@ Then /^Customs Form - Set Invoice Number to \"(.+)\"$/ do |value|
   @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Customs Form - Add Item (\d+) - Description (\w+), Qty (\d+), Price ([\d.]+), Lbs (\d+), Oz (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
-  log.info "Step: Customs Form - Add Item #{item_number} - Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
+Then /^Customs Form - Add Item (\d+), Description (\w+), Qty (\d+), Price ([\d.]+), Lbs (\d+), Oz (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
+  log.info "Step: Customs Form - Add Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i

@@ -14,7 +14,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then Order Details - Set Ounces to 1
     And Open Customs Form
     Then Customs Form - Set Package Contents to "Merchandise"
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
     Then Add New Order
@@ -27,7 +27,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then Order Details - Set Ounces to 1
     And Open Customs Form
     Then Customs Form - Set Package Contents to "Merchandise"
-    And Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    And Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
 

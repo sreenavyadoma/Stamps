@@ -13,16 +13,16 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
       | PM RR Box B | Domestic FPO 8.5x11 | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
     Then Order Details - Set Service to "Priority Mail Regional Rate Box B"
     Then Order Details - Set Weight to 2 lbs 1 oz
-    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
-    Then Order Details - Add Item 2 - Qty 2, ID random, Description random
-    Then Order Details - Add Item 3 - Qty 3, ID random, Description random
+    Then Order Details - Add Item 1, Qty 1, ID random, Description random
+    Then Order Details - Add Item 2, Qty 2, ID random, Description random
+    Then Order Details - Add Item 3, Qty 3, ID random, Description random
 
     Then Delete Order Details Item 1
     Then Delete Order Details Item 2
 
     Then Open Customs Form
     Then Customs Form - Set Package Contents to "Merchandise"
-    Then Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    Then Customs Form - Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
     Then Open Print Modal
