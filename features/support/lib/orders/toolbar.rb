@@ -186,7 +186,6 @@ module Orders
             del_btn.safe_click
             return delete_modal if delete_modal.present?
           end
-
         end
       end
 
