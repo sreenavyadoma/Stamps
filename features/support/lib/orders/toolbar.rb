@@ -144,6 +144,56 @@ module Orders
     end
 
     class ManageStores < OrdersObject
+      class ManageStoresGrid < OrdersObject
+        class DeleteStoreModal < OrdersObject
+          def present?
+            delete.present?
+          end
+
+          def delete
+            button = Button.new (@browser.spans :text => "Delete").last
+            button.click_while_present
+          end
+
+          def cancel
+            Button.new (@browser.span :text => "Cancel")
+          end
+        end
+
+        def size
+          (@browser.tables :css => "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table").size
+        end
+
+        def delete
+          Button.new (@browser.span :text => "Delete")
+        end
+
+        def delete_row row
+          css = "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table:nth-child(#{row})>tbody>tr>td:nth-child(2)>div"
+          grid_row_item = @browser.div :css => css
+          grid_row_focused_field = Label.new grid_row_item.parent
+          grid_row_field = Label.new grid_row_item
+
+          del_btn = delete
+          delete_modal = DeleteStoreModal.new @browser
+
+          10.times do
+            #select grid row item
+            5.times do
+              grid_row_field.safe_click
+              break if (grid_row_focused_field.attribute_value "class").include? "focused"
+            end
+            del_btn.safe_click
+            return delete_modal if delete_modal.present?
+          end
+
+        end
+      end
+
+      def grid
+        ManageStoresGrid.new @browser
+      end
+
       def close
         button = Button.new (@browser.imgs :css => "img[id^=tool][src*='R0lGODlhAQABAID']").first
         5.times do

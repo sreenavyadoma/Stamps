@@ -1333,9 +1333,9 @@ module Orders
         end
       end
 
-      def delete_row(number)
+      def delete_row number
         @delete_shipping_address = DeleteShippingAddress.new(@browser)
-        3.times {
+        5.times {
           select_row number
           click_delete_button
           break if @delete_shipping_address.present?
@@ -1433,7 +1433,6 @@ module Orders
         5.times do
           begin
             browser_helper.click cell, "cell(#{row_num}, 1)"
-            #log_browser_click(cell, attibute, attribute_value)
             break if checked? row_num
           rescue
             #ignore

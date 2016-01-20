@@ -4,7 +4,7 @@ Feature:  Store Management - Add Amazon Store
   Background:
     Given I am signed in to Orders
 
-    @amazon_store
+    @store_management
     Scenario: Store Management - Add Amazon Store
       Then Open Manage Stores modal
       Then Open Add Store or Marketplace modal
@@ -18,8 +18,7 @@ Feature:  Store Management - Add Amazon Store
       Then Set Amazon Store - Product Identifier to Use SKU
       Then Click Amazon Store Connect button
       Then Close Manage Stores modal
-      Then Sort Orders Grid by State in Descending order
-      Then Sort Orders Grid by State in Ascending order
-      Then Expect Grid Store to be Manual Orders
-      Then Sort Orders Grid by Age in Descending order
+      Then Sort Orders Grid by Store in Descending order
+      Then Sort Orders Grid by Store in Ascending order
+      Then Expect Grid Store row 1 to be Amazon Store
 

@@ -75,3 +75,18 @@ Then /^Close Manage Stores modal$/ do
     @manage_stores.close
   end
 end
+
+Then /^Delete Manage Stores Modal Row (\d+)$/ do |row|
+  log.info "Delete Manage Stores Modal Row #{row}"
+  step "Open Manage Stores modal"
+  grid = @manage_stores.grid
+  size = grid.size
+  log.info "Grid Count before delete is #{size}"
+  delete_modal = @manage_stores.grid.delete_row row
+  delete_modal.delete
+  new_size = grid.size
+  log.info "Test #{(size == new_size + 1)?"Passed":"Failed"} - Old Grid line items:  #{size}.  New Grid line items:  #{new_size}"
+  log.info "Test #{(delete_modal.present?)?"Failed":"Passed"}"
+  expect(size == new_size + 1).to be true
+  delete_modal.present?.should be false
+end
