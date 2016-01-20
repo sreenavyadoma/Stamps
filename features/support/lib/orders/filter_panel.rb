@@ -92,9 +92,9 @@ module Orders
     end
 
     def is_order_grid_filtered(filter)
-      if Filter Panel - == "Shipped"
+      if filter == "Shipped"
         return are_ship_dates_full
-      elsif Filter Panel - == "Awaiting Shipment"
+      elsif filter == "Awaiting Shipment"
         return are_ship_dates_empty
       end
     end
