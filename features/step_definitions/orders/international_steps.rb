@@ -1,5 +1,5 @@
-Then /^Set Order Details Ship-To Country to (.*)$/ do |country|
-  log.info "Step: Set Order Details Ship-To Country to #{country}"
+Then /^Order Details - Set Ship-To Country to (.*)$/ do |country|
+  log.info "Step: Order Details - Set Ship-To Country to #{country}"
   @international_ship_to = orders.details.ship_to.country.select country
 end
 
@@ -108,8 +108,8 @@ Then /^Expect Order Details Ship-To Country is (.*)$/ do |country|
 end
 
 # random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
-Then /^Set Ship-To to international address$/ do |table|
-  log.info "Step: Set Ship-To to international address..."
+Then /^Order Details - Set Ship-To International Adress;$/ do |table|
+  log.info "Step: Order Details - Set Ship-To International Adress;..."
   param_hash = table.hashes.first
 
   name = (param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]
@@ -135,7 +135,7 @@ Then /^Set Ship-To to international address$/ do |table|
   log.info "International Ship-To Phone: #{phone}"
   log.info "International Ship-To Email: #{email}"
 
-  step "Set Order Details Ship-To Country to #{country}"
+  step "Order Details - Set Ship-To Country to #{country}"
   step "Set International Ship-To Name to \"#{name}\""
   step "Set International Ship-To Company to \"#{company}\""
   step "Set International Ship-To Address 1 to \"#{street_address_1}\""
@@ -147,78 +147,78 @@ Then /^Set Ship-To to international address$/ do |table|
   step "Set International Ship-To Email to \"#{email}\""
 end
 
-Then /^Open customs form$/ do
-  log.info "Step: Open customs form"
+Then /^Open Customs Form$/ do
+  log.info "Step: Open Customs Form"
   @customs_form = @order_details.customs.edit_form
 end
 
-Then /^Set customs form Package Contents to \"(.+)\"$/ do |value|
-  log.info "Step: Set customs form Package Contents to #{value}"
+Then /^Customs Form - Set Package Contents to \"(.+)\"$/ do |value|
+  log.info "Step: Customs Form - Set Package Contents to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open customs form" unless @customs_form.present?
+  step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.package_contents.select value
 end
 
-Then /^Set customs form Non-Delivery Options to \"(.+)\"$/ do |value|
-  log.info "Step: Set customs form Non-Delivery Options to #{value}"
+Then /^Customs Form - Set Non-Delivery Options to \"(.+)\"$/ do |value|
+  log.info "Step: Customs Form - Set Non-Delivery Options to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open customs form" unless @customs_form.present?
+  step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.non_delivery_options.select value
 end
 
-Then /^Set customs form Internal Transaction Number to \"(.+)\"$/ do |value|
-  log.info "Step: Set customs form Internal Transaction Number to #{value}"
+Then /^Customs Form - Set Internal Transaction Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs Form - Set Internal Transaction Number to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open customs form" unless @customs_form.present?
+  step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.internal_transaction.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
   sleep 1
 end
 
-Then /^Set customs form More Info to \"(.+)\"$/ do |value|
-  log.info "Step: Set customs form More Info to #{value}"
+Then /^Customs Form - Set More Info to \"(.+)\"$/ do |value|
+  log.info "Step: Customs Form - Set More Info to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open customs form" unless @customs_form.present?
+  step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Set customs form ITN# to \"(.+)\"$/ do |value|
-  log.info "Step: Set customs form ITN# to #{value}"
+Then /^Customs Form - Set ITN# to \"(.+)\"$/ do |value|
+  log.info "Step: Customs Form - Set ITN# to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open customs form" unless @customs_form.present?
+  step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Set customs form License# to \"(.+)\"$/ do |value|
-  log.info "Step: Set customs form License# to #{value}"
+Then /^Customs Form - Set License# to \"(.+)\"$/ do |value|
+  log.info "Step: Customs Form - Set License# to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open customs form" unless @customs_form.present?
+  step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Set customs form Certificate Number to \"(.+)\"$/ do |value|
-  log.info "Step: Set customs form Certificate Number to #{value}"
+Then /^Customs Form - Set Certificate Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs Form - Set Certificate Number to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open customs form" unless @customs_form.present?
+  step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.certificate.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Set customs form Invoice Number to \"(.+)\"$/ do |value|
-  log.info "Step: Set customs form Invoice Number to #{value}"
+Then /^Customs Form - Set Invoice Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs Form - Set Invoice Number to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open customs form" unless @customs_form.present?
+  step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Add Customs Form Item (\d+) - Description (\w+), Qty (\d+), Price ([\d.]+), Lbs (\d+), Oz (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
-  log.info "Step: Add Customs Form Item #{item_number} - Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
+Then /^Customs Form - Add Item (\d+) - Description (\w+), Qty (\d+), Price ([\d.]+), Lbs (\d+), Oz (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
+  log.info "Step: Customs Form - Add Item #{item_number} - Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i
@@ -243,17 +243,21 @@ Then /^Delete Customs Form Item (\d+)$/ do |item_number|
   end
 end
 
-Then /^Set Customs Form I agree to Checked$/ do
+Then /^Customs Form - Set I agree to Checked$/ do
   log.info "Step: Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @order_details.customs_form.i_agree true
 end
 
-Then /^Set Customs Form I agree to Unchecked$/ do
+Then /^Customs Form - Set I agree to Unchecked$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @order_details.customs_form.i_agree false
 end
 
 Then /^Sleep (\d+)$/ do |seconds|
+  step "Wait in seconds #{seconds}"
+end
+
+Then /^Pause for (\d+) seconds$/ do |seconds|
   step "Wait in seconds #{seconds}"
 end
 

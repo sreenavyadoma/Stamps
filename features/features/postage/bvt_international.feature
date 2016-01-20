@@ -15,13 +15,13 @@ Feature: International Shipping BVT
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then Set Print Postage Form Ounces to <string>
     Then Set Print Postage Form Pounds to <string>
-    And Open customs form
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Not required"
-    Then Set customs form More Info to "BVT International Shipping"
-    Then Set Customs Form I agree to Checked
-    And Add Customs Form Item 1 - Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    And Open Customs Form
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Not required"
+    Then Customs Form - Set More Info to "BVT International Shipping"
+    Then Customs Form - Set I agree to Checked
+    And Customs Form - Add Item 1 - Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Close Customs Form
     Then Print Postage
     Then Sign out

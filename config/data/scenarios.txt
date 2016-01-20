@@ -3,7 +3,7 @@ Feature:  B-01604 As a features.orders shipper, when I have an order with an amb
 
 Scenario: # 1.  Systems Triggers Address Cleanse for Ambiguous Address
 Given User has one order selected in the Orders Grid View
-And Order Details Panel is Displayed
+Then Order Details Panel is Displayed
 When User clicks on the Ship-To Down Arrow
 Then Ship-To Text Field Expands for user to modify Ship-To Address
 And User inputs an ambiguous STREET address in the Ship-To Address Order Details Panel

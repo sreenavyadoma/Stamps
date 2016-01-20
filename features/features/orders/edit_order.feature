@@ -6,23 +6,29 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
   @edit_order
   Scenario: User edits an order
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To to Random Address Between Zone 5 through 8
-    Then Set Order Details Service to "Priority Mail Flat Rate Envelope"
-    Then Set Order Details Weight to 4 lbs 2 oz
-    Then Set Order Details Insure For to $1.00
-    Then Set Order Details Dimensions to Length 1 Width 1 Height 1
-    Then Uncheck Orders Grid row 1
-    Then Check Orders Grid row 1
-    Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Weight to 1 lbs 4 oz
-    Then Set Order Details Insure For to $11.00
-    Then Set Order Details Dimensions to Length 2 Width 2 Height 2
-    Then Uncheck Orders Grid row 1
-    Then Check Orders Grid row 1
+    Then Add New Order
+    Then Order Details - Set Ship-From to default
+    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Service to "Priority Mail Flat Rate Envelope"
+    Then Order Details - Set Ounces to 3
+    Then Order Details - Set Pounds to 2
+    Then Order Details - Set Insure For to $1.00
+    Then Order Details - Set Height to 1
+    Then Order Details - Set Length to 1
+    Then Order Details - Set Width to 1
+    Then UnOrders Grid - Check row 1
+    Then Orders Grid - Check row 1
+    Then Order Details - Set Service to "Priority Mail Package"
+    Then Order Details - Set Ounces to 2
+    Then Order Details - Set Pounds to 1
+    Then Order Details - Set Insure For to $11.00
+    Then Order Details - Set Height to 2
+    Then Order Details - Set Length to 3
+    Then Order Details - Set Width to 4
+    Then UnOrders Grid - Check row 1
+    Then Orders Grid - Check row 1
     Then Expect Order Details Service to be "Priority Mail Package"
-    Then Expect Grid Ounces to be 4
+    Then Expect Grid Ounces to be 2
     Then Expect Grid Pounds to be 1
     Then Expect Grid Insured Value to be $11.00
     And Sign out

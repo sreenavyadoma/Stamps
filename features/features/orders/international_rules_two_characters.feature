@@ -5,14 +5,14 @@ Feature: Two character minimum for Name & Company
 
   @international_rules_engine @international_rules_engine_name_stuff
   Scenario: Two character minimum for Name & Company
-    When I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To Country to Antigua & Barbuda
+    Then Add New Order
+    Then Order Details - Set Ship-From to default
+    Then Order Details - Set Ship-To Country to Antigua & Barbuda
     Then Set International Ship-To Name to "a"
     Then Expect Order Details International Name data error tooltip to be "A first and last name of at least two characters each is required"
 
 
-    Then Set Order Details Ship-From to default
+    Then Order Details - Set Ship-From to default
     Then Set International Ship-To Name to "abc def"
     Then Expect Order Details International Name data error tooltip to be ""
     #Then Expect Order Details International Company data error tooltip to be ""

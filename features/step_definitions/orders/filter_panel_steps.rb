@@ -1,16 +1,16 @@
 
-Then /^Filter Awaiting Shipment$/ do
-  log.info "Step:  Filter Awaiting Shipment"
+Then /^Filter Panel - Awaiting Shipment$/ do
+  log.info "Step:  Filter Panel - Awaiting Shipment"
   orders.filter.awaiting_shipment
 end
 
-Then /^Filter Shipped$/ do
-  log.info "Step:  Filter Shipped"
+Then /^Filter Panel - Shipped$/ do
+  log.info "Step:  Filter Panel - Shipped"
   orders.filter.shipped
 end
 
-Then /^Filter Cancelled$/ do
-  log.info "Step:  Filter Cancelled"
+Then /^Filter Panel - Cancelled$/ do
+  log.info "Step:  Filter Panel - Cancelled"
   orders.filter.cancelled
 end
 
@@ -21,8 +21,8 @@ Then /^Expect Awaiting Shipment count to be less by (\d+)$/ do |count|
   awaiting_shipment_count.should eql @awaiting_shipment_count.to_i - count.to_i
 end
 
-Then /^Expect system shows name of (.*) filter in closed panel$/ do |expectation|
-  log.info "Step: Expect system shows name of #{expectation} filter in closed panel"
+Then /^Expect system shows name of (.*) Filter Panel - in closed panel$/ do |expectation|
+  log.info "Step: Expect system shows name of #{expectation} Filter Panel - in closed panel"
   actual = orders.filter.get_closed_filter_name
   log.info "Test #{(actual==expectation)?'Passed':'Failed'}"
   actual.should eql expectation
@@ -35,8 +35,8 @@ Then /^Expect system changes the panel arrow so that it is pointing to the (.*) 
   actual.should eql expectation
 end
 
-Then /^Expect system selects (.*) Filter and deselects the previous filter$/ do |filter|
-  log.info "Step: Expect system selects #{filter} Filter and deselects the previous filter"
+Then /^Expect system selects (.*) Filter Panel - and deselects the previous filter$/ do |filter|
+  log.info "Step: Expect system selects #{filter} Filter Panel - and deselects the previous filter"
   actual = orders.filter.get_selected_filter_text
   actual.should eql filter
 end
@@ -62,8 +62,8 @@ Then /^Expect system displays "Awaiting Shipment" and "Shipped" filters in panel
   actual.should eql true
 end
 
-Then /^Expect system selects the (.*) filter by default$/ do |expectation|
-  log.info "Step: Expect system selects the #{expectation} filter by default"
+Then /^Expect system selects the (.*) Filter Panel - by default$/ do |expectation|
+  log.info "Step: Expect system selects the #{expectation} Filter Panel - by default"
   actual = orders.filter.get_selected_filter_text
   log.info "Test #{(actual==expectation)?'Passed':'Failed'}"
   actual.should eql expectation
@@ -80,8 +80,8 @@ Then /^Expect system closes Filters panel$/ do
   actual.should eql false
 end
 
-Then /^Expect system shows an arrow above the Order Status filter name$/ do
-  log.info "Step: Expect system shows an arrow above the Order Status filter name"
+Then /^Expect system shows an arrow above the Order Status Filter Panel - name$/ do
+  log.info "Step: Expect system shows an arrow above the Order Status Filter Panel - name"
   orders.filter.is_header_arrow_present
 end
 
@@ -92,8 +92,8 @@ Then /^Expect system opens the Filters panel$/ do
   actual.should eql true
 end
 
-Then /^Expect system hides the header arrow and Order Status filter name$/ do
-  log.info "Step: Expect system hides the header arrow and Order Status filter name"
+Then /^Expect system hides the header arrow and Order Status Filter Panel - name$/ do
+  log.info "Step: Expect system hides the header arrow and Order Status Filter Panel - name"
   actual = orders.filter.are_filter_links_present
   log.info "Test #{(actual==false)?'Passed':'Failed'}"
   actual.should eql false
