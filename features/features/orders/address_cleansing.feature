@@ -15,7 +15,7 @@ Feature: Address Cleansing
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Insure For to $200
-    Then Wait in seconds 2
+    Then Pause for 2 seconds
     Then Expect Grid Zip to be 94102
     Then Expect Grid Recipient to be Ambiguous Address
     Then Expect Grid Company to be Address Cleansing

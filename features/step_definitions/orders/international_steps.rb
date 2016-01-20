@@ -257,6 +257,10 @@ Then /^Sleep (\d+)$/ do |seconds|
   step "Wait in seconds #{seconds}"
 end
 
+Then /^Pause for (\d+) seconds$/ do |seconds|
+  step "Wait in seconds #{seconds}"
+end
+
 Then /^Wait in seconds (\d+)$/ do |seconds|
   sleep seconds.to_i
 end

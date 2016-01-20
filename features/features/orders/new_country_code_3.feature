@@ -19,7 +19,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
     And Add Customs Form Item 1 - Description random, Qty 1, Price 30, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Set Customs Form I agree to Checked
     Then Close Customs Form
-    Then Wait in seconds 3
+    Then Pause for 3 seconds
     Then Open Print Modal
     Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
     Then Set Print Modal Printer to "factory"

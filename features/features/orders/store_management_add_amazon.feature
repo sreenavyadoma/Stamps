@@ -20,5 +20,7 @@ Feature:  Store Management - Add Amazon Store
       Then Close Manage Stores modal
       Then Sort Orders Grid by Store in Descending order
       Then Sort Orders Grid by Store in Ascending order
+      Then Sort Orders Grid by Store in Ascending order
+      Then Pause for 2 seconds
       Then Expect Grid Store row 1 to be Amazon Store
 

@@ -13,16 +13,16 @@ Feature:  Customs Form Data Tooltip Error
     Then Set Order Details Ounces to 5
     Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
     Then Open customs form
-    Then Wait in seconds 2
+    Then Pause for 2 seconds
     Then Cancel Customs Form
-    Then Wait in seconds 2
+    Then Pause for 2 seconds
     Then Open customs form
     Then Set Customs Form I agree to Checked
     Then Set Customs Form I agree to Unchecked
-    Then Wait in seconds 2
+    Then Pause for 2 seconds
     Then Expect Customs Form USPS Privacy Act Warning to be visible
     Then Set Customs Form I agree to Checked
-    Then Wait in seconds 1
+    Then Pause for 1 seconds
     Then Expect Customs Form USPS Privacy Act Warning to be hidden
     Then Set Customs Form I agree to Unchecked
     Then Expect Customs Form Tooltip Error for Item Description to be Description is a required field
@@ -31,7 +31,7 @@ Feature:  Customs Form Data Tooltip Error
     Then Expect Customs Form Tooltip Error for Pounds to be Weight cannot be 0
     Then Expect Customs Form Tooltip Error for Ounces to be Weight cannot be 0
     And Add Customs Form Item 1 - Description random, Qty 1, Price 50, Lbs 9, Oz 9 Origin United States, Tariff 100
-    Then Wait in seconds 2
+    Then Pause for 2 seconds
     Then Expect Customs Form Tooltip Error for Total Weight to be The itemized weight exceeds the package weight
     Then Close Customs Form
     And Sign out

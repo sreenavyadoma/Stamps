@@ -15,7 +15,7 @@ Feature:  BVT Address Cleansing
     Then Set Order Details Ounces to 1
     Then Set Order Details Pounds to 1
     Then Set Order Details Insure For to $200
-    Then Wait in seconds 2
+    Then Pause for 2 seconds
     Then Expect Grid Recipient to be Euan Davidson
     Then Expect Grid Company to be Company Name
     Then Expect Grid Address to be 1350 Market Street
