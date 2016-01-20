@@ -4,7 +4,7 @@ Feature:  Store Management - Delete Amazon Store
   Background:
     Given I am signed in to Orders
 
-  @store_management @store_management_delete
+  @store_management
   Scenario: Store Management - Add Amazon Store
     Then Open Manage Stores modal
     Then Open Add Store or Marketplace modal
