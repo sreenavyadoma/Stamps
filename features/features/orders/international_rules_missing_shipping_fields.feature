@@ -5,7 +5,7 @@ Feature: International Shipping fields and Customs Information fields validation
 
   @international_rules_engine @international_rules_engine_customs_fields_validation
   Scenario: International Shipping fields and Customs Information fields validation
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To Country to Japan
 

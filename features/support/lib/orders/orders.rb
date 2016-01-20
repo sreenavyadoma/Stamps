@@ -15,12 +15,12 @@ module Orders
     end
 
     def awaiting_shipment
-      FilterPanel.new(@browser).filter "Awaiting Shipment"
+      FilterPanel.new(@browser).Filter Panel - "Awaiting Shipment"
       Orders::Grid::OrdersGrid.new @browser
     end
 
     def shipped
-      FilterPanel.new(@browser).filter "Shipped"
+      FilterPanel.new(@browser).Filter Panel - "Shipped"
       Orders::Grid::OrdersGrid.new @browser
     end
 

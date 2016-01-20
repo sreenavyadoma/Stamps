@@ -5,7 +5,7 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
 
   @print_two_up_expanded
   Scenario: User Print 1 FPO CN22 Label on 8.5x11 - left side
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To Country to United States
     Then Order Details - Set Ship-To address to
@@ -30,5 +30,5 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
     Then Print Modal - Set Printer to "factory"
     Then Print Modal - Select left-side label
     Then Expect Print Modal left-side label selected
-    Then Print
+    Then Toolbar - Print
     Then Sign out

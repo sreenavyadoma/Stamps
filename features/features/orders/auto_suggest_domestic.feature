@@ -7,7 +7,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
   @auto_suggest
   Scenario: Select Domestic Address
 
-    When Add New Order
+    Then Add New Order
 
     #Matching first name
 

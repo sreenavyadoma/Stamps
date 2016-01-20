@@ -4,7 +4,7 @@ Feature: Test Development
 
   @rob_dev_printer
   Scenario:
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Priority Mail Package"
@@ -21,10 +21,10 @@ Feature: Test Development
     Then Print Modal - Set Printer to "EPSON"
     # Sends your printouts to Officejet Pro in elie's cube.
     Then Print Modal - Set Printer to "HP Officejet Pro 8600"
-    Then Print
+    Then Toolbar - Print
 
   Scenario:
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-To Country to Canada
     Then Order Details - Set Ship-To Country to United States
     Then Order Details - Set Ship-From to default
@@ -47,19 +47,19 @@ Feature: Test Development
     Then Order Details - Set Ship-To address to
       | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-    When Add New Order
+    Then Add New Order
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-To address to San
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-To address to San
 
   Scenario:
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Priority Mail Package"

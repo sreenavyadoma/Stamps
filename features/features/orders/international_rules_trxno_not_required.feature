@@ -5,7 +5,7 @@ Feature: Internal Transaction # Not Required
 
   @international_rules_engine
   Scenario: Internal Transaction # Not Required
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |

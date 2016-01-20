@@ -5,7 +5,7 @@ Feature: Print 1 single ply Intl CP72 label on 8.5x11 - left side
 
   @print_layouts_cp72_single_ply
   Scenario: Print 1 single ply Intl CP72 label on 8.5x11 - left side
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -22,6 +22,6 @@ Feature: Print 1 single ply Intl CP72 label on 8.5x11 - left side
     Then Print Modal - Set Printer to "factory"
     Then Print Modal - Select left-side label
     And Expect Print Modal left-side label selected
-    Then Print Sample
-    Then Print
+    Then Print Modal - Print Sample
+    Then Toolbar - Print
     Then Sign out

@@ -5,7 +5,7 @@ Feature: Print Media Tooltips
 
   @print_media
   Scenario:  Verify tooltips for all Print Media selections
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Priority Mail Package"

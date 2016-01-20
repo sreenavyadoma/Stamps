@@ -148,8 +148,8 @@ Then /^Expect system (.*) Order Form$/ do |status|
   end
 end
 
-Then /^Hide Order Details Form Ship-To fields$/ do
-  log.info "Step: Hide Order Details Form Ship-To fields"
+Then /^Order Details - Hide Ship-To fields$/ do
+  log.info "Step: Order Details - Hide Ship-To fields"
   orders.details.ship_to.hide
   log.info "done."
   #end_step step

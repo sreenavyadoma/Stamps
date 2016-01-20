@@ -6,7 +6,7 @@ Feature: Tracking
 
   @tracking_defaults
   Scenario:  Print - First-Class Mail Envelope
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4

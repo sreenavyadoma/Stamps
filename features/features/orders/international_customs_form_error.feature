@@ -5,7 +5,7 @@ Feature:  Customs Form Data Tooltip Error
 
   @international @international_customs_form_data_tooltip
   Scenario:  Customs Form Data Error
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |

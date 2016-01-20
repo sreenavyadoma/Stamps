@@ -1,13 +1,13 @@
-Feature: As a batch shipper, I want to be able to filter orders by status [B-01621]
+Feature: As a batch shipper, I want to be able to Filter Panel - orders by status [B-01621]
 
   Background:
     Given I am signed in to Orders as auto_paginate/password1
 
-  Scenario: User Views Filter Panel Default
+  Scenario: User Views Filter Panel - Panel Default
     When Expect system displays expanded filters panel
 
-    Then Filter Shipped
-    And Expect system selects Shipped Filter and deselects the previous filter
+    Then Filter Panel - Shipped
+    And Expect system selects Shipped Filter Panel - and deselects the previous filter
 
     Then Set paging toolbar orders per page count to 500
     Then Expect number of orders on page to be correct

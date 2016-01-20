@@ -70,7 +70,7 @@ module Orders
     end
 
     def get_closed_filter_name
-      browser_helper.text filter_panel_header_name, 'Filter Panel Header Name'
+      browser_helper.text filter_panel_header_name, 'Filter Panel - Panel Header Name'
     end
 
     def get_arrow_direction
@@ -92,9 +92,9 @@ module Orders
     end
 
     def is_order_grid_filtered(filter)
-      if filter == "Shipped"
+      if Filter Panel - == "Shipped"
         return are_ship_dates_full
-      elsif filter == "Awaiting Shipment"
+      elsif Filter Panel - == "Awaiting Shipment"
         return are_ship_dates_empty
       end
     end

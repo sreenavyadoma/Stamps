@@ -5,7 +5,7 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
 
   @print_layouts_cp72_single_ply
   Scenario: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To Country to United States
     Then Order Details - Set Ship-To address to
@@ -23,6 +23,6 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
     Then Print Modal - Set Printer to "factory"
     Then Print Modal - Select right-side label
     And Expect Print Modal right-side label selected
-    Then Print Sample
-    Then Print
+    Then Print Modal - Print Sample
+    Then Toolbar - Print
     Then Sign out

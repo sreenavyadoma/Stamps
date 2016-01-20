@@ -5,7 +5,7 @@ Feature: Print 1 Domestic label on 5.5x8.5 - left side
 
   @print_two_up_expanded
   Scenario: Print 1 Domestic label on 5.5x8.5 - left side
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To address to PME MFR Box, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
     Then Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -15,5 +15,5 @@ Feature: Print 1 Domestic label on 5.5x8.5 - left side
     Then Print Modal - Set Printer to "factory"
     Then Print Modal - Select left-side label
     Then Expect Print Modal left-side label selected
-    Then Print
+    Then Toolbar - Print
     Then Sign out

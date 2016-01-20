@@ -7,7 +7,7 @@ Feature:  BVT International Shipping
   @bvt_international_shipping
   Scenario: International Shipping
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |

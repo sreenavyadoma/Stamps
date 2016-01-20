@@ -1,27 +1,27 @@
 
-Feature: Add Canceled Filter and Allow User to Manually Change Order Status
+Feature: Add Canceled Filter Panel - and Allow User to Manually Change Order Status
 
   Background:
     Given I am signed in to Orders
 
   @change_order_status
-  Scenario: Add Canceled Filter and Allow User to Manually Change Order Status
-    Then Filter Shipped
-    Then Filter Cancelled
-    Then Filter Awaiting Shipment
+  Scenario: Add Canceled Filter Panel - and Allow User to Manually Change Order Status
+    Then Filter Panel - Shipped
+    Then Filter Panel - Cancelled
+    Then Filter Panel - Awaiting Shipment
 
-    When Add New Order
+    Then Add New Order
 
-    Then Move order to Shipped
-    Then Filter Shipped
+    Then Toolbar - Move to Shipped
+    Then Filter Panel - Shipped
     Then Expect order moved to Shipped
 
-    Then Move order to Canceled
-    Then Filter Cancelled
+    Then Toolbar - Move to Canceled
+    Then Filter Panel - Cancelled
     Then Expect order moved to Canceled
 
     Then Move order to Awaiting Shipment
-    Then Filter Awaiting Shipment
+    Then Filter Panel - Awaiting Shipment
     Then Expect order moved to Awaiting Shipment
 
     Then Sign out

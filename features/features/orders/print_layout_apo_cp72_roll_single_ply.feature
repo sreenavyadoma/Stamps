@@ -5,7 +5,7 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
 
   @print_layouts_cp72_single_ply
   Scenario: Print 1 single ply APO CP72 label on 4x6 roll
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To Country to United States
     Then Order Details - Set Ship-To address to
@@ -21,6 +21,6 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
     Then Open Print Modal
     Then Print Modal - Set Media "Roll - 4" x 6" Shipping Label"
     Then Print Modal - Set Printer to "Designer"
-    Then Print Sample
-    Then Print
+    Then Print Modal - Print Sample
+    Then Toolbar - Print
     Then Sign out

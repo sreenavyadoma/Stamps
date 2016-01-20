@@ -6,7 +6,7 @@ Feature:  Print Window Title - You have x-number of labels ready to print
 
   @print_two_up
   Scenario:  Printing
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Priority Mail Flat Rate Envelope"
@@ -15,7 +15,7 @@ Feature:  Print Window Title - You have x-number of labels ready to print
     Then Expect Print Window title to be "You have 1 label(s) ready to print"
     Then Close Print Modal
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Service to "Priority Mail Flat Rate Envelope"
     Then Order Details - Set Weight to 1 lbs 1 oz

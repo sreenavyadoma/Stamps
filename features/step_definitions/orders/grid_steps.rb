@@ -1,5 +1,5 @@
-Then /^Move order to Shipped$/ do
-  log.info "Move order to Shipped"
+Then /^Toolbar - Move to Shipped$/ do
+  log.info "Toolbar - Move to Shipped"
   grid = orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
   grid.order_date.sort.descending
@@ -17,8 +17,8 @@ Then /^Expect order moved to Shipped$/ do
   row.should be > 0
 end
 
-Then /^Move order to Canceled$/ do
-  log.info "Move order to Canceled"
+Then /^Toolbar - Move to Canceled$/ do
+  log.info "Toolbar - Move to Canceled"
   grid = orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
   grid.order_date.sort.descending

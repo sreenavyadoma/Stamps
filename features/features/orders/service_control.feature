@@ -6,12 +6,12 @@
 
   @service_control
   Scenario:  Inline Rates
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     And Orders Grid - Check row 1
 
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
-    And Hide Order Details Form Ship-To fields
+    Then Order Details - Hide Ship-To fields
 
     Then Order Details - Set Service to "Priority Mail Large/Thick Envelope"
     Then Expect Order Details Service to be "Priority Mail Large/Thick Envelope"

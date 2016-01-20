@@ -6,7 +6,7 @@ Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
 
   @print_layouts_cn22_edd
   Scenario: Print 1 Intl CN22 label for EDD country on 5.5 x 8.5 label
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -23,5 +23,5 @@ Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
     Then Print Modal - Set Printer to "factory"
     Then Print Modal - Select left-side label
     Then Expect Print Modal left-side label selected
-    Then Print
+    Then Toolbar - Print
     Then Sign out

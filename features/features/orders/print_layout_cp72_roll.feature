@@ -5,7 +5,7 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
 
   @print_layouts_cn22_cp72 @cp72_4x6roll_raytest1
   Scenario: Print 1 Intl CP72 label on 4x6 Roll
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -19,6 +19,6 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
     Then Close Customs Form
     Then Open Print Modal
     Then Print Modal - Set Media "Roll - 4" x 6" Shipping Label"
-    Then Print Sample
-    Then Print
+    Then Print Modal - Print Sample
+    Then Toolbar - Print
     Then Sign out

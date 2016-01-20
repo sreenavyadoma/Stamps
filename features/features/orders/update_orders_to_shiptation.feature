@@ -6,7 +6,7 @@ Feature:  Update Order to ShipStation
 
   @update_orders_to_shipstation
   Scenario:  Add a new order
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Pounds to 1

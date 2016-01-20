@@ -5,7 +5,7 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾" right side
 
   @print_two_up_expanded  @print_two_up_expanded_dev
   Scenario: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾" right side
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To address to PM Package, SDC-1200 Right Side 1, 5912 83rd St., Lubbock TX 79424-3608
     Then Order Details - Set Service to "Priority Mail Package"
@@ -17,5 +17,5 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾" right side
     Then Print Modal - Set Printer to "Designer"
     Then Print Modal - Select right-side label
     Then Expect Print Modal right-side label selected
-    Then Print
+    Then Toolbar - Print
     Then Sign out

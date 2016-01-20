@@ -5,7 +5,7 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
 
   @print_layouts_cp72_single_ply
   Scenario: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To Country to United States
     Then Order Details - Set Ship-To address to
@@ -21,6 +21,6 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then Open Print Modal
     Then Print Modal - Set Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
     Then Print Modal - Set Printer to "Designer"
-    Then Print Sample
-    Then Print
+    Then Print Modal - Print Sample
+    Then Toolbar - Print
     Then Sign out

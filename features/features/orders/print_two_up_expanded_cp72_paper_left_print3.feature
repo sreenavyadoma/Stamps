@@ -6,22 +6,22 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
   @print_two_up_expanded
   Scenario: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To address to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
     Then Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
     Then Order Details - Set Ounces to 1
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To address to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
     Then Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
     Then Order Details - Set Ounces to 1
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To address to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
     Then Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Order Details - Set Ounces to 1
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -33,7 +33,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -45,7 +45,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -68,5 +68,5 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Print Modal - Set Printer to "factory"
     Then Print Modal - Select left-side label
     Then Expect Print Modal left-side label selected
-    Then Print
+    Then Toolbar - Print
     Then Sign out

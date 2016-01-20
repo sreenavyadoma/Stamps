@@ -6,7 +6,7 @@ Feature: Address Cleansing
 
   @address_cleansing
   Scenario: Address Cleansing
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To address to
       | name              | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
@@ -22,9 +22,9 @@ Feature: Address Cleansing
     Then Expect Grid City to be San Francisco
     Then Expect Grid State to be CA
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Priority Mail Package"
-    And Hide Order Details Form Ship-To fields
+    Then Order Details - Hide Ship-To fields
     And Sign out
 

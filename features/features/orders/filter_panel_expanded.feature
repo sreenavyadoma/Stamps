@@ -1,5 +1,5 @@
 
-Feature: As a batch shipper, I want to be able to filter orders by status [B-01621]
+Feature: As a batch shipper, I want to be able to Filter Panel - orders by status [B-01621]
 
   Background:
     Given I am signed in to Orders
@@ -9,7 +9,7 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
 
     When Expect system displays expanded filters panel
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To Country to United States
     Then Order Details - Set Ship-To address to
@@ -18,8 +18,8 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Ounces to 1
 
-    Then Filter Awaiting Shipment
-    And Expect system selects Awaiting Shipment Filter and deselects the previous filter
+    Then Filter Panel - Awaiting Shipment
+    And Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
     And Expect Order Details Order ID equals Grid order ID
     Then Expect Grid Recipient to be James Test
@@ -34,10 +34,10 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     Then Open Print Modal
     Then Print Modal - Set Media "Shipping Label - 8 ½" x 11" Paper"
     Then Print Modal - Set Printer to "factory"
-    Then Print
+    Then Toolbar - Print
 
-    Then Filter Shipped
-    And Expect system selects Shipped Filter and deselects the previous filter
+    Then Filter Panel - Shipped
+    And Expect system selects Shipped Filter Panel - and deselects the previous filter
 
     Then Expect Grid Recipient to be James Test
     Then Expect Grid Company to be Domestic Company
@@ -49,8 +49,8 @@ Feature: As a batch shipper, I want to be able to filter orders by status [B-016
     Then Expect Grid Email to be test@stamps.com
 
 
-    When Add New Order
-    And Expect system selects Awaiting Shipment Filter and deselects the previous filter
+    Then Add New Order
+    And Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
 
     Then Sign out

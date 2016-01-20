@@ -6,7 +6,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - right side
   @print_two_up_expanded
   Scenario: Print 1 Intl CP72 label on 5.5x8.5 - right side
     # 1 CP72 label 5 ½" x 8 ½" right side
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -23,5 +23,5 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - right side
     Then Print Modal - Set Printer to "factory"
     Then Print Modal - Select right-side label
     Then Expect Print Modal right-side label selected
-    Then Print
+    Then Toolbar - Print
     Then Sign out

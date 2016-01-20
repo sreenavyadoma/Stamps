@@ -5,7 +5,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
 
   @new_country_code @new_country_code_2
   Scenario: Print Bonaire, Sint Eustatius, and Saba orders
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |
@@ -22,5 +22,5 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
     Then Open Print Modal
     Then Print Modal - Set Media "Shipping Label - 8 ½" x 11" Paper"
     Then Print Modal - Set Printer to "factory"
-    And Print
+    Then Toolbar - Print
     Then Sign out

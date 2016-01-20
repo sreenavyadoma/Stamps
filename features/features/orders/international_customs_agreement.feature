@@ -14,7 +14,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Uncheck USPS Terms in Settings Modal
     Then Save Settings changes
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -43,7 +43,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     #Print an Int'l order and turn Auto-Confirm on
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -73,7 +73,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Expect USPS Terms Checked in Settings Modal
     Then Save Settings changes
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -89,7 +89,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     And Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
-    And Print
+    Then Toolbar - Print
 
     #Turn off auto Confirm and manually check USPS Restrictions box in Customs Modal
 
@@ -98,7 +98,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Uncheck USPS Terms in Settings Modal
     Then Save Settings changes
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -115,16 +115,16 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    And Print
+    Then Toolbar - Print
 
-    #Turn on auto Confirm from Settings modal and print Int'l postage
+    #Turn on auto Confirm from Settings modal Then Print Int'l postage
 
     When Open Settings Modal
     Then Expect USPS Terms Unchecked in Settings Modal
     Then Check USPS Terms in Settings Modal
     Then Save Settings changes
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -143,7 +143,7 @@ Feature: As a batch shipper, I want to be able to permanently agree to internati
 
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    And Print
+    Then Toolbar - Print
     And Sign out
 
 

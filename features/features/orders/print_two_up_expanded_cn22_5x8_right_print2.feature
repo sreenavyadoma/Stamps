@@ -5,7 +5,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5 - right side
 
   @print_two_up_expanded
   Scenario: Print 2 Intl CN22 labels on 5.5x8.5 - right side
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
@@ -17,7 +17,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5 - right side
     Then Customs Form - Add Item 1 - Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
@@ -36,7 +36,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5 - right side
     Then Print Modal - Set Printer to "factory"
     Then Print Modal - Select right-side label
     Then Expect Print Modal right-side label selected
-    Then Print
+    Then Toolbar - Print
 
 
     Then Sign out

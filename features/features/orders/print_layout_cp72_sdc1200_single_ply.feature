@@ -5,7 +5,7 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
 
   @print_layouts_cp72_single_ply
   Scenario: Print 1 Intl CP72 label on sdc1200 - right side
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -22,5 +22,5 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
     Then Print Modal - Set Printer to "factory"
     Then Print Modal - Select right-side label
     Then Expect Print Modal right-side label selected
-    Then Print
+    Then Toolbar - Print
     Then Sign out

@@ -5,7 +5,7 @@ Feature: Add Missing Validation Logic for Phone and International Email
 
   @international_rules_engine @international_rules_engine_failing_tests
   Scenario: Add Missing Validation Logic for Phone and International Email
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Set Ship-To Country to Australia
     Then UnOrders Grid - Check row 1

@@ -6,7 +6,7 @@ Feature: User Views Price Next to Service Dropdown
 
   @inline_service_rates @inline_service_rates_work
   Scenario:  User Views Price Next to Service Dropdown
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
     Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Expect Service Cost to be $0.00

@@ -238,7 +238,7 @@ Feature: 150 orders
 
     # International
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -259,7 +259,7 @@ Feature: 150 orders
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -512,7 +512,7 @@ Feature: 150 orders
 
     # International
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -533,7 +533,7 @@ Feature: 150 orders
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -785,7 +785,7 @@ Feature: 150 orders
 
     # International
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -806,7 +806,7 @@ Feature: 150 orders
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -1059,7 +1059,7 @@ Feature: 150 orders
 
     # International
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -1080,7 +1080,7 @@ Feature: 150 orders
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -1333,7 +1333,7 @@ Feature: 150 orders
 
     # International
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -1354,7 +1354,7 @@ Feature: 150 orders
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -1607,7 +1607,7 @@ Feature: 150 orders
 
     # International
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;
@@ -1628,7 +1628,7 @@ Feature: 150 orders
     Then Close Customs Form
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When Add New Order
+    Then Add New Order
     Then Order Details - Set Ship-From to default
 
     Then Order Details - Set Ship-To International Adress;

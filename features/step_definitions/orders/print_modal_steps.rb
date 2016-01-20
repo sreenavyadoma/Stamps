@@ -86,7 +86,7 @@ Then /^Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do 
   }
 end
 
-When /^Print$/ do
+When /^Toolbar - Print$/ do
   log.info "Step: Print"
   print_modal = orders.toolbar.print
   @ship_date = print_modal.ship_date.text
@@ -161,23 +161,23 @@ Then /^Print raises a Printing Error/ do
   expect{orders.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
-Then /^Print Sample on (.*)$/ do |printer|
-  log.info "Step: Print Sample on #{printer}"
+Then /^Print Modal - Print Sample on (.*)$/ do |printer|
+  log.info "Step: Print Modal - Print Sample on #{printer}"
   orders.toolbar.print(printer).print_sample
 end
 
-Then /^Print Sample on (.*) raises a PrintingError$/ do |printer|
-  log.info "Step: Print Sample on #{printer} raises a PrintingError"
+Then /^Print Modal - Print Sample on (.*) raises a PrintingError$/ do |printer|
+  log.info "Step: Print Modal - Print Sample on #{printer} raises a PrintingError"
   expect{orders.toolbar.print(printer).print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
-Then /^Print Sample$/ do
-  log.info "Step: Print Sample"
+Then /^Print Modal - Print Sample$/ do
+  log.info "Step: Print Modal - Print Sample"
   orders.toolbar.print.print_sample
 end
 
-Then /^Print Sample raises a Printing Error/ do
-  log.info "Step: Print Sample raises a Printing Error"
+Then /^Print Modal - Print Sample raises a Printing Error/ do
+  log.info "Step: Print Modal - Print Sample raises a Printing Error"
   expect{orders.toolbar.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
