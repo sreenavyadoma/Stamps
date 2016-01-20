@@ -147,7 +147,7 @@ module Orders
       class ManageStoresGrid < OrdersObject
         class DeleteStoreModal < OrdersObject
           def present?
-            delete.present?
+            browser_helper.present? (@browser.spans :text => "Delete").last
           end
 
           def delete
