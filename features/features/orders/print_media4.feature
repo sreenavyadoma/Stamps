@@ -5,14 +5,14 @@ Feature: Print Media - Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
 
   @print_media
   Scenario:  Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    When I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
-    Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Ounces to 2
+    When Add New Order
+    Then Order Details - Set Ship-From to default
+    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Service to "Priority Mail Package"
+    Then Order Details - Set Ounces to 2
     Then Open Print Modal
-    Then Set Print Modal Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
-    Then Set Print Modal Printer to "factory"
+    Then Print Modal - Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Print Modal - Set Printer to "factory"
     Then Print
     And Sign out
 

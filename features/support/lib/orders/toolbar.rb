@@ -471,7 +471,7 @@ module Orders
           raise message
         end
 
-        raise "Unable to I Add a new orders!" unless order_details.present?
+        raise "Unable to Add New Orders!" unless order_details.present?
       end
 
       def move

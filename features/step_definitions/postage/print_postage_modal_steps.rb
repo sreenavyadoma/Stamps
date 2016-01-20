@@ -1,6 +1,6 @@
 
 
-#Set Print Modal Printer to "factory"
+#Print Modal - Set Printer to "factory"
 
 
 When /^Open Print Postage Modal$/ do

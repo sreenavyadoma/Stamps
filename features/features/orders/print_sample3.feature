@@ -5,12 +5,12 @@ Feature: Print Sample - Priority Mail Regional Rate Box A
 
   @print_sample
   Scenario:  Priority Mail Regional Rate Box A
-    When I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
-    Then Set Order Details Service to "Priority Mail Regional Rate Box A"
-    Then Set Order Details Ounces to 1
+    When Add New Order
+    Then Order Details - Set Ship-From to default
+    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Service to "Priority Mail Regional Rate Box A"
+    Then Order Details - Set Ounces to 1
     Then Open Print Modal
-    Then Set Print Modal Printer to "factory"
+    Then Print Modal - Set Printer to "factory"
     Then Print Sample
     And Sign out

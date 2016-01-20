@@ -8,9 +8,9 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
   @auto_suggest
   Scenario: Select International Address
 
-    When I Add a new order
+    When Add New Order
 
-    Then Set Order Details Form Ship-To country to Cuba
+    Then Order Details - Set Form Ship-To country to Cuba
 
     #Matching first name
 

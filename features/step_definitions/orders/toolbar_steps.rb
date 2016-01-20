@@ -1,6 +1,6 @@
-When /^I Add a new order$/ do
-  log.info "Step: I Add a new order"
-  log.info "I Add a new order"
+When /^Add New Order$/ do
+  log.info "Step: Add New Order"
+  log.info "Add New Order"
   @old_balance = orders.navbar.balance
   orders.grid.checkbox.uncheck 1
   @order_details = orders.toolbar.add

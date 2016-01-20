@@ -5,15 +5,15 @@ Feature: Print Media - Shipping Label - 8 ½" x 11" Paper
 
   @print_media
   Scenario:  Shipping Label - 8 ½" x 11" Paper
-    When I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
-    Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Pounds to 1
-    Then Set Order Details Ounces to 1
+    When Add New Order
+    Then Order Details - Set Ship-From to default
+    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Service to "Priority Mail Package"
+    Then Order Details - Set Pounds to 1
+    Then Order Details - Set Ounces to 1
     Then Open Print Modal
-    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
-    Then Set Print Modal Printer to "factory"
+    Then Print Modal - Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print Modal - Set Printer to "factory"
     Then Print
     And Sign out
 

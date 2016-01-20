@@ -8,1646 +8,1646 @@ Feature: 150 orders
 
     # First Class Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 1
-    * Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    * Set Order Details Insure For to $15.00
-    * Set Order Details Tracking to "None"
+    * Order Details - Set Ounces to 1
+    * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
+    * Order Details - Set Insure For to $15.00
+    * Order Details - Set Tracking to "None"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 2
-    * Set Order Details Service to "First-Class Mail Package/Thick Envelope"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 2
+    * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
     #Priority Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 3
-    * Set Order Details Service to "Priority Mail Large/Thick Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 3
+    * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 4
-    * Set Order Details Service to "Priority Mail Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 4
+    * Order Details - Set Service to "Priority Mail Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 5
-    * Set Order Details Service to "Priority Mail Large Package"
-    * Set Order Details Insure For to $145.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 5
+    * Order Details - Set Service to "Priority Mail Large Package"
+    * Order Details - Set Insure For to $145.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 6
-    * Set Order Details Service to "Priority Mail Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 6
+    * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 7
-    * Set Order Details Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Order Details Insure For to $98.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 7
+    * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Order Details - Set Insure For to $98.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 8
-    * Set Order Details Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 8
+    * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 9
-    * Set Order Details Service to "Priority Mail Small Flat Rate Box"
-    * Set Order Details Insure For to $30.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 9
+    * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
+    * Order Details - Set Insure For to $30.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 10
-    * Set Order Details Service to "Priority Mail Medium Flat Rate Box"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 10
+    * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 11
-    * Set Order Details Service to "Priority Mail Large Flat Rate Box"
-    * Set Order Details Insure For to $239.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 11
+    * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
+    * Order Details - Set Insure For to $239.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 12
-    * Set Order Details Service to "Priority Mail Regional Rate Box A"
-    * Set Order Details Insure For to $105.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 12
+    * Order Details - Set Service to "Priority Mail Regional Rate Box A"
+    * Order Details - Set Insure For to $105.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 13
-    * Set Order Details Service to "Priority Mail Regional Rate Box B"
-    * Set Order Details Insure For to $205.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 13
+    * Order Details - Set Service to "Priority Mail Regional Rate Box B"
+    * Order Details - Set Insure For to $205.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 14
-    * Set Order Details Insure For to $305.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 14
+    * Order Details - Set Insure For to $305.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Priority Mail Express
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 15
-    * Set Order Details Service to "Priority Mail Express Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 15
+    * Order Details - Set Service to "Priority Mail Express Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 16
-    * Set Order Details Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 16
+    * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 17
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 17
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 18
-    * Set Order Details Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 18
+    * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 19
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
     # Media Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 20
-    * Set Order Details Service to "Media Mail Package"
-    * Set Order Details Insure For to $56.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 20
+    * Order Details - Set Service to "Media Mail Package"
+    * Order Details - Set Insure For to $56.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Parcel Select
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Ground Package"
-    * Set Order Details Insure For to $345.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 21
+    * Order Details - Set Service to "Parcel Select Ground Package"
+    * Order Details - Set Insure For to $345.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Ground Large Package"
-    * Set Order Details Insure For to $456.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 22
+    * Order Details - Set Service to "Parcel Select Ground Large Package"
+    * Order Details - Set Insure For to $456.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Ground Oversized Package"
-    * Set Order Details Insure For to $567.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 23
+    * Order Details - Set Service to "Parcel Select Ground Oversized Package"
+    * Order Details - Set Insure For to $567.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # International
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
+    Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
+    Then Order Details - Set Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 1
-    * Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    * Set Order Details Insure For to $15.00
-    * Set Order Details Tracking to "None"
+    * Order Details - Set Ounces to 1
+    * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
+    * Order Details - Set Insure For to $15.00
+    * Order Details - Set Tracking to "None"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 2
-    * Set Order Details Service to "First-Class Mail Package/Thick Envelope"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 2
+    * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
     #Priority Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 3
-    * Set Order Details Service to "Priority Mail Large/Thick Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 3
+    * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 4
-    * Set Order Details Service to "Priority Mail Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 4
+    * Order Details - Set Service to "Priority Mail Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 5
-    * Set Order Details Service to "Priority Mail Large Package"
-    * Set Order Details Insure For to $145.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 5
+    * Order Details - Set Service to "Priority Mail Large Package"
+    * Order Details - Set Insure For to $145.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 6
-    * Set Order Details Service to "Priority Mail Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 6
+    * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 7
-    * Set Order Details Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Order Details Insure For to $98.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 7
+    * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Order Details - Set Insure For to $98.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 8
-    * Set Order Details Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 8
+    * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 9
-    * Set Order Details Service to "Priority Mail Small Flat Rate Box"
-    * Set Order Details Insure For to $30.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 9
+    * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
+    * Order Details - Set Insure For to $30.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 10
-    * Set Order Details Service to "Priority Mail Medium Flat Rate Box"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 10
+    * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 11
-    * Set Order Details Service to "Priority Mail Large Flat Rate Box"
-    * Set Order Details Insure For to $239.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 11
+    * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
+    * Order Details - Set Insure For to $239.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 12
-    * Set Order Details Service to "Priority Mail Regional Rate Box A"
-    * Set Order Details Insure For to $105.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 12
+    * Order Details - Set Service to "Priority Mail Regional Rate Box A"
+    * Order Details - Set Insure For to $105.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 13
-    * Set Order Details Service to "Priority Mail Regional Rate Box B"
-    * Set Order Details Insure For to $205.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 13
+    * Order Details - Set Service to "Priority Mail Regional Rate Box B"
+    * Order Details - Set Insure For to $205.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 14
-    * Set Order Details Insure For to $305.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 14
+    * Order Details - Set Insure For to $305.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Priority Mail Express
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 15
-    * Set Order Details Service to "Priority Mail Express Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 15
+    * Order Details - Set Service to "Priority Mail Express Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 16
-    * Set Order Details Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 16
+    * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 17
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 17
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 18
-    * Set Order Details Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 18
+    * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 19
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
     # Media Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 20
-    * Set Order Details Service to "Media Mail Package"
-    * Set Order Details Insure For to $56.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 20
+    * Order Details - Set Service to "Media Mail Package"
+    * Order Details - Set Insure For to $56.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Parcel Select
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Ground Package"
-    * Set Order Details Insure For to $345.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 21
+    * Order Details - Set Service to "Parcel Select Ground Package"
+    * Order Details - Set Insure For to $345.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Ground Large Package"
-    * Set Order Details Insure For to $456.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 22
+    * Order Details - Set Service to "Parcel Select Ground Large Package"
+    * Order Details - Set Insure For to $456.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Ground Oversized Package"
-    * Set Order Details Insure For to $567.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 23
+    * Order Details - Set Service to "Parcel Select Ground Oversized Package"
+    * Order Details - Set Insure For to $567.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # International
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country | phone       |  email           |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Germany | 0123456789  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
+    Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | France    | 9876543210  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
+    Then Order Details - Set Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 1
-    * Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    * Set Order Details Insure For to $15.00
-    * Set Order Details Tracking to "None"
+    * Order Details - Set Ounces to 1
+    * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
+    * Order Details - Set Insure For to $15.00
+    * Order Details - Set Tracking to "None"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 2
-    * Set Order Details Service to "First-Class Mail Package/Thick Envelope"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 2
+    * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
     #Priority Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 3
-    * Set Order Details Service to "Priority Mail Large/Thick Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 3
+    * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 4
-    * Set Order Details Service to "Priority Mail Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 4
+    * Order Details - Set Service to "Priority Mail Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 5
-    * Set Order Details Service to "Priority Mail Large Package"
-    * Set Order Details Insure For to $145.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 5
+    * Order Details - Set Service to "Priority Mail Large Package"
+    * Order Details - Set Insure For to $145.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 6
-    * Set Order Details Service to "Priority Mail Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 6
+    * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 7
-    * Set Order Details Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Order Details Insure For to $98.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 7
+    * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Order Details - Set Insure For to $98.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 8
-    * Set Order Details Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 8
+    * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 9
-    * Set Order Details Service to "Priority Mail Small Flat Rate Box"
-    * Set Order Details Insure For to $30.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 9
+    * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
+    * Order Details - Set Insure For to $30.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 10
-    * Set Order Details Service to "Priority Mail Medium Flat Rate Box"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 10
+    * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 11
-    * Set Order Details Service to "Priority Mail Large Flat Rate Box"
-    * Set Order Details Insure For to $239.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 11
+    * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
+    * Order Details - Set Insure For to $239.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 12
-    * Set Order Details Service to "Priority Mail Regional Rate Box A"
-    * Set Order Details Insure For to $105.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 12
+    * Order Details - Set Service to "Priority Mail Regional Rate Box A"
+    * Order Details - Set Insure For to $105.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 13
-    * Set Order Details Service to "Priority Mail Regional Rate Box B"
-    * Set Order Details Insure For to $205.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 13
+    * Order Details - Set Service to "Priority Mail Regional Rate Box B"
+    * Order Details - Set Insure For to $205.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
-    * Set Order Details Ounces to 14
-    * Set Order Details Insure For to $305.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ounces to 14
+    * Order Details - Set Insure For to $305.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Priority Mail Express
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 15
-    * Set Order Details Service to "Priority Mail Express Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 15
+    * Order Details - Set Service to "Priority Mail Express Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 16
-    * Set Order Details Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 16
+    * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 17
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 17
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 18
-    * Set Order Details Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 18
+    * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 19
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
     # Media Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 20
-    * Set Order Details Service to "Media Mail Package"
-    * Set Order Details Insure For to $56.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 20
+    * Order Details - Set Service to "Media Mail Package"
+    * Order Details - Set Insure For to $56.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Parcel Select
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Ground Package"
-    * Set Order Details Insure For to $345.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 21
+    * Order Details - Set Service to "Parcel Select Ground Package"
+    * Order Details - Set Insure For to $345.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Ground Large Package"
-    * Set Order Details Insure For to $456.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 22
+    * Order Details - Set Service to "Parcel Select Ground Large Package"
+    * Order Details - Set Insure For to $456.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Ground Oversized Package"
-    * Set Order Details Insure For to $567.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 23
+    * Order Details - Set Service to "Parcel Select Ground Oversized Package"
+    * Order Details - Set Insure For to $567.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # International
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Brazil | 0123456789  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
+    Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Mexico    | 9876543210  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
+    Then Order Details - Set Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 1
-    * Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    * Set Order Details Insure For to $15.00
-    * Set Order Details Tracking to "None"
+    * Order Details - Set Ounces to 1
+    * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
+    * Order Details - Set Insure For to $15.00
+    * Order Details - Set Tracking to "None"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 2
-    * Set Order Details Service to "First-Class Mail Package/Thick Envelope"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 2
+    * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
     #Priority Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 3
-    * Set Order Details Service to "Priority Mail Large/Thick Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 3
+    * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 4
-    * Set Order Details Service to "Priority Mail Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 4
+    * Order Details - Set Service to "Priority Mail Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 5
-    * Set Order Details Service to "Priority Mail Large Package"
-    * Set Order Details Insure For to $145.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 5
+    * Order Details - Set Service to "Priority Mail Large Package"
+    * Order Details - Set Insure For to $145.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 6
-    * Set Order Details Service to "Priority Mail Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 6
+    * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 7
-    * Set Order Details Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Order Details Insure For to $98.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 7
+    * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Order Details - Set Insure For to $98.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 8
-    * Set Order Details Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 8
+    * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 9
-    * Set Order Details Service to "Priority Mail Small Flat Rate Box"
-    * Set Order Details Insure For to $30.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 9
+    * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
+    * Order Details - Set Insure For to $30.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 10
-    * Set Order Details Service to "Priority Mail Medium Flat Rate Box"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 10
+    * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 11
-    * Set Order Details Service to "Priority Mail Large Flat Rate Box"
-    * Set Order Details Insure For to $239.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 11
+    * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
+    * Order Details - Set Insure For to $239.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 12
-    * Set Order Details Service to "Priority Mail Regional Rate Box A"
-    * Set Order Details Insure For to $105.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 12
+    * Order Details - Set Service to "Priority Mail Regional Rate Box A"
+    * Order Details - Set Insure For to $105.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 13
-    * Set Order Details Service to "Priority Mail Regional Rate Box B"
-    * Set Order Details Insure For to $205.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 13
+    * Order Details - Set Service to "Priority Mail Regional Rate Box B"
+    * Order Details - Set Insure For to $205.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 14
-    * Set Order Details Insure For to $305.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 14
+    * Order Details - Set Insure For to $305.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Priority Mail Express
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 15
-    * Set Order Details Service to "Priority Mail Express Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 15
+    * Order Details - Set Service to "Priority Mail Express Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 16
-    * Set Order Details Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 16
+    * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 17
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 17
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 18
-    * Set Order Details Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 18
+    * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 19
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
     # Media Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 20
-    * Set Order Details Service to "Media Mail Package"
-    * Set Order Details Insure For to $56.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 20
+    * Order Details - Set Service to "Media Mail Package"
+    * Order Details - Set Insure For to $56.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Parcel Select
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Ground Package"
-    * Set Order Details Insure For to $345.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 21
+    * Order Details - Set Service to "Parcel Select Ground Package"
+    * Order Details - Set Insure For to $345.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Ground Large Package"
-    * Set Order Details Insure For to $456.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 22
+    * Order Details - Set Service to "Parcel Select Ground Large Package"
+    * Order Details - Set Insure For to $456.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Ground Oversized Package"
-    * Set Order Details Insure For to $567.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 23
+    * Order Details - Set Service to "Parcel Select Ground Oversized Package"
+    * Order Details - Set Insure For to $567.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # International
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country     | phone       |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Philippines | 0123456789  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
+    Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | India     | 9876543210  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
+    Then Order Details - Set Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 1
-    * Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    * Set Order Details Insure For to $15.00
-    * Set Order Details Tracking to "None"
+    * Order Details - Set Ounces to 1
+    * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
+    * Order Details - Set Insure For to $15.00
+    * Order Details - Set Tracking to "None"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 2
-    * Set Order Details Service to "First-Class Mail Package/Thick Envelope"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 2
+    * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
     #Priority Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 3
-    * Set Order Details Service to "Priority Mail Large/Thick Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 3
+    * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 4
-    * Set Order Details Service to "Priority Mail Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 4
+    * Order Details - Set Service to "Priority Mail Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 5
-    * Set Order Details Service to "Priority Mail Large Package"
-    * Set Order Details Insure For to $145.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 5
+    * Order Details - Set Service to "Priority Mail Large Package"
+    * Order Details - Set Insure For to $145.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 6
-    * Set Order Details Service to "Priority Mail Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 6
+    * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 7
-    * Set Order Details Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Order Details Insure For to $98.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 7
+    * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Order Details - Set Insure For to $98.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 8
-    * Set Order Details Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 8
+    * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 9
-    * Set Order Details Service to "Priority Mail Small Flat Rate Box"
-    * Set Order Details Insure For to $30.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 9
+    * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
+    * Order Details - Set Insure For to $30.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 10
-    * Set Order Details Service to "Priority Mail Medium Flat Rate Box"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 10
+    * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 11
-    * Set Order Details Service to "Priority Mail Large Flat Rate Box"
-    * Set Order Details Insure For to $239.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 11
+    * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
+    * Order Details - Set Insure For to $239.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 12
-    * Set Order Details Service to "Priority Mail Regional Rate Box A"
-    * Set Order Details Insure For to $105.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 12
+    * Order Details - Set Service to "Priority Mail Regional Rate Box A"
+    * Order Details - Set Insure For to $105.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 13
-    * Set Order Details Service to "Priority Mail Regional Rate Box B"
-    * Set Order Details Insure For to $205.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 13
+    * Order Details - Set Service to "Priority Mail Regional Rate Box B"
+    * Order Details - Set Insure For to $205.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 14
-    * Set Order Details Insure For to $305.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 14
+    * Order Details - Set Insure For to $305.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Priority Mail Express
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 15
-    * Set Order Details Service to "Priority Mail Express Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 15
+    * Order Details - Set Service to "Priority Mail Express Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 16
-    * Set Order Details Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 16
+    * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 17
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 17
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 18
-    * Set Order Details Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 18
+    * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 19
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
     # Media Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 20
-    * Set Order Details Service to "Media Mail Package"
-    * Set Order Details Insure For to $56.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 20
+    * Order Details - Set Service to "Media Mail Package"
+    * Order Details - Set Insure For to $56.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Parcel Select
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Ground Package"
-    * Set Order Details Insure For to $345.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 21
+    * Order Details - Set Service to "Parcel Select Ground Package"
+    * Order Details - Set Insure For to $345.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Ground Large Package"
-    * Set Order Details Insure For to $456.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 22
+    * Order Details - Set Service to "Parcel Select Ground Large Package"
+    * Order Details - Set Insure For to $456.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Ground Oversized Package"
-    * Set Order Details Insure For to $567.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 23
+    * Order Details - Set Service to "Parcel Select Ground Oversized Package"
+    * Order Details - Set Insure For to $567.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # International
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Poland | 0123456789  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
+    Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Singapore | 9876543210  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
+    Then Order Details - Set Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 1
-    * Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    * Set Order Details Insure For to $15.00
-    * Set Order Details Tracking to "None"
+    * Order Details - Set Ounces to 1
+    * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
+    * Order Details - Set Insure For to $15.00
+    * Order Details - Set Tracking to "None"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 2
-    * Set Order Details Service to "First-Class Mail Package/Thick Envelope"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 2
+    * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
     #Priority Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 3
-    * Set Order Details Service to "Priority Mail Large/Thick Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 3
+    * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 4
-    * Set Order Details Service to "Priority Mail Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 4
+    * Order Details - Set Service to "Priority Mail Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 5
-    * Set Order Details Service to "Priority Mail Large Package"
-    * Set Order Details Insure For to $145.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 5
+    * Order Details - Set Service to "Priority Mail Large Package"
+    * Order Details - Set Insure For to $145.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 6
-    * Set Order Details Service to "Priority Mail Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 6
+    * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 7
-    * Set Order Details Service to "Priority Mail Padded Flat Rate Envelope"
-    * Set Order Details Insure For to $98.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 7
+    * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Order Details - Set Insure For to $98.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 8
-    * Set Order Details Service to "Priority Mail Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 8
+    * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 9
-    * Set Order Details Service to "Priority Mail Small Flat Rate Box"
-    * Set Order Details Insure For to $30.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 9
+    * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
+    * Order Details - Set Insure For to $30.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 10
-    * Set Order Details Service to "Priority Mail Medium Flat Rate Box"
-    * Set Order Details Insure For to $45.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 10
+    * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
+    * Order Details - Set Insure For to $45.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 11
-    * Set Order Details Service to "Priority Mail Large Flat Rate Box"
-    * Set Order Details Insure For to $239.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 11
+    * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
+    * Order Details - Set Insure For to $239.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 12
-    * Set Order Details Service to "Priority Mail Regional Rate Box A"
-    * Set Order Details Insure For to $105.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 12
+    * Order Details - Set Service to "Priority Mail Regional Rate Box A"
+    * Order Details - Set Insure For to $105.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 13
-    * Set Order Details Service to "Priority Mail Regional Rate Box B"
-    * Set Order Details Insure For to $205.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Ounces to 13
+    * Order Details - Set Service to "Priority Mail Regional Rate Box B"
+    * Order Details - Set Insure For to $205.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 14
-    * Set Order Details Insure For to $305.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 14
+    * Order Details - Set Insure For to $305.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Priority Mail Express
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Ounces to 15
-    * Set Order Details Service to "Priority Mail Express Package"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Ounces to 15
+    * Order Details - Set Service to "Priority Mail Express Package"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 16
-    * Set Order Details Service to "Priority Mail Express Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 16
+    * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 17
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 17
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 18
-    * Set Order Details Service to "Priority Mail Express Legal Flat Rate Envelope"
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 18
+    * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 19
-    * Set Order Details Service to "Priority Mail Express Padded Flat Rate Envelope"
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 19
+    * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Order Details - Set Tracking to "Signature Required"
 
     # Media Mail
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 20
-    * Set Order Details Service to "Media Mail Package"
-    * Set Order Details Insure For to $56.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 20
+    * Order Details - Set Service to "Media Mail Package"
+    * Order Details - Set Insure For to $56.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # Parcel Select
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 21
-    * Set Order Details Service to "Parcel Select Ground Package"
-    * Set Order Details Insure For to $345.00
-    * Set Order Details Tracking to "USPS Tracking"
+    * Order Details - Set Pounds to 21
+    * Order Details - Set Service to "Parcel Select Ground Package"
+    * Order Details - Set Insure For to $345.00
+    * Order Details - Set Tracking to "USPS Tracking"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 22
-    * Set Order Details Service to "Parcel Select Ground Large Package"
-    * Set Order Details Insure For to $456.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 22
+    * Order Details - Set Service to "Parcel Select Ground Large Package"
+    * Order Details - Set Insure For to $456.00
+    * Order Details - Set Tracking to "Signature Required"
 
-    * I Add a new order
+    * Add New Order
     * Expect new Order ID created
-    * Set Order Details Ship-From to default
-    * Set Order Details Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-From to default
+    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
-    * Set Order Details Pounds to 23
-    * Set Order Details Service to "Parcel Select Ground Oversized Package"
-    * Set Order Details Insure For to $567.00
-    * Set Order Details Tracking to "Signature Required"
+    * Order Details - Set Pounds to 23
+    * Order Details - Set Service to "Parcel Select Ground Oversized Package"
+    * Order Details - Set Insure For to $567.00
+    * Order Details - Set Tracking to "Signature Required"
 
     # International
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country   | phone       |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Hong Kong | 0123456789  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "First-Class Mail International Large Envelope/Flat"
+    Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    When I Add a new order
-    Then Set Order Details Ship-From to default
+    When Add New Order
+    Then Order Details - Set Ship-From to default
 
-    Then Set Ship-To to international address
+    Then Order Details - Set Ship-To International Adress;
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country  | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Thailand | 9876543210  | junk@stamps.com  |
 
-    Then Add Order Details Item 1 - Qty 1, ID random, Description random
+    Then Order Details - Add Item 1 - Qty 1, ID random, Description random
 
-    And Open customs form
+    And Open Customs Form
 
-    Then Set customs form Package Contents to "Merchandise"
-    Then Set customs form Non-Delivery Options to "Return to sender"
-    Then Set customs form Internal Transaction Number to "Required"
-    Then Set customs form More Info to "random"
-    Then Set customs form ITN# to "random"
+    Then Customs Form - Set Package Contents to "Merchandise"
+    Then Customs Form - Set Non-Delivery Options to "Return to sender"
+    Then Customs Form - Set Internal Transaction Number to "Required"
+    Then Customs Form - Set More Info to "random"
+    Then Customs Form - Set ITN# to "random"
 
-    Then Set Customs Form I agree to Checked
+    Then Customs Form - Set I agree to Checked
     Then Close Customs Form
-    Then Set Order Details Service to "Priority Mail International Flat Rate Envelope"
+    Then Order Details - Set Service to "Priority Mail International Flat Rate Envelope"
 
     And Sign out
 

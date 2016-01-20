@@ -6,6 +6,6 @@ Feature: Order Status - Awaiting Shipment
 
   @order_status
   Scenario: Order Status - Awaiting Shipment
-    When I Add a new order
+    When Add New Order
     Then Expect Order Status to be "Awaiting Shipment"
     And Sign out

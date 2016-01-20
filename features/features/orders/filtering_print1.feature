@@ -5,14 +5,14 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
 
   @filter
   Scenario: Print 1 order
-    When I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
-    Then Set Order Details Service to "First-Class Mail Large Envelope/Flat"
-    Then Check Orders Grid row 1
+    When Add New Order
+    Then Order Details - Set Ship-From to default
+    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
+    Then Orders Grid - Check row 1
     Then Open Print Modal
-    Then Set Print Modal Media "Shipping Label - 8 ½" x 11" Paper"
-    Then Set Print Modal Printer to "factory"
+    Then Print Modal - Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print Modal - Set Printer to "factory"
     Then Print
     Then Expect printed Order ID is not in Awaiting Shipment tab
     Then Expect printed Order ID is in Shipped tab

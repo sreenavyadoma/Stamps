@@ -5,12 +5,12 @@ Feature: Print Media - Roll - 4" x 6" Shipping Label
 
   @print_media
   Scenario:  Roll - 4" x 6" Shipping Label
-    When I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To to Random Address Between Zone 1 through 4
-    Then Set Order Details Service to "Priority Mail Package"
-    Then Set Order Details Ounces to 5
+    When Add New Order
+    Then Order Details - Set Ship-From to default
+    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Service to "Priority Mail Package"
+    Then Order Details - Set Ounces to 5
     Then Open Print Modal
-    Then Set Print Modal Media "Roll - 4" x 6" Shipping Label"
-    Then Set Print Modal Printer to "factory"
+    Then Print Modal - Set Media "Roll - 4" x 6" Shipping Label"
+    Then Print Modal - Set Printer to "factory"
     Then Print

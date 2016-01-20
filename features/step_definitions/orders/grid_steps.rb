@@ -116,12 +116,12 @@ When /^Edit Orders Grid row (\d+)$/ do |row|
   orders.grid.checkbox.check row
 end
 
-When /^Check Orders Grid row (\d+)$/ do |row|
+When /^Orders Grid - Check row (\d+)$/ do |row|
   log.info "Edit Orders Grid row #{row}"
   orders.grid.checkbox.check row
 end
 
-When /^Uncheck Orders Grid row (\d+)$/ do |row|
+When /^UnOrders Grid - Check row (\d+)$/ do |row|
   log.info "Step: Uncheck row #{row} on the Orders Grid"
   orders.grid.checkbox.uncheck row
 end

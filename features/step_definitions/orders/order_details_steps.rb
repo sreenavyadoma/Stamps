@@ -1,5 +1,5 @@
-Then /^Add Order Details Item (\d+) - Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
-  log.info "Step: Add Order Details Item #{item_number} - Qty #{qty}, ID #{id} Description #{description}"
+Then /^Order Details - Add Item (\d+) - Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
+  log.info "Step: Order Details - Add Item #{item_number} - Qty #{qty}, ID #{id} Description #{description}"
   item = orders.details.item_grid.item item_number.to_i
   item.qty.set qty
   item.id.set (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
@@ -12,80 +12,80 @@ Then /^Delete Order Details Item (\d+)$/ do |item_number|
   item.delete.safe_click
 end
 
-Then /^Set Order Details Weight to (\d+) lbs (\d+) oz$/ do |pounds, ounces|
-  log.info "Step:  Set Order Details Weight to #{pounds} Pounds and #{ounces} Ounces"
+Then /^Order Details - Set Weight to (\d+) lbs (\d+) oz$/ do |pounds, ounces|
+  log.info "Step:  Order Details - Set Weight to #{pounds} Pounds and #{ounces} Ounces"
   orders.details.weight.lbs.set pounds
   orders.details.weight.oz.set ounces
 end
 
-Then /^Set Order Details Pounds to (\d*)$/ do |value|
-  log.info "Step: Set Order Details Pounds to \"#{value}\""
+Then /^Order Details - Set Pounds to (\d*)$/ do |value|
+  log.info "Step: Order Details - Set Pounds to \"#{value}\""
   orders.details.weight.lbs.set value
 end
 
-Then /^Set Order Details Ounces to (.*)$/ do |value|
-  log.info "Step: Set Order Details Ounces to \"#{value}\""
+Then /^Order Details - Set Ounces to (.*)$/ do |value|
+  log.info "Step: Order Details - Set Ounces to \"#{value}\""
   orders.details.weight.oz.set value
 end
 
-Then /^Set Order Details Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
-  log.info "Set Order Details Dimensions to Length #{length} Width #{width} Height #{height}"
+Then /^Order Details - Set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
+  log.info "Order Details - Set Dimensions to Length #{length} Width #{width} Height #{height}"
   orders.details.dimensions.length.set length
   orders.details.dimensions.width.set width
   orders.details.dimensions.height.set height
 end
 
-Then /^Set Order Details Length to (\d*)$/ do |value|
-  log.info "Step: Set Order Details Length to \"#{value}\""
+Then /^Order Details - Set Length to (\d*)$/ do |value|
+  log.info "Step: Order Details - Set Length to \"#{value}\""
   orders.details.dimensions.length.set value
 end
 
-Then /^Set Order Details Width to (\d*)$/ do |value|
-  log.info "Step: Set Order Details Width to \"#{value}\""
+Then /^Order Details - Set Width to (\d*)$/ do |value|
+  log.info "Step: Order Details - Set Width to \"#{value}\""
   orders.details.dimensions.width.set value
 end
 
-Then /^Set Order Details Height to (\d*)$/ do |value|
-  log.info "Step: Set Order Details Height to \"#{value}\""
+Then /^Order Details - Set Height to (\d*)$/ do |value|
+  log.info "Step: Order Details - Set Height to \"#{value}\""
   orders.details.dimensions.height.set value
 end
 
-Then /^Set Order Details Service to \"(.*)\"$/ do |service|
-  log.info "Step: Set Order Details Service to #{service}"
+Then /^Order Details - Set Service to \"(.*)\"$/ do |service|
+  log.info "Step: Order Details - Set Service to #{service}"
   orders.details.service.select service
 end
 
-Then /^Set Order Details Ship-From to (\w+)$/ do |value|
-  log.info "Step: Set Order Details Ship-From to: \n #{value}"
+Then /^Order Details - Set Ship-From to (\w+)$/ do |value|
+  log.info "Step: Order Details - Set Ship-From to: \n #{value}"
   orders.details.ship_from.select value
 end
 
-Then /^Set Order Details Ship-To address to$/ do |table|
+Then /^Order Details - Set Ship-To address to$/ do |table|
   ship_to = OrdersHelper.instance.address_hash_to_str table.hashes.first
-  log.info "Step: Set Order Details Ship-To address to \n#{ship_to}"
-  step "Set Order Details Ship-To address to #{ship_to}"
+  log.info "Step: Order Details - Set Ship-To address to \n#{ship_to}"
+  step "Order Details - Set Ship-To address to #{ship_to}"
 end
 
-Then /^Set Order Details Ship-To to Random Address Between Zone 1 through 4$/ do
-  step "Set Order Details Ship-To address to zone 1 through 4"
+Then /^Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4$/ do
+  step "Order Details - Set Ship-To address to zone 1 through 4"
 end
 
-Then /^Set Order Details Ship-To to Random Address Between Zone 5 through 8$/ do
-  step "Set Order Details Ship-To address to zone 5 through 8"
+Then /^Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8$/ do
+  step "Order Details - Set Ship-To address to zone 5 through 8"
 end
 
-Then /^Set Order Details Ship-To address to (.*)$/ do |address|
-  log.info "Step: Set Order Details Ship-To address to \"#{address}\""
+Then /^Order Details - Set Ship-To address to (.*)$/ do |address|
+  log.info "Step: Order Details - Set Ship-To address to \"#{address}\""
 
   case address
     when /zone 1/
       random_ship_to_address = test_helper.rand_ship_to_zone_1_4
       formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
-      log.info "Set Order Details Ship-To random zone 1 through 4 address to \"#{formatted_address}\""
+      log.info "Order Details - Set Ship-To random zone 1 through 4 address to \"#{formatted_address}\""
     when /zone 5/
       random_ship_to_address = test_helper.rand_ship_to_zone_5_8
       formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
-      log.info "Set Order Details Ship-To random zone 5 through 8 address to \"#{formatted_address}\""
+      log.info "Order Details - Set Ship-To random zone 5 through 8 address to \"#{formatted_address}\""
     else
       formatted_address = OrdersHelper.instance.format_address address
   end
@@ -93,16 +93,16 @@ Then /^Set Order Details Ship-To address to (.*)$/ do |address|
   orders.details.ship_to.address.set formatted_address
 
   begin
-    step "Set Order Details Phone to #{random_ship_to_address["phone"]}"
-    step "Set Order Details Email to #{random_ship_to_address["email"]}"
+    step "Order Details - Set Phone to #{random_ship_to_address["phone"]}"
+    step "Order Details - Set Email to #{random_ship_to_address["email"]}"
   rescue
     #ignore
   end
 end
 
-Then /^Set Order Details Ship-To to ambiguous address$/ do |table|
+Then /^Order Details - Order Details - Set Ship-To to ambiguous address$/ do |table|
   ambiguous_address = OrdersHelper.instance.format_address table.hashes.first
-  log.info "Step: Set Order Details Ship-To to ambiguous address \n#{ambiguous_address}"
+  log.info "Step: Order Details - Order Details - Set Ship-To to ambiguous address \n#{ambiguous_address}"
   orders.details.ship_to.ambiguous.set ambiguous_address
 end
 
@@ -121,7 +121,7 @@ Then /^Expect "Exact Address Not Found" module to appear/ do
   address_not_found_module.present?.should be true
 end
 
-Then /^Set Order Details Phone to (.*)$/ do |phone|
+Then /^Order Details - Set Phone to (.*)$/ do |phone|
   @order_details_phone = (phone.to_s.strip.downcase.include? "random")?(test_helper.random_phone):phone
   begin
     log.info "Step: Order Details Form Phone to \"#{@order_details_phone}\""
@@ -129,10 +129,10 @@ Then /^Set Order Details Phone to (.*)$/ do |phone|
   end unless @order_details_phone.length == 0
 end
 
-Then /^Set Order Details Email to (.*)$/ do |email|
+Then /^Order Details - Set Email to (.*)$/ do |email|
   @order_details_email = (email.to_s.strip.downcase.include? "random")?(test_helper.random_email):email
   begin
-    log.info "Step: Set Order Details Email to \"#{@order_details_email}\""
+    log.info "Step: Order Details - Set Email to \"#{@order_details_email}\""
     orders.details.ship_to.address.email.set @order_details_email
   end unless @order_details_email.length == 0
 end
@@ -215,8 +215,8 @@ Then /^Decrement Order Details Insure For by (\d*)$/ do |value|
   orders.details.insure_for.decrement value
 end
 
-Then /^Set Order Details Tracking to \"([\w ]*)\"$/ do |value|
-  log.info "Step: Set Order Details Tracking to #{value}"
+Then /^Order Details - Set Tracking to \"([\w ]*)\"$/ do |value|
+  log.info "Step: Order Details - Set Tracking to #{value}"
   orders.details.tracking.select value
 end
 
@@ -241,8 +241,8 @@ Then /^Expect Order Details Tracking tooltip for (.*) to be (.*)$/ do |lov, expe
   #log.info cost
 end
 
-Then /^Set Order Details Insure For to \$([\d*\.?\d*]*)$/ do |value|
-  log.info "Step: Set Order Details Insure For to #{value}"
+Then /^Order Details - Set Insure For to \$([\d*\.?\d*]*)$/ do |value|
+  log.info "Step: Order Details - Set Insure For to #{value}"
   orders.details.insure_for.set value
 end
 
@@ -287,8 +287,8 @@ Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
   orders.details.ship_from.select("Manage Shipping Addresses...").delete_row(row)
 end
 
-Then /^Set Order Details Ship-From to Manage Shipping Addresses$/ do
-  log.info "Step: Set Order Details Ship-From to Manage Shipping Addresses"
+Then /^Order Details - Set Ship-From to Manage Shipping Addresses$/ do
+  log.info "Step: Order Details - Set Ship-From to Manage Shipping Addresses"
   orders.details.ship_from.select("Manage Shipping Addresses...").add table.hashes.first
 end
 

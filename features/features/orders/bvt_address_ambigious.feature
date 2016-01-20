@@ -6,15 +6,15 @@ Feature:  Ambigious Address
 
   @bvt_ambigious_address
   Scenario: Ambigious Address
-    When I Add a new order
-    Then Set Order Details Ship-From to default
-    Then Set Order Details Ship-To to ambiguous address
+    When Add New Order
+    Then Order Details - Set Ship-From to default
+    Then Order Details - Order Details - Set Ship-To to ambiguous address
       | name            | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Joseph Balancio | Company Name  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect "Exact Address Not Found" module to appear
     And Select row 2 from Exact Address Not Found module
-    Then Set Order Details Service to "Priority Mail Package"
-    Then Uncheck Orders Grid row 1
+    Then Order Details - Set Service to "Priority Mail Package"
+    Then UnOrders Grid - Check row 1
     Then Expect Grid Recipient to be Joseph Balancio
     Then Expect Grid Company to be Company Name
     Then Expect Grid City to be San Francisco
