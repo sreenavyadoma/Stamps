@@ -314,20 +314,16 @@ module Stamps
     def data_rand_zone_1_4
       shipping_addresses_zones = data_for(:zone_1_through_4, {})
       zones = shipping_addresses_zones.values
-      #pick a random zone
       zone_addresses = zones[rand(zones.size)]
       zone_addresses_values = zone_addresses.values
-      #pick a random address from the zone selected above.
       zone_addresses_values[rand(zone_addresses_values.size)]
     end
 
     def data_rand_zone_5_8
       shipping_addresses_zones = data_for(:zone_5_through_8, {})
       zones = shipping_addresses_zones.values
-      #pick a random zone
       zone_addresses = zones[rand(zones.size)]
       zone_addresses_values = zone_addresses.values
-      #pick a random address from the zone selected above.
       zone_addresses_values[rand(zone_addresses_values.size)]
     end
 
