@@ -1,4 +1,4 @@
- Then /^Buy \$(\d+) postage$/ do |amount|
+ Then /^Purchase Postage for \$(\d+)$/ do |amount|
    @old_balance = orders.navigation_bar.balance.amount
    log.info "Buy More link selected"
    buy_postage_modal = orders.navigation_bar.balance.buy_more
