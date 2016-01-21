@@ -1,11 +1,11 @@
-default: --profile cuke_reports --profile rob_dev
+default: --profile cuke_reports --profile ray_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
 rob_dev: --tags @store_management --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto03 PW=326tsetaqcdS!
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
 eli_dev: --tags @netstamps --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
-ray_dev: --tags @print_layouts_cp72_single_ply --guess VERBOSE=false URL=qacc BROWSER=ff USR=webpost_0010 PW=pass111
+ray_dev: --tags @print_layouts_cp72_continuation_raytest1 --guess VERBOSE=false URL=qacc BROWSER=ff USR=webpost_0010 PW=pass111
 eva_dev: --tags   @edit_order --guess VERBOSE=true URL=qacc BROWSER=gc USR=cctest1 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
