@@ -1,8 +1,11 @@
 
 Feature: Test Development
+  Background:
+    Given I am signed in to Orders
 
-  @rob_blahasdf
+    @rob_dev_signout
   Scenario:
+    Then Add New Order
     Then Order Details - Set Ship-To to Random Address in Zone 1
     Then Order Details - Set Ship-To to Random Address in Zone 2
     Then Order Details - Set Ship-To to Random Address in Zone 3
@@ -11,8 +14,13 @@ Feature: Test Development
     Then Order Details - Set Ship-To to Random Address in Zone 6
     Then Order Details - Set Ship-To to Random Address in Zone 7
     Then Order Details - Set Ship-To to Random Address in Zone 8
+    Then Sign out
 
-    Then Add New Order
+
+  Scenario:
+
+
+
 
     Then Filter Panel - Awaiting Shipment
     Then Toolbar - Move to Shipped
@@ -25,14 +33,15 @@ Feature: Test Development
     Then Move order to Awaiting Shipment
     Then Expect order moved to Awaiting Shipment
 
-  @rand_ship_to_zone_5_8
-  Scenario:
+
+
+
     Then Add New Order
     Then Filter Panel - Shipped
     Then Filter Panel - Cancelled
     Then Filter Panel - Awaiting Shipment
     Then Order Details - Set Ship-From to default
-    Then Order Details - Set Ship-To address to random zone 5 through 8
+    Then Order Details - Set Ship-To address to random zrtone 5 through 8
     Then Order Details - Set Email to random
     Then Order Details - Set Phone to random
     Then Order Details - Set Service to "Priority Mail Large Package"
