@@ -220,6 +220,47 @@ module Stamps
       "#{random_string}@#{random_string}.com".downcase
     end
 
+    def rand_zone_1
+      rand_zone1_through_8_common  data_for(:zone_1_through_4, {})['zone1'].values
+    end
+
+    def rand_zone_2
+      rand_zone1_through_8_common  data_for(:zone_1_through_4, {})['zone2'].values
+    end
+
+    def rand_zone_3
+      rand_zone1_through_8_common data_for(:zone_1_through_4, {})['zone3'].values
+    end
+
+    def rand_zone_4
+      rand_zone1_through_8_common data_for(:zone_1_through_4, {})['zone4'].values
+    end
+
+    def rand_zone_5
+      rand_zone1_through_8_common data_for(:zone_5_through_8, {})['zone5'].values
+    end
+
+    def rand_zone_6
+      rand_zone1_through_8_common data_for(:zone_5_through_8, {})['zone6'].values
+    end
+
+    def rand_zone_7
+      rand_zone1_through_8_common data_for(:zone_5_through_8, {})['zone7'].values
+    end
+
+    def rand_zone_8
+      rand_zone1_through_8_common data_for(:zone_5_through_8, {})['zone8'].values
+    end
+
+    def rand_zone1_through_8_common address
+      shipping =  address[rand(address.size)]
+      shipping["name"] = test_helper.random_name
+      shipping["company"] = test_helper.random_company_name
+      shipping["phone"] = test_helper.random_phone
+      shipping["email"] = test_helper.random_email
+      shipping
+    end
+
     def rand_ship_to_zone_1_4
       shipping = data_rand_zone_1_4
       shipping["name"] = test_helper.random_name

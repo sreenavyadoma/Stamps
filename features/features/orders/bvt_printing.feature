@@ -8,7 +8,7 @@ Feature:  BVT Printing
   Scenario:  Printing
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Ounces to 1
     Then Order Details - Set Height to 1

@@ -8,7 +8,7 @@ Feature:  Requires x-number of label sheets
   Scenario:  Printing
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Priority Mail Flat Rate Envelope"
     Then Order Details - Set Weight to 1 lbs 1 oz
     Then Open Print Modal
@@ -16,7 +16,7 @@ Feature:  Requires x-number of label sheets
     Then Close Print Modal
 
     Then Add New Order
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Service to "Priority Mail Flat Rate Envelope"
     Then Order Details - Set Weight to 1 lbs 1 oz
     Then Order Details - Set Dimensions to Length 1 Width 1 Height 1

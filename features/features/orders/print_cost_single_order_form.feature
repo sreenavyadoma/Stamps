@@ -13,7 +13,7 @@ Feature: Printing total cost
     Then Expect Tracking Cost to be $0.00
     Then Expect Order Details Total to be $0.00
 
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Hide Ship-To fields
     Then Order Details - Set Ounces to 1
     Then Order Details - Set Service to "Priority Mail Package"

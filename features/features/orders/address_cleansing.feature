@@ -23,7 +23,7 @@ Feature: Address Cleansing
     Then Expect Grid State to be CA
 
     Then Add New Order
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Hide Ship-To fields
     And Sign out

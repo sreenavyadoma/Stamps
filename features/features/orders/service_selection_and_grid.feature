@@ -7,7 +7,7 @@ Feature:  Service Selection & Order Grid Values
   Scenario:  Rename Parcel Select
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Parcel Select Ground Package"
     Then Order Details - Set Ounces to 1
     Then Open Print Modal
@@ -19,7 +19,7 @@ Feature:  Service Selection & Order Grid Values
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Parcel Select Ground Large Package"
     Then Order Details - Set Ounces to 1
     Then Open Print Modal
@@ -31,7 +31,7 @@ Feature:  Service Selection & Order Grid Values
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Parcel Select Ground Oversized Package"
     Then Order Details - Set Ounces to 1
     Then Open Print Modal
