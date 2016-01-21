@@ -41,14 +41,6 @@ Feature:  Service Selection & Order Grid Values
     Then Filter Panel - Shipped
     Then Expect Grid Service to be Parcel Select Ground
 
-    Then Move order to Awaiting Shipment
-    Then Filter Panel - Awaiting Shipment
-    Then Expect Grid Service to be Parcel Select Ground
-
-    Then Toolbar - Move to Canceled
-    Then Filter Panel - Cancelled
-    Then Expect Grid Service to be Parcel Select Ground
-
     And Sign out
 
     #todo - rob
