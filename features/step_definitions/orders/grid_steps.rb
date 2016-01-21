@@ -83,7 +83,7 @@ Then /^Expect Grid Ship Date for this order to be today plus (\d+)$/ do |day|
     grid_ship_date = grid.ship_date.data @order_id # Dec 3
     log.info "Order ID:  #{@order_id} - Print Modal Saved Ship Date: #{@ship_date} - Orders Grid Ship Date:  #{grid_ship_date}"
 
-    break if grid_ship_date==expected_ship_date
+    break if grid_ship_date == expected_ship_date
   }
 
   grid_ship_date = grid.ship_date.data @order_id
