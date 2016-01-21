@@ -26,4 +26,3 @@ Feature:  Customs Form Totals
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
     Then Sign out
-#todo-rob affected

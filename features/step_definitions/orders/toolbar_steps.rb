@@ -1,7 +1,7 @@
 When /^Add New Order$/ do
   log.info "Step: Add New Order"
   log.info "Add New Order"
-  @old_balance = orders.navbar.balance
+  @old_balance = orders.navigation_bar.balance.amount
   orders.grid.checkbox.uncheck 1
   @order_details = orders.toolbar.add
   @order_id = @order_details.order_id

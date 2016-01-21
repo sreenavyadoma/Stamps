@@ -6,7 +6,7 @@ module Print
       Print::SignInPage.new @browser
     end
 
-    def navbar
+    def navigation_bar
       Print::NavBar.new @browser
     end
 
