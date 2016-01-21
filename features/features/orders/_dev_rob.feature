@@ -1,10 +1,17 @@
 
 Feature: Test Development
 
-  Background:
-    Given I am signed in to Orders
-
+  @rob_blahasdf
   Scenario:
+    Then Order Details - Set Ship-To to Random Address in Zone 1
+    Then Order Details - Set Ship-To to Random Address in Zone 2
+    Then Order Details - Set Ship-To to Random Address in Zone 3
+    Then Order Details - Set Ship-To to Random Address in Zone 4
+    Then Order Details - Set Ship-To to Random Address in Zone 5
+    Then Order Details - Set Ship-To to Random Address in Zone 6
+    Then Order Details - Set Ship-To to Random Address in Zone 7
+    Then Order Details - Set Ship-To to Random Address in Zone 8
+
     Then Add New Order
 
     Then Filter Panel - Awaiting Shipment
@@ -25,7 +32,7 @@ Feature: Test Development
     Then Filter Panel - Cancelled
     Then Filter Panel - Awaiting Shipment
     Then Order Details - Set Ship-From to default
-    Then Order Details - Set Ship-To address to random zrtone 5 through 8
+    Then Order Details - Set Ship-To address to random zone 5 through 8
     Then Order Details - Set Email to random
     Then Order Details - Set Phone to random
     Then Order Details - Set Service to "Priority Mail Large Package"
