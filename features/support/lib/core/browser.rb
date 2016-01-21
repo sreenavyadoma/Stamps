@@ -74,7 +74,9 @@ module Stamps
         browser_helper.enabled? @field
       end
 
-
+      def hover
+        browser_helper.hover @field
+      end
 
       def data_error_qtip
         begin
@@ -676,6 +678,14 @@ module Stamps
           field.enabled?
         rescue
           return false
+        end
+      end
+
+      def hover field
+        begin
+          field.hover
+        rescue
+          #ignore
         end
       end
     end

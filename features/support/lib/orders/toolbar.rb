@@ -442,7 +442,7 @@ module Orders
 
         # Initializing Order Database
         initializing_db = Label.new @browser.div :text => "Initializing Order Database"
-        nav_bar = NavBar.new @browser
+        nav_bar = NavigationBar.new @browser
 
         sleep 2
         grid.checkbox.uncheck 1

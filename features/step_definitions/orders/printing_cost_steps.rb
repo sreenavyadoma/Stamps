@@ -4,7 +4,7 @@ Then /^Save Shipping Costs Data$/ do
   @insurance_cost = orders.details.insurance_cost
   @tracking_cost = orders.details.tracking_cost
   @total_amount = orders.details.total
-  @old_balance = orders.navbar.balance
+  @old_balance = orders.navigation_bar.balance.amount
 end
 
 Then /^Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost$/ do
@@ -41,13 +41,13 @@ Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is succe
   log.info "Step: Expect \$#{expected} is deducted from customer balance if printing is successful"
   log.info "Old Balance: #{@old_balance}"
   if @printing_error
-    @new_balance = orders.navbar.balance
+    @new_balance = orders.navigation_bar.balance.amount
     test_result = @old_balance.to_f == @new_balance.to_f
     log.info "Printing error detected."
     log.info "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(test_result)?"Passed":"Failed"}"
     expect(test_result).to be true
   else
-    @new_balance = orders.navbar.balance
+    @new_balance = orders.navigation_bar.balance.amount
     test_result = @old_balance.to_f == @new_balance.to_f + expected.to_f
     log.info "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(test_result)?"Passed":"Failed"}"
     expect(test_result).to be true
@@ -59,13 +59,13 @@ Then /^Expect Printing cost is deducted from customer balance if there were no p
   log.info "Printing Error:  #{@printing_error}"
   log.info "Old Balance: #{@old_balance}"
   if @printing_error
-    @new_balance = orders.navbar.balance
+    @new_balance = orders.navigation_bar.balance.amount
     balance_deduction = @old_balance.to_f == @new_balance.to_f
     log.info "Printing error detected."
     log.info "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(balance_deduction)?"Passed":"Failed"}"
     expect(balance_deduction).to be true
   else
-    @new_balance = orders.navbar.wait_until_balance_updated(@old_balance).balance
+    @new_balance = orders.navigation_bar.wait_until_balance_updated(@old_balance).balance
     postage_total_calculation = @total_amount.to_f.round(2) == (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
     log.info "Postage total Calculation:  #{(postage_total_calculation)?'Passed':'Failed'}.  #{@total_amount} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
     expect(postage_total_calculation).to be true
