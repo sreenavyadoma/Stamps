@@ -26,5 +26,3 @@ Feature:  Customs Form Item Grid - Edit/Delete
     Then Customs Form - Set I agree to Checked
     Then Close Customs Form
     And Sign out
-
-#todo-rob affected
