@@ -45,5 +45,5 @@ end
 
 Then /^Sign out$/ do
   log.info "Step: Sign out"
-  #orders.navigation.sign_out
+  orders.navigation_bar.username.sign_out
 end

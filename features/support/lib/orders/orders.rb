@@ -3,7 +3,7 @@ module Orders
   class PrintOrders < OrdersObject
 
     def navigation_bar
-      Orders::NavigationBar.new @browser
+      Orders::Navigation::NavigationBar.new @browser
     end
 
     def toolbar

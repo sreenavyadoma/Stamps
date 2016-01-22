@@ -39,7 +39,7 @@ end
 
 Then /^Open Settings Modal$/ do
   log.info "Step: Open Settings Modal"
-  orders.toolbar.open_settings
+  @general_settings = orders.toolbar.settings.general_settings
 end
 
 Then /^Fail the test$/ do

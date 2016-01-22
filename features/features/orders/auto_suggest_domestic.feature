@@ -11,7 +11,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching first name
 
-    Then Order Details - Set Form Ship-To address to San
+    Then Order Details - Set Ship-To address to San
 
     Then Expect Auto Suggest name shows Sandy Jones for entry 2
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 2

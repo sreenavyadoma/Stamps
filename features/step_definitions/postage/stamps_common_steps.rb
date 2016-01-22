@@ -86,7 +86,7 @@ Then /^example$/ do
 end
 
 Then /^Create page objects for Print On Shipping Label$/ do
-  random_ship_to_address = test_helper.rand_ship_to_zone_1_4
+  random_ship_to_address = test_helper.rand_zone_1_4
   formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
 
   shipping_label = postage.print_on "Shipping Label - 8 ½” x 11” Paper"

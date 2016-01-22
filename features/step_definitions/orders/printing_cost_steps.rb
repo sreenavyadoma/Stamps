@@ -65,7 +65,7 @@ Then /^Expect Printing cost is deducted from customer balance if there were no p
     log.info "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(balance_deduction)?"Passed":"Failed"}"
     expect(balance_deduction).to be true
   else
-    @new_balance = orders.navigation_bar.wait_until_balance_updated(@old_balance).balance
+    @new_balance = orders.navigation_bar.balance.wait_until_update(@old_balance).balance
     postage_total_calculation = @total_amount.to_f.round(2) == (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
     log.info "Postage total Calculation:  #{(postage_total_calculation)?'Passed':'Failed'}.  #{@total_amount} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
     expect(postage_total_calculation).to be true

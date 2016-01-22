@@ -1,6 +1,6 @@
 #todo-rob
 
-Feature: Change Settings
+Feature: Change Orders Page Settings
 
   Background:
     Given I am signed in to Orders

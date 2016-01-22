@@ -117,7 +117,7 @@ module Orders
         sign_in_button = self.sign_in
 
         grid = Orders::Grid::OrdersGrid.new @browser
-        navbar = NavigationBar.new @browser
+        navbar = Orders::Navigation::NavigationBar.new @browser
         welcome_modal = WelcomeModal.new @browser
         welcome_orders_page = WelcomeOrdersPage.new @browser
         plugin_issue = ErrorStampsPluginIssue.new @browser
