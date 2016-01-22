@@ -18,10 +18,6 @@ Feature: Test Development
 
 
   Scenario:
-
-
-
-
     Then Filter Panel - Awaiting Shipment
     Then Toolbar - Move to Shipped
     Then Filter Panel - Shipped

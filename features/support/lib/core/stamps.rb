@@ -261,7 +261,7 @@ module Stamps
       shipping
     end
 
-    def rand_ship_to_zone_1_4
+    def rand_zone_1_4
       shipping = data_rand_zone_1_4
       shipping["name"] = test_helper.random_name
       shipping["company"] = test_helper.random_company_name
@@ -270,7 +270,7 @@ module Stamps
       shipping
     end
 
-    def rand_ship_to_zone_5_8
+    def rand_zone_5_8
       shipping = data_rand_zone_5_8
       shipping["name"] = test_helper.random_name
       shipping["company"] = test_helper.random_company_name

@@ -111,44 +111,44 @@ Then /^Order Details - Set Ship-To address to (.*)$/ do |address|
 
   case address.downcase
     when /zone 1 through 4/
-      random_ship_to_address = test_helper.rand_ship_to_zone_1_4
-      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      address = test_helper.rand_zone_1_4
+      formatted_address = OrdersHelper.instance.format_address address
       log.info "Order Details - Set Ship-To random zone 1 through 4 address to \"#{formatted_address}\""
     when /zone 5 through 8/
-      random_ship_to_address = test_helper.rand_ship_to_zone_5_8
-      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      address = test_helper.rand_zone_5_8
+      formatted_address = OrdersHelper.instance.format_address address
       log.info "Order Details - Set Ship-To random zone 5 through 8 address to \"#{formatted_address}\""
     when /zone 1/
-      random_ship_to_address = test_helper.rand_zone_1
-      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      address = test_helper.rand_zone_1
+      formatted_address = OrdersHelper.instance.format_address address
       log.info "Order Details - Set Ship-To to Random Address in Zone 1 = \"#{formatted_address}\""
     when /zone 2/
-      random_ship_to_address = test_helper.rand_zone_2
-      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      address = test_helper.rand_zone_2
+      formatted_address = OrdersHelper.instance.format_address address
       log.info "Order Details - Set Ship-To to Random Address in Zone 2 = \"#{formatted_address}\""
     when /zone 3/
-      random_ship_to_address = test_helper.rand_zone_3
-      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      address = test_helper.rand_zone_3
+      formatted_address = OrdersHelper.instance.format_address address
       log.info "Order Details - Set Ship-To to Random Address in Zone 3 = \"#{formatted_address}\""
     when /zone 4/
-      random_ship_to_address = test_helper.rand_zone_4
-      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      address = test_helper.rand_zone_4
+      formatted_address = OrdersHelper.instance.format_address address
       log.info "Order Details - Set Ship-To to Random Address in Zone 4 = \"#{formatted_address}\""
     when /zone 5/
-      random_ship_to_address = test_helper.rand_zone_5
-      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      address = test_helper.rand_zone_5
+      formatted_address = OrdersHelper.instance.format_address address
       log.info "Order Details - Set Ship-To to Random Address in Zone 5 = \"#{formatted_address}\""
     when /zone 6/
-      random_ship_to_address = test_helper.rand_zone_6
-      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      address = test_helper.rand_zone_6
+      formatted_address = OrdersHelper.instance.format_address address
       log.info "Order Details - Set Ship-To to Random Address in Zone 6 = \"#{formatted_address}\""
     when /zone 7/
-      random_ship_to_address = test_helper.rand_zone_7
-      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      address = test_helper.rand_zone_7
+      formatted_address = OrdersHelper.instance.format_address address
       log.info "Order Details - Set Ship-To to Random Address in Zone 7 = \"#{formatted_address}\""
     when /zone 8/
-      random_ship_to_address = test_helper.rand_zone_8
-      formatted_address = OrdersHelper.instance.format_address(random_ship_to_address)
+      address = test_helper.rand_zone_8
+      formatted_address = OrdersHelper.instance.format_address address
       log.info "Order Details - Set Ship-To to Random Address in Zone 8 = \"#{formatted_address}\""
     else
       formatted_address = OrdersHelper.instance.format_address address
@@ -157,8 +157,8 @@ Then /^Order Details - Set Ship-To address to (.*)$/ do |address|
   orders.details.ship_to.address.set formatted_address
 
   begin
-    step "Order Details - Set Phone to #{random_ship_to_address["phone"]}"
-    step "Order Details - Set Email to #{random_ship_to_address["email"]}"
+    step "Order Details - Set Phone to #{address["phone"]}"
+    step "Order Details - Set Email to #{address["email"]}"
   rescue
     #ignore
   end

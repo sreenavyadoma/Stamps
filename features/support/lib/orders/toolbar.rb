@@ -245,11 +245,18 @@ module Orders
     end
 
     class GeneralSettings < OrdersObject
+      def title
+        Label.new @browser.div :text => "Settings"
+      end
+
+      def present?
+        title.present?
+      end
+
 
     end
 
     class Toolbar < OrdersObject
-
       class SettingsMenu < Print::Postage::PrintObject
         def button
           Button.new @browser.span :css => "span[class*=sdc-icon-settings]"
@@ -500,11 +507,6 @@ module Orders
 
       def settings_modal
         SettingsModal.new(@browser)
-      end
-
-      def open_settings
-        sleep 1
-        browser_settings_button.click
       end
 
       def page_count
