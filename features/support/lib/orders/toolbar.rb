@@ -245,6 +245,196 @@ module Orders
     end
 
     class GeneralSettings < OrdersObject
+      class LogoffDropDown < OrdersObject
+        def select selection
+          drop_down = Button.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]"
+          text_box = Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[0]
+          selection_label = Label.new @browser.li :text => selection
+          10.times do
+            drop_down.safe_click unless selection_label.present?
+            selection_label.safe_click
+            sleep 1
+            break if text_box.text.include? selection
+          end
+        end
+
+        def five_min
+          select "5 min."
+        end
+
+        def ten_min
+          select "10 min."
+        end
+
+        def fifteen_min
+          select "15 min."
+        end
+
+        def thirty_min
+          select "30 min."
+        end
+
+        def one_hour
+          select "1 hour"
+        end
+
+        def two_hour
+          select "2 hours"
+        end
+      end
+
+      class PostDateDropDown < OrdersObject
+        def select selection
+          drop_down = Button.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
+          text_box = Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[1]
+          selection_label = Label.new @browser.li :text => selection
+          10.times do
+            drop_down.safe_click unless selection_label.present?
+            selection_label.safe_click
+            sleep 1
+            break if text_box.text.include? selection
+          end
+        end
+
+        def twelve_am
+          select "12:00 a.m."
+        end
+
+        def one_am
+          select "1:00 a.m."
+        end
+
+        def two_am
+          select "2:00 a.m."
+        end
+
+        def three_am
+          select "3:00 a.m."
+        end
+
+        def four_am
+          select "4:00 a.m."
+        end
+
+        def five_am
+          select "5:00 a.m."
+        end
+
+        def six_am
+          select "6:00 a.m."
+        end
+
+        def seven_am
+          select "7:00 a.m."
+        end
+
+        def eight_am
+          select "8:00 a.m."
+        end
+
+        def nine_am
+          select "9:00 a.m."
+        end
+
+        def ten_am
+          select "10:00 a.m."
+        end
+
+        def eleven_am
+          select "11:00 a.m."
+        end
+
+        def twelve_pm
+          select "12:00 p.m."
+        end
+
+        def one_pm
+          select "1:00 p.m."
+        end
+
+        def two_pm
+          select "2:00 p.m."
+        end
+
+        def three_pm
+          select "3:00 p.m."
+        end
+
+        def four_pm
+          select "4:00 p.m."
+        end
+
+        def five_pm
+          select "5:00 p.m."
+        end
+
+        def six_pm
+          select "6:00 p.m."
+        end
+
+        def seven_pm
+          select "7:00 p.m."
+        end
+
+        def eight_pm
+          select "8:00 p.m."
+        end
+
+        def nine_pm
+          select "9:00 p.m."
+        end
+
+        def ten_pm
+          select "10:00 p.m."
+        end
+
+        def eleven_pm
+          select "11:00 p.m."
+        end
+      end
+
+      class PostageBalanceDropDown < OrdersObject
+        def select selection
+          drop_down = Button.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]"
+          text_box = Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[2]
+          selection_label = Label.new @browser.li :text => selection
+          10.times do
+            drop_down.safe_click unless selection_label.present?
+            selection_label.safe_click
+            sleep 1
+            break if text_box.text.include? selection
+          end
+        end
+
+        def zero
+          select "$0"
+        end
+
+        def ten
+          select "$10"
+        end
+
+        def twenty_file
+          select "$25"
+        end
+
+        def fifty
+          select "$50"
+        end
+
+        def one_hundred
+          select "$100"
+        end
+
+        def two_hundred_fifty
+          select "$250"
+        end
+
+        def five_hundred
+          select "$500"
+        end
+      end
+
       def title
         Label.new @browser.div :text => "Settings"
       end
@@ -253,7 +443,25 @@ module Orders
         title.present?
       end
 
+      def services
+        checkbox_field = @browser.input :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>input"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute_name = "class"
+        attribute_value = "checked"
+        Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+      end
 
+      def log_off
+        LogoffDropDown.new @browser
+      end
+
+      def post_date
+        PostDateDropDown.new @browser
+      end
+
+      def postage_balance
+        PostageBalanceDropDown.new @browser
+      end
     end
 
     class Toolbar < OrdersObject
