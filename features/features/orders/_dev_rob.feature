@@ -16,7 +16,6 @@ Feature: Test Development
     Then Order Details - Set Ship-To to Random Address in Zone 8
     Then Sign out
 
-
   Scenario:
     Then Filter Panel - Awaiting Shipment
     Then Toolbar - Move to Shipped
@@ -28,9 +27,6 @@ Feature: Test Development
 
     Then Move order to Awaiting Shipment
     Then Expect order moved to Awaiting Shipment
-
-
-
 
     Then Add New Order
     Then Filter Panel - Shipped

@@ -5,7 +5,7 @@ Feature: Change Orders Page Settings
   Background:
     Given I am signed in to Orders
 
-  @settings
+  @general_settings
   Scenario: As a batch shipper, I want to change the settings for the batch shipping page.
 
     Then Open Settings Modal

@@ -37,11 +37,6 @@ When /^Add a second order$/ do
   orders.grid.checkbox.edit @order_id_2
 end
 
-Then /^Open Settings Modal$/ do
-  log.info "Step: Open Settings Modal"
-  @general_settings = orders.toolbar.settings.general_settings
-end
-
 Then /^Fail the test$/ do
   log.info "Step: Fail the test"
   true.should eql  false
@@ -54,3 +49,4 @@ Then /^Test Features$/ do |count|
   log.info count
   orders.grid.checkbox.uncheck_all
 end
+

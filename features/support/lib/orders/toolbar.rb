@@ -245,16 +245,369 @@ module Orders
     end
 
     class GeneralSettings < OrdersObject
+
+      class ResetFields < OrdersObject
+        class Weight < OrdersObject
+          class Pounds <  OrdersObject
+            def text_box
+              Textbox.new (@browser.text_field :name => 'sdc-resetfieldswin-poundsnumberfield-inputEl')
+            end
+
+            def set value
+              text_field = text_box
+              value = value.to_i
+              max = value + text_field.text.to_i
+              max.times do
+                current_value = text_field.text.to_i
+                break if value == current_value
+                if value > current_value
+                  increment 1
+                else
+                  decrement 1
+                end
+                break if value == current_value
+              end
+              sleep 1
+              log.info "Pounds set to #{text_field.text}"
+            end
+
+            def increment value
+              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]")
+              value.to_i.times do
+                button.safe_click
+              end
+            end
+
+            def decrement value
+              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]")
+              value.to_i.times do
+                button.safe_click
+              end
+            end
+          end
+
+          class Ounces <  OrdersObject
+            def text_box
+              Textbox.new (@browser.text_field :name => 'sdc-resetfieldswin-ouncesnumberfield-inputEl')
+            end
+
+            def set value
+              text_field = text_box
+              value = value.to_i
+              max = value + text_field.text.to_i
+              max.times do
+                current_value = text_field.text.to_i
+                break if value == current_value
+                if value > current_value
+                  increment 1
+                else
+                  decrement 1
+                end
+                break if value == current_value
+              end
+              sleep 1
+              log.info "Pounds set to #{text_field.text}"
+            end
+
+            def increment value
+              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]")
+              value.to_i.times do
+                button.safe_click
+              end
+            end
+
+            def decrement value
+              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]")
+              value.to_i.times do
+                button.safe_click
+              end
+            end
+          end
+
+          def enabled?
+            browser_helper.enabled? (@browser.text_field :name => 'sdc-resetfieldswin-poundsnumberfield-inputEl')
+          end
+
+          def lbs
+            Pounds.new @browser
+          end
+
+          def oz
+            Ounces.new @browser
+          end
+
+        end
+
+        class Dimensions < OrdersObject
+
+          class Length <  OrdersObject
+            def text_box
+              Textbox.new (@browser.text_field :name => 'sdc-resetfieldswin-lengthnumberfield-inputEl')
+            end
+
+            def set value
+              text_field = text_box
+              value = value.to_i
+              max = value + text_field.text.to_i
+              max.times do
+                current_value = text_field.text.to_i
+                break if value == current_value
+                if value > current_value
+                  increment 1
+                else
+                  decrement 1
+                end
+                break if value == current_value
+              end
+              sleep 1
+              log.info "Pounds set to #{text_field.text}"
+            end
+
+            def increment value
+              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
+              value.to_i.times do
+                button.safe_click
+              end
+            end
+
+            def decrement value
+              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
+              value.to_i.times do
+                button.safe_click
+              end
+            end
+          end
+
+          class Width <  OrdersObject
+            def text_box
+              Textbox.new (@browser.text_field :name => 'sdc-resetfieldswin-widthnumberfield-inputEl')
+            end
+
+            def set value
+              text_field = text_box
+              value = value.to_i
+              max = value + text_field.text.to_i
+              max.times do
+                current_value = text_field.text.to_i
+                break if value == current_value
+                if value > current_value
+                  increment 1
+                else
+                  decrement 1
+                end
+                break if value == current_value
+              end
+              sleep 1
+              log.info "Pounds set to #{text_field.text}"
+            end
+
+            def increment value
+              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
+              value.to_i.times do
+                button.safe_click
+              end
+            end
+
+            def decrement value
+              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
+              value.to_i.times do
+                button.safe_click
+              end
+            end
+          end
+
+          class Height <  OrdersObject
+            def text_box
+              Textbox.new (@browser.text_field :name => 'sdc-resetfieldswin-heightnumberfield-inputEl')
+            end
+
+            def set value
+              text_field = text_box
+              value = value.to_i
+              max = value + text_field.text.to_i
+              max.times do
+                current_value = text_field.text.to_i
+                break if value == current_value
+                if value > current_value
+                  increment 1
+                else
+                  decrement 1
+                end
+                break if value == current_value
+              end
+              sleep 1
+              log.info "Pounds set to #{text_field.text}"
+            end
+
+            def increment value
+              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
+              value.to_i.times do
+                button.safe_click
+              end
+            end
+
+            def decrement value
+              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
+              value.to_i.times do
+                button.safe_click
+              end
+            end
+          end
+
+          def enabled?
+            browser_helper.enabled? (@browser.text_field :name => 'sdc-resetfieldswin-lengthnumberfield-inputEl')
+          end
+
+          def length
+            Length.new @browser
+          end
+
+          def width
+            Width.new @browser
+          end
+
+          def height
+            Height.new @browser
+          end
+
+        end
+
+        def present?
+          browser_helper.present? (@browser.div :text => "Reset Fields")
+        end
+
+        def service
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-servicecheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def weight
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-weightcheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          checkbox = Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          checkbox.check
+          Weight.new @browser
+        end
+
+        def dimensions
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-dimensionscheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          checkbox = Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          checkbox.check
+          Dimensions.new @browser
+        end
+
+        def ship_to_address
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-shiptoaddresscheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def tracking
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-trackingcheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def extra_services
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-extraservicescheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def insurance
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-insurancecheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def reference_numbers
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-referencenumberscheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def cost_code
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-costcodecheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def customs
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-customscheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def quantity
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-quantitycheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def stamps_amount
+          checkbox_field = @browser.input :id => "sdc-resetfieldswin-stampsamountcheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def auto_advance_label_position
+          parent = (@browser.label :text=> "Auto-Advance Label Position (NetStamps and Label Sheets)").parent
+          checkbox_field = parent.input
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def close
+          button = Button.new @browser.span :text => "Close"
+          5.times do
+            button.safe_click
+            sleep 1
+            return unless present?
+          end
+        end
+      end
+
       class LogoffDropDown < OrdersObject
+        def text_box
+          Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[0]
+        end
+
         def select selection
           drop_down = Button.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]"
-          text_box = Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[0]
+          text_field = text_box
           selection_label = Label.new @browser.li :text => selection
           10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
-            sleep 1
-            break if text_box.text.include? selection
+            break if text_field.text.include? selection
           end
         end
 
@@ -284,15 +637,18 @@ module Orders
       end
 
       class PostDateDropDown < OrdersObject
+        def text_box
+          Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[1]
+        end
+
         def select selection
           drop_down = Button.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
-          text_box = Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[1]
+          text_field = text_box
           selection_label = Label.new @browser.li :text => selection
           10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
-            sleep 1
-            break if text_box.text.include? selection
+            break if text_field.text.include? selection
           end
         end
 
@@ -394,15 +750,18 @@ module Orders
       end
 
       class PostageBalanceDropDown < OrdersObject
+        def text_box
+          Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[2]
+        end
+
         def select selection
           drop_down = Button.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]"
-          text_box = Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[2]
+          text_field = text_box
           selection_label = Label.new @browser.li :text => selection
           10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
-            sleep 1
-            break if text_box.text.include? selection
+            break if text_field.text.include? selection
           end
         end
 
@@ -414,7 +773,7 @@ module Orders
           select "$10"
         end
 
-        def twenty_file
+        def twenty_five
           select "$25"
         end
 
@@ -461,6 +820,55 @@ module Orders
 
       def postage_balance
         PostageBalanceDropDown.new @browser
+      end
+
+      def print_confirm
+        checkbox_field = @browser.input :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>input"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute_name = "class"
+        attribute_value = "checked"
+        Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+      end
+
+      def reset_fields
+        modal = ResetFields.new @browser
+        button = Button.new @browser.span :text => "Select..."
+        10.times do
+          button.safe_click unless modal.present?
+          return modal if modal.present?
+        end
+      end
+
+      def usps_terms
+        checkbox_field = @browser.input :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>input"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute_name = "class"
+        attribute_value = "checked"
+        Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+      end
+
+      def contacts
+        checkbox_field = @browser.input :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>input"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute_name = "class"
+        attribute_value = "checked"
+        Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+      end
+
+      def shipments
+        checkbox_field = @browser.input :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>input"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute_name = "class"
+        attribute_value = "checked"
+        Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+      end
+
+      def save
+        button = Button.new (@browser.span :text => "Save")
+        10.times do
+          button.safe_click
+          return unless button.present?
+        end
       end
     end
 
