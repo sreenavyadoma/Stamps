@@ -31,7 +31,7 @@ module Print
       end
 
       def ship_from
-        Print::Print::Postage::ShipFrom.new @browser
+        Print::Postage::ShipFrom.new @browser
       end
 
       def calculate_postage_amount

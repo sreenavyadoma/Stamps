@@ -2,7 +2,7 @@
 Feature: Local Rating Smoke Test
 
   Background:
-    Given I am signed in to Orders as ff/qacc/auto40/326tsetaqcdS!
+    Given I am signed in to Orders as ff/qacc/auto34/326tsetaqcdS!
 
   @local_rating_smoke_test
   Scenario: Local Rating Smoke Test

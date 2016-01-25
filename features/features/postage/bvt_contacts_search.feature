@@ -8,10 +8,10 @@ Feature: Extra Services BVT
   @wp_bvt
   Scenario: Contacts Search
 
-    Then Select Print Postage Print On <media>
-    Then Set Print Postage Ship-From to <address>
-    Then Open Contacts modal
-    Then Search Contacts by group - <name>
-    Then Search Contacts by cost code - <code>
-    Then Cancel Contacts modal
+    Then Print Postage - Select Print On <media>
+    Then Shipping Label: Set Print Postage Ship-From to <address>
+    Then Shipping Label: Open Contacts modal
+    Then Contacts: Search by group - <name>
+    Then Contacts: Search by cost code - <code>
+    Then Contacts: Click Cancel
     Then Sign out

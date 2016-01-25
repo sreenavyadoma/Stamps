@@ -15,9 +15,9 @@ Then /^Select Postage Printer \"(.*)\"$/ do |printer|
 end
 
 
-When /^Print Postage$/ do
+When /^Footer - Print Postage$/ do
   log.info "Step: Print"
-  print_postage_modal = postage.print
+  print_postage_modal = postage.footer.print
   @printer = print_postage_modal.printer.text_box.text
   @paper_tray = print_postage_modal.paper_tray.text_box.text
   @printing_error = print_postage_modal.print

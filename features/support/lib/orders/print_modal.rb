@@ -121,15 +121,15 @@ module Orders
       private
       def selection media
         case media
-          # Shipping Label - 8 ½" x 11" Paper
+          # Shipping Label: 8 ½" x 11" Paper
           when /Paper/
             return Label.new (@browser.li :text => /Paper/)
 
-          # Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+          # Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
           when /SDC-1200/
             return Label.new (@browser.li :text => /SDC-1200/)
 
-          # Shipping Label - 5 ½" x 8 ½"
+          # Shipping Label: 5 ½" x 8 ½"
           when /x 8/
             return Label.new (@browser.li :text => /x 8/)
 

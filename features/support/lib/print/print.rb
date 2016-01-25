@@ -29,5 +29,13 @@ module Print
     def envelope
       Print::Postage::Envelope.new @browser
     end
+
+    def certified_mail
+      Print::Postage::CertifiedMail.new @browser
+    end
+
+    def footer
+      Print::Postage::Footer.new @browser
+    end
   end
 end

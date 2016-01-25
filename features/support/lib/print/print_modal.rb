@@ -1,5 +1,6 @@
 # encoding: utf-8
 module Print
+  module Postage
 
   class PrintPostageModalObject < Print::Postage::PrintObject
     def window_x_button
@@ -88,14 +89,14 @@ module Print
     end
 
     def paper_tray
-      Print::PaperTray.new @browser
+      Print::Postage::PaperTray.new @browser
     end
 
     def printer
-      Print::Printer.new @browser
+      Print::Postage::Printer.new @browser
     end
 
-    def postage
+    def print
       button = print_button
       5.times {
         begin
@@ -256,5 +257,5 @@ module Print
       browser_helper.click print_button
     end
   end
-
+end
 end

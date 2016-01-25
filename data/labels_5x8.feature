@@ -3,13 +3,13 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Background:
   Given I am signed in as a Batch shipper
 
-  Scenario: User can select a new option in the Print Postage On combobox: Shipping Label - 5.5 x 8.5
+  Scenario: User can select a new option in the Print Postage On combobox: Shipping Label: 5.5 x 8.5
     When Select to print
     Then Expect you will find new option:  Shipping Label 5.5 x 8.5
 
   Scenario: User can select this new option by searching in the combobox or selecting it via the combobox menu.
     When Select to print
-    Then Expect to be able to select this new option (Shipping Label - 5.5 x 8.5) by searching in the combobox or selecting it via the combobox menu
+    Then Expect to be able to select this new option (Shipping Label: 5.5 x 8.5) by searching in the combobox or selecting it via the combobox menu
 
   Scenario: Tooltip for Shipping Label 5.5 x 8.5
     When Select to print

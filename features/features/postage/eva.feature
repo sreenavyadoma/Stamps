@@ -42,7 +42,7 @@ Feature: Select All Print Ons and Services
     Then Set Print Postage Form Service to "<string>"
     Then Set Print Postage Form Service to "<string>"
 
-    Then Select Print Postage Print On Shipping Label - Stamps.com SDC-1200, 4 ¼” x 6 ¾”
+    Then Select Print Postage Print On Shipping Label: Stamps.com SDC-1200, 4 ¼” x 6 ¾”
     Then Set Print Postage Form Service to "First-Class Mail Large Envelope/Flat"
     Then Set Print Postage Form Service to "First Class Mail Package/Thick Envelope"
     Then Set Print Postage Form Service to "Priority Mail Large/Thick Envelope"
@@ -66,7 +66,7 @@ Feature: Select All Print Ons and Services
     Then Set Print Postage Form Service to "Parcel Select Ground Oversized Package"
 
 
-    Then Select Print Postage Print On Shipping Label - 5 ½” x 8 ½”
+    Then Select Print Postage Print On Shipping Label: 5 ½” x 8 ½”
     Then Set Print Postage Form Service to "First-Class Mail Large Envelope/Flat"
     Then Set Print Postage Form Service to "First Class Mail Package/Thick Envelope"
     Then Set Print Postage Form Service to "Priority Mail Large/Thick Envelope"

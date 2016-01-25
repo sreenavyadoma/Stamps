@@ -4,7 +4,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Background:
   Given I am signed in to Orders
 
-  Scenario: Print - Shipping Label - 5 ½" x 8 ½"
+  Scenario: Print - Shipping Label: 5 ½" x 8 ½"
     Then Add New Order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 5 through 8
@@ -25,7 +25,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
 
 
   @label_5x8_printing
-  Scenario: Print - Shipping Label - 8 ½" x 11" Paper
+  Scenario: Print - Shipping Label: 8 ½" x 11" Paper
     Then Add New Order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 5 through 8
@@ -89,7 +89,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Toolbar: Print
     And Sign out
 
-  Scenario: Print - Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+  Scenario: Print - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then Add New Order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 5 through 8
@@ -103,7 +103,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Toolbar: Print
     And Sign out
 
-  Scenario: Print - Shipping Label - 5 ½" x 8 ½"
+  Scenario: Print - Shipping Label: 5 ½" x 8 ½"
     Then Add New Order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 5 through 8
@@ -145,7 +145,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Toolbar: Print
     And Sign out
 
-  Scenario: Multi Order Printing - Shipping Label - 5 ½" x 8 ½"
+  Scenario: Multi Order Printing - Shipping Label: 5 ½" x 8 ½"
     #Create order 1
     Then Add New Order
     Then Order Details: Set Ship-From to default

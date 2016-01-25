@@ -1,10 +1,10 @@
-Feature: Print Media - Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+Feature: Print Media - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
 
   Background:
     Given I am signed in to Orders
 
   @print_media
-  Scenario:  Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+  Scenario:  Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then Add New Order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4

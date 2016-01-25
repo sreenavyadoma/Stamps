@@ -272,7 +272,7 @@ module Print
     class ShipFrom < Print::Postage::PrintObject
 
       def drop_down
-        Button.new (@browser.divs :css => "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
+        Button.new (@browser.div :css => "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
       end
 
       def manage_ship_from_address_field
@@ -296,9 +296,9 @@ module Print
       end
 
       def select selection
-        @manage_shipping_adddress = Print::Postage::ManageShippingAddresses.new @browser
+        #@manage_shipping_address = Print::Postage::ManageShippingAddresses.new @browser
 
-        return @manage_shipping_adddress if @manage_shipping_adddress.present?
+        #return @manage_shipping_address if @manage_shipping_address.present?
 
         ship_from_default_selection_field = (@browser.divs :css => "div[class*=x-boundlist-item]")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
         ship_from_dropdown = self.drop_down

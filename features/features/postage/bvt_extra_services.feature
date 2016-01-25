@@ -8,15 +8,15 @@ Feature: Extra Services BVT
   @wp_bvt
   Scenario: Extra Services
 
-    Then Select Print Postage Print On <media>
-    Then Set Print Postage Ship-From to <address>
-    Then Set Print Postage Form Ship-To country to <country>
-    Then Set Print Postage Form Ship-To address to <address>
-    Then Set Print Postage Form Ounces to <number>
-    Then Set Print Postage Form Pounds to <number>
-    Then Set Print Postage Form Service to <service>
-    Then Open Extra Services
-    Then Set Extra Services COD to <number>
-    Then Save Extra Services
-    Then Print Postage
+    Then Print Postage - Select Print On <media>
+    Then Shipping Label: Set Print Postage Ship-From to <address>
+    Then Shipping Label: Set Print Postage Form Ship-To country to <country>
+    Then Shipping Label: Set Print Postage Form Ship-To address to <address>
+    Then Shipping Label: Set Print Postage Form Ounces to <number>
+    Then Shipping Label: Set Print Postage Form Pounds to <number>
+    Then Shipping Label: Set Print Postage Form Service to <service>
+    Then Shipping Label: Open Extra Services
+    Then Extra Services: Set COD to <number>
+    Then Extra Services: Click Save
+    Then Footer - Print Postage
     Then Sign out

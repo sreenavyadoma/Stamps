@@ -1,10 +1,10 @@
-Feature: Print Media - Shipping Label - 5 ½" x 8 ½"
+Feature: Print Media - Shipping Label: 5 ½" x 8 ½"
 
   Background:
     Given I am signed in to Orders
 
   @print_media
-  Scenario:  Shipping Label - 5 ½" x 8 ½"
+  Scenario:  Shipping Label: 5 ½" x 8 ½"
     Then Add New Order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
