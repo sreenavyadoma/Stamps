@@ -870,6 +870,14 @@ module Orders
           return unless button.present?
         end
       end
+
+      def close
+        button = Button.new (@browser.img :css => "img[class$=close]")
+        10.times do
+          button.safe_click
+          return unless button.present?
+        end
+      end
     end
 
     class Toolbar < OrdersObject

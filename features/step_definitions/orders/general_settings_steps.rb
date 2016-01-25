@@ -55,7 +55,7 @@ Then /^Settings:  Logoff set (.*)$/ do |logoff|
       @general_settings.log_off.fifteen_min
     when "30 min"
       @general_settings.log_off.thirty_min
-    when " hour"
+    when "1 hour"
       @general_settings.log_off.one_hour
     when "2 hours"
       @general_settings.log_off.two_hours
@@ -260,7 +260,7 @@ Then /^Expect Settings:  Logoff is set for 1 hour$/ do
 end
 
 Then /^Expect Settings:  Logoff is set for 2 hours$/ do
-  step "Expect Settings:  Logoff expectation is 2 hour"
+  step "Expect Settings:  Logoff expectation is 2 hours"
 end
 
 Then /^Expect Settings:  Logoff expectation is (.*)$/ do |expectation|
