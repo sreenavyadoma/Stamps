@@ -9,15 +9,15 @@ Feature: Show unavailable services
 
     Then Open Settings Modal
     Then Settings: Check Services
-    Then Settings: Save
+    Then Settings:  Save
     Then Open Settings Modal
     Then Settings:  Expect Services Checked
 
     Then Settings:  Uncheck Services
-    Then Settings: Save
+    Then Settings:  Save
     Then Open Settings Modal
     Then Settings:  Expect Show unavailable service Unchecked
-    Then Settings: Close
+    Then Settings:  Close
 
     And Sign out
 

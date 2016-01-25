@@ -221,6 +221,66 @@ Then /^Settings:  Postdate Set (.*)$/ do |postdate|
   log.info "Step:  Postdate mail to next day after #{@general_settings.log_off.text_box.text}"
 end
 
+# Postage Balance
+
+Then /^Settings:  Set Postage Balance to 0$/ do
+  step 'Settings:  Postage Balance Set 0'
+end
+
+Then /^Settings:  Set Postage Balance to 10$/ do
+  step 'Settings:  Postage Balance Set 10'
+end
+
+Then /^Settings:  Set Postage Balance to 25$/ do
+  step 'Settings:  Postage Balance Set 25'
+end
+
+Then /^Settings:  Set Postage Balance to 50$/ do
+  step 'Settings:  Postage Balance Set 50'
+end
+
+
+Then /^Settings:  Set Postage Balance to 100$/ do
+  step 'Settings:  Postage Balance Set 100'
+end
+
+
+Then /^Settings:  Set Postage Balance to 250$/ do
+  step 'Settings:  Postage Balance Set 250'
+end
+
+
+Then /^Settings:  Set Postage Balance to 500$/ do
+  step 'Settings:  Postage Balance Set 500'
+end
+
+
+Then /^Settings:  Postage Balance Set (.*)$/ do |postage_balance|
+  step "Open Settings Modal" if @general_settings.nil?
+
+  case postage_balance.downcase
+    when "0"
+      @general_settings.postage_balance.zero
+    when "10"
+      @general_settings.postage_balance.ten
+    when "25"
+      @general_settings.postage_balance.twenty_five
+    when "50"
+      @general_settings.postage_balance.fifty
+    when "100"
+      @general_settings.postage_balance.one_hundred
+    when "250"
+      @general_settings.postage_balance.two_hundred_fifty
+    when "500"
+      @general_settings.postage_balance.five_hundred
+    else
+      raise "Invalid Postage Balance Selection -  Settings:  Postage Balance #{postage_balance}"
+  end
+  log.info "Step:  Notify me when postage balance drops below #{@general_settings.log_off.text_box.text}"
+end
+
+
+
 
 
 
@@ -274,116 +334,148 @@ Then /^Settings:  Expect Logoff to be (.*)$/ do |expectation|
 end
 
 # Postadate
-Then /^Settings:  Expect Postdate is set to 12:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 12:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 12:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 1:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 1:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 1:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 2:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 2:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 2:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 3:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 3:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 3:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 4:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 4:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 4:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 5:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 5:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 5:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 6:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 6:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 6:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 7:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 7:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 7:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 8:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 8:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 8:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 9:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 9:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 9:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 10:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 10:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 10:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 11:00 a.m.$/ do
+Then /^Settings:  Expect Postdate set to 11:00 a.m.$/ do
   step "Settings:  Expect Postdate to be 11:00 a.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 12:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 12:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 12:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 1:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 1:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 1:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 2:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 2:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 2:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 3:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 3:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 3:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 4:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 4:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 4:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 5:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 5:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 5:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 6:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 6:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 6:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 7:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 7:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 7:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 8:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 8:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 8:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 9:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 9:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 9:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 10:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 10:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 10:00 p.m."
 end
 
-Then /^Settings:  Expect Postdate is set to 11:00 p.m.$/ do
+Then /^Settings:  Expect Postdate set to 11:00 p.m.$/ do
   step "Settings:  Expect Postdate to be 11:00 p.m."
 end
-
 
 Then /^Settings:  Expect Postdate to be (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Settings:  Expect Postdate to be #{expectation}"
 
-  log.info "Test #{(@general_settings.post_date.text_box.text.include? expectation)?"Passed":"Failed"}"
+  log.info "Test #{(@general_settings.post_date.text_box.text == expectation)?"Passed":"Failed"}"
   @general_settings.post_date.text_box.text.should eql expectation
 end
 
+# Postage Balance
+Then /^Settings:  Expect Postage Balance set to 0$/ do
+  step "Settings:  Expect Postage Balance to be $0"
+end
+
+Then /^Settings:  Expect Postage Balance set to 10$/ do
+  step "Settings:  Expect Postage Balance to be $10"
+end
+
+Then /^Settings:  Expect Postage Balance set to 25$/ do
+  step "Settings:  Expect Postage Balance to be $25"
+end
+
+Then /^Settings:  Expect Postage Balance set to 50$/ do
+  step "Settings:  Expect Postage Balance to be $50"
+end
+
+Then /^Settings:  Expect Postage Balance set to 100$/ do
+  step "Settings:  Expect Postage Balance to be $100"
+end
+
+Then /^Settings:  Expect Postage Balance set to 250$/ do
+  step "Settings:  Expect Postage Balance to be $250"
+end
+
+Then /^Settings:  Expect Postage Balance set to 500$/ do
+  step "Settings:  Expect Postage Balance to be $500"
+end
+
+Then /^Settings:  Expect Postage Balance to be (.*)$/ do |expectation|
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect Postage Balance to be $#{expectation}"
+
+  log.info "Test #{(@general_settings.postage_balance.text_box.text == expectation)?"Passed":"Failed"}"
+  @general_settings.postage_balance.text_box.text.should eql expectation
+end
+
 # End Expectations
-
-
-
-
 
 Then /^$/ do
 
@@ -519,16 +611,16 @@ Then /^$/ do
   log.info "rob"
 end
 
-Then /^Settings: Save$/ do
+Then /^Settings:  Save$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  log.info "Settings: Save"
+  log.info "Settings:  Save"
   @general_settings.save
   log.info "Settings #{(@general_settings.present?)?"was not saved":"Saved"}"
 end
 
-Then /^Settings: Close$/ do
+Then /^Settings:  Close$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  log.info "Settings: Close"
+  log.info "Settings:  Close"
   @general_settings.close
   log.info "Settings #{(@general_settings.present?)?"was not closed":"Closed"}"
 end
