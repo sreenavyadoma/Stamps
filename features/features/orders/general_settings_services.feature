@@ -11,12 +11,12 @@ Feature: Show unavailable services
     Then Settings: Check Services
     Then Settings: Save
     Then Open Settings Modal
-    Then Expect Settings:  Services Checked
+    Then Settings:  Expect Services Checked
 
     Then Settings:  Uncheck Services
     Then Settings: Save
     Then Open Settings Modal
-    Then Expect Settings:  Show unavailable service Unchecked
+    Then Settings:  Expect Show unavailable service Unchecked
     Then Settings: Close
 
     And Sign out
