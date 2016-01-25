@@ -1,4 +1,4 @@
-Feature: Local Rating test for zone 1
+Feature: Local Rating test for zone 2
 
   Background:
     Given I am signed in to Orders as ff/qacc/ss_rob14/pass111
