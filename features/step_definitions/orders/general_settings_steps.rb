@@ -240,30 +240,30 @@ Then /^Settings:  Expect Show unavailable service Unchecked$/ do
 end
 
 Then /^Settings:  Expect Logoff is set for 5 min.$/ do
-  step "Settings:  Expect Logoff expectation is 5 min."
+  step "Settings:  Expect Logoff to be 5 min."
 end
 
 Then /^Settings:  Expect Logoff is set for 10 min.$/ do
-  step "Settings:  Expect Logoff expectation is 10 min."
+  step "Settings:  Expect Logoff to be 10 min."
 end
 
 Then /^Settings:  Expect Logoff is set for 15 min.$/ do
-  step "Settings:  Expect Logoff expectation is 15 min."
+  step "Settings:  Expect Logoff to be 15 min."
 end
 
 Then /^Settings:  Expect Logoff is set for 30 min.$/ do
-  step "Settings:  Expect Logoff expectation is 30 min."
+  step "Settings:  Expect Logoff to be 30 min."
 end
 
 Then /^Settings:  Expect Logoff is set for 1 hour$/ do
-  step "Settings:  Expect Logoff expectation is 1 hour"
+  step "Settings:  Expect Logoff to be 1 hour"
 end
 
 Then /^Settings:  Expect Logoff is set for 2 hours$/ do
-  step "Settings:  Expect Logoff expectation is 2 hours"
+  step "Settings:  Expect Logoff to be 2 hours"
 end
 
-Then /^Settings:  Expect Logoff expectation is (.*)$/ do |expectation|
+Then /^Settings:  Expect Logoff to be (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
 
   log.info "Step:  Settings:  Expect Logoff is set for #{expectation}"
@@ -271,22 +271,7 @@ Then /^Settings:  Expect Logoff expectation is (.*)$/ do |expectation|
   @general_settings.log_off.text_box.text.should eql expectation
 end
 
-# Expectations
-
-Then /^Settings: Save$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  log.info "Settings: Save"
-  @general_settings.save
-  log.info "Settings #{(@general_settings.present?)?"was not saved":"Saved"}"
-end
-
-Then /^Settings: Close$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  log.info "Settings: Close"
-  @general_settings.close
-  log.info "Settings #{(@general_settings.present?)?"was not closed":"Closed"}"
-end
-
+# End Expectations
 
 
 
@@ -425,6 +410,21 @@ Then /^$/ do
 
   log.info "rob"
 end
+
+Then /^Settings: Save$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Settings: Save"
+  @general_settings.save
+  log.info "Settings #{(@general_settings.present?)?"was not saved":"Saved"}"
+end
+
+Then /^Settings: Close$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Settings: Close"
+  @general_settings.close
+  log.info "Settings #{(@general_settings.present?)?"was not closed":"Closed"}"
+end
+
 
 
 
