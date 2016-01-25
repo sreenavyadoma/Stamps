@@ -3,7 +3,7 @@ Feature: Internal Transaction Number Required for total over $2500
   Background:
     Given I am signed in to Orders
 
-  @international_rules_engine
+  @international_rules_engine @international_rules_engine_over_2500
   Scenario: Customs Form Internal Transaction Number Required for total over $2500
     Then Add New Order
     Then Order Details - Set Ship-From to default
@@ -13,7 +13,6 @@ Feature: Internal Transaction Number Required for total over $2500
     Then Order Details - Set Ounces to 5
     Then Order Details - Set Service to "Priority Mail International Flat Rate Envelope"
     Then Order Details - Add Item 1, Qty 1, ID random, Description random
-    #todo-rob affected
     Then Order Details - Set Service to "First-Class Mail International Large Envelope/Flat"
     And Open Customs Form
     And Customs Form - Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10

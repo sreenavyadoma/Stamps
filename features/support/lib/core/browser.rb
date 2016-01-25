@@ -74,7 +74,9 @@ module Stamps
         browser_helper.enabled? @field
       end
 
-
+      def hover
+        browser_helper.hover @field
+      end
 
       def data_error_qtip
         begin
@@ -193,11 +195,11 @@ module Stamps
     end
 
     class Checkbox < ClickableField
-      def initialize checkbox_field, verify_field, attribute, verify_field_attrib
+      def initialize checkbox_field, verify_field, attribute_name, attribute_value
         super checkbox_field
         @verify_field = verify_field
-        @attribute = attribute
-        @verify_field_attrib = verify_field_attrib
+        @attribute = attribute_name
+        @verify_field_attrib = attribute_value
       end
 
       def check
@@ -676,6 +678,14 @@ module Stamps
           field.enabled?
         rescue
           return false
+        end
+      end
+
+      def hover field
+        begin
+          field.hover
+        rescue
+          #ignore
         end
       end
     end

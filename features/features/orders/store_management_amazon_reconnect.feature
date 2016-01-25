@@ -14,7 +14,6 @@ Feature:  Store Management - Reconnect Amazon Store
     Then Amazon Store - Click Verify Seller ID button
     Then Amazon Store - Click Connect button
     Then Pause for 2 seconds
-    Then
     Then Delete Manage Stores Modal Row 1
     Then Close Manage Stores modal
 

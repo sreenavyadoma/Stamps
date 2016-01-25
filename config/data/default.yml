@@ -28,7 +28,6 @@ zone_1_through_4:
         city: Big Bear Lake
         state: CA
         zip: 92315-1530
-
     zone2:
       1:
         street_address:  530 K Street Unit 504
@@ -50,7 +49,6 @@ zone_1_through_4:
         city: Moorpark
         state: CA
         zip: 93021-2725
-
     zone3:
       1:
         street_address:  3555 Las Vegas Blvd S
@@ -72,7 +70,6 @@ zone_1_through_4:
         city: Las Vegas
         state: NV
         zip: 89146-1124
-
     zone4:
       1:
         street_address:  PO Box 567
@@ -117,7 +114,6 @@ zone_5_through_8:
         city: Wenatchee
         state: WA
         zip: 98801-8011
-
     zone6:
       1:
         street_address:  11 Laguna Madre Dr.
@@ -139,7 +135,6 @@ zone_5_through_8:
         city: Lubbock
         state: TX
         zip: 79424-3608
-
     zone7:
       1:
         street_address:  9435 Pettit Rd.
@@ -161,7 +156,6 @@ zone_5_through_8:
         city: Roswell
         state: GA
         zip: 30075-1853
-
     zone8:
       1:
         street_address:  2622 New Banner Ln.

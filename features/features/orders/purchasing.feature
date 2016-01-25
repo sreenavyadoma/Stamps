@@ -6,22 +6,17 @@ Feature: Purchasing
 
   @purchasing
   Scenario:
-    And Buy $10 postage
+    Then Purchase Postage for $10
     Then Expect $10 is added to customer balance
-    * Buy $25 postage
+    Then Purchase Postage for $25
     Then Expect $25 is added to customer balance
-    * Buy $50 postage
+    Then Purchase Postage for $50
     Then Expect $50 is added to customer balance
-    * Buy $100 postage
+    Then Purchase Postage for $100
     Then Expect $100 is added to customer balance
-    * Buy $35 postage
+    Then Purchase Postage for $35
     Then Expect $35 is added to customer balance
     And Sign out
 
-
-
-
-
-#todo-rob
 
 

@@ -1,12 +1,22 @@
 
 Feature: Test Development
-
   Background:
     Given I am signed in to Orders
 
+    @rob_dev_signout
   Scenario:
     Then Add New Order
+    Then Order Details - Set Ship-To to Random Address in Zone 1
+    Then Order Details - Set Ship-To to Random Address in Zone 2
+    Then Order Details - Set Ship-To to Random Address in Zone 3
+    Then Order Details - Set Ship-To to Random Address in Zone 4
+    Then Order Details - Set Ship-To to Random Address in Zone 5
+    Then Order Details - Set Ship-To to Random Address in Zone 6
+    Then Order Details - Set Ship-To to Random Address in Zone 7
+    Then Order Details - Set Ship-To to Random Address in Zone 8
+    Then Sign out
 
+  Scenario:
     Then Filter Panel - Awaiting Shipment
     Then Toolbar - Move to Shipped
     Then Filter Panel - Shipped
@@ -18,8 +28,6 @@ Feature: Test Development
     Then Move order to Awaiting Shipment
     Then Expect order moved to Awaiting Shipment
 
-  @rand_ship_to_zone_5_8
-  Scenario:
     Then Add New Order
     Then Filter Panel - Shipped
     Then Filter Panel - Cancelled
@@ -59,7 +67,7 @@ Feature: Test Development
   Scenario:
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Ounces to 5
     Then Order Details - Set Service to "Priority Mail Flat Rate Envelope"
     Then Order Details - Set Tracking to "USPS Tracking"
@@ -70,7 +78,7 @@ Feature: Test Development
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Ounces to 5
     Then Order Details - Set Service to "Priority Mail Flat Rate Envelope"
     Then Order Details - Set Tracking to "Signature Required"
@@ -128,7 +136,7 @@ Feature: Test Development
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Hide Ship-To fields
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Ounces to 5
@@ -143,7 +151,7 @@ Feature: Test Development
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Hide Ship-To fields
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Ounces to 5
@@ -158,7 +166,7 @@ Feature: Test Development
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Hide Ship-To fields
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Ounces to 5
@@ -174,7 +182,7 @@ Feature: Test Development
   Scenario:
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Hide Ship-To fields
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Ounces to 5
@@ -215,7 +223,7 @@ Feature: Test Development
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
 
     Then Toolbar - Print
@@ -225,7 +233,7 @@ Feature: Test Development
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
     Then Orders Grid - Check row 1
     Then Toolbar - Print
@@ -234,17 +242,17 @@ Feature: Test Development
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a second order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
 
     And I Add a third order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    Then Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details - Set Service to "Media Mail Package"
 
     Then Orders Grid - Check row 1

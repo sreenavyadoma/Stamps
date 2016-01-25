@@ -7,7 +7,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Shipping Label - 5 ½" x 8 ½"
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -28,7 +28,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Shipping Label - 8 ½" x 11" Paper
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -41,7 +41,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -53,7 +53,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -66,7 +66,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -78,7 +78,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
 
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -92,7 +92,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -106,7 +106,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Shipping Label - 5 ½" x 8 ½"
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -120,7 +120,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Roll - 4" x 6" Shipping Label
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -134,7 +134,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
   Scenario: Print - Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -149,7 +149,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     #Create order 1
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -160,7 +160,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     #Create order 2
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -171,7 +171,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     #Create order 3
     Then Add New Order
     Then Order Details - Set Ship-From to default
-    Then Order Details - Order Details - Set Ship-To to Random Address Between Zone 5 through 8
+    Then Order Details - Set Ship-To to Random Address Between Zone 5 through 8
     Then Order Details - Set Ounces to 2
     Then Order Details - Set Service to "Priority Mail Package"
     Then Order Details - Set Width to 1
@@ -202,6 +202,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Order Details - Set Length to 1
     And Open Customs Form
     And Customs Form - Add Item 1, Description random, Qty 1, Price 20, Lbs 0, Oz 5 Origin United States, Tariff 10
+    Then Close Customs Form
     Then Open Print Modal
     Then Print Modal - Set Media "Shipping Label - 5 ½" x 8 ½""
     Then Toolbar - Print

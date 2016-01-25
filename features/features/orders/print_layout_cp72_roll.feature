@@ -19,6 +19,7 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
     Then Close Customs Form
     Then Open Print Modal
     Then Print Modal - Set Media "Roll - 4" x 6" Shipping Label"
+    Then Print Modal - Set Printer to "Designer"
     Then Print Modal - Print Sample
     Then Toolbar - Print
     Then Sign out

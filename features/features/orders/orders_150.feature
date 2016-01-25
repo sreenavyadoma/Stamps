@@ -11,7 +11,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 1
     * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
@@ -21,7 +21,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 2
     * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
@@ -33,7 +33,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 3
     * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
@@ -42,7 +42,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 4
     * Order Details - Set Service to "Priority Mail Package"
@@ -51,7 +51,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 5
     * Order Details - Set Service to "Priority Mail Large Package"
@@ -61,7 +61,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 6
     * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
@@ -70,7 +70,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 7
     * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
@@ -80,7 +80,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 8
     * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
@@ -89,7 +89,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 9
     * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
@@ -99,7 +99,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 10
     * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
@@ -109,7 +109,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 11
     * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
@@ -119,7 +119,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 12
     * Order Details - Set Service to "Priority Mail Regional Rate Box A"
@@ -129,7 +129,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 13
     * Order Details - Set Service to "Priority Mail Regional Rate Box B"
@@ -139,7 +139,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 14
     * Order Details - Set Insure For to $305.00
@@ -150,7 +150,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 15
     * Order Details - Set Service to "Priority Mail Express Package"
@@ -159,7 +159,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 16
     * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
@@ -168,7 +168,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 17
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -177,7 +177,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 18
     * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -186,7 +186,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 19
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -197,7 +197,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 20
     * Order Details - Set Service to "Media Mail Package"
@@ -209,7 +209,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 21
     * Order Details - Set Service to "Parcel Select Ground Package"
@@ -219,7 +219,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 22
     * Order Details - Set Service to "Parcel Select Ground Large Package"
@@ -229,7 +229,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 23
     * Order Details - Set Service to "Parcel Select Ground Oversized Package"
@@ -285,7 +285,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 1
     * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
@@ -295,7 +295,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 2
     * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
@@ -307,7 +307,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 3
     * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
@@ -316,7 +316,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 4
     * Order Details - Set Service to "Priority Mail Package"
@@ -325,7 +325,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 5
     * Order Details - Set Service to "Priority Mail Large Package"
@@ -335,7 +335,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 6
     * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
@@ -344,7 +344,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 7
     * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
@@ -354,7 +354,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 8
     * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
@@ -363,7 +363,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 9
     * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
@@ -373,7 +373,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 10
     * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
@@ -383,7 +383,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 11
     * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
@@ -393,7 +393,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 12
     * Order Details - Set Service to "Priority Mail Regional Rate Box A"
@@ -403,7 +403,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 13
     * Order Details - Set Service to "Priority Mail Regional Rate Box B"
@@ -413,7 +413,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 14
     * Order Details - Set Insure For to $305.00
@@ -424,7 +424,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 15
     * Order Details - Set Service to "Priority Mail Express Package"
@@ -433,7 +433,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 16
     * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
@@ -442,7 +442,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 17
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -451,7 +451,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 18
     * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -460,7 +460,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 19
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -471,7 +471,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 20
     * Order Details - Set Service to "Media Mail Package"
@@ -483,7 +483,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 21
     * Order Details - Set Service to "Parcel Select Ground Package"
@@ -493,7 +493,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 22
     * Order Details - Set Service to "Parcel Select Ground Large Package"
@@ -503,7 +503,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 23
     * Order Details - Set Service to "Parcel Select Ground Oversized Package"
@@ -559,7 +559,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 1
     * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
@@ -569,7 +569,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 2
     * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
@@ -581,7 +581,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 3
     * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
@@ -590,7 +590,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 4
     * Order Details - Set Service to "Priority Mail Package"
@@ -599,7 +599,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 5
     * Order Details - Set Service to "Priority Mail Large Package"
@@ -609,7 +609,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 6
     * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
@@ -618,7 +618,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 7
     * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
@@ -628,7 +628,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 8
     * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
@@ -637,7 +637,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 9
     * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
@@ -647,7 +647,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 10
     * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
@@ -657,7 +657,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 11
     * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
@@ -667,7 +667,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 12
     * Order Details - Set Service to "Priority Mail Regional Rate Box A"
@@ -677,7 +677,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 13
     * Order Details - Set Service to "Priority Mail Regional Rate Box B"
@@ -687,7 +687,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
     * Order Details - Set Ounces to 14
     * Order Details - Set Insure For to $305.00
     * Order Details - Set Tracking to "Signature Required"
@@ -697,7 +697,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 15
     * Order Details - Set Service to "Priority Mail Express Package"
@@ -706,7 +706,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 16
     * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
@@ -715,7 +715,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 17
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -724,7 +724,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 18
     * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -733,7 +733,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 19
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -744,7 +744,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 20
     * Order Details - Set Service to "Media Mail Package"
@@ -756,7 +756,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 21
     * Order Details - Set Service to "Parcel Select Ground Package"
@@ -766,7 +766,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 22
     * Order Details - Set Service to "Parcel Select Ground Large Package"
@@ -776,7 +776,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 23
     * Order Details - Set Service to "Parcel Select Ground Oversized Package"
@@ -832,7 +832,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 1
     * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
@@ -842,7 +842,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 2
     * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
@@ -854,7 +854,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 3
     * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
@@ -863,7 +863,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 4
     * Order Details - Set Service to "Priority Mail Package"
@@ -872,7 +872,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 5
     * Order Details - Set Service to "Priority Mail Large Package"
@@ -882,7 +882,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 6
     * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
@@ -891,7 +891,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 7
     * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
@@ -901,7 +901,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 8
     * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
@@ -910,7 +910,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 9
     * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
@@ -920,7 +920,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 10
     * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
@@ -930,7 +930,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 11
     * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
@@ -940,7 +940,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 12
     * Order Details - Set Service to "Priority Mail Regional Rate Box A"
@@ -950,7 +950,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 13
     * Order Details - Set Service to "Priority Mail Regional Rate Box B"
@@ -960,7 +960,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 14
     * Order Details - Set Insure For to $305.00
@@ -971,7 +971,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 15
     * Order Details - Set Service to "Priority Mail Express Package"
@@ -980,7 +980,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 16
     * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
@@ -989,7 +989,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 17
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -998,7 +998,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 18
     * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -1007,7 +1007,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 19
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -1018,7 +1018,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 20
     * Order Details - Set Service to "Media Mail Package"
@@ -1030,7 +1030,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 21
     * Order Details - Set Service to "Parcel Select Ground Package"
@@ -1040,7 +1040,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 22
     * Order Details - Set Service to "Parcel Select Ground Large Package"
@@ -1050,7 +1050,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 23
     * Order Details - Set Service to "Parcel Select Ground Oversized Package"
@@ -1106,7 +1106,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 1
     * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
@@ -1116,7 +1116,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 2
     * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
@@ -1128,7 +1128,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 3
     * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
@@ -1137,7 +1137,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 4
     * Order Details - Set Service to "Priority Mail Package"
@@ -1146,7 +1146,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 5
     * Order Details - Set Service to "Priority Mail Large Package"
@@ -1156,7 +1156,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 6
     * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
@@ -1165,7 +1165,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 7
     * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
@@ -1175,7 +1175,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 8
     * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
@@ -1184,7 +1184,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 9
     * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
@@ -1194,7 +1194,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 10
     * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
@@ -1204,7 +1204,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 11
     * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
@@ -1214,7 +1214,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 12
     * Order Details - Set Service to "Priority Mail Regional Rate Box A"
@@ -1224,7 +1224,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 13
     * Order Details - Set Service to "Priority Mail Regional Rate Box B"
@@ -1234,7 +1234,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 14
     * Order Details - Set Insure For to $305.00
@@ -1245,7 +1245,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 15
     * Order Details - Set Service to "Priority Mail Express Package"
@@ -1254,7 +1254,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 16
     * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
@@ -1263,7 +1263,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 17
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -1272,7 +1272,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 18
     * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -1281,7 +1281,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 19
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -1292,7 +1292,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 20
     * Order Details - Set Service to "Media Mail Package"
@@ -1304,7 +1304,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 21
     * Order Details - Set Service to "Parcel Select Ground Package"
@@ -1314,7 +1314,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 22
     * Order Details - Set Service to "Parcel Select Ground Large Package"
@@ -1324,7 +1324,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 23
     * Order Details - Set Service to "Parcel Select Ground Oversized Package"
@@ -1380,7 +1380,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 1
     * Order Details - Set Service to "First-Class Mail Large Envelope/Flat"
@@ -1390,7 +1390,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 2
     * Order Details - Set Service to "First-Class Mail Package/Thick Envelope"
@@ -1402,7 +1402,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 3
     * Order Details - Set Service to "Priority Mail Large/Thick Envelope"
@@ -1411,7 +1411,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 4
     * Order Details - Set Service to "Priority Mail Package"
@@ -1420,7 +1420,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 5
     * Order Details - Set Service to "Priority Mail Large Package"
@@ -1430,7 +1430,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 6
     * Order Details - Set Service to "Priority Mail Flat Rate Envelope"
@@ -1439,7 +1439,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 7
     * Order Details - Set Service to "Priority Mail Padded Flat Rate Envelope"
@@ -1449,7 +1449,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 8
     * Order Details - Set Service to "Priority Mail Legal Flat Rate Envelope"
@@ -1458,7 +1458,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 9
     * Order Details - Set Service to "Priority Mail Small Flat Rate Box"
@@ -1468,7 +1468,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 10
     * Order Details - Set Service to "Priority Mail Medium Flat Rate Box"
@@ -1478,7 +1478,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 11
     * Order Details - Set Service to "Priority Mail Large Flat Rate Box"
@@ -1488,7 +1488,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 12
     * Order Details - Set Service to "Priority Mail Regional Rate Box A"
@@ -1498,7 +1498,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 13
     * Order Details - Set Service to "Priority Mail Regional Rate Box B"
@@ -1508,7 +1508,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 14
     * Order Details - Set Insure For to $305.00
@@ -1519,7 +1519,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Ounces to 15
     * Order Details - Set Service to "Priority Mail Express Package"
@@ -1528,7 +1528,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 16
     * Order Details - Set Service to "Priority Mail Express Flat Rate Envelope"
@@ -1537,7 +1537,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 17
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -1546,7 +1546,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 18
     * Order Details - Set Service to "Priority Mail Express Legal Flat Rate Envelope"
@@ -1555,7 +1555,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 19
     * Order Details - Set Service to "Priority Mail Express Padded Flat Rate Envelope"
@@ -1566,7 +1566,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 20
     * Order Details - Set Service to "Media Mail Package"
@@ -1578,7 +1578,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 21
     * Order Details - Set Service to "Parcel Select Ground Package"
@@ -1588,7 +1588,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 22
     * Order Details - Set Service to "Parcel Select Ground Large Package"
@@ -1598,7 +1598,7 @@ Feature: 150 orders
     * Add New Order
     * Expect new Order ID created
     * Order Details - Set Ship-From to default
-    * Order Details - Order Details - Set Ship-To to Random Address Between Zone 1 through 4
+    * Order Details - Set Ship-To to Random Address Between Zone 1 through 4
 
     * Order Details - Set Pounds to 23
     * Order Details - Set Service to "Parcel Select Ground Oversized Package"
