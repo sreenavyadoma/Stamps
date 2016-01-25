@@ -7,11 +7,11 @@ Feature:  User Able to Selects Curacao and Country Bonaire, Sint Eustatius, and 
   Scenario: User Able to Selects new Country Curacao
 
     Then Add New Order
-    Then Order Details - Set Ship-From to default
-    Then Order Details - Set Ship-To Country to Curacao
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to Curacao
     Then Expect Order Details Ship-To Country is Curacao
     Then Add New Order
-    Then Order Details - Set Ship-From to default
-    Then Order Details - Set Ship-To Country to Bonaire, Sint Eustatius and Saba
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to Bonaire, Sint Eustatius and Saba
     Then Expect Order Details Ship-To Country is Bonaire, Sint Eustatius and Saba
 

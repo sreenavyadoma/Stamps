@@ -9,6 +9,9 @@ Feature: Change Orders Page Settings
   Scenario: As a batch shipper, I want to change the settings for the batch shipping page.
 
     Then Open Settings Modal
+    Then Settings: Check Show unavailable service
+    Then Settings: Uncheck Show unavailable service
+
     Then Check Show Unavailable Services
     Then Check Dont Show Print Confirmation Dialog
     Then Check USPS Terms in Settings Modal

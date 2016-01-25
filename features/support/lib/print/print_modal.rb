@@ -245,7 +245,7 @@ module Print
     end
 
     def print_sample_button
-      Button.new @browser.span :text => 'Print Modal - Print Sample'
+      Button.new @browser.span :text => 'Print Modal: Print Sample'
     end
 
     def print_button

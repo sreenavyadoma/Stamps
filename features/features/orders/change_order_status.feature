@@ -12,11 +12,11 @@ Feature: Add Canceled Filter Panel - and Allow User to Manually Change Order Sta
 
     Then Add New Order
 
-    Then Toolbar - Move to Shipped
+    Then Toolbar: Move to Shipped
     Then Filter Panel - Shipped
     Then Expect order moved to Shipped
 
-    Then Toolbar - Move to Canceled
+    Then Toolbar: Move to Canceled
     Then Filter Panel - Cancelled
     Then Expect order moved to Canceled
 

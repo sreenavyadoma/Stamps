@@ -7,14 +7,14 @@ Feature:  BVT Address Cleansing
   @bvt_address_cleansing
   Scenario: Address Cleansing
     Then Add New Order
-    Then Order Details - Set Ship-From to default
-    Then Order Details - Set Ship-To address to
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To address to
       | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then Order Details - Set Service to "Priority Mail Package"
-    Then Order Details - Set Ounces to 1
-    Then Order Details - Set Pounds to 1
-    Then Order Details - Set Insure For to $200
+    Then Order Details: Set Service to "Priority Mail Package"
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Set Insure For to $200
     Then Pause for 2 seconds
     Then Expect Grid Recipient to be Euan Davidson
     Then Expect Grid Company to be Company Name
