@@ -18,9 +18,9 @@ Feature:  Store Management - Add Amazon Store
       Then Amazon Store - Set Product Identifier to Use SKU
       Then Amazon Store - Click Connect button
       Then Close Manage Stores modal
-      Then Orders Grid - Sort by Store in Descending order
-      Then Orders Grid - Sort by Store in Ascending order
-      Then Orders Grid - Sort by Store in Ascending order
+      Then Orders Grid: Sort by Store in Descending order
+      Then Orders Grid: Sort by Store in Ascending order
+      Then Orders Grid: Sort by Store in Ascending order
       Then Pause for 2 seconds
       Then Expect Grid Store row 1 to be Amazon Store
 

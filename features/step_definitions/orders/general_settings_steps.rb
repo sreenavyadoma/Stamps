@@ -2,12 +2,58 @@
 Then /^Open Settings Modal$/ do
   log.info "Step: Open Settings Modal"
   @general_settings = orders.toolbar.settings.general_settings
+end
 
-  log.info @general_settings.services.checked?
+Then /^Settings: Check Show unavailable service/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
   @general_settings.services.check
-  log.info @general_settings.services.checked?
+  log.info "Services #{(@general_settings.services.checked?)?"checked":"unchecked"}"
+end
+
+Then /^Settings: Uncheck Show unavailable service/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
   @general_settings.services.uncheck
-  log.info @general_settings.services.checked?
+  log.info "Services #{(@general_settings.services.checked?)?"checked":"unchecked"}"
+end
+
+Then /^Expect Settings: Show unavailable service Checked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Expect Settings - Service is Checked"
+  log.info "Test #{(@general_settings.services.checked?)?"Passed":"Failed"}"
+  @general_settings.services.checked?.should be true
+end
+
+Then /^Expect Settings - Service is Unchecked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Expect Settings - Service is Unchecked"
+  log.info "Test #{(@general_settings.services.checked?)?"Passed":"Failed"}"
+  @general_settings.services.checked?.should be false
+end
+
+Then /^Settings - $/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
+  log.info "Current:  Logoff if the application is inactive for #{@general_settings.log_off.text_box.text}"
+  @general_settings.log_off.five_min
+  log.info "New:  Logoff if the application is inactive for #{@general_settings.log_off.text_box.text}"
+  @general_settings.services.checked?.should be false
+
+  log.info @general_settings.log_off.text_box.text
+  @general_settings.log_off.ten_min
+  log.info @general_settings.log_off.text_box.text
+  @general_settings.log_off.fifteen_min
+  log.info @general_settings.log_off.text_box.text
+  @general_settings.log_off.thirty_min
+  log.info @general_settings.log_off.text_box.text
+  @general_settings.log_off.one_hour
+  log.info @general_settings.log_off.text_box.text
+  @general_settings.log_off.two_hour
+  log.info @general_settings.log_off.text_box.text
+end
+
+Then /^$/ do
 
   log.info @general_settings.print_confirm.checked?
   @general_settings.print_confirm.check
@@ -32,20 +78,6 @@ Then /^Open Settings Modal$/ do
   log.info @general_settings.shipments.checked?
   @general_settings.shipments.uncheck
   log.info @general_settings.shipments.checked?
-
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.five_min
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.ten_min
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.fifteen_min
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.thirty_min
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.one_hour
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.two_hour
-  log.info @general_settings.log_off.text_box.text
 
   log.info @general_settings.post_date.text_box.text
   @general_settings.post_date.twelve_am
@@ -203,9 +235,10 @@ Then /^Open Settings Modal$/ do
   @general_settings.save
 
   log.info "rob"
-
-
 end
+
+
+
 
 Then /^General Settings - Check Services$/ do
   @general_settings = orders.toolbar.settings.general_settings

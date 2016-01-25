@@ -1,6 +1,6 @@
 
 
-#Print Modal - Set Printer to "factory"
+#Print Modal: Set Printer to "factory"
 
 
 When /^Open Print Postage Modal$/ do
@@ -59,22 +59,22 @@ Then /^Print Postage raises a Printing Error/ do
 end
 
 Then /^Print Postage Sample on (.*)$/ do |printer|
-  log.info "Step: Print Modal - Print Sample on #{printer}"
+  log.info "Step: Print Modal: Print Sample on #{printer}"
   postage.print(printer).print_sample
 end
 
 Then /^Print Postage Sample on (.*) raises a PrintingError$/ do |printer|
-  log.info "Step: Print Modal - Print Sample on #{printer} raises a PrintingError"
+  log.info "Step: Print Modal: Print Sample on #{printer} raises a PrintingError"
   expect{postage.print(printer).print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Print Postage Sample$/ do
-  log.info "Step: Print Modal - Print Sample"
+  log.info "Step: Print Modal: Print Sample"
   postage.postage.print_sample
 end
 
 Then /^Print Postage Sample raises a Printing Error/ do
-  log.info "Step: Print Modal - Print Sample raises a Printing Error"
+  log.info "Step: Print Modal: Print Sample raises a Printing Error"
   expect{postage.postage.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 

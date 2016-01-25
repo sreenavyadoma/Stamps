@@ -16,12 +16,12 @@ Feature: International Shipping BVT
     Then Set Print Postage Form Ounces to <string>
     Then Set Print Postage Form Pounds to <string>
     And Open Customs Form
-    Then Customs Form - Set Package Contents to "Merchandise"
-    Then Customs Form - Set Non-Delivery Options to "Return to sender"
-    Then Customs Form - Set Internal Transaction Number to "Not required"
-    Then Customs Form - Set More Info to "BVT International Shipping"
-    Then Customs Form - Set I agree to Checked
-    And Customs Form - Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Customs Form: Set Package Contents to "Merchandise"
+    Then Customs Form: Set Non-Delivery Options to "Return to sender"
+    Then Customs Form: Set Internal Transaction Number to "Not required"
+    Then Customs Form: Set More Info to "BVT International Shipping"
+    Then Customs Form: Set I agree to Checked
+    And Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Close Customs Form
     Then Print Postage
     Then Sign out

@@ -10,7 +10,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Add New Order
 
-    Then Order Details - Set Form Ship-To country to Cuba
+    Then Order Details: Set Form Ship-To country to Cuba
 
     #Matching first name
 
