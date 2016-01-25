@@ -225,48 +225,48 @@ end
 
 
 # Expectations
-Then /^Expect Settings:  Services Checked$/ do
+Then /^Settings:  Expect Services Checked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Expect Settings - Show unavailable service Checked"
   log.info "Test #{(@general_settings.services.checked?)?"Passed":"Failed"}"
   @general_settings.services.checked?.should be true
 end
 
-Then /^Expect Settings:  Show unavailable service Unchecked$/ do
+Then /^Settings:  Expect Show unavailable service Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Expect Settings - Show unavailable service Unchecked"
   log.info "Test #{(@general_settings.services.checked?)?"Passed":"Failed"}"
   @general_settings.services.checked?.should be false
 end
 
-Then /^Expect Settings:  Logoff is set for 5 min.$/ do
-  step "Expect Settings:  Logoff expectation is 5 min."
+Then /^Settings:  Expect Logoff is set for 5 min.$/ do
+  step "Settings:  Expect Logoff expectation is 5 min."
 end
 
-Then /^Expect Settings:  Logoff is set for 10 min.$/ do
-  step "Expect Settings:  Logoff expectation is 10 min."
+Then /^Settings:  Expect Logoff is set for 10 min.$/ do
+  step "Settings:  Expect Logoff expectation is 10 min."
 end
 
-Then /^Expect Settings:  Logoff is set for 15 min.$/ do
-  step "Expect Settings:  Logoff expectation is 15 min."
+Then /^Settings:  Expect Logoff is set for 15 min.$/ do
+  step "Settings:  Expect Logoff expectation is 15 min."
 end
 
-Then /^Expect Settings:  Logoff is set for 30 min.$/ do
-  step "Expect Settings:  Logoff expectation is 30 min."
+Then /^Settings:  Expect Logoff is set for 30 min.$/ do
+  step "Settings:  Expect Logoff expectation is 30 min."
 end
 
-Then /^Expect Settings:  Logoff is set for 1 hour$/ do
-  step "Expect Settings:  Logoff expectation is 1 hour"
+Then /^Settings:  Expect Logoff is set for 1 hour$/ do
+  step "Settings:  Expect Logoff expectation is 1 hour"
 end
 
-Then /^Expect Settings:  Logoff is set for 2 hours$/ do
-  step "Expect Settings:  Logoff expectation is 2 hours"
+Then /^Settings:  Expect Logoff is set for 2 hours$/ do
+  step "Settings:  Expect Logoff expectation is 2 hours"
 end
 
-Then /^Expect Settings:  Logoff expectation is (.*)$/ do |expectation|
+Then /^Settings:  Expect Logoff expectation is (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
 
-  log.info "Step:  Expect Settings:  Logoff is set for #{expectation}"
+  log.info "Step:  Settings:  Expect Logoff is set for #{expectation}"
   log.info "Test #{(@general_settings.log_off.text_box.text.include? expectation)?"Passed":"Failed"}"
   @general_settings.log_off.text_box.text.should eql expectation
 end
