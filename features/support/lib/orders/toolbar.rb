@@ -631,7 +631,7 @@ module Orders
           select "1 hour"
         end
 
-        def two_hour
+        def two_hours
           select "2 hours"
         end
       end
@@ -865,6 +865,14 @@ module Orders
 
       def save
         button = Button.new (@browser.span :text => "Save")
+        10.times do
+          button.safe_click
+          return unless button.present?
+        end
+      end
+
+      def close
+        button = Button.new (@browser.img :css => "img[class$=close]")
         10.times do
           button.safe_click
           return unless button.present?

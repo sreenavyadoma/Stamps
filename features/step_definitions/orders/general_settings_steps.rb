@@ -4,54 +4,386 @@ Then /^Open Settings Modal$/ do
   @general_settings = orders.toolbar.settings.general_settings
 end
 
-Then /^Settings: Check Show unavailable service/ do
+Then /^Settings: Check Services$/ do
   step "Open Settings Modal" if @general_settings.nil?
 
   @general_settings.services.check
-  log.info "Services #{(@general_settings.services.checked?)?"checked":"unchecked"}"
+  log.info "Show unavailable service #{(@general_settings.services.checked?)?"checked":"unchecked"}"
 end
 
-Then /^Settings: Uncheck Show unavailable service/ do
+Then /^Settings:  Uncheck Services$/ do
   step "Open Settings Modal" if @general_settings.nil?
 
   @general_settings.services.uncheck
-  log.info "Services #{(@general_settings.services.checked?)?"checked":"unchecked"}"
+  log.info "Show unavailable service #{(@general_settings.services.checked?)?"checked":"unchecked"}"
 end
 
-Then /^Expect Settings: Show unavailable service Checked$/ do
+# Set Logoff
+
+Then /^Settings:  Set Logoff to 5 min.$/ do
+  step "Settings:  Logoff set 5 min"
+end
+
+Then /^Settings:  Set Logoff to 10 min.$/ do
+  step "Settings:  Logoff set 10 min"
+end
+
+Then /^Settings:  Set Logoff to 15 min.$/ do
+  step "Settings:  Logoff set 15 min"
+end
+
+Then /^Settings:  Set Logoff to 30 min.$/ do
+  step "Settings:  Logoff set 30 min"
+end
+
+Then /^Settings:  Set Logoff to 1 hour.$/ do
+  step "Settings:  Logoff set 1 hour"
+end
+
+Then /^Settings:  Set Logoff to 2 hours.$/ do
+  step "Settings:  Logoff set 2 hours"
+end
+
+Then /^Settings:  Logoff set (.*)$/ do |logoff|
   step "Open Settings Modal" if @general_settings.nil?
-  log.info "Step:  Expect Settings - Service is Checked"
+  case logoff.downcase
+    when "5 min"
+      @general_settings.log_off.five_min
+    when "10 min"
+      @general_settings.log_off.ten_min
+    when "15 min"
+      @general_settings.log_off.fifteen_min
+    when "30 min"
+      @general_settings.log_off.thirty_min
+    when "1 hour"
+      @general_settings.log_off.one_hour
+    when "2 hours"
+      @general_settings.log_off.two_hours
+    else
+      raise "Invalid Logoff Selection -  Settings:  Logoff #{logoff}"
+  end
+  log.info "Step:  Logoff if the application is inactive for #{@general_settings.log_off.text_box.text}"
+end
+
+# Set Postdate
+
+Then /^Settings:  Set Postdate to 12:00 a.m.$/ do
+  step "Settings:  Postdate Set 12:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 1:00 a.m.$/ do
+  step "Settings:  Postdate Set 1:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 2:00 a.m.$/ do
+  step "Settings:  Postdate Set 2:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 3:00 a.m.$/ do
+  step "Settings:  Postdate Set 3:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 4:00 a.m.$/ do
+  step "Settings:  Postdate Set 4:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 5:00 a.m.$/ do
+  step "Settings:  Postdate Set 5:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 6:00 a.m.$/ do
+  step "Settings:  Postdate Set 6:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 7:00 a.m.$/ do
+  step "Settings:  Postdate Set 7:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 8:00 a.m.$/ do
+  step "Settings:  Postdate Set 8:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 9:00 a.m.$/ do
+  step "Settings:  Postdate Set 9:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 10:00 a.m.$/ do
+  step "Settings:  Postdate Set 10:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 11:00 a.m.$/ do
+  step "Settings:  Postdate Set 11:00 a.m."
+end
+
+Then /^Settings:  Set Postdate to 12:00 p.m.$/ do
+  step "Settings:  Postdate Set 12:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 1:00 p.m.$/ do
+  step "Settings:  Postdate Set 1:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 2:00 p.m.$/ do
+  step "Settings:  Postdate Set 2:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 3:00 p.m.$/ do
+  step "Settings:  Postdate Set 3:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 4:00 p.m.$/ do
+  step "Settings:  Postdate Set 4:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 5:00 p.m.$/ do
+  step "Settings:  Postdate Set 5:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 6:00 p.m.$/ do
+  step "Settings:  Postdate Set 6:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 7:00 p.m.$/ do
+  step "Settings:  Postdate Set 7:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 8:00 p.m.$/ do
+  step "Settings:  Postdate Set 8:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 9:00 p.m.$/ do
+  step "Settings:  Postdate Set 9:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 10:00 p.m.$/ do
+  step "Settings:  Postdate Set 10:00 p.m."
+end
+
+Then /^Settings:  Set Postdate to 11:00 p.m.$/ do
+  step "Settings:  Postdate Set 11:00 p.m."
+end
+
+Then /^Settings:  Postdate Set (.*)$/ do |postdate|
+  step "Open Settings Modal" if @general_settings.nil?
+
+  case postdate.downcase
+    when "12:00 a.m."
+      @general_settings.post_date.twelve_am
+    when "1:00 a.m."
+      @general_settings.post_date.one_am
+    when "2:00 a.m."
+      @general_settings.post_date.two_am
+    when "3:00 a.m."
+      @general_settings.post_date.three_am
+    when "4:00 a.m."
+      @general_settings.post_date.four_am
+    when "5:00 a.m."
+      @general_settings.post_date.five_am
+    when "6:00 a.m."
+      @general_settings.post_date.six_am
+    when "7:00 a.m."
+      @general_settings.post_date.seven_am
+    when "8:00 a.m."
+      @general_settings.post_date.eight_am
+    when "9:00 a.m."
+      @general_settings.post_date.nine_am
+    when "10:00 a.m."
+      @general_settings.post_date.ten_am
+    when "11:00 a.m."
+      @general_settings.post_date.eleven_am
+    when "12:00 p.m."
+      @general_settings.post_date.twelve_pm
+    when "1:00 p.m."
+      @general_settings.post_date.one_pm
+    when "2:00 p.m."
+      @general_settings.post_date.two_pm
+    when "3:00 p.m."
+      @general_settings.post_date.three_pm
+    when "4:00 p.m."
+      @general_settings.post_date.four_pm
+    when "5:00 p.m."
+      @general_settings.post_date.five_pm
+    when "6:00 p.m."
+      @general_settings.post_date.six_pm
+    when "7:00 p.m."
+      @general_settings.post_date.seven_pm
+    when "8:00 p.m."
+      @general_settings.post_date.eight_pm
+    when "9:00 p.m."
+      @general_settings.post_date.nine_pm
+    when "10:00 p.m."
+      @general_settings.post_date.ten_pm
+    when "11:00 p.m."
+      @general_settings.post_date.eleven_pm
+    else
+      raise "Invalid Postdate Selection -  Settings:  Postdate #{postdate}"
+  end
+  log.info "Step:  Postdate mail to next day after #{@general_settings.log_off.text_box.text}"
+end
+
+
+
+
+# Expectations
+#  Services
+Then /^Settings:  Expect Services Checked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Expect Settings - Show unavailable service Checked"
   log.info "Test #{(@general_settings.services.checked?)?"Passed":"Failed"}"
   @general_settings.services.checked?.should be true
 end
 
-Then /^Expect Settings - Service is Unchecked$/ do
+Then /^Settings:  Expect Show unavailable service Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  log.info "Step:  Expect Settings - Service is Unchecked"
+  log.info "Step:  Expect Settings - Show unavailable service Unchecked"
   log.info "Test #{(@general_settings.services.checked?)?"Passed":"Failed"}"
   @general_settings.services.checked?.should be false
 end
 
-Then /^Settings - $/ do
+# Logoff
+Then /^Settings:  Expect Logoff is set for 5 min.$/ do
+  step "Settings:  Expect Logoff to be 5 min."
+end
+
+Then /^Settings:  Expect Logoff is set for 10 min.$/ do
+  step "Settings:  Expect Logoff to be 10 min."
+end
+
+Then /^Settings:  Expect Logoff is set for 15 min.$/ do
+  step "Settings:  Expect Logoff to be 15 min."
+end
+
+Then /^Settings:  Expect Logoff is set for 30 min.$/ do
+  step "Settings:  Expect Logoff to be 30 min."
+end
+
+Then /^Settings:  Expect Logoff is set for 1 hour$/ do
+  step "Settings:  Expect Logoff to be 1 hour"
+end
+
+Then /^Settings:  Expect Logoff is set for 2 hours$/ do
+  step "Settings:  Expect Logoff to be 2 hours"
+end
+
+Then /^Settings:  Expect Logoff to be (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
 
-  log.info "Current:  Logoff if the application is inactive for #{@general_settings.log_off.text_box.text}"
-  @general_settings.log_off.five_min
-  log.info "New:  Logoff if the application is inactive for #{@general_settings.log_off.text_box.text}"
-  @general_settings.services.checked?.should be false
-
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.ten_min
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.fifteen_min
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.thirty_min
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.one_hour
-  log.info @general_settings.log_off.text_box.text
-  @general_settings.log_off.two_hour
-  log.info @general_settings.log_off.text_box.text
+  log.info "Step:  Settings:  Expect Logoff is set for #{expectation}"
+  log.info "Test #{(@general_settings.log_off.text_box.text.include? expectation)?"Passed":"Failed"}"
+  @general_settings.log_off.text_box.text.should eql expectation
 end
+
+# Postadate
+Then /^Settings:  Expect Postdate is set to 12:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 12:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 1:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 1:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 2:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 2:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 3:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 3:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 4:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 4:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 5:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 5:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 6:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 6:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 7:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 7:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 8:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 8:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 9:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 9:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 10:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 10:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 11:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 11:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 12:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 12:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 1:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 1:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 2:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 2:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 3:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 3:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 4:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 4:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 5:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 5:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 6:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 6:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 7:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 7:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 8:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 8:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 9:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 9:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 10:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 10:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 11:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 11:00 p.m."
+end
+
+
+Then /^Settings:  Expect Postdate to be (.*)$/ do |expectation|
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect Postdate to be #{expectation}"
+
+  log.info "Test #{(@general_settings.post_date.text_box.text.include? expectation)?"Passed":"Failed"}"
+  @general_settings.post_date.text_box.text.should eql expectation
+end
+
+# End Expectations
+
+
+
+
 
 Then /^$/ do
 
@@ -78,56 +410,6 @@ Then /^$/ do
   log.info @general_settings.shipments.checked?
   @general_settings.shipments.uncheck
   log.info @general_settings.shipments.checked?
-
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.twelve_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.one_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.two_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.three_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.four_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.five_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.six_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.seven_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.eight_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.nine_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.ten_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.eleven_am
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.twelve_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.one_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.two_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.three_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.four_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.five_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.six_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.seven_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.eight_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.nine_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.ten_pm
-  log.info @general_settings.post_date.text_box.text
-  @general_settings.post_date.eleven_pm
-  log.info @general_settings.post_date.text_box.text
 
   log.info @general_settings.postage_balance.text_box.text
   @general_settings.postage_balance.zero
@@ -237,227 +519,20 @@ Then /^$/ do
   log.info "rob"
 end
 
-
-
-
-Then /^General Settings - Check Services$/ do
-  @general_settings = orders.toolbar.settings.general_settings
+Then /^Settings: Save$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Settings: Save"
+  @general_settings.save
+  log.info "Settings #{(@general_settings.present?)?"was not saved":"Saved"}"
 end
 
-Then /^Check Show Unavailable Services$/ do
-  log.info "Step: Check Show Unavailable Services checkbox"
-  orders.toolbar.settings_modal.check_unavail_services
-
+Then /^Settings: Close$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Settings: Close"
+  @general_settings.close
+  log.info "Settings #{(@general_settings.present?)?"was not closed":"Closed"}"
 end
 
-Then /^Check Dont Show Print Confirmation Dialog$/ do
-  log.info "Step: Check Dont Show Print Confirmation Dialog checkbox"
-  orders.toolbar.settings_modal.check_print_confirm_dialog
-
-end
-
-Then /^Check Save Delivery Addresses$/ do
-  log.info "Step: Check Save Delivery Addresses"
-  orders.toolbar.settings_modal.check_save_contacts
-
-end
-
-Then /^Check Email Shipment Notifications$/ do
-  log.info "Step: Check Email Shipment Notifications"
-  orders.toolbar.settings_modal.check_shipment_email
-
-end
-
-Then /^Check Email Shipment Deliveries$/ do
-  log.info "Step: Check Email Shipment Deliveries checkbox"
-  orders.toolbar.settings_modal.check_shipment_delivery
-
-end
-
-Then /^Check USPS Terms in Settings Modal$/ do
-  log.info "Step: Check USPS Terms checkbox in Settings Modal"
-  orders.toolbar.settings_modal.check_usps_terms
-
-end
-
-Then /^Uncheck Show Unavailable Services$/ do
-  log.info "Step: Uncheck Show Unavailable Services"
-  orders.toolbar.settings_modal.uncheck_unavail_services
-
-end
-
-Then /^Uncheck Dont Show Print Confirmation Dialog$/ do
-  log.info "Step: Uncheck Dont Show Print Confirmation Dialog"
-  orders.toolbar.settings_modal.uncheck_print_confirm_dialog
-
-end
-
-Then /^Uncheck Save Delivery Addresses$/ do
-  log.info "Step: Uncheck Save Delivery Addresses"
-  orders.toolbar.settings_modal.uncheck_save_contacts
-
-end
-
-Then /^Uncheck Email Shipment Notifications$/ do
-  log.info "Step: Uncheck Email Shipment Notifications checkbox"
-  orders.toolbar.settings_modal.uncheck_shipment_email
-
-end
-
-Then /^Uncheck Email Shipment Deliveries$/ do
-  log.info "Step: Uncheck Email Shipment Deliveries checkbox"
-  orders.toolbar.settings_modal.uncheck_shipment_delivery
-
-end
-
-Then /^Uncheck USPS Terms in Settings Modal$/ do
-  log.info "Step: Uncheck USPS Terms checkbox in Settings Modal"
-  orders.toolbar.settings_modal.uncheck_usps_terms
-
-end
-
-Then /^Expect Show Unavailable Services Unchecked$/ do
-  log.info "Step: Expect Show Unavailable Services Unchecked"
-
-  actual = orders.toolbar.settings_modal.get_checkbox_status(1)
-  #log_expectation_eql "Show Unavailable Services", false, actual
-  actual.should eql false
-end
-
-Then /^Expect Dont Show Print Confirmation Dialog Unchecked$/ do
-  log.info "Step: Expect Dont Show Print Confirmation Dialog Unchecked"
-  actual = orders.toolbar.settings_modal.get_checkbox_status(2)
-  #log_expectation_eql "Dont Show Print Confirmation Dialog", false, actual
-  actual.should eql false
-
-end
-
-Then /^Expect USPS Terms Unchecked in Settings Modal$/ do
-  log.info "Step: Expect USPS Terms Unchecked in Settings Modal"
-  actual = orders.toolbar.settings_modal.get_checkbox_status(3)
-  #log_expectation_eql "USPS Restrictions", false, actual
-  actual.should eql false
-
-end
-
-Then /^Expect Save Delivery Addresses Unchecked$/ do
-  log.info "Step: Expect Save Delivery Addresses Unchecked"
-  actual = orders.toolbar.settings_modal.get_checkbox_status(4)
-  #log_expectation_eql "Save Delivery Addresses", false, actual
-  actual.should eql false
-
-end
-
-Then /^Expect Email Shipment Notifications Unchecked$/ do
-  log.info "Step: Expect Email Shipment Notifications Unchecked"
-  actual = orders.toolbar.settings_modal.get_checkbox_status(5)
-  #log_expectation_eql "Email Shipment Notifications", false, actual
-  actual.should eql false
-
-end
-
-Then /^Expect Email Shipment Deliveries Unchecked$/ do
-  log.info "Step: Expect Email Shipment Deliveries Unchecked"
-  actual = orders.toolbar.settings_modal.get_checkbox_status(6)
-  #log_expectation_eql "Email Shipment Deliveries", false, actual
-  actual.should eql false
-
-end
-
-Then /^Expect Show Unavailable Services Checked$/ do
-  log.info "Step: Expect Show Unavailable Services Checked"
-
-  actual = orders.toolbar.settings_modal.get_checkbox_status(1)
-  #log_expectation_eql "Show Unavailable Services", true, actual
-  actual.should eql true
-
-end
-
-Then /^Expect Dont Show Print Confirmation Dialog Checked$/ do
-  log.info "Step: Expect Dont Show Print Confirmation Dialog Checked"
-  actual = orders.toolbar.settings_modal.get_checkbox_status(2)
-  #log_expectation_eql "Dont Show Print Confirmation Dialog", true, actual
-  actual.should eql true
-
-end
-
-Then /^Expect USPS Terms Checked in Settings Modal$/ do
-  log.info "Step: Expect USPS Terms Checked in Settings Modal"
-  actual = orders.toolbar.settings_modal.get_checkbox_status(3)
-  #log_expectation_eql "USPS Restrictions", true, actual
-  actual.should eql true
-
-end
-
-Then /^Expect Save Delivery Addresses Checked$/ do
-  log.info "Step: Expect Save Delivery Addresses Checked"
-  actual = orders.toolbar.settings_modal.get_checkbox_status(4)
-  #log_expectation_eql "Save Delivery Addresses", true, actual
-  actual.should eql true
-
-end
-
-Then /^Expect Email Shipment Notifications Checked$/ do
-  log.info "Step: Expect Email Shipment Notifications Checked"
-  actual = orders.toolbar.settings_modal.get_checkbox_status(5)
-  #log_expectation_eql "Email Shipment Notifications", true, actual
-  actual.should eql true
-
-end
-
-Then /^Expect Email Shipment Deliveries Checked$/ do
-  log.info "Step: Expect Email Shipment Deliveries Checked"
-  actual = orders.toolbar.settings_modal.get_checkbox_status(6)
-  #log_expectation_eql "Email Shipment Deliveries", true, actual
-  actual.should eql true
-
-end
-
-Then /^Change Logoff Time to (.*)$/ do |duration|
-  log.info "Step: Change Logoff Time to \"#{duration}\""
-  orders.toolbar.settings_modal.select_logoff_time(duration)
-
-end
-
-Then /^Change Postdate Time to (.*)$/ do |time|
-  log.info "Step: Change Postdate Time to \"#{time}\""
-  orders.toolbar.settings_modal.select_postdate_time(time)
-
-end
-
-Then /^Change Postage Balance Notification Amount to (.*)$/ do |amount|
-  log.info "Step: Change Postage Balance Notification Amount to \"#{amount}\""
-  orders.toolbar.settings_modal.select_balance_notification(amount)
-end
-
-Then /^Expect Logoff Time to be (.*)$/ do |duration|
-  log.info "Step: Expect Logoff Time to be #{duration}"
-  actual = orders.toolbar.settings_modal.get_logoff_time
-  #log_expectation_eql "Logoff Time", duration, actual
-  actual.should eql duration
-
-end
-
-Then /^Expect Postdate Time to be (.*)$/ do |time|
-  log.info "Step: Expect Postdate Time to be #{time}"
-  actual = orders.toolbar.settings_modal.get_postdate_time
-  #log_expectation_eql "Postdate Time", time, actual
-  actual.should eql time
-
-end
-
-Then /^Expect Postage Balance Notification Amount to be (.*)$/ do |amount|
-  log.info "Step: Expect Postage Balance Notification Amount to be #{amount}"
-  actual = orders.toolbar.settings_modal.get_balance_notification_amt
-  #log_expectation_eql "Balance Notification Amount", amount, actual
-  actual.should eql amount
-
-end
-
-Then /^Save Settings changes$/ do
-  log.info "Step: Save settings changes"
-  orders.toolbar.settings_modal.save_changes
-end
 
 
 
