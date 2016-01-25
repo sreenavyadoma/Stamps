@@ -1816,8 +1816,8 @@ module Orders
           end
           sleep 1
 =end
-          self.textbox.set value
-          log.info "Ounces set to #{text_field.text}"
+          self.text_box.set value
+          log.info "Ounces set to #{text_box.text}"
         end
 
         def increment value
