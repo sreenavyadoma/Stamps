@@ -631,7 +631,7 @@ module Orders
           select "1 hour"
         end
 
-        def two_hour
+        def two_hours
           select "2 hours"
         end
       end

@@ -1800,6 +1800,7 @@ module Orders
         end
 
         def set value
+=begin
           text_field = text_box
           value = value.to_i
           max = value + text_field.text.to_i
@@ -1814,6 +1815,8 @@ module Orders
             break if value == current_value
           end
           sleep 1
+=end
+          self.textbox.set value
           log.info "Ounces set to #{text_field.text}"
         end
 
