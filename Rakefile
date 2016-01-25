@@ -142,13 +142,8 @@ Cucumber::Rake::Task.new(:inline_service_rates) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:local_rating_zone1) do |t|
-  t.profile = 'local_rating_zone1'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:local_rating_zone2) do |t|
-  t.profile = 'local_rating_zone2'
+Cucumber::Rake::Task.new(:local_rating) do |t|
+  t.profile = 'local_rating'
   t.cucumber_opts = "-p cuke_reports"
 end
 

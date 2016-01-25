@@ -1,10 +1,10 @@
-default: --profile cuke_reports --profile rob_dev
+default: --profile cuke_reports --profile eli_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
 rob_dev: --tags @general_settings --guess VERBOSE=true URL=qacc BROWSER=ff USR=ss_rob15 PW=pass111
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
-eli_dev: --tags @local_rating2 --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
+eli_dev: --tags @local_rating4 --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
 ray_dev: --tags @print_layouts_cp72_continuation_raytest1 --guess VERBOSE=false URL=qacc BROWSER=ff USR=webpost_0010 PW=pass111
 eva_dev: --tags   @edit_order --guess VERBOSE=true URL=qacc BROWSER=gc USR=cctest1 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
@@ -38,8 +38,7 @@ address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERB
 address_management: --tags @address_management --guess VERBOSE=false
 tracking: --tags @tracking --guess VERBOSE=false
 inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false
-local_rating_zone1: --tags @local_rating_zone1 --guess VERBOSE=false
-local_rating_zone2: --tags @local_rating_zone2 --guess VERBOSE=false
+local_rating: --tags @local_rating --guess VERBOSE=false
 international: --tags @international --guess VERBOSE=false
 purchasing: --tags @purchasing --guess VERBOSE=false
 change_settings: --tags @settings --guess VERBOSE=false
