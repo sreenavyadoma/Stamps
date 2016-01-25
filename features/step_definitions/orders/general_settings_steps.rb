@@ -163,60 +163,60 @@ Then /^Settings:  Set Postdate to 11:00 p.m.$/ do
   step "Settings:  Postdate Set 11:00 p.m."
 end
 
-Then /^Settings:  Postdate Set(.*)$/ do |postdate|
+Then /^Settings:  Postdate Set (.*)$/ do |postdate|
   step "Open Settings Modal" if @general_settings.nil?
 
   case postdate.downcase
-    when /12:00 a.m./
+    when "12:00 a.m."
       @general_settings.post_date.twelve_am
-    when /1:00 a.m./
+    when "1:00 a.m."
       @general_settings.post_date.one_am
-    when /2:00 a.m./
+    when "2:00 a.m."
       @general_settings.post_date.two_am
-    when /3:00 a.m./
+    when "3:00 a.m."
       @general_settings.post_date.three_am
-    when /4:00 a.m./
+    when "4:00 a.m."
       @general_settings.post_date.four_am
-    when /5:00 a.m./
+    when "5:00 a.m."
       @general_settings.post_date.five_am
-    when /6:00 a.m./
+    when "6:00 a.m."
       @general_settings.post_date.six_am
-    when /7:00 a.m./
+    when "7:00 a.m."
       @general_settings.post_date.seven_am
-    when /8:00 a.m./
+    when "8:00 a.m."
       @general_settings.post_date.eight_am
-    when /9:00 a.m./
+    when "9:00 a.m."
       @general_settings.post_date.nine_am
-    when /10:00 a.m./
+    when "10:00 a.m."
       @general_settings.post_date.ten_am
-    when /11:00 a.m./
+    when "11:00 a.m."
       @general_settings.post_date.eleven_am
-    when /12:00 p.m./
+    when "12:00 p.m."
       @general_settings.post_date.twelve_pm
-    when /1:00 p.m./
+    when "1:00 p.m."
       @general_settings.post_date.one_pm
-    when /2:00 p.m./
+    when "2:00 p.m."
       @general_settings.post_date.two_pm
-    when /3:00 p.m./
+    when "3:00 p.m."
       @general_settings.post_date.three_pm
-    when /4:00 p.m./
+    when "4:00 p.m."
       @general_settings.post_date.four_pm
-    when /5:00 p.m./
+    when "5:00 p.m."
       @general_settings.post_date.five_pm
-    when /6:00 p.m./
+    when "6:00 p.m."
       @general_settings.post_date.six_pm
-    when /7:00 p.m./
+    when "7:00 p.m."
       @general_settings.post_date.seven_pm
-    when /8:00 p.m./
+    when "8:00 p.m."
       @general_settings.post_date.eight_pm
-    when /9:00 p.m./
+    when "9:00 p.m."
       @general_settings.post_date.nine_pm
-    when /10:00 p.m./
+    when "10:00 p.m."
       @general_settings.post_date.ten_pm
-    when /11:00 p.m./
+    when "11:00 p.m."
       @general_settings.post_date.eleven_pm
     else
-      raise "Invalid Postdate Selection -  Settings:  Postdate #{logoff}"
+      raise "Invalid Postdate Selection -  Settings:  Postdate #{postdate}"
   end
   log.info "Step:  Postdate mail to next day after #{@general_settings.log_off.text_box.text}"
 end
@@ -225,6 +225,7 @@ end
 
 
 # Expectations
+#  Services
 Then /^Settings:  Expect Services Checked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Expect Settings - Show unavailable service Checked"
@@ -239,6 +240,7 @@ Then /^Settings:  Expect Show unavailable service Unchecked$/ do
   @general_settings.services.checked?.should be false
 end
 
+# Logoff
 Then /^Settings:  Expect Logoff is set for 5 min.$/ do
   step "Settings:  Expect Logoff to be 5 min."
 end
@@ -269,6 +271,112 @@ Then /^Settings:  Expect Logoff to be (.*)$/ do |expectation|
   log.info "Step:  Settings:  Expect Logoff is set for #{expectation}"
   log.info "Test #{(@general_settings.log_off.text_box.text.include? expectation)?"Passed":"Failed"}"
   @general_settings.log_off.text_box.text.should eql expectation
+end
+
+# Postadate
+Then /^Settings:  Expect Postdate is set to 12:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 12:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 1:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 1:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 2:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 2:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 3:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 3:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 4:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 4:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 5:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 5:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 6:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 6:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 7:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 7:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 8:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 8:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 9:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 9:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 10:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 10:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 11:00 a.m.$/ do
+  step "Settings:  Expect Postdate to be 11:00 a.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 12:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 12:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 1:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 1:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 2:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 2:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 3:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 3:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 4:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 4:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 5:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 5:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 6:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 6:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 7:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 7:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 8:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 8:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 9:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 9:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 10:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 10:00 p.m."
+end
+
+Then /^Settings:  Expect Postdate is set to 11:00 p.m.$/ do
+  step "Settings:  Expect Postdate to be 11:00 p.m."
+end
+
+
+Then /^Settings:  Expect Postdate to be (.*)$/ do |expectation|
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect Postdate to be #{expectation}"
+
+  log.info "Test #{(@general_settings.post_date.text_box.text.include? expectation)?"Passed":"Failed"}"
+  @general_settings.post_date.text_box.text.should eql expectation
 end
 
 # End Expectations
