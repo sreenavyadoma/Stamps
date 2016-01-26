@@ -9,6 +9,7 @@ module Orders
 
       def ok
         button = Button.new ((@browser.spans :text => 'OK').last)
+        sleep 2
         button.click_while_present
       end
     end
