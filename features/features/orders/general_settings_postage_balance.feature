@@ -44,8 +44,6 @@ Feature: Postage Balance
     Then Open Settings Modal
     Then Settings:  Expect Postage Balance set to 500
 
-
-
     Then Settings:  Close
 
     And Sign out
