@@ -328,6 +328,14 @@ module Orders
             browser_helper.enabled? (@browser.text_field :name => 'sdc-resetfieldswin-poundsnumberfield-inputEl')
           end
 
+          def checkbox
+            checkbox_field = @browser.input :id => "sdc-resetfieldswin-weightcheckbox-inputEl"
+            verify_field = checkbox_field.parent.parent.parent
+            attribute_name = "class"
+            attribute_value = "checked"
+            Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          end
+
           def lbs
             Pounds.new @browser
           end
@@ -458,6 +466,14 @@ module Orders
             browser_helper.enabled? (@browser.text_field :name => 'sdc-resetfieldswin-lengthnumberfield-inputEl')
           end
 
+          def checkbox
+            checkbox_field = @browser.input :id => "sdc-resetfieldswin-dimensionscheckbox-inputEl"
+            verify_field = checkbox_field.parent.parent.parent
+            attribute_name = "class"
+            attribute_value = "checked"
+            Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          end
+
           def length
             Length.new @browser
           end
@@ -485,22 +501,10 @@ module Orders
         end
 
         def weight
-          checkbox_field = @browser.input :id => "sdc-resetfieldswin-weightcheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          checkbox = Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
-          checkbox.check
           Weight.new @browser
         end
 
         def dimensions
-          checkbox_field = @browser.input :id => "sdc-resetfieldswin-dimensionscheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          checkbox = Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
-          checkbox.check
           Dimensions.new @browser
         end
 

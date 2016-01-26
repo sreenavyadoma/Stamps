@@ -597,7 +597,291 @@ end
 
 # End Expectations
 
-Then /^$/ do
+
+Then /^Settings:  Open Reset Fields Modal$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Settings:  Open Reset Fields Modal"
+
+  @reset_fields = @general_settings.reset_fields
+end
+
+Then /^Reset Fields:  Check Service$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Service"
+  @reset_fields.service.check
+end
+
+Then /^Reset Fields:  Uncheck Service$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Service"
+  @reset_fields.service.uncheck
+end
+
+Then /^Reset Fields:  Expect Service Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Service Unchecked$/ do
+
+end
+
+
+Then /^Reset Fields:  Check Weight$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Weight"
+  @reset_fields.weight.checkbox.check
+end
+
+Then /^Reset Fields:  Uncheck Weight$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Weight"
+  @reset_fields.weight.checkbox.uncheck
+end
+
+Then /^Reset Fields:  Expect Weight Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Weight Unchecked$/ do
+
+end
+
+Then /^Reset Fields:  Check Dimensions$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Weight"
+  @reset_fields.dimensions.checkbox.check
+end
+
+Then /^Reset Fields:  Uncheck Dimensions$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Weight"
+  @reset_fields.dimensions.checkbox.uncheck
+end
+
+Then /^Reset Fields:  Expect Dimensions Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Dimensions Unchecked$/ do
+
+end
+
+
+Then /^Reset Fields:  Check Ship to Address$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Ship to Address"
+  @reset_fields.ship_to_address.check
+
+end
+
+Then /^Reset Fields:  Uncheck Ship to Address$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Ship to Address"
+  @reset_fields.ship_to_address.uncheck
+end
+
+Then /^Reset Fields:  Expect Ship to Address Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Ship to Address Unchecked$/ do
+
+end
+
+
+Then /^Reset Fields:  Check Tracking$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Tracking"
+  @reset_fields.tracking.check
+end
+
+Then /^Reset Fields:  Uncheck Tracking$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Tracking"
+  @reset_fields.tracking.uncheck
+end
+
+Then /^Reset Fields:  Expect Tracking Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Tracking Unchecked$/ do
+
+end
+
+
+Then /^Reset Fields:  Check Extra Services$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Extra Services"
+  @reset_fields.extra_services.check
+end
+
+Then /^Reset Fields:  Uncheck Extra Services$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Extra Services"
+  @reset_fields.extra_services.uncheck
+end
+
+Then /^Reset Fields:  Expect Extra Services Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Extra Services Unchecked$/ do
+
+end
+
+
+Then /^Reset Fields:  Check Insurance$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Insurance"
+  @reset_fields.insurance.check
+end
+
+Then /^Reset Fields:  Uncheck Insurance$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Insurance"
+  @reset_fields.insurance.uncheck
+end
+
+Then /^Reset Fields:  Expect Insurance Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Insurance Unchecked$/ do
+
+end
+
+
+Then /^Reset Fields:  Check Reference Numbers$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Reference Number"
+  @reset_fields.reference_numbers.check
+
+end
+
+Then /^Reset Fields:  Uncheck Reference Numbers$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Reference Numbers"
+  @reset_fields.reference_numbers.uncheck
+
+end
+
+Then /^Reset Fields:  Expect Reference Numbers Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Reference Numbers Unchecked$/ do
+
+end
+
+
+Then /^Reset Fields:  Check Cost Code$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Cost Code"
+  @reset_fields.cost_code.check
+end
+
+Then /^Reset Fields:  Uncheck Cost Code$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Cost Code"
+  @reset_fields.cost_code.uncheck
+end
+
+Then /^Reset Fields:  Expect Cost Code Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Cost Code Unchecked$/ do
+
+end
+
+
+Then /^Reset Fields:  Check Customs$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Customs"
+  @reset_fields.customs.check
+end
+
+Then /^Reset Fields:  Uncheck Customs$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Customs"
+  @reset_fields.customs.uncheck
+end
+
+Then /^Reset Fields:  Expect Customs Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Customs Unchecked$/ do
+
+end
+
+Then /^Reset Fields:  Check Quantity$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Quantity"
+  @reset_fields.quantity.check
+end
+
+Then /^Reset Fields:  Uncheck Quantity$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Quantity"
+  @reset_fields.quantity.uncheck
+end
+
+Then /^Reset Fields:  Expect Quantity Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Quantity Unchecked$/ do
+
+end
+
+
+Then /^Reset Fields:  Check Stamps Amount$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Stamps Amount"
+  @reset_fields.stamps_amount.check
+end
+
+Then /^Reset Fields:  Uncheck Stamps Amount$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Stamps Amount"
+  @reset_fields.stamps_amount.uncheck
+end
+
+Then /^Reset Fields:  Expect Stamps Amount Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Stamps Amount Unchecked$/ do
+
+end
+
+
+Then /^Reset Fields:  Check Auto-Advance Label Position$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Check Auto-Advance Label Position"
+  @reset_fields.auto_advance_label_position.check
+
+end
+
+Then /^Reset Fields:  Uncheck Auto-Advance Label Position$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Reset Fields:  Uncheck Auto-Advance Label Position"
+  @reset_fields.auto_advance_label_position.uncheck
+
+end
+
+Then /^Reset Fields:  Expect Auto-Advance Label Position Checked$/ do
+
+end
+
+Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
+
+end
+
+
+Then /^blah$/ do
 
   log.info @general_settings.print_confirm.checked?
   @general_settings.print_confirm.check
