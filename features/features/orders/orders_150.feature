@@ -1,7 +1,7 @@
 Feature: 150 orders
 
   Background:
-    Given I am signed in to Orders as webpost_0010/pass111
+    Given I am signed in to Orders
 
   @orders_150
   Scenario:  Inline Rates

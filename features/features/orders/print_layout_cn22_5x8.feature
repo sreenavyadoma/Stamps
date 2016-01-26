@@ -2,7 +2,7 @@
 Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
 
   Background:
-    Given I am signed in to Orders as webpost_0007/pass111
+    Given I am signed in to Orders
 
   @print_layouts_cn22_edd
   Scenario: Print 1 Intl CN22 label for EDD country on 5.5 x 8.5 label

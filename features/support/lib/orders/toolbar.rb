@@ -255,6 +255,7 @@ module Orders
 
             def set value
               text_field = text_box
+=begin
               value = value.to_i
               max = value + text_field.text.to_i
               max.times do
@@ -268,6 +269,8 @@ module Orders
                 break if value == current_value
               end
               sleep 1
+=end
+              text_field.set value
               log.info "Pounds set to #{text_field.text}"
             end
 
@@ -293,6 +296,7 @@ module Orders
 
             def set value
               text_field = text_box
+=begin
               value = value.to_i
               max = value + text_field.text.to_i
               max.times do
@@ -306,6 +310,8 @@ module Orders
                 break if value == current_value
               end
               sleep 1
+=end
+              text_field.set value
               log.info "Pounds set to #{text_field.text}"
             end
 
@@ -355,6 +361,7 @@ module Orders
 
             def set value
               text_field = text_box
+=begin
               value = value.to_i
               max = value + text_field.text.to_i
               max.times do
@@ -368,6 +375,8 @@ module Orders
                 break if value == current_value
               end
               sleep 1
+=end
+              text_field.set value
               log.info "Pounds set to #{text_field.text}"
             end
 
@@ -393,6 +402,7 @@ module Orders
 
             def set value
               text_field = text_box
+=begin
               value = value.to_i
               max = value + text_field.text.to_i
               max.times do
@@ -406,6 +416,8 @@ module Orders
                 break if value == current_value
               end
               sleep 1
+=end
+              text_field.set value
               log.info "Pounds set to #{text_field.text}"
             end
 
@@ -431,6 +443,7 @@ module Orders
 
             def set value
               text_field = text_box
+=begin
               value = value.to_i
               max = value + text_field.text.to_i
               max.times do
@@ -444,6 +457,8 @@ module Orders
                 break if value == current_value
               end
               sleep 1
+=end
+              text_field.set value
               log.info "Pounds set to #{text_field.text}"
             end
 
@@ -590,8 +605,9 @@ module Orders
         end
 
         def close
-          button = Button.new @browser.span :text => "Close"
+          button = Button.new (@browser.span :text => "Close")
           5.times do
+            return unless button.present?
             button.safe_click
             sleep 1
             return unless present?
