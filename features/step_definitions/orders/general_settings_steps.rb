@@ -595,14 +595,13 @@ Then /^Settings:  Expect Postage Balance to be (.*)$/ do |expectation|
   @general_settings.postage_balance.text_box.text.should eql expectation
 end
 
-# End Expectations
-
+# Reset Fields
 
 Then /^Settings:  Open Reset Fields Modal$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Settings:  Open Reset Fields Modal"
 
-  @reset_fields = @general_settings.reset_fields
+  @reset_fields = @general_settings.reset_fields if @reset_fields.nil?
 end
 
 Then /^Reset Fields:  Check Service$/ do
@@ -618,13 +617,20 @@ Then /^Reset Fields:  Uncheck Service$/ do
 end
 
 Then /^Reset Fields:  Expect Service Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Service Checked"
 
+  log.info "Test #{(@reset_fields.service.checked?)?"Passed":"Failed"}"
+  @reset_fields.service.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Service Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Service Unchecked"
 
+  log.info "Test #{(@reset_fields.service.checked?)?"Failed":"Passed"}"
+  @reset_fields.service.checked?.should be false
 end
-
 
 Then /^Reset Fields:  Check Weight$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
@@ -639,11 +645,19 @@ Then /^Reset Fields:  Uncheck Weight$/ do
 end
 
 Then /^Reset Fields:  Expect Weight Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Weight Checked"
 
+  log.info "Test #{(@reset_fields.weight.checkbox.checked?)?"Passed":"Failed"}"
+  @reset_fields.weight.checkbox.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Weight Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Weight Unchecked"
 
+  log.info "Test #{(@reset_fields.weight.checkbox.checked?)?"Failed":"Passed"}"
+  @reset_fields.weight.checkbox.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Dimensions$/ do
@@ -659,13 +673,20 @@ Then /^Reset Fields:  Uncheck Dimensions$/ do
 end
 
 Then /^Reset Fields:  Expect Dimensions Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Dimensions Checked"
 
+  log.info "Test #{(@reset_fields.dimensions.checkbox.checked?)?"Passed":"Failed"}"
+  @reset_fields.dimensions.checkbox.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Dimensions Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Dimensions Unchecked"
 
+  log.info "Test #{(@reset_fields.dimensions.checkbox.checked?)?"Failed":"Passed"}"
+  @reset_fields.dimensions.checkbox.checked?.should be false
 end
-
 
 Then /^Reset Fields:  Check Ship to Address$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
@@ -681,13 +702,21 @@ Then /^Reset Fields:  Uncheck Ship to Address$/ do
 end
 
 Then /^Reset Fields:  Expect Ship to Address Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Ship to Address Checked"
+
+  log.info "Test #{(@reset_fields.ship_to_address.checked?)?"Passed":"Failed"}"
+  @reset_fields.ship_to_address.checked?.should be true
 
 end
 
 Then /^Reset Fields:  Expect Ship to Address Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Ship to Address Unchecked"
 
+  log.info "Test #{(@reset_fields.ship_to_address.checked?)?"Failed":"Passed"}"
+  @reset_fields.ship_to_address.checked?.should be false
 end
-
 
 Then /^Reset Fields:  Check Tracking$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
@@ -702,13 +731,21 @@ Then /^Reset Fields:  Uncheck Tracking$/ do
 end
 
 Then /^Reset Fields:  Expect Tracking Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Tracking Checked"
+
+  log.info "Test #{(@reset_fields.tracking.checked?)?"Passed":"Failed"}"
+  @reset_fields.tracking.checked?.should be true
 
 end
 
 Then /^Reset Fields:  Expect Tracking Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Tracking Unchecked"
 
+  log.info "Test #{(@reset_fields.tracking.checked?)?"Failed":"Passed"}"
+  @reset_fields.tracking.checked?.should be false
 end
-
 
 Then /^Reset Fields:  Check Extra Services$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
@@ -723,11 +760,20 @@ Then /^Reset Fields:  Uncheck Extra Services$/ do
 end
 
 Then /^Reset Fields:  Expect Extra Services Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Extra Services Checked"
+
+  log.info "Test #{(@reset_fields.extra_services.checked?)?"Passed":"Failed"}"
+  @reset_fields.extra_services.checked?.should be true
 
 end
 
 Then /^Reset Fields:  Expect Extra Services Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Extra Services Unchecked"
 
+  log.info "Test #{(@reset_fields.extra_services.checked?)?"Failed":"Passed"}"
+  @reset_fields.extra_services.checked?.should be false
 end
 
 
@@ -744,13 +790,20 @@ Then /^Reset Fields:  Uncheck Insurance$/ do
 end
 
 Then /^Reset Fields:  Expect Insurance Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Insurance Checked"
 
+  log.info "Test #{(@reset_fields.insurance.checked?)?"Passed":"Failed"}"
+  @reset_fields.insurance.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Insurance Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Insurance Unchecked"
 
+  log.info "Test #{(@reset_fields.insurance.checked?)?"Failed":"Passed"}"
+  @reset_fields.insurance.checked?.should be false
 end
-
 
 Then /^Reset Fields:  Check Reference Numbers$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
@@ -767,13 +820,21 @@ Then /^Reset Fields:  Uncheck Reference Numbers$/ do
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Reference Numbers Checked"
+
+  log.info "Test #{(@reset_fields.reference_numbers.checked?)?"Passed":"Failed"}"
+  @reset_fields.reference_numbers.checked?.should be true
 
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Reference Numbers Unchecked"
 
+  log.info "Test #{(@reset_fields.reference_numbers.checked?)?"Failed":"Passed"}"
+  @reset_fields.reference_numbers.checked?.should be false
 end
-
 
 Then /^Reset Fields:  Check Cost Code$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
@@ -788,13 +849,20 @@ Then /^Reset Fields:  Uncheck Cost Code$/ do
 end
 
 Then /^Reset Fields:  Expect Cost Code Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Cost Code Checked"
 
+  log.info "Test #{(@reset_fields.insurance.checked?)?"Passed":"Failed"}"
+  @reset_fields.cost_code.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Cost Code Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Cost Code Unchecked"
 
+  log.info "Test #{(@reset_fields.insurance.checked?)?"Failed":"Passed"}"
+  @reset_fields.cost_code.checked?.should be false
 end
-
 
 Then /^Reset Fields:  Check Customs$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
@@ -809,11 +877,19 @@ Then /^Reset Fields:  Uncheck Customs$/ do
 end
 
 Then /^Reset Fields:  Expect Customs Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Customs Checked"
 
+  log.info "Test #{(@reset_fields.customs.checked?)?"Passed":"Failed"}"
+  @reset_fields.customs.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Customs Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Customs Unchecked"
 
+  log.info "Test #{(@reset_fields.customs.checked?)?"Failed":"Passed"}"
+  @reset_fields.customs.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Quantity$/ do
@@ -829,13 +905,20 @@ Then /^Reset Fields:  Uncheck Quantity$/ do
 end
 
 Then /^Reset Fields:  Expect Quantity Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Quantity Checked"
 
+  log.info "Test #{(@reset_fields.quantity.checked?)?"Passed":"Failed"}"
+  @reset_fields.quantity.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Quantity Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Quantity Unchecked"
 
+  log.info "Test #{(@reset_fields.quantity.checked?)?"Failed":"Passed"}"
+  @reset_fields.quantity.checked?.should be false
 end
-
 
 Then /^Reset Fields:  Check Stamps Amount$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
@@ -850,13 +933,20 @@ Then /^Reset Fields:  Uncheck Stamps Amount$/ do
 end
 
 Then /^Reset Fields:  Expect Stamps Amount Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Stamps Amount Checked"
 
+  log.info "Test #{(@reset_fields.stamps_amount.checked?)?"Passed":"Failed"}"
+  @reset_fields.stamps_amount.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Stamps Amount Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Stamps Amount Unchecked"
 
+  log.info "Test #{(@reset_fields.stamps_amount.checked?)?"Failed":"Passed"}"
+  @reset_fields.stamps_amount.checked?.should be false
 end
-
 
 Then /^Reset Fields:  Check Auto-Advance Label Position$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
@@ -873,13 +963,20 @@ Then /^Reset Fields:  Uncheck Auto-Advance Label Position$/ do
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Checked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Auto-Advance Label Position Checked"
 
+  log.info "Test #{(@reset_fields.auto_advance_label_position.checked?)?"Passed":"Failed"}"
+  @reset_fields.auto_advance_label_position.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Expect Auto-Advance Label Position Unchecked"
 
+  log.info "Test #{(@reset_fields.auto_advance_label_position.checked?)?"Failed":"Passed"}"
+  @reset_fields.auto_advance_label_position.checked?.should be false
 end
-
 
 Then /^blah$/ do
 
@@ -1013,6 +1110,11 @@ Then /^blah$/ do
   @general_settings.save
 
   log.info "rob"
+end
+
+Then /^Reset Fields:  Close$/ do
+  log.info "Reset Fields:  Close"
+  reset_fields.close
 end
 
 Then /^Settings:  Save$/ do

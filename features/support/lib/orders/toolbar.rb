@@ -590,7 +590,7 @@ module Orders
         end
 
         def close
-          button = Button.new @browser.span :text => "Close"
+          button = Button.new (@browser.span :text => "Close")
           5.times do
             button.safe_click
             sleep 1
