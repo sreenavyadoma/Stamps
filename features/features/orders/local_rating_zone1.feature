@@ -1175,7 +1175,7 @@ Feature: Local Rating Zone 1
 
     And Sign out
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario: Zone 1 - Media Mail Package
     Then Add New Order
     Then Verify Local Rating
@@ -1255,7 +1255,7 @@ Feature: Local Rating Zone 1
 
     And Sign out
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario: Zone 1 - Parcel Select Ground Package
     Then Add New Order
     Then Verify Local Rating
@@ -1335,7 +1335,7 @@ Feature: Local Rating Zone 1
 
     And Sign out
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario: Zone 1 - Parcel Select Ground Large Package
     Then Add New Order
     Then Verify Local Rating
@@ -1414,7 +1414,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Ground Large Package|71|0|1|1|1|USPS Tracking|0.00|
     And Sign out
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario: Zone 1 - Parcel Select Ground Oversized Package
     Then Add New Order
     Then Verify Local Rating
@@ -1494,7 +1494,7 @@ Feature: Local Rating Zone 1
 
     And Sign out
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario: Zone 1 - First-Class Mail Large Envelope/Flat
     Then Add New Order
     Then Verify Local Rating
@@ -1516,7 +1516,7 @@ Feature: Local Rating Zone 1
 
     And Sign out
 
-  @local_rating_zone1 @local_rating
+  @local_rating_zone1
   Scenario: Zone 1 - First-Class Mail Package/Thick Envelope
     Then Add New Order
     Then Verify Local Rating
