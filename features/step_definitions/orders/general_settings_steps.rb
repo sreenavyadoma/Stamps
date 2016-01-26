@@ -601,7 +601,7 @@ Then /^Settings:  Open Reset Fields Modal$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Settings:  Open Reset Fields Modal"
 
-  @reset_fields = @general_settings.reset_fields if @reset_fields.nil?
+  @reset_fields = @general_settings.reset_fields
 end
 
 Then /^Reset Fields:  Check Service$/ do
@@ -775,7 +775,6 @@ Then /^Reset Fields:  Expect Extra Services Unchecked$/ do
   log.info "Test #{(@reset_fields.extra_services.checked?)?"Failed":"Passed"}"
   @reset_fields.extra_services.checked?.should be false
 end
-
 
 Then /^Reset Fields:  Check Insurance$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
@@ -978,143 +977,73 @@ Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
   @reset_fields.auto_advance_label_position.checked?.should be false
 end
 
-Then /^blah$/ do
+Then /^Reset Fields:  Set Weight to (\d+) lbs (\d+) oz$/ do |lbs, oz|
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info "Step:  Reset Fields:  Set Weight to #{lbs} lbs #{oz} oz"
 
-  log.info @general_settings.print_confirm.checked?
-  @general_settings.print_confirm.check
-  log.info @general_settings.print_confirm.checked?
-  @general_settings.print_confirm.uncheck
-  log.info @general_settings.print_confirm.checked?
+  step "Reset Fields:  Check Weight"
+  @reset_fields.weight.lbs.set lbs
+  @reset_fields.weight.oz.set oz
+end
 
-  log.info @general_settings.usps_terms.checked?
-  @general_settings.usps_terms.check
-  log.info @general_settings.usps_terms.checked?
-  @general_settings.usps_terms.uncheck
-  log.info @general_settings.usps_terms.checked?
+Then /^Reset Fields:  Expect Weight lbs equals (\d+)$/ do |lbs|
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info  "Reset Fields:  Expect Weight lbs equals #{lbs}"
 
-  log.info @general_settings.contacts.checked?
-  @general_settings.contacts.check
-  log.info @general_settings.contacts.checked?
-  @general_settings.contacts.uncheck
-  log.info @general_settings.contacts.checked?
+  step "Reset Fields:  Check Weight"
+  log.info "Test #{(@reset_fields.weight.lbs.text_box.text.to_i == lbs.to_i)?"Passed":"Faild"}"
+  @reset_fields.weight.lbs.text_box.text.to_i.should eql lbs.to_i
+end
 
-  log.info @general_settings.shipments.checked?
-  @general_settings.shipments.check
-  log.info @general_settings.shipments.checked?
-  @general_settings.shipments.uncheck
-  log.info @general_settings.shipments.checked?
+Then /^Reset Fields:  Expect Weight oz equals (\d+)$/ do |oz|
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info  "Reset Fields:  Expect Weight oz equals #{oz}"
 
-  log.info @general_settings.postage_balance.text_box.text
-  @general_settings.postage_balance.zero
-  log.info @general_settings.postage_balance.text_box.text
-  @general_settings.postage_balance.ten
-  log.info @general_settings.postage_balance.text_box.text
-  @general_settings.postage_balance.twenty_five
-  log.info @general_settings.postage_balance.text_box.text
-  @general_settings.postage_balance.fifty
-  log.info @general_settings.postage_balance.text_box.text
-  @general_settings.postage_balance.one_hundred
-  log.info @general_settings.postage_balance.text_box.text
-  @general_settings.postage_balance.two_hundred_fifty
-  log.info @general_settings.postage_balance.text_box.text
-  @general_settings.postage_balance.five_hundred
-  log.info @general_settings.postage_balance.text_box.text
+  step "Reset Fields:  Check Weight"
+  log.info "Test #{(@reset_fields.weight.oz.text_box.text.to_i == oz.to_i)?"Passed":"Faild"}"
+  @reset_fields.weight.oz.text_box.text.to_i.should eql oz.to_i
+end
 
-  reset_fields = @general_settings.reset_fields
-  log.info reset_fields.ship_to_address.checked?
-  reset_fields.ship_to_address.uncheck
-  log.info reset_fields.ship_to_address.checked?
-  reset_fields.ship_to_address.check
-  log.info reset_fields.ship_to_address.checked?
+Then /^Reset Fields:  Set Dimensions to length (\d+), width (\d+), height (\d+)$/ do |length, width, height|
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info  "Reset Fields:  Set Dimensions to length #{length}, width #{width}, height #{height}"
 
-  log.info reset_fields.tracking.checked?
-  reset_fields.tracking.uncheck
-  log.info reset_fields.tracking.checked?
-  reset_fields.tracking.check
-  log.info reset_fields.tracking.checked?
+  step "Reset Fields:  Check Dimensions"
+  @reset_fields.dimensions.length.set length
+  @reset_fields.dimensions.width.set width
+  @reset_fields.dimensions.height.set height
+end
 
-  log.info reset_fields.extra_services.checked?
-  reset_fields.extra_services.uncheck
-  log.info reset_fields.extra_services.checked?
-  reset_fields.extra_services.check
-  log.info reset_fields.extra_services.checked?
+Then /^Reset Fields:  Expect Dimensions to length equals (\d+)$/ do |length|
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info  "Reset Fields:  Expect Dimensions to length equals #{length}"
 
-  log.info reset_fields.insurance.checked?
-  reset_fields.insurance.uncheck
-  log.info reset_fields.insurance.checked?
-  reset_fields.insurance.check
-  log.info reset_fields.insurance.checked?
+  step "Reset Fields:  Check Dimensions"
+  log.info "Test #{(@reset_fields.dimensions.length.text_box.text.to_i == length.to_i)?"Passed":"Faild"}"
+  @reset_fields.dimensions.length.text_box.text.to_i.should eql length.to_i
+end
 
-  log.info reset_fields.reference_numbers.checked?
-  reset_fields.reference_numbers.uncheck
-  log.info reset_fields.reference_numbers.checked?
-  reset_fields.reference_numbers.check
-  log.info reset_fields.reference_numbers.checked?
+Then /^Reset Fields:  Expect Dimensions to width equals (\d+)$/ do |width|
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info  "Reset Fields:  Expect Dimensions to width equals #{width}"
 
-  log.info reset_fields.cost_code.checked?
-  reset_fields.cost_code.uncheck
-  log.info reset_fields.cost_code.checked?
-  reset_fields.cost_code.check
-  log.info reset_fields.cost_code.checked?
+  step "Reset Fields:  Check Dimensions"
+  log.info "Test #{(@reset_fields.dimensions.width.text_box.text.to_i == width.to_i)?"Passed":"Faild"}"
+  @reset_fields.dimensions.width.text_box.text.to_i.should eql width.to_i
+end
 
-  log.info reset_fields.customs.checked?
-  reset_fields.customs.uncheck
-  log.info reset_fields.customs.checked?
-  reset_fields.customs.check
-  log.info reset_fields.customs.checked?
+Then /^Reset Fields:  Expect Dimensions to height equals (\d+)$/ do |height|
+  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
+  log.info  "Reset Fields:  Expect Dimensions to height equals #{height}"
 
-  log.info reset_fields.quantity.checked?
-  reset_fields.quantity.uncheck
-  log.info reset_fields.quantity.checked?
-  reset_fields.quantity.check
-  log.info reset_fields.quantity.checked?
-
-  log.info reset_fields.stamps_amount.checked?
-  reset_fields.stamps_amount.uncheck
-  log.info reset_fields.stamps_amount.checked?
-  reset_fields.stamps_amount.check
-  log.info reset_fields.stamps_amount.checked?
-
-  log.info reset_fields.auto_advance_label_position.checked?
-  reset_fields.auto_advance_label_position.uncheck
-  log.info reset_fields.auto_advance_label_position.checked?
-  reset_fields.auto_advance_label_position.check
-  log.info reset_fields.auto_advance_label_position.checked?
-
-  reset_fields.weight.lbs.increment 10
-  reset_fields.weight.lbs.decrement 5
-  reset_fields.weight.lbs.set 2
-  reset_fields.weight.lbs.set 7
-
-  reset_fields.weight.oz.increment 10
-  reset_fields.weight.oz.decrement 5
-  reset_fields.weight.oz.set 2
-  reset_fields.weight.oz.set 7
-
-  reset_fields.dimensions.length.increment 10
-  reset_fields.dimensions.length.decrement 5
-  reset_fields.dimensions.length.set 2
-  reset_fields.dimensions.length.set 7
-
-  reset_fields.dimensions.width.increment 10
-  reset_fields.dimensions.width.decrement 5
-  reset_fields.dimensions.width.set 2
-  reset_fields.dimensions.width.set 7
-
-  reset_fields.dimensions.height.increment 10
-  reset_fields.dimensions.height.decrement 5
-  reset_fields.dimensions.height.set 2
-  reset_fields.dimensions.height.set 7
-
-  reset_fields.close
-  @general_settings.save
-
-  log.info "rob"
+  step "Reset Fields:  Check Dimensions"
+  log.info "Test #{(@reset_fields.dimensions.height.text_box.text.to_i == height.to_i)?"Passed":"Faild"}"
+  @reset_fields.dimensions.height.text_box.text.to_i.should eql height.to_i
 end
 
 Then /^Reset Fields:  Close$/ do
   log.info "Reset Fields:  Close"
-  reset_fields.close
+  @reset_fields.close
 end
 
 Then /^Settings:  Save$/ do
