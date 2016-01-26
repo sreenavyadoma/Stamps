@@ -23,7 +23,7 @@ Feature: Local Rating test for zone 1
     Then Order Details: Set Service to "Priority Mail Large/Thick Envelope"
     Then Order Details: Set Weight to 1 lbs 0 oz
     Then Order Details: Set Tracking to "Signature Required"
-    Then Expect Order Details Total to be $8.46
+    Then Expect Order Details Total to be $8.20
 
     Then Order Details: Set Ship-To to Random Address in Zone 1
     Then Order Details: Set Service to "Priority Mail Package"
