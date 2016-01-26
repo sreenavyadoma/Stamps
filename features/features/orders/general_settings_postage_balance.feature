@@ -4,7 +4,7 @@ Feature: Postage Balance
   Background:
     Given I am signed in to Orders
 
-  @general_settings @general_settings_dev
+  @general_settings
   Scenario: Postage Balance
 
     Then Open Settings Modal

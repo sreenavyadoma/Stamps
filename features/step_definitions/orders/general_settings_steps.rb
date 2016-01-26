@@ -3,7 +3,7 @@ Then /^Open Settings Modal$/ do
   log.info "Step: Open Settings Modal"
   @general_settings = orders.toolbar.settings.general_settings
 end
-
+# Services checkbox
 Then /^Settings: Check Services$/ do
   step "Open Settings Modal" if @general_settings.nil?
 
@@ -16,6 +16,66 @@ Then /^Settings:  Uncheck Services$/ do
 
   @general_settings.services.uncheck
   log.info "Show unavailable service #{(@general_settings.services.checked?)?"checked":"unchecked"}"
+end
+
+# Services checkbox
+Then /^Settings: Check Print Confirm$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
+  @general_settings.print_confirm.check
+  log.info "Settings: Check Print Confirm #{(@general_settings.print_confirm.checked?)?"checked":"unchecked"}"
+end
+
+Then /^Settings: Uncheck Print Confirm$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
+  @general_settings.print_confirm.uncheck
+  log.info "Settings: Uncheck Print Confirm #{(@general_settings.print_confirm.checked?)?"checked":"unchecked"}"
+end
+
+# Contacts$ checkbox
+Then /^Settings: Check Contacts$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
+  @general_settings.contacts.check
+  log.info "Settings: Check Contacts$ #{(@general_settings.contacts.checked?)?"checked":"unchecked"}"
+end
+
+Then /^Settings: Uncheck Contacts$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
+  @general_settings.contacts.uncheck
+  log.info "Settings: Uncheck Contacts$ #{(@general_settings.contacts.checked?)?"checked":"unchecked"}"
+end
+
+# Shipments checkbox
+Then /^Settings: Check Shipments$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
+  @general_settings.shipments.check
+  log.info "Settings: Check Shipments #{(@general_settings.shipments.checked?)?"checked":"unchecked"}"
+end
+
+Then /^Settings: Uncheck Shipments$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
+  @general_settings.shipments.uncheck
+  log.info "Settings: Uncheck Shipments #{(@general_settings.shipments.checked?)?"checked":"unchecked"}"
+end
+
+# USPS Terms checkbox
+Then /^Settings: Check USPS Terms$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
+  @general_settings.usps_terms.check
+  log.info "Settings: Check USPS Terms #{(@general_settings.usps_terms.checked?)?"checked":"unchecked"}"
+end
+
+Then /^Settings: Uncheck USPS Terms$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+
+  @general_settings.usps_terms.uncheck
+  log.info "Settings: Uncheck USPS Terms #{(@general_settings.usps_terms.checked?)?"checked":"unchecked"}"
 end
 
 # Set Logoff
@@ -293,10 +353,70 @@ Then /^Settings:  Expect Services Checked$/ do
   @general_settings.services.checked?.should be true
 end
 
-Then /^Settings:  Expect Show unavailable service Unchecked$/ do
+Then /^Settings:  Expect Services Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Expect Settings - Show unavailable service Unchecked"
   log.info "Test #{(@general_settings.services.checked?)?"Passed":"Failed"}"
+  @general_settings.services.checked?.should be false
+end
+
+#  Print Confirm
+Then /^Settings:  Expect Print Confirm Checked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect Print Confirm Checked"
+  log.info "Test #{(@general_settings.print_confirm.checked?)?"Passed":"Failed"}"
+  @general_settings.services.checked?.should be true
+end
+
+Then /^Settings:  Expect Print Confirm Unchecked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect Print Confirm Unchecked"
+  log.info "Test #{(@general_settings.print_confirm.checked?)?"Passed":"Failed"}"
+  @general_settings.services.checked?.should be false
+end
+
+#  Print Confirm
+Then /^Settings:  Expect USPS Terms Checked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect USPS Terms Checked"
+  log.info "Test #{(@general_settings.usps_terms.checked?)?"Passed":"Failed"}"
+  @general_settings.services.checked?.should be true
+end
+
+Then /^Settings:  Expect USPS Terms Unchecked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect USPS Terms Unchecked"
+  log.info "Test #{(@general_settings.usps_terms.checked?)?"Passed":"Failed"}"
+  @general_settings.services.checked?.should be false
+end
+
+#  Contacts
+Then /^Settings:  Expect Contacts Checked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect Contacts Checked"
+  log.info "Test #{(@general_settings.contacts.checked?)?"Passed":"Failed"}"
+  @general_settings.services.checked?.should be true
+end
+
+Then /^Settings:  Expect Contacts Unchecked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect Contacts Unchecked"
+  log.info "Test #{(@general_settings.contacts.checked?)?"Passed":"Failed"}"
+  @general_settings.services.checked?.should be false
+end
+
+#  Shipments
+Then /^Settings:  Expect Shipments Checked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect Shipments Checked"
+  log.info "Test #{(@general_settings.shipments.checked?)?"Passed":"Failed"}"
+  @general_settings.services.checked?.should be true
+end
+
+Then /^Settings:  Expect Shipments Unchecked$/ do
+  step "Open Settings Modal" if @general_settings.nil?
+  log.info "Step:  Settings:  Expect Shipments Unchecked"
+  log.info "Test #{(@general_settings.shipments.checked?)?"Passed":"Failed"}"
   @general_settings.services.checked?.should be false
 end
 
