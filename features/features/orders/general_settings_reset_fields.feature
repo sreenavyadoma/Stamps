@@ -1,11 +1,11 @@
 
-Feature: Checkoxes Services, Print Confirm, USPS Terms, Contacts and Shipments
+Feature: Reset Fields
 
   Background:
     Given I am signed in to Orders
 
   @general_settings @general_settings_dev
-  Scenario: Services, Print Confirm, USPS Terms, Contacts and Shipments
+  Scenario: Reset Fields
 
     Then Open Settings Modal
     Then Settings:  Open Reset Fields Modal
