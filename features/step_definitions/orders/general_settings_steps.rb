@@ -816,7 +816,6 @@ Then /^Reset Fields:  Expect Customs Unchecked$/ do
 
 end
 
-
 Then /^Reset Fields:  Check Quantity$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   log.info "Reset Fields:  Check Quantity"
