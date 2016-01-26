@@ -2,8 +2,9 @@ Feature: Local Rating test for zone 3
 
   Background:
     Given I am signed in to Orders as ff/qacc/ss_rob14/pass111
-  @local_rating
-  @local_rating2
+
+ @local_rating
+  @local_rating3
   Scenario:  All Services
     Then Add New Order
     Then Order Details: Set Ship-From to default

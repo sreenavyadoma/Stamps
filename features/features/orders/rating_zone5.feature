@@ -3,7 +3,8 @@ Feature: Local Rating test for zone 5
   Background:
     Given I am signed in to Orders as ff/qacc/ss_rob14/pass111
 
-  @local_rating2
+  @local_rating
+  @local_rating5
   Scenario:  All Services
     Then Add New Order
     Then Order Details: Set Ship-From to default
@@ -29,13 +30,19 @@ Feature: Local Rating test for zone 5
     Then Order Details: Set Service to "Priority Mail Package"
     Then Order Details: Set Weight to 21 lbs 0 oz
     Then Order Details: Set Tracking to "USPS Tracking"
+    Then Order Details: Set Length to 14
+    Then Order Details: Set Width to 30
+    Then Order Details: Set Height to 5
     Then Expect Order Details Total to be $22.78
 
     Then Order Details: Set Ship-To to Random Address in Zone 5
     Then Order Details: Set Service to "Priority Mail Large Package"
     Then Order Details: Set Weight to 5 lbs 0 oz
     Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $11.26
+    Then Order Details: Set Length to 20
+    Then Order Details: Set Width to 20
+    Then Order Details: Set Height to 15
+    Then Expect Order Details Total to be $42.61
 
     Then Order Details: Set Ship-To to Random Address in Zone 5
     Then Order Details: Set Service to "Priority Mail Flat Rate Envelope"
@@ -72,18 +79,6 @@ Feature: Local Rating test for zone 5
     Then Order Details: Set Weight to 37 lbs 0 oz
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Expect Order Details Total to be $16.35
-
-    Then Order Details: Set Ship-To to Random Address in Zone 5
-    Then Order Details: Set Service to "Priority Mail Regional Rate Box A"
-    Then Order Details: Set Weight to 12 lbs 0 oz
-    Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $8.15
-
-    Then Order Details: Set Ship-To to Random Address in Zone 5
-    Then Order Details: Set Service to "Priority Mail Regional Rate Box B"
-    Then Order Details: Set Weight to 7 lbs 0 oz
-    Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $10.66
 
     Then Order Details: Set Ship-To to Random Address in Zone 5
     Then Order Details: Set Service to "Priority Mail Express Package"

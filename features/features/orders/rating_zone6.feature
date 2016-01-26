@@ -3,7 +3,8 @@ Feature: Local Rating test for zone 6
   Background:
     Given I am signed in to Orders as ff/qacc/ss_rob14/pass111
 
-  @local_rating2
+  @local_rating
+  @local_rating6
   Scenario:  All Services
     Then Add New Order
     Then Order Details: Set Ship-From to default
@@ -29,12 +30,18 @@ Feature: Local Rating test for zone 6
     Then Order Details: Set Service to "Priority Mail Package"
     Then Order Details: Set Weight to 11 lbs 0 oz
     Then Order Details: Set Tracking to "USPS Tracking"
+    Then Order Details: Set Length to 10
+    Then Order Details: Set Width to 10
+    Then Order Details: Set Height to 10
     Then Expect Order Details Total to be $26.21
 
     Then Order Details: Set Ship-To to Random Address in Zone 6
     Then Order Details: Set Service to "Priority Mail Large Package"
     Then Order Details: Set Weight to 42 lbs 0 oz
     Then Order Details: Set Tracking to "USPS Tracking"
+    Then Order Details: Set Length to 20
+    Then Order Details: Set Width to 10
+    Then Order Details: Set Height to 30
     Then Expect Order Details Total to be $62.85
 
     Then Order Details: Set Ship-To to Random Address in Zone 6
@@ -72,18 +79,6 @@ Feature: Local Rating test for zone 6
     Then Order Details: Set Weight to 31 lbs 0 oz
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Expect Order Details Total to be $11.95
-
-    Then Order Details: Set Ship-To to Random Address in Zone 6
-    Then Order Details: Set Service to "Priority Mail Regional Rate Box A"
-    Then Order Details: Set Weight to 60 lbs 0 oz
-    Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $max weight exceeded
-
-    Then Order Details: Set Ship-To to Random Address in Zone 6
-    Then Order Details: Set Service to "Priority Mail Regional Rate Box B"
-    Then Order Details: Set Weight to 51 lbs 0 oz
-    Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $max weight exceeded
 
     Then Order Details: Set Ship-To to Random Address in Zone 6
     Then Order Details: Set Service to "Priority Mail Express Package"

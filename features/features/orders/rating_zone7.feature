@@ -3,7 +3,8 @@ Feature: Local Rating test for zone 7
   Background:
     Given I am signed in to Orders as ff/qacc/ss_rob14/pass111
 
-  @local_rating2
+  @local_rating
+  @local_rating7
   Scenario:  All Services
     Then Add New Order
     Then Order Details: Set Ship-From to default
@@ -21,85 +22,79 @@ Feature: Local Rating test for zone 7
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Large/Thick Envelope"
-    Then Order Details: Set Weight to 33 lbs 15 oz
+    Then Order Details: Set Weight to 33 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $77.49
+    Then Expect Order Details Total to be $64.26
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Package"
-    Then Order Details: Set Weight to 10 lbs 15 oz
+    Then Order Details: Set Weight to 10 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $37.49
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+    Then Order Details: Set Height to 1
+    Then Expect Order Details Total to be $31.92
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Large Package"
-    Then Order Details: Set Weight to 41 lbs 15 oz
+    Then Order Details: Set Weight to 41 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $87.58
+    Then Order Details: Set Length to 7
+    Then Order Details: Set Width to 25
+    Then Order Details: Set Height to 25
+    Then Expect Order Details Total to be $73.93
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Flat Rate Envelope"
-    Then Order Details: Set Weight to 31 lbs 15 oz
+    Then Order Details: Set Weight to 31 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Expect Order Details Total to be $5.75
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
-    Then Order Details: Set Weight to 22 lbs 15 oz
+    Then Order Details: Set Weight to 22 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Expect Order Details Total to be $6.10
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Legal Flat Rate Envelope"
-    Then Order Details: Set Weight to 32 lbs 15 oz
+    Then Order Details: Set Weight to 32 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Expect Order Details Total to be $5.75
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Small Flat Rate Box"
-    Then Order Details: Set Weight to 54 lbs 15 oz
+    Then Order Details: Set Weight to 54 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Expect Order Details Total to be $6.10
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Medium Flat Rate Box"
-    Then Order Details: Set Weight to 45 lbs 15 oz
+    Then Order Details: Set Weight to 45 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Expect Order Details Total to be $11.95
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Large Flat Rate Box"
-    Then Order Details: Set Weight to 30 lbs 15 oz
+    Then Order Details: Set Weight to 30 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Expect Order Details Total to be $16.35
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
-    Then Order Details: Set Service to "Priority Mail Regional Rate Box A"
-    Then Order Details: Set Weight to 59 lbs 15 oz
-    Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $exceeds max weight
-
-    Then Order Details: Set Ship-To to Random Address in Zone 7
-    Then Order Details: Set Service to "Priority Mail Regional Rate Box B"
-    Then Order Details: Set Weight to 50 lbs 15 oz
-    Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $exceeds max weight
-
-    Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Express Package"
-    Then Order Details: Set Weight to 22 lbs 15 oz
+    Then Order Details: Set Weight to 22 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
-    Then Expect Order Details Total to be $126.14
+    Then Expect Order Details Total to be $122.31
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Express Flat Rate Envelope"
-    Then Order Details: Set Weight to 18 lbs 15 oz
+    Then Order Details: Set Weight to 18 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Expect Order Details Total to be $20.66
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
-    Then Order Details: Set Weight to 56 lbs 15 oz
+    Then Order Details: Set Weight to 56 lbs 1 oz
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Expect Order Details Total to be $20.66
 
