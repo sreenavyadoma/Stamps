@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile eli_dev
+default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
 rob_dev: --tags @general_settings_dev --guess VERBOSE=true URL=qacc BROWSER=ff USR=ss_rob15 PW=pass111

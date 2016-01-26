@@ -365,14 +365,14 @@ Then /^Settings:  Expect Print Confirm Checked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Settings:  Expect Print Confirm Checked"
   log.info "Test #{(@general_settings.print_confirm.checked?)?"Passed":"Failed"}"
-  @general_settings.services.checked?.should be true
+  @general_settings.print_confirm.checked?.should be true
 end
 
 Then /^Settings:  Expect Print Confirm Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Settings:  Expect Print Confirm Unchecked"
   log.info "Test #{(@general_settings.print_confirm.checked?)?"Passed":"Failed"}"
-  @general_settings.services.checked?.should be false
+  @general_settings.print_confirm.checked?.should be false
 end
 
 #  Print Confirm
@@ -380,14 +380,14 @@ Then /^Settings:  Expect USPS Terms Checked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Settings:  Expect USPS Terms Checked"
   log.info "Test #{(@general_settings.usps_terms.checked?)?"Passed":"Failed"}"
-  @general_settings.services.checked?.should be true
+  @general_settings.usps_terms.checked?.should be true
 end
 
 Then /^Settings:  Expect USPS Terms Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Settings:  Expect USPS Terms Unchecked"
   log.info "Test #{(@general_settings.usps_terms.checked?)?"Passed":"Failed"}"
-  @general_settings.services.checked?.should be false
+  @general_settings.usps_terms.checked?.should be false
 end
 
 #  Contacts
@@ -395,14 +395,14 @@ Then /^Settings:  Expect Contacts Checked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Settings:  Expect Contacts Checked"
   log.info "Test #{(@general_settings.contacts.checked?)?"Passed":"Failed"}"
-  @general_settings.services.checked?.should be true
+  @general_settings.contacts.checked?.should be true
 end
 
 Then /^Settings:  Expect Contacts Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Settings:  Expect Contacts Unchecked"
   log.info "Test #{(@general_settings.contacts.checked?)?"Passed":"Failed"}"
-  @general_settings.services.checked?.should be false
+  @general_settings.contacts.checked?.should be false
 end
 
 #  Shipments
@@ -410,14 +410,14 @@ Then /^Settings:  Expect Shipments Checked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Settings:  Expect Shipments Checked"
   log.info "Test #{(@general_settings.shipments.checked?)?"Passed":"Failed"}"
-  @general_settings.services.checked?.should be true
+  @general_settings.shipments.checked?.should be true
 end
 
 Then /^Settings:  Expect Shipments Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   log.info "Step:  Settings:  Expect Shipments Unchecked"
   log.info "Test #{(@general_settings.shipments.checked?)?"Passed":"Failed"}"
-  @general_settings.services.checked?.should be false
+  @general_settings.shipments.checked?.should be false
 end
 
 # Logoff
