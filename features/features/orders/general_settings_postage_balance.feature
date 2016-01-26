@@ -1,11 +1,11 @@
 
-Feature: Logoff if the application is inactive
+Feature: Postage Balance
 
   Background:
     Given I am signed in to Orders
 
   @general_settings @general_settings_dev
-  Scenario: Logoff if the application is inactive
+  Scenario: Postage Balance
 
     Then Open Settings Modal
 

@@ -1,5 +1,5 @@
 
-Feature: Show unavailable services
+Feature: Logoff
 
   Background:
     Given I am signed in to Orders

@@ -1,11 +1,11 @@
 
-Feature: Logoff if the application is inactive
+Feature: Postdate
 
   Background:
     Given I am signed in to Orders
 
   @general_settings
-  Scenario: Logoff if the application is inactive
+  Scenario: Postdate
 
     Then Open Settings Modal
 
