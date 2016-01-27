@@ -18,8 +18,6 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Select entry 2 in the auto suggest drop down list
 
-
-
     Then Order Details: Set Pounds to 0
     And Expect Domestic Address field displays Sandy Jones, 1970 E. Grand Ave Ste 200, El Segundo, CA 90245-5018
 
@@ -35,7 +33,6 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     And Expect Domestic Address field displays Mark Sanchez, 1970 E. Grand Ave Ste. 330, El Segundo, CA 90245-5038
 
     #Matching City
-
 
     Then Order Details: Set Ship-To address to San
 
@@ -104,6 +101,3 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     And Expect Domestic Address field displays James Jones, 600 Front St Apt 220, San Diego, CA 92101-6733
 
     Then Sign out
-
-
-
