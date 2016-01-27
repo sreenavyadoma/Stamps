@@ -44,6 +44,16 @@ Feature: Postage Balance
     Then Open Settings Modal
     Then Settings:  Expect Postage Balance set to 500
 
+    Then Settings:  Set Postage Balance to 0
+    Then Settings:  Save
+    Then Open Settings Modal
+    Then Settings:  Expect Postage Balance set to 0
+
+    Then Settings:  Set Postage Balance to 0
+    Then Settings:  Save
+    Then Open Settings Modal
+    Then Settings:  Expect Postage Balance set to 0
+
     Then Settings:  Close
 
     And Sign out
