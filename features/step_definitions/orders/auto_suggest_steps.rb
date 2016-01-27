@@ -1,3 +1,8 @@
+Then /^Order Details: Set Ship-To address for auto-suggest (.*)$/ do |address|
+
+  orders.details.ship_to.auto_suggest.set address
+end
+
 Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|
   log.info "Step: Expect Auto Suggest name shows #{value} for entry #{entry}"
   actual =  orders.details.get_auto_suggest_name entry

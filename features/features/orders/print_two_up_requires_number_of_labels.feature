@@ -4,7 +4,7 @@ Feature:  Requires x-number of label sheets
   Background:
     Given I am signed in to Orders
 
-  @print_two_up
+  @print_two_up @print_two_up_dev
   Scenario:  Printing
     Then Add New Order
     Then Order Details: Set Ship-From to default
@@ -13,6 +13,7 @@ Feature:  Requires x-number of label sheets
     Then Order Details: Set Weight to 1 lbs 1 oz
     Then Open Print Modal
     Then Expect Print Window Requires 1 label sheets
+    Then Expect Print Window title to be "You have 1 label(s) ready to print"
     Then Close Print Modal
 
     Then Add New Order
@@ -23,7 +24,8 @@ Feature:  Requires x-number of label sheets
     And Orders Grid: Check row 1
     And Orders Grid: Check row 2
     Then Open Print Modal
-    Then Expect Print Window Requires 2 label sheets
+    Then Expect Print Window Requires 1 label sheets
+    Then Expect Print Window title to be "You have 2 label(s) ready to print"
     Then Close Print Modal
 
     And Sign out

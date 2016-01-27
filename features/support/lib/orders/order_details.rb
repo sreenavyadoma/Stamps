@@ -1083,7 +1083,7 @@ module Orders
         AmbiguousShipTo.new @browser
       end
 
-      def suggest
+      def auto_suggest
         SuggestShipTo.new @browser
       end
     end
