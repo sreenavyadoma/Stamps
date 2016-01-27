@@ -3,19 +3,19 @@
 #Print Modal: Set Printer to "factory"
 
 
-When /^Open Print Postage Modal$/ do
+When /^Footer: Open Print Postage Modal$/ do
   log.info "Step: Open Print Modal"
   @print_window = postage.print
 end
 
 
-Then /^Select Postage Printer \"(.*)\"$/ do |printer|
+Then /^Print Modal: Select Postage Printer \"(.*)\"$/ do |printer|
   log.info "Step: Select Printer #{printer}"
   postage.postage.printer.select printer
 end
 
 
-When /^Footer - Print Postage$/ do
+When /^Footer: Print Postage$/ do
   log.info "Step: Print"
   print_postage_modal = postage.footer.print
   @printer = print_postage_modal.printer.text_box.text
@@ -23,12 +23,12 @@ When /^Footer - Print Postage$/ do
   @printing_error = print_postage_modal.print
 end
 
-Then /^Close Print Postage Modal$/ do
+Then /^Print Modal: Close$/ do
   log.info "Step: Close Print Modal"
   postage.postage.close
 end
 
-Then /^Print Postage  expecting error (.*)$/ do |error_message|
+Then /^Footer: Print Postage  expecting error (.*)$/ do |error_message|
   log.info "Step: Print expecting error #{error_message}"
   print_postage_error = postage.print_expecting_error
   actual_error_message = print_postage_error.error_message
