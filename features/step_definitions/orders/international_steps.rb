@@ -245,12 +245,12 @@ end
 
 Then /^Customs Form: Set I agree to Checked$/ do
   log.info "Step: Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
-  @order_details.customs_form.i_agree true
+  @order_details.customs_form.i_agree.check
 end
 
 Then /^Customs Form: Set I agree to Unchecked$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
-  @order_details.customs_form.i_agree false
+  @order_details.customs_form.i_agree.uncheck
 end
 
 Then /^Sleep (\d+)$/ do |seconds|

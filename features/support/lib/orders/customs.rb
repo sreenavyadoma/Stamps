@@ -469,23 +469,13 @@ module Orders
       test_helper.remove_dollar_sign (Label.new (@browser.divs :css => "div[class*=x-form-display-field-default]").last).text
     end
 
-    def i_agree user_agreed
-
+    def i_agree
       checkbox_fields = @browser.inputs :css => "input[id^=checkbox-]"
       checkbox_field = checkbox_fields.last
-
       verify_fields = @browser.inputs :css => "div[id^=checkbox][class*=x-form-type-checkbox]"
       verify_field = verify_fields.last
-      checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
 
-      if user_agreed
-        checkbox.check
-        log.info checkbox.checked?
-      else
-        checkbox.uncheck
-        log.info checkbox.checked?
-      end
-
+      Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
     end
 
     def privacy_act_statement_link
