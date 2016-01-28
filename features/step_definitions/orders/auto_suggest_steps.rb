@@ -16,15 +16,19 @@ Then /^Order Details: Expect Auto Suggest Entry for Firstname (.*), Lastname (.*
   @found_item = false
   selection = "#{firstname} #{lastname}, #{company}"
   @auto_suggest.name_fields.each do |field|
-    if field.text.eql? selection
-      @found_item = true
-      field_wrapper = Label.new field
-      field_wrapper.safe_click
-      field_wrapper.safe_click
-    end
+    @found_item = true  if field.text.eql? selection
   end
   log.info "Test #{(@found_item)?"passed":"failed"}"
   @found_item.should be true
+end
+
+Then /^Order Details: Expect Ship-To Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
+  name = "#{firstname} #{lastname}"
+  ship_to = orders.details.ship_to.address.text_box.text
+  log.info "Test #{(ship_to.include? company)?"Passed":"Failed"} - #{name}"
+  ship_to.should include name
+  log.info "Test #{(ship_to.include? company)?"Passed":"Failed"} - #{company}"
+  ship_to.should include company
 end
 
 Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|
