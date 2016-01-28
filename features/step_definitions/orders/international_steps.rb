@@ -278,80 +278,80 @@ Then /^Cancel Customs Form$/ do
   @customs_form.cancel
 end
 
-Then /^Expect International Ship-To name field displays (.*)/ do |value|
-  log.info "Step: Expect International Ship-To name field displays #{value}"
+Then /^Order Details: Expect International Ship-To name to be (.*)/ do |value|
+  log.info "Step: Order Details: Expect International Ship-To name to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.name.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
 end
 
-Then /^Expect International Ship-To company field displays (.*)/ do |value|
-  log.info "Step: Expect International Ship-To company field displays #{value}"
+Then /^Order Details: Expect International Ship-To company to be (.*)/ do |value|
+  log.info "Step: Order Details: Expect International Ship-To company to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.company.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
 end
 
-Then /^Expect International Ship-To Address 1 field displays (.*)/ do |value|
-  log.info "Step: Expect International Ship-To Address 1 field displays #{value}"
+Then /^Order Details: Expect International Ship-To Address 1 to be (.*)/ do |value|
+  log.info "Step: Order Details: Expect International Ship-To Address 1 to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.address_1.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
 end
 
-Then /^Expect International Ship-To Address 2 field displays (.*)/ do |value|
-  log.info "Step: Expect International Ship-To address 2 field displays #{value}"
+Then /^Order Details: Expect International Ship-To Address 2 to be (.*)/ do |value|
+  log.info "Step: Order Details: Expect International Ship-To address 2 to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.address_2.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
 end
 
-Then /^Expect International Ship-To Province field displays (.*)/ do |value|
-  log.info "Step: Expect International Ship-To province field displays #{value}"
+Then /^Order Details: Expect International Ship-To Province to be (.*)/ do |value|
+  log.info "Step: Order Details: Expect International Ship-To province to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.province.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
 end
 
-Then /^Expect International Ship-To Postal Code field displays (.*)/ do |value|
-  log.info "Step: Expect International Ship-To postal code field displays #{value}"
+Then /^Order Details: Expect International Ship-To Postal Code to be (.*)/ do |value|
+  log.info "Step: Order Details: Expect International Ship-To postal code to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.postal_code.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
 end
 
-Then /^Expect International Ship-To Phone field displays (.*)/ do |value|
-  log.info "Step: Expect International Ship-To phone field displays #{value}"
+Then /^Order Details: Expect International Ship-To Phone to be (.*)/ do |value|
+  log.info "Step: Order Details: Expect International Ship-To phone to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.phone.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
 end
 
-Then /^Expect International Ship-To Email field displays (.*)/ do |value|
-  log.info "Step: Expect International Ship-To Email field displays #{value}"
+Then /^Order Details: Expect International Ship-To Email to be (.*)/ do |value|
+  log.info "Step: Order Details: Expect International Ship-To Email to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.email.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
 end
 
-Then /^Expect International Ship-To Country field displays (.*)/ do |value|
-  log.info "Step: Expect International Ship-To Country field displays #{value}"
+Then /^Order Details: Expect International Ship-To Country to be (.*)/ do |value|
+  log.info "Step: Order Details: Expect International Ship-To Country to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.country.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"
   actual.should eql value
 end
 
-Then /^Expect International Ship-To City field displays (.*)/ do |value|
-  log.info "Step: Expect International Ship-To City field displays #{value}"
+Then /^Order Details: Expect International Ship-To City to be (.*)/ do |value|
+  log.info "Step: Order Details: Expect International Ship-To City to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual = @international_ship_to.city.text
   log.info "Test #{(actual == value)?"Passed":"Failed"}"

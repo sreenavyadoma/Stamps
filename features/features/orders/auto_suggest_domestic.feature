@@ -1,11 +1,11 @@
 
-Feature: As a batch shipper, I want to be able to use auto suggest to fill out address forms [B-01607]
+Feature: Domestic Address
 
   Background:
     Given I am signed in to Orders
 
-  @auto_suggest_dev
-  Scenario: Select Domestic Address
+  @auto_suggest
+  Scenario: Auto Suggest for Domestic Addresses
 
     Then Add New Order
 

@@ -2301,14 +2301,6 @@ module Orders
         ounces_qtip_error.include?(message)
       end
 
-      def click_auto_suggest_name index
-        browser_helper.click auto_suggest_name_array[index.to_i-1]
-      end
-
-      def get_auto_suggest_location index
-        auto_suggest_location_array[index.to_i-1].text
-      end
-
       def order_id
         order_id_label = Label.new @browser.bs(:css => "label>b").first
         5.times{

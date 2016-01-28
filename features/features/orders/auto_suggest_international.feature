@@ -5,7 +5,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
     Given I am signed in to Orders
 
 
-  @auto_suggest
+  @auto_suggest_dev
   Scenario: Select International Address
 
     Then Add New Order
@@ -21,11 +21,10 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Select entry 1 in the auto suggest drop down list
 
-    Then Expect International Ship-To Country field displays Republic Of The Congo
-    Then Expect International Ship-To Address 1 field displays 99021 Match Ln
-    Then Expect International Ship-To City field displays Juniper
-    Then Expect International Ship-To Postal Code field displays OI992
-
+    Then Order Details: Expect International Ship-To Country to be Republic Of The Congo
+    Then Order Details: Expect International Ship-To Address 1 to be 99021 Match Ln
+    Then Order Details: Expect International Ship-To City to be Juniper
+    Then Order Details: Expect International Ship-To Postal Code to be OI992
 
     #Matching last name
 
@@ -36,13 +35,13 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Select entry 2 in the auto suggest drop down list
 
-    Then Expect International Ship-To Country field displays Great Britain
-    And Expect International Ship-To Address 1 field displays 12133 Monarchy Rd
-    Then Expect International Ship-To City field displays London
-    Then Expect International Ship-To Province field displays Test
-    And Expect International Ship-To Postal Code field displays 121SSD
-    Then Expect International Ship-To Phone field displays 8885551212
-    And Expect International Ship-To Email field displays england@stamps.com
+    Then Order Details: Expect International Ship-To Country to be Great Britain
+    Then Order Details: Expect International Ship-To Address 1 to be 12133 Monarchy Rd
+    Then Order Details: Expect International Ship-To City to be London
+    Then Order Details: Expect International Ship-To Province to be Test
+    Then Order Details: Expect International Ship-To Postal Code to be 121SSD
+    Then Order Details: Expect International Ship-To Phone to be 8885551212
+    Then Order Details: Expect International Ship-To Email to be england@stamps.com
 
     #Matching City
 
@@ -53,10 +52,10 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Select entry 1 in the auto suggest drop down list
 
-    Then Expect International Ship-To Country field displays Republic Of The Congo
-    Then Expect International Ship-To Address 1 field displays 99021 Match Ln
-    Then Expect International Ship-To City field displays Juniper
-    Then Expect International Ship-To Postal Code field displays OI992
+    Then Order Details: Expect International Ship-To Country to be Republic Of The Congo
+    Then Order Details: Expect International Ship-To Address 1 to be 99021 Match Ln
+    Then Order Details: Expect International Ship-To City to be Juniper
+    Then Order Details: Expect International Ship-To Postal Code to be OI992
 
     #Matching Company
 
@@ -67,13 +66,13 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Select entry 2 in the auto suggest drop down list
 
-    Then Expect International Ship-To Country field displays Great Britain
-    And Expect International Ship-To Address 1 field displays 12133 Monarchy Rd
-    Then Expect International Ship-To City field displays London
-    Then Expect International Ship-To Province field displays Test
-    And Expect International Ship-To Postal Code field displays 121SSD
-    Then Expect International Ship-To Phone field displays 8885551212
-    And Expect International Ship-To Email field displays england@stamps.com
+    Then Order Details: Expect International Ship-To Country to be Great Britain
+    Then Order Details: Expect International Ship-To Address 1 to be 12133 Monarchy Rd
+    Then Order Details: Expect International Ship-To City to be London
+    Then Order Details: Expect International Ship-To Province to be Test
+    Then Order Details: Expect International Ship-To Postal Code to be 121SSD
+    Then Order Details: Expect International Ship-To Phone to be 8885551212
+    Then Order Details: Expect International Ship-To Email to be england@stamps.com
 
     #Matching address1
 
@@ -84,12 +83,12 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Select entry 3 in the auto suggest drop down list
 
-    Then Expect International Ship-To Country field displays Canada
-    And Expect International Ship-To Address 1 field displays 9902 Maple Rd
-    Then Expect International Ship-To Address 2 field displays Ste 221
-    Then Expect International Ship-To City field displays Toronto
-    Then Expect International Ship-To Province field displays ON
-    Then Expect International Ship-To Postal Code field displays M4B 1B3
+    Then Order Details: Expect International Ship-To Country to be Canada
+    Then Order Details: Expect International Ship-To Address 1 to be 9902 Maple Rd
+    Then Order Details: Expect International Ship-To Address 2 to be Ste 221
+    Then Order Details: Expect International Ship-To City to be Toronto
+    Then Order Details: Expect International Ship-To Province to be ON
+    Then Order Details: Expect International Ship-To Postal Code to be M4B 1B3
 
     #Matching address2
 
@@ -100,12 +99,12 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Select entry 1 in the auto suggest drop down list
 
-    Then Expect International Ship-To Country field displays Canada
-    And Expect International Ship-To Address 1 field displays 9902 Maple Rd
-    Then Expect International Ship-To Address 2 field displays Ste 221
-    Then Expect International Ship-To City field displays Toronto
-    Then Expect International Ship-To Province field displays ON
-    Then Expect International Ship-To Postal Code field displays M4B 1B3
+    Then Order Details: Expect International Ship-To Country to be Canada
+    Then Order Details: Expect International Ship-To Address 1 to be 9902 Maple Rd
+    Then Order Details: Expect International Ship-To Address 2 to be Ste 221
+    Then Order Details: Expect International Ship-To City to be Toronto
+    Then Order Details: Expect International Ship-To Province to be ON
+    Then Order Details: Expect International Ship-To Postal Code to be M4B 1B3
 
     #Matching country
 
@@ -116,13 +115,13 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Select entry 1 in the auto suggest drop down list
 
-    Then Expect International Ship-To Country field displays Great Britain
-    And Expect International Ship-To Address 1 field displays 12133 Monarchy Rd
-    Then Expect International Ship-To City field displays London
-    Then Expect International Ship-To Province field displays Test
-    And Expect International Ship-To Postal Code field displays 121SSD
-    Then Expect International Ship-To Phone field displays 8885551212
-    And Expect International Ship-To Email field displays england@stamps.com
+    Then Order Details: Expect International Ship-To Country to be Great Britain
+    Then Order Details: Expect International Ship-To Address 1 to be 12133 Monarchy Rd
+    Then Order Details: Expect International Ship-To City to be London
+    Then Order Details: Expect International Ship-To Province to be Test
+    Then Order Details: Expect International Ship-To Postal Code to be 121SSD
+    Then Order Details: Expect International Ship-To Phone to be 8885551212
+    Then Order Details: Expect International Ship-To Email to be england@stamps.com
 
     Then Sign out
 
