@@ -1,11 +1,35 @@
 # encoding: utf-8
 
-Then /^Set Stamps Serial Number to (.*)/ do |serial|
+Then /^Stamps: Set Serial Number to (.*)/ do |serial|
   log.info "Set Stamps Serial Number to #{serial}"
   @postage_form = postage.stamps if @postage_form.nil?
   @postage_form.serial.set serial
 end
 
+Then /^Stamps: Set Ship-From to (.*)/ do |value|
+  log.info "Step: Set Print Postage Ship-From to: \n #{value}"
+  @postage_form.ship_from.select value
+end
+
+Then /^Stamps: Set Ship-To country to (.*)/ do |country|
+  log.info "Step: Set Print Postage Country to: \n #{country}"
+  @postage_form.country.select country
+end
+
+Then /^Stamps: Set Ounces to / do |ounces|
+  log.info "Step: Envelopes: Set Print Postage Ounces to: \n #{ounces}"
+  @postage_form.weight.ounces.set ounces
+end
+
+Then /^Stamps: Set Pounds to / do |pounds|
+  log.info "Step: Envelopes: Set Print Postage Pounds to: \n #{pounds}"
+  @postage_form.weight.pounds.set pounds
+end
+
+Then /^Stamps: Set Service to \"(.*)\"/ do |service|
+  log.info "Step: Envelopes: Set Print Postage Service to: \n #{service}"
+  @postage_form.service.select service
+end
 
 Then /^This works$/ do
   postage.print_on "Shipping Label - 8 ½” x 11” Paper"
