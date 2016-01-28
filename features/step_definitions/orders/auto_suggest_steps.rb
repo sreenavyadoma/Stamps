@@ -1,6 +1,30 @@
-Then /^Order Details: Set Ship-To address for auto-suggest (.*)$/ do |address|
+Then /^Order Details: Set Ship-To auto-suggest address for partial name (.*)$/ do |partial_name|
+  @auto_suggest_partial_name = partial_name
+  log.info "Order Details: Set Ship-To auto-suggest address for partial name #{@auto_suggest_partial_name}"
+  @auto_suggest = orders.details.ship_to.auto_suggest.set @auto_suggest_partial_name
+end
 
-  orders.details.ship_to.auto_suggest.set address
+Then /^Order Details: Select Ship-To auto-suggest item (\d+)$/ do |item_number|
+  log.info "Order Details: Select Ship-To auto-suggest item #{item_number}"
+  step "Order Details: Set Ship-To auto-suggest address for partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
+
+  @auto_suggest.select item_number
+end
+
+Then /^Order Details: Expect Auto Suggest Entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
+  step "Order Details: Set Ship-To auto-suggest address for partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
+  @found_item = false
+  selection = "#{firstname} #{lastname}, #{company}"
+  @auto_suggest.name_fields.each do |field|
+    if field.text.eql? selection
+      @found_item = true
+      field_wrapper = Label.new field
+      field_wrapper.safe_click
+      field_wrapper.safe_click
+    end
+  end
+  log.info "Test #{(@found_item)?"passed":"failed"}"
+  @found_item.should be true
 end
 
 Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|

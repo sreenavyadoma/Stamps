@@ -4,14 +4,15 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
   Background:
     Given I am signed in to Orders
 
-  @auto_suggest
+  @auto_suggest_dev
   Scenario: Select Domestic Address
 
     Then Add New Order
 
     #Matching first name
-
-    Then Order Details: Set Ship-To address for auto-suggest San
+    Then Order Details: Set Ship-To auto-suggest address for partial name Thousand
+    Then Order Details: Expect Auto Suggest Entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
+    Then Order Details: Select Ship-To auto-suggest item 1
 
     Then Expect Auto Suggest name shows Sandy Jones for entry 2
     And Expect Auto Suggest location shows El Segundo, CA, United States for entry 2

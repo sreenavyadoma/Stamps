@@ -1066,7 +1066,50 @@ module Orders
     end
 
     class SuggestShipTo < ShipToFields
+      class AutoSuggest < OrdersObject
 
+        def present?
+          browser_helper.present? name_fields[0]
+        end
+
+        def size
+          (@browser.lis :css => "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]").size
+        end
+
+        def select number
+          selection = Label.new name_fields[number.to_i-1]
+          selection.safe_click
+          selection.safe_click
+          selection.safe_click
+        end
+
+        def name_fields
+          (@browser.lis :css => "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]")
+        end
+
+        def address_fields
+          (@browser.lis :css => "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=sub]")
+        end
+      end
+
+      def set address
+        text_area = self.text_area
+        auto_suggest_box = AutoSuggest.new @browser
+
+        20.times{
+          begin
+            text_area.set address
+            return auto_suggest_box if auto_suggest_box.present?
+            text_area.safe_click
+            sleep 1
+            return auto_suggest_box if auto_suggest_box.present?
+            ship_to_area1.safe_double_click
+            return auto_suggest_box if auto_suggest_box.present?
+          rescue
+            #ignore
+          end
+        }
+      end
     end
 
     class ShipTo < ShipToFields
