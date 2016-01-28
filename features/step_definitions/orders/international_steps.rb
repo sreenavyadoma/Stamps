@@ -3,8 +3,8 @@ Then /^Order Details: Set Ship-To Country to (.*)$/ do |country|
   @international_ship_to = orders.details.ship_to.country.select country
 end
 
-Then /^Set International Ship-To Name to \"(.*)\"$/ do |value|
-  log.info "Step: Set International Ship-To Name to #{value}"
+Then /^Order Details: Set International Ship-To Name to \"(.*)\"$/ do |value|
+  log.info "Step: Order Details: Set International Ship-To Name to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.name.send_keys :enter
@@ -14,8 +14,8 @@ Then /^Set International Ship-To Name to \"(.*)\"$/ do |value|
 end
 
 
-Then /^Set International Ship-To Company to \"(.*)\"$/ do |value|
-  log.info "Step: Set International Ship-To Company to #{value}"
+Then /^Order Details: Set International Ship-To Company to \"(.*)\"$/ do |value|
+  log.info "Step: Order Details: Set International Ship-To Company to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.company.send_keys :enter
@@ -25,8 +25,8 @@ Then /^Set International Ship-To Company to \"(.*)\"$/ do |value|
 end
 
 
-Then /^Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
-  log.info "Step: Set International Ship-To Address 1 to #{value}"
+Then /^Order Details: Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
+  log.info "Step: Order Details: Set International Ship-To Address 1 to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.address_1.send_keys :enter
@@ -36,8 +36,8 @@ Then /^Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
 end
 
 
-Then /^Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
-  log.info "Step: Set International Ship-To Address 2 to #{value}"
+Then /^Order Details: Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
+  log.info "Step: Order Details: Set International Ship-To Address 2 to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.address_2.send_keys :enter
@@ -47,8 +47,8 @@ Then /^Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
 end
 
 
-Then /^Set International Ship-To City to \"(.*)\"$/ do |value|
-  log.info "Step: Set International Ship-To City to #{value}"
+Then /^Order Details: Set International Ship-To City to \"(.*)\"$/ do |value|
+  log.info "Step: Order Details: Set International Ship-To City to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.city.send_keys :enter
@@ -58,8 +58,8 @@ Then /^Set International Ship-To City to \"(.*)\"$/ do |value|
 end
 
 
-Then /^Set International Ship-To Province to \"(.*)\"$/ do |value|
-  log.info "Step: Set International Ship-To Province to #{value}"
+Then /^Order Details: Set International Ship-To Province to \"(.*)\"$/ do |value|
+  log.info "Step: Order Details: Set International Ship-To Province to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.province.send_keys :enter
@@ -68,8 +68,8 @@ Then /^Set International Ship-To Province to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
-  log.info "Step: Set International Ship-To Postal Code to #{value}"
+Then /^Order Details: Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
+  log.info "Step: Order Details: Set International Ship-To Postal Code to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.postal_code.send_keys :enter
@@ -79,8 +79,8 @@ Then /^Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
 end
 
 
-Then /^Set International Ship-To Phone to \"(.*)\"$/ do |value|
-  log.info "Step: Set International Ship-To Phone to #{value}"
+Then /^Order Details: Set International Ship-To Phone to \"(.*)\"$/ do |value|
+  log.info "Step: Order Details: Set International Ship-To Phone to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.phone.send_keys :enter
@@ -90,8 +90,8 @@ Then /^Set International Ship-To Phone to \"(.*)\"$/ do |value|
 end
 
 
-Then /^Set International Ship-To Email to \"(.*)\"$/ do |value|
-  log.info "Step: Set International Ship-To Email to #{value}"
+Then /^Order Details: Set International Ship-To Email to \"(.*)\"$/ do |value|
+  log.info "Step: Order Details: Set International Ship-To Email to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.email.send_keys :enter
@@ -100,8 +100,8 @@ Then /^Set International Ship-To Email to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Expect Order Details Ship-To Country is (.*)$/ do |country|
-  log.info "Step: Expect Order Details Ship-To Country is #{country}"
+Then /^Order Details: Expect Ship-To Country is (.*)$/ do |country|
+  log.info "Step: Order Details: Expect Ship-To Country is #{country}"
   order_details_country = orders.details.ship_to.country.text_box.text
   log.info "Test #{(order_details_country.include? country)?"Passed":"Failed"}"
   order_details_country.should eql country
@@ -136,15 +136,15 @@ Then /^Order Details: Set Ship-To International Adress;$/ do |table|
   log.info "International Ship-To Email: #{email}"
 
   step "Order Details: Set Ship-To Country to #{country}"
-  step "Set International Ship-To Name to \"#{name}\""
-  step "Set International Ship-To Company to \"#{company}\""
-  step "Set International Ship-To Address 1 to \"#{street_address_1}\""
-  step "Set International Ship-To Address 2 to \"#{street_address_2}\""
-  step "Set International Ship-To City to \"#{city}\""
-  step "Set International Ship-To Province to \"#{province}\""
-  step "Set International Ship-To Postal Code to \"#{postal_code}\""
-  step "Set International Ship-To Phone to \"#{phone}\""
-  step "Set International Ship-To Email to \"#{email}\""
+  step "Order Details: Set International Ship-To Name to \"#{name}\""
+  step "Order Details: Set International Ship-To Company to \"#{company}\""
+  step "Order Details: Set International Ship-To Address 1 to \"#{street_address_1}\""
+  step "Order Details: Set International Ship-To Address 2 to \"#{street_address_2}\""
+  step "Order Details: Set International Ship-To City to \"#{city}\""
+  step "Order Details: Set International Ship-To Province to \"#{province}\""
+  step "Order Details: Set International Ship-To Postal Code to \"#{postal_code}\""
+  step "Order Details: Set International Ship-To Phone to \"#{phone}\""
+  step "Order Details: Set International Ship-To Email to \"#{email}\""
 end
 
 Then /^Open Customs Form$/ do
@@ -358,8 +358,8 @@ Then /^Order Details: Expect International Ship-To City to be (.*)/ do |value|
   actual.should eql value
 end
 
-Then /^Expect Order Details International Address fields are visible$/ do
-  log.info "Step: Expect Order Details International Address fields are visible"
+Then /^Order Details: Expect International Address fields are visible$/ do
+  log.info "Step: Order Details: Expect International Address fields are visible"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true
@@ -372,45 +372,45 @@ Then /^Expect Order Details International Address fields are visible$/ do
   @international_ship_to.email.present?.should be true
 end
 
-Then /^Expect Order Details Domestic Ship-To fields are hidden$/ do
-  log.info "Step: Expect Order Details Domestic Ship-To fields are hidden"
+Then /^Order Details: Expect Domestic Ship-To fields are hidden$/ do
+  log.info "Step: Order Details: Expect Domestic Ship-To fields are hidden"
   order_details = orders.details
   order_details.ship_to.address.text_area.present?.should be false
 end
 
-Then /^Expect Order Details Customs Restrictions button is visible/ do
-  log.info "Step: Expect Order Details Customs Restrictions button is visible"
+Then /^Order Details: Expect Customs Restrictions button is visible/ do
+  log.info "Step: Order Details: Expect Customs Restrictions button is visible"
   order_details = orders.details
   order_details.customs.browser_restrictions_button.present?.should be true
   order_details.customs.restrictions.ok
 end
 
-Then /^Expect Order Details Customs Restrictions button is hidden/ do
-  log.info "Step: Expect Order Details Customs Restrictions button is hidden"
+Then /^Order Details: Expect Customs Restrictions button is hidden/ do
+  log.info "Step: Order Details: Expect Customs Restrictions button is hidden"
   order_details = orders.details
   order_details.customs.browser_restrictions_button.present?.should be false
 end
 
-Then /^Expect Order Details Customs Edit Form button is visible/ do
-  log.info "Step: Expect Order Details Customs Edit Form button is visible"
+Then /^Order Details: Expect Customs Edit Form button is visible/ do
+  log.info "Step: Order Details: Expect Customs Edit Form button is visible"
   order_details = orders.details
   order_details.customs.browser_edit_form_button.present?.should be true
 end
 
-Then /^Expect Order Details Customs Edit Form button is hidden/ do
-  log.info "Step: Expect Order Details Customs Edit Form button is hidden"
+Then /^Order Details: Expect Customs Edit Form button is hidden/ do
+  log.info "Step: Order Details: Expect Customs Edit Form button is hidden"
   order_details = orders.details
   order_details.customs.browser_edit_form_button.present?.should be false
 end
 
-Then /^Expect Order Details Customs Edit Form button is enabled/ do
-  log.info "Step: Expect Order Details Customs Edit Form button is enabled"
+Then /^Order Details: Expect Customs Edit Form button is enabled/ do
+  log.info "Step: Order Details: Expect Customs Edit Form button is enabled"
   order_details = orders.details
   order_details.customs.browser_edit_form_button.present?.should be true
 end
 
-Then /^Expect Order Details Customs Edit Form button is disabled/ do
-  log.info "Step: Expect Order Details Customs Edit Form button is disabled"
+Then /^Order Details: Expect Customs Edit Form button is disabled/ do
+  log.info "Step: Order Details: Expect Customs Edit Form button is disabled"
   order_details = orders.details
   order_details.customs.browser_edit_form_button.present?.should be false
 end

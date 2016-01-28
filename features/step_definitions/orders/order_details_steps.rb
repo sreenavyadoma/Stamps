@@ -298,7 +298,7 @@ Then /^Expect Order details Service \"(.*)\" to be enabled/ do |service|
   selection_enabled.should be true
 end
 #todo-rob
-Then /^Expect Order Details Tracking tooltip for (.*) to be (.*)$/ do |lov, expectation|
+Then /^Order Details: Expect Tracking tooltip for (.*) to be (.*)$/ do |lov, expectation|
   actual_tooltip = orders.details.tracking.tooltip value
   #log.info actual_tooltip
   cost = orders.details.tracking.cost value
@@ -375,8 +375,8 @@ Then /^Expect Ounces tooltip to display - The maximum value for this field is ([
   actual.should eql expected
 end
 
-Then /^Expect Order Details Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
-  log.info "Step: Expect Order Details Service Cost inline price for #{service} to be greater than #{expected}"
+Then /^Order Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
+  log.info "Step: Order Details: Expect Service Cost inline price for #{service} to be greater than #{expected}"
   actual = orders.details.service.cost service
   10.times { |counter|
     #log_expectation_eql "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
@@ -387,8 +387,8 @@ Then /^Expect Order Details Service Cost inline price for "([a-zA-Z -\/]+)" to b
   actual.to_f.should be >= expected.to_f
 end
 
-Then /^Expect Order Details Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
-  log.info "Step: Expect Order Details Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
+Then /^Order Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
+  log.info "Step: Order Details: Expect Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
   tooltips = tooltip_content.split "||"
   actual_tooltip = orders.details.service.tooltip service
   tooltips.each { |tooltip|
@@ -422,8 +422,8 @@ Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
   actual.should eql expected
 end
 
-Then /^Expect Order Details Service to be \"(.*)\"$/ do |expected|
-  log.info "Step: Expect Order Details Service to be #{expected}"
+Then /^Order Details: Expect Service to be \"(.*)\"$/ do |expected|
+  log.info "Step: Order Details: Expect Service to be #{expected}"
   begin
     10.times do
       actual = orders.details.service.text_box.text
@@ -435,8 +435,8 @@ Then /^Expect Order Details Service to be \"(.*)\"$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Order Details Tracking to be \"([\w\s]*)\"$/ do |expected|
-  log.info "Step: Expect Order Details Tracking to be #{expected}"
+Then /^Order Details: Expect Tracking to be \"([\w\s]*)\"$/ do |expected|
+  log.info "Step: Order Details: Expect Tracking to be #{expected}"
   begin
     10.times do
       actual = orders.details.tracking.text_box.text
@@ -448,8 +448,8 @@ Then /^Expect Order Details Tracking to be \"([\w\s]*)\"$/ do |expected|
   end unless expected.length == 0
 end
 
-Then /^Expect Order Details Total to be \$(.*)$/ do |expected|
-  log.info "Step: Expect Order Details Total to be $#{expected}"
+Then /^Order Details: Expect Total to be \$(.*)$/ do |expected|
+  log.info "Step: Order Details: Expect Total to be $#{expected}"
   begin
     10.times do
       orders.details.click_form

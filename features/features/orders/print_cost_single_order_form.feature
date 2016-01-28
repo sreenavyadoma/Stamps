@@ -11,7 +11,7 @@ Feature: Printing total cost
     Then Expect Service Cost to be $0.00
     Then Expect Insurance Cost to be $0.00
     Then Expect Tracking Cost to be $0.00
-    Then Expect Order Details Total to be $0.00
+    Then Order Details: Expect Total to be $0.00
 
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Hide Ship-To fields

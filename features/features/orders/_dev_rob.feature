@@ -73,8 +73,8 @@ Feature: Test Development
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Toolbar: Print
     Then Filter Panel - Shipped
-    Then Expect Grid Tracking Number is populated
-    Then Expect Order Status to be "Shipped"
+    Then Orders Grid: Expect Tracking Number is populated
+    Then Orders Grid: Expect Order Status to be "Shipped"
 
     Then Add New Order
     Then Order Details: Set Ship-From to default
@@ -84,8 +84,8 @@ Feature: Test Development
     Then Order Details: Set Tracking to "Signature Required"
     Then Toolbar: Print
     Then Filter Panel - Shipped
-    Then Expect Grid Tracking Number is populated
-    Then Expect Order Status to be "Shipped"
+    Then Orders Grid: Expect Tracking Number is populated
+    Then Orders Grid: Expect Order Status to be "Shipped"
 
     Then Sign out
 
@@ -98,8 +98,8 @@ Feature: Test Development
     Then Order Details: Set Ounces to 5
     Then Order Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Toolbar: Print
-    Then Expect Grid Ship Date for this order to be today
-    Then Expect Grid Date Printed for this order to be today
+    Then Orders Grid: Expect Ship Date for this order to be today
+    Then Orders Grid: Expect Date Printed for this order to be today
 
     Then Add New Order
     Then Order Details: Set Ship-From to default
@@ -108,8 +108,8 @@ Feature: Test Development
     Then Open Print Modal
     Then Print Modal: Set Ship Date to today plus 1
     Then Toolbar: Print
-    Then Expect Grid Date Printed for this order to be today
-    Then Expect Grid Ship Date for this order to be today plus 1
+    Then Orders Grid: Expect Date Printed for this order to be today
+    Then Orders Grid: Expect Ship Date for this order to be today plus 1
 
     Then Add New Order
     Then Order Details: Set Ship-From to default
@@ -119,8 +119,8 @@ Feature: Test Development
     Then Open Print Modal
     Then Print Modal: Set Ship Date to today plus 2
     Then Toolbar: Print
-    Then Expect Grid Date Printed for this order to be today
-    Then Expect Grid Ship Date for this order to be today plus 2
+    Then Orders Grid: Expect Date Printed for this order to be today
+    Then Orders Grid: Expect Ship Date for this order to be today plus 2
 
     Then Add New Order
     Then Order Details: Set Ship-From to default
@@ -130,8 +130,8 @@ Feature: Test Development
     Then Open Print Modal
     Then Print Modal: Set Ship Date to today plus 3
     Then Toolbar: Print
-    Then Expect Grid Date Printed for this order to be today
-    Then Expect Grid Ship Date for this order to be today plus 3
+    Then Orders Grid: Expect Date Printed for this order to be today
+    Then Orders Grid: Expect Ship Date for this order to be today plus 3
   Scenario:
 
     Then Add New Order

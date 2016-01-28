@@ -10,12 +10,12 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     Then Add New Order
 
-    Then Order Details: Set Ship-To Country to Cuba
+    Then Order Details: Set Ship-To Country to Italy
 
     #Matching first name
+    Then Order Details: Set International Ship-To Name to "Flor"
 
-    Then Set International Ship-To Name to "Jac"
-
+    Then Pause for 2 seconds
     Then Expect Auto Suggest name shows Jackie Frank for entry 1
     And Expect Auto Suggest location shows Juniper, Republic Of The Congo for entry 1
 
@@ -28,7 +28,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching last name
 
-    Then Set International Ship-To Name to "Fra"
+    Then Order Details: Set International Ship-To Name to "Fra"
 
     Then Expect Auto Suggest name shows Henry Franklin, Test Company for entry 2
     And Expect Auto Suggest location shows London, Test, Great Britain for entry 2
@@ -45,7 +45,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching City
 
-    Then Set International Ship-To Name to "Jun"
+    Then Order Details: Set International Ship-To Name to "Jun"
 
     Then Expect Auto Suggest name shows Jackie Frank for entry 1
     And Expect Auto Suggest location shows Juniper, Republic Of The Congo for entry 1
@@ -59,7 +59,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching Company
 
-    Then Set International Ship-To Name to "Tes"
+    Then Order Details: Set International Ship-To Name to "Tes"
 
     Then Expect Auto Suggest name shows Henry Franklin, Test Company for entry 2
     And Expect Auto Suggest location shows London, Test, Great Britain for entry 2
@@ -76,7 +76,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching address1
 
-    Then Set International Ship-To Name to "990"
+    Then Order Details: Set International Ship-To Name to "990"
 
     Then Expect Auto Suggest name shows Jacque Snow for entry 3
     And Expect Auto Suggest location shows Toronto, ON, Canada for entry 3
@@ -92,7 +92,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching address2
 
-    Then Set International Ship-To Name to "221"
+    Then Order Details: Set International Ship-To Name to "221"
 
     Then Expect Auto Suggest name shows Jacque Snow for entry 1
     And Expect Auto Suggest location shows Toronto, ON, Canada for entry 1
@@ -108,7 +108,7 @@ Feature: As a batch shipper, I want to be able to use auto suggest to fill out a
 
     #Matching country
 
-    Then Set International Ship-To Name to "Gre"
+    Then Order Details: Set International Ship-To Name to "Gre"
 
     Then Expect Auto Suggest name shows Henry Franklin, Test Company for entry 1
     And Expect Auto Suggest location shows London, Test, Great Britain for entry 1

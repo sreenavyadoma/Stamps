@@ -14,8 +14,8 @@ Feature: Date Printed - Today
     Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
     Then Filter Panel - Shipped
-    Then Expect Grid Ship Date for this order to be today
-    Then Expect Grid Date Printed for this order to be today
+    Then Orders Grid: Expect Ship Date for this order to be today
+    Then Orders Grid: Expect Date Printed for this order to be today
     Then Sign out
 
 

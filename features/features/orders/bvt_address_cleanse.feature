@@ -16,11 +16,11 @@ Feature:  BVT Address Cleansing
     Then Order Details: Set Pounds to 1
     Then Order Details: Set Insure For to $200
     Then Pause for 2 seconds
-    Then Expect Grid Recipient to be Euan Davidson
-    Then Expect Grid Company to be Company Name
-    Then Expect Grid Address to be 1350 Market Street
-    Then Expect Grid City to be San Francisco
-    Then Expect Grid State to be CA
-    Then Expect Grid Zip to be 94102
+    Then Orders Grid: Expect Recipient to be Euan Davidson
+    Then Orders Grid: Expect Company to be Company Name
+    Then Orders Grid: Expect Address to be 1350 Market Street
+    Then Orders Grid: Expect City to be San Francisco
+    Then Orders Grid: Expect State to be CA
+    Then Orders Grid: Expect Zip to be 94102
     And Sign out
 

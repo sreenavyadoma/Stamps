@@ -9,10 +9,10 @@ Feature: International Shipping fields and Customs Information fields validation
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To Country to Japan
 
-    Then Expect Order Details International Address fields are visible
-    Then Expect Order Details Domestic Ship-To fields are hidden
-    Then Expect Order Details Customs Restrictions button is visible
-    Then Expect Order Details Customs Edit Form button is visible
+    Then Order Details: Expect International Address fields are visible
+    Then Order Details: Expect Domestic Ship-To fields are hidden
+    Then Order Details: Expect Customs Restrictions button is visible
+    Then Order Details: Expect Customs Edit Form button is visible
 
     Then Order Details: Set Ship-To International Adress;
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |

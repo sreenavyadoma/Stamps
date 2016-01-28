@@ -16,11 +16,11 @@ Feature: Address Cleansing
     Then Order Details: Set Pounds to 1
     Then Order Details: Set Insure For to $200
     Then Pause for 2 seconds
-    Then Expect Grid Zip to be 94102
-    Then Expect Grid Recipient to be Ambiguous Address
-    Then Expect Grid Company to be Address Cleansing
-    Then Expect Grid City to be San Francisco
-    Then Expect Grid State to be CA
+    Then Orders Grid: Expect Zip to be 94102
+    Then Orders Grid: Expect Recipient to be Ambiguous Address
+    Then Orders Grid: Expect Company to be Address Cleansing
+    Then Orders Grid: Expect City to be San Francisco
+    Then Orders Grid: Expect State to be CA
 
     Then Add New Order
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4

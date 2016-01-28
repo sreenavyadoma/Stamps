@@ -8,5 +8,5 @@ Feature: New Order ID Created
   Scenario:  New Order ID Created
     Then Add New Order
     Then Expect new Order ID created
-    Then Expect Order Details Order ID equals Grid order ID
+    Then Order Details: Expect Order ID equals Grid order ID
     And Sign out

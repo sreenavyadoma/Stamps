@@ -22,5 +22,5 @@ Feature:  Store Management - Add Amazon Store
       Then Orders Grid: Sort by Store in Ascending order
       Then Orders Grid: Sort by Store in Ascending order
       Then Pause for 2 seconds
-      Then Expect Grid Store row 1 to be Amazon Store
+      Then Orders Grid: Expect Store row 1 to be Amazon Store
 
