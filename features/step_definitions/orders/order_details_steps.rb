@@ -167,12 +167,12 @@ end
 Then /^Order Details: Set Ship-To to ambiguous address$/ do |table|
   ambiguous_address = OrdersHelper.instance.format_address table.hashes.first
   log.info "Step: Order Details: Set Ship-To to ambiguous address \n#{ambiguous_address}"
-  orders.details.ship_to.ambiguous.set ambiguous_address
+  orders.details.ship_to.address.ambiguous.set ambiguous_address
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
   log.info "Step: Select row #{row} from Exact Address Not Found module"
-  address_not_found_module = orders.details.ship_to.ambiguous.address_not_found
+  address_not_found_module = orders.details.ship_to.address.ambiguous.address_not_found
   log.info "Test #{(address_not_found_module.present?)?"Passed":"Failed"}"
   raise "Ambiguous Address Module is not present.  Unable to set Ambiguous Address Row to #{row}" unless address_not_found_module.present?
   address_not_found_module.row row
@@ -180,7 +180,7 @@ end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
   log.info "Step: Expect \"Exact Address Not Found\" module to appear"
-  address_not_found_module = orders.details.ship_to.ambiguous.address_not_found
+  address_not_found_module = orders.details.ship_to.address.ambiguous.address_not_found
   log.info "Test #{(address_not_found_module.present?)?"Passed":"Failed"}"
   address_not_found_module.present?.should be true
 end

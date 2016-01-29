@@ -10,9 +10,10 @@ Feature: Domestic Address
     Then Add New Order
 
     #Matching first name
-    Then Order Details: Set Ship-To auto-suggest address for partial name Thousand
-    Then Order Details: Expect Auto Suggest Entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
+    Then Order Details: Set Ship-To auto-suggest address to partial name Thousand
+    Then Order Details: Expect auto-uggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
     Then Order Details: Select Ship-To auto-suggest item 1
-    Then Order Details: Expect Ship-To Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
+    Then Order Details: Expect Domestic Ship-To Name to be Firstname Lastname
+    Then Order Details: Expect Domestic Ship-To Company to be CompanyNameZoneOne
 
     Then Sign out

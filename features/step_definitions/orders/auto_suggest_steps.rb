@@ -1,18 +1,24 @@
-Then /^Order Details: Set Ship-To auto-suggest address for partial name (.*)$/ do |partial_name|
+Then /^Order Details: Set Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
   @auto_suggest_partial_name = partial_name
-  log.info "Order Details: Set Ship-To auto-suggest address for partial name #{@auto_suggest_partial_name}"
-  @auto_suggest = orders.details.ship_to.auto_suggest.set @auto_suggest_partial_name
+  log.info "Order Details: Set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}"
+  @auto_suggest = orders.details.ship_to.address.auto_suggest.set @auto_suggest_partial_name
+end
+
+Then /^Order Details: Set International Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
+  @auto_suggest_partial_name = partial_name
+  log.info "Order Details: Set International Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}"
+  @auto_suggest = orders.details.ship_to.international.auto_suggest.set @auto_suggest_partial_name
 end
 
 Then /^Order Details: Select Ship-To auto-suggest item (\d+)$/ do |item_number|
   log.info "Order Details: Select Ship-To auto-suggest item #{item_number}"
-  step "Order Details: Set Ship-To auto-suggest address for partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
+  step "Order Details: Set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
 
   @auto_suggest.select item_number
 end
 
-Then /^Order Details: Expect Auto Suggest Entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
-  step "Order Details: Set Ship-To auto-suggest address for partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
+Then /^Order Details: Expect auto-uggest pop-up entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
+  step "Order Details: Set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
   @found_item = false
   selection = "#{firstname} #{lastname}, #{company}"
   @auto_suggest.name_fields.each do |field|
@@ -22,13 +28,16 @@ Then /^Order Details: Expect Auto Suggest Entry for Firstname (.*), Lastname (.*
   @found_item.should be true
 end
 
-Then /^Order Details: Expect Ship-To Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
-  name = "#{firstname} #{lastname}"
+Then /^Order Details: Expect Domestic Ship-To Company to be (.*)$/ do |company|
   ship_to = orders.details.ship_to.address.text_area.text
-  log.info "Test #{(ship_to.include? company)?"Passed":"Failed"} - #{name}"
-  ship_to.should include name
-  log.info "Test #{(ship_to.include? company)?"Passed":"Failed"} - #{company}"
+  log.info "Test #{(company.include? company)?"Passed":"Failed"} - #{company}"
   ship_to.should include company
+end
+
+Then /^Order Details: Expect Domestic Ship-To Name to be (.*)$/ do |name|
+  ship_to = orders.details.ship_to.address.text_area.text
+  log.info "Test #{(ship_to.include? name)?"Passed":"Failed"} "
+  ship_to.should include name
 end
 
 Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|
