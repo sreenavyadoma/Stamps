@@ -15,7 +15,7 @@ Feature:  Service Selection & Order Grid Values
     Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
     Then Filter Panel - Shipped
-    Then Expect Grid Service to be Parcel Select Ground
+    Then Orders Grid: Expect Service to be Parcel Select Ground
 
     Then Add New Order
     Then Order Details: Set Ship-From to default
@@ -27,7 +27,7 @@ Feature:  Service Selection & Order Grid Values
     Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
     Then Filter Panel - Shipped
-    Then Expect Grid Service to be Parcel Select Ground
+    Then Orders Grid: Expect Service to be Parcel Select Ground
 
     Then Add New Order
     Then Order Details: Set Ship-From to default
@@ -39,7 +39,7 @@ Feature:  Service Selection & Order Grid Values
     Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
     Then Filter Panel - Shipped
-    Then Expect Grid Service to be Parcel Select Ground
+    Then Orders Grid: Expect Service to be Parcel Select Ground
 
     And Sign out
 

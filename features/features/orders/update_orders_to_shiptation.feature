@@ -17,16 +17,16 @@ Feature:  Update Order to ShipStation
     Then Order Details: Set Height to 1
     Then Order Details: Set Insure For to $1.00
     Then Order Details: Set Tracking to "Signature Required"
-    Then Expect Grid Pounds to be 1
-    Then Expect Grid Ounces to be 1
-    Then Expect Grid Weight to be 1 lbs. 1 oz.
-    Then Expect Grid Insured Value to be $1.00
+    Then Orders Grid: Expect Pounds to be 1
+    Then Orders Grid: Expect Ounces to be 1
+    Then Orders Grid: Expect Weight to be 1 lbs. 1 oz.
+    Then Orders Grid: Expect Insured Value to be $1.00
 
     #here's the shipstation part.
     Then UnOrders Grid: Check row 1
     #click awaiting shipment tab a few times.
     Then Orders Grid: Check row 1
     # Verify pounds, ounces height width length from Order Form
-    Then Expect Order Details Service to be "Priority Mail Package"
-    Then Expect Order Details Tracking to be "Signature Required"
+    Then Order Details: Expect Service to be "Priority Mail Package"
+    Then Order Details: Expect Tracking to be "Signature Required"
     And Sign out

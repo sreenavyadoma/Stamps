@@ -15,8 +15,8 @@ Feature: Date Printed - Today + 1
     Then Print Modal: Set Ship Date to today plus 1
     Then Toolbar: Print
     Then Filter Panel - Shipped
-    Then Expect Grid Date Printed for this order to be today
-    Then Expect Grid Ship Date for this order to be today plus 1
+    Then Orders Grid: Expect Date Printed for this order to be today
+    Then Orders Grid: Expect Ship Date for this order to be today plus 1
     Then Sign out
 
 

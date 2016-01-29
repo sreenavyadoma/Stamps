@@ -11,6 +11,6 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | Add a new | random  | random           | random           | random | random  | random      | Australia | random  | random  |
     Then Order Details: Set Ship-To Country to Australia
-    Then Set International Ship-To Name to ""
-    Then Set International Ship-To Name to "random"
+    Then Order Details: Set International Ship-To Name to ""
+    Then Order Details: Set International Ship-To Name to "random"
     And Sign out
