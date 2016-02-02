@@ -10,6 +10,12 @@ module Print
         def text_area
           Textbox.new (@browser.text_field :id => "sdc-mainpanel-shiptotextarea-inputEl")
         end
+
+        def set address
+          text_area.send_keys address
+          text_area.set address
+        end
+
       end
 
       class ShipToInternational < Print::Postage::PrintObject
