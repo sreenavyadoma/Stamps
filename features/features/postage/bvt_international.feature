@@ -8,7 +8,7 @@ Feature: International Shipping BVT
   @wp_bvt
   Scenario: International Shipping
 
-    Then Print Postage - Select Print Postage Print On <media>
+    Then Print Postage: Select Print On <media>
     Then Shipping Label: Set Print Postage Ship-From to <address>
     Then International - Set Print Postage Form Ship-To to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |

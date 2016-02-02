@@ -15,8 +15,8 @@ Feature: Envelopes BVT
       | name          | company       | street_address      | city          | state | zip        | country       |
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    | 92201      | United States |
 
-    Then Envelopes: Set Ounces to 0
-    Then Envelopes: Set Pounds to 1
-    Then Envelopes: Set Service to "service"
+    Then Envelopes: Set Pounds to 0
+    Then Envelopes: Set Ounces to 1
+    Then Envelopes: Set Service to "First-Class Mail Envelope"
     Then Footer: Print Postage
     And Sign out
