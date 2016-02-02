@@ -6,6 +6,10 @@ module Print
         Print::Postage::ShipFrom.new @browser
       end
 
+      def ship_to
+        Print::Postage::ShipTo::ShipToDomestic.new @browser
+      end
+
       def weight
         Print::Postage::Weight.new @browser
       end
