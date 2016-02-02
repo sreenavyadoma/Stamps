@@ -72,7 +72,7 @@ Then /^Envelopes: Set Ship-To to Random Address Between Zone 5 through 8$/ do
 end
 
 Then /^Envelopes: Set Ship-To address to (.*)$/ do |address|
-  log.info "Step: Order Details: Set Ship-To address to \"#{address}\""
+  log.info "Step: Shipping Labels: Set Ship-To address to \"#{address}\""
 
   case address.downcase
     when /zone 1 through 4/
