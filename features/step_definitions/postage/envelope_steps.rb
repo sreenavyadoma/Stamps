@@ -1,30 +1,124 @@
 Then /^Envelopes: Set Ship-From to (.*)/ do |value|
   log.info "Step: Set Print Postage Ship-From to: \n #{value}"
-  @postage_form.ship_from.select value
+  @envelope = postage.envelope if @envelope.nil?
+  @envelope.ship_from.select value
 end
 
 Then /^Envelopes: Set Ship-To country to (.*)/ do |country|
   log.info "Step: Set Print Postage Country to: \n #{country}"
-  @postage_form.country.select country
+  @envelope.ship_to.country.select country
 end
 
-Then /^Envelopes: Set Ounces to / do |ounces|
+Then /^Envelopes: Set Ounces to (.*)/ do |ounces|
   log.info "Step: Envelopes: Set Print Postage Ounces to: \n #{ounces}"
-  @postage_form.weight.ounces.set ounces
+  @envelope.weight.oz.set ounces
 end
 
-Then /^Envelopes: Set Pounds to / do |pounds|
+Then /^Envelopes: Set Pounds to (.*)/ do |pounds|
   log.info "Step: Envelopes: Set Print Postage Pounds to: \n #{pounds}"
-  @postage_form.weight.pounds.set pounds
+  @envelope.weight.lbs.set pounds
 end
 
 Then /^Envelopes: Set Service to \"(.*)\"/ do |service|
   log.info "Step: Envelopes: Set Print Postage Service to: \n #{service}"
-  @postage_form.service.select service
+  @envelope.service.select service
 end
 
 Then /^Envelopes: Set Ship-To address to$/ do |table|
-  ship_to = PrintHelper.instance.address_hash_to_str table.hashes.first
+  ship_to = OrdersHelper.instance.address_hash_to_str table.hashes.first
   log.info "Step: Envelopes: Set Print Postage Form Ship-To address to \n#{ship_to}"
-  step "Set Print Postage Form Ship-To address to #{ship_to}"
+  step "Envelopes: Set Ship-To address to #{ship_to}"
+end
+
+
+Then /^Envelopes: Set Ship-To to Random Address in Zone 1$/ do
+  step "Envelopes: Set Ship-To address to zone 1"
+end
+
+Then /^Envelopes: Set Ship-To to Random Address in Zone 2$/ do
+  step "Envelopes: Set Ship-To address to zone 2"
+end
+
+Then /^Envelopes: Set Ship-To to Random Address in Zone 3$/ do
+  step "Envelopes: Set Ship-To address to zone 3"
+end
+
+Then /^Envelopes: Set Ship-To to Random Address in Zone 4$/ do
+  step "Envelopes: Set Ship-To address to zone 4"
+end
+
+Then /^Envelopes: Set Ship-To to Random Address in Zone 5$/ do
+  step "Envelopes: Set Ship-To address to zone 5"
+end
+
+Then /^Envelopes: Set Ship-To to Random Address in Zone 6$/ do
+  step "Envelopes: Set Ship-To address to zone 6"
+end
+
+Then /^Envelopes: Set Ship-To to Random Address in Zone 7$/ do
+  step "Envelopes: Set Ship-To address to zone 7"
+end
+
+Then /^Envelopes: Set Ship-To to Random Address in Zone 8$/ do
+  step "Envelopes: Set Ship-To address to zone 8"
+end
+
+Then /^Envelopes: Set Ship-To to Random Address Between Zone 1 through 4$/ do
+  step "Envelopes: Set Ship-To address to zone 1 through 4"
+end
+
+Then /^Envelopes: Set Ship-To to Random Address Between Zone 5 through 8$/ do
+  step "Envelopes: Set Ship-To address to zone 5 through 8"
+end
+
+Then /^Envelopes: Set Ship-To address to (.*)$/ do |address|
+  log.info "Step: Order Details: Set Ship-To address to \"#{address}\""
+
+  case address.downcase
+    when /zone 1 through 4/
+      address = test_helper.rand_zone_1_4
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To random zone 1 through 4 address to \"#{formatted_address}\""
+    when /zone 5 through 8/
+      address = test_helper.rand_zone_5_8
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To random zone 5 through 8 address to \"#{formatted_address}\""
+    when /zone 1/
+      address = test_helper.rand_zone_1
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To to Random Address in Zone 1 = \"#{formatted_address}\""
+    when /zone 2/
+      address = test_helper.rand_zone_2
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To to Random Address in Zone 2 = \"#{formatted_address}\""
+    when /zone 3/
+      address = test_helper.rand_zone_3
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To to Random Address in Zone 3 = \"#{formatted_address}\""
+    when /zone 4/
+      address = test_helper.rand_zone_4
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To to Random Address in Zone 4 = \"#{formatted_address}\""
+    when /zone 5/
+      address = test_helper.rand_zone_5
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To to Random Address in Zone 5 = \"#{formatted_address}\""
+    when /zone 6/
+      address = test_helper.rand_zone_6
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To to Random Address in Zone 6 = \"#{formatted_address}\""
+    when /zone 7/
+      address = test_helper.rand_zone_7
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To to Random Address in Zone 7 = \"#{formatted_address}\""
+    when /zone 8/
+      address = test_helper.rand_zone_8
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To to Random Address in Zone 8 = \"#{formatted_address}\""
+    else
+      formatted_address = OrdersHelper.instance.format_address address
+  end
+
+  @envelope.ship_to.set formatted_address
+
 end
