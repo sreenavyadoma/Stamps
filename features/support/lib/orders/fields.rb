@@ -64,11 +64,14 @@ module Orders
       city = address["city"]
       state = address["state"]
       zip = address["zip"]
-      phone_num = address["phone"]
-      phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : address["phone"]
-      email_addy = address["email"]
-      email = (email_addy.downcase.include? "random") ? test_helper.random_email : address["email"]
-
+      begin
+        phone_num = address["phone"]
+        phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : address["phone"]
+      end unless address["phone"].nil?
+      begin
+        email_addy = address["email"]
+        email = (email_addy.downcase.include? "random") ? test_helper.random_email : address["email"]
+      end unless address["email"].nil?
 
         log.info "Ship-To Name: #{name}"
         log.info "Ship-To Company: #{company_name}"
