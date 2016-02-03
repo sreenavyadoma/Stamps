@@ -30,6 +30,7 @@ GEM
     log4r (1.1.10)
     multi_json (1.11.2)
     multi_test (0.1.2)
+    mysql (2.9.1)
     rake (10.0.0)
     rspec (2.99.0)
       rspec-core (~> 2.99.0)
@@ -59,6 +60,7 @@ DEPENDENCIES
   cucumber (= 2.0.0)
   data_magic
   log4r
+  mysql
   rake (= 10.0.0)
   rspec (= 2.99.0)
   watir-webdriver (= 0.8.0)
