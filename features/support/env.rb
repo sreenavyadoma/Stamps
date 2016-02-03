@@ -31,7 +31,7 @@ require_relative 'lib/registration/registration_helper'
 
 require 'rubygems' # for compatibility with JRuby, MRI 1.8, etc
 #require 'atomic'
-require 'thread'
+#require 'thread'
 
 #require 'mysql'
 
