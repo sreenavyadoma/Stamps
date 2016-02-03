@@ -30,10 +30,10 @@ require_relative 'lib/print/print_common_form_elements'
 require_relative 'lib/registration/registration_helper'
 
 require 'rubygems' # for compatibility with JRuby, MRI 1.8, etc
-require 'atomic'
-require 'thread'
+#require 'atomic'
+#require 'thread'
 
-require 'mysql'
+#require 'mysql'
 
 module Selenium
   module WebDriver
