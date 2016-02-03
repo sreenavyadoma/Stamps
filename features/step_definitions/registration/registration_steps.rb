@@ -4,6 +4,12 @@ Then /^Registration page is loaded$/ do
   registration.visit :qa
 end
 
+Then /^Registration:  Continue to Mailing Information Page$/ do
+  log.info "Registration:  Continue to Mailing Information Page"
+  @profile = registration.profile if @profile.nil?
+  @profile.continue_to_mailing_info
+end
+
 Then /^Registration: Set email to (.*)$/ do |email|
   log.info "Registration: Set email to #{email}"
   @profile = registration.profile if @profile.nil?

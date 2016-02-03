@@ -1,5 +1,9 @@
 module WebReg
   class Membership < Stamps::Browser::BrowserObject
+    def present?
+
+    end
+
     def first_name
 
     end

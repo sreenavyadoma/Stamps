@@ -343,5 +343,19 @@ module WebReg
     def continue
       Button.new @browser.button(:id => "next")
     end
+
+    def continue_to_mailing_info
+      button = continue
+      next_page = membership
+      10.times do
+        button.safe_click
+        sleep1
+        return next_page if next_page.present?
+      end
+    end
+
+    def membership
+      Membership.new @browser
+    end
   end
 end
