@@ -30,7 +30,6 @@ Then /^Envelopes: Set Ship-To address to$/ do |table|
   step "Envelopes: Set Ship-To address to #{ship_to}"
 end
 
-
 Then /^Envelopes: Set Ship-To to Random Address in Zone 1$/ do
   step "Envelopes: Set Ship-To address to zone 1"
 end

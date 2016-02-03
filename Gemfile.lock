@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    atomic (1.1.99)
     builder (3.2.2)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
@@ -54,6 +55,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  atomic
   cucumber (= 2.0.0)
   data_magic
   log4r
