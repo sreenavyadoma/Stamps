@@ -72,13 +72,13 @@ Feature: Local Rating test for zone 6
     Then Order Details: Set Service to "Priority Mail Medium Flat Rate Box"
     Then Order Details: Set Weight to 46 lbs 0 oz
     Then Order Details: Set Tracking to "USPS Tracking"
-    Then Order Details: Expect Total to be $
+    Then Order Details: Expect Total to be $11.95
 
     Then Order Details: Set Ship-To to Random Address in Zone 6
     Then Order Details: Set Service to "Priority Mail Large Flat Rate Box"
     Then Order Details: Set Weight to 31 lbs 0 oz
     Then Order Details: Set Tracking to "USPS Tracking"
-    Then Order Details: Expect Total to be $11.95
+    Then Order Details: Expect Total to be $16.35
 
     Then Order Details: Set Ship-To to Random Address in Zone 6
     Then Order Details: Set Service to "Priority Mail Express Package"
