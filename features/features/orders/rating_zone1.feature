@@ -1,7 +1,7 @@
 Feature: Local Rating test for zone 1
 
   Background:
-    Given I am signed in to Orders as ff/qacc/local_rati0002/pass111
+    Given I am signed in to Orders
 
   @local_rating
   @local_rating1

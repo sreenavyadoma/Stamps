@@ -1,7 +1,7 @@
 Feature: Local Rating test for zone 7
 
   Background:
-    Given I am signed in to Orders as ff/qacc/orders1000/password1
+    Given I am signed in to Orders
 
   @local_rating
   @local_rating7
@@ -11,8 +11,8 @@ Feature: Local Rating test for zone 7
     Then Order Details: Set Ship-To Country to United States
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "First-Class Mail Large Envelope/Flat"
-    Then Order Details: Set Weight to 0 lbs 16 oz
-    Then Order Details: Expect Total to be $max weight exceeded
+    Then Order Details: Set Weight to 0 lbs 11 oz
+    Then Order Details: Expect Total to be $3.18
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "First-Class Mail Package/Thick Envelope"

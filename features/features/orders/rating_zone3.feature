@@ -1,9 +1,9 @@
 Feature: Local Rating test for zone 3
 
   Background:
-    Given I am signed in to Orders as ff/qacc/orders1000/password1
+    Given I am signed in to Orders
 
- @local_rating
+  @local_rating
   @local_rating3
   Scenario:  All Services
     Then Add New Order
