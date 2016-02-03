@@ -4,6 +4,34 @@ Then /^Registration page is loaded$/ do
   registration.visit :qa
 end
 
+Then /^Registration: Set email to (.*)$/ do |email|
+  log.info "Registration: Set email to #{email}"
+  @profile = registration.profile if @profile.nil?
+  email_field = @profile.email
+  email_field.wait_until_present
+  sleep 1
+  email_field.set email
+  email_field.set email
+end
+
+Then /^Registration: Set User ID to (.*)$/ do |user_id|
+  log.info "Registration: Set User ID to #{user_id}"
+  @profile = registration.profile if @profile.nil?
+  @profile.user_id.set user_id
+end
+
+Then /^Registration: Set Password to (.*)$/ do |password|
+  log.info "Registration: Set Password to #{password}"
+  @profile = registration.profile if @profile.nil?
+  @profile.password.set password
+end
+
+Then /^Registration: Set Re-Type password to (.*)$/ do |password|
+  log.info "Registration: Set Re-Type password to #{password}"
+  @profile = registration.profile if @profile.nil?
+  @profile.retype_password.set password
+end
+
 Then /^Registration: Set Referrer Name to Web Banner$/ do
   log.info "Registration: Set Referrer Name to Web Banner"
   @profile = registration.profile if @profile.nil?
@@ -92,30 +120,6 @@ Then /^Registration: Set How did you hear about us to Web Banner$/ do |how|
   log.info "Registration: Set email to #{email}"
   @profile = registration.profile if @profile.nil?
   @profile.email.set email
-end
-
-Then /^Registration: Set email to (.*)$/ do |email|
-  log.info "Registration: Set email to #{email}"
-  @profile = registration.profile if @profile.nil?
-  @profile.email.set email
-end
-
-Then /^Registration: Set User ID to (.*)$/ do |user_id|
-  log.info "Registration: Set User ID to #{user_id}"
-  @profile = registration.profile if @profile.nil?
-  @profile.user_id.set user_id
-end
-
-Then /^Registration: Set Password to (.*)$/ do |password|
-  log.info "Registration: Set Password to #{password}"
-  @profile = registration.profile if @profile.nil?
-  @profile.password.set password
-end
-
-Then /^Registration: Set Re-Type password to (.*)$/ do |password|
-  log.info "Registration: Set Re-Type password to #{password}"
-  @profile = registration.profile if @profile.nil?
-  @profile.retype_password.set password
 end
 
 Then /^Registration: Set How will you use Stamps.com to Mostly Mailing$/ do
