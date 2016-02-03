@@ -7,4 +7,4 @@ gem 'watir-webdriver', '0.8.0'
 gem 'data_magic'
 gem 'log4r'
 gem 'atomic'
-gem 'mysql'
+
