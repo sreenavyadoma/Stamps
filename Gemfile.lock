@@ -62,4 +62,4 @@ DEPENDENCIES
   watir-webdriver (= 0.8.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
