@@ -120,7 +120,7 @@ Feature: Local Rating test for zone 7
     Then Order Details: Set Service to "Parcel Select Ground Large Package"
     Then Order Details: Set Weight to 58 lbs 15 oz
     Then Order Details: Set Tracking to "USPS Tracking"
-    Then Order Details: Expect Total to be $105.48
+    Then Order Details: Expect Total to be $91.52
 
     Then Order Details: Set Ship-To to Random Address in Zone 7
     Then Order Details: Set Service to "Parcel Select Ground Oversized Package"
