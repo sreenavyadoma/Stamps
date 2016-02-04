@@ -12,7 +12,7 @@ module WebReg
 
       case ENV['URL']
         when /qa/
-          url = "https://qa-registration.stamps.com/registration"
+          url = "https://qa-webreg.stamps.com/webreg"
         else
           raise "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
       end
