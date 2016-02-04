@@ -292,6 +292,17 @@ module WebReg
       end
     end
 
+    def present?
+      browser_helper.present? @browser.text_field(:id => "email")
+    end
+
+    def wait_until_present
+      browser_helper.wait_until_present @browser.text_field(:id => "email")
+      browser_helper.wait_until_present @browser.text_field(:id => "username")
+      browser_helper.wait_until_present @browser.text_field(:id => "password")
+      browser_helper.wait_until_present @browser.text_field(:id => "confirmPassword")
+    end
+
     def referrer_name
       ReferrerName.new @browser
     end
