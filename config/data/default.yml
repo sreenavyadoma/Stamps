@@ -131,10 +131,10 @@ zone_5_through_8:
         state: TX
         zip: 76053-4038
       4:
-        street_address:  5912 83rd St.
-        city: Lubbock
+        street_address:  2601 Avenue of the Stars Ste 100
+        city: Frisco
         state: TX
-        zip: 79424-3608
+        zip: 75034-9016
     zone7:
       1:
         street_address:  9435 Pettit Rd.
