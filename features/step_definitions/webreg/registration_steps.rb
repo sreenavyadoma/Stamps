@@ -1,7 +1,9 @@
 Then /^Registration page is loaded$/ do
   step "I launch default browser"
   log.info "Registration page is loaded"
-  registration.visit :qa
+  @profile = registration.visit(:qa).profile
+  @profile.wait_until_present
+  raise "Unable to load Registration page." unless @profile.present?
 end
 
 Then /^Registration:  Continue to Mailing Information Page$/ do
