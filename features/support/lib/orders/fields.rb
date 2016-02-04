@@ -79,8 +79,8 @@ module Orders
         log.info "Ship-To City: #{city}"
         log.info "Ship-To State: #{state}"
         log.info "Ship-To Zip: #{zip}"
-        log.info "Ship-To Phone: #{phone}"
-        log.info "Ship-To Email: #{email}"
+        log.info "Ship-To Phone: #{phone}" unless address["phone"].nil?
+        log.info "Ship-To Email: #{email}" unless address["email"].nil?
 
       formatted_address = "#{name},#{company_name},#{street_address},#{city} #{state} #{zip}"
       log.info "Formatted Address: #{formatted_address}"

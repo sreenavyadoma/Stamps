@@ -216,6 +216,10 @@ module Stamps
       "(#{Random.rand(100..999)}) #{Random.rand(100..999)}-#{Random.rand(1000..9999)}"
     end
 
+    def random_phone_extension
+      "#{Random.rand(10..999)}"
+    end
+
     def random_email
       "#{random_string}@#{random_string}.com".downcase
     end

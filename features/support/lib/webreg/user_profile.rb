@@ -2,116 +2,74 @@ module WebReg
   class Profile < Stamps::Browser::BrowserObject
     class ReferrerName < Stamps::Browser::BrowserObject
 
-      def web_banner
+      def present?
+        browser_helper.present? @browser.label :css => "label[for=referrerName]"
+      end
+
+      def referrer name
         begin
-          @browser.select_list(:id, "referrerName").option(:text => "Web Banner").when_present.select
+          @browser.select_list(:id, "referrerName").option(:text => name).when_present.select
+          @browser.select_list(:id, "referrerName").option(:text => name).when_present.select
+          @browser.select_list(:id, "referrerName").option(:text => name).when_present.select
         rescue
           #ignore
         end
+      end
+
+      def web_banner
+        referrer "Web Banner"
       end
 
       def streaming_audio
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Radio/Podcast/Streaming Audio").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Radio/Podcast/Streaming Audio"
       end
 
       def television_commercial
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Television Commercial").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Television Commercial"
       end
 
       def telephone_call
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Telephone Call").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Telephone Call"
       end
 
       def other
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Other").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Other"
       end
 
       def recommended_by_friend
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Recommended by Friend").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Recommended by Friend"
       end
 
       def recommended_by_usps
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Recommended by USPS").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Recommended by USPS"
       end
 
       def newspapaer_ad
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Newspaper Ad").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Newspaper Ad"
       end
 
       def magazine_ad
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Magazine Ad").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Magazine Ad"
       end
 
       def received_mailer
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Received Mailer").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Received Mailer"
       end
 
       def already_used_in_office
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Already used in office").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Already used in office"
       end
 
       def trade_show
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Trade show/convention").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Trade show/convention"
       end
 
       def web_search
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Web Search").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Web Search"
       end
 
       def email_from_stamps
-        begin
-          @browser.select_list(:id, "referrerName").option(:text => "Email from Stamps.com").when_present.select
-        rescue
-          #ignore
-        end
+        referrer "Email from Stamps.com"
       end
     end
 
@@ -155,140 +113,86 @@ module WebReg
     end
 
     class FirstQuestion < Stamps::Browser::BrowserObject
-      def mothers_maiden_name
+      def question secret
         begin
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is your mother's maiden name?").when_present.select
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is your mother's maiden name?").when_present.select
+          @browser.select_list(:name, "secretQuestion1").option(:text => secret).when_present.select
+          @browser.select_list(:name, "secretQuestion1").option(:text => secret).when_present.select
+          @browser.select_list(:name, "secretQuestion1").option(:text => secret).when_present.select
         rescue
           #ignore
         end
+      end
+
+      def mothers_maiden_name
+        question "What is your mother's maiden name?"
       end
 
       def pets_name
-        begin
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is your pet's name?").when_present.select
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is your pet's name?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What is your pet's name?"
       end
 
       def birth_city
-        begin
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is your city of birth?").when_present.select
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is your city of birth?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What is your city of birth?"
       end
 
       def fathers_birth_place
-        begin
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is your father's birthplace?").when_present.select
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is your father's birthplace?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What is your father's birthplace?"
       end
 
       def street_name
-        begin
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What street did you grow up on?").when_present.select
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What street did you grow up on?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What street did you grow up on?"
       end
 
       def first_schools_name
-        begin
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is the name of your first school?").when_present.select
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is the name of your first school?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What is the name of your first school?"
       end
 
       def first_cars_make_model
-        begin
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is the make and model of your first car?").when_present.select
-          @browser.select_list(:name, "secretQuestion1").option(:text => "What is the make and model of your first car?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What is the make and model of your first car?"
       end
     end
 
     class SecondQuestion < Stamps::Browser::BrowserObject
-      def mothers_maiden_name
+      def question secret
         begin
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is your mother's maiden name?").when_present.select
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is your mother's maiden name?").when_present.select
+          @browser.select_list(:name, "secretQuestion2").option(:text => secret).when_present.select
+          @browser.select_list(:name, "secretQuestion2").option(:text => secret).when_present.select
+          @browser.select_list(:name, "secretQuestion2").option(:text => secret).when_present.select
         rescue
           #ignore
         end
+      end
+
+      def mothers_maiden_name
+        question "What is your mother's maiden name?"
       end
 
       def pets_name
-        begin
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is your pet's name?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What is your pet's name?"
       end
 
       def birth_city
-        begin
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is your city of birth?").when_present.select
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is your city of birth?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What is your city of birth?"
       end
 
       def fathers_birth_place
-        begin
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is your father's birthplace?").when_present.select
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is your father's birthplace?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What is your father's birthplace?"
       end
 
       def street_name
-        begin
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What street did you grow up on?").when_present.select
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What street did you grow up on?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What street did you grow up on?"
       end
 
       def first_schools_name
-        begin
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is the name of your first school?").when_present.select
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is the name of your first school?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What is the name of your first school?"
       end
 
       def high_school_mascot
-        begin
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What was your high school mascot?").when_present.select
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What was your high school mascot?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What was your high school mascot?"
       end
 
       def first_cars_make_model
-        begin
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is the make and model of your first car?").when_present.select
-          @browser.select_list(:name, "secretQuestion2").option(:text => "What is the make and model of your first car?").when_present.select
-        rescue
-          #ignore
-        end
+        question "What is the make and model of your first car?"
       end
     end
 

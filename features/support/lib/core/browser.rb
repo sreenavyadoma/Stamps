@@ -8,7 +8,6 @@ module Stamps
         "apple|osx|safari|mac".include? ENV['BROWSER'].downcase
       end
 
-
       def chrome?
         "chrome|gc|google".include? ENV['BROWSER'].downcase
       end
