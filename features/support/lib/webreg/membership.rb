@@ -439,8 +439,8 @@ module WebReg
       loading = Button.new @browser.button(:text => "Loading...")
       welcome = NewAccountWelcomePage.new @browser
       50.times do
-        lo
         button.safe_click
+        sleep 1
         loading.wait_while_present
         return if welcome.present?
       end

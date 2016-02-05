@@ -279,7 +279,6 @@ module Stamps
       def set_until text
         10.times{
           safe_set text
-          sleep 1
           from_textbox = browser_helper.text @field
           from_textbox == "" if from_textbox.nil?
           break if from_textbox.include? text

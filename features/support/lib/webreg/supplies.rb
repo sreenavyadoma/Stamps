@@ -11,7 +11,7 @@ module WebReg
     def place_order
       button = Button.new @browser.button(:id => "mincartButtonTop")
       welcome_page = NewAccountWelcomePage.new
-      5.times do
+      10.times do
         button.safe_click
         sleep 1
         break if welcome_page.present?

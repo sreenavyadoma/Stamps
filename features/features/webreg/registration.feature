@@ -1,146 +1,164 @@
 
 Feature: Registration
   Background:
-    Given Registration page is loaded
+    Given WebReg: Load QA Web Registration Page
 
   @registration
   Scenario:
-    Then Registration: Set email to printing_cost0001@mailinator.com
-    Then Registration: Set User ID to ORD10000000002
-    Then Registration: Set Password to pass111
-    Then Registration: Set Re-Type password to pass111
-    Then Registration: Set How will you use Stamps.com to Both Mailing and Shipping
-    Then Registration: Set Referrer Name to Already used in office
-    Then Registration: Set 1st Question to What is your mother's maiden name
-    Then Registration: Set 1st Answer to stamps
-    Then Registration: Set 2nd Question to What was your high school mascot
-    Then Registration: Set 2nd Answer to stamps
+    Then WebReg: Set email to ORD10000000005@mailinator.com
+    Then WebReg: Set User ID to ORD10000000005
+    Then WebReg: Set Password to pass111
+    Then WebReg: Set Re-Type password to pass111
+    Then WebReg: Set How will you use Stamps.com to Both Mailing and Shipping
+    Then WebReg: Set Referrer Name to Already used in office
+    Then WebReg: Set 1st Question to What is your mother's maiden name
+    Then WebReg: Set 1st Answer to stamps
+    Then WebReg: Set 2nd Question to What was your high school mascot
+    Then WebReg: Set 2nd Answer to stamps
 
-    Then Registration: Continue to Mailing Information Page
+    Then WebReg: Continue to Mailing Information Page
 
-    Then Registration: Set Mailing Info First Name to random
-    Then Registration: Set Mailing Info Last Name to random
-    Then Registration: Set Mailing Info Company to random
-    Then Registration: Set Mailing Info Address to 1990 E. Grand Ave.
-    Then Registration: Set Mailing Info City to El Segundo
-    Then Registration: Set Mailing Info State to California
-    Then Registration: Set Mailing Info Zip Code to 90245
-    Then Registration: Set Mailing Info Phone to random
-    Then Registration: Set Mailing Info Extenion to random
+    Then WebReg: Set Mailing Info First Name to random
+    Then WebReg: Set Mailing Info Last Name to random
+    Then WebReg: Set Mailing Info Company to random
+    Then WebReg: Set Mailing Info Address to 1990 E. Grand Ave.
+    Then WebReg: Set Mailing Info City to El Segundo
+    Then WebReg: Set Mailing Info State to California
+    Then WebReg: Set Mailing Info Zip Code to 90245
+    Then WebReg: Set Mailing Info Phone to random
+    Then WebReg: Set Mailing Info Extenion to random
 
-    Then Registration: Set Mailing Info Cardholder name to random
-    Then Registration: Set Mailing Info Card number to 4111111111111111
-    Then Registration: Set Mailing Info Expiration Month to February
-    Then Registration: Set Mailing Info Expiration Year to 2019
-    Then Registration: Set Mailing Info Billing address same as mailing address to Checked
-    Then Registration: Set Mailing Info Billing address same as mailing address to Unchecked
-    Then Registration: Set Mailing Info Billing address same as mailing address to Checked
-    Then Registration: Set Mailing Info Terms & Conditions to Check
-    Then Registration: Set Mailing Info Terms & Conditions to Uncheck
-    Then Registration: Set Mailing Info Terms & Conditions to Check
+    Then WebReg: Set Mailing Info Cardholder name to random
+    Then WebReg: Set Mailing Info Card number to 4111111111111111
+    Then WebReg: Set Mailing Info Expiration Month to February
+    Then WebReg: Set Mailing Info Expiration Year to 2019
+    Then WebReg: Set Mailing Info Billing address same as mailing address to Checked
+    Then WebReg: Set Mailing Info Terms & Conditions to Checked
 
-    Then Registration: Mailing Info Submit
+    Then WebReg: Mailing Info Submit
+
+    Then PAM: Load Customer Search Page
+    Then PAM: Customer Search: Set username to ORD10000000005
+    Then PAM: Customer Search: Click Search button
+
+    Then PAM: Customer Profile: Click Change Meter Limit link
+    Then PAM: Change Meter Limit: Set USPS approval to Checked
+    Then PAM: Change Meter Limit: Set New Meter Limit to $100000
+    Then PAM: Change Meter Limit: Click Submit
+
+    Then PAM: Customer Profile: Click ACH Credit link
+    Then PAM: ACH Purchase: Set Amount to $100000.00 and Comments to Some String
+
+
+    Scenario:
+
 
   Scenario:
-    Then Registration: Continue
-    Then Registration: Click Mailing Info Back Button
+    Then WebReg: Continue
+    Then WebReg: Click Mailing Info Back Button
 
-    Then Registration: Set Mailing Info State to Armed Forces Americas
-    Then Registration: Set Mailing Info State to Armed Forces
-    Then Registration: Set Mailing Info State to Alaska
-    Then Registration: Set Mailing Info State to Alabama
-    Then Registration: Set Mailing Info State to Armed Forces Pacific
-    Then Registration: Set Mailing Info State to Arkansas
-    Then Registration: Set Mailing Info State to American Samoa
-    Then Registration: Set Mailing Info State to Arizona
-    Then Registration: Set Mailing Info State to California
-    Then Registration: Set Mailing Info State to Colorado
-    Then Registration: Set Mailing Info State to Connecticut
-    Then Registration: Set Mailing Info State to Canal Zone
-    Then Registration: Set Mailing Info State to District of Columbia
-    Then Registration: Set Mailing Info State to Delaware
-    Then Registration: Set Mailing Info State to Florida
-    Then Registration: Set Mailing Info State to Micronesia
-    Then Registration: Set Mailing Info State to Georgia
-    Then Registration: Set Mailing Info State to Guam
-    Then Registration: Set Mailing Info State to Hawaii
-    Then Registration: Set Mailing Info State to Iowa
-    Then Registration: Set Mailing Info State to Idaho
-    Then Registration: Set Mailing Info State to Illinois
-    Then Registration: Set Mailing Info State to Indiana
-    Then Registration: Set Mailing Info State to Kansas
-    Then Registration: Set Mailing Info State to Kentucky
-    Then Registration: Set Mailing Info State to Louisiana
-    Then Registration: Set Mailing Info State to Massachusetts
-    Then Registration: Set Mailing Info State to Maryland
-    Then Registration: Set Mailing Info State to Maine
-    Then Registration: Set Mailing Info State to Marshall Islands
-    Then Registration: Set Mailing Info State to Minnesota
-    Then Registration: Set Mailing Info State to Missouri
-    Then Registration: Set Mailing Info State to Mariana Islands
-    Then Registration: Set Mailing Info State to Mississippi
-    Then Registration: Set Mailing Info State to Montana
-    Then Registration: Set Mailing Info State to North Carolina
-    Then Registration: Set Mailing Info State to North Dakota
-    Then Registration: Set Mailing Info State to Nebraska
-    Then Registration: Set Mailing Info State to New Hampshire
-    Then Registration: Set Mailing Info State to New Jersey
-    Then Registration: Set Mailing Info State to New Mexico
-    Then Registration: Set Mailing Info State to Nevada
-    Then Registration: Set Mailing Info State to New York
-    Then Registration: Set Mailing Info State to Ohio
-    Then Registration: Set Mailing Info State to Oklahoma
-    Then Registration: Set Mailing Info State to Oregon
-    Then Registration: Set Mailing Info State to Pennsylvania
-    Then Registration: Set Mailing Info State to Puerto Rico
-    Then Registration: Set Mailing Info State to Palau
-    Then Registration: Set Mailing Info State to Rhode Island
-    Then Registration: Set Mailing Info State to South Carolina
-    Then Registration: Set Mailing Info State to South Dakota
-    Then Registration: Set Mailing Info State to Tennessee
-    Then Registration: Set Mailing Info State to Texas
-    Then Registration: Set Mailing Info State to Utah
-    Then Registration: Set Mailing Info State to Virginia
-    Then Registration: Set Mailing Info State to Virgin Islands
-    Then Registration: Set Mailing Info State to Vermont
-    Then Registration: Set Mailing Info State to Washington
-    Then Registration: Set Mailing Info State to Wisconsin
-    Then Registration: Set Mailing Info State to West Virginia
-    Then Registration: Set Mailing Info State to Wyoming
+    Then WebReg: Set Mailing Info Terms & Conditions to Unchecked
+    Then WebReg: Set Mailing Info Terms & Conditions to Checked
 
-    Then Registration: Set Referrer Name to Email from Stamps
-    Then Registration: Set Referrer Name to Magazine Ad
-    Then Registration: Set Referrer Name to Newspaper Ad
-    Then Registration: Set Referrer Name to Other
-    Then Registration: Set Referrer Name to Radio Podcast Streaming Audio
-    Then Registration: Set Referrer Name to Received Mailer
-    Then Registration: Set Referrer Name to Recommended by Friend
-    Then Registration: Set Referrer Name to Recommended by USPS
-    Then Registration: Set Referrer Name to Telephone Call
-    Then Registration: Set Referrer Name to Television Commercial
-    Then Registration: Set Referrer Name to Trade show convention
-    Then Registration: Set Referrer Name to Web Banner
+    Then WebReg: Set Mailing Info Billing address same as mailing address to Unchecked
+    Then WebReg: Set Mailing Info Billing address same as mailing address to Checked
 
-    Then Registration: Set How will you use Stamps.com to Mostly Mailing
-    Then Registration: Set How will you use Stamps.com to Mostly Shipping
-    Then Registration: Set How will you use Stamps.com to Both Mailing and Shipping
-    Then Registration: Set How will you use Stamps.com to Home Office
+    Then WebReg: Set Mailing Info State to Armed Forces Americas
+    Then WebReg: Set Mailing Info State to Armed Forces
+    Then WebReg: Set Mailing Info State to Alaska
+    Then WebReg: Set Mailing Info State to Alabama
+    Then WebReg: Set Mailing Info State to Armed Forces Pacific
+    Then WebReg: Set Mailing Info State to Arkansas
+    Then WebReg: Set Mailing Info State to American Samoa
+    Then WebReg: Set Mailing Info State to Arizona
+    Then WebReg: Set Mailing Info State to California
+    Then WebReg: Set Mailing Info State to Colorado
+    Then WebReg: Set Mailing Info State to Connecticut
+    Then WebReg: Set Mailing Info State to Canal Zone
+    Then WebReg: Set Mailing Info State to District of Columbia
+    Then WebReg: Set Mailing Info State to Delaware
+    Then WebReg: Set Mailing Info State to Florida
+    Then WebReg: Set Mailing Info State to Micronesia
+    Then WebReg: Set Mailing Info State to Georgia
+    Then WebReg: Set Mailing Info State to Guam
+    Then WebReg: Set Mailing Info State to Hawaii
+    Then WebReg: Set Mailing Info State to Iowa
+    Then WebReg: Set Mailing Info State to Idaho
+    Then WebReg: Set Mailing Info State to Illinois
+    Then WebReg: Set Mailing Info State to Indiana
+    Then WebReg: Set Mailing Info State to Kansas
+    Then WebReg: Set Mailing Info State to Kentucky
+    Then WebReg: Set Mailing Info State to Louisiana
+    Then WebReg: Set Mailing Info State to Massachusetts
+    Then WebReg: Set Mailing Info State to Maryland
+    Then WebReg: Set Mailing Info State to Maine
+    Then WebReg: Set Mailing Info State to Marshall Islands
+    Then WebReg: Set Mailing Info State to Minnesota
+    Then WebReg: Set Mailing Info State to Missouri
+    Then WebReg: Set Mailing Info State to Mariana Islands
+    Then WebReg: Set Mailing Info State to Mississippi
+    Then WebReg: Set Mailing Info State to Montana
+    Then WebReg: Set Mailing Info State to North Carolina
+    Then WebReg: Set Mailing Info State to North Dakota
+    Then WebReg: Set Mailing Info State to Nebraska
+    Then WebReg: Set Mailing Info State to New Hampshire
+    Then WebReg: Set Mailing Info State to New Jersey
+    Then WebReg: Set Mailing Info State to New Mexico
+    Then WebReg: Set Mailing Info State to Nevada
+    Then WebReg: Set Mailing Info State to New York
+    Then WebReg: Set Mailing Info State to Ohio
+    Then WebReg: Set Mailing Info State to Oklahoma
+    Then WebReg: Set Mailing Info State to Oregon
+    Then WebReg: Set Mailing Info State to Pennsylvania
+    Then WebReg: Set Mailing Info State to Puerto Rico
+    Then WebReg: Set Mailing Info State to Palau
+    Then WebReg: Set Mailing Info State to Rhode Island
+    Then WebReg: Set Mailing Info State to South Carolina
+    Then WebReg: Set Mailing Info State to South Dakota
+    Then WebReg: Set Mailing Info State to Tennessee
+    Then WebReg: Set Mailing Info State to Texas
+    Then WebReg: Set Mailing Info State to Utah
+    Then WebReg: Set Mailing Info State to Virginia
+    Then WebReg: Set Mailing Info State to Virgin Islands
+    Then WebReg: Set Mailing Info State to Vermont
+    Then WebReg: Set Mailing Info State to Washington
+    Then WebReg: Set Mailing Info State to Wisconsin
+    Then WebReg: Set Mailing Info State to West Virginia
+    Then WebReg: Set Mailing Info State to Wyoming
 
-    Then Registration: Set 1st Question to What is your mother's maiden name
-    Then Registration: Set 1st Question to What is the make and model of your first car
-    Then Registration: Set 1st Question to What is the name of your first school
-    Then Registration: Set 1st Question to What is your city of birth
-    Then Registration: Set 1st Question to What is your father's birthplace
-    Then Registration: Set 1st Question to What is your pet's name
-    Then Registration: Set 1st Question to What street did you grow up on
+    Then WebReg: Set Referrer Name to Email from Stamps
+    Then WebReg: Set Referrer Name to Magazine Ad
+    Then WebReg: Set Referrer Name to Newspaper Ad
+    Then WebReg: Set Referrer Name to Other
+    Then WebReg: Set Referrer Name to Radio Podcast Streaming Audio
+    Then WebReg: Set Referrer Name to Received Mailer
+    Then WebReg: Set Referrer Name to Recommended by Friend
+    Then WebReg: Set Referrer Name to Recommended by USPS
+    Then WebReg: Set Referrer Name to Telephone Call
+    Then WebReg: Set Referrer Name to Television Commercial
+    Then WebReg: Set Referrer Name to Trade show convention
+    Then WebReg: Set Referrer Name to Web Banner
 
-    Then Registration: Set 1st Question to What is your mother's maiden name
-    Then Registration: Set 2nd Question to What is the make and model of your first car
-    Then Registration: Set 2nd Question to What is the name of your first school
-    Then Registration: Set 2nd Question to What is your city of birth
-    Then Registration: Set 2nd Question to What is your father's birthplace
-    Then Registration: Set 2nd Question to What is your pet's name
-    Then Registration: Set 2nd Question to What street did you grow up on
-    Then Registration: Set 2nd Question to What was your high school mascot
+    Then WebReg: Set How will you use Stamps.com to Mostly Mailing
+    Then WebReg: Set How will you use Stamps.com to Mostly Shipping
+    Then WebReg: Set How will you use Stamps.com to Both Mailing and Shipping
+    Then WebReg: Set How will you use Stamps.com to Home Office
+
+    Then WebReg: Set 1st Question to What is your mother's maiden name
+    Then WebReg: Set 1st Question to What is the make and model of your first car
+    Then WebReg: Set 1st Question to What is the name of your first school
+    Then WebReg: Set 1st Question to What is your city of birth
+    Then WebReg: Set 1st Question to What is your father's birthplace
+    Then WebReg: Set 1st Question to What is your pet's name
+    Then WebReg: Set 1st Question to What street did you grow up on
+
+    Then WebReg: Set 1st Question to What is your mother's maiden name
+    Then WebReg: Set 2nd Question to What is the make and model of your first car
+    Then WebReg: Set 2nd Question to What is the name of your first school
+    Then WebReg: Set 2nd Question to What is your city of birth
+    Then WebReg: Set 2nd Question to What is your father's birthplace
+    Then WebReg: Set 2nd Question to What is your pet's name
+    Then WebReg: Set 2nd Question to What street did you grow up on
+    Then WebReg: Set 2nd Question to What was your high school mascot
 
 
