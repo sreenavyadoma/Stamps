@@ -2,11 +2,11 @@
 Feature: Registration
   Background:
     Given WebReg: Load QA Web Registration Page
-  #AUTOSUGG000001
+  #ORD10000000007
   @registration
   Scenario:
-    Then WebReg: Set email to AUTOSUGG000001@mailinator.com
-    Then WebReg: Set User ID to AUTOSUGG000001
+    Then WebReg: Set email to ORD10000000007@mailinator.com
+    Then WebReg: Set User ID to ORD10000000007
 
     Then WebReg: Set Password to pass111
     Then WebReg: Set Re-Type password to pass111
@@ -39,7 +39,7 @@ Feature: Registration
     Then WebReg: Mailing Info Submit
 
     Then PAM: Load Customer Search Page
-    Then PAM: Customer Search: Set username to AUTOSUGG000001
+    Then PAM: Customer Search: Set username to ORD10000000007
     Then PAM: Customer Search: Click Search button
 
     Then PAM: Customer Profile: Click Change Meter Limit link
