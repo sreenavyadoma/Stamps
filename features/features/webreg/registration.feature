@@ -2,11 +2,11 @@
 Feature: Registration
   Background:
     Given WebReg: Load QA Web Registration Page
-  #ORD10000000008
+  #ORD10000000009
   @registration
   Scenario:
-    Then WebReg: Set email to ORD10000000008@mailinator.com
-    Then WebReg: Set User ID to ORD10000000008
+    Then WebReg: Set email to ORD10000000009@mailinator.com
+    Then WebReg: Set User ID to ORD10000000009
 
     Then WebReg: Set Password to pass111
     Then WebReg: Set Re-Type password to pass111
@@ -39,7 +39,7 @@ Feature: Registration
     Then WebReg: Mailing Info Submit
 
     Then PAM: Load Customer Search Page
-    Then PAM: Customer Search: Set username to ORD10000000008
+    Then PAM: Customer Search: Set username to ORD10000000009
     Then PAM: Customer Search: Click Search button
 
     Then PAM: Customer Profile: Click Change Meter Limit link
@@ -50,9 +50,11 @@ Feature: Registration
     Then PAM: Customer Profile: Click ACH Credit link
     Then PAM: ACH Purchase: Set Amount to $100000.00 and Comments to Some String
 
-
-    Scenario:
-
+  Scenario:
+    Then I visit Orders sign-in page qacc
+    Then I sign-in to Orders as ORD10000000009/pass111
+    Then Add New Order
+    Then Add New Order
 
   Scenario:
     Then WebReg: Continue
