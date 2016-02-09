@@ -138,7 +138,7 @@ module Orders
         welcome_orders_page = WelcomeOrdersPage.new @browser
         plugin_issue = ErrorStampsPluginIssue.new @browser
         toolbar = Orders::Toolbar::Toolbar.new @browser
-        market_place = Orders::Toolbar::AddStoreOrMarketplace
+        market_place = Orders::Toolbar::AddStoreOrMarketplace.new @browser
 
         5.times do
           begin

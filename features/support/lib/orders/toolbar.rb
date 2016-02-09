@@ -111,6 +111,11 @@ module Orders
     end
 
     class AddStoreOrMarketplace < OrdersObject
+
+      def present?
+        window_title.present?
+      end
+
       def close
         button = Button.new (@browser.img :css => "img[class*='x-tool-img x-tool-close']")
         button.click_while_present
@@ -122,10 +127,6 @@ module Orders
 
       def window_title
         Label.new (@browser.divs :text => "Add your Store or Marketplace").first
-      end
-
-      def present?
-        window_title.present?
       end
 
       def search_textbox
