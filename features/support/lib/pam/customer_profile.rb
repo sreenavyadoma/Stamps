@@ -26,8 +26,18 @@ module Pam
       browser_helper.present? @browser.b(:text => "Available Postage")
     end
 
+    def wait_until_present
+      browser_helper.wait_until_present @browser.b(:text => "Available Postage")
+    end
+
     def header
       PamPageHeader.new @browser
+    end
+  end
+
+  class CustomerProfileNotFound < Stamps::Browser::BrowserObject
+    def present?
+      browser_helper.present? @browser.td :text => "No records found."
     end
   end
 end

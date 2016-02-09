@@ -8,16 +8,43 @@ Then /^PAM: Load Customer Search Page$/ do
   @customer_search = pam.customer_search
 end
 
-Then /^PAM: Customer Search: Set username to (.*)$/ do |username|
-  log.info "PAM: Customer Search: Set username to #{username}"
+Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
+  log.info "PAM: Customer Search: Search for username #{username}"
   step "PAM: Load Customer Search Page" if @customer_search.nil?
-  @customer_search.username.set_until username
+  usr = @random_username if username.downcase.include? "random"
+
+  100.times do
+    @customer_search.username.set_until usr
+    @search_result = @customer_search.search
+    case @search_result
+      when Pam::CustomerProfileNotFound
+        @customer_search = pam.customer_search
+        log.info "No records found."
+        sleep 2
+      when Pam::CustomerProfile
+        @customer_profile = @search_result
+        break
+    end
+  end
+
+end
+
+Then /^PAM: Customer Search: Set username to (.*)$/ do |username|
+  usr = @random_username if username.downcase.include? "random"
+  log.info "PAM: Customer Search: Set username to #{usr}"
+  step "PAM: Load Customer Search Page" if @customer_search.nil?
+  @customer_search.username.set_until usr
+  @customer_search.username.set_until usr
+  @customer_search.username.set_until usr
+  sleep 1
 end
 
 Then /^PAM: Customer Search: Click Search button$/ do
   log.info "PAM: Customer Search: Click Search button"
   step "PAM: Load Customer Search Page" if @customer_search.nil?
   @customer_profile = @customer_search.search
+  @customer_profile.wait_until_present
+  @customer_profile.present?.should be true
 end
 
 Then /^PAM: Customer Profile: Click Change Meter Limit link$/ do
@@ -49,7 +76,7 @@ end
 Then /^PAM: ACH Purchase: Set Amount to \$(\d+)\.(\d+) and Comments to (.*)$/ do |dollars, cents, comments|
   @ach_credit.dollar_amount.set_until dollars
   @ach_credit.cents_amount.set_until cents
-  @ach_credit.comments.set_until comments
+  @ach_credit.comments.set_until @random_username
   @customer_profile = @ach_credit.submit.yes.ok
 end
 

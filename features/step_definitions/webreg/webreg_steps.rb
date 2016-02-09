@@ -12,8 +12,15 @@ Then /^WebReg:  Continue to Mailing Information Page$/ do
   @profile.continue_to_mailing_info
 end
 
-Then /^WebReg: Set email to (.*)$/ do |email|
-  log.info "WebReg: Set email to #{email}"
+Then /^WebReg: Set User ID and Email to Random Value$/ do
+  log.info "WebReg: Set User ID and Email to Random Value"
+  @random_username = test_helper.rand_username
+  step "WebReg: Set Email to #{@random_username}@mailinator.com"
+  step "WebReg: Set User ID to #{@random_username}"
+end
+
+Then /^WebReg: Set Email to (.*)$/ do |email|
+  log.info "WebReg: Set Email to #{email}"
   @profile = registration.profile if @profile.nil?
   email_field = @profile.email
   email_field.wait_until_present
@@ -139,7 +146,7 @@ Then /^WebReg: Set Referrer Name to Email from Stamps$/ do
 end
 
 Then /^WebReg: Set How did you hear about us to Web Banner$/ do |how|
-  log.info "WebReg: Set email to #{email}"
+  log.info "WebReg: Set Email to #{email}"
   @profile = registration.profile if @profile.nil?
   @profile.email.set_until email
 end
@@ -843,5 +850,30 @@ end
 Then /^WebReg: Mailing Info Submit$/ do
   log.info "WebReg: Mailing Info Submit"
   @membership = registration.profile.membership if @membership.nil?
-  @membership.submit
+  @reg_result = @membership.submit
+  case @reg_result
+    when WebReg::UserIdTaken
+      message = @reg_result.message
+      log.info message
+      raise message
+    when WebReg::ChooseSupplies
+      welcome_page = @reg_result.place_order
+      welcome_page.wait_until_present
+      if welcome_page.present?
+        log.info "NEW USER ID ######## #{@random_username} ########"
+        log.info "NEW USER ID ######## #{@random_username} ########"
+        log.info "NEW USER ID ######## #{@random_username} ########"
+        log.info "NEW USER ID ######## #{@random_username} ########"
+      end
+  end
 end
+
+Then /^WebReg: Mailing Info Submit2$/ do
+  case @registration_submission_result
+    when NewAccountWelcomePage
+    when UserIdTaken
+    else
+      raise "Illegal State Exception.  Call Step WebReg: Mailing Info Submit before this step.  Check your test."
+  end
+end
+

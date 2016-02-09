@@ -31,11 +31,13 @@ module Pam
     def search
       button = Stamps::Browser::Input.new @browser.input(:css => "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
       customer_profile = CustomerProfile.new @browser
+      customer_profile_not__found = CustomerProfileNotFound.new @browser
       5.times do
         button.send_keys :enter
         button.safe_click
         sleep 1
         return customer_profile if customer_profile.present?
+        return customer_profile_not__found if customer_profile_not__found.present?
       end
     end
   end

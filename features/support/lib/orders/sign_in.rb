@@ -28,30 +28,19 @@ module Orders
     end
 
     class WelcomeOrdersPage < OrdersObject
-      private
-      def continue_span
-        @browser.span :text => "Continue"
-      end
-
-      public
       def present?
-        browser_helper.present? continue_span
+        browser_helper.present? (@browser.span :text => "Continue")
       end
 
       def wait_until_present
-        begin
-          continue_span.wait_until_present
-        rescue
-          #ignore
-        end
+        browser_helper.wait_until_present (@browser.span :text => "Continue")
       end
 
       def continue
-        5.times{
-          if browser_helper.present? continue_span
-            browser_helper.click continue_span, 'continue'
-          end
-          break unless browser_helper.present? continue_span
+        button = Button.new (@browser.span :text => "Continue")
+        10.times{
+          button.safe_click
+          break unless button.present?
         }
       end
     end
@@ -92,6 +81,33 @@ module Orders
         self
       end
 
+      def first_time_sign_in usr, pw
+        username_textbox = self.username
+        password_textbox = self.password
+        sign_in_button = self.sign_in
+
+        grid = Orders::Grid::OrdersGrid.new @browser
+        welcome_orders_page = WelcomeOrdersPage.new @browser
+        market_place = Orders::Toolbar::AddStoreOrMarketplace.new @browser
+
+        10.times do
+          username_textbox.wait_until_present
+          username_textbox.set_until usr
+          password_textbox.set pw
+          sign_in_button.safe_send_keys :enter
+          sign_in_button.safe_send_keys :enter
+          sign_in_button.safe_click
+          sign_in_button.safe_click
+
+          welcome_orders_page.wait_until_present
+          welcome_orders_page.continue if welcome_orders_page.present?
+
+          market_place.wait_until_present
+          market_place.close if market_place.present?
+          break if grid.present?
+          end
+        end
+
       def sign_in_with_credentials *args
         case args
           when Hash
@@ -122,6 +138,7 @@ module Orders
         welcome_orders_page = WelcomeOrdersPage.new @browser
         plugin_issue = ErrorStampsPluginIssue.new @browser
         toolbar = Orders::Toolbar::Toolbar.new @browser
+        market_place = Orders::Toolbar::AddStoreOrMarketplace
 
         5.times do
           begin
@@ -132,6 +149,58 @@ module Orders
               password_textbox.set password
               sign_in_button.safe_send_keys :enter
               sign_in_button.safe_send_keys :enter
+              sign_in_button.safe_click
+              sign_in_button.safe_click
+
+              if welcome_orders_page.present?
+                welcome_orders_page.continue
+                break
+              end
+
+              if market_place.present?
+                market_place.close
+                break
+              end
+
+              if welcome_orders_page.present?
+                welcome_orders_page.continue
+                break
+              end
+
+              if market_place.present?
+                market_place.close
+                break
+              end
+
+              if welcome_orders_page.present?
+                welcome_orders_page.continue
+                break
+              end
+
+              if market_place.present?
+                market_place.close
+                break
+              end
+
+              if welcome_orders_page.present?
+                welcome_orders_page.continue
+                break
+              end
+
+              if market_place.present?
+                market_place.close
+                break
+              end
+
+              if welcome_orders_page.present?
+                welcome_orders_page.continue
+                break
+              end
+
+              if market_place.present?
+                market_place.close
+                break
+              end
 
               log.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 
@@ -139,6 +208,11 @@ module Orders
               log.info "#{username} Orders Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
               break if grid.present?
+
+              if welcome_orders_page.present?
+                welcome_orders_page.continue
+                break
+              end
 
               if welcome_modal.present?
                 welcome_modal.ok
@@ -174,7 +248,7 @@ module Orders
           end
         end
 
-        raise "Sign-in failed!  Username #{username} is unable to sign-in on #{ENV[URL]}" unless navbar.present?
+        raise "Sign-in failed!  Username #{username} is unable to sign-in on #{ENV["URL"]}" unless navbar.present?
 
         log.info "Signed-in Username is #{navbar.username.text}"
 

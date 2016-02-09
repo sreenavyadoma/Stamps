@@ -355,7 +355,26 @@ module WebReg
     end
   end
 
+  class UserIdTaken < Stamps::Browser::BrowserObject
+    def present?
+      browser_helper.present? @browser.h3 :text => "User ID Taken"
+    end
+
+    def message
+      browser_helper.text ((@browser.ps :id => "topMessage").last)
+    end
+
+    def user_id
+      Textbox.new @browser.text_field(:id => "newUsername")
+    end
+
+    def continue
+      Button.new @browser.button(:id => "btnUserNameTakenContinue")
+    end
+  end
+
   class Membership < Stamps::Browser::BrowserObject
+
     def wait_until_present
       browser_helper.wait_until_present @browser.text_field(:id => "firstName")
       browser_helper.wait_until_present @browser.text_field(:id => "lastName")
@@ -437,12 +456,14 @@ module WebReg
     def submit
       button = Button.new @browser.button(:text => "Submit")
       loading = Button.new @browser.button(:text => "Loading...")
-      welcome = NewAccountWelcomePage.new @browser
+      supplies = ChooseSupplies.new @browser
+      userid_taken = UserIdTaken.new @browser
       50.times do
         button.safe_click
-        sleep 1
+        sleep 2
         loading.wait_while_present
-        return if welcome.present?
+        return userid_taken if userid_taken.present?
+        return supplies if supplies.present?
       end
     end
   end
