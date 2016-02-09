@@ -102,7 +102,7 @@ module Orders
           welcome_orders_page.wait_until_present
           welcome_orders_page.continue if welcome_orders_page.present?
 
-          market_place.wait_until_present
+          #market_place.wait_until_present
           market_place.close if market_place.present?
           break if grid.present?
           end
