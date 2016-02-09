@@ -5,7 +5,8 @@ Feature: Registration
 
   @webreg_specify_username
   Scenario:
-    Then WebR: Set User ID and Email to user defined ORD10000000011
+    Then WebR: Set User ID and Email to user defined AUTOSUGGEST888
+  #ORD10000000011
 
     Then WebReg: Set Password to pass111
     Then WebReg: Set Re-Type password to pass111
