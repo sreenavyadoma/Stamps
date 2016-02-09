@@ -19,6 +19,13 @@ Then /^WebReg: Set User ID and Email to Random Value$/ do
   step "WebReg: Set User ID to #{@random_username}"
 end
 
+Then /^WebR: Set User ID and Email to user defined (.*)$/ do |usrname|
+  @random_username = usrname
+  log.info "WebR: Set User ID and Email to user defined #{@random_username}"
+  step "WebReg: Set Email to #{@random_username}@mailinator.com"
+  step "WebReg: Set User ID to #{@random_username}"
+end
+
 Then /^WebReg: Set Email to (.*)$/ do |email|
   log.info "WebReg: Set Email to #{email}"
   @profile = registration.profile if @profile.nil?
