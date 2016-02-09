@@ -54,7 +54,6 @@ Feature: Registration
     Then PAM: AppCap Overrides: Set Shipping Label Printing to Always On
     Then PAM: AppCap Overrides: Set International Shipping to Always On
     Then PAM: AppCap Overrides: Set Allow High Risk Countries to Always On
-    Then PAM: AppCap Overrides: Set Mailing Label Printing to Always On
     Then PAM: AppCap Overrides: Submit
 
     Then Orders: Load Sign-in page qacc
