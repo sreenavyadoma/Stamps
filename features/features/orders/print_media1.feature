@@ -13,7 +13,6 @@ Feature: Print Media - Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then Pause for 2 seconds
     Then Open Print Modal
     Then Print Modal: Set Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
-    Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
     And Sign out
 

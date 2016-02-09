@@ -19,6 +19,16 @@ module Pam
         return page if page.present?
       end
     end
+
+    def appcapp_overrides
+      link = Stamps::Browser::Link.new @browser.a(:text => "AppCap Overrides")
+      page = AppCapOverrides.new @browser
+      5.times do
+        link.safe_click
+        sleep 1
+        return page if page.present?
+      end
+    end
   end
 
   class CustomerProfile < Stamps::Browser::BrowserObject

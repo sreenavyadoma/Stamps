@@ -46,7 +46,16 @@ Feature: Registration
     Then PAM: Change Meter Limit: Click Submit
 
     Then PAM: Customer Profile: Click ACH Credit link
-    Then PAM: ACH Purchase: Set Amount to $100000.00 and Comments to Some String
+    Then PAM: ACH Purchase: Set Amount to $100000.00
+
+    Then PAM: Customer Profile: Click  AppCap Overrides link
+    Then PAM: AppCap Overrides: Set Internet Postage Printing to Always On
+    Then PAM: AppCap Overrides: Set Netstamps Printing to Always On
+    Then PAM: AppCap Overrides: Set Shipping Label Printing to Always On
+    Then PAM: AppCap Overrides: Set International Shipping to Always On
+    Then PAM: AppCap Overrides: Set Allow High Risk Countries to Always On
+    Then PAM: AppCap Overrides: Set Mailing Label Printing to Always On
+    Then PAM: AppCap Overrides: Submit
 
     Then Orders: Load Sign-in page qacc
     Then Orders: First Time Sign-in to Orders as random/pass111
