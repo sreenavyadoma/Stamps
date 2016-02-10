@@ -212,8 +212,16 @@ module Stamps
       end
     end
 
+    def rand_username
+      "#{('a'..'z').to_a.sample}#{Array.new(rand(6..14)){[*'0'..'9', *'a'..'z'].sample}.join}"
+    end
+
     def random_phone
       "(#{Random.rand(100..999)}) #{Random.rand(100..999)}-#{Random.rand(1000..9999)}"
+    end
+
+    def random_phone_extension
+      "#{Random.rand(10..999)}"
     end
 
     def random_email

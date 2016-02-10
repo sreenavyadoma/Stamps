@@ -112,12 +112,21 @@ module Orders
 
     class AddStoreOrMarketplace < OrdersObject
 
-      def window_title
-        Label.new (@browser.divs :text => "Add your Store or Marketplace").first
-      end
-
       def present?
         window_title.present?
+      end
+
+      def close
+        button = Button.new (@browser.img :css => "img[class*='x-tool-img x-tool-close']")
+        button.click_while_present
+      end
+
+      def wait_until_present
+        window_title.wait_while_present
+      end
+
+      def window_title
+        Label.new (@browser.divs :text => "Add your Store or Marketplace").first
       end
 
       def search_textbox
@@ -1110,7 +1119,7 @@ module Orders
               log.info "Add #{(order_details.present?)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
               return order_details
             end
-            sleep 1
+            sleep 2
           rescue
             #ignore
           end

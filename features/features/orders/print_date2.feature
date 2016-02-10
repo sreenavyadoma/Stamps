@@ -3,7 +3,7 @@ Feature: Date Printed - Today + 1
   Background:
     Given I am signed in to Orders
 
-  @print_date
+  @print_date @print_date_plus1
   Scenario: Set Ship Date to today + 1
     Then Add New Order
     Then Order Details: Set Ship-From to default

@@ -27,7 +27,9 @@ require_relative 'lib/print/print_helper'
 require_relative 'lib/print/helpers'
 require_relative 'lib/print/print_common_form_elements'
 
-require_relative 'lib/webreg/registration_helper'
+require_relative 'lib/webreg/webreg_helper'
+
+require_relative 'lib/pam/pam_helper'
 
 require 'rubygems' # for compatibility with JRuby, MRI 1.8, etc
 #require 'atomic'
@@ -93,4 +95,4 @@ module Selenium
   end # WebDriver
 end # Selenium
 
-World(Stamps,Orders,Print,WebReg)
+World(Stamps,Orders,Print,WebReg,Pam)

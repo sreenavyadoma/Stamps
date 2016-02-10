@@ -20,7 +20,6 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then Close Customs Form
     Then Open Print Modal
     Then Print Modal: Set Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
-    Then Print Modal: Set Printer to "Designer"
     Then Print Modal: Print Sample
     Then Toolbar: Print
     Then Sign out

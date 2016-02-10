@@ -57,7 +57,7 @@ module Orders
     module PrintModal
       class << self
         def date_picker_button
-          {:id => "sdc-printpostagewindow-shipdate-trigger-picker"}
+          {id: "sdc-printpostagewindow-shipdate-trigger-picker"}
         end
       end
     end

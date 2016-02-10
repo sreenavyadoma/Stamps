@@ -8,7 +8,6 @@ module Stamps
         "apple|osx|safari|mac".include? ENV['BROWSER'].downcase
       end
 
-
       def chrome?
         "chrome|gc|google".include? ENV['BROWSER'].downcase
       end
@@ -280,7 +279,6 @@ module Stamps
       def set_until text
         10.times{
           safe_set text
-          sleep 1
           from_textbox = browser_helper.text @field
           from_textbox == "" if from_textbox.nil?
           break if from_textbox.include? text

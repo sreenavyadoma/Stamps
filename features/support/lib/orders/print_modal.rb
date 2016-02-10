@@ -81,16 +81,18 @@ module Orders
 
       def left
         10.times{
-          browser_helper.safe_click left_label_div, "left_label"
-          return true if label_selected? left_label_div
+          begin
+            browser_helper.safe_click left_label_div, "left_label"
+            return true if label_selected? left_label_div
+          rescue
+            #ignore
+          end
         }
         false
       end
 
       def right
         10.times{
-          browser_helper.click right_label_div, "right_label"
-          return true if label_selected? right_label_div
         }
         false
       end
@@ -248,8 +250,8 @@ module Orders
       def today_plus day
         day = day.to_i
         date_picker_header = Label.new @browser.div :class => "x-datepicker-header"
-        picker_button = Button.new @browser.div Orders::Orders::Locators::PrintModal.date_picker_button
-        ship_date_textbox = Textbox.new @browser.text_field :id => "sdc-printpostagewindow-shipdate-inputEl"
+        picker_button = Button.new @browser.div(Orders::Locators::PrintModal.date_picker_button)
+        ship_date_textbox = Textbox.new @browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
 
         ship_date_str = test_helper.now_plus_month_dd day
         ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
