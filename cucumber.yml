@@ -1,10 +1,10 @@
-default: --profile cuke_reports --profile rob_dev
+default: --profile cuke_reports --profile eli_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
 rob_dev: --tags @registration --guess VERBOSE=true URL=qacc BROWSER=ff USR=j4g1gp9ef6hal1 PW=pass111
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
-eli_dev: --tags @netstamps --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
+eli_dev: --tags @wp_contacts --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
 ray_dev: --tags @orders_150 --guess VERBOSE=false URL=qacc BROWSER=ff USR=webpost_0019 PW=pass111
 eva_dev: --tags   @edit_order --guess VERBOSE=true URL=qacc BROWSER=gc USR=cctest1 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
@@ -54,5 +54,14 @@ auto_suggest: --tags @auto_suggest --guess VERBOSE=false
 new_country_code: --tags  @new_country_code --guess VERBOSE=false
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false
 international_rules_engine: --tags  @international_rules_engine --guess VERBOSE=false
+
+wp_bvt: --tags  @wp_bvt --guess VERBOSE=false
+wp_bvt_address_cleansing: --tags  @wp_bvt_address_cleansing --guess VERBOSE=false
+wp_bvt_contacts: --tags  @wp_bvt_contacts --guess VERBOSE=false
+wp_bvt_envelopes: --tags  @wp_bvt_envelopes --guess VERBOSE=false
+wp_bvt_extra_services: --tags  @wp_bvt_extra_services --guess VERBOSE=false
+wp_bvt_purchasing: --tags  @wp_bvt_purchasing --guess VERBOSE=false
+wp_bvt_netstamps_calculate: --tags  @wp_bvt_netstamps_calculate --guess VERBOSE=false
+wp_bvt_netstamps_specify: --tags  @wp_bvt_netstamps_specify --guess VERBOSE=false
 
 

@@ -243,6 +243,51 @@ Cucumber::Rake::Task.new(:fcm_selection_enabled) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:wp_bvt) do |t|
+  t.profile = 'wp_bvt'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_bvt_address_cleansing) do |t|
+  t.profile = 'wp_bvt_address_cleansing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_bvt_contacts) do |t|
+  t.profile = 'wp_bvt_contacts'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_bvt_envelopes) do |t|
+  t.profile = 'wp_bvt_envelopes'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_bvt_extra_services) do |t|
+  t.profile = 'wp_bvt_extra_services'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_bvt_purchasing) do |t|
+  t.profile = 'wp_bvt_purchasing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_bvt_netstamps_calculate) do |t|
+  t.profile = 'wp_bvt_netstamps_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_bvt_netstamps_specify) do |t|
+  t.profile = 'wp_bvt_netstamps_specify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+
+
+
+
 Cucumber::Rake::Task.new(:rob_dev) do |t|
   t.profile = 'rob_dev'
   t.cucumber_opts = "-p cuke_reports"

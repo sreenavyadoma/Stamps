@@ -6,17 +6,29 @@ Feature: Extra Services BVT
     Given I am signed in as a postage shipper
 
   @wp_bvt
+  @wp_bvt_extra_services
   Scenario: Extra Services
 
-    Then Print Postage: Select Print On <media>
-    Then Shipping Labels: Set Ship-From to <address>
-    Then Shipping Labels: Set Ship-To country to <country>
-    Then Shipping Labels: Set Ship-To address to "address"
-    Then Shipping Labels: Set Ounces to <number>
-    Then Shipping Labels: Set Pounds to <number>
-    Then Shipping Labels: Set Service to "service"
+    Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”
+
+    Then Shipping Labels: Set Ship-From to default
+    Then Shipping Labels: Set Ship-To country to United States
+    Then Shipping Labels: Set Ship-To address to
+      | name          | company       | street_address      | city          | state | zip    | country       |
+      | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    | 94102  | United States |
+
+    Then Shipping Labels: Set Pounds to 0
+    Then Shipping Labels: Set Ounces to 1
+    Then Shipping Labels: Set Service to "Priority Mail Package"
+    Then Shipping Labels: Set Hide Postage Value to Unchecked
+
     Then Shipping Labels: Open Extra Services
-    Then Extra Services: Set COD to <number>
+    Then Extra Services: Set Security to Registered Mail
+    Then Extra Services: Set Security Value to $100
+    Then Extra Services: Set Return Receipt to Checked
+    Then Extra Services: Set COD to $20
+    Then Extra Services: Set Handling to Normal
+    Then Extra Services: Set Non-Rectangular to Checked
     Then Extra Services: Click Save
     Then Footer: Print Postage
     Then Sign out

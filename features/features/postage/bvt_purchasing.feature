@@ -4,7 +4,7 @@ Feature: Purchasing BVT
     Given I am signed in as a postage shipper
 
   @wp_bvt
-  @buy_postage
+  @wp_bvt_buy_postage
   Scenario: Purchasing $10
     And Purchase Postage for $10
     Then Expect $10 is added to customer balance

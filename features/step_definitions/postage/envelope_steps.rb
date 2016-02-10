@@ -6,6 +6,7 @@ end
 
 Then /^Envelopes: Set Ship-To country to (.*)/ do |country|
   log.info "Step: Set Print Postage Country to: \n #{country}"
+  @envelope = postage.envelope if @envelope.nil?
   @envelope.ship_to.country.select country
 end
 

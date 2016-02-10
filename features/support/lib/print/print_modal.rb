@@ -24,7 +24,7 @@ module Print
     end
   end
 
-  class Printer < PrintPostageModalObject
+  class Printer < Print::Postage::PrintObject
     def drop_down
       Button.new @browser.div :css => "table[id^=sdc-printpostagewindow-printerdroplist-triggerWrap]>tbody>tr>td>div[class*=x-form-arrow-trigger]"
     end
@@ -60,7 +60,7 @@ module Print
     end
   end
 
-  class PaperTray < PrintPostageModalObject
+  class PaperTray < Print::Postage::PrintObject
     def text_box
       Textbox.new @browser.text_field :css => "input[[id*=combobox]"
     end
