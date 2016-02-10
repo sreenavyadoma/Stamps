@@ -162,83 +162,21 @@ module Orders
                 break
               end
 
-              if welcome_orders_page.present?
-                welcome_orders_page.continue
-                break
-              end
-
-              if market_place.present?
-                market_place.close
-                break
-              end
-
-              if welcome_orders_page.present?
-                welcome_orders_page.continue
-                break
-              end
-
-              if market_place.present?
-                market_place.close
-                break
-              end
-
-              if welcome_orders_page.present?
-                welcome_orders_page.continue
-                break
-              end
-
-              if market_place.present?
-                market_place.close
-                break
-              end
-
-              if welcome_orders_page.present?
-                welcome_orders_page.continue
-                break
-              end
-
-              if market_place.present?
-                market_place.close
-                break
-              end
-
               log.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 
               grid.wait_until_present
               log.info "#{username} Orders Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
               break if grid.present?
-
-              if welcome_orders_page.present?
-                welcome_orders_page.continue
-                break
-              end
-
-              if welcome_modal.present?
-                welcome_modal.ok
-                break
-              end
-
-              if welcome_orders_page.present?
-                welcome_orders_page.continue
-                break
-              end
-
-              if plugin_issue.present?
-                plugin_issue.close
-                break
-              end
-
-              log.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
-              log.info "#{username} Orders Grid is #{(toolbar.present?)?"ready.":"not ready."}"
-
+              break if grid.present?
+              break if grid.present?
               break if grid.present?
 
-              begin
-                toolbar.wait_until_present
-              rescue
-                visit
-              end
+              toolbar.wait_until_present
+              grid.wait_until_present
+              break if grid.present?
+              break if grid.present?
+              break if grid.present?
               visit
             else
               visit

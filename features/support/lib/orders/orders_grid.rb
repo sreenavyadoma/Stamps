@@ -249,13 +249,13 @@ module Orders
           sort_drop_down.scroll_into_view
           sort_drop_down.safe_click unless sort_field.present?
           sort_field.safe_click
-          sleep 3
+          sleep 1
           return true if sort_verify_field.attribute_value("class").include? verify_sort
-          sleep 2
+          sleep 1
           return true if sort_verify_field.attribute_value("class").include? verify_sort
-          sleep 2
+          sleep 1
           return true if sort_verify_field.attribute_value("class").include? verify_sort
-          sleep 2
+          sleep 1
           return true if sort_verify_field.attribute_value("class").include? verify_sort
         }
         false
@@ -922,6 +922,10 @@ module Orders
 
     # Orders Grid
     class OrdersGrid < OrdersObject
+
+      def wait_until_present
+        browser_helper.wait_until_present @browser.div Orders::Locators::OrdersGrid::present
+      end
 
       def present?
         browser_helper.present? @browser.div Orders::Locators::OrdersGrid::present
