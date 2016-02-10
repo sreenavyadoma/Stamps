@@ -3,6 +3,10 @@ Then /^Print Modal: Set Printer to \"(.*)\"$/ do |printer|
   orders.toolbar.print.printer.select printer
 end
 
+Then /^Print Modal: Reprint$/ do
+  orders.toolbar.reprint.reprint
+end
+
 Then /^Print Modal: Set Ship Date to today$/ do
   step "Print Modal: Set Ship Date to today plus #{1}"
 end
@@ -61,11 +65,6 @@ Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
   actual.should eql expected
 end
 
-When /^Open Print Modal$/ do
-  log.info "Step: Open Print Modal"
-  @print_window = orders.toolbar.print
-end
-
 Then /^Print Modal: Set Media \"(.*)\"$/ do |print_media|
   log.info "Step: Print Modal: Set Media #{print_media}"
   orders.toolbar.print.printing_on.select print_media
@@ -84,16 +83,6 @@ Then /^Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do 
     log.info "Test #{(actual_tooltip.include? tooltip)?"Passed":"Failed"}"
     actual_tooltip.should include tooltip
   }
-end
-
-When /^Toolbar: Print$/ do
-  log.info "Step: Print"
-  print_modal = orders.toolbar.print
-  @ship_date = print_modal.ship_date.text
-  @paper_tray = print_modal.paper_tray.text_box.text
-  @printer = print_modal.printer.text_box.text
-  @printing_on = print_modal.printing_on.text_box.text
-  @printing_error = print_modal.print
 end
 
 Then /^Close Print Modal$/ do

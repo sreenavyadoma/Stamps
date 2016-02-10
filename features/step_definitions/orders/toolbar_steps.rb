@@ -11,6 +11,30 @@ When /^Add New Order$/ do
   @number = 0
 end
 
+When /^Open Print Modal$/ do
+  log.info "Step: Open Print Modal"
+  @print_window = orders.toolbar.print
+end
+
+When /^Open Reprint Modal$/ do
+  log.info "Step: Print"
+  @reprint_modal = orders.toolbar.reprint
+end
+
+
+When /^Toolbar: Print$/ do
+  log.info "Step: Print"
+  print_modal = orders.toolbar.print
+  @ship_date = print_modal.ship_date.text
+  @paper_tray = print_modal.paper_tray.text_box.text
+  @printer = print_modal.printer.text_box.text
+  @printing_on = print_modal.printing_on.text_box.text
+  @printing_error = print_modal.print
+end
+Then /^RePrint Modal: Print$/ do
+
+end
+
 Then /^I Add a second order$/ do
   log.info "Step: I Add a second order"
   @order_details = orders.toolbar.add

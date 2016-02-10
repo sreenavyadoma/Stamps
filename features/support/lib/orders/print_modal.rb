@@ -536,4 +536,14 @@ module Orders
     end
   end
 
+  class RePrintModal < PrintModal
+    def present?
+      browser_helper.present? @browser.div(text: "Reprint Label")
+    end
+
+    def reprint
+      button = Button.new @browser.span(id: "sdc-printwin-printbtn-btnInnerEl")
+      button.click_while_present
+    end
+  end
 end
