@@ -11,9 +11,9 @@ module Print
           Textbox.new (@browser.text_field :id => "sdc-mainpanel-shiptotextarea-inputEl")
         end
 
-        def set address
+        def set address0
           text_area.send_keys address
-          text_area.set address
+          text_area.safe_click
         end
 
       end
@@ -31,11 +31,11 @@ module Print
           Textbox.new (@browser.text_field :id => "sdc-intlform-shiptocompanyfield-inputEl")
         end
 
-        def address1
+        def address_1
           Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress1field-inputEl")
         end
 
-        def address2
+        def address_2
           Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress2field-inputEl")
         end
 
@@ -197,36 +197,32 @@ module Print
       end
     end
 
-    class ExtraServices < Print::Postage::PrintObject
-      def button
-        Button.new (@browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl")
-      end
-
-    end
 
     class Service < Print::Postage::PrintObject
+
       def text_box
-        Textbox.new @browser.text_field :name => "nsService"
+        Textbox.new @browser.text_field :name => "servicePackage"
       end
 
       def drop_down
-        Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[6]
+        Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[5]
       end
 
       def select selection
         log.info "Select Service #{selection}"
         box = text_box
         button = drop_down
-        selection_label = Label.new @browser.div :css => "div[data-qtip*='#{selection}']"
+        if selection == "First-Class Mail Letter"
+          selection_label = Label.new @browser.tr :css => "tr[data-qtip*='First-Class Mail Envelope']"
+        else
+          selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
+        end
         10.times {
           begin
             button.safe_click #unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
             selected_service = box.text
-            if selected_service == "First Class (1 - 3 Days)"
-              selected_service = "First Class Mail (1 - 3 Days)"
-            end
             log.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
             break if selected_service.include? selection
           rescue
@@ -375,6 +371,8 @@ module Print
       end
     end
 
+
+
     class Country < Print::Postage::PrintObject
       def drop_down
         Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
@@ -427,7 +425,6 @@ module Print
 
     end
 
-    #sdc-mainpanel-emailcheckbox
 
     class ShipDate < Print::Postage::PrintObject
 
@@ -440,5 +437,20 @@ module Print
       end
 
     end
+
+    class Contacts < Print::Postage::PrintObject
+      def open
+        button = Button.new @browser.a :css => "[class*=sdc-mainpanel-shiptolinkbtn]"
+        contacts_modal = Print::Postage::ContactsModal.new @browser
+        5.times do
+          button.safe_click
+          sleep 1
+          return contacts_modal if contacts_modal.present?
+        end
+        raise "Unable to open Contacts Modal, check your code." unless contacts_modal.present?
+      end
+    end
+
+
   end
 end
