@@ -6,7 +6,7 @@ Feature: Extra Services BVT
     Given I am signed in as a postage shipper
 
   @wp_bvt
-  @wp_contacts
+  @wp_bvt_contacts
   Scenario: Contacts
 
     Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”

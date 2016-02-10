@@ -6,7 +6,7 @@ Feature: Envelopes BVT
     Given I am signed in as a postage shipper
 
   @wp_bvt
-  @wp_envelopes
+  @wp_bvt_envelopes
   Scenario: Envelope
     Then Print Postage: Select Print On Envelope - #10, 4 ⅛” x 9 ½”
     Then Envelopes: Set Ship-From to default

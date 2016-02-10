@@ -6,7 +6,7 @@ Feature: Address Cleansing BVT
     Given I am signed in as a postage shipper
 
   @wp_bvt
-  @wp_address_cleansing
+  @wp_bvt_address_cleansing
   Scenario: Address Cleansing
 
     Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”

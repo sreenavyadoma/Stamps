@@ -6,7 +6,7 @@ Feature: Stamps BVT
     Given I am signed in as a postage shipper
 
   @wp_bvt
-  @wp_netstamps_specify
+  @wp_bvt_netstamps_specify
 
   Scenario: Stamps Specify Postage
     Then Print Postage: Select Print On Stamps
@@ -20,7 +20,7 @@ Feature: Stamps BVT
     And Sign out
 
   @wp_bvt
-  @wp_netstamps_calculate
+  @wp_bvt_netstamps_calculate
   Scenario: Stamps Calculate Postage
     Then Print Postage: Select Print On Stamps
     Then Stamps: Set Serial Number to B54321
