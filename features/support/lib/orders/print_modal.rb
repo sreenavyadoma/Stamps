@@ -81,16 +81,18 @@ module Orders
 
       def left
         10.times{
-          browser_helper.safe_click left_label_div, "left_label"
-          return true if label_selected? left_label_div
+          begin
+            browser_helper.safe_click left_label_div, "left_label"
+            return true if label_selected? left_label_div
+          rescue
+            #ignore
+          end
         }
         false
       end
 
       def right
         10.times{
-          browser_helper.click right_label_div, "right_label"
-          return true if label_selected? right_label_div
         }
         false
       end
