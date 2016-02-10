@@ -55,6 +55,7 @@ new_country_code: --tags  @new_country_code --guess VERBOSE=false
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false
 international_rules_engine: --tags  @international_rules_engine --guess VERBOSE=false
 
+wp_bvt: --tags  @wp_bvt --guess VERBOSE=false
 wp_bvt_address_cleansing: --tags  @wp_bvt_address_cleansing --guess VERBOSE=false
 wp_bvt_contacts: --tags  @wp_bvt_contacts --guess VERBOSE=false
 wp_bvt_envelopes: --tags  @wp_bvt_envelopes --guess VERBOSE=false
