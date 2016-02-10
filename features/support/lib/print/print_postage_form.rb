@@ -12,7 +12,8 @@ module Print
         end
 
         def set address
-          text_area.send_keys address
+          text_area.safe_click
+          text_area.set address
           text_area.safe_click
         end
 
