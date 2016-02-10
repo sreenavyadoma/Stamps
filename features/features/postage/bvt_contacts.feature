@@ -13,5 +13,5 @@ Feature: Extra Services BVT
     Then Shipping Labels: Set Ship-From to default
     Then Shipping Labels: Set Ship-To country to United States
     Then Shipping Labels: Open Contacts modal
-    Then Contacts: Cancel
+    Then Contacts: Click Contacts Page Link
     Then Sign out
