@@ -1,7 +1,17 @@
-#todo-elie make sure changing print ons only happens in one place... here.  so check stamps_step definitions, envelope stap definitions etc.
 Then /^Print Postage: Select Print On (.*)/ do |media|
   log.info "Select Print Postage Print On #{media}"
+
   postage.print_on.select media
+
+  if media.include? 'Stamps'
+    @stamps = postage.stamps
+  elsif media.include? 'Shipping Label'
+    @shipping_label = postage.shipping_label
+  elsif media.include? 'Envelope'
+    @envelope = postage.envelope
+  elsif media.include? 'Certified Mail'
+    @certified_mail = postage.certified_mail
+  end
 end
 
 Then /^Print Postage: Expect Print Media Tooltip to be (.*)$/ do |selection|
@@ -58,33 +68,5 @@ Then /^Print Postage: Set Ship-To country to (.*)/ do |country|
 end
 
 Then /^Print Postage: Expect Ship-To address to be (.*)/ do |address|
-
-end
-
-Then /^Print Postage: Open Extra Services/ do
-
-end
-
-Then /^Extra Services: Set COD to (.*)/ do |amount|
-
-end
-
-Then /^Extra Services: Click Save/ do
-
-end
-
-Then /^Contacts: Search by group - (.*)/ do |filter|
-
-end
-
-Then /^Contacts: Search cost code - (.*)/ do |filter|
-
-end
-
-Then /^Print Postage: Open Contacts modal/ do
-
-end
-
-Then /Contacts: Cancel modal/ do
 
 end
