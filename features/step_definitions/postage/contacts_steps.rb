@@ -11,7 +11,7 @@ Then /^Contacts: Close$/ do
   @contacts.close
 end
 
-Then /Contacts: Cancel$/ do
-  log.info "Step: Contacts: Cancel"
-  @contacts.cancel
+Then /Contacts: Click Contacts Page Link$/ do
+  log.info "Step: Contacts: Click Contacts Page Link"
+  @contacts.view_contacts
 end
