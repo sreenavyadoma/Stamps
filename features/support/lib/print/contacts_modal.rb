@@ -7,10 +7,7 @@ module Print
         browser_helper.safe_click (@browser.img :css => "img[class*='x-tool-img x-tool-close']")
       end
 
-      def cancel
-
-        #button = Button.new @browser.span :text => "Cancel"
-        #@browser.frame(:index => 1).button.click
+      def view_contacts
 
         frame1 = @browser.iframe(:css => 'iframe[class*=sdc-addressbookiframe]')
         frame1.a(:text => 'View Contacts').click
