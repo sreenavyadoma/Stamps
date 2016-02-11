@@ -11,6 +11,16 @@ Then /^Order Details: Collapse Panel$/ do
   orders.details.toolbar.collapse_panel
 end
 
+Then /^Order Details: xxxxx$/ do
+  log.info "Order Details: Collapse Panel"
+  orders.details.present?
+end
+
+Then /^Order Details: yyy$/ do
+  log.info "Order Details: Collapse Panel"
+  orders.details.open
+end
+
 Then /^Order Details: Delete Item (\d+)$/ do |item_number|
   log.info "Step: Order Details: Delete Item #{item_number}"
   item = orders.details.item_grid.item item_number.to_i

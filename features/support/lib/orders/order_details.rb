@@ -2161,15 +2161,34 @@ module Orders
       end
     end
 
+    class CollapsedOrderDetails < OrdersObject
+      def field
+        @browser.img(class: "x-tool-img x-tool-expand-left")
+      end
+
+      def present?
+        browser_helper.present? field
+      end
+
+      def open
+        button = Button.new field
+        5.times do
+          button.safe_click
+          break unless button.present?
+        end
+      end
+    end
+
     class OrderDetailsToolbar < OrdersObject
       class ToolbarMenu < OrdersObject
           def collapse_panel
             selection = Label.new @browser.span(text: "Collapse Panel")
             drop_down = Button.new (@browser.spans(css: "span[class*='sdc-icon-more']").first)
+            collapsed_details = CollapsedOrderDetails.new @browser
             10.times do
               drop_down.safe_click unless selection.present?
               selection.safe_click
-              break unless drop_down.present?
+              break if collapsed_details.present?
             end
           end
       end
@@ -2195,6 +2214,21 @@ module Orders
     end
 
     class OrderDetails < OrderForm
+
+      def present?
+        browser_helper.present? @browser.div :css => "div[id^=singleOrderDetailsForm][id$=body]"
+      end
+
+      def open
+        collapsed_details = CollapsedOrderDetails.new @browser
+        5.times do
+          if collapsed_details.present?
+            collapsed_details.open
+          end
+          break if self.present?
+        end
+      end
+
       def toolbar
         OrderDetailsToolbar.new @browser
       end
@@ -2238,10 +2272,6 @@ module Orders
           break unless cost.include? "$"
         end
         test_helper.remove_dollar_sign cost_label.text
-      end
-
-      def present?
-        browser_helper.present? @browser.div :css => "div[id^=singleOrderDetailsForm][id$=body]"
       end
 
       #todo-rob add
