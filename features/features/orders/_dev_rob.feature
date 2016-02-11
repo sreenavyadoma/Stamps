@@ -6,7 +6,7 @@ Feature: Test Development
   @rob_dev
   Scenario:
     Then Orders Grid:  Order ID: Column: Check Reference Number
-    Then Orders Grid: Sort by Order ID in Ascending order
+    Then Orders Grid: Order ID: Sort Ascending
 
   Scenario:
     Then Add New Order

@@ -152,9 +152,9 @@ end
 Then /^Expect printed Order ID is in Shipped tab$/ do
   log.info "Step: Expect printed Order ID is in Shipped tab"
   grid = orders.filter.shipped
-  grid.order_id.sort.descending
+  grid.order_id.menu.sort_descending
   sleep 1
-  grid.order_id.sort.descending
+  grid.order_id.menu.sort_descending
   row1_order_id = grid.order_id.row 1
   log.info "Shipped - Row #{1} Order ID: #{row1_order_id}"
   log.info "Test #{(@order_id==row1_order_id)?'Passed':'Failed'}"

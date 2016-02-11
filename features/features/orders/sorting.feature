@@ -3,89 +3,86 @@ Feature: Sorting.
   Background:
     Given I am signed in to Orders
 
-  @sort @regression
+  @sort
   Scenario: Orders Grid Sorting
 
-    Then Orders Grid: Sort by Date Printed in Ascending order
-    Then Orders Grid: Sort by Date Printed in Descending order
+    Then Orders Grid: Order ID: Sort Ascending
+    Then Orders Grid: Order ID: Sort Descending
 
-    Then Orders Grid: Sort by Order Total in Ascending order
-    Then Orders Grid: Sort by Order Total in Descending order
+    Then Orders Grid: Order Total: Sort Ascending
+    Then Orders Grid: Order Total: Sort Descending
 
-    Then Orders Grid: Sort by Ship Date in Ascending order
-    Then Orders Grid: Sort by Ship Date in Descending order
+    Then Orders Grid: Ship Date: Sort Ascending
+    Then Orders Grid: Ship Date: Sort Descending
 
-    Then Orders Grid: Sort by Order Status in Ascending order
-    Then Orders Grid: Sort by Order Status in Descending order
+    Then Orders Grid: Order Status: Sort Ascending
+    Then Orders Grid: Order Status: Sort Descending
 
-    Then Orders Grid: Sort by Insured Value in Ascending order
-    Then Orders Grid: Sort by Insured Value in Descending order
+    Then Orders Grid: Insured Value: Sort Ascending
+    Then Orders Grid: Insured Value: Sort Descending
 
-    Then Orders Grid: Sort by Weight in Ascending order
-    Then Orders Grid: Sort by Weight in Descending order
+    Then Orders Grid: Weight: Sort Ascending
+    Then Orders Grid: Weight: Sort Descending
 
-    Then Orders Grid: Sort by Item Name in Ascending order
-    Then Orders Grid: Sort by Item Name in Descending order
+    Then Orders Grid: Item Name: Sort Ascending
+    Then Orders Grid: Item Name: Sort Descending
 
-    Then Orders Grid: Sort by Item SKU in Ascending order
-    Then Orders Grid: Sort by Item SKU in Descending order
+    Then Orders Grid: Item SKU: Sort Ascending
+    Then Orders Grid: Item SKU: Sort Descending
 
-    Then Orders Grid: Sort by Qty in Ascending order
-    Then Orders Grid: Sort by Qty in Descending order
+    Then Orders Grid: Qty: Sort Ascending
+    Then Orders Grid: Qty: Sort Descending
 
-    Then Orders Grid: Sort by Email in Ascending order
-    Then Orders Grid: Sort by Email in Descending order
+    Then Orders Grid: Email: Sort Ascending
+    Then Orders Grid: Email: Sort Descending
 
-    Then Orders Grid: Sort by Phone in Ascending order
-    Then Orders Grid: Sort by Phone in Descending order
+    Then Orders Grid: Phone: Sort Ascending
+    Then Orders Grid: Phone: Sort Descending
 
-    Then Orders Grid: Sort by Country in Ascending order
-    Then Orders Grid: Sort by Country in Descending order
+    Then Orders Grid: Country: Sort Ascending
+    Then Orders Grid: Country: Sort Descending
 
-    Then Orders Grid: Sort by Zip in Ascending order
-    Then Orders Grid: Sort by Zip in Descending order
+    Then Orders Grid: Zip: Sort Ascending
+    Then Orders Grid: Zip: Sort Descending
 
-    Then Orders Grid: Sort by State in Ascending order
-    Then Orders Grid: Sort by State in Descending order
+    Then Orders Grid: State: Sort Ascending
+    Then Orders Grid: State: Sort Descending
 
-    Then Orders Grid: Sort by City in Ascending order
-    Then Orders Grid: Sort by City in Descending order
+    Then Orders Grid: City: Sort Ascending
+    Then Orders Grid: City: Sort Descending
 
-    Then Orders Grid: Sort by Address in Ascending order
-    Then Orders Grid: Sort by Address in Descending order
+    Then Orders Grid: Address: Sort Ascending
+    Then Orders Grid: Address: Sort Descending
 
-    Then Orders Grid: Sort by Company in Ascending order
-    Then Orders Grid: Sort by Company in Descending order
+    Then Orders Grid: Company: Sort Ascending
+    Then Orders Grid: Company: Sort Descending
 
-    Then Orders Grid: Sort by Recipient in Ascending order
-    Then Orders Grid: Sort by Recipient in Descending order
+    Then Orders Grid: Recipient: Sort Ascending
+    Then Orders Grid: Recipient: Sort Descending
 
-    Then Orders Grid: Sort by Order Date in Ascending order
-    Then Orders Grid: Sort by Order Date in Descending order
+    Then Orders Grid: Order Date: Sort Ascending
+    Then Orders Grid: Order Date: Sort Descending
 
-    Then Orders Grid: Sort by Order ID in Ascending order
-    Then Orders Grid: Sort by Order ID in Descending order
+    Then Orders Grid: Age: Sort Ascending
+    Then Orders Grid: Age: Sort Descending
 
-    Then Orders Grid: Sort by Age in Ascending order
-    Then Orders Grid: Sort by Age in Descending order
+    #Then Orders Grid: Ship Cost: Sort Ascending
+    #Then Orders Grid: Ship Cost: Sort Descending
 
-    #Then Orders Grid: Sort by Ship Cost in Ascending order
-    #Then Orders Grid: Sort by Ship Cost in Descending order
+    #Then Orders Grid: Tracking No.: Sort Ascending
+    #Then Orders Grid: Tracking No.: Sort Descending
 
-    #Then Orders Grid: Sort by Tracking No. in Ascending order
-    #Then Orders Grid: Sort by Tracking No. in Descending order
+    #Then Orders Grid: Cost Code: Sort Ascending
+    #Then Orders Grid: Cost Code: Sort Descending
 
-    #Then Orders Grid: Sort by Cost Code in Ascending order
-    #Then Orders Grid: Sort by Cost Code in Descending order
+    #Then Orders Grid: Reference No.: Sort Ascending
+    #Then Orders Grid: Reference No.: Sort Descending
 
-    #Then Orders Grid: Sort by Reference No. in Ascending order
-    #Then Orders Grid: Sort by Reference No. in Descending order
+    #Then Orders Grid: Service: Sort Ascending
+    #Then Orders Grid: Service: Sort Descending
 
-    #Then Orders Grid: Sort by Service in Ascending order
-    #Then Orders Grid: Sort by Service in Descending order
-
-    #Then Orders Grid: Sort by Ship From in Ascending order
-    #Then Orders Grid: Sort by Ship From in Descending order
+    #Then Orders Grid: Ship From: Sort Ascending
+    #Then Orders Grid: Ship From: Sort Descending
 
 
 

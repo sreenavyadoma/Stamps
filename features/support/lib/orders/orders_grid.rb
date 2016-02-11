@@ -1,7 +1,6 @@
 module Orders
 
   module Grid
-    # Grid Columns
     class Column < OrdersObject
       MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
       TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
@@ -133,7 +132,7 @@ module Orders
       end
     end
 
-    class Menu < OrdersObject
+    class ColumnMenu < Column
       class Columns < OrdersObject
         def checkbox selection
           case selection
@@ -161,34 +160,60 @@ module Orders
           checkbox :cost_code
         end
       end
-      def drop_down
 
+      def select column, sort_order
+        scroll column
+        column_field = column_name_field column
+        sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
+        sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[3]
+
+        sort_field_id = (sort_order==:sort_ascending)?"Sort Ascending":"Sort Descending"
+        verify_sort = (sort_order==:sort_ascending)?"ASC":"DESC"
+        sort_field = Label.new @browser.span :text => sort_field_id
+
+        15.times{
+          sort_drop_down.scroll_into_view
+          sort_drop_down.safe_click unless sort_field.present?
+          sort_field.safe_click
+          sleep 1
+          return true if sort_verify_field.attribute_value("class").include? verify_sort
+          sleep 1
+          return true if sort_verify_field.attribute_value("class").include? verify_sort
+          sleep 1
+          return true if sort_verify_field.attribute_value("class").include? verify_sort
+          sleep 1
+          return true if sort_verify_field.attribute_value("class").include? verify_sort
+        }
+        false
       end
 
-      def sort_ascending
-
+      def initialize browser, column
+        super browser
+        @column = column
       end
 
-      def sort_descending
-
-      end
-
-      def columns
-
-      end
-    end
-
-    class OrderId < Column
       def columns
         Columns.new @browser
       end
+
+      def sort_ascending
+        select @column, :sort_ascending
+      end
+
+      def sort_descending
+        select @column, :sort_descending
+      end
+
+    end
+
+    class OrderId < Column
 
       def exist? order_id
         row_number order_id > 0
       end
 
-      def sort
-        Sort.new @browser, :order_id
+      def menu
+        ColumnMenu.new @browser, :order_id
       end
 
       def scroll_into_view
@@ -221,8 +246,8 @@ module Orders
 
     class Store < Column
 
-      def sort
-        Sort.new @browser, :store
+      def menu
+        ColumnMenu.new @browser, :store
       end
 
       def scroll_into_view
@@ -240,8 +265,8 @@ module Orders
 
     class Age < Column
 
-      def sort
-        Sort.new @browser, :age
+      def menu
+        ColumnMenu.new @browser, :age
       end
 
       def scroll_into_view
@@ -259,8 +284,8 @@ module Orders
 
     class OrderDate < Column
 
-      def sort
-        Sort.new @browser, :order_date
+      def menu
+        ColumnMenu.new @browser, :order_date
       end
 
       def scroll_into_view
@@ -276,54 +301,10 @@ module Orders
       end
     end
 
-    class Sort < Column
-      private
-      def sort column, sort_order
-        scroll column
-        column_field = column_name_field column
-        sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
-        sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[3]
-
-        sort_field_id = (sort_order==:ascending)?"Sort Ascending":"Sort Descending"
-        verify_sort = (sort_order==:ascending)?"ASC":"DESC"
-        sort_field = Label.new @browser.span :text => sort_field_id
-
-        15.times{
-          sort_drop_down.scroll_into_view
-          sort_drop_down.safe_click unless sort_field.present?
-          sort_field.safe_click
-          sleep 1
-          return true if sort_verify_field.attribute_value("class").include? verify_sort
-          sleep 1
-          return true if sort_verify_field.attribute_value("class").include? verify_sort
-          sleep 1
-          return true if sort_verify_field.attribute_value("class").include? verify_sort
-          sleep 1
-          return true if sort_verify_field.attribute_value("class").include? verify_sort
-        }
-        false
-      end
-
-      public
-      def initialize browser, column
-        super browser
-        @column = column
-      end
-
-      def ascending
-        sort @column, :ascending
-      end
-
-      def descending
-        sort @column, :descending
-      end
-
-    end
-
     class Recipient < Column
 
-      def sort
-        Sort.new @browser, :recipient
+      def menu
+        ColumnMenu.new @browser, :recipient
       end
 
       def scroll_into_view
@@ -342,8 +323,8 @@ module Orders
 
     class Company < Column
 
-      def sort
-        Sort.new @browser, :company
+      def menu
+        ColumnMenu.new @browser, :company
       end
 
       def scroll_into_view
@@ -361,8 +342,8 @@ module Orders
 
     class Address < Column
 
-      def sort
-        Sort.new @browser, :address
+      def menu
+        ColumnMenu.new @browser, :address
       end
 
       def scroll_into_view
@@ -380,8 +361,8 @@ module Orders
 
     class City < Column
 
-      def sort
-        Sort.new @browser, :city
+      def menu
+        ColumnMenu.new @browser, :city
       end
 
       def scroll_into_view
@@ -399,8 +380,8 @@ module Orders
 
     class State < Column
 
-      def sort
-        Sort.new @browser, :state
+      def menu
+        ColumnMenu.new @browser, :state
       end
 
       def scroll_into_view
@@ -418,8 +399,8 @@ module Orders
 
     class Zip < Column
 
-      def sort
-        Sort.new @browser, :zip
+      def menu
+        ColumnMenu.new @browser, :zip
       end
 
       def scroll_into_view
@@ -437,8 +418,8 @@ module Orders
 
     class Phone < Column
 
-      def sort
-        Sort.new @browser, :phone
+      def menu
+        ColumnMenu.new @browser, :phone
       end
 
       def scroll_into_view
@@ -456,8 +437,8 @@ module Orders
 
     class Email < Column
 
-      def sort
-        Sort.new @browser, :email
+      def menu
+        ColumnMenu.new @browser, :email
       end
 
       def scroll_into_view
@@ -475,8 +456,8 @@ module Orders
 
     class Qty < Column
 
-      def sort
-        Sort.new @browser, :qty
+      def menu
+        ColumnMenu.new @browser, :qty
       end
 
       def scroll_into_view
@@ -494,8 +475,8 @@ module Orders
 
     class ItemSKU < Column
 
-      def sort
-        Sort.new @browser, :item_sku
+      def menu
+        ColumnMenu.new @browser, :item_sku
       end
 
       def scroll_into_view
@@ -513,8 +494,8 @@ module Orders
 
     class ItemName < Column
 
-      def sort
-        Sort.new @browser, :item_name
+      def menu
+        ColumnMenu.new @browser, :item_name
       end
 
       def scroll_into_view
@@ -532,8 +513,8 @@ module Orders
 
     class Weight < Column
 
-      def sort
-        Sort.new @browser, :weight
+      def menu
+        ColumnMenu.new @browser, :weight
       end
 
       def scroll_into_view
@@ -559,8 +540,8 @@ module Orders
 
     class InsuredValue < Column
 
-      def sort
-        Sort.new @browser, :insured_value
+      def menu
+        ColumnMenu.new @browser, :insured_value
       end
 
       def scroll_into_view
@@ -578,8 +559,8 @@ module Orders
 
     class OrderStatus < Column
 
-      def sort
-        Sort.new @browser, :order_status
+      def menu
+        ColumnMenu.new @browser, :order_status
       end
 
       def scroll_into_view
@@ -597,8 +578,8 @@ module Orders
 
     class ShipDate < Column
 
-      def sort
-        Sort.new @browser, :ship_date
+      def menu
+        ColumnMenu.new @browser, :ship_date
       end
 
       def scroll_into_view
@@ -616,8 +597,8 @@ module Orders
 
     class ShipFrom < Column
 
-      def sort
-        Sort.new @browser, :ship_from
+      def menu
+        ColumnMenu.new @browser, :ship_from
       end
 
       def scroll_into_view
@@ -635,8 +616,8 @@ module Orders
 
     class OrderTotal < Column
 
-      def sort
-        Sort.new @browser, :order_total
+      def menu
+        ColumnMenu.new @browser, :order_total
       end
 
       def scroll_into_view
@@ -654,8 +635,8 @@ module Orders
 
     class Country < Column
 
-      def sort
-        Sort.new @browser, :country
+      def menu
+        ColumnMenu.new @browser, :country
       end
 
       def scroll_into_view
@@ -673,8 +654,8 @@ module Orders
 
     class ShipCost < Column
 
-      def sort
-        Sort.new @browser, :ship_cost
+      def menu
+        ColumnMenu.new @browser, :ship_cost
       end
 
       def scroll_into_view
@@ -712,8 +693,8 @@ module Orders
 
     class Company < Column
 
-      def sort
-        Sort.new @browser, :company
+      def menu
+        ColumnMenu.new @browser, :company
       end
 
       def scroll_into_view
@@ -731,8 +712,8 @@ module Orders
 
     class Service < Column
 
-      def sort
-        Sort.new @browser, :service
+      def menu
+        ColumnMenu.new @browser, :service
       end
 
       def scroll_into_view
@@ -750,8 +731,8 @@ module Orders
 
     class ReferenceNo < Column
 
-      def sort
-        Sort.new @browser, :reference_no
+      def menu
+        ColumnMenu.new @browser, :reference_no
       end
 
       def scroll_into_view
@@ -769,8 +750,8 @@ module Orders
 
     class CostCode < Column
 
-      def sort
-        Sort.new @browser, :cost_code
+      def menu
+        ColumnMenu.new @browser, :cost_code
       end
 
       def scroll_into_view
@@ -788,8 +769,8 @@ module Orders
 
     class Tracking < Column
 
-      def sort
-        Sort.new @browser, :tracking_no
+      def menu
+        ColumnMenu.new @browser, :tracking_no
       end
 
       def scroll_into_view
@@ -807,8 +788,8 @@ module Orders
 
     class DatePrinted < Column
 
-      def sort
-        Sort.new @browser, :print_date
+      def menu
+        ColumnMenu.new @browser, :print_date
       end
 
       def scroll_into_view

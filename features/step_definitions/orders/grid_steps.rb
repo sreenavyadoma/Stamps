@@ -2,7 +2,7 @@ Then /^Toolbar: Move to Shipped$/ do
   log.info "Toolbar: Move to Shipped"
   grid = orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
-  grid.order_date.sort.descending
+  grid.order_date.menu.sort_descending
   grid.checkbox.check_order_id @order_id
   grid.toolbar.move.to_shipped.cancel
   grid.toolbar.move.to_shipped.move
@@ -11,7 +11,7 @@ end
 Then /^Expect order moved to Shipped$/ do
   log.info "Expect order moved to Shipped"
   grid = orders.filter.shipped
-  grid.order_date.sort.descending
+  grid.order_date.menu.sort_descending
   row = grid.order_id.row_num @order_id
   log.info "Test #{(row > 0)?"Passed":"Failed"}"
   row.should be > 0
@@ -21,7 +21,7 @@ Then /^Toolbar: Move to Canceled$/ do
   log.info "Toolbar: Move to Canceled"
   grid = orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
-  grid.order_date.sort.descending
+  grid.order_date.menu.sort_descending
   grid.checkbox.check_order_id @order_id
   grid.toolbar.move.to_canceled.cancel
   grid.toolbar.move.to_canceled.move
@@ -30,7 +30,7 @@ end
 Then /^Expect order moved to Canceled$/ do
   log.info "Expect order moved to Canceled"
   grid = orders.filter.shipped
-  grid.order_date.sort.descending
+  grid.order_date.menu.sort_descending
   row = grid.order_id.row_num @order_id
   log.info "Test #{(row > 0)?"Passed":"Failed"}"
   row.should be > 0
@@ -40,7 +40,7 @@ Then /^Move order to Awaiting Shipment$/ do
   log.info "Move order to Awaiting Shipmen"
   grid = orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
-  grid.order_date.sort.descending
+  grid.order_date.menu.sort_descending
   grid.checkbox.check_order_id @order_id
   grid.toolbar.move.to_awaiting_shipment.cancel
   grid.toolbar.move.to_awaiting_shipment.move
@@ -49,7 +49,7 @@ end
 Then /^Expect order moved to Awaiting Shipment$/ do
   log.info "Expect order moved to Awaiting Shipment"
   grid = orders.filter.shipped
-  grid.order_date.sort.descending
+  grid.order_date.menu.sort_descending
   row = grid.order_id.row_num @order_id
   log.info "Test #{(row > 0)?"Passed":"Failed"}"
   row.should be > 0
@@ -58,7 +58,7 @@ end
 Then /^Orders Grid: Expect Date Printed for this order to be today$/ do
   log.info "Orders Grid: Expect Date Printed for this order to be today"
   grid = orders.filter.shipped
-  grid.order_id.sort.descending
+  grid.order_id.menu.sort_descending
   grid_print_date = grid.print_date.data @order_id # Dec 3
   expected_print_date = Date.today.strftime "%b %-d"
 
@@ -79,7 +79,7 @@ Then /^Orders Grid: Expect Ship Date for this order to be today plus (\d+)$/ do 
   grid = orders.filter.shipped
 
   10.times{
-    grid.order_id.sort.descending
+    grid.order_id.menu.sort_descending
     grid_ship_date = grid.ship_date.data @order_id # Dec 3
     log.info "Order ID:  #{@order_id} - Print Modal Saved Ship Date: #{@ship_date} - Orders Grid Ship Date:  #{grid_ship_date}"
 

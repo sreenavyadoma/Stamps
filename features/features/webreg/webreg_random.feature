@@ -61,4 +61,4 @@ Feature: Registration
     Then Pause for 2 seconds
     Then WebReg:  Send username to standard out
     #Then Orders Grid:  Order ID: Column: Check Reference Number
-    #Then Orders Grid: Sort by Order ID in Ascending order
+    #Then Orders Grid: Order ID: Sort Ascending
