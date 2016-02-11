@@ -3,7 +3,11 @@ Feature: Test Development
   Background:
     Given I am signed in to Orders
 
-    @rob_dev_signout
+  @rob_dev
+  Scenario:
+    Then Orders Grid:  Order ID: Column: Check Reference Number
+    Then Orders Grid: Sort by Order ID in Ascending order
+
   Scenario:
     Then Add New Order
     Then Order Details: Set Ship-To to Random Address in Zone 1

@@ -296,7 +296,6 @@ module Print
     end
 
 
-
     class NonDeliveryNotice < Print::Postage::PrintObject
       def checkbox
         checkbox_field = @browser.input :css => "input[id^=sdc-extraserviceswin-nndcheckbox-inputEl]"
@@ -308,7 +307,6 @@ module Print
 
       end
     end
-
 
 
     class Fragile < Print::Postage::PrintObject

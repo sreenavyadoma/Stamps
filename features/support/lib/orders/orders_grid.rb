@@ -60,9 +60,7 @@ module Orders
       end
 
       def column_name_field column
-        column_name = @browser.span :text => GRID_COLUMNS[column]
-        #log.info "Column symbol \"#{column}\" is \"#{browser_helper.text column_name}\""
-        column_name
+        @browser.span :text => GRID_COLUMNS[column]
       end
 
       def empty?
@@ -135,12 +133,47 @@ module Orders
       end
     end
 
-    class Columns < OrdersObject
-      def reference_no
+    class Menu < OrdersObject
+      class Columns < OrdersObject
+        def checkbox selection
+          case selection
+            when :reference_no
+              name = "Reference No."
+            when :cost_code
+              name = "Cost Code"
+            else
+          end
+
+          divs = @browser.divs css: "div[id^=menucheckitem][class*=x-menu-item-default]"
+          divs.each do |div|
+            title = div.a.span.text
+            if title == name
+              return Stamps::Browser::Checkbox.new div.a.div, div, "class", "checked"
+            end
+          end
+        end
+
+        def reference_no
+          checkbox :reference_no
+        end
+
+        def cost_code
+          checkbox :cost_code
+        end
+      end
+      def drop_down
 
       end
 
-      def cost_code
+      def sort_ascending
+
+      end
+
+      def sort_descending
+
+      end
+
+      def columns
 
       end
     end

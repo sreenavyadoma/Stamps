@@ -34,6 +34,14 @@ Then /^Orders Grid: Sort by Order ID in Descending order$/ do
   sorted.should be true
 end
 
+Then /^Orders Grid:  Order ID: Column: Check Reference Number$/ do
+  orders.grid.order_id.columns.reference_no.check
+end
+
+Then /^Orders Grid:  Order ID: Column: Check Cost Code$/ do
+  orders.grid.order_id.columns.cost_code.check
+end
+
 Then /^Orders Grid: Sort by Order Date in Ascending order$/ do
   sorted = orders.grid.order_date.sort.ascending
   log.info "Step #{(sorted)?'Passed':'Failed'} - Orders Grid: Sort by Order Date in Ascending order"

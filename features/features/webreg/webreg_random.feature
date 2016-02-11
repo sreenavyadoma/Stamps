@@ -58,3 +58,6 @@ Feature: Registration
     Then Orders: Load Sign-in page qacc
     Then Orders: First Time Sign-in to Orders as random/pass111
     Then Add New Order
+    Then Pause for 2 seconds
+    Then Orders Grid:  Order ID: Column: Check Reference Number
+    Then Orders Grid: Sort by Order ID in Ascending order
