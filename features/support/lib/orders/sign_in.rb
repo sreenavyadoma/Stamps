@@ -32,6 +32,14 @@ module Orders
         browser_helper.present? (@browser.span :text => "Continue")
       end
 
+      def close
+        button = Button.new @browser.img(css: 'img[class*=x-tool-close]')
+        5.times do
+          button.safe_click
+          break unless button.present?
+        end
+      end
+
       def wait_until_present
         browser_helper.wait_until_present (@browser.span :text => "Continue")
       end
@@ -100,6 +108,7 @@ module Orders
           sign_in_button.safe_click
 
           welcome_orders_page.wait_until_present
+          welcome_orders_page.close if welcome_orders_page.present?
           welcome_orders_page.continue if welcome_orders_page.present?
 
           #market_place.wait_until_present
