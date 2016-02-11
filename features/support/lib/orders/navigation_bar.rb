@@ -36,13 +36,14 @@ module Orders
           }
         end
 
-        def wait_until_update old_balance
-          balance_field = Label.new @browser.span :id => 'postageBalanceAmt'
+        def new_balance old_balance
+          balance_field = Label.new @browser.span(id: 'postageBalanceAmt')
           10.times{
-            break unless balance_field.text.include? old_balance.to_s
+            balance = test_helper.remove_dollar_sign balance_field.text
+            break unless balance.include? old_balance.to_s
             sleep(1)
           }
-          self
+          test_helper.remove_dollar_sign balance_field.text
         end
       end
 

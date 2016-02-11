@@ -58,22 +58,22 @@ Then /^Expect Printing cost is deducted from customer balance if there were no p
   log.info "Step: Expect Printing cost is deducted from customer balance if there were no printing errors"
   log.info "Printing Error:  #{@printing_error}"
   log.info "Old Balance: #{@old_balance}"
-  if @printing_error
+  if @printing_error.length > 0
     @new_balance = orders.navigation_bar.balance.amount
     balance_deduction = @old_balance.to_f == @new_balance.to_f
     log.info "Printing error detected."
     log.info "Account balance should be the same.  Old balance: #{@old_balance}, New balance: #{@new_balance} ##{(balance_deduction)?"Passed":"Failed"}"
-    expect(balance_deduction).to be true
+    balance_deduction.should be true
   else
-    @new_balance = orders.navigation_bar.balance.wait_until_update(@old_balance).balance
+    @new_balance = orders.navigation_bar.balance.new_balance(@old_balance)
     postage_total_calculation = @total_amount.to_f.round(2) == (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
     log.info "Postage total Calculation:  #{(postage_total_calculation)?'Passed':'Failed'}.  #{@total_amount} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
-    expect(postage_total_calculation).to be true
+    postage_total_calculation.should be true
     new = @new_balance.to_f.round(2)
     calculated = (@old_balance.to_f - (@service_cost.to_f + @tracking_cost.to_f)).round(2)
     balance_deduction = new == calculated
     log.info "Customer Balance:  #{(balance_deduction)?'Passed':'Failed'}.  (New Balance)#{@new_balance} == (Old balance) #{@old_balance} - ((Service) #{@service_cost} + (Tracking) #{@tracking_cost})"
-    expect(balance_deduction).to be true
+    balance_deduction.should be true
   end
 end
 
