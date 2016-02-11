@@ -135,7 +135,20 @@ module Orders
       end
     end
 
+    class Columns < OrdersObject
+      def reference_no
+
+      end
+
+      def cost_code
+
+      end
+    end
+
     class OrderId < Column
+      def columns
+        Columns.new @browser
+      end
 
       def exist? order_id
         row_number order_id > 0
@@ -232,9 +245,6 @@ module Orders
 
     class Sort < Column
       private
-
-      # x-column-header-sort-ASC
-      # x-column-header-sort-DESC
       def sort column, sort_order
         scroll column
         column_field = column_name_field column
@@ -262,7 +272,6 @@ module Orders
       end
 
       public
-
       def initialize browser, column
         super browser
         @column = column
