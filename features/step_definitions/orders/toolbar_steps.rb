@@ -31,9 +31,6 @@ When /^Toolbar: Print$/ do
   @printing_on = print_modal.printing_on.text_box.text
   @printing_error = print_modal.print
 end
-Then /^RePrint Modal: Print$/ do
-
-end
 
 Then /^I Add a second order$/ do
   log.info "Step: I Add a second order"

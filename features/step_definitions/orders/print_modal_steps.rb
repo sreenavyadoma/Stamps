@@ -3,7 +3,7 @@ Then /^Print Modal: Set Printer to \"(.*)\"$/ do |printer|
   orders.toolbar.print.printer.select printer
 end
 
-Then /^Print Modal: Reprint$/ do
+Then /^Reprint Modal: Reprint$/ do
   orders.toolbar.reprint.reprint
 end
 

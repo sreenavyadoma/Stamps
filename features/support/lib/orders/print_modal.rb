@@ -543,7 +543,11 @@ module Orders
 
     def reprint
       button = Button.new @browser.span(id: "sdc-printwin-printbtn-btnInnerEl")
-      button.click_while_present
+      10.times do
+        button.safe_click
+        button.safe_click
+        break unless present?
+      end
     end
   end
 end

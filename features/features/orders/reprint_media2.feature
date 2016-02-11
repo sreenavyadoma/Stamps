@@ -31,7 +31,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
     Then Set Orders Grid New Order ID to check
     Then Open Reprint Modal
     Then Reprint Modal: Set Media "Roll - 4" x 6" Shipping Label"
-    Then Toolbar: Reprint
+    Then Reprint Modal: Reprint
 
     Then Sign out
 
