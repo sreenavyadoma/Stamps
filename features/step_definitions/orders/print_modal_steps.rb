@@ -90,6 +90,11 @@ Then /^Close Print Modal$/ do
   orders.toolbar.print.close
 end
 
+Then /^Close Reprint Modal$/ do
+  log.info "Step: Close Print Modal"
+  orders.toolbar.print.close
+end
+
 Then /^Print expecting error (.*)$/ do |error_message|
   log.info "Step: Print expecting error #{error_message}"
   order_error = orders.toolbar.print_expecting_error
