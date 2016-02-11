@@ -1019,6 +1019,15 @@ module Orders
         SettingsMenu.new @browser
       end
 
+      def reprint
+        button = Button.new @browser.span(text: "Reprint")
+        modal = RePrintModal.new @browser
+        10.times do
+          return modal if modal.present?
+          button.safe_click
+        end
+      end
+
       def print
         open_window Orders::PrintModal.new @browser
       end
@@ -1042,7 +1051,7 @@ module Orders
 
       def open_window window
         return window if window.present?
-        print = print_button
+        print = Button.new ((@browser.spans :css => "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
 
         print.click
 
@@ -1140,10 +1149,6 @@ module Orders
 
       def browser_settings_button
         Button.new (@browser.span :css => "span[class*=sdc-icon-settings]")
-      end
-
-      def print_button
-        Button.new ((@browser.spans :css => "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
       end
 
       def usps_intl_terms
