@@ -187,8 +187,11 @@ Then /^PAM: AppCap Overrides: Submit$/ do
   @customer_profile = @appcapp_overrides.submit.ok
 end
 
-Then /^$/ do
-
+Then /^WebReg:  Send username to standard out$/ do
+  log.info "NEW USER ID ######## #{@random_username} ########"
+  log.info "NEW USER ID ######## #{@random_username} ########"
+  log.info "NEW USER ID ######## #{@random_username} ########"
+  log.info "NEW USER ID ######## #{@random_username} ########"
 end
 
 

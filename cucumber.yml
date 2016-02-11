@@ -27,6 +27,7 @@ print_date: --tags @print_date --guess VERBOSE=true
 print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false
 print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=true
 print_layouts_cn22_cp72: --tags @print_two_up_expanded --guess VERBOSE=false
+update_postage_balance: --tags @print_two_up_expanded --guess VERBOSE=false
 
 local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=true
 tracking_defaults: --tags @tracking_defaults --guess VERBOSE=true

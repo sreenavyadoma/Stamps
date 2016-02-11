@@ -18,5 +18,3 @@ Feature: Postage Balance
     Then Toolbar: Print
     Then Expect Printing cost is deducted from customer balance if there were no printing errors
     And Sign out
-
-#todo-eva Re-run this test and create jenkins job for it.

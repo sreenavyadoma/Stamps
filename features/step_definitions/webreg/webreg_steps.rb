@@ -867,10 +867,7 @@ Then /^WebReg: Mailing Info Submit$/ do
       welcome_page = @reg_result.place_order
       welcome_page.wait_until_present
       if welcome_page.present?
-        log.info "NEW USER ID ######## #{@random_username} ########"
-        log.info "NEW USER ID ######## #{@random_username} ########"
-        log.info "NEW USER ID ######## #{@random_username} ########"
-        log.info "NEW USER ID ######## #{@random_username} ########"
+        step "WebReg:  Send username to standard out"
       end
   end
 end
