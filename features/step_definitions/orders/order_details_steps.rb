@@ -6,8 +6,13 @@ Then /^Order Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do 
   item.description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
 end
 
-Then /^Delete Order Details Item (\d+)$/ do |item_number|
-  log.info "Step: Delete Order Details Item #{item_number}"
+Then /^Order Details: Collapse Panel$/ do
+  log.info "Order Details: Collapse Panel"
+  orders.details.toolbar.collapse_panel
+end
+
+Then /^Order Details: Delete Item (\d+)$/ do |item_number|
+  log.info "Step: Order Details: Delete Item #{item_number}"
   item = orders.details.item_grid.item item_number.to_i
   item.delete.safe_click
 end

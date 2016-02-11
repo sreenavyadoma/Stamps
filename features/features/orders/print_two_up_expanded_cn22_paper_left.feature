@@ -17,8 +17,8 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
     Then Order Details: Add Item 2, Qty 2, ID random, Description random
     Then Order Details: Add Item 3, Qty 3, ID random, Description random
 
-    Then Delete Order Details Item 1
-    Then Delete Order Details Item 2
+    Then Order Details: Delete Item 1
+    Then Order Details: Delete Item 2
 
     Then Open Customs Form
     Then Customs Form: Set Package Contents to "Merchandise"

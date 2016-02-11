@@ -2161,7 +2161,43 @@ module Orders
       end
     end
 
+    class OrderDetailsToolbar < OrdersObject
+      class ToolbarMenu < OrdersObject
+          def collapse_panel
+            selection = Label.new @browser.span(text: "Collapse Panel")
+            drop_down = Button.new (@browser.spans(css: "span[class*='sdc-icon-more']").first)
+            10.times do
+              drop_down.safe_click unless selection.present?
+              selection.safe_click
+              break unless drop_down.present?
+            end
+          end
+      end
+
+      def menu
+        ToolbarMenu.new @browser
+      end
+
+      def order_id
+        order_id_label = Label.new @browser.bs(:css => "label>b").first
+        5.times{
+          begin
+            order_id_str = order_id_label.text
+            return order_id_str.split('#').last if order_id_str.include? '#'
+          rescue
+            #ignroe
+          end
+        }
+
+        raise "Unable to obtain Order ID from Single Order Details Form"
+      end
+
+    end
+
     class OrderDetails < OrderForm
+      def toolbar
+        OrderDetailsToolbar.new @browser
+      end
 
       def ship_from
         ShipFromAddress.new @browser
@@ -2214,13 +2250,6 @@ module Orders
         ItemGrid.new @browser
       end
 
-
-
-
-
-
-
-
       def items_count
         begin
           count = (@browser.text_fields :css => "div[id^=singleorderitem][id$=innerCt]").size
@@ -2230,7 +2259,6 @@ module Orders
           0
         end
       end
-
 
       def add_item
         add_item = Link.new @browser.span :text => "Add Item"
@@ -2329,30 +2357,9 @@ module Orders
       def ounces_qtip_error_displayed?(message) # "The maximum value for this field is 70"
         ounces_qtip_error.include?(message)
       end
-
-      def order_id
-        order_id_label = Label.new @browser.bs(:css => "label>b").first
-        5.times{
-          begin
-            order_id_str = order_id_label.text
-            return order_id_str.split('#').last if order_id_str.include? '#'
-          rescue
-            #ignroe
-          end
-        }
-
-        raise "Unable to obtain Order ID from Single Order Details Form"
-      end
-
-      def order_status
-        label = Label.new @browser.label :css => "div[id^=orderDetailsPanel]>div[id^=singleOrderDetailsForm]>div>div[id^=container]>div>div>div>div>label"
-        label.text
-      end
-
       def validate_address_link
         @browser.span :text => 'Validate Address'
       end
-
 
     end
   end
