@@ -11,13 +11,13 @@ Then /^Order Details: Collapse Panel$/ do
   orders.details.toolbar.collapse_panel
 end
 
-Then /^Order Details: xxxxx$/ do
-  log.info "Order Details: Collapse Panel"
-  orders.details.present?
+Then /^Order Details: Expect Panel Expanded$/ do
+  log.info "Order Details: Expect Panel Expanded"
+  orders.details.present?.should be true
 end
 
-Then /^Order Details: yyy$/ do
-  log.info "Order Details: Collapse Panel"
+Then /^Order Details: Expand Order Details$/ do
+  log.info "Order Details: Expand Order Details"
   orders.details.open
 end
 

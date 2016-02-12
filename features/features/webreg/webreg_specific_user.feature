@@ -5,17 +5,17 @@ Feature: Registration
 
   @webreg_specify_username
   Scenario:
-    Then WebR: Set User ID and Email to user defined AUTOSUGGEST888
+    Then WebR: Set User ID and Email to user defined ss_cctest11
   #ORD10000000011
 
-    Then WebReg: Set Password to pass111
-    Then WebReg: Set Re-Type password to pass111
+    Then WebReg: Set Password to password1
+    Then WebReg: Set Re-Type password to password1
     Then WebReg: Set How will you use Stamps.com to Both Mailing and Shipping
     Then WebReg: Set Referrer Name to Already used in office
     Then WebReg: Set 1st Question to What is your mother's maiden name
-    Then WebReg: Set 1st Answer to stamps
+    Then WebReg: Set 1st Answer to 1111
     Then WebReg: Set 2nd Question to What was your high school mascot
-    Then WebReg: Set 2nd Answer to stamps
+    Then WebReg: Set 2nd Answer to 1111
 
     Then WebReg: Continue to Mailing Information Page
 
@@ -57,5 +57,5 @@ Feature: Registration
     Then PAM: AppCap Overrides: Submit
 
     Then Orders: Load Sign-in page qacc
-    Then Orders: First Time Sign-in to Orders as random/pass111
+    Then Orders: First Time Sign-in to Orders as random/password1
     Then Add New Order
