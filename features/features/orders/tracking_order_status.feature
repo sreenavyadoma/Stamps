@@ -13,6 +13,8 @@ Feature: Orders Grid: Tracking & Order Status
     Then Order Details: Set Ounces to 5
     Then Order Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Order Details: Set Tracking to "USPS Tracking"
+    Then Open Print Modal
+    Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
     Then Filter Panel - Shipped
     Then Orders Grid: Expect Tracking Number is populated
@@ -25,6 +27,8 @@ Feature: Orders Grid: Tracking & Order Status
     Then Order Details: Set Ounces to 5
     Then Order Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Order Details: Set Tracking to "Signature Required"
+    Then Open Print Modal
+    Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
     Then Filter Panel - Shipped
     Then Orders Grid: Expect Tracking Number is populated

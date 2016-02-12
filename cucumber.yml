@@ -1,7 +1,7 @@
-default: --profile cuke_reports --profile eva_dev
+default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @bvt_purchasing --guess VERBOSE=true URL=qacc BROWSER=ff USR=j4g1gp9ef6hal1 PW=pass111
+rob_dev: --tags @change_order_status --guess VERBOSE=true URL=qacc BROWSER=ff USR=j4g1gp9ef6hal1 PW=pass111 #
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
 eli_dev: --tags @wp_contacts --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
@@ -28,6 +28,7 @@ print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false
 print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=true
 print_layouts_cn22_cp72: --tags @print_two_up_expanded --guess VERBOSE=false
 update_postage_balance: --tags @update_postage_balance --guess VERBOSE=false
+reprint: --tags @reprint --guess VERBOSE=false
 
 local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=true
 tracking_defaults: --tags @tracking_defaults --guess VERBOSE=true
@@ -55,6 +56,7 @@ auto_suggest: --tags @auto_suggest --guess VERBOSE=false
 new_country_code: --tags  @new_country_code --guess VERBOSE=false
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false
 international_rules_engine: --tags  @international_rules_engine --guess VERBOSE=false
+expand_order_details_panel: --tags  @expand_order_details_panel --guess VERBOSE=false
 
 wp_bvt: --tags  @wp_bvt --guess VERBOSE=false
 wp_bvt_address_cleansing: --tags  @wp_bvt_address_cleansing --guess VERBOSE=false
