@@ -248,6 +248,11 @@ Cucumber::Rake::Task.new(:fcm_selection_enabled) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:expand_order_details_panel) do |t|
+  t.profile = 'expand_order_details_panel'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:wp_bvt) do |t|
   t.profile = 'wp_bvt'
   t.cucumber_opts = "-p cuke_reports"

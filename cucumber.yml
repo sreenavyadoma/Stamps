@@ -55,6 +55,7 @@ auto_suggest: --tags @auto_suggest --guess VERBOSE=false
 new_country_code: --tags  @new_country_code --guess VERBOSE=false
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false
 international_rules_engine: --tags  @international_rules_engine --guess VERBOSE=false
+expand_order_details_panel: --tags  @expand_order_details_panel --guess VERBOSE=false
 
 wp_bvt: --tags  @wp_bvt --guess VERBOSE=false
 wp_bvt_address_cleansing: --tags  @wp_bvt_address_cleansing --guess VERBOSE=false
