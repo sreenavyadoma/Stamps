@@ -1022,8 +1022,10 @@ module Orders
       def reprint
         button = Button.new @browser.span(text: "Reprint")
         modal = RePrintModal.new @browser
-        10.times do
+        label_unavailable = LabelUnavailable.new @browser
+        15.times do
           return modal if modal.present?
+          return label_unavailable if label_unavailable.present?
           button.safe_click
         end
       end

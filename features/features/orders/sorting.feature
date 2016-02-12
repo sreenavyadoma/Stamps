@@ -6,6 +6,9 @@ Feature: Sorting.
   @sort
   Scenario: Orders Grid Sorting
 
+    #Then Orders Grid: Order ID: Columns Menu: Check Reference No
+    #Then Orders Grid: Order ID: Columns Menu: Check Cost Code
+
     Then Orders Grid: Order ID: Sort Ascending
     Then Orders Grid: Order ID: Sort Descending
 
