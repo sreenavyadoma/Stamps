@@ -8,7 +8,7 @@ end
 
 Then /^Order Details: Collapse Panel$/ do
   log.info "Order Details: Collapse Panel"
-  orders.details.toolbar.collapse_panel
+  orders.details.toolbar.menu.collapse_panel
 end
 
 Then /^Order Details: Expect Panel Expanded$/ do
