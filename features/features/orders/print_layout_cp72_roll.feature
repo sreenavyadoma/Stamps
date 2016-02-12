@@ -3,7 +3,7 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
   Background:
     Given I am signed in to Orders
 
-  @print_layouts_cn22_cp72 @cp72_4x6roll_raytest1
+  @print_layouts_cp72
   Scenario: Print 1 Intl CP72 label on 4x6 Roll
     Then Add New Order
     Then Order Details: Set Ship-From to default
