@@ -133,37 +133,63 @@ module Orders
     end
 
     class ColumnMenu < Column
-      class Columns < OrdersObject
-        def checkbox selection
-          case selection
-            when :reference_no
-              name = "Reference No."
-            when :cost_code
-              name = "Cost Code"
-            else
+
+      class Columns < Column
+        def initialize browser, column
+          super browser
+          @column = column
+        end
+
+        class ReferenceNoCheckbox < Column
+          def initialize browser, column
+            super browser
+            @column = column
+          end
+          def check
+            scroll @column
+            column_field = column_name_field @column
+            drop_down = Button.new column_field.parent.parent.parent.parent.divs[3]
+            menu_selection = Label.new @browser.span(text: "Columns")
+
+            name_field = @browser.spans(text: "Reference No.").last
+            checkbox_field = name_field.parent.div
+            check_verify_field = name_field.parent.parent
+            checkbox = Checkbox.new checkbox_field, check_verify_field, "class", "checked"
+
+            20.times do
+              drop_down.safe_click unless menu_selection.present?
+              menu_selection.safe_click
+              menu_selection.hover
+              checkbox.check if checkbox.present?
+            end
           end
 
-          divs = @browser.divs css: "div[id^=menucheckitem][class*=x-menu-item-default]"
-          divs.each do |div|
-            title = div.a.span.text
-            if title == name
-              return Stamps::Browser::Checkbox.new div.a.div, div, "class", "checked"
-            end
+          def uncheck
+            checkbox :cost_code
+
           end
         end
 
         def reference_no
-          checkbox :reference_no
+          ReferenceNoCheckbox.new @browser, @column
         end
 
         def cost_code
-          checkbox :cost_code
         end
       end
 
-      def select column, sort_order
-        scroll column
-        column_field = column_name_field column
+      def initialize browser, column
+        super browser
+        @column = column
+      end
+
+      def columns
+        Columns.new @browser, @column
+      end
+
+      def sort_order sort_order
+        scroll @column
+        column_field = column_name_field @column
         sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
         sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[3]
 
@@ -187,21 +213,12 @@ module Orders
         false
       end
 
-      def initialize browser, column
-        super browser
-        @column = column
-      end
-
-      def columns
-        Columns.new @browser
-      end
-
       def sort_ascending
-        select @column, :sort_ascending
+        sort_order :sort_ascending
       end
 
       def sort_descending
-        select @column, :sort_descending
+        sort_order :sort_descending
       end
 
     end

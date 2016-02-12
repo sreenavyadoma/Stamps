@@ -21,6 +21,22 @@ When /^Open Reprint Modal$/ do
   @reprint_modal = orders.toolbar.reprint
 end
 
+When /^Label Unavailable:  Expect Visible$/ do
+  log.info "Step: Label Unavailable:  Expect Visible"
+  case @reprint_modal
+    when LabelUnavailable
+      log.info @reprint_modal.message
+      label_unavailable_visible = @reprint_modal.present?
+      log.info "Test #{(label_unavailable_visible.present?)?"Passed":"Failed"}"
+      @reprint_modal.ok
+      @reprint_modal.close
+      label_unavailable_visible.should be true
+    else
+      log.info "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
+      @reprint_modal.present?.should be true
+  end
+end
+
 
 When /^Toolbar: Print$/ do
   log.info "Step: Print"

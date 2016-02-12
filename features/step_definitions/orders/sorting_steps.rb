@@ -1,3 +1,26 @@
+
+Then /^Orders Grid: Order ID: Columns Menu: Check Reference No$/ do
+  log.info "Step Orders Grid: Order ID: Columns Menu: Check Reference No."
+  orders.grid.order_id.menu.columns.reference_no.check
+end
+
+Then /^Orders Grid: Order ID: Columns Menu: Check Cost Code$/ do
+  log.info "Step Orders Grid: Order ID: Columns Menu: Check Cost Code"
+  orders.grid.order_id.menu.columns.cost_code.check
+end
+
+Then /^Orders Grid: Order ID: Sort Ascending$/ do
+  sorted = orders.grid.order_id.menu.sort_ascending
+  log.info "Step #{(sorted)?'Passed':'Failed'} - Orders Grid: Order ID: Sort Ascending"
+  sorted.should be true
+end
+
+Then /^Orders Grid: Order ID: Sort Descending$/ do
+  sorted = orders.grid.order_id.menu.sort_descending
+  log.info "Step #{(sorted)?'Passed':'Failed'} - Orders Grid: Order ID: Sort Descending"
+  sorted.should be true
+end
+
 Then /^Orders Grid: Store: Sort Ascending$/ do
   sorted = orders.grid.store.menu.sort_ascending
   log.info "Step #{(sorted)?'Passed':'Failed'} - Orders Grid: Store: Sort Ascending"
@@ -19,18 +42,6 @@ end
 Then /^Orders Grid: Age: Sort Descending$/ do
   sorted = orders.grid.age.menu.sort_descending
   log.info "Step #{(sorted)?'Passed':'Failed'} - Orders Grid: Age: Sort Descending"
-  sorted.should be true
-end
-
-Then /^Orders Grid: Order ID: Sort Ascending$/ do
-  sorted = orders.grid.order_id.menu.sort_ascending
-  log.info "Step #{(sorted)?'Passed':'Failed'} - Orders Grid: Order ID: Sort Ascending"
-  sorted.should be true
-end
-
-Then /^Orders Grid: Order ID: Sort Descending$/ do
-  sorted = orders.grid.order_id.menu.sort_descending
-  log.info "Step #{(sorted)?'Passed':'Failed'} - Orders Grid: Order ID: Sort Descending"
   sorted.should be true
 end
 

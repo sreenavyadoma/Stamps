@@ -1,6 +1,32 @@
 # encoding: utf-8
 module Orders
 
+  class LabelUnavailable < OrdersObject
+    def present?
+      browser_helper.present? @browser.div(text: "Label Unavailable")
+    end
+
+    def close
+      button = Button.new @browser.img(css: "img[class*='x-tool-img x-tool-close']")
+      10.times do
+        button.safe_click
+        break unless button.present?
+      end
+    end
+
+    def ok
+      button = Button.new @browser.span(text: "Ok")
+      10.times do
+        button.safe_click
+        break unless button.present?
+      end
+    end
+
+    def message
+      browser_helper.text (@browser.divs(css: "div[id^=dialoguemodal][id$=innerCt]").last)
+    end
+  end
+
   class UspsTerms < OrdersObject
     def present?
       (Label.new @browser.div :text => "USPS Terms").present?
@@ -550,4 +576,6 @@ module Orders
       end
     end
   end
+
+
 end
