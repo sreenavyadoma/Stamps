@@ -28,5 +28,3 @@ Feature: International Address
     Then Order Details: Expect International Ship-To Email to be autosuggest001.2@mailinator.com
 
     Then Sign out
-
-
