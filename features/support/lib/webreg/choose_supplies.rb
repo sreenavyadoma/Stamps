@@ -19,9 +19,8 @@ module WebReg
     end
 
     def place_order
-      button = Button.new @browser.button(:text => "Place Order")
+      button = Button.new @browser.button(:id => "mincartButtonTop")
       welcome_page = NewAccountWelcomePage.new @browser
-      #pop_up =
       10.times do
         button.safe_click
         button.safe_click
