@@ -92,7 +92,12 @@ end
 
 Then /^Close Reprint Modal$/ do
   log.info "Step: Close Print Modal"
-  orders.toolbar.print.close
+  orders.toolbar.reprint.close
+end
+
+Then /^Close Label Unavailable Modal$/ do
+  log.info "Step: Close Label Unavailable Modal"
+  orders.toolbar.ok.close
 end
 
 Then /^Print expecting error (.*)$/ do |error_message|

@@ -4,7 +4,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
   Background:
     Given I am signed in to Orders
 
-  @change_order_status_reprint
+  @reprint
   Scenario: Allow User to Manually Change Order Status - User Reprints Order
     Then Filter Panel - Shipped
     Then Filter Panel - Awaiting Shipment
@@ -17,7 +17,6 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
 
     Then Filter Panel - Shipped
     Then Set Orders Grid New Order ID to check
-    Then Order Details: Expect Order ID equals Grid order ID
     Then Open Reprint Modal
     Then Label Unavailable:  Expect Visible
     Then Pause for 5 seconds

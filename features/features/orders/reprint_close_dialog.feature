@@ -4,7 +4,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
   Background:
     Given I am signed in to Orders
 
-  @reprint_media_close
+  @reprint_media_close @reprint
   Scenario: User Reprints Order - Closes Reprint Modal before reprint
 
     Then Add New Order

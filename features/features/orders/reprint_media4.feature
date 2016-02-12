@@ -4,7 +4,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
   Background:
     Given I am signed in to Orders
 
-  @reprint_media
+  @reprint_media @reprint
   Scenario: User Reprints Order - International | CP72
 
     Then Add New Order

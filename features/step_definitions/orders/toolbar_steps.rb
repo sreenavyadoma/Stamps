@@ -17,7 +17,7 @@ When /^Open Print Modal$/ do
 end
 
 When /^Open Reprint Modal$/ do
-  log.info "Step: Print"
+  log.info "Step: RePrint"
   @reprint_modal = orders.toolbar.reprint
 end
 
@@ -27,7 +27,7 @@ When /^Label Unavailable:  Expect Visible$/ do
     when LabelUnavailable
       log.info @reprint_modal.message
       label_unavailable_visible = @reprint_modal.present?
-      log.info "Test #{(label_unavailable_visible.present?)?"Passed":"Failed"}"
+      log.info "Test #{(label_unavailable_visible)?"Passed":"Failed"}"
       @reprint_modal.ok
       @reprint_modal.close
       label_unavailable_visible.should be true
