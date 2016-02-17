@@ -122,3 +122,51 @@ Then /^Envelopes: Set Ship-To address to (.*)$/ do |address|
   @envelope.ship_to.set formatted_address
 
 end
+
+Then /^Envelopes: Set Include Return Address to Checked$/ do
+  log.info "Step: Shipping Labels: Check Include Return Address"
+  @envelope = postage.envelope if @envelope.nil?
+  @envelope.form_view.include_return_address.check
+end
+
+Then /^Envelopes: Set Include Return Address to Unchecked$/ do
+  log.info "Step: Shipping Labels: Uncheck Include Return Address"
+  @envelope = postage.envelope if @envelope.nil?
+  @envelope.form_view.include_return_address.uncheck
+end
+
+Then /^Envelopes: Set Include Delivery Address to Checked$/ do
+  log.info "Step: Shipping Labels: Check Include Delivery Address"
+  @envelope = postage.envelope if @envelope.nil?
+  @envelope.form_view.include_delivery_address.check
+end
+
+Then /^Envelopes: Set Include Delivery Address to Unchecked$/ do
+  log.info "Step: Shipping Labels: Uncheck Include Delivery Address"
+  @envelope = postage.envelope if @envelope.nil?
+  @envelope.form_view.include_delivery_address.uncheck
+end
+
+Then /^Envelopes: Set Include Postage to Checked$/ do
+  log.info "Step: Shipping Labels: Check Include Postage"
+  @envelope = postage.envelope if @envelope.nil?
+  @envelope.form_view.include_postage.check
+end
+
+Then /^Envelopes: Set Include Postage to Unchecked$/ do
+  log.info "Step: Shipping Labels: Uncheck Include Postage"
+  @envelope = postage.envelope if @envelope.nil?
+  @envelope.form_view.include_postage.uncheck
+end
+
+Then /^Envelopes: Set Reference Number to (.*)/ do |ref_no|
+  log.info "Set Envelope Reference Number to #{ref_no}"
+  @envelope = postage.envelope if @envelope.nil?
+  @envelope.reference_number.set ref_no
+end
+
+Then /^Envelopes: Set Cost Code to (.*)/ do |code|
+  log.info "Step: Envelopes: Set Cost Code to \n #{code}"
+  @envelope = postage.envelope if @envelope.nil?
+  @envelope.cost_code.select code
+end

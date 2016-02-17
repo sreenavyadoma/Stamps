@@ -3,6 +3,15 @@
 #Print Modal: Set Printer to "factory"
 
 
+When /^Footer: Print International Postage$/ do
+  log.info "Step: Print International Postage"
+  postage.print_international
+  sleep 2
+  intl_print_window = Windows::PrintWindow.new ENV['BROWSER']
+  intl_print_window.print
+
+end
+
 When /^Footer: Open Print Postage Modal$/ do
   log.info "Step: Open Print Modal"
   @print_window = postage.print

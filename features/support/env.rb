@@ -13,6 +13,8 @@ require "set"
 require 'fileutils'
 require 'rbconfig'
 require "csv"
+require "rautomation"
+require 'rubygems' # for compatibility with JRuby, MRI 1.8, etc
 
 # Stamps module
 require_relative 'lib/core/browser'
@@ -30,9 +32,7 @@ require_relative 'lib/print/print_common_form_elements'
 require_relative 'lib/webreg/webreg_helper'
 
 require_relative 'lib/pam/pam_helper'
-
-require 'rubygems' # for compatibility with JRuby, MRI 1.8, etc
-#require "windows"
+require_relative 'lib/windows/print_window'
 
 #require 'atomic'
 #require 'thread'
@@ -97,4 +97,4 @@ module Selenium
   end # WebDriver
 end # Selenium
 
-World(Stamps,Orders,Print,WebReg,Pam)
+World(Stamps,Orders,Print,WebReg,Pam,Windows)

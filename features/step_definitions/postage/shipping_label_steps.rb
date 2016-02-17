@@ -34,22 +34,18 @@ Then /^Shipping Labels: Set Ship-To address to$/ do |table|
   step "Shipping Labels: Set Ship-To address to #{ship_to}"
 end
 
-Then /^Shipping Labels: Set Hide Postage Value to Checked$/ do
-  log.info "Step: Shipping Labels: Check Hide Postage Value"
-  @shipping_label = postage.shipping_label if @shipping_label.nil?
-  @shipping_label.form_view.hide_postage_value.check
-end
 
-Then /^Shipping Labels: Set Hide Postage Value to Unchecked$/ do
-  log.info "Step: Shipping Labels: Uncheck Hide Postage Value"
-  @shipping_label = postage.shipping_label if @shipping_label.nil?
-  @shipping_label.form_view.hide_postage_value.uncheck
-end
 
 Then /^Shipping Labels: Open Extra Services$/ do
   log.info "Step: Shipping Labels: Open Extra Services"
   @shipping_label = postage.shipping_label if @shipping_label.nil?
   @extra_services = @shipping_label.extra_services
+end
+
+Then /^Shipping Labels: Open Customs Form$/ do
+  log.info "Step: Shipping Labels: Open Customs Form"
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  @customs_form = @shipping_label.customs
 end
 
 Then /^Shipping Labels: Open Contacts modal/ do
@@ -169,4 +165,52 @@ Then /^Shipping Label: Expect Domestic Address field displays (.*)$/ do |value|
   #log_expectation_eql "Address text", value, actual_stripped
   actual_stripped_final.should eql value
   log.info 'Address Cleansed -- Expected Result Confirmed'
+end
+
+Then /^Shipping Labels: Set Hide Postage Value to Checked$/ do
+  log.info "Step: Shipping Labels: Check Hide Postage Value"
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  @shipping_label.form_view.hide_postage_value.check
+end
+
+Then /^Shipping Labels: Set Hide Postage Value to Unchecked$/ do
+  log.info "Step: Shipping Labels: Uncheck Hide Postage Value"
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  @shipping_label.form_view.hide_postage_value.uncheck
+end
+
+Then /^Shipping Labels: Set Print Receipt to Checked$/ do
+  log.info "Step: Shipping Labels: Check Print Receipt"
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  @shipping_label.form_view.print_receipt.check
+end
+
+Then /^Shipping Labels: Set Print Receipt to Unchecked$/ do
+  log.info "Step: Shipping Labels: Uncheck Print Receipt"
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  @shipping_label.form_view.print_receipt.uncheck
+end
+
+Then /^Shipping Labels: Set Print Reference Number to Checked$/ do
+  log.info "Step: Shipping Labels: Check Print Reference Number"
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  @shipping_label.form_view.print_reference_number.check
+end
+
+Then /^Shipping Labels: Set Print Reference Number to Unchecked$/ do
+  log.info "Step: Shipping Labels: Uncheck Print Reference Number"
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  @shipping_label.form_view.print_reference_number.uncheck
+end
+
+Then /^Shipping Labels: Set Reference Number to (.*)/ do |ref_no|
+  log.info "Set Shipping Label Reference Number to #{ref_no}"
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  @shipping_label.reference_number.set ref_no
+end
+
+Then /^Shipping Labels: Set Cost Code to (.*)/ do |code|
+  log.info "Step: Shipping Labels: Set Cost Code to \n #{code}"
+  @shipping_label = postage.stamps if @shipping_label.nil?
+  @shipping_label.cost_code.select code
 end

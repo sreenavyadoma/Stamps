@@ -7,7 +7,7 @@ include Log4r
 include RSpec
 include RSpec::Matchers
 include DataMagic
-#include RAutomation
+include RAutomation
 
 Before do  |scenario|
   log.info "Begin Test Scenario:  -----------------------------------------  #{scenario.name}"

@@ -452,6 +452,66 @@ module Print
       end
     end
 
+    class CostCode  < Print::Postage::PrintObject
+      def text_box
+        Textbox.new @browser.text_field :name => "costCodeId"
+      end
+
+      def drop_down
+        buttons = @browser.divs :css => "div[class*=x-form-arrow-trigger]"
+        button = Button.new (buttons.last)
+      end
+
+      def select selection
+        log.info "Select Cost Code #{selection}"
+        box = text_box
+        button = drop_down
+        selection_label = Label.new (@browser.divs :text => selection)[1]
+        10.times {
+          begin
+            button.safe_click #unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
+            selected_cost_code = box.text
+            log.info "Selected Cost Code #{selected_origin} - #{(selected_cost_code.include? selection)?"done": "cost code not selected"}"
+            break if selected_cost_code.include? selection
+          rescue
+            #ignore
+          end
+        }
+        log.info "Origin Country selected: #{selection}"
+        selection_label
+      end
+
+    end
+
+    class Quantity < Print::Postage::PrintObject
+      def text_box
+        Textbox.new (@browser.text_field :css => "input[class*=sdc-previewpanel-quantitynumberfield']")
+      end
+
+      def set value
+        text_field = text_box
+        text_field.set value
+        log.info "Quantity set to #{text_field.text}"
+      end
+
+      def increment value
+        button = Button.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[7]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = Button.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[7]
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+    end
+
 
   end
 end

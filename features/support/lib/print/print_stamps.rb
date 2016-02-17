@@ -2,6 +2,35 @@
 module Print
   module Postage
     class Stamps < Print::Postage::PrintObject
+
+      class StampsFormView < Print::Postage::DomesticCommon
+
+        def stamp_sheet_image
+
+        end
+
+        def quantity
+          Print::Postage::Quantity.new @browser
+          sdc-previewpanel-quantitynumberfield
+        end
+
+        def print_all
+          checkbox_field = @browser.input :css => "input[class*=sdc-previewpanel-printallcheckbox]"
+          verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
+          verify_field = verify_fields[8]
+
+          Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        end
+
+        def reference_number
+          Textbox.new @browser.text_field :name => "ReferenceNumber"
+        end
+
+        def cost_code
+          Print::Postage::CostCode.new @browser
+        end
+
+      end
       class CalculatePostageAmount < Print::Postage::PrintObject
         def weight
           Print::Postage::Weight.new @browser
@@ -86,6 +115,10 @@ module Print
         checkbox = Checkbox.new (@browser.input :id => "sdc-mainpanel-specifypostageradio-inputEl"), (@browser.table :id => "sdc-mainpanel-specifypostageradio"), "class", "checked"
         checkbox.check
         SpecifyPostageAmount.new @browser
+      end
+
+      def form_view
+        Print::Postage::StampsFormView.new @browser
       end
 
     end

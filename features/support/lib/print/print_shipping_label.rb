@@ -3,6 +3,10 @@ module Print
   module Postage
 
     class ShippingLabelFormView < Print::Postage::DomesticCommon
+
+      def shipping_label_sheet_image
+
+      end
       def hide_postage_value
         checkbox_field = @browser.input :css => "input[id=hidePostageCheckbox]"
         verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
@@ -10,6 +14,31 @@ module Print
 
         Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
       end
+
+      def print_receipt
+        checkbox_field = @browser.input :css => "input[id=printreceiptcheckbox]"
+        verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
+        verify_field = verify_fields[6]
+
+        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+      end
+
+      def print_reference_number
+        checkbox_field = @browser.input :css => "input[id=printreferencecheckbox]"
+        verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
+        verify_field = verify_fields[7]
+
+        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+      end
+
+      def reference_number
+        Textbox.new @browser.text_field :name => "ReferenceNumber"
+      end
+
+      def cost_code
+        Print::Postage::CostCode.new @browser
+      end
+
     end
 
     class ShippingLabel < Print::Postage::DomesticCommon

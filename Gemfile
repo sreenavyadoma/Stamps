@@ -6,5 +6,5 @@ gem 'rake', '10.0.0'
 gem 'watir-webdriver', '0.9.1'
 gem 'data_magic'
 gem 'log4r'
-#gem 'rautomation'
+gem 'rautomation'
 

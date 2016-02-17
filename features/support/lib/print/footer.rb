@@ -13,6 +13,10 @@ module Print
         open_window Print::Postage::PrintPostageModal.new @browser
       end
 
+      def print_international
+        print_button.safe_click
+      end
+
       def print_button
         Button.new @browser.a :css => "a[class*=sdc-printpanel-printpostagebtn]"
       end
