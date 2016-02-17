@@ -6,6 +6,7 @@ end
 Given /^I launch default browser$/ do
   log.info "Step: I launch default browser"
   @browser = Stamps::Test.setup
+=begin
   print_window = Windows::PrintWindow.new
   @browser.send_keys [:control, 'p']
   sleep 2
@@ -14,5 +15,6 @@ Given /^I launch default browser$/ do
   @browser.send_keys [:control, 'p']
   sleep 2
   print_window.print
+=end
 end
 
