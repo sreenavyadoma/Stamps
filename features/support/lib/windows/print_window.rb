@@ -4,11 +4,11 @@ module Windows
       print_window = RAutomation::Window.new(:title => /Print/i)
       begin
         if Test.browser.firefox?
-          print_window.button(:value => "OK").exists?
+          return print_window.button(:value => "OK").exists?
         elsif Test.browser.chrome?
-          print_window.button(:value => "&Print").exists?
+          return print_window.button(:value => "&Print").exists?
         elsif Test.browser.ie?
-          print_window.button(:value => "&Print").exists?
+          return print_window.button(:value => "&Print").exists?
         else
           raise "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
         end
