@@ -53,7 +53,7 @@ module Print
         end
 
         def drop_down
-          Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[6]
+          StampsButton.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[6]
         end
 
         def select selection

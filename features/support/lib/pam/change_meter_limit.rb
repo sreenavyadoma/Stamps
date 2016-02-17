@@ -51,7 +51,7 @@ module Pam
 
     def ok
       profile = CustomerProfile.new @browser
-      button = Button.new @browser.a(:css => "a[href^=Profile]")
+      button = StampsButton.new @browser.a(:css => "a[href^=Profile]")
       5.times do
         button.safe_click
         sleep 1

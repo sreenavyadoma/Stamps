@@ -7,7 +7,7 @@ module Orders
         end
 
         def drop_down
-          Button.new (@browser.divs :css => "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2]
+          StampsButton.new (@browser.divs :css => "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2]
         end
 
         def select selection
@@ -41,7 +41,7 @@ module Orders
         end
 
         def drop_down
-          Button.new (@browser.divs :css => "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[3]
+          StampsButton.new (@browser.divs :css => "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[3]
         end
 
         def select selection
@@ -86,7 +86,7 @@ module Orders
       end
 
       def verify_seller_id
-        button = Button.new (@browser.span :text => "Verify Seller ID")
+        button = StampsButton.new (@browser.span :text => "Verify Seller ID")
         3.times do
           button.safe_click
         end
@@ -101,7 +101,7 @@ module Orders
       end
 
       def connect
-        button = (Button.new(@browser.span :text => "Connect"))
+        button = (StampsButton.new(@browser.span :text => "Connect"))
         5.times do
           button.safe_click
           break unless button.present?
@@ -117,7 +117,7 @@ module Orders
       end
 
       def close
-        button = Button.new (@browser.img :css => "img[class*='x-tool-img x-tool-close']")
+        button = StampsButton.new (@browser.img :css => "img[class*='x-tool-img x-tool-close']")
         button.click_while_present
       end
 
@@ -138,7 +138,7 @@ module Orders
       end
 
       def amazon_button
-        Button.new (@browser.imgs :css => "img[src*=amazon]").last
+        StampsButton.new (@browser.imgs :css => "img[src*=amazon]").last
       end
 
       def amazon
@@ -160,12 +160,12 @@ module Orders
           end
 
           def delete
-            button = Button.new (@browser.spans :text => "Delete").last
+            button = StampsButton.new (@browser.spans :text => "Delete").last
             button.click_while_present
           end
 
           def cancel
-            Button.new (@browser.span :text => "Cancel")
+            StampsButton.new (@browser.span :text => "Cancel")
           end
         end
 
@@ -174,7 +174,7 @@ module Orders
         end
 
         def delete
-          Button.new (@browser.span :text => "Delete")
+          StampsButton.new (@browser.span :text => "Delete")
         end
 
         def delete_row row
@@ -203,7 +203,7 @@ module Orders
       end
 
       def close
-        button = Button.new (@browser.imgs :css => "img[id^=tool][src*='R0lGODlhAQABAID']").first
+        button = StampsButton.new (@browser.imgs :css => "img[id^=tool][src*='R0lGODlhAQABAID']").first
         5.times do
           button.safe_click
           return unless button.present?
@@ -219,7 +219,7 @@ module Orders
       end
 
       def add_button
-        Button.new (@browser.spans :css => "span[class*=sdc-icon-add]").last
+        StampsButton.new (@browser.spans :css => "span[class*=sdc-icon-add]").last
       end
 
       def add
@@ -284,14 +284,14 @@ module Orders
             end
 
             def increment value
-              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]")
+              button = StampsButton.new (@browser.div :css => "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]")
+              button = StampsButton.new (@browser.div :css => "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -325,14 +325,14 @@ module Orders
             end
 
             def increment value
-              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]")
+              button = StampsButton.new (@browser.div :css => "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]")
+              button = StampsButton.new (@browser.div :css => "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -390,14 +390,14 @@ module Orders
             end
 
             def increment value
-              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
+              button = StampsButton.new (@browser.div :css => "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
+              button = StampsButton.new (@browser.div :css => "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -431,14 +431,14 @@ module Orders
             end
 
             def increment value
-              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
+              button = StampsButton.new (@browser.div :css => "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
+              button = StampsButton.new (@browser.div :css => "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -472,14 +472,14 @@ module Orders
             end
 
             def increment value
-              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
+              button = StampsButton.new (@browser.div :css => "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = Button.new (@browser.div :css => "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
+              button = StampsButton.new (@browser.div :css => "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -614,7 +614,7 @@ module Orders
         end
 
         def close
-          button = Button.new (@browser.span :text => "Close")
+          button = StampsButton.new (@browser.span :text => "Close")
           5.times do
             return unless button.present?
             button.safe_click
@@ -630,7 +630,7 @@ module Orders
         end
 
         def select selection
-          drop_down = Button.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]"
+          drop_down = StampsButton.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]"
           text_field = text_box
           selection_label = Label.new @browser.li :text => selection
           10.times do
@@ -671,7 +671,7 @@ module Orders
         end
 
         def select selection
-          drop_down = Button.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
+          drop_down = StampsButton.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
           text_field = text_box
           selection_label = Label.new @browser.li :text => selection
           10.times do
@@ -784,7 +784,7 @@ module Orders
         end
 
         def select selection
-          drop_down = Button.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]"
+          drop_down = StampsButton.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]"
           text_field = text_box
           selection_label = Label.new @browser.li :text => selection
           10.times do
@@ -861,7 +861,7 @@ module Orders
 
       def reset_fields
         modal = ResetFields.new @browser
-        button = Button.new @browser.span :text => "Select..."
+        button = StampsButton.new @browser.span :text => "Select..."
         10.times do
           button.safe_click unless modal.present?
           return modal if modal.present?
@@ -893,7 +893,7 @@ module Orders
       end
 
       def save
-        button = Button.new (@browser.span :text => "Save")
+        button = StampsButton.new (@browser.span :text => "Save")
         10.times do
           button.safe_click
           return unless button.present?
@@ -901,7 +901,7 @@ module Orders
       end
 
       def close
-        button = Button.new (@browser.img :css => "img[class$=close]")
+        button = StampsButton.new (@browser.img :css => "img[class$=close]")
         10.times do
           button.safe_click
           return unless button.present?
@@ -912,7 +912,7 @@ module Orders
     class Toolbar < OrdersObject
       class SettingsMenu < Print::Postage::PrintObject
         def button
-          Button.new @browser.span :css => "span[class*=sdc-icon-settings]"
+          StampsButton.new @browser.span :css => "span[class*=sdc-icon-settings]"
         end
 
         def select menu_item
@@ -973,7 +973,7 @@ module Orders
         end
 
         def drop_down
-          Button.new @browser.span Orders::Locators::ToolBar::move
+          StampsButton.new @browser.span Orders::Locators::ToolBar::move
         end
 
         def select selection
@@ -1020,7 +1020,7 @@ module Orders
       end
 
       def reprint
-        button = Button.new @browser.span(text: "Reprint")
+        button = StampsButton.new @browser.span(text: "Reprint")
         modal = RePrintModal.new @browser
         label_unavailable = LabelUnavailable.new @browser
         15.times do
@@ -1053,7 +1053,7 @@ module Orders
 
       def open_window window
         return window if window.present?
-        print = Button.new ((@browser.spans :css => "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
+        print = StampsButton.new ((@browser.spans :css => "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
 
         print.click
 
@@ -1109,7 +1109,7 @@ module Orders
       def add
         order_details = Orders::Details::OrderDetails.new @browser
         grid = Orders::Grid::OrdersGrid.new @browser
-        add_button = Button.new @browser.span Orders::Locators::ToolBar::add
+        add_button = StampsButton.new @browser.span Orders::Locators::ToolBar::add
 
         # Initializing Order Database
         initializing_db = Label.new @browser.div :text => "Initializing Order Database"
@@ -1150,7 +1150,7 @@ module Orders
       end
 
       def browser_settings_button
-        Button.new (@browser.span :css => "span[class*=sdc-icon-settings]")
+        StampsButton.new (@browser.span :css => "span[class*=sdc-icon-settings]")
       end
 
       def usps_intl_terms

@@ -6,7 +6,7 @@ Feature: International Shipping BVT
     Given I am signed in as a postage shipper
 
 
-  @wp_international
+  @wp_bvt_international
   Scenario: International Shipping
 
     Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”

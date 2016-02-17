@@ -72,7 +72,7 @@ module Print
       end
 
       def extra_services
-        button = Button.new @browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl"
+        button = StampsButton.new @browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl"
         service_modal = Print::Postage::ExtraServices.new @browser
         5.times do
           button.safe_click
@@ -83,7 +83,7 @@ module Print
       end
 
       def customs
-        button = Button.new @browser.span :id => "sdc-mainpanel-editcustombtn-btnIconEl"
+        button = StampsButton.new @browser.span :id => "sdc-mainpanel-editcustombtn-btnIconEl"
         customs_modal = Print::Postage::CustomsForm.new @browser
         5.times do
           button.safe_click

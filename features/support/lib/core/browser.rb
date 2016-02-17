@@ -237,7 +237,7 @@ module Stamps
       end
     end
 
-    class Button < ClickableField
+    class StampsButton < ClickableField
     end
 
     class Link < Label
@@ -295,7 +295,7 @@ module Stamps
       end
 
       def drop_down_caret
-        Button.new @drop_down
+        StampsButton.new @drop_down
       end
 
       def text_box

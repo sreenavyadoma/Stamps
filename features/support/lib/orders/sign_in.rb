@@ -33,7 +33,7 @@ module Orders
       end
 
       def close
-        button = Button.new @browser.img(css: 'img[class*=x-tool-close]')
+        button = StampsButton.new @browser.img(css: 'img[class*=x-tool-close]')
         5.times do
           button.safe_click
           break unless button.present?
@@ -45,7 +45,7 @@ module Orders
       end
 
       def continue
-        button = Button.new (@browser.span :text => "Continue")
+        button = StampsButton.new (@browser.span :text => "Continue")
         10.times{
           button.safe_click
           break unless button.present?

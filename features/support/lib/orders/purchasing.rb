@@ -8,7 +8,7 @@ module Orders
       end
 
       def ok
-        button = Button.new ((@browser.spans :text => 'OK').last)
+        button = StampsButton.new ((@browser.spans :text => 'OK').last)
         sleep 2
         button.click_while_present
       end
@@ -17,7 +17,7 @@ module Orders
     class ConfirmPurchase < OrdersObject
 
       def exit
-        button = Button.new (@browser.imgs :class => "x-tool-img x-tool-close").last
+        button = StampsButton.new (@browser.imgs :class => "x-tool-img x-tool-close").last
         button.click_while_present
       end
 
@@ -26,7 +26,7 @@ module Orders
       end
 
       def purchase
-        button = Button.new (@browser.spans :text => "Purchase").last
+        button = StampsButton.new (@browser.spans :text => "Purchase").last
         purchase_approved = PurchaseApproved.new @browser
 
         10.times do
@@ -94,7 +94,7 @@ module Orders
       end
 
       def purchase
-        button = Button.new (@browser.span :id => "sdc-purchasewin-purchasebtn-btnInnerEl")
+        button = StampsButton.new (@browser.span :id => "sdc-purchasewin-purchasebtn-btnInnerEl")
         confirm_purchase = ConfirmPurchase.new @browser
         10.times do
           button.safe_click

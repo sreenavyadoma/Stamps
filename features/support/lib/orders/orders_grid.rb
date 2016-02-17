@@ -148,7 +148,7 @@ module Orders
           def check
             scroll @column
             column_field = column_name_field @column
-            drop_down = Button.new column_field.parent.parent.parent.parent.divs[3]
+            drop_down = StampsButton.new column_field.parent.parent.parent.parent.divs[3]
             menu_selection = Label.new @browser.span(text: "Columns")
 
             name_field = @browser.spans(text: "Reference No.").last
@@ -191,7 +191,7 @@ module Orders
         scroll @column
         column_field = column_name_field @column
         sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
-        sort_drop_down = Button.new column_field.parent.parent.parent.parent.divs[3]
+        sort_drop_down = StampsButton.new column_field.parent.parent.parent.parent.divs[3]
 
         sort_field_id = (sort_order==:sort_ascending)?"Sort Ascending":"Sort Descending"
         verify_sort = (sort_order==:sort_ascending)?"ASC":"DESC"

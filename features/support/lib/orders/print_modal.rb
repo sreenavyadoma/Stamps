@@ -7,7 +7,7 @@ module Orders
     end
 
     def close
-      button = Button.new @browser.img(css: "img[class*='x-tool-img x-tool-close']")
+      button = StampsButton.new @browser.img(css: "img[class*='x-tool-img x-tool-close']")
       10.times do
         button.safe_click
         break unless button.present?
@@ -15,7 +15,7 @@ module Orders
     end
 
     def ok
-      button = Button.new @browser.span(text: "Ok")
+      button = StampsButton.new @browser.span(text: "Ok")
       10.times do
         button.safe_click
         break unless button.present?
@@ -60,11 +60,11 @@ module Orders
     end
 
     def i_agree
-      Button.new @browser.span :text => "I Agree"
+      StampsButton.new @browser.span :text => "I Agree"
     end
 
     def cancel
-      Button.new @browser.span :text => "Cancel"
+      StampsButton.new @browser.span :text => "Cancel"
     end
   end
 
@@ -179,7 +179,7 @@ module Orders
       end
 
       def drop_down
-        Button.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
+        StampsButton.new @browser.div :css => "div[id^=printmediadroplist][id$=trigger-picker]"
       end
 
       def select media
@@ -242,8 +242,8 @@ module Orders
       end
 
       def now_month_dd
-        picker = Button.new @browser.div Orders::Orders::Locators::PrintModal.date_picker_button
-        today = Button.new @browser.span :css => "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
+        picker = StampsButton.new @browser.div Orders::Orders::Locators::PrintModal.date_picker_button
+        today = StampsButton.new @browser.span :css => "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
         10.times {
           picker.safe_click unless today.present?
           today.safe_click
@@ -254,8 +254,8 @@ module Orders
       end
 
       def todays_date
-        picker = Button.new @browser.div Orders::Orders::Locators::PrintModal.date_picker_button
-        today = Button.new Button.new @browser.div :css => "div[title=Today]"
+        picker = StampsButton.new @browser.div Orders::Orders::Locators::PrintModal.date_picker_button
+        today = StampsButton.new StampsButton.new @browser.div :css => "div[title=Today]"
         10.times {
           picker.safe_click unless today.present?
           today.safe_click
@@ -276,7 +276,7 @@ module Orders
       def today_plus day
         day = day.to_i
         date_picker_header = Label.new @browser.div :class => "x-datepicker-header"
-        picker_button = Button.new @browser.div(Orders::Locators::PrintModal.date_picker_button)
+        picker_button = StampsButton.new @browser.div(Orders::Locators::PrintModal.date_picker_button)
         ship_date_textbox = Textbox.new @browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
 
         ship_date_str = test_helper.now_plus_month_dd day
@@ -307,7 +307,7 @@ module Orders
 
     class Printer < PrintModalObject
       def drop_down
-        Button.new @browser.div :id => "sdc-printpostagewindow-printerdroplist-trigger-picker"
+        StampsButton.new @browser.div :id => "sdc-printpostagewindow-printerdroplist-trigger-picker"
       end
 
       def text_box
@@ -351,7 +351,7 @@ module Orders
       end
 
       def drop_down
-        Button.new @browser.div :css => "div[id^=form-][id$=-body]>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"
+        StampsButton.new @browser.div :css => "div[id^=form-][id$=-body]>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"
       end
 
       def select selection
@@ -512,7 +512,7 @@ module Orders
       @printing_error = ""
       incomplete_order_window = Label.new(@browser.div :text => "Incomplete Order")
       error_window = Label.new(@browser.div :text => "Error")
-      ok_button = Button.new(@browser.span :text => 'OK')
+      ok_button = StampsButton.new(@browser.span :text => 'OK')
       message_label = Label.new((@browser.divs :css => "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
 
       sleep 2
@@ -550,11 +550,11 @@ module Orders
     end
 
     def print_sample_button
-      Button.new @browser.span :text => 'Print Modal: Print Sample'
+      StampsButton.new @browser.span :text => 'Print Modal: Print Sample'
     end
 
     def print_button
-      Button.new @browser.span :id => 'sdc-printwin-printbtn-btnInnerEl'
+      StampsButton.new @browser.span :id => 'sdc-printwin-printbtn-btnInnerEl'
     end
 
     def click_print_button
@@ -568,7 +568,7 @@ module Orders
     end
 
     def reprint
-      button = Button.new @browser.span(id: "sdc-printwin-printbtn-btnInnerEl")
+      button = StampsButton.new @browser.span(id: "sdc-printwin-printbtn-btnInnerEl")
       10.times do
         button.safe_click
         button.safe_click

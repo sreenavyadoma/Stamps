@@ -16,7 +16,7 @@ module Print
       end
 
       def save
-        button = Button.new (@browser.spans :text => "Save")[0]
+        button = StampsButton.new (@browser.spans :text => "Save")[0]
         button.safe_click
       end
 
@@ -95,7 +95,7 @@ module Print
 
       def add_item
         add_item_modal = Print::Postage::AddItemModal.new @browser
-        button = Button.new @browser.span :text => "Add Item"
+        button = StampsButton.new @browser.span :text => "Add Item"
         5.times do
           browser_helper.safe_click button
           return add_item_modal if add_item_modal.present?
@@ -106,7 +106,7 @@ module Print
 
       def edit_item
         edit_item_modal = Print::Postage::EditItemModal.new @browser
-        button = Button.new @browser.span :text => "Edit Item"
+        button = StampsButton.new @browser.span :text => "Edit Item"
         5.times do
           browser_helper.safe_click button
           return edit_item_modal if edit_item_modal.present?
@@ -116,7 +116,7 @@ module Print
       end
 
       def delete
-        button = Button.new @browser.span :text => "Delete"
+        button = StampsButton.new @browser.span :text => "Delete"
         browser_helper.safe_click button
       end
 
@@ -201,14 +201,14 @@ module Print
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[8]
+          button = StampsButton.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[8]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[8]
+          button = StampsButton.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[8]
           value.to_i.times do
             button.safe_click
           end
@@ -230,14 +230,14 @@ module Print
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[9]
+          button = StampsButton.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[9]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[9]
+          button = StampsButton.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[9]
           value.to_i.times do
             button.safe_click
           end
@@ -258,14 +258,14 @@ module Print
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[10]
+          button = StampsButton.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[10]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[10]
+          button = StampsButton.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[10]
           value.to_i.times do
             button.safe_click
           end
@@ -286,14 +286,14 @@ module Print
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[11]
+          button = StampsButton.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[11]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[11]
+          button = StampsButton.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[11]
           value.to_i.times do
             button.safe_click
           end
@@ -306,7 +306,7 @@ module Print
         end
 
         def drop_down
-          button = Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[12]
+          button = StampsButton.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[12]
         end
 
         def select selection
@@ -341,7 +341,7 @@ module Print
       end
 
       def drop_down
-        Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[9]
+        StampsButton.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[9]
       end
 
       def select selection
@@ -373,7 +373,7 @@ module Print
       end
 
       def drop_down
-        Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[10]
+        StampsButton.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[10]
       end
 
       def select selection
@@ -405,7 +405,7 @@ module Print
       end
 
       def drop_down
-        Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[11]
+        StampsButton.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[11]
       end
 
       def select selection
@@ -474,7 +474,7 @@ module Print
       end
 
       def browser_restrictions_button
-        Button.new @browser.span :text => "Restrictions..."
+        StampsButton.new @browser.span :text => "Restrictions..."
       end
 
       def restrictions
@@ -523,14 +523,14 @@ module Print
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
           value.to_i.times do
             button.safe_click
           end
@@ -553,14 +553,14 @@ module Print
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
           value.to_i.times do
             button.safe_click
           end
@@ -596,14 +596,14 @@ module Print
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
           value.to_i.times do
             button.safe_click
           end
@@ -639,14 +639,14 @@ module Print
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
           value.to_i.times do
             button.safe_click
           end
@@ -663,7 +663,7 @@ module Print
       end
 
       def delete
-        Button.new (@browser.spans :css => "div[id*=customswindow] span[class*=sdc-icon-remove]")[@number-1]
+        StampsButton.new (@browser.spans :css => "div[id*=customswindow] span[class*=sdc-icon-remove]")[@number-1]
       end
 
       def description

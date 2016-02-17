@@ -31,7 +31,7 @@ module Pam
     end
 
     def no
-      button = Button.new @browser.input(:name => "NO")
+      button = StampsButton.new @browser.input(:name => "NO")
       button.click_while_present
     end
   end
@@ -55,7 +55,7 @@ module Pam
 
     def submit
       purchase_verification = ACHPurchaseVerification.new @browser
-      button = Button.new @browser.input(:value => "Submit")
+      button = StampsButton.new @browser.input(:value => "Submit")
       5.times do
         button.send_keys :enter
         button.safe_click

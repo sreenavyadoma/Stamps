@@ -4,7 +4,7 @@ module Orders
       class BalanceDropDown < OrdersObject
         def buy_more
           buy_postage_modal = Orders::Purchasing::BuyPostage.new @browser
-          drop_down = Button.new (@browser.span :class => "balanceLabel")
+          drop_down = StampsButton.new (@browser.span :class => "balanceLabel")
           link = Label.new (@browser.a :text => "Buy More")
           20.times do
             drop_down.hover
@@ -16,7 +16,7 @@ module Orders
         end
 
         def purchase_history
-          drop_down = Button.new (@browser.span :class => "balanceLabel")
+          drop_down = StampsButton.new (@browser.span :class => "balanceLabel")
           link = Label.new (@browser.a :text => "View Purchase History")
           2.times do
             drop_down.hover

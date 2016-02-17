@@ -12,7 +12,7 @@ module Orders
       selection = Label.new (@browser.lis :text => country)[@index]
       text_box_field = (@browser.text_fields :name => "OriginCountryCode")[@index-1]
       text_box = Textbox.new text_box_field
-      drop_down = Button.new text_box_field.parent.parent.divs[1]
+      drop_down = StampsButton.new text_box_field.parent.parent.divs[1]
 
       10.times {
         begin
@@ -48,7 +48,7 @@ module Orders
     end
 
     def browser_restrictions_button
-      Button.new @browser.span :text => "Restrictions..."
+      StampsButton.new @browser.span :text => "Restrictions..."
     end
 
     def restrictions
@@ -72,7 +72,7 @@ module Orders
     end
 
     def item number
-      add_button = Button.new (@browser.spans :text => "Add Item").last
+      add_button = StampsButton.new (@browser.spans :text => "Add Item").last
       log.info "Item Count: #{size}"
 
       20.times{
@@ -120,14 +120,14 @@ module Orders
       end
 
       def increment value
-        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
         value.to_i.times do
           button.safe_click
         end
@@ -150,14 +150,14 @@ module Orders
       end
 
       def increment value
-        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
         value.to_i.times do
           button.safe_click
         end
@@ -193,14 +193,14 @@ module Orders
       end
 
       def increment value
-        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
         value.to_i.times do
           button.safe_click
         end
@@ -236,14 +236,14 @@ module Orders
       end
 
       def increment value
-        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+        button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = Button.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+        button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
         value.to_i.times do
           button.safe_click
         end
@@ -260,7 +260,7 @@ module Orders
     end
 
     def delete
-      Button.new (@browser.spans :css => "div[id*=customswindow] span[class*=sdc-icon-remove]")[@number-1]
+      StampsButton.new (@browser.spans :css => "div[id*=customswindow] span[class*=sdc-icon-remove]")[@number-1]
     end
 
     def description
@@ -325,7 +325,7 @@ module Orders
     def select selection
       log.info "Select Internal Transaction Number: #{selection}"
       text_box = self.text_box
-      drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
+      drop_down = StampsButton.new @browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
       selection_label = Label.new @browser.li :text => selection
       10.times {
         begin
@@ -352,7 +352,7 @@ module Orders
     def select selection
       log.info "Select Internal Transaction Number: #{selection}"
       text_box = self.text_box
-      drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
+      drop_down = StampsButton.new @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
       selection_label = Label.new @browser.li :text => selection
       10.times {
         begin
@@ -379,7 +379,7 @@ module Orders
     def select selection
       log.info "Select Internal Transaction Number: #{selection}"
       text_box = self.text_box
-      drop_down = Button.new @browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
+      drop_down = StampsButton.new @browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
       selection_label = Label.new @browser.li :text => selection
       10.times {
         begin
@@ -404,7 +404,7 @@ module Orders
     end
 
     def present?
-      Button.new @browser.image :css => "img[class*='x-tool-close']"
+      StampsButton.new @browser.image :css => "img[class*='x-tool-close']"
     end
 
     def package_contents
@@ -507,11 +507,11 @@ module Orders
     end
 
     def close
-      (Button.new @browser.span :text => "Close").click_while_present
+      (StampsButton.new @browser.span :text => "Close").click_while_present
     end
 
     def cancel
-      (Button.new @browser.img :css => "img[class$=x-tool-close]").click_while_present
+      (StampsButton.new @browser.img :css => "img[class$=x-tool-close]").click_while_present
     end
   end
 

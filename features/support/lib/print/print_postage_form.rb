@@ -70,7 +70,7 @@ module Print
     class PrintOn < Print::Postage::PrintObject
 
       def drop_down
-        Stamps::Browser::Button.new ((@browser.divs (Print::Locators::FormBody.print_on_drop_down_divs))[0])
+        StampsButton.new ((@browser.divs (Print::Locators::FormBody.print_on_drop_down_divs))[0])
       end
 
       def text_box
@@ -94,7 +94,7 @@ module Print
       end
 
       def tooltip selection
-        drop_down = Stamps::Browser::Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[0]
+        drop_down = StampsButton.new (@browser.divs :css => "div[class*=x-form-trigger]")[0]
         selection_field = Label.new @browser.div :text => selection
 
         10.times {
@@ -137,14 +137,14 @@ module Print
         end
 
         def increment value
-          button = Stamps::Browser::Button.new @browser.div :css => "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
+          button = StampsButton.new @browser.div :css => "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Stamps::Browser::Button.new @browser.div :css => "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
+          button = StampsButton.new @browser.div :css => "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
           value.to_i.times do
             button.safe_click
           end
@@ -175,14 +175,14 @@ module Print
         end
 
         def increment value
-          button = Stamps::Browser::Button.new @browser.div :css => "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
+          button = StampsButton.new @browser.div :css => "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Stamps::Browser::Button.new @browser.div :css => "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
+          button = StampsButton.new @browser.div :css => "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
           value.to_i.times do
             button.safe_click
           end
@@ -206,7 +206,7 @@ module Print
       end
 
       def drop_down
-        Stamps::Browser::Button.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[5]
+        StampsButton.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[5]
       end
 
       def select selection
@@ -275,7 +275,7 @@ module Print
     class ShipFrom < Print::Postage::PrintObject
 
       def drop_down
-        Stamps::Browser::Button.new (@browser.div :css => "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
+        StampsButton.new (@browser.div :css => "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
       end
 
       def manage_ship_from_address_field
@@ -358,14 +358,14 @@ module Print
       end
 
       def increment value
-        button = Stamps::Browser::Button.new @browser.div :css => "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=up]"
+        button = StampsButton.new @browser.div :css => "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=up]"
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = Stamps::Browser::Button.new @browser.div :css => "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=down]"
+        button = StampsButton.new @browser.div :css => "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=down]"
         value.to_i.times do
           button.safe_click
         end
@@ -376,7 +376,7 @@ module Print
 
     class Country < Print::Postage::PrintObject
       def drop_down
-        Stamps::Browser::Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
+        StampsButton.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
       end
 
       def text_box
@@ -441,7 +441,7 @@ module Print
 
     class Contacts < Print::Postage::PrintObject
       def open
-        button = Stamps::Browser::Button.new @browser.a :css => "[class*=sdc-mainpanel-shiptolinkbtn]"
+        button = StampsButton.new @browser.a :css => "[class*=sdc-mainpanel-shiptolinkbtn]"
         contacts_modal = Print::Postage::ContactsModal.new @browser
         5.times do
           button.safe_click
@@ -459,7 +459,7 @@ module Print
 
       def drop_down
         buttons = @browser.divs :css => "div[class*=x-form-arrow-trigger]"
-        button = Stamps::Browser::Button.new (buttons.last)
+        button = StampsButton.new (buttons.last)
       end
 
       def select selection
@@ -497,14 +497,14 @@ module Print
       end
 
       def increment value
-        button = Stamps::Browser::Button.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[7]
+        button = StampsButton.new (@browser.divs :css => "div[class*=x-form-spinner-up]")[7]
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = Stamps::Browser::Button.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[7]
+        button = StampsButton.new (@browser.divs :css => "div[class*=x-form-spinner-down]")[7]
         value.to_i.times do
           button.safe_click
         end

@@ -26,7 +26,7 @@ module Print
 
   class Printer < Print::Postage::PrintObject
     def drop_down
-      Button.new @browser.div :css => "table[id^=sdc-printpostagewindow-printerdroplist-triggerWrap]>tbody>tr>td>div[class*=x-form-arrow-trigger]"
+      StampsButton.new @browser.div :css => "table[id^=sdc-printpostagewindow-printerdroplist-triggerWrap]>tbody>tr>td>div[class*=x-form-arrow-trigger]"
     end
 
     def text_box
@@ -66,7 +66,7 @@ module Print
     end
 
     def drop_down
-      Button.new (@browser.divs :css => "div[class*=x-form-trigger]")[10]
+      StampsButton.new (@browser.divs :css => "div[class*=x-form-trigger]")[10]
     end
 
     def select selection
@@ -208,7 +208,7 @@ module Print
       @printing_error = ""
       incomplete_order_window = Label.new(@browser.div :text => "Incomplete Order")
       error_window = Label.new(@browser.div :text => "Error")
-      ok_button = Button.new(@browser.span :text => 'OK')
+      ok_button = StampsButton.new(@browser.span :text => 'OK')
       message_label = Label.new((@browser.divs :css => "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
 
       sleep 2
@@ -246,11 +246,11 @@ module Print
     end
 
     def print_sample_button
-      Button.new @browser.span :text => 'Print Modal: Print Sample'
+      StampsButton.new @browser.span :text => 'Print Modal: Print Sample'
     end
 
     def print_button
-      Button.new @browser.span :id => 'sdc-printwin-printbtn-btnInnerEl'
+      StampsButton.new @browser.span :id => 'sdc-printwin-printbtn-btnInnerEl'
     end
 
     def click_print_button

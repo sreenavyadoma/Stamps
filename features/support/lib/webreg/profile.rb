@@ -252,11 +252,11 @@ module WebReg
     end
 
     def send_promo
-      Button.new @browser.input(:id => "optIn")
+      StampsButton.new @browser.input(:id => "optIn")
     end
 
     def continue
-      Button.new @browser.button(:id => "next")
+      StampsButton.new @browser.button(:id => "next")
     end
 
     def continue_to_mailing_info

@@ -336,7 +336,7 @@ module WebReg
 
     def check
       agree_label = must_agree_label
-      checkbox_field = Button.new @browser.input(:id => "termsConditions")
+      checkbox_field = StampsButton.new @browser.input(:id => "termsConditions")
       10.times do
         checkbox_field.safe_click
         sleep 1
@@ -346,7 +346,7 @@ module WebReg
 
     def uncheck
       agree_label = must_agree_label
-      checkbox_field = Button.new @browser.input(:id => "termsConditions")
+      checkbox_field = StampsButton.new @browser.input(:id => "termsConditions")
       10.times do
         checkbox_field.safe_click
         sleep 1
@@ -369,7 +369,7 @@ module WebReg
     end
 
     def continue
-      Button.new @browser.button(:id => "btnUserNameTakenContinue")
+      StampsButton.new @browser.button(:id => "btnUserNameTakenContinue")
     end
   end
 
@@ -450,12 +450,12 @@ module WebReg
     end
 
     def back
-      Button.new @browser.button(:id => "prev")
+      StampsButton.new @browser.button(:id => "prev")
     end
 
     def submit
-      button = Button.new @browser.button(:text => "Submit")
-      loading = Button.new @browser.button(:text => "Loading...")
+      button = StampsButton.new @browser.button(:text => "Submit")
+      loading = StampsButton.new @browser.button(:text => "Loading...")
       supplies = ChooseSupplies.new @browser
       userid_taken = UserIdTaken.new @browser
       50.times do

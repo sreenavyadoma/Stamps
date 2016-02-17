@@ -20,8 +20,8 @@ module Orders
 
         def drop_down
           divs = @browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
-          domestic = Button.new divs.first
-          international = Button.new divs.last
+          domestic = StampsButton.new divs.first
+          international = StampsButton.new divs.last
 
           if domestic.present?
             domestic
@@ -245,7 +245,7 @@ module Orders
             checkbox = Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
             checkbox.check
 
-            accept_button = Button.new @browser.span :text => "Accept"
+            accept_button = StampsButton.new @browser.span :text => "Accept"
             accept_button.click_while_present
           end
 
@@ -480,10 +480,10 @@ module Orders
 
         orders_grid = Orders::Grid::OrdersGrid.new @browser
 
-        ship_to_area1 = Button.new @browser.div :css => "div[id=shiptoview-domestic-targetEl]>div:nth-child(2)>div>div>div:nth-child(1)"
-        ship_to_area2 = Button.new @browser.div :css => "div#shiptoview-domestic-innerCt"
+        ship_to_area1 = StampsButton.new @browser.div :css => "div[id=shiptoview-domestic-targetEl]>div:nth-child(2)>div>div>div:nth-child(1)"
+        ship_to_area2 = StampsButton.new @browser.div :css => "div#shiptoview-domestic-innerCt"
 
-        ship_to_drop_down = Button.new @browser.span :css => "span[class*=sdc-icon-down-arrow]"
+        ship_to_drop_down = StampsButton.new @browser.span :css => "span[class*=sdc-icon-down-arrow]"
 
         text_area.set address
 
@@ -1324,7 +1324,7 @@ module Orders
 
     class ViewRestrictions < OrdersObject
       def browser_ok_button
-        Button.new @browser.span :text => "OK"
+        StampsButton.new @browser.span :text => "OK"
       end
 
       def present?
@@ -1603,7 +1603,7 @@ module Orders
       end
 
       def drop_down
-        Button.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
+        StampsButton.new @browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
       end
 
       def select service
@@ -1662,7 +1662,7 @@ module Orders
       end
 
       def drop_down
-        Button.new @browser.div :css => "div[id^=trackingdroplist-][id$=-trigger-picker]"
+        StampsButton.new @browser.div :css => "div[id^=trackingdroplist-][id$=-trigger-picker]"
       end
 
       def select selection
@@ -1725,7 +1725,7 @@ module Orders
       end
 
       def drop_down
-        Button.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
+        StampsButton.new @browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
       end
 
       def select selection
@@ -1852,14 +1852,14 @@ module Orders
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
+          button = StampsButton.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
+          button = StampsButton.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
           value.to_i.times do
             button.safe_click
           end
@@ -1893,14 +1893,14 @@ module Orders
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
+          button = StampsButton.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
+          button = StampsButton.new (@browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
           value.to_i.times do
             button.safe_click
           end
@@ -1942,14 +1942,14 @@ module Orders
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
+          button = StampsButton.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
+          button = StampsButton.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
           value.to_i.times do
             button.safe_click
           end
@@ -1980,14 +1980,14 @@ module Orders
         end
 
         def increment value
-          button = Button.new ((@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]")[1])
+          button = StampsButton.new ((@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]")[1])
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new ((@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]")[1])
+          button = StampsButton.new ((@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]")[1])
           value.to_i.times do
             button.safe_click
           end
@@ -2018,14 +2018,14 @@ module Orders
         end
 
         def increment value
-          button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
+          button = StampsButton.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = Button.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
+          button = StampsButton.new (@browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
           value.to_i.times do
             button.safe_click
           end
@@ -2055,14 +2055,14 @@ module Orders
       end
 
       def increment value
-        button = Button.new (@browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]")
+        button = StampsButton.new (@browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]")
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = Button.new (@browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]")
+        button = StampsButton.new (@browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]")
         value.to_i.times do
           button.safe_click
         end
@@ -2101,14 +2101,14 @@ module Orders
           end
 
           def increment value
-            button = Button.new (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@number-1]
+            button = StampsButton.new (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@number-1]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = Button.new (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@number-1]
+            button = StampsButton.new (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@number-1]
             value.to_i.times do
               button.safe_click
             end
@@ -2137,7 +2137,7 @@ module Orders
         end
 
         def delete
-          Button.new (@browser.spans :css => "span[class*=sdc-icon-remove]")[@number-1]
+          StampsButton.new (@browser.spans :css => "span[class*=sdc-icon-remove]")[@number-1]
         end
       end
 
@@ -2146,7 +2146,7 @@ module Orders
       end
 
       def item number
-        add_button = Button.new (@browser.span :css => "span[class*=sdc-icon-add]")
+        add_button = StampsButton.new (@browser.span :css => "span[class*=sdc-icon-add]")
         log.info "Item Count: #{size}"
 
         20.times{
@@ -2171,7 +2171,7 @@ module Orders
       end
 
       def open
-        button = Button.new field
+        button = StampsButton.new field
         5.times do
           button.safe_click
           break unless button.present?
@@ -2183,7 +2183,7 @@ module Orders
       class ToolbarMenu < OrdersObject
           def collapse_panel
             selection = Label.new @browser.span(text: "Collapse Panel")
-            drop_down = Button.new (@browser.spans(css: "span[class*='sdc-icon-more']").first)
+            drop_down = StampsButton.new (@browser.spans(css: "span[class*='sdc-icon-more']").first)
             collapsed_details = CollapsedOrderDetails.new @browser
             10.times do
               drop_down.safe_click unless selection.present?
