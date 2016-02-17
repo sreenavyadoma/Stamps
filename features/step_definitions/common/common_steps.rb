@@ -11,5 +11,5 @@ Given /^I launch default browser$/ do
   #sleep 2
   #print_window.print
   #sleep 2
-
 end
+
