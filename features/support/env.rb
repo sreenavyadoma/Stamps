@@ -32,6 +32,7 @@ require_relative 'lib/webreg/webreg_helper'
 require_relative 'lib/pam/pam_helper'
 
 require 'rubygems' # for compatibility with JRuby, MRI 1.8, etc
+require "windows"
 #require 'atomic'
 #require 'thread'
 

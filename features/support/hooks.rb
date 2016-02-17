@@ -8,6 +8,16 @@ include RSpec
 include RSpec::Matchers
 include DataMagic
 
+Before do  |scenario|
+  log.info "Begin Test Scenario:  -----------------------------------------  #{scenario.name}"
+end
+
+After do |scenario|
+  Stamps::Test.teardown
+  $start = false
+  log.info "End Test Scenario:  -------------------------------------------  #{scenario.name}"
+end
+
 
 
 # Ruby read-write lock implementation
@@ -332,13 +342,3 @@ con.close
 
 
 =end
-
-Before do  |scenario|
-  log.info "Begin Test Scenario:  -----------------------------------------  #{scenario.name}"
-end
-
-After do |scenario|
-  Stamps::Test.teardown
-  $start = false
-  log.info "End Test Scenario:  -------------------------------------------  #{scenario.name}"
-end

@@ -82,7 +82,7 @@ module Stamps
             raise log.info "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
           end unless File.exist? chrome_data_dir
 
-          driver = Watir::Browser.new :chrome, :switches => ["--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
+          driver = Watir::Browser.new :chrome, :switches => ["--disable-print-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
           @browser_name = 'Google Chrome'
 
         elsif Test.browser.safari?
