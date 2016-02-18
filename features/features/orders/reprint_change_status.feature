@@ -4,7 +4,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
   Background:
     Given I am signed in to Orders
 
-  @reprint
+  @reprint_change_status @reprint
   Scenario: Allow User to Manually Change Order Status - User Reprints Order
     Then Filter Panel - Shipped
     Then Filter Panel - Awaiting Shipment
