@@ -48,6 +48,7 @@ module Orders
       tab = Stamps::Browser::Selection.new clickable, verify, "class", "selected"
       tab.select
       grid = Orders::Grid::OrdersGrid.new @browser
+      sleep 2
       grid.wait_until_present
       grid
     end
@@ -58,6 +59,7 @@ module Orders
       tab = Stamps::Browser::Selection.new clickable, verify, "class", "selected"
       tab.select
       grid = Orders::Grid::OrdersGrid.new @browser
+      sleep 2
       grid.wait_until_present
       grid
     end
@@ -68,6 +70,7 @@ module Orders
       tab = Stamps::Browser::Selection.new clickable, verify, "class", "selected"
       tab.select
       grid = Orders::Grid::OrdersGrid.new @browser
+      sleep 2
       grid.wait_until_present
       grid
     end
