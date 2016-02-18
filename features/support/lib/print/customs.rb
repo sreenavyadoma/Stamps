@@ -125,7 +125,7 @@ module Print
         for i in 0..1000
           break if rows[i].present? == false
           sleep 1
-          rows[i].safe_click
+          browser_helper.safe_click rows[i]
           delete
         end
       end
