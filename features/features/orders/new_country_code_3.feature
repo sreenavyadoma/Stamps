@@ -5,7 +5,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
 
      #User Able to Print with  new   country Country Bonaire, Sint Eustatius, and Saba
   @new_country_code @new_country_code_3
-  Scenario: Print Bonaire, Sint Eustatius, and Saba orders
+  Scenario: Print Bonaire, Sincd t Eustatius, and Saba orders
     Then Add New Order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To International Adress;
@@ -25,3 +25,6 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
     Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
     Then Sign out
+
+
+
