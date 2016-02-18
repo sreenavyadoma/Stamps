@@ -5,8 +5,8 @@
 
 When /^Footer: Print International Postage$/ do
   log.info "Step: Print International Postage"
-  postage.print_international
-  sleep 2
+  postage.footer.print_international
+  sleep 3
   intl_print_window = Windows::PrintWindow.new
   intl_print_window.print
 
