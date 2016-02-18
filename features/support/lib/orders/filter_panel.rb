@@ -43,30 +43,33 @@ module Orders
     end
 
     def awaiting_shipment
-      table = (@browser.tables :css => "table[id^=badgebutton]").first
-      div = table.tbody.tr.tds.first.div
-      tab = Stamps::Browser::Selection.new div, table, "class", "selected"
+      clickable = @browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[0]
+      verify = clickable.parent.parent.parent.parent
+      tab = Stamps::Browser::Selection.new clickable, verify, "class", "selected"
       tab.select
-      sleep 1
-      Orders::Grid::OrdersGrid.new @browser
+      grid = Orders::Grid::OrdersGrid.new @browser
+      grid.wait_until_present
+      grid
     end
 
     def shipped
-      table = (@browser.tables :css => "table[id^=badgebutton]")[1]
-      div = table.tbody.tr.tds.first.div
-      tab = Stamps::Browser::Selection.new div, table, "class", "selected"
+      clickable = @browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[1]
+      verify = clickable.parent.parent.parent.parent
+      tab = Stamps::Browser::Selection.new clickable, verify, "class", "selected"
       tab.select
-      sleep 1
-      Orders::Grid::OrdersGrid.new @browser
+      grid = Orders::Grid::OrdersGrid.new @browser
+      grid.wait_until_present
+      grid
     end
 
     def cancelled
-      table = (@browser.tables :css => "table[id^=badgebutton]").last
-      div = table.tbody.tr.tds.first.div
-      tab = Stamps::Browser::Selection.new div, table, "class", "selected"
+      clickable = @browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[2]
+      verify = clickable.parent.parent.parent.parent
+      tab = Stamps::Browser::Selection.new clickable, verify, "class", "selected"
       tab.select
-      sleep 1
-      Orders::Grid::OrdersGrid.new @browser
+      grid = Orders::Grid::OrdersGrid.new @browser
+      grid.wait_until_present
+      grid
     end
 
     def get_closed_filter_name
