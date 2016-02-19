@@ -1,5 +1,5 @@
 Then /^WebReg: Load QA Web Registration Page$/ do
-  step "I launch default browser"
+  step "I launch browser default"
   log.info "WebReg: Load QA Web Registration Page "
   @profile = registration.visit(:qa).profile
   @profile.wait_until_present

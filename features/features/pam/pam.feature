@@ -1,6 +1,6 @@
 Feature: Registration
   Background:
-    Given I launch default browser
+    Given I launch browser default
 
   @pam
   Scenario:

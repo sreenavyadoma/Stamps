@@ -10,14 +10,14 @@ end
 
 Given /^I am signed in as a postage shipper$/ do
   log.info "Step: I am signed in as a postage shipper"
-  step "I launch default browser"
+  step "I launch browser default"
   step "I visit postage sign-in page"
   postage.sign_in_page.sign_in_with_credentials
 end
 
 Given /^I am signed in as postage shipper (.*)\/(.*)/ do |username, password|
   log.info "Step: I am signed in as postage shipper #{username}/#{password}"
-  step "I launch default browser"
+  step "I launch browser default"
   step "I visit postage sign-in page"
   postage.sign_in_page.sign_in_with_credentials username, password
 end

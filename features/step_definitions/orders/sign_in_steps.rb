@@ -22,21 +22,21 @@ end
 
 Given /^I sign-in to Orders as (.*)\/(.*)/ do |username, password|
   log.info "Step: I am signed in to Orders as #{username}/#{password}"
-  step "I launch default browser"
+  step "I launch browser default"
   step "Orders: Load Sign-in page"
   orders.sign_in_page.sign_in_with_credentials username, password
 end
 
 Given /^I am signed in to Orders$/ do
   log.info "Step: I am signed in to Orders"
-  step "I launch default browser"
+  step "I launch browser default"
   step "Orders: Load Sign-in page"
   orders.sign_in_page.sign_in_with_credentials
 end
 
 Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
   log.info "Step: I am signed in to Orders as #{username}/#{password}"
-  step "I launch default browser"
+  step "I launch browser default"
   step "Orders: Load Sign-in page"
   orders.sign_in_page.sign_in_with_credentials username, password
 end
