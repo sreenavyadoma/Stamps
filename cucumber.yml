@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @grid_tracking_order_status --guess VERBOSE=true URL=qacc BROWSER=firefox USR=r7q2in0n PW=pass111 #
+rob_dev: --tags @store_management --guess VERBOSE=true URL=qacc BROWSER=firefox USR=emlghz3svvb PW=pass111 #
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
 eli_dev: --tags @wp_bvt_international --guess VERBOSE=true URL=qacc BROWSER=ff USR=auto40 PW=326tsetaqcdS!
