@@ -6,7 +6,6 @@ Feature: Registration
   @webreg_specify_username
   Scenario:
     Then WebR: Set User ID and Email to user defined ss_cctest11
-  #ORD10000000011
 
     Then WebReg: Set Password to password1
     Then WebReg: Set Re-Type password to password1

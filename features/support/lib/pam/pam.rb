@@ -18,7 +18,7 @@ module Pam
       end
 
       @browser.goto url
-      self..wait_until_present
+      #self..wait_until_present
       log.info "Page loaded. #{url}"
       self
     end

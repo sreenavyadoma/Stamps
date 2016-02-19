@@ -2,6 +2,10 @@ Then /^PAM:  Load QA Payment Administration Manager Page$/ do
   pam.visit :qa
 end
 
+Then /^PAM:  Authentication Required$/ do
+  pam.visit :qa
+end
+
 Then /^PAM: Load Customer Search Page$/ do
   log.info "PAM: Load Customer Search Page"
   step "PAM:  Load QA Payment Administration Manager Page" if @customer_search.nil?

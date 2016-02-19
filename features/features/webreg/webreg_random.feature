@@ -3,7 +3,7 @@ Feature: Registration
   Background:
     Given WebReg: Load QA Web Registration Page
 
-  @registration_random
+  @registration
   Scenario:
     Then WebReg: Set User ID and Email to Random Value
 
