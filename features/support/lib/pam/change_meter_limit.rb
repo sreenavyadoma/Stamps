@@ -25,7 +25,7 @@ module Pam
     end
 
     def new_meter_limit
-      Textbox.new @browser.text_field(:name => "resetAmt")
+      StampsTextbox.new @browser.text_field(:name => "resetAmt")
     end
 
     def usps_approval
@@ -33,7 +33,7 @@ module Pam
     end
 
     def submit
-      button = Stamps::Browser::Input.new @browser.input(:name => "submit")
+      button = Stamps::Browser::StampsInput.new @browser.input(:name => "submit")
       change_success = ChangeMeterLimitSuccess.new @browser
       5.times do
         button.send_keys :enter

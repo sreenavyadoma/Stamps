@@ -8,7 +8,7 @@ module Print
         end
 
         def text_area
-          Textbox.new (@browser.text_field :id => "sdc-mainpanel-shiptotextarea-inputEl")
+          StampsTextbox.new (@browser.text_field :id => "sdc-mainpanel-shiptotextarea-inputEl")
         end
 
         def set address
@@ -25,35 +25,35 @@ module Print
         end
 
         def name
-          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptonamefield-inputEl")
+          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptonamefield-inputEl")
         end
 
         def company
-          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptocompanyfield-inputEl")
+          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptocompanyfield-inputEl")
         end
 
         def address_1
-          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress1field-inputEl")
+          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress1field-inputEl")
         end
 
         def address_2
-          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress2field-inputEl")
+          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress2field-inputEl")
         end
 
         def city
-          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptocityfield-inputEl")
+          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptocityfield-inputEl")
         end
 
         def province
-          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptoprovincefield-inputEl")
+          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptoprovincefield-inputEl")
         end
 
         def postal_code
-          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptopostcodefield-inputEl")
+          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptopostcodefield-inputEl")
         end
 
         def phone
-          Textbox.new (@browser.text_field :id => "sdc-intlform-shiptophonefield-inputEl")
+          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptophonefield-inputEl")
         end
 
       end
@@ -74,13 +74,13 @@ module Print
       end
 
       def text_box
-        Textbox.new (@browser.text_field Print::Locators::FormBody.print_on_text_field)
+        StampsTextbox.new (@browser.text_field Print::Locators::FormBody.print_on_text_field)
       end
 
       def select selection
         box = text_box
         button = drop_down
-        selection_label = Label.new @browser.div :text => selection
+        selection_label = StampsLabel.new @browser.div :text => selection
         5.times {
           begin
             button.safe_click unless selection_label.present?
@@ -95,7 +95,7 @@ module Print
 
       def tooltip selection
         drop_down = StampsButton.new (@browser.divs :css => "div[class*=x-form-trigger]")[0]
-        selection_field = Label.new @browser.div :text => selection
+        selection_field = StampsLabel.new @browser.div :text => selection
 
         10.times {
           drop_down.safe_click unless selection_field.present?
@@ -115,7 +115,7 @@ module Print
     class Weight < Print::Postage::PrintObject
       class Pounds < Print::Postage::PrintObject
         def text_box
-          Textbox.new (@browser.text_field :id => 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
+          StampsTextbox.new (@browser.text_field :id => 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
         end
 
         def set value
@@ -153,7 +153,7 @@ module Print
 
       class Ounces < Print::Postage::PrintObject
         def text_box
-          Textbox.new (@browser.text_field :id => 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
+          StampsTextbox.new (@browser.text_field :id => 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
         end
 
         def set value
@@ -202,7 +202,7 @@ module Print
     class Service < Print::Postage::PrintObject
 
       def text_box
-        Textbox.new @browser.text_field :name => "servicePackage"
+        StampsTextbox.new @browser.text_field :name => "servicePackage"
       end
 
       def drop_down
@@ -214,9 +214,9 @@ module Print
         box = text_box
         button = drop_down
         if selection == "First-Class Mail Letter"
-          selection_label = Label.new @browser.tr :css => "tr[data-qtip*='First-Class Mail Envelope']"
+          selection_label = StampsLabel.new @browser.tr :css => "tr[data-qtip*='First-Class Mail Envelope']"
         else
-          selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
+          selection_label = StampsLabel.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
         end
         10.times {
           begin
@@ -236,7 +236,7 @@ module Print
 
       def cost selection
         button = drop_down
-        cost_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(3)"
+        cost_label = StampsLabel.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(3)"
         10.times {
           begin
             button.safe_click unless cost_label.present?
@@ -254,7 +254,7 @@ module Print
 
       def tooltip selection
         button = drop_down
-        selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
+        selection_label = StampsLabel.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
         5.times {
           begin
             button.safe_click unless selection_label.present?
@@ -295,7 +295,7 @@ module Print
       end
 
       def text_box
-        Textbox.new @browser.text_field :id => "sdc-mainpanel-shipfromdroplist-inputEl"
+        StampsTextbox.new @browser.text_field :id => "sdc-mainpanel-shipfromdroplist-inputEl"
       end
 
       def select selection
@@ -315,7 +315,7 @@ module Print
           ship_from_selection_field = @browser.div :text => "#{selection}"
         end
 
-        selection_label = Label.new ship_from_selection_field
+        selection_label = StampsLabel.new ship_from_selection_field
 
         if selection.downcase.include? "manage shipping"
           10.times{
@@ -348,7 +348,7 @@ module Print
 
     class StampAmount < Print::Postage::PrintObject
       def text_box
-        Textbox.new (@browser.text_field :name => "stampAmount"), "data-errorqtip"
+        StampsTextbox.new (@browser.text_field :name => "stampAmount"), "data-errorqtip"
       end
 
       def set value
@@ -380,13 +380,13 @@ module Print
       end
 
       def text_box
-        Textbox.new (@browser.text_field :name => "mailToCountry")
+        StampsTextbox.new (@browser.text_field :name => "mailToCountry")
       end
 
       def select selection
         box = text_box
         button = drop_down
-        selection_label = Label.new @browser.div :text => selection
+        selection_label = StampsLabel.new @browser.div :text => selection
         5.times {
           begin
             button.safe_click unless selection_label.present?
@@ -408,7 +408,7 @@ module Print
 
         checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
         verify_field = @browser.table :id => "sdc-mainpanel-emailcheckbox"
-        checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        checkbox = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
 
         if select
           checkbox.check
@@ -421,7 +421,7 @@ module Print
       end
 
       def textbox
-        Textbox.new (@browser.text_field :id => "sdc-mainpanel-emailtextfield-inputEl")
+        StampsTextbox.new (@browser.text_field :id => "sdc-mainpanel-emailtextfield-inputEl")
       end
 
     end
@@ -430,7 +430,7 @@ module Print
     class ShipDate < Print::Postage::PrintObject
 
       def text_box
-        Textbox.new (@browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl")
+        StampsTextbox.new (@browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl")
       end
 
       def date_picker
@@ -454,7 +454,7 @@ module Print
 
     class CostCode  < Print::Postage::PrintObject
       def text_box
-        Textbox.new @browser.text_field :name => "costCodeId"
+        StampsTextbox.new @browser.text_field :name => "costCodeId"
       end
 
       def drop_down
@@ -466,7 +466,7 @@ module Print
         log.info "Select Cost Code #{selection}"
         box = text_box
         button = drop_down
-        selection_label = Label.new (@browser.divs :text => selection)[1]
+        selection_label = StampsLabel.new (@browser.divs :text => selection)[1]
         10.times {
           begin
             button.safe_click #unless selection_label.present?
@@ -487,7 +487,7 @@ module Print
 
     class Quantity < Print::Postage::PrintObject
       def text_box
-        Textbox.new (@browser.text_field :css => "input[class*=sdc-previewpanel-quantitynumberfield']")
+        StampsTextbox.new (@browser.text_field :css => "input[class*=sdc-previewpanel-quantitynumberfield']")
       end
 
       def set value

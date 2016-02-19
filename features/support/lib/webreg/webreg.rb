@@ -18,7 +18,7 @@ module WebReg
       end
 
       @browser.goto url
-      sign_up_for_new_account = Label.new @browser.h1(:text => "Sign up for a new account")
+      sign_up_for_new_account = StampsLabel.new @browser.h1(:text => "Sign up for a new account")
       sign_up_for_new_account.wait_until_present
       log.info "Page loaded.  #{url}"
       self

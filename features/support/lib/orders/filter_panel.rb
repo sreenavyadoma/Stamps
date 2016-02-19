@@ -45,7 +45,7 @@ module Orders
     def awaiting_shipment
       clickable = @browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[0]
       verify = clickable.parent.parent.parent.parent
-      tab = Stamps::Browser::Selection.new clickable, verify, "class", "selected"
+      tab = Stamps::Browser::StampsSelection.new clickable, verify, "class", "selected"
       tab.select
       grid = Orders::Grid::OrdersGrid.new @browser
       sleep 2
@@ -56,7 +56,7 @@ module Orders
     def shipped
       clickable = @browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[1]
       verify = clickable.parent.parent.parent.parent
-      tab = Stamps::Browser::Selection.new clickable, verify, "class", "selected"
+      tab = Stamps::Browser::StampsSelection.new clickable, verify, "class", "selected"
       tab.select
       grid = Orders::Grid::OrdersGrid.new @browser
       sleep 2
@@ -67,7 +67,7 @@ module Orders
     def cancelled
       clickable = @browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[2]
       verify = clickable.parent.parent.parent.parent
-      tab = Stamps::Browser::Selection.new clickable, verify, "class", "selected"
+      tab = Stamps::Browser::StampsSelection.new clickable, verify, "class", "selected"
       tab.select
       grid = Orders::Grid::OrdersGrid.new @browser
       sleep 2

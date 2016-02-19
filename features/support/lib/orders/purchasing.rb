@@ -54,7 +54,7 @@ module Orders
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        Checkbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
 
       def buy_25
@@ -62,7 +62,7 @@ module Orders
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        Checkbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
 
       def buy_50
@@ -70,7 +70,7 @@ module Orders
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        Checkbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
 
       def buy_100
@@ -78,7 +78,7 @@ module Orders
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        Checkbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
 
       def buy_other value
@@ -86,8 +86,8 @@ module Orders
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        checkbox = Checkbox.new checkbox_field, verify_field, attribute, verify_field_attrib
-        textbox = Textbox.new (@browser.text_field :id => "sdc-purchasewin-otheramount")
+        checkbox = StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        textbox = StampsTextbox.new (@browser.text_field :id => "sdc-purchasewin-otheramount")
 
         checkbox.check
         textbox.set value

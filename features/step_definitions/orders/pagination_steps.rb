@@ -1,4 +1,18 @@
-#Pagination Controls are enabled
+
+Then /^Toolbar:  Set Per Page drop-down to 100$/ do
+  log.info "Step: Toolbar:  Set Per Page Count to 100"
+  orders.grid.toolbar.per_page.x100
+end
+
+Then /^Toolbar:  Set Per Page drop-down to 250$/ do
+  log.info "Step: Toolbar:  Set Per Page Count to 250"
+  orders.grid.toolbar.per_page.x250
+end
+
+Then /^Toolbar:  Set Per Page drop-down to 500$/ do
+  log.info "Step: Toolbar:  Set Per Page Count to 500"
+  orders.grid.toolbar.per_page.x500
+end
 
 Then /^User is on the first page of orders$/ do
   log.info "Step: User is on the first page of orders"
@@ -142,17 +156,6 @@ Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
     else
       raise "Illegal argument exception"
   end
-end
-
-Then /^Set paging toolbar orders per page count to (\d+)$/ do |page_count|
-  log.info "Step: Set paging toolbar orders per page count to #{page_count}"
-  #log.info "Orders Grid contains #{features.orders.grid.grid_page_order_count} orders"
-  log.info "Per page count is #{orders.grid.toolbar.page_count.text} orders"
-  orders.grid.toolbar.per_page_dd.select page_count
-  #log.info "Orders Grid contains #{features.orders.grid.grid_page_order_count} orders"
-  log.info "Per page count is #{orders.grid.toolbar.page_count.text} orders"
-  expect(page_count.to_i > 1).to be true
-  @per_page_count = page_count
 end
 
 When /^Set Page Number to (\d*)$/ do |value|

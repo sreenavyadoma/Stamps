@@ -28,7 +28,7 @@ module Print
       end
 
       def window_title
-        Label.new (@browser.span :text => "Search Contacts")
+        StampsLabel.new (@browser.span :text => "Search Contacts")
       end
 
       def search

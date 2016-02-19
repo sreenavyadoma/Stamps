@@ -3,7 +3,7 @@ module Orders
 
     class OrderForm < OrdersObject
       def click_form
-        item_label = Label.new @browser.label :text => 'Item:'
+        item_label = StampsLabel.new @browser.label :text => 'Item:'
         10.times {
           begin
             item_label.safe_click
@@ -33,14 +33,14 @@ module Orders
         end
 
         def text_box
-          Textbox.new (@browser.text_fields :name => "ShipCountryCode")[1]
+          StampsTextbox.new (@browser.text_fields :name => "ShipCountryCode")[1]
         end
 
         def select country
           log.info "Select Country #{country}"
 
-          selection_1 = Label.new @browser.li :text => country
-          selection_2 = Label.new @browser.li :text => "#{country} "
+          selection_1 = StampsLabel.new @browser.li :text => country
+          selection_2 = StampsLabel.new @browser.li :text => "#{country} "
 
           text_box = self.text_box
           drop_down = self.drop_down
@@ -74,11 +74,11 @@ module Orders
         field = @browser.textarea :name => "freeFormAddress"
         error_field = @browser.a :css => "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
         error_field_attribute = "data-errorqtip"
-        Textbox.new field, error_field, error_field_attribute
+        StampsTextbox.new field, error_field, error_field_attribute
       end
 
       def less
-        Link.new (@browser.spans :text => "Less").first
+        StampsLink.new (@browser.spans :text => "Less").first
       end
 
       def hide
@@ -88,7 +88,7 @@ module Orders
 
       def expand
         click_form
-        ship_to_dd = Link.new @browser.span :css => "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)"
+        ship_to_dd = StampsLink.new @browser.span :css => "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)"
 
         5.times {
           ship_to_dd.safe_click
@@ -101,70 +101,70 @@ module Orders
         field = @browser.text_field :name => 'BuyerEmail'
         error_field = (@browser.divs :css => "div[data-errorqtip*=email]")[0]
         error_field_attribute = "data-errorqtip"
-        Textbox.new field, error_field, error_field_attribute
+        StampsTextbox.new field, error_field, error_field_attribute
       end
 
       def phone
         expand
-        Textbox.new @browser.text_field :name => "ShipPhone"
+        StampsTextbox.new @browser.text_field :name => "ShipPhone"
       end
     end
 
     class ShipToInternationalFields < OrderForm
 
       def present?
-        Textbox.new(@browser.text_field :name => "FullName").present?
+        StampsTextbox.new(@browser.text_field :name => "FullName").present?
       end
 
       def name
         field = @browser.text_field :name => "ShipName"
         error_field = @browser.div :css => "div[data-anchortarget^=autosuggest][data-anchortarget$=inputEl]"
         error_field_attribute = "data-errorqtip"
-        Textbox.new field, error_field, error_field_attribute
+        StampsTextbox.new field, error_field, error_field_attribute
       end
 
       def company
         field = @browser.text_field :name => "ShipCompany"
         error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[2]
         error_field_attribute = "data-errorqtip"
-        Textbox.new field, error_field, error_field_attribute
+        StampsTextbox.new field, error_field, error_field_attribute
       end
 
       def address_1
         field = @browser.text_field :name => "ShipStreet1"
         error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[3]
         error_field_attribute = "data-errorqtip"
-        Textbox.new field, error_field, error_field_attribute
+        StampsTextbox.new field, error_field, error_field_attribute
       end
 
       def address_2
-        Textbox.new @browser.text_field :name => "ShipStreet2"
+        StampsTextbox.new @browser.text_field :name => "ShipStreet2"
       end
 
       def city
         field = @browser.text_field :name => "ShipCity"
         error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[5]
         error_field_attribute = "data-errorqtip"
-        Textbox.new field, error_field, error_field_attribute
+        StampsTextbox.new field, error_field, error_field_attribute
       end
 
       def phone
         field = (@browser.text_fields :name => "ShipPhone").last
         error_field = @browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[8]
         error_field_attribute = "data-errorqtip"
-        Textbox.new field, error_field, error_field_attribute
+        StampsTextbox.new field, error_field, error_field_attribute
       end
 
       def province
-        Textbox.new @browser.text_field :name => "ShipState"
+        StampsTextbox.new @browser.text_field :name => "ShipState"
       end
 
       def postal_code
-        Textbox.new @browser.text_field :name => "ShipPostalCode"
+        StampsTextbox.new @browser.text_field :name => "ShipPostalCode"
       end
 
       def email
-        Textbox.new (@browser.text_fields :name => "BuyerEmail").last
+        StampsTextbox.new (@browser.text_fields :name => "BuyerEmail").last
       end
     end
 
@@ -179,7 +179,7 @@ module Orders
       end
 
       def select number
-        selection = Label.new name_fields[number.to_i-1]
+        selection = StampsLabel.new name_fields[number.to_i-1]
         selection.safe_click
         selection.safe_click
         selection.safe_click
@@ -242,7 +242,7 @@ module Orders
             row = number.to_i<=0?0:number.to_i-1
             checkbox_field = @browser.input :css => "input[name=addrAmbig][value='#{row}']"
 
-            checkbox = Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
+            checkbox = StampsCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
             checkbox.check
 
             accept_button = StampsButton.new @browser.span :text => "Accept"
@@ -272,7 +272,7 @@ module Orders
         end
 
         def set address
-          suggested_address_corrections = Link.new @browser.span(:text => "View Suggested Address Corrections")
+          suggested_address_corrections = StampsLink.new @browser.span(:text => "View Suggested Address Corrections")
 
           exact_address_not_found = address_not_found
           country_drop_down = self.country
@@ -1599,7 +1599,7 @@ module Orders
     class ShipFromAddress < OrderForm
 
       def text_box
-        Textbox.new @browser.text_field :name => "ShipFrom"
+        StampsTextbox.new @browser.text_field :name => "ShipFrom"
       end
 
       def drop_down
@@ -1623,7 +1623,7 @@ module Orders
           ship_from_selection_field = @browser.div :text => "#{service}"
         end
 
-        selection_label = Label.new ship_from_selection_field
+        selection_label = StampsLabel.new ship_from_selection_field
 
         if service.downcase.include? "manage shipping"
           10.times{
@@ -1658,7 +1658,7 @@ module Orders
 
     class TrackingDropDown < OrderForm
       def text_box
-        Textbox.new @browser.text_field :name => 'Tracking'
+        StampsTextbox.new @browser.text_field :name => 'Tracking'
       end
 
       def drop_down
@@ -1668,7 +1668,7 @@ module Orders
       def select selection
         box = text_box
         button = drop_down
-        selection_label = Label.new @browser.td :text => selection
+        selection_label = StampsLabel.new @browser.td :text => selection
         5.times {
           begin
             button.safe_click unless selection_label.present?
@@ -1721,7 +1721,7 @@ module Orders
 
     class Service < OrderForm
       def text_box
-        Textbox.new (@browser.text_field :name => "Service"), (@browser.div :css => "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
+        StampsTextbox.new (@browser.text_field :name => "Service"), (@browser.div :css => "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
       end
 
       def drop_down
@@ -1732,7 +1732,7 @@ module Orders
         log.info "Select Service #{selection}"
         box = text_box
         button = drop_down
-        selection_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
+        selection_label = StampsLabel.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
         20.times {
           begin
             button.safe_click unless selection_label.present?
@@ -1752,7 +1752,7 @@ module Orders
 
       def cost selection
         button = drop_down
-        cost_label = Label.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(3)"
+        cost_label = StampsLabel.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(3)"
         10.times {
           begin
             button.safe_click unless cost_label.present?
@@ -1771,7 +1771,7 @@ module Orders
 
       def tooltip selection
         button = drop_down
-        selection_label = Label.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
+        selection_label = StampsLabel.new @browser.tr :css => "tr[data-qtip*='#{selection}']"
         10.times {
           begin
             button.safe_click unless selection_label.present?
@@ -1791,13 +1791,13 @@ module Orders
       def disabled? service
         dd_btn = self.drop_down
         selection_field = @browser.tr :css => "tr[data-qtip*='#{service}']"
-        selection_label = Label.new selection_field
+        selection_label = StampsLabel.new selection_field
 
         10.times do |index|
           dd_btn.safe_click unless selection_label.present?
           sleep 1
           if selection_field.present?
-            disabled_field = Label.new (selection_field.parent.parent.parent)
+            disabled_field = StampsLabel.new (selection_field.parent.parent.parent)
             begin
               if selection_label.present?
                 if disabled_field.present?
@@ -1830,7 +1830,7 @@ module Orders
     class Weight < OrdersObject
       class Pounds < OrdersObject
         def text_box
-          Textbox.new (@browser.text_field :name => 'WeightLbs'), "data-errorqtip"
+          StampsTextbox.new (@browser.text_field :name => 'WeightLbs'), "data-errorqtip"
         end
 
         def set value
@@ -1868,7 +1868,7 @@ module Orders
 
       class Ounces < OrdersObject
         def text_box
-          Textbox.new (@browser.text_field :name => 'WeightOz'), "data-errorqtip"
+          StampsTextbox.new (@browser.text_field :name => 'WeightOz'), "data-errorqtip"
         end
 
         def set value
@@ -1920,7 +1920,7 @@ module Orders
 
       class Length < OrdersObject
         def text_box
-          Textbox.new @browser.text_field :name => 'Length'
+          StampsTextbox.new @browser.text_field :name => 'Length'
         end
 
         def set value
@@ -1958,7 +1958,7 @@ module Orders
 
       class Width < OrdersObject
         def text_box
-          Textbox.new @browser.text_field :name => 'Width'
+          StampsTextbox.new @browser.text_field :name => 'Width'
         end
 
         def set value
@@ -1996,7 +1996,7 @@ module Orders
 
       class Height < OrdersObject
         def text_box
-          Textbox.new @browser.text_field :name => 'Height'
+          StampsTextbox.new @browser.text_field :name => 'Height'
         end
 
         def set value
@@ -2047,7 +2047,7 @@ module Orders
 
     class InsureFor < OrdersObject
       def text_box
-        Textbox.new @browser.text_field :name => "InsuredValue"
+        StampsTextbox.new @browser.text_field :name => "InsuredValue"
       end
 
       def set value
@@ -2080,7 +2080,7 @@ module Orders
           end
 
           def text_box
-            Textbox.new ((@browser.text_fields :name => "Quantity")[@number-1]), "data-errorqtip"
+            StampsTextbox.new ((@browser.text_fields :name => "Quantity")[@number-1]), "data-errorqtip"
           end
 
           def set value
@@ -2129,11 +2129,11 @@ module Orders
         end
 
         def id
-          Textbox.new (@browser.text_fields :name => "SKU")[@number-1]
+          StampsTextbox.new (@browser.text_fields :name => "SKU")[@number-1]
         end
 
         def description
-          Textbox.new (@browser.text_fields :name => "Description")[@number-1]
+          StampsTextbox.new (@browser.text_fields :name => "Description")[@number-1]
         end
 
         def delete
@@ -2182,7 +2182,7 @@ module Orders
     class OrderDetailsToolbar < OrdersObject
       class ToolbarMenu < OrdersObject
           def collapse_panel
-            selection = Label.new @browser.span(text: "Collapse Panel")
+            selection = StampsLabel.new @browser.span(text: "Collapse Panel")
             drop_down = StampsButton.new (@browser.spans(css: "span[class*='sdc-icon-more']").first)
             collapsed_details = CollapsedOrderDetails.new @browser
             10.times do
@@ -2198,7 +2198,7 @@ module Orders
       end
 
       def order_id
-        order_id_label = Label.new @browser.bs(:css => "label>b").first
+        order_id_label = StampsLabel.new @browser.bs(:css => "label>b").first
         5.times{
           begin
             order_id_str = order_id_label.text
@@ -2262,7 +2262,7 @@ module Orders
       end
 
       def total
-        cost_label = Label.new (@browser.labels :css => "label[class*=total_cost]")[0]
+        cost_label = StampsLabel.new (@browser.labels :css => "label[class*=total_cost]")[0]
         10.times do
           begin
             cost = cost_label.text
@@ -2291,7 +2291,7 @@ module Orders
       end
 
       def add_item
-        add_item = Link.new @browser.span :text => "Add Item"
+        add_item = StampsLink.new @browser.span :text => "Add Item"
         raise "Add Item button is not present in Order Details form!" unless add_item.present?
         count = items_count
         5.times do
@@ -2322,7 +2322,7 @@ module Orders
       end
 
       def service_cost
-        cost_label = Label.new (@browser.label :text => "Service:").parent.labels[2]
+        cost_label = StampsLabel.new (@browser.label :text => "Service:").parent.labels[2]
         10.times do
           begin
             cost = cost_label.text
@@ -2335,7 +2335,7 @@ module Orders
       end
 
       def insurance_cost
-        cost_label = Label.new (@browser.label :text => "Insure For $:").parent.labels[2]
+        cost_label = StampsLabel.new (@browser.label :text => "Insure For $:").parent.labels[2]
         10.times do
           begin
             cost = cost_label.text
@@ -2348,7 +2348,7 @@ module Orders
       end
 
       def tracking_cost
-        cost_label = Label.new (@browser.label :text => "Tracking:").parent.labels[2]
+        cost_label = StampsLabel.new (@browser.label :text => "Tracking:").parent.labels[2]
         10.times do
           begin
             cost = cost_label.text
@@ -2361,7 +2361,7 @@ module Orders
       end
 
       def wait_until_present
-        (Label.new @browser.label :text => "Ship From:").wait_until_present
+        (StampsLabel.new @browser.label :text => "Ship From:").wait_until_present
       end
 
       def pounds_max_value

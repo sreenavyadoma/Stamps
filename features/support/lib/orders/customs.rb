@@ -9,9 +9,9 @@ module Orders
 
     def select country
       log.info "Select Country #{country}"
-      selection = Label.new (@browser.lis :text => country)[@index]
+      selection = StampsLabel.new (@browser.lis :text => country)[@index]
       text_box_field = (@browser.text_fields :name => "OriginCountryCode")[@index-1]
-      text_box = Textbox.new text_box_field
+      text_box = StampsTextbox.new text_box_field
       drop_down = StampsButton.new text_box_field.parent.parent.divs[1]
 
       10.times {
@@ -33,7 +33,7 @@ module Orders
 
     def browser_edit_form_button
       links = @browser.links :css => "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
-      Link.new links.first
+      StampsLink.new links.first
     end
 
     def edit_form
@@ -98,7 +98,7 @@ module Orders
       end
 
       def text_box
-        Textbox.new ((@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]), "data-errorqtip"
+        StampsTextbox.new ((@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]), "data-errorqtip"
       end
 
       def set value
@@ -141,7 +141,7 @@ module Orders
       end
 
       def text_box
-        Textbox.new ((@browser.text_fields :name => "Value")[@number-1]), "data-errorqtip"
+        StampsTextbox.new ((@browser.text_fields :name => "Value")[@number-1]), "data-errorqtip"
       end
 
       def set value
@@ -171,7 +171,7 @@ module Orders
       end
 
       def text_box
-        Textbox.new ((@browser.text_fields :name => "lbs")[@number-1]), "data-errorqtip"
+        StampsTextbox.new ((@browser.text_fields :name => "lbs")[@number-1]), "data-errorqtip"
       end
 
       def set value
@@ -214,7 +214,7 @@ module Orders
       end
 
       def text_box
-        Textbox.new ((@browser.text_fields :name => "oz")[@number-1]), "data-errorqtip"
+        StampsTextbox.new ((@browser.text_fields :name => "oz")[@number-1]), "data-errorqtip"
       end
 
       def set value
@@ -264,7 +264,7 @@ module Orders
     end
 
     def description
-      Textbox.new ((@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]), "data-errorqtip"
+      StampsTextbox.new ((@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]), "data-errorqtip"
     end
 
     def qty
@@ -288,14 +288,14 @@ module Orders
     end
 
     def hs_tariff
-      Textbox.new (@browser.text_fields :name => "TariffNo")[@number-1]
+      StampsTextbox.new (@browser.text_fields :name => "TariffNo")[@number-1]
     end
 
   end
 
   class UspsPrivactActStatementModal < OrdersObject
     def window_title
-      Label.new @browser.div :text => "USPS Privacy Act Statement"
+      StampsLabel.new @browser.div :text => "USPS Privacy Act Statement"
     end
 
     def present?
@@ -319,14 +319,14 @@ module Orders
   class InternalTransaction < OrdersObject
 
     def text_box
-      Textbox.new @browser.text_field :name => "IsITNRequired"
+      StampsTextbox.new @browser.text_field :name => "IsITNRequired"
     end
 
     def select selection
       log.info "Select Internal Transaction Number: #{selection}"
       text_box = self.text_box
       drop_down = StampsButton.new @browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
-      selection_label = Label.new @browser.li :text => selection
+      selection_label = StampsLabel.new @browser.li :text => selection
       10.times {
         begin
           drop_down.safe_click unless selection_label.present?
@@ -346,14 +346,14 @@ module Orders
   class PackageContents < OrdersObject
 
     def text_box
-      Textbox.new @browser.text_field :name => "CustomsContents"
+      StampsTextbox.new @browser.text_field :name => "CustomsContents"
     end
 
     def select selection
       log.info "Select Internal Transaction Number: #{selection}"
       text_box = self.text_box
       drop_down = StampsButton.new @browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
-      selection_label = Label.new @browser.li :text => selection
+      selection_label = StampsLabel.new @browser.li :text => selection
       10.times {
         begin
           drop_down.safe_click unless selection_label.present?
@@ -373,14 +373,14 @@ module Orders
   class NonDeliveryOptions < OrdersObject
 
     def text_box
-      Textbox.new @browser.text_field :name => "NonDelivery"
+      StampsTextbox.new @browser.text_field :name => "NonDelivery"
     end
 
     def select selection
       log.info "Select Internal Transaction Number: #{selection}"
       text_box = self.text_box
       drop_down = StampsButton.new @browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
-      selection_label = Label.new @browser.li :text => selection
+      selection_label = StampsLabel.new @browser.li :text => selection
       10.times {
         begin
           drop_down.safe_click unless selection_label.present?
@@ -400,7 +400,7 @@ module Orders
   class CustomsForm < OrdersObject
 
     def usps_privacy_act_warning
-      Label.new (@browser.label :text => "You must agree to the USPS Privacy Act Statement")
+      StampsLabel.new (@browser.label :text => "You must agree to the USPS Privacy Act Statement")
     end
 
     def present?
@@ -421,23 +421,23 @@ module Orders
     end
 
     def more_info
-      Textbox.new @browser.text_field :name => "CustomsComments"
+      StampsTextbox.new @browser.text_field :name => "CustomsComments"
     end
 
     def itn_number
-      Textbox.new @browser.text_field :name => "AES"
+      StampsTextbox.new @browser.text_field :name => "AES"
     end
 
     def license
-      Textbox.new @browser.text_field :name => "CustomsLicenseNumber"
+      StampsTextbox.new @browser.text_field :name => "CustomsLicenseNumber"
     end
 
     def certificate
-      Textbox.new @browser.text_field :name => "CustomsCertificateNumber"
+      StampsTextbox.new @browser.text_field :name => "CustomsCertificateNumber"
     end
 
     def invoice
-      Textbox.new @browser.text_field :name => "CustomsInvoiceNumber"
+      StampsTextbox.new @browser.text_field :name => "CustomsInvoiceNumber"
     end
 
     def item_grid
@@ -448,7 +448,7 @@ module Orders
     def total_weight
       divs = @browser.divs :css => "div[id^=displayfield]>div[id^=displayfield]>div[id^=displayfield]"
       div = divs[divs.size-2]
-      weight_label = Label.new div
+      weight_label = StampsLabel.new div
       log.info "Total Weight: #{weight_label.text}"
       weight_label
     end
@@ -466,7 +466,7 @@ module Orders
     end
 
     def total_value
-      test_helper.remove_dollar_sign (Label.new (@browser.divs :css => "div[class*=x-form-display-field-default]").last).text
+      test_helper.remove_dollar_sign (StampsLabel.new (@browser.divs :css => "div[class*=x-form-display-field-default]").last).text
     end
 
     def i_agree
@@ -475,7 +475,7 @@ module Orders
       verify_fields = @browser.inputs :css => "div[id^=checkbox][class*=x-form-type-checkbox]"
       verify_field = verify_fields.last
 
-      Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+      Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
     end
 
     def privacy_act_statement_link

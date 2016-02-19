@@ -35,7 +35,7 @@ module Stamps
       end
     end
 
-    class ClickableField
+    class StampsClickableField
       def initialize *args
         case args.length
           when 1
@@ -164,7 +164,7 @@ module Stamps
 
     end
 
-    class Selection < ClickableField
+    class StampsSelection < StampsClickableField
       def initialize clickable_field, verify_field, attribute, verify_field_attrib
         super clickable_field
         @verify_field = verify_field
@@ -193,7 +193,7 @@ module Stamps
       end
     end
 
-    class Checkbox < ClickableField
+    class StampsCheckbox < StampsClickableField
       def initialize checkbox_field, verify_field, attribute_name, attribute_value
         super checkbox_field
         @verify_field = verify_field
@@ -231,22 +231,22 @@ module Stamps
       end
     end
 
-    class Label < ClickableField
+    class StampsLabel < StampsClickableField
       def text
         browser_helper.text @field
       end
     end
 
-    class StampsButton < ClickableField
+    class StampsButton < StampsClickableField
     end
 
-    class Link < Label
+    class StampsLink < StampsLabel
       def url
         raise "url is not yet implemented"
       end
     end
 
-    class Input < Label
+    class StampsInput < StampsLabel
       def send_keys special_char
         browser_helper.send_keys @field, special_char
         self
@@ -261,7 +261,7 @@ module Stamps
       end
     end
 
-    class Textbox < Input
+    class StampsTextbox < StampsInput
 
       def set text
         browser_helper.set @field, text
@@ -286,7 +286,7 @@ module Stamps
       end
     end
 
-    class Dropdown < BrowserObject
+    class StampsDropdown < BrowserObject
       def initialize browser, dd, html_tag_symbol, input
         super browser
         @drop_down = dd
@@ -299,7 +299,7 @@ module Stamps
       end
 
       def text_box
-        Textbox.new @input
+        StampsTextbox.new @input
       end
 
       def select selection
@@ -346,7 +346,7 @@ module Stamps
       def selection operation, selection
         case operation.downcase
           when :field
-            return Label.new (expose_selection_field selection)
+            return StampsLabel.new (expose_selection_field selection)
           when :tooltip
             selection_field = expose_selection_field selection
             tooltip = browser_helper.attribute_value selection_field, "data-qtip"
@@ -407,7 +407,7 @@ module Stamps
       end
 
       def drop_down browser, drop_down_button, selection_field_type, drop_down_input, selection
-        dd = Dropdown.new browser, drop_down_button, selection_field_type, drop_down_input
+        dd = StampsDropdown.new browser, drop_down_button, selection_field_type, drop_down_input
         dd.select selection
       end
 

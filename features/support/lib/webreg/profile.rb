@@ -212,19 +212,19 @@ module WebReg
     end
 
     def email
-      Textbox.new @browser.text_field(:id => "email")
+      StampsTextbox.new @browser.text_field(:id => "email")
     end
 
     def user_id
-      Textbox.new @browser.text_field(:id => "username")
+      StampsTextbox.new @browser.text_field(:id => "username")
     end
 
     def password
-      Textbox.new @browser.text_field(:id => "password")
+      StampsTextbox.new @browser.text_field(:id => "password")
     end
 
     def retype_password
-      Textbox.new @browser.text_field(:id => "confirmPassword")
+      StampsTextbox.new @browser.text_field(:id => "confirmPassword")
     end
 
     def usage_type
@@ -240,7 +240,7 @@ module WebReg
     end
 
     def first_answer
-      Textbox.new @browser.text_field(:id => "secretAnswer1")
+      StampsTextbox.new @browser.text_field(:id => "secretAnswer1")
     end
 
     def second_question
@@ -248,7 +248,7 @@ module WebReg
     end
 
     def second_answer
-      Textbox.new @browser.text_field(:id => "secretAnswer2")
+      StampsTextbox.new @browser.text_field(:id => "secretAnswer2")
     end
 
     def send_promo

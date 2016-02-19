@@ -21,7 +21,7 @@ module Print
       end
 
       def window_title
-        Label.new (@browser.span :text => "Customs Information")
+        StampsLabel.new (@browser.span :text => "Customs Information")
       end
 
       def package_contents
@@ -37,23 +37,23 @@ module Print
       end
 
       def more_info
-        Textbox.new @browser.text_field :name => "Comments"
+        StampsTextbox.new @browser.text_field :name => "Comments"
       end
 
       def itn_number
-        Textbox.new @browser.text_field :name => "ITN"
+        StampsTextbox.new @browser.text_field :name => "ITN"
       end
 
       def license
-        Textbox.new @browser.text_field :name => "LicenseNumber"
+        StampsTextbox.new @browser.text_field :name => "LicenseNumber"
       end
 
       def certificate
-        Textbox.new @browser.text_field :name => "CertificateNumber"
+        StampsTextbox.new @browser.text_field :name => "CertificateNumber"
       end
 
       def invoice
-        Textbox.new @browser.text_field :name => "InvoiceNumber"
+        StampsTextbox.new @browser.text_field :name => "InvoiceNumber"
       end
 
       def i_agree
@@ -62,7 +62,7 @@ module Print
         verify_fields = @browser.tables :css => "table[id^=checkboxfield-]"
         verify_field = verify_fields.last
 
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def privacy_act_statement_link
@@ -157,7 +157,7 @@ module Print
       end
 
       def description
-        Textbox.new @browser.text_field :name => "Description"
+        StampsTextbox.new @browser.text_field :name => "Description"
       end
 
       def qty
@@ -177,7 +177,7 @@ module Print
       end
 
       def hs_tariff
-        Textbox.new @browser.text_field :name => "HSTariffNumber"
+        StampsTextbox.new @browser.text_field :name => "HSTariffNumber"
       end
 
       def origin
@@ -190,7 +190,7 @@ module Print
 
       class Qty  < Print::Postage::PrintObject
         def text_box
-          Textbox.new @browser.text_field :name => 'Quantity'
+          StampsTextbox.new @browser.text_field :name => 'Quantity'
         end
 
         def set value
@@ -219,7 +219,7 @@ module Print
 
       class Value  < Print::Postage::PrintObject
         def text_box
-          Textbox.new @browser.text_field :name => 'Value'
+          StampsTextbox.new @browser.text_field :name => 'Value'
         end
 
         def set value
@@ -247,7 +247,7 @@ module Print
 
       class Lbs  < Print::Postage::PrintObject
         def text_box
-          Textbox.new @browser.text_field :name => 'WeightLb'
+          StampsTextbox.new @browser.text_field :name => 'WeightLb'
         end
 
         def set value
@@ -275,7 +275,7 @@ module Print
 
       class Ounces  < Print::Postage::PrintObject
         def text_box
-          Textbox.new @browser.text_field :name => 'WeightOz'
+          StampsTextbox.new @browser.text_field :name => 'WeightOz'
         end
 
         def set value
@@ -302,7 +302,7 @@ module Print
       end
       class Origin  < Print::Postage::PrintObject
         def text_box
-          Textbox.new @browser.text_field :name => "CountryOfOrigin"
+          StampsTextbox.new @browser.text_field :name => "CountryOfOrigin"
         end
 
         def drop_down
@@ -313,7 +313,7 @@ module Print
           log.info "Select Origin Country #{selection}"
           box = text_box
           button = drop_down
-          selection_label = Label.new (@browser.divs :text => selection)[1]
+          selection_label = StampsLabel.new (@browser.divs :text => selection)[1]
           10.times {
             begin
               button.safe_click #unless selection_label.present?
@@ -337,7 +337,7 @@ module Print
 
     class PackageContents < Print::Postage::PrintObject
       def text_box
-        Textbox.new @browser.text_field :name => "ContentType"
+        StampsTextbox.new @browser.text_field :name => "ContentType"
       end
 
       def drop_down
@@ -348,7 +348,7 @@ module Print
         log.info "Select Package Contents #{selection}"
         box = text_box
         button = drop_down
-        selection_label = Label.new @browser.div :text => selection
+        selection_label = StampsLabel.new @browser.div :text => selection
         10.times {
           begin
             button.safe_click #unless selection_label.present?
@@ -369,7 +369,7 @@ module Print
 
     class NonDeliveryOptions < Print::Postage::PrintObject
       def text_box
-        Textbox.new @browser.text_field :name => "NonDeliveryOption"
+        StampsTextbox.new @browser.text_field :name => "NonDeliveryOption"
       end
 
       def drop_down
@@ -380,7 +380,7 @@ module Print
         log.info "Select Non Delivery Option #{selection}"
         box = text_box
         button = drop_down
-        selection_label = Label.new @browser.div :text => selection
+        selection_label = StampsLabel.new @browser.div :text => selection
         10.times {
           begin
             button.safe_click #unless selection_label.present?
@@ -401,7 +401,7 @@ module Print
 
     class InternalTransaction < Print::Postage::PrintObject
       def text_box
-        Textbox.new @browser.text_field :name => "isITNRequired"
+        StampsTextbox.new @browser.text_field :name => "isITNRequired"
       end
 
       def drop_down
@@ -412,7 +412,7 @@ module Print
         log.info "Select Internal Transaction #{selection}"
         box = text_box
         button = drop_down
-        selection_label = Label.new @browser.div :text => selection
+        selection_label = StampsLabel.new @browser.div :text => selection
         10.times {
           begin
             button.safe_click #unless selection_label.present?
@@ -459,7 +459,7 @@ module Print
 
       def browser_edit_form_button
         links = @browser.links :css => "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
-        Link.new links.first
+        StampsLink.new links.first
       end
 
       def edit_form
@@ -501,7 +501,7 @@ module Print
         end
 
         def text_box
-          Textbox.new ((@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]), "data-errorqtip"
+          StampsTextbox.new ((@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]), "data-errorqtip"
         end
 
         def set value
@@ -544,7 +544,7 @@ module Print
         end
 
         def text_box
-          Textbox.new ((@browser.text_fields :name => "Value")[@number-1]), "data-errorqtip"
+          StampsTextbox.new ((@browser.text_fields :name => "Value")[@number-1]), "data-errorqtip"
         end
 
         def set value
@@ -574,7 +574,7 @@ module Print
         end
 
         def text_box
-          Textbox.new ((@browser.text_fields :name => "lbs")[@number-1]), "data-errorqtip"
+          StampsTextbox.new ((@browser.text_fields :name => "lbs")[@number-1]), "data-errorqtip"
         end
 
         def set value
@@ -617,7 +617,7 @@ module Print
         end
 
         def text_box
-          Textbox.new ((@browser.text_fields :name => "oz")[@number-1]), "data-errorqtip"
+          StampsTextbox.new ((@browser.text_fields :name => "oz")[@number-1]), "data-errorqtip"
         end
 
         def set value
@@ -667,7 +667,7 @@ module Print
       end
 
       def description
-        Textbox.new ((@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]), "data-errorqtip"
+        StampsTextbox.new ((@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]), "data-errorqtip"
       end
 
       def qty
@@ -691,14 +691,14 @@ module Print
       end
 
       def hs_tariff
-        Textbox.new (@browser.text_fields :name => "TariffNo")[@number-1]
+        StampsTextbox.new (@browser.text_fields :name => "TariffNo")[@number-1]
       end
 
     end
 
     class UspsPrivactActStatementModal < OrdersObject
       def window_title
-        Label.new @browser.div :text => "USPS Privacy Act Statement"
+        StampsLabel.new @browser.div :text => "USPS Privacy Act Statement"
       end
 
       def present?

@@ -1,7 +1,7 @@
 module Pam
   class PamPageHeader < Stamps::Browser::BrowserObject
     def change_meter_limit
-      link = Stamps::Browser::Link.new @browser.a(:text => "Change Meter Limit")
+      link = Stamps::Browser::StampsLink.new @browser.a(:text => "Change Meter Limit")
       page = ChangeMeterLimit.new @browser
       5.times do
         link.safe_click
@@ -11,7 +11,7 @@ module Pam
     end
 
     def ach_credit
-      link = Stamps::Browser::Link.new @browser.a(:text => "ACH Credit")
+      link = Stamps::Browser::StampsLink.new @browser.a(:text => "ACH Credit")
       page = ACHCredit.new @browser
       5.times do
         link.safe_click
@@ -21,7 +21,7 @@ module Pam
     end
 
     def appcapp_overrides
-      link = Stamps::Browser::Link.new @browser.a(:text => "AppCap Overrides")
+      link = Stamps::Browser::StampsLink.new @browser.a(:text => "AppCap Overrides")
       page = AppCapOverrides.new @browser
       5.times do
         link.safe_click

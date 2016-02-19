@@ -29,7 +29,7 @@ module Orders
 
   class UspsTerms < OrdersObject
     def present?
-      (Label.new @browser.div :text => "USPS Terms").present?
+      (StampsLabel.new @browser.div :text => "USPS Terms").present?
     end
 
     def agree_and_dont_show_again
@@ -48,7 +48,7 @@ module Orders
       attribute = "class"
       attrib_value_check = "checked"
 
-      dont_show_checkbox = Stamps::Browser::Checkbox.new checkbox_field, verify_field, attribute, attrib_value_check
+      dont_show_checkbox = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, attribute, attrib_value_check
 
       if dont_show
         dont_show_checkbox.check
@@ -151,23 +151,23 @@ module Orders
         case media
           # Shipping Label: 8 ½" x 11" Paper
           when /Paper/
-            return Label.new (@browser.li :text => /Paper/)
+            return StampsLabel.new (@browser.li :text => /Paper/)
 
           # Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
           when /SDC-1200/
-            return Label.new (@browser.li :text => /SDC-1200/)
+            return StampsLabel.new (@browser.li :text => /SDC-1200/)
 
           # Shipping Label: 5 ½" x 8 ½"
           when /x 8/
-            return Label.new (@browser.li :text => /x 8/)
+            return StampsLabel.new (@browser.li :text => /x 8/)
 
           # Roll - 4 ⅛" x 6 ¼" Shipping Label
           when /x 6 ¼/
-            return Label.new (@browser.li :text => /x 6 ¼/)
+            return StampsLabel.new (@browser.li :text => /x 6 ¼/)
 
           # Roll - 4" x 6" Shipping Label
           when /4" x 6"/
-            return Label.new (@browser.li :text => /4" x 6"/)
+            return StampsLabel.new (@browser.li :text => /4" x 6"/)
           else
             raise "Invalid Media Selection.  Don't know what to do with #{media}."
         end
@@ -175,7 +175,7 @@ module Orders
 
       public
       def text_box
-        Textbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
+        StampsTextbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
       end
 
       def drop_down
@@ -275,13 +275,13 @@ module Orders
 
       def today_plus day
         day = day.to_i
-        date_picker_header = Label.new @browser.div :class => "x-datepicker-header"
+        date_picker_header = StampsLabel.new @browser.div :class => "x-datepicker-header"
         picker_button = StampsButton.new @browser.div(Orders::Locators::PrintModal.date_picker_button)
-        ship_date_textbox = Textbox.new @browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
+        ship_date_textbox = StampsTextbox.new @browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
 
         ship_date_str = test_helper.now_plus_month_dd day
         ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
-        date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
+        date_field = StampsLabel.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
 
         10.times{
           picker_button.safe_click unless date_picker_header.present?
@@ -292,7 +292,7 @@ module Orders
             day += 1
             ship_date_str = test_helper.now_plus_month_dd day
             ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
-            date_field = Label.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
+            date_field = StampsLabel.new @browser.div :css => "td[aria-label='#{ship_date_str}']>div"
           end
         }
 
@@ -311,7 +311,7 @@ module Orders
       end
 
       def text_box
-        Textbox.new @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
+        StampsTextbox.new @browser.text_field :id => "sdc-printpostagewindow-printerdroplist-inputEl"
       end
 
       def select printer
@@ -322,17 +322,17 @@ module Orders
 
         case printer.downcase
           when /fac/
-            selection_label = Label.new @browser.li :text => /fac/
+            selection_label = StampsLabel.new @browser.li :text => /fac/
           when /kyocera/
-            selection_label = Label.new @browser.li :text => /Kyocera/
+            selection_label = StampsLabel.new @browser.li :text => /Kyocera/
           when /epson/
-            selection_label = Label.new @browser.li :text => /EPSON/
+            selection_label = StampsLabel.new @browser.li :text => /EPSON/
           when /brother/
-            selection_label = Label.new @browser.li :text => /Brother/
+            selection_label = StampsLabel.new @browser.li :text => /Brother/
           when /officejet/
-            selection_label = Label.new @browser.li :text => /Officejet/
+            selection_label = StampsLabel.new @browser.li :text => /Officejet/
           when /designer/
-            selection_label = Label.new @browser.li :text => /Designer/
+            selection_label = StampsLabel.new @browser.li :text => /Designer/
           else
             raise "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
         end
@@ -347,7 +347,7 @@ module Orders
 
     class PaperTray < PrintModalObject
       def text_box
-        Textbox.new @browser.text_field :css => "div[id^=form-][id$=-body]>div>div>div[id^=combo]>div>div>div>input"
+        StampsTextbox.new @browser.text_field :css => "div[id^=form-][id$=-body]>div>div>div[id^=combo]>div>div>div>input"
       end
 
       def drop_down
@@ -357,7 +357,7 @@ module Orders
       def select selection
         text_box = self.text_box
         drop_down = self.drop_down
-        selection_label = Label.new @browser.li :text => selection
+        selection_label = StampsLabel.new @browser.li :text => selection
 
         5.times{
           drop_down.safe_click unless selection_label.present?
@@ -393,7 +393,7 @@ module Orders
     end
 
     def ship_date
-      Textbox.new @browser.text_field :name => "sdc-printpostagewindow-shipdate-inputEl"
+      StampsTextbox.new @browser.text_field :name => "sdc-printpostagewindow-shipdate-inputEl"
     end
 
     def print
@@ -510,10 +510,10 @@ module Orders
 
     def printing_error_check
       @printing_error = ""
-      incomplete_order_window = Label.new(@browser.div :text => "Incomplete Order")
-      error_window = Label.new(@browser.div :text => "Error")
+      incomplete_order_window = StampsLabel.new(@browser.div :text => "Incomplete Order")
+      error_window = StampsLabel.new(@browser.div :text => "Error")
       ok_button = StampsButton.new(@browser.span :text => 'OK')
-      message_label = Label.new((@browser.divs :css => "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
+      message_label = StampsLabel.new((@browser.divs :css => "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
 
       sleep 2
 

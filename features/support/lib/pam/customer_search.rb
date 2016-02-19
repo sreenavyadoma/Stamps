@@ -9,27 +9,27 @@ module Pam
     end
 
     def username
-      Textbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=uname]")
+      StampsTextbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=uname]")
     end
 
     def first_name
-      Textbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
+      StampsTextbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
     end
 
     def last_name
-      Textbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
+      StampsTextbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
     end
 
     def phone
-      Textbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=phone]")
+      StampsTextbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=phone]")
     end
 
     def email
-      Textbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=email]")
+      StampsTextbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=email]")
     end
 
     def search
-      button = Stamps::Browser::Input.new @browser.input(:css => "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
+      button = Stamps::Browser::StampsInput.new @browser.input(:css => "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
       customer_profile = CustomerProfile.new @browser
       customer_profile_not__found = CustomerProfileNotFound.new @browser
       5.times do

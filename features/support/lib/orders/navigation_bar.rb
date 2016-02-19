@@ -5,7 +5,7 @@ module Orders
         def buy_more
           buy_postage_modal = Orders::Purchasing::BuyPostage.new @browser
           drop_down = StampsButton.new (@browser.span :class => "balanceLabel")
-          link = Label.new (@browser.a :text => "Buy More")
+          link = StampsLabel.new (@browser.a :text => "Buy More")
           20.times do
             drop_down.hover
             drop_down.safe_click unless link.present?
@@ -17,7 +17,7 @@ module Orders
 
         def purchase_history
           drop_down = StampsButton.new (@browser.span :class => "balanceLabel")
-          link = Label.new (@browser.a :text => "View Purchase History")
+          link = StampsLabel.new (@browser.a :text => "View Purchase History")
           2.times do
             drop_down.hover
             drop_down.safe_click unless link.present?
@@ -27,7 +27,7 @@ module Orders
         end
 
         def amount
-          balance_field = Label.new (@browser.span :id => 'postageBalanceAmt')
+          balance_field = StampsLabel.new (@browser.span :id => 'postageBalanceAmt')
           10.times{
             amount = balance_field.text
             amount_stripped_dollar = amount.gsub("$","")
@@ -37,7 +37,7 @@ module Orders
         end
 
         def new_balance old_balance
-          balance_field = Label.new @browser.span(id: 'postageBalanceAmt')
+          balance_field = StampsLabel.new @browser.span(id: 'postageBalanceAmt')
           10.times{
             balance = test_helper.remove_dollar_sign balance_field.text
             break unless balance.include? old_balance.to_s
@@ -53,7 +53,7 @@ module Orders
         end
 
         def username
-          Label.new @browser.span Orders::Locators::NavBar.username
+          StampsLabel.new @browser.span Orders::Locators::NavBar.username
         end
 
         def manage_account
@@ -66,7 +66,7 @@ module Orders
 
         def sign_out
           drop_down = username
-          sign_out_link = Label.new (@browser.a :text => "Sign Out")
+          sign_out_link = StampsLabel.new (@browser.a :text => "Sign Out")
           20.times do
             drop_down.safe_click unless sign_out_link.present?
             drop_down.hover
@@ -82,8 +82,8 @@ module Orders
       end
 
       def sign_out
-        sign_out_link = Link.new @browser.link :id => "signOutLink"
-        signed_in_username = Label.new @browser.span :id => 'userNameText'
+        sign_out_link = StampsLink.new @browser.link :id => "signOutLink"
+        signed_in_username = StampsLabel.new @browser.span :id => 'userNameText'
         20.times {
           begin
             signed_in_username.safe_click unless sign_out_link.present?

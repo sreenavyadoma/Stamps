@@ -331,7 +331,7 @@ module WebReg
 
   class TermsAndConditions < Stamps::Browser::BrowserObject
     def must_agree_label
-      Label.new @browser.span(:text => "You must agree to the Terms & Conditions to proceed.")
+      StampsLabel.new @browser.span(:text => "You must agree to the Terms & Conditions to proceed.")
     end
 
     def check
@@ -365,7 +365,7 @@ module WebReg
     end
 
     def user_id
-      Textbox.new @browser.text_field(:id => "newUsername")
+      StampsTextbox.new @browser.text_field(:id => "newUsername")
     end
 
     def continue
@@ -389,23 +389,23 @@ module WebReg
     end
 
     def first_name
-      Textbox.new @browser.text_field(:id => "firstName")
+      StampsTextbox.new @browser.text_field(:id => "firstName")
     end
 
     def last_name
-      Textbox.new @browser.text_field(:id => "lastName")
+      StampsTextbox.new @browser.text_field(:id => "lastName")
     end
 
     def company
-      Textbox.new @browser.text_field(:id => "companyName")
+      StampsTextbox.new @browser.text_field(:id => "companyName")
     end
 
     def address
-      Textbox.new @browser.text_field(:id => "street")
+      StampsTextbox.new @browser.text_field(:id => "street")
     end
 
     def city
-      Textbox.new @browser.text_field(:id => "city")
+      StampsTextbox.new @browser.text_field(:id => "city")
     end
 
     def state
@@ -413,23 +413,23 @@ module WebReg
     end
 
     def zip
-      Textbox.new @browser.text_field(:id => "zip")
+      StampsTextbox.new @browser.text_field(:id => "zip")
     end
 
     def phone
-      Textbox.new @browser.text_field(:id => "phone")
+      StampsTextbox.new @browser.text_field(:id => "phone")
     end
 
     def ext
-      Textbox.new @browser.text_field(:id => "extension")
+      StampsTextbox.new @browser.text_field(:id => "extension")
     end
 
     def card_holder_name
-      Textbox.new @browser.text_field(:id => "ccName")
+      StampsTextbox.new @browser.text_field(:id => "ccName")
     end
 
     def card_number
-      Textbox.new @browser.text_field(:id => "ccNumber")
+      StampsTextbox.new @browser.text_field(:id => "ccNumber")
     end
 
     def expiration_month
@@ -442,7 +442,7 @@ module WebReg
 
     def billing_same_as_mailing
       checkbox_field = @browser.input :id => "useMailingAddressForBilling"
-      Stamps::Browser::Checkbox.new checkbox_field, checkbox_field, "checked", "checked"
+      Stamps::Browser::StampsCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
     end
 
     def i_agree

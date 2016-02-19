@@ -53,7 +53,7 @@ module Orders
       end
 
       def scroll column
-        field = Label.new column_name_field(column)
+        field = StampsLabel.new column_name_field(column)
         field.scroll_into_view
         field
       end
@@ -149,12 +149,12 @@ module Orders
             scroll @column
             column_field = column_name_field @column
             drop_down = StampsButton.new column_field.parent.parent.parent.parent.divs[3]
-            menu_selection = Label.new @browser.span(text: "Columns")
+            menu_selection = StampsLabel.new @browser.span(text: "Columns")
 
             name_field = @browser.spans(text: "Reference No.").last
             checkbox_field = name_field.parent.div
             check_verify_field = name_field.parent.parent
-            checkbox = Checkbox.new checkbox_field, check_verify_field, "class", "checked"
+            checkbox = StampsCheckbox.new checkbox_field, check_verify_field, "class", "checked"
 
             20.times do
               drop_down.safe_click unless menu_selection.present?
@@ -190,12 +190,12 @@ module Orders
       def sort_order sort_order
         scroll @column
         column_field = column_name_field @column
-        sort_verify_field = Label.new column_field.parent.parent.parent.parent.parent
+        sort_verify_field = StampsLabel.new column_field.parent.parent.parent.parent.parent
         sort_drop_down = StampsButton.new column_field.parent.parent.parent.parent.divs[3]
 
         sort_field_id = (sort_order==:sort_ascending)?"Sort Ascending":"Sort Descending"
         verify_sort = (sort_order==:sort_ascending)?"ASC":"DESC"
-        sort_field = Label.new @browser.span :text => sort_field_id
+        sort_field = StampsLabel.new @browser.span :text => sort_field_id
 
         15.times{
           sort_drop_down.scroll_into_view
@@ -831,13 +831,13 @@ module Orders
         check_verify_field = @browser.div :css => "div[class*=x-column-header-checkbox]"
         attribute = "class"
         attrib_value_check = "checker-on"
-        Stamps::Browser::Checkbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
+        Stamps::Browser::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
       end
 
       public
 
       def scroll_into_view
-        field = Label.new((@browser.spans :css => "div[componentid^=gridcolumn]").first)
+        field = StampsLabel.new((@browser.spans :css => "div[componentid^=gridcolumn]").first)
         field.scroll_into_view
         field
       end
@@ -867,7 +867,7 @@ module Orders
         if size > 0
           checkbox_field = row_div number
           verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-          checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+          checkbox = StampsCheckbox.new checkbox_field, verify_field, "class", "grid-item-selected"
           checkbox.check
           log.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
         else
@@ -880,7 +880,7 @@ module Orders
         if size > 0
           checkbox_field = row_div number
           verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-          checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+          checkbox = StampsCheckbox.new checkbox_field, verify_field, "class", "grid-item-selected"
           checkbox.uncheck
           log.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
         else
@@ -892,7 +892,7 @@ module Orders
         scroll_into_view
         checkbox_field = row_div number
         verify_field = @browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-        checkbox = Checkbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+        checkbox = StampsCheckbox.new checkbox_field, verify_field, "class", "grid-item-selected"
         checkbox.checked?
       end
 
@@ -1092,7 +1092,7 @@ module Orders
       end
 
       def wait_until_present *args
-        grid_present_span = Label.new (@browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]")
+        grid_present_span = StampsLabel.new (@browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]")
         grid_present_span.wait_until_present
       end
 

@@ -19,11 +19,11 @@ module Print
           verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[8]
 
-          Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
 
         def reference_number
-          Textbox.new @browser.text_field :name => "ReferenceNumber"
+          StampsTextbox.new @browser.text_field :name => "ReferenceNumber"
         end
 
         def cost_code
@@ -49,7 +49,7 @@ module Print
 
       class SpecifyPostageService < Print::Postage::PrintObject
         def text_box
-          Textbox.new @browser.text_field :name => "nsService"
+          StampsTextbox.new @browser.text_field :name => "nsService"
         end
 
         def drop_down
@@ -61,9 +61,9 @@ module Print
           box = text_box
           button = drop_down
           if selection == "Media Mail (2 - 3 Days)"
-            selection_label = Label.new @browser.div :css => "div[data-qtip*='Media Mail (2 - 9 Days)']"
+            selection_label = StampsLabel.new @browser.div :css => "div[data-qtip*='Media Mail (2 - 9 Days)']"
           else
-            selection_label = Label.new @browser.div :css => "div[data-qtip*='#{selection}']"
+            selection_label = StampsLabel.new @browser.div :css => "div[data-qtip*='#{selection}']"
           end
           10.times {
             begin
@@ -90,7 +90,7 @@ module Print
       end
 
       def serial
-        Textbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
+        StampsTextbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
       end
 
       def calculate_postage_service
@@ -106,13 +106,13 @@ module Print
       end
 
       def calculate_postage_amount
-        checkbox = Checkbox.new (@browser.input :id => "sdc-mainpanel-calculatepostageradio-inputEl"), (@browser.table :id => "sdc-mainpanel-calculatepostageradio"), "class", "checked"
+        checkbox = StampsCheckbox.new (@browser.input :id => "sdc-mainpanel-calculatepostageradio-inputEl"), (@browser.table :id => "sdc-mainpanel-calculatepostageradio"), "class", "checked"
         checkbox.check
         CalculatePostageAmount.new @browser
       end
 
       def specify_postage_amount
-        checkbox = Checkbox.new (@browser.input :id => "sdc-mainpanel-specifypostageradio-inputEl"), (@browser.table :id => "sdc-mainpanel-specifypostageradio"), "class", "checked"
+        checkbox = StampsCheckbox.new (@browser.input :id => "sdc-mainpanel-specifypostageradio-inputEl"), (@browser.table :id => "sdc-mainpanel-specifypostageradio"), "class", "checked"
         checkbox.check
         SpecifyPostageAmount.new @browser
       end

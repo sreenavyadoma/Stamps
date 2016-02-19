@@ -21,7 +21,7 @@ module Print
       end
 
       def window_title
-         Label.new (@browser.span :text => "Extra Services")
+         StampsLabel.new (@browser.span :text => "Extra Services")
       end
 
       def security
@@ -114,7 +114,7 @@ module Print
 
     class Security < Print::Postage::PrintObject
       def text_box
-        Textbox.new @browser.text_field :name => "security"
+        StampsTextbox.new @browser.text_field :name => "security"
       end
 
       def drop_down
@@ -125,7 +125,7 @@ module Print
         log.info "Select Security #{selection}"
         box = text_box
         button = drop_down
-        selection_label = Label.new @browser.div :text => selection
+        selection_label = StampsLabel.new @browser.div :text => selection
         10.times {
           begin
             button.safe_click #unless selection_label.present?
@@ -150,7 +150,7 @@ module Print
 
     class SecurityValue < Print::Postage::PrintObject
       def text_box
-        Textbox.new @browser.text_field :id => 'sdc-extraserviceswin-valuenumberfield-inputEl'
+        StampsTextbox.new @browser.text_field :id => 'sdc-extraserviceswin-valuenumberfield-inputEl'
       end
 
       def set value
@@ -179,7 +179,7 @@ module Print
 
     class COD < Print::Postage::PrintObject
       def text_box
-        Textbox.new @browser.text_field :id => 'sdc-extraserviceswin-codnumberfield-inputEl'
+        StampsTextbox.new @browser.text_field :id => 'sdc-extraserviceswin-codnumberfield-inputEl'
       end
 
       def form_3816
@@ -187,7 +187,7 @@ module Print
       end
 
       def label
-        Label.new @browser.label :text => 'COD:'
+        StampsLabel.new @browser.label :text => 'COD:'
       end
 
       def set value
@@ -226,7 +226,7 @@ module Print
 
     class Handling < Print::Postage::PrintObject
       def text_box
-        Textbox.new @browser.text_field :name => "contents"
+        StampsTextbox.new @browser.text_field :name => "contents"
       end
 
       def drop_down
@@ -237,7 +237,7 @@ module Print
         log.info "Select Handling: #{selection}"
         box = text_box
         button = drop_down
-        selection_label = Label.new @browser.div :text => selection
+        selection_label = StampsLabel.new @browser.div :text => selection
         10.times {
           begin
             button.safe_click #unless selection_label.present?
@@ -261,7 +261,7 @@ module Print
       def checkbox
         checkbox_field = @browser.input :css => "input[id^=sdc-extraserviceswin-rrcheckbox-inputEl]"
         verify_field = @browser.table :css => "table[id^=sdc-extraserviceswin-rrcheckbox]"
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def price
@@ -274,7 +274,7 @@ module Print
       def checkbox
         checkbox_field = @browser.input :css => "input[id^=sdc-extraserviceswin-rrecheckbox-inputEl]"
         verify_field = @browser.table :css => "table[id^=sdc-extraserviceswin-rrecheckbox]"
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def price
@@ -287,7 +287,7 @@ module Print
       def checkbox
         checkbox_field = @browser.input :css => "input[id^=sdc-extraserviceswin-rdcheckbox-inputEl]"
         verify_field = @browser.table :css => "table[id^=sdc-extraserviceswin-rdcheckbox]"
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def price
@@ -300,7 +300,7 @@ module Print
       def checkbox
         checkbox_field = @browser.input :css => "input[id^=sdc-extraserviceswin-nndcheckbox-inputEl]"
         verify_field = @browser.table :css => "table[id^=sdc-extraserviceswin-nndcheckbox]"
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def price
@@ -313,7 +313,7 @@ module Print
       def checkbox
         checkbox_field = @browser.input :css => "input[id^=sdc-extraserviceswin-shcheckbox-inputEl]"
         verify_field = @browser.table :css => "table[id^=sdc-extraserviceswin-shcheckbox]"
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def price
@@ -325,7 +325,7 @@ module Print
       def checkbox
         checkbox_field = @browser.input :css => "input[id^=sdc-extraserviceswin-rrmcheckbox-inputEl]"
         verify_field = @browser.table :css => "table[id^=sdc-extraserviceswin-rrmcheckbox]"
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def price
@@ -337,7 +337,7 @@ module Print
       def checkbox
         checkbox_field = @browser.input :css => "input[id^=sdc-extraservices-nreccheckbox]"
         verify_field = @browser.table :css => "table[id^=sdc-extraserviceswin-notrectangularcheckbox]"
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def price

@@ -3,7 +3,7 @@ module Orders
     class AmazonStore < OrdersObject
       class OrderSource < OrdersObject
         def text_box
-          Textbox.new (@browser.text_field :name => "AmazonMarketplace")
+          StampsTextbox.new (@browser.text_field :name => "AmazonMarketplace")
         end
 
         def drop_down
@@ -13,7 +13,7 @@ module Orders
         def select selection
           dd = drop_down
           text_field = text_box
-          selection_field = Label.new (@browser.li :text => selection)
+          selection_field = StampsLabel.new (@browser.li :text => selection)
 
           10.times do
             dd.safe_click unless selection_field.present?
@@ -37,7 +37,7 @@ module Orders
 
       class ProductIdentifier < OrdersObject
         def text_box
-          Textbox.new (@browser.text_field :css => "div[id^=connectamazonwindow-][id$=-body][class$=resizable]>div>div>div>div>div>div>div>div>div>div:nth-child(9)>div>div>div>div>div>div>input")
+          StampsTextbox.new (@browser.text_field :css => "div[id^=connectamazonwindow-][id$=-body][class$=resizable]>div>div>div>div>div>div>div>div>div>div:nth-child(9)>div>div>div>div>div>div>input")
         end
 
         def drop_down
@@ -47,7 +47,7 @@ module Orders
         def select selection
           dd = drop_down
           text_field = text_box
-          selection_field = Label.new (@browser.li :text => selection)
+          selection_field = StampsLabel.new (@browser.li :text => selection)
 
           10.times do
             dd.safe_click unless selection_field.present?
@@ -70,7 +70,7 @@ module Orders
       end
 
       def window_title
-        Label.new(@browser.div :text => "Connect your Amazon Store")
+        StampsLabel.new(@browser.div :text => "Connect your Amazon Store")
       end
 
       def present?
@@ -78,11 +78,11 @@ module Orders
       end
 
       def seller_id
-        Textbox.new @browser.text_field(:name => "AmazonSellerID")
+        StampsTextbox.new @browser.text_field(:name => "AmazonSellerID")
       end
 
       def auth_token
-        Textbox.new @browser.text_field(:name => "AuthToken")
+        StampsTextbox.new @browser.text_field(:name => "AuthToken")
       end
 
       def verify_seller_id
@@ -126,11 +126,11 @@ module Orders
       end
 
       def window_title
-        Label.new (@browser.divs :text => "Add your Store or Marketplace").first
+        StampsLabel.new (@browser.divs :text => "Add your Store or Marketplace").first
       end
 
       def search_textbox
-        Textbox.new (@browser.text_fields :css => "input[placeholder='Search by Name']").last
+        StampsTextbox.new (@browser.text_fields :css => "input[placeholder='Search by Name']").last
       end
 
       def search search_str
@@ -180,8 +180,8 @@ module Orders
         def delete_row row
           css = "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table:nth-child(#{row})>tbody>tr>td:nth-child(2)>div"
           grid_row_item = @browser.div :css => css
-          grid_row_focused_field = Label.new grid_row_item.parent
-          grid_row_field = Label.new grid_row_item
+          grid_row_focused_field = StampsLabel.new grid_row_item.parent
+          grid_row_field = StampsLabel.new grid_row_item
 
           del_btn = delete
           delete_modal = DeleteStoreModal.new @browser
@@ -211,7 +211,7 @@ module Orders
       end
 
       def window_title
-        Label.new(@browser.div :text => "Manage Stores")
+        StampsLabel.new(@browser.div :text => "Manage Stores")
       end
 
       def present?
@@ -259,7 +259,7 @@ module Orders
         class Weight < OrdersObject
           class Pounds <  OrdersObject
             def text_box
-              Textbox.new (@browser.text_field :name => 'sdc-resetfieldswin-poundsnumberfield-inputEl')
+              StampsTextbox.new (@browser.text_field :name => 'sdc-resetfieldswin-poundsnumberfield-inputEl')
             end
 
             def set value
@@ -300,7 +300,7 @@ module Orders
 
           class Ounces <  OrdersObject
             def text_box
-              Textbox.new (@browser.text_field :name => 'sdc-resetfieldswin-ouncesnumberfield-inputEl')
+              StampsTextbox.new (@browser.text_field :name => 'sdc-resetfieldswin-ouncesnumberfield-inputEl')
             end
 
             def set value
@@ -348,7 +348,7 @@ module Orders
             verify_field = checkbox_field.parent.parent.parent
             attribute_name = "class"
             attribute_value = "checked"
-            Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+            StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
           end
 
           def lbs
@@ -365,7 +365,7 @@ module Orders
 
           class Length <  OrdersObject
             def text_box
-              Textbox.new (@browser.text_field :name => 'sdc-resetfieldswin-lengthnumberfield-inputEl')
+              StampsTextbox.new (@browser.text_field :name => 'sdc-resetfieldswin-lengthnumberfield-inputEl')
             end
 
             def set value
@@ -406,7 +406,7 @@ module Orders
 
           class Width <  OrdersObject
             def text_box
-              Textbox.new (@browser.text_field :name => 'sdc-resetfieldswin-widthnumberfield-inputEl')
+              StampsTextbox.new (@browser.text_field :name => 'sdc-resetfieldswin-widthnumberfield-inputEl')
             end
 
             def set value
@@ -447,7 +447,7 @@ module Orders
 
           class Height <  OrdersObject
             def text_box
-              Textbox.new (@browser.text_field :name => 'sdc-resetfieldswin-heightnumberfield-inputEl')
+              StampsTextbox.new (@browser.text_field :name => 'sdc-resetfieldswin-heightnumberfield-inputEl')
             end
 
             def set value
@@ -495,7 +495,7 @@ module Orders
             verify_field = checkbox_field.parent.parent.parent
             attribute_name = "class"
             attribute_value = "checked"
-            Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+            StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
           end
 
           def length
@@ -521,7 +521,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def weight
@@ -537,7 +537,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def tracking
@@ -545,7 +545,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def extra_services
@@ -553,7 +553,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def insurance
@@ -561,7 +561,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def reference_numbers
@@ -569,7 +569,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def cost_code
@@ -577,7 +577,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def customs
@@ -585,7 +585,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def quantity
@@ -593,7 +593,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def stamps_amount
@@ -601,7 +601,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def auto_advance_label_position
@@ -610,7 +610,7 @@ module Orders
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def close
@@ -626,13 +626,13 @@ module Orders
 
       class LogoffDropDown < OrdersObject
         def text_box
-          Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[0]
+          StampsTextbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[0]
         end
 
         def select selection
           drop_down = StampsButton.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]"
           text_field = text_box
-          selection_label = Label.new @browser.li :text => selection
+          selection_label = StampsLabel.new @browser.li :text => selection
           10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
@@ -667,13 +667,13 @@ module Orders
 
       class PostDateDropDown < OrdersObject
         def text_box
-          Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[1]
+          StampsTextbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[1]
         end
 
         def select selection
           drop_down = StampsButton.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
           text_field = text_box
-          selection_label = Label.new @browser.li :text => selection
+          selection_label = StampsLabel.new @browser.li :text => selection
           10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
@@ -780,13 +780,13 @@ module Orders
 
       class PostageBalanceDropDown < OrdersObject
         def text_box
-          Textbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[2]
+          StampsTextbox.new (@browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[2]
         end
 
         def select selection
           drop_down = StampsButton.new @browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]"
           text_field = text_box
-          selection_label = Label.new @browser.li :text => selection
+          selection_label = StampsLabel.new @browser.li :text => selection
           10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
@@ -824,7 +824,7 @@ module Orders
       end
 
       def title
-        Label.new @browser.div :text => "Settings"
+        StampsLabel.new @browser.div :text => "Settings"
       end
 
       def present?
@@ -836,7 +836,7 @@ module Orders
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
-        Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
       end
 
       def log_off
@@ -856,7 +856,7 @@ module Orders
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
-        Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
       end
 
       def reset_fields
@@ -873,7 +873,7 @@ module Orders
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
-        Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
       end
 
       def contacts
@@ -881,7 +881,7 @@ module Orders
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
-        Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
       end
 
       def shipments
@@ -889,7 +889,7 @@ module Orders
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
-        Checkbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
       end
 
       def save
@@ -919,10 +919,10 @@ module Orders
           dd = button
           case menu_item.downcase
             when /settings/
-              selection = Label.new(@browser.span :text => "General Settings")
+              selection = StampsLabel.new(@browser.span :text => "General Settings")
               modal = GeneralSettings.new @browser
             when /stores/
-              selection = Label.new(@browser.span :text => "Add/Edit Stores")
+              selection = StampsLabel.new(@browser.span :text => "Add/Edit Stores")
               modal = ManageStores.new @browser
             else
               raise "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores."
@@ -952,11 +952,11 @@ module Orders
           end
 
           def move_label
-            Label.new @browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
+            StampsLabel.new @browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
           end
 
           def cancel_label
-            Label.new @browser.span Orders::Locators::ToolBar::confirmation_modal_cancel_label
+            StampsLabel.new @browser.span Orders::Locators::ToolBar::confirmation_modal_cancel_label
           end
 
           def move
@@ -990,7 +990,7 @@ module Orders
 
           confirmation = MoveConfirmation.new @browser
           dd = drop_down
-          selection_label = Label.new @browser.span :text => selection_str
+          selection_label = StampsLabel.new @browser.span :text => selection_str
 
           10.times{
             dd.safe_click unless selection_label.present?
@@ -1013,6 +1013,40 @@ module Orders
           select :awaiting_shipment
         end
 
+      end
+
+      class PerPage < OrdersObject
+
+        def text_box
+          StampsTextbox.new @browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl")
+        end
+
+        def select selection
+          dd = StampsButton.new @browser.divs(css: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker")
+          per_page = StampsLabel.new @browser.li(text: selection)
+          box = text_box
+          10.times do
+            dd.safe_click unless per_page.present?
+            per_page.safe_click if per_page.present?
+            return box.text if box.text.include? selection
+          end
+        end
+
+        def x100
+          select "100"
+        end
+
+        def x250
+          select "250"
+        end
+
+        def x500
+          select "500"
+        end
+      end
+
+      def per_page
+        PerPage.new @browser
       end
 
       def settings
@@ -1112,7 +1146,7 @@ module Orders
         add_button = StampsButton.new @browser.span Orders::Locators::ToolBar::add
 
         # Initializing Order Database
-        initializing_db = Label.new @browser.div :text => "Initializing Order Database"
+        initializing_db = StampsLabel.new @browser.div :text => "Initializing Order Database"
         nav_bar = Orders::Navigation::NavigationBar.new @browser
 
         sleep 2
@@ -1179,57 +1213,49 @@ module Orders
 
       def page_number
         field = @browser.text_field :css => "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
-        text_box = Textbox.new field
+        text_box = StampsTextbox.new field
         text_box
       end
 
       def first_page
         field = @browser.span :css => "span[class*=x-tbar-page-first]"
-        label = Label.new field
+        label = StampsLabel.new field
         label
       end
 
       def first_page_disabled
         field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-        label = Label.new field
+        label = StampsLabel.new field
         label.disabled?
       end
 
       def previous_page
-        Label.new field @browser.span :css => "span[class*=x-tbar-page-prev]"
+        StampsLabel.new field @browser.span :css => "span[class*=x-tbar-page-prev]"
       end
 
       def previous_page_disabled
         field = @browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-        label = Label.new field
+        label = StampsLabel.new field
         label.disabled?
       end
 
       def next_page
-        Label.new field @browser.span :css => "span[class*=x-tbar-page-next]"
+        StampsLabel.new field @browser.span :css => "span[class*=x-tbar-page-next]"
       end
 
       def last_page
-        Label.new field @browser.span :css => "span[class*=x-tbar-page-last]"
+        StampsLabel.new field @browser.span :css => "span[class*=x-tbar-page-last]"
       end
 
       def last_page_disabled
-        Label.new @browser.a :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+        StampsLabel.new @browser.a :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
       end
 
       def total_number_of_pages
-        label = (Label.new @browser.divs :css => "div[id^=tbtext-]").last
+        label = (StampsLabel.new @browser.divs :css => "div[id^=tbtext-]").last
         number_str=label.text
         number = number_str.scan /\d+/
         number.last.to_s
-      end
-
-      def per_page_dd
-        #browser, drop_down_button, selection_field_type, drop_down_input
-        buttons = @browser.divs :css => "div[id^=combo-][id$=trigger-picker]"
-        drop_down_button = buttons.first
-        drop_down_input = @browser.text_field :css => "input[name^=combo]"
-        Dropdown.new @browser, drop_down_button, :li, drop_down_input
       end
     end
   end

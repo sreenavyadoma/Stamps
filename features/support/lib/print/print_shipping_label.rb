@@ -12,7 +12,7 @@ module Print
         verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
         verify_field = verify_fields[5]
 
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def print_receipt
@@ -20,7 +20,7 @@ module Print
         verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
         verify_field = verify_fields[6]
 
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def print_reference_number
@@ -28,11 +28,11 @@ module Print
         verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
         verify_field = verify_fields[7]
 
-        Stamps::Browser::Checkbox.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def reference_number
-        Textbox.new @browser.text_field :name => "ReferenceNumber"
+        StampsTextbox.new @browser.text_field :name => "ReferenceNumber"
       end
 
       def cost_code

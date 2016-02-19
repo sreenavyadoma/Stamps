@@ -37,12 +37,12 @@ module Print
           password = ENV["PW"]
       end
 
-      sign_in_link = Link.new @browser.link(:text => "Sign In")
-      username_textbox = Textbox.new @browser.text_field(Print::Locators::SignIn.username)
-      password_textbox = Textbox.new @browser.text_field(Print::Locators::SignIn.password)
+      sign_in_link = StampsLink.new @browser.link(:text => "Sign In")
+      username_textbox = StampsTextbox.new @browser.text_field(Print::Locators::SignIn.username)
+      password_textbox = StampsTextbox.new @browser.text_field(Print::Locators::SignIn.password)
       sign_in_button = StampsButton.new @browser.button(:id => "signInButton")
-      verifying_account_info = Label.new @browser.div(:text => "Verifying account information...")
-      signed_in_user = Label.new @browser.span(:id => "userNameText")
+      verifying_account_info = StampsLabel.new @browser.div(:text => "Verifying account information...")
+      signed_in_user = StampsLabel.new @browser.span(:id => "userNameText")
 
       10.times {
         sign_in_link.safe_click unless username_textbox.present?

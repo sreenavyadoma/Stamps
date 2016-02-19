@@ -39,15 +39,15 @@ module Print
 
       case printer.downcase
         when /fac/
-          selection_label = Label.new @browser.li :text => /fac/
+          selection_label = StampsLabel.new @browser.li :text => /fac/
         when /kyocera/
-          selection_label = Label.new @browser.li :text => /Kyocera/
+          selection_label = StampsLabel.new @browser.li :text => /Kyocera/
         when /epson/
-          selection_label = Label.new @browser.li :text => /EPSON/
+          selection_label = StampsLabel.new @browser.li :text => /EPSON/
         when /brother/
-          selection_label = Label.new @browser.li :text => /Brother/
+          selection_label = StampsLabel.new @browser.li :text => /Brother/
         when /officejet/
-          selection_label = Label.new @browser.li :text => /Officejet/
+          selection_label = StampsLabel.new @browser.li :text => /Officejet/
         else
           raise "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
       end
@@ -62,7 +62,7 @@ module Print
 
   class PaperTray < Print::Postage::PrintObject
     def text_box
-      Textbox.new @browser.text_field :css => "input[[id*=combobox]"
+      StampsTextbox.new @browser.text_field :css => "input[[id*=combobox]"
     end
 
     def drop_down
@@ -72,7 +72,7 @@ module Print
     def select selection
       text_box = self.text_box
       drop_down = self.drop_down
-      selection_label = Label.new @browser.li :text => selection
+      selection_label = StampsLabel.new @browser.li :text => selection
 
       5.times{
         drop_down.safe_click unless selection_label.present?
@@ -206,10 +206,10 @@ module Print
 
     def printing_error_check
       @printing_error = ""
-      incomplete_order_window = Label.new(@browser.div :text => "Incomplete Order")
-      error_window = Label.new(@browser.div :text => "Error")
+      incomplete_order_window = StampsLabel.new(@browser.div :text => "Incomplete Order")
+      error_window = StampsLabel.new(@browser.div :text => "Error")
       ok_button = StampsButton.new(@browser.span :text => 'OK')
-      message_label = Label.new((@browser.divs :css => "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
+      message_label = StampsLabel.new((@browser.divs :css => "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
 
       sleep 2
 
