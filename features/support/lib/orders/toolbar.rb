@@ -1022,7 +1022,7 @@ module Orders
         end
 
         def select selection
-          dd = StampsButton.new @browser.divs(css: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker")
+          dd = StampsButton.new @browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker")
           per_page = StampsLabel.new @browser.li(text: selection)
           box = text_box
           10.times do

@@ -57,12 +57,17 @@ Feature: Registration
 
     Then Orders: Load Sign-in page qacc
     Then Orders: First Time Sign-in to Orders as random/pass111
+    Then Pause for 2 seconds
+    Then BROWSER:  Zoom Out
+    Then BROWSER:  Zoom Out
     Then Add New Order
     Then Pause for 1 seconds
     Then Open Settings Modal
     Then Settings:  Set Logoff to 2 hours.
     Then Settings:  Save
     Then Pause for 1 seconds
+    Then BROWSER:  Zoom In
+    Then BROWSER:  Zoom In
     Then Sign out
     Then WebReg:  Send username to standard out
     Then Pause for 1 seconds

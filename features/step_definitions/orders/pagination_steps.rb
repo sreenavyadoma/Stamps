@@ -2,16 +2,25 @@
 Then /^Toolbar:  Set Per Page drop-down to 100$/ do
   log.info "Step: Toolbar:  Set Per Page Count to 100"
   orders.grid.toolbar.per_page.x100
+  per_page = orders.grid.toolbar.per_page.text_box.text
+  log.info "Test #{(per_page == "100")?"Passed":"Failed"}"
+  per_page.should eql "100"
 end
 
 Then /^Toolbar:  Set Per Page drop-down to 250$/ do
   log.info "Step: Toolbar:  Set Per Page Count to 250"
   orders.grid.toolbar.per_page.x250
+  per_page = orders.grid.toolbar.per_page.text_box.text
+  log.info "Test #{(per_page == "250")?"Passed":"Failed"}"
+  per_page.should eql "250"
 end
 
 Then /^Toolbar:  Set Per Page drop-down to 500$/ do
   log.info "Step: Toolbar:  Set Per Page Count to 500"
   orders.grid.toolbar.per_page.x500
+  per_page = orders.grid.toolbar.per_page.text_box.text
+  log.info "Test #{(per_page == "500")?"Passed":"Failed"}"
+  per_page.should eql "500"
 end
 
 Then /^User is on the first page of orders$/ do
@@ -192,6 +201,7 @@ end
 Then /^Expect number of orders on page to be correct$/ do
   log.info "Step: Expect number of orders on page to be correct"
   orders.grid.checkbox.check_all
+  orders.filter
   multi_order_count = orders.multi_order.order_count.to_s
   log.info "Multi Order Count is #{multi_order_count}"
   per_page_dd_count = @per_page_count
