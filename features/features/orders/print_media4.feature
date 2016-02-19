@@ -15,5 +15,5 @@ Feature: Print Media - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then Print Modal: Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 

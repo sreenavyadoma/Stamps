@@ -6,7 +6,7 @@ Feature: Service Tooltip for International Services
 
   @service_tooltip
   Scenario: International Service Tooltip Tests
-    And Add New Order
+    Then Add New Order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To Country to Canada
     Then Order Details: Expect Service Tooltip for "First-Class Mail International Large Envelope/Flat" to include "Ship up to 4 lbs. and $400 worth of merchandise using your own large envelope or flat with pricing that varies by weight and country.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""

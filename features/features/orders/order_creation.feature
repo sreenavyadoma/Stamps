@@ -89,7 +89,7 @@ Feature: 10 orders
     Then Order Details: Set Insure For to $235.00
     Then Order Details: Set Tracking to "USPS Tracking"
 
-    And Sign out
+    Then Sign out
 
   @orders_20 @order_creation
   Scenario:  Order Creation

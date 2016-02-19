@@ -13,7 +13,7 @@ Feature: Internal Transaction # Not Required
     Then Order Details: Set Ounces to 5
     Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"
     Then Order Details: Set Ounces to 5
-    And Open Customs Form
+    Then Open Customs Form
     Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Customs Form: Set Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be "Not required"
@@ -33,4 +33,4 @@ Feature: Internal Transaction # Not Required
     Then Customs Form: Set ITN# to "random"
     Then Customs Form: Set I agree to Checked
     Then Close Customs Form
-    And Sign out
+    Then Sign out

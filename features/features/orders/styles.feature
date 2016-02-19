@@ -1,6 +1,6 @@
 @regression
 Feature: Web Batch Styles
-  Open Style Guide: http://sdcintranet/ProductAndServiceOperations/ProductManagement/Product%20Management%20Documents/Web%20Client/Style%20Guide/Web%20Client%20Style%20Guide.docx
+  Open Style Guide: http://sdcintranet/ProductThenServiceOperations/ProductManagement/Product%20Management%20Documents/Web%20Client/Style%20Guide/Web%20Client%20Style%20Guide.docx
 
   Background:
     Given I am signed in to Orders as gc/qacc/cctest1/password1
@@ -20,7 +20,7 @@ Feature: Web Batch Styles
     Then Expect Style for Navigation Background Color to be rgba 33, 89, 168
     Then Expect Style for Navigation Links Color to be 255, 255, 255
 
-    And Sign out
+    Then Sign out
 
 
 

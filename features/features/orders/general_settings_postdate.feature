@@ -131,5 +131,5 @@ Feature: Postdate
 
     Then Settings:  Close
 
-    And Sign out
+    Then Sign out
 

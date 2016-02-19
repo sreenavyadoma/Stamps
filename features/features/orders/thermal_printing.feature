@@ -18,4 +18,4 @@ Feature: Thermal Printer
     Then Open Print Modal
     Then Print Modal: Set Media "Roll - 4" x 6" Shipping Label"
     Then Toolbar: Print
-    And Sign out
+    Then Sign out

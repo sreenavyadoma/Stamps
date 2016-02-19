@@ -14,4 +14,4 @@ Feature: Show Cost of Order in Ship Cost Grid
     Then Order Details: Set Insure For to $10.00
     Then Order Details: Set Service to "Priority Mail Small Flat Rate Box"
     Then Expect Ship Cost equals Total amount
-    And Sign out
+    Then Sign out

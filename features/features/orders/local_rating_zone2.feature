@@ -83,7 +83,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large/Thick Envelope|70|0|11|11|11|USPS Tracking|32.82|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large/Thick Envelope|71|0|12|12|12|USPS Tracking|33.20|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Package
@@ -163,7 +163,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Package|70|0|11|11|11|USPS Tracking|32.37|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Package|71|0|12|12|12|USPS Tracking|32.82|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Large Package
@@ -243,7 +243,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large Package|70|0|11|11|11|USPS Tracking|31.97|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large Package|71|0|12|12|12|USPS Tracking|32.37|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Regional Rate Boxes
@@ -290,7 +290,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box B|20|0|1|1|1|USPS Tracking|6.16|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box B|21|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Express Package
@@ -371,7 +371,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Package|70|0|1|1|1|USPS Tracking|75.18|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Package|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Parcel Select Ground Package
@@ -451,7 +451,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Package|70|0|1|1|1|USPS Tracking|10.90|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Package|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Parcel Select Ground Large Package
@@ -531,7 +531,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Large Package|70|0|1|1|1|USPS Tracking|10.90|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Large Package|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Parcel Select Ground Oversized Package
@@ -611,7 +611,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Oversized Package|70|0|1|1|1|USPS Tracking|62.99|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Oversized Package|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Flat Rate Envelope
@@ -691,7 +691,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Flat Rate Envelope|70|0|1|1|1|USPS Tracking|5.05|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Padded Flat Rate Envelope
@@ -771,7 +771,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Padded Flat Rate Envelope|70|0|1|1|1|USPS Tracking|5.70|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Padded Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Legal Flat Rate Envelope
@@ -852,7 +852,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Legal Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Small Flat Rate Box|1|0|1|1|1|Signature Required|7.70|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Small Flat Rate Box
@@ -931,7 +931,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Small Flat Rate Box|70|0|1|1|1|USPS Tracking|5.25|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Small Flat Rate Box|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Medium Flat Rate Box
@@ -1011,7 +1011,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Medium Flat Rate Box|70|0|1|1|1|USPS Tracking|11.30|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Medium Flat Rate Box|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Large Flat Rate Box
@@ -1091,7 +1091,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large Flat Rate Box|70|0|1|1|1|USPS Tracking|15.80|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large Flat Rate Box|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Express Flat Rate Envelope
@@ -1171,7 +1171,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Flat Rate Envelope|70|0|1|1|1|USPS Tracking|18.11|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Express Padded Flat Rate Envelope
@@ -1251,7 +1251,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|70|0|1|1|1|USPS Tracking|18.11|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Express Legal Flat Rate Envelope
@@ -1332,7 +1332,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Legal Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|1|0|1|1|1|Signature Required|44.95|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Priority Mail Express Padded Flat Rate Envelope
@@ -1411,7 +1411,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|70|0|1|1|1|USPS Tracking|44.95|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - Media Mail Package
@@ -1491,7 +1491,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, Media Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Media Mail Package|70|0|1|1|1|USPS Tracking|37.22|
       |default|Zone2 Test, Media Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Media Mail Package|71|0|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - First-Class Mail Large Envelope/Flat
@@ -1513,7 +1513,7 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, First-Class Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|First-Class Mail Large Envelope/Flat|0|13|1|1|1|None|3.62|
       |default|Zone2 Test, First-Class Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|First-Class Mail Large Envelope/Flat|0|14|1|1|1|None|0.00|
 
-    And Sign out
+    Then Sign out
 
   @local_rating_zone2
   Scenario: Zone 2 - First-Class Mail Package/Thick Envelope
@@ -1536,4 +1536,4 @@ Feature: Local Rating Zone 2
       |default|Zone2 Test, First-Class Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|First-Class Mail Package/Thick Envelope|0|13|1|1|1|USPS Tracking|3.63|
       |default|Zone2 Test, First-Class Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|First-Class Mail Package/Thick Envelope|0|14|1|1|1|USPS Tracking|0.00|
 
-    And Sign out
+    Then Sign out

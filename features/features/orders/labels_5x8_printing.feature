@@ -21,7 +21,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
    # Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. destination."
     #Then Expect Shipping Label 5.5 x 8.5 tool-tip to contain "Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783"
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 
 
   @label_5x8_printing
@@ -87,7 +87,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Open Print Modal
     Then Print Modal: Set Media "Shipping Label - 5 ½" x 8 ½""
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 
   Scenario: Print - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then Add New Order
@@ -101,7 +101,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Open Print Modal
     Then Print Modal: Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 
   Scenario: Print - Shipping Label: 5 ½" x 8 ½"
     Then Add New Order
@@ -115,7 +115,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Open Print Modal
     Then Print Modal: Set Media "Shipping Label - 5 ½" x 8 ½""
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 
   Scenario: Print - Roll - 4" x 6" Shipping Label
     Then Add New Order
@@ -129,7 +129,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Open Print Modal
     Then Print Modal: Set Media "Roll - 4" x 6" Shipping Label"
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 
   Scenario: Print - Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then Add New Order
@@ -143,7 +143,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Open Print Modal
     Then Print Modal: Set Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 
   Scenario: Multi Order Printing - Shipping Label: 5 ½" x 8 ½"
     #Create order 1
@@ -187,7 +187,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Print Modal: Set Media "Shipping Label - 5 ½" x 8 ½""
     Then Print Modal: Print Sample
     Then Expect system will only print first order
-    And Sign out
+    Then Sign out
 
   Scenario:  User prints postage for CN22 Shipping Label 5.5 x 8.5
     Then Add New Order
@@ -200,13 +200,13 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Order Details: Set Width to 1
     Then Order Details: Set Height to 1
     Then Order Details: Set Length to 1
-    And Open Customs Form
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 20, Lbs 0, Oz 5 Origin United States, Tariff 10
+    Then Open Customs Form
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 20, Lbs 0, Oz 5 Origin United States, Tariff 10
     Then Close Customs Form
     Then Open Print Modal
     Then Print Modal: Set Media "Shipping Label - 5 ½" x 8 ½""
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 
   Scenario:  User prints postage for CP72 Shipping Label 5.5 x 8.5
     Then Add New Order
@@ -219,11 +219,11 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Order Details: Set Width to 1
     Then Order Details: Set Height to 1
     Then Order Details: Set Length to 1
-    And Open Customs Form
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 20, Lbs 1, Oz 0 Origin United States, Tariff 10
+    Then Open Customs Form
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 20, Lbs 1, Oz 0 Origin United States, Tariff 10
     Then Customs Form: Set I agree to Checked
     Then Close Customs Form
     Then Open Print Modal
     Then Print Modal: Set Media "Shipping Label - 5 ½" x 8 ½""
     Then Toolbar: Print
-    And Sign out
+    Then Sign out

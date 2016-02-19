@@ -18,4 +18,4 @@ Feature:  BVT Printing
     Then Print Modal: Set Media "Shipping Label - 8 ½" x 11" Paper"
     Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
-    And Sign out
+    Then Sign out

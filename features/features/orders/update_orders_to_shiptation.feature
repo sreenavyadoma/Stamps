@@ -29,4 +29,4 @@ Feature:  Update Order to ShipStation
     # Verify pounds, ounces height width length from Order Form
     Then Order Details: Expect Service to be "Priority Mail Package"
     Then Order Details: Expect Tracking to be "Signature Required"
-    And Sign out
+    Then Sign out

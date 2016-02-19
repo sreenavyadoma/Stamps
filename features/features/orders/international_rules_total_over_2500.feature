@@ -14,14 +14,14 @@ Feature: Internal Transaction Number Required for total over $2500
     Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
     Then Order Details: Set Service to "First-Class Mail International Large Envelope/Flat"
-    And Open Customs Form
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
+    Then Open Customs Form
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 1, Lbs 1, Oz 1 Origin United States, Tariff 10
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 1, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 2501, Lbs 1, Oz 1 Origin United States, Tariff 10
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 2501, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs Form: Set ITN# to "random"
     Then Customs Form: Set I agree to Checked
     Then Close Customs Form
-    And Sign out
+    Then Sign out

@@ -19,4 +19,4 @@ Feature: Envelopes BVT
     Then Envelopes: Set Ounces to 1
     Then Envelopes: Set Service to "First-Class Mail Letter"
     Then Footer: Print Postage
-    And Sign out
+    Then Sign out

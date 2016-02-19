@@ -8,4 +8,4 @@ Feature: Order Status - Awaiting Shipment
   Scenario: Order Status - Awaiting Shipment
     Then Add New Order
     Then Orders Grid: Expect Order Status to be "Awaiting Shipment"
-    And Sign out
+    Then Sign out

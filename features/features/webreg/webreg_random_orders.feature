@@ -44,7 +44,7 @@ Feature: Registration
     Then Settings:  Set Logoff to 2 hours.
     Then Settings:  Save
     Then Pause for 1 seconds
-    And Sign out
+    Then Sign out
     Then WebReg:  Send username to standard out
     Then Pause for 1 seconds
     #Then Orders Grid:  Order ID: Column: Check Reference Number

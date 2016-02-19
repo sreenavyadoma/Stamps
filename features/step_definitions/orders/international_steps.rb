@@ -232,8 +232,8 @@ Then /^Customs Form: Add Item (\d+), Description (\w+), Qty (\d+), Price ([\d.]+
   item.hs_tariff.set tariff
 end
 
-Then /^Delete Customs Form Item (\d+)$/ do |item_number|
-  log.info "Step: Delete Customs Form Item #{item_number}"
+Then /^Customs Form: Delete Item (\d+)$/ do |item_number|
+  log.info "Step: Customs Form: Delete Item #{item_number}"
   count = @customs_item_grid.size
   item = @customs_item_grid.item item_number.to_i
   if count > 1
@@ -509,8 +509,8 @@ Then /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |expectati
   text.should eql expectation
 end
 
-Then /^Expect Customs Form Item Grid count to be (.+)$/ do |expectation|
-  log.info "Step: Expect Customs Form Item Grid count to be #{expectation}"
+Then /^Customs Form: Expect Item Grid count to be (.+)$/ do |expectation|
+  log.info "Step: Customs Form: Expect Item Grid count to be #{expectation}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.item_grid.size.should eql expectation.to_i
 end

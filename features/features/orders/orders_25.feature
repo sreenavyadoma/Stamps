@@ -16,8 +16,8 @@ Feature: 25 orders
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
     Then Order Details: Set Ounces to 2
     Then Order Details: Set Pounds to 2
-    And Open Customs Form
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Open Customs Form
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs Form: Set I agree to Checked
     Then Close Customs Form
     Then Order Details: Set Service to "First-Class Mail International Large Envelope/Flat"
@@ -30,15 +30,15 @@ Feature: 25 orders
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
     Then Order Details: Set Ounces to 2
     Then Order Details: Set Pounds to 2
-    And Open Customs Form
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Open Customs Form
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs Form: Set I agree to Checked
     Then Close Customs Form
     Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"
 
     # First Class Mail
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 1
@@ -51,7 +51,7 @@ Feature: 25 orders
     Then UnOrders Grid: Check row 1
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 2
@@ -65,7 +65,7 @@ Feature: 25 orders
 
     #Priority Mail
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then UnOrders Grid: Check row 1
@@ -77,7 +77,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "USPS Tracking"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 4
@@ -88,7 +88,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 5
@@ -100,7 +100,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 6
@@ -111,7 +111,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 7
@@ -123,7 +123,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "USPS Tracking"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 8
@@ -134,7 +134,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 9
@@ -146,7 +146,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 10
@@ -158,7 +158,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 11
@@ -170,7 +170,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 12
@@ -182,7 +182,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 13
@@ -194,7 +194,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "USPS Tracking"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 14
@@ -206,7 +206,7 @@ Feature: 25 orders
 
     # Priority Mail Express
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 15
@@ -217,7 +217,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 16
@@ -228,7 +228,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "USPS Tracking"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 17
@@ -239,7 +239,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 18
@@ -250,7 +250,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "USPS Tracking"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 19
@@ -262,7 +262,7 @@ Feature: 25 orders
 
     # Media Mail
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 20
@@ -275,7 +275,7 @@ Feature: 25 orders
 
     # Parcel Select
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 21
@@ -287,7 +287,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "USPS Tracking"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 22
@@ -299,7 +299,7 @@ Feature: 25 orders
     Then Order Details: Set Tracking to "Signature Required"
 
     Then Add New Order
-    And Expect new Order ID created
+    Then Expect new Order ID created
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Pounds to 23
@@ -309,4 +309,4 @@ Feature: 25 orders
     Then Order Details: Set Service to "Parcel Select Ground Oversized Package"
     Then Order Details: Set Insure For to $567.00
     Then Order Details: Set Tracking to "Signature Required"
-    And Sign out
+    Then Sign out

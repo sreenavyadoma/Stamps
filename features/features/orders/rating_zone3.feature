@@ -134,4 +134,4 @@ Feature: Local Rating test for zone 3
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Order Details: Expect Total to be $67.94
 
-    And Sign out
+    Then Sign out

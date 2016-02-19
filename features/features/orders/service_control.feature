@@ -8,7 +8,7 @@
   Scenario:  Inline Rates
     Then Add New Order
     Then Order Details: Set Ship-From to default
-    And Orders Grid: Check row 1
+    Then Orders Grid: Check row 1
 
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Hide Ship-To fields
@@ -49,4 +49,4 @@
     Then Order Details: Set Service to "Priority Mail Express Legal Flat Rate Envelope"
     Then Order Details: Expect Service to be "Priority Mail Express Legal Flat Rate Envelope"
 
-    And Sign out
+    Then Sign out

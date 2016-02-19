@@ -219,6 +219,6 @@ Feature: Select All Print Ons and Services
       | Ambiguous Address | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
     #Then Set Print Postage Form Service to <service>
     Then Expect Print Postage Form Ship-To address to be <address>
-    And Sign out
+    Then Sign out
 
     #todo-eva

@@ -22,5 +22,5 @@ Feature:  BVT Address Cleansing
     Then Orders Grid: Expect City to be San Francisco
     Then Orders Grid: Expect State to be CA
     Then Orders Grid: Expect Zip to be 94102
-    And Sign out
+    Then Sign out
 

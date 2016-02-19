@@ -34,4 +34,4 @@ Feature: User Views Price Next to Service Dropdown
     Then Orders Grid: Expect Pounds to be 0
     Then Orders Grid: Expect Ounces to be 0
     Then Orders Grid: Expect Weight to be 0 lbs. 0 oz.
-    And Sign out
+    Then Sign out

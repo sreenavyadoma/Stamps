@@ -200,7 +200,7 @@ Then /^Print Postage Customs Form: Add Item - Description (\w+), Qty (\d+), Valu
 end
 
 Then /^Print Postage Customs Form: Delete Item (\d+)$/ do |item_number|
-  log.info "Step: Delete Customs Form Item #{item_number}"
+  log.info "Step: Customs Form: Delete Item #{item_number}"
   count = @customs_item_grid.size
   item = @customs_item_grid.item item_number.to_i
   if count > 1

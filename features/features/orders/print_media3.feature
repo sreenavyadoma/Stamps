@@ -15,5 +15,5 @@ Feature: Print Media - Shipping Label: 5 ½" x 8 ½"
     Then Print Modal: Set Media "Shipping Label - 5 ½" x 8 ½""
     Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 

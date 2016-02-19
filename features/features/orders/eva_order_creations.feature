@@ -798,4 +798,4 @@ Feature:  Add Orders
     Then Order Details: Set Length to 1
     Then Order Details: Set Width to 1
 
-    And Sign out
+    Then Sign out

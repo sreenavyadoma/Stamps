@@ -167,8 +167,8 @@ Feature: Test Development
 
   @rob_dev2
   Scenario:
-    And List all Grid column values for row 1
-    And List all Grid column values for row 2
+    Then List all Grid column values for row 1
+    Then List all Grid column values for row 2
 
     Then Filter Panel - Cancelled
     Then Filter Panel - Awaiting Shipment
@@ -209,12 +209,12 @@ Feature: Test Development
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Service to "First-Class Mail Large Envelope/Flat"
 
-    And I Add a second order
+    Then I Add a second order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Service to "First-Class Mail Large Envelope/Flat"
 
-    And I Add a third order
+    Then I Add a third order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Service to "Media Mail Package"
@@ -249,7 +249,7 @@ Feature: Test Development
     Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"
 
   #Then Order Details: Set Service to "First-Class Mail International Large Envelope/Flat"
-    And Open Customs Form
+    Then Open Customs Form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs Form: Set Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be "Required"
@@ -266,12 +266,12 @@ Feature: Test Development
     Then Customs Form: Set Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs Form: Set ITN# to "random"
     Then Customs Form: Set I agree to Checked
     Then Close Customs Form
-    And Sign out
+    Then Sign out
 
   @_dev_rob
   Scenario: Domestic FPO Address
@@ -286,9 +286,9 @@ Feature: Test Development
     Then Order Details: Set Height to 1
     Then Order Details: Set Width to 1
     Then Order Details: Set Service to "Priority Mail Package"
-    And Open Customs Form
+    Then Open Customs Form
     Then Customs Form: Set Package Contents to "Merchandise"
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Close Customs Form
     Then Toolbar: Print
 
@@ -302,8 +302,8 @@ Feature: Test Development
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
     Then Order Details: Set Ounces to 2
     Then Order Details: Set Pounds to 2
-    And Open Customs Form
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Open Customs Form
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs Form: Set I agree to Checked
     Then Close Customs Form
     Then Order Details: Set Service to "First-Class Mail International Large Envelope/Flat"
@@ -315,8 +315,8 @@ Feature: Test Development
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
     Then Order Details: Set Ounces to 2
     Then Order Details: Set Pounds to 2
-    And Open Customs Form
-    And Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Open Customs Form
+    Then Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs Form: Set I agree to Checked
     Then Close Customs Form
     Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"

@@ -29,4 +29,4 @@ Feature: Change the starting label position I will print from
     Then Expect Print Modal left-side label selected
     Then Toolbar: Print
 
-    And Sign out
+    Then Sign out

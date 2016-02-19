@@ -214,5 +214,5 @@ Feature: Reset Fields
 
     Then Settings:  Save
 
-    And Sign out
+    Then Sign out
 

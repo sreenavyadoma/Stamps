@@ -128,4 +128,4 @@ Feature: Local Rating test for zone 8
     Then Order Details: Set Tracking to "USPS Tracking"
     Then Order Details: Expect Total to be $169.87
 
-    And Sign out
+    Then Sign out

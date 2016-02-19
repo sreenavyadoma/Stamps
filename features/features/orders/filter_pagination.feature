@@ -7,7 +7,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     When Expect system displays expanded filters panel
 
     Then Filter Panel - Shipped
-    And Expect system selects Shipped Filter Panel - and deselects the previous filter
+    Then Expect system selects Shipped Filter Panel - and deselects the previous filter
 
     Then Toolbar:  Set Per Page drop-down to 500
     Then Expect number of orders on page to be correct

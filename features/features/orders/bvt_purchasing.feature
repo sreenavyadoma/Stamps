@@ -6,6 +6,6 @@ Feature: BVT Purchasing
 
   @bvt_purchasing
   Scenario: Purchasing $10
-    And Purchase Postage for $10
+    Then Purchase Postage for $10
     Then Expect $10 is added to customer balance
-    And Sign out
+    Then Sign out

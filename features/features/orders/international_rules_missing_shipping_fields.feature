@@ -22,7 +22,7 @@ Feature: International Shipping fields and Customs Information fields validation
     Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Commercial Sample"
     Then Expect Customs Form More Info to be hidden
@@ -81,4 +81,4 @@ Feature: International Shipping fields and Customs Information fields validation
     Then Customs Form: Set I agree to Checked
     Then Close Customs Form
     Then Order Details: Set Service to "First-Class Mail International Large Envelope/Flat"
-    And Sign out
+    Then Sign out

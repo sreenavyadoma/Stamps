@@ -13,4 +13,4 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
     Then Order Details: Set Ship-To Country to Australia
     Then Order Details: Set International Ship-To Name to ""
     Then Order Details: Set International Ship-To Name to "random"
-    And Sign out
+    Then Sign out

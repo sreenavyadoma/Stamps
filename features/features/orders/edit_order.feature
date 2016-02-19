@@ -31,4 +31,4 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
     Then Orders Grid: Expect Ounces to be 2
     Then Orders Grid: Expect Pounds to be 1
     Then Orders Grid: Expect Insured Value to be $11.00
-    And Sign out
+    Then Sign out

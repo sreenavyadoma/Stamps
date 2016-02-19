@@ -20,4 +20,4 @@ Feature: Printing total cost
     Then Order Details: Set Insure For to $10.00
     Then Order Details: Set Tracking to "Signature Required"
     Then Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost
-    And Sign out
+    Then Sign out

@@ -13,7 +13,7 @@ Feature: Ship Date
     Then Print Modal: Set Ship Date to today
     Then Expect Shipped Tab Ship Date to be today
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 
   @ship_date
   Scenario:  Print Modal: Set Ship Date to 1 day from today
@@ -24,7 +24,7 @@ Feature: Ship Date
     Then Print Modal: Set Ship Date to today plus 1
     Then Print Modal: Set Ship Date to today plus 3
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 
   @ship_date
   Scenario:  Print Modal: Set Ship Date to 1 day from today
@@ -36,7 +36,7 @@ Feature: Ship Date
     Then Print Modal: Set Ship Date to today plus 2
     Then Expect Shipped Tab Ship Date to be today plus 2
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 
   @ship_date
   Scenario:  Print Modal: Set Ship Date to 1 day from today
@@ -48,5 +48,5 @@ Feature: Ship Date
     Then Print Modal: Set Ship Date to today plus 3
     Then Expect Shipped Tab Ship Date to be today plus 3
     Then Toolbar: Print
-    And Sign out
+    Then Sign out
 

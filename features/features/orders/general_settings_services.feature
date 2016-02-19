@@ -60,5 +60,5 @@ Feature: Checkoxes Services, Print Confirm, USPS Terms, Contacts and Shipments
 
     Then Settings:  Close
 
-    And Sign out
+    Then Sign out
 

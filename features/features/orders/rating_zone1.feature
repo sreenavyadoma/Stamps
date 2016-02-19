@@ -134,4 +134,4 @@ Feature: Local Rating test for zone 1
     Then Order Details: Set Tracking to "Signature Required"
     Then Order Details: Expect Total to be $65.44
 
-    And Sign out
+    Then Sign out

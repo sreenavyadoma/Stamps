@@ -13,4 +13,4 @@ Feature: Print Modal: Print Sample - Parcel Select Ground Large Package
     Then Open Print Modal
     Then Print Modal: Set Printer to "factory"
     Then Print Modal: Print Sample
-    And Sign out
+    Then Sign out

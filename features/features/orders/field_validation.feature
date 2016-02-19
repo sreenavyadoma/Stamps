@@ -61,4 +61,4 @@ Feature: Add Missing Field Validation
     Then Order Details: Expect Dimensions Height data error tooltip to be "Each dimension must be greater than 0"
     Then Orders Grid: Expect Ship Cost error to contain "Each dimension must be greater than 0"
 
-    And Sign out
+    Then Sign out

@@ -21,6 +21,6 @@ Feature: Address Cleansing BVT
     Then Shipping Labels: Set Ounces to 1
     Then Shipping Labels: Set Service to "Priority Mail Package"
 
-    And Shipping Label: Expect Domestic Address field displays Mark Davidson, Company Name, 1350 Market Street, San Francisco, CA 94102
+    Then Shipping Label: Expect Domestic Address field displays Mark Davidson, Company Name, 1350 Market Street, San Francisco, CA 94102
 
-    And Sign out
+    Then Sign out

@@ -23,5 +23,5 @@ Feature: Add Missing Validation Logic for Phone and International Email
     Then Order Details: Expect Weight Oz data error tooltip to be "Weight cannot be 0"
     Then Order Details: Expect Service data error tooltip to be "Service is required"
 
-    And Sign out
+    Then Sign out
 

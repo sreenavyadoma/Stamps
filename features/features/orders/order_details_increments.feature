@@ -22,5 +22,5 @@ Feature:  BVT Order Creation
     Then Orders Grid: Expect Ounces to be 1
     Then Orders Grid: Expect Weight to be 1 lbs. 1 oz.
     Then Orders Grid: Expect Insured Value to be $1.00
-    And Sign out
+    Then Sign out
 

@@ -18,8 +18,8 @@ Feature: Print Multiple Orders
     Then Order Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Order Details: Set Ounces to 1
 
-    And Orders Grid: Check row 1
-    And Orders Grid: Check row 2
+    Then Orders Grid: Check row 1
+    Then Orders Grid: Check row 2
 
     Then Toolbar: Print
-    And Sign out
+    Then Sign out

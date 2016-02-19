@@ -16,5 +16,5 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Toolbar: Print
     Then Expect printed Order ID is not in Awaiting Shipment tab
     Then Expect printed Order ID is in Shipped tab
-    And Sign out
+    Then Sign out
 

@@ -34,7 +34,7 @@ Feature: Test Development
       | name    | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Joseph Balancio | Company Name | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect "Exact Address Not Found" module to appear
-    And Select row 2 from Exact Address Not Found module
+    Then Select row 2 from Exact Address Not Found module
     Then Order Details: Set Service to "Priority Mail Package"
     Then Orders Grid: Expect Recipient to be Joseph Balancio
     Then Orders Grid: Expect Company to be Company Name

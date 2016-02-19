@@ -20,10 +20,10 @@ Feature:  Print Window Title - You have x-number of labels ready to print
     Then Order Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Order Details: Set Weight to 1 lbs 1 oz
     Then Order Details: Set Dimensions to Length 1 Width 1 Height 1
-    And Orders Grid: Check row 1
-    And Orders Grid: Check row 2
+    Then Orders Grid: Check row 1
+    Then Orders Grid: Check row 2
     Then Open Print Modal
     Then Expect Print Window title to be "You have 2 label(s) ready to print"
     Then Close Print Modal
 
-    And Sign out
+    Then Sign out

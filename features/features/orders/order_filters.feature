@@ -8,4 +8,4 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     * System displays expanded filters panel.
     * System displays "Awaiting Shipment" and "Shipped" filters in panel.
     * System selects the "Awaiting Shipment" Filter Panel - by default.
-    And Sign out
+    Then Sign out

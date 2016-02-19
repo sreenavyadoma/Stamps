@@ -17,7 +17,7 @@ Feature: Stamps BVT
     Then Stamps: Set Specify Postage Service to "Media Mail (2 - 3 Days)"
     Then Stamps: Set Stamp Amount to $4.65
     Then Footer: Print Postage
-    And Sign out
+    Then Sign out
 
   @wp_bvt
   @wp_bvt_netstamps_calculate
@@ -30,5 +30,5 @@ Feature: Stamps BVT
     Then Stamps: Set Weight 0 lbs 1 oz
     Then Stamps: Set Calculate Postage Service to "First-Class Mail Large Envelope/Flat"
     Then Footer: Print Postage
-    And Sign out
+    Then Sign out
 

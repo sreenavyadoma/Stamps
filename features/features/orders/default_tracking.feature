@@ -59,4 +59,4 @@ Feature: Tracking
     Then Order Details: Expect Service to be "Priority Mail Regional Rate Box B"
     Then Order Details: Expect Tracking to be "USPS Tracking"
 
-    And Sign out
+    Then Sign out

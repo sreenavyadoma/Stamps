@@ -18,5 +18,5 @@ Feature: Print Media Tooltips
     Then Expect Print Modal Print Media "Roll - 4" x 6" Shipping Label" tooltip to include "Use these 4” x 6” thermal label rolls to print postage, addresses, tracking barcode, and customs form.||Can be used to ship any mailpiece to any U.S. or international destination.||Compatible Printers:||Most Zebra/Eltron models and Samsung Bixolon SRP 770II."
     Then Expect Print Modal Print Media "Roll - 4 ⅛" x 6 ¼" Shipping Label" tooltip to include "Use these 4⅛” x 6¼” thermal label rolls to print postage, addresses, tracking barcode, and customs form.||Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. or international destination.||Compatible Printers:||Dymo 4XL, most Zebra/Eltron models and Samsung Bixolon SRP 770II."
     Then Close Print Modal
-    And Sign out
+    Then Sign out
 

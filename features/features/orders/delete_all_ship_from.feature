@@ -8,4 +8,4 @@ Feature:  Delete Ship From
   Scenario: regression
     Then Add New Order
     Then Delete all Ship-From address
-    And Sign out
+    Then Sign out

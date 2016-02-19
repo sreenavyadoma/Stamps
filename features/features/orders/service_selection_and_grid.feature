@@ -41,6 +41,6 @@ Feature:  Service Selection & Order Grid Values
     Then Filter Panel - Shipped
     Then Orders Grid: Expect Service to be Parcel Select Ground
 
-    And Sign out
+    Then Sign out
 
     #todo - rob

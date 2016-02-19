@@ -16,7 +16,7 @@ Feature: Purchasing
     Then Expect $100 is added to customer balance
     Then Purchase Postage for $35
     Then Expect $35 is added to customer balance
-    And Sign out
+    Then Sign out
 
 
 

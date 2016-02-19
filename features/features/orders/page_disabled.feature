@@ -13,4 +13,4 @@ Feature: B-01746 Order Pagination
     Then Expect page toolbar Last Page is disabled
     * User is still able to set number of orders per page (100, 250, or 500)
 
-    And Sign out
+    Then Sign out

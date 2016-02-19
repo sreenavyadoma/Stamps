@@ -6,4 +6,4 @@ Feature: B-01746 Order Pagination
   @page_previous
   Scenario: Go to previous page
 
-    And Sign out
+    Then Sign out

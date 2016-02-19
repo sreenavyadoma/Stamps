@@ -247,7 +247,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -268,7 +268,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -521,7 +521,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -542,7 +542,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -794,7 +794,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -815,7 +815,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -1068,7 +1068,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -1089,7 +1089,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -1342,7 +1342,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -1363,7 +1363,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -1616,7 +1616,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -1637,7 +1637,7 @@ Feature: 150 orders
 
     Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    And Open Customs Form
+    Then Open Customs Form
 
     Then Customs Form: Set Package Contents to "Merchandise"
     Then Customs Form: Set Non-Delivery Options to "Return to sender"
@@ -1649,6 +1649,6 @@ Feature: 150 orders
     Then Close Customs Form
     Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"
 
-    And Sign out
+    Then Sign out
 
     #todo-rob affected
