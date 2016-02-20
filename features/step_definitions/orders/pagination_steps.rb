@@ -23,8 +23,8 @@ Then /^Toolbar:  Set Per Page drop-down to 500$/ do
   per_page.should eql "500"
 end
 
-Then /^Expect number of orders on page to be correct$/ do
-  log.info "Step: Expect number of orders on page to be correct"
+Then /^Toolbar: Expect number of orders on page to be correct$/ do
+  log.info "Step: Toolbar: Expect number of orders on page to be correct"
   filter = orders.filter
   grid = filter.awaiting_shipment
   grid.checkbox.check_all
