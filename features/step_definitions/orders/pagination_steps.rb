@@ -38,6 +38,7 @@ Then /^Expect number of orders on page to be correct$/ do
     max_order_count = per_page_count
   end
 
+  grid.checkbox.uncheck_all
   log.info "Test #{(max_order_count == multi_order_count)?"Passed":"Failed"}"
   max_order_count.should eql multi_order_count
 end
