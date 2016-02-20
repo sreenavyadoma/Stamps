@@ -23,6 +23,25 @@ Then /^Toolbar:  Set Per Page drop-down to 500$/ do
   per_page.should eql "500"
 end
 
+Then /^Expect number of orders on page to be correct$/ do
+  log.info "Step: Expect number of orders on page to be correct"
+  filter = orders.filter
+  grid = filter.awaiting_shipment
+  grid.checkbox.check_all
+  awaiting_shipment_total_count = filter.awaiting_shipment_count
+  multi_order_count = orders.multi_order.order_count
+  per_page_count = orders.grid.toolbar.per_page.text_box.text.to_i
+
+  if awaiting_shipment_total_count < per_page_count
+    max_order_count = awaiting_shipment_total_count
+  else
+    max_order_count = per_page_count
+  end
+
+  log.info "Test #{(max_order_count == multi_order_count)?"Passed":"Failed"}"
+  max_order_count.should eql multi_order_count
+end
+
 Then /^User is on the first page of orders$/ do
   log.info "Step: User is on the first page of orders"
   log.info "Page Count = Page #{orders.grid.row_count} orders"
@@ -196,20 +215,6 @@ Then /^Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
   log.info "#{(test_result)?'Test Passed.':'Test Failed'}"
   test_result.should be true
   #expect(total_number_of_pages).should be eql expect(browser_total_number_of_pages)
-end
-
-Then /^Expect number of orders on page to be correct$/ do
-  log.info "Step: Expect number of orders on page to be correct"
-  orders.grid.checkbox.check_all
-  orders.filter
-  multi_order_count = orders.multi_order.order_count.to_s
-  log.info "Multi Order Count is #{multi_order_count}"
-  per_page_dd_count = @per_page_count
-  log.info "Per Page Count is #{per_page_dd_count}"
-  test_result = multi_order_count.include? per_page_dd_count
-  log.info "#{(test_result)?'Test Passed.':'Test Failed'}"
-  orders.grid.checkbox.uncheck_all
-  test_result.should be true
 end
 
 #Pagination Controls are disabled
