@@ -27,6 +27,7 @@ Then /^Toolbar: Expect number of orders on page to be correct$/ do
   log.info "Step: Toolbar: Expect number of orders on page to be correct"
   filter = orders.filter
   grid = filter.awaiting_shipment
+  sleep 1
   grid.checkbox.check_all
   awaiting_shipment_total_count = filter.awaiting_shipment_count
   multi_order_count = orders.multi_order.order_count
@@ -38,6 +39,7 @@ Then /^Toolbar: Expect number of orders on page to be correct$/ do
     max_order_count = per_page_count
   end
 
+  sleep 1
   grid.checkbox.uncheck_all
   log.info "Test #{(max_order_count == multi_order_count)?"Passed":"Failed"}"
   max_order_count.should eql multi_order_count
