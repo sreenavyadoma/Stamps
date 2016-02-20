@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:pagination) do |t|
+  t.profile = 'pagination'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:registration) do |t|
   t.profile = 'registration'
   t.cucumber_opts = "-p cuke_reports"
