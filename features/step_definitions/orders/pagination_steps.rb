@@ -29,6 +29,7 @@ Then /^Toolbar: Expect number of orders on page to be correct$/ do
   grid = filter.awaiting_shipment
   sleep 1
   grid.checkbox.check_all
+  sleep 1
   awaiting_shipment_total_count = filter.awaiting_shipment_count
   multi_order_count = orders.multi_order.order_count
   per_page_count = orders.grid.toolbar.per_page.text_box.text.to_i
