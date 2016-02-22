@@ -1,6 +1,8 @@
 
-SellerID: A1BX1F0B3I9QDV
-AuthToken: amzn.mws.20a589f0-ccb4-ac6f-1289-5115163052f0
+Seller ID:  A1BX1F0B3I9QDV
+AuthToken:       amzn.mws.20a589f0-ccb4-ac6f-1289-5115163052f0 xxxx
+Seller ID:  A1BX1F0B3I9QDV
+MWS Auth Token:  amzn.mws.caa9355f-c8a9-768e-bf55-8b51e73b8f98
 
 Amazon Seller
 Website - http://sellercentral.amazon.com/

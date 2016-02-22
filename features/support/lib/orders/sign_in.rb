@@ -98,7 +98,7 @@ module Orders
         welcome_orders_page = WelcomeOrdersPage.new @browser
         market_place = Orders::Toolbar::AddStoreOrMarketplace.new @browser
 
-        10.times do
+        30.times do
           username_textbox.wait_until_present
           username_textbox.set_until usr
           password_textbox.set pw

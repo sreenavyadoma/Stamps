@@ -9,13 +9,18 @@ Given /^Orders: Load Sign-in page$/ do
 end
 
 Given /^Orders: First Time Sign-in to Orders as (.*)\/(.*)/ do |username, password|
-  usr = @random_username if username.downcase.include? "random"
+  if username.downcase.include? "random"
+    usr = @username
+  else
+    usr = username
+    @username = username
+  end
   log.info "Step: I am signed in to Orders as #{usr}/#{password}"
   orders.sign_in_page.first_time_sign_in usr, password
 end
 
 Given /^Orders: Sign-in to Orders as (.*)\/(.*)/ do |username, password|
-  usr = @random_username if username.downcase.include? "random"
+  usr = @username if username.downcase.include? "random"
   log.info "Step: I am signed in to Orders as #{usr}/#{password}"
   orders.sign_in_page.sign_in_with_credentials usr, password
 end

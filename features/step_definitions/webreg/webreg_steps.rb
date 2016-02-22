@@ -14,16 +14,16 @@ end
 
 Then /^WebReg: Set User ID and Email to Random Value$/ do
   log.info "WebReg: Set User ID and Email to Random Value"
-  @random_username = test_helper.rand_username
-  step "WebReg: Set Email to #{@random_username}@mailinator.com"
-  step "WebReg: Set User ID to #{@random_username}"
+  @username = test_helper.rand_username
+  step "WebReg: Set Email to #{@username}@mailinator.com"
+  step "WebReg: Set User ID to #{@username}"
 end
 
 Then /^WebR: Set User ID and Email to user defined (.*)$/ do |usrname|
-  @random_username = usrname
-  log.info "WebR: Set User ID and Email to user defined #{@random_username}"
-  step "WebReg: Set Email to #{@random_username}@mailinator.com"
-  step "WebReg: Set User ID to #{@random_username}"
+  @username = usrname
+  log.info "WebR: Set User ID and Email to user defined #{@username}"
+  step "WebReg: Set Email to #{@username}@mailinator.com"
+  step "WebReg: Set User ID to #{@username}"
 end
 
 Then /^WebReg: Set Email to (.*)$/ do |email|

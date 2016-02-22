@@ -5,19 +5,18 @@ Feature: Registration
 
   @webreg_specify_username
   Scenario:
-    Then WebR: Set User ID and Email to user defined ss_cctest11
+    Then WebR: Set User ID and Email to user defined stores10000
 
-    Then WebReg: Set Password to password1
-    Then WebReg: Set Re-Type password to password1
+    Then WebReg: Set Password to pass111
+    Then WebReg: Set Re-Type password to pass111
     Then WebReg: Set How will you use Stamps.com to Both Mailing and Shipping
     Then WebReg: Set Referrer Name to Already used in office
     Then WebReg: Set 1st Question to What is your mother's maiden name
-    Then WebReg: Set 1st Answer to 1111
+    Then WebReg: Set 1st Answer to stamps
     Then WebReg: Set 2nd Question to What was your high school mascot
-    Then WebReg: Set 2nd Answer to 1111
+    Then WebReg: Set 2nd Answer to stamps
 
     Then WebReg: Continue to Mailing Information Page
-
     Then WebReg: Set Mailing Info First Name to random
     Then WebReg: Set Mailing Info Last Name to random
     Then WebReg: Set Mailing Info Company to random
@@ -34,6 +33,7 @@ Feature: Registration
     Then WebReg: Set Mailing Info Expiration Year to 2019
     Then WebReg: Set Mailing Info Billing address same as mailing address to Checked
     Then WebReg: Set Mailing Info Terms & Conditions to Checked
+
     Then WebReg: Mailing Info Submit
 
     Then PAM: Load Customer Search Page
@@ -56,5 +56,14 @@ Feature: Registration
     Then PAM: AppCap Overrides: Submit
 
     Then Orders: Load Sign-in page qacc
-    Then Orders: First Time Sign-in to Orders as random/password1
+    Then Orders: First Time Sign-in to Orders as random/pass111
+    Then Pause for 2 seconds
     Then Add New Order
+    Then Pause for 1 seconds
+    Then Open Settings Modal
+    Then Settings:  Set Logoff to 2 hours.
+    Then Settings:  Save
+    Then Pause for 1 seconds
+    Then Sign out
+    Then WebReg:  Send username to standard out
+    Then Pause for 1 seconds

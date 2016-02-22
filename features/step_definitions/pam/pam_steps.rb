@@ -15,7 +15,12 @@ end
 Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
   log.info "PAM: Customer Search: Search for username #{username}"
   step "PAM: Load Customer Search Page" if @customer_search.nil?
-  usr = @random_username if username.downcase.include? "random"
+  if username.downcase.include? "random"
+    usr = @username
+  else
+    usr = username
+    @username = username
+  end
 
   100.times do
     @customer_search.username.set_until usr
@@ -34,7 +39,7 @@ Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
 end
 
 Then /^PAM: Customer Search: Set username to (.*)$/ do |username|
-  usr = @random_username if username.downcase.include? "random"
+  usr = @username if username.downcase.include? "random"
   log.info "PAM: Customer Search: Set username to #{usr}"
   step "PAM: Load Customer Search Page" if @customer_search.nil?
   @customer_search.username.set_until usr
@@ -86,7 +91,7 @@ Then /^PAM: ACH Purchase: Set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
   log.info "PAM: ACH Purchase: Set Amount to $#{dollars}.#{cents}"
   @ach_credit.dollar_amount.set_until dollars
   @ach_credit.cents_amount.set_until cents
-  @ach_credit.comments.set_until @random_username
+  @ach_credit.comments.set_until @username
   @customer_profile = @ach_credit.submit.yes.ok
 end
 
@@ -192,10 +197,10 @@ Then /^PAM: AppCap Overrides: Submit$/ do
 end
 
 Then /^WebReg:  Send username to standard out$/ do
-  log.info "NEW USER ID ######## #{@random_username} ########"
-  log.info "NEW USER ID ######## #{@random_username} ########"
-  log.info "NEW USER ID ######## #{@random_username} ########"
-  log.info "NEW USER ID ######## #{@random_username} ########"
+  log.info "NEW USER ID ######## #{@username} ########"
+  log.info "NEW USER ID ######## #{@username} ########"
+  log.info "NEW USER ID ######## #{@username} ########"
+  log.info "NEW USER ID ######## #{@username} ########"
 end
 
 

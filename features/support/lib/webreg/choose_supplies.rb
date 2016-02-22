@@ -19,7 +19,7 @@ module WebReg
     end
 
     def place_order
-      button = StampsButton.new @browser.button(:id => "mincartButtonTop")
+      button = StampsButton.new @browser.button(:text => "Place Order")
       welcome_page = NewAccountWelcomePage.new @browser
       10.times do
         button.safe_click

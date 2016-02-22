@@ -1,8 +1,38 @@
-Feature: Registration
+
+Feature: PAM page
   Background:
-    Given I launch browser default
+    Given WebReg: Load QA Web Registration Page
 
   @pam
-  Scenario:
-    Then PAM:  Load QA Payment Administration Manager Page
-    Then PAM:  Authentication Required
+  Scenario: PAM page
+    Then PAM: Load Customer Search Page
+    Then PAM: Customer Search: Search for username stores10000
+
+    Then PAM: Customer Profile: Click Change Meter Limit link
+    Then PAM: Change Meter Limit: Set USPS approval to Checked
+    Then PAM: Change Meter Limit: Set New Meter Limit to $100000
+    Then PAM: Change Meter Limit: Click Submit
+
+    Then PAM: Customer Profile: Click ACH Credit link
+    Then PAM: ACH Purchase: Set Amount to $100000.00
+
+    Then PAM: Customer Profile: Click  AppCap Overrides link
+    Then PAM: AppCap Overrides: Set Internet Postage Printing to Always On
+    Then PAM: AppCap Overrides: Set Netstamps Printing to Always On
+    Then PAM: AppCap Overrides: Set Shipping Label Printing to Always On
+    Then PAM: AppCap Overrides: Set International Shipping to Always On
+    Then PAM: AppCap Overrides: Set Allow High Risk Countries to Always On
+    Then PAM: AppCap Overrides: Submit
+
+    Then Orders: Load Sign-in page qacc
+    Then Orders: First Time Sign-in to Orders as random/pass111
+    Then Pause for 2 seconds
+    Then Add New Order
+    Then Pause for 1 seconds
+    Then Open Settings Modal
+    Then Settings:  Set Logoff to 2 hours.
+    Then Settings:  Save
+    Then Pause for 1 seconds
+    Then Sign out
+    Then WebReg:  Send username to standard out
+    Then Pause for 1 seconds
