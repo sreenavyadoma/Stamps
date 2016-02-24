@@ -25,6 +25,9 @@ Feature:  Store Management - Amazon Store
       Then Amazon Store: Connect for the first time expecting Amazon Settings modal
 
       Then Amazon Settings: Set Store Nickname to random
+
+      #Then Amazon Settings: Set Service Mapping 1, Requested Services random, Shipping Service First-Class Mail Postcard
+
       Then Amazon Settings: Check Automatically Import New Orders
       Then Amazon Settings: Save
 
