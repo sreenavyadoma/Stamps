@@ -4,9 +4,10 @@ module Print
 
     class ShippingLabelFormView < Print::Postage::DomesticCommon
 
-      def shipping_label_sheet_image
-
+      def preview_image
+        image = StampsLabel.new @browser.div :css => "div[style*='Label_selection_and_view.gif']"
       end
+
       def hide_postage_value
         checkbox_field = @browser.input :css => "input[id=hidePostageCheckbox]"
         verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
@@ -32,7 +33,7 @@ module Print
       end
 
       def reference_number
-        StampsTextbox.new @browser.text_field :name => "ReferenceNumber"
+        StampsTextbox.new @browser.text_field :name => "referenceNumber"
       end
 
       def cost_code
