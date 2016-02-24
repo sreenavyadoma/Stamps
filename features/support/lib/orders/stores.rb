@@ -18,7 +18,13 @@ module Orders
 
       def delete
         button = StampsButton.new delete_btn
-        button.wait_until_present
+        20.times do
+          sleep 1
+          break if button.present?
+        end
+
+        raise "Delete Store Modal is not present." unless button.present?
+
         10.times do
           button.safe_click
           button.safe_click
@@ -145,11 +151,12 @@ module Orders
         server_error = ServerError.new @browser
         15.times do
           button.safe_click
-          sleep 1
+          sleep 5
           if server_error.present?
             log.info server_error.message
             server_error.ok
           end
+          sleep 2
           break unless present? && server_error.present?
         end
       end
@@ -567,7 +574,7 @@ module Orders
         end
       end
 
-      def delete
+      def delete_item
         button = StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(4)>span>span>span[id$=btnInnerEl]")
         delete_modal = DeleteStoreModal.new @browser
         10.times do

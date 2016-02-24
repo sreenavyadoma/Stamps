@@ -51,7 +51,7 @@ end
 
 Then /^Manage Stores: Delete$/ do
   log.info "Manage Stores: Delete"
-  @manage_stores.delete.delete
+  @manage_stores.delete_item.delete
 end
 
 Then /^Manage Stores: Reconnect$/ do

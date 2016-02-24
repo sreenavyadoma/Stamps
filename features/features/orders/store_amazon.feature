@@ -30,10 +30,10 @@ Feature:  SAmazon Store -
       Then Amazon Settings: Check Automatically Import New Orders
       Then Amazon Settings: Save
 
-      Then Pause for 1 seconds
-      Then Manage Stores: Select Store random
-      Then Manage Stores: Reconnect
-      Then Amazon Store: Connect
+      #Then Pause for 1 seconds
+      #Then Manage Stores: Select Store random
+      #Then Manage Stores: Reconnect
+      #Then Amazon Store: Connect
 
       Then Pause for 1 seconds
       Then Manage Stores: Select Store random
