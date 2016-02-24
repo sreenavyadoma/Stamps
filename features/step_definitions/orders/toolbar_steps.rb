@@ -11,6 +11,11 @@ When /^Add New Order$/ do
   @index = 0
 end
 
+Then /^Toolbar: Regresh Orders$/ do
+  log.info "Toolbar: Regresh Orders"
+  orders.toolbar.refresh_orders
+end
+
 When /^Open Print Modal$/ do
   log.info "Step: Open Print Modal"
   @print_window = orders.toolbar.print

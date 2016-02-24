@@ -29,15 +29,17 @@ Feature:  SAmazon Store -
 
       Then Amazon Settings: Check Automatically Import New Orders
       Then Amazon Settings: Save
+      Then Pause for 1 seconds
+      Then Toolbar: Regresh Orders
 
       #Then Pause for 1 seconds
       #Then Manage Stores: Select Store random
       #Then Manage Stores: Reconnect
       #Then Amazon Store: Connect
 
-      Then Pause for 1 seconds
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
+      Then Toolbar: Regresh Orders
 
       Then Manage Stores: Close Modal
       Then Pause for 1 seconds

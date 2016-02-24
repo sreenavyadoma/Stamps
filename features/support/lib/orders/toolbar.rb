@@ -139,6 +139,13 @@ module Orders
         end
       end
 
+      def refresh_orders
+        button = StampsButton.new @browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
+        button.safe_click
+        button.safe_click
+        button.safe_click
+      end
+
       def per_page
         PerPage.new @browser
       end
