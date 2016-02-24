@@ -7,8 +7,10 @@ Then /^Print Postage: Select Print On (.*)/ do |media|
     @stamps = postage.stamps
   elsif media.include? 'Shipping Label'
     @shipping_label = postage.shipping_label
+    log.info "Preview image: #{(@shipping_label.form_view.preview_image.present?)?"YES": "NO"}"
   elsif media.include? 'Envelope'
     @envelope = postage.envelope
+    log.info "Preview image: #{(@envelope.form_view.preview_image.present?)?"YES": "NO"}"
   elsif media.include? 'Certified Mail'
     @certified_mail = postage.certified_mail
   end
