@@ -5,13 +5,40 @@ module Print
 
       class StampsFormView < Print::Postage::DomesticCommon
 
-        def stamp_sheet_image
+        def preview_image serial_prefix
+          case serial_prefix
+
+            when 'A'
+              image = StampsLabel.new @browser.div :css => "div[style*='traditional-bk.gif']"
+            when 'B'
+              image = StampsLabel.new @browser.div :css => "div[style*='bseries-bk.gif']"
+            when 'C'
+              image = StampsLabel.new @browser.div :css => "div[style*='standard-bk.gif']"
+            when 'K'
+              image = StampsLabel.new @browser.div :css => "div[style*='themed-bk.gif']"
+            when 'M'
+              image = StampsLabel.new @browser.div :css => "div[style*='landscape-bk.gif']"
+            when 'P'
+              image = StampsLabel.new @browser.div :css => "div[style*='portrait-bk.gif']"
+            when 'R'
+              image = StampsLabel.new @browser.div :css => "div[style*='return-bk.gif']"
+            when 'V'
+              image = StampsLabel.new @browser.div :css => "div[style*='standard-bk.gif']"
+            when 'W'
+              image = StampsLabel.new @browser.div :css => "div[style*='PromoPaper20-bk.gif']"
+            when 'L'
+              image = StampsLabel.new @browser.div :css => "div[style*='landscape-bk.gif']"
+            when 'S'
+              image = StampsLabel.new @browser.div :css => "div[style*='sordSeries-bk.gif']"
+            else
+              log.info "Invalid Serial Number #{serial_prefix}"
+              image = StampsLabel.new @browser.div :css => "div[style*='traditional-bk.gif']"
+          end
 
         end
 
         def quantity
           Print::Postage::Quantity.new @browser
-          sdc-previewpanel-quantitynumberfield
         end
 
         def print_all
@@ -93,6 +120,7 @@ module Print
         StampsTextbox.new @browser.text_field :id => "sdc-mainpanel-nsserialtextfield-inputEl"
       end
 
+
       def calculate_postage_service
         Print::Postage::Service.new @browser
       end
@@ -118,7 +146,7 @@ module Print
       end
 
       def form_view
-        Print::Postage::StampsFormView.new @browser
+        Print::Postage::Stamps::StampsFormView.new @browser
       end
 
     end
