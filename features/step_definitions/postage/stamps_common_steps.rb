@@ -4,6 +4,9 @@ Then /^Stamps: Set Serial Number to (.*)/ do |serial|
   log.info "Set Stamps Serial Number to #{serial}"
   @stamps = postage.stamps if @stamps.nil?
   @stamps.serial.set serial
+  serial_prefix = serial.split('')[0]
+  log.info "Serial prefix: #{serial_prefix}"
+  log.info "Preview image: #{(@stamps.form_view.preview_image(serial_prefix).present?)?"YES": "NO"}"
 end
 
 Then /^Stamps: Set Ship-From to (.*)/ do |value|
@@ -33,7 +36,7 @@ end
 Then /^Stamps: Set Quantity to (.*)/ do |qty|
   log.info "Step: Stamps: Set Quantity to: \n #{qty}"
   @stamps = postage.stamps if @stamps.nil?
-  @stamps.qty.set qty
+  @stamps.form_view.quantity.set qty
 end
 
 Then /^Stamps: Set Print All to Checked$/ do
@@ -51,13 +54,13 @@ end
 Then /^Stamps: Set Reference Number to (.*)/ do |ref_no|
   log.info "Set Stamps Reference Number to #{ref_no}"
   @stamps = postage.stamps if @stamps.nil?
-  @stamps.reference_number.set ref_no
+  @stamps.form_view.reference_number.set ref_no
 end
 
 Then /^Stamps: Set Cost Code to (.*)/ do |code|
   log.info "Step: Stamps: Set Cost Code to \n #{code}"
   @stamps = postage.stamps if @stamps.nil?
-  @stamps.cost_code.select code
+  @stamps.form_view.cost_code.select code
 end
 
 Then /^Create page objects for Print On Shipping Label$/ do

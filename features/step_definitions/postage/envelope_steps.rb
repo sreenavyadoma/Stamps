@@ -162,11 +162,11 @@ end
 Then /^Envelopes: Set Reference Number to (.*)/ do |ref_no|
   log.info "Set Envelope Reference Number to #{ref_no}"
   @envelope = postage.envelope if @envelope.nil?
-  @envelope.reference_number.set ref_no
+  @envelope.form_view.reference_number.set ref_no
 end
 
 Then /^Envelopes: Set Cost Code to (.*)/ do |code|
   log.info "Step: Envelopes: Set Cost Code to \n #{code}"
   @envelope = postage.envelope if @envelope.nil?
-  @envelope.cost_code.select code
+  @envelope.form_view.cost_code.select code
 end
