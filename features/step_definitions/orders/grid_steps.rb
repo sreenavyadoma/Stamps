@@ -209,6 +209,8 @@ Then /^Expect Ship-To address to be;$/ do |table|
   step "Orders Grid: Expect Email to be #{param_hash[:email]}"
 end
 
+=begin
+
 Then /^Orders Grid: Expect Store row (\d+) to be (.*)$/ do |row, expected|
   log.info "Step: Orders Grid: Expect Store row #{row} to be #{expected}"
   begin
@@ -232,6 +234,7 @@ Then /^Orders Grid: Expect Store to be (.*)$/ do |expected|
     actual.should eql expected
   end unless expected.length == 0
 end
+=end
 
 Then /^Orders Grid: Expect Age to be (.*)$/ do |expected|
   log.info "Step: Orders Grid: Expect Age to be #{expected}"

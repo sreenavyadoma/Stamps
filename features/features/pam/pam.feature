@@ -6,7 +6,7 @@ Feature: PAM page
   @pam
   Scenario: PAM page
     Then PAM: Load Customer Search Page
-    Then PAM: Customer Search: Search for username stores10000
+    Then PAM: Customer Search: Search for username amazon10000
 
     Then PAM: Customer Profile: Click Change Meter Limit link
     Then PAM: Change Meter Limit: Set USPS approval to Checked
