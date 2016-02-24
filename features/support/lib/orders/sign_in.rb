@@ -96,7 +96,7 @@ module Orders
 
         grid = Orders::Grid::OrdersGrid.new @browser
         welcome_orders_page = WelcomeOrdersPage.new @browser
-        market_place = Orders::Toolbar::AddStoreOrMarketplace.new @browser
+        market_place = Orders::Stores::AddStoreOrMarketplace.new @browser
 
         30.times do
           username_textbox.wait_until_present
@@ -147,7 +147,7 @@ module Orders
         welcome_orders_page = WelcomeOrdersPage.new @browser
         plugin_issue = ErrorStampsPluginIssue.new @browser
         toolbar = Orders::Toolbar::Toolbar.new @browser
-        market_place = Orders::Toolbar::AddStoreOrMarketplace.new @browser
+        market_place = Orders::Stores::AddStoreOrMarketplace.new @browser
 
         5.times do
           begin

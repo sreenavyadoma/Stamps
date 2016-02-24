@@ -33,6 +33,8 @@ require_relative 'lib/webreg/webreg_helper'
 
 require_relative 'lib/pam/pam_helper'
 require_relative 'lib/windows/print_window'
+require_relative 'lib/orders/stores'
+require_relative 'lib/orders/general_settings'
 
 #require 'atomic'
 #require 'thread'

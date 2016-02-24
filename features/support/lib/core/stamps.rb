@@ -198,7 +198,7 @@ module Stamps
           raise "Illegal number of arguments for random_alpha_numeric"
 
       end
-      rstr = rand(36 ** @length - 1).to_s(36).rjust(@length, "0")
+      rand(36 ** @length - 1).to_s(36).rjust(@length, "0")
     end
 
     def random_string *args
