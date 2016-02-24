@@ -206,11 +206,11 @@ end
 Then /^Shipping Labels: Set Reference Number to (.*)/ do |ref_no|
   log.info "Set Shipping Label Reference Number to #{ref_no}"
   @shipping_label = postage.shipping_label if @shipping_label.nil?
-  @shipping_label.reference_number.set ref_no
+  @shipping_label.form_view.reference_number.set ref_no
 end
 
 Then /^Shipping Labels: Set Cost Code to (.*)/ do |code|
   log.info "Step: Shipping Labels: Set Cost Code to \n #{code}"
-  @shipping_label = postage.stamps if @shipping_label.nil?
-  @shipping_label.cost_code.select code
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  @shipping_label.form_view.cost_code.select code
 end
