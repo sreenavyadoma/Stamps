@@ -464,16 +464,18 @@ module Print
 
       def select selection
         log.info "Select Cost Code #{selection}"
+
         box = text_box
         button = drop_down
-        selection_label = StampsLabel.new (@browser.divs :text => selection)[1]
+        selection_label = StampsLabel.new @browser.div :text => selection
+        sleep 1
         10.times {
           begin
             button.safe_click #unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
             selected_cost_code = box.text
-            log.info "Selected Cost Code #{selected_origin} - #{(selected_cost_code.include? selection)?"done": "cost code not selected"}"
+            log.info "Selected Cost Code #{selected_cost_code} - #{(selected_cost_code.include? selection)?"done": "cost code not selected"}"
             break if selected_cost_code.include? selection
           rescue
             #ignore
@@ -487,7 +489,7 @@ module Print
 
     class Quantity < Print::Postage::PrintObject
       def text_box
-        StampsTextbox.new (@browser.text_field :css => "input[class*=sdc-previewpanel-quantitynumberfield']")
+        StampsTextbox.new (@browser.text_field :css => "input[class*='sdc-previewpanel-quantitynumberfield']")
       end
 
       def set value
