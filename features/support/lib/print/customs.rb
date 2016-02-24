@@ -497,11 +497,11 @@ module Print
       class Qty < OrdersObject
         def initialize browser, number
           super browser
-          @number = number
+          @index = number
         end
 
         def text_box
-          StampsTextbox.new ((@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@number-1]), "data-errorqtip"
+          StampsTextbox.new ((@browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -523,14 +523,14 @@ module Print
         end
 
         def increment value
-          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -540,11 +540,11 @@ module Print
       class UnitPrice < OrdersObject
         def initialize browser, number
           super browser
-          @number = number
+          @index = number
         end
 
         def text_box
-          StampsTextbox.new ((@browser.text_fields :name => "Value")[@number-1]), "data-errorqtip"
+          StampsTextbox.new ((@browser.text_fields :name => "Value")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -553,14 +553,14 @@ module Print
         end
 
         def increment value
-          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -570,11 +570,11 @@ module Print
       class UnitWeightLbs < OrdersObject
         def initialize browser, number
           super browser
-          @number = number
+          @index = number
         end
 
         def text_box
-          StampsTextbox.new ((@browser.text_fields :name => "lbs")[@number-1]), "data-errorqtip"
+          StampsTextbox.new ((@browser.text_fields :name => "lbs")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -596,14 +596,14 @@ module Print
         end
 
         def increment value
-          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -613,11 +613,11 @@ module Print
       class UnitWeightOz < OrdersObject
         def initialize browser, number
           super browser
-          @number = number
+          @index = number
         end
 
         def text_box
-          StampsTextbox.new ((@browser.text_fields :name => "oz")[@number-1]), "data-errorqtip"
+          StampsTextbox.new ((@browser.text_fields :name => "oz")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -639,14 +639,14 @@ module Print
         end
 
         def increment value
-          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@number-1]
+          button = StampsButton.new (@browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -655,7 +655,7 @@ module Print
 
       def initialize browser, number
         super browser
-        @number = number
+        @index = number
       end
 
       def present?
@@ -663,35 +663,35 @@ module Print
       end
 
       def delete
-        StampsButton.new (@browser.spans :css => "div[id*=customswindow] span[class*=sdc-icon-remove]")[@number-1]
+        StampsButton.new (@browser.spans :css => "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index-1]
       end
 
       def description
-        StampsTextbox.new ((@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@number-1]), "data-errorqtip"
+        StampsTextbox.new ((@browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@index-1]), "data-errorqtip"
       end
 
       def qty
-        Qty.new @browser, @number
+        Qty.new @browser, @index
       end
 
       def unit_price
-        UnitPrice.new @browser, @number
+        UnitPrice.new @browser, @index
       end
 
       def lbs
-        UnitWeightLbs.new @browser, @number
+        UnitWeightLbs.new @browser, @index
       end
 
       def oz
-        UnitWeightOz.new @browser, @number
+        UnitWeightOz.new @browser, @index
       end
 
       def origin
-        OriginCountry.new @browser, @number
+        OriginCountry.new @browser, @index
       end
 
       def hs_tariff
-        StampsTextbox.new (@browser.text_fields :name => "TariffNo")[@number-1]
+        StampsTextbox.new (@browser.text_fields :name => "TariffNo")[@index-1]
       end
 
     end

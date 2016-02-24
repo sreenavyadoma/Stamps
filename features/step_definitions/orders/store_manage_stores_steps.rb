@@ -1,6 +1,5 @@
 Then /^Manage Stores: Open Modal$/ do
   log.info "Manage Stores: Open Modal"
-  sleep 1
   @manage_stores = orders.toolbar.settings.manage_stores
 end
 
@@ -17,10 +16,10 @@ end
 Then /^Manage Stores: Delete Row (\d+)$/ do |row|
   log.info "Manage Stores: Delete Row #{row}"
   step "Manage Stores: Open Modal"
-  grid = @manage_stores.grid
+  grid = @manage_stores.stores_grid
   size = grid.size
   log.info "Grid Count before delete is #{size}"
-  delete_modal = @manage_stores.grid.delete_row row
+  delete_modal = @manage_stores.stores_grid.delete_row row
   delete_modal.delete
 =begin
   30.times do
@@ -40,12 +39,14 @@ Then /^Manage Stores: Select Store (.*)$/ do |store_name|
   @amazon_store_name = (store_name.downcase.include?"random")?@amazon_store_name:store_name
   log.info "Manage Stores: Select Store #{@amazon_store_name}"
   raise "Unble to select store name: #{@amazon_store_name}.  Either it's nil or does not exist in the modal.  Check your test." if @amazon_store_name.nil?
-  @manage_stores.grid.select @amazon_store_name
+  raise "Store name can't be nil or an empty String" if @amazon_store_name.nil? || @amazon_store_name.size == 0
+  sleep 1
+  @manage_stores.stores_grid.select @amazon_store_name
 end
 
 Then /^Manage Stores: Delete All Stores in Grid$/ do
   log.info "Manage Stores: Delete All Stores in Grid"
-  @manage_stores.grid.delete_all
+  @manage_stores.stores_grid.delete_all
 end
 
 Then /^Manage Stores: Delete$/ do

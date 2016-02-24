@@ -1,5 +1,5 @@
 
-Feature:  Store Management - Amazon Store
+Feature:  SAmazon Store -
 
   Background:
     Given I am signed in to Orders
@@ -8,9 +8,6 @@ Feature:  Store Management - Amazon Store
     Scenario: Store Management - Amazon Store
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
-      Then Manage Stores: Close Modal
-      Then Pause for 1 seconds
-      Then Manage Stores: Open Modal
       Then Pause for 2 seconds
 
       Then Manage Stores: Add
@@ -27,14 +24,18 @@ Feature:  Store Management - Amazon Store
       Then Amazon Settings: Set Store Nickname to random
 
       #Then Amazon Settings: Set Service Mapping 1, Requested Services random, Shipping Service First-Class Mail Postcard
+      #Then Amazon Settings: Set Service Mapping 2, Requested Services random, Shipping Service Priority Mail Package
+      #Then Amazon Settings: Set Service Mapping 3, Requested Services random, Shipping Service Priority Mail Small Flat Rate Box
 
       Then Amazon Settings: Check Automatically Import New Orders
       Then Amazon Settings: Save
 
+      Then Pause for 1 seconds
       Then Manage Stores: Select Store random
       Then Manage Stores: Reconnect
       Then Amazon Store: Connect
 
+      Then Pause for 1 seconds
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
 

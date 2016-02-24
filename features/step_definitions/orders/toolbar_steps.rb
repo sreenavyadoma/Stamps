@@ -8,7 +8,7 @@ When /^Add New Order$/ do
   log.info "New Order ID #{@order_id}"
   @awaiting_shipment_count = orders.filter.awaiting_shipment_count
   @item_count = 0
-  @number = 0
+  @index = 0
 end
 
 When /^Open Print Modal$/ do

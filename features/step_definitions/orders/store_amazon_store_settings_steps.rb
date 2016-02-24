@@ -11,22 +11,9 @@ Then /^Amazon Settings: Set Service Mapping (\d+), Requested Services (.*), Ship
   log.info "Amazon Settings: Set Requested Services to random #{requested_services}"
   raise "Amazon Settings is not open.  Check your test workflow." if @amazon_store_settings.nil?
 
-  requested_services = (requested_services.downcase.include? "random")?test_helper.random_alpha_numeric(20):requested_services
-
-  service_mapping_item =@amazon_store_settings.service_mapping_grid.item item_number.to_i
-
-  log.info "Step: Customs Form: Add Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  @customs_item_grid = @customs_form.item_grid
-  item = @customs_item_grid.item item_number.to_i
-
-  item.description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
-  item.qty.set qty
-  item.unit_price.set price
-  item.lbs.set lbs
-  item.oz.set oz
-  item.origin.select origin_country
-  item.hs_tariff.set tariff
+  service_mapping_item =@amazon_store_settings.service_mapping.item item_number.to_i
+  service_mapping_item.requested_services.set (requested_services.downcase.include? "random")?test_helper.random_alpha_numeric(20):requested_services
+  service_mapping_item.shipping_Service.select shipping_service
 end
 
 Then /^Amazon Settings: Check Automatically Import New Orders$/ do

@@ -2076,11 +2076,11 @@ module Orders
         class Qty < OrdersObject
           def initialize browser, number
             super browser
-            @number = number
+            @index = number
           end
 
           def text_box
-            StampsTextbox.new ((@browser.text_fields :name => "Quantity")[@number-1]), "data-errorqtip"
+            StampsTextbox.new ((@browser.text_fields :name => "Quantity")[@index-1]), "data-errorqtip"
           end
 
           def set value
@@ -2101,14 +2101,14 @@ module Orders
           end
 
           def increment value
-            button = StampsButton.new (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@number-1]
+            button = StampsButton.new (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = StampsButton.new (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@number-1]
+            button = StampsButton.new (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
@@ -2117,27 +2117,27 @@ module Orders
 
         def initialize browser, number
           super browser
-          @number = number
+          @index = number
         end
 
         def present?
-          browser_helper.present? ((@browser.text_fields :name => "SKU")[@number-1])
+          browser_helper.present? ((@browser.text_fields :name => "SKU")[@index-1])
         end
 
         def qty
-          Qty.new @browser, @number
+          Qty.new @browser, @index
         end
 
         def id
-          StampsTextbox.new (@browser.text_fields :name => "SKU")[@number-1]
+          StampsTextbox.new (@browser.text_fields :name => "SKU")[@index-1]
         end
 
         def description
-          StampsTextbox.new (@browser.text_fields :name => "Description")[@number-1]
+          StampsTextbox.new (@browser.text_fields :name => "Description")[@index-1]
         end
 
         def delete
-          StampsButton.new (@browser.spans :css => "span[class*=sdc-icon-remove]")[@number-1]
+          StampsButton.new (@browser.spans :css => "span[class*=sdc-icon-remove]")[@index-1]
         end
       end
 
