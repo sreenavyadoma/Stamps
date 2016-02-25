@@ -29,10 +29,15 @@ module Orders
     def import
       success = SuccessModal.new @browser
       button = StampsButton.new @browser.span(text: "Import")
+      server_error = Orders::ServerError.new @browser
       15.times do
         button.safe_click
         sleep 1
         return success if success.present?
+        if server_error.present?
+          log.info server_error.message
+          server_error.ok
+        end
       end
     end
 

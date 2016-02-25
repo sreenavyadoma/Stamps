@@ -148,7 +148,7 @@ module Orders
       def save
         sleep 2
         button = StampsButton.new (@browser.span text: "Save")
-        server_error = ServerError.new @browser
+        server_error = Orders::ServerError.new @browser
         15.times do
           button.safe_click
           sleep 5
@@ -175,30 +175,6 @@ module Orders
         verify_field = label.parent.parent.parent
         StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
-    end
-
-    class ServerError < OrdersObject
-      def present?
-        window_title = @browser.divs(text: "Server Error").last
-        #log.info "Server Error" if browser_helper.present? window_title
-        browser_helper.present? window_title
-      end
-
-      def message
-        log.info "Server Error"
-        browser_helper.text @browser.divs(css: "div[id^=dialoguemodal-][id$=-body][class*=sdc-warning]>div>div").last
-      end
-
-      def ok
-        20.times do
-          button = @browser.spans(text: "OK").last
-          browser_helper.safe_click button
-          browser_helper.safe_click button
-          sleep 1
-          break unless present?
-        end
-      end
-
     end
 
     class AmazonStore < OrdersObject
@@ -313,7 +289,7 @@ module Orders
 
       def connect
         button = StampsButton.new @browser.span(text: "Connect")
-        server_error = ServerError.new @browser
+        server_error = Orders::ServerError.new @browser
 
         20.times do
           sleep 1
@@ -333,7 +309,7 @@ module Orders
       def connect_expecting_store_settings
         button = (StampsButton.new(@browser.span :text => "Connect"))
         settings = AmazonStoreSettings.new @browser
-        server_error = ServerError.new @browser
+        server_error = Orders::ServerError.new @browser
 
         20.times do
           button.safe_click

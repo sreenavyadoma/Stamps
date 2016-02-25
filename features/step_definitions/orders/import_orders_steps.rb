@@ -28,7 +28,7 @@ Then /^Import Orders: Success: OK$/ do
   log.info "Step: Import Orders: Success: OK"
   step "Toolbar: Import" if @import_orders.nil?
 
-  @import_orders.import
+  @import_successful.ok
 end
 
 Then /^Import Orders: Cancel$/ do
