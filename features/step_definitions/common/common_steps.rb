@@ -7,7 +7,7 @@ Given /^I launch browser (\w+)$/ do |browser|
   end
 end
 
-
+=begin
 Then /^BROWSER:  CTRL-O$/ do
   @browser.send_keys [:control, 'o']
   @browser.send_keys [:control, 'o']
@@ -28,4 +28,5 @@ end
 Then /^BROWSER:  Zoom In$/ do
   @browser.send_keys [:control, '+']
 end
+=end
 
