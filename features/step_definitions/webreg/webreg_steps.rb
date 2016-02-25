@@ -865,6 +865,22 @@ Then /^WebReg: Mailing Info Submit$/ do
       raise message
     when WebReg::ChooseSupplies
       welcome_page = @reg_result.place_order
+      sleep 2
+      if welcome_page.present?
+        step "WebReg:  Send username to standard out"
+      end
+  end
+end
+
+Then /^Choose Supplies:  Place Order$/ do
+  raise "Choose Supplies:  Place Order - ILLEGAL STATE EXECPTION!  Check your test" if @reg_result.nil?
+  case @reg_result
+    when WebReg::UserIdTaken
+      message = @reg_result.message
+      log.info message
+      raise message
+    when WebReg::ChooseSupplies
+      welcome_page = @reg_result.place_order
       welcome_page.wait_until_present
       if welcome_page.present?
         step "WebReg:  Send username to standard out"

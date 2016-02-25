@@ -5,7 +5,7 @@ Feature: Registration
 
   @webreg_specify_username
   Scenario:
-    Then WebR: Set User ID and Email to user defined amazon10000
+    Then WebR: Set User ID and Email to user defined import10000
 
     Then WebReg: Set Password to pass111
     Then WebReg: Set Re-Type password to pass111
