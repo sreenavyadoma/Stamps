@@ -146,6 +146,15 @@ module Orders
         button.safe_click
       end
 
+      def import
+        button = StampsButton.new @browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
+        modal = ImportOrders.new @browser
+        5.times do
+          button.safe_click
+          return modal if modal.present?
+        end
+      end
+
       def per_page
         PerPage.new @browser
       end
