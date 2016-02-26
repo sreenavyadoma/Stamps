@@ -876,7 +876,7 @@ Then /^WebReg: Mailing Info Submit$/ do
     when WebReg::UserIdTaken
       message = @reg_result.message
       log.info message
-      raise message
+      #raise message
     when WebReg::ChooseSupplies
       welcome_page = @reg_result.place_order
       sleep 2
