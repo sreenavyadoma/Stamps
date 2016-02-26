@@ -32,7 +32,7 @@ module Orders
       #server_error = Orders::ServerError.new @browser
       4.times do
         button.safe_click
-        sleep 2
+        sleep 5
         return success if success.present?
       end
       nil

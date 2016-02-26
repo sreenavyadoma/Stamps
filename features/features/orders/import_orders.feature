@@ -15,7 +15,7 @@ Feature: Import Orders
     Then Import Orders: Expect imported filed name on read-only textbox to be import_orders_test.csv
     Then Pause for 3 seconds
     Then Import Orders: Import
-    Then Pause for 3 seconds
+    #Then Pause for 3 seconds
     #Then Import Orders: Expect Import is successful
     #Then Import Orders: Success: OK
     #Then Pause for 1 seconds
