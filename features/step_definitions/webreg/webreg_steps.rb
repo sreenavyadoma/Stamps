@@ -23,9 +23,9 @@ Then /^WebReg: Set User ID and Email to Random Value$/ do
   step "WebReg: Set User ID to #{@username}"
 end
 
-Then /^WebR: Set User ID and Email to user defined (.*)$/ do |usrname|
-  @username = usrname
-  log.info "WebR: Set User ID and Email to user defined #{@username}"
+Then /^WebReg: Set User ID and Email to (.*)$/ do |usrname|
+  @username = (ENV['USERNAME'].size>0)?ENV['USERNAME']:usrname #
+  log.info "WebReg: Set User ID and Email to #{@username}"
   step "WebReg: Set Email to #{@username}@mailinator.com"
   step "WebReg: Set User ID to #{@username}"
 end
