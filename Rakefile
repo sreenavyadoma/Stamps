@@ -2,8 +2,8 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-Cucumber::Rake::Task.new(:webreg_specify_username) do |t|
-  t.profile = 'webreg_specify_username'
+Cucumber::Rake::Task.new(:webreg_specify_username_jenkins) do |t|
+  t.profile = 'webreg_specify_username_jenkins'
   t.cucumber_opts = "-p cuke_reports"
 end
 

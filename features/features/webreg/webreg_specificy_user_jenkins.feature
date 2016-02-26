@@ -3,9 +3,9 @@ Feature: Registration
   Background:
     Given WebReg: Load Registration Page
 
-  @webreg_specify_username
+  @webreg_specify_username_jenkins
   Scenario:
-    Then WebReg: Set User ID and Email to import10000
+    Then WebReg: Set User ID and Email from Jenkins
 
     Then WebReg: Set Password to pass111
     Then WebReg: Set Re-Type password to pass111
