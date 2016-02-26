@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:webreg_specify_username) do |t|
+  t.profile = 'webreg_specify_username'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:import_orders) do |t|
   t.profile = 'import_orders'
   t.cucumber_opts = "-p cuke_reports"

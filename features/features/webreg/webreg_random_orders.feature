@@ -1,7 +1,7 @@
 
 Feature: Registration
   Background:
-    Given WebReg: Load QA Web Registration Page
+    Given WebReg: Load Registration Page
 
   Scenario:
     Then WebReg: Set User ID and Email to Random Value

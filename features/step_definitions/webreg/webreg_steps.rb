@@ -1,7 +1,11 @@
-Then /^WebReg: Load QA Web Registration Page$/ do
+Then /^WebReg: Load Registration Page$/ do
+  step "WebReg: Load Registration Page in #{ENV['URL']}"
+end
+
+Then /^WebReg: Load Registration Page in (\w+)$/ do |env|
   step "I launch browser default"
-  log.info "WebReg: Load QA Web Registration Page "
-  @profile = registration.visit(:qa).profile
+  log.info "WebReg: Load Registration Page in QACC "
+  @profile = registration.visit(env).profile
   @profile.wait_until_present
   raise "Unable to load Registration page." unless @profile.present?
 end

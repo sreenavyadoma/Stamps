@@ -1,7 +1,7 @@
 
 Feature: Registration
   Background:
-    Given WebReg: Load QA Web Registration Page
+    Given WebReg: Load Registration Page
 
   @webreg_specify_username
   Scenario:

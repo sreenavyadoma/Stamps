@@ -2,17 +2,21 @@ module WebReg
   class Registration < Stamps::Browser::BrowserObject
     def visit *args
       if args.length == 1
-        case args[0]
-          when :qa
-            ENV['URL'] = "qa"
+        case args[0].downcase
+          when /cc/
+            ENV['URL'] = "cc"
+          when /sc/
+            ENV['URL'] = "sc"
           else
             raise "#{args[0]} is not a valid Registration URL prefix selection.  Check your test!"
         end
       end
 
-      case ENV['URL']
-        when /qa/
+      case ENV['URL'].downcase
+        when /cc/
           url = "https://qa-registration.stamps.com/registration"
+        when /sc/
+          url = "https://registrationext.qasc.stamps.com/registration"
         else
           raise "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
       end

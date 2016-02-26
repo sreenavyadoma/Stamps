@@ -1,7 +1,7 @@
 
 Feature: PAM page
   Background:
-    Given WebReg: Load QA Web Registration Page
+    Given WebReg: Load Registration Page
 
   @pam
   Scenario: PAM page
