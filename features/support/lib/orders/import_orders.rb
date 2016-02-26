@@ -29,18 +29,21 @@ module Orders
     def import
       success = SuccessModal.new @browser
       button = StampsButton.new @browser.span(text: "Import")
-      server_error = Orders::ServerError.new @browser
+      #server_error = Orders::ServerError.new @browser
       4.times do
         button.safe_click
-        sleep 1
+        sleep 2
         return success if success.present?
       end
+      nil
+=begin
       if server_error.present?
         error_msg = server_error.message
         log.info error_msg
         server_error.ok
         raise "Server Error: \n#{error_msg}"
       end
+=end
     end
 
     def cancel
