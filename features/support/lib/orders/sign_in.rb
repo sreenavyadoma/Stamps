@@ -80,6 +80,8 @@ module Orders
           url = "http://#{Stamps::Test.url_prefix}.stamps.com/orders/"
         elsif ENV['URL'].include? "."
           url = "http://#{ENV['URL']}.stamps.com/orders/"
+        elsif ENV['URL'] == "rating"
+          url = "http://print800.qacc.stamps.com/orders"
         else
           url = "https://#{Stamps::Test.url_prefix}.stamps.com/orders/"
         end
