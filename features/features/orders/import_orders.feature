@@ -16,8 +16,8 @@ Feature: Import Orders
     Then Pause for 3 seconds
     Then Import Orders: Import
     Then Pause for 3 seconds
-    Then Import Orders: Expect Import is successful
-    Then Import Orders: Success: OK
+    #Then Import Orders: Expect Import is successful
+    #Then Import Orders: Success: OK
     #Then Pause for 1 seconds
     #Then Sign out
     #Then Pause for 1 seconds
