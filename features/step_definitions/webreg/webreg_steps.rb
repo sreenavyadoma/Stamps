@@ -4,7 +4,7 @@ end
 
 Then /^WebReg: Load Registration Page in (\w+)$/ do |env|
   step "I launch browser default"
-  log.info "WebReg: Load Registration Page in QACC "
+  log.info "WebReg: Load Registration Page in #{env} "
   @profile = registration.visit(env).profile
   @profile.wait_until_present
   raise "Unable to load Registration page." unless @profile.present?
@@ -24,7 +24,7 @@ Then /^WebReg: Set User ID and Email to Random Value$/ do
 end
 
 Then /^WebReg: Set User ID and Email from Jenkins$/ do
-  raise "No username specified when test was ran.  Don't forget to assign a value to USERNAME." if ENV['USERNAME'].nil? || ENV['USERNAME'].size>0
+  raise "No username specified when test was ran.  Don't forget to assign a value to USERNAME." if ENV['USERNAME'].nil? || ENV['USERNAME'].size==0
   log.info "WebReg: Set User ID and Email to #{@username}"
   step "WebReg: Set Email to #{@username}@mailinator.com"
   step "WebReg: Set User ID to #{@username}"
