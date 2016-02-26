@@ -21,6 +21,7 @@ Then /^Import Orders: Import$/ do
 end
 
 Then /^Import Orders: Expect Import is successful$/ do
+  raise "Import failed.  Success modal did not show up." if @import_successful.nil?
   @import_successful.window_title.should eql "Success"
 end
 

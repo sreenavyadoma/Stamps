@@ -30,14 +30,16 @@ module Orders
       success = SuccessModal.new @browser
       button = StampsButton.new @browser.span(text: "Import")
       server_error = Orders::ServerError.new @browser
-      15.times do
+      4.times do
         button.safe_click
         sleep 1
         return success if success.present?
       end
       if server_error.present?
-        log.info server_error.message
+        error_msg = server_error.message
+        log.info error_msg
         server_error.ok
+        raise "Server Error: \n#{error_msg}"
       end
     end
 
