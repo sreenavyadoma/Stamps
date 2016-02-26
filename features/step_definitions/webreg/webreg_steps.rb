@@ -35,7 +35,7 @@ Then /^WebReg: Set User ID and Email from Jenkins$/ do
 end
 
 Then /^WebReg: Set User ID and Email to (.*)$/ do |usrname|
-  @username = (ENV['USERNAME'].size>0)?ENV['USERNAME']:usrname #
+  @username = usrname
   log.info "WebReg: Set User ID and Email to #{@username}"
   step "WebReg: Set Email to #{@username}@mailinator.com"
   step "WebReg: Set User ID to #{@username}"
@@ -48,7 +48,6 @@ Then /^WebReg: Set Email to (.*)$/ do |email|
   email_field.wait_until_present
   sleep 1
   email_field.set_until email
-
 end
 
 Then /^WebReg: Set User ID to (.*)$/ do |user_id|
