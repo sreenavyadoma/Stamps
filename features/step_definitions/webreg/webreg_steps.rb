@@ -24,7 +24,11 @@ Then /^WebReg: Set User ID and Email to Random Value$/ do
 end
 
 Then /^WebReg: Set User ID and Email from Jenkins$/ do
-  raise "No username specified when test was ran.  Don't forget to assign a value to USERNAME." if ENV['USERNAME'].nil? || ENV['USERNAME'].size==0
+  if ENV['USERNAME'].nil? || ENV['USERNAME'].size==0
+    raise "No username specified when test was ran.  Don't forget to assign a value to USERNAME."
+  else
+    @username = ENV['USERNAME']
+  end
   log.info "WebReg: Set User ID and Email to #{@username}"
   step "WebReg: Set Email to #{@username}@mailinator.com"
   step "WebReg: Set User ID to #{@username}"
