@@ -5,7 +5,7 @@ Feature: Registration
 
   @webreg_specify_username
   Scenario:
-    Then WebReg: Set User ID and Email to rc1000006
+    Then WebReg: Set User ID and Email to rc1000007
 
     Then WebReg: Set Password to pass111
     Then WebReg: Set Re-Type password to pass111
@@ -37,7 +37,9 @@ Feature: Registration
     Then WebReg: Mailing Info Submit
 
     Then PAM: Load Customer Search Page
-    Then PAM: Customer Search: Search for username random
+    Then PAM: Customer Search: Set username to random
+    Then PAM: Customer Search: Set 5.2 or lower
+    Then PAM: Customer Search: Click Search button
 
     Then PAM: Customer Profile: Click Change Meter Limit link
     Then PAM: Change Meter Limit: Set USPS approval to Checked

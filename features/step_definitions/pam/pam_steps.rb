@@ -1,4 +1,4 @@
-Then /^PAM:  Load QA Payment Administration Manager Page$/ do
+Then /^PAM:  Load  QACC PAM Page$/ do
   pam.visit :qa
 end
 
@@ -8,7 +8,7 @@ end
 
 Then /^PAM: Load Customer Search Page$/ do
   log.info "PAM: Load Customer Search Page"
-  step "PAM:  Load QA Payment Administration Manager Page" if @customer_search.nil?
+  step "PAM:  Load  QACC PAM Page" if @customer_search.nil?
   @customer_search = pam.customer_search
 end
 
@@ -39,12 +39,23 @@ Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
 end
 
 Then /^PAM: Customer Search: Set username to (.*)$/ do |username|
-  usr = @username if username.downcase.include? "random"
+  if username.downcase.include? "random"
+    usr = @username
+  else
+    @username = username
+    usr = username
+  end
   log.info "PAM: Customer Search: Set username to #{usr}"
-  step "PAM: Load Customer Search Page" if @customer_search.nil?
+  @customer_search = pam.customer_search if @customer_search.nil?
   @customer_search.username.set_until usr
-  @customer_search.username.set_until usr
-  @customer_search.username.set_until usr
+  sleep 1
+end
+
+Then /^PAM: Customer Search: Set 5.2 or lower$/ do
+  log.info "PAM: Customer Search: Set 5.2 or lower"
+  @customer_search = pam.customer_search if @customer_search.nil?
+  @customer_search.user_5_2_or_lower
+  @customer_search.user_5_2_or_lower
   sleep 1
 end
 
@@ -89,9 +100,24 @@ end
 
 Then /^PAM: ACH Purchase: Set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
   log.info "PAM: ACH Purchase: Set Amount to $#{dollars}.#{cents}"
-  @ach_credit.dollar_amount.set_until dollars
-  @ach_credit.cents_amount.set_until cents
-  @ach_credit.comments.set_until @username
+  dollar_amount = @ach_credit.dollar_amount
+  dollar_amount.set_until dollars
+  dollar_amount.safe_click
+  dollar_amount.safe_click
+  dollar_amount.safe_click
+
+  cents_amount = @ach_credit.cents_amount
+  cents_amount.safe_click
+  cents_amount.safe_click
+  cents_amount.safe_click
+  cents_amount.set_until cents
+
+  comments = @ach_credit.comments
+  comments.safe_click
+  comments.safe_click
+  comments.safe_click
+  comments.set_until @username
+
   @customer_profile = @ach_credit.submit.yes.ok
 end
 

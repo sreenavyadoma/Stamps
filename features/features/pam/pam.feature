@@ -6,7 +6,9 @@ Feature: PAM page
   @pam
   Scenario: PAM page
     Then PAM: Load Customer Search Page
-    Then PAM: Customer Search: Search for username amazon10000
+    Then PAM: Customer Search: Set username to m207hzh944o48f
+    Then PAM: Customer Search: Set 5.2 or lower
+    Then PAM: Customer Search: Click Search button
 
     Then PAM: Customer Profile: Click Change Meter Limit link
     Then PAM: Change Meter Limit: Set USPS approval to Checked

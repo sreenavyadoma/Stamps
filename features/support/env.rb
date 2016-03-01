@@ -36,6 +36,7 @@ require_relative 'lib/windows/print_window'
 require_relative 'lib/orders/stores'
 require_relative 'lib/orders/general_settings'
 require_relative 'lib/windows/open_file'
+require_relative 'lib/stores/stores_helper'
 
 #require 'atomic'
 #require 'thread'
@@ -100,4 +101,4 @@ module Selenium
   end # WebDriver
 end # Selenium
 
-World(Stamps,Orders,Print,WebReg,Pam,Windows)
+World Stamps,Orders,Print,WebReg,Pam,Windows,Stores

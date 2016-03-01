@@ -28,6 +28,12 @@ module Pam
       StampsTextbox.new @browser.text_field(:css => "form[name=searchForm]>table>tbody>tr>td>input[name=email]")
     end
 
+    def user_5_2_or_lower
+      @browser.radio(css: "input[name=v6usr][value='0']").set
+      @browser.radio(css: "input[name=v6usr][value='0']").set
+      @browser.radio(css: "input[name=v6usr][value='0']").set
+    end
+
     def search
       button = Stamps::Browser::StampsInput.new @browser.input(:css => "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
       customer_profile = CustomerProfile.new @browser
