@@ -34,6 +34,7 @@ Feature: Registration
     Then WebReg: Set Mailing Info Terms & Conditions to Checked
 
     Then WebReg: Mailing Info Submit
+    Then WebReg: Choose Supplies: Place Order
 
     Then Pause for 2 seconds
     Then Orders: Load Sign-in page qacc

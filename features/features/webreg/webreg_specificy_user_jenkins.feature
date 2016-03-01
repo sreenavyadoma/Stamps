@@ -35,6 +35,7 @@ Feature: Registration
     Then WebReg: Set Mailing Info Terms & Conditions to Checked
 
     Then WebReg: Mailing Info Submit
+    Then WebReg: Choose Supplies: Place Order
 
     Then PAM: Load Customer Search Page
     Then PAM: Customer Search: Set username to random
