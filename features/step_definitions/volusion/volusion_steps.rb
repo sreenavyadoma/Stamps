@@ -9,7 +9,7 @@ Then /^Volusion New Customers: Click continue$/ do
 end
 
 Then /^Volusion New to Stamps: Set email address to (.*)$/ do |email|
-  @volusion_email = email
+  @volusion_email = (email.downcase == "random")? "#{test_helper.rand_username}@mailinator.com":email
   @volusion_registration.email.set @volusion_email
 end
 
@@ -39,15 +39,15 @@ Then /^Volusion New to Stamps: Click Continue$/ do
 end
 
 Then /^Volusion Address: Set First Name to (.*)$/ do |value|
-  @volusion_address.first_name.set value
+  @volusion_address.first_name.set (value.downcase == "random")? test_helper.random_name:value
 end
 
 Then /^Volusion Address: Set Last Name to (.*)$/ do |value|
-  @volusion_address.last_name.set value
+  @volusion_address.last_name.set (value.downcase == "random")? test_helper.random_name:value
 end
 
 Then /^Volusion Address: Set Company to (.*)$/ do |value|
-  @volusion_address.company.set value
+  @volusion_address.company.set (value.downcase == "random")? test_helper.random_name:value
 end
 
 Then /^Volusion Address: Set Address 1 to (.*)$/ do |value|
@@ -75,7 +75,7 @@ Then /^Volusion Address: Set Zip Code to (.*)$/ do |value|
 end
 
 Then /^Volusion Address: Set Phone Number to (.*)$/ do |value|
-  @volusion_address.phone.set value
+  @volusion_address.phone.set (value.downcase == "random")? test_helper.random_phone:value
 end
 
 Then /^Volusion Address: Type of address - residential$/ do

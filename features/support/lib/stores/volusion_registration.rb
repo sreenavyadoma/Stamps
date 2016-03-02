@@ -1,35 +1,4 @@
 module Stores
-  class VolusionLoginPage < Stamps::Browser::BrowserObject
-    def visit
-      @browser.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
-    end
-
-    def present?
-      browser_helper.present? @browser.text_field(name: "email")
-    end
-
-    def email
-      StampsTextbox.new @browser.text_field(name: "email")
-    end
-
-    def password
-      StampsTextbox.new @browser.text_field(name: "password")
-    end
-
-    def login
-      @browser.input(css: "input[src*=btn_login]")
-    end
-
-    def continue
-      button = StampsInput.new @browser.input(id: "btnContinue")
-      registration = VolusionRegistration @browser
-      10.times do
-        button.safe_click
-        sleep 1
-        return registration if registration.present?
-      end
-    end
-  end
 
   class VolusionShippingAddress < Stamps::Browser::BrowserObject
     class VolusionCountry < Stamps::Browser::BrowserObject
@@ -266,7 +235,6 @@ module Stores
         return category_1 if category_1.present?
       end
     end
-
   end
 
   class VolusionRegistration < Stamps::Browser::BrowserObject
@@ -313,6 +281,37 @@ module Stores
         button.safe_click
         sleep 1
         return shipping_address if shipping_address.present?
+      end
+    end
+  end
+  class VolusionLoginPage < Stamps::Browser::BrowserObject
+    def visit
+      @browser.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
+    end
+
+    def present?
+      browser_helper.present? @browser.text_field(name: "email")
+    end
+
+    def email
+      StampsTextbox.new @browser.text_field(name: "email")
+    end
+
+    def password
+      StampsTextbox.new @browser.text_field(name: "password")
+    end
+
+    def login
+      @browser.input(css: "input[src*=btn_login]")
+    end
+
+    def continue
+      button = StampsInput.new @browser.img(css: "img[src*=Continue]")
+      registration = VolusionRegistration.new @browser
+      10.times do
+        button.safe_click
+        sleep 1
+        return registration if registration.present?
       end
     end
   end

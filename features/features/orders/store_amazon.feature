@@ -1,5 +1,5 @@
 
-Feature:  SAmazon Store -
+Feature:  Amazon Store Management
 
   Background:
     Given I am signed in to Orders
