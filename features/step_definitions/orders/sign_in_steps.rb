@@ -1,8 +1,3 @@
-Given /^Orders: Load Sign-in page (\w+)$/ do |url_prefix|
-  log.info "Step: Orders: Load Sign-in page #{url_prefix}"
-  orders.sign_in_page.visit url_prefix
-end
-
 Given /^Orders: Load Sign-in page$/ do
   log.info "Step: Orders: Load Sign-in page"
   orders.sign_in_page.visit

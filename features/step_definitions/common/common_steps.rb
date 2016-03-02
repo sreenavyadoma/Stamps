@@ -1,3 +1,7 @@
+Given /^I launch browser$/ do
+  @browser = Stamps::Test.setup
+end
+
 Given /^I launch browser (\w+)$/ do |browser|
   log.info "Step: I launch browser #{browser}"
   if browser.downcase.include? "default"

@@ -1,11 +1,7 @@
 Then /^WebReg: Load Registration Page$/ do
-  step "WebReg: Load Registration Page in #{ENV['URL']}"
-end
-
-Then /^WebReg: Load Registration Page in (\w+)$/ do |env|
-  step "I launch browser default"
-  log.info "WebReg: Load Registration Page in #{env} "
-  @profile = registration.visit(env).profile
+  log.info "WebReg: Load Registration Page"
+  step "I launch browser" if @browser.nil?
+  @profile = registration.visit.profile
   @profile.wait_until_present
   raise "Unable to load Registration page." unless @profile.present?
 end

@@ -71,23 +71,27 @@ module Orders
         raise "Not yet implemented."
       end
 
-      def visit *args
-        if args.length == 1
-          ENV['URL'] = args[0]
+      def visit
+        case ENV['URL'].downcase
+          when /ss/
+            url = "http://printss600.qacc.stamps.com/orders/"
+          when /cc/
+            url = "http://printext.qacc.stamps.com/orders/"
+          when /sc/
+            url = "http://printext.qasc.stamps.com/orders/"
+          when /staging/
+            url = "http://print.staging.stamps.com/orders/"
+          when /rating/
+            url = "http://printext.qacc.stamps.com/orders/"
+          when /./
+            url = "http://#{ENV['URL']}.stamps.com/orders/"
+          else
+            url = ENV['URL']
         end
 
-        if ENV['URL'] == "ss"
-          url = "http://#{Stamps::Test.url_prefix}.stamps.com/orders/"
-        elsif ENV['URL'].include? "."
-          url = "http://#{ENV['URL']}.stamps.com/orders/"
-        elsif ENV['URL'] == "rating"
-          url = "http://print800.qacc.stamps.com/orders"
-        else
-          url = "https://#{Stamps::Test.url_prefix}.stamps.com/orders/"
-        end
-
+        log.info "Visit: #{url}"
         @browser.goto url
-        log.info "Page loaded.  #{url}"
+        log.info "Page loaded: #{url}"
         self
       end
 

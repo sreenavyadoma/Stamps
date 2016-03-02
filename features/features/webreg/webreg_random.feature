@@ -58,7 +58,7 @@ Feature: Registration
     Then PAM: AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM: AppCap Overrides: Submit
 
-    Then Orders: Load Sign-in page qacc
+    Then Orders: Load Sign-in page
     Then Orders: First Time Sign-in to Orders as random/pass111
     Then Pause for 2 seconds
     Then Add New Order

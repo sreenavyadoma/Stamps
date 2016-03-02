@@ -126,13 +126,35 @@ module Stores
   end
 
   class VolusionCheckOut < Stamps::Browser::BrowserObject
+    class VolusionAddressType < Stamps::Browser::BrowserObject
+      def residential
+        @browser.radio(css: 'input[name=ShipResidential][value=Y]').set
+        @browser.radio(css: 'input[name=ShipResidential][value=Y]').set
+      end
+
+      def business
+        @browser.radio(css: 'input[name=ShipResidential][value=N]').set
+        @browser.radio(css: 'input[name=ShipResidential][value=N]').set
+      end
+    end
 
     def present?
       browser_helper.present? @browser.input(css: "input[name='btn_checkout_guest']")
     end
 
+    def my_saved_billing_address address
+      @browser.select_list(:name, "My_Saved_Billing").option(:text => address).when_present.select
+      @browser.select_list(:name, "My_Saved_Billing").option(:text => address).when_present.select
+    end
 
 
+    def address_type
+      VolusionAddressType.new @browser
+    end
+
+    def place_order
+      @browser.span(text: "Place Order")
+    end
   end
 
   class VolusionCart < Stamps::Browser::BrowserObject

@@ -1,11 +1,11 @@
 
 Feature: PAM page
   Background:
-    Given WebReg: Load Registration Page
-
+    Given PAM: Load PAM Page
   @pam
   Scenario: PAM page
     Then PAM: Load Customer Search Page
+
     Then PAM: Customer Search: Set username to m207hzh944o48f
     Then PAM: Customer Search: Set 5.2 or lower
     Then PAM: Customer Search: Click Search button
@@ -26,7 +26,7 @@ Feature: PAM page
     Then PAM: AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM: AppCap Overrides: Submit
 
-    Then Orders: Load Sign-in page qacc
+    Then Orders: Load Sign-in page
     Then Orders: First Time Sign-in to Orders as random/pass111
     Then Pause for 2 seconds
     Then Add New Order

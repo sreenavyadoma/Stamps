@@ -1,25 +1,22 @@
 module Pam
   class PaymentAdministratorManager < Stamps::Browser::BrowserObject
-    def visit *args
-      if args.length == 1
-        case args[0]
-          when :qa
-            ENV['URL'] = "qa"
-          else
-            raise "#{args[0]} is not a valid Registration URL prefix selection.  Check your test!"
-        end
-      end
-
-      case ENV['URL']
-        when /qa/
+    def visit
+      case ENV['URL'].downcase
+        when /cc/
           url = "http://qa-clientsite:82/pam/"
+        when /sc/
+          url = "http://site.qasc.stamps.com:82/pam/"
+        when /staging/
+          url = "https://site.staging.stamps.com:82/pam/"
         else
           raise "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
       end
 
+
+      log.info "Visit: #{url}"
       @browser.goto url
       #self..wait_until_present
-      log.info "Page loaded. #{url}"
+      log.info "Visited: #{@browser.url}"
       self
     end
 
@@ -32,11 +29,22 @@ module Pam
     end
 
     def customer_search
-      #link = Link.new @browser.h5(:text => "Customer Search")
       search = CustomerSearch.new @browser
+
+      case ENV['URL'].downcase
+        when /cc/
+          url = "http://qa-clientsite:82/pam/AccountSearch.asp"
+        when /sc/
+          url = "http://site.qasc.stamps.com:82/pam/AccountSearch.asp"
+        when /staging/
+          url = "https://site.staging.stamps.com:82/pam/AccountSearch.asp"
+        else
+          raise "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
+      end
+
+      @browser.goto url
+
       5.times do
-        @browser.goto "http://qa-clientsite:82/pam/AccountSearch.asp"
-        sleep 1
         search.wait_until_present
         return search if search.present?
       end

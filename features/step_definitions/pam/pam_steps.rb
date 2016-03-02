@@ -1,14 +1,12 @@
-Then /^PAM:  Load  QACC PAM Page$/ do
-  pam.visit :qa
-end
-
-Then /^PAM:  Authentication Required$/ do
-  pam.visit :qa
+Then /^PAM: Load PAM Page$/ do
+  log.info "Step: PAM: Load PAM Page"
+  step "I launch browser" if @browser.nil?
+  pam.visit
 end
 
 Then /^PAM: Load Customer Search Page$/ do
   log.info "PAM: Load Customer Search Page"
-  step "PAM:  Load  QACC PAM Page" if @customer_search.nil?
+  step "PAM: Load PAM Page" if @customer_search.nil?
   @customer_search = pam.customer_search
 end
 
@@ -39,6 +37,7 @@ Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
 end
 
 Then /^PAM: Customer Search: Set username to (.*)$/ do |username|
+  log.info "Step:  PAM: Customer Search: Set username to #{username}"
   if username.downcase.include? "random"
     usr = @username
   else

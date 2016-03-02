@@ -37,6 +37,8 @@ Feature: Volusion New Customer
     Then Volusion Product: Set Quantity to 1
     Then Volusion Product: Click ADD TO BAG
     Then Volusion Cart: Proceed to checkout
+    Then Volusion Checkout: Select My Saved Billing Address 1990 E. Grand Avenue, CA
+    Then Volusion Checkout: Place Order
 
 
 

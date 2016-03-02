@@ -118,7 +118,25 @@ Then /^Volusion Product: Visit Cart$/ do
 end
 
 Then /^Volusion Cart: Proceed to checkout$/ do
-  @checkout = @volusion_cart.proceed_to_checkout
+  @checkout_page = @volusion_cart.proceed_to_checkout
+end
+
+Then /^Volusion Checkout: Select My Saved Billing Address (.*)$/ do |address|
+  @checkout_page.select address
+end
+
+Then /^Volusion Checkout: Set Address Type to Residential$/ do
+  @checkout_page.address_type.residential
+end
+
+
+Then /^Volusion Checkout: Set Address Type to Business$/ do
+  @checkout_page.address_type.business
+end
+
+
+Then /^Volusion Checkout: Place Order$/ do
+  @checkout_page.place_order
 end
 
 
