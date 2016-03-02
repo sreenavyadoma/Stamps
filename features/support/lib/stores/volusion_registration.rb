@@ -1,5 +1,9 @@
 module Stores
-  class VolusionLoginPage
+  class VolusionLoginPage < Stamps::Browser::BrowserObject
+    def visit
+      @browser.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
+    end
+
     def present?
       browser_helper.present? @browser.text_field(name: "email")
     end

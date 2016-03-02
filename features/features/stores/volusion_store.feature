@@ -1,7 +1,7 @@
 
 Feature: Volusion New Customer
   Background:
-    Given WebReg: Load Registration Page
+    Given Volusion: Visit Page
 
   @volusion_new_customer
   Scenario: Volusion New Customer

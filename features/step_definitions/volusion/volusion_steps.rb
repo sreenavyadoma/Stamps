@@ -1,7 +1,12 @@
+
+Then /^Volusion: Visit Page$/ do
+  step "I launch browser" if @browser.nil?
+  volusion.visit
+end
+
 Then /^Volusion New Customers: Click continue$/ do
   @volusion_registration = volusion.continue
 end
-
 
 Then /^Volusion New to Stamps: Set email address to (.*)$/ do |email|
   @volusion_email = email
@@ -129,11 +134,9 @@ Then /^Volusion Checkout: Set Address Type to Residential$/ do
   @checkout_page.address_type.residential
 end
 
-
 Then /^Volusion Checkout: Set Address Type to Business$/ do
   @checkout_page.address_type.business
 end
-
 
 Then /^Volusion Checkout: Place Order$/ do
   @checkout_page.place_order
