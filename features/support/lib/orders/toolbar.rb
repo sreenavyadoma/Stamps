@@ -183,7 +183,7 @@ module Orders
       end
 
       def print_expecting_error *args
-        error_window = OrderErrors.new(@browser)
+        error_window = IncompleteOrderError.new(@browser)
         open_window error_window
         case args.length
           when 0
@@ -200,6 +200,8 @@ module Orders
         print = StampsButton.new ((@browser.spans :css => "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
 
         print.click
+        sleep 1
+        return window if window.present?
 
         usps_terms = USPSTermsModal.new @browser
 
@@ -216,12 +218,8 @@ module Orders
         install_plugin_error = ErrorInstallPlugin.new @browser
 
         20.times do
-          if install_plugin_error.present?
-            install_plugin_error.close
-            return nil
-          end
-
           begin
+            return window if window.present?
             if error_connecting_to_plugin.present?
               5.times{
                 error_connecting_to_plugin.ok
@@ -239,10 +237,15 @@ module Orders
             end
 
             return window if window.present?
-            #order_grid.checkbox.check_all checked_rows_cache
             print.click
+            sleep 1
           rescue
             #ignore
+          end
+
+          if install_plugin_error.present?
+            install_plugin_error.close
+            return nil
           end
         end
 
