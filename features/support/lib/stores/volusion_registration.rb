@@ -63,6 +63,14 @@ module Stores
       StampsTextbox.new @browser.text_field(name: "ShipCompanyName")
     end
 
+    def address_1
+      StampsTextbox.new @browser.text_field(name: "ShipAddress1")
+    end
+
+    def address_2
+      StampsTextbox.new @browser.text_field(name: "ShipAddress2")
+    end
+
     def city
       StampsTextbox.new @browser.text_field(name: "ShipCity")
     end
@@ -79,17 +87,21 @@ module Stores
       StampsTextbox.new @browser.text_field(name: "ShipPostalCode")
     end
 
+    def phone_number
+      StampsTextbox.new @browser.text_field(name: "ShipPhoneNumber")
+    end
+
     def type_of_address
       VolusionTypeOfAddress.new @browser
     end
 
-    def billing_address
+    def is_this_your_billing_address
       VolusionBillingAddress.new @browser
     end
 
     def continue
       button = StampsButton.new @browser.input(name: "btnContinue")
-      account_page = VolusionAccount.new @browser
+      account_page = MyAccountPage.new @browser
       10.times do
         button.safe_click
         sleep 1
@@ -112,12 +124,13 @@ module Stores
     end
 
     def present?
-      browser_helper.present? @browser.input(css: "input[name='btn_checkout_guest']")
+      browser_helper.present? @browser.h2(text: "Checkout")
     end
 
     def my_saved_billing_address address
-      @browser.select_list(:name, "My_Saved_Billing").option(:text => address).when_present.select
-      @browser.select_list(:name, "My_Saved_Billing").option(:text => address).when_present.select
+      @browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
+      @browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
+      @browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
     end
 
 
@@ -125,8 +138,32 @@ module Stores
       VolusionAddressType.new @browser
     end
 
+    def shipping_method method
+      @browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
+      @browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
+      @browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
+    end
+
+    def payment_method method
+      @browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
+      @browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
+      @browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
+    end
+
     def place_order
-      @browser.span(text: "Place Order")
+      button = StampsButton.new @browser.button(id: "btnSubmitOrder")
+      order_num_field = StampsLabel.new @browser.div(css: "main#content_area>table>tbody>tr>td>div")
+      10.times do
+        button.safe_click
+        sleep 2
+        if order_num_field.present?
+          order_number_str = order_num_field.text
+          log.info order_number_str
+          order_number = /(\d+)/.match(order_number_str)
+          log.info "ORDER NUMBER:  #{order_number}"
+          return order_number
+        end
+      end
     end
   end
 
@@ -146,13 +183,14 @@ module Stores
     end
 
     def proceed_to_checkout
-      button = @browser.input(css: "input[name='btn_checkout_guest']")
+      button = StampsInput.new @browser.input(css: "input[name='btn_checkout_guest']")
       checkout = VolusionCheckOut.new @browser
-      5.times do
+      10.times do
         button.safe_click
         sleep 1
         return checkout if checkout.present?
       end
+      raise "Unable to proceed to checkout!"
     end
   end
 
@@ -162,29 +200,27 @@ module Stores
     end
 
     def qty_field
-      StampsTextbox.new @browser.text_field(name='QTY.SAMPLE1')
+      StampsTextbox.new @browser.text_field(name: 'QTY.SAMPLE1')
     end
 
     def qty number
-      @qty_to_add = number
-      qty_field.set @qty_to_add
+      @qty_to_add = number.to_i
+      field = qty_field
+      field.set @qty_to_add
     end
 
     def add_to_bag
       qty_textbox = self.qty_field
-      qty_txtbox_value_b4_add = qty_textbox.text.to_i
-      button = StampsButton.new  @browser.input(css: "input[alt='Add to cart']")
-      3.times do
-        button.safe_click
-        sleep 2
-        break if (qty_txtbox_value_b4_add + @qty_to_add) == qty_field.text.to_i
-      end
-    end
-
-    def cart
       shopping_cart = VolusionCart.new @browser
-      shopping_cart.visit
-      shopping_cart
+      cart_count_b4_add = shopping_cart.count
+      button = StampsButton.new  @browser.input(css: "input[alt='Add to cart']")
+      2.times do
+        button.safe_click
+        break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
+        sleep 2
+        break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
+        break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
+      end
     end
   end
 
@@ -204,14 +240,14 @@ module Stores
     end
   end
 
-  class VolusionAccount < Stamps::Browser::BrowserObject
+  class MyAccountPage < Stamps::Browser::BrowserObject
     def log_out
       logged_out_field = StampsLabel.new @browser.li(text: "You are now logged out.")
       button = StampsButton.new @browser.a(css: "a[href*=logout]")
       5.times do
         button.safe_click
         sleep 1
-        break if logged_out_field.present?
+        return VolusionLoginPage.new @browser if logged_out_field.present?
       end
     end
 
@@ -221,8 +257,16 @@ module Stores
 
     def my_account
       link = StampsLink.new @browser.a(text: "My Account")
-      3.times do
+      label = StampsLabel.new @browser.b(text: "My Orders")
+      10.times do
         link.safe_click
+        break if label.present?
+      end
+
+      def cart
+        shopping_cart = VolusionCart.new @browser
+        shopping_cart.visit
+        shopping_cart
       end
     end
 
@@ -284,6 +328,7 @@ module Stores
       end
     end
   end
+
   class VolusionLoginPage < Stamps::Browser::BrowserObject
     def visit
       @browser.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
@@ -302,7 +347,7 @@ module Stores
     end
 
     def login
-      @browser.input(css: "input[src*=btn_login]")
+      StampsButton.new @browser.input(css: "input[src*=btn_login]")
     end
 
     def continue

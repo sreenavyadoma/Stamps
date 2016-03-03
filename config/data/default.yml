@@ -6,6 +6,11 @@ url_prefix:
   staging: print.staging
   rating: printext.qacc
 
+shipping_method:
+  usps_fcml:
+    text: USPS First-Class Mail Letter
+    code: 809
+
 zone_1_through_4:
     zone1:
       1:

@@ -4,8 +4,16 @@ Then /^Volusion: Visit Page$/ do
   volusion.visit
 end
 
-Then /^Volusion New Customers: Click continue$/ do
+Then /^Volusion Login:  New Customers - Continue$/ do
   @volusion_registration = volusion.continue
+end
+
+Then /^Volusion Login:  Set Email Address to (.*)$/ do |email|
+  volusion.email.set email
+end
+
+Then /^Volusion Login:  Set Password to (.*)$/ do |password|
+  volusion.password.set password
 end
 
 Then /^Volusion New to Stamps: Set email address to (.*)$/ do |email|
@@ -35,75 +43,75 @@ Then /^Volusion New to Stamps: Uncheck receive newsletter$/ do
 end
 
 Then /^Volusion New to Stamps: Click Continue$/ do
-  @volusion_address = @volusion_registration.continue
+  @volusion_shipping_address = @volusion_registration.continue
 end
 
-Then /^Volusion Address: Set First Name to (.*)$/ do |value|
-  @volusion_address.first_name.set (value.downcase == "random")?(test_helper.random_name):value
+Then /^Volusion Shipping Address: Set First Name to (.*)$/ do |value|
+  @volusion_shipping_address.first_name.set (value.downcase == "random")?(test_helper.random_name):value
 end
 
-Then /^Volusion Address: Set Last Name to (.*)$/ do |value|
-  @volusion_address.last_name.set (value.downcase == "random")?(test_helper.random_name):value
+Then /^Volusion Shipping Address: Set Last Name to (.*)$/ do |value|
+  @volusion_shipping_address.last_name.set (value.downcase == "random")?(test_helper.random_name):value
 end
 
-Then /^Volusion Address: Set Company to (.*)$/ do |value|
-  @volusion_address.company.set (value.downcase == "random")?(test_helper.random_name):value
+Then /^Volusion Shipping Address: Set Company to (.*)$/ do |value|
+  @volusion_shipping_address.company.set (value.downcase == "random")?(test_helper.random_name):value
 end
 
-Then /^Volusion Address: Set Address 1 to (.*)$/ do |value|
-  @volusion_address.address_1.set value
+Then /^Volusion Shipping Address: Set Address 1 to (.*)$/ do |value|
+  @volusion_shipping_address.address_1.set value
 end
 
-Then /^Volusion Address: Set Address 2 to (.*)$/ do |value|
-  @volusion_address.address_2.set value
+Then /^Volusion Shipping Address: Set Address 2 to (.*)$/ do |value|
+  @volusion_shipping_address.address_2.set value
 end
 
-Then /^Volusion Address: Set City to (.*)$/ do |value|
-  @volusion_address.city.set value
+Then /^Volusion Shipping Address: Set City to (.*)$/ do |value|
+  @volusion_shipping_address.city.set value
 end
 
-Then /^Volusion Address: Set Country to (.*)$/ do |value|
-  @volusion_address.country.select value
+Then /^Volusion Shipping Address: Set Country to (.*)$/ do |value|
+  @volusion_shipping_address.country.select value
 end
 
-Then /^Volusion Address: Set State to (.*)$/ do |value|
-  @volusion_address.state.set value
+Then /^Volusion Shipping Address: Set State to (.*)$/ do |value|
+  @volusion_shipping_address.state.select value
 end
 
-Then /^Volusion Address: Set Zip Code to (.*)$/ do |value|
-  @volusion_address.zip_code.set value
+Then /^Volusion Shipping Address: Set Zip Code to (.*)$/ do |value|
+  @volusion_shipping_address.zip_code.set value
 end
 
-Then /^Volusion Address: Set Phone Number to (.*)$/ do |value|
-  @volusion_address.phone.set (value.downcase == "random")?(test_helper.random_phone):value
+Then /^Volusion Shipping Address: Set Phone Number to (.*)$/ do |value|
+  @volusion_shipping_address.phone_number.set (value.downcase == "random")?(test_helper.random_phone):value
 end
 
-Then /^Volusion Address: Type of address - residential$/ do
-  @volusion_address.type_of_address.residential
+Then /^Volusion Shipping Address: Type of address - residential$/ do
+  @volusion_shipping_address.type_of_address.residential
 end
 
-Then /^Volusion Address: Type of address - business$/ do
-  @volusion_address.type_of_address.business
+Then /^Volusion Shipping Address: Type of address - business$/ do
+  @volusion_shipping_address.type_of_address.business
 end
 
-Then /^Volusion Address: Type of address - Yes$/ do
-  @volusion_address.billing_address.yes
+Then /^Volusion Shipping Address: Type of address - Yes$/ do
+  @volusion_shipping_address.is_this_your_billing_address.yes
 end
 
-Then /^Volusion Address: Type of address - No$/ do
-  @volusion_address.billing_address.no
+Then /^Volusion Shipping Address: Type of address - No$/ do
+  @volusion_shipping_address.is_this_your_billing_address.no
 end
 
-Then /^Volusion Address: Click Continue$/ do
-  @account_page = @volusion_address.continue
+Then /^Volusion Shipping Address: Click Continue$/ do
+  @my_account_page = @volusion_shipping_address.continue
 end
 
 Then /^Volusion Account: Click My Account$/ do
-  @account_page.my_account
+  @my_account_page.my_account
 end
 
 Then /^Volusion Account: Click CATEGORY ONE$/ do
-  @category_one = @account_page.category_one
+  @category_one = @my_account_page.category_one
 end
 
 Then /^Volusion Category One: Click SAMPLE PRODUCT ONE$/ do
@@ -119,7 +127,7 @@ Then /^Volusion Product: Click ADD TO BAG$/ do
 end
 
 Then /^Volusion Product: Visit Cart$/ do
-  @volusion_cart = @volusion_product.cart
+  @volusion_cart = @my_account_page.cart
 end
 
 Then /^Volusion Cart: Proceed to checkout$/ do
@@ -127,7 +135,7 @@ Then /^Volusion Cart: Proceed to checkout$/ do
 end
 
 Then /^Volusion Checkout: Select My Saved Billing Address (.*)$/ do |address|
-  @checkout_page.select address
+  @checkout_page.my_saved_billing_address address
 end
 
 Then /^Volusion Checkout: Set Address Type to Residential$/ do
@@ -138,8 +146,20 @@ Then /^Volusion Checkout: Set Address Type to Business$/ do
   @checkout_page.address_type.business
 end
 
+Then /^Volusion Checkout: Select Shipping Method - USPS Priority Mail Flat Rate Envelope$/ do
+  @checkout_page.shipping_method.select "USPS Priority Mail Flat Rate Envelope"
+end
+
+Then /^Volusion Checkout: Select Payment Method - Cash$/ do
+  @checkout_page.payment_method.select "Cash"
+end
+
 Then /^Volusion Checkout: Place Order$/ do
-  @checkout_page.place_order
+  @volusion_order_number = @checkout_page.place_order
+end
+
+Then /^Volusion Account: Sign out$/ do
+  @volusion_login_page = @my_account_page.log_out
 end
 
 
