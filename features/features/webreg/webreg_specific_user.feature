@@ -5,7 +5,7 @@ Feature: Registration
 
   @webreg_specify_username
   Scenario:
-    Then WebReg: Set User ID and Email to rc1000007
+    Then WebReg: Set User ID and Email to scvolusion0001
 
     Then WebReg: Set Password to pass111
     Then WebReg: Set Re-Type password to pass111
