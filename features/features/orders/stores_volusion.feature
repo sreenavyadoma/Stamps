@@ -12,7 +12,7 @@ Feature:  Volusion Store Management
 
       Then Manage Stores: Add
 
-      Then Marketplace: Select amazon.com
+      Then Marketplace: Select Amazon
 
       Then Amazon Store: Set Amazon Seller ID to A1BX1F0B3I9QDV
       Then Amazon Store: Set Amazon MWS Auth Token to amzn.mws.caa9355f-c8a9-768e-bf55-8b51e73b8f98
