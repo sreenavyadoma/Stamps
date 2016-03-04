@@ -4,6 +4,7 @@ Then /^Manage Stores: Open Modal$/ do
 end
 
 Then /^Manage Stores: Add$/ do
+  log.info "Manage Stores: Add"
   @market_place = @manage_stores.add if @market_place.nil?
 end
 
