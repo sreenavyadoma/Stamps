@@ -344,7 +344,7 @@ module Orders
       end
     end
 
-    class AddStoreOrMarketplace < OrdersObject
+    class Marketplace < OrdersObject
 
       def present?
         window_title.present?
@@ -522,7 +522,7 @@ module Orders
       end
 
       def store
-        AddStoreOrMarketplace.new @browser
+        Marketplace.new @browser
       end
 
       def edit

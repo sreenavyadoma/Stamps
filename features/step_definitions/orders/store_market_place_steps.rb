@@ -5,6 +5,6 @@ end
 
 Then /^Marketplace: Select Volusion$/ do
   step "Manage Stores: Add" if @market_place.nil?
-  @amazon_store = @market_place.amazon
+  @amazon_store = @market_place.volusion
 end
 
