@@ -14,6 +14,8 @@ Feature:  Volusion Store Management
 
       Then Marketplace: Select Volusion
 
+      Then Volusion Store: Set Volusion API URL
+
 
 
       Then Amazon Store: Set Amazon Seller ID to A1BX1F0B3I9QDV

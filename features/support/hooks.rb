@@ -331,7 +331,7 @@ if __FILE__ == $0
 end
 
 lock = ReadWriteLock.new
-yourfile = "C:\\ruby\\username.txt"
+yourfile = "C:\\ruby\\qacc_credentials.txt"
 File.open(yourfile, 'w') { |file|
   lock.with_write_lock { file.write("your text")  }
 
