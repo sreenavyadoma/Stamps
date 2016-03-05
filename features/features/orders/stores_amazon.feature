@@ -21,16 +21,16 @@ Feature:  Amazon Store Management
       Then Amazon Store: Set Product Identifier to Use SKU
       Then Amazon Store: Connect for the first time expecting Amazon Settings modal
 
-      Then Amazon Settings: Set Store Nickname to random
+      Then Store Settings: Set Store Nickname to random
 
-      #Then Amazon Settings: Set Service Mapping 1, Requested Services random, Shipping Service First-Class Mail Postcard
-      #Then Amazon Settings: Set Service Mapping 2, Requested Services random, Shipping Service Priority Mail Package
-      #Then Amazon Settings: Set Service Mapping 3, Requested Services random, Shipping Service Priority Mail Small Flat Rate Box
+      #Then Store Settings: Set Service Mapping 1, Requested Services random, Shipping Service First-Class Mail Postcard
+      #Then Store Settings: Set Service Mapping 2, Requested Services random, Shipping Service Priority Mail Package
+      #Then Store Settings: Set Service Mapping 3, Requested Services random, Shipping Service Priority Mail Small Flat Rate Box
 
-      Then Amazon Settings: Check Automatically Import New Orders
-      Then Amazon Settings: Save
+      Then Store Settings: Check Automatically Import New Orders
+      Then Store Settings: Save
       Then Pause for 1 seconds
-      Then Toolbar: Regresh Orders
+      Then Toolbar: Refresh Orders
 
       #Then Pause for 1 seconds
       #Then Manage Stores: Select Store random
@@ -39,7 +39,7 @@ Feature:  Amazon Store Management
 
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
-      Then Toolbar: Regresh Orders
+      Then Toolbar: Refresh Orders
 
       Then Manage Stores: Close Modal
       Then Pause for 1 seconds

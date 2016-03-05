@@ -1,7 +1,6 @@
 module Orders
   module Stores
-    class AmazonStoreSettings < StoreSettings
-
+    class AmazonSettings < StoreSettings
       def present?
         browser_helper.present? (@browser.div text: "Amazon Settings")
       end
@@ -44,7 +43,6 @@ module Orders
         def non_amazon
           select "Non-Amazon"
         end
-
       end
 
       class ProductIdentifier < OrdersObject
@@ -124,11 +122,20 @@ module Orders
       def connect
         button = StampsButton.new @browser.span(text: "Connect")
         server_error = Orders::ServerError.new @browser
+        importing_order = ImportingOrdersModal.new @browser
 
         20.times do
+          button.safe_click
           sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
           button.safe_click
-          button.safe_click
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
           break unless present?
           sleep 1
           if server_error.present?
@@ -142,7 +149,7 @@ module Orders
 
       def connect_expecting_store_settings
         button = (StampsButton.new(@browser.span :text => "Connect"))
-        settings = AmazonStoreSettings.new @browser
+        settings = AmazonSettings.new @browser
         server_error = Orders::ServerError.new @browser
         importing_order = ImportingOrdersModal.new @browser
 

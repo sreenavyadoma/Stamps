@@ -11,8 +11,8 @@ When /^Add New Order$/ do
   @index = 0
 end
 
-Then /^Toolbar: Regresh Orders$/ do
-  log.info "Toolbar: Regresh Orders"
+Then /^Toolbar: Refresh Orders$/ do
+  log.info "Toolbar: Refresh Orders"
   orders.toolbar.refresh_orders
 end
 

@@ -235,12 +235,13 @@ module Orders
 
       def volusion
         button = volusion_button
-        store = Amazon.new @browser
+        store = Volusion.new @browser
         10.times do
           button.safe_click
           sleep 2
           return store if store.present?
         end
+        raise "Volusion Store Modal did not open."
       end
     end
 

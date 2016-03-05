@@ -63,11 +63,11 @@ end
 Then /^Manage Stores: Edit$/ do
   log.info "Manage Stores: Edit"
   sleep 2
-  @amazon_store_settings = @manage_stores.edit
+  @store_settings = @manage_stores.edit
   sleep 1
-  test_result = "Amazon Store Settings modal is #{(@amazon_store_settings.present?)?"present":"not present"} - Test #{(@amazon_store_settings.present?)?"passed":"failed"}"
+  test_result = "Amazon Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
   log.info test_result
-  if @amazon_store_settings.nil? || !(@amazon_store_settings.present?)
+  if @store_settings.nil? || !(@store_settings.present?)
     raise test_result
   end
 end

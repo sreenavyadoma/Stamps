@@ -1,6 +1,21 @@
 module Orders
   module Stores
+
+    class VolusionSettings < StoreSettings
+      def present?
+        browser_helper.present? (@browser.div text: "Volusion Settings")
+      end
+
+      def wait_until_present
+        browser_helper.wait_until_present (@browser.div text: "Volusion Settings")
+      end
+    end
+
     class Volusion < OrdersObject
+      def present?
+        browser_helper.present? @browser.div(text: "Connect your Volusion Store")
+      end
+
       def api_url url
         textbox = StampsTextbox.new @browser.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
         textbox.set_until url
@@ -22,9 +37,39 @@ module Orders
       end
 
       def connect
-        connected = connect_button
+        button = connect_button
+        settings = VolusionSettings.new @browser
+        server_error = Orders::ServerError.new @browser
+        importing_order = ImportingOrdersModal.new @browser
 
+        20.times do
+          button.safe_click
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          button.safe_click
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          return settings if settings.present?
+          return settings if settings.present?
+        end
+
+        self.close if self.present?
+        raise server_error.message if server_error.present?
+        settings
       end
+
     end
+
   end
 end

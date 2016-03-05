@@ -43,10 +43,10 @@ end
 Then /^Amazon Store: Connect for the first time expecting Amazon Settings modal$/ do
   step "Marketplace: Select Amazon" if @amazon_store.nil?
   log.info "Amazon Store: Connect for the first time expecting Amazon Settings modal"
-  @amazon_store_settings = @amazon_store.connect_expecting_store_settings
-  test_result = "Amazon Store Settings modal is #{(@amazon_store_settings.present?)?"present":"not present"} - Test #{(@amazon_store_settings.present?)?"passed":"failed"}"
+  @store_settings = @amazon_store.connect_expecting_store_settings
+  test_result = "Amazon Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
   log.info test_result
-  if @amazon_store_settings.nil? || !(@amazon_store_settings.present?)
+  if @store_settings.nil? || !(@store_settings.present?)
     raise test_result
   end
 end

@@ -7,5 +7,5 @@ Then /^Volusion Store: Test Connection$/ do
 end
 
 Then /^Volusion Store: Connect$/ do
-  @volusion_store.connect
+  @store_settings = @volusion_store.connect
 end
