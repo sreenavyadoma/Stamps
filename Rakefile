@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:volusion_store) do |t|
+  t.profile = 'volusion_store'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:webreg_specify_username_jenkins) do |t|
   t.profile = 'webreg_specify_username_jenkins'
   t.cucumber_opts = "-p cuke_reports"
