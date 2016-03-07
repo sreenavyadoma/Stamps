@@ -10,12 +10,15 @@ Feature: Stamps BVT
 
   Scenario: Stamps Specify Postage
     Then Print Postage: Select Print On Stamps
-    Then Stamps: Set Serial Number to B12345
+    Then Stamps: Set Serial Number to C12345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
     Then Stamps: Set Ship-To country to United States
     Then Stamps: Set Specify Postage Service to "Media Mail (2 - 3 Days)"
     Then Stamps: Set Stamp Amount to $4.65
+    Then Stamps: Set Quantity to 3
+    Then Stamps: Set Reference Number to Stamp3221
+    Then Stamps: Set Cost Code to None
     Then Footer: Print Postage
     Then Sign out
 
