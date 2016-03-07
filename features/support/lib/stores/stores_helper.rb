@@ -2,6 +2,6 @@ module Stores
   include Stamps
 
   def volusion
-    VolusionLoginPage.new @browser
+    Stores::VolusionLoginPage.new @browser
   end
 end

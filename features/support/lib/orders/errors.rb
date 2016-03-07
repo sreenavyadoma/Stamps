@@ -80,7 +80,7 @@ module Orders
 
   end
 
-  class OrderErrors < OrdersObject
+  class IncompleteOrderError < OrdersObject
     private
 
     def error_message_label
@@ -99,37 +99,24 @@ module Orders
       end
     end
 
-    def continue_button
-      @browser.span :text => "Continue"
-    end
-
     def cancel_button
       @browser.span :text => "Cancel"
     end
 
-    def ok_button
-      @browser.span :text => "OK"
-    end
-
-    public
-
     def ok
-      5.times{
-        begin
-          browser_helper.click ok_button, "ok"
-        rescue
-          #ignore
-        end
-        break if browser_helper.present? ok_button
+      ok_btn = StampsButton.new @browser.span(text: "OK")
+      10.times{
+        ok_btn.safe_click
+        break unless ok_btn.present?
       }
     end
 
     def error_message
-      browser_helper.text error_message_label
+      browser_helper.text @browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
     end
 
     def present?
-      browser_helper.present? window_title
+      browser_helper.present? @browser.div(text: "Incomplete Order")
     end
 
     def continue

@@ -2,7 +2,7 @@
 Feature:  Prompt User to Remove Orders in Error from Print Group
 
   Background:
-    Given I am signed in to Orders as ff/qacc/auto01/326tsetaqcdS!
+    Given I am signed in to Orders
 
   @printing_error
   Scenario:  Printing

@@ -46,15 +46,6 @@ Then /^Import Orders: Download sample file$/ do
   @import_orders.download_sample_file
 end
 
-Then /^Import Orders: Expect imported filed name on read-only textbox to be (.*)$/ do |filename|
-  log.info "Step: Import Orders: Expect imported filed name on read-only textbox"
-  raise "Import Orders: Expect imported filed name on read-only textbox to be #{filename} - ILLEGAL STATE EXCEPTION.  Check your test." if @import_orders.nil?
-  sleep 1
-  import_filename = @import_orders.text_box.text
-  log.info "Test #{(import_filename==filename)?"Passed":"Failed"}"
-  import_filename.should eql filename
-end
-
 Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename| #import_orders_test.csv
   log.info "Step: Import Orders: File Upload: Set Filename"
   step "Toolbar: Import" if @import_orders.nil?

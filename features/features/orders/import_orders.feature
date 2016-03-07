@@ -12,7 +12,6 @@ Feature: Import Orders
     Then Toolbar: Import
     Then Import Orders: Select CSV File
     Then Import Orders: File Upload: Set Filename to import_orders_test.csv
-    Then Import Orders: Expect imported filed name on read-only textbox to be import_orders_test.csv
     Then Pause for 1 seconds
     Then Import Orders: Import
     Then Pause for 1 seconds
