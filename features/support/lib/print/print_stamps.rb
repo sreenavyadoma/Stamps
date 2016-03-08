@@ -50,7 +50,7 @@ module Print
         end
 
         def reference_number
-          StampsTextbox.new @browser.text_field :name => "ReferenceNumber"
+          StampsTextbox.new @browser.text_field :name => "referenceNumber"
         end
 
         def cost_code
