@@ -8,3 +8,8 @@ Then /^Marketplace: Select Volusion$/ do
   @volusion_store = @market_place.volusion
 end
 
+Then /^Marketplace: Rakuten$/ do
+  step "Manage Stores: Add" if @market_place.nil?
+  @volusion_store = @market_place.rakuten
+end
+

@@ -1,12 +1,16 @@
 module Orders
   module Stores
     class AmazonSettings < StoreSettings
+      def window_title
+        StampsLabel.new @browser.div text: "Amazon Settings"
+      end
+
       def present?
-        browser_helper.present? (@browser.div text: "Amazon Settings")
+        window_title.present?
       end
 
       def wait_until_present
-        browser_helper.wait_until_present (@browser.div text: "Amazon Settings")
+        window_title.wait_until_present
       end
     end
 

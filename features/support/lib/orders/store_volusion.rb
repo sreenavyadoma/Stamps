@@ -2,12 +2,16 @@ module Orders
   module Stores
 
     class VolusionSettings < StoreSettings
+      def window_title
+        StampsLabel.new @browser.div text: "Volusion Settings"
+      end
+
       def present?
-        browser_helper.present? (@browser.div text: "Volusion Settings")
+        window_title.present?
       end
 
       def wait_until_present
-        browser_helper.wait_until_present (@browser.div text: "Volusion Settings")
+        window_title.wait_until_present
       end
     end
 

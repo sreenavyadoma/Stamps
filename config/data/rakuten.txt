@@ -1,0 +1,23 @@
+
+Skip to end of metadata
+Created by Robert Robinson, last modified about 2 hours ago Go to start of metadata
+
+Connecting to Store
+Rakuten Seller ID: 40549242
+FTP Username: batchstore@stamps.com
+FTP Password: stampstest225
+SellerAccount
+Username: batchstore@stamps.com
+Password: stamps123
+Website: https://rmsportal.rakuten.com/account/login
+Buyer Account
+Username:qaclient@stamps.com
+Password: Sdcqatest623
+Website: https://secure.rakuten.com/AC/loginAccount.aspx
+
+FTP URL
+ftp://trade.marketplace.buy.com
+
+https://stampswebdev.atlassian.net/wiki/display/ORDERS/Rakuten
+
+

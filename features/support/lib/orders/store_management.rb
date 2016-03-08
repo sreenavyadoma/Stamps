@@ -345,6 +345,21 @@ module Orders
         end
         raise "Volusion Store Modal did not open."
       end
+
+      def rakuten_button
+        StampsButton.new (@browser.imgs :css => "img[src*='rakuten']").last
+      end
+
+      def rakuten
+        button = rakuten_button
+        store = Rakuten.new @browser
+        10.times do
+          button.safe_click
+          sleep 2
+          return store if store.present?
+        end
+        raise "Rakuten Store Modal did not open."
+      end
     end
 
     class ManageStores < OrdersObject
