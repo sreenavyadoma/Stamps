@@ -18,7 +18,7 @@ module Orders
 
       def api_url url
         textbox = StampsTextbox.new @browser.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
-        textbox.set_until url
+        textbox.set url
       end
 
       def test_connection
@@ -45,22 +45,95 @@ module Orders
         20.times do
           button.safe_click
           sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          button.safe_click
-          sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
           end
           sleep 1
           if server_error.present?
             log.info server_error.message
             server_error.ok
           end
-          return settings if settings.present?
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          button.safe_click
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
           return settings if settings.present?
         end
 

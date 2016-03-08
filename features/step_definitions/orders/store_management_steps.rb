@@ -37,12 +37,12 @@ Then /^Manage Stores: Delete Row (\d+)$/ do |row|
 end
 
 Then /^Manage Stores: Select Store (.*)$/ do |store_name|
-  @amazon_store_name = (store_name.downcase.include?"random")?@amazon_store_name:store_name
-  log.info "Manage Stores: Select Store #{@amazon_store_name}"
-  raise "Unble to select store name: #{@amazon_store_name}.  Either it's nil or does not exist in the modal.  Check your test." if @amazon_store_name.nil?
-  raise "Store name can't be nil or an empty String" if @amazon_store_name.nil? || @amazon_store_name.size == 0
+  @store_name = (store_name.downcase.include? "random")?@store_name:store_name
+  log.info "Manage Stores: Select Store #{@store_name}"
+  raise "Unble to select store name: #{@store_name}.  Either it's nil or does not exist in the modal.  Check your test." if @store_name.nil?
+  raise "Store name can't be nil or an empty String" if @store_name.nil? || @store_name.size == 0
   sleep 1
-  @manage_stores.stores_grid.select @amazon_store_name
+  @manage_stores.stores_grid.select @store_name
 end
 
 Then /^Manage Stores: Delete All Stores in Grid$/ do
@@ -72,5 +72,8 @@ Then /^Manage Stores: Edit$/ do
   end
 end
 
+Then /^Manage Stores: Expect Manage Stores grid contains (.*)$/ do |grid_item|
+
+end
 
 
