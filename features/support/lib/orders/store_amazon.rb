@@ -159,18 +159,155 @@ module Orders
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
           end
           button.safe_click
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
           end
           sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
           end
-          return settings if settings.present?
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+            return settings if settings.present?
+          end
           return settings if settings.present?
         end
 

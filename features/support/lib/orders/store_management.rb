@@ -160,9 +160,111 @@ module Orders
         sleep 2
         button = StampsButton.new (@browser.span text: "Save")
         server_error = Orders::ServerError.new @browser
+        importing_order = ImportingOrdersModal.new @browser
+
         15.times do
           button.safe_click
-          sleep 5
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
           if server_error.present?
             log.info server_error.message
             server_error.ok

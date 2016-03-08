@@ -34,5 +34,5 @@ Then /^Store Settings: Save$/ do
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   sleep 2
   @store_settings.save
-  sleep 3
+  sleep 1
 end
