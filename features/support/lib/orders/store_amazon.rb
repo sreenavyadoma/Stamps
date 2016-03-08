@@ -122,7 +122,7 @@ module Orders
       def connect
         button = StampsButton.new @browser.span(text: "Connect")
         server_error = Orders::ServerError.new @browser
-        importing_order = ImportingOrdersModal.new @browser
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
         20.times do
           button.safe_click
@@ -151,7 +151,7 @@ module Orders
         button = (StampsButton.new(@browser.span :text => "Connect"))
         settings = AmazonSettings.new @browser
         server_error = Orders::ServerError.new @browser
-        importing_order = ImportingOrdersModal.new @browser
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
         20.times do
           button.safe_click

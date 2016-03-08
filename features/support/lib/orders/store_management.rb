@@ -160,7 +160,7 @@ module Orders
         sleep 2
         button = StampsButton.new (@browser.span text: "Save")
         server_error = Orders::ServerError.new @browser
-        importing_order = ImportingOrdersModal.new @browser
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
         15.times do
           button.safe_click

@@ -40,7 +40,7 @@ module Orders
         button = connect_button
         settings = VolusionSettings.new @browser
         server_error = Orders::ServerError.new @browser
-        importing_order = ImportingOrdersModal.new @browser
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
         20.times do
           button.safe_click

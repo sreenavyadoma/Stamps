@@ -141,15 +141,11 @@ module Orders
 
       def refresh_orders
         button = StampsButton.new @browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
-        importing_order = ImportingOrdersModal.new @browser
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
         5.times do
           button.safe_click
           sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
@@ -164,10 +160,6 @@ module Orders
           end
           button.safe_click
           sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
@@ -181,11 +173,6 @@ module Orders
             importing_order.ok
           end
           button.safe_click
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
@@ -198,9 +185,7 @@ module Orders
             log.info importing_order.message
             importing_order.ok
           end
-
         end
-
       end
 
       def import
