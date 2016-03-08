@@ -1,4 +1,4 @@
-@bvt
+
 Feature: BVT Purchasing
 
   Background:

@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @amazon_store --guess VERBOSE=true URL=qasc BROWSER=firefox USR=g4bjykf83s PW=pass111
+rob_dev: --tags @bvt --guess VERBOSE=true URL=qasc BROWSER=firefox USR=g4bjykf83s PW=pass111
 
 rob_dev_volusion: --tags @volusion_store --guess VERBOSE=true URL=qasc BROWSER=firefox USR=g4bjykf83s PW=pass111 VOLUSION_API_URL=http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
 
