@@ -4,10 +4,10 @@ Feature:  Amazon Store Management
   Background:
     Given I am signed in to Orders
 
-    @store
+    @amazon
     Scenario: Store Management - Amazon Store
       Then Manage Stores: Open Modal
-      #Then Manage Stores: Delete All Stores in Grid
+      Then Manage Stores: Delete All Stores in Grid
 
       Then Manage Stores: Add
 
@@ -36,9 +36,9 @@ Feature:  Amazon Store Management
       Then Amazon Store: Set Product Identifier to Use SKU
       Then Amazon Store: Connect
 
-      #Then Manage Stores: Select Store random
-      #Then Manage Stores: Delete
-      #Then Toolbar: Refresh Orders
+      Then Manage Stores: Select Store random
+      Then Manage Stores: Delete
+      Then Toolbar: Refresh Orders
 
       Then Manage Stores: Close Modal
       Then Sign out
