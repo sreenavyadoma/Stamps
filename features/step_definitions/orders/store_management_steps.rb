@@ -41,7 +41,6 @@ Then /^Manage Stores: Select Store (.*)$/ do |store_name|
   log.info "Manage Stores: Select Store #{@store_name}"
   raise "Unble to select store name: #{@store_name}.  Either it's nil or does not exist in the modal.  Check your test." if @store_name.nil?
   raise "Store name can't be nil or an empty String" if @store_name.nil? || @store_name.size == 0
-  sleep 1
   @manage_stores.stores_grid.select @store_name
 end
 

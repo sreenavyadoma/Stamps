@@ -157,7 +157,6 @@ module Orders
       end
 
       def save
-        sleep 2
         button = StampsButton.new (@browser.span text: "Save")
         server_error = Orders::ServerError.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
@@ -190,86 +189,7 @@ module Orders
             log.info importing_order.message
             importing_order.ok
           end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          sleep 2
+
           break unless present? && server_error.present?
         end
       end
@@ -420,7 +340,6 @@ module Orders
                       checkbox.check
                       sleep 1
                       del_btn.safe_click
-                      sleep 2
                       #delete_modal.wait_until_present
                       delete_modal.delete
                       delete_modal.delete
@@ -447,7 +366,6 @@ module Orders
         def select store_name
           3.times do
             begin
-              sleep 1
               checkbox_field = @browser.divs(text: store_name).last
               sleep 1
               check_verify_field = checkbox_field.parent
@@ -456,6 +374,7 @@ module Orders
               checkbox.check
               checkbox.check
               checkbox.check
+              break if checkbox.checked?
             rescue
               #ignore
             end
@@ -516,13 +435,16 @@ module Orders
       def reconnect
         button = StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
         raise "No Store selected from Manage Store grid or Reconnect button is not present.  Check your test" unless button.present?
-        reconnect_modal = ModifyAmazonStore.new @browser
-        10.times do
+        amazon = ModifyAmazonStore.new @browser
+        volusion = Volusion.new @browser
+        rakuten = Rakuten.new @browser
+
+        15.times do
           button.safe_click
-          button.safe_click
-          button.safe_click
-          reconnect_modal.wait_until_present
-          return reconnect_modal if reconnect_modal.present?
+          sleep 3
+          return rakuten if rakuten.present?
+          return volusion if volusion.present?
+          return amazon if amazon.present?
         end
       end
 

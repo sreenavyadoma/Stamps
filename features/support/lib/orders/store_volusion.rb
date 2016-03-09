@@ -17,7 +17,7 @@ module Orders
 
     class Volusion < OrdersObject
       def present?
-        browser_helper.present? @browser.div(text: "Connect your Volusion Store")
+        connect_button.present?
       end
 
       def api_url url

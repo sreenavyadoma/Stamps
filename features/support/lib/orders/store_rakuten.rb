@@ -15,24 +15,13 @@ module Orders
     end
 
     class Rakuten < OrdersObject
-      class RakutenSku < OrdersObject
-        def check
-          @browser.checkbox(css: "input[type=button][id^=checkbox]").set
-          @browser.checkbox(css: "input[type=button][id^=checkbox]").set
-        end
-
-        def uncheck
-          @browser.checkbox(css: "input[type=button][id^=checkbox]").clear
-          @browser.checkbox(css: "input[type=button][id^=checkbox]").clear
-        end
-      end
 
       def window_title
         StampsLabel.new(@browser.div :text => "Connect your Rakuten Store")
       end
 
       def present?
-        window_title.present?
+        seller_id.present?
       end
 
       def close
@@ -44,15 +33,15 @@ module Orders
       end
 
       def seller_id
-        StmpsTextbox.new @browser.textarea(name: "RakutenSellerID")
+        StampsTextbox.new @browser.text_field(name: "RakutenSellerID")
       end
 
       def ftp_username
-        StmpsTextbox.new (@browser.textareas(name: "AuthToken").first)
+        StampsTextbox.new (@browser.text_fields(name: "AuthToken").first)
       end
 
       def ftp_password
-        StmpsTextbox.new (@browser.textareas(name: "AuthToken").last)
+        StampsTextbox.new (@browser.text_fields(name: "AuthToken").last)
       end
 
       def test_connection
@@ -60,25 +49,115 @@ module Orders
         10.times do
           button.safe_click
           button.safe_click
-          break if browser_helper.present? @browser.span(text: "Connect")
+          button.safe_click
+          break if button.present?
         end
       end
 
       def map_rakuten_sku
-        RakutenSku.new @browser
+        checkbox_field = (@browser.checkboxes(css: "input[type=button][id^=checkbox]").last)
+        verify_field = checkbox_field.parent.parent.parent.parent
+        attribute_name = "class"
+        attribute_value = "checked"
+        StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
       end
 
       def connect
         button = StampsButton.new @browser.span(text: "Connect")
         settings = RakutenSettings.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
-        store
-        20.times do
-          button.safe_click
-          button.safe_click
-          sleep 2 unless button.present?
 
+        10.times do
+          button.safe_click
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          button.safe_click
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          return settings if settings.present?
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          return settings if settings.present?
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          return settings if settings.present?
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          return settings if settings.present?
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          return settings if settings.present?
         end
+        raise "Rakuten Store Connect failed.  Settings Modal did not open.  "
       end
     end
   end
