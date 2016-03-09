@@ -9,7 +9,7 @@ Feature:  Amazon Store Management
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
 
-      # Test Add
+      # Test Add Store
       Then Manage Stores: Add
 
       Then Marketplace: Select Amazon
@@ -29,7 +29,7 @@ Feature:  Amazon Store Management
 
       Then Manage Stores: Select Store random
 
-      # Test Reconnect
+      # Test Reconnect Store
       Then Manage Stores: Reconnect
 
       Then Amazon Store: Set Amazon Seller ID to A1BX1F0B3I9QDV
@@ -38,6 +38,13 @@ Feature:  Amazon Store Management
       Then Amazon Store: Set Order Source to Amazon.com
       Then Amazon Store: Set Product Identifier to Use SKU
       Then Amazon Store: Connect
+
+      # Test Edit Store
+      Then Manage Stores: Select Store random
+      Then Manage Stores: Edit
+
+      Then Store Settings: Set Store Nickname to random
+      Then Store Settings: Save
 
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete

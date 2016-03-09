@@ -419,13 +419,15 @@ module Orders
 
       def edit
         button = StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(2)>span>span>span[id$=btnInnerEl]")
-        store_settings = StoreSettings.new @browser
+        rakuten_settings = RakutenSettings.new @browser
+        amazon_settings = AmazonSettings.new @browser
+        volusion_settings = VolusionSettings.new @browser
         10.times do
           button.safe_click
-          button.safe_click
-          sleep 1
-          store_settings.wait_until_present
-          return store_settings if store_settings.present?
+          sleep 2
+          return rakuten_settings if rakuten_settings.present?
+          return amazon_settings if amazon_settings.present?
+          return volusion_settings if volusion_settings.present?
         end
       end
 
