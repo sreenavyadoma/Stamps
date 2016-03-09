@@ -141,9 +141,49 @@ module Orders
 
       def refresh_orders
         button = StampsButton.new @browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
+
         button.safe_click
+        sleep 1
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
         button.safe_click
+        sleep 1
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
         button.safe_click
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
       end
 
       def import

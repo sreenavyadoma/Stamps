@@ -1,10 +1,10 @@
 Then /^Store Settings: Set Store Nickname to (.*)$/ do |nickname|
   log.info "Store Settings: Set Store Nickname to #{nickname}"
-  raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
-  log.info "Old Amazon Store Name:#{@amazon_store_name}"
-  @amazon_store_name = (nickname.downcase.include? "random")?test_helper.random_alpha_numeric(20):nickname
-  log.info "New Amazon Store Name:#{@amazon_store_name}"
-  @store_settings.store_nickname.set @amazon_store_name
+  raise "Store Settings is not open.  Check your test workflow." if @store_settings.nil?
+  log.info "Old Amazon Store Name:#{@store_name}"
+  @store_name = (nickname.downcase.include? "random")?test_helper.random_alpha_numeric(20):nickname
+  log.info "New Amazon Store Name:#{@store_name}"
+  @store_settings.store_nickname.set @store_name
 end
 
 Then /^Store Settings: Set Service Mapping (\d+), Requested Services (.*), Shipping Service (.*)$/ do |item_number, requested_services, shipping_service|
@@ -32,7 +32,5 @@ end
 
 Then /^Store Settings: Save$/ do
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
-  sleep 2
   @store_settings.save
-  sleep 3
 end

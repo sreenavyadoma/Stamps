@@ -1,7 +1,10 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @volusion_store --guess VERBOSE=true URL=qasc BROWSER=firefox USR=cd86dfcvi PW=pass111 VOLUSION_API_URL=http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
+rob_dev: --tags @volusion_store --guess VERBOSE=true URL=qasc BROWSER=firefox USR=rhnvh3lgl7o73 PW=pass111
+
+rob_dev_volusion: --tags @volusion_store --guess VERBOSE=true URL=qasc BROWSER=firefox USR=g4bjykf83s PW=pass111 VOLUSION_API_URL=http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
+
 #mi9m76jlbgya-qacc
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
@@ -13,6 +16,7 @@ daniel_dev: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff USR=a
 bvt: --tags @bvt --guess VERBOSE=false
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
+rakuten_store: --tags @rakuten_store --guess VERBOSE=true
 volusion_store: --tags @volusion_store --guess VERBOSE=true
 import_orders: --tags @import_orders --guess VERBOSE=true
 amazon_store: --tags @amazon_store --guess VERBOSE=true

@@ -8,24 +8,30 @@ Feature:  Volusion Store Management
     Scenario: Store Management - Volusion Store
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
-      Then Pause for 2 seconds
 
       Then Manage Stores: Add
 
       Then Marketplace: Select Volusion
 
-      Then Volusion Store: Set Volusion API URL
-
+      Then Volusion Store: Set Volusion API to http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
       Then Volusion Store: Test Connection
-
       Then Volusion Store: Connect
 
       Then Store Settings: Set Store Nickname to random
       Then Store Settings: Check Automatically Import New Orders
       Then Store Settings: Save
 
-      Then Pause for 1 seconds
       Then Toolbar: Refresh Orders
+      Then Manage Stores: Select Store random
+      Then Manage Stores: Reconnect
+
+      Then Volusion Store: Set Volusion API to http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
+      Then Volusion Store: Test Connection
+      Then Volusion Store: Connect
+
+      Then Store Settings: Set Store Nickname to random
+      Then Store Settings: Check Automatically Import New Orders
+      Then Store Settings: Save
 
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete

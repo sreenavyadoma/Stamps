@@ -8,7 +8,6 @@ Feature:  Amazon Store Management
     Scenario: Store Management - Amazon Store
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
-      Then Pause for 2 seconds
 
       Then Manage Stores: Add
 
@@ -29,7 +28,6 @@ Feature:  Amazon Store Management
 
       Then Store Settings: Check Automatically Import New Orders
       Then Store Settings: Save
-      Then Pause for 1 seconds
       Then Toolbar: Refresh Orders
 
       #Then Pause for 1 seconds
@@ -42,7 +40,6 @@ Feature:  Amazon Store Management
       Then Toolbar: Refresh Orders
 
       Then Manage Stores: Close Modal
-      Then Pause for 1 seconds
       Then Sign out
 
 
