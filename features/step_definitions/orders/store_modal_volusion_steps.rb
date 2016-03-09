@@ -1,15 +1,15 @@
 Then /^Volusion Store: Set Volusion API URL$/ do
-  @volusion_store.api_url ENV['VOLUSION_API_URL']
+  @store.api_url ENV['VOLUSION_API_URL']
 end
 
 Then /^Volusion Store: Set Volusion API to (.*)$/ do |url|
-  @volusion_store.api_url url
+  @store.api_url url
 end
 
 Then /^Volusion Store: Test Connection$/ do
-  @volusion_store.test_connection
+  @store.test_connection
 end
 
 Then /^Volusion Store: Connect$/ do
-  @store_settings = @volusion_store.connect
+  @store_settings = @store.connect
 end

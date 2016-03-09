@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @amazon_store --guess VERBOSE=true URL=qasc BROWSER=firefox USR=yh95ws85j PW=pass111
+rob_dev: --tags @store --guess VERBOSE=true URL=qasc BROWSER=firefox USR=yh95ws85j PW=pass111
 
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
@@ -13,10 +13,11 @@ daniel_dev: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff USR=a
 bvt: --tags @bvt --guess VERBOSE=false
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
-rakuten_store: --tags @rakuten_store --guess VERBOSE=true
-volusion_store: --tags @volusion_store --guess VERBOSE=true
+rakuten: --tags @rakuten --guess VERBOSE=true
+volusion: --tags @volusion --guess VERBOSE=true
+amazon: --tags @amazon --guess VERBOSE=true
+
 import_orders: --tags @import_orders --guess VERBOSE=true
-amazon_store: --tags @amazon_store --guess VERBOSE=true
 pagination: --tags @pagination --guess VERBOSE=true
 registration: --tags @registration --guess VERBOSE=true
 webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess VERBOSE=true

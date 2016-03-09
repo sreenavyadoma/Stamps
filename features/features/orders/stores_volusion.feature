@@ -4,7 +4,7 @@ Feature:  Volusion Store Management
   Background:
     Given I am signed in to Orders
 
-    @volusion_store
+    @volusion
     Scenario: Store Management - Volusion Store
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid

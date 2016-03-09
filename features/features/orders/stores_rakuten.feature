@@ -4,7 +4,7 @@ Feature:  Import Rakuten Orders
   Background:
     Given I am signed in to Orders
 
-    @rakuten_store
+    @rakuten
     Scenario: ORDERSAUTO-70
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
