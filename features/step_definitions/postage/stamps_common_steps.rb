@@ -3,8 +3,12 @@
 Then /^Stamps: Set Serial Number to (.*)/ do |serial|
   log.info "Set Stamps Serial Number to #{serial}"
   @stamps = postage.stamps if @stamps.nil?
-  @stamps.serial.set serial
+
+  if serial == 'random'
+    serial = "B#{Random.rand(10000..99999)}"
+  end
   serial_prefix = serial.split('')[0]
+  @stamps.serial.set serial
   log.info "Serial prefix: #{serial_prefix}"
   log.info "Preview image: #{(@stamps.form_view.preview_image(serial_prefix).present?)?"YES": "NO"}"
 end

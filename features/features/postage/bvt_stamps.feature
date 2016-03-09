@@ -10,7 +10,9 @@ Feature: Stamps BVT
 
   Scenario: Stamps Specify Postage
     Then Print Postage: Select Print On Stamps
-    Then Stamps: Set Serial Number to C12345
+
+    Then Stamps: Set Serial Number to random
+
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
     Then Stamps: Set Ship-To country to United States
@@ -26,7 +28,7 @@ Feature: Stamps BVT
   @wp_bvt_netstamps_calculate
   Scenario: Stamps Calculate Postage
     Then Print Postage: Select Print On Stamps
-    Then Stamps: Set Serial Number to B54321
+    Then Stamps: Set Serial Number to random
     Then Stamps: Select Calculate Postage Amount
     Then Stamps: Set Ship-From to default
     Then Stamps: Set Ship-To country to United States
