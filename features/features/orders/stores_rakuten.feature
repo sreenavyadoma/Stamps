@@ -9,6 +9,7 @@ Feature:  Import Rakuten Orders
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
 
+      # Test Add
       Then Manage Stores: Add
 
       Then Marketplace: Select Rakuten
