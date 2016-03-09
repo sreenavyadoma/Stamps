@@ -51,6 +51,9 @@ Feature:  Volusion Store Management
       Then Manage Stores: Delete
       Then Toolbar: Refresh Orders
 
+      # Delete All Stores
+      Then Manage Stores: Delete All Stores in Grid
+
       Then Manage Stores: Close Modal
       Then Pause for 1 seconds
       Then Sign out
