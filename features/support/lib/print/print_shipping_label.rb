@@ -40,6 +40,70 @@ module Print
         Print::Postage::CostCode.new @browser
       end
 
+      def starting_label
+        Print::Postage::ShippingLabelFormView::StartingLabel.new @browser
+      end
+
+      class StartingLabel < Print::Postage::PrintObject
+        def label_divs
+          @browser.divs :css => "div[class*='unprintedLabel']"
+        end
+
+        def left_label_div
+          label_divs[0]
+        end
+
+        def right_label_div
+          label_divs[1]
+        end
+
+        def left
+          10.times{
+            begin
+              browser_helper.safe_click left_label_div, "left_label"
+              return true if label_selected? left_label_div
+            rescue
+              #ignore
+            end
+          }
+          false
+        end
+
+        def right
+          10.times{
+            begin
+              browser_helper.safe_click right_label_div, "right_label"
+              return true if label_selected? right_label_div
+            rescue
+              #ignore
+            end
+          }
+          false
+        end
+
+        def left_selected?
+          label_selected? left_label_div
+        end
+
+        def right_selected?
+          label_selected? right_label_div
+        end
+
+        def label_selected? div
+          8.times{
+            selected = browser_helper.attribute_value(div, 'class').include? 'selectedLabel'
+            log.info "Label selected?  #{(selected)? 'Yes':'No'}"
+            break if selected
+          }
+          browser_helper.attribute_value(div, 'class').include? 'selectedLabel'
+        end
+
+        def default_selected?
+          label_selected? left_label_div
+        end
+      end
+
+
     end
 
     class ShippingLabel < Print::Postage::DomesticCommon

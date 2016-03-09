@@ -24,6 +24,29 @@ module Print
     end
   end
 
+  class ConfirmModal < Print::Postage::PrintObject
+    def checkbox
+      checkbox_field = @browser.input :name => "dismissConfirm"
+      checkbox_field.set
+    end
+
+    def button
+      StampsButton.new @browser.span :id => "sdc-undefinedwindow-continuebtn-btnIconEl"
+    end
+
+    def confirm
+      button.safe_click
+    end
+
+    def present?
+      window_title.present?
+    end
+
+    def window_title
+      StampsLabel.new (@browser.span :text => "Confirm Print")
+    end
+  end
+
   class Printer < Print::Postage::PrintObject
     def drop_down
       StampsButton.new @browser.div :css => "table[id^=sdc-printpostagewindow-printerdroplist-triggerWrap]>tbody>tr>td>div[class*=x-form-arrow-trigger]"
@@ -96,6 +119,10 @@ module Print
       Print::Postage::Printer.new @browser
     end
 
+    def confirm_modal
+      Print::Postage::ConfirmModal.new @browser
+    end
+
     def print
       button = print_button
       5.times {
@@ -112,6 +139,7 @@ module Print
           true
         end
       }
+
 
     end
 

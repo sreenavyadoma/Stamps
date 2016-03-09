@@ -52,7 +52,11 @@ module Print
                 break unless naws_plugin_error.present?
               }
             end
-
+            confirm_window = Print::Postage::ConfirmModal.new @browser
+            if confirm_window.present?
+              log.info "Confirm Print"
+              confirm_window.confirm
+            end
             return window if window.present?
 
             print.click
@@ -61,8 +65,10 @@ module Print
           end
         end
 
+
+
         return window if window.present?
-        raise "Unable to open Print Window.  There might be errors in printing of order is not ready for printing.  Check your test."
+        raise "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your test."
       end
 
 

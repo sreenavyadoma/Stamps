@@ -54,6 +54,20 @@ Then /^Shipping Labels: Open Contacts modal/ do
   @contacts = @shipping_label.contacts.open
 end
 
+Then /^Shipping Labels: Select left side starting label/ do
+  log.info "Step: Shipping Labels: Select - Left side label"
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  selected = @shipping_label.form_view.starting_label.left
+  log.info "left-side label was #{(selected)?'selected.':'not selected'}"
+end
+
+Then /^Shipping Labels: Select right side starting label/ do
+  log.info "Step: Shipping Labels: Select - Right side label"
+  @shipping_label = postage.shipping_label if @shipping_label.nil?
+  selected = @shipping_label.form_view.starting_label.right
+  log.info "right-side label was #{(selected)?'selected.':'not selected'}"
+end
+
 Then /^Shipping Labels: Set Ship-To to Random Address in Zone 1$/ do
   step "Shipping Labels: Set Ship-To address to zone 1"
 end
