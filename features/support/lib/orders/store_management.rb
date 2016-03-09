@@ -343,7 +343,8 @@ module Orders
                       #delete_modal.wait_until_present
                       delete_modal.delete
                       delete_modal.delete
-                      browser_helper.wait_while_present table
+                      sleep 1
+                      #browser_helper.wait_while_present table
                       break unless delete_modal.present?
                       break unless delete_modal.present?
                     end

@@ -2,7 +2,7 @@ module Orders
   module Stores
     class AmazonSettings < StoreSettings
       def window_title
-        StampsLabel.new @browser.div text: "Amazon Settings"
+        StampsLabel.new @browser.div(text: "Amazon Settings")
       end
 
       def present?
@@ -159,129 +159,7 @@ module Orders
 
         20.times do
           button.safe_click
-          sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          button.safe_click
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
+          sleep 2
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
