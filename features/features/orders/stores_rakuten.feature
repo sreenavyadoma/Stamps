@@ -1,11 +1,11 @@
 
-Feature:  ORDERSAUTO-70 Import Rakuten Orders
+Feature:  Import Rakuten Orders
 
   Background:
     Given I am signed in to Orders
 
     @rakuten_store
-    Scenario: Store Management - Rakuten Store
+    Scenario: ORDERSAUTO-70
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
 
