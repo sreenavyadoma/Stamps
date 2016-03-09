@@ -160,5 +160,21 @@ module Orders
         raise "Rakuten Store Connect failed.  Settings Modal did not open.  "
       end
     end
+
+    class ModifyRakutenStore < Rakuten
+
+      def window_title
+        StampsLabel.new(@browser.div :text => "Modify your Rakuten Store Connection")
+      end
+
+      def present?
+        window_title.present?
+      end
+
+      def wait_until_present
+        window_title.wait_until_present
+      end
+    end
+
   end
 end

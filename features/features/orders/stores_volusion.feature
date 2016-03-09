@@ -4,11 +4,12 @@ Feature:  Volusion Store Management
   Background:
     Given I am signed in to Orders
 
-    @volusion_store
+    @volusion
     Scenario: Store Management - Volusion Store
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
 
+      # Test Add
       Then Manage Stores: Add
 
       Then Marketplace: Select Volusion
@@ -23,6 +24,8 @@ Feature:  Volusion Store Management
 
       Then Toolbar: Refresh Orders
       Then Manage Stores: Select Store random
+
+      # Test Reconnect
       Then Manage Stores: Reconnect
 
       Then Volusion Store: Set Volusion API to http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
@@ -43,3 +46,8 @@ Feature:  Volusion Store Management
 
 
 
+
+
+      #Then Store Settings: Set Service Mapping 1, Requested Services random, Shipping Service First-Class Mail Postcard
+      #Then Store Settings: Set Service Mapping 2, Requested Services random, Shipping Service Priority Mail Package
+      #Then Store Settings: Set Service Mapping 3, Requested Services random, Shipping Service Priority Mail Small Flat Rate Box

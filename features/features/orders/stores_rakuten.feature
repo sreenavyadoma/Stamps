@@ -4,11 +4,12 @@ Feature:  Import Rakuten Orders
   Background:
     Given I am signed in to Orders
 
-    @rakuten_store
+    @rakuten
     Scenario: ORDERSAUTO-70
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
 
+      # Test Add
       Then Manage Stores: Add
 
       Then Marketplace: Select Rakuten
@@ -29,6 +30,8 @@ Feature:  Import Rakuten Orders
       Then Toolbar: Refresh Orders
 
       Then Manage Stores: Select Store random
+
+      # Test Reconnect
       Then Manage Stores: Reconnect
 
       Then Rakuten Store: Set Rakuten Seller ID 40549242

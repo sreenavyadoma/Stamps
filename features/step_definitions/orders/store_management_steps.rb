@@ -56,14 +56,12 @@ end
 
 Then /^Manage Stores: Reconnect$/ do
   log.info "Manage Stores: Reconnect"
-  @amazon_store = @manage_stores.reconnect
+  @store = @manage_stores.reconnect
 end
 
 Then /^Manage Stores: Edit$/ do
   log.info "Manage Stores: Edit"
-  sleep 2
   @store_settings = @manage_stores.edit
-  sleep 1
   test_result = "Amazon Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
   log.info test_result
   if @store_settings.nil? || !(@store_settings.present?)

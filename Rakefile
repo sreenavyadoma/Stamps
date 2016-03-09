@@ -2,13 +2,18 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-Cucumber::Rake::Task.new(:rakuten_store) do |t|
-  t.profile = 'rakuten_store'
+Cucumber::Rake::Task.new(:rakuten) do |t|
+  t.profile = 'rakuten'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:volusion_store) do |t|
-  t.profile = 'volusion_store'
+Cucumber::Rake::Task.new(:volusion) do |t|
+  t.profile = 'volusion'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:amazon) do |t|
+  t.profile = 'amazon'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -19,11 +24,6 @@ end
 
 Cucumber::Rake::Task.new(:import_orders) do |t|
   t.profile = 'import_orders'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:amazon_store) do |t|
-  t.profile = 'amazon_store'
   t.cucumber_opts = "-p cuke_reports"
 end
 

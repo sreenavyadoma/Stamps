@@ -145,7 +145,21 @@ module Orders
         raise server_error.message if server_error.present?
         settings
       end
+    end
 
+    class ModifyVolusionStore < Volusion
+
+      def window_title
+        StampsLabel.new(@browser.div :text => "Modify your Volusion Store Connection")
+      end
+
+      def present?
+        window_title.present?
+      end
+
+      def wait_until_present
+        window_title.wait_until_present
+      end
     end
 
   end
