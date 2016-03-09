@@ -37,17 +37,15 @@ module Orders
 
       def delete
         button = StampsButton.new delete_btn
-        20.times do
-          sleep 1
+        5.times do
           break if button.present?
         end
 
         raise "Delete Store Modal is not present." unless button.present?
 
-        10.times do
+        5.times do
           button.safe_click
           button.safe_click
-          sleep 1
           break unless present?
         end
       end
@@ -340,11 +338,9 @@ module Orders
                       checkbox.check
                       sleep 1
                       del_btn.safe_click
-                      #delete_modal.wait_until_present
                       delete_modal.delete
                       delete_modal.delete
                       sleep 1
-                      #browser_helper.wait_while_present table
                       break unless delete_modal.present?
                       break unless delete_modal.present?
                     end
@@ -437,12 +433,12 @@ module Orders
         button = StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
         raise "No Store selected from Manage Store grid or Reconnect button is not present.  Check your test" unless button.present?
         amazon = ModifyAmazonStore.new @browser
-        volusion = Volusion.new @browser
+        volusion = ModifyVolusionStore.new @browser
         rakuten = Rakuten.new @browser
 
         15.times do
           button.safe_click
-          sleep 3
+          sleep 2
           return rakuten if rakuten.present?
           return volusion if volusion.present?
           return amazon if amazon.present?

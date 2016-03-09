@@ -43,3 +43,8 @@ Feature:  Volusion Store Management
 
 
 
+
+
+      #Then Store Settings: Set Service Mapping 1, Requested Services random, Shipping Service First-Class Mail Postcard
+      #Then Store Settings: Set Service Mapping 2, Requested Services random, Shipping Service Priority Mail Package
+      #Then Store Settings: Set Service Mapping 3, Requested Services random, Shipping Service Priority Mail Small Flat Rate Box
