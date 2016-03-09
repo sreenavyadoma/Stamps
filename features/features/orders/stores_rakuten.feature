@@ -29,6 +29,8 @@ Feature:  Import Rakuten Orders
       Then Toolbar: Refresh Orders
 
       Then Manage Stores: Select Store random
+
+      # Test Reconnect
       Then Manage Stores: Reconnect
 
       Then Rakuten Store: Set Rakuten Seller ID 40549242

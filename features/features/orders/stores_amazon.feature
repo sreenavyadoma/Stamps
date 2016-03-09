@@ -27,6 +27,8 @@ Feature:  Amazon Store Management
       Then Toolbar: Refresh Orders
 
       Then Manage Stores: Select Store random
+
+      # Test Reconnect
       Then Manage Stores: Reconnect
 
       Then Amazon Store: Set Amazon Seller ID to A1BX1F0B3I9QDV

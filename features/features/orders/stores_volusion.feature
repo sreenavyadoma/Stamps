@@ -23,6 +23,8 @@ Feature:  Volusion Store Management
 
       Then Toolbar: Refresh Orders
       Then Manage Stores: Select Store random
+
+      # Test Reconnect
       Then Manage Stores: Reconnect
 
       Then Volusion Store: Set Volusion API to http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
