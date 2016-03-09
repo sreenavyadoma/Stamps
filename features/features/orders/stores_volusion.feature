@@ -36,6 +36,16 @@ Feature:  Volusion Store Management
       Then Store Settings: Check Automatically Import New Orders
       Then Store Settings: Save
 
+      # Edit Store
+      Then Manage Stores: Select Store random
+      Then Manage Stores: Edit
+
+      Then Store Settings: Set Store Nickname to random
+
+      Then Store Settings: Check Automatically Import New Orders
+      Then Store Settings: Save
+      Then Toolbar: Refresh Orders
+
       # Delete Store
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
