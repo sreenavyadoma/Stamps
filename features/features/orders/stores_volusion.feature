@@ -19,7 +19,7 @@ Feature:  Volusion Store Management
       Then Volusion Store: Connect
 
       Then Store Settings: Set Store Nickname to random
-      Then Store Settings: Check Automatically Import New Orders
+      Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
 
       Then Toolbar: Refresh Orders
@@ -33,7 +33,7 @@ Feature:  Volusion Store Management
       Then Volusion Store: Connect
 
       Then Store Settings: Set Store Nickname to random
-      Then Store Settings: Check Automatically Import New Orders
+      Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
 
       # Edit Store
@@ -42,7 +42,7 @@ Feature:  Volusion Store Management
 
       Then Store Settings: Set Store Nickname to random
 
-      Then Store Settings: Check Automatically Import New Orders
+      Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
       Then Toolbar: Refresh Orders
 
