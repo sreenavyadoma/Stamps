@@ -278,6 +278,22 @@ module Orders
         end
         raise "Rakuten Store Modal did not open."
       end
+
+      def etsy_button
+        StampsButton.new (@browser.imgs :css => "img[src*='etsy']").last
+      end
+
+      def etsy
+        button = etsy_button
+        store = Etsy.new @browser
+        10.times do
+          button.safe_click
+          sleep 2
+          return store if store.present?
+        end
+        raise "Rakuten Store Modal did not open."
+      end
+
     end
 
     class ManageStores < OrdersObject
@@ -435,7 +451,7 @@ module Orders
         button = StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
         raise "No Store selected from Manage Store grid or Reconnect button is not present.  Check your test" unless button.present?
         amazon = ModifyAmazonStore.new @browser
-        volusion = ModifyVolusionStore.new @browser
+        volusion = ReconnectVolusionStore.new @browser
         rakuten = Rakuten.new @browser
 
         15.times do

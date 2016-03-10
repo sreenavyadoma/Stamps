@@ -1,9 +1,8 @@
 module Orders
   module Stores
-
-    class VolusionSettings < StoreSettings
+    class EtsySettings < StoreSettings
       def window_title
-        StampsLabel.new @browser.div text: "Volusion Settings"
+        StampsLabel.new @browser.div text: "Rakuten Settings"
       end
 
       def present?
@@ -15,91 +14,61 @@ module Orders
       end
     end
 
-    class Volusion < OrdersObject
+    class Etsy < OrdersObject
+
+      def window_title
+        StampsLabel.new(@browser.div :text => "Connect your Rakuten Store")
+      end
+
       def present?
-        connect_button.present?
+        seller_id.present?
       end
 
-      def api_url url
-        textbox = StampsTextbox.new @browser.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
-        textbox.set url
-      end
-
-      def test_connection
-        button = StampsButton.new @browser.span(text: "Test Connection")
-        connected = connect_button
-        20.times do
+      def close
+        button = StampsButton.new @browser.img(css: "div[id^=connectrakutenwindow-]>div:nth-child(2)>img")
+        5.times do
           button.safe_click
-          button.safe_click
-          sleep 1
-          break if connected.present?
+          break unless present?
         end
       end
 
-      def connect_button
-        StampsButton.new @browser.span(text: "Connect")
+      def seller_id
+        StampsTextbox.new @browser.text_field(name: "RakutenSellerID")
+      end
+
+      def etsy_username
+
+      end
+
+      def find_my_shops
+
+      end
+
+      def available_shops
+
       end
 
       def connect
-        button = connect_button
-        settings = VolusionSettings.new @browser
-        server_error = Orders::ServerError.new @browser
+        button = StampsButton.new @browser.span(text: "Connect")
+        settings = RakutenSettings.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
-        20.times do
+        10.times do
           button.safe_click
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
           end
           button.safe_click
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
           end
           sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
+          return settings if settings.present?
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
           end
           sleep 1
           if importing_order.present?
@@ -118,10 +87,44 @@ module Orders
             log.info importing_order.message
             importing_order.ok
           end
+          return settings if settings.present?
+          sleep 1
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
           end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          return settings if settings.present?
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          return settings if settings.present?
+          sleep 1
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
@@ -140,17 +143,14 @@ module Orders
           end
           return settings if settings.present?
         end
-
-        self.close if self.present?
-        raise server_error.message if server_error.present?
-        settings
+        raise "Rakuten Store Connect failed.  Settings Modal did not open.  "
       end
     end
 
-    class ReconnectVolusionStore < Volusion
+    class ReconnectEtsyStore < Rakuten
 
       def window_title
-        StampsLabel.new(@browser.div :text => "Modify your Volusion Store Connection")
+        StampsLabel.new(@browser.div :text => "Modify your Rakuten Store Connection")
       end
 
       def present?
