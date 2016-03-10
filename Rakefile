@@ -353,6 +353,12 @@ Cucumber::Rake::Task.new(:wp_label_right_side) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:wp_shipping_label_preview_panel_options) do |t|
+  t.profile = 'wp_shipping_label_preview_panel_options'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
 Cucumber::Rake::Task.new(:rob_dev) do |t|
   t.profile = 'rob_dev'
   t.cucumber_opts = "-p cuke_reports"
