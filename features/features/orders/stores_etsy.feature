@@ -4,7 +4,7 @@ Feature:  Amazon Store Management
   Background:
     Given I am signed in to Orders
 
-    @amazon
+    @etsy
     Scenario: Store Management - Amazon Store
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
@@ -12,14 +12,9 @@ Feature:  Amazon Store Management
       # Add Store
       Then Manage Stores: Add
 
-      Then Marketplace: Select Amazon
+      Then Marketplace: Select Etsy
 
-      Then Amazon Store: Set Amazon Seller ID to A1BX1F0B3I9QDV
-      Then Amazon Store: Set Amazon MWS Auth Token to amzn.mws.caa9355f-c8a9-768e-bf55-8b51e73b8f98
-      Then Amazon Store: Click Verify Seller ID button
-      Then Amazon Store: Set Order Source to Amazon.com
-      Then Amazon Store: Set Product Identifier to Use SKU
-      Then Amazon Store: Connect for the first time expecting Amazon Settings modal
+      # Etsy store modal functions here
 
       Then Store Settings: Set Store Nickname to random
 
@@ -32,12 +27,7 @@ Feature:  Amazon Store Management
       # Reconnect Store
       Then Manage Stores: Reconnect
 
-      Then Amazon Store: Set Amazon Seller ID to A1BX1F0B3I9QDV
-      Then Amazon Store: Set Amazon MWS Auth Token to amzn.mws.caa9355f-c8a9-768e-bf55-8b51e73b8f98
-      Then Amazon Store: Click Verify Seller ID button
-      Then Amazon Store: Set Order Source to Amazon.com
-      Then Amazon Store: Set Product Identifier to Use SKU
-      Then Amazon Store: Connect
+      # Etsy store modal functions here
 
       # Edit Store
       Then Manage Stores: Select Store random

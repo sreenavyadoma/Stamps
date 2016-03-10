@@ -9,7 +9,7 @@ Feature:  Import Rakuten Orders
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
 
-      # Test Add
+      # Add Store
       Then Manage Stores: Add
 
       Then Marketplace: Select Rakuten
@@ -31,7 +31,7 @@ Feature:  Import Rakuten Orders
 
       Then Manage Stores: Select Store random
 
-      # Test Reconnect
+      # Reconnect Store
       Then Manage Stores: Reconnect
 
       Then Rakuten Store: Set Rakuten Seller ID 40549242
@@ -49,6 +49,17 @@ Feature:  Import Rakuten Orders
       Then Store Settings: Save
       Then Toolbar: Refresh Orders
 
+      # Edit Store
+      Then Manage Stores: Select Store random
+      Then Manage Stores: Edit
+
+      Then Store Settings: Set Store Nickname to random
+
+      Then Store Settings: Check Automatically Import New Orders
+      Then Store Settings: Save
+      Then Toolbar: Refresh Orders
+
+      # Delete Store
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
       Then Toolbar: Refresh Orders

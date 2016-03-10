@@ -13,3 +13,8 @@ Then /^Marketplace: Select Rakuten$/ do
   @store = @market_place.rakuten
 end
 
+Then /^Marketplace: Select Etsy$/ do
+  step "Manage Stores: Add" if @market_place.nil?
+  @store = @market_place.etsy
+end
+

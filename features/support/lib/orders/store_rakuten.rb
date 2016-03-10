@@ -161,7 +161,7 @@ module Orders
       end
     end
 
-    class ModifyRakutenStore < Rakuten
+    class ReconnectRakutenStore < Rakuten
 
       def window_title
         StampsLabel.new(@browser.div :text => "Modify your Rakuten Store Connection")

@@ -12,7 +12,6 @@ module Pam
           raise "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
       end
 
-
       log.info "Visit: #{url}"
       @browser.goto url
       #self..wait_until_present

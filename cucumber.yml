@@ -1,7 +1,7 @@
-default: --profile cuke_reports --profile eli_dev
+default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @store --guess VERBOSE=true URL=qasc BROWSER=firefox USR=yh95ws85j PW=pass111
+rob_dev: --tags @volusion --guess VERBOSE=true URL=qasc BROWSER=firefox USR=yh95ws85j PW=pass111
 
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
