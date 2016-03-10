@@ -25,7 +25,7 @@ Feature:  Import Rakuten Orders
 
       Then Store Settings: Set Store Nickname to random
 
-      Then Store Settings: Check Automatically Import New Orders
+      Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
       Then Toolbar: Refresh Orders
 
@@ -45,7 +45,7 @@ Feature:  Import Rakuten Orders
 
       Then Store Settings: Set Store Nickname to random
 
-      Then Store Settings: Check Automatically Import New Orders
+      Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
       Then Toolbar: Refresh Orders
 
@@ -55,7 +55,7 @@ Feature:  Import Rakuten Orders
 
       Then Store Settings: Set Store Nickname to random
 
-      Then Store Settings: Check Automatically Import New Orders
+      Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
       Then Toolbar: Refresh Orders
 

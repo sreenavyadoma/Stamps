@@ -16,8 +16,8 @@ Then /^Store Settings: Set Service Mapping (\d+), Requested Services (.*), Shipp
   service_mapping_item.shipping_Service.select shipping_service
 end
 
-Then /^Store Settings: Check Automatically Import New Orders$/ do
-  log.info "Store Settings: Check Automatically Import New Orders"
+Then /^Store Settings: Set Automatically Import New Orders to checked$/ do
+  log.info "Store Settings: Set Automatically Import New Orders to checked"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   sleep 1
   @store_settings.automatically_import_new_orders.check
