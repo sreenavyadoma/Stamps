@@ -79,6 +79,6 @@ wp_bvt_netstamps_specify: --tags  @wp_bvt_netstamps_specify --guess VERBOSE=fals
 wp_bvt_international: --tags  @wp_bvt_international --guess VERBOSE=false
 
 wp_label_left_side: --tags  @wp_label_left_side --guess VERBOSE=false
-wp_label_right_side: --tags  @wp_label_left_side --guess VERBOSE=false
+wp_label_right_side: --tags  @wp_label_right_side --guess VERBOSE=false
 wp_shipping_label_preview_panel_options: --tags  @wp_shipping_label_preview_panel_options --guess VERBOSE=false
 
