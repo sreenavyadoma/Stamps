@@ -147,7 +147,7 @@ module Orders
       end
     end
 
-    class ReconnectEtsyStore < Rakuten
+    class ReconnectEtsyStore < Etsy
 
       def window_title
         StampsLabel.new(@browser.div :text => "Modify your Rakuten Store Connection")
