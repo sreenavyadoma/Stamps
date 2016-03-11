@@ -23,6 +23,7 @@ Then /^Etsy Store: Connect then sign in with Etsy credentials (.*)\/(.*)$/ do |u
   log.info "Etsy Store: Connect"
   raise "Etsy Store modal is not visible or present.  Check your test workflow" if @store.nil?
   @store_settings = @store.connect username, password
+  log.info @store_settings.nil?
 end
 
 

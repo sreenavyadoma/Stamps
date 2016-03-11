@@ -47,7 +47,7 @@ module Orders
 
         10.times do
           button.send_keys :enter
-          button.safe_click
+
           sleep 2
           if sign_in_page.present?
             sign_in_page.username.set username
@@ -58,11 +58,13 @@ module Orders
               break if page.present?
             end
             settings = page.allow_access
+            sleep 1
             return settings
           end
 
           if etsy_page.present?
             settings = etsy_page.allow_access
+            sleep 1
             return settings
           end
         end
@@ -137,7 +139,7 @@ module Orders
         10.times do
           @browser.execute_script("window.scrollBy(0,400)")
           button.send_keys :enter
-          button.safe_click
+
           sleep 2
           return settings if settings.present?
         end

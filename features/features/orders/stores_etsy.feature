@@ -35,12 +35,6 @@ Feature:  Amazon Store Management
       Then Etsy Store: Set Available Shops
       Then Etsy Store: Connect then sign in with Etsy credentials StampsDC/etsydevSTMP1234
 
-      Then Store Settings: Set Store Nickname to random
-
-      Then Store Settings: Set Automatically Import New Orders to checked
-      Then Store Settings: Save
-      Then Toolbar: Refresh Orders
-
       # Edit Store
       Then Manage Stores: Select Store random
       Then Manage Stores: Edit
