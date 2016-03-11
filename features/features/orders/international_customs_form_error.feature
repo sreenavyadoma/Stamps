@@ -13,17 +13,17 @@ Feature:  Customs Form Data Tooltip Error
     Then Order Details: Set Ounces to 5
     Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"
     Then Open Customs Form
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     Then Cancel Customs Form
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     Then Open Customs Form
     Then Customs Form: Set I agree to Checked
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     Then Customs Form: Set I agree to Unchecked
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     #Then Expect Customs Form USPS Privacy Act Warning to be visible
     Then Customs Form: Set I agree to Checked
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     #Then Expect Customs Form USPS Privacy Act Warning to be hidden
     Then Customs Form: Set I agree to Unchecked
     Then Expect Customs Form Tooltip Error for Item Description to be Description is a required field
