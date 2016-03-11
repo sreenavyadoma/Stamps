@@ -25,7 +25,7 @@ module Orders
       end
 
       def etsy_username
-        StampsTextbox.new @browser.text_field(css: "div[id^=connectetsywindow-][id$=-body]>div>div>div>div>div>div>div>div>div>div>div>div>div>div>div>div>div>div>div>input")
+        StampsTextbox.new (@browser.text_fields(css: "input[type=text][role=textbox][data-ref=inputEl]").last)
       end
 
       def find_my_shops
@@ -135,7 +135,6 @@ module Orders
         settings = EtsySettings.new @browser
 
         10.times do
-          @browser.execute_script("window.scrollBy(0,400)")
           @browser.execute_script("window.scrollBy(0,400)")
           button.send_keys :enter
           button.safe_click
