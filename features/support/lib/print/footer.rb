@@ -15,6 +15,11 @@ module Print
 
       def print_international
         print_button.safe_click
+        confirm_window = Print::Postage::ConfirmModal.new @browser
+        if confirm_window.present?
+          log.info "Confirm Print"
+          confirm_window.confirm
+        end
       end
 
       def print_button
