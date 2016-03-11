@@ -1,11 +1,11 @@
 
-Feature:  Amazon Store Management
+Feature:  Etsy Store Management
 
   Background:
     Given I am signed in to Orders
 
     @etsy
-    Scenario: Store Management - Amazon Store
+    Scenario: Store Management - Etsy Store
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
 
