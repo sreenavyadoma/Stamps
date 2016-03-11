@@ -3,6 +3,8 @@ Then /^Etsy Store: Set Etsy Username to (.*)$/ do |etsy_username|
   log.info "Etsy Store: Set Etsy Username to #{etsy_username}"
   raise "Etsy Store modal is not visible or present.  Check your test workflow" if @store.nil?
   @store.etsy_username.set etsy_username
+  @store.etsy_username.set etsy_username
+  @store.etsy_username.set etsy_username
 end
 
 Then /^Etsy Store: Find My Shops$/ do
