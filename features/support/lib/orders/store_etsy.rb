@@ -46,7 +46,7 @@ module Orders
         sign_in_page = EtsySignInPage.new @browser
 
         10.times do
-          button.send_keys :enter
+          button.safe_click
 
           sleep 2
           if sign_in_page.present?
@@ -68,7 +68,7 @@ module Orders
             return settings
           end
         end
-        raise "Rakuten Store Connect failed.  Settings Modal did not open.  "
+        raise "Etsy Store Connect failed.  Settings Modal did not open.  "
       end
     end
 
