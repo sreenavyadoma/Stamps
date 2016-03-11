@@ -47,7 +47,6 @@ module Orders
 
         10.times do
           button.safe_click
-
           sleep 2
           if sign_in_page.present?
             sign_in_page.username.set username
@@ -136,13 +135,14 @@ module Orders
         button = StampsInput.new @browser.input(css: 'input[type=submit]')
         settings = EtsySettings.new @browser
 
-        10.times do
+        3.times do
           @browser.execute_script("window.scrollBy(0,400)")
           button.send_keys :enter
-
-          sleep 2
+          button.safe_click
+          sleep 5
           return settings if settings.present?
         end
+        raise "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal."
       end
     end
 
