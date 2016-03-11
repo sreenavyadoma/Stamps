@@ -69,6 +69,36 @@ module Orders
         end
         raise "Etsy Store Connect failed.  Settings Modal did not open.  "
       end
+
+      def reconnect username, password
+        button = StampsButton.new @browser.span(text: "Connect")
+        etsy_page = EtsyPage.new @browser
+        sign_in_page = EtsySignInPage.new @browser
+
+        10.times do
+          button.safe_click
+          sleep 2
+          if sign_in_page.present?
+            sign_in_page.username.set username
+            sign_in_page.password.set password
+            page = sign_in_page.sign_in
+            10.times do
+              sleep 1
+              break if page.present?
+            end
+            settings = page.allow_access_after_reconnect
+            sleep 1
+            return settings
+          end
+
+          if etsy_page.present?
+            settings = etsy_page.allow_access_after_reconnect
+            sleep 1
+            return settings
+          end
+        end
+        raise "Etsy Store Connect failed.  Settings Modal did not open.  "
+      end
     end
 
     class ModifyEtsyStore < Etsy
@@ -141,6 +171,20 @@ module Orders
           button.safe_click
           sleep 5
           return settings if settings.present?
+        end
+        raise "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal."
+      end
+
+      def allow_access_after_reconnect
+        button = StampsInput.new @browser.input(css: 'input[type=submit]')
+        manage_stores = ManageStores.new @browser
+
+        3.times do
+          @browser.execute_script("window.scrollBy(0,400)")
+          button.send_keys :enter
+          button.safe_click
+          sleep 5
+          return manage_stores if manage_stores.present?
         end
         raise "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal."
       end

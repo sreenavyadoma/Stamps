@@ -15,7 +15,7 @@ Feature:  Amazon Store Management
       Then Marketplace: Select Etsy
 
       # Etsy store modal functions here
-      Then Pause for 2 seconds
+      Then Pause for 1 seconds
       Then Etsy Store: Set Etsy Username to StampsDC
       Then Etsy Store: Find My Shops
       Then Etsy Store: Set Available Shops
@@ -27,16 +27,16 @@ Feature:  Amazon Store Management
       Then Store Settings: Save
 
       # Reconnect Store
-      Then Pause for 2 seconds
+      Then Pause for 1 seconds
       Then Manage Stores: Select Store random
       Then Manage Stores: Reconnect
       Then Etsy Store: Set Etsy Username to StampsDC
       Then Etsy Store: Find My Shops
       Then Etsy Store: Set Available Shops
-      Then Etsy Store: Connect then sign in with Etsy credentials StampsDC/etsydevSTMP1234
+      Then Etsy Store: Reconnect then sign in with Etsy credentials StampsDC/etsydevSTMP1234
 
       # Edit Store
-      Then Pause for 2 seconds
+      Then Pause for 1 seconds
       Then Manage Stores: Select Store random
       Then Manage Stores: Edit
 
@@ -44,7 +44,7 @@ Feature:  Amazon Store Management
       Then Store Settings: Save
 
       # Delete Store
-      Then Pause for 2 seconds
+      Then Pause for 1 seconds
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
       Then Toolbar: Refresh Orders
