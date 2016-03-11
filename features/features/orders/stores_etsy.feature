@@ -15,6 +15,10 @@ Feature:  Amazon Store Management
       Then Marketplace: Select Etsy
 
       # Etsy store modal functions here
+      Then Etsy Store: Set Etsy Username to StampsDC
+      Then Etsy Store: Find My Shops
+      Then Etsy Store: Set Available Shops
+      Then Etsy Store: Connect then sign in with Etsy credentials StampsDC/etsydevSTMP1234
 
       Then Store Settings: Set Store Nickname to random
 
@@ -26,8 +30,16 @@ Feature:  Amazon Store Management
 
       # Reconnect Store
       Then Manage Stores: Reconnect
+      Then Etsy Store: Set Etsy Username to StampsDC
+      Then Etsy Store: Find My Shops
+      Then Etsy Store: Set Available Shops
+      Then Etsy Store: Connect then sign in with Etsy credentials StampsDC/etsydevSTMP1234
 
-      # Etsy store modal functions here
+      Then Store Settings: Set Store Nickname to random
+
+      Then Store Settings: Set Automatically Import New Orders to checked
+      Then Store Settings: Save
+      Then Toolbar: Refresh Orders
 
       # Edit Store
       Then Manage Stores: Select Store random
