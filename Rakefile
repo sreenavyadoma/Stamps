@@ -353,11 +353,50 @@ Cucumber::Rake::Task.new(:wp_label_right_side) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:wp_envelope_10) do |t|
+  t.profile = 'wp_envelope_10'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_envelope_9) do |t|
+  t.profile = 'wp_envelope_9'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_envelope_A9) do |t|
+  t.profile = 'wp_envelope_A9'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_envelope_6) do |t|
+  t.profile = 'wp_envelope_6'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_envelope_A2) do |t|
+  t.profile = 'wp_envelope_A2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_envelope_7) do |t|
+  t.profile = 'wp_envelope_7'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_envelope_11) do |t|
+  t.profile = 'wp_envelope_11'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_envelope_12) do |t|
+  t.profile = 'wp_envelope_12'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:wp_shipping_label_preview_panel_options) do |t|
   t.profile = 'wp_shipping_label_preview_panel_options'
   t.cucumber_opts = "-p cuke_reports"
 end
-
 
 Cucumber::Rake::Task.new(:rob_dev) do |t|
   t.profile = 'rob_dev'
