@@ -2046,11 +2046,19 @@ module Orders
     end
 
     class InsureFor < OrdersObject
+      def checkbox
+        field = (@browser.inputs(css: "input[id^=checkbox-][id$=-inputEl][class*=checkbox]").last)
+        verify = field.parent.parent.parent.parent
+        StampsCheckbox.new field, verify, "class", "checked"
+      end
+
       def text_box
         StampsTextbox.new @browser.text_field :name => "InsuredValue"
       end
 
       def set value
+        checkbox.check
+        sleep 1
         text_box.set value
       end
 
