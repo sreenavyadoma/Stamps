@@ -1,0 +1,26 @@
+Shopify
+https://stampswebdev.atlassian.net/wiki/display/ORDERS/Shopify
+
+Skip to end of metadata
+Created by Robert Robinson, last modified on Mar 02, 2016 Go to start of metadata
+Account for logging into the developer site
+          username: batchstore@stamps.com
+          password: $tampsPr0d2015
+
+Testing Environment: http://docs.shopify.com/themes/theme-development/getting-started/development-environment
+ Partner:  https://www.shopify.com/partners
+ Production Testing: http://docs.shopify.com/manual/your-store/orders/test-orders
+Setup a bogus payment gateway for testing
+Create a listing and accept other methods of payment to allow for testing
+Create orders and manually mark an order as paid
+
+Seller Name:  Qashopify Stamps
+Email:   qaclient@stamps.com
+Password: Postage1
+Shop Name:  SDCQA
+Shop URL:   http://sdcqa.myshopify.com/admin
+Store Site (Items):
+http://sdcqa.myshopify.com/products/sdc-lantern
+http://sdcqa.myshopify.com/products/sdc-lantern2
+
+Buyer:  Each QA/Dev person can setup their own individual buyer account

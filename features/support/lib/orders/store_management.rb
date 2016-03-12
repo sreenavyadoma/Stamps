@@ -294,6 +294,36 @@ module Orders
         raise "Etsy Store Modal did not open."
       end
 
+      def shopify_button
+        StampsButton.new (@browser.imgs :css => "img[src*='shopify']").last
+      end
+
+      def shopify
+        button = etsy_button
+        store = Shopify.new @browser
+        10.times do
+          button.safe_click
+          sleep 1
+          return store if store.present?
+        end
+        raise "Etsy Store Modal did not open."
+      end
+
+      def ebay_button
+        StampsButton.new (@browser.imgs :css => "img[src*='ebay']").last
+      end
+
+      def ebay
+        button = etsy_button
+        store = Ebay.new @browser
+        10.times do
+          button.safe_click
+          sleep 1
+          return store if store.present?
+        end
+        raise "Etsy Store Modal did not open."
+      end
+
     end
 
     class ManageStores < OrdersObject
