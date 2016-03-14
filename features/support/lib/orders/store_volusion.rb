@@ -147,7 +147,7 @@ module Orders
       end
     end
 
-    class ReconnectVolusionStore < Volusion
+    class ModifyVolusionStore < Volusion
 
       def window_title
         StampsLabel.new(@browser.div :text => "Modify your Volusion Store Connection")

@@ -1,18 +1,23 @@
 
-Feature:  Etsy Store Management
+Feature:  Shopify Store Management
 
   Background:
     Given I am signed in to Orders
 
-    @etsy
-    Scenario: Store Management - Etsy Store
+    @shopify
+    Scenario: Store Management - Shopify Store
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores in Grid
 
       # Add Store
       Then Manage Stores: Add
 
-      Then Marketplace: Select Etsy
+      Then Marketplace: Select Shopify
+
+      # Shopify Modal
+      #Then Shopify Store: Set Shopify Domain to http://sdcqa.myshopify.com
+      #Then Shopify Store: Test Connection
+      #Then Shopify Store: Connect
 
       # Etsy store modal functions here
       Then Pause for 1 second

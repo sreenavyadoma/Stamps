@@ -40,13 +40,13 @@ Feature: Registration
     Then Orders: Load Sign-in page
     Then Orders: First Time Sign-in to Orders as random/pass111
     Then Add New Order
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     Then Open Settings Modal
     Then Settings:  Set Logoff to 2 hours.
     Then Settings:  Save
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     Then Sign out
     Then WebReg:  Send username to standard out
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     #Then Orders Grid:  Order ID: Column: Check Reference Number
     #Then Orders Grid: Order ID: Sort Ascending

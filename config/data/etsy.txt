@@ -1,0 +1,29 @@
+
+Overview
+We will allow users to create a connection to an Etsy store for order importing and postback.
+As with other stores, we will be creating our own version of the store creation workflow—modeled on the ShipStation workflow—and will be using our own API credentials on the ShipStation server.
+1 - User Creates Etsy Store Connection
+1. User views Manage Stores dialog and clicks Add button per existing behavior.
+2. System displays a list of Stores per existing behavior. List now includes a logo for Etsy (see §2).
+3. Etsy will be included in the search functionality on this dialog—user can search for "Etsy" and Etsy should remain in the list.
+4. User can select Etsy to begin the store creation workflow for Etsy. This flow should be identical to the ShipStation workflow, and will tie into the Stamps.com API credentials on ShipStation.
+2 – Etsy Logos
+Large logo (used in Add Store list of stores) is in this folder:
+http://sdcintranet/ProductAndServiceOperations/ProductManagement/Product%20Management%20Documents/Forms/AllItems.aspx?RootFolder=%2FProductAndServiceOperations%2FProductManagement%2FProduct%20Management%20Documents%2FWeb%20Client%2FWeb%20Batch%2FStore%20Logos
+Small logo (used in Manage Stores dialog and Orders grid) can be found in this sprite sheet:
+http://sdcintranet/ProductAndServiceOperations/ProductManagement/Product%20Management%20Documents/Web%20Client/Web%20Batch/Store%20Logos/small-sprite-sheet.png
+
+
+Notes for Testing:
+Etsy testing must be done in production:
+https://www.etsy.com/developers/documentation/getting_started/testing
+Seller: QAEtsy Stamps
+Email: qaclient@stamps.com
+Username: StampsDC
+Password: etsydevSTMP1234
+Shop Name: SDCQA (Shop is in developer mode. Which means the public cannot see it unless giving the item URL)
+Buyer: Use the URL below to make purchase.
+Product Item Location: https://www.etsy.com/listing/220279019/zoe-shot
+Buyer: Each QA/Dev person can setup their own individual buyer account, use this account to purchase the item listed above.
+Seller: After the item is purchased login to the seller account and find the item purchased listed under Orders. Mark the order as Paid.
+

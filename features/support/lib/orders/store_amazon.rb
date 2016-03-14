@@ -51,11 +51,11 @@ module Orders
 
       class ProductIdentifier < OrdersObject
         def text_box
-          StampsTextbox.new (@browser.text_field :css => "div[id^=connectamazonwindow-][id$=-body][class$=resizable]>div>div>div>div>div>div>div>div>div>div:nth-child(9)>div>div>div>div>div>div>input")
+          StampsTextbox.new (@browser.text_field :css => "input[name^=combo-][name$=-inputEl]")
         end
 
         def drop_down
-          StampsButton.new (@browser.b text: "Product Identifier").parent.parent.div.div.div.divs[1]
+          StampsButton.new ((@browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")).last)
         end
 
         def select selection

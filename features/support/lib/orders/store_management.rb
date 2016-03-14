@@ -288,10 +288,40 @@ module Orders
         store = Etsy.new @browser
         10.times do
           button.safe_click
-          sleep 2
+          sleep 1
           return store if store.present?
         end
-        raise "Rakuten Store Modal did not open."
+        raise "Etsy Store Modal did not open."
+      end
+
+      def shopify_button
+        StampsButton.new (@browser.imgs :css => "img[src*='shopify']").last
+      end
+
+      def shopify
+        button = etsy_button
+        store = Shopify.new @browser
+        10.times do
+          button.safe_click
+          sleep 1
+          return store if store.present?
+        end
+        raise "Etsy Store Modal did not open."
+      end
+
+      def ebay_button
+        StampsButton.new (@browser.imgs :css => "img[src*='ebay']").last
+      end
+
+      def ebay
+        button = etsy_button
+        store = Ebay.new @browser
+        10.times do
+          button.safe_click
+          sleep 1
+          return store if store.present?
+        end
+        raise "Etsy Store Modal did not open."
       end
 
     end
@@ -438,12 +468,15 @@ module Orders
         rakuten_settings = RakutenSettings.new @browser
         amazon_settings = AmazonSettings.new @browser
         volusion_settings = VolusionSettings.new @browser
+        etsy_settings = EtsySettings.new @browser
+
         10.times do
           button.safe_click
           sleep 2
           return rakuten_settings if rakuten_settings.present?
           return amazon_settings if amazon_settings.present?
           return volusion_settings if volusion_settings.present?
+          return etsy_settings if etsy_settings.present?
         end
       end
 
@@ -451,8 +484,9 @@ module Orders
         button = StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
         raise "No Store selected from Manage Store grid or Reconnect button is not present.  Check your test" unless button.present?
         amazon = ModifyAmazonStore.new @browser
-        volusion = ReconnectVolusionStore.new @browser
-        rakuten = Rakuten.new @browser
+        volusion = ModifyVolusionStore.new @browser
+        rakuten = ModifyRakutenStore.new @browser
+        etsy = ModifyEtsyStore.new @browser
 
         15.times do
           button.safe_click
@@ -460,6 +494,7 @@ module Orders
           return rakuten if rakuten.present?
           return volusion if volusion.present?
           return amazon if amazon.present?
+          return etsy if etsy.present?
         end
       end
 

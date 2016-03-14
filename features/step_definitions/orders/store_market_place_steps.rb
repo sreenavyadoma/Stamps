@@ -18,3 +18,13 @@ Then /^Marketplace: Select Etsy$/ do
   @store = @market_place.etsy
 end
 
+Then /^Marketplace: Select Ebay$/ do
+  step "Manage Stores: Add" if @market_place.nil?
+  @store = @market_place.ebay
+end
+
+Then /^Marketplace: Select Shopify$/ do
+  step "Manage Stores: Add" if @market_place.nil?
+  @store = @market_place.shopify
+end
+

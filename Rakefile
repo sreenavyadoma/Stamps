@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:etsy) do |t|
+  t.profile = 'etsy'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:rakuten) do |t|
   t.profile = 'rakuten'
   t.cucumber_opts = "-p cuke_reports"

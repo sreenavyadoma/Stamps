@@ -12,7 +12,7 @@ Feature: Postage Balance
     Then Order Details: Set Service to "Priority Mail Package"
     Then Order Details: Set Insure For to $10.00
     Then Order Details: Set Tracking to "USPS Tracking"
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     Then Save Shipping Costs Data
     Then Open Print Modal
     Then Print Modal: Set Media "Shipping Label - 8 ½" x 11" Paper"
