@@ -5,7 +5,7 @@ rob_dev: --tags @bvt_add_new_order --guess VERBOSE=true URL=qasc BROWSER=firefox
 
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
-eli_dev: --tags @wp_envelope_A2 --guess VERBOSE=true URL=qacc BROWSER=ff USR=hal9000qa1 PW=password2
+eli_dev: --tags @multiple_reprint --guess VERBOSE=true URL=qacc BROWSER=ff USR=vistaie1000 PW=pass111
 ray_dev: --tags @reprint_change_status --guess VERBOSE=false URL=qacc BROWSER=ff USR=webpost_0017 PW=pass111
 eva_dev: --tags   @expand_order_details_panel --guess VERBOSE=true URL=qacc BROWSER=ff USR=ss_cctest3 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
@@ -69,6 +69,9 @@ new_country_code: --tags  @new_country_code --guess VERBOSE=false
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false
 international_rules_engine: --tags  @international_rules_engine --guess VERBOSE=false
 expand_order_details_panel: --tags  @expand_order_details_panel --guess VERBOSE=false
+multiple_reprint: --tags @multiple_reprint --guess VERBOSE=false
+
+
 
 wp_bvt: --tags  @wp_bvt --guess VERBOSE=false
 wp_bvt_address_cleansing: --tags  @wp_bvt_address_cleansing --guess VERBOSE=false
