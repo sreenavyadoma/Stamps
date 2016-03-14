@@ -303,6 +303,11 @@ Cucumber::Rake::Task.new(:expand_order_details_panel) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:multiple_reprint) do |t|
+  t.profile = 'multiple_reprint'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:wp_bvt) do |t|
   t.profile = 'wp_bvt'
   t.cucumber_opts = "-p cuke_reports"
@@ -422,3 +427,4 @@ Cucumber::Rake::Task.new(:eva_dev) do |t|
   t.profile = 'eva_dev'
   t.cucumber_opts = "-p cuke_reports"
 end
+
