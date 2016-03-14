@@ -469,6 +469,7 @@ module Orders
         amazon_settings = AmazonSettings.new @browser
         volusion_settings = VolusionSettings.new @browser
         etsy_settings = EtsySettings.new @browser
+        shopify_settings = ShopifySettings.new @browser
 
         10.times do
           button.safe_click
@@ -477,6 +478,7 @@ module Orders
           return amazon_settings if amazon_settings.present?
           return volusion_settings if volusion_settings.present?
           return etsy_settings if etsy_settings.present?
+          return shopify_settings if shopify_settings.present?
         end
       end
 
@@ -487,6 +489,7 @@ module Orders
         volusion = ModifyVolusionStore.new @browser
         rakuten = ModifyRakutenStore.new @browser
         etsy = ModifyEtsyStore.new @browser
+        shopify = ModifyShopifyStore.new @browser
 
         15.times do
           button.safe_click
@@ -495,6 +498,7 @@ module Orders
           return volusion if volusion.present?
           return amazon if amazon.present?
           return etsy if etsy.present?
+          return shopify if shopify.present?
         end
       end
 

@@ -14,6 +14,7 @@ bvt: --tags @bvt --guess VERBOSE=false
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
 # Stores
+shopify: --tags @shopify --guess VERBOSE=true
 etsy: --tags @etsy --guess VERBOSE=true
 rakuten: --tags @rakuten --guess VERBOSE=true
 volusion: --tags @volusion --guess VERBOSE=true

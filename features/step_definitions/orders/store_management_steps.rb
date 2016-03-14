@@ -42,6 +42,8 @@ Then /^Manage Stores: Select Store (.*)$/ do |store_name|
   raise "Unble to select store name: #{@store_name}.  Either it's nil or does not exist in the modal.  Check your test." if @store_name.nil?
   raise "Store name can't be nil or an empty String" if @store_name.nil? || @store_name.size == 0
   @manage_stores.stores_grid.select @store_name
+  @manage_stores.stores_grid.select @store_name
+  @manage_stores.stores_grid.select @store_name
 end
 
 Then /^Manage Stores: Delete All Stores in Grid$/ do
@@ -62,7 +64,7 @@ end
 Then /^Manage Stores: Edit$/ do
   log.info "Manage Stores: Edit"
   @store_settings = @manage_stores.edit
-  test_result = "Amazon Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
+  test_result = "Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
   log.info test_result
   if @store_settings.nil? || !(@store_settings.present?)
     raise test_result

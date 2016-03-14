@@ -46,6 +46,7 @@ module Orders
       def connect
         button = StampsButton.new @browser.span(text: "Connect")
         settings = ShopifySettings.new @browser
+        shopify = ShopifyPage.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
         10.times do
@@ -61,6 +62,7 @@ module Orders
           end
           sleep 1
           return settings if settings.present?
+          return shopify if shopify.present?
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
@@ -83,6 +85,7 @@ module Orders
             importing_order.ok
           end
           return settings if settings.present?
+          return shopify if shopify.present?
           sleep 1
           if importing_order.present?
             log.info importing_order.message
@@ -101,6 +104,7 @@ module Orders
             importing_order.ok
           end
           return settings if settings.present?
+          return shopify if shopify.present?
           sleep 1
           if importing_order.present?
             log.info importing_order.message
@@ -119,6 +123,7 @@ module Orders
             importing_order.ok
           end
           return settings if settings.present?
+          return shopify if shopify.present?
           sleep 1
           if importing_order.present?
             log.info importing_order.message
@@ -137,99 +142,147 @@ module Orders
             importing_order.ok
           end
           return settings if settings.present?
+          return shopify if shopify.present?
         end
-        raise "Rakuten Store Connect failed.  Settings Modal did not open.  "
-      end
-    end
-
-    class ModifyShopifyStore < Etsy
-
-      def window_title
-        StampsLabel.new(@browser.div :text => "Modify your Etsy Store Connection")
+        raise "Shopify Store Connect failed.  Settings Modal did not open.  "
       end
 
-      def present?
-        window_title.present?
-      end
-
-      def wait_until_present
-        window_title.wait_until_present
-      end
-    end
-
-    class ReconnectShopifyStore < Etsy
-
-      def window_title
-        StampsLabel.new(@browser.div :text => "Modify your Rakuten Store Connection")
-      end
-
-      def present?
-        window_title.present?
-      end
-
-      def wait_until_present
-        window_title.wait_until_present
-      end
-    end
-
-    class ShopifySignInPage < OrdersObject
-      def present?
-        browser_helper.present? @browser.text_field(id: 'username-existing')
-      end
-
-      def username
-        StampsTextbox.new @browser.text_field(id: 'username-existing')
-      end
-
-      def password
-        StampsTextbox.new @browser.text_field(id: 'password-existing')
-      end
-
-      def sign_in
-        button = StampsInput.new @browser.input(id: 'signin_button')
-        etsy_page = EtsyPage.new @browser
+      def reconnect
+        button = StampsButton.new @browser.span(text: "Connect")
+        manage_stores = ManageStores.new @browser
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
         10.times do
-          button.send_keys :enter
           button.safe_click
-          return etsy_page if etsy_page.present?
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          button.safe_click
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          return manage_stores if manage_stores.present?
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          return manage_stores if manage_stores.present?
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          return manage_stores if manage_stores.present?
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          return manage_stores if manage_stores.present?
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          return manage_stores if manage_stores.present?
         end
+      end
+    end
+
+    class ModifyShopifyStore < Shopify
+
+      def window_title
+        StampsLabel.new(@browser.div :text => "Modify your Shopify Store Connection")
+      end
+
+      def present?
+        window_title.present?
+      end
+
+      def wait_until_present
+        window_title.wait_until_present
       end
     end
 
     class ShopifyPage < OrdersObject
       def present?
-        @browser.url.include? "etsy.com"
+        @browser.url.include? "shopify.com"
       end
 
-      def allow_access
-        button = StampsInput.new @browser.input(css: 'input[type=submit]')
-        settings = EtsySettings.new @browser
-
-        3.times do
-          @browser.execute_script("window.scrollBy(0,400)")
-          button.send_keys :enter
-          button.safe_click
-          sleep 5
-          return settings if settings.present?
-        end
-        raise "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal."
+      def username
+        StampsTextbox.new @browser.text_field(id: 'login-input')
       end
 
-      def allow_access_after_reconnect
-        button = StampsInput.new @browser.input(css: 'input[type=submit]')
-        manage_stores = ManageStores.new @browser
+      def password
+        StampsTextbox.new @browser.text_field(id: 'password')
+      end
 
-        3.times do
-          @browser.execute_script("window.scrollBy(0,400)")
-          button.send_keys :enter
+      def sign_in
+        button = StampsInput.new @browser.input(css: "input[value='Log in']")
+        settings_page = ShopifySettings.new @browser
+
+        10.times do
           button.safe_click
           sleep 5
-          return manage_stores if manage_stores.present?
+          return settings_page if settings_page.present?
         end
-        raise "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal."
       end
     end
-
   end
 end

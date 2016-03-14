@@ -24,3 +24,4 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - left side
     Then Expect Print Modal left-side label selected
     Then Toolbar: Print
     Then Sign out
+
