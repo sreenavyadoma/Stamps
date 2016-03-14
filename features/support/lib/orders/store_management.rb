@@ -299,7 +299,7 @@ module Orders
       end
 
       def shopify
-        button = etsy_button
+        button = shopify_button
         store = Shopify.new @browser
         10.times do
           button.safe_click

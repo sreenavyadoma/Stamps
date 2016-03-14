@@ -368,6 +368,16 @@ module Orders
       end
     end
 
+    class PrintOptions < OrdersObject
+      def email_tracking
+        checkbox_field = @browser.input :id => "sdc-printpostagewindow-emailtrackingcheckbox-displayEl"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute = "class"
+        verify_field_attrib = "checked"
+        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+      end
+    end
+
     def initialize browser
       super browser
     end
@@ -559,6 +569,10 @@ module Orders
 
     def click_print_button
       browser_helper.click print_button
+    end
+
+    def print_options
+      PrintOptions.new @browser
     end
   end
 
