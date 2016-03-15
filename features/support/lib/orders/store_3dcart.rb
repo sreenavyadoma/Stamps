@@ -1,8 +1,8 @@
 module Orders
   module Stores
-    class ShopifySettings < StoreSettings
+    class ThreeDCartSettings < StoreSettings
       def window_title
-        StampsLabel.new @browser.div text: "Shopify Settings"
+        StampsLabel.new @browser.div(text: "3DCart Settings")
       end
 
       def present?
@@ -14,18 +14,47 @@ module Orders
       end
     end
 
-    class Shopify < OrdersObject
+    class ThreeDCart < OrdersObject
 
-      def window_title
-        StampsLabel.new(@browser.div :text => "Connect your Shopify Store")
+      class ProductWeightUnit < OrdersObject
+        def select selection
+          drop_down = StampsButton.new (@browser.divs(css: "div[id^=combo-][id$=-trigger-picker]").last)
+          textbox = StampsTextbox.new @browser.text_field(css: "input[name^=combo-][name$=-inputEl][role=combobox]")
+          selection_field = StampsLabel.new @browser.li(text: "#{selection}")
+          10.times do
+            drop_down.safe_click unless selection_field.present?
+            selection_field.safe_click
+            break if textbox.text.include? selection
+          end
+        end
       end
 
       def present?
-        window_title.present?
+        browser_helper.present? @browser.div(:text => "Connect your 3DCart Store")
       end
 
-      def shopify_domain
-        StampsTextbox.new (@browser.text_fields(css: "input[name^=textfield-][name$=-inputEl]").last)
+      def close
+        button = StampsButton.new (browser.imgs(css: "img[class*='x-tool-img x-tool-close']").last)
+        5.times do
+          button.safe_click
+          break unless present?
+        end
+      end
+
+      def api_user_key
+        StampsTextbox.new @browser.text_field(css: "input[name^=textfield-][name$=-inputEl][type=password]")
+      end
+
+      def store_url
+        StampsTextbox.new (@browser.text_fields(css: "input[name^=textfield-][name$=-inputEl][type=text]").last)
+      end
+
+      def weight_unit
+        ProductWeightUnit.new @browser
+      end
+
+      def connect_button
+        StampsButton.new @browser.span(text: "Connect")
       end
 
       def test_connection
@@ -39,14 +68,9 @@ module Orders
         end
       end
 
-      def connect_button
-        StampsButton.new @browser.span(text: "Connect")
-      end
-
       def connect
         button = StampsButton.new @browser.span(text: "Connect")
-        settings = ShopifySettings.new @browser
-        shopify = ShopifyPage.new @browser
+        settings = ThreeDCartSettings.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
         10.times do
@@ -62,12 +86,12 @@ module Orders
           end
           sleep 1
           return settings if settings.present?
-          return shopify if shopify.present?
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
           end
           sleep 1
+          return settings if settings.present?
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
@@ -85,8 +109,8 @@ module Orders
             importing_order.ok
           end
           return settings if settings.present?
-          return shopify if shopify.present?
           sleep 1
+          return settings if settings.present?
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
@@ -104,8 +128,8 @@ module Orders
             importing_order.ok
           end
           return settings if settings.present?
-          return shopify if shopify.present?
           sleep 1
+          return settings if settings.present?
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
@@ -123,8 +147,8 @@ module Orders
             importing_order.ok
           end
           return settings if settings.present?
-          return shopify if shopify.present?
           sleep 1
+          return settings if settings.present?
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
@@ -142,9 +166,8 @@ module Orders
             importing_order.ok
           end
           return settings if settings.present?
-          return shopify if shopify.present?
         end
-        raise "Shopify Store Connect failed.  Settings Modal did not open.  "
+        raise "Rakuten Store Connect failed.  Settings Modal did not open.  "
       end
 
       def reconnect
@@ -245,10 +268,10 @@ module Orders
       end
     end
 
-    class ModifyShopifyStore < Shopify
+    class Modify3DCartStore < ThreeDCart
 
       def window_title
-        StampsLabel.new(@browser.div :text => "Modify your Shopify Store Connection")
+        StampsLabel.new(@browser.div :text => "Modify your 3DCart Store Connection")
       end
 
       def present?
@@ -257,31 +280,6 @@ module Orders
 
       def wait_until_present
         window_title.wait_until_present
-      end
-    end
-
-    class ShopifyPage < OrdersObject
-      def present?
-        @browser.url.include? "shopify.com"
-      end
-
-      def username
-        StampsTextbox.new @browser.text_field(id: 'login-input')
-      end
-
-      def password
-        StampsTextbox.new @browser.text_field(id: 'password')
-      end
-
-      def sign_in
-        button = StampsInput.new @browser.input(css: "input[value='Log in']")
-        settings_page = ShopifySettings.new @browser
-
-        10.times do
-          button.safe_click
-          sleep 5
-          return settings_page if settings_page.present?
-        end
       end
     end
   end

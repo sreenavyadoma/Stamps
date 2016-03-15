@@ -28,3 +28,8 @@ Then /^Marketplace: Select Shopify$/ do
   @store = @market_place.shopify
 end
 
+Then /^Marketplace: Select 3dcart$/ do
+  step "Manage Stores: Add" if @market_place.nil?
+  @store = @market_place.three_d_cart
+end
+

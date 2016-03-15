@@ -14,6 +14,8 @@ Setup a bogus payment gateway for testing
 Create a listing and accept other methods of payment to allow for testing
 Create orders and manually mark an order as paid
 
+Shopify Domain: http://sdcqa.myshopify.com
+
 Seller Name:  Qashopify Stamps
 Email:   qaclient@stamps.com
 Password: Postage1

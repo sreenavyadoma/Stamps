@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @shopify --guess VERBOSE=true URL=qasc BROWSER=firefox USR=yh95ws85j PW=pass111
+rob_dev: --tags @3dcart --guess VERBOSE=true URL=qasc BROWSER=firefox USR=uiogb5qzm PW=pass111
 
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true
 
@@ -14,6 +14,8 @@ bvt: --tags @bvt --guess VERBOSE=false
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
 # Stores
+threedcart: --tags @3dcart --guess VERBOSE=true
+shopify: --tags @shopify --guess VERBOSE=true
 etsy: --tags @etsy --guess VERBOSE=true
 rakuten: --tags @rakuten --guess VERBOSE=true
 volusion: --tags @volusion --guess VERBOSE=true
