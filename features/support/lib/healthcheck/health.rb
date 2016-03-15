@@ -5,7 +5,9 @@ module Stamps
         when /qasc/
           @browser.goto ""
         when /qacc/
-
+          @browser.goto ""
+        else
+          raise "Raise an exception"
       end
     end
 
