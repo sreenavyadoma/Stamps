@@ -1,0 +1,14 @@
+Volusion
+Skip to end of metadata
+Created by Robert Robinson, last modified by Brian Lin on Mar 08, 2016 Go to start of metadata
+To Connect to Volusion Store:
+Follow instructions in modal to obtain Volusion API URL
+Store Admin page: http://ywvmt.dmjeb.servertrust.com/admin
+Admin Credentials: qaclient@stamps.com / Postage1
+Name:  Sandbox.sdcqa.com
+Shop Name:  SDCQA
+API Token: http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
+Buyer: Each QA/Dev person can setup their own individual buyer account
+Buyer:  http://ywvmt.dmjeb.servertrust.com/login.asp
+Item:  http://ywvmt.dmjeb.servertrust.com/product-p/sdc40000001.htm
+
