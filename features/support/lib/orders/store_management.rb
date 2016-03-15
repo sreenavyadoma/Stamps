@@ -309,6 +309,21 @@ module Orders
         raise "Etsy Store Modal did not open."
       end
 
+      def three_d_cart_button
+        StampsButton.new (@browser.imgs :css => "img[src*='3dcart']").last
+      end
+
+      def three_d_cart
+        button = three_d_cart_button
+        store = ThreeDCart.new @browser
+        10.times do
+          button.safe_click
+          sleep 1
+          return store if store.present?
+        end
+        raise "3dcart Store Modal did not open."
+      end
+
       def ebay_button
         StampsButton.new (@browser.imgs :css => "img[src*='ebay']").last
       end
@@ -470,6 +485,7 @@ module Orders
         volusion_settings = VolusionSettings.new @browser
         etsy_settings = EtsySettings.new @browser
         shopify_settings = ShopifySettings.new @browser
+        three_d_cart_settings = ThreeDCartSettings.new @browser
 
         10.times do
           button.safe_click
@@ -479,6 +495,7 @@ module Orders
           return volusion_settings if volusion_settings.present?
           return etsy_settings if etsy_settings.present?
           return shopify_settings if shopify_settings.present?
+          return three_d_cart_settings if three_d_cart_settings.present?
         end
       end
 
@@ -490,6 +507,7 @@ module Orders
         rakuten = ModifyRakutenStore.new @browser
         etsy = ModifyEtsyStore.new @browser
         shopify = ModifyShopifyStore.new @browser
+        three_d_cart = Modify3DCartStore.new @browser
 
         15.times do
           button.safe_click
@@ -499,6 +517,7 @@ module Orders
           return amazon if amazon.present?
           return etsy if etsy.present?
           return shopify if shopify.present?
+          return three_d_cart if three_d_cart.present?
         end
       end
 
