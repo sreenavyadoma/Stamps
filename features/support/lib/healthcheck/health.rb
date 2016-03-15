@@ -1,7 +1,7 @@
 module Stamps
   class HealthCheck < Stamps::Browser::BrowserObject
     def visit
-      case ENV['URL']
+      case ENV['URL'].downcase
         when /qasc/
           @browser.goto ""
         when /qacc/
