@@ -1,10 +1,10 @@
 module Healthcheck
   class Healthcheck < Stamps::Browser::BrowserObject
-    def visit env
-      case env
-        when :qasc
+    def visit
+      case ENV['URL']
+        when /qasc/
           @browser.goto ""
-        when :qacc
+        when /qacc/
 
       end
     end
