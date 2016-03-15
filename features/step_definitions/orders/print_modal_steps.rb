@@ -17,6 +17,17 @@ Then /^Print Modal: Set Ship Date to today plus (\d+)$/ do |day|
   @ship_date = orders.toolbar.print.date_picker.today_plus day
 end
 
+Then /^Print Modal: Set Email Tracking to Checked$/ do
+  log.info "Print Modal: Set Email Tracking to Checked"
+  orders.toolbar.print.print_options.email_tracking.check
+end
+
+Then /^Print Modal: Set Email Tracking to Unchecked$/ do
+  log.info "Print Modal: Set Email Tracking to Unchecked"
+  orders.toolbar.print.print_options.email_tracking.uncheck
+end
+
+
 When /^Print Modal: Select left-side label$/ do
   log.info "Step: Print Modal: Select - Left side label"
   selected = orders.toolbar.print.starting_label.left
