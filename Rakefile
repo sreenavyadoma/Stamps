@@ -323,6 +323,11 @@ Cucumber::Rake::Task.new(:email_tracking) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:healthcheck) do |t|
+  t.profile = 'healthcheck'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:wp_bvt) do |t|
   t.profile = 'wp_bvt'
   t.cucumber_opts = "-p cuke_reports"
