@@ -318,6 +318,11 @@ Cucumber::Rake::Task.new(:multiple_reprint) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:email_tracking) do |t|
+  t.profile = 'email_tracking'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:wp_bvt) do |t|
   t.profile = 'wp_bvt'
   t.cucumber_opts = "-p cuke_reports"
