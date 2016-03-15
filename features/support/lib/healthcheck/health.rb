@@ -1,5 +1,5 @@
-module Healthcheck
-  class Healthcheck < Stamps::Browser::BrowserObject
+module Health
+  class Check < Stamps::Browser::BrowserObject
     def visit
       case ENV['URL']
         when /qasc/
