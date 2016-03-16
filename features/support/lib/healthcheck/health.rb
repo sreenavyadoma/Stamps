@@ -6,6 +6,7 @@ module Stamps
 
   class HealthCheck < Stamps::Browser::BrowserObject
     def visit
+      log.message "HealthCheck:  ----------------------------------------------- begin"
       case ENV['URL'].downcase
         when /qasc/
           @browser.goto "https://printext.qasc.stamps.com/orders/healthcheck.aspx"
@@ -32,6 +33,7 @@ module Stamps
           log.info "Invalid environment type"
           raise "Raise an exception"
       end
+      log.message "HealthCheck:  ----------------------------------------------- end"
     end
   end
 end
