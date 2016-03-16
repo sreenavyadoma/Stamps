@@ -17,6 +17,16 @@ module Stamps
 
     public
 
+    def message message
+      @logger_info ||= init_info
+      begin
+        @logger_info.info message
+      rescue
+        # ignore
+      end
+      message
+    end
+
     def info message
       @logger_info ||= init_info
       begin
