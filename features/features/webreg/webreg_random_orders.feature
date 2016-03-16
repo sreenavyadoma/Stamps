@@ -37,6 +37,9 @@ Feature: Registration
     Then WebReg: Choose Supplies: Place Order
 
     Then Pause for 2 seconds
+
+    Then Healthcheck: Get Info
+
     Then Orders: Load Sign-in page
     Then Orders: First Time Sign-in to Orders as random/pass111
     Then Add New Order
