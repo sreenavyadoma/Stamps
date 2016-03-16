@@ -74,7 +74,7 @@ expand_order_details_panel: --tags  @expand_order_details_panel --guess VERBOSE=
 multiple_reprint: --tags @multiple_reprint --guess VERBOSE=false
 email_tracking: --tags @email_tracking --guess VERBOSE=false
 
-healthcheck: --tags @healthcheck --guess VERBOSE=false
+healthcheck: --tags @healthcheck --guess VERBOSE=true
 
 
 wp_bvt: --tags  @wp_bvt --guess VERBOSE=false
