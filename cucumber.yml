@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @grid_tracking --guess VERBOSE=true HEALTHCHECK=true URL=qasc BROWSER=ff USR=yh95ws85j PW=pass111
+rob_dev: --tags @bvt --guess VERBOSE=true HEALTHCHECK=true URL=qasc BROWSER=ff USR=yh95ws85j PW=pass111
 
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
@@ -10,7 +10,7 @@ ray_dev: --tags @reprint_change_status --guess VERBOSE=true HEALTHCHECK=true URL
 eva_dev: --tags   @expand_order_details_panel --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=ss_cctest3 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
-bvt: --tags @bvt --guess VERBOSE=false HEALTHCHECK=true 
+bvt: --tags @bvt --guess VERBOSE=false HEALTHCHECK=true
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS! 
 
 # Stores
