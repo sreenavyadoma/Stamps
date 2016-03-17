@@ -152,8 +152,8 @@ Cucumber::Rake::Task.new(:new_country_code) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:grid_tracking_order_status) do |t|
-  t.profile = 'grid_tracking_order_status'
+Cucumber::Rake::Task.new(:grid_tracking) do |t|
+  t.profile = 'grid_tracking'
   t.cucumber_opts = "-p cuke_reports"
 end
 

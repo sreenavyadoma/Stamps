@@ -4,7 +4,7 @@ Feature: Orders Grid: Tracking & Order Status
   Background:
     Given I am signed in to Orders
 
-  @grid_tracking_order_status
+  @grid_tracking
   Scenario: Tracking & Order Status
     Then Add New Order
     Then Orders Grid: Expect Order Status to be "Awaiting Shipment"
