@@ -531,10 +531,9 @@ end
 Then /^Orders Grid: Expect Order Status to be (.+)$/ do |expected|
   log.info "Step: Orders Grid: Expect Order Status to be #{expected}"
   begin
-    actual = orders.grid.cost_code.data @order_id
-    10.times { |counter|
+    actual = orders.grid.order_status.data @order_id
+    10.times {
       sleep(2)
-      #log_expectation_eql "#{counter}. Order Status", expected, actual
       break if actual.eql? expected
       actual = orders.grid.cost_code.data @order_id
     }

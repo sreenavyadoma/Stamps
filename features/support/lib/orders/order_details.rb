@@ -2058,7 +2058,7 @@ module Orders
 
       def set value
         checkbox.check
-        sleep 1
+        checkbox.check
         text_box.set value
       end
 

@@ -17,6 +17,7 @@ Feature: Orders Grid: Tracking & Order Status
     Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
     Then Filter Panel - Shipped
+    Then Orders Grid: Order ID: Sort Descending
     Then Orders Grid: Expect Tracking Number is populated
     Then Orders Grid: Expect Order Status to be "Shipped"
 
@@ -31,6 +32,7 @@ Feature: Orders Grid: Tracking & Order Status
     Then Print Modal: Set Printer to "factory"
     Then Toolbar: Print
     Then Filter Panel - Shipped
+    Then Orders Grid: Order ID: Sort Descending
     Then Orders Grid: Expect Tracking Number is populated
     Then Orders Grid: Expect Order Status to be "Shipped"
 
