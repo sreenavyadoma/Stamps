@@ -72,15 +72,16 @@ module Stamps
         elsif Test.browser.chrome?
           system "taskkill /im chrome.exe /f 2>nul"
 
-          chrome_data_dir = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data", "Default")
+          temp_data_dir1 = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data", "Default")
+          temp_data_dir2 = File.join("C:", "Users", "#{ENV['USERNAME']}.CORP", "AppData", "Local", "Google", "Chrome", "User Data", "Default")
+
+          chrome_data_dir = (File.exist? temp_data_dir1)?temp_data_dir1:temp_data_dir2
           chrome_driver_path = File.join("C:", "watir-webdriver", "drivers", "chromedriver.exe")
 
           log.info "chrome_driver path:  #{chrome_driver_path} - #{(File.exist? chrome_driver_path)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'} "
           log.info "chrome_data_dir path:  #{chrome_data_dir}  #{(File.exist? chrome_data_dir)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'}"
 
-          begin
-            raise log.info "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
-          end unless File.exist? chrome_data_dir
+          raise log.info "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}" unless File.exist? chrome_data_dir
 
           driver = Watir::Browser.new :chrome, :switches => ["--disable-print-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
           @browser_name = 'Google Chrome'
