@@ -90,7 +90,11 @@ module Orders
         end
 
         log.info "Visit: #{url}"
-        @browser.goto url
+        5.times do
+          @browser.goto url
+          sleep 1
+          break if @browser.url.include? ENV['URL'].downcase
+        end
         log.info "Page loaded: #{url}"
         self
       end

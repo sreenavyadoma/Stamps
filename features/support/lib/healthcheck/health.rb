@@ -38,6 +38,7 @@ module Stamps
       log.message "HealthCheck:"
       log.message "HealthCheck: --------------------------- End"
       log.message "HealthCheck:"
+      sleep 1
     end
   end
 end
