@@ -31,7 +31,7 @@ end
 Given /^I am signed in to Orders$/ do
   log.info "Step: I am signed in to Orders"
   step "I launch browser default"
-  step "Healthcheck: Get Info"
+  step "Healthcheck: Get Info" if test_helper.to_boolean ENV['HEALTHCHECK']
   step "Orders: Load Sign-in page"
   orders.sign_in_page.sign_in_with_credentials
 end
