@@ -1,5 +1,8 @@
 
 Feature: Health Check
+  In order to become productive
+  As a test automation engineer/product manager
+  I want to understand the basics of cucumber
 
   Background:
     Given I launch browser default
