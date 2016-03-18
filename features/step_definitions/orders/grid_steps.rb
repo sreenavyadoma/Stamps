@@ -248,6 +248,7 @@ Then /^Orders Grid: Expect Age to be (.*)$/ do |expected|
       actual = orders.grid.age.data @order_id
     }
     actual = orders.grid.age.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -263,6 +264,7 @@ Then /^Orders Grid: Expect Order Date to be (.*)$/ do |expected|
       break if actual.eql? expected
     }
     actual = orders.grid.order_date.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -278,6 +280,7 @@ Then /^Orders Grid: Expect Recipient to be (.*)$/ do |expected|
       break if actual.eql? expected
     }
     actual = orders.grid.recipient.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -302,6 +305,7 @@ Then /^Orders Grid: Expect Address to be ([\w\s-]+)$/ do |expected|
       break if actual.eql? expected
     }
     actual = orders.grid.address.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -314,6 +318,7 @@ Then /^Orders Grid: Expect City to be ([\w\s]+)$/ do |expected|
       break if actual.eql? expected
     }
     actual = orders.grid.city.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -326,6 +331,7 @@ Then /^Orders Grid: Expect State to be ([a-zA-Z]+)$/ do |expected|
       break if actual.eql? expected
     }
     actual = orders.grid.state.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -338,6 +344,7 @@ Then /^Orders Grid: Expect Zip to be ([\d -]+)$/ do |expected|
       break if actual.eql? expected
     }
     actual = orders.grid.zip.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should include expected
   end unless expected.length == 0
 end
@@ -350,6 +357,7 @@ Then /^Orders Grid: Expect Country to be ([a-zA-Z]+)$/ do |expected|
       break if actual.eql? expected
     }
     actual = orders.grid.country.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -362,6 +370,7 @@ Then /^Orders Grid: Expect Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expected|
       break if actual.eql? expected
     }
     actual = orders.grid.country.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -374,6 +383,7 @@ Then /^Orders Grid: Expect Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-
       break if actual.eql? expected
     }
     actual = orders.grid.phone.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -386,6 +396,7 @@ Then /^Orders Grid: Expect Pounds to be (\d+)$/ do |expected|
       break if actual.eql? expected
     }
     actual = orders.grid.weight.lbs @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -398,6 +409,7 @@ Then /^Orders Grid: Expect Ounces to be (\d+)$/ do |expected|
       break if actual.eql? expected
     }
     actual = orders.grid.weight.oz @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -411,6 +423,7 @@ Then /^Orders Grid: Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounce
       break if actual.eql? expected_result
     }
     actual = orders.grid.weight.data @order_id
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected_result
   end unless expected_result.length == 0
 end
@@ -425,6 +438,7 @@ Then /^Orders Grid: Expect Qty. to be (.+)$/ do |expected|
       break if actual.eql? expected
       actual = orders.grid.qty.data @order_id
     }
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -439,6 +453,7 @@ Then /^Orders Grid: Expect Item SKU to be (.+)$/ do |expected|
       break if actual.eql? expected
       actual = orders.grid.item_sku.data @order_id
     }
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -453,6 +468,7 @@ Then /^Orders Grid: Expect Item Name to be (.+)$/ do |expected|
       break if actual.eql? expected
       actual = orders.grid.item_name.data @order_id
     }
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -467,6 +483,7 @@ Then /^Orders Grid: Expect Ship From to be (.+)$/ do |expected|
       break if actual.eql? expected
       actual = orders.grid.ship_from.data @order_id
     }
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -481,35 +498,53 @@ Then /^Orders Grid: Expect Service to be (.+)$/ do |expected|
       break if actual.eql? expected
       actual = orders.grid.service.data @order_id
     }
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
 
-Then /^Orders Grid: Expect Insured Value to be (.+)$/ do |expected|
+Then /^Orders Grid: Expect Insured Value to be \$(.+)$/ do |expected|
   log.info "Step: Orders Grid: Expect Insured Value to be #{expected}"
   begin
     actual = orders.grid.insured_value.data @order_id
+    10.times {
+      sleep(2)
+      break if actual.eql? expected
+      actual = orders.grid.insured_value.data @order_id
+    }
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
+    actual.should eql expected
+  end unless expected.length == 0
+end
+
+=begin
+Then /^Orders Grid: Expect Insured Value to be \$(\d*\.?\d*)$/ do |expected|
+  log.info "Step: Orders Grid: Expect Insured Value to be #{expected}"
+  begin
+    actual = test_helper.remove_dollar_sign orders.grid.insured_value.data @order_id
     10.times { |counter|
       sleep(2)
-      #log_expectation_eql "#{counter}. Insured Value", expected, actual
+      #log_expectation_eql "#{counter}. Insurance", expected, actual
       break if actual.eql? expected
       actual = orders.grid.insured_value.data @order_id
     }
     actual.should eql expected
   end unless expected.length == 0
 end
+=end
 
 Then /^Orders Grid: Expect Reference No. to be (.+)$/ do |expected|
 
   log.info "Step: Orders Grid: Expect Reference No. to be #{expected}"
   begin
     actual = orders.grid.reference_no.data @order_id
-    10.times { |counter|
+    10.times {
       sleep(2)
       #log_expectation_eql "#{counter}. Reference No.", expected, actual
       break if actual.eql? expected
       actual = orders.grid.reference_no.data @order_id
     }
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -518,12 +553,12 @@ Then /^Orders Grid: Expect Cost Code to be (.+)$/ do |expected|
   log.info "Step: Orders Grid: Expect Cost Code to be #{expected}"
   begin
     actual = orders.grid.cost_code.data @order_id
-    10.times { |counter|
+    10.times {
       sleep(2)
-      #log_expectation_eql "#{counter}. Cost Code", expected, actual
       break if actual.eql? expected
       actual = orders.grid.cost_code.data @order_id
     }
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -537,6 +572,7 @@ Then /^Orders Grid: Expect Order Status to be (.+)$/ do |expected|
       break if actual.eql? expected
       actual = orders.grid.cost_code.data @order_id
     }
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -566,12 +602,13 @@ Then /^Orders Grid: Expect Order Total to be (.+)$/ do |expected|
   log.info "Step: Orders Grid: Expect Order Total to be #{expected}"
   begin
     actual = orders.grid.order_total.data @order_id
-    10.times { |counter|
+    10.times {
       sleep(2)
       #log_expectation_eql "#{counter}. Order Total", expected, actual
       break if actual.eql? expected
       actual = orders.grid.order_total.data @order_id
     }
+    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
     actual.should eql expected
   end unless expected.length == 0
 end
@@ -581,20 +618,6 @@ Then /^Expect Order details to be;$/ do |table|
   expected_hash = table.hashes.first
   step "Orders Grid: Expect Insured Value to be $#{expected_hash[:insured_value]}"
   step "Orders Grid: Expect Weight to be #{expected_hash[:lbs]} lbs. #{expected_hash[:oz]} oz."
-end
-
-Then /^Orders Grid: Expect Insured Value to be \$(\d*\.?\d*)$/ do |expected|
-  log.info "Step: Orders Grid: Expect Insured Value to be #{expected}"
-  begin
-    actual = test_helper.remove_dollar_sign orders.grid.insured_value.data @order_id
-    10.times { |counter|
-      sleep(2)
-      #log_expectation_eql "#{counter}. Insurance", expected, actual
-      break if actual.eql? expected
-      actual = orders.grid.insured_value.data @order_id
-    }
-    actual.should eql expected
-  end unless expected.length == 0
 end
 
 Then /^Expect new Order ID created$/ do

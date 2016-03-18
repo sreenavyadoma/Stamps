@@ -570,7 +570,7 @@ module Orders
       end
 
       def data order_id
-        grid_text_by_id :insured_value, order_id
+        test_helper.remove_dollar_sign grid_text_by_id(:insured_value, order_id)
       end
     end
 

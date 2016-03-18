@@ -320,6 +320,16 @@ Then /^Order Details: Expect Tracking tooltip for (.*) to be (.*)$/ do |lov, exp
   #log.info cost
 end
 
+Then /^Order Details: Set Insure For checkbox to checked$/ do
+  log.info "Order Details: Set Insure For checkbox to checked"
+  orders.details.insure_for.checkbox.check
+end
+
+Then /^Order Details: Set Insure For checkbox to unchecked$/ do
+  log.info "Order Details: Set Insure For checkbox to unchecked"
+  orders.details.insure_for.checkbox.uncheck
+end
+
 Then /^Order Details: Set Insure For to \$([\d*\.?\d*]*)$/ do |value|
   log.info "Step: Order Details: Set Insure For to #{value}"
   orders.details.insure_for.set value

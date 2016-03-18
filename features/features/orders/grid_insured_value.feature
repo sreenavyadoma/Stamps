@@ -10,14 +10,17 @@ Feature: Orders Grid: Tracking & Order Status
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Order Details: Set Ounces to 5
-    Then Order Details: Set Insure For to $1.00
+    Then Order Details: Set Insure For checkbox to checked
+    Then Order Details: Set Insure For to $52.99
+    Then Order Details: Set Insure For checkbox to unchecked
     Then Order Details: Set Service to "Priority Mail Flat Rate Envelope"
-    Then Order Details: Set Tracking to "USPS Tracking"
-    Then Open Print Modal
-    Then Print Modal: Set Printer to "factory"
-    Then Toolbar: Print
-    Then Filter Panel - Shipped
-    Then Orders Grid: Expect Tracking Number is populated
-    Then Orders Grid: Expect Order Status to be "Shipped"
+    Then Pause for 1 second
+    Then Orders Grid: Expect Insured Value to be $52.99
 
+    Then Order Details: Set Insure For checkbox to unchecked
+    Then Order Details: Set Service to "Priority Mail Package"
+    Then Order Details: Set Tracking to "Signature Required"
+    Then Pause for 2 seconds
+    Then Orders Grid: Expect Insured Value to be $0.00
+    Then Pause for 1 second
     Then Sign out
