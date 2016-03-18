@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:grid_insured_value) do |t|
+  t.profile = 'grid_insured_value'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:threedcart) do |t|
   t.profile = 'threedcart'
   t.cucumber_opts = "-p cuke_reports"
