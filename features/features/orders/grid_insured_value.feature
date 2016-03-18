@@ -12,7 +12,6 @@ Feature: Orders Grid: Tracking & Order Status
     Then Order Details: Set Ounces to 5
     Then Order Details: Set Insure For checkbox to checked
     Then Order Details: Set Insure For to $52.99
-    Then Order Details: Set Insure For checkbox to unchecked
     Then Order Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Pause for 1 second
     Then Orders Grid: Expect Insured Value to be $52.99
