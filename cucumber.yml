@@ -21,6 +21,7 @@ rakuten: --tags @rakuten --guess VERBOSE=false HEALTHCHECK=true
 volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=true 
 amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true 
 
+tracking_order_status: --tags @tracking_order_status --guess VERBOSE=false HEALTHCHECK=true
 grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=true
 import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=true
 pagination: --tags @pagination --guess VERBOSE=false HEALTHCHECK=true
