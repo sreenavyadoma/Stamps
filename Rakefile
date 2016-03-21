@@ -7,8 +7,8 @@ Cucumber::Rake::Task.new(:grid_insured_value) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:tracking_order_status) do |t|
-  t.profile = 'tracking_order_status'
+Cucumber::Rake::Task.new(:grid_tracking) do |t|
+  t.profile = 'grid_tracking'
   t.cucumber_opts = "-p cuke_reports"
 end
 
