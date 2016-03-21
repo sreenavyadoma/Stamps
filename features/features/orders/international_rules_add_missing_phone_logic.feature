@@ -8,8 +8,8 @@ Feature: Add Missing Validation Logic for Phone and International Email
     Then Add New Order
     Then Order Details: Set Ship-From to default
     Then Order Details: Set Ship-To Country to Australia
-    Then UnOrders Grid: Check row 1
-    Then UnOrders Grid: Check row 1
+    Then Orders Grid: Check row 1
+    Then Orders Grid: Check row 1
     Then Pause for 2 seconds
     Then Orders Grid: Check row 1
 

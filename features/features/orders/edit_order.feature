@@ -16,7 +16,7 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
     Then Order Details: Set Height to 1
     Then Order Details: Set Length to 1
     Then Order Details: Set Width to 1
-    Then UnOrders Grid: Check row 1
+    Then Orders Grid: Check row 1
     Then Orders Grid: Check row 1
     Then Order Details: Set Service to "Priority Mail Package"
     Then Order Details: Set Ounces to 2
@@ -25,7 +25,7 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
     Then Order Details: Set Height to 2
     Then Order Details: Set Length to 3
     Then Order Details: Set Width to 4
-    Then UnOrders Grid: Check row 1
+    Then Orders Grid: Check row 1
     Then Orders Grid: Check row 1
     Then Order Details: Expect Service to be "Priority Mail Package"
     Then Orders Grid: Expect Ounces to be 2

@@ -155,7 +155,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Order Details: Set Width to 1
     Then Order Details: Set Height to 1
     Then Order Details: Set Length to 1
-    Then UnOrders Grid: Check row 1
+    Then Orders Grid: Check row 1
 
     #Create order 2
     Then Add New Order
@@ -166,7 +166,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Order Details: Set Width to 1
     Then Order Details: Set Height to 1
     Then Order Details: Set Length to 1
-    Then UnOrders Grid: Check row 1
+    Then Orders Grid: Check row 1
 
     #Create order 3
     Then Add New Order
@@ -177,7 +177,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Order Details: Set Width to 1
     Then Order Details: Set Height to 1
     Then Order Details: Set Length to 1
-    Then UnOrders Grid: Check row 1
+    Then Orders Grid: Check row 1
 
     Then Orders Grid: Check row 1
     Then Orders Grid: Check row 2
