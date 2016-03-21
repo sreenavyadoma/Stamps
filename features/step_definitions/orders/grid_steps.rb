@@ -423,7 +423,7 @@ Then /^Orders Grid: Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounce
       break if actual.eql? expected_result
     }
     actual = orders.grid.weight.data @order_id
-    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
+    log.info "Test #{(actual==expected_result)?"Passed":"Failed"}"
     actual.should eql expected_result
   end unless expected_result.length == 0
 end
