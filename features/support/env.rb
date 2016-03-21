@@ -40,7 +40,6 @@ require_relative 'lib/stores/stores_helper'
 
 #require 'atomic'
 #require 'thread'
-
 #require 'mysql'
 
 module Selenium
