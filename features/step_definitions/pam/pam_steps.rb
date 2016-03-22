@@ -222,10 +222,11 @@ Then /^PAM: AppCap Overrides: Submit$/ do
 end
 
 Then /^WebReg:  Send username to standard out$/ do
-  log.info "NEW USER ID ######## #{@username} ########"
-  log.info "NEW USER ID ######## #{@username} ########"
-  log.info "NEW USER ID ######## #{@username} ########"
-  log.info "NEW USER ID ######## #{@username} ########"
+  log.message " ######## NEW USER ID  ########"
+  log.message " ######## #{@username} ########"
+  log.message " ######## #{@username} ########"
+  log.message " ######## #{@username} ########"
+  log.message " ######## NEW USER ID  ########"
 end
 
 
