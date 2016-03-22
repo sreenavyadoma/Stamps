@@ -94,6 +94,7 @@ module Stamps
       def attribute_enabled?
         browser_helper.attribute_enabled? @field
       end
+
       def data_error
         browser_helper.attribute_value @field, "data-errorqtip"
       end
@@ -121,6 +122,10 @@ module Stamps
 
       def attribute_value name
         browser_helper.attribute_value @field, name
+      end
+
+      def placeholder
+        attribute_value "placeholder"
       end
 
       def style property
@@ -416,7 +421,7 @@ module Stamps
           when 1
             field_text args[0]
           when 2
-            field_text(args[0])
+            field_text args[0]
             #log.browser_field args[0], text, args[1]
           else
             raise "Wrong number of arguments for BrowserHelper.text method."

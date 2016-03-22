@@ -18,8 +18,8 @@ Feature: International Address
 
     Then Order Details: Set International Ship-To auto-suggest address to partial name Flo
     Then Order Details: Select Ship-To auto-suggest item 1
-    Then Order Details: Expect International Ship-To name to be Venice Florence
-    Then Order Details: Expect International Ship-To company to be CompanyNameInternational
+    Then Order Details: Expect International Ship-To Name to be Venice Florence
+    Then Order Details: Expect International Ship-To Company to be CompanyNameInternational
     Then Order Details: Expect International Ship-To Address 1 to be Italian Street address
     Then Order Details: Expect International Ship-To City to be ItalianCity
     Then Order Details: Expect International Ship-To Province to be Rome
