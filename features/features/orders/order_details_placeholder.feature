@@ -1,10 +1,11 @@
-Feature:  Customs Form Totals
+Feature:  Order Details Form Placeholder default values
+  ORDERS-33 Item Row Quantity Field should have "Qty" Placeholder Text
 
   Background:
     Given I am signed in to Orders
 
   @order_details_placeholder
-  Scenario:  Customs Form Grid - Add Items
+  Scenario:  Order Details Form Placeholder default values
     Then Add New Order
     Then Order Details: Expect Ship-To Address Placeholder to be Address
     Then Order Details: Expect Ship-To Phone Placeholder to be Phone
