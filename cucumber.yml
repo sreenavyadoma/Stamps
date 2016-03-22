@@ -1,8 +1,8 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @order_details_placeholder --guess VERBOSE=true HEALTHCHECK=true URL=qasc BROWSER=ff USR=yh95ws85j PW=pass111
-
+rob_dev: --tags @order_details_placeholder --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=nhr9mm6m5l PW=pass111
+#order_details_placeholder
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
 eli_dev: --tags @healthcheck --guess VERBOSE=true HEALTHCHECK=true URL=qasc BROWSER=ff USR=hns8u0qen9h9 PW=pass111

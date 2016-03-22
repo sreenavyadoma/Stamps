@@ -14,7 +14,7 @@ Feature:  Order Details Form Placeholder default values
 
     Then Order Details: Add Item 1
 
-    Then Order Details: Expect Item Qty Placeholder to be 0
+    Then Order Details: Expect Item Qty Placeholder to be Qty
     Then Order Details: Expect Item ID# Placeholder to be ID #
     Then Order Details: Expect Item Description Placeholder to be Description
 
