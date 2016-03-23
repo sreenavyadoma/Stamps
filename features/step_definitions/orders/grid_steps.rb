@@ -116,12 +116,14 @@ When /^Edit Orders Grid row (\d+)$/ do |row|
   orders.grid.checkbox.check row
 end
 
+=begin
 When /^Orders Grid: Check row (\d+)$/ do |row|
   log.info "Edit Orders Grid row #{row}"
   orders.grid.checkbox.check row
 end
+=end
 
-When /^UnOrders Grid: Check row (\d+)$/ do |row|
+When /^Orders Grid: Check row (\d+)$/ do |row|
   log.info "Step: Uncheck row #{row} on the Orders Grid"
   orders.grid.checkbox.uncheck row
 end
@@ -423,7 +425,7 @@ Then /^Orders Grid: Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounce
       break if actual.eql? expected_result
     }
     actual = orders.grid.weight.data @order_id
-    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
+    log.info "Test #{(actual==expected_result)?"Passed":"Failed"}"
     actual.should eql expected_result
   end unless expected_result.length == 0
 end

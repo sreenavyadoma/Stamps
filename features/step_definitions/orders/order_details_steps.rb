@@ -1,3 +1,8 @@
+Then /^Order Details: Add Item (.*)$/ do |item_number|
+  log.info "Order Details: Add Item #{item_number}"
+  @orders_line_item = orders.details.item_grid.item item_number.to_i
+end
+
 Then /^Order Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
   log.info "Step: Order Details: Add Item #{item_number}, Qty #{qty}, ID #{id} Description #{description}"
   item = orders.details.item_grid.item item_number.to_i

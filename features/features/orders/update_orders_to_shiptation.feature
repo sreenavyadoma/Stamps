@@ -23,7 +23,7 @@ Feature:  Update Order to ShipStation
     Then Orders Grid: Expect Insured Value to be $1.00
 
     #here's the shipstation part.
-    Then UnOrders Grid: Check row 1
+    Then Orders Grid: Check row 1
     #click awaiting shipment tab a few times.
     Then Orders Grid: Check row 1
     # Verify pounds, ounces height width length from Order Form

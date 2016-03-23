@@ -14,7 +14,7 @@ Feature:  Ambigious Address
     Then Expect "Exact Address Not Found" module to appear
     Then Select row 2 from Exact Address Not Found module
     Then Order Details: Set Service to "Priority Mail Package"
-    Then UnOrders Grid: Check row 1
+    Then Orders Grid: Check row 1
     Then Orders Grid: Expect Recipient to be Joseph Balancio
     Then Orders Grid: Expect Company to be Company Name
     Then Orders Grid: Expect City to be San Francisco

@@ -2,8 +2,18 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:order_details_placeholder) do |t|
+  t.profile = 'order_details_placeholder'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:grid_insured_value) do |t|
   t.profile = 'grid_insured_value'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:grid_tracking) do |t|
+  t.profile = 'grid_tracking'
   t.cucumber_opts = "-p cuke_reports"
 end
 
