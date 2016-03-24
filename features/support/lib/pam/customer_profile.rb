@@ -47,7 +47,13 @@ module Pam
 
   class CustomerProfileNotFound < Stamps::Browser::BrowserObject
     def present?
-      browser_helper.present? @browser.td :text => "No records found."
+      (browser_helper.present? @browser.td :text => "No records found.") || (browser_helper.present? (@browser.td css: "td[class=TD3][align=left]"))
+    end
+
+    def message
+      first = browser_helper.text (@browser.td class: "TD3")
+      second = browser_helper.text (@browser.td css: "td[class=TD3][align=left]")
+      "#{first}#{second}"
     end
   end
 end
