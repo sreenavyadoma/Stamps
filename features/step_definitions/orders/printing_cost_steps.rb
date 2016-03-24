@@ -77,8 +77,8 @@ Then /^Expect Printing cost is deducted from customer balance if there were no p
   end
 end
 
-Then /^Expect Print Window Total Cost to be \$([0-9.]*)$/ do |expectation|
-  log.info "Step: Expect Print Window Total Cost to be #{expectation}"
+Then /^Print Modal: Expect Total Cost to be \$([0-9.]*)$/ do |expectation|
+  log.info "Step: Print Modal: Expect Total Cost to be #{expectation}"
   begin
     print_window = orders.toolbar.print
     actual_value = print_window.total_cost

@@ -68,11 +68,11 @@ Then /^Expect Shipped Tab Ship Date to be today plus (\d+)/ do |day|
 
 end
 
-Then /^Expect Print Window Ship Date to be (\d+) day\(s\) from today/ do |day|
-  log.info "Step: Expect Print Window Ship Date to be #{day} day(s) from today"
+Then /^Print Modal: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
+  log.info "Step: Print Modal: Expect Ship Date to be #{day} day(s) from today"
   actual = orders.toolbar.print.ship_date.text
   expected = test_helper.print_date day
-  log.info "Expect Print Window Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
+  log.info "Print Modal: Expect Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
   actual.should eql expected
 end
 
@@ -151,16 +151,16 @@ When /^Print expecting some orders can not be printed$/ do
   expect(actual_error_message.include? 'To print the remaining orders, click Continue').to be true
 end
 
-Then /^Expect Print Window title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  log.info "Step: Expect Print Window title to be \"You have #{expectation} label\(s\) ready to print\""
+Then /^Print Modal: Expect Modal Title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
+  log.info "Step: Print Modal: Expect Modal Title to be \"You have #{expectation} label\(s\) ready to print\""
   actual = orders.toolbar.print.labels_ready_to_print
   orders.toolbar.print.close
   log.info "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
   "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
 end
 
-Then /^Expect Print Window Requires (\d+) label sheets$/ do |sheets|
-  log.info "Step: Expect Print Window Requires #{sheets} label sheets"
+Then /^Print Modal: Expect number of required label sheets to be (\d+)$/ do |sheets|
+  log.info "Step: Print Modal: Expect Requires #{sheets} label sheets"
   actual = orders.toolbar.print.labels_required
   log.info "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheets==actual)?'Passed':'Failed'}"
   actual.should eql sheets
