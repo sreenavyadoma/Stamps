@@ -44,7 +44,7 @@ module Pam
         sleep 1
         return customer_profile if customer_profile.present?
         if customer_profile_not__found.present?
-          log.info customer_profile_not__found.message
+          log.info "PAM:  #{customer_profile_not__found.message}"
           @browser.back
         end
       end
