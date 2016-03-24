@@ -333,6 +333,7 @@ end
 Then /^Order Details: Set Insure For checkbox to unchecked$/ do
   log.info "Order Details: Set Insure For checkbox to unchecked"
   orders.details.insure_for.checkbox.uncheck
+  orders.details.insure_for.checkbox.uncheck
 end
 
 Then /^Order Details: Set Insure For to \$([\d*\.?\d*]*)$/ do |value|

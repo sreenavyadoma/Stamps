@@ -2047,8 +2047,9 @@ module Orders
 
     class InsureFor < OrdersObject
       def checkbox
-        field = (@browser.inputs(css: "input[id^=checkbox-][id$=-inputEl][class*=checkbox]").last)
-        verify = field.parent.parent.parent.parent
+        #field = (@browser.inputs(css: "input[id^=checkbox-][id$=-inputEl][class*=checkbox]").last)
+        field = (@browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-innerCt]>div>div:nth-child(6)>div>div>div>div[id^=container]>div>div>div>div>input"))
+        verify = field.parent.parent.parent
         StampsCheckbox.new field, verify, "class", "checked"
       end
 
