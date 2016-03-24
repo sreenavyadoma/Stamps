@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @print_modal_label_count_thermal --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=nhr9mm6m5l PW=pass111
+rob_dev: --tags @registration --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=nhr9mm6m5l PW=pass111
 #order_details_placeholder
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
@@ -27,7 +27,7 @@ grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=true
 grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=true
 import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=true
 pagination: --tags @pagination --guess VERBOSE=false HEALTHCHECK=true
-registration: --tags @registration --guess VERBOSE=false HEALTHCHECK=true
+registration: --tags @registration --guess VERBOSE=true HEALTHCHECK=true
 webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess VERBOSE=false HEALTHCHECK=true
 general_settings: --tags @general_settings --guess VERBOSE=false HEALTHCHECK=true
 print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=true
