@@ -4,7 +4,7 @@ Feature: Show Cost of Order in Ship Cost Grid
   Background:
     Given I am signed in to Orders
 
-  @print_costs
+  @grid_ship_cost
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid
     Then Add New Order
     Then Order Details: Set Ship-From to default
