@@ -21,7 +21,6 @@ rakuten: --tags @rakuten --guess VERBOSE=false HEALTHCHECK=true
 volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=true 
 amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true 
 
-
 orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true
 print_modal_label_count_thermal: --tags @print_modal_label_count_thermal --guess VERBOSE=false HEALTHCHECK=true
 order_details_placeholder: --tags @order_details_placeholder --guess VERBOSE=false HEALTHCHECK=true
