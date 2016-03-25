@@ -2,7 +2,7 @@
 Feature: Show Cost of Order in Ship Cost Grid
 
   Background:
-    Given I am signed in to Orders using ff
+    Given I am signed in to Orders
 
   @print_costs
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid

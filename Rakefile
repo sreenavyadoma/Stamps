@@ -2,6 +2,11 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:orders_authentication) do |t|
+  t.profile = 'orders_authentication'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_modal_label_count_thermal) do |t|
   t.profile = 'print_modal_label_count_thermal'
   t.cucumber_opts = "-p cuke_reports"
