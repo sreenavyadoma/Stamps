@@ -277,6 +277,11 @@ Cucumber::Rake::Task.new(:details_panel_total_cost) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:grid_ship_cost) do |t|
+  t.profile = 'grid_ship_cost'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:purchasing) do |t|
   t.profile = 'purchasing'
   t.cucumber_opts = "-p cuke_reports"
