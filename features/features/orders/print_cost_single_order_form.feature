@@ -4,13 +4,13 @@ Feature: Printing total cost
   Background:
     Given I am signed in to Orders using ff
 
-  @print_costs
+  @print_costs @print_costs_dev
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
     Then Add New Order
     Then Order Details: Set Ship-From to default
-    Then Expect Service Cost to be $0.00
-    Then Expect Insurance Cost to be $0.00
-    Then Expect Tracking Cost to be $0.00
+    Then Order Details: Expect Service Cost to be $0.00
+    #Then Order Details: Expect Insurance Cost to be $0.00
+    Then Order Details: Expect Tracking Cost to be $0.00
     Then Order Details: Expect Total to be $0.00
 
     Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
