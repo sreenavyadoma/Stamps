@@ -11,6 +11,6 @@ Feature:  BVT Address Management
     Then Expect random Ship-From address was added
     Then Delete random Ship-From address
     Then Delete all Ship-From address
-    Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Order Details: Set Service to "Priority Mail Package"
+    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Service to "Priority Mail Package"
     Then Sign out

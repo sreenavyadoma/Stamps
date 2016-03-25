@@ -12,8 +12,8 @@ Cucumber::Rake::Task.new(:print_modal_label_count_thermal) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:order_details_placeholder) do |t|
-  t.profile = 'order_details_placeholder'
+Cucumber::Rake::Task.new(:details_panel_placeholders) do |t|
+  t.profile = 'details_panel_placeholders'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -272,8 +272,13 @@ Cucumber::Rake::Task.new(:print_sample) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_costs) do |t|
-  t.profile = 'print_costs'
+Cucumber::Rake::Task.new(:details_panel_total_cost) do |t|
+  t.profile = 'details_panel_total_cost'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:grid_ship_cost) do |t|
+  t.profile = 'grid_ship_cost'
   t.cucumber_opts = "-p cuke_reports"
 end
 

@@ -1,41 +1,41 @@
-Then /^Print Modal: Set Printer to \"(.*)\"$/ do |printer|
-  log.info "Print Modal: Set Printer to \"#{printer}\""
+Then /^Print: Set Printer to \"(.*)\"$/ do |printer|
+  log.info "Print: Set Printer to \"#{printer}\""
   orders.toolbar.print.printer.select printer
 end
 
-Then /^Reprint Modal: Reprint$/ do
+Then /^RePrint: Reprint$/ do
   orders.toolbar.reprint.reprint
 end
 
-Then /^Print Modal: Set Ship Date to today$/ do
-  step "Print Modal: Set Ship Date to today plus #{1}"
+Then /^Print: Set Ship Date to today$/ do
+  step "Print: Set Ship Date to today plus #{1}"
 end
 
-Then /^Print Modal: Set Ship Date to today plus (\d+)$/ do |day|
+Then /^Print: Set Ship Date to today plus (\d+)$/ do |day|
   ship_date = test_helper.now_plus_mon_dd day
-  log.info "Print Modal: Set Ship Date to #{ship_date}"
+  log.info "Print: Set Ship Date to #{ship_date}"
   @ship_date = orders.toolbar.print.date_picker.today_plus day
 end
 
-Then /^Print Modal: Set Email Tracking to Checked$/ do
-  log.info "Print Modal: Set Email Tracking to Checked"
+Then /^Print: Set Email Tracking to Checked$/ do
+  log.info "Print: Set Email Tracking to Checked"
   orders.toolbar.print.print_options.email_tracking.check
 end
 
-Then /^Print Modal: Set Email Tracking to Unchecked$/ do
-  log.info "Print Modal: Set Email Tracking to Unchecked"
+Then /^Print: Set Email Tracking to Unchecked$/ do
+  log.info "Print: Set Email Tracking to Unchecked"
   orders.toolbar.print.print_options.email_tracking.uncheck
 end
 
 
-When /^Print Modal: Select left-side label$/ do
-  log.info "Step: Print Modal: Select - Left side label"
+When /^Print: Select left-side label$/ do
+  log.info "Step: Print: Select - Left side label"
   selected = orders.toolbar.print.starting_label.left
   log.info "left-side label was #{(selected)?'selected.':'not selected'}"
 end
 
-When /^Print Modal: Select right-side label$/ do
-  log.info "Step: Print Modal: Select - Right side label"
+When /^Print: Select right-side label$/ do
+  log.info "Step: Print: Select - Right side label"
   selected = orders.toolbar.print.starting_label.right
   log.info "Print Modal right-side label was #{(selected)?'selected.':'not selected'}"
 end
@@ -68,16 +68,16 @@ Then /^Expect Shipped Tab Ship Date to be today plus (\d+)/ do |day|
 
 end
 
-Then /^Print Modal: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
-  log.info "Step: Print Modal: Expect Ship Date to be #{day} day(s) from today"
+Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
+  log.info "Step: Print: Expect Ship Date to be #{day} day(s) from today"
   actual = orders.toolbar.print.ship_date.text
   expected = test_helper.print_date day
-  log.info "Print Modal: Expect Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
+  log.info "Print: Expect Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
   actual.should eql expected
 end
 
-Then /^Print Modal: Set Media \"(.*)\"$/ do |print_media|
-  log.info "Step: Print Modal: Set Media #{print_media}"
+Then /^Print: Set Media \"(.*)\"$/ do |print_media|
+  log.info "Step: Print: Set Media #{print_media}"
   orders.toolbar.print.printing_on.select print_media
 end
 
@@ -151,16 +151,16 @@ When /^Print expecting some orders can not be printed$/ do
   expect(actual_error_message.include? 'To print the remaining orders, click Continue').to be true
 end
 
-Then /^Print Modal: Expect Modal Title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  log.info "Step: Print Modal: Expect Modal Title to be \"You have #{expectation} label\(s\) ready to print\""
+Then /^Print: Expect Modal Title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
+  log.info "Step: Print: Expect Modal Title to be \"You have #{expectation} label\(s\) ready to print\""
   actual = orders.toolbar.print.labels_ready_to_print
   orders.toolbar.print.close
   log.info "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
   "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
 end
 
-Then /^Print Modal: Expect number of required label sheets to be (\d+)$/ do |sheets|
-  log.info "Step: Print Modal: Expect Requires #{sheets} label sheets"
+Then /^Print: Expect number of required label sheets to be (\d+)$/ do |sheets|
+  log.info "Step: Print: Expect Requires #{sheets} label sheets"
   actual = orders.toolbar.print.labels_required
   log.info "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheets==actual)?'Passed':'Failed'}"
   actual.should eql sheets
@@ -171,23 +171,23 @@ Then /^Print raises a Printing Error/ do
   expect{orders.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
-Then /^Print Modal: Print Sample on (.*)$/ do |printer|
-  log.info "Step: Print Modal: Print Sample on #{printer}"
+Then /^Print: Print Sample on (.*)$/ do |printer|
+  log.info "Step: Print: Print Sample on #{printer}"
   orders.toolbar.print(printer).print_sample
 end
 
-Then /^Print Modal: Print Sample on (.*) raises a PrintingError$/ do |printer|
-  log.info "Step: Print Modal: Print Sample on #{printer} raises a PrintingError"
+Then /^Print: Print Sample on (.*) raises a PrintingError$/ do |printer|
+  log.info "Step: Print: Print Sample on #{printer} raises a PrintingError"
   expect{orders.toolbar.print(printer).print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
-Then /^Print Modal: Print Sample$/ do
-  log.info "Step: Print Modal: Print Sample"
+Then /^Print: Print Sample$/ do
+  log.info "Step: Print: Print Sample"
   orders.toolbar.print.print_sample
 end
 
-Then /^Print Modal: Print Sample raises a Printing Error/ do
-  log.info "Step: Print Modal: Print Sample raises a Printing Error"
+Then /^Print: Print Sample raises a Printing Error/ do
+  log.info "Step: Print: Print Sample raises a Printing Error"
   expect{orders.toolbar.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 

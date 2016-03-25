@@ -6,12 +6,12 @@ Feature:  Customs Form Item Grid - Edit/Delete
   @international @customs_form_edit_delete_items
   Scenario:  Customs Form Item Grid - Edit/Delete
     Then Add New Order
-    Then Order Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
-    Then Order Details: Set Ounces to 5
-    Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"
-    Then Order Details: Add Item 1, Qty 1, ID random, Description random
+    Then Details: Set Ounces to 5
+    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Add Item 1, Qty 1, ID random, Description random
     Then Open Customs Form
     Then Customs Form: Expect Item Grid count to be 1
     Then Customs Form: Add Item 1, Description random, Qty 1, Price 1000, Lbs 1, Oz 1 Origin Japan, Tariff 100

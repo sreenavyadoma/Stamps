@@ -6,12 +6,12 @@ Feature:  Customs Form Data Tooltip Error
   @international @international_customs_form_data_tooltip
   Scenario:  Customs Form Data Error
     Then Add New Order
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To International Adress;
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
-    Then Order Details: Set Ounces to 5
-    Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Set Ounces to 5
+    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
     Then Open Customs Form
     Then Pause for 1 second
     Then Cancel Customs Form
