@@ -549,7 +549,6 @@ Then /^Grid: Expect Order Total to be (.+)$/ do |expectation|
     actual = orders.grid.order_total.data @order_id
     10.times do
       sleep 1
-      #log_expectation_eql "#{counter}. Order Total", expected, actual
       break if actual.eql? expectation
       actual = orders.grid.order_total.data @order_id
      end
