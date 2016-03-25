@@ -2076,6 +2076,19 @@ module Orders
           button.safe_click
         end
       end
+
+      def cost
+        cost_label = StampsLabel.new (@browser.label css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label')
+        10.times do
+          begin
+            cost = cost_label.text
+          rescue
+            #ignore
+          end
+          break unless cost.include? "$"
+        end
+        test_helper.remove_dollar_sign(cost_label.text)
+      end
     end
 
     class ItemGrid < OrdersObject
@@ -2262,6 +2275,19 @@ module Orders
         InsureFor.new @browser
       end
 
+      def insurance_cost
+        cost_label = StampsLabel.new (@browser.label :text => "Insure For $:").parent.labels[2]
+        10.times do
+          begin
+            cost = cost_label.text
+          rescue
+            #ignore
+          end
+          break unless cost.include? "$"
+        end
+        test_helper.remove_dollar_sign(cost_label.text)
+      end
+
       def tracking
         TrackingDropDown.new @browser
       end
@@ -2332,19 +2358,6 @@ module Orders
 
       def service_cost
         cost_label = StampsLabel.new (@browser.label :text => "Service:").parent.labels[2]
-        10.times do
-          begin
-            cost = cost_label.text
-          rescue
-            #ignore
-          end
-          break unless cost.include? "$"
-        end
-        test_helper.remove_dollar_sign(cost_label.text)
-      end
-
-      def insurance_cost
-        cost_label = StampsLabel.new (@browser.label :text => "Insure For $:").parent.labels[2]
         10.times do
           begin
             cost = cost_label.text

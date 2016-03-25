@@ -19,5 +19,6 @@ Feature: Printing total cost
     Then Details: Set Service to "Priority Mail Package"
     Then Details: Set Insure For to $10.00
     Then Details: Set Tracking to "Signature Required"
-    Then Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost
+    Then Pause for 1 second
+    Then Details: Expect Total is corect
     Then Sign out
