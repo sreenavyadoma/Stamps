@@ -9,7 +9,7 @@ Feature: Printing total cost
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Expect Service Cost to be $0.00
-    #Then Details: Expect Insurance Cost to be $0.00
+    Then Details: Expect Insurance Cost to be $0.00
     Then Details: Expect Tracking Cost to be $0.00
     Then Details: Expect Total to be $0.00
 

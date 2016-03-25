@@ -430,14 +430,14 @@ end
 
 Then /^Details: Expect Service Cost to be \$(.*)$/ do |expected|
   log.info "Step: Details: Expect Service Cost to be $#{expected}"
-  actual = orders.details.service_cost
+  actual = orders.details.service.cost
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
 end
 
 Then /^Details: Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
   log.info "Step: Details: Expect Tracking Cost to be #{expected}"
-  actual = orders.details.tracking_cost
+  actual = orders.details.tracking.cost
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
 end
