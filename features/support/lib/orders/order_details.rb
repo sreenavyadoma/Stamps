@@ -1750,22 +1750,39 @@ module Orders
         selection_label
       end
 
-      def cost selection
-        button = drop_down
-        cost_label = StampsLabel.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(3)"
-        10.times {
-          begin
-            button.safe_click unless cost_label.present?
-            if cost_label.present?
-              service_cost = test_helper.remove_dollar_sign cost_label.text
-              log.info "Service Cost for \"#{selection}\" is #{service_cost}"
-              button.safe_click if cost_label.present?
-              return service_cost
+      def cost *args
+        case args.length
+          when 0
+            cost_label = StampsLabel.new (@browser.label :text => "Service:").parent.labels[2]
+            10.times do
+              begin
+                cost = cost_label.text
+              rescue
+                #ignore
+              end
+              break unless cost.include? "$"
             end
-          rescue
-            #ignore
-          end
-        }
+            test_helper.remove_dollar_sign(cost_label.text)
+          when 1
+            button = drop_down
+            cost_label = StampsLabel.new @browser.td :css => "tr[data-qtip*='#{args[0]}']>td:nth-child(3)"
+            10.times {
+              begin
+                button.safe_click unless cost_label.present?
+                if cost_label.present?
+                  service_cost = test_helper.remove_dollar_sign cost_label.text
+                  log.info "Service Cost for \"#{args[0]}\" is #{service_cost}"
+                  button.safe_click if cost_label.present?
+                  return service_cost
+                end
+              rescue
+                #ignore
+              end
+            }
+          else
+            raise "Illegal number of arguments for Service Cost"
+
+        end
         click_form
       end
 
@@ -2076,6 +2093,19 @@ module Orders
           button.safe_click
         end
       end
+
+      def cost
+        cost_label = StampsLabel.new (@browser.label css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label')
+        10.times do
+          begin
+            cost = cost_label.text
+          rescue
+            #ignore
+          end
+          break unless cost.include? "$"
+        end
+        test_helper.remove_dollar_sign(cost_label.text)
+      end
     end
 
     class ItemGrid < OrdersObject
@@ -2328,32 +2358,6 @@ module Orders
 
       def customs
         CustomsFields.new @browser
-      end
-
-      def service_cost
-        cost_label = StampsLabel.new (@browser.label :text => "Service:").parent.labels[2]
-        10.times do
-          begin
-            cost = cost_label.text
-          rescue
-            #ignore
-          end
-          break unless cost.include? "$"
-        end
-        test_helper.remove_dollar_sign(cost_label.text)
-      end
-
-      def insurance_cost
-        cost_label = StampsLabel.new (@browser.label :text => "Insure For $:").parent.labels[2]
-        10.times do
-          begin
-            cost = cost_label.text
-          rescue
-            #ignore
-          end
-          break unless cost.include? "$"
-        end
-        test_helper.remove_dollar_sign(cost_label.text)
       end
 
       def tracking_cost

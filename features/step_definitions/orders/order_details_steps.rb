@@ -448,7 +448,7 @@ end
 
 Then /^Details: Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
   log.info "Step: Details: Expect Insurance Cost to be #{expected}"
-  actual = orders.details.insurance_cost
+  actual = orders.details.insure_for.cost
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
 end

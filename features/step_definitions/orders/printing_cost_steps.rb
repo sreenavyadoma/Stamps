@@ -1,21 +1,21 @@
 Then /^Save Shipping Costs Data$/ do
   log.info "Step: Save Shipping Costs Data"
   @service_cost = orders.details.service_cost
-  @insurance_cost = orders.details.insurance_cost
+  @insurance_cost = orders.details.insure_for.cost
   @tracking_cost = orders.details.tracking_cost
   @total_amount = orders.details.total
   @old_balance = orders.navigation_bar.balance.amount
 end
 
-Then /^Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost$/ do
-  log.info "Step: Expect Total amount equals Service Cost, Insurance Cost and Tracking Cost"
+Then /^Details: Expect Total is corect$/ do
+  log.info "Step: Details: Expect Total is corect"
   @total_amount = orders.details.total
   @service_cost = orders.details.service_cost
   @tracking_cost = orders.details.tracking_cost
-  @insurance_cost = orders.details.insurance_cost
+  @insurance_cost = orders.details.insure_for.cost
   total_amount_correct = @total_amount.to_f.round(2) == (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
   log.info "Total Amount:  #{(total_amount_correct)?'Passed':'Failed'}.  #{@total_amount} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
-  expect(total_amount_correct).to be true
+  @total_amount.to_f.round(2).should eql (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
 end
 
 Then /^Expect Ship Cost equals Total amount$/ do

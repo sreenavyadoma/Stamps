@@ -52,14 +52,9 @@ end
 
 Then /^PAM: Customer Search: Set 5.2 or lower$/ do
   log.info "PAM: Customer Search: Set 5.2 or lower"
-  if @pam_customer_profile_found
-    @customer_search = pam.customer_search if @customer_search.nil?
-    @customer_search.user_5_2_or_lower
-    @customer_search.user_5_2_or_lower
-    sleep 1
-  else
-    log.info "PAM:  Customer not found!"
-  end
+  @customer_search = pam.customer_search if @customer_search.nil?
+  @customer_search.user_5_2_or_lower
+  @customer_search.user_5_2_or_lower
 end
 
 Then /^PAM: Customer Search: Click Search button$/ do
@@ -69,6 +64,7 @@ Then /^PAM: Customer Search: Click Search button$/ do
   case search_result
     when Pam::CustomerProfile
       @customer_profile = search_result
+      @pam_customer_profile_found = @customer_profile.present?
     else
       @pam_customer_profile_found = false
   end
