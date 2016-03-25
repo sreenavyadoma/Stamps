@@ -3,7 +3,7 @@ Feature:  Service enabled/disabled tests
   Background:
     Given I am signed in to Orders
 
-  @fcm_selection_enabled
+  @rules_domestic
   Scenario:  First Class Mail over 16 ounces disabled
     Then Add New Order
     Then Details: Set Ship-From to default
