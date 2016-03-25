@@ -1,7 +1,7 @@
 Then /^Save Shipping Costs Data$/ do
   log.info "Step: Save Shipping Costs Data"
   @service_cost = orders.details.service_cost
-  @insurance_cost = orders.details.insurance_cost
+  @insurance_cost = orders.details.insure_for.cost
   @tracking_cost = orders.details.tracking_cost
   @total_amount = orders.details.total
   @old_balance = orders.navigation_bar.balance.amount
