@@ -19,9 +19,8 @@ Feature: Add Missing Validation Logic for Phone and International Email
     Then Details: Expect International City data error tooltip to be "The ship to city is a required field"
     Then Details: Expect International Phone data error tooltip to be "A valid phone number is required"
 
+    Then Details: Expect Service data error tooltip to be "Service is required"
     Then Details: Expect Weight Lbs data error tooltip to be "Weight cannot be 0"
     Then Details: Expect Weight Oz data error tooltip to be "Weight cannot be 0"
-    Then Details: Expect Service data error tooltip to be "Service is required"
-
     Then Sign out
 

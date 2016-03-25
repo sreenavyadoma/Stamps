@@ -44,8 +44,10 @@ Then /^Details: Expect Weight Lbs data error tooltip to be \"(.*)\"$/ do |expect
   log.info "Step: Details: Expect Domestic  Weight lbs data error tooltip to be #{expectation}"
   text_box = orders.details.weight.lbs.text_box
   20.times do
-    orders.details.click_form
     text_box.scroll_into_view
+    text_box.set "1"
+    orders.details.click_form
+    text_box.set "0"
     orders.details.click_form
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
@@ -53,6 +55,9 @@ Then /^Details: Expect Weight Lbs data error tooltip to be \"(.*)\"$/ do |expect
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
+
+  text_box.scroll_into_view
+  sleep 2
   data_error_tooltip = text_box.data_error_qtip
   log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include expectation
@@ -62,10 +67,13 @@ Then /^Details: Expect Weight Oz data error tooltip to be \"(.*)\"$/ do |expecta
   log.info "Step: Details: Expect Weight Oz data error tooltip to be #{expectation}"
   text_box = orders.details.weight.oz.text_box
   20.times do
+    text_box.scroll_into_view
+    text_box.set "1"
     text_box.safe_double_click
     orders.details.click_form
-    text_box.scroll_into_view
     text_box.safe_double_click
+    text_box.set "0"
+    text_box.scroll_into_view
     orders.details.click_form
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
@@ -73,6 +81,9 @@ Then /^Details: Expect Weight Oz data error tooltip to be \"(.*)\"$/ do |expecta
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
+
+  text_box.scroll_into_view
+  sleep 2
   data_error_tooltip = text_box.data_error_qtip
   log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include expectation
@@ -93,6 +104,9 @@ Then /^Details: Expect Service data error tooltip to be \"(.*)\"$/ do |expectati
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
+
+  text_box.scroll_into_view
+  sleep 2
   data_error_tooltip = text_box.data_error_qtip
   log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include expectation
@@ -321,6 +335,7 @@ Then /^Details: Expect International Phone data error tooltip to be \"(.*)\"$/ d
     end unless data_error_tooltip.nil?
   end
   @international_ship_to.name.scroll_into_view
+  sleep 2
   data_error_tooltip = text_box.data_error_qtip
   log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include expectation
