@@ -7,15 +7,15 @@ Feature: Sudan Internal Transaction Number Required
   @international_rogue_countries @international_rules_engine
   Scenario: Sudan Internal Transaction Number Required
     Then Add New Order
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To International Adress;
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To International Adress;
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
 
-    Then Order Details: Set Ounces to 5
-    Then Order Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Set Ounces to 5
+    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
 
-    #Then Order Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    #Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
     Then Open Customs Form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs Form: Set Package Contents to "Commercial Sample"

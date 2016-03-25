@@ -1,6 +1,6 @@
 
 
-#Print Modal: Set Printer to "factory"
+#Print: Set Printer to "factory"
 
 
 When /^Footer: Print International Postage$/ do
@@ -18,7 +18,7 @@ When /^Footer: Open Print Postage Modal$/ do
 end
 
 
-Then /^Print Modal: Select Postage Printer \"(.*)\"$/ do |printer|
+Then /^Print: Select Postage Printer \"(.*)\"$/ do |printer|
   log.info "Step: Select Printer #{printer}"
   postage.postage.printer.select printer
 end
@@ -32,7 +32,7 @@ When /^Footer: Print Postage$/ do
   @printing_error = print_postage_modal.print
 end
 
-Then /^Print Modal: Close$/ do
+Then /^Print: Close$/ do
   log.info "Step: Close Print Modal"
   postage.postage.close
 end
@@ -68,22 +68,22 @@ Then /^Print Postage raises a Printing Error/ do
 end
 
 Then /^Print Postage Sample on (.*)$/ do |printer|
-  log.info "Step: Print Modal: Print Sample on #{printer}"
+  log.info "Step: Print: Print Sample on #{printer}"
   postage.print(printer).print_sample
 end
 
 Then /^Print Postage Sample on (.*) raises a PrintingError$/ do |printer|
-  log.info "Step: Print Modal: Print Sample on #{printer} raises a PrintingError"
+  log.info "Step: Print: Print Sample on #{printer} raises a PrintingError"
   expect{postage.print(printer).print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Print Postage Sample$/ do
-  log.info "Step: Print Modal: Print Sample"
+  log.info "Step: Print: Print Sample"
   postage.postage.print_sample
 end
 
 Then /^Print Postage Sample raises a Printing Error/ do
-  log.info "Step: Print Modal: Print Sample raises a Printing Error"
+  log.info "Step: Print: Print Sample raises a Printing Error"
   expect{postage.postage.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 

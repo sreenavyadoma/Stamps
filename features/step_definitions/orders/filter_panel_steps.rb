@@ -1,16 +1,16 @@
 
-Then /^Filter Panel - Awaiting Shipment$/ do
-  log.info "Step:  Filter Panel - Awaiting Shipment"
+Then /^Filter: Select Awaiting Shipment$/ do
+  log.info "Step:  Filter: Select Awaiting Shipment"
   orders.filter.awaiting_shipment
 end
 
-Then /^Filter Panel - Shipped$/ do
-  log.info "Step:  Filter Panel - Shipped"
+Then /^Filter: Select Shipped$/ do
+  log.info "Step:  Filter: Select Shipped"
   orders.filter.shipped
 end
 
-Then /^Filter Panel - Cancelled$/ do
-  log.info "Step:  Filter Panel - Cancelled"
+Then /^Filter: Select Cancelled$/ do
+  log.info "Step:  Filter: Select Cancelled"
   orders.filter.cancelled
 end
 

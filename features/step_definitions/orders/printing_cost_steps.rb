@@ -22,10 +22,9 @@ Then /^Expect Ship Cost equals Total amount$/ do
   log.info "Step: Expect Ship Cost equals Total amount"
   total_amount = orders.details.total
   ship_cost = orders.grid.ship_cost.data @order_id
-  10.times { |counter|
+  10.times {
     begin
       sleep(1)
-      #log_expectation_eql "#{counter}. Ship Cost", total_amount, ship_cost
       break if ship_cost.eql? total_amount
       total_amount = orders.details.total
       ship_cost = orders.grid.ship_cost.data @order_id
@@ -77,8 +76,8 @@ Then /^Expect Printing cost is deducted from customer balance if there were no p
   end
 end
 
-Then /^Print Modal: Expect Total Cost to be \$([0-9.]*)$/ do |expectation|
-  log.info "Step: Print Modal: Expect Total Cost to be #{expectation}"
+Then /^Print: Expect Total Cost to be \$([0-9.]*)$/ do |expectation|
+  log.info "Step: Print: Expect Total Cost to be #{expectation}"
   begin
     print_window = orders.toolbar.print
     actual_value = print_window.total_cost

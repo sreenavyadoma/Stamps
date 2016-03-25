@@ -7,25 +7,25 @@ Feature: Change the starting label position I will print from
   @print_label_position @print_label_position_right_side
   Scenario:  Print Label - Right Side
     Then Add New Order
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Order Details: Hide Ship-To fields
-    Then Order Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
-    Then Order Details: Set Ounces to 1
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Hide Ship-To fields
+    Then Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    Then Details: Set Ounces to 1
     Then Open Print Modal
-    Then Print Modal: Set Printer to "factory"
-    Then Print Modal: Select right-side label
+    Then Print: Set Printer to "factory"
+    Then Print: Select right-side label
     Then Expect Print Modal right-side label selected
     Then Toolbar: Print
 
     Then Add New Order
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Order Details: Hide Ship-To fields
-    Then Order Details: Set Service to "Priority Mail Package"
-    Then Order Details: Set Ounces to 1
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Hide Ship-To fields
+    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Set Ounces to 1
     Then Open Print Modal
-    Then Print Modal: Set Printer to "factory"
+    Then Print: Set Printer to "factory"
     Then Expect Print Modal right-side label selected
     Then Toolbar: Print
 

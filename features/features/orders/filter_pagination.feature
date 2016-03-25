@@ -6,7 +6,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
   Scenario: User Views Filter Panel - Panel Default
     When Expect system displays expanded filters panel
 
-    Then Filter Panel - Shipped
+    Then Filter: Select Shipped
     Then Expect system selects Shipped Filter Panel - and deselects the previous filter
 
     Then Toolbar:  Set Per Page drop-down to 500
