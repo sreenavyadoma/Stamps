@@ -54,7 +54,7 @@ print_layouts_cn22: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCH
 
 local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=false HEALTHCHECK=true
 tracking_defaults: --tags @tracking_defaults --guess VERBOSE=false HEALTHCHECK=true
-domestic_rules_validation: --tags @domestic_rules_validation --guess VERBOSE=false HEALTHCHECK=true
+rules_domestic: --tags @rules_domestic --guess VERBOSE=false HEALTHCHECK=true
 parcel_select: --tags @parcel_select --guess VERBOSE=false HEALTHCHECK=true
 service_tooltip: --tags @service_tooltip --guess VERBOSE=false HEALTHCHECK=true
 change_order_status: --tags @change_order_status --guess VERBOSE=false HEALTHCHECK=true

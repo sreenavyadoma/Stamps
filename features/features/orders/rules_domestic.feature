@@ -20,7 +20,7 @@ Feature:  Service enabled/disabled tests
     Then Expect Order details Service "First-Class Mail Package/Thick Envelope" to be enabled
     #Then Expect Order details Service "First-Class Mail Large Envelope/Flat" to be enabled
 
-  @domestic_rules_validation
+  @rules_domestic
   Scenario: Domestic Rules Engine Validation
     Then Add New Order
     Then Details: Set Email to bademail

@@ -142,8 +142,8 @@ Cucumber::Rake::Task.new(:print_print_label_position_layouts) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:domestic_rules_validation) do |t|
-  t.profile = 'domestic_rules_validation'
+Cucumber::Rake::Task.new(:rules_domestic) do |t|
+  t.profile = 'rules_domestic'
   t.cucumber_opts = "-p cuke_reports"
 end
 
