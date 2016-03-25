@@ -217,6 +217,7 @@ Then /^Details: Expect International Name data error tooltip to be \"(.*)\"$/ do
     end unless data_error_tooltip.nil?
   end
   @international_ship_to.name.scroll_into_view
+  sleep 2
   data_error_tooltip = text_box.data_error_qtip
   log.info "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include expectation
