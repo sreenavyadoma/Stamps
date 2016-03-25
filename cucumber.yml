@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @parcel_select --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
+rob_dev: --tags @postage_balance_update --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 #details_panel_placeholders
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
@@ -47,7 +47,7 @@ details_panel_total_cost: --tags @details_panel_total_cost --guess VERBOSE=false
 print_date: --tags @print_date --guess VERBOSE=false HEALTHCHECK=true
 print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=true
 print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=false HEALTHCHECK=true
-update_postage_balance: --tags @update_postage_balance --guess VERBOSE=false HEALTHCHECK=true
+postage_balance_update: --tags @postage_balance_update --guess VERBOSE=false HEALTHCHECK=true
 reprint: --tags @reprint --guess VERBOSE=false HEALTHCHECK=true
 print_layouts_cp72: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=true
 print_layouts_cn22: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=true
