@@ -34,6 +34,7 @@ Given /^I am signed in to Orders$/ do
   step "Healthcheck: Get Info" if test_helper.to_boolean ENV['HEALTHCHECK']
   step "Orders: Load Sign-in page"
   orders.sign_in_page.sign_in_with_credentials
+  step "Navigation Bar:  Customer Balance"
 end
 
 Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
@@ -69,6 +70,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, us
 end
 
 Then /^Sign out$/ do
+  step "Navigation Bar:  Customer Balance"
   log.info "Step: Sign out"
   orders.navigation_bar.username.sign_out
 end

@@ -333,6 +333,7 @@ end
 Then /^Order Details: Set Insure For checkbox to unchecked$/ do
   log.info "Order Details: Set Insure For checkbox to unchecked"
   orders.details.insure_for.checkbox.uncheck
+  orders.details.insure_for.checkbox.uncheck
 end
 
 Then /^Order Details: Set Insure For to \$([\d*\.?\d*]*)$/ do |value|
@@ -427,15 +428,15 @@ Then /^Order Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |
   }
 end
 
-Then /^Expect Service Cost to be \$(.*)$/ do |expected|
-  log.info "Step: Expect Service Cost to be $#{expected}"
+Then /^Order Details: Expect Service Cost to be \$(.*)$/ do |expected|
+  log.info "Step: Order Details: Expect Service Cost to be $#{expected}"
   actual = orders.details.service_cost
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
 end
 
-Then /^Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
-  log.info "Step: Expect Tracking Cost to be #{expected}"
+Then /^Order Details: Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
+  log.info "Step: Order Details: Expect Tracking Cost to be #{expected}"
   actual = orders.details.tracking_cost
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected
@@ -445,8 +446,8 @@ Then /^Verify Order Details Form Total Amount$/ do
   log.info "Step: Verify Order Details Form Total Amount"
 end
 
-Then /^Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
-  log.info "Step: Expect Insurance Cost to be #{expected}"
+Then /^Order Details: Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
+  log.info "Step: Order Details: Expect Insurance Cost to be #{expected}"
   actual = orders.details.insurance_cost
   log.info "Test #{(actual == expected)?"Passed":"Failed"}"
   actual.should eql expected

@@ -9,3 +9,4 @@ Feature: BVT Purchasing
     Then Purchase Postage for $10
     Then Expect $10 is added to customer balance
     Then Sign out
+

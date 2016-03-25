@@ -3,7 +3,7 @@ Feature: Print 2 Domestic labels on 5.5x8.5 - left side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded
+  @print_two_up_expanded @print_two_up_expanded_5x8
   Scenario: Print 2 Domestic labels on 5.5x8.5 - left side
     # 2 Domestic labels 5 ½" x 8 ½"
     Then Add New Order

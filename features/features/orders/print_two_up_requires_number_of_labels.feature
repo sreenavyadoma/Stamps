@@ -12,8 +12,8 @@ Feature:  Requires x-number of label sheets
     Then Order Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Order Details: Set Weight to 1 lbs 1 oz
     Then Open Print Modal
-    Then Expect Print Window Requires 1 label sheets
-    Then Expect Print Window title to be "You have 1 label(s) ready to print"
+    Then Print Modal: Expect number of required label sheets to be 1
+    Then Print Modal: Expect Modal Title to be "You have 1 label(s) ready to print"
     Then Close Print Modal
 
     Then Add New Order
@@ -24,8 +24,8 @@ Feature:  Requires x-number of label sheets
     Then Orders Grid: Check row 1
     Then Orders Grid: Check row 2
     Then Open Print Modal
-    Then Expect Print Window Requires 1 label sheets
-    Then Expect Print Window title to be "You have 2 label(s) ready to print"
+    Then Print Modal: Expect number of required label sheets to be 1
+    Then Print Modal: Expect Modal Title to be "You have 2 label(s) ready to print"
     Then Close Print Modal
 
     Then Sign out

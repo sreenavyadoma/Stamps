@@ -15,9 +15,10 @@ Feature: Orders Grid: Tracking & Order Status
     Then Order Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Pause for 1 second
     Then Orders Grid: Expect Insured Value to be $52.99
-
+    Then Pause for 1 second
     Then Order Details: Set Insure For checkbox to unchecked
     Then Order Details: Set Service to "Priority Mail Package"
+    Then Order Details: Set Insure For checkbox to unchecked
     Then Order Details: Set Tracking to "Signature Required"
     Then Pause for 2 seconds
     Then Orders Grid: Expect Insured Value to be $0.00
