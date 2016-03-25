@@ -3,7 +3,7 @@ Feature: International Shipping fields and Customs Information fields validation
   Background:
     Given I am signed in to Orders
 
-  @international_rules_engine @international_rules_engine_customs_fields_validation
+  @rules_international @rules_international_customs_fields_validation
   Scenario: International Shipping fields and Customs Information fields validation
     Then Add New Order
     Then Details: Set Ship-From to default

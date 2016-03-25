@@ -152,8 +152,8 @@ Cucumber::Rake::Task.new(:bvt) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:international_rules_engine) do |t|
-  t.profile = 'international_rules_engine'
+Cucumber::Rake::Task.new(:rules_international) do |t|
+  t.profile = 'rules_international'
   t.cucumber_opts = "-p cuke_reports"
 end
 

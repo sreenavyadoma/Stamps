@@ -3,7 +3,7 @@ Feature: Internal Transaction Number Required for total over $2500
   Background:
     Given I am signed in to Orders
 
-  @international_rules_engine @international_rules_engine_over_2500
+  @rules_international @rules_international_over_2500
   Scenario: Customs Form Internal Transaction Number Required for total over $2500
     Then Add New Order
     Then Details: Set Ship-From to default

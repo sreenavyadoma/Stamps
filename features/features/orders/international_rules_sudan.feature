@@ -4,7 +4,7 @@ Feature: Sudan Internal Transaction Number Required
     Given I am signed in to Orders
 
       # Sudan Internal Transaction Number Required
-  @international_rogue_countries @international_rules_engine
+  @international_rogue_countries @rules_international
   Scenario: Sudan Internal Transaction Number Required
     Then Add New Order
     Then Details: Set Ship-From to default

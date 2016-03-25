@@ -3,7 +3,7 @@ Feature: Add Missing Validation Logic for Phone and International Email
   Background:
     Given I am signed in to Orders
 
-  @international_rules_engine
+  @rules_international
   Scenario: Add Missing Validation Logic for Phone and International Email
     Then Add New Order
     Then Details: Set Ship-From to default

@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @postage_balance_update --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
+rob_dev: --tags @rules_international --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 #details_panel_placeholders
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
@@ -77,7 +77,7 @@ jenkins_orders: --tags @jenkins_orders --guess VERBOSE=false HEALTHCHECK=true
 auto_suggest: --tags @auto_suggest --guess VERBOSE=false HEALTHCHECK=true
 new_country_code: --tags  @new_country_code --guess VERBOSE=false HEALTHCHECK=true
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEALTHCHECK=true
-international_rules_engine: --tags  @international_rules_engine --guess VERBOSE=false HEALTHCHECK=true
+rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=true
 expand_order_details_panel: --tags  @expand_order_details_panel --guess VERBOSE=false HEALTHCHECK=true
 multiple_reprint: --tags @multiple_reprint --guess VERBOSE=false HEALTHCHECK=true
 email_tracking: --tags @email_tracking --guess VERBOSE=false HEALTHCHECK=true

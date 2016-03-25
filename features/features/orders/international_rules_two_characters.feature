@@ -3,7 +3,7 @@ Feature: Two character minimum for Name & Company
   Background:
     Given I am signed in to Orders
 
-  @international_rules_engine @international_rules_engine_name_stuff
+  @rules_international @rules_international_name_stuff
   Scenario: Two character minimum for Name & Company
     Then Add New Order
     Then Details: Set Ship-From to default
