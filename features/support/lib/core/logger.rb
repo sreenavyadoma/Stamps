@@ -9,7 +9,7 @@ module Stamps
       end
       @logger ||= Log4r::Logger.new ":"
       @logger.outputters = Outputter.stdout
-      @logger.level = Log4r::FATAL
+      #@logger.level = Log4r::INFO
     end
 
     def scenario_name=name
