@@ -10,7 +10,7 @@ module Windows
         elsif Test.browser.ie?
           return print_window.button(:value => "&Print").exists?
         else
-          raise "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
+          stop_test "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
         end
       rescue
         false
@@ -28,21 +28,21 @@ module Windows
       print_window = RAutomation::Window.new(:title => /Print/i)
       if Test.browser.firefox?
         wait_until_present
-        raise "Print Window is not open" unless present?
+        stop_test "Print Window is not open" unless present?
         print_window.activate
         print_window.button(:value => "OK").click
       elsif Test.browser.chrome?
         wait_until_present
-        raise "Print Window is not open" unless present?
+        stop_test "Print Window is not open" unless present?
         print_window.activate
         print_window.button(:value => "&Print").click
       elsif Test.browser.ie?
         wait_until_present
-        raise "Print Window is not open" unless present?
+        stop_test "Print Window is not open" unless present?
         print_window.activate
         print_window.button(:value => "&Print").click
       else
-        raise "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
+        stop_test "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
       end
     end
   end

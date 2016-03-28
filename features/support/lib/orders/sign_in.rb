@@ -68,7 +68,7 @@ module Orders
       end
 
       def remember_my_username
-        raise "Not yet implemented."
+        stop_test "Not yet implemented."
       end
 
       def visit
@@ -205,12 +205,20 @@ module Orders
           end
         end
 
-        raise "Sign-in failed!  Username #{username} is unable to sign-in on #{ENV["URL"]}" unless navbar.present?
+        begin
+          log.info 'LOGIN FAILED!'
+          log.info 'LOGIN FAILED!'
+          log.info 'LOGIN FAILED!'
+          log.info "Teardown Test!"
+          Stamps::Test.teardown
+          stop_test "Sign-in failed!  Username #{username} is unable to sign-in on #{ENV["URL"]}"
+        end unless navbar.present?
 
         log.info "Signed-in Username is #{navbar.username.text}"
 
         if plugin_issue.present?
-          raise "Stamps.com Plugin Issue"
+          Stamps::Test.teardown
+          stop_test "Stamps.com Plugin Issue"
         end
 
       end

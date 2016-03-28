@@ -142,7 +142,7 @@ module Orders
         end
 
         self.close if self.present?
-        raise server_error.message if server_error.present?
+        stop_test server_error.message if server_error.present?
         settings
       end
     end

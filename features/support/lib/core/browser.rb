@@ -31,13 +31,14 @@ module Stamps
             @browser = args[0]
             @@test_name = args[1]
           else
-            raise "ILLEGAL NUMBER OF ARGUMENTS FOR BrowserObject"
+            stop_test "ILLEGAL NUMBER OF ARGUMENTS FOR BrowserObject"
         end
       end
 
       def log
         @logger ||= Stamps::Logger.new @@test_name
       end
+
       def browser_helper
         BrowserHelper.instance
       end
@@ -60,7 +61,7 @@ module Stamps
             @data_error_field = args[1]
             @data_error_field_attribute = args[2]
           else
-            raise "Illegal number of arguments.  Unable to create field."
+            stop_test "Illegal number of arguments.  Unable to create field."
         end
         @browser = @field.browser
       end
@@ -259,7 +260,7 @@ module Stamps
 
     class StampsLink < StampsLabel
       def url
-        raise "url is not yet implemented"
+        stop_test "url is not yet implemented"
       end
     end
 
@@ -344,7 +345,7 @@ module Stamps
               when :li
                 return @browser.li :text => selection
               else
-                raise "Unsupported HTML drop-down selection tag #{@html_tag_symbol}"
+                stop_test "Unsupported HTML drop-down selection tag #{@html_tag_symbol}"
             end
           else
             return selection
@@ -400,7 +401,7 @@ module Stamps
             field_attribute = args[1]
             search_string = args[2]
           else
-            raise "Wrong number of arguments for enabled?"
+            stop_test "Wrong number of arguments for enabled?"
         end
         attribute_value = attribute_value field, field_attribute
         enabled = attribute_value.include? search_string
@@ -436,7 +437,7 @@ module Stamps
             field_text args[0]
             #log.browser_field args[0], text, args[1]
           else
-            raise "Wrong number of arguments for BrowserHelper.text method."
+            stop_test "Wrong number of arguments for BrowserHelper.text method."
         end
       end
 
@@ -455,7 +456,7 @@ module Stamps
             text = args[1]
             field_name = args[2]
           else
-            raise "Wrong number of arguments for BrowserHelper.set_text method."
+            stop_test "Wrong number of arguments for BrowserHelper.set_text method."
         end
         5.times do
           begin
@@ -489,7 +490,7 @@ module Stamps
             text = args[1]
             field_name = args[2]
           else
-            raise "Wrong number of arguments for BrowserHelper.set_text method."
+            stop_test "Wrong number of arguments for BrowserHelper.set_text method."
         end
 
         5.times do
@@ -571,7 +572,7 @@ module Stamps
             args[0].click
             #log_browser_click args[0], args[1]
           else
-            raise "Wrong number of arguments."
+            stop_test "Wrong number of arguments."
         end
       end
 
@@ -606,7 +607,7 @@ module Stamps
             var_name = %w(args[0])
             #log_browser_click args[0], var_name
           else
-            raise "Wrong number of arguments."
+            stop_test "Wrong number of arguments."
         end
       end
 
@@ -626,7 +627,7 @@ module Stamps
               false
             end
           else
-            raise "Illegal number of arguments for BrowserHelper.wait_until_present"
+            stop_test "Illegal number of arguments for BrowserHelper.wait_until_present"
         end
       end
 
@@ -640,7 +641,7 @@ module Stamps
               false
             end
           else
-            raise "Illegal number of arguments for BrowserHelper.wait_until_present"
+            stop_test "Illegal number of arguments for BrowserHelper.wait_until_present"
         end
       end
 
@@ -663,7 +664,7 @@ module Stamps
             @field_attribute = args[1]
             @search_string = args[2]
           else
-            raise "Wrong number of arguments for enabled?"
+            stop_test "Wrong number of arguments for enabled?"
         end
         attribute_value = attribute_value @disabled_field, @field_attribute
         disabled = attribute_value.include? @search_string

@@ -16,7 +16,7 @@ module Orders
               selection = StampsLabel.new(@browser.span :text => "Add/Edit Stores")
               modal = Orders::Stores::ManageStores.new @browser
             else
-              raise "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores."
+              stop_test "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores."
           end
 
           20.times do
@@ -27,7 +27,7 @@ module Orders
             selection.safe_click
             selection.safe_click
           end
-          raise "Unable to Toolbar Settings Menu Selection - #{menu_item}"
+          stop_test "Unable to Toolbar Settings Menu Selection - #{menu_item}"
         end
 
         def general_settings
@@ -79,7 +79,7 @@ module Orders
             when :awaiting_shipment
               selection_str = "Move to Awaiting Shipment"
             else
-              raise "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment"
+              stop_test "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment"
           end
 
           confirmation = MoveConfirmation.new @browser
@@ -92,7 +92,7 @@ module Orders
             return confirmation if confirmation.present?
           }
 
-          raise "Unable to select #{selection} from Move menu."
+          stop_test "Unable to select #{selection} from Move menu."
         end
 
         def to_shipped
@@ -231,7 +231,7 @@ module Orders
           when 1
             error_window.error_message.include? error_message
           else
-            raise "Illegal number of arguments."
+            stop_test "Illegal number of arguments."
         end
       end
 
@@ -290,7 +290,7 @@ module Orders
         end
 
         return window if window.present?
-        #raise "Unable to open Print Window.  There might be errors in printing OR order is not ready for printing.  Check your test."
+        #stop_test "Unable to open Print Window.  There might be errors in printing OR order is not ready for printing.  Check your test."
       end
 
       def add
@@ -326,10 +326,10 @@ module Orders
         if initializing_db.present?
           message = "\n*****  #{initializing_db.text}  *****\nUser #{nav_bar.username.text} is NOT setup correctly in ShipStation.  Check that this user's email is unique."
           log.info message
-          raise message
+          stop_test message
         end
 
-        raise "Unable to Add New Orders!" unless order_details.present?
+        stop_test "Unable to Add New Orders!" unless order_details.present?
       end
 
       def move

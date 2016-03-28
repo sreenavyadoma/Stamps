@@ -113,7 +113,10 @@ module Orders
           when 1
             browser_helper.wait_until_present wait_field args[0].to_i
           else
-            raise "Wrong number of arguments."
+            log.info "Teardown: Begin tearing down test"
+            Stamps::Test.teardown
+            log.info "Teardown: Done!"
+            stop_test "Wrong number of arguments."
         end
       end
 

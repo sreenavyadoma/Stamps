@@ -28,7 +28,7 @@ module Orders
           elsif international.present?
             international
           else
-            raise "Unable to located Ship-To drop-down button."
+            stop_test "Unable to located Ship-To drop-down button."
           end
         end
 
@@ -431,7 +431,7 @@ module Orders
           if exact_address_not_found.present?
             exact_address_not_found
           else
-            raise "Exact Address Not Found module did not appear."
+            stop_test "Exact Address Not Found module did not appear."
           end
         end
 
@@ -1397,11 +1397,11 @@ module Orders
             if address.is_a? Hash
               delete_row(locate_ship_from(address["name"], address["company"], address["city"]))
             else
-              raise "Address format is not yet supported for this delete call."
+              stop_test "Address format is not yet supported for this delete call."
             end
 
           else
-            raise "Parameter Exception: Paramter not supported."
+            stop_test "Parameter Exception: Paramter not supported."
         end
       end
 
@@ -1429,10 +1429,10 @@ module Orders
               when Hash
                 @shipping_address_form.shipping_address = address
               else
-                raise "Illegal Ship-to argument"
+                stop_test "Illegal Ship-to argument"
             end
           else
-            raise "add_address:  Illegal number of arguments #{args.length}"
+            stop_test "add_address:  Illegal number of arguments #{args.length}"
         end
       end
 
@@ -1469,14 +1469,14 @@ module Orders
               company = address_hash["company"]
               city = address_hash["city"]
             else
-              raise "Wrong number of arguments for locate_address" unless args.length == 3
+              stop_test "Wrong number of arguments for locate_address" unless args.length == 3
             end
           when 3
             name = args[0]
             company = args[1]
             city = args[2]
           else
-            raise "Wrong number of arguments for locate_address" unless args.length == 3
+            stop_test "Wrong number of arguments for locate_address" unless args.length == 3
         end
         locate_ship_from(name, company, city) > 0
       end
@@ -1490,7 +1490,7 @@ module Orders
           when 1
             shipping_address.shipping_address = args[0]
           else
-            raise "Illegal number of arguments."
+            stop_test "Illegal number of arguments."
         end
         self
       end
@@ -1652,7 +1652,7 @@ module Orders
             return if text_box_text.include? service_text
           }
         end
-        raise "Unable to select service #{service}"
+        stop_test "Unable to select service #{service}"
       end
     end
 
@@ -1796,7 +1796,7 @@ module Orders
               end
             }
           else
-            raise "Illegal number of arguments for Service Cost"
+            stop_test "Illegal number of arguments for Service Cost"
 
         end
         #click_form
@@ -2263,7 +2263,7 @@ module Orders
           end
         }
 
-        raise "Unable to obtain Order ID from Single Order Details Form"
+        stop_test "Unable to obtain Order ID from Single Order Details Form"
       end
 
     end
@@ -2347,7 +2347,7 @@ module Orders
 
       def add_item
         add_item = StampsLink.new @browser.span :text => "Add Item"
-        raise "Add Item button is not present in Order Details form!" unless add_item.present?
+        stop_test "Add Item button is not present in Order Details form!" unless add_item.present?
         count = items_count
         5.times do
           add_item.safe_click

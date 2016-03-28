@@ -32,8 +32,11 @@ module Stamps
           log.message "HealthCheck: Staging Healthcheck:"
           log.message "#{@browser.pre.text}"
         else
-          log.info "Invalid environment type"
-          raise "Raise an exception"
+          log.info "Invalid environment type!"
+          log.info "Teardown: Begin tearing down test"
+          Stamps::Test.teardown
+          log.info "Teardown: Done!"
+          stop_test "Raise an exception"
       end
       log.message "HealthCheck:"
       log.message "HealthCheck: --------------------------- End"

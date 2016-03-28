@@ -9,7 +9,7 @@ module Stamps
       end
       @logger ||= Log4r::Logger.new ":"
       @logger.outputters = Outputter.stdout
-      @logger.level = Log4r::DEBUG
+      @logger.level = Log4r::FATAL
     end
 
     def scenario_name=name
@@ -17,7 +17,6 @@ module Stamps
     end
 
     def message message
-      @logger ||= init_info
       begin
         @logger.info "#{@test_name} :: #{message}"
       rescue
@@ -27,7 +26,6 @@ module Stamps
     end
 
     def info message
-      @logger ||= init_info
       begin
         (@logger.info "#{@test_name} :: #{message}") if Stamps::Test.verbose
       rescue
@@ -36,10 +34,36 @@ module Stamps
       message
     end
 
-    def debug message
-      @logger ||= init_debug
+    def warn message
       begin
-        @logger.debug "#{@test_name} :: #{message}" if Stamps::Test.verbose
+        (@logger.warn "#{@test_name} :: #{message}") if Stamps::Test.verbose
+      rescue
+        # ignore
+      end
+      message
+    end
+
+    def error message
+      begin
+        (@logger.error "#{@test_name} :: #{message}") if Stamps::Test.verbose
+      rescue
+        # ignore
+      end
+      message
+    end
+
+    def fatal message
+      begin
+        (@logger.fatal "#{@test_name} :: #{message}") if Stamps::Test.verbose
+      rescue
+        # ignore
+      end
+      message
+    end
+
+    def debug message
+      begin
+        @logger.debug "#{@test_name} :: #{message}"
       rescue
         #ignroe
       end

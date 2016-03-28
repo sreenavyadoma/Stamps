@@ -9,7 +9,7 @@ module WebReg
         when /staging/
           url = "https://registration.staging.stamps.com/registration/"
         else
-          raise "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
+          stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
       end
 
       log.info "Visit:  #{url}"

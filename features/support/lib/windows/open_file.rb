@@ -9,7 +9,7 @@ module Windows
           exist = RAutomation::Window.new(:title => /&Open/i).exists?#
           return exist
         else
-          raise "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
+          stop_test "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
         end
       rescue
         false
@@ -27,7 +27,7 @@ module Windows
       if Test.browser.firefox?
         print_window = RAutomation::Window.new(:title => /File Upload/i)
         wait_until_present
-        raise "Print Window is not open" unless present?
+        stop_test "Print Window is not open" unless present?
         print_window.activate
 
         print_window.text_field(:class => "Edit", :index => 0).set filename
@@ -36,17 +36,17 @@ module Windows
 =begin
         if print_window.button(:value => "OK").exists?
           print_window.button(:value => "OK").click
-          raise "Invalid Filename: #{filename}}.  Check your test"
+          stop_test "Invalid Filename: #{filename}}.  Check your test"
         end
 =end
       elsif Test.browser.chrome?
         print_window = RAutomation::Window.new(:title => /&Open/i)
         wait_until_present
-        raise "Print Window is not open" unless present?
+        stop_test "Print Window is not open" unless present?
         print_window.activate
         print_window.button(:value => "&Open").click
       else
-        raise "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
+        stop_test "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
       end
     end
   end

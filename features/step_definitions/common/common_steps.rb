@@ -1,5 +1,11 @@
 Given /^I launch browser$/ do
+  log.info "I launch browser"
   @browser = Stamps::Test.setup
+end
+
+Then /^Teardown$/ do
+  log.info "Teardown"
+  Stamps::Test.teardown
 end
 
 Given /^I launch browser (\w+)$/ do |browser|

@@ -144,7 +144,7 @@ module Print
           sleep 1
           return service_modal if service_modal.present?
         end
-        raise "Unable to open Extra Services Modal, check your code." unless service_modal.present?
+        stop_test "Unable to open Extra Services Modal, check your code." unless service_modal.present?
       end
 
       def customs
@@ -155,7 +155,7 @@ module Print
           sleep 1
           return customs_modal if customs_modal.present?
         end
-        raise "Unable to open Customs Modal, check your code." unless customs_modal.present?
+        stop_test "Unable to open Customs Modal, check your code." unless customs_modal.present?
       end
 
       def contacts

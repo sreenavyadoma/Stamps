@@ -40,10 +40,10 @@ module Orders
     def dont_show_this_again dont_show
       chkbox_inputs = @browser.inputs :css => "input[id^=checkbox-][id$=-inputEl]"
       checkbox_field = chkbox_inputs.last
-      raise "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? checkbox_field
+      stop_test "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? checkbox_field
 
       verify_field = @browser.div :css => "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
-      raise "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? verify_field
+      stop_test "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? verify_field
 
       attribute = "class"
       attrib_value_check = "checked"
@@ -169,7 +169,7 @@ module Orders
           when /4" x 6"/
             return StampsLabel.new (@browser.li :text => /4" x 6"/)
           else
-            raise "Invalid Media Selection.  Don't know what to do with #{media}."
+            stop_test "Invalid Media Selection.  Don't know what to do with #{media}."
         end
       end
 
@@ -250,7 +250,7 @@ module Orders
           sleep 1
           return test_helper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
         }
-        raise "Unable to select today's date from date picker object in Print Modal."
+        stop_test "Unable to select today's date from date picker object in Print Modal."
       end
 
       def todays_date
@@ -262,7 +262,7 @@ module Orders
           sleep 1
           return test_helper.now_plus_mon_dd 0
         }
-        raise "Unable to select today's date from date picker object in Print Modal."
+        stop_test "Unable to select today's date from date picker object in Print Modal."
       end
 
       def today_button
@@ -334,7 +334,7 @@ module Orders
           when /designer/
             selection_label = StampsLabel.new @browser.li :text => /Designer/
           else
-            raise "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
+            stop_test "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
         end
 
         5.times do

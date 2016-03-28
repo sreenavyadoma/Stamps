@@ -39,7 +39,10 @@ module Orders
           error_msg = server_error.message
           log.info error_msg
           server_error.ok
-          raise "Server Error: \n#{error_msg}"
+          log.info "Teardown: Begin tearing down test"
+          Stamps::Test.teardown
+          log.info "Teardown: Done!"
+          stop_test "Server Error: \n#{error_msg}"
         end
       end
     end

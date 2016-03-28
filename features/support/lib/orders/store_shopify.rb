@@ -144,7 +144,7 @@ module Orders
           return settings if settings.present?
           return shopify if shopify.present?
         end
-        raise "Shopify Store Connect failed.  Settings Modal did not open.  "
+        stop_test "Shopify Store Connect failed.  Settings Modal did not open.  "
       end
 
       def reconnect

@@ -125,9 +125,9 @@ module Orders
       end
 
       def row_div number
-        raise "row_div:  number can't be nil" if number.nil?
+        stop_test "row_div:  number can't be nil" if number.nil?
         div = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]"
-        raise("Orders Grid Row number #{number} is not present")unless browser_helper.present? div
+        stop_test("Orders Grid Row number #{number} is not present")unless browser_helper.present? div
         div
       end
     end
@@ -908,7 +908,7 @@ module Orders
             rows = args[0]
             log.info "Restoring #{} checked orders..."
           else
-            raise "Invalid parameter exception.  This method expects a Hash of Web Elements."
+            stop_test "Invalid parameter exception.  This method expects a Hash of Web Elements."
           end
 
           rows.each do |hash_element|

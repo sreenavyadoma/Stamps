@@ -73,7 +73,7 @@ module Print
 
 
         return window if window.present?
-        raise "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your test."
+        stop_test "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your test."
       end
 
 

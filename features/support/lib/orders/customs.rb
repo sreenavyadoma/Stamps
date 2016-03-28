@@ -43,7 +43,13 @@ module Orders
         edit_form_button.safe_click
         break if @customs_form.present?
       }
-      raise "Customs Information Modal is not visible." unless @customs_form.present?
+
+      begin
+        log.info "Teardown: Begin tearing down test"
+        Stamps::Test.teardown
+        log.info "Teardown: Done!"
+        stop_test "Customs Information Modal is not visible."
+      end unless @customs_form.present?
       @customs_form
     end
 

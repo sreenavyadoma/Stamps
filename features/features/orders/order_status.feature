@@ -5,7 +5,7 @@ Feature: Order Status - Awaiting Shipment
     Given I am signed in to Orders
 
   @order_status
-  Scenario: Order Status - Awaiting Shipment
+  Scenario: Order Status
     Then Add New Order
     Then Grid: Expect Order Status to be Awaiting Shipment
     Then Sign out
