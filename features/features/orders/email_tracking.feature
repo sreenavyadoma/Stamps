@@ -1,10 +1,10 @@
-Feature: Email Tracking
+Feature: Select Email Tracking for order when printing
 
   Background:
     Given I am signed in to Orders
 
   @email_tracking
-  Scenario: Select Email Tracking for order when printing
+  Scenario: Email Tracking
 
     Then Add New Order
     Then Details: Set Ship-From to default

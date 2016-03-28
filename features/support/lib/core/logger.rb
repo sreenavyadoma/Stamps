@@ -1,5 +1,6 @@
 module Stamps
   class Logger
+    @test_name = ""
     private 
     def init_info
       logger ||= Log4r::Logger.new ":"
@@ -17,10 +18,14 @@ module Stamps
 
     public
 
+    def scenario=name
+      @test_name = name
+    end
+
     def message message
       @logger_info ||= init_info
       begin
-        @logger_info.info message
+        @logger_info.info "#{@test_name} :: #{message}"
       rescue
         # ignore
       end
@@ -30,7 +35,7 @@ module Stamps
     def info message
       @logger_info ||= init_info
       begin
-        (@logger_info.info message) if Stamps::Test.verbose
+        (@logger_info.info "#{@test_name} :: #{message}") if Stamps::Test.verbose
       rescue
         # ignore
       end
@@ -40,7 +45,7 @@ module Stamps
     def debug message
       @logger_debug ||= init_debug
       begin
-        @logger_debug.debug message if Stamps::Test.verbose
+        @logger_debug.debug "#{@test_name} :: #{message}" if Stamps::Test.verbose
       rescue
         #ignroe
       end
