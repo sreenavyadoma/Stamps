@@ -42,6 +42,7 @@ Before do  |scenario|
 end
 
 After do |scenario|
+  Stamps::Test.teardown
   $start = false
   log.info "End Test Scenario:  -------------------------------------------  "
   log.info "End Test Scenario:  -------------------------------------------  "
