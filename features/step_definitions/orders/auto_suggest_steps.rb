@@ -43,8 +43,6 @@ end
 Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|
   log.info "Step: Expect Auto Suggest name shows #{value} for entry #{entry}"
   actual =  orders.details.get_auto_suggest_name entry
-  #todo-eva Set expectionations in logs
-  #log_expectation_eql "Auto Suggest Name", value, actual
   actual.should eql value
 
 end
@@ -52,7 +50,6 @@ end
 Then /^Expect Auto Suggest location shows (.*) for entry (.*)$/ do |value, entry|
   log.info "Step: Expect Auto Suggest location shows #{value} for entry #{entry}"
   actual =  orders.details.get_auto_suggest_location entry
-  #log_expectation_eql "Auto Suggest Name", value, actual
   actual.should eql value
 end
 
@@ -73,83 +70,71 @@ Then /^Expect Domestic Address to be (.*)$/ do |value|
   end}
   actual =  orders.details.ship_to.address.text_area.text
   actual_stripped = actual.gsub(/\n/,", ")
-  #log_expectation_eql "Address text", value, actual_stripped
   actual_stripped.should eql value
 end
 
 Then /^Expect Domestic Phone to be (.*)$/ do |value|
   log.info "Step: Expect Domestic Phone to be #{value}"
   actual =  orders.details.ship_to.address.phone.text
-  #log_expectation_eql "Phone text", value, actual
   actual.should eql value
 end
 
 Then /^Expect Domestic Email to be (.*)$/ do |value|
   log.info "Step: Expect Domestic Email to be #{value}"
   actual =  orders.details.ship_to.address.email.text
-  #log_expectation_eql "Email text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Name to be (.*)$/ do |value|
   log.info "Step: Expect International Name to be #{value}"
   actual =  orders.details.ship_to.address.phone.text
-  #log_expectation_eql "Name text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Company to be (.*)$/ do |value|
   log.info "Step: Expect International Company to be #{value}"
   actual =  orders.details.ship_to.address.phone.text
-  #log_expectation_eql "Company text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Address 1 to be (.*)$/ do |value|
   log.info "Step: Expect International Address 1 to be #{value}"
   actual =  orders.details.ship_to.address.email.text
-  #log_expectation_eql "Address 1 text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Address 2 to be (.*)$/ do |value|
   log.info "Step: Expect International Address 2 to be #{value}"
   actual =  orders.details.ship_to.address.email.text
-  #log_expectation_eql "Address 2 text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International City to be (.*)$/ do |value|
   log.info "Step: Expect International City to be #{value}"
   actual =  orders.details.ship_to.address.email.text
-  #log_expectation_eql "City text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Province to be (.*)$/ do |value|
   log.info "Step: Expect International Province to be #{value}"
   actual =  orders.details.ship_to.address.email.text
-  #log_expectation_eql "Province text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Postal Code to be (.*)$/ do |value|
   log.info "Step: Expect International Postal Code to be #{value}"
   actual =  orders.details.ship_to.address.email.text
-  #log_expectation_eql "Postal Code text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Phone to be (.*)$/ do |value|
   log.info "Step: Expect International Postal Code to be #{value}"
   actual =  orders.details.ship_to.address.email.text
-  #log_expectation_eql "Phone text", value, actual
   actual.should eql value
 end
 
 Then /^Expect International Email to be (.*)$/ do |value|
   log.info "Step: Expect International Email to be #{value}"
   actual =  orders.details.ship_to.address.email.text
-  #log_expectation_eql "Email text", value, actual
   actual.should eql value
 end

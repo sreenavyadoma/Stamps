@@ -176,7 +176,6 @@ Then /^Shipping Label: Expect Domestic Address field displays (.*)$/ do |value|
   actual = @shipping_label.ship_to.text_area.text
   actual_stripped = actual.gsub(/ \n/,", ")
   actual_stripped_final = actual_stripped.gsub(/\n/,", ")
-  #log_expectation_eql "Address text", value, actual_stripped
   actual_stripped_final.should eql value
   log.info 'Address Cleansed -- Expected Result Confirmed'
 end

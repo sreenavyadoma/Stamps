@@ -1,7 +1,16 @@
 module Stamps
   include DataMagic
 
+  def log
+    @logger ||= Stamps::Logger.new @scenario_name
+  end
+
   class Test
+
+    def self.scenario_name=name
+      @test_name = name
+      log.scenario_name = @test_name
+    end
 
     def self.url_prefix *args
       @url_hash = data_for(:url_prefix, {})

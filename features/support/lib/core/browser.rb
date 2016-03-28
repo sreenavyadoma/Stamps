@@ -22,10 +22,22 @@ module Stamps
     end
 
     class BrowserObject
-      def initialize browser
-        @browser = browser
+      def initialize *args
+        case args.length
+          when 1
+            @browser = args[0]
+            #@@test_name = ''
+          when 2
+            @browser = args[0]
+            @@test_name = args[1]
+          else
+            raise "ILLEGAL NUMBER OF ARGUMENTS FOR BrowserObject"
+        end
       end
 
+      def log
+        @logger ||= Stamps::Logger.new @@test_name
+      end
       def browser_helper
         BrowserHelper.instance
       end
