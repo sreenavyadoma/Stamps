@@ -3,7 +3,7 @@ Feature: Add Missing Validation Logic for Phone and International Email
   Background:
     Given I am signed in to Orders
 
-  @international_rules_engine
+  @rules_international @rules_international_dev
   Scenario: Add Missing Validation Logic for Phone and International Email
     Then Add New Order
     Then Details: Set Ship-From to default
@@ -19,9 +19,8 @@ Feature: Add Missing Validation Logic for Phone and International Email
     Then Details: Expect International City data error tooltip to be "The ship to city is a required field"
     Then Details: Expect International Phone data error tooltip to be "A valid phone number is required"
 
+    Then Details: Expect Service data error tooltip to be "Service is required"
     Then Details: Expect Weight Lbs data error tooltip to be "Weight cannot be 0"
     Then Details: Expect Weight Oz data error tooltip to be "Weight cannot be 0"
-    Then Details: Expect Service data error tooltip to be "Service is required"
-
     Then Sign out
 

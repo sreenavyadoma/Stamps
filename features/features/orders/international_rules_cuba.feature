@@ -3,7 +3,7 @@ Feature: Cuba Internal Transaction Number Required
   Background:
     Given I am signed in to Orders
 
-  @international_rules_engine @international_rules_engine_cuba
+  @rules_international @rules_international_cuba
   Scenario: Cuba Internal Transaction Number Required
     Then Add New Order
     Then Details: Set Ship-From to default

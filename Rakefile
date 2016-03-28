@@ -92,8 +92,8 @@ Cucumber::Rake::Task.new(:reprint) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:update_postage_balance) do |t|
-  t.profile = 'update_postage_balance'
+Cucumber::Rake::Task.new(:postage_balance_update) do |t|
+  t.profile = 'postage_balance_update'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -142,8 +142,8 @@ Cucumber::Rake::Task.new(:print_print_label_position_layouts) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:domestic_rules_validation) do |t|
-  t.profile = 'domestic_rules_validation'
+Cucumber::Rake::Task.new(:rules_domestic) do |t|
+  t.profile = 'rules_domestic'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -152,8 +152,8 @@ Cucumber::Rake::Task.new(:bvt) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:international_rules_engine) do |t|
-  t.profile = 'international_rules_engine'
+Cucumber::Rake::Task.new(:rules_international) do |t|
+  t.profile = 'rules_international'
   t.cucumber_opts = "-p cuke_reports"
 end
 

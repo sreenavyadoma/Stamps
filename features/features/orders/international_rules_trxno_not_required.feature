@@ -3,7 +3,7 @@ Feature: Internal Transaction # Not Required
   Background:
     Given I am signed in to Orders
 
-  @international_rules_engine
+  @rules_international
   Scenario: Internal Transaction # Not Required
     Then Add New Order
     Then Details: Set Ship-From to default

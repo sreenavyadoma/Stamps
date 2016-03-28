@@ -3,7 +3,7 @@ Feature:  Service enabled/disabled tests
   Background:
     Given I am signed in to Orders
 
-  @fcm_selection_enabled
+  @rules_domestic
   Scenario:  First Class Mail over 16 ounces disabled
     Then Add New Order
     Then Details: Set Ship-From to default
@@ -20,7 +20,7 @@ Feature:  Service enabled/disabled tests
     Then Expect Order details Service "First-Class Mail Package/Thick Envelope" to be enabled
     #Then Expect Order details Service "First-Class Mail Large Envelope/Flat" to be enabled
 
-  @domestic_rules_validation
+  @rules_domestic
   Scenario: Domestic Rules Engine Validation
     Then Add New Order
     Then Details: Set Email to bademail

@@ -78,7 +78,7 @@ Feature: Test Development
     Then Toolbar: Print
     Then Filter: Select Shipped
     Then Grid: Expect Tracking Number is populated
-    Then Grid: Expect Order Status to be "Shipped"
+    Then Grid: Expect Order Status to be Shipped
 
     Then Add New Order
     Then Details: Set Ship-From to default
@@ -89,7 +89,7 @@ Feature: Test Development
     Then Toolbar: Print
     Then Filter: Select Shipped
     Then Grid: Expect Tracking Number is populated
-    Then Grid: Expect Order Status to be "Shipped"
+    Then Grid: Expect Order Status to be Shipped
 
     Then Sign out
 

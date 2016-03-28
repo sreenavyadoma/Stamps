@@ -3,7 +3,7 @@ Feature: Syria Internal Transaction Number Required
   Background:
     Given I am signed in to Orders
 
-  @international_rules_engine
+  @rules_international
   Scenario: Syria Internal Transaction Number Required
     Then Add New Order
     Then Details: Set Ship-From to default

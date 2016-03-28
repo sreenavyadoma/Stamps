@@ -1,7 +1,7 @@
 
 Feature: Postage Balance
 
-  @update_postage_balance
+  @postage_balance_update
   Scenario: Update Postage Balance After Each Print
     Given I am signed in to Orders
     Then Add New Order

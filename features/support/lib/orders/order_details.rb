@@ -1683,21 +1683,36 @@ module Orders
         selection_label
       end
 
-      def cost selection
-        button = drop_down
-        selection_label = @browser.td :text => selection
-        5.times {
-          begin
-            button.safe_click unless selection_label.present?
-            if selection_label.present?
-              selection_cost = selection_label.parent.tds[1].text
-              log.info "#{selection_cost}"
-              return selection_cost
+      def cost *args
+        case args.length
+          when 0
+            cost_label = StampsLabel.new (@browser.label css: "label[class*=selected_tracking_cost]")
+            10.times do
+              begin
+                cost = cost_label.text
+              rescue
+                #ignore
+              end
+              break if cost.include? "$"
             end
-          rescue
-            #ignore
-          end
-        }
+            test_helper.remove_dollar_sign(cost_label.text)
+
+          when 1
+            button = drop_down
+            selection_label = @browser.td :text => args[0]
+            5.times do
+              begin
+                button.safe_click unless selection_label.present?
+                if selection_label.present?
+                  selection_cost = selection_label.parent.tds[1].text
+                  log.info "#{selection_cost}"
+                  return selection_cost
+                end
+              rescue
+                #ignore
+              end
+            end
+        end
       end
 
       def tooltip selection
@@ -1753,16 +1768,17 @@ module Orders
       def cost *args
         case args.length
           when 0
-            cost_label = StampsLabel.new (@browser.label :text => "Service:").parent.labels[2]
+            cost_label = StampsLabel.new (@browser.label css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(5)>div>div>label[style*='60px']")
             10.times do
               begin
                 cost = cost_label.text
               rescue
                 #ignore
               end
-              break unless cost.include? "$"
+              break if cost.include? "$"
             end
             test_helper.remove_dollar_sign(cost_label.text)
+
           when 1
             button = drop_down
             cost_label = StampsLabel.new @browser.td :css => "tr[data-qtip*='#{args[0]}']>td:nth-child(3)"
@@ -1783,7 +1799,7 @@ module Orders
             raise "Illegal number of arguments for Service Cost"
 
         end
-        click_form
+        #click_form
       end
 
       def tooltip selection
@@ -2102,11 +2118,11 @@ module Orders
           rescue
             #ignore
           end
-          break unless cost.include? "$"
+          break if cost.include? "$"
         end
         test_helper.remove_dollar_sign(cost_label.text)
       end
-    end
+  end
 
     class ItemGrid < OrdersObject
 
@@ -2358,19 +2374,6 @@ module Orders
 
       def customs
         CustomsFields.new @browser
-      end
-
-      def tracking_cost
-        cost_label = StampsLabel.new (@browser.label :text => "Tracking:").parent.labels[2]
-        10.times do
-          begin
-            cost = cost_label.text
-          rescue
-            #ignore
-          end
-          break unless cost.include? "$"
-        end
-        test_helper.remove_dollar_sign(cost_label.text)
       end
 
       def wait_until_present
