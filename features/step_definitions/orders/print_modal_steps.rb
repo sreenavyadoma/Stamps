@@ -17,16 +17,25 @@ Then /^Print: Set Ship Date to today plus (\d+)$/ do |day|
   @ship_date = orders.toolbar.print.date_picker.today_plus day
 end
 
-Then /^Print: Set Email Tracking to Checked$/ do
-  log.info "Print: Set Email Tracking to Checked"
+Then /^Print: Check Email Tracking Details to Recipients$/ do
+  log.info "Print: Check Email Tracking Details to Recipients"
   orders.toolbar.print.print_options.email_tracking.check
 end
 
-Then /^Print: Set Email Tracking to Unchecked$/ do
-  log.info "Print: Set Email Tracking to Unchecked"
+Then /^Print: Uncheck Email Tracking Details to Recipients$/ do
+  log.info "Print: Uncheck Email Tracking Details to Recipients"
   orders.toolbar.print.print_options.email_tracking.uncheck
 end
 
+Then /^Print: Uncheck Print Reference # on Shipping Label$/ do
+  log.info "Print: Uncheck Print Reference # on Shipping Label"
+  orders.toolbar.print.print_options.print_reference_no.uncheck
+end
+
+Then /^Print: Check Print Reference # on Shipping Label$/ do
+  log.info "Print: Check Print Reference # on Shipping Label"
+  orders.toolbar.print.print_options.print_reference_no.check
+end
 
 When /^Print: Select left-side label$/ do
   log.info "Step: Print: Select - Left side label"

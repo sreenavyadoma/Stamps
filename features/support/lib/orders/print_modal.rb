@@ -376,6 +376,14 @@ module Orders
         verify_field_attrib = "checked"
         StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
+
+      def print_reference_no
+        checkbox_field = @browser.span :id => "sdc-printpostagewindow-printreferencenumbercheckbox-displayEl"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute = "class"
+        verify_field_attrib = "checked"
+        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+      end
     end
 
     def initialize browser
