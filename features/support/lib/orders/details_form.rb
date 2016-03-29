@@ -493,6 +493,7 @@ module Orders
             text_area.safe_send_keys :tab
             text_area.send_keys address
             text_area.set address
+            break if less.present?
 
             ship_to_country.select "United States"
             break if less.present?
@@ -501,6 +502,7 @@ module Orders
             break if less.present?
 
             email.safe_send_keys :enter
+            break if less.present?
             phone.safe_send_keys :tab
             break if less.present?
             sleep 1
