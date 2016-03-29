@@ -5,7 +5,7 @@ Then /^View Print On option (.*) tooltip$/ do |label|
 end
 
 #Shipping Label 5.5 x 8.5
-#Use these letter-sized label sheets with two 5 �� x 8 �� labels per sheet to print postage, addresses, and tracking barcode.
+#Use these letter-sized label sheets with two 5 �� x 8 �� labels per sheet to print print, addresses, and tracking barcode.
 #Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. destination.
 #Avery 5126, 8126, 5526, 5783, 15516, 18126, 85783
 Then /^Expect (.*) tool-tip to contain \"(.*)\"$/ do |label, tooltip_message|

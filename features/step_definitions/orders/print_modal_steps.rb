@@ -140,7 +140,7 @@ When /^Print expecting rating error$/ do
   error_window = orders.toolbar.print.print_expecting_rating_error
   actual_error_message = error_window.error_message
   error_window.close
-  expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
+  expect(actual_error_message.include? 'An error occurred while attempting to rate your print').to be true
 end
 
 When /^Print expecting some orders can not be printed$/ do

@@ -345,7 +345,7 @@ Then /^Settings:  Postage Balance Set (.*)$/ do |postage_balance|
       log.info "Teardown: Done!"
       raise "Invalid Postage Balance Selection -  Settings:  Postage Balance #{postage_balance}"
   end
-  log.info "Step:  Notify me when postage balance drops below #{@general_settings.log_off.text_box.text}"
+  log.info "Step:  Notify me when print balance drops below #{@general_settings.log_off.text_box.text}"
 end
 
 
