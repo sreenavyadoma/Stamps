@@ -7,6 +7,11 @@ Cucumber::Rake::Task.new(:customs_form_qty) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:details_reference_no) do |t|
+  t.profile = 'details_reference_no'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:orders_authentication) do |t|
   t.profile = 'orders_authentication'
   t.cucumber_opts = "-p cuke_reports"

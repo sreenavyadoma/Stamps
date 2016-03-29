@@ -267,6 +267,12 @@ module Stamps
     end
 
     class StampsInput < StampsLabel
+      def set text
+        script = "return arguments[0].value = '#{text}'"
+        browser = @field.browser
+        browser.execute_script(script, @field)
+      end
+
       def send_keys special_char
         browser_helper.send_keys @field, special_char
         self
@@ -463,7 +469,7 @@ module Stamps
         5.times do
           begin
             field.focus
-            field.clear
+            field.send_keys ""
           rescue
             #ignore
           end

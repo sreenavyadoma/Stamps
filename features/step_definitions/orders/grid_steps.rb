@@ -91,13 +91,13 @@ Then /^Grid: Expect Ship Date for this order to be today plus (\d+)$/ do |day|
   grid_ship_date.should eql expected_ship_date
 end
 
-Then /^Set Orders Grid New Order ID to uncheck$/ do
-  log.info "Set Orders Grid New Order ID to uncheck"
+Then /^Grid: Set New Order ID to uncheck$/ do
+  log.info "Grid: Set New Order ID to uncheck"
   orders.grid.checkbox.uncheck_order_id @order_id
 end
 
-Then /^Set Orders Grid New Order ID to check$/ do
-  log.info "Set Orders Grid New Order ID to check"
+Then /^Grid: Set New Order ID to check$/ do
+  log.info "Grid: Set New Order ID to check"
   orders.grid.checkbox.check_order_id @order_id
 end
 

@@ -378,22 +378,25 @@ Then /^Details: Set Email to (.*)$/ do |email|
   end unless @order_details_email.length == 0
 end
 
-Then /^Expect system (.*) Order Form$/ do |status|
+
+Then /^Expect system status Order Form$/ do |status|
   log.info "Step: Expect system #{status} Order Form"
 
   actual = orders.details.present?
-  if status == 'hides'
-    actual.should eql false
-  elsif status == 'displays'
-    actual.should eql true
-  end
+  actual.should eql false
+end
+
+Then /^Expect system displays Order Form$/ do |status|
+  log.info "Step: Expect system #{status} Order Form"
+
+  actual = orders.details.present?
+  actual.should eql true
 end
 
 Then /^Details: Hide Ship-To fields$/ do
   log.info "Step: Details: Hide Ship-To fields"
   orders.details.ship_to.hide
   log.info "done."
-  #end_step step
 end
 
 Then /^Increment Order Details Pounds by (\d*)$/ do |value|
@@ -461,25 +464,36 @@ Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   orders.details.tracking.select value
 end
 
-Then /^Expect Order details Service \"(.*)\" to be disabled/ do |service|
-  log.info "Expect Order details Service \"#{service}\" to be disabled"
+Then /^Details: Set Reference Number to (.*)$/ do |value|
+  @param_details_reference_no = (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+  log.info "Details: Set Reference Number to #{@param_details_reference_no}"
+  orders.details.reference_no.set @param_details_reference_no
+end
+
+Then /^Details: Expect Reference Number to be (.*)$/ do |value|
+  @param_details_reference_no = (value.downcase.include? "random") ? @param_details_reference_no : value
+
+  log.info "Details: Expect Reference Number to be #{@param_details_reference_no}"
+
+  actual_value = orders.details.reference_no.text
+
+  log.info "Test #{(actual_value==@param_details_reference_no)?"Passed":"Failed"}"
+  actual_value.should eql @param_details_reference_no
+end
+
+
+Then /^Details: Expect Service \"(.*)\" to be disabled/ do |service|
+  log.info "Details: Expect Service \"#{service}\" to be disabled"
   selection_disabled = orders.details.service.disabled? service
   log.info "Test #{(selection_disabled)?"Passed":"Failed"}"
   selection_disabled.should be true
 end
 
-Then /^Expect Order details Service \"(.*)\" to be enabled/ do |service|
-  log.info "Expect Order details Service \"#{service}\" to be enabled"
+Then /^Details: Expect Service \"(.*)\" to be enabled/ do |service|
+  log.info "Details: Expect Service \"#{service}\" to be enabled"
   selection_enabled = orders.details.service.enabled? service
   log.info "Test #{(selection_enabled)?"Passed":"Failed"}"
   selection_enabled.should be true
-end
-#todo-rob
-Then /^Details: Expect Tracking tooltip for (.*) to be (.*)$/ do |lov, expectation|
-  actual_tooltip = orders.details.tracking.tooltip value
-  #log.info actual_tooltip
-  cost = orders.details.tracking.cost value
-  #log.info cost
 end
 
 Then /^Details: Set Insure For checkbox to checked$/ do

@@ -2067,6 +2067,16 @@ module Orders
         ItemGrid.new @browser
       end
 
+      def customs
+        CustomsFields.new @browser
+      end
+
+      def reference_no
+        StampsInput.new (@browser.input css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
+      end
+
+      # ------------------------check if below are valid
+
       def items_count
         begin
           count = (@browser.text_fields :css => "div[id^=singleorderitem][id$=innerCt]").size
@@ -2102,10 +2112,6 @@ module Orders
 
       def customs_form
         CustomsForm.new @browser
-      end
-
-      def customs
-        CustomsFields.new @browser
       end
 
       def wait_until_present
