@@ -250,7 +250,7 @@ module Orders
           end
 
           def set partial_address_hash
-            single_order_form = OrderDetails.new @browser
+            single_order_form = DetailsForm.new @browser
             single_order_form.validate_address_link
             #single_order_form.expand
             single_order_form.ship_to.set OrdersHelper.instance.format_address(partial_address_hash)
@@ -487,7 +487,7 @@ module Orders
 
         text_area.set address
 
-        5.times{
+        20.times{
           begin
             text_area.safe_send_keys :enter
             text_area.safe_send_keys :tab
@@ -511,22 +511,38 @@ module Orders
             break if less.present?
             orders_grid.order_total.scroll_into_view
             orders_grid.recipient.scroll_into_view
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             orders_grid.order_total.scroll_into_view
+            break if less.present?
             orders_grid.checkbox.scroll_into_view
             orders_grid.order_total.scroll_into_view
             orders_grid.address.scroll_into_view
+            break if less.present?
             orders_grid.order_total.scroll_into_view
             orders_grid.company.scroll_into_view
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             ship_to_area1.safe_click
             ship_to_area2.safe_click
+            break if less.present?
             less.safe_double_click
             less.safe_click
+            break if less.present?
             text_area.safe_double_click
             text_area.safe_click
             ship_to_area1.safe_double_click
             ship_to_area2.safe_double_click
             ship_to_country.select "United States"
             break if less.present?
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             break if (orders_grid.recipient.row 1).length > 1
             break if (orders_grid.address.row 1).length > 1
             break if (orders_grid.company.row 1).length > 1
@@ -537,6 +553,10 @@ module Orders
             text_area.safe_click
             phone.set test_helper.random_phone
             email.safe_send_keys :enter
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             phone.safe_send_keys :tab
             sleep 1
             email.safe_send_keys :enter
@@ -546,6 +566,10 @@ module Orders
             ship_to_country.select "United States"
             break if less.present?
             break if less.present?
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             break if (orders_grid.recipient.row 1).length > 1
             break if (orders_grid.address.row 1).length > 1
             break if (orders_grid.company.row 1).length > 1
@@ -557,13 +581,28 @@ module Orders
             ship_to_area2.safe_double_click
             orders_grid.order_total.scroll_into_view
             orders_grid.recipient.scroll_into_view
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             orders_grid.order_total.scroll_into_view
             orders_grid.checkbox.scroll_into_view
             orders_grid.order_total.scroll_into_view
             orders_grid.address.scroll_into_view
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             orders_grid.order_total.scroll_into_view
             orders_grid.company.scroll_into_view
             orders_grid.order_total.scroll_into_view
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
+            break if (orders_grid.recipient.row 1).length > 1
+            break if (orders_grid.address.row 1).length > 1
+            break if (orders_grid.company.row 1).length > 1
             less.safe_double_click
             less.safe_click
             text_area.safe_double_click
@@ -574,6 +613,10 @@ module Orders
             break if (orders_grid.address.row 1).length > 1
             break if (orders_grid.company.row 1).length > 1
             ship_to_area1.safe_click
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             ship_to_area2.safe_click
             ship_to_area1.safe_double_click
             ship_to_area2.safe_double_click
@@ -590,9 +633,17 @@ module Orders
             sleep 1
             text_area.safe_double_click
             text_area.safe_double_click
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             ship_to_area1.safe_double_click
             ship_to_area2.safe_double_click
             orders_grid.order_total.scroll_into_view
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             orders_grid.recipient.scroll_into_view
             less.safe_double_click
             less.safe_click
@@ -607,6 +658,10 @@ module Orders
             ship_to_area2.safe_click
             orders_grid.order_total.scroll_into_view
             orders_grid.checkbox.scroll_into_view
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             orders_grid.order_total.scroll_into_view
             orders_grid.address.scroll_into_view
             orders_grid.order_total.scroll_into_view
@@ -620,6 +675,10 @@ module Orders
             break if (orders_grid.company.row 1).length > 1
             break if less.present?
             ship_to_area1.safe_click
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             ship_to_area2.safe_click
             ship_to_area1.safe_double_click
             ship_to_area2.safe_double_click
@@ -633,10 +692,21 @@ module Orders
             phone.safe_send_keys :tab
             sleep 1
             orders_grid.order_total.scroll_into_view
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             orders_grid.recipient.scroll_into_view
             orders_grid.order_total.scroll_into_view
             orders_grid.checkbox.scroll_into_view
             orders_grid.order_total.scroll_into_view
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
+            break if (orders_grid.recipient.row 1).length > 1
+            break if (orders_grid.address.row 1).length > 1
+            break if (orders_grid.company.row 1).length > 1
             orders_grid.address.scroll_into_view
             orders_grid.order_total.scroll_into_view
             orders_grid.company.scroll_into_view
@@ -669,6 +739,13 @@ module Orders
             phone.send_keys :enter
             less.safe_double_click
             less.safe_click
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
+            break if (orders_grid.recipient.row 1).length > 1
+            break if (orders_grid.address.row 1).length > 1
+            break if (orders_grid.company.row 1).length > 1
             text_area.safe_double_click
             text_area.safe_click
             ship_to_country.select "United States"
@@ -681,40 +758,8 @@ module Orders
             text_area.set address
             orders_grid.recipient.scroll_into_view
             orders_grid.order_total.scroll_into_view
+            break if less.present?
             orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            break if less.present?
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            ship_to_area1.safe_click
-            ship_to_area2.safe_click
-            ship_to_area1.safe_double_click
-            ship_to_area2.safe_double_click
-            phone.send_keys :tab
-            orders_grid.recipient.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
-            less.safe_double_click
             less.safe_click
             text_area.safe_double_click
             text_area.safe_click
@@ -723,52 +768,24 @@ module Orders
             break if less.present?
             break if (orders_grid.recipient.row 1).length > 1
             break if (orders_grid.address.row 1).length > 1
+            break if less.present?
             break if (orders_grid.company.row 1).length > 1
             ship_to_area1.safe_click
             ship_to_area2.safe_click
-            ship_to_area1.safe_double_click
-            ship_to_area2.safe_double_click
-            break if less.present?
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.send_keys :enter
-            orders_grid.order_total.scroll_into_view
-            orders_grid.recipient.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
-            less.safe_double_click
-            less.safe_click
-            text_area.safe_double_click
-            text_area.safe_click
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
             break if (orders_grid.recipient.row 1).length > 1
+            break if less.present?
             break if (orders_grid.address.row 1).length > 1
             break if (orders_grid.company.row 1).length > 1
-            ship_to_area1.safe_click
-            ship_to_area2.safe_click
             ship_to_area1.safe_double_click
             ship_to_area2.safe_double_click
             text_area.set address
             break if less.present?
             ship_to_country.select "United States"
+            break if less.present?
             break if less.present?
             phone.set test_helper.random_phone
             email.set test_helper.random_email
@@ -779,205 +796,32 @@ module Orders
             phone.safe_send_keys :tab
             sleep 1
             email.send_keys :tab
+            break if less.present?
             orders_grid.order_total.scroll_into_view
             orders_grid.recipient.scroll_into_view
             orders_grid.order_total.scroll_into_view
+            break if less.present?
             orders_grid.checkbox.scroll_into_view
+
+            @browser.window.move_to 0, 0
+            @browser.window.resize_to 1250, 850
+            @browser.window.maximize
+            break if (orders_grid.recipient.row 1).length > 1
+            break if (orders_grid.address.row 1).length > 1
+            break if less.present?
+            break if (orders_grid.company.row 1).length > 1
             orders_grid.order_total.scroll_into_view
             orders_grid.address.scroll_into_view
+            break if less.present?
             orders_grid.order_total.scroll_into_view
             orders_grid.company.scroll_into_view
             less.safe_double_click
             less.safe_click
-            text_area.safe_double_click
-            text_area.safe_click
-            ship_to_country.select "United States"
             break if less.present?
-            break if less.present?
-            break if (orders_grid.recipient.row 1).length > 1
-            break if (orders_grid.address.row 1).length > 1
-            break if (orders_grid.company.row 1).length > 1
-            ship_to_area1.safe_click
-            ship_to_area2.safe_click
-            ship_to_area1.safe_double_click
-            ship_to_area2.safe_double_click
-            break if less.present?
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            text_area.safe_double_click
-            orders_grid.order_total.scroll_into_view
-            orders_grid.recipient.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
-            less.safe_double_click
-            less.safe_click
-            text_area.safe_double_click
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            text_area.safe_click
-            break if (orders_grid.recipient.row 1).length > 1
-            break if (orders_grid.address.row 1).length > 1
-            break if (orders_grid.company.row 1).length > 1
-            ship_to_area1.safe_click
-            ship_to_area2.safe_click
-            ship_to_area1.safe_double_click
-            ship_to_area2.safe_double_click
-            break if less.present?
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            text_area.safe_double_click
-            orders_grid.order_total.scroll_into_view
-            orders_grid.recipient.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
-            less.safe_double_click
-            less.safe_click
-            text_area.safe_double_click
-            text_area.safe_click
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            break if (orders_grid.recipient.row 1).length > 1
-            break if (orders_grid.address.row 1).length > 1
-            break if (orders_grid.company.row 1).length > 1
-            ship_to_area1.safe_click
-            ship_to_area2.safe_click
-            ship_to_area1.safe_double_click
-            ship_to_area2.safe_double_click
-            break if less.present?
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            text_area.safe_double_click
-            orders_grid.order_total.scroll_into_view
-            orders_grid.recipient.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
-            less.safe_double_click
-            less.safe_click
-            text_area.safe_double_click
-            text_area.safe_click
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            break if (orders_grid.recipient.row 1).length > 1
-            break if (orders_grid.address.row 1).length > 1
-            break if (orders_grid.company.row 1).length > 1
-            ship_to_area1.safe_click
-            ship_to_area2.safe_click
-            ship_to_area1.safe_double_click
-            ship_to_area2.safe_double_click
-            text_area.set address
-            break if less.present?
-            text_area.safe_double_click
-            orders_grid.order_total.scroll_into_view
-            orders_grid.recipient.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
-            less.safe_double_click
-            less.safe_click
-            text_area.safe_double_click
-            text_area.safe_click
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            break if (orders_grid.recipient.row 1).length > 1
-            break if (orders_grid.address.row 1).length > 1
-            break if (orders_grid.company.row 1).length > 1
-            ship_to_area1.safe_click
-            ship_to_area2.safe_click
-            ship_to_area1.safe_double_click
-            ship_to_area2.safe_double_click
-            break if less.present?
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            orders_grid.order_total.scroll_into_view
-            orders_grid.recipient.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.recipient.scroll_into_view
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
-            less.safe_double_click
-            less.safe_click
             text_area.safe_double_click
             text_area.safe_click
             break if less.present?
             ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            break if (orders_grid.recipient.row 1).length > 1
-            break if (orders_grid.address.row 1).length > 1
-            break if (orders_grid.company.row 1).length > 1
-            ship_to_area1.safe_click
-            ship_to_area2.safe_click
-            ship_to_area1.safe_double_click
-            ship_to_area2.safe_double_click
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            text_area.safe_double_click
-            orders_grid.order_total.scroll_into_view
-            orders_grid.recipient.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
-            break if less.present?
-            less.safe_double_click
             less.safe_click
             text_area.safe_double_click
             text_area.safe_click
@@ -991,139 +835,30 @@ module Orders
             ship_to_area1.safe_click
             ship_to_area2.safe_click
             ship_to_area1.safe_double_click
+            break if less.present?
             ship_to_area2.safe_double_click
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            phone.send_keys :tab
-            orders_grid.order_total.scroll_into_view
-            orders_grid.recipient.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
             break if less.present?
             phone.set test_helper.random_phone
+            email.set test_helper.random_email
+            break if less.present?
+            email.safe_send_keys :enter
+            phone.safe_send_keys :tab
             sleep 1
+            email.safe_send_keys :enter
+            break if less.present?
+            phone.safe_send_keys :tab
             email.set test_helper.random_email
             email.safe_send_keys :enter
+            break if less.present?
             phone.safe_send_keys :tab
             sleep 1
             email.safe_send_keys :enter
             phone.safe_send_keys :tab
             sleep 1
             email.send_keys :enter
-            orders_grid.order_total.scroll_into_view
-            orders_grid.recipient.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.address.scroll_into_view
-            orders_grid.order_total.scroll_into_view
-            orders_grid.company.scroll_into_view
-            break if less.present?
-            text_area.safe_double_click
-            break if less.present?
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            phone.send_keys :tab
-            break if less.present?
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            email.send_keys :enter
-            break if less.present?
-            phone.set test_helper.random_phone
-            less.safe_double_click
-            less.safe_click
-            text_area.safe_double_click
-            text_area.safe_click
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            break if (orders_grid.recipient.row 1).length > 1
-            break if (orders_grid.address.row 1).length > 1
-            break if (orders_grid.company.row 1).length > 1
             ship_to_area1.safe_click
             ship_to_area2.safe_click
-            ship_to_area1.safe_double_click
-            ship_to_area2.safe_double_click
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            text_area.safe_double_click
             break if less.present?
-            phone.set test_helper.random_phone
-            break if less.present?
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            sleep 1
-            email.set test_helper.random_email
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            email.safe_send_keys :enter
-            phone.safe_send_keys :tab
-            sleep 1
-            break if less.present?
-            phone .safe_double_click
-            less.safe_double_click
-            less.safe_click
-            text_area.safe_double_click
-            text_area.safe_click
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            break if (orders_grid.recipient.row 1).length > 1
-            break if (orders_grid.address.row 1).length > 1
-            break if (orders_grid.company.row 1).length > 1
-            ship_to_area1.safe_click
-            ship_to_area2.safe_click
-            ship_to_area1.safe_double_click
-            ship_to_area2.safe_double_click
-            break if less.present?
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            sleep 1
-            email .safe_double_click
-            break if less.present?
-            phone.set test_helper.random_phone
-            email.set test_helper.random_email
-            sleep 1
-            orders_grid.order_total.scroll_into_view
-            orders_grid.checkbox.scroll_into_view
-            less.safe_double_click
-            less.safe_click
-            text_area.safe_double_click
-            text_area.safe_click
-            ship_to_country.select "United States"
-            break if less.present?
-            break if less.present?
-            break if (orders_grid.recipient.row 1).length > 1
-            break if (orders_grid.address.row 1).length > 1
-            break if (orders_grid.company.row 1).length > 1
-            ship_to_area1.safe_click
-            ship_to_area2.safe_click
             ship_to_area1.safe_double_click
             ship_to_area2.safe_double_click
             break if less.present?
@@ -2268,7 +2003,7 @@ module Orders
 
     end
 
-    class OrderDetails < OrderForm
+    class DetailsForm < OrderForm
 
       def present?
         browser_helper.present? @browser.div :css => "div[id^=singleOrderDetailsForm][id$=body]"
@@ -2400,9 +2135,6 @@ module Orders
         ounces_qtip_error.scan(/The maximum value for this field is ([^>]*)<\/li><\/ul>/).last.first
       end
 
-      def ounces_qtip_error_displayed?(message) # "The maximum value for this field is 70"
-        ounces_qtip_error.include?(message)
-      end
       def validate_address_link
         @browser.span :text => 'Validate Address'
       end

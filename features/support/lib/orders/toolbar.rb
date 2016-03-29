@@ -294,7 +294,7 @@ module Orders
       end
 
       def add
-        order_details = Orders::Details::OrderDetails.new @browser
+        order_details = Orders::Details::DetailsForm.new @browser
         grid = Orders::Grid::OrdersGrid.new @browser
         add_button = StampsButton.new @browser.span Orders::Locators::ToolBar::add
 

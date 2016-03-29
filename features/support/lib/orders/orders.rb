@@ -1,6 +1,6 @@
 module Orders
 
-  class PrintOrders < OrdersObject
+  class WebOrders < OrdersObject
 
     def navigation_bar
       Orders::Navigation::NavigationBar.new @browser
@@ -33,7 +33,7 @@ module Orders
     end
 
     def details
-      Orders::Details::OrderDetails.new @browser
+      Orders::Details::DetailsForm.new @browser
     end
 
     def grid
