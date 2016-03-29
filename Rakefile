@@ -2,6 +2,97 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+Cucumber::Rake::Task.new(:xxxxxxxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cn22_roll) do |t|
+  t.profile = 'print_layout_cn22_roll'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cn22_paper_left_side) do |t|
+  t.profile = 'print_layout_cn22_paper_left_side'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cn22_5x8_continuation) do |t|
+  t.profile = 'print_layout_cn22_5x8_continuation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cn22_5x8) do |t|
+  t.profile = 'print_layout_cn22_5x8'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_fsa_cp72_paper_single_ply) do |t|
+  t.profile = 'print_layout_fsa_cp72_paper_single_ply'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_dpo_cp72_roll_single_ply) do |t|
+  t.profile = 'print_layout_dpo_cp72_roll_single_ply'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cp72_paper_single_ply) do |t|
+  t.profile = 'print_layout_cp72_paper_single_ply'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cp72_paper_continuation) do |t|
+  t.profile = 'print_layout_cp72_paper_continuation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layouts_cp72_single_ply_apo_roll) do |t|
+  t.profile = 'print_layouts_cp72_single_ply_apo_roll'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cp72_5x8_single_ply) do |t|
+  t.profile = 'print_layout_cp72_5x8_single_ply'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cp72_5x8_right) do |t|
+  t.profile = 'print_layout_cp72_5x8_right'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cp72_5x8_left) do |t|
+  t.profile = 'print_layout_cp72_5x8_left'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cp72_4x6roll) do |t|
+  t.profile = 'print_layout_cp72_4x6roll'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cp72_roll_continuation) do |t|
+  t.profile = 'print_layout_cp72_roll_continuation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_layout_cp72_sdc1200_single_ply) do |t|
+  t.profile = 'print_layout_cp72_sdc1200_single_ply'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+
+
+
+
+
+
+
+
+
+
 Cucumber::Rake::Task.new(:print_change_date) do |t|
   t.profile = 'print_change_date'
   t.cucumber_opts = "-p cuke_reports"

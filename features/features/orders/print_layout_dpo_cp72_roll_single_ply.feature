@@ -3,7 +3,7 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
   Background:
     Given I am signed in to Orders
 
-  @print_layouts_cp72_single_ply
+  @print_layout_dpo_cp72_roll_single_ply
   Scenario: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then Add New Order
     Then Details: Set Ship-From to default

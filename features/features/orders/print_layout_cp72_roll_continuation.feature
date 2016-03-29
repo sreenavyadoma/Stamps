@@ -3,7 +3,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
   Background:
     Given I am signed in to Orders
 
-  @print_layouts_cp72_continuation
+  @print_layout_cp72_roll_continuation
   Scenario: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then Add New Order
     Then Details: Set Ship-From to default

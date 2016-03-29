@@ -3,7 +3,7 @@ Feature: Print 1 Intl CN22 label on 4x6 Roll
   Background:
     Given I am signed in to Orders
 
-  @print_layouts_cn22
+  @print_layout_cn22_roll
   Scenario: Print 1 Intl CN22 label on 4x6 Roll
     Then Add New Order
     Then Details: Set Ship-From to default

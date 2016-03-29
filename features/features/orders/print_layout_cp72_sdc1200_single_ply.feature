@@ -3,7 +3,7 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
   Background:
     Given I am signed in to Orders
 
-  @print_layouts_cp72_single_ply
+  @print_layout_cp72_sdc1200_single_ply
   Scenario: Print 1 Intl CP72 label on sdc1200 - right side
     Then Add New Order
     Then Details: Set Ship-From to default

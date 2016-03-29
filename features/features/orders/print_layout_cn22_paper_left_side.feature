@@ -3,7 +3,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
   Background:
     Given I am signed in to Orders
 
-  @print_layouts_cn22
+  @print_layout_cn22_paper_left_side
   Scenario: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then Add New Order
     Then Details: Set Ship-From to default

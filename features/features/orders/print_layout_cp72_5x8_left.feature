@@ -3,7 +3,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - left side
   Background:
     Given I am signed in to Orders
 
-  @print_layouts_cp72
+  @print_layout_cp72_5x8_left
   Scenario: Print 1 Intl CP72 label on 5.5x8.5 - left side
     Then Add New Order
     Then Details: Set Ship-From to default
