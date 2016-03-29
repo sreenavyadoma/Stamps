@@ -282,8 +282,8 @@ Cucumber::Rake::Task.new(:print_sample) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:details_panel_total_cost) do |t|
-  t.profile = 'details_panel_total_cost'
+Cucumber::Rake::Task.new(:details_total_cost) do |t|
+  t.profile = 'details_total_cost'
   t.cucumber_opts = "-p cuke_reports"
 end
 
