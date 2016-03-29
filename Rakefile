@@ -22,8 +22,8 @@ Cucumber::Rake::Task.new(:print_modal_label_count_thermal) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:details_panel_placeholders) do |t|
-  t.profile = 'details_panel_placeholders'
+Cucumber::Rake::Task.new(:details_placeholders) do |t|
+  t.profile = 'details_placeholders'
   t.cucumber_opts = "-p cuke_reports"
 end
 

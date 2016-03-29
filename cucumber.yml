@@ -2,7 +2,7 @@ default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
 rob_dev: --tags @details_reference_no --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
-#details_panel_placeholders
+#details_placeholders
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
 eli_dev: --tags @healthcheck --guess VERBOSE=true HEALTHCHECK=true URL=qasc BROWSER=ff USR=hns8u0qen9h9 PW=pass111
@@ -27,7 +27,7 @@ customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false HEALTHCHECK=tru
 grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false HEALTHCHECK=true
 orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true
 print_modal_label_count_thermal: --tags @print_modal_label_count_thermal --guess VERBOSE=false HEALTHCHECK=true
-details_panel_placeholders: --tags @details_panel_placeholders --guess VERBOSE=false HEALTHCHECK=true
+details_placeholders: --tags @details_placeholders --guess VERBOSE=false HEALTHCHECK=true
 grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=true
 grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=true
 import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=true
