@@ -1,7 +1,7 @@
 module Stamps
 
   def health
-    HealthCheck.new @browser
+    HealthCheck.new @browser, @scenario_name
   end
 
   class HealthCheck < Stamps::Browser::BrowserObject

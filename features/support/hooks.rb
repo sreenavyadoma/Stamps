@@ -36,7 +36,7 @@ include RAutomation
 Before do  |scenario|
   @scenario_name = scenario.name
   Test.scenario_name = @scenario_name
-
+  log.scenario_name = @scenario_name
   log.info "Begin Test Scenario:  -----------------------------------------  "
   log.info "Begin Test Scenario:  -----------------------------------------  "
   log.info "Begin Test Scenario:  -----------------------------------------  "

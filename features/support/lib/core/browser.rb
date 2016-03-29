@@ -26,7 +26,7 @@ module Stamps
         case args.length
           when 1
             @browser = args[0]
-            #@@test_name = ''
+            @@test_name = ''
           when 2
             @browser = args[0]
             @@test_name = args[1]
