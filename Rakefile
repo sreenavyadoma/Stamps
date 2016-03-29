@@ -2,11 +2,6 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-Cucumber::Rake::Task.new(:customs_form_qty) do |t|
-  t.profile = 'customs_form_qty'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:print_change_date) do |t|
   t.profile = 'print_change_date'
   t.cucumber_opts = "-p cuke_reports"
@@ -49,6 +44,11 @@ end
 
 Cucumber::Rake::Task.new(:shopify) do |t|
   t.profile = 'shopify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:customs_form_qty) do |t|
+  t.profile = 'customs_form_qty'
   t.cucumber_opts = "-p cuke_reports"
 end
 

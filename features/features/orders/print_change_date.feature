@@ -17,8 +17,9 @@ Feature:  Order Details Form - Reference # Field
     Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Set Ship Date to today plus 2
-    Then Pause for 2 seconds
+    Then Pause for 4 seconds
     Then Toolbar: Print
+    Then Pause for 4 seconds
     Then Sign out
 
 
