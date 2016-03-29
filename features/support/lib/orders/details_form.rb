@@ -2063,8 +2063,6 @@ module Orders
         test_helper.remove_dollar_sign cost_label.text
       end
 
-      #todo-rob add
-
       def item_grid
         ItemGrid.new @browser
       end

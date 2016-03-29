@@ -128,7 +128,6 @@ module Stamps
     def self.teardown
       log.info "Step:  Teardown test"
       @browser.quit unless @browser == nil
-      @browser = nil
       log.info "#{@browser_name} closed."
       log.info "Test Done!"
     end
