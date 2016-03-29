@@ -7,15 +7,30 @@ Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_
   item.description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
 end
 
-Then /^Details: Add Item (.*)$/ do |item_number|
+Then /^Details: Add Item (\d+)$/ do |item_number|
   log.info "Details: Add Item #{item_number}"
   @orders_line_item = orders.details.item_grid.item item_number.to_i
 end
+
+Then /^Details: Set Qty to (\d+)$/ do |value|
+  log.info "Details: Set Qty to #{value}"
+  @orders_line_item.qty.set value
+end
+
+Then /^Details: Set ID to (.*)$/ do |value|
+  log.info "Details: Set ID to #{value}"
+  @orders_line_item.id.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Then /^Details: Set Description to (.*)$/ do |value|
+  log.info "Details: Set Description to #{value}"
+  @orders_line_item.description.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
 Then /^Details: Expect Item Qty Placeholder to be (.*)$/ do |expectation|
   log.info "Details: Expect Item Qty Placeholder to be #{expectation}"
   placeholder = @orders_line_item.qty.text_box.placeholder
   log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
-  #quantity.should eql qty
 end
 
 Then /^Details: Expect Item ID# Placeholder to be (.*)$/ do |expectation|
