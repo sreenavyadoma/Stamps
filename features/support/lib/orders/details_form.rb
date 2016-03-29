@@ -881,7 +881,6 @@ module Orders
         email.safe_set ""
         less.safe_click if phone.present?
       end
-
     end
 
     class ShipTo < ShipToFields
