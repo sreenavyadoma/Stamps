@@ -127,65 +127,65 @@ Then /^International Address: Set Ship-To Phone to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Print Postage Customs Form: Set Package Contents to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set Package Contents to #{value}"
+Then /^Print Postage Customs: Set Package Contents to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set Package Contents to #{value}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
 
   @customs_form.package_contents.select value
 end
 
-Then /^Print Postage Customs Form: Set Non-Delivery Options to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set Non-Delivery Options to #{value}"
+Then /^Print Postage Customs: Set Non-Delivery Options to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set Non-Delivery Options to #{value}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
 
   @customs_form.non_delivery_options.select value
 end
 
-Then /^Print Postage Customs Form: Set Internal Transaction Number Requirement to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set Internal Transaction Number to #{value}"
+Then /^Print Postage Customs: Set Internal Transaction Number Requirement to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set Internal Transaction Number to #{value}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
 
   @customs_form.internal_transaction.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
   sleep 1
 end
 
-Then /^Print Postage Customs Form: Set More Info to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set More Info to #{value}"
+Then /^Print Postage Customs: Set More Info to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set More Info to #{value}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
 
   @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Print Postage Customs Form: Set ITN# to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set ITN# to #{value}"
+Then /^Print Postage Customs: Set ITN# to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set ITN# to #{value}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
 
   @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Print Postage Customs Form: Set License# to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set License# to #{value}"
+Then /^Print Postage Customs: Set License# to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set License# to #{value}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
 
   @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Print Postage Customs Form: Set Certificate Number to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set Certificate Number to #{value}"
+Then /^Print Postage Customs: Set Certificate Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set Certificate Number to #{value}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
 
   @customs_form.certificate.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Print Postage Customs Form: Set Invoice Number to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set Invoice Number to #{value}"
+Then /^Print Postage Customs: Set Invoice Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set Invoice Number to #{value}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
 
   @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Print Postage Customs Form: Add Item - Description (\w+), Qty (\d+), Value ([\d.]+), Lbs (\d+), Oz (\d+), Origin (.+), Tariff (\d+)$/ do |description, qty, value, lbs, oz, origin_country, tariff|
-  log.info "Step: Customs Form: Add Item - Description #{description}, Qty #{qty}, Value #{value}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
+Then /^Print Postage Customs: Add Item - Description (\w+), Qty (\d+), Value ([\d.]+), Lbs (\d+), Oz (\d+), Origin (.+), Tariff (\d+)$/ do |description, qty, value, lbs, oz, origin_country, tariff|
+  log.info "Step: Customs: Add Item - Description #{description}, Qty #{qty}, Value #{value}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
   @add_item_form = @customs_form.add_item
 
@@ -199,8 +199,8 @@ Then /^Print Postage Customs Form: Add Item - Description (\w+), Qty (\d+), Valu
   @add_item_form.save
 end
 
-Then /^Print Postage Customs Form: Delete Item (\d+)$/ do |item_number|
-  log.info "Step: Customs Form: Delete Item #{item_number}"
+Then /^Print Postage Customs: Delete Item (\d+)$/ do |item_number|
+  log.info "Step: Customs: Delete Item #{item_number}"
   count = @customs_item_grid.size
   item = @customs_item_grid.item item_number.to_i
   if count > 1
@@ -210,26 +210,26 @@ Then /^Print Postage Customs Form: Delete Item (\d+)$/ do |item_number|
   end
 end
 
-Then /^Print Postage Customs Form: Delete All Items$/ do
-  log.info "Step: Print Postage Customs Form: Delete All Items"
+Then /^Print Postage Customs: Delete All Items$/ do
+  log.info "Step: Print Postage Customs: Delete All Items"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
   @customs_form.delete_all
 
 end
 
-Then /^Print Postage Customs Form: Set I agree to Checked$/ do
+Then /^Print Postage Customs: Set I agree to Checked$/ do
   log.info "Step: Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
   @customs_form.i_agree.check
 end
 
-Then /^Print Postage Customs Form: Set I agree to Unchecked$/ do
+Then /^Print Postage Customs: Set I agree to Unchecked$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
   @customs_form.i_agree.uncheck
 end
 
-Then /^Print Postage Customs Form: Save$/ do
+Then /^Print Postage Customs: Save$/ do
   log.info "Step: Save Customs Form"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
   @customs_form.save

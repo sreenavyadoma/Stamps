@@ -13,9 +13,9 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
     Then Details: Set Service to "Priority Mail Express International Package/Flat/Thick Envelope"
     Then Details: Set Ounces to 1
     Then Open Customs Form
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Open Print Modal
     Then Print: Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""

@@ -16,9 +16,9 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
     Then Details: Set Ounces to 1
 
     Then Open Customs Form
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
 
     Then Pause for 2 seconds

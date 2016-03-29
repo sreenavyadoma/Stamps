@@ -251,7 +251,9 @@ module Stamps
 
     class StampsLabel < StampsClickableField
       def text
-        browser_helper.text @field
+        txt = browser_helper.text @field
+        val = browser_helper.attribute_value @field, "value"
+        (txt.size>0)?txt:val
       end
     end
 

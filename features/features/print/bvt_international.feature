@@ -19,15 +19,15 @@ Feature: International Shipping BVT
     Then Shipping Labels: Set Service to "Priority Mail International Flat Rate Envelope"
 
     Then Shipping Labels: Open Customs Form
-    Then Print Postage Customs Form: Set Package Contents to "Gift"
-    Then Print Postage Customs Form: Set Non-Delivery Options to "Treat as abandoned"
-    Then Print Postage Customs Form: Set Internal Transaction Number Requirement to "Required"
-    Then Print Postage Customs Form: Set ITN# to "12345"
-    Then Print Postage Customs Form: Set More Info to "Web Postage BVT International Shipping"
-    Then Print Postage Customs Form: Delete All Items
-    Then Print Postage Customs Form: Add Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin Russia, Tariff 25
-    Then Print Postage Customs Form: Set I agree to Checked
-    Then Print Postage Customs Form: Save
+    Then Print Postage Customs: Set Package Contents to "Gift"
+    Then Print Postage Customs: Set Non-Delivery Options to "Treat as abandoned"
+    Then Print Postage Customs: Set Internal Transaction Number Requirement to "Required"
+    Then Print Postage Customs: Set ITN# to "12345"
+    Then Print Postage Customs: Set More Info to "Web Postage BVT International Shipping"
+    Then Print Postage Customs: Delete All Items
+    Then Print Postage Customs: Add Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin Russia, Tariff 25
+    Then Print Postage Customs: Set I agree to Checked
+    Then Print Postage Customs: Save
     Then Footer: Print International Postage
 
     Then Sign out
@@ -36,22 +36,22 @@ Feature: International Shipping BVT
   Scenario: International Shipping 2
 
     Then Open Customs Form
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Not required"
-    Then Customs Form: Set More Info to "BVT International Shipping"
-    Then Customs Form: Set I agree to Checked
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Not required"
+    Then Customs: Set More Info to "BVT International Shipping"
+    Then Customs: Set I agree to Checked
+    Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Close Customs Form
 
 
     Then Open Print Postage Customs Form
-    Then Print Postage Customs Form: Set Package Contents to "Merchandise"
-    Then Print Postage Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Print Postage Customs Form: Set Internal Transaction Number to "Not required"
-    Then Print Postage Customs Form: Set More Info to "BVT International Shipping"
-    Then Print Postage Customs Form: Set I agree to Checked
-    Then Print Postage Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Print Postage Customs: Set Package Contents to "Merchandise"
+    Then Print Postage Customs: Set Non-Delivery Options to "Return to sender"
+    Then Print Postage Customs: Set Internal Transaction Number to "Not required"
+    Then Print Postage Customs: Set More Info to "BVT International Shipping"
+    Then Print Postage Customs: Set I agree to Checked
+    Then Print Postage Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Close Print Postage Customs Form
     Then Footer: Print Postage
     Then Sign out

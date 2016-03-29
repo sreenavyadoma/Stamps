@@ -249,25 +249,25 @@ Feature: Test Development
   #Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
     Then Open Customs Form
     Then Expect Customs Form Internal Transaction # to be "Required"
-    Then Customs Form: Set Package Contents to "Commercial Sample"
+    Then Customs: Set Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be "Required"
-    Then Customs Form: Set Package Contents to "Document"
+    Then Customs: Set Package Contents to "Document"
     Then Expect Customs Form Internal Transaction # to be "Required"
-    Then Customs Form: Set Package Contents to "Merchandise"
+    Then Customs: Set Package Contents to "Merchandise"
     Then Expect Customs Form Internal Transaction # to be "Required"
-    Then Customs Form: Set Package Contents to "Gift"
+    Then Customs: Set Package Contents to "Gift"
     Then Expect Customs Form Internal Transaction # to be "Required"
-    Then Customs Form: Set Package Contents to "Humanitarian Donation"
+    Then Customs: Set Package Contents to "Humanitarian Donation"
     Then Expect Customs Form Internal Transaction # to be "Required"
-    Then Customs Form: Set Package Contents to "Returned Goods"
+    Then Customs: Set Package Contents to "Returned Goods"
     Then Expect Customs Form Internal Transaction # to be "Required"
-    Then Customs Form: Set Package Contents to "Other"
+    Then Customs: Set Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
+    Then Customs: Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
-    Then Customs Form: Set ITN# to "random"
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set ITN# to "random"
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Sign out
 
@@ -285,8 +285,8 @@ Feature: Test Development
     Then Details: Set Width to 1
     Then Details: Set Service to "Priority Mail Package"
     Then Open Customs Form
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Close Customs Form
     Then Toolbar: Print
 
@@ -301,8 +301,8 @@ Feature: Test Development
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 2
     Then Open Customs Form
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -314,7 +314,7 @@ Feature: Test Development
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 2
     Then Open Customs Form
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"

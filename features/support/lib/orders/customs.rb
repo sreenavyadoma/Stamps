@@ -7,12 +7,15 @@ module Orders
       @index = index
     end
 
+    def text_box
+      StampsTextbox.new ((@browser.text_fields :name => "OriginCountryCode")[@index-1])
+    end
+
     def select country
       log.info "Select Country #{country}"
       selection = StampsLabel.new (@browser.lis :text => country)[@index]
-      text_box_field = (@browser.text_fields :name => "OriginCountryCode")[@index-1]
-      text_box = StampsTextbox.new text_box_field
-      drop_down = StampsButton.new text_box_field.parent.parent.divs[1]
+      text_box = self.text_box
+      drop_down = StampsButton.new text_box.field.parent.parent.divs[1]
 
       10.times {
         begin

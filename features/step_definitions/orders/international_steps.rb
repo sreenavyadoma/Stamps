@@ -1,3 +1,145 @@
+
+
+Then /^Customs: Add Item (\d+), Description (.*), Qty (\d+), Price ([\d.]+), Lbs (\d+), Oz (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
+  log.info "Step: Customs: Add Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  @customs_item_grid = @customs_form.item_grid
+  item = @customs_item_grid.item item_number.to_i
+
+  item.description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
+  item.qty.set qty
+  item.unit_price.set price
+  item.lbs.set lbs
+  item.oz.set oz
+  item.origin.select origin_country
+  item.hs_tariff.set tariff
+end
+
+Then /^Customs: Expect Item Count is (\d+), Description is (.*), Qty is (\d+), Price is (.*), Lbs is (\d+), Oz is (\d+) Origin Country is ([\w ]+) and Tariff is (.*)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
+  log.info "Step: Customs: Expect Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  @customs_item_grid = @customs_form.item_grid
+  item = @customs_item_grid.item item_number.to_i
+
+  begin
+    actual_value = item.description.text
+    log.info "Item #{item_number} Description Test #{(actual_value==description)?"Passed":"Failed"}"
+    actual_value.should eql description
+  end unless description.downcase == "ignore"
+
+  begin
+    actual_value = item.qty.text_box.text
+    log.info "Item #{item_number} Quantity Test #{(actual_value==qty)?"Passed":"Failed"}"
+    actual_value.should eql qty
+  end unless qty.downcase == "ignore"
+
+  begin
+    actual_value = item.unit_price.text_box.text
+    log.info "Item #{item_number} Unit Price Test #{(actual_value==price)?"Passed":"Failed"}"
+    actual_value.should eql price
+  end unless price.downcase == "ignore"
+
+  begin
+    actual_value = item.lbs.text_box.text
+    log.info "Item #{item_number} Weight (lbs) Test #{(actual_value==lbs)?"Passed":"Failed"}"
+    actual_value.should eql lbs
+  end unless lbs.downcase == "ignore"
+
+  item.oz.set oz
+
+  begin
+    actual_value = item.oz.text_box.text
+    log.info "Item #{item_number} Weight (oz) Test #{(actual_value==oz)?"Passed":"Failed"}"
+    actual_value.should eql oz
+  end unless oz.downcase == "ignore"
+
+  begin
+    actual_value = item.origin.text_box.text
+    log.info "Item #{item_number} Origin Country (oz) Test #{(actual_value==origin_country)?"Passed":"Failed"}"
+    actual_value.should eql origin_country
+  end unless origin_country.downcase == "ignore"
+
+  begin
+    actual_value = item.hs_tariff.text
+    log.info "Item #{item_number} HS Tarriff Test #{(actual_value==tariff)?"Passed":"Failed"}"
+    actual_value.should eql tariff
+  end unless tariff.downcase == "ignore"
+
+end
+
+Then /^Customs: Add Item (\d+)$/ do |item_number|
+  log.info "Customs: Add Item #{item_number}"
+
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  @customs_item_grid = @customs_form.item_grid
+  @customs_form_line_item = @customs_item_grid.item item_number.to_i
+end
+
+Then /^Customs: Set Item Description to (.*)$/ do |value|
+  log.info "Details: Set Description to #{value}"
+  @customs_form_line_item.description.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Then /^Customs: Set Item Qty to (\d+)$/ do |value|
+  log.info "Details: Set Qty to #{value}"
+  @customs_form_line_item.qty.set value
+end
+
+Then /^Customs: Set Item Unit Price to (.*)$/ do |value|
+  log.info "Details: Set Unit Price to #{value}"
+  @customs_form_line_item.unit_price.set value
+end
+
+Then /^Customs: Set Item Pounds to (.*)$/ do |value|
+  log.info "Details: Set Pounds to #{value}"
+  @customs_form_line_item.lbs.set value
+end
+
+Then /^Customs: Set Item Ounces to (.*)$/ do |value|
+  log.info "Details: Set Ounces to #{value}"
+  @customs_form_line_item.oz.set value
+end
+
+Then /^Customs: Set Item Origin Country to (.*)$/ do |value|
+  log.info "Details: Set Origin Country to #{value}"
+  @customs_form_line_item.origin.select value
+end
+
+Then /^Customs: Set Item Tarriff to (.*)$/ do |value|
+  log.info "Details: Set Tarriff to #{value}"
+  @customs_form_line_item.hs_tariff.set value
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Then /^Details: Set Ship-To Country to (.*)$/ do |country|
   log.info "Step: Details: Set Ship-To Country to #{country}"
   @international_ship_to = orders.details.ship_to.country.select country
@@ -152,24 +294,24 @@ Then /^Open Customs Form$/ do
   @customs_form = @order_details.customs.edit_form
 end
 
-Then /^Customs Form: Set Package Contents to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set Package Contents to #{value}"
+Then /^Customs: Set Package Contents to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set Package Contents to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.package_contents.select value
 end
 
-Then /^Customs Form: Set Non-Delivery Options to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set Non-Delivery Options to #{value}"
+Then /^Customs: Set Non-Delivery Options to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set Non-Delivery Options to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.non_delivery_options.select value
 end
 
-Then /^Customs Form: Set Internal Transaction Number to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set Internal Transaction Number to #{value}"
+Then /^Customs: Set Internal Transaction Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set Internal Transaction Number to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open Customs Form" unless @customs_form.present?
 
@@ -177,63 +319,48 @@ Then /^Customs Form: Set Internal Transaction Number to \"(.+)\"$/ do |value|
   sleep 1
 end
 
-Then /^Customs Form: Set More Info to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set More Info to #{value}"
+Then /^Customs: Set More Info to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set More Info to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Customs Form: Set ITN# to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set ITN# to #{value}"
+Then /^Customs: Set ITN# to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set ITN# to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Customs Form: Set License# to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set License# to #{value}"
+Then /^Customs: Set License# to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set License# to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Customs Form: Set Certificate Number to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set Certificate Number to #{value}"
+Then /^Customs: Set Certificate Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set Certificate Number to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.certificate.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Customs Form: Set Invoice Number to \"(.+)\"$/ do |value|
-  log.info "Step: Customs Form: Set Invoice Number to #{value}"
+Then /^Customs: Set Invoice Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set Invoice Number to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   step "Open Customs Form" unless @customs_form.present?
 
   @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Customs Form: Add Item (\d+), Description (\w+), Qty (\d+), Price ([\d.]+), Lbs (\d+), Oz (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
-  log.info "Step: Customs Form: Add Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  @customs_item_grid = @customs_form.item_grid
-  item = @customs_item_grid.item item_number.to_i
-
-  item.description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
-  item.qty.set qty
-  item.unit_price.set price
-  item.lbs.set lbs
-  item.oz.set oz
-  item.origin.select origin_country
-  item.hs_tariff.set tariff
-end
-
-Then /^Customs Form: Delete Item (\d+)$/ do |item_number|
-  log.info "Step: Customs Form: Delete Item #{item_number}"
+Then /^Customs: Delete Item (\d+)$/ do |item_number|
+  log.info "Step: Customs: Delete Item #{item_number}"
   count = @customs_item_grid.size
   item = @customs_item_grid.item item_number.to_i
   if count > 1
@@ -243,12 +370,12 @@ Then /^Customs Form: Delete Item (\d+)$/ do |item_number|
   end
 end
 
-Then /^Customs Form: Set I agree to Checked$/ do
+Then /^Customs: Set I agree to Checked$/ do
   log.info "Step: Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @order_details.customs_form.i_agree.check
 end
 
-Then /^Customs Form: Set I agree to Unchecked$/ do
+Then /^Customs: Set I agree to Unchecked$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @order_details.customs_form.i_agree.uncheck
 end
@@ -513,8 +640,8 @@ Then /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |expectati
   text.should eql expectation
 end
 
-Then /^Customs Form: Expect Item Grid count to be (.+)$/ do |expectation|
-  log.info "Step: Customs Form: Expect Item Grid count to be #{expectation}"
+Then /^Customs: Expect Item Grid count to be (.+)$/ do |expectation|
+  log.info "Step: Customs: Expect Item Grid count to be #{expectation}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.item_grid.size.should eql expectation.to_i
 end

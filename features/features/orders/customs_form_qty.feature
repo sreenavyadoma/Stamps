@@ -25,12 +25,32 @@ Feature: Customs Form Qty
     Then Details: Set Description to random
 
     Then Open Customs Form
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Customs Form: Set I agree to Checked
+
+    Then Customs: Add Item 1
+    Then Customs: Set Item Description to item 1
+    Then Customs: Set Item Qty to 100
+    Then Customs: Set Item Unit Price to 10.99
+    Then Customs: Set Item Pounds to 1
+    Then Customs: Set Item Ounces to 1
+    Then Customs: Set Item Origin Country to United States
+    Then Customs: Set Item Tarriff to 100
+
+    Then Customs: Add Item 2
+    Then Customs: Set Item Description to item 2
+    Then Customs: Set Item Qty to 99
+    Then Customs: Set Item Unit Price to 10.99
+    Then Customs: Set Item Pounds to 2
+    Then Customs: Set Item Ounces to 2
+    Then Customs: Set Item Origin Country to United States
+    Then Customs: Set Item Tarriff to 200
+
     Then Close Customs Form
-    Then Open Print Modal
-    Then Print: Set Media "Roll - 4" x 6" Shipping Label"
-    Then Print: Print Sample
-    Then Toolbar: Print
+
+    Then Open Customs Form
+
+    Then Customs: Expect Item Count is 1, Description is item 1, Qty is 100, Price is 10.99, Lbs is 1, Oz is 1 Origin Country is United States and Tariff is 100
+    Then Customs: Expect Item Count is 2, Description is item 2, Qty is 99, Price is 10.99, Lbs is 2, Oz is 2 Origin Country is United States and Tariff is 200
+
+    Then Close Customs Form
+
     Then Sign out

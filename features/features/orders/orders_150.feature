@@ -249,13 +249,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -270,13 +270,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
 
@@ -523,13 +523,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -544,13 +544,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
 
@@ -796,13 +796,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -817,13 +817,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
 
@@ -1070,13 +1070,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -1091,13 +1091,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
 
@@ -1344,13 +1344,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -1365,13 +1365,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
 
@@ -1618,13 +1618,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -1639,13 +1639,13 @@ Feature: 150 orders
 
     Then Open Customs Form
 
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Set Non-Delivery Options to "Return to sender"
-    Then Customs Form: Set Internal Transaction Number to "Required"
-    Then Customs Form: Set More Info to "random"
-    Then Customs Form: Set ITN# to "random"
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Non-Delivery Options to "Return to sender"
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set More Info to "random"
+    Then Customs: Set ITN# to "random"
 
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
 

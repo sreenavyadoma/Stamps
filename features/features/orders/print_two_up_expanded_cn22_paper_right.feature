@@ -13,9 +13,9 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - right side
     Then Details: Set Service to "Priority Mail International Padded Flat Rate Envelope"
     Then Details: Set Ounces to 1
     Then Open Customs Form
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Add New Order
     Then Details: Set Ship-From to default
@@ -25,9 +25,9 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - right side
     Then Details: Set Service to "Priority Mail International Legal Flat Rate Envelope"
     Then Details: Set Ounces to 1
     Then Open Customs Form
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    Then Customs: Set I agree to Checked
     Then Close Customs Form
     Then Grid: Check row 1
     Then Grid: Check row 2
