@@ -7,6 +7,11 @@ Cucumber::Rake::Task.new(:customs_form_qty) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:print_change_date) do |t|
+  t.profile = 'print_change_date'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:details_reference_no) do |t|
   t.profile = 'details_reference_no'
   t.cucumber_opts = "-p cuke_reports"

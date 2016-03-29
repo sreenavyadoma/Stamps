@@ -285,6 +285,7 @@ module Orders
 
         10.times{
           picker_button.safe_click unless date_picker_header.present?
+          sleep 1
 
           if date_field.field.present?
             break
