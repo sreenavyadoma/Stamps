@@ -22,6 +22,7 @@ volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=true
 amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true 
 
 
+customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false HEALTHCHECK=true
 grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false HEALTHCHECK=true
 orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true
 print_modal_label_count_thermal: --tags @print_modal_label_count_thermal --guess VERBOSE=false HEALTHCHECK=true
