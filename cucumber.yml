@@ -120,7 +120,7 @@ new_country_code: --tags  @new_country_code --guess VERBOSE=false HEALTHCHECK=tr
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEALTHCHECK=true
 rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=true
 expand_order_details_panel: --tags  @expand_order_details_panel --guess VERBOSE=false HEALTHCHECK=true
-multiple_reprint: --tags @multiple_reprint --guess VERBOSE=false HEALTHCHECK=true
+print_multiple_reprints: --tags @print_multiple_reprints --guess VERBOSE=false HEALTHCHECK=true
 email_tracking: --tags @email_tracking --guess VERBOSE=false HEALTHCHECK=true
 
 healthcheck: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true

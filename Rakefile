@@ -510,8 +510,8 @@ Cucumber::Rake::Task.new(:expand_order_details_panel) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:multiple_reprint) do |t|
-  t.profile = 'multiple_reprint'
+Cucumber::Rake::Task.new(:print_multiple_reprints) do |t|
+  t.profile = 'print_multiple_reprints'
   t.cucumber_opts = "-p cuke_reports"
 end
 

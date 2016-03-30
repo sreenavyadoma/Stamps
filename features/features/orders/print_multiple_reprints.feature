@@ -3,7 +3,7 @@ Feature: Multiple Reprints
   Background:
     Given I am signed in to Orders
 
-  @multiple_reprint
+  @print_multiple_reprints
   Scenario: Multiple reprints in 24 hour period
 
     Then Add New Order
