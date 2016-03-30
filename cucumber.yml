@@ -22,7 +22,7 @@ volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=true
 amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true 
 
 # PRINT MEDIA
-xxxxx: --tags @xxxxxx --guess VERBOSE=false HEALTHCHECK=true
+tooltip_print_media: --tags @tooltip_print_media --guess VERBOSE=false HEALTHCHECK=true
 print_media_8x11_paper: --tags @print_media_8x11_paper --guess VERBOSE=false HEALTHCHECK=true
 print_media_4x6_sdc1200: --tags @print_media_4x6_sdc1200 --guess VERBOSE=false HEALTHCHECK=true
 print_media_5x8_shipping_label: --tags @print_media_5x8_shipping_label --guess VERBOSE=false HEALTHCHECK=true

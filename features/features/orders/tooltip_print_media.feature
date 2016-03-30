@@ -3,7 +3,7 @@ Feature: Print Media Tooltips
   Background:
     Given I am signed in to Orders
 
-  @print_media
+  @tooltip_print_media
   Scenario:  Verify tooltips for all Print Media selections
     Then Add New Order
     Then Details: Set Ship-From to default
