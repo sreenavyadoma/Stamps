@@ -23,6 +23,7 @@ amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true
 
 # PRINT MEDIA
 xxxxx: --tags @xxxxxx --guess VERBOSE=false HEALTHCHECK=true
+print_media_4x6_shipping_label: --tags @print_media_4x6_shipping_label --guess VERBOSE=false HEALTHCHECK=true
 print_media_roll4x6: --tags @print_media_roll4x6 --guess VERBOSE=false HEALTHCHECK=true
 
 # CP72

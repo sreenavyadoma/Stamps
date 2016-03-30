@@ -7,6 +7,10 @@ Cucumber::Rake::Task.new(:xxxxxxxxxxxxxxx) do |t|
   t.profile = 'xxxxxxxxxxxxxxx'
   t.cucumber_opts = "-p cuke_reports"
 end
+Cucumber::Rake::Task.new(:print_media_4x6_shipping_label) do |t|
+  t.profile = 'print_media_4x6_shipping_label'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 Cucumber::Rake::Task.new(:print_media_roll4x6) do |t|
   t.profile = 'print_media_roll4x6'
