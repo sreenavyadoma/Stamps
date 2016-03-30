@@ -4,7 +4,7 @@ Feature: Print two labels on one sheet
   Background:
     Given I am signed in to Orders using ff
 
-  @print_two_up @print_two_up_test
+  @print_two_up_multiple_domestic_labels
   Scenario: User Prints multiple Domestic labels
 
     Then Add New Order

@@ -13,18 +13,18 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_two_up_window_title) do |t|
+  t.profile = 'print_two_up_window_title'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_two_up_x_number_of_labels) do |t|
+  t.profile = 'print_two_up_x_number_of_labels'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_two_up_multiple_domestic_labels) do |t|
+  t.profile = 'print_two_up_multiple_domestic_labels'
   t.cucumber_opts = "-p cuke_reports"
 end
 

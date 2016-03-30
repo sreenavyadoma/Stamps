@@ -4,7 +4,7 @@ Feature:  Requires x-number of label sheets
   Background:
     Given I am signed in to Orders
 
-  @print_two_up @print_two_up_dev
+  @print_two_up_x_number_of_labels
   Scenario:  Printing
     Then Add New Order
     Then Details: Set Ship-From to default
