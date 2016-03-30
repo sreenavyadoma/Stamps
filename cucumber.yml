@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @print_layouts_cp72_single_ply --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
+rob_dev: --tags @print_layout_cp72_paper_continuation --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 #details_placeholders
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
