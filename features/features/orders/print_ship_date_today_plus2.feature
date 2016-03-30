@@ -1,4 +1,4 @@
-Feature: Date Printed - Today + 2
+Feature: Set Print Ship Date to Today + 2
 
   Background:
     Given I am signed in to Orders
