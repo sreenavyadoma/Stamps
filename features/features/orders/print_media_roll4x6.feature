@@ -3,7 +3,7 @@ Feature: Print Media - Roll - 4 ⅛" x 6 ¼" Shipping Label
   Background:
     Given I am signed in to Orders
 
-  @print_media
+  @print_media_roll4x6
   Scenario:  Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then Add New Order
     Then Details: Set Ship-From to default

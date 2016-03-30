@@ -21,6 +21,10 @@ rakuten: --tags @rakuten --guess VERBOSE=false HEALTHCHECK=true
 volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=true 
 amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true 
 
+# PRINT MEDIA
+xxxxx: --tags @xxxxxx --guess VERBOSE=false HEALTHCHECK=true
+print_media_roll4x6: --tags @print_media_roll4x6 --guess VERBOSE=false HEALTHCHECK=true
+
 # CP72
 print_layout_cp72_sdc1200_single_ply: --tags @print_change_date --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cp72_roll_continuation: --tags @print_layout_cp72_roll_continuation --guess VERBOSE=false HEALTHCHECK=true
@@ -37,8 +41,6 @@ print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess VERBOSE=false HEALT
 print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false HEALTHCHECK=true
-xxxxx: --tags @xxxxxx --guess VERBOSE=false HEALTHCHECK=true
-
 
 print_change_date: --tags @print_change_date --guess VERBOSE=false HEALTHCHECK=true
 details_reference_no: --tags @details_reference_no --guess VERBOSE=false HEALTHCHECK=true

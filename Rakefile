@@ -2,10 +2,28 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+
 Cucumber::Rake::Task.new(:xxxxxxxxxxxxxxx) do |t|
   t.profile = 'xxxxxxxxxxxxxxx'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:print_media_roll4x6) do |t|
+  t.profile = 'print_media_roll4x6'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+
+
+
+
+
+
+
+
+
+
 
 Cucumber::Rake::Task.new(:print_layout_cn22_roll) do |t|
   t.profile = 'print_layout_cn22_roll'
