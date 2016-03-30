@@ -46,8 +46,11 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
     Then Customs: Add Item 30, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 30
     Then Customs: Add Item 31, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 31
     Then Customs: Add Item 32, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 32
+    Then Pause for 2 seconds
     Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Pause for 2 seconds
     Then Close Customs Form
+    Then Pause for 3 seconds
     Then Open Print Modal
     Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
