@@ -878,11 +878,15 @@ Then /^WebReg: Choose Supplies: Place Order$/ do
       log.info message
       raise message
     when WebReg::ChooseSupplies
-      welcome_page = @registration_result.place_order
-      welcome_page.wait_until_present
-      if welcome_page.present?
-        step "WebReg:  Send username to standard out"
+      if @registration_result.present?
+        welcome_page = @registration_result.place_order
+        welcome_page.wait_until_present
+        if welcome_page.present?
+          step "WebReg:  Send username to standard out"
+        end
       end
+    else
+      #do nothing
   end
 end
 
