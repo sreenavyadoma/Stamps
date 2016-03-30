@@ -3,8 +3,8 @@ Feature: Date Printed - Today + 2
   Background:
     Given I am signed in to Orders
 
-  @print_date
-  Scenario: Set Ship Date to today + 2
+  @print_ship_date_today_plus2
+  Scenario: Ship Date Today + 2
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
