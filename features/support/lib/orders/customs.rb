@@ -479,12 +479,10 @@ module Orders
     end
 
     def i_agree
-      checkbox_fields = @browser.inputs :css => "input[id^=checkbox-]"
-      checkbox_field = checkbox_fields.last
-      verify_fields = @browser.inputs :css => "div[id^=checkbox][class*=x-form-type-checkbox]"
-      verify_field = verify_fields.last
+      field = @browser.input :css => "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
+      verify_field = field.parent.parent.parent
 
-      Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
+      Stamps::Browser::StampsCheckbox.new field, verify_field, "class", "checked"
     end
 
     def privacy_act_statement_link
