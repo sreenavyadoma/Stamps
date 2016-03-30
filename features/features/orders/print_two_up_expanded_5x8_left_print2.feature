@@ -3,9 +3,8 @@ Feature: Print 2 Domestic labels on 5.5x8.5 - left side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded @print_two_up_expanded_5x8
+  @print_two_up_expanded_5x8_left_print2
   Scenario: Print 2 Domestic labels on 5.5x8.5 - left side
-    # 2 Domestic labels 5 ½" x 8 ½"
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to PS Large Package, 5.5x8.5, 530 K Street Unit 504, San Diego CA 92101-7060

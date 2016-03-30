@@ -3,7 +3,7 @@ Feature: User Prints 1 Domestic label on 5.5x8.5 - right side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded
+  @print_two_up_expanded_5x8_right_print1
   Scenario: User Prints 1 Domestic label on 5.5x8.5 - right side
     Then Add New Order
     Then Details: Set Ship-From to default

@@ -3,7 +3,7 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded
+  @print_two_up_expanded_cn22_cp72_5x8_right_print2
   Scenario: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
 
     Then Add New Order

@@ -3,7 +3,7 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded
+  @print_two_up_expanded_cn22_paper_left
   Scenario: User Print 1 FPO CN22 Label on 8.5x11 - left side
     Then Add New Order
     Then Details: Set Ship-From to default

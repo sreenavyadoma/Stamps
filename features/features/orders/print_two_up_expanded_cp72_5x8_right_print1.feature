@@ -3,7 +3,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - right side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded
+  @print_two_up_expanded_cp72_5x8_right_print1
   Scenario: Print 1 Intl CP72 label on 5.5x8.5 - right side
     # 1 CP72 label 5 ½" x 8 ½" right side
     Then Add New Order

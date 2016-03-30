@@ -3,7 +3,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded
+  @print_two_up_expanded_cn22_sdc1200_left
   Scenario: User Prints 1 Intl CP72, 1 Intl CN22 label on SDC-1200 - left side
     Then Add New Order
     Then Details: Set Ship-From to default

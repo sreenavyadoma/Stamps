@@ -13,6 +13,15 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
@@ -24,47 +33,113 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_two_up_expanded_sdc1200_left_print3) do |t|
+  t.profile = 'print_two_up_expanded_sdc1200_left_print3'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_two_up_expanded_sdc1200_4x6_right_print1) do |t|
+  t.profile = 'print_two_up_expanded_sdc1200_4x6_right_print1'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_sdc1200_4x6_left_print1) do |t|
+  t.profile = 'print_two_up_expanded_sdc1200_4x6_left_print1'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_paper_right_print2) do |t|
+  t.profile = 'print_two_up_expanded_paper_right_print2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_paper_left_print2) do |t|
+  t.profile = 'print_two_up_expanded_paper_left_print2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_paper_left_print1) do |t|
+  t.profile = 'print_two_up_expanded_paper_left_print1'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_fpo_cn22_paper_right) do |t|
+  t.profile = 'print_two_up_expanded_fpo_cn22_paper_right'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_cp72_paper_left_print3) do |t|
+  t.profile = 'print_two_up_expanded_cp72_paper_left_print3'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_cp72_paper_left) do |t|
+  t.profile = 'print_two_up_expanded_cp72_paper_left'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_cp72_5x8_right_print1) do |t|
+  t.profile = 'print_two_up_expanded_cp72_5x8_right_print1'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_cp72_5x8_left_print1) do |t|
+  t.profile = 'print_two_up_expanded_cp72_5x8_left_print1'
   t.cucumber_opts = "-p cuke_reports"
 end
 
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_two_up_expanded_cn22_sdc1200_left) do |t|
+  t.profile = 'print_two_up_expanded_cn22_sdc1200_left'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_two_up_expanded_cn22_paper_right) do |t|
+  t.profile = 'print_two_up_expanded_cn22_paper_right'
   t.cucumber_opts = "-p cuke_reports"
 end
 
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_two_up_expanded_cn22_paper_left) do |t|
+  t.profile = 'print_two_up_expanded_cn22_paper_left'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_two_up_expanded_cn22_cp72_5x8_right_print2) do |t|
+  t.profile = 'print_two_up_expanded_cn22_cp72_5x8_right_print2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_cn22_5x8_right_print2) do |t|
+  t.profile = 'print_two_up_expanded_cn22_5x8_right_print2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_5x8_right_print2) do |t|
+  t.profile = 'print_two_up_expanded_5x8_right_print2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_5x8_right_print1) do |t|
+  t.profile = 'print_two_up_expanded_5x8_right_print1'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_5x8_left_print3) do |t|
+  t.profile = 'print_two_up_expanded_5x8_left_print3'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_5x8_left_print2) do |t|
+  t.profile = 'print_two_up_expanded_5x8_left_print2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_two_up_expanded_5x8_left) do |t|
+  t.profile = 'print_two_up_expanded_5x8_left'
   t.cucumber_opts = "-p cuke_reports"
 end
 
