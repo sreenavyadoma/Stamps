@@ -3,7 +3,7 @@ Feature: Print: Print Sample - Parcel Select Ground Large Package
   Background:
     Given I am signed in to Orders
 
-  @print_sample @print_sample_dev
+  @print_sample_parcel_select_ground_large_package
   Scenario:  Parcel Select Ground Large Package
     Then Add New Order
     Then Details: Set Ship-From to default
