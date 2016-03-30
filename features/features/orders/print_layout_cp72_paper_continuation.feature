@@ -39,11 +39,11 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then Customs: Add Item 23, Description random, Qty 1, Price 23, Lbs 0, Oz 1 Origin United States, Tariff 23
     Then Customs: Add Item 24, Description random, Qty 1, Price 24, Lbs 0, Oz 1 Origin United States, Tariff 24
     Then Customs: Add Item 25, Description random, Qty 1, Price 25, Lbs 0, Oz 1 Origin United States, Tariff 25
-    Then Customs: Add Item 26, Description random, Qty 1, Price 26, Lbs 0, Oz 1 Origin United States, Tariff 26
-    Then Customs: Add Item 27, Description random, Qty 1, Price 27, Lbs 0, Oz 1 Origin United States, Tariff 27
-    Then Customs: Add Item 28, Description random, Qty 1, Price 28, Lbs 0, Oz 1 Origin United States, Tariff 28
-    Then Customs: Add Item 29, Description random, Qty 1, Price 29, Lbs 0, Oz 1 Origin United States, Tariff 29
-    Then Customs: Add Item 30, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 30
+#    Then Customs: Add Item 26, Description random, Qty 1, Price 26, Lbs 0, Oz 1 Origin United States, Tariff 26
+#    Then Customs: Add Item 27, Description random, Qty 1, Price 27, Lbs 0, Oz 1 Origin United States, Tariff 27
+#    Then Customs: Add Item 28, Description random, Qty 1, Price 28, Lbs 0, Oz 1 Origin United States, Tariff 28
+#    Then Customs: Add Item 29, Description random, Qty 1, Price 29, Lbs 0, Oz 1 Origin United States, Tariff 29
+#    Then Customs: Add Item 30, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 30
     Then Pause for 2 seconds
     Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Pause for 2 seconds
