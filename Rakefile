@@ -13,8 +13,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_sample_pm_regional_rate_box_a) do |t|
+  t.profile = 'print_sample_pm_regional_rate_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 

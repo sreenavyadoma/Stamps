@@ -3,7 +3,7 @@ Feature: Print: Print Sample - Priority Mail Regional Rate Box A
   Background:
     Given I am signed in to Orders
 
-  @print_sample
+  @print_sample_pm_regional_rate_box_a
   Scenario:  Priority Mail Regional Rate Box A
     Then Add New Order
     Then Details: Set Ship-From to default
