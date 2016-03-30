@@ -63,8 +63,8 @@ end
 
 Then /^Expect Shipped Tab Date Printed to be today$/ do
   today = test_helper.now_plus_mon_dd 0
-  orders.filter.shipped.print_date.menu.sort_descending
-  actual_print_date = orders.filter.shipped.print_date.row 1
+  orders.filter.shipped.date_printed.menu.sort_descending
+  actual_print_date = orders.filter.shipped.date_printed.row 1
   log.info "#{(actual_print_date)}"
   log.info "Step: Shipped Tab Date Printed to be today #{today}"
 end
@@ -80,7 +80,7 @@ end
 Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
   log.info "Step: Print: Expect Ship Date to be #{day} day(s) from today"
   actual = orders.toolbar.print.ship_date.text
-  expected = test_helper.print_date day
+  expected = test_helper.date_printed day
   log.info "Print: Expect Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
   actual.should eql expected
 end

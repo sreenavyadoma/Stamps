@@ -59,7 +59,7 @@ Then /^Grid: Expect Date Printed for this order to be today$/ do
   log.info "Grid: Expect Date Printed for this order to be today"
   grid = orders.filter.shipped
   grid.order_id.menu.sort_descending
-  grid_print_date = grid.print_date.data @order_id # Dec 3
+  grid_print_date = grid.date_printed.data @order_id # Dec 3
   expected_print_date = Date.today.strftime "%b %-d"
 
   log.info "Order ID:  #{@order_id} - Orders Grid Date Printed:  #{grid_print_date} - Today's date:  #{expected_print_date}"
