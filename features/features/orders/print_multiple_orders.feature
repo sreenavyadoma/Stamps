@@ -4,8 +4,8 @@ Feature: Print Multiple Orders
   Background:
     Given I am signed in to Orders
 
-  @print_multiple_orders @print
-  Scenario:  Print 2 Orders
+  @print_multiple_orders
+  Scenario:  Print
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4

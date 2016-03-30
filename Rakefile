@@ -3,9 +3,8 @@ require 'cucumber'
 require 'cucumber/rake/task'
 
 
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_multiple_orders) do |t|
+  t.profile = 'print_multiple_orders'
   t.cucumber_opts = "-p cuke_reports"
 end
 
