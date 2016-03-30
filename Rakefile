@@ -47,8 +47,8 @@ Cucumber::Rake::Task.new(:print_layout_cp72_paper_continuation) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_layouts_cp72_single_ply_apo_roll) do |t|
-  t.profile = 'print_layouts_cp72_single_ply_apo_roll'
+Cucumber::Rake::Task.new(:print_layout_cp72_single_ply_apo_roll) do |t|
+  t.profile = 'print_layout_cp72_single_ply_apo_roll'
   t.cucumber_opts = "-p cuke_reports"
 end
 

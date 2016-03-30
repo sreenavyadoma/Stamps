@@ -28,14 +28,13 @@ print_layout_cp72_4x6roll: --tags @print_layout_cp72_4x6roll --guess VERBOSE=fal
 print_layout_cp72_5x8_left: --tags @print_layout_cp72_5x8_left --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cp72_5x8_right: --tags @print_layout_cp72_5x8_right --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cp72_5x8_single_ply: --tags @print_layout_cp72_5x8_single_ply --guess VERBOSE=false HEALTHCHECK=true
-print_layouts_cp72_single_ply_apo_roll: --tags @print_layouts_cp72_single_ply_apo_roll --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cp72_single_ply_apo_roll: --tags @print_layout_cp72_single_ply_apo_roll --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cp72_paper_continuation: --tags @print_layout_cp72_paper_continuation --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cp72_paper_single_ply: --tags @print_layout_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=true
 print_layout_dpo_cp72_roll_single_ply: --tags @print_layout_dpo_cp72_roll_single_ply --guess VERBOSE=false HEALTHCHECK=true
 print_layout_fsa_cp72_paper_single_ply: --tags @print_layout_fsa_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess VERBOSE=false HEALTHCHECK=true
-
 print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false HEALTHCHECK=true
 xxxxx: --tags @xxxxxx --guess VERBOSE=false HEALTHCHECK=true
