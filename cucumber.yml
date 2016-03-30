@@ -80,7 +80,7 @@ details_reference_no: --tags @details_reference_no --guess VERBOSE=false HEALTHC
 customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false HEALTHCHECK=true
 grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false HEALTHCHECK=true
 orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true
-print_modal_label_count_thermal: --tags @print_modal_label_count_thermal --guess VERBOSE=false HEALTHCHECK=true
+print_thermal_number_of_labels_count: --tags @print_thermal_number_of_labels_count --guess VERBOSE=false HEALTHCHECK=true
 details_placeholders: --tags @details_placeholders --guess VERBOSE=false HEALTHCHECK=true
 grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=true
 grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=true
