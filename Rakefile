@@ -8,6 +8,11 @@ Cucumber::Rake::Task.new(:xxxxxxxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:print_media_8x11_paper) do |t|
+  t.profile = 'print_media_8x11_paper'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_media_4x6_sdc1200) do |t|
   t.profile = 'print_media_4x6_sdc1200'
   t.cucumber_opts = "-p cuke_reports"
