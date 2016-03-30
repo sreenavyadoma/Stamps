@@ -3,7 +3,7 @@ Feature: Print: Print Sample - Priority Mail Express Padded Flat Rate Envelope
   Background:
     Given I am signed in to Orders
 
-  @print_sample
+  @print_sample_pme_padded_flat_rate_envelope
   Scenario:  Priority Mail Express Padded Flat Rate Envelope
     Then Add New Order
     Then Details: Set Ship-From to default

@@ -21,6 +21,12 @@ rakuten: --tags @rakuten --guess VERBOSE=false HEALTHCHECK=true
 volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=true 
 amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true 
 
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+
+# PRINT SAMPLE
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=true
+
 
 print_multiple_orders: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=true
 
@@ -29,7 +35,6 @@ print_label_left_side: --tags @print_label_left_side --guess VERBOSE=false HEALT
 print_label_right_side: --tags @print_label_right_side --guess VERBOSE=false HEALTHCHECK=true
 
 # PRINT SHIP DATE
-XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 print_ship_date_today_plus3: --tags @print_ship_date_today_plus3 --guess VERBOSE=false HEALTHCHECK=true
 print_ship_date_today_plus2: --tags @print_ship_date_today_plus2 --guess VERBOSE=false HEALTHCHECK=true
 print_ship_date_today_plus1: --tags @print_ship_date_today_plus1 --guess VERBOSE=false HEALTHCHECK=true
