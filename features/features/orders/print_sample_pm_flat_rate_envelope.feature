@@ -3,7 +3,7 @@ Feature: Print: Print Sample - Priority Mail Flat Rate Envelope
   Background:
     Given I am signed in to Orders
 
-  @print_sample
+  @print_sample_pm_flat_rate_envelope
   Scenario:  Priority Mail Flat Rate Envelope
     Then Add New Order
     Then Details: Set Ship-From to default
