@@ -23,11 +23,38 @@ amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true
 
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 
+# PRINT TWO UP EXPANDED
+
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+
 #PRINT TWO UP
 print_two_up_window_title: --tags @print_two_up_window_title --guess VERBOSE=false HEALTHCHECK=true
 print_two_up_x_number_of_labels: --tags @print_two_up_x_number_of_labels --guess VERBOSE=false HEALTHCHECK=true
 print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess VERBOSE=false HEALTHCHECK=true
-
 
 # PRINT SAMPLE
 print_sample_pm_flat_rate_envelope: --tags @print_sample_pm_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=true

@@ -12,7 +12,7 @@ end
 
 Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
   log.info "PAM: Customer Search: Search for username #{username}"
-  step "PAM: Load Customer Search Page" if @customer_search.nil?
+  step "PAM: Load Customer Search Page"
   if username.downcase.include? "random"
     usr = @username
   else
@@ -27,7 +27,8 @@ Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
       when Pam::CustomerProfileNotFound
         @customer_search = pam.customer_search
         log.info "No records found."
-        sleep 2
+        step "PAM: Load Customer Search Page"
+        sleep 1
       when Pam::CustomerProfile
         @customer_profile = @search_result
         break
