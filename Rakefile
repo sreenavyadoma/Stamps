@@ -9,6 +9,16 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:print_label_right_side) do |t|
+  t.profile = 'print_label_right_side'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_label_left_side) do |t|
+  t.profile = 'print_label_left_side'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_ship_date_today_plus3) do |t|
   t.profile = 'print_ship_date_today_plus3'
   t.cucumber_opts = "-p cuke_reports"
