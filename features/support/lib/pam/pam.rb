@@ -43,8 +43,9 @@ module Pam
 
       @browser.goto url
 
-      5.times do
-        search.wait_until_present
+      30.times do
+        #search.wait_until_present
+        sleep 2
         return search if search.present?
       end
     end
