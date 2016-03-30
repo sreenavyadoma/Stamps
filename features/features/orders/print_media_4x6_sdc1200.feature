@@ -3,7 +3,7 @@ Feature: Print Media - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
   Background:
     Given I am signed in to Orders
 
-  @print_media
+  @print_media_4x6_sdc1200
   Scenario:  Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then Add New Order
     Then Details: Set Ship-From to default
