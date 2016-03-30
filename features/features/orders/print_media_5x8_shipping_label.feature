@@ -3,7 +3,7 @@ Feature: Print Media - Shipping Label: 5 ½" x 8 ½"
   Background:
     Given I am signed in to Orders
 
-  @print_media
+  @print_media_5x8_shipping_label
   Scenario:  Shipping Label: 5 ½" x 8 ½"
     Then Add New Order
     Then Details: Set Ship-From to default

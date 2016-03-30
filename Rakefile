@@ -7,6 +7,12 @@ Cucumber::Rake::Task.new(:xxxxxxxxxxxxxxx) do |t|
   t.profile = 'xxxxxxxxxxxxxxx'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:print_media_5x8_shipping_label) do |t|
+  t.profile = 'print_media_5x8_shipping_label'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_media_4x6_shipping_label) do |t|
   t.profile = 'print_media_4x6_shipping_label'
   t.cucumber_opts = "-p cuke_reports"
@@ -16,18 +22,6 @@ Cucumber::Rake::Task.new(:print_media_4x6_roll) do |t|
   t.profile = 'print_media_4x6_roll'
   t.cucumber_opts = "-p cuke_reports"
 end
-
-
-
-
-
-
-
-
-
-
-
-
 
 Cucumber::Rake::Task.new(:print_layout_cn22_roll) do |t|
   t.profile = 'print_layout_cn22_roll'
