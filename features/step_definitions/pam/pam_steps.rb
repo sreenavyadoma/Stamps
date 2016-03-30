@@ -21,7 +21,7 @@ Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
   end
 
   100.times do
-    @customer_search.username.set_until usr
+    @customer_search.username.set_until usra
     @search_result = @customer_search.search
     case @search_result
       when Pam::CustomerProfileNotFound
