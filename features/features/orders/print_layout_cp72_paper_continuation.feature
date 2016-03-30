@@ -44,8 +44,12 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then Customs: Add Item 28, Description random, Qty 1, Price 28, Lbs 0, Oz 1 Origin United States, Tariff 28
     Then Customs: Add Item 29, Description random, Qty 1, Price 29, Lbs 0, Oz 1 Origin United States, Tariff 29
     Then Customs: Add Item 30, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 30
+    Then Pause for 2 seconds
     Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Pause for 2 seconds
+    Then Customs: Uncheck  I agree to the USPS Privacy Act Statement
     Then Close Customs Form
+    Then Pause for 2 seconds
     Then Open Print Modal
     Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"

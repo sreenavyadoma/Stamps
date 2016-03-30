@@ -21,11 +21,10 @@ Feature:  Customs Form Data Tooltip Error
     Then Pause for 1 second
     Then Customs: Uncheck  I agree to the USPS Privacy Act Statement
     Then Pause for 1 second
-    #Then Expect Customs Form USPS Privacy Act Warning to be visible
     Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Pause for 1 second
-    #Then Expect Customs Form USPS Privacy Act Warning to be hidden
     Then Customs: Uncheck  I agree to the USPS Privacy Act Statement
+
     Then Expect Customs Form Tooltip Error for Item Description to be Description is a required field
     Then Expect Customs Form Tooltip Error for Qty to be Quantity must be greater than 0
     Then Expect Customs Form Tooltip Error for Unit Price to be Value must be greater than 0
