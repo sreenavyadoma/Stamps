@@ -31,7 +31,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Open Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Customs: Set I agree to Checked
+    Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Add New Order
     Then Details: Set Ship-From to default
@@ -43,7 +43,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Open Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Customs: Set I agree to Checked
+    Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Add New Order
     Then Details: Set Ship-From to default
@@ -55,7 +55,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Open Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Customs: Set I agree to Checked
+    Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Grid: Check row 1
     Then Grid: Check row 2

@@ -18,7 +18,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
     Then Open Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 2, Oz 1 Origin United States, Tariff 10
-    Then Customs: Set I agree to Checked
+    Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Close Customs Form
 
     Then Pause for 2 seconds

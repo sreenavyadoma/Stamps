@@ -17,7 +17,7 @@ Feature:  BVT International Shipping
     Then Customs: Set Non-Delivery Options to "Return to sender"
     Then Customs: Set Internal Transaction Number to "Not required"
     Then Customs: Set More Info to "BVT International Shipping"
-    Then Customs: Set I agree to Checked
+    Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
     Then Sign out

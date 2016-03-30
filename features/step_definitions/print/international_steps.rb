@@ -217,13 +217,13 @@ Then /^Print Postage Customs: Delete All Items$/ do
 
 end
 
-Then /^Print Postage Customs: Set I agree to Checked$/ do
+Then /^Print Postage Customs: Check  I agree to the USPS Privacy Act Statement$/ do
   log.info "Step: Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
   @customs_form.i_agree.check
 end
 
-Then /^Print Postage Customs: Set I agree to Unchecked$/ do
+Then /^Print Postage Customs: Uncheck  I agree to the USPS Privacy Act Statement$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
   @customs_form.i_agree.uncheck

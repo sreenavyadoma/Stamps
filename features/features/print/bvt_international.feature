@@ -26,7 +26,7 @@ Feature: International Shipping BVT
     Then Print Postage Customs: Set More Info to "Web Postage BVT International Shipping"
     Then Print Postage Customs: Delete All Items
     Then Print Postage Customs: Add Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin Russia, Tariff 25
-    Then Print Postage Customs: Set I agree to Checked
+    Then Print Postage Customs: Check  I agree to the USPS Privacy Act Statement
     Then Print Postage Customs: Save
     Then Footer: Print International Postage
 
@@ -40,7 +40,7 @@ Feature: International Shipping BVT
     Then Customs: Set Non-Delivery Options to "Return to sender"
     Then Customs: Set Internal Transaction Number to "Not required"
     Then Customs: Set More Info to "BVT International Shipping"
-    Then Customs: Set I agree to Checked
+    Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Close Customs Form
 
@@ -50,7 +50,7 @@ Feature: International Shipping BVT
     Then Print Postage Customs: Set Non-Delivery Options to "Return to sender"
     Then Print Postage Customs: Set Internal Transaction Number to "Not required"
     Then Print Postage Customs: Set More Info to "BVT International Shipping"
-    Then Print Postage Customs: Set I agree to Checked
+    Then Print Postage Customs: Check  I agree to the USPS Privacy Act Statement
     Then Print Postage Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Close Print Postage Customs Form
     Then Footer: Print Postage
