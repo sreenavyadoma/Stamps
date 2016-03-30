@@ -3,6 +3,16 @@ require 'cucumber'
 require 'cucumber/rake/task'
 
 
+Cucumber::Rake::Task.new(:XXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:print_ship_date_today) do |t|
+  t.profile = 'print_ship_date_today'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:tooltip_print_media) do |t|
   t.profile = 'tooltip_print_media'
   t.cucumber_opts = "-p cuke_reports"

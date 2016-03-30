@@ -3,7 +3,7 @@ Feature: Date Printed - Today
   Background:
     Given I am signed in to Orders
 
-  @print_date
+  @print_ship_date_today
   Scenario: Set Ship Date to today
     Then Add New Order
     Then Details: Set Ship-From to default
