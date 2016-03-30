@@ -3,7 +3,7 @@ Feature: Print: Print Sample - Priority Mail Express Package
   Background:
     Given I am signed in to Orders
 
-  @print_sample
+  @print_sample_pme_package
   Scenario:  Priority Mail Express Package
     Then Add New Order
     Then Details: Set Ship-From to default

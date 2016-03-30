@@ -24,7 +24,7 @@ amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 
 # PRINT SAMPLE
-XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+print_sample_pme_package: --tags @print_sample_pme_package --guess VERBOSE=false HEALTHCHECK=true
 print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess VERBOSE=false HEALTHCHECK=true
 print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess VERBOSE=false HEALTHCHECK=true
 print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=true
