@@ -67,7 +67,7 @@ module Orders
             return settings
           end
         end
-        raise "Etsy Store Connect failed.  Settings Modal did not open.  "
+        stop_test "Etsy Store Connect failed.  Settings Modal did not open.  "
       end
 
       def reconnect username, password
@@ -97,7 +97,7 @@ module Orders
             return settings
           end
         end
-        raise "Etsy Store Connect failed.  Settings Modal did not open.  "
+        stop_test "Etsy Store Connect failed.  Settings Modal did not open.  "
       end
     end
 
@@ -172,7 +172,7 @@ module Orders
           sleep 5
           return settings if settings.present?
         end
-        raise "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal."
+        stop_test "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal."
       end
 
       def allow_access_after_reconnect
@@ -186,7 +186,7 @@ module Orders
           sleep 5
           return manage_stores if manage_stores.present?
         end
-        raise "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal."
+        stop_test "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal."
       end
     end
 

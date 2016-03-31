@@ -1,7 +1,7 @@
 module Stamps
 
   def health
-    HealthCheck.new @browser
+    HealthCheck.new @browser, @scenario_name
   end
 
   class HealthCheck < Stamps::Browser::BrowserObject
@@ -12,28 +12,31 @@ module Stamps
       case ENV['URL'].downcase
         when /qasc/
           @browser.goto "https://printext.qasc.stamps.com/orders/healthcheck.aspx"
-          log.message "QASC Orders:"
+          log.message "HealthCheck: QASC"
           log.message "#{@browser.pre.text}"
           @browser.goto "https://printext.qasc.stamps.com/webpostage/healthcheck.aspx"
-          log.message "QASC Web Postage:"
+          log.message "HealthCheck: QASC"
           log.message "#{@browser.pre.text}"
         when /qacc/
           @browser.goto "https://printext.qacc.stamps.com/orders/healthcheck.aspx"
-          log.message "QACC Orders:"
+          log.message "HealthCheck: QACC Healthcheck:"
           log.message "#{@browser.pre.text}"
           @browser.goto "https://printext.qacc.stamps.com/webpostage/healthcheck.aspx"
-          log.message "QACC Web Postage:"
+          log.message "HealthCheck: QACC Healthcheck:"
           log.message "#{@browser.pre.text}"
         when /staging/
           @browser.goto "https://print.testing.stamps.com/orders/healthcheck.aspx"
-          log.message "Staging Orders:"
+          log.message "HealthCheck: Staging Healthcheck:"
           log.message "#{@browser.pre.text}"
           @browser.goto "https://print.testing.stamps.com/webpostage/healthcheck.aspx"
-          log.message "Staging Web Postage:"
+          log.message "HealthCheck: Staging Healthcheck:"
           log.message "#{@browser.pre.text}"
         else
-          log.info "Invalid environment type"
-          raise "Raise an exception"
+          log.info "Invalid environment type!"
+          log.info "Teardown: Begin tearing down test"
+          Stamps::Test.teardown
+          log.info "Teardown: Done!"
+          stop_test "Raise an exception"
       end
       log.message "HealthCheck:"
       log.message "HealthCheck: --------------------------- End"

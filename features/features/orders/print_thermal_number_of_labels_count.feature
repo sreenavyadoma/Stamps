@@ -4,7 +4,7 @@ Feature:  Requires x-number of label sheets
   Background:
     Given I am signed in to Orders
 
-  @print_modal_label_count_thermal
+  @print_thermal_number_of_labels_count
   Scenario:  Printing
     Then Add New Order
     Then Details: Set Ship-From to default

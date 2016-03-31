@@ -30,7 +30,7 @@ module Orders
           :reference_no => "Reference No.",
           :cost_code => "Cost Code",
           :order_status => "Order Status",
-          :print_date => "Date Printed",
+          :date_printed => "Date Printed",
           :ship_date => "Ship Date",
           :tracking_no => "Tracking #",
           :order_total => "Order Total"
@@ -80,7 +80,8 @@ module Orders
       end
 
       def grid_field column_number, row
-        @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div"
+        css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div"
+        @browser.div :css => css
       end
 
       def grid_field_column_name column_name, row
@@ -125,9 +126,9 @@ module Orders
       end
 
       def row_div number
-        raise "row_div:  number can't be nil" if number.nil?
+        stop_test "row_div:  number can't be nil" if number.nil?
         div = @browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]"
-        raise("Orders Grid Row number #{number} is not present")unless browser_helper.present? div
+        stop_test("Orders Grid Row number #{number} is not present")unless browser_helper.present? div
         div
       end
     end
@@ -806,19 +807,19 @@ module Orders
     class DatePrinted < Column
 
       def menu
-        ColumnMenu.new @browser, :print_date
+        ColumnMenu.new @browser, :date_printed
       end
 
       def scroll_into_view
-        scroll :print_date
+        scroll :date_printed
       end
 
       def data_at_row row
-        grid_field_column_name :print_date, row
+        grid_field_column_name :date_printed, row
       end
 
       def data order_id
-        grid_text_by_id :print_date, order_id
+        grid_text_by_id :date_printed, order_id
       end
     end
 
@@ -908,7 +909,7 @@ module Orders
             rows = args[0]
             log.info "Restoring #{} checked orders..."
           else
-            raise "Invalid parameter exception.  This method expects a Hash of Web Elements."
+            stop_test "Invalid parameter exception.  This method expects a Hash of Web Elements."
           end
 
           rows.each do |hash_element|
@@ -1071,7 +1072,7 @@ module Orders
         Grid::OrderStatus.new @browser
       end
 
-      def print_date
+      def date_printed
         Grid::DatePrinted.new @browser
       end
 

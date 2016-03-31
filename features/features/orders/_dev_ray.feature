@@ -16,7 +16,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
     Then Expect order moved to Shipped
 
     Then Filter: Select Shipped
-    Then Set Orders Grid New Order ID to check
+    Then Grid: Set New Order ID to check
     Then Open Reprint Modal
     Then Label Unavailable:  Expect Visible
     Then Pause for 5 seconds

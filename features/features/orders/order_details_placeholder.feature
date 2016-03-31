@@ -4,7 +4,7 @@ Feature:  Order Details Form Placeholder default values
   Background:
     Given I am signed in to Orders
 
-  @details_panel_placeholders
+  @details_placeholders
   Scenario:  Order Details Form Placeholder default values
     Then Add New Order
     Then Details: Expect Ship-To Address Placeholder to be Address

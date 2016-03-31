@@ -3,7 +3,7 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
   Background:
     Given I am signed in to Orders
 
-  @print_layouts_cp72
+  @print_layout_cp72_4x6roll
   Scenario: Print 1 Intl CP72 label on 4x6 Roll
     Then Add New Order
     Then Details: Set Ship-From to default
@@ -13,9 +13,9 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
     Then Details: Set Service to "Priority Mail Express International Legal Flat Rate Envelope"
     Then Details: Set Ounces to 1
     Then Open Customs Form
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Open Print Modal
     Then Print: Set Media "Roll - 4" x 6" Shipping Label"

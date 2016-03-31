@@ -59,7 +59,7 @@ Then /^Grid: Expect Date Printed for this order to be today$/ do
   log.info "Grid: Expect Date Printed for this order to be today"
   grid = orders.filter.shipped
   grid.order_id.menu.sort_descending
-  grid_print_date = grid.print_date.data @order_id # Dec 3
+  grid_print_date = grid.date_printed.data @order_id # Dec 3
   expected_print_date = Date.today.strftime "%b %-d"
 
   log.info "Order ID:  #{@order_id} - Orders Grid Date Printed:  #{grid_print_date} - Today's date:  #{expected_print_date}"
@@ -91,13 +91,13 @@ Then /^Grid: Expect Ship Date for this order to be today plus (\d+)$/ do |day|
   grid_ship_date.should eql expected_ship_date
 end
 
-Then /^Set Orders Grid New Order ID to uncheck$/ do
-  log.info "Set Orders Grid New Order ID to uncheck"
+Then /^Grid: Set New Order ID to uncheck$/ do
+  log.info "Grid: Set New Order ID to uncheck"
   orders.grid.checkbox.uncheck_order_id @order_id
 end
 
-Then /^Set Orders Grid New Order ID to check$/ do
-  log.info "Set Orders Grid New Order ID to check"
+Then /^Grid: Set New Order ID to check$/ do
+  log.info "Grid: Set New Order ID to check"
   orders.grid.checkbox.check_order_id @order_id
 end
 

@@ -15,6 +15,7 @@ Feature: Ship Date
     Then Toolbar: Print
     Then Sign out
 
+
   @ship_date
   Scenario:  Print: Set Ship Date to 1 day from today
     Then Add New Order
@@ -25,6 +26,7 @@ Feature: Ship Date
     Then Print: Set Ship Date to today plus 3
     Then Toolbar: Print
     Then Sign out
+
 
   @ship_date
   Scenario:  Print: Set Ship Date to 1 day from today
@@ -38,6 +40,7 @@ Feature: Ship Date
     Then Toolbar: Print
     Then Sign out
 
+
   @ship_date
   Scenario:  Print: Set Ship Date to 1 day from today
     Then Add New Order
@@ -49,4 +52,5 @@ Feature: Ship Date
     Then Expect Shipped Tab Ship Date to be today plus 3
     Then Toolbar: Print
     Then Sign out
+
 

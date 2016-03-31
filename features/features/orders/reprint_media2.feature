@@ -16,9 +16,9 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
     Then Details: Set Weight to 2 lbs 1 oz
     Then Details: Set Service to "Parcel Select Ground Large Package"
     Then Open Customs Form
-    Then Customs Form: Set Package Contents to "Merchandise"
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 2, Oz 1 Origin United States, Tariff 10
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 2, Oz 1 Origin United States, Tariff 10
+    Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Close Customs Form
 
     Then Pause for 2 seconds
@@ -27,7 +27,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
     Then Toolbar: Print
 
     Then Filter: Select Shipped
-    Then Set Orders Grid New Order ID to check
+    Then Grid: Set New Order ID to check
     Then Open Reprint Modal
     Then RePrint: Reprint
 

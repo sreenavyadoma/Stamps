@@ -3,7 +3,7 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
   Background:
     Given I am signed in to Orders
 
-  @print_layouts_cp72_single_ply
+  @print_layout_dpo_cp72_roll_single_ply
   Scenario: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then Add New Order
     Then Details: Set Ship-From to default
@@ -14,9 +14,9 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then Details: Set Weight to 3 lbs 2 oz
     Then Details: Set Service to "Parcel Select Ground Package"
     Then Open Customs Form
-    Then Customs Form: Set Package Contents to "Other"
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Lbs 2, Oz 1 Origin United States, Tariff 10
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set Package Contents to "Other"
+    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 2, Oz 1 Origin United States, Tariff 10
+    Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Open Print Modal
     Then Print: Set Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"

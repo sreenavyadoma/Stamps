@@ -37,11 +37,7 @@ Feature: Registration
     Then WebReg: Mailing Info Submit
     Then WebReg: Choose Supplies: Place Order
 
-    Then PAM: Load Customer Search Page
-    Then PAM: Customer Search: Set username to random
-    Then PAM: Customer Search: Set 5.2 or lower
-    Then PAM: Customer Search: Click Search button
-
+    Then PAM: Customer Search: Search for username random
     Then PAM: Customer Profile: Click Change Meter Limit link
     Then PAM: Change Meter Limit: Set USPS approval to Checked
     Then PAM: Change Meter Limit: Set New Meter Limit to $100000

@@ -3,10 +3,9 @@ Feature: Print 3 Domestic labels on 5.5x8.5 - left side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded
+  @print_two_up_expanded_5x8_left_print3
   Scenario: Print 3 Domestic labels on 5.5x8.5 - left side
 
-    # 3 Domestic labels 5 ½" x 8 ½"
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to FCM Lg Env-Flat, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602

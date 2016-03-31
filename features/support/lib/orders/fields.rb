@@ -8,6 +8,14 @@ module Orders
     def test_helper
       TestHelper.instance
     end
+
+    def stop_test message
+      log.fatal message
+      log.fatal "Teardown: Begin tearing down test"
+      Stamps::Test.teardown
+      log.fatal "Teardown: Done!"
+      raise message
+    end
   end
 
   class OrdersHelper
@@ -36,7 +44,10 @@ module Orders
           end
         }
       else
-        raise "Unsupported address format."
+        log.info "Teardown: Begin tearing down test"
+        Stamps::Test.teardown
+        log.info "Teardown: Done!"
+        stop_test "Unsupported address format."
       end
       log.info "Formatted Shipping Address:  \n#{formatted_address}"
       formatted_address
@@ -53,7 +64,10 @@ module Orders
         log.info "Address #{address} was not formatted."
         address
       else
-        raise "Unsupported address format."
+        log.info "Teardown: Begin tearing down test"
+        Stamps::Test.teardown
+        log.info "Teardown: Done!"
+        stop_test "Unsupported address format."
       end
     end
 

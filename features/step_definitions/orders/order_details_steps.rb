@@ -1,7 +1,3 @@
-Then /^Details: Add Item (.*)$/ do |item_number|
-  log.info "Details: Add Item #{item_number}"
-  @orders_line_item = orders.details.item_grid.item item_number.to_i
-end
 
 Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
   log.info "Step: Details: Add Item #{item_number}, Qty #{qty}, ID #{id} Description #{description}"
@@ -9,6 +5,167 @@ Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_
   item.qty.set qty
   item.id.set (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
   item.description.set (description.downcase.include? "random") ? test_helper.random_alpha_numeric : description
+end
+
+Then /^Details: Add Item (\d+)$/ do |item_number|
+  log.info "Details: Add Item #{item_number}"
+  @orders_line_item = orders.details.item_grid.item item_number.to_i
+end
+
+Then /^Details: Set Qty to (\d+)$/ do |value|
+  log.info "Details: Set Qty to #{value}"
+  @orders_line_item.qty.set value
+end
+
+Then /^Details: Set ID to (.*)$/ do |value|
+  log.info "Details: Set ID to #{value}"
+  @orders_line_item.id.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Then /^Details: Set Description to (.*)$/ do |value|
+  log.info "Details: Set Description to #{value}"
+  @orders_line_item.description.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Then /^Details: Expect Item Qty Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect Item Qty Placeholder to be #{expectation}"
+  placeholder = @orders_line_item.qty.text_box.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+end
+
+Then /^Details: Expect Item ID# Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect Item ID# Placeholder to be #{expectation}"
+  placeholder = @orders_line_item.id.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect Item Description Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect Item Description Placeholder to be #{expectation}"
+  placeholder = @orders_line_item.description.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect Item Qty to be (.*)$/ do |expectation|
+  log.info "Details: Expect Item Qty to be #{expectation}"
+  quantity = @orders_line_item.qty.text_box.text
+  log.info "Test #{(quantity == expectation)?"Passed":"Failed"}"
+  quantity.should eql expectation
+end
+
+Then /^Details: Expect Item ID# to be (.*)$/ do |expectation|
+  log.info "Details: Expect Item ID# to be #{expectation}"
+  placeholder = @orders_line_item.id.text
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect Item Description to be (.*)$/ do |expectation|
+  log.info "Details: Expect Item Description to be #{expectation}"
+  placeholder = @orders_line_item.description.text
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect Ship-To Address Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect Ship-To Address Placeholder to be #{expectation}"
+  placeholder = orders.details.ship_to.text_area.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect Ship-To Phone Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect Ship-To Phone Placeholder to be #{expectation}"
+  placeholder = orders.details.ship_to.phone.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect Ship-To Email Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect Ship-To Email Placeholder to be #{expectation}"
+  placeholder = orders.details.ship_to.email.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect Service Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect Service Placeholder to be #{expectation}"
+  placeholder = orders.details.service.text_box.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect International Ship-To Name Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect Ship-To Email Placeholder to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  placeholder = @international_ship_to.name.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect International Ship-To Company Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect International Ship-To Company Placeholder to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  placeholder = @international_ship_to.company.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect International Ship-To Address 1 Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect International Ship-To Company Placeholder to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  placeholder = @international_ship_to.address_1.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect International Ship-To Address 2 Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect International Ship-To Company Placeholder to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  placeholder = @international_ship_to.address_2.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect International Ship-To City Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect International Ship-To Company Placeholder to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  placeholder = @international_ship_to.city.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect International Ship-To Province Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect International Ship-To Company Placeholder to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  placeholder = @international_ship_to.province.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect International Ship-To Postal Code Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect International Ship-To Company Placeholder to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  placeholder = @international_ship_to.postal_code.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect International Ship-To Phone Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect International Ship-To Company Placeholder to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  placeholder = @international_ship_to.phone.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
+end
+
+Then /^Details: Expect International Ship-To Email Placeholder to be (.*)$/ do |expectation|
+  log.info "Details: Expect International Ship-To Company Placeholder to be #{expectation}"
+  @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
+  placeholder = @international_ship_to.email.placeholder
+  log.info "Test #{(placeholder == expectation)?"Passed":"Failed"}"
+  placeholder.should eql expectation
 end
 
 Then /^Details: Collapse Panel$/ do
@@ -221,22 +378,25 @@ Then /^Details: Set Email to (.*)$/ do |email|
   end unless @order_details_email.length == 0
 end
 
-Then /^Expect system (.*) Order Form$/ do |status|
+
+Then /^Expect system status Order Form$/ do |status|
   log.info "Step: Expect system #{status} Order Form"
 
   actual = orders.details.present?
-  if status == 'hides'
-    actual.should eql false
-  elsif status == 'displays'
-    actual.should eql true
-  end
+  actual.should eql false
+end
+
+Then /^Expect system displays Order Form$/ do |status|
+  log.info "Step: Expect system #{status} Order Form"
+
+  actual = orders.details.present?
+  actual.should eql true
 end
 
 Then /^Details: Hide Ship-To fields$/ do
   log.info "Step: Details: Hide Ship-To fields"
   orders.details.ship_to.hide
   log.info "done."
-  #end_step step
 end
 
 Then /^Increment Order Details Pounds by (\d*)$/ do |value|
@@ -304,25 +464,36 @@ Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   orders.details.tracking.select value
 end
 
-Then /^Expect Order details Service \"(.*)\" to be disabled/ do |service|
-  log.info "Expect Order details Service \"#{service}\" to be disabled"
+Then /^Details: Set Reference Number to (.*)$/ do |value|
+  @param_details_reference_no = (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+  log.info "Details: Set Reference Number to #{@param_details_reference_no}"
+  orders.details.reference_no.set @param_details_reference_no
+end
+
+Then /^Details: Expect Reference Number to be (.*)$/ do |value|
+  @param_details_reference_no = (value.downcase.include? "random") ? @param_details_reference_no : value
+
+  log.info "Details: Expect Reference Number to be #{@param_details_reference_no}"
+
+  actual_value = orders.details.reference_no.text
+
+  log.info "Test #{(actual_value==@param_details_reference_no)?"Passed":"Failed"}"
+  actual_value.should eql @param_details_reference_no
+end
+
+
+Then /^Details: Expect Service \"(.*)\" to be disabled/ do |service|
+  log.info "Details: Expect Service \"#{service}\" to be disabled"
   selection_disabled = orders.details.service.disabled? service
   log.info "Test #{(selection_disabled)?"Passed":"Failed"}"
   selection_disabled.should be true
 end
 
-Then /^Expect Order details Service \"(.*)\" to be enabled/ do |service|
-  log.info "Expect Order details Service \"#{service}\" to be enabled"
+Then /^Details: Expect Service \"(.*)\" to be enabled/ do |service|
+  log.info "Details: Expect Service \"#{service}\" to be enabled"
   selection_enabled = orders.details.service.enabled? service
   log.info "Test #{(selection_enabled)?"Passed":"Failed"}"
   selection_enabled.should be true
-end
-#todo-rob
-Then /^Details: Expect Tracking tooltip for (.*) to be (.*)$/ do |lov, expectation|
-  actual_tooltip = orders.details.tracking.tooltip value
-  #log.info actual_tooltip
-  cost = orders.details.tracking.cost value
-  #log.info cost
 end
 
 Then /^Details: Set Insure For checkbox to checked$/ do

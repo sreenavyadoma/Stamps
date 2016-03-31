@@ -17,16 +17,25 @@ Then /^Print: Set Ship Date to today plus (\d+)$/ do |day|
   @ship_date = orders.toolbar.print.date_picker.today_plus day
 end
 
-Then /^Print: Set Email Tracking to Checked$/ do
-  log.info "Print: Set Email Tracking to Checked"
+Then /^Print: Check Email Tracking Details to Recipients$/ do
+  log.info "Print: Check Email Tracking Details to Recipients"
   orders.toolbar.print.print_options.email_tracking.check
 end
 
-Then /^Print: Set Email Tracking to Unchecked$/ do
-  log.info "Print: Set Email Tracking to Unchecked"
+Then /^Print: Uncheck Email Tracking Details to Recipients$/ do
+  log.info "Print: Uncheck Email Tracking Details to Recipients"
   orders.toolbar.print.print_options.email_tracking.uncheck
 end
 
+Then /^Print: Uncheck Print Reference # on Shipping Label$/ do
+  log.info "Print: Uncheck Print Reference # on Shipping Label"
+  orders.toolbar.print.print_options.print_reference_no.uncheck
+end
+
+Then /^Print: Check Print Reference # on Shipping Label$/ do
+  log.info "Print: Check Print Reference # on Shipping Label"
+  orders.toolbar.print.print_options.print_reference_no.check
+end
 
 When /^Print: Select left-side label$/ do
   log.info "Step: Print: Select - Left side label"
@@ -54,8 +63,8 @@ end
 
 Then /^Expect Shipped Tab Date Printed to be today$/ do
   today = test_helper.now_plus_mon_dd 0
-  orders.filter.shipped.print_date.menu.sort_descending
-  actual_print_date = orders.filter.shipped.print_date.row 1
+  orders.filter.shipped.date_printed.menu.sort_descending
+  actual_print_date = orders.filter.shipped.date_printed.row 1
   log.info "#{(actual_print_date)}"
   log.info "Step: Shipped Tab Date Printed to be today #{today}"
 end
@@ -71,7 +80,7 @@ end
 Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
   log.info "Step: Print: Expect Ship Date to be #{day} day(s) from today"
   actual = orders.toolbar.print.ship_date.text
-  expected = test_helper.print_date day
+  expected = test_helper.date_printed day
   log.info "Print: Expect Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
   actual.should eql expected
 end
@@ -140,7 +149,7 @@ When /^Print expecting rating error$/ do
   error_window = orders.toolbar.print.print_expecting_rating_error
   actual_error_message = error_window.error_message
   error_window.close
-  expect(actual_error_message.include? 'An error occurred while attempting to rate your postage').to be true
+  expect(actual_error_message.include? 'An error occurred while attempting to rate your print').to be true
 end
 
 When /^Print expecting some orders can not be printed$/ do

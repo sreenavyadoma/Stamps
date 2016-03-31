@@ -1,10 +1,10 @@
-Feature: Email Tracking
+Feature: Select Email Tracking for order when printing
 
   Background:
     Given I am signed in to Orders
 
   @email_tracking
-  Scenario: Select Email Tracking for order when printing
+  Scenario: Email Tracking
 
     Then Add New Order
     Then Details: Set Ship-From to default
@@ -13,6 +13,6 @@ Feature: Email Tracking
     Then Details: Set Ounces to 1
     Then Open Print Modal
     Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""
-    Then Print: Set Email Tracking to Checked
+    Then Print: Check Email Tracking Details to Recipients
     Then Toolbar: Print
     Then Sign out

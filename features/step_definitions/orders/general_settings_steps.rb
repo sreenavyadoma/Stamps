@@ -120,6 +120,9 @@ Then /^Settings:  Logoff set (.*)$/ do |logoff|
     when "2 hours"
       @general_settings.log_off.two_hours
     else
+      log.info "Teardown: Begin tearing down test"
+      Stamps::Test.teardown
+      log.info "Teardown: Done!"
       raise "Invalid Logoff Selection -  Settings:  Logoff #{logoff}"
   end
   log.info "Step:  Logoff if the application is inactive for #{@general_settings.log_off.text_box.text}"
@@ -276,6 +279,9 @@ Then /^Settings:  Postdate Set (.*)$/ do |postdate|
     when "11:00 p.m."
       @general_settings.post_date.eleven_pm
     else
+      log.info "Teardown: Begin tearing down test"
+      Stamps::Test.teardown
+      log.info "Teardown: Done!"
       raise "Invalid Postdate Selection -  Settings:  Postdate #{postdate}"
   end
   log.info "Step:  Postdate mail to next day after #{@general_settings.log_off.text_box.text}"
@@ -334,9 +340,12 @@ Then /^Settings:  Postage Balance Set (.*)$/ do |postage_balance|
     when "500"
       @general_settings.postage_balance.five_hundred
     else
+      log.info "Teardown: Begin tearing down test"
+      Stamps::Test.teardown
+      log.info "Teardown: Done!"
       raise "Invalid Postage Balance Selection -  Settings:  Postage Balance #{postage_balance}"
   end
-  log.info "Step:  Notify me when postage balance drops below #{@general_settings.log_off.text_box.text}"
+  log.info "Step:  Notify me when print balance drops below #{@general_settings.log_off.text_box.text}"
 end
 
 

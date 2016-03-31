@@ -41,7 +41,7 @@ module Orders
           break if button.present?
         end
 
-        raise "Delete Store Modal is not present." unless button.present?
+        stop_test "Delete Store Modal is not present." unless button.present?
 
         5.times do
           button.safe_click
@@ -261,7 +261,7 @@ module Orders
           sleep 2
           return store if store.present?
         end
-        raise "Volusion Store Modal did not open."
+        stop_test "Volusion Store Modal did not open."
       end
 
       def rakuten_button
@@ -276,7 +276,7 @@ module Orders
           sleep 2
           return store if store.present?
         end
-        raise "Rakuten Store Modal did not open."
+        stop_test "Rakuten Store Modal did not open."
       end
 
       def etsy_button
@@ -291,7 +291,7 @@ module Orders
           sleep 1
           return store if store.present?
         end
-        raise "Etsy Store Modal did not open."
+        stop_test "Etsy Store Modal did not open."
       end
 
       def shopify_button
@@ -306,7 +306,7 @@ module Orders
           sleep 1
           return store if store.present?
         end
-        raise "Etsy Store Modal did not open."
+        stop_test "Etsy Store Modal did not open."
       end
 
       def three_d_cart_button
@@ -321,7 +321,7 @@ module Orders
           sleep 1
           return store if store.present?
         end
-        raise "3dcart Store Modal did not open."
+        stop_test "3dcart Store Modal did not open."
       end
 
       def ebay_button
@@ -336,7 +336,7 @@ module Orders
           sleep 1
           return store if store.present?
         end
-        raise "Etsy Store Modal did not open."
+        stop_test "Etsy Store Modal did not open."
       end
 
     end
@@ -501,7 +501,7 @@ module Orders
 
       def reconnect
         button = StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
-        raise "No Store selected from Manage Store grid or Reconnect button is not present.  Check your test" unless button.present?
+        stop_test "No Store selected from Manage Store grid or Reconnect button is not present.  Check your test" unless button.present?
         amazon = ModifyAmazonStore.new @browser
         volusion = ModifyVolusionStore.new @browser
         rakuten = ModifyRakutenStore.new @browser

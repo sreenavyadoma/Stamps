@@ -104,11 +104,11 @@ module Orders
       end
 
       def edit_payment_method
-        raise "Edit Payment Method is not yet implemented."
+        stop_test "Edit Payment Method is not yet implemented."
       end
 
       def autobuy
-        raise "AutoBuy is not implemented"
+        stop_test "AutoBuy is not implemented"
       end
     end
   end

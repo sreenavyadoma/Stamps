@@ -2,6 +2,6 @@ module Orders
   include Stamps
 
   def orders
-    PrintOrders.new @browser
+    WebOrders.new @browser, @scenario_name
   end
 end

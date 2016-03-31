@@ -1,8 +1,8 @@
 default: --profile cuke_reports --profile eva_dev
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev: --tags @rules_international_dev --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
-#details_panel_placeholders
+rob_dev: --tags @print_ship_date_today_plus1 --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
+#details_placeholders
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
 eli_dev: --tags @healthcheck --guess VERBOSE=true HEALTHCHECK=true URL=qasc BROWSER=ff USR=hns8u0qen9h9 PW=pass111
@@ -21,12 +21,99 @@ rakuten: --tags @rakuten --guess VERBOSE=false HEALTHCHECK=true
 volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=true 
 amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true 
 
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+
+# PRINT TWO UP EXPANDED
+print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_sdc1200_4x6_left_print1: --tags @print_two_up_expanded_sdc1200_4x6_left_print1 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_paper_right_print2: --tags @print_two_up_expanded_paper_right_print2 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_paper_left_print2: --tags @print_two_up_expanded_paper_left_print2 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_paper_left_print1: --tags @print_two_up_expanded_paper_left_print1 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_fpo_cn22_paper_right: --tags @print_two_up_expanded_fpo_cn22_paper_right --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_cp72_paper_left_print3: --tags @print_two_up_expanded_cp72_paper_left_print3 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_cp72_paper_left: --tags @print_two_up_expanded_cp72_paper_left --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_cp72_5x8_right_print1: --tags @print_two_up_expanded_cp72_5x8_right_print1 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_cp72_5x8_left_print1: --tags @print_two_up_expanded_cp72_5x8_left_print1 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_cn22_sdc1200_left: --tags @print_two_up_expanded_cn22_sdc1200_left --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_cn22_paper_right: --tags @print_two_up_expanded_cn22_paper_right --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_cn22_paper_left: --tags @print_two_up_expanded_cn22_paper_left --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_cn22_cp72_5x8_right_print2: --tags @print_two_up_expanded_cn22_cp72_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_cn22_5x8_right_print2: --tags @print_two_up_expanded_cn22_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_5x8_right_print2: --tags @print_two_up_expanded_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_5x8_right_print1: --tags @print_two_up_expanded_5x8_right_print1 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_5x8_left_print3: --tags @print_two_up_expanded_5x8_left_print3 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_5x8_left_print2: --tags @print_two_up_expanded_5x8_left_print2 --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_expanded_5x8_left: --tags @print_two_up_expanded_5x8_left --guess VERBOSE=false HEALTHCHECK=true
+
+#PRINT TWO UP
+print_two_up_window_title: --tags @print_two_up_window_title --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_x_number_of_labels: --tags @print_two_up_x_number_of_labels --guess VERBOSE=false HEALTHCHECK=true
+print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess VERBOSE=false HEALTHCHECK=true
+
+# PRINT SAMPLE
+print_sample_pm_flat_rate_envelope: --tags @print_sample_pm_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=true
+print_sample_pme_package: --tags @print_sample_pme_package --guess VERBOSE=false HEALTHCHECK=true
+print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess VERBOSE=false HEALTHCHECK=true
+print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess VERBOSE=false HEALTHCHECK=true
+print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=true
 
 
+print_multiple_orders: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=true
+
+# PRINT LABEL SIDES
+print_label_left_side: --tags @print_label_left_side --guess VERBOSE=false HEALTHCHECK=true
+print_label_right_side: --tags @print_label_right_side --guess VERBOSE=false HEALTHCHECK=true
+
+# PRINT SHIP DATE
+print_ship_date_today_plus3: --tags @print_ship_date_today_plus3 --guess VERBOSE=false HEALTHCHECK=true
+print_ship_date_today_plus2: --tags @print_ship_date_today_plus2 --guess VERBOSE=false HEALTHCHECK=true
+print_ship_date_today_plus1: --tags @print_ship_date_today_plus1 --guess VERBOSE=false HEALTHCHECK=true
+print_ship_date_today: --tags @print_ship_date_today --guess VERBOSE=false HEALTHCHECK=true
+
+
+# PRINT MEDIA
+tooltip_print_media: --tags @tooltip_print_media --guess VERBOSE=false HEALTHCHECK=true
+print_media_8x11_paper: --tags @print_media_8x11_paper --guess VERBOSE=false HEALTHCHECK=true
+print_media_4x6_sdc1200: --tags @print_media_4x6_sdc1200 --guess VERBOSE=false HEALTHCHECK=true
+print_media_5x8_shipping_label: --tags @print_media_5x8_shipping_label --guess VERBOSE=false HEALTHCHECK=true
+print_media_4x6_shipping_label: --tags @print_media_4x6_shipping_label --guess VERBOSE=false HEALTHCHECK=true
+print_media_4x6_roll: --tags @print_media_4x6_roll --guess VERBOSE=false HEALTHCHECK=true
+
+# CP72
+print_layout_cp72_sdc1200_single_ply: --tags @print_change_date --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cp72_roll_continuation: --tags @print_layout_cp72_roll_continuation --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cp72_4x6roll: --tags @print_layout_cp72_4x6roll --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cp72_5x8_left: --tags @print_layout_cp72_5x8_left --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cp72_5x8_right: --tags @print_layout_cp72_5x8_right --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cp72_5x8_single_ply: --tags @print_layout_cp72_5x8_single_ply --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cp72_single_ply_apo_roll: --tags @print_layout_cp72_single_ply_apo_roll --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cp72_paper_continuation: --tags @print_layout_cp72_paper_continuation --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cp72_paper_single_ply: --tags @print_layout_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=true
+print_layout_dpo_cp72_roll_single_ply: --tags @print_layout_dpo_cp72_roll_single_ply --guess VERBOSE=false HEALTHCHECK=true
+print_layout_fsa_cp72_paper_single_ply: --tags @print_layout_fsa_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess VERBOSE=false HEALTHCHECK=true
+print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false HEALTHCHECK=true
+
+print_change_date: --tags @print_change_date --guess VERBOSE=false HEALTHCHECK=true
+details_reference_no: --tags @details_reference_no --guess VERBOSE=false HEALTHCHECK=true
+customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false HEALTHCHECK=true
 grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false HEALTHCHECK=true
 orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true
-print_modal_label_count_thermal: --tags @print_modal_label_count_thermal --guess VERBOSE=false HEALTHCHECK=true
-details_panel_placeholders: --tags @details_panel_placeholders --guess VERBOSE=false HEALTHCHECK=true
+print_thermal_number_of_labels_count: --tags @print_thermal_number_of_labels_count --guess VERBOSE=false HEALTHCHECK=true
+details_placeholders: --tags @details_placeholders --guess VERBOSE=false HEALTHCHECK=true
 grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=true
 grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=true
 import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=true
@@ -43,7 +130,7 @@ print_many_orders: --tags @print_many_orders --guess VERBOSE=false HEALTHCHECK=t
 printing_errors: --tags @printing_error --guess VERBOSE=false HEALTHCHECK=true
 printing:  --tags @print --guess VERBOSE=false HEALTHCHECK=true
 print_sample: --tags @print_sample --guess VERBOSE=false HEALTHCHECK=true
-details_panel_total_cost: --tags @details_panel_total_cost --guess VERBOSE=false HEALTHCHECK=true
+details_total_cost: --tags @details_total_cost --guess VERBOSE=false HEALTHCHECK=true
 print_date: --tags @print_date --guess VERBOSE=false HEALTHCHECK=true
 print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=true
 print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=false HEALTHCHECK=true
@@ -79,7 +166,7 @@ new_country_code: --tags  @new_country_code --guess VERBOSE=false HEALTHCHECK=tr
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEALTHCHECK=true
 rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=true
 expand_order_details_panel: --tags  @expand_order_details_panel --guess VERBOSE=false HEALTHCHECK=true
-multiple_reprint: --tags @multiple_reprint --guess VERBOSE=false HEALTHCHECK=true
+print_multiple_reprints: --tags @print_multiple_reprints --guess VERBOSE=false HEALTHCHECK=true
 email_tracking: --tags @email_tracking --guess VERBOSE=false HEALTHCHECK=true
 
 healthcheck: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true

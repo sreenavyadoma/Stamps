@@ -1,7 +1,16 @@
 module Stamps
   include DataMagic
 
+  def log
+    @logger ||= Stamps::Logger.new @scenario_name
+  end
+
   class Test
+
+    def self.scenario_name=name
+      @test_name = name
+      log.scenario_name = @test_name
+    end
 
     def self.url_prefix *args
       @url_hash = data_for(:url_prefix, {})
@@ -34,7 +43,10 @@ module Stamps
         when /solaris|bsd/
           :unix
         else
-          raise Error::WebDriverError, "unknown os: #{host_os.inspect}"
+          log.info "Teardown: Begin tearing down test"
+          Stamps::Test.teardown
+          log.info "Teardown: Done!"
+          stop_test Error::WebDriverError, "unknown os: #{host_os.inspect}"
       end
       )
     end
@@ -81,7 +93,12 @@ module Stamps
           log.info "chrome_driver path:  #{chrome_driver_path} - #{(File.exist? chrome_driver_path)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'} "
           log.info "chrome_data_dir path:  #{chrome_data_dir}  #{(File.exist? chrome_data_dir)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'}"
 
-          raise log.info "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}" unless File.exist? chrome_data_dir
+          begin
+            log.info "Teardown: Begin tearing down test"
+            Stamps::Test.teardown
+            log.info "Teardown: Done!"
+            stop_test log.info "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
+          end unless File.exist? chrome_data_dir
 
           driver = Watir::Browser.new :chrome, :switches => ["--disable-print-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
           @browser_name = 'Google Chrome'
@@ -100,7 +117,10 @@ module Stamps
         driver.window.maximize
         @browser = driver
       rescue Exception => e
-        log.info e
+        log.message e
+        log.info "Teardown: Begin tearing down test"
+        Stamps::Test.teardown
+        log.info "Teardown: Done!"
         raise e
       end
     end
@@ -108,7 +128,6 @@ module Stamps
     def self.teardown
       log.info "Step:  Teardown test"
       @browser.quit unless @browser == nil
-      @browser = nil
       log.info "#{@browser_name} closed."
       log.info "Test Done!"
     end
@@ -158,7 +177,7 @@ module Stamps
       (Date.today + day.to_i).strftime "%b %-d"
     end
 
-    def print_date *args
+    def date_printed *args
       case args.length
         when 0
           now = Date.today
@@ -177,7 +196,7 @@ module Stamps
           now = "#{month}/#{day}/#{new_date.year}"
           now
         else
-          raise "Illegal number of arguments for TestHelper.date_from_today"
+          stop_test "Illegal number of arguments for TestHelper.date_from_today"
       end
     end
 
@@ -196,7 +215,7 @@ module Stamps
         when 1
           @length = args[0]
         else
-          raise "Illegal number of arguments for random_alpha_numeric"
+          stop_test "Illegal number of arguments for random_alpha_numeric"
 
       end
       rand(36 ** @length - 1).to_s(36).rjust(@length, "0")

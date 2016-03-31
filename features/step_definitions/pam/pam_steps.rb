@@ -1,3 +1,23 @@
+
+Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
+  log.info "PAM: Customer Search: Search for username #{username}"
+  #step "PAM: Load Customer Search Page"
+  if username.downcase.include? "random"
+    usr = @username
+  else
+    usr = username
+    @username = username
+  end
+
+  20.times do
+    step "PAM: Load Customer Search Page"
+    step "PAM: Customer Search: Set username to #{usr}"
+    step "PAM: Customer Search: Set 5.2 or lower"
+    step "PAM: Customer Search: Click Search button"
+    break if @customer_profile.instance_of? Pam::CustomerProfile
+  end
+end
+
 Then /^PAM: Load PAM Page$/ do
   log.info "Step: PAM: Load PAM Page"
   step "I launch browser" if @browser.nil?
@@ -8,32 +28,6 @@ Then /^PAM: Load Customer Search Page$/ do
   log.info "PAM: Load Customer Search Page"
   step "PAM: Load PAM Page" if @customer_search.nil?
   @customer_search = pam.customer_search
-end
-
-Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
-  log.info "PAM: Customer Search: Search for username #{username}"
-  step "PAM: Load Customer Search Page" if @customer_search.nil?
-  if username.downcase.include? "random"
-    usr = @username
-  else
-    usr = username
-    @username = username
-  end
-
-  100.times do
-    @customer_search.username.set_until usr
-    @search_result = @customer_search.search
-    case @search_result
-      when Pam::CustomerProfileNotFound
-        @customer_search = pam.customer_search
-        log.info "No records found."
-        sleep 2
-      when Pam::CustomerProfile
-        @customer_profile = @search_result
-        break
-    end
-  end
-
 end
 
 Then /^PAM: Customer Search: Set username to (.*)$/ do |username|

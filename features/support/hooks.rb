@@ -34,13 +34,20 @@ include RAutomation
 @shipping_method_map['USPS Priority Mail Express International'] = "827"
 
 Before do  |scenario|
-  log.info "Begin Test Scenario:  -----------------------------------------  #{scenario.name}"
+  @scenario_name = scenario.name
+  Test.scenario_name = @scenario_name
+  log.scenario_name = @scenario_name
+  log.info "Begin Test Scenario:  -----------------------------------------  "
+  log.info "Begin Test Scenario:  -----------------------------------------  "
+  log.info "Begin Test Scenario:  -----------------------------------------  "
 end
 
 After do |scenario|
   Stamps::Test.teardown
   $start = false
-  log.info "End Test Scenario:  -------------------------------------------  #{scenario.name}"
+  log.info "End Test Scenario:  -------------------------------------------  "
+  log.info "End Test Scenario:  -------------------------------------------  "
+  log.info "End Test Scenario:  -------------------------------------------  "
 end
 
 

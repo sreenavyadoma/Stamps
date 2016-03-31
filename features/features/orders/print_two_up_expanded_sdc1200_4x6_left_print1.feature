@@ -3,7 +3,7 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾ right side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded
+  @print_two_up_expanded_sdc1200_4x6_left_print1
   Scenario: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾ right side
     Then Add New Order
     Then Details: Set Ship-From to default

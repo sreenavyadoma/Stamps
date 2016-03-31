@@ -190,7 +190,7 @@ module Stores
         sleep 1
         return checkout if checkout.present?
       end
-      raise "Unable to proceed to checkout!"
+      stop_test "Unable to proceed to checkout!"
     end
   end
 

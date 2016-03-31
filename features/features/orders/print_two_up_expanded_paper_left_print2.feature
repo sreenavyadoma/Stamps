@@ -3,7 +3,7 @@ Feature: Print 2 Domestic labels on 8.5x11 - left side
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_expanded
+  @print_two_up_expanded_paper_left_print2
   Scenario: Print 2 Domestic labels on 8.5x11 - left side
     Then Add New Order
     Then Details: Set Ship-From to default

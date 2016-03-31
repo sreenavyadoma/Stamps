@@ -3,7 +3,7 @@ Feature: Multiple Reprints
   Background:
     Given I am signed in to Orders
 
-  @multiple_reprint
+  @print_multiple_reprints
   Scenario: Multiple reprints in 24 hour period
 
     Then Add New Order
@@ -16,11 +16,11 @@ Feature: Multiple Reprints
     Then Print: Set Printer to "factory"
     Then Toolbar: Print
     Then Filter: Select Shipped
-    Then Set Orders Grid New Order ID to check
+    Then Grid: Set New Order ID to check
     Then Open Reprint Modal
     Then RePrint: Reprint
     Then Filter: Select Shipped
-    Then Set Orders Grid New Order ID to check
+    Then Grid: Set New Order ID to check
     Then Open Reprint Modal
     Then RePrint: Reprint
 

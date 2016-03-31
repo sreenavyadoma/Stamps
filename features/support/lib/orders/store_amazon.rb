@@ -148,7 +148,7 @@ module Orders
           end
         end
         self.close if self.present?
-        raise server_error.message if server_error.present?
+        stop_test server_error.message if server_error.present?
       end
 
       def connect_expecting_store_settings
@@ -194,7 +194,7 @@ module Orders
         end
 
         self.close if self.present?
-        raise server_error.message if server_error.present?
+        stop_test server_error.message if server_error.present?
         settings
       end
     end

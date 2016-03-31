@@ -15,22 +15,22 @@ Feature: Internal Transaction # Not Required
     Then Details: Set Ounces to 5
     Then Open Customs Form
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    Then Customs Form: Set Package Contents to "Commercial Sample"
+    Then Customs: Set Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    Then Customs Form: Set Package Contents to "Document"
+    Then Customs: Set Package Contents to "Document"
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    Then Customs Form: Set Package Contents to "Merchandise"
+    Then Customs: Set Package Contents to "Merchandise"
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    Then Customs Form: Set Package Contents to "Gift"
+    Then Customs: Set Package Contents to "Gift"
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    Then Customs Form: Set Package Contents to "Humanitarian Donation"
+    Then Customs: Set Package Contents to "Humanitarian Donation"
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    Then Customs Form: Set Package Contents to "Returned Goods"
+    Then Customs: Set Package Contents to "Returned Goods"
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    Then Customs Form: Set Package Contents to "Other"
+    Then Customs: Set Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    Then Customs Form: Set ITN# to "random"
-    Then Customs Form: Set I agree to Checked
+    Then Customs: Set ITN# to "random"
+    Then Customs: Check  I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Sign out

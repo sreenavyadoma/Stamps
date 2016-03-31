@@ -7,12 +7,15 @@ module Orders
       @index = index
     end
 
+    def text_box
+      StampsTextbox.new ((@browser.text_fields :name => "OriginCountryCode")[@index-1])
+    end
+
     def select country
       log.info "Select Country #{country}"
       selection = StampsLabel.new (@browser.lis :text => country)[@index]
-      text_box_field = (@browser.text_fields :name => "OriginCountryCode")[@index-1]
-      text_box = StampsTextbox.new text_box_field
-      drop_down = StampsButton.new text_box_field.parent.parent.divs[1]
+      text_box = self.text_box
+      drop_down = StampsButton.new text_box.field.parent.parent.divs[1]
 
       10.times {
         begin
@@ -43,7 +46,13 @@ module Orders
         edit_form_button.safe_click
         break if @customs_form.present?
       }
-      raise "Customs Information Modal is not visible." unless @customs_form.present?
+
+      begin
+        log.info "Teardown: Begin tearing down test"
+        Stamps::Test.teardown
+        log.info "Teardown: Done!"
+        stop_test "Customs Information Modal is not visible."
+      end unless @customs_form.present?
       @customs_form
     end
 
@@ -470,12 +479,10 @@ module Orders
     end
 
     def i_agree
-      checkbox_fields = @browser.inputs :css => "input[id^=checkbox-]"
-      checkbox_field = checkbox_fields.last
-      verify_fields = @browser.inputs :css => "div[id^=checkbox][class*=x-form-type-checkbox]"
-      verify_field = verify_fields.last
+      field = @browser.input :css => "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
+      verify_field = field.parent.parent.parent
 
-      Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
+      Stamps::Browser::StampsCheckbox.new field, verify_field, "class", "checked"
     end
 
     def privacy_act_statement_link

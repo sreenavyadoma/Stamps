@@ -448,7 +448,7 @@ module Print
           sleep 1
           return contacts_modal if contacts_modal.present?
         end
-        raise "Unable to open Contacts Modal, check your code." unless contacts_modal.present?
+        stop_test "Unable to open Contacts Modal, check your code." unless contacts_modal.present?
       end
     end
 

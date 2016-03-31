@@ -101,7 +101,7 @@ module Print
           return add_item_modal if add_item_modal.present?
         end
 
-        raise "Unable to open Add Item Modal, check your code." unless customs_modal.present?
+        stop_test "Unable to open Add Item Modal, check your code." unless customs_modal.present?
       end
 
       def edit_item
@@ -112,7 +112,7 @@ module Print
           return edit_item_modal if edit_item_modal.present?
         end
 
-        raise "Unable to open Edit Item Modal, check your code." unless customs_modal.present?
+        stop_test "Unable to open Edit Item Modal, check your code." unless customs_modal.present?
       end
 
       def delete
@@ -469,7 +469,7 @@ module Print
           edit_form_button.safe_click
           break if @customs_form.present?
         }
-        raise "Customs Information Modal is not visible." unless @customs_form.present?
+        stop_test "Customs Information Modal is not visible." unless @customs_form.present?
         @customs_form
       end
 

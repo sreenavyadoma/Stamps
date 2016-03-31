@@ -9,7 +9,7 @@ module Pam
         when /staging/
           url = "https://site.staging.stamps.com:82/pam/"
         else
-          raise "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
+          stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
       end
 
       log.info "Visit: #{url}"
@@ -38,13 +38,14 @@ module Pam
         when /staging/
           url = "https://site.staging.stamps.com:82/pam/AccountSearch.asp"
         else
-          raise "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
+          stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
       end
 
       @browser.goto url
 
-      5.times do
-        search.wait_until_present
+      30.times do
+        #search.wait_until_present
+        sleep 2
         return search if search.present?
       end
     end

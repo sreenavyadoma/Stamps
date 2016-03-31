@@ -4,7 +4,7 @@ Feature: Printing total cost
   Background:
     Given I am signed in to Orders using ff
 
-  @details_panel_total_cost @details_panel_total_cost_dev
+  @details_total_cost @details_total_cost_dev
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
     Then Add New Order
     Then Details: Set Ship-From to default
