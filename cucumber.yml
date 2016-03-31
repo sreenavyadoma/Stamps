@@ -3,6 +3,8 @@ cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
 rob_dev: --tags @print_ship_date_today_plus1 --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 rob_dev_gc: --tags @print_ship_date_today_plus1 --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=chrome USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
+rob_dev_ie: --tags @print_ship_date_today_plus1 --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ie USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
+
 #details_placeholders
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
