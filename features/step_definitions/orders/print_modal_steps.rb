@@ -1,6 +1,6 @@
 Then /^Print: Set Printer to \"(.*)\"$/ do |printer|
   log.info "Print: Set Printer to \"#{printer}\""
-  orders.toolbar.print.printer.select printer
+  orders.toolbar.print_modal.printer.select printer
 end
 
 Then /^RePrint: Reprint$/ do
@@ -14,50 +14,50 @@ end
 Then /^Print: Set Ship Date to today plus (\d+)$/ do |day|
   ship_date = test_helper.now_plus_mon_dd day
   log.info "Print: Set Ship Date to #{ship_date}"
-  @ship_date = orders.toolbar.print.date_picker.today_plus day
+  @ship_date = orders.toolbar.print_modal.date_picker.today_plus day
 end
 
 Then /^Print: Check Email Tracking Details to Recipients$/ do
   log.info "Print: Check Email Tracking Details to Recipients"
-  orders.toolbar.print.print_options.email_tracking.check
+  orders.toolbar.print_modal.print_options.email_tracking.check
 end
 
 Then /^Print: Uncheck Email Tracking Details to Recipients$/ do
   log.info "Print: Uncheck Email Tracking Details to Recipients"
-  orders.toolbar.print.print_options.email_tracking.uncheck
+  orders.toolbar.print_modal.print_options.email_tracking.uncheck
 end
 
 Then /^Print: Uncheck Print Reference # on Shipping Label$/ do
   log.info "Print: Uncheck Print Reference # on Shipping Label"
-  orders.toolbar.print.print_options.print_reference_no.uncheck
+  orders.toolbar.print_modal.print_options.print_reference_no.uncheck
 end
 
 Then /^Print: Check Print Reference # on Shipping Label$/ do
   log.info "Print: Check Print Reference # on Shipping Label"
-  orders.toolbar.print.print_options.print_reference_no.check
+  orders.toolbar.print_modal.print_options.print_reference_no.check
 end
 
 When /^Print: Select left-side label$/ do
   log.info "Step: Print: Select - Left side label"
-  selected = orders.toolbar.print.starting_label.left
+  selected = orders.toolbar.print_modal.starting_label.left
   log.info "left-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 When /^Print: Select right-side label$/ do
   log.info "Step: Print: Select - Right side label"
-  selected = orders.toolbar.print.starting_label.right
+  selected = orders.toolbar.print_modal.starting_label.right
   log.info "Print Modal right-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 Then /^Expect Print Modal right-side label selected$/ do
   log.info "Step: Expect Print Modal right-side label selected"
-  selected = orders.toolbar.print.starting_label.right_selected?
+  selected = orders.toolbar.print_modal.starting_label.right_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
 end
 
 Then /^Expect Print Modal left-side label selected$/ do
   log.info "Step: Expect Print Modal left-side label selected"
-  selected = orders.toolbar.print.starting_label.left_selected?
+  selected = orders.toolbar.print_modal.starting_label.left_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
 end
 
@@ -79,7 +79,7 @@ end
 
 Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
   log.info "Step: Print: Expect Ship Date to be #{day} day(s) from today"
-  actual = orders.toolbar.print.ship_date.text
+  actual = orders.toolbar.print_modal.ship_date.text
   expected = test_helper.date_printed day
   log.info "Print: Expect Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
   actual.should eql expected
@@ -87,18 +87,18 @@ end
 
 Then /^Print: Set Media \"(.*)\"$/ do |print_media|
   log.info "Step: Print: Set Media #{print_media}"
-  orders.toolbar.print.printing_on.select print_media
+  orders.toolbar.print_modal.printing_on.select print_media
 end
 
 Then /^Select Printer \"(.*)\"$/ do |printer|
   log.info "Step: Select Printer #{printer}"
-  orders.toolbar.print.printer.select printer
+  orders.toolbar.print_modal.printer.select printer
 end
 
 Then /^Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, data_qtip|
   log.info "Expect Print Modal Print Media #{print_media} tooltip to include #{data_qtip}"
   tooltips = data_qtip.split "||"
-  actual_tooltip = orders.toolbar.print.printing_on.tooltip print_media
+  actual_tooltip = orders.toolbar.print_modal.printing_on.tooltip print_media
   tooltips.each { |tooltip|
     log.info "Test #{(actual_tooltip.include? tooltip)?"Passed":"Failed"}"
     actual_tooltip.should include tooltip
@@ -107,7 +107,7 @@ end
 
 Then /^Close Print Modal$/ do
   log.info "Step: Close Print Modal"
-  orders.toolbar.print.close
+  orders.toolbar.print_modal.close
 end
 
 Then /^Close Reprint Modal$/ do
@@ -146,7 +146,7 @@ end
 
 When /^Print expecting rating error$/ do
   log.info "Step: Print expecting rating error"
-  error_window = orders.toolbar.print.print_expecting_rating_error
+  error_window = orders.toolbar.print_modal.print_expecting_rating_error
   actual_error_message = error_window.error_message
   error_window.close
   expect(actual_error_message.include? 'An error occurred while attempting to rate your print').to be true
@@ -162,15 +162,15 @@ end
 
 Then /^Print: Expect Modal Title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
   log.info "Step: Print: Expect Modal Title to be \"You have #{expectation} label\(s\) ready to print\""
-  actual = orders.toolbar.print.labels_ready_to_print
-  orders.toolbar.print.close
+  actual = orders.toolbar.print_modal.labels_ready_to_print
+  orders.toolbar.print_modal.close
   log.info "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
   "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
 end
 
 Then /^Print: Expect number of required label sheets to be (\d+)$/ do |sheets|
   log.info "Step: Print: Expect Requires #{sheets} label sheets"
-  actual = orders.toolbar.print.labels_required
+  actual = orders.toolbar.print_modal.labels_required
   log.info "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheets==actual)?'Passed':'Failed'}"
   actual.should eql sheets
 end
@@ -182,22 +182,22 @@ end
 
 Then /^Print: Print Sample on (.*)$/ do |printer|
   log.info "Step: Print: Print Sample on #{printer}"
-  orders.toolbar.print(printer).print_sample
+  orders.toolbar.print_modal(printer).print_sample
 end
 
 Then /^Print: Print Sample on (.*) raises a PrintingError$/ do |printer|
   log.info "Step: Print: Print Sample on #{printer} raises a PrintingError"
-  expect{orders.toolbar.print(printer).print_sample_expecting_error}.to raise_error(PrintingError)
+  expect{orders.toolbar.print_modal(printer).print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Print: Print Sample$/ do
   log.info "Step: Print: Print Sample"
-  orders.toolbar.print.print_sample
+  orders.toolbar.print_modal.print_sample
 end
 
 Then /^Print: Print Sample raises a Printing Error/ do
   log.info "Step: Print: Print Sample raises a Printing Error"
-  expect{orders.toolbar.print.print_sample_expecting_error}.to raise_error(PrintingError)
+  expect{orders.toolbar.print_modal.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Expect (.*) pane selected$/ do |value|

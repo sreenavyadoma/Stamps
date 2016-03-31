@@ -18,7 +18,7 @@ end
 
 When /^Open Print Modal$/ do
   log.info "Step: Open Print Modal"
-  @print_window = orders.toolbar.print
+  @print_window = orders.toolbar.print_modal
 end
 
 When /^Open Reprint Modal$/ do
@@ -45,7 +45,7 @@ end
 
 When /^Toolbar: Print$/ do
   log.info "Step: Print"
-  print_modal = orders.toolbar.print
+  print_modal = orders.toolbar.print_modal
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.text_box.text
   @printer = print_modal.printer.text_box.text

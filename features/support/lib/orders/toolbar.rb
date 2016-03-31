@@ -214,7 +214,7 @@ module Orders
         end
       end
 
-      def print
+      def print_modal
         open_window Orders::PrintModal.new @browser
       end
 

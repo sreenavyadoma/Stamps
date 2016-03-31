@@ -1,6 +1,6 @@
 Then /^View Print On option (.*) tooltip$/ do |label|
   log.info "Step: View Print On option #{label} tooltip"
-  @print_window = orders.toolbar.print
+  @print_window = orders.toolbar.print_modal
   tooltip = @print_window.print_on_tooltip label
 end
 
@@ -18,7 +18,7 @@ end
 
 Then /^Select new option \"(.*)\"$/ do |label|
   log.info "Step: Select new option #{label}"
-  @print_window = orders.toolbar.print
+  @print_window = orders.toolbar.print_modal
 end
 
 Then /^Expect saves settings to \"(.*)\"$/ do |label|
@@ -27,19 +27,19 @@ end
 
 Then /^Expect a print of \"(.*)\"$/ do |label|
   log.info "Step: Expect a print of #{label}"
-  @print_window = orders.toolbar.print
+  @print_window = orders.toolbar.print_modal
 end
 
 
 Then /^Expect a print Sample of \"(.*)\"$/ do |label|
   log.info "Step: Expect a print Sample of #{label}"
-  @print_window = orders.toolbar.print
-  orders.toolbar.print.print_sample
+  @print_window = orders.toolbar.print_modal
+  orders.toolbar.print_modal.print_sample
 end
 
 
 Then /^Expect system will only print first order$/ do |label|
   log.info "Step: Expect system will only print first order"
-  @print_window = orders.toolbar.print
+  @print_window = orders.toolbar.print_modal
 end
 
