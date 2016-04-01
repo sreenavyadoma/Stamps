@@ -150,6 +150,20 @@ Then /^PAM: ACH Purchase: Set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
   end
 end
 
+Then /^PAM: Customer Profile: Get Available Postage Amount$/ do
+  log.info "PAM: Customer Profile: Get Available Postage Amount"
+
+  log.message "PAM: Available Postage ############################"
+  log.message "PAM: Available Postage ############################"
+  log.message "PAM: Available Postage ############################"
+  log.message "PAM: Available Postage $#{@customer_profile.available_postage.text}"
+  log.message "PAM: Available Postage $#{@customer_profile.available_postage.text}"
+  log.message "PAM: Available Postage $#{@customer_profile.available_postage.text}"
+  log.message "PAM: Available Postage ############################"
+  log.message "PAM: Available Postage ############################"
+  log.message "PAM: Available Postage ############################"
+end
+
 Then /^PAM: Customer Profile: Click  AppCap Overrides link$/ do
   log.info "PAM: Customer Profile: Click  AppCap Overrides link"
   if @pam_customer_profile_found

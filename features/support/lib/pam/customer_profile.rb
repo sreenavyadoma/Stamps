@@ -43,6 +43,10 @@ module Pam
     def header
       PamPageHeader.new @browser
     end
+
+    def available_postage
+      StampsLabel.new @browser.td(css: "form[name=FrmOne]>table:nth-child(7)>tbody>tr>td>table>tbody>tr:nth-child(2)>td:nth-child(6)")
+    end
   end
 
   class CustomerProfileNotFound < Stamps::Browser::BrowserObject

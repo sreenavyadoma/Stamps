@@ -44,7 +44,11 @@ Feature: Registration
     Then PAM: Change Meter Limit: Click Submit
 
     Then PAM: Customer Profile: Click ACH Credit link
+    Then PAM: Customer Profile: Get Available Postage Amount
+    Then PAM: Customer Profile: Get Available Postage Amount
     Then PAM: ACH Purchase: Set Amount to $100000.00
+    Then PAM: Customer Profile: Get Available Postage Amount
+    Then PAM: Customer Profile: Get Available Postage Amount
 
     Then PAM: Customer Profile: Click  AppCap Overrides link
     Then PAM: AppCap Overrides: Set Internet Postage Printing to Always On
