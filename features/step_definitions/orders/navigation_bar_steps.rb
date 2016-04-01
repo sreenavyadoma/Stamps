@@ -8,6 +8,7 @@ end
 
 
 Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |balance|
+  log.info "Navigation Bar: Wait while balance less than #{balance}"
   balance = balance.to_f
   for i in 0..120
       amount = orders.navigation_bar.balance.amount.to_f
