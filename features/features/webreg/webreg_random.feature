@@ -47,6 +47,7 @@ Feature: Registration
     Then PAM: Customer Profile: Get Available Postage Amount
     Then PAM: Customer Profile: Click ACH Credit link
     Then PAM: ACH Purchase: Set Amount to $100000.00
+    Then Pause for 2 seconds
     Then PAM: Customer Profile: Get Available Postage Amount
     Then PAM: Customer Profile: Get Available Postage Amount
     Then PAM: Customer Profile: Click  AppCap Overrides link
@@ -69,6 +70,8 @@ Feature: Registration
     Then Settings:  Set Logoff to 2 hours.
     Then Settings:  Save
     Then Navigation Bar: Customer Balance
+    Then Navigation Bar: Wait while balance less than 5000
+    Then Navigation Bar: Wait while balance less than 5000
     Then Navigation Bar: Wait while balance less than 5000
     Then Sign out
     Then WebReg:  Send username to standard out
