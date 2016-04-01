@@ -14,7 +14,7 @@ Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |balance|
       if balance < amount
         sleep 1
       else
-        break
+        break if balance > amount
       end
   end
 end
