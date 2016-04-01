@@ -13,6 +13,7 @@ Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |balance|
       amount = orders.navigation_bar.balance.amount.to_f
       if balance < amount
         sleep 1
+        log.message "Account Balance: $#{amount}"
       else
         break if balance > amount
       end
