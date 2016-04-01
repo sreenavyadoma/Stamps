@@ -6,7 +6,6 @@ Then /^Navigation Bar: Customer Balance$/ do
   log.message " ############## CUSTOMER BALANCE "
 end
 
-
 Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |balance|
   log.info "Navigation Bar: Wait while balance less than #{balance}"
   balance = balance.to_f
