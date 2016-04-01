@@ -3,7 +3,7 @@ Feature:  Customs Form Totals
   Background:
     Given I am signed in to Orders
 
-  @international @international_totals
+  @international_customs_form_totals
   Scenario:  Customs Form Grid - Add Items
     Then Add New Order
     Then Details: Set Ship-From to default

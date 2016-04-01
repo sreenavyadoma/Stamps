@@ -34,7 +34,7 @@ XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
-XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+international_customs_form_totals: --tags @international_customs_form_totals --guess VERBOSE=false HEALTHCHECK=true
 international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess VERBOSE=false HEALTHCHECK=true
 tooltip_customs_form: --tags @tooltip_customs_form --guess VERBOSE=false HEALTHCHECK=true
 
