@@ -19,7 +19,7 @@ Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |balance|
   end
 end
 
-
+#waiting examples
 #waiting for updating div to clear:
 #while browser.div(:id=>"updating_div").visible? do sleep 1 end
 #This is how I handle waiting for something to display:
