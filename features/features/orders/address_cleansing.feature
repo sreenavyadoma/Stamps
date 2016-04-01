@@ -10,7 +10,7 @@ Feature: Address Cleansing
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name              | company           | street_address      | city          | state | zip   | country       | phone           |  email            |
-      | Ambiguous Address | Address Cleansing | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
+      | Ambiguous Address | Address Cleansing | 1390 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Details: Set Service to "Priority Mail Package"
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1
