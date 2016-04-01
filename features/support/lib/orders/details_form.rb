@@ -252,11 +252,16 @@ module Orders
           def set partial_address_hash
             single_order_form = DetailsForm.new @browser
             single_order_form.validate_address_link
+            country_drop_down = self.country
             #single_order_form.expand
             single_order_form.ship_to.set OrdersHelper.instance.format_address(partial_address_hash)
-            5.times {
+            30.times {
               begin
                 item_label.click
+                country_drop_down.drop_down.safe_click
+                country_drop_down.drop_down.safe_click
+                item_label.click
+
                 break if (browser_helper.present?  exact_address_not_found_field) || (browser_helper.present?  single_order_form.validate_address_link)
               rescue
                 #ignore

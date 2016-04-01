@@ -69,7 +69,7 @@ Feature: Registration
     Then Open Settings Modal
     Then Settings:  Set Logoff to 2 hours.
     Then Settings:  Save
-    Then Navigation Bar:  Customer Balance
-    Then Pause for 1 second
+    Then Navigation Bar: Customer Balance
+    Then Navigation Bar: Wait while balance less than 5000
     Then Sign out
     Then WebReg:  Send username to standard out
