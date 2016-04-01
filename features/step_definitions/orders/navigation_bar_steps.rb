@@ -25,3 +25,5 @@ end
 #while browser.div(:id=>"updating_div").visible? do sleep 1 end
 #This is how I handle waiting for something to display:
 #until browser.div(:id=>"some_div").exists? do sleep 1 end
+
+
