@@ -3,7 +3,7 @@ Feature:  Customs Form Item Grid - Edit/Delete
   Background:
     Given I am signed in to Orders
 
-  @international @customs_form_edit_delete_items
+  @international_customs_form_edit_delete_item
   Scenario:  Customs Form Item Grid - Edit/Delete
     Then Add New Order
     Then Details: Set Ship-To International Adress;
