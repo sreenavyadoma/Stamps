@@ -8,5 +8,19 @@ end
 
 
 Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |balance|
-  orders.navigation_bar.balance.amount
+  balance = balance.to_f
+  for i in 0..120
+      amount = orders.navigation_bar.balance.amount.to_f
+      if balance < amount
+        sleep 1
+      else
+        break
+      end
+  end
 end
+
+
+#waiting for updating div to clear:
+#while browser.div(:id=>"updating_div").visible? do sleep 1 end
+#This is how I handle waiting for something to display:
+#until browser.div(:id=>"some_div").exists? do sleep 1 end
