@@ -875,8 +875,8 @@ Then /^WebReg: Choose Supplies: Place Order$/ do
   case @registration_result
     when WebReg::UserIdTaken
       message = @registration_result.message
-      log.info message
-      raise message
+      log.info "USER ID IS TAKEN!  #{message}"
+      raise "USER ID IS TAKEN!  #{message}"
     when WebReg::ChooseSupplies
       if @registration_result.present?
         welcome_page = @registration_result.place_order

@@ -10,7 +10,7 @@ module Stamps
       log.message "HealthCheck: --------------------------- Begin"
       log.message "HealthCheck:"
       case ENV['URL'].downcase
-        when /qasc/
+        when /sc/
           @browser.goto "https://printext.qasc.stamps.com/orders/healthcheck.aspx"
           log.message "HealthCheck: QASC"
           sleep 1
@@ -19,7 +19,7 @@ module Stamps
           log.message "HealthCheck: QASC"
           sleep 1
           log.message "#{@browser.text}"
-        when /qacc/
+        when /cc/
           @browser.goto "https://printext.qacc.stamps.com/orders/healthcheck.aspx"
           log.message "HealthCheck: QACC Healthcheck:"
           sleep 1

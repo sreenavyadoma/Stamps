@@ -8,14 +8,6 @@ module Orders
     def test_helper
       TestHelper.instance
     end
-
-    def stop_test message
-      log.fatal message
-      log.fatal "Teardown: Begin tearing down test"
-      Stamps::Test.teardown
-      log.fatal "Teardown: Done!"
-      raise message
-    end
   end
 
   class OrdersHelper
