@@ -9,7 +9,7 @@ module Orders
     end
 
     def ok
-      button = StampsButton.new @browser.span(text: "OK")
+      button = StampsButton.new (@browser.spans(text: "OK").last)
       5.times do
         button.safe_click
         break unless button.present?
