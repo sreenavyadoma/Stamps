@@ -19,7 +19,7 @@ Feature: Registration
     Then WebReg: Set Mailing Info First Name to random
     Then WebReg: Set Mailing Info Last Name to random
     Then WebReg: Set Mailing Info Company to random
-    Then WebReg: Set Mailing Info Address to 1990 E. Grand Ave.
+    Then WebReg: Set Mailing Info Address to 1990 E Grand Avenue
     Then WebReg: Set Mailing Info City to El Segundo
     Then WebReg: Set Mailing Info State to California
     Then WebReg: Set Mailing Info Zip Code to 90245
