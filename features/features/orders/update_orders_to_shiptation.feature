@@ -5,7 +5,7 @@ Feature:  Update Order to ShipStation
     Given I am signed in to Orders
 
   @update_orders_to_shipstation
-  Scenario:  Add a new order
+  Scenario:  Update Order to ShipStation
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
@@ -27,10 +27,21 @@ Feature:  Update Order to ShipStation
     Then Pause for 2 seconds
     Then Grid: Check row 1
     Then Grid: Check row 1
-    Then Pause for 1 second
-    # Verify pounds, ounces height width length from Order Form
-    Then Details: Expect Service to be "Priority Mail Package"
-    Then Pause for 2 seconds
+    Then Pause for 3 seconds
+
+    Then Grid: Expect Pounds to be 1
+    Then Grid: Expect Ounces to be 1
+    Then Grid: Expect Weight to be 1 lbs. 1 oz.
+    Then Grid: Expect Insured Value to be $1.00
+
     Then Details: Expect Tracking to be "Signature Required"
+    Then Details: Expect Service to be "Priority Mail Package"
+
+    Then Details: Expect Pounds to be 1
+    Then Details: Expect Ounces to be 1
+
+    Then Details: Expect Length to be 1
+    Then Details: Expect Width to be 1
+    Then Details: Expect Height to be 1
     Then Sign out
 

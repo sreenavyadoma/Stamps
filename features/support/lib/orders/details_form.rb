@@ -1415,6 +1415,7 @@ module Orders
             button.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
+            sleep 1
             click_form
             break if box.text.include? selection
           rescue
