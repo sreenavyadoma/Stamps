@@ -25,6 +25,7 @@ Feature:  Update Order to ShipStation
     #here's the shipstation part.
     Then Grid: Uncheck row 1
     Then Pause for 2 seconds
+    # checking the order will make an api call that will populate order details with data from shipstation
     Then Grid: Check row 1
     Then Grid: Check row 1
     Then Pause for 3 seconds
