@@ -34,7 +34,7 @@ XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 
 orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true
 orders_authentication_cc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=bz9005j1r2jx0 PW=pass111
-orders_authentication_sc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=jes9t1kus PW=pass111
+orders_authentication_sc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff USR=jes9t1kus PW=pass111
 
 import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=bu8sdr5ui PW=pass111
 
