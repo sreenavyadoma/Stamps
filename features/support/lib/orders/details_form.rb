@@ -1399,7 +1399,7 @@ module Orders
 
     class TrackingDropDown < OrderForm
       def text_box
-        StampsTextbox.new @browser.text_field :name => 'Tracking'
+        StampsTextbox.new @browser.text_field(name: 'Tracking')
       end
 
       def drop_down

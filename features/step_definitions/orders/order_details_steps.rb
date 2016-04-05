@@ -640,8 +640,10 @@ end
 Then /^Details: Expect Tracking to be \"([\w\s]*)\"$/ do |expected|
   log.info "Step: Details: Expect Tracking to be #{expected}"
   begin
+    text_box = orders.details.tracking.text_box
     10.times do
-      actual = orders.details.tracking.text_box.text
+      sleep 2
+      actual = text_box.text
       break if actual.include? expected
     end
     actual = orders.details.tracking.text_box.text

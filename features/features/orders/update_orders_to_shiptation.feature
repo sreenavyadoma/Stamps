@@ -27,7 +27,7 @@ Feature:  Update Order to ShipStation
     Then Pause for 2 seconds
     Then Grid: Check row 1
     Then Grid: Check row 1
-    Then Pause for 2 seconds
+    Then Pause for 1 second
     # Verify pounds, ounces height width length from Order Form
     Then Details: Expect Service to be "Priority Mail Package"
     Then Pause for 2 seconds
