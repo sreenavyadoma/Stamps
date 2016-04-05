@@ -1,11 +1,16 @@
 module Orders
   class SuccessModal < OrdersObject
     def window_title
-      browser_helper.text @browser.div(text: "Success")
+      browser_helper.text @browser.div(css: "div[id^=dialoguemodal-][id$=_header-innerCt]")
     end
 
     def present?
       browser_helper.present? @browser.div(text: "Success")
+    end
+
+    def message
+      box = StampsTextbox.new @browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+      box.text
     end
 
     def ok
