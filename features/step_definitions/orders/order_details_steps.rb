@@ -1015,7 +1015,7 @@ Then /^Details: Expect Service to be \"(.*)\"$/ do |expectation|
     end
     actual_value = orders.details.service.text_box.text
     log.info "Test #{(actual_value.include? expectation)?"Passed":"Failed"}"
-    expect(actual_value.include? expectation).to be true
+    actual_value.should include expectation
   end unless expectation.length == 0
 end
 

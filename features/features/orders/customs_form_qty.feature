@@ -11,7 +11,7 @@ Feature: Customs Form Qty
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
-    Then Details: Set Service to "Priority Mail Express International Legal Flat Rate Envelope"
+    Then Details: Set Service to "Priority Mail International Package"
     Then Details: Set Ounces to 1
 
     Then Details: Add Item 1

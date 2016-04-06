@@ -276,56 +276,6 @@ Then /^Customs: Expect Invoice Number to be (.+)$/ do |expectation|
   actual_value.should eql expectation
 end
 
-Then /^Customs: Expect xxxxxxxxxxx to be (.+)$/ do |expectation|
-  log.info "Customs: Expect xxxxxxxxxxx to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
-  actual_value = @customs_form.xxxxxxxxxxx.text_box.text
-  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
-end
-
-Then /^Customs: Expect xxxxxxxxxxx to be (.+)$/ do |expectation|
-  log.info "Customs: Expect xxxxxxxxxxx to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
-  actual_value = @customs_form.xxxxxxxxxxx.text_box.text
-  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
-end
-
-Then /^Customs: Expect xxxxxxxxxxx to be (.+)$/ do |expectation|
-  log.info "Customs: Expect xxxxxxxxxxx to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
-  actual_value = @customs_form.xxxxxxxxxxx.text_box.text
-  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
-end
-
-Then /^Customs: Expect xxxxxxxxxxx to be (.+)$/ do |expectation|
-  log.info "Customs: Expect xxxxxxxxxxx to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
-  actual_value = @customs_form.xxxxxxxxxxx.text_box.text
-  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
-end
-
-Then /^Customs: Expect xxxxxxxxxxx to be (.+)$/ do |expectation|
-  log.info "Customs: Expect xxxxxxxxxxx to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
-  actual_value = @customs_form.xxxxxxxxxxx.text_box.text
-  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
-end
-
 Then /^Customs: Delete Item (\d+)$/ do |item_number|
   log.info "Step: Customs: Delete Item #{item_number}"
   count = @customs_item_grid.size
@@ -342,9 +292,39 @@ Then /^Customs: Check I agree to the USPS Privacy Act Statement$/ do
   @order_details.customs_form.i_agree.check
 end
 
+Then /^Customs: Expect I agree to the USPS Privacy Act Statement is checked$/ do
+  log.info "Customs: Expect I agree to the USPS Privacy Act Statement is checked"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+  expectation = "checked"
+  i_agree = @order_details.customs_form.i_agree.checked?
+  if i_agree
+    actual_value = "checked"
+  else
+    actual_value = "unchecked"
+  end
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
+
 Then /^Customs: Uncheck  I agree to the USPS Privacy Act Statement$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @order_details.customs_form.i_agree.uncheck
+end
+
+Then /^Customs: Expect I agree to the USPS Privacy Act Statement is unchecked$/ do
+  log.info "Customs: Expect I agree to the USPS Privacy Act Statement is unchecked"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+  expectation = "unchecked"
+  i_agree = @order_details.customs_form.i_agree.checked?
+  if i_agree
+    actual_value = "checked"
+  else
+    actual_value = "unchecked"
+  end
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
 end
 
 Then /^Sleep (\d+)$/ do |seconds|

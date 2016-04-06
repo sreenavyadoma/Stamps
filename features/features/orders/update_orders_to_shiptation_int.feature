@@ -12,10 +12,10 @@ Feature:  Update International Orders to ShipStation
     Then Details: Set Ship-To address to
       | name          | company          | street_address_1  | street_address_2 | city   | province | postal_code | country | phone         |  email            |
       | Customer Name | Customer Company | Street Address 1  | Street Address 2 | City   | Province | PostalCode  | France  | 415-411-1111  | rtest@stamps.com  |
-    Then Details: Set Service to "Priority Mail Express International Legal Flat Rate Envelope"
+    Then Details: Set Service to "Priority Mail International Package"
 
-    Then Details: Set Pounds to 1
-    Then Details: Set Ounces to 1
+    Then Details: Set Pounds to 5
+    Then Details: Set Ounces to 5
     Then Details: Set Insure For to $50.25
 
     Then Details: Set Reference Number to Reference #123
@@ -40,7 +40,7 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect International Ship-To Postal Code to be PostalCode
     Then Details: Expect International Ship-To Phone to be 415-411-1111
 
-    Then Details: Expect Service to be "Priority Mail Express International Legal Flat Rate Envelope"
+    Then Details: Expect Service to be "Priority Mail International Package"
     Then Details: Expect Reference Number to be Reference #123
 
     Then Details: Expect Insure For to be $50.25
@@ -76,7 +76,7 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect International Ship-To Postal Code to be PostalCode
     Then Details: Expect International Ship-To Phone to be 415-411-1111
 
-    Then Details: Expect Service to be "Priority Mail Express International Legal Flat Rate Envelope"
+    Then Details: Expect Service to be "Priority Mail International Package"
 
     Then Details: Expect Insure For to be $50.25
 
@@ -98,7 +98,10 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect Item 2 ID to be ID 2
     Then Details: Expect Item 2 Description to be Description 2
 
+    # Edit the customs form
     Then Details: Edit Customs Form
+
+    Then Customs: Expect I agree to the USPS Privacy Act Statement is unchecked
 
     Then Customs: Set Package Contents to "Commercial Sample"
     Then Customs: Set License Number to "123456"
@@ -138,6 +141,8 @@ Feature:  Update International Orders to ShipStation
     Then Customs: Set Item Origin Country to United States
     Then Customs: Set Item Tarriff to 200
 
+    Then Customs: Check I agree to the USPS Privacy Act Statement
+
     Then Pause for 1 second
     Then Customs: Close Form
     Then Pause for 2 seconds
@@ -149,6 +154,8 @@ Feature:  Update International Orders to ShipStation
 
     Then Details: Edit Customs Form
     Then Pause for 1 second
+
+    Then Customs: Expect I agree to the USPS Privacy Act Statement is checked
 
     Then Customs: Expect Package Contents to be Commercial Sample
     Then Customs: Expect License Number to be 123456
@@ -175,6 +182,7 @@ Feature:  Update International Orders to ShipStation
     Then Customs: Expect Item 2 Ounces to be 2
     Then Customs: Expect Item 2 Origin Country to be United States
     Then Customs: Expect Item 2 Tariff to be 200
+
 
     Then Customs: Close Form
 
