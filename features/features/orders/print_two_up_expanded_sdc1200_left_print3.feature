@@ -30,5 +30,6 @@ Feature: User Prints 3 Domestic labels on SDC-1200 - left side
     Then Expect Print Modal left-side label selected
     Then Print: Print Sample
     Then Toolbar: Print
+    Then Pause for 6 seconds
 
     Then Sign out
