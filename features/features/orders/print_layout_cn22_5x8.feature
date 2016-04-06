@@ -8,7 +8,7 @@ Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
   Scenario: Print 1 Intl CN22 label for EDD country on 5.5 x 8.5 label
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI SFRB | 5.5x8.5  | random           | random           | random | random  | random      | Netherlands | random  | random  |
     Then Details: Set Service to "Priority Mail International Small Flat Rate Box"
@@ -16,7 +16,7 @@ Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
     Then Open Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Open Print Modal
     Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""

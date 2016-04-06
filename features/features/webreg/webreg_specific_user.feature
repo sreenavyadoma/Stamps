@@ -44,7 +44,11 @@ Feature: Registration
     Then PAM: Change Meter Limit: Click Submit
 
     Then PAM: Customer Profile: Click ACH Credit link
+    Then PAM: Customer Profile: Get Available Postage Amount
+    Then PAM: Customer Profile: Get Available Postage Amount
     Then PAM: ACH Purchase: Set Amount to $100000.00
+    Then PAM: Customer Profile: Get Available Postage Amount
+    Then PAM: Customer Profile: Get Available Postage Amount
 
     Then PAM: Customer Profile: Click  AppCap Overrides link
     Then PAM: AppCap Overrides: Set Internet Postage Printing to Always On
@@ -64,8 +68,8 @@ Feature: Registration
     Then Open Settings Modal
     Then Settings:  Set Logoff to 2 hours.
     Then Settings:  Save
-    Then Navigation Bar:  Customer Balance
-    Then Pause for 1 second
+    Then Navigation Bar: Customer Balance
+    Then Navigation Bar: Wait while balance less than 5000
     Then Sign out
     Then WebReg:  Send username to standard out
     Then Pause for 1 second

@@ -237,12 +237,6 @@ Then /^Details: Set Ship-From to (\w+)$/ do |value|
   orders.details.ship_from.select value
 end
 
-Then /^Details: Set Ship-To address to$/ do |table|
-  ship_to = OrdersHelper.instance.address_hash_to_str table.hashes.first
-  log.info "Step: Details: Set Ship-To address to \n#{ship_to}"
-  step "Details: Set Ship-To address to #{ship_to}"
-end
-
 Then /^Details: Set Ship-To to Random Address in Zone 1$/ do
   step "Details: Set Ship-To address to zone 1"
 end
@@ -281,6 +275,56 @@ end
 
 Then /^Details: Set Ship-To to Random Address Between Zone 5 through 8$/ do
   step "Details: Set Ship-To address to zone 5 through 8"
+end
+
+Then /^Details: Set Ship-To address to$/ do |table|
+  address = table.hashes.first
+  log.info "Step: Details: Set Ship-To address to \n#{address}"
+
+  @ship_to_country = address['country']
+  log.info "Ship-To Country:  #{@ship_to_country}"
+  @ship_to_name = (address['name'].downcase.include? "random") ? test_helper.random_name : address['name']
+  @ship_to_company = (address['company'].downcase.include? "random") ? test_helper.random_company_name : address['company']
+  @ship_to_city = (address['city'].downcase.include? "random") ? test_helper.random_string : address['city']
+  @ship_to_phone = (address['phone'].downcase.include? "random") ? test_helper.random_phone : address['phone']
+  @ship_to_email = (address['email'].downcase.include? "random") ? test_helper.random_email : address['email']
+
+  if @ship_to_country.downcase.include? "united states"
+    @ship_to_street_address = (address['street_address'].downcase.include? "random") ? test_helper.random_string : address['street_address']
+    @ship_to_state = (address['state'].downcase.include? "random") ? test_helper.random_string : address['state']
+    @ship_to_zip = (address['zip'].downcase.include? "random") ? test_helper.random_string : address['zip']
+
+    ship_to_address = "#{@ship_to_name},#{@ship_to_company},#{@ship_to_street_address},#{@ship_to_city} #{@ship_to_state} #{@ship_to_zip}"
+    step "Details: Set Ship-To address to #{ship_to_address}"
+    step "Details: Set Phone to #{@ship_to_phone}"
+    step "Details: Set Email to #{@ship_to_email}"
+  else
+    @ship_to_street_address_1 = (address['street_address_1'].downcase.include? "random") ? test_helper.random_string : address['street_address_1']
+    @ship_to_street_address_2 = (address['street_address_2'].downcase.include? "random") ? test_helper.random_suite : address['street_address_2']
+    @ship_to_province = (address['province'].downcase.include? "random") ? test_helper.random_string : address['province']
+    @ship_to_postal_code = (address['postal_code'].downcase.include? "random") ? test_helper.random_alpha_numeric : address['postal_code']
+
+    log.info "Ship-To Name: #{@ship_to_name}"
+    log.info "Ship-To Company: #{@ship_to_company}"
+    log.info "Ship-To Address 1: #{@ship_to_street_address_1}"
+    log.info "Ship-To Address 2: #{@ship_to_street_address_2}"
+    log.info "Ship-To City: #{@ship_to_city}"
+    log.info "Ship-To Province: #{@ship_to_province}"
+    log.info "Ship-To Postal Code: #{@ship_to_postal_code}"
+    log.info "Ship-To Phone: #{@ship_to_phone}"
+    log.info "Ship-To Email: #{@ship_to_email}"
+
+    step "Details: Set Ship-To Country to #{@ship_to_country}"
+    step "Details: Set International Ship-To Name to \"#{@ship_to_name}\""
+    step "Details: Set International Ship-To Company to \"#{@ship_to_company}\""
+    step "Details: Set International Ship-To Address 1 to \"#{@ship_to_street_address_1}\""
+    step "Details: Set International Ship-To Address 2 to \"#{@ship_to_street_address_2}\""
+    step "Details: Set International Ship-To City to \"#{@ship_to_city}\""
+    step "Details: Set International Ship-To Province to \"#{@ship_to_province}\""
+    step "Details: Set International Ship-To Postal Code to \"#{@ship_to_postal_code}\""
+    step "Details: Set International Ship-To Phone to \"#{@ship_to_phone}\""
+    step "Details: Set International Ship-To Email to \"#{@ship_to_email}\""
+  end
 end
 
 Then /^Details: Set Ship-To address to (.*)$/ do |address|
@@ -334,8 +378,8 @@ Then /^Details: Set Ship-To address to (.*)$/ do |address|
   orders.details.ship_to.address.set formatted_address
 
   begin
-    step "Details: Set Phone to #{address["phone"]}"
-    step "Details: Set Email to #{address["email"]}"
+    step "Details: Set Phone to #{address['phone']}"
+    step "Details: Set Email to #{address['email']}"
   rescue
     #ignore
   end
@@ -563,30 +607,30 @@ Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city =
   orders.details.ship_from.select("Manage Shipping Addresses...").edit_address name, company, city,  new_address.hashes.first
 end
 
-Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
-  log.info "Step: Expect Pounds tooltip to display - The maximum value for this field is #{expected}"
+Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
+  log.info "Step: Expect Pounds tooltip to display - The maximum value for this field is #{expectation}"
   actual = orders.details.pounds_max_value
-  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
-  actual.should eql expected
+  log.info "Test #{(actual == expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
 end
 
-Then /^Expect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expected|
-  log.info "Step: Expect Ounces tooltip to display - The maximum value for this field is #{expected}"
+Then /^Expect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
+  log.info "Step: Expect Ounces tooltip to display - The maximum value for this field is #{expectation}"
   actual = orders.details.ounces_max_value
-  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
-  actual.should eql expected
+  log.info "Test #{(actual == expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
 end
 
-Then /^Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expected|
-  log.info "Step: Details: Expect Service Cost inline price for #{service} to be greater than #{expected}"
+Then /^Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expectation|
+  log.info "Step: Details: Expect Service Cost inline price for #{service} to be greater than #{expectation}"
   actual = orders.details.service.cost service
   10.times { |counter|
-    #log_expectation_eql "#{counter}. #{service} Inline Rate", expected, actual, (actual.to_f >= expected.to_f)
-    break if actual.to_f >= expected.to_f
+    #log_expectation_eql "#{counter}. #{service} Inline Rate", expectation, actual, (actual.to_f >= expectation.to_f)
+    break if actual.to_f >= expectation.to_f
     actual = orders.details.service.cost service
   }
-  log.info "Test #{(actual.to_f > expected.to_f)?"Passed":"Failed"}"
-  actual.to_f.should be >= expected.to_f
+  log.info "Test #{(actual.to_f > expectation.to_f)?"Passed":"Failed"}"
+  actual.to_f.should be >= expectation.to_f
 end
 
 Then /^Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
@@ -599,59 +643,150 @@ Then /^Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |servic
   }
 end
 
-Then /^Details: Expect Service Cost to be \$(.*)$/ do |expected|
-  log.info "Step: Details: Expect Service Cost to be $#{expected}"
+Then /^Details: Expect Service Cost to be \$(.*)$/ do |expectation|
+  log.info "Step: Details: Expect Service Cost to be $#{expectation}"
   actual = orders.details.service.cost
-  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
-  actual.should eql expected
+  log.info "Test #{(actual == expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
 end
 
-Then /^Details: Expect Tracking Cost to be \$([0-9.]*)$/ do |expected|
-  log.info "Step: Details: Expect Tracking Cost to be #{expected}"
+Then /^Details: Expect Tracking Cost to be \$([0-9.]*)$/ do |expectation|
+  log.info "Step: Details: Expect Tracking Cost to be #{expectation}"
+  10.times do
+    actual = orders.details.tracking.cost
+    if actual == expectation
+      break
+    else
+      sleep 1
+    end
+  end
   actual = orders.details.tracking.cost
-  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
-  actual.should eql expected
+  log.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
+end
+
+Then /^Details: Expect Pounds to be (\d+)$/ do |expectation|
+  log.info "Details: Expect Pounds to be #{expectation}"
+  text_box = orders.details.weight.lbs.text_box
+  10.times do
+    actual = text_box.text
+    if actual == expectation
+      break
+    else
+      sleep 1
+    end
+  end
+  actual = text_box.text
+  log.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
+end
+
+Then /^Details: Expect Ounces to be (\d+)$/ do |expectation|
+  log.info "Details: Expect Ounces to be  #{expectation}"
+  text_box = orders.details.weight.oz.text_box
+  10.times do
+    actual = text_box.text
+    if actual == expectation
+      break
+    else
+      sleep 1
+    end
+  end
+  actual = text_box.text
+  log.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
+end
+
+Then /^Details: Expect Length to be (\d+)$/ do |expectation|
+  log.info "Details: Expect Length to be #{expectation}"
+  text_box = orders.details.dimensions.length.text_box
+  10.times do
+    actual = text_box.text
+    if actual == expectation
+      break
+    else
+      sleep 1
+    end
+  end
+  actual = text_box.text
+  log.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
+end
+
+Then /^Details: Expect Width to be (\d+)$/ do |expectation|
+  log.info "Details: Expect Width to be #{expectation}"
+  text_box = orders.details.dimensions.width.text_box
+  10.times do
+    actual = text_box.text
+    if actual == expectation
+      break
+    else
+      sleep 1
+    end
+  end
+  actual = text_box.text
+  log.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
+end
+
+Then /^Details: Expect Height to be (\d+)$/ do |expectation|
+  log.info "Details: Expect Height to be #{expectation}"
+  text_box = orders.details.dimensions.height.text_box
+  10.times do
+    actual = text_box.text
+    if actual == expectation
+      break
+    else
+      sleep 1
+    end
+  end
+  actual = text_box.text
+  log.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
 end
 
 Then /^Verify Order Details Form Total Amount$/ do
   log.info "Step: Verify Order Details Form Total Amount"
 end
 
-Then /^Details: Expect Insurance Cost to be \$([0-9.]*)$/ do |expected|
-  log.info "Step: Details: Expect Insurance Cost to be #{expected}"
+Then /^Details: Expect Insurance Cost to be \$([0-9.]*)$/ do |expectation|
+  log.info "Step: Details: Expect Insurance Cost to be #{expectation}"
   actual = orders.details.insure_for.cost
-  log.info "Test #{(actual == expected)?"Passed":"Failed"}"
-  actual.should eql expected
+  log.info "Test #{(actual == expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
 end
 
-Then /^Details: Expect Service to be \"(.*)\"$/ do |expected|
-  log.info "Step: Details: Expect Service to be #{expected}"
+Then /^Details: Expect Service to be \"(.*)\"$/ do |expectation|
+  log.info "Step: Details: Expect Service to be #{expectation}"
   begin
     10.times do
       actual = orders.details.service.text_box.text
-      break if actual.include? expected
+      break if actual.include? expectation
     end
     actual = orders.details.service.text_box.text
-    log.info "Test #{(actual.include? expected)?"Passed":"Failed"}"
-    expect(actual.include? expected).to be true
-  end unless expected.length == 0
+    log.info "Test #{(actual.include? expectation)?"Passed":"Failed"}"
+    expect(actual.include? expectation).to be true
+  end unless expectation.length == 0
 end
 
-Then /^Details: Expect Tracking to be \"([\w\s]*)\"$/ do |expected|
-  log.info "Step: Details: Expect Tracking to be #{expected}"
+Then /^Details: Expect Tracking to be \"([\w\s]*)\"$/ do |expectation|
+  log.info "Step: Details: Expect Tracking to be #{expectation}"
   begin
+    text_box = orders.details.tracking.text_box
     10.times do
-      actual = orders.details.tracking.text_box.text
-      break if actual.include? expected
+      sleep 2
+      actual = text_box.text
+      break if actual.include? expectation
     end
-    actual = orders.details.tracking.text_box.text
-    log.info "Test #{(actual == expected)?"Passed":"Failed"}"
-    actual.should eql expected
-  end unless expected.length == 0
+    sleep 2
+    actual = text_box.text
+    log.info "Test #{(actual == expectation)?"Passed":"Failed"}"
+    actual.should eql expectation
+  end unless expectation.length == 0
 end
 
-Then /^Details: Expect Total to be \$(.*)$/ do |expected|
-  log.info "Step: Details: Expect Total to be $#{expected}"
+Then /^Details: Expect Total to be \$(.*)$/ do |expectation|
+  log.info "Step: Details: Expect Total to be $#{expectation}"
   begin
     10.times do
       orders.details.click_form
@@ -659,16 +794,16 @@ Then /^Details: Expect Total to be \$(.*)$/ do |expected|
       actual = orders.details.total
       orders.details.click_form
       sleep 1
-      break if actual.eql? expected
+      break if actual.eql? expectation
     end
     actual = orders.details.total
-    actual.should eql expected
-  end unless expected.length == 0
+    actual.should eql expectation
+  end unless expectation.length == 0
 end
 
-Then /^Expect (\d+) orders selected$/ do |expected|
-  log.info "Step: Expect #{expected} orders selected"
-  orders.multi_orders.order_count.should eql expected
+Then /^Expect (\d+) orders selected$/ do |expectation|
+  log.info "Step: Expect #{expectation} orders selected"
+  orders.multi_orders.order_count.should eql expectation
 end
 
 

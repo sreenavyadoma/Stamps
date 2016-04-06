@@ -7,7 +7,7 @@ Feature: Internal Transaction # Not Required
   Scenario: Internal Transaction # Not Required
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
     Then Details: Set Ounces to 5
@@ -31,6 +31,6 @@ Feature: Internal Transaction # Not Required
     Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Customs: Set ITN# to "random"
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Sign out

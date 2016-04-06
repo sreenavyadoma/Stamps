@@ -3,10 +3,10 @@ Feature:  Customs Form Item Grid - Edit/Delete
   Background:
     Given I am signed in to Orders
 
-  @international @customs_form_edit_delete_items
+  @international_customs_form_edit_delete_item
   Scenario:  Customs Form Item Grid - Edit/Delete
     Then Add New Order
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
     Then Details: Set Ounces to 5
@@ -23,6 +23,6 @@ Feature:  Customs Form Item Grid - Edit/Delete
     Then Customs: Expect Item Grid count to be 2
     Then Customs: Delete Item 1
     Then Customs: Expect Item Grid count to be 1
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Sign out

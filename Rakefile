@@ -23,6 +23,46 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:orders_authentication_sc) do |t|
+  t.profile = 'orders_authentication_sc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:orders_authentication_cc) do |t|
+  t.profile = 'orders_authentication_cc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:update_orders_to_shipstation) do |t|
+  t.profile = 'update_orders_to_shipstation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:international_customs_form_totals) do |t|
+  t.profile = 'international_customs_form_totals'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:international_customs_form_edit_delete_item) do |t|
+  t.profile = 'international_customs_form_edit_delete_item'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:tooltip_customs_form) do |t|
+  t.profile = 'tooltip_customs_form'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:rob_dev_ie) do |t|
   t.profile = 'rob_dev_ie'
   t.cucumber_opts = "-p cuke_reports"

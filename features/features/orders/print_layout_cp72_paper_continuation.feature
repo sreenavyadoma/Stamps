@@ -7,7 +7,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
   Scenario: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
@@ -45,7 +45,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then Customs: Add Item 29, Description random, Qty 1, Price 1, Lbs 0, Oz 1 Origin United States, Tariff 29
     Then Customs: Add Item 30, Description random, Qty 1, Price 1, Lbs 0, Oz 1 Origin United States, Tariff 30
     Then Pause for 2 seconds
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Pause for 2 seconds
     Then Close Customs Form
     Then Pause for 2 seconds

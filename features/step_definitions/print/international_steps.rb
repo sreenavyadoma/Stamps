@@ -2,16 +2,16 @@ Then /^International Address: Set Ship-To to$/ do |table|
   log.info "Step: International: Set Print Postage Form Ship-To to..."
   param_hash = table.hashes.first
 
-  name = (param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]
-  company = (param_hash["company"].downcase.include? "random") ? test_helper.random_company_name : param_hash["company"]
-  street_address_1 = (param_hash["street_address_1"].downcase.include? "random") ? test_helper.random_string : param_hash["street_address_1"]
-  street_address_2 = (param_hash["street_address_2"].downcase.include? "random") ? test_helper.random_suite : param_hash["street_address_2"]
-  city = (param_hash["city"].downcase.include? "random") ? test_helper.random_string : param_hash["city"]
-  province = (param_hash["province"].downcase.include? "random") ? test_helper.random_string : param_hash["province"]
-  postal_code = (param_hash["postal_code"].downcase.include? "random") ? test_helper.random_alpha_numeric : param_hash["postal_code"]
-  country = param_hash["country"]
-  phone_num = param_hash["phone"]
-  phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash["phone"]
+  name = (param_hash['name'].downcase.include? "random") ? test_helper.random_name : param_hash['name']
+  company = (param_hash['company'].downcase.include? "random") ? test_helper.random_company_name : param_hash['company']
+  street_address_1 = (param_hash['street_address_1'].downcase.include? "random") ? test_helper.random_string : param_hash['street_address_1']
+  street_address_2 = (param_hash['street_address_2'].downcase.include? "random") ? test_helper.random_suite : param_hash['street_address_2']
+  city = (param_hash['city'].downcase.include? "random") ? test_helper.random_string : param_hash['city']
+  province = (param_hash['province'].downcase.include? "random") ? test_helper.random_string : param_hash['province']
+  postal_code = (param_hash['postal_code'].downcase.include? "random") ? test_helper.random_alpha_numeric : param_hash['postal_code']
+  country = param_hash['country']
+  phone_num = param_hash['phone']
+  phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash['phone']
 
 
   log.info "International Ship-To Name: #{name}"
@@ -217,7 +217,7 @@ Then /^Print Postage Customs: Delete All Items$/ do
 
 end
 
-Then /^Print Postage Customs: Check  I agree to the USPS Privacy Act Statement$/ do
+Then /^Print Postage Customs: Check I agree to the USPS Privacy Act Statement$/ do
   log.info "Step: Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
   @customs_form.i_agree.check

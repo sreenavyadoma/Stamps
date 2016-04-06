@@ -19,7 +19,7 @@ Feature: Registration
     Then WebReg: Set Mailing Info First Name to random
     Then WebReg: Set Mailing Info Last Name to random
     Then WebReg: Set Mailing Info Company to random
-    Then WebReg: Set Mailing Info Address to 1990 E. Grand Ave.
+    Then WebReg: Set Mailing Info Address to 1990 E Grand Avenue
     Then WebReg: Set Mailing Info City to El Segundo
     Then WebReg: Set Mailing Info State to California
     Then WebReg: Set Mailing Info Zip Code to 90245
@@ -39,17 +39,17 @@ Feature: Registration
     Then WebReg: Choose Supplies: Place Order
 
     Then PAM: Customer Search: Search for username random
-    #Then PAM: Load Customer Search Page
-    #Then PAM: Customer Search: Set username to random
-    #Then PAM: Customer Search: Set 5.2 or lower
-    #Then PAM: Customer Search: Click Search button
 
     Then PAM: Customer Profile: Click Change Meter Limit link
     Then PAM: Change Meter Limit: Set USPS approval to Checked
     Then PAM: Change Meter Limit: Set New Meter Limit to $100000
     Then PAM: Change Meter Limit: Click Submit
+    Then PAM: Customer Profile: Get Available Postage Amount
     Then PAM: Customer Profile: Click ACH Credit link
     Then PAM: ACH Purchase: Set Amount to $100000.00
+    Then Pause for 2 seconds
+    Then PAM: Customer Profile: Get Available Postage Amount
+    Then PAM: Customer Profile: Get Available Postage Amount
     Then PAM: Customer Profile: Click  AppCap Overrides link
     Then PAM: AppCap Overrides: Set Internet Postage Printing to Always On
     Then PAM: AppCap Overrides: Set Netstamps Printing to Always On
@@ -69,7 +69,15 @@ Feature: Registration
     Then Open Settings Modal
     Then Settings:  Set Logoff to 2 hours.
     Then Settings:  Save
-    Then Navigation Bar:  Customer Balance
-    Then Pause for 1 second
+    Then Navigation Bar: Customer Balance
+    Then Navigation Bar: Wait while balance less than 5000
+    Then Navigation Bar: Wait while balance less than 5000
+    Then Navigation Bar: Wait while balance less than 5000
     Then Sign out
     Then WebReg:  Send username to standard out
+
+
+    #Then PAM: Load Customer Search Page
+    #Then PAM: Customer Search: Set username to random
+    #Then PAM: Customer Search: Set 5.2 or lower
+    #Then PAM: Customer Search: Click Search button

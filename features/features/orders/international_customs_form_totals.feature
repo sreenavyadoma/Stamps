@@ -3,11 +3,11 @@ Feature:  Customs Form Totals
   Background:
     Given I am signed in to Orders
 
-  @international @international_totals
+  @international_customs_form_totals
   Scenario:  Customs Form Grid - Add Items
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
@@ -23,6 +23,6 @@ Feature:  Customs Form Totals
     Then Expect Customs Form Total Value to be 200.75
     Then Expect Customs Form Total Pounds to be 3
     Then Expect Customs Form Total Ounces to be 3
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Sign out

@@ -252,11 +252,16 @@ module Orders
           def set partial_address_hash
             single_order_form = DetailsForm.new @browser
             single_order_form.validate_address_link
+            country_drop_down = self.country
             #single_order_form.expand
             single_order_form.ship_to.set OrdersHelper.instance.format_address(partial_address_hash)
-            5.times {
+            30.times {
               begin
                 item_label.click
+                country_drop_down.drop_down.safe_click
+                country_drop_down.drop_down.safe_click
+                item_label.click
+
                 break if (browser_helper.present?  exact_address_not_found_field) || (browser_helper.present?  single_order_form.validate_address_link)
               rescue
                 #ignore
@@ -900,14 +905,14 @@ module Orders
       public
       def shipping_address=(table)
         self.origin_zip = table["ship_from_zip"]
-        self.name = table["name"]
-        self.company = table["company"]
+        self.name = table['name']
+        self.company = table['company']
         self.street_address1 = table["street_address"]
         self.street_address2 = table["street_address2"]
-        self.city = table["city"]
+        self.city = table['city']
         self.state = table["state"]
         self.zip = table["zip"]
-        self.phone = table["phone"]
+        self.phone = table['phone']
         self.save
       end
 
@@ -1131,7 +1136,7 @@ module Orders
           when 1
             address = args[0]
             if address.is_a? Hash
-              delete_row(locate_ship_from(address["name"], address["company"], address["city"]))
+              delete_row(locate_ship_from(address['name'], address['company'], address['city']))
             else
               stop_test "Address format is not yet supported for this delete call."
             end
@@ -1201,9 +1206,9 @@ module Orders
           when 1
             if args[0].is_a? Hash
               address_hash = args[0]
-              name = address_hash["name"]
-              company = address_hash["company"]
-              city = address_hash["city"]
+              name = address_hash['name']
+              company = address_hash['company']
+              city = address_hash['city']
             else
               stop_test "Wrong number of arguments for locate_address" unless args.length == 3
             end
@@ -1394,7 +1399,7 @@ module Orders
 
     class TrackingDropDown < OrderForm
       def text_box
-        StampsTextbox.new @browser.text_field :name => 'Tracking'
+        StampsTextbox.new @browser.text_field(name: 'Tracking')
       end
 
       def drop_down
@@ -1410,6 +1415,7 @@ module Orders
             button.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
+            sleep 1
             click_form
             break if box.text.include? selection
           rescue

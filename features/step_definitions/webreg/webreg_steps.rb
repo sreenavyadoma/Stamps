@@ -875,12 +875,19 @@ Then /^WebReg: Choose Supplies: Place Order$/ do
   case @registration_result
     when WebReg::UserIdTaken
       message = @registration_result.message
-      log.info message
-      raise message
+      log.info "USER ID IS TAKEN!  #{message}"
+      raise "USER ID IS TAKEN!  #{message}"
     when WebReg::ChooseSupplies
       if @registration_result.present?
         welcome_page = @registration_result.place_order
-        welcome_page.wait_until_present
+        # wait 10 seconds if welcome page is not present
+        10.times do
+          unless welcome_page.present?
+            sleep 1
+          else
+            break
+          end
+        end
         if welcome_page.present?
           step "WebReg:  Send username to standard out"
         end
