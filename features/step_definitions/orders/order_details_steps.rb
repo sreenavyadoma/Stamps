@@ -277,11 +277,6 @@ Then /^Details: Set Ship-To to Random Address Between Zone 5 through 8$/ do
   step "Details: Set Ship-To address to zone 5 through 8"
 end
 
-
-
-# | name   | company |                    street_address_1 | street_address_2 | city   | province|                postal_code | country | phone   |  email  |
-# | name   | company | street_address   |                                       city             | state | zip    |             country | phone  |  email |
-
 Then /^Details: Set Ship-To address to$/ do |table|
   address = table.hashes.first
   log.info "Step: Details: Set Ship-To address to \n#{address}"
