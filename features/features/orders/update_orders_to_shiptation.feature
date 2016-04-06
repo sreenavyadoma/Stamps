@@ -9,8 +9,8 @@ Feature:  Update Order to ShipStation
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
-      | name   | company | street_address   | city        | state | zip         | country        | phone  |  email |
-      | random | random  | 1970 E Grand Ave | El Segundo  | CA    | 90245-5082  | United States  | random | random |
+      | name       | company      | street_address      | city              | state | zip         | country        | phone           |  email            |
+      | Zone Eight | Ship Station | 377 Santa Rosa Blvd | Fort Walton Beach | FL    | 32548  | United States  | 911-9111-91111  | rtest@stamps.com  |
 
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
@@ -22,7 +22,6 @@ Feature:  Update Order to ShipStation
     Then Details: Set Tracking to "Signature Required"
     Then Grid: Expect Pounds to be 1
     Then Grid: Expect Ounces to be 1
-    Then Grid: Expect Weight to be 1 lbs. 1 oz.
     Then Grid: Expect Insured Value to be $1.00
 
     #here's the shipstation part.
