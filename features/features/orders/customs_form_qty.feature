@@ -24,7 +24,7 @@ Feature: Customs Form Qty
     Then Details: Set ID to random
     Then Details: Set Description to random
 
-    Then Open Customs Form
+    Then Details: Edit Customs Form
 
     Then Customs: Add Item 1
     Then Customs: Set Item Description to item 1
@@ -44,9 +44,9 @@ Feature: Customs Form Qty
     Then Customs: Set Item Origin Country to United States
     Then Customs: Set Item Tarriff to 200
 
-    Then Close Customs Form
+    Then Customs: Close Form
 
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Pause for 2 seconds
     Then Customs: Expect Item 1 Description to be item 1
     Then Customs: Expect Item 1 Quantity to be 100
@@ -64,6 +64,6 @@ Feature: Customs Form Qty
     Then Customs: Expect Item 2 Origin Country to be United States
     Then Customs: Expect Item 2 Tariff to be 200
 
-    Then Close Customs Form
+    Then Customs: Close Form
 
     Then Sign out

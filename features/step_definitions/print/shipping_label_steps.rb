@@ -42,8 +42,8 @@ Then /^Shipping Labels: Open Extra Services$/ do
   @extra_services = @shipping_label.extra_services
 end
 
-Then /^Shipping Labels: Open Customs Form$/ do
-  log.info "Step: Shipping Labels: Open Customs Form"
+Then /^Shipping Labels: Details: Edit Customs Form$/ do
+  log.info "Step: Shipping Labels: Details: Edit Customs Form"
   @shipping_label = postage.shipping_label if @shipping_label.nil?
   @customs_form = @shipping_label.customs
 end

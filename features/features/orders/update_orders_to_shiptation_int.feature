@@ -16,6 +16,7 @@ Feature:  Update International Orders to ShipStation
 
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
+    Then Details: Set Insure For to $50.25
 
     Then Details: Set Reference Number to Reference #123
 
@@ -39,18 +40,10 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect International Ship-To Postal Code to be PostalCode
     Then Details: Expect International Ship-To Phone to be 415-411-1111
 
-    Then Details: Expect Ship-To Country to be France
-    Then Details: Expect International Ship-To Name to be Customer Name
-    Then Details: Expect International Ship-To Company to be Customer Company
-    Then Details: Expect International Ship-To Address 1 to be Street Address 1
-    Then Details: Expect International Ship-To Address 2 to be Street Address 2
-    Then Details: Expect International Ship-To City to be City
-    Then Details: Expect International Ship-To Province to be Province
-    Then Details: Expect International Ship-To Postal Code to be PostalCode
-    Then Details: Expect International Ship-To Phone to be 415-411-1111
-    Then Details: Expect International Ship-To Email to be rtest@stamps.com
-
+    Then Details: Expect Service to be "Priority Mail Express International Legal Flat Rate Envelope"
     Then Details: Expect Reference Number to be Reference #123
+
+    Then Details: Expect Insure For to be $50.25
 
     Then Details: Expect Item 1 Qty to be 1
     Then Details: Expect Item 1 ID to be ID 1
@@ -83,16 +76,9 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect International Ship-To Postal Code to be PostalCode
     Then Details: Expect International Ship-To Phone to be 415-411-1111
 
-    Then Details: Expect Ship-To Country to be France
-    Then Details: Expect International Ship-To Name to be Customer Name
-    Then Details: Expect International Ship-To Company to be Customer Company
-    Then Details: Expect International Ship-To Address 1 to be Street Address 1
-    Then Details: Expect International Ship-To Address 2 to be Street Address 2
-    Then Details: Expect International Ship-To City to be City
-    Then Details: Expect International Ship-To Province to be Province
-    Then Details: Expect International Ship-To Postal Code to be PostalCode
-    Then Details: Expect International Ship-To Phone to be 415-411-1111
-    Then Details: Expect International Ship-To Email to be rtest@stamps.com
+    Then Details: Expect Service to be "Priority Mail Express International Legal Flat Rate Envelope"
+
+    Then Details: Expect Insure For to be $50.25
 
     Then Details: Expect Reference Number to be Reference #123
 
@@ -112,7 +98,27 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect Item 2 ID to be ID 2
     Then Details: Expect Item 2 Description to be Description 2
 
-    Then Open Customs Form
+    Then Details: Edit Customs Form
+
+    Then Customs: Set Package Contents to "Commercial Sample"
+    Then Customs: Set License Number to "123456"
+    Then Customs: Set Certificate Number to "12345678"
+    Then Customs: Set Invoice Number to "Invoice123"
+
+    Then Customs: Set Non-Delivery Options to "Treat as abandoned"
+
+    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set ITN Number to "ITN123"
+
+    Then Customs: Expect Package Contents to be Commercial Sample
+    Then Customs: Expect License Number to be 123456
+    Then Customs: Expect Certificate Number to be 12345678
+    Then Customs: Expect Invoice Number to be Invoice123
+
+    Then Customs: Expect Non-Delivery to be Treat as abandoned
+
+    Then Customs: Expect Internal Transaction Number to be Required
+    Then Customs: Expect ITN Number to be ITN123
 
     Then Customs: Add Item 1
     Then Customs: Set Item Description to item 1
@@ -133,10 +139,26 @@ Feature:  Update International Orders to ShipStation
     Then Customs: Set Item Tarriff to 200
 
     Then Pause for 1 second
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Pause for 2 seconds
-    Then Open Customs Form
+
+    Then Grid: Uncheck row 1
+    Then Pause for 2 seconds
+    Then Grid: Check row 1
     Then Pause for 1 second
+
+    Then Details: Edit Customs Form
+    Then Pause for 1 second
+
+    Then Customs: Expect Package Contents to be Commercial Sample
+    Then Customs: Expect License Number to be 123456
+    Then Customs: Expect Certificate Number to be 12345678
+    Then Customs: Expect Invoice Number to be Invoice123
+
+    Then Customs: Expect Non-Delivery to be Treat as abandoned
+
+    Then Customs: Expect Internal Transaction Number to be Required
+    Then Customs: Expect ITN Number to be ITN123
 
     Then Customs: Expect Item 1 Description to be item 1
     Then Customs: Expect Item 1 Quantity to be 1
@@ -154,7 +176,7 @@ Feature:  Update International Orders to ShipStation
     Then Customs: Expect Item 2 Origin Country to be United States
     Then Customs: Expect Item 2 Tariff to be 200
 
-    Then Close Customs Form
+    Then Customs: Close Form
 
     Then Pause for 1 second
     Then Sign out

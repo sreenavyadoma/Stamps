@@ -156,15 +156,15 @@ Then /^Print Postage Customs: Set More Info to \"(.+)\"$/ do |value|
   @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Print Postage Customs: Set ITN# to \"(.+)\"$/ do |value|
-  log.info "Step: Customs: Set ITN# to #{value}"
+Then /^Print Postage Customs: Set ITN Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set ITN Number to #{value}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
 
   @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Print Postage Customs: Set License# to \"(.+)\"$/ do |value|
-  log.info "Step: Customs: Set License# to #{value}"
+Then /^Print Postage Customs: Set License Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set License Number to #{value}"
   @customs_form = postage.shipping_label.customs if @customs_form.nil?
 
   @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value

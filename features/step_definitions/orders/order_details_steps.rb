@@ -769,19 +769,26 @@ Then /^Details: Expect Reference Number to be (.*)$/ do |value|
   actual_value.should eql @param_details_reference_no
 end
 
+Then /^Details: Expect Insure For to be \$(.*)$/ do |expectation|
+  log.info "Step: Details: Set Insure For to #{expectation}"
+
+  actual_value = orders.details.insure_for.text_box.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
 
 Then /^Details: Expect Service \"(.*)\" to be disabled/ do |service|
   log.info "Details: Expect Service \"#{service}\" to be disabled"
-  selection_disabled = orders.details.service.disabled? service
-  log.info "Test #{(selection_disabled)?"Passed":"Failed"}"
-  selection_disabled.should be true
+  actual_value = orders.details.service.disabled? service
+  log.info "Test #{(actual_value)?"Passed":"Failed"}"
+  actual_value.should be true
 end
 
-Then /^Details: Expect Service \"(.*)\" to be enabled/ do |service|
-  log.info "Details: Expect Service \"#{service}\" to be enabled"
-  selection_enabled = orders.details.service.enabled? service
-  log.info "Test #{(selection_enabled)?"Passed":"Failed"}"
-  selection_enabled.should be true
+Then /^Details: Expect Service \"(.*)\" to be enabled/ do |expectation|
+  log.info "Details: Expect Service \"#{expectation}\" to be enabled"
+  actual_value = orders.details.service.enabled? expectation
+  log.info "Test #{(actual_value)?"Passed":"Failed"}"
+  actual_value.should be true
 end
 
 Then /^Details: Set Insure For checkbox to checked$/ do
@@ -795,11 +802,10 @@ Then /^Details: Set Insure For checkbox to unchecked$/ do
   orders.details.insure_for.checkbox.uncheck
 end
 
-Then /^Details: Set Insure For to \$([\d*\.?\d*]*)$/ do |value|
+Then /^Details: Set Insure For to \$(.*)$/ do |value|
   log.info "Step: Details: Set Insure For to #{value}"
   orders.details.insure_for.set value
 end
-
 Then /^Add Ship-From address$/ do |ship_from|
   log.info "Step: Add Ship-From address #{ship_from}"
   orders.details.ship_from.select("Manage Shipping Addresses...").add ship_from.hashes.first

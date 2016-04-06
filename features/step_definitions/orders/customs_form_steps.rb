@@ -136,141 +136,194 @@ Then /^Customs: Expect Item (\d+) Tariff to be (.*)$/ do |item_number, expectati
   actual_value.should eql expectation
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=begin
-Then /^Details: Set Ship-To address to$/ do |table|
-  log.info "Step: Details: Set Ship-To address to..."
-  param_hash = table.hashes.first
-
-  name = (param_hash['name'].downcase.include? "random") ? test_helper.random_name : param_hash['name']
-  company = (param_hash['company'].downcase.include? "random") ? test_helper.random_company_name : param_hash['company']
-  street_address_1 = (param_hash['street_address_1'].downcase.include? "random") ? test_helper.random_string : param_hash['street_address_1']
-  street_address_2 = (param_hash['street_address_2'].downcase.include? "random") ? test_helper.random_suite : param_hash['street_address_2']
-  city = (param_hash['city'].downcase.include? "random") ? test_helper.random_string : param_hash['city']
-  province = (param_hash['province'].downcase.include? "random") ? test_helper.random_string : param_hash['province']
-  postal_code = (param_hash['postal_code'].downcase.include? "random") ? test_helper.random_alpha_numeric : param_hash['postal_code']
-  country = param_hash['country']
-  phone_num = param_hash['phone']
-  phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash['phone']
-  email_addy = param_hash['email']
-  email = (email_addy.downcase.include? "random") ? test_helper.random_email : param_hash['email']
-
-  log.info "International Ship-To Name: #{name}"
-  log.info "International Ship-To Company: #{company}"
-  log.info "International Ship-To Address 1: #{street_address_1}"
-  log.info "International Ship-To Address 2: #{street_address_2}"
-  log.info "International Ship-To City: #{city}"
-  log.info "International Ship-To Province: #{province}"
-  log.info "International Ship-To Postal Code: #{postal_code}"
-  log.info "International Ship-To Phone: #{phone}"
-  log.info "International Ship-To Email: #{email}"
-
-  step "Details: Set Ship-To Country to #{country}"
-  step "Details: Set International Ship-To Name to \"#{name}\""
-  step "Details: Set International Ship-To Company to \"#{company}\""
-  step "Details: Set International Ship-To Address 1 to \"#{street_address_1}\""
-  step "Details: Set International Ship-To Address 2 to \"#{street_address_2}\""
-  step "Details: Set International Ship-To City to \"#{city}\""
-  step "Details: Set International Ship-To Province to \"#{province}\""
-  step "Details: Set International Ship-To Postal Code to \"#{postal_code}\""
-  step "Details: Set International Ship-To Phone to \"#{phone}\""
-  step "Details: Set International Ship-To Email to \"#{email}\""
-end
-=end
-
-Then /^Open Customs Form$/ do
-  log.info "Step: Open Customs Form"
+Then /^Details: Edit Customs Form$/ do
+  log.info "Step: Details: Edit Customs Form"
   @customs_form = @order_details.customs.edit_form
 end
 
 Then /^Customs: Set Package Contents to \"(.+)\"$/ do |value|
   log.info "Step: Customs: Set Package Contents to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open Customs Form" unless @customs_form.present?
+  step "Details: Edit Customs Form" unless @customs_form.present?
 
   @customs_form.package_contents.select value
+end
+
+Then /^Customs: Expect Package Contents to be (.+)$/ do |expectation|
+  log.info "Customs: Expect Package Contents to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.package_contents.text_box.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
 end
 
 Then /^Customs: Set Non-Delivery Options to \"(.+)\"$/ do |value|
   log.info "Step: Customs: Set Non-Delivery Options to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open Customs Form" unless @customs_form.present?
+  step "Details: Edit Customs Form" unless @customs_form.present?
 
   @customs_form.non_delivery_options.select value
+end
+
+Then /^Customs: Expect Non-Delivery to be (.+)$/ do |expectation|
+  log.info "Customs: Expect Non-Delivery to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.non_delivery_options.text_box.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
 end
 
 Then /^Customs: Set Internal Transaction Number to \"(.+)\"$/ do |value|
   log.info "Step: Customs: Set Internal Transaction Number to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open Customs Form" unless @customs_form.present?
+  step "Details: Edit Customs Form" unless @customs_form.present?
 
   @customs_form.internal_transaction.select (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
   sleep 1
 end
 
+Then /^Customs: Expect Internal Transaction Number to be (.+)$/ do |expectation|
+  log.info "Customs: Expect Internal Transaction Number to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.internal_transaction.text_box.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
+
 Then /^Customs: Set More Info to \"(.+)\"$/ do |value|
   log.info "Step: Customs: Set More Info to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open Customs Form" unless @customs_form.present?
+  step "Details: Edit Customs Form" unless @customs_form.present?
 
   @customs_form.more_info.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Customs: Set ITN# to \"(.+)\"$/ do |value|
-  log.info "Step: Customs: Set ITN# to #{value}"
+Then /^Customs: Set ITN Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set ITN Number to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open Customs Form" unless @customs_form.present?
+  step "Details: Edit Customs Form" unless @customs_form.present?
 
   @customs_form.itn_number.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
 end
 
-Then /^Customs: Set License# to \"(.+)\"$/ do |value|
-  log.info "Step: Customs: Set License# to #{value}"
+Then /^Customs: Expect ITN Number to be (.+)$/ do |expectation|
+  log.info "Customs: Expect ITN Number to  be #{expectation}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open Customs Form" unless @customs_form.present?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.itn_number.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
+
+Then /^Customs: Set License Number to \"(.+)\"$/ do |value|
+  log.info "Step: Customs: Set License Number to #{value}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
 
   @customs_form.license.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Then /^Customs: Expect License Number to be (.+)$/ do |expectation|
+  log.info "Customs: Expect License Number to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.license.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
 end
 
 Then /^Customs: Set Certificate Number to \"(.+)\"$/ do |value|
   log.info "Step: Customs: Set Certificate Number to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open Customs Form" unless @customs_form.present?
+  step "Details: Edit Customs Form" unless @customs_form.present?
 
   @customs_form.certificate.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Then /^Customs: Expect Certificate Number to be (.+)$/ do |expectation|
+  log.info "Customs: Expect Certificate Number to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.certificate.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
 end
 
 Then /^Customs: Set Invoice Number to \"(.+)\"$/ do |value|
   log.info "Step: Customs: Set Invoice Number to #{value}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Open Customs Form" unless @customs_form.present?
+  step "Details: Edit Customs Form" unless @customs_form.present?
 
   @customs_form.invoice.set (value.downcase.include? "random") ? test_helper.random_alpha_numeric : value
+end
+
+Then /^Customs: Expect Invoice Number to be (.+)$/ do |expectation|
+  log.info "Customs: Expect Invoice Number to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.invoice.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
+
+Then /^Customs: Expect xxxxxxxxxxx to be (.+)$/ do |expectation|
+  log.info "Customs: Expect xxxxxxxxxxx to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.xxxxxxxxxxx.text_box.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
+
+Then /^Customs: Expect xxxxxxxxxxx to be (.+)$/ do |expectation|
+  log.info "Customs: Expect xxxxxxxxxxx to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.xxxxxxxxxxx.text_box.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
+
+Then /^Customs: Expect xxxxxxxxxxx to be (.+)$/ do |expectation|
+  log.info "Customs: Expect xxxxxxxxxxx to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.xxxxxxxxxxx.text_box.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
+
+Then /^Customs: Expect xxxxxxxxxxx to be (.+)$/ do |expectation|
+  log.info "Customs: Expect xxxxxxxxxxx to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.xxxxxxxxxxx.text_box.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
+
+Then /^Customs: Expect xxxxxxxxxxx to be (.+)$/ do |expectation|
+  log.info "Customs: Expect xxxxxxxxxxx to  be #{expectation}"
+  @customs_form = @order_details.customs_form if @customs_form.nil?
+  step "Details: Edit Customs Form" unless @customs_form.present?
+
+  actual_value = @customs_form.xxxxxxxxxxx.text_box.text
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
 end
 
 Then /^Customs: Delete Item (\d+)$/ do |item_number|
@@ -310,7 +363,7 @@ Then /^Wait in seconds (\d+)$/ do |seconds|
   sleep seconds.to_i
 end
 
-Then /^Close Customs Form$/ do
+Then /^Customs: Close Form$/ do
   log.info "Step: Closing customs form"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.close
@@ -347,62 +400,62 @@ Then /^Expect Customs Form USPS Privacy Act Warning to be hidden/ do
   usps_privacy_act_warning.should be false
 end
 
-Then /^Expect Customs Form More Info to be hidden$/ do
-  log.info "Step: Expect Customs Form More Info to be hidden"
+Then /^Customs: Expect More Info to be hidden$/ do
+  log.info "Step: Customs: Expect More Info to be hidden"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.more_info.present?.should be false
 end
 
-Then /^Expect Customs Form More Info to be visible$/ do
-  log.info "Step: Expect Customs Form More Info to be visible"
+Then /^Customs: Expect More Info to be visible$/ do
+  log.info "Step: Customs: Expect More Info to be visible"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.more_info.present?.should be true
 end
 
-Then /^Expect Customs Form License# to be visible$/ do
-  log.info "Step: Expect Customs Form License# to be visible"
+Then /^Customs: Expect License Number to be visible$/ do
+  log.info "Step: Customs: Expect License Number to be visible"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.license.present?.should be true
 end
 
-Then /^Expect Customs Form License# to be hidden$/ do
-  log.info "Step: Expect Customs Form License# to be hidden"
+Then /^Customs: Expect License Number to be hidden$/ do
+  log.info "Step: Customs: Expect License Number to be hidden"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.license.present?.should be false
 end
 
-Then /^Expect Customs Form Certificate# to be hidden$/ do
-  log.info "Step: Expect Customs Form Certificate# to be hidden"
+Then /^Customs: Expect Certificate Number to be hidden$/ do
+  log.info "Step: Customs: Expect Certificate Number to be hidden"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.certificate.present?.should be false
 end
 
-Then /^Expect Customs Form Certificate# to be visible$/ do
-  log.info "Step: Expect Customs Form Certificate# to be visible"
+Then /^Customs: Expect Certificate Number to be visible$/ do
+  log.info "Step: Customs: Expect Certificate Number to be visible"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.certificate.present?.should be true
 end
 
-Then /^Expect Customs Form Invoice# to be hidden$/ do
-  log.info "Step: Expect Customs Form Invoice# to be hidden"
+Then /^Customs: Expect Invoice Number to be hidden$/ do
+  log.info "Step: Customs: Expect Invoice Number to be hidden"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.invoice.present?.should be false
 end
 
-Then /^Expect Customs Form Invoice# to be visible$/ do
-  log.info "Step: Expect Customs Form Invoice# to be visible"
+Then /^Customs: Expect Invoice Number to be visible$/ do
+  log.info "Step: Customs: Expect Invoice Number to be visible"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.invoice.present?.should be true
 end
 
-Then /^Expect Customs Form ITN# to be hidden$/ do
-  log.info "Step: Expect Customs Form ITN# to be hidden"
+Then /^Customs: Expect ITN Number to be hidden$/ do
+  log.info "Step: Customs: Expect ITN Number to be hidden"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.itn_number.enabled?.should be false
 end
 
-Then /^Expect Customs Form ITN# to be visible$/ do
-  log.info "Step: Expect Customs Form ITN# to be visible"
+Then /^Customs: Expect ITN Number to be visible$/ do
+  log.info "Step: Customs: Expect ITN Number to be visible"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.itn_number.enabled?.should be true
 end

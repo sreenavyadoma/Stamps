@@ -12,11 +12,11 @@ Feature:  Customs Form Data Tooltip Error
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
     Then Details: Set Ounces to 5
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Pause for 1 second
     Then Cancel Customs Form
     Then Pause for 1 second
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Pause for 1 second
     Then Customs: Uncheck  I agree to the USPS Privacy Act Statement
@@ -33,7 +33,7 @@ Feature:  Customs Form Data Tooltip Error
     Then Customs: Add Item 1, Description random, Qty 1, Price 50, Lbs 9, Oz 9 Origin United States, Tariff 100
     Then Pause for 2 seconds
     Then Expect Customs Form Tooltip Error for Total Weight to be The itemized weight exceeds the package weight
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Sign out
 
 

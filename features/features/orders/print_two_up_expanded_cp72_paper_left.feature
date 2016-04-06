@@ -28,11 +28,11 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
     Then Details: Set Service to "Priority Mail International Large Flat Rate Box"
     Then Details: Set Ounces to 1
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
@@ -40,11 +40,11 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
     Then Details: Set Service to "Priority Mail Express International Package"
     Then Details: Set Ounces to 1
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
@@ -52,11 +52,11 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
     Then Details: Set Service to "Priority Mail Express International Flat Rate Envelope"
     Then Details: Set Ounces to 1
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Grid: Check row 1
     Then Grid: Check row 2
     Then Grid: Check row 3
