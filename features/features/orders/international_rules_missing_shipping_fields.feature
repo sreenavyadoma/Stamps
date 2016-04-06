@@ -78,7 +78,7 @@ Feature: International Shipping fields and Customs Information fields validation
     Then Customs: Set Internal Transaction Number to "Required"
     Then Customs: Set ITN# to "random"
 
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
     Then Sign out

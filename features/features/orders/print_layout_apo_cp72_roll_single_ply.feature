@@ -16,7 +16,7 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
     Then Open Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 2, Oz 1 Origin United States, Tariff 10
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Open Print Modal
     Then Print: Set Media "Roll - 4" x 6" Shipping Label"

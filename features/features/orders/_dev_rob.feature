@@ -267,7 +267,7 @@ Feature: Test Development
     Then Customs: Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs: Set ITN# to "random"
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Sign out
 
@@ -302,7 +302,7 @@ Feature: Test Development
     Then Details: Set Pounds to 2
     Then Open Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
 
@@ -315,6 +315,6 @@ Feature: Test Development
     Then Details: Set Pounds to 2
     Then Open Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"

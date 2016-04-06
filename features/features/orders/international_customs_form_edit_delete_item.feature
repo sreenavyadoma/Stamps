@@ -23,6 +23,6 @@ Feature:  Customs Form Item Grid - Edit/Delete
     Then Customs: Expect Item Grid count to be 2
     Then Customs: Delete Item 1
     Then Customs: Expect Item Grid count to be 1
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Sign out

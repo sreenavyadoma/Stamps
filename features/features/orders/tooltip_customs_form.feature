@@ -17,11 +17,11 @@ Feature:  Customs Form Data Tooltip Error
     Then Cancel Customs Form
     Then Pause for 1 second
     Then Open Customs Form
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Pause for 1 second
     Then Customs: Uncheck  I agree to the USPS Privacy Act Statement
     Then Pause for 1 second
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Pause for 1 second
     Then Customs: Uncheck  I agree to the USPS Privacy Act Statement
 

@@ -23,6 +23,6 @@ Feature:  Customs Form Totals
     Then Expect Customs Form Total Value to be 200.75
     Then Expect Customs Form Total Pounds to be 3
     Then Expect Customs Form Total Ounces to be 3
-    Then Customs: Check  I agree to the USPS Privacy Act Statement
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Close Customs Form
     Then Sign out
