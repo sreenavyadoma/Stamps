@@ -5,7 +5,7 @@ Feature:  Update Order to ShipStation
     Given I am signed in to Orders
 
   @update_orders_to_shipstation
-  Scenario:  Update Order to ShipStation
+  Scenario:  Update ShipStation
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to

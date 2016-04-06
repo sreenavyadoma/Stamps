@@ -30,17 +30,7 @@ Feature:  Order Details Form Placeholder default values
     Then Details: Expect International Ship-To Phone Placeholder to be Phone
     Then Details: Expect International Ship-To Email Placeholder to be Email
 
-    #Then Details: Set Ship-From to default
-    #Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    #Then Details: Set Ounces to 1
-    #Then Details: Set Service to "Priority Mail Package"
-
-    #Then Details: Expect Item Qty to be 0
-    #Then Details: Expect Item ID# to be ID#
-    #Then Details: Expect Item Description to be Description
-
     Then Sign out
-    #As a batch shipper, I want to be able to Reprint for Orders in "Shipped" View [B-01639]
 
 
 

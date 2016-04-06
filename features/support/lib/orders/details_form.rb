@@ -893,7 +893,7 @@ module Orders
     class ShipTo < ShipToFields
 
       def international
-        ShipToInternational.new @browser
+        Orders::Details::ShipToInternational.new @browser
       end
 
       def address
@@ -1866,7 +1866,7 @@ module Orders
       end
   end
 
-    class ItemGrid < OrdersObject
+    class DetailsItemGrid < OrdersObject
 
       class OrderDetailsItem < OrdersObject
 
@@ -2072,7 +2072,7 @@ module Orders
       end
 
       def item_grid
-        ItemGrid.new @browser
+        DetailsItemGrid.new @browser
       end
 
       def customs
