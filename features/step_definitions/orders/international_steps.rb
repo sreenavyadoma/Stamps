@@ -249,6 +249,7 @@ Then /^Details: Expect Ship-To Country to be (.*)$/ do |country|
   order_details_country.should eql country
 end
 
+=begin
 Then /^Details: Set Ship-To address to$/ do |table|
   log.info "Step: Details: Set Ship-To address to..."
   param_hash = table.hashes.first
@@ -287,6 +288,7 @@ Then /^Details: Set Ship-To address to$/ do |table|
   step "Details: Set International Ship-To Phone to \"#{phone}\""
   step "Details: Set International Ship-To Email to \"#{email}\""
 end
+=end
 
 Then /^Open Customs Form$/ do
   log.info "Step: Open Customs Form"
