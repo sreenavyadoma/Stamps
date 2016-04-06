@@ -8,7 +8,14 @@ Feature:  Update Order to ShipStation
   Scenario:  Update Order to ShipStation
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 5 through 8
+    Then Details: Set Ship-To address to
+      | name   | company | street_address   | city        | state | zip         | country        | phone  |  email |
+      | random | random  | 1970 E Grand Ave | El Segundo  | CA    | 90245-5082  | United States  | random | random |
+
+    Then Details: Set Ship-To address to
+      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+      | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
+
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
     Then Details: Set Service to "Priority Mail Package"

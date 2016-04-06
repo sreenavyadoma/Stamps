@@ -249,23 +249,22 @@ Then /^Details: Expect Ship-To Country to be (.*)$/ do |country|
   order_details_country.should eql country
 end
 
-# random, random, 234 Laurier Avenue West, Suite 100, Ottawa, Ontario, K1A, 0G9, random, random
-Then /^Details: Set Ship-To International Adress;$/ do |table|
-  log.info "Step: Details: Set Ship-To International Adress;..."
+Then /^Details: Set Ship-To address to$/ do |table|
+  log.info "Step: Details: Set Ship-To address to..."
   param_hash = table.hashes.first
 
-  name = (param_hash["name"].downcase.include? "random") ? test_helper.random_name : param_hash["name"]
-  company = (param_hash["company"].downcase.include? "random") ? test_helper.random_company_name : param_hash["company"]
-  street_address_1 = (param_hash["street_address_1"].downcase.include? "random") ? test_helper.random_string : param_hash["street_address_1"]
-  street_address_2 = (param_hash["street_address_2"].downcase.include? "random") ? test_helper.random_suite : param_hash["street_address_2"]
-  city = (param_hash["city"].downcase.include? "random") ? test_helper.random_string : param_hash["city"]
-  province = (param_hash["province"].downcase.include? "random") ? test_helper.random_string : param_hash["province"]
-  postal_code = (param_hash["postal_code"].downcase.include? "random") ? test_helper.random_alpha_numeric : param_hash["postal_code"]
-  country = param_hash["country"]
-  phone_num = param_hash["phone"]
-  phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash["phone"]
-  email_addy = param_hash["email"]
-  email = (email_addy.downcase.include? "random") ? test_helper.random_email : param_hash["email"]
+  name = (param_hash['name'].downcase.include? "random") ? test_helper.random_name : param_hash['name']
+  company = (param_hash['company'].downcase.include? "random") ? test_helper.random_company_name : param_hash['company']
+  street_address_1 = (param_hash['street_address_1'].downcase.include? "random") ? test_helper.random_string : param_hash['street_address_1']
+  street_address_2 = (param_hash['street_address_2'].downcase.include? "random") ? test_helper.random_suite : param_hash['street_address_2']
+  city = (param_hash['city'].downcase.include? "random") ? test_helper.random_string : param_hash['city']
+  province = (param_hash['province'].downcase.include? "random") ? test_helper.random_string : param_hash['province']
+  postal_code = (param_hash['postal_code'].downcase.include? "random") ? test_helper.random_alpha_numeric : param_hash['postal_code']
+  country = param_hash['country']
+  phone_num = param_hash['phone']
+  phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash['phone']
+  email_addy = param_hash['email']
+  email = (email_addy.downcase.include? "random") ? test_helper.random_email : param_hash['email']
 
   log.info "International Ship-To Name: #{name}"
   log.info "International Ship-To Company: #{company}"

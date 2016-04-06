@@ -282,28 +282,28 @@ module Stamps
 
     def rand_zone_processing address
       shipping =  address[rand(address.size)]
-      shipping["name"] = test_helper.random_name
-      shipping["company"] = test_helper.random_company_name
-      shipping["phone"] = test_helper.random_phone
-      shipping["email"] = test_helper.random_email
+      shipping['name'] = test_helper.random_name
+      shipping['company'] = test_helper.random_company_name
+      shipping['phone'] = test_helper.random_phone
+      shipping['email'] = test_helper.random_email
       shipping
     end
 
     def rand_zone_1_4
       shipping = data_rand_zone_1_4
-      shipping["name"] = test_helper.random_name
-      shipping["company"] = test_helper.random_company_name
-      shipping["phone"] = test_helper.random_phone
-      shipping["email"] = test_helper.random_email
+      shipping['name'] = test_helper.random_name
+      shipping['company'] = test_helper.random_company_name
+      shipping['phone'] = test_helper.random_phone
+      shipping['email'] = test_helper.random_email
       shipping
     end
 
     def rand_zone_5_8
       shipping = data_rand_zone_5_8
-      shipping["name"] = test_helper.random_name
-      shipping["company"] = test_helper.random_company_name
-      shipping["phone"] = test_helper.random_phone
-      shipping["email"] = test_helper.random_email
+      shipping['name'] = test_helper.random_name
+      shipping['company'] = test_helper.random_company_name
+      shipping['phone'] = test_helper.random_phone
+      shipping['email'] = test_helper.random_email
       shipping
     end
 
@@ -315,10 +315,10 @@ module Stamps
       us_states = data_for(:us_states, {}) if us_states.nil?
       shipping = data_rand_zone_1_4
       shipping["ship_from_zip"] = shipping["zip"]
-      shipping["name"] = random_name
-      shipping["company"] = random_company_name
-      shipping["phone"] = random_phone
-      shipping["email"] = random_email
+      shipping['name'] = random_name
+      shipping['company'] = random_company_name
+      shipping['phone'] = random_phone
+      shipping['email'] = random_email
       shipping["state_abbrev"] = shipping["state"]
       shipping["state"] = us_states[shipping["state_abbrev"]]
       shipping["street_address2"] = random_suite
@@ -329,10 +329,10 @@ module Stamps
       us_states = data_for(:us_states, {}) if us_states.nil?
       shipping = data_rand_zone_5_8
       shipping["ship_from_zip"] = shipping["zip"]
-      shipping["name"] = random_name
-      shipping["company"] = random_company_name
-      shipping["phone"] = random_phone
-      shipping["email"] = random_email
+      shipping['name'] = random_name
+      shipping['company'] = random_company_name
+      shipping['phone'] = random_phone
+      shipping['email'] = random_email
       shipping["state_abbrev"] = shipping["state"]
       shipping["state"] = us_states[shipping["state_abbrev"]]
       shipping["street_address2"] = random_suite

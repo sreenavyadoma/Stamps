@@ -8,7 +8,7 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
 
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | PMEI MFR Box | SDC-1200  | 234 Laurier Avenue West  | random     | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then Details: Set Weight to 1 lbs 1 oz
@@ -21,7 +21,7 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
 
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | FCMI Letter | SDC-1200  | random           | random           | random | random  | random      | Costa Rica | random  | random  |
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"

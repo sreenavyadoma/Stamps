@@ -7,7 +7,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
   Scenario: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI PFR Envelope | 8.5x11 Left Side | random           | random           | random | random  | random      | Germany | random  | random  |
     Then Details: Set Service to "Priority Mail International Padded Flat Rate Envelope"
@@ -20,7 +20,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then Add New Order
 
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Envelope | 8.5x11 Right Side | random           | random           | random | random  | random      | Mexico | random  | random  |
     Then Details: Set Service to "Priority Mail International Legal Flat Rate Envelope"

@@ -7,7 +7,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - left side
   Scenario: Print 1 single ply Intl CP72 label on 5.5x8.5 - left side
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFRB |  5.5x8.5 Left Side | random       | random           | random | random  | random      | Australia | random  | random  |
     Then Details: Set Service to "Priority Mail International Large Flat Rate Box"

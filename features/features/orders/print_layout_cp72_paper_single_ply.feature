@@ -7,7 +7,7 @@ Feature: Print 1 single ply Intl CP72 label on 8.5x11 - left side
   Scenario: Print 1 single ply Intl CP72 label on 8.5x11 - left side
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then Details: Set Service to "Priority Mail Express International Legal Flat Rate Envelope"

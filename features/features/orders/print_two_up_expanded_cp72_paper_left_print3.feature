@@ -23,7 +23,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Details: Set Ounces to 1
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
     Then Details: Set Service to "Priority Mail International Large Flat Rate Box"
@@ -35,7 +35,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Close Customs Form
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
     Then Details: Set Service to "Priority Mail Express International Package"
@@ -47,7 +47,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Close Customs Form
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
     Then Details: Set Service to "Priority Mail Express International Flat Rate Envelope"

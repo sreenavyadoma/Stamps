@@ -7,7 +7,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
   Scenario: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
     Then Details: Set Service to "Priority Mail International Large Flat Rate Box"

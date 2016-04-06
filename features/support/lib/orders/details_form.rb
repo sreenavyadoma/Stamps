@@ -905,14 +905,14 @@ module Orders
       public
       def shipping_address=(table)
         self.origin_zip = table["ship_from_zip"]
-        self.name = table["name"]
-        self.company = table["company"]
+        self.name = table['name']
+        self.company = table['company']
         self.street_address1 = table["street_address"]
         self.street_address2 = table["street_address2"]
-        self.city = table["city"]
+        self.city = table['city']
         self.state = table["state"]
         self.zip = table["zip"]
-        self.phone = table["phone"]
+        self.phone = table['phone']
         self.save
       end
 
@@ -1136,7 +1136,7 @@ module Orders
           when 1
             address = args[0]
             if address.is_a? Hash
-              delete_row(locate_ship_from(address["name"], address["company"], address["city"]))
+              delete_row(locate_ship_from(address['name'], address['company'], address['city']))
             else
               stop_test "Address format is not yet supported for this delete call."
             end
@@ -1206,9 +1206,9 @@ module Orders
           when 1
             if args[0].is_a? Hash
               address_hash = args[0]
-              name = address_hash["name"]
-              company = address_hash["company"]
-              city = address_hash["city"]
+              name = address_hash['name']
+              company = address_hash['company']
+              city = address_hash['city']
             else
               stop_test "Wrong number of arguments for locate_address" unless args.length == 3
             end

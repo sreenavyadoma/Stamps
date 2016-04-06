@@ -7,7 +7,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
   Scenario: User Prints 1 Intl CP72, 1 Intl CN22 label on SDC-1200 - left side
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI Pkg-Flat-Env | SDC-1200  | random           | random           | random | random  | random      | Australia | random  | random  |
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
@@ -19,7 +19,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Close Customs Form
     Then Add New Order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | PMI FR Envelope | SDC-1200  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"

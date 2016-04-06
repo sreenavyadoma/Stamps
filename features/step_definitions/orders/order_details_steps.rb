@@ -237,12 +237,6 @@ Then /^Details: Set Ship-From to (\w+)$/ do |value|
   orders.details.ship_from.select value
 end
 
-Then /^Details: Set Ship-To address to$/ do |table|
-  ship_to = OrdersHelper.instance.address_hash_to_str table.hashes.first
-  log.info "Step: Details: Set Ship-To address to \n#{ship_to}"
-  step "Details: Set Ship-To address to #{ship_to}"
-end
-
 Then /^Details: Set Ship-To to Random Address in Zone 1$/ do
   step "Details: Set Ship-To address to zone 1"
 end
@@ -281,6 +275,61 @@ end
 
 Then /^Details: Set Ship-To to Random Address Between Zone 5 through 8$/ do
   step "Details: Set Ship-To address to zone 5 through 8"
+end
+
+
+
+# | name   | company |                    street_address_1 | street_address_2 | city   | province|                postal_code | country | phone   |  email  |
+# | name   | company | street_address   |                                       city             | state | zip    |             country | phone  |  email |
+
+Then /^Details: Set Ship-To address to$/ do |table|
+  address = table.hashes.first
+  log.info "Step: Details: Set Ship-To address to \n#{address}"
+
+  @ship_to_country = address['country']
+  log.info "Ship-To Country:  #{@ship_to_country}"
+  @ship_to_name = (address['name'].downcase.include? "random") ? test_helper.random_name : address['name']
+  @ship_to_company = (address['company'].downcase.include? "random") ? test_helper.random_company_name : address['company']
+  @ship_to_city = (address['city'].downcase.include? "random") ? test_helper.random_string : address['city']
+  @ship_to_phone = (address['phone'].downcase.include? "random") ? test_helper.random_phone : address['phone']
+  @ship_to_email = (address['email'].downcase.include? "random") ? test_helper.random_email : address['email']
+
+  if @ship_to_country.downcase.include? "united states"
+    @ship_to_street_address = (address['street_address'].downcase.include? "random") ? test_helper.random_string : address['street_address']
+    @ship_to_state = (address['state'].downcase.include? "random") ? test_helper.random_string : address['state']
+    @ship_to_zip = (address['zip'].downcase.include? "random") ? test_helper.random_string : address['zip']
+
+    ship_to_address = "#{@ship_to_name},#{@ship_to_company},#{@ship_to_street_address},#{@ship_to_city} #{@ship_to_state} #{@ship_to_zip}"
+    step "Details: Set Ship-To address to #{ship_to_address}"
+    step "Details: Set Phone to #{@ship_to_phone}"
+    step "Details: Set Email to #{@ship_to_email}"
+  else
+    @ship_to_street_address_1 = (address['street_address_1'].downcase.include? "random") ? test_helper.random_string : address['street_address_1']
+    @ship_to_street_address_2 = (address['street_address_2'].downcase.include? "random") ? test_helper.random_suite : address['street_address_2']
+    @ship_to_province = (address['province'].downcase.include? "random") ? test_helper.random_string : address['province']
+    @ship_to_postal_code = (address['postal_code'].downcase.include? "random") ? test_helper.random_alpha_numeric : address['postal_code']
+
+    log.info "Ship-To Name: #{@ship_to_name}"
+    log.info "Ship-To Company: #{@ship_to_company}"
+    log.info "Ship-To Address 1: #{@ship_to_street_address_1}"
+    log.info "Ship-To Address 2: #{@ship_to_street_address_2}"
+    log.info "Ship-To City: #{@ship_to_city}"
+    log.info "Ship-To Province: #{@ship_to_province}"
+    log.info "Ship-To Postal Code: #{@ship_to_postal_code}"
+    log.info "Ship-To Phone: #{@ship_to_phone}"
+    log.info "Ship-To Email: #{@ship_to_email}"
+
+    step "Details: Set Ship-To Country to #{@ship_to_country}"
+    step "Details: Set International Ship-To Name to \"#{@ship_to_name}\""
+    step "Details: Set International Ship-To Company to \"#{@ship_to_company}\""
+    step "Details: Set International Ship-To Address 1 to \"#{@ship_to_street_address_1}\""
+    step "Details: Set International Ship-To Address 2 to \"#{@ship_to_street_address_2}\""
+    step "Details: Set International Ship-To City to \"#{@ship_to_city}\""
+    step "Details: Set International Ship-To Province to \"#{@ship_to_province}\""
+    step "Details: Set International Ship-To Postal Code to \"#{@ship_to_postal_code}\""
+    step "Details: Set International Ship-To Phone to \"#{@ship_to_phone}\""
+    step "Details: Set International Ship-To Email to \"#{@ship_to_email}\""
+  end
 end
 
 Then /^Details: Set Ship-To address to (.*)$/ do |address|
@@ -334,8 +383,8 @@ Then /^Details: Set Ship-To address to (.*)$/ do |address|
   orders.details.ship_to.address.set formatted_address
 
   begin
-    step "Details: Set Phone to #{address["phone"]}"
-    step "Details: Set Email to #{address["email"]}"
+    step "Details: Set Phone to #{address['phone']}"
+    step "Details: Set Email to #{address['email']}"
   rescue
     #ignore
   end

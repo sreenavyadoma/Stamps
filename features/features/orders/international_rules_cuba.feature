@@ -8,7 +8,7 @@ Feature: Cuba Internal Transaction Number Required
     Then Add New Order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to Cuba
-    Then Details: Set Ship-To International Adress;
+    Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
 
