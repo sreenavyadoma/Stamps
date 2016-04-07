@@ -17,7 +17,7 @@ Feature: Printing total cost
     Then Details: Hide Ship-To fields
     Then Details: Set Ounces to 1
     Then Details: Set Service to "Priority Mail Package"
-    Then Details: Set Insure For to $10.00
+    Then Details: Set Insure-For to $10.00
     Then Details: Set Tracking to "Signature Required"
     Then Pause for 1 second
     Then Details: Expect Total is corect

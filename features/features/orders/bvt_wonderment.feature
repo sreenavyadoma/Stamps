@@ -15,5 +15,5 @@ Feature:  BVT Wonderment
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Insure For to $1.00
+    Then Details: Set Insure-For to $1.00
     Then Sign out

@@ -18,7 +18,7 @@ Feature: Verify Ship Works Integration
     Then Details: Expect Ounces Textbox to be enabled
     Then Details: Expect Service Textbox to be enabled
     Then Details: Expect Service drop-down to be enabled
-    Then Details: Expect Insured Textbox to be enabled
+    Then Details: Expect Insure-For Textbox to be enabled
     Then Expect Order Detials Form Tracking Textbox to be enabled
     Then Details: Expect Tracking drop-down to be enabled
     Then Sign out

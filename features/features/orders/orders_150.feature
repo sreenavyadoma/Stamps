@@ -15,7 +15,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 1
     * Details: Set Service to "First-Class Mail Large Envelope/Flat"
-    * Details: Set Insure For to $15.00
+    * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
     * Add New Order
@@ -25,7 +25,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 2
     * Details: Set Service to "First-Class Mail Package/Thick Envelope"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
     #Priority Mail
@@ -55,7 +55,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 5
     * Details: Set Service to "Priority Mail Large Package"
-    * Details: Set Insure For to $145.00
+    * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -74,7 +74,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 7
     * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Details: Set Insure For to $98.00
+    * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -93,7 +93,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 9
     * Details: Set Service to "Priority Mail Small Flat Rate Box"
-    * Details: Set Insure For to $30.00
+    * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -103,7 +103,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 10
     * Details: Set Service to "Priority Mail Medium Flat Rate Box"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -113,7 +113,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 11
     * Details: Set Service to "Priority Mail Large Flat Rate Box"
-    * Details: Set Insure For to $239.00
+    * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -123,7 +123,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 12
     * Details: Set Service to "Priority Mail Regional Rate Box A"
-    * Details: Set Insure For to $105.00
+    * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -133,7 +133,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 13
     * Details: Set Service to "Priority Mail Regional Rate Box B"
-    * Details: Set Insure For to $205.00
+    * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -142,7 +142,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 14
-    * Details: Set Insure For to $305.00
+    * Details: Set Insure-For to $305.00
     * Details: Set Tracking to "Signature Required"
 
     # Priority Mail Express
@@ -201,7 +201,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 20
     * Details: Set Service to "Media Mail Package"
-    * Details: Set Insure For to $56.00
+    * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
     # Parcel Select
@@ -213,7 +213,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 21
     * Details: Set Service to "Parcel Select Ground Package"
-    * Details: Set Insure For to $345.00
+    * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -223,7 +223,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 22
     * Details: Set Service to "Parcel Select Ground Large Package"
-    * Details: Set Insure For to $456.00
+    * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -233,7 +233,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 23
     * Details: Set Service to "Parcel Select Ground Oversized Package"
-    * Details: Set Insure For to $567.00
+    * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
     # International
@@ -289,7 +289,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 1
     * Details: Set Service to "First-Class Mail Large Envelope/Flat"
-    * Details: Set Insure For to $15.00
+    * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
     * Add New Order
@@ -299,7 +299,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 2
     * Details: Set Service to "First-Class Mail Package/Thick Envelope"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
     #Priority Mail
@@ -329,7 +329,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 5
     * Details: Set Service to "Priority Mail Large Package"
-    * Details: Set Insure For to $145.00
+    * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -348,7 +348,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 7
     * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Details: Set Insure For to $98.00
+    * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -367,7 +367,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 9
     * Details: Set Service to "Priority Mail Small Flat Rate Box"
-    * Details: Set Insure For to $30.00
+    * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -377,7 +377,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 10
     * Details: Set Service to "Priority Mail Medium Flat Rate Box"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -387,7 +387,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 11
     * Details: Set Service to "Priority Mail Large Flat Rate Box"
-    * Details: Set Insure For to $239.00
+    * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -397,7 +397,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 12
     * Details: Set Service to "Priority Mail Regional Rate Box A"
-    * Details: Set Insure For to $105.00
+    * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -407,7 +407,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 13
     * Details: Set Service to "Priority Mail Regional Rate Box B"
-    * Details: Set Insure For to $205.00
+    * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -416,7 +416,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 14
-    * Details: Set Insure For to $305.00
+    * Details: Set Insure-For to $305.00
     * Details: Set Tracking to "Signature Required"
 
     # Priority Mail Express
@@ -475,7 +475,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 20
     * Details: Set Service to "Media Mail Package"
-    * Details: Set Insure For to $56.00
+    * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
     # Parcel Select
@@ -487,7 +487,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 21
     * Details: Set Service to "Parcel Select Ground Package"
-    * Details: Set Insure For to $345.00
+    * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -497,7 +497,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 22
     * Details: Set Service to "Parcel Select Ground Large Package"
-    * Details: Set Insure For to $456.00
+    * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -507,7 +507,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 23
     * Details: Set Service to "Parcel Select Ground Oversized Package"
-    * Details: Set Insure For to $567.00
+    * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
     # International
@@ -563,7 +563,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 1
     * Details: Set Service to "First-Class Mail Large Envelope/Flat"
-    * Details: Set Insure For to $15.00
+    * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
     * Add New Order
@@ -573,7 +573,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 2
     * Details: Set Service to "First-Class Mail Package/Thick Envelope"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
     #Priority Mail
@@ -603,7 +603,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 5
     * Details: Set Service to "Priority Mail Large Package"
-    * Details: Set Insure For to $145.00
+    * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -622,7 +622,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 7
     * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Details: Set Insure For to $98.00
+    * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -641,7 +641,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 9
     * Details: Set Service to "Priority Mail Small Flat Rate Box"
-    * Details: Set Insure For to $30.00
+    * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -651,7 +651,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 10
     * Details: Set Service to "Priority Mail Medium Flat Rate Box"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -661,7 +661,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 11
     * Details: Set Service to "Priority Mail Large Flat Rate Box"
-    * Details: Set Insure For to $239.00
+    * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -671,7 +671,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 12
     * Details: Set Service to "Priority Mail Regional Rate Box A"
-    * Details: Set Insure For to $105.00
+    * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -681,7 +681,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 13
     * Details: Set Service to "Priority Mail Regional Rate Box B"
-    * Details: Set Insure For to $205.00
+    * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -689,7 +689,7 @@ Feature: 150 orders
     * Details: Set Ship-From to default
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
     * Details: Set Ounces to 14
-    * Details: Set Insure For to $305.00
+    * Details: Set Insure-For to $305.00
     * Details: Set Tracking to "Signature Required"
 
     # Priority Mail Express
@@ -748,7 +748,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 20
     * Details: Set Service to "Media Mail Package"
-    * Details: Set Insure For to $56.00
+    * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
     # Parcel Select
@@ -760,7 +760,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 21
     * Details: Set Service to "Parcel Select Ground Package"
-    * Details: Set Insure For to $345.00
+    * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -770,7 +770,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 22
     * Details: Set Service to "Parcel Select Ground Large Package"
-    * Details: Set Insure For to $456.00
+    * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -780,7 +780,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 23
     * Details: Set Service to "Parcel Select Ground Oversized Package"
-    * Details: Set Insure For to $567.00
+    * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
     # International
@@ -836,7 +836,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 1
     * Details: Set Service to "First-Class Mail Large Envelope/Flat"
-    * Details: Set Insure For to $15.00
+    * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
     * Add New Order
@@ -846,7 +846,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 2
     * Details: Set Service to "First-Class Mail Package/Thick Envelope"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
     #Priority Mail
@@ -876,7 +876,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 5
     * Details: Set Service to "Priority Mail Large Package"
-    * Details: Set Insure For to $145.00
+    * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -895,7 +895,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 7
     * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Details: Set Insure For to $98.00
+    * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -914,7 +914,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 9
     * Details: Set Service to "Priority Mail Small Flat Rate Box"
-    * Details: Set Insure For to $30.00
+    * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -924,7 +924,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 10
     * Details: Set Service to "Priority Mail Medium Flat Rate Box"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -934,7 +934,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 11
     * Details: Set Service to "Priority Mail Large Flat Rate Box"
-    * Details: Set Insure For to $239.00
+    * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -944,7 +944,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 12
     * Details: Set Service to "Priority Mail Regional Rate Box A"
-    * Details: Set Insure For to $105.00
+    * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -954,7 +954,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 13
     * Details: Set Service to "Priority Mail Regional Rate Box B"
-    * Details: Set Insure For to $205.00
+    * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -963,7 +963,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 14
-    * Details: Set Insure For to $305.00
+    * Details: Set Insure-For to $305.00
     * Details: Set Tracking to "Signature Required"
 
     # Priority Mail Express
@@ -1022,7 +1022,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 20
     * Details: Set Service to "Media Mail Package"
-    * Details: Set Insure For to $56.00
+    * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
     # Parcel Select
@@ -1034,7 +1034,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 21
     * Details: Set Service to "Parcel Select Ground Package"
-    * Details: Set Insure For to $345.00
+    * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -1044,7 +1044,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 22
     * Details: Set Service to "Parcel Select Ground Large Package"
-    * Details: Set Insure For to $456.00
+    * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1054,7 +1054,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 23
     * Details: Set Service to "Parcel Select Ground Oversized Package"
-    * Details: Set Insure For to $567.00
+    * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
     # International
@@ -1110,7 +1110,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 1
     * Details: Set Service to "First-Class Mail Large Envelope/Flat"
-    * Details: Set Insure For to $15.00
+    * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
     * Add New Order
@@ -1120,7 +1120,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 2
     * Details: Set Service to "First-Class Mail Package/Thick Envelope"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
     #Priority Mail
@@ -1150,7 +1150,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 5
     * Details: Set Service to "Priority Mail Large Package"
-    * Details: Set Insure For to $145.00
+    * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1169,7 +1169,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 7
     * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Details: Set Insure For to $98.00
+    * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -1188,7 +1188,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 9
     * Details: Set Service to "Priority Mail Small Flat Rate Box"
-    * Details: Set Insure For to $30.00
+    * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1198,7 +1198,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 10
     * Details: Set Service to "Priority Mail Medium Flat Rate Box"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1208,7 +1208,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 11
     * Details: Set Service to "Priority Mail Large Flat Rate Box"
-    * Details: Set Insure For to $239.00
+    * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1218,7 +1218,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 12
     * Details: Set Service to "Priority Mail Regional Rate Box A"
-    * Details: Set Insure For to $105.00
+    * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1228,7 +1228,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 13
     * Details: Set Service to "Priority Mail Regional Rate Box B"
-    * Details: Set Insure For to $205.00
+    * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -1237,7 +1237,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 14
-    * Details: Set Insure For to $305.00
+    * Details: Set Insure-For to $305.00
     * Details: Set Tracking to "Signature Required"
 
     # Priority Mail Express
@@ -1296,7 +1296,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 20
     * Details: Set Service to "Media Mail Package"
-    * Details: Set Insure For to $56.00
+    * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
     # Parcel Select
@@ -1308,7 +1308,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 21
     * Details: Set Service to "Parcel Select Ground Package"
-    * Details: Set Insure For to $345.00
+    * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -1318,7 +1318,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 22
     * Details: Set Service to "Parcel Select Ground Large Package"
-    * Details: Set Insure For to $456.00
+    * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1328,7 +1328,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 23
     * Details: Set Service to "Parcel Select Ground Oversized Package"
-    * Details: Set Insure For to $567.00
+    * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
     # International
@@ -1384,7 +1384,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 1
     * Details: Set Service to "First-Class Mail Large Envelope/Flat"
-    * Details: Set Insure For to $15.00
+    * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
     * Add New Order
@@ -1394,7 +1394,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 2
     * Details: Set Service to "First-Class Mail Package/Thick Envelope"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
     #Priority Mail
@@ -1424,7 +1424,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 5
     * Details: Set Service to "Priority Mail Large Package"
-    * Details: Set Insure For to $145.00
+    * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1443,7 +1443,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 7
     * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
-    * Details: Set Insure For to $98.00
+    * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -1462,7 +1462,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 9
     * Details: Set Service to "Priority Mail Small Flat Rate Box"
-    * Details: Set Insure For to $30.00
+    * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1472,7 +1472,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 10
     * Details: Set Service to "Priority Mail Medium Flat Rate Box"
-    * Details: Set Insure For to $45.00
+    * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1482,7 +1482,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 11
     * Details: Set Service to "Priority Mail Large Flat Rate Box"
-    * Details: Set Insure For to $239.00
+    * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1492,7 +1492,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 12
     * Details: Set Service to "Priority Mail Regional Rate Box A"
-    * Details: Set Insure For to $105.00
+    * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1502,7 +1502,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 13
     * Details: Set Service to "Priority Mail Regional Rate Box B"
-    * Details: Set Insure For to $205.00
+    * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -1511,7 +1511,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 14
-    * Details: Set Insure For to $305.00
+    * Details: Set Insure-For to $305.00
     * Details: Set Tracking to "Signature Required"
 
     # Priority Mail Express
@@ -1570,7 +1570,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 20
     * Details: Set Service to "Media Mail Package"
-    * Details: Set Insure For to $56.00
+    * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
     # Parcel Select
@@ -1582,7 +1582,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 21
     * Details: Set Service to "Parcel Select Ground Package"
-    * Details: Set Insure For to $345.00
+    * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
     * Add New Order
@@ -1592,7 +1592,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 22
     * Details: Set Service to "Parcel Select Ground Large Package"
-    * Details: Set Insure For to $456.00
+    * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
     * Add New Order
@@ -1602,7 +1602,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 23
     * Details: Set Service to "Parcel Select Ground Oversized Package"
-    * Details: Set Insure For to $567.00
+    * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
     # International

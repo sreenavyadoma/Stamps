@@ -12,7 +12,7 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
     Then Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Details: Set Ounces to 3
     Then Details: Set Pounds to 2
-    Then Details: Set Insure For to $1.00
+    Then Details: Set Insure-For to $1.00
     Then Details: Set Height to 1
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -21,7 +21,7 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
     Then Details: Set Service to "Priority Mail Package"
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 1
-    Then Details: Set Insure For to $11.00
+    Then Details: Set Insure-For to $11.00
     Then Details: Set Height to 2
     Then Details: Set Length to 3
     Then Details: Set Width to 4

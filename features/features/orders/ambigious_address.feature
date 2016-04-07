@@ -15,7 +15,7 @@ Feature: Ambigious Address
     Then Select row 1 from Exact Address Not Found module
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1
-    Then Details: Set Insure For to $200
+    Then Details: Set Insure-For to $200
     Then Grid: Expect Recipient to be Hillary Clinton
     Then Grid: Expect Company to be The White House
     Then Grid: Expect City to be San Francisco
