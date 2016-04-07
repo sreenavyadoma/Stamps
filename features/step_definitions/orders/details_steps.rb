@@ -759,20 +759,16 @@ Then /^Details: Set Reference Number to (.*)$/ do |value|
   orders.details.reference_no.set @param_details_reference_no
 end
 
-Then /^Details: Expect Reference Number to be (.*)$/ do |value|
-  @param_details_reference_no = (value.downcase.include? "random") ? @param_details_reference_no : value
-
+Then /^Details: Expect Reference Number to be (.*)$/ do |expectation|
+  @param_details_reference_no = (expectation.downcase.include? "random") ? @param_details_reference_no : expectation
   log.info "Details: Expect Reference Number to be #{@param_details_reference_no}"
-
   actual_value = orders.details.reference_no.text
-
   log.info "Test #{(actual_value==@param_details_reference_no)?"Passed":"Failed"}"
   actual_value.should eql @param_details_reference_no
 end
 
 Then /^Details: Expect Insure-For to be \$(.*)$/ do |expectation|
   log.info "Step: Details: Set Insure-For to #{expectation}"
-
   actual_value = orders.details.insure_for.text_box.text
   log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation

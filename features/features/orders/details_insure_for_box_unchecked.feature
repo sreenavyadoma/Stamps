@@ -13,6 +13,7 @@ Feature: Order Details Insure-For box value - External Orders
     Then Details: Check Insure-For checkbox
     Then Details: Expect Insure-For Textbox to be enabled
     Then Details: Set Insure-For to $100.00
+    Then Details: Expect Insure-For to be $100.00
     Then Pause for 1 second
     Then Grid: Expect Insured Value to be $100.00
     Then Details: Uncheck Insure-For checkbox
