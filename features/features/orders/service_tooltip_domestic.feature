@@ -24,7 +24,7 @@ Feature: Service Tooltip
     Then Details: Expect Service Tooltip for "Priority Mail Express International Package" to include "Ship up to 70 lbs. using any thick envelope or box with pricing that varies by weight and country. The USPS provides free packaging for Priority Mail Express which can be ordered from Stamps.com.||Packaging requirements:||Length + 2x width + 2x height cannot exceed 108" (some countries have further restrictions)"
     Then Details: Expect Service Tooltip for "Priority Mail Express International Flat Rate Envelope" to include "Ship up to 4 lbs. with pricing that varies by country, not weight.  You must use the 9 1/2" x 12 1/2" USPS-provided envelope which can be ordered for free from Stamps.com."
     Then Details: Expect Service Tooltip for "Priority Mail Express International Padded Flat Rate Envelope" to include "Ship up to 4 lbs. with pricing that varies by country, not weight.  You must use the 9 1/2" x 12 1/2" USPS-provided padded envelope which can be ordered for free from Stamps.com."
-    Then Details: Expect Service Tooltip for "Priority Mail Express International Legal Flat Rate Envelope" to include "Ship up to 4 lbs. with pricing that varies by country, not weight.  You must use the 9 1/2" x 15" USPS-provided envelopes which can be ordered for free from Stamps.com."
+    Then Details: Expect Service Tooltip for "Priority Mail International Package" to include "Ship up to 4 lbs. with pricing that varies by country, not weight.  You must use the 9 1/2" x 15" USPS-provided envelopes which can be ordered for free from Stamps.com."
 
   @service_tooltip
   Scenario: Domestic Service Tooltip Tests

@@ -12,7 +12,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
     Then Details: Set Service to "Priority Mail International Large Flat Rate Box"
     Then Details: Set Weight to 2 lbs 0 oz
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Lbs 0, Oz 1 Origin United States, Tariff 1
     Then Customs: Add Item 2, Description random, Qty 1, Price 2, Lbs 0, Oz 1 Origin United States, Tariff 2
@@ -46,7 +46,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then Customs: Add Item 30, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 30
     Then Customs: Add Item 31, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 31
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Open Print Modal
     Then Print: Set Media "Roll - 4" x 6" Shipping Label"
     Then Print: Print Sample

@@ -12,11 +12,11 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
       | PMEI PFTE |  sdc1200 Right Side 1  | random       | random           | random | random  | random      | Costa Rica | random  | random  |
     Then Details: Set Service to "Priority Mail Express International Package/Flat/Thick Envelope"
     Then Details: Set Ounces to 1
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Open Print Modal
     Then Print: Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print: Set Printer to "factory"

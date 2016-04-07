@@ -247,7 +247,7 @@ Feature: Test Development
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
 
   #Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs: Set Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be "Required"
@@ -266,9 +266,9 @@ Feature: Test Development
 
     Then Customs: Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
-    Then Customs: Set ITN# to "random"
+    Then Customs: Set ITN Number to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Sign out
 
   @_dev_rob
@@ -284,10 +284,10 @@ Feature: Test Development
     Then Details: Set Height to 1
     Then Details: Set Width to 1
     Then Details: Set Service to "Priority Mail Package"
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Toolbar: Print
 
   @rob_dev_int
@@ -300,10 +300,10 @@ Feature: Test Development
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 2
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
 
     Then Add New Order
@@ -313,8 +313,8 @@ Feature: Test Development
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 2
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"

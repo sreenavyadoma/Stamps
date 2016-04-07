@@ -12,7 +12,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
     Then Details: Set Weight to 1 lbs 14 oz
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Lbs 0, Oz 1 Origin United States, Tariff 1
     Then Customs: Add Item 2, Description random, Qty 1, Price 1, Lbs 0, Oz 1 Origin United States, Tariff 2
@@ -47,7 +47,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then Pause for 2 seconds
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Pause for 2 seconds
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Pause for 2 seconds
     Then Open Print Modal
     Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"

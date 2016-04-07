@@ -22,47 +22,47 @@ Feature: International Shipping fields and Customs Information fields validation
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
     Then Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Open Customs Form
+    Then Details: Edit Customs Form
 
     Then Customs: Set Package Contents to "Commercial Sample"
-    Then Expect Customs Form More Info to be hidden
-    Then Expect Customs Form License# to be visible
-    Then Expect Customs Form Certificate# to be visible
-    Then Expect Customs Form Invoice# to be visible
+    Then Customs: Expect More Info to be hidden
+    Then Customs: Expect License Number to be visible
+    Then Customs: Expect Certificate Number to be visible
+    Then Customs: Expect Invoice Number to be visible
 
     Then Customs: Set Package Contents to "Document"
-    Then Expect Customs Form More Info to be visible
-    Then Expect Customs Form License# to be hidden
-    Then Expect Customs Form Certificate# to be hidden
-    Then Expect Customs Form Invoice# to be hidden
+    Then Customs: Expect More Info to be visible
+    Then Customs: Expect License Number to be hidden
+    Then Customs: Expect Certificate Number to be hidden
+    Then Customs: Expect Invoice Number to be hidden
 
     Then Customs: Set Package Contents to "Gift"
-    Then Expect Customs Form More Info to be visible
-    Then Expect Customs Form License# to be hidden
-    Then Expect Customs Form Certificate# to be hidden
-    Then Expect Customs Form Invoice# to be hidden
+    Then Customs: Expect More Info to be visible
+    Then Customs: Expect License Number to be hidden
+    Then Customs: Expect Certificate Number to be hidden
+    Then Customs: Expect Invoice Number to be hidden
 
     Then Customs: Set Package Contents to "Humanitarian Donation"
-    Then Expect Customs Form More Info to be visible
-    Then Expect Customs Form License# to be hidden
-    Then Expect Customs Form Certificate# to be hidden
-    Then Expect Customs Form Invoice# to be hidden
+    Then Customs: Expect More Info to be visible
+    Then Customs: Expect License Number to be hidden
+    Then Customs: Expect Certificate Number to be hidden
+    Then Customs: Expect Invoice Number to be hidden
 
     Then Customs: Set Package Contents to "Merchandise"
-    Then Expect Customs Form More Info to be visible
-    Then Expect Customs Form License# to be hidden
-    Then Expect Customs Form Certificate# to be hidden
-    Then Expect Customs Form Invoice# to be hidden
+    Then Customs: Expect More Info to be visible
+    Then Customs: Expect License Number to be hidden
+    Then Customs: Expect Certificate Number to be hidden
+    Then Customs: Expect Invoice Number to be hidden
 
     Then Customs: Set Package Contents to "Returned Goods"
-    Then Expect Customs Form More Info to be visible
-    Then Expect Customs Form License# to be hidden
-    Then Expect Customs Form Certificate# to be hidden
-    Then Expect Customs Form Invoice# to be hidden
+    Then Customs: Expect More Info to be visible
+    Then Customs: Expect License Number to be hidden
+    Then Customs: Expect Certificate Number to be hidden
+    Then Customs: Expect Invoice Number to be hidden
 
     Then Customs: Set Package Contents to "Commercial Sample"
-    Then Expect Customs Form More Info to be hidden
-    Then Customs: Set License# to "random"
+    Then Customs: Expect More Info to be hidden
+    Then Customs: Set License Number to "random"
     Then Customs: Set Certificate Number to "random"
     Then Customs: Set Invoice Number to "random"
 
@@ -70,15 +70,15 @@ Feature: International Shipping fields and Customs Information fields validation
     Then Customs: Set Non-Delivery Options to "Return to sender"
 
     Then Customs: Set Internal Transaction Number to "Required"
-    Then Expect Customs Form ITN# to be visible
+    Then Customs: Expect ITN Number to be visible
 
     Then Customs: Set Internal Transaction Number to "Not required"
-    Then Expect Customs Form ITN# to be hidden
+    Then Customs: Expect ITN Number to be hidden
 
     Then Customs: Set Internal Transaction Number to "Required"
-    Then Customs: Set ITN# to "random"
+    Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
     Then Sign out

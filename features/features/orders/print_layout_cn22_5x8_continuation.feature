@@ -12,7 +12,7 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
       | PMEI PFTE |  5.5x8.5 Left Side | random           | random           | random | random  | random      | Philippines | random  | random  |
     Then Details: Set Service to "Priority Mail Express International Package"
     Then Details: Set Weight to 2 lbs 0 oz
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Gift"
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Lbs 0, Oz 1 Origin United States, Tariff 1
     Then Customs: Add Item 2, Description random, Qty 1, Price 2, Lbs 0, Oz 1 Origin United States, Tariff 2
@@ -49,7 +49,7 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
     Then Pause for 2 seconds
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Pause for 2 seconds
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Pause for 3 seconds
     Then Open Print Modal
     Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""

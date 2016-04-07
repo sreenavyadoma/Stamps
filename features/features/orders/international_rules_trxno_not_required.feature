@@ -13,7 +13,7 @@ Feature: Internal Transaction # Not Required
     Then Details: Set Ounces to 5
     Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
     Then Details: Set Ounces to 5
-    Then Open Customs Form
+    Then Details: Edit Customs Form
     Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Customs: Set Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be "Not required"
@@ -30,7 +30,7 @@ Feature: Internal Transaction # Not Required
     Then Customs: Set Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Not required"
     Then Expect Customs Form Internal Transaction # to be "Not required"
-    Then Customs: Set ITN# to "random"
+    Then Customs: Set ITN Number to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Close Customs Form
+    Then Customs: Close Form
     Then Sign out
