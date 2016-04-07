@@ -66,7 +66,7 @@ Then /^Details: Expect Item (\d+) ID Placeholder to be (.*)$/ do |item_number, e
   actual_value.should eql expectation
 end
 
-Then /^Details: Expect Item Description Placeholder to be (.*)$/ do |item_number, expectation|
+Then /^Details: Expect Item (\d+) Description Placeholder to be (.*)$/ do |item_number, expectation|
   log.info "Details: Expect Item Description Placeholder to be #{expectation}"
   item = orders.details.item_grid.item item_number.to_i
   actual_value = item.description.placeholder

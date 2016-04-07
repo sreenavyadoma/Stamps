@@ -16,7 +16,7 @@ Feature:  Order Details Form Placeholder default values
 
     Then Details: Expect Item 1 Qty Placeholder to be Qty
     Then Details: Expect Item 1 ID Placeholder to be ID #
-    Then Details: Expect Item Description Placeholder to be Description
+    Then Details: Expect Item 1 Description Placeholder to be Description
 
     Then Details: Set Ship-To Country to Curacao
 
