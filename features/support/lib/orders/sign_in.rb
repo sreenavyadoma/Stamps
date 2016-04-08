@@ -80,7 +80,7 @@ module Orders
           when /sc/
             url = "http://printext.qasc.stamps.com/orders/"
           when /staging/
-            url = "http://print.staging.stamps.com/orders/"
+            url = "https://print.testing.stamps.com/orders/"
           when /rating/
             url = "http://printext.qacc.stamps.com/orders/"
           when /./
