@@ -34,9 +34,9 @@ Feature: Print two labels on one sheet
     Then Expect Print Modal right-side label selected
     Then Toolbar: Print
 
+    Then Pause for 6 seconds
     Then Sign out
 
-#todo-rob
 
 
 
