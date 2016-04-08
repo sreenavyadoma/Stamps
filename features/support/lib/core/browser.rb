@@ -339,12 +339,15 @@ module Stamps
       end
 
       def set_until text
+        set text
+=begin
         10.times do
           safe_set text
           from_textbox = browser_helper.text @field
           from_textbox == "" if from_textbox.nil?
           break if from_textbox.include? text
         end
+=end
       end
     end
 
