@@ -800,7 +800,7 @@ end
 Then /^Details: Expect Insure-For Cost to be greater than \$(.*)$/ do |expectation|
   log.info "Details: Expect Insure-For Cost to be greater than #{expectation}"
   expectation = expectation.to_f
-  30.times do
+  15.times do
     actual_value = orders.details.insure_for.cost.to_f
     if actual_value>expectation
       break
@@ -910,8 +910,7 @@ end
 Then /^Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expectation|
   log.info "Step: Details: Expect Service Cost inline price for #{service} to be greater than #{expectation}"
   actual_value = orders.details.service.cost service
-  10.times { |counter|
-    #log_expectation_eql "#{counter}. #{service} Inline Rate", expectation, actual_value, (actual_value.to_f >= expectation.to_f)
+  10.times {
     break if actual_value.to_f >= expectation.to_f
     actual_value = orders.details.service.cost service
   }
@@ -929,11 +928,27 @@ Then /^Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |servic
   }
 end
 
-Then /^Details: Expect Service Cost to be \$(.*)$/ do |expectation|
+Then /^Details: Expect Service Cost to be \$([0-9.]*)$/ do |expectation|
   log.info "Step: Details: Expect Service Cost to be $#{expectation}"
   actual_value = orders.details.service.cost
   log.info "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
+end
+
+Then /^Details: Expect Service Cost to be greater than \$([0-9.]*)$/ do |expectation|
+  log.info "Details: Expect Service Cost to be greater than $#{expectation}"
+  expectation = expectation.to_f
+  10.times do
+    actual_value = orders.details.service.cost.to_f
+    if actual_value>expectation
+      break
+    else
+      sleep 1
+    end
+  end
+  actual_value = orders.details.service.cost.to_f
+  log.info "Test #{(actual_value>expectation)?"Passed":"Failed"}"
+  actual_value.should be > expectation
 end
 
 Then /^Details: Expect Tracking Cost to be \$([0-9.]*)$/ do |expectation|
@@ -949,6 +964,22 @@ Then /^Details: Expect Tracking Cost to be \$([0-9.]*)$/ do |expectation|
   actual_value = orders.details.tracking.cost
   log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
+end
+
+Then /^Details: Expect Tracking Cost to be greater than \$([0-9.]*)$/ do |expectation|
+  log.info "Step: Details: Expect Tracking Cost to be #{expectation}"
+  expectation = expectation.to_f
+  10.times do
+    actual_value = orders.details.tracking.cost.to_f
+    if actual_value>expectation
+      break
+    else
+      sleep 1
+    end
+  end
+  actual_value = orders.details.tracking.cost.to_f
+  log.info "Test #{(actual_value>expectation)?"Passed":"Failed"}"
+  actual_value.should be > expectation
 end
 
 Then /^Details: Expect Pounds to be (\d+)$/ do |expectation|
@@ -1035,13 +1066,6 @@ Then /^Verify Order Details Form Total Amount$/ do
   log.info "Step: Verify Order Details Form Total Amount"
 end
 
-Then /^Details: Expect Insurance Cost to be \$([0-9.]*)$/ do |expectation|
-  log.info "Step: Details: Expect Insurance Cost to be #{expectation}"
-  actual_value = orders.details.insure_for.cost
-  log.info "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
-end
-
 Then /^Details: Expect Service to be \"(.*)\"$/ do |expectation|
   log.info "Step: Details: Expect Service to be #{expectation}"
   begin
@@ -1077,12 +1101,12 @@ Then /^Details: Expect Total to be \$(.*)$/ do |expectation|
     10.times do
       orders.details.click_form
       sleep 1
-      actual_value = orders.details.total
+      actual_value = orders.details.total.cost
       orders.details.click_form
       sleep 1
       break if actual_value.eql? expectation
     end
-    actual_value = orders.details.total
+    actual_value = orders.details.total.cost
     actual_value.should eql expectation
   end unless expectation.length == 0
 end
