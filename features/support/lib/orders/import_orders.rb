@@ -64,7 +64,7 @@ module Orders
     end
 
     def select_csv_file
-      button = StampsInput.new @browser.input(id: "files-button-fileInputEl")
+      button = StampsButton.new @browser.input(id: "files-button-fileInputEl")
       open_file = Windows::OpenFile.new
       10.times do
         button.safe_click

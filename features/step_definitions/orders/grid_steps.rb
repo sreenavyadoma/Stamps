@@ -91,14 +91,24 @@ Then /^Grid: Expect Ship Date for this order to be today plus (\d+)$/ do |day|
   grid_ship_date.should eql expected_ship_date
 end
 
-Then /^Grid: Set New Order ID to uncheck$/ do
-  log.info "Grid: Set New Order ID to uncheck"
+Then /^Grid: Uncheck New Order ID$/ do
+  log.info "Grid: Uncheck New Order ID"
   orders.grid.checkbox.uncheck_order_id @order_id
 end
 
-Then /^Grid: Set New Order ID to check$/ do
-  log.info "Grid: Set New Order ID to check"
+Then /^Grid: Check New Order ID$/ do
+  log.info "Grid: Check New Order ID"
   orders.grid.checkbox.check_order_id @order_id
+end
+
+Then /^Grid: Check Environment Order ID$/ do
+  @order_id = (ENV['ORDER_ID'].nil?)?"":ENV['ORDER_ID']
+  expectation = "ENV['ORDER_ID'] is not nil"
+  expectation = "ENV['ORDER_ID'] is nil! This test needs a value for this variable." if @order_id.size == 0
+  expectation.should eql "ENV['ORDER_ID'] is not nil"
+
+  log.info "Grid: Check Order ID #{@order_id}"
+  step "Grid: Check Order ID #{@order_id}"
 end
 
 Then /^Grid: Check Order ID (.*)$/ do |order_id|

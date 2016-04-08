@@ -769,9 +769,48 @@ end
 
 Then /^Details: Expect Insure-For to be \$(.*)$/ do |expectation|
   log.info "Step: Details: Set Insure-For to #{expectation}"
+  5.times do
+    actual_value = orders.details.insure_for.text_box.text
+    if actual_value==expectation
+      break
+    else
+      sleep 1
+    end
+  end
   actual_value = orders.details.insure_for.text_box.text
   log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
+end
+
+Then /^Details: Expect Insure-For Cost to be \$(.*)$/ do |expectation|
+  log.info "Details: Expect Insure-For Cost to be #{expectation}"
+  5.times do
+    actual_value = orders.details.insure_for.cost
+    if actual_value==expectation
+      break
+    else
+      sleep 1
+    end
+  end
+  actual_value = orders.details.insure_for.cost
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
+
+Then /^Details: Expect Insure-For Cost to be greater than \$(.*)$/ do |expectation|
+  log.info "Details: Expect Insure-For Cost to be greater than #{expectation}"
+  expectation = expectation.to_f
+  5.times do
+    actual_value = orders.details.insure_for.cost.to_f
+    if actual_value>expectation
+      break
+    else
+      sleep 1
+    end
+  end
+  actual_value = orders.details.insure_for.cost.to_f
+  log.info "Test #{(actual_value>expectation)?"Passed":"Failed"}"
+  actual_value.should be > expectation
 end
 
 Then /^Details: Expect Service \"(.*)\" to be disabled/ do |service|

@@ -1835,7 +1835,7 @@ module Orders
       def set value
         checkbox.check
         checkbox.check
-        text_box.set value
+        text_box.set_until value
       end
 
       def increment value
@@ -2080,7 +2080,7 @@ module Orders
       end
 
       def reference_no
-        StampsInput.new (@browser.input css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
+        StampsTextbox.new (@browser.input css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
       end
 
       # ------------------------check if below are valid

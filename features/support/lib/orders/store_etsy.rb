@@ -145,7 +145,7 @@ module Orders
       end
 
       def sign_in
-        button = StampsInput.new @browser.input(id: 'signin_button')
+        button = StampsButton.new @browser.input(id: 'signin_button')
         etsy_page = EtsyPage.new @browser
 
         10.times do
@@ -162,7 +162,7 @@ module Orders
       end
 
       def allow_access
-        button = StampsInput.new @browser.input(css: 'input[type=submit]')
+        button = StampsButton.new @browser.input(css: 'input[type=submit]')
         settings = EtsySettings.new @browser
 
         3.times do
@@ -176,7 +176,7 @@ module Orders
       end
 
       def allow_access_after_reconnect
-        button = StampsInput.new @browser.input(css: 'input[type=submit]')
+        button = StampsButton.new @browser.input(css: 'input[type=submit]')
         manage_stores = ManageStores.new @browser
 
         3.times do
