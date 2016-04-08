@@ -800,7 +800,7 @@ end
 Then /^Details: Expect Insure-For Cost to be greater than \$(.*)$/ do |expectation|
   log.info "Details: Expect Insure-For Cost to be greater than #{expectation}"
   expectation = expectation.to_f
-  5.times do
+  30.times do
     actual_value = orders.details.insure_for.cost.to_f
     if actual_value>expectation
       break
