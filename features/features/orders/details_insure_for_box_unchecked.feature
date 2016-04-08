@@ -6,7 +6,7 @@ Feature: Order Details Insure-For box value - External Orders
   Background:
     Given I am signed in to Orders
 
-  @details_insure_for_box_unchecked
+  @details_insure_for_box_unchecked_imported_orders
   Scenario: Insure-For - External Orders
     Then Grid: Check Environment Order ID
     Then Details: Set Service to "Priority Mail Flat Rate Envelope"
