@@ -7,8 +7,8 @@ Then /^Save Shipping Costs Data$/ do
   @old_balance = orders.navigation_bar.balance.amount
 end
 
-Then /^Details: Expect Total is corect$/ do
-  log.info "Step: Details: Expect Total is corect"
+Then /^Details: Expect  Ship Cost Total is correct$/ do
+  log.info "Step: Details: Expect  Ship Cost Total is correct"
   @total_amount = orders.details.total
   @service_cost = orders.details.service.cost
   @tracking_cost = orders.details.tracking.cost

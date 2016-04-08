@@ -140,7 +140,7 @@ print_many_orders: --tags @print_many_orders --guess VERBOSE=false HEALTHCHECK=t
 printing_errors: --tags @printing_error --guess VERBOSE=false HEALTHCHECK=true
 printing:  --tags @print --guess VERBOSE=false HEALTHCHECK=true
 print_sample: --tags @print_sample --guess VERBOSE=false HEALTHCHECK=true
-details_total_cost: --tags @details_total_cost --guess VERBOSE=false HEALTHCHECK=true
+details_ship_cost_total: --tags @details_ship_cost_total --guess VERBOSE=false HEALTHCHECK=true
 print_date: --tags @print_date --guess VERBOSE=false HEALTHCHECK=true
 print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=true
 print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=false HEALTHCHECK=true

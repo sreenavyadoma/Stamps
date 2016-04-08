@@ -4,7 +4,7 @@ Feature: Printing total cost
   Background:
     Given I am signed in to Orders using ff
 
-  @details_total_cost
+  @details_ship_cost_total
   Scenario: B-01631 As a batch shipper, I want to be able to see the total cost of my print job before I print
     Then Add New Order
     Then Details: Set Ship-From to default
@@ -20,5 +20,7 @@ Feature: Printing total cost
     Then Details: Set Insure-For to $10.00
     Then Details: Set Tracking to "Signature Required"
     Then Pause for 1 second
-    Then Details: Expect Total is corect
+    Then Details: Expect  Ship Cost Total is correct
     Then Sign out
+
+
