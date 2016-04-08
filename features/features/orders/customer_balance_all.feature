@@ -1,7 +1,7 @@
 
 Feature: Postage Balance
 
-  @postage_balance_update
+  @nav_postage_balance_update
   Scenario: Update Postage Balance After Each Print
     Given I am signed in to Orders
     Then Add New Order
@@ -19,5 +19,5 @@ Feature: Postage Balance
     Then Print: Set Printer to "factory"
     Then Toolbar: Print
     Then Pause for 3 seconds
-    Then Expect Printing cost is deducted from customer balance if there were no printing errors
+    Then NavBar: Expect Customer Balance is deducted the Printing Cost
     Then Sign out

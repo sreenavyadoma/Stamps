@@ -53,8 +53,8 @@ Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is succe
   end
 end
 
-Then /^Expect Printing cost is deducted from customer balance if there were no printing errors$/ do
-  log.info "Step: Expect Printing cost is deducted from customer balance if there were no printing errors"
+Then /^NavBar: Expect Customer Balance is deducted the Printing Cost$/ do
+  log.info "Step: NavBar: Expect Customer Balance is deducted the Printing Cost"
   log.info "Printing Error:  #{@printing_error}"
   log.info "Old Balance: #{@old_balance}"
   if @printing_error.length > 0

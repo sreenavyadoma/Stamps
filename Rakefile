@@ -468,8 +468,8 @@ Cucumber::Rake::Task.new(:reprint) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:postage_balance_update) do |t|
-  t.profile = 'postage_balance_update'
+Cucumber::Rake::Task.new(:nav_postage_balance_update) do |t|
+  t.profile = 'nav_postage_balance_update'
   t.cucumber_opts = "-p cuke_reports"
 end
 
