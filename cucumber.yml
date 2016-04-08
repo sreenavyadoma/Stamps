@@ -1,7 +1,7 @@
 default: --profile cuke_reports --profile rob_dev_cc # import_orders_ship_from_test
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev_cc: --tags @details_insure_for_box_unchecked_imported_orders --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=c2jinmzmu64  PW=pass111  #nhr9mm6m5l hd9glvtoauago
+rob_dev_cc: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=c2jinmzmu64  PW=pass111  #nhr9mm6m5l hd9glvtoauago
 rob_dev_staging: --tags @registration --guess VERBOSE=true HEALTHCHECK=false URL=staging BROWSER=ff USR=hm5u7jvga4hl PW=pass111 #nhr9mm6m5l
 rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=chrome USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ie USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
@@ -29,7 +29,7 @@ XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
-details_insure_for_box_unchecked_imported_orders: --tags @details_insure_for_box_unchecked_imported_orders --guess VERBOSE=false HEALTHCHECK=true #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
+details_insure_for_box_unchecked_imported: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=false HEALTHCHECK=true #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
 
 
 update_orders_to_shipstation_int: --tags @update_orders_to_shipstation_int --guess VERBOSE=false HEALTHCHECK=true

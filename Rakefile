@@ -23,8 +23,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:details_insure_for_box_unchecked_imported_orders) do |t|
-  t.profile = 'details_insure_for_box_unchecked_imported_orders'
+Cucumber::Rake::Task.new(:details_insure_for_box_unchecked_imported) do |t|
+  t.profile = 'details_insure_for_box_unchecked_imported'
   t.cucumber_opts = "-p cuke_reports"
 end
 
