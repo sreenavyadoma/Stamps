@@ -464,16 +464,10 @@ module Stamps
             # get the value of an attribute
             field = args[0]
             attribute_name = args[1]
-            10.times do
-              begin
-                value = field.attribute_value attribute_name
-                # return an empty string if value is nil
-                return "" if value.nil?
-                return value if value.length > 0
-              rescue => e
-                #log.info "Attribute: #{attribute}, Field:  #{field}. #{e}"
-                #ignroe
-              end
+            begin
+              field.attribute_value attribute_name
+            rescue
+              ""
             end
           when 3
             # set the value of an attribute

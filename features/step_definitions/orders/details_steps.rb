@@ -1068,15 +1068,13 @@ end
 
 Then /^Details: Expect Service to be \"(.*)\"$/ do |expectation|
   log.info "Step: Details: Expect Service to be #{expectation}"
-  begin
-    10.times do
-      actual_value = orders.details.service.text_box.text
-      break if actual_value.include? expectation
-    end
+  10.times do
     actual_value = orders.details.service.text_box.text
-    log.info "Test #{(actual_value.include? expectation)?"Passed":"Failed"}"
-    actual_value.should include expectation
-  end unless expectation.length == 0
+    break if actual_value.include? expectation
+  end
+  actual_value = orders.details.service.text_box.text
+  log.info "Test #{(actual_value.include? expectation)?"Passed":"Failed"}"
+  actual_value.should include expectation
 end
 
 Then /^Details: Expect Tracking to be \"([\w\s]*)\"$/ do |expectation|

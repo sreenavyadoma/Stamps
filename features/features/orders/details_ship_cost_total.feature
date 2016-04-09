@@ -4,7 +4,7 @@ Feature: Details Ship Cost Total
   2. Update Total Cost at Bottom of Details Panel
 
   Background:
-    Given I am signed in to Orders using ff
+    Given I am signed in to Orders
 
   @details_ship_cost_total
   Scenario: Ship Cost Total
