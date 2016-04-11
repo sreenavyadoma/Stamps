@@ -553,8 +553,8 @@ Cucumber::Rake::Task.new(:service_tooltip) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:change_order_status) do |t|
-  t.profile = 'change_order_status'
+Cucumber::Rake::Task.new(:filter_change_order_status) do |t|
+  t.profile = 'filter_change_order_status'
   t.cucumber_opts = "-p cuke_reports"
 end
 

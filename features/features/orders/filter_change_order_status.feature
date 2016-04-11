@@ -4,7 +4,7 @@ Feature: Add Canceled Filter Panel - and Allow User to Manually Change Order Sta
   Background:
     Given I am signed in to Orders
 
-  @change_order_status
+  @filter_change_order_status
   Scenario: Add Canceled Filter Panel - and Allow User to Manually Change Order Status
     Then Filter: Select Shipped
     Then Pause for 3 seconds
