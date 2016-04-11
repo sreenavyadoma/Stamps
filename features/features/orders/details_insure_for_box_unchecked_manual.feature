@@ -19,13 +19,13 @@ Feature: Order Details Insure-For box value - Manual Orders
     Then Pause for 2 seconds
     Then Details: Expect Insure-For to be $100.00
     Then Details: Expect Insure-For Cost to be greater than $1.00
-    #Then Grid: Expect Insured Value to be $100.00
+    Then Grid: Expect Insured Value to be $100.00
     Then Details: Uncheck Insure-For checkbox
     Then Pause for 2 seconds
     Then Details: Expect Insure-For Textbox to be disabled
     Then Details: Expect Insure-For to be $0.00
     Then Details: Expect Insure-For Cost to be $0.00
-    #Then Grid: Expect Insured Value to be $0.00
+    Then Grid: Expect Insured Value to be $0.00
 
     Then Sign out
 

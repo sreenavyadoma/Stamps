@@ -24,6 +24,7 @@ Feature: Priority Mail and Large Dimensions
     Then Details: Expect Service "Priority Mail Package" to be enabled
     Then Pause for 1 second
     Then Details: Set Service to "Priority Mail Package"
+    Then Pause for 2 seconds
     Then Details: Expect Length to be 0
     Then Details: Expect Height to be 0
     Then Details: Expect Width to be 0
