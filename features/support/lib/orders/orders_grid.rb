@@ -109,7 +109,7 @@ module Orders
       end
 
       def row_number order_id
-        row = 1
+        row = 0
         column = column_number(:order_id)
         css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column})>div"
         #log.info "Order ID: #{order_id} CSS: #{css}"
@@ -227,7 +227,7 @@ module Orders
     class OrderId < Column
 
       def exist? order_id
-        row_number order_id > 0
+        row_number(order_id) > 0
       end
 
       def menu

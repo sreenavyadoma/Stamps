@@ -64,7 +64,7 @@ module Orders
       end
 
       def sign_in
-        StampsInput.new @browser.input Orders::Locators::SignIn::sign_in
+        StampsButton.new @browser.input Orders::Locators::SignIn::sign_in
       end
 
       def remember_my_username
@@ -80,7 +80,7 @@ module Orders
           when /sc/
             url = "http://printext.qasc.stamps.com/orders/"
           when /staging/
-            url = "http://print.staging.stamps.com/orders/"
+            url = "https://print.testing.stamps.com/orders/"
           when /rating/
             url = "http://printext.qacc.stamps.com/orders/"
           when /./

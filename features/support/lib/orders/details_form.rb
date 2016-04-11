@@ -1835,7 +1835,7 @@ module Orders
       def set value
         checkbox.check
         checkbox.check
-        text_box.set value
+        text_box.set_until value
       end
 
       def increment value
@@ -1868,7 +1868,7 @@ module Orders
 
     class DetailsItemGrid < OrdersObject
 
-      class OrderDetailsItem < OrdersObject
+      class DetailsItem < OrdersObject
 
         class Qty < OrdersObject
           def initialize browser, number
@@ -1954,11 +1954,11 @@ module Orders
           log.info "Item Count: #{size}"
         }
 
-        OrderDetailsItem.new @browser, number
+        DetailsItem.new @browser, number
       end
     end
 
-    class CollapsedOrderDetails < OrdersObject
+    class DetailsCollapsible < OrdersObject
       def field
         @browser.img(class: "x-tool-img x-tool-expand-left")
       end
@@ -1976,12 +1976,12 @@ module Orders
       end
     end
 
-    class OrderDetailsToolbar < OrdersObject
+    class DetailsToolbar < OrdersObject
       class ToolbarMenu < OrdersObject
           def collapse_panel
             selection = StampsLabel.new @browser.span(text: "Collapse Panel")
             drop_down = StampsButton.new (@browser.spans(css: "span[class*='sdc-icon-more']").first)
-            collapsed_details = CollapsedOrderDetails.new @browser
+            collapsed_details = DetailsCollapsible.new @browser
             10.times do
               drop_down.safe_click unless selection.present?
               selection.safe_click
@@ -2007,7 +2007,25 @@ module Orders
 
         stop_test "Unable to obtain Order ID from Single Order Details Form"
       end
+    end
 
+    class DetailsFooter < OrdersObject
+      def label
+        StampsLabel.new @browser.strong(text: 'Total Ship Cost:')
+      end
+
+      def cost
+        cost_label = StampsLabel.new (@browser.labels :css => "label[class*=total_cost]")[0]
+        10.times do
+          begin
+            cost = cost_label.text
+          rescue
+            #ignore
+          end
+          break unless cost.include? "$"
+        end
+        test_helper.remove_dollar_sign cost_label.text
+      end
     end
 
     class DetailsForm < OrderForm
@@ -2017,7 +2035,7 @@ module Orders
       end
 
       def open
-        collapsed_details = CollapsedOrderDetails.new @browser
+        collapsed_details = DetailsCollapsible.new @browser
         5.times do
           if collapsed_details.present?
             collapsed_details.open
@@ -2027,7 +2045,7 @@ module Orders
       end
 
       def toolbar
-        OrderDetailsToolbar.new @browser
+        DetailsToolbar.new @browser
       end
 
       def ship_from
@@ -2059,16 +2077,7 @@ module Orders
       end
 
       def total
-        cost_label = StampsLabel.new (@browser.labels :css => "label[class*=total_cost]")[0]
-        10.times do
-          begin
-            cost = cost_label.text
-          rescue
-            #ignore
-          end
-          break unless cost.include? "$"
-        end
-        test_helper.remove_dollar_sign cost_label.text
+        DetailsFooter.new @browser
       end
 
       def item_grid
@@ -2080,7 +2089,7 @@ module Orders
       end
 
       def reference_no
-        StampsInput.new (@browser.input css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
+        StampsTextbox.new (@browser.input css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
       end
 
       # ------------------------check if below are valid
@@ -2107,7 +2116,7 @@ module Orders
       end
 
       def item line_item
-        OrderDetailsItem.new @browser, line_item
+        DetailsItem.new @browser, line_item
       end
 
       def auto_suggest_name_array

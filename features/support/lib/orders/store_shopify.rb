@@ -274,7 +274,7 @@ module Orders
       end
 
       def sign_in
-        button = StampsInput.new @browser.input(css: "input[value='Log in']")
+        button = StampsButton.new @browser.input(css: "input[value='Log in']")
         settings_page = ShopifySettings.new @browser
 
         10.times do

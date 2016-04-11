@@ -32,9 +32,10 @@ module Print
             password = ENV["PW"]
           end
         else
-          log.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
+          log.message "Using Default Sign-in Credentials."
           username = ENV["USR"]
           password = ENV["PW"]
+          log.message "USERNAME: #{username}, PASSWORD: #{password}"
       end
 
       sign_in_link = StampsLink.new @browser.link(:text => "Sign In")

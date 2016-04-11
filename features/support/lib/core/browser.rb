@@ -141,8 +141,19 @@ module Stamps
         BrowserHelper.instance
       end
 
-      def attribute_value name
-        browser_helper.attribute_value @field, name
+      def attribute_value *args
+        case args.length
+          when 1
+            #fetch the attribute value of this element using specified name
+            attribute_name = args[0]
+            browser_helper.attribute_value @field, attribute_name
+          when 2
+            attribute_name = args[0]
+            value = args[1]
+            browser_helper.attribute_value @field, attribute_name, value
+          else
+            raise "Illegal number of arguments for attribute_value. Pass 1 argument to get the value of that element or pass 2 arguments to set the value of that element"
+        end
       end
 
       def placeholder
@@ -265,9 +276,6 @@ module Stamps
       end
     end
 
-    class StampsButton < StampsClickableField
-    end
-
     class StampsLink < StampsLabel
       def url
         stop_test "url is not yet implemented"
@@ -275,11 +283,13 @@ module Stamps
     end
 
     class StampsInput < StampsLabel
+=begin
       def set text
         script = "return arguments[0].value = '#{text}'"
         browser = @field.browser
         browser.execute_script(script, @field)
       end
+=end
 
       def send_keys special_char
         browser_helper.send_keys @field, special_char
@@ -295,10 +305,28 @@ module Stamps
       end
     end
 
+    class StampsButton < StampsInput
+    end
+
     class StampsTextbox < StampsInput
 
       def set text
-        browser_helper.set @field, text
+        15.times do
+          begin
+            # set field text normally
+            browser_helper.set @field, text
+            text_value = browser_helper.text @field
+            break if text_value==text
+
+            # set field attribute value
+            attribute_value "value", ""
+            attribute_value "value", text
+            text_value = browser_helper.text @field
+            break if text_value==text
+          rescue
+            #ignore
+          end
+        end
         self
       end
 
@@ -311,12 +339,15 @@ module Stamps
       end
 
       def set_until text
-        10.times{
+        set text
+=begin
+        10.times do
           safe_set text
           from_textbox = browser_helper.text @field
           from_textbox == "" if from_textbox.nil?
           break if from_textbox.include? text
-        }
+        end
+=end
       end
     end
 
@@ -426,18 +457,28 @@ module Stamps
         enabled
       end
 
-      def attribute_value field, attribute
-          5.times{
+      def attribute_value *args
+
+        case args.length
+          when 2
+            # get the value of an attribute
+            field = args[0]
+            attribute_name = args[1]
             begin
-              @attribute_field_value = field.attribute_value attribute
-              return @attribute_field_value unless @attribute_field_value.length < 1
-            rescue => e
-              #log.info "Attribute: #{attribute}, Field:  #{field}. #{e}"
-            #ignroe
+              field.attribute_value attribute_name
+            rescue
+              ""
             end
-          }
-        #log_attribute_get field, attribute, value
-        @attribute_field_value
+          when 3
+            # set the value of an attribute
+            field = args[0]
+            attribute_name = args[1]
+            value = args[2]
+            script = "return arguments[0].#{attribute_name} = '#{value}'"
+            field.browser.execute_script(script, field)
+          else
+            raise "Illegal number of arguments for attribute_value.  Check your test."
+        end
       end
 
       def drop_down browser, drop_down_button, selection_field_type, drop_down_input, selection

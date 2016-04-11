@@ -21,7 +21,7 @@ Then /^Verify Local Rating$/ do |table|
 
     10.times do
       @order_details.click_form
-      total = @order_details.total
+      total = @order_details.total.cost
       if total.eql? element["total"]
         results[index] = total.eql? element["total"]
         break
@@ -29,14 +29,14 @@ Then /^Verify Local Rating$/ do |table|
         results[index] = total.eql? element["total"]
       end
     end
-    total = @order_details.total
+    total = @order_details.total.cost
 
     expected_total_amount = element["total"]
 
     5.times do
       orders.details.click_form
       sleep 1
-      actual = orders.details.total
+      actual = orders.details.total.cost
       orders.details.click_form
       orders.details.click_form
       sleep 1
@@ -47,7 +47,7 @@ Then /^Verify Local Rating$/ do |table|
     log.info "  Test #{index} #{(results[index])?"Passed":"Failed"}"
     log.info "  --------------------------------------------------------------------------- "
 
-    actual = orders.details.total
+    actual = orders.details.total.cost
     actual.should == expected_total_amount
 
     if actual != expected_total_amount

@@ -183,7 +183,7 @@ module Stores
     end
 
     def proceed_to_checkout
-      button = StampsInput.new @browser.input(css: "input[name='btn_checkout_guest']")
+      button = StampsButton.new @browser.input(css: "input[name='btn_checkout_guest']")
       checkout = VolusionCheckOut.new @browser
       10.times do
         button.safe_click
@@ -319,7 +319,7 @@ module Stores
     end
 
     def continue
-      button = StampsInput.new @browser.input(id: "btnContinue")
+      button = StampsButton.new @browser.input(id: "btnContinue")
       shipping_address = VolusionShippingAddress.new @browser
       10.times do
         button.safe_click
@@ -351,7 +351,7 @@ module Stores
     end
 
     def continue
-      button = StampsInput.new @browser.img(css: "img[src*=Continue]")
+      button = StampsButton.new @browser.img(css: "img[src*=Continue]")
       registration = VolusionRegistration.new @browser
       10.times do
         button.safe_click

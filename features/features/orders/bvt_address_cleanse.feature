@@ -14,7 +14,7 @@ Feature:  BVT Address Cleansing
     Then Details: Set Service to "Priority Mail Package"
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1
-    Then Details: Set Insure For to $200
+    Then Details: Set Insure-For to $200
     Then Pause for 2 seconds
     Then Grid: Expect Recipient to be Euan Davidson
     Then Grid: Expect Company to be Company Name

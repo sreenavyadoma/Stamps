@@ -1,8 +1,9 @@
-default: --profile cuke_reports --profile rob_dev_cc # import_orders_ship_from_test
+default: --profile cuke_reports --profile rob_dev_sc # import_orders_ship_from_test
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev_cc: --tags @details_placeholders --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=ff USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
-rob_dev_staging: --tags @registration --guess VERBOSE=true HEALTHCHECK=false URL=staging BROWSER=ff USR=hm5u7jvga4hl PW=pass111 #nhr9mm6m5l
+rob_dev_cc: --tags @change_order_status --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=nhr9mm6m5l  PW=pass111  # hd9glvtoauago
+rob_dev_sc: --tags @details_large_dimensions_pm --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yh95ws85j  PW=pass111 # c2jinmzmu64 store
+rob_dev_staging: --tags @change_order_status --guess VERBOSE=true HEALTHCHECK=false URL=staging BROWSER=ff USR=hm5u7jvga4hl PW=pass111 #nhr9mm6m5l
 rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=chrome USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ie USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 
@@ -29,7 +30,9 @@ XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
-XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false HEALTHCHECK=true
+details_insure_for_box_unchecked_manual: --tags @details_insure_for_box_unchecked_manual --guess VERBOSE=false HEALTHCHECK=true
+details_insure_for_box_unchecked_imported: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=false HEALTHCHECK=true #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
 
 
 update_orders_to_shipstation_int: --tags @update_orders_to_shipstation_int --guess VERBOSE=false HEALTHCHECK=true
@@ -139,11 +142,11 @@ print_many_orders: --tags @print_many_orders --guess VERBOSE=false HEALTHCHECK=t
 printing_errors: --tags @printing_error --guess VERBOSE=false HEALTHCHECK=true
 printing:  --tags @print --guess VERBOSE=false HEALTHCHECK=true
 print_sample: --tags @print_sample --guess VERBOSE=false HEALTHCHECK=true
-details_total_cost: --tags @details_total_cost --guess VERBOSE=false HEALTHCHECK=true
+details_ship_cost_total: --tags @details_ship_cost_total --guess VERBOSE=false HEALTHCHECK=true
 print_date: --tags @print_date --guess VERBOSE=false HEALTHCHECK=true
 print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=true
 print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=false HEALTHCHECK=true
-postage_balance_update: --tags @postage_balance_update --guess VERBOSE=false HEALTHCHECK=true
+nav_postage_balance_update: --tags @nav_postage_balance_update --guess VERBOSE=false HEALTHCHECK=true
 reprint: --tags @reprint --guess VERBOSE=false HEALTHCHECK=true
 print_layouts_cp72: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=true
 print_layouts_cn22: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=true

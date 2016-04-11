@@ -3,13 +3,28 @@ Then /^Save Shipping Costs Data$/ do
   @service_cost = orders.details.service.cost
   @insurance_cost = orders.details.insure_for.cost
   @tracking_cost = orders.details.tracking.cost
-  @total_amount = orders.details.total
+  @total_amount = orders.details.total.cost
   @old_balance = orders.navigation_bar.balance.amount
 end
 
-Then /^Details: Expect Total is corect$/ do
-  log.info "Step: Details: Expect Total is corect"
-  @total_amount = orders.details.total
+Then /^Details: Expect Total label to be (.*)$/ do |expectation|
+  log.info "Details: Expect Total Ship Cost exist and is in Bold letters"
+  15.times do
+    actual_value = orders.details.total.label.text
+    if actual_value == expectation
+      break
+    else
+      sleep 1
+    end
+  end
+  actual_value = orders.details.total.label.text
+  log.info "Test #{(actual_value == expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
+end
+
+Then /^Details: Expect Ship Cost Total is correct$/ do
+  log.info "Step: Details: Expect Ship Cost Total is correct"
+  @total_amount = orders.details.total.cost
   @service_cost = orders.details.service.cost
   @tracking_cost = orders.details.tracking.cost
   @insurance_cost = orders.details.insure_for.cost
@@ -20,13 +35,13 @@ end
 
 Then /^Expect Ship Cost equals Total amount$/ do
   log.info "Step: Expect Ship Cost equals Total amount"
-  total_amount = orders.details.total
+  total_amount = orders.details.total.cost
   ship_cost = orders.grid.ship_cost.data @order_id
   10.times {
     begin
       sleep(1)
       break if ship_cost.eql? total_amount
-      total_amount = orders.details.total
+      total_amount = orders.details.total.cost
       ship_cost = orders.grid.ship_cost.data @order_id
     rescue
       #ignore
@@ -53,8 +68,8 @@ Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is succe
   end
 end
 
-Then /^Expect Printing cost is deducted from customer balance if there were no printing errors$/ do
-  log.info "Step: Expect Printing cost is deducted from customer balance if there were no printing errors"
+Then /^NavBar: Expect Customer Balance is deducted the Printing Cost$/ do
+  log.info "Step: NavBar: Expect Customer Balance is deducted the Printing Cost"
   log.info "Printing Error:  #{@printing_error}"
   log.info "Old Balance: #{@old_balance}"
   if @printing_error.length > 0

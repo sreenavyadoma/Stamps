@@ -16,7 +16,7 @@ Feature:  Update International Orders to ShipStation
 
     Then Details: Set Pounds to 5
     Then Details: Set Ounces to 5
-    Then Details: Set Insure For to $50.25
+    Then Details: Set Insure-For to $50.25
 
     Then Details: Set Reference Number to Reference #123
 
@@ -43,7 +43,7 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect Service to be "Priority Mail International Package"
     Then Details: Expect Reference Number to be Reference #123
 
-    Then Details: Expect Insure For to be $50.25
+    Then Details: Expect Insure-For to be $50.25
 
     Then Details: Expect Item 1 Qty to be 1
     Then Details: Expect Item 1 ID to be ID 1
@@ -78,7 +78,7 @@ Feature:  Update International Orders to ShipStation
 
     Then Details: Expect Service to be "Priority Mail International Package"
 
-    Then Details: Expect Insure For to be $50.25
+    Then Details: Expect Insure-For to be $50.25
 
     Then Details: Expect Reference Number to be Reference #123
 

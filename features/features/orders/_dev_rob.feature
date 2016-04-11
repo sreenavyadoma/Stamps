@@ -47,7 +47,7 @@ Feature: Test Development
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Tracking to "Signature Required"
-    Then Details: Set Insure For to $50.25
+    Then Details: Set Insure-For to $50.25
     Then Details: Add Item 1, Qty 1, ID random, Description random
 
   Scenario:
@@ -65,7 +65,7 @@ Feature: Test Development
     Then Details: Set Width to 1
     Then Details: Set Tracking to "Signature Required"
     Then Details: Set Tracking to "USPS Tracking"
-    Then Details: Set Insure For to $50.25
+    Then Details: Set Insure-For to $50.25
     Then Details: Add Item 1, Qty 1, ID random, Description random
 
   Scenario:

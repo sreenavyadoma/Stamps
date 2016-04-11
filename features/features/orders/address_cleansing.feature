@@ -14,7 +14,7 @@ Feature: Address Cleansing
     Then Details: Set Service to "Priority Mail Package"
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1
-    Then Details: Set Insure For to $200
+    Then Details: Set Insure-For to $200
     Then Pause for 2 seconds
     Then Grid: Expect Zip to be 90245
     Then Grid: Expect Recipient to be Address Cleansing

@@ -23,8 +23,18 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:details_large_dimensions_pm) do |t|
+  t.profile = 'details_large_dimensions_pm'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:details_insure_for_box_unchecked_manual) do |t|
+  t.profile = 'details_insure_for_box_unchecked_manual'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:details_insure_for_box_unchecked_imported) do |t|
+  t.profile = 'details_insure_for_box_unchecked_imported'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -468,8 +478,8 @@ Cucumber::Rake::Task.new(:reprint) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:postage_balance_update) do |t|
-  t.profile = 'postage_balance_update'
+Cucumber::Rake::Task.new(:nav_postage_balance_update) do |t|
+  t.profile = 'nav_postage_balance_update'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -648,8 +658,8 @@ Cucumber::Rake::Task.new(:print_sample) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:details_total_cost) do |t|
-  t.profile = 'details_total_cost'
+Cucumber::Rake::Task.new(:details_ship_cost_total) do |t|
+  t.profile = 'details_ship_cost_total'
   t.cucumber_opts = "-p cuke_reports"
 end
 

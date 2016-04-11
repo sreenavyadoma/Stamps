@@ -28,7 +28,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
     Then Toolbar: Print
 
     Then Filter: Select Shipped
-    Then Grid: Set New Order ID to check
+    Then Grid: Check New Order ID
     Then Open Reprint Modal
     Then RePrint: Reprint
 
