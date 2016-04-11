@@ -5,7 +5,7 @@ Feature: Print 1 Intl CN22 label on 4x6 Roll
 
   @print_layout_cn22_roll
   Scenario: Print 1 Intl CN22 label on 4x6 Roll
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -17,7 +17,7 @@ Feature: Print 1 Intl CN22 label on 4x6 Roll
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Media "Roll - 4" x 6" Shipping Label"
-    Then Toolbar: Print
+    Then Print: Print
     Then Sign out

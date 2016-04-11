@@ -1,6 +1,6 @@
-When /^Add New Order$/ do
-  log.info "Step: Add New Order"
-  log.info "Add New Order"
+When /^Toolbar: Add$/ do
+  log.info "Step: Toolbar: Add"
+  log.info "Toolbar: Add"
   @old_balance = orders.navigation_bar.balance.amount
   orders.grid.checkbox.uncheck 1
   @order_details = orders.toolbar.add
@@ -16,8 +16,8 @@ Then /^Toolbar: Refresh Orders$/ do
   orders.toolbar.refresh_orders
 end
 
-When /^Open Print Modal$/ do
-  log.info "Step: Open Print Modal"
+When /^Print: Open Modal$/ do
+  log.info "Step: Print: Open Modal"
   @print_window = orders.toolbar.print_modal
 end
 
@@ -43,7 +43,7 @@ When /^Label Unavailable:  Expect Visible$/ do
 end
 
 
-When /^Toolbar: Print$/ do
+When /^Print: Print$/ do
   log.info "Step: Print"
   print_modal = orders.toolbar.print_modal
   @ship_date = print_modal.ship_date.text

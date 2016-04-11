@@ -13,7 +13,7 @@ When /^Footer: Print International Postage$/ do
 end
 
 When /^Footer: Open Print Postage Modal$/ do
-  log.info "Step: Open Print Modal"
+  log.info "Step: Print: Open Modal"
   @print_window = postage.print
 end
 

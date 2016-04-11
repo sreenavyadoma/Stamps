@@ -7,7 +7,7 @@ Feature: International Address
   @auto_suggest
   Scenario: Select International Address
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-To Country to Italy
 
     Then Details: Set International Ship-To auto-suggest address to partial name Com

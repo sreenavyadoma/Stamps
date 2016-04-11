@@ -2,7 +2,7 @@ default: --profile cuke_reports --profile rob_dev_sc # import_orders_ship_from_t
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
 rob_dev_cc: --tags @filter_change_order_status --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=nhr9mm6m5l  PW=pass111  # hd9glvtoauago
-rob_dev_sc: --tags @details_large_dimensions_pm --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yh95ws85j  PW=pass111 # c2jinmzmu64 store
+rob_dev_sc: --tags @filter_change_order_status --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yh95ws85j  PW=pass111 # c2jinmzmu64 store
 rob_dev_staging: --tags @filter_change_order_status --guess VERBOSE=true HEALTHCHECK=false URL=staging BROWSER=ff USR=hm5u7jvga4hl PW=pass111 #nhr9mm6m5l
 rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=chrome USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ie USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l

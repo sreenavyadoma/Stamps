@@ -6,7 +6,7 @@ Feature: Verify Ship Works Integration
 
   @ship_works
   Scenario:  Order Details Form
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Expect Ship-From Textbox to be enabled
     Then Details: Expect Ship-From drop-down be enabled
     Then Details: Expect Ship-To Textbox to be enabled

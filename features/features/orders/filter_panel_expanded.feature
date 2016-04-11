@@ -9,7 +9,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
 
     When Expect system displays expanded filters panel
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To address to
@@ -31,10 +31,10 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     Then Grid: Expect Phone to be 8885551212
     Then Grid: Expect Email to be test@stamps.com
 
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
-    Then Toolbar: Print
+    Then Print: Print
 
     Then Filter: Select Shipped
     Then Expect system selects Shipped Filter Panel - and deselects the previous filter
@@ -49,7 +49,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     Then Grid: Expect Email to be test@stamps.com
 
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
 

@@ -6,7 +6,7 @@ Feature:  BVT Printing
 
   @bvt_printing
   Scenario:  Printing
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Service to "Priority Mail Package"
@@ -14,9 +14,9 @@ Feature:  BVT Printing
     Then Details: Set Height to 1
     Then Details: Set Width to 1
     Then Details: Set Length to 1
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
-    Then Toolbar: Print
+    Then Print: Print
     Then Sign out
 

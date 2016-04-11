@@ -6,7 +6,7 @@ Feature: Ship-To Addresses
 
   @inline_service_rates
   Scenario:  System Calls GetRates When "Ship-To Address" is changed
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Expect Service Cost inline price for "Priority Mail Large/Thick Envelope" to be greater than $0.01

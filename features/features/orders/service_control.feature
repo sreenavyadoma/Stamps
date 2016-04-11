@@ -6,7 +6,7 @@
 
   @service_control
   Scenario:  Inline Rates
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Grid: Check row 1
 

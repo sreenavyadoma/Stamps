@@ -6,7 +6,7 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
   @print_two_up_expanded_cn22_cp72_5x8_right_print2
   Scenario: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -19,7 +19,7 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
@@ -34,10 +34,10 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
 
     Then Grid: Check row 2
 
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
     Then Expect Print Modal left-side label selected
-    Then Toolbar: Print
+    Then Print: Print
     Then Sign out

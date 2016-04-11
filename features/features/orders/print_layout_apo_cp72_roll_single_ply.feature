@@ -5,7 +5,7 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
 
   @print_layout_cp72_single_ply_apo_roll
   Scenario: Print 1 single ply APO CP72 label on 4x6 roll
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To address to
@@ -18,8 +18,8 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 2, Oz 1 Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Media "Roll - 4" x 6" Shipping Label"
     Then Print: Print Sample
-    Then Toolbar: Print
+    Then Print: Print
     Then Sign out

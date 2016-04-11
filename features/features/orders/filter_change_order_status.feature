@@ -13,29 +13,29 @@ Feature: Add Canceled Filter Panel - and Allow User to Manually Change Order Sta
     Then Filter: Select Awaiting Shipment
     Then Pause for 3 seconds
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Pause for 1 second
 
     Then Toolbar: Move to Shipped
     Then Pause for 3 seconds
     Then Filter: Select Shipped
     Then Pause for 3 seconds
-    Then Expect order moved to Shipped
+    Then Filter: Expect order moved to Shipped
 
     Then Pause for 3 seconds
     Then Toolbar: Move to Canceled
     Then Pause for 3 seconds
     Then Filter: Select Cancelled
     Then Pause for 3 seconds
-    Then Expect order moved to Canceled
+    Then Filter: Expect order moved to Canceled
 
     Then Pause for 3 seconds
     Then Filter: Select Cancelled
     Then Pause for 3 seconds
-    Then Move order to Awaiting Shipment
+    Then Filter: Move order to Awaiting Shipment
     Then Pause for 3 seconds
     Then Filter: Select Awaiting Shipment
     Then Pause for 3 seconds
-    Then Expect order moved to Awaiting Shipment
+    Then Filter: Expect order moved to Awaiting Shipment
 
     Then Sign out

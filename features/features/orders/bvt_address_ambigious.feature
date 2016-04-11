@@ -6,7 +6,7 @@ Feature:  Ambigious Address
 
   @bvt_ambigious_address
   Scenario: Ambigious Address
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to ambiguous address
       | name            | company       | street_address      | city          | state | zip   | country       | phone           |  email            |

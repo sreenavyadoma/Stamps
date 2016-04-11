@@ -6,6 +6,6 @@ Feature: Order Status - Awaiting Shipment
 
   @order_status
   Scenario: Order Status
-    Then Add New Order
+    Then Toolbar: Add
     Then Grid: Expect Order Status to be Awaiting Shipment
     Then Sign out

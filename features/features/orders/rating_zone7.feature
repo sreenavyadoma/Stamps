@@ -6,7 +6,7 @@ Feature: Local Rating test for zone 7
   @local_rating
   @local_rating7
   Scenario:  All Services
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to Random Address in Zone 7

@@ -5,7 +5,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
 
   @print_layout_cp72_paper_continuation
   Scenario: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -49,11 +49,11 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then Pause for 2 seconds
     Then Customs: Close Form
     Then Pause for 2 seconds
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
     Then Expect Print Modal left-side label selected
     Then Print: Print Sample
-    Then Toolbar: Print
+    Then Print: Print
     Then Sign out

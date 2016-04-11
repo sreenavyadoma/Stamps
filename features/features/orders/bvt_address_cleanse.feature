@@ -6,7 +6,7 @@ Feature:  BVT Address Cleansing
 
   @bvt_address_cleansing
   Scenario: Address Cleansing
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |

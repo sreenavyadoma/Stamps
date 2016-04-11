@@ -17,19 +17,19 @@ Feature:  Changing Print Date Causes Page to get Stuck on "Verifying Postage Rat
 
   @print_change_date
   Scenario: Change Print Date
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "Priority Mail Large/Thick Envelope"
     Then Details: Set Ounces to 2
 
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Ship Date to today plus 1
     Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Set Ship Date to today plus 2
     Then Pause for 2 seconds
-    Then Toolbar: Print
+    Then Print: Print
     Then Pause for 1 seconds
     Then Sign out
 

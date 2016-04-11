@@ -8,7 +8,7 @@ Feature: Order Details Insure-For box value - Manual Orders
 
   @details_insure_for_box_unchecked_manual
   Scenario: Insure-For - Manual Orders
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address in Zone 1
     Then Details: Set Service to "Priority Mail Package"

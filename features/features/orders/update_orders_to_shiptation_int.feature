@@ -7,7 +7,7 @@ Feature:  Update International Orders to ShipStation
   @update_orders_to_shipstation_int
   Scenario:  Update ShipStation
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name          | company          | street_address_1  | street_address_2 | city   | province | postal_code | country | phone         |  email            |
