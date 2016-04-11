@@ -1,43 +1,36 @@
 Feature: Don't Require weight for Flat/Regional Rate Services
   We should not require a weight value when the selected Service includes "Flat Rate" or "Regional Rate" in the name.
-  Domestic Flat/Regional Rate Service List
-  Priority Mail Flat Rate Envelope
-  Priority Mail Padded Flat Rate Envelope
-  Priority Mail Legal Flat Rate Envelope
-  Priority Mail Small Flat Rate Box
-  Priority Mail Medium Flat Rate Box
-  Priority Mail Large Flat Rate Box
-  Priority Mail Regional Rate Box A
-  Priority Mail Regional Rate Box B
-  Priority Mail Express Flat Rate Envelope
-  Priority Mail Express Padded Flat Rate Envelope
-  Priority Mail Express Legal Flat Rate Envelope
+
+  Priority Mail International Flat Rate Envelope
+
 
   Background:
     Given I am signed in to Orders
 
-  @details_flat_rate_no_weight_domestic
-  Scenario:  Domestic Flat
+  @details_flat_rate_no_weight_international
+  Scenario:  International Flat
     Then Toolbar: Add
-
-    # Priority Mail Flat Rate Envelope
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address in Zone 1
-    Then Details: Set Service to "Priority Mail Flat Rate Envelope"
-    Then Details: Expect Service to be "Priority Mail Flat Rate Envelope"
+    Then Details: Set Ship-To address to
+      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+      | random | random  | random           | random           | random | random  | random      | France  | random  | random  |
+
+    # Priority Mail International Flat Rate Envelope
+    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Expect Service to be "Priority Mail International Flat Rate Envelope"
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail
+    Then Grid: Expect Service to be Priority Mail International
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    # Priority Mail Padded Flat Rate Envelope
-    Then Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
-    Then Details: Expect Service to be "Priority Mail Padded Flat Rate Envelope"
+    # xxxxxxxxxxxxxxxxx
+    Then Details: Set Service to "xxxxxxxxxxxxxxxxx"
+    Then Details: Expect Service to be "xxxxxxxxxxxxxxxxx"
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail
+    Then Grid: Expect Service to be xxxxxxxxxxxxxxxxx
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal

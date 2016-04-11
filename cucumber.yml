@@ -28,7 +28,13 @@ amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true
 
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+windows_ui: --tags @windows_ui --guess VERBOSE=false HEALTHCHECK=true
+details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess VERBOSE=false HEALTHCHECK=true
 details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess VERBOSE=false HEALTHCHECK=true
 details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false HEALTHCHECK=true
 details_insure_for_box_unchecked_manual: --tags @details_insure_for_box_unchecked_manual --guess VERBOSE=false HEALTHCHECK=true
