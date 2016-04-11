@@ -60,11 +60,11 @@ Then /^Grid: Expect Date Printed for this order to be today$/ do
   grid = orders.filter.shipped
   grid.order_id.menu.sort_descending
   grid_print_date = grid.date_printed.data @order_id # Dec 3
-  expected_print_date = Date.today.strftime "%b %-d"
+  expectation_print_date = Date.today.strftime "%b %-d"
 
-  log.info "Order ID:  #{@order_id} - Orders Grid Date Printed:  #{grid_print_date} - Today's date:  #{expected_print_date}"
-  log.info "Test #{(grid_print_date==expected_print_date)?"Passed":"Failed"}"
-  grid_print_date.should eql expected_print_date
+  log.info "Order ID:  #{@order_id} - Orders Grid Date Printed:  #{grid_print_date} - Today's date:  #{expectation_print_date}"
+  log.info "Test #{(grid_print_date==expectation_print_date)?"Passed":"Failed"}"
+  grid_print_date.should eql expectation_print_date
 end
 
 Then /^Grid: Expect Ship Date for this order to be today$/ do
@@ -74,7 +74,7 @@ end
 
 Then /^Grid: Expect Ship Date for this order to be today plus (\d+)$/ do |day|
   log.info "Grid: Expect Ship Date for this order to be today plus #{day}"
-  expected_ship_date = test_helper.mmddyy_to_mondd @ship_date
+  expectation_ship_date = test_helper.mmddyy_to_mondd @ship_date
 
   grid = orders.filter.shipped
 
@@ -83,12 +83,12 @@ Then /^Grid: Expect Ship Date for this order to be today plus (\d+)$/ do |day|
     grid_ship_date = grid.ship_date.data @order_id # Dec 3
     log.info "Order ID:  #{@order_id} - Print Modal Saved Ship Date: #{@ship_date} - Orders Grid Ship Date:  #{grid_ship_date}"
 
-    break if grid_ship_date == expected_ship_date
+    break if grid_ship_date == expectation_ship_date
   }
 
   grid_ship_date = grid.ship_date.data @order_id
-  log.info "Test #{(grid_ship_date==expected_ship_date)?"Passed":"Failed"}"
-  grid_ship_date.should eql expected_ship_date
+  log.info "Test #{(grid_ship_date==expectation_ship_date)?"Passed":"Failed"}"
+  grid_ship_date.should eql expectation_ship_date
 end
 
 Then /^Grid: Uncheck New Order ID$/ do
@@ -410,17 +410,17 @@ Then /^Grid: Expect Ounces to be (\d+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
-  expected_result = "#{pounds} lbs. #{ounces} oz."
-  log.info "Step: Grid: Expect Weight to be #{expected_result}"
+  expectation_result = "#{pounds} lbs. #{ounces} oz."
+  log.info "Step: Grid: Expect Weight to be #{expectation_result}"
   begin
     10.times do
       actual = orders.grid.weight.data @order_id
-      break if actual.eql? expected_result
+      break if actual.eql? expectation_result
      end
     actual = orders.grid.weight.data @order_id
-    log.info "Test #{(actual==expected_result)?"Passed":"Failed"}"
-    actual.should eql expected_result
-  end unless expected_result.length == 0
+    log.info "Test #{(actual==expectation_result)?"Passed":"Failed"}"
+    actual.should eql expectation_result
+  end unless expectation_result.length == 0
 end
 
 Then /^Grid: Expect Qty. to be (.+)$/ do |expectation|
@@ -465,32 +465,30 @@ Then /^Grid: Expect Item Name to be (.+)$/ do |expectation|
   end unless expectation.length == 0
 end
 
-Then /^Grid: Expect Ship From to be (.+)$/ do |expected|
-  log.info "Step: Grid: Expect Ship to be #{expected}"
+Then /^Grid: Expect Ship From to be (.+)$/ do |expectation|
+  log.info "Step: Grid: Expect Ship to be #{expectation}"
   begin
     actual = orders.grid.ship_from.data @order_id
     10.times do |counter|
       sleep 1
-      break if actual.eql? expected
+      break if actual.eql? expectation
       actual = orders.grid.ship_from.data @order_id
      end
-    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
-    actual.should eql expected
-  end unless expected.length == 0
+    log.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+    actual.should eql expectation
+  end unless expectation.length == 0
 end
 
-Then /^Grid: Expect Service to be (.+)$/ do |expected|
-  log.info "Step: Grid: Expect Service to be #{expected}"
-  begin
+Then /^Grid: Expect Service to be (.+)$/ do |expectation|
+  log.info "Step: Grid: Expect Service to be #{expectation}"
+  actual = orders.grid.service.data @order_id
+  10.times do
+    sleep 1
+    break if actual.eql? expectation
     actual = orders.grid.service.data @order_id
-    10.times do 
-      sleep 1
-      break if actual.eql? expected
-      actual = orders.grid.service.data @order_id
-     end
-    log.info "Test #{(actual==expected)?"Passed":"Failed"}"
-    actual.should eql expected
-  end unless expected.length == 0
+  end
+  log.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
 end
 
 Then /^Grid: Expect Insured Value to be \$(.+)$/ do |expectation|
@@ -581,9 +579,9 @@ end
 
 Then /^Expect Order details to be;$/ do |table|
   log.info "Step: Expect Order details to be..."
-  expected_hash = table.hashes.first
-  step "Grid: Expect Insured Value to be $#{expected_hash[:insured_value]}"
-  step "Grid: Expect Weight to be #{expected_hash[:lbs]} lbs. #{expected_hash[:oz]} oz."
+  expectation_hash = table.hashes.first
+  step "Grid: Expect Insured Value to be $#{expectation_hash[:insured_value]}"
+  step "Grid: Expect Weight to be #{expectation_hash[:lbs]} lbs. #{expectation_hash[:oz]} oz."
 end
 
 Then /^Expect new Order ID created$/ do

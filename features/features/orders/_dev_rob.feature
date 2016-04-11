@@ -207,12 +207,12 @@ Feature: Test Development
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
 
-    Then I Add a second order
+    Then Toolbar: Add second order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
 
-    Then I Add a third order
+    Then Toolbar: Add third order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "Media Mail Package"

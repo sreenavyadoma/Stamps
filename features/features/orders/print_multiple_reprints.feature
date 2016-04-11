@@ -17,11 +17,11 @@ Feature: Multiple Reprints
     Then Print: Print
     Then Filter: Select Shipped
     Then Grid: Check New Order ID
-    Then Open Reprint Modal
+    Then Print: Open Reprint Modal
     Then RePrint: Reprint
     Then Filter: Select Shipped
     Then Grid: Check New Order ID
-    Then Open Reprint Modal
+    Then Print: Open Reprint Modal
     Then RePrint: Reprint
 
     Then Sign out

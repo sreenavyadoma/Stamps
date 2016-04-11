@@ -32,8 +32,8 @@ When /^Footer: Print Postage$/ do
   @printing_error = print_postage_modal.print
 end
 
-Then /^Print: Close$/ do
-  log.info "Step: Close Print Modal"
+Then /^Print Postage: Print: Close$/ do
+  log.info "Step: Close Print Postage Print Modal"
   postage.postage.close
 end
 

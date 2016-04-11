@@ -387,8 +387,8 @@ module Orders
       end
     end
 
-    def initialize browser
-      super browser
+    def present?
+      print_button.present?
     end
 
     def starting_label
@@ -467,10 +467,6 @@ module Orders
       print_sample_button.when_present.click
       printing_error_check
       self
-    end
-
-    def present?
-      browser_helper.present? print_button
     end
 
     def error_ok_button
