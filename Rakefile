@@ -724,8 +724,8 @@ Cucumber::Rake::Task.new(:fcm_selection_enabled) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:expand_order_details_panel) do |t|
-  t.profile = 'expand_order_details_panel'
+Cucumber::Rake::Task.new(:details_panel) do |t|
+  t.profile = 'details_panel'
   t.cucumber_opts = "-p cuke_reports"
 end
 
