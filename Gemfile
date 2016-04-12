@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'watir-webdriver'
-gem 'cucumber'
+gem 'cucumber', '2.0.0'
 gem 'rspec'
 gem 'rake'
 gem 'data_magic'
