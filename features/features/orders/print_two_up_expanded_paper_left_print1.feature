@@ -12,7 +12,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Details: Set Ounces to 1
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
     Then Expect Print Modal left-side label selected

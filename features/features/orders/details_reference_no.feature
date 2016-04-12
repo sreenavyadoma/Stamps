@@ -23,7 +23,7 @@ Feature:  Order Details Form - Reference # Field
     Then Print: Uncheck Print Reference # on Shipping Label
     Then Print: Check Print Reference # on Shipping Label
     Then Print: Check Print Reference # on Shipping Label
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Sign out

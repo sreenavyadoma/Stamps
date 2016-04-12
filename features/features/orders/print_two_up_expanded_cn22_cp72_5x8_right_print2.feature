@@ -35,7 +35,7 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
     Then Grid: Check row 2
 
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Print: Set Printing On "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
     Then Expect Print Modal left-side label selected

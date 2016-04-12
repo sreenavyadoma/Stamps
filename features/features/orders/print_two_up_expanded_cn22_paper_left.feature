@@ -26,7 +26,7 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
     Then Expect Print Modal left-side label selected

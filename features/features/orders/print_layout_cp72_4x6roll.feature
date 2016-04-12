@@ -18,7 +18,7 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
     Then Print: Open Modal
-    Then Print: Set Media "Roll - 4" x 6" Shipping Label"
+    Then Print: Set Printing On "Roll - 4" x 6" Shipping Label"
     Then Print: Print Sample
     Then Print: Print
     Then Sign out

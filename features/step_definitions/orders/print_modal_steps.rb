@@ -85,8 +85,8 @@ Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
   actual.should eql expected
 end
 
-Then /^Print: Set Media \"(.*)\"$/ do |print_media|
-  log.info "Step: Print: Set Media #{print_media}"
+Then /^Print: Set Printing On \"(.*)\"$/ do |print_media|
+  log.info "Step: Print: Set Printing On #{print_media}"
   orders.toolbar.print_modal.printing_on.select print_media
 end
 

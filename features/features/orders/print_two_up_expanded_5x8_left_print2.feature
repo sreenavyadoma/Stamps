@@ -18,7 +18,7 @@ Feature: Print 2 Domestic labels on 5.5x8.5 - left side
     Then Grid: Check row 1
     Then Grid: Check row 2
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""
+    Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
     Then Expect Print Modal left-side label selected

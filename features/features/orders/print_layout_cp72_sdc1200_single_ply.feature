@@ -18,7 +18,7 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Print: Set Printing On "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print: Set Printer to "factory"
     Then Print: Select right-side label
     Then Expect Print Modal right-side label selected

@@ -73,7 +73,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     Then Grid: Expect Email to be test@stamps.com
 
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
 

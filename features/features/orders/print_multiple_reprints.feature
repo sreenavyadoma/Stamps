@@ -12,7 +12,7 @@ Feature: Multiple Reprints
     Then Details: Set Service to "Media Mail Package"
     Then Details: Set Ounces to 1
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""
+    Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped

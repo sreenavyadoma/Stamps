@@ -50,7 +50,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then Customs: Close Form
     Then Pause for 2 seconds
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
     Then Expect Print Modal left-side label selected

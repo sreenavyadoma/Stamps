@@ -23,7 +23,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
 
     Then Pause for 2 seconds
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Print: Set Printing On "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print: Set Printer to "factory"
     Then Print: Print
 

@@ -11,7 +11,7 @@ Feature:  Service Selection & Order Grid Values
     Then Details: Set Service to "Parcel Select Ground Package"
     Then Details: Set Ounces to 1
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
@@ -23,7 +23,7 @@ Feature:  Service Selection & Order Grid Values
     Then Details: Set Service to "Parcel Select Ground Large Package"
     Then Details: Set Ounces to 1
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
@@ -35,7 +35,7 @@ Feature:  Service Selection & Order Grid Values
     Then Details: Set Service to "Parcel Select Ground Oversized Package"
     Then Details: Set Ounces to 1
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped

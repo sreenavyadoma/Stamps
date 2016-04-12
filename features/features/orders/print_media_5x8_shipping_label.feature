@@ -12,7 +12,7 @@ Feature: Print Media - Shipping Label: 5 ½" x 8 ½"
     Then Details: Set Pounds to 1
     Then Pause for 2 seconds
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""
+    Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Sign out

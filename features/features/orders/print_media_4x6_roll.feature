@@ -12,7 +12,7 @@ Feature: Print Media - Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then Details: Set Pounds to 1
     Then Pause for 2 seconds
     Then Print: Open Modal
-    Then Print: Set Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
+    Then Print: Set Printing On "Roll - 4 ⅛" x 6 ¼" Shipping Label"
     Then Print: Print
     Then Sign out
 

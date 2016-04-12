@@ -11,7 +11,7 @@ Feature: User Prints 1 Domestic label on 5.5x8.5 - right side
     Then Details: Set Service to "Parcel Select Ground Package"
     Then Details: Set Ounces to 1
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""
+    Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
     Then Print: Select right-side label
     Then Expect Print Modal right-side label selected

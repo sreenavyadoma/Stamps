@@ -13,7 +13,7 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾ right side
     Then Details: Set Dimensions to Length 1 Width 1 Height 1
     Then Details: Set Insure-For to $1.09
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Print: Set Printing On "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print: Set Printer to "factory"
     Then Print: Select right-side label
     Then Expect Print Modal right-side label selected

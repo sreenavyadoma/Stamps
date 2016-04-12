@@ -34,7 +34,7 @@ Feature:  Requires x-number of label sheets
     Then Grid: Check row 3
 
     Then Print: Open Modal
-    Then Print: Set Media "Roll - 4 ⅛" x 6 ¼" Shipping Label"
+    Then Print: Set Printing On "Roll - 4 ⅛" x 6 ¼" Shipping Label"
     Then Pause for 1 second
     Then Print: Expect number of required label sheets to be 3
     Then Close Print Modal

@@ -27,7 +27,7 @@ Feature: Print two labels on one sheet
     Then Grid: Check row 2
 
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""
+    Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
 
     Then Print: Select right-side label

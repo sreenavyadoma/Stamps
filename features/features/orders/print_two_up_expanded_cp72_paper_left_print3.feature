@@ -64,7 +64,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Grid: Check row 5
     Then Grid: Check row 6
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""
+    Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
     Then Expect Print Modal left-side label selected

@@ -13,7 +13,7 @@ Feature: Print Media - Shipping Label: 8 ½" x 11" Paper
     Then Details: Set Ounces to 1
     Then Pause for 2 seconds
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Sign out

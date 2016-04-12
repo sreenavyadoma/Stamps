@@ -32,7 +32,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - right side
     Then Grid: Check row 1
     Then Grid: Check row 2
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Select right-side label
     Then Expect Print Modal right-side label selected

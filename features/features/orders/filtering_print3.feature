@@ -25,7 +25,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Grid: Check row 3
 
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
 

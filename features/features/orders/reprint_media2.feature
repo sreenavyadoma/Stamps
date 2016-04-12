@@ -23,7 +23,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
 
     Then Pause for 2 seconds
     Then Print: Open Modal
-    Then Print: Set Media "Roll - 4" x 6" Shipping Label"
+    Then Print: Set Printing On "Roll - 4" x 6" Shipping Label"
     Then Print: Print
 
     Then Filter: Select Shipped

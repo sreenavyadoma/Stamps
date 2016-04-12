@@ -20,7 +20,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
     Then Customs: Close Form
     Then Pause for 3 seconds
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Sign out

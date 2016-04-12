@@ -16,7 +16,7 @@ Feature: Thermal Printer
     Then Details: Set Height to 1
     Then Details: Set Length to 1
     Then Print: Open Modal
-    Then Print: Set Media "Roll - 4" x 6" Shipping Label"
+    Then Print: Set Printing On "Roll - 4" x 6" Shipping Label"
     Then Print: Print
     Then Sign out
 

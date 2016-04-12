@@ -12,7 +12,7 @@ Feature: Select Email Tracking for order when printing
     Then Details: Set Service to "Media Mail Package"
     Then Details: Set Ounces to 1
     Then Print: Open Modal
-    Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""
+    Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Check Email Tracking Details to Recipients
     Then Print: Print
     Then Sign out
