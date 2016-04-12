@@ -18,8 +18,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:orders_authentication_stg) do |t|
+  t.profile = 'orders_authentication_stg'
   t.cucumber_opts = "-p cuke_reports"
 end
 
