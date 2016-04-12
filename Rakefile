@@ -23,8 +23,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:grid_column_order) do |t|
+  t.profile = 'grid_column_order'
   t.cucumber_opts = "-p cuke_reports"
 end
 

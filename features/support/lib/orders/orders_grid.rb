@@ -961,8 +961,25 @@ module Orders
 
     end
 
+    class GridColumns < Column
+      def is_next_to? left, right
+        left_column_sym = GRID_COLUMNS.key left
+        right_column_sym = GRID_COLUMNS.key right
+        raise "#{left_column_sym} is not a valid grid column!  Valid columns are: \n #{GRID_COLUMNS.values}" if left_column_sym.nil?
+        raise "#{right_column_sym} is not a valid grid column!  Valid columns are: \n #{GRID_COLUMNS.values}" if right_column_sym.nil?
+
+        left_column_num = column_number left_column_sym
+        right_column_num = column_number right_column_sym
+        left_column_num + 1 == right_column_num
+      end
+    end
+
     # Orders Grid
     class OrdersGrid < OrdersObject
+
+      def column
+        GridColumns.new @browser
+      end
 
       def wait_until_present
         browser_helper.wait_until_present @browser.div Orders::Locators::OrdersGrid::present

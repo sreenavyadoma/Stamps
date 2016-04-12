@@ -357,6 +357,15 @@ Then /^Grid: Expect Country to be ([a-zA-Z]+)$/ do |expectation|
   end unless expectation.length == 0
 end
 
+Then /^Grid: Expect Column (\w+) appears to left of (\w+)$/ do |left_column, right_column|
+  log.info "Grid: Expect Column #{left_column} appears to left of #{right_column}"
+  is_next_to = orders.grid.column.is_next_to? left_column, right_column
+  expectation = "true"
+  expectation =  "false" unless is_next_to
+  log.info "Test #{(expectation=="true")?"Passed":"Failed"}"
+  expectation.should eql "true"
+end
+
 Then /^Grid: Expect Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expectation|
   log.info "Step: Grid: Expect Email to be #{expectation}"
   begin
