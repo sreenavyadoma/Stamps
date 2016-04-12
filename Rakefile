@@ -698,8 +698,8 @@ Cucumber::Rake::Task.new(:change_settings) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:thermal_printing) do |t|
-  t.profile = 'thermal_printing'
+Cucumber::Rake::Task.new(:print_on_thermal) do |t|
+  t.profile = 'print_on_thermal'
   t.cucumber_opts = "-p cuke_reports"
 end
 

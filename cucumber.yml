@@ -172,7 +172,7 @@ local_rating: --tags @local_rating --guess VERBOSE=false HEALTHCHECK=true
 international: --tags @international --guess VERBOSE=false HEALTHCHECK=true
 purchasing: --tags @purchasing --guess VERBOSE=false HEALTHCHECK=true
 change_settings: --tags @settings --guess VERBOSE=false HEALTHCHECK=true
-thermal_printing: --tags @thermal_printing --guess VERBOSE=false HEALTHCHECK=true
+print_on_thermal: --tags @print_on_thermal --guess VERBOSE=false HEALTHCHECK=true
 sorting: --tags @sort --guess VERBOSE=false HEALTHCHECK=true
 add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false HEALTHCHECK=true
 orders_10: --tags @orders_10 --guess VERBOSE=false HEALTHCHECK=true

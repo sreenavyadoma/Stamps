@@ -4,7 +4,7 @@ Feature: Thermal Printer
   Background:
     Given I am signed in to Orders
 
-  @thermal_printing
+  @print_on_thermal
   Scenario:  As a batch shipper, I want to be able to change my print media
     Then Toolbar: Add
     Then Details: Set Ship-From to default
