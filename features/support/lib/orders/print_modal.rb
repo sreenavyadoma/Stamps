@@ -174,6 +174,10 @@ module Orders
       end
 
       public
+      def label
+        StampsLabel.new @browser.label(css: "div[id^=printwindow-][id$=-targetEl]>div>label[id^=printmediadroplist-][id$=-labelEl]>span")
+      end
+
       def text_box
         StampsTextbox.new @browser.text_field :css => "input[name^=printmediadroplist]"
       end

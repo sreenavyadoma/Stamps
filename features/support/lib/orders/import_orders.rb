@@ -27,6 +27,10 @@ module Orders
       browser_helper.present? @browser.div(text: "Import Orders")
     end
 
+    def filename_label
+      browser_helper.text @browser.label(id: "fileNameLabel")
+    end
+
     def text_box
       StampsTextbox.new @browser.text_field(id: "files-inputEl")
     end
