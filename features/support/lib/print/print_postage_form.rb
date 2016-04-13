@@ -303,7 +303,7 @@ module Print
 
         #return @manage_shipping_address if @manage_shipping_address.present?
 
-        ship_from_default_selection_field = (@browser.divs :css => "div[class*=x-boundlist-item]")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
+        ship_from_default_selection_field = (@browser.divs :css => "div[data-qtip*='Return To Address']")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
         ship_from_dropdown = self.drop_down
         ship_from_textbox = self.text_box
 
@@ -339,7 +339,8 @@ module Print
             ship_from_dropdown.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
-            break if ship_from_textbox.text.include? selection_label.text
+            text_val = ship_from_textbox.text
+            break if text_val.include? selection_label.text
           }
         end
       end
