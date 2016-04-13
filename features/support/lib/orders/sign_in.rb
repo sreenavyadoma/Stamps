@@ -168,8 +168,12 @@ module Orders
               password_textbox.set password
               sign_in_button.safe_send_keys :enter
               sign_in_button.safe_send_keys :enter
+              username_textbox.set username
+              password_textbox.set password
               sign_in_button.safe_click
               sign_in_button.safe_click
+              username_textbox.set username
+              password_textbox.set password
 
               if welcome_orders_page.present?
                 welcome_orders_page.continue
