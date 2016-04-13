@@ -302,10 +302,11 @@ module Print
         #@manage_shipping_address = Print::Postage::ManageShippingAddresses.new @browser
 
         #return @manage_shipping_address if @manage_shipping_address.present?
-
-        ship_from_default_selection_field = (@browser.divs :css => "div[data-qtip*='Return To Address']")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
         ship_from_dropdown = self.drop_down
         ship_from_textbox = self.text_box
+        ship_from_dropdown.safe_click
+        ship_from_default_selection_field = (@browser.divs :css => "div[data-qtip*='Return To Address']")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
+
 
         if selection.downcase == "default"
           ship_from_selection_field = ship_from_default_selection_field
@@ -316,6 +317,7 @@ module Print
         end
 
         selection_label = StampsLabel.new ship_from_selection_field
+        log.info "Selection Text: #{selection_label.text}"
 
         if selection.downcase.include? "manage shipping"
           10.times{
@@ -330,17 +332,15 @@ module Print
             click_form
           }
         else
-          ship_from_dropdown.safe_click unless selection_label.present?
-          if selection_label.present?
-            selection_label.scroll_into_view
-            selection_text = selection_label.text
-          end
           10.times{
             ship_from_dropdown.safe_click unless selection_label.present?
             selection_label.scroll_into_view
+            selection_text = selection_label.text
             selection_label.safe_click
             text_val = ship_from_textbox.text
-            break if text_val.include? selection_label.text
+            begin
+              break if text_val.include? selection_text
+            end unless selection_text.nil? || text_val.nil?
           }
         end
       end
