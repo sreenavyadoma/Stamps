@@ -6,7 +6,7 @@ Feature: Envelope #6
   @wp_envelope_regression
   @wp_envelope_6
   Scenario: Envelope #6
-    Then Print Postage: Select Print On Envelope - #6, 3 ?” x 6 ½”
+    Then Print Postage: Select Print On Envelope - #6, 3 â…â€ x 6 Â½â€
     Then Envelopes: Set Ship-From to default
     Then Envelopes: Set Ship-To country to United States
     Then Envelopes: Set Ship-To address to

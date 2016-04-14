@@ -1,4 +1,4 @@
-Feature: Envelope #A2
+Feature: Envelope a2
 
   Background:
     Given I am signed in as a postage shipper

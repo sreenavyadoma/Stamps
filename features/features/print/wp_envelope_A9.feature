@@ -6,7 +6,7 @@ Feature: Envelope #A9
   @wp_envelope_regression
   @wp_envelope_A9
   Scenario: Envelope #A9
-    Then Print Postage: Select Print On Envelope - #A9, 5 ¾” x 8 ¾”
+    Then Print Postage: Select Print On Envelope - #A9, 5 Â¾â€ x 8 Â¾â€
     Then Envelopes: Set Ship-From to default
     Then Envelopes: Set Ship-To country to United States
     Then Envelopes: Set Ship-To address to
