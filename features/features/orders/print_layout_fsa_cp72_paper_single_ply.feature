@@ -5,7 +5,7 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
 
   @print_layout_fsa_cp72_paper_single_ply
   Scenario: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To address to
@@ -18,11 +18,11 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
     Then Customs: Add Item 1, Description random, Qty 1, Price 25, Lbs 1, Oz 2 Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Open Print Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Select right-side label
     Then Expect Print Modal right-side label selected
     Then Print: Print Sample
-    Then Toolbar: Print
+    Then Print: Print
     Then Sign out

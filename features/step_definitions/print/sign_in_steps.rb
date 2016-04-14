@@ -1,9 +1,11 @@
 Given /^I visit postage sign-in page (\w+)$/ do |url_prefix|
   log.info "Step: I visit print sign-in page #{url_prefix}"
+  step "I launch browser default"
   postage.sign_in_page.visit url_prefix
 end
 
 Given /^I visit postage sign-in page$/ do
+  step "I launch browser default"
   log.info "Step: I visit print sign-in page"
   postage.sign_in_page.visit
 end

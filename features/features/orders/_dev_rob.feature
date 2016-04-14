@@ -9,7 +9,7 @@ Feature: Test Development
     Then Grid: Order ID: Sort Ascending
 
   Scenario:
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-To to Random Address in Zone 1
     Then Details: Set Ship-To to Random Address in Zone 2
     Then Details: Set Ship-To to Random Address in Zone 3
@@ -24,15 +24,15 @@ Feature: Test Development
     Then Filter: Select Awaiting Shipment
     Then Toolbar: Move to Shipped
     Then Filter: Select Shipped
-    Then Expect order moved to Shipped
+    Then Filter: Expect order moved to Shipped
 
     Then Toolbar: Move to Canceled
-    Then Expect order moved to Canceled
+    Then Filter: Expect order moved to Canceled
 
-    Then Move order to Awaiting Shipment
-    Then Expect order moved to Awaiting Shipment
+    Then Filter: Move order to Awaiting Shipment
+    Then Filter: Expect order moved to Awaiting Shipment
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Filter: Select Shipped
     Then Filter: Select Cancelled
     Then Filter: Select Awaiting Shipment
@@ -51,7 +51,7 @@ Feature: Test Development
     Then Details: Add Item 1, Qty 1, ID random, Description random
 
   Scenario:
-    Then Add New Order
+    Then Toolbar: Add
     Then Filter: Select Awaiting Shipment
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to Eight Zone,377 Santa Rosa Blvd,Fort Walton Beach, FL 32548
@@ -69,24 +69,24 @@ Feature: Test Development
     Then Details: Add Item 1, Qty 1, ID random, Description random
 
   Scenario:
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Details: Set Tracking to "USPS Tracking"
-    Then Toolbar: Print
+    Then Print: Print
     Then Filter: Select Shipped
     Then Grid: Expect Tracking Number is populated
     Then Grid: Expect Order Status to be Shipped
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Set Service to "Priority Mail Flat Rate Envelope"
     Then Details: Set Tracking to "Signature Required"
-    Then Toolbar: Print
+    Then Print: Print
     Then Filter: Select Shipped
     Then Grid: Expect Tracking Number is populated
     Then Grid: Expect Order Status to be Shipped
@@ -96,7 +96,7 @@ Feature: Test Development
 
   Scenario:
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
@@ -105,13 +105,13 @@ Feature: Test Development
     Then Details: Set Length to 1
     Then Details: Set Height to 1
     Then Details: Set Width to 1
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Ship Date to today plus 1
-    Then Toolbar: Print
+    Then Print: Print
     Then Expect Shipped Tab Date Printed to be today
     Then Print: Set Ship Date to today plus 3
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
@@ -120,13 +120,13 @@ Feature: Test Development
     Then Details: Set Length to 1
     Then Details: Set Height to 1
     Then Details: Set Width to 1
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Ship Date to today plus 2
-    Then Toolbar: Print
+    Then Print: Print
     Then Expect Shipped Tab Date Printed to be today
     Then Expect Shipped Tab Ship Date to be today plus 2
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
@@ -135,14 +135,14 @@ Feature: Test Development
     Then Details: Set Length to 1
     Then Details: Set Height to 1
     Then Details: Set Width to 1
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Ship Date to today plus 3
-    Then Toolbar: Print
+    Then Print: Print
     Then Expect Shipped Tab Date Printed to be today
     Then Expect Shipped Tab Ship Date to be today plus 3
 
   Scenario:
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
@@ -151,7 +151,7 @@ Feature: Test Development
     Then Details: Set Length to 1
     Then Details: Set Height to 1
     Then Details: Set Width to 1
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Select left-side label
     Then Expect Print Modal left-side label selected
 
@@ -159,7 +159,7 @@ Feature: Test Development
     Then Expect Print Modal right-side label selected
 
     Then Print: Set Ship Date to today
-    Then Toolbar: Print
+    Then Print: Print
     Then Expect Shipped Tab Date Printed to be today
     Then Expect Shipped Tab Ship Date to be today
 
@@ -183,36 +183,36 @@ Feature: Test Development
     Then Filter: Select Shipped
     Then Filter: Select Cancelled
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
 
-    Then Toolbar: Print
+    Then Print: Print
 
     Then Expect Awaiting Shipment count to be less by 1
     Then Expect printed Order ID is in Shipped tab
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
     Then Grid: Check row 1
-    Then Toolbar: Print
+    Then Print: Print
     Then Expect printed Order ID is not in Awaiting Shipment tab
     Then Expect printed Order ID is in Shipped tab
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
 
-    Then I Add a second order
+    Then Toolbar: Add second order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
 
-    Then I Add a third order
+    Then Toolbar: Add third order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "Media Mail Package"
@@ -221,7 +221,7 @@ Feature: Test Development
     Then Grid: Check row 2
     Then Grid: Check row 3
 
-    Then Toolbar: Print
+    Then Print: Print
 
     Then Expect all printed Order IDs not in Awaiting Shipment tab
     Then Expect all printed Order IDs are in Shipped tab
@@ -234,7 +234,7 @@ Feature: Test Development
 
   @rob_dev_customs_form_dropdowns
   Scenario: Syria Internal Transaction Number Required
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
@@ -273,7 +273,7 @@ Feature: Test Development
 
   @_dev_rob
   Scenario: Domestic FPO Address
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To address to
@@ -288,12 +288,12 @@ Feature: Test Development
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs: Close Form
-    Then Toolbar: Print
+    Then Print: Print
 
   @rob_dev_int
   Scenario:
     # International
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -306,7 +306,7 @@ Feature: Test Development
     Then Customs: Close Form
     Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |

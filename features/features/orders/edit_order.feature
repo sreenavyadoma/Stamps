@@ -6,7 +6,7 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
   @edit_order
   Scenario: User edits an order
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Service to "Priority Mail Flat Rate Envelope"

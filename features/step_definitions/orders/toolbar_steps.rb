@@ -1,6 +1,6 @@
-When /^Add New Order$/ do
-  log.info "Step: Add New Order"
-  log.info "Add New Order"
+Then /^Toolbar: Add$/ do
+  log.info "Step: Toolbar: Add"
+  log.info "Toolbar: Add"
   @old_balance = orders.navigation_bar.balance.amount
   orders.grid.checkbox.uncheck 1
   @order_details = orders.toolbar.add
@@ -16,17 +16,45 @@ Then /^Toolbar: Refresh Orders$/ do
   orders.toolbar.refresh_orders
 end
 
-When /^Open Print Modal$/ do
-  log.info "Step: Open Print Modal"
+Then /^Print: Open Modal$/ do
+  log.info "Print: Open Modal"
   @print_window = orders.toolbar.print_modal
 end
 
-When /^Open Reprint Modal$/ do
+Then /^Print: Close Modal$/ do
+  log.info "Print: Close Modal"
+  step "Print: Expect Print Modal is present"
+  @print_window.close
+end
+
+Then /^Print: Expect Print Modal is present$/ do
+  expectation = "present"
+  if @print_window.nil?
+    expectation = "not present"
+  else
+    expectation = "not present" unless @print_window.present?
+  end
+
+  log.info "Test #{(expectation=="present")?"Passed":"Failed"}"
+  expectation.should eql "present"
+end
+
+Then /^Print: Print$/ do
+  log.info "Step: Print"
+  print_modal = orders.toolbar.print_modal
+  @ship_date = print_modal.ship_date.text
+  @paper_tray = print_modal.paper_tray.text_box.text
+  @printer = print_modal.printer.text_box.text
+  @printing_on = print_modal.printing_on.text_box.text
+  @printing_error = print_modal.print
+end
+
+Then /^Print: Open Reprint Modal$/ do
   log.info "Step: RePrint"
   @reprint_modal = orders.toolbar.reprint
 end
 
-When /^Label Unavailable:  Expect Visible$/ do
+Then /^Label Unavailable:  Expect Visible$/ do
   log.info "Step: Label Unavailable:  Expect Visible"
   case @reprint_modal
     when LabelUnavailable
@@ -42,30 +70,19 @@ When /^Label Unavailable:  Expect Visible$/ do
   end
 end
 
-
-When /^Toolbar: Print$/ do
-  log.info "Step: Print"
-  print_modal = orders.toolbar.print_modal
-  @ship_date = print_modal.ship_date.text
-  @paper_tray = print_modal.paper_tray.text_box.text
-  @printer = print_modal.printer.text_box.text
-  @printing_on = print_modal.printing_on.text_box.text
-  @printing_error = print_modal.print
-end
-
-Then /^I Add a second order$/ do
-  log.info "Step: I Add a second order"
+Then /^Toolbar: Add second order$/ do
+  log.info "Step: Toolbar: Add second order"
   @order_details = orders.toolbar.add
   @order_id_2 = @order_details.toolbar.order_id
 end
 
-Then /^I Add a third order$/ do
-  log.info "Step: I Add a third order"
+Then /^Toolbar: Add third order$/ do
+  log.info "Step: Toolbar: Add third order"
   @order_details = orders.toolbar.add
   @order_id_3 = @order_details.toolbar.order_id
 end
 
-When /^Add a second order$/ do
+Then /^Add a second order$/ do
   log.info "Step: Add a second order"
   first_row_order_id = orders.grid.order_id.row 1
   5.times{

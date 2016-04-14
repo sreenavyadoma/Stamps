@@ -1,22 +1,26 @@
-default: --profile cuke_reports --profile rob_dev_sc # import_orders_ship_from_test
+default: --profile cuke_reports --profile eli_dev # import_orders_ship_from_test
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800
-rob_dev_cc: --tags @change_order_status --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=nhr9mm6m5l  PW=pass111  # hd9glvtoauago
-rob_dev_sc: --tags @details_large_dimensions_pm --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yh95ws85j  PW=pass111 # c2jinmzmu64 store
-rob_dev_staging: --tags @change_order_status --guess VERBOSE=true HEALTHCHECK=false URL=staging BROWSER=ff USR=hm5u7jvga4hl PW=pass111 #nhr9mm6m5l
+rob_dev_cc: --tags @filter_change_order_status --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=nhr9mm6m5l  PW=pass111  # hd9glvtoauago
+rob_dev_sc: --tags @grid_column_order --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yh95ws85j  PW=pass111 # c2jinmzmu64 store
+rob_dev_staging: --tags @filter_change_order_status --guess VERBOSE=true HEALTHCHECK=false URL=staging BROWSER=ff USR=hm5u7jvga4hl PW=pass111 #nhr9mm6m5l
 rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=chrome USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ie USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 
 #details_placeholders
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
-eli_dev: --tags @healthcheck --guess VERBOSE=true HEALTHCHECK=true URL=qasc BROWSER=ff USR=hns8u0qen9h9 PW=pass111
-ray_dev: --tags @reprint_change_status --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=webpost_0017 PW=pass111
-eva_dev: --tags   @expand_order_details_panel --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=ss_cctest3 PW=password1
+eli_dev: --tags @wp_forgot_password --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto23 PW=pass111
+ray_dev: --tags @import_orders --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=webpost_0017 PW=pass111
+eva_dev: --tags   @details_panel --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=ss_cctest3 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
 bvt: --tags @bvt --guess VERBOSE=false HEALTHCHECK=true
 wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS! 
+
+orders_authentication_stg: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=staging BROWSER=ff USR=uadybt5iev PW=pass111
+orders_authentication_cc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=bz9005j1r2jx0 PW=pass111
+orders_authentication_sc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff USR=jes9t1kus PW=pass111
 
 # Stores
 threedcart: --tags @3dcart --guess VERBOSE=false HEALTHCHECK=true 
@@ -28,17 +32,19 @@ amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true
 
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+#eln5mw78g for general setting autofund testing in sc
+grid_column_order: --tags @grid_column_order --guess VERBOSE=false HEALTHCHECK=true
+details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess VERBOSE=false HEALTHCHECK=true
+details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess VERBOSE=false HEALTHCHECK=true
 details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false HEALTHCHECK=true
 details_insure_for_box_unchecked_manual: --tags @details_insure_for_box_unchecked_manual --guess VERBOSE=false HEALTHCHECK=true
 details_insure_for_box_unchecked_imported: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=false HEALTHCHECK=true #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
 
 
 update_orders_to_shipstation_int: --tags @update_orders_to_shipstation_int --guess VERBOSE=false HEALTHCHECK=true
-orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true
-orders_authentication_cc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=bz9005j1r2jx0 PW=pass111
-orders_authentication_sc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff USR=jes9t1kus PW=pass111
 
 import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=bu8sdr5ui PW=pass111
 
@@ -156,7 +162,7 @@ tracking_defaults: --tags @tracking_defaults --guess VERBOSE=false HEALTHCHECK=t
 rules_domestic: --tags @rules_domestic --guess VERBOSE=false HEALTHCHECK=true
 parcel_select: --tags @parcel_select --guess VERBOSE=false HEALTHCHECK=true
 service_tooltip: --tags @service_tooltip --guess VERBOSE=false HEALTHCHECK=true
-change_order_status: --tags @change_order_status --guess VERBOSE=false HEALTHCHECK=true
+filter_change_order_status: --tags @filter_change_order_status --guess VERBOSE=false HEALTHCHECK=true
 grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=true
 order_creation: --tags @order_creation --guess VERBOSE=false HEALTHCHECK=true
 address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=true
@@ -167,7 +173,7 @@ local_rating: --tags @local_rating --guess VERBOSE=false HEALTHCHECK=true
 international: --tags @international --guess VERBOSE=false HEALTHCHECK=true
 purchasing: --tags @purchasing --guess VERBOSE=false HEALTHCHECK=true
 change_settings: --tags @settings --guess VERBOSE=false HEALTHCHECK=true
-thermal_printing: --tags @thermal_printing --guess VERBOSE=false HEALTHCHECK=true
+print_on_thermal: --tags @print_on_thermal --guess VERBOSE=false HEALTHCHECK=true
 sorting: --tags @sort --guess VERBOSE=false HEALTHCHECK=true
 add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false HEALTHCHECK=true
 orders_10: --tags @orders_10 --guess VERBOSE=false HEALTHCHECK=true
@@ -177,7 +183,7 @@ auto_suggest: --tags @auto_suggest --guess VERBOSE=false HEALTHCHECK=true
 new_country_code: --tags  @new_country_code --guess VERBOSE=false HEALTHCHECK=true
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEALTHCHECK=true
 rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=true
-expand_order_details_panel: --tags  @expand_order_details_panel --guess VERBOSE=false HEALTHCHECK=true
+details_panel: --tags  @details_panel --guess VERBOSE=false HEALTHCHECK=true
 print_multiple_reprints: --tags @print_multiple_reprints --guess VERBOSE=false HEALTHCHECK=true
 email_tracking: --tags @email_tracking --guess VERBOSE=false HEALTHCHECK=true
 
@@ -194,6 +200,8 @@ wp_bvt_netstamps_calculate: --tags  @wp_bvt_netstamps_calculate --guess VERBOSE=
 wp_bvt_netstamps_specify: --tags  @wp_bvt_netstamps_specify --guess VERBOSE=false HEALTHCHECK=true
 wp_bvt_international: --tags  @wp_bvt_international --guess VERBOSE=false HEALTHCHECK=true
 
+
+
 wp_label_left_side: --tags  @wp_label_left_side --guess VERBOSE=false HEALTHCHECK=true
 wp_label_right_side: --tags  @wp_label_right_side --guess VERBOSE=false HEALTHCHECK=true
 wp_envelope_regression: --tags  @wp_envelope_regression --guess VERBOSE=false HEALTHCHECK=true
@@ -206,6 +214,7 @@ wp_envelope_7: --tags  @wp_envelope_7 --guess VERBOSE=false HEALTHCHECK=true
 wp_envelope_11: --tags  @wp_envelope_11 --guess VERBOSE=false HEALTHCHECK=true
 wp_envelope_12: --tags  @wp_envelope_12 --guess VERBOSE=false HEALTHCHECK=true
 wp_shipping_label_preview_panel_options: --tags  @wp_shipping_label_preview_panel_options --guess VERBOSE=false HEALTHCHECK=true
-
+wp_forgot_username: --tags  @wp_forgot_username --guess VERBOSE=false HEALTHCHECK=true
+wp_forgot_password: --tags  @wp_forgot_password --guess VERBOSE=false HEALTHCHECK=true
 
 

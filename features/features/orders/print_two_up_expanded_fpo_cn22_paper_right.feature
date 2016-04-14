@@ -5,7 +5,7 @@ Feature: User Prints 1 FPO CN22 label on 8.5x11 - right side
 
   @print_two_up_expanded_fpo_cn22_paper_right
   Scenario: User Prints 1 FPO CN22 label on 8.5x11 - right side
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To address to
@@ -18,11 +18,11 @@ Feature: User Prints 1 FPO CN22 label on 8.5x11 - right side
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 2, Oz 1 Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Open Print Modal
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Select right-side label
     Then Expect Print Modal right-side label selected
     Then Print: Print Sample
-    Then Toolbar: Print
+    Then Print: Print
     Then Sign out

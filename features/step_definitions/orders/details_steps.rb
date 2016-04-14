@@ -982,7 +982,7 @@ Then /^Details: Expect Tracking Cost to be greater than \$([0-9.]*)$/ do |expect
   actual_value.should be > expectation
 end
 
-Then /^Details: Expect Pounds to be (\d+)$/ do |expectation|
+Then /^Details: Expect Pounds to be (.*)$/ do |expectation|
   log.info "Details: Expect Pounds to be #{expectation}"
   text_box = orders.details.weight.lbs.text_box
   10.times do
@@ -998,7 +998,7 @@ Then /^Details: Expect Pounds to be (\d+)$/ do |expectation|
   actual_value.should eql expectation
 end
 
-Then /^Details: Expect Ounces to be (\d+)$/ do |expectation|
+Then /^Details: Expect Ounces to be (.*)$/ do |expectation|
   log.info "Details: Expect Ounces to be  #{expectation}"
   text_box = orders.details.weight.oz.text_box
   10.times do

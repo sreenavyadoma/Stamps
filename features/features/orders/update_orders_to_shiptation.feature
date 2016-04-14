@@ -6,7 +6,7 @@ Feature:  Update Order to ShipStation
 
   @update_orders_to_shipstation
   Scenario:  Update ShipStation
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name       | company      | street_address      | city              | state | zip         | country        | phone           |  email            |

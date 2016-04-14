@@ -6,7 +6,7 @@ Feature: Show Cost of Order in Ship Cost Grid
 
   @grid_ship_cost
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields

@@ -7,7 +7,7 @@ Feature:  Order Details Form - Reference # Field
 
   @details_reference_no
   Scenario: Reference Number
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "Priority Mail Large/Thick Envelope"
@@ -19,12 +19,12 @@ Feature:  Order Details Form - Reference # Field
     Then Details: Set Reference Number to Rob
     Then Details: Expect Reference Number to be Rob
 
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Uncheck Print Reference # on Shipping Label
     Then Print: Check Print Reference # on Shipping Label
     Then Print: Check Print Reference # on Shipping Label
-    Then Print: Set Media "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
-    Then Toolbar: Print
+    Then Print: Print
     Then Sign out
 

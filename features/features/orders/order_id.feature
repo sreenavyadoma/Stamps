@@ -6,7 +6,7 @@ Feature: New Order ID Created
 
   @order_id
   Scenario:  New Order ID Created
-    Then Add New Order
+    Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Expect Order ID equals Grid order ID
     Then Sign out

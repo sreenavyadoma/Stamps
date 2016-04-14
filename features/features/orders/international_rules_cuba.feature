@@ -5,7 +5,7 @@ Feature: Cuba Internal Transaction Number Required
 
   @rules_international @rules_international_cuba
   Scenario: Cuba Internal Transaction Number Required
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to Cuba
     Then Details: Set Ship-To address to

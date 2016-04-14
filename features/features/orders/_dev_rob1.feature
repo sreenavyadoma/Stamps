@@ -4,12 +4,12 @@ Feature: Test Development
 
   @rob_dev_printer
   Scenario:
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "Priority Mail Package"
     Then Details: Set Ounces to 1
-    Then Open Print Modal
+    Then Print: Open Modal
     Then Print: Set Ship Date to today
     # factory selection sends printout to PDF Factory.  You will need to rename your PDF Factory printer to factory.
     Then Print: Set Printer to "factory"
@@ -21,10 +21,10 @@ Feature: Test Development
     Then Print: Set Printer to "EPSON"
     # Sends your printouts to Officejet Pro in elie's cube.
     Then Print: Set Printer to "HP Officejet Pro 8600"
-    Then Toolbar: Print
+    Then Print: Print
 
   Scenario:
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-To Country to Canada
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-From to default
@@ -47,19 +47,19 @@ Feature: Test Development
     Then Details: Set Ship-To address to
       | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-To address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-To address to San
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-To address to San
 
   Scenario:
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "Priority Mail Package"

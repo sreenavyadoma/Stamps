@@ -6,22 +6,22 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
 
   @printing_error
   Scenario:  Printing
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Grid: Check row 1
     Then Print expecting error A Service must be selected before printing.
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Grid: Check row 1
     Then Grid: Check row 2
     Then Print expecting error All selected orders have errors and cannot be printed.
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields

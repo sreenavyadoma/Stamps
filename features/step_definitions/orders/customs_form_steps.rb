@@ -1,6 +1,6 @@
 
 
-Then /^Customs: Add Item (\d+), Description (.*), Qty (\d+), Price ([\d.]+), Lbs (\d+), Oz (\d+) Origin ([\w ]+), Tariff (\d+)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
+Then /^Customs: Add Item (\d+), Description (.*), Qty (\d+), Price (.+), Lbs (\d+), Oz (\d+) Origin (.+), Tariff (.*)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
   log.info "Step: Customs: Add Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_item_grid = @customs_form.item_grid

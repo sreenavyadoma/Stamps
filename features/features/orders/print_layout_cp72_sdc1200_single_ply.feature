@@ -5,7 +5,7 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
 
   @print_layout_cp72_sdc1200_single_ply
   Scenario: Print 1 Intl CP72 label on sdc1200 - right side
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -17,10 +17,10 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Open Print Modal
-    Then Print: Set Media "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
+    Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print: Set Printer to "factory"
     Then Print: Select right-side label
     Then Expect Print Modal right-side label selected
-    Then Toolbar: Print
+    Then Print: Print
     Then Sign out

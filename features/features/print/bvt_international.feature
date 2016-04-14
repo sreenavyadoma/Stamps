@@ -23,7 +23,7 @@ Feature: International Shipping BVT
     Then Print Postage Customs: Set Non-Delivery Options to "Treat as abandoned"
     Then Print Postage Customs: Set Internal Transaction Number Requirement to "Required"
     Then Print Postage Customs: Set ITN Number to "12345"
-    Then Print Postage Customs: Set More Info to "Web Postage BVT International Shipping"
+    Then Print Postage Customs: Set More Info to "WP BVT Intl Shipping"
     Then Print Postage Customs: Delete All Items
     Then Print Postage Customs: Add Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin Russia, Tariff 25
     Then Print Postage Customs: Check I agree to the USPS Privacy Act Statement

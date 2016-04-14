@@ -331,7 +331,7 @@ module Orders
           stop_test message
         end
 
-        stop_test "Unable to Add New Orders!" unless order_details.present?
+        stop_test "Unable to Toolbar: Adds!" unless order_details.present?
       end
 
       def move

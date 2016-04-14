@@ -5,7 +5,7 @@ Feature:  Customs Form Totals
 
   @international_customs_form_totals
   Scenario:  Customs Form Grid - Add Items
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |

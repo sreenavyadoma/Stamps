@@ -6,7 +6,7 @@ Feature:  Order Details Form Placeholder default values
 
   @details_placeholders
   Scenario:  Order Details Form Placeholder default values
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Expect Ship-To Address Placeholder to be Address
     Then Details: Expect Ship-To Phone Placeholder to be Phone
     Then Details: Expect Ship-To Email Placeholder to be Email

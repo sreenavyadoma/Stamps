@@ -61,8 +61,14 @@ Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename| #import_
   @csv_import_file = CSV.read(@csv_import_filename, :headers=>true)
   log.info @csv_import_file['Order ID (required)']
 
-
   @open_file.file_name @csv_import_filename
+end
+
+Then /^Import Orders: Expect Imported Filename to be (.*)$/ do |expectation|
+  log.info "Import Import Filename to be #{expectation}"
+  actual_value = @import_orders.filename_label
+  log.info "Test #{(actual_value == expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
 end
 
 

@@ -8,7 +8,7 @@ Feature: Details Ship Cost Total
 
   @details_ship_cost_total
   Scenario: Ship Cost Total
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Expect Total label to be Total Ship Cost:
     Then Details: Set Ship-From to default
     Then Details: Expect Service Cost to be $0.00

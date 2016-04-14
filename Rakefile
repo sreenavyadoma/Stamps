@@ -18,8 +18,28 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:orders_authentication_stg) do |t|
+  t.profile = 'orders_authentication_stg'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:grid_column_order) do |t|
+  t.profile = 'grid_column_order'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:windows_ui) do |t|
+  t.profile = 'windows_ui'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:details_flat_rate_no_weight_international) do |t|
+  t.profile = 'details_flat_rate_no_weight_international'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:details_flat_rate_no_weight_domestic) do |t|
+  t.profile = 'details_flat_rate_no_weight_domestic'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -553,8 +573,8 @@ Cucumber::Rake::Task.new(:service_tooltip) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:change_order_status) do |t|
-  t.profile = 'change_order_status'
+Cucumber::Rake::Task.new(:filter_change_order_status) do |t|
+  t.profile = 'filter_change_order_status'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -678,8 +698,8 @@ Cucumber::Rake::Task.new(:change_settings) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:thermal_printing) do |t|
-  t.profile = 'thermal_printing'
+Cucumber::Rake::Task.new(:print_on_thermal) do |t|
+  t.profile = 'print_on_thermal'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -724,8 +744,8 @@ Cucumber::Rake::Task.new(:fcm_selection_enabled) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:expand_order_details_panel) do |t|
-  t.profile = 'expand_order_details_panel'
+Cucumber::Rake::Task.new(:details_panel) do |t|
+  t.profile = 'details_panel'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -841,6 +861,16 @@ end
 
 Cucumber::Rake::Task.new(:wp_shipping_label_preview_panel_options) do |t|
   t.profile = 'wp_shipping_label_preview_panel_options'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_forgot_username) do |t|
+  t.profile = 'wp_forgot_username'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_forgot_password) do |t|
+  t.profile = 'wp_forgot_password'
   t.cucumber_opts = "-p cuke_reports"
 end
 

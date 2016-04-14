@@ -7,7 +7,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
   @reprint_media @reprint
   Scenario: User Reprints Order - International | CN22
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
@@ -22,14 +22,14 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
     Then Customs: Close Form
 
     Then Pause for 2 seconds
-    Then Open Print Modal
-    Then Print: Set Media "Shipping Label - 5 ½" x 8 ½""
+    Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
-    Then Toolbar: Print
+    Then Print: Print
 
     Then Filter: Select Shipped
     Then Grid: Check New Order ID
-    Then Open Reprint Modal
+    Then Print: Open Reprint Modal
     Then RePrint: Reprint
 
     Then Sign out

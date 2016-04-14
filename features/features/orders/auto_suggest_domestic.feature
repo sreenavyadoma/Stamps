@@ -7,7 +7,7 @@ Feature: Domestic Address
   @auto_suggest
   Scenario: Auto Suggest for Domestic Addresses
 
-    Then Add New Order
+    Then Toolbar: Add
 
     #Matching first name
     Then Details: Set Ship-To auto-suggest address to partial name Firstname

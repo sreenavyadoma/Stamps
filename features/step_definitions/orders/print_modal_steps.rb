@@ -85,9 +85,16 @@ Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
   actual.should eql expected
 end
 
-Then /^Print: Set Media \"(.*)\"$/ do |print_media|
-  log.info "Step: Print: Set Media #{print_media}"
-  orders.toolbar.print_modal.printing_on.select print_media
+Then /^Print: Set Printing On \"(.*)\"$/ do |expectation|
+  log.info "Step: Print: Set Printing On #{expectation}"
+  orders.toolbar.print_modal.printing_on.select expectation
+end
+
+Then /^Print: Expect Printing On Label to be (.*)$/ do |expectation|
+  log.info "Step: Print: Set Printing On #{expectation}"
+  actual_value = orders.toolbar.print_modal.printing_on.label
+  log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
 end
 
 Then /^Select Printer \"(.*)\"$/ do |printer|
@@ -95,10 +102,10 @@ Then /^Select Printer \"(.*)\"$/ do |printer|
   orders.toolbar.print_modal.printer.select printer
 end
 
-Then /^Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |print_media, data_qtip|
-  log.info "Expect Print Modal Print Media #{print_media} tooltip to include #{data_qtip}"
+Then /^Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |expectation, data_qtip|
+  log.info "Expect Print Modal Print Media #{expectation} tooltip to include #{data_qtip}"
   tooltips = data_qtip.split "||"
-  actual_tooltip = orders.toolbar.print_modal.printing_on.tooltip print_media
+  actual_tooltip = orders.toolbar.print_modal.printing_on.tooltip expectation
   tooltips.each { |tooltip|
     log.info "Test #{(actual_tooltip.include? tooltip)?"Passed":"Failed"}"
     actual_tooltip.should include tooltip

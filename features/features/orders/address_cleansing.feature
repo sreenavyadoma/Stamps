@@ -6,7 +6,7 @@ Feature: Address Cleansing
 
   @address_cleansing
   Scenario: Address Cleansing
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
       | name              | company | street_address    | city       | state | zip   | country       | phone           |  email            |
@@ -22,7 +22,7 @@ Feature: Address Cleansing
     Then Grid: Expect City to be El Segundo
     Then Grid: Expect State to be CA
 
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Service to "Priority Mail Package"
     Then Details: Hide Ship-To fields

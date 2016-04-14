@@ -6,7 +6,7 @@ Feature:  BVT Order Creation
 
   @bvt_add_new_order
   Scenario:  Add a new order
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Service to "Priority Mail Package"

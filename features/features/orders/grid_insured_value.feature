@@ -6,7 +6,7 @@ Feature: Grid: Tracking & Order Status
 
   @grid_insured_value
   Scenario: Tracking & Order Status
-    Then Add New Order
+    Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Ounces to 5
