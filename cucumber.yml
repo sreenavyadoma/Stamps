@@ -10,7 +10,7 @@ rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=
 #details_placeholders
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
-eli_dev: --tags @wp_bvt_address_cleansing --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=win10ff1000 PW=pass111
+eli_dev: --tags @wp_forgot_password --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto23 PW=pass111
 ray_dev: --tags @import_orders --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=webpost_0017 PW=pass111
 eva_dev: --tags   @details_panel --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=ss_cctest3 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
@@ -200,6 +200,8 @@ wp_bvt_netstamps_calculate: --tags  @wp_bvt_netstamps_calculate --guess VERBOSE=
 wp_bvt_netstamps_specify: --tags  @wp_bvt_netstamps_specify --guess VERBOSE=false HEALTHCHECK=true
 wp_bvt_international: --tags  @wp_bvt_international --guess VERBOSE=false HEALTHCHECK=true
 
+
+
 wp_label_left_side: --tags  @wp_label_left_side --guess VERBOSE=false HEALTHCHECK=true
 wp_label_right_side: --tags  @wp_label_right_side --guess VERBOSE=false HEALTHCHECK=true
 wp_envelope_regression: --tags  @wp_envelope_regression --guess VERBOSE=false HEALTHCHECK=true
@@ -212,6 +214,7 @@ wp_envelope_7: --tags  @wp_envelope_7 --guess VERBOSE=false HEALTHCHECK=true
 wp_envelope_11: --tags  @wp_envelope_11 --guess VERBOSE=false HEALTHCHECK=true
 wp_envelope_12: --tags  @wp_envelope_12 --guess VERBOSE=false HEALTHCHECK=true
 wp_shipping_label_preview_panel_options: --tags  @wp_shipping_label_preview_panel_options --guess VERBOSE=false HEALTHCHECK=true
-
+wp_forgot_username: --tags  @wp_forgot_username --guess VERBOSE=false HEALTHCHECK=true
+wp_forgot_password: --tags  @wp_forgot_password --guess VERBOSE=false HEALTHCHECK=true
 
 
