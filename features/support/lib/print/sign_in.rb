@@ -85,5 +85,31 @@ module Print
 
     end
 
+    def forgot_username
+      sign_in_link = StampsLink.new @browser.link(:text => "Sign In")
+      button = StampsButton.new @browser.a :css => "a[class*=forgotUsername]"
+      forgot_username_modal = Print::ForgotUsernameModal.new @browser
+      5.times do
+        sign_in_link.safe_click
+        button.safe_click
+        sleep 1
+        return forgot_username_modal if forgot_username_modal.present?
+      end
+      stop_test "Unable to open Forgot Username Modal, check your code." unless forgot_password_modal.present?
+    end
+
+    def forgot_password
+      sign_in_link = StampsLink.new @browser.link(:text => "Sign In")
+      button = StampsButton.new @browser.a :css => "a[class*=forgotPassword]"
+      forgot_password_modal = Print::ForgotPasswordModal.new @browser
+      5.times do
+        sign_in_link.safe_click
+        button.safe_click
+        sleep 1
+        return forgot_password_modal if forgot_password_modal.present?
+      end
+      stop_test "Unable to open Forgot Password Modal, check your code." unless forgot_password_modal.present?
+    end
+
   end
 end
