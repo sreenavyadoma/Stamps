@@ -1,53 +1,53 @@
 Then /^Print Postage: Select Stamps$/ do
-  step "Select Print Postage Print On Stamps"
+  step "Print Postage: Set Print On Stamps"
 end
 
 Then /^Print Postage: Select Shipping Label 5 x 8$/ do
-  step "Select Print Postage Print On Shipping Label - 5 ½” x 8 ½”"
+  step "Print Postage: Set Print On Shipping Label - 5 ½” x 8 ½”"
 end
 
 Then /^Print Postage: Select Shipping Label 8 x 11$/ do
-  step "Select Print Postage Print On Shipping Label - 8 ½” x 11” Paper"
+  step "Print Postage: Set Print On Shipping Label - 8 ½” x 11” Paper"
 end
 
 Then /^Print Postage: Select Shipping Label 4 x 6$/ do
-  step "Select Print Postage Print On Shipping Label - Stamps.com SDC-1200, 4 ¼” x 6 ¾”"
+  step "Print Postage: Set Print On Shipping Label - Stamps.com SDC-1200, 4 ¼” x 6 ¾”"
 end
 
 Then /^Print Postage: Select Envelope - #10$/ do
-  step "Select Print Postage Print On Envelope - #10, 4 ⅛” x 9 ½”"
+  step "Print Postage: Set Print On Envelope - #10, 4 ⅛” x 9 ½”"
 end
 
 Then /^Print Postage: Select Envelope - #6$/ do
-  step "Select Print Postage Print On Envelope - #6, 3 ⅝” x 6 ½”"
+  step "Print Postage: Set Print On Envelope - #6, 3 ⅝” x 6 ½”"
 end
 
 Then /^Print Postage: Select Envelope - #7$/ do
-  step "Select Print Postage Print On Envelope - #7, 3 ⅞” x 7 ½”"
+  step "Print Postage: Set Print On Envelope - #7, 3 ⅞” x 7 ½”"
 end
 
 Then /^Print Postage: Select Envelope - #9$/ do
-  step "Select Print Postage Print On Envelope - #9, 3 ⅞” x 8 ⅞”"
+  step "Print Postage: Set Print On Envelope - #9, 3 ⅞” x 8 ⅞”"
 end
 
 Then /^Print Postage: Select Envelope - #11$/ do
-  step "Select Print Postage Print On Envelope - #11, 4 ½” x 10 ⅜”"
+  step "Print Postage: Set Print On Envelope - #11, 4 ½” x 10 ⅜”"
 end
 
 Then /^Print Postage: Select Envelope - #12$/ do
-  step "Select Print Postage Print On Envelope - #12, 4 ¾” x 11”"
+  step "Print Postage: Set Print On Envelope - #12, 4 ¾” x 11”"
 end
 
 Then /^Print Postage: Select Envelope - #A2$/ do
-  step "Select Print Postage Print On Envelope - #A2, 4 ⅜” x 5 ¾”"
+  step "Print Postage: Set Print On Envelope - #A2, 4 ⅜” x 5 ¾”"
 end
 
 Then /^Print Postage: Select Envelope - #A9$/ do
-  step "Select Print Postage Print On Envelope - #A9, 5 ¾” x 8 ¾”"
+  step "Print Postage: Set Print On Envelope - #A9, 5 ¾” x 8 ¾”"
 end
 
-Then /^Print Postage: Select Print On (.*)/ do |media|
-  log.info "Select Print Postage Print On #{media}"
+Then /^Print Postage: Set Print On (.*)/ do |media|
+  log.info "Print Postage: Set Print On #{media}"
 
   postage.print_on.select media
 
