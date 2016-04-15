@@ -9,7 +9,7 @@ Feature: Envelopes #12
     Then Print Postage: Select Envelope - #12
     Then Envelopes: Set Ship-From to default
     Then Envelopes: Set Ship-To country to United States
-    Then Envelopes: Set Ship-To address to
+    Then Print Postage: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip        | country       |
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    | 94102      | United States |
 

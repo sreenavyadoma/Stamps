@@ -48,20 +48,107 @@ end
 
 Then /^Print Postage: Set Print On (.*)/ do |media|
   log.info "Print Postage: Set Print On #{media}"
+  @print_postage = postage.print_on media
+end
 
-  postage.print_on.select media
+Then /^Envelopes: Set Ship-From to (.*)/ do |value|
+  log.info "Step: Set Print Postage Ship-From to: \n #{value}"
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.ship_from.select value
+end
 
-  if media.include? 'Stamps'
-    @stamps = postage.stamps
-  elsif media.include? 'Shipping Label'
-    @shipping_label = postage.shipping_label
-    log.info "Preview image: #{(@shipping_label.form_view.preview_image.present?)?"YES": "NO"}"
-  elsif media.include? 'Envelope'
-    @envelope = postage.envelope
-    log.info "Preview image: #{(@envelope.form_view.preview_image.present?)?"YES": "NO"}"
-  elsif media.include? 'Certified Mail'
-    @certified_mail = postage.certified_mail
+Then /^Envelopes: Set Ship-To country to (.*)/ do |country|
+  log.info "Step: Set Print Postage Country to: \n #{country}"
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.ship_to.country.select country
+end
+
+Then /^Print Postage: Set Ship-To to Random Address in Zone 2$/ do
+  step "Print Postage: Set Ship-To address to zone 2"
+end
+
+Then /^Print Postage: Set Ship-To to Random Address in Zone 3$/ do
+  step "Print Postage: Set Ship-To address to zone 3"
+end
+
+Then /^Print Postage: Set Ship-To to Random Address in Zone 4$/ do
+  step "Print Postage: Set Ship-To address to zone 4"
+end
+
+Then /^Print Postage: Set Ship-To to Random Address in Zone 5$/ do
+  step "Print Postage: Set Ship-To address to zone 5"
+end
+
+Then /^Print Postage: Set Ship-To to Random Address in Zone 6$/ do
+  step "Print Postage: Set Ship-To address to zone 6"
+end
+
+Then /^Print Postage: Set Ship-To to Random Address in Zone 7$/ do
+  step "Print Postage: Set Ship-To address to zone 7"
+end
+
+Then /^Print Postage: Set Ship-To to Random Address in Zone 8$/ do
+  step "Print Postage: Set Ship-To address to zone 8"
+end
+
+Then /^Print Postage: Set Ship-To to Random Address Between Zone 1 through 4$/ do
+  step "Print Postage: Set Ship-To address to zone 1 through 4"
+end
+
+Then /^Print Postage: Set Ship-To to Random Address Between Zone 5 through 8$/ do
+  step "Print Postage: Set Ship-To address to zone 5 through 8"
+end
+
+Then /^Print Postage: Set Ship-To address to (.*)$/ do |address|
+  log.info "Step: Shipping Labels: Set Ship-To address to \"#{address}\""
+
+  case address.downcase
+    when /zone 1 through 4/
+      address = test_helper.rand_zone_1_4
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To random zone 1 through 4 address to \"#{formatted_address}\""
+    when /zone 5 through 8/
+      address = test_helper.rand_zone_5_8
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Envelopes: Set Ship-To random zone 5 through 8 address to \"#{formatted_address}\""
+    when /zone 1/
+      address = test_helper.rand_zone_1
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Print Postage: Set Ship-To to Random Address in Zone 1 = \"#{formatted_address}\""
+    when /zone 2/
+      address = test_helper.rand_zone_2
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Print Postage: Set Ship-To to Random Address in Zone 2 = \"#{formatted_address}\""
+    when /zone 3/
+      address = test_helper.rand_zone_3
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Print Postage: Set Ship-To to Random Address in Zone 3 = \"#{formatted_address}\""
+    when /zone 4/
+      address = test_helper.rand_zone_4
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Print Postage: Set Ship-To to Random Address in Zone 4 = \"#{formatted_address}\""
+    when /zone 5/
+      address = test_helper.rand_zone_5
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Print Postage: Set Ship-To to Random Address in Zone 5 = \"#{formatted_address}\""
+    when /zone 6/
+      address = test_helper.rand_zone_6
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Print Postage: Set Ship-To to Random Address in Zone 6 = \"#{formatted_address}\""
+    when /zone 7/
+      address = test_helper.rand_zone_7
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Print Postage: Set Ship-To to Random Address in Zone 7 = \"#{formatted_address}\""
+    when /zone 8/
+      address = test_helper.rand_zone_8
+      formatted_address = OrdersHelper.instance.format_address address
+      log.info "Print Postage: Set Ship-To to Random Address in Zone 8 = \"#{formatted_address}\""
+    else
+      formatted_address = OrdersHelper.instance.format_address address
   end
+
+  @print_postage.ship_to.set formatted_address
+
 end
 
 Then /^Print Postage: Expect Print Media Tooltip to be (.*)$/ do |selection|
@@ -97,15 +184,6 @@ Then /^Print Postage: Set Ship-To address to$/ do |table|
   step "Set Print Postage Form Ship-To address to #{ship_to}"
 end
 
-Then /^Print Postage: Set Ship-To to Random Address Between Zone 1 through 4$/ do
-  step "Set Order Details Ship-To address to zone 1 through 4"
-end
-
-Then /^Print Postage: Set Ship-To to Random Address Between Zone 5 through 8$/ do
-  step "Set Order Details Ship-To address to zone 5 through 8"
-end
-
-#todo-elie Fix ship_from
 Then /^Print Postage: Set Ship-From to (.*)/ do |value|
   log.info "Step: Set Print Postage Ship-From to: \n #{value}"
   @postage_form.ship_from.select value

@@ -2,69 +2,69 @@
 
 Then /^Stamps: Set Serial Number to (.*)/ do |serial|
   log.info "Set Stamps Serial Number to #{serial}"
-  @stamps = postage.stamps if @stamps.nil?
+  @print_postage = postage.print_postage if @print_postage.nil?
 
   if serial == 'random'
     serial = "B#{Random.rand(10000..99999)}"
   end
   serial_prefix = serial.split('')[0]
-  @stamps.serial.set serial
+  @print_postage.serial.set serial
   log.info "Serial prefix: #{serial_prefix}"
-  log.info "Preview image: #{(@stamps.form_view.preview_image(serial_prefix).present?)?"YES": "NO"}"
+  log.info "Preview image: #{(@print_postage.form_view.preview_image(serial_prefix).present?)?"YES": "NO"}"
 end
 
 Then /^Stamps: Set Ship-From to (.*)/ do |value|
   log.info "Step: Set Print Postage Ship-From to: \n #{value}"
-  @stamps = postage.stamps if @stamps.nil?
-  @stamps.ship_from.select value
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.ship_from.select value
 end
 
 Then /^Stamps: Set Ship-To country to (.*)/ do |country|
   log.info "Step: Set Print Postage Country to: \n #{country}"
-  @stamps = postage.stamps if @stamps.nil?
-  @stamps.country.select country
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.country.select country
 end
 
 Then /^Stamps: Set Ounces to (.*)/ do |ounces|
   log.info "Step: Stamps: Set Ounces to: \n #{ounces}"
-  @stamps = postage.stamps if @stamps.nil?
-  @stamps.weight.oz.set ounces
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.weight.oz.set ounces
 end
 
 Then /^Stamps: Set Pounds to (.*)/ do |pounds|
   log.info "Step: Stamps: Set Pounds to: \n #{pounds}"
-  @stamps = postage.stamps if @stamps.nil?
-  @stamps.weight.lbs.set pounds
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.weight.lbs.set pounds
 end
 
 Then /^Stamps: Set Quantity to (.*)/ do |qty|
   log.info "Step: Stamps: Set Quantity to: \n #{qty}"
-  @stamps = postage.stamps if @stamps.nil?
-  @stamps.form_view.quantity.set qty
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.form_view.quantity.set qty
 end
 
 Then /^Stamps: Set Print All to Checked$/ do
   log.info "Step: Stamps: Check Print All"
-  @stamps = postage.stamps if @stamps.nil?
-  @stamps.form_view.print_all.check
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.form_view.print_all.check
 end
 
 Then /^Stamps: Set Print All to Unchecked$/ do
   log.info "Step: Stamps: Uncheck Print All"
-  @stamps = postage.stamps if @stamps.nil?
-  @stamps.form_view.print_all.uncheck
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.form_view.print_all.uncheck
 end
 
 Then /^Stamps: Set Reference Number to (.*)/ do |ref_no|
   log.info "Set Stamps Reference Number to #{ref_no}"
-  @stamps = postage.stamps if @stamps.nil?
-  @stamps.form_view.reference_number.set ref_no
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.form_view.reference_number.set ref_no
 end
 
 Then /^Stamps: Set Cost Code to (.*)/ do |code|
   log.info "Step: Stamps: Set Cost Code to \n #{code}"
-  @stamps = postage.stamps if @stamps.nil?
-  @stamps.form_view.cost_code.select code
+  @print_postage = postage.print_postage if @print_postage.nil?
+  @print_postage.form_view.cost_code.select code
 end
 
 Then /^Create page objects for Print On Shipping Label$/ do
