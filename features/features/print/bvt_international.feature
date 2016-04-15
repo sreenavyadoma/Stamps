@@ -9,7 +9,7 @@ Feature: International Shipping BVT
   @wp_bvt_international
   Scenario: International Shipping
 
-    Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”
+    Then Print Postage: Select Shipping Label 5 x 8
     Then Shipping Labels: Set Ship-From to default
     Then International Address: Set Ship-To to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |

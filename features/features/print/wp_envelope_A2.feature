@@ -6,7 +6,7 @@ Feature: Envelope a2
   @wp_envelope_regression
   @wp_envelope_A2
   Scenario: Envelope #A2
-    Then Print Postage: Select Print On Envelope - #A2, 4 ⅜” x 5 ¾”
+    Then Print Postage: Select Envelope - #A2
     Then Envelopes: Set Ship-From to default
     Then Envelopes: Set Ship-To country to United States
     Then Envelopes: Set Ship-To address to

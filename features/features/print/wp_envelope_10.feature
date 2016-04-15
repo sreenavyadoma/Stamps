@@ -8,7 +8,7 @@ Feature: Envelope #10
   @wp_envelope_regression
   @wp_envelope_10
   Scenario: Envelope #10
-    Then Print Postage: Select Print On Envelope - #10, 4 ⅛” x 9 ½”
+    Then Print Postage: Select Envelope - #10
     Then Envelopes: Set Ship-From to default
     Then Envelopes: Set Ship-To country to United States
     Then Envelopes: Set Ship-To address to

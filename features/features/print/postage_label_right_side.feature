@@ -9,7 +9,7 @@ Feature: Postage Shipping Label - Right Side
   @wp_label_right_side
   Scenario: Right Side Shipping Label - 8 ½” x 11” Paper
 
-    Then Print Postage: Select Print On Shipping Label - 8 ½” x 11” Paper
+    Then Print Postage: Select Shipping Label 8 x 11
 
     Then Shipping Labels: Set Ship-From to default
     Then Shipping Labels: Set Ship-To country to United States
@@ -29,7 +29,7 @@ Feature: Postage Shipping Label - Right Side
   @wp_label_right_side
   Scenario: Right Side Shipping Label -  5 ½” x 8 ½”
 
-    Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”
+    Then Print Postage: Select Shipping Label 5 x 8
 
     Then Shipping Labels: Set Ship-From to default
     Then Shipping Labels: Set Ship-To country to United States
@@ -49,7 +49,7 @@ Feature: Postage Shipping Label - Right Side
   @wp_label_right_side
   Scenario: Right Side Shipping Label -  SDC-1200
 
-    Then Print Postage: Select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼” x 6 ¾”
+    Then Print Postage: Select Shipping Label 4 x 6
 
     Then Shipping Labels: Set Ship-From to default
     Then Shipping Labels: Set Ship-To country to United States

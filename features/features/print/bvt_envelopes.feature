@@ -8,7 +8,7 @@ Feature: Envelopes BVT
   @wp_bvt
   @wp_bvt_envelopes
   Scenario: Envelope
-    Then Print Postage: Select Print On Envelope - #10, 4 ⅛” x 9 ½”
+    Then Print Postage: Select Envelope - #10
     Then Envelopes: Set Ship-From to default
     Then Envelopes: Set Ship-To country to United States
     Then Envelopes: Set Ship-To address to
@@ -25,7 +25,7 @@ Feature: Envelopes BVT
 
   @wp_bvt_envelopes2
   Scenario: Envelope
-    Then Print Postage: Select Print On Envelope - #10, 4 ⅛” x 9 ½”
+    Then Print Postage: Select Envelope - #10
     Then Envelopes: Set Ship-From to default
     Then Envelopes: Set Ship-To country to United States
     Then Envelopes: Set Ship-To address to
