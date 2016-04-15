@@ -14,13 +14,13 @@ end
 
 When /^Footer: Open Print Postage Modal$/ do
   log.info "Step: Print: Open Modal"
-  @print_window = postage.print
+  @print_window = postage.footer.print
 end
 
 
 Then /^Print: Select Postage Printer \"(.*)\"$/ do |printer|
   log.info "Step: Select Printer #{printer}"
-  postage.postage.printer.select printer
+  @print_window.printer.select printer
 end
 
 
