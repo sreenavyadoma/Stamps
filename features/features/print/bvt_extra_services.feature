@@ -9,7 +9,7 @@ Feature: Extra Services BVT
   @wp_bvt_extra_services
   Scenario: Extra Services
 
-    Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”
+    Then Print Postage: Select Shipping Label 5 x 8
 
     Then Shipping Labels: Set Ship-From to default
     Then Shipping Labels: Set Ship-To country to United States
@@ -36,7 +36,7 @@ Feature: Extra Services BVT
   @wp_shipping_label_right_panel
   Scenario: Shipping Label Right Panel
 
-    Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”
+    Then Print Postage: Select Shipping Label 5 x 8
 
     Then Shipping Labels: Set Ship-From to default
     Then Shipping Labels: Set Ship-To country to United States

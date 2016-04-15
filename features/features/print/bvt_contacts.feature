@@ -9,7 +9,7 @@ Feature: Contacts BVT
   @wp_bvt_contacts
   Scenario: Contacts
 
-    Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”
+    Then Print Postage: Select Shipping Label 5 x 8
     Then Shipping Labels: Set Ship-From to default
     Then Shipping Labels: Set Ship-To country to United States
     Then Shipping Labels: Open Contacts modal

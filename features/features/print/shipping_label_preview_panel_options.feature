@@ -9,7 +9,7 @@ Feature:Shipping Label Preview Panel
   @wp_shipping_label_preview_panel_options
   Scenario: Shipping Label Preview Panel
 
-    Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”
+    Then Print Postage: Select Shipping Label 5 x 8
 
     Then Shipping Labels: Set Ship-From to default
     Then Shipping Labels: Set Ship-To country to United States

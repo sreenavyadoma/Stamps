@@ -9,7 +9,7 @@ Feature: Address Cleansing BVT
   @wp_bvt_address_cleansing
   Scenario: Address Cleansing
 
-    Then Print Postage: Select Print On Shipping Label - 5 ½” x 8 ½”
+    Then Print Postage: Select Shipping Label 5 x 8
 
     Then Shipping Labels: Set Ship-From to default
     Then Shipping Labels: Set Ship-To country to United States

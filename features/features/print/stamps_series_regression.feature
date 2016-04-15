@@ -9,7 +9,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_a_series
 
   Scenario: Stamps Regression A Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to A12345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
@@ -25,7 +25,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_b_series
 
   Scenario: Stamps Regression B Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to B12345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
@@ -41,7 +41,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_c_series
 
   Scenario: Stamps Regression C Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to C12345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
@@ -57,7 +57,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_k_series
 
   Scenario: Stamps Regression K Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to K12345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
@@ -73,7 +73,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_ml_series
 
   Scenario: Stamps Regression ML Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to ML2345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
@@ -89,7 +89,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_p_series
 
   Scenario: Stamps Regression P Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to P12345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
@@ -105,7 +105,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_r_series
 
   Scenario: Stamps Regression R Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to R12345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
@@ -122,7 +122,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_v_series
 
   Scenario: Stamps Regression V Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to V12345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
@@ -138,7 +138,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_wn_series
 
   Scenario: Stamps Regression WN Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to WN2345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
@@ -154,7 +154,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_l_series
 
   Scenario: Stamps Regression L Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to L12345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
@@ -170,7 +170,7 @@ Feature: Stamps Series Regression
   @wp_netstamps_s_series
 
   Scenario: Stamps Regression S Series
-    Then Print Postage: Select Print On Stamps
+    Then Print Postage: Select Stamps
     Then Stamps: Set Serial Number to S12345
     Then Stamps: Select Specify Postage Amount
     Then Stamps: Set Ship-From to default
