@@ -15,12 +15,6 @@ Then /^Envelopes: Set Service to \"(.*)\"/ do |service|
   @print_postage.service.select service
 end
 
-Then /^Print Postage: Set Ship-To to$/ do |table|
-  ship_to = OrdersHelper.instance.address_hash_to_str table.hashes.first
-  log.info "Step: Envelopes: Set Print Postage Form Ship-To address to \n#{ship_to}"
-  step "Print Postage: Set Ship-To to #{ship_to}"
-end
-
 Then /^Print Postage: Set Ship-To to Random Address in Zone 1$/ do
   step "Print Postage: Set Ship-To to zone 1"
 end

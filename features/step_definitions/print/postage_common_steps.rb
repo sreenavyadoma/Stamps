@@ -99,6 +99,12 @@ Then /^Print Postage: Set Ship-To to Random Address Between Zone 5 through 8$/ d
   step "Print Postage: Set Ship-To address to zone 5 through 8"
 end
 
+Then /^Print Postage: Set Ship-To to$/ do |table|
+  ship_to = OrdersHelper.instance.address_hash_to_str table.hashes.first
+  log.info "Step: Envelopes: Set Print Postage Form Ship-To address to \n#{ship_to}"
+  step "Print Postage: Set Ship-To address to #{ship_to}"
+end
+
 Then /^Print Postage: Set Ship-To address to (.*)$/ do |address|
   log.info "Step: Shipping Labels: Set Ship-To address to \"#{address}\""
 
