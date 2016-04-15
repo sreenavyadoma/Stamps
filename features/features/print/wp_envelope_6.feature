@@ -6,10 +6,10 @@ Feature: Envelope #6
   @wp_envelope_regression
   @wp_envelope_6
   Scenario: Envelope #6
-    Then Print Postage: Select Envelope - #6
+    Then Postage: Select Envelope - #6
     Then Envelopes: Set Ship-From to default
     Then Envelopes: Set Ship-To country to United States
-    Then Print Postage: Set Ship-To to
+    Then Postage: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip        | country       |
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    | 94102      | United States |
 

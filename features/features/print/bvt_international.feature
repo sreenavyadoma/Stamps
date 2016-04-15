@@ -9,7 +9,7 @@ Feature: International Shipping BVT
   @wp_bvt_international
   Scenario: International Shipping
 
-    Then Print Postage: Select Shipping Label 5 x 8
+    Then Postage: Select Shipping Label 5 x 8
     Then Shipping Labels: Set Ship-From to default
     Then International Address: Set Ship-To to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |
@@ -19,15 +19,15 @@ Feature: International Shipping BVT
     Then Shipping Labels: Set Service to "Priority Mail International Flat Rate Envelope"
 
     Then Shipping Labels: Details: Edit Customs Form
-    Then Print Postage Customs: Set Package Contents to "Gift"
-    Then Print Postage Customs: Set Non-Delivery Options to "Treat as abandoned"
-    Then Print Postage Customs: Set Internal Transaction Number Requirement to "Required"
-    Then Print Postage Customs: Set ITN Number to "12345"
-    Then Print Postage Customs: Set More Info to "WP BVT Intl Shipping"
-    Then Print Postage Customs: Delete All Items
-    Then Print Postage Customs: Add Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin Russia, Tariff 25
-    Then Print Postage Customs: Check I agree to the USPS Privacy Act Statement
-    Then Print Postage Customs: Save
+    Then Postage Customs: Set Package Contents to "Gift"
+    Then Postage Customs: Set Non-Delivery Options to "Treat as abandoned"
+    Then Postage Customs: Set Internal Transaction Number Requirement to "Required"
+    Then Postage Customs: Set ITN Number to "12345"
+    Then Postage Customs: Set More Info to "WP BVT Intl Shipping"
+    Then Postage Customs: Delete All Items
+    Then Postage Customs: Add Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin Russia, Tariff 25
+    Then Postage Customs: Check I agree to the USPS Privacy Act Statement
+    Then Postage Customs: Save
     Then Footer: Print International Postage
     Then Sign out
 

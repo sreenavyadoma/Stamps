@@ -1,23 +1,8 @@
 module Print
-  class SignInPage < Print::Postage::PrintObject
+  class SignInPage < StampsWebApps
 
-    def visit *args
-      if args.length == 1
-        ENV['URL'] = args[0]
-      end
-
-      if ENV['URL'] == "ss"
-        url = "http://#{Stamps::Test.url_prefix}.stamps.com/webpostage/"
-      else
-        url = "https://#{Stamps::Test.url_prefix}.stamps.com/webpostage/"
-      end
-
-      @browser.goto url
-      log.info "Page loaded.  #{url}"
-      self
-    end
-
-    def sign_in_with_credentials *args
+    def sign_in *args
+      visit :print
       case args
         when Hash
           username = args[0]['username']
@@ -82,6 +67,7 @@ module Print
       log.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
       ENV["SIGNED_IN_USER"] = username
+      visit :print
 
     end
 

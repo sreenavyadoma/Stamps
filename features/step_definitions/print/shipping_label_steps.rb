@@ -27,12 +27,14 @@ Then /^Shipping Labels: Set Service to \"(.*)\"/ do |service|
   @print_postage = postage.print_postage if @print_postage.nil?
   @print_postage.service.select service
 end
+=begin
 
-Then /^Shipping Labels: Set Ship-To address to$/ do |table|
+Then /^Postage: Set Ship-To to$/ do |table|
   ship_to = OrdersHelper.instance.address_hash_to_str table.hashes.first
   log.info "Step: Shipping Labels - Set Print Postage Form Ship-To address to \n#{ship_to}"
-  step "Shipping Labels: Set Ship-To address to #{ship_to}"
+  step "Postage: Set Ship-To to #{ship_to}"
 end
+=end
 
 
 
@@ -69,47 +71,47 @@ Then /^Shipping Labels: Select right side starting label/ do
 end
 
 Then /^Shipping Labels: Set Ship-To to Random Address in Zone 1$/ do
-  step "Shipping Labels: Set Ship-To address to zone 1"
+  step "Postage: Set Ship-To to zone 1"
 end
 
 Then /^Shipping Labels: Set Ship-To to Random Address in Zone 2$/ do
-  step "Shipping Labels: Set Ship-To address to zone 2"
+  step "Postage: Set Ship-To to zone 2"
 end
 
 Then /^Shipping Labels: Set Ship-To to Random Address in Zone 3$/ do
-  step "Shipping Labels: Set Ship-To address to zone 3"
+  step "Postage: Set Ship-To to zone 3"
 end
 
 Then /^Shipping Labels: Set Ship-To to Random Address in Zone 4$/ do
-  step "Shipping Labels: Set Ship-To address to zone 4"
+  step "Postage: Set Ship-To to zone 4"
 end
 
 Then /^Shipping Labels: Set Ship-To to Random Address in Zone 5$/ do
-  step "Shipping Labels: Set Ship-To address to zone 5"
+  step "Postage: Set Ship-To to zone 5"
 end
 
 Then /^Shipping Labels: Set Ship-To to Random Address in Zone 6$/ do
-  step "Shipping Labels: Set Ship-To address to zone 6"
+  step "Postage: Set Ship-To to zone 6"
 end
 
 Then /^Shipping Labels: Set Ship-To to Random Address in Zone 7$/ do
-  step "Shipping Labels: Set Ship-To address to zone 7"
+  step "Postage: Set Ship-To to zone 7"
 end
 
 Then /^Shipping Labels: Set Ship-To to Random Address in Zone 8$/ do
-  step "Shipping Labels: Set Ship-To address to zone 8"
+  step "Postage: Set Ship-To to zone 8"
 end
 
 Then /^Shipping Labels: Set Ship-To to Random Address Between Zone 1 through 4$/ do
-  step "Shipping Labels: Set Ship-To address to zone 1 through 4"
+  step "Postage: Set Ship-To to zone 1 through 4"
 end
 
 Then /^Shipping Labels: Set Ship-To to Random Address Between Zone 5 through 8$/ do
-  step "Shipping Labels: Set Ship-To address to zone 5 through 8"
+  step "Postage: Set Ship-To to zone 5 through 8"
 end
 
-Then /^Shipping Labels: Set Ship-To address to (.*)$/ do |address|
-  log.info "Step: Shipping Labels: Set Ship-To address to \"#{address}\""
+Then /^Postage: Set Ship-To to (.*)$/ do |address|
+  log.info "Step: Postage: Set Ship-To to \"#{address}\""
   @print_postage = postage.print_postage if @print_postage.nil?
 
   case address.downcase

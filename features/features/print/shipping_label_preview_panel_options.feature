@@ -9,11 +9,11 @@ Feature:Shipping Label Preview Panel
   @wp_shipping_label_preview_panel_options
   Scenario: Shipping Label Preview Panel
 
-    Then Print Postage: Select Shipping Label 5 x 8
+    Then Postage: Select Shipping Label 5 x 8
 
     Then Shipping Labels: Set Ship-From to default
     Then Shipping Labels: Set Ship-To country to United States
-    Then Shipping Labels: Set Ship-To address to
+    Then Postage: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    | 94102  | United States |
 

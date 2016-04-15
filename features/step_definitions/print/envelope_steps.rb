@@ -15,8 +15,8 @@ Then /^Envelopes: Set Service to \"(.*)\"/ do |service|
   @print_postage.service.select service
 end
 
-Then /^Print Postage: Set Ship-To to Random Address in Zone 1$/ do
-  step "Print Postage: Set Ship-To to zone 1"
+Then /^Postage: Set Ship-To to Random Address in Zone 1$/ do
+  step "Postage: Set Ship-To to zone 1"
 end
 
 Then /^Envelopes: Set Include Return Address to Checked$/ do
