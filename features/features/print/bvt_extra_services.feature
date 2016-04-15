@@ -30,6 +30,8 @@ Feature: Extra Services BVT
     Then Extra Services: Set Handling to Normal
     Then Extra Services: Set Non-Rectangular to Checked
     Then Extra Services: Click Save
+    Then Footer: Open Print Postage Modal
+    Then Print: Select Postage Printer "factory"
     Then Footer: Print Postage
     Then Sign out
 
@@ -52,4 +54,7 @@ Feature: Extra Services BVT
     Then Shipping Labels: Set Print Reference Number to Checked
     Then Shipping Labels: Set Reference Number to 12345
     Then Shipping Labels: Set Cost Code to None
+    Then Footer: Open Print Postage Modal
+    Then Print: Select Postage Printer "factory"
     Then Footer: Print Postage
+    Then Sign out

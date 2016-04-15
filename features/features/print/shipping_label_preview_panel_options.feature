@@ -28,5 +28,7 @@ Feature:Shipping Label Preview Panel
     Then Shipping Labels: Set Print Receipt to Unchecked
     Then Shipping Labels: Set Reference Number to test12435
     Then Shipping Labels: Set Cost Code to None
+    Then Footer: Open Print Postage Modal
+    Then Print: Select Postage Printer "factory"
     Then Footer: Print Postage
     Then Sign out

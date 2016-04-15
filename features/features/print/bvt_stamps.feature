@@ -21,6 +21,8 @@ Feature: Stamps BVT
     Then Stamps: Set Quantity to 3
     Then Stamps: Set Reference Number to Stamp3221
     Then Stamps: Set Cost Code to None
+    Then Footer: Open Print Postage Modal
+    Then Print: Select Postage Printer "factory"
     Then Footer: Print Postage
     Then Sign out
 
@@ -34,6 +36,8 @@ Feature: Stamps BVT
     Then Stamps: Set Ship-To country to United States
     Then Stamps: Set Weight 0 lbs 1 oz
     Then Stamps: Set Calculate Postage Service to "First-Class Mail Large Envelope/Flat"
+    Then Footer: Open Print Postage Modal
+    Then Print: Select Postage Printer "factory"
     Then Footer: Print Postage
     Then Sign out
 

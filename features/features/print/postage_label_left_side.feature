@@ -21,6 +21,8 @@ Feature: Postage Shipping Label - Left Side
     Then Shipping Labels: Set Ounces to 1
     Then Shipping Labels: Set Service to "Priority Mail Package"
     Then Shipping Labels: Select left side starting label
+    Then Footer: Open Print Postage Modal
+    Then Print: Select Postage Printer "factory"
     Then Footer: Print Postage
     Then Sign out
 
@@ -39,6 +41,8 @@ Feature: Postage Shipping Label - Left Side
     Then Shipping Labels: Set Ounces to 1
     Then Shipping Labels: Set Service to "Priority Mail Package"
     Then Shipping Labels: Select left side starting label
+    Then Footer: Open Print Postage Modal
+    Then Print: Select Postage Printer "factory"
     Then Footer: Print Postage
     Then Sign out
 
@@ -57,6 +61,8 @@ Feature: Postage Shipping Label - Left Side
     Then Shipping Labels: Set Ounces to 1
     Then Shipping Labels: Set Service to "Priority Mail Package"
     Then Shipping Labels: Select left side starting label
+    Then Footer: Open Print Postage Modal
+    Then Print: Select Postage Printer "factory"
     Then Footer: Print Postage
     Then Sign out
 

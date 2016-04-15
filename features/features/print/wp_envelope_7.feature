@@ -17,5 +17,7 @@ Feature: Envelope #7
     Then Envelopes: Set Pounds to 0
     Then Envelopes: Set Ounces to 1
     Then Envelopes: Set Service to "First-Class Mail Letter"
+    Then Footer: Open Print Postage Modal
+    Then Print: Select Postage Printer "factory"
     Then Footer: Print Postage
     Then Sign out
