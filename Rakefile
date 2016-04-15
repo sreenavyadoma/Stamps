@@ -859,6 +859,11 @@ Cucumber::Rake::Task.new(:wp_envelope_12) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:wp_envelope_regression) do |t|
+  t.profile = 'wp_envelope_regression'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:wp_shipping_label_preview_panel_options) do |t|
   t.profile = 'wp_shipping_label_preview_panel_options'
   t.cucumber_opts = "-p cuke_reports"
