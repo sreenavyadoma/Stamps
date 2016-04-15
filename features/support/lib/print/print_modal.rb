@@ -78,7 +78,7 @@ module Print
       5.times do
         dd.safe_click unless selection_label.present?
         selection_label.safe_click
-        return if input.text.include? printer
+        break if input.value.include? printer
       end
     end
   end
