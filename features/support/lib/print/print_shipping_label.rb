@@ -2,7 +2,7 @@
 module Print
   module Postage
 
-    class ShippingLabelFormView < Print::Postage::PrintPostage
+    class ShippingLabelFormView < Print::Postage::PrintPostageObject
 
       def preview_image
         image = StampsLabel.new @browser.div :css => "div[style*='Label_selection_and_view.gif']"
@@ -102,11 +102,9 @@ module Print
           label_selected? left_label_div
         end
       end
-
-
     end
 
-    class ShippingLabel < Print::Postage::PrintPostage
+    class ShippingLabel < Print::Postage::PrintPostageObject
 
       def email_tracking
         Print::Postage::Email.new @browser

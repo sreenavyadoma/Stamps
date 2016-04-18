@@ -19,32 +19,16 @@ module Print
       drop_down.select selection
 
       if selection.include? 'Stamps'
-        stamps
+        Print::Postage::Stamps.new @browser
       elsif selection.include? 'Shipping Label'
-        shipping_label
+        Print::Postage::ShippingLabel.new @browser
       elsif selection.include? 'Envelope'
-        envelope
+        Print::Postage::Envelope.new @browser
       elsif selection.include? 'Certified Mail'
-        certified_mail
+        Print::Postage::CertifiedMail.new @browser
       else
         raise "#{selection} is not a valid Print Postage Print-On Selection"
       end
-    end
-
-    def stamps
-      Print::Postage::Stamps.new @browser
-    end
-
-    def shipping_label
-      Print::Postage::ShippingLabel.new @browser
-    end
-
-    def envelope
-      Print::Postage::Envelope.new @browser
-    end
-
-    def certified_mail
-      Print::Postage::CertifiedMail.new @browser
     end
 
     def footer

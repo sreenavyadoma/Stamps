@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Print
   module Postage
-    class Roll < Print::Postage::PrintPostage
+    class Roll < Print::Postage::PrintPostageObject
 
       def email_tracking
         Print::Postage::Email.new @browser
