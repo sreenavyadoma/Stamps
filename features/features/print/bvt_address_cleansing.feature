@@ -16,7 +16,7 @@ Feature: Address Cleansing BVT
       | Mark Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |        | United States |
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
-    Then Postage Shipping Labels: Select Service Priority Mail Package
+    Then Postage Shipping Labels: Set Service to "Priority Mail Package"
     Then Postage Shipping Labels: Expect Domestic Address field displays Mark Davidson, Company Name, 1350 Market Street, San Francisco, CA 94102
 
     Then Sign out

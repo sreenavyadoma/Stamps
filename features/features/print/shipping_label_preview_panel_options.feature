@@ -19,15 +19,15 @@ Feature:Shipping Label Preview Panel
 
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
-    Then Postage Shipping Labels: Select Service Priority Mail Package
-    Then Shipping Labels: Set Hide Postage Value to Checked
-    Then Shipping Labels: Set Hide Postage Value to Unchecked
-    Then Shipping Labels: Set Print Reference Number to Checked
-    Then Shipping Labels: Set Print Reference Number to Unchecked
-    Then Shipping Labels: Set Print Receipt to Checked
-    Then Shipping Labels: Set Print Receipt to Unchecked
-    Then Shipping Labels: Set Reference Number to test12435
-    Then Shipping Labels: Set Cost Code to None
+    Then Postage Shipping Labels: Set Service to "Priority Mail Package"
+    Then Postage Shipping Labels: Set Hide Postage Value to Checked
+    Then Postage Shipping Labels: Set Hide Postage Value to Unchecked
+    Then Postage Shipping Labels: Set Print Reference Number to Checked
+    Then Postage Shipping Labels: Set Print Reference Number to Unchecked
+    Then Postage Shipping Labels: Set Print Receipt to Checked
+    Then Postage Shipping Labels: Set Print Receipt to Unchecked
+    Then Postage Shipping Labels: Set Reference Number to test12435
+    Then Postage Shipping Labels: Set Cost Code to None
     Then Postage: Open Print Modal
     Then Postage Print Modal: Select Printer "factory"
     Then Postage Print Modal: Print

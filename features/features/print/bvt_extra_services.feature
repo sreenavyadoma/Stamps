@@ -20,16 +20,16 @@ Feature: Extra Services BVT
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
     Then Postage Shipping Labels: Select Service Priority Mail Padded Flat Rate Envelope
-    Then Shipping Labels: Set Hide Postage Value to Unchecked
+    Then Postage Shipping Labels: Set Hide Postage Value to Unchecked
 
-    Then Shipping Labels: Open Extra Services
-    Then Extra Services: Set Security to Registered Mail
-    Then Extra Services: Set Security Value to $100
-    Then Extra Services: Set Return Receipt to Checked
-    Then Extra Services: Set COD to $20
-    Then Extra Services: Set Handling to Normal
-    Then Extra Services: Set Non-Rectangular to Checked
-    Then Extra Services: Click Save
+    Then Postage Shipping Labels: Open Extra Services
+    Then Postage Extra Services: Set Security to Registered Mail
+    Then Postage Extra Services: Set Security Value to $100
+    Then Postage Extra Services: Set Return Receipt to Checked
+    Then Postage Extra Services: Set COD to $20
+    Then Postage Extra Services: Set Handling to Normal
+    Then Postage Extra Services: Set Non-Rectangular to Checked
+    Then Postage Extra Services: Click Save
     Then Postage: Open Print Modal
     Then Postage Print Modal: Select Printer "factory"
     Then Postage Print Modal: Print
@@ -49,11 +49,11 @@ Feature: Extra Services BVT
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
     Then Postage Shipping Labels: Set Service to "Priority Mail Package"
-    Then Shipping Labels: Set Hide Postage Value to Unchecked
-    Then Shipping Labels: Set Print Receipt to Checked
-    Then Shipping Labels: Set Print Reference Number to Checked
-    Then Shipping Labels: Set Reference Number to 12345
-    Then Shipping Labels: Set Cost Code to None
+    Then Postage Shipping Labels: Set Hide Postage Value to Unchecked
+    Then Postage Shipping Labels: Set Print Receipt to Checked
+    Then Postage Shipping Labels: Set Print Reference Number to Checked
+    Then Postage Shipping Labels: Set Reference Number to 12345
+    Then Postage Shipping Labels: Set Cost Code to None
     Then Postage: Open Print Modal
     Then Postage Print Modal: Select Printer "factory"
     Then Postage Print Modal: Print
