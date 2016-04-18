@@ -106,34 +106,8 @@ module Print
 
     class ShippingLabel < Print::Postage::PrintPostageObject
 
-      def email_tracking
-        Print::Postage::Email.new @browser
-      end
-
-      def weight
-        Print::Postage::Weight.new @browser
-      end
-
-      def service
-        Print::Postage::Service.new @browser
-      end
-
       def insure_for
         Print::Postage::InsureFor.new @browser
-      end
-
-      def extra_services
-        button = StampsButton.new @browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl"
-        service_modal = Print::Postage::ExtraServices.new @browser
-        5.times do
-          button.safe_click
-          sleep 1
-          return service_modal if service_modal.present?
-        end
-        stop_test "Unable to open Extra Services Modal, check your code." unless service_modal.present?
-      end
-      def contacts
-        Print::Postage::Contacts.new @browser
       end
 
       def ship_date

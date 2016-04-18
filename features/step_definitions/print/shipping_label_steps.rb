@@ -152,7 +152,7 @@ end
 
 Then /^Shipping Labels: Open Contacts modal/ do
   log.info "Shipping Labels: Open Contacts Modal"
-  @contacts = @print_postage.contacts.open
+  @contacts = @print_postage.ship_to.contacts.open
 end
 
 Then /^Shipping Labels: Select left side starting label/ do

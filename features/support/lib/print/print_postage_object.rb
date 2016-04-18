@@ -23,6 +23,19 @@ module Print
     end
 
     class PrintPostageObject < Print::Postage::PrintObject
+
+      def service
+        Print::Postage::Service.new @browser
+      end
+
+      def email_tracking
+        Print::Postage::Email.new @browser
+      end
+
+      def weight
+        Print::Postage::Weight.new @browser
+      end
+
       def ship_from
         Print::Postage::ShipFrom.new @browser
       end
@@ -33,6 +46,17 @@ module Print
 
       def customs
         PrintPostageCustoms.new @browser
+      end
+
+      def extra_services
+        button = StampsButton.new @browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl"
+        service_modal = Print::Postage::ExtraServices.new @browser
+        5.times do
+          button.safe_click
+          sleep 1
+          return service_modal if service_modal.present?
+        end
+        stop_test "Unable to open Extra Services Modal, check your code." unless service_modal.present?
       end
     end
   end

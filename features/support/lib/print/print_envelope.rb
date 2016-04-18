@@ -43,20 +43,8 @@ module Print
 
     class Envelope < Print::Postage::PrintPostageObject
 
-      def weight
-        Print::Postage::Weight.new @browser
-      end
-
-      def service
-        Print::Postage::Service.new @browser
-      end
-
       def insure_for
         Print::Postage::InsureFor.new @browser
-      end
-
-      def extra_services
-        Print::Postage::ExtraServices.new @browser
       end
 
       def ship_date

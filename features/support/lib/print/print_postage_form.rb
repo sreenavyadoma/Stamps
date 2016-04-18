@@ -77,6 +77,10 @@ module Print
       def phone
         StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptophonefield-inputEl")
       end
+
+      def contacts
+        Print::Postage::Contacts.new @browser
+      end
     end
 
     class PrintOn < Print::Postage::PrintObject
