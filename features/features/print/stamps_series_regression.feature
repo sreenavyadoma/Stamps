@@ -14,7 +14,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $0.10
     Then Postage Stamps: Set Quantity to 1
     Then Postage Stamps: Set Cost Code to None
@@ -32,7 +32,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $0.20
     Then Postage Stamps: Set Quantity to 2
     Then Postage Stamps: Set Cost Code to None
@@ -50,7 +50,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $0.445
     Then Postage Stamps: Set Quantity to 3
     Then Postage Stamps: Set Cost Code to None
@@ -68,7 +68,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $0.50
     Then Postage Stamps: Set Quantity to 4
     Then Postage Stamps: Set Cost Code to None
@@ -86,7 +86,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $1.65
     Then Postage Stamps: Set Quantity to 5
     Then Postage Stamps: Set Cost Code to None
@@ -104,7 +104,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $1.995
     Then Postage Stamps: Set Quantity to 4
     Then Postage Stamps: Set Cost Code to None
@@ -122,7 +122,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $2.15
     Then Postage Stamps: Set Quantity to 3
     Then Postage Stamps: Set Cost Code to None
@@ -141,7 +141,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $4.65
     Then Postage Stamps: Set Quantity to 2
     Then Postage Stamps: Set Cost Code to None
@@ -159,7 +159,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $6.255
     Then Postage Stamps: Set Quantity to 1
     Then Postage Stamps: Set Cost Code to None
@@ -177,7 +177,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $10.55
     Then Postage Stamps: Set Quantity to 2
     Then Postage Stamps: Set Cost Code to None
@@ -195,7 +195,7 @@ Feature: Stamps Series Regression
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "First Class Mail (1 - 3 Days)"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage Stamps: Set Stamp Amount to $12.65
     Then Postage Stamps: Set Quantity to 1
     Then Postage Stamps: Set Cost Code to None
