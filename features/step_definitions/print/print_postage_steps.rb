@@ -56,11 +56,6 @@ Then /^Postage: Set Ship-From to (.*)/ do |value|
   @print_postage.ship_from.select value
 end
 
-Then /^Postage: Set Ship-To country to (.*)/ do |country|
-  log.info "Postage: Set Ship-To country to #{country}"
-  @print_postage_int = @print_postage.ship_to.country.select country
-end
-
 Then /^Postage: Set Ship-To to Random Address in Zone 1$/ do
   step "Postage: Set Ship-To address to zone 1"
 end

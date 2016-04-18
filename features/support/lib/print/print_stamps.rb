@@ -3,7 +3,7 @@ module Print
   module Postage
     class Stamps < Print::Postage::PrintObject
 
-      class StampsFormView < Print::Postage::DomesticCommon
+      class StampsFormView < Print::Postage::PrintForm
 
         def preview_image serial_prefix
           case serial_prefix
@@ -113,7 +113,7 @@ module Print
       end
 
       def country
-        Print::Postage::Country.new @browser
+        Print::Postage::PostageCountry.new @browser
       end
 
       def serial
