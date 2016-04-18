@@ -74,7 +74,7 @@ module Print
         end
       end
 
-      class SpecifyPostageService < Print::Postage::PrintObject
+      class  SpecifyPostageService < Print::Postage::PrintObject
         def text_box
           StampsTextbox.new @browser.text_field :name => "nsService"
         end
