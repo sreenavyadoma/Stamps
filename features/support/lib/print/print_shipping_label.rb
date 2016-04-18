@@ -2,7 +2,7 @@
 module Print
   module Postage
 
-    class ShippingLabelFormView < Print::Postage::DomesticCommon
+    class ShippingLabelFormView < Print::Postage::PrintForm
 
       def preview_image
         image = StampsLabel.new @browser.div :css => "div[style*='Label_selection_and_view.gif']"
@@ -106,15 +106,7 @@ module Print
 
     end
 
-    class ShippingLabel < Print::Postage::DomesticCommon
-
-      def ship_from
-        Print::Postage::ShipFrom.new @browser
-      end
-
-      def ship_to
-        Print::Postage::ShipTo::ShipToDomestic.new @browser
-      end
+    class ShippingLabel < Print::Postage::PrintForm
 
       def ship_to_international
         Print::Postage::ShipTo::ShipToInternational.new @browser

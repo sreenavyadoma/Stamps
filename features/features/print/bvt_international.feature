@@ -1,7 +1,5 @@
 Feature: International Shipping BVT
 
-
-
   Background:
     Given I am signed in as a postage shipper
 
@@ -14,9 +12,10 @@ Feature: International Shipping BVT
     Then Postage: Set Ship-To to
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone   |
       | random | random  | random           | random            | random | random   | random      | Canada | random  |
+
+    Then Postage Shipping Labels: Set Service to "Priority Mail International Flat Rate Envelope"
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 3
-    Then Postage Shipping Labels: Set Service to "Priority Mail International Flat Rate Envelope"
 
     Then Postage Shipping Labels: Edit Customs Form
     Then Postage Customs: Set Package Contents to "Gift"

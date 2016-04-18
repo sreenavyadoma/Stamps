@@ -2,27 +2,37 @@
 module Print
   module Postage
     class ShipTo < Print::Postage::PrintObject
+
+      class PostageCountry < Print::Postage::PrintObject
+        def drop_down
+          StampsButton.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
+        end
+
+        def text_box
+          StampsTextbox.new (@browser.text_field :name => "mailToCountry")
+        end
+
+        def select selection
+          box = text_box
+          button = drop_down
+          selection_label = StampsLabel.new @browser.div :text => selection
+          5.times {
+            begin
+              button.safe_click unless selection_label.present?
+              selection_label.scroll_into_view
+              selection_label.safe_click
+              break if box.text.include? selection
+            rescue
+              #ignore
+            end
+          }
+        end
+      end
+
       class ShipToDomestic < Print::Postage::PrintObject
-        def country
-          Country.new @browser
-        end
-
-        def text_area
-          StampsTextbox.new (@browser.text_field :id => "sdc-mainpanel-shiptotextarea-inputEl")
-        end
-
-        def set address
-          text_area.safe_click
-          text_area.set address
-          text_area.safe_click
-        end
-
       end
 
       class ShipToInternational < Print::Postage::PrintObject
-        def country
-          Country.new @browser
-        end
 
         def name
           StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptonamefield-inputEl")
@@ -58,12 +68,26 @@ module Print
 
       end
 
-      def domestic
-        ShipToDomestic.new @browser
+      def text_area
+        StampsTextbox.new (@browser.text_field :id => "sdc-mainpanel-shiptotextarea-inputEl")
       end
 
-      def international
-        ShipToInternational.new @browser
+      def country ship_to_country
+        drop_down = PostageCountry.new @browser
+        drop_down.select ship_to_country
+        case ship_to_country.downcase
+          when /united states/
+            text_area
+          else
+            ShipToInternational.new @browser
+        end
+      end
+
+      def set address
+        text_area.safe_click
+        text_area.set address
+        text_area.set address
+        text_area.safe_click
       end
     end
 
@@ -197,7 +221,6 @@ module Print
         Ounces.new @browser
       end
     end
-
 
     class Service < Print::Postage::PrintObject
 
@@ -373,36 +396,6 @@ module Print
       end
     end
 
-
-
-    class Country < Print::Postage::PrintObject
-      def drop_down
-        StampsButton.new (@browser.divs :css => "div[class*=x-form-trigger]")[2]
-      end
-
-      def text_box
-        StampsTextbox.new (@browser.text_field :name => "mailToCountry")
-      end
-
-      def select selection
-        box = text_box
-        button = drop_down
-        selection_label = StampsLabel.new @browser.div :text => selection
-        5.times {
-          begin
-            button.safe_click unless selection_label.present?
-            selection_label.scroll_into_view
-            selection_label.safe_click
-            break if box.text.include? selection
-          rescue
-            #ignore
-          end
-        }
-      end
-    end
-
-
-
     class Email < Print::Postage::PrintObject
 
       def checkbox select
@@ -426,7 +419,6 @@ module Print
       end
 
     end
-
 
     class ShipDate < Print::Postage::PrintObject
 
@@ -512,9 +504,6 @@ module Print
           button.safe_click
         end
       end
-
     end
-
-
   end
 end

@@ -1,42 +1,32 @@
 
 Then /^Postage Shipping Labels: Set Service to \"(.*)\"/ do |service|
-  log.info "Step: Shipping Labels - Set Print Postage Service to: \n #{service}"
+  log.info "Shipping Labels - Set Print Postage Service to: \n #{service}"
   @print_postage.service.select service
 end
-=begin
-
-Then /^Postage: Set Ship-To to$/ do |table|
-  ship_to = OrdersHelper.instance.address_hash_to_str table.hashes.first
-  log.info "Step: Shipping Labels - Set Print Postage Form Ship-To address to \n#{ship_to}"
-  step "Postage: Set Ship-To to #{ship_to}"
-end
-=end
-
-
 
 Then /^Shipping Labels: Open Extra Services$/ do
-  log.info "Step: Shipping Labels: Open Extra Services"
+  log.info "Shipping Labels: Open Extra Services"
   @extra_services = @print_postage.extra_services
 end
 
 Then /^Postage Shipping Labels: Edit Customs Form$/ do
-  log.info "Step: Postage Shipping Labels: Edit Customs Form"
+  log.info "Postage Shipping Labels: Edit Customs Form"
   @customs_form = @print_postage.customs
 end
 
 Then /^Shipping Labels: Open Contacts modal/ do
-  log.info "Step: Shipping Labels: Open Contacts Modal"
+  log.info "Shipping Labels: Open Contacts Modal"
   @contacts = @print_postage.contacts.open
 end
 
 Then /^Shipping Labels: Select left side starting label/ do
-  log.info "Step: Shipping Labels: Select - Left side label"
+  log.info "Shipping Labels: Select - Left side label"
   selected = @print_postage.form_view.starting_label.left
   log.info "left-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 Then /^Shipping Labels: Select right side starting label/ do
-  log.info "Step: Shipping Labels: Select - Right side label"
+  log.info "Shipping Labels: Select - Right side label"
   
   selected = @print_postage.form_view.starting_label.right
   log.info "right-side label was #{(selected)?'selected.':'not selected'}"
@@ -83,8 +73,7 @@ Then /^Shipping Labels: Set Ship-To to Random Address Between Zone 5 through 8$/
 end
 
 Then /^Postage: Set Ship-To to (.*)$/ do |address|
-  log.info "Step: Postage: Set Ship-To to \"#{address}\""
-  
+  log.info "Postage: Set Ship-To to \"#{address}\""
 
   case address.downcase
     when /zone 1 through 4/
@@ -136,7 +125,7 @@ Then /^Postage: Set Ship-To to (.*)$/ do |address|
 end
 
 Then /^Postage Shipping Labels: Expect Domestic Address field displays (.*)$/ do |value|
-  log.info "Step: Shipping Label: Expect Domestic Address to be #{value}"
+  log.info "Shipping Label: Expect Domestic Address to be #{value}"
   
   5.times{
     begin
@@ -155,37 +144,37 @@ Then /^Postage Shipping Labels: Expect Domestic Address field displays (.*)$/ do
 end
 
 Then /^Shipping Labels: Set Hide Postage Value to Checked$/ do
-  log.info "Step: Shipping Labels: Check Hide Postage Value"
+  log.info "Shipping Labels: Check Hide Postage Value"
   
   @print_postage.form_view.hide_postage_value.check
 end
 
 Then /^Shipping Labels: Set Hide Postage Value to Unchecked$/ do
-  log.info "Step: Shipping Labels: Uncheck Hide Postage Value"
+  log.info "Shipping Labels: Uncheck Hide Postage Value"
   
   @print_postage.form_view.hide_postage_value.uncheck
 end
 
 Then /^Shipping Labels: Set Print Receipt to Checked$/ do
-  log.info "Step: Shipping Labels: Check Print Receipt"
+  log.info "Shipping Labels: Check Print Receipt"
   
   @print_postage.form_view.print_receipt.check
 end
 
 Then /^Shipping Labels: Set Print Receipt to Unchecked$/ do
-  log.info "Step: Shipping Labels: Uncheck Print Receipt"
+  log.info "Shipping Labels: Uncheck Print Receipt"
   
   @print_postage.form_view.print_receipt.uncheck
 end
 
 Then /^Shipping Labels: Set Print Reference Number to Checked$/ do
-  log.info "Step: Shipping Labels: Check Print Reference Number"
+  log.info "Shipping Labels: Check Print Reference Number"
   
   @print_postage.form_view.print_reference_number.check
 end
 
 Then /^Shipping Labels: Set Print Reference Number to Unchecked$/ do
-  log.info "Step: Shipping Labels: Uncheck Print Reference Number"
+  log.info "Shipping Labels: Uncheck Print Reference Number"
   
   @print_postage.form_view.print_reference_number.uncheck
 end
@@ -197,7 +186,7 @@ Then /^Shipping Labels: Set Reference Number to (.*)/ do |ref_no|
 end
 
 Then /^Shipping Labels: Set Cost Code to (.*)/ do |code|
-  log.info "Step: Shipping Labels: Set Cost Code to \n #{code}"
+  log.info "Shipping Labels: Set Cost Code to \n #{code}"
   
   @print_postage.form_view.cost_code.select code
 end
