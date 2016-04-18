@@ -3,7 +3,7 @@ module Print
   module Postage
     class Stamps < Print::Postage::PrintObject
 
-      class StampsFormView < Print::Postage::PrintPostage
+      class StampsFormView < Print::Postage::PrintPostageObject
 
         def preview_image serial_prefix
           case serial_prefix

@@ -15,15 +15,20 @@ module Print
 
       def print_international
         print_button.safe_click
-        sleep 2
-        confirm_window = Print::Postage::ConfirmModal.new @browser
-        if confirm_window.present?
-          log.info "Confirm Print"
-          confirm_window.confirm
-          confirm_window.confirm
+        confirm_window = Print::Postage::ConfirmPrint.new @browser
+        print_modal = Windows::PrintWindow.new
+
+        5.times do
+          sleep 1
+          if confirm_window.present?
+            log.info "Confirm Print"
+            confirm_window.dont_prompt_deducting_postage_again
+            confirm_window.continue
+            confirm_window.continue
+          end
+          break if print_modal.present?
         end
 
-        print_modal = Windows::PrintWindow.new
         8.times do
           if print_modal.present?
             break
@@ -31,7 +36,7 @@ module Print
             sleep 1
           end
         end
-        raise "Unable to open international print modal."
+        raise "Unable to open international print modal." unless print_modal.present?
         print_modal.print
       end
 
@@ -70,10 +75,10 @@ module Print
                 break unless naws_plugin_error.present?
               }
             end
-            confirm_window = Print::Postage::ConfirmModal.new @browser
+            confirm_window = Print::Postage::ConfirmPrint.new @browser
             if confirm_window.present?
               log.info "Confirm Print"
-              confirm_window.confirm
+              confirm_window.continue
             end
             return window if window.present?
 

@@ -27,7 +27,7 @@ require_relative 'lib/orders/fields'
 
 require_relative 'lib/print/print_helper'
 require_relative 'lib/print/helpers'
-require_relative 'lib/print/print_postage'
+require_relative 'lib/print/print_postage_object'
 
 require_relative 'lib/webreg/webreg_helper'
 

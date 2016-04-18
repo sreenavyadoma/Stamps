@@ -147,8 +147,7 @@ end
 
 Then /^Postage Shipping Labels: Edit Customs Form$/ do
   log.info "Postage Shipping Labels: Edit Customs Form"
-
-  @customs_form = @print_postage.customs
+  @customs_form = @print_postage.customs.edit_form
 end
 
 Then /^Shipping Labels: Open Contacts modal/ do
