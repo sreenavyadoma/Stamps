@@ -88,56 +88,56 @@ Then /^Postage Shipping Labels: Select Service First-Class Mail International La
   step "Postage Shipping Labels: Set Service to First-Class Mail Large Envelope/Flat"
 end
 
-Then /^Postage Shipping Labels: Select Service First-Class Mail International Package-Thick Envelope$/ do
-  step "Postage Shipping Labels: Set Service to First-Class Mail Package/Thick Envelope"
+Then /^Postage Shipping Labels: Select Service First-Class Mail International Package$/ do
+  step "Postage Shipping Labels: Set Service to First-Class Mail International Package"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail International Package$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Package"
+  step "Postage Shipping Labels: Set Service to Priority Mail International Package"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail International Large Package$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Large Package"
+  step "Postage Shipping Labels: Set Service to Priority Mail International Large Package"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail International Flat Rate Envelope$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Flat Rate Envelope"
+  step "Postage Shipping Labels: Set Service to Priority Mail International Flat Rate Envelope"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail International Padded Flat Rate Envelope$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Padded Flat Rate Envelope"
+  step "Postage Shipping Labels: Set Service to Priority Mail International Padded Flat Rate Envelope"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail International Legal Flat Rate Envelope$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Legal Flat Rate Envelope"
+  step "Postage Shipping Labels: Set Service to Priority Mail International Legal Flat Rate Envelope"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail International Small Flat Rate Box$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Small Flat Rate Box"
+  step "Postage Shipping Labels: Set Service to Priority Mail International Small Flat Rate Box"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail International Medium Flat Rate Box$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Medium Flat Rate Box"
+  step "Postage Shipping Labels: Set Service to Priority Mail International Medium Flat Rate Box"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail International Large Flat Rate Box$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Medium Flat Rate Box"
+  step "Postage Shipping Labels: Set Service to Priority Mail International Medium Flat Rate Box"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail Express International Package$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Express Package"
+  step "Postage Shipping Labels: Set Service to Priority Mail Express International Package"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail Express International Flat Rate Envelope$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Express Flat Rate Envelope"
+  step "Postage Shipping Labels: Set Service to Priority Mail Express International Flat Rate Envelope"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail Express International Padded Flat Rate Envelope/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Express Padded Flat Rate Envelope"
+  step "Postage Shipping Labels: Set Service to Priority Mail Express International Padded Flat Rate Envelope"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail Express International Legal Flat Rate Envelope$/ do
-  step "Postage Shipping Labels: Set Service to Priority Mail Express Legal Flat Rate Envelope"
+  step "Postage Shipping Labels: Set Service to Priority Mail Express International Legal Flat Rate Envelope"
 end
 
 Then /^Shipping Labels: Open Extra Services$/ do
