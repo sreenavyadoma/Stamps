@@ -19,7 +19,7 @@ Feature: Extra Services BVT
 
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
-    Then Postage Shipping Labels: Set Service to "Priority Mail Package"
+    Then Postage Shipping Labels: Select Service Priority Mail Padded Flat Rate Envelope
     Then Shipping Labels: Set Hide Postage Value to Unchecked
 
     Then Shipping Labels: Open Extra Services
