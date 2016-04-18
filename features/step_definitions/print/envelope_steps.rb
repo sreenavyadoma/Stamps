@@ -1,4 +1,22 @@
 
+
+Then /^Postage Envelopes: Set Ounces to (.*)/ do |ounces|
+  log.info "Step: Envelopes: Set Print Postage Ounces to: \n #{ounces}"
+  @print_postage.weight.oz.set ounces
+end
+
+Then /^Postage Envelopes: Set Pounds to (.*)/ do |pounds|
+  log.info "Step: Postage Envelopes: Set Print Postage Pounds to: \n #{pounds}"
+  @print_postage.weight.lbs.set pounds
+end
+
+Then /^Postage Envelopes: Select Service First-Class Mail Letter$/ do
+  step "Postage Envelopes: Set Service to First-Class Mail Letter"
+  #rob
+end
+
+Then /^Postage Envelopes: Set Service to (.*)/ do |service|
+  log.info "Step: Postage Envelopes: Set Print Postage Service to: \n #{service}"
 Then /^Postage Envelopes: Set Service to \"(.*)\"/ do |service|
   log.info "Step: Envelopes: Set Print Postage Service to: \n #{service}"
   @print_postage.service.select service
