@@ -11,9 +11,9 @@ Feature: International Shipping BVT
     Then Postage: Set Ship-From to default
     Then Postage: Set Ship-To to
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone   |
-      | random | random  | random           | random            | random | random   | random      | Canada | random  |
+      | random | random  | random           | random            | random | random   | M3BR45     | Canada | random  |
 
-    Then Postage Shipping Labels: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Postage Shipping Labels: Select Service First-Class Mail International Package
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 3
 
