@@ -1,30 +1,6 @@
-Then /^Shipping Labels: Set Ship-From to (.*)/ do |value|
-  log.info "Step: Shipping Labels - Set Print Postage Ship-From to: \n #{value}"
-  @print_postage = postage.print_postage if @print_postage.nil?
-  @print_postage.ship_from.select value
-end
 
-Then /^Shipping Labels: Set Ship-To country to (.*)/ do |country|
-  log.info "Step: Shipping Labels - Set Print Postage Country to: \n #{country}"
-  @print_postage = postage.print_postage if @print_postage.nil?
-  @print_postage.ship_to.country.select country
-end
-
-Then /^Shipping Labels: Set Ounces to (.*)/ do |ounces|
-  log.info "Step: Shipping Labels - Set Print Postage Ounces to: \n #{ounces}"
-  @print_postage = postage.print_postage if @print_postage.nil?
-  @print_postage.weight.oz.set ounces
-end
-
-Then /^Shipping Labels: Set Pounds to (.*)/ do |pounds|
-  log.info "Step: Shipping Labels - Set Print Postage Pounds to: \n #{pounds}"
-  @print_postage = postage.print_postage if @print_postage.nil?
-  @print_postage.weight.lbs.set pounds
-end
-
-Then /^Shipping Labels: Set Service to \"(.*)\"/ do |service|
+Then /^Postage Shipping Labels: Set Service to \"(.*)\"/ do |service|
   log.info "Step: Shipping Labels - Set Print Postage Service to: \n #{service}"
-  @print_postage = postage.print_postage if @print_postage.nil?
   @print_postage.service.select service
 end
 =begin
@@ -40,32 +16,28 @@ end
 
 Then /^Shipping Labels: Open Extra Services$/ do
   log.info "Step: Shipping Labels: Open Extra Services"
-  @print_postage = postage.print_postage if @print_postage.nil?
   @extra_services = @print_postage.extra_services
 end
 
-Then /^Shipping Labels: Details: Edit Customs Form$/ do
-  log.info "Step: Shipping Labels: Details: Edit Customs Form"
-  @print_postage = postage.print_postage if @print_postage.nil?
+Then /^Postage Shipping Labels: Edit Customs Form$/ do
+  log.info "Step: Postage Shipping Labels: Edit Customs Form"
   @customs_form = @print_postage.customs
 end
 
 Then /^Shipping Labels: Open Contacts modal/ do
   log.info "Step: Shipping Labels: Open Contacts Modal"
-  @print_postage = postage.print_postage if @print_postage.nil?
   @contacts = @print_postage.contacts.open
 end
 
 Then /^Shipping Labels: Select left side starting label/ do
   log.info "Step: Shipping Labels: Select - Left side label"
-  @print_postage = postage.print_postage if @print_postage.nil?
   selected = @print_postage.form_view.starting_label.left
   log.info "left-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 Then /^Shipping Labels: Select right side starting label/ do
   log.info "Step: Shipping Labels: Select - Right side label"
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
   selected = @print_postage.form_view.starting_label.right
   log.info "right-side label was #{(selected)?'selected.':'not selected'}"
 end
@@ -112,7 +84,7 @@ end
 
 Then /^Postage: Set Ship-To to (.*)$/ do |address|
   log.info "Step: Postage: Set Ship-To to \"#{address}\""
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
 
   case address.downcase
     when /zone 1 through 4/
@@ -163,9 +135,9 @@ Then /^Postage: Set Ship-To to (.*)$/ do |address|
 
 end
 
-Then /^Shipping Label: Expect Domestic Address field displays (.*)$/ do |value|
+Then /^Postage Shipping Labels: Expect Domestic Address field displays (.*)$/ do |value|
   log.info "Step: Shipping Label: Expect Domestic Address to be #{value}"
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
   5.times{
     begin
       actual = @print_postage.ship_to.text_area.text
@@ -184,48 +156,48 @@ end
 
 Then /^Shipping Labels: Set Hide Postage Value to Checked$/ do
   log.info "Step: Shipping Labels: Check Hide Postage Value"
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
   @print_postage.form_view.hide_postage_value.check
 end
 
 Then /^Shipping Labels: Set Hide Postage Value to Unchecked$/ do
   log.info "Step: Shipping Labels: Uncheck Hide Postage Value"
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
   @print_postage.form_view.hide_postage_value.uncheck
 end
 
 Then /^Shipping Labels: Set Print Receipt to Checked$/ do
   log.info "Step: Shipping Labels: Check Print Receipt"
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
   @print_postage.form_view.print_receipt.check
 end
 
 Then /^Shipping Labels: Set Print Receipt to Unchecked$/ do
   log.info "Step: Shipping Labels: Uncheck Print Receipt"
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
   @print_postage.form_view.print_receipt.uncheck
 end
 
 Then /^Shipping Labels: Set Print Reference Number to Checked$/ do
   log.info "Step: Shipping Labels: Check Print Reference Number"
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
   @print_postage.form_view.print_reference_number.check
 end
 
 Then /^Shipping Labels: Set Print Reference Number to Unchecked$/ do
   log.info "Step: Shipping Labels: Uncheck Print Reference Number"
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
   @print_postage.form_view.print_reference_number.uncheck
 end
 
 Then /^Shipping Labels: Set Reference Number to (.*)/ do |ref_no|
   log.info "Set Shipping Label Reference Number to #{ref_no}"
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
   @print_postage.form_view.reference_number.set ref_no
 end
 
 Then /^Shipping Labels: Set Cost Code to (.*)/ do |code|
   log.info "Step: Shipping Labels: Set Cost Code to \n #{code}"
-  @print_postage = postage.print_postage if @print_postage.nil?
+  
   @print_postage.form_view.cost_code.select code
 end

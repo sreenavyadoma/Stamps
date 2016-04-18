@@ -1,48 +1,6 @@
-Then /^International Address: Set Ship-To to$/ do |table|
-  log.info "Step: International: Set Print Postage Form Ship-To to..."
-  param_hash = table.hashes.first
-
-  name = (param_hash['name'].downcase.include? "random") ? test_helper.random_name : param_hash['name']
-  company = (param_hash['company'].downcase.include? "random") ? test_helper.random_company_name : param_hash['company']
-  street_address_1 = (param_hash['street_address_1'].downcase.include? "random") ? test_helper.random_string : param_hash['street_address_1']
-  street_address_2 = (param_hash['street_address_2'].downcase.include? "random") ? test_helper.random_suite : param_hash['street_address_2']
-  city = (param_hash['city'].downcase.include? "random") ? test_helper.random_string : param_hash['city']
-  province = (param_hash['province'].downcase.include? "random") ? test_helper.random_string : param_hash['province']
-  postal_code = (param_hash['postal_code'].downcase.include? "random") ? test_helper.random_alpha_numeric : param_hash['postal_code']
-  country = param_hash['country']
-  phone_num = param_hash['phone']
-  phone = (phone_num.downcase.include? "random") ? test_helper.random_phone : param_hash['phone']
 
 
-  log.info "International Ship-To Name: #{name}"
-  log.info "International Ship-To Company: #{company}"
-  log.info "International Ship-To Address 1: #{street_address_1}"
-  log.info "International Ship-To Address 2: #{street_address_2}"
-  log.info "International Ship-To City: #{city}"
-  log.info "International Ship-To Province: #{province}"
-  log.info "International Ship-To Postal Code: #{postal_code}"
-  log.info "International Ship-To Phone: #{phone}"
-
-  step "International Address: Set Ship-To Country to #{country}"
-  step "International Address: Set Ship-To Name to \"#{name}\""
-  step "International Address: Set Ship-To Company to \"#{company}\""
-  step "International Address: Set Ship-To Address 1 to \"#{street_address_1}\""
-  step "International Address: Set Ship-To Address 2 to \"#{street_address_2}\""
-  step "International Address: Set Ship-To City to \"#{city}\""
-  step "International Address: Set Ship-To Province to \"#{province}\""
-  step "International Address: Set Ship-To Postal Code to \"#{postal_code}\""
-  step "International Address: Set Ship-To Phone to \"#{phone}\""
-
-end
-
-
-Then /^International Address: Set Ship-To Country to (.*)$/ do |country|
-  log.info "Step: International: Set Ship-To Country to #{country}"
-  @international_ship_to = postage.print_postage.ship_to_international if @international_ship_to.nil?
-  @international_ship_to.country.select country
-end
-
-Then /^International Address: Set Ship-To Name to \"(.*)\"$/ do |value|
+Then /^Postage International Address: Set Ship-To Name to \"(.*)\"$/ do |value|
   log.info "Step: International: Set Ship-To Name to #{value}"
   @international_ship_to = postage.print_postage.ship_to_international if @international_ship_to.nil?
   if value.length == 0
@@ -53,7 +11,7 @@ Then /^International Address: Set Ship-To Name to \"(.*)\"$/ do |value|
 end
 
 
-Then /^International Address: Set Ship-To Company to \"(.*)\"$/ do |value|
+Then /^Postage International Address: Set Ship-To Company to \"(.*)\"$/ do |value|
   log.info "Step: International: Set Ship-To Company to #{value}"
   @international_ship_to = postage.print_postage.ship_to_international if @international_ship_to.nil?
   if value.length == 0
@@ -64,7 +22,7 @@ Then /^International Address: Set Ship-To Company to \"(.*)\"$/ do |value|
 end
 
 
-Then /^International Address: Set Ship-To Address 1 to \"(.*)\"$/ do |value|
+Then /^Postage International Address: Set Ship-To Address 1 to \"(.*)\"$/ do |value|
   log.info "Step: International: Set Ship-To Address 1 to #{value}"
   @international_ship_to = postage.print_postage.ship_to_international if @international_ship_to.nil?
   if value.length == 0
@@ -75,7 +33,7 @@ Then /^International Address: Set Ship-To Address 1 to \"(.*)\"$/ do |value|
 end
 
 
-Then /^International Address: Set Ship-To Address 2 to \"(.*)\"$/ do |value|
+Then /^Postage International Address: Set Ship-To Address 2 to \"(.*)\"$/ do |value|
   log.info "Step: International: Set Ship-To Address 2 to #{value}"
   @international_ship_to = postage.print_postage.ship_to_international if @international_ship_to.nil?
   if value.length == 0
@@ -86,7 +44,7 @@ Then /^International Address: Set Ship-To Address 2 to \"(.*)\"$/ do |value|
 end
 
 
-Then /^International Address: Set Ship-To City to \"(.*)\"$/ do |value|
+Then /^Postage International Address: Set Ship-To City to \"(.*)\"$/ do |value|
   log.info "Step: International: Set Ship-To City to #{value}"
   @international_ship_to = postage.print_postage.ship_to_international if @international_ship_to.nil?
   if value.length == 0
@@ -97,7 +55,7 @@ Then /^International Address: Set Ship-To City to \"(.*)\"$/ do |value|
 end
 
 
-Then /^International Address: Set Ship-To Province to \"(.*)\"$/ do |value|
+Then /^Postage International Address: Set Ship-To Province to \"(.*)\"$/ do |value|
   log.info "Step: International: Set Ship-To Province to #{value}"
   @international_ship_to = postage.print_postage.ship_to_international if @international_ship_to.nil?
   if value.length == 0
@@ -107,7 +65,7 @@ Then /^International Address: Set Ship-To Province to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^International Address: Set Ship-To Postal Code to \"(.*)\"$/ do |value|
+Then /^Postage International Address: Set Ship-To Postal Code to \"(.*)\"$/ do |value|
   log.info "Step: International: Set Ship-To Postal Code to #{value}"
   @international_ship_to = postage.print_postage.ship_to_international if @international_ship_to.nil?
   if value.length == 0
@@ -118,7 +76,7 @@ Then /^International Address: Set Ship-To Postal Code to \"(.*)\"$/ do |value|
 end
 
 
-Then /^International Address: Set Ship-To Phone to \"(.*)\"$/ do |value|
+Then /^Postage International Address: Set Ship-To Phone to \"(.*)\"$/ do |value|
   log.info "Step: International: Set Ship-To Phone to #{value}"
   @international_ship_to = postage.print_postage.ship_to_international if @international_ship_to.nil?
   if value.length == 0

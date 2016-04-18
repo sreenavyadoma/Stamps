@@ -16,33 +16,33 @@ Then /^Volusion Login:  Set Password to (.*)$/ do |password|
   volusion.password.set password
 end
 
-Then /^Volusion New to Stamps: Set email address to (.*)$/ do |email|
+Then /^Volusion New to Postage Stamps: Set email address to (.*)$/ do |email|
   @volusion_email = (email.downcase == "random")? "#{test_helper.rand_username}@mailinator.com":email
   @volusion_registration.email.set @volusion_email
 end
 
-Then /^Volusion New to Stamps: Type email address again$/ do
+Then /^Volusion New to Postage Stamps: Type email address again$/ do
   @volusion_registration.email_again.set @volusion_email
 end
 
-Then /^Volusion New to Stamps: Set new password to (.*)$/ do |password|
+Then /^Volusion New to Postage Stamps: Set new password to (.*)$/ do |password|
   @volusion_password = password
   @volusion_registration.password.set @volusion_password
 end
 
-Then /^Volusion New to Stamps: Type new password again$/ do
+Then /^Volusion New to Postage Stamps: Type new password again$/ do
   @volusion_registration.password_again.set @volusion_password
 end
 
-Then /^Volusion New to Stamps: Check receive newsletter$/ do
+Then /^Volusion New to Postage Stamps: Check receive newsletter$/ do
   @volusion_registration.receive_newsletter.check
 end
 
-Then /^Volusion New to Stamps: Uncheck receive newsletter$/ do
+Then /^Volusion New to Postage Stamps: Uncheck receive newsletter$/ do
   @volusion_registration.receive_newsletter.uncheck
 end
 
-Then /^Volusion New to Stamps: Click Continue$/ do
+Then /^Volusion New to Postage Stamps: Click Continue$/ do
   @volusion_shipping_address = @volusion_registration.continue
 end
 

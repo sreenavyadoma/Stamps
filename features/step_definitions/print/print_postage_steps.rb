@@ -51,16 +51,18 @@ Then /^Postage: Set Print On (.*)/ do |media|
   @print_postage = postage.print_on media
 end
 
-Then /^Envelopes: Set Ship-From to (.*)/ do |value|
-  log.info "Step: Set Print Postage Ship-From to: \n #{value}"
-  @print_postage = postage.print_postage if @print_postage.nil?
+Then /^Postage: Set Ship-From to (.*)/ do |value|
+  log.info "Postage: Set Ship-From to #{value}"
   @print_postage.ship_from.select value
 end
 
-Then /^Envelopes: Set Ship-To country to (.*)/ do |country|
-  log.info "Step: Set Print Postage Country to: \n #{country}"
-  @print_postage = postage.print_postage if @print_postage.nil?
-  @print_postage.ship_to.country.select country
+Then /^Postage: Set Ship-To country to (.*)/ do |country|
+  log.info "Postage: Set Ship-To country to #{country}"
+  @print_postage_int = @print_postage.ship_to.country.select country
+end
+
+Then /^Postage: Set Ship-To to Random Address in Zone 1$/ do
+  step "Postage: Set Ship-To address to zone 1"
 end
 
 Then /^Postage: Set Ship-To to Random Address in Zone 2$/ do
@@ -100,9 +102,51 @@ Then /^Postage: Set Ship-To to Random Address Between Zone 5 through 8$/ do
 end
 
 Then /^Postage: Set Ship-To to$/ do |table|
-  ship_to = OrdersHelper.instance.address_hash_to_str table.hashes.first
-  log.info "Step: Envelopes: Set Print Postage Form Ship-To address to \n#{ship_to}"
-  step "Postage: Set Ship-To address to #{ship_to}"
+  address = table.hashes.first
+  log.info "Postage: Set Ship-To to \n#{address}"
+
+  @ship_to_country = address['country']
+  log.info "Ship-To Country:  #{@ship_to_country}"
+
+  @ship_to_name = (address['name'].downcase.include? "random") ? test_helper.random_name : address['name']
+  @ship_to_company = (address['company'].downcase.include? "random") ? test_helper.random_company_name : address['company']
+  @ship_to_city = (address['city'].downcase.include? "random") ? test_helper.random_string : address['city']
+
+  if @ship_to_country.downcase.include? "united states"
+    @ship_to_street_address = (address['street_address'].downcase.include? "random") ? test_helper.random_string : address['street_address']
+    @ship_to_state = (address['state'].downcase.include? "random") ? test_helper.random_string : address['state']
+    @ship_to_zip = (address['zip'].downcase.include? "random") ? test_helper.random_string : address['zip']
+
+    ship_to_address = "#{@ship_to_name},#{@ship_to_company},#{@ship_to_street_address},#{@ship_to_city} #{@ship_to_state} #{@ship_to_zip}"
+    log.info "Ship-To Address:  #{ship_to_address}"
+    step "Postage: Set Ship-To address to #{ship_to_address}"
+  else
+    @ship_to_street_address_1 = (address['street_address_1'].downcase.include? "random") ? test_helper.random_string : address['street_address_1']
+    @ship_to_street_address_2 = (address['street_address_2'].downcase.include? "random") ? test_helper.random_suite : address['street_address_2']
+    @ship_to_province = (address['province'].downcase.include? "random") ? test_helper.random_string : address['province']
+    @ship_to_postal_code = (address['postal_code'].downcase.include? "random") ? test_helper.random_alpha_numeric : address['postal_code']
+    @ship_to_phone = (address['phone'].downcase.include? "random") ? test_helper.random_phone : address['phone']
+
+    log.info "Ship-To Name: #{@ship_to_name}"
+    log.info "Ship-To Company: #{@ship_to_company}"
+    log.info "Ship-To Address 1: #{@ship_to_street_address_1}"
+    log.info "Ship-To Address 2: #{@ship_to_street_address_2}"
+    log.info "Ship-To City: #{@ship_to_city}"
+    log.info "Ship-To Province: #{@ship_to_province}"
+    log.info "Ship-To Postal Code: #{@ship_to_postal_code}"
+    log.info "Ship-To Phone: #{@ship_to_phone}"
+
+    step "Postage: Set Ship-To country to #{@ship_to_country}"
+    step "Postage International Address: Set Ship-To Name to \"#{@ship_to_name}\""
+    step "Postage International Address: Set Ship-To Company to \"#{@ship_to_company}\""
+    step "Postage International Address: Set Ship-To Address 1 to \"#{@ship_to_street_address_1}\""
+    step "Postage International Address: Set Ship-To Address 2 to \"#{@ship_to_street_address_2}\""
+    step "Postage International Address: Set Ship-To City to \"#{@ship_to_city}\""
+    step "Postage International Address: Set Ship-To Province to \"#{@ship_to_province}\""
+    step "Postage International Address: Set Ship-To Postal Code to \"#{@ship_to_postal_code}\""
+    step "Postage International Address: Set Ship-To Phone to \"#{@ship_to_phone}\""
+
+  end
 end
 
 Then /^Postage: Set Ship-To address to (.*)$/ do |address|
@@ -157,6 +201,49 @@ Then /^Postage: Set Ship-To address to (.*)$/ do |address|
 
 end
 
+Then /^Postage: Set Ounces to (.*)/ do |ounces|
+  log.info "Step: Envelopes: Set Print Postage Ounces to: \n #{ounces}"
+  @print_postage.weight.oz.set ounces
+end
+
+Then /^Postage: Set Pounds to (.*)/ do |pounds|
+  log.info "Step: Envelopes: Set Print Postage Pounds to: \n #{pounds}"
+  @print_postage.weight.lbs.set pounds
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Then /^Postage: Expect Print Media Tooltip to be (.*)$/ do |selection|
   postage.print_on.tooltip selection
 end
@@ -167,38 +254,6 @@ end
 
 Then /^Postage: Expect Print Media (.*) to be enabled$/ do |selection|
   postage.print_on.enabled? selection
-end
-
-Then /^Postage: Set Service to \"(.*)\"/ do |service|
-  log.info "Step: Set Print Postage Service to: \n #{service}"
-  @postage_form.service.select service
-end
-
-Then /^Postage: Set Ounces to (.*)/ do |ounces|
-  log.info "Step: Set Print Postage Ounces to: \n #{ounces}"
-  @postage_form.weight.ounces.set ounces
-end
-
-Then /^Postage: Set Pounds to (.*)/ do |pounds|
-  log.info "Step: Set Print Postage Pounds to: \n #{pounds}"
-  @postage_form.weight.pounds.set pounds
-end
-
-Then /^Postage: Set Ship-To address to$/ do |table|
-  ship_to = PrintHelper.instance.address_hash_to_str table.hashes.first
-  log.info "Step: Set Print Postage Form Ship-To address to \n#{ship_to}"
-  step "Set Print Postage Form Ship-To address to #{ship_to}"
-end
-
-Then /^Postage: Set Ship-From to (.*)/ do |value|
-  log.info "Step: Set Print Postage Ship-From to: \n #{value}"
-  @postage_form.ship_from.select value
-end
-
-Then /^Postage: Set Ship-To country to (.*)/ do |country|
-  log.info "Step: Set Print Postage Country to: \n #{country}"
-  @postage_form.country.select country
-
 end
 
 Then /^Postage: Expect Ship-To address to be (.*)/ do |address|

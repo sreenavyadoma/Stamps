@@ -2,7 +2,7 @@ module Print
   class SignInPage < StampsWebApps
 
     def sign_in *args
-      visit :print
+      visit :print_postage
       case args
         when Hash
           username = args[0]['username']
@@ -67,7 +67,7 @@ module Print
       log.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
       ENV["SIGNED_IN_USER"] = username
-      visit :print
+      visit :print_postage
 
     end
 

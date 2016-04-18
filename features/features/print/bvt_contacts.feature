@@ -10,8 +10,8 @@ Feature: Contacts BVT
   Scenario: Contacts
 
     Then Postage: Select Shipping Label 5 x 8
-    Then Shipping Labels: Set Ship-From to default
-    Then Shipping Labels: Set Ship-To country to United States
+    Then Postage: Set Ship-From to default
+    Then Postage: Set Ship-To country to United States
     Then Shipping Labels: Open Contacts modal
     Then Contacts: Click Contacts Page Link
     Then Sign out
