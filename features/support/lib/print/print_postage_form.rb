@@ -18,6 +18,8 @@ module Print
           selection_label = StampsLabel.new @browser.div :text => selection
           5.times {
             begin
+              break if box.text.include? selection
+              break if box.text.include? selection
               button.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
@@ -29,65 +31,51 @@ module Print
         end
       end
 
-      class ShipToDomestic < Print::Postage::PrintObject
-      end
-
-      class ShipToInternational < Print::Postage::PrintObject
-
-        def name
-          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptonamefield-inputEl")
-        end
-
-        def company
-          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptocompanyfield-inputEl")
-        end
-
-        def address_1
-          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress1field-inputEl")
-        end
-
-        def address_2
-          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress2field-inputEl")
-        end
-
-        def city
-          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptocityfield-inputEl")
-        end
-
-        def province
-          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptoprovincefield-inputEl")
-        end
-
-        def postal_code
-          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptopostcodefield-inputEl")
-        end
-
-        def phone
-          StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptophonefield-inputEl")
-        end
-
-      end
-
       def text_area
         StampsTextbox.new (@browser.text_field :id => "sdc-mainpanel-shiptotextarea-inputEl")
       end
 
-      def country ship_to_country
-        drop_down = PostageCountry.new @browser
-        drop_down.select ship_to_country
-        case ship_to_country.downcase
-          when /united states/
-            text_area
-          else
-            ShipToInternational.new @browser
-        end
+      def country
+        PostageCountry.new @browser
       end
 
+      # Domestic Ship-To
       def set address
         text_area.safe_click
         text_area.set address
-        text_area.set address
         text_area.safe_click
+      end
+
+      def name
+        StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptonamefield-inputEl")
+      end
+
+      def company
+        StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptocompanyfield-inputEl")
+      end
+
+      def address_1
+        StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress1field-inputEl")
+      end
+
+      def address_2
+        StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptoaddress2field-inputEl")
+      end
+
+      def city
+        StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptocityfield-inputEl")
+      end
+
+      def province
+        StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptoprovincefield-inputEl")
+      end
+
+      def postal_code
+        StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptopostcodefield-inputEl")
+      end
+
+      def phone
+        StampsTextbox.new (@browser.text_field :id => "sdc-intlform-shiptophonefield-inputEl")
       end
     end
 

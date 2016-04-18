@@ -15,11 +15,24 @@ module Print
 
       def print_international
         print_button.safe_click
+        sleep 2
         confirm_window = Print::Postage::ConfirmModal.new @browser
         if confirm_window.present?
           log.info "Confirm Print"
           confirm_window.confirm
+          confirm_window.confirm
         end
+
+        print_modal = Windows::PrintWindow.new
+        8.times do
+          if print_modal.present?
+            break
+          else
+            sleep 1
+          end
+        end
+        raise "Unable to open international print modal."
+        print_modal.print
       end
 
       def print_button

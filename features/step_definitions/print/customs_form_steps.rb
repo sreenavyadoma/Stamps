@@ -78,7 +78,6 @@ Then /^Postage Customs: Delete All Items$/ do
   log.info "Step: Postage Customs: Delete All Items"
   raise "Instantiate Customs Form before calling this step definition" if @customs_form.nil?
   @customs_form.delete_all
-
 end
 
 Then /^Postage Customs: Check I agree to the USPS Privacy Act Statement$/ do

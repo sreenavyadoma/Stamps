@@ -1,6 +1,5 @@
 module Print
   module Postage
-
     class CustomsForm < Print::Postage::PrintObject
 
       def close

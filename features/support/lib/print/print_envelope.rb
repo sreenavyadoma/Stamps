@@ -1,7 +1,7 @@
 module Print
   module Postage
 
-    class EnvelopeFormView < Print::Postage::PrintForm
+    class EnvelopeFormView < Print::Postage::PrintPostage
 
       def preview_image
         image = StampsLabel.new @browser.div :id => "envelopePreview"
@@ -41,7 +41,7 @@ module Print
 
     end
 
-    class Envelope < Print::Postage::PrintForm
+    class Envelope < Print::Postage::PrintPostage
 
       def weight
         Print::Postage::Weight.new @browser

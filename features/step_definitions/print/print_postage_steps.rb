@@ -191,9 +191,9 @@ Then /^Postage: Set Ship-To address to (.*)$/ do |address|
     else
       formatted_address = OrdersHelper.instance.format_address address
   end
-
+  ship_to_dd = Print::Postage::ShipTo::PostageCountry.new @browser
+  ship_to_dd.select "United States"
   @print_postage.ship_to.set formatted_address
-
 end
 
 Then /^Postage: Set Ounces to (.*)/ do |ounces|

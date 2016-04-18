@@ -147,6 +147,7 @@ end
 
 Then /^Postage Shipping Labels: Edit Customs Form$/ do
   log.info "Postage Shipping Labels: Edit Customs Form"
+
   @customs_form = @print_postage.customs
 end
 
@@ -166,98 +167,6 @@ Then /^Shipping Labels: Select right side starting label/ do
   
   selected = @print_postage.form_view.starting_label.right
   log.info "right-side label was #{(selected)?'selected.':'not selected'}"
-end
-
-Then /^Shipping Labels: Set Ship-To to Random Address in Zone 1$/ do
-  step "Postage: Set Ship-To to zone 1"
-end
-
-Then /^Shipping Labels: Set Ship-To to Random Address in Zone 2$/ do
-  step "Postage: Set Ship-To to zone 2"
-end
-
-Then /^Shipping Labels: Set Ship-To to Random Address in Zone 3$/ do
-  step "Postage: Set Ship-To to zone 3"
-end
-
-Then /^Shipping Labels: Set Ship-To to Random Address in Zone 4$/ do
-  step "Postage: Set Ship-To to zone 4"
-end
-
-Then /^Shipping Labels: Set Ship-To to Random Address in Zone 5$/ do
-  step "Postage: Set Ship-To to zone 5"
-end
-
-Then /^Shipping Labels: Set Ship-To to Random Address in Zone 6$/ do
-  step "Postage: Set Ship-To to zone 6"
-end
-
-Then /^Shipping Labels: Set Ship-To to Random Address in Zone 7$/ do
-  step "Postage: Set Ship-To to zone 7"
-end
-
-Then /^Shipping Labels: Set Ship-To to Random Address in Zone 8$/ do
-  step "Postage: Set Ship-To to zone 8"
-end
-
-Then /^Shipping Labels: Set Ship-To to Random Address Between Zone 1 through 4$/ do
-  step "Postage: Set Ship-To to zone 1 through 4"
-end
-
-Then /^Shipping Labels: Set Ship-To to Random Address Between Zone 5 through 8$/ do
-  step "Postage: Set Ship-To to zone 5 through 8"
-end
-
-Then /^Postage: Set Ship-To to (.*)$/ do |address|
-  log.info "Postage: Set Ship-To to \"#{address}\""
-
-  case address.downcase
-    when /zone 1 through 4/
-      address = test_helper.rand_zone_1_4
-      formatted_address = OrdersHelper.instance.format_address address
-      log.info "Shipping Labels: Set Ship-To random zone 1 through 4 address to \"#{formatted_address}\""
-    when /zone 5 through 8/
-      address = test_helper.rand_zone_5_8
-      formatted_address = OrdersHelper.instance.format_address address
-      log.info "Shipping Labels: Set Ship-To random zone 5 through 8 address to \"#{formatted_address}\""
-    when /zone 1/
-      address = test_helper.rand_zone_1
-      formatted_address = OrdersHelper.instance.format_address address
-      log.info "Shipping Labels: Set Ship-To to Random Address in Zone 1 = \"#{formatted_address}\""
-    when /zone 2/
-      address = test_helper.rand_zone_2
-      formatted_address = OrdersHelper.instance.format_address address
-      log.info "Shipping Labels: Set Ship-To to Random Address in Zone 2 = \"#{formatted_address}\""
-    when /zone 3/
-      address = test_helper.rand_zone_3
-      formatted_address = OrdersHelper.instance.format_address address
-      log.info "Shipping Labels: Set Ship-To to Random Address in Zone 3 = \"#{formatted_address}\""
-    when /zone 4/
-      address = test_helper.rand_zone_4
-      formatted_address = OrdersHelper.instance.format_address address
-      log.info "Shipping Labels: Set Ship-To to Random Address in Zone 4 = \"#{formatted_address}\""
-    when /zone 5/
-      address = test_helper.rand_zone_5
-      formatted_address = OrdersHelper.instance.format_address address
-      log.info "Shipping Labels: Set Ship-To to Random Address in Zone 5 = \"#{formatted_address}\""
-    when /zone 6/
-      address = test_helper.rand_zone_6
-      formatted_address = OrdersHelper.instance.format_address address
-      log.info "Shipping Labels: Set Ship-To to Random Address in Zone 6 = \"#{formatted_address}\""
-    when /zone 7/
-      address = test_helper.rand_zone_7
-      formatted_address = OrdersHelper.instance.format_address address
-      log.info "Shipping Labels: Set Ship-To to Random Address in Zone 7 = \"#{formatted_address}\""
-    when /zone 8/
-      address = test_helper.rand_zone_8
-      formatted_address = OrdersHelper.instance.format_address address
-      log.info "Shipping Labels: Set Ship-To to Random Address in Zone 8 = \"#{formatted_address}\""
-    else
-      formatted_address = OrdersHelper.instance.format_address address
-  end
-
-  @print_postage.ship_to.set formatted_address
-
 end
 
 Then /^Postage Shipping Labels: Expect Domestic Address field displays (.*)$/ do |value|

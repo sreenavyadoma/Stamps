@@ -2,7 +2,7 @@
 module Print
   module Postage
 
-    class ShippingLabelFormView < Print::Postage::PrintForm
+    class ShippingLabelFormView < Print::Postage::PrintPostage
 
       def preview_image
         image = StampsLabel.new @browser.div :css => "div[style*='Label_selection_and_view.gif']"
@@ -106,11 +106,7 @@ module Print
 
     end
 
-    class ShippingLabel < Print::Postage::PrintForm
-
-      def ship_to_international
-        Print::Postage::ShipTo::ShipToInternational.new @browser
-      end
+    class ShippingLabel < Print::Postage::PrintPostage
 
       def email_tracking
         Print::Postage::Email.new @browser
@@ -138,18 +134,6 @@ module Print
         end
         stop_test "Unable to open Extra Services Modal, check your code." unless service_modal.present?
       end
-
-      def customs
-        button = StampsButton.new @browser.span :id => "sdc-mainpanel-editcustombtn-btnIconEl"
-        customs_modal = Print::Postage::CustomsForm.new @browser
-        5.times do
-          button.safe_click
-          sleep 1
-          return customs_modal if customs_modal.present?
-        end
-        stop_test "Unable to open Customs Modal, check your code." unless customs_modal.present?
-      end
-
       def contacts
         Print::Postage::Contacts.new @browser
       end
