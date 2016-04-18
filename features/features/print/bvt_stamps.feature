@@ -16,7 +16,7 @@ Feature: Stamps BVT
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Set Specify Postage Service to "Media Mail (2 - 3 Days)"
+    Then Postage Stamps: Select Specify Postage Service Media Mail
     Then Postage Stamps: Set Stamp Amount to $4.65
     Then Postage Stamps: Set Quantity to 3
     Then Postage Stamps: Set Reference Number to Stamp3221
@@ -35,7 +35,7 @@ Feature: Stamps BVT
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
     Then Postage Stamps: Set Weight 0 lbs 1 oz
-    Then Postage Stamps: Set Calculate Postage Service to "First-Class Mail Large Envelope/Flat"
+    Then Postage Stamps: Select Calculate Postage Service First-Class Mail Letter
     Then Postage: Open Print Modal
     Then Postage Print Modal: Select Printer "factory"
     Then Postage Print Modal: Print
