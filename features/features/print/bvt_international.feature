@@ -12,11 +12,9 @@ Feature: International Shipping BVT
     Then Postage: Set Ship-To to
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone   |
       | random | random  | random           | random            | random | random   | random      | Brazil | random  |
-
     Then Postage Shipping Labels: Select Service First-Class Mail International Package
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 3
-
     Then Postage Shipping Labels: Edit Customs Form
     Then Postage Customs: Set Package Contents to "Gift"
     Then Postage Customs: Set Non-Delivery Options to "Treat as abandoned"
