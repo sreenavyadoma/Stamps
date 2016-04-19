@@ -3,7 +3,7 @@ Then /^Postage Envelopes: Select Service First-Class Mail Letter$/ do
   step "Postage Envelopes: Set Service to First-Class Mail Letter"
 end
 
-Then /^Postage Envelopes: Set Service to \"(.*)\"/ do |service|
+Then /^Postage Envelopes: Set Service to (.*)$/ do |service|
   log.info "Envelopes: Set Print Postage Service to: \n #{service}"
   @print_postage.service.select service
 end

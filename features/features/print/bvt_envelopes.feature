@@ -28,7 +28,7 @@ Feature: Envelopes BVT
     Then Postage: Set Ship-To to Random Address Between Zone 1 through 4
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
-    Then Postage Envelopes: Set Service to "First-Class Mail Letter"
+    Then Postage Envelopes: Set Service to First-Class Mail Letter
     Then Postage Envelopes: Set Include Return Address to Checked
     Then Postage Envelopes: Set Include Delivery Address to Unchecked
     Then Postage Envelopes: Set Include Postage to Unchecked
