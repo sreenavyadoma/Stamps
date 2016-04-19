@@ -4,7 +4,7 @@ Then /^Postage Shipping Labels: Set Service to (.*)/ do |service|
   @print_postage.service.select service
 end
 
-Then /^Postage Shipping Labels: Select Service First-Class Mail Large Envelope-Flat $/ do
+Then /^Postage Shipping Labels: Select Service First-Class Mail Large Envelope-Flat$/ do
   step "Postage Shipping Labels: Set Service to First-Class Mail Large Envelope/Flat"
 end
 
