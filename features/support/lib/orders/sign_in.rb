@@ -53,8 +53,7 @@ module Orders
       end
     end
 
-    class SignInPage < OrdersObject
-
+    class SignInPage < StampsWebApps
       def username
         StampsTextbox.new @browser.text_field Orders::Locators::SignIn::username
       end
@@ -63,7 +62,7 @@ module Orders
         StampsTextbox.new @browser.text_field Orders::Locators::SignIn::password
       end
 
-      def sign_in
+      def sign_in_button
         StampsButton.new @browser.input Orders::Locators::SignIn::sign_in
       end
 
@@ -71,38 +70,11 @@ module Orders
         stop_test "Not yet implemented."
       end
 
-      def visit
-        case ENV['URL'].downcase
-          when /ss/
-            url = "http://printss600.qacc.stamps.com/orders/"
-          when /cc/
-            url = "http://printext.qacc.stamps.com/orders/"
-          when /sc/
-            url = "http://printext.qasc.stamps.com/orders/"
-          when /staging/
-            url = "https://print.testing.stamps.com/orders/"
-          when /rating/
-            url = "http://printext.qacc.stamps.com/orders/"
-          when /./
-            url = "http://#{ENV['URL']}.stamps.com/orders/"
-          else
-            url = ENV['URL']
-        end
-
-        log.info "Visit: #{url}"
-        5.times do
-          @browser.goto url
-          sleep 1
-          break if @browser.url.include? ENV['URL'].downcase
-        end
-        log.info "Page loaded: #{url}"
-        self
-      end
-
       def first_time_sign_in usr, pw
+        visit :orders
         username_textbox = self.username
         password_textbox = self.password
-        sign_in_button = self.sign_in
+        button = self.sign_in_button
 
         grid = Orders::Grid::OrdersGrid.new @browser
         welcome_orders_page = WelcomeOrdersPage.new @browser
@@ -112,10 +84,10 @@ module Orders
           username_textbox.wait_until_present
           username_textbox.set_until usr
           password_textbox.set pw
-          sign_in_button.safe_send_keys :enter
-          sign_in_button.safe_send_keys :enter
-          sign_in_button.safe_click
-          sign_in_button.safe_click
+          button.safe_send_keys :enter
+          button.safe_send_keys :enter
+          button.safe_click
+          button.safe_click
 
           welcome_orders_page.wait_until_present
           welcome_orders_page.close if welcome_orders_page.present?
@@ -123,11 +95,13 @@ module Orders
 
           #market_place.wait_until_present
           market_place.close if market_place.present?
+          visit :orders
           break if grid.present?
           end
         end
 
-      def sign_in_with_credentials *args
+      def sign_in *args
+        visit :orders
         case args
           when Hash
             username = args['username']
@@ -149,7 +123,7 @@ module Orders
 
         username_textbox = self.username
         password_textbox = self.password
-        sign_in_button = self.sign_in
+        button = self.sign_in_button
 
         grid = Orders::Grid::OrdersGrid.new @browser
         navbar = Orders::Navigation::NavigationBar.new @browser
@@ -166,12 +140,12 @@ module Orders
               username_textbox.wait_until_present
               username_textbox.set username
               password_textbox.set password
-              sign_in_button.safe_send_keys :enter
-              sign_in_button.safe_send_keys :enter
+              button.safe_send_keys :enter
+              button.safe_send_keys :enter
               username_textbox.set username
               password_textbox.set password
-              sign_in_button.safe_click
-              sign_in_button.safe_click
+              button.safe_click
+              button.safe_click
               username_textbox.set username
               password_textbox.set password
 
@@ -200,9 +174,9 @@ module Orders
               break if grid.present?
               break if grid.present?
               break if grid.present?
-              visit
+              visit :orders
             else
-              visit
+              visit :orders
             end
           rescue Exception => e
             log.info e

@@ -14,24 +14,21 @@ module Print
       #we'll get to this when it comes time to buy stamps and prefs
     end
 
-    def print_on
-      Postage::PrintOn.new @browser
-    end
+    def print_on selection
+      drop_down = Postage::PrintOn.new @browser
+      drop_down.select selection
 
-    def stamps
-      Print::Postage::Stamps.new @browser
-    end
-
-    def shipping_label
-      Print::Postage::ShippingLabel.new @browser
-    end
-
-    def envelope
-      Print::Postage::Envelope.new @browser
-    end
-
-    def certified_mail
-      Print::Postage::CertifiedMail.new @browser
+      if selection.include? 'Stamps'
+        Print::Postage::Stamps.new @browser
+      elsif selection.include? 'Shipping Label'
+        Print::Postage::ShippingLabel.new @browser
+      elsif selection.include? 'Envelope'
+        Print::Postage::Envelope.new @browser
+      elsif selection.include? 'Certified Mail'
+        Print::Postage::CertifiedMail.new @browser
+      else
+        raise "#{selection} is not a valid Print Postage Print-On Selection"
+      end
     end
 
     def footer

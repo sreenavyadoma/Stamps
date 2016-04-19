@@ -1,7 +1,7 @@
 module Print
   module Postage
 
-    class EnvelopeFormView < Print::Postage::DomesticCommon
+    class EnvelopeFormView < Print::Postage::PrintPostageObject
 
       def preview_image
         image = StampsLabel.new @browser.div :id => "envelopePreview"
@@ -41,30 +41,10 @@ module Print
 
     end
 
-    class Envelope < Print::Postage::DomesticCommon
-
-      def ship_from
-        Print::Postage::ShipFrom.new @browser
-      end
-
-      def ship_to
-        Print::Postage::ShipTo::ShipToDomestic.new @browser
-      end
-
-      def weight
-        Print::Postage::Weight.new @browser
-      end
-
-      def service
-        Print::Postage::Service.new @browser
-      end
+    class Envelope < Print::Postage::PrintPostageObject
 
       def insure_for
         Print::Postage::InsureFor.new @browser
-      end
-
-      def extra_services
-        Print::Postage::ExtraServices.new @browser
       end
 
       def ship_date

@@ -3,7 +3,7 @@ Feature: Forgot Username
 
 
   Background:
-    Given I visit postage sign-in page qacc
+    Given I visit postage sign-in page
 
   @wp_forgot_username
   Scenario: Forgot Username

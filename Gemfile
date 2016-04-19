@@ -1,13 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'watir-webdriver'
 gem 'cucumber', '2.0.0'
+gem 'watir-webdriver'
 gem 'rspec'
 gem 'rake'
 gem 'data_magic'
 gem 'log4r'
 gem 'rautomation'
-
 
 
 # gem 'watir-webdriver', '0.9.1'

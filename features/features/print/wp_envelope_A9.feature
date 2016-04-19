@@ -6,15 +6,14 @@ Feature: Envelope #A9
   @wp_envelope_regression
   @wp_envelope_A9
   Scenario: Envelope #A9
-    Then Print Postage: Select Print On Envelope - #A9, 5 ¾” x 8 ¾”
-    Then Envelopes: Set Ship-From to default
-    Then Envelopes: Set Ship-To country to United States
-    Then Envelopes: Set Ship-To address to
-      | name          | company       | street_address      | city          | state | zip        | country       |
-      | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    | 94102      | United States |
-
-    Then Envelopes: Set Pounds to 0
-    Then Envelopes: Set Ounces to 1
-    Then Envelopes: Set Service to "First-Class Mail Letter"
-    Then Footer: Print Postage
+    Then Postage: Select Envelope - #A9
+    Then Postage: Set Ship-From to default
+    Then Postage: Set Ship-To country to United States
+    Then Postage: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Postage: Set Pounds to 0
+    Then Postage: Set Ounces to 1
+    Then Postage Envelopes: Select Service First-Class Mail Letter
+    Then Postage: Open Print Modal
+    Then Postage Print Modal: Select Printer "factory"
+    Then Postage Print Modal: Print
     Then Sign out

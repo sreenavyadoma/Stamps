@@ -24,18 +24,21 @@ module Print
     end
   end
 
-  class ConfirmModal < Print::Postage::PrintObject
-    def checkbox
-      checkbox_field = @browser.input :name => "dismissConfirm"
-      checkbox_field.set
+  class ConfirmPrint < Print::Postage::PrintObject
+    class ConfirmPrintCheckbox < Print::Postage::PrintObject
+      def check
+        @browser.checkbox(:name => 'dismissConfirm').set
+        @browser.checkbox(:name => 'dismissConfirm').set
+      end
+
+      def uncheck
+        @browser.checkbox(:name => 'dismissConfirm').clear
+        @browser.checkbox(:name => 'dismissConfirm').clear
+      end
     end
 
     def button
       StampsButton.new @browser.span :id => "sdc-undefinedwindow-continuebtn-btnIconEl"
-    end
-
-    def confirm
-      button.safe_click
     end
 
     def present?
@@ -43,7 +46,15 @@ module Print
     end
 
     def window_title
-      StampsLabel.new (@browser.span :text => "Confirm Print")
+      StampsLabel.new @browser.span(text: "Confirm Print")
+    end
+
+    def dont_prompt_deducting_postage_again
+      ConfirmPrintCheckbox.new @browser
+    end
+
+    def continue
+      button.safe_click
     end
   end
 
@@ -78,7 +89,7 @@ module Print
       5.times do
         dd.safe_click unless selection_label.present?
         selection_label.safe_click
-        return if input.text.include? printer
+        break if input.value.include? printer
       end
     end
   end
@@ -120,7 +131,7 @@ module Print
     end
 
     def confirm_modal
-      Print::Postage::ConfirmModal.new @browser
+      Print::Postage::ConfirmPrint.new @browser
     end
 
     def print

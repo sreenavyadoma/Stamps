@@ -2,7 +2,6 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-
 Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
   t.cucumber_opts = "-p cuke_reports"
@@ -13,8 +12,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:orders_authentication) do |t|
+  t.profile = 'orders_authentication'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -856,6 +855,11 @@ end
 
 Cucumber::Rake::Task.new(:wp_envelope_12) do |t|
   t.profile = 'wp_envelope_12'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_envelope_regression) do |t|
+  t.profile = 'wp_envelope_regression'
   t.cucumber_opts = "-p cuke_reports"
 end
 

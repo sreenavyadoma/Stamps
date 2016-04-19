@@ -18,7 +18,7 @@ module Windows
     end
 
     def wait_until_present
-      3.times do
+      5.times do
         break if present?
         sleep 1
       end
