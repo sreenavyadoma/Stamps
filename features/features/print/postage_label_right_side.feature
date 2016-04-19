@@ -43,7 +43,7 @@ Feature: Postage Shipping Label - Right Side
   @wp_label_right_side
   Scenario: Right Side Shipping Label -  SDC-1200
 
-    Then Postage: Select Shipping Label 4 x 6
+    Then Postage: Select Shipping Label SDC-1200
 
     Then Postage: Set Ship-From to default
     Then Postage: Set Ship-To country to United States
