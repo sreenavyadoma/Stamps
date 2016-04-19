@@ -29,3 +29,4 @@ Feature:Shipping Label Preview Panel
     Then Postage Print Modal: Select Printer "factory"
     Then Postage Print Modal: Print
     Then Sign out
+
