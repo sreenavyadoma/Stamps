@@ -42,7 +42,7 @@ Feature: Extra Services BVT
     Then Postage: Set Ship-To to Random Address Between Zone 1 through 4
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
-    Then Postage Shipping Labels: Set Service to "Priority Mail Package"
+    Then Postage Shipping Labels: Set Service to Priority Mail Package
     Then Postage Shipping Labels: Set Hide Postage Value to Unchecked
     Then Postage Shipping Labels: Set Print Receipt to Checked
     Then Postage Shipping Labels: Set Print Reference Number to Checked
