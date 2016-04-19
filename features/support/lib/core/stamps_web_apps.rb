@@ -2,6 +2,8 @@ module Stamps
   class StampsWebApps < OrdersObject
 
     def visit page
+      raise "Don't forget to LAUNCH YOUR BROWSER FIRST!" if @browser.nil?
+
       case page
         when :orders
           app_name ="orders"
