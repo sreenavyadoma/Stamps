@@ -140,13 +140,11 @@ Then /^Postage: Set Ship-To to$/ do |table|
     step "Postage International Address: Set Ship-To Province to \"#{@ship_to_province}\""
     step "Postage International Address: Set Ship-To Postal Code to \"#{@ship_to_postal_code}\""
     step "Postage International Address: Set Ship-To Phone to \"#{@ship_to_phone}\""
-
   end
 end
 
 Then /^Postage: Set Ship-To address to (.*)$/ do |address|
   log.info "Step: Postage: Set Ship-To to \"#{address}\""
-
   case address.downcase
     when /zone 1 through 4/
       address = test_helper.rand_zone_1_4
