@@ -13,10 +13,10 @@ Feature: Address Cleansing BVT
     Then Postage: Set Ship-To country to United States
     Then Postage: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |
-      | Mark Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |        | United States |
+      | random | random  | 1350 Market Street  | San Francisco | CA    |        | United States |
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
     Then Postage Shipping Labels: Set Service to "Priority Mail Package"
-    Then Postage Shipping Labels: Expect Domestic Address field displays Mark Davidson, Company Name, 1350 Market Street, San Francisco, CA 94102
+    Then Postage Shipping Labels: Expect Domestic Address field displays random, random, 1350 Market Street, San Francisco, CA 94102
 
     Then Sign out

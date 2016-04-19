@@ -15,7 +15,7 @@ Feature: Postage Shipping Label - Right Side
     Then Postage: Set Ship-To country to United States
     Then Postage: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |
-      | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    | 94102  | United States |
+      | random | random  | 1350 Market Street  | San Francisco | CA    | 94102  | United States |
 
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
@@ -35,7 +35,7 @@ Feature: Postage Shipping Label - Right Side
     Then Postage: Set Ship-To country to United States
     Then Postage: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |
-      | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    | 94102  | United States |
+      | random | random  | 1350 Market Street  | San Francisco | CA    | 94102  | United States |
 
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
@@ -55,7 +55,7 @@ Feature: Postage Shipping Label - Right Side
     Then Postage: Set Ship-To country to United States
     Then Postage: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |
-      | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    | 94102  | United States |
+      | random | random  | 1350 Market Street  | San Francisco | CA    | 94102  | United States |
 
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
