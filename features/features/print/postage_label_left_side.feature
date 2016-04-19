@@ -6,7 +6,7 @@ Feature: Postage Shipping Label - Left Side
     Given I am signed in as a postage shipper
 
 
-  @wp_label_left_side
+
   Scenario: Left Side Shipping Label - 8 ½” x 11” Paper
 
     Then Postage: Select Shipping Label 8 x 11
@@ -19,14 +19,14 @@ Feature: Postage Shipping Label - Left Side
 
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
-    Then Postage Shipping Labels: Set Service to Priority Mail Package
+    Then Postage Shipping Labels: Select Service Priority Mail Package
     Then Postage Shipping Labels: Select left side starting label
     Then Postage: Open Print Modal
     Then Postage Print Modal: Select Printer "factory"
     Then Postage Print Modal: Print
     Then Sign out
 
-  @wp_label_left_side
+
   Scenario: Left Side Shipping Label -  5 ½” x 8 ½”
 
     Then Postage: Select Shipping Label 5 x 8
@@ -39,7 +39,7 @@ Feature: Postage Shipping Label - Left Side
 
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
-    Then Postage Shipping Labels: Set Service to Priority Mail Package
+    Then Postage Shipping Labels: Select Service Priority Mail Package
     Then Postage Shipping Labels: Select left side starting label
     Then Postage: Open Print Modal
     Then Postage Print Modal: Select Printer "factory"
@@ -49,7 +49,7 @@ Feature: Postage Shipping Label - Left Side
   @wp_label_left_side
   Scenario: Left Side Shipping Label -  SDC-1200
 
-    Then Postage: Select Shipping Label 4 x 6
+    Then Postage: Select Shipping Label SDC-1200
 
     Then Postage: Set Ship-From to default
     Then Postage: Set Ship-To country to United States
@@ -59,7 +59,7 @@ Feature: Postage Shipping Label - Left Side
 
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
-    Then Postage Shipping Labels: Set Service to Priority Mail Package
+    Then Postage Shipping Labels: Select Service Priority Mail Package
     Then Postage Shipping Labels: Select left side starting label
     Then Postage: Open Print Modal
     Then Postage Print Modal: Select Printer "factory"

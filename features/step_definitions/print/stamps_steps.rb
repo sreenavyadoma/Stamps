@@ -22,7 +22,7 @@ end
 Then /^Postage Stamps: Set Ship-To country to (.*)/ do |country|
   log.info "Step: Set Print Postage Country to: \n #{country}"
   @print_postage = postage.print_postage if @print_postage.nil?
-  @print_postage.country.select country
+  @print_postage.ship_to.country.select country
 end
 
 Then /^Postage Stamps: Set Ounces to (.*)/ do |ounces|

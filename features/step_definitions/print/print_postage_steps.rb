@@ -10,7 +10,7 @@ Then /^Postage: Select Shipping Label 8 x 11$/ do
   step "Postage: Set Print On Shipping Label - 8 ½” x 11” Paper"
 end
 
-Then /^Postage: Select Shipping Label 4 x 6$/ do
+Then /^Postage: Select Shipping Label SDC-1200$/ do
   step "Postage: Set Print On Shipping Label - Stamps.com SDC-1200, 4 ¼” x 6 ¾”"
 end
 
@@ -132,14 +132,14 @@ Then /^Postage: Set Ship-To to$/ do |table|
     log.info "Ship-To Phone: #{@ship_to_phone}"
 
     step "Postage: Set Ship-To country to #{@ship_to_country}"
-    step "Postage International Address: Set Ship-To Name to \"#{@ship_to_name}\""
-    step "Postage International Address: Set Ship-To Company to \"#{@ship_to_company}\""
-    step "Postage International Address: Set Ship-To Address 1 to \"#{@ship_to_street_address_1}\""
-    step "Postage International Address: Set Ship-To Address 2 to \"#{@ship_to_street_address_2}\""
-    step "Postage International Address: Set Ship-To City to \"#{@ship_to_city}\""
-    step "Postage International Address: Set Ship-To Province to \"#{@ship_to_province}\""
-    step "Postage International Address: Set Ship-To Postal Code to \"#{@ship_to_postal_code}\""
-    step "Postage International Address: Set Ship-To Phone to \"#{@ship_to_phone}\""
+    step "Postage International: Set Ship-To Name to \"#{@ship_to_name}\""
+    step "Postage International: Set Ship-To Company to \"#{@ship_to_company}\""
+    step "Postage International: Set Ship-To Address 1 to \"#{@ship_to_street_address_1}\""
+    step "Postage International: Set Ship-To Address 2 to \"#{@ship_to_street_address_2}\""
+    step "Postage International: Set Ship-To City to \"#{@ship_to_city}\""
+    step "Postage International: Set Ship-To Province to \"#{@ship_to_province}\""
+    step "Postage International: Set Ship-To Postal Code to \"#{@ship_to_postal_code}\""
+    step "Postage International: Set Ship-To Phone to \"#{@ship_to_phone}\""
   end
 end
 

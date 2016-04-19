@@ -18,10 +18,10 @@ module Print
       drop_down = Postage::PrintOn.new @browser
       drop_down.select selection
 
-      if selection.include? 'Stamps'
-        Print::Postage::Stamps.new @browser
-      elsif selection.include? 'Shipping Label'
+      if selection.include? 'Shipping Label'
         Print::Postage::ShippingLabel.new @browser
+      elsif selection.include? 'Stamps'
+        Print::Postage::Stamps.new @browser
       elsif selection.include? 'Envelope'
         Print::Postage::Envelope.new @browser
       elsif selection.include? 'Certified Mail'
