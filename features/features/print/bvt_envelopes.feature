@@ -25,10 +25,7 @@ Feature: Envelopes BVT
     Then Postage: Select Envelope - #10
     Then Postage: Set Ship-From to default
     Then Postage: Set Ship-To country to United States
-    Then Postage: Set Ship-To to
-      | name   | company | street_address      | city          | state | zip        | country       |
-      | random | random  | 1350 Market Street  | San Francisco | CA    | 94102      | United States |
-
+    Then Postage: Set Ship-To to Random Address Between Zone 1 through 4
     Then Postage: Set Pounds to 0
     Then Postage: Set Ounces to 1
     Then Postage Envelopes: Set Service to "First-Class Mail Letter"
