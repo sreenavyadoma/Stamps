@@ -48,95 +48,18 @@ module Orders
 
         20.times do
           button.safe_click
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          button.safe_click
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
+          5.times do
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if server_error.present?
+              error_str = server_error.message
+              log.info error_str
+              server_error.ok
+              stop_test "Server Error: \n#{error_msg}"
+            end
+            return settings if settings.present?
           end
           return settings if settings.present?
         end

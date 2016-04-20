@@ -128,26 +128,24 @@ module Orders
         server_error = Orders::Stores::ServerError.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
-        20.times do
+        10.times do
           button.safe_click
-          sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
+          5.times do
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if server_error.present?
+              error_str = server_error.message
+              log.info error_str
+              server_error.ok
+              stop_test "Server Error: \n#{error_msg}"
+            end
           end
-          button.safe_click
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          break unless present?
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
+          break unless button.exist?
         end
-        self.close if self.present?
+
+        close if present? #close modal if it's present
         stop_test server_error.message if server_error.present?
       end
 
@@ -159,39 +157,23 @@ module Orders
 
         20.times do
           button.safe_click
-          sleep 2
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-            return settings if settings.present?
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
+          5.times do
+            if server_error.present?
+              error_str = server_error.message
+              log.info error_str
+              server_error.ok
+              stop_test "Server Error: \n#{error_msg}"
+            end
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
             return settings if settings.present?
           end
           return settings if settings.present?
         end
+
+
 
         self.close if self.present?
         stop_test server_error.message if server_error.present?

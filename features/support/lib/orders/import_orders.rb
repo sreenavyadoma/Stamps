@@ -45,12 +45,9 @@ module Orders
         sleep 1
         return success if success.present?
         if server_error.present?
-          error_msg = server_error.message
-          log.info error_msg
+          error_str = server_error.message
+          log.info error_str
           server_error.ok
-          log.info "Teardown: Begin tearing down test"
-          Stamps::Test.teardown
-          log.info "Teardown: Done!"
           stop_test "Server Error: \n#{error_msg}"
         end
       end
