@@ -140,6 +140,7 @@ module Orders
               username_textbox.wait_until_present
               username_textbox.set username
               password_textbox.set password
+              sleep 1
               button.safe_send_keys :enter
               button.safe_send_keys :enter
               username_textbox.set username

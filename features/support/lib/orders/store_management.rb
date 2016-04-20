@@ -156,10 +156,10 @@ module Orders
 
       def save
         button = StampsButton.new (@browser.span text: "Save")
-        server_error = Orders::ServerError.new @browser
+        server_error = Orders::Stores::ServerError.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
-        15.times do
+        10.times do
           button.safe_click
           sleep 1
           if server_error.present?
@@ -187,6 +187,40 @@ module Orders
             log.info importing_order.message
             importing_order.ok
           end
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
 
           break unless present? && server_error.present?
         end
@@ -197,7 +231,7 @@ module Orders
       end
 
       def store_nickname
-        StampsTextbox.new (@browser.text_field css: "input[name^=textfield-][name$=-inputEl][maxlength='50']")
+        StampsTextbox.new (@browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last
       end
 
       def automatically_import_new_orders
@@ -337,6 +371,21 @@ module Orders
           return store if store.present?
         end
         stop_test "Etsy Store Modal did not open."
+      end
+
+      def yahoo_button
+        StampsButton.new (@browser.imgs :css => "img[src*='yahoo']").last
+      end
+
+      def yahoo
+        button = yahoo_button
+        store = Yahoo.new @browser
+        10.times do
+          button.safe_click
+          sleep 1
+          return store if store.present?
+        end
+        stop_test "Yahoo Store Modal did not open."
       end
 
     end
@@ -502,22 +551,56 @@ module Orders
       def reconnect
         button = StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
         stop_test "No Store selected from Manage Store grid or Reconnect button is not present.  Check your test" unless button.present?
+
+        server_error = Orders::Stores::ServerError.new @browser
+
         amazon = ModifyAmazonStore.new @browser
         volusion = ModifyVolusionStore.new @browser
         rakuten = ModifyRakutenStore.new @browser
         etsy = ModifyEtsyStore.new @browser
         shopify = ModifyShopifyStore.new @browser
         three_d_cart = Modify3DCartStore.new @browser
+        yahoo = ModifyYahooStore.new @browser
 
         15.times do
           button.safe_click
-          sleep 2
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          sleep 1
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
+          if server_error.present?
+            log.info server_error.message
+            server_error.ok
+          end
           return rakuten if rakuten.present?
           return volusion if volusion.present?
           return amazon if amazon.present?
           return etsy if etsy.present?
           return shopify if shopify.present?
           return three_d_cart if three_d_cart.present?
+          return yahoo if yahoo.present?
         end
       end
 

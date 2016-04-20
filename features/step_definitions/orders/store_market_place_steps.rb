@@ -33,3 +33,9 @@ Then /^Marketplace: Select 3dcart$/ do
   @store = @market_place.three_d_cart
 end
 
+Then /^Marketplace: Select Yahoo$/ do
+  step "Manage Stores: Add" if @market_place.nil?
+  @store = @market_place.yahoo
+end
+
+

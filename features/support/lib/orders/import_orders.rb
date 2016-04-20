@@ -38,7 +38,7 @@ module Orders
     def import
       success = SuccessModal.new @browser
       button = StampsButton.new @browser.span(text: "Import")
-      server_error = Orders::ServerError.new @browser
+      server_error = Orders::Stores::ServerError.new @browser
       4.times do
         button.safe_click
         log.info "Success modal is #{(success.present?)?"Present":"Not Present"}"

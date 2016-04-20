@@ -43,7 +43,7 @@ module Orders
       def connect
         button = connect_button
         settings = VolusionSettings.new @browser
-        server_error = Orders::ServerError.new @browser
+        server_error = Orders::Stores::ServerError.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
         20.times do
