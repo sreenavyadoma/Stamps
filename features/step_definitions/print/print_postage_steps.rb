@@ -10,7 +10,7 @@ Then /^Postage: Select Shipping Label 8 x 11$/ do
   step "Postage: Set Print On Shipping Label - 8 ½” x 11” Paper"
 end
 
-Then /^Postage: Select Shipping Label 4 x 6$/ do
+Then /^Postage: Select Shipping Label SDC-1200$/ do
   step "Postage: Set Print On Shipping Label - Stamps.com SDC-1200, 4 ¼” x 6 ¾”"
 end
 
