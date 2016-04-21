@@ -57,7 +57,7 @@ module Orders
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
         sleep 2
-        10.times do
+        20.times do
           button.safe_click
           3.times do
             if importing_order.present?
