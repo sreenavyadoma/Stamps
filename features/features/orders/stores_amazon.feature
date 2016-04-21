@@ -5,9 +5,9 @@ Feature:  Amazon Store Management
     Given I am signed in to Orders
 
     @amazon
-    Scenario: Store Management - Amazon Store
+    Scenario: Amazon Store
       Then Manage Stores: Open Modal
-      Then Manage Stores: Delete All Stores in Grid
+      Then Manage Stores: Delete All Stores
 
       # Add Store
       Then Manage Stores: Add

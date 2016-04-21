@@ -41,7 +41,6 @@ module Orders
         connected = connect_button
         20.times do
           button.safe_click
-          button.safe_click
           sleep 1
           break if connected.present?
         end
@@ -55,157 +54,57 @@ module Orders
         button = StampsButton.new @browser.span(text: "Connect")
         settings = YahooSettings.new @browser
         server_error = Orders::Stores::ServerError.new @browser
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
-        10.times do
+        sleep 2
+        20.times do
           button.safe_click
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          button.safe_click
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
+          3.times do
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if server_error.present?
+              error_str = server_error.message
+              log.info error_str
+              server_error.ok
+              stop_test "Server Error: \n#{error_msg}"
+            end
+            return settings if settings.present?
           end
           return settings if settings.present?
         end
-        stop_test "Shopify Store Connect failed.  Settings Modal did not open.  "
+        stop_test "Yahoo Store Connect failed.  Settings Modal did not open.  "
       end
 
       def reconnect
+        button = StampsButton.new @browser.span(text: "Connect")
+        server_error = Orders::Stores::ServerError.new @browser
+        manage_stores = ManageStores.new @browser
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
+
+        sleep 2
+        20.times do
+          button.safe_click
+          3.times do
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if server_error.present?
+              error_str = server_error.message
+              log.info error_str
+              server_error.ok
+              stop_test "Server Error: \n#{error_msg}"
+            end
+            return manage_stores if manage_stores.present?
+          end
+          return manage_stores if manage_stores.present?
+        end
+        stop_test "Yahoo Store Connect failed.  Settings Modal did not open.  "
+      end
+
+      def reconnect_old
         button = StampsButton.new @browser.span(text: "Connect")
         manage_stores = ManageStores.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
@@ -303,7 +202,7 @@ module Orders
       end
     end
 
-    class ModifyYahooStore < Shopify
+    class ModifyYahooStore < Yahoo
 
       def window_title
         StampsLabel.new(@browser.div :text => "Modify your Yahoo Store Connection")

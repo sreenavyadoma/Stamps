@@ -7,7 +7,7 @@ Feature:  Etsy Store Management
     @etsy
     Scenario: Store Management - Etsy Store
       Then Manage Stores: Open Modal
-      Then Manage Stores: Delete All Stores in Grid
+      Then Manage Stores: Delete All Stores
 
       # Add Store
       Then Manage Stores: Add

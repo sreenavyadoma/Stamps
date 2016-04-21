@@ -2,8 +2,8 @@ default: --profile cuke_reports --profile rob_dev_sc # import_orders_ship_from_t
 
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800 wp_bvt_international
-rob_dev_cc: --tags @orders_authentication --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=ff USR=nhr9mm6m5l  PW=pass111  # hd9glvtoauago
-rob_dev_sc: --tags @international_customs_form_totals --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yh95ws85j  PW=pass111 # c2jinmzmu64 store
+rob_dev_cc: --tags @volusion --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=ff USR=nhr9mm6m5l  PW=pass111  # hd9glvtoauago
+rob_dev_sc: --tags @volusion --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yh95ws85j  PW=pass111 # c2jinmzmu64 store
 rob_dev_staging: --tags @filter_change_order_status --guess VERBOSE=true HEALTHCHECK=false URL=staging BROWSER=ff USR=hm5u7jvga4hl PW=pass111 #nhr9mm6m5l
 rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=chrome USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ie USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
@@ -11,7 +11,7 @@ rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=
 #details_placeholders
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
-eli_dev: --tags @wp_bvt_envelopes --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=win10ff1000 PW=pass111
+eli_dev: --tags @wp_shipping_label_regression   --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=win10ff1000 PW=pass111
 ray_dev: --tags @import_orders --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=webpost_0017 PW=pass111
 eva_dev: --tags   @details_panel --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=ss_cctest3 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
@@ -23,7 +23,10 @@ orders_authentication_stg: --tags @orders_authentication --guess VERBOSE=false H
 orders_authentication_cc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=bz9005j1r2jx0 PW=pass111
 orders_authentication_sc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff USR=jes9t1kus PW=pass111
 orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff USR=jes9t1kus PW=pass111
+print_cc: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=true USR=mi9m76jlbgya PW=pass111
+
 # Stores
+yahoo: --tags @yahoo --guess VERBOSE=false HEALTHCHECK=true
 threedcart: --tags @3dcart --guess VERBOSE=false HEALTHCHECK=true 
 shopify: --tags @shopify --guess VERBOSE=false HEALTHCHECK=true 
 etsy: --tags @etsy --guess VERBOSE=false HEALTHCHECK=true 
@@ -34,7 +37,6 @@ amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 
-XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 #eln5mw78g for general setting autofund testing in sc
 grid_column_order: --tags @grid_column_order --guess VERBOSE=false HEALTHCHECK=true
@@ -217,5 +219,92 @@ wp_envelope_12: --tags  @wp_envelope_12 --guess VERBOSE=false HEALTHCHECK=true
 wp_shipping_label_preview_panel_options: --tags  @wp_shipping_label_preview_panel_options --guess VERBOSE=false HEALTHCHECK=true
 wp_forgot_username: --tags  @wp_forgot_username --guess VERBOSE=false HEALTHCHECK=true
 wp_forgot_password: --tags  @wp_forgot_password --guess VERBOSE=false HEALTHCHECK=true
+
+wp_shipping_label_5x8_fcm_large_envelope: --tags  @wp_shipping_label_5x8_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_fcm_package: --tags  @wp_shipping_label_5x8_fcm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_mm_package: --tags  @wp_shipping_label_5x8_mm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_fr_envelope: --tags  @wp_shipping_label_5x8_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_large_box: --tags  @wp_shipping_label_5x8_pm_large_box --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_large_envelope: --tags  @wp_shipping_label_5x8_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_large_package: --tags  @wp_shipping_label_5x8_pm_large_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_lfr_envelope: --tags  @wp_shipping_label_5x8_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_medium_box: --tags  @wp_shipping_label_5x8_pm_medium_box --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_package: --tags  @wp_shipping_label_5x8_pm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_pfr_envelope: --tags  @wp_shipping_label_5x8_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_regional_box_a: --tags  @wp_shipping_label_5x8_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_regional_box_b: --tags  @wp_shipping_label_5x8_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_pm_small_box: --tags  @wp_shipping_label_5x8_pm_small_box --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_psg_large_package: --tags  @wp_shipping_label_5x8_psg_large_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_psg_oversized_package: --tags  @wp_shipping_label_5x8_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_psg_package: --tags  @wp_shipping_label_5x8_psg_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_xm_fr_envelope: --tags  @wp_shipping_label_5x8_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_xm_lfr_envelope: --tags  @wp_shipping_label_5x8_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_xm_package: --tags  @wp_shipping_label_5x8_xm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_5x8_xm_pfr_envelope: --tags  @wp_shipping_label_5x8_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_fcm_large_envelope: --tags  @wp_shipping_label_8x11_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_fcm_package: --tags  @wp_shipping_label_8x11_fcm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_mm_package: --tags  @wp_shipping_label_8x11_mm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_fr_envelope: --tags  @wp_shipping_label_8x11_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_large_box: --tags  @wp_shipping_label_8x11_pm_large_box --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_large_envelope: --tags  @wp_shipping_label_8x11_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_large_package: --tags  @wp_shipping_label_8x11_pm_large_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_lfr_envelope: --tags  @wp_shipping_label_8x11_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_medium_box: --tags  @wp_shipping_label_8x11_pm_medium_box --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_package: --tags  @wp_shipping_label_8x11_pm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_pfr_envelope: --tags  @wp_shipping_label_8x11_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_regional_box_a: --tags  @wp_shipping_label_8x11_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_regional_box_b: --tags  @wp_shipping_label_8x11_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_pm_small_box: --tags  @wp_shipping_label_8x11_pm_small_box --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_psg_large_package: --tags  @wp_shipping_label_8x11_psg_large_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_psg_oversized_package: --tags  @wp_shipping_label_8x11_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_psg_package: --tags  @wp_shipping_label_8x11_psg_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_xm_fr_envelope: --tags  @wp_shipping_label_8x11_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_xm_lfr_envelope: --tags  @wp_shipping_label_8x11_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_xm_package: --tags  @wp_shipping_label_8x11_xm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_8x11_xm_pfr_envelope: --tags  @wp_shipping_label_8x11_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_fcm_large_envelope: --tags  @wp_shipping_label_sdc1200_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_fcm_package: --tags  @wp_shipping_label_sdc1200_fcm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_mm_package: --tags  @wp_shipping_label_sdc1200_mm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_fr_envelope: --tags  @wp_shipping_label_sdc1200_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_large_box: --tags  @wp_shipping_label_sdc1200_pm_large_box --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_large_envelope: --tags  @wp_shipping_label_sdc1200_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_large_package: --tags  @wp_shipping_label_sdc1200_pm_large_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_lfr_envelope: --tags  @wp_shipping_label_sdc1200_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_medium_box: --tags  @wp_shipping_label_sdc1200_pm_medium_box --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_package: --tags  @wp_shipping_label_sdc1200_pm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_pfr_envelope: --tags  @wp_shipping_label_sdc1200_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_regional_box_a: --tags  @wp_shipping_label_sdc1200_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_regional_box_b: --tags  @wp_shipping_label_sdc1200_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_pm_small_box: --tags  @wp_shipping_label_sdc1200_pm_small_box --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_psg_large_package: --tags  @wp_shipping_label_sdc1200_psg_large_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_psg_oversized_package: --tags  @wp_shipping_label_sdc1200_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_psg_package: --tags  @wp_shipping_label_sdc1200_psg_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_xm_fr_envelope: --tags  @wp_shipping_label_sdc1200_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_xm_lfr_envelope: --tags  @wp_shipping_label_sdc1200_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_xm_package: --tags  @wp_shipping_label_sdc1200_xm_package --guess VERBOSE=false HEALTHCHECK=true
+wp_shipping_label_sdc1200_xm_pfr_envelope: --tags  @wp_shipping_label_sdc1200_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+
+wp_stamps_a_series_calculate: --tags  @wp_stamps_a_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_a_series_specify: --tags  @wp_stamps_a_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_b_series_calculate: --tags  @wp_stamps_b_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_b_series_specify: --tags  @wp_stamps_b_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_c_series_calculate: --tags  @wp_stamps_c_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_c_series_specify: --tags  @wp_stamps_c_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_k_series_calculate: --tags  @wp_stamps_k_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_k_series_specify: --tags  @wp_stamps_k_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_l_series_calculate: --tags  @wp_stamps_l_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_l_series_specify: --tags  @wp_stamps_l_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_ml_series_calculate: --tags  @wp_stamps_ml_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_ml_series_specify: --tags  @wp_stamps_ml_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_p_series_calculate: --tags  @wp_stamps_p_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_p_series_specify: --tags  @wp_stamps_p_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_r_series_calculate: --tags  @wp_stamps_r_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_r_series_specify: --tags  @wp_stamps_r_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_s_series_calculate: --tags  @wp_stamps_s_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_s_series_specify: --tags  @wp_stamps_s_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_v_series_calculate: --tags  @wp_stamps_v_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_v_series_specify: --tags  @wp_stamps_v_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_wn_series_calculate: --tags  @wp_stamps_wn_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_wn_series_specify: --tags  @wp_stamps_wn_series_specify --guess VERBOSE=false HEALTHCHECK=true
 
 

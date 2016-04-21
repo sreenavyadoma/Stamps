@@ -13,9 +13,6 @@ Then /^Yahoo Store: Set First Order ID to Import to (.*)$/ do |order_id|
   @store.first_order_id_to_import.set order_id
 end
 
-
-
-
 Then /^Yahoo Store: Test Connection$/ do
   log.info "Yahoo Store: Test Connection"
   @store.test_connection
@@ -24,14 +21,13 @@ end
 Then /^Yahoo Store: Connect$/ do
   log.info "Yahoo Store: Connect"
   @store_settings = @store.connect
+  log.info @store_settings.present?
 end
 
-
-
-
-Then /^Yahoo Store:zx Connect$/ do
-  log.info "Yahoo Store: Set Order Source to Yahoo.com"
-  @store.order_source.amazon
+Then /^Yahoo Store: Reconnect$/ do
+  log.info "Yahoo Store: Reconnect"
+  @store_settings = @store.reconnect
+  log.info @store_settings.present?
 end
 
 Then /^Yahoo Store: Set Order Source to Non-Yahoo$/ do

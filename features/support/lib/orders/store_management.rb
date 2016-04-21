@@ -41,8 +41,6 @@ module Orders
           break if button.present?
         end
 
-        stop_test "Delete Store Modal is not present." unless button.present?
-
         5.times do
           button.safe_click
           button.safe_click
@@ -159,70 +157,22 @@ module Orders
         server_error = Orders::Stores::ServerError.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
-        10.times do
+        15.times do
           button.safe_click
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
+          5.times do
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if server_error.present?
+              error_str = server_error.message
+              log.info error_str
+              server_error.ok
+              stop_test "Server Error: \n#{error_msg}"
+            end
+            break unless present?
           end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-
-          break unless present? && server_error.present?
+          break unless present?
         end
       end
 
@@ -231,7 +181,7 @@ module Orders
       end
 
       def store_nickname
-        StampsTextbox.new (@browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last
+        StampsTextbox.new ((@browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
       end
 
       def automatically_import_new_orders
@@ -426,7 +376,7 @@ module Orders
         end
 
         def delete_all
-          del_btn = self.delete
+          del_btn = delete
           delete_modal = DeleteStoreModal.new @browser
           stores_grid = @browser.divs(css: "div[class*='x-grid-item-container']").last
           tables = stores_grid.tables
@@ -434,38 +384,41 @@ module Orders
           log.info "Manage Stores:  Number of items in Grid #{grid_size}"
 
           if grid_size > 1
-            0.upto grid_size do
-              tables.each_with_index do |table, index|
-                begin
-                  div = table.tbody.tr.tds[1].div
-                  grid_item_name = browser_helper.text div
+            0.upto grid_size do |index|
+              row_to_delete = 0
+              begin
+                row = StampsLabel.new tables[row_to_delete]
+                grid_item_name = browser_helper.text row
+                log.info "#{index} Delete Item - #{grid_item_name}"
+
+                if grid_item_name.include? "Manual Orders"
+                  log.info "#{index} Skipping #{grid_item_name}"
+                  row = StampsLabel.new tables[row_to_delete+1]
+                  grid_item_name = browser_helper.text row
                   log.info "#{index} Delete Item - #{grid_item_name}"
-                  if grid_item_name.include? "Manual Orders"
-                    log.info "#{index} Skipping #{grid_item_name}"
-                  else
-                    checkbox = StampsCheckbox.new div, table, "class", "selected"
-                    3.times do
-                      checkbox.check
-                      sleep 1
-                      del_btn.safe_click
-                      delete_modal.delete
-                      delete_modal.delete
-                      sleep 1
-                      break unless delete_modal.present?
-                      break unless delete_modal.present?
-                    end
-                    log.info "#{index} Delete #{(checkbox.present?)?"Failed":"Successful"}"
-                  end
-                rescue
-                  log.info "#{index} Skipping..."
                 end
 
-                stores_grid = @browser.divs(css: "div[class*='x-grid-item-container']").last
-                tables = stores_grid.tables
-                grid_size = tables.size
-                log.info "Manage Stores: Number of items in Grid is #{grid_size}"
+                3.times do
+                  row.safe_click
+                  row.safe_click
+                  row.safe_click
+                  row.safe_click
+                  sleep 1
+                  del_btn.safe_click
+                  sleep 1
+                  delete_modal.delete
+                  break unless delete_modal.present?
+                end
+                log.info "#{index} Delete #{(checkbox.present?)?"Failed":"Successful"}"
+              rescue
+                log.info "#{index} Skipping..."
               end
 
+              stores_grid = @browser.divs(css: "div[class*='x-grid-item-container']").last
+              tables = stores_grid.tables
+              grid_size = tables.size
+              log.info "Manage Stores: Number of items in Grid is #{grid_size}"
+              break if grid_size == 1
             end
           end
         end
@@ -568,31 +521,20 @@ module Orders
             log.info server_error.message
             server_error.ok
           end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          sleep 1
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
-          end
-          if server_error.present?
-            log.info server_error.message
-            server_error.ok
+          5.times do
+            if server_error.present?
+              error_str = server_error.message
+              log.info error_str
+              server_error.ok
+              stop_test "Server Error: \n#{error_msg}"
+            end
+            return rakuten if rakuten.present?
+            return volusion if volusion.present?
+            return amazon if amazon.present?
+            return etsy if etsy.present?
+            return shopify if shopify.present?
+            return three_d_cart if three_d_cart.present?
+            return yahoo if yahoo.present?
           end
           return rakuten if rakuten.present?
           return volusion if volusion.present?
