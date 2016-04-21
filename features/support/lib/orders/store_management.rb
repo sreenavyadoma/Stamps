@@ -383,30 +383,33 @@ module Orders
           grid_size = tables.size
           log.info "Manage Stores:  Number of items in Grid #{grid_size}"
 
-          row_to_delete = 0
           if grid_size > 1
             0.upto grid_size do |index|
+              row_to_delete = 0
               begin
                 row = StampsLabel.new tables[row_to_delete]
                 grid_item_name = browser_helper.text row
                 log.info "#{index} Delete Item - #{grid_item_name}"
+
                 if grid_item_name.include? "Manual Orders"
                   log.info "#{index} Skipping #{grid_item_name}"
-                  row_to_delete = row_to_delete + 1
-                else
-                  3.times do
-                    row.safe_click
-                    row.safe_click
-                    row.safe_click
-                    row.safe_click
-                    sleep 1
-                    del_btn.safe_click
-                    sleep 1
-                    delete_modal.delete
-                    break unless delete_modal.present?
-                  end
-                  log.info "#{index} Delete #{(checkbox.present?)?"Failed":"Successful"}"
+                  row = StampsLabel.new tables[row_to_delete+1]
+                  grid_item_name = browser_helper.text row
+                  log.info "#{index} Delete Item - #{grid_item_name}"
                 end
+
+                3.times do
+                  row.safe_click
+                  row.safe_click
+                  row.safe_click
+                  row.safe_click
+                  sleep 1
+                  del_btn.safe_click
+                  sleep 1
+                  delete_modal.delete
+                  break unless delete_modal.present?
+                end
+                log.info "#{index} Delete #{(checkbox.present?)?"Failed":"Successful"}"
               rescue
                 log.info "#{index} Skipping..."
               end
@@ -415,6 +418,7 @@ module Orders
               tables = stores_grid.tables
               grid_size = tables.size
               log.info "Manage Stores: Number of items in Grid is #{grid_size}"
+              break if grid_size == 1
             end
           end
         end
@@ -516,9 +520,7 @@ module Orders
           if server_error.present?
             log.info server_error.message
             server_error.ok
-
           end
-
           5.times do
             if server_error.present?
               error_str = server_error.message
@@ -526,7 +528,6 @@ module Orders
               server_error.ok
               stop_test "Server Error: \n#{error_msg}"
             end
-
             return rakuten if rakuten.present?
             return volusion if volusion.present?
             return amazon if amazon.present?
@@ -535,7 +536,6 @@ module Orders
             return three_d_cart if three_d_cart.present?
             return yahoo if yahoo.present?
           end
-
           return rakuten if rakuten.present?
           return volusion if volusion.present?
           return amazon if amazon.present?
