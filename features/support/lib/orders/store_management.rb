@@ -383,35 +383,38 @@ module Orders
           grid_size = tables.size
           log.info "Manage Stores:  Number of items in Grid #{grid_size}"
 
+          row_to_delete = 0
           if grid_size > 1
-            for row in 1..(grid_size)
+            0.upto grid_size do |index|
               begin
-                grid_item_name = browser_helper.text tables[row]
-                log.info "#{row} Delete Item - #{grid_item_name}"
+                row = StampsLabel.new tables[row_to_delete]
+                grid_item_name = browser_helper.text row
+                log.info "#{index} Delete Item - #{grid_item_name}"
                 if grid_item_name.include? "Manual Orders"
                   log.info "#{index} Skipping #{grid_item_name}"
+                  row_to_delete = row_to_delete + 1
                 else
                   3.times do
-                    tables[row].click
-                    tables[row].click
-                    tables[row].double_click
+                    row.safe_click
+                    row.safe_click
+                    row.safe_click
+                    row.safe_click
                     sleep 1
                     del_btn.safe_click
+                    sleep 1
                     delete_modal.delete
-                    delete_modal.delete
-                    break unless delete_modal.present?
                     break unless delete_modal.present?
                   end
+                  log.info "#{index} Delete #{(checkbox.present?)?"Failed":"Successful"}"
                 end
               rescue
                 log.info "#{index} Skipping..."
               end
+
+              stores_grid = @browser.divs(css: "div[class*='x-grid-item-container']").last
               tables = stores_grid.tables
-              # stores_grid = @browser.divs(css: "div[class*='x-grid-item-container']").last
-              # tables = stores_grid.tables
-              # grid_size = tables.size
-              # log.info "Manage Stores: Number of items in Grid is #{grid_size}"
-              # break if grid_size == 1
+              grid_size = tables.size
+              log.info "Manage Stores: Number of items in Grid is #{grid_size}"
             end
           end
         end
