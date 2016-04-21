@@ -26,7 +26,17 @@ Feature:  Yahoo Store Management
       Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
 
+      Then Manage Stores: Close Modal
+
       Then Toolbar: Refresh Orders
+      Then Toolbar: Refresh Orders
+      Then Grid: Check Order ID 637
+      Then Toolbar: Refresh Orders
+      Then Filter: Select Shipped
+      Then Filter: Select Awaiting Shipment
+      Then Grid: Expect Store Name to be random
+
+      Then Manage Stores: Open Modal
 
       # Reconnect Store
       Then Manage Stores: Select Store random
@@ -38,15 +48,36 @@ Feature:  Yahoo Store Management
       Then Yahoo Store: Test Connection
       Then Yahoo Store: Reconnect
 
-#      # Edit Store
-#      Then Manage Stores: Select Store random
-#      Then Manage Stores: Edit
-#
-#      Then Store Settings: Set Store Nickname to random
-#
-#      Then Store Settings: Set Automatically Import New Orders to checked
-#      Then Store Settings: Save
-#      Then Toolbar: Refresh Orders
+      Then Manage Stores: Close Modal
+
+      Then Toolbar: Refresh Orders
+      Then Toolbar: Refresh Orders
+      Then Grid: Check Order ID 637
+      Then Toolbar: Refresh Orders
+      Then Filter: Select Shipped
+      Then Filter: Select Awaiting Shipment
+      Then Grid: Expect Store Name to be random
+
+      Then Manage Stores: Open Modal
+
+      # Edit Store
+      Then Manage Stores: Select Store random
+      Then Manage Stores: Edit
+
+      Then Store Settings: Set Store Nickname to random
+      Then Store Settings: Save
+
+      Then Manage Stores: Close Modal
+
+      Then Toolbar: Refresh Orders
+      Then Toolbar: Refresh Orders
+      Then Grid: Check Order ID 637
+      Then Toolbar: Refresh Orders
+      Then Filter: Select Shipped
+      Then Filter: Select Awaiting Shipment
+      Then Grid: Expect Store Name to be random
+
+      Then Manage Stores: Open Modal
 
       Then Manage Stores: Delete All Stores
       Then Manage Stores: Close Modal

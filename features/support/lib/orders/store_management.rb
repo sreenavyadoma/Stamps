@@ -348,7 +348,7 @@ module Orders
         end
 
         def delete
-          StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(4)>span>span>span[id$=btnInnerEl]")
+          StampsButton.new (@browser.spans(text: "Delete").last)
         end
 
         def delete_name name
@@ -405,11 +405,12 @@ module Orders
                   row.safe_click
                   sleep 1
                   del_btn.safe_click
+                  break unless delete_modal.present?
+                  break unless delete_modal.present?
                   sleep 1
                   delete_modal.delete
                   break unless delete_modal.present?
                 end
-                log.info "#{index} Delete #{(checkbox.present?)?"Failed":"Successful"}"
               rescue
                 log.info "#{index} Skipping..."
               end
