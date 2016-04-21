@@ -482,22 +482,24 @@ module Orders
 
       def edit
         button = StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(2)>span>span>span[id$=btnInnerEl]")
-        rakuten_settings = RakutenSettings.new @browser
-        amazon_settings = AmazonSettings.new @browser
-        volusion_settings = VolusionSettings.new @browser
-        etsy_settings = EtsySettings.new @browser
-        shopify_settings = ShopifySettings.new @browser
-        three_d_cart_settings = ThreeDCartSettings.new @browser
+        rakuten = RakutenSettings.new @browser
+        amazon = AmazonSettings.new @browser
+        volusion = VolusionSettings.new @browser
+        etsy = EtsySettings.new @browser
+        shopify = ShopifySettings.new @browser
+        three_d_cart = ThreeDCartSettings.new @browser
+        yahoo = YahooSettings.new @browser
 
         10.times do
           button.safe_click
           sleep 2
-          return rakuten_settings if rakuten_settings.present?
-          return amazon_settings if amazon_settings.present?
-          return volusion_settings if volusion_settings.present?
-          return etsy_settings if etsy_settings.present?
-          return shopify_settings if shopify_settings.present?
-          return three_d_cart_settings if three_d_cart_settings.present?
+          return rakuten if rakuten.present?
+          return amazon if amazon.present?
+          return volusion if volusion.present?
+          return etsy if etsy.present?
+          return shopify if shopify.present?
+          return three_d_cart if three_d_cart.present?
+          return yahoo if yahoo.present?
         end
       end
 
