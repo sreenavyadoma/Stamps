@@ -41,13 +41,11 @@ Feature:  Yahoo Store Management
       # Reconnect Store
       Then Manage Stores: Select Store random
       Then Manage Stores: Reconnect
-
       Then Yahoo Store: Set Yahoo Store ID to yhst-143052023869418
       Then Yahoo Store: Set Partner Store Contract Token to 1.0_DLe5kels_wFcqVu33hTVLwqMAmGWerWagQ2RLZWbffEomPbeqdfCKZigaJ6FXO_3YcnJtQO.NCMVh9lBJY5gW_iE0oaFSipcty3sjnnx8wP6bgxlwIn.brtFnT8hRUY3srmZFIXJZA--
       Then Yahoo Store: Set First Order ID to Import to 637
       Then Yahoo Store: Test Connection
       Then Yahoo Store: Reconnect
-
       Then Manage Stores: Close Modal
 
       Then Toolbar: Refresh Orders
