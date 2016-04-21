@@ -186,7 +186,7 @@ module Orders
 
       def automatically_import_new_orders
         label = (@browser.label text: "Automatically Import New Orders")
-        checkbox_field = label.parent.span
+        checkbox_field = label.parent.input
         verify_field = label.parent.parent.parent
         StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
