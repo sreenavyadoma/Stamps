@@ -56,6 +56,7 @@ module Orders
         server_error = Orders::Stores::ServerError.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
+        sleep 2
         10.times do
           button.safe_click
           3.times do
@@ -73,7 +74,7 @@ module Orders
           end
           return settings if settings.present?
         end
-        stop_test "Shopify Store Connect failed.  Settings Modal did not open.  "
+        stop_test "Yahoo Store Connect failed.  Settings Modal did not open.  "
       end
 
       def reconnect
