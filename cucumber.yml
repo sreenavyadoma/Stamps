@@ -26,6 +26,7 @@ orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALT
 print_cc: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=true USR=mi9m76jlbgya PW=pass111
 
 # Stores
+yahoo: --tags @yahoo --guess VERBOSE=false HEALTHCHECK=true
 threedcart: --tags @3dcart --guess VERBOSE=false HEALTHCHECK=true 
 shopify: --tags @shopify --guess VERBOSE=false HEALTHCHECK=true 
 etsy: --tags @etsy --guess VERBOSE=false HEALTHCHECK=true 
@@ -36,7 +37,6 @@ amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 
-XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 #eln5mw78g for general setting autofund testing in sc
 grid_column_order: --tags @grid_column_order --guess VERBOSE=false HEALTHCHECK=true

@@ -1,5 +1,5 @@
 
-Feature:  Amazon Store Management
+Feature:  Yahoo Store Management
 
   Background:
     Given I am signed in to Orders
