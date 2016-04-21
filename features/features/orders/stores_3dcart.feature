@@ -7,7 +7,7 @@ Feature:  3dcart Store Management
     @3dcart
     Scenario: Store Management - 3dcart Store
       Then Manage Stores: Open Modal
-      Then Manage Stores: Delete All Stores in Grid
+      Then Manage Stores: Delete All Stores
 
       # Add Store
       Then Manage Stores: Add

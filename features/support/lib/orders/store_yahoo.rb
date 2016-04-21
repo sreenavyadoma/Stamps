@@ -95,7 +95,7 @@ module Orders
               server_error.ok
               stop_test "Server Error: \n#{error_msg}"
             end
-            return settings if settings.present?
+            return manage_stores if manage_stores.present?
           end
           return manage_stores if manage_stores.present?
         end

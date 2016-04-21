@@ -1,5 +1,5 @@
 
-Feature:  Amazon Store Management
+Feature:  Yahoo Store Management
 
   Background:
     Given I am signed in to Orders
@@ -7,7 +7,8 @@ Feature:  Amazon Store Management
     @yahoo
     Scenario: Yahoo Store
       Then Manage Stores: Open Modal
-      Then Manage Stores: Delete All Stores in Grid
+      # Delete stores
+      Then Manage Stores: Delete All Stores
 
       # Add Store
       Then Manage Stores: Add
@@ -47,7 +48,7 @@ Feature:  Amazon Store Management
 #      Then Store Settings: Save
 #      Then Toolbar: Refresh Orders
 
-      Then Manage Stores: Delete All Stores in Grid
+      Then Manage Stores: Delete All Stores
       Then Manage Stores: Close Modal
       Then Sign out
 

@@ -7,7 +7,7 @@ Feature:  Shopify Store Management
     @shopify
     Scenario: Store Management - Shopify Store
       Then Manage Stores: Open Modal
-      Then Manage Stores: Delete All Stores in Grid
+      Then Manage Stores: Delete All Stores
 
       # Add Store
       Then Manage Stores: Add
@@ -49,7 +49,7 @@ Feature:  Shopify Store Management
       Then Toolbar: Refresh Orders
 
       # Delete All Stores
-      Then Manage Stores: Delete All Stores in Grid
+      Then Manage Stores: Delete All Stores
 
       Then Manage Stores: Close Modal
       Then Sign out

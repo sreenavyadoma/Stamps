@@ -46,8 +46,8 @@ Then /^Manage Stores: Select Store (.*)$/ do |store_name|
   @manage_stores.stores_grid.select @store_name
 end
 
-Then /^Manage Stores: Delete All Stores in Grid$/ do
-  log.info "Manage Stores: Delete All Stores in Grid"
+Then /^Manage Stores: Delete All Stores$/ do
+  log.info "Manage Stores: Delete All Stores"
   @manage_stores.stores_grid.delete_all
 end
 

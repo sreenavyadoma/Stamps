@@ -7,7 +7,7 @@ Feature:  Volusion Store Management
     @volusion
     Scenario: Store Management - Volusion Store
       Then Manage Stores: Open Modal
-      Then Manage Stores: Delete All Stores in Grid
+      Then Manage Stores: Delete All Stores
 
       # Add Store
       Then Manage Stores: Add
@@ -52,7 +52,7 @@ Feature:  Volusion Store Management
       Then Toolbar: Refresh Orders
 
       # Delete All Stores
-      Then Manage Stores: Delete All Stores in Grid
+      Then Manage Stores: Delete All Stores
 
       Then Manage Stores: Close Modal
       Then Pause for 1 second
