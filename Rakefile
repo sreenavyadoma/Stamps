@@ -1218,17 +1218,112 @@ Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_fr_envelope) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_lfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:wp_stamps_a_series_calculate) do |t|
+  t.profile = 'wp_stamps_a_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_package) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_xm_package'
+Cucumber::Rake::Task.new(:wp_stamps_a_series_specify) do |t|
+  t.profile = 'wp_stamps_a_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_pfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:wp_stamps_b_series_calculate) do |t|
+  t.profile = 'wp_stamps_b_series_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_b_series_specify) do |t|
+  t.profile = 'wp_stamps_b_series_specify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_c_series_calculate) do |t|
+  t.profile = 'wp_stamps_c_series_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_c_series_specify) do |t|
+  t.profile = 'wp_stamps_c_series_specify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_k_series_calculate) do |t|
+  t.profile = 'wp_stamps_k_series_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_k_series_specify) do |t|
+  t.profile = 'wp_stamps_k_series_specify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_l_series_calculate) do |t|
+  t.profile = 'wp_stamps_l_series_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_l_series_specify) do |t|
+  t.profile = 'wp_stamps_l_series_specify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_ml_series_calculate) do |t|
+  t.profile = 'wp_stamps_ml_series_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_ml_series_specify) do |t|
+  t.profile = 'wp_stamps_ml_series_specify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_p_series_calculate) do |t|
+  t.profile = 'wp_stamps_p_series_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_p_series_specify) do |t|
+  t.profile = 'wp_stamps_p_series_specify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_r_series_calculate) do |t|
+  t.profile = 'wp_stamps_r_series_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_r_series_specify) do |t|
+  t.profile = 'wp_stamps_r_series_specify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_s_series_calculate) do |t|
+  t.profile = 'wp_stamps_s_series_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_s_series_specify) do |t|
+  t.profile = 'wp_stamps_s_series_specify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_v_series_calculate) do |t|
+  t.profile = 'wp_stamps_v_series_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_v_series_specify) do |t|
+  t.profile = 'wp_stamps_v_series_specify'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_wn_series_calculate) do |t|
+  t.profile = 'wp_stamps_wn_series_calculate'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_stamps_wn_series_specify) do |t|
+  t.profile = 'wp_stamps_wn_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end

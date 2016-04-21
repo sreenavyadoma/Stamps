@@ -284,6 +284,27 @@ wp_shipping_label_sdc1200_xm_lfr_envelope: --tags  @wp_shipping_label_sdc1200_xm
 wp_shipping_label_sdc1200_xm_package: --tags  @wp_shipping_label_sdc1200_xm_package --guess VERBOSE=false HEALTHCHECK=true
 wp_shipping_label_sdc1200_xm_pfr_envelope: --tags  @wp_shipping_label_sdc1200_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=true
 
-
+wp_stamps_a_series_calculate: --tags  @wp_stamps_a_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_a_series_specify: --tags  @wp_stamps_a_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_b_series_calculate: --tags  @wp_stamps_b_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_b_series_specify: --tags  @wp_stamps_b_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_c_series_calculate: --tags  @wp_stamps_c_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_c_series_specify: --tags  @wp_stamps_c_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_k_series_calculate: --tags  @wp_stamps_k_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_k_series_specify: --tags  @wp_stamps_k_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_l_series_calculate: --tags  @wp_stamps_l_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_l_series_specify: --tags  @wp_stamps_l_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_ml_series_calculate: --tags  @wp_stamps_ml_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_ml_series_specify: --tags  @wp_stamps_ml_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_p_series_calculate: --tags  @wp_stamps_p_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_p_series_specify: --tags  @wp_stamps_p_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_r_series_calculate: --tags  @wp_stamps_r_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_r_series_specify: --tags  @wp_stamps_r_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_s_series_calculate: --tags  @wp_stamps_s_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_s_series_specify: --tags  @wp_stamps_s_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_v_series_calculate: --tags  @wp_stamps_v_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_v_series_specify: --tags  @wp_stamps_v_series_specify --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_wn_series_calculate: --tags  @wp_stamps_wn_series_calculate --guess VERBOSE=false HEALTHCHECK=true
+wp_stamps_wn_series_specify: --tags  @wp_stamps_wn_series_specify --guess VERBOSE=false HEALTHCHECK=true
 
 
