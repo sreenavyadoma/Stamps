@@ -1,5 +1,5 @@
 module Print
-  class SignInPage < StampsWebApps
+  class SignInModal < StampsWebApps
 
     def sign_in *args
       visit :print_postage
