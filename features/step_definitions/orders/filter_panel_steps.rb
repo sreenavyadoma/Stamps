@@ -14,6 +14,43 @@ Then /^Filter: Select Cancelled$/ do
   orders.filter.cancelled
 end
 
+Then /^Filter: Expect order moved to Shipped$/ do
+  log.info "Filter: Expect order moved to Shipped"
+  grid = orders.filter.shipped
+  grid.order_date.menu.sort_descending
+  row = grid.order_id.row_num @order_id
+  log.info "Test #{(row > 0)?"Passed":"Failed"}"
+  row.should be > 0
+end
+
+Then /^Filter: Expect order moved to Canceled$/ do
+  log.info "Filter: Expect order moved to Canceled"
+  grid = orders.filter.cancelled
+  grid.order_date.menu.sort_descending
+  row = grid.order_id.row_num @order_id
+  log.info "Test #{(row > 0)?"Passed":"Failed"}"
+  row.should be > 0
+end
+
+Then /^Filter: Move order to Awaiting Shipment$/ do
+  log.info "Move order to Awaiting Shipmen"
+  grid = orders.grid
+  raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
+  grid.order_date.menu.sort_descending
+  grid.checkbox.check_order_id @order_id
+  grid.toolbar.move.to_awaiting_shipment.cancel
+  grid.toolbar.move.to_awaiting_shipment.move
+end
+
+Then /^Filter: Expect order moved to Awaiting Shipment$/ do
+  log.info "Filter: Expect order moved to Awaiting Shipment"
+  grid = orders.filter.awaiting_shipment
+  grid.order_date.menu.sort_descending
+  row = grid.order_id.row_num @order_id
+  log.info "Test #{(row > 0)?"Passed":"Failed"}"
+  row.should be > 0
+end
+
 Then /^Expect Awaiting Shipment count to be less by (\d+)$/ do |count|
   log.info "Step: Expect Awaiting Shipment count to be less by #{count}"
   awaiting_shipment_count = orders.filter.awaiting_shipment_count

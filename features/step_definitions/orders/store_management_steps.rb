@@ -1,3 +1,5 @@
+
+
 Then /^Manage Stores: Open Modal$/ do
   log.info "Manage Stores: Open Modal"
   @manage_stores = orders.toolbar.settings.manage_stores

@@ -59,14 +59,45 @@ module Orders
               server_error.ok
               stop_test "Server Error: \n#{error_msg}"
             end
-            return settings if settings.present?
+            break unless present?
           end
-          return settings if settings.present?
+          begin
+            return settings if settings.present?
+          end unless present?
         end
 
         self.close if self.present?
         stop_test server_error.message if server_error.present?
         settings
+      end
+
+      def reconnect
+        button = connect_button
+        manage_stores = ManageStores.new @browser
+        server_error = Orders::Stores::ServerError.new @browser
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
+
+        20.times do
+          button.safe_click
+          5.times do
+            if importing_order.present?
+              log.info importing_order.message
+              importing_order.ok
+            end
+            if server_error.present?
+              error_str = server_error.message
+              log.info error_str
+              server_error.ok
+              stop_test "Server Error: \n#{error_msg}"
+            end
+            break unless present?
+          end
+          begin
+            return manage_stores if manage_stores.present?
+          end unless present?
+        end
+
+
       end
     end
 

@@ -30,11 +30,7 @@ Feature:  Volusion Store Management
 
       Then Volusion Store: Set Volusion API to http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
       Then Volusion Store: Test Connection
-      Then Volusion Store: Connect
-
-      Then Store Settings: Set Store Nickname to random
-      Then Store Settings: Set Automatically Import New Orders to checked
-      Then Store Settings: Save
+      Then Volusion Store: Reconnect
 
       # Edit Store
       Then Manage Stores: Select Store random
