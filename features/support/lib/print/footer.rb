@@ -44,6 +44,10 @@ module Print
         StampsButton.new @browser.a :css => "a[class*=sdc-printpanel-printpostagebtn]"
       end
 
+      def sample_button
+        StampsButton.new @browser.a :css => "a[class*=sdc-printpanel-printsamplebtn]"
+      end
+
       def open_window window
         return window if window.present?
         print = print_button
