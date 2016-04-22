@@ -186,7 +186,7 @@ module Orders
 
       def automatically_import_new_orders
         label = (@browser.label text: "Automatically Import New Orders")
-        checkbox_field = label.parent.span
+        checkbox_field = label.parent.input
         verify_field = label.parent.parent.parent
         StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
@@ -348,7 +348,7 @@ module Orders
         end
 
         def delete
-          StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(4)>span>span>span[id$=btnInnerEl]")
+          StampsButton.new (@browser.spans(text: "Delete").last)
         end
 
         def delete_name name
@@ -405,11 +405,12 @@ module Orders
                   row.safe_click
                   sleep 1
                   del_btn.safe_click
+                  break unless delete_modal.present?
+                  break unless delete_modal.present?
                   sleep 1
                   delete_modal.delete
                   break unless delete_modal.present?
                 end
-                log.info "#{index} Delete #{(checkbox.present?)?"Failed":"Successful"}"
               rescue
                 log.info "#{index} Skipping..."
               end
@@ -482,22 +483,24 @@ module Orders
 
       def edit
         button = StampsButton.new @browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(2)>span>span>span[id$=btnInnerEl]")
-        rakuten_settings = RakutenSettings.new @browser
-        amazon_settings = AmazonSettings.new @browser
-        volusion_settings = VolusionSettings.new @browser
-        etsy_settings = EtsySettings.new @browser
-        shopify_settings = ShopifySettings.new @browser
-        three_d_cart_settings = ThreeDCartSettings.new @browser
+        rakuten = RakutenSettings.new @browser
+        amazon = AmazonSettings.new @browser
+        volusion = VolusionSettings.new @browser
+        etsy = EtsySettings.new @browser
+        shopify = ShopifySettings.new @browser
+        three_d_cart = ThreeDCartSettings.new @browser
+        yahoo = YahooSettings.new @browser
 
         10.times do
           button.safe_click
           sleep 2
-          return rakuten_settings if rakuten_settings.present?
-          return amazon_settings if amazon_settings.present?
-          return volusion_settings if volusion_settings.present?
-          return etsy_settings if etsy_settings.present?
-          return shopify_settings if shopify_settings.present?
-          return three_d_cart_settings if three_d_cart_settings.present?
+          return rakuten if rakuten.present?
+          return amazon if amazon.present?
+          return volusion if volusion.present?
+          return etsy if etsy.present?
+          return shopify if shopify.present?
+          return three_d_cart if three_d_cart.present?
+          return yahoo if yahoo.present?
         end
       end
 

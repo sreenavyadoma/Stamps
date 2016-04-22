@@ -1218,6 +1218,23 @@ Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_fr_envelope) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_lfr_envelope) do |t|
+  t.profile = 'wp_shipping_label_sdc1200_xm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_package) do |t|
+  t.profile = 'wp_shipping_label_sdc1200_xm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_pfr_envelope) do |t|
+  t.profile = 'wp_shipping_label_sdc1200_xm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+
 Cucumber::Rake::Task.new(:wp_stamps_a_series_calculate) do |t|
   t.profile = 'wp_stamps_a_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
