@@ -10,7 +10,7 @@ module Orders
       Orders::Toolbar::Toolbar.new @browser
     end
 
-    def sign_in_page
+    def sign_in
       Orders::LandingPage::SignInPage.new @browser
     end
 
