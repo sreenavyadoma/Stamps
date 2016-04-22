@@ -49,7 +49,6 @@ module Print
       end
 
 
-
       def open_window window
         return window if window.present?
         print = print_button
