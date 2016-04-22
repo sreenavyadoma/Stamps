@@ -44,6 +44,10 @@ Then /^Postage Shipping Labels: Select Service Priority Mail Medium Flat Rate Bo
   step "Postage Shipping Labels: Set Service to Priority Mail Medium Flat Rate Box"
 end
 
+Then /^Postage Shipping Labels: Select Service Priority Mail Large Flat Rate Box$/ do
+  step "Postage Shipping Labels: Set Service to Priority Mail Medium Flat Rate Box"
+end
+
 Then /^Postage Shipping Labels: Select Service Priority Mail Regional Rate Box A$/ do
   step "Postage Shipping Labels: Set Service to Priority Mail Regional Rate Box A"
 end
