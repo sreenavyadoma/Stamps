@@ -1489,9 +1489,9 @@ module Orders
         box = text_box
         button = drop_down
 
-        @orders_services ||= data_for(:orders_services, {})
+        @details_services ||= data_for(:details_services, {})
 
-        selection_field = @browser.li(id: "#{@orders_services[selection]}")
+        selection_field = @browser.li(id: "#{@details_services[selection]}")
         selection_label = StampsLabel.new selection_field
         20.times {
           begin

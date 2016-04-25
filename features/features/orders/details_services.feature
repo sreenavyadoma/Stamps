@@ -3,7 +3,7 @@ Feature:  Orders Service Selection
   Background:
     Given I am signed in to Orders
 
-  @orders_services
+  @details_services
   Scenario:  Orders Service Selection
     Then Toolbar: Add
     Then Details: Set Ship-From to default

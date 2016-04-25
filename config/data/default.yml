@@ -6,7 +6,7 @@ url_prefix:
   staging: print.staging
   rating: printext.qacc
 
-orders_services:
+details_services:
   #First-Class Mail
   # First-Class Mail Large Envelope/Flat
   First-Class Mail Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat

@@ -9,7 +9,7 @@ include RSpec::Matchers
 include DataMagic
 include RAutomation
 
-@orders_services ||= data_for(:orders_services, {})
+@details_services ||= data_for(:details_services, {})
 
 Before do  |scenario|
   @scenario_name = scenario.name
