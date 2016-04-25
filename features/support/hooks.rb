@@ -9,29 +9,7 @@ include RSpec::Matchers
 include DataMagic
 include RAutomation
 
-
-@shipping_method_map ||= Hash.new
-@shipping_method_map['USPS First-Class Mail Letter'] = "807"
-@shipping_method_map['USPS First-Class Mail Large Envelope'] = "806"
-@shipping_method_map['USPS First-Class Mail Package'] = "805"
-@shipping_method_map['USPS Priority Mail Flat Rate Envelope'] = "809"
-@shipping_method_map['USPS Priority Mail Small Flat Rate Box'] = "810"
-@shipping_method_map['USPS Media Mail'] = "802"
-@shipping_method_map['USPS Priority Mail Medium Flat Rate Box'] = "811"
-@shipping_method_map['USPS Priority Mail International Small Flat Rate Box'] = "824"
-@shipping_method_map['USPS Priority Mail International Flat Rate Envelope'] = "823"
-@shipping_method_map['USPS Priority Mail Large Flat Rate Box'] = "812"
-@shipping_method_map['USPS Priority Mail Express Flat Rate Envelope'] = "814"
-@shipping_method_map['USPS RAJ SHIPPING'] = "804"
-@shipping_method_map['USPS Priority Mail Express International Flat Rate Envelope'] = "828"
-@shipping_method_map['USPS Priority Mail'] = "808"
-@shipping_method_map['USPS Priority Mail International Medium Flat Rate Box'] = "825"
-@shipping_method_map['USPS Priority Mail International'] = "822"
-@shipping_method_map['USPS Priority Mail Express'] = "813"
-@shipping_method_map['USPS Priority Mail International Large Flat Rate Box'] = "826"
-@shipping_method_map['USPS First-Class Mail International Large Envelope'] = "820"
-@shipping_method_map['USPS First-Class Package International Service'] = "821"
-@shipping_method_map['USPS Priority Mail Express International'] = "827"
+@orders_services ||= data_for(:orders_services, {})
 
 Before do  |scenario|
   @scenario_name = scenario.name

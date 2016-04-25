@@ -12,6 +12,16 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:orders_services) do |t|
+  t.profile = 'orders_services'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:rob_dev_cc) do |t|
   t.profile = 'rob_dev_cc'
   t.cucumber_opts = "-p cuke_reports"
@@ -29,16 +39,6 @@ end
 
 Cucumber::Rake::Task.new(:eva_dev) do |t|
   t.profile = 'eva_dev'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
   t.cucumber_opts = "-p cuke_reports"
 end
 

@@ -472,11 +472,6 @@ Then /^Details: Set Height to (\d*)$/ do |value|
   orders.details.dimensions.height.set value
 end
 
-Then /^Details: Set Service to \"(.*)\"$/ do |service|
-  log.info "Step: Details: Set Service to #{service}"
-  orders.details.service.select service
-end
-
 Then /^Details: Set Ship-From to (\w+)$/ do |value|
   log.info "Step: Details: Set Ship-From to: \n #{value}"
   orders.details.ship_from.select value
@@ -1064,17 +1059,6 @@ end
 
 Then /^Verify Order Details Form Total Amount$/ do
   log.info "Step: Verify Order Details Form Total Amount"
-end
-
-Then /^Details: Expect Service to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect Service to be #{expectation}"
-  10.times do
-    actual_value = orders.details.service.text_box.text
-    break if actual_value.include? expectation
-  end
-  actual_value = orders.details.service.text_box.text
-  log.info "Test #{(actual_value.include? expectation)?"Passed":"Failed"}"
-  actual_value.should include expectation
 end
 
 Then /^Details: Expect Tracking to be \"([\w\s]*)\"$/ do |expectation|
