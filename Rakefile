@@ -1234,6 +1234,321 @@ Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_pfr_envelope) do |t|
 end
 
 
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_fcm_large_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_fcm_large_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_fcm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_fcm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_mm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_mm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_fr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_pm_fr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_large_box) do |t|
+  t.profile = 'wp_forgot_username'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_large_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_pm_large_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_large_package) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_pm_large_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_lfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_pm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_medium_box) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_pm_medium_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_pm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_pfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_pm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_regional_box_a) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_pm_regional_box_a'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_regional_box_b) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_pm_regional_box_b'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_small_box) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_pm_small_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_psg_large_package) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_psg_large_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_psg_oversized_package) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_psg_oversized_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_psg_package) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_psg_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_xm_fr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_xm_fr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_xm_lfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_xm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_xm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_xm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_xm_pfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_5x8_xm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_fcm_large_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_fcm_large_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_fcm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_fcm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_mm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_mm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_fr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_fr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_large_box) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_large_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_large_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_large_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_large_package) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_large_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_lfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_medium_box) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_medium_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_pfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_regional_box_a) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_regional_box_a'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_regional_box_b) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_regional_box_b'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_small_box) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_pm_small_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_psg_large_package) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_psg_large_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_psg_oversized_package) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_psg_oversized_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_psg_package) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_psg_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_xm_fr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_xm_fr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_xm_lfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_xm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_xm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_xm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_xm_pfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_8x11_xm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_fcm_large_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_fcm_large_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_fcm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_fcm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_mm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_mm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_fr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_fr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_large_box) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_large_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_large_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_large_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_large_package) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_large_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_lfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_medium_box) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_medium_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_pfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_regional_box_a) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_regional_box_a'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_regional_box_b) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_regional_box_b'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_small_box) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_pm_small_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_psg_large_package) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_psg_large_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_psg_oversized_package) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_psg_oversized_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_psg_package) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_psg_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_xm_fr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_xm_fr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_xm_lfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_xm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_xm_package) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_xm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_xm_pfr_envelope) do |t|
+  t.profile = 'wp_sample_shipping_label_sdc1200_xm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 
 Cucumber::Rake::Task.new(:wp_stamps_a_series_calculate) do |t|
   t.profile = 'wp_stamps_a_series_calculate'
