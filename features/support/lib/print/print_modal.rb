@@ -46,7 +46,7 @@ module Print
     end
 
     def window_title
-      StampsLabel.new @browser.span(text: "Confirm Print")
+      StampsLabel.new @browser.span text => "Confirm Print"
     end
 
     def dont_prompt_deducting_postage_again
@@ -169,22 +169,6 @@ module Print
       browser_helper.text div
     end
 
-    def print_sample
-      begin
-        print_sample_button.safe_click
-        printing_error_check
-      rescue
-        #ignroe
-      end
-      self
-    end
-
-    def print_sample_expecting_error
-      print_sample_button.when_present.click
-      printing_error_check
-      self
-    end
-
     def present?
       browser_helper.present? print_button
     end
@@ -282,10 +266,6 @@ module Print
 
     def paper_tray_field
       @browser.text_field :name => 'paperTrays'
-    end
-
-    def print_sample_button
-      StampsButton.new @browser.span :text => 'Print: Print Sample'
     end
 
     def print_button

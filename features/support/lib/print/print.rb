@@ -2,8 +2,8 @@
 module Print
   class PrintPostage < Print::Postage::PrintObject
 
-    def sign_in_page
-      Print::SignInPage.new @browser
+    def sign_in
+      Print::SignInModal.new @browser
     end
 
     def navigation_bar

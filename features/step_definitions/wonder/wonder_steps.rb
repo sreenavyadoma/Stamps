@@ -1,6 +1,6 @@
 Then /^Sign-in to (\w+) webpostage as (.*)\/(.*) using (\w+)$/ do |environment, username, password, browser|
   @browser = Stamps::Test.setup browser if @browser.nil?
-  postage.sign_in_page.visit(environment).sign_in username, password
+  postage.sign_in.visit(environment).sign_in username, password
 end
 
 Then /^Expect webpostage user (.*) is signed-in$/ do |username|

@@ -6,7 +6,7 @@ module Print
       end
 
       def print_sample
-
+        open_sample_window Print::Postage::PrintPostageModal.new @browser
       end
 
       def print
@@ -43,6 +43,11 @@ module Print
       def print_button
         StampsButton.new @browser.a :css => "a[class*=sdc-printpanel-printpostagebtn]"
       end
+
+      def sample_button
+        StampsButton.new @browser.a :css => "a[class*=sdc-printpanel-printsamplebtn]"
+      end
+
 
       def open_window window
         return window if window.present?
@@ -94,7 +99,54 @@ module Print
         stop_test "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your test."
       end
 
+      def open_sample_window window
+        return window if window.present?
+        print = sample_button
+
+        print.click
+
+        naws_plugin_error = NawsPluginError.new @browser
+        error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
+        install_plugin_error = ErrorInstallPlugin.new @browser
+
+        20.times do
+          if install_plugin_error.present?
+            install_plugin_error.close
+            return nil
+          end
+
+          begin
+            if error_connecting_to_plugin.present?
+              5.times{
+                error_connecting_to_plugin.ok
+                break unless error_connecting_to_plugin.present?
+              }
+            end
+
+            if naws_plugin_error.present?
+              5.times{
+                naws_plugin_error.ok
+
+                break unless naws_plugin_error.present?
+              }
+            end
+            return window if window.present?
+
+            print.click
+          rescue
+            #ignore
+          end
+        end
+
+
+
+        return window if window.present?
+        stop_test "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your test."
+      end
+
 
     end
+
+
   end
 end

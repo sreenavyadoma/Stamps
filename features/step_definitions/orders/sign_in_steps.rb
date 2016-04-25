@@ -1,6 +1,6 @@
 Given /^Orders: Load Sign-in page$/ do
   log.info "Step: Orders: Load Sign-in page"
-  orders.sign_in_page.visit :orders
+  orders.sign_in.visit :orders
 end
 
 Given /^Orders: First Time Sign-in to Orders as (.*)\/(.*)/ do |username, password|
@@ -11,13 +11,13 @@ Given /^Orders: First Time Sign-in to Orders as (.*)\/(.*)/ do |username, passwo
     @username = username
   end
   log.info "Step: I am signed in to Orders as #{usr}/#{password}"
-  orders.sign_in_page.first_time_sign_in usr, password
+  orders.sign_in.first_time_sign_in usr, password
 end
 
 Given /^Orders: Sign-in to Orders as (.*)\/(.*)/ do |username, password|
   usr = @username if username.downcase.include? "random"
   log.info "Step: I am signed in to Orders as #{usr}/#{password}"
-  orders.sign_in_page.sign_in usr, password
+  orders.sign_in.sign_in usr, password
 end
 
 Given /^I sign-in to Orders as (.*)\/(.*)/ do |username, password|
@@ -25,7 +25,7 @@ Given /^I sign-in to Orders as (.*)\/(.*)/ do |username, password|
   step "I launch browser default"
   step "Healthcheck: Get Info"
   step "Orders: Load Sign-in page"
-  orders.sign_in_page.sign_in username, password
+  orders.sign_in.sign_in username, password
 end
 
 Given /^I am signed in to Orders$/ do
@@ -33,7 +33,7 @@ Given /^I am signed in to Orders$/ do
   step "I launch browser default"
   step "Healthcheck: Get Info" if test_helper.to_boolean ENV['HEALTHCHECK']
   step "Orders: Load Sign-in page"
-  orders.sign_in_page.sign_in
+  orders.sign_in.sign_in
   step "Navigation Bar: Customer Balance"
 end
 
@@ -42,7 +42,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
   step "I launch browser default"
   step "Healthcheck: Get Info"
   step "Orders: Load Sign-in page"
-  orders.sign_in_page.sign_in username, password
+  orders.sign_in.sign_in username, password
 end
 
 Given /^I am signed in to Orders using (.*)/ do |browser|
@@ -50,7 +50,7 @@ Given /^I am signed in to Orders using (.*)/ do |browser|
   step "I launch browser #{browser}"
   step "Healthcheck: Get Info"
   step "Orders: Load Sign-in page"
-  orders.sign_in_page.sign_in
+  orders.sign_in.sign_in
 end
 
 Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, password|
@@ -58,7 +58,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, pas
   step "I launch browser #{browser}"
   step "Healthcheck: Get Info"
   step "Orders: Load Sign-in page"
-  orders.sign_in_page.sign_in username, password
+  orders.sign_in.sign_in username, password
 end
 
 Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, username, password|
@@ -66,7 +66,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, us
   step "I launch browser #{browser}"
   step "Healthcheck: Get Info"
   step "Orders: Load Sign-in page #{url}"
-  orders.sign_in_page.sign_in username, password
+  orders.sign_in.sign_in username, password
 end
 
 Then /^Sign out$/ do
