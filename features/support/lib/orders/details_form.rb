@@ -1493,7 +1493,7 @@ module Orders
 
         selection_field = @browser.li(id: "#{@details_services[selection]}")
         selection_label = StampsLabel.new selection_field
-        20.times {
+        20.times do
           begin
             button.safe_click unless selection_label.present?
             selection_label.scroll_into_view
@@ -1505,7 +1505,7 @@ module Orders
           rescue
             #ignore
           end
-        }
+        end
         log.info "#{selection} service selected."
         selection_label # selection_label.field.table.tbody.tr.tds[2].text
       end

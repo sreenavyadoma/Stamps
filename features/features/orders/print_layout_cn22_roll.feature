@@ -21,3 +21,5 @@ Feature: Print 1 Intl CN22 label on 4x6 Roll
     Then Print: Set Printing On "Roll - 4" x 6" Shipping Label"
     Then Print: Print
     Then Sign out
+
+
