@@ -136,7 +136,7 @@ Feature:  Orders Service Selection
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Media Mail Package/Flat/Thick Envelope/Flat/Thick Envelope
+    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Expect Service to be Media Mail Package/Flat/Thick Envelope
 
     Then Print: Open Modal
