@@ -10,7 +10,7 @@ Feature: Print 1 single ply Intl CP72 label on 8.5x11 - left side
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-    Then Details: Set Service to "Priority Mail International Package"
+    Then Details: Select Service Priority Mail International Package/Flat/Thick Envelope
     Then Details: Set Ounces to 1
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Document"

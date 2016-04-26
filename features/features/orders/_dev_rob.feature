@@ -40,7 +40,7 @@ Feature: Test Development
     Then Details: Set Ship-To address to random zrtone 5 through 8
     Then Details: Set Email to random
     Then Details: Set Phone to random
-    Then Details: Set Service to "Priority Mail Large Package"
+    Then Details: Select Service Priority Mail Large Package
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
     Then Details: Set Height to 1
@@ -57,7 +57,7 @@ Feature: Test Development
     Then Details: Set Ship-To address to Eight Zone,377 Santa Rosa Blvd,Fort Walton Beach, FL 32548
     Then Details: Set Email to random
     Then Details: Set Phone to random
-    Then Details: Set Service to "Priority Mail Large Package"
+    Then Details: Select Service Priority Mail Large Package
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
     Then Details: Set Height to 1
@@ -73,7 +73,7 @@ Feature: Test Development
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Ounces to 5
-    Then Details: Set Service to "Priority Mail Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Tracking to "USPS Tracking"
     Then Print: Print
     Then Filter: Select Shipped
@@ -84,7 +84,7 @@ Feature: Test Development
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Ounces to 5
-    Then Details: Set Service to "Priority Mail Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Tracking to "Signature Required"
     Then Print: Print
     Then Filter: Select Shipped
@@ -100,7 +100,7 @@ Feature: Test Development
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 5
     Then Details: Set Length to 1
     Then Details: Set Height to 1
@@ -115,7 +115,7 @@ Feature: Test Development
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 5
     Then Details: Set Length to 1
     Then Details: Set Height to 1
@@ -130,7 +130,7 @@ Feature: Test Development
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 5
     Then Details: Set Length to 1
     Then Details: Set Height to 1
@@ -146,7 +146,7 @@ Feature: Test Development
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 5
     Then Details: Set Length to 1
     Then Details: Set Height to 1
@@ -186,7 +186,7 @@ Feature: Test Development
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail Large Envelope/Flat
 
     Then Print: Print
 
@@ -196,7 +196,7 @@ Feature: Test Development
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail Large Envelope/Flat
     Then Grid: Check row 1
     Then Print: Print
     Then Expect printed Order ID is not in Awaiting Shipment tab
@@ -205,17 +205,17 @@ Feature: Test Development
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail Large Envelope/Flat
 
     Then Toolbar: Add second order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail Large Envelope/Flat
 
     Then Toolbar: Add third order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "Media Mail Package"
+    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
 
     Then Grid: Check row 1
     Then Grid: Check row 2
@@ -244,9 +244,9 @@ Feature: Test Development
     Then Details: Set Length to 1
     Then Details: Set Height to 1
     Then Details: Set Width to 1
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
 
-  #Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+  #Then Details: Select Service First-Class Mail International Large Envelope/Flat
     Then Details: Edit Customs Form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs: Set Package Contents to "Commercial Sample"
@@ -283,7 +283,7 @@ Feature: Test Development
     Then Details: Set Length to 1
     Then Details: Set Height to 1
     Then Details: Set Width to 1
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
@@ -304,7 +304,7 @@ Feature: Test Development
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -317,4 +317,4 @@ Feature: Test Development
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope

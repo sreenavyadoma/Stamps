@@ -19,7 +19,7 @@ Feature: International Shipping fields and Customs Information fields validation
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
     Then Details: Set Ounces to 5
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
     Then Details: Add Item 1, Qty 1, ID random, Description random
 
     Then Details: Edit Customs Form
@@ -80,5 +80,5 @@ Feature: International Shipping fields and Customs Information fields validation
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail International Large Envelope/Flat
     Then Sign out

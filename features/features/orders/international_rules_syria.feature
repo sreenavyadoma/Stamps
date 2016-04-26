@@ -12,9 +12,9 @@ Feature: Syria Internal Transaction Number Required
       | random | random  | random           | random           | random | random  | random      | Syria    | random  | random  |
 
     Then Details: Set Ounces to 5
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
 
-    #Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    #Then Details: Select Service First-Class Mail International Large Envelope/Flat
     Then Details: Edit Customs Form
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs: Set Package Contents to "Commercial Sample"

@@ -20,7 +20,7 @@ Feature:  Changing Print Date Causes Page to get Stuck on "Verifying Postage Rat
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "Priority Mail Large/Thick Envelope"
+    Then Details: Select Service Priority Mail Large/Thick Envelope
     Then Details: Set Ounces to 2
 
     Then Print: Open Modal

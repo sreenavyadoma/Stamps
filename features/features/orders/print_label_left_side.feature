@@ -10,7 +10,7 @@ Feature: Change Starting Label Position to Left Side
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
-    Then Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Print: Open Modal
     Then Print: Set Printer to "factory"
@@ -22,7 +22,7 @@ Feature: Change Starting Label Position to Left Side
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
-    Then Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Print: Open Modal
     Then Print: Set Printer to "factory"

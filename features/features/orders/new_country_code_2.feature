@@ -10,7 +10,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |
-       Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+       Then Details: Select Service First-Class Mail International Large Envelope/Flat
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 2
     Then Details: Edit Customs Form

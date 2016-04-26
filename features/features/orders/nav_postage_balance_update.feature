@@ -9,7 +9,7 @@ Feature: Postage Balance
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
     Then Details: Set Pounds to 1
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Insure-For to $10.00
     Then Details: Set Tracking to "USPS Tracking"
     Then Pause for 1 second

@@ -12,7 +12,8 @@ Feature:  Update International Orders to ShipStation
     Then Details: Set Ship-To address to
       | name          | company          | street_address_1  | street_address_2 | city   | province | postal_code | country | phone         |  email            |
       | Customer Name | Customer Company | Street Address 1  | Street Address 2 | City   | Province | PostalCode  | France  | 415-411-1111  | rtest@stamps.com  |
-    Then Details: Set Service to "Priority Mail International Package"
+
+    Then Details: Select Service Priority Mail International Package/Flat/Thick Envelope
 
     Then Details: Set Pounds to 5
     Then Details: Set Ounces to 5
