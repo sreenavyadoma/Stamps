@@ -13,7 +13,7 @@ Feature:  Ambigious Address
       | Joseph Balancio | Company Name  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect "Exact Address Not Found" module to appear
     Then Select row 2 from Exact Address Not Found module
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Grid: Check row 1
     Then Grid: Expect Recipient to be Joseph Balancio
     Then Grid: Expect Company to be Company Name

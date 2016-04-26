@@ -8,7 +8,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail Large Envelope/Flat
     Then Grid: Check row 1
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"

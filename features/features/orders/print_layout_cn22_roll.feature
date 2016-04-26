@@ -10,7 +10,7 @@ Feature: Print 1 Intl CN22 label on 4x6 Roll
     Then Details: Set Ship-To address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | FCMI PTE | 4x6 Roll  | random           | random           | random | random  | random      | Norway | random  | random  |
-    Then Details: Set Service to "First-Class Mail International Package/Thick Envelope"
+    Then Details: Select Service First-Class Mail International Package/Thick Envelope
     Then Details: Set Ounces to 1
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
@@ -21,3 +21,5 @@ Feature: Print 1 Intl CN22 label on 4x6 Roll
     Then Print: Set Printing On "Roll - 4" x 6" Shipping Label"
     Then Print: Print
     Then Sign out
+
+

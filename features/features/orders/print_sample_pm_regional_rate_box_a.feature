@@ -8,7 +8,7 @@ Feature: Print: Print Sample - Priority Mail Regional Rate Box A
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "Priority Mail Regional Rate Box A"
+    Then Details: Select Service Priority Mail Regional Rate Box A
     Then Details: Set Ounces to 1
     Then Print: Open Modal
     Then Print: Set Printer to "factory"

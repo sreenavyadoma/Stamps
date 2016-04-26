@@ -11,7 +11,7 @@ Feature: Address Cleansing
     Then Details: Set Ship-To address to
       | name              | company | street_address    | city       | state | zip   | country       | phone           |  email            |
       | Address Cleansing | No Zip  | 1990 E Grand Ave  | El Segundo | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1
     Then Details: Set Insure-For to $200
@@ -24,7 +24,7 @@ Feature: Address Cleansing
 
     Then Toolbar: Add
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Hide Ship-To fields
     Then Sign out
 

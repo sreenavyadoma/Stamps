@@ -8,7 +8,7 @@ Feature:  Move "Printing On" to top of the Print dialog
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address in Zone 1
-    Then Details: Set Service to "Priority Mail Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Expect Printing On Label to be Printing On:

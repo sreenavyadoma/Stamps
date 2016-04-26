@@ -10,7 +10,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then Details: Set Ship-To address to
       | name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
-    Then Details: Set Service to "Priority Mail International Large Flat Rate Box"
+    Then Details: Select Service Priority Mail International Large Flat Rate Box
     Then Details: Set Weight to 2 lbs 0 oz
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"

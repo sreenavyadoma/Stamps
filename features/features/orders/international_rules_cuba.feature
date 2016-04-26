@@ -13,7 +13,7 @@ Feature: Cuba Internal Transaction Number Required
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
 
     Then Details: Set Ounces to 5
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Commercial Sample"
     Then Expect Customs Form Internal Transaction # to be "Required"

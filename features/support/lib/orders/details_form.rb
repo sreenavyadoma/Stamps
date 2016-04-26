@@ -1473,7 +1473,6 @@ module Orders
           end
         }
       end
-
     end
 
     class Service < OrderForm
@@ -1489,8 +1488,12 @@ module Orders
         log.info "Select Service #{selection}"
         box = text_box
         button = drop_down
-        selection_label = StampsLabel.new @browser.td :css => "tr[data-qtip*='#{selection}']>td:nth-child(2)"
-        20.times {
+
+        @details_services ||= data_for(:details_services, {})
+
+        selection_field = @browser.li(id: "#{@details_services[selection]}")
+        selection_label = StampsLabel.new selection_field
+        20.times do
           begin
             button.safe_click unless selection_label.present?
             selection_label.scroll_into_view
@@ -1502,9 +1505,9 @@ module Orders
           rescue
             #ignore
           end
-        }
+        end
         log.info "#{selection} service selected."
-        selection_label
+        selection_label # selection_label.field.table.tbody.tr.tds[2].text
       end
 
       def cost *args

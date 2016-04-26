@@ -8,12 +8,12 @@ Feature: Print 2 Domestic labels on 8.5x11 - right side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to PM LFR Envelope, 8.5x11 Right Side 2, 2775 Stark Dr., Willoughby Hills OH 44094-9113
-    Then Details: Set Service to "Priority Mail Legal Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Legal Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to PM SFR Box, 8.5x11 Right Side 1, 610 W Tefft St, Nipomo, CA 93444-9187
-    Then Details: Set Service to "Priority Mail Small Flat Rate Box"
+    Then Details: Select Service Priority Mail Small Flat Rate Box
     Then Details: Set Ounces to 3
     Then Grid: Check row 1
     Then Grid: Check row 2

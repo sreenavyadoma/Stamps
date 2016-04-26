@@ -12,6 +12,6 @@ Feature: Show Cost of Order in Ship Cost Grid
     Then Details: Hide Ship-To fields
     Then Details: Set Ounces to 1
     Then Details: Set Insure-For to $10.00
-    Then Details: Set Service to "Priority Mail Small Flat Rate Box"
+    Then Details: Select Service Priority Mail Small Flat Rate Box
     Then Expect Ship Cost equals Total amount
     Then Sign out

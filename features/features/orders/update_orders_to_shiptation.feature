@@ -14,7 +14,7 @@ Feature:  Update Order to ShipStation
 
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1

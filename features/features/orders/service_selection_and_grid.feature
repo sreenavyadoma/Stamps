@@ -8,7 +8,7 @@ Feature:  Service Selection & Order Grid Values
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "Parcel Select Ground Package"
+    Then Details: Select Service Parcel Select Ground Package
     Then Details: Set Ounces to 1
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
@@ -20,7 +20,7 @@ Feature:  Service Selection & Order Grid Values
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "Parcel Select Ground Large Package"
+    Then Details: Select Service Parcel Select Ground Large Package
     Then Details: Set Ounces to 1
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
@@ -32,7 +32,7 @@ Feature:  Service Selection & Order Grid Values
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "Parcel Select Ground Oversized Package"
+    Then Details: Select Service Parcel Select Ground Oversized Package
     Then Details: Set Ounces to 1
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"

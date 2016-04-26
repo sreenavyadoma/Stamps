@@ -7,7 +7,7 @@ Feature: Test Development
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 1
     Then Print: Open Modal
     Then Print: Set Ship Date to today
@@ -35,7 +35,7 @@ Feature: Test Development
       | Joseph Balancio | Company Name | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect "Exact Address Not Found" module to appear
     Then Select row 2 from Exact Address Not Found module
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Grid: Expect Recipient to be Joseph Balancio
     Then Grid: Expect Company to be Company Name
     Then Grid: Expect City to be San Francisco
@@ -62,7 +62,7 @@ Feature: Test Development
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Expect Service to be "Priority Mail Package"
     Then Details: Expect Service Cost inline price for "Priority Mail Package" to be greater than $0.01
     Then Details: Expect Service Tooltip for "Priority Mail Package" to include "Priority Mail Package,Ship up to 70 lbs. using any box with pricing that varies by weight and distance,The USPS provides free packaging for Priority Mail which can be ordered from Stamps.com."
@@ -72,13 +72,13 @@ Feature: Test Development
     Then Details: Set Tracking to "Signature Required"
     Then Details: Expect Tracking to be "Signature Required"
 
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Expect Service to be "Priority Mail Package"
     Then Details: Expect Tracking to be "Signature Required"
 
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Expect Service to be "Priority Mail Package"
-    Then Details: Set Service to "Priority Mail Large Package"
+    Then Details: Select Service Priority Mail Large Package
     Then Details: Expect Service to be "Priority Mail Large Package"
 
     Then Details: Expect Service Cost inline price for "Priority Mail Large/Thick Envelope" to be greater than $0.01

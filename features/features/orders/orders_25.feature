@@ -20,7 +20,7 @@ Feature: 25 orders
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -34,7 +34,7 @@ Feature: 25 orders
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
     Then Toolbar: Add
@@ -45,7 +45,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail Large Envelope/Flat
     Then Details: Set Insure-For to $15.00
     Then Details: Set Tracking to "None"
     Then Grid: Check row 1
@@ -58,7 +58,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "First-Class Mail Package/Thick Envelope"
+    Then Details: Select Service First-Class Mail Package/Thick Envelope
     Then Details: Set Insure-For to $45.00
     Then Details: Set Tracking to "USPS Tracking"
     Then Grid: Check row 1
@@ -73,7 +73,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Large/Thick Envelope"
+    Then Details: Select Service Priority Mail Large/Thick Envelope
     Then Details: Set Tracking to "USPS Tracking"
 
     Then Toolbar: Add
@@ -84,7 +84,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Tracking to "Signature Required"
 
     Then Toolbar: Add
@@ -95,7 +95,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Large Package"
+    Then Details: Select Service Priority Mail Large Package
     Then Details: Set Insure-For to $145.00
     Then Details: Set Tracking to "Signature Required"
 
@@ -107,7 +107,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Tracking to "Signature Required"
 
     Then Toolbar: Add
@@ -118,7 +118,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Padded Flat Rate Envelope
     Then Details: Set Insure-For to $98.00
     Then Details: Set Tracking to "USPS Tracking"
 
@@ -130,7 +130,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Legal Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Legal Flat Rate Envelope
     Then Details: Set Tracking to "Signature Required"
 
     Then Toolbar: Add
@@ -141,7 +141,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Small Flat Rate Box"
+    Then Details: Select Service Priority Mail Small Flat Rate Box
     Then Details: Set Insure-For to $30.00
     Then Details: Set Tracking to "Signature Required"
 
@@ -153,7 +153,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Medium Flat Rate Box"
+    Then Details: Select Service Priority Mail Medium Flat Rate Box
     Then Details: Set Insure-For to $45.00
     Then Details: Set Tracking to "Signature Required"
 
@@ -165,7 +165,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Large Flat Rate Box"
+    Then Details: Select Service Priority Mail Large Flat Rate Box
     Then Details: Set Insure-For to $239.00
     Then Details: Set Tracking to "Signature Required"
 
@@ -177,7 +177,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Regional Rate Box A"
+    Then Details: Select Service Priority Mail Regional Rate Box A
     Then Details: Set Insure-For to $105.00
     Then Details: Set Tracking to "Signature Required"
 
@@ -189,7 +189,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Regional Rate Box B"
+    Then Details: Select Service Priority Mail Regional Rate Box B
     Then Details: Set Insure-For to $205.00
     Then Details: Set Tracking to "USPS Tracking"
 
@@ -213,7 +213,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Express Package"
+    Then Details: Select Service Priority Mail Express Package
     Then Details: Set Tracking to "Signature Required"
 
     Then Toolbar: Add
@@ -224,7 +224,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Express Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Express Flat Rate Envelope
     Then Details: Set Tracking to "USPS Tracking"
 
     Then Toolbar: Add
@@ -235,7 +235,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Tracking to "Signature Required"
 
     Then Toolbar: Add
@@ -246,7 +246,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Express Legal Flat Rate Envelope
     Then Details: Set Tracking to "USPS Tracking"
 
     Then Toolbar: Add
@@ -257,7 +257,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Tracking to "Signature Required"
 
     # Media Mail
@@ -269,7 +269,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Media Mail Package"
+    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $56.00
     Then Details: Set Tracking to "Signature Required"
 
@@ -282,7 +282,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Parcel Select Ground Package"
+    Then Details: Select Service Parcel Select Ground Package
     Then Details: Set Insure-For to $345.00
     Then Details: Set Tracking to "USPS Tracking"
 
@@ -294,7 +294,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Parcel Select Ground Large Package"
+    Then Details: Select Service Parcel Select Ground Large Package
     Then Details: Set Insure-For to $456.00
     Then Details: Set Tracking to "Signature Required"
 
@@ -306,7 +306,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Set Service to "Parcel Select Ground Oversized Package"
+    Then Details: Select Service Parcel Select Ground Oversized Package
     Then Details: Set Insure-For to $567.00
     Then Details: Set Tracking to "Signature Required"
     Then Sign out

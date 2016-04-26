@@ -6,6 +6,62 @@ url_prefix:
   staging: print.staging
   rating: printext.qacc
 
+details_services:
+  #First-Class Mail
+  # First-Class Mail Large Envelope/Flat
+  First-Class Mail Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
+  # First-Class Mail Package/Thick Envelope
+  First-Class Mail Package: sdc-servicedroplist-fcthickenvelope
+  # Priority Mail
+  # Priority Mail Large/Thick Envelope
+  Priority Mail Large: sdc-servicedroplist-pmlargeenvelopeorflat
+  Priority Mail Package: sdc-servicedroplist-pmpackage
+  Priority Mail Large Package: sdc-servicedroplist-pmlargepackage
+  Priority Mail Flat Rate Envelope: sdc-servicedroplist-pmflatrateenvelope
+  Priority Mail Padded Flat Rate Envelope: sdc-servicedroplist-pmflatratepaddedenvelope
+  Priority Mail Legal Flat Rate Envelope: sdc-servicedroplist-pmlegalflatrateenvelope
+  Priority Mail Small Flat Rate Box: sdc-servicedroplist-pmsmallflatratebox
+  Priority Mail Medium Flat Rate Box: sdc-servicedroplist-pmflatratebox
+  Priority Mail Large Flat Rate Box: sdc-servicedroplist-pmlargeflatratebox
+  Priority Mail Regional Rate Box A: sdc-servicedroplist-pmregionalrateboxa
+  Priority Mail Regional Rate Box B: sdc-servicedroplist-pmregionalrateboxb
+  # Priority Mail Express
+  #Priority Mail Express Package/Flat/Thick Envelope
+  Priority Mail Express Package: sdc-servicedroplist-xmpackage
+  Priority Mail Express Flat Rate Envelope: sdc-servicedroplist-xmflatrateenvelope
+  Priority Mail Express Padded Flat Rate Envelope: sdc-servicedroplist-xmflatratepaddedenvelope
+  Priority Mail Express Legal Flat Rate Envelope: sdc-servicedroplist-xmlegalflatrateenvelope
+  # Media Mail
+  # Media Mail Package/Flat/Thick Envelope
+  Media Mail Package: sdc-servicedroplist-mmpackage
+  # Parcel Select Ground
+  # Parcel Select Ground Package/Flat/Thick Envelope
+  Parcel Select Ground Package: sdc-servicedroplist-pspackage
+  Parcel Select Ground Large Package: sdc-servicedroplist-pslargepackage
+  Parcel Select Ground Oversized Package: sdc-servicedroplist-psoversizedpackage
+  # First-Class Mail International
+  # First-Class Mail International Large Envelope/Flat
+  First-Class Mail International Large Envelope: sdc-servicedroplist-fcilargeenvelopeorflat
+  # First-Class Mail International Package/Thick Envelope
+  First-Class Mail International Package: sdc-servicedroplist-fcithickenvelope
+  #Priority Mail International
+  # Priority Mail International Package/Flat/Thick Envelope
+  Priority Mail International Package: sdc-servicedroplist-pmipackage
+  Priority Mail International Flat Rate Envelope: sdc-servicedroplist-pmiflatrateenvelope
+  Priority Mail International Padded Flat Rate Envelope: sdc-servicedroplist-pmiflatratepaddedenvelope
+  Priority Mail International Legal Flat Rate Envelope: sdc-servicedroplist-pmilegalflatrateenvelope
+  Priority Mail International Small Flat Rate Box: sdc-servicedroplist-pmismallflatratebox
+  Priority Mail International Medium Flat Rate Box: sdc-servicedroplist-pmiflatratebox
+  Priority Mail International Large Flat Rate Box: sdc-servicedroplist-pmilargeflatratebox
+  Priority Mail International Regional Rate Box A: sdc-servicedroplist-pmiregionalrateboxa
+  Priority Mail International Regional Rate Box B: sdc-servicedroplist-pmiregionalrateboxb
+  #PriorityMailExpress International
+  # Priority Mail Express International Package/Flat/Thick Envelope
+  Priority Mail Express International Package: sdc-servicedroplist-emipackage
+  Priority Mail Express International Flat Rate Envelope: sdc-servicedroplist-emiflatrateenvelope
+  Priority Mail Express International Padded Flat Rate Envelope: sdc-servicedroplist-emiflatratepaddedenvelope
+  Priority Mail Express International Legal Flat Rate Envelope: sdc-servicedroplist-emilegalflatrateenvelope
+
 shipping_method:
   usps_fcml:
     text: USPS First-Class Mail Letter

@@ -9,7 +9,7 @@ Feature: Priority Mail and Large Dimensions
   Scenario: Priority Mail and Large Dimensions
     Then Toolbar: Add
     Then Details: Set Ship-To to Random Address in Zone 8
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Length to 20
     Then Details: Set Width to 35
     Then Details: Set Height to 20
@@ -23,7 +23,7 @@ Feature: Priority Mail and Large Dimensions
     Then Pause for 1 second
     Then Details: Expect Service "Priority Mail Package" to be enabled
     Then Pause for 1 second
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Pause for 2 seconds
     Then Details: Expect Length to be 0
     Then Details: Expect Height to be 0

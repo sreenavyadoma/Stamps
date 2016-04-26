@@ -9,7 +9,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -30,7 +30,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -43,7 +43,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -55,7 +55,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -68,7 +68,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -80,7 +80,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -94,7 +94,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -108,7 +108,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -122,7 +122,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -136,7 +136,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -151,7 +151,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -162,7 +162,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -173,7 +173,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Set Ounces to 2
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1
@@ -195,7 +195,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-To address to
       | name            | company                 | street_address      | city          | state | zip        | country       | phone  |  email |
       | Jessie Joe      | The CN 22 House         | PSC 819 BOX 1       | FPO           | AE    | 09645-0001 | United States |        |        |
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 5
     Then Details: Set Width to 1
     Then Details: Set Height to 1
@@ -214,7 +214,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Ship-To address to
       | name            | company                 | street_address      | city          | state | zip        | country       | phone  |  email |
       | Tammmy Moo      | The CP72 House          | Unit 15324          | APO           | AP    | 96205-5324 | United States |        |        |
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Pounds to 3
     Then Details: Set Width to 1
     Then Details: Set Height to 1

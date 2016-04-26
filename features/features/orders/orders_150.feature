@@ -14,7 +14,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    * Details: Select Service First-Class Mail Large Envelope/Flat
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -24,7 +24,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 2
-    * Details: Set Service to "First-Class Mail Package/Thick Envelope"
+    * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -36,7 +36,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Set Service to "Priority Mail Large/Thick Envelope"
+    * Details: Select Service Priority Mail Large/Thick Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -45,7 +45,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 4
-    * Details: Set Service to "Priority Mail Package"
+    * Details: Select Service Priority Mail Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -54,7 +54,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 5
-    * Details: Set Service to "Priority Mail Large Package"
+    * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
@@ -64,7 +64,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 6
-    * Details: Set Service to "Priority Mail Flat Rate Envelope"
+    * Details: Select Service Priority Mail Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -73,7 +73,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 7
-    * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -83,7 +83,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 8
-    * Details: Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Legal Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -92,7 +92,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 9
-    * Details: Set Service to "Priority Mail Small Flat Rate Box"
+    * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
@@ -102,7 +102,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 10
-    * Details: Set Service to "Priority Mail Medium Flat Rate Box"
+    * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
@@ -112,7 +112,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 11
-    * Details: Set Service to "Priority Mail Large Flat Rate Box"
+    * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
@@ -122,7 +122,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 12
-    * Details: Set Service to "Priority Mail Regional Rate Box A"
+    * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
@@ -132,7 +132,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 13
-    * Details: Set Service to "Priority Mail Regional Rate Box B"
+    * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -153,7 +153,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Set Service to "Priority Mail Express Package"
+    * Details: Select Service Priority Mail Express Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -162,7 +162,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -171,7 +171,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -180,7 +180,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -189,7 +189,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     # Media Mail
@@ -200,7 +200,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Set Service to "Media Mail Package"
+    * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
@@ -212,7 +212,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Set Service to "Parcel Select Ground Package"
+    * Details: Select Service Parcel Select Ground Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -222,7 +222,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Set Service to "Parcel Select Ground Large Package"
+    * Details: Select Service Parcel Select Ground Large Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -232,7 +232,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Set Service to "Parcel Select Ground Oversized Package"
+    * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
@@ -257,7 +257,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -278,7 +278,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
 
@@ -288,7 +288,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    * Details: Select Service First-Class Mail Large Envelope/Flat
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -298,7 +298,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 2
-    * Details: Set Service to "First-Class Mail Package/Thick Envelope"
+    * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -310,7 +310,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Set Service to "Priority Mail Large/Thick Envelope"
+    * Details: Select Service Priority Mail Large/Thick Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -319,7 +319,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 4
-    * Details: Set Service to "Priority Mail Package"
+    * Details: Select Service Priority Mail Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -328,7 +328,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 5
-    * Details: Set Service to "Priority Mail Large Package"
+    * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
@@ -338,7 +338,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 6
-    * Details: Set Service to "Priority Mail Flat Rate Envelope"
+    * Details: Select Service Priority Mail Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -347,7 +347,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 7
-    * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -357,7 +357,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 8
-    * Details: Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Legal Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -366,7 +366,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 9
-    * Details: Set Service to "Priority Mail Small Flat Rate Box"
+    * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
@@ -376,7 +376,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 10
-    * Details: Set Service to "Priority Mail Medium Flat Rate Box"
+    * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
@@ -386,7 +386,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 11
-    * Details: Set Service to "Priority Mail Large Flat Rate Box"
+    * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
@@ -396,7 +396,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 12
-    * Details: Set Service to "Priority Mail Regional Rate Box A"
+    * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
@@ -406,7 +406,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 13
-    * Details: Set Service to "Priority Mail Regional Rate Box B"
+    * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -427,7 +427,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Set Service to "Priority Mail Express Package"
+    * Details: Select Service Priority Mail Express Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -436,7 +436,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -445,7 +445,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -454,7 +454,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -463,7 +463,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     # Media Mail
@@ -474,7 +474,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Set Service to "Media Mail Package"
+    * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
@@ -486,7 +486,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Set Service to "Parcel Select Ground Package"
+    * Details: Select Service Parcel Select Ground Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -496,7 +496,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Set Service to "Parcel Select Ground Large Package"
+    * Details: Select Service Parcel Select Ground Large Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -506,7 +506,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Set Service to "Parcel Select Ground Oversized Package"
+    * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
@@ -531,7 +531,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -552,7 +552,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
 
@@ -562,7 +562,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    * Details: Select Service First-Class Mail Large Envelope/Flat
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -572,7 +572,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 2
-    * Details: Set Service to "First-Class Mail Package/Thick Envelope"
+    * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -584,7 +584,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Set Service to "Priority Mail Large/Thick Envelope"
+    * Details: Select Service Priority Mail Large/Thick Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -593,7 +593,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 4
-    * Details: Set Service to "Priority Mail Package"
+    * Details: Select Service Priority Mail Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -602,7 +602,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 5
-    * Details: Set Service to "Priority Mail Large Package"
+    * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
@@ -612,7 +612,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 6
-    * Details: Set Service to "Priority Mail Flat Rate Envelope"
+    * Details: Select Service Priority Mail Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -621,7 +621,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 7
-    * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -631,7 +631,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 8
-    * Details: Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Legal Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -640,7 +640,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 9
-    * Details: Set Service to "Priority Mail Small Flat Rate Box"
+    * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
@@ -650,7 +650,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 10
-    * Details: Set Service to "Priority Mail Medium Flat Rate Box"
+    * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
@@ -660,7 +660,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 11
-    * Details: Set Service to "Priority Mail Large Flat Rate Box"
+    * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
@@ -670,7 +670,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 12
-    * Details: Set Service to "Priority Mail Regional Rate Box A"
+    * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
@@ -680,7 +680,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 13
-    * Details: Set Service to "Priority Mail Regional Rate Box B"
+    * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -700,7 +700,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Set Service to "Priority Mail Express Package"
+    * Details: Select Service Priority Mail Express Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -709,7 +709,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -718,7 +718,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -727,7 +727,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -736,7 +736,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     # Media Mail
@@ -747,7 +747,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Set Service to "Media Mail Package"
+    * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
@@ -759,7 +759,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Set Service to "Parcel Select Ground Package"
+    * Details: Select Service Parcel Select Ground Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -769,7 +769,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Set Service to "Parcel Select Ground Large Package"
+    * Details: Select Service Parcel Select Ground Large Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -779,7 +779,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Set Service to "Parcel Select Ground Oversized Package"
+    * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
@@ -804,7 +804,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -825,7 +825,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
 
@@ -835,7 +835,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    * Details: Select Service First-Class Mail Large Envelope/Flat
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -845,7 +845,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 2
-    * Details: Set Service to "First-Class Mail Package/Thick Envelope"
+    * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -857,7 +857,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Set Service to "Priority Mail Large/Thick Envelope"
+    * Details: Select Service Priority Mail Large/Thick Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -866,7 +866,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 4
-    * Details: Set Service to "Priority Mail Package"
+    * Details: Select Service Priority Mail Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -875,7 +875,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 5
-    * Details: Set Service to "Priority Mail Large Package"
+    * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
@@ -885,7 +885,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 6
-    * Details: Set Service to "Priority Mail Flat Rate Envelope"
+    * Details: Select Service Priority Mail Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -894,7 +894,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 7
-    * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -904,7 +904,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 8
-    * Details: Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Legal Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -913,7 +913,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 9
-    * Details: Set Service to "Priority Mail Small Flat Rate Box"
+    * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
@@ -923,7 +923,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 10
-    * Details: Set Service to "Priority Mail Medium Flat Rate Box"
+    * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
@@ -933,7 +933,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 11
-    * Details: Set Service to "Priority Mail Large Flat Rate Box"
+    * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
@@ -943,7 +943,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 12
-    * Details: Set Service to "Priority Mail Regional Rate Box A"
+    * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
@@ -953,7 +953,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 13
-    * Details: Set Service to "Priority Mail Regional Rate Box B"
+    * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -974,7 +974,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Set Service to "Priority Mail Express Package"
+    * Details: Select Service Priority Mail Express Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -983,7 +983,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -992,7 +992,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1001,7 +1001,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -1010,7 +1010,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     # Media Mail
@@ -1021,7 +1021,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Set Service to "Media Mail Package"
+    * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1033,7 +1033,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Set Service to "Parcel Select Ground Package"
+    * Details: Select Service Parcel Select Ground Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1043,7 +1043,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Set Service to "Parcel Select Ground Large Package"
+    * Details: Select Service Parcel Select Ground Large Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1053,7 +1053,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Set Service to "Parcel Select Ground Oversized Package"
+    * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1078,7 +1078,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -1099,7 +1099,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
 
@@ -1109,7 +1109,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    * Details: Select Service First-Class Mail Large Envelope/Flat
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -1119,7 +1119,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 2
-    * Details: Set Service to "First-Class Mail Package/Thick Envelope"
+    * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1131,7 +1131,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Set Service to "Priority Mail Large/Thick Envelope"
+    * Details: Select Service Priority Mail Large/Thick Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -1140,7 +1140,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 4
-    * Details: Set Service to "Priority Mail Package"
+    * Details: Select Service Priority Mail Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1149,7 +1149,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 5
-    * Details: Set Service to "Priority Mail Large Package"
+    * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1159,7 +1159,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 6
-    * Details: Set Service to "Priority Mail Flat Rate Envelope"
+    * Details: Select Service Priority Mail Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1168,7 +1168,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 7
-    * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1178,7 +1178,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 8
-    * Details: Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Legal Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1187,7 +1187,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 9
-    * Details: Set Service to "Priority Mail Small Flat Rate Box"
+    * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1197,7 +1197,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 10
-    * Details: Set Service to "Priority Mail Medium Flat Rate Box"
+    * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1207,7 +1207,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 11
-    * Details: Set Service to "Priority Mail Large Flat Rate Box"
+    * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1217,7 +1217,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 12
-    * Details: Set Service to "Priority Mail Regional Rate Box A"
+    * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1227,7 +1227,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 13
-    * Details: Set Service to "Priority Mail Regional Rate Box B"
+    * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1248,7 +1248,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Set Service to "Priority Mail Express Package"
+    * Details: Select Service Priority Mail Express Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1257,7 +1257,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -1266,7 +1266,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1275,7 +1275,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -1284,7 +1284,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     # Media Mail
@@ -1295,7 +1295,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Set Service to "Media Mail Package"
+    * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1307,7 +1307,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Set Service to "Parcel Select Ground Package"
+    * Details: Select Service Parcel Select Ground Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1317,7 +1317,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Set Service to "Parcel Select Ground Large Package"
+    * Details: Select Service Parcel Select Ground Large Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1327,7 +1327,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Set Service to "Parcel Select Ground Oversized Package"
+    * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1352,7 +1352,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -1373,7 +1373,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
 
@@ -1383,7 +1383,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Set Service to "First-Class Mail Large Envelope/Flat"
+    * Details: Select Service First-Class Mail Large Envelope/Flat
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -1393,7 +1393,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 2
-    * Details: Set Service to "First-Class Mail Package/Thick Envelope"
+    * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1405,7 +1405,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Set Service to "Priority Mail Large/Thick Envelope"
+    * Details: Select Service Priority Mail Large/Thick Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -1414,7 +1414,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 4
-    * Details: Set Service to "Priority Mail Package"
+    * Details: Select Service Priority Mail Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1423,7 +1423,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 5
-    * Details: Set Service to "Priority Mail Large Package"
+    * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1433,7 +1433,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 6
-    * Details: Set Service to "Priority Mail Flat Rate Envelope"
+    * Details: Select Service Priority Mail Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1442,7 +1442,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 7
-    * Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1452,7 +1452,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 8
-    * Details: Set Service to "Priority Mail Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Legal Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1461,7 +1461,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 9
-    * Details: Set Service to "Priority Mail Small Flat Rate Box"
+    * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1471,7 +1471,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 10
-    * Details: Set Service to "Priority Mail Medium Flat Rate Box"
+    * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1481,7 +1481,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 11
-    * Details: Set Service to "Priority Mail Large Flat Rate Box"
+    * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1491,7 +1491,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 12
-    * Details: Set Service to "Priority Mail Regional Rate Box A"
+    * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1501,7 +1501,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 13
-    * Details: Set Service to "Priority Mail Regional Rate Box B"
+    * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1522,7 +1522,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Set Service to "Priority Mail Express Package"
+    * Details: Select Service Priority Mail Express Package
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1531,7 +1531,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Set Service to "Priority Mail Express Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -1540,7 +1540,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1549,7 +1549,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Set Service to "Priority Mail Express Legal Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
     * Details: Set Tracking to "USPS Tracking"
 
     * Toolbar: Add
@@ -1558,7 +1558,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
+    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     * Details: Set Tracking to "Signature Required"
 
     # Media Mail
@@ -1569,7 +1569,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Set Service to "Media Mail Package"
+    * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1581,7 +1581,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Set Service to "Parcel Select Ground Package"
+    * Details: Select Service Parcel Select Ground Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1591,7 +1591,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Set Service to "Parcel Select Ground Large Package"
+    * Details: Select Service Parcel Select Ground Large Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1601,7 +1601,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Set Service to "Parcel Select Ground Oversized Package"
+    * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1626,7 +1626,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -1647,7 +1647,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "Priority Mail International Flat Rate Envelope"
+    Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     Then Sign out
 

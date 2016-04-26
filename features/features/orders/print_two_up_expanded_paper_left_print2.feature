@@ -8,12 +8,12 @@ Feature: Print 2 Domestic labels on 8.5x11 - left side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to PM FR Envelope, 8.5x11, 2105 Kietzke Ln, Reno NV 89502-3602
-    Then Details: Set Service to "Priority Mail Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to PM PFR Envelope, 8.5x11, 557 County Rd. H, Fredonia WI 53021-9634
-    Then Details: Set Service to "Priority Mail Padded Flat Rate Envelope"
+    Then Details: Select Service Priority Mail Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Grid: Check row 1
     Then Grid: Check row 2

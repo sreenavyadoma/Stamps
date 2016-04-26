@@ -9,7 +9,7 @@ Feature:  BVT Order Creation
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
 
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1

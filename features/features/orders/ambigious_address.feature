@@ -22,6 +22,6 @@ Feature: Ambigious Address
     Then Grid: Expect State to be CA
     Then Grid: Expect Zip to be 94102
     Then Details: Hide Ship-To fields
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Sign out
 

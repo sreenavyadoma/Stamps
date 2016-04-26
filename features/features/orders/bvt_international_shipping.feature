@@ -19,5 +19,5 @@ Feature:  BVT International Shipping
     Then Customs: Set More Info to "BVT International Shipping"
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
-    Then Details: Set Service to "First-Class Mail International Large Envelope/Flat"
+    Then Details: Select Service First-Class Mail International Large Envelope/Flat
     Then Sign out

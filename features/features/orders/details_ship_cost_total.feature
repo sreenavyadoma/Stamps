@@ -17,7 +17,7 @@ Feature: Details Ship Cost Total
     Then Details: Expect Total to be $0.00
 
     Then Details: Set Ship-To to Random Address in Zone 8
-    Then Details: Set Service to "Priority Mail Package"
+    Then Details: Select Service Priority Mail Package
     Then Details: Set Insure-For to $100.00
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1
