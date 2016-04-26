@@ -165,6 +165,9 @@ module Orders
               grid.wait_until_present
               log.info "#{username} Orders Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
+              username_textbox.set username
+              password_textbox.set password
+
               break if grid.present?
               break if grid.present?
               break if grid.present?
@@ -172,6 +175,8 @@ module Orders
 
               toolbar.wait_until_present
               grid.wait_until_present
+              username_textbox.set username
+              password_textbox.set password
               break if grid.present?
               break if grid.present?
               break if grid.present?
