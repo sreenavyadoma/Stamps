@@ -38,7 +38,7 @@ module Print
     end
 
     def button
-      StampsButton.new @browser.span :id => "sdc-undefinedwindow-continuebtn-btnIconEl"
+      StampsButton.new @browser.a :id => "sdc-undefinedwindow-continuebtn"
     end
 
     def present?
@@ -46,7 +46,7 @@ module Print
     end
 
     def window_title
-      StampsLabel.new @browser.span text => "Confirm Print"
+      StampsLabel.new @browser.span(text: "Confirm Print")
     end
 
     def dont_prompt_deducting_postage_again
@@ -54,7 +54,12 @@ module Print
     end
 
     def continue
-      button.safe_click
+      sleep 1
+      6.times do
+        button.safe_click
+        sleep 1
+        break unless button.present?
+      end
     end
   end
 
@@ -82,6 +87,12 @@ module Print
           selection_label = StampsLabel.new @browser.li :text => /Brother/
         when /officejet/
           selection_label = StampsLabel.new @browser.li :text => /Officejet/
+        when /dymo/
+          selection_label = StampsLabel.new @browser.li :text => /DYMO/
+        when /zdesigner/
+          selection_label = StampsLabel.new @browser.li :text => /ZDesigner/
+
+
         else
           stop_test "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
       end
@@ -138,11 +149,11 @@ module Print
       button = print_button
       5.times {
         begin
-          sleep(1)
+          sleep 1
           button.safe_click
           sleep 1
           button.safe_click
-          sleep(1)
+          sleep 1
           printing_error = printing_error_check
           return printing_error if printing_error.length > 1
           break unless button.present?
