@@ -18,7 +18,7 @@ Feature: Grid: Tracking & Order Status
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
-    Then Grid: Order ID: Sort Descending
+    #Then Grid: Order ID: Sort Descending
     Then Grid: Expect Tracking Number is populated
     Then Grid: Expect Order Status to be Shipped
 
@@ -34,7 +34,7 @@ Feature: Grid: Tracking & Order Status
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
-    Then Grid: Order ID: Sort Descending
+    #Then Grid: Order ID: Sort Descending
     Then Grid: Expect Tracking Number is populated
     Then Grid: Expect Order Status to be Shipped
 
