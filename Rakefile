@@ -1659,3 +1659,213 @@ Cucumber::Rake::Task.new(:wp_stamps_wn_series_specify) do |t|
   t.profile = 'wp_stamps_wn_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_fcm_large_envelope) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_fcm_large_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_fcm_package) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_fcm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_mm_package) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_mm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_fr_envelope) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_fr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_large_box) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_large_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_large_envelope) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_large_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_large_package) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_large_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_lfr_envelope) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_medium_box) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_medium_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_package) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_pfr_envelope) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_regional_box_a) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_regional_box_a'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_regional_box_b) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_regional_box_b'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_small_box) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_small_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_psg_large_package) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_psg_large_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_psg_oversized_package) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_psg_oversized_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_psg_package) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_psg_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_xm_fr_envelope) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_xm_fr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_xm_lfr_envelope) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_xm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_xm_package) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_xm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_xm_pfr_envelope) do |t|
+  t.profile = 'wp_roll_4_1_8_x_6_1_4_xm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_fcm_large_envelope) do |t|
+  t.profile = 'wp_roll_4x6_fcm_large_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_fcm_package) do |t|
+  t.profile = 'wp_roll_4x6_fcm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_mm_package) do |t|
+  t.profile = 'wp_roll_4x6_mm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_fr_envelope) do |t|
+  t.profile = 'wp_roll_4x6_pm_fr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_large_box) do |t|
+  t.profile = 'wp_roll_4x6_pm_large_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_large_envelope) do |t|
+  t.profile = 'wp_roll_4x6_pm_large_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_large_package) do |t|
+  t.profile = 'wp_roll_4x6_pm_large_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_lfr_envelope) do |t|
+  t.profile = 'wp_roll_4x6_pm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_medium_box) do |t|
+  t.profile = 'wp_roll_4x6_pm_medium_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_package) do |t|
+  t.profile = 'wp_roll_4x6_pm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_pfr_envelope) do |t|
+  t.profile = 'wp_roll_4x6_pm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_regional_box_a) do |t|
+  t.profile = 'wp_roll_4x6_pm_regional_box_a'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_regional_box_b) do |t|
+  t.profile = 'wp_roll_4x6_pm_regional_box_b'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_pm_small_box) do |t|
+  t.profile = 'wp_roll_4x6_pm_small_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_psg_large_package) do |t|
+  t.profile = 'wp_roll_4x6_psg_large_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_psg_oversized_package) do |t|
+  t.profile = 'wp_roll_4x6_psg_oversized_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_psg_package) do |t|
+  t.profile = 'wp_roll_4x6_psg_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_xm_fr_envelope) do |t|
+  t.profile = 'wp_roll_4x6_xm_fr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_xm_lfr_envelope) do |t|
+  t.profile = 'wp_roll_4x6_xm_lfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_xm_package) do |t|
+  t.profile = 'wp_roll_4x6_xm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:wp_roll_4x6_xm_pfr_envelope) do |t|
+  t.profile = 'wp_roll_4x6_xm_pfr_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
