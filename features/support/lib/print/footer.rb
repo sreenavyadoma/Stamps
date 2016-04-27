@@ -53,13 +53,14 @@ module Print
         return window if window.present?
         print = print_button
 
-        print.click
-
         naws_plugin_error = NawsPluginError.new @browser
         error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
         install_plugin_error = ErrorInstallPlugin.new @browser
+        confirm_window = Print::Postage::ConfirmPrint.new @browser
 
         20.times do
+          print.click
+
           if install_plugin_error.present?
             install_plugin_error.close
             return nil
@@ -80,14 +81,12 @@ module Print
                 break unless naws_plugin_error.present?
               }
             end
-            confirm_window = Print::Postage::ConfirmPrint.new @browser
+
             if confirm_window.present?
               log.info "Confirm Print"
               confirm_window.continue
             end
             return window if window.present?
-
-            print.click
           rescue
             #ignore
           end
