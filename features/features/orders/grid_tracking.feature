@@ -6,6 +6,7 @@ Feature: Grid: Tracking & Order Status
 
   @grid_tracking
   Scenario: Tracking & Order Status
+
     Then Toolbar: Add
     Then Grid: Expect Order Status to be Awaiting Shipment
     Then Details: Set Ship-From to default
@@ -39,3 +40,5 @@ Feature: Grid: Tracking & Order Status
     Then Grid: Expect Order Status to be Shipped
 
     Then Sign out
+
+

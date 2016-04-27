@@ -1365,7 +1365,7 @@ module Orders
         end
 
         selection_label = StampsLabel.new ship_from_selection_field
-
+        service_text = ""
         if service.downcase.include? "manage shipping"
           10.times{
             begin
