@@ -14,6 +14,7 @@ Feature: Grid: Tracking & Order Status
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Tracking to "USPS Tracking"
     Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
@@ -29,6 +30,7 @@ Feature: Grid: Tracking & Order Status
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Tracking to "Signature Required"
     Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
