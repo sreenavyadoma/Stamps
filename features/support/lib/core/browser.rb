@@ -121,7 +121,11 @@ module Stamps
       end
 
       def scroll_into_view
-        @browser.execute_script('arguments[0].scrollIntoView();', @field)
+        begin
+          @browser.execute_script('arguments[0].scrollIntoView();', @field)
+        rescue
+          # ignore
+        end
       end
 
       def safe_scroll_into_view

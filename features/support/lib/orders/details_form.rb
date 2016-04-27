@@ -1352,7 +1352,7 @@ module Orders
 
         return @manage_shipping_adddress if @manage_shipping_adddress.present?
 
-        ship_from_default_selection_field = @browser.div :css => "div[data-recordindex='0']"
+        ship_from_default_selection_field = (@browser.lis css: "li[data-recordindex='0']").first
         ship_from_dropdown = drop_down
         ship_from_textbox = text_box
 
@@ -1365,7 +1365,7 @@ module Orders
         end
 
         selection_label = StampsLabel.new ship_from_selection_field
-
+        service_text = ""
         if service.downcase.include? "manage shipping"
           10.times{
             begin
