@@ -117,7 +117,7 @@ Feature: Local Rating test for zone 1
     Then Details: Expect Total to be $10.72
 
     Then Details: Set Ship-To to Random Address in Zone 1
-    Then Details: Select Service Parcel Select Ground Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 25 lbs 0 oz
     Then Details: Set Tracking to "Signature Required"
     Then Details: Expect Total to be $20.21

@@ -212,7 +212,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Select Service Parcel Select Ground Package
+    * Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -486,7 +486,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Select Service Parcel Select Ground Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -759,7 +759,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Select Service Parcel Select Ground Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1033,7 +1033,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Select Service Parcel Select Ground Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1307,7 +1307,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Select Service Parcel Select Ground Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 
@@ -1581,7 +1581,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Select Service Parcel Select Ground Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to "USPS Tracking"
 

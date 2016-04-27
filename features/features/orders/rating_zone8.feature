@@ -111,13 +111,13 @@ Feature: Local Rating test for zone 8
     Then Details: Expect Total to be $21.72
 
     Then Details: Set Ship-To to Random Address in Zone 8
-    Then Details: Select Service Parcel Select Ground Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 12 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $40.14
 
     Then Details: Set Ship-To to Random Address in Zone 8
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 24 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $60.47
