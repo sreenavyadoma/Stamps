@@ -9,7 +9,7 @@ Feature: Stamps WN Series - Specify Postage
   @wp_stamps_wn_series_specify
   Scenario: Stamps Regression WN Series - Specify Postage
     Then Postage: Select Stamps
-    Then Postage Stamps: Set Serial Number to WN12345
+    Then Postage Stamps: Set Serial Number to WN1234
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
