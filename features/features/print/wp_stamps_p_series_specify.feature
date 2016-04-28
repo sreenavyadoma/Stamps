@@ -13,7 +13,7 @@ Feature: Stamps P Series - Specify Postage
     Then Postage Stamps: Select Specify Postage Amount
     Then Postage Stamps: Set Ship-From to default
     Then Postage Stamps: Set Ship-To country to United States
-    Then Postage Stamps: Select Specify Postage Service Media Mail
+    Then Postage Stamps: Select Specify Postage Service First Class
     Then Postage Stamps: Set Stamp Amount to $0.15
     Then Postage Stamps: Set Quantity to 1
     Then Postage Stamps: Set Cost Code to None
