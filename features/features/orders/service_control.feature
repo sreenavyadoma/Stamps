@@ -37,7 +37,7 @@
     Then Details: Select Service Priority Mail Regional Rate Box B
     Then Details: Expect Service to be "Priority Mail Regional Rate Box B"
 
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     Then Details: Expect Service to be "Priority Mail Express Package"
 
     Then Details: Select Service Priority Mail Express Flat Rate Envelope

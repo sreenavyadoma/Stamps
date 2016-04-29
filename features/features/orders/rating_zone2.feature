@@ -87,7 +87,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Total to be $6.71
 
     Then Details: Set Ship-To to Random Address in Zone 2
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     Then Details: Set Weight to 9 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $30.92

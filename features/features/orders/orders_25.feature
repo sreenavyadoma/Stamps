@@ -213,7 +213,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     Then Details: Set Tracking to "Signature Required"
 
     Then Toolbar: Add

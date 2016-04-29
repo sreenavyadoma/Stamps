@@ -81,7 +81,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Total to be $16.35
 
     Then Details: Set Ship-To to Random Address in Zone 7
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     Then Details: Set Weight to 22 lbs 1 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $122.31

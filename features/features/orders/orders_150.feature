@@ -153,7 +153,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -427,7 +427,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -700,7 +700,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -974,7 +974,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1248,7 +1248,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
@@ -1522,7 +1522,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    * Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     * Details: Set Tracking to "Signature Required"
 
     * Toolbar: Add
