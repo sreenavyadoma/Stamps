@@ -2,16 +2,28 @@ Then /^Postage: Select Stamps$/ do
   step "Postage: Set Print On Stamps"
 end
 
-Then /^Postage: Select Shipping Label 5 x 8$/ do
-  step "Postage: Set Print On Shipping Label - 5 ½” x 8 ½”"
+Then /^Postage: Select Roll 4 ⅛ x 6 ¼$/ do
+  step "Postage: Set Print On Roll - 4 ⅛” x 6 ¼” Shipping Label"
+end
+
+Then /^Postage: Select Roll 4 x 6$/ do
+  step "Postage: Set Print On Roll - 4” x 6” Shipping Label"
 end
 
 Then /^Postage: Select Shipping Label 8 x 11$/ do
-  step "Postage: Set Print On Shipping Label - 8 ½” x 11” Paper"
+  step "Postage: Set Print On Select Roll 4 ⅛” x 6 ¼"
 end
 
 Then /^Postage: Select Shipping Label SDC-1200$/ do
   step "Postage: Set Print On Shipping Label - Stamps.com SDC-1200, 4 ¼” x 6 ¾”"
+end
+
+Then /^Postage: Select Roll$/ do
+  step "Postage: Set Print On Shipping Label - 5 ½” x 8 ½”"
+end
+
+Then /^Postage: Select Shipping Label 5 x 8$/ do
+  step "Postage: Set Print On Shipping Label - 5 ½” x 8 ½”"
 end
 
 Then /^Postage: Select Envelope - #10$/ do
