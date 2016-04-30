@@ -12,6 +12,7 @@ Feature: Test Development
     Then Print: Open Modal
     Then Print: Set Ship Date to today
     # factory selection sends printout to PDF Factory.  You will need to rename your PDF Factory printer to factory.
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     # Sends your printouts to Kyocera printer next to the post office.
     Then Print: Set Printer to "Kyocera"

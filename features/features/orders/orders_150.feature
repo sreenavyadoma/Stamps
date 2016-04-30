@@ -222,7 +222,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -496,7 +496,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -769,7 +769,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1043,7 +1043,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1317,7 +1317,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 
@@ -1591,7 +1591,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Pounds to 22
-    * Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to "Signature Required"
 

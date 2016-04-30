@@ -123,7 +123,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Total to be $7.55
 
     Then Details: Set Ship-To to Random Address in Zone 2
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 12 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $10.77

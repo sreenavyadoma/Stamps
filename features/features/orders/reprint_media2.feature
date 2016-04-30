@@ -14,7 +14,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | Reprint Test | 4x6 roll | PSC 3 BOX 4120  | APO  | AE     |  09021  | United States | 8885551212 | test@stamps.com |
     Then Details: Set Weight to 2 lbs 1 oz
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 2, Oz 1 Origin United States, Tariff 10

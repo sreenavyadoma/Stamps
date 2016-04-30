@@ -117,7 +117,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Total to be $12.06
 
     Then Details: Set Ship-To to Random Address in Zone 5
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 17 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $21.23
