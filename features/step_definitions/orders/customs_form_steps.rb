@@ -307,7 +307,7 @@ Then /^Customs: Expect I agree to the USPS Privacy Act Statement is checked$/ do
   actual_value.should eql expectation
 end
 
-Then /^Customs: Uncheck  I agree to the USPS Privacy Act Statement$/ do
+Then /^Customs: Uncheck I agree to the USPS Privacy Act Statement$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @order_details.customs_form.i_agree.uncheck
 end
