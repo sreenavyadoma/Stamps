@@ -37,6 +37,6 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
-    Then Expect Print Modal left-side label selected
+    Then Print: Expect left-side label selected
     Then Print: Print
     Then Sign out

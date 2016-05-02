@@ -21,6 +21,6 @@ Feature: Print 2 Domestic labels on 8.5x11 - right side
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Select right-side label
-    Then Expect Print Modal right-side label selected
+    Then Print: Expect right-side label selected
     Then Print: Print
     Then Sign out

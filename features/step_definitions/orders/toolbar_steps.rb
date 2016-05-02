@@ -36,17 +36,6 @@ Then /^Toolbar: Refresh Orders$/ do
   orders.toolbar.refresh_orders
 end
 
-Then /^Print: Open Modal$/ do
-  log.info "Print: Open Modal"
-  @print_window = orders.toolbar.print_modal
-end
-
-Then /^Print: Close Modal$/ do
-  log.info "Print: Close Modal"
-  step "Print: Expect Print Modal is present"
-  @print_window.close
-end
-
 Then /^Print: Expect Print Modal is present$/ do
   expectation = "present"
   if @print_window.nil?

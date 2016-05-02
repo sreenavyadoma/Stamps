@@ -21,6 +21,6 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
     Then Print: Set Printing On "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print: Set Printer to "factory"
     Then Print: Select right-side label
-    Then Expect Print Modal right-side label selected
+    Then Print: Expect right-side label selected
     Then Print: Print
     Then Sign out
