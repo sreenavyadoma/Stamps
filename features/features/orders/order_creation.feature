@@ -59,7 +59,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     Then Details: Set Tracking to "Signature Required"
 
     Then Toolbar: Add
@@ -85,7 +85,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Pounds to 10
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $235.00
     Then Details: Set Tracking to "USPS Tracking"
 
@@ -148,7 +148,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     Then Details: Set Tracking to "Signature Required"
 
     Then Toolbar: Add
@@ -174,7 +174,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Pounds to 10
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $235.00
     Then Details: Set Tracking to "USPS Tracking"
 
@@ -233,7 +233,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     Then Details: Set Tracking to "Signature Required"
 
     Then Toolbar: Add
@@ -259,7 +259,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Pounds to 10
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $235.00
     Then Details: Set Tracking to "USPS Tracking"
 

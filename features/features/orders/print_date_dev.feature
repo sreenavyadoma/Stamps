@@ -11,6 +11,7 @@ Feature: Date Printed Development
     Then Details: Set Ounces to 4
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
@@ -23,6 +24,7 @@ Feature: Date Printed Development
     Then Details: Set Ounces to 4
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Set Ship Date to today plus 1
     Then Print: Print
@@ -36,6 +38,7 @@ Feature: Date Printed Development
     Then Details: Set Ounces to 4
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Set Ship Date to today plus 2
     Then Print: Print
@@ -49,6 +52,7 @@ Feature: Date Printed Development
     Then Details: Set Ounces to 4
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Set Ship Date to today plus 3
     Then Print: Print

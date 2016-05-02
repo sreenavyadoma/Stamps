@@ -87,7 +87,7 @@ Feature: Local Rating test for zone 4
     Then Details: Expect Total to be $8.75
 
     Then Details: Set Ship-To to Random Address in Zone 4
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     Then Details: Set Weight to 26 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $110.25
@@ -117,13 +117,13 @@ Feature: Local Rating test for zone 4
     Then Details: Expect Total to be $17.22
 
     Then Details: Set Ship-To to Random Address in Zone 4
-    Then Details: Select Service Parcel Select Ground Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 45 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $40.28
 
     Then Details: Set Ship-To to Random Address in Zone 4
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 21 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $13.32

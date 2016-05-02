@@ -9,7 +9,7 @@ Then /^Postage Shipping Labels: Select Service First-Class Mail Large Envelope-F
 end
 
 Then /^Postage Shipping Labels: Select Service First-Class Mail Package-Thick Envelope$/ do
-  step "Postage Shipping Labels: Set Service to First-Class Mail Package/Thick Envelope"
+  step "Postage Shipping Labels: Set Service to First Class Mail Package/Thick Envelope"
 end
 
 Then /^Postage Shipping Labels: Select Service Priority Mail Large-Thick Envelope$/ do

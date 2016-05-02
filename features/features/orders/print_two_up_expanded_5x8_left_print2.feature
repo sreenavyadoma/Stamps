@@ -8,7 +8,7 @@ Feature: Print 2 Domestic labels on 5.5x8.5 - left side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to PS Large Package, 5.5x8.5, 530 K Street Unit 504, San Diego CA 92101-7060
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Ounces to 1
     Then Toolbar: Add
     Then Details: Set Ship-From to default

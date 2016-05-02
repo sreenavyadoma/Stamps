@@ -1869,3 +1869,8 @@ Cucumber::Rake::Task.new(:wp_roll_4x6_xm_pfr_envelope) do |t|
   t.profile = 'wp_roll_4x6_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:wp_print_on_list_of_values) do |t|
+  t.profile = 'wp_print_on_list_of_values'
+  t.cucumber_opts = "-p cuke_reports"
+end

@@ -20,6 +20,6 @@ Then /^Postage Stamps: Select Specify Postage Service Media Mail$/ do
 end
 
 Then /^Postage Stamps: Select Specify Postage Service First Class$/ do
-  step "Postage Stamps: Set Specify Postage Service to First Class (1 - 3 Days)"
+  step "Postage Stamps: Set Specify Postage Service to First Class Mail (1 - 3 Days)"
 end
 

@@ -2,8 +2,12 @@ Then /^Postage: Select Stamps$/ do
   step "Postage: Set Print On Stamps"
 end
 
-Then /^Postage: Select Shipping Label 5 x 8$/ do
-  step "Postage: Set Print On Shipping Label - 5 ½” x 8 ½”"
+Then /^Postage: Select Roll 4 ⅛ x 6 ¼$/ do
+  step "Postage: Set Print On Roll - 4 ⅛” x 6 ¼” Shipping Label"
+end
+
+Then /^Postage: Select Roll 4 x 6$/ do
+  step "Postage: Set Print On Roll - 4” x 6” Shipping Label"
 end
 
 Then /^Postage: Select Shipping Label 8 x 11$/ do
@@ -12,6 +16,10 @@ end
 
 Then /^Postage: Select Shipping Label SDC-1200$/ do
   step "Postage: Set Print On Shipping Label - Stamps.com SDC-1200, 4 ¼” x 6 ¾”"
+end
+
+Then /^Postage: Select Shipping Label 5 x 8$/ do
+  step "Postage: Set Print On Shipping Label - 5 ½” x 8 ½”"
 end
 
 Then /^Postage: Select Envelope - #10$/ do
@@ -44,6 +52,22 @@ end
 
 Then /^Postage: Select Envelope - #A9$/ do
   step "Postage: Set Print On Envelope - #A9, 5 ¾” x 8 ¾”"
+end
+
+Then /^Postage: Select Certified Mail SDC-3610$/ do
+  step "Postage: Set Print On Certified Mail Label - Stamps.com SDC-3610"
+end
+
+Then /^Postage: Select Certified Mail SDC-3710$/ do
+  step "Postage: Set Print On Certified Mail Label - Stamps.com SDC-3710"
+end
+
+Then /^Postage: Select Certified Mail SDC-3910$/ do
+  step "Postage: Set Print On Certified Mail Label - Stamps.com SDC-3910"
+end
+
+Then /^Postage: Select Certified Mail SDC-3810$/ do
+  step "Postage: Set Print On Certified Mail #11 Envelope - Stamps.com SDC-3810"
 end
 
 Then /^Postage: Set Print On (.*)/ do |media|

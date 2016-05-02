@@ -206,10 +206,6 @@ module Orders
           return true if sort_verify_field.attribute_value("class").include? verify_sort
           sleep 1
           return true if sort_verify_field.attribute_value("class").include? verify_sort
-          sleep 1
-          return true if sort_verify_field.attribute_value("class").include? verify_sort
-          sleep 1
-          return true if sort_verify_field.attribute_value("class").include? verify_sort
         }
         false
       end

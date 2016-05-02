@@ -87,7 +87,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Total to be $7.90
 
     Then Details: Set Ship-To to Random Address in Zone 3
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
     Then Details: Set Weight to 11 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $48.06
@@ -117,13 +117,13 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Total to be $8.72
 
     Then Details: Set Ship-To to Random Address in Zone 3
-    Then Details: Select Service Parcel Select Ground Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 23 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $16.07
 
     Then Details: Set Ship-To to Random Address in Zone 3
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 33 lbs 0 oz
     Then Details: Set Tracking to "USPS Tracking"
     Then Details: Expect Total to be $25.69

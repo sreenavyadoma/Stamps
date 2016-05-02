@@ -326,8 +326,8 @@ module Orders
         return if input.text.include? printer
 
         case printer.downcase
-          when /fac/
-            selection_label = StampsLabel.new @browser.li :text => /fac/
+          when /factory/
+            selection_label = StampsLabel.new @browser.li :text => /factory/
           when /kyocera/
             selection_label = StampsLabel.new @browser.li :text => /Kyocera/
           when /epson/
@@ -342,11 +342,12 @@ module Orders
             stop_test "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
         end
 
-        5.times do
+        8.times do
           return if input.text.include? printer
           dd.safe_click unless selection_label.present?
           selection_label.safe_click
         end
+        stop_test "Unable to select Printer #{printer}.  Check and make sure the printer exist in this PC."
       end
     end
 

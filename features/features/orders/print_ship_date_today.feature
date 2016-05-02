@@ -11,6 +11,7 @@ Feature: Set Print Ship Date to Today
     Then Details: Set Ounces to 4
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
