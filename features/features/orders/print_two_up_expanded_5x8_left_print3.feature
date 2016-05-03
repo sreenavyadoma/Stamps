@@ -31,6 +31,6 @@ Feature: Print 3 Domestic labels on 5.5x8.5 - left side
     Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
-    Then Expect Print Modal left-side label selected
+    Then Print: Expect left-side label selected
     Then Print: Print
     Then Sign out

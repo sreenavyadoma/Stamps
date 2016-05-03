@@ -14,6 +14,22 @@ Then /^Filter: Select Cancelled$/ do
   orders.filter.cancelled
 end
 
+Then /^Filter: Expect Shipped Tab Date Printed to be today$/ do
+  today = test_helper.now_plus_mon_dd 0
+  orders.filter.shipped.date_printed.menu.sort_descending
+  actual_print_date = orders.filter.shipped.date_printed.row 1
+  log.info "#{(actual_print_date)}"
+  log.info "Step: Shipped Tab Date Printed to be today #{today}"
+end
+
+Then /^Filter: Expect Shipped Tab Ship Date to be today$/ do
+
+end
+
+Then /^Filter: Expect Shipped Tab Ship Date to be today plus (\d+)/ do |day|
+
+end
+
 Then /^Filter: Expect order moved to Shipped$/ do
   log.info "Filter: Expect order moved to Shipped"
   grid = orders.filter.shipped

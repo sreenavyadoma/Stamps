@@ -31,7 +31,7 @@ Feature: Print two labels on one sheet
     Then Print: Set Printer to "factory"
 
     Then Print: Select right-side label
-    Then Expect Print Modal right-side label selected
+    Then Print: Expect right-side label selected
     Then Print: Print
 
     Then Pause for 6 seconds

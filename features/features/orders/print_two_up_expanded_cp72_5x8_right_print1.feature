@@ -22,6 +22,6 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - right side
     Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
     Then Print: Select right-side label
-    Then Expect Print Modal right-side label selected
+    Then Print: Expect right-side label selected
     Then Print: Print
     Then Sign out

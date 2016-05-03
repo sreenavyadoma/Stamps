@@ -13,7 +13,7 @@ Feature:  Print Window Title - You have x-number of labels ready to print
     Then Details: Set Weight to 1 lbs 1 oz
     Then Print: Open Modal
     Then Print: Expect Modal Title to be "You have 1 label(s) ready to print"
-    Then Close Print Modal
+    Then Print: Close Modal
 
     Then Toolbar: Add
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
@@ -24,6 +24,6 @@ Feature:  Print Window Title - You have x-number of labels ready to print
     Then Grid: Check row 2
     Then Print: Open Modal
     Then Print: Expect Modal Title to be "You have 2 label(s) ready to print"
-    Then Close Print Modal
+    Then Print: Close Modal
 
     Then Sign out

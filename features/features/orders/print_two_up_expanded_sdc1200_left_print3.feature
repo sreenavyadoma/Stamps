@@ -27,7 +27,7 @@ Feature: User Prints 3 Domestic labels on SDC-1200 - left side
     Then Print: Set Printing On "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print: Set Printer to "factory"
     Then Print: Select left-side label
-    Then Expect Print Modal left-side label selected
+    Then Print: Expect left-side label selected
     Then Print: Print Sample
     Then Print: Print
     Then Pause for 6 seconds
