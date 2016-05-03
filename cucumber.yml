@@ -204,7 +204,6 @@ wp_bvt_netstamps_specify: --tags  @wp_bvt_netstamps_specify --guess VERBOSE=fals
 wp_bvt_international: --tags  @wp_bvt_international --guess VERBOSE=false HEALTHCHECK=true
 
 
-
 wp_label_left_side: --tags  @wp_label_left_side --guess VERBOSE=false HEALTHCHECK=true
 wp_label_right_side: --tags  @wp_label_right_side --guess VERBOSE=false HEALTHCHECK=true
 wp_envelope_regression: --tags  @wp_envelope_regression --guess VERBOSE=false HEALTHCHECK=true
