@@ -307,7 +307,7 @@ Then /^Customs: Expect I agree to the USPS Privacy Act Statement is checked$/ do
   actual_value.should eql expectation
 end
 
-Then /^Customs: Uncheck  I agree to the USPS Privacy Act Statement$/ do
+Then /^Customs: Uncheck I agree to the USPS Privacy Act Statement$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @order_details.customs_form.i_agree.uncheck
 end
@@ -493,52 +493,4 @@ Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
   actual_value = @customs_form.total_weight_oz
   log.info "Test #{(actual_value == expectation)?'Passed':'Failed'}"
   actual_value.should eql expectation
-end
-
-Then /^Expect Customs Form Tooltip Error for Total Weight to be (.+)$/ do |expectation|
-  log.info "Step: Expect Customs Form Tooltip Error for Total Weight to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  data_error_qtip = @customs_form.total_weight.data_error
-  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
-  data_error_qtip.should include expectation
-end
-
-Then /^Expect Customs Form Tooltip Error for Item Description to be (.*)$/ do |expectation|
-  log.info "Step: Expect Customs Form Tooltip Error for Item Description to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  data_error_qtip = @customs_form.item_grid.item(1).description.data_error_qtip
-  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
-  data_error_qtip.should include expectation
-end
-
-Then /^Expect Customs Form Tooltip Error for Qty to be (.*)$/ do |expectation|
-  log.info "Step: Expect Customs Form Tooltip Error for Qty to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  data_error_qtip = @customs_form.item_grid.item(1).qty.text_box.data_error_qtip
-  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
-  data_error_qtip.should include expectation
-end
-
-Then /^Expect Customs Form Tooltip Error for Unit Price to be (.*)$/ do |expectation|
-  log.info "Step: Expect Customs Form Tooltip Error for Unit Price to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  data_error_qtip = @customs_form.item_grid.item(1).unit_price.text_box.data_error_qtip
-  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
-  data_error_qtip.should include expectation
-end
-
-Then /^Expect Customs Form Tooltip Error for Pounds to be (.*)$/ do |expectation|
-  log.info "Step: Expect Customs Form Tooltip Error for Pounds to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  data_error_qtip = @customs_form.item_grid.item(1).lbs.text_box.data_error_qtip
-  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
-  data_error_qtip.should include expectation
-end
-
-Then /^Expect Customs Form Tooltip Error for Ounces to be (.*)$/ do |expectation|
-  log.info "Step: Expect Customs Form Tooltip Error for Ounces to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  data_error_qtip = @customs_form.item_grid.item(1).oz.text_box.data_error_qtip
-  log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
-  data_error_qtip.should include expectation
 end

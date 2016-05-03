@@ -75,7 +75,7 @@ Then /^Postage Customs: Check I agree to the USPS Privacy Act Statement$/ do
   @customs_form.i_agree.check
 end
 
-Then /^Postage Customs: Uncheck  I agree to the USPS Privacy Act Statement$/ do
+Then /^Postage Customs: Uncheck I agree to the USPS Privacy Act Statement$/ do
   log.info "Step: Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @customs_form.i_agree.uncheck
 end

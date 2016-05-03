@@ -1,3 +1,14 @@
+
+Then /^Print: Open Modal$/ do
+  log.info "Print: Open Modal"
+  @print_window = orders.toolbar.print_modal
+end
+
+Then /^Print: Close Modal$/ do
+  log.info "Step: Print: Close Modal"
+  orders.toolbar.print_modal.close
+end
+
 Then /^Print: Set Printer to \"(.*)\"$/ do |printer|
   log.info "Print: Set Printer to \"#{printer}\""
   orders.toolbar.print_modal.printer.select printer
@@ -49,32 +60,16 @@ When /^Print: Select right-side label$/ do
   log.info "Print Modal right-side label was #{(selected)?'selected.':'not selected'}"
 end
 
-Then /^Expect Print Modal right-side label selected$/ do
-  log.info "Step: Expect Print Modal right-side label selected"
+Then /^Print: Expect right-side label selected$/ do
+  log.info "Step: Print: Expect right-side label selected"
   selected = orders.toolbar.print_modal.starting_label.right_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
 end
 
-Then /^Expect Print Modal left-side label selected$/ do
-  log.info "Step: Expect Print Modal left-side label selected"
+Then /^Print: Expect left-side label selected$/ do
+  log.info "Step: Print: Expect left-side label selected"
   selected = orders.toolbar.print_modal.starting_label.left_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
-end
-
-Then /^Expect Shipped Tab Date Printed to be today$/ do
-  today = test_helper.now_plus_mon_dd 0
-  orders.filter.shipped.date_printed.menu.sort_descending
-  actual_print_date = orders.filter.shipped.date_printed.row 1
-  log.info "#{(actual_print_date)}"
-  log.info "Step: Shipped Tab Date Printed to be today #{today}"
-end
-
-Then /^Expect Shipped Tab Ship Date to be today$/ do
-
-end
-
-Then /^Expect Shipped Tab Ship Date to be today plus (\d+)/ do |day|
-
 end
 
 Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
@@ -102,23 +97,8 @@ Then /^Select Printer \"(.*)\"$/ do |printer|
   orders.toolbar.print_modal.printer.select printer
 end
 
-Then /^Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |expectation, data_qtip|
-  log.info "Expect Print Modal Print Media #{expectation} tooltip to include #{data_qtip}"
-  tooltips = data_qtip.split "||"
-  actual_tooltip = orders.toolbar.print_modal.printing_on.tooltip expectation
-  tooltips.each { |tooltip|
-    log.info "Test #{(actual_tooltip.include? tooltip)?"Passed":"Failed"}"
-    actual_tooltip.should include tooltip
-  }
-end
-
-Then /^Close Print Modal$/ do
-  log.info "Step: Close Print Modal"
-  orders.toolbar.print_modal.close
-end
-
 Then /^Close Reprint Modal$/ do
-  log.info "Step: Close Print Modal"
+  log.info "Step: Print: Close Modal"
   orders.toolbar.reprint.close
 end
 

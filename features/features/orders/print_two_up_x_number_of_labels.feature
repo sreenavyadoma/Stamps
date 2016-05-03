@@ -14,7 +14,7 @@ Feature:  Requires x-number of label sheets
     Then Print: Open Modal
     Then Print: Expect number of required label sheets to be 1
     Then Print: Expect Modal Title to be "You have 1 label(s) ready to print"
-    Then Close Print Modal
+    Then Print: Close Modal
 
     Then Toolbar: Add
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
@@ -26,6 +26,6 @@ Feature:  Requires x-number of label sheets
     Then Print: Open Modal
     Then Print: Expect number of required label sheets to be 1
     Then Print: Expect Modal Title to be "You have 2 label(s) ready to print"
-    Then Close Print Modal
+    Then Print: Close Modal
 
     Then Sign out

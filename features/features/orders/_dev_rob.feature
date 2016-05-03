@@ -108,7 +108,7 @@ Feature: Test Development
     Then Print: Open Modal
     Then Print: Set Ship Date to today plus 1
     Then Print: Print
-    Then Expect Shipped Tab Date Printed to be today
+    Then Filter: Expect Shipped Tab Date Printed to be today
     Then Print: Set Ship Date to today plus 3
 
     Then Toolbar: Add
@@ -123,8 +123,8 @@ Feature: Test Development
     Then Print: Open Modal
     Then Print: Set Ship Date to today plus 2
     Then Print: Print
-    Then Expect Shipped Tab Date Printed to be today
-    Then Expect Shipped Tab Ship Date to be today plus 2
+    Then Filter: Expect Shipped Tab Date Printed to be today
+    Then Filter: Expect Shipped Tab Ship Date to be today plus 2
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -138,8 +138,8 @@ Feature: Test Development
     Then Print: Open Modal
     Then Print: Set Ship Date to today plus 3
     Then Print: Print
-    Then Expect Shipped Tab Date Printed to be today
-    Then Expect Shipped Tab Ship Date to be today plus 3
+    Then Filter: Expect Shipped Tab Date Printed to be today
+    Then Filter: Expect Shipped Tab Ship Date to be today plus 3
 
   Scenario:
     Then Toolbar: Add
@@ -153,15 +153,15 @@ Feature: Test Development
     Then Details: Set Width to 1
     Then Print: Open Modal
     Then Print: Select left-side label
-    Then Expect Print Modal left-side label selected
+    Then Print: Expect left-side label selected
 
     Then Print: Select right-side label
-    Then Expect Print Modal right-side label selected
+    Then Print: Expect right-side label selected
 
     Then Print: Set Ship Date to today
     Then Print: Print
-    Then Expect Shipped Tab Date Printed to be today
-    Then Expect Shipped Tab Ship Date to be today
+    Then Filter: Expect Shipped Tab Date Printed to be today
+    Then Filter: Expect Shipped Tab Ship Date to be today
 
   @rob_dev2
   Scenario:
