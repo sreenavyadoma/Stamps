@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile ray_dev # import_orders_ship_from_test
+default: --profile cuke_reports --profile eli_dev # import_orders_ship_from_test
 
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800 wp_bvt_international
@@ -11,7 +11,7 @@ rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=
 #details_placeholders
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
-eli_dev: --tags @wp_roll_4x6_pm_lfr_envelope   --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=win10ie1000 PW=pass111
+eli_dev: --tags @wp_roll_4x6_xm_pfr_envelope   --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=win10ie1000 PW=pass111
 ray_dev: --tags @wp_print_on_list_of_values --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=webpost_0017 PW=pass111
 eva_dev: --tags   @details_panel --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=ss_cctest3 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
@@ -413,7 +413,7 @@ wp_roll_4x6_psg_package: --tags  @wp_roll_4x6_psg_package --guess VERBOSE=false 
 wp_roll_4x6_xm_fr_envelope: --tags  @wp_roll_4x6_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=true
 wp_roll_4x6_xm_lfr_envelope: --tags  @wp_roll_4x6_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=true
 wp_roll_4x6_xm_package: --tags  @wp_roll_4x6_xm_package --guess VERBOSE=false HEALTHCHECK=true
-wp_roll_4x6_xm_pfr_envelope: --tags  @wp_roll_4x6__xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=true
+wp_roll_4x6_xm_pfr_envelope: --tags  @wp_roll_4x6_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=true
 
 wp_print_on_list_of_values: --tags  @wp_print_on_list_of_values --guess VERBOSE=false HEALTHCHECK=true
 
