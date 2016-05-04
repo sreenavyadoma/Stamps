@@ -1,12 +1,12 @@
 # encoding: utf-8
 
 Then /^Postage Stamps: Select Calculate Postage Amount/ do
-  log.info "Step:  Select Stamps Calculate Postage Amount"
+  log.info "Select Stamps Calculate Postage Amount"
   @print_postage.calculate_postage_amount
 end
 
 Then /^Postage Stamps: Set Weight (\d+) lbs (\d+) oz$/ do |lbs, oz|
-  log.info "Step:  Set Stamps Weight #{lbs} lbs #{oz} oz"
+  log.info "Set Stamps Weight #{lbs} lbs #{oz} oz"
   weight = @print_postage.calculate_postage_amount.weight
   weight.lbs.set lbs
   weight.oz.set oz

@@ -435,7 +435,7 @@ Then /^Details: Delete Item (\d+)$/ do |item_number|
 end
 
 Then /^Details: Set Weight to (\d+) lbs (\d+) oz$/ do |pounds, ounces|
-  log.info "Step:  Details: Set Weight to #{pounds} Pounds and #{ounces} Ounces"
+  log.info "Details: Set Weight to #{pounds} Pounds and #{ounces} Ounces"
   orders.details.weight.lbs.set pounds
   orders.details.weight.oz.set ounces
 end
@@ -844,7 +844,7 @@ end
 
 Then /^Add Ship-From address (\w+)$/ do |address|
   ship_from = (address.include?'random ship from zone 1 through 4')?(test_helper.rand_ship_from_zone_1_4):address
-  log.info "Step:  Add Ship-From address #{(address.include?'random')?ship_from:(address)}"
+  log.info "Add Ship-From address #{(address.include?'random')?ship_from:(address)}"
   @ship_from_address = orders.details.ship_from.select("Manage Shipping Addresses...").add ship_from
   log.info "Random address added: #{@ship_from_address}"
 end

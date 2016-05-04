@@ -1,17 +1,21 @@
 
 Then /^Filter: Select Awaiting Shipment$/ do
-  log.info "Step:  Filter: Select Awaiting Shipment"
+  log.info "Filter: Select Awaiting Shipment"
   orders.filter.awaiting_shipment
 end
 
 Then /^Filter: Select Shipped$/ do
-  log.info "Step:  Filter: Select Shipped"
+  log.info "Filter: Select Shipped"
   orders.filter.shipped
 end
 
 Then /^Filter: Select Cancelled$/ do
-  log.info "Step:  Filter: Select Cancelled"
+  log.info "Filter: Select Cancelled"
   orders.filter.cancelled
+end
+
+Then /^Filter: Collapse Panel$/ do
+  orders.filter.menu_item.collapse
 end
 
 Then /^Filter: Expect Shipped Tab Date Printed to be today$/ do

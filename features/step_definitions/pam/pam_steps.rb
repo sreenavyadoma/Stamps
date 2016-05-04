@@ -31,7 +31,7 @@ Then /^PAM: Load Customer Search Page$/ do
 end
 
 Then /^PAM: Customer Search: Set username to (.*)$/ do |username|
-  log.info "Step:  PAM: Customer Search: Set username to #{username}"
+  log.info "PAM: Customer Search: Set username to #{username}"
   if username.downcase.include? "random"
     usr = @username
   else

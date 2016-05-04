@@ -1,6 +1,8 @@
 
 Then /^Filter: Menu Item tooltip should be (.*)$/ do |expectation|
   actual = orders.filter.menu_item.tooltip
+  log.info "Test #{(actual.include? expectation)?"Passed":"Failed"}"
+  actual.should include expectation
 end
 
 Then /^Tooltips: Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |expectation, data_qtip|
