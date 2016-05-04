@@ -19,7 +19,12 @@ Before do  |scenario|
 end
 
 After do |scenario|
-  Stamps::Test.teardown
+  begin
+    Stamps::Test.teardown
+    @browser.close
+  rescue
+    #ignore
+  end
   $start = false
   @scenario_name = scenario.name
   log.scenario_name = @scenario_name
