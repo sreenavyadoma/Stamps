@@ -1,11 +1,37 @@
 module Orders
 
-#todo-rob
+  class FilterMenuItem < BrowserObject
+    def button
+      StampsButton.new (@browser.span css: "span[id^=menuitem-][id$=-textEl]")
+    end
+
+    def collapse
+      btn = button
+      10.times do
+        begin
+
+        rescue
+          #ignore
+        end
+      end
+    end
+
+    def tooltip
+      btn = button
+      tooltip_element = StampsLabel.new (@browser.div id: 'ext-quicktips-tip-innerCt')
+      15.times do
+        btn.hover
+        sleep 1
+        return tooltip_element.text if tooltip_element.present?
+      end
+    end
+  end
+
   class FilterPanel < BrowserObject
     private
 
     def filter_panel
-      @browser.div :css => "div[id*=filterpanel][class*=x-panel-dark-grey]"
+      @browser.div css: "div[id*=filterpanel][class*=x-panel-dark-grey]"
     end
 
     def closed_filter_panel
@@ -35,7 +61,7 @@ module Orders
     public
 
     def menu_item
-
+      FilterMenuItem.new @browser
     end
 
     def awaiting_shipment_count

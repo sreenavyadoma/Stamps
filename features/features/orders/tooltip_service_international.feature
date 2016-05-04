@@ -4,7 +4,7 @@ Feature: Service Tooltip for International Services
   Background:
     Given I am signed in to Orders
 
-  @service_tooltip
+  @tooltips_services
   Scenario: International Service Tooltip Tests
     Then Toolbar: Add
     Then Details: Set Ship-From to default

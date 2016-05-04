@@ -4,7 +4,7 @@ Feature: Service Tooltip
   Background:
     Given I am signed in to Orders
 
-  @service_tooltip
+  @tooltips_services
   Scenario: International Service Tooltip Tests
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -26,7 +26,7 @@ Feature: Service Tooltip
     Then Details: Expect Service Tooltip for "Priority Mail Express International Padded Flat Rate Envelope" to include "Ship up to 4 lbs. with pricing that varies by country, not weight.  You must use the 9 1/2" x 12 1/2" USPS-provided padded envelope which can be ordered for free from Stamps.com."
     Then Details: Expect Service Tooltip for "Priority Mail International Package" to include "Ship up to 4 lbs. with pricing that varies by country, not weight.  You must use the 9 1/2" x 15" USPS-provided envelopes which can be ordered for free from Stamps.com."
 
-  @service_tooltip
+  @tooltips_services
   Scenario: Domestic Service Tooltip Tests
     Then Toolbar: Add
 

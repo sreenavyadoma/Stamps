@@ -120,7 +120,7 @@ Then /^Grid: State: Sort Ascending$/ do
 end
 
 Then /^Grid: State: Sort Descending$/ do
-  log.info "Step:  "
+  log.info ""
   sorted = orders.grid.state.menu.sort_descending
   log.info "Step #{(sorted)?'Passed':'Failed'} - Grid: State: Sort Descending"
   sorted.should be true

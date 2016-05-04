@@ -16,6 +16,39 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
   t.cucumber_opts = "-p cuke_reports"
 end
+Cucumber::Rake::Task.new(:bvt_shipping_address_management) do |t|
+  t.profile = 'bvt_shipping_address_management'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bvt_ambigious_address) do |t|
+  t.profile = 'bvt_ambigious_address'
+  t.cucumber_opts = "-p cuke_reports"
+end
+Cucumber::Rake::Task.new(:bvt_address_cleansing) do |t|
+  t.profile = 'bvt_address_cleansing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bvt_international_shipping) do |t|
+  t.profile = 'bvt_international_shipping'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bvt_add_new_order) do |t|
+  t.profile = 'bvt_add_new_order'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bvt_printing) do |t|
+  t.profile = 'bvt_printing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bvt_purchasing) do |t|
+  t.profile = 'bvt_purchasing'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 Cucumber::Rake::Task.new(:details_services) do |t|
   t.profile = 'details_services'
@@ -607,8 +640,8 @@ Cucumber::Rake::Task.new(:parcel_select) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:service_tooltip) do |t|
-  t.profile = 'service_tooltip'
+Cucumber::Rake::Task.new(:tooltips_services) do |t|
+  t.profile = 'tooltips_services'
   t.cucumber_opts = "-p cuke_reports"
 end
 
