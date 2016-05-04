@@ -6,4 +6,4 @@ Feature: Health Check
 
   @healthcheck
   Scenario: Healthcheck for Orders & Web Postage
-    Then Healthcheck: Get Info
+    Then Health Check: Verify Server Health
