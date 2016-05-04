@@ -74,22 +74,22 @@ Then /^Expect Awaiting Shipment count to be less by (\d+)$/ do |count|
   awaiting_shipment_count.should eql @awaiting_shipment_count.to_i - count.to_i
 end
 
-Then /^Expect system shows name of (.*) Filter Panel - in closed panel$/ do |expectation|
-  log.info "Step: Expect system shows name of #{expectation} Filter Panel - in closed panel"
+Then /^Filter: Expect system shows name of (.*) Filter Panel - in closed panel$/ do |expectation|
+  log.info "Step: Filter: Expect system shows name of #{expectation} Filter Panel - in closed panel"
   actual = orders.filter.get_closed_filter_name
   log.info "Test #{(actual==expectation)?'Passed':'Failed'}"
   actual.should eql expectation
 end
 
-Then /^Expect system changes the panel arrow so that it is pointing to the (.*) direction$/ do |expectation|
-  log.info "Step: Expect system changes the panel arrow so that it is pointing to the #{expectation} direction"
+Then /^Filter: Expect panel arrow is pointing to the (.*) direction$/ do |expectation|
+  log.info "Step: Filter: Expect panel arrow is pointing to the #{expectation} direction"
   actual = orders.filter.get_arrow_direction
   log.info "Test #{(actual==expectation)?'Passed':'Failed'}"
   actual.should eql expectation
 end
 
-Then /^Expect system selects (.*) Filter Panel - and deselects the previous filter$/ do |filter|
-  log.info "Step: Expect system selects #{filter} Filter Panel - and deselects the previous filter"
+Then /^Filter: Expect system selects (.*) Filter Panel - and deselects the previous filter$/ do |filter|
+  log.info "Step: Filter: Expect system selects #{filter} Filter Panel - and deselects the previous filter"
   actual = orders.filter.get_selected_filter_text
   actual.should eql filter
 end
@@ -115,55 +115,50 @@ Then /^Expect system displays "Awaiting Shipment" and "Shipped" filters in panel
   actual.should eql true
 end
 
-Then /^Expect system selects the (.*) Filter Panel - by default$/ do |expectation|
-  log.info "Step: Expect system selects the #{expectation} Filter Panel - by default"
+Then /^Filter: Expect system selects the (.*) Filter Panel - by default$/ do |expectation|
+  log.info "Step: Filter: Expect system selects the #{expectation} Filter Panel - by default"
   actual = orders.filter.get_selected_filter_text
   log.info "Test #{(actual==expectation)?'Passed':'Failed'}"
   actual.should eql expectation
 end
 
-Then /^Click on the Filters panel border arrow$/ do
-  log.info "Step: Click on the Filters panel border arrow"
+Then /^Filter: Click on panel$/ do
+  log.info "Step: Filter: Click on panel"
   orders.filter.click_border_arrow
 end
 
-Then /^Expect system closes Filters panel$/ do
-  log.info "Step: Expect system closes Filters panel"
+Then /^Filter: Expect Filters panel is close$/ do
+  log.info "Step: Filter: Expect Filters panel is close"
   actual = orders.filter.is_filter_panel_present
   actual.should eql false
 end
 
-Then /^Expect system shows an arrow above the Order Status Filter Panel - name$/ do
-  log.info "Step: Expect system shows an arrow above the Order Status Filter Panel - name"
+Then /^Filter: Expect system shows an arrow above the Order Status Filter Panel - name$/ do
+  log.info "Step: Filter: Expect system shows an arrow above the Order Status Filter Panel - name"
   orders.filter.is_header_arrow_present
 end
 
-Then /^Expect system opens the Filters panel$/ do
-  log.info "Step: Expect system opens the Filters panel"
+Then /^Filter: Expect Panel is open$/ do
+  log.info "Step: Filter: Expect Panel is open"
   actual = orders.filter.is_filter_panel_present
   log.info "Test #{(actual==true)?'Passed':'Failed'}"
   actual.should eql true
 end
 
-Then /^Expect system hides the header arrow and Order Status Filter Panel - name$/ do
-  log.info "Step: Expect system hides the header arrow and Order Status Filter Panel - name"
+Then /^Filter: Expect panel is hidden$/ do
+  log.info "Step: Filter: Expect panel is hidden"
   actual = orders.filter.are_filter_links_present
   log.info "Test #{(actual==false)?'Passed':'Failed'}"
   actual.should eql false
 end
 
-Then /^Double click on the Filters panel border$/ do
-  log.info "Step: Double click on the Filters panel border"
-  orders.filter.double_click_border
-end
-
-Then /^Click on the Filters panel name$/ do
-  log.info "Step: Click on the Filters panel name"
+Then /^Filter: Click panel name$/ do
+  log.info "Step: Filter: Click panel name"
   orders.filter.click_filter_panel_name
 end
 
-Then /^Click on the closed Filters panel$/ do
-  log.info "Step: Click on the closed Filters panel"
+Then /^Filter: Click on the closed Filters panel$/ do
+  log.info "Step: Filter: Click on the closed Filters panel"
   orders.filter.click_closed_filter_panel
 end
 

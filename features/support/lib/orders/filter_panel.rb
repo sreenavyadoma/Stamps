@@ -12,10 +12,6 @@ module Orders
       @browser.div :css => "div[id*=title][class*=x-title-text-dark-grey]"
     end
 
-    def filter_panel_border
-      @browser.div :css => "div[id*=filterpanel][class*=x-splitter-vertical]"
-    end
-
     def filter_panel_border_arrow
       @browser.div :css => "div[id*=filterpanel][class*=x-layout-split-left]"
     end
@@ -37,6 +33,10 @@ module Orders
     end
 
     public
+
+    def menu_item
+
+    end
 
     def awaiting_shipment_count
       browser_helper.text(@browser.div :css => "div.sdc-badge").to_i
@@ -124,10 +124,6 @@ module Orders
 
     def are_filter_links_present
       (browser_helper.present? filter_panel_header_name) || (browser_helper.present? filter_panel_header_arrow)
-    end
-
-    def double_click_border
-      browser_helper.double_click filter_panel_border
     end
 
     def click_filter_

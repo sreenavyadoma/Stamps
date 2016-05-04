@@ -25,11 +25,11 @@ Feature:  Customs Form Data Tooltip Error
     Then Pause for 1 second
     Then Customs: Uncheck I agree to the USPS Privacy Act Statement
 
-    Then Tooltips: Expect Customs Form Tooltip Error for Item Description to be Description is a required field
-    Then Tooltips: Expect Customs Form Tooltip Error for Qty to be Quantity must be greater than 0
-    Then Tooltips: Expect Customs Form Tooltip Error for Unit Price to be Value must be greater than 0
-    Then Tooltips: Expect Customs Form Tooltip Error for Pounds to be Weight cannot be 0
-    Then Tooltips: Expect Customs Form Tooltip Error for Ounces to be Weight cannot be 0
+    Then Customs: Expect Item Description Tooltip Error to be Description is a required field
+    Then Customs: Expect Qty Tooltip Error to be Quantity must be greater than 0
+    Then Customs: Expect Unit Price Tooltip Error to be Value must be greater than 0
+    Then Customs: Expect Pounds Tooltip Error to be Weight cannot be 0
+    Then Customs: Expect Ounces Tooltip Error to be Weight cannot be 0
     Then Customs: Add Item 1, Description random, Qty 1, Price 50, Lbs 9, Oz 9 Origin United States, Tariff 100
     Then Pause for 2 seconds
     Then Tooltips: Expect Customs Form Tooltip Error for Total Weight to be The itemized weight exceeds the package weight

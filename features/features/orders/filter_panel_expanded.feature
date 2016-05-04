@@ -19,7 +19,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     Then Details: Set Ounces to 1
 
     Then Filter: Select Awaiting Shipment
-    Then Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
+    Then Filter: Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
     Then Details: Expect Order ID equals Grid order ID
     Then Grid: Expect Recipient to be James Test
@@ -37,7 +37,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     Then Print: Print
 
     Then Filter: Select Shipped
-    Then Expect system selects Shipped Filter Panel - and deselects the previous filter
+    Then Filter: Expect system selects Shipped Filter Panel - and deselects the previous filter
 
     Then Grid: Expect Recipient to be James Test
     Then Grid: Expect Company to be Domestic Company
@@ -50,7 +50,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
 
 
     Then Toolbar: Add
-    Then Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
+    Then Filter: Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
 
     Then Sign out
