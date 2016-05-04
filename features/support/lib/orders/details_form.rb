@@ -1384,14 +1384,14 @@ module Orders
             selection_label.scroll_into_view
             service_text = selection_label.text
           end
-          10.times{
+          10.times do
             ship_from_dropdown.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
             sleep 1
             text_box_text = ship_from_textbox.text
             return if text_box_text.include? service_text
-          }
+          end
         end
         stop_test "Unable to select service #{service}"
       end

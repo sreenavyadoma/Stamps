@@ -71,8 +71,6 @@ Feature: Registration
     Then Settings:  Save
     Then Navigation Bar: Customer Balance
     Then Navigation Bar: Wait while balance less than 5000
-    Then Navigation Bar: Wait while balance less than 5000
-    Then Navigation Bar: Wait while balance less than 5000
     Then Sign out
     Then WebReg:  Send username to standard out
 

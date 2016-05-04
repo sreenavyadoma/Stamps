@@ -233,7 +233,7 @@ module Stamps
     end
 
     def rand_username
-      "#{('a'..'z').to_a.sample}#{Array.new(rand(6..14)){[*'0'..'9', *'a'..'z'].sample}.join}"
+      "#{('a'..'z').to_a.sample}#{Array.new(rand(6..11)){[*'0'..'9', *'a'..'z'].sample}.join}"
     end
 
     def random_phone
