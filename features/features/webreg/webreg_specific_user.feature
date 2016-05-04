@@ -5,7 +5,7 @@ Feature: Registration
 
   @webreg_specify_username
   Scenario:
-    Then WebReg: Set User ID and Email to scvolusion0001
+    Then WebReg: Set User ID and Email to ss_new2
 
     Then WebReg: Set Password to pass111
     Then WebReg: Set Re-Type password to pass111
@@ -61,7 +61,7 @@ Feature: Registration
     Then Healthcheck: Get Info
 
     Then Orders: Load Sign-in page
-    Then Orders: First Time Sign-in to Orders as random/pass111
+    Then Orders: First Time Sign-in to Orders as ss_sctest_b4/password1
     Then Pause for 2 seconds
     Then Toolbar: Add
     Then Pause for 1 second

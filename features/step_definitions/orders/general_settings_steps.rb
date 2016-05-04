@@ -710,6 +710,7 @@ Then /^Reset Fields:  Uncheck Ship to Address$/ do
   @reset_fields.ship_to_address.uncheck
 end
 
+
 Then /^Reset Fields:  Expect Ship to Address Checked$/ do
   step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   log.info "Step:  Reset Fields:  Expect Ship to Address Checked"

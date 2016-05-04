@@ -420,6 +420,12 @@ module Orders
       StampsTextbox.new @browser.text_field :name => "sdc-printpostagewindow-shipdate-inputEl"
     end
 
+    def email_tracking_details
+      checkbox_field = @browser.input :id => "sdc-mainpanel-cmcheckbox-inputEl"
+      verify_field = @browser.table :id => "sdc-mainpanel-cmcheckbox"
+      Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
+    end
+
     def print
       button = print_button
       5.times {
