@@ -8,41 +8,41 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
   Scenario: User Views Filter Panel - Panel Default
     When Expect system displays expanded filters panel
     Then Expect system displays "Awaiting Shipment" and "Shipped" filters in panel
-    Then Expect system selects the Awaiting Shipment Filter Panel - by default
+    Then Filter: Expect system selects the Awaiting Shipment Filter Panel - by default
 
-    Then Click on the Filters panel border arrow
-    Then Expect system closes Filters panel
-    Then Expect system shows name of Awaiting Shipment Filter Panel - in closed panel
-    Then Expect system shows an arrow above the Order Status Filter Panel - name
-    Then Expect system changes the panel arrow so that it is pointing to the right direction
+    Then Filter: Click on panel
+    Then Filter: Expect Filters panel is close
+    Then Filter: Expect system shows name of Awaiting Shipment Filter Panel - in closed panel
+    Then Filter: Expect system shows an arrow above the Order Status Filter Panel - name
+    Then Filter: Expect panel arrow is pointing to the right direction
 
-    Then Click on the Filters panel border arrow
-    Then Expect system opens the Filters panel
-    Then Expect system hides the header arrow and Order Status Filter Panel - name
-    Then Expect system changes the panel arrow so that it is pointing to the left direction
+    Then Filter: Click on panel
+    Then Filter: Expect Panel is open
+    Then Filter: Expect panel is hidden
+    Then Filter: Expect panel arrow is pointing to the left direction
 
 
-    Then Click on the Filters panel border arrow
-    Then Expect system closes Filters panel
-    Then Expect system shows name of Awaiting Shipment Filter Panel - in closed panel
-    Then Expect system shows an arrow above the Order Status Filter Panel - name
-    Then Expect system changes the panel arrow so that it is pointing to the right direction
+    Then Filter: Click on panel
+    Then Filter: Expect Filters panel is close
+    Then Filter: Expect system shows name of Awaiting Shipment Filter Panel - in closed panel
+    Then Filter: Expect system shows an arrow above the Order Status Filter Panel - name
+    Then Filter: Expect panel arrow is pointing to the right direction
 
-    Then Click on the closed Filters panel
-    Then Expect system opens the Filters panel
-    Then Expect system hides the header arrow and Order Status Filter Panel - name
-    Then Expect system changes the panel arrow so that it is pointing to the left direction
+    Then Filter: Click on the closed Filters panel
+    Then Filter: Expect Panel is open
+    Then Filter: Expect panel is hidden
+    Then Filter: Expect panel arrow is pointing to the left direction
 
-    Then Click on the Filters panel border arrow
-    Then Expect system closes Filters panel
-    Then Expect system shows name of Awaiting Shipment Filter Panel - in closed panel
-    Then Expect system shows an arrow above the Order Status Filter Panel - name
-    Then Expect system changes the panel arrow so that it is pointing to the right direction
+    Then Filter: Click on panel
+    Then Filter: Expect Filters panel is close
+    Then Filter: Expect system shows name of Awaiting Shipment Filter Panel - in closed panel
+    Then Filter: Expect system shows an arrow above the Order Status Filter Panel - name
+    Then Filter: Expect panel arrow is pointing to the right direction
 
-    Then Click on the Filters panel name
-    Then Expect system opens the Filters panel
-    Then Expect system hides the header arrow and Order Status Filter Panel - name
-    Then Expect system changes the panel arrow so that it is pointing to the left direction
+    Then Filter: Click panel name
+    Then Filter: Expect Panel is open
+    Then Filter: Expect panel is hidden
+    Then Filter: Expect panel arrow is pointing to the left direction
     Then Sign out
 
   @filters
@@ -60,7 +60,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     Then Details: Set Ounces to 1
 
     Then Filter: Select Awaiting Shipment
-    Then Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
+    Then Filter: Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
     Then Details: Expect Order ID equals Grid order ID
     Then Grid: Expect Recipient to be James Test
@@ -78,7 +78,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     Then Print: Print
 
     Then Filter: Select Shipped
-    Then Expect system selects Shipped Filter Panel - and deselects the previous filter
+    Then Filter: Expect system selects Shipped Filter Panel - and deselects the previous filter
 
     Then Grid: Expect Recipient to be James Test
     Then Grid: Expect Company to be Domestic Company
@@ -91,7 +91,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
 
 
     Then Toolbar: Add
-    Then Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
+    Then Filter: Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
 
     Then Sign out

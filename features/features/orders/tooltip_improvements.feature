@@ -7,3 +7,4 @@ Feature: Service Tooltip
   @service_tooltip
   Scenario: International Service Tooltip Tests
     Then Toolbar: Add
+    Then Filter: Menu Item tooltip should be Collapse this panel.

@@ -1,5 +1,5 @@
 
-Then /^Toolbar:  Set Per Page drop-down to 100$/ do
+Then /^Paging: Set Per Page drop-down to 100$/ do
   log.info "Step: Toolbar:  Set Per Page Count to 100"
   orders.grid.toolbar.per_page.x100
   per_page = orders.grid.toolbar.per_page.text_box.text
@@ -210,8 +210,8 @@ When /^Set Page Number to (\d*)$/ do |value|
   end unless value.length == 0
 end
 
-Then /^Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
-  log.info "Step: Expect Total Number of Pages to be #{total_number_of_pages}"
+Then /^Paging: Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
+  log.info "Step: Paging: Expect Total Number of Pages to be #{total_number_of_pages}"
   log.info "Passed value is #{total_number_of_pages}"
   browser_total_number_of_pages = orders.grid.toolbar.total_number_of_pages.to_s
   log.info "DD value is #{browser_total_number_of_pages}"
@@ -219,28 +219,6 @@ Then /^Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
   log.info "#{(test_result)?'Test Passed.':'Test Failed'}"
   test_result.should be true
   #expect(total_number_of_pages).should be eql expect(browser_total_number_of_pages)
-end
-
-#Pagination Controls are disabled
-
-Then /^pagination control to go to first page is disabled$/ do
-
-end
-
-Then /^pagination control to go to previous page is disabled$/ do
-
-end
-
-Then /^pagination control to go to specific page is disabled$/ do
-
-end
-
-Then /^pagination control to go to next page is disabled$/ do
-
-end
-
-Then /^pagination control to go to last page is disabled$/ do
-
 end
 
 Then /^Web Batch grid has more orders than value selected in 'number of orders per page' pagination control$/ do

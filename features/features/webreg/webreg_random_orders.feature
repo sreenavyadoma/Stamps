@@ -38,7 +38,7 @@ Feature: Registration
 
     Then Pause for 2 seconds
 
-    Then Healthcheck: Get Info
+    Then Health Check: Verify Server Health
 
     Then Orders: Load Sign-in page
     Then Orders: First Time Sign-in to Orders as random/pass111

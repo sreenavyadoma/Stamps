@@ -58,7 +58,7 @@ Feature: Registration
     Then PAM: AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM: AppCap Overrides: Submit
 
-    Then Healthcheck: Get Info
+    Then Health Check: Verify Server Health
 
     Then Pause for 2 seconds
     Then Orders: Load Sign-in page
