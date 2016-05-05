@@ -37,7 +37,7 @@ module Print
       end
     end
 
-    def button
+    def collapse_button
       StampsButton.new @browser.a :id => "sdc-undefinedwindow-continuebtn"
     end
 
@@ -56,9 +56,9 @@ module Print
     def continue
       sleep 1
       6.times do
-        button.safe_click
+        collapse_button.safe_click
         sleep 1
-        break unless button.present?
+        break unless collapse_button.present?
       end
     end
   end

@@ -1,15 +1,34 @@
 module Orders
 
   class FilterMenuItem < BrowserObject
-    def button
+    def collapse_button
       StampsButton.new (@browser.span css: "span[id^=menuitem-][id$=-textEl]")
     end
 
     def collapse
-      btn = button
+      button = collapse_button
       10.times do
         begin
+          button.safe_click
+          sleep 1
+          return self if expand_button.present?
+        rescue
+          #ignore
+        end
+      end
+    end
 
+    def expand_button
+      StampsButton.new (@browser.img css: 'img[class*=tool-expand-right]')
+    end
+
+    def expand
+      button = expand_button
+      10.times do
+        begin
+          button.safe_click
+          sleep 1
+          return self if collapse.present?
         rescue
           #ignore
         end
@@ -17,10 +36,10 @@ module Orders
     end
 
     def tooltip
-      btn = button
+      button = collapse_button
       tooltip_element = StampsLabel.new (@browser.div id: 'ext-quicktips-tip-innerCt')
       15.times do
-        btn.hover
+        button.hover
         sleep 1
         return tooltip_element.text if tooltip_element.present?
       end

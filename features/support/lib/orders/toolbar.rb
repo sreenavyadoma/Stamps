@@ -2,12 +2,12 @@ module Orders
   module Toolbar
     class Toolbar < OrdersObject
       class SettingsMenu < Print::Postage::PrintObject
-        def button
+        def collapse_button
           StampsButton.new @browser.span :css => "span[class*=sdc-icon-settings]"
         end
 
         def select menu_item
-          dd = button
+          dd = collapse_button
           case menu_item.downcase
             when /settings/
               selection = StampsLabel.new(@browser.span :text => "General Settings")

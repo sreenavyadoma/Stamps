@@ -15,6 +15,7 @@ Then /^Filter: Select Cancelled$/ do
 end
 
 Then /^Filter: Collapse Panel$/ do
+  log.info "Filter: Collapse Panel"
   orders.filter.menu_item.collapse
 end
 

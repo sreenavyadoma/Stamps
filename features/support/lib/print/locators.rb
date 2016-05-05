@@ -9,7 +9,7 @@ module Print
         {:id => "PasswordTextBox"}
       end
 
-      def self.button
+      def self.collapse_button
         {:id => "signInButton"}
       end
     end

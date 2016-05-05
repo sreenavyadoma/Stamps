@@ -256,7 +256,7 @@ module WebReg
     end
 
     def continue
-      StampsButton.new @browser.button(:id => "next")
+      StampsButton.new @browser.collapse_button(:id => "next")
     end
 
     def continue_to_mailing_info

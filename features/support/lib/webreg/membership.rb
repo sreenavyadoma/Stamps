@@ -369,7 +369,7 @@ module WebReg
     end
 
     def continue
-      StampsButton.new @browser.button(:id => "btnUserNameTakenContinue")
+      StampsButton.new @browser.collapse_button(:id => "btnUserNameTakenContinue")
     end
   end
 
@@ -450,12 +450,12 @@ module WebReg
     end
 
     def back
-      StampsButton.new @browser.button(:id => "prev")
+      StampsButton.new @browser.collapse_button(:id => "prev")
     end
 
     def submit
-      button = StampsButton.new @browser.button(:text => "Submit")
-      loading = StampsButton.new @browser.button(:text => "Loading...")
+      button = StampsButton.new @browser.collapse_button(:text => "Submit")
+      loading = StampsButton.new @browser.collapse_button(:text => "Loading...")
       supplies = ChooseSupplies.new @browser
       userid_taken = UserIdTaken.new @browser
       50.times do
