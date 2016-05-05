@@ -16,6 +16,8 @@ ray_dev: --tags @wp_print_on_list_of_values --guess VERBOSE=true HEALTHCHECK=tru
 eva_dev: --tags   @details_panel --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=ss_cctest3 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
+bvt: --tags @bvt --guess VERBOSE=false HEALTHCHECK=true
+wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
 orders_authentication_stg: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=staging BROWSER=ff USR=uadybt5iev PW=pass111
 orders_authentication_cc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=bz9005j1r2jx0 PW=pass111
