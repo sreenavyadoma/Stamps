@@ -1359,7 +1359,7 @@ module Orders
         if service.downcase == "default"
           ship_from_selection_field = ship_from_default_selection_field
         elsif service.downcase.include? "manage shipping"
-          ship_from_selection_field = @browser.div :text => "Manage Shipping Addresses..."
+          ship_from_selection_field = @browser.li text: "Manage Shipping Addresses..."
         else
           ship_from_selection_field = @browser.div :text => "#{service}"
         end
