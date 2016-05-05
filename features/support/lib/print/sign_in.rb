@@ -26,7 +26,7 @@ module Print
       sign_in_link = StampsLink.new @browser.link(:text => "Sign In")
       username_textbox = StampsTextbox.new @browser.text_field(Print::Locators::SignIn.username)
       password_textbox = StampsTextbox.new @browser.text_field(Print::Locators::SignIn.password)
-      sign_in_button = StampsButton.new @browser.collapse_button(:id => "signInButton")
+      sign_in_button = StampsButton.new @browser.button(:id => "signInButton")
       verifying_account_info = StampsLabel.new @browser.div(:text => "Verifying account information...")
       signed_in_user = StampsLabel.new @browser.span(:id => "userNameText")
 
