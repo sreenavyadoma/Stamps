@@ -4,7 +4,7 @@ Feature:  BVT Printing
   Background:
     Given I am signed in to Orders
 
-  @bvt_printing
+  @orders_bvt_printing
   Scenario:  Printing
     Then Toolbar: Add
     Then Details: Set Ship-From to default

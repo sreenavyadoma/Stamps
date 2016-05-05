@@ -4,7 +4,7 @@ Feature:  BVT Address Cleansing
   Background:
     Given I am signed in to Orders
 
-  @bvt_address_cleansing
+  @orders_bvt_address_cleansing
   Scenario: Address Cleansing
     Then Toolbar: Add
     Then Details: Set Ship-From to default

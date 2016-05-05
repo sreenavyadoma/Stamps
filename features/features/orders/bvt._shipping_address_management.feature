@@ -4,7 +4,7 @@ Feature:  BVT Address Management
   Background:
     Given I am signed in to Orders
 
-  @bvt_shipping_address_management
+  @orders_bvt_shipping_address_management
   Scenario: Add and Delete Ship-From Address
     Then Toolbar: Add
     Then Add Ship-From address random
