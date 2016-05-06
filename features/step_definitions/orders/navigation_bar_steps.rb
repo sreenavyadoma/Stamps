@@ -14,6 +14,7 @@ Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |expectation|
       log.message "New Account Balance: $#{new_balance}"
       sleep 1
       break if new_balance > expectation
+      @browser.refresh
   end
 end
 
