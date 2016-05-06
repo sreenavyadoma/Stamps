@@ -1,3 +1,9 @@
+
+Then /^Marketplace: Select Big Commerce$/ do
+  step "Manage Stores: Add" if @market_place.nil?
+  @store = @market_place.big_commerce
+end
+
 Then /^Marketplace: Select Amazon$/ do
   step "Manage Stores: Add" if @market_place.nil?
   @store = @market_place.amazon

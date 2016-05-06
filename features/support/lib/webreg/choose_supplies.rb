@@ -15,11 +15,11 @@ module WebReg
     end
 
     def wait_until_present
-      browser_helper.wait_until_present @browser.collapse_button(:text => "Place Order")
+      browser_helper.wait_until_present @browser.button(:text => "Place Order")
     end
 
     def place_order
-      button = StampsButton.new @browser.collapse_button(:id => "mincartButtonTop")
+      button = StampsButton.new @browser.button(:id => "mincartButtonTopDpawr")
       welcome_page = NewAccountWelcomePage.new @browser
       10.times do
         button.safe_click

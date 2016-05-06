@@ -338,6 +338,21 @@ module Orders
         stop_test "Yahoo Store Modal did not open."
       end
 
+      def big_commerce_button
+        StampsButton.new (@browser.imgs :css => "img[src*='bigcommerce']").last
+      end
+
+      def big_commerce
+        button = big_commerce_button
+        store = BigCommerce.new @browser
+        10.times do
+          button.safe_click
+          sleep 1
+          return store if store.present?
+        end
+        stop_test "Big Commerce Store Modal did not open."
+      end
+
     end
 
     class ManageStores < OrdersObject
