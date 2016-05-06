@@ -151,7 +151,7 @@ module Stores
     end
 
     def place_order
-      button = StampsButton.new @browser.collapse_button(id: "btnSubmitOrder")
+      button = StampsButton.new @browser.button(id: "btnSubmitOrder")
       order_num_field = StampsLabel.new @browser.div(css: "main#content_area>table>tbody>tr>td>div")
       10.times do
         button.safe_click
