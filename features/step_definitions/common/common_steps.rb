@@ -17,6 +17,10 @@ Given /^I launch browser (\w+)$/ do |browser|
   end
 end
 
+Then /^Refresh Browser$/ do
+  @browser.refresh
+end
+
 =begin
 Then /^BROWSER:  CTRL-O$/ do
   @browser.send_keys [:control, 'o']
