@@ -2,7 +2,7 @@ module Print
   module Postage
     class Footer < Print::Postage::PrintObject
       def total
-
+        StampsLabel.new @browser.label :id => "sdc-printpanel-totalcostlabel"
       end
 
       def print_sample

@@ -39,6 +39,12 @@ module Print
         PostageCountry.new @browser
       end
 
+      def email
+        Email.new @browser
+      end
+
+
+
       # Domestic Ship-To
       def set address
         text_area.safe_click
@@ -205,6 +211,29 @@ module Print
         end
       end
 
+      class AutoWeigh < Print::Postage::PrintObject
+        def checkbox_element
+          @browser.input :id => "sdc-mainpanel-autoweightcheckbox-inputEl"
+        end
+
+        def checkbox
+
+          checkbox_field = checkbox_element
+          verify_field = @browser.table :id => "sdc-mainpanel-autoweightcheckbox"
+
+          Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
+
+        end
+      end
+
+      def weigh_button
+        StampsButton.new @browser.span :id => "sdc-mainpanel-scalebtn-btnIconEl"
+      end
+
+      def auto_weigh
+        AutoWeigh.new @browser
+      end
+
       def lbs
         Pounds.new @browser
       end
@@ -283,6 +312,10 @@ module Print
           end
         }
         click_form
+      end
+
+      def price
+        StampsLabel.new @browser.label :id => "sdc-mainpanel-servicepricelabel"
       end
 
     end
@@ -390,26 +423,81 @@ module Print
 
     class Email < Print::Postage::PrintObject
 
-      def checkbox select
+      def checkbox_element
+        @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
+      end
 
-        checkbox_field = @browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
+      def checkbox
+
+        checkbox_field = checkbox_element
         verify_field = @browser.table :id => "sdc-mainpanel-emailcheckbox"
-        checkbox = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
 
-        if select
-          checkbox.check
-          log.info checkbox.checked?
-        else
-          checkbox.uncheck
-          log.info checkbox.checked?
-        end
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
 
       end
 
-      def textbox
+      def text_box
         StampsTextbox.new (@browser.text_field :id => "sdc-mainpanel-emailtextfield-inputEl")
       end
 
+    end
+
+    class Tracking < Print::Postage::PrintObject
+
+      def text_box
+        StampsTextbox.new @browser.text_field :name => "tracking"
+      end
+
+      def drop_down
+        StampsButton.new (@browser.divs :css => "div[class*=x-form-arrow-trigger]")[7]
+      end
+
+      def select selection
+        log.info "Select Tracking #{selection}"
+        box = text_box
+        button = drop_down
+        selection_label = StampsLabel.new @browser.div :text => selection
+        10.times {
+          begin
+            button.safe_click #unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
+            selected_tracking = box.text
+            log.info "Selected Tracking #{selected_tracking} - #{(selected_tracking.include? selection)?"done": "tracking not selected"}"
+            break if selected_tracking.include? selection
+          rescue
+            #ignore
+          end
+        }
+        log.info "Tracking selected: #{selection}"
+        selection_label
+      end
+
+      def price
+        StampsLabel.new @browser.label :id => "sdc-mainpanel-trackingpricelabel"
+      end
+    end
+
+    class InsureFor < Print::Postage::PrintObject
+      def checkbox
+
+      end
+
+      def text_box
+        StampsTextbox.new @browser.text_field :id => "sdc-mainpanel-insureamtnumberfield-inputEl"
+      end
+
+      def increment value
+
+      end
+
+      def decrement value
+
+      end
+
+      def price
+        StampsLabel.new @browser.label :id => "sdc-mainpanel-insurancepricelabel"
+      end
     end
 
     class ShipDate < Print::Postage::PrintObject
@@ -425,8 +513,13 @@ module Print
     end
 
     class Contacts < Print::Postage::PrintObject
+
+      def link
+        StampsButton.new @browser.a :css => "[class*=sdc-mainpanel-shiptolinkbtn]"
+      end
+
       def open
-        button = StampsButton.new @browser.a :css => "[class*=sdc-mainpanel-shiptolinkbtn]"
+        button = link
         contacts_modal = Print::Postage::ContactsModal.new @browser
         5.times do
           button.safe_click

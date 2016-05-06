@@ -146,7 +146,7 @@ end
 
 Then /^Postage Shipping Labels: Open Extra Services$/ do
   log.info "Postage Shipping Labels: Open Extra Services"
-  @extra_services = @print_postage.extra_services
+  @extra_services = @print_postage.open_extra_services
 end
 
 Then /^Postage Shipping Labels: Edit Customs Form$/ do

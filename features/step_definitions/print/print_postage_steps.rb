@@ -228,39 +228,6 @@ Then /^Postage: Set Pounds to (.*)/ do |pounds|
   @print_postage.weight.lbs.set pounds
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Then /^Postage: Expect Print Media Tooltip to be (.*)$/ do |selection|
   postage.print_on.tooltip selection
 end
@@ -276,3 +243,221 @@ end
 Then /^Postage: Expect Ship-To address to be (.*)/ do |address|
 
 end
+
+Then /^Postage: Expect Print On Field is present$/ do
+  log.info "Postage: Expect Print On Field is present"
+  print_on = Postage::PrintOn.new @browser
+  print_on.text_box.present?.should be true
+end
+
+Then /^Postage: Expect Ship From Field is present$/ do
+  log.info "Postage: Expect Ship From Field is present"
+  @print_postage.ship_from.text_box.present?.should be true
+end
+
+Then /^Postage: Expect Ship To Link is present$/ do
+  log.info "Postage: Expect Ship To Link is present"
+  @print_postage.ship_to.contacts.link.present?.should be true
+end
+
+Then /^Postage: Expect Ship To Country Field is present$/ do
+  log.info "Postage: Expect Ship To Country Field is present"
+  @print_postage.ship_to.country.text_box.present?.should be true
+end
+
+Then /^Postage: Expect Domestic Address Field is present$/ do
+  log.info "Postage: Expect Domestic Address Field is present"
+  @print_postage.ship_to.text_area.present?.should be true
+end
+
+Then /^Postage: Expect International Name Field is present$/ do
+  log.info "Postage: Expect International Name Field is present"
+  @print_postage.ship_to.name.present?.should be true
+end
+
+Then /^Postage: Expect International Company Field is present$/ do
+  log.info "Postage: Expect International Company Field is present"
+  @print_postage.ship_to.company.present?.should be true
+end
+
+Then /^Postage: Expect International Address 1 Field is present$/ do
+  log.info "Postage: Expect International Address 1 Field is present"
+  @print_postage.ship_to.address_1.present?.should be true
+end
+
+Then /^Postage: Expect International Address 2 Field is present$/ do
+  log.info "Postage: Expect International Address 2 Field is present"
+  @print_postage.ship_to.address_2.present?.should be true
+end
+
+Then /^Postage: Expect International City Field is present$/ do
+  log.info "Postage: Expect International City Field is present"
+  @print_postage.ship_to.city.present?.should be true
+end
+
+Then /^Postage: Expect International Province Field is present$/ do
+  log.info "Postage: Expect International Province Field is present"
+  @print_postage.ship_to.province.present?.should be true
+end
+
+Then /^Postage: Expect International Postcode Field is present$/ do
+  log.info "Postage: Expect International Postcode Field is present"
+  @print_postage.ship_to.postal_code.present?.should be true
+end
+
+Then /^Postage: Expect International Phone Field is present$/ do
+  log.info "Postage: Expect International Phone Field is present"
+  @print_postage.ship_to.phone.present?.should be true
+end
+
+Then /^Postage: Expect Email Check Box is present$/ do
+  log.info "Postage: Expect Email Check Box is present"
+  @print_postage.ship_to.email.checkbox_element.present?.should be true
+end
+
+Then /^Postage: Expect Email Field is present$/ do
+  log.info "Postage: Expect Email Field is present"
+  @print_postage.ship_to.email.text_box.present?.should be true
+end
+
+Then /^Postage: Expect Pounds Field is present$/ do
+  log.info "Postage: Expect Pounds Field is present"
+  @print_postage.weight.oz.text_box.present?.should be true
+end
+
+Then /^Postage: Expect Ounces Field is present$/ do
+  log.info "Postage: Expect Ounces Field is present"
+  @print_postage.weight.lbs.text_box.present?.should be true
+end
+
+Then /^Postage: Expect Weigh Button is present$/ do
+  log.info "Postage: Expect Weigh Button is present"
+  @print_postage.weight.weigh_button.present?.should be true
+end
+
+Then /^Postage: Expect Auto Weigh check box is present$/ do
+  log.info "Postage: Expect Auto Weigh check box is present"
+  @print_postage.weight.auto_weigh.checkbox_element.present?.should be true
+end
+
+Then /^Postage: Expect Service Field is present$/ do
+  log.info "Postage: Expect Service Field is present"
+  @print_postage.service.text_box.present?.should be true
+end
+
+Then /^Postage: Expect Service Price is present$/ do
+  log.info "Postage: Expect Service Price is present"
+  @print_postage.service.price.present?.should be true
+end
+
+Then /^Postage: Expect Insure For Field is present$/ do
+  log.info "Postage: Expect Insure For Field is present"
+  @print_postage.insure_for.text_box.present?.should be true
+end
+
+Then /^Postage: Expect Insure For Price is present$/ do
+  log.info "Postage: Expect Insure For Price is present"
+  @print_postage.insure_for.price.present?.should be true
+end
+
+Then /^Postage: Expect Tracking Field is present$/ do
+  log.info "Postage: Expect Tracking Field is present"
+  @print_postage.tracking.text_box.present?.should be true
+end
+
+Then /^Postage: Expect Tracking Price is present$/ do
+  log.info "Postage: Expect Tracking Price is present"
+  @print_postage.tracking.price.present?.should be true
+end
+
+Then /^Postage: Expect Extra Services Button is present$/ do
+  log.info "Postage: Expect Extra Services Button is present"
+  @print_postage.extra_services.present?.should be true
+end
+
+Then /^Postage: Expect Label Image Preview is present$/ do
+  log.info "Postage: Expect Label Image Preview is present"
+  sleep 2
+  @print_postage.form_view.starting_label.left_label_div.present?.should be true
+  @print_postage.form_view.starting_label.right_label_div.present?.should be true
+end
+
+Then /^Postage: Expect Hide Postage Value check box is present$/ do
+  log.info "Postage: Expect Hide Postage Value check box is present"
+  @print_postage.form_view.hide_postage_value_checkbox.present?.should be true
+end
+
+Then /^Postage: Expect Print Receipt check box is present$/ do
+  log.info "Postage: Expect Print Receipt check box is present"
+  @print_postage.form_view.print_receipt_checkbox.present?.should be true
+end
+
+Then /^Postage: Expect Print Reference Number check box is present$/ do
+  log.info "Postage: Expect Print Reference Number check box is present"
+  @print_postage.form_view.print_reference_number_checkbox.present?.should be true
+end
+
+Then /^Postage: Expect Reference Number field is present$/ do
+  log.info "Postage: Expect Reference Number field is present"
+  @print_postage.form_view.reference_number.present?.should be true
+end
+
+Then /^Postage: Expect Cost Code Field is present$/ do
+  log.info "Postage: Expect Cost Code Field is present"
+  @print_postage.form_view.cost_code.text_box.present?.should be true
+end
+
+Then /^Postage: Expect Reset Button is present$/ do
+  log.info "Postage: Expect Reset Button is present"
+  toolbar = Print::Toolbar.new @browser
+  toolbar.reset.present?.should be true
+end
+
+Then /^Postage: Expect Settings Button is present$/ do
+  log.info "Postage: Expect Settings Button is present"
+  toolbar = Print::Toolbar.new @browser
+  toolbar.settings.present?.should be true
+end
+
+Then /^Postage: Expect Help Button is present$/ do
+  log.info "Postage: Expect Help Button is present"
+  toolbar = Print::Toolbar.new @browser
+  toolbar.help.present?.should be true
+end
+
+Then /^Postage: Expect Reprint Banner is present$/ do
+
+end
+
+Then /^Postage: Expect System Notification Banner is present$/ do
+
+end
+
+Then /^Postage: Expect Feedback Button is present$/ do
+  log.info "Postage: Expect Feedback Button is present"
+  toolbar = Print::Toolbar.new @browser
+  toolbar.feedback.present?.should be true
+end
+
+Then /^Postage: Expect Classic Button is present$/ do
+  log.info "Postage: Expect Classic Button is present"
+  toolbar = Print::Toolbar.new @browser
+  toolbar.classic.present?.should be true
+end
+
+Then /^Postage: Expect Postage Total is present$/ do
+  log.info "Postage: Expect Postage Total is present"
+  postage.footer.total.present?.should be true
+end
+
+Then /^Postage: Expect Print Sample Button is present$/ do
+  log.info "Postage: Expect Print Sample Button is present"
+  postage.footer.print_button.present?.should be true
+end
+
+Then /^Postage: Expect Print Button is present$/ do
+  log.info "Postage: Expect Print Button is present"
+  postage.footer.sample_button.present?.should be true
+end
+
+

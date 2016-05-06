@@ -1943,3 +1943,9 @@ Cucumber::Rake::Task.new(:orders_bvt_purchasing) do |t|
   t.profile = 'orders_bvt_purchasing'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:wp_print_postage_elements) do |t|
+  t.profile = 'wp_print_postage_elements'
+  t.cucumber_opts = "-p cuke_reports"
+end
+

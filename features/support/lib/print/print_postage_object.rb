@@ -32,6 +32,10 @@ module Print
         Print::Postage::Email.new @browser
       end
 
+      def tracking
+        Print::Postage::Tracking.new @browser
+      end
+
       def weight
         Print::Postage::Weight.new @browser
       end
@@ -49,7 +53,11 @@ module Print
       end
 
       def extra_services
-        button = StampsButton.new @browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl"
+        StampsButton.new @browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl"
+      end
+
+      def open_extra_services
+        button = extra_services
         service_modal = Print::Postage::ExtraServices.new @browser
         5.times do
           button.safe_click

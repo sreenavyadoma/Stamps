@@ -11,7 +11,7 @@ module Print
     end
 
     def toolbar
-      #we'll get to this when it comes time to buy stamps and prefs
+      Print:Toolbar.new @browser
     end
 
     def print_on selection
