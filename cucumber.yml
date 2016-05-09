@@ -428,4 +428,4 @@ wp_print_on_list_of_values: --tags  @wp_print_on_list_of_values --guess VERBOSE=
 
 wp_print_postage_elements: --tags  @wp_print_postage_elements --guess VERBOSE=false HEALTHCHECK=true
 
-
+wp_invalid_credentials: --tags  @wp_invalid_credentials --guess VERBOSE=false HEALTHCHECK=true

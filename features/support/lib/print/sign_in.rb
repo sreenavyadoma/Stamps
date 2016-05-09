@@ -29,6 +29,7 @@ module Print
       sign_in_button = StampsButton.new @browser.button(:id => "signInButton")
       verifying_account_info = StampsLabel.new @browser.div(:text => "Verifying account information...")
       signed_in_user = StampsLabel.new @browser.span(:id => "userNameText")
+      invalid_msg = StampsLabel.new @browser.div :css => "div[id*=InvalidUsernamePasswordMsg]"
 
       10.times {
         sign_in_link.safe_click unless username_textbox.present?
@@ -63,13 +64,114 @@ module Print
         log.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
         break if signed_in_user.present?
+
+        if invalid_msg.present?
+          $invalid_message = true
+          log.info "Invalid message is #{invalid_msg.text}"
+          log.info "Message present is #{$invalid_message}"
+          break
+        end
+
       }
       log.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
+      log.info "Password is #{password}"
 
       ENV["SIGNED_IN_USER"] = username
       visit :print_postage
 
     end
+
+    def remember_username
+      checkbox_field = @browser.input :css => "input[id=rememberUser]"
+      verify_field = @browser.input :css => "label[class=checkbox]"
+
+      Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
+    end
+
+    def sign_in_and_remember *args
+      visit :print_postage
+      case args
+        when Hash
+          username = args[0]['username']
+          password = args[0]['password']
+        when Array
+          if args.length == 2
+            username = args[0]
+            password = args[1]
+          else
+            log.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
+            username = ENV["USR"]
+            password = ENV["PW"]
+          end
+        else
+          log.message "Using Default Sign-in Credentials."
+          username = ENV["USR"]
+          password = ENV["PW"]
+          log.message "USERNAME: #{username}, PASSWORD: #{password}"
+      end
+
+      sign_in_link = StampsLink.new @browser.link(:text => "Sign In")
+      username_textbox = StampsTextbox.new @browser.text_field(Print::Locators::SignIn.username)
+      password_textbox = StampsTextbox.new @browser.text_field(Print::Locators::SignIn.password)
+      remember_username = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
+      sign_in_button = StampsButton.new @browser.button(:id => "signInButton")
+      verifying_account_info = StampsLabel.new @browser.div(:text => "Verifying account information...")
+      signed_in_user = StampsLabel.new @browser.span(:id => "userNameText")
+      invalid_msg = StampsLabel.new @browser.div :css => "div[id*=InvalidUsernamePasswordMsg]"
+
+      10.times {
+        sign_in_link.safe_click unless username_textbox.present?
+        username_textbox.set username
+
+        sign_in_link.safe_click unless password_textbox.present?
+        password_textbox.set password
+
+        sign_in_link.safe_click unless sign_in_button.present?
+        sign_in_button.safe_click
+        break if signed_in_user.present?
+        sign_in_link.safe_click unless sign_in_button.present?
+        sign_in_button.safe_click
+        break if signed_in_user.present?
+        sign_in_link.safe_click unless sign_in_button.present?
+        sign_in_button.safe_click
+        break if signed_in_user.present?
+        sign_in_link.safe_click unless sign_in_button.present?
+        sign_in_button.safe_click
+        break if signed_in_user.present?
+        sign_in_link.safe_click unless sign_in_button.present?
+        break if signed_in_user.present?
+
+        #log.info "Verifying account info... #{(verifying_account_info.present?)?"true":"false"}"
+        if verifying_account_info.present?
+          #log.info "#{(verifying_account_info.present?)?"Verifying account info....":"Verifying account info done or not visible"}"
+          verifying_account_info.wait_while_present
+          signed_in_user.wait_until_present
+          log.info "Signed in username is #{signed_in_user.text}"
+        end
+
+        log.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
+
+        break if signed_in_user.present?
+
+        if invalid_msg.present?
+          $invalid_message = invalid_msg.text
+          log.info "Invalid message is #{$invalid_message}"
+          break
+        end
+
+      }
+      log.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
+      log.info "Password is #{password}"
+
+      ENV["SIGNED_IN_USER"] = username
+      visit :print_postage
+
+    end
+
+    def invalid_username_password
+      StampsLabel.new @browser.div :css => "div[id*=InvalidUsernamePasswordMsg]"
+    end
+
 
     def forgot_username
       sign_in_link = StampsLink.new @browser.link(:text => "Sign In")
