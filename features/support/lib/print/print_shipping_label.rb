@@ -8,24 +8,36 @@ module Print
         image = StampsLabel.new @browser.div :css => "div[style*='Label_selection_and_view.gif']"
       end
 
+      def hide_postage_value_checkbox
+        @browser.input :css => "input[id=hidePostageCheckbox]"
+      end
+
       def hide_postage_value
-        checkbox_field = @browser.input :css => "input[id=hidePostageCheckbox]"
+        checkbox_field = hide_postage_value_checkbox
         verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
         verify_field = verify_fields[5]
 
         Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
+      def print_receipt_checkbox
+        @browser.input :css => "input[id=printreceiptcheckbox]"
+      end
+
       def print_receipt
-        checkbox_field = @browser.input :css => "input[id=printreceiptcheckbox]"
+        checkbox_field = print_receipt_checkbox
         verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
         verify_field = verify_fields[6]
 
         Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
+      def print_reference_number_checkbox
+        @browser.input :css => "input[id=printreferencecheckbox]"
+      end
+
       def print_reference_number
-        checkbox_field = @browser.input :css => "input[id=printreferencecheckbox]"
+        checkbox_field = @browser.input :css => print_reference_number_checkbox
         verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
         verify_field = verify_fields[7]
 
