@@ -19,7 +19,7 @@ daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc 
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
-xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
+paypal: --tags @paypal --guess VERBOSE=false HEALTHCHECK=true
 
 big_commerce: --tags @big_commerce --guess VERBOSE=false HEALTHCHECK=true
 
