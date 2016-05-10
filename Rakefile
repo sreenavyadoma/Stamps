@@ -1964,3 +1964,8 @@ Cucumber::Rake::Task.new(:wp_print_postage_elements) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:wp_invalid_credentials) do |t|
+  t.profile = 'wp_invalid_credentials'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
