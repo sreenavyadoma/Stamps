@@ -1,4 +1,9 @@
 
+Then /^Marketplace: Select PayPal$/ do
+  raise "Manage Stores: Market place modal is not present.  Check your workflow." if @market_place.nil?
+  @store = @market_place.paypal
+end
+
 Then /^Marketplace: Select Big Commerce$/ do
   raise "Manage Stores: Market place modal is not present.  Check your workflow." if @market_place.nil?
   @store = @market_place.big_commerce

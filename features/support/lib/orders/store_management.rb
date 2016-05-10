@@ -358,6 +358,21 @@ module Orders
         stop_test "Big Commerce Store Modal did not open."
       end
 
+      def paypal_button
+        StampsButton.new (@browser.imgs :css => "img[src*='paypal']").last
+      end
+
+      def paypal
+        button = paypal_button
+        store = PayPal.new @browser
+        10.times do
+          button.safe_click
+          sleep 1
+          return store if store.present?
+        end
+        stop_test "PayPal Store Modal did not open."
+      end
+
     end
 
     class ManageStores < OrdersObject
