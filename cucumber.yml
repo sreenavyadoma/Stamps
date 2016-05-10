@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile rob_dev_sc # import_orders_ship_from_test
+default: --profile cuke_reports --profile rob_dev_staging # import_orders_ship_from_test
 
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800 wp_bvt_international

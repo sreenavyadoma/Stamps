@@ -9,7 +9,7 @@ Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
     @username = username
   end
 
-  20.times do
+  15.times do
     step "PAM: Load Customer Search Page"
     step "PAM: Customer Search: Set username to #{usr}"
     step "PAM: Customer Search: Set 5.2 or lower"

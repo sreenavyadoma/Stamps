@@ -373,6 +373,19 @@ module WebReg
     end
   end
 
+  class DownloadPage < Stamps::Browser::BrowserObject
+    def present?
+      browser_helper.present? (@browser.h1 text: "Congratulations on your new account!")
+    end
+
+    def wait_until_present
+      20.times do
+        break if present?
+        sleep 1
+      end
+    end
+  end
+
   class Membership < Stamps::Browser::BrowserObject
 
     def wait_until_present
@@ -458,12 +471,13 @@ module WebReg
       loading = StampsButton.new @browser.button(:text => "Loading...")
       supplies = ChooseSupplies.new @browser
       userid_taken = UserIdTaken.new @browser
-      50.times do
+      download_page = DownloadPage.new @browser
+      20.times do
         button.safe_click
-        sleep 2
-        loading.wait_while_present
+        sleep 1
         return userid_taken if userid_taken.present?
         return supplies if supplies.present?
+        return download_page if download_page.present?
       end
     end
   end
