@@ -199,8 +199,13 @@ module Orders
       end
 
       def close
-        button = StampsButton.new (@browser.img :css => "img[class*='x-tool-img x-tool-close']")
-        button.click_while_present
+        button = StampsButton.new ((@browser.imgs :css => "img[class*='x-tool-close']").last)
+        button.safe_click
+        sleep 1
+        15.times do
+          button.safe_click
+          break unless button.present?
+        end
       end
 
       def wait_until_present
