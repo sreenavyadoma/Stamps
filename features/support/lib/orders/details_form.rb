@@ -1567,8 +1567,12 @@ module Orders
       end
 
       def disabled? service
+
+        @details_services ||= data_for(:details_services, {})
+
         dd_btn = self.drop_down
-        selection_field = @browser.tr :css => "tr[data-qtip*='#{service}']"
+        selection_field = @browser.li(id: "#{@details_services[service]}")
+        #selection_field = @browser.tr :css => "tr[data-qtip*='#{service}']"
         selection_label = StampsLabel.new selection_field
 
         10.times do |index|

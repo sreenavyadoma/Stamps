@@ -28,6 +28,5 @@ Feature: Priority Mail and Large Dimensions
     Then Details: Expect Length to be 0
     Then Details: Expect Height to be 0
     Then Details: Expect Width to be 0
-
     Then Sign out
 
