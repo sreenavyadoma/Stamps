@@ -213,7 +213,7 @@ module Orders
       end
 
       def window_title
-        StampsLabel.new (@browser.divs :text => "Add your Store or Marketplace").first
+        StampsLabel.new (@browser.divs :text => "Add your Store or Marketplace").last
       end
 
       def search_textbox

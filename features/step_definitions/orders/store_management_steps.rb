@@ -1,5 +1,4 @@
 
-
 Then /^Manage Stores: Open Modal$/ do
   log.info "Manage Stores: Open Modal"
   @manage_stores = orders.toolbar.settings.manage_stores
@@ -7,12 +6,11 @@ end
 
 Then /^Manage Stores: Add$/ do
   log.info "Manage Stores: Add"
-  @market_place = @manage_stores.add if @market_place.nil?
+  @market_place = @manage_stores.add
 end
 
 Then /^Manage Stores: Close Modal$/ do
   log.info "Manage Stores: Close Modal"
-  sleep 1
   @manage_stores.close
 end
 

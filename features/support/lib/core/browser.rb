@@ -287,14 +287,6 @@ module Stamps
     end
 
     class StampsInput < StampsLabel
-=begin
-      def set text
-        script = "return arguments[0].value = '#{text}'"
-        browser = @field.browser
-        browser.execute_script(script, @field)
-      end
-=end
-
       def send_keys special_char
         browser_helper.send_keys @field, special_char
         self
@@ -513,23 +505,11 @@ module Stamps
           else
             stop_test "Wrong number of arguments for BrowserHelper.set_text method."
         end
-        5.times do
-          begin
-            field.focus
-            field.send_keys ""
-          rescue
-            #ignore
-          end
+        2.times do
           begin
             field.send_keys text
           rescue
             #ignore
-          end
-          actual_value =  field_text(field)
-          begin
-            break if (actual_value.include? text) || (text.include? actual_value)
-          rescue Exception => e
-            #log.info e
           end
         end
       end
@@ -562,11 +542,13 @@ module Stamps
       end
 
       def field_text field
+=begin
         begin
           field.focus
         rescue
           #ignore
         end
+=end
 
         begin
           text = field.text

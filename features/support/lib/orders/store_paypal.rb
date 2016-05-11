@@ -3,6 +3,15 @@ module Orders
 
     class Error400 < OrdersObject
 
+      def close
+        button = StampsButton.new (@browser.imgs(css: "img[class*=x-tool-close]").last)
+        5.times do
+          button.safe_click
+          sleep 1
+          break unless button.present?
+        end
+      end
+
       def window_title
         StampsLabel.new @browser.div(text: "Error 400")
       end
@@ -79,6 +88,15 @@ module Orders
         end
       end
 
+      def close
+        button = StampsButton.new (@browser.imgs(css: "img[class*=x-tool-close]").last)
+        5.times do
+          button.safe_click
+          sleep 1
+          break unless button.present?
+        end
+      end
+
       def send_email_verification
         button = StampsButton.new (@browser.spans(text: "Send Email Verification").last)
         verification_sent = EmailVerificationSent.new @browser
@@ -121,6 +139,14 @@ module Orders
         end
       end
 
+      def close
+        button = StampsButton.new (@browser.imgs(css: "img[class*=x-tool-close]").last)
+        5.times do
+          button.safe_click
+          sleep 1
+          break unless button.present?
+        end
+      end
     end
   end
 end

@@ -3,8 +3,8 @@ Then /^PayPal: Set PayPal Email Address to (.*)$/ do |email|
   @store.email_address.set email
 end
 
-Then /^Paypal: Expect PayPal store modal is present$/ do
-  log.info "Paypal: Expect PayPal store modal is present"
+Then /^PayPal: Expect PayPal store modal is present$/ do
+  log.info "PayPal: Expect PayPal store modal is present"
   expectation = "PayPal store modal is present"
   if @store.nil?
     expectation = "PayPal store modal is not present"
@@ -20,8 +20,8 @@ Then /^PayPal: Test Connection$/ do
   @verification_required = @store.test_connection
 end
 
-Then /^PayPal: Expect Email Verification Required modal is present$/ do
-  log.info "PayPal: Expect Email Verification Required modal is present"
+Then /^PayPal Email Verification Required: Expect modal is present$/ do
+  log.info "PayPal Email Verification Required: Expect modal is present"
   expectation = "Email Verification Required modal is present"
   if @verification_required.nil?
     expectation = "Email Verification Required modal is not present"
@@ -32,8 +32,13 @@ Then /^PayPal: Expect Email Verification Required modal is present$/ do
   expectation.should eql "Email Verification Required modal is present"
 end
 
-Then /^PayPal: Send Email Verification$/ do
-  log.info "PayPal: Send Email Verification"
+Then /^PayPal Email Verification Required: Close modal$/ do
+  log.info "PayPal Email Verification Required: Close modal"
+  @verification_required.close
+end
+
+Then /^PayPal Email Verification Required: Send Email Verification$/ do
+  log.info "PayPal Email Verification Required: Send Email Verification"
   @verification_sent = @verification_required.send_email_verification
 end
 
@@ -55,4 +60,9 @@ Then /^PayPal: Expect Verification Email is sent to (.*)$/ do |expectation|
   @verification_sent.close
   log.info "Test #{(actual==expectation)?"Passed":"Failed"}"
   actual.should eql expectation
+end
+
+Then /^PayPal: Close modal$/ do
+  log.info "PayPal: Close modal"
+  @store.close
 end

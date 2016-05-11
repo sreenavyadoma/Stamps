@@ -12,13 +12,26 @@ Feature:  Paypal Store Management
       # Add Store
       Then Manage Stores: Add
       Then Marketplace: Select PayPal
-      Then Paypal: Expect PayPal store modal is present
+      Then PayPal: Expect PayPal store modal is present
       Then PayPal: Set PayPal Email Address to qawebclient@stamps.com
       Then PayPal: Test Connection
-      Then PayPal: Expect Email Verification Required modal is present
-      Then PayPal: Send Email Verification
+      Then PayPal Email Verification Required: Expect modal is present
+      Then PayPal Email Verification Required: Close modal
+      Then PayPal: Close modal
+      Then Manage Stores: Close Modal
+
+      Then Manage Stores: Open Modal
+      Then Manage Stores: Add
+      Then Marketplace: Select PayPal
+      Then PayPal: Expect PayPal store modal is present
+      Then PayPal: Set PayPal Email Address to qawebclient@stamps.com
+      Then PayPal: Test Connection
+      Then PayPal Email Verification Required: Expect modal is present
+
+      Then PayPal Email Verification Required: Send Email Verification
       Then PayPal: Expect Email Verification Sent modal is present
       Then PayPal: Expect Verification Email is sent to qawebclient@stamps.com
+      Then PayPal: Close modal
       Then Manage Stores: Close Modal
       Then Sign out
 

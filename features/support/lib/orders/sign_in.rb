@@ -140,15 +140,31 @@ module Orders
               username_textbox.wait_until_present
               username_textbox.set username
               password_textbox.set password
-              sleep 1
               button.safe_send_keys :enter
+              sleep 3
+              break if grid.present?
+              break if grid.present?
+              break if grid.present?
+              break if grid.present?
+              break if grid.present?
               button.safe_send_keys :enter
+              sleep 2
+              break if grid.present?
+              break if grid.present?
+              break if grid.present?
+              break if grid.present?
               username_textbox.set username
+              break if grid.present?
               password_textbox.set password
+              break if grid.present?
               button.safe_click
+              break if grid.present?
               button.safe_click
+              break if grid.present?
               username_textbox.set username
+              break if grid.present?
               password_textbox.set password
+              break if grid.present?
 
               if welcome_orders_page.present?
                 welcome_orders_page.continue
@@ -167,8 +183,6 @@ module Orders
 
               username_textbox.set username
               password_textbox.set password
-
-              break if grid.present?
               break if grid.present?
               break if grid.present?
               break if grid.present?
