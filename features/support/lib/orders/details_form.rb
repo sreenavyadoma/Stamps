@@ -1021,7 +1021,6 @@ module Orders
       def save_button
         @browser.span :text => 'Save'
       end
-
     end
 
     class DeleteShippingAddress < OrdersObject
