@@ -837,6 +837,7 @@ Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   log.info "Step: Details: Set Insure-For to #{value}"
   orders.details.insure_for.set value
 end
+
 Then /^Add Ship-From address$/ do |ship_from|
   log.info "Step: Add Ship-From address #{ship_from}"
   orders.details.ship_from.select("Manage Shipping Addresses...").add ship_from.hashes.first
