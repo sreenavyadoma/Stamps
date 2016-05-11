@@ -1,6 +1,29 @@
 
-Then /^Filter: Menu Item tooltip should be (.*)$/ do |expectation|
-  actual = orders.filter.menu_item.tooltip
+
+Then /^Toolbar: Expect Add Button Tooltip to include (.*)$/ do |expectation|
+  log.info "Toolbar: Expect Add Button Tooltip to include #{expectation}"
+  actual = orders.toolbar.add.tooltip
+  log.info "Test #{(actual.include? expectation)?"Passed":"Failed"}"
+  actual.should include expectation
+end
+
+Then /^Details: Expect Toolbar Menu Tooltip to be (.*)$/ do |expectation|
+  log.info "Details: Expect Toolbar Menu Tooltip to be #{expectation}"
+  actual = orders.details.toolbar.menu.tooltip
+  log.info "Test #{(actual.include? expectation)?"Passed":"Failed"}"
+  actual.should include expectation
+end
+
+Then /^Filter: Menu Item collapse button tooltip should be (.*)$/ do |expectation|
+  log.info "Filter: Menu Item collapse button tooltip should be #{expectation}"
+  actual = orders.filter.menu_item.collapse.tooltip
+  log.info "Test #{(actual.include? expectation)?"Passed":"Failed"}"
+  actual.should include expectation
+end
+
+Then /^Filter: Menu Item expand button tooltip should be (.*)$/ do |expectation|
+  log.info "Filter: Menu Item expand button tooltip should be #{expectation}"
+  actual = orders.filter.menu_item.expand.tooltip
   log.info "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   actual.should include expectation
 end
@@ -9,10 +32,10 @@ Then /^Tooltips: Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.
   log.info "Tooltips: Expect Print Modal Print Media #{expectation} tooltip to include #{data_qtip}"
   tooltips = data_qtip.split "||"
   actual_tooltip = orders.toolbar.print_modal.printing_on.tooltip expectation
-  tooltips.each { |tooltip|
+  tooltips.each do |tooltip|
     log.info "Test #{(actual_tooltip.include? tooltip)?"Passed":"Failed"}"
     actual_tooltip.should include tooltip
-  }
+  end
 end
 
 Then /^Tooltips: Expect Customs Form Tooltip Error for Total Weight to be (.+)$/ do |expectation|

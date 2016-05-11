@@ -1,34 +1,17 @@
 module Orders
 
-  class FilterMenuItem < BrowserObject
-    def collapse_button
+  class CollapseButton < BrowserObject
+    def button
       StampsButton.new (@browser.span css: "span[id^=menuitem-][id$=-textEl]")
     end
 
-    def collapse
-      button = collapse_button
+    def click
+      btn = button
       10.times do
         begin
-          button.safe_click
+          btn.safe_click
           sleep 1
-          return self if expand_button.present?
-        rescue
-          #ignore
-        end
-      end
-    end
-
-    def expand_button
-      StampsButton.new (@browser.img css: 'img[class*=tool-expand-right]')
-    end
-
-    def expand
-      button = expand_button
-      10.times do
-        begin
-          button.safe_click
-          sleep 1
-          return self if collapse.present?
+          break unless btn.present?
         rescue
           #ignore
         end
@@ -36,13 +19,65 @@ module Orders
     end
 
     def tooltip
-      button = collapse_button
+      btn = button
       tooltip_element = StampsLabel.new (@browser.div id: 'ext-quicktips-tip-innerCt')
+      btn.hover
+      btn.hover
       15.times do
-        button.hover
+        btn.hover
         sleep 1
-        return tooltip_element.text if tooltip_element.present?
+        if tooltip_element.present?
+          log.info tooltip_element.text
+          return tooltip_element.text
+        end
       end
+    end
+  end
+
+  class ExpandButton < BrowserObject
+
+    def button
+      StampsButton.new (@browser.img css: 'img[class*=tool-expand-right]')
+    end
+
+    def click
+      btn = button
+      10.times do
+        begin
+          btn.safe_click
+          sleep 1
+          break unless btn.present?
+        rescue
+          #ignore
+        end
+      end
+    end
+
+    def tooltip
+      btn = button
+      tooltip_element = StampsLabel.new (@browser.div id: 'ext-quicktips-tip-innerCt')
+      btn.hover
+      btn.hover
+      15.times do
+        btn.hover
+        sleep 1
+        if tooltip_element.present?
+          log.info tooltip_element.text
+          return tooltip_element.text
+        end
+      end
+    end
+
+  end
+
+  class FilterMenuItem < BrowserObject
+
+    def collapse
+      CollapseButton.new @browser
+    end
+
+    def expand
+      ExpandButton.new @browser
     end
   end
 

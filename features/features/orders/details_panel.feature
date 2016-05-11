@@ -13,7 +13,7 @@ Feature: Able to collapse and reopen details panel when click Add order
 
     Then Toolbar: Add
     Then Details: Collapse Panel
-    Then Details: Expand Order Details
+    Then Details: Expand panel
     Then Details: Expect Panel Expanded
 
 

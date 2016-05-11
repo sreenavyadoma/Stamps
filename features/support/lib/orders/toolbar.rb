@@ -139,100 +139,70 @@ module Orders
         end
       end
 
-      def refresh_orders
-        button = StampsButton.new @browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
-        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
+      class AddButton < OrdersObject
+        def button
+          StampsButton.new @browser.span Orders::Locators::ToolBar::add
+        end
 
-        button.safe_click
-        sleep 1
-        if importing_order.present?
-          log.info importing_order.message
-          importing_order.ok
-        end
-        if importing_order.present?
-          log.info importing_order.message
-          importing_order.ok
-        end
-        if importing_order.present?
-          log.info importing_order.message
-          importing_order.ok
-        end
-        button.safe_click
-        sleep 1
-        if importing_order.present?
-          log.info importing_order.message
-          importing_order.ok
-        end
-        if importing_order.present?
-          log.info importing_order.message
-          importing_order.ok
-        end
-        if importing_order.present?
-          log.info importing_order.message
-          importing_order.ok
-        end
-        button.safe_click
-        if importing_order.present?
-          log.info importing_order.message
-          importing_order.ok
-        end
-        if importing_order.present?
-          log.info importing_order.message
-          importing_order.ok
-        end
-        if importing_order.present?
-          log.info importing_order.message
-          importing_order.ok
-        end
-      end
+        def click
+          order_details = Orders::Details::DetailsForm.new @browser
+          grid = Orders::Grid::OrdersGrid.new @browser
+          add_button = button
 
-      def import
-        button = StampsButton.new @browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
-        modal = ImportOrders.new @browser
-        5.times do
-          button.safe_click
-          return modal if modal.present?
+          # Initializing Order Database
+          initializing_db = StampsLabel.new @browser.div :text => "Initializing Order Database"
+          nav_bar = Orders::Navigation::NavigationBar.new @browser
+
+          sleep 2
+          grid.checkbox.uncheck 1
+
+          old_id = grid.order_id.row 1
+          log.info "Row 1 Order ID #{old_id}"
+          15.times do |count|
+            begin
+              add_button.safe_click
+              sleep 2
+              if initializing_db.present?
+                log.info initializing_db.text
+              else
+                if order_details.present?
+                  new_id = grid.order_id.row 1
+                  log.info "Add #{(order_details.present?)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
+                  return order_details
+                end
+              end
+            rescue
+              #ignore
+            end
+          end
+
+          if initializing_db.present?
+            message = "\n*****  #{initializing_db.text}  *****\nUser #{nav_bar.username.text} is NOT setup correctly in ShipStation.  Check that this user's email is unique."
+            log.info message
+            stop_test message
+          end
+
+          stop_test "Unable to Toolbar: Adds!" unless order_details.present?
         end
-      end
 
-      def per_page
-        PerPage.new @browser
-      end
-
-      def settings
-        SettingsMenu.new @browser
-      end
-
-      def reprint
-        button = StampsButton.new @browser.span(text: "Reprint")
-        modal = RePrintModal.new @browser
-        label_unavailable = LabelUnavailable.new @browser
-        15.times do
-          return modal if modal.present?
-          return label_unavailable if label_unavailable.present?
-          button.safe_click
+        def tooltip
+          btn = button
+          tooltip_element = StampsLabel.new (@browser.div id: 'ext-quicktips-tip-innerCt')
+          btn.hover
+          btn.hover
+          15.times do
+            btn.hover
+            sleep 1
+            if tooltip_element.present?
+              log.info tooltip_element.text
+              return tooltip_element.text
+            end
+          end
         end
       end
 
       def print_modal
         open_window Orders::PrintModal.new @browser
-      end
-
-      def print_invalid_address
-        open_window InvalidAddressError.new(@browser)
-      end
-
-      def print_expecting_error *args
-        error_window = IncompleteOrderError.new(@browser)
-        open_window error_window
-        case args.length
-          when 0
-            error_window
-          when 1
-            error_window.error_message.include? error_message
-          else
-            stop_test "Illegal number of arguments."
-        end
       end
 
       def open_window window
@@ -294,56 +264,67 @@ module Orders
       end
 
       def add
-        order_details = Orders::Details::DetailsForm.new @browser
-        grid = Orders::Grid::OrdersGrid.new @browser
-        add_button = StampsButton.new @browser.span Orders::Locators::ToolBar::add
-
-        # Initializing Order Database
-        initializing_db = StampsLabel.new @browser.div :text => "Initializing Order Database"
-        nav_bar = Orders::Navigation::NavigationBar.new @browser
-
-        sleep 2
-        grid.checkbox.uncheck 1
-
-        old_id = grid.order_id.row 1
-        log.info "Row 1 Order ID #{old_id}"
-        15.times do |count|
-          begin
-            add_button.safe_click
-            sleep 2
-            if initializing_db.present?
-              log.info initializing_db.text
-            else
-              if order_details.present?
-                new_id = grid.order_id.row 1
-                log.info "Add #{(order_details.present?)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
-                return order_details
-              end
-            end
-          rescue
-            #ignore
-          end
-        end
-
-        if initializing_db.present?
-          message = "\n*****  #{initializing_db.text}  *****\nUser #{nav_bar.username.text} is NOT setup correctly in ShipStation.  Check that this user's email is unique."
-          log.info message
-          stop_test message
-        end
-
-        stop_test "Unable to Toolbar: Adds!" unless order_details.present?
+        AddButton.new @browser
       end
 
       def move
         MoveMenu.new @browser
       end
 
-      def browser_settings_button
-        StampsButton.new (@browser.span :css => "span[class*=sdc-icon-settings]")
+      def refresh_orders
+        button = StampsButton.new @browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
+        importing_order = Orders::Stores::ImportingOrdersModal.new @browser
+
+        button.safe_click
+        sleep 1
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        button.safe_click
+        sleep 1
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        button.safe_click
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
+        if importing_order.present?
+          log.info importing_order.message
+          importing_order.ok
+        end
       end
 
-      def usps_intl_terms
-        USPSTermsModal.new @browser
+      def import
+        button = StampsButton.new @browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
+        modal = ImportOrders.new @browser
+        5.times do
+          button.safe_click
+          return modal if modal.present?
+        end
       end
 
       def wait_until_present
@@ -352,6 +333,54 @@ module Orders
 
       def present?
         browser_helper.present? @browser.span Orders::Locators::ToolBar::add
+      end
+
+
+      #============================
+
+
+      def per_page
+        PerPage.new @browser
+      end
+
+      def settings
+        SettingsMenu.new @browser
+      end
+
+      def reprint
+        button = StampsButton.new @browser.span(text: "Reprint")
+        modal = RePrintModal.new @browser
+        label_unavailable = LabelUnavailable.new @browser
+        15.times do
+          return modal if modal.present?
+          return label_unavailable if label_unavailable.present?
+          button.safe_click
+        end
+      end
+
+      def print_invalid_address
+        open_window InvalidAddressError.new(@browser)
+      end
+
+      def print_expecting_error *args
+        error_window = IncompleteOrderError.new(@browser)
+        open_window error_window
+        case args.length
+          when 0
+            error_window
+          when 1
+            error_window.error_message.include? error_message
+          else
+            stop_test "Illegal number of arguments."
+        end
+      end
+
+      def browser_settings_button
+        StampsButton.new (@browser.span :css => "span[class*=sdc-icon-settings]")
+      end
+
+      def usps_intl_terms
+        USPSTermsModal.new @browser
       end
 
       def settings_modal

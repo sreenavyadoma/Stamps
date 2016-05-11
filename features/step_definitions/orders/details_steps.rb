@@ -415,7 +415,7 @@ end
 
 Then /^Details: Collapse Panel$/ do
   log.info "Details: Collapse Panel"
-  orders.details.toolbar.menu.collapse_panel
+  orders.details.toolbar.menu.collapse
 end
 
 Then /^Details: Expect Panel Expanded$/ do
@@ -423,9 +423,9 @@ Then /^Details: Expect Panel Expanded$/ do
   orders.details.present?.should be true
 end
 
-Then /^Details: Expand Order Details$/ do
-  log.info "Details: Expand Order Details"
-  orders.details.open
+Then /^Details: Expand panel$/ do
+  log.info "Details: Expand panel"
+  orders.details.expand
 end
 
 Then /^Details: Delete Item (\d+)$/ do |item_number|
@@ -918,10 +918,10 @@ Then /^Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |servic
   log.info "Step: Details: Expect Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
   tooltips = tooltip_content.split "||"
   actual_tooltip = orders.details.service.tooltip service
-  tooltips.each { |tooltip|
+  tooltips.each do |tooltip|
     log.info "Does #{tooltip} exist in tooltip?  #{(actual_tooltip.include? tooltip)?"Yes.":"No."}"
     actual_tooltip.should include tooltip
-  }
+  end
 end
 
 Then /^Details: Expect Service Cost to be \$([0-9.]*)$/ do |expectation|

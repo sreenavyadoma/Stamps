@@ -3,7 +3,7 @@ Then /^Toolbar: Add$/ do
   log.info "Toolbar: Add"
   @old_balance = orders.navigation_bar.balance.amount
   orders.grid.checkbox.uncheck 1
-  @order_details = orders.toolbar.add
+  @order_details = orders.toolbar.add.click
   @order_id = @order_details.toolbar.order_id
   log.info "New Order ID #{@order_id}"
   @awaiting_shipment_count = orders.filter.awaiting_shipment_count
@@ -81,13 +81,13 @@ end
 
 Then /^Toolbar: Add second order$/ do
   log.info "Step: Toolbar: Add second order"
-  @order_details = orders.toolbar.add
+  @order_details = orders.toolbar.add.click
   @order_id_2 = @order_details.toolbar.order_id
 end
 
 Then /^Toolbar: Add third order$/ do
   log.info "Step: Toolbar: Add third order"
-  @order_details = orders.toolbar.add
+  @order_details = orders.toolbar.add.click
   @order_id_3 = @order_details.toolbar.order_id
 end
 
@@ -95,7 +95,7 @@ Then /^Add a second order$/ do
   log.info "Step: Add a second order"
   first_row_order_id = orders.grid.order_id.row 1
   5.times{
-    @order_id_2 = orders.toolbar.add_shipping_address_window
+    @order_id_2 = orders.toolbar.add.click_shipping_address_window
     if first_row_order_id.include? @order_id
       sleep(3)
     end

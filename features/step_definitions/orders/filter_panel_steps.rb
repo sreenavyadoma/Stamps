@@ -16,7 +16,12 @@ end
 
 Then /^Filter: Collapse Panel$/ do
   log.info "Filter: Collapse Panel"
-  orders.filter.menu_item.collapse
+  orders.filter.menu_item.collapse.click
+end
+
+Then /^Filter: Expand Panel$/ do
+  log.info "Filter: Expand Panel"
+  orders.filter.menu_item.expand.click
 end
 
 Then /^Filter: Expect Shipped Tab Date Printed to be today$/ do

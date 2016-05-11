@@ -1985,16 +1985,35 @@ module Orders
 
     class DetailsToolbar < OrdersObject
       class ToolbarMenu < OrdersObject
-          def collapse_panel
-            selection = StampsLabel.new @browser.span(text: "Collapse Panel")
-            drop_down = StampsButton.new (@browser.spans(css: "span[class*='sdc-icon-more']").first)
-            collapsed_details = DetailsCollapsible.new @browser
-            10.times do
-              drop_down.safe_click unless selection.present?
-              selection.safe_click
-              break if collapsed_details.present?
+        def drop_down
+          StampsButton.new (@browser.spans(css: "span[class*='sdc-icon-more']").first)
+        end
+
+        def collapse
+          selection = StampsLabel.new @browser.span(text: "Collapse Panel")
+          dd = drop_down
+          collapsed_details = DetailsCollapsible.new @browser
+          10.times do
+            dd.safe_click unless selection.present?
+            selection.safe_click
+            break if collapsed_details.present?
+          end
+        end
+
+        def tooltip
+          btn = drop_down
+          tooltip_element = StampsLabel.new (@browser.div id: 'ext-quicktips-tip-innerCt')
+          btn.hover
+          btn.hover
+          15.times do
+            btn.hover
+            sleep 1
+            if tooltip_element.present?
+              log.info tooltip_element.text
+              return tooltip_element.text
             end
           end
+        end
       end
 
       def menu
@@ -2041,7 +2060,7 @@ module Orders
         browser_helper.present? @browser.div :css => "div[id^=singleOrderDetailsForm][id$=body]"
       end
 
-      def open
+      def expand
         collapsed_details = DetailsCollapsible.new @browser
         5.times do
           if collapsed_details.present?
