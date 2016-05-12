@@ -1,11 +1,11 @@
 
-Feature: Service Tooltip
+Feature: Tooltips Improvements
 
   Background:
     Given I am signed in to Orders
 
   @tooltips_improvements
-  Scenario: International Service Tooltip Tests
+  Scenario: Tooltips Improvements
     Then Filter: Menu Item collapse button tooltip should be Collapse this panel.
     Then Filter: Collapse Panel
     Then Filter: Menu Item expand button tooltip should be Expand this panel.
