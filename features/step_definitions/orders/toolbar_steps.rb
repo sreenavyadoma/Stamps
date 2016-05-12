@@ -19,6 +19,7 @@ Then /^Toolbar: Move to Shipped$/ do
   grid.checkbox.check_order_id @order_id
   grid.toolbar.move.to_shipped.cancel
   grid.toolbar.move.to_shipped.move
+  todo-rob
 end
 
 Then /^Toolbar: Move to Canceled$/ do
@@ -50,7 +51,7 @@ end
 
 Then /^Print: Print$/ do
   log.info "Step: Print"
-  print_modal = orders.toolbar.print_modal
+  print_modal = orders.toolbar.print_order.click
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.text_box.text
   @printer = print_modal.printer.text_box.text

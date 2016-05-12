@@ -94,7 +94,7 @@ end
 Then /^Print: Expect Total Cost to be \$([0-9.]*)$/ do |expectation|
   log.info "Step: Print: Expect Total Cost to be #{expectation}"
   begin
-    print_window = orders.toolbar.print_modal
+    print_window = orders.toolbar.print_order.click
     actual_value = print_window.total_cost
     10.times { |counter|
       #log_expectation_eql "#{counter}. Print Window Total Cost", expectation, actual_value

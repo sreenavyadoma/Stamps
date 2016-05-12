@@ -95,6 +95,21 @@ module Orders
           stop_test "Unable to select #{selection} from Move menu."
         end
 
+        def tooltip
+          btn = drop_down
+          tooltip_element = StampsLabel.new (@browser.div id: 'ext-quicktips-tip-innerCt')
+          btn.hover
+          btn.hover
+          15.times do
+            btn.hover
+            sleep 1
+            if tooltip_element.present?
+              log.info tooltip_element.text
+              return tooltip_element.text
+            end
+          end
+        end
+
         def to_shipped
           select :shipped
         end
@@ -201,66 +216,109 @@ module Orders
         end
       end
 
-      def print_modal
-        open_window Orders::PrintModal.new @browser
+      class PrintOrderButton < OrdersObject
+
+        def button
+          StampsButton.new ((@browser.spans :css => "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
+        end
+
+        def tooltip
+          btn = button
+          tooltip_element = StampsLabel.new (@browser.div id: 'ext-quicktips-tip-innerCt')
+          btn.hover
+          btn.hover
+          15.times do
+            btn.hover
+            sleep 1
+            if tooltip_element.present?
+              log.info tooltip_element.text
+              return tooltip_element.text
+            end
+          end
+        end
+
+        def click
+          open_window Orders::PrintModal.new @browser
+        end
+
+        def open_window window
+          return window if window.present?
+          print = button
+
+          print.click
+          sleep 1
+          return window if window.present?
+
+          usps_terms = USPSTermsModal.new @browser
+
+          if usps_terms.is_usps_terms_modal_present
+            usps_terms.check_dont_show_again_checkbox
+            usps_terms.click_i_agree_button
+          end
+
+          #order_grid = Orders::Grid::OrdersGrid.new @browser
+          #checked_rows_cache = order_grid.checkbox.checked_rows
+
+          naws_plugin_error = NawsPluginError.new @browser
+          error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
+          install_plugin_error = ErrorInstallPlugin.new @browser
+
+          20.times do
+            begin
+              return window if window.present?
+              if error_connecting_to_plugin.present?
+                5.times{
+                  error_connecting_to_plugin.ok
+                  #order_grid.checkbox.check_all checked_rows_cache
+                  break unless error_connecting_to_plugin.present?
+                }
+              end
+
+              if naws_plugin_error.present?
+                5.times{
+                  naws_plugin_error.ok
+                  #order_grid.checkbox.check_all checked_rows_cache
+                  break unless naws_plugin_error.present?
+                }
+              end
+
+              return window if window.present?
+              print.click
+              sleep 1
+            rescue
+              #ignore
+            end
+
+            if install_plugin_error.present?
+              install_plugin_error.close
+              return nil
+            end
+          end
+
+          return window if window.present?
+          #stop_test "Unable to open Print Window.  There might be errors in printing OR order is not ready for printing.  Check your test."
+        end
+
+        def print_expecting_error *args
+          error_window = IncompleteOrderError.new(@browser)
+          open_window error_window
+          case args.length
+            when 0
+              error_window
+            when 1
+              error_window.error_message.include? error_message
+            else
+              stop_test "Illegal number of arguments."
+          end
+        end
+
+        def print_invalid_address
+          open_window InvalidAddressError.new(@browser)
+        end
       end
 
-      def open_window window
-        return window if window.present?
-        print = StampsButton.new ((@browser.spans :css => "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
-
-        print.click
-        sleep 1
-        return window if window.present?
-
-        usps_terms = USPSTermsModal.new @browser
-
-        if usps_terms.is_usps_terms_modal_present
-          usps_terms.check_dont_show_again_checkbox
-          usps_terms.click_i_agree_button
-        end
-
-        #order_grid = Orders::Grid::OrdersGrid.new @browser
-        #checked_rows_cache = order_grid.checkbox.checked_rows
-
-        naws_plugin_error = NawsPluginError.new @browser
-        error_connecting_to_plugin = ErrorConnectingToPlugin.new @browser
-        install_plugin_error = ErrorInstallPlugin.new @browser
-
-        20.times do
-          begin
-            return window if window.present?
-            if error_connecting_to_plugin.present?
-              5.times{
-                error_connecting_to_plugin.ok
-                #order_grid.checkbox.check_all checked_rows_cache
-                break unless error_connecting_to_plugin.present?
-              }
-            end
-
-            if naws_plugin_error.present?
-              5.times{
-                naws_plugin_error.ok
-                #order_grid.checkbox.check_all checked_rows_cache
-                break unless naws_plugin_error.present?
-              }
-            end
-
-            return window if window.present?
-            print.click
-            sleep 1
-          rescue
-            #ignore
-          end
-
-          if install_plugin_error.present?
-            install_plugin_error.close
-            return nil
-          end
-        end
-
-        return window if window.present?
-        #stop_test "Unable to open Print Window.  There might be errors in printing OR order is not ready for printing.  Check your test."
+      def print_order
+        PrintOrderButton.new @browser
       end
 
       def add
@@ -336,6 +394,7 @@ module Orders
       end
 
 
+
       #============================
 
 
@@ -355,23 +414,6 @@ module Orders
           return modal if modal.present?
           return label_unavailable if label_unavailable.present?
           button.safe_click
-        end
-      end
-
-      def print_invalid_address
-        open_window InvalidAddressError.new(@browser)
-      end
-
-      def print_expecting_error *args
-        error_window = IncompleteOrderError.new(@browser)
-        open_window error_window
-        case args.length
-          when 0
-            error_window
-          when 1
-            error_window.error_message.include? error_message
-          else
-            stop_test "Illegal number of arguments."
         end
       end
 

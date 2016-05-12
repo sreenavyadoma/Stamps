@@ -1,7 +1,20 @@
 
+Then /^Toolbar: Expect Print Tooltip to include (.*)$/ do |expectation|
+  log.info "Toolbar: Expect Print Tooltip to include #{expectation}"
+  actual = orders.toolbar.print_order.tooltip
+  log.info "Test #{(actual.include? expectation)?"Passed":"Failed"}"
+  actual.should include expectation
+end
 
-Then /^Toolbar: Expect Add Button Tooltip to include (.*)$/ do |expectation|
-  log.info "Toolbar: Expect Add Button Tooltip to include #{expectation}"
+Then /^Toolbar: Expect Move Tooltip to include (.*)$/ do |expectation|
+  log.info "Toolbar: Expect Move Tooltip to include #{expectation}"
+  actual = orders.toolbar.move.tooltip
+  log.info "Test #{(actual.include? expectation)?"Passed":"Failed"}"
+  actual.should include expectation
+end
+
+Then /^Toolbar: Expect Add Tooltip to include (.*)$/ do |expectation|
+  log.info "Toolbar: Expect Add Tooltip to include #{expectation}"
   actual = orders.toolbar.add.tooltip
   log.info "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   actual.should include expectation
@@ -31,7 +44,7 @@ end
 Then /^Tooltips: Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |expectation, data_qtip|
   log.info "Tooltips: Expect Print Modal Print Media #{expectation} tooltip to include #{data_qtip}"
   tooltips = data_qtip.split "||"
-  actual_tooltip = orders.toolbar.print_modal.printing_on.tooltip expectation
+  actual_tooltip = orders.toolbar.print_order.click.printing_on.tooltip expectation
   tooltips.each do |tooltip|
     log.info "Test #{(actual_tooltip.include? tooltip)?"Passed":"Failed"}"
     actual_tooltip.should include tooltip
