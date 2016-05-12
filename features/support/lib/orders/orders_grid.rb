@@ -39,6 +39,7 @@ module Orders
       def grid_text_by_id column, order_id
         scroll column
         row = row_number(order_id)
+        scroll column
         log.info "Retrieving data for Column #{GRID_COLUMNS[column]} with Order ID #{order_id}...."
         data = grid_text column, row
         log.info "Column:  #{GRID_COLUMNS[column]}, Order ID #{order_id}, Row #{row}, Data #{data}"
@@ -109,6 +110,7 @@ module Orders
       end
 
       def row_number order_id
+        scroll :order_id
         row = 0
         column = column_number(:order_id)
         css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column})>div"
