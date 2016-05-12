@@ -15,6 +15,7 @@ Then /^Print: Set Printer to \"(.*)\"$/ do |printer|
 end
 
 Then /^RePrint: Reprint$/ do
+  log.info "RePrint: Reprint"
   orders.toolbar.reprint.reprint
 end
 
