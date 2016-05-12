@@ -12,8 +12,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:tooltips_improvements) do |t|
+  t.profile = 'tooltips_improvements'
   t.cucumber_opts = "-p cuke_reports"
 end
 
