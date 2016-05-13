@@ -204,7 +204,7 @@ fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEAL
 rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=true
 details_panel: --tags  @details_panel --guess VERBOSE=false HEALTHCHECK=true
 print_multiple_reprints: --tags @print_multiple_reprints --guess VERBOSE=false HEALTHCHECK=true
-email_tracking: --tags @email_tracking --guess VERBOSE=false HEALTHCHECK=true
+print_email_tracking: --tags @print_email_tracking --guess VERBOSE=false HEALTHCHECK=true
 
 healthcheck: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true
 

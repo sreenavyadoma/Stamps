@@ -851,8 +851,8 @@ Cucumber::Rake::Task.new(:print_multiple_reprints) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:email_tracking) do |t|
-  t.profile = 'email_tracking'
+Cucumber::Rake::Task.new(:print_email_tracking) do |t|
+  t.profile = 'print_email_tracking'
   t.cucumber_opts = "-p cuke_reports"
 end
 
