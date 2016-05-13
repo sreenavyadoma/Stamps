@@ -59,11 +59,13 @@ module Stamps
         end
         log.info "Browser Selection: #{ENV['BROWSER']}"
 
+        # kill any ruby instance running before proceeding with test
         begin
-          system "taskkill /im iexplore.exe /f 2"
+          system "taskkill /im ruby.exe /f 2"
         rescue
           #ignore
         end
+
         if Test.browser.explorer?
           system "taskkill /im IEDriverServer.exe /f 2>nul"
           system "taskkill /im iexplore.exe /f 2>nul"
