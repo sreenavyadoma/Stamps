@@ -10,25 +10,10 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 5 through 8
     Then Details: Select Service Priority Mail Flat Rate Envelope
-    Then Details: Set Ounces to 3
-    Then Details: Set Pounds to 2
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-    Then Grid: Check row 1
-    Then Grid: Check row 1
-    Then Details: Select Service Priority Mail Package
-    Then Details: Set Ounces to 2
-    Then Details: Set Pounds to 1
-    Then Details: Set Insure-For to $11.00
-    Then Details: Set Height to 2
-    Then Details: Set Length to 3
-    Then Details: Set Width to 4
-    Then Grid: Check row 1
-    Then Grid: Check row 1
-    Then Details: Expect Service to be "Priority Mail Package"
-    Then Grid: Expect Ounces to be 2
-    Then Grid: Expect Pounds to be 1
-    Then Grid: Expect Insured Value to be $11.00
+    Then Details: Set Pounds to 3.5
+    Then Details: Expect Pounds to be 3
+    Then Details: Set Pounds to 2.0
+    Then Details: Expect Pounds to be 2
+    Then Details: Set Ounces to 6.0
+    Then Details: Expect Ounces to be 6.0
     Then Sign out

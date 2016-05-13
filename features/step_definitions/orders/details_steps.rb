@@ -440,7 +440,7 @@ Then /^Details: Set Weight to (\d+) lbs (\d+) oz$/ do |pounds, ounces|
   orders.details.weight.oz.set ounces
 end
 
-Then /^Details: Set Pounds to (\d*)$/ do |value|
+Then /^Details: Set Pounds to (.*)$/ do |value|
   log.info "Step: Details: Set Pounds to \"#{value}\""
   orders.details.weight.lbs.set value
 end
