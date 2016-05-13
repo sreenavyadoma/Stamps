@@ -17,7 +17,7 @@ eva_dev: --tags   @details_panel --guess VERBOSE=true HEALTHCHECK=true URL=qacc 
 daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
-xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
+details_non_integer_lbs: --tags @details_non_integer_lbs --guess VERBOSE=false HEALTHCHECK=true
 grid_order_status: --tags @grid_order_status --guess VERBOSE=false HEALTHCHECK=true
 tooltips_improvements: --tags @tooltips_improvements --guess VERBOSE=false HEALTHCHECK=true
 paypal: --tags @paypal --guess VERBOSE=false HEALTHCHECK=true

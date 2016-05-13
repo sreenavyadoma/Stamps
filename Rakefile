@@ -7,8 +7,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:details_non_integer_lbs) do |t|
+  t.profile = 'details_non_integer_lbs'
   t.cucumber_opts = "-p cuke_reports"
 end
 
