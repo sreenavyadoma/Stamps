@@ -18,6 +18,7 @@ daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc 
 
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
+XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
 tooltips_improvements: --tags @tooltips_improvements --guess VERBOSE=false HEALTHCHECK=true
 paypal: --tags @paypal --guess VERBOSE=false HEALTHCHECK=true
 
@@ -50,8 +51,7 @@ rakuten: --tags @rakuten --guess VERBOSE=false HEALTHCHECK=true
 volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=true 
 amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=true 
 
-XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
-XXXXXXXXXXXX: --tags @XXXXXXXXXXXX --guess VERBOSE=false HEALTHCHECK=true
+details_edit_order: --tags @details_edit_order --guess VERBOSE=false HEALTHCHECK=true
 
 details_services: --tags @details_services --guess VERBOSE=false HEALTHCHECK=true
 #eln5mw78g for general setting autofund testing in sc
