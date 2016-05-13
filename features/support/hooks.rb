@@ -31,6 +31,13 @@ After do |scenario|
   log.info "End Test Scenario:  -------------------------------------------  #{@scenario_name}"
   log.info "End Test Scenario:  -------------------------------------------  #{@scenario_name}"
   log.info "End Test Scenario:  -------------------------------------------  #{@scenario_name}"
+
+  # kill any ruby instance running before proceeding with test
+  begin
+    system "taskkill /im ruby.exe /f"
+  rescue
+    #ignore
+  end
 end
 
 

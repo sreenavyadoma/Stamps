@@ -59,22 +59,22 @@ module Stamps
         end
         log.info "Browser Selection: #{ENV['BROWSER']}"
 
-        # kill any ruby instance running before proceeding with test
-        begin
-          system "taskkill /im ruby.exe /f 2"
-        rescue
-          #ignore
-        end
-
         if Test.browser.explorer?
-          system "taskkill /im IEDriverServer.exe /f 2>nul"
-          system "taskkill /im iexplore.exe /f 2>nul"
+          begin
+            system "taskkill /im iexplore.exe /f"
+          rescue
+            #ignore
+          end
 
           driver = Watir::Browser.new :ie
           @browser_name = 'Internet Explorer'
 
         elsif Test.browser.firefox?
-          system "taskkill /im firefox.exe /f 2>nul"
+          begin
+            system "taskkill /im firefox.exe /f"
+          rescue
+            #ignore
+          end
           sleep 2
           #driver = Watir::Browser.new :firefox
           firefox_profile_dir = File.join("C:", "watir-webdriver", "firefox", "test-profile")
@@ -89,7 +89,11 @@ module Stamps
           @browser_name = 'Mozilla Firefox'
 
         elsif Test.browser.chrome?
-          system "taskkill /im chrome.exe /f 2>nul"
+          begin
+            system "taskkill /im chrome.exe /f"
+          rescue
+            #ignore
+          end
 
           temp_data_dir1 = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data", "Default")
           temp_data_dir2 = File.join("C:", "Users", "#{ENV['USERNAME']}.CORP", "AppData", "Local", "Google", "Chrome", "User Data", "Default")
