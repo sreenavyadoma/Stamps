@@ -198,6 +198,15 @@ module Orders
         window_title.present?
       end
 
+      def contains store_name
+        images = @browser.imgs(class: "data-view-selection-enabled")
+        images.each do |image|
+          src = browser_helper.attribute_value image, "src"
+          return store_name if src.include? store_name.downcase
+        end
+        "Store #{store_name} does not exist in store selection modal."
+      end
+
       def close
         button = StampsButton.new ((@browser.imgs :css => "img[class*='x-tool-close']").last)
         button.safe_click
@@ -504,15 +513,15 @@ module Orders
 
       def add
         button = add_button
-        marketplace = store
+        store = market_place
         10.times do
           button.safe_click
           sleep 1
-          return marketplace if marketplace.present?
+          return store if store.present?
         end
       end
 
-      def store
+      def market_place
         MarketPlace.new @browser
       end
 
