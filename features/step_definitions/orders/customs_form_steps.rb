@@ -327,22 +327,6 @@ Then /^Customs: Expect I agree to the USPS Privacy Act Statement is unchecked$/ 
   actual_value.should eql expectation
 end
 
-Then /^Sleep (\d+)$/ do |seconds|
-  step "Wait in seconds #{seconds}"
-end
-
-Then /^Pause for 1 second$/ do
-  step "Pause for 1 seconds"
-end
-
-Then /^Pause for (\d+) seconds$/ do |seconds|
-  step "Wait in seconds #{seconds}"
-end
-
-Then /^Wait in seconds (\d+)$/ do |seconds|
-  sleep seconds.to_i
-end
-
 Then /^Customs: Close Form$/ do
   log.info "Step: Closing customs form"
   @customs_form = @order_details.customs_form if @customs_form.nil?

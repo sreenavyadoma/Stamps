@@ -1,5 +1,11 @@
 
+Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation|
+  raise "Manage Stores: Market place modal is not present.  Check your workflow." if @market_place.nil?
+
+end
+
 Then /^Marketplace: Select PayPal$/ do
+  log.info ""
   raise "Manage Stores: Market place modal is not present.  Check your workflow." if @market_place.nil?
   @store = @market_place.paypal
 end

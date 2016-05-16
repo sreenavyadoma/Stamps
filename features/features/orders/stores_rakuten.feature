@@ -12,6 +12,7 @@ Feature:  Rakuten Store Management
       # Add Store
       Then Manage Stores: Add
 
+      Then Marketplace: Expect store selection modal contains Rakuten
       Then Marketplace: Select Rakuten
 
       Then Rakuten Store: Set Rakuten Seller ID 40549242

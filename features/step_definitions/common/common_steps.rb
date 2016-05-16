@@ -21,6 +21,10 @@ Then /^Refresh Browser$/ do
   @browser.refresh
 end
 
+Then /^Pause for (\d+) seconds?$/ do |seconds|
+  step "Wait in seconds #{seconds}"
+end
+
 =begin
 Then /^BROWSER:  CTRL-O$/ do
   @browser.send_keys [:control, 'o']
