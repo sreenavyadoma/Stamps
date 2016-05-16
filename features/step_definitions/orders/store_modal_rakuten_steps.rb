@@ -28,12 +28,6 @@ Then /^Rakuten Store: Set Map Rakuten SKU as your Product SKU to unchecked$/ do
   @store.map_rakuten_sku.uncheck
 end
 
-Then /^Rakuten Store: Test Connection$/ do
-  log.info "Rakuten Store: Test Connection"
-  raise "Rakuten Store modal is not visible or present.  Check your test workflow" if @store.nil?
-  @store.test_connection
-end
-
 Then /^Rakuten Store: Connect$/ do
   log.info "Rakuten Store: Connect"
   raise "Rakuten Store modal is not visible or present.  Check your test workflow" if @store.nil?

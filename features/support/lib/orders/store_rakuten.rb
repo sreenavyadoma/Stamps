@@ -44,16 +44,6 @@ module Orders
         StampsTextbox.new (@browser.text_fields(name: "AuthToken").last)
       end
 
-      def test_connection
-        button = StampsButton.new @browser.span(text: 'Test Connection')
-        10.times do
-          button.safe_click
-          button.safe_click
-          button.safe_click
-          break if button.present?
-        end
-      end
-
       def map_rakuten_sku
         checkbox_field = (@browser.checkboxes(css: "input[type=button][id^=checkbox]").last)
         verify_field = checkbox_field.parent.parent.parent.parent

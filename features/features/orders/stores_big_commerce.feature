@@ -5,7 +5,7 @@ Feature:  Big Commerce Store Management
     Given I am signed in to Orders
 
     @big_commerce
-    Scenario: Rakuten Store Management
+    Scenario: Big Commerce Store Management
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores
 

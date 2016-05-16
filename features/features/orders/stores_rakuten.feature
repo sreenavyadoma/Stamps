@@ -20,7 +20,7 @@ Feature:  Rakuten Store Management
       Then Rakuten Store: Set Map Rakuten SKU as your Product SKU to checked
       Then Rakuten Store: Set Map Rakuten SKU as your Product SKU to unchecked
       Then Rakuten Store: Set Map Rakuten SKU as your Product SKU to checked
-      Then Rakuten Store: Test Connection
+      
       Then Rakuten Store: Connect
 
       Then Store Settings: Set Store Nickname to random
@@ -40,7 +40,7 @@ Feature:  Rakuten Store Management
       Then Rakuten Store: Set Map Rakuten SKU as your Product SKU to checked
       Then Rakuten Store: Set Map Rakuten SKU as your Product SKU to unchecked
       Then Rakuten Store: Set Map Rakuten SKU as your Product SKU to checked
-      Then Rakuten Store: Test Connection
+      
       Then Rakuten Store: Connect
 
       Then Store Settings: Set Store Nickname to random
