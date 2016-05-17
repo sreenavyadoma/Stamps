@@ -2,7 +2,7 @@ module Orders
   module Stores
     class ThreeDCartSettings < StoreSettings
       def window_title
-        StampsLabel.new @browser.div(text: "3DCart Settings")
+        StampsLabel.new @browser.div(text: "3dcart Settings")
       end
 
       def present?
