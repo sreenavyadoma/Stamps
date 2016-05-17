@@ -3,7 +3,7 @@ Feature: Select Email Tracking for order when printing
   Background:
     Given I am signed in to Orders
 
-  @print_email_tracking
+  @print_dialog_email_tracking
   Scenario: Email Tracking
 
     Then Toolbar: Add
