@@ -590,24 +590,10 @@ module Stamps
       def click *args
         case args.length
           when 1
-            begin
-              args[0].focus
-            rescue
-              #log.info "Unable to focus on browser field #{args[0]}"
-            end
-
             args[0].click
-            #var_name = get_varname :args[0],
-            #log_browser_click args[0]
 
           when 2
-            begin
-              args[0].focus
-            rescue
-              #log.info "Unable to focus on browser field #{args[1]} #{args[0]}"
-            end
             args[0].click
-            #log_browser_click args[0], args[1]
           else
             stop_test "Wrong number of arguments."
         end
