@@ -3,7 +3,7 @@ Feature: Print Media - Roll - 4" x 6" Shipping Label
   Background:
     Given I am signed in to Orders
 
-  @print_media_4x6_shipping_label
+  @print_dialog_printing_on_4x6_shipping_label
   Scenario:  Roll - 4" x 6" Shipping Label
     Then Toolbar: Add
     Then Details: Set Ship-From to default
