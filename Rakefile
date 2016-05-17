@@ -37,8 +37,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:print_dialog_hide_postage_value_checkbox) do |t|
+  t.profile = 'print_dialog_hide_postage_value_checkbox'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -426,8 +426,8 @@ Cucumber::Rake::Task.new(:print_ship_date_today_plus1) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_ship_date_today) do |t|
-  t.profile = 'print_ship_date_today'
+Cucumber::Rake::Task.new(:print_dialog_ship_date_today) do |t|
+  t.profile = 'print_dialog_ship_date_today'
   t.cucumber_opts = "-p cuke_reports"
 end
 

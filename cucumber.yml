@@ -21,7 +21,7 @@ xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
-xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
+
 
 details_non_integer_lbs: --tags @details_non_integer_lbs --guess VERBOSE=false HEALTHCHECK=true
 grid_order_status: --tags @grid_order_status --guess VERBOSE=false HEALTHCHECK=true
@@ -115,15 +115,12 @@ print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat
 
 print_multiple_orders: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=true
 
-# PRINT LABEL SIDES
-print_dialog_label_left_side: --tags @print_dialog_label_left_side --guess VERBOSE=false HEALTHCHECK=true
-print_dialog_label_right_side: --tags @print_dialog_label_right_side --guess VERBOSE=false HEALTHCHECK=true
 
 # PRINT SHIP DATE
 print_ship_date_today_plus3: --tags @print_ship_date_today_plus3 --guess VERBOSE=false HEALTHCHECK=true
 print_ship_date_today_plus2: --tags @print_ship_date_today_plus2 --guess VERBOSE=false HEALTHCHECK=true
 print_ship_date_today_plus1: --tags @print_ship_date_today_plus1 --guess VERBOSE=false HEALTHCHECK=true
-print_ship_date_today: --tags @print_ship_date_today --guess VERBOSE=false HEALTHCHECK=true
+print_dialog_ship_date_today: --tags @print_dialog_ship_date_today --guess VERBOSE=false HEALTHCHECK=true
 
 
 # PRINT MEDIA
@@ -133,6 +130,12 @@ print_dialog_printing_on_4x6_sdc1200: --tags @print_dialog_printing_on_4x6_sdc12
 print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess VERBOSE=false HEALTHCHECK=true
 print_dialog_printing_on_4x6_shipping_label: --tags @print_dialog_printing_on_4x6_shipping_label --guess VERBOSE=false HEALTHCHECK=true
 print_dialog_printing_on_4x6_roll: --tags @print_dialog_printing_on_4x6_roll --guess VERBOSE=false HEALTHCHECK=true
+print_dialog_hide_postage_value_checkbox: --tags @print_dialog_hide_postage_value_checkbox --guess VERBOSE=false HEALTHCHECK=true
+print_dialog_change_date: --tags @print_dialog_change_date --guess VERBOSE=false HEALTHCHECK=true
+print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess VERBOSE=false HEALTHCHECK=true
+# PRINT LABEL SIDES
+print_dialog_label_left_side: --tags @print_dialog_label_left_side --guess VERBOSE=false HEALTHCHECK=true
+print_dialog_label_right_side: --tags @print_dialog_label_right_side --guess VERBOSE=false HEALTHCHECK=true
 
 # CP72 & CN22
 print_layout_cp72_sdc1200_single_ply: --tags @print_layout_cp72_sdc1200_single_ply --guess VERBOSE=false HEALTHCHECK=true
@@ -151,7 +154,6 @@ print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation -
 print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess VERBOSE=false HEALTHCHECK=true
 print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false HEALTHCHECK=true
 
-print_dialog_change_date: --tags @print_dialog_change_date --guess VERBOSE=false HEALTHCHECK=true
 details_reference_no: --tags @details_reference_no --guess VERBOSE=false HEALTHCHECK=true
 customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false HEALTHCHECK=true
 grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false HEALTHCHECK=true
@@ -210,7 +212,6 @@ fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEAL
 rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=true
 details_panel: --tags  @details_panel --guess VERBOSE=false HEALTHCHECK=true
 print_multiple_reprints: --tags @print_multiple_reprints --guess VERBOSE=false HEALTHCHECK=true
-print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess VERBOSE=false HEALTHCHECK=true
 
 healthcheck: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true
 
