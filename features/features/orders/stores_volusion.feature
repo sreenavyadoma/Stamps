@@ -15,7 +15,7 @@ Feature:  Volusion Store Management
       Then Marketplace: Select Volusion
 
       Then Volusion Store: Set Volusion API to http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
-      Then Volusion Store: Test Connection
+      
       Then Volusion Store: Connect
 
       Then Store Settings: Set Store Nickname to random
@@ -29,7 +29,7 @@ Feature:  Volusion Store Management
       Then Manage Stores: Reconnect
 
       Then Volusion Store: Set Volusion API to http://ywvmt.dmjeb.servertrust.com/net/WebService.aspx?Login=qaclient@stamps.com&EncryptedPassword=39E8EDED1C795511ACF981DD59FF8398399965CD1A6D3F8069EEF60A096282E2&EDI_Name=Generic\Orders
-      Then Volusion Store: Test Connection
+      
       Then Volusion Store: Reconnect
 
       # Edit Store

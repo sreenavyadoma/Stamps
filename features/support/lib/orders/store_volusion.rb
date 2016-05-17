@@ -25,17 +25,6 @@ module Orders
         textbox.set url
       end
 
-      def test_connection
-        button = StampsButton.new @browser.span(text: "Test Connection")
-        connected = connect_button
-        20.times do
-          button.safe_click
-          button.safe_click
-          sleep 1
-          break if connected.present?
-        end
-      end
-
       def connect_button
         StampsButton.new @browser.span(text: "Connect")
       end
