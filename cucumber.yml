@@ -116,7 +116,7 @@ print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat
 print_multiple_orders: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=true
 
 # PRINT LABEL SIDES
-print_label_left_side: --tags @print_label_left_side --guess VERBOSE=false HEALTHCHECK=true
+print_dialog_label_left_side: --tags @print_dialog_label_left_side --guess VERBOSE=false HEALTHCHECK=true
 print_label_right_side: --tags @print_label_right_side --guess VERBOSE=false HEALTHCHECK=true
 
 # PRINT SHIP DATE

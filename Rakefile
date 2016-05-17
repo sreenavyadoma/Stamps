@@ -406,8 +406,8 @@ Cucumber::Rake::Task.new(:print_label_right_side) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_label_left_side) do |t|
-  t.profile = 'print_label_left_side'
+Cucumber::Rake::Task.new(:print_dialog_label_left_side) do |t|
+  t.profile = 'print_dialog_label_left_side'
   t.cucumber_opts = "-p cuke_reports"
 end
 
