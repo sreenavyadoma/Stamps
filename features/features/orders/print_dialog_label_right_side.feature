@@ -4,7 +4,7 @@ Feature: Change Starting Label Position to Right Side
   Background:
     Given I am signed in to Orders
 
-  @print_label_right_side
+  @print_dialog_label_right_side
   Scenario:  Print Label - Right Side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
