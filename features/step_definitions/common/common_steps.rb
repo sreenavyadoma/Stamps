@@ -22,5 +22,5 @@ Then /^Refresh Browser$/ do
 end
 
 Then /^Pause for (\d+) seconds?$/ do |seconds|
-  step "Wait in seconds #{seconds}"
+  sleep seconds.to_i
 end

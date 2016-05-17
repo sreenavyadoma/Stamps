@@ -34,7 +34,7 @@ After do |scenario|
 
   # kill any ruby instance running before proceeding with test
   begin
-    system "taskkill /im ruby.exe /f"
+    #system "taskkill /im ruby.exe /f"
   rescue
     #ignore
   end
