@@ -15,7 +15,7 @@ Feature:  Changing Print Date Causes Page to get Stuck on "Verifying Postage Rat
   Background:
     Given I am signed in to Orders
 
-  @print_change_date
+  @print_dialog_change_date
   Scenario: Change Print Date
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -30,7 +30,7 @@ Feature:  Changing Print Date Causes Page to get Stuck on "Verifying Postage Rat
     Then Print: Set Ship Date to today plus 2
     Then Pause for 2 seconds
     Then Print: Print
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     Then Sign out
 
 

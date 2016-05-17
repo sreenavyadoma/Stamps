@@ -536,8 +536,8 @@ Cucumber::Rake::Task.new(:print_layout_cp72_sdc1200_single_ply) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_change_date) do |t|
-  t.profile = 'print_change_date'
+Cucumber::Rake::Task.new(:print_dialog_change_date) do |t|
+  t.profile = 'print_dialog_change_date'
   t.cucumber_opts = "-p cuke_reports"
 end
 
