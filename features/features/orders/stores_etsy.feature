@@ -14,7 +14,6 @@ Feature:  Etsy Store Management
 
       Then Marketplace: Select Etsy
 
-      # Etsy store modal functions here
       Then Pause for 1 second
       Then Etsy Store: Set Etsy Username to StampsDC
       Then Etsy Store: Find My Shops
