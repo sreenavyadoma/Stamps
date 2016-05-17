@@ -168,7 +168,7 @@ Then /^Postage: Set Ship-To to$/ do |table|
 end
 
 Then /^Postage: Set Ship-To address to (.*)$/ do |address|
-  log.info "Step: Postage: Set Ship-To to \"#{address}\""
+  log.info "Postage: Set Ship-To to \"#{address}\""
   case address.downcase
     when /zone 1 through 4/
       address = test_helper.rand_zone_1_4
@@ -219,12 +219,12 @@ Then /^Postage: Set Ship-To address to (.*)$/ do |address|
 end
 
 Then /^Postage: Set Ounces to (.*)/ do |ounces|
-  log.info "Step: Envelopes: Set Print Postage Ounces to: \n #{ounces}"
+  log.info "Envelopes: Set Print Postage Ounces to: \n #{ounces}"
   @print_postage.weight.oz.set ounces
 end
 
 Then /^Postage: Set Pounds to (.*)/ do |pounds|
-  log.info "Step: Envelopes: Set Print Postage Pounds to: \n #{pounds}"
+  log.info "Envelopes: Set Print Postage Pounds to: \n #{pounds}"
   @print_postage.weight.lbs.set pounds
 end
 

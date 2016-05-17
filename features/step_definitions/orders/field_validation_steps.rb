@@ -1,7 +1,7 @@
 #domestic
 
 Then /^Grid: Expect Ship Cost error to contain \"(.*)\"$/ do |expectation|
-  log.info "Step: Grid: Expect Ship Cost error to contain #{expectation}"
+  log.info "Grid: Expect Ship Cost error to contain #{expectation}"
   grid_order_id = orders.grid.order_id.row 1
   log.info "Grid order id is #{grid_order_id}"
   ship_cost_error = orders.grid.ship_cost.data_error grid_order_id

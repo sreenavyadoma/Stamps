@@ -1,6 +1,6 @@
 
 Then /^Paging: Set Per Page drop-down to 100$/ do
-  log.info "Step: Toolbar:  Set Per Page Count to 100"
+  log.info "Toolbar:  Set Per Page Count to 100"
   orders.grid.toolbar.per_page.x100
   per_page = orders.grid.toolbar.per_page.text_box.text
   log.info "Test #{(per_page == "100")?"Passed":"Failed"}"
@@ -8,7 +8,7 @@ Then /^Paging: Set Per Page drop-down to 100$/ do
 end
 
 Then /^Toolbar:  Set Per Page drop-down to 250$/ do
-  log.info "Step: Toolbar:  Set Per Page Count to 250"
+  log.info "Toolbar:  Set Per Page Count to 250"
   orders.grid.toolbar.per_page.x250
   per_page = orders.grid.toolbar.per_page.text_box.text
   log.info "Test #{(per_page == "250")?"Passed":"Failed"}"
@@ -16,7 +16,7 @@ Then /^Toolbar:  Set Per Page drop-down to 250$/ do
 end
 
 Then /^Toolbar:  Set Per Page drop-down to 500$/ do
-  log.info "Step: Toolbar:  Set Per Page Count to 500"
+  log.info "Toolbar:  Set Per Page Count to 500"
   orders.grid.toolbar.per_page.x500
   per_page = orders.grid.toolbar.per_page.text_box.text
   log.info "Test #{(per_page == "500")?"Passed":"Failed"}"
@@ -24,7 +24,7 @@ Then /^Toolbar:  Set Per Page drop-down to 500$/ do
 end
 
 Then /^Toolbar: Expect number of orders on page to be correct$/ do
-  log.info "Step: Toolbar: Expect number of orders on page to be correct"
+  log.info "Toolbar: Expect number of orders on page to be correct"
   filter = orders.filter
   grid = filter.awaiting_shipment
   sleep 1
@@ -47,7 +47,7 @@ Then /^Toolbar: Expect number of orders on page to be correct$/ do
 end
 
 Then /^User is on the first page of orders$/ do
-  log.info "Step: User is on the first page of orders"
+  log.info "User is on the first page of orders"
   log.info "Page Count = Page #{orders.grid.row_count} orders"
   page_count = orders.grid.toolbar.page_count.text
   log.info "Page Count = Page #{page_count}"
@@ -55,31 +55,31 @@ Then /^User is on the first page of orders$/ do
 end
 
 Then /^User clicks first page pagination control$/ do
-  log.info "Step: User clicks first page pagination control"
+  log.info "User clicks first page pagination control"
   paging_toolbar = orders.grid.toolbar
   paging_toolbar.first_page.click
 end
 
 Then /^User clicks previous page pagination control$/ do
-  log.info "Step: User clicks previous page pagination control"
+  log.info "User clicks previous page pagination control"
   paging_toolbar = orders.grid.toolbar
   paging_toolbar.previous_page.click
 end
 
 Then /^User clicks next page pagination control$/ do
-  log.info "Step: User clicks next page pagination control"
+  log.info "User clicks next page pagination control"
   paging_toolbar = orders.grid.toolbar
   paging_toolbar.next_page.click
 end
 
 Then /^User clicks last page pagination control$/ do
-  log.info "Step: User clicks last page pagination control"
+  log.info "User clicks last page pagination control"
   paging_toolbar = orders.grid.toolbar
   paging_toolbar.last_page.click
 end
 
 Then /^Pagination control to go to first page is (\w+)$/ do |first_pagination_enabled|
-  log.info "Step: Pagination control to go to first page is #{first_pagination_enabled}"
+  log.info "Pagination control to go to first page is #{first_pagination_enabled}"
   enabled = orders.grid.toolbar.first_page.present?
   if first_pagination_enabled.downcase == "enabled"
     log.info "Pagination control to go to first page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
@@ -88,7 +88,7 @@ Then /^Pagination control to go to first page is (\w+)$/ do |first_pagination_en
 end
 
 Then /^Pagination control to go to previous page is (\w+)$/ do |previous_pagination_enabled|
-  log.info "Step: Pagination control to go to previous page is #{previous_pagination_enabled}"
+  log.info "Pagination control to go to previous page is #{previous_pagination_enabled}"
   enabled = orders.grid.toolbar.previous_page.present?
   if previous_pagination_enabled.downcase == "enabled"
     log.info "Pagination control to go to previous page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
@@ -97,7 +97,7 @@ Then /^Pagination control to go to previous page is (\w+)$/ do |previous_paginat
 end
 
 Then /^Pagination control to go to page number is (\w+$)/ do |page_number_enabled|
-  log.info "Step: Pagination control to go to page number is #{page_number_enabled}"
+  log.info "Pagination control to go to page number is #{page_number_enabled}"
   enabled = orders.grid.toolbar.page_number.present?
   if page_number_enabled.downcase == "enabled"
     log.info "Pagination control to go to page number is enabled.  Test #{(enabled)?'Passed':'Failed'}"
@@ -106,7 +106,7 @@ Then /^Pagination control to go to page number is (\w+$)/ do |page_number_enable
 end
 
 Then /^Pagination control to go to next page is (\w+)$/ do |next_pagination_enabled|
-  log.info "Step: Pagination control to go to next page is #{next_pagination_enabled}"
+  log.info "Pagination control to go to next page is #{next_pagination_enabled}"
   enabled = orders.grid.toolbar.next_page.present?
   if next_pagination_enabled.downcase == "enabled"
     log.info "Pagination control to go to next page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
@@ -115,7 +115,7 @@ Then /^Pagination control to go to next page is (\w+)$/ do |next_pagination_enab
 end
 
 Then /^Pagination control to go to last page is (\w+)$/ do |last_pagination_enabled|
-  log.info "Step: Pagination control to go to last page is #{last_pagination_enabled}"
+  log.info "Pagination control to go to last page is #{last_pagination_enabled}"
   enabled = orders.grid.toolbar.last_page.present?
   if last_pagination_enabled.downcase == "enabled"
     log.info "Pagination control to go to last page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
@@ -124,7 +124,7 @@ Then /^Pagination control to go to last page is (\w+)$/ do |last_pagination_enab
 end
 
 Then /^Expect page toolbar First Page is (\w+)$/  do |expectation|
-  log.info "Step: Expect page toolbar First Page is #{expectation}"
+  log.info "Expect page toolbar First Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = orders.grid.toolbar.first_page.present?
@@ -138,7 +138,7 @@ Then /^Expect page toolbar First Page is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Previous Page is (\w+)$/  do |expectation|
-  log.info "Step: Expect page toolbar Previous Page is #{expectation}"
+  log.info "Expect page toolbar Previous Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = orders.grid.toolbar.previous_page.present?
@@ -152,7 +152,7 @@ Then /^Expect page toolbar Previous Page is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Page Number is (\w+)$/  do |expectation|
-  log.info "Step: Expect page toolbar Page Number is #{expectation}"
+  log.info "Expect page toolbar Page Number is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = orders.grid.toolbar.page_number.present?
@@ -163,7 +163,7 @@ Then /^Expect page toolbar Page Number is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Next Page is (\w+)$/  do |expectation|
-  log.info "Step: Expect page toolbar Next Page is #{expectation}"
+  log.info "Expect page toolbar Next Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = orders.grid.toolbar.next_page.present?
@@ -177,7 +177,7 @@ Then /^Expect page toolbar Next Page is (\w+)$/  do |expectation|
 end
 
 Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
-  log.info "Step: Expect page toolbar Last Page is #{expectation}"
+  log.info "Expect page toolbar Last Page is #{expectation}"
   case expectation.downcase
     when "enabled"
       enabled = orders.grid.toolbar.last_page.present?
@@ -191,7 +191,7 @@ Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
 end
 
 When /^Set Page Number to (\d*)$/ do |value|
-  log.info "Step: Set Page Number to #{value}"
+  log.info "Set Page Number to #{value}"
   begin
     log.info "Set Page Number to \"#{value}\""
     page_one_order_id = orders.grid.order_id.row 1
@@ -211,7 +211,7 @@ When /^Set Page Number to (\d*)$/ do |value|
 end
 
 Then /^Paging: Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
-  log.info "Step: Paging: Expect Total Number of Pages to be #{total_number_of_pages}"
+  log.info "Paging: Expect Total Number of Pages to be #{total_number_of_pages}"
   log.info "Passed value is #{total_number_of_pages}"
   browser_total_number_of_pages = orders.grid.toolbar.total_number_of_pages.to_s
   log.info "DD value is #{browser_total_number_of_pages}"
@@ -222,7 +222,7 @@ Then /^Paging: Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pa
 end
 
 Then /^Web Batch grid has more orders than value selected in 'number of orders per page' pagination control$/ do
-  log.info "Step: Web Batch grid has more orders than value selected in 'number of orders per page' pagination control"
+  log.info "Web Batch grid has more orders than value selected in 'number of orders per page' pagination control"
   #1 Count order grid items ordersgridpagingtoolbar
   page_count = orders.grid.toolbar.page_count.text
   expect(page_count.to_i > 1).to be true

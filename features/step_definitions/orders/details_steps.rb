@@ -1,6 +1,6 @@
 
 Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
-  log.info "Step: Details: Add Item #{item_number}, Qty #{qty}, ID #{id} Description #{description}"
+  log.info "Details: Add Item #{item_number}, Qty #{qty}, ID #{id} Description #{description}"
   item = orders.details.item_grid.item item_number.to_i
   item.qty.set qty
   item.id.set (id.downcase.include? "random") ? test_helper.random_alpha_numeric : id
@@ -104,12 +104,12 @@ end
 
 
 Then /^Details: Set Ship-To Country to (.*)$/ do |country|
-  log.info "Step: Details: Set Ship-To Country to #{country}"
+  log.info "Details: Set Ship-To Country to #{country}"
   @international_ship_to = orders.details.ship_to.country.select country
 end
 
 Then /^Details: Set International Ship-To Name to \"(.*)\"$/ do |value|
-  log.info "Step: Details: Set International Ship-To Name to #{value}"
+  log.info "Details: Set International Ship-To Name to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.name.send_keys :enter
@@ -120,7 +120,7 @@ end
 
 
 Then /^Details: Set International Ship-To Company to \"(.*)\"$/ do |value|
-  log.info "Step: Details: Set International Ship-To Company to #{value}"
+  log.info "Details: Set International Ship-To Company to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.company.send_keys :enter
@@ -131,7 +131,7 @@ end
 
 
 Then /^Details: Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
-  log.info "Step: Details: Set International Ship-To Address 1 to #{value}"
+  log.info "Details: Set International Ship-To Address 1 to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.address_1.send_keys :enter
@@ -142,7 +142,7 @@ end
 
 
 Then /^Details: Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
-  log.info "Step: Details: Set International Ship-To Address 2 to #{value}"
+  log.info "Details: Set International Ship-To Address 2 to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.address_2.send_keys :enter
@@ -153,7 +153,7 @@ end
 
 
 Then /^Details: Set International Ship-To City to \"(.*)\"$/ do |value|
-  log.info "Step: Details: Set International Ship-To City to #{value}"
+  log.info "Details: Set International Ship-To City to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.city.send_keys :enter
@@ -164,7 +164,7 @@ end
 
 
 Then /^Details: Set International Ship-To Province to \"(.*)\"$/ do |value|
-  log.info "Step: Details: Set International Ship-To Province to #{value}"
+  log.info "Details: Set International Ship-To Province to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.province.send_keys :enter
@@ -174,7 +174,7 @@ Then /^Details: Set International Ship-To Province to \"(.*)\"$/ do |value|
 end
 
 Then /^Details: Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
-  log.info "Step: Details: Set International Ship-To Postal Code to #{value}"
+  log.info "Details: Set International Ship-To Postal Code to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.postal_code.send_keys :enter
@@ -185,7 +185,7 @@ end
 
 
 Then /^Details: Set International Ship-To Phone to \"(.*)\"$/ do |value|
-  log.info "Step: Details: Set International Ship-To Phone to #{value}"
+  log.info "Details: Set International Ship-To Phone to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.phone.send_keys :enter
@@ -196,7 +196,7 @@ end
 
 
 Then /^Details: Set International Ship-To Email to \"(.*)\"$/ do |value|
-  log.info "Step: Details: Set International Ship-To Email to #{value}"
+  log.info "Details: Set International Ship-To Email to #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
     @international_ship_to.email.send_keys :enter
@@ -206,7 +206,7 @@ Then /^Details: Set International Ship-To Email to \"(.*)\"$/ do |value|
 end
 
 Then /^Details: Expect International Ship-To Name to be (.*)/ do |value|
-  log.info "Step: Details: Expect International Ship-To Name to be #{value}"
+  log.info "Details: Expect International Ship-To Name to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual_value = @international_ship_to.name.text
   log.info "Test #{(actual_value == value)?"Passed":"Failed"}"
@@ -214,7 +214,7 @@ Then /^Details: Expect International Ship-To Name to be (.*)/ do |value|
 end
 
 Then /^Details: Expect International Ship-To Company to be (.*)/ do |value|
-  log.info "Step: Details: Expect International Ship-To Company to be #{value}"
+  log.info "Details: Expect International Ship-To Company to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual_value = @international_ship_to.company.text
   log.info "Test #{(actual_value == value)?"Passed":"Failed"}"
@@ -222,7 +222,7 @@ Then /^Details: Expect International Ship-To Company to be (.*)/ do |value|
 end
 
 Then /^Details: Expect International Ship-To Address 1 to be (.*)/ do |value|
-  log.info "Step: Details: Expect International Ship-To Address 1 to be #{value}"
+  log.info "Details: Expect International Ship-To Address 1 to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual_value = @international_ship_to.address_1.text
   log.info "Test #{(actual_value == value)?"Passed":"Failed"}"
@@ -230,7 +230,7 @@ Then /^Details: Expect International Ship-To Address 1 to be (.*)/ do |value|
 end
 
 Then /^Details: Expect International Ship-To Address 2 to be (.*)/ do |value|
-  log.info "Step: Details: Expect International Ship-To address 2 to be #{value}"
+  log.info "Details: Expect International Ship-To address 2 to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual_value = @international_ship_to.address_2.text
   log.info "Test #{(actual_value == value)?"Passed":"Failed"}"
@@ -238,7 +238,7 @@ Then /^Details: Expect International Ship-To Address 2 to be (.*)/ do |value|
 end
 
 Then /^Details: Expect International Ship-To Province to be (.*)/ do |value|
-  log.info "Step: Details: Expect International Ship-To province to be #{value}"
+  log.info "Details: Expect International Ship-To province to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual_value = @international_ship_to.province.text
   log.info "Test #{(actual_value == value)?"Passed":"Failed"}"
@@ -246,7 +246,7 @@ Then /^Details: Expect International Ship-To Province to be (.*)/ do |value|
 end
 
 Then /^Details: Expect International Ship-To Postal Code to be (.*)/ do |value|
-  log.info "Step: Details: Expect International Ship-To postal code to be #{value}"
+  log.info "Details: Expect International Ship-To postal code to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual_value = @international_ship_to.postal_code.text
   log.info "Test #{(actual_value == value)?"Passed":"Failed"}"
@@ -254,7 +254,7 @@ Then /^Details: Expect International Ship-To Postal Code to be (.*)/ do |value|
 end
 
 Then /^Details: Expect International Ship-To Phone to be (.*)/ do |value|
-  log.info "Step: Details: Expect International Ship-To phone to be #{value}"
+  log.info "Details: Expect International Ship-To phone to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual_value = @international_ship_to.phone.text
   log.info "Test #{(actual_value == value)?"Passed":"Failed"}"
@@ -262,7 +262,7 @@ Then /^Details: Expect International Ship-To Phone to be (.*)/ do |value|
 end
 
 Then /^Details: Expect International Ship-To Email to be (.*)/ do |value|
-  log.info "Step: Details: Expect International Ship-To Email to be #{value}"
+  log.info "Details: Expect International Ship-To Email to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual_value = @international_ship_to.email.text
   log.info "Test #{(actual_value == value)?"Passed":"Failed"}"
@@ -270,14 +270,14 @@ Then /^Details: Expect International Ship-To Email to be (.*)/ do |value|
 end
 
 Then /^Details: Expect Ship-To Country to be (.*)/ do |value|
-  log.info "Step: Details: Expect Ship-To Country to be #{value}"
+  log.info "Details: Expect Ship-To Country to be #{value}"
   actual_value = orders.details.ship_to.country.text_box.text
   log.info "Test #{(actual_value == value)?"Passed":"Failed"}"
   actual_value.should eql value
 end
 
 Then /^Details: Expect International Ship-To City to be (.*)/ do |value|
-  log.info "Step: Details: Expect International Ship-To City to be #{value}"
+  log.info "Details: Expect International Ship-To City to be #{value}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   actual_value = @international_ship_to.city.text
   log.info "Test #{(actual_value == value)?"Passed":"Failed"}"
@@ -285,7 +285,7 @@ Then /^Details: Expect International Ship-To City to be (.*)/ do |value|
 end
 
 Then /^Details: Expect International Address fields are visible$/ do
-  log.info "Step: Details: Expect International Address fields are visible"
+  log.info "Details: Expect International Address fields are visible"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   @international_ship_to.name.present?.should be true
   @international_ship_to.company.present?.should be true
@@ -299,44 +299,44 @@ Then /^Details: Expect International Address fields are visible$/ do
 end
 
 Then /^Details: Expect Domestic Ship-To fields are hidden$/ do
-  log.info "Step: Details: Expect Domestic Ship-To fields are hidden"
+  log.info "Details: Expect Domestic Ship-To fields are hidden"
   order_details = orders.details
   order_details.ship_to.address.text_area.present?.should be false
 end
 
 Then /^Details: Expect Customs Restrictions button is visible/ do
-  log.info "Step: Details: Expect Customs Restrictions button is visible"
+  log.info "Details: Expect Customs Restrictions button is visible"
   order_details = orders.details
   order_details.customs.browser_restrictions_button.present?.should be true
   order_details.customs.restrictions.ok
 end
 
 Then /^Details: Expect Customs Restrictions button is hidden/ do
-  log.info "Step: Details: Expect Customs Restrictions button is hidden"
+  log.info "Details: Expect Customs Restrictions button is hidden"
   order_details = orders.details
   order_details.customs.browser_restrictions_button.present?.should be false
 end
 
 Then /^Details: Expect Customs Edit Form button is visible/ do
-  log.info "Step: Details: Expect Customs Edit Form button is visible"
+  log.info "Details: Expect Customs Edit Form button is visible"
   order_details = orders.details
   order_details.customs.browser_edit_form_button.present?.should be true
 end
 
 Then /^Details: Expect Customs Edit Form button is hidden/ do
-  log.info "Step: Details: Expect Customs Edit Form button is hidden"
+  log.info "Details: Expect Customs Edit Form button is hidden"
   order_details = orders.details
   order_details.customs.browser_edit_form_button.present?.should be false
 end
 
 Then /^Details: Expect Customs Edit Form button is enabled/ do
-  log.info "Step: Details: Expect Customs Edit Form button is enabled"
+  log.info "Details: Expect Customs Edit Form button is enabled"
   order_details = orders.details
   order_details.customs.browser_edit_form_button.present?.should be true
 end
 
 Then /^Details: Expect Customs Edit Form button is disabled/ do
-  log.info "Step: Details: Expect Customs Edit Form button is disabled"
+  log.info "Details: Expect Customs Edit Form button is disabled"
   order_details = orders.details
   order_details.customs.browser_edit_form_button.present?.should be false
 end
@@ -429,7 +429,7 @@ Then /^Details: Expand panel$/ do
 end
 
 Then /^Details: Delete Item (\d+)$/ do |item_number|
-  log.info "Step: Details: Delete Item #{item_number}"
+  log.info "Details: Delete Item #{item_number}"
   item = orders.details.item_grid.item item_number.to_i
   item.delete.safe_click
 end
@@ -441,12 +441,12 @@ Then /^Details: Set Weight to (\d+) lbs (\d+) oz$/ do |pounds, ounces|
 end
 
 Then /^Details: Set Pounds to (.*)$/ do |value|
-  log.info "Step: Details: Set Pounds to \"#{value}\""
+  log.info "Details: Set Pounds to \"#{value}\""
   orders.details.weight.lbs.set value
 end
 
 Then /^Details: Set Ounces to (.*)$/ do |value|
-  log.info "Step: Details: Set Ounces to \"#{value}\""
+  log.info "Details: Set Ounces to \"#{value}\""
   orders.details.weight.oz.set value
 end
 
@@ -458,22 +458,22 @@ Then /^Details: Set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |le
 end
 
 Then /^Details: Set Length to (\d*)$/ do |value|
-  log.info "Step: Details: Set Length to \"#{value}\""
+  log.info "Details: Set Length to \"#{value}\""
   orders.details.dimensions.length.set value
 end
 
 Then /^Details: Set Width to (\d*)$/ do |value|
-  log.info "Step: Details: Set Width to \"#{value}\""
+  log.info "Details: Set Width to \"#{value}\""
   orders.details.dimensions.width.set value
 end
 
 Then /^Details: Set Height to (\d*)$/ do |value|
-  log.info "Step: Details: Set Height to \"#{value}\""
+  log.info "Details: Set Height to \"#{value}\""
   orders.details.dimensions.height.set value
 end
 
 Then /^Details: Set Ship-From to (\w+)$/ do |value|
-  log.info "Step: Details: Set Ship-From to: \n #{value}"
+  log.info "Details: Set Ship-From to: \n #{value}"
   orders.details.ship_from.select value
 end
 
@@ -519,7 +519,7 @@ end
 
 Then /^Details: Set Ship-To address to$/ do |table|
   address = table.hashes.first
-  log.info "Step: Details: Set Ship-To address to \n#{address}"
+  log.info "Details: Set Ship-To address to \n#{address}"
 
   @ship_to_country = address['country']
   log.info "Ship-To Country:  #{@ship_to_country}"
@@ -568,7 +568,7 @@ Then /^Details: Set Ship-To address to$/ do |table|
 end
 
 Then /^Details: Set Ship-To address to (.*)$/ do |address|
-  log.info "Step: Details: Set Ship-To address to \"#{address}\""
+  log.info "Details: Set Ship-To address to \"#{address}\""
 
   case address.downcase
     when /zone 1 through 4/
@@ -627,12 +627,12 @@ end
 
 Then /^Details: Set Ship-To to ambiguous address$/ do |table|
   ambiguous_address = OrdersHelper.instance.format_address table.hashes.first
-  log.info "Step: Details: Set Ship-To to ambiguous address \n#{ambiguous_address}"
+  log.info "Details: Set Ship-To to ambiguous address \n#{ambiguous_address}"
   orders.details.ship_to.address.ambiguous.set ambiguous_address
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
-  log.info "Step: Select row #{row} from Exact Address Not Found module"
+  log.info "Select row #{row} from Exact Address Not Found module"
   address_not_found_module = orders.details.ship_to.address.ambiguous.address_not_found
   log.info "Test #{(address_not_found_module.present?)?"Passed":"Failed"}"
   raise "Ambiguous Address Module is not present.  Unable to set Ambiguous Address Row to #{row}" unless address_not_found_module.present?
@@ -640,7 +640,7 @@ Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
-  log.info "Step: Expect \"Exact Address Not Found\" module to appear"
+  log.info "Expect \"Exact Address Not Found\" module to appear"
   address_not_found_module = orders.details.ship_to.address.ambiguous.address_not_found
   log.info "Test #{(address_not_found_module.present?)?"Passed":"Failed"}"
   address_not_found_module.present?.should be true
@@ -649,7 +649,7 @@ end
 Then /^Details: Set Phone to (.*)$/ do |phone|
   @order_details_phone = (phone.to_s.strip.downcase.include? "random")?(test_helper.random_phone):phone
   begin
-    log.info "Step: Order Details Form Phone to \"#{@order_details_phone}\""
+    log.info "Order Details Form Phone to \"#{@order_details_phone}\""
     orders.details.ship_to.address.phone.set @order_details_phone
   end unless @order_details_phone.length == 0
 end
@@ -657,94 +657,94 @@ end
 Then /^Details: Set Email to (.*)$/ do |email|
   @order_details_email = (email.to_s.strip.downcase.include? "random")?(test_helper.random_email):email
   begin
-    log.info "Step: Details: Set Email to \"#{@order_details_email}\""
+    log.info "Details: Set Email to \"#{@order_details_email}\""
     orders.details.ship_to.address.email.set @order_details_email
   end unless @order_details_email.length == 0
 end
 
 
 Then /^Expect system status Order Form$/ do |status|
-  log.info "Step: Expect system #{status} Order Form"
+  log.info "Expect system #{status} Order Form"
 
   actual_value = orders.details.present?
   actual_value.should eql false
 end
 
 Then /^Expect system displays Order Form$/ do |status|
-  log.info "Step: Expect system #{status} Order Form"
+  log.info "Expect system #{status} Order Form"
 
   actual_value = orders.details.present?
   actual_value.should eql true
 end
 
 Then /^Details: Hide Ship-To fields$/ do
-  log.info "Step: Details: Hide Ship-To fields"
+  log.info "Details: Hide Ship-To fields"
   orders.details.ship_to.hide
   log.info "done."
 end
 
 Then /^Increment Order Details Pounds by (\d*)$/ do |value|
-  log.info "Step: Increment Order Details Pounds by \"#{value}\""
+  log.info "Increment Order Details Pounds by \"#{value}\""
   orders.details.weight.lbs.increment value
 end
 
 Then /^Decrement Order Details Pounds by (\d*)$/ do |value|
-  log.info "Step: Decrement Order Details Pounds by \"#{value}\""
+  log.info "Decrement Order Details Pounds by \"#{value}\""
   orders.details.weight.lbs.decrement value
 end
 
 Then /^Increment Order Details Ounces by (\d*)$/ do |value|
-  log.info "Step: Increment Order Details Ounces by \"#{value}\""
+  log.info "Increment Order Details Ounces by \"#{value}\""
   orders.details.weight.oz.increment value
 end
 
 Then /^Decrement Order Details Ounces by (\d*)$/ do |value|
-  log.info "Step: Decrement Order Details Ounces by \"#{value}\""
+  log.info "Decrement Order Details Ounces by \"#{value}\""
   orders.details.weight.oz.decrement value
 end
 
 Then /^Increment Order Details Length by (\d*)$/ do |value|
-  log.info "Step: Increment Order Details Length by \"#{value}\""
+  log.info "Increment Order Details Length by \"#{value}\""
   orders.details.dimensions.length.increment value
 end
 
 Then /^Decrement Order Details Length by (\d*)$/ do |value|
-  log.info "Step: Decrement Order Details Length by \"#{value}\""
+  log.info "Decrement Order Details Length by \"#{value}\""
   orders.details.dimensions.length.decrement value
 end
 
 Then /^Increment Order Details Width by (\d*)$/ do |value|
-  log.info "Step: Increment Order Details Width by \"#{value}\""
+  log.info "Increment Order Details Width by \"#{value}\""
   orders.details.dimensions.width.increment value
 end
 
 Then /^Decrement Order Details Width by (\d*)$/ do |value|
-  log.info "Step: Decrement Order Details Width by \"#{value}\""
+  log.info "Decrement Order Details Width by \"#{value}\""
   orders.details.dimensions.width.decrement value
 end
 
 Then /^Increment Order Details Height by (\d*)$/ do |value|
-  log.info "Step: Increment Order Details Height by \"#{value}\""
+  log.info "Increment Order Details Height by \"#{value}\""
   orders.details.dimensions.height.increment value
 end
 
 Then /^Decrement Order Details Height by (\d*)$/ do |value|
-  log.info "Step: Decrement Order Details Height by \"#{value}\""
+  log.info "Decrement Order Details Height by \"#{value}\""
   orders.details.dimensions.height.decrement value
 end
 
 Then /^Increment Order Details Insure-For by (\d*)$/ do |value|
-  log.info "Step: Increment Order Details Insure-For by \"#{value}\""
+  log.info "Increment Order Details Insure-For by \"#{value}\""
   orders.details.insure_for.increment value
 end
 
 Then /^Decrement Order Details Insure-For by (\d*)$/ do |value|
-  log.info "Step: Decrement Order Details Insure-For by \"#{value}\""
+  log.info "Decrement Order Details Insure-For by \"#{value}\""
   orders.details.insure_for.decrement value
 end
 
 Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
-  log.info "Step: Details: Set Tracking to #{value}"
+  log.info "Details: Set Tracking to #{value}"
   orders.details.tracking.select value
 end
 
@@ -763,7 +763,7 @@ Then /^Details: Expect Reference Number to be (.*)$/ do |expectation|
 end
 
 Then /^Details: Expect Insure-For to be \$(.*)$/ do |expectation|
-  log.info "Step: Details: Set Insure-For to #{expectation}"
+  log.info "Details: Set Insure-For to #{expectation}"
   5.times do
     actual_value = orders.details.insure_for.text_box.text
     if actual_value==expectation
@@ -834,12 +834,12 @@ Then /^Details: Uncheck Insure-For checkbox$/ do
 end
 
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
-  log.info "Step: Details: Set Insure-For to #{value}"
+  log.info "Details: Set Insure-For to #{value}"
   orders.details.insure_for.set value
 end
 
 Then /^Add Ship-From address$/ do |ship_from|
-  log.info "Step: Add Ship-From address #{ship_from}"
+  log.info "Add Ship-From address #{ship_from}"
   orders.details.ship_from.select("Manage Shipping Addresses...").add ship_from.hashes.first
 end
 
@@ -851,7 +851,7 @@ Then /^Add Ship-From address (\w+)$/ do |address|
 end
 
 Then /^Expect (\w+) Ship-From address was added$/ do |address|
-  log.info "Step: Expect #{address} Ship-From address was added"
+  log.info "Expect #{address} Ship-From address was added"
   raise "Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
   begin
     log.info "Search for \n#{@ship_from_address}.  Address was #{(orders.details.ship_from.select("Manage Shipping Addresses...").address_located?(@ship_from_address))?'Located':'Not Located'}"
@@ -859,7 +859,7 @@ Then /^Expect (\w+) Ship-From address was added$/ do |address|
 end
 
 Then /^Delete (\w+) Ship-From address$/ do |address|
-  log.info "Step: Delete #{address} Ship-From address"
+  log.info "Delete #{address} Ship-From address"
   begin
     if address.downcase == "random"
       raise "Illegal State Exception:  @ship_from_address is nil" if @ship_from_address.nil?
@@ -875,36 +875,36 @@ Then /^Delete (\w+) Ship-From address$/ do |address|
 end
 
 Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
-  log.info "Step: Delete Ship-From Row #{row} from Manage Shipping Addresses Modal"
+  log.info "Delete Ship-From Row #{row} from Manage Shipping Addresses Modal"
   orders.details.ship_from.select("Manage Shipping Addresses...").delete_row(row)
 end
 
 Then /^Details: Set Ship-From to Manage Shipping Addresses$/ do
-  log.info "Step: Details: Set Ship-From to Manage Shipping Addresses"
+  log.info "Details: Set Ship-From to Manage Shipping Addresses"
   orders.details.ship_from.select("Manage Shipping Addresses...").add table.hashes.first
 end
 
 Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
-  log.info "Step: Edit Ship-From address for name = \"#{name}\", company = \"#{company}\" and city = \"#{city}\" to #{new_address}"
+  log.info "Edit Ship-From address for name = \"#{name}\", company = \"#{company}\" and city = \"#{city}\" to #{new_address}"
   orders.details.ship_from.select("Manage Shipping Addresses...").edit_address name, company, city,  new_address.hashes.first
 end
 
 Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
-  log.info "Step: Expect Pounds tooltip to display - The maximum value for this field is #{expectation}"
+  log.info "Expect Pounds tooltip to display - The maximum value for this field is #{expectation}"
   actual_value = orders.details.pounds_max_value
   log.info "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
 Then /^Expect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
-  log.info "Step: Expect Ounces tooltip to display - The maximum value for this field is #{expectation}"
+  log.info "Expect Ounces tooltip to display - The maximum value for this field is #{expectation}"
   actual_value = orders.details.ounces_max_value
   log.info "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
 Then /^Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expectation|
-  log.info "Step: Details: Expect Service Cost inline price for #{service} to be greater than #{expectation}"
+  log.info "Details: Expect Service Cost inline price for #{service} to be greater than #{expectation}"
   actual_value = orders.details.service.cost service
   10.times {
     break if actual_value.to_f >= expectation.to_f
@@ -915,7 +915,7 @@ Then /^Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" to be gre
 end
 
 Then /^Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
-  log.info "Step: Details: Expect Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
+  log.info "Details: Expect Service Tooltip for \"#{service}\" to include \"#{tooltip_content}\""
   tooltips = tooltip_content.split "||"
   actual_tooltip = orders.details.service.tooltip service
   tooltips.each do |tooltip|
@@ -925,7 +925,7 @@ Then /^Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |servic
 end
 
 Then /^Details: Expect Service Cost to be \$([0-9.]*)$/ do |expectation|
-  log.info "Step: Details: Expect Service Cost to be $#{expectation}"
+  log.info "Details: Expect Service Cost to be $#{expectation}"
   actual_value = orders.details.service.cost
   log.info "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -948,7 +948,7 @@ Then /^Details: Expect Service Cost to be greater than \$([0-9.]*)$/ do |expecta
 end
 
 Then /^Details: Expect Tracking Cost to be \$([0-9.]*)$/ do |expectation|
-  log.info "Step: Details: Expect Tracking Cost to be #{expectation}"
+  log.info "Details: Expect Tracking Cost to be #{expectation}"
   10.times do
     actual_value = orders.details.tracking.cost
     if actual_value == expectation
@@ -963,7 +963,7 @@ Then /^Details: Expect Tracking Cost to be \$([0-9.]*)$/ do |expectation|
 end
 
 Then /^Details: Expect Tracking Cost to be greater than \$([0-9.]*)$/ do |expectation|
-  log.info "Step: Details: Expect Tracking Cost to be #{expectation}"
+  log.info "Details: Expect Tracking Cost to be #{expectation}"
   expectation = expectation.to_f
   10.times do
     actual_value = orders.details.tracking.cost.to_f
@@ -1059,11 +1059,11 @@ Then /^Details: Expect Height to be (\d+)$/ do |expectation|
 end
 
 Then /^Verify Order Details Form Total Amount$/ do
-  log.info "Step: Verify Order Details Form Total Amount"
+  log.info "Verify Order Details Form Total Amount"
 end
 
 Then /^Details: Expect Tracking to be \"([\w\s]*)\"$/ do |expectation|
-  log.info "Step: Details: Expect Tracking to be #{expectation}"
+  log.info "Details: Expect Tracking to be #{expectation}"
   begin
     text_box = orders.details.tracking.text_box
     10.times do
@@ -1079,7 +1079,7 @@ Then /^Details: Expect Tracking to be \"([\w\s]*)\"$/ do |expectation|
 end
 
 Then /^Details: Expect Total to be \$(.*)$/ do |expectation|
-  log.info "Step: Details: Expect Total to be $#{expectation}"
+  log.info "Details: Expect Total to be $#{expectation}"
   begin
     10.times do
       orders.details.click_form
@@ -1095,7 +1095,7 @@ Then /^Details: Expect Total to be \$(.*)$/ do |expectation|
 end
 
 Then /^Expect (\d+) orders selected$/ do |expectation|
-  log.info "Step: Expect #{expectation} orders selected"
+  log.info "Expect #{expectation} orders selected"
   orders.multi_orders.order_count.should eql expectation
 end
 And /^Details: Expect Ship-From Textbox to be enabled$/ do

@@ -11,7 +11,7 @@ Then /^Postage Stamps: Set Stamp Amount to \$(.*)$/ do |amount|
 end
 
 Then /^Postage Stamps: Set Specify Postage Service to (.*)/ do |service|
-  log.info "Step: Envelopes: Set Print Postage Service to: \n #{service}"
+  log.info "Envelopes: Set Print Postage Service to: \n #{service}"
   @print_postage.specify_postage_service.select service
 end
 

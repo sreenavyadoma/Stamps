@@ -1,5 +1,5 @@
 Then /^Verify Local Rating$/ do |table|
-  log.info "Step: Verify Local Rating..."
+  log.info "Verify Local Rating..."
   #results_file = "local_rating_results.csv"
   @order_details = orders.details
   parameter_array = table.hashes

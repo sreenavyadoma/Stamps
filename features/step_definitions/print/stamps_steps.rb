@@ -14,43 +14,43 @@ Then /^Postage Stamps: Set Serial Number to (.*)/ do |serial|
 end
 
 Then /^Postage Stamps: Set Ship-From to (.*)/ do |value|
-  log.info "Step: Set Print Postage Ship-From to: \n #{value}"
+  log.info "Set Print Postage Ship-From to: \n #{value}"
   @print_postage = postage.print_postage if @print_postage.nil?
   @print_postage.ship_from.select value
 end
 
 Then /^Postage Stamps: Set Ship-To country to (.*)/ do |country|
-  log.info "Step: Set Print Postage Country to: \n #{country}"
+  log.info "Set Print Postage Country to: \n #{country}"
   @print_postage = postage.print_postage if @print_postage.nil?
   @print_postage.ship_to.country.select country
 end
 
 Then /^Postage Stamps: Set Ounces to (.*)/ do |ounces|
-  log.info "Step: Postage Stamps: Set Ounces to: \n #{ounces}"
+  log.info "Postage Stamps: Set Ounces to: \n #{ounces}"
   @print_postage = postage.print_postage if @print_postage.nil?
   @print_postage.weight.oz.set ounces
 end
 
 Then /^Postage Stamps: Set Pounds to (.*)/ do |pounds|
-  log.info "Step: Postage Stamps: Set Pounds to: \n #{pounds}"
+  log.info "Postage Stamps: Set Pounds to: \n #{pounds}"
   @print_postage = postage.print_postage if @print_postage.nil?
   @print_postage.weight.lbs.set pounds
 end
 
 Then /^Postage Stamps: Set Quantity to (.*)/ do |qty|
-  log.info "Step: Postage Stamps: Set Quantity to: \n #{qty}"
+  log.info "Postage Stamps: Set Quantity to: \n #{qty}"
   @print_postage = postage.print_postage if @print_postage.nil?
   @print_postage.form_view.quantity.set qty
 end
 
 Then /^Postage Stamps: Set Print All to Checked$/ do
-  log.info "Step: Postage Stamps: Check Print All"
+  log.info "Postage Stamps: Check Print All"
   @print_postage = postage.print_postage if @print_postage.nil?
   @print_postage.form_view.print_all.check
 end
 
 Then /^Postage Stamps: Set Print All to Unchecked$/ do
-  log.info "Step: Postage Stamps: Uncheck Print All"
+  log.info "Postage Stamps: Uncheck Print All"
   @print_postage = postage.print_postage if @print_postage.nil?
   @print_postage.form_view.print_all.uncheck
 end
@@ -62,7 +62,7 @@ Then /^Postage Stamps: Set Reference Number to (.*)/ do |ref_no|
 end
 
 Then /^Postage Stamps: Set Cost Code to (.*)/ do |code|
-  log.info "Step: Postage Stamps: Set Cost Code to \n #{code}"
+  log.info "Postage Stamps: Set Cost Code to \n #{code}"
   @print_postage = postage.print_postage if @print_postage.nil?
   @print_postage.form_view.cost_code.select code
 end

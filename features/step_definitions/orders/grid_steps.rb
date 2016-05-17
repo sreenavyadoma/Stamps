@@ -30,7 +30,7 @@ Then /^Set Orders Grid Row (\d+) to check$/ do |row|
 end
 
 When /^Edit Orders Grid row (\d+)$/ do |row|
-  log.info "Step: Edit row #{row} on the Orders Grid"
+  log.info "Edit row #{row} on the Orders Grid"
   orders.grid.checkbox.check row
 end
 
@@ -40,7 +40,7 @@ When /^Grid: Check row (\d+)$/ do |row|
 end
 
 When /^Grid: Uncheck row (\d+)$/ do |row|
-  log.info "Step: Uncheck row #{row} on the Orders Grid"
+  log.info "Uncheck row #{row} on the Orders Grid"
   orders.grid.checkbox.uncheck row
 end
 
@@ -101,13 +101,13 @@ Then /^Grid: Expect Ship Date for this order to be today plus (\d+)$/ do |day|
 end
 
 Then /^List all Grid column values for row (\d+)/ do |row|
-  log.info "Step: List all Grid column values for row #{row}"
+  log.info "List all Grid column values for row #{row}"
   order_id = orders.grid.order_id.row row
   step "List all Grid column values for Order ID #{order_id}"
 end
 
 Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
-  log.info "Step: List all Grid column values for Order ID #{order_id}"
+  log.info "List all Grid column values for Order ID #{order_id}"
   @grid = orders.grid
 
   row2_order_id = @grid.order_id.row 2
@@ -171,7 +171,7 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
 end
 
 Then /^Expect Ship-To address to be;$/ do |table|
-  log.info "Step: Expect Ship-To address to be..."
+  log.info "Expect Ship-To address to be..."
   param_hash = table.hashes.first
   step "Grid: Expect Recipient to be #{param_hash[:name]}"
   step "Grid: Expect Company to be #{param_hash[:company]}"
@@ -184,7 +184,7 @@ Then /^Expect Ship-To address to be;$/ do |table|
 end
 
 Then /^Grid: Expect Age to be (.*)$/ do |expectation|
-  log.info "Step: Grid: Expect Age to be #{expectation}"
+  log.info "Grid: Expect Age to be #{expectation}"
   begin
     if @order_id.nil?
       @order_id = orders.grid.order_id.row 1
@@ -201,7 +201,7 @@ Then /^Grid: Expect Age to be (.*)$/ do |expectation|
 end
 
 Then /^Grid: Expect Order Date to be (.*)$/ do |expectation|
-  log.info "Step: Grid: Expect Order Date to be #{expectation}"
+  log.info "Grid: Expect Order Date to be #{expectation}"
   begin
     if @order_id.nil?
       @order_id = orders.grid.order_id.row 1
@@ -217,7 +217,7 @@ Then /^Grid: Expect Order Date to be (.*)$/ do |expectation|
 end
 
 Then /^Grid: Expect Recipient to be (.*)$/ do |expectation|
-  log.info "Step: Grid: Expect Recipient to be #{expectation}"
+  log.info "Grid: Expect Recipient to be #{expectation}"
   begin
     if @order_id.nil?
       @order_id = orders.grid.order_id.row 1
@@ -233,7 +233,7 @@ Then /^Grid: Expect Recipient to be (.*)$/ do |expectation|
 end
 
 Then /^Grid: Expect Company to be (.*)$/ do |expectation|
-  log.info "Step: Grid: Expect Company to be #{expectation}"
+  log.info "Grid: Expect Company to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.company.data @order_id
@@ -245,7 +245,7 @@ Then /^Grid: Expect Company to be (.*)$/ do |expectation|
 end
 
 Then /^Grid: Expect Address to be ([\w\s-]+)$/ do |expectation|
-  log.info "Step: Grid: Expect Address to be #{expectation}"
+  log.info "Grid: Expect Address to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.address.data @order_id
@@ -258,7 +258,7 @@ Then /^Grid: Expect Address to be ([\w\s-]+)$/ do |expectation|
 end
 
 Then /^Grid: Expect City to be ([\w\s]+)$/ do |expectation|
-  log.info "Step: Grid: Expect City to be #{expectation}"
+  log.info "Grid: Expect City to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.city.data @order_id
@@ -271,7 +271,7 @@ Then /^Grid: Expect City to be ([\w\s]+)$/ do |expectation|
 end
 
 Then /^Grid: Expect State to be ([a-zA-Z]+)$/ do |expectation|
-  log.info "Step: Grid: Expect State to be #{expectation}"
+  log.info "Grid: Expect State to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.state.data @order_id
@@ -284,7 +284,7 @@ Then /^Grid: Expect State to be ([a-zA-Z]+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Zip to be ([\d -]+)$/ do |expectation|
-  log.info "Step: Grid: Expect Zip to be #{expectation}"
+  log.info "Grid: Expect Zip to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.zip.data @order_id
@@ -297,7 +297,7 @@ Then /^Grid: Expect Zip to be ([\d -]+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Country to be ([a-zA-Z]+)$/ do |expectation|
-  log.info "Step: Grid: Expect Country to be #{expectation}"
+  log.info "Grid: Expect Country to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.country.data @order_id
@@ -319,7 +319,7 @@ Then /^Grid: Expect Column (\w+) appears to left of (\w+)$/ do |left_column, rig
 end
 
 Then /^Grid: Expect Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expectation|
-  log.info "Step: Grid: Expect Email to be #{expectation}"
+  log.info "Grid: Expect Email to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.country.data @order_id
@@ -332,7 +332,7 @@ Then /^Grid: Expect Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expectation|
 end
 
 Then /^Grid: Expect Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/ do |expectation|
-  log.info "Step: Grid: Expect Phone to be #{expectation}"
+  log.info "Grid: Expect Phone to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.phone.data @order_id
@@ -345,7 +345,7 @@ Then /^Grid: Expect Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$
 end
 
 Then /^Grid: Expect Pounds to be (\d+)$/ do |expectation|
-  log.info "Step: Grid: Expect Pounds to be #{expectation}"
+  log.info "Grid: Expect Pounds to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.weight.lbs @order_id
@@ -358,7 +358,7 @@ Then /^Grid: Expect Pounds to be (\d+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Ounces to be (\d+)$/ do |expectation|
-  log.info "Step: Grid: Expect Ounces to be #{expectation}"
+  log.info "Grid: Expect Ounces to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.weight.oz @order_id
@@ -372,7 +372,7 @@ end
 
 Then /^Grid: Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
   expectation_result = "#{pounds} lbs. #{ounces} oz."
-  log.info "Step: Grid: Expect Weight to be #{expectation_result}"
+  log.info "Grid: Expect Weight to be #{expectation_result}"
   begin
     10.times do
       actual = orders.grid.weight.data @order_id
@@ -385,7 +385,7 @@ Then /^Grid: Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
 end
 
 Then /^Grid: Expect Qty. to be (.+)$/ do |expectation|
-  log.info "Step: Grid: Expect Qty. to be #{expectation}"
+  log.info "Grid: Expect Qty. to be #{expectation}"
   begin
     actual = orders.grid.qty.data @order_id
     10.times do
@@ -399,7 +399,7 @@ Then /^Grid: Expect Qty. to be (.+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Item SKU to be (.+)$/ do |expectation|
-  log.info "Step: Grid: Expect SKU to be #{expectation}"
+  log.info "Grid: Expect SKU to be #{expectation}"
   begin
     actual = orders.grid.item_sku.data @order_id
     10.times do 
@@ -413,7 +413,7 @@ Then /^Grid: Expect Item SKU to be (.+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Item Name to be (.+)$/ do |expectation|
-  log.info "Step: Grid: Expect Name to be #{expectation}"
+  log.info "Grid: Expect Name to be #{expectation}"
   begin
     actual = orders.grid.item_name.data @order_id
     10.times do 
@@ -427,7 +427,7 @@ Then /^Grid: Expect Item Name to be (.+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Ship From to be (.+)$/ do |expectation|
-  log.info "Step: Grid: Expect Ship to be #{expectation}"
+  log.info "Grid: Expect Ship to be #{expectation}"
   begin
     actual = orders.grid.ship_from.data @order_id
     10.times do
@@ -441,7 +441,7 @@ Then /^Grid: Expect Ship From to be (.+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Service to be (.+)$/ do |expectation|
-  log.info "Step: Grid: Expect Service to be #{expectation}"
+  log.info "Grid: Expect Service to be #{expectation}"
   actual = orders.grid.service.data @order_id
   10.times do
     sleep 1
@@ -453,7 +453,7 @@ Then /^Grid: Expect Service to be (.+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Insured Value to be \$(.+)$/ do |expectation|
-  log.info "Step: Grid: Expect Insured Value to be #{expectation}"
+  log.info "Grid: Expect Insured Value to be #{expectation}"
   begin
     actual = orders.grid.insured_value.data @order_id
     10.times do
@@ -468,7 +468,7 @@ end
 
 Then /^Grid: Expect Reference No. to be (.+)$/ do |expectation|
 
-  log.info "Step: Grid: Expect Reference No. to be #{expectation}"
+  log.info "Grid: Expect Reference No. to be #{expectation}"
   begin
     actual = orders.grid.reference_no.data @order_id
     10.times do
@@ -482,7 +482,7 @@ Then /^Grid: Expect Reference No. to be (.+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Cost Code to be (.+)$/ do |expectation|
-  log.info "Step: Grid: Expect Cost Code to be #{expectation}"
+  log.info "Grid: Expect Cost Code to be #{expectation}"
   begin
     actual = orders.grid.cost_code.data @order_id
     10.times do
@@ -496,7 +496,7 @@ Then /^Grid: Expect Cost Code to be (.+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Order Status to be (.+)$/ do |expectation|
-  log.info "Step: Grid: Expect Order Status to be #{expectation}"
+  log.info "Grid: Expect Order Status to be #{expectation}"
   begin
     10.times do
       actual = orders.grid.order_status.data @order_id
@@ -525,7 +525,7 @@ Then /^Grid: Expect Tracking Number is populated$/ do
 end
 
 Then /^Grid: Expect Order Total to be (.+)$/ do |expectation|
-  log.info "Step: Grid: Expect Order Total to be #{expectation}"
+  log.info "Grid: Expect Order Total to be #{expectation}"
   begin
     actual = orders.grid.order_total.data @order_id
     10.times do
@@ -539,20 +539,20 @@ Then /^Grid: Expect Order Total to be (.+)$/ do |expectation|
 end
 
 Then /^Expect Order details to be;$/ do |table|
-  log.info "Step: Expect Order details to be..."
+  log.info "Expect Order details to be..."
   expectation_hash = table.hashes.first
   step "Grid: Expect Insured Value to be $#{expectation_hash[:insured_value]}"
   step "Grid: Expect Weight to be #{expectation_hash[:lbs]} lbs. #{expectation_hash[:oz]} oz."
 end
 
 Then /^Expect new Order ID created$/ do
-  log.info "Step: Expect new Order ID created"
+  log.info "Expect new Order ID created"
   log.info "New Order ID created:  #{@order_id.to_i>0}"
   @order_id.to_i.should be > 0
 end
 
 Then /^Details: Expect Order ID equals Grid order ID$/ do
-  log.info "Step: Details: Expect Order ID equals Grid order ID"
+  log.info "Details: Expect Order ID equals Grid order ID"
   grid_order_id = orders.grid.order_id.row 1
   single_order_form_order_id = orders.details.order_id
   log.info "Grid Order ID: #{grid_order_id}.  Order Details Form Order ID:  #{single_order_form_order_id}.  Test #{(grid_order_id==single_order_form_order_id) ? 'Passed' : 'Failed'}"

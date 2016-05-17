@@ -21,7 +21,7 @@ Then /^Purchase Postage for \$(\d+)$/ do |amount|
 
 
 Then /^Expect \$(\d+) is added to customer balance$/ do |purchase_amount|
-  log.info "Step: Expect \$#{purchase_amount} is added to customer balance"
+  log.info "Expect \$#{purchase_amount} is added to customer balance"
   20.times do
     sleep 1
     new_balance = orders.navigation_bar.balance.amount

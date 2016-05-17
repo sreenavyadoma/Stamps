@@ -1,6 +1,6 @@
 
 Then /^Postage Shipping Labels: Set Service to (.*)/ do |service|
-  log.info "Step: Shipping Labels - Set Print Postage Service to: \n #{service}"
+  log.info "Shipping Labels - Set Print Postage Service to: \n #{service}"
   @print_postage.service.select service
 end
 

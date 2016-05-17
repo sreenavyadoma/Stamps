@@ -5,7 +5,7 @@ Then /^Print: Open Modal$/ do
 end
 #
 Then /^Print: Close Modal$/ do
-  log.info "Step: Print: Close Modal"
+  log.info "Print: Close Modal"
   orders.toolbar.print_order.click.close
 end
 
@@ -50,31 +50,31 @@ Then /^Print: Check Print Reference # on Shipping Label$/ do
 end
 
 When /^Print: Select left-side label$/ do
-  log.info "Step: Print: Select - Left side label"
+  log.info "Print: Select - Left side label"
   selected = orders.toolbar.print_order.click.starting_label.left
   log.info "left-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 When /^Print: Select right-side label$/ do
-  log.info "Step: Print: Select - Right side label"
+  log.info "Print: Select - Right side label"
   selected = orders.toolbar.print_order.click.starting_label.right
   log.info "Print Modal right-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 Then /^Print: Expect right-side label selected$/ do
-  log.info "Step: Print: Expect right-side label selected"
+  log.info "Print: Expect right-side label selected"
   selected = orders.toolbar.print_order.click.starting_label.right_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
 end
 
 Then /^Print: Expect left-side label selected$/ do
-  log.info "Step: Print: Expect left-side label selected"
+  log.info "Print: Expect left-side label selected"
   selected = orders.toolbar.print_order.click.starting_label.left_selected?
   log.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
 end
 
 Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
-  log.info "Step: Print: Expect Ship Date to be #{day} day(s) from today"
+  log.info "Print: Expect Ship Date to be #{day} day(s) from today"
   actual = orders.toolbar.print_order.click.ship_date.text
   expected = test_helper.date_printed day
   log.info "Print: Expect Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
@@ -82,34 +82,34 @@ Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
 end
 
 Then /^Print: Set Printing On \"(.*)\"$/ do |expectation|
-  log.info "Step: Print: Set Printing On #{expectation}"
+  log.info "Print: Set Printing On #{expectation}"
   orders.toolbar.print_order.click.printing_on.select expectation
 end
 
 Then /^Print: Expect Printing On Label to be (.*)$/ do |expectation|
-  log.info "Step: Print: Set Printing On #{expectation}"
+  log.info "Print: Set Printing On #{expectation}"
   actual_value = orders.toolbar.print_order.click.printing_on.label
   log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
 Then /^Select Printer \"(.*)\"$/ do |printer|
-  log.info "Step: Select Printer #{printer}"
+  log.info "Select Printer #{printer}"
   orders.toolbar.print_order.click.printer.select printer
 end
 
 Then /^Close Reprint Modal$/ do
-  log.info "Step: Print: Close Modal"
+  log.info "Print: Close Modal"
   orders.toolbar.reprint.close
 end
 
 Then /^Close Label Unavailable Modal$/ do
-  log.info "Step: Close Label Unavailable Modal"
+  log.info "Close Label Unavailable Modal"
   orders.toolbar.ok.close
 end
 
 Then /^Print expecting error (.*)$/ do |error_message|
-  log.info "Step: Print expecting error #{error_message}"
+  log.info "Print expecting error #{error_message}"
   order_error = orders.toolbar.print_order.click.print_expecting_error
   actual_error_message = order_error.error_message
   order_error.ok
@@ -118,7 +118,7 @@ Then /^Print expecting error (.*)$/ do |error_message|
 end
 
 Then /^Print expecting (.*) selected orders have errors and cannot be printed. To print the remaining orders, click Continue.$/ do |error_message|
-  log.info "Step: Print expecting #{error_message} selected orders have errors and cannot be printed. To print the remaining orders, click Continue."
+  log.info "Print expecting #{error_message} selected orders have errors and cannot be printed. To print the remaining orders, click Continue."
   order_errors = orders.toolbar.print_order.click.print_expecting_error
   actual_error_message = order_errors.error_message
   order_errors.continue.print
@@ -127,13 +127,13 @@ Then /^Print expecting (.*) selected orders have errors and cannot be printed. T
 end
 
 Then /^Print expecting invalid address error$/ do
-  log.info "Step: Print expecting invalid address error"
+  log.info "Print expecting invalid address error"
   error_window = orders.toolbar.print_order.click.print_invalid_address
   error_window.close
 end
 
 When /^Print expecting rating error$/ do
-  log.info "Step: Print expecting rating error"
+  log.info "Print expecting rating error"
   error_window = orders.toolbar.print_order.click.print_expecting_rating_error
   actual_error_message = error_window.error_message
   error_window.close
@@ -141,7 +141,7 @@ When /^Print expecting rating error$/ do
 end
 
 When /^Print expecting some orders can not be printed$/ do
-  log.info "Step: Print expecting some orders can not be printed"
+  log.info "Print expecting some orders can not be printed"
   error_window = orders.toolbar.print_order.click.print_expecting_error
   actual_error_message = error_window.error_message
   error_window.continue.print
@@ -149,7 +149,7 @@ When /^Print expecting some orders can not be printed$/ do
 end
 
 Then /^Print: Expect Modal Title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  log.info "Step: Print: Expect Modal Title to be \"You have #{expectation} label\(s\) ready to print\""
+  log.info "Print: Expect Modal Title to be \"You have #{expectation} label\(s\) ready to print\""
   actual = orders.toolbar.print_order.click.labels_ready_to_print
   orders.toolbar.print_order.click.close
   log.info "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
@@ -157,34 +157,34 @@ Then /^Print: Expect Modal Title to be \"You have (.*) label\(s\) ready to print
 end
 
 Then /^Print: Expect number of required label sheets to be (\d+)$/ do |sheets|
-  log.info "Step: Print: Expect Requires #{sheets} label sheets"
+  log.info "Print: Expect Requires #{sheets} label sheets"
   actual = orders.toolbar.print_order.click.labels_required
   log.info "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheets==actual)?'Passed':'Failed'}"
   actual.should eql sheets
 end
 
 Then /^Print raises a Printing Error/ do
-  log.info "Step: Print raises a Printing Error"
+  log.info "Print raises a Printing Error"
   expect{orders.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Print: Print Sample on (.*)$/ do |printer|
-  log.info "Step: Print: Print Sample on #{printer}"
+  log.info "Print: Print Sample on #{printer}"
   orders.toolbar.print_order.click(printer).print_sample
 end
 
 Then /^Print: Print Sample on (.*) raises a PrintingError$/ do |printer|
-  log.info "Step: Print: Print Sample on #{printer} raises a PrintingError"
+  log.info "Print: Print Sample on #{printer} raises a PrintingError"
   expect{orders.toolbar.print_order.click(printer).print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Print: Print Sample$/ do
-  log.info "Step: Print: Print Sample"
+  log.info "Print: Print Sample"
   orders.toolbar.print_order.click.print_sample
 end
 
 Then /^Print: Print Sample raises a Printing Error/ do
-  log.info "Step: Print: Print Sample raises a Printing Error"
+  log.info "Print: Print Sample raises a Printing Error"
   expect{orders.toolbar.print_order.click.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 

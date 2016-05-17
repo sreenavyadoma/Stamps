@@ -13,7 +13,7 @@ Then /^Postage Stamps: Set Weight (\d+) lbs (\d+) oz$/ do |lbs, oz|
 end
 
 Then /^Postage Stamps: Set Calculate Postage Service to (.*)/ do |service|
-  log.info "Step: Envelopes: Set Print Postage Service to: \n #{service}"
+  log.info "Envelopes: Set Print Postage Service to: \n #{service}"
   @print_postage.calculate_postage_service.select service
 end
 

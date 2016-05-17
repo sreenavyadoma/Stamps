@@ -4,12 +4,6 @@ Then /^Shopify Store: Set Shopify Domain to (.*)$/ do |url|
   @store.shopify_domain.set url
 end
 
-Then /^Shopify Store: Test Connection$/ do
-  log.info "Then Shopify Store: Test Connection"
-  raise "Shopify Store modal is not visible or present.  Check your test workflow" if @store.nil?
-  @store.test_connection
-end
-
 Then /^Shopify Store: Connect using Email (.*) and password (.*)$/ do |username, password|
   log.info "Shopify Store: Connect using Email #{username} and password #{password}"
   raise "Shopify Store modal is not visible or present.  Check your test workflow" if @store.nil?

@@ -1,6 +1,6 @@
 
 Then /^Open Settings Modal$/ do
-  log.info "Step: Open Settings Modal"
+  log.info "Open Settings Modal"
   @general_settings = orders.toolbar.settings.general_settings
 end
 # Services checkbox

@@ -19,7 +19,7 @@ Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
 end
 
 Then /^PAM: Load PAM Page$/ do
-  log.info "Step: PAM: Load PAM Page"
+  log.info "PAM: Load PAM Page"
   step "I launch browser" if @browser.nil?
   pam.visit
 end

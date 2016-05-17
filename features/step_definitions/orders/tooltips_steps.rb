@@ -52,7 +52,7 @@ Then /^Tooltips: Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.
 end
 
 Then /^Tooltips: Expect Customs Form Tooltip Error for Total Weight to be (.+)$/ do |expectation|
-  log.info "Step: Tooltips: Expect Customs Form Tooltip Error for Total Weight to be #{expectation}"
+  log.info "Tooltips: Expect Customs Form Tooltip Error for Total Weight to be #{expectation}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.total_weight.data_error
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
@@ -60,7 +60,7 @@ Then /^Tooltips: Expect Customs Form Tooltip Error for Total Weight to be (.+)$/
 end
 
 Then /^Customs: Expect Item Description Tooltip Error to be (.*)$/ do |expectation|
-  log.info "Step: Customs: Expect Item Description Tooltip Error to be #{expectation}"
+  log.info "Customs: Expect Item Description Tooltip Error to be #{expectation}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.item_grid.item(1).description.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
@@ -68,7 +68,7 @@ Then /^Customs: Expect Item Description Tooltip Error to be (.*)$/ do |expectati
 end
 
 Then /^Customs: Expect Qty Tooltip Error to be (.*)$/ do |expectation|
-  log.info "Step: Customs: Expect Qty Tooltip Error to be #{expectation}"
+  log.info "Customs: Expect Qty Tooltip Error to be #{expectation}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.item_grid.item(1).qty.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
@@ -76,7 +76,7 @@ Then /^Customs: Expect Qty Tooltip Error to be (.*)$/ do |expectation|
 end
 
 Then /^Customs: Expect Unit Price Tooltip Error to be (.*)$/ do |expectation|
-  log.info "Step: Customs: Expect Unit Price Tooltip Error to be #{expectation}"
+  log.info "Customs: Expect Unit Price Tooltip Error to be #{expectation}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.item_grid.item(1).unit_price.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
@@ -84,7 +84,7 @@ Then /^Customs: Expect Unit Price Tooltip Error to be (.*)$/ do |expectation|
 end
 
 Then /^Customs: Expect Pounds Tooltip Error to be (.*)$/ do |expectation|
-  log.info "Step: Customs: Expect Pounds Tooltip Error to be #{expectation}"
+  log.info "Customs: Expect Pounds Tooltip Error to be #{expectation}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.item_grid.item(1).lbs.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
@@ -92,7 +92,7 @@ Then /^Customs: Expect Pounds Tooltip Error to be (.*)$/ do |expectation|
 end
 
 Then /^Customs: Expect Ounces Tooltip Error to be (.*)$/ do |expectation|
-  log.info "Step: Customs: Expect Ounces Tooltip Error to be #{expectation}"
+  log.info "Customs: Expect Ounces Tooltip Error to be #{expectation}"
   @customs_form = @order_details.customs_form if @customs_form.nil?
   data_error_qtip = @customs_form.item_grid.item(1).oz.text_box.data_error_qtip
   log.info "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
@@ -100,7 +100,7 @@ Then /^Customs: Expect Ounces Tooltip Error to be (.*)$/ do |expectation|
 end
 
 Then /^Details: Expect Domestic Address data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect Domestic Address data error tooltip to be #{expectation}"
+  log.info "Details: Expect Domestic Address data error tooltip to be #{expectation}"
   text_box = orders.details.ship_to.address.text_area
   20.times do
     text_box.safe_double_click
@@ -120,7 +120,7 @@ Then /^Details: Expect Domestic Address data error tooltip to be \"(.*)\"$/ do |
 end
 
 Then /^Details: Expect Domestic Email data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect Domestic Email data error tooltip to be #{expectation}"
+  log.info "Details: Expect Domestic Email data error tooltip to be #{expectation}"
   text_box = orders.details.ship_to.email
   20.times do
     text_box.safe_double_click
@@ -140,7 +140,7 @@ Then /^Details: Expect Domestic Email data error tooltip to be \"(.*)\"$/ do |ex
 end
 
 Then /^Details: Expect Weight Lbs data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect Domestic  Weight lbs data error tooltip to be #{expectation}"
+  log.info "Details: Expect Domestic  Weight lbs data error tooltip to be #{expectation}"
   text_box = orders.details.weight.lbs.text_box
   20.times do
     text_box.scroll_into_view
@@ -163,7 +163,7 @@ Then /^Details: Expect Weight Lbs data error tooltip to be \"(.*)\"$/ do |expect
 end
 
 Then /^Details: Expect Weight Oz data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect Weight Oz data error tooltip to be #{expectation}"
+  log.info "Details: Expect Weight Oz data error tooltip to be #{expectation}"
   text_box = orders.details.weight.oz.text_box
   20.times do
     text_box.scroll_into_view
@@ -189,7 +189,7 @@ Then /^Details: Expect Weight Oz data error tooltip to be \"(.*)\"$/ do |expecta
 end
 
 Then /^Details: Expect Service data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect Weight Oz data error tooltip to be #{expectation}"
+  log.info "Details: Expect Weight Oz data error tooltip to be #{expectation}"
   text_box = orders.details.service.text_box
   20.times do
     text_box.safe_double_click
@@ -212,7 +212,7 @@ Then /^Details: Expect Service data error tooltip to be \"(.*)\"$/ do |expectati
 end
 
 Then /^Details: Expect Dimensions Length data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect Dimensions Length data error tooltip to be #{expectation}"
+  log.info "Details: Expect Dimensions Length data error tooltip to be #{expectation}"
   text_box = orders.details.dimensions.length.text_box
 
   20.times do
@@ -236,7 +236,7 @@ Then /^Details: Expect Dimensions Length data error tooltip to be \"(.*)\"$/ do 
 end
 
 Then /^Details: Expect Dimensions Width data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect Dimensions Width data error tooltip to be #{expectation}"
+  log.info "Details: Expect Dimensions Width data error tooltip to be #{expectation}"
   width_text_box = orders.details.dimensions.width.text_box
 
   20.times do
@@ -260,7 +260,7 @@ Then /^Details: Expect Dimensions Width data error tooltip to be \"(.*)\"$/ do |
 end
 
 Then /^Details: Expect Dimensions Height data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect Dimensions Height data error tooltip to be #{expectation}"
+  log.info "Details: Expect Dimensions Height data error tooltip to be #{expectation}"
   height_text_box = orders.details.dimensions.height.text_box
 
   20.times do
@@ -284,7 +284,7 @@ Then /^Details: Expect Dimensions Height data error tooltip to be \"(.*)\"$/ do 
 end
 
 Then /^Grid: Expect ship cost data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Grid: Expect ship cost data error tooltip to be #{expectation}"
+  log.info "Grid: Expect ship cost data error tooltip to be #{expectation}"
   grid_order_id = orders.grid.order_id.row 1
   grid_ship_cost = orders.grid.ship_cost.data grid_order_id
   error = grid_ship_cost.attribute_expectation "data-errorqtip"
@@ -293,7 +293,7 @@ Then /^Grid: Expect ship cost data error tooltip to be \"(.*)\"$/ do |expectatio
 end
 
 Then /^Details: Expect International Name data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect International Name data error tooltip to be #{expectation}"
+  log.info "Details: Expect International Name data error tooltip to be #{expectation}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   text_box = @international_ship_to.name
   20.times do
@@ -319,7 +319,7 @@ Then /^Details: Expect International Name data error tooltip to be \"(.*)\"$/ do
 end
 
 Then /^Details: Expect International Company data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect International Company data error tooltip to be #{expectation}"
+  log.info "Details: Expect International Company data error tooltip to be #{expectation}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   text_box = @international_ship_to.company
 
@@ -345,7 +345,7 @@ Then /^Details: Expect International Company data error tooltip to be \"(.*)\"$/
 end
 
 Then /^Details: Expect International Address 1 data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect International Address 1 data error tooltip to be #{expectation}"
+  log.info "Details: Expect International Address 1 data error tooltip to be #{expectation}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   text_box = @international_ship_to.address_1
 
@@ -371,7 +371,7 @@ Then /^Details: Expect International Address 1 data error tooltip to be \"(.*)\"
 end
 
 Then /^Details: Expect International City data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect International City data error tooltip to be #{expectation}"
+  log.info "Details: Expect International City data error tooltip to be #{expectation}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   text_box = @international_ship_to.city
 
@@ -396,7 +396,7 @@ Then /^Details: Expect International City data error tooltip to be \"(.*)\"$/ do
 end
 
 Then /^Details: Expect International Phone data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect International Phone data error tooltip to be #{expectation}"
+  log.info "Details: Expect International Phone data error tooltip to be #{expectation}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   text_box = @international_ship_to.phone
 
@@ -423,7 +423,7 @@ Then /^Details: Expect International Phone data error tooltip to be \"(.*)\"$/ d
 end
 
 Then /^Details: Expect International Email data error tooltip to be \"(.*)\"$/ do |expectation|
-  log.info "Step: Details: Expect International Email data error tooltip to be #{expectation}"
+  log.info "Details: Expect International Email data error tooltip to be #{expectation}"
   @international_ship_to = orders.details.ship_to.international if @international_ship_to.nil?
   text_box = @international_ship_to.email
 

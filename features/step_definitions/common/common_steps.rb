@@ -9,7 +9,7 @@ Then /^Teardown$/ do
 end
 
 Given /^I launch browser (\w+)$/ do |browser|
-  log.info "Step: I launch browser #{browser}"
+  log.info "I launch browser #{browser}"
   if browser.downcase.include? "default"
     @browser = Stamps::Test.setup
   else

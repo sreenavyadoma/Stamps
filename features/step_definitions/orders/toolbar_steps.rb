@@ -1,5 +1,5 @@
 Then /^Toolbar: Add$/ do
-  log.info "Step: Toolbar: Add"
+  log.info "Toolbar: Add"
   log.info "Toolbar: Add"
   @old_balance = orders.navigation_bar.balance.amount
   orders.grid.checkbox.uncheck 1
@@ -50,7 +50,7 @@ Then /^Print: Expect Print Modal is present$/ do
 end
 
 Then /^Print: Print$/ do
-  log.info "Step: Print"
+  log.info "Print"
   print_modal = orders.toolbar.print_order.click
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.text_box.text
@@ -60,12 +60,12 @@ Then /^Print: Print$/ do
 end
 
 Then /^Print: Open Reprint Modal$/ do
-  log.info "Step: RePrint"
+  log.info "RePrint"
   @reprint_modal = orders.toolbar.reprint
 end
 
 Then /^Label Unavailable:  Expect Visible$/ do
-  log.info "Step: Label Unavailable:  Expect Visible"
+  log.info "Label Unavailable:  Expect Visible"
   case @reprint_modal
     when LabelUnavailable
       log.info @reprint_modal.message
@@ -81,19 +81,19 @@ Then /^Label Unavailable:  Expect Visible$/ do
 end
 
 Then /^Toolbar: Add second order$/ do
-  log.info "Step: Toolbar: Add second order"
+  log.info "Toolbar: Add second order"
   @order_details = orders.toolbar.add.click
   @order_id_2 = @order_details.toolbar.order_id
 end
 
 Then /^Toolbar: Add third order$/ do
-  log.info "Step: Toolbar: Add third order"
+  log.info "Toolbar: Add third order"
   @order_details = orders.toolbar.add.click
   @order_id_3 = @order_details.toolbar.order_id
 end
 
 Then /^Add a second order$/ do
-  log.info "Step: Add a second order"
+  log.info "Add a second order"
   first_row_order_id = orders.grid.order_id.row 1
   5.times{
     @order_id_2 = orders.toolbar.add.click_shipping_address_window
@@ -107,12 +107,12 @@ Then /^Add a second order$/ do
 end
 
 Then /^Fail the test$/ do
-  log.info "Step: Fail the test"
+  log.info "Fail the test"
   true.should eql  false
 end
 
 Then /^Test Features$/ do |count|
-  log.info "Step: Test Features"
+  log.info "Test Features"
   orders.grid.checkbox.check_all
   count = orders.multi_order.order_count
   log.info count

@@ -16,7 +16,7 @@ Feature:  Shopify Store Management
 
       # Shopify Modal
       Then Shopify Store: Set Shopify Domain to http://sdcqa.myshopify.com
-      Then Shopify Store: Test Connection
+      
       Then Shopify Store: Connect using Email qaclient@stamps.com and password Postage1
 
       Then Store Settings: Set Store Nickname to random
@@ -30,7 +30,7 @@ Feature:  Shopify Store Management
       Then Manage Stores: Select Store random
       Then Manage Stores: Reconnect
       Then Shopify Store: Set Shopify Domain to http://sdcqa.myshopify.com
-      Then Shopify Store: Test Connection
+      
       Then Shopify Store: Reconnect
 
       # Edit Store

@@ -1,11 +1,11 @@
 Then /^Toolbar: Import$/ do
-  log.info "Step: Step: Toolbar: Import"
+  log.info "Toolbar: Import"
   @import_orders = orders.toolbar.import
   log.info "Test #{(@import_orders.present?)?"Passed":"Failed - Unable to open Import Orders modal."}"
 end
 
 Then /^Import Orders: Select CSV File$/ do
-  log.info "Step: Import Orders: Select CSV File"
+  log.info "Import Orders: Select CSV File"
   step "Toolbar: Import" if @import_orders.nil?
   
   @open_file = @import_orders.select_csv_file
@@ -14,7 +14,7 @@ Then /^Import Orders: Select CSV File$/ do
 end
 
 Then /^Import Orders: Import$/ do
-  log.info "Step: Import Orders: Import"
+  log.info "Import Orders: Import"
   step "Toolbar: Import" if @import_orders.nil?
 
   @import_successful = @import_orders.import
@@ -31,28 +31,28 @@ Then /^Import Orders: Expect Import is successful$/ do
 end
 
 Then /^Import Orders: Success: OK$/ do
-  log.info "Step: Import Orders: Success: OK"
+  log.info "Import Orders: Success: OK"
   step "Toolbar: Import" if @import_orders.nil?
 
   @import_successful.ok
 end
 
 Then /^Import Orders: Cancel$/ do
-  log.info "Step: Import Orders: Cancel"
+  log.info "Import Orders: Cancel"
   step "Toolbar: Import" if @import_orders.nil?
 
   @import_orders.cancel
 end
 
 Then /^Import Orders: Download sample file$/ do
-  log.info "Step: Import Orders: Download sample file"
+  log.info "Import Orders: Download sample file"
   step "Toolbar: Import" if @import_orders.nil?
 
   @import_orders.download_sample_file
 end
 
 Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename| #import_orders_test.csv
-  log.info "Step: Import Orders: File Upload: Set Filename"
+  log.info "Import Orders: File Upload: Set Filename"
   step "Toolbar: Import" if @import_orders.nil?
   step "Import Orders: Select CSV File" if (@open_file.nil? || !(@open_file.present?))
   @csv_import_filename = "\\\\rcruz-win7\\Public\\automation\\data\\#{filename}"
