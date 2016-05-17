@@ -436,8 +436,8 @@ Cucumber::Rake::Task.new(:tooltip_print_media) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_media_8x11_paper) do |t|
-  t.profile = 'print_media_8x11_paper'
+Cucumber::Rake::Task.new(:print_dialog_printing_on_8x11_paper) do |t|
+  t.profile = 'print_dialog_printing_on_8x11_paper'
   t.cucumber_opts = "-p cuke_reports"
 end
 

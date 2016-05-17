@@ -3,7 +3,7 @@ Feature: Print Media - Shipping Label: 8 ½" x 11" Paper
   Background:
     Given I am signed in to Orders
 
-  @print_media_8x11_paper
+  @print_dialog_printing_on_8x11_paper
   Scenario:  Shipping Label: 8 ½" x 11" Paper
     Then Toolbar: Add
     Then Details: Set Ship-From to default

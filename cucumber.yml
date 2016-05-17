@@ -128,7 +128,7 @@ print_ship_date_today: --tags @print_ship_date_today --guess VERBOSE=false HEALT
 
 # PRINT MEDIA
 tooltip_print_media: --tags @tooltip_print_media --guess VERBOSE=false HEALTHCHECK=true
-print_media_8x11_paper: --tags @print_media_8x11_paper --guess VERBOSE=false HEALTHCHECK=true
+print_dialog_printing_on_8x11_paper: --tags @print_dialog_printing_on_8x11_paper --guess VERBOSE=false HEALTHCHECK=true
 print_dialog_printing_on_4x6_sdc1200: --tags @print_dialog_printing_on_4x6_sdc1200 --guess VERBOSE=false HEALTHCHECK=true
 print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess VERBOSE=false HEALTHCHECK=true
 print_dialog_printing_on_4x6_shipping_label: --tags @print_dialog_printing_on_4x6_shipping_label --guess VERBOSE=false HEALTHCHECK=true
