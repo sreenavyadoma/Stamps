@@ -7,6 +7,41 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:details_non_integer_lbs) do |t|
   t.profile = 'details_non_integer_lbs'
   t.cucumber_opts = "-p cuke_reports"
@@ -41,6 +76,17 @@ Cucumber::Rake::Task.new(:rob_dev_cc) do |t|
   t.profile = 'rob_dev_cc'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:rob_dev_staging) do |t|
+  t.profile = 'rob_dev_staging'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_dev_sc) do |t|
+  t.profile = 'rob_dev_sc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:bvt_shipping_address_management) do |t|
   t.profile = 'bvt_shipping_address_management'
   t.cucumber_opts = "-p cuke_reports"
