@@ -3,7 +3,7 @@ Feature: Set Print Ship Date to Today + 1
   Background:
     Given I am signed in to Orders
 
-  @print_ship_date_today_plus1
+  @print_dialog_ship_date_today_plus1
   Scenario: Ship Date today + 1
     Then Toolbar: Add
     Then Details: Set Ship-From to default
