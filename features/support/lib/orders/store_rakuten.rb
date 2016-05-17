@@ -79,7 +79,7 @@ module Orders
           end
           return settings if settings.present?
         end
-        stop_test "Rakuten Store Connect failed.  Settings Modal did not open."
+        stop_test "Rakuten Store Connect failed.  Settings Modal did not open, unable to connect."
       end
     end
 
