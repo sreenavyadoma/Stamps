@@ -446,8 +446,8 @@ Cucumber::Rake::Task.new(:print_dialog_printing_on_4x6_sdc1200) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_media_5x8_shipping_label) do |t|
-  t.profile = 'print_media_5x8_shipping_label'
+Cucumber::Rake::Task.new(:print_dialog_printing_on_5x8_shipping_label) do |t|
+  t.profile = 'print_dialog_printing_on_5x8_shipping_label'
   t.cucumber_opts = "-p cuke_reports"
 end
 
