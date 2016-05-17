@@ -62,10 +62,11 @@ module Orders
         settings = ThreeDCartSettings.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
         server_error = Orders::Stores::ServerError.new @browser
+        connecting_button = StampsButton.new @browser.span(text: "Connecting...")
 
         max_server_error_retry_count = 5
 
-        15.times do |counter|
+        20.times do |counter|
           button.safe_click
           sleep 1
           if importing_order.present?
@@ -78,6 +79,7 @@ module Orders
             server_error.ok
             stop_test "Server Error: \n#{error_str}" unless counter < max_server_error_retry_count
           end
+          log.info connecting_button.text if connecting_button.visible?
           return settings if settings.present?
         end
         stop_test "Rakuten Store Connect failed.  Settings Modal did not open.  "
@@ -87,95 +89,25 @@ module Orders
         button = StampsButton.new @browser.span(text: "Connect")
         manage_stores = ManageStores.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
+        server_error = Orders::Stores::ServerError.new @browser
+        connecting_button = StampsButton.new @browser.span(text: "Connecting...")
 
-        10.times do
+        max_server_error_retry_count = 5
+
+        10.times do |counter|
           button.safe_click
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          button.safe_click
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          sleep 1
-          return manage_stores if manage_stores.present?
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
           sleep 1
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
           end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
+          if server_error.present?
+            error_str = server_error.message
+            log.info error_str
+            server_error.ok
+            stop_test "Server Error: \n#{error_str}" unless counter < max_server_error_retry_count
           end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          return manage_stores if manage_stores.present?
-          sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          return manage_stores if manage_stores.present?
-          sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          return manage_stores if manage_stores.present?
-          sleep 1
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
+          log.info connecting_button.text if connecting_button.visible?
           return manage_stores if manage_stores.present?
         end
       end
