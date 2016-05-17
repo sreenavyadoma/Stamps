@@ -14,11 +14,10 @@ Feature:  3dcart Store Management
 
       Then Marketplace: Select 3dcart
 
-      Then 3dcart Store: Set API User Key to 54442471661986222544424716619862
-      Then 3dcart Store: Set URL to your store to http://sandbox-stamps.3dcartstores.com
-      Then 3dcart Store: Set Product Weight Units to Pounds
-      Then 3dcart Store: Test Connection
-      Then 3dcart Store: Connect
+      Then 3DCart Store: Set API User Key to 54442471661986222544424716619862
+      Then 3DCart Store: Set URL to your store to http://sandbox-stamps.3dcartstores.com
+      Then 3DCart Store: Set Product Weight Units to Pounds
+      Then 3DCart Store: Connect
 
       Then Store Settings: Set Store Nickname to random
 
@@ -31,11 +30,10 @@ Feature:  3dcart Store Management
       # Reconnect Store
       Then Manage Stores: Reconnect
 
-      Then 3dcart Store: Set API User Key to 54442471661986222544424716619862
-      Then 3dcart Store: Set URL to your store to http://sandbox-stamps.3dcartstores.com
-      Then 3dcart Store: Set Product Weight Units to Pounds
-      Then 3dcart Store: Test Connection
-      Then 3dcart Store: Reconnect
+      Then 3DCart Store: Set API User Key to 54442471661986222544424716619862
+      Then 3DCart Store: Set URL to your store to http://sandbox-stamps.3dcartstores.com
+      Then 3DCart Store: Set Product Weight Units to Pounds
+      Then 3DCart Store: Reconnect
 
       # Edit Store
       Then Manage Stores: Select Store random

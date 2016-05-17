@@ -53,19 +53,16 @@ module Orders
 
         20.times do |counter|
           button.safe_click
-          3.times do
-            if importing_order.present?
-              log.info importing_order.message
-              importing_order.ok
-            end
-            if server_error.present?
-              error_str = server_error.message
-              log.info error_str
-              server_error.ok
-              stop_test "Server Error: \n#{error_str}" unless counter < max_server_error_retry_count
-              break
-            end
-            return settings if settings.present?
+          sleep 1
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if server_error.present?
+            error_str = server_error.message
+            log.info error_str
+            server_error.ok
+            stop_test "Server Error: \n#{error_str}" unless counter < max_server_error_retry_count
           end
           return settings if settings.present?
         end
@@ -78,21 +75,19 @@ module Orders
         manage_stores = ManageStores.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
-        sleep 2
-        20.times do
+        max_server_error_retry_count = 5
+
+        20.times do |counter|
           button.safe_click
-          3.times do
-            if importing_order.present?
-              log.info importing_order.message
-              importing_order.ok
-            end
-            if server_error.present?
-              error_str = server_error.message
-              log.info error_str
-              server_error.ok
-              stop_test "Server Error: \n#{error_msg}"
-            end
-            return manage_stores if manage_stores.present?
+          if importing_order.present?
+            log.info importing_order.message
+            importing_order.ok
+          end
+          if server_error.present?
+            error_str = server_error.message
+            log.info error_str
+            server_error.ok
+            stop_test "Server Error: \n#{error_str}" unless counter < max_server_error_retry_count
           end
           return manage_stores if manage_stores.present?
         end
