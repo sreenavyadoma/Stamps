@@ -1,11 +1,11 @@
 
-Feature:  3dcart Store Management
+Feature:  3DCart Store Management
 
   Background:
     Given I am signed in to Orders
 
     @3dcart
-    Scenario: Store Management - 3dcart Store
+    Scenario: Store Management - 3DCart Store
       Then Manage Stores: Open Modal
       Then Manage Stores: Delete All Stores
 
