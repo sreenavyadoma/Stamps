@@ -72,98 +72,22 @@ module Orders
         button = StampsButton.new @browser.span(text: "Connect")
         settings = ThreeDCartSettings.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
+        server_error = Orders::Stores::ServerError.new @browser
 
-        10.times do
+        max_server_error_retry_count = 5
+
+        15.times do |counter|
           button.safe_click
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          button.safe_click
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
           sleep 1
-          return settings if settings.present?
           if importing_order.present?
             log.info importing_order.message
             importing_order.ok
           end
-          sleep 1
-          return settings if settings.present?
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          return settings if settings.present?
-          sleep 1
-          return settings if settings.present?
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          return settings if settings.present?
-          sleep 1
-          return settings if settings.present?
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          return settings if settings.present?
-          sleep 1
-          return settings if settings.present?
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            log.info importing_order.message
-            importing_order.ok
+          if server_error.present?
+            error_str = server_error.message
+            log.info error_str
+            server_error.ok
+            stop_test "Server Error: \n#{error_str}" unless counter < max_server_error_retry_count
           end
           return settings if settings.present?
         end

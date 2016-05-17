@@ -430,7 +430,7 @@ Then /^Grid: Expect Ship From to be (.+)$/ do |expectation|
   log.info "Step: Grid: Expect Ship to be #{expectation}"
   begin
     actual = orders.grid.ship_from.data @order_id
-    10.times do |counter|
+    10.times do
       sleep 1
       break if actual.eql? expectation
       actual = orders.grid.ship_from.data @order_id

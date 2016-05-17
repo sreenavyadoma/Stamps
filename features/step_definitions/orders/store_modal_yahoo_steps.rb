@@ -13,11 +13,6 @@ Then /^Yahoo Store: Set First Order ID to Import to (.*)$/ do |order_id|
   @store.first_order_id_to_import.set order_id
 end
 
-Then /^Yahoo Store: Test Connection$/ do
-  log.info "Yahoo Store: Test Connection"
-  @store.test_connection
-end
-
 Then /^Yahoo Store: Connect$/ do
   log.info "Yahoo Store: Connect"
   @store_settings = @store.connect

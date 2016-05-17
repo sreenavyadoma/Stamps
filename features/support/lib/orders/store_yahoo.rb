@@ -29,21 +29,14 @@ module Orders
       end
 
       def contact_token
-        StampsTextbox.new @browser.text_field(css: "div[id^=connectyahoowindow-][id$=-body]>div>div>div>div>div[class*=x-box-layout-ct]>div>div>div:nth-child(3)>div>div>div>div[id*=body]>div>div>input")
+        parent = @browser.span(text: "Partner Store Contract Token").parent.parent
+        input = parent.divs[0].div.div.input
+        raise "Contact Token textbox does not exist or textbox locator is wrong." unless browser_helper.present? input
+        StampsTextbox.new input
       end
 
       def first_order_id_to_import
         StampsTextbox.new @browser.text_field(css: "div[id^=connectyahoowindow-][id$=-body]>div>div>div>div>div[class*=x-box-layout-ct]>div>div>div:nth-child(4)>div>div>div>div>div>div>input")
-      end
-
-      def test_connection
-        button = StampsButton.new @browser.span(text: "Test Connection")
-        connected = connect_button
-        20.times do
-          button.safe_click
-          sleep 1
-          break if connected.present?
-        end
       end
 
       def connect_button
@@ -56,8 +49,9 @@ module Orders
         server_error = Orders::Stores::ServerError.new @browser
         importing_order = Orders::Stores::ImportingOrdersModal.new @browser
 
-        sleep 2
-        20.times do
+        max_server_error_retry_count = 5
+
+        20.times do |counter|
           button.safe_click
           3.times do
             if importing_order.present?
@@ -68,7 +62,8 @@ module Orders
               error_str = server_error.message
               log.info error_str
               server_error.ok
-              stop_test "Server Error: \n#{error_msg}"
+              stop_test "Server Error: \n#{error_str}" unless counter < max_server_error_retry_count
+              break
             end
             return settings if settings.present?
           end

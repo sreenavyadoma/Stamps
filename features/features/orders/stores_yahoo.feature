@@ -13,12 +13,12 @@ Feature:  Yahoo Store Management
       # Add Store
       Then Manage Stores: Add
 
+      Then Marketplace: Expect store selection modal contains Yahoo
       Then Marketplace: Select Yahoo
 
       Then Yahoo Store: Set Yahoo Store ID to yhst-143052023869418
       Then Yahoo Store: Set Partner Store Contract Token to 1.0_DLe5kels_wFcqVu33hTVLwqMAmGWerWagQ2RLZWbffEomPbeqdfCKZigaJ6FXO_3YcnJtQO.NCMVh9lBJY5gW_iE0oaFSipcty3sjnnx8wP6bgxlwIn.brtFnT8hRUY3srmZFIXJZA--
       Then Yahoo Store: Set First Order ID to Import to 637
-      Then Yahoo Store: Test Connection
       Then Yahoo Store: Connect
 
       Then Store Settings: Set Store Nickname to random
@@ -44,7 +44,6 @@ Feature:  Yahoo Store Management
       Then Yahoo Store: Set Yahoo Store ID to yhst-143052023869418
       Then Yahoo Store: Set Partner Store Contract Token to 1.0_DLe5kels_wFcqVu33hTVLwqMAmGWerWagQ2RLZWbffEomPbeqdfCKZigaJ6FXO_3YcnJtQO.NCMVh9lBJY5gW_iE0oaFSipcty3sjnnx8wP6bgxlwIn.brtFnT8hRUY3srmZFIXJZA--
       Then Yahoo Store: Set First Order ID to Import to 637
-      Then Yahoo Store: Test Connection
       Then Yahoo Store: Reconnect
       Then Manage Stores: Close Modal
 
