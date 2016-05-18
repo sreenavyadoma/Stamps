@@ -551,8 +551,8 @@ Cucumber::Rake::Task.new(:orders_authentication) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_thermal_number_of_labels_count) do |t|
-  t.profile = 'print_thermal_number_of_labels_count'
+Cucumber::Rake::Task.new(:print_dialog_thermal_number_of_labels_count) do |t|
+  t.profile = 'print_dialog_thermal_number_of_labels_count'
   t.cucumber_opts = "-p cuke_reports"
 end
 
