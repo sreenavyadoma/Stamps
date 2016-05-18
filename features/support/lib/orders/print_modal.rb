@@ -175,7 +175,7 @@ module Orders
 
       public
       def label
-        StampsLabel.new @browser.label(css: "div[id^=printwindow-][id$=-targetEl]>div>label[id^=printmediadroplist-][id$=-labelEl]>span")
+        StampsLabel.new @browser.span(css: "div[id^=printwindow-][id$=-targetEl]>div>label[id^=printmediadroplist-][id$=-labelEl]>span")
       end
 
       def text_box
@@ -375,6 +375,14 @@ module Orders
     end
 
     class PrintOptions < OrdersObject
+      def hide_postage_value
+        checkbox_field = @browser.span :id => "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute = "class"
+        verify_field_attrib = "checked"
+        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+      end
+
       def email_tracking
         checkbox_field = @browser.span :id => "sdc-printpostagewindow-emailtrackingcheckbox-displayEl"
         verify_field = checkbox_field.parent.parent.parent
@@ -389,6 +397,13 @@ module Orders
         attribute = "class"
         verify_field_attrib = "checked"
         StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+      end
+    end
+
+    def click
+      starting_label_tag = StampsLabel.new @browser.span(text: "Starting Label:")
+      20.times do
+        starting_label_tag.safe_click
       end
     end
 

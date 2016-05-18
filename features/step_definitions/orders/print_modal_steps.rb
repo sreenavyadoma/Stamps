@@ -29,6 +29,35 @@ Then /^Print: Set Ship Date to today plus (\d+)$/ do |day|
   @ship_date = orders.toolbar.print_order.click.date_picker.today_plus day
 end
 
+Then /^Print: Check Hide Postage Value$/ do
+  log.info "Print: Check Hide Postage Value"
+  orders.toolbar.print_order.click.print_options.hide_postage_value.check
+end
+
+Then /^Print: Uncheck Hide Postage Value$/ do
+  log.info "Print: Uncheck Hide Postage Value"
+  orders.toolbar.print_order.click.print_options.hide_postage_value.uncheck
+end
+
+Then /^Print: Expect Hide Postage Value Checkbox is checked$/ do
+  log.info "Print: Print: Expect Hide Postage Value Checkbox is checked"
+  expectation = "Hide Postage Value Checkbox is checked"
+  print_dialog = orders.toolbar.print_order.click
+  30.times do
+    print_dialog.click
+    actual_value = print_dialog.print_options.hide_postage_value.checked?
+    print_dialog.click
+    if actual_value
+      expectation = "Hide Postage Value Checkbox is checked"
+    else
+      expectation = "Hide Postage Value Checkbox is NOT checked"
+    end
+    break if expectation=="Hide Postage Value Checkbox is checked"
+  end
+  log.info "Test #{(expectation=="Hide Postage Value Checkbox is checked")?"Passed":"Failed"}"
+  expectation.should eql "Hide Postage Value Checkbox is checked"
+end
+
 Then /^Print: Check Email Tracking Details to Recipients$/ do
   log.info "Print: Check Email Tracking Details to Recipients"
   orders.toolbar.print_order.click.print_options.email_tracking.check
@@ -88,7 +117,7 @@ end
 
 Then /^Print: Expect Printing On Label to be (.*)$/ do |expectation|
   log.info "Print: Set Printing On #{expectation}"
-  actual_value = orders.toolbar.print_order.click.printing_on.label
+  actual_value = orders.toolbar.print_order.click.printing_on.label.text
   log.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
