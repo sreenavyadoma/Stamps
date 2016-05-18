@@ -5,7 +5,7 @@ Feature: Add Hide Postage Value Checkbox to Print Dialog
   Background:
     Given I am signed in to Orders
 
-  @print_dialog_hide_postage_value_checkbox
+  @print_dialog_hide_postage_value
   Scenario:  Hide Postage Value Checkbox
     Then Toolbar: Add
     Then Details: Set Ship-From to default
