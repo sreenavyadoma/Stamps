@@ -101,7 +101,7 @@ print_two_up_expanded_5x8_left_print2: --tags @print_two_up_expanded_5x8_left_pr
 print_two_up_expanded_5x8_left: --tags @print_two_up_expanded_5x8_left --guess VERBOSE=false HEALTHCHECK=true
 
 #PRINT TWO UP
-print_two_up_window_title: --tags @print_two_up_window_title --guess VERBOSE=false HEALTHCHECK=true
+print_dialog_two_up_window_title: --tags @print_dialog_two_up_window_title --guess VERBOSE=false HEALTHCHECK=true
 print_two_up_x_number_of_labels: --tags @print_two_up_x_number_of_labels --guess VERBOSE=false HEALTHCHECK=true
 print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess VERBOSE=false HEALTHCHECK=true
 

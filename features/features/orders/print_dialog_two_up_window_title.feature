@@ -4,7 +4,7 @@ Feature:  Print Window Title - You have x-number of labels ready to print
   Background:
     Given I am signed in to Orders
 
-  @print_two_up_window_title
+  @print_dialog_two_up_window_title
   Scenario:  Printing
     Then Toolbar: Add
     Then Details: Set Ship-From to default
