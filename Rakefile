@@ -361,8 +361,8 @@ Cucumber::Rake::Task.new(:print_dialog_two_up_window_title) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_two_up_x_number_of_labels) do |t|
-  t.profile = 'print_two_up_x_number_of_labels'
+Cucumber::Rake::Task.new(:print_dialog_two_up_x_number_of_labels) do |t|
+  t.profile = 'print_dialog_two_up_x_number_of_labels'
   t.cucumber_opts = "-p cuke_reports"
 end
 
