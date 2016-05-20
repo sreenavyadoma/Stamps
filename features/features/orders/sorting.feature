@@ -9,9 +9,6 @@ Feature: Sorting.
     Then Grid: Sort Service in Ascending Order
     Then Grid: Sort Service in Descending Order
 
-    Then Grid: Sort Order ID in Ascending Order
-    Then Grid: Sort Order ID in Descending Order
-
     Then Grid: Sort Order Date in Ascending Order
     Then Grid: Sort Order Date in Descending Order
 
@@ -27,11 +24,17 @@ Feature: Sorting.
     Then Grid: Sort Ship Date in Ascending Order
     Then Grid: Sort Ship Date in Descending Order
 
+    Then Grid: Sort Order ID in Ascending Order
+    Then Grid: Sort Order ID in Descending Order
+
     Then Grid: Sort Order Status in Ascending Order
     Then Grid: Sort Order Status in Descending Order
 
     Then Grid: Sort State in Ascending Order
     Then Grid: Sort State in Descending Order
+
+    Then Grid: Sort Phone in Ascending Order
+    Then Grid: Sort Phone in Descending Order
 
     Then Grid: Sort Insured Value in Ascending Order
     Then Grid: Sort Insured Value in Descending Order
@@ -62,9 +65,6 @@ Feature: Sorting.
 
     Then Grid: Sort Age in Ascending Order
     Then Grid: Sort Age in Descending Order
-
-    Then Grid: Sort Phone in Ascending Order
-    Then Grid: Sort Phone in Descending Order
 
     Then Grid: Sort Email in Ascending Order
     Then Grid: Sort Email in Descending Order
