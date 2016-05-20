@@ -21,8 +21,8 @@ Feature: Sorting.
     Then Grid: Sort Order Total in Ascending Order
     Then Grid: Sort Order Total in Descending Order
 
-    Then Grid: Sort Recipient in Ascending Order
-    Then Grid: Sort Recipient in Descending Order
+    Then Grid: Sort Item Name in Ascending Order
+    Then Grid: Sort Item Name in Descending Order
 
     Then Grid: Sort Ship Date in Ascending Order
     Then Grid: Sort Ship Date in Descending Order
@@ -39,9 +39,6 @@ Feature: Sorting.
     Then Grid: Sort Weight in Ascending Order
     Then Grid: Sort Weight in Descending Order
 
-    Then Grid: Sort Item Name in Ascending Order
-    Then Grid: Sort Item Name in Descending Order
-
     Then Grid: Sort Qty in Ascending Order
     Then Grid: Sort Qty in Descending Order
 
@@ -51,14 +48,17 @@ Feature: Sorting.
     Then Grid: Sort Zip in Ascending Order
     Then Grid: Sort Zip in Descending Order
 
+    Then Grid: Sort Recipient in Ascending Order
+    Then Grid: Sort Recipient in Descending Order
+
+    Then Grid: Sort Company in Ascending Order
+    Then Grid: Sort Company in Descending Order
+
     Then Grid: Sort City in Ascending Order
     Then Grid: Sort City in Descending Order
 
     Then Grid: Sort Address in Ascending Order
     Then Grid: Sort Address in Descending Order
-
-    Then Grid: Sort Company in Ascending Order
-    Then Grid: Sort Company in Descending Order
 
     Then Grid: Sort Age in Ascending Order
     Then Grid: Sort Age in Descending Order
