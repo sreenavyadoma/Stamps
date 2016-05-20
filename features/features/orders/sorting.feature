@@ -6,6 +6,9 @@ Feature: Sorting.
   @sort
   Scenario: Orders Grid Sorting
 
+    Then Grid: Sort Service in Ascending Order
+    Then Grid: Sort Service in Descending Order
+
     Then Grid: Sort Order ID in Ascending Order
     Then Grid: Sort Order ID in Descending Order
 
@@ -65,24 +68,5 @@ Feature: Sorting.
 
     Then Grid: Sort Age in Ascending Order
     Then Grid: Sort Age in Descending Order
-
-    #Then Grid: Ship Cost: Sort in Ascending Order
-    #Then Grid: Ship Cost: Sort in Descending Order
-
-    #Then Grid: Tracking No.: Sort in Ascending Order
-    #Then Grid: Tracking No.: Sort in Descending Order
-
-    #Then Grid: Cost Code: Sort in Ascending Order
-    #Then Grid: Cost Code: Sort in Descending Order
-
-    #Then Grid: Reference No.: Sort in Ascending Order
-    #Then Grid: Reference No.: Sort in Descending Order
-
-    #Then Grid: Service: Sort in Ascending Order
-    #Then Grid: Service: Sort in Descending Order
-
-    #Then Grid: Ship From: Sort in Ascending Order
-    #Then Grid: Ship From: Sort in Descending Order
-
 
 

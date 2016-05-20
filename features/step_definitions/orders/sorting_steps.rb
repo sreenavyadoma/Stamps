@@ -1,4 +1,15 @@
 
+Then /^Grid: Sort Service in Ascending Order$/ do
+  sort_order = orders.grid.service.sort_ascending
+  log.info "Step #{(sort_order=="ASC")?'Passed':'Failed'} - Grid: Sort Service in Ascending Order"
+  sort_order.should eql "ASC"
+end
+
+Then /^Grid: Sort Service in Descending Order$/ do
+  sort_order = orders.grid.service.sort_descending
+  log.info "Step #{(sort_order=="DESC")?'Passed':'Failed'} - Grid: Sort Service in Descending Order"
+  sort_order.should eql "DESC"
+end
 Then /^Grid: Sort Order ID in Ascending Order$/ do
   sort_order = orders.grid.order_id.sort_ascending
   log.info "Step #{(sort_order=="ASC")?'Passed':'Failed'} - Grid: Sort Order ID in Ascending Order"
