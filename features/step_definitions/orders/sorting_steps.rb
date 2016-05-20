@@ -79,20 +79,20 @@ end
 
 Then /^Grid: Sort Address in Descending Order$/ do
   sort_order = orders.grid.address.sort_descending
-  log.info "Step #{(sort_order)?'Passed':'Failed'} - Grid: Sort Address in Descending Order"
-  sort_order.should be true
-end
-
-Then /^Grid: Sort City in Ascending Order$/ do
-  sort_order = orders.grid.city.sort_ascending
   log.info "Step #{(sort_order=="DESC")?'Passed':'Failed'} - Grid: Sort Order ID in Descending Order"
   sort_order.should eql "DESC"
 end
 
+Then /^Grid: Sort City in Ascending Order$/ do
+  sort_order = orders.grid.city.sort_ascending
+  log.info "Step #{(sort_order=="ASC")?'Passed':'Failed'} - Grid: Sort Order ID in Ascending Order"
+  sort_order.should eql "ASC"
+end
+
 Then /^Grid: Sort City in Descending Order$/ do
   sort_order = orders.grid.city.sort_descending
-  log.info "Step #{(sort_order)?'Passed':'Failed'} - Grid: Sort City in Descending Order"
-  sort_order.should be true
+  log.info "Step #{(sort_order=="DESC")?'Passed':'Failed'} - Grid: Sort Order ID in Descending Order"
+  sort_order.should eql "DESC"
 end
 
 Then /^Grid: Sort State in Ascending Order$/ do
