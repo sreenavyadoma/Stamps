@@ -6,86 +6,83 @@ Feature: Sorting.
   @sort
   Scenario: Orders Grid Sorting
 
-    #Then Grid: Order ID: Columns Menu: Check Reference No
-    #Then Grid: Order ID: Columns Menu: Check Cost Code
+    Then Grid: Sort Order ID in Ascending Order
+    Then Grid: Sort Order ID in Descending Order
 
-    Then Grid: Order ID: Sort Ascending
-    Then Grid: Order ID: Sort Descending
+    Then Grid: Sort Order Total in Ascending Order
+    Then Grid: Sort Order Total in Descending Order
 
-    Then Grid: Order Total: Sort Ascending
-    Then Grid: Order Total: Sort Descending
+    Then Grid: Sort Ship Date in Ascending Order
+    Then Grid: Sort Ship Date in Descending Order
 
-    Then Grid: Ship Date: Sort Ascending
-    Then Grid: Ship Date: Sort Descending
+    Then Grid: Sort Order Status in Ascending Order
+    Then Grid: Sort Order Status in Descending Order
 
-    Then Grid: Order Status: Sort Ascending
-    Then Grid: Order Status: Sort Descending
+    Then Grid: Sort Insured Value in Ascending Order
+    Then Grid: Sort Insured Value in Descending Order
 
-    Then Grid: Insured Value: Sort Ascending
-    Then Grid: Insured Value: Sort Descending
+    Then Grid: Sort Weight in Ascending Order
+    Then Grid: Sort Weight in Descending Order
 
-    Then Grid: Weight: Sort Ascending
-    Then Grid: Weight: Sort Descending
+    Then Grid: Sort Item Name in Ascending Order
+    Then Grid: Sort Item Name in Descending Order
 
-    Then Grid: Item Name: Sort Ascending
-    Then Grid: Item Name: Sort Descending
+    Then Grid: Sort Item SKU in Ascending Order
+    Then Grid: Sort Item SKU in Descending Order
 
-    Then Grid: Item SKU: Sort Ascending
-    Then Grid: Item SKU: Sort Descending
+    Then Grid: Sort Qty in Ascending Order
+    Then Grid: Sort Qty in Descending Order
 
-    Then Grid: Qty: Sort Ascending
-    Then Grid: Qty: Sort Descending
+    Then Grid: Sort Email in Ascending Order
+    Then Grid: Sort Email in Descending Order
 
-    Then Grid: Email: Sort Ascending
-    Then Grid: Email: Sort Descending
+    Then Grid: Sort Phone in Ascending Order
+    Then Grid: Sort Phone in Descending Order
 
-    Then Grid: Phone: Sort Ascending
-    Then Grid: Phone: Sort Descending
+    Then Grid: Sort Country in Ascending Order
+    Then Grid: Sort Country in Descending Order
 
-    Then Grid: Country: Sort Ascending
-    Then Grid: Country: Sort Descending
+    Then Grid: Sort Zip in Ascending Order
+    Then Grid: Sort Zip in Descending Order
 
-    Then Grid: Zip: Sort Ascending
-    Then Grid: Zip: Sort Descending
+    Then Grid: Sort State in Ascending Order
+    Then Grid: Sort State in Descending Order
 
-    Then Grid: State: Sort Ascending
-    Then Grid: State: Sort Descending
+    Then Grid: Sort City in Ascending Order
+    Then Grid: Sort City in Descending Order
 
-    Then Grid: City: Sort Ascending
-    Then Grid: City: Sort Descending
+    Then Grid: Sort Address in Ascending Order
+    Then Grid: Sort Address in Descending Order
 
-    Then Grid: Address: Sort Ascending
-    Then Grid: Address: Sort Descending
+    Then Grid: Sort Company in Ascending Order
+    Then Grid: Sort Company in Descending Order
 
-    Then Grid: Company: Sort Ascending
-    Then Grid: Company: Sort Descending
+    Then Grid: Sort Recipient in Ascending Order
+    Then Grid: Sort Recipient in Descending Order
 
-    Then Grid: Recipient: Sort Ascending
-    Then Grid: Recipient: Sort Descending
+    Then Grid: Sort Order Date in Ascending Order
+    Then Grid: Sort Order Date in Descending Order
 
-    Then Grid: Order Date: Sort Ascending
-    Then Grid: Order Date: Sort Descending
+    Then Grid: Sort Age in Ascending Order
+    Then Grid: Sort Age in Descending Order
 
-    Then Grid: Age: Sort Ascending
-    Then Grid: Age: Sort Descending
+    #Then Grid: Ship Cost: Sort in Ascending Order
+    #Then Grid: Ship Cost: Sort in Descending Order
 
-    #Then Grid: Ship Cost: Sort Ascending
-    #Then Grid: Ship Cost: Sort Descending
+    #Then Grid: Tracking No.: Sort in Ascending Order
+    #Then Grid: Tracking No.: Sort in Descending Order
 
-    #Then Grid: Tracking No.: Sort Ascending
-    #Then Grid: Tracking No.: Sort Descending
+    #Then Grid: Cost Code: Sort in Ascending Order
+    #Then Grid: Cost Code: Sort in Descending Order
 
-    #Then Grid: Cost Code: Sort Ascending
-    #Then Grid: Cost Code: Sort Descending
+    #Then Grid: Reference No.: Sort in Ascending Order
+    #Then Grid: Reference No.: Sort in Descending Order
 
-    #Then Grid: Reference No.: Sort Ascending
-    #Then Grid: Reference No.: Sort Descending
+    #Then Grid: Service: Sort in Ascending Order
+    #Then Grid: Service: Sort in Descending Order
 
-    #Then Grid: Service: Sort Ascending
-    #Then Grid: Service: Sort Descending
-
-    #Then Grid: Ship From: Sort Ascending
-    #Then Grid: Ship From: Sort Descending
+    #Then Grid: Ship From: Sort in Ascending Order
+    #Then Grid: Ship From: Sort in Descending Order
 
 
 

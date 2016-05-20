@@ -36,6 +36,24 @@ module Orders
           :order_total => "Order Total"
       }
 
+      def sort_order column, sort_order
+        scroll column
+
+        column_span = @browser.span :text => GRID_COLUMNS[column]
+        column_field = StampsButton.new column_span
+        sort_order = (sort_order==:sort_ascending)?"ASC":"DESC"
+
+        10.times do
+          column_field.scroll_into_view
+          column_field.safe_click
+          2.times do
+            sleep 1
+            return sort_order if column_span.parent.parent.parent.parent.parent.attribute_value("class").include? sort_order
+          end
+        end
+        sort_order
+      end
+
       def grid_text_by_id column, order_id
         scroll column
         row = row_number(order_id)
@@ -135,105 +153,21 @@ module Orders
       end
     end
 
-    class ColumnMenu < Column
-
-      class Columns < Column
-        def initialize browser, column
-          super browser
-          @column = column
-        end
-
-        class ReferenceNoCheckbox < Column
-          def initialize browser, column
-            super browser
-            @column = column
-          end
-          def check
-            scroll @column
-            column_field = column_name_field @column
-            drop_down = StampsButton.new column_field.parent.parent.parent.parent.divs[3]
-            menu_selection = StampsLabel.new @browser.span(text: "Columns")
-
-            name_field = @browser.spans(text: "Reference No.").last
-            checkbox_field = name_field.parent.div
-            check_verify_field = name_field.parent.parent
-            checkbox = StampsCheckbox.new checkbox_field, check_verify_field, "class", "checked"
-
-            20.times do
-              drop_down.safe_click unless menu_selection.present?
-              menu_selection.safe_click
-              menu_selection.hover
-              checkbox.check if checkbox.present?
-            end
-          end
-
-          def uncheck
-            checkbox :cost_code
-
-          end
-        end
-
-        def reference_no
-          ReferenceNoCheckbox.new @browser, @column
-        end
-
-        def cost_code
-        end
-      end
-
-      def initialize browser, column
-        super browser
-        @column = column
-      end
-
-      def columns
-        Columns.new @browser, @column
-      end
-
-      def sort_order sort_order
-        scroll @column
-        column_field = column_name_field @column
-        sort_verify_field = StampsLabel.new column_field.parent.parent.parent.parent.parent
-        sort_drop_down = StampsButton.new column_field.parent.parent.parent.parent.divs[3]
-
-        sort_field_id = (sort_order==:sort_ascending)?"Sort Ascending":"Sort Descending"
-        verify_sort = (sort_order==:sort_ascending)?"ASC":"DESC"
-        sort_field = StampsLabel.new @browser.span :text => sort_field_id
-
-        15.times{
-          sort_drop_down.scroll_into_view
-          sort_drop_down.safe_click unless sort_field.present?
-          sort_field.safe_click
-          sleep 1
-          return true if sort_verify_field.attribute_value("class").include? verify_sort
-          sleep 1
-          return true if sort_verify_field.attribute_value("class").include? verify_sort
-        }
-        false
-      end
-
-      def sort_ascending
-        sort_order :sort_ascending
-      end
-
-      def sort_descending
-        sort_order :sort_descending
-      end
-
-    end
-
     class OrderId < Column
-
       def exist? order_id
         row_number(order_id) > 0
       end
 
-      def menu
-        ColumnMenu.new @browser, :order_id
-      end
-
       def scroll_into_view
         scroll :order_id
+      end
+
+      def sort_ascending
+        sort_order :order_id, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :order_id, :sort_descending
       end
 
       def row_num order_id
@@ -261,11 +195,6 @@ module Orders
     end
 
     class Store < Column
-
-      def menu
-        ColumnMenu.new @browser, :store
-      end
-
       def scroll_into_view
         scroll :store
       end
@@ -277,16 +206,28 @@ module Orders
       def data order_id
         grid_text_by_id :store, order_id
       end
+
+      def sort_ascending
+        sort_order :store, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :store, :sort_descending
+      end
     end
 
     class Age < Column
 
-      def menu
-        ColumnMenu.new @browser, :age
-      end
-
       def scroll_into_view
         scroll :age
+      end
+
+      def sort_ascending
+        sort_order :age, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :age, :sort_descending
       end
 
       def row row
@@ -299,13 +240,16 @@ module Orders
     end
 
     class OrderDate < Column
-
-      def menu
-        ColumnMenu.new @browser, :order_date
-      end
-
       def scroll_into_view
         scroll :order_date
+      end
+
+      def sort_ascending
+        sort_order :order_date, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :order_date, :sort_descending
       end
 
       def row row
@@ -318,13 +262,16 @@ module Orders
     end
 
     class Recipient < Column
-
-      def menu
-        ColumnMenu.new @browser, :recipient
-      end
-
       def scroll_into_view
         scroll :recipient
+      end
+
+      def sort_ascending
+        sort_order :recipient, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :recipient, :sort_descending
       end
 
       def data order_id
@@ -338,13 +285,16 @@ module Orders
     end
 
     class Company < Column
-
-      def menu
-        ColumnMenu.new @browser, :company
-      end
-
       def scroll_into_view
         scroll :company
+      end
+
+      def sort_ascending
+        sort_order :company, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :company, :sort_descending
       end
 
       def row row
@@ -357,13 +307,16 @@ module Orders
     end
 
     class Address < Column
-
-      def menu
-        ColumnMenu.new @browser, :address
-      end
-
       def scroll_into_view
         scroll :address
+      end
+
+      def sort_ascending
+        sort_order :address, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :address, :sort_descending
       end
 
       def row row
@@ -376,13 +329,16 @@ module Orders
     end
 
     class City < Column
-
-      def menu
-        ColumnMenu.new @browser, :city
-      end
-
       def scroll_into_view
         scroll :city
+      end
+
+      def sort_ascending
+        sort_order :city, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :city, :sort_descending
       end
 
       def row row
@@ -395,13 +351,16 @@ module Orders
     end
 
     class State < Column
-
-      def menu
-        ColumnMenu.new @browser, :state
-      end
-
       def scroll_into_view
         scroll :state
+      end
+
+      def sort_ascending
+        sort_order :state, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :state, :sort_descending
       end
 
       def row row
@@ -414,13 +373,16 @@ module Orders
     end
 
     class Zip < Column
-
-      def menu
-        ColumnMenu.new @browser, :zip
-      end
-
       def scroll_into_view
         scroll :zip
+      end
+
+      def sort_ascending
+        sort_order :zip, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :zip, :sort_descending
       end
 
       def row row
@@ -433,13 +395,16 @@ module Orders
     end
 
     class Phone < Column
-
-      def menu
-        ColumnMenu.new @browser, :phone
-      end
-
       def scroll_into_view
         scroll :phone
+      end
+
+      def sort_ascending
+        sort_order :phone, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :phone, :sort_descending
       end
 
       def row row
@@ -452,13 +417,16 @@ module Orders
     end
 
     class Email < Column
-
-      def menu
-        ColumnMenu.new @browser, :email
-      end
-
       def scroll_into_view
         scroll :email
+      end
+
+      def sort_ascending
+        sort_order :email, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :email, :sort_descending
       end
 
       def row row
@@ -471,13 +439,16 @@ module Orders
     end
 
     class Qty < Column
-
-      def menu
-        ColumnMenu.new @browser, :qty
-      end
-
       def scroll_into_view
         scroll :qty
+      end
+
+      def sort_ascending
+        sort_order :qty, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :qty, :sort_descending
       end
 
       def row row
@@ -490,13 +461,16 @@ module Orders
     end
 
     class ItemSKU < Column
-
-      def menu
-        ColumnMenu.new @browser, :item_sku
-      end
-
       def scroll_into_view
         scroll :item_sku
+      end
+
+      def sort_ascending
+        sort_order :item_sku, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :item_sku, :sort_descending
       end
 
       def row row
@@ -509,13 +483,16 @@ module Orders
     end
 
     class ItemName < Column
-
-      def menu
-        ColumnMenu.new @browser, :item_name
-      end
-
       def scroll_into_view
         scroll :item_name
+      end
+
+      def sort_ascending
+        sort_order :item_name, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :item_name, :sort_descending
       end
 
       def row row
@@ -528,13 +505,16 @@ module Orders
     end
 
     class Weight < Column
-
-      def menu
-        ColumnMenu.new @browser, :weight
-      end
-
       def scroll_into_view
         scroll :weight
+      end
+
+      def sort_ascending
+        sort_order :weight, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :weight, :sort_descending
       end
 
       def row row
@@ -555,13 +535,16 @@ module Orders
     end
 
     class InsuredValue < Column
-
-      def menu
-        ColumnMenu.new @browser, :insured_value
-      end
-
       def scroll_into_view
         scroll :insured_value
+      end
+
+      def sort_ascending
+        sort_order :insured_value, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :insured_value, :sort_descending
       end
 
       def row row
@@ -574,13 +557,16 @@ module Orders
     end
 
     class OrderStatus < Column
-
-      def menu
-        ColumnMenu.new @browser, :order_status
-      end
-
       def scroll_into_view
         scroll :order_status
+      end
+
+      def sort_ascending
+        sort_order :order_status, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :order_status, :sort_descending
       end
 
       def row row
@@ -593,13 +579,16 @@ module Orders
     end
 
     class ShipDate < Column
-
-      def menu
-        ColumnMenu.new @browser, :ship_date
-      end
-
       def scroll_into_view
         scroll :ship_date
+      end
+
+      def sort_ascending
+        sort_order :ship_date, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :ship_date, :sort_descending
       end
 
       def row row
@@ -612,11 +601,6 @@ module Orders
     end
 
     class ShipFrom < Column
-
-      def menu
-        ColumnMenu.new @browser, :ship_from
-      end
-
       def scroll_into_view
         scroll :ship_from
       end
@@ -631,13 +615,16 @@ module Orders
     end
 
     class OrderTotal < Column
-
-      def menu
-        ColumnMenu.new @browser, :order_total
-      end
-
       def scroll_into_view
         scroll :order_total
+      end
+
+      def sort_ascending
+        sort_order :order_total, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :order_total, :sort_descending
       end
 
       def row row
@@ -650,13 +637,16 @@ module Orders
     end
 
     class Country < Column
-
-      def menu
-        ColumnMenu.new @browser, :country
-      end
-
       def scroll_into_view
         scroll :country
+      end
+
+      def sort_ascending
+        sort_order :country, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :country, :sort_descending
       end
 
       def row row
@@ -669,11 +659,6 @@ module Orders
     end
 
     class ShipCost < Column
-
-      def menu
-        ColumnMenu.new @browser, :ship_cost
-      end
-
       def scroll_into_view
         scroll :ship_cost
       end
@@ -708,11 +693,6 @@ module Orders
     end
 
     class Company < Column
-
-      def menu
-        ColumnMenu.new @browser, :company
-      end
-
       def scroll_into_view
         scroll :company
       end
@@ -727,13 +707,16 @@ module Orders
     end
 
     class Service < Column
-
-      def menu
-        ColumnMenu.new @browser, :service
-      end
-
       def scroll_into_view
         scroll :service
+      end
+
+      def sort_ascending
+        sort_order :service, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :service, :sort_descending
       end
 
       def row row
@@ -746,11 +729,6 @@ module Orders
     end
 
     class ReferenceNo < Column
-
-      def menu
-        ColumnMenu.new @browser, :reference_no
-      end
-
       def scroll_into_view
         scroll :reference_no
       end
@@ -765,11 +743,6 @@ module Orders
     end
 
     class CostCode < Column
-
-      def menu
-        ColumnMenu.new @browser, :cost_code
-      end
-
       def scroll_into_view
         scroll :cost_code
       end
@@ -784,11 +757,6 @@ module Orders
     end
 
     class Tracking < Column
-
-      def menu
-        ColumnMenu.new @browser, :tracking_no
-      end
-
       def scroll_into_view
         scroll :tracking_no
       end
@@ -803,13 +771,16 @@ module Orders
     end
 
     class DatePrinted < Column
-
-      def menu
-        ColumnMenu.new @browser, :date_printed
-      end
-
       def scroll_into_view
         scroll :date_printed
+      end
+
+      def sort_ascending
+        sort_order :date_printed, :sort_ascending
+      end
+
+      def sort_descending
+        sort_order :date_printed, :sort_descending
       end
 
       def data_at_row row
