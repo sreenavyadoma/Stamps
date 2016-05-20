@@ -73,8 +73,8 @@ end
 
 Then /^Grid: Sort Address in Ascending Order$/ do
   sort_order = orders.grid.address.sort_ascending
-  log.info "Step #{(sort_order=="DESC")?'Passed':'Failed'} - Grid: Sort Order ID in Descending Order"
-  sort_order.should eql "DESC"
+  log.info "Step #{(sort_order=="ASC")?'Passed':'Failed'} - Grid: Sort Order ID in Ascending Order"
+  sort_order.should eql "ASC"
 end
 
 Then /^Grid: Sort Address in Descending Order$/ do
