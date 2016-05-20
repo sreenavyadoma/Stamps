@@ -68,5 +68,3 @@ Feature: Sorting.
 
     Then Grid: Sort Email in Ascending Order
     Then Grid: Sort Email in Descending Order
-
-
