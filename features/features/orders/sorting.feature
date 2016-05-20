@@ -12,6 +12,9 @@ Feature: Sorting.
     Then Grid: Sort Order ID in Ascending Order
     Then Grid: Sort Order ID in Descending Order
 
+    Then Grid: Sort Order Date in Ascending Order
+    Then Grid: Sort Order Date in Descending Order
+
     Then Grid: Sort Item SKU in Ascending Order
     Then Grid: Sort Item SKU in Descending Order
 
@@ -42,9 +45,6 @@ Feature: Sorting.
     Then Grid: Sort Qty in Ascending Order
     Then Grid: Sort Qty in Descending Order
 
-    Then Grid: Sort Email in Ascending Order
-    Then Grid: Sort Email in Descending Order
-
     Then Grid: Sort Country in Ascending Order
     Then Grid: Sort Country in Descending Order
 
@@ -60,13 +60,13 @@ Feature: Sorting.
     Then Grid: Sort Company in Ascending Order
     Then Grid: Sort Company in Descending Order
 
-    Then Grid: Sort Order Date in Ascending Order
-    Then Grid: Sort Order Date in Descending Order
-
     Then Grid: Sort Age in Ascending Order
     Then Grid: Sort Age in Descending Order
 
     Then Grid: Sort Phone in Ascending Order
     Then Grid: Sort Phone in Descending Order
+
+    Then Grid: Sort Email in Ascending Order
+    Then Grid: Sort Email in Descending Order
 
 
