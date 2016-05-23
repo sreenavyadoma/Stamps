@@ -347,9 +347,10 @@ module Print
       end
 
       def select selection
-        #@manage_shipping_address = Print::Postage::ManageShippingAddresses.new @browser
+        @manage_shipping_address = Print::Postage::ManageShippingAddresses.new @browser
 
         #return @manage_shipping_address if @manage_shipping_address.present?
+
         ship_from_dropdown = self.drop_down
         ship_from_textbox = self.text_box
         ship_from_dropdown.safe_click
@@ -373,11 +374,11 @@ module Print
               ship_from_dropdown.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
-              return @manage_shipping_adddress if @manage_shipping_adddress.present?
+              return @manage_shipping_address if @manage_shipping_address.present?
             rescue
               #ignore
             end
-            click_form
+
           }
         else
           10.times{
