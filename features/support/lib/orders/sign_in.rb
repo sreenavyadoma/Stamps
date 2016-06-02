@@ -63,7 +63,7 @@ module Orders
       end
 
       def sign_in_button
-        StampsButton.new @browser.input Orders::Locators::SignIn::sign_in
+        StampsButton.new @browser.button Orders::Locators::SignIn::sign_in
       end
 
       def remember_my_username
@@ -127,7 +127,6 @@ module Orders
 
         grid = Orders::Grid::OrdersGrid.new @browser
         navbar = Orders::Navigation::NavigationBar.new @browser
-        welcome_modal = WelcomeModal.new @browser
         welcome_orders_page = WelcomeOrdersPage.new @browser
         plugin_issue = ErrorStampsPluginIssue.new @browser
         toolbar = Orders::Toolbar::Toolbar.new @browser
@@ -141,16 +140,21 @@ module Orders
               username_textbox.set username
               password_textbox.set password
               button.safe_send_keys :enter
-              sleep 3
+              button.safe_click
+              button.safe_click
+              sleep 1
               break if grid.present?
               break if grid.present?
               break if grid.present?
+              button.safe_click
               break if grid.present?
               break if grid.present?
               button.safe_send_keys :enter
-              sleep 2
+              button.safe_click
+              sleep 1
               break if grid.present?
               break if grid.present?
+              button.safe_click
               break if grid.present?
               break if grid.present?
               username_textbox.set username
@@ -181,18 +185,6 @@ module Orders
               grid.wait_until_present
               log.info "#{username} Orders Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
-              username_textbox.set username
-              password_textbox.set password
-              break if grid.present?
-              break if grid.present?
-              break if grid.present?
-
-              toolbar.wait_until_present
-              grid.wait_until_present
-              username_textbox.set username
-              password_textbox.set password
-              break if grid.present?
-              break if grid.present?
               break if grid.present?
               visit :orders
             else

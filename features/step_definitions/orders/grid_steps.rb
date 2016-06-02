@@ -67,7 +67,7 @@ end
 Then /^Grid: Expect Date Printed for this order to be today$/ do
   log.info "Grid: Expect Date Printed for this order to be today"
   grid = orders.filter.shipped
-  grid.order_id.menu.sort_descending
+  grid.order_id.sort_descending
   grid_print_date = grid.date_printed.data @order_id # Dec 3
   expectation_print_date = Date.today.strftime "%b %-d"
 
@@ -88,7 +88,7 @@ Then /^Grid: Expect Ship Date for this order to be today plus (\d+)$/ do |day|
   grid = orders.filter.shipped
 
   10.times{
-    grid.order_id.menu.sort_descending
+    grid.order_id.sort_descending
     grid_ship_date = grid.ship_date.data @order_id # Dec 3
     log.info "Order ID:  #{@order_id} - Print Modal Saved Ship Date: #{@ship_date} - Orders Grid Ship Date:  #{grid_ship_date}"
 
