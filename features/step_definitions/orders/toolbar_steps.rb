@@ -15,7 +15,7 @@ Then /^Toolbar: Move to Shipped$/ do
   log.info "Toolbar: Move to Shipped"
   grid = orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
-  grid.order_date.menu.sort_descending
+  grid.order_date.sort_descending
   grid.checkbox.check_order_id @order_id
   grid.toolbar.move.to_shipped.cancel
   grid.toolbar.move.to_shipped.move
@@ -26,7 +26,7 @@ Then /^Toolbar: Move to Canceled$/ do
   log.info "Toolbar: Move to Canceled"
   grid = orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
-  grid.order_date.menu.sort_descending
+  grid.order_date.sort_descending
   grid.checkbox.check_order_id @order_id
   grid.toolbar.move.to_canceled.cancel
   grid.toolbar.move.to_canceled.move
