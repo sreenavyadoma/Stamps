@@ -63,7 +63,9 @@ module Orders
       end
 
       def sign_in_button
-        StampsButton.new @browser.button Orders::Locators::SignIn::sign_in
+        button = @browser.button Orders::Locators::SignIn::sign_in
+        input = @browser.input Orders::Locators::SignIn::sign_in
+        StampsButton.new (button.present?)?button:input
       end
 
       def remember_my_username
