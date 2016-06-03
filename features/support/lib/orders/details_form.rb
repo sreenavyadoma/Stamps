@@ -2117,6 +2117,14 @@ module Orders
         StampsTextbox.new (@browser.input css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
       end
 
+      def customs_form
+        CustomsForm.new @browser
+      end
+
+      def item line_item
+        DetailsItem.new @browser, line_item
+      end
+
       # ------------------------check if below are valid
 
       def items_count
@@ -2140,20 +2148,12 @@ module Orders
         end
       end
 
-      def item line_item
-        DetailsItem.new @browser, line_item
-      end
-
       def auto_suggest_name_array
         @browser.divs :css => 'div[class*=main-title]'
       end
 
       def auto_suggest_location_array
         @browser.divs :css => 'div[class*=sub-title]'
-      end
-
-      def customs_form
-        CustomsForm.new @browser
       end
 
       def wait_until_present
