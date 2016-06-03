@@ -16,6 +16,13 @@ Then /^Print: Print Incomplete Order$/ do
   stop_test "Incomplete Order Modal did not open" unless @incomplete_order_modal.instance_of? Orders::Toolbar::IncompleteOrderErrorModal
 end
 
+Then /^Print: Expect Incomplete Order Error Message (.*)$/ do |expectation|
+  log.info "Print: Expect Incomplete Order Error Message #{expectation}"
+  error_message = @incomplete_order_modal.error_message
+  log.info "Test #{(error_message.include? expectation)?"Passed":"Failed"}"
+  error_message.should include expectation
+end
+
 Then /^Print: Close Modal$/ do
   log.info "Print: Close Modal"
   @print_window.close
