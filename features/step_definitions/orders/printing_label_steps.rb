@@ -33,8 +33,7 @@ end
 
 Then /^Expect a print Sample of \"(.*)\"$/ do |label|
   log.info "Expect a print Sample of #{label}"
-  @print_window = orders.toolbar.print_order.click
-  orders.toolbar.print_order.click.print_sample
+  @print_window.print_sample
 end
 
 

@@ -1,5 +1,21 @@
 module Orders
   module Toolbar
+
+    class IncompleteOrderErrorModal < OrdersObject
+      def window_title
+        StampsLabel.new (@browser.divs(css: "div[id^=title]").last)
+      end
+
+      def present?
+        window_title.present?
+      end
+
+      def error_message
+        div = @browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt][class='x-autocontainer-innerCt']").last
+        browser_helper.text div
+      end
+    end
+
     class Toolbar < OrdersObject
       class SettingsMenu < Print::Postage::PrintObject
         def collapse_button
@@ -243,11 +259,19 @@ module Orders
 
         def open_window window
           return window if window.present?
+
+          incomplete_order = IncompleteOrderErrorModal.new @browser
+
           print = button
 
           print.click
           sleep 1
           return window if window.present?
+          return incomplete_order if incomplete_order.present?
+          return incomplete_order if incomplete_order.present?
+          return incomplete_order if incomplete_order.present?
+          return incomplete_order if incomplete_order.present?
+          return incomplete_order if incomplete_order.present?
 
           usps_terms = USPSTermsModal.new @browser
 
