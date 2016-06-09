@@ -33,6 +33,14 @@ Then /^Details: Expect Ship Cost Total is correct$/ do
   @total_amount.to_f.round(2).should eql (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
 end
 
+Then /^Details: Expect Multiple Order Total Cost is \$([0-9.]*)$/ do |expectation|
+  log.info "Details: Expect Ship Cost Total is $#{expectation}"
+  @total_amount = orders.details.total.multiple_order_cost
+  total_amount_correct = @total_amount == expectation
+  log.info "Total Amount:  #{(total_amount_correct)?'Passed':'Failed'}.  #{@total_amount} == #{expectation}"
+  @total_amount.should eql expectation
+end
+
 Then /^Expect Ship Cost equals Total amount$/ do
   log.info "Expect Ship Cost equals Total amount"
   total_amount = orders.details.total.cost
