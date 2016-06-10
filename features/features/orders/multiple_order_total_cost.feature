@@ -3,7 +3,7 @@ Feature: Total Cost of Multiple Orders
   Background:
     Given I am signed in to Orders
 
-  @total_cost_multiple_orders
+  @multiple_order_total_cost
   Scenario:  Total Cost Multiple Orders
     Then Toolbar: Add
     Then Details: Set Ship-From to default

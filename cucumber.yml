@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile rob_dev_sc # import_orders_ship_from_test
+default: --profile cuke_reports --profile eli_dev # import_orders_ship_from_test
 
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800 wp_bvt_international
@@ -9,7 +9,7 @@ rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=
 rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ie USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
-eli_dev: --tags @wp_manage_shipping_addresses   --guess VERBOSE=true HEALTHCHECK=true URL=rating BROWSER=ff USR=win10ie1000 PW=pass111
+eli_dev: --tags @multiple_order_total_cost   --guess VERBOSE=true HEALTHCHECK=true URL=sc BROWSER=ff USR=cc2hdvupgh PW=pass111
 ray_dev: --tags @wp_print_on_list_of_values --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=webpost_0017 PW=pass111
 eva_dev: --tags   @details_panel --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=ss_cctest3 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
@@ -212,6 +212,7 @@ fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEAL
 rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=true
 details_panel: --tags  @details_panel --guess VERBOSE=false HEALTHCHECK=true
 print_multiple_reprints: --tags @print_multiple_reprints --guess VERBOSE=false HEALTHCHECK=true
+multiple_order_total_cost: --tags @multiple_order_total_cost --guess VERBOSE=false HEALTHCHECK=true
 
 healthcheck: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true
 
