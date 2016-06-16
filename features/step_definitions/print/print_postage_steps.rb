@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 Then /^Postage: Select Stamps$/ do
   step "Postage: Set Print On Stamps"
 end

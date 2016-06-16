@@ -1,3 +1,7 @@
+
+intellij:
+  runner_options: --color -r features --format json --out report.json --backtrace -f pretty
+
 url_prefix:
   ss: printss600.qacc
   satya: svarma-win7.corp
