@@ -2044,6 +2044,21 @@ module Orders
         10.times do
           begin
             cost = cost_label.text
+            log.info "Cost is #{cost}"
+          rescue
+            #ignore
+          end
+          break unless cost.include? "$"
+        end
+        test_helper.remove_dollar_sign cost_label.text
+      end
+
+      def multiple_order_cost
+        cost_label = StampsLabel.new (@browser.labels :css => "label[class*=total_cost]")[1]
+        10.times do
+          begin
+            cost = cost_label.text
+            log.info "Cost is #{cost}"
           rescue
             #ignore
           end
