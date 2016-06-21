@@ -907,6 +907,11 @@ Cucumber::Rake::Task.new(:multiple_order_total_cost) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:item_details) do |t|
+  t.profile = 'item_details'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:healthcheck) do |t|
   t.profile = 'healthcheck'
   t.cucumber_opts = "-p cuke_reports"
