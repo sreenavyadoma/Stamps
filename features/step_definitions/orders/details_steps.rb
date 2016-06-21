@@ -1,3 +1,22 @@
+Then /^Details: Expand Manual Items Ordered pane$/ do
+  log.info "Details: Expand Manual Items Ordered pane"
+  orders.details.item_grid.expand
+end
+
+Then /^Details: Collapse Manual Items Ordered pane$/ do
+  log.info "Details: Collapse Manual Items Ordered pane"
+  orders.details.item_grid.collapse_item
+end
+
+Then /^Details: Expand Store Items Ordered pane$/ do
+  log.info "Details: Expand Items Ordered pane"
+  orders.details.item_grid.expand
+end
+
+Then /^Details: Collapse Store Items Ordered pane$/ do
+  log.info "Details: Collapse Items Ordered pane"
+  orders.details.item_grid.collapse_store_item
+end
 
 Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
   log.info "Details: Add Item #{item_number}, Qty #{qty}, ID #{id} Description #{description}"
@@ -101,6 +120,8 @@ Then /^Details: Expect Service Placeholder to be (.*)$/ do |expectation|
   log.info "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
+
+
 
 
 Then /^Details: Set Ship-To Country to (.*)$/ do |country|

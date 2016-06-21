@@ -1870,9 +1870,38 @@ module Orders
         end
         test_helper.remove_dollar_sign(cost_label.text)
       end
-  end
+    end
+
+
+
 
     class DetailsItemGrid < OrdersObject
+
+
+      class DetailsStoreItem < OrdersObject
+
+
+
+      end
+
+      def item_details_header
+        StampsLabel.new (@browser.div :text => "Items Ordered")
+      end
+
+      def expand
+        button = StampsButton.new (@browser.img :css => "img[class*='x-tool-expand-bottom']")
+        button.safe_click
+      end
+
+      def collapse_store_item
+        button = StampsButton.new (@browser.imgs :css => "img[class*='x-tool-collapse-top']")[1]
+        button.safe_click
+      end
+
+      def collapse_item
+        button = StampsButton.new (@browser.img :css => "img[class*='x-tool-collapse-top']")
+        button.safe_click
+      end
 
       class DetailsItem < OrdersObject
 
@@ -1946,6 +1975,10 @@ module Orders
 
       def size
         (@browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]").size
+      end
+
+      def store_item
+        DetailsStoreItem.new @browser
       end
 
       def item number
