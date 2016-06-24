@@ -1336,7 +1336,7 @@ module Orders
 
     end
 
-    class ShipFromAmwn2ghorddress < OrderForm
+    class ShipFromAddress < OrderForm
 
       def text_box
         StampsTextbox.new @browser.text_field :name => "ShipFrom"
