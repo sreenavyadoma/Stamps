@@ -1,50 +1,52 @@
 # encoding: utf-8
-module Print
-  module Postage
+module Stamps
+  module Print
+    module Postage
 
-    class RollFormView < Print::Postage::PrintPostageObject
+      class RollFormView < Print::Postage::PrintPostageObject
 
-      def preview_image
-        image = StampsLabel.new @browser.img :css => "dimg[src*='Labelsample.gif']"
+        def preview_image
+          image = BrowserElement.new browser.img :css => "dimg[src*='Labelsample.gif']"
+        end
+
+        def hide_postage_value
+          checkbox_field = browser.input :css => "input[id=hidePostageCheckbox]"
+          verify_fields = browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
+          verify_field = verify_fields[5]
+
+          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+        end
+
+        def print_reference_number
+          checkbox_field = browser.input :css => "input[id=printreferencecheckbox]"
+          verify_fields = browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
+          verify_field = verify_fields[6]
+
+          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+        end
+
+        def reference_number
+          BrowserTextBox.new browser.text_field :name => "referenceNumber"
+        end
+
+        def cost_code
+          Print::Postage::CostCode.new param
+        end
       end
 
-      def hide_postage_value
-        checkbox_field = @browser.input :css => "input[id=hidePostageCheckbox]"
-        verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
-        verify_field = verify_fields[5]
+      class Roll < Print::Postage::PrintPostageObject
 
-        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
-      end
+        def insure_for
+          Print::Postage::InsureFor.new param
+        end
 
-      def print_reference_number
-        checkbox_field = @browser.input :css => "input[id=printreferencecheckbox]"
-        verify_fields = @browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
-        verify_field = verify_fields[6]
+        def ship_date
+          Print::Postage::ShipDate.new param
+        end
 
-        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
-      end
-
-      def reference_number
-        StampsTextbox.new @browser.text_field :name => "referenceNumber"
-      end
-
-      def cost_code
-        Print::Postage::CostCode.new @browser
-      end
-    end
-
-    class Roll < Print::Postage::PrintPostageObject
-
-      def insure_for
-        Print::Postage::InsureFor.new @browser
-      end
-
-      def ship_date
-        Print::Postage::ShipDate.new @browser
-      end
-
-      def form_view
-        Print::Postage::RollFormView.new @browser
+        def form_view
+          Print::Postage::RollFormView.new param
+        end
       end
     end
   end

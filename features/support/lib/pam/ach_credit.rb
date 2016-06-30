@@ -1,12 +1,12 @@
 module Pam
-  class ACHCreditConfirmation < Stamps::Browser::BrowserObject
+  class ACHCreditConfirmation < Browser::Modal
     def present?
-      browser_helper.present? @browser.td(:text => "ACH Credit Confirmation")
+      browser_helper.present? browser.td(:text => "ACH Credit Confirmation")
     end
 
     def ok
-      profile = CustomerProfile.new @browser
-      link = Stamps::Browser::StampsLink.new @browser.a(:css => "a[href^=Profile]")
+      profile = CustomerProfile.new param
+      link = Stamps::Browser::BrowserElement.new browser.a(:css => "a[href^=Profile]")
       5.times do
         link.safe_click
         return profile if profile.present?
@@ -15,14 +15,14 @@ module Pam
 
   end
 
-  class ACHPurchaseVerification < Stamps::Browser::BrowserObject
+  class ACHPurchaseVerification < Browser::Modal
     def present?
-      browser_helper.present? (@browser.input :name => "YES")
+      browser_helper.present? (browser.input :name => "YES")
     end
 
     def yes
-      confirmation = ACHCreditConfirmation.new @browser
-      button = Stamps::Browser::StampsInput.new @browser.input(:name => "YES")
+      confirmation = ACHCreditConfirmation.new param
+      button = Stamps::Browser::BrowserElement.new browser.input(:name => "YES")
       5.times do
         button.send_keys :enter
         button.safe_click
@@ -31,31 +31,31 @@ module Pam
     end
 
     def no
-      button = StampsButton.new @browser.input(:name => "NO")
+      button = BrowserElement.new browser.input(:name => "NO")
       button.click_while_present
     end
   end
 
-  class ACHCredit < Stamps::Browser::BrowserObject
+  class ACHCredit < Browser::Modal
     def present?
-      browser_helper.present? @browser.text_field(:name => "AmountFraction")
+      browser_helper.present? browser.text_field(:name => "AmountFraction")
     end
 
     def dollar_amount
-      StampsTextbox.new @browser.text_field(:name => "Amount")
+      BrowserTextBox.new browser.text_field(:name => "Amount")
     end
 
     def cents_amount
-      StampsTextbox.new @browser.text_field(:name => "AmountFraction")
+      BrowserTextBox.new browser.text_field(:name => "AmountFraction")
     end
 
     def comments
-      StampsTextbox.new @browser.text_field(:name => "comments")
+      BrowserTextBox.new browser.text_field(:name => "comments")
     end
 
     def submit
-      purchase_verification = ACHPurchaseVerification.new @browser
-      button = StampsButton.new @browser.input(:value => "Submit")
+      purchase_verification = ACHPurchaseVerification.new param
+      button = BrowserElement.new browser.input(:value => "Submit")
       5.times do
         button.send_keys :enter
         button.safe_click

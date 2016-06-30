@@ -1,11 +1,11 @@
 Feature: Invalid Credentials
 
   Background:
-    Given I launch browser
+    Given I launched the default browser
 
   @wp_invalid_credentials
   Scenario: Valid Username and Password
-    Then I am signed in as postage shipper ff/webpost_0017/pass111
+    Then I am signed in as postage shipper webpost_0017/pass111
     Then Sign out
 
   @wp_invalid_credentials

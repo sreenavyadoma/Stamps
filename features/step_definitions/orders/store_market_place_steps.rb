@@ -2,12 +2,12 @@
 Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation|
   raise "Manage Stores: Market place modal is not present.  Check your workflow." if @market_place.nil?
   actual = @market_place.contains expectation
-  log.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
   actual.should eql expectation
 end
 
 Then /^Marketplace: Select PayPal$/ do
-  log.info ""
+  logger.info ""
   raise "Manage Stores: Market place modal is not present.  Check your workflow." if @market_place.nil?
   @store = @market_place.paypal
 end

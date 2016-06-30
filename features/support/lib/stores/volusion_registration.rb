@@ -1,107 +1,107 @@
 module Stores
 
-  class VolusionShippingAddress < Stamps::Browser::BrowserObject
-    class VolusionCountry < Stamps::Browser::BrowserObject
+  class VolusionShippingAddress < Browser::Modal
+    class VolusionCountry < Browser::Modal
       def select country
         begin
-          @browser.select_list(:id, "ShipCountry").option(:text => country).when_present.select
-          @browser.select_list(:id, "ShipCountry").option(:text => country).when_present.select
+          browser.select_list(:id, "ShipCountry").option(:text => country).when_present.select
+          browser.select_list(:id, "ShipCountry").option(:text => country).when_present.select
         rescue
           #ignore
         end
       end
     end
 
-    class VolusionState < Stamps::Browser::BrowserObject
+    class VolusionState < Browser::Modal
       def select state
         begin
-          @browser.select_list(:id, "ShipState_dropdown").option(:text => state).when_present.select
-          @browser.select_list(:id, "ShipState_dropdown").option(:text => state).when_present.select
+          browser.select_list(:id, "ShipState_dropdown").option(:text => state).when_present.select
+          browser.select_list(:id, "ShipState_dropdown").option(:text => state).when_present.select
         rescue
           #ignore
         end
       end
     end
 
-    class VolusionTypeOfAddress < Stamps::Browser::BrowserObject
+    class VolusionTypeOfAddress < Browser::Modal
       def residential
-        @browser.radio(css: 'input[name=ShipResidential][value=Y]').set
-        @browser.radio(css: 'input[name=ShipResidential][value=Y]').set
+        browser.radio(css: 'input[name=ShipResidential][value=Y]').set
+        browser.radio(css: 'input[name=ShipResidential][value=Y]').set
       end
 
       def business
-        @browser.radio(css: 'input[name=ShipResidential][value=N]').set
-        @browser.radio(css: 'input[name=ShipResidential][value=N]').set
+        browser.radio(css: 'input[name=ShipResidential][value=N]').set
+        browser.radio(css: 'input[name=ShipResidential][value=N]').set
       end
     end
 
-    class VolusionBillingAddress < Stamps::Browser::BrowserObject
+    class VolusionBillingAddress < Browser::Modal
       def yes
-        @browser.radio(css: 'input[name=alsobilling][value=Y]').set
-        @browser.radio(css: 'input[name=alsobilling][value=Y]').set
+        browser.radio(css: 'input[name=alsobilling][value=Y]').set
+        browser.radio(css: 'input[name=alsobilling][value=Y]').set
       end
 
       def no
-        @browser.radio(css: 'input[name=alsobilling][value=N]').set
-        @browser.radio(css: 'input[name=alsobilling][value=N]').set
+        browser.radio(css: 'input[name=alsobilling][value=N]').set
+        browser.radio(css: 'input[name=alsobilling][value=N]').set
       end
     end
 
     def present?
-      browser_helper.present? @browser.text_field(name: "ShipFirstName")
+      browser_helper.present? browser.text_field(name: "ShipFirstName")
     end
 
     def first_name
-      StampsTextbox.new @browser.text_field(name: "ShipFirstName")
+      BrowserTextBox.new browser.text_field(name: "ShipFirstName")
     end
 
     def last_name
-      StampsTextbox.new @browser.text_field(name: "ShipLastName")
+      BrowserTextBox.new browser.text_field(name: "ShipLastName")
     end
 
     def company
-      StampsTextbox.new @browser.text_field(name: "ShipCompanyName")
+      BrowserTextBox.new browser.text_field(name: "ShipCompanyName")
     end
 
     def address_1
-      StampsTextbox.new @browser.text_field(name: "ShipAddress1")
+      BrowserTextBox.new browser.text_field(name: "ShipAddress1")
     end
 
     def address_2
-      StampsTextbox.new @browser.text_field(name: "ShipAddress2")
+      BrowserTextBox.new browser.text_field(name: "ShipAddress2")
     end
 
     def city
-      StampsTextbox.new @browser.text_field(name: "ShipCity")
+      BrowserTextBox.new browser.text_field(name: "ShipCity")
     end
 
     def country
-      VolusionCountry.new @browser
+      VolusionCountry.new param
     end
 
     def state
-      VolusionState.new @browser
+      VolusionState.new param
     end
 
     def zip_code
-      StampsTextbox.new @browser.text_field(name: "ShipPostalCode")
+      BrowserTextBox.new browser.text_field(name: "ShipPostalCode")
     end
 
     def phone_number
-      StampsTextbox.new @browser.text_field(name: "ShipPhoneNumber")
+      BrowserTextBox.new browser.text_field(name: "ShipPhoneNumber")
     end
 
     def type_of_address
-      VolusionTypeOfAddress.new @browser
+      VolusionTypeOfAddress.new param
     end
 
     def is_this_your_billing_address
-      VolusionBillingAddress.new @browser
+      VolusionBillingAddress.new param
     end
 
     def continue
-      button = StampsButton.new @browser.input(name: "btnContinue")
-      account_page = MyAccountPage.new @browser
+      button = BrowserElement.new browser.input(name: "btnContinue")
+      account_page = MyAccountPage.new param
       10.times do
         button.safe_click
         sleep 1
@@ -110,81 +110,81 @@ module Stores
     end
   end
 
-  class VolusionCheckOut < Stamps::Browser::BrowserObject
-    class VolusionAddressType < Stamps::Browser::BrowserObject
+  class VolusionCheckOut < Browser::Modal
+    class VolusionAddressType < Browser::Modal
       def residential
-        @browser.radio(css: 'input[name=ShipResidential][value=Y]').set
-        @browser.radio(css: 'input[name=ShipResidential][value=Y]').set
+        browser.radio(css: 'input[name=ShipResidential][value=Y]').set
+        browser.radio(css: 'input[name=ShipResidential][value=Y]').set
       end
 
       def business
-        @browser.radio(css: 'input[name=ShipResidential][value=N]').set
-        @browser.radio(css: 'input[name=ShipResidential][value=N]').set
+        browser.radio(css: 'input[name=ShipResidential][value=N]').set
+        browser.radio(css: 'input[name=ShipResidential][value=N]').set
       end
     end
 
     def present?
-      browser_helper.present? @browser.h2(text: "Checkout")
+      browser_helper.present? browser.h2(text: "Checkout")
     end
 
     def my_saved_billing_address address
-      @browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
-      @browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
-      @browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
+      browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
+      browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
+      browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
     end
 
 
     def address_type
-      VolusionAddressType.new @browser
+      VolusionAddressType.new param
     end
 
     def shipping_method method
-      @browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
-      @browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
-      @browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
+      browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
+      browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
+      browser.select_list(:name, "ShippingSpeedChoice").option(value: @shipping_method_map[method]).select
     end
 
     def payment_method method
-      @browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
-      @browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
-      @browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
+      browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
+      browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
+      browser.select_list(:name, "PaymentMethodTypeDisplay").option(text: method).select
     end
 
     def place_order
-      button = StampsButton.new @browser.button(id: "btnSubmitOrder")
-      order_num_field = StampsLabel.new @browser.div(css: "main#content_area>table>tbody>tr>td>div")
+      button = BrowserElement.new browser.button(id: "btnSubmitOrder")
+      order_num_field = BrowserElement.new browser.div(css: "main#content_area>table>tbody>tr>td>div")
       10.times do
         button.safe_click
         sleep 2
         if order_num_field.present?
           order_number_str = order_num_field.text
-          log.info order_number_str
+          logger.info order_number_str
           order_number = /(\d+)/.match(order_number_str)
-          log.info "ORDER NUMBER:  #{order_number}"
+          logger.info "ORDER NUMBER:  #{order_number}"
           return order_number
         end
       end
     end
   end
 
-  class VolusionCart < Stamps::Browser::BrowserObject
+  class VolusionCart < Browser::Modal
     def visit
-      @browser.goto "http://ywvmt.dmjeb.servertrust.com/shoppingcart.asp"
+      browser.goto "http://ywvmt.dmjeb.servertrust.com/shoppingcart.asp"
     end
 
     def present?
-      browser_helper.present? @browser.input(css: "input[name='btn_checkout_guest']")
+      browser_helper.present? browser.input(css: "input[name='btn_checkout_guest']")
     end
 
     def count
-      count = browser_helper.text @browser.span(css: "span[data-v-observable=cart-count]")
-      log.info "Volusion Cart Count: #{count}"
+      count = browser_helper.text browser.span(css: "span[data-v-observable=cart-count]")
+      logger.info "Volusion Cart Count: #{count}"
       count.to_i
     end
 
     def proceed_to_checkout
-      button = StampsButton.new @browser.input(css: "input[name='btn_checkout_guest']")
-      checkout = VolusionCheckOut.new @browser
+      button = BrowserElement.new browser.input(css: "input[name='btn_checkout_guest']")
+      checkout = VolusionCheckOut.new param
       10.times do
         button.safe_click
         sleep 1
@@ -194,13 +194,13 @@ module Stores
     end
   end
 
-  class VolusionProduct < Stamps::Browser::BrowserObject
+  class VolusionProduct < Browser::Modal
     def present?
-      browser_helper.present? @browser.input(css: "input[alt='Add to cart']")
+      browser_helper.present? browser.input(css: "input[alt='Add to cart']")
     end
 
     def qty_field
-      StampsTextbox.new @browser.text_field(name: 'QTY.SAMPLE1')
+      BrowserTextBox.new browser.text_field(name: 'QTY.SAMPLE1')
     end
 
     def qty number
@@ -211,9 +211,9 @@ module Stores
 
     def add_to_bag
       qty_textbox = self.qty_field
-      shopping_cart = VolusionCart.new @browser
+      shopping_cart = VolusionCart.new param
       cart_count_b4_add = shopping_cart.count
-      button = StampsButton.new  @browser.input(css: "input[alt='Add to cart']")
+      button = BrowserElement.new browser.input(css: "input[alt='Add to cart']")
       2.times do
         button.safe_click
         break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
@@ -224,14 +224,14 @@ module Stores
     end
   end
 
-  class VolusionCategoryOne < Stamps::Browser::BrowserObject
+  class VolusionCategoryOne < Browser::Modal
     def present?
-      browser_helper.present? @browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
+      browser_helper.present? browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
     end
 
     def sample_product_one
-      link = StampsLink.new @browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
-      product = VolusionProduct.new @browser
+      link = BrowserElement.new browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
+      product = VolusionProduct.new param
       10.times do
         link.safe_click
         sleep 1
@@ -240,39 +240,39 @@ module Stores
     end
   end
 
-  class MyAccountPage < Stamps::Browser::BrowserObject
+  class MyAccountPage < Browser::Modal
     def log_out
-      logged_out_field = StampsLabel.new @browser.li(text: "You are now logged out.")
-      button = StampsButton.new @browser.a(css: "a[href*=logout]")
+      logged_out_field = BrowserElement.new browser.li(text: "You are now logged out.")
+      button = BrowserElement.new browser.a(css: "a[href*=logout]")
       5.times do
         button.safe_click
         sleep 1
-        return VolusionLoginPage.new @browser if logged_out_field.present?
+        return VolusionLoginPage.new param if logged_out_field.present?
       end
     end
 
     def present?
-      browser_helper.present? @browser.a(css: "a[href*=logout]")
+      browser_helper.present? browser.a(css: "a[href*=logout]")
     end
 
     def my_account
-      link = StampsLink.new @browser.a(text: "My Account")
-      label = StampsLabel.new @browser.b(text: "My Orders")
+      link = BrowserElement.new browser.a(text: "My Account")
+      label = BrowserElement.new browser.b(text: "My Orders")
       10.times do
         link.safe_click
         break if label.present?
       end
 
       def cart
-        shopping_cart = VolusionCart.new @browser
+        shopping_cart = VolusionCart.new param
         shopping_cart.visit
         shopping_cart
       end
     end
 
     def category_one
-      link = StampsLink.new (@browser.as(text: "CATEGORY ONE").last)
-      category_1 = VolusionCategoryOne.new @browser
+      link = BrowserElement.new (browser.as(text: "CATEGORY ONE").last)
+      category_1 = VolusionCategoryOne.new param
       10.times do
         link.safe_click
         sleep 1
@@ -281,46 +281,46 @@ module Stores
     end
   end
 
-  class VolusionRegistration < Stamps::Browser::BrowserObject
-    class ReceiveNewsLetterCheckbox < Stamps::Browser::BrowserObject
+  class VolusionRegistration < Browser::Modal
+    class ReceiveNewsLetterCheckbox < Browser::Modal
       def check
-        @browser.checkbox(:name => 'emailsubscriber').set
-        @browser.checkbox(:name => 'emailsubscriber').set
+        browser.checkbox(:name => 'emailsubscriber').set
+        browser.checkbox(:name => 'emailsubscriber').set
       end
 
       def uncheck
-        @browser.checkbox(:name => 'emailsubscriber').clear
-        @browser.checkbox(:name => 'emailsubscriber').clear
+        browser.checkbox(:name => 'emailsubscriber').clear
+        browser.checkbox(:name => 'emailsubscriber').clear
       end
     end
 
     def present?
-      browser_helper.present? @browser.text_field(name: "Email")
+      browser_helper.present? browser.text_field(name: "Email")
     end
 
     def email
-      StampsTextbox.new @browser.text_field(name: "Email")
+      BrowserTextBox.new browser.text_field(name: "Email")
     end
 
     def email_again
-      StampsTextbox.new @browser.text_field(name: "Emailagain")
+      BrowserTextBox.new browser.text_field(name: "Emailagain")
     end
 
     def password
-      StampsTextbox.new @browser.text_field(name: "password")
+      BrowserTextBox.new browser.text_field(name: "password")
     end
 
     def password_again
-      StampsTextbox.new @browser.text_field(name: "passwordagain")
+      BrowserTextBox.new browser.text_field(name: "passwordagain")
     end
 
     def receive_newsletter
-      ReceiveNewsLetterCheckbox.new @browser
+      ReceiveNewsLetterCheckbox.new param
     end
 
     def continue
-      button = StampsButton.new @browser.input(id: "btnContinue")
-      shipping_address = VolusionShippingAddress.new @browser
+      button = BrowserElement.new browser.input(id: "btnContinue")
+      shipping_address = VolusionShippingAddress.new param
       10.times do
         button.safe_click
         sleep 1
@@ -329,30 +329,30 @@ module Stores
     end
   end
 
-  class VolusionLoginPage < Stamps::Browser::BrowserObject
+  class VolusionLoginPage < Browser::Modal
     def visit
-      @browser.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
+      browser.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
     end
 
     def present?
-      browser_helper.present? @browser.text_field(name: "email")
+      browser_helper.present? browser.text_field(name: "email")
     end
 
     def email
-      StampsTextbox.new @browser.text_field(name: "email")
+      BrowserTextBox.new browser.text_field(name: "email")
     end
 
     def password
-      StampsTextbox.new @browser.text_field(name: "password")
+      BrowserTextBox.new browser.text_field(name: "password")
     end
 
     def login
-      StampsButton.new @browser.input(css: "input[src*=btn_login]")
+      BrowserElement.new browser.input(css: "input[src*=btn_login]")
     end
 
     def continue
-      button = StampsButton.new @browser.img(css: "img[src*=Continue]")
-      registration = VolusionRegistration.new @browser
+      button = BrowserElement.new browser.img(css: "img[src*=Continue]")
+      registration = VolusionRegistration.new param
       10.times do
         button.safe_click
         sleep 1

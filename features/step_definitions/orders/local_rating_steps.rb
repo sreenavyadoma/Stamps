@@ -1,14 +1,14 @@
 Then /^Verify Local Rating$/ do |table|
-  log.info "Verify Local Rating..."
+  logger.info "Verify Local Rating..."
   #results_file = "local_rating_results.csv"
   @order_details = orders.details
   parameter_array = table.hashes
   results = Hash.new
 
   parameter_array.each_with_index { |element, index|
-    log.info "  --------------------------------------------------------------------------- "
-    log.info "  Test #{index}  ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lbs"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
-    log.info "  --------------------------------------------------------------------------- "
+    logger.info "  --------------------------------------------------------------------------- "
+    logger.info "  Test #{index}  ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lbs"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
+    logger.info "  --------------------------------------------------------------------------- "
     step "Details: Set Ship-From to #{element["ship_from"]}"
     step "Details: Set Ship-To address to #{element["ship_to"]}"
     step "Details: Set Ounces to #{element["weight_oz"]}"
@@ -43,9 +43,9 @@ Then /^Verify Local Rating$/ do |table|
       break if actual.eql? expected_total_amount
     end
 
-    log.info "  --------------------------------------------------------------------------- "
-    log.info "  Test #{index} #{(results[index])?"Passed":"Failed"}"
-    log.info "  --------------------------------------------------------------------------- "
+    logger.info "  --------------------------------------------------------------------------- "
+    logger.info "  Test #{index} #{(results[index])?"Passed":"Failed"}"
+    logger.info "  --------------------------------------------------------------------------- "
 
     actual = orders.details.total.cost
     actual.should == expected_total_amount

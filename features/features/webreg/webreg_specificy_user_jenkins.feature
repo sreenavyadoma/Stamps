@@ -57,7 +57,7 @@ Feature: Registration
     Then Health Check: Verify Server Health
 
     Then Orders: Load Sign-in page
-    Then Orders: First Time Sign-in to Orders as random/pass111
+    Then Orders: New User Sign-in as random/pass111
     Then Pause for 2 seconds
     Then Toolbar: Add
     Then Pause for 1 second

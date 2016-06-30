@@ -1,2 +1,4 @@
-module WebReg
+module Stamps
+  module WebReg
+  end
 end

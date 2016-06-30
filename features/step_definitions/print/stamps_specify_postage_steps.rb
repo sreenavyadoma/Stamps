@@ -1,17 +1,17 @@
 # encoding: utf-8
 
 Then /^Postage Stamps: Select Specify Postage Amount/ do
-  log.info "Select Stamps Specify Postage Amount"
+  logger.info "Select Stamps Specify Postage Amount"
   @print_postage.specify_postage_amount
 end
 
 Then /^Postage Stamps: Set Stamp Amount to \$(.*)$/ do |amount|
-  log.info "Set Stamps Stamp Amount to $#{amount}"
+  logger.info "Set Stamps Stamp Amount to $#{amount}"
   @print_postage.specify_postage_amount.stamp_amount.set amount
 end
 
 Then /^Postage Stamps: Set Specify Postage Service to (.*)/ do |service|
-  log.info "Envelopes: Set Print Postage Service to: \n #{service}"
+  logger.info "Envelopes: Set Print Postage Service to: \n #{service}"
   @print_postage.specify_postage_service.select service
 end
 

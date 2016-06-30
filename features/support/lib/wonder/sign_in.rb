@@ -1,5 +1,5 @@
 module Wonder
-  class SignInPage < OrdersObject
+  class SignInPage < Browser::Modal
 
   end
 end

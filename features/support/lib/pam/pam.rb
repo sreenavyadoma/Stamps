@@ -1,5 +1,5 @@
 module Pam
-  class PaymentAdministratorManager < Stamps::Browser::BrowserObject
+  class PaymentAdministratorManager < Browser::Modal
     def visit
       case ENV['URL'].downcase
         when /cc/
@@ -12,23 +12,23 @@ module Pam
           stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
       end
 
-      log.info "Visit: #{url}"
-      @browser.goto url
+      logger.info "Visit: #{url}"
+      browser.goto url
       #self..wait_until_present
-      log.info "Visited: #{@browser.url}"
+      logger.info "Visited: #{browser.url}"
       self
     end
 
     def present?
-      browser_helper.present? @browser.h5(:text => "Customer Search")
+      browser_helper.present? browser.h5(:text => "Customer Search")
     end
 
     def wait_until_present
-      browser_helper.wait_until_present @browser.h5(:text => "Customer Search")
+      browser_helper.wait_until_present browser.h5(:text => "Customer Search")
     end
 
     def customer_search
-      search = CustomerSearch.new @browser
+      search = CustomerSearch.new param
 
       case ENV['URL'].downcase
         when /cc/
@@ -41,7 +41,7 @@ module Pam
           stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
       end
 
-      @browser.goto url
+      browser.goto url
 
       30.times do
         #search.wait_until_present

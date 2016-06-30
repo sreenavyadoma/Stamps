@@ -1,24 +1,16 @@
-Given /^I launch browser$/ do
-  log.info "I launch browser"
-  @browser = Stamps::Test.setup
-end
-
 Then /^Teardown$/ do
-  log.info "Teardown"
-  Stamps::Test.teardown
+  logger.info "Teardown"
+  test_helper.teardown
 end
 
-Given /^I launch browser (\w+)$/ do |browser|
-  log.info "I launch browser #{browser}"
-  if browser.downcase.include? "default"
-    @browser = Stamps::Test.setup
-  else
-    @browser = Stamps::Test.setup browser
-  end
+Given /^I launched (?:|the default )browser(?: (\w+)|)$/ do |selection|
+  logger.info "I launched the default browser #{selection}"
+  ENV['BROWSER'] = selection unless selection.nil?
+  test_helper.setup
 end
 
 Then /^Refresh Browser$/ do
-  @browser.refresh
+  browser.refresh
 end
 
 Then /^Pause for (\d+) seconds?$/ do |seconds|

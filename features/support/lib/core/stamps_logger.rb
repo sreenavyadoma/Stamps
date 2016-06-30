@@ -1,5 +1,5 @@
 module Stamps
-  class Logger
+  class StampsLogger
     def initialize *args
       case args.length
         when 0
@@ -27,7 +27,7 @@ module Stamps
 
     def info message
       begin
-        (@logger.info "#{@test_name} :: #{message}") if Stamps::Test.verbose
+        (@logger.info "#{@test_name} :: #{message}") if TestHelper.verbose
       rescue
         # ignore
       end
@@ -36,7 +36,7 @@ module Stamps
 
     def warn message
       begin
-        (@logger.warn "#{@test_name} :: #{message}") if Stamps::Test.verbose
+        (@logger.warn "#{@test_name} :: #{message}") if TestHelper.verbose
       rescue
         # ignore
       end
@@ -45,7 +45,7 @@ module Stamps
 
     def error message
       begin
-        (@logger.error "#{@test_name} :: #{message}") if Stamps::Test.verbose
+        (@logger.error "#{@test_name} :: #{message}") if TestHelper.verbose
       rescue
         # ignore
       end
@@ -54,7 +54,7 @@ module Stamps
 
     def fatal message
       begin
-        (@logger.fatal "#{@test_name} :: #{message}") if Stamps::Test.verbose
+        (@logger.fatal "#{@test_name} :: #{message}") if TestHelper.verbose
       rescue
         # ignore
       end

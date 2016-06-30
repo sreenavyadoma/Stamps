@@ -19,18 +19,15 @@ require 'rubygems' # for compatibility with JRuby, MRI 1.8, etc
 # Stamps module
 require_relative 'lib/core/browser'
 require_relative 'lib/core/stamps'
-require_relative 'lib/core/logger'
+require_relative 'lib/core/stamps_logger'
 
-# OrdersHelper module
+# ParameterHelper module
 require_relative 'lib/orders/orders_helper'
 require_relative 'lib/orders/fields'
-
 require_relative 'lib/print/print_helper'
 require_relative 'lib/print/helpers'
 require_relative 'lib/print/print_postage_object'
-
 require_relative 'lib/webreg/webreg_helper'
-
 require_relative 'lib/pam/pam_helper'
 require_relative 'lib/windows/print_window'
 require_relative 'lib/orders/store_management'
@@ -100,5 +97,5 @@ module Selenium
   end # WebDriver
 end # Selenium
 
-
-World Stamps,Orders,Print,WebReg,Pam,Windows,Stores
+# Stamps,Orders,Print,WebReg,Pam,Windows,Stores
+World Stamps

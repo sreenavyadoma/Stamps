@@ -2,7 +2,7 @@
 Feature: Health Check
 
   Background:
-    Given I launch browser default
+    Given I launched the default browser
 
   @healthcheck
   Scenario: Healthcheck for Orders & Web Postage

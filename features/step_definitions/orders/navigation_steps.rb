@@ -1,7 +1,7 @@
 
 Then /^Purchase Postage for \$(\d+)$/ do |amount|
    @old_balance = orders.navigation_bar.balance.amount
-   log.info "Buy More link selected"
+   logger.info "Buy More link selected"
    buy_postage_modal = orders.navigation_bar.balance.buy_more
 
    case amount
@@ -21,7 +21,7 @@ Then /^Purchase Postage for \$(\d+)$/ do |amount|
 
 
 Then /^Expect \$(\d+) is added to customer balance$/ do |purchase_amount|
-  log.info "Expect \$#{purchase_amount} is added to customer balance"
+  logger.info "Expect \$#{purchase_amount} is added to customer balance"
   20.times do
     sleep 1
     new_balance = orders.navigation_bar.balance.amount
@@ -31,7 +31,7 @@ Then /^Expect \$(\d+) is added to customer balance$/ do |purchase_amount|
   new_balance = orders.navigation_bar.balance.amount
   actual_purchased_amount = new_balance.to_f - @old_balance.to_f
 
-  log.info "Test #{(actual_purchased_amount ==  purchase_amount.to_f)?"Passed":"Failed"}"
+  logger.info "Test #{(actual_purchased_amount ==  purchase_amount.to_f)?"Passed":"Failed"}"
   actual_purchased_amount.should eql  purchase_amount.to_f
 end
 

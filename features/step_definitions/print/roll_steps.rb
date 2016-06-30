@@ -1,5 +1,5 @@
 Then /^Postage Roll: Set Service to (.*)/ do |service|
-  log.info "Roll - Set Print Postage Service to: \n #{service}"
+  logger.info "Roll - Set Print Postage Service to: \n #{service}"
   @print_postage.service.select service
 end
 
@@ -144,22 +144,22 @@ Then /^Postage Roll: Select Service Priority Mail Express International Legal Fl
 end
 
 Then /^Postage Roll: Open Extra Services$/ do
-  log.info "Postage Roll: Open Extra Services"
+  logger.info "Postage Roll: Open Extra Services"
   @extra_services = @print_postage.extra_services
 end
 
 Then /^Postage Roll: Edit Customs Form$/ do
-  log.info "Postage Roll: Edit Customs Form"
+  logger.info "Postage Roll: Edit Customs Form"
   @customs_form = @print_postage.customs.edit_form
 end
 
 Then /^Postage Roll: Open Contacts modal/ do
-  log.info "Postage Roll: Open Contacts Modal"
+  logger.info "Postage Roll: Open Contacts Modal"
   @contacts = @print_postage.ship_to.contacts.open
 end
 
 Then /^Postage Roll: Expect Domestic Address field displays (.*)$/ do |value|
-  log.info "Shipping Label: Expect Domestic Address to be #{value}"
+  logger.info "Shipping Label: Expect Domestic Address to be #{value}"
 
   5.times{
     begin
@@ -174,41 +174,41 @@ Then /^Postage Roll: Expect Domestic Address field displays (.*)$/ do |value|
   actual_stripped = actual.gsub(/ \n/,", ")
   actual_stripped_final = actual_stripped.gsub(/\n/,", ")
   actual_stripped_final.should eql value
-  log.info 'Address Cleansed -- Expected Result Confirmed'
+  logger.info 'Address Cleansed -- Expected Result Confirmed'
 end
 
 Then /^Postage Roll: Set Hide Postage Value to Checked$/ do
-  log.info "Postage Roll: Check Hide Postage Value"
+  logger.info "Postage Roll: Check Hide Postage Value"
 
   @print_postage.form_view.hide_postage_value.check
 end
 
 Then /^Postage Roll: Set Hide Postage Value to Unchecked$/ do
-  log.info "Postage Roll: Uncheck Hide Postage Value"
+  logger.info "Postage Roll: Uncheck Hide Postage Value"
 
   @print_postage.form_view.hide_postage_value.uncheck
 end
 
 Then /^Postage Roll: Set Print Reference Number to Checked$/ do
-  log.info "Postage Roll: Check Print Reference Number"
+  logger.info "Postage Roll: Check Print Reference Number"
 
   @print_postage.form_view.print_reference_number.check
 end
 
 Then /^Postage Roll: Set Print Reference Number to Unchecked$/ do
-  log.info "Postage Roll: Uncheck Print Reference Number"
+  logger.info "Postage Roll: Uncheck Print Reference Number"
 
   @print_postage.form_view.print_reference_number.uncheck
 end
 
 Then /^Postage Roll: Set Reference Number to (.*)/ do |ref_no|
-  log.info "Set Shipping Label Reference Number to #{ref_no}"
+  logger.info "Set Shipping Label Reference Number to #{ref_no}"
 
   @print_postage.form_view.reference_number.set ref_no
 end
 
 Then /^Postage Roll: Set Cost Code to (.*)/ do |code|
-  log.info "Postage Roll: Set Cost Code to \n #{code}"
+  logger.info "Postage Roll: Set Cost Code to \n #{code}"
 
   @print_postage.form_view.cost_code.select code
 end

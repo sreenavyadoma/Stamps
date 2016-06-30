@@ -1,6 +1,8 @@
-module Print
-  def postage
-    Print::PrintPostage.new @browser, @scenario_name
+module Stamps
+  module Print
+    def postage
+      Print::PrintPostage.new param, @scenario_name
+    end
+    #
   end
-  #
 end

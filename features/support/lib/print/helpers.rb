@@ -1,14 +1,14 @@
-module Print
+module Stamps
+  module Print
+    module Postage
+      class PrintObject < Browser::Modal
+      end
+    end
 
-  module Postage
-    class PrintObject < Stamps::Browser::BrowserObject
+    class PostageHelper
+      include Singleton
+      include DataMagic
+
     end
   end
-
-  class PostageHelper
-    include Singleton
-    include DataMagic
-
-  end
-
 end

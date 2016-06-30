@@ -3,7 +3,7 @@ Feature: Forgot Password
 
 
   Background:
-    Given I launch browser
+    Given I launched the default browser
 
   @wp_forgot_password
   Scenario: Forgot Password

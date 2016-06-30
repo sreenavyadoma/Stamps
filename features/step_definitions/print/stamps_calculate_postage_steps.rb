@@ -1,19 +1,19 @@
 # encoding: utf-8
 
 Then /^Postage Stamps: Select Calculate Postage Amount/ do
-  log.info "Select Stamps Calculate Postage Amount"
+  logger.info "Select Stamps Calculate Postage Amount"
   @print_postage.calculate_postage_amount
 end
 
 Then /^Postage Stamps: Set Weight (\d+) lbs (\d+) oz$/ do |lbs, oz|
-  log.info "Set Stamps Weight #{lbs} lbs #{oz} oz"
+  logger.info "Set Stamps Weight #{lbs} lbs #{oz} oz"
   weight = @print_postage.calculate_postage_amount.weight
   weight.lbs.set lbs
   weight.oz.set oz
 end
 
 Then /^Postage Stamps: Set Calculate Postage Service to (.*)/ do |service|
-  log.info "Envelopes: Set Print Postage Service to: \n #{service}"
+  logger.info "Envelopes: Set Print Postage Service to: \n #{service}"
   @print_postage.calculate_postage_service.select service
 end
 

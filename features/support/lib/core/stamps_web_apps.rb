@@ -1,8 +1,7 @@
 module Stamps
-  class StampsWebApps < OrdersObject
-
+  class StampsWebApps < Browser::Modal
     def visit page
-      raise "Don't forget to LAUNCH YOUR BROWSER FIRST!" if @browser.nil?
+      raise "Don't forget to LAUNCH YOUR BROWSER FIRST!" if browser.nil?
 
       case page
         when :orders
@@ -30,14 +29,8 @@ module Stamps
           url = ENV['URL']
       end
 
-      log.info "Visit: #{url}"
-      5.times do
-        @browser.goto url
-        sleep 1
-        break if @browser.url.include? ENV['URL'].downcase
-      end
-      log.info "Page loaded: #{url}"
-      self
+      browser.goto url
+      logger.info "Page loaded: #{browser.url}"
     end
   end
 end

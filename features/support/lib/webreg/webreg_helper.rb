@@ -1,7 +1,9 @@
-module WebReg
-  include Stamps
+module Stamps
+  module WebReg
+    include Stamps
 
-  def registration
-    Registration.new @browser
+    def registration
+      Registration.new param
+    end
   end
 end
