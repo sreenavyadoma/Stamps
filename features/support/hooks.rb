@@ -19,7 +19,6 @@ Before do  |scenario|
   scenario.tags.each_with_index {|tag, index| logger.info "---------------- Tag #{index+1}: #{tag.name}" }
   logger.info "---------------- Steps:"
   scenario.test_steps.each_with_index { |test_step, index| logger.info "---------------- Step #{index}: #{test_step.source.last.name}" if index>0 }
-
 end
 
 After do |scenario|
