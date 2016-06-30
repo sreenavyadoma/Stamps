@@ -33,11 +33,12 @@ After do |scenario|
 
   Stamps.teardown
 
+  $start = false
+
   if scenario.failed?
     logger.error "#{scenario.feature}"
     logger.error "#{scenario.feature} TEST FAILED! #{scenario.exception.message}"
     logger.error "#{scenario.feature}"
   end
-  $start = false
 end
 
