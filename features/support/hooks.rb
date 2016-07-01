@@ -18,6 +18,10 @@ Before do  |scenario|
   scenario.tags.each_with_index {|tag, index| logger.message "---------------- Tag #{index+1}: #{tag.name}" }
   logger.message "---------------- Steps:"
   scenario.test_steps.each_with_index { |test_step, index| logger.message "---------------- Step #{index}: #{test_step.source.last.name}" if index>0 }
+  logger.message "----------------------------------------------------------------"
+  logger.message "----------------------------------------------------------------"
+  logger.message "----------------------------------------------------------------"
+  logger.message "----------------------------------------------------------------"
 end
 
 After do |scenario|
