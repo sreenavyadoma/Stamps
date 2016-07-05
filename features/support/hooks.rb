@@ -19,7 +19,7 @@ Before do  |scenario|
   logger.message "---------------- Tags:"
   scenario.tags.each_with_index {|tag, index| logger.message "---------------- Tag #{index+1}: #{tag.name}" }
   logger.message "---------------- Steps:"
-  scenario.test_steps.each_with_index { |test_step, index| logger.message "---------------- Step #{index}: #{test_step.source.last.name}" if index>0 }
+  scenario.test_steps.each_with_index { |test_step, index| logger.message "---------------- Step #{index}: #{test_step.source.last.keyword}#{test_step.source.last.name}"}
 
   logger.message "-"
   logger.message "-"
@@ -34,7 +34,7 @@ After do |scenario|
   logger.message "---------------- Tags:"
   scenario.tags.each_with_index {|tag, index| logger.message "---------------- Tag #{index+1}: #{tag.name}" }
   logger.message "---------------- Steps:"
-  scenario.test_steps.each_with_index { |test_step, index| logger.message "---------------- Step #{index}: #{test_step.source.last.name}" if index>0 }
+  scenario.test_steps.each_with_index { |test_step, index| logger.message "---------------- Step #{index}: #{test_step.source.last.keyword}#{test_step.source.last.name}"}
   logger.message "-"
   logger.message "-"
 
