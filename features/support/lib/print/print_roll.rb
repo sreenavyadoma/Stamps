@@ -36,6 +36,7 @@ module Stamps
 
       class Roll < Print::Postage::PrintPostageObject
 
+        #TODO fix me!!!!
         def insure_for
           Print::Postage::InsureFor.new param
         end

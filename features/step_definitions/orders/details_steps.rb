@@ -466,6 +466,12 @@ Then /^Details: Set Pounds to (.*)$/ do |value|
   orders.details.weight.lbs.set value
 end
 
+Then /^Details: Blur out of details form$/ do
+  orders.details.blur_out
+  orders.details.blur_out
+  orders.details.blur_out
+end
+
 Then /^Details: Set Ounces to (.*)$/ do |value|
   logger.info "Details: Set Ounces to \"#{value}\""
   orders.details.weight.oz.set value
@@ -851,12 +857,15 @@ end
 Then /^Details: Uncheck Insure-For checkbox$/ do
   logger.info "Details: Uncheck Insure-For checkbox"
   orders.details.insure_for.checkbox.uncheck
-  orders.details.insure_for.checkbox.uncheck
 end
 
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   logger.info "Details: Set Insure-For to #{value}"
   orders.details.insure_for.set value
+  10.times do
+    orders.details.blur_out
+    break if orders.details.insure_for.cost > 0
+  end
 end
 
 Then /^Add Ship-From address$/ do |ship_from|
@@ -1103,10 +1112,10 @@ Then /^Details: Expect Total to be \$(.*)$/ do |expectation|
   logger.info "Details: Expect Total to be $#{expectation}"
   begin
     10.times do
-      orders.details.click_form
+      orders.details.blur_out
       sleep 1
       actual_value = orders.details.total.cost
-      orders.details.click_form
+      orders.details.blur_out
       sleep 1
       break if actual_value.eql? expectation
     end

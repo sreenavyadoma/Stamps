@@ -104,10 +104,10 @@ Then /^Details: Expect Domestic Address data error tooltip to be \"(.*)\"$/ do |
   text_box = orders.details.ship_to.address.text_area
   20.times do
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     text_box.scroll_into_view
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
@@ -124,10 +124,10 @@ Then /^Details: Expect Domestic Email data error tooltip to be \"(.*)\"$/ do |ex
   text_box = orders.details.ship_to.email
   20.times do
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     text_box.scroll_into_view
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
@@ -145,9 +145,9 @@ Then /^Details: Expect Weight Lbs data error tooltip to be \"(.*)\"$/ do |expect
   20.times do
     text_box.scroll_into_view
     text_box.set "1"
-    orders.details.click_form
+    orders.details.blur_out
     text_box.set "0"
-    orders.details.click_form
+    orders.details.blur_out
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
@@ -169,11 +169,11 @@ Then /^Details: Expect Weight Oz data error tooltip to be \"(.*)\"$/ do |expecta
     text_box.scroll_into_view
     text_box.set "1"
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     text_box.safe_double_click
     text_box.set "0"
     text_box.scroll_into_view
-    orders.details.click_form
+    orders.details.blur_out
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
@@ -193,10 +193,10 @@ Then /^Details: Expect Service data error tooltip to be \"(.*)\"$/ do |expectati
   text_box = orders.details.service.text_box
   20.times do
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     text_box.scroll_into_view
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
@@ -217,10 +217,10 @@ Then /^Details: Expect Dimensions Length data error tooltip to be \"(.*)\"$/ do 
 
   20.times do
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     text_box.scroll_into_view
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
@@ -241,10 +241,10 @@ Then /^Details: Expect Dimensions Width data error tooltip to be \"(.*)\"$/ do |
 
   20.times do
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     text_box.scroll_into_view
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
@@ -265,10 +265,10 @@ Then /^Details: Expect Dimensions Height data error tooltip to be \"(.*)\"$/ do 
 
   20.times do
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     text_box.scroll_into_view
     text_box.safe_double_click
-    orders.details.click_form
+    orders.details.blur_out
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
@@ -298,7 +298,7 @@ Then /^Details: Expect International Name data error tooltip to be \"(.*)\"$/ do
   text_box = @international_ship_to.name
   20.times do
     text_box.safe_double_click
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click
     #@international_ship_to.click_form
@@ -325,10 +325,10 @@ Then /^Details: Expect International Company data error tooltip to be \"(.*)\"$/
 
   20.times do
     text_box.safe_double_click
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
@@ -351,10 +351,10 @@ Then /^Details: Expect International Address 1 data error tooltip to be \"(.*)\"
 
   20.times do
     text_box.safe_double_click
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
@@ -377,9 +377,9 @@ Then /^Details: Expect International City data error tooltip to be \"(.*)\"$/ do
 
   20.times do
     text_box.safe_double_click
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
@@ -402,10 +402,10 @@ Then /^Details: Expect International Phone data error tooltip to be \"(.*)\"$/ d
 
   20.times do
     text_box.safe_double_click
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
@@ -429,10 +429,10 @@ Then /^Details: Expect International Email data error tooltip to be \"(.*)\"$/ d
 
   20.times do
     text_box.safe_double_click
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
     text_box.safe_double_click
-    @international_ship_to.click_form
+    @international_ship_to.blur_out
     @international_ship_to.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip

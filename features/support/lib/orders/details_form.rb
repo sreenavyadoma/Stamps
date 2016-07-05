@@ -2,13 +2,15 @@ module Stamps
   module Orders
     module Details
       class OrderForm < Browser::Modal
-        def click_form
-          item_label = BrowserElement.new browser.label :text => 'Item:'
+        def blur_out
+
+          item_label = BrowserElement.new browser.label :text => 'Insure For $:'
           10.times {
             begin
-              item_label.safe_click
+              item_label.element.click
+              item_label.element.double_click
             rescue
-              #ignore
+              logger.error e.backtrace.join "\n"
             end
           }
         end
@@ -82,12 +84,12 @@ module Stamps
         end
 
         def hide
-          click_form
+          blur_out
           less.click_while_present
         end
 
         def expand
-          click_form
+          blur_out
           ship_to_dd = BrowserElement.new browser.span :css => "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)"
 
           5.times {
@@ -1372,7 +1374,7 @@ module Stamps
               rescue
                 #ignore
               end
-              click_form
+              blur_out
             }
           else
             ship_from_dropdown.safe_click unless selection_label.present?
@@ -1412,7 +1414,7 @@ module Stamps
               selection_label.scroll_into_view
               selection_label.safe_click
               sleep 1
-              click_form
+              blur_out
               break if box.text.include? selection
             rescue
               #ignore
@@ -1494,7 +1496,7 @@ module Stamps
               button.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
-              click_form
+              blur_out
               selected_service = box.text
               logger.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"success": "service not selected"}"
               break if selected_service.include? selection
@@ -1559,7 +1561,7 @@ module Stamps
               #ignore
             end
           }
-          click_form
+          blur_out
         end
 
         def disabled? service
@@ -1596,7 +1598,7 @@ module Stamps
             end
           end
 
-          click_form
+          blur_out
         end
 
         def enabled? service
@@ -1864,7 +1866,7 @@ module Stamps
             end
             break if cost.include? "$"
           end
-          ParameterHelper.remove_dollar_sign(cost_label.text)
+          ParameterHelper.remove_dollar_sign(cost_label.text).to_f
         end
       end
 
@@ -2098,7 +2100,9 @@ module Stamps
       end
 
       class DetailsForm < OrderForm
+        #todo add more accessors
         attr_accessor :insure_for
+
         def initialize param
           super param
           @insure_for ||= InsureFor.new param

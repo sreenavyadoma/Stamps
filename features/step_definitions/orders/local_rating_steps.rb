@@ -20,7 +20,7 @@ Then /^Verify Local Rating$/ do |table|
     step "Details: Set Tracking to \"#{element["tracking"]}\""
 
     10.times do
-      @order_details.click_form
+      @order_details.blur_out
       total = @order_details.total.cost
       if total.eql? element["total"]
         results[index] = total.eql? element["total"]
@@ -34,11 +34,11 @@ Then /^Verify Local Rating$/ do |table|
     expected_total_amount = element["total"]
 
     5.times do
-      orders.details.click_form
+      orders.details.blur_out
       sleep 1
       actual = orders.details.total.cost
-      orders.details.click_form
-      orders.details.click_form
+      orders.details.blur_out
+      orders.details.blur_out
       sleep 1
       break if actual.eql? expected_total_amount
     end

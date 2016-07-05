@@ -294,7 +294,7 @@ module Stamps
               #ignore
             end
           }
-          click_form
+          blur_out
         end
 
         def tooltip selection
@@ -312,7 +312,7 @@ module Stamps
               #ignore
             end
           }
-          click_form
+          blur_out
         end
 
         def price
