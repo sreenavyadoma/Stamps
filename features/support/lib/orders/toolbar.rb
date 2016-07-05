@@ -325,7 +325,7 @@ module Stamps
           end
 
           def print_expecting_error *args
-            error_window = IncompleteOrderError.new(@browser)
+            error_window = IncompleteOrderError.new param
             open_window error_window
             case args.length
               when 0
@@ -338,7 +338,7 @@ module Stamps
           end
 
           def print_invalid_address
-            open_window InvalidAddressError.new(@browser)
+            open_window InvalidAddressError.new param
           end
         end
 
@@ -451,7 +451,7 @@ module Stamps
         end
 
         def settings_modal
-          SettingsModal.new(@browser)
+          SettingsModal.new param
         end
 
         def page_count

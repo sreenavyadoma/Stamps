@@ -45,7 +45,7 @@ module Stamps
         end
 
         def confirm_postage
-          ConfirmPurchase.new(@browser)
+          ConfirmPurchase.new param
         end
 
         def buy_10

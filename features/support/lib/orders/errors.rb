@@ -129,7 +129,7 @@ module Stamps
             #ignore
           end
         }
-        PrintModal.new(@browser)
+        PrintModal.new param
       end
 
       def cancel

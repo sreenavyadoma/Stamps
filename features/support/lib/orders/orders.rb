@@ -19,7 +19,7 @@ module Stamps
       end
 
       def shipped
-        FilterPanel.new(@browser).FilterPanel - "Shipped"
+        FilterPanel.new param.FilterPanel - "Shipped"
         Orders::Grid::OrdersGrid.new param
       end
 

@@ -336,7 +336,7 @@ module Stamps
         end
 
         def manage_shipping_address
-          Print::Postage::ManageShippingAddresses.new(@browser)
+          Print::Postage::ManageShippingAddresses.new param
         end
 
         def manage_shipping_addresses

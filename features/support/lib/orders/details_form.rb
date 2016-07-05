@@ -1145,7 +1145,7 @@ module Stamps
         end
 
         def delete_row number
-          @delete_shipping_address = DeleteShippingAddress.new(@browser)
+          @delete_shipping_address = DeleteShippingAddress.new param
           5.times {
             select_row number
             click_delete_button
@@ -1157,7 +1157,7 @@ module Stamps
         end
 
         def add *args
-          @shipping_address_form = AddShippingAdress.new(@browser)
+          @shipping_address_form = AddShippingAdress.new param
           add_shipping_address_window
           case args.length
             when 0

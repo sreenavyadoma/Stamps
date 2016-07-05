@@ -164,7 +164,7 @@ module Stamps
 
         def print_expecting_rating_error
           postage
-          RatingError.new(@browser).wait_until_present
+          RatingError.new param.wait_until_present
         end
 
         def labels_required
