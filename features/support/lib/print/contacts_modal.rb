@@ -1,7 +1,7 @@
 module Stamps
   module Print
     module Postage
-      class ContactsModal < Print::Postage::PrintObject
+      class ContactsModal < Browser::Modal
         def close
           browser_helper.safe_click (browser.img :css => "img[class*='x-tool-img x-tool-close']")
         end
@@ -52,19 +52,19 @@ module Stamps
 
       end
 
-      class Search < Print::Postage::PrintObject
+      class Search < Browser::Modal
 
       end
 
-      class SearchByGroup < Print::Postage::PrintObject
+      class SearchByGroup < Browser::Modal
 
       end
 
-      class SearchByCostCode < Print::Postage::PrintObject
+      class SearchByCostCode < Browser::Modal
 
       end
 
-      class ViewBy < Print::Postage::PrintObject
+      class ViewBy < Browser::Modal
 
       end
 

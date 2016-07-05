@@ -24,8 +24,6 @@ require_relative 'lib/core/stamps_logger'
 # ParameterHelper module
 require_relative 'lib/orders/orders_helper'
 require_relative 'lib/orders/fields'
-require_relative 'lib/print/print_helper'
-require_relative 'lib/print/helpers'
 require_relative 'lib/print/print_postage_object'
 require_relative 'lib/webreg/webreg_helper'
 require_relative 'lib/pam/pam_helper'

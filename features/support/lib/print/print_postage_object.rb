@@ -3,7 +3,7 @@
 module Stamps
   module Print
     module Postage
-      class PrintPostageCustoms < Print::Postage::PrintObject
+      class PrintPostageCustoms < Browser::Modal
         def edit_form
           button = BrowserElement.new browser.span :id => "sdc-mainpanel-editcustombtn-btnIconEl"
           customs_modal = Print::Postage::CustomsForm.new param
@@ -24,7 +24,7 @@ module Stamps
         end
       end
 
-      class PrintPostageObject < Print::Postage::PrintObject
+      class PrintPostageObject < Browser::Modal
 
         def service
           Print::Postage::Service.new param

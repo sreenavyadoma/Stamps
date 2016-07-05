@@ -18,7 +18,7 @@ module Stamps
       end
 
       class Toolbar < Browser::Modal
-        class SettingsMenu < Print::Postage::PrintObject
+        class SettingsMenu < Browser::Modal
           def collapse_button
             BrowserElement.new browser.span :css => "span[class*=sdc-icon-settings]"
           end

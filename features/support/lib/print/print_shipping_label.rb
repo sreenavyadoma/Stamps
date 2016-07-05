@@ -57,7 +57,7 @@ module Stamps
           Print::Postage::ShippingLabelFormView::StartingLabel.new param
         end
 
-        class StartingLabel < Print::Postage::PrintObject
+        class StartingLabel < Browser::Modal
           def label_divs
             browser.divs :css => "div[class*='unprintedLabel']"
           end

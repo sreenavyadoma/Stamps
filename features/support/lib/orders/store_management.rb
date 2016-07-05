@@ -60,8 +60,8 @@ module Stamps
 
             class ServiceMappingShippingService < Browser::Modal
 
-              def initialize(browser, index)
-                super browser
+              def initialize param, index
+                super param
                 @index = index
               end
 
@@ -98,8 +98,8 @@ module Stamps
               end
             end
 
-            def initialize browser, index
-              super browser
+            def initialize param, index
+              super param
               @index = index
             end
 

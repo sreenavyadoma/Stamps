@@ -1,5 +1,5 @@
 
-When /^Footer: Print International Postage$/ do
+When /^Postage: Print International Postage$/ do
   logger.info "Print International Postage"
   postage.footer.print_international
 end

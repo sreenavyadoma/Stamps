@@ -25,7 +25,7 @@ Feature: International Shipping BVT
     Then Postage Customs: Add Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin Russia, Tariff 25
     Then Postage Customs: Check I agree to the USPS Privacy Act Statement
     Then Postage Customs: Save
-    Then Footer: Print International Postage
+    Then Postage: Print International Postage
     Then Sign out
 
 

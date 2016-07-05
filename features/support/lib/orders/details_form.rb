@@ -1902,8 +1902,8 @@ module Stamps
         class DetailsItem < Browser::Modal
 
           class Qty < Browser::Modal
-            def initialize browser, number
-              super browser
+            def initialize param, number
+              super param
               @index = number
             end
 
@@ -1943,8 +1943,8 @@ module Stamps
             end
           end
 
-          def initialize browser, number
-            super browser
+          def initialize param, number
+            super param
             @index = number
           end
 

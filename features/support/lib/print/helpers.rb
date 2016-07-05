@@ -4,11 +4,5 @@ module Stamps
       class PrintObject < Browser::Modal
       end
     end
-
-    class PostageHelper
-      include Singleton
-      include DataMagic
-
-    end
   end
 end

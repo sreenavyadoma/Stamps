@@ -1,6 +1,6 @@
 module Stamps
   module Print
-    class ForgotUsernameModal < Print::Postage::PrintObject
+    class ForgotUsernameModal < Browser::Modal
       def window_x_button
         BrowserElement.new (browser.imgs :css => "img[class*='x-tool-close']")[0]
       end

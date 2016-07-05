@@ -133,7 +133,7 @@ module Stamps
           raise "Username or Password is not set. Check your cucumber.yml file or Jenkins job." if username.nil? || password.nil?
 
 
-          5.times do
+          3.times do
             begin
               break if grid.present?
               username_textbox.wait_until_present

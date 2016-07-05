@@ -1,7 +1,7 @@
 module Stamps
   module Print
     module Postage
-      class Footer < Print::Postage::PrintObject
+      class Footer < Browser::Modal
         def total
           BrowserElement.new browser.label :id => "sdc-printpanel-totalcostlabel"
         end

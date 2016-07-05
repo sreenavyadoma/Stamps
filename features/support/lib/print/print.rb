@@ -1,9 +1,9 @@
 # encoding: utf-8
 module Stamps
   module Print
-    class PrintPostage < Print::Postage::PrintObject
+    class PrintPostage < Browser::Modal
 
-      def sign_in
+      def landing_page
         Print::SignInModal.new param
       end
 
@@ -12,7 +12,7 @@ module Stamps
       end
 
       def toolbar
-        Print:Toolbar.new param
+        Print::Toolbar.new param
       end
 
       def print_on selection
@@ -24,7 +24,7 @@ module Stamps
           if selection.include? 'Shipping Label'
             Print::Postage::ShippingLabel.new param
           elsif selection.include? 'Stamps'
-            Print::Postage::Stamps.new param
+            Print::Postage::NetStamps.new param
           elsif selection.include? 'Envelope'
             Print::Postage::Envelope.new param
           elsif selection.include? 'Certified Mail'

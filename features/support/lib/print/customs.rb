@@ -1,7 +1,7 @@
 module Stamps
   module Print
     module Postage
-      class CustomsForm < Print::Postage::PrintObject
+      class CustomsForm < Browser::Modal
 
         def close
           browser_helper.safe_click (browser.img :css => "img[class*='x-tool-img x-tool-close']")
@@ -132,7 +132,7 @@ module Stamps
 
       end
 
-      class AddItemModal < Print::Postage::PrintObject
+      class AddItemModal < Browser::Modal
         def close
           buttons = browser.imgs :css => "img[class*='x-tool-img x-tool-close']"
           browser_helper.safe_click buttons.last
@@ -188,7 +188,7 @@ module Stamps
 
         end
 
-        class Qty  < Print::Postage::PrintObject
+        class Qty  < Browser::Modal
           def text_box
             BrowserTextBox.new browser.text_field :name => 'Quantity'
           end
@@ -217,7 +217,7 @@ module Stamps
 
         end
 
-        class Value  < Print::Postage::PrintObject
+        class Value  < Browser::Modal
           def text_box
             BrowserTextBox.new browser.text_field :name => 'Value'
           end
@@ -245,7 +245,7 @@ module Stamps
 
         end
 
-        class Lbs  < Print::Postage::PrintObject
+        class Lbs  < Browser::Modal
           def text_box
             BrowserTextBox.new browser.text_field :name => 'WeightLb'
           end
@@ -273,7 +273,7 @@ module Stamps
 
         end
 
-        class Ounces  < Print::Postage::PrintObject
+        class Ounces  < Browser::Modal
           def text_box
             BrowserTextBox.new browser.text_field :name => 'WeightOz'
           end
@@ -300,7 +300,7 @@ module Stamps
           end
 
         end
-        class Origin  < Print::Postage::PrintObject
+        class Origin  < Browser::Modal
           def text_box
             BrowserTextBox.new browser.text_field :name => "CountryOfOrigin"
           end
@@ -335,7 +335,7 @@ module Stamps
 
       end
 
-      class PackageContents < Print::Postage::PrintObject
+      class PackageContents < Browser::Modal
         def text_box
           BrowserTextBox.new browser.text_field :name => "ContentType"
         end
@@ -367,7 +367,7 @@ module Stamps
 
       end
 
-      class NonDeliveryOptions < Print::Postage::PrintObject
+      class NonDeliveryOptions < Browser::Modal
         def text_box
           BrowserTextBox.new browser.text_field :name => "NonDeliveryOption"
         end
@@ -399,7 +399,7 @@ module Stamps
 
       end
 
-      class InternalTransaction < Print::Postage::PrintObject
+      class InternalTransaction < Browser::Modal
         def text_box
           BrowserTextBox.new browser.text_field :name => "isITNRequired"
         end
@@ -495,8 +495,8 @@ module Stamps
       class CustomsLineItem < Browser::Modal
 
         class Qty < Browser::Modal
-          def initialize browser, number
-            super browser
+          def initialize param, number
+            super param
             @index = number
           end
 
@@ -538,8 +538,8 @@ module Stamps
         end
 
         class UnitPrice < Browser::Modal
-          def initialize browser, number
-            super browser
+          def initialize param, number
+            super param
             @index = number
           end
 
@@ -568,8 +568,8 @@ module Stamps
         end
 
         class UnitWeightLbs < Browser::Modal
-          def initialize browser, number
-            super browser
+          def initialize param, number
+            super param
             @index = number
           end
 
@@ -611,8 +611,8 @@ module Stamps
         end
 
         class UnitWeightOz < Browser::Modal
-          def initialize browser, number
-            super browser
+          def initialize param, number
+            super param
             @index = number
           end
 
@@ -653,8 +653,8 @@ module Stamps
           end
         end
 
-        def initialize browser, number
-          super browser
+        def initialize param, number
+          super param
           @index = number
         end
 

@@ -1,6 +1,6 @@
 module Stamps
   module Print
-    class NavBar < Print::Postage::PrintObject
+    class NavBar < Browser::Modal
       def username
         BrowserElement.new browser.span :id => "userNameText"
       end

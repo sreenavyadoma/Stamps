@@ -2,7 +2,7 @@
 module Stamps
   module Print
     module Postage
-      class Stamps < Print::Postage::PrintPostageObject
+      class NetStamps < Print::Postage::PrintPostageObject
 
         class StampsFormView < Print::Postage::PrintPostageObject
 
@@ -60,7 +60,7 @@ module Stamps
 
         end
 
-        class CalculatePostageAmount < Print::Postage::PrintObject
+        class CalculatePostageAmount < Browser::Modal
           def weight
             Print::Postage::Weight.new param
           end
@@ -70,13 +70,13 @@ module Stamps
           end
         end
 
-        class SpecifyPostageAmount < Print::Postage::PrintObject
+        class SpecifyPostageAmount < Browser::Modal
           def stamp_amount
             Print::Postage::StampAmount.new param
           end
         end
 
-        class  SpecifyPostageService < Print::Postage::PrintObject
+        class  SpecifyPostageService < Browser::Modal
           def text_box
             BrowserTextBox.new browser.text_field :name => "nsService"
           end

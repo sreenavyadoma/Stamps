@@ -16,12 +16,16 @@ module Stamps
     HealthCheck.new param
   end
 
+  def web_apps
+    @web_apps ||= StampsWebApps.new param
+  end
+
   def orders
     @orders ||= WebOrders.new param
   end
 
-  def web_apps
-    @web_apps ||= StampsWebApps.new param
+  def postage
+    PrintPostage.new param
   end
 
   def param

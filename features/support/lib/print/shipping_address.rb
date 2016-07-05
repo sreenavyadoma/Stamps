@@ -2,7 +2,7 @@
 module Stamps
   module Print
     module Postage
-      class ManageShippingAddresses < Print::Postage::PrintObject
+      class ManageShippingAddresses < Browser::Modal
         def close
           browser_helper.safe_click (browser.img :css => "img[class*='x-tool-img x-tool-close']")
         end

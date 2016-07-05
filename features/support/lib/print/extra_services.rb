@@ -2,7 +2,7 @@
 module Stamps
   module Print
     module Postage
-      class ExtraServices < Print::Postage::PrintObject
+      class ExtraServices < Browser::Modal
 
         def close
           browser_helper.safe_click (browser.img :css => "img[class*='x-tool-img x-tool-close']")
@@ -76,7 +76,7 @@ module Stamps
 
       end
 
-      class SpecialContentsModal < Print::Postage::PrintObject
+      class SpecialContentsModal < Browser::Modal
         def window_x_button
           BrowserElement.new (browser.imgs :css => "img[class*='x-tool-close']")[1]
         end
@@ -113,7 +113,7 @@ module Stamps
 
       end
 
-      class Security < Print::Postage::PrintObject
+      class Security < Browser::Modal
         def text_box
           BrowserTextBox.new browser.text_field :name => "security"
         end
@@ -149,7 +149,7 @@ module Stamps
 
       end
 
-      class SecurityValue < Print::Postage::PrintObject
+      class SecurityValue < Browser::Modal
         def text_box
           BrowserTextBox.new browser.text_field :id => 'sdc-extraserviceswin-valuenumberfield-inputEl'
         end
@@ -178,7 +178,7 @@ module Stamps
       end
 
 
-      class COD < Print::Postage::PrintObject
+      class COD < Browser::Modal
         def text_box
           BrowserTextBox.new browser.text_field :id => 'sdc-extraserviceswin-codnumberfield-inputEl'
         end
@@ -225,7 +225,7 @@ module Stamps
 
       end
 
-      class Handling < Print::Postage::PrintObject
+      class Handling < Browser::Modal
         def text_box
           BrowserTextBox.new browser.text_field :name => "contents"
         end
@@ -257,7 +257,7 @@ module Stamps
 
       end
 
-      class ReturnReceipt < Print::Postage::PrintObject
+      class ReturnReceipt < Browser::Modal
 
         def checkbox
           checkbox_field = browser.input :css => "input[id^=sdc-extraserviceswin-rrcheckbox-inputEl]"
@@ -271,7 +271,7 @@ module Stamps
 
       end
 
-      class ElectronicReturnReceipt < Print::Postage::PrintObject
+      class ElectronicReturnReceipt < Browser::Modal
         def checkbox
           checkbox_field = browser.input :css => "input[id^=sdc-extraserviceswin-rrecheckbox-inputEl]"
           verify_field = browser.table :css => "table[id^=sdc-extraserviceswin-rrecheckbox]"
@@ -284,7 +284,7 @@ module Stamps
 
       end
 
-      class RestrictedDelivery < Print::Postage::PrintObject
+      class RestrictedDelivery < Browser::Modal
         def checkbox
           checkbox_field = browser.input :css => "input[id^=sdc-extraserviceswin-rdcheckbox-inputEl]"
           verify_field = browser.table :css => "table[id^=sdc-extraserviceswin-rdcheckbox]"
@@ -297,7 +297,7 @@ module Stamps
       end
 
 
-      class NonDeliveryNotice < Print::Postage::PrintObject
+      class NonDeliveryNotice < Browser::Modal
         def checkbox
           checkbox_field = browser.input :css => "input[id^=sdc-extraserviceswin-nndcheckbox-inputEl]"
           verify_field = browser.table :css => "table[id^=sdc-extraserviceswin-nndcheckbox]"
@@ -310,7 +310,7 @@ module Stamps
       end
 
 
-      class Fragile < Print::Postage::PrintObject
+      class Fragile < Browser::Modal
         def checkbox
           checkbox_field = browser.input :css => "input[id^=sdc-extraserviceswin-shcheckbox-inputEl]"
           verify_field = browser.table :css => "table[id^=sdc-extraserviceswin-shcheckbox]"
@@ -322,7 +322,7 @@ module Stamps
         end
       end
 
-      class MerchandiseReturnReceipt < Print::Postage::PrintObject
+      class MerchandiseReturnReceipt < Browser::Modal
         def checkbox
           checkbox_field = browser.input :css => "input[id^=sdc-extraserviceswin-rrmcheckbox-inputEl]"
           verify_field = browser.table :css => "table[id^=sdc-extraserviceswin-rrmcheckbox]"
@@ -334,7 +334,7 @@ module Stamps
         end
       end
 
-      class NonRectangular < Print::Postage::PrintObject
+      class NonRectangular < Browser::Modal
         def checkbox
           checkbox_field = browser.input :css => "input[id^=sdc-extraservices-nreccheckbox]"
           verify_field = browser.table :css => "table[id^=sdc-extraserviceswin-notrectangularcheckbox]"

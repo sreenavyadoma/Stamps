@@ -3,7 +3,6 @@ module Stamps
     class SignInModal < Browser::Modal
 
       def sign_in *args
-        visit :print_postage
         case args
           when Hash
             username = args[0]['username']
@@ -32,7 +31,7 @@ module Stamps
         signed_in_user = BrowserElement.new browser.span(:id => "userNameText")
         invalid_msg = BrowserElement.new browser.div :css => "div[id*=InvalidUsernamePasswordMsg]"
 
-        10.times {
+        3.times {
           sign_in_link.safe_click unless username_textbox.present?
           username_textbox.set username
 
@@ -76,10 +75,6 @@ module Stamps
         }
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
         logger.info "Password is #{password}"
-
-        ENV["SIGNED_IN_USER"] = username
-        visit :print_postage
-
       end
 
       def remember_username

@@ -1,6 +1,6 @@
 module Stamps
   module Print
-    class Toolbar < Print::Postage::PrintObject
+    class Toolbar < Browser::Modal
       def settings
         BrowserElement.new (browser.span :css => "span[style*='settings.png']")
       end

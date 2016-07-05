@@ -2,9 +2,9 @@
 module Stamps
   module Print
     module Postage
-      class ShipTo < Print::Postage::PrintObject
+      class ShipTo < Browser::Modal
 
-        class PostageCountry < Print::Postage::PrintObject
+        class PostageCountry < Browser::Modal
           def drop_down
             BrowserElement.new (browser.divs :css => "div[class*=x-form-trigger]")[2]
           end
@@ -90,7 +90,7 @@ module Stamps
         end
       end
 
-      class PrintOn < Print::Postage::PrintObject
+      class PrintOn < Browser::Modal
 
         def drop_down
           BrowserElement.new ((browser.divs (Print::Locators::FormBody.print_on_drop_down_divs))[0])
@@ -135,8 +135,8 @@ module Stamps
         end
       end
 
-      class Weight < Print::Postage::PrintObject
-        class Pounds < Print::Postage::PrintObject
+      class Weight < Browser::Modal
+        class Pounds < Browser::Modal
           def text_box
             BrowserTextBox.new (browser.text_field :id => 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
           end
@@ -174,7 +174,7 @@ module Stamps
           end
         end
 
-        class Ounces < Print::Postage::PrintObject
+        class Ounces < Browser::Modal
           def text_box
             BrowserTextBox.new (browser.text_field :id => 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
           end
@@ -212,7 +212,7 @@ module Stamps
           end
         end
 
-        class AutoWeigh < Print::Postage::PrintObject
+        class AutoWeigh < Browser::Modal
           def checkbox_element
             browser.input :id => "sdc-mainpanel-autoweightcheckbox-inputEl"
           end
@@ -244,7 +244,7 @@ module Stamps
         end
       end
 
-      class Service < Print::Postage::PrintObject
+      class Service < Browser::Modal
 
         def text_box
           BrowserTextBox.new browser.text_field :name => "servicePackage"
@@ -321,7 +321,7 @@ module Stamps
 
       end
 
-      class ShipFrom < Print::Postage::PrintObject
+      class ShipFrom < Browser::Modal
 
         def drop_down
           BrowserElement.new (browser.div :css => "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
@@ -397,7 +397,7 @@ module Stamps
 
       end
 
-      class StampAmount < Print::Postage::PrintObject
+      class StampAmount < Browser::Modal
         def text_box
           BrowserTextBox.new (browser.text_field :name => "stampAmount"), "data-errorqtip"
         end
@@ -423,7 +423,7 @@ module Stamps
         end
       end
 
-      class Email < Print::Postage::PrintObject
+      class Email < Browser::Modal
 
         def checkbox_element
           browser.input :id => "sdc-mainpanel-emailcheckbox-inputEl"
@@ -444,7 +444,7 @@ module Stamps
 
       end
 
-      class Tracking < Print::Postage::PrintObject
+      class Tracking < Browser::Modal
 
         def text_box
           BrowserTextBox.new browser.text_field :name => "tracking"
@@ -480,7 +480,7 @@ module Stamps
         end
       end
 
-      class InsureFor < Print::Postage::PrintObject
+      class InsureFor < Browser::Modal
         def checkbox
 
         end
@@ -502,7 +502,7 @@ module Stamps
         end
       end
 
-      class ShipDate < Print::Postage::PrintObject
+      class ShipDate < Browser::Modal
 
         def text_box
           BrowserTextBox.new (browser.text_field :id => "sdc-mainpanel-shipdatedatefield-inputEl")
@@ -514,7 +514,7 @@ module Stamps
 
       end
 
-      class Contacts < Print::Postage::PrintObject
+      class Contacts < Browser::Modal
 
         def link
           BrowserElement.new browser.a :css => "[class*=sdc-mainpanel-shiptolinkbtn]"
@@ -532,7 +532,7 @@ module Stamps
         end
       end
 
-      class CostCode  < Print::Postage::PrintObject
+      class CostCode  < Browser::Modal
         def text_box
           BrowserTextBox.new browser.text_field :name => "costCodeId"
         end
@@ -567,7 +567,7 @@ module Stamps
 
       end
 
-      class Quantity < Print::Postage::PrintObject
+      class Quantity < Browser::Modal
         def text_box
           BrowserTextBox.new (browser.text_field :css => "input[class*='sdc-previewpanel-quantitynumberfield']")
         end

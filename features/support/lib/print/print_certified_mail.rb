@@ -3,7 +3,7 @@ module Stamps
   module Print
     module Postage
 
-      class ExtraServicesCM < Print::Postage::PrintObject
+      class ExtraServicesCM < Browser::Modal
 
         def cm_checkbox select
 

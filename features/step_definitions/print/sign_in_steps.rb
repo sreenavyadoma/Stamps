@@ -1,7 +1,7 @@
 Given /^I visit postage sign-in page$/ do
   #step "I launched the default browser"
   logger.info "I visit print sign-in page"
-  postage.landing_page.visit :print_postage
+  web_apps.visit :print_postage
 end
 
 Given /^I am signed in as a postage shipper$/ do

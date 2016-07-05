@@ -12,11 +12,20 @@ module Stamps
       #@logger.level = Log4r::INFO
     end
 
+    def repeat char, count
+      str=char
+      count.to_i.times {str=str+char}
+      str
+    end
+
     def scenario_name=name
       @test_name = name
     end
 
     def message message
+
+      message = repeat message, 60 if message.size==1
+
       begin
         @logger.info "#{@test_name} :: #{message}"
       rescue

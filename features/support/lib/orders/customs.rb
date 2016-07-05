@@ -2,8 +2,8 @@ module Stamps
   module Orders
     class OriginCountry < Browser::Modal
 
-      def initialize(browser, index)
-        super browser
+      def initialize param, index
+        super param
         @index = index
       end
 
@@ -101,8 +101,8 @@ module Stamps
     class CustomsLineItem < Browser::Modal
 
       class Qty < Browser::Modal
-        def initialize browser, number
-          super browser
+        def initialize param, number
+          super param
           @index = number
         end
 
@@ -144,8 +144,8 @@ module Stamps
       end
 
       class UnitPrice < Browser::Modal
-        def initialize browser, number
-          super browser
+        def initialize param, number
+          super param
           @index = number
         end
 
@@ -174,8 +174,8 @@ module Stamps
       end
 
       class UnitWeightLbs < Browser::Modal
-        def initialize browser, number
-          super browser
+        def initialize param, number
+          super param
           @index = number
         end
 
@@ -217,8 +217,8 @@ module Stamps
       end
 
       class UnitWeightOz < Browser::Modal
-        def initialize browser, number
-          super browser
+        def initialize param, number
+          super param
           @index = number
         end
 
@@ -259,8 +259,8 @@ module Stamps
         end
       end
 
-      def initialize browser, number
-        super browser
+      def initialize param, number
+        super param
         @index = number
       end
 

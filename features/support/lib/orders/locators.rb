@@ -37,9 +37,11 @@ module Stamps
             {:text => 'Add'}
           end
 
+=begin
           def postage
 
           end
+=end
 
           def move
             {:text => "Move"}

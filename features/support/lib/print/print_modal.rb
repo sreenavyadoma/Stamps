@@ -3,7 +3,7 @@ module Stamps
   module Print
     module Postage
 
-      class PrintPostageModalObject < Print::Postage::PrintObject
+      class PrintPostageModalObject < Browser::Modal
         def window_x_button
           browser.img :css => "img[class*='x-tool-img x-tool-close']"
         end
@@ -25,8 +25,8 @@ module Stamps
         end
       end
 
-      class ConfirmPrint < Print::Postage::PrintObject
-        class ConfirmPrintCheckbox < Print::Postage::PrintObject
+      class ConfirmPrint < Browser::Modal
+        class ConfirmPrintCheckbox < Browser::Modal
           def check
             browser.checkbox(:name => 'dismissConfirm').set
             browser.checkbox(:name => 'dismissConfirm').set
@@ -64,7 +64,7 @@ module Stamps
         end
       end
 
-      class Printer < Print::Postage::PrintObject
+      class Printer < Browser::Modal
         def drop_down
           BrowserElement.new browser.div :css => "table[id^=sdc-printpostagewindow-printerdroplist-triggerWrap]>tbody>tr>td>div[class*=x-form-arrow-trigger]"
         end
@@ -106,7 +106,7 @@ module Stamps
         end
       end
 
-      class PaperTray < Print::Postage::PrintObject
+      class PaperTray < Browser::Modal
         def text_box
           BrowserTextBox.new browser.text_field :css => "input[[id*=combobox]"
         end
@@ -130,10 +130,6 @@ module Stamps
       end
 
       class PrintPostageModal < PrintPostageModalObject
-        def initialize browser
-          super browser
-        end
-
         def paper_tray
           Print::Postage::PaperTray.new param
         end
