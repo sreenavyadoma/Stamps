@@ -59,27 +59,47 @@ module Stamps
       end
 
       def disabled?
-        browser_helper.disabled? element
+        begin
+          element.disabled?
+        rescue
+          false
+        end
       end
 
       def visible?
-        browser_helper.visible? element
+        begin
+          element.visible?
+        rescue
+          false
+        end
       end
 
       def exist?
-        browser_helper.exist? element
+        begin
+          element.exist?
+        rescue
+          false
+        end
       end
 
       def present?
-        browser_helper.present? element
+        begin
+          element.present?
+        rescue
+          false
+        end
       end
 
       def enabled?
-        browser_helper.enabled? element
+        begin
+          element.enabled?
+        rescue
+          false
+        end
       end
 
       def hover
-        browser_helper.hover element
+        element.hover
       end
 
       def data_error_qtip
