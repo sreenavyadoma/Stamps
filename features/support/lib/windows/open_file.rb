@@ -7,7 +7,7 @@ module Stamps
             exist = RAutomation::Window.new(:title => /File Upload/i).exists?
             return exist
           elsif TestHelper.browser.chrome?
-            exist = RAutomation::Window.new(:title => /&Open/i).exists?#
+            exist = RAutomation::Window.new(:title => /&Open/i).exists?
             return exist
           else
             stop_test "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
