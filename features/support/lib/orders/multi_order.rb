@@ -14,7 +14,7 @@ module Stamps
             TestHelper.teardown
             logger.info "Teardown: Done!"
             stop_test "Multi-order Count Label does not exist or Multi-order form not opened."
-          end unless browser_helper.present? order_count_label
+          end unless order_count_label.present?
           browser_helper.text(order_count_label).gsub(/\d+/).first.to_i
         end
       end

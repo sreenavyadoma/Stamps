@@ -127,11 +127,11 @@ module Stamps
         end
 
         def enabled? selection
-
+          raise "PrintOn.enabled? #{selection} is not yet implemented."
         end
 
         def disabled? selection
-
+          raise "PrintOn.enabled? #{selection} is not yet implemented."
         end
       end
 

@@ -947,9 +947,7 @@ module Stamps
         end
 
         def state_field
-          field = browser.text_field :name => 'State'
-          present = browser_helper.present? field
-          field
+          browser.text_field :name => 'State'
         end
 
         def state=(state)
@@ -965,11 +963,11 @@ module Stamps
         end
 
         def save
-          5.times{
+          30.times{
             begin
               browser_helper.click save_button, "save_button"
-              save_button.wait_while_present
-              break unless browser_helper.present? save_button
+              sleep 1
+              break unless save_button.present?
             rescue
               #ignore
             end
@@ -1023,7 +1021,11 @@ module Stamps
       end
 
       class DeleteShippingAddress < Browser::Modal
-        public
+
+        def window_title
+          browser.div :text => "Delete Shipping Address"
+        end
+
         def delete
           5.times {
             begin
@@ -1037,7 +1039,7 @@ module Stamps
         end
 
         def present?
-          browser_helper.present? window_title
+          window_title.present?
         end
 
         def close
@@ -1046,10 +1048,6 @@ module Stamps
           field.click if present
         end
 
-        private
-        def window_title
-          browser.div :text => "Delete Shipping Address"
-        end
         def message_field
           browser.div :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
         end
@@ -1076,7 +1074,42 @@ module Stamps
       end
 
       class ManageShippingAddresses < Browser::Modal
-        public
+
+        def window_title
+          browser.div :css => 'div[class*=x-window-header-title-default]>div'
+        end
+
+        def grid_cell(row, column)
+          browser.td :css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})"
+        end
+
+        def grid_cell_text(row, column)
+          browser_helper.text grid_cell(row, column), "grid.row#{row}.column#{column})"
+        end
+
+        def close_button
+          browser.image :css => "img[class*='x-tool-close']"
+        end
+
+        def checked?(row)
+          field = browser.table :css => "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
+          value = browser_helper.attribute_value field, "class"
+          checked = value.include? "selected"
+          logger.info "Row #{row} selected? #{checked}"
+          checked
+        end
+
+        def add_button
+          browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"
+        end
+
+        def edit_button
+          browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
+        end
+
+        def delete_button
+          browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
+        end
 
         def name row
           sleep(1)
@@ -1117,12 +1150,12 @@ module Stamps
         end
 
         def present?
-          browser_helper.present? add_button
+          add_button.present?
         end
 
         def click_delete_button
           begin
-            browser_helper.click(delete_button, "Delete") if browser_helper.present? delete_button
+            browser_helper.click(delete_button, "Delete") if delete_button.present?
             browser_helper.click window_title, 'window_title'
           rescue
             #ignore
@@ -1276,8 +1309,8 @@ module Stamps
         def close_window
           begin
             10.times{
-              sleep(1)
-              break unless browser_helper.present? close_button
+              sleep 1
+              break unless close_button.present?
               browser_helper.click close_button, "Close"
             }
           rescue
@@ -1294,43 +1327,6 @@ module Stamps
           rows = browser.trs(:css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
           logger.info "Manage Shipping Address:: row count = #{rows.length.to_i}"
           rows.length.to_i
-        end
-
-        private
-        def window_title
-          browser.div :css => 'div[class*=x-window-header-title-default]>div'
-        end
-
-        def grid_cell(row, column)
-          browser.td :css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})"
-        end
-
-        def grid_cell_text(row, column)
-          browser_helper.text grid_cell(row, column), "grid.row#{row}.column#{column})"
-        end
-
-        def close_button
-          browser.image :css => "img[class*='x-tool-close']"
-        end
-
-        def checked?(row)
-          field = browser.table :css => "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
-          value = browser_helper.attribute_value field, "class"
-          checked = value.include? "selected"
-          logger.info "Row #{row} selected? #{checked}"
-          checked
-        end
-
-        def add_button
-          browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"
-        end
-
-        def edit_button
-          browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
-        end
-
-        def delete_button
-          browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
         end
 
       end
@@ -1602,7 +1598,7 @@ module Stamps
         end
 
         def enabled? service
-          return !(self.disabled? service)
+          !(self.disabled? service)
         end
 
       end
@@ -1951,7 +1947,7 @@ module Stamps
           end
 
           def present?
-            browser_helper.present? ((browser.text_fields :name => "SKU")[@index-1])
+            ((browser.text_fields :name => "SKU")[@index-1]).present?
           end
 
           def qty
@@ -2001,7 +1997,7 @@ module Stamps
         end
 
         def present?
-          browser_helper.present? field
+          field.present?
         end
 
         def open
@@ -2109,7 +2105,7 @@ module Stamps
         end
 
         def present?
-          browser_helper.present? browser.div :css => "div[id^=singleOrderDetailsForm][id$=body]"
+          (browser.div :css => "div[id^=singleOrderDetailsForm][id$=body]").present?
         end
 
         def expand

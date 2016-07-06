@@ -3,7 +3,7 @@ module Pam
 
     class AppCapOverridesConfirmation < Browser::Modal
       def present?
-        browser_helper.present? browser.td(text: 'AppCap Overrides')
+        browser.td(text: 'AppCap Overrides').present?
       end
 
       def ok
@@ -98,7 +98,7 @@ module Pam
     end
 
     def present?
-      browser_helper.present? browser.input(css: 'input[name=IBIP][value=On]')
+      browser.input(css: 'input[name=IBIP][value=On]').present?
     end
 
     def internet_postage_printing

@@ -1,7 +1,7 @@
 module Pam
   class CustomerSearch < Browser::Modal
     def present?
-      browser_helper.present? browser.input(:css => "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
+      browser.input(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]").present?
     end
 
     def wait_until_present

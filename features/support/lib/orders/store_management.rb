@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class ImportingOrdersModal < Browser::Modal
         def present?
-          browser_helper.present? browser.div(text: "Importing Orders")
+          browser.div(text: "Importing Orders").present?
         end
 
         def message
@@ -21,7 +21,7 @@ module Stamps
 
       class DeleteStoreModal < Browser::Modal
         def present?
-          browser_helper.present? delete_btn
+          delete_btn.present?
         end
 
         def wait_until_present
@@ -32,7 +32,7 @@ module Stamps
           spans = browser.spans(:css => "div[componentid^=dialoguemodal]>div[id^=panel]>div>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
           first = spans.first
           last = spans.last
-          (browser_helper.present? last)?last:first
+          (last.present?)?last:first
         end
 
         def delete

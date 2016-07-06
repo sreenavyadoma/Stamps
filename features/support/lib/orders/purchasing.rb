@@ -3,7 +3,7 @@ module Stamps
     module Purchasing
       class PurchaseApproved < Browser::Modal
         def present?
-          browser_helper.present? (browser.div :text => "Purchase Approved")
+          (browser.div text: "Purchase Approved").present?
         end
 
         def ok
@@ -21,7 +21,7 @@ module Stamps
         end
 
         def present?
-          browser_helper.present? (browser.div :text => 'Confirm Purchase')
+          (browser.div text: 'Confirm Purchase').present?
         end
 
         def purchase
@@ -41,7 +41,7 @@ module Stamps
       class BuyPostage < Browser::Modal
 
         def present?
-          browser_helper.present? (browser.div :text => "Buy Postage")
+          (browser.div :text => "Buy Postage").present?
         end
 
         def confirm_postage

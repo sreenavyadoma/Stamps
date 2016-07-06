@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class ServerError < Browser::Modal
         def present?
-          browser_helper.present? browser.div(text: "Server Error")
+          browser.div(text: "Server Error").present?
         end
 
         def message

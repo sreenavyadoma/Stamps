@@ -2,7 +2,7 @@ module Stamps
   module WebReg
     class NewAccountWelcomePage < Browser::Modal
       def present?
-        browser_helper.present? browser.h1(:text => "Congratulations on your new account!")
+        browser.h1(text: "Congratulations on your new account!").present?
       end
 
       def wait_until_present
@@ -12,7 +12,7 @@ module Stamps
 
     class ChooseSupplies < Browser::Modal
       def present?
-        browser_helper.present? browser.h1(:text => "Customize your Welcome Kit")
+        browser.h1(text: "Customize your Welcome Kit").present?
       end
 
       def wait_until_present

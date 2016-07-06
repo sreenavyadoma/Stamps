@@ -31,7 +31,7 @@ module Stamps
         end
 
         def present?
-          browser_helper.present? browser.div(:text => "Connect your 3DCart Store")
+          browser.div(text: "Connect your 3DCart Store").present?
         end
 
         def close
@@ -80,7 +80,7 @@ module Stamps
               server_error.ok
               stop_test "Server Error: \n#{error_str}" unless counter < max_server_error_retry_count
             end
-            logger.info connecting_button.text if connecting_button.visible?
+            logger.info connecting_button.text if connecting_button.element.visible?
             return settings if settings.present?
           end
           stop_test "Rakuten Store Connect failed.  Settings Modal did not open.  "
@@ -108,7 +108,7 @@ module Stamps
               server_error.ok
               stop_test "Server Error: \n#{error_str}" unless counter < max_server_error_retry_count
             end
-            logger.info connecting_button.text if connecting_button.visible?
+            logger.info connecting_button.text if connecting_button.element.visible?
             return manage_stores if manage_stores.present?
           end
         end

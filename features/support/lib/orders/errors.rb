@@ -3,9 +3,7 @@ module Stamps
 
     class ServerError < Browser::Modal
       def present?
-        window_title = browser.divs(text: "Server Error").last
-        #logger.info "Server Error" if browser_helper.present? window_title
-        browser_helper.present? window_title
+        (browser.divs(text: "Server Error").last).present?
       end
 
       def message
@@ -38,10 +36,7 @@ module Stamps
       protected
 
       def window_title
-        #div[class*=x-window-header-title]>div[id^=title-][class*=x-title-item]
-        title = browser.div :text => 'Order Error'
-        present = title.present?
-        title
+        browser.div :text => 'Order Error'
       end
 
       def ok_button_span
@@ -55,14 +50,14 @@ module Stamps
       public
 
       def present?
-        browser_helper.present? window_title
+        window_title.present?
       end
 
       def ok
         5.times {
           begin
             browser_helper.click ok_button_span, 'OK'
-            break unless browser_helper.present? ok_button_span
+            break unless ok_button_span.present?
           rescue
             #ignore
           end
@@ -89,11 +84,11 @@ module Stamps
       end
 
       def window_title
-        order_errors = browser.div :text => 'Order Errors'
-        order_error = browser.div :text => 'Order Error'
-        if browser_helper.present? order_errors
+        order_errors = browser.div text: 'Order Errors'
+        order_error = browser.div text: 'Order Error'
+        if order_errors.present?
           order_errors
-        elsif browser_helper.present? order_error
+        elsif order_error.present?
           order_error
         else
           nil
@@ -101,7 +96,7 @@ module Stamps
       end
 
       def cancel_button
-        browser.span :text => "Cancel"
+        browser.span text: "Cancel"
       end
 
       def ok
@@ -117,14 +112,14 @@ module Stamps
       end
 
       def present?
-        browser_helper.present? browser.div(text: "Incomplete Order")
+        browser.div(text: "Incomplete Order").present?
       end
 
       def continue
         5.times{
           begin
             browser_helper.click continue_button, "Continue"
-            break unless browser_helper.present? continue_button
+            break unless continue_button.present?
           rescue
             #ignore
           end
@@ -136,7 +131,7 @@ module Stamps
         5.times{
           begin
             browser_helper.click cancel_button, "ok"
-            break unless browser_helper.present? cancel_button
+            break unless cancel_button.present?
           rescue
             #ignore
           end
@@ -173,7 +168,7 @@ module Stamps
       end
 
       def present?
-        browser_helper.present? ok_button
+        ok_button.present?
       end
 
       def OK
@@ -195,8 +190,8 @@ module Stamps
     class ErrorStampsPluginIssue < Browser::Modal
       private
       def close_window_button
-        img = browser.img :css => "img[class='x-tool-img x-tool-close']"
-        logger.info "#{(browser_helper.present? img)?'Stamps.com Plugin Issue':''}"
+        img = browser.img css: "img[class='x-tool-img x-tool-close']"
+        logger.info "#{(img.present?)?'Stamps.com Plugin Issue':''}"
         img
       end
 

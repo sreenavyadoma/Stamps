@@ -82,8 +82,6 @@ module Stamps
     end
 
     class FilterPanel < Modal
-      private
-
       def filter_panel
         browser.div css: "div[id*=filterpanel][class*=x-panel-dark-grey]"
       end
@@ -111,8 +109,6 @@ module Stamps
       def cancelled_field
         browser.div :text => "Canceled"
       end
-
-      public
 
       def menu_item
         FilterMenuItem.new param
@@ -185,13 +181,9 @@ module Stamps
         end
       end
 
-      def is_filter_panel_present
+      def is_filter_panel_present?
         sleep 2
-        browser_helper.present? filter_panel
-      end
-
-      def are_filter_buttons_present
-        (browser_helper.present? awaiting_shipment_tab) && (browser_helper.present? shipped_tab)
+        filter_panel.present?
       end
 
       def click_border_arrow
@@ -199,11 +191,11 @@ module Stamps
       end
 
       def is_header_arrow_present
-        browser_helper.present? filter_panel_header_arrow
+        filter_panel_header_arrow.present?
       end
 
       def are_filter_links_present
-        (browser_helper.present? filter_panel_header_name) || (browser_helper.present? filter_panel_header_arrow)
+        (filter_panel_header_name.present? ) || (filter_panel_header_arrow.present? )
       end
 
       def click_filter_

@@ -147,8 +147,8 @@ module Stamps
 
         def row_div number
           stop_test "row_div:  number can't be nil" if number.nil?
-          div = browser.div :css => "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]"
-          stop_test("Orders Grid Row number #{number} is not present")unless browser_helper.present? div
+          div = browser.div css: "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]"
+          stop_test("Orders Grid Row number #{number} is not present")unless div.present?
           div
         end
       end

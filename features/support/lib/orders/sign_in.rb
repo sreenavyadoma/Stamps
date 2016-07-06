@@ -4,12 +4,12 @@ module Stamps
       class WelcomeModal < Browser::Modal
         private
         def okay_button
-          browser.span :text => 'OK'
+          browser.span text: 'OK'
         end
 
         public
         def present?
-          browser_helper.present? okay_button
+          okay_button.present?
         end
 
         def wait_until_present
@@ -23,14 +23,14 @@ module Stamps
         def ok
           5.times{
             browser_helper.click okay_button, 'OK'
-            break unless browser_helper.present? okay_button
+            break unless okay_button.present?
           }
         end
       end
 
       class OrdersWelcomeModal < Browser::Modal
         def present?
-          browser_helper.present? (browser.span :text => "Continue")
+          (browser.span text: "Continue").present?
         end
 
         def close
@@ -113,7 +113,7 @@ module Stamps
           toolbar = Orders::Toolbar::Toolbar.new param
           market_place = Orders::Stores::MarketPlace.new param
 
-          raise "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders" || username_textbox.present?
+          raise "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
 
           case args.length
             when 1

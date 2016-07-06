@@ -4,7 +4,7 @@ module Stamps
       class ReferrerName < Browser::Modal
 
         def present?
-          browser_helper.present? browser.label :css => "label[for=referrerName]"
+          (browser.label css: "label[for=referrerName]").present?
         end
 
         def referrer name
@@ -198,7 +198,7 @@ module Stamps
       end
 
       def present?
-        browser_helper.present? browser.text_field(:id => "email")
+        browser.text_field(id: "email").present?
       end
 
       def wait_until_present

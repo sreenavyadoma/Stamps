@@ -1,7 +1,7 @@
 module Pam
   class ACHCreditConfirmation < Browser::Modal
     def present?
-      browser_helper.present? browser.td(:text => "ACH Credit Confirmation")
+      browser.td(text: "ACH Credit Confirmation").present?
     end
 
     def ok
@@ -17,7 +17,7 @@ module Pam
 
   class ACHPurchaseVerification < Browser::Modal
     def present?
-      browser_helper.present? (browser.input :name => "YES")
+      (browser.input name: "YES").present?
     end
 
     def yes
@@ -38,7 +38,7 @@ module Pam
 
   class ACHCredit < Browser::Modal
     def present?
-      browser_helper.present? browser.text_field(:name => "AmountFraction")
+      browser.text_field(:name => "AmountFraction").present?
     end
 
     def dollar_amount

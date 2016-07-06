@@ -4,7 +4,7 @@ module Stamps
 
     class LabelUnavailable < Browser::Modal
       def present?
-        browser_helper.present? browser.div(text: "Label Unavailable")
+        browser.div(text: "Label Unavailable").present?
       end
 
       def close
@@ -39,12 +39,11 @@ module Stamps
       end
 
       def dont_show_this_again dont_show
-        chkbox_inputs = browser.inputs :css => "input[id^=checkbox-][id$=-inputEl]"
-        checkbox_field = chkbox_inputs.last
-        stop_test "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? checkbox_field
+        checkbox_field = (browser.inputs css: "input[id^=checkbox-][id$=-inputEl]").last
+        stop_test "USPS Terms - Don't show this again checkbox is not present" unless checkbox_field.present?
 
-        verify_field = browser.div :css => "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
-        stop_test "USPS Terms - Don't show this again checkbox is not present" unless browser_helper.present? verify_field
+        verify_field = browser.div css: "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
+        stop_test "USPS Terms - Don't show this again checkbox is not present" unless verify_field.present?
 
         attribute = "class"
         attrib_value_check = "checked"
@@ -225,16 +224,11 @@ module Stamps
       class DatePicker < PrintModalObject
 
         def todays_date_div
-          div = browser.div :css => "div[title='Today']"
-          logger.info "Today div present? #{browser_helper.present? div}"
-          div
+          browser.div css: "div[title='Today']"
         end
 
         def date_field day
-          css = "td[aria-label='#{ParameterHelper.now_plus_month_dd day.to_i}']"
-          td = browser.td :css => css
-          present = browser_helper.present? td
-          td
+          browser.td :css => "td[aria-label='#{ParameterHelper.now_plus_month_dd day.to_i}']"
         end
 
         def date day
@@ -523,12 +517,12 @@ module Stamps
       def check_naws_plugin_error
         begin
           error_label = browser.div :text => 'Error'
-          if browser_helper.present? error_label
+          if error_label.present?
             @printing_error = true
             ptags = browser.ps :css => 'div[id^=dialoguemodal]>p'
             logger.info "-- Chrome NAWS Plugin Error --"
             ptags.each {|p_tag|
-              if browser_helper.present? p_tag
+              if p_tag.present?
                 p_tag_text = browser_helper.text p_tag
                 logger.info "\n#{p_tag_text}"
               end
@@ -610,7 +604,7 @@ module Stamps
 
     class RePrintModal < PrintModal
       def present?
-        browser_helper.present? browser.div(text: "Reprint Label")
+        browser.div(text: "Reprint Label").present?
       end
 
       def reprint

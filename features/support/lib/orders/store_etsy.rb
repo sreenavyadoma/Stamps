@@ -134,7 +134,7 @@ module Stamps
 
       class EtsySignInPage < Browser::Modal
         def present?
-          browser_helper.present? browser.text_field(id: 'username-existing')
+          browser.text_field(id: 'username-existing').present?
         end
 
         def username

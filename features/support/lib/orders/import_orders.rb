@@ -6,7 +6,7 @@ module Stamps
       end
 
       def present?
-        browser_helper.present? browser.div(text: "Success")
+        browser.div(text: "Success").present?
       end
 
       def message
@@ -25,7 +25,7 @@ module Stamps
 
     class ImportOrders < Browser::Modal
       def present?
-        browser_helper.present? browser.div(text: "Import Orders")
+        browser.div(text: "Import Orders").present?
       end
 
       def filename_label

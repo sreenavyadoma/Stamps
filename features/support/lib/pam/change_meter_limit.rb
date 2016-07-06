@@ -13,7 +13,7 @@ module Pam
       end
     end
     def present?
-      browser_helper.present? browser.td(:text => "Change Meter Limit")
+      browser.td(text: "Change Meter Limit").present?
     end
 
     def current_meter_limit
@@ -46,7 +46,7 @@ module Pam
 
   class ChangeMeterLimitSuccess < Browser::Modal
     def present?
-      browser_helper.present? browser.td(:text => "Change Meter Limit Success")
+      browser.td(:text => "Change Meter Limit Success").present?
     end
 
     def ok

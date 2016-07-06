@@ -358,7 +358,7 @@ module Stamps
 
     class UserIdTaken < Browser::Modal
       def present?
-        browser_helper.present? browser.h3 :text => "User ID Taken"
+        (browser.h3 text: "User ID Taken").present?
       end
 
       def message
@@ -376,7 +376,7 @@ module Stamps
 
     class DownloadPage < Browser::Modal
       def present?
-        browser_helper.present? (browser.h1 text: "Congratulations on your new account!")
+        (browser.h1 text: "Congratulations on your new account!").present?
       end
 
       def wait_until_present
@@ -399,7 +399,7 @@ module Stamps
       end
 
       def present?
-        browser_helper.present? browser.h1 :text => "Please enter your mailing information"
+        (browser.h1 text: "Please enter your mailing information").present?
       end
 
       def first_name

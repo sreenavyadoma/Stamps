@@ -16,14 +16,6 @@ module Stamps
         @browser_helper = BrowserHelper
       end
 
-      def present? element
-        begin
-          element.present?
-        rescue
-          false
-        end
-      end
-
       def stop_test message
         logger.fatal message
         logger.fatal "Teardown: Begin tearing down test"
@@ -33,22 +25,22 @@ module Stamps
       end
     end
 
-    # A Browser Element are fields found on a browser page. Buttons, text boxes, links, labels are examples of a browser element.
+    # A Browser Element are elements found on a browser page. Buttons, text boxes, links, labels are examples of a browser element.
     class BrowserElement
       attr_reader :browser, :browser_helper, :element, :error_qtip_element, :error_qtip_element_attribute
       def initialize *args
         case args.length
           when 1
             @element = args[0]
-          when 2 #use this when data error qtip is found in the field
+          when 2 #use this when data error qtip is found in the element
             @element = args[0]
             @error_qtip_element_attribute = args[1]
-          when 3 # use this when data error qtip is in a another field
+          when 3 # use this when data error qtip is in a another element
             @element = args[0]
             @error_qtip_element = args[1]
             @error_qtip_element_attribute = args[2]
           else
-            stop_test "Illegal number of arguments.  Unable to create field."
+            stop_test "Illegal number of arguments.  Unable to create element."
         end
         @browser = @element.browser
         @browser_helper = BrowserHelper
@@ -61,14 +53,6 @@ module Stamps
       def disabled?
         begin
           element.disabled?
-        rescue
-          false
-        end
-      end
-
-      def visible?
-        begin
-          element.visible?
         rescue
           false
         end
@@ -90,6 +74,14 @@ module Stamps
         end
       end
 
+      def visible?
+        begin
+          element.visible?
+        rescue
+          false
+        end
+      end
+
       def enabled?
         begin
           element.enabled?
@@ -104,14 +96,14 @@ module Stamps
 
       def data_error_qtip
         begin
-          # if data qtip field was not set or is nil, try to get data error qtip from the field representing this textbox.
+          # if data qtip element was not set or is nil, try to get data error qtip from the element representing this textbox.
           if error_qtip_element.nil?
             return browser_helper.attribute_value element, (error_qtip_element_attribute.nil?)?"data-errorqtip":error_qtip_element_attribute
           else
             return browser_helper.attribute_value error_qtip_element, (error_qtip_element_attribute.nil?)?"data-errorqtip":error_qtip_element_attribute
           end
         rescue
-          #if data error field does not exist, return an empty string
+          #if data error element does not exist, return an empty string
           return ""
         end
       end
@@ -214,12 +206,12 @@ module Stamps
     end
 
     class BrowserSelection < BrowserElement
-      attr_accessor :verify_element, :attribute, :verify_field_attrib
-      def initialize element, verify_element, attribute, verify_field_attrib
+      attr_accessor :verify_element, :attribute, :verify_element_attrib
+      def initialize element, verify_element, attribute, verify_element_attrib
         super element
         @verify_element = verify_element
         @attribute = attribute
-        @verify_field_attrib = verify_field_attrib
+        @verify_element_attrib = verify_element_attrib
       end
 
       def select
@@ -233,7 +225,7 @@ module Stamps
         begin
           attribute_value_str = browser_helper.attribute_value verify_element, attribute
           return attribute_value_str == "true" if attribute_value_str == "true" || attribute_value_str == "false"
-          return attribute_value_str.include? verify_field_attrib
+          return attribute_value_str.include? verify_element_attrib
         rescue
           false
         end
@@ -287,12 +279,12 @@ module Stamps
             attribute_value "value", ""
             browser_helper.set element, ""
 
-            # set field text normally
+            # set element text normally
             browser_helper.set element, text
             text_value = browser_helper.text element
             break if text_value==text
 
-            # set field attribute value
+            # set element attribute value
             attribute_value "value", text
             text_value = browser_helper.text element
             break if text_value==text
@@ -336,15 +328,15 @@ module Stamps
         case selection
           when String
             5.times{
-              selection_field = expose_selection selection
-              browser_helper.safe_click selection_field
+              selection_element = expose_selection selection
+              browser_helper.safe_click selection_element
               input_text = text_box.text
               break if input_text.include? selection
             }
           else
             2.times {
-              selection_field = expose_selection selection
-              browser_helper.safe_click selection_field
+              selection_element = expose_selection selection
+              browser_helper.safe_click selection_element
             }
         end
       end
@@ -365,11 +357,11 @@ module Stamps
       end
 
       def expose_selection selection
-        @verify_field_attrib = selection_element selection
+        @verify_element_attrib = selection_element selection
         5.times{
           browser_helper.safe_click @drop_down, "drop-down"
-          #logger.info "Selection is present? #{browser_helper.present? @selection_field}"
-          return @verify_field_attrib if browser_helper.present? @verify_field_attrib
+          #logger.info "Selection is present? #{browser_helper.present? @selection_element}"
+          return @verify_element_attrib if browser_helper.present? @verify_element_attrib
         }
       end
 
@@ -378,9 +370,9 @@ module Stamps
           when :element
             return BrowserElement.new (expose_selection selection)
           when :tooltip
-            selection_field = expose_selection selection
-            tooltip = browser_helper.attribute_value selection_field, "data-qtip"
-            #logger.info "Field Selection Tooltip (data-qtip):  #{tooltip}"
+            selection_element = expose_selection selection
+            tooltip = browser_helper.attribute_value selection_element, "data-qtip"
+            #logger.info "element Selection Tooltip (data-qtip):  #{tooltip}"
             tooltip
           else
             #do nothing
@@ -393,7 +385,7 @@ module Stamps
         def style element, var_name
           begin
             style = element.style(var_name)
-            #logger.info "Field Style:  #{style}"
+            #logger.info "element Style:  #{style}"
             return style
           rescue
             #
@@ -404,21 +396,18 @@ module Stamps
         def attribute_enabled? *args
           case args.length
             when 1
-              field = args[0]
-              field_attribute = "class"
+              element = args[0]
+              element_attribute = "class"
               search_string = "enabled"
             when 3
-              field = args[0]
-              field_attribute = args[1]
+              element = args[0]
+              element_attribute = args[1]
               search_string = args[2]
             else
               stop_test "Wrong number of arguments for enabled?"
           end
-          attribute_value = attribute_value field, field_attribute
-          enabled = attribute_value.include? search_string
-
-          #logger.info "Field enabled? #{enabled}"
-          enabled
+          attribute_value = attribute_value element, element_attribute
+          attribute_value.include? search_string
         end
 
         def attribute_value *args
@@ -426,37 +415,37 @@ module Stamps
           case args.length
             when 2
               # get the value of an attribute
-              field = args[0]
+              element = args[0]
               attribute_name = args[1]
               begin
-                field.attribute_value attribute_name
+                element.attribute_value attribute_name
               rescue
                 ""
               end
             when 3
               # set the value of an attribute
-              field = args[0]
+              element = args[0]
               attribute_name = args[1]
               value = args[2]
               script = "return arguments[0].#{attribute_name} = '#{value}'"
-              field.browser.execute_script(script, field)
+              element.browser.execute_script(script, element)
             else
               raise "Illegal number of arguments for attribute_value.  Check your TestHelper."
           end
         end
 
-        def drop_down browser, drop_down_button, selection_field_type, drop_down_input, selection
-          dd = BrowserDropdown.new browser, drop_down_button, selection_field_type, drop_down_input
+        def drop_down browser, drop_down_button, selection_element_type, drop_down_input, selection
+          dd = BrowserDropdown.new browser, drop_down_button, selection_element_type, drop_down_input
           dd.select selection
         end
 
         def text *args
           case args.length
             when 1
-              field_text args[0]
+              element_text args[0]
             when 2
-              field_text args[0]
-            #logger.browser_field args[0], text, args[1]
+              element_text args[0]
+            #logger.browser_element args[0], text, args[1]
             else
               stop_test "Wrong number of arguments for BrowserHelper.text method."
           end
@@ -469,19 +458,19 @@ module Stamps
         def send_keys *args
           case args.length
             when 2
-              field = args[0]
+              element = args[0]
               text = args[1]
-              field_name = ""
+              element_name = ""
             when 3
-              field = args[0]
+              element = args[0]
               text = args[1]
-              field_name = args[2]
+              element_name = args[2]
             else
               stop_test "Wrong number of arguments for BrowserHelper.set_text method."
           end
           2.times do
             begin
-              field.send_keys text
+              element.send_keys text
             rescue
               #ignore
             end
@@ -491,23 +480,23 @@ module Stamps
         def set *args
           case args.length
             when 2
-              field = args[0]
+              element = args[0]
               text = args[1]
-              field_name = ""
+              element_name = ""
             when 3
-              field = args[0]
+              element = args[0]
               text = args[1]
-              field_name = args[2]
+              element_name = args[2]
             else
               stop_test "Wrong number of arguments for BrowserHelper.set_text method."
           end
 
           5.times do
             begin
-              field.focus
-              field.clear
-              field.set text
-              actual_value =  field_text(field)
+              element.focus
+              element.clear
+              element.set text
+              actual_value =  element_text(element)
               break if (actual_value.to_s.include? text) || (text.to_s.include? actual_value)
             rescue
               #ignore
@@ -515,31 +504,31 @@ module Stamps
           end
         end
 
-        def field_text field
+        def element_text element
 =begin
         begin
-          field.focus
+          element.focus
         rescue
           #ignore
         end
 =end
 
           begin
-            text = field.text
+            text = element.text
             return text if text.size > 0
           rescue
             #ignore
           end
 
           begin
-            value = field.value
+            value = element.value
             return value if value.size > 0
           rescue
             #ignore
           end
 
           begin
-            value = field.attribute_value 'value'
+            value = element.attribute_value 'value'
             return value if value.size > 0
           rescue
             #ignore
@@ -587,7 +576,7 @@ module Stamps
               begin
                 args[0].focus
               rescue
-                #logger.info "Unable to focus on browser field #{args[0]}"
+                #logger.info "Unable to focus on browser element #{args[0]}"
               end
 
               args[0].double_click
@@ -598,7 +587,7 @@ module Stamps
               begin
                 args[0].focus
               rescue
-                #logger.info "Unable to focus on browser field #{args[1]} #{args[0]}"
+                #logger.info "Unable to focus on browser element #{args[1]} #{args[0]}"
               end
               args[0].double_click
               var_name = %w(args[0])
@@ -642,9 +631,9 @@ module Stamps
           end
         end
 
-        def present? field
+        def present? element
           begin
-            field.present?
+            element.present?
           rescue
             return false
           end
@@ -653,50 +642,50 @@ module Stamps
         def disabled? *args
           case args.length
             when 1
-              @disabled_field = args[0]
-              @field_attribute = "class"
+              @disabled_element = args[0]
+              @element_attribute = "class"
               @search_string = "disabled"
             when 3
-              @disabled_field = args[0]
-              @field_attribute = args[1]
+              @disabled_element = args[0]
+              @element_attribute = args[1]
               @search_string = args[2]
             else
               stop_test "Wrong number of arguments for enabled?"
           end
-          attribute_value = attribute_value @disabled_field, @field_attribute
+          attribute_value = attribute_value @disabled_element, @element_attribute
           disabled = attribute_value.include? @search_string
 
-          #logger.info "Field disabled? #{disabled}"
+          #logger.info "element disabled? #{disabled}"
           disabled
         end
 
-        def exist? field
+        def exist? element
           begin
-            field.exist?
+            element.exist?
           rescue
             return false
           end
         end
 
-        def visible? field
+        def visible? element
           begin
-            field.visible?
+            element.visible?
           rescue
             return false
           end
         end
 
-        def enabled? field
+        def enabled? element
           begin
-            field.enabled?
+            element.enabled?
           rescue
             return false
           end
         end
 
-        def hover field
+        def hover element
           begin
-            field.hover
+            element.hover
           rescue
             #ignore
           end

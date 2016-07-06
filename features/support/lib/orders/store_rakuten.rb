@@ -75,7 +75,7 @@ module Stamps
               server_error.ok
               stop_test "Server Error: \n#{error_str}" unless counter < max_server_error_retry_count
             end
-            if connecting_button.visible?
+            if connecting_button.element.visible?
               logger.info connecting_button.text
             end
             return settings if settings.present?

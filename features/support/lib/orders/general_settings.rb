@@ -242,7 +242,7 @@ module Stamps
         end
 
         def present?
-          browser_helper.present? (browser.div :text => "Reset Fields")
+          (browser.div text: "Reset Fields").present?
         end
 
         def service

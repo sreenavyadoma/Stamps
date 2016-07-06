@@ -68,7 +68,7 @@ module Stamps
       module SignIn
         class << self
           def username
-            {:id => 'UserNameTextBox'}
+            {id: 'UserNameTextBox'}
           end
 
           def password

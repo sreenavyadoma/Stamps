@@ -10,7 +10,7 @@ module Stamps
       end
 
       def x_button_present?
-        browser_helper.present? window_x_button
+        ((browser.imgs :css => "img[class*='x-tool-close']")[0]).present?
       end
 
       def wait_until_present
@@ -22,11 +22,11 @@ module Stamps
       end
 
       def window_title
-        browser.span :text => "Forgot Username"
+
       end
 
       def present?
-        browser_helper.present? window_title
+        browser.span text: "Forgot Username".present?
       end
 
       def email

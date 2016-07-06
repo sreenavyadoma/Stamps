@@ -33,7 +33,7 @@ module Pam
 
   class CustomerProfile < Browser::Modal
     def present?
-      browser_helper.present? browser.b(:text => "Available Postage")
+      browser.b(text "Available Postage").present?
     end
 
     def wait_until_present
@@ -51,7 +51,9 @@ module Pam
 
   class CustomerProfileNotFound < Browser::Modal
     def present?
-      (browser_helper.present? browser.td :text => "No records found.") || (browser_helper.present? (browser.td css: "td[class=TD3][align=left]"))
+      return true if (browser.td :text => "No records found.").present?
+      return true if (browser.td css: "td[class=TD3][align=left]").present?
+      false
     end
 
     def message

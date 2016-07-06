@@ -178,7 +178,7 @@ module Stamps
         end
 
         def present?
-          browser_helper.present? print_button
+          print_button.present?
         end
 
         def error_ok_button
@@ -207,13 +207,13 @@ module Stamps
 
         def check_naws_plugin_error
           begin
-            error_label = browser.div :text => 'Error'
-            if browser_helper.present? error_label
+            error_label = browser.div text: 'Error'
+            if error_label.present?
               @printing_error = true
               ptags = browser.ps :css => 'div[id^=dialoguemodal]>p'
               logger.info "-- Chrome NAWS Plugin Error --"
               ptags.each {|p_tag|
-                if browser_helper.present? p_tag
+                if p_tag.present?
                   p_tag_text = browser_helper.text p_tag
                   logger.info "\n#{p_tag_text}"
                 end

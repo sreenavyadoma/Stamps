@@ -66,9 +66,7 @@ module Stamps
         end
 
         def privacy_act_statement_link
-          link = browser.span :text => "USPS Privacy Act Statement"
-          logger.info "USPS Privacy Act Statement is #{(browser_helper.present? link)?'Present' : 'Not Present'}"
-          link
+          browser.span text: "USPS Privacy Act Statement"
         end
 
         def usps_privacy_act_statement
@@ -80,9 +78,7 @@ module Stamps
         end
 
         def restrictions_prohibitions_link
-          link = browser.span :text => "Restrictions and Prohibitions"
-          logger.info "Restrictions and Prohibitions is #{(browser_helper.present? link)?'Present' : 'Not Present'}"
-          link
+          browser.span text: "Restrictions and Prohibitions"
         end
 
         def restrictions_and_prohibitions

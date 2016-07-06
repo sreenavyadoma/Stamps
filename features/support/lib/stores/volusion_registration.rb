@@ -48,7 +48,7 @@ module Stores
     end
 
     def present?
-      browser_helper.present? browser.text_field(name: "ShipFirstName")
+      browser.text_field(name: "ShipFirstName").present?
     end
 
     def first_name
@@ -124,7 +124,7 @@ module Stores
     end
 
     def present?
-      browser_helper.present? browser.h2(text: "Checkout")
+      browser.h2(text: "Checkout").present?
     end
 
     def my_saved_billing_address address
@@ -173,7 +173,7 @@ module Stores
     end
 
     def present?
-      browser_helper.present? browser.input(css: "input[name='btn_checkout_guest']")
+      browser.input(css: "input[name='btn_checkout_guest']").present?
     end
 
     def count
@@ -196,7 +196,7 @@ module Stores
 
   class VolusionProduct < Browser::Modal
     def present?
-      browser_helper.present? browser.input(css: "input[alt='Add to cart']")
+      browser.input(css: "input[alt='Add to cart']").present?
     end
 
     def qty_field
@@ -226,7 +226,7 @@ module Stores
 
   class VolusionCategoryOne < Browser::Modal
     def present?
-      browser_helper.present? browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
+      browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']").present?
     end
 
     def sample_product_one
@@ -252,7 +252,7 @@ module Stores
     end
 
     def present?
-      browser_helper.present? browser.a(css: "a[href*=logout]")
+      browser.a(css: "a[href*=logout]").present?
     end
 
     def my_account
@@ -295,7 +295,7 @@ module Stores
     end
 
     def present?
-      browser_helper.present? browser.text_field(name: "Email")
+      browser.text_field(name: "Email").present?
     end
 
     def email
@@ -335,7 +335,7 @@ module Stores
     end
 
     def present?
-      browser_helper.present? browser.text_field(name: "email")
+      browser.text_field(name: "email").present?
     end
 
     def email

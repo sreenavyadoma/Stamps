@@ -113,14 +113,14 @@ end
 
 Then /^Expect system displays expanded filters panel$/ do
   logger.info "Expect system displays expanded filters panel"
-  actual = orders.filter.is_filter_panel_present
+  actual = orders.filter.is_filter_panel_present?
   logger.info "Test #{(actual==true)?'Passed':'Failed'}"
   actual.should eql true
 end
 
 Then /^Expect system displays "Awaiting Shipment" and "Shipped" filters in panel$/ do
   logger.info "Expect system displays Awaiting Shipment and Shipped filters in panel"
-  actual = orders.filter.are_filter_buttons_present
+  actual = orders.filter.is_filter_panel_present?
   logger.info "Test #{(actual==true)?'Passed':'Failed'}"
   actual.should eql true
 end
@@ -139,7 +139,7 @@ end
 
 Then /^Filter: Expect Filters panel is close$/ do
   logger.info "Filter: Expect Filters panel is close"
-  actual = orders.filter.is_filter_panel_present
+  actual = orders.filter.is_filter_panel_present?
   actual.should eql false
 end
 
@@ -150,7 +150,7 @@ end
 
 Then /^Filter: Expect Panel is open$/ do
   logger.info "Filter: Expect Panel is open"
-  actual = orders.filter.is_filter_panel_present
+  actual = orders.filter.is_filter_panel_present?
   logger.info "Test #{(actual==true)?'Passed':'Failed'}"
   actual.should eql true
 end

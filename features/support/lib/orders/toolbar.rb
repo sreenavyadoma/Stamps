@@ -59,7 +59,7 @@ module Stamps
         class MoveMenu < Browser::Modal
           class MoveConfirmation < Browser::Modal
             def present?
-              browser_helper.present? browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
+              (browser.span Orders::Locators::ToolBar::confirmation_modal_move_label).present?
             end
 
             def move_label
@@ -415,13 +415,10 @@ module Stamps
         end
 
         def present?
-          browser_helper.present? browser.span Orders::Locators::ToolBar::add
+          (browser.span Orders::Locators::ToolBar::add).present?
         end
 
-
-
         #============================
-
 
         def per_page
           PerPage.new param
@@ -455,11 +452,7 @@ module Stamps
         end
 
         def page_count
-          divs = browser.divs :css => "div[id^=tbtext]"
-          div = divs.last
-          present = browser_helper.present? div
-          logger.info "Page count: #{browser_helper.text div}"
-          div
+          (browser.divs :css => "div[id^=tbtext]").last
         end
 
         def page_number
@@ -477,7 +470,7 @@ module Stamps
         def first_page_disabled
           field = browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
           label = BrowserElement.new field
-          label.disabled?
+          label.element.disabled?
         end
 
         def previous_page
@@ -487,7 +480,7 @@ module Stamps
         def previous_page_disabled
           field = browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
           label = BrowserElement.new field
-          label.disabled?
+          label.element.disabled?
         end
 
         def next_page

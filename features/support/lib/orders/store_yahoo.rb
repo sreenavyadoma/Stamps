@@ -32,7 +32,7 @@ module Stamps
         def contact_token
           parent = browser.span(text: "Partner Store Contract Token").parent.parent
           input = parent.divs[0].div.div.input
-          raise "Contact Token textbox does not exist or textbox locator is wrong." unless browser_helper.present? input
+          raise "Contact Token textbox does not exist or textbox locator is wrong." unless input.present?
           BrowserTextBox.new input
         end
 

@@ -90,7 +90,7 @@ module Stamps
         end
 
         def present?
-          browser_helper.present? browser.span(:text => "Verify Seller ID")
+          browser.span(text: "Verify Seller ID").present?
         end
 
         def close
