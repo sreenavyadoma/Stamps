@@ -87,27 +87,27 @@ module Stamps
       end
 
       def closed_filter_panel
-        browser.div :css => "div[id*=title][class*=x-title-text-dark-grey]"
+        browser.div css: "div[id*=title][class*=x-title-text-dark-grey]"
       end
 
       def filter_panel_border_arrow
-        browser.div :css => "div[id*=filterpanel][class*=x-layout-split-left]"
+        browser.div css: "div[id*=filterpanel][class*=x-layout-split-left]"
       end
 
       def filter_panel_header_arrow
-        browser.img :css => "img[id*=tool][class*=x-tool-expand-right]"
+        browser.img css: "img[id*=tool][class*=x-tool-expand-right]"
       end
 
       def filter_panel_header_name
-        browser.div :css => "div[id*=title][class*=x-title-text-dark-grey]"
+        browser.div css: "div[id*=title][class*=x-title-text-dark-grey]"
       end
 
       def selected_filter_button
-        browser.table :css => "table[id*=badgebutton][class*=sdc-badgebutton-selected]"
+        browser.table css: "table[id*=badgebutton][class*=sdc-badgebutton-selected]"
       end
 
       def cancelled_field
-        browser.div :text => "Canceled"
+        browser.div text: "Canceled"
       end
 
       def menu_item
@@ -115,7 +115,7 @@ module Stamps
       end
 
       def awaiting_shipment_count
-        browser_helper.text(browser.div :css => "div.sdc-badge").to_i
+        browser_helper.text(browser.div css: "div.sdc-badge").to_i
       end
 
       def awaiting_shipment
@@ -166,7 +166,7 @@ module Stamps
       end
 
       def click_closed_filter_panel
-        browser_helper.click closed_filter_panel
+        browser_helper.safe_click closed_filter_panel
       end
 
       def get_selected_filter_text
@@ -187,7 +187,7 @@ module Stamps
       end
 
       def click_border_arrow
-        browser_helper.click filter_panel_border_arrow
+        browser_helper.safe_click filter_panel_border_arrow
       end
 
       def is_header_arrow_present

@@ -18,7 +18,7 @@ module Stamps
       class Etsy < Browser::Modal
 
         def window_title
-          BrowserElement.new(browser.div :text => "Connect your Etsy Store")
+          BrowserElement.new(browser.div text: "Connect your Etsy Store")
         end
 
         def present?
@@ -105,7 +105,7 @@ module Stamps
       class ModifyEtsyStore < Etsy
 
         def window_title
-          BrowserElement.new(browser.div :text => "Modify your Etsy Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Etsy Store Connection")
         end
 
         def present?
@@ -120,7 +120,7 @@ module Stamps
       class ReconnectEtsyStore < Etsy
 
         def window_title
-          BrowserElement.new(browser.div :text => "Modify your Rakuten Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Rakuten Store Connection")
         end
 
         def present?

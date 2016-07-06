@@ -1,5 +1,7 @@
 module Stamps
 
+  extend self
+
   def init scenario
     TestHelper.init scenario
   end
@@ -56,6 +58,4 @@ module Stamps
     @orders_object ||= Modal.new param
     @orders_object.stop_test error_message
   end
-
-  extend self
 end

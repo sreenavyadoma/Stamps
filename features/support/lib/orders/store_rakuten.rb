@@ -18,7 +18,7 @@ module Stamps
       class Rakuten < Browser::Modal
 
         def window_title
-          BrowserElement.new(browser.div :text => "Connect your Rakuten Store")
+          BrowserElement.new(browser.div text: "Connect your Rakuten Store")
         end
 
         def present?
@@ -87,7 +87,7 @@ module Stamps
       class ModifyRakutenStore < Rakuten
 
         def window_title
-          BrowserElement.new(browser.div :text => "Modify your Rakuten Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Rakuten Store Connection")
         end
 
         def present?

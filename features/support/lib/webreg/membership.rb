@@ -3,8 +3,8 @@ module Stamps
     class State < Browser::Modal
       def select state
         begin
-          browser.select_list(:id, "state").option(:text => state).when_present.select
-          browser.select_list(:id, "state").option(:text => state).when_present.select
+          browser.select_list(:id, "state").option(text: state).when_present.select
+          browser.select_list(:id, "state").option(text: state).when_present.select
         rescue
           #ignore
         end
@@ -262,8 +262,8 @@ module Stamps
     class ExpirationMonth < Browser::Modal
       def select month
         begin
-          browser.select_list(:id, "ccMonth").option(:text => month).when_present.select
-          browser.select_list(:id, "ccMonth").option(:text => month).when_present.select
+          browser.select_list(:id, "ccMonth").option(text: month).when_present.select
+          browser.select_list(:id, "ccMonth").option(text: month).when_present.select
         rescue
           #ignore
         end
@@ -322,8 +322,8 @@ module Stamps
     class ExpirationYear < Browser::Modal
       def select year
         begin
-          browser.select_list(:id, "ccYear").option(:text => year).when_present.select
-          browser.select_list(:id, "ccYear").option(:text => year).when_present.select
+          browser.select_list(:id, "ccYear").option(text: year).when_present.select
+          browser.select_list(:id, "ccYear").option(text: year).when_present.select
         rescue
           #ignore
         end
@@ -332,12 +332,12 @@ module Stamps
 
     class TermsAndConditions < Browser::Modal
       def must_agree_label
-        BrowserElement.new browser.span(:text => "You must agree to the Terms & Conditions to proceed.")
+        BrowserElement.new browser.span(text: "You must agree to the Terms & Conditions to proceed.")
       end
 
       def check
         agree_label = must_agree_label
-        checkbox_field = BrowserElement.new browser.input(:id => "termsConditions")
+        checkbox_field = BrowserElement.new browser.input(id: "termsConditions")
         10.times do
           checkbox_field.safe_click
           sleep 1
@@ -347,7 +347,7 @@ module Stamps
 
       def uncheck
         agree_label = must_agree_label
-        checkbox_field = BrowserElement.new browser.input(:id => "termsConditions")
+        checkbox_field = BrowserElement.new browser.input(id: "termsConditions")
         10.times do
           checkbox_field.safe_click
           sleep 1
@@ -362,15 +362,15 @@ module Stamps
       end
 
       def message
-        browser_helper.text ((browser.ps :id => "topMessage").last)
+        browser_helper.text ((browser.ps id: "topMessage").last)
       end
 
       def user_id
-        BrowserTextBox.new browser.text_field(:id => "newUsername")
+        BrowserTextBox.new browser.text_field(id: "newUsername")
       end
 
       def continue
-        BrowserElement.new browser.button(:id => "btnUserNameTakenContinue")
+        BrowserElement.new browser.button(id: "btnUserNameTakenContinue")
       end
     end
 
@@ -390,12 +390,12 @@ module Stamps
     class Membership < Browser::Modal
 
       def wait_until_present
-        browser_helper.wait_until_present browser.text_field(:id => "firstName")
-        browser_helper.wait_until_present browser.text_field(:id => "lastName")
-        browser_helper.wait_until_present browser.text_field(:id => "companyName")
-        browser_helper.wait_until_present browser.text_field(:id => "street")
-        browser_helper.wait_until_present browser.text_field(:id => "city")
-        browser_helper.wait_until_present browser.text_field(:id => "zip")
+        browser_helper.wait_until_present browser.text_field(id: "firstName")
+        browser_helper.wait_until_present browser.text_field(id: "lastName")
+        browser_helper.wait_until_present browser.text_field(id: "companyName")
+        browser_helper.wait_until_present browser.text_field(id: "street")
+        browser_helper.wait_until_present browser.text_field(id: "city")
+        browser_helper.wait_until_present browser.text_field(id: "zip")
       end
 
       def present?
@@ -403,23 +403,23 @@ module Stamps
       end
 
       def first_name
-        BrowserTextBox.new browser.text_field(:id => "firstName")
+        BrowserTextBox.new browser.text_field(id: "firstName")
       end
 
       def last_name
-        BrowserTextBox.new browser.text_field(:id => "lastName")
+        BrowserTextBox.new browser.text_field(id: "lastName")
       end
 
       def company
-        BrowserTextBox.new browser.text_field(:id => "companyName")
+        BrowserTextBox.new browser.text_field(id: "companyName")
       end
 
       def address
-        BrowserTextBox.new browser.text_field(:id => "street")
+        BrowserTextBox.new browser.text_field(id: "street")
       end
 
       def city
-        BrowserTextBox.new browser.text_field(:id => "city")
+        BrowserTextBox.new browser.text_field(id: "city")
       end
 
       def state
@@ -427,23 +427,23 @@ module Stamps
       end
 
       def zip
-        BrowserTextBox.new browser.text_field(:id => "zip")
+        BrowserTextBox.new browser.text_field(id: "zip")
       end
 
       def phone
-        BrowserTextBox.new browser.text_field(:id => "phone")
+        BrowserTextBox.new browser.text_field(id: "phone")
       end
 
       def ext
-        BrowserTextBox.new browser.text_field(:id => "extension")
+        BrowserTextBox.new browser.text_field(id: "extension")
       end
 
       def card_holder_name
-        BrowserTextBox.new browser.text_field(:id => "ccName")
+        BrowserTextBox.new browser.text_field(id: "ccName")
       end
 
       def card_number
-        BrowserTextBox.new browser.text_field(:id => "ccNumber")
+        BrowserTextBox.new browser.text_field(id: "ccNumber")
       end
 
       def expiration_month
@@ -455,7 +455,7 @@ module Stamps
       end
 
       def billing_same_as_mailing
-        checkbox_field = browser.input :id => "useMailingAddressForBilling"
+        checkbox_field = browser.input id: "useMailingAddressForBilling"
         Stamps::Browser::BrowserCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
       end
 
@@ -464,12 +464,12 @@ module Stamps
       end
 
       def back
-        BrowserElement.new browser.button(:id => "prev")
+        BrowserElement.new browser.button(id: "prev")
       end
 
       def submit
-        button = BrowserElement.new browser.button(:text => "Submit")
-        loading = BrowserElement.new browser.button(:text => "Loading...")
+        button = BrowserElement.new browser.button(text: "Submit")
+        loading = BrowserElement.new browser.button(text: "Loading...")
         supplies = ChooseSupplies.new param
         userid_taken = UserIdTaken.new param
         download_page = DownloadPage.new param

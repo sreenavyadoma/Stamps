@@ -1,7 +1,7 @@
 module Pam
   class PamPageHeader < Browser::Modal
     def change_meter_limit
-      link = Stamps::Browser::BrowserElement.new browser.a(:text => "Change Meter Limit")
+      link = Stamps::Browser::BrowserElement.new browser.a(text: "Change Meter Limit")
       page = ChangeMeterLimit.new param
       5.times do
         link.safe_click
@@ -11,7 +11,7 @@ module Pam
     end
 
     def ach_credit
-      link = Stamps::Browser::BrowserElement.new browser.a(:text => "ACH Credit")
+      link = Stamps::Browser::BrowserElement.new browser.a(text: "ACH Credit")
       page = ACHCredit.new param
       5.times do
         link.safe_click
@@ -21,7 +21,7 @@ module Pam
     end
 
     def appcapp_overrides
-      link = Stamps::Browser::BrowserElement.new browser.a(:text => "AppCap Overrides")
+      link = Stamps::Browser::BrowserElement.new browser.a(text: "AppCap Overrides")
       page = AppCapOverrides.new param
       5.times do
         link.safe_click
@@ -37,7 +37,7 @@ module Pam
     end
 
     def wait_until_present
-      browser_helper.wait_until_present browser.b(:text => "Available Postage")
+      browser_helper.wait_until_present browser.b(text: "Available Postage")
     end
 
     def header
@@ -51,7 +51,7 @@ module Pam
 
   class CustomerProfileNotFound < Browser::Modal
     def present?
-      return true if (browser.td :text => "No records found.").present?
+      return true if (browser.td text: "No records found.").present?
       return true if (browser.td css: "td[class=TD3][align=left]").present?
       false
     end

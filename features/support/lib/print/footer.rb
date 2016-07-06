@@ -3,7 +3,7 @@ module Stamps
     module Postage
       class Footer < Browser::Modal
         def total
-          BrowserElement.new browser.label :id => "sdc-printpanel-totalcostlabel"
+          BrowserElement.new browser.label id: "sdc-printpanel-totalcostlabel"
         end
 
         def print_sample
@@ -42,11 +42,11 @@ module Stamps
         end
 
         def print_button
-          BrowserElement.new browser.a :css => "a[class*=sdc-printpanel-printpostagebtn]"
+          BrowserElement.new browser.a css: "a[class*=sdc-printpanel-printpostagebtn]"
         end
 
         def sample_button
-          BrowserElement.new browser.a :css => "a[class*=sdc-printpanel-printsamplebtn]"
+          BrowserElement.new browser.a css: "a[class*=sdc-printpanel-printsamplebtn]"
         end
 
 

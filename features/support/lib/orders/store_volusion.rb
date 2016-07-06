@@ -93,7 +93,7 @@ module Stamps
       class ModifyVolusionStore < Volusion
 
         def window_title
-          BrowserElement.new(browser.div :text => "Modify your Volusion Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Volusion Store Connection")
         end
 
         def present?

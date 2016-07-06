@@ -3,25 +3,25 @@ module Stamps
     module Locators
       class SignIn
         def self.username
-          {:id => "UserNameTextBox"}
+          {id: "UserNameTextBox"}
         end
 
         def self.password
-          {:id => "PasswordTextBox"}
+          {id: "PasswordTextBox"}
         end
 
         def self.collapse_button
-          {:id => "signInButton"}
+          {id: "signInButton"}
         end
       end
 
       class FormBody
         def self.print_on_drop_down_divs
-          {:css => "div[class*=x-form-trigger]"}
+          {css: "div[class*=x-form-trigger]"}
         end
 
         def self.print_on_text_field
-          {:name => "media"}
+          {name: "media"}
         end
         def weight_input
 

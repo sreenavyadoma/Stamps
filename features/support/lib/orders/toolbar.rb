@@ -20,17 +20,17 @@ module Stamps
       class Toolbar < Browser::Modal
         class SettingsMenu < Browser::Modal
           def collapse_button
-            BrowserElement.new browser.span :css => "span[class*=sdc-icon-settings]"
+            BrowserElement.new browser.span css: "span[class*=sdc-icon-settings]"
           end
 
           def select menu_item
             dd = collapse_button
             case menu_item.downcase
               when /settings/
-                selection = BrowserElement.new(browser.span :text => "General Settings")
+                selection = BrowserElement.new(browser.span text: "General Settings")
                 modal = Orders::GeneralSettings.new param
               when /stores/
-                selection = BrowserElement.new(browser.span :text => "Add/Edit Stores")
+                selection = BrowserElement.new(browser.span text: "Add/Edit Stores")
                 modal = Orders::Stores::ManageStores.new param
               else
                 stop_test "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores."
@@ -101,7 +101,7 @@ module Stamps
 
             confirmation = MoveConfirmation.new param
             dd = drop_down
-            selection_label = BrowserElement.new browser.span :text => selection_str
+            selection_label = BrowserElement.new browser.span text: selection_str
 
             10.times{
               dd.safe_click unless selection_label.present?
@@ -182,7 +182,7 @@ module Stamps
             add_button = button
 
             # Initializing Order Database
-            initializing_db = BrowserElement.new browser.div :text => "Initializing Order Database"
+            initializing_db = BrowserElement.new browser.div text: "Initializing Order Database"
             nav_bar = Orders::Navigation::NavigationBar.new param
 
             sleep 2
@@ -236,7 +236,7 @@ module Stamps
         class PrintOrderButton < Browser::Modal
 
           def button
-            BrowserElement.new ((browser.spans :css => "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
+            BrowserElement.new ((browser.spans css: "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
           end
 
           def tooltip
@@ -440,7 +440,7 @@ module Stamps
         end
 
         def browser_settings_button
-          BrowserElement.new (browser.span :css => "span[class*=sdc-icon-settings]")
+          BrowserElement.new (browser.span css: "span[class*=sdc-icon-settings]")
         end
 
         def usps_intl_terms
@@ -452,51 +452,51 @@ module Stamps
         end
 
         def page_count
-          (browser.divs :css => "div[id^=tbtext]").last
+          (browser.divs css: "div[id^=tbtext]").last
         end
 
         def page_number
-          field = browser.text_field :css => "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
+          field = browser.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
           text_box = BrowserTextBox.new field
           text_box
         end
 
         def first_page
-          field = browser.span :css => "span[class*=x-tbar-page-first]"
+          field = browser.span css: "span[class*=x-tbar-page-first]"
           label = BrowserElement.new field
           label
         end
 
         def first_page_disabled
-          field = browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
           label = BrowserElement.new field
           label.element.disabled?
         end
 
         def previous_page
-          BrowserElement.new element browser.span :css => "span[class*=x-tbar-page-prev]"
+          BrowserElement.new element browser.span css: "span[class*=x-tbar-page-prev]"
         end
 
         def previous_page_disabled
-          field = browser.a  :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
           label = BrowserElement.new field
           label.element.disabled?
         end
 
         def next_page
-          BrowserElement.new element browser.span :css => "span[class*=x-tbar-page-next]"
+          BrowserElement.new element browser.span css: "span[class*=x-tbar-page-next]"
         end
 
         def last_page
-          BrowserElement.new element browser.span :css => "span[class*=x-tbar-page-last]"
+          BrowserElement.new element browser.span css: "span[class*=x-tbar-page-last]"
         end
 
         def last_page_disabled
-          BrowserElement.new browser.a :css => "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          BrowserElement.new browser.a css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
         end
 
         def total_number_of_pages
-          label = (BrowserElement.new browser.divs :css => "div[id^=tbtext-]").last
+          label = (BrowserElement.new browser.divs css: "div[id^=tbtext-]").last
           number_str=label.text
           number = number_str.scan /\d+/
           number.last.to_s

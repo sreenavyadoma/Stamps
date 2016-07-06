@@ -4,23 +4,23 @@ module Stamps
       private
 
       def checkbox_status_array
-        browser.divs :css => 'div[class*=x-form-type-checkbox]'
+        browser.divs css: 'div[class*=x-form-type-checkbox]'
       end
 
       def checkbox_array
-        browser.spans :css => 'span[id^=checkbox]'
+        browser.spans css: 'span[id^=checkbox]'
       end
 
       def drop_down_arrow_array
-        browser.divs :css => 'div[id*=trigger-picker]'
+        browser.divs css: 'div[id*=trigger-picker]'
       end
 
       def selection_array
-        browser.inputs :css => 'input[id*=combo][class*=x-form-text-default]'
+        browser.inputs css: 'input[id*=combo][class*=x-form-text-default]'
       end
 
       def save_button
-        browser.span(:text => 'Save')
+        browser.span(text: 'Save')
       end
 
       def unavailable_services_checkbox
@@ -75,22 +75,22 @@ module Stamps
       public
 
       def save_changes
-        browser_helper.click save_button
+        browser_helper.safe_click save_button
       end
 
       def select_logoff_time(duration)
-        browser_helper.click logoff_time_combo
-        browser_helper.click browser.li :text => duration
+        browser_helper.safe_click logoff_time_combo
+        browser_helper.safe_click browser.li text: duration
       end
 
       def select_postdate_time(time)
-        browser_helper.click postdate_time_combo
-        browser_helper.click browser.li :text => time
+        browser_helper.safe_click postdate_time_combo
+        browser_helper.safe_click browser.li text: time
       end
 
       def select_balance_notification(amount)
-        browser_helper.click balance_notification_combo
-        browser_helper.click browser.li :text => amount
+        browser_helper.safe_click balance_notification_combo
+        browser_helper.safe_click browser.li text: amount
       end
 
       def get_logoff_time
@@ -173,7 +173,7 @@ module Stamps
           if box_checked?(number)
             break
           else
-            browser_helper.click checkbox
+            browser_helper.safe_click checkbox
           end
         end
       end
@@ -190,7 +190,7 @@ module Stamps
 
         5.times do
           if box_checked?(number)
-            browser_helper.click checkbox
+            browser_helper.safe_click checkbox
           else
             break
           end
@@ -201,7 +201,7 @@ module Stamps
 
         checkbox_status_array[box_row].attribute_value("class").include? 'x-form-cb-checked'
 
-        #browser.div(:css => "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(#{box_row})>div>div>div>div>div").attribute_value("class").include? 'x-form-cb-checked'
+        #browser.div(css: "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(#{box_row})>div>div>div>div>div").attribute_value("class").include? 'x-form-cb-checked'
 
       end
 

@@ -4,7 +4,7 @@ module Stamps
       class MultiOrder < Browser::Modal
         private
         def order_count_label
-          browser.ps(:css => 'b').last
+          browser.ps(css: 'b').last
         end
 
         public

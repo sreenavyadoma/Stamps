@@ -164,7 +164,7 @@ module Stamps
       end
 
       def click
-        browser_helper.click @element
+        browser_helper.safe_click @element
       end
 
       def safe_click
@@ -347,7 +347,7 @@ module Stamps
             # Selection passed is String object.
             case @html_tag_symbol
               when :li
-                return browser.li :text => selection
+                return browser.li text: selection
               else
                 stop_test "Unsupported HTML drop-down selection tag #{@html_tag_symbol}"
             end
@@ -359,7 +359,7 @@ module Stamps
       def expose_selection selection
         @verify_element_attrib = selection_element selection
         5.times{
-          browser_helper.safe_click @drop_down, "drop-down"
+          browser_helper.safe_click @drop_down
           #logger.info "Selection is present? #{browser_helper.present? @selection_element}"
           return @verify_element_attrib if browser_helper.present? @verify_element_attrib
         }
@@ -542,9 +542,9 @@ module Stamps
           puts "#{var_name} = #{var_value.inspect}"
         end
 
-        def safe_click *args
+        def safe_click element
           begin
-            click *args
+            element.click
           rescue
             #ignore
           end

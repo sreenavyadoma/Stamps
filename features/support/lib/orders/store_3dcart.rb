@@ -117,7 +117,7 @@ module Stamps
       class Modify3DCartStore < ThreeDCart
 
         def window_title
-          BrowserElement.new(browser.div :text => "Modify your 3DCart Store Connection")
+          BrowserElement.new(browser.div text: "Modify your 3DCart Store Connection")
         end
 
         def present?

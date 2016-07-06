@@ -36,15 +36,15 @@ module Stamps
       protected
 
       def window_title
-        browser.div :text => 'Order Error'
+        browser.div text: 'Order Error'
       end
 
       def ok_button_span
-        browser.span :text => 'OK'
+        browser.span text: 'OK'
       end
 
       def error_message_label
-        browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
+        browser.div css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
       end
 
       public
@@ -56,7 +56,7 @@ module Stamps
       def ok
         5.times {
           begin
-            browser_helper.click ok_button_span, 'OK'
+            browser_helper.safe_click ok_button_span
             break unless ok_button_span.present?
           rescue
             #ignore
@@ -80,7 +80,7 @@ module Stamps
       private
 
       def error_message_label
-        browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
+        browser.div css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
       end
 
       def window_title
@@ -118,7 +118,7 @@ module Stamps
       def continue
         5.times{
           begin
-            browser_helper.click continue_button, "Continue"
+            browser_helper.safe_click continue_button
             break unless continue_button.present?
           rescue
             #ignore
@@ -130,7 +130,7 @@ module Stamps
       def cancel
         5.times{
           begin
-            browser_helper.click cancel_button, "ok"
+            browser_helper.safe_click cancel_button
             break unless cancel_button.present?
           rescue
             #ignore
@@ -140,7 +140,7 @@ module Stamps
 
       def close_window
         5.times{
-          browser_helper.click window_title
+          browser_helper.safe_click window_title
           brea
         }
       end
@@ -150,11 +150,11 @@ module Stamps
     class RatingError < Browser::Modal
       private
       def rating_error_p
-        browser.p :css => 'div[class=x-autocontainer-innerCt]>p:nth-child(1)'
+        browser.p css: 'div[class=x-autocontainer-innerCt]>p:nth-child(1)'
       end
 
       def ok_button
-        browser.span :text => 'OK'
+        browser.span text: 'OK'
       end
 
       public
@@ -176,7 +176,7 @@ module Stamps
         logger.info browser_helper.text rating_error_p
         logger.info "----  Rating Error  ----"
         5.times {
-          browser_helper.click ok_button, 'OK'
+          browser_helper.safe_click ok_button
           break unless present?
         }
       end
@@ -196,7 +196,7 @@ module Stamps
       end
 
       def window_title
-        browser.div :text => "Stamps.com Plugin Issue"
+        browser.div text: "Stamps.com Plugin Issue"
       end
 
       public
@@ -205,18 +205,18 @@ module Stamps
       end
 
       def close
-        browser_helper.click close_window_button, 'close'
+        browser_helper.safe_click close_window_button
       end
     end
 
     class NawsPluginError < Browser::Modal
       private
       def error_code_p
-        browser.p :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
+        browser.p css: "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
       end
 
       def ok_button
-        browser.span :text => 'OK'
+        browser.span text: 'OK'
       end
 
       public
@@ -241,17 +241,17 @@ module Stamps
       private
 
       def error_message_label
-        browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
+        browser.div css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
       end
 
       def window_x_button
-        browser.img :css => "img[class$=x-tool-close]"
+        browser.img css: "img[class$=x-tool-close]"
       end
 
       public
       def close
         logger.info "Closing Plugin not Installed Window"
-        browser_helper.click window_x_button
+        browser_helper.safe_click window_x_button
         logger.info "Plugin not Installed Window Closed"
       end
 
@@ -279,15 +279,15 @@ module Stamps
       private
 
       def error_message_label
-        browser.div :css => "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
+        browser.div css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
       end
 
       def error_code
-        browser.p :text => "Error code: [1010]"
+        browser.p text: "Error code: [1010]"
       end
 
       def ok_button
-        browser.span :text => 'OK'
+        browser.span text: 'OK'
       end
 
       public
@@ -323,7 +323,7 @@ module Stamps
 
       def ok
         10.times {
-          browser_helper.click ok_button, 'OK'
+          browser_helper.safe_click ok_button
           break unless present?
         }
       end
@@ -331,7 +331,7 @@ module Stamps
 
 =begin
   def print_error_message
-    ptags = browser.ps :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p"
+    ptags = browser.ps css: "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p"
     logger.info "-- Print Plugin Error [Error code: [1009]]--"
     ptags.each {|p_tag|
       if helper.present? p_tag

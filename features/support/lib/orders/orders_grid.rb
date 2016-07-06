@@ -5,41 +5,41 @@ module Stamps
         MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
         TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
         GRID_COLUMNS ||= {
-            :check_box => " ",
-            :store => "Store",
-            :ship_cost => "Ship Cost",
-            :age => "Age",
-            :order_id => "Order ID",
-            :order_date => "Order Date",
-            :recipient => "Recipient",
-            :company => "Company",
-            :address => "Address",
-            :city => "City",
-            :state => "State",
-            :zip => "Zip",
-            :country => "Country",
-            :phone => "Phone",
-            :email => "Email",
-            :qty => "Qty.",
-            :item_sku => "Item SKU",
-            :item_name => "Item Name",
-            :ship_from => "Ship From",
-            :service => "Service",
-            :weight => "Weight",
-            :insured_value => "Insured Value",
-            :reference_no => "Reference No.",
-            :cost_code => "Cost Code",
-            :order_status => "Order Status",
-            :date_printed => "Date Printed",
-            :ship_date => "Ship Date",
-            :tracking_no => "Tracking #",
-            :order_total => "Order Total"
+            check_box: " ",
+            store: "Store",
+            ship_cost: "Ship Cost",
+            age: "Age",
+            order_id: "Order ID",
+            order_date: "Order Date",
+            recipient: "Recipient",
+            company: "Company",
+            address: "Address",
+            city: "City",
+            state: "State",
+            zip: "Zip",
+            country: "Country",
+            phone: "Phone",
+            email: "Email",
+            qty: "Qty.",
+            item_sku: "Item SKU",
+            item_name: "Item Name",
+            ship_from: "Ship From",
+            service: "Service",
+            weight: "Weight",
+            insured_value: "Insured Value",
+            reference_no: "Reference No.",
+            cost_code: "Cost Code",
+            order_status: "Order Status",
+            date_printed: "Date Printed",
+            ship_date: "Ship Date",
+            tracking_no: "Tracking #",
+            order_total: "Order Total"
         }
 
         def sort_order column, sort_order
           scroll column
 
-          column_span = browser.span :text => GRID_COLUMNS[column]
+          column_span = browser.span text: GRID_COLUMNS[column]
           column_field = BrowserElement.new column_span
           sort_order = (sort_order==:sort_ascending)?"ASC":"DESC"
 
@@ -58,14 +58,14 @@ module Stamps
           scroll column
           row = row_number(order_id)
           scroll column
-          logger.info "Retrieving data for Column #{GRID_COLUMNS[column]} with Order ID #{order_id}...."
+          logger.info "Retrieving #{GRID_COLUMNS[column]} for Order ID #{order_id}...."
           data = grid_text column, row
           logger.info "Column:  #{GRID_COLUMNS[column]}, Order ID #{order_id}, Row #{row}, Data #{data}"
           data
         end
 
         def row_count
-          tables = browser.tables :css => "div[id^=ordersGrid]>div>div>table"
+          tables = browser.tables css: "div[id^=ordersGrid]>div>div>table"
           count = tables.size
           #logger.info "Total Number of Orders on Grid:  #{count}"
           count.to_i
@@ -78,7 +78,7 @@ module Stamps
         end
 
         def column_name_field column
-          browser.span :text => GRID_COLUMNS[column]
+          browser.span text: GRID_COLUMNS[column]
         end
 
         def empty?
@@ -100,7 +100,7 @@ module Stamps
 
         def grid_field column_number, row
           css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div"
-          browser.div :css => css
+          browser.div css: css
         end
 
         def grid_field_column_name column_name, row
@@ -124,7 +124,7 @@ module Stamps
         end
 
         def column_fields
-          @column_fields = browser.spans :css => "div[componentid^=gridcolumn]"
+          @column_fields = browser.spans css: "div[componentid^=gridcolumn]"
         end
 
         def row_number order_id
@@ -133,7 +133,7 @@ module Stamps
           column = column_number(:order_id)
           css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column})>div"
           #logger.info "Order ID: #{order_id} CSS: #{css}"
-          fields = browser.divs :css => css
+          fields = browser.divs css: css
           fields.each_with_index { |div, index|
             row_text = browser_helper.text div
             if row_text.include? order_id
@@ -797,8 +797,8 @@ module Stamps
         def checkbox_header
           scroll_into_view
 
-          checkbox_field = (browser.spans :css => "div[componentid^=gridcolumn]").first
-          check_verify_field = browser.div :css => "div[class*=x-column-header-checkbox]"
+          checkbox_field = (browser.spans css: "div[componentid^=gridcolumn]").first
+          check_verify_field = browser.div css: "div[class*=x-column-header-checkbox]"
           attribute = "class"
           attrib_value_check = "checker-on"
           Stamps::Browser::BrowserCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
@@ -807,7 +807,7 @@ module Stamps
         public
 
         def scroll_into_view
-          field = BrowserElement.new((browser.spans :css => "div[componentid^=gridcolumn]").first)
+          field = BrowserElement.new((browser.spans css: "div[componentid^=gridcolumn]").first)
           field.scroll_into_view
           field
         end
@@ -836,7 +836,7 @@ module Stamps
           scroll_into_view
           if size > 0
             checkbox_field = row_div number
-            verify_field = browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
+            verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
             checkbox = BrowserCheckbox.new checkbox_field, verify_field, "class", "grid-item-selected"
             checkbox.check
             logger.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
@@ -849,7 +849,7 @@ module Stamps
           scroll_into_view
           if size > 0
             checkbox_field = row_div number
-            verify_field = browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
+            verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
             checkbox = BrowserCheckbox.new checkbox_field, verify_field, "class", "grid-item-selected"
             checkbox.uncheck
             logger.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
@@ -861,7 +861,7 @@ module Stamps
         def checked? number
           scroll_into_view
           checkbox_field = row_div number
-          verify_field = browser.table :css => "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
+          verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
           checkbox = BrowserCheckbox.new checkbox_field, verify_field, "class", "grid-item-selected"
           checkbox.checked?
         end
@@ -1075,7 +1075,7 @@ module Stamps
         end
 
         def wait_until_present *args
-          grid_present_span = BrowserElement.new (browser.div :css => "div[id=appContent]>div>div>div[id^=ordersGrid]")
+          grid_present_span = BrowserElement.new (browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]")
           grid_present_span.wait_until_present
         end
 

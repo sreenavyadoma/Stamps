@@ -18,7 +18,7 @@ module Stamps
       class BigCommerce < Browser::Modal
 
         def window_title
-          BrowserElement.new browser.div(:text => "Connect your Bigcommerce Store")
+          BrowserElement.new browser.div(text: "Connect your Bigcommerce Store")
         end
 
         def present?

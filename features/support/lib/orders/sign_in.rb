@@ -22,7 +22,7 @@ module Stamps
 
         def ok
           5.times{
-            browser_helper.click okay_button, 'OK'
+            browser_helper.safe_click okay_button
             break unless okay_button.present?
           }
         end
@@ -42,11 +42,11 @@ module Stamps
         end
 
         def wait_until_present
-          browser_helper.wait_until_present (browser.span :text => "Continue")
+          browser_helper.wait_until_present (browser.span text: "Continue")
         end
 
         def continue
-          button = BrowserElement.new (browser.span :text => "Continue")
+          button = BrowserElement.new (browser.span text: "Continue")
           10.times{
             button.safe_click
             break unless button.present?

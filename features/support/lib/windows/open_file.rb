@@ -31,7 +31,7 @@ module Stamps
           stop_test "Print Window is not open" unless present?
           print_window.activate
 
-          print_window.text_field(:class => "Edit", :index => 0).set filename
+          print_window.text_field(class: "Edit", :index => 0).set filename
 
           print_window.button(:value => "&Open").click
 

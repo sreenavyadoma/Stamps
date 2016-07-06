@@ -10,7 +10,7 @@ module Stamps
 
       class Links < Browser::Modal
         def color
-          field = browser.link :css => "a[rel=WebBatch]"
+          field = browser.link css: "a[rel=WebBatch]"
           browser_helper.wait_until_present field
           style = field.style "color"
           style
@@ -27,13 +27,13 @@ module Stamps
 
       class NavigationHeader < Browser::Modal
         def height
-          field = browser.div :class => "navbar-inner"
+          field = browser.div class: "navbar-inner"
           browser_helper.wait_until_present field
           field.style "height"
         end
 
         def background_color
-          field = browser.div :class => "navbar-inner"
+          field = browser.div class: "navbar-inner"
           browser_helper.wait_until_present field
           style = field.style "background-color"
           style
@@ -60,19 +60,19 @@ module Stamps
 
       class Tooltip < Browser::Modal
         def width
-          field = browser.link :css => "a[data-qtip*='Configure your settings']"
+          field = browser.link css: "a[data-qtip*='Configure your settings']"
           browser_helper.wait_until_present field
           field.style "border-width"
         end
 
         def border_radius
-          field = browser.link :css => "a[data-qtip*='Configure your settings']"
+          field = browser.link css: "a[data-qtip*='Configure your settings']"
           browser_helper.wait_until_present field
           field.style "padding"
         end
 
         def border_style
-          field = browser.link :css => "a[data-qtip*='Configure your settings']"
+          field = browser.link css: "a[data-qtip*='Configure your settings']"
           browser_helper.wait_until_present field
           field.style "border-style"
         end

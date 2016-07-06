@@ -8,12 +8,12 @@ module Stamps
       end
 
       def text_box
-        BrowserTextBox.new ((browser.text_fields :name => "OriginCountryCode")[@index-1])
+        BrowserTextBox.new ((browser.text_fields name: "OriginCountryCode")[@index-1])
       end
 
       def select country
         logger.info "Select Country #{country}"
-        selection = BrowserElement.new (browser.lis :text => country)[@index]
+        selection = BrowserElement.new (browser.lis text: country)[@index]
         text_box = self.text_box
         drop_down = BrowserElement.new text_box.element.parent.parent.divs[1]
 
@@ -35,7 +35,7 @@ module Stamps
     class CustomsFields < Browser::Modal
 
       def browser_edit_form_button
-        links = browser.links :css => "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
+        links = browser.links css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
         BrowserElement.new links.first
       end
 
@@ -57,7 +57,7 @@ module Stamps
       end
 
       def browser_restrictions_button
-        BrowserElement.new browser.span :text => "Restrictions..."
+        BrowserElement.new browser.span text: "Restrictions..."
       end
 
       def restrictions
@@ -77,11 +77,11 @@ module Stamps
     class CustomsItemGrid < Browser::Modal
 
       def size
-        (browser.tables :css => "div[id^=associatedcustomsitems]>div[id^=singlecustomsitem]").size
+        (browser.tables css: "div[id^=associatedcustomsitems]>div[id^=singlecustomsitem]").size
       end
 
       def item number
-        add_button = BrowserElement.new (browser.spans :text => "Add Item").last
+        add_button = BrowserElement.new (browser.spans text: "Add Item").last
         logger.info "Item Count: #{size}"
 
         20.times{
@@ -107,7 +107,7 @@ module Stamps
         end
 
         def text_box
-          BrowserTextBox.new ((browser.text_fields :css => "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
+          BrowserTextBox.new ((browser.text_fields css: "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -129,14 +129,14 @@ module Stamps
         end
 
         def increment value
-          button = BrowserElement.new (browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = BrowserElement.new (browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -150,7 +150,7 @@ module Stamps
         end
 
         def text_box
-          BrowserTextBox.new ((browser.text_fields :name => "Value")[@index-1]), "data-errorqtip"
+          BrowserTextBox.new ((browser.text_fields name: "Value")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -159,14 +159,14 @@ module Stamps
         end
 
         def increment value
-          button = BrowserElement.new (browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = BrowserElement.new (browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -180,7 +180,7 @@ module Stamps
         end
 
         def text_box
-          BrowserTextBox.new ((browser.text_fields :name => "lbs")[@index-1]), "data-errorqtip"
+          BrowserTextBox.new ((browser.text_fields name: "lbs")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -202,14 +202,14 @@ module Stamps
         end
 
         def increment value
-          button = BrowserElement.new (browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = BrowserElement.new (browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -223,7 +223,7 @@ module Stamps
         end
 
         def text_box
-          BrowserTextBox.new ((browser.text_fields :name => "oz")[@index-1]), "data-errorqtip"
+          BrowserTextBox.new ((browser.text_fields name: "oz")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -245,14 +245,14 @@ module Stamps
         end
 
         def increment value
-          button = BrowserElement.new (browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = BrowserElement.new (browser.divs :css => "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -269,11 +269,11 @@ module Stamps
       end
 
       def delete
-        BrowserElement.new (browser.spans :css => "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index-1]
+        BrowserElement.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index-1]
       end
 
       def description
-        BrowserTextBox.new ((browser.text_fields :css => "div[class*=customs-description] input[name=Description]")[@index-1]), "data-errorqtip"
+        BrowserTextBox.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[@index-1]), "data-errorqtip"
       end
 
       def qty
@@ -297,14 +297,14 @@ module Stamps
       end
 
       def hs_tariff
-        BrowserTextBox.new (browser.text_fields :name => "TariffNo")[@index-1]
+        BrowserTextBox.new (browser.text_fields name: "TariffNo")[@index-1]
       end
 
     end
 
     class UspsPrivactActStatementModal < Browser::Modal
       def window_title
-        BrowserElement.new browser.div :text => "USPS Privacy Act Statement"
+        BrowserElement.new browser.div text: "USPS Privacy Act Statement"
       end
 
       def present?
@@ -312,7 +312,7 @@ module Stamps
       end
 
       def okay
-        browser.span :text => "OK"
+        browser.span text: "OK"
       end
 
     end
@@ -328,14 +328,14 @@ module Stamps
     class InternalTransaction < Browser::Modal
 
       def text_box
-        BrowserTextBox.new browser.text_field :name => "IsITNRequired"
+        BrowserTextBox.new browser.text_field name: "IsITNRequired"
       end
 
       def select selection
         logger.info "Select Internal Transaction Number: #{selection}"
         text_box = self.text_box
-        drop_down = BrowserElement.new browser.div :id => "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
-        selection_label = BrowserElement.new browser.li :text => selection
+        drop_down = BrowserElement.new browser.div id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
+        selection_label = BrowserElement.new browser.li text: selection
         10.times {
           begin
             drop_down.safe_click unless selection_label.present?
@@ -355,14 +355,14 @@ module Stamps
     class PackageContents < Browser::Modal
 
       def text_box
-        BrowserTextBox.new browser.text_field :name => "CustomsContents"
+        BrowserTextBox.new browser.text_field name: "CustomsContents"
       end
 
       def select selection
         logger.info "Select Internal Transaction Number: #{selection}"
         text_box = self.text_box
-        drop_down = BrowserElement.new browser.div :id => "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
-        selection_label = BrowserElement.new browser.li :text => selection
+        drop_down = BrowserElement.new browser.div id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
+        selection_label = BrowserElement.new browser.li text: selection
         10.times {
           begin
             drop_down.safe_click unless selection_label.present?
@@ -382,14 +382,14 @@ module Stamps
     class NonDeliveryOptions < Browser::Modal
 
       def text_box
-        BrowserTextBox.new browser.text_field :name => "NonDelivery"
+        BrowserTextBox.new browser.text_field name: "NonDelivery"
       end
 
       def select selection
         logger.info "Select Internal Transaction Number: #{selection}"
         text_box = self.text_box
-        drop_down = BrowserElement.new browser.div :id => "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
-        selection_label = BrowserElement.new browser.li :text => selection
+        drop_down = BrowserElement.new browser.div id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
+        selection_label = BrowserElement.new browser.li text: selection
         10.times {
           begin
             drop_down.safe_click unless selection_label.present?
@@ -409,11 +409,11 @@ module Stamps
     class CustomsForm < Browser::Modal
 
       def usps_privacy_act_warning
-        BrowserElement.new (browser.label :text => "You must agree to the USPS Privacy Act Statement")
+        BrowserElement.new (browser.label text: "You must agree to the USPS Privacy Act Statement")
       end
 
       def present?
-        BrowserElement.new browser.image :css => "img[class*='x-tool-close']"
+        BrowserElement.new browser.image css: "img[class*='x-tool-close']"
       end
 
       def package_contents
@@ -430,23 +430,23 @@ module Stamps
       end
 
       def more_info
-        BrowserTextBox.new browser.text_field :name => "CustomsComments"
+        BrowserTextBox.new browser.text_field name: "CustomsComments"
       end
 
       def itn_number
-        BrowserTextBox.new browser.text_field :name => "AES"
+        BrowserTextBox.new browser.text_field name: "AES"
       end
 
       def license
-        BrowserTextBox.new browser.text_field :name => "CustomsLicenseNumber"
+        BrowserTextBox.new browser.text_field name: "CustomsLicenseNumber"
       end
 
       def certificate
-        BrowserTextBox.new browser.text_field :name => "CustomsCertificateNumber"
+        BrowserTextBox.new browser.text_field name: "CustomsCertificateNumber"
       end
 
       def invoice
-        BrowserTextBox.new browser.text_field :name => "CustomsInvoiceNumber"
+        BrowserTextBox.new browser.text_field name: "CustomsInvoiceNumber"
       end
 
       def item_grid
@@ -455,7 +455,7 @@ module Stamps
       end
 
       def total_weight
-        divs = browser.divs :css => "div[id^=displayfield]>div[id^=displayfield]>div[id^=displayfield]"
+        divs = browser.divs css: "div[id^=displayfield]>div[id^=displayfield]>div[id^=displayfield]"
         div = divs[divs.size-2]
         weight_label = BrowserElement.new div
         logger.info "Total Weight: #{weight_label.text}"
@@ -475,11 +475,11 @@ module Stamps
       end
 
       def total_value
-        ParameterHelper.remove_dollar_sign (BrowserElement.new (browser.divs :css => "div[class*=x-form-display-field-default]").last).text
+        ParameterHelper.remove_dollar_sign (BrowserElement.new (browser.divs css: "div[class*=x-form-display-field-default]").last).text
       end
 
       def i_agree
-        field = browser.input :css => "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
+        field = browser.input css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
         verify_field = field.parent.parent.parent
 
         Stamps::Browser::BrowserCheckbox.new field, verify_field, "class", "checked"
@@ -487,7 +487,7 @@ module Stamps
 
       def usps_privacy_act_statement
         privacy_statement = UspsPrivactActStatementModal.new param
-        privacy_link = BrowserElement.new browser.span :text => "USPS Privacy Act Statement"
+        privacy_link = BrowserElement.new browser.span text: "USPS Privacy Act Statement"
         5.times{
           privacy_link.safe_click
           return privacy_statement if privacy_statement.present?
@@ -496,7 +496,7 @@ module Stamps
 
       def restrictions_and_prohibitions
         restrictions_link = RestrictionsAndProhibitionsModal.new param
-        restrictions_prohibitions_link = BrowserElement.new (browser.span :text => "Restrictions and Prohibitions")
+        restrictions_prohibitions_link = BrowserElement.new (browser.span text: "Restrictions and Prohibitions")
         5.times{
           restrictions_prohibitions_link.safe_click
           return restrictions_link if restrictions_link.present?
@@ -504,11 +504,11 @@ module Stamps
       end
 
       def close
-        (BrowserElement.new browser.span :text => "Close").click_while_present
+        (BrowserElement.new browser.span text: "Close").click_while_present
       end
 
       def cancel
-        (BrowserElement.new browser.img :css => "img[class$=x-tool-close]").click_while_present
+        (BrowserElement.new browser.img css: "img[class$=x-tool-close]").click_while_present
       end
     end
 

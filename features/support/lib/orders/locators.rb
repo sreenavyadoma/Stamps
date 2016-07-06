@@ -11,7 +11,7 @@ module Stamps
       module OrdersGrid
         class << self
           def present
-            {:css => "div[id^=ordersGrid][id$=body]"}
+            {css: "div[id^=ordersGrid][id$=body]"}
           end
         end
       end
@@ -26,7 +26,7 @@ module Stamps
       module NavBar
         class << self
           def username
-            {:id => "userNameText"}
+            {id: "userNameText"}
           end
         end
       end
@@ -34,7 +34,7 @@ module Stamps
       module ToolBar
         class << self
           def add
-            {:text => 'Add'}
+            {text: 'Add'}
           end
 
 =begin
@@ -44,15 +44,15 @@ module Stamps
 =end
 
           def move
-            {:text => "Move"}
+            {text: "Move"}
           end
 
           def confirmation_modal_move_label
-            {:css => "span[class*='x-btn-inner-primary-blue-medium']"}
+            {css: "span[class*='x-btn-inner-primary-blue-medium']"}
           end
 
           def confirmation_modal_cancel_label
-            {:text => "Cancel"}
+            {text: "Cancel"}
           end
         end
       end
@@ -72,11 +72,11 @@ module Stamps
           end
 
           def password
-            {:id => 'PasswordTextBox'}
+            {id: 'PasswordTextBox'}
           end
 
           def sign_in
-            {:id => 'signInButton'}
+            {id: 'signInButton'}
           end
 
         end

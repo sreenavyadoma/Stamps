@@ -2,15 +2,15 @@ module Stamps
   module Print
     class ForgotUsernameModal < Browser::Modal
       def window_x_button
-        BrowserElement.new (browser.imgs :css => "img[class*='x-tool-close']")[0]
+        BrowserElement.new (browser.imgs css: "img[class*='x-tool-close']")[0]
       end
 
       def close_window
-        browser_helper.click window_x_button, 'close_window'
+        browser_helper.safe_click window_x_button
       end
 
       def x_button_present?
-        ((browser.imgs :css => "img[class*='x-tool-close']")[0]).present?
+        ((browser.imgs css: "img[class*='x-tool-close']")[0]).present?
       end
 
       def wait_until_present
@@ -30,17 +30,17 @@ module Stamps
       end
 
       def email
-        BrowserTextBox.new (browser.inputs :css => "input[class*='x-form-field x-form-text']").last
+        BrowserTextBox.new (browser.inputs css: "input[class*='x-form-field x-form-text']").last
       end
 
       def continue
-        button = BrowserElement.new (browser.as :css => "a[class*=app-modal-button-primary]").last
+        button = BrowserElement.new (browser.as css: "a[class*=app-modal-button-primary]").last
         button.click
         sleep(2)
       end
 
       def ok
-        button = BrowserElement.new browser.span :css => "span[id*=sdc-undefinedwindow-okbtn-btnIconEl]"
+        button = BrowserElement.new browser.span css: "span[id*=sdc-undefinedwindow-okbtn-btnIconEl]"
         button.click
         sleep(2)
 

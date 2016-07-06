@@ -18,7 +18,7 @@ module Stamps
       class Shopify < Browser::Modal
 
         def window_title
-          BrowserElement.new(browser.div :text => "Connect your Shopify Store")
+          BrowserElement.new(browser.div text: "Connect your Shopify Store")
         end
 
         def present?
@@ -238,7 +238,7 @@ module Stamps
       class ModifyShopifyStore < Shopify
 
         def window_title
-          BrowserElement.new(browser.div :text => "Modify your Shopify Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Shopify Store Connection")
         end
 
         def present?

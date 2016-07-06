@@ -3,13 +3,13 @@ module Stamps
     module Postage
       class ContactsModal < Browser::Modal
         def close
-          browser_helper.safe_click (browser.img :css => "img[class*='x-tool-img x-tool-close']")
+          browser_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
         end
 
         def view_contacts
 
-          frame1 = browser.iframe(:css => 'iframe[class*=sdc-addressbookiframe]')
-          frame1.a(:text => 'View Contacts').click
+          frame1 = browser.iframe(css: 'iframe[class*=sdc-addressbookiframe]')
+          frame1.a(text: 'View Contacts').click
 
           sleep 3
         end
@@ -27,7 +27,7 @@ module Stamps
         end
 
         def window_title
-          BrowserElement.new (browser.span :text => "Search Contacts")
+          BrowserElement.new (browser.span text: "Search Contacts")
         end
 
         def search

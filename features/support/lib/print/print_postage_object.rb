@@ -5,7 +5,7 @@ module Stamps
     module Postage
       class PrintPostageCustoms < Browser::Modal
         def edit_form
-          button = BrowserElement.new browser.span :id => "sdc-mainpanel-editcustombtn-btnIconEl"
+          button = BrowserElement.new browser.span id: "sdc-mainpanel-editcustombtn-btnIconEl"
           customs_modal = Print::Postage::CustomsForm.new param
           5.times do
             button.safe_click
@@ -55,7 +55,7 @@ module Stamps
         end
 
         def extra_services
-          BrowserElement.new browser.span :id => "sdc-mainpanel-extraservicesbtn-btnIconEl"
+          BrowserElement.new browser.span id: "sdc-mainpanel-extraservicesbtn-btnIconEl"
         end
 
         def open_extra_services

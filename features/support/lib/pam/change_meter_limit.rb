@@ -2,14 +2,14 @@ module Pam
   class ChangeMeterLimit < Browser::Modal
     class USPSCheckbox < Browser::Modal
       def check
-        browser.checkbox(:name => 'USPSApproved').set
-        browser.checkbox(:name => 'USPSApproved').set
+        browser.checkbox(name: 'USPSApproved').set
+        browser.checkbox(name: 'USPSApproved').set
 
       end
 
       def uncheck
-        browser.checkbox(:name => 'USPSApproved').clear
-        browser.checkbox(:name => 'USPSApproved').clear
+        browser.checkbox(name: 'USPSApproved').clear
+        browser.checkbox(name: 'USPSApproved').clear
       end
     end
     def present?
@@ -25,7 +25,7 @@ module Pam
     end
 
     def new_meter_limit
-      BrowserTextBox.new browser.text_field(:name => "resetAmt")
+      BrowserTextBox.new browser.text_field(name: "resetAmt")
     end
 
     def usps_approval
@@ -33,7 +33,7 @@ module Pam
     end
 
     def submit
-      button = Stamps::Browser::BrowserElement.new browser.input(:name => "submit")
+      button = Stamps::Browser::BrowserElement.new browser.input(name: "submit")
       change_success = ChangeMeterLimitSuccess.new param
       5.times do
         button.send_keys :enter
@@ -46,12 +46,12 @@ module Pam
 
   class ChangeMeterLimitSuccess < Browser::Modal
     def present?
-      browser.td(:text => "Change Meter Limit Success").present?
+      browser.td(text: "Change Meter Limit Success").present?
     end
 
     def ok
       profile = CustomerProfile.new param
-      button = BrowserElement.new browser.a(:css => "a[href^=Profile]")
+      button = BrowserElement.new browser.a(css: "a[href^=Profile]")
       5.times do
         button.safe_click
         sleep 1

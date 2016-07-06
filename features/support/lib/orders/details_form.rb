@@ -4,7 +4,7 @@ module Stamps
       class OrderForm < Browser::Modal
         def blur_out
 
-          item_label = BrowserElement.new browser.label :text => 'Insure For $:'
+          item_label = BrowserElement.new browser.label text: 'Insure For $:'
           10.times {
             begin
               item_label.element.click
@@ -21,7 +21,7 @@ module Stamps
         class ShipToCountry < OrderForm
 
           def drop_down
-            divs = browser.divs :css => "div[id^=combo-][id$=-trigger-picker]"
+            divs = browser.divs css: "div[id^=combo-][id$=-trigger-picker]"
             domestic = BrowserElement.new divs.first
             international = BrowserElement.new divs.last
 
@@ -35,14 +35,14 @@ module Stamps
           end
 
           def text_box
-            BrowserTextBox.new (browser.text_fields :name => "ShipCountryCode")[1]
+            BrowserTextBox.new (browser.text_fields name: "ShipCountryCode")[1]
           end
 
           def select country
             logger.info "Select Country #{country}"
 
-            selection_1 = BrowserElement.new browser.li :text => country
-            selection_2 = BrowserElement.new browser.li :text => "#{country} "
+            selection_1 = BrowserElement.new browser.li text: country
+            selection_2 = BrowserElement.new browser.li text: "#{country} "
 
             text_box = self.text_box
             drop_down = self.drop_down
@@ -73,14 +73,14 @@ module Stamps
         end
 
         def text_area
-          field = browser.textarea :name => "freeFormAddress"
-          error_field = browser.a :css => "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
+          field = browser.textarea name: "freeFormAddress"
+          error_field = browser.a css: "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
           error_field_attribute = "data-errorqtip"
           BrowserTextBox.new field, error_field, error_field_attribute
         end
 
         def less
-          BrowserElement.new (browser.spans :text => "Less").first
+          BrowserElement.new (browser.spans text: "Less").first
         end
 
         def hide
@@ -90,7 +90,7 @@ module Stamps
 
         def expand
           blur_out
-          ship_to_dd = BrowserElement.new browser.span :css => "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)"
+          ship_to_dd = BrowserElement.new browser.span css: "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)"
 
           5.times {
             ship_to_dd.safe_click
@@ -100,73 +100,73 @@ module Stamps
 
         def email
           expand
-          field = browser.text_field :name => 'BuyerEmail'
-          error_field = (browser.divs :css => "div[data-errorqtip*=email]")[0]
+          field = browser.text_field name: 'BuyerEmail'
+          error_field = (browser.divs css: "div[data-errorqtip*=email]")[0]
           error_field_attribute = "data-errorqtip"
           BrowserTextBox.new field, error_field, error_field_attribute
         end
 
         def phone
           expand
-          BrowserTextBox.new browser.text_field :name => "ShipPhone"
+          BrowserTextBox.new browser.text_field name: "ShipPhone"
         end
       end
 
       class ShipToInternationalFields < OrderForm
 
         def present?
-          BrowserTextBox.new(browser.text_field :name => "FullName").present?
+          BrowserTextBox.new(browser.text_field name: "FullName").present?
         end
 
         def name
-          field = browser.text_field :name => "ShipName"
-          error_field = browser.div :css => "div[data-anchortarget^=autosuggest][data-anchortarget$=inputEl]"
+          field = browser.text_field name: "ShipName"
+          error_field = browser.div css: "div[data-anchortarget^=autosuggest][data-anchortarget$=inputEl]"
           error_field_attribute = "data-errorqtip"
           BrowserTextBox.new field, error_field, error_field_attribute
         end
 
         def company
-          field = browser.text_field :name => "ShipCompany"
-          error_field = browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[2]
+          field = browser.text_field name: "ShipCompany"
+          error_field = browser.divs(css: "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[2]
           error_field_attribute = "data-errorqtip"
           BrowserTextBox.new field, error_field, error_field_attribute
         end
 
         def address_1
-          field = browser.text_field :name => "ShipStreet1"
-          error_field = browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[3]
+          field = browser.text_field name: "ShipStreet1"
+          error_field = browser.divs(css: "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[3]
           error_field_attribute = "data-errorqtip"
           BrowserTextBox.new field, error_field, error_field_attribute
         end
 
         def address_2
-          BrowserTextBox.new browser.text_field :name => "ShipStreet2"
+          BrowserTextBox.new browser.text_field name: "ShipStreet2"
         end
 
         def city
-          field = browser.text_field :name => "ShipCity"
-          error_field = browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[5]
+          field = browser.text_field name: "ShipCity"
+          error_field = browser.divs(css: "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[5]
           error_field_attribute = "data-errorqtip"
           BrowserTextBox.new field, error_field, error_field_attribute
         end
 
         def phone
-          field = (browser.text_fields :name => "ShipPhone").last
-          error_field = browser.divs(:css => "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[8]
+          field = (browser.text_fields name: "ShipPhone").last
+          error_field = browser.divs(css: "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[8]
           error_field_attribute = "data-errorqtip"
           BrowserTextBox.new field, error_field, error_field_attribute
         end
 
         def province
-          BrowserTextBox.new browser.text_field :name => "ShipState"
+          BrowserTextBox.new browser.text_field name: "ShipState"
         end
 
         def postal_code
-          BrowserTextBox.new browser.text_field :name => "ShipPostalCode"
+          BrowserTextBox.new browser.text_field name: "ShipPostalCode"
         end
 
         def email
-          BrowserTextBox.new (browser.text_fields :name => "BuyerEmail").last
+          BrowserTextBox.new (browser.text_fields name: "BuyerEmail").last
         end
       end
 
@@ -177,7 +177,7 @@ module Stamps
         end
 
         def size
-          (browser.lis :css => "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]").size
+          (browser.lis css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]").size
         end
 
         def select number
@@ -188,11 +188,11 @@ module Stamps
         end
 
         def name_fields
-          (browser.lis :css => "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]")
+          (browser.lis css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]")
         end
 
         def address_fields
-          (browser.lis :css => "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=sub]")
+          (browser.lis css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=sub]")
         end
       end
 
@@ -231,22 +231,22 @@ module Stamps
           class AddressNotFound < Browser::Modal
 
             def present?
-              browser.div(:text => 'Exact Address Not Found').present?
+              browser.div(text: 'Exact Address Not Found').present?
             end
 
             def row number
               row = number.to_i<=0?0:number.to_i-1
-              checkbox_field = browser.input :css => "input[name=addrAmbig][value='#{row}']"
+              checkbox_field = browser.input css: "input[name=addrAmbig][value='#{row}']"
 
               checkbox = BrowserCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
               checkbox.check
 
-              accept_button = BrowserElement.new browser.span :text => "Accept"
+              accept_button = BrowserElement.new browser.span text: "Accept"
               accept_button.click_while_present
             end
 
             def set partial_address_hash
-              exact_address_not_found_field = browser.div :text => 'Exact Address Not Found'
+              exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
               form = DetailsForm.new param
               form.validate_address_link
               country_drop_down = self.country
@@ -274,7 +274,7 @@ module Stamps
           end
 
           def set address
-            suggested_address_corrections = BrowserElement.new browser.span(:text => "View Suggested Address Corrections")
+            suggested_address_corrections = BrowserElement.new browser.span(text: "View Suggested Address Corrections")
 
             exact_address_not_found = address_not_found
             country_drop_down = self.country
@@ -482,10 +482,10 @@ module Stamps
 
           orders_grid = Orders::Grid::OrdersGrid.new param
 
-          ship_to_area1 = BrowserElement.new browser.div :css => "div[id=shiptoview-domestic-targetEl]>div:nth-child(2)>div>div>div:nth-child(1)"
-          ship_to_area2 = BrowserElement.new browser.div :css => "div#shiptoview-domestic-innerCt"
+          ship_to_area1 = BrowserElement.new browser.div css: "div[id=shiptoview-domestic-targetEl]>div:nth-child(2)>div>div>div:nth-child(1)"
+          ship_to_area2 = BrowserElement.new browser.div css: "div#shiptoview-domestic-innerCt"
 
-          ship_to_drop_down = BrowserElement.new browser.span :css => "span[class*=sdc-icon-down-arrow]"
+          ship_to_drop_down = BrowserElement.new browser.span css: "span[class*=sdc-icon-down-arrow]"
 
           text_area.set address
 
@@ -939,7 +939,7 @@ module Stamps
         end
 
         def state_dd_button
-          browser.div :css => "div[id^=statecombobox-][id$=-trigger-picker]"
+          browser.div css: "div[id^=statecombobox-][id$=-trigger-picker]"
         end
 
         def city=(city)
@@ -947,7 +947,7 @@ module Stamps
         end
 
         def state_field
-          browser.text_field :name => 'State'
+          browser.text_field name: 'State'
         end
 
         def state=(state)
@@ -963,9 +963,9 @@ module Stamps
         end
 
         def save
-          30.times{
+          10.times{
             begin
-              browser_helper.click save_button, "save_button"
+              browser_helper.safe_click save_button
               sleep 1
               break unless save_button.present?
             rescue
@@ -981,56 +981,56 @@ module Stamps
         #todo FIX ME!!
         private
         def origin_zip_field
-          browser.text_field :name => 'OriginZip'
+          browser.text_field name: 'OriginZip'
         end
 
         def name_field
-          text_fields = browser.text_fields :name => 'FullName'
+          text_fields = browser.text_fields name: 'FullName'
           text_fields.last
         end
 
         def company_field
-          text_fields = browser.text_fields :name => 'Company'
+          text_fields = browser.text_fields name: 'Company'
           text_fields.last
         end
 
         def street_address1_field
-          browser.text_field :name => 'Street1'
+          browser.text_field name: 'Street1'
         end
 
         def street_address2_field
-          browser.text_field :name => 'Street2'
+          browser.text_field name: 'Street2'
         end
 
         def city_text_field
-          text_fields = browser.text_fields :name => 'City'
+          text_fields = browser.text_fields name: 'City'
           text_fields.last
         end
 
         def zip_field
-          browser.text_field :name => 'Zip'
+          browser.text_field name: 'Zip'
         end
 
         def phone_field
-          (browser.text_fields :css => "input[name=Phone]").last
+          (browser.text_fields css: "input[name=Phone]").last
         end
 
         def save_button
-          browser.span :text => 'Save'
+          browser.span text: 'Save'
         end
       end
 
       class DeleteShippingAddress < Browser::Modal
 
         def window_title
-          browser.div :text => "Delete Shipping Address"
+          browser.div text: "Delete Shipping Address"
         end
 
         def delete
           5.times {
             begin
               logger.info "Delete Shipping Address :: #{message_field.text}"
-              browser_helper.click delete_button, 'Delete'
+              browser_helper.safe_click delete_button
             rescue
               #ignore
             end
@@ -1043,17 +1043,17 @@ module Stamps
         end
 
         def close
-          field = browser.elements(:css => 'img[class$=close]').last
+          field = browser.elements(css: 'img[class$=close]').last
           present = field.present?
           field.click if present
         end
 
         def message_field
-          browser.div :css => "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
+          browser.div css: "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
         end
 
         def delete_button
-          field = browser.elements(:text => 'Delete').last
+          field = browser.elements(text: 'Delete').last
           present = field.present?
           field
         end
@@ -1061,7 +1061,7 @@ module Stamps
 
       class ViewRestrictions < Browser::Modal
         def browser_ok_button
-          BrowserElement.new browser.span :text => "OK"
+          BrowserElement.new browser.span text: "OK"
         end
 
         def present?
@@ -1076,11 +1076,11 @@ module Stamps
       class ManageShippingAddresses < Browser::Modal
 
         def window_title
-          browser.div :css => 'div[class*=x-window-header-title-default]>div'
+          browser.div css: 'div[class*=x-window-header-title-default]>div'
         end
 
         def grid_cell(row, column)
-          browser.td :css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})"
+          browser.td css: "div[id^=grid-][class*=x-panel-body-default]>div>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})"
         end
 
         def grid_cell_text(row, column)
@@ -1088,11 +1088,11 @@ module Stamps
         end
 
         def close_button
-          browser.image :css => "img[class*='x-tool-close']"
+          browser.image css: "img[class*='x-tool-close']"
         end
 
         def checked?(row)
-          field = browser.table :css => "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
+          field = browser.table css: "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
           value = browser_helper.attribute_value field, "class"
           checked = value.include? "selected"
           logger.info "Row #{row} selected? #{checked}"
@@ -1100,15 +1100,15 @@ module Stamps
         end
 
         def add_button
-          browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"
+          browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"
         end
 
         def edit_button
-          browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
+          browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
         end
 
         def delete_button
-          browser.link :css => "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
+          browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
         end
 
         def name row
@@ -1134,7 +1134,7 @@ module Stamps
         def locate_ship_from name, company, city
           rows = shipping_address_count
           1.upto rows do |row|
-            browser_helper.click window_title
+            browser_helper.safe_click window_title
             grid_name = name row
             grid_company = company row
             grid_city = city row
@@ -1155,8 +1155,8 @@ module Stamps
 
         def click_delete_button
           begin
-            browser_helper.click(delete_button, "Delete") if delete_button.present?
-            browser_helper.click window_title, 'window_title'
+            browser_helper.safe_click delete_button if delete_button.present?
+            browser_helper.safe_click window_title
           rescue
             #ignore
           end
@@ -1213,7 +1213,7 @@ module Stamps
           5.times {
             begin
               break if @shipping_address_form.present?
-              browser_helper.click add_button, "add_button"
+              browser_helper.safe_click add_button
               add_button.wait_until
             rescue
               #ignore
@@ -1269,14 +1269,14 @@ module Stamps
 
         def select_row(row_num)
           click_row_until_selected(row_num, "class", "x-grid-item-selected")
-          browser_helper.click window_title, 'window_title'
+          browser_helper.safe_click window_title
         end
 
         def click_row_until_selected(row_num, attibute, attribute_value)
           cell = grid_cell(row_num, 1)
           5.times do
             begin
-              browser_helper.click cell, "cell(#{row_num}, 1)"
+              browser_helper.safe_click cell
               break if checked? row_num
             rescue
               #ignore
@@ -1293,7 +1293,7 @@ module Stamps
             count = shipping_address_count
             if count > 1
               for row in 1..(count)
-                browser_helper.click window_title, 'window_title'
+                browser_helper.safe_click window_title
                 delete_row 1
                 logger.info "Row #{row} :: Deleting row 1..."
                 break if shipping_address_count == 1
@@ -1311,7 +1311,7 @@ module Stamps
             10.times{
               sleep 1
               break unless close_button.present?
-              browser_helper.click close_button, "Close"
+              browser_helper.safe_click close_button
             }
           rescue
             #ignore
@@ -1324,7 +1324,7 @@ module Stamps
 
         def shipping_address_count
           wait_until_present
-          rows = browser.trs(:css => "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
+          rows = browser.trs(css: "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
           logger.info "Manage Shipping Address:: row count = #{rows.length.to_i}"
           rows.length.to_i
         end
@@ -1334,11 +1334,11 @@ module Stamps
       class ShipFromAddress < OrderForm
 
         def text_box
-          BrowserTextBox.new browser.text_field :name => "ShipFrom"
+          BrowserTextBox.new browser.text_field name: "ShipFrom"
         end
 
         def drop_down
-          BrowserElement.new browser.div :css => "div[id^=shipfromdroplist][id$=trigger-picker]"
+          BrowserElement.new browser.div css: "div[id^=shipfromdroplist][id$=trigger-picker]"
         end
 
         def select service
@@ -1355,7 +1355,7 @@ module Stamps
           elsif service.downcase.include? "manage shipping"
             ship_from_selection_field = browser.li text: "Manage Shipping Addresses..."
           else
-            ship_from_selection_field = browser.div :text => "#{service}"
+            ship_from_selection_field = browser.div text: "#{service}"
           end
 
           selection_label = BrowserElement.new ship_from_selection_field
@@ -1397,13 +1397,13 @@ module Stamps
         end
 
         def drop_down
-          BrowserElement.new browser.div :css => "div[id^=trackingdroplist-][id$=-trigger-picker]"
+          BrowserElement.new browser.div css: "div[id^=trackingdroplist-][id$=-trigger-picker]"
         end
 
         def select selection
           box = text_box
           button = drop_down
-          selection_label = BrowserElement.new browser.td :text => selection
+          selection_label = BrowserElement.new browser.td text: selection
           5.times {
             begin
               button.safe_click unless selection_label.present?
@@ -1435,7 +1435,7 @@ module Stamps
 
             when 1
               button = drop_down
-              selection_label = browser.td :text => args[0]
+              selection_label = browser.td text: args[0]
               5.times do
                 begin
                   button.safe_click unless selection_label.present?
@@ -1453,7 +1453,7 @@ module Stamps
 
         def tooltip selection
           button = drop_down
-          selection_label = browser.td :text => selection
+          selection_label = browser.td text: selection
           5.times {
             begin
               button.safe_click unless selection_label.present?
@@ -1471,11 +1471,11 @@ module Stamps
 
       class Service < OrderForm
         def text_box
-          BrowserTextBox.new (browser.text_field :name => "Service"), (browser.div :css => "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
+          BrowserTextBox.new (browser.text_field name: "Service"), (browser.div css: "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
         end
 
         def drop_down
-          BrowserElement.new browser.div :css => "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
+          BrowserElement.new browser.div css: "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
         end
 
         def select selection
@@ -1520,7 +1520,7 @@ module Stamps
 
             when 1
               button = drop_down
-              cost_label = BrowserElement.new browser.td :css => "tr[data-qtip*='#{args[0]}']>td:nth-child(3)"
+              cost_label = BrowserElement.new browser.td css: "tr[data-qtip*='#{args[0]}']>td:nth-child(3)"
               10.times {
                 begin
                   button.safe_click unless cost_label.present?
@@ -1543,7 +1543,7 @@ module Stamps
 
         def tooltip selection
           button = drop_down
-          selection_label = BrowserElement.new browser.tr :css => "tr[data-qtip*='#{selection}']"
+          selection_label = BrowserElement.new browser.tr css: "tr[data-qtip*='#{selection}']"
           10.times {
             begin
               button.safe_click unless selection_label.present?
@@ -1566,7 +1566,7 @@ module Stamps
 
           dd_btn = self.drop_down
           selection_field = browser.li(id: "#{@details_services[service]}")
-          #selection_element = browser.tr :css => "tr[data-qtip*='#{service}']"
+          #selection_element = browser.tr css: "tr[data-qtip*='#{service}']"
           selection_label = BrowserElement.new selection_field
 
           10.times do |index|
@@ -1606,7 +1606,7 @@ module Stamps
       class Weight < Browser::Modal
         class Pounds < Browser::Modal
           def text_box
-            BrowserTextBox.new (browser.text_field :name => 'WeightLbs'), "data-errorqtip"
+            BrowserTextBox.new (browser.text_field name: 'WeightLbs'), "data-errorqtip"
           end
 
           def set value
@@ -1628,14 +1628,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
+            button = BrowserElement.new (browser.divs css: "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
+            button = BrowserElement.new (browser.divs css: "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
             value.to_i.times do
               button.safe_click
             end
@@ -1644,7 +1644,7 @@ module Stamps
 
         class Ounces < Browser::Modal
           def text_box
-            BrowserTextBox.new (browser.text_field :name => 'WeightOz'), "data-errorqtip"
+            BrowserTextBox.new (browser.text_field name: 'WeightOz'), "data-errorqtip"
           end
 
           def set value
@@ -1669,14 +1669,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
+            button = BrowserElement.new (browser.divs css: "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs :css => "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
+            button = BrowserElement.new (browser.divs css: "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
             value.to_i.times do
               button.safe_click
             end
@@ -1696,7 +1696,7 @@ module Stamps
 
         class Length < Browser::Modal
           def text_box
-            BrowserTextBox.new browser.text_field :name => 'Length'
+            BrowserTextBox.new browser.text_field name: 'Length'
           end
 
           def set value
@@ -1718,14 +1718,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
+            button = BrowserElement.new (browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
+            button = BrowserElement.new (browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
             value.to_i.times do
               button.safe_click
             end
@@ -1734,7 +1734,7 @@ module Stamps
 
         class Width < Browser::Modal
           def text_box
-            BrowserTextBox.new browser.text_field :name => 'Width'
+            BrowserTextBox.new browser.text_field name: 'Width'
           end
 
           def set value
@@ -1756,14 +1756,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new ((browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]")[1])
+            button = BrowserElement.new ((browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]")[1])
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new ((browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]")[1])
+            button = BrowserElement.new ((browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]")[1])
             value.to_i.times do
               button.safe_click
             end
@@ -1772,7 +1772,7 @@ module Stamps
 
         class Height < Browser::Modal
           def text_box
-            BrowserTextBox.new browser.text_field :name => 'Height'
+            BrowserTextBox.new browser.text_field name: 'Height'
           end
 
           def set value
@@ -1794,14 +1794,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
+            button = BrowserElement.new (browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs :css => "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
+            button = BrowserElement.new (browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
             value.to_i.times do
               button.safe_click
             end
@@ -1830,7 +1830,7 @@ module Stamps
         end
 
         def text_box
-          BrowserTextBox.new browser.text_field :name => "InsuredValue"
+          BrowserTextBox.new browser.text_field name: "InsuredValue"
         end
 
         def set value
@@ -1839,14 +1839,14 @@ module Stamps
         end
 
         def increment value
-          button = BrowserElement.new (browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]")
+          button = BrowserElement.new (browser.div css: "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]")
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = BrowserElement.new (browser.div :css => "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]")
+          button = BrowserElement.new (browser.div css: "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]")
           value.to_i.times do
             button.safe_click
           end
@@ -1879,21 +1879,21 @@ module Stamps
         end
 
         def item_details_header
-          BrowserElement.new (browser.div :text => "Items Ordered")
+          BrowserElement.new (browser.div text: "Items Ordered")
         end
 
         def expand
-          button = BrowserElement.new (browser.img :css => "img[class*='x-tool-expand-bottom']")
+          button = BrowserElement.new (browser.img css: "img[class*='x-tool-expand-bottom']")
           button.safe_click
         end
 
         def collapse_store_item
-          button = BrowserElement.new (browser.imgs :css => "img[class*='x-tool-collapse-top']")[1]
+          button = BrowserElement.new (browser.imgs css: "img[class*='x-tool-collapse-top']")[1]
           button.safe_click
         end
 
         def collapse_item
-          button = BrowserElement.new (browser.img :css => "img[class*='x-tool-collapse-top']")
+          button = BrowserElement.new (browser.img css: "img[class*='x-tool-collapse-top']")
           button.safe_click
         end
 
@@ -1906,7 +1906,7 @@ module Stamps
             end
 
             def text_box
-              BrowserTextBox.new ((browser.text_fields :name => "Quantity")[@index-1]), "data-errorqtip"
+              BrowserTextBox.new ((browser.text_fields name: "Quantity")[@index-1]), "data-errorqtip"
             end
 
             def set value
@@ -1927,14 +1927,14 @@ module Stamps
             end
 
             def increment value
-              button = BrowserElement.new (browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index-1]
+              button = BrowserElement.new (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index-1]
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = BrowserElement.new (browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
+              button = BrowserElement.new (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
               value.to_i.times do
                 button.safe_click
               end
@@ -1947,7 +1947,7 @@ module Stamps
           end
 
           def present?
-            ((browser.text_fields :name => "SKU")[@index-1]).present?
+            ((browser.text_fields name: "SKU")[@index-1]).present?
           end
 
           def qty
@@ -1955,20 +1955,20 @@ module Stamps
           end
 
           def id
-            BrowserTextBox.new (browser.text_fields :name => "SKU")[@index-1]
+            BrowserTextBox.new (browser.text_fields name: "SKU")[@index-1]
           end
 
           def description
-            BrowserTextBox.new (browser.text_fields :name => "Description")[@index-1]
+            BrowserTextBox.new (browser.text_fields name: "Description")[@index-1]
           end
 
           def delete
-            BrowserElement.new (browser.spans :css => "span[class*=sdc-icon-remove]")[@index-1]
+            BrowserElement.new (browser.spans css: "span[class*=sdc-icon-remove]")[@index-1]
           end
         end
 
         def size
-          (browser.divs :css => "div[id^=singleorderitem-][id$=-targetEl]").size
+          (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]").size
         end
 
         def store_item
@@ -1976,7 +1976,7 @@ module Stamps
         end
 
         def item number
-          add_button = BrowserElement.new (browser.span :css => "span[class*=sdc-icon-add]")
+          add_button = BrowserElement.new (browser.span css: "span[class*=sdc-icon-add]")
           logger.info "Item Count: #{size}"
 
           20.times{
@@ -2047,7 +2047,7 @@ module Stamps
         end
 
         def order_id
-          order_id_label = BrowserElement.new browser.bs(:css => "label>b").first
+          order_id_label = BrowserElement.new browser.bs(css: "label>b").first
           5.times{
             begin
               order_id_str = order_id_label.text
@@ -2067,7 +2067,7 @@ module Stamps
         end
 
         def cost
-          cost_label = BrowserElement.new (browser.labels :css => "label[class*=total_cost]")[0]
+          cost_label = BrowserElement.new (browser.labels css: "label[class*=total_cost]")[0]
           10.times do
             begin
               cost = cost_label.text
@@ -2081,7 +2081,7 @@ module Stamps
         end
 
         def multiple_order_cost
-          cost_label = BrowserElement.new (browser.labels :css => "label[class*=total_cost]")[1]
+          cost_label = BrowserElement.new (browser.labels css: "label[class*=total_cost]")[1]
           10.times do
             begin
               cost = cost_label.text
@@ -2105,7 +2105,7 @@ module Stamps
         end
 
         def present?
-          (browser.div :css => "div[id^=singleOrderDetailsForm][id$=body]").present?
+          (browser.div css: "div[id^=singleOrderDetailsForm][id$=body]").present?
         end
 
         def expand
@@ -2174,7 +2174,7 @@ module Stamps
 
         def items_count
           begin
-            count = (browser.text_fields :css => "div[id^=singleorderitem][id$=innerCt]").size
+            count = (browser.text_fields css: "div[id^=singleorderitem][id$=innerCt]").size
             logger.info "Order Details Item Count: #{count}"
             count
           rescue
@@ -2183,7 +2183,7 @@ module Stamps
         end
 
         def add_item
-          add_item = BrowserElement.new browser.span :text => "Add Item"
+          add_item = BrowserElement.new browser.span text: "Add Item"
           stop_test "Add Item button is not present in Order Details form!" unless add_item.present?
           count = items_count
           5.times do
@@ -2194,15 +2194,15 @@ module Stamps
         end
 
         def auto_suggest_name_array
-          browser.divs :css => 'div[class*=main-title]'
+          browser.divs css: 'div[class*=main-title]'
         end
 
         def auto_suggest_location_array
-          browser.divs :css => 'div[class*=sub-title]'
+          browser.divs css: 'div[class*=sub-title]'
         end
 
         def wait_until_present
-          (BrowserElement.new browser.label :text => "Ship From:").wait_until_present
+          (BrowserElement.new browser.label text: "Ship From:").wait_until_present
         end
 
         def pounds_max_value
@@ -2226,7 +2226,7 @@ module Stamps
         end
 
         def validate_address_link
-          browser.span :text => 'Validate Address'
+          browser.span text: 'Validate Address'
         end
 
       end

@@ -4,8 +4,8 @@ module Stores
     class VolusionCountry < Browser::Modal
       def select country
         begin
-          browser.select_list(:id, "ShipCountry").option(:text => country).when_present.select
-          browser.select_list(:id, "ShipCountry").option(:text => country).when_present.select
+          browser.select_list(:id, "ShipCountry").option(text: country).when_present.select
+          browser.select_list(:id, "ShipCountry").option(text: country).when_present.select
         rescue
           #ignore
         end
@@ -15,8 +15,8 @@ module Stores
     class VolusionState < Browser::Modal
       def select state
         begin
-          browser.select_list(:id, "ShipState_dropdown").option(:text => state).when_present.select
-          browser.select_list(:id, "ShipState_dropdown").option(:text => state).when_present.select
+          browser.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
+          browser.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
         rescue
           #ignore
         end
@@ -128,9 +128,9 @@ module Stores
     end
 
     def my_saved_billing_address address
-      browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
-      browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
-      browser.select_list(:name, "My_Saved_Billing").option(:text => address).select
+      browser.select_list(:name, "My_Saved_Billing").option(text: address).select
+      browser.select_list(:name, "My_Saved_Billing").option(text: address).select
+      browser.select_list(:name, "My_Saved_Billing").option(text: address).select
     end
 
 
@@ -284,13 +284,13 @@ module Stores
   class VolusionRegistration < Browser::Modal
     class ReceiveNewsLetterCheckbox < Browser::Modal
       def check
-        browser.checkbox(:name => 'emailsubscriber').set
-        browser.checkbox(:name => 'emailsubscriber').set
+        browser.checkbox(name: 'emailsubscriber').set
+        browser.checkbox(name: 'emailsubscriber').set
       end
 
       def uncheck
-        browser.checkbox(:name => 'emailsubscriber').clear
-        browser.checkbox(:name => 'emailsubscriber').clear
+        browser.checkbox(name: 'emailsubscriber').clear
+        browser.checkbox(name: 'emailsubscriber').clear
       end
     end
 

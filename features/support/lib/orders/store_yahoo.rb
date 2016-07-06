@@ -18,7 +18,7 @@ module Stamps
       class Yahoo < Browser::Modal
 
         def window_title
-          BrowserElement.new browser.div(:text => "Connect your Yahoo Store")
+          BrowserElement.new browser.div(text: "Connect your Yahoo Store")
         end
 
         def present?
@@ -196,7 +196,7 @@ module Stamps
       class ModifyYahooStore < Yahoo
 
         def window_title
-          BrowserElement.new(browser.div :text => "Modify your Yahoo Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Yahoo Store Connection")
         end
 
         def present?

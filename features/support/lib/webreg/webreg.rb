@@ -15,7 +15,7 @@ module Stamps
 
         logger.info "Visit:  #{url}"
         browser.goto url
-        sign_up_for_new_account = BrowserElement.new browser.h1(:text => "Sign up for a new account")
+        sign_up_for_new_account = BrowserElement.new browser.h1(text: "Sign up for a new account")
         sign_up_for_new_account.wait_until_present
         logger.info "Page loaded.  #{browser.url}"
         self

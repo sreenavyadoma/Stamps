@@ -20,11 +20,11 @@ module Pam
     end
 
     def present?
-      browser.h5(:text => "Customer Search").present?
+      browser.h5(text: "Customer Search").present?
     end
 
     def wait_until_present
-      browser_helper.wait_until_present browser.h5(:text => "Customer Search")
+      browser_helper.wait_until_present browser.h5(text: "Customer Search")
     end
 
     def customer_search

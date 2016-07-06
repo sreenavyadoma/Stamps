@@ -7,7 +7,7 @@ module Stamps
         end
 
         def ok
-          button = BrowserElement.new ((browser.spans :text => 'OK').last)
+          button = BrowserElement.new ((browser.spans text: 'OK').last)
           sleep 2
           button.click_while_present
         end
@@ -16,7 +16,7 @@ module Stamps
       class ConfirmPurchase < Browser::Modal
 
         def exit
-          button = BrowserElement.new (browser.imgs :class => "x-tool-img x-tool-close").last
+          button = BrowserElement.new (browser.imgs class: "x-tool-img x-tool-close").last
           button.click_while_present
         end
 
@@ -25,7 +25,7 @@ module Stamps
         end
 
         def purchase
-          button = BrowserElement.new (browser.spans :text => "Purchase").last
+          button = BrowserElement.new (browser.spans text: "Purchase").last
           purchase_approved = PurchaseApproved.new param
 
           10.times do
@@ -41,7 +41,7 @@ module Stamps
       class BuyPostage < Browser::Modal
 
         def present?
-          (browser.div :text => "Buy Postage").present?
+          (browser.div text: "Buy Postage").present?
         end
 
         def confirm_postage
@@ -49,7 +49,7 @@ module Stamps
         end
 
         def buy_10
-          checkbox_field = browser.input :id => "sdc-purchasewin-10dradio"
+          checkbox_field = browser.input id: "sdc-purchasewin-10dradio"
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
@@ -57,7 +57,7 @@ module Stamps
         end
 
         def buy_25
-          checkbox_field = browser.input :id => "sdc-purchasewin-25dradio"
+          checkbox_field = browser.input id: "sdc-purchasewin-25dradio"
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
@@ -65,7 +65,7 @@ module Stamps
         end
 
         def buy_50
-          checkbox_field = browser.input :id => "sdc-purchasewin-50dradio"
+          checkbox_field = browser.input id: "sdc-purchasewin-50dradio"
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
@@ -73,7 +73,7 @@ module Stamps
         end
 
         def buy_100
-          checkbox_field = browser.input :id => "sdc-purchasewin-100dradio"
+          checkbox_field = browser.input id: "sdc-purchasewin-100dradio"
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
@@ -81,19 +81,19 @@ module Stamps
         end
 
         def buy_other value
-          checkbox_field = browser.input :id => "sdc-purchasewin-otherdradio"
+          checkbox_field = browser.input id: "sdc-purchasewin-otherdradio"
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
           checkbox = BrowserCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
-          textbox = BrowserTextBox.new (browser.text_field :id => "sdc-purchasewin-otheramount")
+          textbox = BrowserTextBox.new (browser.text_field id: "sdc-purchasewin-otheramount")
 
           checkbox.check
           textbox.set value
         end
 
         def purchase
-          button = BrowserElement.new (browser.span :id => "sdc-purchasewin-purchasebtn-btnInnerEl")
+          button = BrowserElement.new (browser.span id: "sdc-purchasewin-purchasebtn-btnInnerEl")
           confirm_purchase = ConfirmPurchase.new param
           10.times do
             button.safe_click

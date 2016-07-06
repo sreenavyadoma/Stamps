@@ -5,7 +5,7 @@ module Stamps
 
       class PrintPostageModalObject < Browser::Modal
         def window_x_button
-          browser.img :css => "img[class*='x-tool-img x-tool-close']"
+          browser.img css: "img[class*='x-tool-img x-tool-close']"
         end
 
         def close_window
@@ -28,18 +28,18 @@ module Stamps
       class ConfirmPrint < Browser::Modal
         class ConfirmPrintCheckbox < Browser::Modal
           def check
-            browser.checkbox(:name => 'dismissConfirm').set
-            browser.checkbox(:name => 'dismissConfirm').set
+            browser.checkbox(name: 'dismissConfirm').set
+            browser.checkbox(name: 'dismissConfirm').set
           end
 
           def uncheck
-            browser.checkbox(:name => 'dismissConfirm').clear
-            browser.checkbox(:name => 'dismissConfirm').clear
+            browser.checkbox(name: 'dismissConfirm').clear
+            browser.checkbox(name: 'dismissConfirm').clear
           end
         end
 
         def collapse_button
-          BrowserElement.new browser.a :id => "sdc-undefinedwindow-continuebtn"
+          BrowserElement.new browser.a id: "sdc-undefinedwindow-continuebtn"
         end
 
         def present?
@@ -66,11 +66,11 @@ module Stamps
 
       class Printer < Browser::Modal
         def drop_down
-          BrowserElement.new browser.div :css => "table[id^=sdc-printpostagewindow-printerdroplist-triggerWrap]>tbody>tr>td>div[class*=x-form-arrow-trigger]"
+          BrowserElement.new browser.div css: "table[id^=sdc-printpostagewindow-printerdroplist-triggerWrap]>tbody>tr>td>div[class*=x-form-arrow-trigger]"
         end
 
         def text_box
-          browser.input :id => "sdc-printpostagewindow-printerdroplist-inputEl"
+          browser.input id: "sdc-printpostagewindow-printerdroplist-inputEl"
         end
 
         def select printer
@@ -79,19 +79,19 @@ module Stamps
 
           case printer.downcase
             when /fac/
-              selection_label = BrowserElement.new browser.li :text => /fac/
+              selection_label = BrowserElement.new browser.li text: /fac/
             when /kyocera/
-              selection_label = BrowserElement.new browser.li :text => /Kyocera/
+              selection_label = BrowserElement.new browser.li text: /Kyocera/
             when /epson/
-              selection_label = BrowserElement.new browser.li :text => /EPSON/
+              selection_label = BrowserElement.new browser.li text: /EPSON/
             when /brother/
-              selection_label = BrowserElement.new browser.li :text => /Brother/
+              selection_label = BrowserElement.new browser.li text: /Brother/
             when /officejet/
-              selection_label = BrowserElement.new browser.li :text => /Officejet/
+              selection_label = BrowserElement.new browser.li text: /Officejet/
             when /dymo/
-              selection_label = BrowserElement.new browser.li :text => /DYMO/
+              selection_label = BrowserElement.new browser.li text: /DYMO/
             when /zdesigner/
-              selection_label = BrowserElement.new browser.li :text => /ZDesigner/
+              selection_label = BrowserElement.new browser.li text: /ZDesigner/
 
 
             else
@@ -108,17 +108,17 @@ module Stamps
 
       class PaperTray < Browser::Modal
         def text_box
-          BrowserTextBox.new browser.text_field :css => "input[[id*=combobox]"
+          BrowserTextBox.new browser.text_field css: "input[[id*=combobox]"
         end
 
         def drop_down
-          BrowserElement.new (browser.divs :css => "div[class*=x-form-trigger]")[10]
+          BrowserElement.new (browser.divs css: "div[class*=x-form-trigger]")[10]
         end
 
         def select selection
           text_box = self.text_box
           drop_down = self.drop_down
-          selection_label = BrowserElement.new browser.li :text => selection
+          selection_label = BrowserElement.new browser.li text: selection
 
           5.times{
             drop_down.safe_click unless selection_label.present?
@@ -168,11 +168,11 @@ module Stamps
         end
 
         def labels_required
-          browser.label(:css => 'label[class*=label-sheets-requred]').text.gsub(/[^\d]/, '')
+          browser.label(css: 'label[class*=label-sheets-requred]').text.gsub(/[^\d]/, '')
         end
 
         def title
-          div = browser.div :css => "div[id^=printwindow]>div[id^=title]>div[id^=title]"
+          div = browser.div css: "div[id^=printwindow]>div[id^=title]>div[id^=title]"
           logger.info "Title: #{div}"
           browser_helper.text div
         end
@@ -182,11 +182,11 @@ module Stamps
         end
 
         def error_ok_button
-          browser.span :text => 'OK'
+          browser.span text: 'OK'
         end
 
         def error_message
-          browser.div(:css => 'div[class=x-autocontainer-outerCt][id^=dialoguemodal]>div[id^=dialoguemodal]').text
+          browser.div(css: 'div[class=x-autocontainer-outerCt][id^=dialoguemodal]>div[id^=dialoguemodal]').text
         end
 
         def close
@@ -202,7 +202,7 @@ module Stamps
         end
 
         def total_label
-          browser.label(:text => 'Total Cost:').parent.labels.last
+          browser.label(text: 'Total Cost:').parent.labels.last
         end
 
         def check_naws_plugin_error
@@ -210,7 +210,7 @@ module Stamps
             error_label = browser.div text: 'Error'
             if error_label.present?
               @printing_error = true
-              ptags = browser.ps :css => 'div[id^=dialoguemodal]>p'
+              ptags = browser.ps css: 'div[id^=dialoguemodal]>p'
               logger.info "-- Chrome NAWS Plugin Error --"
               ptags.each {|p_tag|
                 if p_tag.present?
@@ -237,10 +237,10 @@ module Stamps
 
         def printing_error_check
           @printing_error = ""
-          incomplete_order_window = BrowserElement.new(browser.div :text => "Incomplete Order")
-          error_window = BrowserElement.new(browser.div :text => "Error")
-          ok_button = BrowserElement.new(browser.span :text => 'OK')
-          message_label = BrowserElement.new((browser.divs :css => "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
+          incomplete_order_window = BrowserElement.new(browser.div text: "Incomplete Order")
+          error_window = BrowserElement.new(browser.div text: "Error")
+          ok_button = BrowserElement.new(browser.span text: 'OK')
+          message_label = BrowserElement.new((browser.divs css: "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
 
           sleep 2
 
@@ -261,27 +261,27 @@ module Stamps
         end
 
         def x_button
-          browser.elements(:css => 'img[class*=x-tool-close]').last
+          browser.elements(css: 'img[class*=x-tool-close]').last
         end
 
         def printer_label
-          browser.label :text => 'Printer:'
+          browser.label text: 'Printer:'
         end
 
         def printer_field
-          browser.text_field :name => 'printers'
+          browser.text_field name: 'printers'
         end
 
         def paper_tray_field
-          browser.text_field :name => 'paperTrays'
+          browser.text_field name: 'paperTrays'
         end
 
         def print_button
-          BrowserElement.new browser.span :id => 'sdc-printwin-printbtn-btnInnerEl'
+          BrowserElement.new browser.span id: 'sdc-printwin-printbtn-btnInnerEl'
         end
 
         def click_print_button
-          browser_helper.click print_button
+          browser_helper.safe_click print_button
         end
       end
     end

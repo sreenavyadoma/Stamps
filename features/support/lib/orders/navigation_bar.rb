@@ -5,8 +5,8 @@ module Stamps
         class BalanceDropDown < Browser::Modal
           def buy_more
             buy_postage_modal = Orders::Purchasing::BuyPostage.new param
-            drop_down = BrowserElement.new (browser.span :class => "balanceLabel")
-            link = BrowserElement.new (browser.a :text => "Buy More")
+            drop_down = BrowserElement.new (browser.span class: "balanceLabel")
+            link = BrowserElement.new (browser.a text: "Buy More")
             20.times do
               drop_down.hover
               drop_down.safe_click unless link.present?
@@ -17,8 +17,8 @@ module Stamps
           end
 
           def purchase_history
-            drop_down = BrowserElement.new (browser.span :class => "balanceLabel")
-            link = BrowserElement.new (browser.a :text => "View Purchase History")
+            drop_down = BrowserElement.new (browser.span class: "balanceLabel")
+            link = BrowserElement.new (browser.a text: "View Purchase History")
             2.times do
               drop_down.hover
               drop_down.safe_click unless link.present?
@@ -28,7 +28,7 @@ module Stamps
           end
 
           def amount
-            balance_field = BrowserElement.new (browser.span :id => 'postageBalanceAmt')
+            balance_field = BrowserElement.new (browser.span id: 'postageBalanceAmt')
             10.times{
               amount = balance_field.text
               amount_stripped_dollar = amount.gsub("$","")
@@ -71,7 +71,7 @@ module Stamps
 
           def sign_out
             drop_down = username
-            sign_out_link = BrowserElement.new (browser.a :text => "Sign Out")
+            sign_out_link = BrowserElement.new (browser.a text: "Sign Out")
             20.times do
               drop_down.safe_click unless sign_out_link.present?
               drop_down.hover
@@ -87,8 +87,8 @@ module Stamps
         end
 
         def sign_out
-          sign_out_link = BrowserElement.new browser.link :id => "signOutLink"
-          signed_in_username = BrowserElement.new browser.span :id => 'userNameText'
+          sign_out_link = BrowserElement.new browser.link id: "signOutLink"
+          signed_in_username = BrowserElement.new browser.span id: 'userNameText'
           20.times {
             begin
               signed_in_username.safe_click unless sign_out_link.present?

@@ -29,7 +29,7 @@ module Stamps
         end
 
         def delete_btn
-          spans = browser.spans(:css => "div[componentid^=dialoguemodal]>div[id^=panel]>div>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
+          spans = browser.spans(css: "div[componentid^=dialoguemodal]>div[id^=panel]>div>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
           first = spans.first
           last = spans.last
           (last.present?)?last:first
@@ -49,7 +49,7 @@ module Stamps
         end
 
         def cancel
-          BrowserElement.new (browser.span :text => "Cancel")
+          BrowserElement.new (browser.span text: "Cancel")
         end
       end
 
@@ -113,7 +113,7 @@ module Stamps
             end
 
             def delete
-              BrowserElement.new (browser.spans :css => "span[class*=sdc-icon-remove]")[@index]
+              BrowserElement.new (browser.spans css: "span[class*=sdc-icon-remove]")[@index]
             end
 
             def shipping_Service
@@ -126,7 +126,7 @@ module Stamps
           end
 
           def size
-            (browser.divs :css => "div[id^=singleservicemappingitem][class*=x-container-default]").size
+            (browser.divs css: "div[id^=singleservicemappingitem][class*=x-container-default]").size
           end
 
           def item index
@@ -208,7 +208,7 @@ module Stamps
         end
 
         def close
-          button = BrowserElement.new ((browser.imgs :css => "img[class*='x-tool-close']").last)
+          button = BrowserElement.new ((browser.imgs css: "img[class*='x-tool-close']").last)
           button.safe_click
           sleep 1
           15.times do
@@ -222,11 +222,11 @@ module Stamps
         end
 
         def window_title
-          BrowserElement.new (browser.divs :text => "Add your Store or Marketplace").last
+          BrowserElement.new (browser.divs text: "Add your Store or Marketplace").last
         end
 
         def search_textbox
-          BrowserTextBox.new (browser.text_fields :css => "input[placeholder='Search by Name']").last
+          BrowserTextBox.new (browser.text_fields css: "input[placeholder='Search by Name']").last
         end
 
         def search search_str
@@ -234,7 +234,7 @@ module Stamps
         end
 
         def amazon_button
-          BrowserElement.new (browser.imgs :css => "img[src*=amazon]").last
+          BrowserElement.new (browser.imgs css: "img[src*=amazon]").last
         end
 
         def amazon
@@ -248,7 +248,7 @@ module Stamps
         end
 
         def volusion_button
-          BrowserElement.new (browser.imgs :css => "img[src*=volusion]").last
+          BrowserElement.new (browser.imgs css: "img[src*=volusion]").last
         end
 
         def volusion
@@ -263,7 +263,7 @@ module Stamps
         end
 
         def rakuten_button
-          BrowserElement.new (browser.imgs :css => "img[src*='rakuten']").last
+          BrowserElement.new (browser.imgs css: "img[src*='rakuten']").last
         end
 
         def rakuten
@@ -278,7 +278,7 @@ module Stamps
         end
 
         def etsy_button
-          BrowserElement.new (browser.imgs :css => "img[src*='etsy']").last
+          BrowserElement.new (browser.imgs css: "img[src*='etsy']").last
         end
 
         def etsy
@@ -293,7 +293,7 @@ module Stamps
         end
 
         def shopify_button
-          BrowserElement.new (browser.imgs :css => "img[src*='shopify']").last
+          BrowserElement.new (browser.imgs css: "img[src*='shopify']").last
         end
 
         def shopify
@@ -308,7 +308,7 @@ module Stamps
         end
 
         def three_d_cart_button
-          BrowserElement.new (browser.imgs :css => "img[src*='3dcart']").last
+          BrowserElement.new (browser.imgs css: "img[src*='3dcart']").last
         end
 
         def three_d_cart
@@ -323,7 +323,7 @@ module Stamps
         end
 
         def ebay_button
-          BrowserElement.new (browser.imgs :css => "img[src*='ebay']").last
+          BrowserElement.new (browser.imgs css: "img[src*='ebay']").last
         end
 
         def ebay
@@ -338,7 +338,7 @@ module Stamps
         end
 
         def yahoo_button
-          BrowserElement.new (browser.imgs :css => "img[src*='yahoo']").last
+          BrowserElement.new (browser.imgs css: "img[src*='yahoo']").last
         end
 
         def yahoo
@@ -353,7 +353,7 @@ module Stamps
         end
 
         def big_commerce_button
-          BrowserElement.new (browser.imgs :css => "img[src*='bigcommerce']").last
+          BrowserElement.new (browser.imgs css: "img[src*='bigcommerce']").last
         end
 
         def big_commerce
@@ -368,7 +368,7 @@ module Stamps
         end
 
         def paypal_button
-          BrowserElement.new (browser.imgs :css => "img[src*='paypal']").last
+          BrowserElement.new (browser.imgs css: "img[src*='paypal']").last
         end
 
         def paypal
@@ -388,7 +388,7 @@ module Stamps
         class ManageStoresGrid < Browser::Modal
 
           def size
-            (browser.tables :css => "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table").size
+            (browser.tables css: "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table").size
           end
 
           def delete
@@ -401,7 +401,7 @@ module Stamps
 
           def delete_row row
             css = "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table:nth-child(#{row})>tbody>tr>td:nth-child(2)>div"
-            grid_row_item = browser.div :css => css
+            grid_row_item = browser.div css: css
             grid_row_focused_field = BrowserElement.new grid_row_item.parent
             grid_row_field = BrowserElement.new grid_row_item
 
@@ -492,7 +492,7 @@ module Stamps
         end
 
         def close
-          button = BrowserElement.new browser.img(:css => "div[id^=managestoreswindow-][id$=header-targetEl]>div>img")
+          button = BrowserElement.new browser.img(css: "div[id^=managestoreswindow-][id$=header-targetEl]>div>img")
           5.times do
             button.safe_click
             return unless button.present?
@@ -500,7 +500,7 @@ module Stamps
         end
 
         def window_title
-          BrowserElement.new(browser.div :text => "Manage Stores")
+          BrowserElement.new(browser.div text: "Manage Stores")
         end
 
         def present?
@@ -508,7 +508,7 @@ module Stamps
         end
 
         def add_button
-          BrowserElement.new browser.span(:css => "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
+          BrowserElement.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
         end
 
         def add

@@ -2,11 +2,11 @@ module Stamps
   module Print
     class ForgotPasswordModal < Browser::Modal
       def window_x_button
-        BrowserElement.new (browser.imgs :css => "img[class*='x-tool-close']")[0]
+        BrowserElement.new (browser.imgs css: "img[class*='x-tool-close']")[0]
       end
 
       def close_window
-        browser_helper.click window_x_button, 'close_window'
+        browser_helper.safe_click window_x_button
       end
 
       def x_button_present?
@@ -22,7 +22,7 @@ module Stamps
       end
 
       def window_title
-        browser.span :text => "Forgot Password"
+        browser.span text: "Forgot Password"
       end
 
       def present?
@@ -30,30 +30,30 @@ module Stamps
       end
 
       def username
-        frame1 = browser.iframe(:css => "iframe[src*='/Store/login/lost_password/webpostage/']")
+        frame1 = browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
         frame1.text_field(:id, 'login')
       end
 
       def secret_answer_1
-        frame1 = browser.iframe(:css => "iframe[src*='/Store/login/lost_password/webpostage/']")
-        frame1.text_field(:name => "/stamps/userprofiling/SDCProfileFormHandler.value.codeword1")
+        frame1 = browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
+        frame1.text_field(name: "/stamps/userprofiling/SDCProfileFormHandler.value.codeword1")
       end
 
       def secret_answer_2
-        frame1 = browser.iframe(:css => "iframe[src*='/Store/login/lost_password/webpostage/']")
-        frame1.text_field(:name => "/stamps/userprofiling/SDCProfileFormHandler.value.codeword2")
+        frame1 = browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
+        frame1.text_field(name: "/stamps/userprofiling/SDCProfileFormHandler.value.codeword2")
       end
 
       def continue
-        frame1 = browser.iframe(:css => "iframe[src*='/Store/login/lost_password/webpostage/']")
-        button = frame1.div(:id => "fb_btnContinue")
+        frame1 = browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
+        button = frame1.div(id: "fb_btnContinue")
         button.click
         sleep(2)
       end
 
       def confirm_reset
-        frame1 = browser.iframe(:css => "iframe[src*='/Store/login/lost_password/webpostage/']")
-        confirmation = frame1.p(:text => "Thank you. We have sent a temporary password in an email to you.")
+        frame1 = browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
+        confirmation = frame1.p(text: "Thank you. We have sent a temporary password in an email to you.")
         5.times do
           sleep 1
           return confirmation if confirmation.present?

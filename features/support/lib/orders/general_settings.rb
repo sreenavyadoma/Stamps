@@ -5,7 +5,7 @@ module Stamps
         class Weight < Browser::Modal
           class Pounds <  Browser::Modal
             def text_box
-              BrowserTextBox.new (browser.text_field :name => 'sdc-resetfieldswin-poundsnumberfield-inputEl')
+              BrowserTextBox.new (browser.text_field name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')
             end
 
             def set value
@@ -15,14 +15,14 @@ module Stamps
             end
 
             def increment value
-              button = BrowserElement.new (browser.div :css => "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = BrowserElement.new (browser.div :css => "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -31,7 +31,7 @@ module Stamps
 
           class Ounces <  Browser::Modal
             def text_box
-              BrowserTextBox.new (browser.text_field :name => 'sdc-resetfieldswin-ouncesnumberfield-inputEl')
+              BrowserTextBox.new (browser.text_field name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl')
             end
 
             def set value
@@ -56,14 +56,14 @@ module Stamps
             end
 
             def increment value
-              button = BrowserElement.new (browser.div :css => "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = BrowserElement.new (browser.div :css => "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -71,11 +71,11 @@ module Stamps
           end
 
           def enabled?
-            browser_helper.enabled? (browser.text_field :name => 'sdc-resetfieldswin-poundsnumberfield-inputEl')
+            browser_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')
           end
 
           def checkbox
-            checkbox_field = browser.input :id => "sdc-resetfieldswin-weightcheckbox-inputEl"
+            checkbox_field = browser.input id: "sdc-resetfieldswin-weightcheckbox-inputEl"
             verify_field = checkbox_field.parent.parent.parent
             attribute_name = "class"
             attribute_value = "checked"
@@ -94,7 +94,7 @@ module Stamps
         class Dimensions < Browser::Modal
           class Length <  Browser::Modal
             def text_box
-              BrowserTextBox.new (browser.text_field :name => 'sdc-resetfieldswin-lengthnumberfield-inputEl')
+              BrowserTextBox.new (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
             end
 
             def set value
@@ -119,14 +119,14 @@ module Stamps
             end
 
             def increment value
-              button = BrowserElement.new (browser.div :css => "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = BrowserElement.new (browser.div :css => "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -135,7 +135,7 @@ module Stamps
 
           class Width <  Browser::Modal
             def text_box
-              BrowserTextBox.new (browser.text_field :name => 'sdc-resetfieldswin-widthnumberfield-inputEl')
+              BrowserTextBox.new (browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
             end
 
             def set value
@@ -160,14 +160,14 @@ module Stamps
             end
 
             def increment value
-              button = BrowserElement.new (browser.div :css => "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = BrowserElement.new (browser.div :css => "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -176,7 +176,7 @@ module Stamps
 
           class Height <  Browser::Modal
             def text_box
-              BrowserTextBox.new (browser.text_field :name => 'sdc-resetfieldswin-heightnumberfield-inputEl')
+              BrowserTextBox.new (browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
             end
 
             def set value
@@ -201,14 +201,14 @@ module Stamps
             end
 
             def increment value
-              button = BrowserElement.new (browser.div :css => "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = BrowserElement.new (browser.div :css => "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -216,11 +216,11 @@ module Stamps
           end
 
           def enabled?
-            browser_helper.enabled? (browser.text_field :name => 'sdc-resetfieldswin-lengthnumberfield-inputEl')
+            browser_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
           end
 
           def checkbox
-            checkbox_field = browser.input :id => "sdc-resetfieldswin-dimensionscheckbox-inputEl"
+            checkbox_field = browser.input id: "sdc-resetfieldswin-dimensionscheckbox-inputEl"
             verify_field = checkbox_field.parent.parent.parent
             attribute_name = "class"
             attribute_value = "checked"
@@ -246,7 +246,7 @@ module Stamps
         end
 
         def service
-          checkbox_field = browser.input :id => "sdc-resetfieldswin-servicecheckbox-inputEl"
+          checkbox_field = browser.input id: "sdc-resetfieldswin-servicecheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -262,7 +262,7 @@ module Stamps
         end
 
         def ship_to_address
-          checkbox_field = browser.input :id => "sdc-resetfieldswin-shiptoaddresscheckbox-inputEl"
+          checkbox_field = browser.input id: "sdc-resetfieldswin-shiptoaddresscheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -270,7 +270,7 @@ module Stamps
         end
 
         def tracking
-          checkbox_field = browser.input :id => "sdc-resetfieldswin-trackingcheckbox-inputEl"
+          checkbox_field = browser.input id: "sdc-resetfieldswin-trackingcheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -278,7 +278,7 @@ module Stamps
         end
 
         def extra_services
-          checkbox_field = browser.input :id => "sdc-resetfieldswin-extraservicescheckbox-inputEl"
+          checkbox_field = browser.input id: "sdc-resetfieldswin-extraservicescheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -286,7 +286,7 @@ module Stamps
         end
 
         def insurance
-          checkbox_field = browser.input :id => "sdc-resetfieldswin-insurancecheckbox-inputEl"
+          checkbox_field = browser.input id: "sdc-resetfieldswin-insurancecheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -294,7 +294,7 @@ module Stamps
         end
 
         def reference_numbers
-          checkbox_field = browser.input :id => "sdc-resetfieldswin-referencenumberscheckbox-inputEl"
+          checkbox_field = browser.input id: "sdc-resetfieldswin-referencenumberscheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -302,7 +302,7 @@ module Stamps
         end
 
         def cost_code
-          checkbox_field = browser.input :id => "sdc-resetfieldswin-costcodecheckbox-inputEl"
+          checkbox_field = browser.input id: "sdc-resetfieldswin-costcodecheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -310,7 +310,7 @@ module Stamps
         end
 
         def customs
-          checkbox_field = browser.input :id => "sdc-resetfieldswin-customscheckbox-inputEl"
+          checkbox_field = browser.input id: "sdc-resetfieldswin-customscheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -318,7 +318,7 @@ module Stamps
         end
 
         def quantity
-          checkbox_field = browser.input :id => "sdc-resetfieldswin-quantitycheckbox-inputEl"
+          checkbox_field = browser.input id: "sdc-resetfieldswin-quantitycheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -326,7 +326,7 @@ module Stamps
         end
 
         def stamps_amount
-          checkbox_field = browser.input :id => "sdc-resetfieldswin-stampsamountcheckbox-inputEl"
+          checkbox_field = browser.input id: "sdc-resetfieldswin-stampsamountcheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -343,7 +343,7 @@ module Stamps
         end
 
         def close
-          button = BrowserElement.new (browser.span :text => "Close")
+          button = BrowserElement.new (browser.span text: "Close")
           5.times do
             return unless button.present?
             button.safe_click
@@ -355,13 +355,13 @@ module Stamps
 
       class LogoffDropDown < Browser::Modal
         def text_box
-          BrowserTextBox.new (browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[0]
+          BrowserTextBox.new (browser.text_fields css: "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[0]
         end
 
         def select selection
-          drop_down = BrowserElement.new browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]"
+          drop_down = BrowserElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]"
           text_field = text_box
-          selection_label = BrowserElement.new browser.li :text => selection
+          selection_label = BrowserElement.new browser.li text: selection
           10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
@@ -396,13 +396,13 @@ module Stamps
 
       class PostDateDropDown < Browser::Modal
         def text_box
-          BrowserTextBox.new (browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[1]
+          BrowserTextBox.new (browser.text_fields css: "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[1]
         end
 
         def select selection
-          drop_down = BrowserElement.new browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
+          drop_down = BrowserElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
           text_field = text_box
-          selection_label = BrowserElement.new browser.li :text => selection
+          selection_label = BrowserElement.new browser.li text: selection
           10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
@@ -509,13 +509,13 @@ module Stamps
 
       class PostageBalanceDropDown < Browser::Modal
         def text_box
-          BrowserTextBox.new (browser.text_fields :css => "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[2]
+          BrowserTextBox.new (browser.text_fields css: "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[2]
         end
 
         def select selection
-          drop_down = BrowserElement.new browser.div :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]"
+          drop_down = BrowserElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]"
           text_field = text_box
-          selection_label = BrowserElement.new browser.li :text => selection
+          selection_label = BrowserElement.new browser.li text: selection
           10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
@@ -553,7 +553,7 @@ module Stamps
       end
 
       def title
-        BrowserElement.new browser.div :text => "Settings"
+        BrowserElement.new browser.div text: "Settings"
       end
 
       def present?
@@ -561,7 +561,7 @@ module Stamps
       end
 
       def services
-        checkbox_field = browser.input :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.input css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>input"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -581,7 +581,7 @@ module Stamps
       end
 
       def print_confirm
-        checkbox_field = browser.input :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.input css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>input"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -590,7 +590,7 @@ module Stamps
 
       def reset_fields
         modal = ResetFields.new param
-        button = BrowserElement.new browser.span :text => "Select..."
+        button = BrowserElement.new browser.span text: "Select..."
         10.times do
           button.safe_click unless modal.present?
           return modal if modal.present?
@@ -598,7 +598,7 @@ module Stamps
       end
 
       def usps_terms
-        checkbox_field = browser.input :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.input css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>input"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -606,7 +606,7 @@ module Stamps
       end
 
       def contacts
-        checkbox_field = browser.input :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.input css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>input"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -614,7 +614,7 @@ module Stamps
       end
 
       def shipments
-        checkbox_field = browser.input :css => "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.input css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>input"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -622,7 +622,7 @@ module Stamps
       end
 
       def save
-        button = BrowserElement.new (browser.span :text => "Save")
+        button = BrowserElement.new (browser.span text: "Save")
         10.times do
           button.safe_click
           return unless button.present?
@@ -630,7 +630,7 @@ module Stamps
       end
 
       def close
-        button = BrowserElement.new (browser.img :css => "img[class$=close]")
+        button = BrowserElement.new (browser.img css: "img[class$=close]")
         10.times do
           button.safe_click
           return unless button.present?

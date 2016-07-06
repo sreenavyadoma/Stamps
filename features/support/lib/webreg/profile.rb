@@ -9,9 +9,9 @@ module Stamps
 
         def referrer name
           begin
-            browser.select_list(:id, "referrerName").option(:text => name).when_present.select
-            browser.select_list(:id, "referrerName").option(:text => name).when_present.select
-            browser.select_list(:id, "referrerName").option(:text => name).when_present.select
+            browser.select_list(:id, "referrerName").option(text: name).when_present.select
+            browser.select_list(:id, "referrerName").option(text: name).when_present.select
+            browser.select_list(:id, "referrerName").option(text: name).when_present.select
           rescue
             #ignore
           end
@@ -78,8 +78,8 @@ module Stamps
 
         def mostly_mailing
           begin
-            browser.select_list(:id, "usageType").option(:text => /Mostly mailing/).when_present.select
-            browser.select_list(:id, "usageType").option(:text => /Mostly mailing/).when_present.select
+            browser.select_list(:id, "usageType").option(text: /Mostly mailing/).when_present.select
+            browser.select_list(:id, "usageType").option(text: /Mostly mailing/).when_present.select
           rescue
             #ignore
           end
@@ -87,8 +87,8 @@ module Stamps
 
         def mostly_shipping
           begin
-            browser.select_list(:id, "usageType").option(:text => /Mostly shipping packages/).when_present.select
-            browser.select_list(:id, "usageType").option(:text => /Mostly shipping packages/).when_present.select
+            browser.select_list(:id, "usageType").option(text: /Mostly shipping packages/).when_present.select
+            browser.select_list(:id, "usageType").option(text: /Mostly shipping packages/).when_present.select
           rescue
             #ignore
           end
@@ -96,8 +96,8 @@ module Stamps
 
         def mailing_and_shipping
           begin
-            browser.select_list(:id, "usageType").option(:text => /Both mailing and shipping/).when_present.select
-            browser.select_list(:id, "usageType").option(:text => /Both mailing and shipping/).when_present.select
+            browser.select_list(:id, "usageType").option(text: /Both mailing and shipping/).when_present.select
+            browser.select_list(:id, "usageType").option(text: /Both mailing and shipping/).when_present.select
           rescue
             #ignore
           end
@@ -105,8 +105,8 @@ module Stamps
 
         def individual
           begin
-            browser.select_list(:id, "usageType").option(:text => /Home Office/).when_present.select
-            browser.select_list(:id, "usageType").option(:text => /Home Office/).when_present.select
+            browser.select_list(:id, "usageType").option(text: /Home Office/).when_present.select
+            browser.select_list(:id, "usageType").option(text: /Home Office/).when_present.select
           rescue
             #ignore
           end
@@ -116,9 +116,9 @@ module Stamps
       class FirstQuestion < Browser::Modal
         def question secret
           begin
-            browser.select_list(:name, "secretQuestion1").option(:text => secret).when_present.select
-            browser.select_list(:name, "secretQuestion1").option(:text => secret).when_present.select
-            browser.select_list(:name, "secretQuestion1").option(:text => secret).when_present.select
+            browser.select_list(:name, "secretQuestion1").option(text: secret).when_present.select
+            browser.select_list(:name, "secretQuestion1").option(text: secret).when_present.select
+            browser.select_list(:name, "secretQuestion1").option(text: secret).when_present.select
           rescue
             #ignore
           end
@@ -156,9 +156,9 @@ module Stamps
       class SecondQuestion < Browser::Modal
         def question secret
           begin
-            browser.select_list(:name, "secretQuestion2").option(:text => secret).when_present.select
-            browser.select_list(:name, "secretQuestion2").option(:text => secret).when_present.select
-            browser.select_list(:name, "secretQuestion2").option(:text => secret).when_present.select
+            browser.select_list(:name, "secretQuestion2").option(text: secret).when_present.select
+            browser.select_list(:name, "secretQuestion2").option(text: secret).when_present.select
+            browser.select_list(:name, "secretQuestion2").option(text: secret).when_present.select
           rescue
             #ignore
           end
@@ -202,10 +202,10 @@ module Stamps
       end
 
       def wait_until_present
-        browser_helper.wait_until_present browser.text_field(:id => "email")
-        browser_helper.wait_until_present browser.text_field(:id => "username")
-        browser_helper.wait_until_present browser.text_field(:id => "password")
-        browser_helper.wait_until_present browser.text_field(:id => "confirmPassword")
+        browser_helper.wait_until_present browser.text_field(id: "email")
+        browser_helper.wait_until_present browser.text_field(id: "username")
+        browser_helper.wait_until_present browser.text_field(id: "password")
+        browser_helper.wait_until_present browser.text_field(id: "confirmPassword")
       end
 
       def referrer_name
@@ -213,19 +213,19 @@ module Stamps
       end
 
       def email
-        BrowserTextBox.new browser.text_field(:id => "email")
+        BrowserTextBox.new browser.text_field(id: "email")
       end
 
       def user_id
-        BrowserTextBox.new browser.text_field(:id => "username")
+        BrowserTextBox.new browser.text_field(id: "username")
       end
 
       def password
-        BrowserTextBox.new browser.text_field(:id => "password")
+        BrowserTextBox.new browser.text_field(id: "password")
       end
 
       def retype_password
-        BrowserTextBox.new browser.text_field(:id => "confirmPassword")
+        BrowserTextBox.new browser.text_field(id: "confirmPassword")
       end
 
       def usage_type
@@ -241,7 +241,7 @@ module Stamps
       end
 
       def first_answer
-        BrowserTextBox.new browser.text_field(:id => "secretAnswer1")
+        BrowserTextBox.new browser.text_field(id: "secretAnswer1")
       end
 
       def second_question
@@ -249,15 +249,15 @@ module Stamps
       end
 
       def second_answer
-        BrowserTextBox.new browser.text_field(:id => "secretAnswer2")
+        BrowserTextBox.new browser.text_field(id: "secretAnswer2")
       end
 
       def send_promo
-        BrowserElement.new browser.input(:id => "optIn")
+        BrowserElement.new browser.input(id: "optIn")
       end
 
       def continue
-        BrowserElement.new browser.button(:id => "next")
+        BrowserElement.new browser.button(id: "next")
       end
 
       def continue_to_mailing_info

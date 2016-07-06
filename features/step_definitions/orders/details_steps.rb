@@ -862,7 +862,8 @@ end
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   logger.info "Details: Set Insure-For to #{value}"
   orders.details.insure_for.set value
-  10.times do
+  orders.details.insure_for.set value
+  20.times do
     orders.details.blur_out
     break if orders.details.insure_for.cost > 0
   end

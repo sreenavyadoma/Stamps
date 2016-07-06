@@ -5,35 +5,35 @@ module Stamps
       class EnvelopeFormView < Print::Postage::PrintPostageObject
 
         def preview_image
-          image = BrowserElement.new browser.div :id => "envelopePreview"
+          image = BrowserElement.new browser.div id: "envelopePreview"
         end
 
         def include_return_address
-          checkbox_field = browser.input :css => "input[class*=sdc-previewpanel-returnaddrcheckbox]"
-          verify_fields = browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
+          checkbox_field = browser.input css: "input[class*=sdc-previewpanel-returnaddrcheckbox]"
+          verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[2]
 
           Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
 
         def include_delivery_address
-          checkbox_field = browser.input :css => "input[class*=sdc-previewpanel-deliveryaddrcheckbox]"
-          verify_fields = browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
+          checkbox_field = browser.input css: "input[class*=sdc-previewpanel-deliveryaddrcheckbox]"
+          verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[3]
 
           Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
 
         def include_postage
-          checkbox_field = browser.input :css => "input[class*=sdc-previewpanel-includepostagecheckbox]"
-          verify_fields = browser.inputs :css => "table[id^=checkboxfield][class*=x-form-type-checkbox]"
+          checkbox_field = browser.input css: "input[class*=sdc-previewpanel-includepostagecheckbox]"
+          verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[4]
 
           Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
 
         def reference_number
-          BrowserTextBox.new browser.text_field :name => "referenceNumber"
+          BrowserTextBox.new browser.text_field name: "referenceNumber"
         end
 
         def cost_code
