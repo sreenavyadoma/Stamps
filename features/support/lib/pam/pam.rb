@@ -24,7 +24,7 @@ module Pam
     end
 
     def wait_until_present
-      browser_helper.wait_until_present browser.h5(text: "Customer Search")
+      browser.h5(text: "Customer Search").wait_until_present 6
     end
 
     def customer_search

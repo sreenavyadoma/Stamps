@@ -411,7 +411,7 @@ module Stamps
         end
 
         def wait_until_present
-          browser_helper.wait_until_present browser.span Orders::Locators::ToolBar::add
+          (browser.span Orders::Locators::ToolBar::add).wait_until_present 5
         end
 
         def present?

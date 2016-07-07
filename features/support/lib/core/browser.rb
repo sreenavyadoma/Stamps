@@ -25,7 +25,8 @@ module Stamps
       end
     end
 
-    # A Browser Element are elements found on a browser page. Buttons, text boxes, links, labels are examples of a browser element.
+    # FIX BROWSERELEMENT
+    # BrowserElement object is primarily used to wrap elements for used on step definitions.
     class BrowserElement
       attr_reader :browser, :browser_helper, :element, :error_qtip_element, :error_qtip_element_attribute
       def initialize *args
@@ -152,31 +153,31 @@ module Stamps
       end
 
       def style property
-        browser_helper.style property
+        element.style property
       end
 
       def wait_while_present
-        browser_helper.wait_while_present @element
+        element.wait_while_present 6
       end
 
       def wait_until_present
-        browser_helper.wait_until_present @element
+        element.wait_until_present 6
       end
 
       def click
-        browser_helper.safe_click @element
+        browser_helper.safe_click element
       end
 
       def safe_click
-        browser_helper.safe_click @element
+        browser_helper.safe_click element
       end
 
       def double_click
-        browser_helper.double_click @element
+        browser_helper.double_click element
       end
 
       def safe_double_click
-        browser_helper.safe_double_click @element
+        browser_helper.safe_double_click element
       end
 
       def click_while_present
@@ -272,26 +273,8 @@ module Stamps
     end
 
     class BrowserTextBox < BrowserElement
-      #todo FIX ME!
       def set text
-        15.times do
-          begin
-            attribute_value "value", ""
-            browser_helper.set element, ""
-
-            # set element text normally
-            browser_helper.set element, text
-            text_value = browser_helper.text element
-            break if text_value==text
-
-            # set element attribute value
-            attribute_value "value", text
-            text_value = browser_helper.text element
-            break if text_value==text
-          rescue
-            #ignore
-          end
-        end
+        browser_helper.set element, text
         self
       end
 
@@ -360,8 +343,7 @@ module Stamps
         @verify_element_attrib = selection_element selection
         5.times{
           browser_helper.safe_click @drop_down
-          #logger.info "Selection is present? #{browser_helper.present? @selection_element}"
-          return @verify_element_attrib if browser_helper.present? @verify_element_attrib
+          return @verify_element_attrib if @verify_element_attrib.present?
         }
       end
 
@@ -382,77 +364,29 @@ module Stamps
 
     class BrowserHelper
       class << self
-        def style element, var_name
+
+        def text element
           begin
-            style = element.style(var_name)
-            #logger.info "element Style:  #{style}"
-            return style
+            text = element.text
+            return text if text.size > 0
           rescue
-            #
+            #ignore
           end
-          nil
-        end
 
-        def attribute_enabled? *args
-          case args.length
-            when 1
-              element = args[0]
-              element_attribute = "class"
-              search_string = "enabled"
-            when 3
-              element = args[0]
-              element_attribute = args[1]
-              search_string = args[2]
-            else
-              stop_test "Wrong number of arguments for enabled?"
+          begin
+            value = element.value
+            return value if value.size > 0
+          rescue
+            #ignore
           end
-          attribute_value = attribute_value element, element_attribute
-          attribute_value.include? search_string
-        end
 
-        def attribute_value *args
-
-          case args.length
-            when 2
-              # get the value of an attribute
-              element = args[0]
-              attribute_name = args[1]
-              begin
-                element.attribute_value attribute_name
-              rescue
-                ""
-              end
-            when 3
-              # set the value of an attribute
-              element = args[0]
-              attribute_name = args[1]
-              value = args[2]
-              script = "return arguments[0].#{attribute_name} = '#{value}'"
-              element.browser.execute_script(script, element)
-            else
-              raise "Illegal number of arguments for attribute_value.  Check your TestHelper."
+          begin
+            value = element.attribute_value 'value'
+            return value if value.size > 0
+          rescue
+            #ignore
           end
-        end
-
-        def drop_down browser, drop_down_button, selection_element_type, drop_down_input, selection
-          dd = BrowserDropdown.new browser, drop_down_button, selection_element_type, drop_down_input
-          dd.select selection
-        end
-
-        def text *args
-          case args.length
-            when 1
-              element_text args[0]
-            when 2
-              element_text args[0]
-            #logger.browser_element args[0], text, args[1]
-            else
-              stop_test "Wrong number of arguments for BrowserHelper.text method."
-          end
-        end
-
-        def text=(*args)
-          set args
+          ""
         end
 
         def send_keys *args
@@ -477,69 +411,42 @@ module Stamps
           end
         end
 
-        def set *args
-          case args.length
-            when 2
-              element = args[0]
-              text = args[1]
-              element_name = ""
-            when 3
-              element = args[0]
-              text = args[1]
-              element_name = args[2]
-            else
-              stop_test "Wrong number of arguments for BrowserHelper.set_text method."
-          end
-
-          5.times do
+        def set element, text
+          element.wait_until_present 4 #wait 4 seconds them timeout if element is not present
+          15.times do
             begin
+              # set element text
               element.focus
               element.clear
               element.set text
-              actual_value =  element_text(element)
-              break if (actual_value.to_s.include? text) || (text.to_s.include? actual_value)
+
+              #set element attribute value
+
+              actual_value =  text element
+              break if actual_value == text
             rescue
               #ignore
             end
           end
-        end
 
-        def element_text element
-=begin
-        begin
-          element.focus
-        rescue
-          #ignore
-        end
-=end
+          15.times do
+            begin
+              attribute_value "value", ""
+              browser_helper.set element, ""
 
-          begin
-            text = element.text
-            return text if text.size > 0
-          rescue
-            #ignore
+              # set element text normally
+              browser_helper.set element, text
+              text_value = browser_helper.text element
+              break if text_value==text
+
+              # set element attribute value
+              attribute_value "value", text
+              text_value = browser_helper.text element
+              break if text_value==text
+            rescue
+              #ignore
+            end
           end
-
-          begin
-            value = element.value
-            return value if value.size > 0
-          rescue
-            #ignore
-          end
-
-          begin
-            value = element.attribute_value 'value'
-            return value if value.size > 0
-          rescue
-            #ignore
-          end
-          ""
-        end
-
-        def get_varname symb, the_binding
-          var_name  = symb.to_s
-          var_value = eval(var_name, the_binding)
-          puts "#{var_name} = #{var_value.inspect}"
         end
 
         def safe_click element
@@ -550,90 +457,17 @@ module Stamps
           end
         end
 
-        def click *args
-          case args.length
-            when 1
-              args[0].click
-
-            when 2
-              args[0].click
-            else
-              stop_test "Wrong number of arguments."
-          end
-        end
-
-        def safe_double_click *args
+        def visible? element
           begin
-            double_click *args
+            element.visible?
           rescue
-            #ignore
+            return false
           end
         end
 
-        def double_click *args
-          case args.length
-            when 1
-              begin
-                args[0].focus
-              rescue
-                #logger.info "Unable to focus on browser element #{args[0]}"
-              end
-
-              args[0].double_click
-            #var_name = get_varname :args[0],
-            #log_browser_click args[0]
-
-            when 2
-              begin
-                args[0].focus
-              rescue
-                #logger.info "Unable to focus on browser element #{args[1]} #{args[0]}"
-              end
-              args[0].double_click
-              var_name = %w(args[0])
-            #log_browser_click args[0], var_name
-            else
-              stop_test "Wrong number of arguments."
-          end
-        end
-
-        def wait_until_present *args
-          case args.length
-            when 1
-              begin
-                args[0].wait_until_present
-                true
-              rescue
-                false
-              end
-            when 2
-              begin
-                args[0].wait_until_present args[1].to_i
-              rescue
-                false
-              end
-            else
-              stop_test "Illegal number of arguments for BrowserHelper.wait_until_present"
-          end
-        end
-
-        def wait_while_present *args
-          case args.length
-            when 1
-              begin
-                args[0].wait_while_present
-                true
-              rescue
-                false
-              end
-            else
-              stop_test "Illegal number of arguments for BrowserHelper.wait_until_present"
-          end
-        end
-
-        def present? element
+        def enabled? element
           begin
-            element.present?
+            element.enabled?
           rescue
             return false
           end
@@ -659,36 +493,59 @@ module Stamps
           disabled
         end
 
-        def exist? element
+        def safe_double_click element
           begin
-            element.exist?
-          rescue
-            return false
-          end
-        end
-
-        def visible? element
-          begin
-            element.visible?
-          rescue
-            return false
-          end
-        end
-
-        def enabled? element
-          begin
-            element.enabled?
-          rescue
-            return false
-          end
-        end
-
-        def hover element
-          begin
-            element.hover
+            element.double_click
           rescue
             #ignore
           end
+        end
+
+        def attribute_enabled? *args
+          case args.length
+            when 1
+              element = args[0]
+              element_attribute = "class"
+              search_string = "enabled"
+            when 3
+              element = args[0]
+              element_attribute = args[1]
+              search_string = args[2]
+            else
+              stop_test "Wrong number of arguments for enabled?"
+          end
+          attribute_value = attribute_value element, element_attribute
+          attribute_value.include? search_string
+        end
+
+        def attribute_value *args
+          #FIX ME!
+          case args.length
+            when 2
+              # get the value of an attribute
+              element = args[0]
+              attribute_name = args[1]
+              begin
+                element.attribute_value attribute_name
+              rescue
+                ""
+              end
+            when 3
+              # set the value of an attribute
+              element = args[0]
+              attribute_name = args[1]
+              value = args[2]
+              script = "return arguments[0].#{attribute_name} = '#{value}'"
+              element.browser.execute_script(script, element)
+            else
+              raise "Illegal number of arguments for attribute_value.  Check your TestHelper."
+          end
+        end
+
+
+        def drop_down browser, drop_down_button, selection_element_type, drop_down_input, selection
+          dd = BrowserDropdown.new browser, drop_down_button, selection_element_type, drop_down_input
+          dd.select selection
         end
 
       end

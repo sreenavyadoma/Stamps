@@ -37,7 +37,7 @@ module Pam
     end
 
     def wait_until_present
-      browser_helper.wait_until_present browser.b(text: "Available Postage")
+      browser.b(text: "Available Postage").wait_until_present 5
     end
 
     def header

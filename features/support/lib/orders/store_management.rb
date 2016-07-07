@@ -25,7 +25,7 @@ module Stamps
         end
 
         def wait_until_present
-          browser_helper.wait_until_present delete_btn
+          delete_btn.wait_until_present 7
         end
 
         def delete_btn

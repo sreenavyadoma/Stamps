@@ -6,7 +6,7 @@ module Stamps
       end
 
       def wait_until_present
-        browser_helper.wait_until_present browser.h1(text: "Congratulations on your new account!")
+        browser.h1(text: "Congratulations on your new account!").wait_until_present 6
       end
     end
 
@@ -16,7 +16,7 @@ module Stamps
       end
 
       def wait_until_present
-        browser_helper.wait_until_present browser.button(text: "Place Order")
+        browser.button(text: "Place Order").wait_until_present 6
       end
 
       def place_order

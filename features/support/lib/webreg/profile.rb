@@ -202,10 +202,10 @@ module Stamps
       end
 
       def wait_until_present
-        browser_helper.wait_until_present browser.text_field(id: "email")
-        browser_helper.wait_until_present browser.text_field(id: "username")
-        browser_helper.wait_until_present browser.text_field(id: "password")
-        browser_helper.wait_until_present browser.text_field(id: "confirmPassword")
+        browser.text_field(id: "email").wait_until_present 6
+        browser.text_field(id: "username").wait_until_present
+        browser.text_field(id: "password").wait_until_present
+        browser.text_field(id: "confirmPassword").wait_until_present
       end
 
       def referrer_name

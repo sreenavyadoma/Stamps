@@ -11,7 +11,7 @@ module Stamps
       class Links < Browser::Modal
         def color
           field = browser.link css: "a[rel=WebBatch]"
-          browser_helper.wait_until_present field
+          field.wait_until_present 6
           style = field.style "color"
           style
         end
@@ -28,13 +28,13 @@ module Stamps
       class NavigationHeader < Browser::Modal
         def height
           field = browser.div class: "navbar-inner"
-          browser_helper.wait_until_present field
+          field.wait_until_present 5
           field.style "height"
         end
 
         def background_color
           field = browser.div class: "navbar-inner"
-          browser_helper.wait_until_present field
+          field.wait_until_present 5
           style = field.style "background-color"
           style
         end
@@ -61,19 +61,19 @@ module Stamps
       class Tooltip < Browser::Modal
         def width
           field = browser.link css: "a[data-qtip*='Configure your settings']"
-          browser_helper.wait_until_present field
+          field.wait_until_present 6
           field.style "border-width"
         end
 
         def border_radius
           field = browser.link css: "a[data-qtip*='Configure your settings']"
-          browser_helper.wait_until_present field
+          field.wait_until_present 5
           field.style "padding"
         end
 
         def border_style
           field = browser.link css: "a[data-qtip*='Configure your settings']"
-          browser_helper.wait_until_present field
+          field.wait_until_present 5
           field.style "border-style"
         end
       end

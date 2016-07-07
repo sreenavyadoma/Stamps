@@ -5,7 +5,7 @@ module Pam
     end
 
     def wait_until_present
-      browser_helper.wait_until_present browser.input(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
+      browser.input(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]").wait_until_present 6
     end
 
     def username

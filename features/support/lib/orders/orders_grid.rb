@@ -95,7 +95,7 @@ module Stamps
 
         def grid_text column, row
           scroll column
-          browser_helper.text grid_field(column, row), "Grid.#{column}.Row#{row}"
+          browser_helper.text grid_field(column, row) #, "Grid.#{column}.Row#{row}"
         end
 
         def grid_field column_number, row

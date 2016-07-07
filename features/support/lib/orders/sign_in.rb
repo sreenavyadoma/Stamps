@@ -42,7 +42,7 @@ module Stamps
         end
 
         def wait_until_present
-          browser_helper.wait_until_present (browser.span text: "Continue")
+          (browser.span text: "Continue").wait_until_present 7
         end
 
         def continue

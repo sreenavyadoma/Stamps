@@ -390,12 +390,12 @@ module Stamps
     class Membership < Browser::Modal
 
       def wait_until_present
-        browser_helper.wait_until_present browser.text_field(id: "firstName")
-        browser_helper.wait_until_present browser.text_field(id: "lastName")
-        browser_helper.wait_until_present browser.text_field(id: "companyName")
-        browser_helper.wait_until_present browser.text_field(id: "street")
-        browser_helper.wait_until_present browser.text_field(id: "city")
-        browser_helper.wait_until_present browser.text_field(id: "zip")
+        browser.text_field(id: "firstName").wait_until_present 6
+        browser.text_field(id: "lastName").wait_until_present
+        browser.text_field(id: "companyName").wait_until_present
+        browser.text_field(id: "street").wait_until_present
+        browser.text_field(id: "city").wait_until_present
+        browser.text_field(id: "zip").wait_until_present
       end
 
       def present?

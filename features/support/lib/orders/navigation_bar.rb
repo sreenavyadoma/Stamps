@@ -113,15 +113,10 @@ module Stamps
         def wait_until_present *args
           wait_field = browser.span Orders::Locators::NavBar.username
           case args.length
-            when 0
-              browser_helper.wait_until_present wait_field
             when 1
-              browser_helper.wait_until_present wait_field args[0].to_i
+              wait_field.wait_until_present args[0].to_i
             else
-              logger.info "Teardown: Begin tearing down test"
-              TestHelper.teardown
-              logger.info "Teardown: Done!"
-              stop_test "Wrong number of arguments."
+              wait_field.wait_until_present
           end
         end
 

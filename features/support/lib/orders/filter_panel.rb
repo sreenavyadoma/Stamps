@@ -152,16 +152,15 @@ module Stamps
       end
 
       def get_closed_filter_name
-        browser_helper.text filter_panel_header_name, 'Filter Panel - Panel Header Name'
+        browser_helper.text filter_panel_header_name #, 'Filter Panel - Panel Header Name'
       end
 
       def get_arrow_direction
-        style =  browser_helper.style filter_panel_border_arrow, "background-image"
-        logger.info style
+        style =  filter_panel_border_arrow.style filter_panel_border_arrow, "background-image"
         if style.include? 'mini-left.png'
-          return 'left'
+          'left'
         elsif style.include? 'mini-right.png'
-          return 'right'
+          'right'
         end
       end
 
@@ -170,7 +169,7 @@ module Stamps
       end
 
       def get_selected_filter_text
-        browser_helper.text selected_filter_button, 'Selected Filter'
+        browser_helper.text selected_filter_button #, 'Selected Filter'
       end
 
       def is_order_grid_filtered(filter)

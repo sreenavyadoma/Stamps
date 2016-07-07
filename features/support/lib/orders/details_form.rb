@@ -1084,7 +1084,7 @@ module Stamps
         end
 
         def grid_cell_text(row, column)
-          browser_helper.text grid_cell(row, column), "grid.row#{row}.column#{column})"
+          browser_helper.text grid_cell(row, column) #, "grid.row#{row}.column#{column})"
         end
 
         def close_button
