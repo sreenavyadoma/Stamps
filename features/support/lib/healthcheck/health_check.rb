@@ -148,7 +148,7 @@ module Stamps
 
         when /cc/
           logger.message "OR - Postage Tools"
-          browser.goto "https://or.qasc.stamps.com/postagetools/healthcheck.aspx"
+          browser.goto "https://or.qacc.stamps.com/postagetools/healthcheck.aspx"
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Postage Tools: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
