@@ -31,7 +31,7 @@ module Stamps
 
         def contact_token
           parent = browser.span(text: "Partner Store Contract Token").parent.parent
-          input = parent.divs[0].div.div.input
+          input = parent.divs[0].div.div.text_box
           raise "Contact Token textbox does not exist or textbox locator is wrong." unless input.present?
           BrowserTextBox.new input
         end
@@ -222,7 +222,7 @@ module Stamps
         end
 
         def sign_in
-          button = BrowserElement.new browser.input(css: "input[value='Log in']")
+          button = BrowserElement.new browser.text_box(css: "input[value='Log in']")
           settings_page = ShopifySettings.new param
 
           10.times do

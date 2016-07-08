@@ -58,7 +58,7 @@ Feature: Registration
     Then PAM: AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM: AppCap Overrides: Submit
 
-    Then Health Check: Verify Server Health
+    Then Health Check: Print - Web Batch
 
     Then Orders: Load Sign-in page
     Then Orders: New User Sign-in as ss_sctest_b4/password1

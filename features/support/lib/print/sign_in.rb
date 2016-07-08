@@ -78,8 +78,8 @@ module Stamps
       end
 
       def remember_username
-        checkbox_field = browser.input css: "input[id=rememberUser]"
-        verify_field = browser.input css: "label[class=checkbox]"
+        checkbox_field = browser.text_box css: "input[id=rememberUser]"
+        verify_field = browser.text_box css: "label[class=checkbox]"
 
         Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
       end

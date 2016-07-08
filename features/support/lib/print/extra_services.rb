@@ -260,7 +260,7 @@ module Stamps
       class ReturnReceipt < Browser::Modal
 
         def checkbox
-          checkbox_field = browser.input css: "input[id^=sdc-extraserviceswin-rrcheckbox-inputEl]"
+          checkbox_field = browser.text_box css: "input[id^=sdc-extraserviceswin-rrcheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rrcheckbox]"
           Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
@@ -273,7 +273,7 @@ module Stamps
 
       class ElectronicReturnReceipt < Browser::Modal
         def checkbox
-          checkbox_field = browser.input css: "input[id^=sdc-extraserviceswin-rrecheckbox-inputEl]"
+          checkbox_field = browser.text_box css: "input[id^=sdc-extraserviceswin-rrecheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rrecheckbox]"
           Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
@@ -286,7 +286,7 @@ module Stamps
 
       class RestrictedDelivery < Browser::Modal
         def checkbox
-          checkbox_field = browser.input css: "input[id^=sdc-extraserviceswin-rdcheckbox-inputEl]"
+          checkbox_field = browser.text_box css: "input[id^=sdc-extraserviceswin-rdcheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rdcheckbox]"
           Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
@@ -299,7 +299,7 @@ module Stamps
 
       class NonDeliveryNotice < Browser::Modal
         def checkbox
-          checkbox_field = browser.input css: "input[id^=sdc-extraserviceswin-nndcheckbox-inputEl]"
+          checkbox_field = browser.text_box css: "input[id^=sdc-extraserviceswin-nndcheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-nndcheckbox]"
           Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
@@ -312,7 +312,7 @@ module Stamps
 
       class Fragile < Browser::Modal
         def checkbox
-          checkbox_field = browser.input css: "input[id^=sdc-extraserviceswin-shcheckbox-inputEl]"
+          checkbox_field = browser.text_box css: "input[id^=sdc-extraserviceswin-shcheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-shcheckbox]"
           Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
@@ -324,7 +324,7 @@ module Stamps
 
       class MerchandiseReturnReceipt < Browser::Modal
         def checkbox
-          checkbox_field = browser.input css: "input[id^=sdc-extraserviceswin-rrmcheckbox-inputEl]"
+          checkbox_field = browser.text_box css: "input[id^=sdc-extraserviceswin-rrmcheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rrmcheckbox]"
           Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
@@ -336,7 +336,7 @@ module Stamps
 
       class NonRectangular < Browser::Modal
         def checkbox
-          checkbox_field = browser.input css: "input[id^=sdc-extraservices-nreccheckbox]"
+          checkbox_field = browser.text_box css: "input[id^=sdc-extraservices-nreccheckbox]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-notrectangularcheckbox]"
           Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end

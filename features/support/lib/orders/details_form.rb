@@ -236,7 +236,7 @@ module Stamps
 
             def row number
               row = number.to_i<=0?0:number.to_i-1
-              checkbox_field = browser.input css: "input[name=addrAmbig][value='#{row}']"
+              checkbox_field = browser.text_box css: "input[name=addrAmbig][value='#{row}']"
 
               checkbox = BrowserCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
               checkbox.check
@@ -951,7 +951,8 @@ module Stamps
         end
 
         def state=(state)
-          browser_helper.drop_down @browser, state_dd_button, :li, state_field, state
+          dd = BrowserDropDown.new @browser, state_dd_button, :li, state_field
+          dd.select state
         end
 
         def zip=(code)
@@ -1093,7 +1094,7 @@ module Stamps
 
         def checked?(row)
           field = browser.table css: "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
-          value = browser_helper.attribute_value field, "class"
+          value = field.attribute_value "class"
           checked = value.include? "selected"
           logger.info "Row #{row} selected? #{checked}"
           checked
@@ -1824,7 +1825,7 @@ module Stamps
       class InsureFor < Browser::Modal
         def checkbox
           #element = (browser.inputs(css: "input[id^=checkbox-][id$=-inputEl][class*=checkbox]").last)
-          field = (browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-innerCt]>div>div:nth-child(6)>div>div>div>div[id^=container]>div>div>div>div>input"))
+          field = (browser.text_box(css: "div[id^=singleOrderDetailsForm-][id$=-innerCt]>div>div:nth-child(6)>div>div>div>div[id^=container]>div>div>div>div>input"))
           verify = field.parent.parent.parent
           BrowserCheckbox.new field, verify, "class", "checked"
         end
@@ -2159,7 +2160,7 @@ module Stamps
         end
 
         def reference_no
-          BrowserTextBox.new (browser.input css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
+          BrowserTextBox.new (browser.text_box css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
         end
 
         def customs_form

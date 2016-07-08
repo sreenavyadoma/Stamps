@@ -59,7 +59,7 @@ Feature: "Country" grid column should appear to left of "Address" column by defa
     Then PAM: AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM: AppCap Overrides: Submit
 
-    Then Health Check: Verify Server Health
+    Then Health Check: Print - Web Batch
 
     Then Pause for 2 seconds
     Then Orders: Load Sign-in page

@@ -12,6 +12,7 @@ module Stamps
       end
 
       def select country
+        BrowserDropDown
         logger.info "Select Country #{country}"
         selection = BrowserElement.new (browser.lis text: country)[@index]
         text_box = self.text_box
@@ -479,7 +480,7 @@ module Stamps
       end
 
       def i_agree
-        field = browser.input css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
+        field = browser.text_box css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
         verify_field = field.parent.parent.parent
 
         Stamps::Browser::BrowserCheckbox.new field, verify_field, "class", "checked"

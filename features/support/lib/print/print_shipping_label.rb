@@ -10,7 +10,7 @@ module Stamps
         end
 
         def hide_postage_value_checkbox
-          browser.input css: "input[id=hidePostageCheckbox]"
+          browser.text_box css: "input[id=hidePostageCheckbox]"
         end
 
         def hide_postage_value
@@ -22,7 +22,7 @@ module Stamps
         end
 
         def print_receipt_checkbox
-          browser.input css: "input[id=printreceiptcheckbox]"
+          browser.text_box css: "input[id=printreceiptcheckbox]"
         end
 
         def print_receipt
@@ -34,11 +34,11 @@ module Stamps
         end
 
         def print_reference_number_checkbox
-          browser.input css: "input[id=printreferencecheckbox]"
+          browser.text_box css: "input[id=printreferencecheckbox]"
         end
 
         def print_reference_number
-          checkbox_field = browser.input css: print_reference_number_checkbox
+          checkbox_field = browser.text_box css: print_reference_number_checkbox
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[7]
 
@@ -104,11 +104,11 @@ module Stamps
 
           def label_selected? div
             8.times{
-              selected = browser_helper.attribute_value(div, 'class').include? 'selectedLabel'
+              selected = (div.attribute_value 'class').include? 'selectedLabel'
               logger.info "Label selected?  #{(selected)? 'Yes':'No'}"
               break if selected
             }
-            browser_helper.attribute_value(div, 'class').include? 'selectedLabel'
+            (div.attribute_value 'class').include? 'selectedLabel'
           end
 
           def default_selected?

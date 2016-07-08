@@ -99,9 +99,9 @@ module Stamps
         begin
           # if data qtip element was not set or is nil, try to get data error qtip from the element representing this textbox.
           if error_qtip_element.nil?
-            return browser_helper.attribute_value element, (error_qtip_element_attribute.nil?)?"data-errorqtip":error_qtip_element_attribute
+            return element.attribute_value (error_qtip_element_attribute.nil?)?"data-errorqtip":error_qtip_element_attribute
           else
-            return browser_helper.attribute_value error_qtip_element, (error_qtip_element_attribute.nil?)?"data-errorqtip":error_qtip_element_attribute
+            return error_qtip_element.attribute_value (error_qtip_element_attribute.nil?)?"data-errorqtip":error_qtip_element_attribute
           end
         rescue
           #if data error element does not exist, return an empty string
@@ -109,12 +109,8 @@ module Stamps
         end
       end
 
-      def attribute_enabled?
-        browser_helper.attribute_enabled? element
-      end
-
       def data_error
-        browser_helper.attribute_value element, "data-errorqtip"
+        element.attribute_value "data-errorqtip"
       end
 
       def scroll_into_view
@@ -138,11 +134,11 @@ module Stamps
           when 1
             #fetch the attribute value of this element using specified name
             attribute_name = args[0]
-            browser_helper.attribute_value element, attribute_name
+            element.attribute_value attribute_name
           when 2
             attribute_name = args[0]
             value = args[1]
-            browser_helper.attribute_value element, attribute_name, value
+            element.attribute_value attribute_name, value
           else
             raise "Illegal number of arguments for attribute_value. Pass 1 argument to get the value of that element or pass 2 arguments to set the value of that element"
         end
@@ -201,7 +197,7 @@ module Stamps
 
       def text
         txt = browser_helper.text element
-        val = browser_helper.attribute_value element, "value"
+        val = element.attribute_value "value"
         (txt.size>0)?txt:val
       end
     end
@@ -224,7 +220,7 @@ module Stamps
 
       def selected?
         begin
-          attribute_value_str = browser_helper.attribute_value verify_element, attribute
+          attribute_value_str = verify_element.attribute_value attribute
           return attribute_value_str == "true" if attribute_value_str == "true" || attribute_value_str == "false"
           return attribute_value_str.include? verify_element_attrib
         rescue
@@ -260,7 +256,7 @@ module Stamps
 
       def checked?
         begin
-          actual_attribute_value = browser_helper.attribute_value verify_element, attribute
+          actual_attribute_value = verify_element.attribute_value attribute
           if actual_attribute_value == "true" || actual_attribute_value == "false"
             return actual_attribute_value == "true"
           else
@@ -291,81 +287,63 @@ module Stamps
       end
     end
 
-    class BrowserDropdown < BrowserElement
-      def initialize browser, dd, html_tag_symbol, input
+    class BrowserDropDown < BrowserElement
+      attr_accessor :drop_down, :text_box, :html_tag
+      def initialize browser, drop_down, html_tag, text_box
         super browser
-        @drop_down = dd
-        @html_tag_symbol = html_tag_symbol
-        @input = input
+        @drop_down = drop_down
+        @html_tag = html_tag
+        @text_box = text_box
       end
 
-      def drop_down_caret
-        BrowserElement.new @drop_down
+      def selection operation, selection
+        case operation
+          when :element
+            return BrowserElement.new (expose_selection selection)
+          when :tooltip
+            selection_element = expose_selection selection
+            selection_element.attribute_value "data-qtip"
+          else
+            #do nothing
+        end
       end
 
-      def text_box
-        BrowserTextBox.new @input
+      def expose_selection selection
+        case html_tag
+          when :li
+            selection_element = browser.li text: selection
+          else
+            stop_test "Unsupported HTML drop-down selection tag #{html_tag}"
+        end
+
+        5.times{
+          browser_helper.safe_click drop_down
+          return selection_element if selection_element.present?
+        }
       end
 
       def select selection
         case selection
           when String
-            5.times{
+            5.times do
               selection_element = expose_selection selection
               browser_helper.safe_click selection_element
               input_text = text_box.text
               break if input_text.include? selection
-            }
-          else
-            2.times {
-              selection_element = expose_selection selection
-              browser_helper.safe_click selection_element
-            }
-        end
-      end
-
-      def selection_element selection
-        case selection
-          when String
-            # Selection passed is String object.
-            case @html_tag_symbol
-              when :li
-                return browser.li text: selection
-              else
-                stop_test "Unsupported HTML drop-down selection tag #{@html_tag_symbol}"
             end
           else
-            return selection
-        end
-      end
-
-      def expose_selection selection
-        @verify_element_attrib = selection_element selection
-        5.times{
-          browser_helper.safe_click @drop_down
-          return @verify_element_attrib if @verify_element_attrib.present?
-        }
-      end
-
-      def selection operation, selection
-        case operation.downcase
-          when :element
-            return BrowserElement.new (expose_selection selection)
-          when :tooltip
-            selection_element = expose_selection selection
-            tooltip = browser_helper.attribute_value selection_element, "data-qtip"
-            #logger.info "element Selection Tooltip (data-qtip):  #{tooltip}"
-            tooltip
-          else
-            #do nothing
+            2.times do
+              selection_element = expose_selection selection
+              browser_helper.safe_click selection_element
+            end
         end
       end
     end
 
     class BrowserHelper
       class << self
-
         def text element
+          element.wait_until_present 5
           begin
             text = element.text
             return text if text.size > 0
@@ -415,34 +393,20 @@ module Stamps
           element.wait_until_present 4 #wait 4 seconds them timeout if element is not present
           15.times do
             begin
-              # set element text
               element.focus
               element.clear
-              element.set text
 
               #set element attribute value
-
-              actual_value =  text element
+              attribute_value element, "value", text
+              actual_value = text element
               break if actual_value == text
-            rescue
-              #ignore
-            end
-          end
+              break if actual_value == text
 
-          15.times do
-            begin
-              attribute_value "value", ""
-              browser_helper.set element, ""
-
-              # set element text normally
-              browser_helper.set element, text
-              text_value = browser_helper.text element
-              break if text_value==text
-
-              # set element attribute value
-              attribute_value "value", text
-              text_value = browser_helper.text element
-              break if text_value==text
+              # set element text
+              element.set text
+              actual_value = text element
+              break if actual_value == text
+              break if actual_value == text
             rescue
               #ignore
             end
@@ -501,53 +465,10 @@ module Stamps
           end
         end
 
-        def attribute_enabled? *args
-          case args.length
-            when 1
-              element = args[0]
-              element_attribute = "class"
-              search_string = "enabled"
-            when 3
-              element = args[0]
-              element_attribute = args[1]
-              search_string = args[2]
-            else
-              stop_test "Wrong number of arguments for enabled?"
-          end
-          attribute_value = attribute_value element, element_attribute
-          attribute_value.include? search_string
+        def attribute_value element, attribute_name, value
+          script = "return arguments[0].#{attribute_name}='#{value}'"
+          element.browser.execute_script(script, element)
         end
-
-        def attribute_value *args
-          #FIX ME!
-          case args.length
-            when 2
-              # get the value of an attribute
-              element = args[0]
-              attribute_name = args[1]
-              begin
-                element.attribute_value attribute_name
-              rescue
-                ""
-              end
-            when 3
-              # set the value of an attribute
-              element = args[0]
-              attribute_name = args[1]
-              value = args[2]
-              script = "return arguments[0].#{attribute_name} = '#{value}'"
-              element.browser.execute_script(script, element)
-            else
-              raise "Illegal number of arguments for attribute_value.  Check your TestHelper."
-          end
-        end
-
-
-        def drop_down browser, drop_down_button, selection_element_type, drop_down_input, selection
-          dd = BrowserDropdown.new browser, drop_down_button, selection_element_type, drop_down_input
-          dd.select selection
-        end
-
       end
     end
   end

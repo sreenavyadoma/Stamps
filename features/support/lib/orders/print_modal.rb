@@ -133,11 +133,11 @@ module Stamps
 
         def label_selected? div
           8.times{
-            selected = browser_helper.attribute_value(div, 'class').include? 'selected'
+            selected = (div.attribute_value 'class').include? 'selected'
             logger.info "Label selected?  #{(selected)? 'Yes':'No'}"
             break if selected
           }
-          browser_helper.attribute_value(div, 'class').include? 'selected'
+          (div.attribute_value 'class').include? 'selected'
         end
 
         def default_selected?
@@ -431,7 +431,7 @@ module Stamps
       end
 
       def email_tracking_details
-        checkbox_field = browser.input id: "sdc-mainpanel-cmcheckbox-inputEl"
+        checkbox_field = browser.text_box id: "sdc-mainpanel-cmcheckbox-inputEl"
         verify_field = browser.table id: "sdc-mainpanel-cmcheckbox"
         Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
       end

@@ -9,7 +9,7 @@ module Stamps
         end
 
         def include_return_address
-          checkbox_field = browser.input css: "input[class*=sdc-previewpanel-returnaddrcheckbox]"
+          checkbox_field = browser.text_box css: "input[class*=sdc-previewpanel-returnaddrcheckbox]"
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[2]
 
@@ -17,7 +17,7 @@ module Stamps
         end
 
         def include_delivery_address
-          checkbox_field = browser.input css: "input[class*=sdc-previewpanel-deliveryaddrcheckbox]"
+          checkbox_field = browser.text_box css: "input[class*=sdc-previewpanel-deliveryaddrcheckbox]"
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[3]
 
@@ -25,7 +25,7 @@ module Stamps
         end
 
         def include_postage
-          checkbox_field = browser.input css: "input[class*=sdc-previewpanel-includepostagecheckbox]"
+          checkbox_field = browser.text_box css: "input[class*=sdc-previewpanel-includepostagecheckbox]"
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[4]
 

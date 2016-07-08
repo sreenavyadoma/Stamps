@@ -186,7 +186,7 @@ module Stamps
 
         def automatically_import_new_orders
           label = (browser.label text: "Automatically Import New Orders")
-          checkbox_field = label.parent.input
+          checkbox_field = label.parent.text_box
           verify_field = label.parent.parent.parent
           BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
@@ -201,7 +201,7 @@ module Stamps
         def contains store_name
           images = browser.imgs(class: "data-view-selection-enabled")
           images.each do |image|
-            src = browser_helper.attribute_value image, "src"
+            src = image.attribute_value "src"
             return store_name if src.include? store_name.downcase
           end
           "Store #{store_name} does not exist in store selection modal."

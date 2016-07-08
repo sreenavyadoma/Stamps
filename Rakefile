@@ -72,18 +72,18 @@ Cucumber::Rake::Task.new(:big_commerce) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:rob_dev_cc) do |t|
-  t.profile = 'rob_dev_cc'
+Cucumber::Rake::Task.new(:rob_cc) do |t|
+  t.profile = 'rob_cc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:rob_dev_staging) do |t|
-  t.profile = 'rob_dev_staging'
+Cucumber::Rake::Task.new(:rob_staging) do |t|
+  t.profile = 'rob_staging'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:rob_dev_sc) do |t|
-  t.profile = 'rob_dev_sc'
+Cucumber::Rake::Task.new(:rob_sc) do |t|
+  t.profile = 'rob_sc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -126,8 +126,8 @@ Cucumber::Rake::Task.new(:details_services) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:rob_dev_cc) do |t|
-  t.profile = 'rob_dev_cc'
+Cucumber::Rake::Task.new(:rob_cc) do |t|
+  t.profile = 'rob_cc'
   t.cucumber_opts = "-p cuke_reports"
 end
 

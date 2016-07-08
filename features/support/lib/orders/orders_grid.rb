@@ -681,7 +681,7 @@ module Stamps
 
           begin
             div = ship_cost_field.div
-            data_error = browser_helper.attribute_value div, "data-qtip"
+            data_error = div.attribute_value "data-qtip"
           rescue
             data_error = ""
           end

@@ -113,7 +113,6 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
   row2_order_id = @grid.order_id.row 2
   logger.info @grid.checkbox.order_id_checked? row2_order_id
 
-
   @grid.checkbox.check 1
   logger.info @grid.checkbox.checked? 1
   @grid.checkbox.check 2

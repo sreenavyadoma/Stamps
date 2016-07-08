@@ -75,7 +75,7 @@ module Stamps
           end
 
           def checkbox
-            checkbox_field = browser.input id: "sdc-resetfieldswin-weightcheckbox-inputEl"
+            checkbox_field = browser.text_box id: "sdc-resetfieldswin-weightcheckbox-inputEl"
             verify_field = checkbox_field.parent.parent.parent
             attribute_name = "class"
             attribute_value = "checked"
@@ -220,7 +220,7 @@ module Stamps
           end
 
           def checkbox
-            checkbox_field = browser.input id: "sdc-resetfieldswin-dimensionscheckbox-inputEl"
+            checkbox_field = browser.text_box id: "sdc-resetfieldswin-dimensionscheckbox-inputEl"
             verify_field = checkbox_field.parent.parent.parent
             attribute_name = "class"
             attribute_value = "checked"
@@ -246,7 +246,7 @@ module Stamps
         end
 
         def service
-          checkbox_field = browser.input id: "sdc-resetfieldswin-servicecheckbox-inputEl"
+          checkbox_field = browser.text_box id: "sdc-resetfieldswin-servicecheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -262,7 +262,7 @@ module Stamps
         end
 
         def ship_to_address
-          checkbox_field = browser.input id: "sdc-resetfieldswin-shiptoaddresscheckbox-inputEl"
+          checkbox_field = browser.text_box id: "sdc-resetfieldswin-shiptoaddresscheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -270,7 +270,7 @@ module Stamps
         end
 
         def tracking
-          checkbox_field = browser.input id: "sdc-resetfieldswin-trackingcheckbox-inputEl"
+          checkbox_field = browser.text_box id: "sdc-resetfieldswin-trackingcheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -278,7 +278,7 @@ module Stamps
         end
 
         def extra_services
-          checkbox_field = browser.input id: "sdc-resetfieldswin-extraservicescheckbox-inputEl"
+          checkbox_field = browser.text_box id: "sdc-resetfieldswin-extraservicescheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -286,7 +286,7 @@ module Stamps
         end
 
         def insurance
-          checkbox_field = browser.input id: "sdc-resetfieldswin-insurancecheckbox-inputEl"
+          checkbox_field = browser.text_box id: "sdc-resetfieldswin-insurancecheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -294,7 +294,7 @@ module Stamps
         end
 
         def reference_numbers
-          checkbox_field = browser.input id: "sdc-resetfieldswin-referencenumberscheckbox-inputEl"
+          checkbox_field = browser.text_box id: "sdc-resetfieldswin-referencenumberscheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -302,7 +302,7 @@ module Stamps
         end
 
         def cost_code
-          checkbox_field = browser.input id: "sdc-resetfieldswin-costcodecheckbox-inputEl"
+          checkbox_field = browser.text_box id: "sdc-resetfieldswin-costcodecheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -310,7 +310,7 @@ module Stamps
         end
 
         def customs
-          checkbox_field = browser.input id: "sdc-resetfieldswin-customscheckbox-inputEl"
+          checkbox_field = browser.text_box id: "sdc-resetfieldswin-customscheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -318,7 +318,7 @@ module Stamps
         end
 
         def quantity
-          checkbox_field = browser.input id: "sdc-resetfieldswin-quantitycheckbox-inputEl"
+          checkbox_field = browser.text_box id: "sdc-resetfieldswin-quantitycheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -326,7 +326,7 @@ module Stamps
         end
 
         def stamps_amount
-          checkbox_field = browser.input id: "sdc-resetfieldswin-stampsamountcheckbox-inputEl"
+          checkbox_field = browser.text_box id: "sdc-resetfieldswin-stampsamountcheckbox-inputEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -335,7 +335,7 @@ module Stamps
 
         def auto_advance_label_position
           parent = (browser.label :text=> "Auto-Advance Label Position (NetStamps and Label Sheets)").parent
-          checkbox_field = parent.input
+          checkbox_field = parent.text_box
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
@@ -561,7 +561,7 @@ module Stamps
       end
 
       def services
-        checkbox_field = browser.input css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.text_box css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>input"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -581,7 +581,7 @@ module Stamps
       end
 
       def print_confirm
-        checkbox_field = browser.input css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.text_box css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>input"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -598,7 +598,7 @@ module Stamps
       end
 
       def usps_terms
-        checkbox_field = browser.input css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.text_box css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>input"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -606,7 +606,7 @@ module Stamps
       end
 
       def contacts
-        checkbox_field = browser.input css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.text_box css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>input"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -614,7 +614,7 @@ module Stamps
       end
 
       def shipments
-        checkbox_field = browser.input css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.text_box css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>input"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"

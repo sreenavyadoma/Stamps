@@ -38,7 +38,7 @@ Feature: Registration
 
     Then Pause for 2 seconds
 
-    Then Health Check: Verify Server Health
+    Then Health Check: Print - Web Batch
 
     Then Orders: Load Sign-in page
     Then Orders: New User Sign-in as random/pass111
