@@ -10,7 +10,7 @@ module Stamps
         end
 
         def hide_postage_value
-          checkbox_field = browser.text_box css: "input[id=hidePostageCheckbox]"
+          checkbox_field = browser.text_field css: "input[id=hidePostageCheckbox]"
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[5]
 
@@ -18,7 +18,7 @@ module Stamps
         end
 
         def print_reference_number
-          checkbox_field = browser.text_box css: "input[id=printreferencecheckbox]"
+          checkbox_field = browser.text_field css: "input[id=printreferencecheckbox]"
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[6]
 

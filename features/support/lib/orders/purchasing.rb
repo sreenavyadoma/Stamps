@@ -49,7 +49,7 @@ module Stamps
         end
 
         def buy_10
-          checkbox_field = browser.text_box id: "sdc-purchasewin-10dradio"
+          checkbox_field = browser.text_field id: "sdc-purchasewin-10dradio"
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
@@ -57,7 +57,7 @@ module Stamps
         end
 
         def buy_25
-          checkbox_field = browser.text_box id: "sdc-purchasewin-25dradio"
+          checkbox_field = browser.text_field id: "sdc-purchasewin-25dradio"
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
@@ -65,7 +65,7 @@ module Stamps
         end
 
         def buy_50
-          checkbox_field = browser.text_box id: "sdc-purchasewin-50dradio"
+          checkbox_field = browser.text_field id: "sdc-purchasewin-50dradio"
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
@@ -73,7 +73,7 @@ module Stamps
         end
 
         def buy_100
-          checkbox_field = browser.text_box id: "sdc-purchasewin-100dradio"
+          checkbox_field = browser.text_field id: "sdc-purchasewin-100dradio"
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
@@ -81,7 +81,7 @@ module Stamps
         end
 
         def buy_other value
-          checkbox_field = browser.text_box id: "sdc-purchasewin-otherdradio"
+          checkbox_field = browser.text_field id: "sdc-purchasewin-otherdradio"
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"

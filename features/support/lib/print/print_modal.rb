@@ -70,7 +70,7 @@ module Stamps
         end
 
         def text_box
-          browser.text_box id: "sdc-printpostagewindow-printerdroplist-inputEl"
+          browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
         end
 
         def select printer

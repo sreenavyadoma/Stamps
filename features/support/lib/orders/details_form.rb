@@ -236,7 +236,7 @@ module Stamps
 
             def row number
               row = number.to_i<=0?0:number.to_i-1
-              checkbox_field = browser.text_box css: "input[name=addrAmbig][value='#{row}']"
+              checkbox_field = browser.text_field css: "input[name=addrAmbig][value='#{row}']"
 
               checkbox = BrowserCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
               checkbox.check
@@ -1825,7 +1825,7 @@ module Stamps
       class InsureFor < Browser::Modal
         def checkbox
           #element = (browser.inputs(css: "input[id^=checkbox-][id$=-inputEl][class*=checkbox]").last)
-          field = (browser.text_box(css: "div[id^=singleOrderDetailsForm-][id$=-innerCt]>div>div:nth-child(6)>div>div>div>div[id^=container]>div>div>div>div>input"))
+          field = (browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-innerCt]>div>div:nth-child(6)>div>div>div>div[id^=container]>div>div>div>div>input"))
           verify = field.parent.parent.parent
           BrowserCheckbox.new field, verify, "class", "checked"
         end
@@ -2160,7 +2160,7 @@ module Stamps
         end
 
         def reference_no
-          BrowserTextBox.new (browser.text_box css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
+          BrowserTextBox.new (browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
         end
 
         def customs_form

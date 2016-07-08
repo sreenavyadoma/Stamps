@@ -1,11 +1,11 @@
 module Pam
   class CustomerSearch < Browser::Modal
     def present?
-      browser.text_box(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]").present?
+      browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]").present?
     end
 
     def wait_until_present
-      browser.text_box(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]").wait_until_present 6
+      browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]").wait_until_present 6
     end
 
     def username
@@ -35,7 +35,7 @@ module Pam
     end
 
     def search
-      button = Stamps::Browser::BrowserElement.new browser.text_box(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
+      button = Stamps::Browser::BrowserElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
       customer_profile = CustomerProfile.new param
       customer_profile_not__found = CustomerProfileNotFound.new param
       15.times do

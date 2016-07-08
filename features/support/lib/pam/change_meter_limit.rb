@@ -33,7 +33,7 @@ module Pam
     end
 
     def submit
-      button = Stamps::Browser::BrowserElement.new browser.text_box(name: "submit")
+      button = Stamps::Browser::BrowserElement.new browser.text_field(name: "submit")
       change_success = ChangeMeterLimitSuccess.new param
       5.times do
         button.send_keys :enter

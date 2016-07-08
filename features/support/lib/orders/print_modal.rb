@@ -431,7 +431,7 @@ module Stamps
       end
 
       def email_tracking_details
-        checkbox_field = browser.text_box id: "sdc-mainpanel-cmcheckbox-inputEl"
+        checkbox_field = browser.text_field id: "sdc-mainpanel-cmcheckbox-inputEl"
         verify_field = browser.table id: "sdc-mainpanel-cmcheckbox"
         Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
       end

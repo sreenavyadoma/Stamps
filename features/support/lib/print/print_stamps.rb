@@ -43,7 +43,7 @@ module Stamps
           end
 
           def print_all
-            checkbox_field = browser.text_box css: "input[class*=sdc-previewpanel-printallcheckbox]"
+            checkbox_field = browser.text_field css: "input[class*=sdc-previewpanel-printallcheckbox]"
             verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
             verify_field = verify_fields[8]
 
@@ -127,13 +127,13 @@ module Stamps
         end
 
         def calculate_postage_amount
-          checkbox = BrowserCheckbox.new (browser.text_box id: "sdc-mainpanel-calculatepostageradio-inputEl"), (browser.table id: "sdc-mainpanel-calculatepostageradio"), "class", "checked"
+          checkbox = BrowserCheckbox.new (browser.text_field id: "sdc-mainpanel-calculatepostageradio-inputEl"), (browser.table id: "sdc-mainpanel-calculatepostageradio"), "class", "checked"
           checkbox.check
           CalculatePostageAmount.new param
         end
 
         def specify_postage_amount
-          checkbox = BrowserCheckbox.new (browser.text_box id: "sdc-mainpanel-specifypostageradio-inputEl"), (browser.table id: "sdc-mainpanel-specifypostageradio"), "class", "checked"
+          checkbox = BrowserCheckbox.new (browser.text_field id: "sdc-mainpanel-specifypostageradio-inputEl"), (browser.table id: "sdc-mainpanel-specifypostageradio"), "class", "checked"
           checkbox.check
           SpecifyPostageAmount.new param
         end

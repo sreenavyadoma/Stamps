@@ -146,7 +146,7 @@ module Stamps
         end
 
         def sign_in
-          button = BrowserElement.new browser.text_box(id: 'signin_button')
+          button = BrowserElement.new browser.text_field(id: 'signin_button')
           etsy_page = EtsyPage.new param
 
           10.times do
@@ -163,7 +163,7 @@ module Stamps
         end
 
         def allow_access
-          button = BrowserElement.new browser.text_box(css: 'input[type=submit]')
+          button = BrowserElement.new browser.text_field(css: 'input[type=submit]')
           settings = EtsySettings.new param
 
           3.times do
@@ -177,7 +177,7 @@ module Stamps
         end
 
         def allow_access_after_reconnect
-          button = BrowserElement.new browser.text_box(css: 'input[type=submit]')
+          button = BrowserElement.new browser.text_field(css: 'input[type=submit]')
           manage_stores = ManageStores.new param
 
           3.times do

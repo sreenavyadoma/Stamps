@@ -264,7 +264,7 @@ module Stamps
         end
 
         def sign_in
-          button = BrowserElement.new browser.text_box(css: "input[value='Log in']")
+          button = BrowserElement.new browser.text_field(css: "input[value='Log in']")
           settings_page = ShopifySettings.new param
 
           10.times do

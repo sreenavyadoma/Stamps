@@ -337,7 +337,7 @@ module Stamps
 
       def check
         agree_label = must_agree_label
-        checkbox_field = BrowserElement.new browser.text_box(id: "termsConditions")
+        checkbox_field = BrowserElement.new browser.text_field(id: "termsConditions")
         10.times do
           checkbox_field.safe_click
           sleep 1
@@ -347,7 +347,7 @@ module Stamps
 
       def uncheck
         agree_label = must_agree_label
-        checkbox_field = BrowserElement.new browser.text_box(id: "termsConditions")
+        checkbox_field = BrowserElement.new browser.text_field(id: "termsConditions")
         10.times do
           checkbox_field.safe_click
           sleep 1
@@ -455,7 +455,7 @@ module Stamps
       end
 
       def billing_same_as_mailing
-        checkbox_field = browser.text_box id: "useMailingAddressForBilling"
+        checkbox_field = browser.text_field id: "useMailingAddressForBilling"
         Stamps::Browser::BrowserCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
       end
 

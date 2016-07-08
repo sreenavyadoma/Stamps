@@ -253,7 +253,7 @@ module Stamps
       end
 
       def send_promo
-        BrowserElement.new browser.text_box(id: "optIn")
+        BrowserElement.new browser.text_field(id: "optIn")
       end
 
       def continue

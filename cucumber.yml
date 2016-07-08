@@ -1,10 +1,10 @@
-default: --profile cuke_reports --profile rob_staging # import_orders_ship_from_test
+default: --profile cuke_reports --profile rob_sc # import_orders_ship_from_test
 
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800 wp_bvt_international
 rob_cc: --tags @orders_bvt_add_new_order --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=hd9glvtoauago  PW=pass111 #hd9glvtoauago
   # hd9glvtoauago
-rob_sc: --tags @print_dialog_ship_date_today_plus2 --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yeh74tdq0karv  PW=pass111 #yh95ws85j c2jinmzmu64 store parcel_select
+rob_sc: --tags @orders_authentication --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yeh74tdq0karv  PW=pass111 #yh95ws85j c2jinmzmu64 store parcel_select
 rob_staging: --tags @healthcheck --guess VERBOSE=true HEALTHCHECK=false URL=staging BROWSER=ff USR=hm5u7jvga4hl PW=pass111 #nhr9mm6m5l
 rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=chrome USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ie USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l

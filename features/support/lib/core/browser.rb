@@ -396,14 +396,14 @@ module Stamps
               element.focus
               element.clear
 
-              #set element attribute value
-              attribute_value element, "value", text
+              # set element text
+              element.set text
               actual_value = text element
               break if actual_value == text
               break if actual_value == text
 
-              # set element text
-              element.set text
+              #set element attribute value
+              attribute_value element, "value", text
               actual_value = text element
               break if actual_value == text
               break if actual_value == text

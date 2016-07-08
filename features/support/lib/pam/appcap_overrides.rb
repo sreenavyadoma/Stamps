@@ -98,7 +98,7 @@ module Pam
     end
 
     def present?
-      browser.text_box(css: 'input[name=IBIP][value=On]').present?
+      browser.text_field(css: 'input[name=IBIP][value=On]').present?
     end
 
     def internet_postage_printing
@@ -126,7 +126,7 @@ module Pam
     end
 
     def submit
-      button = BrowserElement.new browser.text_box(name: 'submit')
+      button = BrowserElement.new browser.text_field(name: 'submit')
       appcap_overrides = AppCapOverridesConfirmation.new param
       5.times do
         button.safe_click

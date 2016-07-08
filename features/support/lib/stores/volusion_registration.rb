@@ -100,7 +100,7 @@ module Stores
     end
 
     def continue
-      button = BrowserElement.new browser.text_box(name: "btnContinue")
+      button = BrowserElement.new browser.text_field(name: "btnContinue")
       account_page = MyAccountPage.new param
       10.times do
         button.safe_click
@@ -173,7 +173,7 @@ module Stores
     end
 
     def present?
-      browser.text_box(css: "input[name='btn_checkout_guest']").present?
+      browser.text_field(css: "input[name='btn_checkout_guest']").present?
     end
 
     def count
@@ -183,7 +183,7 @@ module Stores
     end
 
     def proceed_to_checkout
-      button = BrowserElement.new browser.text_box(css: "input[name='btn_checkout_guest']")
+      button = BrowserElement.new browser.text_field(css: "input[name='btn_checkout_guest']")
       checkout = VolusionCheckOut.new param
       10.times do
         button.safe_click
@@ -196,7 +196,7 @@ module Stores
 
   class VolusionProduct < Browser::Modal
     def present?
-      browser.text_box(css: "input[alt='Add to cart']").present?
+      browser.text_field(css: "input[alt='Add to cart']").present?
     end
 
     def qty_field
@@ -213,7 +213,7 @@ module Stores
       qty_textbox = self.qty_field
       shopping_cart = VolusionCart.new param
       cart_count_b4_add = shopping_cart.count
-      button = BrowserElement.new browser.text_box(css: "input[alt='Add to cart']")
+      button = BrowserElement.new browser.text_field(css: "input[alt='Add to cart']")
       2.times do
         button.safe_click
         break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
@@ -319,7 +319,7 @@ module Stores
     end
 
     def continue
-      button = BrowserElement.new browser.text_box(id: "btnContinue")
+      button = BrowserElement.new browser.text_field(id: "btnContinue")
       shipping_address = VolusionShippingAddress.new param
       10.times do
         button.safe_click
@@ -347,7 +347,7 @@ module Stores
     end
 
     def login
-      BrowserElement.new browser.text_box(css: "input[src*=btn_login]")
+      BrowserElement.new browser.text_field(css: "input[src*=btn_login]")
     end
 
     def continue

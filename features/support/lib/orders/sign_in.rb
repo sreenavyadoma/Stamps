@@ -65,7 +65,7 @@ module Stamps
 
         def sign_in_button
           button = browser.button Orders::Locators::SignIn::sign_in
-          input = browser.text_box Orders::Locators::SignIn::sign_in
+          input = browser.text_field Orders::Locators::SignIn::sign_in
           BrowserElement.new (button.present?)?button:input
         end
 

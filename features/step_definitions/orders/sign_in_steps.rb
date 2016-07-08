@@ -32,7 +32,10 @@ end
 Given /^I am signed in to Orders$/ do
   logger.info "I am signed in to Orders"
   step "I launched the default browser"
-  step "Health Check: Print - Web Batch" if ParameterHelper.to_boolean ENV['HEALTHCHECK']
+  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
+    step "Health Check: Print - Web Batch"
+    step "Health Check: Print - Address Book"
+  end
   step "Orders: Load Sign-in page"
   orders.landing_page.sign_in :default
   step "Navigation Bar: Customer Balance"

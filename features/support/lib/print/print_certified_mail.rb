@@ -7,7 +7,7 @@ module Stamps
 
         def cm_checkbox select
 
-          checkbox_field = browser.text_box id: "sdc-mainpanel-cmcheckbox-inputEl"
+          checkbox_field = browser.text_field id: "sdc-mainpanel-cmcheckbox-inputEl"
           verify_field = browser.table id: "sdc-mainpanel-cmcheckbox"
           checkbox = Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
 
@@ -23,7 +23,7 @@ module Stamps
 
         def err_checkbox select
 
-          checkbox_field = browser.text_box id: "sdc-mainpanel-rrecheckbox-inputEl"
+          checkbox_field = browser.text_field id: "sdc-mainpanel-rrecheckbox-inputEl"
           verify_field = browser.table id: "sdc-mainpanel-rrecheckbox"
           checkbox = Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
 
@@ -39,7 +39,7 @@ module Stamps
 
         def rd_checkbox select
 
-          checkbox_field = browser.text_box css: "input[class*=sdc-mainpanel-rdcheckbox]"
+          checkbox_field = browser.text_field css: "input[class*=sdc-mainpanel-rdcheckbox]"
           #verify_field = browser.table id: "sdc-mainpanel-rdcheckbox"
           checkbox = Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
 

@@ -17,12 +17,12 @@ module Pam
 
   class ACHPurchaseVerification < Browser::Modal
     def present?
-      (browser.text_box name: "YES").present?
+      (browser.text_field name: "YES").present?
     end
 
     def yes
       confirmation = ACHCreditConfirmation.new param
-      button = Stamps::Browser::BrowserElement.new browser.text_box(name: "YES")
+      button = Stamps::Browser::BrowserElement.new browser.text_field(name: "YES")
       5.times do
         button.send_keys :enter
         button.safe_click
@@ -31,7 +31,7 @@ module Pam
     end
 
     def no
-      button = BrowserElement.new browser.text_box(name: "NO")
+      button = BrowserElement.new browser.text_field(name: "NO")
       button.click_while_present
     end
   end
@@ -55,7 +55,7 @@ module Pam
 
     def submit
       purchase_verification = ACHPurchaseVerification.new param
-      button = BrowserElement.new browser.text_box(:value => "Submit")
+      button = BrowserElement.new browser.text_field(:value => "Submit")
       5.times do
         button.send_keys :enter
         button.safe_click

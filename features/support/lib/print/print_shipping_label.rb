@@ -10,7 +10,7 @@ module Stamps
         end
 
         def hide_postage_value_checkbox
-          browser.text_box css: "input[id=hidePostageCheckbox]"
+          browser.text_field css: "input[id=hidePostageCheckbox]"
         end
 
         def hide_postage_value
@@ -22,7 +22,7 @@ module Stamps
         end
 
         def print_receipt_checkbox
-          browser.text_box css: "input[id=printreceiptcheckbox]"
+          browser.text_field css: "input[id=printreceiptcheckbox]"
         end
 
         def print_receipt
@@ -34,11 +34,11 @@ module Stamps
         end
 
         def print_reference_number_checkbox
-          browser.text_box css: "input[id=printreferencecheckbox]"
+          browser.text_field css: "input[id=printreferencecheckbox]"
         end
 
         def print_reference_number
-          checkbox_field = browser.text_box css: print_reference_number_checkbox
+          checkbox_field = browser.text_field css: print_reference_number_checkbox
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[7]
 

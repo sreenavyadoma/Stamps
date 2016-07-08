@@ -480,10 +480,10 @@ module Stamps
       end
 
       def i_agree
-        field = browser.text_box css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
+        field = browser.text_field css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
         verify_field = field.parent.parent.parent
 
-        Stamps::Browser::BrowserCheckbox.new field, verify_field, "class", "checked"
+        BrowserCheckbox.new field, verify_field, "class", "checked"
       end
 
       def usps_privacy_act_statement

@@ -214,7 +214,7 @@ module Stamps
 
         class AutoWeigh < Browser::Modal
           def checkbox_element
-            browser.text_box id: "sdc-mainpanel-autoweightcheckbox-inputEl"
+            browser.text_field id: "sdc-mainpanel-autoweightcheckbox-inputEl"
           end
 
           def checkbox
@@ -426,7 +426,7 @@ module Stamps
       class Email < Browser::Modal
 
         def checkbox_element
-          browser.text_box id: "sdc-mainpanel-emailcheckbox-inputEl"
+          browser.text_field id: "sdc-mainpanel-emailcheckbox-inputEl"
         end
 
         def checkbox
