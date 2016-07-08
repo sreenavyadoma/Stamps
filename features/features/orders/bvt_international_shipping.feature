@@ -1,4 +1,3 @@
-@bvt
 Feature:  BVT International Shipping
 
   Background:

@@ -1343,9 +1343,9 @@ module Stamps
         end
 
         def select service
-          @manage_shipping_adddress = ManageShippingAddresses.new param
+          manage_shipping_adddress = ManageShippingAddresses.new param
 
-          return @manage_shipping_adddress if @manage_shipping_adddress.present?
+          return manage_shipping_adddress if manage_shipping_adddress.present?
 
           ship_from_default_selection_field = (browser.lis css: "li[data-recordindex='0']").first
           ship_from_dropdown = drop_down
@@ -1367,7 +1367,7 @@ module Stamps
                 ship_from_dropdown.safe_click unless selection_label.present?
                 selection_label.scroll_into_view
                 selection_label.safe_click
-                return @manage_shipping_adddress if @manage_shipping_adddress.present?
+                return manage_shipping_adddress if manage_shipping_adddress.present?
               rescue
                 #ignore
               end
@@ -2098,11 +2098,21 @@ module Stamps
 
       class DetailsForm < OrderForm
         #todo add more accessors
-        attr_accessor :insure_for
+        attr_reader :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions, :customs_form, :total, :customs
 
         def initialize param
           super param
           @insure_for ||= InsureFor.new param
+          @ship_from ||= ShipFromAddress.new param
+          @toolbar ||= DetailsToolbar.new param
+          @ship_to ||= ShipTo.new param
+          @weight ||= Weight.new param
+          @service ||= Service.new param
+          @tracking ||= TrackingDropDown.new param
+          @dimensions ||= Dimensions.new param
+          @customs_form ||= CustomsForm.new param
+          @total ||= DetailsFooter.new param
+          @customs ||= CustomsFields.new param
         end
 
         def present?
@@ -2119,53 +2129,14 @@ module Stamps
           end
         end
 
-        def toolbar
-          DetailsToolbar.new param
-        end
-
-        def ship_from
-          ShipFromAddress.new param
-        end
-
-        def ship_to
-          ShipTo.new param
-        end
-
-        def weight
-          Weight.new param
-        end
-
-        def service
-          Service.new param
-        end
-
-        def tracking
-          TrackingDropDown.new param
-        end
-
-        def dimensions
-          Dimensions.new param
-        end
-
-        def total
-          DetailsFooter.new param
-        end
-
         def item_grid
           DetailsItemGrid.new param
-        end
-
-        def customs
-          CustomsFields.new param
         end
 
         def reference_no
           BrowserTextBox.new (browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
         end
 
-        def customs_form
-          CustomsForm.new param
-        end
 
         def item line_item
           DetailsItem.new param, line_item
