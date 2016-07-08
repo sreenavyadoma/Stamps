@@ -107,7 +107,7 @@ module Stamps
 
         when /cc/
           logger.message "OR - Reports"
-          browser.goto "https://or.qasc.qacc.com/orreports/healthcheck.aspx"
+          browser.goto "https://or.qacc.stamps.com/orreports/healthcheck.aspx"
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Reports: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
