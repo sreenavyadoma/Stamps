@@ -296,18 +296,6 @@ module Stamps
         @text_box = text_box
       end
 
-      def selection operation, selection
-        case operation
-          when :element
-            return BrowserElement.new (expose_selection selection)
-          when :tooltip
-            selection_element = expose_selection selection
-            selection_element.attribute_value "data-qtip"
-          else
-            #do nothing
-        end
-      end
-
       def expose_selection selection
         case html_tag
           when :li
@@ -337,6 +325,11 @@ module Stamps
               browser_helper.safe_click selection_element
             end
         end
+      end
+
+      def data_qtip selection
+        selection_element = expose_selection selection
+        selection_element.attribute_value "data-qtip"
       end
     end
 
