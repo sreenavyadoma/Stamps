@@ -86,7 +86,7 @@ module Stamps
           driver.window.maximize
           @browser = driver
         rescue Exception => e
-          logger.error e
+          logger.error e.backtrace.join "\n"
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"

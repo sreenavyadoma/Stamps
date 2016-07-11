@@ -79,7 +79,6 @@ module Stamps
               return if browser.url.include? "SignIn"
             end
           end
-
         end
 
         def balance

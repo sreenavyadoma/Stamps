@@ -185,11 +185,8 @@ module Stamps
 
               break if grid.present?
             rescue Exception => e
-              logger.error "ERROR ERROR ERROR "
-              logger.error " #{e.backtrace}"
-              logger.error " #{e.message}"
-              logger.error " #{e.message}"
-              logger.error "ERROR ERROR ERROR "
+              logger.error e.backtrace.join "\n"
+              raise e
             end
           end
 

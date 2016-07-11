@@ -72,9 +72,7 @@ module Stamps
         end
 
         def scroll column
-          field = BrowserElement.new column_name_field(column)
-          field.scroll_into_view
-          field
+          browser_helper.scroll_into_view browser, column_name_field(column)
         end
 
         def column_name_field column
@@ -95,7 +93,9 @@ module Stamps
 
         def grid_text column, row
           scroll column
-          browser_helper.text grid_field(column, row) #, "Grid.#{column}.Row#{row}"
+          data = browser_helper.text grid_field(column, row)
+          logger.info "Column #{GRID_COLUMNS[column]} Row #{row}: #{data}"
+          data
         end
 
         def grid_field column_number, row
@@ -108,18 +108,14 @@ module Stamps
         end
 
         def column_number column_name
-          begin
-            column_str = GRID_COLUMNS[column_name]
-            columns = column_fields
-            columns.each_with_index { |column_field, index|
-              column_text = browser_helper.text column_field
-              if column_text == column_str
-                #logger.info "Grid:  #{column_str} is in column #{index+1}"
-                return index+1
-              end
-            }
-          rescue Exception => e
-            logger.info e
+          column_str = GRID_COLUMNS[column_name]
+          columns = column_fields
+          columns.each_with_index do |column_field, index|
+            column_text = browser_helper.text column_field
+            if column_text == column_str
+              #logger.info "Grid:  #{column_str} is in column #{index+1}"
+              return index+1
+            end
           end
         end
 
@@ -130,8 +126,8 @@ module Stamps
         def row_number order_id
           scroll :order_id
           row = 0
-          column = column_number(:order_id)
-          css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column})>div"
+          column_num = column_number(:order_id)
+          css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div"
           #logger.info "Order ID: #{order_id} CSS: #{css}"
           fields = browser.divs css: css
           fields.each_with_index { |div, index|
@@ -945,6 +941,7 @@ module Stamps
 
       # Orders Grid
       class OrdersGrid < Browser::Modal
+        #todo attr_reader
 
         def column
           GridColumns.new param

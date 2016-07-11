@@ -114,11 +114,7 @@ module Stamps
       end
 
       def scroll_into_view
-        begin
-          browser.execute_script('arguments[0].scrollIntoView();', element)
-        rescue
-          # ignore
-        end
+        browser_helper.scroll_into_view browser, element
       end
 
       def safe_scroll_into_view
@@ -335,8 +331,17 @@ module Stamps
 
     class BrowserHelper
       class << self
+
+        def scroll_into_view browser, element
+          begin
+            browser.execute_script('arguments[0].scrollIntoView();', element)
+          rescue
+            # ignore
+          end
+        end
+
         def text element
-          element.wait_until_present 5
+          #element.wait_until_present 5
           begin
             text = element.text
             return text if text.size > 0

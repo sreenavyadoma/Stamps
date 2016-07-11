@@ -19,15 +19,39 @@ module Stamps
   end
 
   def web_apps
-    @web_apps ||= StampsWebApps.new param
+    begin
+      @web_apps ||= StampsWebApps.new param
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
   end
 
   def orders
-    @orders ||= WebOrders.new param
+    begin
+      @orders ||= WebOrders.new param
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
   end
 
   def postage
-    PrintPostage.new param
+    begin
+      @print_postage = PrintPostage.new param
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
   end
 
   def param
