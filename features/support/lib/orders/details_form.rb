@@ -899,88 +899,7 @@ module Stamps
       end
 
       class AddShippingAdress < Browser::Modal
-        #todo FIX ME!!
-        public
-        def shipping_address=(table)
-          self.origin_zip = table["ship_from_zip"]
-          self.name = table['name']
-          self.company = table['company']
-          self.street_address1 = table["street_address"]
-          self.street_address2 = table["street_address2"]
-          self.city = table['city']
-          self.state = table["state"]
-          self.zip = table["zip"]
-          self.phone = table['phone']
-          self.save
-        end
 
-        def origin_zip=(zip)
-          browser_helper.set origin_zip_field, zip, "origin_zip"
-        end
-
-        def origin_zip
-          browser_helper.text origin_zip_field
-        end
-
-        def name=(name)
-          browser_helper.set name_field, name, "name_field"
-        end
-
-        def company=(company)
-          browser_helper.set company_field, company, "company_field"
-        end
-
-        def street_address1=(street)
-          browser_helper.set street_address1_field, street, "street_address1_field"
-        end
-
-        def street_address2=(street)
-          browser_helper.set street_address2_field, street, "street_address2_field"
-        end
-
-        def state_dd_button
-          browser.div css: "div[id^=statecombobox-][id$=-trigger-picker]"
-        end
-
-        def city=(city)
-          browser_helper.set city_text_field, city, "state_field"
-        end
-
-        def state_field
-          browser.text_field name: 'State'
-        end
-
-        def state=(state)
-          dd = BrowserDropDown.new @browser, state_dd_button, :li, state_field
-          dd.select state
-        end
-
-        def zip=(code)
-          browser_helper.set zip_field, code, "zip_field"
-        end
-
-        def phone=(number)
-          browser_helper.set phone_field, number, "phone_field"
-        end
-
-        def save
-          10.times{
-            begin
-              browser_helper.safe_click save_button
-              sleep 1
-              break unless save_button.present?
-            rescue
-              #ignore
-            end
-          }
-        end
-
-        def present?
-          save_button.present?
-        end
-
-        #todo FIX ME!!
-        private
         def origin_zip_field
           browser.text_field name: 'OriginZip'
         end
@@ -1019,6 +938,85 @@ module Stamps
         def save_button
           browser.span text: 'Save'
         end
+
+        def shipping_address table
+          self.origin_zip = table["ship_from_zip"]
+          self.name = table['name']
+          self.company = table['company']
+          self.street_address1 = table["street_address"]
+          self.street_address2 = table["street_address2"]
+          self.city = table['city']
+          self.state = table["state"]
+          self.zip = table["zip"]
+          self.phone = table['phone']
+          self.save
+        end
+
+        def origin_zip=(zip)
+          browser_helper.set origin_zip_field, zip
+        end
+
+        def origin_zip
+          browser_helper.text origin_zip_field
+        end
+
+        def name=(name)
+          browser_helper.set name_field, name
+        end
+
+        def company=(company)
+          browser_helper.set company_field, company
+        end
+
+        def street_address1=(street)
+          browser_helper.set street_address1_field, street
+        end
+
+        def street_address2=(street)
+          browser_helper.set street_address2_field, street
+        end
+
+        def state_dd_button
+          browser.div css: "div[id^=statecombobox-][id$=-trigger-picker]"
+        end
+
+        def city=(city)
+          browser_helper.set city_text_field, city
+        end
+
+        def state_field
+          browser.text_field name: 'State'
+        end
+
+        def state=(state)
+          dd = BrowserDropDown.new @browser, state_dd_button, :li, state_field
+          dd.select state
+        end
+
+        def zip=(code)
+          browser_helper.set zip_field, code
+        end
+
+        def phone=(number)
+          browser_helper.set phone_field, number
+        end
+
+        def save
+          10.times{
+            begin
+              browser_helper.safe_click save_button
+              sleep 1
+              break unless save_button.present?
+            rescue
+              #ignore
+            end
+          }
+        end
+
+        def present?
+          save_button.present?
+        end
+
       end
 
       class DeleteShippingAddress < Browser::Modal
@@ -1190,36 +1188,18 @@ module Stamps
           self
         end
 
-        def add *args
+        def add
           @shipping_address_form = AddShippingAdress.new param
-          add_shipping_address_window
-          case args.length
-            when 0
-              @shipping_address_form
-            when 1
-              address = args[0]
-              case address
-                when Hash
-                  @shipping_address_form.shipping_address = address
-                else
-                  stop_test "Illegal Ship-to argument"
-              end
-            else
-              stop_test "add_address:  Illegal number of arguments #{args.length}"
-          end
-        end
-
-        def add_shipping_address_window
-          @shipping_address_form = AddShippingAdress.new param
-          5.times {
+          10.times do
             begin
-              break if @shipping_address_form.present?
+              return @shipping_address_form if @shipping_address_form.present?
               browser_helper.safe_click add_button
-              add_button.wait_until
+              sleep 1
             rescue
               #ignore
             end
-          }
+          end
+          raise "Add Shipping Address failed. Unable to open Add Shipping Address modal."
         end
 
         def edit_address(name, company, city, new_address_details)
@@ -1320,7 +1300,7 @@ module Stamps
         end
 
         def wait_until_present
-          add_button.wait_until_present
+          add_button.wait_until_present 8
         end
 
         def shipping_address_count

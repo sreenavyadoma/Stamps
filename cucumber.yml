@@ -1,8 +1,8 @@
-default: --profile cuke_reports --profile rob_staging # import_orders_ship_from_test
+default: --profile cuke_reports --profile rob_cc # import_orders_ship_from_test
 
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800 wp_bvt_international
-rob_cc: --tags @orders_bvt_international_shipping --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=hd9glvtoauago  PW=pass111 #hd9glvtoauago
+rob_cc: --tags @orders_bvt_shipping_address_management --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=hd9glvtoauago  PW=pass111 #hd9glvtoauago
   # hd9glvtoauago
 rob_sc: --tags @orders_authentication --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yeh74tdq0karv  PW=pass111 #yh95ws85j c2jinmzmu64 store parcel_select
 rob_staging: --tags @orders_bvt_ambigious_address --guess VERBOSE=true HEALTHCHECK=false URL=staging BROWSER=ff USR=mwn2ghor PW=pass111 #nhr9mm6m5l

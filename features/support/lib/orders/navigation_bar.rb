@@ -71,11 +71,11 @@ module Stamps
 
           def sign_out
             drop_down = username
-            sign_out_link = BrowserElement.new (browser.a text: "Sign Out")
+            sign_out_link = browser.a text: "Sign Out"
             20.times do
               drop_down.safe_click unless sign_out_link.present?
               drop_down.hover
-              sign_out_link.safe_click if sign_out_link.present?
+              browser_helper.safe_click sign_out_link if sign_out_link.present?
               return if browser.url.include? "SignIn"
             end
           end

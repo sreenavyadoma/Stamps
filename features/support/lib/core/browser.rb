@@ -401,7 +401,7 @@ module Stamps
               break if actual_value == text
 
               #set element attribute value
-              attribute_value element, "value", text
+              set_attribute_value element, "value", text
               actual_value = text element
               break if actual_value == text
               break if actual_value == text
@@ -463,7 +463,7 @@ module Stamps
           end
         end
 
-        def attribute_value element, attribute_name, value
+        def set_attribute_value element, attribute_name, value
           script = "return arguments[0].#{attribute_name}='#{value}'"
           element.browser.execute_script(script, element)
         end

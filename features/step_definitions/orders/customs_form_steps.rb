@@ -2,7 +2,6 @@
 
 Then /^Customs: Add Item (\d+), Description (.*), Qty (\d+), Price (.+), Lbs (\d+), Oz (\d+) Origin (.+), Tariff (.*)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
   logger.info "Customs: Add Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i
 
@@ -17,8 +16,6 @@ end
 
 Then /^Customs: Add Item (\d+)$/ do |item_number|
   logger.info "Customs: Add Item #{item_number}"
-
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_item_grid = @customs_form.item_grid
   @customs_form_line_item = @customs_item_grid.item item_number.to_i
 end
@@ -72,8 +69,6 @@ end
 
 Then /^Customs: Expect Item (\d+) Quantity to be (\d+)$/ do |item_number, expectation|
   logger.info "Customs: Expect Item #{item_number} Quantity to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  @customs_item_grid = @customs_form.item_grid if @customs_item_grid.nil?
   item = @customs_item_grid.item item_number.to_i
 
   actual_value = item.qty.text_box.text
@@ -83,8 +78,6 @@ end
 
 Then /^Customs: Expect Item (\d+) Unit Price to be (.*)$/ do |item_number, expectation|
   logger.info "Customs: Expect Item #{item_number} Unit Price to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  @customs_item_grid = @customs_form.item_grid if @customs_item_grid.nil?
   item = @customs_item_grid.item item_number.to_i
 
   actual_value = item.unit_price.text_box.text
@@ -94,10 +87,7 @@ end
 
 Then /^Customs: Expect Item (\d+) Pounds to be (\d+)$/ do |item_number, expectation|
   logger.info "Customs: Expect Item #{item_number} Pounds to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  @customs_item_grid = @customs_form.item_grid if @customs_item_grid.nil?
   item = @customs_item_grid.item item_number.to_i
-
   actual_value = item.lbs.text_box.text
   logger.info "Item #{item_number} Pounds Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -105,8 +95,6 @@ end
 
 Then /^Customs: Expect Item (\d+) Ounces to be (\d+)$/ do |item_number, expectation|
   logger.info "Customs: Expect Item #{item_number} Ounces to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  @customs_item_grid = @customs_form.item_grid if @customs_item_grid.nil?
   item = @customs_item_grid.item item_number.to_i
 
   actual_value = item.oz.text_box.text
@@ -116,8 +104,6 @@ end
 
 Then /^Customs: Expect Item (\d+) Origin Country to be (.*)$/ do |item_number, expectation|
   logger.info "Customs: Expect Item #{item_number} Origin Country to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  @customs_item_grid = @customs_form.item_grid if @customs_item_grid.nil?
   item = @customs_item_grid.item item_number.to_i
 
   actual_value = item.origin.text_box.text
@@ -127,10 +113,7 @@ end
 
 Then /^Customs: Expect Item (\d+) Tariff to be (.*)$/ do |item_number, expectation|
   logger.info "Customs: Expect Item #{item_number} Tarriff to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  @customs_item_grid = @customs_form.item_grid if @customs_item_grid.nil?
   item = @customs_item_grid.item item_number.to_i
-
   actual_value = item.hs_tariff.text
   logger.info "Item #{item_number} HS Tarriff Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -143,17 +126,11 @@ end
 
 Then /^Customs: Set Package Contents to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Package Contents to #{value}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   @customs_form.package_contents.select value
 end
 
 Then /^Customs: Expect Package Contents to be (.+)$/ do |expectation|
   logger.info "Customs: Expect Package Contents to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   actual_value = @customs_form.package_contents.text_box.text
   logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -161,17 +138,11 @@ end
 
 Then /^Customs: Set Non-Delivery Options to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Non-Delivery Options to #{value}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   @customs_form.non_delivery_options.select value
 end
 
 Then /^Customs: Expect Non-Delivery to be (.+)$/ do |expectation|
   logger.info "Customs: Expect Non-Delivery to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   actual_value = @customs_form.non_delivery_options.text_box.text
   logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -179,18 +150,12 @@ end
 
 Then /^Customs: Set Internal Transaction Number to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Internal Transaction Number to #{value}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   @customs_form.internal_transaction.select (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
   sleep 1
 end
 
 Then /^Customs: Expect Internal Transaction Number to be (.+)$/ do |expectation|
   logger.info "Customs: Expect Internal Transaction Number to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   actual_value = @customs_form.internal_transaction.text_box.text
   logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -198,25 +163,16 @@ end
 
 Then /^Customs: Set More Info to \"(.+)\"$/ do |value|
   logger.info "Customs: Set More Info to #{value}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   @customs_form.more_info.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^Customs: Set ITN Number to \"(.+)\"$/ do |value|
   logger.info "Customs: Set ITN Number to #{value}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   @customs_form.itn_number.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^Customs: Expect ITN Number to be (.+)$/ do |expectation|
   logger.info "Customs: Expect ITN Number to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   actual_value = @customs_form.itn_number.text
   logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -224,17 +180,11 @@ end
 
 Then /^Customs: Set License Number to \"(.+)\"$/ do |value|
   logger.info "Customs: Set License Number to #{value}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   @customs_form.license.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^Customs: Expect License Number to be (.+)$/ do |expectation|
   logger.info "Customs: Expect License Number to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   actual_value = @customs_form.license.text
   logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -242,17 +192,11 @@ end
 
 Then /^Customs: Set Certificate Number to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Certificate Number to #{value}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   @customs_form.certificate.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^Customs: Expect Certificate Number to be (.+)$/ do |expectation|
   logger.info "Customs: Expect Certificate Number to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   actual_value = @customs_form.certificate.text
   logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -260,17 +204,11 @@ end
 
 Then /^Customs: Set Invoice Number to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Invoice Number to #{value}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   @customs_form.invoice.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^Customs: Expect Invoice Number to be (.+)$/ do |expectation|
   logger.info "Customs: Expect Invoice Number to  be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
-
   actual_value = @customs_form.invoice.text
   logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -294,8 +232,6 @@ end
 
 Then /^Customs: Expect I agree to the USPS Privacy Act Statement is checked$/ do
   logger.info "Customs: Expect I agree to the USPS Privacy Act Statement is checked"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
   expectation = "checked"
   i_agree = @order_details.customs_form.i_agree.checked?
   if i_agree
@@ -314,8 +250,6 @@ end
 
 Then /^Customs: Expect I agree to the USPS Privacy Act Statement is unchecked$/ do
   logger.info "Customs: Expect I agree to the USPS Privacy Act Statement is unchecked"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  step "Details: Edit Customs Form" unless @customs_form.present?
   expectation = "unchecked"
   i_agree = @order_details.customs_form.i_agree.checked?
   if i_agree
@@ -329,20 +263,17 @@ end
 
 Then /^Customs: Close Form$/ do
   logger.info "Closing customs form"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.close
   logger.info "Customs form #{(@customs_form.present?)?'closed':'is still open.'}"
 end
 
 Then /^Cancel Customs Form$/ do
   logger.info "Cancel customs form"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.cancel
 end
 
-Then /^Expect Customs Form USPS Privacy Act Warning to be visible$/ do
-  logger.info "Expect Customs Form USPS Privacy Act Warning to be visible"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
+Then /^Customs Form: Expect USPS Privacy Act Warning to be visible$/ do
+  logger.info "Customs Form: Expect USPS Privacy Act Warning to be visible"
   10.times do
     break if @customs_form.usps_privacy_act_warning.visible?
     sleep 1
@@ -352,9 +283,8 @@ Then /^Expect Customs Form USPS Privacy Act Warning to be visible$/ do
   usps_privacy_act_warning.should be true
 end
 
-Then /^Expect Customs Form USPS Privacy Act Warning to be hidden/ do
-  logger.info "Expect Customs Form USPS Privacy Act Warning to be hidden"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
+Then /^Customs Form: Expect USPS Privacy Act Warning to be hidden$/ do
+  logger.info "Customs Form: Expect USPS Privacy Act Warning to be hidden"
   10.times do
     break if @customs_form.usps_privacy_act_warning.visible?
     sleep 1
@@ -366,67 +296,56 @@ end
 
 Then /^Customs: Expect More Info to be hidden$/ do
   logger.info "Customs: Expect More Info to be hidden"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.more_info.present?.should be false
 end
 
 Then /^Customs: Expect More Info to be visible$/ do
   logger.info "Customs: Expect More Info to be visible"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.more_info.present?.should be true
 end
 
 Then /^Customs: Expect License Number to be visible$/ do
   logger.info "Customs: Expect License Number to be visible"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.license.present?.should be true
 end
 
 Then /^Customs: Expect License Number to be hidden$/ do
   logger.info "Customs: Expect License Number to be hidden"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.license.present?.should be false
 end
 
 Then /^Customs: Expect Certificate Number to be hidden$/ do
   logger.info "Customs: Expect Certificate Number to be hidden"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.certificate.present?.should be false
 end
 
 Then /^Customs: Expect Certificate Number to be visible$/ do
   logger.info "Customs: Expect Certificate Number to be visible"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.certificate.present?.should be true
 end
 
 Then /^Customs: Expect Invoice Number to be hidden$/ do
   logger.info "Customs: Expect Invoice Number to be hidden"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.invoice.present?.should be false
 end
 
 Then /^Customs: Expect Invoice Number to be visible$/ do
   logger.info "Customs: Expect Invoice Number to be visible"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.invoice.present?.should be true
 end
 
 Then /^Customs: Expect ITN Number to be hidden$/ do
   logger.info "Customs: Expect ITN Number to be hidden"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.itn_number.enabled?.should be false
 end
 
 Then /^Customs: Expect ITN Number to be visible$/ do
   logger.info "Customs: Expect ITN Number to be visible"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.itn_number.enabled?.should be true
 end
 
 Then /^Expect Customs Form Internal Transaction # to be \"(.+)\"$/ do |expectation|
   logger.info "Expect Customs Form Internal Transaction # to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   sleep 1
   text = @customs_form.internal_transaction.text_box.text
   text = @customs_form.internal_transaction.text_box.text
@@ -436,22 +355,18 @@ end
 
 Then /^Customs: Expect Item Grid count to be (.+)$/ do |expectation|
   logger.info "Customs: Expect Item Grid count to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   @customs_form.item_grid.size.should eql expectation.to_i
 end
 
-Then /^Expect Customs Form Total Value to be (.+)$/ do |expectation|
-  logger.info "Expect Customs Form Total Value to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
-  sleep 2
-  browser_value = @customs_form.total_value
-  logger.info "Custom Info Actual Total Value: #{browser_value}.  Expected:  #{expectation}.  Test #{(browser_value == expectation)?'Passed':'Failed'}"
-  browser_value.should eql expectation
+Then /^Customs Form: Expect Total Value to be (.+)$/ do |expectation|
+  logger.info "Customs Form: Expect Total Value to be #{expectation}"
+  actual_value = @customs_form.total_value
+  logger.info "Custom Info Actual Total Value: #{actual_value}.  Expected:  #{expectation}.  Test #{(actual_value == expectation)?'Passed':'Failed'}"
+  actual_value.should eql expectation
 end
 
 Then /^Expect Customs Form Total Pounds to be (.+)$/ do |expectation|
   logger.info "Expect Customs Form Total Pounds to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   item = @customs_item_grid.item 1
   20.times do
     sleep 1
@@ -466,7 +381,6 @@ end
 
 Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
   logger.info "Expect Customs Form Total Ounces to be #{expectation}"
-  @customs_form = @order_details.customs_form if @customs_form.nil?
   item = @customs_item_grid.item 1
   20.times do
     sleep 1

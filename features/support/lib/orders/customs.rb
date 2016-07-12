@@ -482,7 +482,6 @@ module Stamps
       def i_agree
         field = browser.text_field css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
         verify_field = field.parent.parent.parent
-
         BrowserCheckbox.new field, verify_field, "class", "checked"
       end
 

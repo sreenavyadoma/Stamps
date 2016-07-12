@@ -18,7 +18,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Expect Customs Form Package Contents to be Merchandise
     * Expect Customs Form Non-Delivery Options to be Return to Sender
     * Expect Customs Form Weight(lbs) to be 0
-    * Expect Customs Form Total Value to be 0.00
+    * Customs Form: Expect Total Value to be 0.00
 
     * Set Customs Form Weight(lbs) to 0
     * Increment Customs Form Weight(lbs) by 2
@@ -61,7 +61,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Add or Edit Customs Form Item 3 to Description=random, Qty 1, Unit Price 10, Weight(lbs) 0, Weight(oz) 1 Origin United States, Tariff 10
 
     * Expect Customs Form Weight(lbs) to be correct
-    * Expect Customs Form Total Value to be correct
+    * Customs Form: Expect Total Value to be correct
 
     * Expect Customs Form Internal Transaction # to be Required
     * Delete Customs Form Item 2

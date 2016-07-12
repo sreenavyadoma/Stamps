@@ -871,7 +871,7 @@ end
 
 Then /^Add Ship-From address$/ do |ship_from|
   logger.info "Add Ship-From address #{ship_from}"
-  orders.details.ship_from.select("Manage Shipping Addresses...").add ship_from.hashes.first
+  add_form = orders.details.ship_from.select("Manage Shipping Addresses...").add.shipping_address ship_from.hashes.first
 end
 
 Then /^Add Ship-From address (\w+)$/ do |address|
@@ -881,7 +881,7 @@ Then /^Add Ship-From address (\w+)$/ do |address|
   logger.info "Random address added: #{@ship_from_address}"
 end
 
-Then /^Expect (\w+) Ship-From address was added$/ do |address|
+Then /^Details: Expect Ship-From selection has (.*)$/ do |address|
   logger.info "Expect #{address} Ship-From address was added"
   raise "Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
   begin
@@ -889,20 +889,14 @@ Then /^Expect (\w+) Ship-From address was added$/ do |address|
   end unless @ship_from_address.nil?
 end
 
-Then /^Delete (\w+) Ship-From address$/ do |address|
-  logger.info "Delete #{address} Ship-From address"
-  begin
-    if address.downcase == "random"
-      raise "Illegal State Exception:  @ship_from_address is nil" if @ship_from_address.nil?
-      orders.details.ship_from.select("Manage Shipping Addresses...").delete @ship_from_address
-    elsif address.downcase == "all"
-      orders.details.ship_from.select("Manage Shipping Addresses...").delete_all.close_window
-    else
-      raise "Test parameter exception.  #{address} is not a valid parameter for this test."
-    end
-  rescue
-    #This is a housekeeping task and should never fail.
-  end
+Then /^Details: Delete Ship-From address (\w+)$/ do |address|
+  logger.info "Details: Delete Ship-From address #{address}"
+  # not implemented
+end
+
+Then /^Details: Delete all Ship-From address$/ do
+  logger.info "Details: Delete all Ship-From address"
+  orders.details.ship_from.select("Manage Shipping Addresses...").delete_all.close_window
 end
 
 Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
