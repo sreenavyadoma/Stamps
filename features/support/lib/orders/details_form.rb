@@ -899,106 +899,123 @@ module Stamps
       end
 
       class AddShippingAdress < Browser::Modal
-
-        def origin_zip_field
-          browser.text_field name: 'OriginZip'
-        end
-
-        def name_field
-          text_fields = browser.text_fields name: 'FullName'
-          text_fields.last
-        end
-
-        def company_field
-          text_fields = browser.text_fields name: 'Company'
-          text_fields.last
-        end
-
-        def street_address1_field
-          browser.text_field name: 'Street1'
-        end
-
-        def street_address2_field
-          browser.text_field name: 'Street2'
-        end
-
-        def city_text_field
-          text_fields = browser.text_fields name: 'City'
-          text_fields.last
-        end
-
-        def zip_field
-          browser.text_field name: 'Zip'
-        end
-
-        def phone_field
-          (browser.text_fields css: "input[name=Phone]").last
-        end
-
         def save_button
           browser.span text: 'Save'
         end
 
         def shipping_address table
-          self.origin_zip = table["ship_from_zip"]
-          self.name = table['name']
-          self.company = table['company']
-          self.street_address1 = table["street_address"]
-          self.street_address2 = table["street_address2"]
-          self.city = table['city']
-          self.state = table["state"]
-          self.zip = table["zip"]
-          self.phone = table['phone']
+          self.origin_zip table["ship_from_zip"]
+          self.name table['name']
+          self.company table['company']
+          self.street_address1 table["street_address"]
+          self.street_address2 table["street_address2"]
+          self.city table['city']
+          self.state.select table["state"]
+          self.zip table["zip"]
+          self.phone table['phone']
           self.save
         end
 
-        def origin_zip=(zip)
-          browser_helper.set origin_zip_field, zip
+        def origin_zip *args
+          field = browser.text_field name: 'OriginZip'
+          case args.length
+            when 0
+              browser_helper.text field
+            when 1
+              browser_helper.set field, args[0]
+            else
+              raise "Illegal number of arguments." if args.length > 2
+          end
         end
 
-        def origin_zip
-          browser_helper.text origin_zip_field
+        def name *args
+          field = (browser.text_fields name: 'FullName').last
+          case args.length
+            when 0
+              browser_helper.text field
+            when 1
+              browser_helper.set field, args[0]
+            else
+              raise "Illegal number of arguments." if args.length > 2
+          end
         end
 
-        def name=(name)
-          browser_helper.set name_field, name
+        def company *args
+          field =(browser.text_fields name: 'Company').last
+          case args.length
+            when 0
+              browser_helper.text field
+            when 1
+              browser_helper.set field, args[0]
+            else
+              raise "Illegal number of arguments." if args.length > 2
+          end
         end
 
-        def company=(company)
-          browser_helper.set company_field, company
+        def street_address1 *args
+          field = browser.text_field name: 'Street1'
+          case args.length
+            when 0
+              browser_helper.text field
+            when 1
+              browser_helper.set field, args[0]
+            else
+              raise "Illegal number of arguments." if args.length > 2
+          end
         end
 
-        def street_address1=(street)
-          browser_helper.set street_address1_field, street
+        def street_address2 *args
+          field = browser.text_field name: 'Street2'
+          case args.length
+            when 0
+              browser_helper.text field
+            when 1
+              browser_helper.set field, args[0]
+            else
+              raise "Illegal number of arguments." if args.length > 2
+          end
         end
 
-        def street_address2=(street)
-          browser_helper.set street_address2_field, street
+        def city *args
+          field = (browser.text_fields name: 'City').last
+          case args.length
+            when 0
+              browser_helper.text field
+            when 1
+              browser_helper.set field, args[0]
+            else
+              raise "Illegal number of arguments." if args.length > 2
+          end
         end
 
-        def state_dd_button
-          browser.div css: "div[id^=statecombobox-][id$=-trigger-picker]"
+        def state
+          text_box = (browser.text_field name: 'State')
+          dd = browser.div css: "div[id^=statecombobox-][id$=-trigger-picker]"
+          BrowserDropDown.new @browser, dd, :li, text_box
         end
 
-        def city=(city)
-          browser_helper.set city_text_field, city
+        def zip *args
+          field = browser.text_field name: 'Zip'
+          case args.length
+            when 0
+              browser_helper.text field
+            when 1
+              browser_helper.set field, args[0]
+            else
+              raise "Illegal number of arguments." if args.length > 2
+          end
         end
 
-        def state_field
-          browser.text_field name: 'State'
-        end
-
-        def state=(state)
-          dd = BrowserDropDown.new @browser, state_dd_button, :li, state_field
-          dd.select state
-        end
-
-        def zip=(code)
-          browser_helper.set zip_field, code
-        end
-
-        def phone=(number)
-          browser_helper.set phone_field, number
+        def phone *args
+          field = (browser.text_fields css: "input[name=Phone]").last
+          case args.length
+            when 0
+              browser_helper.text field
+            when 1
+              browser_helper.set field, args[0]
+            else
+              raise "Illegal number of arguments." if args.length > 2
+          end
         end
 
         def save
