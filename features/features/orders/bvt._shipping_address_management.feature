@@ -5,7 +5,7 @@ Feature:  BVT Address Management
     Given I am signed in to Orders
 
   @orders_bvt_shipping_address_management
-  Scenario: Add and Delete Ship-From Address
+  Scenario: BVT Shipping Address
     Then Toolbar: Add
     Then Add Ship-From address
       |ship_from_zip  | name  | company    | street_address     | street_address2 | city          | state       | zip    | country       | phone           |
