@@ -164,9 +164,10 @@ module Stamps
       end
 
       def rand_username
+        ENV['URL'] = 'stg' if ENV['URL'].downcase.include? 'staging'
         user_name = "#{ENV['URL']}#{('a'..'z').to_a.sample}#{Array.new(rand(6..11)){[*'0'..'9', *'a'..'z'].sample}.join}"
-        if user_name.length > 14
-          user_name[0..14]
+        if user_name.length > 13
+          user_name[0..13]
         else
           user_name
         end
