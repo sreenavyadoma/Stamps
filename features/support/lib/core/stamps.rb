@@ -3,7 +3,15 @@ module Stamps
   extend self
 
   def init scenario
-    TestHelper.init scenario
+    begin
+      TestHelper.init scenario
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
   end
 
   def teardown
@@ -15,7 +23,15 @@ module Stamps
   end
 
   def health
-    HealthCheck.new param
+    begin
+      HealthCheck.new param
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
   end
 
   def web_apps
@@ -44,7 +60,43 @@ module Stamps
 
   def postage
     begin
-      @print_postage = PrintPostage.new param
+      @print_postage ||= PrintPostage.new param
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
+  end
+
+  def registration
+    begin
+      @registration ||= WebReg::Registration.new param
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
+  end
+
+  def pam
+    begin
+      @pam ||= Pam::PaymentAdministratorManager.new param
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
+  end
+
+  def volusion
+    begin
+      @volusion ||= Stores::VolusionLoginPage.new param
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"
@@ -67,7 +119,15 @@ module Stamps
   end
 
   def test_helper
-    TestHelper
+    begin
+      TestHelper
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
   end
 
   def logger

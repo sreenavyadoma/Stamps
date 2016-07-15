@@ -1,46 +1,27 @@
 module Stamps
   module Orders
     class WebOrders < Browser::Modal
-      def navigation_bar
-        @nav_bar ||= Orders::Navigation::NavigationBar.new param
-      end
-
-      def toolbar
+      attr_reader :navigation_bar, :toolbar, :landing_page, :grid, :styles, :details, :filter, :multi_order
+      def initialize param
+        super param
+        @navigation_bar ||= Orders::Navigation::NavigationBar.new param
         @toolbar ||= Orders::Toolbar::Toolbar.new param
-      end
-
-      def landing_page
         @landing_page ||= Orders::LandingPage::SignInPage.new param
+        @grid ||= Orders::Grid::OrdersGrid.new param
+        @styles ||= PageStyles.new param
+        @details ||= Orders::Details::DetailsForm.new param
+        @filter ||= Orders::FilterPanel.new param
+        @multi_order ||= Orders::Details::MultiOrder.new param
       end
 
       def awaiting_shipment
         FilterPanel.new(param).FilterPanel - "Awaiting Shipment"
-        @grid ||= Orders::Grid::OrdersGrid.new param
+        grid
       end
 
       def shipped
         FilterPanel.new param.FilterPanel - "Shipped"
-        @grid ||= Orders::Grid::OrdersGrid.new param
-      end
-
-      def filter
-        @filter ||= Orders::FilterPanel.new param
-      end
-
-      def multi_order
-        @multi_order ||= Orders::Details::MultiOrder.new param
-      end
-
-      def details
-        @details ||= Orders::Details::DetailsForm.new param
-      end
-
-      def grid
-        @grid ||= Orders::Grid::OrdersGrid.new param
-      end
-
-      def styles
-        @styles ||= PageStyles.new param
+        grid
       end
     end
   end

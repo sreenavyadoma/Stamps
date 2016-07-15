@@ -16,12 +16,12 @@ module Stamps
         end
 
         def save
-          button = BrowserElement.new (browser.spans text: "Save")[0]
+          button = ElementWrapper.new (browser.spans text: "Save")[0]
           button.safe_click
         end
 
         def window_title
-          BrowserElement.new (browser.span text: "Customs Information")
+          ElementWrapper.new (browser.span text: "Customs Information")
         end
 
         def package_contents
@@ -37,23 +37,23 @@ module Stamps
         end
 
         def more_info
-          BrowserTextBox.new browser.text_field name: "Comments"
+          TextBoxElement.new browser.text_field name: "Comments"
         end
 
         def itn_number
-          BrowserTextBox.new browser.text_field name: "ITN"
+          TextBoxElement.new browser.text_field name: "ITN"
         end
 
         def license
-          BrowserTextBox.new browser.text_field name: "LicenseNumber"
+          TextBoxElement.new browser.text_field name: "LicenseNumber"
         end
 
         def certificate
-          BrowserTextBox.new browser.text_field name: "CertificateNumber"
+          TextBoxElement.new browser.text_field name: "CertificateNumber"
         end
 
         def invoice
-          BrowserTextBox.new browser.text_field name: "InvoiceNumber"
+          TextBoxElement.new browser.text_field name: "InvoiceNumber"
         end
 
         def i_agree
@@ -62,7 +62,7 @@ module Stamps
           verify_fields = browser.tables css: "table[id^=checkboxfield-]"
           verify_field = verify_fields.last
 
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def privacy_act_statement_link
@@ -91,7 +91,7 @@ module Stamps
 
         def add_item
           add_item_modal = Print::Postage::AddItemModal.new param
-          button = BrowserElement.new browser.span text: "Add Item"
+          button = ElementWrapper.new browser.span text: "Add Item"
           5.times do
             browser_helper.safe_click button
             return add_item_modal if add_item_modal.present?
@@ -102,7 +102,7 @@ module Stamps
 
         def edit_item
           edit_item_modal = Print::Postage::EditItemModal.new param
-          button = BrowserElement.new browser.span text: "Edit Item"
+          button = ElementWrapper.new browser.span text: "Edit Item"
           5.times do
             browser_helper.safe_click button
             return edit_item_modal if edit_item_modal.present?
@@ -112,7 +112,7 @@ module Stamps
         end
 
         def delete
-          button = BrowserElement.new browser.span text: "Delete"
+          button = ElementWrapper.new browser.span text: "Delete"
           browser_helper.safe_click button
         end
 
@@ -153,7 +153,7 @@ module Stamps
         end
 
         def description
-          BrowserTextBox.new browser.text_field name: "Description"
+          TextBoxElement.new browser.text_field name: "Description"
         end
 
         def qty
@@ -173,7 +173,7 @@ module Stamps
         end
 
         def hs_tariff
-          BrowserTextBox.new browser.text_field name: "HSTariffNumber"
+          TextBoxElement.new browser.text_field name: "HSTariffNumber"
         end
 
         def origin
@@ -186,7 +186,7 @@ module Stamps
 
         class Qty  < Browser::Modal
           def text_box
-            BrowserTextBox.new browser.text_field name: 'Quantity'
+            TextBoxElement.new browser.text_field name: 'Quantity'
           end
 
           def set value
@@ -197,14 +197,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[8]
+            button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[8]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[8]
+            button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[8]
             value.to_i.times do
               button.safe_click
             end
@@ -215,7 +215,7 @@ module Stamps
 
         class Value  < Browser::Modal
           def text_box
-            BrowserTextBox.new browser.text_field name: 'Value'
+            TextBoxElement.new browser.text_field name: 'Value'
           end
 
           def set value
@@ -226,14 +226,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[9]
+            button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[9]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[9]
+            button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[9]
             value.to_i.times do
               button.safe_click
             end
@@ -243,7 +243,7 @@ module Stamps
 
         class Lbs  < Browser::Modal
           def text_box
-            BrowserTextBox.new browser.text_field name: 'WeightLb'
+            TextBoxElement.new browser.text_field name: 'WeightLb'
           end
 
           def set value
@@ -254,14 +254,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[10]
+            button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[10]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[10]
+            button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[10]
             value.to_i.times do
               button.safe_click
             end
@@ -271,7 +271,7 @@ module Stamps
 
         class Ounces  < Browser::Modal
           def text_box
-            BrowserTextBox.new browser.text_field name: 'WeightOz'
+            TextBoxElement.new browser.text_field name: 'WeightOz'
           end
 
           def set value
@@ -282,14 +282,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[11]
+            button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[11]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[11]
+            button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[11]
             value.to_i.times do
               button.safe_click
             end
@@ -298,18 +298,18 @@ module Stamps
         end
         class Origin  < Browser::Modal
           def text_box
-            BrowserTextBox.new browser.text_field name: "CountryOfOrigin"
+            TextBoxElement.new browser.text_field name: "CountryOfOrigin"
           end
 
           def drop_down
-            button = BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[12]
+            button = ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[12]
           end
 
           def select selection
             logger.info "Select Origin Country #{selection}"
             box = text_box
             button = drop_down
-            selection_label = BrowserElement.new (browser.divs text: selection)[1]
+            selection_label = ElementWrapper.new (browser.divs text: selection)[1]
             10.times {
               begin
                 button.safe_click #unless selection_label.present?
@@ -333,18 +333,18 @@ module Stamps
 
       class PackageContents < Browser::Modal
         def text_box
-          BrowserTextBox.new browser.text_field name: "ContentType"
+          TextBoxElement.new browser.text_field name: "ContentType"
         end
 
         def drop_down
-          BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[9]
+          ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[9]
         end
 
         def select selection
           logger.info "Select Package Contents #{selection}"
           box = text_box
           button = drop_down
-          selection_label = BrowserElement.new browser.div text: selection
+          selection_label = ElementWrapper.new browser.div text: selection
           10.times {
             begin
               button.safe_click #unless selection_label.present?
@@ -365,18 +365,18 @@ module Stamps
 
       class NonDeliveryOptions < Browser::Modal
         def text_box
-          BrowserTextBox.new browser.text_field name: "NonDeliveryOption"
+          TextBoxElement.new browser.text_field name: "NonDeliveryOption"
         end
 
         def drop_down
-          BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[10]
+          ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[10]
         end
 
         def select selection
           logger.info "Select Non Delivery Option #{selection}"
           box = text_box
           button = drop_down
-          selection_label = BrowserElement.new browser.div text: selection
+          selection_label = ElementWrapper.new browser.div text: selection
           10.times {
             begin
               button.safe_click #unless selection_label.present?
@@ -397,18 +397,18 @@ module Stamps
 
       class InternalTransaction < Browser::Modal
         def text_box
-          BrowserTextBox.new browser.text_field name: "isITNRequired"
+          TextBoxElement.new browser.text_field name: "isITNRequired"
         end
 
         def drop_down
-          BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[11]
+          ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[11]
         end
 
         def select selection
           logger.info "Select Internal Transaction #{selection}"
           box = text_box
           button = drop_down
-          selection_label = BrowserElement.new browser.div text: selection
+          selection_label = ElementWrapper.new browser.div text: selection
           10.times {
             begin
               button.safe_click #unless selection_label.present?
@@ -455,7 +455,7 @@ module Stamps
 
         def browser_edit_form_button
           links = browser.links css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
-          BrowserElement.new links.first
+          ElementWrapper.new links.first
         end
 
         def edit_form
@@ -470,7 +470,7 @@ module Stamps
         end
 
         def browser_restrictions_button
-          BrowserElement.new browser.span text: "Restrictions..."
+          ElementWrapper.new browser.span text: "Restrictions..."
         end
 
         def restrictions
@@ -497,7 +497,7 @@ module Stamps
           end
 
           def text_box
-            BrowserTextBox.new ((browser.text_fields css: "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
+            TextBoxElement.new ((browser.text_fields css: "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
           end
 
           def set value
@@ -519,14 +519,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+            button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+            button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
@@ -540,7 +540,7 @@ module Stamps
           end
 
           def text_box
-            BrowserTextBox.new ((browser.text_fields name: "Value")[@index-1]), "data-errorqtip"
+            TextBoxElement.new ((browser.text_fields name: "Value")[@index-1]), "data-errorqtip"
           end
 
           def set value
@@ -549,14 +549,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+            button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+            button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
@@ -570,7 +570,7 @@ module Stamps
           end
 
           def text_box
-            BrowserTextBox.new ((browser.text_fields name: "lbs")[@index-1]), "data-errorqtip"
+            TextBoxElement.new ((browser.text_fields name: "lbs")[@index-1]), "data-errorqtip"
           end
 
           def set value
@@ -592,14 +592,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+            button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+            button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
@@ -613,7 +613,7 @@ module Stamps
           end
 
           def text_box
-            BrowserTextBox.new ((browser.text_fields name: "oz")[@index-1]), "data-errorqtip"
+            TextBoxElement.new ((browser.text_fields name: "oz")[@index-1]), "data-errorqtip"
           end
 
           def set value
@@ -635,14 +635,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+            button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+            button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
@@ -659,11 +659,11 @@ module Stamps
         end
 
         def delete
-          BrowserElement.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index-1]
+          ElementWrapper.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index-1]
         end
 
         def description
-          BrowserTextBox.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[@index-1]), "data-errorqtip"
+          TextBoxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[@index-1]), "data-errorqtip"
         end
 
         def qty
@@ -687,14 +687,14 @@ module Stamps
         end
 
         def hs_tariff
-          BrowserTextBox.new (browser.text_fields name: "TariffNo")[@index-1]
+          TextBoxElement.new (browser.text_fields name: "TariffNo")[@index-1]
         end
 
       end
 
       class UspsPrivactActStatementModal < Browser::Modal
         def window_title
-          BrowserElement.new browser.div text: "USPS Privacy Act Statement"
+          ElementWrapper.new browser.div text: "USPS Privacy Act Statement"
         end
 
         def present?

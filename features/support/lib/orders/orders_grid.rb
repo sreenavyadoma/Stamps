@@ -40,7 +40,7 @@ module Stamps
           scroll column
 
           column_span = browser.span text: GRID_COLUMNS[column]
-          column_field = BrowserElement.new column_span
+          column_field = ElementWrapper.new column_span
           sort_order = (sort_order==:sort_ascending)?"ASC":"DESC"
 
           10.times do
@@ -797,13 +797,13 @@ module Stamps
           check_verify_field = browser.div css: "div[class*=x-column-header-checkbox]"
           attribute = "class"
           attrib_value_check = "checker-on"
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
+          Stamps::Browser::CheckboxElement.new checkbox_field, check_verify_field, attribute, attrib_value_check
         end
 
         public
 
         def scroll_into_view
-          field = BrowserElement.new((browser.spans css: "div[componentid^=gridcolumn]").first)
+          field = ElementWrapper.new((browser.spans css: "div[componentid^=gridcolumn]").first)
           field.scroll_into_view
           field
         end
@@ -833,7 +833,7 @@ module Stamps
           if size > 0
             checkbox_field = row_div number
             verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-            checkbox = BrowserCheckbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+            checkbox = CheckboxElement.new checkbox_field, verify_field, "class", "grid-item-selected"
             checkbox.check
             logger.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
           else
@@ -846,7 +846,7 @@ module Stamps
           if size > 0
             checkbox_field = row_div number
             verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-            checkbox = BrowserCheckbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+            checkbox = CheckboxElement.new checkbox_field, verify_field, "class", "grid-item-selected"
             checkbox.uncheck
             logger.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
           else
@@ -858,7 +858,7 @@ module Stamps
           scroll_into_view
           checkbox_field = row_div number
           verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-          checkbox = BrowserCheckbox.new checkbox_field, verify_field, "class", "grid-item-selected"
+          checkbox = CheckboxElement.new checkbox_field, verify_field, "class", "grid-item-selected"
           checkbox.checked?
         end
 
@@ -948,7 +948,7 @@ module Stamps
         end
 
         def present?
-          (BrowserElement.new browser.div Orders::Locators::OrdersGrid::present).present?
+          (ElementWrapper.new browser.div Orders::Locators::OrdersGrid::present).present?
         end
 
         def checkbox
@@ -1072,7 +1072,7 @@ module Stamps
         end
 
         def wait_until_present *args
-          grid_present_span = BrowserElement.new (browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]")
+          grid_present_span = ElementWrapper.new (browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]")
           grid_present_span.wait_until_present
         end
 

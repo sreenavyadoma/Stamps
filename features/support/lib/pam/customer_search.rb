@@ -9,23 +9,23 @@ module Pam
     end
 
     def username
-      BrowserTextBox.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]")
+      TextBoxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]")
     end
 
     def first_name
-      BrowserTextBox.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
+      TextBoxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
     end
 
     def last_name
-      BrowserTextBox.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
+      TextBoxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
     end
 
     def phone
-      BrowserTextBox.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=phone]")
+      TextBoxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=phone]")
     end
 
     def email
-      BrowserTextBox.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=email]")
+      TextBoxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=email]")
     end
 
     def user_5_2_or_lower
@@ -35,7 +35,7 @@ module Pam
     end
 
     def search
-      button = Stamps::Browser::BrowserElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
+      button = Stamps::Browser::ElementWrapper.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
       customer_profile = CustomerProfile.new param
       customer_profile_not__found = CustomerProfileNotFound.new param
       15.times do

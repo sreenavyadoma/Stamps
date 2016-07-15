@@ -1,6 +1,12 @@
 module Stamps
   module WebReg
     class Registration < Browser::Modal
+      attr_reader :profile
+      def initialize param
+        super param
+        @profile ||= Profile.new param
+      end
+
       def visit
         case ENV['URL'].downcase
           when /cc/
@@ -15,14 +21,10 @@ module Stamps
 
         logger.info "Visit:  #{url}"
         browser.goto url
-        sign_up_for_new_account = BrowserElement.new browser.h1(text: "Sign up for a new account")
+        sign_up_for_new_account = ElementWrapper.new browser.h1(text: "Sign up for a new account")
         sign_up_for_new_account.wait_until_present
         logger.info "Page loaded.  #{browser.url}"
         self
-      end
-
-      def profile
-        Profile.new param
       end
     end
   end

@@ -2,18 +2,17 @@ default: --profile cuke_reports --profile rob_cc # import_orders_ship_from_test
 
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800 wp_bvt_international
-rob_cc: --tags @orders_bvt_shipping_address_management --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=hd9glvtoauago  PW=pass111 #hd9glvtoauago
-  # hd9glvtoauago
+rob_cc: --tags @registration --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=hd9glvtoauago  PW=pass111 #hd9glvtoauago
 rob_sc: --tags @orders_authentication --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff USR=yeh74tdq0karv  PW=pass111 #yh95ws85j c2jinmzmu64 store parcel_select
-rob_staging: --tags @orders_bvt_ambigious_address --guess VERBOSE=true HEALTHCHECK=false URL=staging BROWSER=ff USR=mwn2ghor PW=pass111 #nhr9mm6m5l
-rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=chrome USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
-rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=qacc BROWSER=ie USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
+rob_stg: --tags @orders_bvt_printing --guess VERBOSE=true HEALTHCHECK=false URL=stg BROWSER=ff USR=mwn2ghor PW=pass111 #nhr9mm6m5l
+rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=chrome USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
+rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=ie USR=hd9glvtoauago PW=pass111 #nhr9mm6m5l
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 
 eli_dev: --tags @item_details   --guess VERBOSE=true HEALTHCHECK=true URL=sc BROWSER=ff USR=go45dhfhkw PW=pass111
-ray_dev: --tags @wp_print_on_list_of_values --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=webpost_0017 PW=pass111
-eva_dev: --tags   @details_panel --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=ss_cctest3 PW=password1
-daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
+ray_dev: --tags @wp_print_on_list_of_values --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=webpost_0017 PW=pass111
+eva_dev: --tags   @details_panel --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=ss_cctest3 PW=password1
+daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
@@ -28,14 +27,14 @@ grid_order_status: --tags @grid_order_status --guess VERBOSE=false HEALTHCHECK=t
 tooltips_improvements: --tags @tooltips_improvements --guess VERBOSE=false HEALTHCHECK=true
 
 bvt: --tags @bvt --guess VERBOSE=false HEALTHCHECK=true
-wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false HEALTHCHECK=true URL=qacc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
+wonder_bvt: --tags @wonder_bvt --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=auto04 PW=326tsetaqcdS!
 
 healthcheck: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true
 
 healthcheck_cc: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=bz9005j1r2jx0 PW=pass111
-healthcheck_stg: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true URL=staging BROWSER=ff USR=uadybt5iev PW=pass111
+healthcheck_stg: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true URL=stg BROWSER=ff USR=uadybt5iev PW=pass111
 
-orders_authentication_stg: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=staging BROWSER=ff USR=uadybt5iev PW=pass111
+orders_authentication_stg: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=stg BROWSER=ff USR=uadybt5iev PW=pass111
 orders_authentication_cc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff USR=bz9005j1r2jx0 PW=pass111
 orders_authentication_sc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff USR=jes9t1kus PW=pass111
 orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff USR=jes9t1kus PW=pass111

@@ -1,7 +1,7 @@
 module Pam
   class PamPageHeader < Browser::Modal
     def change_meter_limit
-      link = Stamps::Browser::BrowserElement.new browser.a(text: "Change Meter Limit")
+      link = Stamps::Browser::ElementWrapper.new browser.a(text: "Change Meter Limit")
       page = ChangeMeterLimit.new param
       5.times do
         link.safe_click
@@ -11,7 +11,7 @@ module Pam
     end
 
     def ach_credit
-      link = Stamps::Browser::BrowserElement.new browser.a(text: "ACH Credit")
+      link = Stamps::Browser::ElementWrapper.new browser.a(text: "ACH Credit")
       page = ACHCredit.new param
       5.times do
         link.safe_click
@@ -21,7 +21,7 @@ module Pam
     end
 
     def appcapp_overrides
-      link = Stamps::Browser::BrowserElement.new browser.a(text: "AppCap Overrides")
+      link = Stamps::Browser::ElementWrapper.new browser.a(text: "AppCap Overrides")
       page = AppCapOverrides.new param
       5.times do
         link.safe_click
@@ -45,7 +45,7 @@ module Pam
     end
 
     def available_postage
-      BrowserElement.new browser.td(css: "form[name=FrmOne]>table:nth-child(7)>tbody>tr>td>table>tbody>tr:nth-child(2)>td:nth-child(6)")
+      ElementWrapper.new browser.td(css: "form[name=FrmOne]>table:nth-child(7)>tbody>tr>td>table>tbody>tr:nth-child(2)>td:nth-child(6)")
     end
   end
 

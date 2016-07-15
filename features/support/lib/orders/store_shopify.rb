@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class ShopifySettings < StoreSettings
         def window_title
-          BrowserElement.new browser.div text: "Shopify Settings"
+          ElementWrapper.new browser.div text: "Shopify Settings"
         end
 
         def present?
@@ -18,7 +18,7 @@ module Stamps
       class Shopify < Browser::Modal
 
         def window_title
-          BrowserElement.new(browser.div text: "Connect your Shopify Store")
+          ElementWrapper.new(browser.div text: "Connect your Shopify Store")
         end
 
         def present?
@@ -26,15 +26,15 @@ module Stamps
         end
 
         def shopify_domain
-          BrowserTextBox.new (browser.text_fields(css: "input[name^=textfield-][name$=-inputEl]").last)
+          TextBoxElement.new (browser.text_fields(css: "input[name^=textfield-][name$=-inputEl]").last)
         end
 
         def connect_button
-          BrowserElement.new browser.span(text: "Connect")
+          ElementWrapper.new browser.span(text: "Connect")
         end
 
         def connect
-          button = BrowserElement.new browser.span(text: "Connect")
+          button = ElementWrapper.new browser.span(text: "Connect")
           settings = ShopifySettings.new param
           shopify = ShopifyPage.new param
           importing_order = Orders::Stores::ImportingOrdersModal.new param
@@ -138,7 +138,7 @@ module Stamps
         end
 
         def reconnect
-          button = BrowserElement.new browser.span(text: "Connect")
+          button = ElementWrapper.new browser.span(text: "Connect")
           manage_stores = ManageStores.new param
           importing_order = Orders::Stores::ImportingOrdersModal.new param
 
@@ -238,7 +238,7 @@ module Stamps
       class ModifyShopifyStore < Shopify
 
         def window_title
-          BrowserElement.new(browser.div text: "Modify your Shopify Store Connection")
+          ElementWrapper.new(browser.div text: "Modify your Shopify Store Connection")
         end
 
         def present?
@@ -256,15 +256,15 @@ module Stamps
         end
 
         def username
-          BrowserTextBox.new browser.text_field(id: 'login-input')
+          TextBoxElement.new browser.text_field(id: 'login-input')
         end
 
         def password
-          BrowserTextBox.new browser.text_field(id: 'password')
+          TextBoxElement.new browser.text_field(id: 'password')
         end
 
         def sign_in
-          button = BrowserElement.new browser.text_field(css: "input[value='Log in']")
+          button = ElementWrapper.new browser.text_field(css: "input[value='Log in']")
           settings_page = ShopifySettings.new param
 
           10.times do

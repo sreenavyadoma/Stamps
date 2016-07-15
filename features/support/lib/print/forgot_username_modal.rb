@@ -2,7 +2,7 @@ module Stamps
   module Print
     class ForgotUsernameModal < Browser::Modal
       def window_x_button
-        BrowserElement.new (browser.imgs css: "img[class*='x-tool-close']")[0]
+        ElementWrapper.new (browser.imgs css: "img[class*='x-tool-close']")[0]
       end
 
       def close_window
@@ -30,17 +30,17 @@ module Stamps
       end
 
       def email
-        BrowserTextBox.new (browser.inputs css: "input[class*='x-form-field x-form-text']").last
+        TextBoxElement.new (browser.inputs css: "input[class*='x-form-field x-form-text']").last
       end
 
       def continue
-        button = BrowserElement.new (browser.as css: "a[class*=app-modal-button-primary]").last
+        button = ElementWrapper.new (browser.as css: "a[class*=app-modal-button-primary]").last
         button.click
         sleep(2)
       end
 
       def ok
-        button = BrowserElement.new browser.span css: "span[id*=sdc-undefinedwindow-okbtn-btnIconEl]"
+        button = ElementWrapper.new browser.span css: "span[id*=sdc-undefinedwindow-okbtn-btnIconEl]"
         button.click
         sleep(2)
 

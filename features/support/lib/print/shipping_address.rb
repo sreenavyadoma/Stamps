@@ -16,7 +16,7 @@ module Stamps
         end
 
         def window_title
-          BrowserElement.new (browser.span text: "Manage Shipping Addresses")
+          ElementWrapper.new (browser.span text: "Manage Shipping Addresses")
         end
 
       end

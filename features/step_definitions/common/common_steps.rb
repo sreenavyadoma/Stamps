@@ -3,7 +3,7 @@ Then /^Teardown$/ do
   test_helper.teardown
 end
 
-Given /^I launched (?:|the default )browser(?: (\w+)|)$/ do |selection|
+Given /^I launch(?:|ed) (?:|browser)(?:| (\w+))(?:|the default browser)$/ do |selection|
   logger.info "I launched the default browser #{selection}"
   ENV['BROWSER'] = selection unless selection.nil?
   test_helper.setup

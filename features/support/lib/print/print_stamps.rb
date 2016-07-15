@@ -10,30 +10,30 @@ module Stamps
             case serial_prefix
 
               when 'A'
-                image = BrowserElement.new browser.div css: "div[style*='traditional-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='traditional-bk.gif']"
               when 'B'
-                image = BrowserElement.new browser.div css: "div[style*='bseries-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='bseries-bk.gif']"
               when 'C'
-                image = BrowserElement.new browser.div css: "div[style*='standard-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='standard-bk.gif']"
               when 'K'
-                image = BrowserElement.new browser.div css: "div[style*='themed-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='themed-bk.gif']"
               when 'M'
-                image = BrowserElement.new browser.div css: "div[style*='landscape-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='landscape-bk.gif']"
               when 'P'
-                image = BrowserElement.new browser.div css: "div[style*='portrait-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='portrait-bk.gif']"
               when 'R'
-                image = BrowserElement.new browser.div css: "div[style*='return-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='return-bk.gif']"
               when 'V'
-                image = BrowserElement.new browser.div css: "div[style*='standard-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='standard-bk.gif']"
               when 'W'
-                image = BrowserElement.new browser.div css: "div[style*='PromoPaper20-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='PromoPaper20-bk.gif']"
               when 'L'
-                image = BrowserElement.new browser.div css: "div[style*='landscape-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='landscape-bk.gif']"
               when 'S'
-                image = BrowserElement.new browser.div css: "div[style*='sordSeries-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='sordSeries-bk.gif']"
               else
                 logger.info "Invalid Serial Number #{serial_prefix}"
-                image = BrowserElement.new browser.div css: "div[style*='traditional-bk.gif']"
+                image = ElementWrapper.new browser.div css: "div[style*='traditional-bk.gif']"
             end
 
           end
@@ -47,11 +47,11 @@ module Stamps
             verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
             verify_field = verify_fields[8]
 
-            Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+            Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
           end
 
           def reference_number
-            BrowserTextBox.new browser.text_field name: "referenceNumber"
+            TextBoxElement.new browser.text_field name: "referenceNumber"
           end
 
           def cost_code
@@ -78,11 +78,11 @@ module Stamps
 
         class  SpecifyPostageService < Browser::Modal
           def text_box
-            BrowserTextBox.new browser.text_field name: "nsService"
+            TextBoxElement.new browser.text_field name: "nsService"
           end
 
           def drop_down
-            BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[6]
+            ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[6]
           end
 
           def select selection
@@ -90,9 +90,9 @@ module Stamps
             box = text_box
             button = drop_down
             if selection == "Media Mail (2 - 3 Days)"
-              selection_label = BrowserElement.new browser.div css: "div[data-qtip*='Media Mail (2 - 9 Days)']"
+              selection_label = ElementWrapper.new browser.div css: "div[data-qtip*='Media Mail (2 - 9 Days)']"
             else
-              selection_label = BrowserElement.new browser.div css: "div[data-qtip*='#{selection}']"
+              selection_label = ElementWrapper.new browser.div css: "div[data-qtip*='#{selection}']"
             end
             10.times {
               begin
@@ -115,7 +115,7 @@ module Stamps
         end
 
         def serial
-          BrowserTextBox.new browser.text_field id: "sdc-mainpanel-nsserialtextfield-inputEl"
+          TextBoxElement.new browser.text_field id: "sdc-mainpanel-nsserialtextfield-inputEl"
         end
 
         def calculate_postage_service
@@ -127,13 +127,13 @@ module Stamps
         end
 
         def calculate_postage_amount
-          checkbox = BrowserCheckbox.new (browser.text_field id: "sdc-mainpanel-calculatepostageradio-inputEl"), (browser.table id: "sdc-mainpanel-calculatepostageradio"), "class", "checked"
+          checkbox = CheckboxElement.new (browser.text_field id: "sdc-mainpanel-calculatepostageradio-inputEl"), (browser.table id: "sdc-mainpanel-calculatepostageradio"), "class", "checked"
           checkbox.check
           CalculatePostageAmount.new param
         end
 
         def specify_postage_amount
-          checkbox = BrowserCheckbox.new (browser.text_field id: "sdc-mainpanel-specifypostageradio-inputEl"), (browser.table id: "sdc-mainpanel-specifypostageradio"), "class", "checked"
+          checkbox = CheckboxElement.new (browser.text_field id: "sdc-mainpanel-specifypostageradio-inputEl"), (browser.table id: "sdc-mainpanel-specifypostageradio"), "class", "checked"
           checkbox.check
           SpecifyPostageAmount.new param
         end

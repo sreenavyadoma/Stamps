@@ -26,7 +26,7 @@ Feature: PAM page
     Then PAM: AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM: AppCap Overrides: Submit
 
-    Then Orders: Load Sign-in page
+    Then Orders: Visit Sign-in page
     Then Orders: New User Sign-in as random/pass111
     Then Pause for 2 seconds
     Then Toolbar: Add
@@ -36,5 +36,5 @@ Feature: PAM page
     Then Settings:  Save
     Then Pause for 1 second
     Then Sign out
-    Then WebReg:  Send username to standard out
+    Then Registration Profile:  Send username to standard out
     Then Pause for 1 second

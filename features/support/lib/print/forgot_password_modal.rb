@@ -2,7 +2,7 @@ module Stamps
   module Print
     class ForgotPasswordModal < Browser::Modal
       def window_x_button
-        BrowserElement.new (browser.imgs css: "img[class*='x-tool-close']")[0]
+        ElementWrapper.new (browser.imgs css: "img[class*='x-tool-close']")[0]
       end
 
       def close_window

@@ -6,7 +6,7 @@ module Stamps
       class ShippingLabelFormView < Print::Postage::PrintPostageObject
 
         def preview_image
-          image = BrowserElement.new browser.div css: "div[style*='Label_selection_and_view.gif']"
+          image = ElementWrapper.new browser.div css: "div[style*='Label_selection_and_view.gif']"
         end
 
         def hide_postage_value_checkbox
@@ -18,7 +18,7 @@ module Stamps
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[5]
 
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def print_receipt_checkbox
@@ -30,7 +30,7 @@ module Stamps
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[6]
 
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def print_reference_number_checkbox
@@ -42,11 +42,11 @@ module Stamps
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[7]
 
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def reference_number
-          BrowserTextBox.new browser.text_field name: "referenceNumber"
+          TextBoxElement.new browser.text_field name: "referenceNumber"
         end
 
         def cost_code

@@ -22,16 +22,12 @@ require_relative 'lib/core/stamps'
 require_relative 'lib/core/stamps_logger'
 
 # ParameterHelper module
-require_relative 'lib/orders/orders_helper'
 require_relative 'lib/orders/fields'
 require_relative 'lib/print/print_postage_object'
-require_relative 'lib/webreg/webreg_helper'
-require_relative 'lib/pam/pam_helper'
 require_relative 'lib/windows/print_window'
 require_relative 'lib/orders/store_management'
 require_relative 'lib/orders/general_settings'
 require_relative 'lib/windows/open_file'
-require_relative 'lib/stores/stores_helper'
 
 #require 'atomic'
 #require 'thread'

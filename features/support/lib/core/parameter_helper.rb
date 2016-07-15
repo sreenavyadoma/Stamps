@@ -164,7 +164,12 @@ module Stamps
       end
 
       def rand_username
-        "#{('a'..'z').to_a.sample}#{Array.new(rand(6..11)){[*'0'..'9', *'a'..'z'].sample}.join}"
+        user_name = "#{ENV['URL']}#{('a'..'z').to_a.sample}#{Array.new(rand(6..11)){[*'0'..'9', *'a'..'z'].sample}.join}"
+        if user_name.length > 14
+          user_name[0..14]
+        else
+          user_name
+        end
       end
 
       def random_phone

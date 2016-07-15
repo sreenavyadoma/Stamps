@@ -10,12 +10,12 @@ module Stamps
       end
 
       def message
-        box = BrowserTextBox.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+        box = TextBoxElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         box.text
       end
 
       def ok
-        button = BrowserElement.new (browser.spans(text: "OK").last)
+        button = ElementWrapper.new (browser.spans(text: "OK").last)
         5.times do
           button.safe_click
           break unless button.present?
@@ -33,12 +33,12 @@ module Stamps
       end
 
       def text_box
-        BrowserTextBox.new browser.text_field(id: "files-inputEl")
+        TextBoxElement.new browser.text_field(id: "files-inputEl")
       end
 
       def import
         success = SuccessModal.new param
-        button = BrowserElement.new browser.span(text: "Import")
+        button = ElementWrapper.new browser.span(text: "Import")
         server_error = Orders::Stores::ServerError.new param
         4.times do
           button.safe_click
@@ -55,7 +55,7 @@ module Stamps
       end
 
       def cancel
-        button = BrowserElement.new browser.span(text: "Cancel")
+        button = ElementWrapper.new browser.span(text: "Cancel")
         5.times do
           button.safe_click
           button.safe_click
@@ -66,7 +66,7 @@ module Stamps
       end
 
       def select_csv_file
-        button = BrowserElement.new browser.text_field(id: "files-button-fileInputEl")
+        button = ElementWrapper.new browser.text_field(id: "files-button-fileInputEl")
         open_file = Windows::OpenFile.new
         10.times do
           button.safe_click

@@ -34,7 +34,7 @@ module Stamps
         end
 
         def close
-          button = BrowserElement.new browser.img(css: 'img[class*=x-tool-close]')
+          button = ElementWrapper.new browser.img(css: 'img[class*=x-tool-close]')
           5.times do
             button.safe_click
             break unless button.present?
@@ -46,7 +46,7 @@ module Stamps
         end
 
         def continue
-          button = BrowserElement.new (browser.span text: "Continue")
+          button = ElementWrapper.new (browser.span text: "Continue")
           10.times{
             button.safe_click
             break unless button.present?
@@ -56,17 +56,17 @@ module Stamps
 
       class SignInPage < Browser::Modal
         def username
-          BrowserTextBox.new browser.text_field Orders::Locators::SignIn::username
+          TextBoxElement.new browser.text_field Orders::Locators::SignIn::username
         end
 
         def password
-          BrowserTextBox.new browser.text_field Orders::Locators::SignIn::password
+          TextBoxElement.new browser.text_field Orders::Locators::SignIn::password
         end
 
         def sign_in_button
           button = browser.button Orders::Locators::SignIn::sign_in
           input = browser.text_field Orders::Locators::SignIn::sign_in
-          BrowserElement.new (button.present?)?button:input
+          ElementWrapper.new (button.present?)?button:input
         end
 
         def remember_my_username
@@ -84,7 +84,7 @@ module Stamps
 
           30.times do
             username_textbox.wait_until_present
-            username_textbox.set_until usr
+            username_textbox.set usr
             password_textbox.set pw
             button.safe_send_keys :enter
             button.safe_send_keys :enter

@@ -6,17 +6,17 @@ module Stamps
 
         class PostageCountry < Browser::Modal
           def drop_down
-            BrowserElement.new (browser.divs css: "div[class*=x-form-trigger]")[2]
+            ElementWrapper.new (browser.divs css: "div[class*=x-form-trigger]")[2]
           end
 
           def text_box
-            BrowserTextBox.new (browser.text_field name: "mailToCountry")
+            TextBoxElement.new (browser.text_field name: "mailToCountry")
           end
 
           def select selection
             box = text_box
             button = drop_down
-            selection_label = BrowserElement.new browser.div text: selection
+            selection_label = ElementWrapper.new browser.div text: selection
             5.times {
               begin
                 break if box.text.include? selection
@@ -33,7 +33,7 @@ module Stamps
         end
 
         def text_area
-          BrowserTextBox.new (browser.text_field id: "sdc-mainpanel-shiptotextarea-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-mainpanel-shiptotextarea-inputEl")
         end
 
         def country
@@ -54,35 +54,35 @@ module Stamps
         end
 
         def name
-          BrowserTextBox.new (browser.text_field id: "sdc-intlform-shiptonamefield-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptonamefield-inputEl")
         end
 
         def company
-          BrowserTextBox.new (browser.text_field id: "sdc-intlform-shiptocompanyfield-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptocompanyfield-inputEl")
         end
 
         def address_1
-          BrowserTextBox.new (browser.text_field id: "sdc-intlform-shiptoaddress1field-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress1field-inputEl")
         end
 
         def address_2
-          BrowserTextBox.new (browser.text_field id: "sdc-intlform-shiptoaddress2field-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress2field-inputEl")
         end
 
         def city
-          BrowserTextBox.new (browser.text_field id: "sdc-intlform-shiptocityfield-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptocityfield-inputEl")
         end
 
         def province
-          BrowserTextBox.new (browser.text_field id: "sdc-intlform-shiptoprovincefield-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoprovincefield-inputEl")
         end
 
         def postal_code
-          BrowserTextBox.new (browser.text_field id: "sdc-intlform-shiptopostcodefield-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptopostcodefield-inputEl")
         end
 
         def phone
-          BrowserTextBox.new (browser.text_field id: "sdc-intlform-shiptophonefield-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptophonefield-inputEl")
         end
 
         def contacts
@@ -93,17 +93,17 @@ module Stamps
       class PrintOn < Browser::Modal
 
         def drop_down
-          BrowserElement.new ((browser.divs (Print::Locators::FormBody.print_on_drop_down_divs))[0])
+          ElementWrapper.new ((browser.divs (Print::Locators::FormBody.print_on_drop_down_divs))[0])
         end
 
         def text_box
-          BrowserTextBox.new (browser.text_field Print::Locators::FormBody.print_on_text_field)
+          TextBoxElement.new (browser.text_field Print::Locators::FormBody.print_on_text_field)
         end
 
         def select selection
           box = text_box
           button = drop_down
-          selection_label = BrowserElement.new browser.div text: selection
+          selection_label = ElementWrapper.new browser.div text: selection
           5.times {
             begin
               button.safe_click unless selection_label.present?
@@ -117,8 +117,8 @@ module Stamps
         end
 
         def tooltip selection
-          drop_down = BrowserElement.new (browser.divs css: "div[class*=x-form-trigger]")[0]
-          selection_field = BrowserElement.new browser.div text: selection
+          drop_down = ElementWrapper.new (browser.divs css: "div[class*=x-form-trigger]")[0]
+          selection_field = ElementWrapper.new browser.div text: selection
 
           10.times {
             drop_down.safe_click unless selection_field.present?
@@ -138,7 +138,7 @@ module Stamps
       class Weight < Browser::Modal
         class Pounds < Browser::Modal
           def text_box
-            BrowserTextBox.new (browser.text_field id: 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
+            TextBoxElement.new (browser.text_field id: 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
           end
 
           def set value
@@ -160,14 +160,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
+            button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
+            button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
             value.to_i.times do
               button.safe_click
             end
@@ -176,7 +176,7 @@ module Stamps
 
         class Ounces < Browser::Modal
           def text_box
-            BrowserTextBox.new (browser.text_field id: 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
+            TextBoxElement.new (browser.text_field id: 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
           end
 
           def set value
@@ -198,14 +198,14 @@ module Stamps
           end
 
           def increment value
-            button = BrowserElement.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
+            button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
+            button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
             value.to_i.times do
               button.safe_click
             end
@@ -222,13 +222,13 @@ module Stamps
             checkbox_field = checkbox_element
             verify_field = browser.table id: "sdc-mainpanel-autoweightcheckbox"
 
-            Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+            Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
 
           end
         end
 
         def weigh_button
-          BrowserElement.new browser.span id: "sdc-mainpanel-scalebtn-btnIconEl"
+          ElementWrapper.new browser.span id: "sdc-mainpanel-scalebtn-btnIconEl"
         end
 
         def auto_weigh
@@ -247,11 +247,11 @@ module Stamps
       class Service < Browser::Modal
 
         def text_box
-          BrowserTextBox.new browser.text_field name: "servicePackage"
+          TextBoxElement.new browser.text_field name: "servicePackage"
         end
 
         def drop_down
-          BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[5]
+          ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[5]
         end
 
         def select selection
@@ -259,9 +259,9 @@ module Stamps
           box = text_box
           button = drop_down
           if selection == "First-Class Mail Letter"
-            selection_label = BrowserElement.new browser.tr css: "tr[data-qtip*='First-Class Mail Envelope']"
+            selection_label = ElementWrapper.new browser.tr css: "tr[data-qtip*='First-Class Mail Envelope']"
           else
-            selection_label = BrowserElement.new browser.tr css: "tr[data-qtip*='#{selection}']"
+            selection_label = ElementWrapper.new browser.tr css: "tr[data-qtip*='#{selection}']"
           end
           10.times {
             begin
@@ -281,7 +281,7 @@ module Stamps
 
         def cost selection
           button = drop_down
-          cost_label = BrowserElement.new browser.td css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"
+          cost_label = ElementWrapper.new browser.td css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"
           10.times {
             begin
               button.safe_click unless cost_label.present?
@@ -299,7 +299,7 @@ module Stamps
 
         def tooltip selection
           button = drop_down
-          selection_label = BrowserElement.new browser.tr css: "tr[data-qtip*='#{selection}']"
+          selection_label = ElementWrapper.new browser.tr css: "tr[data-qtip*='#{selection}']"
           5.times {
             begin
               button.safe_click unless selection_label.present?
@@ -316,7 +316,7 @@ module Stamps
         end
 
         def price
-          BrowserElement.new browser.label id: "sdc-mainpanel-servicepricelabel"
+          ElementWrapper.new browser.label id: "sdc-mainpanel-servicepricelabel"
         end
 
       end
@@ -324,7 +324,7 @@ module Stamps
       class ShipFrom < Browser::Modal
 
         def drop_down
-          BrowserElement.new (browser.div css: "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
+          ElementWrapper.new (browser.div css: "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
         end
 
         def manage_ship_from_address_field
@@ -344,7 +344,7 @@ module Stamps
         end
 
         def text_box
-          BrowserTextBox.new browser.text_field id: "sdc-mainpanel-shipfromdroplist-inputEl"
+          TextBoxElement.new browser.text_field id: "sdc-mainpanel-shipfromdroplist-inputEl"
         end
 
         def select selection
@@ -366,7 +366,7 @@ module Stamps
             ship_from_selection_field = browser.div text: "#{selection}"
           end
 
-          selection_label = BrowserElement.new ship_from_selection_field
+          selection_label = ElementWrapper.new ship_from_selection_field
           logger.info "Selection Text: #{selection_label.text}"
 
           if selection.downcase.include? "manage shipping"
@@ -399,7 +399,7 @@ module Stamps
 
       class StampAmount < Browser::Modal
         def text_box
-          BrowserTextBox.new (browser.text_field name: "stampAmount"), "data-errorqtip"
+          TextBoxElement.new (browser.text_field name: "stampAmount"), "data-errorqtip"
         end
 
         def set value
@@ -409,14 +409,14 @@ module Stamps
         end
 
         def increment value
-          button = BrowserElement.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=up]"
+          button = ElementWrapper.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=up]"
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = BrowserElement.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=down]"
+          button = ElementWrapper.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=down]"
           value.to_i.times do
             button.safe_click
           end
@@ -434,12 +434,12 @@ module Stamps
           checkbox_field = checkbox_element
           verify_field = browser.table id: "sdc-mainpanel-emailcheckbox"
 
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
 
         end
 
         def text_box
-          BrowserTextBox.new (browser.text_field id: "sdc-mainpanel-emailtextfield-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-mainpanel-emailtextfield-inputEl")
         end
 
       end
@@ -447,18 +447,18 @@ module Stamps
       class Tracking < Browser::Modal
 
         def text_box
-          BrowserTextBox.new browser.text_field name: "tracking"
+          TextBoxElement.new browser.text_field name: "tracking"
         end
 
         def drop_down
-          BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[7]
+          ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[7]
         end
 
         def select selection
           logger.info "Select Tracking #{selection}"
           box = text_box
           button = drop_down
-          selection_label = BrowserElement.new browser.div text: selection
+          selection_label = ElementWrapper.new browser.div text: selection
           10.times {
             begin
               button.safe_click #unless selection_label.present?
@@ -476,7 +476,7 @@ module Stamps
         end
 
         def price
-          BrowserElement.new browser.label id: "sdc-mainpanel-trackingpricelabel"
+          ElementWrapper.new browser.label id: "sdc-mainpanel-trackingpricelabel"
         end
       end
 
@@ -486,7 +486,7 @@ module Stamps
         end
 
         def text_box
-          BrowserTextBox.new browser.text_field id: "sdc-mainpanel-insureamtnumberfield-inputEl"
+          TextBoxElement.new browser.text_field id: "sdc-mainpanel-insureamtnumberfield-inputEl"
         end
 
         def increment value
@@ -498,14 +498,14 @@ module Stamps
         end
 
         def price
-          BrowserElement.new browser.label id: "sdc-mainpanel-insurancepricelabel"
+          ElementWrapper.new browser.label id: "sdc-mainpanel-insurancepricelabel"
         end
       end
 
       class ShipDate < Browser::Modal
 
         def text_box
-          BrowserTextBox.new (browser.text_field id: "sdc-mainpanel-shipdatedatefield-inputEl")
+          TextBoxElement.new (browser.text_field id: "sdc-mainpanel-shipdatedatefield-inputEl")
         end
 
         def date_picker
@@ -517,7 +517,7 @@ module Stamps
       class Contacts < Browser::Modal
 
         def link
-          BrowserElement.new browser.a css: "[class*=sdc-mainpanel-shiptolinkbtn]"
+          ElementWrapper.new browser.a css: "[class*=sdc-mainpanel-shiptolinkbtn]"
         end
 
         def open
@@ -534,12 +534,12 @@ module Stamps
 
       class CostCode  < Browser::Modal
         def text_box
-          BrowserTextBox.new browser.text_field name: "costCodeId"
+          TextBoxElement.new browser.text_field name: "costCodeId"
         end
 
         def drop_down
           buttons = browser.divs css: "div[class*=x-form-arrow-trigger]"
-          button = BrowserElement.new (buttons.last)
+          button = ElementWrapper.new (buttons.last)
         end
 
         def select selection
@@ -547,7 +547,7 @@ module Stamps
 
           box = text_box
           button = drop_down
-          selection_label = BrowserElement.new browser.div text: selection
+          selection_label = ElementWrapper.new browser.div text: selection
           sleep 1
           10.times {
             begin
@@ -569,7 +569,7 @@ module Stamps
 
       class Quantity < Browser::Modal
         def text_box
-          BrowserTextBox.new (browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
+          TextBoxElement.new (browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
         end
 
         def set value
@@ -579,14 +579,14 @@ module Stamps
         end
 
         def increment value
-          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[7]
+          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[7]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[7]
+          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[7]
           value.to_i.times do
             button.safe_click
           end

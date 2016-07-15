@@ -2,7 +2,7 @@
 Feature: Print two labels on one sheet
 
   Background:
-    Given I am signed in to Orders using ff
+    Given I launched browser ff
 
   @print_two_up_multiple_domestic_labels
   Scenario: User Prints multiple Domestic labels

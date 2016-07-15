@@ -17,12 +17,12 @@ module Stamps
         end
 
         def save
-          button = BrowserElement.new browser.span id: "sdc-extraservices-savebtn-btnIconEl"
+          button = ElementWrapper.new browser.span id: "sdc-extraservices-savebtn-btnIconEl"
           button.click
         end
 
         def window_title
-          BrowserElement.new (browser.span text: "Extra Services")
+          ElementWrapper.new (browser.span text: "Extra Services")
         end
 
         def security
@@ -78,7 +78,7 @@ module Stamps
 
       class SpecialContentsModal < Browser::Modal
         def window_x_button
-          BrowserElement.new (browser.imgs css: "img[class*='x-tool-close']")[1]
+          ElementWrapper.new (browser.imgs css: "img[class*='x-tool-close']")[1]
         end
 
         def close_window
@@ -106,7 +106,7 @@ module Stamps
         end
 
         def save
-          button = BrowserElement.new browser.span css: "span[id*=agreebtn-btnIconEl]"
+          button = ElementWrapper.new browser.span css: "span[id*=agreebtn-btnIconEl]"
           button.click
           sleep(2)
         end
@@ -115,18 +115,18 @@ module Stamps
 
       class Security < Browser::Modal
         def text_box
-          BrowserTextBox.new browser.text_field name: "security"
+          TextBoxElement.new browser.text_field name: "security"
         end
 
         def drop_down
-          BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[9]
+          ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[9]
         end
 
         def select selection
           logger.info "Select Security #{selection}"
           box = text_box
           button = drop_down
-          selection_label = BrowserElement.new browser.div text: selection
+          selection_label = ElementWrapper.new browser.div text: selection
           10.times {
             begin
               button.safe_click #unless selection_label.present?
@@ -151,7 +151,7 @@ module Stamps
 
       class SecurityValue < Browser::Modal
         def text_box
-          BrowserTextBox.new browser.text_field id: 'sdc-extraserviceswin-valuenumberfield-inputEl'
+          TextBoxElement.new browser.text_field id: 'sdc-extraserviceswin-valuenumberfield-inputEl'
         end
 
         def set value
@@ -162,14 +162,14 @@ module Stamps
         end
 
         def increment value
-          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[8]
+          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[8]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[8]
+          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[8]
           value.to_i.times do
             button.safe_click
           end
@@ -180,15 +180,15 @@ module Stamps
 
       class COD < Browser::Modal
         def text_box
-          BrowserTextBox.new browser.text_field id: 'sdc-extraserviceswin-codnumberfield-inputEl'
+          TextBoxElement.new browser.text_field id: 'sdc-extraserviceswin-codnumberfield-inputEl'
         end
 
         def form_3816
-          BrowserElement.new browser.span css: "span[id*=sdc-extraserviceswin-codformbtn-btnIconEl]"
+          ElementWrapper.new browser.span css: "span[id*=sdc-extraserviceswin-codformbtn-btnIconEl]"
         end
 
         def label
-          BrowserElement.new browser.label text: 'COD:'
+          ElementWrapper.new browser.label text: 'COD:'
         end
 
         def set value
@@ -210,14 +210,14 @@ module Stamps
         end
 
         def increment value
-          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[9]
+          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[9]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[9]
+          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[9]
           value.to_i.times do
             button.safe_click
           end
@@ -227,18 +227,18 @@ module Stamps
 
       class Handling < Browser::Modal
         def text_box
-          BrowserTextBox.new browser.text_field name: "contents"
+          TextBoxElement.new browser.text_field name: "contents"
         end
 
         def drop_down
-          BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[11]
+          ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[11]
         end
 
         def select selection
           logger.info "Select Handling: #{selection}"
           box = text_box
           button = drop_down
-          selection_label = BrowserElement.new browser.div text: selection
+          selection_label = ElementWrapper.new browser.div text: selection
           10.times {
             begin
               button.safe_click #unless selection_label.present?
@@ -262,7 +262,7 @@ module Stamps
         def checkbox
           checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-rrcheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rrcheckbox]"
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def price
@@ -275,7 +275,7 @@ module Stamps
         def checkbox
           checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-rrecheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rrecheckbox]"
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def price
@@ -288,7 +288,7 @@ module Stamps
         def checkbox
           checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-rdcheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rdcheckbox]"
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def price
@@ -301,7 +301,7 @@ module Stamps
         def checkbox
           checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-nndcheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-nndcheckbox]"
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def price
@@ -314,7 +314,7 @@ module Stamps
         def checkbox
           checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-shcheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-shcheckbox]"
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def price
@@ -326,7 +326,7 @@ module Stamps
         def checkbox
           checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-rrmcheckbox-inputEl]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rrmcheckbox]"
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def price
@@ -338,7 +338,7 @@ module Stamps
         def checkbox
           checkbox_field = browser.text_field css: "input[id^=sdc-extraservices-nreccheckbox]"
           verify_field = browser.table css: "table[id^=sdc-extraserviceswin-notrectangularcheckbox]"
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def price

@@ -331,27 +331,23 @@ module Stamps
     end
 
     class TermsAndConditions < Browser::Modal
-      def must_agree_label
-        BrowserElement.new browser.span(text: "You must agree to the Terms & Conditions to proceed.")
+      attr_reader :checkbox
+      def initialize param
+        super param
+        @checkbox ||= browser.checkbox id: "termsConditions"
       end
 
       def check
-        agree_label = must_agree_label
-        checkbox_field = BrowserElement.new browser.text_field(id: "termsConditions")
-        10.times do
-          checkbox_field.safe_click
-          sleep 1
-          return unless agree_label.present?
+        5.times do
+          checkbox.set
+          break if checkbox.set?
         end
       end
 
       def uncheck
-        agree_label = must_agree_label
-        checkbox_field = BrowserElement.new browser.text_field(id: "termsConditions")
-        10.times do
-          checkbox_field.safe_click
-          sleep 1
-          return if agree_label.present?
+        5.times do
+          checkbox.clear
+          break unless checkbox.set?
         end
       end
     end
@@ -366,11 +362,11 @@ module Stamps
       end
 
       def user_id
-        BrowserTextBox.new browser.text_field(id: "newUsername")
+        TextBoxElement.new browser.text_field(id: "newUsername")
       end
 
       def continue
-        BrowserElement.new browser.button(id: "btnUserNameTakenContinue")
+        ElementWrapper.new browser.button(id: "btnUserNameTakenContinue")
       end
     end
 
@@ -387,7 +383,54 @@ module Stamps
       end
     end
 
+    class MembershipError < Browser::Modal
+      attr_reader :title, :top_message, :error_code, :error_description
+
+      def initialize param
+        super param
+        @title ||= ElementWrapper.new browser.h3 text: 'An Error Occurred'
+        @top_message ||= ElementWrapper.new browser.p id: 'topMessage'
+        @error_code ||= ElementWrapper.new browser.p id: 'errorCode'
+        @error_description ||= ElementWrapper.new browser.p id: 'errorDescription'
+      end
+
+      def present?
+        title.present?
+      end
+    end
+
     class Membership < Browser::Modal
+      attr_reader :first_name, :last_name, :company, :address, :city, :state, :zip, :phone, :ext, :card_holder_name,
+                  :card_number, :expiration_month, :expiration_year, :billing_same_as_mailing, :terms_and_conditions, :back,
+                  :submit_button, :supplies, :userid_taken, :download_page, :membership_error
+
+      def initialize param
+        super param
+        @first_name ||= TextBoxElement.new browser.text_field(id: "firstName")
+        @last_name ||= TextBoxElement.new browser.text_field(id: "lastName")
+        @company ||= TextBoxElement.new browser.text_field(id: "companyName")
+        @address ||= TextBoxElement.new browser.text_field(id: "street")
+        @city ||= TextBoxElement.new browser.text_field(id: "city")
+        @state ||= State.new param
+        @zip ||= TextBoxElement.new browser.text_field(id: "zip")
+        @phone ||= TextBoxElement.new browser.text_field(id: "phone")
+        @ext ||= TextBoxElement.new browser.text_field(id: "extension")
+        @card_holder_name ||= TextBoxElement.new browser.text_field(id: "ccName")
+        @card_number ||= TextBoxElement.new browser.text_field(id: "ccNumber")
+        @expiration_month ||= ExpirationMonth.new param
+        @expiration_year ||= ExpirationYear.new param
+        checkbox_field = browser.text_field id: "useMailingAddressForBilling"
+        @billing_same_as_mailing ||= Stamps::Browser::CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
+        @terms_and_conditions ||= TermsAndConditions.new param
+        @back ||= ElementWrapper.new browser.button(id: "prev")
+
+        @submit_button = ElementWrapper.new browser.button(text: "Submit")
+        @supplies = ChooseSupplies.new param
+        @userid_taken = UserIdTaken.new param
+        @download_page = DownloadPage.new param
+
+        @membership_error = MembershipError.new param
+      end
 
       def wait_until_present
         browser.text_field(id: "firstName").wait_until_present 6
@@ -402,83 +445,19 @@ module Stamps
         (browser.h1 text: "Please enter your mailing information").present?
       end
 
-      def first_name
-        BrowserTextBox.new browser.text_field(id: "firstName")
-      end
-
-      def last_name
-        BrowserTextBox.new browser.text_field(id: "lastName")
-      end
-
-      def company
-        BrowserTextBox.new browser.text_field(id: "companyName")
-      end
-
-      def address
-        BrowserTextBox.new browser.text_field(id: "street")
-      end
-
-      def city
-        BrowserTextBox.new browser.text_field(id: "city")
-      end
-
-      def state
-        State.new param
-      end
-
-      def zip
-        BrowserTextBox.new browser.text_field(id: "zip")
-      end
-
-      def phone
-        BrowserTextBox.new browser.text_field(id: "phone")
-      end
-
-      def ext
-        BrowserTextBox.new browser.text_field(id: "extension")
-      end
-
-      def card_holder_name
-        BrowserTextBox.new browser.text_field(id: "ccName")
-      end
-
-      def card_number
-        BrowserTextBox.new browser.text_field(id: "ccNumber")
-      end
-
-      def expiration_month
-        ExpirationMonth.new param
-      end
-
-      def expiration_year
-        ExpirationYear.new param
-      end
-
-      def billing_same_as_mailing
-        checkbox_field = browser.text_field id: "useMailingAddressForBilling"
-        Stamps::Browser::BrowserCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
-      end
-
-      def i_agree
-        TermsAndConditions.new param
-      end
-
-      def back
-        BrowserElement.new browser.button(id: "prev")
-      end
-
       def submit
-        button = BrowserElement.new browser.button(text: "Submit")
-        loading = BrowserElement.new browser.button(text: "Loading...")
-        supplies = ChooseSupplies.new param
-        userid_taken = UserIdTaken.new param
-        download_page = DownloadPage.new param
+        loading = ElementWrapper.new browser.button(text: "Loading...")
         20.times do
-          button.safe_click
+          submit_button.safe_click
           sleep 1
           return userid_taken if userid_taken.present?
           return supplies if supplies.present?
           return download_page if download_page.present?
+          if membership_error.present?
+            err_message = "#{membership_error.title.text}\n#{membership_error.top_message.text}\n#{membership_error.error_code.text}\n#{membership_error.error_description.text}"
+            logger.info err_message
+            raise err_message
+          end
         end
       end
     end

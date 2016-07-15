@@ -20,7 +20,7 @@ module Stamps
       end
 
       def place_order
-        button = BrowserElement.new browser.button(text: "Place Order")
+        button = ElementWrapper.new browser.button(text: "Place Order")
         welcome_page = NewAccountWelcomePage.new param
         10.times do
           button.safe_click

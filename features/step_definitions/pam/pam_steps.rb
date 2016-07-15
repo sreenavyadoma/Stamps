@@ -20,7 +20,6 @@ end
 
 Then /^PAM: Load PAM Page$/ do
   logger.info "PAM: Load PAM Page"
-  step "I launched the default browser" if browser.nil?
   pam.visit
 end
 
@@ -39,14 +38,13 @@ Then /^PAM: Customer Search: Set username to (.*)$/ do |username|
     usr = username
   end
   logger.info "PAM: Customer Search: Set username to #{usr}"
-  @customer_search = pam.customer_search if @customer_search.nil?
-  @customer_search.username.set_until usr
+  
+  @customer_search.username.set usr
   sleep 1
 end
 
 Then /^PAM: Customer Search: Set 5.2 or lower$/ do
   logger.info "PAM: Customer Search: Set 5.2 or lower"
-  @customer_search = pam.customer_search if @customer_search.nil?
   @customer_search.user_5_2_or_lower
   @customer_search.user_5_2_or_lower
 end
@@ -80,7 +78,7 @@ end
 Then /^PAM: Change Meter Limit: Set New Meter Limit to \$(\d+)$/ do |new_limit|
   logger.info "PAM: Change Meter Limit: Set New Meter Limit to #{new_limit}"
   if @pam_customer_profile_found
-    @change_meter_limit.new_meter_limit.set_until new_limit
+    @change_meter_limit.new_meter_limit.set new_limit
   else
     logger.info "PAM:  Customer not found!"
   end
@@ -127,7 +125,7 @@ Then /^PAM: ACH Purchase: Set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
   logger.info "PAM: ACH Purchase: Set Amount to $#{dollars}.#{cents}"
   if @pam_customer_profile_found
     dollar_amount = @ach_credit.dollar_amount
-    dollar_amount.set_until dollars
+    dollar_amount.set dollars
     dollar_amount.safe_click
     dollar_amount.safe_click
     dollar_amount.safe_click
@@ -136,13 +134,13 @@ Then /^PAM: ACH Purchase: Set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
     cents_amount.safe_click
     cents_amount.safe_click
     cents_amount.safe_click
-    cents_amount.set_until cents
+    cents_amount.set cents
 
     comments = @ach_credit.comments
     comments.safe_click
     comments.safe_click
     comments.safe_click
-    comments.set_until @username
+    comments.set @username
 
     @customer_profile = @ach_credit.submit.yes.ok
   else
@@ -345,7 +343,7 @@ Then /^PAM: AppCap Overrides: Submit$/ do
   end
 end
 
-Then /^WebReg:  Send username to standard out$/ do
+Then /^Registration Profile:  Send username to standard out$/ do
   logger.message " ############## NEW USER ID "
   logger.message " ############## #{@username}"
   logger.message " ############## #{@username}"

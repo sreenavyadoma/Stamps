@@ -11,7 +11,7 @@ module Stamps
         end
 
         def ok
-          button = BrowserElement.new browser.span(text: "OK")
+          button = ElementWrapper.new browser.span(text: "OK")
           20.times do
             button.safe_click
             break unless button.present?
@@ -36,7 +36,7 @@ module Stamps
         end
 
         def delete
-          button = BrowserElement.new delete_btn
+          button = ElementWrapper.new delete_btn
           5.times do
             break if button.present?
           end
@@ -49,7 +49,7 @@ module Stamps
         end
 
         def cancel
-          BrowserElement.new (browser.span text: "Cancel")
+          ElementWrapper.new (browser.span text: "Cancel")
         end
       end
 
@@ -66,7 +66,7 @@ module Stamps
               end
 
               def drop_down
-                BrowserElement.new text_box_field.parent.parent.divs[1]
+                ElementWrapper.new text_box_field.parent.parent.divs[1]
               end
 
               def text_box_field
@@ -74,12 +74,12 @@ module Stamps
               end
 
               def text_box
-                BrowserTextBox.new text_box_field
+                TextBoxElement.new text_box_field
               end
 
               def select service
                 logger.info "Select Shipping Service #{service}"
-                selection = BrowserElement.new (browser.trs(css: "tr[data-qtip*='#{service}']")[@index])
+                selection = ElementWrapper.new (browser.trs(css: "tr[data-qtip*='#{service}']")[@index])
                 box = text_box
                 dd = drop_down
 
@@ -109,11 +109,11 @@ module Stamps
 
             def requested_services
               text_field = browser.text_fields(name: "ServiceKey")[@index]
-              BrowserTextBox.new text_field
+              TextBoxElement.new text_field
             end
 
             def delete
-              BrowserElement.new (browser.spans css: "span[class*=sdc-icon-remove]")[@index]
+              ElementWrapper.new (browser.spans css: "span[class*=sdc-icon-remove]")[@index]
             end
 
             def shipping_Service
@@ -122,7 +122,7 @@ module Stamps
           end
 
           def add_new_service_mapping_btn
-            BrowserElement.new browser.span(text: "Add New Service Mapping")
+            ElementWrapper.new browser.span(text: "Add New Service Mapping")
           end
 
           def size
@@ -153,7 +153,7 @@ module Stamps
         end
 
         def save
-          button = BrowserElement.new (browser.span text: "Save")
+          button = ElementWrapper.new (browser.span text: "Save")
           server_error = Orders::Stores::ServerError.new param
           importing_order = Orders::Stores::ImportingOrdersModal.new param
 
@@ -181,14 +181,14 @@ module Stamps
         end
 
         def store_nickname
-          BrowserTextBox.new ((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
+          TextBoxElement.new ((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
         end
 
         def automatically_import_new_orders
           label = (browser.label text: "Automatically Import New Orders")
           checkbox_field = label.parent.text_box
           verify_field = label.parent.parent.parent
-          BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
       end
 
@@ -208,7 +208,7 @@ module Stamps
         end
 
         def close
-          button = BrowserElement.new ((browser.imgs css: "img[class*='x-tool-close']").last)
+          button = ElementWrapper.new ((browser.imgs css: "img[class*='x-tool-close']").last)
           button.safe_click
           sleep 1
           15.times do
@@ -222,11 +222,11 @@ module Stamps
         end
 
         def window_title
-          BrowserElement.new (browser.divs text: "Add your Store or Marketplace").last
+          ElementWrapper.new (browser.divs text: "Add your Store or Marketplace").last
         end
 
         def search_textbox
-          BrowserTextBox.new (browser.text_fields css: "input[placeholder='Search by Name']").last
+          TextBoxElement.new (browser.text_fields css: "input[placeholder='Search by Name']").last
         end
 
         def search search_str
@@ -234,7 +234,7 @@ module Stamps
         end
 
         def amazon_button
-          BrowserElement.new (browser.imgs css: "img[src*=amazon]").last
+          ElementWrapper.new (browser.imgs css: "img[src*=amazon]").last
         end
 
         def amazon
@@ -248,7 +248,7 @@ module Stamps
         end
 
         def volusion_button
-          BrowserElement.new (browser.imgs css: "img[src*=volusion]").last
+          ElementWrapper.new (browser.imgs css: "img[src*=volusion]").last
         end
 
         def volusion
@@ -263,7 +263,7 @@ module Stamps
         end
 
         def rakuten_button
-          BrowserElement.new (browser.imgs css: "img[src*='rakuten']").last
+          ElementWrapper.new (browser.imgs css: "img[src*='rakuten']").last
         end
 
         def rakuten
@@ -278,7 +278,7 @@ module Stamps
         end
 
         def etsy_button
-          BrowserElement.new (browser.imgs css: "img[src*='etsy']").last
+          ElementWrapper.new (browser.imgs css: "img[src*='etsy']").last
         end
 
         def etsy
@@ -293,7 +293,7 @@ module Stamps
         end
 
         def shopify_button
-          BrowserElement.new (browser.imgs css: "img[src*='shopify']").last
+          ElementWrapper.new (browser.imgs css: "img[src*='shopify']").last
         end
 
         def shopify
@@ -308,7 +308,7 @@ module Stamps
         end
 
         def three_d_cart_button
-          BrowserElement.new (browser.imgs css: "img[src*='3dcart']").last
+          ElementWrapper.new (browser.imgs css: "img[src*='3dcart']").last
         end
 
         def three_d_cart
@@ -323,7 +323,7 @@ module Stamps
         end
 
         def ebay_button
-          BrowserElement.new (browser.imgs css: "img[src*='ebay']").last
+          ElementWrapper.new (browser.imgs css: "img[src*='ebay']").last
         end
 
         def ebay
@@ -338,7 +338,7 @@ module Stamps
         end
 
         def yahoo_button
-          BrowserElement.new (browser.imgs css: "img[src*='yahoo']").last
+          ElementWrapper.new (browser.imgs css: "img[src*='yahoo']").last
         end
 
         def yahoo
@@ -353,7 +353,7 @@ module Stamps
         end
 
         def big_commerce_button
-          BrowserElement.new (browser.imgs css: "img[src*='bigcommerce']").last
+          ElementWrapper.new (browser.imgs css: "img[src*='bigcommerce']").last
         end
 
         def big_commerce
@@ -368,7 +368,7 @@ module Stamps
         end
 
         def paypal_button
-          BrowserElement.new (browser.imgs css: "img[src*='paypal']").last
+          ElementWrapper.new (browser.imgs css: "img[src*='paypal']").last
         end
 
         def paypal
@@ -392,7 +392,7 @@ module Stamps
           end
 
           def delete
-            BrowserElement.new (browser.spans(text: "Delete").last)
+            ElementWrapper.new (browser.spans(text: "Delete").last)
           end
 
           def delete_name name
@@ -402,8 +402,8 @@ module Stamps
           def delete_row row
             css = "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table:nth-child(#{row})>tbody>tr>td:nth-child(2)>div"
             grid_row_item = browser.div css: css
-            grid_row_focused_field = BrowserElement.new grid_row_item.parent
-            grid_row_field = BrowserElement.new grid_row_item
+            grid_row_focused_field = ElementWrapper.new grid_row_item.parent
+            grid_row_field = ElementWrapper.new grid_row_item
 
             del_btn = self.delete
             delete_modal = DeleteStoreModal.new param
@@ -431,13 +431,13 @@ module Stamps
               0.upto grid_size do |index|
                 row_to_delete = 0
                 begin
-                  row = BrowserElement.new tables[row_to_delete]
+                  row = ElementWrapper.new tables[row_to_delete]
                   grid_item_name = browser_helper.text row
                   logger.info "#{index} Delete Item - #{grid_item_name}"
 
                   if grid_item_name.include? "Manual Orders"
                     logger.info "#{index} Skipping #{grid_item_name}"
-                    row = BrowserElement.new tables[row_to_delete+1]
+                    row = ElementWrapper.new tables[row_to_delete+1]
                     grid_item_name = browser_helper.text row
                     logger.info "#{index} Delete Item - #{grid_item_name}"
                   end
@@ -474,7 +474,7 @@ module Stamps
                 checkbox_field = browser.divs(text: store_name).last
                 sleep 1
                 check_verify_field = checkbox_field.parent
-                checkbox = BrowserCheckbox.new checkbox_field, check_verify_field, "class", "focused"
+                checkbox = CheckboxElement.new checkbox_field, check_verify_field, "class", "focused"
                 checkbox.check
                 checkbox.check
                 checkbox.check
@@ -492,7 +492,7 @@ module Stamps
         end
 
         def close
-          button = BrowserElement.new browser.img(css: "div[id^=managestoreswindow-][id$=header-targetEl]>div>img")
+          button = ElementWrapper.new browser.img(css: "div[id^=managestoreswindow-][id$=header-targetEl]>div>img")
           5.times do
             button.safe_click
             return unless button.present?
@@ -500,7 +500,7 @@ module Stamps
         end
 
         def window_title
-          BrowserElement.new(browser.div text: "Manage Stores")
+          ElementWrapper.new(browser.div text: "Manage Stores")
         end
 
         def present?
@@ -508,7 +508,7 @@ module Stamps
         end
 
         def add_button
-          BrowserElement.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
+          ElementWrapper.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(1)>span>span>span[id$=btnInnerEl]")
         end
 
         def add
@@ -526,7 +526,7 @@ module Stamps
         end
 
         def edit
-          button = BrowserElement.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(2)>span>span>span[id$=btnInnerEl]")
+          button = ElementWrapper.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(2)>span>span>span[id$=btnInnerEl]")
           rakuten = RakutenSettings.new param
           amazon = AmazonSettings.new param
           volusion = VolusionSettings.new param
@@ -549,7 +549,7 @@ module Stamps
         end
 
         def reconnect
-          button = BrowserElement.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
+          button = ElementWrapper.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
           stop_test "No Store selected from Manage Store grid or Reconnect button is not present.  Check your test" unless button.present?
 
           server_error = Orders::Stores::ServerError.new param
@@ -594,7 +594,7 @@ module Stamps
         end
 
         def delete_item
-          button = BrowserElement.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(4)>span>span>span[id$=btnInnerEl]")
+          button = ElementWrapper.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(4)>span>span>span[id$=btnInnerEl]")
           delete_modal = DeleteStoreModal.new param
           10.times do
             button.safe_click

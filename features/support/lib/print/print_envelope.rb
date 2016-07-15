@@ -5,7 +5,7 @@ module Stamps
       class EnvelopeFormView < Print::Postage::PrintPostageObject
 
         def preview_image
-          image = BrowserElement.new browser.div id: "envelopePreview"
+          image = ElementWrapper.new browser.div id: "envelopePreview"
         end
 
         def include_return_address
@@ -13,7 +13,7 @@ module Stamps
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[2]
 
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def include_delivery_address
@@ -21,7 +21,7 @@ module Stamps
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[3]
 
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def include_postage
@@ -29,11 +29,11 @@ module Stamps
           verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
           verify_field = verify_fields[4]
 
-          Stamps::Browser::BrowserCheckbox.new checkbox_field, verify_field, "class", "checked"
+          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         end
 
         def reference_number
-          BrowserTextBox.new browser.text_field name: "referenceNumber"
+          TextBoxElement.new browser.text_field name: "referenceNumber"
         end
 
         def cost_code

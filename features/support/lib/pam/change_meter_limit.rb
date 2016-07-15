@@ -25,7 +25,7 @@ module Pam
     end
 
     def new_meter_limit
-      BrowserTextBox.new browser.text_field(name: "resetAmt")
+      TextBoxElement.new browser.text_field(name: "resetAmt")
     end
 
     def usps_approval
@@ -33,7 +33,7 @@ module Pam
     end
 
     def submit
-      button = Stamps::Browser::BrowserElement.new browser.text_field(name: "submit")
+      button = Stamps::Browser::ElementWrapper.new browser.text_field(name: "submit")
       change_success = ChangeMeterLimitSuccess.new param
       5.times do
         button.send_keys :enter
@@ -51,7 +51,7 @@ module Pam
 
     def ok
       profile = CustomerProfile.new param
-      button = BrowserElement.new browser.a(css: "a[href^=Profile]")
+      button = ElementWrapper.new browser.a(css: "a[href^=Profile]")
       5.times do
         button.safe_click
         sleep 1

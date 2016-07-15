@@ -7,7 +7,7 @@ module Stamps
         end
 
         def ok
-          button = BrowserElement.new ((browser.spans text: 'OK').last)
+          button = ElementWrapper.new ((browser.spans text: 'OK').last)
           sleep 2
           button.click_while_present
         end
@@ -16,7 +16,7 @@ module Stamps
       class ConfirmPurchase < Browser::Modal
 
         def exit
-          button = BrowserElement.new (browser.imgs class: "x-tool-img x-tool-close").last
+          button = ElementWrapper.new (browser.imgs class: "x-tool-img x-tool-close").last
           button.click_while_present
         end
 
@@ -25,7 +25,7 @@ module Stamps
         end
 
         def purchase
-          button = BrowserElement.new (browser.spans text: "Purchase").last
+          button = ElementWrapper.new (browser.spans text: "Purchase").last
           purchase_approved = PurchaseApproved.new param
 
           10.times do
@@ -53,7 +53,7 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
-          BrowserCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+          CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def buy_25
@@ -61,7 +61,7 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
-          BrowserCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+          CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def buy_50
@@ -69,7 +69,7 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
-          BrowserCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+          CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def buy_100
@@ -77,7 +77,7 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
-          BrowserCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+          CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def buy_other value
@@ -85,15 +85,15 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
-          checkbox = BrowserCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
-          textbox = BrowserTextBox.new (browser.text_field id: "sdc-purchasewin-otheramount")
+          checkbox = CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
+          textbox = TextBoxElement.new (browser.text_field id: "sdc-purchasewin-otheramount")
 
           checkbox.check
           textbox.set value
         end
 
         def purchase
-          button = BrowserElement.new (browser.span id: "sdc-purchasewin-purchasebtn-btnInnerEl")
+          button = ElementWrapper.new (browser.span id: "sdc-purchasewin-purchasebtn-btnInnerEl")
           confirm_purchase = ConfirmPurchase.new param
           10.times do
             button.safe_click

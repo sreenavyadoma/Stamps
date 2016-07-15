@@ -13,7 +13,7 @@ module Stamps
         @browser = param.browser
         @logger = param.logger
         @scenario_name = param.scenario_name
-        @browser_helper = BrowserHelper
+        @browser_helper = ElementHelper
       end
 
       def stop_test message
@@ -25,9 +25,8 @@ module Stamps
       end
     end
 
-    # FIX BROWSERELEMENT
-    # BrowserElement object is primarily used to wrap elements for used on step definitions.
-    class BrowserElement
+    # ElementWrapper object is primarily used to wrap elements for used on step definitions.
+    class ElementWrapper
       attr_reader :browser, :browser_helper, :element, :error_qtip_element, :error_qtip_element_attribute
       def initialize *args
         case args.length
@@ -44,11 +43,11 @@ module Stamps
             stop_test "Illegal number of arguments.  Unable to create element."
         end
         @browser = @element.browser
-        @browser_helper = BrowserHelper
+        @browser_helper = ElementHelper
       end
 
       def url
-        stop_test "url is not yet implemented"
+        browser.url
       end
 
       def disabled?
@@ -172,6 +171,7 @@ module Stamps
         browser_helper.safe_double_click element
       end
 
+      #todo look at click_while_present in browser_helpe
       def click_while_present
         20.times{
           safe_click
@@ -198,7 +198,7 @@ module Stamps
       end
     end
 
-    class BrowserSelection < BrowserElement
+    class SelectionElement < ElementWrapper
       attr_accessor :verify_element, :attribute, :verify_element_attrib
       def initialize element, verify_element, attribute, verify_element_attrib
         super element
@@ -225,7 +225,7 @@ module Stamps
       end
     end
 
-    class BrowserCheckbox < BrowserElement
+    class CheckboxElement < ElementWrapper
       attr_accessor :verify_element, :attribute, :attribute_value
       def initialize element, verify_element, attribute, attribute_value
         super element
@@ -264,7 +264,7 @@ module Stamps
       end
     end
 
-    class BrowserTextBox < BrowserElement
+    class TextBoxElement < ElementWrapper
       def set text
         browser_helper.set element, text
         self
@@ -277,13 +277,9 @@ module Stamps
           #ignore
         end
       end
-
-      def set_until text
-        set text
-      end
     end
 
-    class BrowserDropDown < BrowserElement
+    class DropDownElement < ElementWrapper
       attr_accessor :drop_down, :text_box, :html_tag
       def initialize browser, drop_down, html_tag, text_box
         super browser
@@ -329,7 +325,7 @@ module Stamps
       end
     end
 
-    class BrowserHelper
+    class ElementHelper
       class << self
 
         def scroll_into_view browser, element

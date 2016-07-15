@@ -7,7 +7,7 @@ module Pam
       end
 
       def ok
-        button = BrowserElement.new browser.a(text: ' OK ')
+        button = ElementWrapper.new browser.a(text: ' OK ')
         button.click_while_present
         Pam::CustomerProfile.new param
       end
@@ -126,7 +126,7 @@ module Pam
     end
 
     def submit
-      button = BrowserElement.new browser.text_field(name: 'submit')
+      button = ElementWrapper.new browser.text_field(name: 'submit')
       appcap_overrides = AppCapOverridesConfirmation.new param
       5.times do
         button.safe_click

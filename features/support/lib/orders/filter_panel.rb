@@ -2,7 +2,7 @@ module Stamps
   module Orders
     class CollapseButton < Modal
       def button
-        BrowserElement.new (browser.span css: "span[id^=menuitem-][id$=-textEl]")
+        ElementWrapper.new (browser.span css: "span[id^=menuitem-][id$=-textEl]")
       end
 
       def click
@@ -20,7 +20,7 @@ module Stamps
 
       def tooltip
         btn = button
-        tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
+        tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
         btn.hover
         btn.hover
         15.times do
@@ -37,7 +37,7 @@ module Stamps
     class ExpandButton < Modal
 
       def button
-        BrowserElement.new (browser.img css: 'img[class*=tool-expand-right]')
+        ElementWrapper.new (browser.img css: 'img[class*=tool-expand-right]')
       end
 
       def click
@@ -55,7 +55,7 @@ module Stamps
 
       def tooltip
         btn = button
-        tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
+        tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
         btn.hover
         btn.hover
         15.times do
@@ -121,7 +121,7 @@ module Stamps
       def awaiting_shipment
         clickable = browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[0]
         verify = clickable.parent.parent.parent.parent
-        tab = Stamps::Browser::BrowserSelection.new clickable, verify, "class", "selected"
+        tab = Stamps::Browser::SelectionElement.new clickable, verify, "class", "selected"
         tab.select
         grid = Orders::Grid::OrdersGrid.new param
         sleep 2
@@ -132,7 +132,7 @@ module Stamps
       def shipped
         clickable = browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[1]
         verify = clickable.parent.parent.parent.parent
-        tab = Stamps::Browser::BrowserSelection.new clickable, verify, "class", "selected"
+        tab = Stamps::Browser::SelectionElement.new clickable, verify, "class", "selected"
         tab.select
         grid = Orders::Grid::OrdersGrid.new param
         sleep 2
@@ -143,7 +143,7 @@ module Stamps
       def cancelled
         clickable = browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[2]
         verify = clickable.parent.parent.parent.parent
-        tab = Stamps::Browser::BrowserSelection.new clickable, verify, "class", "selected"
+        tab = Stamps::Browser::SelectionElement.new clickable, verify, "class", "selected"
         tab.select
         grid = Orders::Grid::OrdersGrid.new param
         sleep 2

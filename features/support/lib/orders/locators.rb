@@ -18,9 +18,7 @@ module Stamps
 
       module FilterPanel
         class << self
-
         end
-
       end
 
       module NavBar
@@ -36,12 +34,6 @@ module Stamps
           def add
             {text: 'Add'}
           end
-
-=begin
-          def postage
-
-          end
-=end
 
           def move
             {text: "Move"}

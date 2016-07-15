@@ -4,7 +4,7 @@ module Stamps
 
       class IncompleteOrderErrorModal < Browser::Modal
         def window_title
-          BrowserElement.new (browser.divs(css: "div[id^=title]").last)
+          ElementWrapper.new (browser.divs(css: "div[id^=title]").last)
         end
 
         def present?
@@ -18,19 +18,27 @@ module Stamps
       end
 
       class Toolbar < Browser::Modal
+
+        attr_reader :print_order, :add, :move
+        def initialize param
+          @print_order ||= PrintOrderButton.new param
+          @add ||= AddButton.new param
+          @move ||= MoveMenu.new param
+        end
+
         class SettingsMenu < Browser::Modal
           def collapse_button
-            BrowserElement.new browser.span css: "span[class*=sdc-icon-settings]"
+            ElementWrapper.new browser.span css: "span[class*=sdc-icon-settings]"
           end
 
           def select menu_item
             dd = collapse_button
             case menu_item.downcase
               when /settings/
-                selection = BrowserElement.new(browser.span text: "General Settings")
+                selection = ElementWrapper.new(browser.span text: "General Settings")
                 modal = Orders::GeneralSettings.new param
               when /stores/
-                selection = BrowserElement.new(browser.span text: "Add/Edit Stores")
+                selection = ElementWrapper.new(browser.span text: "Add/Edit Stores")
                 modal = Orders::Stores::ManageStores.new param
               else
                 stop_test "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores."
@@ -63,11 +71,11 @@ module Stamps
             end
 
             def move_label
-              BrowserElement.new browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
+              ElementWrapper.new browser.span Orders::Locators::ToolBar::confirmation_modal_move_label
             end
 
             def cancel_label
-              BrowserElement.new browser.span Orders::Locators::ToolBar::confirmation_modal_cancel_label
+              ElementWrapper.new browser.span Orders::Locators::ToolBar::confirmation_modal_cancel_label
             end
 
             def move
@@ -84,7 +92,7 @@ module Stamps
           end
 
           def drop_down
-            BrowserElement.new browser.span Orders::Locators::ToolBar::move
+            ElementWrapper.new browser.span Orders::Locators::ToolBar::move
           end
 
           def select selection
@@ -101,7 +109,7 @@ module Stamps
 
             confirmation = MoveConfirmation.new param
             dd = drop_down
-            selection_label = BrowserElement.new browser.span text: selection_str
+            selection_label = ElementWrapper.new browser.span text: selection_str
 
             10.times{
               dd.safe_click unless selection_label.present?
@@ -114,7 +122,7 @@ module Stamps
 
           def tooltip
             btn = drop_down
-            tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
+            tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
             btn.hover
             btn.hover
             15.times do
@@ -144,12 +152,12 @@ module Stamps
         class PerPage < Browser::Modal
 
           def text_box
-            BrowserTextBox.new browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl")
+            TextBoxElement.new browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl")
           end
 
           def select selection
-            dd = BrowserElement.new browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker")
-            per_page = BrowserElement.new browser.li(text: selection)
+            dd = ElementWrapper.new browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker")
+            per_page = ElementWrapper.new browser.li(text: selection)
             box = text_box
             10.times do
               dd.safe_click unless per_page.present?
@@ -173,7 +181,7 @@ module Stamps
 
         class AddButton < Browser::Modal
           def button
-            BrowserElement.new browser.span Orders::Locators::ToolBar::add
+            ElementWrapper.new browser.span Orders::Locators::ToolBar::add
           end
 
           def click
@@ -182,7 +190,7 @@ module Stamps
             add_button = button
 
             # Initializing Order Database
-            initializing_db = BrowserElement.new browser.div text: "Initializing Order Database"
+            initializing_db = ElementWrapper.new browser.div text: "Initializing Order Database"
             nav_bar = Orders::Navigation::NavigationBar.new param
 
             sleep 2
@@ -219,7 +227,7 @@ module Stamps
 
           def tooltip
             btn = button
-            tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
+            tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
             btn.hover
             btn.hover
             15.times do
@@ -234,14 +242,16 @@ module Stamps
         end
 
         class PrintOrderButton < Browser::Modal
-
-          def button
-            BrowserElement.new ((browser.spans css: "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
+          attr_reader :button, :print_modal
+          def initialize param
+            super param
+            @print_modal = Orders::PrintModal.new param
+            @button ||= ElementWrapper.new ((browser.spans css: "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
           end
 
           def tooltip
             btn = button
-            tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
+            tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
             btn.hover
             btn.hover
             15.times do
@@ -255,7 +265,7 @@ module Stamps
           end
 
           def click
-            open_window Orders::PrintModal.new param
+            open_window print_modal
           end
 
           def open_window window
@@ -342,20 +352,8 @@ module Stamps
           end
         end
 
-        def print_order
-          PrintOrderButton.new param
-        end
-
-        def add
-          AddButton.new param
-        end
-
-        def move
-          MoveMenu.new param
-        end
-
         def refresh_orders
-          button = BrowserElement.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
+          button = ElementWrapper.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
           importing_order = Orders::Stores::ImportingOrdersModal.new param
 
           button.safe_click
@@ -402,7 +400,7 @@ module Stamps
         end
 
         def import
-          button = BrowserElement.new browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
+          button = ElementWrapper.new browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
           modal = ImportOrders.new param
           5.times do
             button.safe_click
@@ -429,7 +427,7 @@ module Stamps
         end
 
         def reprint
-          button = BrowserElement.new browser.span(text: "Reprint")
+          button = ElementWrapper.new browser.span(text: "Reprint")
           modal = RePrintModal.new param
           label_unavailable = LabelUnavailable.new param
           15.times do
@@ -440,7 +438,7 @@ module Stamps
         end
 
         def browser_settings_button
-          BrowserElement.new (browser.span css: "span[class*=sdc-icon-settings]")
+          ElementWrapper.new (browser.span css: "span[class*=sdc-icon-settings]")
         end
 
         def usps_intl_terms
@@ -457,46 +455,46 @@ module Stamps
 
         def page_number
           field = browser.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
-          text_box = BrowserTextBox.new field
+          text_box = TextBoxElement.new field
           text_box
         end
 
         def first_page
           field = browser.span css: "span[class*=x-tbar-page-first]"
-          label = BrowserElement.new field
+          label = ElementWrapper.new field
           label
         end
 
         def first_page_disabled
           field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-          label = BrowserElement.new field
+          label = ElementWrapper.new field
           label.element.disabled?
         end
 
         def previous_page
-          BrowserElement.new element browser.span css: "span[class*=x-tbar-page-prev]"
+          ElementWrapper.new element browser.span css: "span[class*=x-tbar-page-prev]"
         end
 
         def previous_page_disabled
           field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-          label = BrowserElement.new field
+          label = ElementWrapper.new field
           label.element.disabled?
         end
 
         def next_page
-          BrowserElement.new element browser.span css: "span[class*=x-tbar-page-next]"
+          ElementWrapper.new element browser.span css: "span[class*=x-tbar-page-next]"
         end
 
         def last_page
-          BrowserElement.new element browser.span css: "span[class*=x-tbar-page-last]"
+          ElementWrapper.new element browser.span css: "span[class*=x-tbar-page-last]"
         end
 
         def last_page_disabled
-          BrowserElement.new browser.a css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          ElementWrapper.new browser.a css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
         end
 
         def total_number_of_pages
-          label = (BrowserElement.new browser.divs css: "div[id^=tbtext-]").last
+          label = (ElementWrapper.new browser.divs css: "div[id^=tbtext-]").last
           number_str=label.text
           number = number_str.scan /\d+/
           number.last.to_s

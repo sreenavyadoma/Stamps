@@ -6,7 +6,7 @@ module Pam
 
     def ok
       profile = CustomerProfile.new param
-      link = Stamps::Browser::BrowserElement.new browser.a(css: "a[href^=Profile]")
+      link = Stamps::Browser::ElementWrapper.new browser.a(css: "a[href^=Profile]")
       5.times do
         link.safe_click
         return profile if profile.present?
@@ -22,7 +22,7 @@ module Pam
 
     def yes
       confirmation = ACHCreditConfirmation.new param
-      button = Stamps::Browser::BrowserElement.new browser.text_field(name: "YES")
+      button = Stamps::Browser::ElementWrapper.new browser.text_field(name: "YES")
       5.times do
         button.send_keys :enter
         button.safe_click
@@ -31,7 +31,7 @@ module Pam
     end
 
     def no
-      button = BrowserElement.new browser.text_field(name: "NO")
+      button = ElementWrapper.new browser.text_field(name: "NO")
       button.click_while_present
     end
   end
@@ -42,20 +42,20 @@ module Pam
     end
 
     def dollar_amount
-      BrowserTextBox.new browser.text_field(name: "Amount")
+      TextBoxElement.new browser.text_field(name: "Amount")
     end
 
     def cents_amount
-      BrowserTextBox.new browser.text_field(name: "AmountFraction")
+      TextBoxElement.new browser.text_field(name: "AmountFraction")
     end
 
     def comments
-      BrowserTextBox.new browser.text_field(name: "comments")
+      TextBoxElement.new browser.text_field(name: "comments")
     end
 
     def submit
       purchase_verification = ACHPurchaseVerification.new param
-      button = BrowserElement.new browser.text_field(:value => "Submit")
+      button = ElementWrapper.new browser.text_field(:value => "Submit")
       5.times do
         button.send_keys :enter
         button.safe_click
