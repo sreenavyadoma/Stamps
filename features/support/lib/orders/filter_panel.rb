@@ -21,10 +21,10 @@ module Stamps
       def tooltip
         btn = button
         tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
-        btn.hover
-        btn.hover
+        btn.element.hover
+        btn.element.hover
         15.times do
-          btn.hover
+          btn.element.hover
           sleep 1
           if tooltip_element.present?
             logger.info tooltip_element.text
@@ -56,10 +56,10 @@ module Stamps
       def tooltip
         btn = button
         tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
-        btn.hover
-        btn.hover
+        btn.element.hover
+        btn.element.hover
         15.times do
-          btn.hover
+          btn.element.hover
           sleep 1
           if tooltip_element.present?
             logger.info tooltip_element.text

@@ -8,9 +8,9 @@ module Stamps
             drop_down = ElementWrapper.new (browser.span class: "balanceLabel")
             link = ElementWrapper.new (browser.a text: "Buy More")
             20.times do
-              drop_down.hover
+              drop_down.element.hover
               drop_down.safe_click unless link.present?
-              drop_down.hover
+              drop_down.element.hover
               link.safe_click
               return buy_postage_modal if buy_postage_modal.present?
             end
@@ -20,9 +20,9 @@ module Stamps
             drop_down = ElementWrapper.new (browser.span class: "balanceLabel")
             link = ElementWrapper.new (browser.a text: "View Purchase History")
             2.times do
-              drop_down.hover
+              drop_down.element.hover
               drop_down.safe_click unless link.present?
-              drop_down.hover
+              drop_down.element.hover
               link.safe_click
             end
           end
@@ -74,7 +74,7 @@ module Stamps
             sign_out_link = browser.a text: "Sign Out"
             20.times do
               drop_down.safe_click unless sign_out_link.present?
-              drop_down.hover
+              drop_down.element.hover
               browser_helper.safe_click sign_out_link if sign_out_link.present?
               return if browser.url.include? "SignIn"
             end

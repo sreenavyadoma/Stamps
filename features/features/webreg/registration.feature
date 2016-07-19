@@ -1,114 +1,84 @@
-
 Feature: Registration
   Background:
-    Given Registration Profile: Load Registration Page
+    Given I launched the default browser
 
+  @registration
   Scenario:
-    Then Registration Profile: Continue
-    Then Registration Membership: Click Back Button
+    Then Registration Profile: Load Registration Page
+    Then Registration Profile: Set User ID and Email to Random Value
 
-    Then Registration Membership: Set Terms & Conditions to Unchecked
+    Then Registration Profile: Set Password to pass111
+    Then Registration Profile: Set Re-Type password to pass111
+    Then Registration Profile: Set How will you use Stamps.com to Both Mailing and Shipping
+    Then Registration Profile: Set Referrer Name to Already used in office
+    Then Registration Profile: Set 1st Question to What is your mother's maiden name
+    Then Registration Profile: Set 1st Answer to stamps
+    Then Registration Profile: Set 2nd Question to What was your high school mascot
+    Then Registration Profile: Set 2nd Answer to stamps
+
+    Then Registration Profile: Continue to Mailing Information Page
+    Then Registration Membership: Set First Name to random
+    Then Registration Membership: Set Last Name to random
+    Then Registration Membership: Set Company to random
+    Then Registration Membership: Set Address to 1990 E Grand Avenue
+    Then Registration Membership: Set City to El Segundo
+    Then Registration Membership: Set State to California
+    Then Registration Membership: Set Zip Code to 90245
+    Then Registration Membership: Set Phone to random
+    Then Registration Membership: Set Extenion to random
+
+    Then Registration Membership: Set Cardholder name to random
+    Then Registration Membership: Set Card number to 4111111111111111
+    Then Registration Membership: Set Expiration Month to February
+    Then Registration Membership: Set Expiration Year to 2019
+    Then Registration Membership: Set Billing address same as mailing address to Checked
     Then Registration Membership: Set Terms & Conditions to Checked
 
-    Then Registration Membership: Set Billing address same as mailing address to Unchecked
-    Then Registration Membership: Set Billing address same as mailing address to Checked
+    Then Pause for 1 second
+    Then Registration Membership: Submit
+    Then Pause for 2 seconds
+    Then Registration Profile: Choose Supplies: Place Order
 
-    Then Registration Membership: Set State to Armed Forces Americas
-    Then Registration Membership: Set State to Armed Forces
-    Then Registration Membership: Set State to Alaska
-    Then Registration Membership: Set State to Alabama
-    Then Registration Membership: Set State to Armed Forces Pacific
-    Then Registration Membership: Set State to Arkansas
-    Then Registration Membership: Set State to American Samoa
-    Then Registration Membership: Set State to Arizona
-    Then Registration Membership: Set State to California
-    Then Registration Membership: Set State to Colorado
-    Then Registration Membership: Set State to Connecticut
-    Then Registration Membership: Set State to Canal Zone
-    Then Registration Membership: Set State to District of Columbia
-    Then Registration Membership: Set State to Delaware
-    Then Registration Membership: Set State to Florida
-    Then Registration Membership: Set State to Micronesia
-    Then Registration Membership: Set State to Georgia
-    Then Registration Membership: Set State to Guam
-    Then Registration Membership: Set State to Hawaii
-    Then Registration Membership: Set State to Iowa
-    Then Registration Membership: Set State to Idaho
-    Then Registration Membership: Set State to Illinois
-    Then Registration Membership: Set State to Indiana
-    Then Registration Membership: Set State to Kansas
-    Then Registration Membership: Set State to Kentucky
-    Then Registration Membership: Set State to Louisiana
-    Then Registration Membership: Set State to Massachusetts
-    Then Registration Membership: Set State to Maryland
-    Then Registration Membership: Set State to Maine
-    Then Registration Membership: Set State to Marshall Islands
-    Then Registration Membership: Set State to Minnesota
-    Then Registration Membership: Set State to Missouri
-    Then Registration Membership: Set State to Mariana Islands
-    Then Registration Membership: Set State to Mississippi
-    Then Registration Membership: Set State to Montana
-    Then Registration Membership: Set State to North Carolina
-    Then Registration Membership: Set State to North Dakota
-    Then Registration Membership: Set State to Nebraska
-    Then Registration Membership: Set State to New Hampshire
-    Then Registration Membership: Set State to New Jersey
-    Then Registration Membership: Set State to New Mexico
-    Then Registration Membership: Set State to Nevada
-    Then Registration Membership: Set State to New York
-    Then Registration Membership: Set State to Ohio
-    Then Registration Membership: Set State to Oklahoma
-    Then Registration Membership: Set State to Oregon
-    Then Registration Membership: Set State to Pennsylvania
-    Then Registration Membership: Set State to Puerto Rico
-    Then Registration Membership: Set State to Palau
-    Then Registration Membership: Set State to Rhode Island
-    Then Registration Membership: Set State to South Carolina
-    Then Registration Membership: Set State to South Dakota
-    Then Registration Membership: Set State to Tennessee
-    Then Registration Membership: Set State to Texas
-    Then Registration Membership: Set State to Utah
-    Then Registration Membership: Set State to Virginia
-    Then Registration Membership: Set State to Virgin Islands
-    Then Registration Membership: Set State to Vermont
-    Then Registration Membership: Set State to Washington
-    Then Registration Membership: Set State to Wisconsin
-    Then Registration Membership: Set State to West Virginia
-    Then Registration Membership: Set State to Wyoming
+    Then PAM: Customer Search: Search for username random
 
-    Then Registration Profile: Set Referrer Name to Email from Stamps
-    Then Registration Profile: Set Referrer Name to Magazine Ad
-    Then Registration Profile: Set Referrer Name to Newspaper Ad
-    Then Registration Profile: Set Referrer Name to Other
-    Then Registration Profile: Set Referrer Name to Radio Podcast Streaming Audio
-    Then Registration Profile: Set Referrer Name to Received Mailer
-    Then Registration Profile: Set Referrer Name to Recommended by Friend
-    Then Registration Profile: Set Referrer Name to Recommended by USPS
-    Then Registration Profile: Set Referrer Name to Telephone Call
-    Then Registration Profile: Set Referrer Name to Television Commercial
-    Then Registration Profile: Set Referrer Name to Trade show convention
-    Then Registration Profile: Set Referrer Name to Web Banner
+    Then PAM: Customer Profile: Click Change Meter Limit link
+    Then PAM: Change Meter Limit: Set USPS approval to Checked
+    Then PAM: Change Meter Limit: Set New Meter Limit to $100000
+    Then PAM: Change Meter Limit: Click Submit
+    Then PAM: Customer Profile: Get Available Postage Amount
+    Then PAM: Customer Profile: Click ACH Credit link
+    Then PAM: ACH Purchase: Set Amount to $100000.00
+    Then Pause for 2 seconds
+    Then PAM: Customer Profile: Get Available Postage Amount
+    Then PAM: Customer Profile: Get Available Postage Amount
+    Then PAM: Customer Profile: Click  AppCap Overrides link
+    Then PAM: AppCap Overrides: Set Internet Postage Printing to Always On
+    Then PAM: AppCap Overrides: Set Netstamps Printing to Always On
+    Then PAM: AppCap Overrides: Set Shipping Label Printing to Always On
+    Then PAM: AppCap Overrides: Set International Shipping to Always On
+    Then PAM: AppCap Overrides: Set Allow High Risk Countries to Always On
+    Then PAM: AppCap Overrides: Submit
 
-    Then Registration Profile: Set How will you use Stamps.com to Mostly Mailing
-    Then Registration Profile: Set How will you use Stamps.com to Mostly Shipping
-    Then Registration Profile: Set How will you use Stamps.com to Both Mailing and Shipping
-    Then Registration Profile: Set How will you use Stamps.com to Home Office
+    Then Health Check: Print - Web Batch
 
-    Then Registration Profile: Set 1st Question to What is your mother's maiden name
-    Then Registration Profile: Set 1st Question to What is the make and model of your first car
-    Then Registration Profile: Set 1st Question to What is the name of your first school
-    Then Registration Profile: Set 1st Question to What is your city of birth
-    Then Registration Profile: Set 1st Question to What is your father's birthplace
-    Then Registration Profile: Set 1st Question to What is your pet's name
-    Then Registration Profile: Set 1st Question to What street did you grow up on
-
-    Then Registration Profile: Set 1st Question to What is your mother's maiden name
-    Then Registration Profile: Set 2nd Question to What is the make and model of your first car
-    Then Registration Profile: Set 2nd Question to What is the name of your first school
-    Then Registration Profile: Set 2nd Question to What is your city of birth
-    Then Registration Profile: Set 2nd Question to What is your father's birthplace
-    Then Registration Profile: Set 2nd Question to What is your pet's name
-    Then Registration Profile: Set 2nd Question to What street did you grow up on
-    Then Registration Profile: Set 2nd Question to What was your high school mascot
+    Then Pause for 2 seconds
+    Then Orders: Visit Sign-in page
+    Then Orders: New User Sign-in as random/pass111
+    Then Pause for 2 seconds
+    Then Toolbar: Add
+    Then Pause for 1 second
+    Then Open Settings Modal
+    Then Settings:  Set Logoff to 2 hours.
+    Then Settings:  Save
+    Then Refresh Browser
+    Then Navigation Bar: Customer Balance
+    Then Refresh Browser
+    Then Navigation Bar: Wait while balance less than 5000
+    Then Sign out
+    Then Registration Profile:  Send username to standard out
 
 
+    #Then PAM: Load Customer Search Page
+    #Then PAM: Customer Search: Set username to random
+    #Then PAM: Customer Search: Set 5.2 or lower
+    #Then PAM: Customer Search: Click Search button

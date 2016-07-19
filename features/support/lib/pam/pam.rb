@@ -7,6 +7,8 @@ module Stamps
             url = "http://qa-clientsite:82/pam/"
           when /sc/
             url = "http://site.qasc.stamps.com:82/pam/"
+          when /stg/
+            url = "https://site.staging.stamps.com:82/pam/"
           when /staging/
             url = "https://site.staging.stamps.com:82/pam/"
           else

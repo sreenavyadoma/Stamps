@@ -444,9 +444,10 @@ Then /^Registration Membership: Set Terms & Conditions to Unchecked$/ do
   registration.profile.membership.terms_and_conditions.uncheck
 end
 
-Then /^Registration Membership: Click Back Button$/ do |var|
+Then /^Registration Membership: Click Back Button$/ do
   logger.info "Registration Membership: Click Back Button"
-  registration.profile.membership.xxxx.set var
+  raise "Step Definition not yet implemented! - Registration Membership: Click Back Button"
+  #registration.profile.membership.xxxx.set var
 end
 
 Then /^Registration Membership: Submit$/ do

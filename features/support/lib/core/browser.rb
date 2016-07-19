@@ -54,7 +54,7 @@ module Stamps
         begin
           element.disabled?
         rescue
-          false
+          true
         end
       end
 

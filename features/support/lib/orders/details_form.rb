@@ -112,7 +112,6 @@ module Stamps
       end
 
       class ShipToInternationalFields < OrderForm
-
         def present?
           TextBoxElement.new(browser.text_field name: "FullName").present?
         end
@@ -170,7 +169,6 @@ module Stamps
       end
 
       class AutoSuggestPopUp < Browser::Modal
-
         def present?
           (ElementWrapper.new self.name_fields[0]).present?
         end
@@ -1326,15 +1324,15 @@ module Stamps
       end
 
       class ShipFromAddress < OrderForm
-        attr_reader :text_box, :drop_down
+        attr_reader :text_box, :drop_down, :manage_shipping_adddress
         def initialize param
           super param
           @text_box ||= TextBoxElement.new browser.text_field name: "ShipFrom"
           @drop_down ||= ElementWrapper.new browser.div css: "div[id^=shipfromdroplist][id$=trigger-picker]"
+          @manage_shipping_adddress = ManageShippingAddresses.new param
         end
 
         def select service
-          manage_shipping_adddress = ManageShippingAddresses.new param
 
           return manage_shipping_adddress if manage_shipping_adddress.present?
 
@@ -1413,7 +1411,7 @@ module Stamps
         def cost *args
           case args.length
             when 0
-              cost_label = ElementWrapper.new (browser.label css: "label[class*=selected_tracking_cost]")
+              cost_label = ElementWrapper.new browser.label css: "label[class*=selected_tracking_cost]"
               10.times do
                 begin
                   cost = cost_label.text
@@ -2001,10 +1999,10 @@ module Stamps
           def tooltip
             btn = drop_down
             tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
-            btn.hover
-            btn.hover
+            btn.element.hover
+            btn.element.hover
             15.times do
-              btn.hover
+              btn.element.hover
               sleep 1
               if tooltip_element.present?
                 logger.info tooltip_element.text
@@ -2071,7 +2069,8 @@ module Stamps
 
       class DetailsForm < OrderForm
         #todo add more accessors
-        attr_reader :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions, :customs_form, :total, :customs
+        attr_reader :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions,
+                    :customs_form, :total, :customs, :item_grid, :reference_no, :collapsed_details
 
         def initialize param
           super param
@@ -2086,6 +2085,9 @@ module Stamps
           @customs_form ||= CustomsForm.new param
           @total ||= DetailsFooter.new param
           @customs ||= CustomsFields.new param
+          @item_grid ||= DetailsItemGrid.new param
+          @reference_no ||= TextBoxElement.new (browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
+          @collapsed_details = DetailsCollapsible.new param
         end
 
         def present?
@@ -2093,7 +2095,6 @@ module Stamps
         end
 
         def expand
-          collapsed_details = DetailsCollapsible.new param
           5.times do
             if collapsed_details.present?
               collapsed_details.open
@@ -2101,15 +2102,6 @@ module Stamps
             break if self.present?
           end
         end
-
-        def item_grid
-          DetailsItemGrid.new param
-        end
-
-        def reference_no
-          TextBoxElement.new (browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
-        end
-
 
         def item line_item
           DetailsItem.new param, line_item

@@ -20,7 +20,6 @@ Before do  |scenario|
   scenario.tags.each_with_index {|tag, index| logger.message "---------------- Tag #{index+1}: #{tag.name}" }
   logger.message "---------------- Steps:"
   scenario.test_steps.each_with_index { |test_step, index| logger.message "---------------- Step #{index+1}: #{test_step.source.last.keyword}#{test_step.source.last.name}"}
-
   logger.message "-"
   logger.message "-"
 end
