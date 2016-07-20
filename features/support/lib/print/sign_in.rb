@@ -26,6 +26,8 @@ module Stamps
 
       def login
         sign_in_button.safe_click
+        sign_in_button.safe_click
+        sign_in_button.send_keys :enter
       end
 
       def remember_username
@@ -61,26 +63,10 @@ module Stamps
         invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
 
         10.times do
-          sign_in_link.safe_click unless username_textbox.present?
-          username_textbox.set username
-
-          sign_in_link.safe_click unless password_textbox.present?
-          password_textbox.set password
-
-          sign_in_link.safe_click unless sign_in_button.present?
-          sign_in_button.safe_click
-          break if signed_in_user.present?
-          sign_in_link.safe_click unless sign_in_button.present?
-          sign_in_button.safe_click
-          break if signed_in_user.present?
-          sign_in_link.safe_click unless sign_in_button.present?
-          sign_in_button.safe_click
-          break if signed_in_user.present?
-          sign_in_link.safe_click unless sign_in_button.present?
-          sign_in_button.safe_click
-          break if signed_in_user.present?
-          sign_in_link.safe_click unless sign_in_button.present?
-          break if signed_in_user.present?
+          username username
+          password password
+          login
+          sleep 3
 
           logger.info verifying_account_info.text if verifying_account_info.present?
           logger.info "Signed in username is #{signed_in_user.text}" if signed_in_user.present?
