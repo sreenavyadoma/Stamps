@@ -34,7 +34,6 @@ module Stamps
             rescue
               #ignore
             end
-=begin
             firefox_profile_dir = File.join("C:", "watir-webdriver", "firefox", "test-profile")
             #Dir.mkdir firefox_profile_dir unless Dir.exist? firefox_profile_dir
             raise "Firefox profile does not exist in #{firefox_profile_dir}" unless File.exist? firefox_profile_dir
@@ -42,9 +41,8 @@ module Stamps
             profile = Selenium::WebDriver::Firefox::Profile.new firefox_profile_dir
             profile.layout_on_disk
             profile.native_events = false
-=end
 
-            driver = Watir::Browser.new :firefox, profile: 'selenium'
+            driver = Watir::Browser.new :firefox, :profile => 'selenium'
 
             @browser_name = 'Mozilla Firefox'
 
