@@ -147,12 +147,20 @@ module Stamps
         element.style property
       end
 
-      def wait_while_present
-        element.wait_while_present 6
+      def wait_while_present *args
+        if args.length==1
+          element.wait_while_present args[0].to_i
+        else
+          element.wait_while_present
+        end
       end
 
-      def wait_until_present
-        element.wait_until_present 6
+      def wait_until_present *args
+        if args.length==1
+          element.wait_until_present args[0].to_i
+        else
+          element.wait_until_present
+        end
       end
 
       def click

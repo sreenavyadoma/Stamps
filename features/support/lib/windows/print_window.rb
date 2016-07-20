@@ -1,6 +1,8 @@
 module Stamps
   module Windows
     class PrintWindow
+      include RAutomation
+
       def present?
         print_window = RAutomation::Window.new(:title => /Print/i)
         begin

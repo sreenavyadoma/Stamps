@@ -37,6 +37,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
   orders.landing_page.sign_in username, password
   step "Navigation Bar: Customer Balance"
 end
+
 #todo Refactor SIGN-IN step definition into one step
 Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, password|
   logger.info "I am signed in to Orders as #{browser}/#{username}/#{password}"

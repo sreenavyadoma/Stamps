@@ -33,9 +33,7 @@ end
 
 Then /^Registration Profile: Set Email to (.*)$/ do |email|
   logger.info "Registration Profile: Set Email to #{email}"
-  email_field = registration.profile.email
-  email_field.wait_until_present
-  email_field.set email
+  registration.profile.email.wait_until_present.set email
 end
 
 Then /^Registration Profile: Set User ID to (.*)$/ do |user_id|

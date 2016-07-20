@@ -2,22 +2,28 @@ module Stamps
   module Print
     module Postage
       class Footer < Browser::Modal
-        def total
-          ElementWrapper.new browser.label id: "sdc-printpanel-totalcostlabel"
+        attr_reader :total, :print_postage_modal, :confirm_window, :print_modal, :print_button, :sample_button
+
+        def initialize param
+          super param
+          @total ||= ElementWrapper.new browser.label id: "sdc-printpanel-totalcostlabel"
+          @print_postage_modal ||= Print::Postage::PrintPostageModal.new param
+          @confirm_window = Print::Postage::ConfirmPrint.new param
+          @print_modal = Windows::PrintWindow.new
+          @print_button ||= ElementWrapper.new browser.a css: "a[class*=sdc-printpanel-printpostagebtn]"
+          @sample_button ||= ElementWrapper.new browser.a css: "a[class*=sdc-printpanel-printsamplebtn]"
         end
 
         def print_sample
-          open_sample_window Print::Postage::PrintPostageModal.new param
+          open_sample_window print_postage_modal
         end
 
         def print
-          open_window Print::Postage::PrintPostageModal.new param
+          open_window print_postage_modal
         end
 
         def print_international
           print_button.safe_click
-          confirm_window = Print::Postage::ConfirmPrint.new param
-          print_modal = Windows::PrintWindow.new
 
           5.times do
             sleep 1
@@ -40,15 +46,6 @@ module Stamps
           raise "Unable to open international print modal." unless print_modal.present?
           print_modal.print
         end
-
-        def print_button
-          ElementWrapper.new browser.a css: "a[class*=sdc-printpanel-printpostagebtn]"
-        end
-
-        def sample_button
-          ElementWrapper.new browser.a css: "a[class*=sdc-printpanel-printsamplebtn]"
-        end
-
 
         def open_window window
           return window if window.present?
@@ -143,11 +140,7 @@ module Stamps
           return window if window.present?
           stop_test "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper."
         end
-
-
       end
-
-
     end
   end
 

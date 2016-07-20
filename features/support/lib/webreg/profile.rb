@@ -227,6 +227,7 @@ module Stamps
         browser.text_field(id: "username").wait_until_present
         browser.text_field(id: "password").wait_until_present
         browser.text_field(id: "confirmPassword").wait_until_present
+        self
       end
 
       def promo_code

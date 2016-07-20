@@ -1,6 +1,39 @@
 module Stamps
   module Print
     class SignInModal < Browser::Modal
+      attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link
+      def initialize param
+        super param
+        @username_textbox ||= TextBoxElement.new browser.text_field(Print::Locators::SignIn.username)
+        @password_textbox ||= TextBoxElement.new browser.text_field(Print::Locators::SignIn.password)
+        @sign_in_button ||= ElementWrapper.new browser.button(id: "signInButton")
+        @sign_in_link ||= ElementWrapper.new browser.link(text: "Sign In")
+      end
+
+      def error
+
+      end
+
+      def username usr
+        sign_in_link.safe_click unless username_textbox.present?
+        username_textbox.set usr
+      end
+
+      def password pw
+        sign_in_link.safe_click unless password_textbox.present?
+        password_textbox.set pw
+      end
+
+      def login
+        sign_in_button.safe_click
+      end
+
+      def remember_username
+        checkbox_field = browser.text_field css: "input[id=rememberUser]"
+        verify_field = browser.text_field css: "label[class=checkbox]"
+
+        Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
+      end
 
       def sign_in *args
         case args
@@ -23,15 +56,11 @@ module Stamps
             logger.message "USERNAME: #{username}, PASSWORD: #{password}"
         end
 
-        sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
-        username_textbox = TextBoxElement.new browser.text_field(Print::Locators::SignIn.username)
-        password_textbox = TextBoxElement.new browser.text_field(Print::Locators::SignIn.password)
-        sign_in_button = ElementWrapper.new browser.button(id: "signInButton")
         verifying_account_info = ElementWrapper.new browser.div(text: "Verifying account information...")
         signed_in_user = ElementWrapper.new browser.span(id: "userNameText")
         invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
 
-        3.times {
+        10.times do
           sign_in_link.safe_click unless username_textbox.present?
           username_textbox.set username
 
@@ -53,14 +82,8 @@ module Stamps
           sign_in_link.safe_click unless sign_in_button.present?
           break if signed_in_user.present?
 
-          #logger.info "Verifying account info... #{(verifying_account_info.present?)?"true":"false"}"
-          if verifying_account_info.present?
-            #logger.info "#{(verifying_account_info.present?)?"Verifying account info....":"Verifying account info done or not visible"}"
-            verifying_account_info.wait_while_present
-            signed_in_user.wait_until_present
-            logger.info "Signed in username is #{signed_in_user.text}"
-          end
-
+          logger.info verifying_account_info.text if verifying_account_info.present?
+          logger.info "Signed in username is #{signed_in_user.text}" if signed_in_user.present?
           logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
           break if signed_in_user.present?
@@ -72,16 +95,9 @@ module Stamps
             break
           end
 
-        }
+        end
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
         logger.info "Password is #{password}"
-      end
-
-      def remember_username
-        checkbox_field = browser.text_field css: "input[id=rememberUser]"
-        verify_field = browser.text_field css: "label[class=checkbox]"
-
-        Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
       end
 
       def sign_in_and_remember *args
@@ -167,7 +183,6 @@ module Stamps
       def invalid_username_password
         ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
       end
-
 
       def forgot_username
         sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
