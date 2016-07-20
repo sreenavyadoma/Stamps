@@ -66,12 +66,13 @@ module Stamps
           username username
           password password
           login
-          sleep 3
+          sleep 2
 
           logger.info verifying_account_info.text if verifying_account_info.present?
           logger.info "Signed in username is #{signed_in_user.text}" if signed_in_user.present?
           logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
+          sleep 2
           break if signed_in_user.present?
 
           if invalid_msg.present?
