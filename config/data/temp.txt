@@ -1,4 +1,4 @@
-=begin
+
 module Selenium
   module WebDriver
     module Firefox
@@ -39,7 +39,6 @@ module Selenium
     end # Firefox
   end # WebDriver
 end # Selenium
-=end
 
             # firefox_profile_dir = File.join("C:", "watir-webdriver", "firefox", "test-profile")
             # #Dir.mkdir firefox_profile_dir unless Dir.exist? firefox_profile_dir
