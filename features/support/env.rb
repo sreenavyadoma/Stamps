@@ -29,4 +29,7 @@ require_relative 'lib/orders/store_management'
 require_relative 'lib/orders/general_settings'
 require_relative 'lib/windows/open_file'
 
+# require 'Win32API'
+# require 'win32/registry.rb'
+
 World Stamps
