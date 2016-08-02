@@ -156,7 +156,11 @@ module Stamps
       end
 
       def safely_wait_while_present *args
-        wait_while_present *args
+        begin
+          wait_while_present *args
+        rescue
+          #ignroe
+        end
       end
 
       def wait_until_present *args
@@ -168,7 +172,11 @@ module Stamps
       end
 
       def safely_wait_until_present *args
-        wait_until_present *args
+        begin
+          wait_until_present *args
+        rescue
+          #ignroe
+        end
       end
 
       def click
