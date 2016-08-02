@@ -29,9 +29,6 @@ require_relative 'lib/orders/store_management'
 require_relative 'lib/orders/general_settings'
 require_relative 'lib/windows/open_file'
 
-#require 'atomic'
-#require 'thread'
-#require 'mysql'
 
 module Selenium
   module WebDriver
@@ -53,43 +50,26 @@ module Selenium
           end
 
           # Create the profile directory as usual when it does not exist
-          temp_dir = Dir.mktmpdir("webdriver-profile")
-          FileReaper << temp_dir
+          profile_dir = @model ? create_tmp_copy(@model) : Dir.mktmpdir("webdriver-profile")
+          FileReaper << profile_dir
 
-          install_extensions(temp_dir)
-          delete_lock_files(temp_dir)
-          delete_extensions_cache(temp_dir)
-          #update_user_prefs_in(temp_dir)
-
-          path = File.join(temp_dir, 'user.js')
-          prefs = read_user_prefs(path)
-
-          prefs.merge! self.class.default_preferences.fetch 'mutable'
-          prefs.merge! @additional_prefs
-          prefs.merge! self.class.default_preferences.fetch 'frozen'
-
-          prefs[WEBDRIVER_PREFS[:untrusted_certs]]  = !secure_ssl?
-          prefs[WEBDRIVER_PREFS[:native_events]]    = false
-          prefs[WEBDRIVER_PREFS[:untrusted_issuer]] = assume_untrusted_certificate_issuer?
-
-          # If the user sets the home page, we should also start up there
-          prefs["startup.homepage_welcome_url"] = prefs["browser.startup.homepage"]
-
-          write_prefs prefs, path
+          install_extensions(profile_dir)
+          delete_lock_files(profile_dir)
+          delete_extensions_cache(profile_dir)
+          update_user_prefs_in(profile_dir)
 
           # If a directory is specified, move the created profile to that directory
           if Profile.webdriver_profile_directory
-            FileUtils::mkdir_p(Profile.webdriver_profile_directory)
-            FileUtils.cp_r(temp_dir, Profile.webdriver_profile_directory)
-            temp_dir = Profile.webdriver_profile_directory
+            FileUtils.cp_r(profile_dir, Profile.webdriver_profile_directory)
+            profile_dir = Profile.webdriver_profile_directory
           end
 
-          temp_dir
+          profile_dir
         end
       end # Profile
     end # Firefox
   end # WebDriver
 end # Selenium
 
-# Stamps,Orders,Print,WebReg,Pam,Windows,Stores
+
 World Stamps

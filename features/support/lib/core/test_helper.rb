@@ -25,7 +25,7 @@ module Stamps
               #ignore
             end
 
-            driver = Watir::Browser.new :ie
+            browser = Watir::Browser.new :ie
             @browser_name = 'Internet Explorer'
 
           elsif browser? :firefox
@@ -34,15 +34,10 @@ module Stamps
             rescue
               #ignore
             end
-            firefox_profile_dir = File.join("C:", "watir-webdriver", "firefox", "test-profile")
-            #Dir.mkdir firefox_profile_dir unless Dir.exist? firefox_profile_dir
-            raise "Firefox profile does not exist in #{firefox_profile_dir}" unless File.exist? firefox_profile_dir
-            Selenium::WebDriver::Firefox::Profile.webdriver_profile_directory = firefox_profile_dir
-            profile = Selenium::WebDriver::Firefox::Profile.new firefox_profile_dir
-            profile.layout_on_disk
-            profile.native_events = false
 
-            driver = Watir::Browser.new :firefox, :profile => 'selenium'
+            profile = Selenium::WebDriver::Firefox::Profile.from_name "selenium"
+            profile.layout_on_disk
+            browser = Watir::Browser.new :firefox, :profile => profile
 
             @browser_name = 'Mozilla Firefox'
 
@@ -69,22 +64,22 @@ module Stamps
               stop_test logger.info "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
             end unless File.exist? chrome_data_dir
 
-            driver = Watir::Browser.new :chrome, :switches => ["--disable-print-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
+            browser = Watir::Browser.new :chrome, :switches => ["--disable-print-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
             @browser_name = 'Google Chrome'
 
           elsif browser? :safari
-            driver = Watir::Browser.new :safari
+            browser = Watir::Browser.new :safari
             @browser_name = 'Mac OS X - Safari'
           else
-            driver = Watir::Browser.new :ie
+            browser = Watir::Browser.new :ie
             @browser_name = 'Internet Explorer'
           end
 
           logger.info "#{@browser_name} is ready."
           #driver.window.move_to 0, 0
           #driver.window.resize_to 1250, 850
-          driver.window.maximize
-          @browser = driver
+          browser.window.maximize
+          @browser = browser
         rescue Exception => e
           logger.error e.backtrace.join "\n"
           logger.info "Teardown: Begin tearing down test"
