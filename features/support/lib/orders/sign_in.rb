@@ -151,7 +151,7 @@ module Stamps
                 end
               end
 
-              loading_orders.safely_wait_until_present 4
+              loading_orders.safely_wait_until_present 2
 
               10.times do
                 if loading_orders.present?
