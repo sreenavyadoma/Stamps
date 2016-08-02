@@ -152,7 +152,7 @@ module Stamps
               end
               10.times do
                 if loading_orders.present?
-                  logger.info loading_orders.text
+                  logger.info loading_orders.safe_text
                   sleep 1
                 else
                   break

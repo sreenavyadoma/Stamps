@@ -204,6 +204,14 @@ module Stamps
         val = element.attribute_value "value"
         (txt.size>0)?txt:val
       end
+
+      def safe_text
+        begin
+          text
+        rescue
+          ""
+        end
+      end
     end
 
     class SelectionElement < ElementWrapper
