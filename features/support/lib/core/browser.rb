@@ -155,12 +155,20 @@ module Stamps
         end
       end
 
+      def safely_wait_while_present *args
+        wait_while_present *args
+      end
+
       def wait_until_present *args
         if args.length==1
           element.wait_until_present args[0].to_i
         else
           element.wait_until_present
         end
+      end
+
+      def safely_wait_until_present *args
+        wait_until_present *args
       end
 
       def click
@@ -179,7 +187,7 @@ module Stamps
         browser_helper.safe_double_click element
       end
 
-      #todo look at click_while_present in browser_helpe
+      #todo look at click_while_present in browser_helper
       def click_while_present
         20.times{
           safe_click

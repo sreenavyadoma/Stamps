@@ -150,6 +150,9 @@ module Stamps
                   break
                 end
               end
+
+              loading_orders.safely_wait_until_present 4
+
               10.times do
                 if loading_orders.present?
                   logger.info loading_orders.safe_text
