@@ -112,6 +112,7 @@ module Stamps
           plugin_issue = ErrorStampsPluginIssue.new param
           toolbar = Orders::Toolbar::Toolbar.new param
           market_place = Orders::Stores::MarketPlace.new param
+          loading_orders = ElementWrapper.new browser.div text: "Loading orders..."
 
           raise "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
 
@@ -142,30 +143,24 @@ module Stamps
               button.safe_send_keys :enter
               button.safe_click
               button.safe_click
-              sleep 1
+              5.times do
+                if username_textbox.present?
+                  sleep 1
+                else
+                  break
+                end
+              end
+              10.times do
+                if loading_orders.present?
+                  sleep 1
+                else
+                  break
+                end
+              end
               break if grid.present?
               break if grid.present?
               break if grid.present?
               break if grid.present?
-              break if grid.present?
-              button.safe_send_keys :enter
-              sleep 1
-              break if grid.present?
-              break if grid.present?
-              button.safe_click
-              break if grid.present?
-              break if grid.present?
-              username_textbox.set username
-              break if grid.present?
-              password_textbox.set password
-              break if grid.present?
-              button.safe_click
-              break if grid.present?
-              button.safe_click
-              break if grid.present?
-              username_textbox.set username
-              break if grid.present?
-              password_textbox.set password
               break if grid.present?
 
               if welcome_orders_page.present?

@@ -35,8 +35,7 @@ module Stamps
               #ignore
             end
 
-            profile = Selenium::WebDriver::Firefox::Profile.from_name "selenium"
-            profile.layout_on_disk
+            profile = Selenium::WebDriver::Firefox::Profile.from_name data_for(:profile, {})['firefox']
             browser = Watir::Browser.new :firefox, :profile => profile
 
             @browser_name = 'Mozilla Firefox'
@@ -76,8 +75,10 @@ module Stamps
           end
 
           logger.info "#{@browser_name} is ready."
+
           #driver.window.move_to 0, 0
           #driver.window.resize_to 1250, 850
+
           browser.window.maximize
           @browser = browser
         rescue Exception => e
