@@ -153,6 +153,7 @@ module Stamps
         else
           element.wait_while_present
         end
+        self
       end
 
       def safely_wait_while_present *args
@@ -169,6 +170,7 @@ module Stamps
         else
           element.wait_until_present
         end
+        self
       end
 
       def safely_wait_until_present *args
