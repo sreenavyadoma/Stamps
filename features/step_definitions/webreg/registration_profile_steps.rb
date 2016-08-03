@@ -23,7 +23,7 @@ Then /^Registration Profile: Set User ID and Email to (.*)$/ do |usr|
   if usr.downcase.include? "random"
     @username = ParameterHelper.rand_username
   else
-    @username = usr    
+    @username = usr
   end
   
   logger.info "Registration Profile: Set User ID and Email to #{@username}"
