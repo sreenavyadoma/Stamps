@@ -143,7 +143,8 @@ module Stamps
               button.safe_send_keys :enter
               button.safe_click
               button.safe_click
-              5.times do
+
+              10.times do
                 if username_textbox.present?
                   sleep 1
                 else
@@ -151,9 +152,9 @@ module Stamps
                 end
               end
 
-              loading_orders.safely_wait_until_present 2
+              loading_orders.safely_wait_until_present 3
 
-              10.times do
+              20.times do
                 if loading_orders.present?
                   logger.info loading_orders.safe_text
                   sleep 1
@@ -161,6 +162,7 @@ module Stamps
                   break
                 end
               end
+
               break if grid.present?
               break if grid.present?
               break if grid.present?

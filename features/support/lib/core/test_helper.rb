@@ -35,8 +35,8 @@ module Stamps
               #ignore
             end
 
-            profile = Selenium::WebDriver::Firefox::Profile.from_name data_for(:profile, {})['firefox']
-            browser = Watir::Browser.new :firefox, :profile => profile
+            #profile = Selenium::WebDriver::Firefox::Profile.from_name data_for(:profile, {})['firefox']
+            browser = Watir::Browser.new :firefox, profile: "selenium"
 
             @browser_name = 'Mozilla Firefox'
 
