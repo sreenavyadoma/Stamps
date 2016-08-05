@@ -3,7 +3,7 @@ Given /^Orders: Visit Sign-in page$/ do
   web_apps.visit :orders
 end
 
-Given /^Orders: New User Sign-in as (.*)\/(.*)/ do |username, password|
+Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
   if username.downcase.include? "random"
     usr = @username
   else

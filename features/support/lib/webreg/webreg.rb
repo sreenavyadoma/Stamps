@@ -8,12 +8,14 @@ module Stamps
       end
 
       def visit
+        ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+
         case ENV['URL'].downcase
           when /cc/
             url = "https://qa-registration.stamps.com/registration"
           when /sc/
             url = "https://registrationext.qasc.stamps.com/registration"
-          when /staging/
+          when /stg/
             url = "https://registration.staging.stamps.com/registration/"
           else
             stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"

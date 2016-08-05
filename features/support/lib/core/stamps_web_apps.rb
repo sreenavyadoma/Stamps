@@ -12,6 +12,8 @@ module Stamps
           raise "#{page} is not a valid page."
       end
 
+      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+
       case ENV['URL'].downcase
         when /ss/
           url = "http://printss600.qacc.stamps.com/#{app_name}/"
@@ -19,7 +21,7 @@ module Stamps
           url = "http://printext.qacc.stamps.com/#{app_name}/"
         when /sc/
           url = "http://printext.qasc.stamps.com/#{app_name}/"
-        when /staging/
+        when /stg/
           url = "https://print.testing.stamps.com/#{app_name}/"
         when /rating/
           url = "http://printext.qacc.stamps.com/#{app_name}/"

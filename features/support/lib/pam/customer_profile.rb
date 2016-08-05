@@ -4,20 +4,21 @@ module Stamps
       def change_meter_limit
         link = Stamps::Browser::ElementWrapper.new browser.a(text: "Change Meter Limit")
         page = ChangeMeterLimit.new param
+        change_meter_limit_header = Browser::ElementWrapper.new browser.td(text: "Change Meter Limit")
         5.times do
           link.safe_click
-          sleep 1
+          change_meter_limit_header.safely_wait_until_present 4
           return page if page.present?
         end
       end
 
       def ach_credit
-        link = Stamps::Browser::ElementWrapper.new browser.a(text: "ACH Credit")
-        page = ACHCredit.new param
+        ach_credit_link = Stamps::Browser::ElementWrapper.new browser.a(text: "ACH Credit")
+        ach_credit_page = ACHCredit.new param
         5.times do
-          link.safe_click
-          sleep 1
-          return page if page.present?
+          ach_credit_link.safely_wait_until_present 4
+          ach_credit_link.safe_click
+          return ach_credit_page if ach_credit_page.present?
         end
       end
 
@@ -34,7 +35,7 @@ module Stamps
 
     class CustomerProfile < Browser::Modal
       def present?
-        browser.b(text "Available Postage").present?
+        browser.b(text: "Available Postage").present?
       end
 
       def wait_until_present

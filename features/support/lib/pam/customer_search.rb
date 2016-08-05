@@ -6,7 +6,7 @@ module Stamps
       end
 
       def wait_until_present
-        browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]").wait_until_present 6
+        (ElementWrapper.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")).wait_until_present 7
       end
 
       def username

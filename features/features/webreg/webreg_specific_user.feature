@@ -61,7 +61,7 @@ Feature: Registration
     Then Health Check: Print - Web Batch
 
     Then Orders: Visit Sign-in page
-    Then Orders: New User Sign-in as ss_sctest_b4/password1
+    Then Orders: Sign-in as new user ss_sctest_b4/password1
     Then Pause for 2 seconds
     Then Toolbar: Add
     Then Pause for 1 second

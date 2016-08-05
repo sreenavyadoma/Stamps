@@ -61,7 +61,7 @@ Feature: Registration
 
     Then Pause for 2 seconds
     Then Orders: Visit Sign-in page
-    Then Orders: New User Sign-in as random/pass111
+    Then Orders: Sign-in as new user random/pass111
     Then Pause for 2 seconds
     Then Toolbar: Add
     Then Pause for 1 second

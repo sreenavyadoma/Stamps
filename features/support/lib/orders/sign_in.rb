@@ -42,7 +42,7 @@ module Stamps
         end
 
         def wait_until_present
-          (browser.span text: "Continue").wait_until_present 7
+          (ElementWrapper.new browser.span text: "Continue").wait_until_present 7
         end
 
         def continue
@@ -81,6 +81,8 @@ module Stamps
           grid = Orders::Grid::OrdersGrid.new param
           welcome_orders_page = OrdersWelcomeModal.new param
           market_place = Orders::Stores::MarketPlace.new param
+
+          # Add your Store or Market place instead of Welcome Modal
 
           30.times do
             username_textbox.wait_until_present

@@ -6,6 +6,8 @@ module Stamps
   class HealthCheck < Browser::Modal
 
     def health_check
+      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+
       case ENV['URL'].downcase
         when /sc/
           logger.message "-"
@@ -31,7 +33,7 @@ module Stamps
           logger.message "-"
           logger.message "-"
 
-        when /staging/
+        when /stg/
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
@@ -53,6 +55,8 @@ module Stamps
     end
 
     def address_book
+      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+
       case ENV['URL'].downcase
         when /sc/
           logger.message "Print - Address Book"
@@ -74,7 +78,7 @@ module Stamps
           logger.message "-"
           logger.message "-"
 
-        when /staging/
+        when /stg/
           logger.message "Print - Address Book"
           browser.goto "https://print.testing.stamps.com/addressbook/healthcheck.aspx"
           logger.message "#{browser.url}"
@@ -94,6 +98,8 @@ module Stamps
     end
 
     def or_reports
+      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+
       case ENV['URL'].downcase
         when /sc/
           logger.message "OR - Reports"
@@ -115,7 +121,7 @@ module Stamps
           logger.message "-"
           logger.message "-"
 
-        when /staging/
+        when /stg/
           logger.message "OR - Reports"
           browser.goto "https://or.staging.stamps.com/orreports/healthcheck.aspx"
           logger.message "#{browser.url}"
@@ -135,6 +141,8 @@ module Stamps
     end
 
     def or_postage_tools
+      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+
       case ENV['URL'].downcase
         when /sc/
           logger.message "OR - Postage Tools"
@@ -156,7 +164,7 @@ module Stamps
           logger.message "-"
           logger.message "-"
 
-        when /staging/
+        when /stg/
           logger.message "OR - Postage Tools"
           browser.goto "https://or.staging.stamps.com/postagetools/healthcheck.aspx"
           logger.message "#{browser.url}"

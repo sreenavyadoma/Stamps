@@ -2,14 +2,14 @@ module Stamps
   module Pam
     class PaymentAdministratorManager < Browser::Modal
       def visit
+        ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+
         case ENV['URL'].downcase
           when /cc/
             url = "http://qa-clientsite:82/pam/"
           when /sc/
             url = "http://site.qasc.stamps.com:82/pam/"
           when /stg/
-            url = "https://site.staging.stamps.com:82/pam/"
-          when /staging/
             url = "https://site.staging.stamps.com:82/pam/"
           else
             stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
@@ -31,14 +31,16 @@ module Stamps
       end
 
       def customer_search
-        search = Pam::CustomerSearch.new param
+        ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+
+        customer_search_page = Pam::CustomerSearch.new param
 
         case ENV['URL'].downcase
           when /cc/
             url = "http://qa-clientsite:82/pam/AccountSearch.asp"
           when /sc/
             url = "http://site.qasc.stamps.com:82/pam/AccountSearch.asp"
-          when /staging/
+          when /stg/
             url = "https://site.staging.stamps.com:82/pam/AccountSearch.asp"
           else
             stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
@@ -49,7 +51,7 @@ module Stamps
         30.times do
           #search.wait_until_present
           sleep 2
-          return search if search.present?
+          return customer_search_page if customer_search_page.present?
         end
       end
     end
