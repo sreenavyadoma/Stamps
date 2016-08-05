@@ -31,7 +31,7 @@ module Stamps
       end
 
       def customer_search
-        search = CustomerSearch.new param
+        search = Pam::CustomerSearch.new param
 
         case ENV['URL'].downcase
           when /cc/

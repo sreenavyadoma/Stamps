@@ -37,7 +37,7 @@ Feature: "Country" grid column should appear to left of "Address" column by defa
     Then Registration Membership: Submit
 
     Then Pause for 2 seconds
-    Then Registration Profile: Choose Supplies: Place Order
+    Then Registration Choose Supplies: Place Order
 
     Then PAM: Customer Search: Search for username random
 

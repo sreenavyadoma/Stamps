@@ -269,7 +269,7 @@ Then /^Registration Profile: Continue to Mailing Information Page$/ do
   end
 end
 
-Then /^Registration Profile: Choose Supplies: Place Order$/ do
+Then /^Registration Choose Supplies: Place Order$/ do
   raise "Choose Supplies:  Place Order - ILLEGAL STATE EXECPTION!  Check your test" if @registration_result.nil?
   case @registration_result
     when WebReg::UserIdTaken

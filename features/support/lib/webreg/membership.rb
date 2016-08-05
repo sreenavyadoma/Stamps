@@ -449,7 +449,7 @@ module Stamps
         loading = ElementWrapper.new browser.button(text: "Loading...")
         20.times do
           submit_button.safe_click
-          sleep 1
+          loading.safely_wait_while_present 3
           return userid_taken if userid_taken.present?
           return supplies if supplies.present?
           return download_page if download_page.present?

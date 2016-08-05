@@ -37,7 +37,7 @@ Feature: Registration
     Then Pause for 1 second
     Then Registration Membership: Submit
     Then Pause for 2 seconds
-    Then Registration Profile: Choose Supplies: Place Order
+    Then Registration Choose Supplies: Place Order
 
     Then PAM: Customer Search: Search for username random
 

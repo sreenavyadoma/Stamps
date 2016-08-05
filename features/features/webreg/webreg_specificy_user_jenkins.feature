@@ -35,7 +35,7 @@ Feature: Registration
     Then Registration Membership: Set Terms & Conditions to Checked
 
     Then Registration Membership: Submit
-    Then Registration Profile: Choose Supplies: Place Order
+    Then Registration Choose Supplies: Place Order
 
     Then PAM: Customer Search: Search for username random
     Then PAM: Customer Profile: Click Change Meter Limit link
