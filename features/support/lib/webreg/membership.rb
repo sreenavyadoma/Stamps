@@ -420,7 +420,7 @@ module Stamps
         @expiration_month ||= ExpirationMonth.new param
         @expiration_year ||= ExpirationYear.new param
         checkbox_field = browser.text_field id: "useMailingAddressForBilling"
-        @billing_same_as_mailing ||= Stamps::Browser::CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
+        @billing_same_as_mailing ||= Browser::CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
         @terms_and_conditions ||= TermsAndConditions.new param
         @back ||= ElementWrapper.new browser.button(id: "prev")
 
@@ -447,9 +447,12 @@ module Stamps
 
       def submit
         loading = ElementWrapper.new browser.button(text: "Loading...")
+        page_header = ElementWrapper.new browser.h1 text: 'Customize your Welcome Kit'
         20.times do
+          submit_button.safely_wait_until_present 4
           submit_button.safe_click
           loading.safely_wait_while_present 3
+          page_header.safely_wait_until_present 10
           return userid_taken if userid_taken.present?
           return supplies if supplies.present?
           return download_page if download_page.present?

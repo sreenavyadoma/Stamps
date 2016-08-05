@@ -34,9 +34,7 @@ Feature: Registration
     Then Registration Membership: Set Billing address same as mailing address to Checked
     Then Registration Membership: Set Terms & Conditions to Checked
 
-    Then Pause for 1 second
     Then Registration Membership: Submit
-    Then Pause for 2 seconds
     Then Registration Choose Supplies: Place Order
 
     Then PAM: Customer Search: Search for username random
