@@ -2,7 +2,7 @@ module Stamps
   module WebReg
     class DownloadPage < Browser::Modal
       def element
-        ElementWrapper.new browser.h1 css: "div[class*=main-content-container]>div>div#page>h1"
+        ElementWrapper.new browser.h1 css: "div>h1"
       end
 
       def present?
