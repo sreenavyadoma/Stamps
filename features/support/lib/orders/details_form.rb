@@ -1468,6 +1468,7 @@ module Stamps
 
         def select selection
           logger.info "Select Service #{selection}"
+          selected_service = ""
           box = text_box
           button = drop_down
 
@@ -1489,6 +1490,7 @@ module Stamps
             end
           end
           logger.info "#{selection} service selected."
+          raise "Unable to select service #{selection}! Selected service textbox containts #{selected_service}" unless selected_service.include? selection
           selection_label # selection_label.field.table.tbody.tr.tds[2].text
         end
 
