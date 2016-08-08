@@ -20,7 +20,9 @@ xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
-xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
+
+registration: --tags @registration --guess VERBOSE=true HEALTHCHECK=true
+registration_pam: --tags @registration_pam --guess VERBOSE=false HEALTHCHECK=true
 
 details_non_integer_lbs: --tags @details_non_integer_lbs --guess VERBOSE=false HEALTHCHECK=true
 grid_order_status: --tags @grid_order_status --guess VERBOSE=false HEALTHCHECK=true
@@ -167,7 +169,6 @@ grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=true
 grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=true
 import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=true
 pagination: --tags @pagination --guess VERBOSE=false HEALTHCHECK=true
-registration: --tags @registration --guess VERBOSE=true HEALTHCHECK=true
 webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess VERBOSE=false HEALTHCHECK=true
 general_settings: --tags @general_settings --guess VERBOSE=false HEALTHCHECK=true
 print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=true

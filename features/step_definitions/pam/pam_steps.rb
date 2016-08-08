@@ -35,11 +35,11 @@ Then /^PAM: Customer Search: Click Search button$/ do
   logger.info "PAM: Customer Search: Click Search button"
 
   5.times do
-    search_result = @customer_search.search
-    if search_result.instance_of? Pam::CustomerProfile
-      @customer_profile = search_result
+    @customer_profile = @customer_search.search
+    if @customer_profile.instance_of? Pam::CustomerProfile
       if @customer_profile.present?
         @pam_customer_profile_found = true
+        break
       else
         step "PAM: Customer Search: Set username to #{@username}"
         step "PAM: Customer Search: Set 5.2 or lower"
@@ -48,14 +48,18 @@ Then /^PAM: Customer Search: Click Search button$/ do
     else
       @pam_customer_profile_found = false
     end
-
   end
 
 end
 
 Then /^PAM: Customer Search: Verify user is found$/ do
   expectation = "Customer was found"
-  actual_value = "Customer was not found!" unless ((@customer_profile.instance_of? Pam::CustomerProfile) || @customer_profile.present?)
+
+  if ((@customer_profile.instance_of? Pam::CustomerProfile) || @customer_profile.present?)
+    actual_value = expectation
+  else
+    actual_value = "Customer was not found!"
+  end
   expectation.should eql actual_value
 end
 
