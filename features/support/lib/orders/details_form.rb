@@ -4,7 +4,7 @@ module Stamps
       class OrderForm < Browser::Modal
         def blur_out
           item_label = ElementWrapper.new browser.label text: 'Insure For $:'
-          10.times {
+          3.times {
             begin
               item_label.element.click
               item_label.element.double_click
