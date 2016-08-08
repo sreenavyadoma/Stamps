@@ -49,6 +49,14 @@ module Stamps
       def available_postage
         ElementWrapper.new browser.td(css: "form[name=FrmOne]>table:nth-child(7)>tbody>tr>td>table>tbody>tr:nth-child(2)>td:nth-child(6)")
       end
+
+      def status_reason
+        (ElementWrapper.new (browser.td text: "Account Status").parent.parent.trs[3].tds[1]).text
+      end
+
+      def license_status
+        (ElementWrapper.new (browser.td text: "Account Status").parent.parent.trs[4].tds[1]).text
+      end
     end
 
     class CustomerProfileNotFound < Browser::Modal
