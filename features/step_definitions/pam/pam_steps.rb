@@ -1,23 +1,4 @@
 
-Then /^PAM: Customer Search: Search for username (.*)$/ do |username|
-  logger.info "PAM: Customer Search: Search for username #{username}"
-  #step "PAM: Load Customer Search Page"
-  if username.downcase.include? "random"
-    usr = @username
-  else
-    usr = username
-    @username = username
-  end
-
-  15.times do
-    step "PAM: Load Customer Search Page"
-    step "PAM: Customer Search: Set username to #{usr}"
-    step "PAM: Customer Search: Set 5.2 or lower"
-    step "PAM: Customer Search: Click Search button"
-    break if @customer_profile.instance_of? Pam::CustomerProfile
-  end
-end
-
 Then /^PAM: Load PAM Page$/ do
   logger.info "PAM: Load PAM Page"
   pam.visit
@@ -31,6 +12,7 @@ end
 
 Then /^PAM: Customer Search: Set username to (.*)$/ do |username|
   logger.info "PAM: Customer Search: Set username to #{username}"
+
   if username.downcase.include? "random"
     usr = @username
   else
@@ -51,19 +33,30 @@ end
 
 Then /^PAM: Customer Search: Click Search button$/ do
   logger.info "PAM: Customer Search: Click Search button"
-  step "PAM: Load Customer Search Page" if @customer_search.nil?
-  search_result = @customer_search.search
-  case search_result
-    when Pam::CustomerProfile
+
+  5.times do
+    search_result = @customer_search.search
+    if search_result.instance_of? Pam::CustomerProfile
       @customer_profile = search_result
-      @pam_customer_profile_found = @customer_profile.present?
+      if @customer_profile.present?
+        @pam_customer_profile_found = true
+      else
+        step "PAM: Customer Search: Set username to #{@username}"
+        step "PAM: Customer Search: Set 5.2 or lower"
+        step "PAM: Customer Search: Click Search button"
+      end
     else
       @pam_customer_profile_found = false
+    end
+
   end
 
-  begin
-    logger.info "PAM CUSTOMER SEARCH RESULT:  NOT FOUND!"
-  end unless @pam_customer_profile_found
+end
+
+Then /^PAM: Customer Search: Verify user is found$/ do
+  expectation = "Customer was found"
+  actual_value = "Customer was not found!" unless ((@customer_profile.instance_of? Pam::CustomerProfile) || @customer_profile.present?)
+  expectation.should eql actual_value
 end
 
 Then /^PAM: Customer Profile: Click Change Meter Limit link$/ do
