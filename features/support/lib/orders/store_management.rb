@@ -7,7 +7,7 @@ module Stamps
         end
 
         def message
-          browser_helper.text browser.div(css: "div[id^=messagebox-][id$=-msg]")
+          element_helper.text browser.div(css: "div[id^=messagebox-][id$=-msg]")
         end
 
         def ok
@@ -432,13 +432,13 @@ module Stamps
                 row_to_delete = 0
                 begin
                   row = ElementWrapper.new tables[row_to_delete]
-                  grid_item_name = browser_helper.text row
+                  grid_item_name = element_helper.text row
                   logger.info "#{index} Delete Item - #{grid_item_name}"
 
                   if grid_item_name.include? "Manual Orders"
                     logger.info "#{index} Skipping #{grid_item_name}"
                     row = ElementWrapper.new tables[row_to_delete+1]
-                    grid_item_name = browser_helper.text row
+                    grid_item_name = element_helper.text row
                     logger.info "#{index} Delete Item - #{grid_item_name}"
                   end
 

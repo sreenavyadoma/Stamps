@@ -4,7 +4,7 @@ module Stamps
       class CustomsForm < Browser::Modal
 
         def close
-          browser_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
+          element_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
         end
 
         def wait_until_present
@@ -72,7 +72,7 @@ module Stamps
         def usps_privacy_act_statement
           privacy_statement = Print::Postage::UspsPrivactActStatementModal.new param
           5.times{
-            browser_helper.safe_click privacy_act_statement_link
+            element_helper.safe_click privacy_act_statement_link
             return privacy_statement if privacy_statement.present?
           }
         end
@@ -84,7 +84,7 @@ module Stamps
         def restrictions_and_prohibitions
           restrictions_link = Print::Postage::RestrictionsAndProhibitionsModal.new param
           5.times{
-            browser_helper.safe_click restrictions_prohibitions_link
+            element_helper.safe_click restrictions_prohibitions_link
             return restrictions_link if restrictions_link.present?
           }
         end
@@ -93,7 +93,7 @@ module Stamps
           add_item_modal = Print::Postage::AddItemModal.new param
           button = ElementWrapper.new browser.span text: "Add Item"
           5.times do
-            browser_helper.safe_click button
+            element_helper.safe_click button
             return add_item_modal if add_item_modal.present?
           end
 
@@ -104,7 +104,7 @@ module Stamps
           edit_item_modal = Print::Postage::EditItemModal.new param
           button = ElementWrapper.new browser.span text: "Edit Item"
           5.times do
-            browser_helper.safe_click button
+            element_helper.safe_click button
             return edit_item_modal if edit_item_modal.present?
           end
 
@@ -113,7 +113,7 @@ module Stamps
 
         def delete
           button = ElementWrapper.new browser.span text: "Delete"
-          browser_helper.safe_click button
+          element_helper.safe_click button
         end
 
         def delete_all
@@ -121,7 +121,7 @@ module Stamps
           for i in 0..1000
             break if rows[i].present? == false
             sleep 1
-            browser_helper.safe_click rows[i]
+            element_helper.safe_click rows[i]
             delete
           end
         end
@@ -131,7 +131,7 @@ module Stamps
       class AddItemModal < Browser::Modal
         def close
           buttons = browser.imgs css: "img[class*='x-tool-img x-tool-close']"
-          browser_helper.safe_click buttons.last
+          element_helper.safe_click buttons.last
         end
 
         def wait_until_present
@@ -144,7 +144,7 @@ module Stamps
 
         def save
           buttons = browser.spans text: "Save"
-          browser_helper.safe_click buttons.last
+          element_helper.safe_click buttons.last
         end
 
         def window_title

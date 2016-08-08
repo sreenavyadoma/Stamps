@@ -115,7 +115,7 @@ module Stamps
       end
 
       def awaiting_shipment_count
-        browser_helper.text(browser.div css: "div.sdc-badge").to_i
+        element_helper.text(browser.div css: "div.sdc-badge").to_i
       end
 
       def awaiting_shipment
@@ -152,7 +152,7 @@ module Stamps
       end
 
       def get_closed_filter_name
-        browser_helper.text filter_panel_header_name #, 'Filter Panel - Panel Header Name'
+        element_helper.text filter_panel_header_name #, 'Filter Panel - Panel Header Name'
       end
 
       def get_arrow_direction
@@ -165,11 +165,11 @@ module Stamps
       end
 
       def click_closed_filter_panel
-        browser_helper.safe_click closed_filter_panel
+        element_helper.safe_click closed_filter_panel
       end
 
       def get_selected_filter_text
-        browser_helper.text selected_filter_button #, 'Selected Filter'
+        element_helper.text selected_filter_button #, 'Selected Filter'
       end
 
       def is_order_grid_filtered(filter)
@@ -186,7 +186,7 @@ module Stamps
       end
 
       def click_border_arrow
-        browser_helper.safe_click filter_panel_border_arrow
+        element_helper.safe_click filter_panel_border_arrow
       end
 
       def is_header_arrow_present

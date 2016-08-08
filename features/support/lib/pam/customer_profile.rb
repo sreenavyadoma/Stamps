@@ -59,8 +59,8 @@ module Stamps
       end
 
       def message
-        first = browser_helper.text (browser.td class: "TD3")
-        second = browser_helper.text (browser.td css: "td[class=TD3][align=left]")
+        first = element_helper.text (browser.td class: "TD3")
+        second = element_helper.text (browser.td css: "td[class=TD3][align=left]")
         "#{first}#{second}"
       end
     end

@@ -75,7 +75,7 @@ module Stamps
             20.times do
               drop_down.safe_click unless sign_out_link.present?
               drop_down.element.hover
-              browser_helper.safe_click sign_out_link if sign_out_link.present?
+              element_helper.safe_click sign_out_link if sign_out_link.present?
               return if browser.url.include? "SignIn"
             end
           end

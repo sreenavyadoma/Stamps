@@ -5,7 +5,7 @@ module Stamps
       class ExtraServices < Browser::Modal
 
         def close
-          browser_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
+          element_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
         end
 
         def wait_until_present
@@ -82,7 +82,7 @@ module Stamps
         end
 
         def close_window
-          browser_helper.safe_click window_x_button
+          element_helper.safe_click window_x_button
         end
 
         def x_button_present?

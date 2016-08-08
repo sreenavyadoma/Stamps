@@ -278,25 +278,22 @@ Then /^Registration Choose Supplies: Place Order$/ do
       raise "USER ID IS TAKEN!  #{message}"
     when WebReg::ChooseSupplies
       if @registration_result.present?
-        welcome_page = @registration_result.place_order
+        download_page = @registration_result.place_order
 
         # wait 10 seconds if welcome page is not present
         10.times do
-          if welcome_page.present?
+          if download_page.present?
             break
           else
             sleep 1
           end
         end
 
-        if welcome_page.present?
+        if download_page.present?
           step "Registration Profile:  Send username to standard out"
         end
       end
-    when WebReg::DownloadPage
-      logger.info"Congratulations on your new account!"
     else
       #do nothing
   end
 end
-

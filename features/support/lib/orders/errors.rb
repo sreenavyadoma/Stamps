@@ -8,14 +8,14 @@ module Stamps
 
       def message
         logger.info "Server Error"
-        browser_helper.text browser.divs(css: "div[id^=dialoguemodal-][id$=-body][class*=sdc-warning]>div>div").last
+        element_helper.text browser.divs(css: "div[id^=dialoguemodal-][id$=-body][class*=sdc-warning]>div>div").last
       end
 
       def ok
         20.times do
           button = browser.spans(text: "OK").last
-          browser_helper.safe_click button
-          browser_helper.safe_click button
+          element_helper.safe_click button
+          element_helper.safe_click button
           sleep 1
           break unless present?
         end
@@ -56,7 +56,7 @@ module Stamps
       def ok
         5.times {
           begin
-            browser_helper.safe_click ok_button_span
+            element_helper.safe_click ok_button_span
             break unless ok_button_span.present?
           rescue
             #ignore
@@ -65,7 +65,7 @@ module Stamps
       end
 
       def error_message
-        error_message = browser_helper.text error_message_label
+        error_message = element_helper.text error_message_label
 
         logger.info "----  Order Errors  ----"
         logger.info error_message
@@ -108,7 +108,7 @@ module Stamps
       end
 
       def error_message
-        browser_helper.text browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+        element_helper.text browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
       end
 
       def present?
@@ -118,7 +118,7 @@ module Stamps
       def continue
         5.times{
           begin
-            browser_helper.safe_click continue_button
+            element_helper.safe_click continue_button
             break unless continue_button.present?
           rescue
             #ignore
@@ -130,7 +130,7 @@ module Stamps
       def cancel
         5.times{
           begin
-            browser_helper.safe_click cancel_button
+            element_helper.safe_click cancel_button
             break unless cancel_button.present?
           rescue
             #ignore
@@ -140,7 +140,7 @@ module Stamps
 
       def close_window
         5.times{
-          browser_helper.safe_click window_title
+          element_helper.safe_click window_title
           brea
         }
       end
@@ -173,16 +173,16 @@ module Stamps
 
       def OK
         logger.info "----  Rating Error  ----"
-        logger.info browser_helper.text rating_error_p
+        logger.info element_helper.text rating_error_p
         logger.info "----  Rating Error  ----"
         5.times {
-          browser_helper.safe_click ok_button
+          element_helper.safe_click ok_button
           break unless present?
         }
       end
 
       def error_message
-        browser_helper.text rating_error_p
+        element_helper.text rating_error_p
       end
 
     end
@@ -205,7 +205,7 @@ module Stamps
       end
 
       def close
-        browser_helper.safe_click close_window_button
+        element_helper.safe_click close_window_button
       end
     end
 
@@ -223,7 +223,7 @@ module Stamps
       def present?
         err = ""
         begin
-          err = browser_helper.text error_code_p
+          err = element_helper.text error_code_p
         rescue
           #ignore
         end
@@ -251,14 +251,14 @@ module Stamps
       public
       def close
         logger.info "Closing Plugin not Installed Window"
-        browser_helper.safe_click window_x_button
+        element_helper.safe_click window_x_button
         logger.info "Plugin not Installed Window Closed"
       end
 
       def present?
         err = ""
         begin
-          err = browser_helper.text error_message_label
+          err = element_helper.text error_message_label
         rescue
           #ignore
         end
@@ -271,7 +271,7 @@ module Stamps
       end
 
       def error_message
-        browser_helper.text error_message_label
+        element_helper.text error_message_label
       end
     end
 
@@ -292,7 +292,7 @@ module Stamps
 
       public
       def error_message
-        browser_helper.text error_message_label
+        element_helper.text error_message_label
       end
 
       def wait_until_present
@@ -307,7 +307,7 @@ module Stamps
       def present?
         err = ""
         begin
-          err = browser_helper.text error_code
+          err = element_helper.text error_code
         rescue
           #ignore
         end
@@ -323,7 +323,7 @@ module Stamps
 
       def ok
         10.times {
-          browser_helper.safe_click ok_button
+          element_helper.safe_click ok_button
           break unless present?
         }
       end

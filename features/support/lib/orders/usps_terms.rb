@@ -29,15 +29,15 @@ module Stamps
       end
 
       def click_i_agree_button
-        browser_helper.safe_click i_agree_button
+        element_helper.safe_click i_agree_button
       end
 
       def click_cancel_button
-        browser_helper.safe_click cancel_button
+        element_helper.safe_click cancel_button
       end
 
       def check_dont_show_again_checkbox
-        browser_helper.safe_click dont_show_again_checkbox
+        element_helper.safe_click dont_show_again_checkbox
       end
 
     end

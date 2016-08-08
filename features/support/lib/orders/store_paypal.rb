@@ -30,7 +30,7 @@ module Stamps
         end
 
         def text
-          browser_helper.text (browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class*=x-autocontainer-innerCt]"))
+          element_helper.text (browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class*=x-autocontainer-innerCt]"))
         end
       end
 
@@ -62,7 +62,7 @@ module Stamps
         end
 
         def text
-          browser_helper.text browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class='x-autocontainer-innerCt']")
+          element_helper.text browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class='x-autocontainer-innerCt']")
         end
 
         def email

@@ -22,7 +22,7 @@ module Stamps
 
         def ok
           5.times{
-            browser_helper.safe_click okay_button
+            element_helper.safe_click okay_button
             break unless okay_button.present?
           }
         end

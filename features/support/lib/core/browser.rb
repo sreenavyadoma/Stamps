@@ -6,14 +6,14 @@ module Stamps
 
     # A modal is a window composed of buttons, labels, text boxes, drop-downs, links, inputs, etc
     class Modal
-      attr_accessor :param, :browser, :logger, :scenario_name, :browser_helper
+      attr_accessor :param, :browser, :logger, :scenario_name, :element_helper
       def initialize param
         raise "Illegal Parameter Exception. Expecting #{ModalParam.class}, got #{param.class}" unless param.is_a? ModalParam
         @param = param
         @browser = param.browser
         @logger = param.logger
         @scenario_name = param.scenario_name
-        @browser_helper = ElementHelper
+        @element_helper = ElementHelper
       end
 
       def stop_test message
@@ -27,7 +27,7 @@ module Stamps
 
     # ElementWrapper object is primarily used to wrap elements for used on step definitions.
     class ElementWrapper
-      attr_reader :browser, :browser_helper, :element, :error_qtip_element, :error_qtip_element_attribute
+      attr_reader :browser, :element_helper, :element, :error_qtip_element, :error_qtip_element_attribute
       def initialize *args
         case args.length
           when 1
@@ -43,7 +43,7 @@ module Stamps
             stop_test "Illegal number of arguments.  Unable to create element."
         end
         @browser = @element.browser
-        @browser_helper = ElementHelper
+        @element_helper = ElementHelper
       end
 
       def url
@@ -113,7 +113,7 @@ module Stamps
       end
 
       def scroll_into_view
-        browser_helper.scroll_into_view browser, element
+        element_helper.scroll_into_view browser, element
       end
 
       def safe_scroll_into_view
@@ -182,22 +182,22 @@ module Stamps
       end
 
       def click
-        browser_helper.safe_click element
+        element_helper.safe_click element
       end
 
       def safe_click
-        browser_helper.safe_click element
+        element_helper.safe_click element
       end
 
       def double_click
-        browser_helper.double_click element
+        element_helper.double_click element
       end
 
       def safe_double_click
-        browser_helper.safe_double_click element
+        element_helper.safe_double_click element
       end
 
-      #todo look at click_while_present in browser_helper
+      #todo look at click_while_present in element_helper
       def click_while_present
         20.times{
           safe_click
@@ -214,11 +214,11 @@ module Stamps
       end
 
       def send_keys special_char
-        browser_helper.send_keys element, special_char
+        element_helper.send_keys element, special_char
       end
 
       def text
-        txt = browser_helper.text element
+        txt = element_helper.text element
         val = element.attribute_value "value"
         (txt.size>0)?txt:val
       end
@@ -300,7 +300,7 @@ module Stamps
 
     class TextBoxElement < ElementWrapper
       def set text
-        browser_helper.set element, text
+        element_helper.set element, text
         self
       end
 
@@ -331,7 +331,7 @@ module Stamps
         end
 
         5.times{
-          browser_helper.safe_click drop_down
+          element_helper.safe_click drop_down
           return selection_element if selection_element.present?
         }
       end
@@ -341,14 +341,14 @@ module Stamps
           when String
             5.times do
               selection_element = expose_selection selection
-              browser_helper.safe_click selection_element
+              element_helper.safe_click selection_element
               input_text = text_box.text
               break if input_text.include? selection
             end
           else
             2.times do
               selection_element = expose_selection selection
-              browser_helper.safe_click selection_element
+              element_helper.safe_click selection_element
             end
         end
       end

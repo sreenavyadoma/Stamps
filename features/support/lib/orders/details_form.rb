@@ -914,9 +914,9 @@ module Stamps
           field = browser.text_field name: 'OriginZip'
           case args.length
             when 0
-              browser_helper.text field
+              element_helper.text field
             when 1
-              browser_helper.set field, args[0]
+              element_helper.set field, args[0]
             else
               raise "Illegal number of arguments." if args.length > 2
           end
@@ -926,9 +926,9 @@ module Stamps
           field = (browser.text_fields name: 'FullName').last
           case args.length
             when 0
-              browser_helper.text field
+              element_helper.text field
             when 1
-              browser_helper.set field, args[0]
+              element_helper.set field, args[0]
             else
               raise "Illegal number of arguments." if args.length > 2
           end
@@ -938,9 +938,9 @@ module Stamps
           field =(browser.text_fields name: 'Company').last
           case args.length
             when 0
-              browser_helper.text field
+              element_helper.text field
             when 1
-              browser_helper.set field, args[0]
+              element_helper.set field, args[0]
             else
               raise "Illegal number of arguments." if args.length > 2
           end
@@ -950,9 +950,9 @@ module Stamps
           field = browser.text_field name: 'Street1'
           case args.length
             when 0
-              browser_helper.text field
+              element_helper.text field
             when 1
-              browser_helper.set field, args[0]
+              element_helper.set field, args[0]
             else
               raise "Illegal number of arguments." if args.length > 2
           end
@@ -962,9 +962,9 @@ module Stamps
           field = browser.text_field name: 'Street2'
           case args.length
             when 0
-              browser_helper.text field
+              element_helper.text field
             when 1
-              browser_helper.set field, args[0]
+              element_helper.set field, args[0]
             else
               raise "Illegal number of arguments." if args.length > 2
           end
@@ -974,9 +974,9 @@ module Stamps
           field = (browser.text_fields name: 'City').last
           case args.length
             when 0
-              browser_helper.text field
+              element_helper.text field
             when 1
-              browser_helper.set field, args[0]
+              element_helper.set field, args[0]
             else
               raise "Illegal number of arguments." if args.length > 2
           end
@@ -992,9 +992,9 @@ module Stamps
           field = browser.text_field name: 'Zip'
           case args.length
             when 0
-              browser_helper.text field
+              element_helper.text field
             when 1
-              browser_helper.set field, args[0]
+              element_helper.set field, args[0]
             else
               raise "Illegal number of arguments." if args.length > 2
           end
@@ -1004,9 +1004,9 @@ module Stamps
           field = (browser.text_fields css: "input[name=Phone]").last
           case args.length
             when 0
-              browser_helper.text field
+              element_helper.text field
             when 1
-              browser_helper.set field, args[0]
+              element_helper.set field, args[0]
             else
               raise "Illegal number of arguments." if args.length > 2
           end
@@ -1015,7 +1015,7 @@ module Stamps
         def save
           10.times{
             begin
-              browser_helper.safe_click save_button
+              element_helper.safe_click save_button
               sleep 1
               break unless save_button.present?
             rescue
@@ -1040,7 +1040,7 @@ module Stamps
           5.times {
             begin
               logger.info "Delete Shipping Address :: #{message_field.text}"
-              browser_helper.safe_click delete_button
+              element_helper.safe_click delete_button
             rescue
               #ignore
             end
@@ -1094,7 +1094,7 @@ module Stamps
         end
 
         def grid_cell_text(row, column)
-          browser_helper.text grid_cell(row, column) #, "grid.row#{row}.column#{column})"
+          element_helper.text grid_cell(row, column) #, "grid.row#{row}.column#{column})"
         end
 
         def close_button
@@ -1144,7 +1144,7 @@ module Stamps
         def locate_ship_from name, company, city
           rows = shipping_address_count
           1.upto rows do |row|
-            browser_helper.safe_click window_title
+            element_helper.safe_click window_title
             grid_name = name row
             grid_company = company row
             grid_city = city row
@@ -1165,8 +1165,8 @@ module Stamps
 
         def click_delete_button
           begin
-            browser_helper.safe_click delete_button if delete_button.present?
-            browser_helper.safe_click window_title
+            element_helper.safe_click delete_button if delete_button.present?
+            element_helper.safe_click window_title
           rescue
             #ignore
           end
@@ -1204,7 +1204,7 @@ module Stamps
           10.times do
             begin
               return @shipping_address_form if @shipping_address_form.present?
-              browser_helper.safe_click add_button
+              element_helper.safe_click add_button
               sleep 1
             rescue
               #ignore
@@ -1261,14 +1261,14 @@ module Stamps
 
         def select_row(row_num)
           click_row_until_selected(row_num, "class", "x-grid-item-selected")
-          browser_helper.safe_click window_title
+          element_helper.safe_click window_title
         end
 
         def click_row_until_selected(row_num, attibute, attribute_value)
           cell = grid_cell(row_num, 1)
           5.times do
             begin
-              browser_helper.safe_click cell
+              element_helper.safe_click cell
               break if checked? row_num
             rescue
               #ignore
@@ -1285,7 +1285,7 @@ module Stamps
             count = shipping_address_count
             if count > 1
               for row in 1..(count)
-                browser_helper.safe_click window_title
+                element_helper.safe_click window_title
                 delete_row 1
                 logger.info "Row #{row} :: Deleting row 1..."
                 break if shipping_address_count == 1
@@ -1303,7 +1303,7 @@ module Stamps
             10.times{
               sleep 1
               break unless close_button.present?
-              browser_helper.safe_click close_button
+              element_helper.safe_click close_button
             }
           rescue
             #ignore
@@ -1971,7 +1971,7 @@ module Stamps
 
         def open
           5.times do
-            browser_helper.safe_click field
+            element_helper.safe_click field
             break unless field.present?
           end
         end

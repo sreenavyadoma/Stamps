@@ -24,7 +24,7 @@ module Stamps
       end
 
       def message
-        browser_helper.text (browser.divs(css: "div[id^=dialoguemodal][id$=innerCt]").last)
+        element_helper.text (browser.divs(css: "div[id^=dialoguemodal][id$=innerCt]").last)
       end
     end
 
@@ -131,7 +131,7 @@ module Stamps
         def left
           10.times{
             begin
-              browser_helper.safe_click left_label_div
+              element_helper.safe_click left_label_div
               return true if label_selected? left_label_div
             rescue
               #ignore
@@ -254,7 +254,7 @@ module Stamps
 
         def date day
           date = date_field day
-          browser_helper.safe_click date
+          element_helper.safe_click date
         end
 
         def present?
@@ -462,7 +462,7 @@ module Stamps
       def title
         div = browser.div css: "div[id^=printwindow]>div[id^=title]>div[id^=title]"
         logger.info "Title: #{div}"
-        browser_helper.text div
+        element_helper.text div
       end
 
       def print_sample
@@ -498,7 +498,7 @@ module Stamps
       end
 
       def total_cost
-        ParameterHelper.remove_dollar_sign(browser_helper.text(total_label, "total"))
+        ParameterHelper.remove_dollar_sign(element_helper.text(total_label, "total"))
       end
 
       def total_label
@@ -514,7 +514,7 @@ module Stamps
             logger.info "-- Chrome NAWS Plugin Error --"
             ptags.each {|p_tag|
               if p_tag.present?
-                p_tag_text = browser_helper.text p_tag
+                p_tag_text = element_helper.text p_tag
                 logger.info "\n#{p_tag_text}"
               end
             }
@@ -577,7 +577,7 @@ module Stamps
       end
 
       def click_print_button
-        browser_helper.safe_click print_button
+        element_helper.safe_click print_button
       end
 
     end

@@ -72,7 +72,7 @@ module Stamps
         end
 
         def scroll column
-          browser_helper.scroll_into_view browser, column_name_field(column)
+          element_helper.scroll_into_view browser, column_name_field(column)
         end
 
         def column_name_field column
@@ -93,7 +93,7 @@ module Stamps
 
         def grid_text column, row
           scroll column
-          data = browser_helper.text grid_field(column, row)
+          data = element_helper.text grid_field(column, row)
           logger.info "Column #{GRID_COLUMNS[column]} Row #{row}: #{data}"
           data
         end
@@ -111,7 +111,7 @@ module Stamps
           column_str = GRID_COLUMNS[column_name]
           columns = column_fields
           columns.each_with_index do |column_field, index|
-            column_text = browser_helper.text column_field
+            column_text = element_helper.text column_field
             if column_text == column_str
               #logger.info "Grid:  #{column_str} is in column #{index+1}"
               return index+1
@@ -131,7 +131,7 @@ module Stamps
           #logger.info "Order ID: #{order_id} CSS: #{css}"
           fields = browser.divs css: css
           fields.each_with_index { |div, index|
-            row_text = browser_helper.text div
+            row_text = element_helper.text div
             if row_text.include? order_id
               row = index + 1 #row offset
               logger.info "Order ID #{order_id} is in Row #{row}"

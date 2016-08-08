@@ -13,7 +13,7 @@ module Stamps
 
         def error_message
           div = browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt][class='x-autocontainer-innerCt']").last
-          browser_helper.text div
+          element_helper.text div
         end
       end
 

@@ -6,7 +6,7 @@ module Stamps
       end
 
       def close_window
-        browser_helper.safe_click window_x_button
+        element_helper.safe_click window_x_button
       end
 
       def x_button_present?

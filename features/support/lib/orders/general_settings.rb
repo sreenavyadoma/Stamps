@@ -71,7 +71,7 @@ module Stamps
           end
 
           def enabled?
-            browser_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')
+            element_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')
           end
 
           def checkbox
@@ -216,7 +216,7 @@ module Stamps
           end
 
           def enabled?
-            browser_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
+            element_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
           end
 
           def checkbox

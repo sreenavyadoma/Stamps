@@ -75,22 +75,22 @@ module Stamps
       public
 
       def save_changes
-        browser_helper.safe_click save_button
+        element_helper.safe_click save_button
       end
 
       def select_logoff_time(duration)
-        browser_helper.safe_click logoff_time_combo
-        browser_helper.safe_click browser.li text: duration
+        element_helper.safe_click logoff_time_combo
+        element_helper.safe_click browser.li text: duration
       end
 
       def select_postdate_time(time)
-        browser_helper.safe_click postdate_time_combo
-        browser_helper.safe_click browser.li text: time
+        element_helper.safe_click postdate_time_combo
+        element_helper.safe_click browser.li text: time
       end
 
       def select_balance_notification(amount)
-        browser_helper.safe_click balance_notification_combo
-        browser_helper.safe_click browser.li text: amount
+        element_helper.safe_click balance_notification_combo
+        element_helper.safe_click browser.li text: amount
       end
 
       def get_logoff_time
@@ -173,7 +173,7 @@ module Stamps
           if box_checked?(number)
             break
           else
-            browser_helper.safe_click checkbox
+            element_helper.safe_click checkbox
           end
         end
       end
@@ -190,7 +190,7 @@ module Stamps
 
         5.times do
           if box_checked?(number)
-            browser_helper.safe_click checkbox
+            element_helper.safe_click checkbox
           else
             break
           end

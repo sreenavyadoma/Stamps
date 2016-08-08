@@ -358,7 +358,7 @@ module Stamps
       end
 
       def message
-        browser_helper.text ((browser.ps id: "topMessage").last)
+        element_helper.text ((browser.ps id: "topMessage").last)
       end
 
       def user_id
@@ -367,19 +367,6 @@ module Stamps
 
       def continue
         ElementWrapper.new browser.button(id: "btnUserNameTakenContinue")
-      end
-    end
-
-    class DownloadPage < Browser::Modal
-      def present?
-        (browser.h1 text: "Congratulations on your new account!").present?
-      end
-
-      def wait_until_present
-        20.times do
-          break if present?
-          sleep 1
-        end
       end
     end
 
@@ -428,7 +415,6 @@ module Stamps
         @supplies = ChooseSupplies.new param
         @userid_taken = UserIdTaken.new param
         @download_page = DownloadPage.new param
-
         @membership_error = MembershipError.new param
       end
 

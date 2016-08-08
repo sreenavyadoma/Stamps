@@ -73,7 +73,7 @@ module Stamps
           def left
             10.times{
               begin
-                browser_helper.safe_click left_label_div
+                element_helper.safe_click left_label_div
                 return true if label_selected? left_label_div
               rescue
                 #ignore
@@ -85,7 +85,7 @@ module Stamps
           def right
             10.times{
               begin
-                browser_helper.safe_click right_label_div
+                element_helper.safe_click right_label_div
                 return true if label_selected? right_label_div
               rescue
                 #ignore

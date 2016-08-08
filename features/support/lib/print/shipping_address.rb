@@ -4,7 +4,7 @@ module Stamps
     module Postage
       class ManageShippingAddresses < Browser::Modal
         def close
-          browser_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
+          element_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
         end
 
         def wait_until_present
