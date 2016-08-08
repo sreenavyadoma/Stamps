@@ -19,10 +19,10 @@ xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
-xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=true
 
 registration: --tags @registration --guess VERBOSE=true HEALTHCHECK=true
 registration_pam: --tags @registration_pam --guess VERBOSE=false HEALTHCHECK=true
+registration_pam_orders: --tags @registration_pam_orders --guess VERBOSE=false HEALTHCHECK=true
 
 details_non_integer_lbs: --tags @details_non_integer_lbs --guess VERBOSE=false HEALTHCHECK=true
 grid_order_status: --tags @grid_order_status --guess VERBOSE=false HEALTHCHECK=true
