@@ -20,14 +20,14 @@ Then /^Store Settings: Set Automatically Import New Orders to checked$/ do
   logger.info "Store Settings: Set Automatically Import New Orders to checked"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   sleep 1
-  @store_settings.automatically_import_new_orders.check
+  @store_settings.automatically_import_new_web_apps.orders.check
 end
 
 Then /^Store Settings: Uncheck Automatically Import New Orders$/ do
   logger.info "Store Settings: Uncheck Automatically Import New Orders"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
   sleep 1
-  @store_settings.automatically_import_new_orders.uncheck
+  @store_settings.automatically_import_new_web_apps.orders.uncheck
 end
 
 Then /^Store Settings: Save$/ do

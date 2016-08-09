@@ -1,5 +1,15 @@
 module Stamps
   class StampsWebApps < Browser::Modal
+
+    attr_reader :navigation_bar
+
+    def initialize param
+      super param
+      @navigation_bar ||= Navigation::NavigationBar.new param
+      @orders ||= WebOrders.new param
+      @mail ||= WebMail.new param
+    end
+
     def visit page
       raise "Don't forget to LAUNCH YOUR BROWSER FIRST!" if browser.nil?
 
@@ -33,6 +43,30 @@ module Stamps
 
       browser.goto url
       logger.info "Page loaded: #{browser.url}"
+    end
+
+    def orders
+      begin
+        @orders
+      rescue Exception => e
+        logger.error ""
+        logger.error "#{e.message}"
+        logger.error "#{e.backtrace.join "\n"}"
+        logger.error ""
+        raise e
+      end
+    end
+
+    def mail
+      begin
+        @mail
+      rescue Exception => e
+        logger.error ""
+        logger.error "#{e.message}"
+        logger.error "#{e.backtrace.join "\n"}"
+        logger.error ""
+        raise e
+      end
     end
   end
 end

@@ -1,11 +1,8 @@
 Feature: Contacts BVT
 
-
-
   Background:
     Given I am signed in as a postage shipper
 
-  @wp_bvt
   @wp_bvt_contacts
   Scenario: Contacts
 

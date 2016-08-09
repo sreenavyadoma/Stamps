@@ -37,6 +37,7 @@ Feature: Registration
 
     Then Registration Download Page: Verify download page displays Congratulations on your new account!
 
+    Then PAM: Load PAM Page
     Then PAM: Load Customer Search Page
     Then PAM Customer Search: Set username to random
     Then PAM Customer Search: Set 5.2 or lower

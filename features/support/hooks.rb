@@ -1,8 +1,9 @@
 # encoding: utf-8
 include Stamps
 include Stamps::Browser
+include Stamps::Common
 include Stamps::Orders
-include Stamps::Print
+include Stamps::Mail
 include Log4r
 include RSpec
 include RSpec::Matchers

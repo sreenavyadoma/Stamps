@@ -1,13 +1,20 @@
 module Stamps
-  module Print
+  module Mail
     class SignInModal < Browser::Modal
-      attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link
+      attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info,
+                  :signed_in_user, :invalid_msg
+
       def initialize param
         super param
-        @username_textbox ||= TextBoxElement.new browser.text_field(Print::Locators::SignIn.username)
-        @password_textbox ||= TextBoxElement.new browser.text_field(Print::Locators::SignIn.password)
+        @username_textbox ||= TextBoxElement.new browser.text_field(Locators::SignIn.username)
+        @password_textbox ||= TextBoxElement.new browser.text_field(Locators::SignIn.password)
         @sign_in_button ||= ElementWrapper.new browser.button(id: "signInButton")
         @sign_in_link ||= ElementWrapper.new browser.link(text: "Sign In")
+        @verifying_account_info = ElementWrapper.new browser.div text: "Verifying account information..."
+        @signed_in_user = ElementWrapper.new browser.span id: "userNameText"
+        @invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
+
+        @whats_new_modal = Common::WhatsNewModal.new param
       end
 
       def error
@@ -58,15 +65,15 @@ module Stamps
             logger.message "USERNAME: #{username}, PASSWORD: #{password}"
         end
 
-        verifying_account_info = ElementWrapper.new browser.div(text: "Verifying account information...")
-        signed_in_user = ElementWrapper.new browser.span(id: "userNameText")
-        invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
-
         10.times do
           username username
           password password
           login
-          sleep 2
+
+          whats_new_modal.safely_wait_until_present
+          if whats_new_modal.present?
+            whats_new_modal.close
+          end
 
           logger.info verifying_account_info.text if verifying_account_info.present?
           logger.info "Signed in username is #{signed_in_user.text}" if signed_in_user.present?
@@ -110,8 +117,8 @@ module Stamps
         end
 
         sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
-        username_textbox = TextBoxElement.new browser.text_field(Print::Locators::SignIn.username)
-        password_textbox = TextBoxElement.new browser.text_field(Print::Locators::SignIn.password)
+        username_textbox = TextBoxElement.new browser.text_field(Locators::SignIn.username)
+        password_textbox = TextBoxElement.new browser.text_field(Locators::SignIn.password)
         remember_username = Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         sign_in_button = ElementWrapper.new browser.button(id: "signInButton")
         verifying_account_info = ElementWrapper.new browser.div(text: "Verifying account information...")
@@ -174,7 +181,7 @@ module Stamps
       def forgot_username
         sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
         button = ElementWrapper.new browser.a css: "a[class*=forgotUsername]"
-        forgot_username_modal = Print::ForgotUsernameModal.new param
+        forgot_username_modal = ForgotUsernameModal.new param
         5.times do
           sign_in_link.safe_click
           button.safe_click
@@ -187,7 +194,7 @@ module Stamps
       def forgot_password
         sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
         button = ElementWrapper.new browser.a css: "a[class*=forgotPassword]"
-        forgot_password_modal = Print::ForgotPasswordModal.new param
+        forgot_password_modal = ForgotPasswordModal.new param
         5.times do
           sign_in_link.safe_click
           button.safe_click

@@ -91,7 +91,11 @@ module Stamps
       end
 
       def hover
-        element.hover
+        begin
+          element.hover
+        rescue
+          #ignore
+        end
       end
 
       def data_error_qtip

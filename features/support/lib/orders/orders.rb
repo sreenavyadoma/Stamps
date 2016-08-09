@@ -1,10 +1,9 @@
 module Stamps
   module Orders
     class WebOrders < Browser::Modal
-      attr_reader :navigation_bar, :toolbar, :landing_page, :grid, :styles, :details, :filter, :multi_order
+      attr_reader :toolbar, :landing_page, :grid, :styles, :details, :filter, :multi_order
       def initialize param
         super param
-        @navigation_bar ||= Orders::Navigation::NavigationBar.new param
         @toolbar ||= Orders::Toolbar::Toolbar.new param
         @landing_page ||= Orders::LandingPage::SignInPage.new param
         @grid ||= Orders::Grid::OrdersGrid.new param

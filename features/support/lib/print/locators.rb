@@ -1,5 +1,5 @@
 module Stamps
-  module Print
+  module Mail
     module Locators
       class SignIn
         def self.username

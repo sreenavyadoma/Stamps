@@ -1,19 +1,19 @@
 Then /^Toolbar: Add$/ do
   logger.info "Toolbar: Add"
   logger.info "Toolbar: Add"
-  @old_balance = orders.navigation_bar.balance.amount
-  orders.grid.checkbox.uncheck 1
-  @order_details = orders.toolbar.add.click
+  @old_balance = web_apps.navigation_bar.balance.amount
+  web_apps.orders.grid.checkbox.uncheck 1
+  @order_details = web_apps.orders.toolbar.add.click
   @order_id = @order_details.toolbar.order_id
   logger.info "New Order ID #{@order_id}"
-  @awaiting_shipment_count = orders.filter.awaiting_shipment_count
+  @awaiting_shipment_count = web_apps.orders.filter.awaiting_shipment_count
   @item_count = 0
   @index = 0
 end
 
 Then /^Toolbar: Move to Shipped$/ do
   logger.info "Toolbar: Move to Shipped"
-  grid = orders.grid
+  grid = web_apps.orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
   grid.order_date.sort_descending
   grid.checkbox.check_order_id @order_id
@@ -24,7 +24,7 @@ end
 
 Then /^Toolbar: Move to Canceled$/ do
   logger.info "Toolbar: Move to Canceled"
-  grid = orders.grid
+  grid = web_apps.orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
   grid.order_date.sort_descending
   grid.checkbox.check_order_id @order_id
@@ -34,7 +34,7 @@ end
 
 Then /^Toolbar: Refresh Orders$/ do
   logger.info "Toolbar: Refresh Orders"
-  orders.toolbar.refresh_orders
+  web_apps.orders.toolbar.refresh_orders
 end
 
 Then /^Print: Expect Print Modal is present$/ do
@@ -51,7 +51,7 @@ end
 
 Then /^Print: Print$/ do
   logger.info "Print"
-  print_modal = orders.toolbar.print_order.click
+  print_modal = web_apps.orders.toolbar.print_order.click
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.text_box.text
   @printer = print_modal.printer.text_box.text
@@ -61,7 +61,7 @@ end
 
 Then /^Print: Open Reprint Modal$/ do
   logger.info "RePrint"
-  @reprint_modal = orders.toolbar.reprint
+  @reprint_modal = web_apps.orders.toolbar.reprint
 end
 
 Then /^Label Unavailable:  Expect Visible$/ do
@@ -82,28 +82,28 @@ end
 
 Then /^Toolbar: Add second order$/ do
   logger.info "Toolbar: Add second order"
-  @order_details = orders.toolbar.add.click
+  @order_details = web_apps.orders.toolbar.add.click
   @order_id_2 = @order_details.toolbar.order_id
 end
 
 Then /^Toolbar: Add third order$/ do
   logger.info "Toolbar: Add third order"
-  @order_details = orders.toolbar.add.click
+  @order_details = web_apps.orders.toolbar.add.click
   @order_id_3 = @order_details.toolbar.order_id
 end
 
 Then /^Add a second order$/ do
   logger.info "Add a second order"
-  first_row_order_id = orders.grid.order_id.row 1
+  first_row_order_id = web_apps.orders.grid.order_id.row 1
   5.times{
-    @order_id_2 = orders.toolbar.add.click_shipping_address_window
+    @order_id_2 = web_apps.orders.toolbar.add.click_shipping_address_window
     if first_row_order_id.include? @order_id
       sleep(3)
     end
     break unless first_row_order_id.include? @order_id_2
   }
   logger.info "Second Order Id:  #{@order_id_2}"
-  orders.grid.checkbox.edit @order_id_2
+  web_apps.orders.grid.checkbox.edit @order_id_2
 end
 
 Then /^Fail the test$/ do
@@ -113,9 +113,9 @@ end
 
 Then /^Test Features$/ do |count|
   logger.info "Test Features"
-  orders.grid.checkbox.check_all
-  count = orders.multi_order.order_count
+  web_apps.orders.grid.checkbox.check_all
+  count = web_apps.orders.multi_order.order_count
   logger.info count
-  orders.grid.checkbox.uncheck_all
+  web_apps.orders.grid.checkbox.uncheck_all
 end
 

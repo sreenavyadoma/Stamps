@@ -20,5 +20,5 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
     Then Print: Open Reprint Modal
     Then Label Unavailable:  Expect Visible
     Then Pause for 5 seconds
-
+    Then Navigation Bar: Customer Balance
     Then Sign out

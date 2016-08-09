@@ -1,5 +1,5 @@
 module Stamps
-  module Print
+  module Mail
     class NavBar < Browser::Modal
       attr_reader :username
 

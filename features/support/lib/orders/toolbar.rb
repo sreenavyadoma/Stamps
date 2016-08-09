@@ -190,7 +190,7 @@ module Stamps
 
             # Initializing Order Database
             initializing_db = ElementWrapper.new browser.div text: "Initializing Order Database"
-            nav_bar = Orders::Navigation::NavigationBar.new param
+            nav_bar = Navigation::NavigationBar.new param
 
             sleep 2
             grid.checkbox.uncheck 1

@@ -1,7 +1,7 @@
 
 Then /^Print: Open Modal$/ do
   logger.info "Print: Open Modal"
-  @print_window = orders.toolbar.print_order.click
+  @print_window = web_apps.orders.toolbar.print_order.click
 
   if @print_window.instance_of? Orders::Toolbar::IncompleteOrderErrorModal
     logger.info @print_window.error_message
@@ -12,7 +12,7 @@ end
 
 Then /^Print: Print Incomplete Order$/ do
   logger.info "Print: Open Modal"
-  @incomplete_order_modal = orders.toolbar.print_order.click
+  @incomplete_order_modal = web_apps.orders.toolbar.print_order.click
 
   stop_test "Incomplete Order Modal did not open" unless @incomplete_order_modal.instance_of? Orders::Toolbar::IncompleteOrderErrorModal
 end
@@ -36,7 +36,7 @@ end
 
 Then /^RePrint: Reprint$/ do
   logger.info "RePrint: Reprint"
-  orders.toolbar.reprint.reprint
+  web_apps.orders.toolbar.reprint.reprint
 end
 
 Then /^Print: Set Ship Date to today$/ do
@@ -149,12 +149,12 @@ end
 
 Then /^Close Reprint Modal$/ do
   logger.info "Print: Close Modal"
-  orders.toolbar.reprint.close
+  web_apps.orders.toolbar.reprint.close
 end
 
 Then /^Close Label Unavailable Modal$/ do
   logger.info "Close Label Unavailable Modal"
-  orders.toolbar.ok.close
+  web_apps.orders.toolbar.ok.close
 end
 
 Then /^Print expecting error (.*)$/ do |error_message|
@@ -214,7 +214,7 @@ end
 
 Then /^Print raises a Printing Error/ do
   logger.info "Print raises a Printing Error"
-  expect{orders.print.print_sample_expecting_error}.to raise_error(PrintingError)
+  expect{web_apps.orders.print.print_sample_expecting_error}.to raise_error(PrintingError)
 end
 
 Then /^Print: Print Sample$/ do

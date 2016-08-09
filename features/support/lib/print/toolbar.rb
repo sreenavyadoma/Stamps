@@ -1,5 +1,5 @@
 module Stamps
-  module Print
+  module Mail
     class Toolbar < Browser::Modal
       def settings
         ElementWrapper.new (browser.span css: "span[style*='settings.png']")

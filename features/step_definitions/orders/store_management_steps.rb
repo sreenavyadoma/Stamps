@@ -1,7 +1,7 @@
 
 Then /^Manage Stores: Open Modal$/ do
   logger.info "Manage Stores: Open Modal"
-  @manage_stores = orders.toolbar.settings.manage_stores
+  @manage_stores = web_apps.orders.toolbar.settings.manage_stores
 end
 
 Then /^Manage Stores: Add$/ do

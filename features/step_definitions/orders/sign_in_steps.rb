@@ -11,7 +11,7 @@ Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
     @username = username
   end
   logger.info "I am signed in to Orders as #{usr}/#{password}"
-  orders.landing_page.first_time_sign_in usr, password
+  web_apps.orders.landing_page.first_time_sign_in usr, password
 end
 
 Given /^I am signed in to Orders$/ do
@@ -22,7 +22,7 @@ Given /^I am signed in to Orders$/ do
     step "Health Check: Print - Address Book"
   end
   step "Orders: Visit Sign-in page"
-  orders.landing_page.sign_in :default
+  web_apps.orders.landing_page.sign_in :default
   step "Navigation Bar: Customer Balance"
 end
 
@@ -34,7 +34,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
     step "Health Check: Print - Address Book"
   end
   step "Orders: Visit Sign-in page"
-  orders.landing_page.sign_in username, password
+  web_apps.orders.landing_page.sign_in username, password
   step "Navigation Bar: Customer Balance"
 end
 
@@ -47,7 +47,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, pas
     step "Health Check: Print - Address Book"
   end
   step "Orders: Visit Sign-in page"
-  orders.landing_page.sign_in username, password
+  web_apps.orders.landing_page.sign_in username, password
   step "Navigation Bar: Customer Balance"
 end
 
@@ -59,21 +59,20 @@ Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, us
     step "Health Check: Print - Address Book"
   end
   step "Orders: Visit Sign-in page #{url}"
-  orders.landing_page.sign_in username, password
+  web_apps.orders.landing_page.sign_in username, password
   step "Navigation Bar: Customer Balance"
 end
 
 Then /^Sign out$/ do
-  step "Navigation Bar: Customer Balance"
   logger.info "Sign out"
-  orders.navigation_bar.username.sign_out
+  web_apps.navigation_bar.username.sign_out
 end
 
 =begin
 Given /^Orders: Sign-in to Orders as (.*)\/(.*)/ do |username, password|
   usr = @username if username.downcase.include? "random"
   logger.info "I am signed in to Orders as #{usr}/#{password}"
-  orders.landing_page.sign_in usr, password
+  web_apps.orders.landing_page.sign_in usr, password
 end
 
 # todo refactor signin step definitions
@@ -82,6 +81,6 @@ Given /^I sign-in to Orders as (.*)\/(.*)/ do |username, password|
   step "I launched the default browser"
   step "Health Check: Print - Web Batch"
   step "Orders: Visit Sign-in page"
-  orders.landing_page.sign_in username, password
+  web_apps.orders.landing_page.sign_in username, password
 end
 =end

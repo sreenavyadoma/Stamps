@@ -109,7 +109,7 @@ module Stamps
           button = self.sign_in_button
 
           grid = Orders::Grid::OrdersGrid.new param
-          navbar = Orders::Navigation::NavigationBar.new param
+          navbar = Navigation::NavigationBar.new param #todo sign_in page should extend NavigationBar???
           welcome_orders_page = OrdersWelcomeModal.new param
           plugin_issue = ErrorStampsPluginIssue.new param
           toolbar = Orders::Toolbar::Toolbar.new param

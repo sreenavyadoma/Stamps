@@ -46,30 +46,6 @@ module Stamps
     end
   end
 
-  def orders
-    begin
-      @orders ||= WebOrders.new param
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      raise e
-    end
-  end
-
-  def postage
-    begin
-      @print_postage ||= PrintPostage.new param
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      raise e
-    end
-  end
-
   def registration
     begin
       @registration ||= WebReg::Registration.new param
@@ -112,10 +88,6 @@ module Stamps
     param.logger = test_helper.logger
     param.scenario_name = test_helper.scenario_name
     param
-  end
-
-  def print_postage
-
   end
 
   def test_helper

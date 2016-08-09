@@ -2,17 +2,17 @@
 
 Then /^Postage Stamps: Select Specify Postage Amount/ do
   logger.info "Select Stamps Specify Postage Amount"
-  @print_postage.specify_postage_amount
+  web_apps.mail.specify_postage_amount
 end
 
 Then /^Postage Stamps: Set Stamp Amount to \$(.*)$/ do |amount|
   logger.info "Set Stamps Stamp Amount to $#{amount}"
-  @print_postage.specify_postage_amount.stamp_amount.set amount
+  web_apps.mail.specify_postage_amount.stamp_amount.set amount
 end
 
 Then /^Postage Stamps: Set Specify Postage Service to (.*)/ do |service|
   logger.info "Envelopes: Set Print Postage Service to: \n #{service}"
-  @print_postage.specify_postage_service.select service
+  web_apps.mail.specify_postage_service.select service
 end
 
 Then /^Postage Stamps: Select Specify Postage Service Media Mail$/ do

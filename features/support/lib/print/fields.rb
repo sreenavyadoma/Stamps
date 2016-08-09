@@ -1,6 +1,4 @@
 module Stamps
-  module Print
-    module Postage
-    end
+  module Mail
   end
 end

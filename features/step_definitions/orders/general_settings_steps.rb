@@ -1,7 +1,7 @@
 
 Then /^Open Settings Modal$/ do
   logger.info "Open Settings Modal"
-  @general_settings = orders.toolbar.settings.general_settings
+  @general_settings = web_apps.orders.toolbar.settings.general_settings
 end
 # Services checkbox
 Then /^Settings: Check Services$/ do
