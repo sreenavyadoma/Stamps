@@ -17,7 +17,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
 
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Gift"
-    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
 

@@ -264,7 +264,7 @@ Feature: Test Development
     Then Customs: Set Package Contents to "Other"
     Then Expect Customs Form Internal Transaction # to be "Required"
 
-    Then Customs: Add Item 1, Description random, Qty 1, Price 3000, Lbs 1, Oz 1 Origin United States, Tariff 10
+    Then Customs: Add Item 1, Description random, Qty 1, Price 3000, Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs: Set ITN Number to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -286,7 +286,7 @@ Feature: Test Development
     Then Details: Select Service Priority Mail Package
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Lbs 0, Oz 1 Origin United States, Tariff 10
+    Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Close Form
     Then Print: Print
 
@@ -301,7 +301,7 @@ Feature: Test Development
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 2
     Then Details: Edit Customs Form
-    Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
@@ -314,7 +314,7 @@ Feature: Test Development
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 2
     Then Details: Edit Customs Form
-    Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Lbs 1, Oz 1 Origin United States, Tariff 100
+    Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
     Then Details: Select Service Priority Mail International Flat Rate Envelope

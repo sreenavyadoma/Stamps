@@ -166,7 +166,7 @@ Feature:  Orders Service Selection
     Then Details: Set Ounces to 1
     Then Details: Add Item 1, Qty 1, ID random, Description random
     Then Details: Edit Customs Form
-    Then Customs: Add Item 1, Description random, Qty 1, Price 1, Lbs 0, Oz 1 Origin Brazil, Tariff 1
+    Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin Brazil, Tariff 1
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
 

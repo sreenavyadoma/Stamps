@@ -30,7 +30,7 @@ Feature:  Customs Form Data Tooltip Error
     Then Customs: Expect Unit Price Tooltip Error to be Value must be greater than 0
     Then Customs: Expect Pounds Tooltip Error to be Weight cannot be 0
     Then Customs: Expect Ounces Tooltip Error to be Weight cannot be 0
-    Then Customs: Add Item 1, Description random, Qty 1, Price 50, Lbs 9, Oz 9 Origin United States, Tariff 100
+    Then Customs: Add Item 1, Description random, Qty 1, Price 50, Origin United States, Tariff 100
     Then Pause for 2 seconds
     Then Tooltips: Expect Customs Form Tooltip Error for Total Weight to be The itemized weight exceeds the package weight
     Then Customs: Close Form

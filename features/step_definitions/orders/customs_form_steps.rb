@@ -1,15 +1,13 @@
 
 
-Then /^Customs: Add Item (\d+), Description (.*), Qty (\d+), Price (.+), Lbs (\d+), Oz (\d+) Origin (.+), Tariff (.*)$/ do |item_number, description, qty, price, lbs, oz, origin_country, tariff|
-  logger.info "Customs: Add Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
+Then /^Customs: Add Item (\d+), Description (.*), Qty (\d+), Price (.+), Origin (.+), Tariff (.*)$/ do |item_number, description, qty, price, origin_country, tariff|
+  logger.info "Customs: Add Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Origin #{origin_country}, Tariff #{tariff}"
   @customs_item_grid = @customs_form.item_grid
   item = @customs_item_grid.item item_number.to_i
 
   item.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
   item.qty.set qty
   item.unit_price.set price
-  item.lbs.set lbs
-  item.oz.set oz
   item.origin.select origin_country
   item.hs_tariff.set tariff
 end
@@ -163,7 +161,7 @@ end
 
 Then /^Customs: Set More Info to \"(.+)\"$/ do |value|
   logger.info "Customs: Set More Info to #{value}"
-  @customs_form.more_info.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
+  @customs_form.more_info.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric(18): value
 end
 
 Then /^Customs: Set ITN Number to \"(.+)\"$/ do |value|
@@ -360,35 +358,7 @@ end
 
 Then /^Customs Form: Expect Total Value to be (.+)$/ do |expectation|
   logger.info "Customs Form: Expect Total Value to be #{expectation}"
-  actual_value = @customs_form.total_value
+  actual_value = @customs_form.total_value.text
   logger.info "Custom Info Actual Total Value: #{actual_value}.  Expected:  #{expectation}.  Test #{(actual_value == expectation)?'Passed':'Failed'}"
-  actual_value.should eql expectation
-end
-
-Then /^Expect Customs Form Total Pounds to be (.+)$/ do |expectation|
-  logger.info "Expect Customs Form Total Pounds to be #{expectation}"
-  item = @customs_item_grid.item 1
-  20.times do
-    sleep 1
-    actual_value = @customs_form.total_weight_lbs
-    logger.info "Custom Info Actual Total Lbs: #{actual_value}.  Expected:  #{expectation}"
-    break if actual_value == expectation
-  end
-  actual_value = @customs_form.total_weight_lbs
-  logger.info "Test #{(actual_value == expectation)?'Passed':'Failed'}"
-  actual_value.should eql expectation
-end
-
-Then /^Expect Customs Form Total Ounces to be (.+)$/ do |expectation|
-  logger.info "Expect Customs Form Total Ounces to be #{expectation}"
-  item = @customs_item_grid.item 1
-  20.times do
-    sleep 1
-    actual_value = @customs_form.total_weight_oz
-    logger.info "Custom Info Actual Total Weight(Oz): #{actual_value}.  Expected:  #{expectation}"
-    break if actual_value == expectation
-  end
-  actual_value = @customs_form.total_weight_oz
-  logger.info "Test #{(actual_value == expectation)?'Passed':'Failed'}"
   actual_value.should eql expectation
 end

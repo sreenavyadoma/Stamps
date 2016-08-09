@@ -174,148 +174,35 @@ module Stamps
         end
       end
 
-      class UnitWeightLbs < Browser::Modal
-        def initialize param, number
-          super param
-          @index = number
-        end
-
-        def text_box
-          TextBoxElement.new ((browser.text_fields name: "lbs")[@index-1]), "data-errorqtip"
-        end
-
-        def set value
-          text_field = text_box
-          value = value.to_i
-          max = value + text_field.text.to_i
-          max.times do
-            current_value = text_field.text.to_i
-            break if value == current_value
-            if value > current_value
-              increment 1
-            else
-              decrement 1
-            end
-            break if value == current_value
-          end
-          sleep 1
-          logger.info "Pounds set to #{text_field.text}"
-        end
-
-        def increment value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
-          value.to_i.times do
-            button.safe_click
-          end
-        end
-
-        def decrement value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
-          value.to_i.times do
-            button.safe_click
-          end
-        end
-      end
-
-      class UnitWeightOz < Browser::Modal
-        def initialize param, number
-          super param
-          @index = number
-        end
-
-        def text_box
-          TextBoxElement.new ((browser.text_fields name: "oz")[@index-1]), "data-errorqtip"
-        end
-
-        def set value
-          text_field = text_box
-          value = value.to_i
-          max = value + text_field.text.to_i
-          max.times do
-            current_value = text_field.text.to_i
-            break if value == current_value
-            if value > current_value
-              increment 1
-            else
-              decrement 1
-            end
-            break if value == current_value
-          end
-          sleep 1
-          logger.info "Ounces set to #{text_field.text}"
-        end
-
-        def increment value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
-          value.to_i.times do
-            button.safe_click
-          end
-        end
-
-        def decrement value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
-          value.to_i.times do
-            button.safe_click
-          end
-        end
-      end
+      attr_reader :delete, :description, :qty, :unit_price, :origin, :hs_tariff
 
       def initialize param, number
         super param
-        @index = number
+        @delete = ElementWrapper.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[number-1]
+        @description = TextBoxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[number-1]), "data-errorqtip"
+        @qty = Qty.new param, number
+        @unit_price = UnitPrice.new param, number
+        @origin = OriginCountry.new param, number
+        @hs_tariff = TextBoxElement.new (browser.text_fields name: "TariffNo")[number-1]
       end
 
       def present?
         delete.present?
       end
-
-      def delete
-        ElementWrapper.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index-1]
-      end
-
-      def description
-        TextBoxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[@index-1]), "data-errorqtip"
-      end
-
-      def qty
-        Qty.new param, @index
-      end
-
-      def unit_price
-        UnitPrice.new param, @index
-      end
-
-      def lbs
-        UnitWeightLbs.new param, @index
-      end
-
-      def oz
-        UnitWeightOz.new param, @index
-      end
-
-      def origin
-        OriginCountry.new param, @index
-      end
-
-      def hs_tariff
-        TextBoxElement.new (browser.text_fields name: "TariffNo")[@index-1]
-      end
-
     end
 
     class UspsPrivactActStatementModal < Browser::Modal
-      def window_title
-        ElementWrapper.new browser.div text: "USPS Privacy Act Statement"
+      attr_reader :window_title, :okay
+
+      def initialize param
+        super param
+        @window_title ||= ElementWrapper.new browser.div text: "USPS Privacy Act Statement"
+        @okay ||= browser.span text: "OK"
       end
 
       def present?
         window_title.present?
       end
-
-      def okay
-        browser.span text: "OK"
-      end
-
     end
 
     class RestrictionsAndProhibitionsModal < Browser::Modal
@@ -409,85 +296,51 @@ module Stamps
 
     class CustomsForm < Browser::Modal
 
-      def usps_privacy_act_warning
-        ElementWrapper.new (browser.label text: "You must agree to the USPS Privacy Act Statement")
+      attr_reader :item_grid, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
+                  :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,
+                  :restrictions_link, :restrictions_prohibitions_link, :x_button
+
+      def initialize param
+        super param
+        @item_grid ||= CustomsItemGrid.new param
+        @package_contents ||= PackageContents.new param
+        @non_delivery_options ||= NonDeliveryOptions.new param
+        @internal_transaction ||= InternalTransaction.new param
+
+        @more_info ||= TextBoxElement.new browser.text_field name: "CustomsComments"
+        @usps_privacy_act_warning ||= ElementWrapper.new (browser.label text: "You must agree to the USPS Privacy Act Statement")
+        @itn_number ||= TextBoxElement.new browser.text_field name: "AES"
+        @license ||= TextBoxElement.new browser.text_field name: "CustomsLicenseNumber"
+        @certificate ||= TextBoxElement.new browser.text_field name: "CustomsCertificateNumber"
+        @invoice ||= TextBoxElement.new browser.text_field name: "CustomsInvoiceNumber"
+        @total_value_element ||= ElementWrapper.new browser.div css: "div[id^=customswindow-][id$=-body]>div>div[id^=panel]>div>div>div>div[id^=displayfield]>div>div"
+
+        field = browser.input css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
+        verify_field = browser.div css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]"
+        @i_agree ||= CheckboxElement.new field, verify_field, "class", "checked"
+
+        @privacy_statement ||= UspsPrivactActStatementModal.new param
+        @privacy_link ||= ElementWrapper.new browser.span text: "USPS Privacy Act Statement"
+        @restrictions_link ||= RestrictionsAndProhibitionsModal.new param
+        @restrictions_prohibitions_link ||= ElementWrapper.new browser.span text: "Restrictions and Prohibitions"
+
+        @close_button ||= ElementWrapper.new browser.span text: "Close"
+        @x_button ||= ElementWrapper.new browser.image css: "img[class*='x-tool-close']"
       end
 
       def present?
-        ElementWrapper.new browser.image css: "img[class*='x-tool-close']"
+        close_button.present?
       end
 
-      def package_contents
-        PackageContents.new param
-      end
-
-      def non_delivery_options
-        NonDeliveryOptions.new param
-      end
-
-
-      def internal_transaction
-        InternalTransaction.new param
-      end
-
-      def more_info
-        TextBoxElement.new browser.text_field name: "CustomsComments"
-      end
-
-      def itn_number
-        TextBoxElement.new browser.text_field name: "AES"
-      end
-
-      def license
-        TextBoxElement.new browser.text_field name: "CustomsLicenseNumber"
-      end
-
-      def certificate
-        TextBoxElement.new browser.text_field name: "CustomsCertificateNumber"
-      end
-
-      def invoice
-        TextBoxElement.new browser.text_field name: "CustomsInvoiceNumber"
-      end
-
-      def item_grid
-        sleep 1
-        CustomsItemGrid.new param
-      end
-
-      def total_weight
-        divs = browser.divs css: "div[id^=displayfield]>div[id^=displayfield]>div[id^=displayfield]"
-        div = divs[divs.size-2]
-        weight_label = ElementWrapper.new div
-        logger.info "Total Weight: #{weight_label.text}"
-        weight_label
-      end
-
-      def total_weight_lbs
-        lbs = total_weight.text.scan(/\d+/).first
-        logger.info "Pounds: #{lbs}"
-        lbs
-      end
-
-      def total_weight_oz
-        oz = total_weight.text.scan(/\d+/).last
-        logger.info "Ounces: #{oz}"
-        oz
+      def wait_until_present
+        close_button.safely_wait_until_present 10
       end
 
       def total_value
-        ParameterHelper.remove_dollar_sign (ElementWrapper.new (browser.divs css: "div[class*=x-form-display-field-default]").last).text
-      end
-
-      def i_agree
-        field = browser.text_field css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
-        verify_field = field.parent.parent.parent
-        CheckboxElement.new field, verify_field, "class", "checked"
+        ParameterHelper.remove_dollar_sign total_value_element
       end
 
       def usps_privacy_act_statement
-        privacy_statement = UspsPrivactActStatementModal.new param
-        privacy_link = ElementWrapper.new browser.span text: "USPS Privacy Act Statement"
         5.times{
           privacy_link.safe_click
           return privacy_statement if privacy_statement.present?
@@ -495,8 +348,6 @@ module Stamps
       end
 
       def restrictions_and_prohibitions
-        restrictions_link = RestrictionsAndProhibitionsModal.new param
-        restrictions_prohibitions_link = ElementWrapper.new (browser.span text: "Restrictions and Prohibitions")
         5.times{
           restrictions_prohibitions_link.safe_click
           return restrictions_link if restrictions_link.present?
@@ -504,14 +355,12 @@ module Stamps
       end
 
       def close
-        (ElementWrapper.new browser.span text: "Close").click_while_present
+        close_button.click_while_present
       end
 
       def cancel
-        (ElementWrapper.new browser.img css: "img[class$=x-tool-close]").click_while_present
+        x_button.click_while_present
       end
     end
-
   end
-#todo-rob refactor into Customs module
 end
