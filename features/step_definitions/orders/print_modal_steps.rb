@@ -5,6 +5,7 @@ Then /^Print: Open Modal$/ do
 
   if @print_window.instance_of? Orders::Toolbar::IncompleteOrderErrorModal
     logger.info @print_window.error_message
+    @print_window.ok
     stop_test error_message
   end
 end

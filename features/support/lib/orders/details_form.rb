@@ -1474,8 +1474,7 @@ module Stamps
 
           @details_services ||= data_for(:details_services, {})
 
-          selection_field = browser.li(id: "#{@details_services[selection]}")
-          selection_label = ElementWrapper.new selection_field
+          selection_label = ElementWrapper.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
           20.times do
             begin
               button.safe_click unless selection_label.present?

@@ -11,9 +11,12 @@ module Stamps
           window_title.present?
         end
 
+        def ok
+          element_helper.click_while_present browser.span text: "OK"
+        end
+
         def error_message
-          div = browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt][class='x-autocontainer-innerCt']").last
-          element_helper.text div
+          element_helper.text browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt][class='x-autocontainer-innerCt']").last
         end
       end
 
