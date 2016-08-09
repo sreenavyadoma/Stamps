@@ -1,7 +1,6 @@
 module Stamps
   module Orders
     module Toolbar
-
       class IncompleteOrderErrorModal < Browser::Modal
         def window_title
           ElementWrapper.new (browser.divs(css: "div[id^=title]").last)
@@ -21,7 +20,6 @@ module Stamps
       end
 
       class Toolbar < Browser::Modal
-
         attr_reader :print_order, :add, :move
         def initialize param
           @print_order ||= PrintOrderButton.new param
@@ -149,11 +147,9 @@ module Stamps
           def to_awaiting_shipment
             select :awaiting_shipment
           end
-
         end
 
         class PerPage < Browser::Modal
-
           def text_box
             TextBoxElement.new browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl")
           end
