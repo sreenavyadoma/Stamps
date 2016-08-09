@@ -197,12 +197,8 @@ module Stamps
         element_helper.safe_double_click element
       end
 
-      #todo look at click_while_present in element_helper
       def click_while_present
-        20.times{
-          safe_click
-          break unless present?
-        }
+        element_helper.click_while_present element
       end
 
       def safe_send_keys special_char
@@ -447,6 +443,13 @@ module Stamps
           rescue
             #ignore
           end
+        end
+
+        def click_while_present element
+          20.times{
+            safe_click element
+            break unless element.present?
+          }
         end
 
         def visible? element
