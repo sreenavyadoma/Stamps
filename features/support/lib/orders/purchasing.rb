@@ -49,40 +49,40 @@ module Stamps
         end
 
         def buy_10
-          checkbox_field = browser.text_field id: "sdc-purchasewin-10dradio"
-          verify_field = checkbox_field.parent.parent.parent
+          checkbox_field = (browser.input id: "sdc-purchasewin-10dradio").parent.span
+          verify_field = (browser.input id: "sdc-purchasewin-10dradio").parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
           CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def buy_25
-          checkbox_field = browser.text_field id: "sdc-purchasewin-25dradio"
-          verify_field = checkbox_field.parent.parent.parent
+          checkbox_field = (browser.input id: "sdc-purchasewin-25dradio").parent.span
+          verify_field = (browser.input id: "sdc-purchasewin-25dradio").parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
           CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def buy_50
-          checkbox_field = browser.text_field id: "sdc-purchasewin-50dradio"
-          verify_field = checkbox_field.parent.parent.parent
+          checkbox_field = (browser.input id: "sdc-purchasewin-50dradio").parent.span
+          verify_field = (browser.input id: "sdc-purchasewin-50dradio").parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
           CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def buy_100
-          checkbox_field = browser.text_field id: "sdc-purchasewin-100dradio"
-          verify_field = checkbox_field.parent.parent.parent
+          checkbox_field = (browser.input id: "sdc-purchasewin-100dradio").parent.span
+          verify_field = (browser.input id: "sdc-purchasewin-100dradio").parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
           CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def buy_other value
-          checkbox_field = browser.text_field id: "sdc-purchasewin-otherdradio"
-          verify_field = checkbox_field.parent.parent.parent
+          checkbox_field = (browser.input id: "sdc-purchasewin-otherdradio").parent.span
+          verify_field = (browser.input id: "sdc-purchasewin-otherdradio").parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
           checkbox = CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
