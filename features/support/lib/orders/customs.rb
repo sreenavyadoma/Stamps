@@ -329,7 +329,7 @@ module Stamps
       end
 
       def present?
-        close_button.present?
+        item_grid.present?
       end
 
       def wait_until_present
