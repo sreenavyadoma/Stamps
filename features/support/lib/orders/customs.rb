@@ -77,19 +77,27 @@ module Stamps
 
     class CustomsItemGrid < Browser::Modal
 
+      def add_button
+        ElementWrapper.new (browser.spans text: "Add Item").last
+      end
+
+      def present?
+        add_button.present?
+      end
+
       def size
         (browser.tables css: "div[id^=associatedcustomsitems]>div[id^=singlecustomsitem]").size
       end
 
       def item number
-        add_button = ElementWrapper.new (browser.spans text: "Add Item").last
+        add = add_button
         logger.info "Item Count: #{size}"
 
         20.times{
           break if size >= number
           sleep 1
           break if size >= number
-          add_button.safe_click if number > size
+          add.safe_click if number > size
           logger.info "Item Count: #{size}"
         }
 
