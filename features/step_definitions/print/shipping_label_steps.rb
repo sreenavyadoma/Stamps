@@ -161,14 +161,14 @@ end
 
 Then /^Postage Shipping Labels: Select left side starting label/ do
   logger.info "Postage Shipping Labels: Select - Left side label"
-  selected = web_apps.mail.form_view.starting_label.left
+  selected = web_apps.mail.shipping_label.form_view.starting_label.left
   logger.info "left-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 Then /^Postage Shipping Labels: Select right side starting label/ do
   logger.info "Postage Shipping Labels: Select - Right side label"
   
-  selected = web_apps.mail.form_view.starting_label.right
+  selected = web_apps.mail.shipping_label.form_view.starting_label.right
   logger.info "right-side label was #{(selected)?'selected.':'not selected'}"
 end
 
@@ -194,47 +194,47 @@ end
 Then /^Postage Shipping Labels: Set Hide Postage Value to Checked$/ do
   logger.info "Postage Shipping Labels: Check Hide Postage Value"
   
-  web_apps.mail.form_view.hide_postage_value.check
+  web_apps.mail.shipping_label.form_view.hide_postage_value.check
 end
 
 Then /^Postage Shipping Labels: Set Hide Postage Value to Unchecked$/ do
   logger.info "Postage Shipping Labels: Uncheck Hide Postage Value"
   
-  web_apps.mail.form_view.hide_postage_value.uncheck
+  web_apps.mail.shipping_label.form_view.hide_postage_value.uncheck
 end
 
 Then /^Postage Shipping Labels: Set Print Receipt to Checked$/ do
   logger.info "Postage Shipping Labels: Check Print Receipt"
   
-  web_apps.mail.form_view.print_receipt.check
+  web_apps.mail.shipping_label.form_view.print_receipt.check
 end
 
 Then /^Postage Shipping Labels: Set Print Receipt to Unchecked$/ do
   logger.info "Postage Shipping Labels: Uncheck Print Receipt"
   
-  web_apps.mail.form_view.print_receipt.uncheck
+  web_apps.mail.shipping_label.form_view.print_receipt.uncheck
 end
 
 Then /^Postage Shipping Labels: Set Print Reference Number to Checked$/ do
   logger.info "Postage Shipping Labels: Check Print Reference Number"
   
-  web_apps.mail.form_view.print_reference_number.check
+  web_apps.mail.shipping_label.form_view.print_reference_number.check
 end
 
 Then /^Postage Shipping Labels: Set Print Reference Number to Unchecked$/ do
   logger.info "Postage Shipping Labels: Uncheck Print Reference Number"
   
-  web_apps.mail.form_view.print_reference_number.uncheck
+  web_apps.mail.shipping_label.form_view.print_reference_number.uncheck
 end
 
 Then /^Postage Shipping Labels: Set Reference Number to (.*)/ do |ref_no|
   logger.info "Set Shipping Label Reference Number to #{ref_no}"
   
-  web_apps.mail.form_view.reference_number.set ref_no
+  web_apps.mail.shipping_label.form_view.reference_number.set ref_no
 end
 
 Then /^Postage Shipping Labels: Set Cost Code to (.*)/ do |code|
   logger.info "Postage Shipping Labels: Set Cost Code to \n #{code}"
   
-  web_apps.mail.form_view.cost_code.select code
+  web_apps.mail.shipping_label.form_view.cost_code.select code
 end
