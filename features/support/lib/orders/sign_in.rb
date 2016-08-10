@@ -135,6 +135,9 @@ module Stamps
 
           raise "Username or Password is not set. Check your cucumber.yml file or Jenkins job." if username.nil? || password.nil?
 
+          logger.info "Username: #{username}"
+          logger.info "Username: #{username}"
+          logger.info "Username: #{username}"
 
           3.times do
             begin

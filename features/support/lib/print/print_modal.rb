@@ -107,7 +107,7 @@ module Stamps
 
     class PaperTray < Browser::Modal
       def text_box
-        TextBoxElement.new browser.text_field css: "input[[id*=combobox]"
+        TextBoxElement.new browser.input name: "paperTrays"
       end
 
       def drop_down
@@ -162,7 +162,7 @@ module Stamps
       end
 
       def print_expecting_rating_error
-        postage
+        #postage
         RatingError.new param.wait_until_present
       end
 
