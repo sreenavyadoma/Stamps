@@ -67,20 +67,3 @@ Then /^Sign out$/ do
   logger.info "Sign out"
   web_apps.navigation_bar.username.sign_out
 end
-
-=begin
-Given /^Orders: Sign-in to Orders as (.*)\/(.*)/ do |username, password|
-  usr = @username if username.downcase.include? "random"
-  logger.info "I am signed in to Orders as #{usr}/#{password}"
-  web_apps.orders.landing_page.sign_in usr, password
-end
-
-# todo refactor signin step definitions
-Given /^I sign-in to Orders as (.*)\/(.*)/ do |username, password|
-  logger.info "I am signed in to Orders as #{username}/#{password}"
-  step "I launched the default browser"
-  step "Health Check: Print - Web Batch"
-  step "Orders: Visit Sign-in page"
-  web_apps.orders.landing_page.sign_in username, password
-end
-=end
