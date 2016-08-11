@@ -1,4 +1,22 @@
 module Stamps
+  class BrowserSelection
+    def firefox?
+      "ff|firefox|mozilla".include? ENV['BROWSER'].downcase
+    end
+
+    def chrome?
+      "chrome|gc|google".include? ENV['BROWSER'].downcase
+    end
+
+    def ie?
+      "ie|explorer|internet explorer".include? ENV['BROWSER'].downcase
+    end
+
+    def safari?
+      "apple|osx|safari|mac".include? ENV['BROWSER'].downcase
+    end
+  end
+
   class TestHelper
     include DataMagic
 
@@ -18,17 +36,7 @@ module Stamps
 
           logger.info "Browser Selection: #{ENV['BROWSER']}"
 
-          if browser? :explorer
-            begin
-              system "taskkill /im iexplore.exe /f"
-            rescue
-              #ignore
-            end
-
-            browser = Watir::Browser.new :ie
-            @browser_name = 'Internet Explorer'
-
-          elsif browser? :firefox
+          if browser_selection.firefox?
             begin
               system "taskkill /im firefox.exe /f"
             rescue
@@ -36,11 +44,21 @@ module Stamps
             end
 
             # Launch Firefox
-            browser = Watir::Browser.new :firefox, profile: data_for(:profile, {})['firefox']
+            driver = Watir::Browser.new :firefox, profile: data_for(:profile, {})['firefox']
 
             @browser_name = 'Mozilla Firefox'
 
-          elsif browser? :chrome
+          elsif browser_selection.ie?
+            begin
+              system "taskkill /im iexplore.exe /f"
+            rescue
+              #ignore
+            end
+
+            driver = Watir::Browser.new :ie
+            @browser_name = 'Internet Explorer'
+
+          elsif browser_selection.chrome?
             begin
               system "taskkill /im chrome.exe /f"
             rescue
@@ -63,14 +81,14 @@ module Stamps
               stop_test logger.info "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
             end unless File.exist? chrome_data_dir
 
-            browser = Watir::Browser.new :chrome, :switches => ["--disable-print-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
+            driver = Watir::Browser.new :chrome, :switches => ["--disable-print-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
             @browser_name = 'Google Chrome'
 
-          elsif browser? :safari
-            browser = Watir::Browser.new :safari
+          elsif browser_selection.safari?
+            driver = Watir::Browser.new :safari
             @browser_name = 'Mac OS X - Safari'
           else
-            browser = Watir::Browser.new :ie
+            driver = Watir::Browser.new :ie
             @browser_name = 'Internet Explorer'
           end
 
@@ -79,8 +97,8 @@ module Stamps
           #driver.window.move_to 0, 0
           #driver.window.resize_to 1250, 850
 
-          browser.window.maximize
-          @browser = browser
+          driver.window.maximize
+          @browser = driver
         rescue Exception => e
           logger.error e.backtrace.join "\n"
           logger.info "Teardown: Begin tearing down test"
@@ -105,19 +123,12 @@ module Stamps
         end
       end
 
-      def browser? selection
-        case selection
-          when :firefox
-            "ff|firefox|mozilla".include? ENV['BROWSER'].downcase
-          when :chrome
-            "chrome|gc|google".include? ENV['BROWSER'].downcase
-          when :explorer
-            "ie|explorer|internet explorer".include? ENV['BROWSER'].downcase
-          when :safari
-            "apple|osx|safari|mac".include? ENV['BROWSER'].downcase
-          else
-            raise "Browser #{selection} is not a valid selection."
-        end
+      def browser_selection
+        @browser_selection ||= BrowserSelection.new
+      end
+
+      def browser
+        @browser
       end
 
       def verbose

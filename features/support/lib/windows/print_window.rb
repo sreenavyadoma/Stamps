@@ -5,13 +5,22 @@ module Stamps
 
       def present?
         print_window = RAutomation::Window.new(:title => /Print/i)
+        logger.info "Print Window Present? #{print_window.present?}"
+        logger.info "Print Window Present? #{print_window.present?}"
         begin
-          if TestHelper.browser.firefox?
-            return print_window.button(:value => "OK").exists?
-          elsif TestHelper.browser.chrome?
-            return print_window.button(:value => "&Print").exists?
-          elsif TestHelper.browser.ie?
-            return print_window.button(:value => "&Print").exists?
+          if TestHelper.browser_selection.firefox?
+            print_window.activate
+            logger.info "print_window.button(:value => \"OK\").exists? #{print_window.button(:value => "OK").exists?}"
+            print_window.activate
+            print_window.button(:value => "OK").exists?
+          elsif TestHelper.browser_selection.chrome?
+            logger.info "print_window.button(:value => \"&Print\").exists? #{print_window.button(:value => "&Print").exists?}"
+            print_window.activate
+            print_window.button(:value => "&Print").exists?
+          elsif TestHelper.browser_selection.ie?
+            logger.info "return print_window.button(:value => \"&Print\").exists? #{return print_window.button(:value => "&Print").exists?}"
+            print_window.activate
+            print_window.button(:value => "&Print").exists?
           else
             stop_test "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
           end
@@ -29,17 +38,20 @@ module Stamps
 
       def print
         print_window = RAutomation::Window.new(:title => /Print/i)
-        if TestHelper.browser.firefox?
+        logger.info "Print Window Present? #{print_window.present?}"
+        logger.info "Print Window Present? #{print_window.present?}"
+        if TestHelper.browser_selection.firefox?
           wait_until_present
           stop_test "Print Window is not open" unless present?
           print_window.activate
           print_window.button(:value => "OK").click
-        elsif TestHelper.browser.chrome?
+
+        elsif TestHelper.browser_selection.chrome?
           wait_until_present
           stop_test "Print Window is not open" unless present?
           print_window.activate
           print_window.button(:value => "&Print").click
-        elsif TestHelper.browser.ie?
+        elsif TestHelper.browser_selection.ie?
           wait_until_present
           stop_test "Print Window is not open" unless present?
           print_window.activate

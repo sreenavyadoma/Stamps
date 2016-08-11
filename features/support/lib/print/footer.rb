@@ -1,14 +1,14 @@
 module Stamps
   module Mail
     class Footer < Browser::Modal
-      attr_reader :total, :print_postage_modal, :confirm_window, :print_modal, :print_button, :sample_button
+      attr_reader :total, :print_postage_modal, :confirm_window, :windows_print, :print_button, :sample_button
 
       def initialize param
         super param
         @total ||= ElementWrapper.new browser.label id: "sdc-printpanel-totalcostlabel"
         @print_postage_modal ||= PrintPostageModal.new param
         @confirm_window = ConfirmPrint.new param
-        @print_modal = Windows::PrintWindow.new
+        @windows_print = Windows::PrintWindow.new
         @print_button ||= ElementWrapper.new browser.a css: "a[class*=sdc-printpanel-printpostagebtn]"
         @sample_button ||= ElementWrapper.new browser.a css: "a[class*=sdc-printpanel-printsamplebtn]"
       end
@@ -23,7 +23,7 @@ module Stamps
 
       def print_international
         print_button.safe_click
-
+        sleep 2
         5.times do
           sleep 1
           if confirm_window.present?
@@ -32,18 +32,20 @@ module Stamps
             confirm_window.continue
             confirm_window.continue
           end
-          break if print_modal.present?
+          break if windows_print.present?
         end
 
         8.times do
-          if print_modal.present?
+          if windows_print.present?
             break
           else
             sleep 1
           end
         end
-        raise "Unable to open international print modal." unless print_modal.present?
-        print_modal.print
+        sleep 2
+        #raise "Unable to open international print modal." unless windows_print.present?
+        logger.info "LAST CHANCE!!! #{windows_print.present?}"
+        windows_print.print
       end
 
       def open_window window

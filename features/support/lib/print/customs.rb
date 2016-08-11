@@ -15,8 +15,7 @@ module Stamps
       end
 
       def save
-        button = ElementWrapper.new (browser.spans text: "Save")[0]
-        button.safe_click
+        element_helper.click_while_present (browser.spans text: "Save").last.parent.spans[1]
       end
 
       def window_title
@@ -142,8 +141,8 @@ module Stamps
       end
 
       def save
-        buttons = browser.spans text: "Save"
-        element_helper.safe_click buttons.last
+        button = (browser.spans text: "Save").last
+        element_helper.safe_click button.parent.spans[1]
       end
 
       def window_title
