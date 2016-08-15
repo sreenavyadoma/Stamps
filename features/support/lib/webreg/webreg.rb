@@ -24,7 +24,7 @@ module Stamps
         logger.info "Visit:  #{url}"
         browser.goto url
         sign_up_for_new_account = ElementWrapper.new browser.h1(text: "Sign up for a new account")
-        sign_up_for_new_account.wait_until_present
+        sign_up_for_new_account.safely_wait_until_present 8
         logger.info "Page loaded.  #{browser.url}"
         self
       end
