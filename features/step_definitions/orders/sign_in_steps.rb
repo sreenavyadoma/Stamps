@@ -11,7 +11,16 @@ Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
     @username = username
   end
   logger.info "I am signed in to Orders as #{usr}/#{password}"
-  web_apps.orders.landing_page.first_time_sign_in usr, password
+  @market_place_modal = web_apps.orders.landing_page.first_time_sign_in usr, password
+end
+
+Then /^Orders: Expect Marketplace modal is present$/ do
+  window_title = @market_place_modal.window_title
+  window_title.should eql 'Add your Store or Marketplace'
+end
+
+Then /^Orders: Close Marketplace modal$/ do
+  @market_place_modal.close
 end
 
 Given /^I am signed in to Orders$/ do

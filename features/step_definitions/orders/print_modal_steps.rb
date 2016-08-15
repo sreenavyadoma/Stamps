@@ -167,12 +167,12 @@ Then /^Print expecting error (.*)$/ do |error_message|
 end
 
 Then /^Print expecting (.*) selected orders have errors and cannot be printed. To print the remaining orders, click Continue.$/ do |error_message|
-  logger.info "Print expecting #{error_message} selected orders have errors and cannot be printed. To print the remaining orders, click Continue."
+  logger.info "Print expecting #{error_message} selected orders have errors and cannot be printed. To mail the remaining orders, click Continue."
   order_errors = @print_window.print_expecting_error
   actual_error_message = order_errors.error_message
   order_errors.continue.print
-  logger.info "Print expecting error \"#{error_message}\" selected orders have errors and cannot be printed. To print the remaining orders, click Continue.   \nActual Error Message:  #{actual_error_message}. #{(actual_error_message.include?error_message)?'Passed':'Failed'}"
-  actual_error_message.should eql "#{error_message} selected orders have errors and cannot be printed.\nTo print the remaining orders, click Continue."
+  logger.info "Print expecting error \"#{error_message}\" selected orders have errors and cannot be printed. To mail the remaining orders, click Continue.   \nActual Error Message:  #{actual_error_message}. #{(actual_error_message.include?error_message)?'Passed':'Failed'}"
+  actual_error_message.should eql "#{error_message} selected orders have errors and cannot be printed.\nTo mail the remaining orders, click Continue."
 end
 
 Then /^Print expecting invalid address error$/ do
@@ -186,7 +186,7 @@ When /^Print expecting rating error$/ do
   error_window = @print_window.print_expecting_rating_error
   actual_error_message = error_window.error_message
   error_window.close
-  expect(actual_error_message.include? 'An error occurred while attempting to rate your print').to be true
+  expect(actual_error_message.include? 'An error occurred while attempting to rate your mail').to be true
 end
 
 When /^Print expecting some orders can not be printed$/ do
@@ -194,15 +194,15 @@ When /^Print expecting some orders can not be printed$/ do
   error_window = @print_window.print_expecting_error
   actual_error_message = error_window.error_message
   error_window.continue.print
-  expect(actual_error_message.include? 'To print the remaining orders, click Continue').to be true
+  expect(actual_error_message.include? 'To mail the remaining orders, click Continue').to be true
 end
 
 Then /^Print: Expect Modal Title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  logger.info "Print: Expect Modal Title to be \"You have #{expectation} label\(s\) ready to print\""
+  logger.info "Print: Expect Modal Title to be \"You have #{expectation} label\(s\) ready to mail\""
   actual = @print_window.labels_ready_to_print
   @print_window.close
-  logger.info "You have #{expectation} label(s) ready to print.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
-  "You have #{actual} label(s) ready to print".should eql "You have #{expectation} label(s) ready to print"
+  logger.info "You have #{expectation} label(s) ready to mail.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
+  "You have #{actual} label(s) ready to mail".should eql "You have #{expectation} label(s) ready to mail"
 end
 
 Then /^Print: Expect number of required label sheets to be (\d+)$/ do |sheets|

@@ -10,7 +10,7 @@ url_prefix:
   satya: svarma-win7.corp
   qacc:  printext.qacc
   qasc:  printext.qasc
-  staging: print.staging
+  staging: mail.staging
   rating: printext.qacc
 
 details_services:

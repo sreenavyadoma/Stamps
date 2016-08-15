@@ -450,7 +450,7 @@ module Stamps
         end
 
         def click_while_present element
-          20.times{
+          30.times{
             safe_click element
             break unless element.present?
           }

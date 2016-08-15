@@ -33,9 +33,13 @@ Feature: Registration
     Then Registration Membership: Set Terms & Conditions to Checked
     Then Registration Membership: Submit
 
+    Then Registration Profile:  Send username to standard out
+
     Then Registration Choose Supplies: Place Order
 
-    Then Registration Download Page: Verify download page displays Congratulations on your new account!
+    Then Registration Result: Wait for Download Page or Webpostage page to load
+
+    #Then Registration Download Page: Verify download page displays Congratulations on your new account!
 
     Then PAM: Load Customer Search Page
     Then PAM Customer Search: Set username to random
@@ -61,12 +65,18 @@ Feature: Registration
     Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM AppCap Overrides: Submit
 
+    Then Registration Profile:  Send username to standard out
+
     Then Health Check: Print - Web Batch
+
+    Then Registration Profile:  Send username to standard out
 
     Then Pause for 2 seconds
     Then Orders: Visit Sign-in page
     Then Orders: Sign-in as new user random/pass111
     Then Pause for 2 seconds
+    Then Orders: Expect Marketplace modal is present
+    Then Orders: Close Marketplace modal
     Then Toolbar: Add
     Then Pause for 1 second
     Then Open Settings Modal

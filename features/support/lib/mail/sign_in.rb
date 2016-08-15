@@ -14,7 +14,14 @@ module Stamps
         @signed_in_user = ElementWrapper.new browser.span id: "userNameText"
         @invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
 
-        @whats_new_modal = Common::WhatsNewModal.new param
+      end
+
+      def present?
+        sign_in_link.present?
+      end
+
+      def wait_until_present *args
+        sign_in_link.safely_wait_until_present *args
       end
 
       def error
@@ -69,11 +76,6 @@ module Stamps
           username username
           password password
           login
-
-          whats_new_modal.safely_wait_until_present
-          if whats_new_modal.present?
-            whats_new_modal.close
-          end
 
           logger.info verifying_account_info.text if verifying_account_info.present?
           logger.info "Signed in username is #{signed_in_user.text}" if signed_in_user.present?
@@ -204,6 +206,34 @@ module Stamps
         stop_test "Unable to open Forgot Password Modal, check your code." unless forgot_password_modal.present?
       end
 
+    end
+
+    class MailLandingPage < Browser::Modal
+      attr_reader :sign_in_modal
+
+      def initialize param
+        super param
+        @sign_in_modal ||= SignInModal.new param
+      end
+
+      def is_url_correct?
+        browser.url.include? "stamps.com/Webpostage"
+      end
+
+      def wait_until_url_loads
+        20.times do
+          sleep 1
+          break if browser.url.include? "stamps.com/Webpostage"
+        end
+      end
+
+      def present?
+        sign_in_modal.present?
+      end
+
+      def wait_until_present *args
+        sign_in_modal.wait_until_present *args
+      end
     end
   end
 end

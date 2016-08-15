@@ -193,6 +193,12 @@ module Stamps
       end
 
       class MarketPlace < Browser::Modal
+        attr_reader :window_title
+
+        def initialize param
+          super param
+          @window_title ||= ElementWrapper.new browser.div text: "Add your Store or Marketplace"
+        end
 
         def present?
           window_title.present?
@@ -208,21 +214,11 @@ module Stamps
         end
 
         def close
-          button = ElementWrapper.new ((browser.imgs css: "img[class*='x-tool-close']").last)
-          button.safe_click
-          sleep 1
-          15.times do
-            button.safe_click
-            break unless button.present?
-          end
+          (ElementWrapper.new ((browser.imgs css: "img[class*='x-tool-close']").last)).click_while_present
         end
 
         def wait_until_present
           window_title.wait_while_present
-        end
-
-        def window_title
-          ElementWrapper.new (browser.divs text: "Add your Store or Marketplace").last
         end
 
         def search_textbox

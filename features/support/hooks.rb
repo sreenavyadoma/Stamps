@@ -1,7 +1,7 @@
 # encoding: utf-8
 include Stamps
 include Stamps::Browser
-include Stamps::Common
+#include Stamps::Common
 include Stamps::Orders
 include Stamps::Mail
 include Log4r

@@ -278,21 +278,19 @@ Then /^Registration Choose Supplies: Place Order$/ do
       raise "USER ID IS TAKEN!  #{message}"
     when WebReg::ChooseSupplies
       if @registration_result.present?
-        download_page = @registration_result.place_order
-
-        # wait 10 seconds if welcome page is not present
-        10.times do
-          if download_page.present?
-            break
-          else
-            sleep 1
-          end
-        end
-
-        if download_page.present?
-          step "Registration Profile:  Send username to standard out"
-        end
+        @registration_result_page = @registration_result.place_order
       end
+    else
+      #do nothing
+  end
+end
+
+Then /^Registration Result: Wait for Download Page or Webpostage page to load$/ do
+  case @registration_result_page
+    when MailLandingPage
+      @registration_result_page.wait_until_url_loads
+    when DownloadPage::DownloadPage
+      @registration_result_page.wait_until_present 10
     else
       #do nothing
   end

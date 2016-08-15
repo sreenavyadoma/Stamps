@@ -58,19 +58,5 @@ module Stamps
         (ElementWrapper.new (browser.td text: "Account Status").parent.parent.trs[4].tds[1]).text
       end
     end
-
-    class CustomerProfileNotFound < Browser::Modal
-      def present?
-        return true if (browser.td text: "No records found.").present?
-        return true if (browser.td css: "td[class=TD3][align=left]").present?
-        false
-      end
-
-      def message
-        first = element_helper.text (browser.td class: "TD3")
-        second = element_helper.text (browser.td css: "td[class=TD3][align=left]")
-        "#{first}#{second}"
-      end
-    end
   end
 end

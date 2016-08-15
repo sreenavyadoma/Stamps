@@ -37,7 +37,7 @@ module Stamps
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
-          browser.goto "https://print.testing.stamps.com/orders/healthcheck.aspx"
+          browser.goto "https://mail.testing.stamps.com/orders/healthcheck.aspx"
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
@@ -80,7 +80,7 @@ module Stamps
 
         when /stg/
           logger.message "Print - Address Book"
-          browser.goto "https://print.testing.stamps.com/addressbook/healthcheck.aspx"
+          browser.goto "https://mail.testing.stamps.com/addressbook/healthcheck.aspx"
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Address Book: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"

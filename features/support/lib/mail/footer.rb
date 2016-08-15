@@ -43,7 +43,7 @@ module Stamps
           end
         end
         sleep 2
-        #raise "Unable to open international print modal." unless windows_print.present?
+        #raise "Unable to open international mail modal." unless windows_print.present?
         logger.info "LAST CHANCE!!! #{windows_print.present?}"
         windows_print.print
       end

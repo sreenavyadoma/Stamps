@@ -5,7 +5,7 @@ module Stamps
       def initialize param
         super param
         @toolbar ||= Orders::Toolbar::Toolbar.new param
-        @landing_page ||= Orders::LandingPage::SignInPage.new param
+        @landing_page ||= Orders::OrdersLandingPage.new param
         @grid ||= Orders::Grid::OrdersGrid.new param
         @styles ||= PageStyles.new param
         @details ||= Orders::Details::DetailsForm.new param

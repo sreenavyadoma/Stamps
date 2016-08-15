@@ -51,13 +51,18 @@ Then /^PAM Customer Search: Click Search button$/ do
   end
 end
 
+
 Then /^PAM Customer Search: Verify user is found$/ do
   expectation = "Customer was found"
 
-  if ((@customer_profile.instance_of? Pam::CustomerProfile) || @customer_profile.present?)
+  if @pam_customer_profile_found
     actual_value = expectation
   else
-    actual_value = "Customer was not found!"
+    if @customer_profile.instance_of? Pam::CustomerProfileNotFound
+      actual_value = @customer_profile.text
+    else
+      actual_value = "Customer was not found!"
+    end
   end
   expectation.should eql actual_value
 end

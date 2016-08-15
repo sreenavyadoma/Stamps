@@ -1,5 +1,30 @@
 module Stamps
   module Pam
+
+    class CustomerProfileNotFound < Browser::Modal
+      def present?
+        return true if (browser.td text: "No records found.").present?
+        return true if (browser.td css: "td[class=TD3][align=left]").present?
+        false
+      end
+
+      def message
+        first = element_helper.text (browser.td class: "TD3")
+        second = element_helper.text (browser.td css: "td[class=TD3][align=left]")
+        "#{first}#{second}"
+      end
+    end
+
+    class MeterInfoNotAvailableForAccount < Browser::Modal
+      def present?
+        browser.text.include? 'Meter info not available'
+      end
+
+      def text
+        browser.text
+      end
+    end
+
     class CustomerSearch < Browser::Modal
       def present?
         browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]").present?
@@ -39,7 +64,8 @@ module Stamps
         button = Stamps::Browser::ElementWrapper.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
         customer_profile = CustomerProfile.new param
         customer_profile_not__found = CustomerProfileNotFound.new param
-        15.times do
+        meter_info_unavailable = MeterInfoNotAvailableForAccount.new param
+        20.times do
           button.send_keys :enter
           button.safe_click
           sleep 1
@@ -48,10 +74,13 @@ module Stamps
             logger.info "PAM:  #{customer_profile_not__found.message}"
             browser.back
           end
+
         end
 
-        customer_profile if customer_profile.present?
-        customer_profile_not__found if customer_profile_not__found.present?
+        return customer_profile if customer_profile.present?
+        return customer_profile_not__found if customer_profile_not__found.present?
+
+        raise "PAM ERROR: \n #{meter_info_unavailable.text}" if meter_info_unavailable.present?
       end
     end
   end
