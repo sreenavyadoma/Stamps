@@ -46,6 +46,18 @@ module Stamps
         stop_test "Not yet implemented."
       end
 
+      def validation_message
+        element_helper.text (browser.span id: 'InvalidUsernameMsg')
+      end
+
+      def blur_out
+        element = ElementWrapper.new browser.h1 css: 'div#loginDiv>h1'
+        10.times do
+          element.safe_click
+          element.safe_double_click
+        end
+      end
+
       def first_time_sign_in usr, pw
         username_textbox = self.username
         password_textbox = self.password
@@ -65,6 +77,7 @@ module Stamps
           market_place.wait_until_present 6
           return market_place if market_place.present?
         end
+        raise validation_message if validation_message.size > 0
         raise "Market Place modal is not present" unless market_place.present?
       end
 
@@ -200,6 +213,7 @@ module Stamps
           stop_test "Stamps.com Plugin Issue"
         end
 
+        raise validation_message if validation_message.size > 0
       end
     end
   end
