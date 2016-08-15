@@ -2019,7 +2019,7 @@ module Stamps
 
         def order_id
           order_id_label = ElementWrapper.new browser.bs(css: "label>b").first
-          5.times{
+          20.times{
             begin
               order_id_str = order_id_label.text
               return order_id_str.split('#').last if order_id_str.include? '#'

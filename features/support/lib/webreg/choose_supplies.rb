@@ -18,7 +18,7 @@ module Stamps
         download_page = DownloadPage.new param
         webapps_landing_page = MailLandingPage.new param
 
-        place_order_button.safely_wait_until_present 6
+        place_order_button.safely_wait_until_present 10
 
         logger.info "Registration Page has loaded: #{browser.url}"
         logger.info welcome_kit.text
