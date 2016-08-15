@@ -65,7 +65,7 @@ module Stamps
         customer_profile = CustomerProfile.new param
         customer_profile_not__found = CustomerProfileNotFound.new param
         meter_info_unavailable = MeterInfoNotAvailableForAccount.new param
-        20.times do
+        15.times do
           button.send_keys :enter
           button.safe_click
           sleep 1
