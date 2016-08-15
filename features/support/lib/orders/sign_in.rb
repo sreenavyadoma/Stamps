@@ -55,7 +55,7 @@ module Stamps
 
         username_textbox.safely_wait_until_present 6
 
-        6.times do
+        20.times do
           username_textbox.safely_wait_until_present 2
           username_textbox.set usr
           password_textbox.set pw
@@ -65,7 +65,7 @@ module Stamps
           market_place.wait_until_present 6
           return market_place if market_place.present?
         end
-        nil
+        raise "Market Place modal is not present" unless market_place.present?
       end
 
       def sign_in *args
