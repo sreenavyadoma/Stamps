@@ -216,6 +216,10 @@ module Stamps
         @sign_in_modal ||= SignInModal.new param
       end
 
+      def url
+        browser.url
+      end
+
       def is_url_correct?
         browser.url.include? "stamps.com/Webpostage"
       end

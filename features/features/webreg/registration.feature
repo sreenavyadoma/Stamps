@@ -36,4 +36,4 @@ Feature: Registration
 
     Then Registration Membership: Submit
     Then Registration Choose Supplies: Place Order
-    Then Registration Download Page: Verify download page displays Congratulations on your new account!
+    Then Registration: Expect registration result page is either Download page or Webpostage

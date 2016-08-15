@@ -10,7 +10,7 @@ module Stamps
       end
 
       def place_order
-        place_order_button = ElementWrapper.new browser.button(text: "Place Order")
+        place_order_button = ElementWrapper.new browser.button text: "Place Order"
         page_header = browser.h1 text: 'Customize your Welcome Kit'
         welcome_kit = ElementWrapper.new page_header
         welcome_kit_message = ElementWrapper.new page_header.parent.p
@@ -20,7 +20,7 @@ module Stamps
 
         place_order_button.safely_wait_until_present 6
 
-        logger.info "Registration Page #{browser.url} has loaded"
+        logger.info "Registration Page has loaded: #{browser.url}"
         logger.info welcome_kit.text
         logger.info welcome_kit_message.text
 

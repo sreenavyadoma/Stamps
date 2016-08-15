@@ -34,20 +34,18 @@ end
 Then /^PAM Customer Search: Click Search button$/ do
   logger.info "PAM Customer Search: Click Search button"
 
-  5.times do
-    @customer_profile = @customer_search.search
-    if @customer_profile.instance_of? Pam::CustomerProfile
-      if @customer_profile.present?
-        @pam_customer_profile_found = true
-        break
-      else
-        step "PAM Customer Search: Set username to #{@username}"
-        step "PAM Customer Search: Set 5.2 or lower"
-        step "PAM Customer Search: Click Search button"
-      end
+  @customer_profile = @customer_search.search
+  if @customer_profile.instance_of? Pam::CustomerProfile
+    if @customer_profile.present?
+      @pam_customer_profile_found = true
+      break
     else
-      @pam_customer_profile_found = false
+      step "PAM Customer Search: Set username to #{@username}"
+      step "PAM Customer Search: Set 5.2 or lower"
+      step "PAM Customer Search: Click Search button"
     end
+  else
+    @pam_customer_profile_found = false
   end
 end
 
@@ -58,13 +56,16 @@ Then /^PAM Customer Search: Verify user is found$/ do
   if @pam_customer_profile_found
     actual_value = expectation
   else
-    if @customer_profile.instance_of? Pam::CustomerProfileNotFound
-      actual_value = @customer_profile.text
-    else
-      actual_value = "Customer was not found!"
+    case @customer_profile
+      when Pam::CustomerProfileNotFound
+        actual_value = @customer_profile.text
+      when Pam::MeterInfoNotAvailableForAccount
+        actual_value = @customer_profile.text
+      else
+        actual_value = "Customer was not found!"
     end
   end
-  expectation.should eql actual_value
+  actual_value.should eql expectation
 end
 
 Then /^PAM Customer Profile: Click Change Meter Limit link$/ do

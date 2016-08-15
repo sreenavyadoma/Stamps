@@ -32,21 +32,15 @@ Feature: Registration
     Then Registration Membership: Set Billing address same as mailing address to Checked
     Then Registration Membership: Set Terms & Conditions to Checked
     Then Registration Membership: Submit
-
     Then Registration Profile:  Send username to standard out
-
     Then Registration Choose Supplies: Place Order
-
     Then Registration Result: Wait for Download Page or Webpostage page to load
-
-    #Then Registration Download Page: Verify download page displays Congratulations on your new account!
+    #Then Registration: Expect registration result page is either Download page or Webpostage
 
     Then PAM: Load Customer Search Page
     Then PAM Customer Search: Set username to random
     Then PAM Customer Search: Set 5.2 or lower
     Then PAM Customer Search: Click Search button
-    Then PAM Customer Search: Verify user is found
-
     Then PAM Customer Profile: Click Change Meter Limit link
     Then PAM Change Meter Limit: Set USPS approval to Checked
     Then PAM Change Meter Limit: Set New Meter Limit to $100000

@@ -1,13 +1,13 @@
-Then /^Registration Download Page: Verify download page displays (.*)$/ do |expectation|
-  raise "Registration Download Page is not present. Order was not placed." unless registration.profile.membership.download_page.present?
-  actual_value = ""
-  begin
-    actual_value = registration.profile.membership.download_page.text
-    10.times {logger.info actual_value}
-    logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  rescue Exception => e
-    logger.error e.backtrace.join "\n"
-    actual_value = e.message
+Then /^Registration: Expect registration result page is either Download page or Webpostage$/ do
+  case @registration_result_page
+    when WebReg::DownloadPage
+      expectation = "Congratulations on your new account!"
+      actual_value = registration.profile.membership.download_page.text
+      logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+      actual_value.should eql expectation
+    when MailLandingPage
+      @registration_result_page.url.should include "stamps.com/Webpostage"
+    else
+      raise "Registration Result #{@registration_result_page.class} is not recognized"
   end
-  expectation.should eql actual_value
 end

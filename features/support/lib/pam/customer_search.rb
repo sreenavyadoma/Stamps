@@ -3,15 +3,11 @@ module Stamps
 
     class CustomerProfileNotFound < Browser::Modal
       def present?
-        return true if (browser.td text: "No records found.").present?
-        return true if (browser.td css: "td[class=TD3][align=left]").present?
-        false
+        browser.text.include? 'No records found'
       end
 
-      def message
-        first = element_helper.text (browser.td class: "TD3")
-        second = element_helper.text (browser.td css: "td[class=TD3][align=left]")
-        "#{first}#{second}"
+      def text
+        browser.text
       end
     end
 
@@ -65,22 +61,21 @@ module Stamps
         customer_profile = CustomerProfile.new param
         customer_profile_not__found = CustomerProfileNotFound.new param
         meter_info_unavailable = MeterInfoNotAvailableForAccount.new param
-        15.times do
+        count = 15
+        count.times do |counter|
           button.send_keys :enter
           button.safe_click
           sleep 1
           return customer_profile if customer_profile.present?
           if customer_profile_not__found.present?
             logger.info "PAM:  #{customer_profile_not__found.message}"
-            browser.back
+            browser.back if counter < count-1
           end
-
         end
 
         return customer_profile if customer_profile.present?
         return customer_profile_not__found if customer_profile_not__found.present?
-
-        raise "PAM ERROR: \n #{meter_info_unavailable.text}" if meter_info_unavailable.present?
+        meter_info_unavailable if meter_info_unavailable.present?
       end
     end
   end

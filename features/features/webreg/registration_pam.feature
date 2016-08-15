@@ -35,13 +35,14 @@ Feature: Registration
 
     Then Registration Choose Supplies: Place Order
 
-    Then Registration Download Page: Verify download page displays Congratulations on your new account!
+    Then Registration: Expect registration result page is either Download page or Webpostage
 
     Then PAM: Load PAM Page
     Then PAM: Load Customer Search Page
     Then PAM Customer Search: Set username to random
     Then PAM Customer Search: Set 5.2 or lower
     Then PAM Customer Search: Click Search button
+
     Then PAM Customer Search: Verify user is found
 
     Then PAM Customer Profile: Click Change Meter Limit link
