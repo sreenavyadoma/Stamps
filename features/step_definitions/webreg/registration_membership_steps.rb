@@ -341,7 +341,13 @@ end
 
 Then /^Registration Membership: Set Phone to (.*)$/ do |var|
   logger.info "Registration Membership: Set Phone to #{var}"
-  registration.profile.membership.phone.set (var.downcase.include? "random") ? ParameterHelper.random_phone : var
+  phone = registration.profile.membership.phone
+  10.times do
+    rand_phone = ParameterHelper.random_phone
+    phone.set (var.downcase.include? "random") ? rand_phone : var
+    ui_phone = phone.text
+    break if rand_phone[-4,4] == ui_phone[-4,4]
+  end
 end
 
 Then /^Registration Membership: Set Extenion to (.*)$/ do |var|
