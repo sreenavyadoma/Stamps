@@ -267,6 +267,7 @@ Then /^Registration Profile: Continue to Mailing Information Page$/ do
     sleep 1
     break if registration.profile.membership.present?
   end
+  raise "Unable to continue to Mailing Information Page" unless registration.profile.membership.present?
 end
 
 Then /^Registration Choose Supplies: Place Order$/ do
@@ -281,7 +282,7 @@ Then /^Registration Choose Supplies: Place Order$/ do
         @registration_result_page = @registration_result.place_order
       end
     else
-      #do nothing
+      raise "Unable to Place Order. Supplies page did not load"
   end
 end
 

@@ -342,11 +342,13 @@ end
 Then /^Registration Membership: Set Phone to (.*)$/ do |var|
   logger.info "Registration Membership: Set Phone to #{var}"
   phone = registration.profile.membership.phone
-  10.times do
+  6.times do
     rand_phone = ParameterHelper.random_phone
-    phone.set (var.downcase.include? "random") ? rand_phone : var
+    phone.send_keys (var.downcase.include? "random") ? rand_phone : var
+    sleep 1
     ui_phone = phone.text
-    break if rand_phone[-4,4] == ui_phone[-4,4]
+    sleep 1
+    break if ui_phone.include? '-'
   end
 end
 
