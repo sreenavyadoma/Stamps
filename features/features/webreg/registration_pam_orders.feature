@@ -66,20 +66,14 @@ Feature: Registration
     Then Registration Profile:  Send username to standard out
 
     Then Pause for 2 seconds
+
     Then Orders: Visit Sign-in page
     Then Orders: Sign-in as new user random/pass111
-    Then Pause for 2 seconds
     Then Orders: Expect Marketplace modal is present
     Then Orders: Close Marketplace modal
     Then Toolbar: Add
-    Then Pause for 1 second
-    Then Open Settings Modal
-    Then Settings:  Set Logoff to 2 hours.
-    Then Settings:  Save
-    Then Refresh Browser
-    Then Navigation Bar: Customer Balance
-    Then Refresh Browser
-    Then Navigation Bar: Wait while balance less than 5000
+    Then Pause for 3 seconds
     Then Sign out
     Then Registration Profile:  Send username to standard out
+
 

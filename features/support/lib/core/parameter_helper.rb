@@ -176,10 +176,7 @@ module Stamps
       end
 
       def random_phone
-        10.times do
-          phone = "#{Random.rand(100..999)}#{Random.rand(100..999)}#{Random.rand(1000..9999)}"
-          return phone if phone.length == 10
-        end
+        "#{Random.rand(100..999)}#{Random.rand(100..999)}#{Random.rand(1000..9999)}"
       end
 
       def random_phone_extension

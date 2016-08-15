@@ -289,7 +289,7 @@ Then /^Registration Result: Wait for Download Page or Webpostage page to load$/ 
   case @registration_result_page
     when MailLandingPage
       @registration_result_page.wait_until_url_loads
-    when DownloadPage::DownloadPage
+    when DownloadPage
       @registration_result_page.wait_until_present 10
     else
       #do nothing

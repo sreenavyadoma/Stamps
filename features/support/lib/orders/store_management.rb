@@ -204,6 +204,10 @@ module Stamps
           window_title.present?
         end
 
+        def wait_until_present *args
+          window_title.safely_wait_while_present *args
+        end
+
         def contains store_name
           images = browser.imgs(class: "data-view-selection-enabled")
           images.each do |image|
@@ -215,10 +219,6 @@ module Stamps
 
         def close
           (ElementWrapper.new ((browser.imgs css: "img[class*='x-tool-close']").last)).click_while_present
-        end
-
-        def wait_until_present
-          window_title.wait_while_present
         end
 
         def search_textbox

@@ -34,7 +34,7 @@ Feature: Registration
     Then Registration Membership: Submit
 
     Then Registration Choose Supplies: Place Order
-
+    Then Registration Profile:  Send username to standard out
     Then Registration: Expect registration result page is either Download page or Webpostage
 
     Then PAM: Load PAM Page
@@ -62,4 +62,6 @@ Feature: Registration
     Then PAM AppCap Overrides: Set International Shipping to Always On
     Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM AppCap Overrides: Submit
+    Then Registration Profile:  Send username to standard out
+
 

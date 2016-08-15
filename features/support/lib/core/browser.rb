@@ -418,7 +418,6 @@ module Stamps
         end
 
         def set element, text
-          element.wait_until_present 4 #wait 4 seconds them timeout if element is not present
           15.times do
             begin
               element.focus

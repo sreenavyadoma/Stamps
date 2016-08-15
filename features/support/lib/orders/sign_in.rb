@@ -53,13 +53,16 @@ module Stamps
 
         market_place = Orders::Stores::MarketPlace.new param
 
-        10.times do
-          username_textbox.wait_until_present
+        username_textbox.safely_wait_until_present 6
+
+        6.times do
+          username_textbox.safely_wait_until_present 2
           username_textbox.set usr
           password_textbox.set pw
           button.safe_send_keys :enter
           button.safe_click
 
+          market_place.wait_until_present 6
           return market_place if market_place.present?
         end
         nil
