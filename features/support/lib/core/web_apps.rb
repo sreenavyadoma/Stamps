@@ -32,7 +32,7 @@ module Stamps
         when /sc/
           url = "http://printext.qasc.stamps.com/#{app_name}/"
         when /stg/
-          url = "https://mail.testing.stamps.com/#{app_name}/"
+          url = "https://print.testing.stamps.com/#{app_name}/"
         when /rating/
           url = "http://printext.qacc.stamps.com/#{app_name}/"
         when /./
