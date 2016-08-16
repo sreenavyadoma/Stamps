@@ -38,7 +38,6 @@ Then /^PAM Customer Search: Click Search button$/ do
   if @customer_profile.instance_of? Pam::CustomerProfile
     if @customer_profile.present?
       @pam_customer_profile_found = true
-      break
     else
       step "PAM Customer Search: Set username to #{@username}"
       step "PAM Customer Search: Set 5.2 or lower"
