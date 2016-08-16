@@ -12,11 +12,11 @@ module Stamps
 
         case ENV['URL'].downcase
           when /cc/
-            url = "https://qa-webreg.stamps.com/registration"
+            url = "https://qa-registration.stamps.com/registration"
           when /sc/
-            url = "https://webregext.qasc.stamps.com/registration"
+            url = "https://registrationext.qasc.stamps.com/registration"
           when /stg/
-            url = "https://webreg.staging.stamps.com/registration/"
+            url = "https://registration.staging.stamps.com/registration/"
           else
             stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
         end
