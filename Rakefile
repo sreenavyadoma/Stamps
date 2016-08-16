@@ -37,18 +37,18 @@ Cucumber::Rake::Task.new(:webreg_pam_stg) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:registration_orders) do |t|
-  t.profile = 'registration_orders'
+Cucumber::Rake::Task.new(:webreg_orders) do |t|
+  t.profile = 'webreg_orders'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:registration_pam_orders) do |t|
-  t.profile = 'registration_pam_orders'
+Cucumber::Rake::Task.new(:webreg_pam_orders) do |t|
+  t.profile = 'webreg_pam_orders'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:registration_pam) do |t|
-  t.profile = 'registration_pam'
+Cucumber::Rake::Task.new(:webreg_pam) do |t|
+  t.profile = 'webreg_pam'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -656,8 +656,8 @@ Cucumber::Rake::Task.new(:pagination) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:registration) do |t|
-  t.profile = 'registration'
+Cucumber::Rake::Task.new(:webreg) do |t|
+  t.profile = 'webreg'
   t.cucumber_opts = "-p cuke_reports"
 end
 

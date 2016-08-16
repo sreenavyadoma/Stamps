@@ -2,7 +2,7 @@ Feature: Registration
   Background:
     Given I launched the default browser
 
-  @registration_pam_orders
+  @webreg_pam_orders
   Scenario:
     Then Registration Profile: Load Registration Page
     Then Registration Profile: Set User ID and Email to Random Value
@@ -35,7 +35,7 @@ Feature: Registration
     Then Registration Profile:  Send username to standard out
     Then Registration Choose Supplies: Place Order
     Then Registration Result: Wait for Download Page or Webpostage page to load
-    #Then Registration: Expect registration result page is either Download page or Webpostage
+    #Then Registration: Expect Web Registration result page is either Download page or Webpostage
 
     Then PAM: Load Customer Search Page
     Then PAM Customer Search: Set username to random

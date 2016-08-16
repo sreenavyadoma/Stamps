@@ -2,7 +2,7 @@ Feature: Registration
   Background:
     Given I launched the default browser
 
-  @registration_orders
+  @webreg_orders
   Scenario:
     Then Registration Profile: Load Registration Page
     Then Registration Profile: Set User ID and Email to Random Value

@@ -354,11 +354,11 @@ module Stamps
 
         def continue
           button = ElementWrapper.new browser.img(css: "img[src*=Continue]")
-          registration = VolusionRegistration.new param
+          webreg = VolusionRegistration.new param
           10.times do
             button.safe_click
             sleep 1
-            return registration if registration.present?
+            return webreg if webreg.present?
           end
         end
       end

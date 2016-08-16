@@ -2,7 +2,7 @@ Feature: Registration
   Background:
     Given I launched the default browser
 
-  @registration
+  @webreg
   Scenario:
     Then Registration Profile: Load Registration Page
     Then Registration Profile: Set User ID and Email to Random Value
@@ -37,6 +37,6 @@ Feature: Registration
     Then Registration Membership: Submit
     Then Registration Choose Supplies: Place Order
     Then Registration Profile:  Send username to standard out
-    Then Registration: Expect registration result page is either Download page or Webpostage
+    Then Registration: Expect Web Registration result page is either Download page or Webpostage
     Then Registration Profile:  Send username to standard out
 
