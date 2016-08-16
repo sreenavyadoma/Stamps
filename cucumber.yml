@@ -25,9 +25,9 @@ registration_pam: --tags @registration_pam --guess VERBOSE=false HEALTHCHECK=tru
 registration_pam_orders: --tags @registration_pam_orders --guess VERBOSE=false HEALTHCHECK=true
 
 
-webreg_pam_stg: --tags @registration_pam --guess VERBOSE=false HEALTHCHECK=true URL=stg
-webreg_pam_cc: --tags @registration_pam --guess VERBOSE=false HEALTHCHECK=true URL=cc
-webreg_pam_sc: --tags @registration_pam --guess VERBOSE=false HEALTHCHECK=true URL=sc
+webreg_pam_stg: --tags @registration_pam --guess VERBOSE=false HEALTHCHECK=true URL=stg BROWSER=ff
+webreg_pam_cc: --tags @registration_pam --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff
+webreg_pam_sc: --tags @registration_pam --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff
 
 details_non_integer_lbs: --tags @details_non_integer_lbs --guess VERBOSE=false HEALTHCHECK=true
 grid_order_status: --tags @grid_order_status --guess VERBOSE=false HEALTHCHECK=true
