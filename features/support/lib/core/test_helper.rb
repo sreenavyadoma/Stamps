@@ -158,7 +158,11 @@ module Stamps
 
       def teardown
         logger.info "Teardown test"
-        browser.quit unless browser == nil
+        begin
+          browser.quit
+        rescue
+          #ignore
+        end
         logger.info "#{@browser_name} closed."
         logger.info "Test Done!"
       end
