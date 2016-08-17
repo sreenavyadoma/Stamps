@@ -386,13 +386,56 @@ module Stamps
       end
     end
 
+    class WebRegError < Browser::Modal
+      def present?
+        browser.text.include? "An Error Occurred"
+
+      end
+
+      def error_message
+        text = browser.text
+        return text.split(/Secure Connection Failed/).last if text.include? 'An Error Occurred'
+        return ""
+      end
+    end
+
+    class WebRegSecureConnectionFailed < Browser::Modal
+      def present?
+        browser.text.include? "Secure Connection Failed"
+      end
+
+      def error_message
+        text = browser.text
+        return text.split(/Secure Connection Failed/).last if text.include? 'Secure Connection Failed'
+        return ""
+      end
+    end
+
+    class MembershipPhone < TextBoxElement
+      def help_element
+        browser.span css: 'li.webreg_personalinfo>div>div:nth-child(8)>div>span'
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+
+      def has_error?
+        help_element.present?
+      end
+    end
+
     class Membership < Browser::Modal
+
       attr_reader :first_name, :last_name, :company, :address, :city, :state, :zip, :phone, :ext, :card_holder_name,
                   :card_number, :expiration_month, :expiration_year, :billing_same_as_mailing, :terms_and_conditions, :back,
                   :submit_button, :supplies, :userid_taken, :download_page, :membership_error
 
       def initialize param
         super param
+
+        @phone ||= MembershipPhone.new browser.text_field(id: "phone")
+
         @first_name ||= TextBoxElement.new browser.text_field(id: "firstName")
         @last_name ||= TextBoxElement.new browser.text_field(id: "lastName")
         @company ||= TextBoxElement.new browser.text_field(id: "companyName")
@@ -400,7 +443,6 @@ module Stamps
         @city ||= TextBoxElement.new browser.text_field(id: "city")
         @state ||= State.new param
         @zip ||= TextBoxElement.new browser.text_field(id: "zip")
-        @phone ||= TextBoxElement.new browser.text_field(id: "phone")
         @ext ||= TextBoxElement.new browser.text_field(id: "extension")
         @card_holder_name ||= TextBoxElement.new browser.text_field(id: "ccName")
         @card_number ||= TextBoxElement.new browser.text_field(id: "ccNumber")
@@ -434,19 +476,22 @@ module Stamps
       def submit
         loading = ElementWrapper.new browser.button(text: "Loading...")
         page_header = ElementWrapper.new browser.h1 text: 'Customize your Welcome Kit'
+        error_occured = WebRegError.new param
+        connection_failed = WebRegSecureConnectionFailed.new param
+
+        submit_button.safely_wait_until_present 6
         20.times do
-          submit_button.safely_wait_until_present 4
           submit_button.safe_click
           loading.safely_wait_while_present 3
-          page_header.safely_wait_until_present 10
+          page_header.safely_wait_until_present 3
+
+          raise error_occured.error_message if error_occured.present?
+
+          raise connection_failed.error_message if connection_failed.present?
+
           return userid_taken if userid_taken.present?
           return supplies if supplies.present?
           return download_page if download_page.present?
-          if membership_error.present?
-            err_message = "#{membership_error.title.text}\n#{membership_error.top_message.text}\n#{membership_error.error_code.text}\n#{membership_error.error_description.text}"
-            logger.info err_message
-            raise err_message
-          end
         end
       end
     end

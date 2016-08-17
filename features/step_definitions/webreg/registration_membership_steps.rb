@@ -348,7 +348,7 @@ Then /^Registration Membership: Set Phone to (.*)$/ do |var|
     sleep 1
     ui_phone = phone.text
     sleep 1
-    break if ui_phone.include? '-'
+    break if ui_phone.include? '-' and (rand_phone[-4,4] == ui_phone[-4,4])
   end
 end
 
@@ -460,6 +460,17 @@ end
 
 Then /^Registration Membership: Submit$/ do
   logger.info "Registration Membership: Submit"
-  @webreg_result = webreg.profile.membership.submit
+  membership = webreg.profile.membership
+  phone = membership.phone
+  20.times do
+    @webreg_result = membership.submit
+    sleep 1
+    # set phone number to new value if there's an error.
+    step "Registration Membership: Set Phone to random" if phone.has_error?
+    break if @webreg_result.instance_of? WebReg::ChooseSupplies
+    break unless phone.has_error?
+    #WebRegSecureConnectionFailed
+  end
+
 end
 
