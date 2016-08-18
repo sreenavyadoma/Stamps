@@ -276,7 +276,7 @@ module Stamps
       end
 
       def print_button
-        ElementWrapper.new browser.span id: 'sdc-printwin-printbtn-btnInnerEl'
+        ElementWrapper.new browser.span id: 'sdc-printwin-printbtn-btnIconEl'
       end
 
       def click_print_button
