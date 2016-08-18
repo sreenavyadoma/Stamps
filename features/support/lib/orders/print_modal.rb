@@ -339,7 +339,7 @@ module Stamps
           dd = self.drop_down
           input = self.text_box
 
-          return if input.text.include? printer
+          return input.text if input.text.include? printer
 
           case printer.downcase
             when /factory/
@@ -359,7 +359,7 @@ module Stamps
           end
 
           8.times do
-            return if input.text.include? printer
+            return input.text  if input.text.include? printer
             dd.safe_click unless selection_label.present?
             selection_label.safe_click
           end

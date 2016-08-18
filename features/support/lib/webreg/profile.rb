@@ -114,86 +114,89 @@ module Stamps
     end
 
     class FirstQuestion < Browser::Modal
-      def question secret
-        begin
-          browser.select_list(:name, "secretQuestion1").option(text: secret).when_present.select
-          browser.select_list(:name, "secretQuestion1").option(text: secret).when_present.select
-          browser.select_list(:name, "secretQuestion1").option(text: secret).when_present.select
-        rescue
-          #ignore
-        end
+      def select question
+        select_element = browser.select_list(:name, "secretQuestion1")
+
+        select_element.include? question
+
+        select_element.option(text: question).when_present.select
+        select_element.option(text: question).when_present.select
+        select_element.option(text: question).when_present.select
+        raise "Unable to select First Question: #{question}" unless select_element.selected? question
       end
 
       def mothers_maiden_name
-        question "What is your mother's maiden name?"
+        select "What is your mother's maiden name?"
       end
 
       def pets_name
-        question "What is your pet's name?"
+        select "What is your pet's name?"
       end
 
       def birth_city
-        question "What is your city of birth?"
+        select "What is your city of birth?"
       end
 
       def fathers_birth_place
-        question "What is your father's birthplace?"
+        select "What is your father's birthplace?"
       end
 
       def street_name
-        question "What street did you grow up on?"
+        select "What street did you grow up on?"
       end
 
       def first_schools_name
-        question "What is the name of your first school?"
+        select "What is the name of your first school?"
       end
 
       def first_cars_make_model
-        question "What is the make and model of your first car?"
+        select "What is the make and model of your first car?"
       end
     end
 
     class SecondQuestion < Browser::Modal
-      def question secret
-        begin
-          browser.select_list(:name, "secretQuestion2").option(text: secret).when_present.select
-          browser.select_list(:name, "secretQuestion2").option(text: secret).when_present.select
-          browser.select_list(:name, "secretQuestion2").option(text: secret).when_present.select
-        rescue
-          #ignore
-        end
+      def select question
+        select_element = browser.select_list(:name, "secretQuestion2")
+
+        #validate that the selection exists
+        select_element.include? question
+
+        select_element.option(text: question).when_present.select
+        select_element.option(text: question).when_present.select
+        select_element.option(text: question).when_present.select
+        raise "Unable to select Second Question: #{question}" unless select_element.selected? question
       end
 
       def mothers_maiden_name
-        question "What is your mother's maiden name?"
+        select "What is your mother's maiden name?"
       end
 
       def pets_name
-        question "What is your pet's name?"
+        select "What is your pet's name?"
       end
 
       def birth_city
-        question "What is your city of birth?"
+        select "What is your city of birth?"
       end
 
       def fathers_birth_place
-        question "What is your father's birthplace?"
+        select "What is your father's birthplace?"
       end
 
       def street_name
-        question "What street did you grow up on?"
+        select "What street did you grow up on?"
       end
 
       def first_schools_name
-        question "What is the name of your first school?"
+        select "What is the name of your first school?"
       end
 
       def high_school_mascot
-        question "What was your high school mascot?"
+        select "What was your high school mascot?"
       end
 
       def first_cars_make_model
-        question "What is the make and model of your first car?"
+        select "What is the make and model of your first car?"
       end
     end
 

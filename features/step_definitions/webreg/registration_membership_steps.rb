@@ -461,16 +461,19 @@ end
 Then /^Registration Membership: Submit$/ do
   logger.info "Registration Membership: Submit"
   membership = webreg.profile.membership
-  phone = membership.phone
-  20.times do
-    @webreg_result = membership.submit
-    sleep 1
-    # set phone number to new value if there's an error.
-    step "Registration Membership: Set Phone to random" if phone.has_error?
-    break if @webreg_result.instance_of? WebReg::ChooseSupplies
-    break unless phone.has_error?
-    #WebRegSecureConnectionFailed
-  end
+  @webreg_result = membership.submit
+end
 
+Then /^Registration Membership: Submit and correct errors$/ do
+  10.times do
+    case @webreg_result
+      when WebReg::MembershipPhone
+        logger.error "Membership Phone Textbox has error: #{@webreg_result.help_block}"
+        step "Registration Membership: Set Phone to random"
+        step "Registration Membership: Submit"
+      when WebReg::ChooseSupplies
+        break
+    end
+  end
 end
 

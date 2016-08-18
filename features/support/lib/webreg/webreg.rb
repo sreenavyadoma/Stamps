@@ -16,7 +16,7 @@ module Stamps
           when /sc/
             url = "https://registrationext.qasc.stamps.com/registration"
           when /stg/
-            url = "https://registration.staging.stamps.com/registration/"
+            url = "https://registration.staging.stamps.com/registration"
           else
             stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
         end

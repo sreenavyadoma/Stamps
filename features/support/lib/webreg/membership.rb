@@ -489,6 +489,7 @@ module Stamps
 
           raise connection_failed.error_message if connection_failed.present?
 
+          return phone if phone.has_error?
           return userid_taken if userid_taken.present?
           return supplies if supplies.present?
           return download_page if download_page.present?

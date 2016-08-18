@@ -31,7 +31,7 @@ Feature: Registration
     Then Registration Membership: Set Expiration Year to 2019
     Then Registration Membership: Set Billing address same as mailing address to Checked
     Then Registration Membership: Set Terms & Conditions to Checked
-    Then Registration Membership: Submit
+    Then Registration Membership: Submit and correct errors
 
     Then Registration Choose Supplies: Place Order
     Then Registration Profile:  Send username to standard out
