@@ -1,7 +1,21 @@
 module Stamps
   module Mail
+    class PrintingProblem < Browser::Modal
+      def element
+        ElementWrapper.new ((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
+      end
+
+      def present?
+        element.present?
+      end
+
+      def error_message
+        element.text
+      end
+    end
+
     class Footer < Browser::Modal
-      attr_reader :total, :print_postage_modal, :confirm_window, :windows_print, :print_button, :sample_button
+      attr_reader :total, :print_postage_modal, :confirm_window, :windows_print, :print_button, :sample_button, :printing_problem
 
       def initialize param
         super param
@@ -11,6 +25,7 @@ module Stamps
         @windows_print = Windows::PrintWindow.new
         @print_button ||= ElementWrapper.new browser.a css: "a[class*=sdc-printpanel-printpostagebtn]"
         @sample_button ||= ElementWrapper.new browser.a css: "a[class*=sdc-printpanel-printsamplebtn]"
+        @printing_problem ||= PrintingProblem.new param
       end
 
       def print_sample
@@ -22,10 +37,10 @@ module Stamps
       end
 
       def print_international
+
         print_button.safe_click
-        sleep 2
+        confirm_window.wait_until_present 3
         5.times do
-          sleep 1
           if confirm_window.present?
             logger.info "Confirm Print"
             confirm_window.dont_prompt_deducting_postage_again
@@ -34,6 +49,8 @@ module Stamps
           end
           break if windows_print.present?
         end
+
+        raise printing_problem.error_message if printing_problem.present?
 
         8.times do
           if windows_print.present?
