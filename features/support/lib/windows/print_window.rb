@@ -44,16 +44,19 @@ module Stamps
           wait_until_present
           stop_test "Print Window is not open" unless present?
           print_window.activate
+          print_window.activate
           print_window.button(:value => "OK").click
 
         elsif TestHelper.browser_selection.chrome?
           wait_until_present
           stop_test "Print Window is not open" unless present?
           print_window.activate
+          print_window.activate
           print_window.button(:value => "&Print").click
         elsif TestHelper.browser_selection.ie?
           wait_until_present
           stop_test "Print Window is not open" unless present?
+          print_window.activate
           print_window.activate
           print_window.button(:value => "&Print").click
         else
