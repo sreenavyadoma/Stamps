@@ -81,6 +81,7 @@ module Stamps
         else
           stop_test "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
         end
+        logger.info "Windows Print Modal: Printing successful."
         sleep 3
       end
     end
