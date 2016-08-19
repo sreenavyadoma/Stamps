@@ -138,7 +138,7 @@ module Stamps
       end
 
       def form_view
-        Stamps::StampsFormView.new param
+        StampsFormView.new param
       end
 
     end
