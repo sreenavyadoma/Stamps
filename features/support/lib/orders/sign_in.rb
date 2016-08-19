@@ -116,7 +116,7 @@ module Stamps
         logger.info "Username: #{username}"
         logger.info "Username: #{username}"
 
-        3.times do
+        15.times do
           begin
             break if grid.present?
             username_textbox.wait_until_present
@@ -145,6 +145,7 @@ module Stamps
               end
             end
 
+            grid.wait_until_present 4
             break if grid.present?
             break if grid.present?
             break if grid.present?

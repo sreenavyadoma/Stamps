@@ -941,14 +941,22 @@ module Stamps
 
       # Orders Grid
       class OrdersGrid < Browser::Modal
-        #todo attr_reader
+        #todo attr_reader for OrdersGrid
 
-        def column
-          GridColumns.new param
+        def anchor_element
+          ElementWrapper.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
         end
 
         def present?
-          (ElementWrapper.new browser.div Orders::Locators::OrdersGrid::present).present?
+          anchor_element.present?
+        end
+
+        def wait_until_present *args
+          anchor_element.safely_wait_until_present *args
+        end
+
+        def column
+          GridColumns.new param
         end
 
         def checkbox
@@ -1069,11 +1077,6 @@ module Stamps
 
         def toolbar
           Orders::Toolbar::Toolbar.new param
-        end
-
-        def wait_until_present *args
-          grid_present_span = ElementWrapper.new (browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]")
-          grid_present_span.wait_until_present
         end
 
       end
