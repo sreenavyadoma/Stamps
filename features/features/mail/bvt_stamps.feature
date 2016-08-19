@@ -5,7 +5,6 @@ Feature: Stamps BVT
   Background:
     Given I am signed in as a postage shipper
 
-  @wp_bvt
   @wp_bvt_netstamps_specify
 
   Scenario: Stamps Specify Postage
@@ -26,7 +25,6 @@ Feature: Stamps BVT
     Then Postage Print Modal: Print
     Then Sign out
 
-  @wp_bvt
   @wp_bvt_netstamps_calculate
   Scenario: Stamps Calculate Postage
     Then Postage: Select Stamps
