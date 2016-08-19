@@ -45,23 +45,43 @@ module Stamps
           stop_test "Print Window is not open" unless present?
           print_window.activate
           print_window.activate
-          print_window.button(:value => "OK").click
+
+          begin
+            print_window.button(:value => "OK").click
+          rescue RAutomation::WaitHelper::TimeoutError => e
+            logger.error e.backtrace.join "\n"
+            raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
+          end
 
         elsif TestHelper.browser_selection.chrome?
           wait_until_present
           stop_test "Print Window is not open" unless present?
           print_window.activate
           print_window.activate
-          print_window.button(:value => "&Print").click
+
+          begin
+            print_window.button(:value => "&Print").click
+          rescue RAutomation::WaitHelper::TimeoutError => e
+            logger.error e.backtrace.join "\n"
+            raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
+          end
+
         elsif TestHelper.browser_selection.ie?
           wait_until_present
           stop_test "Print Window is not open" unless present?
           print_window.activate
           print_window.activate
-          print_window.button(:value => "&Print").click
+
+          begin
+            print_window.button(:value => "&Print").click
+          rescue RAutomation::WaitHelper::TimeoutError => e
+            logger.error e.backtrace.join "\n"
+            raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
+          end
         else
           stop_test "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
         end
+        sleep 3
       end
     end
   end
