@@ -1,7 +1,7 @@
 module Stamps
   module Browser
     class ModalParam
-      attr_accessor :browser, :logger, :scenario_name
+      attr_accessor :browser, :logger, :scenario_name, :app
     end
 
     # A modal is a window composed of buttons, labels, text boxes, drop-downs, links, inputs, etc
@@ -269,7 +269,7 @@ module Stamps
       end
 
       def check
-        5.times{
+        10.times{
           break if checked?
           safe_click
         }
@@ -278,7 +278,7 @@ module Stamps
 
       def uncheck
         if checked?
-          5.times{
+          10.times{
             safe_click
             break unless checked?
           }

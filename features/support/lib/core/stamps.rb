@@ -83,11 +83,11 @@ module Stamps
   end
 
   def param
-    param = ModalParam.new
-    param.browser = test_helper.browser
-    param.logger = test_helper.logger
-    param.scenario_name = test_helper.scenario_name
-    param
+    @param ||= ModalParam.new
+    @param.browser = test_helper.browser
+    @param.logger = test_helper.logger
+    @param.scenario_name = test_helper.scenario_name
+    @param
   end
 
   def test_helper

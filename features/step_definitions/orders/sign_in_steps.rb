@@ -1,5 +1,6 @@
 Given /^Orders: Visit Sign-in page$/ do
   logger.info "Orders: Visit Sign-in page"
+  web_apps.param.app = :orders
   web_apps.visit :orders
 end
 

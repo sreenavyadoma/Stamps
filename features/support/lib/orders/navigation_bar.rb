@@ -1,20 +1,25 @@
 module Stamps
   module Navigation
     class PurchaseApproved < Browser::Modal
-      attr_reader :button
+      attr_reader :ok_button, :window_title
 
       def initialize param
         super param
-        @button = ElementWrapper.new ((browser.spans text: 'OK').last)
+        @ok_button ||= ElementWrapper.new (param.app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
+        @window_title ||= ElementWrapper.new browser.div text: "Purchase Approved"
+      end
+
+      def wait_until_present *args
+        window_title.safely_wait_until_present *args
       end
 
       def present?
-        (browser.div text: "Purchase Approved").present?
+        window_title.present?
       end
 
       def ok
-        button.safely_wait_until_present 5
-        button.click_while_present
+        ok_button.safely_wait_until_present 5
+        ok_button.click_while_present
       end
     end
 
@@ -40,17 +45,30 @@ module Stamps
       end
 
       def purchase
-        button = ElementWrapper.new (browser.spans text: "Purchase").last
+        purchase_button = ElementWrapper.new (param.app == :orders)?((browser.spans text: "Purchase").last):(browser.spans(css: "span[id$=-purchasebtn-btnIconEl]").last)
         purchase_approved = PurchaseApproved.new param
 
         10.times do
-          button.safe_click
-          sleep 2
+          purchase_button.safe_click
+          purchase_approved.wait_until_present 3
           return purchase_approved if purchase_approved.present?
         end
+        raise "Purchase Approved modal did not open!"
+      end
+    end
+
+    class MinimumPurchaseAmountNotice < Browser::Modal
+      def present?
+
       end
 
+      def text
 
+      end
+
+      def ok
+
+      end
     end
 
     class BuyPostage < Browser::Modal
@@ -59,7 +77,7 @@ module Stamps
       def initialize param
         super param
         @confirm_postage ||= ConfirmPurchase.new param
-        @purchase_button = ElementWrapper.new (browser.span id: "sdc-purchasewin-purchasebtn-btnInnerEl")
+        @purchase_button = ElementWrapper.new (param.app == :orders)?browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl"):browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
         @confirm_purchase = ConfirmPurchase.new param
       end
 
@@ -68,38 +86,80 @@ module Stamps
       end
 
       def buy_10
-        checkbox_field = (browser.input id: "sdc-purchasewin-10dradio").parent.span
-        attribute = "class"
-        verify_field_attrib = "focus"
-        CheckboxElement.new checkbox_field, checkbox_field, attribute, verify_field_attrib
+        if param.app == :orders
+          checkbox_element = (browser.input id: "sdc-purchasewin-10dradio").parent.span
+          attribute = "class"
+          verify_element_attrib = "focus"
+          CheckboxElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
+        else
+          checkbox_element = browser.input id: "sdc-purchasewin-10dradio"
+          verify_element = checkbox_element.parent.parent.parent.parent
+          attribute = "class"
+          verify_element_attrib = "checked"
+          CheckboxElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        end
       end
 
       def buy_25
-        checkbox_field = (browser.input id: "sdc-purchasewin-25dradio").parent.span
-        attribute = "class"
-        verify_field_attrib = "focus"
-        CheckboxElement.new checkbox_field, checkbox_field, attribute, verify_field_attrib
+        if param.app == :orders
+          checkbox_element = (browser.input id: "sdc-purchasewin-25dradio").parent.span
+          attribute = "class"
+          verify_element_attrib = "focus"
+          CheckboxElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
+        else
+          checkbox_element = browser.input id: "sdc-purchasewin-25dradio"
+          verify_element = checkbox_element.parent.parent.parent.parent
+          attribute = "class"
+          verify_element_attrib = "checked"
+          CheckboxElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        end
+
       end
 
       def buy_50
-        checkbox_field = (browser.input id: "sdc-purchasewin-50dradio").parent.span
-        attribute = "class"
-        verify_field_attrib = "focus"
-        CheckboxElement.new checkbox_field, checkbox_field, attribute, verify_field_attrib
+        if param.app == :orders
+          checkbox_element = (browser.input id: "sdc-purchasewin-50dradio").parent.span
+          attribute = "class"
+          verify_element_attrib = "focus"
+          CheckboxElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
+        else
+          checkbox_element = browser.input id: "sdc-purchasewin-50dradio"
+          verify_element = checkbox_element.parent.parent.parent.parent
+          attribute = "class"
+          verify_element_attrib = "checked"
+          CheckboxElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        end
       end
 
       def buy_100
-        checkbox_field = (browser.input id: "sdc-purchasewin-100dradio").parent.span
-        attribute = "class"
-        verify_field_attrib = "focus"
-        CheckboxElement.new checkbox_field, checkbox_field, attribute, verify_field_attrib
+        if param.app == :orders
+          checkbox_element = (browser.input id: "sdc-purchasewin-100dradio").parent.span
+          attribute = "class"
+          verify_element_attrib = "focus"
+          CheckboxElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
+        else
+          checkbox_element = browser.input id: "sdc-purchasewin-100dradio"
+          verify_element = checkbox_element.parent.parent.parent.parent
+          attribute = "class"
+          verify_element_attrib = "checked"
+          CheckboxElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        end
       end
 
       def buy_other value
-        checkbox_field = (browser.input id: "sdc-purchasewin-otherdradio").parent.span
-        attribute = "class"
-        verify_field_attrib = "focus"
-        checkbox = CheckboxElement.new checkbox_field, checkbox_field, attribute, verify_field_attrib
+        if param.app == :orders
+          checkbox_element = (browser.input id: "sdc-purchasewin-otherdradio").parent.span
+          attribute = "class"
+          verify_element_attrib = "focus"
+          checkbox = CheckboxElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
+        else
+          checkbox_element = browser.input id: "sdc-purchasewin-otherdradio"
+          verify_element = checkbox_element.parent.parent.parent.parent
+          attribute = "class"
+          verify_element_attrib = "checked"
+          checkbox = CheckboxElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+          end
+
         textbox = TextBoxElement.new (browser.text_field id: "sdc-purchasewin-otheramount")
 
         checkbox.check

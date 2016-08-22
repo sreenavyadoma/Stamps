@@ -1,6 +1,7 @@
 Given /^I visit postage sign-in page$/ do
   #step "I launched the default browser"
   logger.info "I visit mail sign-in page"
+  web_apps.param.app = :mail
   web_apps.visit :print_postage
 end
 
