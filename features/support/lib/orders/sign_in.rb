@@ -116,10 +116,11 @@ module Stamps
         logger.info "Username: #{username}"
         logger.info "Username: #{username}"
 
+        username_textbox.safely_wait_until_present 8
+
         15.times do
           begin
             break if grid.present?
-            username_textbox.wait_until_present
             username_textbox.set username
             password_textbox.set password
             button.safe_send_keys :enter

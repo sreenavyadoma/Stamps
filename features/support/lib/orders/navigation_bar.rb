@@ -1,92 +1,230 @@
 module Stamps
   module Navigation
-    class NavigationBar < Browser::Modal
-      class BalanceDropDown < Browser::Modal
-        def buy_more
-          buy_postage_modal = Orders::Purchasing::BuyPostage.new param
-          drop_down = ElementWrapper.new (browser.span class: "balanceLabel")
-          link = ElementWrapper.new (browser.a text: "Buy More")
-          20.times do
-            drop_down.element.hover
-            drop_down.safe_click unless link.present?
-            drop_down.element.hover
-            link.safe_click
-            return buy_postage_modal if buy_postage_modal.present?
-          end
-        end
+    class PurchaseApproved < Browser::Modal
+      attr_reader :button
 
-        def purchase_history
-          drop_down = ElementWrapper.new (browser.span class: "balanceLabel")
-          link = ElementWrapper.new (browser.a text: "View Purchase History")
-          2.times do
-            drop_down.element.hover
-            drop_down.safe_click unless link.present?
-            drop_down.element.hover
-            link.safe_click
-          end
-        end
+      def initialize param
+        super param
+        @button = ElementWrapper.new ((browser.spans text: 'OK').last)
+      end
 
-        def amount
-          balance_element = ElementWrapper.new browser.span id: 'postageBalanceAmt'
-          10.times{
-            amount = balance_element.text
-            amount_stripped_dollar = amount.gsub("$","")
-            amount_stripped_all = amount_stripped_dollar.gsub(",","")
-            return amount_stripped_all if amount_stripped_all.length > 0
-          }
-        end
+      def present?
+        (browser.div text: "Purchase Approved").present?
+      end
 
-        def new_balance old_balance
-          balance_field = ElementWrapper.new browser.span(id: 'postageBalanceAmt')
-          10.times{
-            balance = ParameterHelper.remove_dollar_sign balance_field.text
-            break unless balance.include? old_balance.to_s
-            sleep(1)
-          }
-          ParameterHelper.remove_dollar_sign balance_field.text
+      def ok
+        button.safely_wait_until_present 5
+        button.click_while_present
+      end
+    end
+
+    class ConfirmPurchase < Browser::Modal
+      attr_reader :window_title
+
+      def initialize param
+        super param
+        @window_title ||= ElementWrapper.new browser.div text: 'Confirm Purchase'
+      end
+
+      def exit
+        button = ElementWrapper.new (browser.imgs class: "x-tool-img x-tool-close").last
+        button.click_while_present
+      end
+
+      def present?
+        window_title.present?
+      end
+
+      def wait_until_present *args
+        window_title.safely_wait_until_present *args
+      end
+
+      def purchase
+        button = ElementWrapper.new (browser.spans text: "Purchase").last
+        purchase_approved = PurchaseApproved.new param
+
+        10.times do
+          button.safe_click
+          sleep 2
+          return purchase_approved if purchase_approved.present?
         end
       end
 
-      class UsernameDropDown < Browser::Modal
-        def present?
-          username.present?
-        end
 
-        def text
-          username.text
-        end
+    end
 
-        def username
-          ElementWrapper.new browser.span id: 'userNameText'
-        end
+    class BuyPostage < Browser::Modal
+      attr_reader :confirm_postage, :purchase_button, :confirm_purchase
 
-        def manage_account
+      def initialize param
+        super param
+        @confirm_postage ||= ConfirmPurchase.new param
+        @purchase_button = ElementWrapper.new (browser.span id: "sdc-purchasewin-purchasebtn-btnInnerEl")
+        @confirm_purchase = ConfirmPurchase.new param
+      end
 
-        end
+      def present?
+        (browser.div text: "Buy Postage").present?
+      end
 
-        def home
+      def buy_10
+        checkbox_field = (browser.input id: "sdc-purchasewin-10dradio").parent.span
+        attribute = "class"
+        verify_field_attrib = "focus"
+        CheckboxElement.new checkbox_field, checkbox_field, attribute, verify_field_attrib
+      end
 
-        end
+      def buy_25
+        checkbox_field = (browser.input id: "sdc-purchasewin-25dradio").parent.span
+        attribute = "class"
+        verify_field_attrib = "focus"
+        CheckboxElement.new checkbox_field, checkbox_field, attribute, verify_field_attrib
+      end
 
-        def sign_out
-          drop_down = ElementWrapper.new browser.span id: 'userNameText'
-          sign_out_link = browser.a text: "Sign Out"
-          20.times do
-            drop_down.safe_click unless sign_out_link.present?
-            drop_down.hover
-            element_helper.safe_click sign_out_link if sign_out_link.present?
-            return if browser.url.include? "SignIn"
-          end
+      def buy_50
+        checkbox_field = (browser.input id: "sdc-purchasewin-50dradio").parent.span
+        attribute = "class"
+        verify_field_attrib = "focus"
+        CheckboxElement.new checkbox_field, checkbox_field, attribute, verify_field_attrib
+      end
+
+      def buy_100
+        checkbox_field = (browser.input id: "sdc-purchasewin-100dradio").parent.span
+        attribute = "class"
+        verify_field_attrib = "focus"
+        CheckboxElement.new checkbox_field, checkbox_field, attribute, verify_field_attrib
+      end
+
+      def buy_other value
+        checkbox_field = (browser.input id: "sdc-purchasewin-otherdradio").parent.span
+        attribute = "class"
+        verify_field_attrib = "focus"
+        checkbox = CheckboxElement.new checkbox_field, checkbox_field, attribute, verify_field_attrib
+        textbox = TextBoxElement.new (browser.text_field id: "sdc-purchasewin-otheramount")
+
+        checkbox.check
+        textbox.set value
+      end
+
+      def purchase
+        10.times do
+          purchase_button.safe_click
+          confirm_purchase.wait_until_present 2
+          return confirm_purchase if confirm_purchase.present?
         end
       end
 
-      def balance
-        BalanceDropDown.new param
+      def edit_payment_method
+        stop_test "Edit Payment Method is not yet implemented."
+      end
+
+      def autobuy
+        stop_test "AutoBuy is not implemented"
+      end
+    end
+
+    class BalanceDropDown < Browser::Modal
+      attr_reader :buy_postage_modal, :buy_more_drop_down, :buy_more_link, :view_history_link, :balance_element
+
+      def initialize param
+        super param
+
+        @buy_postage_modal = BuyPostage.new param
+        @buy_more_drop_down = ElementWrapper.new (browser.span class: "balanceLabel")
+        @buy_more_link = ElementWrapper.new (browser.a text: "Buy More")
+        @view_history_link = ElementWrapper.new (browser.a text: "View Purchase History")
+        @balance_element = ElementWrapper.new browser.span id: 'postageBalanceAmt'
+      end
+
+      def buy_more
+        20.times do
+          buy_more_drop_down.element.hover
+          buy_more_drop_down.safe_click unless buy_more_link.present?
+          buy_more_drop_down.element.hover
+          buy_more_link.safe_click
+          return buy_postage_modal if buy_postage_modal.present?
+        end
+      end
+
+      def purchase_history
+        2.times do
+          buy_more_drop_down.element.hover
+          buy_more_drop_down.safe_click unless view_history_link.present?
+          buy_more_drop_down.element.hover
+          view_history_link.safe_click
+        end
+      end
+
+      def amount
+        10.times{
+          amount = balance_element.text
+          amount_stripped_dollar = amount.gsub("$","")
+          amount_stripped_all = amount_stripped_dollar.gsub(",","")
+          return amount_stripped_all if amount_stripped_all.length > 0
+        }
+      end
+
+      def new_balance old_balance
+        10.times{
+          balance = ParameterHelper.remove_dollar_sign balance_element.text
+          break unless balance.include? old_balance.to_s
+          sleep(1)
+        }
+        ParameterHelper.remove_dollar_sign balance_element.text
+      end
+    end
+
+    class UsernameDropDown < Browser::Modal
+      attr_reader :username, :sign_out_link
+
+      def initialize param
+        super param
+        @username ||= ElementWrapper.new browser.span id: 'userNameText'
+        @sign_out_link = browser.a text: "Sign Out"
+      end
+
+      def present?
+        username.present?
+      end
+
+      def wait_until_present *args
+        username.wait_until_present *args
+      end
+
+      def text
+        username.text
+      end
+
+      def manage_account
+
+      end
+
+      def home
+
       end
 
       def sign_out
-        sign_out_link = ElementWrapper.new browser.link id: "signOutLink"
-        signed_in_username = ElementWrapper.new browser.span id: 'userNameText'
+        20.times do
+          username.safe_click unless sign_out_link.present?
+          username.hover
+          element_helper.safe_click sign_out_link if sign_out_link.present?
+          return if browser.url.include? "SignIn"
+        end
+      end
+    end
+
+    class NavigationBar < Browser::Modal
+      attr_reader :balance, :username, :sign_out_link, :signed_in_username
+
+      def initialize param
+        super param
+        @balance ||= BalanceDropDown.new param
+        @username ||= UsernameDropDown.new param
+        @sign_out_link = ElementWrapper.new browser.link id: "signOutLink"
+        @signed_in_username = ElementWrapper.new browser.span id: 'userNameText'
+      end
+
+      def sign_out
         20.times {
           begin
             signed_in_username.safe_click unless sign_out_link.present?
@@ -104,18 +242,8 @@ module Stamps
         logger.info "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" - sign-out failed":" was signed out.  Goodbye."}"
       end
 
-      def username
-        UsernameDropDown.new param
-      end
-
       def wait_until_present *args
-        wait_field = browser.span Orders::Locators::NavBar.username
-        case args.length
-          when 1
-            wait_field.wait_until_present args[0].to_i
-          else
-            wait_field.wait_until_present
-        end
+        username.wait_until_present *args
       end
 
       def present?

@@ -1,26 +1,26 @@
 
-Then /^Purchase Postage for \$(\d+)$/ do |amount|
+Then /^Purchasing: Purchase Postage for \$(\d+)$/ do |amount|
    @old_balance = web_apps.navigation_bar.balance.amount
    logger.info "Buy More link selected"
-   buy_postage_modal = web_apps.navigation_bar.balance.buy_more
+   purchasing_modal = web_apps.navigation_bar.balance.buy_more
 
    case amount
      when "10"
-       buy_postage_modal.buy_10.check
+       purchasing_modal.buy_10.check
      when "25"
-       buy_postage_modal.buy_25.check
+       purchasing_modal.buy_25.check
      when "50"
-       buy_postage_modal.buy_50.check
+       purchasing_modal.buy_50.check
      when "100"
-       buy_postage_modal.buy_100.check
+       purchasing_modal.buy_100.check
      else
-       buy_postage_modal.buy_other amount
+       purchasing_modal.buy_other amount
    end
-   buy_postage_modal.purchase.purchase.ok
+   purchasing_modal.purchase.purchase.ok
  end
 
 
-Then /^Expect \$(\d+) is added to customer balance$/ do |purchase_amount|
+Then /^Purchasing: Expect customer balance increased by \$(\d+)$/ do |purchase_amount|
   logger.info "Expect \$#{purchase_amount} is added to customer balance"
   20.times do
     sleep 1

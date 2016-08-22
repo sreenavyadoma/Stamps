@@ -6,6 +6,6 @@ Feature: Purchasing BVT
   @wp_bvt
   @wp_bvt_purchasing
   Scenario: Purchasing $10
-    Then Purchase Postage for $10
-    Then Expect $10 is added to customer balance
+    Then Purchasing: Purchase Postage for $10
+    Then Purchasing: Expect customer balance increased by $10
     Then Sign out

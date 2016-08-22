@@ -273,6 +273,7 @@ module Stamps
           break if checked?
           safe_click
         }
+        raise "Unable to check element with ID #{element.attribute_value "id"}" unless checked?
       end
 
       def uncheck
@@ -282,6 +283,7 @@ module Stamps
             break unless checked?
           }
         end
+        raise "Unable to check element with ID #{element.attribute_value "id"}" if checked?
       end
 
       def checked?
