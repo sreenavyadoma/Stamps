@@ -50,7 +50,7 @@ module Stamps
             print_window.button(:value => "OK").click
           rescue RAutomation::WaitHelper::TimeoutError => e
             logger.error e.backtrace.join "\n"
-            raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
+            raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present.\n#{e.backtrace.join "\n"}"
           end
 
         elsif TestHelper.browser_selection.chrome?
