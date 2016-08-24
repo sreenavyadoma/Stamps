@@ -25,7 +25,7 @@ module Stamps
     class MailForm < Browser::Modal
 
       def service
-        Service.new param
+        MailServiceDropList.new param
       end
 
       def email_tracking

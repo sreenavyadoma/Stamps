@@ -2,7 +2,7 @@
 module Stamps
   module Mail
     class WebMail < MailForm
-      attr_reader :landing_page, :toolbar, :drop_down, :footer, :shipping_label, :net_stamps,
+      attr_reader :landing_page, :toolbar, :drop_down, :footer, :shipping_label, :netstamps,
                   :envelope, :certified_mail, :roll
 
       def initialize param
@@ -12,7 +12,7 @@ module Stamps
         @drop_down = PrintOn.new param
         @footer ||= Footer.new param
         @shipping_label ||= ShippingLabel.new param
-        @net_stamps ||= NetStamps.new param
+        @netstamps ||= NetStamps.new param
         @envelope ||= Envelope.new param
         @certified_mail ||= CertifiedMail.new param
         @roll ||= Roll.new param
@@ -23,7 +23,7 @@ module Stamps
         if selection.include? 'Shipping Label'
           shipping_label
         elsif selection.include? 'Stamps'
-          net_stamps
+          netstamps
         elsif selection.include? 'Envelope'
           envelope
         elsif selection.include? 'Certified Mail'
