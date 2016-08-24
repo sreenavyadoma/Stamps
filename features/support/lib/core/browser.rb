@@ -300,6 +300,47 @@ module Stamps
       end
     end
 
+    class RadioElement < ElementWrapper
+      attr_accessor :verify_element, :attribute, :attribute_value
+      def initialize element, verify_element, attribute, attribute_value
+        super element
+        @verify_element = verify_element
+        @attribute = attribute
+        @attribute_value = attribute_value
+      end
+
+      def select
+        10.times{
+          break if checked?
+          safe_click
+        }
+        raise "Unable to check element with ID #{element.attribute_value "id"}" unless checked?
+      end
+
+      def uncheck
+        if checked?
+          10.times{
+            safe_click
+            break unless checked?
+          }
+        end
+        raise "Unable to check element with ID #{element.attribute_value "id"}" if checked?
+      end
+
+      def checked?
+        begin
+          actual_attribute_value = verify_element.attribute_value attribute
+          if actual_attribute_value == "true" || actual_attribute_value == "false"
+            return actual_attribute_value == "true"
+          else
+            actual_attribute_value.include? attribute_value
+          end
+        rescue
+          false
+        end
+      end
+    end
+
     class TextBoxElement < ElementWrapper
       def set text
         element_helper.set element, text

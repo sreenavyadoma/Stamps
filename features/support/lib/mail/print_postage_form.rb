@@ -1,91 +1,58 @@
 # encoding: utf-8
 module Stamps
   module Mail
+
+    class PostageCountry < Browser::Modal
+      attr_reader :text_box, :drop_down
+
+      def initialize param
+        super param
+        @text_box ||= TextBoxElement.new browser.text_field name: "mailToCountry"
+        @drop_down ||= ElementWrapper.new (browser.divs css: "div[class*=x-form-trigger]")[2]
+      end
+
+      def select selection
+        selection_label = ElementWrapper.new browser.div text: selection
+        5.times {
+          begin
+            break if text_box.text.include? selection
+            break if text_box.text.include? selection
+            drop_down.safe_click unless selection_label.present?
+            selection_label.scroll_into_view
+            selection_label.safe_click
+            break if text_box.text.include? selection
+          rescue
+            #ignore
+          end
+        }
+      end
+    end
+
     class ShipTo < Browser::Modal
+      attr_reader :text_area, :country, :email, :name, :company, :address_1, :address_2, :city, :province, :postal_code,
+                  :phone
 
-      class PostageCountry < Browser::Modal
-        def drop_down
-          ElementWrapper.new (browser.divs css: "div[class*=x-form-trigger]")[2]
-        end
-
-        def text_box
-          TextBoxElement.new (browser.text_field name: "mailToCountry")
-        end
-
-        def select selection
-          box = text_box
-          button = drop_down
-          selection_label = ElementWrapper.new browser.div text: selection
-          5.times {
-            begin
-              break if box.text.include? selection
-              break if box.text.include? selection
-              button.safe_click unless selection_label.present?
-              selection_label.scroll_into_view
-              selection_label.safe_click
-              break if box.text.include? selection
-            rescue
-              #ignore
-            end
-          }
-        end
+      def initialize param
+        super param
+        @text_area ||= TextBoxElement.new (browser.text_field id: "sdc-mainpanel-shiptotextarea-inputEl")
+        @country ||= PostageCountry.new param
+        @email ||= Email.new param
+        @name ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptonamefield-inputEl")
+        @company ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptocompanyfield-inputEl")
+        @address_1 ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress1field-inputEl")
+        @address_2 ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress2field-inputEl")
+        @city ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptocityfield-inputEl")
+        @province ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoprovincefield-inputEl")
+        @postal_code ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptopostcodefield-inputEl")
+        @phone ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptophonefield-inputEl")
+        @contacts ||= Contacts.new param
       end
-
-      def text_area
-        TextBoxElement.new (browser.text_field id: "sdc-mainpanel-shiptotextarea-inputEl")
-      end
-
-      def country
-        PostageCountry.new param
-      end
-
-      def email
-        Email.new param
-      end
-
-
 
       # Domestic Ship-To
       def set address
         text_area.safe_click
         text_area.set address
         text_area.safe_click
-      end
-
-      def name
-        TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptonamefield-inputEl")
-      end
-
-      def company
-        TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptocompanyfield-inputEl")
-      end
-
-      def address_1
-        TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress1field-inputEl")
-      end
-
-      def address_2
-        TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress2field-inputEl")
-      end
-
-      def city
-        TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptocityfield-inputEl")
-      end
-
-      def province
-        TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoprovincefield-inputEl")
-      end
-
-      def postal_code
-        TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptopostcodefield-inputEl")
-      end
-
-      def phone
-        TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptophonefield-inputEl")
-      end
-
-      def contacts
-        Contacts.new param
       end
     end
 
