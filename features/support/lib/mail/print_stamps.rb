@@ -73,7 +73,7 @@ module Stamps
       end
     end
 
-    class NetStampsDropList < Browser::Modal
+    class SpecifyServiceDropList < Browser::Modal
       attr_reader :text_box, :drop_down
 
       def initialize param
@@ -113,33 +113,31 @@ module Stamps
     end
 
     class NetStamps < MailForm
-      attr_reader :specify_postage, :calculate_postage, :serial, :calculate_postage_service, :form_view, :drop_list
+      attr_reader :specify_postage, :calculate_postage, :serial, :calculate_service_drop_list, :form_view, :specify_service_drop_list,
+                  :specify_radio, :calculate_radio
 
       def initialize param
         super param
         @specify_postage ||= SpecifyPostageAmount.new param
         @calculate_postage||= CalculatePostageAmount.new param
         @serial ||= TextBoxElement.new browser.text_field id: "sdc-mainpanel-nsserialtextfield-inputEl"
-        @calculate_postage_service||= Service.new param
-        @drop_list ||= NetStampsDropList.new param
+        @calculate_service_drop_list||= MailServiceDropList.new param
+        @specify_service_drop_list ||= SpecifyServiceDropList.new param
         @form_view ||= StampsFormView.new param
+
+        @specify_radio ||= CheckboxElement.new (browser.input id: 'sdc-mainpanel-calculatepostageradio-inputEl'), (browser.table id: 'sdc-mainpanel-calculatepostageradio'), "class", "checked"
+        @calculate_radio ||= CheckboxElement.new (browser.input id: "sdc-mainpanel-specifypostageradio-inputEl"), (browser.table id: 'sdc-mainpanel-specifypostageradio'), "class", "checked"
       end
 
       def calculate_postage_amount
-        radio_element = browser.input id: 'sdc-mainpanel-calculatepostageradio-inputEl'
-        verify_element = browser.table id: 'sdc-mainpanel-calculatepostageradio'
-        checkbox = CheckboxElement.new radio_element, verify_element, "class", "checked"
-        checkbox.check
-        raise "Unabled to select radio button Specify Postage Amount" unless checkbox.checked?
+        specify_radio.check
+        raise "Unabled to select radio button Specify Postage Amount" unless specify_radio.checked?
         calculate_postage
       end
 
       def specify_postage_amount
-        radio_element = browser.input id: "sdc-mainpanel-specifypostageradio-inputEl"
-        verify_element = browser.table id: 'sdc-mainpanel-specifypostageradio'
-        checkbox = CheckboxElement.new radio_element, verify_element, "class", "checked"
-        checkbox.check
-        raise "Unabled to select radio button Specify Postage Amount" unless checkbox.checked?
+        calculate_radio.check
+        raise "Unabled to select radio button Specify Postage Amount" unless calculate_radio.checked?
         specify_postage
       end
     end

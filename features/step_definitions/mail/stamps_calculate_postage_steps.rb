@@ -14,7 +14,7 @@ end
 
 Then /^Postage Stamps: Set Calculate Postage Service to (.*)/ do |service|
   logger.info "Envelopes: Set Print Postage Service to: \n #{service}"
-  web_apps.mail.netstamps.calculate_postage_service.select service
+  web_apps.mail.netstamps.calculate_service_drop_list.select service
 end
 
 Then /^Postage Stamps: Select Calculate Postage Service First-Class Mail Postcard$/ do

@@ -12,7 +12,7 @@ end
 
 Then /^Postage Stamps: Set Specify Postage Service to (.*)/ do |service|
   logger.info "Envelopes: Set Print Postage Service to: \n #{service}"
-  web_apps.mail.netstamps.drop_list.select service
+  web_apps.mail.netstamps.specify_service_drop_list.select service
 end
 
 Then /^Postage Stamps: Select Specify Postage Service Media Mail$/ do

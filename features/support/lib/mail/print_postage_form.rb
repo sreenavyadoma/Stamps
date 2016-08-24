@@ -243,7 +243,7 @@ module Stamps
       end
     end
 
-    class Service < Browser::Modal
+    class MailServiceDropList < Browser::Modal
 
       def text_box
         TextBoxElement.new browser.text_field name: "servicePackage"
