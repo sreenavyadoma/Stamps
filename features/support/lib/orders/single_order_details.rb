@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Details
-      class OrderForm < Browser::Modal
+      class DetailsForm < Browser::Modal
         def blur_out
           item_label = ElementWrapper.new browser.label text: 'Insure For $:'
           3.times {
@@ -15,9 +15,9 @@ module Stamps
         end
       end
 
-      class ShipToFields < OrderForm
+      class ShipToFields < DetailsForm
 
-        class ShipToCountry < OrderForm
+        class ShipToCountry < DetailsForm
 
           def drop_down
             divs = browser.divs css: "div[id^=combo-][id$=-trigger-picker]"
@@ -111,7 +111,7 @@ module Stamps
         end
       end
 
-      class ShipToInternationalFields < OrderForm
+      class ShipToInternationalFields < DetailsForm
         def present?
           TextBoxElement.new(browser.text_field name: "FullName").present?
         end
@@ -244,7 +244,7 @@ module Stamps
 
             def set partial_address_hash
               exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
-              form = DetailsForm.new param
+              form = SingleOrderDetails.new param
               form.validate_address_link
               country_drop_down = self.country
               #single_order_form.expand
@@ -1323,7 +1323,7 @@ module Stamps
 
       end
 
-      class ShipFromAddress < OrderForm
+      class ShipFromAddress < DetailsForm
         attr_reader :text_box, :drop_down, :manage_shipping_adddress
         def initialize param
           super param
@@ -1381,7 +1381,7 @@ module Stamps
         end
       end
 
-      class TrackingDropDown < OrderForm
+      class TrackingDropDown < DetailsForm
         attr_reader :text_box
         def initialize param
           super param
@@ -1458,7 +1458,7 @@ module Stamps
         end
       end
 
-      class Service < OrderForm
+      class Service < DetailsForm
         attr_reader :text_box, :drop_down
         def initialize param
           super param
@@ -1693,8 +1693,13 @@ module Stamps
         end
 
         class Length < Browser::Modal
-          def text_box
-            TextBoxElement.new browser.text_field name: 'Length'
+          attr_reader :text_box, :increment_button, :decrement_button
+
+          def initialize param
+            super param
+            @text_box ||= TextBoxElement.new browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div>input"
+            @increment_button = ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]"
+            @decrement_button = ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]"
           end
 
           def set value
@@ -1716,31 +1721,33 @@ module Stamps
           end
 
           def increment value
-            button = ElementWrapper.new (browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
             value.to_i.times do
-              button.safe_click
+              increment_button.safe_click
             end
           end
 
           def decrement value
-            button = ElementWrapper.new (browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
             value.to_i.times do
-              button.safe_click
+              decrement_button.safe_click
             end
           end
         end
 
         class Width < Browser::Modal
-          def text_box
-            TextBoxElement.new browser.text_field name: 'Width'
+          attr_reader :text_box, :increment_button, :decrement_button
+
+          def initialize param
+            super param
+            @text_box ||= TextBoxElement.new browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div>input"
+            @increment_button = ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]"
+            @decrement_button = ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]"
           end
 
           def set value
-            text_field = text_box
             value = value.to_i
-            max = value + text_field.text.to_i
+            max = value + text_box.text.to_i
             max.times do
-              current_value = text_field.text.to_i
+              current_value = text_box.text.to_i
               break if value == current_value
               if value > current_value
                 increment 1
@@ -1750,35 +1757,37 @@ module Stamps
               break if value == current_value
             end
             sleep 1
-            logger.info "Width set to #{text_field.text}"
+            logger.info "Width set to #{text_box.text}"
           end
 
           def increment value
-            button = ElementWrapper.new ((browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]")[1])
             value.to_i.times do
-              button.safe_click
+              increment_button.safe_click
             end
           end
 
           def decrement value
-            button = ElementWrapper.new ((browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]")[1])
             value.to_i.times do
-              button.safe_click
+              decrement_button.safe_click
             end
           end
         end
 
         class Height < Browser::Modal
-          def text_box
-            TextBoxElement.new browser.text_field name: 'Height'
+          attr_reader :text_box, :increment_button, :decrement_button
+
+          def initialize param
+            super param
+            @text_box ||= TextBoxElement.new browser.text_field css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div>input'
+            @increment_button ||= ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div[id*=spinner]>div[class*=up]"
+            @decrement_button ||= ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div[id*=spinner]>div[class*=down]"
           end
 
           def set value
-            text_field = text_box
             value = value.to_i
-            max = value + text_field.text.to_i
+            max = value + text_box.text.to_i
             max.times do
-              current_value = text_field.text.to_i
+              current_value = text_box.text.to_i
               break if value == current_value
               if value > current_value
                 increment 1
@@ -1788,20 +1797,18 @@ module Stamps
               break if value == current_value
             end
             sleep 1
-            logger.info "Height set to #{text_field.text}"
+            logger.info "Height set to #{text_box.text}"
           end
 
           def increment value
-            button = ElementWrapper.new (browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
             value.to_i.times do
-              button.safe_click
+              increment_button.safe_click
             end
           end
 
           def decrement value
-            button = ElementWrapper.new (browser.divs css: "div[id^=dimensionsview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
             value.to_i.times do
-              button.safe_click
+              decrement_button.safe_click
             end
           end
         end
@@ -2069,7 +2076,7 @@ module Stamps
         end
       end
 
-      class DetailsForm < OrderForm
+      class SingleOrderDetails < DetailsForm
         #todo add more accessors
         attr_reader :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions,
                     :customs_form, :total, :customs, :item_grid, :reference_no, :collapsed_details

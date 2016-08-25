@@ -184,7 +184,7 @@ module Stamps
           end
 
           def click
-            order_details = Orders::Details::DetailsForm.new param
+            order_details = Orders::Details::SingleOrderDetails.new param
             grid = Orders::Grid::OrdersGrid.new param
             add_button = button
 

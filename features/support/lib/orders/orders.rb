@@ -8,7 +8,7 @@ module Stamps
         @landing_page ||= Orders::OrdersLandingPage.new param
         @grid ||= Orders::Grid::OrdersGrid.new param
         @styles ||= PageStyles.new param
-        @details ||= Orders::Details::DetailsForm.new param
+        @details ||= Orders::Details::SingleOrderDetails.new param
         @filter ||= Orders::FilterPanel.new param
         @multi_order ||= Orders::Details::MultiOrder.new param
       end
