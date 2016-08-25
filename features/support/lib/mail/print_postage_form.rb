@@ -1,7 +1,6 @@
 # encoding: utf-8
 module Stamps
   module Mail
-
     class PostageCountry < Browser::Modal
       attr_reader :text_box, :drop_down
 
@@ -30,7 +29,7 @@ module Stamps
 
     class ShipTo < Browser::Modal
       attr_reader :text_area, :country, :email, :name, :company, :address_1, :address_2, :city, :province, :postal_code,
-                  :phone
+                  :phone, :contacts
 
       def initialize param
         super param

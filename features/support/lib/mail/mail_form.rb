@@ -45,7 +45,7 @@ module Stamps
       end
 
       def ship_to
-        ShipTo.new param
+       Stamps::Mail::ShipTo.new param
       end
 
       def customs
