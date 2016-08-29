@@ -1,5 +1,5 @@
 
-Feature: Registration
+Feature: WebReg
   Background:
     Given WebReg Profile: Load Registration Page
 

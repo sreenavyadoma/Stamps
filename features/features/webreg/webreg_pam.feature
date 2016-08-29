@@ -1,4 +1,4 @@
-Feature: Registration
+Feature: WebReg
   Background:
     Given I launched the default browser
 
