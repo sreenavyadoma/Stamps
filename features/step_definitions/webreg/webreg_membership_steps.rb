@@ -465,8 +465,10 @@ Then /^Registration Membership: Submit$/ do
 end
 
 Then /^Registration Membership: Submit and correct errors$/ do
+  step "Registration Membership: Submit"
   10.times do
     case @webreg_result
+      #when there's a failure, correct field and resubmit.
       when WebReg::MembershipPhone
         logger.error "Membership Phone Textbox has error: #{@webreg_result.help_block}"
         step "Registration Membership: Set Phone to random"

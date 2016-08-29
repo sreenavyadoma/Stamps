@@ -271,7 +271,7 @@ Then /^Registration Profile: Continue to Mailing Information Page$/ do
 end
 
 Then /^Registration Choose Supplies: Place Order$/ do
-  raise "Choose Supplies:  Place Order - ILLEGAL STATE EXECPTION!  Check your test" if @webreg_result.nil?
+  raise "Choose Supplies:  Place Order - @webreg_result is nil.  Check your test" if @webreg_result.nil?
   case @webreg_result
     when WebReg::UserIdTaken
       message = @webreg_result.message
