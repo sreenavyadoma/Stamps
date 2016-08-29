@@ -448,8 +448,8 @@ module Stamps
         @card_number ||= TextBoxElement.new browser.text_field(id: "ccNumber")
         @expiration_month ||= ExpirationMonth.new param
         @expiration_year ||= ExpirationYear.new param
-        checkbox_field = browser.text_field id: "useMailingAddressForBilling"
-        @billing_same_as_mailing ||= Browser::CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
+        checkbox_field ||= browser.input id: "useMailingAddressForBilling"
+        @billing_same_as_mailing ||= CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
         @terms_and_conditions ||= TermsAndConditions.new param
         @back ||= ElementWrapper.new browser.button(id: "prev")
 

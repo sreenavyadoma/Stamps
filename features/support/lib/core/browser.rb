@@ -311,30 +311,15 @@ module Stamps
 
       def select
         10.times{
-          break if checked?
+          break if selected?
           safe_click
         }
-        raise "Unable to check element with ID #{element.attribute_value "id"}" unless checked?
+        raise "Unable to check element with ID #{element.attribute_value "id"}" unless selected?
       end
 
-      def uncheck
-        if checked?
-          10.times{
-            safe_click
-            break unless checked?
-          }
-        end
-        raise "Unable to check element with ID #{element.attribute_value "id"}" if checked?
-      end
-
-      def checked?
+      def selected?
         begin
-          actual_attribute_value = verify_element.attribute_value attribute
-          if actual_attribute_value == "true" || actual_attribute_value == "false"
-            return actual_attribute_value == "true"
-          else
-            actual_attribute_value.include? attribute_value
-          end
+          (verify_element.attribute_value attribute).include? attribute_value
         rescue
           false
         end

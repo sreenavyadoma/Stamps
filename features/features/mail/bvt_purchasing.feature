@@ -5,14 +5,14 @@ Feature: Purchasing BVT
 
   @wp_bvt_purchasing
   Scenario: Purchasing $10
-    Then Purchasing: Purchase Postage for $10
-    Then Purchasing: Expect customer balance increased by $10
-    Then Purchasing: Purchase Postage for $25
-    Then Purchasing: Expect customer balance increased by $25
-    Then Purchasing: Purchase Postage for $50
-    Then Purchasing: Expect customer balance increased by $50
-    Then Purchasing: Purchase Postage for $100
-    Then Purchasing: Expect customer balance increased by $100
-    Then Purchasing: Purchase Postage for $35
-    Then Purchasing: Expect customer balance increased by $35
+    Then Buy Postage: Purchase $10
+    Then Buy Postage: Expect customer balance increased by $10
+    Then Buy Postage: Purchase $25
+    Then Buy Postage: Expect customer balance increased by $25
+    Then Buy Postage: Purchase $50
+    Then Buy Postage: Expect customer balance increased by $50
+    Then Buy Postage: Purchase $100
+    Then Buy Postage: Expect customer balance increased by $100
+    Then Buy Postage: Purchase $35
+    Then Buy Postage: Expect customer balance increased by $35
     Then Sign out

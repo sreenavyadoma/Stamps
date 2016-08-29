@@ -11,3 +11,4 @@ Then /^Registration: Expect Web Registration result page is either Download page
       raise "Registration Result #{@webreg_result_page.class} is not recognized"
   end
 end
+

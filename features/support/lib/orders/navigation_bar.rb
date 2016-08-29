@@ -1,12 +1,13 @@
 module Stamps
   module Navigation
     class PurchaseApproved < Browser::Modal
-      attr_reader :ok_button, :window_title
+      attr_reader :ok_button, :window_title, :text_area
 
       def initialize param
         super param
         @ok_button ||= ElementWrapper.new (param.app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
         @window_title ||= ElementWrapper.new browser.div text: "Purchase Approved"
+        @text_area ||= ElementWrapper.new browser.div css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]"
       end
 
       def wait_until_present *args
@@ -17,6 +18,10 @@ module Stamps
         window_title.present?
       end
 
+      def text
+        text_area.text
+      end
+
       def ok
         ok_button.safely_wait_until_present 5
         ok_button.click_while_present
@@ -24,11 +29,12 @@ module Stamps
     end
 
     class ConfirmPurchase < Browser::Modal
-      attr_reader :window_title
+      attr_reader :window_title, :text_area
 
       def initialize param
         super param
         @window_title ||= ElementWrapper.new browser.div text: 'Confirm Purchase'
+        @text_area ||= ElementWrapper.new browser.div class: 'sdc-dialoguemodal-confirm-purchase'
       end
 
       def exit
@@ -44,14 +50,21 @@ module Stamps
         window_title.safely_wait_until_present *args
       end
 
+      def text
+        text_area.text
+      end
+
+      def purchase_button
+        @purchase_button ||= ElementWrapper.new (param.app == :orders)?((browser.spans text: "Purchase").last):(browser.spans(css: "span[id$=-purchasebtn-btnIconEl]").last)
+      end
+
       def purchase
-        purchase_button = ElementWrapper.new (param.app == :orders)?((browser.spans text: "Purchase").last):(browser.spans(css: "span[id$=-purchasebtn-btnIconEl]").last)
         purchase_approved = PurchaseApproved.new param
 
         10.times do
+          return purchase_approved if purchase_approved.present?
           purchase_button.safe_click
           purchase_approved.wait_until_present 3
-          return purchase_approved if purchase_approved.present?
         end
         raise "Purchase Approved modal did not open!"
       end
@@ -72,13 +85,18 @@ module Stamps
     end
 
     class BuyPostage < Browser::Modal
-      attr_reader :confirm_postage, :purchase_button, :confirm_purchase
+      attr_reader :confirm_postage, :confirm_purchase
 
       def initialize param
         super param
         @confirm_postage ||= ConfirmPurchase.new param
-        @purchase_button = ElementWrapper.new (param.app == :orders)?browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl"):browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
-        @confirm_purchase = ConfirmPurchase.new param
+        @confirm_purchase ||= ConfirmPurchase.new param
+      end
+
+      def purchase_button
+        orders_btn = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
+        mail_btn = browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
+        @purchase_button ||= ElementWrapper.new (orders_btn.present?)?orders_btn:mail_btn
       end
 
       def present?
@@ -87,16 +105,17 @@ module Stamps
 
       def buy_10
         if param.app == :orders
-          checkbox_element = (browser.input id: "sdc-purchasewin-10dradio").parent.span
+          checkbox_element = (browser.label text: "$10.00").parent.span
+          verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
-          verify_element_attrib = "focus"
-          CheckboxElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
+          verify_element_attrib = "checked"
+          RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
         else
           checkbox_element = browser.input id: "sdc-purchasewin-10dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
-          CheckboxElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+          RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
         end
       end
 
@@ -105,13 +124,13 @@ module Stamps
           checkbox_element = (browser.input id: "sdc-purchasewin-25dradio").parent.span
           attribute = "class"
           verify_element_attrib = "focus"
-          CheckboxElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
+          RadioElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
         else
           checkbox_element = browser.input id: "sdc-purchasewin-25dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
-          CheckboxElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+          RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
         end
 
       end
@@ -121,13 +140,13 @@ module Stamps
           checkbox_element = (browser.input id: "sdc-purchasewin-50dradio").parent.span
           attribute = "class"
           verify_element_attrib = "focus"
-          CheckboxElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
+          RadioElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
         else
           checkbox_element = browser.input id: "sdc-purchasewin-50dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
-          CheckboxElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+          RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
         end
       end
 
@@ -136,13 +155,13 @@ module Stamps
           checkbox_element = (browser.input id: "sdc-purchasewin-100dradio").parent.span
           attribute = "class"
           verify_element_attrib = "focus"
-          CheckboxElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
+          RadioElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
         else
           checkbox_element = browser.input id: "sdc-purchasewin-100dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
-          CheckboxElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+          RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
         end
       end
 
@@ -151,13 +170,13 @@ module Stamps
           checkbox_element = (browser.input id: "sdc-purchasewin-otherdradio").parent.span
           attribute = "class"
           verify_element_attrib = "focus"
-          checkbox = CheckboxElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
+          checkbox = RadioElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
         else
           checkbox_element = browser.input id: "sdc-purchasewin-otherdradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
-          checkbox = CheckboxElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+          checkbox = RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
           end
 
         textbox = TextBoxElement.new (browser.text_field id: "sdc-purchasewin-otheramount")
@@ -167,10 +186,11 @@ module Stamps
       end
 
       def purchase
+        return confirm_purchase if confirm_purchase.present?
         10.times do
+          return confirm_purchase if confirm_purchase.present?
           purchase_button.safe_click
           confirm_purchase.wait_until_present 2
-          return confirm_purchase if confirm_purchase.present?
         end
       end
 
@@ -197,7 +217,9 @@ module Stamps
       end
 
       def buy_more
+        return buy_postage_modal if buy_postage_modal.present?
         20.times do
+          return buy_postage_modal if buy_postage_modal.present?
           buy_more_drop_down.element.hover
           buy_more_drop_down.safe_click unless buy_more_link.present?
           buy_more_drop_down.element.hover
