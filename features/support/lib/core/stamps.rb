@@ -48,7 +48,7 @@ module Stamps
 
   def webreg
     begin
-      @webreg ||= WebReg::Registration.new param
+      @webreg ||= WebReg::WebRegistration.new param
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"

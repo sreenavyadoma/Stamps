@@ -32,9 +32,9 @@ Feature: PAM page
     Then Toolbar: Add
     Then Pause for 1 second
     Then Open Settings Modal
-    Then Settings:  Set Logoff to 2 hours.
+    Then Settings:  Set Logoff to 2 hours
     Then Settings:  Save
     Then Pause for 1 second
     Then Sign out
-    Then Registration Profile:  Send username to standard out
+    Then WebReg Profile:  Send username to standard out
     Then Pause for 1 second

@@ -100,7 +100,7 @@ Then /^Settings:  Set Logoff to 1 hour.$/ do
   step "Settings:  Logoff set 1 hour"
 end
 
-Then /^Settings:  Set Logoff to 2 hours.$/ do
+Then /^Settings:  Set Logoff to 2 hours$/ do
   step "Settings:  Logoff set 2 hours"
 end
 

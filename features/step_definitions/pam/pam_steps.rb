@@ -344,7 +344,7 @@ Then /^PAM AppCap Overrides: Submit$/ do
   end
 end
 
-Then /^Registration Profile:  Send username to standard out$/ do
+Then /^WebReg Profile:  Send username to standard out$/ do
   logger.message " ############## NEW USER ID "
   logger.message " ############## #{@username}"
   logger.message " ############## #{@username}"

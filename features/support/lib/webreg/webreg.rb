@@ -1,6 +1,6 @@
 module Stamps
   module WebReg
-    class Registration < Browser::Modal
+    class WebRegistration < Browser::Modal
       attr_reader :profile
       def initialize param
         super param

@@ -34,7 +34,7 @@ Feature: Logoff
     Then Open Settings Modal
     Then Settings:  Expect Logoff is set for 1 hour
 
-    Then Settings:  Set Logoff to 2 hours.
+    Then Settings:  Set Logoff to 2 hours
     Then Settings:  Save
     Then Open Settings Modal
     Then Settings:  Expect Logoff is set for 2 hours
