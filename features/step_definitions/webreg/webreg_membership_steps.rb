@@ -475,6 +475,8 @@ Then /^WebReg Membership: Submit and correct errors$/ do
         step "WebReg Membership: Submit"
       when WebReg::ChooseSupplies
         break
+      else
+        raise "Unknown WebReg Result object. #{@webreg_result.class} is not recognized. Update step \"WebReg Membership: Submit and correct errors\""
     end
   end
 end
