@@ -228,4 +228,5 @@ module Stamps
       browser.text.should include "All tests passed"
     end
   end
+
 end
