@@ -1,7 +1,7 @@
 module Stamps
   # https://or.staging.stamps.com/postagetools/healthcheck.aspx
   # https://or.staging.stamps.com/orreports/healthcheck.aspx
-  # https://printext.qasc.stamps.com/addressbook/healthcheck.aspx
+  # https://orext.qasc.stamps.com/addressbook/healthcheck.aspx
 
   class HealthCheck < Browser::Modal
 
@@ -123,7 +123,7 @@ module Stamps
       case ENV['URL'].downcase
         when /sc/
           logger.message "OR - Reports"
-          browser.goto "https://or.qasc.stamps.com/orreports/healthcheck.aspx"
+          browser.goto "https://orext.qasc.stamps.com/ORReports/healthcheck.aspx"
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Reports: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
@@ -132,7 +132,7 @@ module Stamps
 
         when /cc/
           logger.message "OR - Reports"
-          browser.goto "https://or.qacc.stamps.com/orreports/healthcheck.aspx"
+          browser.goto "https://orext.qacc.stamps.com/orreports/healthcheck.aspx"
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Reports: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
@@ -181,7 +181,7 @@ module Stamps
       case ENV['URL'].downcase
         when /sc/
           logger.message "OR - Postage Tools"
-          browser.goto "https://or.qasc.stamps.com/postagetools/healthcheck.aspx"
+          browser.goto "https://orext.qasc.stamps.com/postagetools/healthcheck.aspx"
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Postage Tools: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
@@ -190,7 +190,7 @@ module Stamps
 
         when /cc/
           logger.message "OR - Postage Tools"
-          browser.goto "https://or.qacc.stamps.com/postagetools/healthcheck.aspx"
+          browser.goto "https://orext.qacc.stamps.com/postagetools/healthcheck.aspx"
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Postage Tools: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
