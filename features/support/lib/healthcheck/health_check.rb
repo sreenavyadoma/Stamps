@@ -51,15 +51,16 @@ module Stamps
       end
 
       if browser.text.include? "Server Error"
-        logger.error browser.text
-        raise browser.text
+        logger.error "\n#{browser.url}\n#{browser.text}"
+        raise "\n#{browser.url}\n#{browser.text}"
       end
 
       if browser.text.downcase.include? "server not found"
-        logger.error browser.text
-        raise browser.text
+        logger.error "\n#{browser.url}\n#{browser.text}"
+        raise "\n#{browser.url}\n#{browser.text}"
       end
 
+      logger.info browser.url
       browser.text.should include "All tests passed"
     end
 
@@ -103,15 +104,16 @@ module Stamps
       end
 
       if browser.text.include? "Server Error"
-        logger.error browser.text
-        raise browser.text
+        logger.error "\n#{browser.url}\n#{browser.text}"
+        raise "\n#{browser.url}\n#{browser.text}"
       end
 
       if browser.text.downcase.include? "server not found"
-        logger.error browser.text
-        raise browser.text
+        logger.error "\n#{browser.url}\n#{browser.text}"
+        raise "\n#{browser.url}\n#{browser.text}"
       end
 
+      logger.info browser.url
       browser.text.should include "All tests passed"
     end
 
@@ -155,20 +157,21 @@ module Stamps
       end
 
       if browser.text.include? "Server Error"
-        logger.error browser.text
-        raise browser.text
+        logger.error "\n#{browser.url}\n#{browser.text}"
+        raise "\n#{browser.url}\n#{browser.text}"
       end
 
       if browser.text.downcase.include? "server not found"
-        logger.error browser.text
-        raise browser.text
+        logger.error "\n#{browser.url}\n#{browser.text}"
+        raise "\n#{browser.url}\n#{browser.text}"
       end
 
       if browser.text.downcase.include? "server not found"
-        logger.error browser.text
-        raise browser.text
+        logger.error "\n#{browser.url}\n#{browser.text}"
+        raise "\n#{browser.url}\n#{browser.text}"
       end
 
+      logger.info browser.url
       browser.text.should include "All tests passed"
     end
 
@@ -212,15 +215,16 @@ module Stamps
       end
 
       if browser.text.include? "Server Error"
-        logger.error browser.text
-        raise browser.text
+        logger.error "\n#{browser.url}\n#{browser.text}"
+        raise "\n#{browser.url}\n#{browser.text}"
       end
 
       if browser.text.downcase.include? "server not found"
-        logger.error browser.text
-        raise browser.text
+        logger.error "\n#{browser.url}\n#{browser.text}"
+        raise "\n#{browser.url}\n#{browser.text}"
       end
 
+      logger.info browser.url
       browser.text.should include "All tests passed"
     end
   end
