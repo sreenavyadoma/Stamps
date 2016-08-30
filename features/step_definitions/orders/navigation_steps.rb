@@ -19,7 +19,7 @@ end
 Then /^Buy Postage: Purchase 100$/ do
   logger.info "Buy Postage: Purchase $10"
   @old_balance = web_apps.navigation_bar.balance.amount
-  web_apps.navigation_bar.balance.buy_more.buy_10.select
+  web_apps.navigation_bar.balance.buy_more.buy_100.select
 end
 
 Then /^Buy Postage: Purchase Other Amount (\d+)$/ do |amount|

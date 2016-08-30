@@ -29,12 +29,11 @@ module Stamps
     end
 
     class ConfirmPurchase < Browser::Modal
-      attr_reader :window_title, :text_area
+      attr_reader :window_title
 
       def initialize param
         super param
         @window_title ||= ElementWrapper.new browser.div text: 'Confirm Purchase'
-        @text_area ||= ElementWrapper.new browser.div class: 'sdc-dialoguemodal-confirm-purchase'
       end
 
       def exit
@@ -50,12 +49,30 @@ module Stamps
         window_title.safely_wait_until_present *args
       end
 
+      def text_area
+        if param.app == :orders
+          div = browser.div class: 'sdc-dialoguemodal-confirm-purchase'
+        elsif param.app == :mail
+          div = browser.spans(css: "span[id$=-purchasebtn-btnIconEl]").last
+        else
+          "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
+        end
+        ElementWrapper.new div
+      end
+
       def text
         text_area.text
       end
 
       def purchase_button
-        @purchase_button ||= ElementWrapper.new (param.app == :orders)?((browser.spans text: "Purchase").last):(browser.spans(css: "span[id$=-purchasebtn-btnIconEl]").last)
+        if param.app == :orders
+          button = (browser.spans text: "Purchase").last
+        elsif param.app == :mail
+          button = browser.spans(css: "span[id$=-purchasebtn-btnIconEl]").last
+        else
+          "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
+        end
+        ElementWrapper.new button
       end
 
       def purchase
@@ -64,7 +81,7 @@ module Stamps
         10.times do
           return purchase_approved if purchase_approved.present?
           purchase_button.safe_click
-          purchase_approved.wait_until_present 3
+          purchase_approved.wait_until_present 6
         end
         raise "Purchase Approved modal did not open!"
       end
@@ -94,9 +111,14 @@ module Stamps
       end
 
       def purchase_button
-        orders_btn = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
-        mail_btn = browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
-        @purchase_button ||= ElementWrapper.new (orders_btn.present?)?orders_btn:mail_btn
+        if param.app == :orders
+          button = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
+        elsif param.app == :mail
+          button = browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
+        else
+          "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
+        end
+        ElementWrapper.new button
       end
 
       def present?
@@ -110,78 +132,92 @@ module Stamps
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
-        else
+        elsif param.app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-10dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        else
+          "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
         end
       end
 
       def buy_25
         if param.app == :orders
-          checkbox_element = (browser.input id: "sdc-purchasewin-25dradio").parent.span
+          checkbox_element = (browser.label text: "$25.00").parent.span
+          verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
-          verify_element_attrib = "focus"
-          RadioElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
-        else
+          verify_element_attrib = "checked"
+          RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        elsif param.app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-25dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        else
+          "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
         end
 
       end
 
       def buy_50
         if param.app == :orders
-          checkbox_element = (browser.input id: "sdc-purchasewin-50dradio").parent.span
+          checkbox_element = (browser.label text: "$50.00").parent.span
+          verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
-          verify_element_attrib = "focus"
-          RadioElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
-        else
+          verify_element_attrib = "checked"
+          RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        elsif param.app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-50dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        else
+          "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
         end
       end
 
       def buy_100
         if param.app == :orders
-          checkbox_element = (browser.input id: "sdc-purchasewin-100dradio").parent.span
+          checkbox_element = (browser.label text: "$100.00").parent.span
+          verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
-          verify_element_attrib = "focus"
-          RadioElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
-        else
+          verify_element_attrib = "checked"
+          RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        elsif param.app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-100dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        else
+          "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
         end
       end
 
       def buy_other value
         if param.app == :orders
-          checkbox_element = (browser.input id: "sdc-purchasewin-otherdradio").parent.span
+          checkbox_element = (browser.label text: /Other:/).parent.span
+          verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
-          verify_element_attrib = "focus"
-          checkbox = RadioElement.new checkbox_element, checkbox_element, attribute, verify_element_attrib
-        else
+          verify_element_attrib = "checked"
+          checkbox = RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
+        elsif param.app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-otherdradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           checkbox = RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
-          end
+        else
+          "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
+        end
 
         textbox = TextBoxElement.new (browser.text_field id: "sdc-purchasewin-otheramount")
 
-        checkbox.check
+        checkbox.select
         textbox.set value
       end
 
@@ -190,8 +226,9 @@ module Stamps
         10.times do
           return confirm_purchase if confirm_purchase.present?
           purchase_button.safe_click
-          confirm_purchase.wait_until_present 2
+          confirm_purchase.wait_until_present 6
         end
+        raise "Confirm Purchase Modal did not open after clicking Purchase button on Buy Postage modal..." unless confirm_purchase.present?
       end
 
       def edit_payment_method
@@ -240,8 +277,8 @@ module Stamps
       def amount
         10.times{
           amount = balance_element.text
-          amount_stripped_dollar = amount.gsub("$","")
-          amount_stripped_all = amount_stripped_dollar.gsub(",","")
+          amount_no_dollar_sign = amount.gsub("$","")
+          amount_stripped_all = amount_no_dollar_sign.gsub(",","")
           return amount_stripped_all if amount_stripped_all.length > 0
         }
       end

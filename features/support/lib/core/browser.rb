@@ -269,7 +269,7 @@ module Stamps
       end
 
       def check
-        10.times{
+        50.times{
           break if checked?
           safe_click
         }
@@ -278,7 +278,7 @@ module Stamps
 
       def uncheck
         if checked?
-          10.times{
+          50.times{
             safe_click
             break unless checked?
           }
@@ -310,7 +310,7 @@ module Stamps
       end
 
       def select
-        10.times{
+        50.times{
           break if selected?
           safe_click
         }

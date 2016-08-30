@@ -13,7 +13,6 @@ module Stamps
         @verifying_account_info = ElementWrapper.new browser.div text: "Verifying account information..."
         @signed_in_user = ElementWrapper.new browser.span id: "userNameText"
         @invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
-
       end
 
       def present?
@@ -77,11 +76,16 @@ module Stamps
           password password
           login
 
-          logger.info verifying_account_info.text if verifying_account_info.present?
+          100.times do
+            logger.info verifying_account_info.text
+            break unless verifying_account_info.present?
+          end
+
+          verifying_account_info.safely_wait_while_present 5
+
           logger.info "Signed in username is #{signed_in_user.text}" if signed_in_user.present?
           logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
-          sleep 2
           break if signed_in_user.present?
 
           if invalid_msg.present?
@@ -92,8 +96,9 @@ module Stamps
           end
 
         end
+
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
-        logger.info "Password is #{password}"
+        raise "SIGN IN FAILED FOR USER: #{username}! The environment might be down!" unless signed_in_user.present?
       end
 
       def sign_in_and_remember *args
