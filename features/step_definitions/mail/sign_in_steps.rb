@@ -47,5 +47,3 @@ Then /^Expect Invalid Message to be "Your username or password is invalid." for 
   invalid_username_password = $invalid_message
   logger.info "Expect Invalid Message to be: #{invalid_username_password}"
 end
-
-

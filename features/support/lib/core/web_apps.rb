@@ -42,6 +42,10 @@ module Stamps
       end
 
       browser.goto url
+      if browser.text.include? "Server Error"
+        logger.error browser.text
+        raise browser.text
+      end
       logger.info "Page loaded: #{browser.url}"
     end
 
