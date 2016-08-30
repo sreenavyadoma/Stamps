@@ -17,7 +17,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -29,7 +28,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -41,7 +39,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -52,6 +49,18 @@ module Stamps
           logger.info "Teardown: Done!"
           stop_test "#{ENV['URL']} is not a valid URL selection"
       end
+
+      if browser.text.include? "Server Error"
+        logger.error browser.text
+        raise browser.text
+      end
+
+      if browser.text.downcase.include? "server not found"
+        logger.error browser.text
+        raise browser.text
+      end
+
+      browser.text.should include "All tests passed"
     end
 
     def address_book
@@ -64,7 +73,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Address Book: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -74,7 +82,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Address Book: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -84,7 +91,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Address Book: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -95,6 +101,18 @@ module Stamps
           logger.info "Teardown: Done!"
           stop_test "#{ENV['URL']} is not a valid URL selection"
       end
+
+      if browser.text.include? "Server Error"
+        logger.error browser.text
+        raise browser.text
+      end
+
+      if browser.text.downcase.include? "server not found"
+        logger.error browser.text
+        raise browser.text
+      end
+
+      browser.text.should include "All tests passed"
     end
 
     def or_reports
@@ -107,7 +125,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Reports: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -117,7 +134,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Reports: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -127,7 +143,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Reports: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -138,6 +153,23 @@ module Stamps
           logger.info "Teardown: Done!"
           stop_test "#{ENV['URL']} is not a valid URL selection"
       end
+
+      if browser.text.include? "Server Error"
+        logger.error browser.text
+        raise browser.text
+      end
+
+      if browser.text.downcase.include? "server not found"
+        logger.error browser.text
+        raise browser.text
+      end
+
+      if browser.text.downcase.include? "server not found"
+        logger.error browser.text
+        raise browser.text
+      end
+
+      browser.text.should include "All tests passed"
     end
 
     def or_postage_tools
@@ -150,7 +182,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Postage Tools: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -160,7 +191,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Postage Tools: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -170,7 +200,6 @@ module Stamps
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "OR - Postage Tools: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          browser.text.should include "All tests passed"
           logger.message "-"
           logger.message "-"
 
@@ -181,6 +210,18 @@ module Stamps
           logger.info "Teardown: Done!"
           stop_test "#{ENV['URL']} is not a valid URL selection"
       end
+
+      if browser.text.include? "Server Error"
+        logger.error browser.text
+        raise browser.text
+      end
+
+      if browser.text.downcase.include? "server not found"
+        logger.error browser.text
+        raise browser.text
+      end
+
+      browser.text.should include "All tests passed"
     end
   end
 end
