@@ -322,7 +322,6 @@ module Stamps
         ship_from_dropdown.safe_click
         ship_from_default_selection_field = (browser.divs css: "div[data-qtip*='Return To Address']")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
 
-
         if selection.downcase == "default"
           ship_from_selection_field = ship_from_default_selection_field
         elsif selection.downcase.include? "manage shipping"
