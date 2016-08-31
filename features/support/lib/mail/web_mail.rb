@@ -31,7 +31,7 @@ module Stamps
         elsif selection.include? 'Roll'
           roll
         else
-          raise "#{selection} is not a valid Print Postage Print-On Selection"
+          raise "#{selection} is not a valid Print Mail Print-On Selection"
         end
       end
 

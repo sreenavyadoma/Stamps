@@ -49,33 +49,33 @@ Then /^Print: Set Ship Date to today plus (\d+)$/ do |day|
   @ship_date = @print_window.date_picker.today_plus day
 end
 
-Then /^Print: Check Hide Postage Value$/ do
-  logger.info "Print: Check Hide Postage Value"
+Then /^Print: Check Hide Mail Value$/ do
+  logger.info "Print: Check Hide Mail Value"
   @print_window.print_options.hide_postage_value.check
 end
 
-Then /^Print: Uncheck Hide Postage Value$/ do
-  logger.info "Print: Uncheck Hide Postage Value"
+Then /^Print: Uncheck Hide Mail Value$/ do
+  logger.info "Print: Uncheck Hide Mail Value"
   @print_window.print_options.hide_postage_value.uncheck
 end
 
-Then /^Print: Expect Hide Postage Value Checkbox is checked$/ do
-  logger.info "Print: Print: Expect Hide Postage Value Checkbox is checked"
-  expectation = "Hide Postage Value Checkbox is checked"
+Then /^Print: Expect Hide Mail Value Checkbox is checked$/ do
+  logger.info "Print: Print: Expect Hide Mail Value Checkbox is checked"
+  expectation = "Hide Mail Value Checkbox is checked"
   print_dialog = @print_window
   30.times do
     print_dialogger.click
     actual_value = print_dialogger.print_options.hide_postage_value.checked?
     print_dialogger.click
     if actual_value
-      expectation = "Hide Postage Value Checkbox is checked"
+      expectation = "Hide Mail Value Checkbox is checked"
     else
-      expectation = "Hide Postage Value Checkbox is NOT checked"
+      expectation = "Hide Mail Value Checkbox is NOT checked"
     end
-    break if expectation=="Hide Postage Value Checkbox is checked"
+    break if expectation=="Hide Mail Value Checkbox is checked"
   end
-  logger.info "Test #{(expectation=="Hide Postage Value Checkbox is checked")?"Passed":"Failed"}"
-  expectation.should eql "Hide Postage Value Checkbox is checked"
+  logger.info "Test #{(expectation=="Hide Mail Value Checkbox is checked")?"Passed":"Failed"}"
+  expectation.should eql "Hide Mail Value Checkbox is checked"
 end
 
 Then /^Print: Check Email Tracking Details to Recipients$/ do

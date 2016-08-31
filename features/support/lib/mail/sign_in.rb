@@ -76,8 +76,8 @@ module Stamps
           password password
           login
 
-          100.times do
-            logger.info verifying_account_info.text
+          75.times do
+            logger.info verifying_account_info.safe_text
             break unless verifying_account_info.present?
           end
 
@@ -97,6 +97,7 @@ module Stamps
 
         end
 
+        signed_in_user.safely_wait_until_present 6
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
         raise "SIGN IN FAILED FOR USER: #{username}! The environment might be down!" unless signed_in_user.present?
       end

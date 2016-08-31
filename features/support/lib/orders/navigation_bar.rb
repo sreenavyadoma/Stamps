@@ -1,13 +1,12 @@
 module Stamps
   module Navigation
     class PurchaseApproved < Browser::Modal
-      attr_reader :ok_button, :window_title, :text_area
+      attr_reader :ok_button, :window_title
 
       def initialize param
         super param
         @ok_button ||= ElementWrapper.new (param.app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
         @window_title ||= ElementWrapper.new browser.div text: "Purchase Approved"
-        @text_area ||= ElementWrapper.new browser.div css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]"
       end
 
       def wait_until_present *args
@@ -16,6 +15,10 @@ module Stamps
 
       def present?
         window_title.present?
+      end
+
+      def text_area
+        ElementWrapper.new (browser.divs css: "div[id^=dialoguemodal-][id$=-innerCt]").last
       end
 
       def text
@@ -53,7 +56,7 @@ module Stamps
         if param.app == :orders
           div = browser.div class: 'sdc-dialoguemodal-confirm-purchase'
         elsif param.app == :mail
-          div = browser.spans(css: "span[id$=-purchasebtn-btnIconEl]").last
+          div = browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
         else
           "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
         end
@@ -228,7 +231,7 @@ module Stamps
           purchase_button.safe_click
           confirm_purchase.wait_until_present 6
         end
-        raise "Confirm Purchase Modal did not open after clicking Purchase button on Buy Postage modal..." unless confirm_purchase.present?
+        raise "Confirm Purchase Modal did not open after clicking Purchase button on Buy Mail modal..." unless confirm_purchase.present?
       end
 
       def edit_payment_method

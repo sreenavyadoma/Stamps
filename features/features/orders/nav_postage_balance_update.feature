@@ -1,8 +1,8 @@
 
-Feature: Postage Balance
+Feature: Mail Balance
 
   @nav_postage_balance_update
-  Scenario: Update Postage Balance After Each Print
+  Scenario: Update Mail Balance After Each Print
     Given I am signed in to Orders
     Then Toolbar: Add
     Then Details: Set Ship-From to default

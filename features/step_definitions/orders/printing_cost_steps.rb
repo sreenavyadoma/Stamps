@@ -89,7 +89,7 @@ Then /^NavBar: Expect Customer Balance is deducted the Printing Cost$/ do
   else
     @new_balance = web_apps.navigation_bar.balance.new_balance(@old_balance)
     postage_total_calculation = @total_amount.to_f.round(2) == (@service_cost.to_f + @insurance_cost.to_f + @tracking_cost.to_f).round(2)
-    logger.info "Postage total Calculation:  #{(postage_total_calculation)?'Passed':'Failed'}.  #{@total_amount} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
+    logger.info "Mail total Calculation:  #{(postage_total_calculation)?'Passed':'Failed'}.  #{@total_amount} == #{@service_cost} + #{@insurance_cost} + #{@tracking_cost}"
     postage_total_calculation.should be true
     new = @new_balance.to_f.round(2)
     calculated = (@old_balance.to_f - (@service_cost.to_f + @tracking_cost.to_f)).round(2)

@@ -1,46 +1,46 @@
 
-Then /^Postage Customs: Set Package Contents to \"(.+)\"$/ do |value|
+Then /^Mail Customs: Set Package Contents to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Package Contents to #{value}"
   @customs_form.package_contents.select value
 end
 
-Then /^Postage Customs: Set Non-Delivery Options to \"(.+)\"$/ do |value|
+Then /^Mail Customs: Set Non-Delivery Options to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Non-Delivery Options to #{value}"
   @customs_form.non_delivery_options.select value
 end
 
-Then /^Postage Customs: Set Internal Transaction Number Requirement to \"(.+)\"$/ do |value|
+Then /^Mail Customs: Set Internal Transaction Number Requirement to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Internal Transaction Number to #{value}"
   @customs_form.internal_transaction.select (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
   sleep 1
 end
 
-Then /^Postage Customs: Set More Info to \"(.+)\"$/ do |value|
+Then /^Mail Customs: Set More Info to \"(.+)\"$/ do |value|
   logger.info "Customs: Set More Info to #{value}"
   @customs_form.more_info.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
-Then /^Postage Customs: Set ITN Number to \"(.+)\"$/ do |value|
+Then /^Mail Customs: Set ITN Number to \"(.+)\"$/ do |value|
   logger.info "Customs: Set ITN Number to #{value}"
   @customs_form.itn_number.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
-Then /^Postage Customs: Set License Number to \"(.+)\"$/ do |value|
+Then /^Mail Customs: Set License Number to \"(.+)\"$/ do |value|
   logger.info "Customs: Set License Number to #{value}"
   @customs_form.license.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
-Then /^Postage Customs: Set Certificate Number to \"(.+)\"$/ do |value|
+Then /^Mail Customs: Set Certificate Number to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Certificate Number to #{value}"
   @customs_form.certificate.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
-Then /^Postage Customs: Set Invoice Number to \"(.+)\"$/ do |value|
+Then /^Mail Customs: Set Invoice Number to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Invoice Number to #{value}"
   @customs_form.invoice.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
-Then /^Postage Customs: Add Item - Description (\w+), Qty (\d+), Value ([\d.]+), Lbs (\d+), Oz (\d+), Origin (.+), Tariff (\d+)$/ do |description, qty, value, lbs, oz, origin_country, tariff|
+Then /^Mail Customs: Add Item - Description (\w+), Qty (\d+), Value ([\d.]+), Lbs (\d+), Oz (\d+), Origin (.+), Tariff (\d+)$/ do |description, qty, value, lbs, oz, origin_country, tariff|
   logger.info "Customs: Add Item - Description #{description}, Qty #{qty}, Value #{value}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
 
   @add_item_form = @customs_form.add_item
@@ -54,7 +54,7 @@ Then /^Postage Customs: Add Item - Description (\w+), Qty (\d+), Value ([\d.]+),
   @add_item_form.save
 end
 
-Then /^Postage Customs: Delete Item (\d+)$/ do |item_number|
+Then /^Mail Customs: Delete Item (\d+)$/ do |item_number|
   logger.info "Customs: Delete Item #{item_number}"
   count = @customs_item_grid.size
   item = @customs_item_grid.item item_number.to_i
@@ -65,22 +65,22 @@ Then /^Postage Customs: Delete Item (\d+)$/ do |item_number|
   end
 end
 
-Then /^Postage Customs: Delete All Items$/ do
-  logger.info "Postage Customs: Delete All Items"
+Then /^Mail Customs: Delete All Items$/ do
+  logger.info "Mail Customs: Delete All Items"
   @customs_form.delete_all
 end
 
-Then /^Postage Customs: Check I agree to the USPS Privacy Act Statement$/ do
+Then /^Mail Customs: Check I agree to the USPS Privacy Act Statement$/ do
   logger.info "Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @customs_form.i_agree.check
 end
 
-Then /^Postage Customs: Uncheck I agree to the USPS Privacy Act Statement$/ do
+Then /^Mail Customs: Uncheck I agree to the USPS Privacy Act Statement$/ do
   logger.info "Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @customs_form.i_agree.uncheck
 end
 
-Then /^Postage Customs: Save$/ do
+Then /^Mail Customs: Save$/ do
   logger.info "Save Customs Form"
   @customs_form.save
 end

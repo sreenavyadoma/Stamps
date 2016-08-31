@@ -287,41 +287,41 @@ Then /^Settings:  Postdate Set (.*)$/ do |postdate|
   logger.info "Postdate mail to next day after #{@general_settings.log_off.text_box.text}"
 end
 
-# Postage Balance
+# Mail Balance
 
-Then /^Settings:  Set Postage Balance to 0$/ do
-  step 'Settings:  Postage Balance Set 0'
+Then /^Settings:  Set Mail Balance to 0$/ do
+  step 'Settings:  Mail Balance Set 0'
 end
 
-Then /^Settings:  Set Postage Balance to 10$/ do
-  step 'Settings:  Postage Balance Set 10'
+Then /^Settings:  Set Mail Balance to 10$/ do
+  step 'Settings:  Mail Balance Set 10'
 end
 
-Then /^Settings:  Set Postage Balance to 25$/ do
-  step 'Settings:  Postage Balance Set 25'
+Then /^Settings:  Set Mail Balance to 25$/ do
+  step 'Settings:  Mail Balance Set 25'
 end
 
-Then /^Settings:  Set Postage Balance to 50$/ do
-  step 'Settings:  Postage Balance Set 50'
-end
-
-
-Then /^Settings:  Set Postage Balance to 100$/ do
-  step 'Settings:  Postage Balance Set 100'
+Then /^Settings:  Set Mail Balance to 50$/ do
+  step 'Settings:  Mail Balance Set 50'
 end
 
 
-Then /^Settings:  Set Postage Balance to 250$/ do
-  step 'Settings:  Postage Balance Set 250'
+Then /^Settings:  Set Mail Balance to 100$/ do
+  step 'Settings:  Mail Balance Set 100'
 end
 
 
-Then /^Settings:  Set Postage Balance to 500$/ do
-  step 'Settings:  Postage Balance Set 500'
+Then /^Settings:  Set Mail Balance to 250$/ do
+  step 'Settings:  Mail Balance Set 250'
 end
 
 
-Then /^Settings:  Postage Balance Set (.*)$/ do |postage_balance|
+Then /^Settings:  Set Mail Balance to 500$/ do
+  step 'Settings:  Mail Balance Set 500'
+end
+
+
+Then /^Settings:  Mail Balance Set (.*)$/ do |postage_balance|
   step "Open Settings Modal" if @general_settings.nil?
 
   case postage_balance.downcase
@@ -343,7 +343,7 @@ Then /^Settings:  Postage Balance Set (.*)$/ do |postage_balance|
       logger.info "Teardown: Begin tearing down test"
       TestHelper.teardown
       logger.info "Teardown: Done!"
-      raise "Invalid Postage Balance Selection -  Settings:  Postage Balance #{postage_balance}"
+      raise "Invalid Mail Balance Selection -  Settings:  Mail Balance #{postage_balance}"
   end
   logger.info "Notify me when mail balance drops below #{@general_settings.log_off.text_box.text}"
 end
@@ -567,38 +567,38 @@ Then /^Settings:  Expect Postdate to be (.*)$/ do |expectation|
   @general_settings.post_date.text_box.text.should eql expectation
 end
 
-# Postage Balance
-Then /^Settings:  Expect Postage Balance set to 0$/ do
-  step "Settings:  Expect Postage Balance to be $0"
+# Mail Balance
+Then /^Settings:  Expect Mail Balance set to 0$/ do
+  step "Settings:  Expect Mail Balance to be $0"
 end
 
-Then /^Settings:  Expect Postage Balance set to 10$/ do
-  step "Settings:  Expect Postage Balance to be $10"
+Then /^Settings:  Expect Mail Balance set to 10$/ do
+  step "Settings:  Expect Mail Balance to be $10"
 end
 
-Then /^Settings:  Expect Postage Balance set to 25$/ do
-  step "Settings:  Expect Postage Balance to be $25"
+Then /^Settings:  Expect Mail Balance set to 25$/ do
+  step "Settings:  Expect Mail Balance to be $25"
 end
 
-Then /^Settings:  Expect Postage Balance set to 50$/ do
-  step "Settings:  Expect Postage Balance to be $50"
+Then /^Settings:  Expect Mail Balance set to 50$/ do
+  step "Settings:  Expect Mail Balance to be $50"
 end
 
-Then /^Settings:  Expect Postage Balance set to 100$/ do
-  step "Settings:  Expect Postage Balance to be $100"
+Then /^Settings:  Expect Mail Balance set to 100$/ do
+  step "Settings:  Expect Mail Balance to be $100"
 end
 
-Then /^Settings:  Expect Postage Balance set to 250$/ do
-  step "Settings:  Expect Postage Balance to be $250"
+Then /^Settings:  Expect Mail Balance set to 250$/ do
+  step "Settings:  Expect Mail Balance to be $250"
 end
 
-Then /^Settings:  Expect Postage Balance set to 500$/ do
-  step "Settings:  Expect Postage Balance to be $500"
+Then /^Settings:  Expect Mail Balance set to 500$/ do
+  step "Settings:  Expect Mail Balance to be $500"
 end
 
-Then /^Settings:  Expect Postage Balance to be (.*)$/ do |expectation|
+Then /^Settings:  Expect Mail Balance to be (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
-  logger.info "Settings:  Expect Postage Balance to be $#{expectation}"
+  logger.info "Settings:  Expect Mail Balance to be $#{expectation}"
 
   logger.info "Test #{(@general_settings.postage_balance.text_box.text == expectation)?"Passed":"Failed"}"
   @general_settings.postage_balance.text_box.text.should eql expectation

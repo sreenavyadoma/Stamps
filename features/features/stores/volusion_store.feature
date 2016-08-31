@@ -5,14 +5,14 @@ Feature: Volusion New Customer
   @volusion_new_customer
   Scenario: Volusion New Customer
     Then Volusion Login:  New Customers - Continue
-    Then Volusion New to Postage Stamps: Set email address to random
-    Then Volusion New to Postage Stamps: Type email address again
-    Then Volusion New to Postage Stamps: Set new password to pass111
-    Then Volusion New to Postage Stamps: Type new password again
-    Then Volusion New to Postage Stamps: Uncheck receive newsletter
-    Then Volusion New to Postage Stamps: Check receive newsletter
-    Then Volusion New to Postage Stamps: Uncheck receive newsletter
-    Then Volusion New to Postage Stamps: Click Continue
+    Then Volusion New to Mail Stamps: Set email address to random
+    Then Volusion New to Mail Stamps: Type email address again
+    Then Volusion New to Mail Stamps: Set new password to pass111
+    Then Volusion New to Mail Stamps: Type new password again
+    Then Volusion New to Mail Stamps: Uncheck receive newsletter
+    Then Volusion New to Mail Stamps: Check receive newsletter
+    Then Volusion New to Mail Stamps: Uncheck receive newsletter
+    Then Volusion New to Mail Stamps: Click Continue
 
     Then Volusion Shipping Address: Set First Name to random
     Then Volusion Shipping Address: Set Last Name to random

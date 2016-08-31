@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Then /^Postage Stamps: Set Serial Number to (.*)/ do |serial|
+Then /^Mail Stamps: Set Serial Number to (.*)/ do |serial|
   logger.info "Set Stamps Serial Number to #{serial}"
   
   if serial == 'random'
@@ -12,53 +12,53 @@ Then /^Postage Stamps: Set Serial Number to (.*)/ do |serial|
   logger.info "Preview image: #{(web_apps.mail.netstamps.form_view.preview_image(serial_prefix).present?)?"YES": "NO"}"
 end
 
-Then /^Postage Stamps: Set Ship-From to (.*)/ do |value|
-  logger.info "Set Print Postage Ship-From to: \n #{value}"
+Then /^Mail Stamps: Set Ship-From to (.*)/ do |value|
+  logger.info "Set Print Mail Ship-From to: \n #{value}"
   web_apps.mail.netstamps.ship_from.select value
 end
 
-Then /^Postage Stamps: Set Ship-To country to (.*)/ do |country|
-  logger.info "Set Print Postage Country to: \n #{country}"
+Then /^Mail Stamps: Set Ship-To country to (.*)/ do |country|
+  logger.info "Set Print Mail Country to: \n #{country}"
   web_apps.mail.netstamps.ship_to.country.select country
 end
 
-Then /^Postage Stamps: Set Ounces to (.*)/ do |ounces|
-  logger.info "Postage Stamps: Set Ounces to: \n #{ounces}"
+Then /^Mail Stamps: Set Ounces to (.*)/ do |ounces|
+  logger.info "Mail Stamps: Set Ounces to: \n #{ounces}"
   web_apps.mail.netstamps.weight.oz.set ounces
 end
 
-Then /^Postage Stamps: Set Pounds to (.*)/ do |pounds|
-  logger.info "Postage Stamps: Set Pounds to: \n #{pounds}"
+Then /^Mail Stamps: Set Pounds to (.*)/ do |pounds|
+  logger.info "Mail Stamps: Set Pounds to: \n #{pounds}"
   
   web_apps.mail.netstamps.weight.lbs.set pounds
 end
 
-Then /^Postage Stamps: Set Quantity to (.*)/ do |qty|
-  logger.info "Postage Stamps: Set Quantity to: \n #{qty}"
+Then /^Mail Stamps: Set Quantity to (.*)/ do |qty|
+  logger.info "Mail Stamps: Set Quantity to: \n #{qty}"
   
   web_apps.mail.netstamps.form_view.quantity.set qty
 end
 
-Then /^Postage Stamps: Set Print All to Checked$/ do
-  logger.info "Postage Stamps: Check Print All"
+Then /^Mail Stamps: Set Print All to Checked$/ do
+  logger.info "Mail Stamps: Check Print All"
   
   web_apps.mail.netstamps.form_view.print_all.check
 end
 
-Then /^Postage Stamps: Set Print All to Unchecked$/ do
-  logger.info "Postage Stamps: Uncheck Print All"
+Then /^Mail Stamps: Set Print All to Unchecked$/ do
+  logger.info "Mail Stamps: Uncheck Print All"
   
   web_apps.mail.netstamps.form_view.print_all.uncheck
 end
 
-Then /^Postage Stamps: Set Reference Number to (.*)/ do |ref_no|
+Then /^Mail Stamps: Set Reference Number to (.*)/ do |ref_no|
   logger.info "Set Stamps Reference Number to #{ref_no}"
   
   web_apps.mail.netstamps.form_view.reference_number.set ref_no
 end
 
-Then /^Postage Stamps: Set Cost Code to (.*)/ do |code|
-  logger.info "Postage Stamps: Set Cost Code to \n #{code}"
+Then /^Mail Stamps: Set Cost Code to (.*)/ do |code|
+  logger.info "Mail Stamps: Set Cost Code to \n #{code}"
   
   web_apps.mail.netstamps.form_view.cost_code.select code
 end

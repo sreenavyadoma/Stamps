@@ -51,7 +51,7 @@ Feature: WebReg
     Then PAM ACH Purchase: Set Amount to $100000.00
 
     Then PAM Customer Profile: Click  AppCap Overrides link
-    Then PAM AppCap Overrides: Set Internet Postage Printing to Always On
+    Then PAM AppCap Overrides: Set Internet Mail Printing to Always On
     Then PAM AppCap Overrides: Set Netstamps Printing to Always On
     Then PAM AppCap Overrides: Set Shipping Label Printing to Always On
     Then PAM AppCap Overrides: Set International Shipping to Always On

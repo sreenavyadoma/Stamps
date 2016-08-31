@@ -425,6 +425,20 @@ module Stamps
       end
     end
 
+    class MembershipCardNumber < TextBoxElement
+      def help_element
+        browser.span css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span'
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+
+      def has_error?
+        help_element.present?
+      end
+    end
+
     class Membership < Browser::Modal
 
       attr_reader :first_name, :last_name, :company, :address, :city, :state, :zip, :phone, :ext, :card_holder_name,
@@ -445,7 +459,7 @@ module Stamps
         @zip ||= TextBoxElement.new browser.text_field(id: "zip")
         @ext ||= TextBoxElement.new browser.text_field(id: "extension")
         @card_holder_name ||= TextBoxElement.new browser.text_field(id: "ccName")
-        @card_number ||= TextBoxElement.new browser.text_field(id: "ccNumber")
+        @card_number ||= MembershipCardNumber.new browser.text_field(id: "ccNumber")
         @expiration_month ||= ExpirationMonth.new param
         @expiration_year ||= ExpirationYear.new param
         checkbox_field ||= browser.input id: "useMailingAddressForBilling"
