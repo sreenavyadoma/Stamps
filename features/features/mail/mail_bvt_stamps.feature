@@ -3,7 +3,7 @@ Feature: Stamps BVT
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
   @wp_bvt_netstamps_specify
 

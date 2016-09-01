@@ -3,7 +3,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - PM Padded Flat Rat
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
 
   @wp_shipping_label_regression

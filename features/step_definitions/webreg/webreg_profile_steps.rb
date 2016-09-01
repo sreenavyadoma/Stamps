@@ -20,12 +20,9 @@ Then /^WebReg Profile: Set User ID and Email from Jenkins$/ do
 end
 
 Then /^WebReg Profile: Set User ID and Email to (.*)$/ do |usr|
-  if usr.downcase.include? "random"
-    @username = ParameterHelper.rand_username
-  else
-    @username = usr
-  end
-  
+  @username = usr
+  @username = ParameterHelper.rand_username if usr.downcase.include? "random"
+
   logger.info "WebReg Profile: Set User ID and Email to #{@username}"
   step "WebReg Profile: Set Email to #{@username}@mailinator.com"
   step "WebReg Profile: Set User ID to #{@username}"
@@ -43,6 +40,7 @@ end
 
 Then /^WebReg Profile: Set Password to (.*)$/ do |password|
   logger.info "WebReg Profile: Set Password to #{password}"
+  @password = password
   webreg.profile.password.set password
 end
 

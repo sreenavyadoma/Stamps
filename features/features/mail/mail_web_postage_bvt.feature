@@ -1,7 +1,7 @@
 Feature: Test Development
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
   @print_postage_page_objects
   Scenario: Page Object Creation

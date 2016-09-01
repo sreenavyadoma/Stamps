@@ -1,7 +1,7 @@
 Feature: Envelope #6
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
   @wp_envelope_regression
   @wp_envelope_6

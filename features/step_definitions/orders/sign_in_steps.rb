@@ -26,7 +26,7 @@ end
 
 Given /^I am signed in to Orders$/ do
   logger.info "I am signed in to Orders"
-  step "I launched the default browser"
+  step "I launched default browser"
   if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
@@ -38,7 +38,7 @@ end
 
 Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
   logger.info "I am signed in to Orders as #{username}/#{password}"
-  step "I launched the default browser"
+  step "I launched default browser"
   if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"

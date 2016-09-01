@@ -3,7 +3,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - XM Padded Flat Rate Envel
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
 
   @wp_shipping_label_regression

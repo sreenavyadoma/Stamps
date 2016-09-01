@@ -3,7 +3,7 @@ Feature: Stamps S Series - Calculate Postage
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
   @wp_stamps_regression
   @wp_stamps_s_series_calculate

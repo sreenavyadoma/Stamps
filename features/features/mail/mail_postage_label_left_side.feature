@@ -3,7 +3,7 @@ Feature: Mail Shipping Label - Left Side
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
 
 

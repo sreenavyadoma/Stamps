@@ -3,7 +3,7 @@ Feature: Mail Roll - 4" x 6" - PM Large Box
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
 
   @wp_roll_regression

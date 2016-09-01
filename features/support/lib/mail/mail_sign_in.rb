@@ -1,5 +1,60 @@
 module Stamps
   module Mail
+    class MoreInfoPage < Browser::Modal
+      def present?
+        browser.windows.size > 1
+      end
+
+      def title
+        browser.windows.last.title
+      end
+
+      def close
+        browser.windows.last.close
+      end
+    end
+
+    class WhatsNewModal < Browser::Modal
+      attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page
+
+      def initialize param
+        super param
+        @x_btn = ElementWrapper.new browser.img css: 'img.x-tool-close'
+        @more_info_btn = ElementWrapper.new browser.span css: 'span[id*=sdc-undefinedwindow-more]'
+        @continue_btn = ElementWrapper.new (browser.span text: "Continue")
+        @more_info_page = MoreInfoPage.new param
+      end
+
+      def present?
+        x_btn.present?
+      end
+
+      def safely_wait_until_present
+        x_btn.safely_wait_until_present 2
+      end
+
+      def close
+        x_btn.click_while_present
+      end
+
+      def more_info
+        10.times do
+          more_info_btn.safe_click
+          sleep 1
+          return more_info_page if more_info_page.present?
+        end
+        raise "More Info page did not open."
+      end
+
+      def continue
+        10.times{
+          continue_btn.safe_click
+          sleep 1
+          break unless continue_btn.present?
+        }
+      end
+    end
+
     class SignInModal < Browser::Modal
       attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info,
                   :signed_in_user, :invalid_msg
@@ -13,6 +68,7 @@ module Stamps
         @verifying_account_info = ElementWrapper.new browser.div text: "Verifying account information..."
         @signed_in_user = ElementWrapper.new browser.span id: "userNameText"
         @invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
+        @whats_new_modal = WhatsNewModal.new param
       end
 
       def present?
@@ -50,7 +106,7 @@ module Stamps
         Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
       end
 
-      def sign_in *args
+      def user_credentials *args
         case args
           when Hash
             username = args[0]['username']
@@ -70,6 +126,13 @@ module Stamps
             password = ENV["PW"]
             logger.message "USERNAME: #{username}, PASSWORD: #{password}"
         end
+        [username, password]
+      end
+
+      def sign_in *args
+        credentials = user_credentials *args
+        username = credentials[0]
+        password = credentials[1]
 
         10.times do
           username username
@@ -100,6 +163,28 @@ module Stamps
         signed_in_user.safely_wait_until_present 6
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
         raise "SIGN IN FAILED FOR USER: #{username}! The environment might be down!" unless signed_in_user.present?
+      end
+
+      def sign_in_first_time *args
+        credentials = user_credentials *args
+        username = credentials[0]
+        password = credentials[1]
+
+        5.times do
+          username username
+          password password
+          login
+
+          20.times do
+            logger.info verifying_account_info.safe_text
+            break unless verifying_account_info.present?
+          end
+
+          verifying_account_info.safely_wait_while_present 5
+
+          return whats_new_modal if whats_new_modal.present?
+        end
+        raise "What's New modal did not appear upon login"
       end
 
       def sign_in_and_remember *args
@@ -211,7 +296,6 @@ module Stamps
         end
         stop_test "Unable to open Forgot Password Modal, check your code." unless forgot_password_modal.present?
       end
-
     end
 
     class MailLandingPage < Browser::Modal

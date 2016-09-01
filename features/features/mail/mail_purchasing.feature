@@ -2,7 +2,7 @@
 Feature: Purchasing
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
   @purchasing
   Scenario:

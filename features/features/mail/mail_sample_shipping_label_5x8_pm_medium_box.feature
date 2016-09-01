@@ -3,7 +3,7 @@ Feature: Sample Mail Shipping Label - 5 ½” x 8 ½” - PM Medium Flat Rate Bo
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
 
   @wp_shipping_label_regression

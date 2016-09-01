@@ -3,7 +3,7 @@ Feature: Mail Shipping Label - SDC-1200 - XM Padded Flat Rate Envelope
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
 
   @wp_shipping_label_regression

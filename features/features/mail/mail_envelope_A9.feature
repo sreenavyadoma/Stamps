@@ -1,7 +1,7 @@
 Feature: Envelope #A9
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
   @wp_envelope_regression
   @wp_envelope_A9

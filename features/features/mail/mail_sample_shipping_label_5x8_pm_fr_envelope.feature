@@ -3,7 +3,7 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - PM FR Envelope
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
 
   @wp_shipping_label_regression

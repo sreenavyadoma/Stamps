@@ -1,6 +1,6 @@
 Feature: WebReg
   Background:
-    Given I launched the default browser
+    Given I launched default browser
 
   @webreg_pam_orders
   Scenario:

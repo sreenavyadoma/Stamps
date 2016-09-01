@@ -1,7 +1,7 @@
 Feature: Extra Services BVT
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
   @wp_shipping_label_right_panel
   Scenario: Shipping Label Right Panel

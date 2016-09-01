@@ -3,7 +3,7 @@ Feature: Mail Stamps.com Shipping Label - SDC-1200 - PM Regional Rate Box B
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
 
   @wp_shipping_label_regression

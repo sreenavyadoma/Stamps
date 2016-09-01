@@ -1,7 +1,7 @@
 Feature: International Shipping BVT
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
   @wp_bvt
   @wp_bvt_international

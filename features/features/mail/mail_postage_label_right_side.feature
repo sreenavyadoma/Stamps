@@ -3,7 +3,7 @@ Feature: Mail Shipping Label - Right Side
 
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
 
   @wp_label_right_side

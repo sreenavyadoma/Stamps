@@ -1,6 +1,6 @@
 
 Then /^Volusion: Visit Page$/ do
-  step "I launched the default browser" if browser.nil?
+  step "I launched default browser" if browser.nil?
   volusion.visit
 end
 

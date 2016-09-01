@@ -1,7 +1,7 @@
 Feature: Purchasing BVT
 
   Background:
-    Given I am signed in as a postage shipper
+    Given I am signed in as Mail shipper
 
   @wp_bvt_purchasing
   Scenario: Purchasing $10
