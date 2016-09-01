@@ -184,7 +184,7 @@ module Stamps
 
           return whats_new_modal if whats_new_modal.present?
         end
-        raise "Unable to sign in to Mail using credentials #{username}/#{password}" if sign_in_link.present?
+        raise "Unable to sign in to Mail with credentials #{username}/#{password}" if sign_in_link.present?
         raise "What's New modal did not appear upon login"
       end
 

@@ -42,7 +42,7 @@ Feature: First time Mail sign in
     Then WebReg Profile:  Send username to standard out
 
     Then Visit Mail sign in page
-    Then I am signed in as Mail shipper for the first time with credentials ccxkn50rcvcm/pass111
+    Then I am signed in as Mail shipper for the first time
     Then What's New: Expect modal to be present
     Then What's new: Click More Info
     Then More Info: Expect More Info page is present
