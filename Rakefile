@@ -54,6 +54,7 @@ end
 
 Cucumber::Rake::Task.new(:mail_remember_username) do |t|
   t.profile = 'mail_remember_username'
+  t.cucumber_opts = "-p cuke_reports"
 end
 
 Cucumber::Rake::Task.new(:default) do |t|
