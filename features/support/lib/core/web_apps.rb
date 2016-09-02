@@ -73,4 +73,53 @@ module Stamps
       end
     end
   end
+
+  class StampsWebAppsSignIn < Browser::Modal
+    def visit page
+      raise "Don't forget to LAUNCH YOUR BROWSER FIRST!" if browser.nil?
+
+      case page
+        when :orders
+          case ENV['URL'].downcase
+            when /ss/
+              url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+            when /cc/
+              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+            when /sc/
+              url = "http://printext.qasc.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+            when /staging/
+              url = "https://print.testing.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+            when /rating/
+              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+            when /./
+              url = "http://#{ENV['URL']}.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+            else
+              url = ENV['URL']
+          end
+        when :print_postage
+          case ENV['URL'].downcase
+            when /ss/
+              url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx"
+            when /cc/
+              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx"
+            when /sc/
+              url = "http://printext.qasc.stamps.com/webpostage/SignIn/Default.aspx"
+            when /staging/
+              url = "https://print.testing.stamps.com/webpostage/SignIn/Default.aspx"
+            when /rating/
+              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx"
+            when /./
+              url = "http://#{ENV['URL']}.stamps.com/webpostage/SignIn/Default.aspx"
+            else
+              url = ENV['URL']
+          end
+        else
+          raise "#{page} is not a valid page."
+      end
+
+      browser.goto url
+      logger.info "Page loaded: #{browser.url}"
+    end
+  end
+
 end

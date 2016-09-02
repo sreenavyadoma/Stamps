@@ -3,7 +3,7 @@ Feature: Invalid Credentials
   Background:
     Given I launched the default browser
 
-  @wp_invalid_credentials
+  @wp_invalid_credentials_valid
   Scenario: Valid Username and Password
     Then I am signed in as postage shipper webpost_0017/pass111
     Then Sign out
