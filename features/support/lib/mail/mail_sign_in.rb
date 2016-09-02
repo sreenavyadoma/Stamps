@@ -381,5 +381,6 @@ module Stamps
         sign_in_modal.wait_until_present *args
       end
     end
-  end
+    end
+    end
 end
