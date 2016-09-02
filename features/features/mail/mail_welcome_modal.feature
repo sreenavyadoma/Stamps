@@ -37,12 +37,9 @@ Feature: First time Mail sign in
 
     Then WebReg Membership: Submit and correct errors
     Then Registration Choose Supplies: Place Order
-    Then WebReg Profile:  Send username to standard out
     Then Registration: Expect Web Registration result page is either Download page or Webpostage
     Then WebReg Profile:  Send username to standard out
 
-    Then Visit Mail sign in page
-    Then I am signed in as Mail shipper for the first time
     Then What's New: Expect modal to be present
     Then What's new: Click More Info
     Then More Info: Expect More Info page is present

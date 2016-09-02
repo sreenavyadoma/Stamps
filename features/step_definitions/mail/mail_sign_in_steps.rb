@@ -18,32 +18,27 @@ Given /^I am signed in as Mail shipper (.*)\/(.*)/ do |username, password|
   web_apps.mail.landing_page.sign_in username, password
 end
 
-Given /^I am signed in as Mail shipper (.*)/ do |browser|
-  logger.info "I am signed in as mail shipper #{browser}"
-  step "I launch browser #{browser}"
-  step "Visit Mail sign in page"
-  web_apps.mail.landing_page.sign_in
-end
-
 Then /^I am signed in as Mail shipper for the first time(?:| with credentials (.*)\/(.*))$/ do |username, password|
+  logger.info "I am signed in as Mail shipper for the first time #{username}/#{password}"
+  logger.info "I am signed in as Mail shipper for the first time #{@username}/#{@password}"
   @username = username unless username.nil?
   @password = password unless password.nil?
-
+  logger.info "I am signed in as Mail shipper for the first time #{@username}/#{@password}"
   @whats_new_modal = web_apps.mail.landing_page.sign_in_first_time username, password
 end
 
 Then /^What's New: Expect modal to be present$/ do
   expectation = "What's new modal is present"
-  expectation = "What's new modal is NOT present" unless @whats_new_modal.present?
+  expectation = "What's new modal is NOT present" unless web_apps.mail.landing_page.sign_in_modal.whats_new_modal.present?
   expectation.should eql "What's new modal is present"
 end
 
 Then /^What's New: Click Continue button$/ do
-  @whats_new_modal.continue
+  web_apps.mail.landing_page.sign_in_modal.whats_new_modal.continue
 end
 
 Then /^What's new: Click More Info$/ do
-  @more_info_page = @whats_new_modal.more_info
+  @more_info_page = web_apps.mail.landing_page.sign_in_modal.whats_new_modal.more_info
 end
 
 Then /^More Info: Expect More Info page is present$/ do
@@ -67,6 +62,13 @@ end
 
 =begin
 
+
+Given /^I am signed in as Mail shipper (.*)/ do |browser|
+  logger.info "I am signed in as mail shipper #{browser}"
+  step "I launch browser #{browser}"
+  step "Visit Mail sign in page"
+  web_apps.mail.landing_page.sign_in
+end
 
 Given /^I am signed in as Mail shipper (.*)\/(.*)\/(.*)/ do |browser, username, password|
   logger.info "I am signed in as mail shipper #{browser}/#{username}/#{password}"

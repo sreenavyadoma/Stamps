@@ -29,8 +29,8 @@ module Stamps
         x_btn.present?
       end
 
-      def safely_wait_until_present
-        x_btn.safely_wait_until_present 2
+      def wait_until_present *args
+        x_btn.safely_wait_until_present *args
       end
 
       def close
@@ -68,7 +68,7 @@ module Stamps
         @verifying_account_info = ElementWrapper.new browser.div text: "Verifying account information..."
         @signed_in_user = ElementWrapper.new browser.span id: "userNameText"
         @invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
-        @whats_new_modal = WhatsNewModal.new param
+        @whats_new_modal ||= WhatsNewModal.new param
       end
 
       def present?

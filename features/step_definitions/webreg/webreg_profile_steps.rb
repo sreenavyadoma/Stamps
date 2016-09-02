@@ -277,7 +277,7 @@ Then /^Registration Choose Supplies: Place Order$/ do
       raise "USER ID IS TAKEN!  #{message}"
     when WebReg::ChooseSupplies
       if @webreg_result.present?
-        @webreg_result_page = @webreg_result.place_order
+        @web_mail = @webreg_result.place_order
       end
     else
       raise "Unable to Place Order. Supplies page did not load"
@@ -285,12 +285,13 @@ Then /^Registration Choose Supplies: Place Order$/ do
 end
 
 Then /^Registration Result: Wait for Download Page or Webpostage page to load$/ do
-  case @webreg_result_page
-    when MailLandingPage
-      @webreg_result_page.wait_until_url_loads
+  case @web_mail
+    when WebMail
+      web_mail.landing_page.sign_in_modal.whats_new_modal.wait_until_present 5
     when WebReg::DownloadPage
-      @webreg_result_page.wait_until_present 10
+      @web_mail.landing_page.wait_until_present 10
     else
       #do nothing
   end
 end
+
