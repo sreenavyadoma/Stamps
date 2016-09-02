@@ -1,5 +1,5 @@
 module Stamps
-  module Navigation
+  module Navigation #todo-rob Refactor to WebApps module
     class PurchaseApproved < Browser::Modal
       attr_reader :ok_button, :window_title
 
@@ -336,7 +336,7 @@ module Stamps
     end
 
     class NavigationBar < Browser::Modal
-      attr_reader :balance, :username, :sign_out_link, :signed_in_username
+      attr_reader :balance, :username, :sign_out_link, :signed_in_username, :orders_link, :mail_link, :web_mail, :web_orders
 
       def initialize param
         super param
@@ -344,6 +344,26 @@ module Stamps
         @username ||= UsernameDropDown.new param
         @sign_out_link = ElementWrapper.new browser.link id: "signOutLink"
         @signed_in_username = ElementWrapper.new browser.span id: 'userNameText'
+        @orders_link ||= ElementWrapper.new browser.a text: 'Orders'
+        @mail_link ||= ElementWrapper.new browser.a text: 'Mail'
+        @web_mail ||= WebMail.new param
+        @web_orders ||= WebOrders.new param
+      end
+
+      def orders
+        10.times do
+          orders_link.safe_click
+          web_orders.wait_until_present 8
+          return web_orders if grid.present?
+        end
+      end
+
+      def mail
+        10.times do
+          mail_link.safe_click
+          web_mail.wait_until_present 8
+          return web_mail if grid.present?
+        end
       end
 
       def sign_out

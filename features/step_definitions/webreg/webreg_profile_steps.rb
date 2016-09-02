@@ -30,7 +30,8 @@ end
 
 Then /^WebReg Profile: Set Email to (.*)$/ do |email|
   logger.info "WebReg Profile: Set Email to #{email}"
-  webreg.profile.email.wait_until_present.set email
+  webreg.profile.email.safely_wait_until_present 10
+  webreg.profile.email.set email
 end
 
 Then /^WebReg Profile: Set User ID to (.*)$/ do |user_id|
@@ -287,7 +288,7 @@ end
 Then /^Registration Result: Wait for Download Page or Webpostage page to load$/ do
   case @web_mail
     when WebMail
-      web_mail.landing_page.sign_in_modal.whats_new_modal.wait_until_present 5
+      @web_mail.landing_page.sign_in_modal.whats_new_modal.wait_until_present 5
     when WebReg::DownloadPage
       @web_mail.landing_page.wait_until_present 10
     else

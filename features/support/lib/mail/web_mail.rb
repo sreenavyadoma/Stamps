@@ -18,6 +18,14 @@ module Stamps
         @roll ||= Roll.new param
       end
 
+      def present?
+        toolbar.present?
+      end
+
+      def wait_until_present *args
+        toolbar.wait_until_present *args
+      end
+
       def print_on selection
         drop_down.select selection
         if selection.include? 'Shipping Label'

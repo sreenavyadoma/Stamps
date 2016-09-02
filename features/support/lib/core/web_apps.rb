@@ -15,9 +15,9 @@ module Stamps
 
       case page
         when :orders
-          app_name ="orders"
+          app_name ="Orders"
         when :print_postage
-          app_name ="webpostage"
+          app_name ="Webpostage"
         else
           raise "#{page} is not a valid page."
       end

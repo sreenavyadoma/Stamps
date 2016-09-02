@@ -18,3 +18,11 @@ Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |expectation|
   end
 end
 
+Then /^Navigation Bar: Orders$/ do
+  web_apps.navigation_bar.orders
+end
+
+Then /^Navigation Bar: Mail$/ do
+  web_apps.navigation_bar.mail
+end
+

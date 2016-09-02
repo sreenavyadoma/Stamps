@@ -13,6 +13,10 @@ module Stamps
         @multi_order ||= Orders::Details::MultiOrder.new param
       end
 
+      def present?
+        grid.present?
+      end
+
       def awaiting_shipment
         FilterPanel.new(param).FilterPanel - "Awaiting Shipment"
         grid
