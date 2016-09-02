@@ -56,6 +56,20 @@ module Stamps
     end
 
     class SignInModal < Browser::Modal
+
+      class RememberUsernameCheckbox < Browser::Modal
+        def check
+          browser.checkbox(css: "input[id=rememberUser]").set
+          browser.checkbox(css: "input[id=rememberUser]").set
+        end
+
+        #Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
+        def uncheck
+          browser.checkbox(css: "input[id=rememberUser]").clear
+          browser.checkbox(css: "input[id=rememberUser]").clear
+        end
+      end
+
       attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info,
                   :signed_in_user, :invalid_msg
 
@@ -99,11 +113,8 @@ module Stamps
         sign_in_button.send_keys :enter
       end
 
-      def remember_username
-        checkbox_field = browser.text_field css: "input[id=rememberUser]"
-        verify_field = browser.text_field css: "label[class=checkbox]"
-
-        Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
+      def remember_username_checkbox
+        RememberUsernameCheckbox.new param
       end
 
       def user_credentials *args
@@ -263,8 +274,47 @@ module Stamps
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
         logger.info "Password is #{password}"
 
-        ENV["SIGNED_IN_USER"] = username
-        visit :print_postage
+      def sign_in_menu *args
+
+        case args
+          when Hash
+            check_username = args[0]['username']
+          when Array
+            if args.length == 1
+              check_username = args[0]
+            else
+              logger.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
+              check_username = ENV["USR"]
+            end
+          else
+            logger.message "Using Default Sign-in Credentials."
+            check_username = ENV["USR"]
+            logger.message "CHECK USERNAME: #{check_username}"
+        end
+
+        10.times {
+          sign_in_link.safe_click unless username_textbox.present?
+          logger.info "Remembered username is #{username_textbox.text}"
+          logger.info "Expected username is #{check_username}"
+
+          if username_textbox.text == check_username
+            $remember_username_status = "checked"
+          else
+            $remember_username_status = "unchecked"
+          end
+
+          logger.info "Remembered username status is #{$remember_username_status}"
+
+          break if username_textbox.present?
+
+          if invalid_msg.present?
+            $invalid_message = true
+            logger.info "Invalid message is #{invalid_msg.text}"
+            logger.info "Message present is #{$invalid_message}"
+            break
+          end
+
+        }
 
       end
 
@@ -297,6 +347,7 @@ module Stamps
         end
         stop_test "Unable to open Forgot Password Modal, check your code." unless forgot_password_modal.present?
       end
+
     end
 
     class MailLandingPage < Browser::Modal
