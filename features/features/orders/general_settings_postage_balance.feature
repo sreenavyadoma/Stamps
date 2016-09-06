@@ -5,6 +5,7 @@ Feature: Mail Balance
     Given I am signed in to Orders
 
   @general_settings
+
   Scenario: Mail Balance
 
     Then Open Settings Modal

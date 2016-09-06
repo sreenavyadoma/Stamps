@@ -1,19 +1,18 @@
-default: --profile cuke_reports --profile rob_stg
+default: --profile cuke_reports --profile rob_cc
 # import_orders_ship_from_test
 
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800 wp_bvt_international
-rob_cc: --tags @mail_welcome_modal --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff PW=pass111 USR=cce5nk6k6068z #ym3tcgykqt7ops #hd9glvtoauago fawlz7jqdsx
-rob_cc: --tags @wp_bvt_address_cleansing --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff PW=pass111 USR=cce5nk6k6068z #ym3tcgykqt7ops #hd9glvtoauago fawlz7jqdsx
+rob_cc: --tags @wp_bvt_international --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff PW=pass111 USR=cce5nk6k6068z #ym3tcgykqt7ops #hd9glvtoauago fawlz7jqdsx
 rob_sc: --tags @webreg --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff PW=pass111 USR=yeh74tdq0karv #yh95ws85j c2jinmzmu64 store parcel_select
-rob_stg: --tags @webreg_mail --guess VERBOSE=true HEALTHCHECK=false URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l
+rob_stg: --tags @webreg --guess VERBOSE=true HEALTHCHECK=false URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l
 rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=chrome PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
 rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=ie PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
 rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=true
 purchasing_username: cce5nk6k6068z
 
 eli_dev: --tags @item_details   --guess VERBOSE=true HEALTHCHECK=true URL=sc BROWSER=ff USR=go45dhfhkw PW=pass111
-ray_dev: --tags @wp_print_on_list_of_values --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=webpost_0017 PW=pass111
+ray_dev: --tags @orders_authentication --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=webpost_0017 PW=pass111
 eva_dev: --tags   @details_panel --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=ss_cctest3 PW=password1
 daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff USR=auto21 PW=326tsetaqcdS!
 
