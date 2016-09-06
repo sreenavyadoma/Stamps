@@ -28,17 +28,15 @@ Then /^I am signed in as Mail shipper for the first time(?:| with credentials (.
 end
 
 Then /^What's New: Expect modal to be present$/ do
-  expectation = "What's new modal is present"
-  expectation = "What's new modal is NOT present" unless web_apps.mail.landing_page.sign_in_modal.whats_new_modal.present?
-  expectation.should eql "What's new modal is present"
+  web_apps.mail.landing_page.whats_new_modal.window_title.text.should eql "What’s new in Stamps.com Online"
 end
 
 Then /^What's New: Click Continue button$/ do
-  web_apps.mail.landing_page.sign_in_modal.whats_new_modal.continue
+  web_apps.mail.landing_page.whats_new_modal.continue
 end
 
 Then /^What's new: Click More Info$/ do
-  @more_info_page = web_apps.mail.landing_page.sign_in_modal.whats_new_modal.more_info
+  @more_info_page = web_apps.mail.landing_page.whats_new_modal.more_info
 end
 
 Then /^More Info: Expect More Info page is present$/ do

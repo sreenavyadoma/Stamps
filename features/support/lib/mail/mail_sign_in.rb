@@ -15,7 +15,7 @@ module Stamps
     end
 
     class WhatsNewModal < Browser::Modal
-      attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page
+      attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page, :window_title
 
       def initialize param
         super param
@@ -23,6 +23,7 @@ module Stamps
         @more_info_btn = ElementWrapper.new browser.span css: 'span[id*=sdc-undefinedwindow-more]'
         @continue_btn = ElementWrapper.new (browser.span text: "Continue")
         @more_info_page = MoreInfoPage.new param
+        @window_title = ElementWrapper.new browser.span css: "span[id^=dialoguemodal-][id$=_header_hd-textEl]"
       end
 
       def present?

@@ -1,6 +1,7 @@
 Then /^WebReg Profile: Load Registration Page$/ do
   logger.info "WebReg Profile: Load Registration Page"
-  webreg.visit
+  status = webreg.visit
+  status.should eql "Success"
 end
 
 Then /^WebReg Profile:  Continue to Mailing Information Page$/ do
@@ -31,6 +32,7 @@ end
 Then /^WebReg Profile: Set Email to (.*)$/ do |email|
   logger.info "WebReg Profile: Set Email to #{email}"
   webreg.profile.email.safely_wait_until_present 10
+  webreg.profile.email.present?.should be true
   webreg.profile.email.set email
 end
 

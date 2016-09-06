@@ -6,7 +6,7 @@ Then /^Registration: Expect Web Registration result page is either Download page
       logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
       actual_value.should eql expectation
     when WebMail
-      @web_mail.landing_page.sign_in_modal.whats_new_modal.present?.should be true
+      @web_mail.landing_page.whats_new_modal.window_title.text.should eql "What’s new in Stamps.com Online"
     else
       raise "Registration Result #{@web_mail.class} is not recognized"
   end
