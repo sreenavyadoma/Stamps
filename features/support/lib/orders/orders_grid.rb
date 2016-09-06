@@ -99,7 +99,9 @@ module Stamps
         end
 
         def grid_field column_number, row
-          css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div"
+          column = column_number(column_number).to_s
+          row = row.to_s
+          css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row})>tbody>tr>td:nth-child(#{column})>div"
           browser.div css: css
         end
 
@@ -111,7 +113,6 @@ module Stamps
           column_str = GRID_COLUMNS[column_name]
           columns = column_fields
           columns.each_with_index do |column_field, index|
-            sleep 1
             column_text = element_helper.text column_field
             if column_text == column_str
               #logger.info "Grid:  #{column_str} is in column #{index+1}"
