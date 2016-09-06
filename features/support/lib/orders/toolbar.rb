@@ -22,6 +22,7 @@ module Stamps
       class Toolbar < Browser::Modal
         attr_reader :print_order, :add, :move
         def initialize param
+          super param
           @print_order ||= PrintOrderButton.new param
           @add ||= AddButton.new param
           @move ||= MoveMenu.new param
