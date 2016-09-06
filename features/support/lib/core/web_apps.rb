@@ -47,6 +47,7 @@ module Stamps
         raise browser.text
       end
       logger.info "Page loaded: #{browser.url}"
+      browser.url
     end
 
     def orders

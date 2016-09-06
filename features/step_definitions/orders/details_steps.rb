@@ -668,9 +668,9 @@ end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
   logger.info "Expect \"Exact Address Not Found\" module to appear"
-  address_not_found_module = web_apps.orders.details.ship_to.address.ambiguous.address_not_found
-  logger.info "Test #{(address_not_found_module.present?)?"Passed":"Failed"}"
-  address_not_found_module.present?.should be true
+  address_not_found = web_apps.orders.details.ship_to.address.ambiguous.address_not_found
+  logger.info "Test #{(address_not_found.present?)?"Passed":"Failed"}"
+  address_not_found.window_title.text.should eql "Exact Address Not Found"
 end
 
 Then /^Details: Set Phone to (.*)$/ do |phone|

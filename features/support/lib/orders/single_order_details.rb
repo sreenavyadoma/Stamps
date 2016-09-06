@@ -9,7 +9,7 @@ module Stamps
               item_label.element.click
               item_label.element.double_click
             rescue
-              logger.error e.backtrace.join "\n"
+              #ignore
             end
           }
         end
@@ -221,252 +221,112 @@ module Stamps
         end
       end
 
+      class AddressNotFound < Browser::Modal
+        attr_reader :window_title
+
+        def initialize param
+          super param
+          @window_title ||= ElementWrapper.new browser.div(text: 'Exact Address Not Found')
+        end
+
+        def present?
+          window_title.present?
+        end
+
+        def wait_until_present *args
+          window_title.safely_wait_until_present *args
+        end
+
+        def row number
+          row = number.to_i<=0?0:number.to_i-1
+          checkbox_field = browser.text_field css: "input[name=addrAmbig][value='#{row}']"
+
+          checkbox = CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
+          checkbox.check
+
+          accept_button = ElementWrapper.new browser.span text: "Accept"
+          accept_button.click_while_present
+        end
+
+        def set partial_address_hash
+          exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
+          form = SingleOrderDetails.new param
+          form.validate_address_link
+          country_drop_down = self.country
+          #single_order_form.expand
+          form.ship_to.set ParameterHelper.format_address(partial_address_hash)
+          30.times {
+            begin
+              item_label.click
+              country_drop_down.drop_down.safe_click
+              country_drop_down.drop_down.safe_click
+              item_label.click
+
+              break if (exact_address_not_found_field.present?) || (form.validate_address_link.present?)
+            rescue
+              #ignore
+            end
+          }
+          #single_order_form.hide_ship_to
+          self
+        end
+      end
+
+      class AmbiguousAddress < ShipToFields
+        attr_reader :address_not_found
+
+        def initialize param
+          super param
+          @address_not_found ||= AddressNotFound.new param
+        end
+
+        def set address
+          text_box = self.text_area
+
+          10.times do
+            text_box.set address
+            blur_out
+            address_not_found.wait_until_present 4
+            return address_not_found if address_not_found.present? if address_not_found.present?
+          end
+          stop_test "Exact Address Not Found module did not appear."
+        end
+
+        def data_error
+          self.text_area.data_error_qtip
+        end
+
+      end
+
+      class AutoSuggestDomestic < ShipToFields
+        def set address
+          text_area = self.text_area
+          auto_suggest_box = AutoSuggestPopUp.new param
+
+          20.times{
+            begin
+              text_area.set address
+              return auto_suggest_box if auto_suggest_box.present?
+              text_area.safe_click
+              sleep 1
+              return auto_suggest_box if auto_suggest_box.present?
+              ship_to_area1.safe_double_click
+              return auto_suggest_box if auto_suggest_box.present?
+            rescue
+              #ignore
+            end
+          }
+        end
+      end
+
       class ShipToDomestic < ShipToFields
+        attr_reader :ambiguous, :auto_suggest
 
-        class AmbiguousAddress < ShipToFields
+        def initialize param
+          super param
 
-          class AddressNotFound < Browser::Modal
-
-            def present?
-              browser.div(text: 'Exact Address Not Found').present?
-            end
-
-            def row number
-              row = number.to_i<=0?0:number.to_i-1
-              checkbox_field = browser.text_field css: "input[name=addrAmbig][value='#{row}']"
-
-              checkbox = CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
-              checkbox.check
-
-              accept_button = ElementWrapper.new browser.span text: "Accept"
-              accept_button.click_while_present
-            end
-
-            def set partial_address_hash
-              exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
-              form = SingleOrderDetails.new param
-              form.validate_address_link
-              country_drop_down = self.country
-              #single_order_form.expand
-              form.ship_to.set ParameterHelper.format_address(partial_address_hash)
-              30.times {
-                begin
-                  item_label.click
-                  country_drop_down.drop_down.safe_click
-                  country_drop_down.drop_down.safe_click
-                  item_label.click
-
-                  break if (exact_address_not_found_field.present?) || (form.validate_address_link.present?)
-                rescue
-                  #ignore
-                end
-              }
-              #single_order_form.hide_ship_to
-              self
-            end
-          end
-
-          def address_not_found
-            AddressNotFound.new param
-          end
-
-          def set address
-            suggested_address_corrections = ElementWrapper.new browser.span(text: "View Suggested Address Corrections")
-
-            exact_address_not_found = address_not_found
-            country_drop_down = self.country
-            text_box = self.text_area
-
-            orders_grid = Orders::Grid::OrdersGrid.new param
-            phone = self.phone
-            email = self.email
-
-            20.times{
-              text_box.send_keys address
-              text_box.set address
-
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              text_box.safe_double_click
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              text_box.safe_double_click
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              country_drop_down.drop_down.safe_click
-              country_drop_down.drop_down.safe_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              country_drop_down.drop_down.safe_click
-              country_drop_down.drop_down.safe_click
-              phone.set ParameterHelper.random_phone
-              phone.send_keys :enter
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              country_drop_down.drop_down.safe_click
-              country_drop_down.drop_down.safe_click
-              phone.send_keys :tab
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              email.set ParameterHelper.random_email
-              email.send_keys :enter
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              email.send_keys :tab
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              orders_grid.recipient.scroll_into_view
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.send_keys :tab
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              email.send_keys :enter
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              break if exact_address_not_found.present?
-              phone.send_keys :tab
-              break if exact_address_not_found.present?
-              email.send_keys :enter
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              break if exact_address_not_found.present?
-              email.set ParameterHelper.random_email
-              break if exact_address_not_found.present?
-              phone .safe_double_click
-              break if exact_address_not_found.present?
-              email .safe_double_click
-              break if exact_address_not_found.present?
-              orders_grid.checkbox.scroll_into_view
-              break if exact_address_not_found.present?
-              orders_grid.recipient.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.send_keys :tab
-              break if exact_address_not_found.present?
-            }
-
-            phone.set ""
-            email.set ""
-            if exact_address_not_found.present?
-              exact_address_not_found
-            else
-              stop_test "Exact Address Not Found module did not appear."
-            end
-          end
-
-          def data_error
-            self.text_area.data_error_qtip
-          end
-
-        end
-
-        class AutoSuggestDomestic < ShipToFields
-          def set address
-            text_area = self.text_area
-            auto_suggest_box = AutoSuggestPopUp.new param
-
-            20.times{
-              begin
-                text_area.set address
-                return auto_suggest_box if auto_suggest_box.present?
-                text_area.safe_click
-                sleep 1
-                return auto_suggest_box if auto_suggest_box.present?
-                ship_to_area1.safe_double_click
-                return auto_suggest_box if auto_suggest_box.present?
-              rescue
-                #ignore
-              end
-            }
-          end
-        end
-
-        def ambiguous
-          AmbiguousAddress.new param
-        end
-
-        def auto_suggest
-          AutoSuggestDomestic.new param
+          @ambiguous ||= AmbiguousAddress.new param
+          @auto_suggest ||= AutoSuggestDomestic.new param
         end
 
         def set address

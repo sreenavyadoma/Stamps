@@ -30,8 +30,8 @@ Feature: Customs Form Qty
     Then Customs: Set Item Description to item 1
     Then Customs: Set Item Qty to 100
     Then Customs: Set Item Unit Price to 11.11
-    Then Customs: Set Item Pounds to 1
-    Then Customs: Set Item Ounces to 1
+    #Then Customs: Set Item Pounds to 1
+    #Then Customs: Set Item Ounces to 1
     Then Customs: Set Item Origin Country to United States
     Then Customs: Set Item Tarriff to 100
 
@@ -39,8 +39,8 @@ Feature: Customs Form Qty
     Then Customs: Set Item Description to item 2
     Then Customs: Set Item Qty to 99
     Then Customs: Set Item Unit Price to 22.22
-    Then Customs: Set Item Pounds to 2
-    Then Customs: Set Item Ounces to 2
+    #Then Customs: Set Item Pounds to 2
+    #Then Customs: Set Item Ounces to 2
     Then Customs: Set Item Origin Country to United States
     Then Customs: Set Item Tarriff to 200
 
