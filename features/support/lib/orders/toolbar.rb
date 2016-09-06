@@ -200,7 +200,7 @@ module Stamps
             15.times do |count|
               begin
                 add_button.safe_click
-                sleep 2
+                order_details.wait_until_present 7
                 if initializing_db.present?
                   logger.info initializing_db.text
                 else

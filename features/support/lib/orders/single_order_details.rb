@@ -1938,11 +1938,12 @@ module Stamps
 
       class SingleOrderDetails < DetailsForm
         #todo add more accessors
-        attr_reader :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions,
+        attr_reader :body, :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions,
                     :customs_form, :total, :customs, :item_grid, :reference_no, :collapsed_details
 
         def initialize param
           super param
+          @body = ElementWrapper.new (browser.div css: "div[id^=singleOrderDetailsForm][id$=body]")
           @insure_for ||= InsureFor.new param
           @ship_from ||= ShipFromAddress.new param
           @toolbar ||= DetailsToolbar.new param
@@ -1960,7 +1961,11 @@ module Stamps
         end
 
         def present?
-          (browser.div css: "div[id^=singleOrderDetailsForm][id$=body]").present?
+          body.present?
+        end
+
+        def wait_until_present *args
+          body.safely_wait_until_present *args
         end
 
         def expand
@@ -2005,10 +2010,6 @@ module Stamps
 
         def auto_suggest_location_array
           browser.divs css: 'div[class*=sub-title]'
-        end
-
-        def wait_until_present
-          (ElementWrapper.new browser.label text: "Ship From:").wait_until_present
         end
 
         def pounds_max_value

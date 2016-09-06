@@ -92,6 +92,7 @@ module Stamps
         end
 
         def grid_text column, row
+          scroll :order_total
           scroll column
           data = element_helper.text grid_field(column, row)
           logger.info "Column #{GRID_COLUMNS[column]} Row #{row}: #{data}"
@@ -273,6 +274,8 @@ module Stamps
         end
 
         def data order_id
+          scroll_into_view
+          sleep 1
           grid_text_by_id :recipient, order_id
         end
 

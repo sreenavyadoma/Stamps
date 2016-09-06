@@ -221,7 +221,7 @@ Then /^Grid: Expect Recipient to be (.*)$/ do |expectation|
     if @order_id.nil?
       @order_id = web_apps.orders.grid.order_id.row 1
     end
-    5.times do
+    10.times do
       actual = web_apps.orders.grid.recipient.data @order_id
       break if actual.eql? expectation
      end
