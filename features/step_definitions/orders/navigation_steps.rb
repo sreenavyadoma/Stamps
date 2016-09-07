@@ -1,23 +1,23 @@
 Then /^Buy Mail: Purchase 10$/ do
-  logger.info "Buy Mail: Purchase $10"
+  logger.info "Buy Mail: Purchase 10"
   @old_balance = web_apps.navigation_bar.balance.amount
   web_apps.navigation_bar.balance.buy_more.buy_10.select
 end
 
 Then /^Buy Mail: Purchase 25$/ do
-  logger.info "Buy Mail: Purchase $25"
+  logger.info "Buy Mail: Purchase 25"
   @old_balance = web_apps.navigation_bar.balance.amount
   web_apps.navigation_bar.balance.buy_more.buy_25.select
 end
 
 Then /^Buy Mail: Purchase 50$/ do
-  logger.info "Buy Mail: Purchase $50"
+  logger.info "Buy Mail: Purchase 50"
   @old_balance = web_apps.navigation_bar.balance.amount
   web_apps.navigation_bar.balance.buy_more.buy_50.select
 end
 
 Then /^Buy Mail: Purchase 100$/ do
-  logger.info "Buy Mail: Purchase $10"
+  logger.info "Buy Mail: Purchase 10"
   @old_balance = web_apps.navigation_bar.balance.amount
   web_apps.navigation_bar.balance.buy_more.buy_100.select
 end
@@ -67,7 +67,7 @@ end
 
 Then /^Buy Mail: Expect customer balance increased by \$(\d+)$/ do |purchase_amount|
   logger.info "Expect \$#{purchase_amount} is added to customer balance"
-  20.times do
+  10.times do
     sleep 1
     new_balance = web_apps.navigation_bar.balance.amount
     actual_purchased_amount = new_balance.to_f - @old_balance.to_f
