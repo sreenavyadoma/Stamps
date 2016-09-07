@@ -11,8 +11,8 @@ Feature: International Address
     Then Details: Set Ship-To Country to Italy
 
     Then Details: Set International Ship-To auto-suggest address to partial name Com
-    Then Details: Expect auto-uggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
-    Then Details: Expect auto-uggest pop-up entry for Firstname Venice, Lastname Florence, Company CompanyNameInternational
+    Then Details: Expect auto-suggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
+    Then Details: Expect auto-suggest pop-up entry for Firstname Venice, Lastname Florence, Company CompanyNameInternational
 
     Then Details: Select Ship-To auto-suggest item 1
 

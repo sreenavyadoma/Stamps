@@ -2,7 +2,7 @@ default: --profile cuke_reports --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800 wp_bvt_international
-rob_cc: --tags @orders_bvt_ambigious_address --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff PW=pass111 USR=cce5nk6k6068z #ym3tcgykqt7ops #hd9glvtoauago fawlz7jqdsx
+rob_cc: --tags @auto_suggest --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff PW=pass111 USR=AUTOSUGGEST888 #cce5nk6k6068z #ym3tcgykqt7ops #hd9glvtoauago fawlz7jqdsx
 #rob_cc: --tags @wp_bvt_address_cleansing --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff PW=pass111 USR=cce5nk6k6068z #ym3tcgykqt7ops #hd9glvtoauago fawlz7jqdsx
 rob_sc: --tags @webreg --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff PW=pass111 USR=yeh74tdq0karv #yh95ws85j c2jinmzmu64 store parcel_select
 rob_stg: --tags @webreg_mail --guess VERBOSE=true HEALTHCHECK=false URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l
