@@ -19,7 +19,6 @@ Then /^Toolbar: Move to Shipped$/ do
   grid.checkbox.check_order_id @order_id
   grid.toolbar.move.to_shipped.cancel
   grid.toolbar.move.to_shipped.move
-  todo-rob
 end
 
 Then /^Toolbar: Move to Canceled$/ do
