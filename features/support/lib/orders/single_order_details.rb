@@ -1360,7 +1360,15 @@ module Stamps
 
         def select selection
           logger.info "Select Service #{selection}"
-          abbrev_selection = abbrev_service_name selection
+
+          # This is a temporary fix to support user story
+          # ORDERSAUTO-1026 Sprint 40: Abbreviate Service Names for Selected Service, which is in CC but not staging.
+          if ENV['URL'].downcase == 'cc' || ENV['URL'].downcase == 'qacc'
+            abbrev_selection = abbrev_service_name selection
+          else
+            abbrev_selection = selection
+          end
+
           selected_service = ""
           box = text_box
           button = drop_down
