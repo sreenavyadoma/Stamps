@@ -461,8 +461,7 @@ end
 
 Then /^WebReg Membership: Submit$/ do
   logger.info "WebReg Membership: Submit"
-  membership = webreg.profile.membership
-  @webreg_result = membership.submit
+  @webreg_result = webreg.profile.membership.submit
 end
 
 Then /^WebReg Membership: Submit and correct errors$/ do
