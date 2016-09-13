@@ -1338,7 +1338,7 @@ module Stamps
 
         def abbrev_service_name long_name
           if long_name.include? 'First-Class Mail International'
-          long_name.sub 'First-Class Mail International', 'FCMI'
+            long_name.sub 'First-Class Mail International', 'FCMI'
           elsif long_name.include? 'First-Class Mail'
             long_name.sub 'First-Class Mail', 'FCM'
           elsif long_name.include? 'Priority Mail Express International'
@@ -1353,7 +1353,7 @@ module Stamps
             long_name.sub 'Media Mail', 'MM'
           elsif long_name.include? 'Parcel Select Ground'
             long_name.sub 'Parcel Select Ground', 'PSG'
-          else
+          else # there's no abbreviation for this long name so send it right back.
             long_name
           end
         end
@@ -1363,9 +1363,9 @@ module Stamps
 
           # This is a temporary fix to support user story
           # ORDERSAUTO-1026 Sprint 40: Abbreviate Service Names for Selected Service, which is in CC but not staging.
-          if ENV['URL'].downcase == 'cc' || ENV['URL'].downcase == 'qacc'
+          if ENV['URL'].downcase == 'cc' || ENV['URL'].downcase == 'qacc' #abbreviate when in CC
             abbrev_selection = abbrev_service_name selection
-          else
+          else # do not abbreviate anywhere else.
             abbrev_selection = selection
           end
 
