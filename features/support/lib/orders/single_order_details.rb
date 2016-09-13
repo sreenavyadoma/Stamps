@@ -194,10 +194,15 @@ module Stamps
       end
 
       class AutoSuggestInternational < ShipToInternationalFields
+        attr_reader :auto_suggest_box
+
+        def initialize param
+          super param
+          @auto_suggest_box ||= AutoSuggestPopUp.new param
+        end
 
         def set address
           text_field = self.name
-          auto_suggest_box = AutoSuggestPopUp.new param
 
           20.times{
             begin
@@ -216,8 +221,10 @@ module Stamps
       end
 
       class ShipToInternational < ShipToInternationalFields
-        def auto_suggest
-          AutoSuggestInternational.new param
+        attr_reader :auto_suggest
+        def initialize param
+          super param
+          @auto_suggest ||= AutoSuggestInternational.new param
         end
       end
 
@@ -295,13 +302,17 @@ module Stamps
         def data_error
           self.text_area.data_error_qtip
         end
-
       end
 
       class AutoSuggestDomestic < ShipToFields
+        attr_reader :auto_suggest_box
+        def initialize param
+          super param
+          @auto_suggest_box = AutoSuggestPopUp.new param
+        end
+
         def set address
           text_area = self.text_area
-          auto_suggest_box = AutoSuggestPopUp.new param
 
           20.times{
             begin

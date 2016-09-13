@@ -49,30 +49,6 @@ module Stamps
       logger.info "Page loaded: #{browser.url}"
       browser.url
     end
-
-    def orders
-      begin
-        @orders
-      rescue Exception => e
-        logger.error ""
-        logger.error "#{e.message}"
-        logger.error "#{e.backtrace.join "\n"}"
-        logger.error ""
-        raise e
-      end
-    end
-
-    def mail
-      begin
-        @mail
-      rescue Exception => e
-        logger.error ""
-        logger.error "#{e.message}"
-        logger.error "#{e.backtrace.join "\n"}"
-        logger.error ""
-        raise e
-      end
-    end
   end
 
   class StampsWebAppsSignIn < Browser::Modal
