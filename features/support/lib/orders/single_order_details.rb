@@ -1180,7 +1180,6 @@ module Stamps
           logger.info "Manage Shipping Address:: row count = #{rows.length.to_i}"
           rows.length.to_i
         end
-
       end
 
       class ShipFromAddress < DetailsForm
@@ -1326,8 +1325,31 @@ module Stamps
           @drop_down ||= ElementWrapper.new browser.div css: "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
         end
 
+        def abbrev_service_name long_name
+          if long_name.include? 'First-Class Mail International'
+          long_name.sub 'First-Class Mail International', 'FCMI'
+          elsif long_name.include? 'First-Class Mail'
+            long_name.sub 'First-Class Mail', 'FCM'
+          elsif long_name.include? 'Priority Mail Express International'
+            long_name.sub 'Priority Mail Express International', 'PMEI'
+          elsif long_name.include? 'Priority Mail International'
+            long_name.sub 'Priority Mail International', 'PMI'
+          elsif long_name.include? 'Priority Mail Express'
+            long_name.sub 'Priority Mail Express', 'PME'
+          elsif long_name.include? 'Priority Mail'
+            long_name.sub 'Priority Mail', 'PM'
+          elsif long_name.include? 'Media Mail'
+            long_name.sub 'Media Mail', 'MM'
+          elsif long_name.include? 'Parcel Select Ground'
+            long_name.sub 'Parcel Select Ground', 'PSG'
+          else
+            long_name
+          end
+        end
+
         def select selection
           logger.info "Select Service #{selection}"
+          abbrev_selection = abbrev_service_name selection
           selected_service = ""
           box = text_box
           button = drop_down
@@ -1342,15 +1364,15 @@ module Stamps
               selection_label.safe_click
               blur_out
               selected_service = box.text
-              logger.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"success": "service not selected"}"
-              break if selected_service.include? selection
+              logger.info "Selected Service #{selected_service} - #{(selected_service.include? abbrev_selection)?"success": "service not selected"}"
+              break if selected_service.include? abbrev_selection
             rescue
               #ignore
             end
           end
-          logger.info "#{selection} service selected."
-          raise "Unable to select service #{selection}! Selected service textbox containts #{selected_service}" unless selected_service.include? selection
-          selection_label # selection_label.field.table.tbody.tr.tds[2].text
+          logger.info "#{selected_service} service selected."
+          raise "Unable to select service #{selection}! Selected service textbox containts #{selected_service}" unless selected_service.include? abbrev_selection
+          selection_label
         end
 
         def cost *args
