@@ -1,7 +1,7 @@
 module Stamps
   class StampsWebApps < Browser::Modal
 
-    attr_reader :navigation_bar
+    attr_reader :orders, :mail, :navigation_bar
 
     def initialize param
       super param
