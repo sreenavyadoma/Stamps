@@ -494,6 +494,7 @@ module Stamps
         connection_failed = WebRegSecureConnectionFailed.new param
 
         submit_button.safely_wait_until_present 6
+        raise "Submit button is not present on Membership Page! Check your test then file a defect." unless submit_button.present?
         30.times do
           sleep 1
           submit_button.safe_click
