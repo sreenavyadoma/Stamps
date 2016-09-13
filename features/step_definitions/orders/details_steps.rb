@@ -196,7 +196,6 @@ Then /^Details: Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
   end
 end
 
-
 Then /^Details: Set International Ship-To Phone to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To Phone to #{value}"
   if value.length == 0
