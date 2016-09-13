@@ -191,8 +191,8 @@ Then /^Details: Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To Postal Code to #{value}"
   if value.length == 0
     web_apps.orders.details.ship_to.international.postal_code.send_keys :enter
-    web_apps.orders.details.ship_to.international
-    @international_ship_to.postal_code.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+  else
+    web_apps.orders.details.ship_to.international.postal_code.set ((value.downcase == "random")? ParameterHelper.random_name : value)
   end
 end
 
