@@ -118,7 +118,7 @@ module Stamps
 
         username_textbox.safely_wait_until_present 8
 
-        5.times do
+        4.times do
           begin
             break if grid.present?
             username_textbox.set username
