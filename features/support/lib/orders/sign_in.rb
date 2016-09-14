@@ -118,7 +118,7 @@ module Stamps
 
         username_textbox.safely_wait_until_present 8
 
-        15.times do
+        5.times do
           begin
             break if grid.present?
             username_textbox.set username
@@ -127,7 +127,7 @@ module Stamps
             button.safe_click
             button.safe_click
 
-            10.times do
+            2.times do
               if username_textbox.present?
                 sleep 1
               else
@@ -135,9 +135,9 @@ module Stamps
               end
             end
 
-            loading_orders.safely_wait_until_present 3
+            loading_orders.safely_wait_until_present 2
 
-            20.times do
+            3.times do
               if loading_orders.present?
                 logger.info loading_orders.safe_text
                 sleep 1
@@ -146,7 +146,7 @@ module Stamps
               end
             end
 
-            grid.wait_until_present 4
+            grid.wait_until_present 2
             break if grid.present?
             break if grid.present?
             break if grid.present?
@@ -190,7 +190,7 @@ module Stamps
 
             logger.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 
-            grid.wait_until_present
+            # grid.wait_until_present
             logger.info "#{username} Orders Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             break if grid.present?
