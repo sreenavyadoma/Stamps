@@ -1361,6 +1361,9 @@ module Stamps
         def select selection
           logger.info "Select Service #{selection}"
 
+          selected_service = ""
+          @details_services ||= data_for(:details_services, {})
+
           # This is a temporary fix to support user story
           # ORDERSAUTO-1026 Sprint 40: Abbreviate Service Names for Selected Service, which is in CC but not staging.
           if ENV['URL'].downcase == 'cc' || ENV['URL'].downcase == 'qacc' #abbreviate when in CC
@@ -1369,20 +1372,15 @@ module Stamps
             abbrev_selection = selection
           end
 
-          selected_service = ""
-          box = text_box
-          button = drop_down
-
-          @details_services ||= data_for(:details_services, {})
-
           selection_label = ElementWrapper.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
+
           20.times do
             begin
-              button.safe_click unless selection_label.present?
+              drop_down.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
               blur_out
-              selected_service = box.text
+              selected_service = text_box.text
               logger.info "Selected Service #{selected_service} - #{(selected_service.include? abbrev_selection)?"success": "service not selected"}"
               break if selected_service.include? abbrev_selection
             rescue
