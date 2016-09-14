@@ -144,11 +144,6 @@ Then /^Mail Shipping Labels: Select Service Priority Mail Express International 
   step "Mail Shipping Labels: Set Service to Priority Mail Express International Legal Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Open Extra Services$/ do
-  logger.info "Mail Shipping Labels: Open Extra Services"
-  @extra_services = web_apps.mail.open_extra_services
-end
-
 Then /^Mail Shipping Labels: Edit Customs Form$/ do
   logger.info "Mail Shipping Labels: Edit Customs Form"
   @customs_form = web_apps.mail.customs.edit_form

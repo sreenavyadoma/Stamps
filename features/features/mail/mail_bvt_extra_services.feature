@@ -15,13 +15,13 @@ Feature: Extra Services BVT
     Then Mail Shipping Labels: Select Service Priority Mail Padded Flat Rate Envelope
     Then Mail Shipping Labels: Set Hide Mail Value to Unchecked
 
-    Then Mail Shipping Labels: Open Extra Services
+    Then Mail: Open Extra Servicess
     Then Mail Extra Services: Set Security to Registered Mail
     Then Mail Extra Services: Set Security Value to $100
     Then Mail Extra Services: Set Return Receipt to Checked
     Then Mail Extra Services: Set COD to $20
     Then Mail Extra Services: Set Handling to Normal
-    Then Mail Extra Services: Set Non-Rectangular to Checked
+    #Then Mail Extra Services: Set Non-Rectangular to Checked
     Then Mail Extra Services: Click Save
     Then Mail: Open Print Modal
     Then Mail Print Modal: Select Printer "factory"
