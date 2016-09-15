@@ -44,13 +44,11 @@ Feature: Auto-Calculate Customs Form Weight
     Then Details: Edit Customs Form
     Then Pause for 2 seconds
     Then Customs: Expect Item 1 Description to be item 1
-    Then Customs: Expect Item 1 Quantity to be 100
     Then Customs: Expect Item 1 Unit Price to be 11.11
     Then Customs: Expect Item 1 Origin Country to be United States
     Then Customs: Expect Item 1 Tariff to be 100
 
     Then Customs: Expect Item 2 Description to be item 2
-    Then Customs: Expect Item 2 Quantity to be 99
     Then Customs: Expect Item 2 Unit Price to be 22.22
     Then Customs: Expect Item 2 Origin Country to be United States
     Then Customs: Expect Item 2 Tariff to be 200
