@@ -1364,13 +1364,7 @@ module Stamps
           selected_service = ""
           @details_services ||= data_for(:details_services, {})
 
-          # This is a temporary fix to support user story
-          # ORDERSAUTO-1026 Sprint 40: Abbreviate Service Names for Selected Service, which is in CC but not staging.
-          if ENV['URL'].downcase == 'cc' || ENV['URL'].downcase == 'qacc' #abbreviate when in CC
-            abbrev_selection = abbrev_service_name selection
-          else # do not abbreviate anywhere else.
-            abbrev_selection = selection
-          end
+          abbrev_selection = abbrev_service_name selection
 
           selection_label = ElementWrapper.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
 
@@ -1388,7 +1382,9 @@ module Stamps
             end
           end
           logger.info "#{selected_service} service selected."
-          raise "Unable to select service #{selection}! Selected service textbox containts #{selected_service}" unless selected_service.include? abbrev_selection
+
+          # Test if selected service includes abbreviated selection.
+          selected_service.should include abbrev_selection
           selection_label
         end
 
@@ -1845,6 +1841,10 @@ module Stamps
           (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]").size
         end
 
+        def count
+          size
+        end
+
         def store_item
           DetailsStoreItem.new param
         end
@@ -1859,8 +1859,9 @@ module Stamps
             break if size >= number
             add_button.safe_click if number > size
             logger.info "Item Count: #{size}"
+            break if size >= number
           }
-
+          number.should eql size
           DetailsItem.new param, number
         end
       end

@@ -120,6 +120,9 @@ end
 Then /^Details: Edit Customs Form$/ do
   logger.info "Details: Edit Customs Form"
   @customs_form = @order_details.customs.edit_form
+  expectation = "Customs Information Form is present"
+  expectation = "Customs Information Form is NOT present" unless @customs_form.present?
+  expectation.should eql "Customs Information Form is present"
 end
 
 Then /^Customs: Set Package Contents to \"(.+)\"$/ do |value|

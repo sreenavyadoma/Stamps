@@ -29,6 +29,7 @@ end
 Then /^Details: Add Item (\d+)$/ do |item_number|
   logger.info "Details: Add Item #{item_number}"
   @details_line_item = web_apps.orders.details.item_grid.item item_number.to_i
+  #web_apps.orders.details.item_grid.size.should eql item_number
 end
 
 Then /^Details: Set Qty to (\d+)$/ do |value|
