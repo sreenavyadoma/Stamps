@@ -171,16 +171,12 @@ Feature:  Update International Orders to ShipStation
     Then Customs: Expect Item 1 Description to be item 1
     Then Customs: Expect Item 1 Quantity to be 1
     Then Customs: Expect Item 1 Unit Price to be 11.11
-    Then Customs: Expect Item 1 Pounds to be 1
-    Then Customs: Expect Item 1 Ounces to be 1
     Then Customs: Expect Item 1 Origin Country to be United States
     Then Customs: Expect Item 1 Tariff to be 100
 
     Then Customs: Expect Item 2 Description to be item 2
     Then Customs: Expect Item 2 Quantity to be 2
     Then Customs: Expect Item 2 Unit Price to be 22.22
-    Then Customs: Expect Item 2 Pounds to be 2
-    Then Customs: Expect Item 2 Ounces to be 2
     Then Customs: Expect Item 2 Origin Country to be United States
     Then Customs: Expect Item 2 Tariff to be 200
 

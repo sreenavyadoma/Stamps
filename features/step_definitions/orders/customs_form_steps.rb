@@ -83,6 +83,7 @@ Then /^Customs: Expect Item (\d+) Unit Price to be (.*)$/ do |item_number, expec
   actual_value.should eql expectation
 end
 
+=begin
 Then /^Customs: Expect Item (\d+) Pounds to be (\d+)$/ do |item_number, expectation|
   logger.info "Customs: Expect Item #{item_number} Pounds to be #{expectation}"
   item = @customs_item_grid.item item_number.to_i
@@ -99,6 +100,7 @@ Then /^Customs: Expect Item (\d+) Ounces to be (\d+)$/ do |item_number, expectat
   logger.info "Item #{item_number} Ounces Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
+=end
 
 Then /^Customs: Expect Item (\d+) Origin Country to be (.*)$/ do |item_number, expectation|
   logger.info "Customs: Expect Item #{item_number} Origin Country to be #{expectation}"
