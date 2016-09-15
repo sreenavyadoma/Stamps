@@ -1364,13 +1364,7 @@ module Stamps
           selected_service = ""
           @details_services ||= data_for(:details_services, {})
 
-          # This is a temporary fix to support user story
-          # ORDERSAUTO-1026 Sprint 40: Abbreviate Service Names for Selected Service, which is in CC but not staging.
-          if ENV['URL'].downcase == 'cc' || ENV['URL'].downcase == 'qacc' #abbreviate when in CC
-            abbrev_selection = abbrev_service_name selection
-          else # do not abbreviate anywhere else.
-            abbrev_selection = selection
-          end
+          abbrev_selection = abbrev_service_name selection
 
           selection_label = ElementWrapper.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
 
