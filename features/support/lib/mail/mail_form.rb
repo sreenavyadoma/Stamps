@@ -5,12 +5,12 @@ module Stamps
       def edit_form
         button = ElementWrapper.new browser.span id: "sdc-mainpanel-editcustombtn-btnIconEl"
         customs_modal = CustomsForm.new param
-        5.times do
+        15.times do
           button.safe_click
           sleep 1
           return customs_modal if customs_modal.present?
         end
-        stop_test "Unable to open Customs Modal, check your TestHelper." unless customs_modal.present?
+        "Unable to open Customs Modal, check your test".should eql 'Edit Customs Modal failed.'
       end
 
       def restrictions

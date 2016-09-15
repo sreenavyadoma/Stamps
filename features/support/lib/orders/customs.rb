@@ -12,7 +12,7 @@ module Stamps
       end
 
       def select country
-        DropDownElement
+        #DropDownElement
         logger.info "Select Country #{country}"
         selection = ElementWrapper.new (browser.lis text: country)[@index]
         text_box = self.text_box
@@ -34,6 +34,12 @@ module Stamps
     end
 
     class CustomsFields < Browser::Modal
+      attr_reader :customs_form
+
+      def initialize param
+        super param
+        @customs_form = CustomsForm.new param
+      end
 
       def browser_edit_form_button
         links = browser.links css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
@@ -41,20 +47,22 @@ module Stamps
       end
 
       def edit_form
-        @customs_form = CustomsForm.new param
+
+        return customs_form if customs_form.present?
+
         edit_form_button = browser_edit_form_button
         20.times{
           edit_form_button.safe_click
-          break if @customs_form.present?
+          break if customs_form.present?
         }
 
         begin
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          stop_test "Customs Information Modal is not visible."
-        end unless @customs_form.present?
-        @customs_form
+          "Customs Information Modal is not visible.".should eql 'Fail the test'
+        end unless customs_form.present?
+        customs_form
       end
 
       def browser_restrictions_button
