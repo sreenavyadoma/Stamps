@@ -11,10 +11,10 @@ Feature: Auto-Calculate Customs Form Weight
       | name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
     Then Details: Select Service Priority Mail International Package/Flat/Thick Envelope
-    Then Details: Set Ounces to 1
+    Then Details: Set Ounces to 4
 
     Then Details: Add Item 1
-    Then Details: Set Qty to 1
+    Then Details: Set Qty to 2
     Then Details: Set ID to random
     Then Details: Set Description to random
 
@@ -34,7 +34,7 @@ Feature: Auto-Calculate Customs Form Weight
 
     Then Customs: Add Item 2
     Then Customs: Set Item Description to item 2
-    Then Customs: Set Item Qty to 4
+    Then Customs: Set Item Qty to 2
     Then Customs: Set Item Unit Price to 22.22
     Then Customs: Set Item Origin Country to United States
     Then Customs: Set Item Tarriff to 10
@@ -44,15 +44,21 @@ Feature: Auto-Calculate Customs Form Weight
     Then Details: Edit Customs Form
     Then Pause for 2 seconds
     Then Customs: Expect Item 1 Description to be item 1
+    Then Customs: Expect Item 1 Quantity to be 2
     Then Customs: Expect Item 1 Unit Price to be 11.11
     Then Customs: Expect Item 1 Origin Country to be United States
     Then Customs: Expect Item 1 Tariff to be 5
 
     Then Customs: Expect Item 2 Description to be item 2
+    Then Customs: Expect Item 2 Quantity to be 2
     Then Customs: Expect Item 2 Unit Price to be 22.22
     Then Customs: Expect Item 2 Origin Country to be United States
     Then Customs: Expect Item 2 Tariff to be 10
-
+    Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Form
+
+    Then Grid: Expect Weight to be 0 lbs. 4 oz.
+    Then Grid: Expect Weight(lbs) to be 0
+    Then Grid: Expect Weight(oz) to be 0
 
     Then Sign out

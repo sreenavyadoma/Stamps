@@ -315,7 +315,7 @@ module Stamps
 
       attr_reader :window_title, :item_grid, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
                   :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,
-                  :restrictions_link, :restrictions_prohibitions_link, :x_button
+                  :restrictions_link, :restrictions_prohibitions_link, :x_button, :total_label
 
       def initialize param
         super param
@@ -344,6 +344,18 @@ module Stamps
 
         @close_button ||= ElementWrapper.new browser.span text: "Close"
         @x_button ||= ElementWrapper.new browser.image css: "img[class*='x-tool-close']"
+        @total_label ||= ElementWrapper.new browser.span(text: 'Total:')
+      end
+
+      def blur_out
+        3.times do
+          begin
+            total_label.safe_click
+            total_label.safe_double_click
+          rescue
+            #ignore
+          end
+        end
       end
 
       def present?
