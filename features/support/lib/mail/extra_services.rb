@@ -7,8 +7,8 @@ module Stamps
         element_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
       end
 
-      def wait_until_present
-        window_title.wait_until_present
+      def wait_until_present *args
+        window_title.wait_until_present *args
       end
 
       def present?

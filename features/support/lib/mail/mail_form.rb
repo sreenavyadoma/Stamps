@@ -39,12 +39,12 @@ module Stamps
 
       def open_extra_services
         service_modal = ExtraServices.new param
-        5.times do
+        10.times do
           extra_services.safe_click
-          sleep 1
+          extra_services.wait_until_present 2
           return service_modal if service_modal.present?
         end
-        'Unable to open Extra Services Modal, check your code.'.should eql 'Extra Services modal failed to open.' unless service_modal.present?
+        'Extra Services Modal is present.'.should eql 'Extra Services modal failed to open.' unless service_modal.present?
       end
     end
   end
