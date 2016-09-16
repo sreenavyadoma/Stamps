@@ -1364,9 +1364,9 @@ module Stamps
           # This is a temporary fix to support user story
           # ORDERSAUTO-1026 Sprint 40: Abbreviate Service Names for Selected Service, which is in CC but not SC.
           if ENV['URL'].downcase.include? 'sc' #abbreviate when in SC
-            abbrev_selection = abbrev_service_name selection
-          else # do not abbreviate anywhere else.
             abbrev_selection = selection
+          else
+            abbrev_selection = abbrev_service_name selection
           end
 
           selected_service = ""
