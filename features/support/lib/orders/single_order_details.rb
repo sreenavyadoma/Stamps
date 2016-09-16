@@ -1361,10 +1361,16 @@ module Stamps
         def select selection
           logger.info "Select Service #{selection}"
 
+          # This is a temporary fix to support user story
+          # ORDERSAUTO-1026 Sprint 40: Abbreviate Service Names for Selected Service, which is in CC but not SC.
+          if ENV['URL'].downcase.include? 'sc' #abbreviate when in SC
+            abbrev_selection = abbrev_service_name selection
+          else # do not abbreviate anywhere else.
+            abbrev_selection = selection
+          end
+
           selected_service = ""
           @details_services ||= data_for(:details_services, {})
-
-          abbrev_selection = abbrev_service_name selection
 
           selection_label = ElementWrapper.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
 

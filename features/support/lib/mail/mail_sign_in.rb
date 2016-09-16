@@ -151,8 +151,8 @@ module Stamps
           password password
           login
 
-          60.times do
-            logger.info verifying_account_info.safe_text
+        50.times do
+            logger.message verifying_account_info.safe_text
             verifying_account_info.safely_wait_while_present 2
             break unless verifying_account_info.present?
           end
