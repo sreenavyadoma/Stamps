@@ -76,5 +76,9 @@ end
 
 Then /^Sign out$/ do
   logger.info "Sign out"
-  web_apps.navigation_bar.username.sign_out
+  begin
+    web_apps.navigation_bar.username.sign_out
+  rescue
+    #do nothing
+  end
 end

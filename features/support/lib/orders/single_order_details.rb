@@ -194,10 +194,15 @@ module Stamps
       end
 
       class AutoSuggestInternational < ShipToInternationalFields
+        attr_reader :auto_suggest_box
+
+        def initialize param
+          super param
+          @auto_suggest_box ||= AutoSuggestPopUp.new param
+        end
 
         def set address
           text_field = self.name
-          auto_suggest_box = AutoSuggestPopUp.new param
 
           20.times{
             begin
@@ -216,8 +221,10 @@ module Stamps
       end
 
       class ShipToInternational < ShipToInternationalFields
-        def auto_suggest
-          AutoSuggestInternational.new param
+        attr_reader :auto_suggest
+        def initialize param
+          super param
+          @auto_suggest ||= AutoSuggestInternational.new param
         end
       end
 
@@ -295,13 +302,17 @@ module Stamps
         def data_error
           self.text_area.data_error_qtip
         end
-
       end
 
       class AutoSuggestDomestic < ShipToFields
+        attr_reader :auto_suggest_box
+        def initialize param
+          super param
+          @auto_suggest_box = AutoSuggestPopUp.new param
+        end
+
         def set address
           text_area = self.text_area
-          auto_suggest_box = AutoSuggestPopUp.new param
 
           20.times{
             begin
@@ -1180,7 +1191,6 @@ module Stamps
           logger.info "Manage Shipping Address:: row count = #{rows.length.to_i}"
           rows.length.to_i
         end
-
       end
 
       class ShipFromAddress < DetailsForm
@@ -1326,31 +1336,62 @@ module Stamps
           @drop_down ||= ElementWrapper.new browser.div css: "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
         end
 
+        def abbrev_service_name long_name
+          if long_name.include? 'First-Class Mail International'
+            long_name.sub 'First-Class Mail International', 'FCMI'
+          elsif long_name.include? 'First-Class Mail'
+            long_name.sub 'First-Class Mail', 'FCM'
+          elsif long_name.include? 'Priority Mail Express International'
+            long_name.sub 'Priority Mail Express International', 'PMEI'
+          elsif long_name.include? 'Priority Mail International'
+            long_name.sub 'Priority Mail International', 'PMI'
+          elsif long_name.include? 'Priority Mail Express'
+            long_name.sub 'Priority Mail Express', 'PME'
+          elsif long_name.include? 'Priority Mail'
+            long_name.sub 'Priority Mail', 'PM'
+          elsif long_name.include? 'Media Mail'
+            long_name.sub 'Media Mail', 'MM'
+          elsif long_name.include? 'Parcel Select Ground'
+            long_name.sub 'Parcel Select Ground', 'PSG'
+          else # there's no abbreviation for this long name so send it right back.
+            long_name
+          end
+        end
+
         def select selection
           logger.info "Select Service #{selection}"
-          selected_service = ""
-          box = text_box
-          button = drop_down
 
+          # This is a temporary fix to support user story
+          # ORDERSAUTO-1026 Sprint 40: Abbreviate Service Names for Selected Service, which is in CC but not SC.
+          if ENV['URL'].downcase.include? 'sc' #abbreviate when in SC
+            abbrev_selection = selection
+          else
+            abbrev_selection = abbrev_service_name selection
+          end
+
+          selected_service = ""
           @details_services ||= data_for(:details_services, {})
 
           selection_label = ElementWrapper.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
+
           20.times do
             begin
-              button.safe_click unless selection_label.present?
+              drop_down.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
               blur_out
-              selected_service = box.text
-              logger.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"success": "service not selected"}"
-              break if selected_service.include? selection
+              selected_service = text_box.text
+              logger.info "Selected Service #{selected_service} - #{(selected_service.include? abbrev_selection)?"success": "service not selected"}"
+              break if selected_service.include? abbrev_selection
             rescue
               #ignore
             end
           end
-          logger.info "#{selection} service selected."
-          raise "Unable to select service #{selection}! Selected service textbox containts #{selected_service}" unless selected_service.include? selection
-          selection_label # selection_label.field.table.tbody.tr.tds[2].text
+          logger.info "#{selected_service} service selected."
+
+          # Test if selected service includes abbreviated selection.
+          selected_service.should include abbrev_selection
+          selection_label
         end
 
         def cost *args
@@ -1806,6 +1847,10 @@ module Stamps
           (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]").size
         end
 
+        def count
+          size
+        end
+
         def store_item
           DetailsStoreItem.new param
         end
@@ -1820,8 +1865,9 @@ module Stamps
             break if size >= number
             add_button.safe_click if number > size
             logger.info "Item Count: #{size}"
+            break if size >= number
           }
-
+          number.should eql size
           DetailsItem.new param, number
         end
       end

@@ -12,7 +12,7 @@ Feature: ORDERSAUTO-30 Add Tracking Email Option in Print Dialog
     Then Order Details: Set Service to "Priority Mail Express Padded Flat Rate Envelope"
     Then Order Details: Set Ounces to 1
     Then Open Print Modal
-    Then Print Modal: Set Media "Shipping Label - 5 ½" x 8 ½""
+    Then Print Modal: Set Media "Shipping Label - 5 ï¿½" x 8 ï¿½""
     Then Print Modal: Set Printer to "factory"
     Then Print Modal: Set Email Tracking Details to Recipient to checked
     Then Toolbar: Print

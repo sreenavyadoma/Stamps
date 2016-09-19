@@ -7,8 +7,8 @@ module Stamps
         element_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
       end
 
-      def wait_until_present
-        window_title.wait_until_present
+      def wait_until_present *args
+        window_title.wait_until_present *args
       end
 
       def present?
@@ -109,7 +109,6 @@ module Stamps
         button.click
         sleep(2)
       end
-
     end
 
     class Security < Browser::Modal
@@ -145,7 +144,6 @@ module Stamps
       def price
 
       end
-
     end
 
     class SecurityValue < Browser::Modal
@@ -173,9 +171,7 @@ module Stamps
           button.safe_click
         end
       end
-
     end
-
 
     class COD < Browser::Modal
       def text_box
@@ -221,7 +217,6 @@ module Stamps
           button.safe_click
         end
       end
-
     end
 
     class Handling < Browser::Modal
@@ -253,11 +248,9 @@ module Stamps
         logger.info "Handling selected: #{selection}"
         selection_label
       end
-
     end
 
     class ReturnReceipt < Browser::Modal
-
       def checkbox
         checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-rrcheckbox-inputEl]"
         verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rrcheckbox]"
@@ -267,7 +260,6 @@ module Stamps
       def price
 
       end
-
     end
 
     class ElectronicReturnReceipt < Browser::Modal
@@ -280,7 +272,6 @@ module Stamps
       def price
 
       end
-
     end
 
     class RestrictedDelivery < Browser::Modal
@@ -295,7 +286,6 @@ module Stamps
       end
     end
 
-
     class NonDeliveryNotice < Browser::Modal
       def checkbox
         checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-nndcheckbox-inputEl]"
@@ -307,7 +297,6 @@ module Stamps
 
       end
     end
-
 
     class Fragile < Browser::Modal
       def checkbox
@@ -344,9 +333,6 @@ module Stamps
 
       end
     end
-
-
-
   end
 end
 

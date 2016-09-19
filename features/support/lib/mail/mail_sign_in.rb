@@ -157,12 +157,12 @@ module Stamps
 
           login
 
-          75.times do
-            logger.info verifying_account_info.safe_text
+        50.times do
+            logger.message verifying_account_info.safe_text
+            verifying_account_info.safely_wait_while_present 2
             break unless verifying_account_info.present?
           end
 
-          verifying_account_info.safely_wait_while_present 5
 
           logger.info "Signed in username is #{signed_in_user.text}" if signed_in_user.present?
           logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"

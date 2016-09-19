@@ -3,7 +3,8 @@ Feature: First time Mail sign in
   Background:
     Given I launched default browser
 
-  @webreg_mail
+    @webreg_mail
+    @whats_new
   Scenario: What's new modal
     Then WebReg Profile: Load Registration Page
     Then WebReg Profile: Set User ID and Email to Random Value

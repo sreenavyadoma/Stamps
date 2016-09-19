@@ -143,11 +143,6 @@ Then /^Mail Roll: Select Service Priority Mail Express International Legal Flat 
   step "Mail Roll: Set Service to Priority Mail Express International Legal Flat Rate Envelope"
 end
 
-Then /^Mail Roll: Open Extra Services$/ do
-  logger.info "Mail Roll: Open Extra Services"
-  @extra_services = web_apps.mail.extra_services
-end
-
 Then /^Mail Roll: Edit Customs Form$/ do
   logger.info "Mail Roll: Edit Customs Form"
   @customs_form = web_apps.mail.customs.edit_form

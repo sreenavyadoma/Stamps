@@ -120,11 +120,10 @@ module Stamps
         super param
         @specify_postage ||= SpecifyPostageAmount.new param
         @calculate_postage||= CalculatePostageAmount.new param
-        @serial ||= TextBoxElement.new browser.text_field id: "sdc-mainpanel-nsserialtextfield-inputEl"
+        @serial ||= TextBoxElement.new browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")
         @calculate_service_drop_list||= MailServiceDropList.new param
         @specify_service_drop_list ||= SpecifyServiceDropList.new param
         @form_view ||= StampsFormView.new param
-
         @specify_radio ||= CheckboxElement.new (browser.input id: 'sdc-mainpanel-calculatepostageradio-inputEl'), (browser.table id: 'sdc-mainpanel-calculatepostageradio'), "class", "checked"
         @calculate_radio ||= CheckboxElement.new (browser.input id: "sdc-mainpanel-specifypostageradio-inputEl"), (browser.table id: 'sdc-mainpanel-specifypostageradio'), "class", "checked"
       end

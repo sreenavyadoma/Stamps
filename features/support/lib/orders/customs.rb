@@ -12,7 +12,7 @@ module Stamps
       end
 
       def select country
-        DropDownElement
+        #DropDownElement
         logger.info "Select Country #{country}"
         selection = ElementWrapper.new (browser.lis text: country)[@index]
         text_box = self.text_box
@@ -34,6 +34,12 @@ module Stamps
     end
 
     class CustomsFields < Browser::Modal
+      attr_reader :customs_form
+
+      def initialize param
+        super param
+        @customs_form = CustomsForm.new param
+      end
 
       def browser_edit_form_button
         links = browser.links css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
@@ -41,20 +47,22 @@ module Stamps
       end
 
       def edit_form
-        @customs_form = CustomsForm.new param
+
+        return customs_form if customs_form.present?
+
         edit_form_button = browser_edit_form_button
         20.times{
           edit_form_button.safe_click
-          break if @customs_form.present?
+          break if customs_form.present?
         }
 
         begin
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          stop_test "Customs Information Modal is not visible."
-        end unless @customs_form.present?
-        @customs_form
+          "Customs Information Modal is not visible.".should eql 'Fail the test'
+        end unless customs_form.present?
+        customs_form
       end
 
       def browser_restrictions_button
@@ -99,6 +107,7 @@ module Stamps
           break if size >= number
           add.safe_click if number > size
           logger.info "Item Count: #{size}"
+          break if size >= number
         }
 
         logger.info "User Entered Number: #{number}. Actual Item Count: #{size}"
@@ -304,12 +313,13 @@ module Stamps
 
     class CustomsForm < Browser::Modal
 
-      attr_reader :item_grid, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
+      attr_reader :window_title, :item_grid, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
                   :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,
-                  :restrictions_link, :restrictions_prohibitions_link, :x_button
+                  :restrictions_link, :restrictions_prohibitions_link, :x_button, :total_label
 
       def initialize param
         super param
+        @window_title ||= ElementWrapper.new browser.div(text: "Customs Information")
         @item_grid ||= CustomsItemGrid.new param
         @package_contents ||= PackageContents.new param
         @non_delivery_options ||= NonDeliveryOptions.new param
@@ -334,14 +344,26 @@ module Stamps
 
         @close_button ||= ElementWrapper.new browser.span text: "Close"
         @x_button ||= ElementWrapper.new browser.image css: "img[class*='x-tool-close']"
+        @total_label ||= ElementWrapper.new browser.span(text: 'Total:')
+      end
+
+      def blur_out
+        3.times do
+          begin
+            total_label.safe_click
+            total_label.safe_double_click
+          rescue
+            #ignore
+          end
+        end
       end
 
       def present?
-        item_grid.present?
+        window_title.present?
       end
 
-      def wait_until_present
-        close_button.safely_wait_until_present 10
+      def wait_until_present *args
+        window_title.safely_wait_until_present *args
       end
 
       def total_value

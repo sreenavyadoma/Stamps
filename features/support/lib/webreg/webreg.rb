@@ -22,11 +22,14 @@ module Stamps
         end
 
         logger.info "Visit:  #{url}"
-        browser.goto url
+        5.times do
+          browser.goto url
+          break if browser.url.include? 'stamps.com'
+        end
+        return "Registration page did not load" unless browser.url.include? "registration"
         sign_up_for_new_account = ElementWrapper.new browser.h1(text: "Sign up for a new account")
         sign_up_for_new_account.safely_wait_until_present 8
         logger.info "Page loaded.  #{browser.url}"
-        "Registration page did not load" unless browser.url.include? "registration"
         "Success"
       end
     end
