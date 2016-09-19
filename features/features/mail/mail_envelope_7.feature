@@ -1,6 +1,5 @@
 Feature: Envelope #7
 
-
   Background:
     Given I am signed in as Mail shipper
 
@@ -18,3 +17,4 @@ Feature: Envelope #7
     Then Mail Print Modal: Select Printer "factory"
     Then Mail Print Modal: Print
     Then Sign out
+

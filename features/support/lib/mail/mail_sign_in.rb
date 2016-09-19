@@ -149,6 +149,12 @@ module Stamps
         10.times do
           username username
           password password
+          if $remember_username_status == "checked"
+            remember_username_checkbox.check
+          else
+            remember_username_checkbox.uncheck
+          end
+
           login
 
           75.times do
@@ -185,6 +191,11 @@ module Stamps
         5.times do
           username username
           password password
+          if $remember_username_status == "checked"
+            remember_username_checkbox.check
+          else
+            remember_username_checkbox.uncheck
+          end
           login
 
           20.times do
@@ -198,6 +209,26 @@ module Stamps
         end
         raise "Unable to sign in to Mail with credentials #{username}/#{password}" if sign_in_link.present?
         raise "What's New modal did not appear upon login"
+      end
+
+      def sign_in_username_check *args
+        credentials = user_credentials *args
+        username = credentials[0]
+
+        10.times do
+          username username
+          if username_textbox.text == username
+            $remember_username_status = "checked"
+          else
+            $remember_username_status = "unchecked"
+          end
+
+          logger.info "Remembered username status is #{$remember_username_status}"
+
+          break if username_textbox.present?
+
+        end
+
       end
 
       def sign_in_and_remember *args
@@ -274,50 +305,6 @@ module Stamps
         }
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
         logger.info "Password is #{password}"
-
-      def sign_in_menu *args
-
-        case args
-          when Hash
-            check_username = args[0]['username']
-          when Array
-            if args.length == 1
-              check_username = args[0]
-            else
-              logger.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
-              check_username = ENV["USR"]
-            end
-          else
-            logger.message "Using Default Sign-in Credentials."
-            check_username = ENV["USR"]
-            logger.message "CHECK USERNAME: #{check_username}"
-        end
-
-        10.times {
-          sign_in_link.safe_click unless username_textbox.present?
-          logger.info "Remembered username is #{username_textbox.text}"
-          logger.info "Expected username is #{check_username}"
-
-          if username_textbox.text == check_username
-            $remember_username_status = "checked"
-          else
-            $remember_username_status = "unchecked"
-          end
-
-          logger.info "Remembered username status is #{$remember_username_status}"
-
-          break if username_textbox.present?
-
-          if invalid_msg.present?
-            $invalid_message = true
-            logger.info "Invalid message is #{invalid_msg.text}"
-            logger.info "Message present is #{$invalid_message}"
-            break
-          end
-
-        }
-
-      end
 
       def invalid_username_password
         ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
