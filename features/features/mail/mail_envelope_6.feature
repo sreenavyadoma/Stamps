@@ -17,7 +17,3 @@ Feature: Envelope #6
     Then Mail Print Modal: Select Printer "factory"
     Then Mail Print Modal: Print
     Then Sign out
-
-
-
-    #chang
