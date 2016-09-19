@@ -388,12 +388,12 @@ Then /^Grid: Expect Weight\(lbs\) to be (.*)$/ do |expectation|
   begin
     10.times do
       actual = web_apps.orders.grid.weight.lbs @order_id
-      break if actual.eql? expectation_result
+      break if actual.eql? expectation
     end
     actual = web_apps.orders.grid.weight.lbs @order_id
-    logger.info "Test #{(actual==expectation_result)?"Passed":"Failed"}"
-    actual.should eql expectation_result
-  end unless expectation_result.length == 0
+    logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+    actual.should eql expectation
+  end unless expectation.length == 0
 end
 
 Then /^Grid: Expect Weight\(oz\) to be (.*)$/ do |expectation|
@@ -401,12 +401,12 @@ Then /^Grid: Expect Weight\(oz\) to be (.*)$/ do |expectation|
   begin
     10.times do
       actual = web_apps.orders.grid.weight.oz @order_id
-      break if actual.eql? expectation_result
+      break if actual.eql? expectation
     end
     actual = web_apps.orders.grid.weight.oz @order_id
-    logger.info "Test #{(actual==expectation_result)?"Passed":"Failed"}"
-    actual.should eql expectation_result
-  end unless expectation_result.length == 0
+    logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+    actual.should eql expectation
+  end unless expectation.length == 0
 end
 
 Then /^Grid: Expect Qty. to be (.+)$/ do |expectation|
