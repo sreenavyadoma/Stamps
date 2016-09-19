@@ -40,21 +40,19 @@ Feature: Customs Form Qty
     Then Customs: Set Item Origin Country to United States
     Then Customs: Set Item Tarriff to 200
 
+    Then Mail Customs: Set ITN Number to "random"
+
+    Then Customs: Check I agree to the USPS Privacy Act Statement
+
     Then Customs: Close Form
 
     Then Details: Edit Customs Form
     Then Pause for 2 seconds
     Then Customs: Expect Item 1 Description to be item 1
     Then Customs: Expect Item 1 Quantity to be 100
-    Then Customs: Expect Item 1 Unit Price to be 11.11
-    Then Customs: Expect Item 1 Origin Country to be United States
-    Then Customs: Expect Item 1 Tariff to be 100
 
     Then Customs: Expect Item 2 Description to be item 2
     Then Customs: Expect Item 2 Quantity to be 99
-    Then Customs: Expect Item 2 Unit Price to be 22.22
-    Then Customs: Expect Item 2 Origin Country to be United States
-    Then Customs: Expect Item 2 Tariff to be 200
 
     Then Customs: Close Form
 
