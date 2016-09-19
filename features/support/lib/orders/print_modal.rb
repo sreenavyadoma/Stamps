@@ -100,7 +100,7 @@ module Stamps
 
       def initialize param
         super param
-        @starting_lable ||= StartingLabel.new param
+        @starting_label ||= StartingLabel.new param
         @paper_tray ||= PaperTray.new param
         @date_picker = DatePicker.new param
         @printing_on ||= PrintingOn.new param
@@ -116,42 +116,44 @@ module Stamps
       end
 
       class StartingLabel < PrintModalObject
-        def label_divs
-          browser.divs css: "div[class*='label-chooser-selectable-box']"
-        end
+        attr_reader :left_label, :right_label
 
-        def left_label_div
-          label_divs[0]
-        end
-
-        def right_label_div
-          label_divs[1]
+        def initialize param
+          super param
+          @left_label ||= ElementWrapper.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)"
+          @right_label ||= ElementWrapper.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)"
         end
 
         def left
           10.times{
             begin
-              element_helper.safe_click left_label_div
-              return true if label_selected? left_label_div
+              left_label.safe_click
+              break if (left_label.attribute_value "class").include? 'selected'
             rescue
-              #ignore
+              false
             end
           }
-          false
+          (left_label.attribute_value "class").include? 'selected'
         end
 
         def right
           10.times{
+            begin
+              right_label.safe_click
+              break if (right_label.attribute_value "class").include? 'selected'
+            rescue
+              false
+            end
           }
-          false
+          (right_label.attribute_value "class").include? 'selected'
         end
 
         def left_selected?
-          label_selected? left_label_div
+          label_selected? left_label
         end
 
         def right_selected?
-          label_selected? right_label_div
+          label_selected? right_label
         end
 
         def label_selected? div
@@ -164,7 +166,7 @@ module Stamps
         end
 
         def default_selected?
-          label_selected? left_label_div
+          label_selected? left_label
         end
       end
 
@@ -336,10 +338,7 @@ module Stamps
         end
 
         def select printer
-          dd = self.drop_down
-          input = self.text_box
-
-          return input.text if input.text.include? printer
+          return text_box.text if text_box.text.include? printer
 
           case printer.downcase
             when /factory/
@@ -359,8 +358,8 @@ module Stamps
           end
 
           8.times do
-            return input.text  if input.text.include? printer
-            dd.safe_click unless selection_label.present?
+            return text_box.text  if text_box.text.include? printer
+            drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
           end
           stop_test "Unable to select Printer #{printer}.  Check and make sure the printer exist in this PC."
@@ -425,6 +424,10 @@ module Stamps
 
       def present?
         print_button.present?
+      end
+
+      def wait_until_present *args
+        print_button.wait_until_present *args
       end
 
       def print

@@ -38,10 +38,10 @@ end
 
 Then /^Print: Expect Print Modal is present$/ do
   expectation = "present"
-  if @print_window.nil?
+  if web_apps.orders.toolbar.print_btn.print_modal.nil?
     expectation = "not present"
   else
-    expectation = "not present" unless @print_window.present?
+    expectation = "not present" unless web_apps.orders.toolbar.print_btn.print_modal.present?
   end
 
   logger.info "Test #{(expectation=="present")?"Passed":"Failed"}"
@@ -50,7 +50,7 @@ end
 
 Then /^Print: Print$/ do
   logger.info "Print"
-  print_modal = web_apps.orders.toolbar.print_order.click
+  print_modal = web_apps.orders.toolbar.print_btn.print_modal
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.text_box.text
   @printer = print_modal.printer.text_box.text

@@ -34,46 +34,35 @@ module Stamps
     end
 
     class CustomsFields < Browser::Modal
-      attr_reader :customs_form
+      attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
 
       def initialize param
         super param
         @customs_form = CustomsForm.new param
-      end
-
-      def browser_edit_form_button
-        links = browser.links css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
-        ElementWrapper.new links.first
+        @view_restrictions = Orders::Details::ViewRestrictions.new param
+        @edit_form_btn ||= ElementWrapper.new browser.span text: 'Edit Form...'
+        @restrictions_btn ||= ElementWrapper.new browser.span text: 'Restrictions...'
       end
 
       def edit_form
 
         return customs_form if customs_form.present?
 
-        edit_form_button = browser_edit_form_button
-        20.times{
-          edit_form_button.safe_click
+        20.times do
+          edit_form_btn.safe_click
+          customs_form.wait_until_present 1
           break if customs_form.present?
-        }
+        end
 
-        begin
-          logger.info "Teardown: Begin tearing down test"
-          TestHelper.teardown
-          logger.info "Teardown: Done!"
-          "Customs Information Modal is not visible.".should eql 'Fail the test'
-        end unless customs_form.present?
+        # Fail the test if customs form does not open upon clicking Edit Customs form on Single Order form
+        "Customs Form did not open.".should eql "Edit Customs Form" unless customs_form.present?
+
         customs_form
       end
 
-      def browser_restrictions_button
-        ElementWrapper.new browser.span text: "Restrictions..."
-      end
-
       def restrictions
-        restrictions_button = browser_restrictions_button
-        view_restrictions = Orders::Details::ViewRestrictions.new param
         5.times{
-          restrictions_button.safe_click
+          restrictions_btn.safe_click
           if view_restrictions.present?
             return view_restrictions
           end

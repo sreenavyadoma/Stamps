@@ -1,7 +1,6 @@
 Then /^View Print On option (.*) tooltip$/ do |label|
   logger.info "View Print On option #{label} tooltip"
-  @print_window = web_apps.orders.toolbar.print_order.click
-  tooltip = @print_window.print_on_tooltip label
+  tooltip = web_apps.orders.toolbar.print_btn.print_modal.print_on_tooltip label
 end
 
 #Shipping Label 5.5 x 8.5
@@ -18,7 +17,7 @@ end
 
 Then /^Select new option \"(.*)\"$/ do |label|
   logger.info "Select new option #{label}"
-  @print_window = web_apps.orders.toolbar.print_order.click
+  web_apps.orders.toolbar.print_btn.print_modal
 end
 
 Then /^Expect saves settings to \"(.*)\"$/ do |label|
@@ -27,18 +26,18 @@ end
 
 Then /^Expect a print of \"(.*)\"$/ do |label|
   logger.info "Expect a mail of #{label}"
-  @print_window = web_apps.orders.toolbar.print_order.click
+  web_apps.orders.toolbar.print_btn.print_modal
 end
 
 
 Then /^Expect a print Sample of \"(.*)\"$/ do |label|
   logger.info "Expect a mail Sample of #{label}"
-  @print_window.print_sample
+  web_apps.orders.toolbar.print_btn.print_modal.print_sample
 end
 
 
 Then /^Expect system will only print first order$/ do |label|
   logger.info "Expect system will only mail first order"
-  @print_window = web_apps.orders.toolbar.print_order.click
+  web_apps.orders.toolbar.print_btn.print_modal
 end
 

@@ -23,8 +23,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Print: Print
     Then Sign out
 
-
-  @label_5x8_printing
+  @print_labels_5x8
   Scenario: Print - Shipping Label: 8 ½" x 11" Paper
     Then Toolbar: Add
     Then Details: Set Ship-From to default

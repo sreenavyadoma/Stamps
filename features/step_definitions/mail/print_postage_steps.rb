@@ -380,8 +380,8 @@ end
 Then /^Mail: Expect Label Image Preview is present$/ do
   logger.info "Mail: Expect Label Image Preview is present"
   sleep 2
-  web_apps.mail.form_view.starting_label.left_label_div.present?.should be true
-  web_apps.mail.form_view.starting_label.right_label_div.present?.should be true
+  web_apps.mail.form_view.starting_label.left_label.present?.should be true
+  web_apps.mail.form_view.starting_label.right_label.present?.should be true
 end
 
 Then /^Mail: Expect Hide Mail Value check box is present$/ do

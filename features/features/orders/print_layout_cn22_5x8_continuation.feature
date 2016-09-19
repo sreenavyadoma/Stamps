@@ -50,7 +50,7 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Pause for 2 seconds
     Then Customs: Close Form
-    Then Pause for 3 seconds
+    Then Pause for 2 seconds
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
