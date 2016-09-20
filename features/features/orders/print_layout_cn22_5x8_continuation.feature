@@ -47,15 +47,13 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
     Then Customs: Add Item 30, Description random, Qty 1, Price 3, Origin United States, Tariff 3
     Then Customs: Add Item 31, Description random, Qty 1, Price 3, Origin United States, Tariff 3
     Then Customs: Add Item 32, Description random, Qty 1, Price 3, Origin United States, Tariff 3
-
     Then Pause for 4 seconds
-
-    Then Mail Customs: Set ITN Number to "random"
-
+    Then Customs: Set ITN Number to "random"
     Then Pause for 4 seconds
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Pause for 2 seconds
     Then Customs: Close Form
+
     Then Pause for 2 seconds
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
@@ -63,4 +61,5 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
     Then Print: Select left-side label
     Then Print: Expect left-side label selected
     Then Print: Print
+
     Then Sign out

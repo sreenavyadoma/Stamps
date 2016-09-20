@@ -294,6 +294,7 @@ end
 
 Then /^Details: Expect Service to be \"(.*)\"$/ do |expectation|
   logger.info "Details: Expect Service to be #{expectation}"
+  expectation = web_apps.orders.details.service.abbrev_service_name expectation
   10.times do
     actual_value = web_apps.orders.details.service.text_box.text
     break if actual_value.include? expectation
