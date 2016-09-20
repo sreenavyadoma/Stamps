@@ -1,5 +1,5 @@
-Feature: Customs Form Qty
-  Customs: Qty > 99 is not saved correctly
+Feature: Customs Form Qty > 99 is not saved correctly
+
 
   Background:
     Given I am signed in to Orders
