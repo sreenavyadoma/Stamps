@@ -7,8 +7,8 @@ end
 
 Then /^Mail Sign In: Check Remember Username$/ do
   logger.info "Step: Mail Sign In: Check Remember Username #{ENV["USR"]}"
-  step "I visit postage sign-in page"
-  web_apps.mail.landing_page.sign_in_menu ENV["USR"]
+  step "Visit Mail sign in page"
+  web_apps.mail.landing_page.sign_in_username_check ENV["USR"]
 end
 
 Then /^Mail Sign In: Expect Remember Username is checked$/ do
@@ -31,7 +31,7 @@ Then /^Mail Sign In: Set Remember Username to Unchecked$/ do
   web_apps.mail.landing_page.sign_in
 end
 
-Then /^Postage Sign In: Expect Remember Username is unchecked$/ do
+Then /^Mail Sign In: Expect Remember Username is unchecked$/ do
   logger.info "Postage Sign In: Expect Remember Username is unchecked"
   logger.info "Remembered username status is #{$remember_username_status}"
   expectation = "unchecked"
@@ -45,7 +45,7 @@ Then /^Postage Sign In: Expect Remember Username is unchecked$/ do
   actual_value.should eql expectation
 end
 
-Then /^Postage Sign In: Expect WhatsNewModal to be present$/ do
+Then /^Mail Sign In: Expect WhatsNewModal to be present$/ do
   logger.info "Sign In: Expect Welcome modal"
   @whats_new.present?
 
@@ -57,11 +57,11 @@ Then /^Postage Sign In: Expect WhatsNewModal to be present$/ do
   #expectation.should eql actual_value
 end
 
-Then /^Postage Sign In: Close WhatsNewModal$/ do
+Then /^Mail Sign In: Close WhatsNewModal$/ do
   @whats_new.close
 end
 
-Then /^Postage Sign In: Continue WhatsNewModal$/ do
+Then /^Mail Sign In: Continue WhatsNewModal$/ do
   @whats_new.continue
 end
 
