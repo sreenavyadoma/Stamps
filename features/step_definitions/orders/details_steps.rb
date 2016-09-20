@@ -845,7 +845,7 @@ Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   web_apps.orders.details.insure_for.set value
   20.times do
     web_apps.orders.details.blur_out
-    break if web_apps.orders.details.insure_for.cost > 0
+    break if web_apps.orders.details.insure_for.cost.to_f > 0
   end
 end
 

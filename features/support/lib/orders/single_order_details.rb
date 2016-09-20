@@ -1252,62 +1252,56 @@ module Stamps
       end
 
       class TrackingDropDown < DetailsForm
-        attr_reader :text_box
+        attr_reader :text_box, :drop_down, :cost_label
         def initialize param
           super param
           @text_box ||= TextBoxElement.new browser.text_field(name: 'Tracking')
           @drop_down ||= ElementWrapper.new browser.div css: "div[id^=trackingdroplist-][id$=-trigger-picker]"
+          @cost_label = ElementWrapper.new browser.label css: "label[class*=selected_tracking_cost]"
         end
 
         def select selection
-          box = text_box
-          button = drop_down
           selection_label = ElementWrapper.new browser.td text: selection
           5.times {
             begin
-              button.safe_click unless selection_label.present?
+              drop_down.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
-              sleep 1
               blur_out
-              break if box.text.include? selection
+              break if text_box.text.include? selection
             rescue
               #ignore
             end
           }
-          selection_label
+          text_box.text.should include selection
         end
 
-        def cost *args
-          case args.length
-            when 0
-              cost_label = ElementWrapper.new browser.label css: "label[class*=selected_tracking_cost]"
-              10.times do
-                begin
-                  cost = cost_label.text
-                rescue
-                  #ignore
-                end
-                break if cost.include? "$"
+        def inline_cost tracking
+          selection_label = browser.td text: tracking
+          5.times do
+            begin
+              drop_down.safe_click unless selection_label.present?
+              if selection_label.present?
+                selection_cost = selection_label.parent.tds[1].text
+                logger.info "#{selection_cost}"
+                return selection_cost
               end
-              ParameterHelper.remove_dollar_sign(cost_label.text)
-
-            when 1
-              button = drop_down
-              selection_label = browser.td text: args[0]
-              5.times do
-                begin
-                  button.safe_click unless selection_label.present?
-                  if selection_label.present?
-                    selection_cost = selection_label.parent.tds[1].text
-                    logger.info "#{selection_cost}"
-                    return selection_cost
-                  end
-                rescue
-                  #ignore
-                end
-              end
+            rescue
+              #ignore
+            end
           end
+        end
+
+        def cost
+          10.times do
+            begin
+              cost = cost_label.text
+            rescue
+              #ignore
+            end
+            break if cost.include? "$"
+          end
+          ParameterHelper.remove_dollar_sign cost_label.text
         end
 
         def tooltip selection
@@ -1329,11 +1323,12 @@ module Stamps
       end
 
       class Service < DetailsForm
-        attr_reader :text_box, :drop_down
+        attr_reader :text_box, :drop_down, :cost_label
         def initialize param
           super param
           @text_box ||= TextBoxElement.new (browser.text_field name: "Service"), (browser.div css: "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
           @drop_down ||= ElementWrapper.new browser.div css: "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
+          @cost_label = ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(5)>div>div>label:nth-child(3)")
         end
 
         def abbrev_service_name long_name
@@ -1413,7 +1408,6 @@ module Stamps
         end
 
         def cost
-          cost_label = ElementWrapper.new (browser.label css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(5)>div>div>label:nth-child(3)")
           10.times do
             begin
               cost = cost_label.text
@@ -1948,15 +1942,15 @@ module Stamps
         end
 
         def cost
-          cost_label = ElementWrapper.new (browser.labels css: "label[class*=total_cost]")[0]
+          cost_label = ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm]>div>div>div>label[class*=total_cost]")
           10.times do
             begin
               cost = cost_label.text
-              logger.info "Cost is #{cost}"
+              logger.info "Single Order Details Total Cost is #{cost}"
+              break if cost.include? "$"
             rescue
               #ignore
             end
-            break unless cost.include? "$"
           end
           ParameterHelper.remove_dollar_sign cost_label.text
         end
