@@ -1394,41 +1394,35 @@ module Stamps
           selection_label
         end
 
-        def cost *args
-          case args.length
-            when 0
-              cost_label = ElementWrapper.new (browser.label css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(5)>div>div>label[style*='60px']")
-              10.times do
-                begin
-                  cost = cost_label.text
-                rescue
-                  #ignore
-                end
-                break if cost.include? "$"
+        def inline_cost service_name
+          button = drop_down
+          cost_label = ElementWrapper.new browser.td css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"
+          10.times do
+            begin
+              button.safe_click unless cost_label.present?
+              if cost_label.present?
+                service_cost = ParameterHelper.remove_dollar_sign cost_label.text
+                logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
+                button.safe_click if cost_label.present?
+                return service_cost
               end
-              ParameterHelper.remove_dollar_sign(cost_label.text)
-
-            when 1
-              button = drop_down
-              cost_label = ElementWrapper.new browser.td css: "tr[data-qtip*='#{args[0]}']>td:nth-child(3)"
-              10.times {
-                begin
-                  button.safe_click unless cost_label.present?
-                  if cost_label.present?
-                    service_cost = ParameterHelper.remove_dollar_sign cost_label.text
-                    logger.info "Service Cost for \"#{args[0]}\" is #{service_cost}"
-                    button.safe_click if cost_label.present?
-                    return service_cost
-                  end
-                rescue
-                  #ignore
-                end
-              }
-            else
-              stop_test "Illegal number of arguments for Service Cost"
-
+            rescue
+              #ignore
+            end
           end
-          #click_form
+        end
+
+        def cost
+          cost_label = ElementWrapper.new (browser.label css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(5)>div>div>label:nth-child(3)")
+          10.times do
+            begin
+              cost = cost_label.text
+            rescue
+              #ignore
+            end
+            break if cost.include? "$"
+          end
+          ParameterHelper.remove_dollar_sign(cost_label.text)
         end
 
         def tooltip selection
@@ -1758,7 +1752,7 @@ module Stamps
             end
             break if cost.include? "$"
           end
-          ParameterHelper.remove_dollar_sign(cost_label.text).to_f
+          ParameterHelper.remove_dollar_sign(cost_label.text)
         end
       end
 

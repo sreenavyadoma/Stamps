@@ -910,11 +910,11 @@ end
 
 Then /^Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expectation|
   logger.info "Details: Expect Service Cost inline price for #{service} to be greater than #{expectation}"
-  actual_value = web_apps.orders.details.service.cost service
-  10.times {
+  actual_value = web_apps.orders.details.service.inline_cost service
+  10.times do
     break if actual_value.to_f >= expectation.to_f
-    actual_value = web_apps.orders.details.service.cost service
-  }
+    actual_value = web_apps.orders.details.service.inline_cost service
+  end
   logger.info "Test #{(actual_value.to_f > expectation.to_f)?"Passed":"Failed"}"
   actual_value.to_f.should be >= expectation.to_f
 end
