@@ -50,12 +50,12 @@ print_cc: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=true U
 
 # --------------------------  ORDERS BVT
 orders_bvt_shipping_address_management: --tags @orders_bvt_shipping_address_management --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_ambigious_address: --tags @orders_bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_address_cleansing: --tags @orders_bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_international_shipping: --tags @orders_bvt_international_shipping --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_add_new_order: --tags @orders_bvt_add_new_order --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_printing: --tags @orders_bvt_printing --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_purchasing: --tags @orders_bvt_purchasing --guess VERBOSE=false HEALTHCHECK=true
+orders_bvt_ambigious_address: --tags @orders_bvt_ambigious_address --guess VERBOSE=true HEALTHCHECK=true
+orders_bvt_address_cleansing: --tags @orders_bvt_address_cleansing --guess VERBOSE=true HEALTHCHECK=true
+orders_bvt_international_shipping: --tags @orders_bvt_international_shipping --guess VERBOSE=true HEALTHCHECK=true
+orders_bvt_add_new_order: --tags @orders_bvt_add_new_order --guess VERBOSE=true HEALTHCHECK=true
+orders_bvt_printing: --tags @orders_bvt_printing --guess VERBOSE=true HEALTHCHECK=true
+orders_bvt_purchasing: --tags @orders_bvt_purchasing --guess VERBOSE=true HEALTHCHECK=true
 
 # Stores
 marketplace: --tags @marketplace --guess VERBOSE=false HEALTHCHECK=true
