@@ -221,7 +221,7 @@ Then /^Grid: Expect Recipient to be (.*)$/ do |expectation|
     if @order_id.nil?
       @order_id = web_apps.orders.grid.order_id.row 1
     end
-    5.times do
+    10.times do
       actual = web_apps.orders.grid.recipient.data @order_id
       break if actual.eql? expectation
      end
@@ -381,6 +381,32 @@ Then /^Grid: Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
     logger.info "Test #{(actual==expectation_result)?"Passed":"Failed"}"
     actual.should eql expectation_result
   end unless expectation_result.length == 0
+end
+
+Then /^Grid: Expect Weight\(lbs\) to be (.*)$/ do |expectation|
+  logger.info "Grid: Expect Weight(lbs) to be #{expectation}"
+  begin
+    10.times do
+      actual = web_apps.orders.grid.weight.lbs @order_id
+      break if actual.eql? expectation
+    end
+    actual = web_apps.orders.grid.weight.lbs @order_id
+    logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+    actual.should eql expectation
+  end unless expectation.length == 0
+end
+
+Then /^Grid: Expect Weight\(oz\) to be (.*)$/ do |expectation|
+  logger.info "Grid: Expect Weight(oz) to be #{expectation}"
+  begin
+    10.times do
+      actual = web_apps.orders.grid.weight.oz @order_id
+      break if actual.eql? expectation
+    end
+    actual = web_apps.orders.grid.weight.oz @order_id
+    logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+    actual.should eql expectation
+  end unless expectation.length == 0
 end
 
 Then /^Grid: Expect Qty. to be (.+)$/ do |expectation|

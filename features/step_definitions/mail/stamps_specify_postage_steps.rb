@@ -1,25 +1,25 @@
 # encoding: utf-8
 
-Then /^Postage Stamps: Select Specify Postage Amount/ do
-  logger.info "Select Stamps Specify Postage Amount"
+Then /^Mail Stamps: Select Specify Mail Amount/ do
+  logger.info "Select Stamps Specify Mail Amount"
   web_apps.mail.netstamps.specify_postage_amount
 end
 
-Then /^Postage Stamps: Set Stamp Amount to \$(.*)$/ do |amount|
+Then /^Mail Stamps: Set Stamp Amount to \$(.*)$/ do |amount|
   logger.info "Set Stamps Stamp Amount to $#{amount}"
   web_apps.mail.netstamps.specify_postage_amount.stamp_amount.set amount
 end
 
-Then /^Postage Stamps: Set Specify Postage Service to (.*)/ do |service|
-  logger.info "Envelopes: Set Print Postage Service to: \n #{service}"
+Then /^Mail Stamps: Set Specify Mail Service to (.*)/ do |service|
+  logger.info "Envelopes: Set Print Mail Service to: \n #{service}"
   web_apps.mail.netstamps.specify_service_drop_list.select service
 end
 
-Then /^Postage Stamps: Select Specify Postage Service Media Mail$/ do
-  step "Postage Stamps: Set Specify Postage Service to Media Mail (2 - 3 Days)"
+Then /^Mail Stamps: Select Specify Mail Service Media Mail$/ do
+  step "Mail Stamps: Set Specify Mail Service to Media Mail (2 - 3 Days)"
 end
 
-Then /^Postage Stamps: Select Specify Postage Service First Class$/ do
-  step "Postage Stamps: Set Specify Postage Service to First Class Mail (1 - 3 Days)"
+Then /^Mail Stamps: Select Specify Mail Service First Class$/ do
+  step "Mail Stamps: Set Specify Mail Service to First Class Mail (1 - 3 Days)"
 end
 

@@ -9,7 +9,7 @@ module Stamps
               item_label.element.click
               item_label.element.double_click
             rescue
-              logger.error e.backtrace.join "\n"
+              #ignore
             end
           }
         end
@@ -194,10 +194,15 @@ module Stamps
       end
 
       class AutoSuggestInternational < ShipToInternationalFields
+        attr_reader :auto_suggest_box
+
+        def initialize param
+          super param
+          @auto_suggest_box ||= AutoSuggestPopUp.new param
+        end
 
         def set address
           text_field = self.name
-          auto_suggest_box = AutoSuggestPopUp.new param
 
           20.times{
             begin
@@ -216,257 +221,123 @@ module Stamps
       end
 
       class ShipToInternational < ShipToInternationalFields
-        def auto_suggest
-          AutoSuggestInternational.new param
+        attr_reader :auto_suggest
+        def initialize param
+          super param
+          @auto_suggest ||= AutoSuggestInternational.new param
+        end
+      end
+
+      class AddressNotFound < Browser::Modal
+        attr_reader :window_title
+
+        def initialize param
+          super param
+          @window_title ||= ElementWrapper.new browser.div(text: 'Exact Address Not Found')
+        end
+
+        def present?
+          window_title.present?
+        end
+
+        def wait_until_present *args
+          window_title.safely_wait_until_present *args
+        end
+
+        def row number
+          row = number.to_i<=0?0:number.to_i-1
+          checkbox_field = browser.text_field css: "input[name=addrAmbig][value='#{row}']"
+
+          checkbox = CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
+          checkbox.check
+
+          accept_button = ElementWrapper.new browser.span text: "Accept"
+          accept_button.click_while_present
+        end
+
+        def set partial_address_hash
+          exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
+          form = SingleOrderDetails.new param
+          form.validate_address_link
+          country_drop_down = self.country
+          #single_order_form.expand
+          form.ship_to.set ParameterHelper.format_address(partial_address_hash)
+          30.times {
+            begin
+              item_label.click
+              country_drop_down.drop_down.safe_click
+              country_drop_down.drop_down.safe_click
+              item_label.click
+
+              break if (exact_address_not_found_field.present?) || (form.validate_address_link.present?)
+            rescue
+              #ignore
+            end
+          }
+          #single_order_form.hide_ship_to
+          self
+        end
+      end
+
+      class AmbiguousAddress < ShipToFields
+        attr_reader :address_not_found
+
+        def initialize param
+          super param
+          @address_not_found ||= AddressNotFound.new param
+        end
+
+        def set address
+          text_box = self.text_area
+
+          10.times do
+            text_box.set address
+            blur_out
+            address_not_found.wait_until_present 4
+            return address_not_found if address_not_found.present? if address_not_found.present?
+          end
+          stop_test "Exact Address Not Found module did not appear."
+        end
+
+        def data_error
+          self.text_area.data_error_qtip
+        end
+      end
+
+      class AutoSuggestDomestic < ShipToFields
+        attr_reader :auto_suggest_box
+        def initialize param
+          super param
+          @auto_suggest_box = AutoSuggestPopUp.new param
+        end
+
+        def set address
+          text_area = self.text_area
+
+          20.times{
+            begin
+              text_area.set address
+              return auto_suggest_box if auto_suggest_box.present?
+              text_area.safe_click
+              sleep 1
+              return auto_suggest_box if auto_suggest_box.present?
+              ship_to_area1.safe_double_click
+              return auto_suggest_box if auto_suggest_box.present?
+            rescue
+              #ignore
+            end
+          }
         end
       end
 
       class ShipToDomestic < ShipToFields
+        attr_reader :ambiguous, :auto_suggest
 
-        class AmbiguousAddress < ShipToFields
+        def initialize param
+          super param
 
-          class AddressNotFound < Browser::Modal
-
-            def present?
-              browser.div(text: 'Exact Address Not Found').present?
-            end
-
-            def row number
-              row = number.to_i<=0?0:number.to_i-1
-              checkbox_field = browser.text_field css: "input[name=addrAmbig][value='#{row}']"
-
-              checkbox = CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
-              checkbox.check
-
-              accept_button = ElementWrapper.new browser.span text: "Accept"
-              accept_button.click_while_present
-            end
-
-            def set partial_address_hash
-              exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
-              form = SingleOrderDetails.new param
-              form.validate_address_link
-              country_drop_down = self.country
-              #single_order_form.expand
-              form.ship_to.set ParameterHelper.format_address(partial_address_hash)
-              30.times {
-                begin
-                  item_label.click
-                  country_drop_down.drop_down.safe_click
-                  country_drop_down.drop_down.safe_click
-                  item_label.click
-
-                  break if (exact_address_not_found_field.present?) || (form.validate_address_link.present?)
-                rescue
-                  #ignore
-                end
-              }
-              #single_order_form.hide_ship_to
-              self
-            end
-          end
-
-          def address_not_found
-            AddressNotFound.new param
-          end
-
-          def set address
-            suggested_address_corrections = ElementWrapper.new browser.span(text: "View Suggested Address Corrections")
-
-            exact_address_not_found = address_not_found
-            country_drop_down = self.country
-            text_box = self.text_area
-
-            orders_grid = Orders::Grid::OrdersGrid.new param
-            phone = self.phone
-            email = self.email
-
-            20.times{
-              text_box.send_keys address
-              text_box.set address
-
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              text_box.safe_double_click
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              text_box.safe_double_click
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              country_drop_down.drop_down.safe_click
-              country_drop_down.drop_down.safe_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              country_drop_down.drop_down.safe_click
-              country_drop_down.drop_down.safe_click
-              phone.set ParameterHelper.random_phone
-              phone.send_keys :enter
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              country_drop_down.drop_down.safe_click
-              country_drop_down.drop_down.safe_click
-              phone.send_keys :tab
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              email.set ParameterHelper.random_email
-              email.set ParameterHelper.random_email
-              email.send_keys :enter
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              email.send_keys :tab
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              orders_grid.recipient.scroll_into_view
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.send_keys :tab
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              email.send_keys :enter
-              orders_grid.recipient.scroll_into_view
-              orders_grid.checkbox.scroll_into_view
-              orders_grid.address.scroll_into_view
-              orders_grid.company.scroll_into_view
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              break if exact_address_not_found.present?
-              phone.send_keys :tab
-              break if exact_address_not_found.present?
-              email.send_keys :enter
-              break if exact_address_not_found.present?
-              text_box.safe_double_click
-              break if exact_address_not_found.present?
-              phone.set ParameterHelper.random_phone
-              break if exact_address_not_found.present?
-              email.set ParameterHelper.random_email
-              break if exact_address_not_found.present?
-              phone .safe_double_click
-              break if exact_address_not_found.present?
-              email .safe_double_click
-              break if exact_address_not_found.present?
-              orders_grid.checkbox.scroll_into_view
-              break if exact_address_not_found.present?
-              orders_grid.recipient.scroll_into_view
-              break if exact_address_not_found.present?
-              phone.send_keys :tab
-              break if exact_address_not_found.present?
-            }
-
-            phone.set ""
-            email.set ""
-            if exact_address_not_found.present?
-              exact_address_not_found
-            else
-              stop_test "Exact Address Not Found module did not appear."
-            end
-          end
-
-          def data_error
-            self.text_area.data_error_qtip
-          end
-
-        end
-
-        class AutoSuggestDomestic < ShipToFields
-          def set address
-            text_area = self.text_area
-            auto_suggest_box = AutoSuggestPopUp.new param
-
-            20.times{
-              begin
-                text_area.set address
-                return auto_suggest_box if auto_suggest_box.present?
-                text_area.safe_click
-                sleep 1
-                return auto_suggest_box if auto_suggest_box.present?
-                ship_to_area1.safe_double_click
-                return auto_suggest_box if auto_suggest_box.present?
-              rescue
-                #ignore
-              end
-            }
-          end
-        end
-
-        def ambiguous
-          AmbiguousAddress.new param
-        end
-
-        def auto_suggest
-          AutoSuggestDomestic.new param
+          @ambiguous ||= AmbiguousAddress.new param
+          @auto_suggest ||= AutoSuggestDomestic.new param
         end
 
         def set address
@@ -1320,7 +1191,6 @@ module Stamps
           logger.info "Manage Shipping Address:: row count = #{rows.length.to_i}"
           rows.length.to_i
         end
-
       end
 
       class ShipFromAddress < DetailsForm
@@ -1382,62 +1252,56 @@ module Stamps
       end
 
       class TrackingDropDown < DetailsForm
-        attr_reader :text_box
+        attr_reader :text_box, :drop_down, :cost_label
         def initialize param
           super param
           @text_box ||= TextBoxElement.new browser.text_field(name: 'Tracking')
           @drop_down ||= ElementWrapper.new browser.div css: "div[id^=trackingdroplist-][id$=-trigger-picker]"
+          @cost_label = ElementWrapper.new browser.label css: "label[class*=selected_tracking_cost]"
         end
 
         def select selection
-          box = text_box
-          button = drop_down
           selection_label = ElementWrapper.new browser.td text: selection
           5.times {
             begin
-              button.safe_click unless selection_label.present?
+              drop_down.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
-              sleep 1
               blur_out
-              break if box.text.include? selection
+              break if text_box.text.include? selection
             rescue
               #ignore
             end
           }
-          selection_label
+          text_box.text.should include selection
         end
 
-        def cost *args
-          case args.length
-            when 0
-              cost_label = ElementWrapper.new browser.label css: "label[class*=selected_tracking_cost]"
-              10.times do
-                begin
-                  cost = cost_label.text
-                rescue
-                  #ignore
-                end
-                break if cost.include? "$"
+        def inline_cost tracking
+          selection_label = browser.td text: tracking
+          5.times do
+            begin
+              drop_down.safe_click unless selection_label.present?
+              if selection_label.present?
+                selection_cost = selection_label.parent.tds[1].text
+                logger.info "#{selection_cost}"
+                return selection_cost
               end
-              ParameterHelper.remove_dollar_sign(cost_label.text)
-
-            when 1
-              button = drop_down
-              selection_label = browser.td text: args[0]
-              5.times do
-                begin
-                  button.safe_click unless selection_label.present?
-                  if selection_label.present?
-                    selection_cost = selection_label.parent.tds[1].text
-                    logger.info "#{selection_cost}"
-                    return selection_cost
-                  end
-                rescue
-                  #ignore
-                end
-              end
+            rescue
+              #ignore
+            end
           end
+        end
+
+        def cost
+          10.times do
+            begin
+              cost = cost_label.text
+            rescue
+              #ignore
+            end
+            break if cost.include? "$"
+          end
+          ParameterHelper.remove_dollar_sign cost_label.text
         end
 
         def tooltip selection
@@ -1459,75 +1323,100 @@ module Stamps
       end
 
       class Service < DetailsForm
-        attr_reader :text_box, :drop_down
+        attr_reader :text_box, :drop_down, :cost_label
         def initialize param
           super param
           @text_box ||= TextBoxElement.new (browser.text_field name: "Service"), (browser.div css: "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
           @drop_down ||= ElementWrapper.new browser.div css: "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
+          @cost_label = ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(5)>div>div>label:nth-child(3)")
+        end
+
+        def abbrev_service_name long_name
+          if long_name.include? 'First-Class Mail International'
+            long_name.sub 'First-Class Mail International', 'FCMI'
+          elsif long_name.include? 'First-Class Mail'
+            long_name.sub 'First-Class Mail', 'FCM'
+          elsif long_name.include? 'Priority Mail Express International'
+            long_name.sub 'Priority Mail Express International', 'PMEI'
+          elsif long_name.include? 'Priority Mail International'
+            long_name.sub 'Priority Mail International', 'PMI'
+          elsif long_name.include? 'Priority Mail Express'
+            long_name.sub 'Priority Mail Express', 'PME'
+          elsif long_name.include? 'Priority Mail'
+            long_name.sub 'Priority Mail', 'PM'
+          elsif long_name.include? 'Media Mail'
+            long_name.sub 'Media Mail', 'MM'
+          elsif long_name.include? 'Parcel Select Ground'
+            long_name.sub 'Parcel Select Ground', 'PSG'
+          else # there's no abbreviation for this long name so send it right back.
+            long_name
+          end
         end
 
         def select selection
           logger.info "Select Service #{selection}"
-          selected_service = ""
-          box = text_box
-          button = drop_down
 
+          # This is a temporary fix to support user story
+          # ORDERSAUTO-1026 Sprint 40: Abbreviate Service Names for Selected Service, which is in CC but not SC.
+          if ENV['URL'].downcase.include? 'sc' #abbreviate when in SC
+            abbrev_selection = selection
+          else
+            abbrev_selection = abbrev_service_name selection
+          end
+
+          selected_service = ""
           @details_services ||= data_for(:details_services, {})
 
           selection_label = ElementWrapper.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
+
           20.times do
             begin
-              button.safe_click unless selection_label.present?
+              drop_down.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
               blur_out
-              selected_service = box.text
-              logger.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"success": "service not selected"}"
-              break if selected_service.include? selection
+              selected_service = text_box.text
+              logger.info "Selected Service #{selected_service} - #{(selected_service.include? abbrev_selection)?"success": "service not selected"}"
+              break if selected_service.include? abbrev_selection
             rescue
               #ignore
             end
           end
-          logger.info "#{selection} service selected."
-          raise "Unable to select service #{selection}! Selected service textbox containts #{selected_service}" unless selected_service.include? selection
-          selection_label # selection_label.field.table.tbody.tr.tds[2].text
+          logger.info "#{selected_service} service selected."
+
+          # Test if selected service includes abbreviated selection.
+          selected_service.should include abbrev_selection
+          selection_label
         end
 
-        def cost *args
-          case args.length
-            when 0
-              cost_label = ElementWrapper.new (browser.label css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(5)>div>div>label[style*='60px']")
-              10.times do
-                begin
-                  cost = cost_label.text
-                rescue
-                  #ignore
-                end
-                break if cost.include? "$"
+        def inline_cost service_name
+          button = drop_down
+          cost_label = ElementWrapper.new browser.td css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"
+          10.times do
+            begin
+              button.safe_click unless cost_label.present?
+              if cost_label.present?
+                service_cost = ParameterHelper.remove_dollar_sign cost_label.text
+                logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
+                button.safe_click if cost_label.present?
+                return service_cost
               end
-              ParameterHelper.remove_dollar_sign(cost_label.text)
-
-            when 1
-              button = drop_down
-              cost_label = ElementWrapper.new browser.td css: "tr[data-qtip*='#{args[0]}']>td:nth-child(3)"
-              10.times {
-                begin
-                  button.safe_click unless cost_label.present?
-                  if cost_label.present?
-                    service_cost = ParameterHelper.remove_dollar_sign cost_label.text
-                    logger.info "Service Cost for \"#{args[0]}\" is #{service_cost}"
-                    button.safe_click if cost_label.present?
-                    return service_cost
-                  end
-                rescue
-                  #ignore
-                end
-              }
-            else
-              stop_test "Illegal number of arguments for Service Cost"
-
+            rescue
+              #ignore
+            end
           end
-          #click_form
+        end
+
+        def cost
+          10.times do
+            begin
+              cost = cost_label.text
+            rescue
+              #ignore
+            end
+            break if cost.include? "$"
+          end
+          ParameterHelper.remove_dollar_sign(cost_label.text)
         end
 
         def tooltip selection
@@ -1857,7 +1746,7 @@ module Stamps
             end
             break if cost.include? "$"
           end
-          ParameterHelper.remove_dollar_sign(cost_label.text).to_f
+          ParameterHelper.remove_dollar_sign(cost_label.text)
         end
       end
 
@@ -1946,6 +1835,10 @@ module Stamps
           (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]").size
         end
 
+        def count
+          size
+        end
+
         def store_item
           DetailsStoreItem.new param
         end
@@ -1960,8 +1853,9 @@ module Stamps
             break if size >= number
             add_button.safe_click if number > size
             logger.info "Item Count: #{size}"
+            break if size >= number
           }
-
+          number.should eql size
           DetailsItem.new param, number
         end
       end
@@ -2048,15 +1942,15 @@ module Stamps
         end
 
         def cost
-          cost_label = ElementWrapper.new (browser.labels css: "label[class*=total_cost]")[0]
+          cost_label = ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm]>div>div>div>label[class*=total_cost]")
           10.times do
             begin
               cost = cost_label.text
-              logger.info "Cost is #{cost}"
+              logger.info "Single Order Details Total Cost is #{cost}"
+              break if cost.include? "$"
             rescue
               #ignore
             end
-            break unless cost.include? "$"
           end
           ParameterHelper.remove_dollar_sign cost_label.text
         end
@@ -2078,11 +1972,12 @@ module Stamps
 
       class SingleOrderDetails < DetailsForm
         #todo add more accessors
-        attr_reader :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions,
+        attr_reader :body, :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions,
                     :customs_form, :total, :customs, :item_grid, :reference_no, :collapsed_details
 
         def initialize param
           super param
+          @body = ElementWrapper.new (browser.div css: "div[id^=singleOrderDetailsForm][id$=body]")
           @insure_for ||= InsureFor.new param
           @ship_from ||= ShipFromAddress.new param
           @toolbar ||= DetailsToolbar.new param
@@ -2100,7 +1995,11 @@ module Stamps
         end
 
         def present?
-          (browser.div css: "div[id^=singleOrderDetailsForm][id$=body]").present?
+          body.present?
+        end
+
+        def wait_until_present *args
+          body.safely_wait_until_present *args
         end
 
         def expand
@@ -2145,10 +2044,6 @@ module Stamps
 
         def auto_suggest_location_array
           browser.divs css: 'div[class*=sub-title]'
-        end
-
-        def wait_until_present
-          (ElementWrapper.new browser.label text: "Ship From:").wait_until_present
         end
 
         def pounds_max_value

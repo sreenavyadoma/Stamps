@@ -413,5 +413,4 @@ Then(/^Clear 2nd Question$/) do
   webreg.profile.second_question.clear
 end
 
-end
 

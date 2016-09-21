@@ -17,7 +17,7 @@ Then /^Details: Select Ship-To auto-suggest item (\d+)$/ do |item_number|
   @auto_suggest.select item_number
 end
 
-Then /^Details: Expect auto-uggest pop-up entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
+Then /^Details: Expect auto-suggest pop-up entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
   step "Details: Set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
   @found_item = false
   selection = "#{firstname} #{lastname}, #{company}"

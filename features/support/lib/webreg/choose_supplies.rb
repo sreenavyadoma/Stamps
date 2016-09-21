@@ -1,6 +1,14 @@
 module Stamps
   module WebReg
     class ChooseSupplies < Browser::Modal
+      attr_reader :web_apps, :web_mail
+
+      def initialize param
+        super param
+        @web_apps ||= StampsWebApps.new param
+        @web_mail ||= @web_apps.mail
+      end
+
       def present?
         browser.h1(text: "Customize your Welcome Kit").present?
       end
@@ -16,20 +24,19 @@ module Stamps
         welcome_kit_message = ElementWrapper.new page_header.parent.p
 
         download_page = DownloadPage.new param
-        webapps_landing_page = MailLandingPage.new param
-
+        #@web_apps.mail.landing_page.whats_new_modal
         place_order_button.safely_wait_until_present 10
 
         logger.info "Registration Page has loaded: #{browser.url}"
         logger.info welcome_kit.text
         logger.info welcome_kit_message.text
 
-        15.times do
+        8.times do
           place_order_button.safe_click
           download_page.wait_until_present 2
-          webapps_landing_page.wait_until_present 2
+          web_mail.landing_page.whats_new_modal.wait_until_present 10
           return download_page if download_page.present?
-          return webapps_landing_page if webapps_landing_page.is_url_correct?
+          return web_mail if web_mail.landing_page.whats_new_modal.present?
         end
         nil
       end

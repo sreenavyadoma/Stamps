@@ -93,7 +93,6 @@ module Stamps
       def links
         @links = Links.new param
       end
-
     end
   end
 end

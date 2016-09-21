@@ -1,13 +1,12 @@
 module Stamps
-  module Navigation
+  module Navigation #todo-rob Refactor to WebApps module
     class PurchaseApproved < Browser::Modal
-      attr_reader :ok_button, :window_title, :text_area
+      attr_reader :ok_button, :window_title
 
       def initialize param
         super param
         @ok_button ||= ElementWrapper.new (param.app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
         @window_title ||= ElementWrapper.new browser.div text: "Purchase Approved"
-        @text_area ||= ElementWrapper.new browser.div css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]"
       end
 
       def wait_until_present *args
@@ -16,6 +15,10 @@ module Stamps
 
       def present?
         window_title.present?
+      end
+
+      def text_area
+        ElementWrapper.new (browser.divs css: "div[id^=dialoguemodal-][id$=-innerCt]").last
       end
 
       def text
@@ -53,7 +56,7 @@ module Stamps
         if param.app == :orders
           div = browser.div class: 'sdc-dialoguemodal-confirm-purchase'
         elsif param.app == :mail
-          div = browser.spans(css: "span[id$=-purchasebtn-btnIconEl]").last
+          div = browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
         else
           "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
         end
@@ -228,7 +231,7 @@ module Stamps
           purchase_button.safe_click
           confirm_purchase.wait_until_present 6
         end
-        raise "Confirm Purchase Modal did not open after clicking Purchase button on Buy Postage modal..." unless confirm_purchase.present?
+        raise "Confirm Purchase Modal did not open after clicking Purchase button on Buy Mail modal..." unless confirm_purchase.present?
       end
 
       def edit_payment_method
@@ -333,7 +336,7 @@ module Stamps
     end
 
     class NavigationBar < Browser::Modal
-      attr_reader :balance, :username, :sign_out_link, :signed_in_username
+      attr_reader :balance, :username, :sign_out_link, :signed_in_username, :orders_link, :mail_link, :web_mail, :web_orders
 
       def initialize param
         super param
@@ -341,6 +344,26 @@ module Stamps
         @username ||= UsernameDropDown.new param
         @sign_out_link = ElementWrapper.new browser.link id: "signOutLink"
         @signed_in_username = ElementWrapper.new browser.span id: 'userNameText'
+        @orders_link ||= ElementWrapper.new browser.a text: 'Orders'
+        @mail_link ||= ElementWrapper.new browser.a text: 'Mail'
+        @web_mail ||= WebMail.new param
+        @web_orders ||= WebOrders.new param
+      end
+
+      def orders
+        10.times do
+          orders_link.safe_click
+          web_orders.wait_until_present 8
+          return web_orders if grid.present?
+        end
+      end
+
+      def mail
+        10.times do
+          mail_link.safe_click
+          web_mail.wait_until_present 8
+          return web_mail if grid.present?
+        end
       end
 
       def sign_out

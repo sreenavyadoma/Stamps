@@ -20,9 +20,10 @@ module Stamps
       end
 
       class Toolbar < Browser::Modal
-        attr_reader :print_order, :add, :move
+        attr_reader :print_btn, :add, :move
         def initialize param
-          @print_order ||= PrintOrderButton.new param
+          super param
+          @print_btn ||= PrintOrderButton.new param
           @add ||= AddButton.new param
           @move ||= MoveMenu.new param
         end
@@ -179,35 +180,38 @@ module Stamps
         end
 
         class AddButton < Browser::Modal
-          def button
-            ElementWrapper.new browser.span Orders::Locators::ToolBar::add
+          attr_reader :button, :order_details, :initializing_db, :nav_bar
+
+          def initialize param
+            super param
+            @button ||= ElementWrapper.new browser.span text: 'Add'
+            @initializing_db ||= ElementWrapper.new browser.div text: "Initializing Order Database"
+          end
+
+          def order_details
+            click
           end
 
           def click
-            order_details = Orders::Details::SingleOrderDetails.new param
+            details = Orders::Details::SingleOrderDetails.new param
             grid = Orders::Grid::OrdersGrid.new param
-            add_button = button
-
-            # Initializing Order Database
-            initializing_db = ElementWrapper.new browser.div text: "Initializing Order Database"
             nav_bar = Navigation::NavigationBar.new param
 
-            sleep 2
             grid.checkbox.uncheck 1
 
             old_id = grid.order_id.row 1
             logger.info "Row 1 Order ID #{old_id}"
             15.times do |count|
               begin
-                add_button.safe_click
-                sleep 2
+                button.safe_click
+                details.wait_until_present 7
                 if initializing_db.present?
                   logger.info initializing_db.text
                 else
-                  if order_details.present?
+                  if details.present?
                     new_id = grid.order_id.row 1
-                    logger.info "Add #{(order_details.present?)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
-                    return order_details
+                    logger.info "Add #{(details.present?)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
+                    return details
                   end
                 end
               rescue
@@ -221,16 +225,15 @@ module Stamps
               stop_test message
             end
 
-            stop_test "Unable to Toolbar: Adds!" unless order_details.present?
+            stop_test "Unable to Toolbar: Adds!" unless details.present?
           end
 
           def tooltip
-            btn = button
             tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
-            btn.element.hover
-            btn.element.hover
+            button.element.hover
+            button.element.hover
             15.times do
-              btn.element.hover
+              button.element.hover
               sleep 1
               if tooltip_element.present?
                 logger.info tooltip_element.text
@@ -241,11 +244,12 @@ module Stamps
         end
 
         class PrintOrderButton < Browser::Modal
-          attr_reader :button, :print_modal
+          attr_reader :print_order_btn, :orders_print_modal, :incomplete_order
           def initialize param
             super param
-            @print_modal = Orders::PrintModal.new param
-            @button ||= ElementWrapper.new ((browser.spans css: "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
+            @orders_print_modal = Stamps::Orders::PrintModal.new param
+            @print_order_btn ||= ElementWrapper.new ((browser.spans css: "div[id^=toolbar-][id$=-targetEl]>a>span>span>span")[1])
+            @incomplete_order = IncompleteOrderErrorModal.new param
           end
 
           def tooltip
@@ -263,19 +267,22 @@ module Stamps
             end
           end
 
-          def click
-            open_window print_modal
+          def print_modal
+            modal = open_window orders_print_modal
+            if modal.instance_of? Orders::Toolbar::IncompleteOrderErrorModal
+              logger.info modal.error_message
+              modal.ok
+              modal.error_message.should eql ""
+            end
+            modal
           end
 
           def open_window window
             return window if window.present?
 
-            incomplete_order = IncompleteOrderErrorModal.new param
+            print_order_btn.click
 
-            print = button
-
-            print.click
-            sleep 1
+            window.wait_until_present 2
             return window if window.present?
             return incomplete_order if incomplete_order.present?
             return incomplete_order if incomplete_order.present?
@@ -290,14 +297,11 @@ module Stamps
               usps_terms.click_i_agree_button
             end
 
-            #order_grid = Orders::Grid::OrdersGrid.new param
-            #checked_rows_cache = order_grid.checkbox.checked_rows
-
             naws_plugin_error = NawsPluginError.new param
             error_connecting_to_plugin = ErrorConnectingToPlugin.new param
             install_plugin_error = ErrorInstallPlugin.new param
 
-            20.times do
+            10.times do
               begin
                 return window if window.present?
                 if error_connecting_to_plugin.present?
@@ -317,7 +321,7 @@ module Stamps
                 end
 
                 return window if window.present?
-                print.click
+                print_order_btn.click
                 sleep 1
               rescue
                 #ignore
@@ -329,8 +333,7 @@ module Stamps
               end
             end
 
-            return window if window.present?
-            #stop_test "Unable to open Print Window.  There might be errors in printing OR order is not ready for printing.  Check your TestHelper."
+            window if window.present?
           end
 
           def print_expecting_error *args

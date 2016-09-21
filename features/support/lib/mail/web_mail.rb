@@ -18,6 +18,14 @@ module Stamps
         @roll ||= Roll.new param
       end
 
+      def present?
+        toolbar.present?
+      end
+
+      def wait_until_present *args
+        toolbar.wait_until_present *args
+      end
+
       def print_on selection
         drop_down.select selection
         if selection.include? 'Shipping Label'
@@ -31,7 +39,7 @@ module Stamps
         elsif selection.include? 'Roll'
           roll
         else
-          raise "#{selection} is not a valid Print Postage Print-On Selection"
+          raise "#{selection} is not a valid Print Mail Print-On Selection"
         end
       end
 

@@ -1,6 +1,6 @@
 
 Then /^Volusion: Visit Page$/ do
-  step "I launched the default browser" if browser.nil?
+  step "I launched default browser" if browser.nil?
   volusion.visit
 end
 
@@ -16,33 +16,33 @@ Then /^Volusion Login:  Set Password to (.*)$/ do |password|
   volusion.password.set password
 end
 
-Then /^Volusion New to Postage Stamps: Set email address to (.*)$/ do |email|
+Then /^Volusion New to Mail Stamps: Set email address to (.*)$/ do |email|
   @volusion_email = (email.downcase == "random")? "#{ParameterHelper.rand_username}@mailinator.com":email
   @volusion_reg.email.set @volusion_email
 end
 
-Then /^Volusion New to Postage Stamps: Type email address again$/ do
+Then /^Volusion New to Mail Stamps: Type email address again$/ do
   @volusion_reg.email_again.set @volusion_email
 end
 
-Then /^Volusion New to Postage Stamps: Set new password to (.*)$/ do |password|
+Then /^Volusion New to Mail Stamps: Set new password to (.*)$/ do |password|
   @volusion_password = password
   @volusion_reg.password.set @volusion_password
 end
 
-Then /^Volusion New to Postage Stamps: Type new password again$/ do
+Then /^Volusion New to Mail Stamps: Type new password again$/ do
   @volusion_reg.password_again.set @volusion_password
 end
 
-Then /^Volusion New to Postage Stamps: Check receive newsletter$/ do
+Then /^Volusion New to Mail Stamps: Check receive newsletter$/ do
   @volusion_reg.receive_newsletter.check
 end
 
-Then /^Volusion New to Postage Stamps: Uncheck receive newsletter$/ do
+Then /^Volusion New to Mail Stamps: Uncheck receive newsletter$/ do
   @volusion_reg.receive_newsletter.uncheck
 end
 
-Then /^Volusion New to Postage Stamps: Click Continue$/ do
+Then /^Volusion New to Mail Stamps: Click Continue$/ do
   @volusion_shipping_address = @volusion_reg.continue
 end
 

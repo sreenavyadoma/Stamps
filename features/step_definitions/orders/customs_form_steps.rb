@@ -83,6 +83,7 @@ Then /^Customs: Expect Item (\d+) Unit Price to be (.*)$/ do |item_number, expec
   actual_value.should eql expectation
 end
 
+=begin
 Then /^Customs: Expect Item (\d+) Pounds to be (\d+)$/ do |item_number, expectation|
   logger.info "Customs: Expect Item #{item_number} Pounds to be #{expectation}"
   item = @customs_item_grid.item item_number.to_i
@@ -99,6 +100,7 @@ Then /^Customs: Expect Item (\d+) Ounces to be (\d+)$/ do |item_number, expectat
   logger.info "Item #{item_number} Ounces Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
+=end
 
 Then /^Customs: Expect Item (\d+) Origin Country to be (.*)$/ do |item_number, expectation|
   logger.info "Customs: Expect Item #{item_number} Origin Country to be #{expectation}"
@@ -120,6 +122,14 @@ end
 Then /^Details: Edit Customs Form$/ do
   logger.info "Details: Edit Customs Form"
   @customs_form = @order_details.customs.edit_form
+  expectation = "Customs Information Form is present"
+  expectation = "Customs Information Form is NOT present" unless @customs_form.present?
+  expectation.should eql "Customs Information Form is present"
+end
+
+
+Then /^Customs: Open Modal$/ do
+  step "Details: Edit Customs Form"
 end
 
 Then /^Customs: Set Package Contents to \"(.+)\"$/ do |value|
@@ -259,7 +269,7 @@ Then /^Customs: Expect I agree to the USPS Privacy Act Statement is unchecked$/ 
   actual_value.should eql expectation
 end
 
-Then /^Customs: Close Form$/ do
+Then /^Customs: Close Modal$/ do
   logger.info "Closing customs form"
   @customs_form.close
   logger.info "Customs form #{(@customs_form.present?)?'closed':'is still open.'}"

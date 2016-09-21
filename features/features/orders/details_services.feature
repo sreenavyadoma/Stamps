@@ -168,7 +168,7 @@ Feature:  Orders Service Selection
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin Brazil, Tariff 1
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
 
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
     Then Details: Expect Service to be First-Class Mail International Large Envelope/Flat

@@ -1,13 +1,13 @@
 
-Feature:  Changing Print Date Causes Page to get Stuck on "Verifying Postage Rates"Steps
+Feature:  Changing Print Date Causes Page to get Stuck on "Verifying Mail Rates"Steps
   Open Print dialogger.
   Change Ship Date to a new value.
-  Page gets stuck on "Verifying Postage Rates" forever. User has to reload the page. Note that the newly-selected value is correctly saved.
+  Page gets stuck on "Verifying Mail Rates" forever. User has to reload the page. Note that the newly-selected value is correctly saved.
   Test Strategy
   Only test in one browser/OS.
   Open Print dialog
   Change Ship Date value
-  Verify that the page does NOT get stuck on "Verifying Postage Rates" forever.
+  Verify that the page does NOT get stuck on "Verifying Mail Rates" forever.
   Close the Print dialog
   Re-open the Print dialog
   Verify that Ship Date still shows the value you selected.

@@ -34,5 +34,5 @@ Feature: Cuba Internal Transaction Number Required
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs: Set ITN Number to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Sign out

@@ -16,7 +16,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To address to
@@ -28,7 +28,7 @@ Feature:  As a batch shipper, I want to be able to print multiple labels
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Grid: Check row 1
     Then Grid: Check row 2
     Then Print: Open Modal

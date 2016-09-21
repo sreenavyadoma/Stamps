@@ -75,7 +75,7 @@ module Stamps
           end
 
           def checkbox
-            checkbox_field = browser.text_field id: "sdc-resetfieldswin-weightcheckbox-inputEl"
+            checkbox_field = browser.span id: "sdc-resetfieldswin-weightcheckbox-displayEl"
             verify_field = checkbox_field.parent.parent.parent
             attribute_name = "class"
             attribute_value = "checked"
@@ -220,7 +220,7 @@ module Stamps
           end
 
           def checkbox
-            checkbox_field = browser.text_field id: "sdc-resetfieldswin-dimensionscheckbox-inputEl"
+            checkbox_field = browser.input id: "sdc-resetfieldswin-dimensionscheckbox-inputEl"
             verify_field = checkbox_field.parent.parent.parent
             attribute_name = "class"
             attribute_value = "checked"
@@ -561,7 +561,7 @@ module Stamps
       end
 
       def services
-        checkbox_field = browser.text_field css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>span"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -581,7 +581,7 @@ module Stamps
       end
 
       def print_confirm
-        checkbox_field = browser.text_field css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>span"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -598,7 +598,7 @@ module Stamps
       end
 
       def usps_terms
-        checkbox_field = browser.text_field css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>span"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -606,7 +606,7 @@ module Stamps
       end
 
       def contacts
-        checkbox_field = browser.text_field css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>span"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"
@@ -614,7 +614,7 @@ module Stamps
       end
 
       def shipments
-        checkbox_field = browser.text_field css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>input"
+        checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>span"
         verify_field = checkbox_field.parent.parent.parent
         attribute_name = "class"
         attribute_value = "checked"

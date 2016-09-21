@@ -22,7 +22,7 @@ Feature:  BVT International Shipping
     Then Customs: Set Internal Transaction Number to "Not required"
     Then Customs: Set More Info to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
 
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"

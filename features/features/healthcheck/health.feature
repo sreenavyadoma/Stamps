@@ -2,7 +2,7 @@
 Feature: Health Check
 
   Background:
-    Given I launched the default browser
+    Given I launched default browser
 
   @healthcheck
   Scenario: Healthcheck for Orders & Web Postage
@@ -10,3 +10,4 @@ Feature: Health Check
     Then Health Check: Print - Address Book
     Then Health Check: OR - Reports
     Then Health Check: OR - Postage Tools
+

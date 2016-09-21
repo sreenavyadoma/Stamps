@@ -1,7 +1,8 @@
 Given /^Orders: Visit Sign-in page$/ do
   logger.info "Orders: Visit Sign-in page"
   web_apps.param.app = :orders
-  web_apps.visit :orders
+  result = web_apps.visit :orders
+  result.should include "stamps.com"
 end
 
 Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
@@ -26,7 +27,7 @@ end
 
 Given /^I am signed in to Orders$/ do
   logger.info "I am signed in to Orders"
-  step "I launched the default browser"
+  step "I launched default browser"
   if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
@@ -38,7 +39,7 @@ end
 
 Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
   logger.info "I am signed in to Orders as #{username}/#{password}"
-  step "I launched the default browser"
+  step "I launched default browser"
   if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
@@ -75,5 +76,9 @@ end
 
 Then /^Sign out$/ do
   logger.info "Sign out"
-  web_apps.navigation_bar.username.sign_out
+  begin
+    web_apps.navigation_bar.username.sign_out
+  rescue
+    #do nothing
+  end
 end

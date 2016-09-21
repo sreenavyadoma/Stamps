@@ -31,9 +31,6 @@ module Stamps
 
       module ToolBar
         class << self
-          def add
-            {text: 'Add'}
-          end
 
           def move
             {text: "Move"}

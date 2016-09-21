@@ -1,10 +1,10 @@
 
-Then /^Postage: Set Ship-To country to (.*)/ do |country|
-  logger.info "Postage: Set Ship-To country to #{country}"
+Then /^Mail: Set Ship-To country to (.*)/ do |country|
+  logger.info "Mail: Set Ship-To country to #{country}"
   web_apps.mail.ship_to.country.select country
 end
 
-Then /^Postage International: Set Ship-To Name to \"(.*)\"$/ do |value|
+Then /^Mail International: Set Ship-To Name to \"(.*)\"$/ do |value|
   logger.info "Set Ship-To Name to #{value}"
   field = web_apps.mail.ship_to.name
   if value.length == 0
@@ -14,7 +14,7 @@ Then /^Postage International: Set Ship-To Name to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Postage International: Set Ship-To Company to \"(.*)\"$/ do |value|
+Then /^Mail International: Set Ship-To Company to \"(.*)\"$/ do |value|
   logger.info "Set Ship-To Company to #{value}"
   field = web_apps.mail.ship_to.company
   if value.length == 0
@@ -24,7 +24,7 @@ Then /^Postage International: Set Ship-To Company to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Postage International: Set Ship-To Address 1 to \"(.*)\"$/ do |value|
+Then /^Mail International: Set Ship-To Address 1 to \"(.*)\"$/ do |value|
   logger.info "Set Ship-To Address 1 to #{value}"
   field = web_apps.mail.ship_to.address_1
   if value.length == 0
@@ -34,7 +34,7 @@ Then /^Postage International: Set Ship-To Address 1 to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Postage International: Set Ship-To Address 2 to \"(.*)\"$/ do |value|
+Then /^Mail International: Set Ship-To Address 2 to \"(.*)\"$/ do |value|
   logger.info "Set Ship-To Address 2 to #{value}"
   field = web_apps.mail.ship_to.address_2
 
@@ -45,7 +45,7 @@ Then /^Postage International: Set Ship-To Address 2 to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Postage International: Set Ship-To City to \"(.*)\"$/ do |value|
+Then /^Mail International: Set Ship-To City to \"(.*)\"$/ do |value|
   logger.info "Set Ship-To City to #{value}"
   field = web_apps.mail.ship_to.city
   if value.length == 0
@@ -55,7 +55,7 @@ Then /^Postage International: Set Ship-To City to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Postage International: Set Ship-To Province to \"(.*)\"$/ do |value|
+Then /^Mail International: Set Ship-To Province to \"(.*)\"$/ do |value|
   logger.info "Set Ship-To Province to #{value}"
   field = web_apps.mail.ship_to.province
   if value.length == 0
@@ -65,7 +65,7 @@ Then /^Postage International: Set Ship-To Province to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Postage International: Set Ship-To Postal Code to \"(.*)\"$/ do |value|
+Then /^Mail International: Set Ship-To Postal Code to \"(.*)\"$/ do |value|
   logger.info "Set Ship-To Postal Code to #{value}"
   field = web_apps.mail.ship_to.postal_code
   if value.length == 0
@@ -75,7 +75,7 @@ Then /^Postage International: Set Ship-To Postal Code to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Postage International: Set Ship-To Phone to \"(.*)\"$/ do |value|
+Then /^Mail International: Set Ship-To Phone to \"(.*)\"$/ do |value|
   logger.info "Set Ship-To Phone to #{value}"
   field = web_apps.mail.ship_to.phone
   if value.length == 0

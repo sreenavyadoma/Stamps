@@ -60,19 +60,19 @@ module Stamps
           browser.divs css: "div[class*='unprintedLabel']"
         end
 
-        def left_label_div
+        def left_label
           label_divs[0]
         end
 
-        def right_label_div
+        def right_label
           label_divs[1]
         end
 
         def left
           10.times{
             begin
-              element_helper.safe_click left_label_div
-              return true if label_selected? left_label_div
+              element_helper.safe_click left_label
+              return true if label_selected? left_label
             rescue
               #ignore
             end
@@ -83,8 +83,8 @@ module Stamps
         def right
           10.times{
             begin
-              element_helper.safe_click right_label_div
-              return true if label_selected? right_label_div
+              element_helper.safe_click right_label
+              return true if label_selected? right_label
             rescue
               #ignore
             end
@@ -93,11 +93,11 @@ module Stamps
         end
 
         def left_selected?
-          label_selected? left_label_div
+          label_selected? left_label
         end
 
         def right_selected?
-          label_selected? right_label_div
+          label_selected? right_label
         end
 
         def label_selected? div
@@ -110,7 +110,7 @@ module Stamps
         end
 
         def default_selected?
-          label_selected? left_label_div
+          label_selected? left_label
         end
       end
     end

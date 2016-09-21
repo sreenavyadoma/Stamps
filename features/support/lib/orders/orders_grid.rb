@@ -56,7 +56,7 @@ module Stamps
 
         def grid_text_by_id column, order_id
           scroll column
-          row = row_number(order_id)
+          row = row_number order_id
           scroll column
           logger.info "Retrieving #{GRID_COLUMNS[column]} for Order ID #{order_id}...."
           data = grid_text column, row
@@ -92,6 +92,7 @@ module Stamps
         end
 
         def grid_text column, row
+          scroll :order_total
           scroll column
           data = element_helper.text grid_field(column, row)
           logger.info "Column #{GRID_COLUMNS[column]} Row #{row}: #{data}"
@@ -99,7 +100,9 @@ module Stamps
         end
 
         def grid_field column_number, row
-          css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div"
+          column = column_number(column_number).to_s
+          row = row.to_s
+          css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row})>tbody>tr>td:nth-child(#{column})>div"
           browser.div css: css
         end
 
@@ -271,6 +274,8 @@ module Stamps
         end
 
         def data order_id
+          scroll_into_view
+          sleep 1
           grid_text_by_id :recipient, order_id
         end
 
@@ -788,7 +793,7 @@ module Stamps
         end
       end
 
-      class CheckBox < Column
+      class GridCheckBox < Column
         private
         def checkbox_header
           scroll_into_view
@@ -943,8 +948,47 @@ module Stamps
       class OrdersGrid < Browser::Modal
         #todo attr_reader for OrdersGrid
 
-        def anchor_element
-          ElementWrapper.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
+        attr_reader :anchor_element, :column, :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient,
+                    :company, :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
+                    :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed,
+                    :ship_date, :tracking_no
+
+        def initialize param
+          super param
+
+          @anchor_element ||= ElementWrapper.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
+
+          @column ||= GridColumns.new param
+          @checkbox ||= GridCheckBox.new param
+          @store ||= Store.new param
+          @order_id ||= OrderId.new param
+          @ship_cost ||= ShipCost.new param
+          @order_date ||= OrderDate.new param
+          @age ||= Age.new param
+          @recipient ||= Recipient.new param
+          @company ||= Company.new param
+          @address ||= Address.new param
+          @city ||= City.new param
+          @state ||= State.new param
+          @zip ||= Zip.new param
+          @country ||= Country.new param
+          @phone ||= Phone.new param
+          @email ||= Email.new param
+          @qty ||= Qty.new param
+          @item_sku ||= ItemSKU.new param
+          @item_name ||= ItemName.new param
+          @ship_from ||= ShipFrom.new param
+          @service ||= Service.new param
+          @weight ||= Weight.new param
+          @insured_value ||= InsuredValue.new param
+          @reference_no ||= ReferenceNo.new param
+          @cost_code ||= CostCode.new param
+          @order_status ||= OrderStatus.new param
+          @date_printed ||= DatePrinted.new param
+          @ship_date ||= ShipDate.new param
+          @tracking_no ||= Tracking.new param
+          @order_total ||= OrderTotal.new param
+          @toolbar ||= Orders::Toolbar::Toolbar.new param
         end
 
         def present?
@@ -954,131 +998,6 @@ module Stamps
         def wait_until_present *args
           anchor_element.safely_wait_until_present *args
         end
-
-        def column
-          GridColumns.new param
-        end
-
-        def checkbox
-          Grid::CheckBox.new param
-        end
-
-        def store
-          Grid::Store.new param
-        end
-
-        def order_id
-          Grid::OrderId.new param
-        end
-
-        def ship_cost
-          Grid::ShipCost.new param
-        end
-
-        def age
-          Grid::Age.new param
-        end
-
-        def order_date
-          Grid::OrderDate.new param
-        end
-
-        def recipient
-          Grid::Recipient.new param
-        end
-
-        def company
-          Grid::Company.new param
-        end
-
-        def address
-          Grid::Address.new param
-        end
-
-        def city
-          Grid::City.new param
-        end
-
-        def state
-          Grid::State.new param
-        end
-
-        def zip
-          Grid::Zip.new param
-        end
-
-        def country
-          Grid::Country.new param
-        end
-
-        def phone
-          Grid::Phone.new param
-        end
-
-        def email
-          Grid::Email.new param
-        end
-
-        def qty
-          Grid::Qty.new param
-        end
-
-        def item_sku
-          Grid::ItemSKU.new param
-        end
-
-        def item_name
-          Grid::ItemName.new param
-        end
-
-        def ship_from
-          Grid::ShipFrom.new param
-        end
-
-        def service
-          Grid::Service.new param
-        end
-
-        def weight
-          Grid::Weight.new param
-        end
-
-        def insured_value
-          Grid::InsuredValue.new param
-        end
-
-        def reference_no
-          Grid::ReferenceNo.new param
-        end
-
-        def cost_code
-          Grid::CostCode.new param
-        end
-
-        def order_status
-          Grid::OrderStatus.new param
-        end
-
-        def date_printed
-          Grid::DatePrinted.new param
-        end
-
-        def ship_date
-          Grid::ShipDate.new param
-        end
-
-        def tracking_no
-          Grid::Tracking.new param
-        end
-
-        def order_total
-          Grid::OrderTotal.new param
-        end
-
-        def toolbar
-          Orders::Toolbar::Toolbar.new param
-        end
-
       end
     end
   end

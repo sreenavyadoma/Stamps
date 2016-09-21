@@ -1,6 +1,6 @@
 Feature: WebReg
   Background:
-    Given I launched the default browser
+    Given I launched default browser
 
   @webreg_orders
   Scenario:
@@ -36,13 +36,11 @@ Feature: WebReg
     Then Registration Choose Supplies: Place Order
     Then Registration Result: Wait for Download Page or Webpostage page to load
 
-    Then Health Check: Print - Web Batch
+    #Then Health Check: Print - Web Batch
 
-    Then WebReg Profile:  Send username to standard out
-
-    Then Pause for 2 seconds
+    Then Navigation Bar: Orders
     Then Orders: Visit Sign-in page
-    Then Orders: Sign-in as new user random/pass111
+    #Then Orders: Sign-in as new user random/pass111
     Then Orders: Expect Marketplace modal is present
     Then Orders: Close Marketplace modal
     Then Toolbar: Add

@@ -29,6 +29,7 @@ end
 Then /^Details: Add Item (\d+)$/ do |item_number|
   logger.info "Details: Add Item #{item_number}"
   @details_line_item = web_apps.orders.details.item_grid.item item_number.to_i
+  #web_apps.orders.details.item_grid.size.should eql item_number
 end
 
 Then /^Details: Set Qty to (\d+)$/ do |value|
@@ -131,161 +132,142 @@ end
 
 Then /^Details: Set International Ship-To Name to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To Name to #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.name.send_keys :enter
+    web_apps.orders.details.ship_to.international.name.send_keys :enter
   else
-    @international_ship_to.name.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    web_apps.orders.details.ship_to.international.name.set ((value.downcase == "random")? ParameterHelper.random_name : value)
   end
 end
 
 
 Then /^Details: Set International Ship-To Company to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To Company to #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.company.send_keys :enter
+    web_apps.orders.details.ship_to.international.company.send_keys :enter
   else
-    @international_ship_to.company.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    web_apps.orders.details.ship_to.international.company.set ((value.downcase == "random")? ParameterHelper.random_name : value)
   end
 end
 
 
 Then /^Details: Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To Address 1 to #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.address_1.send_keys :enter
+    web_apps.orders.details.ship_to.international.address_1.send_keys :enter
   else
-    @international_ship_to.address_1.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    web_apps.orders.details.ship_to.international.address_1.set ((value.downcase == "random")? ParameterHelper.random_name : value)
   end
 end
 
 
 Then /^Details: Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To Address 2 to #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.address_2.send_keys :enter
+    web_apps.orders.details.ship_to.international.address_2.send_keys :enter
   else
-    @international_ship_to.address_2.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    web_apps.orders.details.ship_to.international.address_2.set ((value.downcase == "random")? ParameterHelper.random_name : value)
   end
 end
 
 
 Then /^Details: Set International Ship-To City to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To City to #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.city.send_keys :enter
+    web_apps.orders.details.ship_to.international.city.send_keys :enter
   else
-    @international_ship_to.city.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    web_apps.orders.details.ship_to.international.city.set ((value.downcase == "random")? ParameterHelper.random_name : value)
   end
 end
 
-
 Then /^Details: Set International Ship-To Province to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To Province to #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.province.send_keys :enter
+    web_apps.orders.details.ship_to.international.province.send_keys :enter
   else
-    @international_ship_to.province.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    web_apps.orders.details.ship_to.international.province.set ((value.downcase == "random")? ParameterHelper.random_name : value)
   end
 end
 
 Then /^Details: Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To Postal Code to #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.postal_code.send_keys :enter
+    web_apps.orders.details.ship_to.international.postal_code.send_keys :enter
   else
-    @international_ship_to.postal_code.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    web_apps.orders.details.ship_to.international.postal_code.set ((value.downcase == "random")? ParameterHelper.random_name : value)
   end
 end
 
-
 Then /^Details: Set International Ship-To Phone to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To Phone to #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.phone.send_keys :enter
+    web_apps.orders.details.ship_to.international.phone.send_keys :enter
   else
-    @international_ship_to.phone.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    web_apps.orders.details.ship_to.international.phone.set ((value.downcase == "random")? ParameterHelper.random_name : value)
   end
 end
 
 
 Then /^Details: Set International Ship-To Email to \"(.*)\"$/ do |value|
   logger.info "Details: Set International Ship-To Email to #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
   if value.length == 0
-    @international_ship_to.email.send_keys :enter
+    web_apps.orders.details.ship_to.international.email.send_keys :enter
   else
-    @international_ship_to.email.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    web_apps.orders.details.ship_to.international.email.set ((value.downcase == "random")? ParameterHelper.random_name : value)
   end
 end
 
 Then /^Details: Expect International Ship-To Name to be (.*)/ do |value|
   logger.info "Details: Expect International Ship-To Name to be #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
-  actual_value = @international_ship_to.name.text
+  actual_value = web_apps.orders.details.ship_to.international.name.text
   logger.info "Test #{(actual_value == value)?"Passed":"Failed"}"
   actual_value.should eql value
 end
 
 Then /^Details: Expect International Ship-To Company to be (.*)/ do |value|
   logger.info "Details: Expect International Ship-To Company to be #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
-  actual_value = @international_ship_to.company.text
+  actual_value = web_apps.orders.details.ship_to.international.company.text
   logger.info "Test #{(actual_value == value)?"Passed":"Failed"}"
   actual_value.should eql value
 end
 
 Then /^Details: Expect International Ship-To Address 1 to be (.*)/ do |value|
   logger.info "Details: Expect International Ship-To Address 1 to be #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
-  actual_value = @international_ship_to.address_1.text
+  actual_value = web_apps.orders.details.ship_to.international.address_1.text
   logger.info "Test #{(actual_value == value)?"Passed":"Failed"}"
   actual_value.should eql value
 end
 
 Then /^Details: Expect International Ship-To Address 2 to be (.*)/ do |value|
   logger.info "Details: Expect International Ship-To address 2 to be #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
-  actual_value = @international_ship_to.address_2.text
+  actual_value = web_apps.orders.details.ship_to.international.address_2.text
   logger.info "Test #{(actual_value == value)?"Passed":"Failed"}"
   actual_value.should eql value
 end
 
 Then /^Details: Expect International Ship-To Province to be (.*)/ do |value|
   logger.info "Details: Expect International Ship-To province to be #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
-  actual_value = @international_ship_to.province.text
+  actual_value = web_apps.orders.details.ship_to.international.province.text
   logger.info "Test #{(actual_value == value)?"Passed":"Failed"}"
   actual_value.should eql value
 end
 
 Then /^Details: Expect International Ship-To Postal Code to be (.*)/ do |value|
   logger.info "Details: Expect International Ship-To postal code to be #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
-  actual_value = @international_ship_to.postal_code.text
+  actual_value = web_apps.orders.details.ship_to.international.postal_code.text
   logger.info "Test #{(actual_value == value)?"Passed":"Failed"}"
   actual_value.should eql value
 end
 
 Then /^Details: Expect International Ship-To Phone to be (.*)/ do |value|
   logger.info "Details: Expect International Ship-To phone to be #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
-  actual_value = @international_ship_to.phone.text
+  actual_value = web_apps.orders.details.ship_to.international.phone.text
   logger.info "Test #{(actual_value == value)?"Passed":"Failed"}"
   actual_value.should eql value
 end
 
 Then /^Details: Expect International Ship-To Email to be (.*)/ do |value|
   logger.info "Details: Expect International Ship-To Email to be #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
-  actual_value = @international_ship_to.email.text
+  actual_value = web_apps.orders.details.ship_to.international.email.text
   logger.info "Test #{(actual_value == value)?"Passed":"Failed"}"
   actual_value.should eql value
 end
@@ -299,24 +281,22 @@ end
 
 Then /^Details: Expect International Ship-To City to be (.*)/ do |value|
   logger.info "Details: Expect International Ship-To City to be #{value}"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
-  actual_value = @international_ship_to.city.text
+  actual_value = web_apps.orders.details.ship_to.international.city.text
   logger.info "Test #{(actual_value == value)?"Passed":"Failed"}"
   actual_value.should eql value
 end
 
 Then /^Details: Expect International Address fields are visible$/ do
   logger.info "Details: Expect International Address fields are visible"
-  @international_ship_to = web_apps.orders.details.ship_to.international if @international_ship_to.nil?
-  @international_ship_to.name.present?.should be true
-  @international_ship_to.company.present?.should be true
-  @international_ship_to.address_1.present?.should be true
-  @international_ship_to.address_2.present?.should be true
-  @international_ship_to.city.present?.should be true
-  @international_ship_to.province.present?.should be true
-  @international_ship_to.postal_code.present?.should be true
-  @international_ship_to.phone.present?.should be true
-  @international_ship_to.email.present?.should be true
+  web_apps.orders.details.ship_to.international.name.present?.should be true
+  web_apps.orders.details.ship_to.international.company.present?.should be true
+  web_apps.orders.details.ship_to.international.address_1.present?.should be true
+  web_apps.orders.details.ship_to.international.address_2.present?.should be true
+  web_apps.orders.details.ship_to.international.city.present?.should be true
+  web_apps.orders.details.ship_to.international.province.present?.should be true
+  web_apps.orders.details.ship_to.international.postal_code.present?.should be true
+  web_apps.orders.details.ship_to.international.phone.present?.should be true
+  web_apps.orders.details.ship_to.international.email.present?.should be true
 end
 
 Then /^Details: Expect Domestic Ship-To fields are hidden$/ do
@@ -457,8 +437,8 @@ end
 
 Then /^Details: Set Weight to (\d+) lbs (\d+) oz$/ do |pounds, ounces|
   logger.info "Details: Set Weight to #{pounds} Pounds and #{ounces} Ounces"
-  web_apps.orders.details.weight.lbs.set pounds
-  web_apps.orders.details.weight.oz.set ounces
+  step "Details: Set Pounds to #{pounds}"
+  step "Details: Set Ounces to #{ounces}"
 end
 
 Then /^Details: Set Pounds to (.*)$/ do |value|
@@ -466,15 +446,15 @@ Then /^Details: Set Pounds to (.*)$/ do |value|
   web_apps.orders.details.weight.lbs.set value
 end
 
+Then /^Details: Set Ounces to (.*)$/ do |value|
+  logger.info "Details: Set Ounces to \"#{value}\""
+  web_apps.orders.details.weight.oz.set value
+end
+
 Then /^Details: Blur out of details form$/ do
   web_apps.orders.details.blur_out
   web_apps.orders.details.blur_out
   web_apps.orders.details.blur_out
-end
-
-Then /^Details: Set Ounces to (.*)$/ do |value|
-  logger.info "Details: Set Ounces to \"#{value}\""
-  web_apps.orders.details.weight.oz.set value
 end
 
 Then /^Details: Set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
@@ -668,9 +648,9 @@ end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
   logger.info "Expect \"Exact Address Not Found\" module to appear"
-  address_not_found_module = web_apps.orders.details.ship_to.address.ambiguous.address_not_found
-  logger.info "Test #{(address_not_found_module.present?)?"Passed":"Failed"}"
-  address_not_found_module.present?.should be true
+  address_not_found = web_apps.orders.details.ship_to.address.ambiguous.address_not_found
+  logger.info "Test #{(address_not_found.present?)?"Passed":"Failed"}"
+  address_not_found.window_title.text.should eql "Exact Address Not Found"
 end
 
 Then /^Details: Set Phone to (.*)$/ do |phone|
@@ -865,7 +845,7 @@ Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   web_apps.orders.details.insure_for.set value
   20.times do
     web_apps.orders.details.blur_out
-    break if web_apps.orders.details.insure_for.cost > 0
+    break if web_apps.orders.details.insure_for.cost.to_f > 0
   end
 end
 
@@ -930,11 +910,11 @@ end
 
 Then /^Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" to be greater than \$([0-9.]*)$/ do |service, expectation|
   logger.info "Details: Expect Service Cost inline price for #{service} to be greater than #{expectation}"
-  actual_value = web_apps.orders.details.service.cost service
-  10.times {
+  actual_value = web_apps.orders.details.service.inline_cost service
+  10.times do
     break if actual_value.to_f >= expectation.to_f
-    actual_value = web_apps.orders.details.service.cost service
-  }
+    actual_value = web_apps.orders.details.service.inline_cost service
+  end
   logger.info "Test #{(actual_value.to_f > expectation.to_f)?"Passed":"Failed"}"
   actual_value.to_f.should be >= expectation.to_f
 end

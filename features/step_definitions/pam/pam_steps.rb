@@ -149,18 +149,18 @@ Then /^PAM ACH Purchase: Set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
   end
 end
 
-Then /^PAM Customer Profile: Get Available Postage Amount$/ do
-  logger.info "PAM Customer Profile: Get Available Postage Amount"
+Then /^PAM Customer Profile: Get Available Mail Amount$/ do
+  logger.info "PAM Customer Profile: Get Available Mail Amount"
 
-  logger.message "PAM: Available Postage ############################"
-  logger.message "PAM: Available Postage ############################"
-  logger.message "PAM: Available Postage ############################"
-  logger.message "PAM: Available Postage $#{@customer_profile.available_postage.text}"
-  logger.message "PAM: Available Postage $#{@customer_profile.available_postage.text}"
-  logger.message "PAM: Available Postage $#{@customer_profile.available_postage.text}"
-  logger.message "PAM: Available Postage ############################"
-  logger.message "PAM: Available Postage ############################"
-  logger.message "PAM: Available Postage ############################"
+  logger.message "PAM: Available Mail ############################"
+  logger.message "PAM: Available Mail ############################"
+  logger.message "PAM: Available Mail ############################"
+  logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  logger.message "PAM: Available Mail ############################"
+  logger.message "PAM: Available Mail ############################"
+  logger.message "PAM: Available Mail ############################"
 end
 
 Then /^PAM Customer Profile: Click  AppCap Overrides link$/ do
@@ -173,8 +173,8 @@ Then /^PAM Customer Profile: Click  AppCap Overrides link$/ do
   end
 end
 
-Then /^PAM AppCap Overrides: Set Internet Postage Printing to Always On$/ do
-  logger.info "PAM AppCap Overrides: Set Internet Postage Printing to Always On"
+Then /^PAM AppCap Overrides: Set Internet Mail Printing to Always On$/ do
+  logger.info "PAM AppCap Overrides: Set Internet Mail Printing to Always On"
   if @pam_customer_profile_found
     @appcapp_overrides.internet_postage_printing.always_on
   else
@@ -182,8 +182,8 @@ Then /^PAM AppCap Overrides: Set Internet Postage Printing to Always On$/ do
   end
 end
 
-Then /^PAM AppCap Overrides: Set Internet Postage Printing to Always Off$/ do
-  logger.info "PAM AppCap Overrides: Set Internet Postage Printing to Always Off"
+Then /^PAM AppCap Overrides: Set Internet Mail Printing to Always Off$/ do
+  logger.info "PAM AppCap Overrides: Set Internet Mail Printing to Always Off"
   if @pam_customer_profile_found
     @appcapp_overrides.internet_postage_printing.always_off
   else
@@ -191,8 +191,8 @@ Then /^PAM AppCap Overrides: Set Internet Postage Printing to Always Off$/ do
   end
 end
 
-Then /^PAM AppCap Overrides: Set Internet Postage Printing to No Override$/ do
-  logger.info "PAM AppCap Overrides: Set Internet Postage Printing to No Override"
+Then /^PAM AppCap Overrides: Set Internet Mail Printing to No Override$/ do
+  logger.info "PAM AppCap Overrides: Set Internet Mail Printing to No Override"
   if @pam_customer_profile_found
     @appcapp_overrides.internet_postage_printing.no_override
   else

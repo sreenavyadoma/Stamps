@@ -120,24 +120,23 @@ module Stamps
         super param
         @specify_postage ||= SpecifyPostageAmount.new param
         @calculate_postage||= CalculatePostageAmount.new param
-        @serial ||= TextBoxElement.new browser.text_field id: "sdc-mainpanel-nsserialtextfield-inputEl"
+        @serial ||= TextBoxElement.new browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")
         @calculate_service_drop_list||= MailServiceDropList.new param
         @specify_service_drop_list ||= SpecifyServiceDropList.new param
         @form_view ||= StampsFormView.new param
-
         @specify_radio ||= CheckboxElement.new (browser.input id: 'sdc-mainpanel-calculatepostageradio-inputEl'), (browser.table id: 'sdc-mainpanel-calculatepostageradio'), "class", "checked"
         @calculate_radio ||= CheckboxElement.new (browser.input id: "sdc-mainpanel-specifypostageradio-inputEl"), (browser.table id: 'sdc-mainpanel-specifypostageradio'), "class", "checked"
       end
 
       def calculate_postage_amount
         specify_radio.check
-        raise "Unabled to select radio button Specify Postage Amount" unless specify_radio.checked?
+        raise "Unabled to select radio button Specify Mail Amount" unless specify_radio.checked?
         calculate_postage
       end
 
       def specify_postage_amount
         calculate_radio.check
-        raise "Unabled to select radio button Specify Postage Amount" unless calculate_radio.checked?
+        raise "Unabled to select radio button Specify Mail Amount" unless calculate_radio.checked?
         specify_postage
       end
     end
