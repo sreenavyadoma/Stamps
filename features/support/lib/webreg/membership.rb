@@ -1,4 +1,3 @@
-module Stamps
   module WebReg
     class State < Browser::Modal
       def select state
@@ -257,7 +256,17 @@ module Stamps
       def wyoming
         select "WY Wyoming"
       end
+
+      #Added by Galina
+       def help_element
+          browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(6)>div>span")
+        end
+
+        def help_block
+          element_helper.text help_element
+        end
     end
+
 
     class ExpirationMonth < Browser::Modal
       def select month
@@ -317,6 +326,15 @@ module Stamps
         select "Dec (12)"
       end
 
+      #Added by Galina
+      def help_element
+        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(3)>div>span")
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+
     end
 
     class ExpirationYear < Browser::Modal
@@ -349,6 +367,15 @@ module Stamps
           checkbox.clear
           break unless checkbox.set?
         end
+      end
+
+      # Added by Galina
+      def help_element
+        browser.span(css: "li[class*=webreg_terms]>div>div>div>div>span.help-block")
+      end
+
+      def help_block
+        element_helper.text help_element
       end
     end
 
@@ -411,49 +438,431 @@ module Stamps
       end
     end
 
+
     class MembershipPhone < TextBoxElement
+
+      def has_error?
+        help_element.present?
+      end
+
+      # Added by Galina
       def help_element
-        browser.span css: 'li.webreg_personalinfo>div>div:nth-child(8)>div>span'
+        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(8)>div>span")
       end
 
       def help_block
         element_helper.text help_element
       end
+    end
 
-      def has_error?
-        help_element.present?
+    #Added by Galina
+    class MembershipFirstName < TextBoxElement
+      def help_element
+        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(1)>div>span")
+      end
+
+      def help_block
+        element_helper.text help_element
       end
     end
+
+    #Added by Galina
+    class MembershipLastName < TextBoxElement
+      def help_element
+        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(2)>div>span")
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+    end
+
+    #Added by Galina
+    class MembershipAddress < TextBoxElement
+      def help_element
+        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(4)>div>span")
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+    end
+
+    #Added by Galina
+    class MembershipCity < TextBoxElement
+      def help_element
+        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(5)>div>span")
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+    end
+
+    #Added by Galina
+    class MembershipCardHolderName < TextBoxElement
+      def help_element
+        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(1)>div>span")
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+    end
+
+    #Added by Galina
+    class MembershipCardName< TextBoxElement
+      def help_element
+        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(2)>div>span")
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+    end
+
+    #Added by Galina
+    class MembershipBillingAddress < TextBoxElement
+      def help_element
+        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(6)>div>span")
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+    end
+
+    #Added by Galina
+    class MembershipBillingCity< TextBoxElement
+      def help_element
+        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(7)>div>span")
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+    end
+
+    #Added by Galina
+    class BillingState < Browser::Modal
+      def select state
+        begin
+          browser.select_list(:id, "billingState").option(text: state).when_present.select
+          browser.select_list(:id, "billingState").option(text: state).when_present.select
+        rescue
+          #ignore
+        end
+      end
+
+      def armed_forces_americas
+        select "AA Armed Forces Americas"
+      end
+
+      def armed_forces
+        select "AE Armed Forces"
+      end
+
+      def alaska
+        select "AK Alaska"
+      end
+
+      def alabama
+        select "AL Alabama"
+      end
+
+      def armed_forces_pacific
+        select "AP Armed Forces Pacific"
+      end
+
+      def arkansa
+        select "AR Arkansas"
+      end
+
+      def american_samoa
+        select "AS American Samoa"
+      end
+
+      def arizona
+        select "AZ Arizona"
+      end
+
+      def california
+        select "CA California"
+      end
+
+      def colorado
+        select "CO Colorado"
+      end
+
+      def connecticut
+        select "CT Connecticut"
+      end
+
+      def canal_zone
+        select "CZ Canal Zone"
+      end
+
+      def district_of_columbia
+        select "DC District of Columbia"
+      end
+
+      def delaware
+        select "DE Delaware"
+      end
+
+      def florida
+        select "FL Florida"
+      end
+
+      def micronesia
+        select "FM Micronesia"
+      end
+
+      def georgia
+        select "GA Georgia"
+      end
+
+      def guam
+        select "GU Guam"
+      end
+
+      def hawaii
+        select "HI Hawaii"
+      end
+
+      def iowa
+        select "IA Iowa"
+      end
+
+      def idaho
+        select "ID Idaho"
+      end
+
+      def illinois
+        select "IL Illinois"
+      end
+
+      def kansas
+        select "KS Kansas"
+      end
+
+      def kentucky
+        select "KY Kentucky"
+      end
+
+      def louisiana
+        select "LA Louisiana"
+      end
+
+      def massachusetts
+        select "MA Massachusetts"
+      end
+
+      def maryland
+        select "MD Maryland"
+      end
+
+      def maine
+        select "ME Maine"
+      end
+
+      def marshall_islands
+        select "MH Marshall Islands"
+      end
+
+      def michigan
+        select "MI Michigan"
+      end
+
+      def minnesota
+        select "MN Minnesota"
+      end
+
+      def missouri
+        select "MO Missouri"
+      end
+
+      def mariana_islands
+        select "MP Mariana Islands"
+      end
+
+      def mississippi
+        select "MS Mississippi"
+      end
+
+      def montana
+        select "MT Montana"
+      end
+
+      def north_carolina
+        select "NC North Carolina"
+      end
+
+      def north_dakota
+        select "ND North Dakota"
+      end
+
+      def nebraska
+        select "NE Nebraska"
+      end
+
+      def new_hampshire
+        select "NH New Hampshire"
+      end
+
+      def new_jersey
+        select "NJ New Jersey"
+      end
+
+      def new_mexico
+        select "NM New Mexico"
+      end
+
+      def nevada
+        select "NV Nevada"
+      end
+
+      def new_york
+        select "NY New York<"
+      end
+
+      def ohio
+        select "OH Ohio"
+      end
+
+      def oklahoma
+        select "OK Oklahoma"
+      end
+
+      def oregon
+        select "OR Oregon"
+      end
+
+      def pennsylvania
+        select "PA Pennsylvania"
+      end
+
+      def puerto_rico
+        select "PR Puerto Rico"
+      end
+
+      def palau
+        select "PW Palau"
+      end
+
+      def rhode_island
+        select "RI Rhode Island"
+      end
+
+      def south_carolina
+        select "SC South Carolina"
+      end
+
+      def south_dakota
+        select "SD South Dakota"
+      end
+
+      def tennessee
+        select "TN Tennessee"
+      end
+
+      def texas
+        select "TX Texas"
+      end
+
+      def utah
+        select "UT Utah"
+      end
+
+      def virginia
+        select "VA Virginia"
+      end
+
+      def virgin_islands
+        select "VI Virgin Islands"
+      end
+
+      def vermont
+        select "VT Vermont"
+      end
+
+      def washington
+        select "WA Washington"
+      end
+
+      def wisconsin
+        select "WI Wisconsin"
+      end
+
+      def west_virginia
+        select "WV West Virginia"
+      end
+
+      def wyoming
+        select "WY Wyoming"
+      end
+
+      #Added by Galina
+      def help_element
+        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(8)>div>span")
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+    end
+
+    #Added by Galina
+    class MembershipBillingZip < TextBoxElement
+      def help_element
+      browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(9)>div>span")
+      end
+
+      def help_block
+      element_helper.text help_element
+      end
+    end
+
 
     class Membership < Browser::Modal
 
       attr_reader :first_name, :last_name, :company, :address, :city, :state, :zip, :phone, :ext, :card_holder_name,
                   :card_number, :expiration_month, :expiration_year, :billing_same_as_mailing, :terms_and_conditions, :back,
-                  :submit_button, :supplies, :userid_taken, :download_page, :membership_error
+                  :submit_button, :supplies, :userid_taken, :download_page, :membership_error, :billing_address,
+                  :billing_city, :billing_state, :billing_zip
 
       def initialize param
         super param
 
         @phone ||= MembershipPhone.new browser.text_field(id: "phone")
 
-        @first_name ||= TextBoxElement.new browser.text_field(id: "firstName")
-        @last_name ||= TextBoxElement.new browser.text_field(id: "lastName")
+        @first_name ||= MembershipFirstName.new browser.text_field(id: "firstName")
+        @last_name ||= MembershipLastName.new browser.text_field(id: "lastName")
         @company ||= TextBoxElement.new browser.text_field(id: "companyName")
-        @address ||= TextBoxElement.new browser.text_field(id: "street")
-        @city ||= TextBoxElement.new browser.text_field(id: "city")
+        @address ||= MembershipAddress.new browser.text_field(id: "street")
+        @city ||= MembershipCity.new browser.text_field(id: "city")
         @state ||= State.new param
         @zip ||= TextBoxElement.new browser.text_field(id: "zip")
         @ext ||= TextBoxElement.new browser.text_field(id: "extension")
-        @card_holder_name ||= TextBoxElement.new browser.text_field(id: "ccName")
-        @card_number ||= TextBoxElement.new browser.text_field(id: "ccNumber")
+        @card_holder_name ||= MembershipCardHolderName.new browser.text_field(id: "ccName")
+        @card_number ||= MembershipCardName.new browser.text_field(id: "ccNumber")
         @expiration_month ||= ExpirationMonth.new param
         @expiration_year ||= ExpirationYear.new param
         checkbox_field ||= browser.input id: "useMailingAddressForBilling"
         @billing_same_as_mailing ||= CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
+
+        #Added by Galina
+        @billing_address ||= MembershipBillingAddress.new browser.text_field(id: "billingStreet")
+        @billing_city ||= MembershipBillingAddress.new browser.text_field(id: "City")
+        @billing_state ||= BillingState.new param
+        @billing_zip ||= MembershipBillingZip.new browser.text_field(id: "billingZip")
+
         @terms_and_conditions ||= TermsAndConditions.new param
         @back ||= ElementWrapper.new browser.button(id: "prev")
 
-        @submit_button = ElementWrapper.new browser.button(text: "Submit")
+
+
+        @submit_button = ElementWrapper.new browser.button(text: "Continue") #Change by Galina from "Submit"
         @supplies = ChooseSupplies.new param
         @userid_taken = UserIdTaken.new param
         @download_page = DownloadPage.new param
@@ -493,8 +902,15 @@ module Stamps
           return userid_taken if userid_taken.present?
           return supplies if supplies.present?
           return download_page if download_page.present?
-        end
+         end
+
+      end
+
+      # Added by Galina
+      def tab
+        browser.send_keys([:tab])
+        sleep(1)
       end
     end
   end
-end
+

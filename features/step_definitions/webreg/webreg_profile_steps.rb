@@ -25,7 +25,7 @@ Then /^WebReg Profile: Set User ID and Email to (.*)$/ do |usr|
   else
     @username = usr
   end
-  
+
   logger.info "WebReg Profile: Set User ID and Email to #{@username}"
   step "WebReg Profile: Set Email to #{@username}@mailinator.com"
   step "WebReg Profile: Set User ID to #{@username}"
@@ -43,7 +43,14 @@ end
 
 Then /^WebReg Profile: Set Password to (.*)$/ do |password|
   logger.info "WebReg Profile: Set Password to #{password}"
-  webreg.profile.password.set password
+  case password.to_sym
+    when :tab
+      webreg.profile.password.send_keys :tab
+    when :enter
+      webreg.profile.password.send_keys :enter
+    else
+      webreg.profile.password.set password
+  end
 end
 
 Then /^WebReg Profile: Set Re-Type password to (.*)$/ do |password|
@@ -296,3 +303,108 @@ Then /^Registration Result: Wait for Download Page or Webpostage page to load$/ 
       #do nothing
   end
 end
+
+Then(/^WebReg Profile: Expect Email Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Profile: Expect Email Help Block to be #{expectation}"
+  help_text = webreg.profile.email.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Profile: Expect User ID Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Profile: Expect User ID Help Block to be #{expectation}"
+  help_text = webreg.profile.user_id.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Profile: Expect Password Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Profile: Expect Password Help Block to be #{expectation}"
+  help_text = webreg.profile.password.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Profile: Expect Re\-Type Password Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Profile: Expect Re-Type Help Block to be #{expectation}"
+  help_text = webreg.profile.password.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Profile: Expect How will you use Stamps\.com Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Profile: Expect How will you use Stamps.com Help Block to be #{expectation}"
+  help_text = webreg.profile.usage_type.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Profile: Expect How did you hear about us\? Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Profile: How did you hear about us? Help Block to be #{expectation}"
+  referrer_name = webreg.profile.referrer_name
+  help_text = webreg.profile.referrer_name.help_block if referrer_name.present?
+  help_text.should eql expectation if referrer_name.present?
+end
+
+Then(/^WebReg Profile: Expect 1st Question Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Profile: Expect 1st Question Help Block to be #{expectation}"
+  help_text = webreg.profile.first_question.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Profile: Expect 1st Answer Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Profile: Expect 1st Answer Help Block to be #{expectation}"
+  help_text = webreg.profile.first_answer.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Profile: Expect 2nd Question Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Profile: Expect 2n Question Help Block to be #{expectation}"
+  help_text = webreg.profile.second_question.help_block
+  help_text.should eql expectation
+end
+
+Then(/^^WebReg Profile: Expect 2nd Answer Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Profile: Expect 2nd Answer Help Block to be #{expectation}"
+  help_text = webreg.profile.second_answer.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Profile: Tab from Email$/) do
+  logger.info "WebReg Profile: Tab from Email"
+  browser.send_keys([:tab])
+end
+
+Then(/^WebReg Profile: Tab$/) do
+  logger.info "WebReg Profile: Tab"
+  webreg.profile.tab
+end
+
+Then(/^Clear Email Field$/) do
+  logger.info "Clear Email Field"
+  webreg.profile.email.clear
+end
+
+Then(/^Clear User ID Field$/) do
+  logger.info "Clear User ID Field"
+  webreg.profile.user_id.clear
+end
+
+Then(/^Clear How will you use Stamps\.com\?$/) do
+  logger.info "Clear How will you use Stamps.com?"
+  webreg.profile.usage_type.clear
+end
+
+
+Then(/^Clear How did you hear about us\?/) do
+  logger.info "Clear How did you hear about us?"
+  webreg.profile.referrer_name.clear if webreg.profile.referrer_name.present?
+end
+
+
+
+Then(/^Clear 1st Question$/) do
+  logger.info "Clear 1st Question Selection"
+  webreg.profile.first_question.clear
+end
+
+Then(/^Clear 2nd Question$/) do
+  logger.info "Clear 1st Question Selection"
+  webreg.profile.second_question.clear
+end
+

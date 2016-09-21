@@ -114,4 +114,5 @@ module Stamps
     @orders_object ||= Modal.new param
     @orders_object.stop_test error_message
   end
+
 end

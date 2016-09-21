@@ -16,3 +16,9 @@ end
 Then /^Pause for (\d+) seconds?$/ do |seconds|
   sleep seconds.to_i
 end
+
+Then(/^Close the browser and clear cookies$/) do #Clear Cookies
+  test_helper.clear_cookies
+end
+
+
