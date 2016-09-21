@@ -40,7 +40,7 @@ Feature: Auto-Calculate Customs Form Weight
     Then Customs: Set Item Tarriff to 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
 
-    Then Customs: Close Form
+    Then Customs: Close Modal
 
     Then Grid: Expect Weight to be 0 lbs. 4 oz.
     Then Grid: Expect Weight(lbs) to be 0

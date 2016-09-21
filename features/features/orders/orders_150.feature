@@ -256,7 +256,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
@@ -277,7 +277,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
@@ -530,7 +530,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
@@ -551,7 +551,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
@@ -803,7 +803,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
@@ -824,7 +824,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
@@ -1077,7 +1077,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
@@ -1098,7 +1098,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
@@ -1351,7 +1351,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
@@ -1372,7 +1372,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail
@@ -1625,7 +1625,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
@@ -1646,7 +1646,7 @@ Feature: 150 orders
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     Then Sign out

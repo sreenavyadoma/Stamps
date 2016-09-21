@@ -268,7 +268,7 @@ Feature: Test Development
     Then Expect Customs Form Internal Transaction # to be "Required"
     Then Customs: Set ITN Number to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Sign out
 
   @_dev_rob
@@ -287,7 +287,7 @@ Feature: Test Development
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Print: Print
 
   @rob_dev_int
@@ -303,7 +303,7 @@ Feature: Test Development
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
@@ -316,5 +316,5 @@ Feature: Test Development
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service Priority Mail International Flat Rate Envelope

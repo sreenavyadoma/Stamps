@@ -19,7 +19,7 @@ Feature: 25 orders
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
 
     Then Toolbar: Add
@@ -33,7 +33,7 @@ Feature: 25 orders
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service Priority Mail International Flat Rate Envelope
 
     # First Class Mail

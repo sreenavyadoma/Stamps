@@ -16,7 +16,7 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then Print: Set Printer to "factory"

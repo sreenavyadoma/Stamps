@@ -10,7 +10,7 @@ module Stamps
         @styles ||= PageStyles.new param
         @details ||= Orders::Details::SingleOrderDetails.new param
         @filter ||= Orders::FilterPanel.new param
-        @multi_order ||= Orders::Details::MultiOrder.new param
+        @multi_order ||= Orders::Details::MultiOrderDetails.new param
       end
 
       def present?

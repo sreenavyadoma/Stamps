@@ -13,11 +13,14 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
       | MM   | 8.5x11  | 118 E Marine Corps Dr | Hagatna | GU    | 96910-5126 | United States | random | random |
     Then Details: Set Weight to 1 lbs 2 oz
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
-    Then Details: Edit Customs Form
+
+    Then Customs: Open Modal
     Then Customs: Set Package Contents to "Other"
     Then Customs: Add Item 1, Description random, Qty 1, Price 25, Origin United States, Tariff 10
+    Then Customs: Set More Info to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
+
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"

@@ -30,7 +30,7 @@ Feature:  Customs Form Data Tooltip Error
     Then Customs: Expect Unit Price Tooltip Error to be Value must be greater than 0
     Then Customs: Add Item 1, Description random, Qty 1, Price 50, Origin United States, Tariff 100
     Then Pause for 2 seconds
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Sign out
 
 

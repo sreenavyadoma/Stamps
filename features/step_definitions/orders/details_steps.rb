@@ -437,8 +437,8 @@ end
 
 Then /^Details: Set Weight to (\d+) lbs (\d+) oz$/ do |pounds, ounces|
   logger.info "Details: Set Weight to #{pounds} Pounds and #{ounces} Ounces"
-  web_apps.orders.details.weight.lbs.set pounds
-  web_apps.orders.details.weight.oz.set ounces
+  step "Details: Set Pounds to #{pounds}"
+  step "Details: Set Ounces to #{ounces}"
 end
 
 Then /^Details: Set Pounds to (.*)$/ do |value|
@@ -446,15 +446,15 @@ Then /^Details: Set Pounds to (.*)$/ do |value|
   web_apps.orders.details.weight.lbs.set value
 end
 
+Then /^Details: Set Ounces to (.*)$/ do |value|
+  logger.info "Details: Set Ounces to \"#{value}\""
+  web_apps.orders.details.weight.oz.set value
+end
+
 Then /^Details: Blur out of details form$/ do
   web_apps.orders.details.blur_out
   web_apps.orders.details.blur_out
   web_apps.orders.details.blur_out
-end
-
-Then /^Details: Set Ounces to (.*)$/ do |value|
-  logger.info "Details: Set Ounces to \"#{value}\""
-  web_apps.orders.details.weight.oz.set value
 end
 
 Then /^Details: Set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|

@@ -1,10 +1,9 @@
 Then /^Toolbar: Add$/ do
   logger.info "Toolbar: Add"
-  logger.info "Toolbar: Add"
-  @old_balance = web_apps.navigation_bar.balance.amount
   web_apps.orders.grid.checkbox.uncheck 1
   @order_details = web_apps.orders.toolbar.add.click
   @order_id = @order_details.toolbar.order_id
+  step "Save Shipping Costs Data"
   logger.info "New Order ID #{@order_id}"
   @awaiting_shipment_count = web_apps.orders.filter.awaiting_shipment_count
   @item_count = 0

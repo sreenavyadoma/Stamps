@@ -44,7 +44,7 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
 
-    Then Customs: Close Form
+    Then Customs: Close Modal
 
     Then Details: Edit Customs Form
     Then Pause for 2 seconds
@@ -54,6 +54,6 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then Customs: Expect Item 2 Description to be item 2
     Then Customs: Expect Item 2 Quantity to be 99
 
-    Then Customs: Close Form
+    Then Customs: Close Modal
 
     Then Sign out
