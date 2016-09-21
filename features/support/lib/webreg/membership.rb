@@ -1,3 +1,4 @@
+module Stamps
   module WebReg
     class State < Browser::Modal
       def select state
@@ -824,6 +825,20 @@
     end
 
 
+    class MembershipCardNumber < TextBoxElement
+      def help_element
+        browser.span css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span'
+      end
+
+      def help_block
+        element_helper.text help_element
+      end
+
+      def has_error?
+        help_element.present?
+      end
+    end
+
     class Membership < Browser::Modal
 
       attr_reader :first_name, :last_name, :company, :address, :city, :state, :zip, :phone, :ext, :card_holder_name,
@@ -846,6 +861,8 @@
         @ext ||= TextBoxElement.new browser.text_field(id: "extension")
         @card_holder_name ||= MembershipCardHolderName.new browser.text_field(id: "ccName")
         @card_number ||= MembershipCardName.new browser.text_field(id: "ccNumber")
+        @card_holder_name ||= TextBoxElement.new browser.text_field(id: "ccName")
+        @card_number ||= MembershipCardNumber.new browser.text_field(id: "ccNumber")
         @expiration_month ||= ExpirationMonth.new param
         @expiration_year ||= ExpirationYear.new param
         checkbox_field ||= browser.input id: "useMailingAddressForBilling"
@@ -889,8 +906,11 @@
         connection_failed = WebRegSecureConnectionFailed.new param
 
         submit_button.safely_wait_until_present 6
-        20.times do
+        raise "Submit button is not present on Membership Page! Check your test then file a defect." unless submit_button.present?
+        30.times do
+          sleep 1
           submit_button.safe_click
+          submit_button.send_keys :enter
           loading.safely_wait_while_present 3
           page_header.safely_wait_until_present 3
 

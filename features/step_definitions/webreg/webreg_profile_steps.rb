@@ -1,6 +1,7 @@
 Then /^WebReg Profile: Load Registration Page$/ do
   logger.info "WebReg Profile: Load Registration Page"
-  webreg.visit
+  status = webreg.visit
+  status.should eql "Success"
 end
 
 Then /^WebReg Profile:  Continue to Mailing Information Page$/ do
@@ -25,7 +26,7 @@ Then /^WebReg Profile: Set User ID and Email to (.*)$/ do |usr|
   else
     @username = usr
   end
-
+  
   logger.info "WebReg Profile: Set User ID and Email to #{@username}"
   step "WebReg Profile: Set Email to #{@username}@mailinator.com"
   step "WebReg Profile: Set User ID to #{@username}"
@@ -33,7 +34,9 @@ end
 
 Then /^WebReg Profile: Set Email to (.*)$/ do |email|
   logger.info "WebReg Profile: Set Email to #{email}"
-  webreg.profile.email.wait_until_present.set email
+  webreg.profile.email.safely_wait_until_present 10
+  webreg.profile.email.present?.should be true
+  webreg.profile.email.set email
 end
 
 Then /^WebReg Profile: Set User ID to (.*)$/ do |user_id|
@@ -51,6 +54,8 @@ Then /^WebReg Profile: Set Password to (.*)$/ do |password|
     else
       webreg.profile.password.set password
   end
+  @password = password
+  webreg.profile.password.set password
 end
 
 Then /^WebReg Profile: Set Re-Type password to (.*)$/ do |password|
@@ -286,7 +291,7 @@ Then /^Registration Choose Supplies: Place Order$/ do
       raise "USER ID IS TAKEN!  #{message}"
     when WebReg::ChooseSupplies
       if @webreg_result.present?
-        @webreg_result_page = @webreg_result.place_order
+        @web_mail = @webreg_result.place_order
       end
     else
       raise "Unable to Place Order. Supplies page did not load"
@@ -294,11 +299,11 @@ Then /^Registration Choose Supplies: Place Order$/ do
 end
 
 Then /^Registration Result: Wait for Download Page or Webpostage page to load$/ do
-  case @webreg_result_page
-    when MailLandingPage
-      @webreg_result_page.wait_until_url_loads
+  case @web_mail
+    when WebMail
+      @web_mail.landing_page.sign_in_modal.whats_new_modal.wait_until_present 5
     when WebReg::DownloadPage
-      @webreg_result_page.wait_until_present 10
+      @web_mail.landing_page.wait_until_present 10
     else
       #do nothing
   end
@@ -406,5 +411,7 @@ end
 Then(/^Clear 2nd Question$/) do
   logger.info "Clear 1st Question Selection"
   webreg.profile.second_question.clear
+end
+
 end
 

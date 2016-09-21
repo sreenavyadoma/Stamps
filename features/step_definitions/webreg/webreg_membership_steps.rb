@@ -363,8 +363,9 @@ Then /^WebReg Membership: Set Cardholder name to (.*)$/ do |var|
 end
 
 Then /^WebReg Membership: Set Card number to (.*)$/ do |var|
-  logger.info "WebReg Membership: Set Card number to #{var}"
-  webreg.profile.membership.card_number.set var
+  @cc_card_number = var
+  logger.info "WebReg Membership: Set Card number to #{@cc_card_number}"
+  webreg.profile.membership.card_number.set @cc_card_number
 end
 
 Then /^WebReg Membership: Set Expiration Month to January/ do
@@ -460,8 +461,7 @@ end
 
 Then /^WebReg Membership: Submit$/ do
   logger.info "WebReg Membership: Submit"
-  membership = webreg.profile.membership
-  @webreg_result = membership.submit
+  @webreg_result = webreg.profile.membership.submit
 end
 
 Then /^WebReg Membership: Submit and correct errors$/ do
@@ -472,6 +472,10 @@ Then /^WebReg Membership: Submit and correct errors$/ do
       when WebReg::MembershipPhone
         logger.error "Membership Phone Textbox has error: #{@webreg_result.help_block}"
         step "WebReg Membership: Set Phone to random"
+        step "WebReg Membership: Submit"
+      when WebReg::MembershipCardNumber
+        logger.error "Membership Phone Textbox has error: #{@webreg_result.help_block}"
+        step "WebReg Membership: Set Card number to #{@cc_card_number}"
         step "WebReg Membership: Submit"
       when WebReg::ChooseSupplies
         break
