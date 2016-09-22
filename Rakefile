@@ -12,6 +12,26 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:customs_form_auto_calculate_weight) do |t|
   t.profile = 'customs_form_auto_calculate_weight'
   t.cucumber_opts = "-p cuke_reports"

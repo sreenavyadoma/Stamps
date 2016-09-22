@@ -220,7 +220,15 @@ module Stamps
       def text
         txt = element_helper.text element
         val = element.attribute_value "value"
-        (txt.size>0)?txt:val
+        if txt.nil? && val.nil?
+          ""
+        elsif txt.nil?
+          val
+        elsif val.nil?
+          txt
+        else
+          (txt.size>0)?txt:val
+        end
       end
 
       def safe_text

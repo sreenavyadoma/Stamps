@@ -891,7 +891,8 @@ end
 
 Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
   logger.info "Edit Ship-From address for name = \"#{name}\", company = \"#{company}\" and city = \"#{city}\" to #{new_address}"
-  web_apps.orders.details.ship_from.select("Manage Shipping Addresses...").edit_address name, company, city,  new_address.hashes.first
+  ship_address_modal = web_apps.orders.details.ship_from.select "Manage Shipping Addresses..."
+  ship_address_modal.edit_address name, company, city,  new_address.hashes.first
 end
 
 Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
