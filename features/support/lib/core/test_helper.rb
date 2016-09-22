@@ -166,12 +166,27 @@ module Stamps
         logger.info "Teardown test"
         begin
           browser.quit
+          #browser.cookies.clear
+
         rescue
           #ignore
         end
         logger.info "#{@browser_name} closed."
         logger.info "Test Done!"
+
       end
+
+      # Added by Galina
+      def clear_cookies
+        logger.info "Clearing cookies"
+        begin
+          browser.cookies.clear
+        rescue
+          #ignore
+        end
+      end
+
+
     end
   end
 end
