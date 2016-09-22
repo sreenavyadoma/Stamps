@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile rob_sc
+default: --profile cuke_reports --profile rob_stg
 # import_orders_ship_from_test
 
 cuke_reports: --format json --out report.json --backtrace -f pretty

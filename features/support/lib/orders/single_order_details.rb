@@ -1707,8 +1707,9 @@ module Stamps
             else
               "Unable to get a handle on Single Order Details Insure For cost label.".should eql "Insure-For cost label" #raise assertion error
             end
-            @cost_label = ElementWrapper.new label
+            @cost_label ||= ElementWrapper.new label
           end
+          @cost_label
         end
 
         def decrement_trigger
@@ -1750,11 +1751,10 @@ module Stamps
         def cost
           10.times do
             begin
-              cost = cost_label.text
+              break if cost_label.text.include? "$"
             rescue
               #ignore
             end
-            break if cost.include? "$"
           end
           ParameterHelper.remove_dollar_sign(cost_label.text)
         end

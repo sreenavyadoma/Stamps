@@ -384,13 +384,10 @@ Then(/^Clear How will you use Stamps\.com\?$/) do
   webreg.profile.usage_type.clear
 end
 
-
 Then(/^Clear How did you hear about us\?/) do
   logger.info "Clear How did you hear about us?"
   webreg.profile.referrer_name.clear if webreg.profile.referrer_name.present?
 end
-
-
 
 Then(/^Clear 1st Question$/) do
   logger.info "Clear 1st Question Selection"
