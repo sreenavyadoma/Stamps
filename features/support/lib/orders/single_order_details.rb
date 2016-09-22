@@ -1313,12 +1313,11 @@ module Stamps
       end
 
       class Service < DetailsForm
-        attr_reader :text_box, :drop_down, :cost_label
+        attr_reader :text_box, :drop_down
         def initialize param
           super param
           @text_box ||= TextBoxElement.new (browser.text_field name: "Service"), (browser.div css: "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
           @drop_down ||= ElementWrapper.new browser.div css: "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
-          @cost_label = ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(5)>div>div>label:nth-child(3)")
         end
 
         def abbrev_service_name long_name
@@ -1341,6 +1340,23 @@ module Stamps
           else # there's no abbreviation for this long name so send it right back.
             long_name
           end
+        end
+
+        def cost_label
+          if @cost_label.nil?
+            ff_label = browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label:nth-child(3)')
+            gc_label = browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>label:nth-child(3)')
+
+            if ff_label.present?
+              label = ff_label
+            elsif gc_label.present?
+              label = gc_label
+            else
+              "Unable to get a handle on Single Order Details Service Cost label.".should eql "Service Cost label" #raise assertion error
+            end
+            @cost_label ||= ElementWrapper.new label
+          end
+          @cost_label
         end
 
         def select selection
@@ -1400,11 +1416,10 @@ module Stamps
         def cost
           10.times do
             begin
-              cost = cost_label.text
+              break if cost_label.text.include? "$"
             rescue
               #ignore
             end
-            break if cost.include? "$"
           end
           ParameterHelper.remove_dollar_sign(cost_label.text)
         end
