@@ -460,8 +460,11 @@ end
 Then /^Details: Set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
   logger.info "Details: Set Dimensions to Length #{length} Width #{width} Height #{height}"
   web_apps.orders.details.dimensions.length.set length
+  step "Details: Blur out of details form"
   web_apps.orders.details.dimensions.width.set width
+  step "Details: Blur out of details form"
   web_apps.orders.details.dimensions.height.set height
+  step "Details: Blur out of details form"
 end
 
 Then /^Details: Set Length to (\d*)$/ do |value|

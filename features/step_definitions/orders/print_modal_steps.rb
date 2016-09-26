@@ -8,7 +8,7 @@ Then /^Print: Print Incomplete Order$/ do
   logger.info "Print: Open Modal"
   @incomplete_order_modal = web_apps.orders.toolbar.print_btn.print_modal
 
-  "Incomplete Order Modal did not open".should eql "Print: Print Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::IncompleteOrderErrorModal
+  "Incomplete Order Modal did not open".should eql "Print: Print Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 
 Then /^Print: Expect Incomplete Order Error Message (.*)$/ do |expectation|
