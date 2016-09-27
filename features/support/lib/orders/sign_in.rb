@@ -203,7 +203,6 @@ module Stamps
         begin
           logger.info 'LOGIN FAILED!'
           logger.info 'LOGIN FAILED!'
-          logger.info 'LOGIN FAILED!'
           logger.info "Teardown Test!"
           stop_test "Sign-in failed!  Username #{username} is unable to sign-in on #{ENV["URL"]}"
         end unless navbar.present?

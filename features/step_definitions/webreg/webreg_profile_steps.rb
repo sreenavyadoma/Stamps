@@ -26,7 +26,6 @@ Then /^WebReg Profile: Set User ID and Email to (.*)$/ do |usr|
   else
     @username = usr
   end
-  
   logger.info "WebReg Profile: Set User ID and Email to #{@username}"
   step "WebReg Profile: Set Email to #{@username}@mailinator.com"
   step "WebReg Profile: Set User ID to #{@username}"

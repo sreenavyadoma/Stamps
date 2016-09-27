@@ -47,7 +47,7 @@ Then /^Expect Ship Cost equals Total amount$/ do
   ship_cost = web_apps.orders.grid.ship_cost.data @order_id
   10.times {
     begin
-      sleep(1)
+      sleep 1
       break if ship_cost.eql? total_amount
       total_amount = web_apps.orders.details.total.cost
       ship_cost = web_apps.orders.grid.ship_cost.data @order_id

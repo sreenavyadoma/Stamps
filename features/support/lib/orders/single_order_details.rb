@@ -1345,8 +1345,8 @@ module Stamps
 
         def cost_label
           if @cost_label.nil?
-            ff_label = browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label:nth-child(3)')
-            gc_label = browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>label:nth-child(3)')
+            ff_label = browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(5)>div>div>label:nth-child(3)')
+            gc_label = browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label:nth-child(3)')
 
             if ff_label.present?
               label = ff_label
