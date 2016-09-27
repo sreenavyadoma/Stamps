@@ -94,28 +94,37 @@ end
 
 When /^Print: Select left-side label$/ do
   logger.info "Print: Select - Left side label"
+  expectation = "Print Modal Starting Label Left side is selected"
   selected = web_apps.orders.toolbar.print_btn.print_modal.starting_label.left
   logger.info "left-side label was #{(selected)?'selected.':'not selected'}"
-  "Print: Select left-side label".should eql "Left side label not Selected" unless selected
+  expectation = "Print Modal Starting Label Left side was NOT selected" unless selected
+  expectation.should eql "Print Modal Starting Label Left side is selected"
 end
 
 When /^Print: Select right-side label$/ do
   logger.info "Print: Select - Right side label"
+  expectation = "Print Modal Starting Label Right side is selected"
   selected = web_apps.orders.toolbar.print_btn.print_modal.starting_label.right
+  expectation = "Print Modal Starting Label Right side was NOT selected" unless selected
   logger.info "Print Modal right-side label was #{(selected)?'selected.':'not selected'}"
-  "Print: Select right-side label".should eql "Right side label not Selected" unless selected
+  expectation.should eql "Print Modal Starting Label Right side is selected"
 end
 
 Then /^Print: Expect right-side label selected$/ do
   logger.info "Print: Expect right-side label selected"
+  expectation = "Print Modal Starting Label Right side is selected"
   selected = web_apps.orders.toolbar.print_btn.print_modal.starting_label.right_selected?
-  logger.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
+  expectation = "Print Modal Starting Label Right side was NOT selected" unless selected
+  expectation.should eql "Print Modal Starting Label Right side is selected"
 end
 
 Then /^Print: Expect left-side label selected$/ do
   logger.info "Print: Expect left-side label selected"
+  expectation = "Print Modal Starting Label Left side is selected"
   selected = web_apps.orders.toolbar.print_btn.print_modal.starting_label.left_selected?
   logger.info "Expect Left side label selected.  Test #{(selected)?'Passed.':'Failed'}"
+  expectation = "Print Modal Starting Label Left side was NOT selected" unless selected
+  expectation.should eql "Print Modal Starting Label Left side is selected"
 end
 
 Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
