@@ -261,19 +261,29 @@ module Stamps
 
           def print_modal
             expectation = "Print Modal is present"
-            return orders_print_modal if orders_print_modal.present?
+            if orders_print_modal.present?
+              logger.info "Print Modal is Present"
+              return orders_print_modal
+            else
+              logger.info "Print Modal is not yet Present"
+            end
 
-            15.times do
+            15.times do |count|
               print_order_btn.click
               orders_print_modal.wait_until_present 3
-              return orders_print_modal if orders_print_modal.present?
+              if orders_print_modal.present?
+                logger.info "Print Modal is Present"
+                return orders_print_modal
+              else
+                logger.info "Print Modal is not yet Present... try ##{count+1}"
+              end
 
               if usps_terms_modal.present?
-                usps_terms_modal.cancel_btn
-                logger.error usps_terms_modal.text_p1
+                #usps_terms_modal.cancel_btn
+                text = logger.error usps_terms_modal.text_p1
                 logger.error usps_terms_modal.text_p2
                 usps_terms_modal.cancel
-                usps_terms_modal.text_p1.should eql ""
+                text.should eql ""
               end
 
               if incomplete_order_modal.present?
@@ -286,15 +296,17 @@ module Stamps
 
               if multi_order_some_error.present?
                 logger.error multi_order_some_error.error_message_p1
-                logger.error multi_order_some_error.error_message_p2
+                text = multi_order_some_error.error_message_p2
+                logger.error text
                 multi_order_some_error.continue
-                multi_order_some_error.error_message_p2.should eql ""
+                text.should eql ""
               end
 
               if multi_order_all_error.present?
-                logger.error multi_order_all_error.error_message
+                text = multi_order_all_error.error_message
+                logger.error text
                 multi_order_all_error.ok
-                multi_order_all_error.error_message.should eql ""
+                text.should eql ""
               end
 
               return orders_print_modal if orders_print_modal.present?

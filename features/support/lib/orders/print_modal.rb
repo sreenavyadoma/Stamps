@@ -425,7 +425,7 @@ module Stamps
       end
 
       def wait_until_present *args
-        print_button.wait_until_present *args
+        print_button.safely_wait_until_present *args
       end
 
       def print
