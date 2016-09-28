@@ -598,10 +598,10 @@ module Stamps
 
             old_id = grid.order_id.row 1
             logger.info "Row 1 Order ID #{old_id}"
-            15.times do |count|
+            8.times do |count|
               begin
                 button.safe_click
-                details.wait_until_present 7
+                details.wait_until_present 10
                 if initializing_db.present?
                   logger.info initializing_db.text
                 else
