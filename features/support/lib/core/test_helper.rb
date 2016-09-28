@@ -44,7 +44,13 @@ module Stamps
             end
 
             # Launch Firefox
-            driver = Watir::Browser.new :firefox, profile: data_for(:profile, {})['firefox']
+            if ENV['FIREFOX_PROFILE'].nil? || ENV['FIREFOX_PROFILE'].downcase == 'selenium'
+              driver = Watir::Browser.new :firefox, profile: data_for(:profile, {})['firefox']
+            elsif ENV['FIREFOX_PROFILE'].downcase == 'new'
+              driver = Watir::Browser.new :firefox
+            else
+              driver = Watir::Browser.new :firefox, profile: ENV['FIREFOX_PROFILE']
+            end
 
             @browser_name = 'Mozilla Firefox'
 
@@ -52,7 +58,7 @@ module Stamps
             begin
               system "taskkill /im iexplore.exe /f"
             rescue
-              #ignore
+              # ignore
             end
 
             driver = Watir::Browser.new :ie
@@ -160,12 +166,27 @@ module Stamps
         logger.info "Teardown test"
         begin
           browser.quit
+          #browser.cookies.clear
+
         rescue
           #ignore
         end
         logger.info "#{@browser_name} closed."
         logger.info "Test Done!"
+
       end
+
+      # Added by Galina
+      def clear_cookies
+        logger.info "Clearing cookies"
+        begin
+          browser.cookies.clear
+        rescue
+          #ignore
+        end
+      end
+
+
     end
   end
 end

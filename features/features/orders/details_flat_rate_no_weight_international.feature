@@ -29,7 +29,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail International
@@ -43,7 +43,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail International
@@ -57,7 +57,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail International
@@ -71,7 +71,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail International
@@ -85,7 +85,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail International
@@ -99,7 +99,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail International
@@ -113,7 +113,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail Express International
@@ -127,7 +127,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail Express International
@@ -141,7 +141,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail Express International

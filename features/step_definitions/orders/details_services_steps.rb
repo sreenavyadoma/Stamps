@@ -290,10 +290,13 @@ end
 Then /^Details: Set Service to (.*)$/ do |service|
   logger.info "Details: Set Service to #{service}"
   web_apps.orders.details.service.select service
+  service_cost = web_apps.orders.details.service.cost
+  @details_form_data[:insure_for_cost] = service_cost
 end
 
 Then /^Details: Expect Service to be \"(.*)\"$/ do |expectation|
   logger.info "Details: Expect Service to be #{expectation}"
+  expectation = web_apps.orders.details.service.abbrev_service_name expectation
   10.times do
     actual_value = web_apps.orders.details.service.text_box.text
     break if actual_value.include? expectation

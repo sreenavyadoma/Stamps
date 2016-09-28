@@ -47,7 +47,7 @@ Then /^Expect Ship Cost equals Total amount$/ do
   ship_cost = web_apps.orders.grid.ship_cost.data @order_id
   10.times {
     begin
-      sleep(1)
+      sleep 1
       break if ship_cost.eql? total_amount
       total_amount = web_apps.orders.details.total.cost
       ship_cost = web_apps.orders.grid.ship_cost.data @order_id
@@ -102,7 +102,7 @@ end
 Then /^Print: Expect Total Cost to be \$([0-9.]*)$/ do |expectation|
   logger.info "Print: Expect Total Cost to be #{expectation}"
   begin
-    print_window = web_apps.orders.toolbar.print_order.click
+    print_window = web_apps.orders.toolbar.print_btn.print_modal
     actual_value = print_window.total_cost
     10.times { |counter|
       #log_expectation_eql "#{counter}. Print Window Total Cost", expectation, actual_value

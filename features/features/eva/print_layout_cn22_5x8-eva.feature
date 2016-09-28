@@ -13,11 +13,13 @@ Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
       | PMI SFRB | 5.5x8.5  | random           | random           | random | random  | random      | Netherlands | random  | random  |
     Then Details: Select Service Priority Mail International Small Flat Rate Box
     Then Details: Set Ounces to 1
+
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to "Merchandise"
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
+
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"

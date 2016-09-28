@@ -79,6 +79,6 @@ Feature: International Shipping fields and Customs Information fields validation
     Then Customs: Set ITN Number to "random"
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Details: Select Service First-Class Mail International Large Envelope/Flat
     Then Sign out

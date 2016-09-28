@@ -127,6 +127,11 @@ Then /^Details: Edit Customs Form$/ do
   expectation.should eql "Customs Information Form is present"
 end
 
+
+Then /^Customs: Open Modal$/ do
+  step "Details: Edit Customs Form"
+end
+
 Then /^Customs: Set Package Contents to \"(.+)\"$/ do |value|
   logger.info "Customs: Set Package Contents to #{value}"
   @customs_form.package_contents.select value
@@ -264,7 +269,7 @@ Then /^Customs: Expect I agree to the USPS Privacy Act Statement is unchecked$/ 
   actual_value.should eql expectation
 end
 
-Then /^Customs: Close Form$/ do
+Then /^Customs: Close Modal$/ do
   logger.info "Closing customs form"
   @customs_form.close
   logger.info "Customs form #{(@customs_form.present?)?'closed':'is still open.'}"

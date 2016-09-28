@@ -20,5 +20,5 @@ Feature:  Customs Form Totals
     Then Customs: Add Item 2, Description random, Qty 1, Price 100.25, Origin Afghanistan, Tariff 100
     Then Customs Form: Expect Total Value to be 200.75
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Sign out

@@ -126,46 +126,46 @@ Then /^Mail: Set Ship-To to$/ do |table|
   address = table.hashes.first
   logger.info "Mail: Set Ship-To to \n#{address}"
 
-  @ship_to_country = address['country']
-  logger.info "Ship-To Country:  #{@ship_to_country}"
+  ship_to_country = address['country']
+  logger.info "Ship-To Country:  #{ship_to_country}"
 
-  @ship_to_name = (address['name'].downcase.include? "random") ? ParameterHelper.random_name : address['name']
-  @ship_to_company = (address['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address['company']
-  @ship_to_city = (address['city'].downcase.include? "random") ? ParameterHelper.random_string : address['city']
+  ship_to_name = (address['name'].downcase.include? "random") ? ParameterHelper.random_name : address['name']
+  ship_to_company = (address['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address['company']
+  ship_to_city = (address['city'].downcase.include? "random") ? ParameterHelper.random_string : address['city']
 
-  if @ship_to_country.downcase.include? "united states"
-    @ship_to_street_address = (address['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address['street_address']
-    @ship_to_state = (address['state'].downcase.include? "random") ? ParameterHelper.random_string : address['state']
-    @ship_to_zip = (address['zip'].downcase.include? "random") ? ParameterHelper.random_string : address['zip']
+  if ship_to_country.downcase.include? "united states"
+    ship_to_street_address = (address['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address['street_address']
+    ship_to_state = (address['state'].downcase.include? "random") ? ParameterHelper.random_string : address['state']
+    ship_to_zip = (address['zip'].downcase.include? "random") ? ParameterHelper.random_string : address['zip']
 
-    ship_to_address = "#{@ship_to_name},#{@ship_to_company},#{@ship_to_street_address},#{@ship_to_city} #{@ship_to_state} #{@ship_to_zip}"
+    ship_to_address = "#{ship_to_name},#{ship_to_company},#{ship_to_street_address},#{ship_to_city} #{ship_to_state} #{ship_to_zip}"
     logger.info "Ship-To Address:  #{ship_to_address}"
     step "Mail: Set Ship-To address to #{ship_to_address}"
   else
-    @ship_to_street_address_1 = (address['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address['street_address_1']
-    @ship_to_street_address_2 = (address['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address['street_address_2']
-    @ship_to_province = (address['province'].downcase.include? "random") ? ParameterHelper.random_string : address['province']
-    @ship_to_postal_code = (address['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address['postal_code']
-    @ship_to_phone = (address['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address['phone']
+    ship_to_street_address_1 = (address['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address['street_address_1']
+    ship_to_street_address_2 = (address['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address['street_address_2']
+    ship_to_province = (address['province'].downcase.include? "random") ? ParameterHelper.random_string : address['province']
+    ship_to_postal_code = (address['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address['postal_code']
+    ship_to_phone = (address['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address['phone']
 
-    logger.info "Ship-To Name: #{@ship_to_name}"
-    logger.info "Ship-To Company: #{@ship_to_company}"
-    logger.info "Ship-To Address 1: #{@ship_to_street_address_1}"
-    logger.info "Ship-To Address 2: #{@ship_to_street_address_2}"
-    logger.info "Ship-To City: #{@ship_to_city}"
-    logger.info "Ship-To Province: #{@ship_to_province}"
-    logger.info "Ship-To Postal Code: #{@ship_to_postal_code}"
-    logger.info "Ship-To Phone: #{@ship_to_phone}"
+    logger.info "Ship-To Name: #{ship_to_name}"
+    logger.info "Ship-To Company: #{ship_to_company}"
+    logger.info "Ship-To Address 1: #{ship_to_street_address_1}"
+    logger.info "Ship-To Address 2: #{ship_to_street_address_2}"
+    logger.info "Ship-To City: #{ship_to_city}"
+    logger.info "Ship-To Province: #{ship_to_province}"
+    logger.info "Ship-To Postal Code: #{ship_to_postal_code}"
+    logger.info "Ship-To Phone: #{ship_to_phone}"
 
-    step "Mail: Set Ship-To country to #{@ship_to_country}"
-    step "Mail International: Set Ship-To Name to \"#{@ship_to_name}\""
-    step "Mail International: Set Ship-To Company to \"#{@ship_to_company}\""
-    step "Mail International: Set Ship-To Address 1 to \"#{@ship_to_street_address_1}\""
-    step "Mail International: Set Ship-To Address 2 to \"#{@ship_to_street_address_2}\""
-    step "Mail International: Set Ship-To City to \"#{@ship_to_city}\""
-    step "Mail International: Set Ship-To Province to \"#{@ship_to_province}\""
-    step "Mail International: Set Ship-To Postal Code to \"#{@ship_to_postal_code}\""
-    step "Mail International: Set Ship-To Phone to \"#{@ship_to_phone}\""
+    step "Mail: Set Ship-To country to #{ship_to_country}"
+    step "Mail International: Set Ship-To Name to \"#{ship_to_name}\""
+    step "Mail International: Set Ship-To Company to \"#{ship_to_company}\""
+    step "Mail International: Set Ship-To Address 1 to \"#{ship_to_street_address_1}\""
+    step "Mail International: Set Ship-To Address 2 to \"#{ship_to_street_address_2}\""
+    step "Mail International: Set Ship-To City to \"#{ship_to_city}\""
+    step "Mail International: Set Ship-To Province to \"#{ship_to_province}\""
+    step "Mail International: Set Ship-To Postal Code to \"#{ship_to_postal_code}\""
+    step "Mail International: Set Ship-To Phone to \"#{ship_to_phone}\""
   end
 end
 
@@ -380,8 +380,8 @@ end
 Then /^Mail: Expect Label Image Preview is present$/ do
   logger.info "Mail: Expect Label Image Preview is present"
   sleep 2
-  web_apps.mail.form_view.starting_label.left_label_div.present?.should be true
-  web_apps.mail.form_view.starting_label.right_label_div.present?.should be true
+  web_apps.mail.form_view.starting_label.left_label.present?.should be true
+  web_apps.mail.form_view.starting_label.right_label.present?.should be true
 end
 
 Then /^Mail: Expect Hide Mail Value check box is present$/ do

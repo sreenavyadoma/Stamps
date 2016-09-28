@@ -484,3 +484,100 @@ Then /^WebReg Membership: Submit and correct errors$/ do
     end
   end
 end
+
+#Added by Galina
+
+Then(/^WebReg Membership: Expect First Name Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Expect First Name Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.first_name.help_block
+  help_text.should eql expectation
+  end
+
+Then(/^WebReg Membership: Expect Last Name Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Expect Last Name Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.last_name.help_block
+  help_text.should eql expectation
+  end
+
+Then(/^WebReg Membership: Expect Address Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Expect Address Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.address.help_block
+  help_text.should eql expectation
+  end
+
+Then(/^WebReg Membership: Expect City Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Expect City Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.city.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Membership: Expect State Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Expect State Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.state.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Membership: Expect Phone Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Expect Phone Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.phone.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Membership: Expect Cardhoder name Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Expect Cardholder name Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.card_holder_name.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Membership: Expect Card number Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Expect Card number Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.card_number.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Membership: Expires Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Expires Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.expiration_month.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Membership: Expect Billing Address Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Billing Address Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.billing_address.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Membership: Expect Billing City Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Billing City Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.billing_city.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Membership: Expect Billing State Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Billing State Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.billing_state.help_block
+  help_text.should eql expectation
+end
+
+
+Then(/^WebReg Membership: Expect Billing Zip Help Block to be (.*)$/) do |expectation|
+ logger.info "WebReg Membership: Billing Zip Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.billing_zip.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Membership: Expect Terms & Conditions Help Block to be (.*)$/) do |expectation|
+  logger.info "WebReg Membership: Terms & Conditions Help Block to be #{expectation}"
+  help_text = webreg.profile.membership.terms_and_conditions.help_block
+  help_text.should eql expectation
+end
+
+Then(/^WebReg Membership: Tab$/) do
+  logger.info "WebReg Membership: Tab"
+  webreg.profile.membership.tab
+end
+
+
+
+
+

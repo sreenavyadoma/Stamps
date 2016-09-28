@@ -3,7 +3,6 @@ Feature: Envelope #7
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_envelope_regression
   @wp_envelope_7
   Scenario: Envelope #7
     Then Mail: Select Envelope - #7

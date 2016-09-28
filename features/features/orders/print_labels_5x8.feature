@@ -23,8 +23,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Print: Print
     Then Sign out
 
-
-  @label_5x8_printing
+  @print_labels_5x8
   Scenario: Print - Shipping Label: 8 ½" x 11" Paper
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -202,7 +201,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Set Length to 1
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 20, Origin United States, Tariff 10
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Print
@@ -222,7 +221,7 @@ Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-0166
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 20, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Print

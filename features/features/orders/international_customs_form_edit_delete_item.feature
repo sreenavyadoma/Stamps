@@ -24,5 +24,5 @@ Feature:  Customs Form Item Grid - Edit/Delete
     Then Customs: Delete Item 1
     Then Customs: Expect Item Grid count to be 1
     Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Sign out

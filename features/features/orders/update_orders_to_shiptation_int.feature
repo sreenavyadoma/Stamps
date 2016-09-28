@@ -145,7 +145,7 @@ Feature:  Update International Orders to ShipStation
     Then Customs: Check I agree to the USPS Privacy Act Statement
 
     Then Pause for 1 second
-    Then Customs: Close Form
+    Then Customs: Close Modal
     Then Pause for 2 seconds
 
     Then Grid: Uncheck row 1
@@ -181,7 +181,7 @@ Feature:  Update International Orders to ShipStation
     Then Customs: Expect Item 2 Tariff to be 200
 
 
-    Then Customs: Close Form
+    Then Customs: Close Modal
 
     Then Pause for 1 second
     Then Sign out

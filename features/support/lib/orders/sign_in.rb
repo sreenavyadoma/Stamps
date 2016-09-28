@@ -89,7 +89,7 @@ module Stamps
         grid = Orders::Grid::OrdersGrid.new param
         navbar = Navigation::NavigationBar.new param #todo sign_in page should extend NavigationBar???
         plugin_issue = ErrorStampsPluginIssue.new param
-        toolbar = Orders::Toolbar::Toolbar.new param
+        toolbar = Stamps::Orders::Toolbar::Toolbar.new param
         market_place = Orders::Stores::MarketPlace.new param
         loading_orders = ElementWrapper.new browser.div text: "Loading orders..."
 
@@ -114,11 +114,10 @@ module Stamps
 
         logger.info "Username: #{username}"
         logger.info "Username: #{username}"
-        logger.info "Username: #{username}"
 
         username_textbox.safely_wait_until_present 8
 
-        4.times do
+        5.times do
           begin
             break if grid.present?
             username_textbox.set username
@@ -188,6 +187,8 @@ module Stamps
               break
             end
 
+            toolbar.wait_until_present 180
+
             logger.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 
             # grid.wait_until_present
@@ -200,22 +201,7 @@ module Stamps
           end
         end
 
-        begin
-          logger.info 'LOGIN FAILED!'
-          logger.info 'LOGIN FAILED!'
-          logger.info 'LOGIN FAILED!'
-          logger.info "Teardown Test!"
-          stop_test "Sign-in failed!  Username #{username} is unable to sign-in on #{ENV["URL"]}"
-        end unless navbar.present?
-
-        logger.info "Signed-in Username is #{navbar.username.text}"
-
-        if plugin_issue.present?
-          TestHelper.teardown
-          stop_test "Stamps.com Plugin Issue"
-        end
-
-        raise validation_message if validation_message.size > 0
+        "Login Failed. Username: #{username}".should eql "" unless toolbar.present?
       end
     end
   end

@@ -18,7 +18,7 @@ Feature: Details Ship Cost Total
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Package
-    Then Details: Set Insure-For to $100.00
+    Then Details: Set Insure-For to $58.00
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1
     Then Details: Set Tracking to "Signature Required"

@@ -16,6 +16,7 @@ Feature: Print 2 Domestic labels on 5.5x8.5 - right side
     Then Details: Set Ship-To address to PM Large Package, 5.5x8.5 Right Side 1, 26930 NE 152nd St., Duvall WA 98019-8316
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Ounces to 1
+    Then Details: Set Dimensions to Length 1 Width 1 Height 1
     Then Grid: Check row 1
     Then Grid: Check row 2
     Then Print: Open Modal

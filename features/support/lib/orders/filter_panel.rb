@@ -115,7 +115,7 @@ module Stamps
       end
 
       def awaiting_shipment_count
-        element_helper.text(browser.div css: "div.sdc-badge").to_i
+        (element_helper.text (browser.divs css: "div.sdc-badge").last).to_i
       end
 
       def awaiting_shipment
