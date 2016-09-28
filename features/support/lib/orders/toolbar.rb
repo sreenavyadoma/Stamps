@@ -622,6 +622,7 @@ module Stamps
                     logger.info initializing_db.text
                     sleep1
                     break unless initializing_db.present?
+                    "Server Error: #{server_error.text}".should eql "" if server_error.present?
                   end
                 else
                   if details.present?
