@@ -617,7 +617,7 @@ module Stamps
             end
 
             if initializing_db.present?
-              message = "\n*****  #{initializing_db.text}  *****\nUser #{nav_bar.username.text} is NOT setup correctly in ShipStation."
+              message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down? Go check! \nUSERNAME: #{nav_bar.username.text} "
               logger.info message
               stop_test message
             end
