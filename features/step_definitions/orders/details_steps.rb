@@ -582,8 +582,6 @@ Then /^Details: Set Ship-To address to$/ do |table|
   address_table = table.hashes.first
   logger.info "Details: Set Ship-To address to \n#{address_table}"
 
-  @details_form_data = Hash.new
-
   ship_to_country = address_table['country']
   logger.info "Ship-To Country:  #{ship_to_country}"
   ship_to_name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
