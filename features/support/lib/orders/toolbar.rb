@@ -617,12 +617,12 @@ module Stamps
             end
 
             if initializing_db.present?
-              message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down? Go check! \nUSERNAME: #{nav_bar.username.text} "
+              message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text} "
               logger.info message
-              stop_test message
+              message.should eql ""
             end
 
-            stop_test "Unable to Toolbar: Adds!" unless details.present?
+            "Unable to Add new orders. Single Order Details Panel did not open upon clicking Add button." unless details.present?
           end
 
           def tooltip

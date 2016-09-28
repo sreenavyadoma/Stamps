@@ -7,7 +7,7 @@ module Stamps
 
       def initialize param
         super param
-        @landing_page ||= SignInModal.new param
+        @landing_page ||= MailSignInModal.new param
         @toolbar ||= Toolbar.new param
         @drop_down = PrintOn.new param
         @footer ||= Footer.new param

@@ -56,7 +56,7 @@ module Stamps
       end
     end
 
-    class SignInModal < Browser::Modal
+    class MailSignInModal < Browser::Modal
 
       class RememberUsernameCheckbox < Browser::Modal
         def check
@@ -343,7 +343,7 @@ module Stamps
 
       def initialize param
         super param
-        @sign_in_modal ||= SignInModal.new param
+        @sign_in_modal ||= MailSignInModal.new param
       end
 
       def url

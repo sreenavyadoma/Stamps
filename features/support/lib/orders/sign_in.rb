@@ -187,7 +187,7 @@ module Stamps
               break
             end
 
-            toolbar.wait_until_present 180
+            toolbar.wait_until_present 60
 
             logger.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 
@@ -201,7 +201,7 @@ module Stamps
           end
         end
 
-        "Login Failed. Username: #{username}".should eql "" unless toolbar.present?
+        "Orders Login Failed. Username: #{username}\n#{browser.url}".should eql "" unless toolbar.present?
       end
     end
   end
