@@ -280,6 +280,7 @@ module Stamps
         50.times{
           break if checked?
           safe_click
+          sleep 1
         }
         "Unable to check element".should eql "" unless checked?
       end
@@ -289,6 +290,7 @@ module Stamps
           50.times{
             safe_click
             break unless checked?
+            sleep 1
           }
         end
         raise "Unable to uncheck element".should eql ""  if checked?
