@@ -443,13 +443,13 @@ end
 
 Then /^Details: Set Pounds to (.*)$/ do |value|
   logger.info "Details: Set Pounds to \"#{value}\""
-  @details_form_data[:lbs] = value
+  #@details_form_dataa[:lbs] = value
   web_apps.orders.details.weight.lbs.set value
 end
 
 Then /^Details: Set Ounces to (.*)$/ do |value|
   logger.info "Details: Set Ounces to \"#{value}\""
-  @details_form_data[:oz] = value
+  #@details_form_dataa[:oz] = value
   web_apps.orders.details.weight.oz.set value
 end
 
@@ -470,19 +470,19 @@ end
 
 Then /^Details: Set Length to (\d*)$/ do |value|
   logger.info "Details: Set Length to \"#{value}\""
-  @details_form_data[:length] = value
+  #@details_form_dataa[:length] = value
   web_apps.orders.details.dimensions.length.set value
 end
 
 Then /^Details: Set Width to (\d*)$/ do |value|
   logger.info "Details: Set Width to \"#{value}\""
-  @details_form_data[:width] = value
+  #@details_form_dataa[:width] = value
   web_apps.orders.details.dimensions.width.set value
 end
 
 Then /^Details: Set Height to (\d*)$/ do |value|
   logger.info "Details: Set Height to \"#{value}\""
-  @details_form_data[:height] = value
+  #@details_form_dataa[:height] = value
   web_apps.orders.details.dimensions.height.set value
 end
 
@@ -548,16 +548,16 @@ Then /^Details: Set Ship-To domestic address to$/ do |table|
 
   ship_to_address = "#{ship_to_name},#{ship_to_company},#{ship_to_street_address},#{ship_to_street_address_2} ,#{ship_to_city} #{ship_to_state} #{ship_to_zip}"
 
-  @details_form_data = Hash.new
-  @details_form_data[:name] = ship_to_name
-  @details_form_data[:company] = ship_to_company
-  @details_form_data[:city] = ship_to_city
-  @details_form_data[:email] = ship_to_email
-  @details_form_data[:street_address] = ship_to_street_address
-  @details_form_data[:street_address_2] = ship_to_street_address_2
-  @details_form_data[:state] = ship_to_state
-  @details_form_data[:zip] = ship_to_zip
-  @details_form_data[:country] = ship_to_country
+  #@details_form_dataa = Hash.new
+  #@details_form_dataa[:name] = ship_to_name
+  #@details_form_dataa[:company] = ship_to_company
+  #@details_form_dataa[:city] = ship_to_city
+  #@details_form_dataa[:email] = ship_to_email
+  #@details_form_dataa[:street_address] = ship_to_street_address
+  #@details_form_dataa[:street_address_2] = ship_to_street_address_2
+  #@details_form_dataa[:state] = ship_to_state
+  #@details_form_dataa[:zip] = ship_to_zip
+  #@details_form_dataa[:country] = ship_to_country
 
   step "Details: Set Ship-To Country to #{ship_to_country}"
   step "Details: Blur out of details form"
@@ -780,18 +780,18 @@ Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   logger.info "Details: Set Tracking to #{value}"
   web_apps.orders.details.tracking.select value
   tracking_cost = web_apps.orders.details.tracking.cost
-  @details_form_data[:insure_for_cost] = tracking_cost
+  #@details_form_dataa[:insure_for_cost] = tracking_cost
 end
 
 Then /^Details: Set Reference Number to (.*)$/ do |value|
   reference_no = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
   logger.info "Details: Set Reference Number to #{reference_no}"
   web_apps.orders.details.reference_no.set reference_no
-  @details_form_data[:reference_no] = reference_no
+  #@details_form_dataa[:reference_no] = reference_no
 end
 
 Then /^Details: Expect Reference Number to be (.*)$/ do |expectation|
-  reference_no = (expectation.downcase.include? "random") ? @details_form_data[:reference_no] : expectation
+  reference_no = (expectation.downcase.include? "random") ? #@details_form_dataa[:reference_no] : expectation
   logger.info "Details: Expect Reference Number to be #{reference_no}"
   actual_value = web_apps.orders.details.reference_no.text
   logger.info "Test #{(actual_value==reference_no)?"Passed":"Failed"}"
@@ -870,14 +870,14 @@ end
 
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   logger.info "Details: Set Insure-For to #{value}"
-  @details_form_data[:insure_for] = value
+  #@details_form_dataa[:insure_for] = value
   web_apps.orders.details.insure_for.set value
   20.times do
     web_apps.orders.details.blur_out
     break if web_apps.orders.details.insure_for.cost.to_f > 0
   end
   insure_for_cost = web_apps.orders.details.insure_for.cost
-  @details_form_data[:insure_for_cost] = insure_for_cost
+  #@details_form_dataa[:insure_for_cost] = insure_for_cost
 end
 
 Then /^Add Ship-From address$/ do |ship_from|

@@ -291,7 +291,7 @@ Then /^Details: Set Service to (.*)$/ do |service|
   logger.info "Details: Set Service to #{service}"
   web_apps.orders.details.service.select service
   service_cost = web_apps.orders.details.service.cost
-  @details_form_data[:insure_for_cost] = service_cost
+  #@details_form_dataa[:insure_for_cost] = service_cost
 end
 
 Then /^Details: Expect Service to be \"(.*)\"$/ do |expectation|
