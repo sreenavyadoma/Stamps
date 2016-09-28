@@ -616,18 +616,22 @@ module Stamps
             8.times do |count|
               begin
                 button.safe_click
-                details.wait_until_present 10
 
                 if initializing_db.present?
-                  logger.info initializing_db.text
+                  30.times do
+                    logger.info initializing_db.text
+                    sleep1
+                    break unless initializing_db.present?
+                  end
                 else
-
                   if details.present?
                     new_id = grid.order_id.row 1
                     logger.info "Add #{(details.present?)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
                     return details
                   end
                 end
+
+                details.wait_until_present 5
 
                 "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
