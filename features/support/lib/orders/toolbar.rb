@@ -629,14 +629,14 @@ module Stamps
                   end
                 end
 
-                "Server Error\n#{server_error.text}".should eql "" if server_error.present?
+                "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
               rescue
                 #ignore
               end
             end
 
-            "Server Error\n#{server_error.text}".should eql "" if server_error.present?
+            "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
             if initializing_db.present?
               message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text} "
@@ -644,7 +644,7 @@ module Stamps
               message.should eql ""
             end
 
-            "Server Error\n#{server_error.text}".should eql "" if server_error.present?
+            "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
             "Unable to Add new orders. Single Order Details Panel did not open upon clicking Add button." unless details.present?
           end
