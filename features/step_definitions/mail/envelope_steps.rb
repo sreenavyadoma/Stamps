@@ -10,41 +10,41 @@ end
 
 Then /^Mail Envelopes: Set Include Return Address to Checked$/ do
   logger.info "Mail Shipping Labels: Check Include Return Address"
-  web_apps.mail.form_view.include_return_address.check
+  web_apps.mail.envelope.form_view.include_return_address.check
 end
 
 Then /^Mail Envelopes: Set Include Return Address to Unchecked$/ do
   logger.info "Mail Shipping Labels: Uncheck Include Return Address"
-  web_apps.mail.form_view.include_return_address.uncheck
+  web_apps.mail.envelope.form_view.include_return_address.uncheck
 end
 
 Then /^Mail Envelopes: Set Include Delivery Address to Checked$/ do
   logger.info "Mail Shipping Labels: Check Include Delivery Address"
-  web_apps.mail.form_view.include_delivery_address.check
+  web_apps.mail.envelope.form_view.include_delivery_address.check
 end
 
 Then /^Mail Envelopes: Set Include Delivery Address to Unchecked$/ do
   logger.info "Mail Shipping Labels: Uncheck Include Delivery Address"
-  web_apps.mail.form_view.include_delivery_address.uncheck
+  web_apps.mail.envelope.form_view.include_delivery_address.uncheck
 end
 
 Then /^Mail Envelopes: Set Include Mail to Checked$/ do
   logger.info "Mail Shipping Labels: Check Include Postage"
-  web_apps.mail.form_view.include_postage.check
+  web_apps.mail.envelope.form_view.include_postage.check
 end
 
 Then /^Mail Envelopes: Set Include Mail to Unchecked$/ do
   logger.info "Mail Shipping Labels: Uncheck Include Postage"
-  web_apps.mail.form_view.include_postage.uncheck
+  web_apps.mail.envelope.form_view.include_postage.uncheck
 end
 
 Then /^Mail Envelopes: Set Reference Number to (.*)/ do |ref_no|
   logger.info "Set Envelope Reference Number to #{ref_no}"
-  web_apps.mail.form_view.reference_number.set ref_no
+  web_apps.mail.envelope.form_view.reference_number.set ref_no
 end
 
 Then /^Mail Envelopes: Set Cost Code to (.*)/ do |code|
   logger.info "Mail Envelopes: Set Cost Code to \n #{code}"
-  web_apps.mail.form_view.cost_code.select code
+  web_apps.mail.envelope.form_view.cost_code.select code
 end
 

@@ -16,4 +16,3 @@ Feature: Envelope #7
     Then Mail Print Modal: Select Printer "factory"
     Then Mail Print Modal: Print
     Then Sign out
-
