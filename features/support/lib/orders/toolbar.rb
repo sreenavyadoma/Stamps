@@ -179,6 +179,8 @@ module Stamps
           end
           privacy_act.present?.should be true
         end
+      end
+
 =begin
 
         private
@@ -220,8 +222,6 @@ module Stamps
           element_helper.safe_click dont_show_again_checkbox
         end
 =end
-
-      end
 
       class Toolbar < Browser::Modal
         attr_reader :print_btn, :add, :move
