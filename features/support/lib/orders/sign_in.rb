@@ -188,7 +188,7 @@ module Stamps
               break
             end
 
-            toolbar.wait_until_present 30
+            toolbar.wait_until_present 180
 
             logger.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 
