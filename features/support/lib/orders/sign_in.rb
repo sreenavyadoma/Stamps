@@ -114,7 +114,6 @@ module Stamps
 
         logger.info "Username: #{username}"
         logger.info "Username: #{username}"
-        logger.info "Username: #{username}"
 
         username_textbox.safely_wait_until_present 8
 
@@ -188,7 +187,7 @@ module Stamps
               break
             end
 
-            toolbar.wait_until_present 240
+            toolbar.wait_until_present 180
 
             logger.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 
@@ -202,21 +201,7 @@ module Stamps
           end
         end
 
-        begin
-          logger.info 'LOGIN FAILED!'
-          logger.info 'LOGIN FAILED!'
-          logger.info "Teardown Test!"
-          stop_test "Sign-in failed!  Username #{username} is unable to sign-in on #{ENV["URL"]}"
-        end unless navbar.present?
-
-        logger.info "Signed-in Username is #{navbar.username.text}"
-
-        if plugin_issue.present?
-          TestHelper.teardown
-          stop_test "Stamps.com Plugin Issue"
-        end
-
-        raise validation_message if validation_message.size > 0
+        "Login Failed. Username: #{username}".should eql "" unless toolbar.present?
       end
     end
   end
