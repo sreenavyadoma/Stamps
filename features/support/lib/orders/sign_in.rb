@@ -118,7 +118,7 @@ module Stamps
 
         username_textbox.safely_wait_until_present 8
 
-        4.times do
+        5.times do
           begin
             break if grid.present?
             username_textbox.set username
@@ -187,6 +187,8 @@ module Stamps
               market_place.close
               break
             end
+
+            toolbar.wait_until_present 30
 
             logger.info "#{username} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 

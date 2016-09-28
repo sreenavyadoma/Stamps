@@ -696,8 +696,12 @@ module Stamps
           end
         end
 
-        def wait_until_present
-          (browser.span Orders::Locators::ToolBar::add).wait_until_present 5
+        def present?
+          print_btn.present?
+        end
+
+        def wait_until_present *args
+          print_btn.wait_until_present *args
         end
 
         def usps_intl_terms
