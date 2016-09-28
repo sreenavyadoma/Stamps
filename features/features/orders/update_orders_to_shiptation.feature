@@ -8,9 +8,9 @@ Feature:  Update Order to ShipStation
   Scenario:  Update ShipStation
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to
-      | name       | company      | street_address      | city              | state | zip         | country        | phone           |  email            |
-      | Zone Eight | Ship Station | 377 Santa Rosa Blvd | Fort Walton Beach | FL    | 32548  | United States  | 911-9111-91111  | rtest@stamps.com  |
+    Then Details: Set Ship-To domestic address to
+      | name       | company      | street_address      | street_address_2 | city             | state | zip    | country        | phone           |  email            |
+      | Zone Eight | Ship Station | 377 Santa Rosa Blvd |                  |Fort Walton Beach | FL    | 32548  | United States  | 911-9111-91111  | rtest@stamps.com  |
 
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1

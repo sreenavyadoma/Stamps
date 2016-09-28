@@ -16,57 +16,57 @@ module Stamps
         end
       end
 
-      class ShipToFields < DetailsForm
+      class ShipToCountry < DetailsForm
 
-        class ShipToCountry < DetailsForm
+        def drop_down
+          divs = browser.divs css: "div[id^=combo-][id$=-trigger-picker]"
+          domestic = ElementWrapper.new divs.first
+          international = ElementWrapper.new divs.last
 
-          def drop_down
-            divs = browser.divs css: "div[id^=combo-][id$=-trigger-picker]"
-            domestic = ElementWrapper.new divs.first
-            international = ElementWrapper.new divs.last
-
-            if domestic.present?
-              domestic
-            elsif international.present?
-              international
-            else
-              stop_test "Unable to located Ship-To drop-down button."
-            end
-          end
-
-          def text_box
-            TextBoxElement.new (browser.text_fields name: "ShipCountryCode")[1]
-          end
-
-          def select country
-            logger.info "Select Country #{country}"
-
-            selection_1 = ElementWrapper.new browser.li text: country
-            selection_2 = ElementWrapper.new browser.li text: "#{country} "
-
-            text_box = self.text_box
-            drop_down = self.drop_down
-            10.times {
-              begin
-                drop_down.safe_click unless selection_1.present? || selection_2.present?
-                if selection_1.present?
-                  selection_1.scroll_into_view
-                  selection_1.safe_click
-                elsif selection_2.present?
-                  selection_2.scroll_into_view
-                  selection_2.safe_click
-                end
-
-                logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
-                break if text_box.text.include? country
-              rescue
-                #ignore
-              end
-            }
-            logger.info "#{country} selected."
-            ShipToInternational.new param unless country.include? "United States"
+          if domestic.present?
+            domestic
+          elsif international.present?
+            international
+          else
+            stop_test "Unable to located Ship-To drop-down button."
           end
         end
+
+        def text_box
+          TextBoxElement.new (browser.text_fields name: "ShipCountryCode")[1]
+        end
+
+        def select country
+          logger.info "Select Country #{country}"
+
+          selection_1 = ElementWrapper.new browser.li text: country
+          selection_2 = ElementWrapper.new browser.li text: "#{country} "
+
+          text_box = self.text_box
+          drop_down = self.drop_down
+          10.times {
+            begin
+              drop_down.safe_click unless selection_1.present? || selection_2.present?
+              if selection_1.present?
+                selection_1.scroll_into_view
+                selection_1.safe_click
+              elsif selection_2.present?
+                selection_2.scroll_into_view
+                selection_2.safe_click
+              end
+
+              logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
+              break if text_box.text.include? country
+            rescue
+              #ignore
+            end
+          }
+          logger.info "#{country} selected."
+          ShipToInternational.new param unless country.include? "United States"
+        end
+      end
+
+      class ShipToFields < DetailsForm
 
         def country
           ShipToCountry.new param
@@ -336,7 +336,6 @@ module Stamps
 
         def initialize param
           super param
-
           @ambiguous ||= AmbiguousAddress.new param
           @auto_suggest ||= AutoSuggestDomestic.new param
         end
@@ -2016,7 +2015,7 @@ module Stamps
           @total ||= DetailsFooter.new param
           @customs ||= CustomsFields.new param
           @item_grid ||= DetailsItemGrid.new param
-          @reference_no ||= TextBoxElement.new (browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(9)>div>div>div>div>div>div>input")
+          @reference_no ||= TextBoxElement.new browser.label(text: 'Reference #:')#.parent.div.div.div.div.input
           @collapsed_details = DetailsCollapsible.new param
         end
 

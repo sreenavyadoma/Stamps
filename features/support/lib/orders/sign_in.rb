@@ -89,7 +89,7 @@ module Stamps
         grid = Orders::Grid::OrdersGrid.new param
         navbar = Navigation::NavigationBar.new param #todo sign_in page should extend NavigationBar???
         plugin_issue = ErrorStampsPluginIssue.new param
-        toolbar = Orders::Toolbar::Toolbar.new param
+        toolbar = Stamps::Orders::Toolbar::Toolbar.new param
         market_place = Orders::Stores::MarketPlace.new param
         loading_orders = ElementWrapper.new browser.div text: "Loading orders..."
 

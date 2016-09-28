@@ -443,16 +443,17 @@ end
 
 Then /^Details: Set Pounds to (.*)$/ do |value|
   logger.info "Details: Set Pounds to \"#{value}\""
+  @details_form_data[:lbs] = value
   web_apps.orders.details.weight.lbs.set value
 end
 
 Then /^Details: Set Ounces to (.*)$/ do |value|
   logger.info "Details: Set Ounces to \"#{value}\""
+  @details_form_data[:oz] = value
   web_apps.orders.details.weight.oz.set value
 end
 
 Then /^Details: Blur out of details form$/ do
-  web_apps.orders.details.blur_out
   web_apps.orders.details.blur_out
   web_apps.orders.details.blur_out
 end
@@ -469,16 +470,19 @@ end
 
 Then /^Details: Set Length to (\d*)$/ do |value|
   logger.info "Details: Set Length to \"#{value}\""
+  @details_form_data[:length] = value
   web_apps.orders.details.dimensions.length.set value
 end
 
 Then /^Details: Set Width to (\d*)$/ do |value|
   logger.info "Details: Set Width to \"#{value}\""
+  @details_form_data[:width] = value
   web_apps.orders.details.dimensions.width.set value
 end
 
 Then /^Details: Set Height to (\d*)$/ do |value|
   logger.info "Details: Set Height to \"#{value}\""
+  @details_form_data[:height] = value
   web_apps.orders.details.dimensions.height.set value
 end
 
@@ -527,53 +531,100 @@ Then /^Details: Set Ship-To to Random Address Between Zone 5 through 8$/ do
   step "Details: Set Ship-To address to zone 5 through 8"
 end
 
+Then /^Details: Set Ship-To domestic address to$/ do |table|
+  address_table = table.hashes.first
+  logger.info "Details: Set Ship-To domestic address to \n#{address_table}"
+
+  ship_to_name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
+  ship_to_company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
+  ship_to_city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
+  ship_to_phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
+  ship_to_email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
+  ship_to_street_address = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
+  ship_to_street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
+  ship_to_state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
+  ship_to_zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
+  ship_to_country = (address_table['country'].size==0)?"United States":address_table['country']
+
+  ship_to_address = "#{ship_to_name},#{ship_to_company},#{ship_to_street_address},#{ship_to_street_address_2} ,#{ship_to_city} #{ship_to_state} #{ship_to_zip}"
+
+  @details_form_data = Hash.new
+  @details_form_data[:name] = ship_to_name
+  @details_form_data[:company] = ship_to_company
+  @details_form_data[:city] = ship_to_city
+  @details_form_data[:email] = ship_to_email
+  @details_form_data[:street_address] = ship_to_street_address
+  @details_form_data[:street_address_2] = ship_to_street_address_2
+  @details_form_data[:state] = ship_to_state
+  @details_form_data[:zip] = ship_to_zip
+  @details_form_data[:country] = ship_to_country
+
+  step "Details: Set Ship-To Country to #{ship_to_country}"
+  step "Details: Blur out of details form"
+  step "Details: Set Ship-To address to #{ship_to_address}"
+  step "Details: Blur out of details form"
+  step "Details: Set Phone to #{ship_to_phone}"
+  step "Details: Blur out of details form"
+  step "Details: Set Email to #{ship_to_email}"
+  step "Details: Blur out of details form"
+end
+
+Then /^Details: Set Ship-To Less details$/ do
+  web_apps.orders.details.ship_to.address.less.safe_click
+end
+
+Then /^Details: Hide Ship-To fields$/ do
+  logger.info "Details: Hide Ship-To fields"
+  web_apps.orders.details.ship_to.hide
+end
+
 Then /^Details: Set Ship-To address to$/ do |table|
-  address = table.hashes.first
-  logger.info "Details: Set Ship-To address to \n#{address}"
+  address_table = table.hashes.first
+  logger.info "Details: Set Ship-To address to \n#{address_table}"
 
-  @ship_to_country = address['country']
-  logger.info "Ship-To Country:  #{@ship_to_country}"
-  @ship_to_name = (address['name'].downcase.include? "random") ? ParameterHelper.random_name : address['name']
-  @ship_to_company = (address['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address['company']
-  @ship_to_city = (address['city'].downcase.include? "random") ? ParameterHelper.random_string : address['city']
-  @ship_to_phone = (address['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address['phone']
-  @ship_to_email = (address['email'].downcase.include? "random") ? ParameterHelper.random_email : address['email']
+  ship_to_country = address_table['country']
+  logger.info "Ship-To Country:  #{ship_to_country}"
+  ship_to_name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
+  ship_to_company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
+  ship_to_city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
+  ship_to_phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
+  ship_to_email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
 
-  if @ship_to_country.downcase.include? "united states"
-    @ship_to_street_address = (address['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address['street_address']
-    @ship_to_state = (address['state'].downcase.include? "random") ? ParameterHelper.random_string : address['state']
-    @ship_to_zip = (address['zip'].downcase.include? "random") ? ParameterHelper.random_string : address['zip']
+  if ship_to_country.downcase.include? "united states"
+    ship_to_street_address = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
+    ship_to_state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
+    ship_to_zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
 
-    ship_to_address = "#{@ship_to_name},#{@ship_to_company},#{@ship_to_street_address},#{@ship_to_city} #{@ship_to_state} #{@ship_to_zip}"
+    ship_to_address = "#{ship_to_name},#{ship_to_company},#{ship_to_street_address},#{ship_to_city} #{ship_to_state} #{ship_to_zip}"
     step "Details: Set Ship-To address to #{ship_to_address}"
-    step "Details: Set Phone to #{@ship_to_phone}"
-    step "Details: Set Email to #{@ship_to_email}"
+    step "Details: Set Phone to #{ship_to_phone}"
+    step "Details: Set Email to #{ship_to_email}"
   else
-    @ship_to_street_address_1 = (address['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address['street_address_1']
-    @ship_to_street_address_2 = (address['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address['street_address_2']
-    @ship_to_province = (address['province'].downcase.include? "random") ? ParameterHelper.random_string : address['province']
-    @ship_to_postal_code = (address['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address['postal_code']
+    ship_to_street_address_1 = (address_table['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address_1']
+    ship_to_street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address_table['street_address_2']
+    ship_to_province = (address_table['province'].downcase.include? "random") ? ParameterHelper.random_string : address_table['province']
+    ship_to_postal_code = (address_table['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address_table['postal_code']
 
-    logger.info "Ship-To Name: #{@ship_to_name}"
-    logger.info "Ship-To Company: #{@ship_to_company}"
-    logger.info "Ship-To Address 1: #{@ship_to_street_address_1}"
-    logger.info "Ship-To Address 2: #{@ship_to_street_address_2}"
-    logger.info "Ship-To City: #{@ship_to_city}"
-    logger.info "Ship-To Province: #{@ship_to_province}"
-    logger.info "Ship-To Postal Code: #{@ship_to_postal_code}"
-    logger.info "Ship-To Phone: #{@ship_to_phone}"
-    logger.info "Ship-To Email: #{@ship_to_email}"
+    logger.info "Ship-To Name: #{ship_to_name}"
+    logger.info "Ship-To Company: #{ship_to_company}"
+    logger.info "Ship-To Address 1: #{ship_to_street_address_1}"
+    logger.info "Ship-To Address 2: #{ship_to_street_address_2}"
+    logger.info "Ship-To City: #{ship_to_city}"
+    logger.info "Ship-To Province: #{ship_to_province}"
+    logger.info "Ship-To Postal Code: #{ship_to_postal_code}"
+    logger.info "Ship-To Phone: #{ship_to_phone}"
+    logger.info "Ship-To Email: #{ship_to_email}"
 
-    step "Details: Set Ship-To Country to #{@ship_to_country}"
-    step "Details: Set International Ship-To Name to \"#{@ship_to_name}\""
-    step "Details: Set International Ship-To Company to \"#{@ship_to_company}\""
-    step "Details: Set International Ship-To Address 1 to \"#{@ship_to_street_address_1}\""
-    step "Details: Set International Ship-To Address 2 to \"#{@ship_to_street_address_2}\""
-    step "Details: Set International Ship-To City to \"#{@ship_to_city}\""
-    step "Details: Set International Ship-To Province to \"#{@ship_to_province}\""
-    step "Details: Set International Ship-To Postal Code to \"#{@ship_to_postal_code}\""
-    step "Details: Set International Ship-To Phone to \"#{@ship_to_phone}\""
-    step "Details: Set International Ship-To Email to \"#{@ship_to_email}\""
+    step "Details: Set Ship-To Country to #{ship_to_country}"
+    step "Details: Set International Ship-To Name to \"#{ship_to_name}\""
+    step "Details: Set International Ship-To Company to \"#{ship_to_company}\""
+    step "Details: Set International Ship-To Address 1 to \"#{ship_to_street_address_1}\""
+    step "Details: Set International Ship-To Address 2 to \"#{ship_to_street_address_2}\""
+    step "Details: Set International Ship-To City to \"#{ship_to_city}\""
+    step "Details: Set International Ship-To Province to \"#{ship_to_province}\""
+    step "Details: Set International Ship-To Postal Code to \"#{ship_to_postal_code}\""
+    step "Details: Set International Ship-To Phone to \"#{ship_to_phone}\""
+    step "Details: Set International Ship-To Email to \"#{ship_to_email}\""
   end
 end
 
@@ -624,15 +675,8 @@ Then /^Details: Set Ship-To address to (.*)$/ do |address|
     else
       formatted_address = ParameterHelper.format_address address
   end
-
   web_apps.orders.details.ship_to.address.set formatted_address
-
-  begin
-    step "Details: Set Phone to #{address['phone']}"
-    step "Details: Set Email to #{address['email']}"
-  rescue
-    #ignore
-  end
+  step "Details: Blur out of details form"
 end
 
 Then /^Details: Set Ship-To to ambiguous address$/ do |table|
@@ -670,27 +714,6 @@ Then /^Details: Set Email to (.*)$/ do |email|
     logger.info "Details: Set Email to \"#{@order_details_email}\""
     web_apps.orders.details.ship_to.address.email.set @order_details_email
   end unless @order_details_email.length == 0
-end
-
-
-Then /^Expect system status Order Form$/ do |status|
-  logger.info "Expect system #{status} Order Form"
-
-  actual_value = web_apps.orders.details.present?
-  actual_value.should eql false
-end
-
-Then /^Expect system displays Order Form$/ do |status|
-  logger.info "Expect system #{status} Order Form"
-
-  actual_value = web_apps.orders.details.present?
-  actual_value.should eql true
-end
-
-Then /^Details: Hide Ship-To fields$/ do
-  logger.info "Details: Hide Ship-To fields"
-  web_apps.orders.details.ship_to.hide
-  logger.info "done."
 end
 
 Then /^Increment Order Details Pounds by (\d*)$/ do |value|
@@ -756,20 +779,23 @@ end
 Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   logger.info "Details: Set Tracking to #{value}"
   web_apps.orders.details.tracking.select value
+  tracking_cost = web_apps.orders.details.tracking.cost
+  @details_form_data[:insure_for_cost] = tracking_cost
 end
 
 Then /^Details: Set Reference Number to (.*)$/ do |value|
-  @param_details_reference_no = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
-  logger.info "Details: Set Reference Number to #{@param_details_reference_no}"
-  web_apps.orders.details.reference_no.set @param_details_reference_no
+  reference_no = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
+  logger.info "Details: Set Reference Number to #{reference_no}"
+  web_apps.orders.details.reference_no.set reference_no
+  @details_form_data[:reference_no] = reference_no
 end
 
 Then /^Details: Expect Reference Number to be (.*)$/ do |expectation|
-  @param_details_reference_no = (expectation.downcase.include? "random") ? @param_details_reference_no : expectation
-  logger.info "Details: Expect Reference Number to be #{@param_details_reference_no}"
+  reference_no = (expectation.downcase.include? "random") ? @details_form_data[:reference_no] : expectation
+  logger.info "Details: Expect Reference Number to be #{reference_no}"
   actual_value = web_apps.orders.details.reference_no.text
-  logger.info "Test #{(actual_value==@param_details_reference_no)?"Passed":"Failed"}"
-  actual_value.should eql @param_details_reference_no
+  logger.info "Test #{(actual_value==reference_no)?"Passed":"Failed"}"
+  actual_value.should eql reference_no
 end
 
 Then /^Details: Expect Insure-For to be \$(.*)$/ do |expectation|
@@ -844,12 +870,14 @@ end
 
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   logger.info "Details: Set Insure-For to #{value}"
-  web_apps.orders.details.insure_for.set value
+  @details_form_data[:insure_for] = value
   web_apps.orders.details.insure_for.set value
   20.times do
     web_apps.orders.details.blur_out
     break if web_apps.orders.details.insure_for.cost.to_f > 0
   end
+  insure_for_cost = web_apps.orders.details.insure_for.cost
+  @details_form_data[:insure_for_cost] = insure_for_cost
 end
 
 Then /^Add Ship-From address$/ do |ship_from|
