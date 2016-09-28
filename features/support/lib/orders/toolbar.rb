@@ -223,6 +223,20 @@ module Stamps
         end
 =end
 
+      class ShipStationServerError < Browser::Modal
+        def window_title
+          browser.divs(text: 'Server Error').first
+        end
+
+        def present?
+          window_title.present?
+        end
+
+        def text
+          element_helper.text browser.divs(css: "div[class*=sdc-warning]>div[id$=outerCt]>div").first
+        end
+      end
+
       class Toolbar < Browser::Modal
         attr_reader :print_btn, :add, :move
         def initialize param
@@ -593,6 +607,7 @@ module Stamps
             details = Orders::Details::SingleOrderDetails.new param
             grid = Orders::Grid::OrdersGrid.new param
             nav_bar = Navigation::NavigationBar.new param
+            server_error = ShipStationServerError.new param
 
             grid.checkbox.uncheck 1
 
@@ -602,25 +617,34 @@ module Stamps
               begin
                 button.safe_click
                 details.wait_until_present 10
+
                 if initializing_db.present?
                   logger.info initializing_db.text
                 else
+
                   if details.present?
                     new_id = grid.order_id.row 1
                     logger.info "Add #{(details.present?)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
                     return details
                   end
                 end
+
+                "Server Error\n#{server_error.text}".should eql "" if server_error.present?
+
               rescue
                 #ignore
               end
             end
+
+            "Server Error\n#{server_error.text}".should eql "" if server_error.present?
 
             if initializing_db.present?
               message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text} "
               logger.info message
               message.should eql ""
             end
+
+            "Server Error\n#{server_error.text}".should eql "" if server_error.present?
 
             "Unable to Add new orders. Single Order Details Panel did not open upon clicking Add button." unless details.present?
           end

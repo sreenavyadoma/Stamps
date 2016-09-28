@@ -1,7 +1,7 @@
 Then /^Toolbar: Add$/ do
   logger.info "Toolbar: Add"
   web_apps.orders.grid.checkbox.uncheck 1
-  @order_details = web_apps.orders.toolbar.add.click
+  @order_details = web_apps.orders.toolbar.add.click #todo-rob refactor click
   @order_id = @order_details.toolbar.order_id
   step "Save Shipping Costs Data"
   logger.info "New Order ID #{@order_id}"
