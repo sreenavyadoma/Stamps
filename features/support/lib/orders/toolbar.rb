@@ -617,7 +617,7 @@ module Stamps
             end
 
             if initializing_db.present?
-              message = "\n*****  #{initializing_db.text}  *****\nUser #{nav_bar.username.text} is NOT setup correctly in ShipStation.  Check that this user's email is unique."
+              message = "\n*****  #{initializing_db.text}  *****\nUser #{nav_bar.username.text} is NOT setup correctly in ShipStation."
               logger.info message
               stop_test message
             end
