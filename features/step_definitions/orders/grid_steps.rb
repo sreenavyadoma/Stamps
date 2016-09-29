@@ -37,11 +37,13 @@ end
 When /^Grid: Check row (\d+)$/ do |row|
   logger.info "Edit Orders Grid row #{row}"
   web_apps.orders.grid.checkbox.check row
+  web_apps.orders.grid.checkbox.checked?.should be true
 end
 
 When /^Grid: Uncheck row (\d+)$/ do |row|
   logger.info "Uncheck row #{row} on the Orders Grid"
   web_apps.orders.grid.checkbox.uncheck row
+  web_apps.orders.grid.checkbox.checked?.should be false
 end
 
 Then /^Grid: Uncheck New Order ID$/ do
