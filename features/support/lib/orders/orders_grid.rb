@@ -145,9 +145,9 @@ module Stamps
         end
 
         def row_div number
-          stop_test "row_div:  number can't be nil" if number.nil?
+          "row_div:  Number is nil".should eql "" if number.nil?
           div = browser.div css: "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]"
-          stop_test("Orders Grid Row number #{number} is not present")unless div.present?
+          "Orders Grid Row number #{number} is not present".should eql "" unless div.present?
           div
         end
       end

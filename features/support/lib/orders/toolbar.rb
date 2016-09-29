@@ -591,20 +591,17 @@ module Stamps
         end
 
         class AddButton < Browser::Modal
-          attr_reader :button, :order_details, :initializing_db, :nav_bar
+          attr_reader :button, :initializing_db
 
           def initialize param
             super param
             @button ||= ElementWrapper.new browser.span text: 'Add'
             @initializing_db ||= ElementWrapper.new browser.div text: "Initializing Order Database"
+
           end
 
           def order_details
-            click
-          end
-
-          def click
-            details = Orders::Details::SingleOrderDetails.new param
+            details = Orders::Details::SingleOrderDetails.new param # keep this here
             grid = Orders::Grid::OrdersGrid.new param
             nav_bar = Navigation::NavigationBar.new param
             server_error = ShipStationServerError.new param
@@ -616,12 +613,14 @@ module Stamps
             8.times do |count|
               begin
                 button.safe_click
-                details.wait_until_present 10
 
                 if initializing_db.present?
-                  logger.info initializing_db.text
+                  30.times do
+                    logger.info initializing_db.text
+                    sleep1
+                    break unless initializing_db.present?
+                  end
                 else
-
                   if details.present?
                     new_id = grid.order_id.row 1
                     logger.info "Add #{(details.present?)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
@@ -629,14 +628,16 @@ module Stamps
                   end
                 end
 
-                "Server Error\n#{server_error.text}".should eql "" if server_error.present?
+                details.wait_until_present 5
+
+                "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
               rescue
                 #ignore
               end
             end
 
-            "Server Error\n#{server_error.text}".should eql "" if server_error.present?
+            "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
             if initializing_db.present?
               message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text} "
@@ -644,7 +645,7 @@ module Stamps
               message.should eql ""
             end
 
-            "Server Error\n#{server_error.text}".should eql "" if server_error.present?
+            "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
             "Unable to Add new orders. Single Order Details Panel did not open upon clicking Add button." unless details.present?
           end

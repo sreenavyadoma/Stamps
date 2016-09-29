@@ -280,8 +280,9 @@ module Stamps
         50.times{
           break if checked?
           safe_click
+          sleep 1
         }
-        raise "Unable to check element with ID #{element.attribute_value "id"}" unless checked?
+        "Unable to check element".should eql "" unless checked?
       end
 
       def uncheck
@@ -289,9 +290,10 @@ module Stamps
           50.times{
             safe_click
             break unless checked?
+            sleep 1
           }
         end
-        raise "Unable to check element with ID #{element.attribute_value "id"}" if checked?
+        raise "Unable to uncheck element".should eql ""  if checked?
       end
 
       def checked?

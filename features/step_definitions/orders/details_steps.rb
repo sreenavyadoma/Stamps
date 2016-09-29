@@ -535,37 +535,38 @@ Then /^Details: Set Ship-To domestic address to$/ do |table|
   address_table = table.hashes.first
   logger.info "Details: Set Ship-To domestic address to \n#{address_table}"
 
-  ship_to_name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
-  ship_to_company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
-  ship_to_city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
-  ship_to_phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
-  ship_to_email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
-  ship_to_street_address = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
-  ship_to_street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
-  ship_to_state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
-  ship_to_zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
-  ship_to_country = (address_table['country'].size==0)?"United States":address_table['country']
+  name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
+  company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
+  city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
+  phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
+  email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
+  street_address = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
+  street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
+  state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
+  zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
+  country = (address_table['country'].size==0)?"United States":address_table['country']
 
-  ship_to_address = "#{ship_to_name},#{ship_to_company},#{ship_to_street_address},#{ship_to_street_address_2} ,#{ship_to_city} #{ship_to_state} #{ship_to_zip}"
+  ship_to = "#{name},#{company},#{street_address},#{street_address_2} ,#{city} #{state} #{zip}"
 
-  @details_form_data = Hash.new
-  @details_form_data[:name] = ship_to_name
-  @details_form_data[:company] = ship_to_company
-  @details_form_data[:city] = ship_to_city
-  @details_form_data[:email] = ship_to_email
-  @details_form_data[:street_address] = ship_to_street_address
-  @details_form_data[:street_address_2] = ship_to_street_address_2
-  @details_form_data[:state] = ship_to_state
-  @details_form_data[:zip] = ship_to_zip
-  @details_form_data[:country] = ship_to_country
+  @details_form_data[:ship_to] = ship_to
+  @details_form_data[:name] = name
+  @details_form_data[:company] = company
+  @details_form_data[:city] = city
+  @details_form_data[:phone] = phone
+  @details_form_data[:email] = email
+  @details_form_data[:street_address] = street_address
+  @details_form_data[:street_address_2] = street_address_2
+  @details_form_data[:state] = state
+  @details_form_data[:zip] = zip
+  @details_form_data[:country] = country
 
-  step "Details: Set Ship-To Country to #{ship_to_country}"
+  step "Details: Set Ship-To Country to #{@details_form_data[:country]}"
   step "Details: Blur out of details form"
-  step "Details: Set Ship-To address to #{ship_to_address}"
+  step "Details: Set Ship-To address to #{@details_form_data[:ship_to]}"
   step "Details: Blur out of details form"
-  step "Details: Set Phone to #{ship_to_phone}"
+  step "Details: Set Phone to #{@details_form_data[:phone]}"
   step "Details: Blur out of details form"
-  step "Details: Set Email to #{ship_to_email}"
+  step "Details: Set Email to #{@details_form_data[:email]}"
   step "Details: Blur out of details form"
 end
 
@@ -575,7 +576,7 @@ end
 
 Then /^Details: Hide Ship-To fields$/ do
   logger.info "Details: Hide Ship-To fields"
-  web_apps.orders.details.ship_to.hide
+  web_apps.orders.details.ship_to.hide_address_details
 end
 
 Then /^Details: Set Ship-To address to$/ do |table|
@@ -599,6 +600,18 @@ Then /^Details: Set Ship-To address to$/ do |table|
     step "Details: Set Ship-To address to #{ship_to_address}"
     step "Details: Set Phone to #{ship_to_phone}"
     step "Details: Set Email to #{ship_to_email}"
+
+
+    @details_form_data[:name] = ship_to_name
+    @details_form_data[:company] = ship_to_company
+    @details_form_data[:city] = ship_to_city
+    @details_form_data[:email] = ship_to_email
+    @details_form_data[:street_address] = ship_to_street_address
+    @details_form_data[:street_address_2] = ship_to_street_address_2
+    @details_form_data[:state] = ship_to_state
+    @details_form_data[:zip] = ship_to_zip
+    @details_form_data[:country] = ship_to_country
+
   else
     ship_to_street_address_1 = (address_table['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address_1']
     ship_to_street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address_table['street_address_2']
@@ -675,6 +688,7 @@ Then /^Details: Set Ship-To address to (.*)$/ do |address|
     else
       formatted_address = ParameterHelper.format_address address
   end
+
   web_apps.orders.details.ship_to.address.set formatted_address
   step "Details: Blur out of details form"
 end

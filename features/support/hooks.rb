@@ -12,6 +12,7 @@ include RAutomation
 
 Before do  |scenario|
   Stamps.init scenario.name
+  @details_form_data = Hash.new
   logger.message "Running Tests..."
   logger.message "-"
   logger.message "-"

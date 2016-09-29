@@ -11,7 +11,6 @@ Feature:  Update Order to ShipStation
     Then Details: Set Ship-To domestic address to
       | name       | company      | street_address      | street_address_2 | city             | state | zip    | country        | phone           |  email            |
       | Zone Eight | Ship Station | 377 Santa Rosa Blvd |                  |Fort Walton Beach | FL    | 32548  | United States  | 911-9111-91111  | rtest@stamps.com  |
-
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
     Then Details: Select Service Priority Mail Package
@@ -26,14 +25,10 @@ Feature:  Update Order to ShipStation
 
     #here's the shipstation part.
     Then Grid: Uncheck row 1
-    Then Pause for 3 seconds
-
-    # checking the order will make an api call that will populate order details with data from shipstation
+    Then Pause for 2 seconds
     Then Grid: Check row 1
-
+    Then Grid: Check row 1
     Then Pause for 3 seconds
-
-    #Then Details: Expect
 
     Then Grid: Expect Pounds to be 1
     Then Grid: Expect Ounces to be 1
