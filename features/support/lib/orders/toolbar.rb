@@ -591,20 +591,17 @@ module Stamps
         end
 
         class AddButton < Browser::Modal
-          attr_reader :button, :order_details, :initializing_db, :nav_bar
+          attr_reader :button, :initializing_db
 
           def initialize param
             super param
             @button ||= ElementWrapper.new browser.span text: 'Add'
             @initializing_db ||= ElementWrapper.new browser.div text: "Initializing Order Database"
+
           end
 
           def order_details
-            click
-          end
-
-          def click
-            details = Orders::Details::SingleOrderDetails.new param
+            details = Orders::Details::SingleOrderDetails.new param # keep this here
             grid = Orders::Grid::OrdersGrid.new param
             nav_bar = Navigation::NavigationBar.new param
             server_error = ShipStationServerError.new param

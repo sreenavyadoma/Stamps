@@ -15,7 +15,7 @@ end
 
 Then /^Toolbar: Expect Add Tooltip to include (.*)$/ do |expectation|
   logger.info "Toolbar: Expect Add Tooltip to include #{expectation}"
-  actual = web_apps.orders.toolbar.add.tooltip
+  actual = web_apps.orders.toolbar.add.order_details.tooltip
   logger.info "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   actual.should include expectation
 end

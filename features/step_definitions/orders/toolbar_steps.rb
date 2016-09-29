@@ -1,7 +1,7 @@
 Then /^Toolbar: Add$/ do
   logger.info "Toolbar: Add"
   web_apps.orders.grid.checkbox.uncheck 1
-  @order_details = web_apps.orders.toolbar.add.click #todo-rob refactor click
+  @order_details = web_apps.orders.toolbar.add.order_details #todo-rob refactor click
   @order_id = @order_details.toolbar.order_id
   step "Save Shipping Costs Data"
   logger.info "New Order ID #{@order_id}"
@@ -80,13 +80,13 @@ end
 
 Then /^Toolbar: Add second order$/ do
   logger.info "Toolbar: Add second order"
-  @order_details = web_apps.orders.toolbar.add.click
+  @order_details = web_apps.orders.toolbar.add.order_details
   @order_id_2 = @order_details.toolbar.order_id
 end
 
 Then /^Toolbar: Add third order$/ do
   logger.info "Toolbar: Add third order"
-  @order_details = web_apps.orders.toolbar.add.click
+  @order_details = web_apps.orders.toolbar.add.order_details
   @order_id_3 = @order_details.toolbar.order_id
 end
 
@@ -94,7 +94,7 @@ Then /^Add a second order$/ do
   logger.info "Add a second order"
   first_row_order_id = web_apps.orders.grid.order_id.row 1
   5.times{
-    @order_id_2 = web_apps.orders.toolbar.add.click_shipping_address_window
+    @order_id_2 = web_apps.orders.toolbar.add.order_details_shipping_address_window
     if first_row_order_id.include? @order_id
       sleep(3)
     end
