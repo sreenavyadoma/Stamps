@@ -28,12 +28,12 @@ Then /^Mail Envelopes: Set Include Delivery Address to Unchecked$/ do
   web_apps.mail.envelope.form_view.include_delivery_address.uncheck
 end
 
-Then /^Mail Envelopes: Set Include Mail to Checked$/ do
+Then /^Mail Envelopes: Set Include Postage to Checked$/ do
   logger.info "Mail Shipping Labels: Check Include Postage"
   web_apps.mail.envelope.form_view.include_postage.check
 end
 
-Then /^Mail Envelopes: Set Include Mail to Unchecked$/ do
+Then /^Mail Envelopes: Set Include Postage to Unchecked$/ do
   logger.info "Mail Shipping Labels: Uncheck Include Postage"
   web_apps.mail.envelope.form_view.include_postage.uncheck
 end
