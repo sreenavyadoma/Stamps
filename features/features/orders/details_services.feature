@@ -94,8 +94,8 @@ Feature:  Orders Service Selection
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
-    Then Details: Expect Service to be Priority Mail Express Package/Flat/Thick Envelope
+    Then Details: Select Service Priority Mail Express Package
+    Then Details: Expect Service to be Priority Mail Express Package
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present

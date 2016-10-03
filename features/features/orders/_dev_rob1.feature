@@ -64,23 +64,23 @@ Feature: Test Development
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Select Service Priority Mail Package
-    Then Details: Expect Service to be "Priority Mail Package"
+    Then Details: Expect Service to be Priority Mail Package
     Then Details: Expect Service Cost inline price for "Priority Mail Package" to be greater than $0.01
     Then Details: Expect Service Tooltip for "Priority Mail Package" to include "Priority Mail Package,Ship up to 70 lbs. using any box with pricing that varies by weight and distance,The USPS provides free packaging for Priority Mail which can be ordered from Stamps.com."
 
-    Then Details: Set Tracking to "USPS Tracking"
-    Then Details: Expect Tracking to be "USPS Tracking"
-    Then Details: Set Tracking to "Signature Required"
-    Then Details: Expect Tracking to be "Signature Required"
+    Then Details: Set Tracking to USPS Tracking
+    Then Details: Expect Tracking to be USPS Tracking
+    Then Details: Set Tracking to Signature Required
+    Then Details: Expect Tracking to be Signature Required
 
     Then Details: Select Service Priority Mail Package
-    Then Details: Expect Service to be "Priority Mail Package"
-    Then Details: Expect Tracking to be "Signature Required"
+    Then Details: Expect Service to be Priority Mail Package
+    Then Details: Expect Tracking to be Signature Required
 
     Then Details: Select Service Priority Mail Package
-    Then Details: Expect Service to be "Priority Mail Package"
+    Then Details: Expect Service to be Priority Mail Package
     Then Details: Select Service Priority Mail Large Package
-    Then Details: Expect Service to be "Priority Mail Large Package"
+    Then Details: Expect Service to be Priority Mail Large Package
 
     Then Details: Expect Service Cost inline price for "Priority Mail Large/Thick Envelope" to be greater than $0.01
     Then Details: Expect Service Cost inline price for "Priority Mail Package" to be greater than $0.01

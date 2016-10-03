@@ -60,7 +60,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service First-Class Mail Package/Thick Envelope
     Then Details: Set Insure-For to $45.00
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Grid: Check row 1
 
     #Priority Mail
@@ -74,7 +74,7 @@ Feature: 25 orders
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Large/Thick Envelope
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -85,7 +85,7 @@ Feature: 25 orders
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Package
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -97,7 +97,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Insure-For to $145.00
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -108,7 +108,7 @@ Feature: 25 orders
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Flat Rate Envelope
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -120,7 +120,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Padded Flat Rate Envelope
     Then Details: Set Insure-For to $98.00
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -131,7 +131,7 @@ Feature: 25 orders
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Legal Flat Rate Envelope
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -143,7 +143,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Small Flat Rate Box
     Then Details: Set Insure-For to $30.00
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -155,7 +155,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Medium Flat Rate Box
     Then Details: Set Insure-For to $45.00
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -167,7 +167,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Large Flat Rate Box
     Then Details: Set Insure-For to $239.00
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -179,7 +179,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Regional Rate Box A
     Then Details: Set Insure-For to $105.00
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -191,7 +191,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Regional Rate Box B
     Then Details: Set Insure-For to $205.00
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -202,7 +202,7 @@ Feature: 25 orders
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Insure-For to $305.00
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     # Priority Mail Express
     Then Toolbar: Add
@@ -213,8 +213,8 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Select Service Priority Mail Express Package
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -225,7 +225,7 @@ Feature: 25 orders
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Express Flat Rate Envelope
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -236,7 +236,7 @@ Feature: 25 orders
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -247,7 +247,7 @@ Feature: 25 orders
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Express Legal Flat Rate Envelope
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -258,7 +258,7 @@ Feature: 25 orders
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     # Media Mail
     Then Toolbar: Add
@@ -271,7 +271,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $56.00
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     # Parcel Select
     Then Toolbar: Add
@@ -284,7 +284,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $345.00
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -296,7 +296,7 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $456.00
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Expect new Order ID created
@@ -308,5 +308,5 @@ Feature: 25 orders
     Then Details: Set Height to 1
     Then Details: Select Service Parcel Select Ground Oversized Package
     Then Details: Set Insure-For to $567.00
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
     Then Sign out

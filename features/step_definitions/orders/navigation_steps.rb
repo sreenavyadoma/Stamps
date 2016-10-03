@@ -49,9 +49,7 @@ end
 Then /^Buy Mail Purchase Approved: Expect text area contains, Your postage purchase request for \$(.*) has been approved.$/ do |amount|
   expectation = "Your postage purchase request for $#{amount} has been approved."
   logger.info "Buy Mail Purchase Approved: Expect text area contains, #{expectation}"
-  raise "Purchase Approved modal is nil! Check your test workflow." if @purchase_approved.nil?
-  raise "Purchase Approved modal is not present." unless @purchase_approved.present?
-
+  @purchase_approved.should be_truthy
   text_area = @purchase_approved.text
   logger.info "Test #{(text_area == expectation)?"Passed":"Failed"}"
   text_area.should eql expectation
@@ -59,9 +57,7 @@ end
 
 Then /^Buy Mail Purchase Approved: Click OK button$/ do
   logger.info "Buy Mail Purchase Approved: Click OK button"
-  raise "Purchase Approved modal is nil! Check your test workflow." if @purchase_approved.nil?
-  raise "Purchase Approved modal is not present." unless @purchase_approved.present?
-
+  @purchase_approved.should be_truthy
   @purchase_approved.ok
 end
 

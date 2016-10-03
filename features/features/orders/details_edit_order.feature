@@ -27,7 +27,7 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
     Then Details: Set Width to 4
     Then Grid: Check row 1
     Then Grid: Check row 1
-    Then Details: Expect Service to be "Priority Mail Package"
+    Then Details: Expect Service to be Priority Mail Package
     Then Grid: Expect Ounces to be 2
     Then Grid: Expect Pounds to be 1
     Then Grid: Expect Insured Value to be $11.00

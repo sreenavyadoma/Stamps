@@ -11,7 +11,7 @@ Feature: Mail Balance
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Insure-For to $10.00
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Pause for 1 second
     Then Save Shipping Costs Data
     Then Print: Open Modal

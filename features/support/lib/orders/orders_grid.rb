@@ -25,15 +25,18 @@ module Stamps
             item_name: "Item Name",
             ship_from: "Ship From",
             service: "Service",
+            requested_service: "Requested Service",
             weight: "Weight",
             insured_value: "Insured Value",
+            tracking_service: "Tracking Service",
             reference_no: "Reference No.",
             cost_code: "Cost Code",
             order_status: "Order Status",
             date_printed: "Date Printed",
             ship_date: "Ship Date",
             tracking_no: "Tracking #",
-            order_total: "Order Total"
+            order_total: "Order Total",
+            source: "Source"
         }
 
         def sort_order column, sort_order
@@ -103,7 +106,7 @@ module Stamps
           column = column_number(column_number).to_s
           row = row.to_s
           css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row})>tbody>tr>td:nth-child(#{column})>div"
-          browser.div css: css
+          browser.div(css: css)
         end
 
         def grid_field_column_name column_name, row
@@ -116,14 +119,14 @@ module Stamps
           columns.each_with_index do |column_field, index|
             column_text = element_helper.text column_field
             if column_text == column_str
-              #logger.info "Grid:  #{column_str} is in column #{index+1}"
+              logger.info "Grid:  #{column_str} is in column #{index+1}"
               return index+1
             end
           end
         end
 
         def column_fields
-          @column_fields = browser.spans css: "div[componentid^=gridcolumn]"
+          @column_fields ||= browser.spans(css: "div[componentid^=gridcolumn]>div>div>div>div>span")
         end
 
         def row_number order_id
@@ -145,7 +148,7 @@ module Stamps
         end
 
         def row_div number
-          "row_div:  Number is nil".should eql "" if number.nil?
+          number.should be_truthy
           div = browser.div css: "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]"
           "Orders Grid Row number #{number} is not present".should eql "" unless div.present?
           div
@@ -615,28 +618,6 @@ module Stamps
         end
       end
 
-      class OrderTotal < Column
-        def scroll_into_view
-          scroll :order_total
-        end
-
-        def sort_ascending
-          sort_order :order_total, :sort_ascending
-        end
-
-        def sort_descending
-          sort_order :order_total, :sort_descending
-        end
-
-        def row row
-          grid_text :order_total, row
-        end
-
-        def data order_id
-          grid_text_by_id :order_total, order_id
-        end
-      end
-
       class Country < Column
         def scroll_into_view
           scroll :country
@@ -707,7 +688,7 @@ module Stamps
         end
       end
 
-      class Service < Column
+      class GridService < Column
         def scroll_into_view
           scroll :service
         end
@@ -726,6 +707,20 @@ module Stamps
 
         def data order_id
           grid_text_by_id :service, order_id
+        end
+      end
+
+      class RequestedService < Column
+        def scroll_into_view
+          scroll :requested_service
+        end
+
+        def row row
+          grid_text :requested_service, row
+        end
+
+        def data order_id
+          grid_text_by_id :requested_service, order_id
         end
       end
 
@@ -821,15 +816,15 @@ module Stamps
           check row_number order_id
         end
 
-        def edit_order_id order_id
+        def edit_order order_id
           edit order_id
         end
 
-        def check_order_id order_id
+        def check_order order_id
           check row_number(order_id)
         end
 
-        def uncheck_order_id order_id
+        def uncheck_order order_id
           uncheck row_number(order_id)
         end
 
@@ -867,7 +862,7 @@ module Stamps
           checkbox.checked?
         end
 
-        def order_id_checked? order_number
+        def order_checked? order_number
           scroll_into_view
           checked? row_number order_number
         end
@@ -935,8 +930,9 @@ module Stamps
         def is_next_to? left, right
           left_column_sym = GRID_COLUMNS.key left
           right_column_sym = GRID_COLUMNS.key right
-          raise "#{left_column_sym} is not a valid grid column!  Valid columns are: \n #{GRID_COLUMNS.values}" if left_column_sym.nil?
-          raise "#{right_column_sym} is not a valid grid column!  Valid columns are: \n #{GRID_COLUMNS.values}" if right_column_sym.nil?
+
+          left_column_sym.should be_truthy
+          right_column_sym.should be_truthy
 
           left_column_num = column_number left_column_sym
           right_column_num = column_number right_column_sym
@@ -944,14 +940,78 @@ module Stamps
         end
       end
 
+      class TrackingService < Column
+        def scroll_into_view
+          scroll :tracking_service
+        end
+
+        def sort_ascending
+          sort_order :tracking_service, :sort_ascending
+        end
+
+        def sort_descending
+          sort_order :tracking_service, :sort_descending
+        end
+
+        def row row
+          grid_text :tracking_service, row
+        end
+
+        def data order_id
+          grid_text_by_id :tracking_service, order_id
+        end
+      end
+
+      class OrderTotal < Column
+        def scroll_into_view
+          scroll :order_total
+        end
+
+        def sort_ascending
+          sort_order :order_total, :sort_ascending
+        end
+
+        def sort_descending
+          sort_order :order_total, :sort_descending
+        end
+
+        def row row
+          grid_text :order_total, row
+        end
+
+        def data order_id
+          grid_text_by_id :order_total, order_id
+        end
+      end
+
+      class GridSource < Column
+        def scroll_into_view
+          scroll :source
+        end
+
+        def sort_ascending
+          sort_order :source, :sort_ascending
+        end
+
+        def sort_descending
+          sort_order :source, :sort_descending
+        end
+
+        def row row
+          grid_text :source, row
+        end
+
+        def data order_id
+          grid_text_by_id :source, order_id
+        end
+      end
+
       # Orders Grid
       class OrdersGrid < Browser::Modal
-        #todo attr_reader for OrdersGrid
-
         attr_reader :anchor_element, :column, :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient,
                     :company, :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
-                    :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed,
-                    :ship_date, :tracking_no
+                    :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed, :tracking_service,
+                    :ship_date, :tracking_no, :requested_service, :source
 
         def initialize param
           super param
@@ -959,35 +1019,40 @@ module Stamps
           @anchor_element ||= ElementWrapper.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
 
           @column ||= GridColumns.new param
+
           @checkbox ||= GridCheckBox.new param
           @store ||= Store.new param
           @order_id ||= OrderId.new param
           @ship_cost ||= ShipCost.new param
-          @order_date ||= OrderDate.new param
           @age ||= Age.new param
+          @order_date ||= OrderDate.new param
           @recipient ||= Recipient.new param
           @company ||= Company.new param
+          @country ||= Country.new param
           @address ||= Address.new param
           @city ||= City.new param
           @state ||= State.new param
           @zip ||= Zip.new param
-          @country ||= Country.new param
           @phone ||= Phone.new param
           @email ||= Email.new param
           @qty ||= Qty.new param
           @item_sku ||= ItemSKU.new param
           @item_name ||= ItemName.new param
           @ship_from ||= ShipFrom.new param
-          @service ||= Service.new param
+          @service ||= GridService.new param
+          @requested_service ||= RequestedService.new param
           @weight ||= Weight.new param
           @insured_value ||= InsuredValue.new param
-          @reference_no ||= ReferenceNo.new param
-          @cost_code ||= CostCode.new param
+          @tracking_service ||= TrackingService.new param
           @order_status ||= OrderStatus.new param
           @date_printed ||= DatePrinted.new param
           @ship_date ||= ShipDate.new param
           @tracking_no ||= Tracking.new param
           @order_total ||= OrderTotal.new param
+          @source ||= GridSource.new param
+          # todo-rob These two are no longer a column in orders grid
+          @reference_no ||= ReferenceNo.new param
+          @cost_code ||= CostCode.new param
           @toolbar ||= Orders::Toolbar::Toolbar.new param
         end
 

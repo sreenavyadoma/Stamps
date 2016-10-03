@@ -5,7 +5,6 @@ Feature: Test Development
 
   @rob_dev
   Scenario:
-    Then Grid:  Order ID: Column: Check Reference Number
     Then Grid: Sort Order ID in Ascending Order
 
   Scenario:
@@ -37,7 +36,7 @@ Feature: Test Development
     Then Filter: Select Cancelled
     Then Filter: Select Awaiting Shipment
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to random zrtone 5 through 8
+    Then Details: Set Ship-To address to random zone 5 through 8
     Then Details: Set Email to random
     Then Details: Set Phone to random
     Then Details: Select Service Priority Mail Large Package
@@ -46,7 +45,7 @@ Feature: Test Development
     Then Details: Set Height to 1
     Then Details: Set Length to 1
     Then Details: Set Width to 1
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
     Then Details: Set Insure-For to $50.25
     Then Details: Add Item 1, Qty 1, ID random, Description random
 
@@ -63,8 +62,8 @@ Feature: Test Development
     Then Details: Set Height to 1
     Then Details: Set Length to 1
     Then Details: Set Width to 1
-    Then Details: Set Tracking to "Signature Required"
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to Signature Required
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Set Insure-For to $50.25
     Then Details: Add Item 1, Qty 1, ID random, Description random
 
@@ -74,7 +73,7 @@ Feature: Test Development
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Select Service Priority Mail Flat Rate Envelope
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Print: Print
     Then Filter: Select Shipped
     Then Grid: Expect Tracking Number is populated
@@ -85,7 +84,7 @@ Feature: Test Development
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Select Service Priority Mail Flat Rate Envelope
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
     Then Print: Print
     Then Filter: Select Shipped
     Then Grid: Expect Tracking Number is populated

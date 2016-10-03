@@ -33,7 +33,7 @@ module Stamps
 
       def initialize param
         super param
-        @text_area ||= TextBoxElement.new (browser.text_field id: "sdc-mainpanel-shiptotextarea-inputEl")
+        @text_area ||= TextBoxElement.new (browser.textarea id: "sdc-mainpanel-shiptotextarea-inputEl")
         @country ||= PostageCountry.new param
         @email ||= Email.new param
         @name ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptonamefield-inputEl")

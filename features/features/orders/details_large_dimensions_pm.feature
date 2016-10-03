@@ -19,7 +19,7 @@ Feature: Priority Mail and Large Dimensions
     Then Pause for 2 seconds
     Then Details: Expect Service Textbox to be enabled
     Then Pause for 1 second
-    Then Details: Expect Service to be ""
+    Then Details: Expect Service to be Priority Mail Package
     Then Pause for 1 second
     Then Details: Expect Service "Priority Mail Package" to be enabled
     Then Pause for 1 second

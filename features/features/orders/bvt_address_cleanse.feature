@@ -13,7 +13,7 @@ Feature:  BVT Address Cleansing
       | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 1
-    Then Details: Blur out of details form
+    Then Details: Blur out
     Then Pause for 2 seconds
     Then Grid: Expect Recipient to be Euan Davidson
     Then Grid: Expect Company to be Company Name

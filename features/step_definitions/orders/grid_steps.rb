@@ -8,15 +8,33 @@ Then /^Grid: Check Order ID (.*)$/ do |order_id|
   expectation = "does not exists" unless exists
   expectation.should eql "exists"
   logger.info "Order ID #{@order_id} #{expectation}!"
-  web_apps.orders.grid.checkbox.check_order_id @order_id
+  web_apps.orders.grid.checkbox.check_order @order_id
 end
 
-Then /^Grid: Expect Store Name to be (.*)$/ do |expectation|
-  logger.info "Grid: Expect Store Name to be #{expectation}"
+Then /^Grid: Expect Store to be (.*)$/ do |expectation|
+  logger.info "Grid: Expect Store to be #{expectation}"
   @store_name = (expectation.downcase.include? "random")?@store_name:expectation
   actual_value = web_apps.orders.grid.store.data @order_id
   logger.info "Test #{(actual_value==@store_name)?"Passed":"Failed"}"
   @store_name.should eql actual_value
+end
+
+Then /^Grid: Expect Order ID is the same as Details Form Order ID$/ do
+  logger.info "Grid: Expect Order ID is the same as Details Form Order ID"
+  details_order_id = web_apps.orders.details.toolbar.order_id
+  grid_order_id = web_apps.orders.grid.checkbox.row 1
+  logger.info "Test #{(details_order_id==grid_order_id)?"Passed":"Failed"}"
+  details_order_id.should eql grid_order_id
+end
+
+Then /^Grid: Expect Ship Cost is the same as Details Form Ship Cost$/ do
+  logger.info "Grid: Expect Ship Cost is the same as Details Form Ship Cost"
+
+  details_ship_cost = web_apps.orders.details.footer.total_ship_cost
+  grid_ship_cost = web_apps.orders.grid.ship_cost.data @order_id
+
+  logger.info "Test #{(details_ship_cost==grid_ship_cost)?"Passed":"Failed"}"
+  details_order_id.should eql grid_ship_cost
 end
 
 Then /^Set Orders Grid Row (\d+) to uncheck$/ do |row|
@@ -37,23 +55,25 @@ end
 When /^Grid: Check row (\d+)$/ do |row|
   logger.info "Edit Orders Grid row #{row}"
   web_apps.orders.grid.checkbox.check row
-  web_apps.orders.grid.checkbox.checked?.should be true
+  web_apps.orders.grid.checkbox.checked?(row).should be true
 end
 
 When /^Grid: Uncheck row (\d+)$/ do |row|
   logger.info "Uncheck row #{row} on the Orders Grid"
   web_apps.orders.grid.checkbox.uncheck row
-  web_apps.orders.grid.checkbox.checked?.should be false
+  web_apps.orders.grid.checkbox.checked?(row).should be false
 end
 
 Then /^Grid: Uncheck New Order ID$/ do
   logger.info "Grid: Uncheck New Order ID"
-  web_apps.orders.grid.checkbox.uncheck_order_id @order_id
+  web_apps.orders.grid.checkbox.uncheck_order @order_id
+  web_apps.orders.grid.checkbox.order_checked?(@order_id).should be false
 end
 
 Then /^Grid: Check New Order ID$/ do
   logger.info "Grid: Check New Order ID"
-  web_apps.orders.grid.checkbox.check_order_id @order_id
+  web_apps.orders.grid.checkbox.check_order @order_id
+  web_apps.orders.grid.checkbox.order_checked?(@order_id).should be true
 end
 
 Then /^Grid: Check Environment Order ID$/ do
@@ -113,7 +133,7 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
   @grid = web_apps.orders.grid
 
   row2_order_id = @grid.order_id.row 2
-  logger.info @grid.checkbox.order_id_checked? row2_order_id
+  logger.info @grid.checkbox.order_checked? row2_order_id
 
   @grid.checkbox.check 1
   logger.info @grid.checkbox.checked? 1
@@ -187,9 +207,7 @@ end
 Then /^Grid: Expect Age to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Age to be #{expectation}"
   begin
-    if @order_id.nil?
-      @order_id = web_apps.orders.grid.order_id.row 1
-    end
+    @order_id.should be_truthy
     actual = web_apps.orders.grid.age.data @order_id
     5.times do
       break if actual.eql? expectation
@@ -201,28 +219,22 @@ Then /^Grid: Expect Age to be (.*)$/ do |expectation|
   end unless expectation.length == 0
 end
 
-Then /^Grid: Expect Order Date to be (.*)$/ do |expectation|
-  logger.info "Grid: Expect Order Date to be #{expectation}"
-  begin
-    if @order_id.nil?
-      @order_id = web_apps.orders.grid.order_id.row 1
-    end
-    5.times do
-      actual = web_apps.orders.grid.order_date.data @order_id
-      break if actual.eql? expectation
-     end
+Then /^Grid: Expect Order Date is populated$/ do
+  logger.info "Grid: Expect Order Date is populated"
+  @order_id.should be_truthy
+  5.times do
     actual = web_apps.orders.grid.order_date.data @order_id
-    logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
-    actual.should eql expectation
-  end unless expectation.length == 0
+    break if actual.size > 4
+  end
+  actual = web_apps.orders.grid.order_date.data @order_id
+  logger.info "Test #{(actual.size > 4)?"Passed":"Failed"}"
+  actual.size.should be > 4
 end
 
 Then /^Grid: Expect Recipient to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Recipient to be #{expectation}"
   begin
-    if @order_id.nil?
-      @order_id = web_apps.orders.grid.order_id.row 1
-    end
+    @order_id.should be_truthy
     10.times do
       actual = web_apps.orders.grid.recipient.data @order_id
       break if actual.eql? expectation
@@ -245,7 +257,7 @@ Then /^Grid: Expect Company to be (.*)$/ do |expectation|
   end unless expectation.length == 0
 end
 
-Then /^Grid: Expect Address to be ([\w\s-]+)$/ do |expectation|
+Then /^Grid: Expect Address to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Address to be #{expectation}"
   begin
     10.times do
@@ -258,7 +270,7 @@ Then /^Grid: Expect Address to be ([\w\s-]+)$/ do |expectation|
   end unless expectation.length == 0
 end
 
-Then /^Grid: Expect City to be ([\w\s]+)$/ do |expectation|
+Then /^Grid: Expect City to be (.*)$/ do |expectation|
   logger.info "Grid: Expect City to be #{expectation}"
   begin
     10.times do
@@ -319,7 +331,7 @@ Then /^Grid: Expect Column (\w+) appears to left of (\w+)$/ do |left_column, rig
   expectation.should eql "true"
 end
 
-Then /^Grid: Expect Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expectation|
+Then /^Grid: Expect Email to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Email to be #{expectation}"
   begin
     10.times do
@@ -332,7 +344,7 @@ Then /^Grid: Expect Email to be ([\S]+@[\S]+\.[a-z]{3})$/ do |expectation|
   end unless expectation.length == 0
 end
 
-Then /^Grid: Expect Phone to be ([\(]?[0-9]{3}[\)]?[\s]?[0-9]{3}[\s-]?[0-9]{4})$/ do |expectation|
+Then /^Grid: Expect Phone to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Phone to be #{expectation}"
   begin
     10.times do
@@ -517,6 +529,21 @@ Then /^Grid: Expect Cost Code to be (.+)$/ do |expectation|
       break if actual.eql? expectation
       actual = web_apps.orders.grid.cost_code.data @order_id
      end
+    logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+    actual.should eql expectation
+  end unless expectation.length == 0
+end
+
+Then /^Grid: Expect Tracking Service to be (.+)$/ do |expectation|
+  logger.info "Grid: Expect Tracking Service to be #{expectation}"
+  begin
+    10.times do
+      actual = web_apps.orders.grid.tracking_service.data @order_id
+      sleep 1
+      break if actual == expectation
+    end
+
+    actual = web_apps.orders.grid.tracking_service.data @order_id
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0

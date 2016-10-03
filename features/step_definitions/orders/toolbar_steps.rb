@@ -1,7 +1,7 @@
 Then /^Toolbar: Add$/ do
   logger.info "Toolbar: Add"
   web_apps.orders.grid.checkbox.uncheck 1
-  @order_details = web_apps.orders.toolbar.add.order_details #todo-rob refactor click
+  @order_details = web_apps.orders.toolbar.add.order_details
   @order_id = @order_details.toolbar.order_id
   step "Save Shipping Costs Data"
   logger.info "New Order ID #{@order_id}"
@@ -15,7 +15,7 @@ Then /^Toolbar: Move to Shipped$/ do
   grid = web_apps.orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
   grid.order_date.sort_descending
-  grid.checkbox.check_order_id @order_id
+  grid.checkbox.check_order @order_id
   grid.toolbar.move.to_shipped.cancel
   grid.toolbar.move.to_shipped.move
 end
@@ -25,7 +25,7 @@ Then /^Toolbar: Move to Canceled$/ do
   grid = web_apps.orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
   grid.order_date.sort_descending
-  grid.checkbox.check_order_id @order_id
+  grid.checkbox.check_order @order_id
   grid.toolbar.move.to_canceled.cancel
   grid.toolbar.move.to_canceled.move
 end
@@ -36,15 +36,8 @@ Then /^Toolbar: Refresh Orders$/ do
 end
 
 Then /^Print: Expect Print Modal is present$/ do
-  expectation = "present"
-  if web_apps.orders.toolbar.print_btn.print_modal.nil?
-    expectation = "not present"
-  else
-    expectation = "not present" unless web_apps.orders.toolbar.print_btn.print_modal.present?
-  end
-
-  logger.info "Test #{(expectation=="present")?"Passed":"Failed"}"
-  expectation.should eql "present"
+  logger.info "Test #{(web_apps.orders.toolbar.print_btn.print_modal.present?)?"Passed":"Failed"}"
+  web_apps.orders.toolbar.print_btn.print_modal.present?.should be_truthy
 end
 
 Then /^Print: Print$/ do

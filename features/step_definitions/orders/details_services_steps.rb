@@ -107,11 +107,11 @@ Then /^Details: Expect Service to be Priority Mail Regional Rate Box B$/ do
   step "Details: Expect Service to be \"Priority Mail Regional Rate Box B\""
 end
 
-Then /^Details: Select Service Priority Mail Express Package\/Flat\/Thick Envelope$/ do
+Then /^Details: Select Service Priority Mail Express Package$/ do
   step "Details: Set Service to Priority Mail Express Package"
 end
 
-Then /^Details: Expect Service to be Priority Mail Express Package\/Flat\/Thick Envelope$/ do
+Then /^Details: Expect Service to be Priority Mail Express Package$/ do
   step "Details: Expect Service to be \"Priority Mail Express Package\""
 end
 
@@ -290,8 +290,13 @@ end
 Then /^Details: Set Service to (.*)$/ do |service|
   logger.info "Details: Set Service to #{service}"
   web_apps.orders.details.service.select service
+  10.times do
+    web_apps.orders.details.blur_out
+    break if web_apps.orders.details.service.cost.to_f > 0
+  end
   service_cost = web_apps.orders.details.service.cost
-  @details_form_data[:insure_for_cost] = service_cost
+  @details_form_data[:service_cost] = service_cost
+  step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Expect Service to be \"(.*)\"$/ do |expectation|

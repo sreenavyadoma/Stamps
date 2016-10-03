@@ -26,7 +26,7 @@ Feature: 150 orders
     * Details: Set Ounces to 2
     * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
@@ -37,7 +37,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 3
     * Details: Select Service Priority Mail Large/Thick Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -46,7 +46,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 4
     * Details: Select Service Priority Mail Package
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -56,7 +56,7 @@ Feature: 150 orders
     * Details: Set Pounds to 5
     * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -65,7 +65,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 6
     * Details: Select Service Priority Mail Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -75,7 +75,7 @@ Feature: 150 orders
     * Details: Set Ounces to 7
     * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -84,7 +84,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 8
     * Details: Select Service Priority Mail Legal Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -94,7 +94,7 @@ Feature: 150 orders
     * Details: Set Ounces to 9
     * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -104,7 +104,7 @@ Feature: 150 orders
     * Details: Set Ounces to 10
     * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -114,7 +114,7 @@ Feature: 150 orders
     * Details: Set Pounds to 11
     * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -124,7 +124,7 @@ Feature: 150 orders
     * Details: Set Ounces to 12
     * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -134,7 +134,7 @@ Feature: 150 orders
     * Details: Set Ounces to 13
     * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -143,7 +143,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 14
     * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
@@ -153,8 +153,8 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
-    * Details: Set Tracking to "Signature Required"
+    Then Details: Select Service Priority Mail Express Package
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -163,7 +163,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 16
     * Details: Select Service Priority Mail Express Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -172,7 +172,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 17
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -181,7 +181,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 18
     * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -190,7 +190,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 19
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Media Mail
 
@@ -202,7 +202,7 @@ Feature: 150 orders
     * Details: Set Pounds to 20
     * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Parcel Select
 
@@ -214,7 +214,7 @@ Feature: 150 orders
     * Details: Set Pounds to 21
     * Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -224,7 +224,7 @@ Feature: 150 orders
     * Details: Set Pounds to 22
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -234,7 +234,7 @@ Feature: 150 orders
     * Details: Set Pounds to 23
     * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # International
 
@@ -300,7 +300,7 @@ Feature: 150 orders
     * Details: Set Ounces to 2
     * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
@@ -311,7 +311,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 3
     * Details: Select Service Priority Mail Large/Thick Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -320,7 +320,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 4
     * Details: Select Service Priority Mail Package
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -330,7 +330,7 @@ Feature: 150 orders
     * Details: Set Pounds to 5
     * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -339,7 +339,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 6
     * Details: Select Service Priority Mail Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -349,7 +349,7 @@ Feature: 150 orders
     * Details: Set Ounces to 7
     * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -358,7 +358,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 8
     * Details: Select Service Priority Mail Legal Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -368,7 +368,7 @@ Feature: 150 orders
     * Details: Set Ounces to 9
     * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -378,7 +378,7 @@ Feature: 150 orders
     * Details: Set Ounces to 10
     * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -388,7 +388,7 @@ Feature: 150 orders
     * Details: Set Pounds to 11
     * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -398,7 +398,7 @@ Feature: 150 orders
     * Details: Set Ounces to 12
     * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -408,7 +408,7 @@ Feature: 150 orders
     * Details: Set Ounces to 13
     * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -417,7 +417,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 14
     * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
@@ -427,8 +427,8 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
-    * Details: Set Tracking to "Signature Required"
+    Then Details: Select Service Priority Mail Express Package
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -437,7 +437,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 16
     * Details: Select Service Priority Mail Express Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -446,7 +446,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 17
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -455,7 +455,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 18
     * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -464,7 +464,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 19
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Media Mail
 
@@ -476,7 +476,7 @@ Feature: 150 orders
     * Details: Set Pounds to 20
     * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Parcel Select
 
@@ -488,7 +488,7 @@ Feature: 150 orders
     * Details: Set Pounds to 21
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -498,7 +498,7 @@ Feature: 150 orders
     * Details: Set Pounds to 22
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -508,7 +508,7 @@ Feature: 150 orders
     * Details: Set Pounds to 23
     * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # International
 
@@ -574,7 +574,7 @@ Feature: 150 orders
     * Details: Set Ounces to 2
     * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
@@ -585,7 +585,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 3
     * Details: Select Service Priority Mail Large/Thick Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -594,7 +594,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 4
     * Details: Select Service Priority Mail Package
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -604,7 +604,7 @@ Feature: 150 orders
     * Details: Set Pounds to 5
     * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -613,7 +613,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 6
     * Details: Select Service Priority Mail Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -623,7 +623,7 @@ Feature: 150 orders
     * Details: Set Ounces to 7
     * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -632,7 +632,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 8
     * Details: Select Service Priority Mail Legal Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -642,7 +642,7 @@ Feature: 150 orders
     * Details: Set Ounces to 9
     * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -652,7 +652,7 @@ Feature: 150 orders
     * Details: Set Ounces to 10
     * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -662,7 +662,7 @@ Feature: 150 orders
     * Details: Set Pounds to 11
     * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -672,7 +672,7 @@ Feature: 150 orders
     * Details: Set Ounces to 12
     * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -682,7 +682,7 @@ Feature: 150 orders
     * Details: Set Ounces to 13
     * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -690,7 +690,7 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
     * Details: Set Ounces to 14
     * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
@@ -700,8 +700,8 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
-    * Details: Set Tracking to "Signature Required"
+    Then Details: Select Service Priority Mail Express Package
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -710,7 +710,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 16
     * Details: Select Service Priority Mail Express Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -719,7 +719,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 17
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -728,7 +728,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 18
     * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -737,7 +737,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 19
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Media Mail
 
@@ -749,7 +749,7 @@ Feature: 150 orders
     * Details: Set Pounds to 20
     * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Parcel Select
 
@@ -761,7 +761,7 @@ Feature: 150 orders
     * Details: Set Pounds to 21
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -771,7 +771,7 @@ Feature: 150 orders
     * Details: Set Pounds to 22
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -781,7 +781,7 @@ Feature: 150 orders
     * Details: Set Pounds to 23
     * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # International
 
@@ -847,7 +847,7 @@ Feature: 150 orders
     * Details: Set Ounces to 2
     * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
@@ -858,7 +858,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 3
     * Details: Select Service Priority Mail Large/Thick Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -867,7 +867,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 4
     * Details: Select Service Priority Mail Package
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -877,7 +877,7 @@ Feature: 150 orders
     * Details: Set Pounds to 5
     * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -886,7 +886,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 6
     * Details: Select Service Priority Mail Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -896,7 +896,7 @@ Feature: 150 orders
     * Details: Set Ounces to 7
     * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -905,7 +905,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 8
     * Details: Select Service Priority Mail Legal Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -915,7 +915,7 @@ Feature: 150 orders
     * Details: Set Ounces to 9
     * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -925,7 +925,7 @@ Feature: 150 orders
     * Details: Set Ounces to 10
     * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -935,7 +935,7 @@ Feature: 150 orders
     * Details: Set Pounds to 11
     * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -945,7 +945,7 @@ Feature: 150 orders
     * Details: Set Ounces to 12
     * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -955,7 +955,7 @@ Feature: 150 orders
     * Details: Set Ounces to 13
     * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -964,7 +964,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 14
     * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
@@ -974,8 +974,8 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
-    * Details: Set Tracking to "Signature Required"
+    Then Details: Select Service Priority Mail Express Package
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -984,7 +984,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 16
     * Details: Select Service Priority Mail Express Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -993,7 +993,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 17
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1002,7 +1002,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 18
     * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1011,7 +1011,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 19
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Media Mail
 
@@ -1023,7 +1023,7 @@ Feature: 150 orders
     * Details: Set Pounds to 20
     * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Parcel Select
 
@@ -1035,7 +1035,7 @@ Feature: 150 orders
     * Details: Set Pounds to 21
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1045,7 +1045,7 @@ Feature: 150 orders
     * Details: Set Pounds to 22
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1055,7 +1055,7 @@ Feature: 150 orders
     * Details: Set Pounds to 23
     * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # International
 
@@ -1121,7 +1121,7 @@ Feature: 150 orders
     * Details: Set Ounces to 2
     * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
@@ -1132,7 +1132,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 3
     * Details: Select Service Priority Mail Large/Thick Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1141,7 +1141,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 4
     * Details: Select Service Priority Mail Package
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1151,7 +1151,7 @@ Feature: 150 orders
     * Details: Set Pounds to 5
     * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1160,7 +1160,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 6
     * Details: Select Service Priority Mail Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1170,7 +1170,7 @@ Feature: 150 orders
     * Details: Set Ounces to 7
     * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1179,7 +1179,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 8
     * Details: Select Service Priority Mail Legal Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1189,7 +1189,7 @@ Feature: 150 orders
     * Details: Set Ounces to 9
     * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1199,7 +1199,7 @@ Feature: 150 orders
     * Details: Set Ounces to 10
     * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1209,7 +1209,7 @@ Feature: 150 orders
     * Details: Set Pounds to 11
     * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1219,7 +1219,7 @@ Feature: 150 orders
     * Details: Set Ounces to 12
     * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1229,7 +1229,7 @@ Feature: 150 orders
     * Details: Set Ounces to 13
     * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1238,7 +1238,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 14
     * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
@@ -1248,8 +1248,8 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
-    * Details: Set Tracking to "Signature Required"
+    Then Details: Select Service Priority Mail Express Package
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1258,7 +1258,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 16
     * Details: Select Service Priority Mail Express Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1267,7 +1267,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 17
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1276,7 +1276,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 18
     * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1285,7 +1285,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 19
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Media Mail
 
@@ -1297,7 +1297,7 @@ Feature: 150 orders
     * Details: Set Pounds to 20
     * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Parcel Select
 
@@ -1309,7 +1309,7 @@ Feature: 150 orders
     * Details: Set Pounds to 21
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1319,7 +1319,7 @@ Feature: 150 orders
     * Details: Set Pounds to 22
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1329,7 +1329,7 @@ Feature: 150 orders
     * Details: Set Pounds to 23
     * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # International
 
@@ -1395,7 +1395,7 @@ Feature: 150 orders
     * Details: Set Ounces to 2
     * Details: Select Service First-Class Mail Package/Thick Envelope
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
@@ -1406,7 +1406,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 3
     * Details: Select Service Priority Mail Large/Thick Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1415,7 +1415,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 4
     * Details: Select Service Priority Mail Package
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1425,7 +1425,7 @@ Feature: 150 orders
     * Details: Set Pounds to 5
     * Details: Select Service Priority Mail Large Package
     * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1434,7 +1434,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 6
     * Details: Select Service Priority Mail Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1444,7 +1444,7 @@ Feature: 150 orders
     * Details: Set Ounces to 7
     * Details: Select Service Priority Mail Padded Flat Rate Envelope
     * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1453,7 +1453,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 8
     * Details: Select Service Priority Mail Legal Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1463,7 +1463,7 @@ Feature: 150 orders
     * Details: Set Ounces to 9
     * Details: Select Service Priority Mail Small Flat Rate Box
     * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1473,7 +1473,7 @@ Feature: 150 orders
     * Details: Set Ounces to 10
     * Details: Select Service Priority Mail Medium Flat Rate Box
     * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1483,7 +1483,7 @@ Feature: 150 orders
     * Details: Set Pounds to 11
     * Details: Select Service Priority Mail Large Flat Rate Box
     * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1493,7 +1493,7 @@ Feature: 150 orders
     * Details: Set Ounces to 12
     * Details: Select Service Priority Mail Regional Rate Box A
     * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1503,7 +1503,7 @@ Feature: 150 orders
     * Details: Set Ounces to 13
     * Details: Select Service Priority Mail Regional Rate Box B
     * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1512,7 +1512,7 @@ Feature: 150 orders
 
     * Details: Set Ounces to 14
     * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
@@ -1522,8 +1522,8 @@ Feature: 150 orders
     * Details: Set Ship-To to Random Address Between Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
-    * Details: Set Tracking to "Signature Required"
+    Then Details: Select Service Priority Mail Express Package
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1532,7 +1532,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 16
     * Details: Select Service Priority Mail Express Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1541,7 +1541,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 17
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1550,7 +1550,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 18
     * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1559,7 +1559,7 @@ Feature: 150 orders
 
     * Details: Set Pounds to 19
     * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Media Mail
 
@@ -1571,7 +1571,7 @@ Feature: 150 orders
     * Details: Set Pounds to 20
     * Details: Select Service Media Mail Package/Flat/Thick Envelope
     * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # Parcel Select
 
@@ -1583,7 +1583,7 @@ Feature: 150 orders
     * Details: Set Pounds to 21
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to "USPS Tracking"
+    * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1593,7 +1593,7 @@ Feature: 150 orders
     * Details: Set Pounds to 22
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
     * Expect new Order ID created
@@ -1603,7 +1603,7 @@ Feature: 150 orders
     * Details: Set Pounds to 23
     * Details: Select Service Parcel Select Ground Oversized Package
     * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to "Signature Required"
+    * Details: Set Tracking to Signature Required
 
     # International
 

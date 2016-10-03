@@ -63,7 +63,7 @@ Then /^Filter: Move order to Awaiting Shipment$/ do
   grid = web_apps.orders.grid
   raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
   grid.order_date.sort_descending
-  grid.checkbox.check_order_id @order_id
+  grid.checkbox.check_order @order_id
   grid.toolbar.move.to_awaiting_shipment.cancel
   grid.toolbar.move.to_awaiting_shipment.move
 end

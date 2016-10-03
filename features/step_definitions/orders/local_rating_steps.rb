@@ -5,7 +5,7 @@ Then /^Verify Local Rating$/ do |table|
   parameter_array = table.hashes
   results = Hash.new
 
-  parameter_array.each_with_index { |element, index|
+  parameter_array.each_with_index do |element, index|
     logger.info "  --------------------------------------------------------------------------- "
     logger.info "  Test #{index}  ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lbs"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
     logger.info "  --------------------------------------------------------------------------- "
@@ -21,7 +21,7 @@ Then /^Verify Local Rating$/ do |table|
 
     10.times do
       @order_details.blur_out
-      total = @order_details.total.cost
+      total = @order_details.footer.total_ship_cost
       if total.eql? element["total"]
         results[index] = total.eql? element["total"]
         break
@@ -29,14 +29,14 @@ Then /^Verify Local Rating$/ do |table|
         results[index] = total.eql? element["total"]
       end
     end
-    total = @order_details.total.cost
+    total = @order_details.footer.total_ship_cost
 
     expected_total_amount = element["total"]
 
     5.times do
       web_apps.orders.details.blur_out
       sleep 1
-      actual = web_apps.orders.details.total.cost
+      actual = web_apps.orders.details.footer.total_ship_cost
       web_apps.orders.details.blur_out
       web_apps.orders.details.blur_out
       sleep 1
@@ -47,13 +47,13 @@ Then /^Verify Local Rating$/ do |table|
     logger.info "  Test #{index} #{(results[index])?"Passed":"Failed"}"
     logger.info "  --------------------------------------------------------------------------- "
 
-    actual = web_apps.orders.details.total.cost
+    actual = web_apps.orders.details.footer.total_ship_cost
     actual.should == expected_total_amount
 
     if actual != expected_total_amount
       raise "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lbs"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |"
     end
-  }
+  end
 
 end
 

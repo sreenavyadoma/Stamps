@@ -21,7 +21,7 @@ Feature: Details Ship Cost Total
     Then Details: Set Insure-For to $58.00
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1

@@ -15,39 +15,35 @@ end
 
 Then /^Import Orders: Import$/ do
   logger.info "Import Orders: Import"
-  step "Toolbar: Import" if @import_web_apps.orders.nil?
-
+  @import_successful.should be_truthy
   @import_successful = @import_web_apps.orders.import
 end
 
-Then /^Import Orders: Expect Order Number (.*) was imported$/ do |order_number|
-  raise "Import failed.  Success modal did not show up." if @import_successful.nil?
+Then /^Import Orders: Expect Order Number (.*) was imported$/ do
+  @import_successful.should be_truthy
   @import_successful.window_title.should eql "Success"
 end
 
 Then /^Import Orders: Expect Import is successful$/ do
-  raise "Import failed.  Success modal did not show up." if @import_successful.nil?
+  @import_successful.should be_truthy
   @import_successful.window_title.should eql "Success"
 end
 
 Then /^Import Orders: Success: OK$/ do
   logger.info "Import Orders: Success: OK"
-  step "Toolbar: Import" if @import_web_apps.orders.nil?
-
+  @import_successful.should be_truthy
   @import_successful.ok
 end
 
 Then /^Import Orders: Cancel$/ do
   logger.info "Import Orders: Cancel"
-  step "Toolbar: Import" if @import_web_apps.orders.nil?
-
+  @import_successful.should be_truthy
   @import_web_apps.orders.cancel
 end
 
 Then /^Import Orders: Download sample file$/ do
   logger.info "Import Orders: Download sample file"
-  step "Toolbar: Import" if @import_web_apps.orders.nil?
-
+  @import_successful.should be_truthy
   @import_web_apps.orders.download_sample_file
 end
 

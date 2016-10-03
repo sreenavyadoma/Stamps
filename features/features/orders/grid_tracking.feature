@@ -13,7 +13,7 @@ Feature: Grid: Tracking & Order Status
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Select Service Priority Mail Large Package
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
@@ -29,7 +29,7 @@ Feature: Grid: Tracking & Order Status
     Then Details: Set Ship-To to Random Address Between Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Select Service Priority Mail Large Package
-    Then Details: Set Tracking to "Signature Required"
+    Then Details: Set Tracking to Signature Required
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"

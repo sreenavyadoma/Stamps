@@ -61,6 +61,96 @@ module Stamps
         end
       end
 
+      class ShipToTextArea < TextBoxElement
+        def full_address
+          element.attribute_value("value")
+        end
+
+        def recipient_name
+          address = full_address
+          address_arr = address.split("\n")
+          address_arr.size.should be > 2
+          address_arr[0].strip
+        end
+
+        def company_name
+          address = full_address
+          address_arr = address.split("\n")
+          address_arr.size.should equal 4
+          address_arr[1].strip
+        end
+
+        def street_address
+          address = full_address
+          address_arr = address.split("\n")
+          if address_arr.size == 3
+            addy = address_arr[1]
+            addy.strip
+          elsif address_arr.size == 4
+            addy = address_arr[2]
+            addy.strip
+          else
+            address_arr.size.should be > 2
+          end
+        end
+
+        def city
+          address = full_address
+          address_arr = address.split("\n")
+          if address_arr.size == 3
+            last_line = address_arr[2].strip
+          elsif address_arr.size == 4
+            last_line = address_arr[3].strip
+          else
+            address_arr.size.should be > 2
+          end
+          last_line_arr = last_line.split(",")
+          last_line_arr.size.should equal 2
+          city = last_line_arr[0]
+          city
+        end
+
+        def state
+          address = full_address
+          address_arr = address.split("\n")
+          if address_arr.size == 3
+            last_line = address_arr[2].strip
+          elsif address_arr.size == 4
+            last_line = address_arr[3].strip
+          else
+            address_arr.size.should be > 2
+          end
+          last_line_arr = last_line.split(",")
+          last_line_arr.size.should equal 2
+          city_zip = last_line_arr[1].strip
+          state = city_zip.split(" ")[0]
+          state
+        end
+
+        def zip_plus_4
+          address = full_address
+          address_arr = address.split("\n")
+          if address_arr.size == 3
+            last_line = address_arr[2].strip
+          elsif address_arr.size == 4
+            last_line = address_arr[3].strip
+          else
+            address_arr.size.should be > 2
+          end
+          last_line_arr = last_line.split(",")
+          last_line_arr.size.should equal 2
+          city_zip = last_line_arr[1].strip
+          zip = city_zip.split(" ")[1]
+          zip
+        end
+
+        def zip_code
+          code = zip_plus_4.split("-")
+          code.size.should equal 2
+          code[0]
+        end
+      end
+
       class ShipToFields < DetailsForm
         attr_reader :country, :ship_to_dd, :less
 
@@ -72,10 +162,11 @@ module Stamps
         end
 
         def text_area
-          field = browser.text_field(name: "freeFormAddress")
+          show_address_details
+          field = browser.textarea(name: "freeFormAddress")
           error_field = browser.a css: "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
           error_field_attribute = "data-errorqtip"
-          TextBoxElement.new field, error_field, error_field_attribute
+          ShipToTextArea.new field, error_field, error_field_attribute
         end
 
         def hide_address_details
@@ -1555,7 +1646,7 @@ module Stamps
             end
           }
 
-          stop_test "Unable to obtain Order ID from Single Order Details Form"
+          "Unable to obtain Order ID from Single Order Details Form".should eql ""
         end
       end
 
@@ -1566,7 +1657,7 @@ module Stamps
           @label ||= ElementWrapper.new browser.strong(text: 'Total Ship Cost:')
         end
 
-        def cost
+        def total_ship_cost
           cost_label = ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm]>div>div>div>label[class*=total_cost]")
           10.times do
             begin
@@ -1596,13 +1687,12 @@ module Stamps
       end
 
       class SingleOrderDetails < DetailsForm
-        #todo add more accessors
         attr_reader :body, :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions,
-                    :customs_form, :total, :customs, :item_grid, :reference_no, :collapsed_details
+                    :customs_form, :footer, :customs, :item_grid, :reference_no, :collapsed_details
 
         def initialize param
           super param
-          @body = ElementWrapper.new (browser.div css: "div[id^=singleOrderDetailsForm][id$=body]")
+          @body = ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]")
           @insure_for ||= InsureFor.new param
           @ship_from ||= ShipFromAddress.new param
           @toolbar ||= DetailsToolbar.new param
@@ -1612,7 +1702,7 @@ module Stamps
           @tracking ||= TrackingDropDown.new param
           @dimensions ||= Dimensions.new param
           @customs_form ||= CustomsForm.new param
-          @total ||= DetailsFooter.new param
+          @footer ||= DetailsFooter.new param
           @customs ||= CustomsFields.new param
           @item_grid ||= DetailsItemGrid.new param
           @reference_no ||= TextBoxElement.new browser.label(text: 'Reference #:')#.parent.div.div.div.div.input

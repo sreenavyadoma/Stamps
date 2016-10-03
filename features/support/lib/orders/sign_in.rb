@@ -110,7 +110,7 @@ module Stamps
             raise "Invalid parameter. Usage: sign_in :default or sign_in username,password"
         end
 
-        raise "Username or Password is not set. Check your cucumber.yml file or Jenkins job." if username.nil? || password.nil?
+        username.should be_truthy
 
         logger.info "Username: #{username}"
         logger.info "Username: #{username}"

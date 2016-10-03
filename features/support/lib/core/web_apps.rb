@@ -11,7 +11,7 @@ module Stamps
     end
 
     def visit page
-      raise "Don't forget to LAUNCH YOUR BROWSER FIRST!" if browser.nil?
+      browser.should_not be_nil
 
       case page
         when :orders
@@ -53,7 +53,7 @@ module Stamps
 
   class StampsWebAppsSignIn < Browser::Modal
     def visit page
-      raise "Don't forget to LAUNCH YOUR BROWSER FIRST!" if browser.nil?
+      browser.should_not be_nil
 
       case page
         when :orders

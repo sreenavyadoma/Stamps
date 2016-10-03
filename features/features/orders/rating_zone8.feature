@@ -17,19 +17,19 @@ Feature: Local Rating test for zone 8
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service First-Class Mail Package/Thick Envelope
     Then Details: Set Weight to 0 lbs 10 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $3.35
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Large/Thick Envelope
     Then Details: Set Weight to 26 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $63.49
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Package
     Then Details: Set Weight to 18 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Set Length to 8
     Then Details: Set Width to 16
     Then Details: Set Height to 9
@@ -38,7 +38,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Weight to 32 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Set Length to 30
     Then Details: Set Width to 15
     Then Details: Set Height to 15
@@ -47,85 +47,85 @@ Feature: Local Rating test for zone 8
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Weight to 53 lbs 3 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $5.75
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Padded Flat Rate Envelope
     Then Details: Set Weight to 25 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $6.10
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Legal Flat Rate Envelope
     Then Details: Set Weight to 37 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $5.75
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Small Flat Rate Box
     Then Details: Set Weight to 61 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $6.10
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Medium Flat Rate Box
     Then Details: Set Weight to 40 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $11.95
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Large Flat Rate Box
     Then Details: Set Weight to 35 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $16.35
 
     Then Details: Set Ship-To to Random Address in Zone 8
-    Then Details: Select Service Priority Mail Express Package/Flat/Thick Envelope
+    Then Details: Select Service Priority Mail Express Package
     Then Details: Set Weight to 56 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $274.05
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Express Flat Rate Envelope
     Then Details: Set Weight to 4 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $20.66
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Weight to 21 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $20.66
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Priority Mail Express Legal Flat Rate Envelope
     Then Details: Set Weight to 70 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $20.66
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Set Weight to 39 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $21.72
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 12 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $40.14
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 24 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $60.47
 
     Then Details: Set Ship-To to Random Address in Zone 8
     Then Details: Select Service Parcel Select Ground Oversized Package
     Then Details: Set Weight to 7 lbs 0 oz
-    Then Details: Set Tracking to "USPS Tracking"
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total to be $169.87
 
     Then Sign out

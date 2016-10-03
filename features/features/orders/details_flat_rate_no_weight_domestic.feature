@@ -24,7 +24,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Random Address in Zone 1
     Then Details: Select Service Priority Mail Flat Rate Envelope
-    Then Details: Expect Service to be "Priority Mail Flat Rate Envelope"
+    Then Details: Expect Service to be Priority Mail Flat Rate Envelope
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail
@@ -34,7 +34,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Padded Flat Rate Envelope
     Then Details: Select Service Priority Mail Padded Flat Rate Envelope
-    Then Details: Expect Service to be "Priority Mail Padded Flat Rate Envelope"
+    Then Details: Expect Service to be Priority Mail Padded Flat Rate Envelope
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail
@@ -44,7 +44,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Legal Flat Rate Envelope
     Then Details: Select Service Priority Mail Legal Flat Rate Envelope
-    Then Details: Expect Service to be "Priority Mail Legal Flat Rate Envelope"
+    Then Details: Expect Service to be Priority Mail Legal Flat Rate Envelope
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail
@@ -54,7 +54,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Small Flat Rate Box
     Then Details: Select Service Priority Mail Small Flat Rate Box
-    Then Details: Expect Service to be "Priority Mail Small Flat Rate Box"
+    Then Details: Expect Service to be Priority Mail Small Flat Rate Box
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail
@@ -64,7 +64,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Medium Flat Rate Box
     Then Details: Select Service Priority Mail Medium Flat Rate Box
-    Then Details: Expect Service to be "Priority Mail Medium Flat Rate Box"
+    Then Details: Expect Service to be Priority Mail Medium Flat Rate Box
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail
@@ -74,7 +74,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Large Flat Rate Box
     Then Details: Select Service Priority Mail Large Flat Rate Box
-    Then Details: Expect Service to be "Priority Mail Large Flat Rate Box"
+    Then Details: Expect Service to be Priority Mail Large Flat Rate Box
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail
@@ -84,7 +84,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Regional Rate Box A
     Then Details: Select Service Priority Mail Regional Rate Box A
-    Then Details: Expect Service to be "Priority Mail Regional Rate Box A"
+    Then Details: Expect Service to be Priority Mail Regional Rate Box A
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail
@@ -94,7 +94,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Regional Rate Box B
     Then Details: Select Service Priority Mail Regional Rate Box B
-    Then Details: Expect Service to be "Priority Mail Regional Rate Box B"
+    Then Details: Expect Service to be Priority Mail Regional Rate Box B
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail
@@ -104,7 +104,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Express Flat Rate Envelope
     Then Details: Select Service Priority Mail Express Flat Rate Envelope
-    Then Details: Expect Service to be "Priority Mail Express Flat Rate Envelope"
+    Then Details: Expect Service to be Priority Mail Express Flat Rate Envelope
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail Express
@@ -114,7 +114,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Express Padded Flat Rate Envelope
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    Then Details: Expect Service to be "Priority Mail Express Padded Flat Rate Envelope"
+    Then Details: Expect Service to be Priority Mail Express Padded Flat Rate Envelope
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail Express
@@ -124,7 +124,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Express Legal Flat Rate Envelope
     Then Details: Select Service Priority Mail Express Legal Flat Rate Envelope
-    Then Details: Expect Service to be "Priority Mail Express Legal Flat Rate Envelope"
+    Then Details: Expect Service to be Priority Mail Express Legal Flat Rate Envelope
     Then Details: Expect Pounds to be 0
     Then Details: Expect Ounces to be 0
     Then Grid: Expect Service to be Priority Mail Express
