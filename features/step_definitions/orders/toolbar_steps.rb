@@ -20,7 +20,6 @@ Then /^Toolbar: Move to Shipped$/ do
   grid.toolbar.move.to_shipped.move
 end
 
-
 Then /^Toolbar: Move to Canceled$/ do
   logger.info "Toolbar: Move to Canceled"
   grid = web_apps.orders.grid
