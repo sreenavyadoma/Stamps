@@ -87,6 +87,9 @@ module Stamps
         end
 
         def size
+          30.times do
+            break if browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size > 0
+          end
           browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size
         end
 

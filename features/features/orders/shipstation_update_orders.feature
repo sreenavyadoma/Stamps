@@ -29,8 +29,6 @@ Feature:  Update Order to ShipStation
 
     Then Details: Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
 
-    #here's the shipstation part.
-    #Then Grid: Uncheck row 1
     Then Grid: Uncheck Saved Order ID
     Then Sign out
     Then Orders: Visit Sign-in page
@@ -98,5 +96,11 @@ Feature:  Update Order to ShipStation
     Then Grid: Expect Ounces to be 1
 
     Then Grid: Expect Insured Value to be $1.00
+
+    Then Print: Open Modal
+    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
+    Then Print: Set Printer to "factory"
+    Then Print: Print
+
     Then Sign out
 
