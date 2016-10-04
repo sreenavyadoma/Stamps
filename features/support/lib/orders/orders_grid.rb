@@ -118,10 +118,11 @@ module Stamps
               return index+1
             end
           end
+          "Error occured with Column Name: #{column_name}".should eql ""
         end
 
         def column_fields
-          @column_fields ||= browser.spans(css: "div[componentid^=gridcolumn]>div>div>div>div>span")
+          browser.spans(css: "div[componentid^=gridcolumn]>div>div>div>div>span")
         end
 
         def row_number order_id
@@ -137,6 +138,7 @@ module Stamps
               break
             end
           }
+          "Unable to obtain row number for Order ID #{order_id}".should eql "" if row == 0
           row
         end
 

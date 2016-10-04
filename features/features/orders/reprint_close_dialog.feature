@@ -20,7 +20,7 @@ Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped
     Then Print: Print
 
     Then Filter: Select Shipped
-    Then Grid: Check New Order ID
+    Then Grid: Check Saved Order ID
     Then Print: Open Reprint Modal
     Then Close Reprint Modal
     Then Sign out

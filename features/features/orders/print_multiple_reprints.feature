@@ -16,11 +16,11 @@ Feature: Multiple Reprints
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
-    Then Grid: Check New Order ID
+    Then Grid: Check Saved Order ID
     Then Print: Open Reprint Modal
     Then RePrint: Reprint
     Then Filter: Select Shipped
-    Then Grid: Check New Order ID
+    Then Grid: Check Saved Order ID
     Then Print: Open Reprint Modal
     Then RePrint: Reprint
 

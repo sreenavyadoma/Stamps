@@ -31,11 +31,14 @@ Feature:  Update Order to ShipStation
 
     #here's the shipstation part.
     #Then Grid: Uncheck row 1
-    Then Grid: Uncheck New Order ID
-    Then Pause for 3 seconds
-    #Then Grid: Check row 1
-    Then Grid: Check New Order ID
-    Then Pause for 3 seconds
+    Then Grid: Uncheck Saved Order ID
+    Then Sign out
+    Then Orders: Visit Sign-in page
+    Then Pause for 2 seconds
+    Then Orders: Sign in
+    Then Pause for 2 seconds
+    Then Grid: Check Saved Order ID
+    Then Pause for 2 seconds
 
     #Verify Single Order Details form was saved in ShipStation
     Then Details: Expect Ship-To Name to be First Last
