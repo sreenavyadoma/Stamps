@@ -291,11 +291,9 @@ Then /^Details: Set Service to (.*)$/ do |service|
   logger.info "Details: Set Service to #{service}"
   web_apps.orders.details.service.select service
   10.times do
-    web_apps.orders.details.blur_out
     break if web_apps.orders.details.service.cost.to_f > 0
   end
-  service_cost = web_apps.orders.details.service.cost
-  @details_form_data[:service_cost] = service_cost
+  @details_form_data[:service_cost] = web_apps.orders.details.service.cost
   step "Details: Save Total Ship Cost"
 end
 

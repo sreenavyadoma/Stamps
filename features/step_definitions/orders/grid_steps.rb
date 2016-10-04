@@ -22,19 +22,17 @@ end
 Then /^Grid: Expect Order ID is the same as Details Form Order ID$/ do
   logger.info "Grid: Expect Order ID is the same as Details Form Order ID"
   details_order_id = web_apps.orders.details.toolbar.order_id
-  grid_order_id = web_apps.orders.grid.checkbox.row 1
+  grid_order_id = web_apps.orders.grid.order_id.row 1
   logger.info "Test #{(details_order_id==grid_order_id)?"Passed":"Failed"}"
   details_order_id.should eql grid_order_id
 end
 
 Then /^Grid: Expect Ship Cost is the same as Details Form Ship Cost$/ do
   logger.info "Grid: Expect Ship Cost is the same as Details Form Ship Cost"
-
   details_ship_cost = web_apps.orders.details.footer.total_ship_cost
   grid_ship_cost = web_apps.orders.grid.ship_cost.data @order_id
-
   logger.info "Test #{(details_ship_cost==grid_ship_cost)?"Passed":"Failed"}"
-  details_order_id.should eql grid_ship_cost
+  details_ship_cost.should eql grid_ship_cost
 end
 
 Then /^Set Orders Grid Row (\d+) to uncheck$/ do |row|
@@ -208,12 +206,10 @@ Then /^Grid: Expect Age to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Age to be #{expectation}"
   begin
     @order_id.should be_truthy
-    actual = web_apps.orders.grid.age.data @order_id
-    5.times do
-      break if actual.eql? expectation
-      actual = web_apps.orders.grid.age.data @order_id
+    10.times do
+      break if web_apps.orders.grid.age.data(@order_id).eql? expectation
      end
-    actual = web_apps.orders.grid.age.data @order_id
+    actual = web_apps.orders.grid.age.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -223,10 +219,9 @@ Then /^Grid: Expect Order Date is populated$/ do
   logger.info "Grid: Expect Order Date is populated"
   @order_id.should be_truthy
   5.times do
-    actual = web_apps.orders.grid.order_date.data @order_id
-    break if actual.size > 4
+    break if web_apps.orders.grid.order_date.data(@order_id).size > 4
   end
-  actual = web_apps.orders.grid.order_date.data @order_id
+  actual = web_apps.orders.grid.order_date.data(@order_id)
   logger.info "Test #{(actual.size > 4)?"Passed":"Failed"}"
   actual.size.should be > 4
 end
@@ -236,8 +231,7 @@ Then /^Grid: Expect Recipient to be (.*)$/ do |expectation|
   begin
     @order_id.should be_truthy
     10.times do
-      actual = web_apps.orders.grid.recipient.data @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.recipient.data(@order_id).eql? expectation
      end
     actual = web_apps.orders.grid.recipient.data @order_id
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
@@ -249,10 +243,10 @@ Then /^Grid: Expect Company to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Company to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.company.data @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.company.data(@order_id).eql? expectation
      end
-    actual = web_apps.orders.grid.company.data @order_id
+    actual = web_apps.orders.grid.company.data(@order_id)
+    logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
 end
@@ -261,10 +255,9 @@ Then /^Grid: Expect Address to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Address to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.address.data @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.address.data(@order_id).eql? expectation
      end
-    actual = web_apps.orders.grid.address.data @order_id
+    actual = web_apps.orders.grid.address.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -274,10 +267,9 @@ Then /^Grid: Expect City to be (.*)$/ do |expectation|
   logger.info "Grid: Expect City to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.city.data @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.city.data(@order_id).eql? expectation
      end
-    actual = web_apps.orders.grid.city.data @order_id
+    actual = web_apps.orders.grid.city.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -287,10 +279,9 @@ Then /^Grid: Expect State to be ([a-zA-Z]+)$/ do |expectation|
   logger.info "Grid: Expect State to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.state.data @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.state.data(@order_id).eql? expectation
      end
-    actual = web_apps.orders.grid.state.data @order_id
+    actual = web_apps.orders.grid.state.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -300,10 +291,9 @@ Then /^Grid: Expect Zip to be ([\d -]+)$/ do |expectation|
   logger.info "Grid: Expect Zip to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.zip.data @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.zip.data(@order_id).eql? expectation
      end
-    actual = web_apps.orders.grid.zip.data @order_id
+    actual = web_apps.orders.grid.zip.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should include expectation
   end unless expectation.length == 0
@@ -313,10 +303,9 @@ Then /^Grid: Expect Country to be ([a-zA-Z]+)$/ do |expectation|
   logger.info "Grid: Expect Country to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.country.data @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.country.data(@order_id).eql? expectation
      end
-    actual = web_apps.orders.grid.country.data @order_id
+    actual = web_apps.orders.grid.country.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -335,10 +324,9 @@ Then /^Grid: Expect Email to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Email to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.country.data @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.email.data(@order_id).eql? expectation
      end
-    actual = web_apps.orders.grid.country.data @order_id
+    actual = web_apps.orders.grid.email.data @order_id
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -348,8 +336,7 @@ Then /^Grid: Expect Phone to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Phone to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.phone.data @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.phone.data(@order_id).eql? expectation
      end
     actual = web_apps.orders.grid.phone.data @order_id
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
@@ -361,8 +348,7 @@ Then /^Grid: Expect Pounds to be (\d+)$/ do |expectation|
   logger.info "Grid: Expect Pounds to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.weight.lbs @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.weight.lbs(@order_id).eql? expectation
      end
     actual = web_apps.orders.grid.weight.lbs @order_id
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
@@ -374,8 +360,7 @@ Then /^Grid: Expect Ounces to be (\d+)$/ do |expectation|
   logger.info "Grid: Expect Ounces to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.weight.oz @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.weight.oz(@order_id).eql? expectation
      end
     actual = web_apps.orders.grid.weight.oz @order_id
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
@@ -384,25 +369,23 @@ Then /^Grid: Expect Ounces to be (\d+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
-  expectation_result = "#{pounds} lbs. #{ounces} oz."
-  logger.info "Grid: Expect Weight to be #{expectation_result}"
+  expectation = "#{pounds} lbs. #{ounces} oz."
+  logger.info "Grid: Expect Weight to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.weight.data @order_id
-      break if actual.eql? expectation_result
+      break if web_apps.orders.grid.weight.data(@order_id).eql? expectation
      end
     actual = web_apps.orders.grid.weight.data @order_id
-    logger.info "Test #{(actual==expectation_result)?"Passed":"Failed"}"
-    actual.should eql expectation_result
-  end unless expectation_result.length == 0
+    logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+    actual.should eql expectation
+  end unless expectation.length == 0
 end
 
 Then /^Grid: Expect Weight\(lbs\) to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Weight(lbs) to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.weight.lbs @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.weight.lbs(@order_id).eql? expectation
     end
     actual = web_apps.orders.grid.weight.lbs @order_id
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
@@ -414,8 +397,7 @@ Then /^Grid: Expect Weight\(oz\) to be (.*)$/ do |expectation|
   logger.info "Grid: Expect Weight(oz) to be #{expectation}"
   begin
     10.times do
-      actual = web_apps.orders.grid.weight.oz @order_id
-      break if actual.eql? expectation
+      break if web_apps.orders.grid.weight.oz(@order_id).eql? expectation
     end
     actual = web_apps.orders.grid.weight.oz @order_id
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
@@ -426,12 +408,10 @@ end
 Then /^Grid: Expect Qty. to be (.+)$/ do |expectation|
   logger.info "Grid: Expect Qty. to be #{expectation}"
   begin
-    actual = web_apps.orders.grid.qty.data @order_id
     10.times do
-      sleep 1
-      break if actual.eql? expectation
-      actual = web_apps.orders.grid.qty.data @order_id
-     end
+      break if web_apps.orders.grid.qty.data(@order_id).eql? expectation
+    end
+    actual = web_apps.orders.grid.qty.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -440,12 +420,10 @@ end
 Then /^Grid: Expect Item SKU to be (.+)$/ do |expectation|
   logger.info "Grid: Expect SKU to be #{expectation}"
   begin
-    actual = web_apps.orders.grid.item_sku.data @order_id
-    10.times do 
-      sleep 1
-      break if actual.eql? expectation
-      actual = web_apps.orders.grid.item_sku.data @order_id
-     end
+    10.times do
+      break if web_apps.orders.grid.item_sku.data(@order_id).eql? expectation
+    end
+    actual = web_apps.orders.grid.item_sku.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -454,12 +432,10 @@ end
 Then /^Grid: Expect Item Name to be (.+)$/ do |expectation|
   logger.info "Grid: Expect Name to be #{expectation}"
   begin
-    actual = web_apps.orders.grid.item_name.data @order_id
-    10.times do 
-      sleep 1
-      break if actual.eql? expectation
-      actual = web_apps.orders.grid.item_name.data @order_id
-     end
+    10.times do
+      break if web_apps.orders.grid.item_name.data(@order_id).eql? expectation
+    end
+    actual = web_apps.orders.grid.item_name.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -468,12 +444,10 @@ end
 Then /^Grid: Expect Ship From to be (.+)$/ do |expectation|
   logger.info "Grid: Expect Ship to be #{expectation}"
   begin
-    actual = web_apps.orders.grid.ship_from.data @order_id
     10.times do
-      sleep 1
-      break if actual.eql? expectation
-      actual = web_apps.orders.grid.ship_from.data @order_id
-     end
+      break if web_apps.orders.grid.ship_from.data(@order_id).eql? expectation
+    end
+    actual = web_apps.orders.grid.ship_from.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -481,12 +455,10 @@ end
 
 Then /^Grid: Expect Service to be (.+)$/ do |expectation|
   logger.info "Grid: Expect Service to be #{expectation}"
-  actual = web_apps.orders.grid.service.data @order_id
   10.times do
-    sleep 1
-    break if actual.eql? expectation
-    actual = web_apps.orders.grid.service.data @order_id
+    break if web_apps.orders.grid.service.data(@order_id).eql? expectation
   end
+  actual = web_apps.orders.grid.service.data(@order_id)
   logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
   actual.should eql expectation
 end
@@ -494,27 +466,22 @@ end
 Then /^Grid: Expect Insured Value to be \$(.+)$/ do |expectation|
   logger.info "Grid: Expect Insured Value to be #{expectation}"
   begin
-    actual = web_apps.orders.grid.insured_value.data @order_id
     10.times do
-      sleep 1
-      break if actual.eql? expectation
-      actual = web_apps.orders.grid.insured_value.data @order_id
+      break if web_apps.orders.grid.insured_value.data(@order_id).eql? expectation
      end
+    actual = web_apps.orders.grid.insured_value.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
 end
 
 Then /^Grid: Expect Reference No. to be (.+)$/ do |expectation|
-
   logger.info "Grid: Expect Reference No. to be #{expectation}"
   begin
-    actual = web_apps.orders.grid.reference_no.data @order_id
     10.times do
-      sleep 1
-      break if actual.eql? expectation
-      actual = web_apps.orders.grid.reference_no.data @order_id
+      break if web_apps.orders.grid.reference_no.data(@order_id).eql? expectation
      end
+    actual = web_apps.orders.grid.reference_no.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
@@ -523,57 +490,53 @@ end
 Then /^Grid: Expect Cost Code to be (.+)$/ do |expectation|
   logger.info "Grid: Expect Cost Code to be #{expectation}"
   begin
-    actual = web_apps.orders.grid.cost_code.data @order_id
     10.times do
-      sleep 1
-      break if actual.eql? expectation
-      actual = web_apps.orders.grid.cost_code.data @order_id
+      break if web_apps.orders.grid.cost_code.data(@order_id).eql? expectation
      end
+    actual = web_apps.orders.grid.cost_code.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0
 end
 
-Then /^Grid: Expect Tracking Service to be (.+)$/ do |expectation|
-  logger.info "Grid: Expect Tracking Service to be #{expectation}"
-  begin
-    10.times do
-      actual = web_apps.orders.grid.tracking_service.data @order_id
-      sleep 1
-      break if actual == expectation
-    end
+Then /^Grid: Expect Tracking Service to be USPS Tracking$/ do
+  step "Grid: Expect Tracking Service to be \"USPS Tracking\""
+end
 
-    actual = web_apps.orders.grid.tracking_service.data @order_id
-    logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
-    actual.should eql expectation
-  end unless expectation.length == 0
+Then /^Grid: Expect Tracking Service to be Signature Required$/ do
+  step "Grid: Expect Tracking Service to be \"Signature Required\""
+end
+
+Then /^Grid: Expect Tracking Service to be None$/ do
+  step "Grid: Expect Tracking Service to be \"None\""
+end
+
+Then /^Grid: Expect Tracking Service to be \"(.+)\"$/ do |expectation|
+  logger.info "Grid: Expect Tracking Service to be #{expectation}"
+  10.times do
+    break if web_apps.orders.grid.tracking_service.data(@order_id) == expectation
+  end
+  actual = web_apps.orders.grid.tracking_service.data(@order_id)
+  logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
 end
 
 Then /^Grid: Expect Order Status to be (.+)$/ do |expectation|
   logger.info "Grid: Expect Order Status to be #{expectation}"
-  begin
-    10.times do
-      actual = web_apps.orders.grid.order_status.data @order_id
-      sleep 1
-      break if actual == expectation
-    end
-
-    actual = web_apps.orders.grid.order_status.data @order_id
-    logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
-    actual.should eql expectation
-  end unless expectation.length == 0
+  10.times do
+    break if web_apps.orders.grid.order_status.data(@order_id) == expectation
+  end
+  actual = web_apps.orders.grid.order_status.data(@order_id)
+  logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  actual.should eql expectation
 end
 
 Then /^Grid: Expect Tracking Number is populated$/ do
   logger.info "Grid: Expect Tracking Number is populated"
-  sleep 2
-  actual = web_apps.orders.grid.tracking_no.data @order_id
   20.times do
-    logger.info "Tracking number is #{actual}"
-    break if actual.length > 3
-    sleep 1
-    actual = web_apps.orders.grid.tracking_no.data @order_id
+    break if web_apps.orders.grid.tracking_no.data(@order_id).length > 3
   end
+  actual = web_apps.orders.grid.tracking_no.data(@order_id)
   logger.info "Test #{(actual.length > 3)?"Passed":"Failed"}"
   actual.length.should be > 3
 end
@@ -581,12 +544,10 @@ end
 Then /^Grid: Expect Order Total to be (.+)$/ do |expectation|
   logger.info "Grid: Expect Order Total to be #{expectation}"
   begin
-    actual = web_apps.orders.grid.order_total.data @order_id
     10.times do
-      sleep 1
-      break if actual.eql? expectation
-      actual = web_apps.orders.grid.order_total.data @order_id
+      break if web_apps.orders.grid.order_total.data(@order_id).eql? expectation
      end
+    actual = web_apps.orders.grid.order_total.data(@order_id)
     logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
     actual.should eql expectation
   end unless expectation.length == 0

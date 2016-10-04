@@ -18,6 +18,7 @@ Feature:  Update Order to ShipStation
     Then Details: Select Service Priority Mail Package
 
     Then Details: Set Insure-For to $1.00
+
     Then Details: Set Tracking to Signature Required
 
     Then Details: Set Length to 1
@@ -86,7 +87,7 @@ Feature:  Update Order to ShipStation
 
     Then Grid: Expect Weight to be 1 lbs. 1 oz.
 
-    Then Grid: Expect Tracking Service to be USPS Tracking
+    Then Grid: Expect Tracking Service to be Signature Required
 
     Then Grid: Expect Order Status to be Awaiting Shipment
 

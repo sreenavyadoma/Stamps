@@ -631,7 +631,6 @@ module Stamps
                   return details if details_order_id==grid_order_id
                 end
 
-
                 "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
               rescue

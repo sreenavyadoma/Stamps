@@ -95,18 +95,13 @@ module Stamps
         end
 
         def grid_text column, row
-          scroll :order_total
+          #scroll :order_total
           scroll column
-          data = element_helper.text grid_field(column, row)
-          logger.info "Column #{GRID_COLUMNS[column]} Row #{row}: #{data}"
-          data
+          element_helper.text grid_field(column, row)
         end
 
         def grid_field column_number, row
-          column = column_number(column_number).to_s
-          row = row.to_s
-          css = "div[id^=ordersGrid]>div>div>table:nth-child(#{row})>tbody>tr>td:nth-child(#{column})>div"
-          browser.div(css: css)
+          browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div")
         end
 
         def grid_field_column_name column_name, row
@@ -133,9 +128,7 @@ module Stamps
           scroll :order_id
           row = 0
           column_num = column_number(:order_id)
-          css = "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div"
-          #logger.info "Order ID: #{order_id} CSS: #{css}"
-          fields = browser.divs css: css
+          fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
           fields.each_with_index { |div, index|
             row_text = element_helper.text div
             if row_text.include? order_id
@@ -838,7 +831,9 @@ module Stamps
             logger.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
           else
             logger.info "Grid is empty"
+            "Unable to check order number #{number}".should eql "Grid is empty"
           end
+          checked?(number).should be true
         end
 
         def uncheck number
@@ -850,8 +845,9 @@ module Stamps
             checkbox.uncheck
             logger.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
           else
-            logger.info "Grid is empty"
+            "Unable to uncheck order number #{number}".should eql "Grid is empty"
           end
+          checked?(number).should be false
         end
 
         def checked? number

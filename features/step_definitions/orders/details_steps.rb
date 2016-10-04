@@ -24,6 +24,7 @@ Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_
   item.qty.set qty
   item.id.set (id.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : id
   item.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
+  step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Add Item (\d+)$/ do |item_number|
@@ -169,7 +170,6 @@ Then /^Details: Blur out$/ do
 end
 
 Then /^Details: Save Total Ship Cost$/ do
-  step "Details: Blur out"
   @details_form_data[:total_ship_cost] = web_apps.orders.details.footer.total_ship_cost
 end
 
@@ -217,11 +217,9 @@ Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   @details_form_data[:insure_for] = value
   web_apps.orders.details.insure_for.set value
   10.times do
-    web_apps.orders.details.blur_out
     break if web_apps.orders.details.insure_for.cost.to_f > 0
   end
-  insure_for_cost = web_apps.orders.details.insure_for.cost
-  @details_form_data[:insure_for_cost] = insure_for_cost
+  @details_form_data[:insure_for_cost] = web_apps.orders.details.insure_for.cost
   step "Details: Save Total Ship Cost"
 end
 
@@ -238,11 +236,9 @@ Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   @details_form_data[:tracking] = value
   web_apps.orders.details.tracking.select value
   10.times do
-    web_apps.orders.details.blur_out
     break if web_apps.orders.details.tracking.cost.to_f > 0
   end
-  tracking_cost = web_apps.orders.details.tracking.cost
-  @details_form_data[:tracking_cost] = tracking_cost
+  @details_form_data[:tracking_cost] = web_apps.orders.details.tracking.cost
   step "Details: Save Total Ship Cost"
 end
 
@@ -322,13 +318,9 @@ Then /^Details: Set Ship-To domestic address to$/ do |table|
   @details_form_data[:country] = country
 
   step "Details: Set Ship-To Country to #{@details_form_data[:country]}"
-  step "Details: Blur out"
   step "Details: Set Ship-To address to #{@details_form_data[:ship_to]}"
-  step "Details: Blur out"
   step "Details: Set Phone to #{@details_form_data[:phone]}"
-  step "Details: Blur out"
   step "Details: Set Email to #{@details_form_data[:email]}"
-  step "Details: Blur out"
 end
 
 Then /^Details: Set Ship-To Less details$/ do
@@ -505,14 +497,14 @@ end
 
 Then /^Details: Expect Ship-To Phone to be (.*)$/ do |expectation|
   logger.info "Details: Expect Ship-To Phone to be #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.phone
+  actual_value = web_apps.orders.details.ship_to.address.phone.text
   logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Email to be (.*)$/ do |expectation|
   logger.info "Details: Expect Ship-To Email to be #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.email
+  actual_value = web_apps.orders.details.ship_to.address.email.text
   logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end

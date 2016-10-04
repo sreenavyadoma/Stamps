@@ -109,8 +109,7 @@ module Stamps
           end
           last_line_arr = last_line.split(",")
           last_line_arr.size.should equal 2
-          city = last_line_arr[0]
-          city
+          last_line_arr[0]
         end
 
         def state
@@ -126,8 +125,7 @@ module Stamps
           last_line_arr = last_line.split(",")
           last_line_arr.size.should equal 2
           city_zip = last_line_arr[1].strip
-          state = city_zip.split(" ")[0]
-          state
+          city_zip.split(" ").first
         end
 
         def zip_plus_4
@@ -142,15 +140,13 @@ module Stamps
           end
           last_line_arr = last_line.split(",")
           last_line_arr.size.should equal 2
-          city_zip = last_line_arr[1].strip
-          zip = city_zip.split(" ")[1]
-          zip
+          last_line_arr.last.strip.split(" ").last
         end
 
         def zip_code
           code = zip_plus_4.split("-")
           code.size.should equal 2
-          code[0]
+          code.first
         end
       end
 
@@ -935,23 +931,41 @@ module Stamps
         end
       end
 
-      class TrackingDropDown < DetailsForm
-        attr_reader :text_box, :drop_down, :cost_label
+      class DetailsTracking < DetailsForm
+        attr_reader :text_box, :cost_label
         def initialize param
           super param
+          @selection_id_hash ||= Hash.new
+          @selection_id_hash[:usps_tracking] = "sdc-trackingdroplist-dc"
+          @selection_id_hash[:signature_required] = "sdc-trackingdroplist-sc"
           @text_box ||= TextBoxElement.new browser.text_field(name: 'Tracking')
-          @drop_down ||= ElementWrapper.new browser.div css: "div[id^=trackingdroplist-][id$=-trigger-picker]"
-          @cost_label = ElementWrapper.new browser.label css: "label[class*=selected_tracking_cost]"
+          @cost_label ||= ElementWrapper.new browser.label(css: "label[class*=selected_tracking_cost]")
+        end
+
+        def drop_down
+          @drop_down ||= ElementWrapper.new browser.divs(css: "div[id^=trackingdroplist-][id$=-trigger-picker]").first
+        end
+
+        def tracking_selection selection
+          if selection.downcase.include? "usps"
+            browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td")
+          elsif selection.downcase.include? "signature"
+            browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td")
+          elsif selection.downcase.include? "none"
+            browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td")
+          else
+            "#{selection} is not a valid selection".should eql "Valid selections are USPS Tracking and Signature Required"
+          end
         end
 
         def select selection
-          selection_label = ElementWrapper.new browser.td text: selection
+          drop_down.present?.should be true
           5.times {
             begin
+              drop_down.safe_click
+              selection_label = tracking_selection(selection).first
               drop_down.safe_click unless selection_label.present?
-              selection_label.scroll_into_view
-              selection_label.safe_click
-              blur_out
+              element_helper.safe_click selection_label
               break if text_box.text.include? selection
             rescue
               #ignore
@@ -960,31 +974,35 @@ module Stamps
           text_box.text.should include selection
         end
 
-        def inline_cost tracking
-          selection_label = browser.td text: tracking
+        def inline_cost selection
+          tds = tracking_selection(selection)
+          tds.size.should equal 2
+          selection_label = ElementWrapper.new tds.last
           5.times do
             begin
               drop_down.safe_click unless selection_label.present?
-              if selection_label.present?
-                selection_cost = selection_label.parent.tds[1].text
-                logger.info "#{selection_cost}"
-                return selection_cost
-              end
+              return selection_label.text if selection_label.present?
+
+              drop_down.safe_click
+              selection_label = tracking_selection(selection).last
+              drop_down.safe_click unless selection_label.present?
+              return element_helper.text selection_label if selection_label.present?
             rescue
               #ignore
             end
+            "Unable to fetch inline cost for #{selection}".should eql "Details - Tracking inline cost"
           end
         end
 
         def cost
           10.times do
             begin
-              cost = cost_label.text
+              cost_label.text.include? "$"
             rescue
               #ignore
             end
-            break if cost.include? "$"
           end
+          cost_label.text.should include "$"
           ParameterHelper.remove_dollar_sign cost_label.text
         end
 
@@ -1007,11 +1025,12 @@ module Stamps
       end
 
       class Service < DetailsForm
-        attr_reader :text_box, :drop_down
+        attr_reader :text_box, :drop_down, :cost_label
         def initialize param
           super param
           @text_box ||= TextBoxElement.new (browser.text_field name: "Service"), (browser.div css: "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
           @drop_down ||= ElementWrapper.new browser.div css: "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
+          @cost_label ||= ElementWrapper.new browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label:nth-child(3)')
         end
 
         def abbrev_service_name long_name
@@ -1034,23 +1053,6 @@ module Stamps
           else # there's no abbreviation for this long name so send it right back.
             long_name
           end
-        end
-
-        def cost_label
-          if @cost_label.nil?
-            ff_label = browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(5)>div>div>label:nth-child(3)')
-            gc_label = browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label:nth-child(3)')
-
-            if ff_label.present?
-              label = ff_label
-            elsif gc_label.present?
-              label = gc_label
-            else
-              "Unable to get a handle on Single Order Details Service Cost label.".should eql "Service Cost label" #raise assertion error
-            end
-            @cost_label ||= ElementWrapper.new label
-          end
-          @cost_label
         end
 
         def select selection
@@ -1115,6 +1117,7 @@ module Stamps
               #ignore
             end
           end
+          cost_label.text.should include "$"
           ParameterHelper.remove_dollar_sign(cost_label.text)
         end
 
@@ -1170,8 +1173,6 @@ module Stamps
               return true if index == 5 #try to look for service in Service selection drop-down 3 times before declaring it's disabled.
             end
           end
-
-          blur_out
         end
 
         def enabled? service
@@ -1403,22 +1404,11 @@ module Stamps
       end
 
       class InsureFor < Browser::Modal
+        attr_reader :cost_label
 
-        def cost_label
-          if @cost_label.nil?
-            ff_label = browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label')
-            gc_label = browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>label')
-
-            if ff_label.present?
-              label = ff_label
-            elsif gc_label.present?
-              label = gc_label
-            else
-              "Unable to get a handle on Single Order Details Insure For cost label.".should eql "Insure-For cost label" #raise assertion error
-            end
-            @cost_label ||= ElementWrapper.new label
-          end
-          @cost_label
+        def initialize param
+          super param
+          @cost_label ||= ElementWrapper.new browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>label')
         end
 
         def decrement_trigger
@@ -1434,8 +1424,7 @@ module Stamps
         end
 
         def checkbox
-          parent = browser.label(text: "Insure For $:").parent
-          field = parent.divs[1].div.div.input
+          field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>div>div[class=x-box-inner]>div>div>div>div>input")
           verify = field.parent.parent.parent
           CheckboxElement.new field, verify, "class", "checked"
         end
@@ -1465,6 +1454,7 @@ module Stamps
               #ignore
             end
           end
+          cost_label.text.should include "$"
           ParameterHelper.remove_dollar_sign(cost_label.text)
         end
       end
@@ -1563,7 +1553,7 @@ module Stamps
         end
 
         def item number
-          add_button = ElementWrapper.new (browser.span css: "span[class*=sdc-icon-add]")
+          add_button = ElementWrapper.new browser.span(css: "span[class*=sdc-icon-add]")
           logger.info "Item Count: #{size}"
 
           20.times{
@@ -1702,13 +1692,13 @@ module Stamps
           @ship_to ||= ShipTo.new param
           @weight ||= Weight.new param
           @service ||= Service.new param
-          @tracking ||= TrackingDropDown.new param
+          @tracking ||= DetailsTracking.new param
           @dimensions ||= Dimensions.new param
           @customs_form ||= CustomsForm.new param
           @footer ||= DetailsFooter.new param
           @customs ||= CustomsFields.new param
           @item_grid ||= DetailsItemGrid.new param
-          @reference_no ||= TextBoxElement.new browser.label(text: 'Reference #:')#.parent.div.div.div.div.input
+          @reference_no ||= TextBoxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input")
           @collapsed_details = DetailsCollapsible.new param
         end
 
