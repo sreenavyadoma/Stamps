@@ -63,6 +63,9 @@ module Stamps
 
       class ShipToTextArea < TextBoxElement
         def full_address
+          50.times do
+            break if element.attribute_value("value").size > 0
+          end
           element.attribute_value("value")
         end
 

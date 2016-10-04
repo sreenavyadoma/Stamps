@@ -5,6 +5,7 @@ Then /^Toolbar: Add$/ do
   @order_id = @order_details.toolbar.order_id
   step "Save Shipping Costs Data"
   logger.info "New Order ID #{@order_id}"
+  @details_form_data[:order_id] = @order_id
   @awaiting_shipment_count = web_apps.orders.filter.awaiting_shipment_count
   @item_count = 0
   @index = 0

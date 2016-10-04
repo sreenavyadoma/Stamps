@@ -606,10 +606,7 @@ module Stamps
             nav_bar = Navigation::NavigationBar.new param
             server_error = ShipStationServerError.new param
 
-            grid.checkbox.uncheck 1
-
-            old_id = grid.order_id.row 1
-            logger.info "Row 1 Order ID #{old_id}"
+            logger.info "Row 1 Order ID #{grid.order_id.row 1}. Adding new order..."
             8.times do |count|
               begin
                 button.safe_click
@@ -620,15 +617,20 @@ module Stamps
                     sleep1
                     break unless initializing_db.present?
                   end
-                else
-                  if details.present?
-                    new_id = grid.order_id.row 1
-                    logger.info "Add #{(details.present?)?"successful!":"failed!"}  -  Old Grid 1 ID: #{old_id}, New Grid 1 ID: #{new_id}"
-                    return details
-                  end
                 end
 
-                details.wait_until_present 5
+                "Server Error: #{server_error.text}".should eql "" if server_error.present?
+
+                details.wait_until_present 7
+
+                if details.present?
+                  details_order_id = details.toolbar.order_id
+                  grid_order_id = grid.order_id.row 1
+
+                  logger.info "Add #{(details_order_id==grid_order_id)?"successful":"failed"} on try #{count+1}"
+                  return details if details_order_id==grid_order_id
+                end
+
 
                 "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
