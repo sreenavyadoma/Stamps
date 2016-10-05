@@ -7,7 +7,7 @@ end
 
 Then /^Expect webpostage user (.*) is signed-in$/ do |username|
   signed_in_username = web_apps.mail.navigation_bar.username.text
-  logger.info "Expectation webpostage user #{username} is signed-in - Test #{(signed_in_username.include?username)?"Passed.":"Failed"}"
+  logger.step "Expectation webpostage user #{username} is signed-in - Test #{(signed_in_username.include?username)?"Passed.":"Failed"}"
   signed_in_username.should eql username
 end
 

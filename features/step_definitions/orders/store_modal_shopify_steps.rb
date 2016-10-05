@@ -1,11 +1,11 @@
 Then /^Shopify Store: Set Shopify Domain to (.*)$/ do |url|
-  logger.info "Shopify Store: Set Shopify Domain to #{url}"
+  logger.step "Shopify Store: Set Shopify Domain to #{url}"
   raise "Shopify Store modal is not visible or present.  Check your test workflow" if @store.nil?
   @store.shopify_domain.set url
 end
 
 Then /^Shopify Store: Connect using Email (.*) and password (.*)$/ do |username, password|
-  logger.info "Shopify Store: Connect using Email #{username} and password #{password}"
+  logger.step "Shopify Store: Connect using Email #{username} and password #{password}"
   raise "Shopify Store modal is not visible or present.  Check your test workflow" if @store.nil?
   @shopify_result = @store.connect
 
@@ -23,7 +23,7 @@ Then /^Shopify Store: Connect using Email (.*) and password (.*)$/ do |username,
 end
 
 Then /^Shopify Store: Reconnect$/ do
-  logger.info "Shopify Store: Reconnect"
+  logger.step "Shopify Store: Reconnect"
   raise "Shopify Store modal is not visible or present.  Check your test workflow" if @store.nil?
   @store_settings = @store.reconnect
 end

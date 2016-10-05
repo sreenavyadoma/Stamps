@@ -74,6 +74,11 @@ Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, us
   step "Navigation Bar: Customer Balance"
 end
 
+Then /^Orders: Sign in$/ do
+  logger.info "Orders: Sign in"
+  web_apps.orders.landing_page.sign_in :default
+end
+
 Then /^Sign out$/ do
   logger.info "Sign out"
   begin

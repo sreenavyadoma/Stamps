@@ -4,7 +4,7 @@ Feature:  Update Order to ShipStation
   Background:
     Given I am signed in to Orders
 
-  @shipstation_update_orders
+  @shipstation_updates_domestic
   Scenario:  Update ShipStation
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -18,6 +18,7 @@ Feature:  Update Order to ShipStation
     Then Details: Select Service Priority Mail Package
 
     Then Details: Set Insure-For to $1.00
+
     Then Details: Set Tracking to Signature Required
 
     Then Details: Set Length to 1
@@ -28,25 +29,30 @@ Feature:  Update Order to ShipStation
 
     Then Details: Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
 
-    #here's the shipstation part.
-    #Then Grid: Uncheck row 1
-    Then Grid: Uncheck New Order ID
-    Then Pause for 3 seconds
-    #Then Grid: Check row 1
-    Then Grid: Check New Order ID
-    Then Pause for 3 seconds
+    Then Pause for 2 seconds
+    Then Details: Blur out
+
+    Then Grid: Uncheck Saved Order ID
+    Then Pause for 5 seconds
+
+    Then Refresh Browser
+
+    Then Pause for 2 seconds
+    Then Grid: Check Saved Order ID
+    Then Pause for 2 seconds
 
     #Verify Single Order Details form was saved in ShipStation
     Then Details: Expect Ship-To Name to be First Last
-    #Then Details: Expect Ship-To Company Name to be Company Name
+    Then Details: Expect Ship-To Company Name to be Company Name
     Then Details: Expect Ship-To Street Address to be 777 N Orange Ave Apt 100
     Then Details: Expect Ship-To City to be Orlando
-    Then Details: Expect Ship-To State to be FL 
+    Then Details: Expect Ship-To State to be FL
     Then Details: Expect Ship-To Zip Plus 4 Code to be 32801-1175
     Then Details: Expect Ship-To Zip Code to be 32801
     Then Details: Expect Ship-To Phone to be 888-888-8888
     Then Details: Expect Ship-To Email to be rtest@stamps.com
 
+    Then Details: Hide Ship-To fields
     Then Details: Expect Pounds to be 1
     Then Details: Expect Ounces to be 1
 
@@ -81,12 +87,11 @@ Feature:  Update Order to ShipStation
     Then Grid: Expect Item SKU to be Item 1 SKU
     Then Grid: Expect Item Name to be Item 1 Description
 
-
     Then Grid: Expect Service to be Priority Mail
 
     Then Grid: Expect Weight to be 1 lbs. 1 oz.
 
-    Then Grid: Expect Tracking Service to be USPS Tracking
+    Then Grid: Expect Tracking Service to be Signature Required
 
     Then Grid: Expect Order Status to be Awaiting Shipment
 
@@ -94,5 +99,9 @@ Feature:  Update Order to ShipStation
     Then Grid: Expect Ounces to be 1
 
     Then Grid: Expect Insured Value to be $1.00
+
+    Then Print: Open Modal
+    Then Print: Close Modal
+
     Then Sign out
 

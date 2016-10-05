@@ -261,13 +261,13 @@ Cucumber::Rake::Task.new(:details_insure_for_box_unchecked_imported) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:shipstation_update_orders_int) do |t|
-  t.profile = 'shipstation_update_orders_int'
+Cucumber::Rake::Task.new(:shipstation_updates_international) do |t|
+  t.profile = 'shipstation_updates_international'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:shipstation_update_orders) do |t|
-  t.profile = 'shipstation_update_orders'
+Cucumber::Rake::Task.new(:shipstation_updates_domestic) do |t|
+  t.profile = 'shipstation_updates_domestic'
   t.cucumber_opts = "-p cuke_reports"
 end
 

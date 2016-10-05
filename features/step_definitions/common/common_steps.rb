@@ -11,9 +11,11 @@ end
 
 Then /^Refresh Browser$/ do
   browser.refresh
+  sleep 6
 end
 
 Then /^Pause for (\d+) seconds?$/ do |seconds|
+  logger.info "Pause for #{seconds}"
   sleep seconds.to_i
 end
 
