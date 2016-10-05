@@ -3,6 +3,7 @@ Then /^Toolbar: Add$/ do
   web_apps.orders.grid.checkbox.uncheck 1
   @order_details = web_apps.orders.toolbar.add.order_details
   @order_id = @order_details.toolbar.order_id
+  @old_balance = web_apps.navigation_bar.balance.amount
   step "Save Shipping Costs Data"
   logger.step "Saved Order ID #{@order_id}"
   @details_form_data[:order_id] = @order_id

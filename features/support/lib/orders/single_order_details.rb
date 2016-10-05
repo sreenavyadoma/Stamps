@@ -1404,11 +1404,13 @@ module Stamps
       end
 
       class InsureFor < Browser::Modal
-        attr_reader :cost_label
-
-        def initialize param
-          super param
-          @cost_label ||= ElementWrapper.new browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>label')
+        def cost_label
+          div = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=insurancefield]").parent
+          labels = div.labels
+          labels.each_with_index do |label|
+            return ElementWrapper.new(label) if label.text.include?(".") && label.text.include?("$")
+          end
+          "".should eql "Unable to create ElementWrapper for cost_label"
         end
 
         def decrement_trigger
@@ -1424,7 +1426,8 @@ module Stamps
         end
 
         def checkbox
-          field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>div>div[class=x-box-inner]>div>div>div>div>input")
+          div = browser.label(text: "Insure For $:").parent
+          field = div.input
           verify = field.parent.parent.parent
           CheckboxElement.new field, verify, "class", "checked"
         end
