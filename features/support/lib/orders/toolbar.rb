@@ -607,7 +607,7 @@ module Stamps
             server_error = ShipStationServerError.new param
 
             logger.info "Row 1 Order ID #{grid.order_id.row 1}. Adding new order..."
-            8.times do |count|
+            15.times do |count|
               begin
                 button.safe_click
 
@@ -621,7 +621,7 @@ module Stamps
 
                 "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
-                details.wait_until_present 7
+                details.wait_until_present 8
 
                 if details.present?
                   details_order_id = details.toolbar.order_id
