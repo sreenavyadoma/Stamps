@@ -3,7 +3,7 @@ Then /^Registration: Expect Web Registration result page is either Download page
     when WebReg::DownloadPage
       expectation = "Congratulations on your new account!"
       actual_value = webreg.profile.membership.download_page.text
-      logger.info "Test #{(actual_value==expectation)?"Passed":"Failed"}"
+      logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
       actual_value.should eql expectation
     when WebMail
       @web_mail.landing_page.whats_new_modal.window_title.text.should eql "What’s new in Stamps.com Online"

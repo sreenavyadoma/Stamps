@@ -2,12 +2,12 @@
 Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation|
   @market_place.should_not be_nil
   actual = @market_place.contains expectation
-  logger.info "Test #{(actual==expectation)?"Passed":"Failed"}"
+  logger.step "Test #{(actual==expectation)?"Passed":"Failed"}"
   actual.should eql expectation
 end
 
 Then /^Marketplace: Select PayPal$/ do
-  logger.info ""
+  logger.step ""
   @market_place.should_not be_nil
   @store = @market_place.paypal
 end

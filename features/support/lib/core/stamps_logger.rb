@@ -34,6 +34,15 @@ module Stamps
       message
     end
 
+    def step message
+      begin
+        (@logger.info "#{@test_name} :: #{message}")
+      rescue
+        # ignore
+      end
+      message
+    end
+
     def info message
       begin
         (@logger.info "#{@test_name} :: #{message}") if TestHelper.verbose

@@ -70,7 +70,7 @@ module Stamps
         def row_count
           tables = browser.tables css: "div[id^=ordersGrid]>div>div>table"
           count = tables.size
-          #logger.info "Total Number of Orders on Grid:  #{count}"
+          logger.info "Total Number of Orders on Grid:  #{count}"
           count.to_i
         end
 
@@ -1068,3 +1068,4 @@ module Stamps
     end
   end
 end
+

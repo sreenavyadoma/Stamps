@@ -288,7 +288,7 @@ Then /^Details: Expect Service to be Priority Mail Express International Legal F
 end
 
 Then /^Details: Set Service to (.*)$/ do |service|
-  logger.info "Details: Set Service to #{service}"
+  logger.step "Details: Set Service to #{service}"
   web_apps.orders.details.service.select service
   10.times do
     break if web_apps.orders.details.service.cost.to_f > 0
@@ -298,13 +298,13 @@ Then /^Details: Set Service to (.*)$/ do |service|
 end
 
 Then /^Details: Expect Service to be \"(.*)\"$/ do |expectation|
-  logger.info "Details: Expect Service to be #{expectation}"
+  logger.step "Details: Expect Service to be #{expectation}"
   expectation = web_apps.orders.details.service.abbrev_service_name expectation
   10.times do
     actual_value = web_apps.orders.details.service.text_box.text
     break if actual_value.include? expectation
   end
   actual_value = web_apps.orders.details.service.text_box.text
-  logger.info "Test #{(actual_value.include? expectation)?"Passed":"Failed"}"
+  logger.step "Test #{(actual_value.include? expectation)?"Passed":"Failed"}"
   actual_value.should include expectation
 end
