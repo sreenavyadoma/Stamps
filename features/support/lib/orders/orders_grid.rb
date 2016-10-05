@@ -849,10 +849,8 @@ module Stamps
             checkbox = CheckboxElement.new checkbox_field, verify_field, "class", "grid-item-selected"
             checkbox.uncheck
             logger.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
-          else
-            "Unable to uncheck order number #{number}".should eql "Grid is empty"
+            checked?(number).should be false
           end
-          checked?(number).should be false
         end
 
         def checked? number
