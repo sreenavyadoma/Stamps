@@ -4,7 +4,7 @@ Feature:  Update International Orders to ShipStation
   Background:
     Given I am signed in to Orders
 
-  @shipstation_update_orders_int
+  @shipstation_updates_international
   Scenario:  Update ShipStation
 
     Then Toolbar: Add

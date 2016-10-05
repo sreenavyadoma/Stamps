@@ -4,7 +4,7 @@ Feature:  Update Order to ShipStation
   Background:
     Given I am signed in to Orders
 
-  @shipstation_update_orders
+  @shipstation_updates_domestic
   Scenario:  Update ShipStation
     Then Toolbar: Add
     Then Details: Set Ship-From to default
