@@ -2100,13 +2100,28 @@ Cucumber::Rake::Task.new(:wp_manage_shipping_addresses) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_remember_username) do |t|
-  t.profile = 'wp_remember_username'
+Cucumber::Rake::Task.new(:mail_remember_username) do |t|
+  t.profile = 'mail_remember_username'
   t.cucumber_opts = "-p cuke_reports"
 end
 
 Cucumber::Rake::Task.new(:wp_welcome) do |t|
   t.profile = 'wp_welcome'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_envelope_10_return_address) do |t|
+  t.profile = 'mail_envelope_10_return_address'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_envelope_10_delivery_address) do |t|
+  t.profile = 'mail_envelope_10_delivery_address'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_envelope_10_postage) do |t|
+  t.profile = 'mail_envelope_10_postage'
   t.cucumber_opts = "-p cuke_reports"
 end
 
