@@ -1,8 +1,7 @@
 Given /^Orders: Visit Sign-in page$/ do
   logger.info "Orders: Visit Sign-in page"
   web_apps.param.app = :orders
-  result = web_apps.visit :orders
-  result.should include "stamps.com"
+  web_apps.visit(:orders).should include "stamps.com"
 end
 
 Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|

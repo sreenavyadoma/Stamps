@@ -44,7 +44,7 @@ Then /^Filter: Expect order moved to Shipped$/ do
   logger.step "Filter: Expect order moved to Shipped"
   grid = web_apps.orders.filter.shipped
   grid.order_date.sort_descending
-  row = grid.order_id.row_num @order_id
+  row = grid.order_id.row_num @details_form_data[:order_id]
   logger.step "Test #{(row > 0)?"Passed":"Failed"}"
   row.should be > 0
 end
@@ -53,7 +53,7 @@ Then /^Filter: Expect order moved to Canceled$/ do
   logger.step "Filter: Expect order moved to Canceled"
   grid = web_apps.orders.filter.cancelled
   grid.order_date.sort_descending
-  row = grid.order_id.row_num @order_id
+  row = grid.order_id.row_num @details_form_data[:order_id]
   logger.step "Test #{(row > 0)?"Passed":"Failed"}"
   row.should be > 0
 end
@@ -61,9 +61,9 @@ end
 Then /^Filter: Move order to Awaiting Shipment$/ do
   logger.step "Move order to Awaiting Shipmen"
   grid = web_apps.orders.grid
-  raise "Order ID #{@order_id} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @order_id) > 0
+  raise "Order ID #{@details_form_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @details_form_data[:order_id]) > 0
   grid.order_date.sort_descending
-  grid.checkbox.check_order @order_id
+  grid.checkbox.check_order @details_form_data[:order_id]
   grid.toolbar.move.to_awaiting_shipment.cancel
   grid.toolbar.move.to_awaiting_shipment.move
 end
@@ -72,7 +72,7 @@ Then /^Filter: Expect order moved to Awaiting Shipment$/ do
   logger.step "Filter: Expect order moved to Awaiting Shipment"
   grid = web_apps.orders.filter.awaiting_shipment
   grid.order_date.sort_descending
-  row = grid.order_id.row_num @order_id
+  row = grid.order_id.row_num @details_form_data[:order_id]
   logger.step "Test #{(row > 0)?"Passed":"Failed"}"
   row.should be > 0
 end
@@ -80,8 +80,8 @@ end
 Then /^Expect Awaiting Shipment count to be less by (\d+)$/ do |count|
   logger.step "Expect Awaiting Shipment count to be less by #{count}"
   awaiting_shipment_count = web_apps.orders.filter.awaiting_shipment_count
-  logger.step "Test #{(awaiting_shipment_count = @awaiting_shipment_count.to_i - count.to_i)?'Passed':'Failed'}"
-  awaiting_shipment_count.should eql @awaiting_shipment_count.to_i - count.to_i
+  logger.step "Test #{(awaiting_shipment_count = @details_form_data[:awaiting_shipment_count].to_i - count.to_i)?'Passed':'Failed'}"
+  awaiting_shipment_count.should eql @details_form_data[:awaiting_shipment_count].to_i - count.to_i
 end
 
 Then /^Filter: Expect system shows name of (.*) Filter Panel - in closed panel$/ do |expectation|
@@ -176,34 +176,34 @@ end
 Then /^Expect printed Order ID is not in Awaiting Shipment tab$/ do
   logger.step "Expect printed Order ID is not in Awaiting Shipment tab"
   grid = web_apps.orders.filter.awaiting_shipment
-  logger.step "First Order ID: #{@order_id} in Awaiting Shipment tab"
+  logger.step "First Order ID: #{@details_form_data[:order_id]} in Awaiting Shipment tab"
   row = 1
   row1_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row1_order_id}"
-  expect(@order_id.include? row1_order_id).to be false
+  expect(@details_form_data[:order_id].include? row1_order_id).to be false
 end
 
 Then /^Expect all printed Order IDs not in Awaiting Shipment tab$/ do
   logger.step "Expect all printed Order IDs not in Awaiting Shipment tab"
   grid = web_apps.orders.filter.awaiting_shipment
 
-  logger.step "First Order ID: #{@order_id} in Awaiting Shipment tab"
+  logger.step "First Order ID: #{@details_form_data[:order_id]} in Awaiting Shipment tab"
   row = 1
   row1_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row1_order_id}"
-  expect(@order_id.include? row1_order_id).to be false
+  expect(@details_form_data[:order_id].include? row1_order_id).to be false
 
-  logger.step "Second Order ID: #{@order_id_2} in Awaiting Shipment tab"
+  logger.step "Second Order ID: #{@details_form_data[:order_id_2]} in Awaiting Shipment tab"
   row = 2
   row2_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row2_order_id}"
-  expect(@order_id_2.include? row2_order_id).to be false
+  expect(@details_form_data[:order_id_2].include? row2_order_id).to be false
 
-  logger.step "Third Order ID: #{@order_id_3} in Awaiting Shipment tab"
+  logger.step "Third Order ID: #{@details_form_data[:order_id_3]} in Awaiting Shipment tab"
   row = 3
   row3_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row3_order_id}"
-  expect(@order_id_3.include? row3_order_id).to be false
+  expect(@details_form_data[:order_id_3].include? row3_order_id).to be false
 
 end
 
@@ -215,32 +215,31 @@ Then /^Expect printed Order ID is in Shipped tab$/ do
   grid.order_id.sort_descending
   row1_order_id = grid.order_id.row 1
   logger.step "Shipped - Row #{1} Order ID: #{row1_order_id}"
-  logger.step "Test #{(@order_id==row1_order_id)?'Passed':'Failed'}"
-  @order_id.should eql row1_order_id
+  logger.step "Test #{(@details_form_data[:order_id]==row1_order_id)?'Passed':'Failed'}"
+  @details_form_data[:order_id].should eql row1_order_id
 end
 
 Then /^Expect all printed Order IDs are in Shipped tab$/ do
   logger.step "Expect all printed Order IDs are in Shipped tab"
   grid = web_apps.orders.filter.shipped
 
-  logger.step "First Order ID: #{@order_id} Shipped tab"
+  logger.step "First Order ID: #{@details_form_data[:order_id]} Shipped tab"
   row = 3
   row3_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row3_order_id}"
-  @order_id.should include row3_order_id
+  @details_form_data[:order_id].should include row3_order_id
 
-  logger.step "Second Order ID: #{@order_id_2} Shipped tab"
+  logger.step "Second Order ID: #{@details_form_data[:order_id_2]} Shipped tab"
   row = 2
   row2_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row2_order_id}"
-  @order_id_2.should include row2_order_id
+  @details_form_data[:order_id_2].should include row2_order_id
 
-  logger.step "Third Order ID: #{@order_id_3} Shipped tab"
+  logger.step "Third Order ID: #{@details_form_data[:order_id_3]} Shipped tab"
   row = 1
   row1_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row1_order_id}"
-  @order_id_3.should include row1_order_id
-
+  @details_form_data[:order_id_3].should include row1_order_id
 end
 
 

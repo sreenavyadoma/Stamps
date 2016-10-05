@@ -89,7 +89,7 @@ module Stamps
           if address_arr.size == 3
             addy = address_arr[1]
             addy.strip
-          elsif address_arr.size == 4
+          elsif address_arr.size == 4 || address_arr.size == 5
             addy = address_arr[2]
             addy.strip
           else
@@ -104,6 +104,8 @@ module Stamps
             last_line = address_arr[2].strip
           elsif address_arr.size == 4
             last_line = address_arr[3].strip
+          elsif address_arr.size == 5
+            last_line = address_arr[4].strip
           else
             address_arr.size.should be > 2
           end
@@ -119,6 +121,8 @@ module Stamps
             last_line = address_arr[2].strip
           elsif address_arr.size == 4
             last_line = address_arr[3].strip
+          elsif address_arr.size == 5
+            last_line = address_arr[4].strip
           else
             address_arr.size.should be > 2
           end
@@ -135,6 +139,8 @@ module Stamps
             last_line = address_arr[2].strip
           elsif address_arr.size == 4
             last_line = address_arr[3].strip
+          elsif address_arr.size == 5
+            last_line = address_arr[4].strip
           else
             address_arr.size.should be > 2
           end
