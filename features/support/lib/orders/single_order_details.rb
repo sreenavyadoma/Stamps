@@ -79,7 +79,7 @@ module Stamps
         def company_name
           address = full_address
           address_arr = address.split("\n")
-          address_arr.size.should equal 4
+          address_arr.size.should be_between(4, 5).inclusive
           address_arr[1].strip
         end
 
