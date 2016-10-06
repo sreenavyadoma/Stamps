@@ -27,10 +27,9 @@ Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_
   step "Details: Save Total Ship Cost"
 end
 
-Then /^Details: Add Item (\d+)$/ do |item_number|
-  logger.step "Details: Add Item #{item_number}"
-  @details_line_item = web_apps.orders.details.item_grid.item item_number.to_i
-  #web_apps.orders.details.item_grid.size.should eql item_number
+Then /^Details: Add Item (\d+)$/ do |value|
+  logger.step "Details: Add Item #{value}"
+  @details_line_item = web_apps.orders.details.item_grid.item value.to_i
 end
 
 Then /^Details: Set Qty to (\d+)$/ do |value|
