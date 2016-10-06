@@ -349,7 +349,7 @@ Then /^Details: Set Ship-To international address to$/ do |table|
   @details_form_data[:phone] = phone
   @details_form_data[:email] = email
 
-  step "Details: Set Ship-To Country to #{@details_form_data[:ship_to_country]}"
+  step "Details: Set Ship-To Country to #{@details_form_data[:country]}"
   step "Details: Set International Ship-To Name to \"#{@details_form_data[:name]}\""
   step "Details: Set International Ship-To Company to \"#{@details_form_data[:company]}\""
   step "Details: Set International Ship-To Address 1 to \"#{@details_form_data[:street_address_1]}\""
