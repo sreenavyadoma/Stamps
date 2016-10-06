@@ -8,7 +8,7 @@ Feature:  BVT Address Cleansing
   Scenario: Address Cleansing
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To domestic address to
+    Then Details: Set Ship-To to domestic address
       | name          | company      | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
       | Euan Davidson | Company Name | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
 

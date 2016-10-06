@@ -248,48 +248,48 @@ Then /^Details: Set Ship-From to (\w+)$/ do |value|
 end
 
 Then /^Details: Set Ship-To to random address in Zone 1$/ do
-  step "Details: Set Ship-To address text area to zone 1"
+  step "Details: Set Ship-To text area to zone 1"
 end
 
 Then /^Details: Set Ship-To to random address in Zone 2$/ do
-  step "Details: Set Ship-To address text area to zone 2"
+  step "Details: Set Ship-To text area to zone 2"
 end
 
 Then /^Details: Set Ship-To to random address in Zone 3$/ do
-  step "Details: Set Ship-To address text area to zone 3"
+  step "Details: Set Ship-To text area to zone 3"
 end
 
 Then /^Details: Set Ship-To to random address in Zone 4$/ do
-  step "Details: Set Ship-To address text area to zone 4"
+  step "Details: Set Ship-To text area to zone 4"
 end
 
 Then /^Details: Set Ship-To to random address in Zone 5$/ do
-  step "Details: Set Ship-To address text area to zone 5"
+  step "Details: Set Ship-To text area to zone 5"
 end
 
 Then /^Details: Set Ship-To to random address in Zone 6$/ do
-  step "Details: Set Ship-To address text area to zone 6"
+  step "Details: Set Ship-To text area to zone 6"
 end
 
 Then /^Details: Set Ship-To to random address in Zone 7$/ do
-  step "Details: Set Ship-To address text area to zone 7"
+  step "Details: Set Ship-To text area to zone 7"
 end
 
 Then /^Details: Set Ship-To to random address in Zone 8$/ do
-  step "Details: Set Ship-To address text area to zone 8"
+  step "Details: Set Ship-To text area to zone 8"
 end
 
 Then /^Details: Set Ship-To to random address Between Zone 1 through 4$/ do
-  step "Details: Set Ship-To address text area to zone 1 through 4"
+  step "Details: Set Ship-To text area to zone 1 through 4"
 end
 
 Then /^Details: Set Ship-To to random address Between Zone 5 through 8$/ do
-  step "Details: Set Ship-To address text area to zone 5 through 8"
+  step "Details: Set Ship-To text area to zone 5 through 8"
 end
 
-Then /^Details: Set Ship-To domestic address to$/ do |table|
+Then /^Details: Set Ship-To to domestic address$/ do |table|
   address_table = table.hashes.first
-  logger.step "Details: Set Ship-To domestic address to \n#{address_table}"
+  logger.step "Details: Set Ship-To to domestic address \n#{address_table}"
 
   name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
   company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
@@ -297,7 +297,13 @@ Then /^Details: Set Ship-To domestic address to$/ do |table|
   phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
   email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
   street_address = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
-  street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
+
+  if address_table['street_address_2'].nil?
+    street_address_2 = ""
+  else
+    street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
+  end
+
   state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
   zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
   country = (address_table['country'].size==0)?"United States":address_table['country']
@@ -317,14 +323,14 @@ Then /^Details: Set Ship-To domestic address to$/ do |table|
   @details_form_data[:country] = country
 
   step "Details: Set Ship-To Country to #{@details_form_data[:country]}"
-  step "Details: Set Ship-To address text area to #{@details_form_data[:ship_to]}"
+  step "Details: Set Ship-To text area to #{@details_form_data[:ship_to]}"
   step "Details: Set Phone to #{@details_form_data[:phone]}"
   step "Details: Set Email to #{@details_form_data[:email]}"
 end
 
-Then /^Details: Set Ship-To international address to$/ do |table|
+Then /^Details: Set Ship-To to international address$/ do |table|
   address_table = table.hashes.first
-  logger.step "Details: Set Ship-To address text area to \n#{address_table}"
+  logger.step "Details: Set Ship-To text area to \n#{address_table}"
 
   country = address_table['country']
   name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
@@ -361,69 +367,8 @@ Then /^Details: Set Ship-To international address to$/ do |table|
   step "Details: Set International Ship-To Email to \"#{@details_form_data[:email]}\""
 end
 
-Then /^Details: Set Ship-To address to$/ do |table|
-  address_table = table.hashes.first
-  logger.step "Details: Set Ship-To address text area to \n#{address_table}"
-
-  ship_to_country = address_table['country']
-  logger.step "Ship-To Country:  #{ship_to_country}"
-  ship_to_name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
-  ship_to_company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
-  ship_to_city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
-  ship_to_phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
-  ship_to_email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
-
-  if ship_to_country.downcase.include? "united states"
-    ship_to_street_address = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
-    ship_to_state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
-    ship_to_zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
-
-    ship_to_address = "#{ship_to_name},#{ship_to_company},#{ship_to_street_address},#{ship_to_city} #{ship_to_state} #{ship_to_zip}"
-    step "Details: Set Ship-To address text area to #{ship_to_address}"
-    step "Details: Set Phone to #{ship_to_phone}"
-    step "Details: Set Email to #{ship_to_email}"
-
-    @details_form_data[:name] = ship_to_name
-    @details_form_data[:company] = ship_to_company
-    @details_form_data[:city] = ship_to_city
-    @details_form_data[:email] = ship_to_email
-    @details_form_data[:street_address] = ship_to_street_address
-    @details_form_data[:street_address_2] = ship_to_street_address_2
-    @details_form_data[:state] = ship_to_state
-    @details_form_data[:zip] = ship_to_zip
-    @details_form_data[:country] = ship_to_country
-
-  else
-    ship_to_street_address_1 = (address_table['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address_1']
-    ship_to_street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address_table['street_address_2']
-    ship_to_province = (address_table['province'].downcase.include? "random") ? ParameterHelper.random_string : address_table['province']
-    ship_to_postal_code = (address_table['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address_table['postal_code']
-
-    logger.step "Ship-To Name: #{ship_to_name}"
-    logger.step "Ship-To Company: #{ship_to_company}"
-    logger.step "Ship-To Address 1: #{ship_to_street_address_1}"
-    logger.step "Ship-To Address 2: #{ship_to_street_address_2}"
-    logger.step "Ship-To City: #{ship_to_city}"
-    logger.step "Ship-To Province: #{ship_to_province}"
-    logger.step "Ship-To Postal Code: #{ship_to_postal_code}"
-    logger.step "Ship-To Phone: #{ship_to_phone}"
-    logger.step "Ship-To Email: #{ship_to_email}"
-
-    step "Details: Set Ship-To Country to #{ship_to_country}"
-    step "Details: Set International Ship-To Name to \"#{ship_to_name}\""
-    step "Details: Set International Ship-To Company to \"#{ship_to_company}\""
-    step "Details: Set International Ship-To Address 1 to \"#{ship_to_street_address_1}\""
-    step "Details: Set International Ship-To Address 2 to \"#{ship_to_street_address_2}\""
-    step "Details: Set International Ship-To City to \"#{ship_to_city}\""
-    step "Details: Set International Ship-To Province to \"#{ship_to_province}\""
-    step "Details: Set International Ship-To Postal Code to \"#{ship_to_postal_code}\""
-    step "Details: Set International Ship-To Phone to \"#{ship_to_phone}\""
-    step "Details: Set International Ship-To Email to \"#{ship_to_email}\""
-  end
-end
-
-Then /^Details: Set Ship-To address text area to (.*)$/ do |address|
-  logger.step "Details: Set Ship-To address text area to \"#{address}\""
+Then /^Details: Set Ship-To text area to (.*)$/ do |address|
+  logger.step "Details: Set Ship-To text area to \"#{address}\""
 
   case address.downcase
     when /zone 1 through 4/

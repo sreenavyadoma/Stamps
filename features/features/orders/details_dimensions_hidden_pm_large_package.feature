@@ -8,8 +8,7 @@ Feature: Priority Mail and Large Dimensions
   @details_dimensions_hidden_pm_large_package
   Scenario: Priority Mail and Large Dimensions
     Then Toolbar: Add
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To address to
+    Then Details: Set Ship-To to domestic address
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
 

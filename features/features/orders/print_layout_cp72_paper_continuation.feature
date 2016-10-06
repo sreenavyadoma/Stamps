@@ -7,7 +7,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
   Scenario: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to
+    Then Details: Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then Details: Select Service Priority Mail International Flat Rate Envelope

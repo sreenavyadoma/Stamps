@@ -33,7 +33,7 @@ Feature:  Service enabled/disabled tests
     Then Details: Expect Service data error tooltip to be "Service is required"
     Then Grid: Check Saved Order ID
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address text area to random,PO BOX 1257,Pohnpei, FM 96941-1257
+    Then Details: Set Ship-To text area to random,PO BOX 1257,Pohnpei, FM 96941-1257
     Then Details: Set Email to random
     Then Details: Set Phone to random
     Then Details: Select Service Priority Mail Large Package

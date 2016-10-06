@@ -53,7 +53,7 @@ Feature: Test Development
     Then Toolbar: Add
     Then Filter: Select Awaiting Shipment
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address text area to Eight Zone,377 Santa Rosa Blvd,Fort Walton Beach, FL 32548
+    Then Details: Set Ship-To text area to Eight Zone,377 Santa Rosa Blvd,Fort Walton Beach, FL 32548
     Then Details: Set Email to random
     Then Details: Set Phone to random
     Then Details: Select Service Priority Mail Large Package

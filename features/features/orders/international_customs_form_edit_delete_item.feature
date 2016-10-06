@@ -6,7 +6,7 @@ Feature:  Customs Form Item Grid - Edit/Delete
   @international_customs_form_edit_delete_item
   Scenario:  Customs Form Item Grid - Edit/Delete
     Then Toolbar: Add
-    Then Details: Set Ship-To address to
+    Then Details: Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
     Then Details: Set Ounces to 5

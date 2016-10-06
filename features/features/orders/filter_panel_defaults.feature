@@ -53,7 +53,7 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To address to
+    Then Details: Set Ship-To to domestic address
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | James Test | Domestic Company | 600 Front St Apt 220 | San Diego | CA | 92101-6733 | United States | 8885551212 | test@stamps.com |
     Then Details: Select Service Priority Mail Package

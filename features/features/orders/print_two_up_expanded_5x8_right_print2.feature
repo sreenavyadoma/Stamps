@@ -8,12 +8,12 @@ Feature: Print 2 Domestic labels on 5.5x8.5 - right side
     # 2 Domestic labels 5 ½" x 8 ½" right side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address text area to MM Package, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
+    Then Details: Set Ship-To text area to MM Package, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Set Ounces to 1
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address text area to PM Large Package, 5.5x8.5 Right Side 1, 26930 NE 152nd St., Duvall WA 98019-8316
+    Then Details: Set Ship-To text area to PM Large Package, 5.5x8.5 Right Side 1, 26930 NE 152nd St., Duvall WA 98019-8316
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Ounces to 1
     Then Details: Set Dimensions to Length 1 Width 1 Height 1

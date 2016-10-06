@@ -7,7 +7,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
   Scenario: Print Bonaire, Sint Eustatius, and Saba orders
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to
+    Then Details: Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |
        Then Details: Select Service First-Class Mail International Large Envelope/Flat

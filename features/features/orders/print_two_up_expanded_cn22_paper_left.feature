@@ -7,7 +7,7 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
   Scenario: User Print 1 FPO CN22 Label on 8.5x11 - left side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To domestic address to
+    Then Details: Set Ship-To to domestic address
       | name        | company             | street_address  | street_address_2| city | state | zip        | country       | phone  |  email |
       | PM RR Box B | Domestic FPO 8.5x11 | PSC 473 BOX 12  |                 | FPO  | AP    | 96349-0001 | United States | random | random |
 

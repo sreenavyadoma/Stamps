@@ -9,7 +9,7 @@ Feature:  Update International Orders to ShipStation
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to
+    Then Details: Set Ship-To to international address
       | name          | company          | street_address_1  | street_address_2 | city   | province | postal_code | country | phone         |  email            |
       | Customer Name | Customer Company | Street Address 1  | Street Address 2 | City   | Province | PostalCode  | France  | 415-411-1111  | rtest@stamps.com  |
 

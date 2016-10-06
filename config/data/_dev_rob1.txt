@@ -55,9 +55,9 @@ Feature: Test Development
     Then Toolbar: Add
     Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Toolbar: Add
-    Then Details: Set Ship-To address text area to San
+    Then Details: Set Ship-To text area to San
     Then Toolbar: Add
-    Then Details: Set Ship-To address text area to San
+    Then Details: Set Ship-To text area to San
 
   Scenario:
     Then Toolbar: Add

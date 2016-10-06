@@ -7,7 +7,7 @@ Feature:  Customs Form Totals
   Scenario:  Customs Form Grid - Add Items
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to
+    Then Details: Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
     Then Details: Select Service Priority Mail International Flat Rate Envelope

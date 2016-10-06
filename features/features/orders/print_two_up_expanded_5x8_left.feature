@@ -7,7 +7,7 @@ Feature: Print 1 Domestic label on 5.5x8.5 - left side
   Scenario: Print 1 Domestic label on 5.5x8.5 - left side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address text area to PME MFR Box, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
+    Then Details: Set Ship-To text area to PME MFR Box, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Print: Open Modal

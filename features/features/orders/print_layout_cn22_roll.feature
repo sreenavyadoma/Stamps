@@ -7,7 +7,7 @@ Feature: Print 1 Intl CN22 label on 4x6 Roll
   Scenario: Print 1 Intl CN22 label on 4x6 Roll
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to
+    Then Details: Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | FCMI PTE | 4x6 Roll  | random           | random           | random | random  | random      | Norway | random  | random  |
     Then Details: Select Service First-Class Mail International Package/Thick Envelope
