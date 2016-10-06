@@ -323,7 +323,42 @@ Then /^Details: Set Ship-To domestic address to$/ do |table|
 end
 
 Then /^Details: Set Ship-To international address to$/ do |table|
+  address_table = table.hashes.first
+  logger.step "Details: Set Ship-To address text area to \n#{address_table}"
 
+  country = address_table['country']
+  name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
+  company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
+  city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
+  phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
+  email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
+
+  street_address_1 = (address_table['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address_1']
+  street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address_table['street_address_2']
+  province = (address_table['province'].downcase.include? "random") ? ParameterHelper.random_string : address_table['province']
+  postal_code = (address_table['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address_table['postal_code']
+
+  @details_form_data[:country] = country
+  @details_form_data[:name] = name
+  @details_form_data[:company] = company
+  @details_form_data[:street_address_1] = street_address_1
+  @details_form_data[:street_address_2] = street_address_2
+  @details_form_data[:city] = city
+  @details_form_data[:province] = province
+  @details_form_data[:postal_code] = postal_code
+  @details_form_data[:phone] = phone
+  @details_form_data[:email] = email
+
+  step "Details: Set Ship-To Country to #{@details_form_data[:ship_to_country]}"
+  step "Details: Set International Ship-To Name to \"#{@details_form_data[:name]}\""
+  step "Details: Set International Ship-To Company to \"#{@details_form_data[:company]}\""
+  step "Details: Set International Ship-To Address 1 to \"#{@details_form_data[:street_address_1]}\""
+  step "Details: Set International Ship-To Address 2 to \"#{@details_form_data[:street_address_2]}\""
+  step "Details: Set International Ship-To City to \"#{@details_form_data[:city]}\""
+  step "Details: Set International Ship-To Province to \"#{@details_form_data[:province]}\""
+  step "Details: Set International Ship-To Postal Code to \"#{@details_form_data[:postal_code]}\""
+  step "Details: Set International Ship-To Phone to \"#{@details_form_data[:phone]}\""
+  step "Details: Set International Ship-To Email to \"#{@details_form_data[:email]}\""
 end
 
 Then /^Details: Set Ship-To address to$/ do |table|
@@ -347,7 +382,6 @@ Then /^Details: Set Ship-To address to$/ do |table|
     step "Details: Set Ship-To address text area to #{ship_to_address}"
     step "Details: Set Phone to #{ship_to_phone}"
     step "Details: Set Email to #{ship_to_email}"
-
 
     @details_form_data[:name] = ship_to_name
     @details_form_data[:company] = ship_to_company
