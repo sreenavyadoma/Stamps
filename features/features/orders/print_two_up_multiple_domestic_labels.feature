@@ -9,7 +9,7 @@ Feature: Print two labels on one sheet
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 5 through 8
+    Then Details: Set Ship-To to random address Between Zone 5 through 8
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Weight to 1 lbs 1 oz
     Then Details: Set Dimensions to Length 1 Width 1 Height 1
@@ -18,7 +18,7 @@ Feature: Print two labels on one sheet
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Weight to 1 lbs 1 oz
     Then Details: Set Insure-For to $10

@@ -9,7 +9,7 @@ Feature: Add Hide Mail Value Checkbox to Print Dialog
   Scenario:  Hide Mail Value Checkbox
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address in Zone 1
+    Then Details: Set Ship-To to random address in Zone 1
     Then Details: Select Service Priority Mail Flat Rate Envelope
 
     Then Print: Open Modal
@@ -30,7 +30,7 @@ Feature: Add Hide Mail Value Checkbox to Print Dialog
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address in Zone 1
+    Then Details: Set Ship-To to random address in Zone 1
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Print: Open Modal
     Then Print: Uncheck Hide Mail Value

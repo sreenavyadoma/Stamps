@@ -9,14 +9,14 @@ Feature: Test Development
 
   Scenario:
     Then Toolbar: Add
-    Then Details: Set Ship-To to Random Address in Zone 1
-    Then Details: Set Ship-To to Random Address in Zone 2
-    Then Details: Set Ship-To to Random Address in Zone 3
-    Then Details: Set Ship-To to Random Address in Zone 4
-    Then Details: Set Ship-To to Random Address in Zone 5
-    Then Details: Set Ship-To to Random Address in Zone 6
-    Then Details: Set Ship-To to Random Address in Zone 7
-    Then Details: Set Ship-To to Random Address in Zone 8
+    Then Details: Set Ship-To to random address in Zone 1
+    Then Details: Set Ship-To to random address in Zone 2
+    Then Details: Set Ship-To to random address in Zone 3
+    Then Details: Set Ship-To to random address in Zone 4
+    Then Details: Set Ship-To to random address in Zone 5
+    Then Details: Set Ship-To to random address in Zone 6
+    Then Details: Set Ship-To to random address in Zone 7
+    Then Details: Set Ship-To to random address in Zone 8
     Then Sign out
 
   Scenario:
@@ -36,7 +36,7 @@ Feature: Test Development
     Then Filter: Select Cancelled
     Then Filter: Select Awaiting Shipment
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to random zone 5 through 8
+    Then Details: Set Ship-To to random address Between Zone 5 through 8
     Then Details: Set Email to random
     Then Details: Set Phone to random
     Then Details: Select Service Priority Mail Large Package
@@ -53,7 +53,7 @@ Feature: Test Development
     Then Toolbar: Add
     Then Filter: Select Awaiting Shipment
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to Eight Zone,377 Santa Rosa Blvd,Fort Walton Beach, FL 32548
+    Then Details: Set Ship-To address text area to Eight Zone,377 Santa Rosa Blvd,Fort Walton Beach, FL 32548
     Then Details: Set Email to random
     Then Details: Set Phone to random
     Then Details: Select Service Priority Mail Large Package
@@ -70,7 +70,7 @@ Feature: Test Development
   Scenario:
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Tracking to USPS Tracking
@@ -81,7 +81,7 @@ Feature: Test Development
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
@@ -97,7 +97,7 @@ Feature: Test Development
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
     Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 5
@@ -112,7 +112,7 @@ Feature: Test Development
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
     Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 5
@@ -127,7 +127,7 @@ Feature: Test Development
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
     Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 5
@@ -143,7 +143,7 @@ Feature: Test Development
   Scenario:
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
     Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 5
@@ -184,7 +184,7 @@ Feature: Test Development
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service First-Class Mail Large Envelope/Flat
 
     Then Print: Print
@@ -194,7 +194,7 @@ Feature: Test Development
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service First-Class Mail Large Envelope/Flat
     Then Grid: Check row 1
     Then Print: Print
@@ -203,17 +203,17 @@ Feature: Test Development
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service First-Class Mail Large Envelope/Flat
 
     Then Toolbar: Add second order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service First-Class Mail Large Envelope/Flat
 
     Then Toolbar: Add third order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
 
     Then Grid: Check row 1

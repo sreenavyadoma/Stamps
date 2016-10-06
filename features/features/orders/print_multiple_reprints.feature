@@ -8,7 +8,7 @@ Feature: Multiple Reprints
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to MM Package, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
+    Then Details: Set Ship-To address text area to MM Package, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Set Ounces to 1
     Then Print: Open Modal

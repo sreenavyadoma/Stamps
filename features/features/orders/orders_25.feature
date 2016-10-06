@@ -40,7 +40,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -53,7 +53,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 2
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -67,7 +67,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Grid: Check row 1
     Then Details: Set Ounces to 3
     Then Details: Set Length to 1
@@ -79,7 +79,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 4
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -90,7 +90,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 5
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -102,7 +102,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 6
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -113,7 +113,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 7
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -125,7 +125,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 8
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -136,7 +136,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 9
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -148,7 +148,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 10
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -160,7 +160,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 11
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -172,7 +172,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 12
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -184,7 +184,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 13
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -196,7 +196,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 14
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -208,7 +208,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 15
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -219,7 +219,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 16
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -230,7 +230,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 17
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -241,7 +241,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 18
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -252,7 +252,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 19
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -264,7 +264,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 20
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -277,7 +277,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 21
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -289,7 +289,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 22
     Then Details: Set Length to 1
     Then Details: Set Width to 1
@@ -301,7 +301,7 @@ Feature: 25 orders
     Then Toolbar: Add
     Then Expect new Order ID created
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 23
     Then Details: Set Length to 1
     Then Details: Set Width to 1

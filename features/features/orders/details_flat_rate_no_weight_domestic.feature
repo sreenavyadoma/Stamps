@@ -22,7 +22,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail Flat Rate Envelope
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address in Zone 1
+    Then Details: Set Ship-To to random address in Zone 1
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Expect Service to be Priority Mail Flat Rate Envelope
     Then Details: Expect Pounds to be 0

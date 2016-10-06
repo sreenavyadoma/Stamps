@@ -8,7 +8,7 @@ Feature:  BVT Printing
   Scenario:  Printing
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 5 through 8
+    Then Details: Set Ship-To to random address Between Zone 5 through 8
     Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 1
     Then Details: Set Width to 1

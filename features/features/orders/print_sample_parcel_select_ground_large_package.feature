@@ -7,7 +7,7 @@ Feature: Print: Print Sample - Parcel Select Ground Large Package
   Scenario:  Parcel Select Ground Large Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Ounces to 1
     Then Print: Open Modal

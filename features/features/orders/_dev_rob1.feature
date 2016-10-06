@@ -6,7 +6,7 @@ Feature: Test Development
   Scenario:
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 1
     Then Print: Open Modal
@@ -43,7 +43,7 @@ Feature: Test Development
     Then Grid: Expect State to be CA
     Then Grid: Expect Zip to be 94102
 
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
 
     Then Details: Set Ship-To address to
       | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
@@ -53,16 +53,16 @@ Feature: Test Development
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then Toolbar: Add
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Toolbar: Add
-    Then Details: Set Ship-To address to San
+    Then Details: Set Ship-To address text area to San
     Then Toolbar: Add
-    Then Details: Set Ship-To address to San
+    Then Details: Set Ship-To address text area to San
 
   Scenario:
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service Priority Mail Package
     Then Details: Expect Service to be Priority Mail Package
     Then Details: Expect Service Cost inline price for "Priority Mail Package" to be greater than $0.01

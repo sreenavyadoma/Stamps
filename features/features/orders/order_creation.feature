@@ -9,14 +9,14 @@ Feature: 10 orders
     # First Class Mail
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Insure-For to $15.00
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Insure-For to $45.00
@@ -26,28 +26,28 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Select Service Priority Mail Legal Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Regional Rate Box A
     Then Details: Set Insure-For to $105.00
@@ -57,14 +57,14 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Express Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 11
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
@@ -73,7 +73,7 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 3
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $56.00
@@ -83,7 +83,7 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 10
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $235.00
@@ -98,14 +98,14 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Insure-For to $15.00
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Insure-For to $45.00
@@ -115,28 +115,28 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Select Service Priority Mail Legal Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Regional Rate Box A
     Then Details: Set Insure-For to $105.00
@@ -146,14 +146,14 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Express Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 11
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
@@ -162,7 +162,7 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 3
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $56.00
@@ -172,7 +172,7 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 10
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $235.00
@@ -183,14 +183,14 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Insure-For to $15.00
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Insure-For to $45.00
@@ -200,28 +200,28 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Select Service Priority Mail Legal Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Regional Rate Box A
     Then Details: Set Insure-For to $105.00
@@ -231,14 +231,14 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Express Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 11
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
@@ -247,7 +247,7 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Ounces to 3
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $56.00
@@ -257,7 +257,7 @@ Feature: 10 orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Set Pounds to 10
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Insure-For to $235.00

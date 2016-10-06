@@ -8,7 +8,7 @@ Feature: Change Starting Label Position to Left Side
   Scenario:  Print Label - Left Side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
@@ -21,7 +21,7 @@ Feature: Change Starting Label Position to Left Side
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Hide Ship-To fields
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Ounces to 1

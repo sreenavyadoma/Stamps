@@ -1472,27 +1472,8 @@ module Stamps
         class DetailsStoreItem < Browser::Modal
         end
 
-        def item_details_header
-          ElementWrapper.new (browser.div text: "Items Ordered")
-        end
-
-        def expand
-          button = ElementWrapper.new (browser.img css: "img[class*='x-tool-expand-bottom']")
-          button.safe_click
-        end
-
-        def collapse_store_item
-          button = ElementWrapper.new (browser.imgs css: "img[class*='x-tool-collapse-top']")[1]
-          button.safe_click
-        end
-
-        def collapse_item
-          button = ElementWrapper.new (browser.img css: "img[class*='x-tool-collapse-top']")
-          button.safe_click
-        end
-
         class DetailsItem < Browser::Modal
-          attr_reader :index, :qty, :id, :description
+          attr_reader :index, :qty, :id, :description, :delete
           def initialize param, number
             super param
             @index = number
@@ -1549,6 +1530,32 @@ module Stamps
           end
         end
 
+        def item_details_header
+          ElementWrapper.new (browser.div text: "Items Ordered")
+        end
+
+        attr_reader :add_btn
+
+        def initialize param
+          super param
+          @add_btn = ElementWrapper.new browser.span(css: "span[class*=sdc-icon-add]")
+        end
+
+        def expand
+          button = ElementWrapper.new (browser.img css: "img[class*='x-tool-expand-bottom']")
+          button.safe_click
+        end
+
+        def collapse_store_item
+          button = ElementWrapper.new (browser.imgs css: "img[class*='x-tool-collapse-top']")[1]
+          button.safe_click
+        end
+
+        def collapse_item
+          button = ElementWrapper.new (browser.img css: "img[class*='x-tool-collapse-top']")
+          button.safe_click
+        end
+
         def size
           (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]").size
         end
@@ -1562,19 +1569,17 @@ module Stamps
         end
 
         def item number
-          add_button = ElementWrapper.new browser.span(css: "span[class*=sdc-icon-add]")
           logger.info "Item Count: #{size}"
 
           20.times{
             break if size >= number
-            sleep 1
             break if size >= number
-            add_button.safe_click if number > size
+            break if size >= number
+            add_btn.safe_click if number > size
             logger.info "Item Count: #{size}"
             break if size >= number
           }
-          number.should eql size
-          DetailsItem.new param, number
+          DetailsItem.new(param, number)
         end
       end
 

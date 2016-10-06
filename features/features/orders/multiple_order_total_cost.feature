@@ -7,7 +7,7 @@ Feature: Total Cost of Multiple Orders
   Scenario:  Total Cost Multiple Orders
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
@@ -15,14 +15,14 @@ Feature: Total Cost of Multiple Orders
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1

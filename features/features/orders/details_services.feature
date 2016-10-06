@@ -7,7 +7,7 @@ Feature:  Orders Service Selection
   Scenario:  Orders Service Selection
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address in Zone 1
+    Then Details: Set Ship-To to random address in Zone 1
     Then Details: Set Ounces to 1
 
     Then Details: Select Service First-Class Mail Large Envelope/Flat

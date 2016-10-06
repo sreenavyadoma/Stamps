@@ -9,7 +9,7 @@ Feature:  Order Details Form - Reference # Field
   Scenario: Reference Number
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to Random Address Between Zone 1 through 4
+    Then Details: Set Ship-To to random address Between Zone 1 through 4
     Then Details: Select Service Priority Mail Large/Thick Envelope
     Then Details: Set Ounces to 2
 
