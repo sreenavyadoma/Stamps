@@ -322,13 +322,8 @@ Then /^Details: Set Ship-To domestic address to$/ do |table|
   step "Details: Set Email to #{@details_form_data[:email]}"
 end
 
-Then /^Details: Set Ship-To Less details$/ do
-  web_apps.orders.details.ship_to.address.less.safe_click
-end
+Then /^Details: Set Ship-To international address to$/ do |table|
 
-Then /^Details: Hide Ship-To fields$/ do
-  logger.step "Details: Hide Ship-To fields"
-  web_apps.orders.details.ship_to.hide_address_details
 end
 
 Then /^Details: Set Ship-To address to$/ do |table|
@@ -445,6 +440,15 @@ Then /^Details: Set Ship-To address to (.*)$/ do |address|
   step "Details: Save Total Ship Cost"
 end
 
+Then /^Details: Set Ship-To Less details$/ do
+  web_apps.orders.details.ship_to.address.less.safe_click
+end
+
+Then /^Details: Hide Ship-To fields$/ do
+  logger.step "Details: Hide Ship-To fields"
+  web_apps.orders.details.ship_to.hide_address_details
+end
+
 Then /^Details: Expect Ship-To Name to be (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Name to be #{expectation}"
   actual_value = web_apps.orders.details.ship_to.address.text_area.recipient_name
@@ -459,36 +463,36 @@ Then /^Details: Expect Ship-To Company Name to be (.*)$/ do |expectation|
   actual_value.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Street Address to be (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Street Address to be #{expectation}"
+Then /^Details: Expect Ship-To Cleansed Street Address to be (.*)$/ do |expectation|
+  logger.step "Details: Expect Ship-To Cleansed Street Address to be #{expectation}"
   actual_value = web_apps.orders.details.ship_to.address.text_area.street_address
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
-Then /^Details: Expect Ship-To City to be (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To City to be #{expectation}"
+Then /^Details: Expect Ship-To Cleansed City to be (.*)$/ do |expectation|
+  logger.step "Details: Expect Ship-To Cleansed City to be #{expectation}"
   actual_value = web_apps.orders.details.ship_to.address.text_area.city
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
-Then /^Details: Expect Ship-To State to be (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To State to be #{expectation}"
+Then /^Details: Expect Ship-To Cleansed State to be (.*)$/ do |expectation|
+  logger.step "Details: Expect Ship-To Cleansed State to be #{expectation}"
   actual_value = web_apps.orders.details.ship_to.address.text_area.state
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Zip Plus 4 Code to be (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Zip Plus 4 Code to be #{expectation}"
+Then /^Details: Expect Ship-To Cleansed Zip Plus 4 Code to be (.*)$/ do |expectation|
+  logger.step "Details: Expect Ship-To Cleansed Zip Plus 4 Code to be #{expectation}"
   actual_value = web_apps.orders.details.ship_to.address.text_area.zip_plus_4
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Zip Code to be (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Zip Code to be #{expectation}"
+Then /^Details: Expect Ship-To Cleansed Zip Code to be (.*)$/ do |expectation|
+  logger.step "Details: Expect Ship-To Cleansed Zip Code to be #{expectation}"
   actual_value = web_apps.orders.details.ship_to.address.text_area.zip_code
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation

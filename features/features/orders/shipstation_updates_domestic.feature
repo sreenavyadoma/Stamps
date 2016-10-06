@@ -44,11 +44,11 @@ Feature:  Update Order to ShipStation
     #Verify Single Order Details form was saved in ShipStation
     Then Details: Expect Ship-To Name to be First Last
     Then Details: Expect Ship-To Company Name to be Company Name
-    Then Details: Expect Ship-To Street Address to be 777 N Orange Ave Apt 100
-    Then Details: Expect Ship-To City to be Orlando
-    Then Details: Expect Ship-To State to be FL
-    Then Details: Expect Ship-To Zip Plus 4 Code to be 32801-1175
-    Then Details: Expect Ship-To Zip Code to be 32801
+    Then Details: Expect Ship-To Cleansed Street Address to be 777 N Orange Ave Apt 100
+    Then Details: Expect Ship-To Cleansed City to be Orlando
+    Then Details: Expect Ship-To Cleansed State to be FL
+    Then Details: Expect Ship-To Cleansed Zip Plus 4 Code to be 32801-1175
+    Then Details: Expect Ship-To Cleansed Zip Code to be 32801
     Then Details: Expect Ship-To Phone to be 888-888-8888
     Then Details: Expect Ship-To Email to be rtest@stamps.com
 

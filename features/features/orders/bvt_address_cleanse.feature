@@ -8,9 +8,10 @@ Feature:  BVT Address Cleansing
   Scenario: Address Cleansing
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To address to
-      | name          | company       | street_address      | city          | state | zip   | country       | phone           |  email            |
-      | Euan Davidson | Company Name  | 1350 Market Street  | San Francisco | CA    |       | United States | (415) 123-5555  | rtest@stamps.com  |
+    Then Details: Set Ship-To domestic address to
+      | name          | company      | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
+      | Euan Davidson | Company Name | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
+
     Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 1
     Then Details: Blur out
@@ -22,4 +23,6 @@ Feature:  BVT Address Cleansing
     Then Grid: Expect State to be CA
     Then Grid: Expect Zip to be 94102
     Then Sign out
+
+
 
