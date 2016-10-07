@@ -56,23 +56,34 @@ module Stamps
       end
     end
 
-    class MailSignInModal < Browser::Modal
+    class RememberUsername < Browser::Modal
+      attr_reader :remember_user_element
 
-      class RememberUsernameCheckbox < Browser::Modal
-        def check
-          browser.checkbox(css: "input[id=rememberUser]").set
-          browser.checkbox(css: "input[id=rememberUser]").set
-        end
-
-        #Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
-        def uncheck
-          browser.checkbox(css: "input[id=rememberUser]").clear
-          browser.checkbox(css: "input[id=rememberUser]").clear
-        end
+      def initialize param
+        super param
+        @remember_user_element = ElementWrapper.new browser.checkbox(id: "rememberUser")
       end
 
+      def present?
+        remember_user_element.present?
+      end
+
+      def check
+        browser.checkbox(css: "input[id=rememberUser]").set
+        browser.checkbox(css: "input[id=rememberUser]").set
+      end
+
+      #Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
+      def uncheck
+        browser.checkbox(css: "input[id=rememberUser]").clear
+        browser.checkbox(css: "input[id=rememberUser]").clear
+      end
+    end
+
+    class MailSignInModal < Browser::Modal
+
       attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info,
-                  :signed_in_user, :invalid_msg
+                  :signed_in_user, :invalid_msg, :remember_username_checkbox
 
       def initialize param
         super param
@@ -84,18 +95,33 @@ module Stamps
         @signed_in_user = ElementWrapper.new browser.span id: "userNameText"
         @invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
         @whats_new_modal ||= WhatsNewModal.new param
+        @remember_username_checkbox ||= WatirCheckbox.new browser.checkbox(id: "rememberUser")
       end
 
       def present?
         sign_in_link.present?
       end
 
-      def wait_until_present *args
+      def wait_until_present(*args)
         sign_in_link.safely_wait_until_present *args
       end
 
       def error
 
+      end
+
+      def remember_username(check)
+        sign_in_link.safe_click unless remember_username_checkbox.present?
+        if !!check
+          remember_username_checkbox.check
+        else
+          remember_username_checkbox.uncheck
+        end
+      end
+
+      def remember_username_checked?
+        sign_in_link.safe_click unless remember_username_checkbox.present?
+        remember_username_checkbox.checked?
       end
 
       def username usr
@@ -112,10 +138,6 @@ module Stamps
         sign_in_button.safe_click
         sign_in_button.safe_click
         sign_in_button.send_keys :enter
-      end
-
-      def remember_username_checkbox
-        RememberUsernameCheckbox.new param
       end
 
       def user_credentials *args
@@ -149,15 +171,9 @@ module Stamps
         10.times do
           username username
           password password
-          if $remember_username_status == "checked"
-            remember_username_checkbox.check
-          else
-            remember_username_checkbox.uncheck
-          end
-
           login
 
-        50.times do
+          50.times do
             logger.message verifying_account_info.safe_text
             verifying_account_info.safely_wait_while_present 2
             break unless verifying_account_info.present?
@@ -191,11 +207,6 @@ module Stamps
         5.times do
           username username
           password password
-          if $remember_username_status == "checked"
-            remember_username_checkbox.check
-          else
-            remember_username_checkbox.uncheck
-          end
           login
 
           20.times do
@@ -215,16 +226,10 @@ module Stamps
         credentials = user_credentials *args
         username = credentials[0]
 
+        #todo-fix username
+
         10.times do
           username username
-          if username_textbox.text == username
-            $remember_username_status = "checked"
-          else
-            $remember_username_status = "unchecked"
-          end
-
-          logger.info "Remembered username status is #{$remember_username_status}"
-
           break if username_textbox.present?
 
         end
@@ -306,36 +311,37 @@ module Stamps
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
         logger.info "Password is #{password}"
 
-      def invalid_username_password
-        ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
-      end
-
-      def forgot_username
-        sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
-        button = ElementWrapper.new browser.a css: "a[class*=forgotUsername]"
-        forgot_username_modal = ForgotUsernameModal.new param
-        5.times do
-          sign_in_link.safe_click
-          button.safe_click
-          sleep 1
-          return forgot_username_modal if forgot_username_modal.present?
+        def invalid_username_password
+          ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
         end
-        stop_test "Unable to open Forgot Username Modal, check your code." unless forgot_password_modal.present?
-      end
 
-      def forgot_password
-        sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
-        button = ElementWrapper.new browser.a css: "a[class*=forgotPassword]"
-        forgot_password_modal = ForgotPasswordModal.new param
-        5.times do
-          sign_in_link.safe_click
-          button.safe_click
-          sleep 1
-          return forgot_password_modal if forgot_password_modal.present?
+        def forgot_username
+          sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
+          button = ElementWrapper.new browser.a css: "a[class*=forgotUsername]"
+          forgot_username_modal = ForgotUsernameModal.new param
+          5.times do
+            sign_in_link.safe_click
+            button.safe_click
+            sleep 1
+            return forgot_username_modal if forgot_username_modal.present?
+          end
+          stop_test "Unable to open Forgot Username Modal, check your code." unless forgot_password_modal.present?
         end
-        stop_test "Unable to open Forgot Password Modal, check your code." unless forgot_password_modal.present?
-      end
 
+        def forgot_password
+          sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
+          button = ElementWrapper.new browser.a css: "a[class*=forgotPassword]"
+          forgot_password_modal = ForgotPasswordModal.new param
+          5.times do
+            sign_in_link.safe_click
+            button.safe_click
+            sleep 1
+            return forgot_password_modal if forgot_password_modal.present?
+          end
+          stop_test "Unable to open Forgot Password Modal, check your code." unless forgot_password_modal.present?
+        end
+
+      end
     end
 
     class MailLandingPage < Browser::Modal
@@ -369,6 +375,5 @@ module Stamps
         sign_in_modal.wait_until_present *args
       end
     end
-    end
-    end
+  end
 end

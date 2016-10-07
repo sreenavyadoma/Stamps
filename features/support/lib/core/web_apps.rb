@@ -16,7 +16,7 @@ module Stamps
       case page
         when :orders
           app_name ="Orders"
-        when :print_postage
+        when :mail
           app_name ="Webpostage"
         else
           raise "#{page} is not a valid page."
@@ -73,7 +73,7 @@ module Stamps
             else
               url = ENV['URL']
           end
-        when :print_postage
+        when :mail
           case ENV['URL'].downcase
             when /ss/
               url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx"

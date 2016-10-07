@@ -18,7 +18,7 @@ module Stamps
           when /stg/
             url = "https://registration.staging.stamps.com/registration"
           else
-            stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
+            "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
         end
 
         logger.info "Visit:  #{url}"

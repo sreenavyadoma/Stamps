@@ -2,12 +2,12 @@
 module Stamps
   module Mail
     class WebMail < MailForm
-      attr_reader :landing_page, :toolbar, :drop_down, :footer, :shipping_label, :netstamps,
+      attr_reader :sign_in_modal, :toolbar, :drop_down, :footer, :shipping_label, :netstamps,
                   :envelope, :certified_mail, :roll
 
       def initialize param
         super param
-        @landing_page ||= MailSignInModal.new param
+        @sign_in_modal ||= MailSignInModal.new param
         @toolbar ||= Toolbar.new param
         @drop_down = PrintOn.new param
         @footer ||= Footer.new param

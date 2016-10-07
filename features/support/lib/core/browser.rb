@@ -98,6 +98,14 @@ module Stamps
         end
       end
 
+      def clear
+        begin
+          element.clear
+        rescue
+          #ignore
+        end
+      end
+
       def data_error_qtip
         begin
           # if data qtip element was not set or is nil, try to get data error qtip from the element representing this textbox.
@@ -217,6 +225,10 @@ module Stamps
         element_helper.send_keys element, special_char
       end
 
+      def set_element
+        element_helper.set_element element
+      end
+
       def text
         txt = element_helper.text element
         val = element.attribute_value "value"
@@ -264,6 +276,26 @@ module Stamps
         rescue
           false
         end
+      end
+    end
+
+    class WatirCheckbox < ElementWrapper
+      def check
+        10.times do
+          element_helper.set element
+          break if checked?
+        end
+      end
+
+      def uncheck
+        10.times do
+          element_helper.clear element
+          break unless checked?
+        end
+      end
+
+      def checked?
+        element_helper.checked? element
       end
     end
 
@@ -453,26 +485,36 @@ module Stamps
           end
         end
 
-        def set element, text
-          15.times do
-            begin
-              element.focus
-              element.clear
+        def set *args
+          case args.size
+            when 1
+              element = args[0]
+              element.set
+            when 2
+              element = args[0]
+              text = args[1]
+              15.times do
+                begin
+                  element.focus
+                  #element.clear
 
-              # set element text
-              element.set text
-              actual_value = text element
-              break if actual_value == text
-              break if actual_value == text
+                  # set element text
+                  element.set text
+                  actual_value = text element
+                  break if actual_value == text
+                  break if actual_value == text
 
-              #set element attribute value
-              set_attribute_value element, "value", text
-              actual_value = text element
-              break if actual_value == text
-              break if actual_value == text
-            rescue
-              #ignore
-            end
+                  #set element attribute value
+                  set_attribute_value element, "value", text
+                  actual_value = text element
+                  break if actual_value == text
+                  break if actual_value == text
+                rescue
+                  #ignore
+                end
+              end
+            else
+              args.size.should be_between(1, 2).inclusive
           end
         end
 
@@ -489,6 +531,14 @@ module Stamps
             safe_click element
             break unless element.present?
           }
+        end
+
+        def checked? element
+          begin
+            element.checked?
+          rescue
+            return false
+          end
         end
 
         def visible? element
