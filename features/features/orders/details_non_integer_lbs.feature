@@ -8,7 +8,7 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 5 through 8
+    Then Details: Set Ship-To to address in Zone 5 through 8
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Pounds to 3.5
     Then Details: Expect Pounds to be 3

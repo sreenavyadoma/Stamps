@@ -6,7 +6,7 @@ Feature: Mail Balance
     Given I am signed in to Orders
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Hide Ship-To fields
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Package

@@ -7,7 +7,7 @@ Feature:  Service enabled/disabled tests
   Scenario:  First Class Mail over 16 ounces disabled
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 17
     Then Details: Expect Service "First-Class Mail Large Envelope/Flat" to be disabled
     Then Details: Expect Service "First-Class Mail Package/Thick Envelope" to be disabled
@@ -15,7 +15,7 @@ Feature:  Service enabled/disabled tests
     #First Class Mail up to 15.9 ounces enabled
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 15.9
     Then Details: Expect Service "First-Class Mail Package/Thick Envelope" to be enabled
     #Then Details: Expect Service "First-Class Mail Large Envelope/Flat" to be enabled

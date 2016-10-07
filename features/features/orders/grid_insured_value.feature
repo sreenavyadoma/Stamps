@@ -8,7 +8,7 @@ Feature: Grid: Tracking & Order Status
   Scenario: Tracking & Order Status
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Check Insure-For checkbox
     Then Details: Set Insure-For to $52.99

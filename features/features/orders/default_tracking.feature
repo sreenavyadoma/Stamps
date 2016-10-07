@@ -9,7 +9,7 @@ Feature: Tracking
     Then Toolbar: Add
     Then Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
 
     #Then Details: Select Service Priority Mail Express Flat Rate Envelope
     #Then Details: Expect Service to be Priority Mail Express Flat Rate Envelope

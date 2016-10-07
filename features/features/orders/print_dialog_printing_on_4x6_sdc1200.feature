@@ -7,7 +7,7 @@ Feature: Print Media - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
   Scenario:  Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Select Service Priority Mail Package
     Then Details: Set Pounds to 1
     Then Pause for 2 seconds

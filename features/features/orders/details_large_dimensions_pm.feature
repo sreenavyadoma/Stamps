@@ -8,7 +8,7 @@ Feature: Priority Mail and Large Dimensions
   @details_large_dimensions_pm
   Scenario: Priority Mail and Large Dimensions
     Then Toolbar: Add
-    Then Details: Set Ship-To to random address in Zone 8
+    Then Details: Set Ship-To to address in Zone 8
     Then Details: Select Service Priority Mail Package
     Then Details: Set Length to 20
     Then Details: Set Width to 35

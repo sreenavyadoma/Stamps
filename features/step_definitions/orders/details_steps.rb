@@ -247,44 +247,44 @@ Then /^Details: Set Ship-From to (\w+)$/ do |value|
   step "Details: Save Total Ship Cost"
 end
 
-Then /^Details: Set Ship-To to random address in Zone 1$/ do
-  step "Details: Set Ship-To text area to zone 1"
+Then /^Details: Set Ship-To to address in Zone 1$/ do
+  step "Details: Set Ship-To to zone 1"
 end
 
-Then /^Details: Set Ship-To to random address in Zone 2$/ do
-  step "Details: Set Ship-To text area to zone 2"
+Then /^Details: Set Ship-To to address in Zone 2$/ do
+  step "Details: Set Ship-To to zone 2"
 end
 
-Then /^Details: Set Ship-To to random address in Zone 3$/ do
-  step "Details: Set Ship-To text area to zone 3"
+Then /^Details: Set Ship-To to address in Zone 3$/ do
+  step "Details: Set Ship-To to zone 3"
 end
 
-Then /^Details: Set Ship-To to random address in Zone 4$/ do
-  step "Details: Set Ship-To text area to zone 4"
+Then /^Details: Set Ship-To to address in Zone 4$/ do
+  step "Details: Set Ship-To to zone 4"
 end
 
-Then /^Details: Set Ship-To to random address in Zone 5$/ do
-  step "Details: Set Ship-To text area to zone 5"
+Then /^Details: Set Ship-To to address in Zone 5$/ do
+  step "Details: Set Ship-To to zone 5"
 end
 
-Then /^Details: Set Ship-To to random address in Zone 6$/ do
-  step "Details: Set Ship-To text area to zone 6"
+Then /^Details: Set Ship-To to address in Zone 6$/ do
+  step "Details: Set Ship-To to zone 6"
 end
 
-Then /^Details: Set Ship-To to random address in Zone 7$/ do
-  step "Details: Set Ship-To text area to zone 7"
+Then /^Details: Set Ship-To to address in Zone 7$/ do
+  step "Details: Set Ship-To to zone 7"
 end
 
-Then /^Details: Set Ship-To to random address in Zone 8$/ do
-  step "Details: Set Ship-To text area to zone 8"
+Then /^Details: Set Ship-To to address in Zone 8$/ do
+  step "Details: Set Ship-To to zone 8"
 end
 
-Then /^Details: Set Ship-To to random address Between Zone 1 through 4$/ do
-  step "Details: Set Ship-To text area to zone 1 through 4"
+Then /^Details: Set Ship-To to address in Zone 1 through 4$/ do
+  step "Details: Set Ship-To to zone 1 through 4"
 end
 
-Then /^Details: Set Ship-To to random address Between Zone 5 through 8$/ do
-  step "Details: Set Ship-To text area to zone 5 through 8"
+Then /^Details: Set Ship-To to address in Zone 5 through 8$/ do
+  step "Details: Set Ship-To to zone 5 through 8"
 end
 
 Then /^Details: Set Ship-To to domestic address$/ do |table|
@@ -367,55 +367,58 @@ Then /^Details: Set Ship-To to international address$/ do |table|
   step "Details: Set International Ship-To Email to \"#{@details_form_data[:email]}\""
 end
 
+Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
+  case zone.downcase
+    when /zone 1 through 4/
+      zone = ParameterHelper.rand_zone_1_4
+      address = ParameterHelper.format_address zone
+      logger.step "Details: Set Ship-To random zone 1 through 4 address to \"#{address}\""
+    when /zone 5 through 8/
+      zone = ParameterHelper.rand_zone_5_8
+      address = ParameterHelper.format_address zone
+      logger.step "Details: Set Ship-To random zone 5 through 8 address to \"#{address}\""
+    when /zone 1/
+      zone = ParameterHelper.rand_zone_1
+      address = ParameterHelper.format_address zone
+      logger.step "Details: Set Ship-To to address in Zone 1 = \"#{address}\""
+    when /zone 2/
+      zone = ParameterHelper.rand_zone_2
+      address = ParameterHelper.format_address zone
+      logger.step "Details: Set Ship-To to address in Zone 2 = \"#{address}\""
+    when /zone 3/
+      zone = ParameterHelper.rand_zone_3
+      address = ParameterHelper.format_address zone
+      logger.step "Details: Set Ship-To to address in Zone 3 = \"#{address}\""
+    when /zone 4/
+      zone = ParameterHelper.rand_zone_4
+      address = ParameterHelper.format_address zone
+      logger.step "Details: Set Ship-To to address in Zone 4 = \"#{address}\""
+    when /zone 5/
+      zone = ParameterHelper.rand_zone_5
+      address = ParameterHelper.format_address zone
+      logger.step "Details: Set Ship-To to address in Zone 5 = \"#{address}\""
+    when /zone 6/
+      zone = ParameterHelper.rand_zone_6
+      address = ParameterHelper.format_address zone
+      logger.step "Details: Set Ship-To to address in Zone 6 = \"#{address}\""
+    when /zone 7/
+      zone = ParameterHelper.rand_zone_7
+      address = ParameterHelper.format_address zone
+      logger.step "Details: Set Ship-To to address in Zone 7 = \"#{address}\""
+    when /zone 8/
+      zone = ParameterHelper.rand_zone_8
+      address = ParameterHelper.format_address zone
+      logger.step "Details: Set Ship-To to address in Zone 8 = \"#{address}\""
+    else
+      address = ParameterHelper.format_address zone
+  end
+  step "Details: Set Ship-To text area to #{address}"
+end
+
 Then /^Details: Set Ship-To text area to (.*)$/ do |address|
   logger.step "Details: Set Ship-To text area to \"#{address}\""
-
-  case address.downcase
-    when /zone 1 through 4/
-      address = ParameterHelper.rand_zone_1_4
-      formatted_address = ParameterHelper.format_address address
-      logger.step "Details: Set Ship-To random zone 1 through 4 address to \"#{formatted_address}\""
-    when /zone 5 through 8/
-      address = ParameterHelper.rand_zone_5_8
-      formatted_address = ParameterHelper.format_address address
-      logger.step "Details: Set Ship-To random zone 5 through 8 address to \"#{formatted_address}\""
-    when /zone 1/
-      address = ParameterHelper.rand_zone_1
-      formatted_address = ParameterHelper.format_address address
-      logger.step "Details: Set Ship-To to random address in Zone 1 = \"#{formatted_address}\""
-    when /zone 2/
-      address = ParameterHelper.rand_zone_2
-      formatted_address = ParameterHelper.format_address address
-      logger.step "Details: Set Ship-To to random address in Zone 2 = \"#{formatted_address}\""
-    when /zone 3/
-      address = ParameterHelper.rand_zone_3
-      formatted_address = ParameterHelper.format_address address
-      logger.step "Details: Set Ship-To to random address in Zone 3 = \"#{formatted_address}\""
-    when /zone 4/
-      address = ParameterHelper.rand_zone_4
-      formatted_address = ParameterHelper.format_address address
-      logger.step "Details: Set Ship-To to random address in Zone 4 = \"#{formatted_address}\""
-    when /zone 5/
-      address = ParameterHelper.rand_zone_5
-      formatted_address = ParameterHelper.format_address address
-      logger.step "Details: Set Ship-To to random address in Zone 5 = \"#{formatted_address}\""
-    when /zone 6/
-      address = ParameterHelper.rand_zone_6
-      formatted_address = ParameterHelper.format_address address
-      logger.step "Details: Set Ship-To to random address in Zone 6 = \"#{formatted_address}\""
-    when /zone 7/
-      address = ParameterHelper.rand_zone_7
-      formatted_address = ParameterHelper.format_address address
-      logger.step "Details: Set Ship-To to random address in Zone 7 = \"#{formatted_address}\""
-    when /zone 8/
-      address = ParameterHelper.rand_zone_8
-      formatted_address = ParameterHelper.format_address address
-      logger.step "Details: Set Ship-To to random address in Zone 8 = \"#{formatted_address}\""
-    else
-      formatted_address = ParameterHelper.format_address address
-  end
-
-  web_apps.orders.details.ship_to.address.set formatted_address
+  address = ParameterHelper.format_address address
+  web_apps.orders.details.ship_to.address.set address
   step "Details: Save Total Ship Cost"
 end
 

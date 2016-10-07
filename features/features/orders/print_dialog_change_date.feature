@@ -19,7 +19,7 @@ Feature:  Changing Print Date Causes Page to get Stuck on "Verifying Mail Rates"
   Scenario: Change Print Date
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Select Service Priority Mail Large/Thick Envelope
     Then Details: Set Ounces to 2
 

@@ -8,7 +8,7 @@ Feature: User Views Price Next to Service Dropdown
   Scenario:  User Views Price Next to Service Dropdown
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Expect Service Cost to be $0.00
     Then Details: Expect Service Cost inline price for "First-Class Mail Large Envelope/Flat" to be greater than $0.01
     Then Details: Expect Service Cost inline price for "First-Class Mail Package/Thick Envelope" to be greater than $0.01

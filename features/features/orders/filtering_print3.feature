@@ -7,17 +7,17 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
   Scenario: Print 3 orders
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Select Service First-Class Mail Large Envelope/Flat
 
     Then Toolbar: Add second order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Select Service First-Class Mail Large Envelope/Flat
 
     Then Toolbar: Add third order
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
 
     Then Grid: Check row 1

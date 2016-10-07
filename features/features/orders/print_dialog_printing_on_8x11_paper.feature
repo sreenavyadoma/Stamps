@@ -7,7 +7,7 @@ Feature: Print Media - Shipping Label: 8 ½" x 11" Paper
   Scenario:  Shipping Label: 8 ½" x 11" Paper
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Select Service Priority Mail Package
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1

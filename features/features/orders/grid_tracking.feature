@@ -10,7 +10,7 @@ Feature: Grid: Tracking & Order Status
     Then Toolbar: Add
     Then Grid: Expect Order Status to be Awaiting Shipment
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Tracking to USPS Tracking
@@ -26,7 +26,7 @@ Feature: Grid: Tracking & Order Status
     Then Toolbar: Add
     Then Grid: Expect Order Status to be Awaiting Shipment
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 5
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Tracking to Signature Required

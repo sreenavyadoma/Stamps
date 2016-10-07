@@ -10,7 +10,7 @@
     Then Details: Set Ship-From to default
     Then Grid: Check row 1
 
-    Then Details: Set Ship-To to random address Between Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Hide Ship-To fields
 
     Then Details: Select Service Priority Mail Large/Thick Envelope
