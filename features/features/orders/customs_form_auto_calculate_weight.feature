@@ -29,14 +29,14 @@ Feature: Auto-Calculate Customs Form Weight
     Then Customs: Set Item Description to item 1
     Then Customs: Set Item Qty to 2
     Then Customs: Set Item Unit Price to 1
-    Then Customs: Set Item Origin Country to United States
+    Then Customs: Set Item Made In Country to United States
     Then Customs: Set Item Tarriff to 5
 
     Then Customs: Add Item 2
     Then Customs: Set Item Description to item 2
     Then Customs: Set Item Qty to 2
     Then Customs: Set Item Unit Price to 1
-    Then Customs: Set Item Origin Country to United States
+    Then Customs: Set Item Made In Country to United States
     Then Customs: Set Item Tarriff to 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
 

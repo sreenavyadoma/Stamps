@@ -1573,11 +1573,9 @@ module Stamps
 
           20.times{
             break if size >= number
-            break if size >= number
-            break if size >= number
             add_btn.safe_click if number > size
+            sleep 1
             logger.info "Item Count: #{size}"
-            break if size >= number
           }
           DetailsItem.new(param, number)
         end
@@ -1695,7 +1693,7 @@ module Stamps
 
       class SingleOrderDetails < DetailsForm
         attr_reader :body, :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions,
-                    :customs_form, :footer, :customs, :item_grid, :reference_no, :collapsed_details
+                    :footer, :customs, :item_grid, :reference_no, :collapsed_details
 
         def initialize param
           super param
@@ -1708,7 +1706,6 @@ module Stamps
           @service ||= Service.new param
           @tracking ||= DetailsTracking.new param
           @dimensions ||= Dimensions.new param
-          @customs_form ||= CustomsForm.new param
           @footer ||= DetailsFooter.new param
           @customs ||= CustomsFields.new param
           @item_grid ||= DetailsItemGrid.new param

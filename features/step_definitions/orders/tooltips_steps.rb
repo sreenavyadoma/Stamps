@@ -53,48 +53,48 @@ end
 
 Then /^Tooltips: Expect Customs Form Tooltip Error for Total Weight is (.+)$/ do |expectation|
   logger.step "Tooltips: Expect Customs Form Tooltip Error for Total Weight is #{expectation}"
-  @customs_form.should_not be_nil
-  data_error_qtip = @customs_form.total_weight.data_error
+  web_apps.orders.details.customs.edit_form.should_not be_nil
+  data_error_qtip = web_apps.orders.details.customs.edit_form.total_weight.data_error
   logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end
 
 Then /^Customs: Expect Item Description Tooltip Error is (.*)$/ do |expectation|
   logger.step "Customs: Expect Item Description Tooltip Error is #{expectation}"
-  @customs_form.should_not be_nil
-  data_error_qtip = @customs_form.item_grid.item(1).description.data_error_qtip
+  web_apps.orders.details.customs.edit_form.should_not be_nil
+  data_error_qtip = web_apps.orders.details.customs.edit_form.item_grid.item(1).description.data_error_qtip
   logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end
 
 Then /^Customs: Expect Qty Tooltip Error is (.*)$/ do |expectation|
   logger.step "Customs: Expect Qty Tooltip Error is #{expectation}"
-  @customs_form.should_not be_nil
-  data_error_qtip = @customs_form.item_grid.item(1).qty.text_box.data_error_qtip
+  web_apps.orders.details.customs.edit_form.should_not be_nil
+  data_error_qtip = web_apps.orders.details.customs.edit_form.item_grid.item(1).qty.text_box.data_error_qtip
   logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end
 
 Then /^Customs: Expect Unit Price Tooltip Error is (.*)$/ do |expectation|
   logger.step "Customs: Expect Unit Price Tooltip Error is #{expectation}"
-  @customs_form.should_not be_nil
-  data_error_qtip = @customs_form.item_grid.item(1).unit_price.text_box.data_error_qtip
+  web_apps.orders.details.customs.edit_form.should_not be_nil
+  data_error_qtip = web_apps.orders.details.customs.edit_form.item_grid.item(1).unit_price.text_box.data_error_qtip
   logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end
 
 Then /^Customs: Expect Pounds Tooltip Error is (.*)$/ do |expectation|
   logger.step "Customs: Expect Pounds Tooltip Error is #{expectation}"
-  @customs_form.should_not be_nil
-  data_error_qtip = @customs_form.item_grid.item(1).lbs.text_box.data_error_qtip
+  web_apps.orders.details.customs.edit_form.should_not be_nil
+  data_error_qtip = web_apps.orders.details.customs.edit_form.item_grid.item(1).lbs.text_box.data_error_qtip
   logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end
 
 Then /^Customs: Expect Ounces Tooltip Error is (.*)$/ do |expectation|
   logger.step "Customs: Expect Ounces Tooltip Error is #{expectation}"
-  @customs_form.should_not be_nil
-  data_error_qtip = @customs_form.item_grid.item(1).oz.text_box.data_error_qtip
+  web_apps.orders.details.customs.edit_form.should_not be_nil
+  data_error_qtip = web_apps.orders.details.customs.edit_form.item_grid.item(1).oz.text_box.data_error_qtip
   logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end

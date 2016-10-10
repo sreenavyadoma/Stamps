@@ -353,20 +353,23 @@ module Stamps
         end
       end
 
-      class LogoffDropDown < Browser::Modal
-        def text_box
-          TextBoxElement.new (browser.text_fields css: "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[0]
+      class SettingsLogoffDropDown < Browser::Modal
+        attr_reader :text_box, :drop_down
+
+        def initialize param
+          super param
+          @text_box ||= TextBoxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
+          @drop_down = ElementWrapper.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
         def select selection
-          drop_down = ElementWrapper.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]"
-          text_field = text_box
-          selection_label = ElementWrapper.new browser.li text: selection
+          selection_label = ElementWrapper.new browser.li(text: selection)
           10.times do
+            break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
-            break if text_field.text.include? selection
           end
+          text_box.text.should include selection
         end
 
         def five_min
@@ -395,19 +398,22 @@ module Stamps
       end
 
       class PostDateDropDown < Browser::Modal
-        def text_box
-          TextBoxElement.new (browser.text_fields css: "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[1]
+        attr_reader :text_box, :drop_down
+
+        def initialize param
+          super param
+          @text_box = TextBoxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
+          @drop_down = ElementWrapper.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
         end
 
         def select selection
-          drop_down = ElementWrapper.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
-          text_field = text_box
           selection_label = ElementWrapper.new browser.li text: selection
           10.times do
+            break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
-            break if text_field.text.include? selection
           end
+          text_box.text.should include selection
         end
 
         def twelve_am
@@ -508,19 +514,22 @@ module Stamps
       end
 
       class PostageBalanceDropDown < Browser::Modal
-        def text_box
-          TextBoxElement.new (browser.text_fields css: "input[id^=combo-][id$=-inputEl][name^=combo-][name$=-inputEl]")[2]
+        attr_reader :text_box, :drop_down
+
+        def initialize param
+          super param
+          @text_box = TextBoxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
+          @drop_down = ElementWrapper.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
         def select selection
-          drop_down = ElementWrapper.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]"
-          text_field = text_box
           selection_label = ElementWrapper.new browser.li text: selection
           10.times do
+            break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
-            break if text_field.text.include? selection
           end
+          text_box.text.should include selection
         end
 
         def zero
@@ -569,7 +578,7 @@ module Stamps
       end
 
       def log_off
-        LogoffDropDown.new param
+        SettingsLogoffDropDown.new param
       end
 
       def post_date

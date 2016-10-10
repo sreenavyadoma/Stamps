@@ -1,18 +1,15 @@
 module Stamps
   module Orders
-    class OriginCountry < Browser::Modal
+    class OrdersMadeInCountry < Browser::Modal
+      attr_reader :text_box
 
       def initialize param, index
         super param
         @index = index
-      end
-
-      def text_box
-        TextBoxElement.new ((browser.text_fields name: "OriginCountryCode")[@index-1])
+        @text_box = TextBoxElement.new ((browser.text_fields name: "OriginCountryCode")[@index-1])
       end
 
       def select country
-        #DropDownElement
         logger.info "Select Country #{country}"
         selection = ElementWrapper.new (browser.lis text: country)[@index]
         text_box = self.text_box
@@ -20,15 +17,15 @@ module Stamps
 
         10.times {
           begin
+            break if text_box.text.include? country
             drop_down.safe_click unless selection.present?
             selection.scroll_into_view
             selection.safe_click
-            logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
-            break if text_box.text.include? country
           rescue
             #ignore
           end
         }
+        text_box.text.should include country
         logger.info "#{country} selected."
       end
     end
@@ -45,31 +42,21 @@ module Stamps
       end
 
       def edit_form
-
-        return customs_form if customs_form.present?
-
-        20.times do
+        10.times do
+          return customs_form if customs_form.present?
           edit_form_btn.safe_click
-          customs_form.wait_until_present 1
-          break if customs_form.present?
+          customs_form.wait_until_present 2
         end
-
-        # Fail the test if customs form does not open upon clicking Edit Customs form on Single Order form
-        "Customs Form did not open.".should eql "Edit Customs Form" unless customs_form.present?
-
-        customs_form
+        customs_form.present?.should be true
       end
 
       def restrictions
         5.times{
+          return view_restrictions if view_restrictions.present?
           restrictions_btn.safe_click
-          if view_restrictions.present?
-            return view_restrictions
-          end
         }
-        nil
+        view_restrictions.present?.should be true
       end
-
     end
 
     class CustomsItemGrid < Browser::Modal
@@ -180,7 +167,7 @@ module Stamps
         end
       end
 
-      attr_reader :delete, :description, :qty, :unit_price, :origin, :hs_tariff
+      attr_reader :delete, :description, :qty, :unit_price, :made_in, :hs_tariff
 
       def initialize param, number
         super param
@@ -188,7 +175,7 @@ module Stamps
         @description = TextBoxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[number-1]), "data-errorqtip"
         @qty = Qty.new param, number
         @unit_price = UnitPrice.new param, number
-        @origin = OriginCountry.new param, number
+        @made_in = OrdersMadeInCountry.new param, number
         @hs_tariff = TextBoxElement.new (browser.text_fields name: "TariffNo")[number-1]
       end
 
@@ -220,81 +207,84 @@ module Stamps
     end
 
     class InternalTransaction < Browser::Modal
+      attr_reader :text_box, :drop_down
 
-      def text_box
-        TextBoxElement.new browser.text_field name: "IsITNRequired"
+      def initialize param
+        super param
+        @text_box = TextBoxElement.new browser.text_field name: "IsITNRequired"
+        @drop_down = ElementWrapper.new browser.div(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
       end
 
       def select selection
         logger.info "Select Internal Transaction Number: #{selection}"
-        text_box = self.text_box
-        drop_down = ElementWrapper.new browser.div id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"
-        selection_label = ElementWrapper.new browser.li text: selection
+        selection_label = ElementWrapper.new browser.li(text: selection)
         10.times {
           begin
+            break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
-            logger.info "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
-            break if text_box.text.include? selection
           rescue
             #ignore
           end
         }
+        text_box.text.should include selection
         logger.info "#{selection} selected."
         selection_label
       end
     end
 
     class PackageContents < Browser::Modal
+      attr_reader :text_box, :drop_down
 
-      def text_box
-        TextBoxElement.new browser.text_field name: "CustomsContents"
+      def initialize param
+        super param
+        @text_box ||= TextBoxElement.new browser.text_field name: "CustomsContents"
+        @drop_down = ElementWrapper.new browser.div id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
       end
 
       def select selection
         logger.info "Select Internal Transaction Number: #{selection}"
-        text_box = self.text_box
-        drop_down = ElementWrapper.new browser.div id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
-        selection_label = ElementWrapper.new browser.li text: selection
+        selection_label = ElementWrapper.new browser.li(text: selection)
         10.times {
           begin
+            break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
-            logger.info "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
-            break if text_box.text.include? selection
           rescue
             #ignore
           end
         }
+        text_box.text.should include selection
         logger.info "#{selection} selected."
         selection_label
       end
     end
 
     class NonDeliveryOptions < Browser::Modal
+      attr_reader :text_box, :drop_down
 
-      def text_box
-        TextBoxElement.new browser.text_field name: "NonDelivery"
+      def initialize param
+        super param
+        @text_box = TextBoxElement.new browser.text_field name: "NonDelivery"
+        @drop_down = ElementWrapper.new browser.div id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
       end
 
       def select selection
         logger.info "Select Internal Transaction Number: #{selection}"
-        text_box = self.text_box
-        drop_down = ElementWrapper.new browser.div id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
-        selection_label = ElementWrapper.new browser.li text: selection
+        selection_label = ElementWrapper.new browser.li(text: selection)
         10.times {
           begin
+            break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
-            logger.info "Selection #{text_box.text} - #{(text_box.text.include? selection)?"was selected": "not selected"}"
-            break if text_box.text.include? selection
           rescue
             #ignore
           end
         }
+        text_box.text.should include selection
         logger.info "#{selection} selected."
         selection_label
       end
@@ -304,7 +294,7 @@ module Stamps
 
       attr_reader :window_title, :item_grid, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
                   :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,
-                  :restrictions_link, :restrictions_prohibitions_link, :x_button, :total_label
+                  :restrictions_link, :restrictions_prohibitions_link, :x_button, :total_label, :certificate
 
       def initialize param
         super param
@@ -375,10 +365,12 @@ module Stamps
 
       def close
         close_button.click_while_present
+        present?
       end
 
       def cancel
         x_button.click_while_present
+        present?
       end
     end
   end

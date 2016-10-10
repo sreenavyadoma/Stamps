@@ -313,7 +313,7 @@ module Stamps
           break if checked?
           safe_click
         }
-        "Unable to check element".should eql "" unless checked?
+        #"Unable to check element".should eql "" unless checked?
       end
 
       def uncheck
@@ -323,7 +323,7 @@ module Stamps
             break unless checked?
           }
         end
-        raise "Unable to uncheck element".should eql ""  if checked?
+        #"Unable to uncheck element".should eql "" if checked?
       end
 
       def checked?

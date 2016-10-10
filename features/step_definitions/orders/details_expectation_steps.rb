@@ -1,147 +1,102 @@
 
 Then /^Details: Expect Item (\d+) Qty is (\d+)$/ do |item_number, expectation|
   logger.step "^Details: Expect Item #{item_number} Qty is #{expectation}"
-  item = web_apps.orders.details.item_grid.item item_number.to_i
-  quantity = item.qty.text_box.text
-  logger.step "Test #{(quantity == expectation)?"Passed":"Failed"}"
-  quantity.should eql expectation
+  web_apps.orders.details.item_grid.item(item_number.to_i).qty.text_box.text.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) ID is (.*)$/ do |item_number, expectation|
   logger.step "^Details: Expect Item #{item_number} ID is #{expectation}"
-  item = web_apps.orders.details.item_grid.item item_number.to_i
-  actual_value = item.id.text
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.item_grid.item(item_number.to_i).id.text.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) Description is (.*)$/ do |item_number, expectation|
   logger.step "^Details: Expect Item #{item_number} ID is #{expectation}"
-  item = web_apps.orders.details.item_grid.item item_number.to_i
-  actual_value = item.description.text
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.item_grid.item(item_number.to_i).description.text.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) Qty Placeholder is (.*)$/ do |item_number, expectation|
   logger.step "Details: Expect Item Qty Placeholder is #{expectation}"
-  item = web_apps.orders.details.item_grid.item item_number.to_i
-  actual_value = item.qty.text_box.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
+  web_apps.orders.details.item_grid.item(item_number.to_i).qty.text_box.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
   logger.step "Details: Expect Item ID# Placeholder is #{expectation}"
-  item = web_apps.orders.details.item_grid.item item_number.to_i
-  actual_value = item.id.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.item_grid.item(item_number.to_i).id.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) Description Placeholder is (.*)$/ do |item_number, expectation|
   logger.step "Details: Expect Item Description Placeholder is #{expectation}"
-  item = web_apps.orders.details.item_grid.item item_number.to_i
-  actual_value = item.description.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.item_grid.item(item_number.to_i).description.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Address Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Address Placeholder is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.text_area.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.text_area.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Phone Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Phone Placeholder is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.phone.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.phone.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Email Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Email Placeholder is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.email.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.email.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Service Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Service Placeholder is #{expectation}"
-  actual_value = web_apps.orders.details.service.text_box.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.service.text_box.placeholder.should eql expectation
 end
 
 Then /^Details: Expect International Ship-To Name is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To Name is #{value}"
-  actual_value = web_apps.orders.details.ship_to.international.name.text
-  logger.step "Test #{(actual_value == value)?"Passed":"Failed"}"
-  actual_value.should eql value
+  web_apps.orders.details.ship_to.international.name.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Company is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To Company is #{value}"
-  actual_value = web_apps.orders.details.ship_to.international.company.text
-  logger.step "Test #{(actual_value == value)?"Passed":"Failed"}"
-  actual_value.should eql value
+  web_apps.orders.details.ship_to.international.company.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Address 1 is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To Address 1 is #{value}"
-  actual_value = web_apps.orders.details.ship_to.international.address_1.text
-  logger.step "Test #{(actual_value == value)?"Passed":"Failed"}"
-  actual_value.should eql value
+  web_apps.orders.details.ship_to.international.address_1.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Address 2 is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To address 2 is #{value}"
-  actual_value = web_apps.orders.details.ship_to.international.address_2.text
-  logger.step "Test #{(actual_value == value)?"Passed":"Failed"}"
-  actual_value.should eql value
+  web_apps.orders.details.ship_to.international.address_2.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Province is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To province is #{value}"
-  actual_value = web_apps.orders.details.ship_to.international.province.text
-  logger.step "Test #{(actual_value == value)?"Passed":"Failed"}"
-  actual_value.should eql value
+  web_apps.orders.details.ship_to.international.province.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Postal Code is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To postal code is #{value}"
-  actual_value = web_apps.orders.details.ship_to.international.postal_code.text
-  logger.step "Test #{(actual_value == value)?"Passed":"Failed"}"
-  actual_value.should eql value
+  web_apps.orders.details.ship_to.international.postal_code.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Phone is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To phone is #{value}"
-  actual_value = web_apps.orders.details.ship_to.international.phone.text
-  logger.step "Test #{(actual_value == value)?"Passed":"Failed"}"
-  actual_value.should eql value
+  web_apps.orders.details.ship_to.international.phone.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Email is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To Email is #{value}"
-  actual_value = web_apps.orders.details.ship_to.international.email.text
-  logger.step "Test #{(actual_value == value)?"Passed":"Failed"}"
-  actual_value.should eql value
+  web_apps.orders.details.ship_to.international.email.text.should eql value
 end
 
 Then /^Details: Expect Ship-To Country is (.*)/ do |value|
   logger.step "Details: Expect Ship-To Country is #{value}"
-  actual_value = web_apps.orders.details.ship_to.country.text_box.text
-  logger.step "Test #{(actual_value == value)?"Passed":"Failed"}"
-  actual_value.should eql value
+  web_apps.orders.details.ship_to.country.text_box.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To City is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To City is #{value}"
-  actual_value = web_apps.orders.details.ship_to.international.city.text
-  logger.step "Test #{(actual_value == value)?"Passed":"Failed"}"
-  actual_value.should eql value
+  web_apps.orders.details.ship_to.international.city.text.should eql value
 end
 
 Then /^Details: Expect International Address fields are visible$/ do
@@ -159,45 +114,38 @@ end
 
 Then /^Details: Expect Domestic Ship-To fields are hidden$/ do
   logger.step "Details: Expect Domestic Ship-To fields are hidden"
-  order_details = web_apps.orders.details
-  order_details.ship_to.address.text_area.present?.should be false
+  web_apps.orders.details.ship_to.address.text_area.present?.should be false
 end
 
 Then /^Details: Expect Customs Restrictions button is visible/ do
   logger.step "Details: Expect Customs Restrictions button is visible"
-  order_details = web_apps.orders.details
-  order_details.customs.browser_restrictions_button.present?.should be true
-  order_details.customs.restrictions.ok
+  web_apps.orders.details.customs.browser_restrictions_button.present?.should be true
+  web_apps.orders.details.customs.restrictions.ok
 end
 
 Then /^Details: Expect Customs Restrictions button is hidden/ do
   logger.step "Details: Expect Customs Restrictions button is hidden"
-  order_details = web_apps.orders.details
-  order_details.customs.browser_restrictions_button.present?.should be false
+  web_apps.orders.details.customs.browser_restrictions_button.present?.should be false
 end
 
 Then /^Details: Expect Customs Edit Form button is visible/ do
   logger.step "Details: Expect Customs Edit Form button is visible"
-  order_details = web_apps.orders.details
-  order_details.customs.browser_edit_form_button.present?.should be true
+  web_apps.orders.details.customs.browser_edit_form_button.present?.should be true
 end
 
 Then /^Details: Expect Customs Edit Form button is hidden/ do
   logger.step "Details: Expect Customs Edit Form button is hidden"
-  order_details = web_apps.orders.details
-  order_details.customs.browser_edit_form_button.present?.should be false
+  web_apps.orders.details.customs.browser_edit_form_button.present?.should be false
 end
 
 Then /^Details: Expect Customs Edit Form button is enabled/ do
   logger.step "Details: Expect Customs Edit Form button is enabled"
-  order_details = web_apps.orders.details
-  order_details.customs.browser_edit_form_button.present?.should be true
+  web_apps.orders.details.customs.browser_edit_form_button.present?.should be true
 end
 
 Then /^Details: Expect Customs Edit Form button is disabled/ do
   logger.step "Details: Expect Customs Edit Form button is disabled"
-  order_details = web_apps.orders.details
-  order_details.customs.browser_edit_form_button.present?.should be false
+  web_apps.orders.details.customs.browser_edit_form_button.present?.should be false
 end
 
 Then /^Details: Expect International Ship-To Name Placeholder is (.*)$/ do |expectation|

@@ -292,41 +292,38 @@ module Stamps
             button.safe_click
           end
         end
-
       end
+
       class Origin  < Browser::Modal
-        def text_box
-          TextBoxElement.new browser.text_field name: "CountryOfOrigin"
+        attr_reader :text_box
+
+        def initialize param
+          super param
+          @text_box = TextBoxElement.new browser.text_field name: "CountryOfOrigin"
         end
 
         def drop_down
-          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[12]
+          ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[12]
         end
 
         def select selection
           logger.info "Select Origin Country #{selection}"
-          box = text_box
-          button = drop_down
           selection_label = ElementWrapper.new (browser.divs text: selection)[1]
           10.times {
             begin
-              button.safe_click #unless selection_label.present?
+              break if text_box.text.include? selection
+              drop_down.safe_click #unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
-              selected_origin = box.text
-              logger.info "Selected Origin Country #{selected_origin} - #{(selected_origin.include? selection)?"done": "service not selected"}"
-              break if selected_origin.include? selection
             rescue
               #ignore
             end
           }
           logger.info "Origin Country selected: #{selection}"
+          text_box.text.should include selection
           selection_label
         end
-
       end
-
-
     end
 
     class PackageContents < Browser::Modal
