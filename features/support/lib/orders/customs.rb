@@ -38,7 +38,7 @@ module Stamps
 
       def initialize param
         super param
-        @customs_form = CustomsForm.new param
+        @customs_form = OrdersCustomsForm.new param
         @view_restrictions = Orders::Details::ViewRestrictions.new param
         @edit_form_btn ||= ElementWrapper.new browser.span text: 'Edit Form...'
         @restrictions_btn ||= ElementWrapper.new browser.span text: 'Restrictions...'
@@ -300,7 +300,7 @@ module Stamps
       end
     end
 
-    class CustomsForm < Browser::Modal
+    class OrdersCustomsForm < Browser::Modal
 
       attr_reader :window_title, :item_grid, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
                   :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,

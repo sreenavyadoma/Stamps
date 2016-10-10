@@ -11,8 +11,8 @@ Then /^Grid: Check Order ID (.*)$/ do |order_id|
   web_apps.orders.grid.checkbox.check_order @details_form_data[:order_id]
 end
 
-Then /^Grid: Expect Store to be (.*)$/ do |expectation|
-  logger.step "Grid: Expect Store to be #{expectation}"
+Then /^Grid: Expect Store is (.*)$/ do |expectation|
+  logger.step "Grid: Expect Store is #{expectation}"
   @store_name = (expectation.downcase.include? "random")?@store_name:expectation
   actual_value = web_apps.orders.grid.store.data @details_form_data[:order_id]
   logger.step "Test #{(actual_value==@store_name)?"Passed":"Failed"}"
@@ -84,8 +84,8 @@ Then /^Grid: Check Environment Order ID$/ do
   step "Grid: Check Order ID #{@details_form_data[:order_id]}"
 end
 
-Then /^Grid: Expect Date Printed for this order to be today$/ do
-  logger.step "Grid: Expect Date Printed for this order to be today"
+Then /^Grid: Expect Date Printed for this order is today$/ do
+  logger.step "Grid: Expect Date Printed for this order is today"
   grid = web_apps.orders.filter.shipped
   grid.order_id.sort_descending
   grid_print_date = grid.date_printed.data @details_form_data[:order_id] # Dec 3
@@ -96,13 +96,13 @@ Then /^Grid: Expect Date Printed for this order to be today$/ do
   grid_print_date.should eql expectation_print_date
 end
 
-Then /^Grid: Expect Ship Date for this order to be today$/ do
-  logger.step "Grid: Expect Ship Date for this order to be today"
-  step "Grid: Expect Ship Date for this order to be today plus 0"
+Then /^Grid: Expect Ship Date for this order is today$/ do
+  logger.step "Grid: Expect Ship Date for this order is today"
+  step "Grid: Expect Ship Date for this order is today plus 0"
 end
 
-Then /^Grid: Expect Ship Date for this order to be today plus (\d+)$/ do |day|
-  logger.step "Grid: Expect Ship Date for this order to be today plus #{day}"
+Then /^Grid: Expect Ship Date for this order is today plus (\d+)$/ do |day|
+  logger.step "Grid: Expect Ship Date for this order is today plus #{day}"
   expectation_ship_date = ParameterHelper.mmddyy_to_mondd @ship_date
 
   grid = web_apps.orders.filter.shipped
@@ -189,21 +189,21 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
 
 end
 
-Then /^Expect Ship-To address to be;$/ do |table|
-  logger.step "Expect Ship-To address to be..."
+Then /^Expect Ship-To address is;$/ do |table|
+  logger.step "Expect Ship-To address is..."
   param_hash = table.hashes.first
-  step "Grid: Expect Recipient to be #{param_hash[:name]}"
-  step "Grid: Expect Company to be #{param_hash[:company]}"
-  step "Grid: Expect Address to be #{param_hash[:address]}"
-  step "Grid: Expect City to be #{param_hash[:city]}"
-  step "Grid: Expect State to be #{param_hash[:state]}"
-  step "Grid: Expect Zip to be #{param_hash[:zip]}"
-  step "Grid: Expect Phone to be #{param_hash[:phone]}"
-  step "Grid: Expect Email to be #{param_hash[:email]}"
+  step "Grid: Expect Recipient is #{param_hash[:name]}"
+  step "Grid: Expect Company is #{param_hash[:company]}"
+  step "Grid: Expect Address is #{param_hash[:address]}"
+  step "Grid: Expect City is #{param_hash[:city]}"
+  step "Grid: Expect State is #{param_hash[:state]}"
+  step "Grid: Expect Zip is #{param_hash[:zip]}"
+  step "Grid: Expect Phone is #{param_hash[:phone]}"
+  step "Grid: Expect Email is #{param_hash[:email]}"
 end
 
-Then /^Grid: Expect Age to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Age to be #{expectation}"
+Then /^Grid: Expect Age is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Age is #{expectation}"
   @details_form_data[:order_id].should be_truthy
   10.times do
     break if web_apps.orders.grid.age.data(@details_form_data[:order_id]).eql? expectation
@@ -224,8 +224,8 @@ Then /^Grid: Expect Order Date is populated$/ do
   actual.size.should be > 4
 end
 
-Then /^Grid: Expect Recipient to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Recipient to be #{expectation}"
+Then /^Grid: Expect Recipient is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Recipient is #{expectation}"
   @details_form_data[:order_id].should be_truthy
   10.times do
     break if web_apps.orders.grid.recipient.data(@details_form_data[:order_id]).eql? expectation
@@ -235,8 +235,8 @@ Then /^Grid: Expect Recipient to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Company to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Company to be #{expectation}"
+Then /^Grid: Expect Company is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Company is #{expectation}"
   10.times do
     break if web_apps.orders.grid.company.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -245,8 +245,8 @@ Then /^Grid: Expect Company to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Address to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Address to be #{expectation}"
+Then /^Grid: Expect Address is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Address is #{expectation}"
   10.times do
     break if web_apps.orders.grid.address.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -255,8 +255,8 @@ Then /^Grid: Expect Address to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect City to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect City to be #{expectation}"
+Then /^Grid: Expect City is (.+)$/ do |expectation|
+  logger.step "Grid: Expect City is #{expectation}"
   10.times do
     break if web_apps.orders.grid.city.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -265,8 +265,8 @@ Then /^Grid: Expect City to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect State to be ([a-zA-Z]+)$/ do |expectation|
-  logger.step "Grid: Expect State to be #{expectation}"
+Then /^Grid: Expect State is ([a-zA-Z]+)$/ do |expectation|
+  logger.step "Grid: Expect State is #{expectation}"
   10.times do
     break if web_apps.orders.grid.state.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -275,8 +275,8 @@ Then /^Grid: Expect State to be ([a-zA-Z]+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Zip to be ([\d -]+)$/ do |expectation|
-  logger.step "Grid: Expect Zip to be #{expectation}"
+Then /^Grid: Expect Zip is ([\d -]+)$/ do |expectation|
+  logger.step "Grid: Expect Zip is #{expectation}"
   10.times do
     break if web_apps.orders.grid.zip.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -285,8 +285,8 @@ Then /^Grid: Expect Zip to be ([\d -]+)$/ do |expectation|
   actual.should include expectation
 end
 
-Then /^Grid: Expect Country to be ([a-zA-Z]+)$/ do |expectation|
-  logger.step "Grid: Expect Country to be #{expectation}"
+Then /^Grid: Expect Country is ([a-zA-Z]+)$/ do |expectation|
+  logger.step "Grid: Expect Country is #{expectation}"
   10.times do
     break if web_apps.orders.grid.country.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -304,8 +304,8 @@ Then /^Grid: Expect Column (\w+) appears to left of (\w+)$/ do |left_column, rig
   expectation.should eql "true"
 end
 
-Then /^Grid: Expect Email to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Email to be #{expectation}"
+Then /^Grid: Expect Email is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Email is #{expectation}"
   10.times do
     break if web_apps.orders.grid.email.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -314,8 +314,8 @@ Then /^Grid: Expect Email to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Phone to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Phone to be #{expectation}"
+Then /^Grid: Expect Phone is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Phone is #{expectation}"
   10.times do
     break if web_apps.orders.grid.phone.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -324,8 +324,8 @@ Then /^Grid: Expect Phone to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Pounds to be (\d+)$/ do |expectation|
-  logger.step "Grid: Expect Pounds to be #{expectation}"
+Then /^Grid: Expect Pounds is (\d+)$/ do |expectation|
+  logger.step "Grid: Expect Pounds is #{expectation}"
   10.times do
     break if web_apps.orders.grid.weight.lbs(@details_form_data[:order_id]).eql? expectation
   end
@@ -334,8 +334,8 @@ Then /^Grid: Expect Pounds to be (\d+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Ounces to be (\d+)$/ do |expectation|
-  logger.step "Grid: Expect Ounces to be #{expectation}"
+Then /^Grid: Expect Ounces is (\d+)$/ do |expectation|
+  logger.step "Grid: Expect Ounces is #{expectation}"
   10.times do
     break if web_apps.orders.grid.weight.oz(@details_form_data[:order_id]).eql? expectation
   end
@@ -344,9 +344,9 @@ Then /^Grid: Expect Ounces to be (\d+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
+Then /^Grid: Expect Weight is (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
   expectation = "#{pounds} lbs. #{ounces} oz."
-  logger.step "Grid: Expect Weight to be #{expectation}"
+  logger.step "Grid: Expect Weight is #{expectation}"
   10.times do
     break if web_apps.orders.grid.weight.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -355,8 +355,8 @@ Then /^Grid: Expect Weight to be (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Weight\(lbs\) to be (.*)$/ do |expectation|
-  logger.step "Grid: Expect Weight(lbs) to be #{expectation}"
+Then /^Grid: Expect Weight\(lbs\) is (.*)$/ do |expectation|
+  logger.step "Grid: Expect Weight(lbs) is #{expectation}"
   10.times do
     break if web_apps.orders.grid.weight.lbs(@details_form_data[:order_id]).eql? expectation
   end
@@ -365,8 +365,8 @@ Then /^Grid: Expect Weight\(lbs\) to be (.*)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Weight\(oz\) to be (.*)$/ do |expectation|
-  logger.step "Grid: Expect Weight(oz) to be #{expectation}"
+Then /^Grid: Expect Weight\(oz\) is (.*)$/ do |expectation|
+  logger.step "Grid: Expect Weight(oz) is #{expectation}"
   10.times do
     break if web_apps.orders.grid.weight.oz(@details_form_data[:order_id]).eql? expectation
   end
@@ -375,8 +375,8 @@ Then /^Grid: Expect Weight\(oz\) to be (.*)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Qty. to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Qty. to be #{expectation}"
+Then /^Grid: Expect Qty. is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Qty. is #{expectation}"
   10.times do
     break if web_apps.orders.grid.qty.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -385,8 +385,8 @@ Then /^Grid: Expect Qty. to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Item SKU to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect SKU to be #{expectation}"
+Then /^Grid: Expect Item SKU is (.+)$/ do |expectation|
+  logger.step "Grid: Expect SKU is #{expectation}"
   10.times do
     break if web_apps.orders.grid.item_sku.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -395,8 +395,8 @@ Then /^Grid: Expect Item SKU to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Item Name to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Name to be #{expectation}"
+Then /^Grid: Expect Item Name is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Name is #{expectation}"
   10.times do
     break if web_apps.orders.grid.item_name.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -405,8 +405,8 @@ Then /^Grid: Expect Item Name to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Ship From to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Ship to be #{expectation}"
+Then /^Grid: Expect Ship From is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Ship is #{expectation}"
   10.times do
     break if web_apps.orders.grid.ship_from.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -415,8 +415,8 @@ Then /^Grid: Expect Ship From to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Service to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Service to be #{expectation}"
+Then /^Grid: Expect Service is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Service is #{expectation}"
   10.times do
     break if web_apps.orders.grid.service.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -425,8 +425,8 @@ Then /^Grid: Expect Service to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Insured Value to be \$(.+)$/ do |expectation|
-  logger.step "Grid: Expect Insured Value to be #{expectation}"
+Then /^Grid: Expect Insured Value is \$(.+)$/ do |expectation|
+  logger.step "Grid: Expect Insured Value is #{expectation}"
   10.times do
     break if web_apps.orders.grid.insured_value.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -435,8 +435,8 @@ Then /^Grid: Expect Insured Value to be \$(.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Reference No. to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Reference No. to be #{expectation}"
+Then /^Grid: Expect Reference No. is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Reference No. is #{expectation}"
   10.times do
     break if web_apps.orders.grid.reference_no.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -445,8 +445,8 @@ Then /^Grid: Expect Reference No. to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Cost Code to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Cost Code to be #{expectation}"
+Then /^Grid: Expect Cost Code is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Cost Code is #{expectation}"
   10.times do
     break if web_apps.orders.grid.cost_code.data(@details_form_data[:order_id]).eql? expectation
   end
@@ -455,20 +455,20 @@ Then /^Grid: Expect Cost Code to be (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Tracking Service to be USPS Tracking$/ do
-  step "Grid: Expect Tracking Service to be \"USPS Tracking\""
+Then /^Grid: Expect Tracking Service is USPS Tracking$/ do
+  step "Grid: Expect Tracking Service is \"USPS Tracking\""
 end
 
-Then /^Grid: Expect Tracking Service to be Signature Required$/ do
-  step "Grid: Expect Tracking Service to be \"Signature Required\""
+Then /^Grid: Expect Tracking Service is Signature Required$/ do
+  step "Grid: Expect Tracking Service is \"Signature Required\""
 end
 
-Then /^Grid: Expect Tracking Service to be None$/ do
-  step "Grid: Expect Tracking Service to be \"None\""
+Then /^Grid: Expect Tracking Service is None$/ do
+  step "Grid: Expect Tracking Service is \"None\""
 end
 
-Then /^Grid: Expect Tracking Service to be \"(.+)\"$/ do |expectation|
-  logger.step "Grid: Expect Tracking Service to be #{expectation}"
+Then /^Grid: Expect Tracking Service is \"(.+)\"$/ do |expectation|
+  logger.step "Grid: Expect Tracking Service is #{expectation}"
   10.times do
     break if web_apps.orders.grid.tracking_service.data(@details_form_data[:order_id]) == expectation
   end
@@ -477,8 +477,8 @@ Then /^Grid: Expect Tracking Service to be \"(.+)\"$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Order Status to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Order Status to be #{expectation}"
+Then /^Grid: Expect Order Status is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Order Status is #{expectation}"
   10.times do
     break if web_apps.orders.grid.order_status.data(@details_form_data[:order_id]) == expectation
   end
@@ -497,8 +497,8 @@ Then /^Grid: Expect Tracking Number is populated$/ do
   actual.length.should be > 3
 end
 
-Then /^Grid: Expect Order Total to be (.+)$/ do |expectation|
-  logger.step "Grid: Expect Order Total to be #{expectation}"
+Then /^Grid: Expect Order Total is (.+)$/ do |expectation|
+  logger.step "Grid: Expect Order Total is #{expectation}"
   begin
     10.times do
       break if web_apps.orders.grid.order_total.data(@details_form_data[:order_id]).eql? expectation
@@ -509,11 +509,11 @@ Then /^Grid: Expect Order Total to be (.+)$/ do |expectation|
   end unless expectation.length == 0
 end
 
-Then /^Expect Order details to be;$/ do |table|
-  logger.step "Expect Order details to be..."
+Then /^Expect Order details is;$/ do |table|
+  logger.step "Expect Order details is..."
   expectation_hash = table.hashes.first
-  step "Grid: Expect Insured Value to be $#{expectation_hash[:insured_value]}"
-  step "Grid: Expect Weight to be #{expectation_hash[:lbs]} lbs. #{expectation_hash[:oz]} oz."
+  step "Grid: Expect Insured Value is $#{expectation_hash[:insured_value]}"
+  step "Grid: Expect Weight is #{expectation_hash[:lbs]} lbs. #{expectation_hash[:oz]} oz."
 end
 
 Then /^Expect new Order ID created$/ do

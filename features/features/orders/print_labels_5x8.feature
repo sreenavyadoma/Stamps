@@ -1,5 +1,5 @@
 # encoding: utf-8
-Feature: I want to be able to print to 5.5 x 8.5 labels (single or multi) B-01667
+Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Background:
   Given I am signed in to Orders

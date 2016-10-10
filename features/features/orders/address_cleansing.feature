@@ -17,11 +17,11 @@ Feature: Address Cleansing
     Then Details: Set Pounds to 1
     Then Details: Set Insure-For to $200
     Then Pause for 2 seconds
-    Then Grid: Expect Zip to be 90245
-    Then Grid: Expect Recipient to be Address Cleansing
-    Then Grid: Expect Company to be No Zip
-    Then Grid: Expect City to be El Segundo
-    Then Grid: Expect State to be CA
+    Then Grid: Expect Zip is 90245
+    Then Grid: Expect Recipient is Address Cleansing
+    Then Grid: Expect Company is No Zip
+    Then Grid: Expect City is El Segundo
+    Then Grid: Expect State is CA
 
     Then Toolbar: Add
     Then Details: Set Ship-To to address in Zone 1 through 4

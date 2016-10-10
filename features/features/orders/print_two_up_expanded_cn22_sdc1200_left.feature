@@ -1,4 +1,4 @@
-Feature:  As a batch shipper, I want to be able to print multiple labels
+Feature:  As a batch shipper, I want is able to print multiple labels
 
   Background:
     Given I am signed in to Orders

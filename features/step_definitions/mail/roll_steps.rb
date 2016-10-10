@@ -1,5 +1,5 @@
 Then /^Mail Roll: Set Service to (.*)/ do |service|
-  logger.info "Roll - Set Print Mail Service to: \n #{service}"
+  logger.step "Roll - Set Print Mail Service to: \n #{service}"
   web_apps.mail.service.select service
 end
 
@@ -144,17 +144,17 @@ Then /^Mail Roll: Select Service Priority Mail Express International Legal Flat 
 end
 
 Then /^Mail Roll: Edit Customs Form$/ do
-  logger.info "Mail Roll: Edit Customs Form"
+  logger.step "Mail Roll: Edit Customs Form"
   @customs_form = web_apps.mail.customs.edit_form
 end
 
 Then /^Mail Roll: Open Contacts modal/ do
-  logger.info "Mail Roll: Open Contacts Modal"
+  logger.step "Mail Roll: Open Contacts Modal"
   @contacts = web_apps.mail.ship_to.contacts.open
 end
 
 Then /^Mail Roll: Expect Domestic Address field displays (.*)$/ do |value|
-  logger.info "Shipping Label: Expect Domestic Address to be #{value}"
+  logger.step "Shipping Label: Expect Domestic Address is #{value}"
 
   5.times{
     begin
@@ -169,41 +169,41 @@ Then /^Mail Roll: Expect Domestic Address field displays (.*)$/ do |value|
   actual_stripped = actual.gsub(/ \n/,", ")
   actual_stripped_final = actual_stripped.gsub(/\n/,", ")
   actual_stripped_final.should eql value
-  logger.info 'Address Cleansed -- Expected Result Confirmed'
+  logger.step 'Address Cleansed -- Expected Result Confirmed'
 end
 
 Then /^Mail Roll: Set Hide Mail Value to Checked$/ do
-  logger.info "Mail Roll: Check Hide Mail Value"
+  logger.step "Mail Roll: Check Hide Mail Value"
 
   web_apps.mail.form_view.hide_postage_value.check
 end
 
 Then /^Mail Roll: Set Hide Mail Value to Unchecked$/ do
-  logger.info "Mail Roll: Uncheck Hide Mail Value"
+  logger.step "Mail Roll: Uncheck Hide Mail Value"
 
   web_apps.mail.form_view.hide_postage_value.uncheck
 end
 
 Then /^Mail Roll: Set Print Reference Number to Checked$/ do
-  logger.info "Mail Roll: Check Print Reference Number"
+  logger.step "Mail Roll: Check Print Reference Number"
 
   web_apps.mail.form_view.print_reference_number.check
 end
 
 Then /^Mail Roll: Set Print Reference Number to Unchecked$/ do
-  logger.info "Mail Roll: Uncheck Print Reference Number"
+  logger.step "Mail Roll: Uncheck Print Reference Number"
 
   web_apps.mail.form_view.print_reference_number.uncheck
 end
 
 Then /^Mail Roll: Set Reference Number to (.*)/ do |ref_no|
-  logger.info "Set Shipping Label Reference Number to #{ref_no}"
+  logger.step "Set Shipping Label Reference Number to #{ref_no}"
 
   web_apps.mail.form_view.reference_number.set ref_no
 end
 
 Then /^Mail Roll: Set Cost Code to (.*)/ do |code|
-  logger.info "Mail Roll: Set Cost Code to \n #{code}"
+  logger.step "Mail Roll: Set Cost Code to \n #{code}"
 
   web_apps.mail.form_view.cost_code.select code
 end

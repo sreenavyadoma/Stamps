@@ -60,8 +60,8 @@ Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename| #import_
   @open_file.file_name @csv_import_filename
 end
 
-Then /^Import Orders: Expect Imported Filename to be (.*)$/ do |expectation|
-  logger.step "Import Import Filename to be #{expectation}"
+Then /^Import Orders: Expect Imported Filename is (.*)$/ do |expectation|
+  logger.step "Import Import Filename is #{expectation}"
   actual_value = @import_web_apps.orders.filename_label
   logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation

@@ -13,16 +13,16 @@ Feature:  Customs Form Item Grid - Edit/Delete
     Then Details: Select Service Priority Mail International Flat Rate Envelope
     Then Details: Add Item 1, Qty 1, ID random, Description random
     Then Details: Edit Customs Form
-    Then Customs: Expect Item Grid count to be 1
+    Then Customs: Expect Item Grid count is 1
     Then Customs: Add Item 1, Description random, Qty 1, Price 1000, Origin Japan, Tariff 100
     Then Customs: Add Item 2, Description random, Qty 2, Price 2000, Origin Afghanistan, Tariff 200
-    Then Customs: Expect Item Grid count to be 2
+    Then Customs: Expect Item Grid count is 2
     Then Customs: Add Item 3, Description random, Qty 3, Price 3000, Origin Zimbabwe, Tariff 300
-    Then Customs: Expect Item Grid count to be 3
+    Then Customs: Expect Item Grid count is 3
     Then Customs: Delete Item 3
-    Then Customs: Expect Item Grid count to be 2
+    Then Customs: Expect Item Grid count is 2
     Then Customs: Delete Item 1
-    Then Customs: Expect Item Grid count to be 1
+    Then Customs: Expect Item Grid count is 1
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
     Then Sign out

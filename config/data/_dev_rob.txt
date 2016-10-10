@@ -77,7 +77,7 @@ Feature: Test Development
     Then Print: Print
     Then Filter: Select Shipped
     Then Grid: Expect Tracking Number is populated
-    Then Grid: Expect Order Status to be Shipped
+    Then Grid: Expect Order Status is Shipped
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -88,7 +88,7 @@ Feature: Test Development
     Then Print: Print
     Then Filter: Select Shipped
     Then Grid: Expect Tracking Number is populated
-    Then Grid: Expect Order Status to be Shipped
+    Then Grid: Expect Order Status is Shipped
 
     Then Sign out
 
@@ -107,7 +107,7 @@ Feature: Test Development
     Then Print: Open Modal
     Then Print: Set Ship Date to today plus 1
     Then Print: Print
-    Then Filter: Expect Shipped Tab Date Printed to be today
+    Then Filter: Expect Shipped Tab Date Printed is today
     Then Print: Set Ship Date to today plus 3
 
     Then Toolbar: Add
@@ -122,8 +122,8 @@ Feature: Test Development
     Then Print: Open Modal
     Then Print: Set Ship Date to today plus 2
     Then Print: Print
-    Then Filter: Expect Shipped Tab Date Printed to be today
-    Then Filter: Expect Shipped Tab Ship Date to be today plus 2
+    Then Filter: Expect Shipped Tab Date Printed is today
+    Then Filter: Expect Shipped Tab Ship Date is today plus 2
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -137,8 +137,8 @@ Feature: Test Development
     Then Print: Open Modal
     Then Print: Set Ship Date to today plus 3
     Then Print: Print
-    Then Filter: Expect Shipped Tab Date Printed to be today
-    Then Filter: Expect Shipped Tab Ship Date to be today plus 3
+    Then Filter: Expect Shipped Tab Date Printed is today
+    Then Filter: Expect Shipped Tab Ship Date is today plus 3
 
   Scenario:
     Then Toolbar: Add
@@ -159,8 +159,8 @@ Feature: Test Development
 
     Then Print: Set Ship Date to today
     Then Print: Print
-    Then Filter: Expect Shipped Tab Date Printed to be today
-    Then Filter: Expect Shipped Tab Ship Date to be today
+    Then Filter: Expect Shipped Tab Date Printed is today
+    Then Filter: Expect Shipped Tab Ship Date is today
 
   @rob_dev2
   Scenario:
@@ -189,7 +189,7 @@ Feature: Test Development
 
     Then Print: Print
 
-    Then Expect Awaiting Shipment count to be less by 1
+    Then Expect Awaiting Shipment count is less by 1
     Then Expect printed Order ID is in Shipped tab
 
     Then Toolbar: Add
@@ -247,24 +247,24 @@ Feature: Test Development
 
   #Then Details: Select Service First-Class Mail International Large Envelope/Flat
     Then Details: Edit Customs Form
-    Then Expect Customs Form Internal Transaction # to be "Required"
+    Then Expect Customs Form Internal Transaction # is "Required"
     Then Customs: Set Package Contents to "Commercial Sample"
-    Then Expect Customs Form Internal Transaction # to be "Required"
+    Then Expect Customs Form Internal Transaction # is "Required"
     Then Customs: Set Package Contents to "Document"
-    Then Expect Customs Form Internal Transaction # to be "Required"
+    Then Expect Customs Form Internal Transaction # is "Required"
     Then Customs: Set Package Contents to "Merchandise"
-    Then Expect Customs Form Internal Transaction # to be "Required"
+    Then Expect Customs Form Internal Transaction # is "Required"
     Then Customs: Set Package Contents to "Gift"
-    Then Expect Customs Form Internal Transaction # to be "Required"
+    Then Expect Customs Form Internal Transaction # is "Required"
     Then Customs: Set Package Contents to "Humanitarian Donation"
-    Then Expect Customs Form Internal Transaction # to be "Required"
+    Then Expect Customs Form Internal Transaction # is "Required"
     Then Customs: Set Package Contents to "Returned Goods"
-    Then Expect Customs Form Internal Transaction # to be "Required"
+    Then Expect Customs Form Internal Transaction # is "Required"
     Then Customs: Set Package Contents to "Other"
-    Then Expect Customs Form Internal Transaction # to be "Required"
+    Then Expect Customs Form Internal Transaction # is "Required"
 
     Then Customs: Add Item 1, Description random, Qty 1, Price 3000, Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # to be "Required"
+    Then Expect Customs Form Internal Transaction # is "Required"
     Then Customs: Set ITN Number to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal

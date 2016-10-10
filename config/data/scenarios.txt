@@ -1,4 +1,4 @@
-Feature:  B-01604 As a features.orders shipper, when I have an order with an ambiguous address, I want to be able to view a list of potentially-valid addresses.
+Feature:  B-01604 As a features.orders shipper, when I have an order with an ambiguous address, I want is able to view a list of potentially-valid addresses.
 
 
 Scenario: # 1.  Systems Triggers Address Cleanse for Ambiguous Address

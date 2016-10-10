@@ -5,7 +5,7 @@ Feature: Thermal Printer
     Given I am signed in to Orders
 
   @print_on_thermal
-  Scenario:  As a batch shipper, I want to be able to change my print media
+  Scenario:  As a batch shipper, I want is able to change my print media
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 5 through 8

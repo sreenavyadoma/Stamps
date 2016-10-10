@@ -1,5 +1,5 @@
 
-Then /^Details: Expect Total label to be (.*)$/ do |expectation|
+Then /^Details: Expect Total label is (.*)$/ do |expectation|
   logger.step "Details: Expect Total Ship Cost exist and is in Bold letters"
   15.times do
     actual_value = web_apps.orders.details.footer.label.text
@@ -59,12 +59,12 @@ Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is succe
     test_result = @details_form_data[:old_balance].to_f == @new_balance.to_f
     logger.step "Printing error detected."
     logger.step "Account balance should be the same.  Old balance: #{@details_form_data[:old_balance]}, New balance: #{@new_balance} ##{(test_result)?"Passed":"Failed"}"
-    expect(test_result).to be true
+    expect(test_result).is true
   else
     @new_balance = web_apps.navigation_bar.balance.amount
     test_result = @details_form_data[:old_balance].to_f == @new_balance.to_f + expected.to_f
     logger.step "Account balance should be the same.  Old balance: #{@details_form_data[:old_balance]}, New balance: #{@new_balance} ##{(test_result)?"Passed":"Failed"}"
-    expect(test_result).to be true
+    expect(test_result).is true
   end
 end
 
@@ -91,8 +91,8 @@ Then /^NavBar: Expect Customer Balance is deducted the Printing Cost$/ do
   end
 end
 
-Then /^Print: Expect Total Cost to be \$([0-9.]*)$/ do |expectation|
-  logger.step "Print: Expect Total Cost to be #{expectation}"
+Then /^Print: Expect Total Cost is \$([0-9.]*)$/ do |expectation|
+  logger.step "Print: Expect Total Cost is #{expectation}"
   begin
     print_window = web_apps.orders.toolbar.print_btn.print_modal
     actual_value = print_window.total_cost

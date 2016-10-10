@@ -10,7 +10,7 @@ Feature: Auto-Calculate Customs Form Weight
     Then Details: Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
-    Then Details: Select Service Priority Mail International Package/Flat/Thick Envelope
+    Then Details: Select Service Priority Mail International Package
     Then Details: Set Ounces to 4
 
     Then Details: Add Item 1
@@ -42,8 +42,8 @@ Feature: Auto-Calculate Customs Form Weight
 
     Then Customs: Close Modal
 
-    Then Grid: Expect Weight to be 0 lbs. 4 oz.
-    Then Grid: Expect Weight(lbs) to be 0
-    Then Grid: Expect Weight(oz) to be 4
+    Then Grid: Expect Weight is 0 lbs. 4 oz.
+    Then Grid: Expect Weight(lbs) is 0
+    Then Grid: Expect Weight(oz) is 4
 
     Then Sign out

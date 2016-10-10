@@ -9,17 +9,17 @@ Feature: Two character minimum for Name & Company
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to Antigua & Barbuda
     Then Details: Set International Ship-To Name to "a"
-    Then Details: Expect International Name data error tooltip to be "A first and last name of at least two characters each is required"
+    Then Details: Expect International Name data error tooltip is "A first and last name of at least two characters each is required"
 
 
     Then Details: Set Ship-From to default
     Then Details: Set International Ship-To Name to "abc def"
-    Then Details: Expect International Name data error tooltip to be ""
-    #Then Details: Expect International Company data error tooltip to be ""
+    Then Details: Expect International Name data error tooltip is ""
+    #Then Details: Expect International Company data error tooltip is ""
     #Then Details: Set International Ship-To Name to ""
     #Then Details: Set International Ship-To Company to "a"
-    #Then Details: Expect International Company data error tooltip to be "Company name must be at least two characters long"
+    #Then Details: Expect International Company data error tooltip is "Company name must be at least two characters long"
     #Then Details: Set International Ship-To Name to "a"
     #Then Details: Set International Ship-To Company to ""
-    #Then Details: Expect International Name data error tooltip to be "A First Name and Last Name or Company are required"
-    #Then Details: Expect International Company data error tooltip to be "A First Name and Last Name or Company are required"
+    #Then Details: Expect International Name data error tooltip is "A First Name and Last Name or Company are required"
+    #Then Details: Expect International Company data error tooltip is "A First Name and Last Name or Company are required"

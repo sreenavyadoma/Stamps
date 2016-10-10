@@ -32,7 +32,7 @@ Then /^Manage Stores: Delete Row (\d+)$/ do |row|
   #new_size = grid.size
   #logger.step "Test #{(size == new_size + 1)?"Passed":"Failed"} - Old Grid line items:  #{size}.  New Grid line items:  #{new_size}"
   logger.step "Test #{(delete_modal.present?)?"Failed":"Passed"}"
-  #expect(size == new_size + 1).to be true
+  #expect(size == new_size + 1).is true
   delete_modal.present?.should be false
 end
 

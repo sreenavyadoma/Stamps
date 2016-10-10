@@ -8,7 +8,7 @@ Feature: Grid: Tracking & Order Status
   Scenario: Tracking & Order Status
 
     Then Toolbar: Add
-    Then Grid: Expect Order Status to be Awaiting Shipment
+    Then Grid: Expect Order Status is Awaiting Shipment
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 5
@@ -21,10 +21,10 @@ Feature: Grid: Tracking & Order Status
     Then Filter: Select Shipped
     #Then Grid: Sort Order ID in Descending Order
     Then Grid: Expect Tracking Number is populated
-    Then Grid: Expect Order Status to be Shipped
+    Then Grid: Expect Order Status is Shipped
 
     Then Toolbar: Add
-    Then Grid: Expect Order Status to be Awaiting Shipment
+    Then Grid: Expect Order Status is Awaiting Shipment
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 5
@@ -37,7 +37,7 @@ Feature: Grid: Tracking & Order Status
     Then Filter: Select Shipped
     #Then Grid: Sort Order ID in Descending Order
     Then Grid: Expect Tracking Number is populated
-    Then Grid: Expect Order Status to be Shipped
+    Then Grid: Expect Order Status is Shipped
 
     Then Sign out
 

@@ -1,26 +1,26 @@
 
 When /^Mail: Print International Postage$/ do
-  logger.info "Print International Postage"
+  logger.step "Print International Postage"
   web_apps.mail.footer.print_international
 end
 
 When /^Mail: Open Print Modal$/ do
-  logger.info "Mail: Open Print Modal"
+  logger.step "Mail: Open Print Modal"
   @print_window = web_apps.mail.footer.print
 end
 
 When /^Mail: Open Print Sample Modal$/ do
-  logger.info "Mail: Open Print Sample Modal"
+  logger.step "Mail: Open Print Sample Modal"
   @print_window = web_apps.mail.footer.print_sample
 end
 
 Then /^Mail Print Modal: Select Printer \"(.*)\"$/ do |printer|
-  logger.info "Select Printer #{printer}"
+  logger.step "Select Printer #{printer}"
   @print_window.printer.select printer
 end
 
 When /^Mail Print Modal: Print$/ do
-  logger.info "Print"
+  logger.step "Print"
   print_postage_modal = web_apps.mail.footer.print
   @printer = print_postage_modal.printer.text_box.text
   @paper_tray = print_postage_modal.paper_tray.text_box.text
@@ -28,7 +28,7 @@ When /^Mail Print Modal: Print$/ do
 end
 
 When /^Mail Print Modal: Print Sample$/ do
-  logger.info "Print Sample"
+  logger.step "Print Sample"
   print_postage_modal = web_apps.mail.footer.print_sample
   @printer = print_postage_modal.printer.text_box.text
   @paper_tray = print_postage_modal.paper_tray.text_box.text
@@ -36,7 +36,7 @@ When /^Mail Print Modal: Print Sample$/ do
 end
 
 Then /^Mail: Print: Close$/ do
-  logger.info "Close Print Mail Print Modal"
+  logger.step "Close Print Mail Print Modal"
   web_apps.mail.web_apps.mail.close
 end
 

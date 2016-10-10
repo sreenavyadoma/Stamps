@@ -1,5 +1,5 @@
 
-Feature: As a batch shipper, I want to be able to Reprint for Orders in "Shipped" View [B-01639]
+Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" View [B-01639]
 
   Background:
     Given I am signed in to Orders

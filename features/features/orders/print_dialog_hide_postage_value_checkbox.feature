@@ -14,7 +14,7 @@ Feature: Add Hide Mail Value Checkbox to Print Dialog
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
-    Then Print: Expect Printing On Label to be Printing On:
+    Then Print: Expect Printing On Label is Printing On:
 
     Then Print: Check Hide Mail Value
     Then Print: Expect Hide Mail Value Checkbox is checked

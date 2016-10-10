@@ -11,14 +11,14 @@ Feature: Web Batch Styles
     Then Expect Style for General Fonts font-family to include arial
     Then Expect Style for General Fonts font-family to include sans-serif
     Then Expect Style for General Fonts font-family to include s60 sans
-    Then Expect Style for General Fonts Color to be 0001
-    Then Expect Style for General Fonts Size to be 14px
-    Then Expect Style for General Tooltip Border width to be 1
-    Then Expect Style for General Tooltip Border style to be solid
-    Then Expect Style for General Tooltip Border radius to be 3px
-    Then Expect Style for Navigation Header Height to be 50px
-    Then Expect Style for Navigation Background Color to be rgba 33, 89, 168
-    Then Expect Style for Navigation Links Color to be 255, 255, 255
+    Then Expect Style for General Fonts Color is 0001
+    Then Expect Style for General Fonts Size is 14px
+    Then Expect Style for General Tooltip Border width is 1
+    Then Expect Style for General Tooltip Border style is solid
+    Then Expect Style for General Tooltip Border radius is 3px
+    Then Expect Style for Navigation Header Height is 50px
+    Then Expect Style for Navigation Background Color is rgba 33, 89, 168
+    Then Expect Style for Navigation Links Color is 255, 255, 255
 
     Then Sign out
 

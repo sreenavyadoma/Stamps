@@ -9,9 +9,9 @@ Feature:  User Able to Selects Curacao and Country Bonaire, Sint Eustatius, and 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to Curacao
-    Then Details: Expect Ship-To Country to be Curacao
+    Then Details: Expect Ship-To Country is Curacao
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to Bonaire, Sint Eustatius and Saba
-    Then Details: Expect Ship-To Country to be Bonaire, Sint Eustatius and Saba
+    Then Details: Expect Ship-To Country is Bonaire, Sint Eustatius and Saba
 

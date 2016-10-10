@@ -16,11 +16,11 @@ Feature: Ambigious Address
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1
     Then Details: Set Insure-For to $200
-    Then Grid: Expect Recipient to be Hillary Clinton
-    Then Grid: Expect Company to be The White House
-    Then Grid: Expect City to be San Francisco
-    Then Grid: Expect State to be CA
-    Then Grid: Expect Zip to be 94102
+    Then Grid: Expect Recipient is Hillary Clinton
+    Then Grid: Expect Company is The White House
+    Then Grid: Expect City is San Francisco
+    Then Grid: Expect State is CA
+    Then Grid: Expect Zip is 94102
     Then Details: Hide Ship-To fields
     Then Details: Select Service Priority Mail Package
     Then Sign out

@@ -122,6 +122,7 @@ Then /^Mail: Set Ship-To to Random Address Between Zone 5 through 8$/ do
   step "Mail: Set Ship-To address to zone 5 through 8"
 end
 
+#todo-rob refactor
 Then /^Mail: Set Ship-To to$/ do |table|
   address = table.hashes.first
   logger.step "Mail: Set Ship-To to \n#{address}"
@@ -230,19 +231,19 @@ Then /^Mail: Set Pounds to (.*)/ do |pounds|
   web_apps.mail.weight.lbs.set pounds
 end
 
-Then /^Mail: Expect Print Media Tooltip to be (.*)$/ do |selection|
+Then /^Mail: Expect Print Media Tooltip is (.*)$/ do |selection|
   web_apps.mail.print_on.tooltip selection
 end
 
-Then /^Mail: Expect Print Media (.*) to be disabled$/ do |selection|
+Then /^Mail: Expect Print Media (.*) is disabled$/ do |selection|
   web_apps.mail.print_on.disabled? selection
 end
 
-Then /^Mail: Expect Print Media (.*) to be enabled$/ do |selection|
+Then /^Mail: Expect Print Media (.*) is enabled$/ do |selection|
   web_apps.mail.print_on.enabled? selection
 end
 
-Then /^Mail: Expect Ship-To address to be (.*)/ do |address|
+Then /^Mail: Expect Ship-To address is (.*)/ do |address|
 
 end
 

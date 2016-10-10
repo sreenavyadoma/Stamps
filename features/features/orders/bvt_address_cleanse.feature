@@ -16,12 +16,12 @@ Feature:  BVT Address Cleansing
     Then Details: Set Ounces to 1
     Then Details: Blur out
     Then Pause for 2 seconds
-    Then Grid: Expect Recipient to be Euan Davidson
-    Then Grid: Expect Company to be Betfair
-    Then Grid: Expect Address to be 1350 Market Street
-    Then Grid: Expect City to be San Francisco
-    Then Grid: Expect State to be CA
-    Then Grid: Expect Zip to be 94102
+    Then Grid: Expect Recipient is Euan Davidson
+    Then Grid: Expect Company is Betfair
+    Then Grid: Expect Address is 1350 Market Street
+    Then Grid: Expect City is San Francisco
+    Then Grid: Expect State is CA
+    Then Grid: Expect Zip is 94102
     Then Sign out
 
 

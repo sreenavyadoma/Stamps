@@ -16,9 +16,9 @@ Feature:  Customs Form Totals
     Then Details: Add Item 1, Qty 1, ID random, Description random
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Origin Zimbabwe, Tariff 100
-    Then Customs Form: Expect Total Value to be 100.50
+    Then Customs Form: Expect Total Value is 100.50
     Then Customs: Add Item 2, Description random, Qty 1, Price 100.25, Origin Afghanistan, Tariff 100
-    Then Customs Form: Expect Total Value to be 200.75
+    Then Customs Form: Expect Total Value is 200.75
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
     Then Sign out

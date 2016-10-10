@@ -14,10 +14,10 @@ Feature:  Order Details Form - Reference # Field
     Then Details: Set Ounces to 2
 
     Then Details: Set Reference Number to random
-    Then Details: Expect Reference Number to be random
+    Then Details: Expect Reference Number is random
 
     Then Details: Set Reference Number to Rob
-    Then Details: Expect Reference Number to be Rob
+    Then Details: Expect Reference Number is Rob
 
     Then Print: Open Modal
     Then Print: Uncheck Print Reference # on Shipping Label

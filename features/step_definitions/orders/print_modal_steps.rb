@@ -127,11 +127,11 @@ Then /^Print: Expect left-side label selected$/ do
   expectation.should eql "Print Modal Starting Label Left side is selected"
 end
 
-Then /^Print: Expect Ship Date to be (\d+) day\(s\) from today/ do |day|
-  logger.step "Print: Expect Ship Date to be #{day} day(s) from today"
+Then /^Print: Expect Ship Date is (\d+) day\(s\) from today/ do |day|
+  logger.step "Print: Expect Ship Date is #{day} day(s) from today"
   actual = web_apps.orders.toolbar.print_btn.print_modal.ship_date.text
   expected = ParameterHelper.date_printed day
-  logger.step "Print: Expect Ship Date to be #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
+  logger.step "Print: Expect Ship Date is #{expected}. Got #{actual}.  Test #{(actual.eql? expected)?'Passed':'Failed'}"
   actual.should eql expected
 end
 
@@ -140,7 +140,7 @@ Then /^Print: Set Printing On \"(.*)\"$/ do |expectation|
   web_apps.orders.toolbar.print_btn.print_modal.printing_on.select expectation
 end
 
-Then /^Print: Expect Printing On Label to be (.*)$/ do |expectation|
+Then /^Print: Expect Printing On Label is (.*)$/ do |expectation|
   logger.step "Print: Set Printing On #{expectation}"
   actual_value = web_apps.orders.toolbar.print_btn.print_modal.printing_on.label.text
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
@@ -191,7 +191,7 @@ When /^Print expecting rating error$/ do
   error_window = web_apps.orders.toolbar.print_btn.print_modal.print_expecting_rating_error
   actual_error_message = error_window.error_message
   error_window.close
-  expect(actual_error_message.include? 'An error occurred while attempting to rate your mail').to be true
+  expect(actual_error_message.include? 'An error occurred while attempting to rate your mail').is true
 end
 
 When /^Print expecting some orders can not be printed$/ do
@@ -199,18 +199,18 @@ When /^Print expecting some orders can not be printed$/ do
   error_window = web_apps.orders.toolbar.print_btn.print_modal.print_expecting_error
   actual_error_message = error_window.error_message
   error_window.continue.print
-  expect(actual_error_message.include? 'To mail the remaining orders, click Continue').to be true
+  expect(actual_error_message.include? 'To mail the remaining orders, click Continue').is true
 end
 
-Then /^Print: Expect Modal Title to be \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  logger.step "Print: Expect Modal Title to be \"You have #{expectation} label\(s\) ready to mail\""
+Then /^Print: Expect Modal Title is \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
+  logger.step "Print: Expect Modal Title is \"You have #{expectation} label\(s\) ready to mail\""
   actual = web_apps.orders.toolbar.print_btn.print_modal.labels_ready_to_print
   web_apps.orders.toolbar.print_btn.print_modal.close
   logger.step "You have #{expectation} label(s) ready to mail.  Actual Value: #{expectation}  Test #{(expectation==actual)?'Passed':'Failed'}"
   "You have #{actual} label(s) ready to mail".should eql "You have #{expectation} label(s) ready to mail"
 end
 
-Then /^Print: Expect number of required label sheets to be (\d+)$/ do |sheets|
+Then /^Print: Expect number of required label sheets is (\d+)$/ do |sheets|
   logger.step "Print: Expect Requires #{sheets} label sheets"
   actual = web_apps.orders.toolbar.print_btn.print_modal.labels_required
   logger.step "Requires #{sheets} label sheets. Actual Value: #{sheets}  Test #{(sheets==actual)?'Passed':'Failed'}"

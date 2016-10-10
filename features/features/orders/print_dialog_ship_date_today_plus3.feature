@@ -16,8 +16,8 @@ Feature: Set Print Ship Date to Today + 3
     Then Print: Set Ship Date to today plus 3
     Then Print: Print
     Then Filter: Select Shipped
-    Then Grid: Expect Date Printed for this order to be today
-    Then Grid: Expect Ship Date for this order to be today plus 3
+    Then Grid: Expect Date Printed for this order is today
+    Then Grid: Expect Ship Date for this order is today plus 3
 
     Then Sign out
 

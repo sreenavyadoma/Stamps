@@ -15,9 +15,9 @@ Feature:  Ambigious Address
     Then Select row 2 from Exact Address Not Found module
     Then Details: Select Service Priority Mail Package
     Then Grid: Check row 1
-    Then Grid: Expect Recipient to be Joseph Balancio
-    Then Grid: Expect Company to be Betfair
-    Then Grid: Expect City to be San Francisco
-    Then Grid: Expect State to be CA
-    Then Grid: Expect Zip to be 94102
+    Then Grid: Expect Recipient is Joseph Balancio
+    Then Grid: Expect Company is Betfair
+    Then Grid: Expect City is San Francisco
+    Then Grid: Expect State is CA
+    Then Grid: Expect Zip is 94102
     Then Sign out

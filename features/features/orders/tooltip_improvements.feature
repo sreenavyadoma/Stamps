@@ -19,5 +19,5 @@ Feature: Tooltips Improvements
     Then Toolbar: Expect Print Tooltip to include Print labels for all selected orders.
     Then Details: Collapse Panel
     Then Details: Expand panel
-    Then Details: Expect Toolbar Menu Tooltip to be View more options
+    Then Details: Expect Toolbar Menu Tooltip is View more options
 

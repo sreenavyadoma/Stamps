@@ -25,126 +25,126 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
     # Priority Mail International Flat Rate Envelope
     Then Details: Select Service Priority Mail International Flat Rate Envelope
-    Then Details: Expect Service to be Priority Mail International Flat Rate Envelope
+    Then Details: Expect Service is Priority Mail International Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Expect Pounds to be 0
-    Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail International
+    Then Details: Expect Pounds is 0
+    Then Details: Expect Ounces is 0
+    Then Grid: Expect Service is Priority Mail International
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
     # Priority Mail International Padded Flat Rate Envelope
     Then Details: Select Service Priority Mail International Padded Flat Rate Envelope
-    Then Details: Expect Service to be Priority Mail International Padded Flat Rate Envelope
+    Then Details: Expect Service is Priority Mail International Padded Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Expect Pounds to be 0
-    Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail International
+    Then Details: Expect Pounds is 0
+    Then Details: Expect Ounces is 0
+    Then Grid: Expect Service is Priority Mail International
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
     # Priority Mail International Legal Flat Rate Envelope
     Then Details: Select Service Priority Mail International Legal Flat Rate Envelope
-    Then Details: Expect Service to be Priority Mail International Legal Flat Rate Envelope
+    Then Details: Expect Service is Priority Mail International Legal Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Expect Pounds to be 0
-    Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail International
+    Then Details: Expect Pounds is 0
+    Then Details: Expect Ounces is 0
+    Then Grid: Expect Service is Priority Mail International
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
     # Priority Mail International Small Flat Rate Box
     Then Details: Select Service Priority Mail International Small Flat Rate Box
-    Then Details: Expect Service to be Priority Mail International Small Flat Rate Box
+    Then Details: Expect Service is Priority Mail International Small Flat Rate Box
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Expect Pounds to be 0
-    Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail International
+    Then Details: Expect Pounds is 0
+    Then Details: Expect Ounces is 0
+    Then Grid: Expect Service is Priority Mail International
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
     # Priority Mail International Medium Flat Rate Box
     Then Details: Select Service Priority Mail International Medium Flat Rate Box
-    Then Details: Expect Service to be Priority Mail International Medium Flat Rate Box
+    Then Details: Expect Service is Priority Mail International Medium Flat Rate Box
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Expect Pounds to be 0
-    Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail International
+    Then Details: Expect Pounds is 0
+    Then Details: Expect Ounces is 0
+    Then Grid: Expect Service is Priority Mail International
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
     # Priority Mail International Large Flat Rate Box
     Then Details: Select Service Priority Mail International Large Flat Rate Box
-    Then Details: Expect Service to be Priority Mail International Large Flat Rate Box
+    Then Details: Expect Service is Priority Mail International Large Flat Rate Box
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Expect Pounds to be 0
-    Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail International
+    Then Details: Expect Pounds is 0
+    Then Details: Expect Ounces is 0
+    Then Grid: Expect Service is Priority Mail International
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
     # Priority Mail Express International Flat Rate Envelope
     Then Details: Select Service Priority Mail Express International Flat Rate Envelope
-    Then Details: Expect Service to be Priority Mail Express International Flat Rate Envelope
+    Then Details: Expect Service is Priority Mail Express International Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Expect Pounds to be 0
-    Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail Express International
+    Then Details: Expect Pounds is 0
+    Then Details: Expect Ounces is 0
+    Then Grid: Expect Service is Priority Mail Express International
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
     # Priority Mail Express International Padded Flat Rate Envelope
     Then Details: Select Service Priority Mail Express International Padded Flat Rate Envelope
-    Then Details: Expect Service to be Priority Mail Express International Padded Flat Rate Envelope
+    Then Details: Expect Service is Priority Mail Express International Padded Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Expect Pounds to be 0
-    Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail Express International
+    Then Details: Expect Pounds is 0
+    Then Details: Expect Ounces is 0
+    Then Grid: Expect Service is Priority Mail Express International
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
     # Priority Mail Express International Legal Flat Rate Envelope
     Then Details: Select Service Priority Mail Express International Legal Flat Rate Envelope
-    Then Details: Expect Service to be Priority Mail Express International Legal Flat Rate Envelope
+    Then Details: Expect Service is Priority Mail Express International Legal Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Expect Pounds to be 0
-    Then Details: Expect Ounces to be 0
-    Then Grid: Expect Service to be Priority Mail Express International
+    Then Details: Expect Pounds is 0
+    Then Details: Expect Ounces is 0
+    Then Grid: Expect Service is Priority Mail Express International
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal

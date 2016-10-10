@@ -13,7 +13,7 @@ Feature: Import Orders
     Then Import Orders: Select CSV File
     Then Import Orders: File Upload: Set Filename to import_orders_test.csv
     Then Pause for 1 second
-    Then Import Orders: Expect Imported Filename to be import_orders_test.csv
+    Then Import Orders: Expect Imported Filename is import_orders_test.csv
     Then Pause for 1 second
     Then Import Orders: Import
     Then Pause for 1 second

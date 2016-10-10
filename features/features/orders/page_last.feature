@@ -21,7 +21,7 @@ Feature: B-01746 Order Pagination
     Then User is taken to the first page of orders
     Then Server provides a new set of orders for the grid
     Then Set paging toolbar per page count to 100
-    Then Expect page toolbar pagination count to be correct
+    Then Expect page toolbar pagination count is correct
 
     Then Sign out
 

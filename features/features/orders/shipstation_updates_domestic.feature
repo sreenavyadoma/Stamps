@@ -42,63 +42,63 @@ Feature:  Update Order to ShipStation
     Then Pause for 2 seconds
 
     #Verify Single Order Details form was saved in ShipStation
-    Then Details: Expect Ship-To Name to be First Last
-    Then Details: Expect Ship-To Company Name to be Company Name
-    Then Details: Expect Ship-To Cleansed Street Address to be 777 N Orange Ave Apt 100
-    Then Details: Expect Ship-To Cleansed City to be Orlando
-    Then Details: Expect Ship-To Cleansed State to be FL
-    Then Details: Expect Ship-To Cleansed Zip Plus 4 Code to be 32801-1175
-    Then Details: Expect Ship-To Cleansed Zip Code to be 32801
-    Then Details: Expect Ship-To Phone to be 888-888-8888
-    Then Details: Expect Ship-To Email to be rtest@stamps.com
+    Then Details: Expect Ship-To Name is First Last
+    Then Details: Expect Ship-To Company Name is Company Name
+    Then Details: Expect Ship-To Cleansed Street Address is 777 N Orange Ave Apt 100
+    Then Details: Expect Ship-To Cleansed City is Orlando
+    Then Details: Expect Ship-To Cleansed State is FL
+    Then Details: Expect Ship-To Cleansed Zip Plus 4 Code is 32801-1175
+    Then Details: Expect Ship-To Cleansed Zip Code is 32801
+    Then Details: Expect Ship-To Phone is 888-888-8888
+    Then Details: Expect Ship-To Email is rtest@stamps.com
 
     Then Details: Hide Ship-To fields
-    Then Details: Expect Pounds to be 1
-    Then Details: Expect Ounces to be 1
+    Then Details: Expect Pounds is 1
+    Then Details: Expect Ounces is 1
 
-    Then Details: Expect Length to be 1
-    Then Details: Expect Width to be 1
-    Then Details: Expect Height to be 1
+    Then Details: Expect Length is 1
+    Then Details: Expect Width is 1
+    Then Details: Expect Height is 1
 
-    Then Details: Expect Service to be Priority Mail Package
+    Then Details: Expect Service is Priority Mail Package
     Then Details: Expect Service Cost is the same as saved value
 
-    Then Details: Expect Reference Number to be Update Orders To ShipStation
+    Then Details: Expect Reference Number is Update Orders To ShipStation
 
-    Then Details: Expect Tracking to be Signature Required
+    Then Details: Expect Tracking is Signature Required
 
     #Verify Orders Grid data was saved in ShipStation
-    Then Grid: Expect Store to be Manual Orders
+    Then Grid: Expect Store is Manual Orders
     Then Grid: Expect Order ID is the same as Details Form Order ID
     Then Grid: Expect Ship Cost is the same as Details Form Ship Cost
-    Then Grid: Expect Age to be < 24 hours
+    Then Grid: Expect Age is < 24 hours
     Then Grid: Expect Order Date is populated
 
-    Then Grid: Expect Recipient to be First Last
-    Then Grid: Expect Company to be Company Name
-    Then Grid: Expect Address to be 777 N Orange Ave Apt 100
-    Then Grid: Expect City to be Orlando
-    Then Grid: Expect State to be FL
-    Then Grid: Expect Zip to be 32801-1175
-    Then Grid: Expect Phone to be 888-888-8888
-    Then Grid: Expect Email to be rtest@stamps.com
+    Then Grid: Expect Recipient is First Last
+    Then Grid: Expect Company is Company Name
+    Then Grid: Expect Address is 777 N Orange Ave Apt 100
+    Then Grid: Expect City is Orlando
+    Then Grid: Expect State is FL
+    Then Grid: Expect Zip is 32801-1175
+    Then Grid: Expect Phone is 888-888-8888
+    Then Grid: Expect Email is rtest@stamps.com
 
-    Then Grid: Expect Qty. to be 1
-    Then Grid: Expect Item SKU to be Item 1 SKU
-    Then Grid: Expect Item Name to be Item 1 Description
+    Then Grid: Expect Qty. is 1
+    Then Grid: Expect Item SKU is Item 1 SKU
+    Then Grid: Expect Item Name is Item 1 Description
 
-    Then Grid: Expect Service to be Priority Mail
+    Then Grid: Expect Service is Priority Mail
 
-    Then Grid: Expect Weight to be 1 lbs. 1 oz.
+    Then Grid: Expect Weight is 1 lbs. 1 oz.
 
-    Then Grid: Expect Tracking Service to be Signature Required
+    Then Grid: Expect Tracking Service is Signature Required
 
-    Then Grid: Expect Order Status to be Awaiting Shipment
+    Then Grid: Expect Order Status is Awaiting Shipment
 
-    Then Grid: Expect Pounds to be 1
-    Then Grid: Expect Ounces to be 1
+    Then Grid: Expect Pounds is 1
+    Then Grid: Expect Ounces is 1
 
-    Then Grid: Expect Insured Value to be $1.00
+    Then Grid: Expect Insured Value is $1.00
 
     Then Print: Open Modal
     Then Print: Close Modal

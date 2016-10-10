@@ -1,5 +1,5 @@
 Given /^Orders: Visit Sign-in page$/ do
-  logger.info "Orders: Visit Sign-in page"
+  logger.step "Orders: Visit Sign-in page"
   web_apps.param.app = :orders
   web_apps.visit(:orders).should include "stamps.com"
 end
@@ -11,7 +11,7 @@ Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
     usr = username
     @username = username
   end
-  logger.info "I am signed in to Orders as #{usr}/#{password}"
+  logger.step "I am signed in to Orders as #{usr}/#{password}"
   @market_place_modal = web_apps.orders.landing_page.first_time_sign_in usr, password
 end
 
@@ -25,7 +25,7 @@ Then /^Orders: Close Marketplace modal$/ do
 end
 
 Given /^I am signed in to Orders$/ do
-  logger.info "I am signed in to Orders"
+  logger.step "I am signed in to Orders"
   step "I launched default browser"
   if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
@@ -37,7 +37,7 @@ Given /^I am signed in to Orders$/ do
 end
 
 Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
-  logger.info "I am signed in to Orders as #{username}/#{password}"
+  logger.step "I am signed in to Orders as #{username}/#{password}"
   step "I launched default browser"
   if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
@@ -50,7 +50,7 @@ end
 
 #todo Refactor SIGN-IN step definition into one step
 Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, password|
-  logger.info "I am signed in to Orders as #{browser}/#{username}/#{password}"
+  logger.step "I am signed in to Orders as #{browser}/#{username}/#{password}"
   step "I launched browser #{browser}"
   if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
@@ -62,7 +62,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, pas
 end
 
 Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, username, password|
-  logger.info "I am signed in to Orders as #{browser}/#{url}/#{username}/#{password}"
+  logger.step "I am signed in to Orders as #{browser}/#{url}/#{username}/#{password}"
   step "I launched browser #{browser}"
   if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
@@ -74,12 +74,12 @@ Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, us
 end
 
 Then /^Orders: Sign in$/ do
-  logger.info "Orders: Sign in"
+  logger.step "Orders: Sign in"
   web_apps.orders.landing_page.sign_in :default
 end
 
 Then /^Sign out$/ do
-  logger.info "Sign out"
+  logger.step "Sign out"
   begin
     web_apps.navigation_bar.username.sign_out
   rescue

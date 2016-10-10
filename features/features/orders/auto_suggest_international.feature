@@ -18,13 +18,13 @@ Feature: International Address
 
     Then Details: Set International Ship-To auto-suggest address to partial name Flo
     Then Details: Select Ship-To auto-suggest item 1
-    Then Details: Expect International Ship-To Name to be Venice Florence
-    Then Details: Expect International Ship-To Company to be CompanyNameInternational
-    Then Details: Expect International Ship-To Address 1 to be Italian Street address
-    Then Details: Expect International Ship-To City to be ItalianCity
-    Then Details: Expect International Ship-To Province to be Rome
-    Then Details: Expect International Ship-To Postal Code to be Pisa
-    Then Details: Expect International Ship-To Phone to be 41511111111
-    Then Details: Expect International Ship-To Email to be autosuggest001.2@mailinator.com
+    Then Details: Expect International Ship-To Name is Venice Florence
+    Then Details: Expect International Ship-To Company is CompanyNameInternational
+    Then Details: Expect International Ship-To Address 1 is Italian Street address
+    Then Details: Expect International Ship-To City is ItalianCity
+    Then Details: Expect International Ship-To Province is Rome
+    Then Details: Expect International Ship-To Postal Code is Pisa
+    Then Details: Expect International Ship-To Phone is 41511111111
+    Then Details: Expect International Ship-To Email is autosuggest001.2@mailinator.com
 
     Then Sign out

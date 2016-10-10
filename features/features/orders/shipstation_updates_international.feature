@@ -13,7 +13,7 @@ Feature:  Update International Orders to ShipStation
       | name          | company          | street_address_1  | street_address_2 | city   | province | postal_code | country | phone         |  email            |
       | Customer Name | Customer Company | Street Address 1  | Street Address 2 | City   | Province | PostalCode  | France  | 415-411-1111  | rtest@stamps.com  |
 
-    Then Details: Select Service Priority Mail International Package/Flat/Thick Envelope
+    Then Details: Select Service Priority Mail International Package
 
     Then Details: Set Pounds to 5
     Then Details: Set Ounces to 5
@@ -31,73 +31,73 @@ Feature:  Update International Orders to ShipStation
     Then Details: Set ID to ID 2
     Then Details: Set Description to Description 2
 
-    Then Details: Expect Ship-To Country to be France
-    Then Details: Expect International Ship-To Name to be Customer Name
-    Then Details: Expect International Ship-To Company to be Customer Company
-    Then Details: Expect International Ship-To Address 1 to be Street Address 1
-    Then Details: Expect International Ship-To Address 2 to be Street Address 2
-    Then Details: Expect International Ship-To City to be City
-    Then Details: Expect International Ship-To Province to be Province
-    Then Details: Expect International Ship-To Postal Code to be PostalCode
-    Then Details: Expect International Ship-To Phone to be 415-411-1111
+    Then Details: Expect Ship-To Country is France
+    Then Details: Expect International Ship-To Name is Customer Name
+    Then Details: Expect International Ship-To Company is Customer Company
+    Then Details: Expect International Ship-To Address 1 is Street Address 1
+    Then Details: Expect International Ship-To Address 2 is Street Address 2
+    Then Details: Expect International Ship-To City is City
+    Then Details: Expect International Ship-To Province is Province
+    Then Details: Expect International Ship-To Postal Code is PostalCode
+    Then Details: Expect International Ship-To Phone is 415-411-1111
 
-    Then Details: Expect Service to be "Priority Mail International Package"
-    Then Details: Expect Reference Number to be Reference #123
+    Then Details: Expect Service is "Priority Mail International Package"
+    Then Details: Expect Reference Number is Reference #123
 
-    Then Details: Expect Insure-For to be $50.25
+    Then Details: Expect Insure-For is $50.25
 
-    Then Details: Expect Item 1 Qty to be 1
-    Then Details: Expect Item 1 ID to be ID 1
-    Then Details: Expect Item 1 Description to be Description 1
+    Then Details: Expect Item 1 Qty is 1
+    Then Details: Expect Item 1 ID is ID 1
+    Then Details: Expect Item 1 Description is Description 1
 
-    Then Details: Expect Item 2 Qty to be 2
-    Then Details: Expect Item 2 ID to be ID 2
-    Then Details: Expect Item 2 Description to be Description 2
+    Then Details: Expect Item 2 Qty is 2
+    Then Details: Expect Item 2 ID is ID 2
+    Then Details: Expect Item 2 Description is Description 2
 
-    Then Details: Expect Item 1 Qty to be 1
-    Then Details: Expect Item 1 ID to be ID 1
-    Then Details: Expect Item 1 Description to be Description 1
+    Then Details: Expect Item 1 Qty is 1
+    Then Details: Expect Item 1 ID is ID 1
+    Then Details: Expect Item 1 Description is Description 1
 
-    Then Details: Expect Item 2 Qty to be 2
-    Then Details: Expect Item 2 ID to be ID 2
-    Then Details: Expect Item 2 Description to be Description 2
+    Then Details: Expect Item 2 Qty is 2
+    Then Details: Expect Item 2 ID is ID 2
+    Then Details: Expect Item 2 Description is Description 2
 
     Then Grid: Uncheck row 1
     Then Pause for 2 seconds
     Then Grid: Check row 1
     Then Pause for 1 second
 
-    Then Details: Expect Ship-To Country to be France
-    Then Details: Expect International Ship-To Name to be Customer Name
-    Then Details: Expect International Ship-To Company to be Customer Company
-    Then Details: Expect International Ship-To Address 1 to be Street Address 1
-    Then Details: Expect International Ship-To Address 2 to be Street Address 2
-    Then Details: Expect International Ship-To City to be City
-    Then Details: Expect International Ship-To Province to be Province
-    Then Details: Expect International Ship-To Postal Code to be PostalCode
-    Then Details: Expect International Ship-To Phone to be 415-411-1111
+    Then Details: Expect Ship-To Country is France
+    Then Details: Expect International Ship-To Name is Customer Name
+    Then Details: Expect International Ship-To Company is Customer Company
+    Then Details: Expect International Ship-To Address 1 is Street Address 1
+    Then Details: Expect International Ship-To Address 2 is Street Address 2
+    Then Details: Expect International Ship-To City is City
+    Then Details: Expect International Ship-To Province is Province
+    Then Details: Expect International Ship-To Postal Code is PostalCode
+    Then Details: Expect International Ship-To Phone is 415-411-1111
 
-    Then Details: Expect Service to be "Priority Mail International Package"
+    Then Details: Expect Service is "Priority Mail International Package"
 
-    Then Details: Expect Insure-For to be $50.25
+    Then Details: Expect Insure-For is $50.25
 
-    Then Details: Expect Reference Number to be Reference #123
+    Then Details: Expect Reference Number is Reference #123
 
-    Then Details: Expect Item 1 Qty to be 1
-    Then Details: Expect Item 1 ID to be ID 1
-    Then Details: Expect Item 1 Description to be Description 1
+    Then Details: Expect Item 1 Qty is 1
+    Then Details: Expect Item 1 ID is ID 1
+    Then Details: Expect Item 1 Description is Description 1
 
-    Then Details: Expect Item 2 Qty to be 2
-    Then Details: Expect Item 2 ID to be ID 2
-    Then Details: Expect Item 2 Description to be Description 2
+    Then Details: Expect Item 2 Qty is 2
+    Then Details: Expect Item 2 ID is ID 2
+    Then Details: Expect Item 2 Description is Description 2
 
-    Then Details: Expect Item 1 Qty to be 1
-    Then Details: Expect Item 1 ID to be ID 1
-    Then Details: Expect Item 1 Description to be Description 1
+    Then Details: Expect Item 1 Qty is 1
+    Then Details: Expect Item 1 ID is ID 1
+    Then Details: Expect Item 1 Description is Description 1
 
-    Then Details: Expect Item 2 Qty to be 2
-    Then Details: Expect Item 2 ID to be ID 2
-    Then Details: Expect Item 2 Description to be Description 2
+    Then Details: Expect Item 2 Qty is 2
+    Then Details: Expect Item 2 ID is ID 2
+    Then Details: Expect Item 2 Description is Description 2
 
     # Edit the customs form
     Then Details: Edit Customs Form
@@ -114,15 +114,15 @@ Feature:  Update International Orders to ShipStation
     Then Customs: Set Internal Transaction Number to "Required"
     Then Customs: Set ITN Number to "ITN123"
 
-    Then Customs: Expect Package Contents to be Commercial Sample
-    Then Customs: Expect License Number to be 123456
-    Then Customs: Expect Certificate Number to be 12345678
-    Then Customs: Expect Invoice Number to be Invoice123
+    Then Customs: Expect Package Contents is Commercial Sample
+    Then Customs: Expect License Number is 123456
+    Then Customs: Expect Certificate Number is 12345678
+    Then Customs: Expect Invoice Number is Invoice123
 
-    Then Customs: Expect Non-Delivery to be Treat as abandoned
+    Then Customs: Expect Non-Delivery is Treat as abandoned
 
-    Then Customs: Expect Internal Transaction Number to be Required
-    Then Customs: Expect ITN Number to be ITN123
+    Then Customs: Expect Internal Transaction Number is Required
+    Then Customs: Expect ITN Number is ITN123
 
     Then Customs: Add Item 1
     Then Customs: Set Item Description to item 1
@@ -158,27 +158,27 @@ Feature:  Update International Orders to ShipStation
 
     Then Customs: Expect I agree to the USPS Privacy Act Statement is checked
 
-    Then Customs: Expect Package Contents to be Commercial Sample
-    Then Customs: Expect License Number to be 123456
-    Then Customs: Expect Certificate Number to be 12345678
-    Then Customs: Expect Invoice Number to be Invoice123
+    Then Customs: Expect Package Contents is Commercial Sample
+    Then Customs: Expect License Number is 123456
+    Then Customs: Expect Certificate Number is 12345678
+    Then Customs: Expect Invoice Number is Invoice123
 
-    Then Customs: Expect Non-Delivery to be Treat as abandoned
+    Then Customs: Expect Non-Delivery is Treat as abandoned
 
-    Then Customs: Expect Internal Transaction Number to be Required
-    Then Customs: Expect ITN Number to be ITN123
+    Then Customs: Expect Internal Transaction Number is Required
+    Then Customs: Expect ITN Number is ITN123
 
-    Then Customs: Expect Item 1 Description to be item 1
-    Then Customs: Expect Item 1 Quantity to be 1
-    Then Customs: Expect Item 1 Unit Price to be 11.11
-    Then Customs: Expect Item 1 Origin Country to be United States
-    Then Customs: Expect Item 1 Tariff to be 100
+    Then Customs: Expect Item 1 Description is item 1
+    Then Customs: Expect Item 1 Quantity is 1
+    Then Customs: Expect Item 1 Unit Price is 11.11
+    Then Customs: Expect Item 1 Origin Country is United States
+    Then Customs: Expect Item 1 Tariff is 100
 
-    Then Customs: Expect Item 2 Description to be item 2
-    Then Customs: Expect Item 2 Quantity to be 2
-    Then Customs: Expect Item 2 Unit Price to be 22.22
-    Then Customs: Expect Item 2 Origin Country to be United States
-    Then Customs: Expect Item 2 Tariff to be 200
+    Then Customs: Expect Item 2 Description is item 2
+    Then Customs: Expect Item 2 Quantity is 2
+    Then Customs: Expect Item 2 Unit Price is 22.22
+    Then Customs: Expect Item 2 Origin Country is United States
+    Then Customs: Expect Item 2 Tariff is 200
 
 
     Then Customs: Close Modal

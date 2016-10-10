@@ -7,28 +7,28 @@ Feature:  Order Details Form Placeholder default values
   @details_placeholders
   Scenario:  Order Details Form Placeholder default values
     Then Toolbar: Add
-    Then Details: Expect Ship-To Address Placeholder to be Address
-    Then Details: Expect Ship-To Phone Placeholder to be Phone
-    Then Details: Expect Ship-To Email Placeholder to be Email
-    Then Details: Expect Service Placeholder to be Select a Service ...
+    Then Details: Expect Ship-To Address Placeholder is Address
+    Then Details: Expect Ship-To Phone Placeholder is Phone
+    Then Details: Expect Ship-To Email Placeholder is Email
+    Then Details: Expect Service Placeholder is Select a Service ...
 
     Then Details: Add Item 1
 
-    Then Details: Expect Item 1 Qty Placeholder to be Qty
-    Then Details: Expect Item 1 ID Placeholder to be ID #
-    Then Details: Expect Item 1 Description Placeholder to be Description
+    Then Details: Expect Item 1 Qty Placeholder is Qty
+    Then Details: Expect Item 1 ID Placeholder is ID #
+    Then Details: Expect Item 1 Description Placeholder is Description
 
     Then Details: Set Ship-To Country to Curacao
 
-    Then Details: Expect International Ship-To Name Placeholder to be Name
-    Then Details: Expect International Ship-To Company Placeholder to be Company
-    Then Details: Expect International Ship-To Address 1 Placeholder to be Address 1
-    Then Details: Expect International Ship-To Address 2 Placeholder to be Address 2
-    Then Details: Expect International Ship-To City Placeholder to be City
-    Then Details: Expect International Ship-To Province Placeholder to be Province
-    Then Details: Expect International Ship-To Postal Code Placeholder to be Postal Code
-    Then Details: Expect International Ship-To Phone Placeholder to be Phone
-    Then Details: Expect International Ship-To Email Placeholder to be Email
+    Then Details: Expect International Ship-To Name Placeholder is Name
+    Then Details: Expect International Ship-To Company Placeholder is Company
+    Then Details: Expect International Ship-To Address 1 Placeholder is Address 1
+    Then Details: Expect International Ship-To Address 2 Placeholder is Address 2
+    Then Details: Expect International Ship-To City Placeholder is City
+    Then Details: Expect International Ship-To Province Placeholder is Province
+    Then Details: Expect International Ship-To Postal Code Placeholder is Postal Code
+    Then Details: Expect International Ship-To Phone Placeholder is Phone
+    Then Details: Expect International Ship-To Email Placeholder is Email
 
     Then Sign out
 

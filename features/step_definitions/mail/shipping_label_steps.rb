@@ -1,6 +1,6 @@
 
 Then /^Mail Shipping Labels: Set Service to (.*)/ do |service|
-  logger.info "Shipping Labels - Set Print Mail Service to: \n #{service}"
+  logger.step "Shipping Labels - Set Print Mail Service to: \n #{service}"
   web_apps.mail.service.select service
 end
 
@@ -145,30 +145,30 @@ Then /^Mail Shipping Labels: Select Service Priority Mail Express International 
 end
 
 Then /^Mail Shipping Labels: Edit Customs Form$/ do
-  logger.info "Mail Shipping Labels: Edit Customs Form"
+  logger.step "Mail Shipping Labels: Edit Customs Form"
   @customs_form = web_apps.mail.customs.edit_form
 end
 
 Then /^Mail Shipping Labels: Open Contacts modal/ do
-  logger.info "Mail Shipping Labels: Open Contacts Modal"
+  logger.step "Mail Shipping Labels: Open Contacts Modal"
   @contacts = web_apps.mail.ship_to.contacts.open
 end
 
 Then /^Mail Shipping Labels: Select left side starting label/ do
-  logger.info "Mail Shipping Labels: Select - Left side label"
+  logger.step "Mail Shipping Labels: Select - Left side label"
   selected = web_apps.mail.shipping_label.form_view.starting_label.left
-  logger.info "left-side label was #{(selected)?'selected.':'not selected'}"
+  logger.step "left-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 Then /^Mail Shipping Labels: Select right side starting label/ do
-  logger.info "Mail Shipping Labels: Select - Right side label"
+  logger.step "Mail Shipping Labels: Select - Right side label"
   
   selected = web_apps.mail.shipping_label.form_view.starting_label.right
-  logger.info "right-side label was #{(selected)?'selected.':'not selected'}"
+  logger.step "right-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 Then /^Mail Shipping Labels: Expect Domestic Address field displays (.*)$/ do |value|
-  logger.info "Shipping Label: Expect Domestic Address to be #{value}"
+  logger.step "Shipping Label: Expect Domestic Address is #{value}"
   
   5.times{
     begin
@@ -183,53 +183,53 @@ Then /^Mail Shipping Labels: Expect Domestic Address field displays (.*)$/ do |v
   actual_stripped = actual.gsub(/ \n/,", ")
   actual_stripped_final = actual_stripped.gsub(/\n/,", ")
   actual_stripped_final.should eql value
-  logger.info 'Address Cleansed -- Expected Result Confirmed'
+  logger.step 'Address Cleansed -- Expected Result Confirmed'
 end
 
 Then /^Mail Shipping Labels: Set Hide Mail Value to Checked$/ do
-  logger.info "Mail Shipping Labels: Check Hide Mail Value"
+  logger.step "Mail Shipping Labels: Check Hide Mail Value"
   
   web_apps.mail.shipping_label.form_view.hide_postage_value.check
 end
 
 Then /^Mail Shipping Labels: Set Hide Mail Value to Unchecked$/ do
-  logger.info "Mail Shipping Labels: Uncheck Hide Mail Value"
+  logger.step "Mail Shipping Labels: Uncheck Hide Mail Value"
   
   web_apps.mail.shipping_label.form_view.hide_postage_value.uncheck
 end
 
 Then /^Mail Shipping Labels: Set Print Receipt to Checked$/ do
-  logger.info "Mail Shipping Labels: Check Print Receipt"
+  logger.step "Mail Shipping Labels: Check Print Receipt"
   
   web_apps.mail.shipping_label.form_view.print_receipt.check
 end
 
 Then /^Mail Shipping Labels: Set Print Receipt to Unchecked$/ do
-  logger.info "Mail Shipping Labels: Uncheck Print Receipt"
+  logger.step "Mail Shipping Labels: Uncheck Print Receipt"
   
   web_apps.mail.shipping_label.form_view.print_receipt.uncheck
 end
 
 Then /^Mail Shipping Labels: Set Print Reference Number to Checked$/ do
-  logger.info "Mail Shipping Labels: Check Print Reference Number"
+  logger.step "Mail Shipping Labels: Check Print Reference Number"
   
   web_apps.mail.shipping_label.form_view.print_reference_number.check
 end
 
 Then /^Mail Shipping Labels: Set Print Reference Number to Unchecked$/ do
-  logger.info "Mail Shipping Labels: Uncheck Print Reference Number"
+  logger.step "Mail Shipping Labels: Uncheck Print Reference Number"
   
   web_apps.mail.shipping_label.form_view.print_reference_number.uncheck
 end
 
 Then /^Mail Shipping Labels: Set Reference Number to (.*)/ do |ref_no|
-  logger.info "Set Shipping Label Reference Number to #{ref_no}"
+  logger.step "Set Shipping Label Reference Number to #{ref_no}"
   
   web_apps.mail.shipping_label.form_view.reference_number.set ref_no
 end
 
 Then /^Mail Shipping Labels: Set Cost Code to (.*)/ do |code|
-  logger.info "Mail Shipping Labels: Set Cost Code to \n #{code}"
+  logger.step "Mail Shipping Labels: Set Cost Code to \n #{code}"
   
   web_apps.mail.shipping_label.form_view.cost_code.select code
 end

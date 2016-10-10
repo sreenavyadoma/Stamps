@@ -16,7 +16,7 @@ Feature:  Service Selection & Order Grid Values
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
-    Then Grid: Expect Service to be Parcel Select Ground
+    Then Grid: Expect Service is Parcel Select Ground
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -28,7 +28,7 @@ Feature:  Service Selection & Order Grid Values
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
-    Then Grid: Expect Service to be Parcel Select Ground
+    Then Grid: Expect Service is Parcel Select Ground
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -40,7 +40,7 @@ Feature:  Service Selection & Order Grid Values
     Then Print: Set Printer to "factory"
     Then Print: Print
     Then Filter: Select Shipped
-    Then Grid: Expect Service to be Parcel Select Ground
+    Then Grid: Expect Service is Parcel Select Ground
 
     Then Sign out
 

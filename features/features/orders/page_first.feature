@@ -13,7 +13,7 @@ Feature: B-01746 Order Pagination
     Then User is taken to the first page of orders
     Then Server provides a new set of orders for the grid
     Then Set paging toolbar per page count to 100
-    Then Expect page toolbar pagination count to be correct
+    Then Expect page toolbar pagination count is correct
 
     Then Sign out
 
@@ -22,7 +22,7 @@ Feature: B-01746 Order Pagination
     Then Web Batch grid has more orders than value selected in 'number of orders per page' pagination control
     Then User is on the first page of orders
     Then Pagination control to go to first page is disabled
-    Then page control will state "Page 1 of x (where x is determined by server to be the last page)"
+    Then page control will state "Page 1 of x (where x is determined by server is the last page)"
 
     Then Sign out
 

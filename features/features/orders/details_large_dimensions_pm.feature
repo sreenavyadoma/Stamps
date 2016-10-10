@@ -17,16 +17,16 @@ Feature: Priority Mail and Large Dimensions
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 1
     Then Pause for 2 seconds
-    Then Details: Expect Service Textbox to be enabled
+    Then Details: Expect Service Textbox is enabled
     Then Pause for 1 second
-    Then Details: Expect Service to be Priority Mail Package
+    Then Details: Expect Service is Priority Mail Package
     Then Pause for 1 second
-    Then Details: Expect Service "Priority Mail Package" to be enabled
+    Then Details: Expect Service "Priority Mail Package" is enabled
     Then Pause for 1 second
     Then Details: Select Service Priority Mail Package
     Then Pause for 2 seconds
-    Then Details: Expect Length to be 0
-    Then Details: Expect Height to be 0
-    Then Details: Expect Width to be 0
+    Then Details: Expect Length is 0
+    Then Details: Expect Height is 0
+    Then Details: Expect Width is 0
     Then Sign out
 

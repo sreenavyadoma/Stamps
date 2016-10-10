@@ -25,9 +25,9 @@ Feature:  BVT Order Creation
 
     # Orders Grid Operations
     Then Grid: Uncheck row 1
-    Then Grid: Expect Pounds to be 1
-    Then Grid: Expect Ounces to be 1
-    Then Grid: Expect Weight to be 1 lbs. 1 oz.
-    Then Grid: Expect Insured Value to be $1.00
+    Then Grid: Expect Pounds is 1
+    Then Grid: Expect Ounces is 1
+    Then Grid: Expect Weight is 1 lbs. 1 oz.
+    Then Grid: Expect Insured Value is $1.00
     Then Sign out
 

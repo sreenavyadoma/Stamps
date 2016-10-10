@@ -1,5 +1,5 @@
 
-Feature: As a batch shipper, I want to be able to Filter Panel - orders by status [B-01621]
+Feature: As a batch shipper, I want is able to Filter Panel - orders by status [B-01621]
 
   Background:
     Given I am signed in to Orders
@@ -63,14 +63,14 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     Then Filter: Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
     Then Details: Expect Order ID equals Grid order ID
-    Then Grid: Expect Recipient to be James Test
-    Then Grid: Expect Company to be Domestic Company
-    Then Grid: Expect Address to be 600 Front St Apt 220
-    Then Grid: Expect City to be San Diego
-    Then Grid: Expect State to be CA
-    Then Grid: Expect Zip to be 92101
-    Then Grid: Expect Phone to be 8885551212
-    Then Grid: Expect Email to be test@stamps.com
+    Then Grid: Expect Recipient is James Test
+    Then Grid: Expect Company is Domestic Company
+    Then Grid: Expect Address is 600 Front St Apt 220
+    Then Grid: Expect City is San Diego
+    Then Grid: Expect State is CA
+    Then Grid: Expect Zip is 92101
+    Then Grid: Expect Phone is 8885551212
+    Then Grid: Expect Email is test@stamps.com
 
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
@@ -80,14 +80,14 @@ Feature: As a batch shipper, I want to be able to Filter Panel - orders by statu
     Then Filter: Select Shipped
     Then Filter: Expect system selects Shipped Filter Panel - and deselects the previous filter
 
-    Then Grid: Expect Recipient to be James Test
-    Then Grid: Expect Company to be Domestic Company
-    Then Grid: Expect Address to be 600 Front St Apt 220
-    Then Grid: Expect City to be San Diego
-    Then Grid: Expect State to be CA
-    Then Grid: Expect Zip to be 92101
-    Then Grid: Expect Phone to be 8885551212
-    Then Grid: Expect Email to be test@stamps.com
+    Then Grid: Expect Recipient is James Test
+    Then Grid: Expect Company is Domestic Company
+    Then Grid: Expect Address is 600 Front St Apt 220
+    Then Grid: Expect City is San Diego
+    Then Grid: Expect State is CA
+    Then Grid: Expect Zip is 92101
+    Then Grid: Expect Phone is 8885551212
+    Then Grid: Expect Email is test@stamps.com
 
 
     Then Toolbar: Add

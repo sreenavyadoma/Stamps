@@ -297,63 +297,63 @@ Then /^Registration Result: Wait for Download Page or Webpostage page to load$/ 
   end
 end
 
-Then(/^WebReg Profile: Expect Email Help Block to be (.*)$/) do |expectation|
-  logger.step "WebReg Profile: Expect Email Help Block to be #{expectation}"
+Then(/^WebReg Profile: Expect Email Help Block is (.*)$/) do |expectation|
+  logger.step "WebReg Profile: Expect Email Help Block is #{expectation}"
   help_text = webreg.profile.email.help_block
   help_text.should eql expectation
 end
 
-Then(/^WebReg Profile: Expect User ID Help Block to be (.*)$/) do |expectation|
-  logger.step "WebReg Profile: Expect User ID Help Block to be #{expectation}"
+Then(/^WebReg Profile: Expect User ID Help Block is (.*)$/) do |expectation|
+  logger.step "WebReg Profile: Expect User ID Help Block is #{expectation}"
   help_text = webreg.profile.user_id.help_block
   help_text.should eql expectation
 end
 
-Then(/^WebReg Profile: Expect Password Help Block to be (.*)$/) do |expectation|
-  logger.step "WebReg Profile: Expect Password Help Block to be #{expectation}"
+Then(/^WebReg Profile: Expect Password Help Block is (.*)$/) do |expectation|
+  logger.step "WebReg Profile: Expect Password Help Block is #{expectation}"
   help_text = webreg.profile.password.help_block
   help_text.should eql expectation
 end
 
-Then(/^WebReg Profile: Expect Re\-Type Password Help Block to be (.*)$/) do |expectation|
-  logger.step "WebReg Profile: Expect Re-Type Help Block to be #{expectation}"
+Then(/^WebReg Profile: Expect Re\-Type Password Help Block is (.*)$/) do |expectation|
+  logger.step "WebReg Profile: Expect Re-Type Help Block is #{expectation}"
   help_text = webreg.profile.password.help_block
   help_text.should eql expectation
 end
 
-Then(/^WebReg Profile: Expect How will you use Stamps\.com Help Block to be (.*)$/) do |expectation|
-  logger.step "WebReg Profile: Expect How will you use Stamps.com Help Block to be #{expectation}"
+Then(/^WebReg Profile: Expect How will you use Stamps\.com Help Block is (.*)$/) do |expectation|
+  logger.step "WebReg Profile: Expect How will you use Stamps.com Help Block is #{expectation}"
   help_text = webreg.profile.usage_type.help_block
   help_text.should eql expectation
 end
 
-Then(/^WebReg Profile: Expect How did you hear about us\? Help Block to be (.*)$/) do |expectation|
-  logger.step "WebReg Profile: How did you hear about us? Help Block to be #{expectation}"
+Then(/^WebReg Profile: Expect How did you hear about us\? Help Block is (.*)$/) do |expectation|
+  logger.step "WebReg Profile: How did you hear about us? Help Block is #{expectation}"
   referrer_name = webreg.profile.referrer_name
   help_text = webreg.profile.referrer_name.help_block if referrer_name.present?
   help_text.should eql expectation if referrer_name.present?
 end
 
-Then(/^WebReg Profile: Expect 1st Question Help Block to be (.*)$/) do |expectation|
-  logger.step "WebReg Profile: Expect 1st Question Help Block to be #{expectation}"
+Then(/^WebReg Profile: Expect 1st Question Help Block is (.*)$/) do |expectation|
+  logger.step "WebReg Profile: Expect 1st Question Help Block is #{expectation}"
   help_text = webreg.profile.first_question.help_block
   help_text.should eql expectation
 end
 
-Then(/^WebReg Profile: Expect 1st Answer Help Block to be (.*)$/) do |expectation|
-  logger.step "WebReg Profile: Expect 1st Answer Help Block to be #{expectation}"
+Then(/^WebReg Profile: Expect 1st Answer Help Block is (.*)$/) do |expectation|
+  logger.step "WebReg Profile: Expect 1st Answer Help Block is #{expectation}"
   help_text = webreg.profile.first_answer.help_block
   help_text.should eql expectation
 end
 
-Then(/^WebReg Profile: Expect 2nd Question Help Block to be (.*)$/) do |expectation|
-  logger.step "WebReg Profile: Expect 2n Question Help Block to be #{expectation}"
+Then(/^WebReg Profile: Expect 2nd Question Help Block is (.*)$/) do |expectation|
+  logger.step "WebReg Profile: Expect 2n Question Help Block is #{expectation}"
   help_text = webreg.profile.second_question.help_block
   help_text.should eql expectation
 end
 
-Then(/^^WebReg Profile: Expect 2nd Answer Help Block to be (.*)$/) do |expectation|
-  logger.step "WebReg Profile: Expect 2nd Answer Help Block to be #{expectation}"
+Then(/^^WebReg Profile: Expect 2nd Answer Help Block is (.*)$/) do |expectation|
+  logger.step "WebReg Profile: Expect 2nd Answer Help Block is #{expectation}"
   help_text = webreg.profile.second_answer.help_block
   help_text.should eql expectation
 end

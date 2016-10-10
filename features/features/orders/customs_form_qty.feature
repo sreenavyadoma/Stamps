@@ -11,7 +11,7 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then Details: Set Ship-To to international address
       | name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
-    Then Details: Select Service Priority Mail International Package/Flat/Thick Envelope
+    Then Details: Select Service Priority Mail International Package
     Then Details: Set Ounces to 1
 
     Then Details: Add Item 1
@@ -48,11 +48,11 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
     Then Details: Edit Customs Form
     Then Pause for 2 seconds
-    Then Customs: Expect Item 1 Description to be item 1
-    Then Customs: Expect Item 1 Quantity to be 100
+    Then Customs: Expect Item 1 Description is item 1
+    Then Customs: Expect Item 1 Quantity is 100
 
-    Then Customs: Expect Item 2 Description to be item 2
-    Then Customs: Expect Item 2 Quantity to be 99
+    Then Customs: Expect Item 2 Description is item 2
+    Then Customs: Expect Item 2 Quantity is 99
 
     Then Customs: Close Modal
 

@@ -7,20 +7,20 @@ Feature: Verify Ship Works Integration
   @ship_works
   Scenario:  Order Details Form
     Then Toolbar: Add
-    Then Details: Expect Ship-From Textbox to be enabled
+    Then Details: Expect Ship-From Textbox is enabled
     Then Details: Expect Ship-From drop-down be enabled
-    Then Details: Expect Ship-To Textbox to be enabled
-    Then Details: Expect Ship-To drop-down to be enabled
-    Then Details: Expect Ship-To text area to be enabled
-    Then Details: Expect Phone Textbox to be enabled
-    Then Details: Expect Email Textbox to be enabled
-    Then Details: Expect Pounds Textbox to be enabled
-    Then Details: Expect Ounces Textbox to be enabled
-    Then Details: Expect Service Textbox to be enabled
-    Then Details: Expect Service drop-down to be enabled
-    Then Details: Expect Insure-For Textbox to be enabled
-    Then Expect Order Detials Form Tracking Textbox to be enabled
-    Then Details: Expect Tracking drop-down to be enabled
+    Then Details: Expect Ship-To Textbox is enabled
+    Then Details: Expect Ship-To drop-down is enabled
+    Then Details: Expect Ship-To text area is enabled
+    Then Details: Expect Phone Textbox is enabled
+    Then Details: Expect Email Textbox is enabled
+    Then Details: Expect Pounds Textbox is enabled
+    Then Details: Expect Ounces Textbox is enabled
+    Then Details: Expect Service Textbox is enabled
+    Then Details: Expect Service drop-down is enabled
+    Then Details: Expect Insure-For Textbox is enabled
+    Then Expect Order Detials Form Tracking Textbox is enabled
+    Then Details: Expect Tracking drop-down is enabled
     Then Sign out
 
 

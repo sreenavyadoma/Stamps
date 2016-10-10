@@ -11,7 +11,7 @@ Feature: Ship Date
     Then Details: Select Service Priority Mail Package
     Then Print: Open Modal
     Then Print: Set Ship Date to today
-    Then Filter: Expect Shipped Tab Ship Date to be today
+    Then Filter: Expect Shipped Tab Ship Date is today
     Then Print: Print
     Then Sign out
 
@@ -36,7 +36,7 @@ Feature: Ship Date
     Then Details: Select Service Priority Mail Package
     Then Print: Open Modal
     Then Print: Set Ship Date to today plus 2
-    Then Filter: Expect Shipped Tab Ship Date to be today plus 2
+    Then Filter: Expect Shipped Tab Ship Date is today plus 2
     Then Print: Print
     Then Sign out
 
@@ -49,7 +49,7 @@ Feature: Ship Date
     Then Details: Select Service Priority Mail Package
     Then Print: Open Modal
     Then Print: Set Ship Date to today plus 3
-    Then Filter: Expect Shipped Tab Ship Date to be today plus 3
+    Then Filter: Expect Shipped Tab Ship Date is today plus 3
     Then Print: Print
     Then Sign out
 

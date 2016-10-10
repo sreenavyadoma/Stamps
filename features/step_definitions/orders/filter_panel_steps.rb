@@ -24,19 +24,19 @@ Then /^Filter: Expand Panel$/ do
   web_apps.orders.filter.menu_item.expand.click
 end
 
-Then /^Filter: Expect Shipped Tab Date Printed to be today$/ do
+Then /^Filter: Expect Shipped Tab Date Printed is today$/ do
   today = ParameterHelper.now_plus_mon_dd 0
   web_apps.orders.filter.shipped.date_printed.sort_descending
   actual_print_date = web_apps.orders.filter.shipped.date_printed.row 1
   logger.step "#{(actual_print_date)}"
-  logger.step "Shipped Tab Date Printed to be today #{today}"
+  logger.step "Shipped Tab Date Printed is today #{today}"
 end
 
-Then /^Filter: Expect Shipped Tab Ship Date to be today$/ do
+Then /^Filter: Expect Shipped Tab Ship Date is today$/ do
 
 end
 
-Then /^Filter: Expect Shipped Tab Ship Date to be today plus (\d+)/ do |day|
+Then /^Filter: Expect Shipped Tab Ship Date is today plus (\d+)/ do |day|
 
 end
 
@@ -77,8 +77,8 @@ Then /^Filter: Expect order moved to Awaiting Shipment$/ do
   row.should be > 0
 end
 
-Then /^Expect Awaiting Shipment count to be less by (\d+)$/ do |count|
-  logger.step "Expect Awaiting Shipment count to be less by #{count}"
+Then /^Expect Awaiting Shipment count is less by (\d+)$/ do |count|
+  logger.step "Expect Awaiting Shipment count is less by #{count}"
   awaiting_shipment_count = web_apps.orders.filter.awaiting_shipment_count
   logger.step "Test #{(awaiting_shipment_count = @details_form_data[:awaiting_shipment_count].to_i - count.to_i)?'Passed':'Failed'}"
   awaiting_shipment_count.should eql @details_form_data[:awaiting_shipment_count].to_i - count.to_i
@@ -180,7 +180,7 @@ Then /^Expect printed Order ID is not in Awaiting Shipment tab$/ do
   row = 1
   row1_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row1_order_id}"
-  expect(@details_form_data[:order_id].include? row1_order_id).to be false
+  expect(@details_form_data[:order_id].include? row1_order_id).is false
 end
 
 Then /^Expect all printed Order IDs not in Awaiting Shipment tab$/ do
@@ -191,19 +191,19 @@ Then /^Expect all printed Order IDs not in Awaiting Shipment tab$/ do
   row = 1
   row1_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row1_order_id}"
-  expect(@details_form_data[:order_id].include? row1_order_id).to be false
+  expect(@details_form_data[:order_id].include? row1_order_id).is false
 
   logger.step "Second Order ID: #{@details_form_data[:order_id_2]} in Awaiting Shipment tab"
   row = 2
   row2_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row2_order_id}"
-  expect(@details_form_data[:order_id_2].include? row2_order_id).to be false
+  expect(@details_form_data[:order_id_2].include? row2_order_id).is false
 
   logger.step "Third Order ID: #{@details_form_data[:order_id_3]} in Awaiting Shipment tab"
   row = 3
   row3_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row3_order_id}"
-  expect(@details_form_data[:order_id_3].include? row3_order_id).to be false
+  expect(@details_form_data[:order_id_3].include? row3_order_id).is false
 
 end
 

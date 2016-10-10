@@ -25,9 +25,9 @@ Feature:  Customs Form Data Tooltip Error
     Then Pause for 1 second
     Then Customs: Uncheck I agree to the USPS Privacy Act Statement
 
-    Then Customs: Expect Item Description Tooltip Error to be Description is a required field
-    Then Customs: Expect Qty Tooltip Error to be Quantity must be greater than 0
-    Then Customs: Expect Unit Price Tooltip Error to be Value must be greater than 0
+    Then Customs: Expect Item Description Tooltip Error is Description is a required field
+    Then Customs: Expect Qty Tooltip Error is Quantity must be greater than 0
+    Then Customs: Expect Unit Price Tooltip Error is Value must be greater than 0
     Then Customs: Add Item 1, Description random, Qty 1, Price 50, Origin United States, Tariff 100
     Then Pause for 2 seconds
     Then Customs: Close Modal

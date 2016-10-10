@@ -23,8 +23,8 @@ Then /^Toolbar:  Set Per Page drop-down to 500$/ do
   per_page.should eql "500"
 end
 
-Then /^Toolbar: Expect number of orders on page to be correct$/ do
-  logger.step "Toolbar: Expect number of orders on page to be correct"
+Then /^Toolbar: Expect number of orders on page is correct$/ do
+  logger.step "Toolbar: Expect number of orders on page is correct"
   filter = web_apps.orders.filter
   grid = filter.awaiting_shipment
   sleep 1
@@ -51,7 +51,7 @@ Then /^User is on the first page of orders$/ do
   logger.step "Page Count = Page #{web_apps.orders.grid.row_count} orders"
   page_count = web_apps.orders.grid.toolbar.page_count.text
   logger.step "Page Count = Page #{page_count}"
-  expect(page_count.to_i = 1).to be true
+  expect(page_count.to_i = 1).is true
 end
 
 Then /^User clicks first page pagination control$/ do
@@ -210,8 +210,8 @@ When /^Set Page Number to (\d*)$/ do |value|
   end unless value.length == 0
 end
 
-Then /^Paging: Expect Total Number of Pages to be (\d+)$/ do |total_number_of_pages|
-  logger.step "Paging: Expect Total Number of Pages to be #{total_number_of_pages}"
+Then /^Paging: Expect Total Number of Pages is (\d+)$/ do |total_number_of_pages|
+  logger.step "Paging: Expect Total Number of Pages is #{total_number_of_pages}"
   logger.step "Passed value is #{total_number_of_pages}"
   browser_total_number_of_pages = web_apps.orders.grid.toolbar.total_number_of_pages.to_s
   logger.step "DD value is #{browser_total_number_of_pages}"
@@ -225,7 +225,7 @@ Then /^Web Batch grid has more orders than value selected in 'number of orders p
   logger.step "Web Batch grid has more orders than value selected in 'number of orders per page' pagination control"
   #1 Count order grid items ordersgridpagingtoolbar
   page_count = web_apps.orders.grid.toolbar.page_count.text
-  expect(page_count.to_i > 1).to be true
+  expect(page_count.to_i > 1).is true
   total_grid_count = web_apps.orders.grid.row_count
   #2 Get per page count
 

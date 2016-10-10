@@ -11,7 +11,7 @@ Feature: Add Missing Field Validation
   #  Add Missing Validation Logic for Email
     Then Details: Set Email to @@
     Then Details: Select Service Priority Mail Large/Thick Envelope
-    Then Details: Expect Domestic Email data error tooltip to be "Please enter a valid email address"
+    Then Details: Expect Domestic Email data error tooltip is "Please enter a valid email address"
     Then Grid: Expect Ship Cost error to contain "Please enter a valid email address"
 
   #@validate_length
@@ -24,13 +24,13 @@ Feature: Add Missing Field Validation
     Then Details: Set Length to 0
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Expect Dimensions Length data error tooltip to be "Each dimension must be greater than 0"
+    Then Details: Expect Dimensions Length data error tooltip is "Each dimension must be greater than 0"
 
     Then Details: Select Service Priority Mail Package
     Then Details: Set Length to 0
     Then Details: Set Width to 2
     Then Details: Set Height to 2
-    Then Details: Expect Dimensions Length data error tooltip to be "Each dimension must be greater than 0"
+    Then Details: Expect Dimensions Length data error tooltip is "Each dimension must be greater than 0"
 
   #@validate_width
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where Service = Priority Mail AND Zone > 5
@@ -38,13 +38,13 @@ Feature: Add Missing Field Validation
     Then Details: Set Length to 3
     Then Details: Set Width to 0
     Then Details: Set Height to 3
-    Then Details: Expect Dimensions Width data error tooltip to be "Each dimension must be greater than 0"
+    Then Details: Expect Dimensions Width data error tooltip is "Each dimension must be greater than 0"
 
     Then Details: Select Service Priority Mail Package
     Then Details: Set Length to 4
     Then Details: Set Width to 0
     Then Details: Set Height to 4
-    Then Details: Expect Dimensions Width data error tooltip to be "Each dimension must be greater than 0"
+    Then Details: Expect Dimensions Width data error tooltip is "Each dimension must be greater than 0"
 
   #@validate_height
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where Service = Priority Mail Large Envelope/Thick Envelope AND Zone ? 5
@@ -52,13 +52,13 @@ Feature: Add Missing Field Validation
     Then Details: Set Height to 0
     Then Details: Set Length to 5
     Then Details: Set Width to 5
-    Then Details: Expect Dimensions Height data error tooltip to be "Each dimension must be greater than 0"
+    Then Details: Expect Dimensions Height data error tooltip is "Each dimension must be greater than 0"
 
     Then Details: Select Service Priority Mail Package
     Then Details: Set Height to 0
     Then Details: Set Length to 6
     Then Details: Set Width to 6
-    Then Details: Expect Dimensions Height data error tooltip to be "Each dimension must be greater than 0"
+    Then Details: Expect Dimensions Height data error tooltip is "Each dimension must be greater than 0"
     Then Grid: Expect Ship Cost error to contain "Each dimension must be greater than 0"
 
     Then Sign out
