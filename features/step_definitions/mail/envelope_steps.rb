@@ -11,6 +11,12 @@ end
 Then /^Mail Envelopes: Set Include Return Address to Checked$/ do
   logger.info "Mail Shipping Labels: Check Include Return Address"
   web_apps.mail.envelope.form_view.include_return_address.check
+  step "Mail Envelopes: Expect Include Return Address is checked"
+end
+
+Then /^Mail Envelopes: Expect Include Return Address is checked$/ do
+  logger.info "Mail Envelopes: Expect Include Return Address is checked"
+  web_apps.mail.envelope.form_view.include_return_address.checked?.should be true
 end
 
 Then /^Mail Envelopes: Set Include Return Address to Unchecked$/ do
