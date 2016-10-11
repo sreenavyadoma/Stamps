@@ -354,7 +354,7 @@ module Stamps
           break if selected?
           safe_click
         }
-        raise "Unable to check element with ID #{element.attribute_value "id"}" unless selected?
+        selected?.should be true
       end
 
       def selected?
@@ -395,7 +395,7 @@ module Stamps
           when :li
             selection_element = browser.li text: selection
           else
-            stop_test "Unsupported HTML drop-down selection tag #{html_tag}"
+            "Unsupported HTML drop-down selection tag #{html_tag}".should
         end
 
         5.times{
