@@ -1,9 +1,7 @@
 Feature: Verify Mail Elements Are Present
 
-
   Background:
     Given I am signed in as Mail shipper
-
 
   @wp_print_postage_elements
   Scenario: Print Mail Elements

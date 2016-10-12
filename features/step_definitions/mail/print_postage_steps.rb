@@ -340,7 +340,7 @@ end
 
 Then /^Mail: Expect Auto Weigh check box is present$/ do
   logger.step "Mail: Expect Auto Weigh check box is present"
-  web_apps.mail.weight.auto_weigh.checkbox_element.present?.should be true
+  web_apps.mail.weight.auto_weigh.present?.should be true
 end
 
 Then /^Mail: Expect Service Field is present$/ do
