@@ -238,6 +238,7 @@ end
 
 Then /^Details: Expect Insure-For is \$(.*)$/ do |expectation|
   logger.step "Details: Set Insure-For to #{expectation}"
+  web_apps.orders.details.insure_for.checkbox.check
   5.times do
     actual_value = web_apps.orders.details.insure_for.text_box.text
     if actual_value==expectation

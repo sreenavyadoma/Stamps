@@ -388,24 +388,16 @@ module Stamps
     end
 
     class Email < Browser::Modal
-
-      def checkbox_element
-        browser.text_field id: "sdc-mainpanel-emailcheckbox-inputEl"
+      attr_reader :checkbox, :text_box
+      def initialize param
+        @checkbox ||= Stamps::Browser::CheckboxElement.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
+        @text_box ||= TextBoxElement.new (browser.text_field id: "sdc-mainpanel-emailtextfield-inputEl")
       end
 
-      def checkbox
-
-        checkbox_field = checkbox_element
-        verify_field = browser.table id: "sdc-mainpanel-emailcheckbox"
-
-        Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
-
+      def set value
+        checkbox.check
+        text_box.set value
       end
-
-      def text_box
-        TextBoxElement.new (browser.text_field id: "sdc-mainpanel-emailtextfield-inputEl")
-      end
-
     end
 
     class Tracking < Browser::Modal

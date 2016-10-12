@@ -294,24 +294,23 @@ end
 
 Then /^Details: Expect International Name data error tooltip is \"(.*)\"$/ do |expectation|
   logger.step "Details: Expect International Name data error tooltip is #{expectation}"
-  @international_ship_to.should_not be_nil
-  text_box = @international_ship_to.name
+  text_box = web_apps.orders.details.ship_to.international.name
   20.times do
     text_box.safe_double_click
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     text_box.safe_double_click
-    #@international_ship_to.click_form
-    @international_ship_to.name.scroll_into_view
+    #web_apps.orders.details.ship_to.international.click_form
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
-      @international_ship_to.name.scroll_into_view
+      web_apps.orders.details.ship_to.international.name.scroll_into_view
       sleep 1
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
-  @international_ship_to.name.scroll_into_view
+  web_apps.orders.details.ship_to.international.name.scroll_into_view
   sleep 2
   data_error_tooltip = text_box.data_error_qtip
   logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
@@ -320,25 +319,24 @@ end
 
 Then /^Details: Expect International Company data error tooltip is \"(.*)\"$/ do |expectation|
   logger.step "Details: Expect International Company data error tooltip is #{expectation}"
-  @international_ship_to.should_not be_nil
-  text_box = @international_ship_to.company
+  text_box = web_apps.orders.details.ship_to.international.company
 
   20.times do
     text_box.safe_double_click
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     text_box.safe_double_click
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
-      @international_ship_to.name.scroll_into_view
+      web_apps.orders.details.ship_to.international.name.scroll_into_view
       sleep 1
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
-  @international_ship_to.name.scroll_into_view
+  web_apps.orders.details.ship_to.international.name.scroll_into_view
   data_error_tooltip = text_box.data_error_qtip
   logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include expectation
@@ -346,25 +344,24 @@ end
 
 Then /^Details: Expect International Address 1 data error tooltip is \"(.*)\"$/ do |expectation|
   logger.step "Details: Expect International Address 1 data error tooltip is #{expectation}"
-  @international_ship_to.should_not be_nil
-  text_box = @international_ship_to.address_1
+  text_box = web_apps.orders.details.ship_to.international.address_1
 
   20.times do
     text_box.safe_double_click
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     text_box.safe_double_click
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
-      @international_ship_to.name.scroll_into_view
+      web_apps.orders.details.ship_to.international.name.scroll_into_view
       sleep 1
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
-  @international_ship_to.name.scroll_into_view
+  web_apps.orders.details.ship_to.international.name.scroll_into_view
   data_error_tooltip = text_box.data_error_qtip
   logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include expectation
@@ -372,24 +369,23 @@ end
 
 Then /^Details: Expect International City data error tooltip is \"(.*)\"$/ do |expectation|
   logger.step "Details: Expect International City data error tooltip is #{expectation}"
-  @international_ship_to.should_not be_nil
-  text_box = @international_ship_to.city
+  text_box = web_apps.orders.details.ship_to.international.city
 
   20.times do
     text_box.safe_double_click
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
-      @international_ship_to.name.scroll_into_view
+      web_apps.orders.details.ship_to.international.name.scroll_into_view
       sleep 1
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
-  @international_ship_to.name.scroll_into_view
+  web_apps.orders.details.ship_to.international.name.scroll_into_view
   data_error_tooltip = text_box.data_error_qtip
   logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include expectation
@@ -397,25 +393,24 @@ end
 
 Then /^Details: Expect International Phone data error tooltip is \"(.*)\"$/ do |expectation|
   logger.step "Details: Expect International Phone data error tooltip is #{expectation}"
-  @international_ship_to.should_not be_nil
-  text_box = @international_ship_to.phone
+  text_box = web_apps.orders.details.ship_to.international.phone
 
   20.times do
     text_box.safe_double_click
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     text_box.safe_double_click
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
-      @international_ship_to.name.scroll_into_view
+      web_apps.orders.details.ship_to.international.name.scroll_into_view
       sleep 1
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
-  @international_ship_to.name.scroll_into_view
+  web_apps.orders.details.ship_to.international.name.scroll_into_view
   sleep 2
   data_error_tooltip = text_box.data_error_qtip
   logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
@@ -424,25 +419,24 @@ end
 
 Then /^Details: Expect International Email data error tooltip is \"(.*)\"$/ do |expectation|
   logger.step "Details: Expect International Email data error tooltip is #{expectation}"
-  @international_ship_to.should_not be_nil
-  text_box = @international_ship_to.email
+  text_box = web_apps.orders.details.ship_to.international.email
 
   20.times do
     text_box.safe_double_click
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     text_box.safe_double_click
-    @international_ship_to.blur_out
-    @international_ship_to.name.scroll_into_view
+    web_apps.orders.details.ship_to.international.blur_out
+    web_apps.orders.details.ship_to.international.name.scroll_into_view
     sleep 1
     data_error_tooltip = text_box.data_error_qtip
     begin
-      @international_ship_to.name.scroll_into_view
+      web_apps.orders.details.ship_to.international.name.scroll_into_view
       sleep 1
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
-  @international_ship_to.name.scroll_into_view
+  web_apps.orders.details.ship_to.international.name.scroll_into_view
   data_error_tooltip = text_box.data_error_qtip
   logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include expectation

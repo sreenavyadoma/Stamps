@@ -49,7 +49,7 @@ end
 
 Then /^Details: Set Ship-To Country to (.*)$/ do |country|
   logger.step "Details: Set Ship-To Country to #{country}"
-  @international_ship_to = web_apps.orders.details.ship_to.country.select country
+  web_apps.orders.details.ship_to.country.select country
 end
 
 Then /^Details: Set International Ship-To Name to \"(.*)\"$/ do |value|

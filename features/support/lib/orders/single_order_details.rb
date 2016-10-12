@@ -1,65 +1,6 @@
 module Stamps
   module Orders
     module Details
-      class DetailsForm < Browser::Modal
-        attr_reader :insure_for_label
-
-        def initialize param
-          super param
-          @insure_for_label = ElementWrapper.new browser.label(text: 'Insure For $:')
-        end
-
-        def blur_out
-          2.times do
-            begin
-              insure_for_label.element.click
-              insure_for_label.element.double_click
-              insure_for_label.element.click
-            rescue
-              #ignore
-            end
-          end
-        end
-      end
-
-      class ShipToCountry < DetailsForm
-        attr_reader :international_address, :drop_down, :text_box
-
-        def initialize param
-          super param
-          @international_address ||= ShipToInternational.new param
-          @drop_down ||= ElementWrapper.new browser.div(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div[id^=combo-][id$=-trigger-picker]")
-          @text_box ||= TextBoxElement.new browser.text_field css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]"
-        end
-
-        def select country
-          logger.info "Select Country #{country}"
-          selection_1 = ElementWrapper.new browser.li text: country
-          selection_2 = ElementWrapper.new browser.li text: "#{country} "
-
-          20.times do
-            begin
-              drop_down.safe_click unless selection_1.present? || selection_2.present?
-              if selection_1.present?
-                selection_1.scroll_into_view
-                selection_1.safe_click
-              elsif selection_2.present?
-                selection_2.scroll_into_view
-                selection_2.safe_click
-              end
-
-              logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
-              break if text_box.text.include? country
-            rescue
-              #ignore
-            end
-          end
-          logger.info "#{country} selected."
-          #Assert textbox text includes country
-          text_box.text.should include country
-          international_address unless country.include? "United States"
-        end
-      end
 
       class ShipToTextArea < TextBoxElement
         def full_address
@@ -156,22 +97,28 @@ module Stamps
         end
       end
 
-      class ShipToFields < DetailsForm
-        attr_reader :country, :ship_to_dd, :less
+      class DetailsElement < Browser::Modal
+        attr_reader :insure_for_label
 
         def initialize param
           super param
-          @country ||= ShipToCountry.new param
-          @ship_to_dd = ElementWrapper.new browser.span(css: "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)")
-          @less ||= ElementWrapper.new browser.span(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
+          @insure_for_label = ElementWrapper.new browser.label(text: 'Insure For $:')
         end
 
-        def text_area
-          show_address_details
-          field = browser.textarea(name: "freeFormAddress")
-          error_field = browser.a css: "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
-          error_field_attribute = "data-errorqtip"
-          ShipToTextArea.new field, error_field, error_field_attribute
+        def blur_out
+          insure_for_label.safe_click
+          insure_for_label.safe_double_click
+          insure_for_label.safe_click
+        end
+      end
+
+      class ShipToBase < DetailsElement
+        attr_reader :less, :ship_to_dd
+
+        def initialize param
+          super param
+          @less ||= ElementWrapper.new browser.span(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
+          @ship_to_dd = ElementWrapper.new browser.span(css: "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)")
         end
 
         def hide_address_details
@@ -186,75 +133,227 @@ module Stamps
             break unless ship_to_dd.present?
           }
         end
+      end
 
-        def email
-          show_address_details
-          field = browser.text_field name: 'BuyerEmail'
-          error_field = (browser.divs css: "div[data-errorqtip*=email]")[0]
-          error_field_attribute = "data-errorqtip"
-          TextBoxElement.new field, error_field, error_field_attribute
+      class ShipToCountry < ShipToBase
+        attr_reader :dom_drop_down, :dom_text_box, :int_drop_down, :int_text_box
+
+        def initialize param
+          super param
+          @dom_drop_down ||= ElementWrapper.new browser.div(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div[id^=combo-][id$=-trigger-picker]")
+          @dom_text_box ||= TextBoxElement.new browser.text_field(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]")
+          @int_drop_down ||= ElementWrapper.new browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div:nth-child(2)>div>div:nth-child(2)")
+          @int_text_box ||= TextBoxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div>div>div>input")
         end
 
-        def phone
+        def drop_down
           show_address_details
-          TextBoxElement.new browser.text_field name: "ShipPhone"
+          if dom_drop_down.present?
+            dom_drop_down
+          elsif int_drop_down.present?
+            int_drop_down
+          else
+            "Country drop-down (both domestic and international) is not present.".should eql ""
+          end
+        end
+
+        def text_box
+          show_address_details
+          if dom_text_box.present?
+            dom_text_box
+          elsif int_text_box.present?
+            int_text_box
+          else
+            "Country text box (both domestic and international) is not present.".should eql ""
+          end
+        end
+
+        def select country
+          logger.info "Select Country #{country}"
+          sleep 1
+          selection_1 = ElementWrapper.new browser.li(text: country)
+          selection_2 = ElementWrapper.new browser.li(text: "#{country} ")
+
+          10.times do
+            begin
+              break if text_box.text.include? country
+              drop_down.safe_click unless selection_1.present? || selection_2.present?
+              if selection_1.present?
+                selection_1.scroll_into_view
+                selection_1.safe_click
+              elsif selection_2.present?
+                selection_2.scroll_into_view
+                selection_2.safe_click
+              else
+                sleep 1
+                if browser.lis(text: country).size == 2
+                  element1 = browser.lis(text: country)[0]
+                  element2 = browser.lis(text: country)[1]
+                  if element1.present?
+                    element_helper.safe_click element1
+                  elsif element2.present?
+                    element_helper.safe_click element2
+                  end
+                end
+              end
+
+              logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
+            rescue Exception => e
+              logger.error e.backtrace.join("\n")
+            end
+          end
+          logger.info "#{country} selected."
+          #Assert textbox text includes country
+          text_box.text.should include country
         end
       end
 
-      class ShipToInternationalFields < DetailsForm
+      class IntShipToBase < ShipToBase
+        attr_reader :name_field, :company_field, :address_1_field, :address_2_field, :city_field, :phone_field, :province_field, :postal_code_field, :email_field
+
+            def initialize param
+          super param
+          @name_field ||= TextBoxElement.new browser.text_field(name: "ShipName"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(2)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
+          @company_field ||= TextBoxElement.new browser.text_field(name: "ShipCompany"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(3)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
+          @address_1_field ||= TextBoxElement.new browser.text_field(name: "ShipStreet1"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(4)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
+          @address_2_field ||= TextBoxElement.new browser.text_field(name: "ShipStreet2")
+          @city_field ||= TextBoxElement.new browser.text_field(name: "ShipCity"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(6)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
+          @phone_field = TextBoxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipPhone]"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(8)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
+          @province_field ||= TextBoxElement.new browser.text_field(name: "ShipState")
+          @postal_code_field ||= TextBoxElement.new browser.text_field(name: "ShipPostalCode")
+          @email_field ||= TextBoxElement.new browser.text_field(name: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]")
+
+        end
+
         def present?
-          TextBoxElement.new(browser.text_field name: "FullName").present?
+          show_address_details
+          name_field.present?
         end
 
         def name
-          field = browser.text_field name: "ShipName"
-          error_field = browser.div css: "div[data-anchortarget^=autosuggest][data-anchortarget$=inputEl]"
-          error_field_attribute = "data-errorqtip"
-          TextBoxElement.new field, error_field, error_field_attribute
+          show_address_details
+          name_field
         end
 
         def company
-          field = browser.text_field name: "ShipCompany"
-          error_field = browser.divs(css: "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[2]
-          error_field_attribute = "data-errorqtip"
-          TextBoxElement.new field, error_field, error_field_attribute
+          show_address_details
+          company_field
         end
 
         def address_1
-          field = browser.text_field name: "ShipStreet1"
-          error_field = browser.divs(css: "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[3]
-          error_field_attribute = "data-errorqtip"
-          TextBoxElement.new field, error_field, error_field_attribute
+          show_address_details
+          address_1_field
         end
 
         def address_2
-          TextBoxElement.new browser.text_field name: "ShipStreet2"
+          show_address_details
+          address_2_field
         end
 
         def city
-          field = browser.text_field name: "ShipCity"
-          error_field = browser.divs(css: "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[5]
-          error_field_attribute = "data-errorqtip"
-          TextBoxElement.new field, error_field, error_field_attribute
+          show_address_details
+          city_field
         end
 
         def phone
-          field = (browser.text_fields name: "ShipPhone").last
-          error_field = browser.divs(css: "div[data-anchortarget^=textfield][data-anchortarget$=inputEl]")[8]
-          error_field_attribute = "data-errorqtip"
-          TextBoxElement.new field, error_field, error_field_attribute
+          show_address_details
+          phone_field
         end
 
         def province
-          TextBoxElement.new browser.text_field name: "ShipState"
+          show_address_details
+          province_field
         end
 
         def postal_code
-          TextBoxElement.new browser.text_field name: "ShipPostalCode"
+          show_address_details
+          postal_code_field
         end
 
         def email
-          TextBoxElement.new (browser.text_fields name: "BuyerEmail").last
+          show_address_details
+          email_field
+        end
+      end
+
+      class IntShipTo < IntShipToBase
+        attr_reader :auto_suggest
+        def initialize param
+          super param
+          @auto_suggest ||= AutoSuggestInternational.new param
+        end
+      end
+
+      class DomShipToBase < ShipToBase
+        def text_area
+          show_address_details
+          if @text_area.nil?
+            field = browser.textarea(name: "freeFormAddress")
+            error_field = browser.a css: "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
+            error_field_attribute = "data-errorqtip"
+            @text_area ||= ShipToTextArea.new field, error_field, error_field_attribute
+          end
+          @text_area
+        end
+
+        def email
+          show_address_details
+          if @email.nil?
+            field = browser.text_field name: 'BuyerEmail'
+            error_field = (browser.divs css: "div[data-errorqtip*=email]")[0]
+            error_field_attribute = "data-errorqtip"
+            @email ||= TextBoxElement.new field, error_field, error_field_attribute
+          end
+          @email
+        end
+
+        def phone
+          show_address_details
+          if @phone.nil?
+            @phone ||= TextBoxElement.new browser.text_field name: "ShipPhone"
+          end
+          @phone
+        end
+      end
+
+      class DomShipTo < DomShipToBase
+        attr_reader :ambiguous, :auto_suggest
+
+        def initialize param
+          super param
+          @ambiguous ||= AmbiguousAddress.new param
+          @auto_suggest ||= AutoSuggestDomestic.new param
+        end
+
+        def set address
+          20.times do
+            begin
+              text_area.set address
+              blur_out
+              break if less.present?
+              blur_out
+              break if less.present?
+              blur_out
+              break if less.present?
+              blur_out
+              break if less.present?
+              blur_out
+              break if less.present?
+            rescue
+              "Unable to Ship-To address to #{address}".should eql "Set Ship-To Address Failed"
+            end
+          end
+          text_area.text.should include address.split(" ").last
+        end
+      end
+
+      class ShipTo < Browser::Modal
+        attr_reader :country, :international, :address
+        def initialize param
+          super param
+          @country ||= ShipToCountry.new param
+          @address ||= DomShipTo.new param
+          @international ||= Orders::Details::IntShipTo.new param
         end
       end
 
@@ -283,7 +382,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestInternational < ShipToInternationalFields
+      class AutoSuggestInternational < IntShipToBase
         attr_reader :auto_suggest_box
 
         def initialize param
@@ -307,14 +406,6 @@ module Stamps
               #ignore
             end
           }
-        end
-      end
-
-      class ShipToInternational < ShipToInternationalFields
-        attr_reader :auto_suggest
-        def initialize param
-          super param
-          @auto_suggest ||= AutoSuggestInternational.new param
         end
       end
 
@@ -368,7 +459,7 @@ module Stamps
         end
       end
 
-      class AmbiguousAddress < ShipToFields
+      class AmbiguousAddress < DomShipToBase
         attr_reader :address_not_found
 
         def initialize param
@@ -393,7 +484,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestDomestic < ShipToFields
+      class AutoSuggestDomestic < DomShipToBase
         attr_reader :auto_suggest_box
         def initialize param
           super param
@@ -416,46 +507,6 @@ module Stamps
               #ignore
             end
           }
-        end
-      end
-
-      class ShipToDomestic < ShipToFields
-        attr_reader :ambiguous, :auto_suggest
-
-        def initialize param
-          super param
-          @ambiguous ||= AmbiguousAddress.new param
-          @auto_suggest ||= AutoSuggestDomestic.new param
-        end
-
-        def set address
-          20.times do
-            begin
-              text_area.set address
-              blur_out
-              break if less.present?
-              blur_out
-              break if less.present?
-              blur_out
-              break if less.present?
-              blur_out
-              break if less.present?
-              blur_out
-              break if less.present?
-            rescue
-              "Unable to Ship-To address to #{address}".should eql "Set Ship-To Address Failed"
-            end
-          end
-          text_area.text.should include address.split(" ").last
-        end
-      end
-
-      class ShipTo < ShipToFields
-        attr_reader :international, :address
-        def initialize param
-          super param
-          @international ||= Orders::Details::ShipToInternational.new param
-          @address ||= ShipToDomestic.new param
         end
       end
 
@@ -879,7 +930,7 @@ module Stamps
         end
       end
 
-      class ShipFromAddress < DetailsForm
+      class ShipFromAddress < DetailsElement
         attr_reader :text_box, :drop_down, :manage_shipping_adddress
         def initialize param
           super param
@@ -937,19 +988,13 @@ module Stamps
         end
       end
 
-      class DetailsTracking < DetailsForm
-        attr_reader :text_box, :cost_label
+      class DetailsTracking < DetailsElement
+        attr_reader :text_box, :cost_label, :drop_down
         def initialize param
           super param
-          @selection_id_hash ||= Hash.new
-          @selection_id_hash[:usps_tracking] = "sdc-trackingdroplist-dc"
-          @selection_id_hash[:signature_required] = "sdc-trackingdroplist-sc"
           @text_box ||= TextBoxElement.new browser.text_field(name: 'Tracking')
           @cost_label ||= ElementWrapper.new browser.label(css: "label[class*=selected_tracking_cost]")
-        end
-
-        def drop_down
-          @drop_down ||= ElementWrapper.new browser.divs(css: "div[id^=trackingdroplist-][id$=-trigger-picker]").first
+          @drop_down ||= ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
         end
 
         def tracking_selection selection
@@ -1030,12 +1075,12 @@ module Stamps
         end
       end
 
-      class Service < DetailsForm
+      class DetailsService < DetailsElement
         attr_reader :text_box, :drop_down, :cost_label
         def initialize param
           super param
           @text_box ||= TextBoxElement.new (browser.text_field name: "Service"), (browser.div css: "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
-          @drop_down ||= ElementWrapper.new browser.div css: "div[id^=servicedroplist][id$=trigger-picker][class*=arrow-trigger-default]"
+          @drop_down ||= ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]")
           @cost_label ||= ElementWrapper.new browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label:nth-child(3)')
         end
 
@@ -1098,15 +1143,14 @@ module Stamps
         end
 
         def inline_cost service_name
-          button = drop_down
           cost_label = ElementWrapper.new browser.td css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"
           10.times do
             begin
-              button.safe_click unless cost_label.present?
+              drop_down.safe_click unless cost_label.present?
               if cost_label.present?
                 service_cost = ParameterHelper.remove_dollar_sign cost_label.text
                 logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
-                button.safe_click if cost_label.present?
+                drop_down.safe_click if cost_label.present?
                 return service_cost
               end
             rescue
@@ -1116,14 +1160,6 @@ module Stamps
         end
 
         def cost
-          10.times do
-            begin
-              break if cost_label.text.include? "$"
-            rescue
-              #ignore
-            end
-          end
-          cost_label.text.should include "$"
           ParameterHelper.remove_dollar_sign(cost_label.text)
         end
 
@@ -1409,33 +1445,19 @@ module Stamps
         end
       end
 
-      class InsureFor < Browser::Modal
-        def cost_label
-          div = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=insurancefield]").parent
-          labels = div.labels
-          labels.each_with_index do |label|
-            return ElementWrapper.new(label) if label.text.include?(".") && label.text.include?("$")
-          end
-          "".should eql "Unable to create ElementWrapper for cost_label"
-        end
+      class DetailsInsureFor < Browser::Modal
+        attr_reader :checkbox, :text_box, :cost_label, :increment_trigger, :decrement_trigger
 
-        def decrement_trigger
-          @decrement_trigger ||= ElementWrapper.new browser.divs(css: "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]").first
-        end
+        def initialize param
+          super param
+          @text_box ||= TextBoxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
+          @cost_label ||= ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>label")
+          @decrement_trigger ||= ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
+          @increment_trigger ||= ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
 
-        def increment_trigger
-          @increment_trigger ||= ElementWrapper.new browser.divs(css: "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]").first
-        end
-
-        def text_box
-          @text_box ||= TextBoxElement.new browser.text_fields(name: "InsuredValue").first
-        end
-
-        def checkbox
-          div = browser.label(text: "Insure For $:").parent
-          field = div.input
-          verify = field.parent.parent.parent
-          CheckboxElement.new field, verify, "class", "checked"
+          field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
+          verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
+          @checkbox ||= CheckboxElement.new field, verify, "class", "checked"
         end
 
         def set value
@@ -1456,14 +1478,6 @@ module Stamps
         end
 
         def cost
-          10.times do
-            begin
-              break if cost_label.text.include? "$"
-            rescue
-              #ignore
-            end
-          end
-          cost_label.text.should include "$"
           ParameterHelper.remove_dollar_sign(cost_label.text)
         end
       end
@@ -1691,19 +1705,19 @@ module Stamps
         end
       end
 
-      class SingleOrderDetails < DetailsForm
+      class SingleOrderDetails < DetailsElement
         attr_reader :body, :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions,
                     :footer, :customs, :item_grid, :reference_no, :collapsed_details
 
         def initialize param
           super param
           @body = ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]")
-          @insure_for ||= InsureFor.new param
+          @insure_for ||= DetailsInsureFor.new param
           @ship_from ||= ShipFromAddress.new param
           @toolbar ||= DetailsToolbar.new param
           @ship_to ||= ShipTo.new param
           @weight ||= Weight.new param
-          @service ||= Service.new param
+          @service ||= DetailsService.new param
           @tracking ||= DetailsTracking.new param
           @dimensions ||= Dimensions.new param
           @footer ||= DetailsFooter.new param

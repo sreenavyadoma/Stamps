@@ -265,7 +265,7 @@ Then /^Grid: Expect City is (.+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect State is ([a-zA-Z]+)$/ do |expectation|
+Then /^Grid: Expect State is (.+)$/ do |expectation|
   logger.step "Grid: Expect State is #{expectation}"
   10.times do
     break if web_apps.orders.grid.state.data(@details_form_data[:order_id]).eql? expectation
@@ -275,7 +275,7 @@ Then /^Grid: Expect State is ([a-zA-Z]+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Zip is ([\d -]+)$/ do |expectation|
+Then /^Grid: Expect Zip is (.+)$/ do |expectation|
   logger.step "Grid: Expect Zip is #{expectation}"
   10.times do
     break if web_apps.orders.grid.zip.data(@details_form_data[:order_id]).eql? expectation
@@ -285,7 +285,7 @@ Then /^Grid: Expect Zip is ([\d -]+)$/ do |expectation|
   actual.should include expectation
 end
 
-Then /^Grid: Expect Country is ([a-zA-Z]+)$/ do |expectation|
+Then /^Grid: Expect Country is (.+)$/ do |expectation|
   logger.step "Grid: Expect Country is #{expectation}"
   10.times do
     break if web_apps.orders.grid.country.data(@details_form_data[:order_id]).eql? expectation
@@ -295,7 +295,7 @@ Then /^Grid: Expect Country is ([a-zA-Z]+)$/ do |expectation|
   actual.should eql expectation
 end
 
-Then /^Grid: Expect Column (\w+) appears to left of (\w+)$/ do |left_column, right_column|
+Then /^Grid: Expect Column (\w+) appears to left of (.+)$/ do |left_column, right_column|
   logger.step "Grid: Expect Column #{left_column} appears to left of #{right_column}"
   is_next_to = web_apps.orders.grid.column.is_next_to? left_column, right_column
   expectation = "true"

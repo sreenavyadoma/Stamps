@@ -118,7 +118,7 @@ module Stamps
     class ShippingLabel < MailForm
 
       def insure_for
-        InsureFor.new param
+        DetailsInsureFor.new param
       end
 
       def ship_date

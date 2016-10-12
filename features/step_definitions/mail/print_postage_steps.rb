@@ -315,7 +315,7 @@ end
 
 Then /^Mail: Expect Email Check Box is present$/ do
   logger.step "Mail: Expect Email Check Box is present"
-  web_apps.mail.ship_to.email.checkbox_element.present?.should be true
+  web_apps.mail.ship_to.email.checkbox.present?.should be true
 end
 
 Then /^Mail: Expect Email Field is present$/ do
