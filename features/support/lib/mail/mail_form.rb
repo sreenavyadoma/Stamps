@@ -31,7 +31,7 @@ module Stamps
         @email_tracking ||= Email.new param
         @tracking ||= Tracking.new param
         @weight ||= Weight.new param
-        @ship_from ||= ShipFrom.new param
+        @ship_from ||= MailShipFrom.new param
         @ship_to ||= Stamps::Mail::ShipTo.new param
         @customs ||= PrintPostageCustoms.new param
         @extra_services ||= ElementWrapper.new browser.span id: "sdc-mainpanel-extraservicesbtn-btnIconEl"

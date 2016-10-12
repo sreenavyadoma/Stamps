@@ -286,7 +286,7 @@ module Stamps
 
     end
 
-    class ShipFrom < Browser::Modal
+    class MailShipFrom < Browser::Modal
 
       def drop_down
         ElementWrapper.new (browser.div css: "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
@@ -390,8 +390,9 @@ module Stamps
     class Email < Browser::Modal
       attr_reader :checkbox, :text_box
       def initialize param
-        @checkbox ||= Stamps::Browser::CheckboxElement.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
-        @text_box ||= TextBoxElement.new (browser.text_field id: "sdc-mainpanel-emailtextfield-inputEl")
+        super param
+        @checkbox ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
+        @text_box ||= TextBoxElement.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
       end
 
       def set value
