@@ -36,10 +36,8 @@ module Stamps
       end
 
       def print_reference_number
-        checkbox_field = browser.text_field css: print_reference_number_checkbox
-        verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
-        verify_field = verify_fields[7]
-
+        checkbox_field = browser.input(id: "printreferencecheckbox")
+        verify_field = checkbox_field.parent.parent.parent.parent
         Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
       end
 
