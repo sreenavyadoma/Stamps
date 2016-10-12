@@ -301,7 +301,7 @@ module Stamps
       end
 
       def manage_shipping_address
-        ManageShippingAddresses.new param
+        MailManageShippingAddresses.new param
       end
 
       def manage_shipping_addresses
@@ -313,7 +313,7 @@ module Stamps
       end
 
       def select selection
-        @manage_shipping_address = ManageShippingAddresses.new param
+        @manage_shipping_address = MailManageShippingAddresses.new param
 
         #return @manage_shipping_address if @manage_shipping_address.present?
 
@@ -325,13 +325,13 @@ module Stamps
         if selection.downcase == "default"
           ship_from_selection_field = ship_from_default_selection_field
         elsif selection.downcase.include? "manage shipping"
-          ship_from_selection_field = browser.div text: "Manage Shipping Addresses..."
+          ship_from_selection_field = browser.div(text: "Manage Mailing Addresses...")
         else
           ship_from_selection_field = browser.div text: "#{selection}"
         end
 
         selection_label = ElementWrapper.new ship_from_selection_field
-        logger.info "Selection Text: #{selection_label.text}"
+        #logger.info "Selection Text: #{selection_label.text}"
 
         if selection.downcase.include? "manage shipping"
           10.times{
