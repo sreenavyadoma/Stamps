@@ -397,7 +397,7 @@ end
 
 Then /^Mail: Expect Print Reference Number check box is present$/ do
   logger.step "Mail: Expect Print Reference Number check box is present"
-  web_apps.mail.form_view.print_reference_number_checkbox.present?.should be true
+  web_apps.mail.form_view.print_reference_number.present?.should be true
 end
 
 Then /^Mail: Expect Reference Number field is present$/ do
