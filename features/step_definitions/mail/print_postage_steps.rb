@@ -387,12 +387,12 @@ end
 
 Then /^Mail: Expect Hide Mail Value check box is present$/ do
   logger.step "Mail: Expect Hide Mail Value check box is present"
-  web_apps.mail.form_view.hide_postage_value_checkbox.present?.should be true
+  web_apps.mail.form_view.hide_postage_value.present?.should be true
 end
 
 Then /^Mail: Expect Print Receipt check box is present$/ do
   logger.step "Mail: Expect Print Receipt check box is present"
-  web_apps.mail.form_view.print_receipt_checkbox.present?.should be true
+  web_apps.mail.form_view.print_receipt.present?.should be true
 end
 
 Then /^Mail: Expect Print Reference Number check box is present$/ do

@@ -2,14 +2,13 @@
 
 Then /^Mail Stamps: Set Serial Number to (.*)/ do |serial|
   logger.step "Set Stamps Serial Number to #{serial}"
-  
+
   if serial == 'random'
     serial = "B#{Random.rand(10000..99999)}"
   end
   serial_prefix = serial.split('')[0]
   web_apps.mail.netstamps.serial.set serial
   logger.step "Serial prefix: #{serial_prefix}"
-  logger.step "Preview image: #{(web_apps.mail.netstamps.form_view.preview_image(serial_prefix).present?)?"YES": "NO"}"
 end
 
 Then /^Mail Stamps: Set Ship-From to (.*)/ do |value|
