@@ -1429,7 +1429,7 @@ Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_fr_envelope) do |t|
 end
 
 Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_large_box) do |t|
-  t.profile = 'wp_forgot_username'
+  t.profile = 'wp_sample_shipping_label_5x8_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
