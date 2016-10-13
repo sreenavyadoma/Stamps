@@ -211,7 +211,7 @@ module Stamps
       class IntShipToBase < ShipToBase
         attr_reader :name_field, :company_field, :address_1_field, :address_2_field, :city_field, :phone_field, :province_field, :postal_code_field, :email_field
 
-            def initialize param
+        def initialize param
           super param
           @name_field ||= TextBoxElement.new browser.text_field(name: "ShipName"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(2)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
           @company_field ||= TextBoxElement.new browser.text_field(name: "ShipCompany"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(3)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
@@ -221,8 +221,7 @@ module Stamps
           @phone_field = TextBoxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipPhone]"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(8)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
           @province_field ||= TextBoxElement.new browser.text_field(name: "ShipState")
           @postal_code_field ||= TextBoxElement.new browser.text_field(name: "ShipPostalCode")
-          @email_field ||= TextBoxElement.new browser.text_field(name: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]")
-
+          @email_field ||= TextBoxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]")
         end
 
         def present?
@@ -353,7 +352,7 @@ module Stamps
           super param
           @country ||= ShipToCountry.new param
           @address ||= DomShipTo.new param
-          @international ||= Orders::Details::IntShipTo.new param
+          @international ||= IntShipTo.new param
         end
       end
 

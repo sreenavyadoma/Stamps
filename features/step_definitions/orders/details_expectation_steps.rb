@@ -240,27 +240,22 @@ Then /^Details: Expect Insure-For is \$(.*)$/ do |expectation|
   logger.step "Details: Set Insure-For to #{expectation}"
   web_apps.orders.details.insure_for.checkbox.check
   5.times do
-    actual_value = web_apps.orders.details.insure_for.text_box.text
-    if actual_value==expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.insure_for.text_box.text == expectation
   end
   actual_value = web_apps.orders.details.insure_for.text_box.text
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
+Then /^Details: Expect Insure-For Cost saved value is correct$/ do
+  logger.step "Details: Expect Insure-For Cost saved value is correct"
+  step "Details: Expect Insure-For Cost is #{@details_form_data[:insure_for_cost]}"
+end
+
 Then /^Details: Expect Insure-For Cost is \$(.*)$/ do |expectation|
   logger.step "Details: Expect Insure-For Cost is #{expectation}"
   5.times do
-    actual_value = web_apps.orders.details.insure_for.cost
-    if actual_value==expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.insure_for.cost == expectation
   end
   actual_value = web_apps.orders.details.insure_for.cost
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
@@ -269,18 +264,12 @@ end
 
 Then /^Details: Expect Insure-For Cost is greater than \$(.*)$/ do |expectation|
   logger.step "Details: Expect Insure-For Cost is greater than #{expectation}"
-  expectation = expectation.to_f
   15.times do
-    actual_value = web_apps.orders.details.insure_for.cost.to_f
-    if actual_value>expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.insure_for.cost.to_f > expectation.to_f
   end
   actual_value = web_apps.orders.details.insure_for.cost.to_f
-  logger.step "Test #{(actual_value>expectation)?"Passed":"Failed"}"
-  actual_value.should be > expectation
+  logger.step "Test #{(actual_value>expectation.to_f)?"Passed":"Failed"}"
+  actual_value.should be > expectation.to_f
 end
 
 Then /^Details: Expect Service \"(.*)\" is disabled/ do |service|
@@ -321,13 +310,12 @@ end
 
 Then /^Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" is greater than \$([0-9.]*)$/ do |service, expectation|
   logger.step "Details: Expect Service Cost inline price for #{service} is greater than #{expectation}"
-  actual_value = web_apps.orders.details.service.inline_cost service
   10.times do
-    break if actual_value.to_f >= expectation.to_f
-    actual_value = web_apps.orders.details.service.inline_cost service
+    break if web_apps.orders.details.service.inline_cost(service).to_f >= expectation.to_f
   end
-  logger.step "Test #{(actual_value.to_f > expectation.to_f)?"Passed":"Failed"}"
-  actual_value.to_f.should be >= expectation.to_f
+  actual_value = web_apps.orders.details.service.inline_cost(service).to_f
+  logger.step "Test #{(actual_value > expectation.to_f)?"Passed":"Failed"}"
+  actual_value.should be >= expectation.to_f
 end
 
 Then /^Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
@@ -340,8 +328,8 @@ Then /^Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |servic
   end
 end
 
-Then /^Details: Expect Service Cost is the same as saved value$/ do
-  logger.step "Details: Expect Service Cost is the same as saved value"
+Then /^Details: Expect Service Cost saved value is the same$/ do
+  logger.step "Details: Expect Service Cost saved value is the same"
   step "Details: Expect Service Cost is $#{@details_form_data[:service_cost]}"
 end
 
@@ -356,27 +344,22 @@ Then /^Details: Expect Service Cost is greater than \$([0-9.]*)$/ do |expectatio
   logger.step "Details: Expect Service Cost is greater than $#{expectation}"
   expectation = expectation.to_f
   10.times do
-    actual_value = web_apps.orders.details.service.cost.to_f
-    if actual_value>expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.service.cost.to_f > expectation
   end
   actual_value = web_apps.orders.details.service.cost.to_f
   logger.step "Test #{(actual_value>expectation)?"Passed":"Failed"}"
   actual_value.should be > expectation
 end
 
+Then /^Details: Expect Tracking Cost saved value is correct$/ do
+  logger.step "Details: Expect Tracking Cost saved value is correct"
+  step "Details: Expect Tracking Cost is #{@details_form_data[:tracking_cost]}"
+end
+
 Then /^Details: Expect Tracking Cost is \$([0-9.]*)$/ do |expectation|
   logger.step "Details: Expect Tracking Cost is #{expectation}"
   10.times do
-    actual_value = web_apps.orders.details.tracking.cost
-    if actual_value == expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.tracking.cost == expectation
   end
   actual_value = web_apps.orders.details.tracking.cost
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
@@ -387,12 +370,7 @@ Then /^Details: Expect Tracking Cost is greater than \$([0-9.]*)$/ do |expectati
   logger.step "Details: Expect Tracking Cost is #{expectation}"
   expectation = expectation.to_f
   10.times do
-    actual_value = web_apps.orders.details.tracking.cost.to_f
-    if actual_value>expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.tracking.cost.to_f > expectation
   end
   actual_value = web_apps.orders.details.tracking.cost.to_f
   logger.step "Test #{(actual_value>expectation)?"Passed":"Failed"}"
@@ -401,85 +379,50 @@ end
 
 Then /^Details: Expect Pounds is (.*)$/ do |expectation|
   logger.step "Details: Expect Pounds is #{expectation}"
-  text_box = web_apps.orders.details.weight.lbs.text_box
-  text_box.present?.should be true
   10.times do
-    actual_value = text_box.text
-    if actual_value == expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.weight.lbs.text_box.text == expectation
   end
-  actual_value = text_box.text
+  actual_value = web_apps.orders.details.weight.lbs.text_box.text
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
 Then /^Details: Expect Ounces is (.*)$/ do |expectation|
   logger.step "Details: Expect Ounces is  #{expectation}"
-  text_box = web_apps.orders.details.weight.oz.text_box
-  text_box.present?.should be true
   10.times do
-    actual_value = text_box.text
-    if actual_value == expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.weight.oz.text_box.text == expectation
   end
-  actual_value = text_box.text
+  actual_value = web_apps.orders.details.weight.oz.text_box.text
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
 Then /^Details: Expect Length is (\d+)$/ do |expectation|
   logger.step "Details: Expect Length is #{expectation}"
-  text_box = web_apps.orders.details.dimensions.length.text_box
-  text_box.present?.should be true
   10.times do
-    actual_value = text_box.text
-    if actual_value == expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.dimensions.length.text_box.text == expectation
   end
-  actual_value = text_box.text
+  actual_value = web_apps.orders.details.dimensions.length.text_box.text
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
 Then /^Details: Expect Width is (\d+)$/ do |expectation|
   logger.step "Details: Expect Width is #{expectation}"
-  text_box = web_apps.orders.details.dimensions.width.text_box
-  text_box.present?.should be true
   10.times do
-    actual_value = text_box.text
-    if actual_value == expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.dimensions.width.text_box.text == expectation
   end
-  actual_value = text_box.text
+  actual_value = web_apps.orders.details.dimensions.width.text_box.text
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
 Then /^Details: Expect Height is (\d+)$/ do |expectation|
   logger.step "Details: Expect Height is #{expectation}"
-  text_box = web_apps.orders.details.dimensions.height.text_box
-  text_box.present?.should be true
   10.times do
-    actual_value = text_box.text
-    if actual_value == expectation
-      break
-    else
-      sleep 1
-    end
+    break if web_apps.orders.details.dimensions.height.text_box.text == expectation
   end
-  actual_value = text_box.text
+  actual_value = web_apps.orders.details.dimensions.height.text_box.text
   logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
@@ -494,176 +437,107 @@ end
 
 Then /^Details: Expect Tracking is \"([\w\s]*)\"$/ do |expectation|
   logger.step "Details: Expect Tracking is #{expectation}"
-  begin
-    text_box = web_apps.orders.details.tracking.text_box
-    10.times do
-      sleep 2
-      actual_value = text_box.text
-      break if actual_value.include? expectation
-    end
-    sleep 2
-    actual_value = text_box.text
-    logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-    actual_value.should eql expectation
-  end unless expectation.length == 0
+  10.times do
+    break if web_apps.orders.details.tracking.text_box.text.include? expectation
+  end
+  actual_value = web_apps.orders.details.tracking.text_box.text
+  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
+  actual_value.should eql expectation
 end
 
-Then /^Details: Expect Total is \$(.*)$/ do |expectation|
-  logger.step "Details: Expect Total is $#{expectation}"
-  begin
-    10.times do
-      web_apps.orders.details.blur_out
-      sleep 1
-      actual_value = web_apps.orders.details.footer.total_ship_cost
-      web_apps.orders.details.blur_out
-      sleep 1
-      break if actual_value.eql? expectation
-    end
-    actual_value = web_apps.orders.details.footer.total_ship_cost
-    actual_value.should eql expectation
-  end unless expectation.length == 0
+Then /^Details: Expect Total Ship Cost saved value is correct$/ do
+  logger.step "Details: Expect Tracking Cost saved value is correct"
+  step "Details: Expect Tracking Cost is #{@details_form_data[:tracking_cost]}"
 end
+
+Then /^Details: Expect Total Ship Cost is \$(.*)$/ do |expectation|
+  logger.step "Details: Expect Total Ship Cost is $#{expectation}"
+  web_apps.orders.details.blur_out
+  10.times do
+    break if web_apps.orders.details.footer.total_ship_cost.eql? expectation
+  end
+  web_apps.orders.details.footer.total_ship_cost.should eql expectation
+end
+
+And /^Details: Expect Ship-From Textbox is enabled$/ do
+  logger.step "Details: Expect Ship-From Textbox is enabled"
+  web_apps.orders.details.ship_from.text_box.element.visible?.should be true
+end
+
+And /^Details: Expect Ship-From drop-down be enabled$/ do
+  logger.step "Details: Expect Ship-From drop-down be enabled"
+  web_apps.orders.details.ship_from.drop_down.element.visible?.should be true
+end
+
+And /^Details: Expect Ship-To Textbox is enabled$/ do
+  logger.step "Details: Expect Ship-To Textbox is enabled"
+  web_apps.orders.details.ship_to.address.text_area.element.visible?.should be true
+end
+
+And /^Details: Expect Ship-To drop-down is enabled$/ do
+  logger.step "Details: Expect Ship-To drop-down is enabled"
+  web_apps.orders.details.ship_to.country.drop_down.element.visible?.should be true
+end
+
+And /^Details: Expect Ship-To text area is enabled$/ do
+  logger.step "Details: Expect Ship-To text area is enabled"
+  web_apps.orders.details.ship_to.address.text_area.element.visible?.should be true
+end
+
+And /^Details: Expect Phone Textbox is enabled$/ do
+  logger.step "Details: Expect Phone Textbox is enabled"
+  web_apps.orders.details.ship_to.address.phone.element.visible?.should be true
+end
+
+And /^Details: Expect Email Textbox is enabled$/ do
+  logger.step "Details: Expect Email Textbox is enabled"
+  web_apps.orders.details.ship_to.address.email.element.visible?.should be true
+end
+
+And /^Details: Expect Pounds Textbox is enabled$/ do
+  logger.step "Details: Expect Pounds Textbox is enabled"
+  web_apps.orders.details.weight.lbs.element.visible?.should be true
+end
+
+And /^Details: Expect Ounces Textbox is enabled$/ do
+  logger.step "Details: Expect Ounces Textbox is enabled"
+  web_apps.orders.details.weight.oz.element.visible?.should be true
+end
+
+And /^Details: Expect Service Textbox is enabled$/ do
+  logger.step "Details: Expect Service Textbox is enabled"
+  web_apps.orders.details.service.text_box.element.visible?.should be true
+end
+
+And /^Details: Expect Service drop-down is enabled$/ do
+  logger.step "Details: Expect Service drop-down is enabled"
+  web_apps.orders.details.service.drop_down.element.visible?.should be true
+end
+
+And /^Details: Expect Insure-For Textbox is enabled$/ do
+  logger.step "Details: Expect Insure-For Textbox is enabled"
+  web_apps.orders.details.insure_for.text_box.element.visible?.should be true
+end
+
+And /^Details: Expect Insure-For Textbox is disabled$/ do
+  logger.step "Details: Expect Insure-For Textbox is enabled"
+  web_apps.orders.details.insure_for.text_box.element.visible?.should be true
+end
+
+And /^Expect Order Detials Form Tracking Textbox is enabled$/ do
+  logger.step "Expect Order Detials Form Tracking Textbox is enabled"
+  web_apps.orders.details.tracking.text_box.element.visible?.should be true
+end
+
+And /^Details: Expect Tracking drop-down is enabled$/ do
+  logger.step "Details: Expect Tracking drop-down is enabled"
+  web_apps.orders.details.tracking.drop_down.element.visible?.should be true
+end
+
 
 Then /^Expect (\d+) orders selected$/ do |expectation|
   logger.step "Expect #{expectation} orders selected"
   web_apps.orders.multi_web_apps.orders.order_count.should eql expectation
 end
-
-And /^Details: Expect Ship-From Textbox is enabled$/ do
-  logger.step "Details: Expect Ship-From Textbox is enabled"
-  enabled = web_apps.orders.details.ship_from.text_box.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Ship-From drop-down be enabled$/ do
-  logger.step "Details: Expect Ship-From drop-down be enabled"
-  enabled = web_apps.orders.details.ship_from.drop_down.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Ship-To Textbox is enabled$/ do
-  logger.step "Details: Expect Ship-To Textbox is enabled"
-  enabled = web_apps.orders.details.ship_to.address.text_area.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Ship-To drop-down is enabled$/ do
-  logger.step "Details: Expect Ship-To drop-down is enabled"
-  enabled = web_apps.orders.details.ship_to.country.drop_down.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Ship-To text area is enabled$/ do
-  logger.step "Details: Expect Ship-To text area is enabled"
-  enabled = web_apps.orders.details.ship_to.address.text_area.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Phone Textbox is enabled$/ do
-  logger.step "Details: Expect Phone Textbox is enabled"
-  enabled = web_apps.orders.details.ship_to.address.phone.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Email Textbox is enabled$/ do
-  logger.step "Details: Expect Email Textbox is enabled"
-  enabled = web_apps.orders.details.ship_to.address.email.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Pounds Textbox is enabled$/ do
-  logger.step "Details: Expect Pounds Textbox is enabled"
-  enabled = web_apps.orders.details.weight.lbs.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Ounces Textbox is enabled$/ do
-  logger.step "Details: Expect Ounces Textbox is enabled"
-  enabled = web_apps.orders.details.weight.oz.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Service Textbox is enabled$/ do
-  logger.step "Details: Expect Service Textbox is enabled"
-  enabled = web_apps.orders.details.service.text_box.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Service drop-down is enabled$/ do
-  logger.step "Details: Expect Service drop-down is enabled"
-  enabled = web_apps.orders.details.service.drop_down.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Insure-For Textbox is enabled$/ do
-  logger.step "Details: Expect Insure-For Textbox is enabled"
-  enabled = web_apps.orders.details.insure_for.text_box.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Insure-For Textbox is disabled$/ do
-  logger.step "Details: Expect Insure-For Textbox is enabled"
-  enabled = web_apps.orders.details.insure_for.text_box.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="disabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Expect Order Detials Form Tracking Textbox is enabled$/ do
-  logger.step "Expect Order Detials Form Tracking Textbox is enabled"
-  enabled = web_apps.orders.details.tracking.text_box.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-And /^Details: Expect Tracking drop-down is enabled$/ do
-  logger.step "Details: Expect Tracking drop-down is enabled"
-  enabled = web_apps.orders.details.tracking.drop_down.element.visible?
-  expectation = "enabled"
-  expectation = "disabled" unless enabled
-  logger.step "Test #{(expectation=="enabled")?"Passed":"Failed"}"
-  expectation.should eql "enabled"
-end
-
-
 
 

@@ -14,7 +14,7 @@ Feature: Details Ship Cost Total
     Then Details: Expect Service Cost is $0.00
     Then Details: Expect Insure-For Cost is $0.00
     Then Details: Expect Tracking Cost is $0.00
-    Then Details: Expect Total is $0.00
+    Then Details: Expect Total Ship Cost is $0.00
 
     Then Details: Set Ship-To to address in Zone 8
     Then Details: Select Service Priority Mail Package

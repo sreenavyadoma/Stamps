@@ -246,7 +246,7 @@ end
 Then /^Mail: Expect Ship-To address is (.*)/ do |address|
 
 end
-
+#todo major rework here
 Then /^Mail: Expect Print On Field is present$/ do
   logger.step "Mail: Expect Print On Field is present"
   print_on = PrintOn.new param
@@ -355,49 +355,49 @@ end
 
 Then /^Mail: Expect Insure For Field is present$/ do
   logger.step "Mail: Expect Insure For Field is present"
-  web_apps.mail.insure_for.text_box.present?.should be true
+  web_apps.mail.shipping_label.insure_for.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Insure For Price is present$/ do
   logger.step "Mail: Expect Insure For Price is present"
-  web_apps.mail.insure_for.price.present?.should be true
+  web_apps.mail.shipping_label.insure_for.price.present?.should be true
 end
 
 Then /^Mail: Expect Tracking Field is present$/ do
   logger.step "Mail: Expect Tracking Field is present"
-  web_apps.mail.tracking.text_box.present?.should be true
+  web_apps.mail.shipping_label.tracking.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Tracking Price is present$/ do
   logger.step "Mail: Expect Tracking Price is present"
-  web_apps.mail.tracking.price.present?.should be true
+  web_apps.mail.shipping_label.tracking.price.present?.should be true
 end
 
 Then /^Mail: Expect Extra Services Button is present$/ do
   logger.step "Mail: Expect Extra Services Button is present"
-  web_apps.mail.extra_services.present?.should be true
+  web_apps.mail.shipping_label.extra_services.present?.should be true
 end
 
 Then /^Mail: Expect Label Image Preview is present$/ do
   logger.step "Mail: Expect Label Image Preview is present"
   sleep 2
-  web_apps.mail.form_view.starting_label.left_label.present?.should be true
-  web_apps.mail.form_view.starting_label.right_label.present?.should be true
+  web_apps.mail.shipping_label.form_view.starting_label.left_label.present?.should be true
+  web_apps.mail.shipping_label.form_view.starting_label.right_label.present?.should be true
 end
 
 Then /^Mail: Expect Hide Mail Value check box is present$/ do
   logger.step "Mail: Expect Hide Mail Value check box is present"
-  web_apps.mail.form_view.hide_postage_value.present?.should be true
+  web_apps.mail.shipping_label.form_view.hide_postage_value.present?.should be true
 end
 
 Then /^Mail: Expect Print Receipt check box is present$/ do
   logger.step "Mail: Expect Print Receipt check box is present"
-  web_apps.mail.form_view.print_receipt.present?.should be true
+  web_apps.mail.shipping_label.form_view.print_receipt.present?.should be true
 end
 
 Then /^Mail: Expect Print Reference Number check box is present$/ do
   logger.step "Mail: Expect Print Reference Number check box is present"
-  web_apps.mail.form_view.print_reference_number.present?.should be true
+  web_apps.mail.shipping_label.form_view.print_reference_number.present?.should be true
 end
 
 Then /^Mail: Expect Reference Number field is present$/ do
