@@ -45,6 +45,8 @@ Feature:  Update Order to ShipStation
     Then Pause for 2 seconds
 
     #Verify Single Order Details form was saved in ShipStation
+    Then Details: Expect Ship-From saved value is the same
+
     Then Details: Expect Ship-To Name is First Last
     Then Details: Expect Ship-To Company Name is Company Name
     Then Details: Expect Ship-To Cleansed Street Address is 777 N Orange Ave Apt 100

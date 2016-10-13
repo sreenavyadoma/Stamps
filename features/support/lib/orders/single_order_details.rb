@@ -159,6 +159,7 @@ module Stamps
 
         def text_box
           show_address_details
+          sleep 1
           if dom_text_box.present?
             dom_text_box
           elsif int_text_box.present?
@@ -1718,7 +1719,7 @@ module Stamps
           @tracking ||= DetailsTracking.new param
           @dimensions ||= Dimensions.new param
           @footer ||= DetailsFooter.new param
-          @customs ||= CustomsFields.new param
+          @customs ||= OrdersCustomsFields.new param
           @item_grid ||= DetailsItemGrid.new param
           @reference_no ||= TextBoxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input")
           @collapsed_details = DetailsCollapsible.new param

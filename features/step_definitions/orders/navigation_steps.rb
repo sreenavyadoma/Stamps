@@ -1,30 +1,30 @@
 Then /^Buy Mail: Purchase 10$/ do
   logger.step "Buy Mail: Purchase 10"
-  @details_form_data[:old_balance] = web_apps.navigation_bar.balance.amount
+  @orders_test_data[:old_balance] = web_apps.navigation_bar.balance.amount
   web_apps.navigation_bar.balance.buy_more.buy_10.select
 end
 
 Then /^Buy Mail: Purchase 25$/ do
   logger.step "Buy Mail: Purchase 25"
-  @details_form_data[:old_balance] = web_apps.navigation_bar.balance.amount
+  @orders_test_data[:old_balance] = web_apps.navigation_bar.balance.amount
   web_apps.navigation_bar.balance.buy_more.buy_25.select
 end
 
 Then /^Buy Mail: Purchase 50$/ do
   logger.step "Buy Mail: Purchase 50"
-  @details_form_data[:old_balance] = web_apps.navigation_bar.balance.amount
+  @orders_test_data[:old_balance] = web_apps.navigation_bar.balance.amount
   web_apps.navigation_bar.balance.buy_more.buy_50.select
 end
 
 Then /^Buy Mail: Purchase 100$/ do
   logger.step "Buy Mail: Purchase 10"
-  @details_form_data[:old_balance] = web_apps.navigation_bar.balance.amount
+  @orders_test_data[:old_balance] = web_apps.navigation_bar.balance.amount
   web_apps.navigation_bar.balance.buy_more.buy_100.select
 end
 
 Then /^Buy Mail: Purchase Other Amount (\d+)$/ do |amount|
   logger.step "Buy Mail: Purchase Other Amount #{amount}"
-  @details_form_data[:old_balance] = web_apps.navigation_bar.balance.amount
+  @orders_test_data[:old_balance] = web_apps.navigation_bar.balance.amount
   web_apps.navigation_bar.balance.buy_more.buy_other amount
 end
 
@@ -66,11 +66,11 @@ Then /^Buy Mail: Expect customer balance increased by \$(\d+)$/ do |purchase_amo
   10.times do
     sleep 1
     new_balance = web_apps.navigation_bar.balance.amount
-    actual_purchased_amount = new_balance.to_f - @details_form_data[:old_balance].to_f
+    actual_purchased_amount = new_balance.to_f - @orders_test_data[:old_balance].to_f
     break if actual_purchased_amount ==  purchase_amount.to_f
   end
   new_balance = web_apps.navigation_bar.balance.amount
-  actual_purchased_amount = new_balance.to_f - @details_form_data[:old_balance].to_f
+  actual_purchased_amount = new_balance.to_f - @orders_test_data[:old_balance].to_f
 
   logger.step "Test #{(actual_purchased_amount ==  purchase_amount.to_f)?"Passed":"Failed"}"
   actual_purchased_amount.should eql  purchase_amount.to_f

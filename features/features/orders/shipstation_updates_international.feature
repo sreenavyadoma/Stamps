@@ -30,8 +30,8 @@ Feature:  Update International Orders to ShipStation
     Then Customs: Expect I agree to the USPS Privacy Act Statement is unchecked
 
     Then Customs: Set Package Contents to "Commercial Sample"
-    Then Customs: Set License Number to "123456"
-    Then Customs: Set Certificate Number to "12345678"
+    Then Customs: Set License Number to "licenseno1"
+    Then Customs: Set Certificate Number to "certno1"
     Then Customs: Set Invoice Number to "Invoice123"
 
     Then Customs: Set Non-Delivery Options to "Treat as abandoned"
@@ -39,7 +39,7 @@ Feature:  Update International Orders to ShipStation
     Then Customs: Set Internal Transaction Number to "Required"
     Then Customs: Set ITN Number to "ITN123"
 
-    Then Customs: Add Item 1, Description Item 1, Qty 1, Price 11.11, Origin United States, Tariff 1
+    Then Customs: Add Item 1, Description Item 1, Qty 1, Price 20, Origin United States, Tariff 10
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
 
@@ -60,6 +60,7 @@ Feature:  Update International Orders to ShipStation
     Then Grid: Check Saved Order ID
     Then Pause for 2 seconds
 
+    Then Details: Expect Ship-From saved value is the same
     Then Details: Expect Ship-To Country is France
     Then Details: Expect International Ship-To Name is Customer Name
     Then Details: Expect International Ship-To Company is Customer Company
@@ -86,18 +87,15 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect Insure-For is $50.25
     Then Details: Expect Insure-For Cost saved value is the same
 
-    Then Details: Expect Tracking is Signature Required
-    Then Details: Expect Tracking Cost saved value is correct
-
     Then Details: Edit Customs Form
     Then Pause for 1 second
 
     Then Customs: Expect Package Contents is Commercial Sample
-    Then Customs: Expect License Number is 123456
-    Then Customs: Expect Certificate Number is 12345678
+    Then Customs: Expect License Number is licenseno1
+    Then Customs: Expect Certificate Number is certno1
     Then Customs: Expect Invoice Number is Invoice123
 
-    Then Customs: Expect Non-Delivery is Treat as abandoned
+    Then Customs: Expect Non-Delivery Options is Treat as abandoned
 
     Then Customs: Expect Internal Transaction Number is Required
     Then Customs: Expect ITN Number is ITN123

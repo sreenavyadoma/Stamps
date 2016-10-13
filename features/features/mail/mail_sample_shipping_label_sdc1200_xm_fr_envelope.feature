@@ -6,7 +6,6 @@ Feature: Mail Sample Shipping Label - SDC-1200 - XM Flat Rate Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
   @wp_sample_shipping_label_sdc1200_xm_fr_envelope
   Scenario: Sample Shipping Label - SDC-1200 - XM Flat Rate Envelope
 

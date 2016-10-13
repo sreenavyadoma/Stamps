@@ -6,7 +6,6 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM FR Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
   @wp_shipping_label_5x8_pm_fr_envelope
   Scenario: Shipping Label - 5 ½” x 8 ½” - PM FR Envelope
 

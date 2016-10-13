@@ -6,7 +6,6 @@ Feature: Mail Shipping Label - SDC-1200 - PM Regional Rate Box A
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
   @wp_shipping_label_sdc1200_pm_regional_box_a
   Scenario: Shipping Label - SDC-1200 - PM Regional Rate Box A
 

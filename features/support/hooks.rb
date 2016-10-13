@@ -12,7 +12,7 @@ include RAutomation
 
 Before do  |scenario|
   Stamps.init scenario.name
-  @details_form_data = Hash.new
+  @orders_test_data = Hash.new
   logger.message "Running Tests..."
   logger.message "-"
   logger.message "-"
@@ -47,6 +47,10 @@ After do |scenario|
     logger.error "#{scenario.feature}"
     logger.error "#{scenario.feature} TEST FAILED! #{scenario.exception.message}"
     logger.error "#{scenario.feature}"
+  end
+  logger.step "  --  Test Parameters"
+  @orders_test_data.each do |key, value|
+    logger.step "  --  Parameter: #{key}:#{value}"
   end
 end
 

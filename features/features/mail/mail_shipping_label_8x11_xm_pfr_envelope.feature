@@ -6,7 +6,6 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - XM Padded Flat Rat
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
   @wp_sample_shipping_label_8x11_xm_pfr_envelope
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - XM Padded Flat Rate Envelope
 

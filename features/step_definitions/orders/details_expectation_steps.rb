@@ -1,6 +1,13 @@
 
+Then /^Details: Expect Ship-From saved value is the same$/ do
+  logger.step "Details: Expect Ship-From saved value is the same"
+  web_apps.orders.details.ship_from.text_box.text.should eql @orders_test_data[:ship_from]
+end
+
 Then /^Details: Expect Item (\d+) Qty is (\d+)$/ do |item_number, expectation|
   logger.step "^Details: Expect Item #{item_number} Qty is #{expectation}"
+  step "Details: Blur out"
+  step "Details: Blur out"
   step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).qty.text_box.text.should eql expectation
 end
@@ -8,11 +15,15 @@ end
 Then /^Details: Expect Item (\d+) ID is (.*)$/ do |item_number, expectation|
   logger.step "^Details: Expect Item #{item_number} ID is #{expectation}"
   step "Details: Blur out"
+  step "Details: Blur out"
+  step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).id.text.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) Description is (.*)$/ do |item_number, expectation|
   logger.step "^Details: Expect Item #{item_number} ID is #{expectation}"
+  step "Details: Blur out"
+  step "Details: Blur out"
   step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).description.text.should eql expectation
 end
@@ -20,17 +31,23 @@ end
 Then /^Details: Expect Item (\d+) Qty Placeholder is (.*)$/ do |item_number, expectation|
   logger.step "Details: Expect Item Qty Placeholder is #{expectation}"
   step "Details: Blur out"
+  step "Details: Blur out"
+  step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).qty.text_box.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
   logger.step "Details: Expect Item ID# Placeholder is #{expectation}"
   step "Details: Blur out"
+  step "Details: Blur out"
+  step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).id.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) Description Placeholder is (.*)$/ do |item_number, expectation|
   logger.step "Details: Expect Item Description Placeholder is #{expectation}"
+  step "Details: Blur out"
+  step "Details: Blur out"
   step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).description.placeholder.should eql expectation
 end
@@ -264,7 +281,7 @@ Then /^Expect "Exact Address Not Found" module to appear/ do
 end
 
 Then /^Details: Expect Reference Number is (.*)$/ do |expectation|
-  reference_no = (expectation.downcase.include? "random") ? @details_form_data[:reference_no] : expectation
+  reference_no = (expectation.downcase.include? "random") ? @orders_test_data[:reference_no] : expectation
   logger.step "Details: Expect Reference Number is #{reference_no}"
   actual_value = web_apps.orders.details.reference_no.text
   logger.step "Test #{(actual_value==reference_no)?"Passed":"Failed"}"
@@ -286,7 +303,7 @@ end
 Then /^Details: Expect Insure-For Cost saved value is the same$/ do
   logger.step "Details: Expect Insure-For Cost saved value is the same"
   step "Details: Blur out"
-  step "Details: Expect Insure-For Cost is $#{@details_form_data[:insure_for_cost]}"
+  step "Details: Expect Insure-For Cost is $#{@orders_test_data[:insure_for_cost]}"
 end
 
 Then /^Details: Expect Insure-For Cost is \$(.*)$/ do |expectation|
@@ -369,7 +386,7 @@ end
 
 Then /^Details: Expect Service Cost saved value is the same$/ do
   logger.step "Details: Expect Service Cost saved value is the same"
-  step "Details: Expect Service Cost is $#{@details_form_data[:service_cost]}"
+  step "Details: Expect Service Cost is $#{@orders_test_data[:service_cost]}"
 end
 
 Then /^Details: Expect Service Cost is \$([0-9.]*)$/ do |expectation|
@@ -392,7 +409,7 @@ end
 
 Then /^Details: Expect Tracking Cost saved value is correct$/ do
   logger.step "Details: Expect Tracking Cost saved value is correct"
-  step "Details: Expect Tracking Cost is $#{@details_form_data[:tracking_cost]}"
+  step "Details: Expect Tracking Cost is $#{@orders_test_data[:tracking_cost]}"
 end
 
 Then /^Details: Expect Tracking Cost is \$([0-9.]*)$/ do |expectation|
@@ -476,6 +493,7 @@ end
 
 Then /^Details: Expect Tracking is \"([\w\s]*)\"$/ do |expectation|
   logger.step "Details: Expect Tracking is #{expectation}"
+  step "Details: Blur out"
   10.times do
     break if web_apps.orders.details.tracking.text_box.text.include? expectation
   end
@@ -486,12 +504,13 @@ end
 
 Then /^Details: Expect Total Ship Cost saved value is correct$/ do
   logger.step "Details: Expect Tracking Cost saved value is correct"
-  step "Details: Expect Tracking Cost is $#{@details_form_data[:tracking_cost]}"
+  step "Details: Blur out"
+  step "Details: Expect Tracking Cost is $#{@orders_test_data[:tracking_cost]}"
 end
 
 Then /^Details: Expect Total Ship Cost is \$(.*)$/ do |expectation|
   logger.step "Details: Expect Total Ship Cost is $#{expectation}"
-  web_apps.orders.details.blur_out
+  step "Details: Blur out"
   10.times do
     break if web_apps.orders.details.footer.total_ship_cost.eql? expectation
   end

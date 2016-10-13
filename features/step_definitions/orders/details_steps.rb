@@ -21,10 +21,15 @@ end
 Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
   logger.step "Details: Add Item #{item_number}, Qty #{qty}, ID #{id} Description #{description}"
   item = web_apps.orders.details.item_grid.item item_number.to_i
+  step "Details: Blur out"
   item.qty.set qty
+  step "Details: Blur out"
   item.id.set (id.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : id
+  step "Details: Blur out"
   item.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
+  step "Details: Blur out"
   step "Details: Save Total Ship Cost"
+  step "Details: Blur out"
 end
 
 Then /^Details: Add Item (\d+)$/ do |value|
@@ -152,14 +157,16 @@ end
 
 Then /^Details: Set Pounds to (.*)$/ do |value|
   logger.step "Details: Set Pounds to \"#{value}\""
-  @details_form_data[:lbs] = value
+  @orders_test_data[:lbs] = value
+  step "Details: Blur out"
   web_apps.orders.details.weight.lbs.set value
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Ounces to (.*)$/ do |value|
   logger.step "Details: Set Ounces to \"#{value}\""
-  @details_form_data[:oz] = value
+  @orders_test_data[:oz] = value
+  step "Details: Blur out"
   web_apps.orders.details.weight.oz.set value
   step "Details: Save Total Ship Cost"
 end
@@ -169,7 +176,7 @@ Then /^Details: Blur out$/ do
 end
 
 Then /^Details: Save Total Ship Cost$/ do
-  @details_form_data[:total_ship_cost] = web_apps.orders.details.footer.total_ship_cost
+  @orders_test_data[:total_ship_cost] = web_apps.orders.details.footer.total_ship_cost
 end
 
 Then /^Details: Set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
@@ -182,21 +189,21 @@ end
 
 Then /^Details: Set Length to (\d*)$/ do |value|
   logger.step "Details: Set Length to \"#{value}\""
-  @details_form_data[:length] = value
+  @orders_test_data[:length] = value
   web_apps.orders.details.dimensions.length.set value
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Width to (\d*)$/ do |value|
   logger.step "Details: Set Width to \"#{value}\""
-  @details_form_data[:width] = value
+  @orders_test_data[:width] = value
   web_apps.orders.details.dimensions.width.set value
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Height to (\d*)$/ do |value|
   logger.step "Details: Set Height to \"#{value}\""
-  @details_form_data[:height] = value
+  @orders_test_data[:height] = value
   web_apps.orders.details.dimensions.height.set value
   step "Details: Save Total Ship Cost"
 end
@@ -212,14 +219,14 @@ Then /^Details: Uncheck Insure-For checkbox$/ do
 end
 
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
-  @details_form_data[:insure_for] = value
-  logger.step "Details: Set Insure-For to #{@details_form_data[:insure_for]}"
-  web_apps.orders.details.insure_for.set @details_form_data[:insure_for]
+  @orders_test_data[:insure_for] = value
+  logger.step "Details: Set Insure-For to #{@orders_test_data[:insure_for]}"
+  web_apps.orders.details.insure_for.set @orders_test_data[:insure_for]
   20.times do
     break if web_apps.orders.details.insure_for.cost.to_f > 0
     step "Details: Blur out"
   end
-  @details_form_data[:insure_for_cost] = web_apps.orders.details.insure_for.cost
+  @orders_test_data[:insure_for_cost] = web_apps.orders.details.insure_for.cost
   step "Details: Save Total Ship Cost"
 end
 
@@ -233,19 +240,21 @@ end
 
 Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   logger.step "Details: Set Tracking to #{value}"
-  @details_form_data[:tracking] = value
+  @orders_test_data[:tracking] = value
   web_apps.orders.details.tracking.select value
   10.times do
     break if web_apps.orders.details.tracking.cost.to_f > 0
     step "Details: Blur out"
   end
-  @details_form_data[:tracking_cost] = web_apps.orders.details.tracking.cost
+  @orders_test_data[:tracking_cost] = web_apps.orders.details.tracking.cost
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Ship-From to (\w+)$/ do |value|
   logger.step "Details: Set Ship-From to: \n #{value}"
   web_apps.orders.details.ship_from.select value
+  step "Details: Blur out"
+  @orders_test_data[:ship_from] = web_apps.orders.details.ship_from.text_box.text
   step "Details: Save Total Ship Cost"
 end
 
@@ -312,22 +321,22 @@ Then /^Details: Set Ship-To to domestic address$/ do |table|
 
   ship_to = "#{name},#{company},#{street_address},#{street_address_2} ,#{city} #{state} #{zip}"
 
-  @details_form_data[:ship_to] = ship_to
-  @details_form_data[:name] = name
-  @details_form_data[:company] = company
-  @details_form_data[:city] = city
-  @details_form_data[:phone] = phone
-  @details_form_data[:email] = email
-  @details_form_data[:street_address] = street_address
-  @details_form_data[:street_address_2] = street_address_2
-  @details_form_data[:state] = state
-  @details_form_data[:zip] = zip
-  @details_form_data[:country] = country
+  @orders_test_data[:ship_to] = ship_to
+  @orders_test_data[:name] = name
+  @orders_test_data[:company] = company
+  @orders_test_data[:city] = city
+  @orders_test_data[:phone] = phone
+  @orders_test_data[:email] = email
+  @orders_test_data[:street_address] = street_address
+  @orders_test_data[:street_address_2] = street_address_2
+  @orders_test_data[:state] = state
+  @orders_test_data[:zip] = zip
+  @orders_test_data[:country] = country
 
-  step "Details: Set Ship-To Country to #{@details_form_data[:country]}"
-  step "Details: Set Ship-To text area to #{@details_form_data[:ship_to]}"
-  step "Details: Set Phone to #{@details_form_data[:phone]}"
-  step "Details: Set Email to #{@details_form_data[:email]}"
+  step "Details: Set Ship-To Country to #{@orders_test_data[:country]}"
+  step "Details: Set Ship-To text area to #{@orders_test_data[:ship_to]}"
+  step "Details: Set Phone to #{@orders_test_data[:phone]}"
+  step "Details: Set Email to #{@orders_test_data[:email]}"
 end
 
 Then /^Details: Set Ship-To to international address$/ do |table|
@@ -346,27 +355,27 @@ Then /^Details: Set Ship-To to international address$/ do |table|
   province = (address_table['province'].downcase.include? "random") ? ParameterHelper.random_string : address_table['province']
   postal_code = (address_table['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address_table['postal_code']
 
-  @details_form_data[:country] = country
-  @details_form_data[:name] = name
-  @details_form_data[:company] = company
-  @details_form_data[:street_address_1] = street_address_1
-  @details_form_data[:street_address_2] = street_address_2
-  @details_form_data[:city] = city
-  @details_form_data[:province] = province
-  @details_form_data[:postal_code] = postal_code
-  @details_form_data[:phone] = phone
-  @details_form_data[:email] = email
+  @orders_test_data[:country] = country
+  @orders_test_data[:name] = name
+  @orders_test_data[:company] = company
+  @orders_test_data[:street_address_1] = street_address_1
+  @orders_test_data[:street_address_2] = street_address_2
+  @orders_test_data[:city] = city
+  @orders_test_data[:province] = province
+  @orders_test_data[:postal_code] = postal_code
+  @orders_test_data[:phone] = phone
+  @orders_test_data[:email] = email
 
-  step "Details: Set Ship-To Country to #{@details_form_data[:country]}"
-  step "Details: Set International Ship-To Name to \"#{@details_form_data[:name]}\""
-  step "Details: Set International Ship-To Company to \"#{@details_form_data[:company]}\""
-  step "Details: Set International Ship-To Address 1 to \"#{@details_form_data[:street_address_1]}\""
-  step "Details: Set International Ship-To Address 2 to \"#{@details_form_data[:street_address_2]}\""
-  step "Details: Set International Ship-To City to \"#{@details_form_data[:city]}\""
-  step "Details: Set International Ship-To Province to \"#{@details_form_data[:province]}\""
-  step "Details: Set International Ship-To Postal Code to \"#{@details_form_data[:postal_code]}\""
-  step "Details: Set International Ship-To Phone to \"#{@details_form_data[:phone]}\""
-  step "Details: Set International Ship-To Email to \"#{@details_form_data[:email]}\""
+  step "Details: Set Ship-To Country to #{@orders_test_data[:country]}"
+  step "Details: Set International Ship-To Name to \"#{@orders_test_data[:name]}\""
+  step "Details: Set International Ship-To Company to \"#{@orders_test_data[:company]}\""
+  step "Details: Set International Ship-To Address 1 to \"#{@orders_test_data[:street_address_1]}\""
+  step "Details: Set International Ship-To Address 2 to \"#{@orders_test_data[:street_address_2]}\""
+  step "Details: Set International Ship-To City to \"#{@orders_test_data[:city]}\""
+  step "Details: Set International Ship-To Province to \"#{@orders_test_data[:province]}\""
+  step "Details: Set International Ship-To Postal Code to \"#{@orders_test_data[:postal_code]}\""
+  step "Details: Set International Ship-To Phone to \"#{@orders_test_data[:phone]}\""
+  step "Details: Set International Ship-To Email to \"#{@orders_test_data[:email]}\""
 end
 
 Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
@@ -419,8 +428,8 @@ end
 
 Then /^Details: Set Ship-To text area to (.*)$/ do |address|
   logger.step "Details: Set Ship-To text area to \"#{address}\""
-  address = ParameterHelper.format_address address
-  web_apps.orders.details.ship_to.address.set address
+  @orders_test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
+  web_apps.orders.details.ship_to.address.set @orders_test_data[:ship_to_text_area]
   step "Details: Save Total Ship Cost"
 end
 
@@ -603,7 +612,7 @@ Then /^Details: Set Reference Number to (.*)$/ do |value|
   reference_no = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
   logger.step "Details: Set Reference Number to #{reference_no}"
   web_apps.orders.details.reference_no.set reference_no
-  @details_form_data[:reference_no] = reference_no
+  @orders_test_data[:reference_no] = reference_no
   step "Details: Save Total Ship Cost"
 end
 
