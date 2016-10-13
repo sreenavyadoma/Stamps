@@ -224,18 +224,18 @@ module Stamps
         box = text_box
         button = drop_down
         if selection == "First-Class Mail Letter"
-          selection_label = ElementWrapper.new browser.tr css: "tr[data-qtip*='First-Class Mail Envelope']"
+          selection_label = ElementWrapper.new browser.tr(css: "tr[data-qtip*='First-Class Mail Envelope']")
         else
-          selection_label = ElementWrapper.new browser.tr css: "tr[data-qtip*='#{selection}']"
+          selection_label = ElementWrapper.new browser.tr(css: "tr[data-qtip*='#{selection}']")
         end
         10.times {
           begin
+            break if selected_service.include? selection
             button.safe_click #unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
             selected_service = box.text
             logger.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
-            break if selected_service.include? selection
           rescue
             #ignore
           end
