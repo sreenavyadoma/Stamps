@@ -6,7 +6,6 @@ Feature: Mail Shipping Label - SDC-1200 - PM Large Package
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
   @wp_shipping_label_sdc1200_pm_large_package
   Scenario: Shipping Label - SDC-1200 - PM Large Package
 

@@ -6,7 +6,6 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - MM Package
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
   @wp_sample_shipping_label_5x8_mm_package
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - MM Package
 
