@@ -6,7 +6,6 @@ Feature: Mail Roll - 4" x 6" - XM Package
     Given I am signed in as Mail shipper
 
 
-  @wp_roll_regression
   @wp_roll_4x6_xm_package
   Scenario: Roll - 4" x 6" - XM Package
 

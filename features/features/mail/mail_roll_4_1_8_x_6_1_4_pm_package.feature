@@ -5,7 +5,6 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Package
     Given I am signed in as Mail shipper
 
 
-  @wp_roll_regression
   @wp_roll_4_1_8_x_6_1_4_pm_package
   Scenario: Roll - 4 ⅛” x 6 ¼” - PM Package
 
