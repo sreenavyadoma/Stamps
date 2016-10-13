@@ -1,71 +1,85 @@
 
 Then /^Details: Expect Item (\d+) Qty is (\d+)$/ do |item_number, expectation|
   logger.step "^Details: Expect Item #{item_number} Qty is #{expectation}"
+  step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).qty.text_box.text.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) ID is (.*)$/ do |item_number, expectation|
   logger.step "^Details: Expect Item #{item_number} ID is #{expectation}"
+  step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).id.text.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) Description is (.*)$/ do |item_number, expectation|
   logger.step "^Details: Expect Item #{item_number} ID is #{expectation}"
+  step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).description.text.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) Qty Placeholder is (.*)$/ do |item_number, expectation|
   logger.step "Details: Expect Item Qty Placeholder is #{expectation}"
+  step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).qty.text_box.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
   logger.step "Details: Expect Item ID# Placeholder is #{expectation}"
+  step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).id.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Item (\d+) Description Placeholder is (.*)$/ do |item_number, expectation|
   logger.step "Details: Expect Item Description Placeholder is #{expectation}"
+  step "Details: Blur out"
   web_apps.orders.details.item_grid.item(item_number.to_i).description.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Address Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Address Placeholder is #{expectation}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.text_area.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Phone Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Phone Placeholder is #{expectation}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.phone.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Email Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Email Placeholder is #{expectation}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.email.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Service Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Service Placeholder is #{expectation}"
+  step "Details: Blur out"
   web_apps.orders.details.service.text_box.placeholder.should eql expectation
 end
 
 Then /^Details: Expect International Ship-To Name is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To Name is #{value}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.international.name.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Company is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To Company is #{value}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.international.company.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Address 1 is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To Address 1 is #{value}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.international.address_1.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Address 2 is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To address 2 is #{value}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.international.address_2.text.should eql value
 end
 
@@ -76,26 +90,31 @@ end
 
 Then /^Details: Expect International Ship-To Postal Code is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To postal code is #{value}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.international.postal_code.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Phone is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To phone is #{value}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.international.phone.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To Email is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To Email is #{value}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.international.email.text.should eql value
 end
 
 Then /^Details: Expect Ship-To Country is (.*)/ do |value|
   logger.step "Details: Expect Ship-To Country is #{value}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.country.text_box.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To City is (.*)/ do |value|
   logger.step "Details: Expect International Ship-To City is #{value}"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.international.city.text.should eql value
 end
 
@@ -114,42 +133,50 @@ end
 
 Then /^Details: Expect Domestic Ship-To fields are hidden$/ do
   logger.step "Details: Expect Domestic Ship-To fields are hidden"
+  step "Details: Blur out"
   web_apps.orders.details.ship_to.address.text_area.present?.should be false
 end
 
 Then /^Details: Expect Customs Restrictions button is visible/ do
   logger.step "Details: Expect Customs Restrictions button is visible"
+  step "Details: Blur out"
   web_apps.orders.details.customs.browser_restrictions_button.present?.should be true
   web_apps.orders.details.customs.restrictions.ok
 end
 
 Then /^Details: Expect Customs Restrictions button is hidden/ do
   logger.step "Details: Expect Customs Restrictions button is hidden"
+  step "Details: Blur out"
   web_apps.orders.details.customs.browser_restrictions_button.present?.should be false
 end
 
 Then /^Details: Expect Customs Edit Form button is visible/ do
   logger.step "Details: Expect Customs Edit Form button is visible"
+  step "Details: Blur out"
   web_apps.orders.details.customs.browser_edit_form_button.present?.should be true
 end
 
 Then /^Details: Expect Customs Edit Form button is hidden/ do
   logger.step "Details: Expect Customs Edit Form button is hidden"
+  step "Details: Blur out"
   web_apps.orders.details.customs.browser_edit_form_button.present?.should be false
 end
 
 Then /^Details: Expect Customs Edit Form button is enabled/ do
   logger.step "Details: Expect Customs Edit Form button is enabled"
+  step "Details: Blur out"
   web_apps.orders.details.customs.browser_edit_form_button.present?.should be true
 end
 
 Then /^Details: Expect Customs Edit Form button is disabled/ do
   logger.step "Details: Expect Customs Edit Form button is disabled"
+  step "Details: Blur out"
   web_apps.orders.details.customs.browser_edit_form_button.present?.should be false
 end
 
 Then /^Details: Expect International Ship-To Name Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Email Placeholder is #{expectation}"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.ship_to.international.name.placeholder
   logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -157,6 +184,7 @@ end
 
 Then /^Details: Expect International Ship-To Company Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.ship_to.international.company.placeholder
   logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -164,6 +192,7 @@ end
 
 Then /^Details: Expect International Ship-To Address 1 Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.ship_to.international.address_1.placeholder
   logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -171,6 +200,7 @@ end
 
 Then /^Details: Expect International Ship-To Address 2 Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.ship_to.international.address_2.placeholder
   logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -178,6 +208,7 @@ end
 
 Then /^Details: Expect International Ship-To City Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.ship_to.international.city.placeholder
   logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -185,6 +216,7 @@ end
 
 Then /^Details: Expect International Ship-To Province Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.ship_to.international.province.placeholder
   logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -192,6 +224,7 @@ end
 
 Then /^Details: Expect International Ship-To Postal Code Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.ship_to.international.postal_code.placeholder
   logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -199,6 +232,7 @@ end
 
 Then /^Details: Expect International Ship-To Phone Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.ship_to.international.phone.placeholder
   logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -206,6 +240,7 @@ end
 
 Then /^Details: Expect International Ship-To Email Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.ship_to.international.email.placeholder
   logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
@@ -239,6 +274,7 @@ end
 Then /^Details: Expect Insure-For is \$(.*)$/ do |expectation|
   logger.step "Details: Set Insure-For to #{expectation}"
   web_apps.orders.details.insure_for.checkbox.check
+  step "Details: Blur out"
   5.times do
     break if web_apps.orders.details.insure_for.text_box.text == expectation
   end
@@ -249,11 +285,13 @@ end
 
 Then /^Details: Expect Insure-For Cost saved value is the same$/ do
   logger.step "Details: Expect Insure-For Cost saved value is the same"
+  step "Details: Blur out"
   step "Details: Expect Insure-For Cost is $#{@details_form_data[:insure_for_cost]}"
 end
 
 Then /^Details: Expect Insure-For Cost is \$(.*)$/ do |expectation|
   logger.step "Details: Expect Insure-For Cost is #{expectation}"
+  step "Details: Blur out"
   5.times do
     break if web_apps.orders.details.insure_for.cost == expectation
   end
@@ -264,6 +302,7 @@ end
 
 Then /^Details: Expect Insure-For Cost is greater than \$(.*)$/ do |expectation|
   logger.step "Details: Expect Insure-For Cost is greater than #{expectation}"
+  step "Details: Blur out"
   15.times do
     break if web_apps.orders.details.insure_for.cost.to_f > expectation.to_f
   end
@@ -274,6 +313,7 @@ end
 
 Then /^Details: Expect Service \"(.*)\" is disabled/ do |service|
   logger.step "Details: Expect Service \"#{service}\" is disabled"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.service.disabled? service
   logger.step "Test #{(actual_value)?"Passed":"Failed"}"
   actual_value.should be true
@@ -281,6 +321,7 @@ end
 
 Then /^Details: Expect Service \"(.*)\" is enabled/ do |expectation|
   logger.step "Details: Expect Service \"#{expectation}\" is enabled"
+  step "Details: Blur out"
   actual_value = web_apps.orders.details.service.enabled? expectation
   logger.step "Test #{(actual_value)?"Passed":"Failed"}"
   actual_value.should be true
@@ -288,10 +329,8 @@ end
 
 Then /^Details: Expect Ship-From selection has (.*)$/ do |address|
   logger.step "Expect #{address} Ship-From address was added"
-  raise "Unsupported Ship-From address:  #{address}" unless address.downcase.include? "random"
-  begin
-    logger.step "Search for \n#{@ship_from_address}.  Address was #{(web_apps.orders.details.ship_from.select("Manage Shipping Addresses...").address_located?(@ship_from_address))?'Located':'Not Located'}"
-  end unless @ship_from_address.nil?
+  step "Details: Blur out"
+  web_apps.orders.details.ship_from.select("Manage Shipping Addresses...").address_located?(@ship_from_address).should be true
 end
 
 Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|

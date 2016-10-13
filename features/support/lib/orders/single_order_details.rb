@@ -1497,21 +1497,19 @@ module Stamps
           end
 
           class Qty < Browser::Modal
+            attr_reader :text_box
+
             def initialize param, number
               super param
               @index = number
-            end
-
-            def text_box
-              TextBoxElement.new ((browser.text_fields name: "Quantity")[@index-1]), "data-errorqtip"
+              @text_box = TextBoxElement.new ((browser.text_fields name: "Quantity")[@index-1]), "data-errorqtip"
             end
 
             def set value
-              text_field = text_box
               value = value.to_i
-              max = value + text_field.text.to_i
+              max = value + text_box.text.to_i
               max.times do
-                current_value = text_field.text.to_i
+                current_value = text_box.text.to_i
                 break if value == current_value
                 if value > current_value
                   increment 1
@@ -1520,7 +1518,7 @@ module Stamps
                 end
                 break if value == current_value
               end
-              logger.info "Qty set to #{text_field.text}"
+              logger.info "Qty set to #{text_box.text}"
             end
 
             def increment value

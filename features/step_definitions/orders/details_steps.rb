@@ -212,11 +212,12 @@ Then /^Details: Uncheck Insure-For checkbox$/ do
 end
 
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
-  logger.step "Details: Set Insure-For to #{value}"
   @details_form_data[:insure_for] = value
-  web_apps.orders.details.insure_for.set value
-  10.times do
+  logger.step "Details: Set Insure-For to #{@details_form_data[:insure_for]}"
+  web_apps.orders.details.insure_for.set @details_form_data[:insure_for]
+  20.times do
     break if web_apps.orders.details.insure_for.cost.to_f > 0
+    step "Details: Blur out"
   end
   @details_form_data[:insure_for_cost] = web_apps.orders.details.insure_for.cost
   step "Details: Save Total Ship Cost"
@@ -236,6 +237,7 @@ Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   web_apps.orders.details.tracking.select value
   10.times do
     break if web_apps.orders.details.tracking.cost.to_f > 0
+    step "Details: Blur out"
   end
   @details_form_data[:tracking_cost] = web_apps.orders.details.tracking.cost
   step "Details: Save Total Ship Cost"

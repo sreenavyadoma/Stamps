@@ -292,6 +292,7 @@ Then /^Details: Set Service to (.*)$/ do |service|
   web_apps.orders.details.service.select service
   10.times do
     break if web_apps.orders.details.service.cost.to_f > 0
+    step "Details: Blur out"
   end
   @details_form_data[:service_cost] = web_apps.orders.details.service.cost
   step "Details: Save Total Ship Cost"

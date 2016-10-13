@@ -117,11 +117,13 @@ end
 Then /^Customs: Close Modal$/ do
   logger.step "Closing customs form"
   web_apps.orders.details.customs.edit_form.close.should be false
+  step "Details: Save Total Ship Cost"
 end
 
 Then /^Cancel Customs Form$/ do
   logger.step "Cancel customs form"
   web_apps.orders.details.customs.edit_form.cancel.should be false
+  step "Details: Save Total Ship Cost"
 end
 
 Then /^Customs Form: Expect USPS Privacy Act Warning is visible$/ do
