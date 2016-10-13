@@ -247,9 +247,9 @@ Then /^Details: Expect Insure-For is \$(.*)$/ do |expectation|
   actual_value.should eql expectation
 end
 
-Then /^Details: Expect Insure-For Cost saved value is correct$/ do
-  logger.step "Details: Expect Insure-For Cost saved value is correct"
-  step "Details: Expect Insure-For Cost is #{@details_form_data[:insure_for_cost]}"
+Then /^Details: Expect Insure-For Cost saved value is the same$/ do
+  logger.step "Details: Expect Insure-For Cost saved value is the same"
+  step "Details: Expect Insure-For Cost is $#{@details_form_data[:insure_for_cost]}"
 end
 
 Then /^Details: Expect Insure-For Cost is \$(.*)$/ do |expectation|
@@ -353,7 +353,7 @@ end
 
 Then /^Details: Expect Tracking Cost saved value is correct$/ do
   logger.step "Details: Expect Tracking Cost saved value is correct"
-  step "Details: Expect Tracking Cost is #{@details_form_data[:tracking_cost]}"
+  step "Details: Expect Tracking Cost is $#{@details_form_data[:tracking_cost]}"
 end
 
 Then /^Details: Expect Tracking Cost is \$([0-9.]*)$/ do |expectation|
@@ -447,7 +447,7 @@ end
 
 Then /^Details: Expect Total Ship Cost saved value is correct$/ do
   logger.step "Details: Expect Tracking Cost saved value is correct"
-  step "Details: Expect Tracking Cost is #{@details_form_data[:tracking_cost]}"
+  step "Details: Expect Tracking Cost is $#{@details_form_data[:tracking_cost]}"
 end
 
 Then /^Details: Expect Total Ship Cost is \$(.*)$/ do |expectation|

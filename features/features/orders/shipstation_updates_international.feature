@@ -14,10 +14,10 @@ Feature:  Update International Orders to ShipStation
       | name          | company          | street_address_1  | street_address_2 | city   | province | postal_code | country | phone         |  email            |
       | Customer Name | Customer Company | Street Address 1  | Street Address 2 | City   | Province | PostalCode  | France  | 415-411-1111  | rtest@stamps.com  |
 
+    Then Details: Set Weight to 2 lbs 2 oz
+
     Then Details: Select Service Priority Mail International Package
 
-    Then Details: Set Pounds to 2
-    Then Details: Set Ounces to 2
     Then Details: Set Insure-For to $50.25
 
     Then Details: Set Reference Number to Reference #123
@@ -45,6 +45,12 @@ Feature:  Update International Orders to ShipStation
 
     Then Customs: Close Modal
 
+    Then Pause for 2 seconds
+    Then Details: Blur out
+    Then Details: Blur out
+    Then Details: Blur out
+    Then Pause for 3 seconds
+
     Then Grid: Uncheck Saved Order ID
     Then Pause for 2 seconds
 
@@ -65,38 +71,23 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect International Ship-To Phone is 415-411-1111
     Then Details: Expect International Ship-To Email is rtest@stamps.com
 
-    Then Details: Expect Service is "Priority Mail International Package"
     Then Details: Expect Reference Number is Reference #123
 
-    Then Details: Expect Insure-For is $50.25
+    Then Details: Expect Service is "Priority Mail International Package"
+    Then Details: Expect Service Cost saved value is the same
 
     Then Details: Expect Item 1 Qty is 1
     Then Details: Expect Item 1 ID is ID 1
     Then Details: Expect Item 1 Description is Description 1
-
-    Then Details: Expect Ship-To Country is France
-    Then Details: Expect International Ship-To Name is Customer Name
-    Then Details: Expect International Ship-To Company is Customer Company
-    Then Details: Expect International Ship-To Address 1 is Street Address 1
-    Then Details: Expect International Ship-To Address 2 is Street Address 2
-    Then Details: Expect International Ship-To City is City
-    Then Details: Expect International Ship-To Province is Province
-    Then Details: Expect International Ship-To Postal Code is PostalCode
-    Then Details: Expect International Ship-To Phone is 415-411-1111
-    Then Details: Expect Ship-To Country is France
 
     Then Details: Expect Pounds is 2
     Then Details: Expect Ounces is 2
 
-    Then Details: Expect Service is "Priority Mail International Package"
-
     Then Details: Expect Insure-For is $50.25
+    Then Details: Expect Insure-For Cost saved value is the same
 
-    Then Details: Expect Reference Number is Reference #123
-
-    Then Details: Expect Item 1 Qty is 1
-    Then Details: Expect Item 1 ID is ID 1
-    Then Details: Expect Item 1 Description is Description 1
+    Then Details: Expect Tracking is Signature Required
+    Then Details: Expect Tracking Cost saved value is correct
 
     Then Details: Edit Customs Form
     Then Pause for 1 second

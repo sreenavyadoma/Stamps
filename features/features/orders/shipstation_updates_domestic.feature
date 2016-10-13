@@ -17,7 +17,7 @@ Feature:  Update Order to ShipStation
 
     Then Details: Select Service Priority Mail Package
 
-    Then Details: Set Insure-For to $1.00
+    Then Details: Set Insure-For to $100.00
 
     Then Details: Set Tracking to Signature Required
 
@@ -31,6 +31,9 @@ Feature:  Update Order to ShipStation
 
     Then Pause for 2 seconds
     Then Details: Blur out
+    Then Details: Blur out
+    Then Details: Blur out
+    Then Pause for 3 seconds
 
     Then Grid: Uncheck Saved Order ID
     Then Pause for 5 seconds
@@ -63,9 +66,13 @@ Feature:  Update Order to ShipStation
     Then Details: Expect Service is Priority Mail Package
     Then Details: Expect Service Cost saved value is the same
 
-    Then Details: Expect Reference Number is Update Orders To ShipStation
+    Then Details: Expect Insure-For is $100.00
+    Then Details: Expect Insure-For Cost saved value is the same
 
     Then Details: Expect Tracking is Signature Required
+    Then Details: Expect Tracking Cost saved value is correct
+
+    Then Details: Expect Reference Number is Update Orders To ShipStation
 
     #Verify Orders Grid data was saved in ShipStation
     Then Grid: Expect Store is Manual Orders
