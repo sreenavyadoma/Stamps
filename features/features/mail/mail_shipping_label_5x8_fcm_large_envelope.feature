@@ -6,7 +6,6 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - FCM Large Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
   @wp_shipping_label_5x8_fcm_large_envelope
   Scenario: Shipping Label - 5 ½” x 8 ½” - FCM Large Envelope
 
