@@ -122,7 +122,7 @@ Feature:  Update International Orders to ShipStation
     Then Grid: Expect Phone is 415-411-1111
     Then Grid: Expect Email is rtest@stamps.com
     Then Grid: Expect Qty. is 1
-    Then Grid: Expect Item SKU is Item 1
+    Then Grid: Expect Item SKU is ID 1
     Then Grid: Expect Item Name is Description 1
     Then Grid: Expect Service is Priority Mail International
     Then Grid: Expect Weight is 2 lbs. 2 oz.
