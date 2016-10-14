@@ -58,8 +58,8 @@ Feature:  Update Order to ShipStation
     Then Details: Expect Ship-To Email is rtest@stamps.com
 
     Then Details: Hide Ship-To fields
-    Then Details: Expect Pounds is 1
-    Then Details: Expect Ounces is 1
+    Then Details: Expect Pound is 1
+    Then Details: Expect Ounce is 1
 
     Then Details: Expect Length is 1
     Then Details: Expect Width is 1

@@ -433,7 +433,7 @@ Then /^Details: Expect Tracking Cost is greater than \$([0-9.]*)$/ do |expectati
   actual_value.should be > expectation
 end
 
-Then /^Details: Expect Pounds is (.*)$/ do |expectation|
+Then /^Details: Expect Pounds? is (.*)$/ do |expectation|
   logger.step "Details: Expect Pounds is #{expectation}"
   10.times do
     break if web_apps.orders.details.weight.lbs.text_box.text == expectation
@@ -443,7 +443,7 @@ Then /^Details: Expect Pounds is (.*)$/ do |expectation|
   actual_value.should eql expectation
 end
 
-Then /^Details: Expect Ounces is (.*)$/ do |expectation|
+Then /^Details: Expect Ounces? is (.*)$/ do |expectation|
   logger.step "Details: Expect Ounces is  #{expectation}"
   10.times do
     break if web_apps.orders.details.weight.oz.text_box.text == expectation
