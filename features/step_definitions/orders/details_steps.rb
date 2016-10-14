@@ -439,7 +439,7 @@ end
 
 Then /^Details: Hide Ship-To fields$/ do
   logger.step "Details: Hide Ship-To fields"
-  web_apps.orders.details.ship_to.hide_address_details
+  web_apps.orders.details.ship_to.address.hide_address_details
 end
 
 Then /^Details: Expect Ship-To Name is (.*)$/ do |expectation|

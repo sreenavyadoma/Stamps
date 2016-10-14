@@ -107,7 +107,7 @@ Feature:  Update Order to ShipStation
     Then Grid: Expect Pounds is 1
     Then Grid: Expect Ounces is 1
 
-    Then Grid: Expect Insured Value is $1.00
+    Then Grid: Expect Insured Value is $100.00
 
     Then Print: Open Modal
     Then Print: Close Modal

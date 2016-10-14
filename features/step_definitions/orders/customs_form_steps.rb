@@ -404,7 +404,7 @@ end
 Then /^Customs Form: Expect Total Value is (.+)$/ do |expectation|
   logger.step "Customs Form: Expect Total Value is #{expectation}"
   step "Customs: Blur out"
-  web_apps.orders.details.customs.edit_form.total_value.text.should eql expectation
+  web_apps.orders.details.customs.edit_form.total_value.should eql expectation
 end
 
 Then /^Customs: Add Item (\d+), Description (.*), Qty (\d+), Price (.+), Origin (.+), Tariff (.*)$/ do |item_number, description, qty, price, origin_country, tariff|
