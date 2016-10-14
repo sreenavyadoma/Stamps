@@ -41,8 +41,6 @@ After do |scenario|
 
   Stamps.teardown
 
-  $start = false
-
   if scenario.failed?
     logger.error "#{scenario.feature}"
     logger.error "#{scenario.feature} TEST FAILED! #{scenario.exception.message}"
@@ -50,7 +48,7 @@ After do |scenario|
   end
   logger.step "  --  Test Parameters"
   @orders_test_data.each do |key, value|
-    logger.step "  --  Parameter: #{key}:#{value}"
+    logger.step "  --  #{key} : #{value}"
   end
 end
 
