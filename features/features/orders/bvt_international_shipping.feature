@@ -17,9 +17,9 @@ Feature:  BVT International Shipping
 
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 400, Origin Japan, Tariff 100
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Not required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Not required
     Then Customs: Set More Info to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal

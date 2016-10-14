@@ -13,7 +13,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - right side
     Then Details: Select Service Priority Mail International Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Details: Edit Customs Form
-    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Package Contents to Merchandise
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
@@ -25,7 +25,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - right side
     Then Details: Select Service Priority Mail International Legal Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Details: Edit Customs Form
-    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Package Contents to Merchandise
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal

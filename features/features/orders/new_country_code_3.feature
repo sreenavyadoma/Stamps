@@ -15,7 +15,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 2
     Then Details: Edit Customs Form
-    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Package Contents to Merchandise
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal

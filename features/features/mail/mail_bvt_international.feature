@@ -16,7 +16,7 @@ Feature: International Shipping BVT
     Then Mail: Set Pounds to 0
     Then Mail: Set Ounces to 3
     Then Mail Shipping Labels: Edit Customs Form
-    Then Mail Customs: Set Package Contents to "Gift"
+    Then Mail Customs: Set Package Contents to Gift
     Then Mail Customs: Set Non-Delivery Options to "Treat as abandoned"
     Then Mail Customs: Set Internal Transaction Number Requirement to "Required"
     Then Mail Customs: Set ITN Number to "12345"

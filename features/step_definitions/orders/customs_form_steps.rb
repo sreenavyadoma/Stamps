@@ -12,6 +12,34 @@ Then /^Customs: Blur out$/ do
   web_apps.orders.details.customs.edit_form.blur_out
 end
 
+Then /^Customs: Set Package Contents to Merchandise$/ do
+  step "Customs: Set Package Contents to \"Merchandise\""
+end
+
+Then /^Customs: Set Package Contents to Humanitarian Donation$/ do
+  step "Customs: Set Package Contents to \"Humanitarian Donation\""
+end
+
+Then /^Customs: Set Package Contents to Returned Goods$/ do
+  step "Customs: Set Package Contents to \"Returned Goods\""
+end
+
+Then /^Customs: Set Package Contents to Gift$/ do
+  step "Customs: Set Package Contents to \"Gift\""
+end
+
+Then /^Customs: Set Package Contents to Document$/ do
+  step "Customs: Set Package Contents to \"Document\""
+end
+
+Then /^Customs: Set Package Contents to Commercial Sample$/ do
+  step "Customs: Set Package Contents to \"Commercial Sample\""
+end
+
+Then /^Customs: Set Package Contents to Other$/ do
+  step "Customs: Set Package Contents to \"Other\""
+end
+
 Then /^Customs: Set Package Contents to \"(.+)\"$/ do |value|
   logger.step "Customs: Set Package Contents to #{value}"
   step "Customs: Blur out"
@@ -24,10 +52,46 @@ Then /^Customs: Expect Package Contents saved value is the same$/ do
   step "Customs: Expect Package Contents is #{@orders_test_data[:customs_package_contents]}"
 end
 
-Then /^Customs: Expect Package Contents is (.+)$/ do |expectation|
+Then /^Customs: Expect Package Contents is Merchandise$/ do
+  step "Customs: Expect Package Contents is \"Merchandise\""
+end
+
+Then /^Customs: Expect Package Contents is Humanitarian Donation$/ do
+  step "Customs: Expect Package Contents is \"Humanitarian Donation\""
+end
+
+Then /^Customs: Expect Package Contents is Returned Goods$/ do
+  step "Customs: Expect Package Contents is \"Returned Goods\""
+end
+
+Then /^Customs: Expect Package Contents is$/ do
+  step "Customs: Expect Package Contents is \"Gift\""
+end
+
+Then /^Customs: Expect Package Contents is Document$/ do
+  step "Customs: Expect Package Contents is \"Document\""
+end
+
+Then /^Customs: Expect Package Contents is Commercial Sample$/ do
+  step "Customs: Expect Package Contents is \"Commercial Sample\""
+end
+
+Then /^Customs: Expect Package Contents is Other$/ do
+  step "Customs: Expect Package Contents is \"Other\""
+end
+
+Then /^Customs: Expect Package Contents is \"(.+)\"$/ do |expectation|
   logger.step "Customs: Expect Package Contents is #{expectation}"
   step "Customs: Blur out"
   web_apps.orders.details.customs.edit_form.package_contents.text_box.text.should eql expectation
+end
+
+Then /^Customs: Set Non-Delivery Options to Treat as abandoned$/ do
+  step "Customs: Set Non-Delivery Options to \"Treat as abandoned\""
+end
+
+Then /^Customs: Set Non-Delivery Options to Return to sender$/ do
+  step "Customs: Set Non-Delivery Options to \"Return to sender\""
 end
 
 Then /^Customs: Set Non-Delivery Options to \"(.+)\"$/ do |value|
@@ -42,10 +106,26 @@ Then /^Customs: Expect Non-Delivery Options saved value is the same$/ do
   step "Customs: Expect Non-Delivery Options is #{@orders_test_data[:customs_non_delivery_options]}"
 end
 
-Then /^Customs: Expect Non-Delivery Options is (.+)$/ do |expectation|
+Then /^Customs: Expect Non-Delivery Options is Treat as abandoned$/ do
+  step "Customs: Expect Non-Delivery Options is \"Treat as abandoned\""
+end
+
+Then /^Customs: Expect Non-Delivery Options is Return to sender$/ do
+  step "Customs: Expect Non-Delivery Options is \"Return to sender\""
+end
+
+Then /^Customs: Expect Non-Delivery Options is \"(.+)\"$/ do |expectation|
   logger.step "Customs: Expect Non-Delivery to  be #{expectation}"
   step "Customs: Blur out"
   web_apps.orders.details.customs.edit_form.non_delivery_options.text_box.text.should eql expectation
+end
+
+Then /^Customs: Set Internal Transaction Number to Not required$/ do
+  step "Customs: Set Internal Transaction Number to \"Not required\""
+end
+
+Then /^Customs: Set Internal Transaction Number to Required$/ do
+  step "Customs: Set Internal Transaction Number to \"Required\""
 end
 
 Then /^Customs: Set Internal Transaction Number to \"(.+)\"$/ do |value|
@@ -60,7 +140,15 @@ Then /^Customs: Expect Internal Transaction Number saved value is the same$/ do
   step "Customs: Expect Internal Transaction Number is #{@orders_test_data[:customs_internal_transaction_no]}"
 end
 
-Then /^Customs: Expect Internal Transaction Number is (.+)$/ do |expectation|
+Then /^Customs: Expect Internal Transaction Number is Not required$/ do
+  step "Customs: Expect Internal Transaction Number is \"Not required\""
+end
+
+Then /^Customs: Expect Internal Transaction Number is Required$/ do
+  step "Customs: Expect Internal Transaction Number is \"Required\""
+end
+
+Then /^Customs: Expect Internal Transaction Number is \"(.+)\"$/ do |expectation|
   logger.step "Customs: Expect Internal Transaction Number to  be #{expectation}"
   step "Customs: Blur out"
   web_apps.orders.details.customs.edit_form.internal_transaction.text_box.text.should eql expectation
@@ -87,7 +175,7 @@ Then /^Customs: Set ITN Number to \"(.+)\"$/ do |value|
   logger.step "Customs: Set ITN Number to #{value}"
   step "Customs: Blur out"
   @orders_test_data[:customs_itn_no] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
-  web_apps.orders.details.customs.edit_form.itn_number.set @orders_test_data[:customs_certificate_no]
+  web_apps.orders.details.customs.edit_form.itn_number.set @orders_test_data[:customs_itn_no]
   step "Customs: Save Total"
 end
 
@@ -285,8 +373,16 @@ Then /^Customs: Expect ITN Number is visible$/ do
   web_apps.orders.details.customs.edit_form.itn_number.enabled?.should be true
 end
 
-Then /^Expect Customs Form Internal Transaction # is \"(.+)\"$/ do |expectation|
-  logger.step "Expect Customs Form Internal Transaction # is #{expectation}"
+Then /^Expect Customs Form Internal Transaction Number is Required$/ do
+  step "Expect Customs Form Internal Transaction is \"Required\""
+end
+
+Then /^Expect Customs Form Internal Transaction Number is Not required$/ do
+  step "Expect Customs Form Internal Transaction is \"Not required\""
+end
+
+Then /^Expect Customs Form Internal Transaction Number is \"(.+)\"$/ do |expectation|
+  logger.step "Expect Customs Form Internal Transaction Number is #{expectation}"
   step "Customs: Blur out"
   web_apps.orders.details.customs.edit_form.internal_transaction.text_box.text.should eql expectation
 end

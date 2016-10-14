@@ -21,7 +21,7 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
     Then Details: Delete Item 2
 
     Then Details: Edit Customs Form
-    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Package Contents to Merchandise
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal

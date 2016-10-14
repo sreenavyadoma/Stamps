@@ -13,7 +13,7 @@ Feature: Print 1 Intl CN22 label on 4x6 Roll
     Then Details: Select Service First-Class Mail International Package/Thick Envelope
     Then Details: Set Ounces to 1
     Then Details: Edit Customs Form
-    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Package Contents to Merchandise
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal

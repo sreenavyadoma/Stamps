@@ -13,7 +13,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then Details: Select Service Priority Mail International Flat Rate Envelope
     Then Details: Set Weight to 1 lbs 14 oz
     Then Details: Edit Customs Form
-    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Package Contents to Merchandise
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 1
     Then Customs: Add Item 2, Description random, Qty 1, Price 1, Origin United States, Tariff 2
     Then Customs: Add Item 3, Description random, Qty 1, Price 1, Origin United States, Tariff 3

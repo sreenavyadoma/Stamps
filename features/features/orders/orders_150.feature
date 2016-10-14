@@ -249,9 +249,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -270,9 +270,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -523,9 +523,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -544,9 +544,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -796,9 +796,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -817,9 +817,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -1070,9 +1070,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -1091,9 +1091,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -1344,9 +1344,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -1365,9 +1365,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -1618,9 +1618,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 
@@ -1639,9 +1639,9 @@ Feature: 150 orders
 
     Then Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Customs: Set Non-Delivery Options to "Return to sender"
-    Then Customs: Set Internal Transaction Number to "Required"
+    Then Customs: Set Package Contents to Merchandise
+    Then Customs: Set Non-Delivery Options to Return to sender
+    Then Customs: Set Internal Transaction Number to Required
     Then Customs: Set More Info to "random"
     Then Customs: Set ITN Number to "random"
 

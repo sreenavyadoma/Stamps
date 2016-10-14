@@ -22,7 +22,7 @@ Feature: FPO Shipping BVT
     Then Postage Roll: Select Service Priority Mail Large-Thick Envelope
 
     Then Postage Shipping Labels: Edit Customs Form
-    Then Postage Customs: Set Package Contents to "Gift"
+    Then Postage Customs: Set Package Contents to Gift
     Then Postage Customs: Set Non-Delivery Options to "Treat as abandoned"
     Then Postage Customs: Set Internal Transaction Number Requirement to "Required"
     Then Postage Customs: Set ITN Number to "12345"
