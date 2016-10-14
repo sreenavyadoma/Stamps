@@ -8,7 +8,7 @@ Then /^Mail Roll: Select Service First-Class Mail Large Envelope-Flat$/ do
 end
 
 Then /^Mail Roll: Select Service First-Class Mail Package-Thick Envelope$/ do
-  step "Mail Roll: Set Service to First-Class Mail Package/Thick Envelope"
+  step "Mail Roll: Set Service to First Class Mail Package/Thick Envelope"
 end
 
 Then /^Mail Roll: Select Service Priority Mail Large-Thick Envelope$/ do

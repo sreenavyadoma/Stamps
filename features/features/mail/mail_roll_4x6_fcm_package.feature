@@ -1,15 +1,10 @@
 Feature: Mail Roll - 4" x 6" - FCM Package
 
-
-
   Background:
     Given I am signed in as Mail shipper
 
-
-  @wp_roll_regression
   @wp_roll_4x6_fcm_package
   Scenario: Roll - 4" x 6" - FCM Package
-
 
     Then Mail: Select Roll 4 x 6
 

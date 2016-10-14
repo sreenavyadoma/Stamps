@@ -6,7 +6,6 @@ Feature: Mail Roll - 4" x 6" - PM Regional Box B
     Given I am signed in as Mail shipper
 
 
-  @wp_roll_regression
   @wp_roll_4x6_pm_regional_box_b
   Scenario: Roll - 4" x 6" - PM Regional Box B
 

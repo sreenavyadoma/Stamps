@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile rob_sc
+default: --profile cuke_reports --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty
 #qasc800 wp_bvt_international
