@@ -65,7 +65,7 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect International Ship-To Phone is 415-411-1111
     Then Details: Expect International Ship-To Email is rtest@stamps.com
 
-    Then Details: Expect Service is "Priority Mail International Package"
+    Then Details: Expect Service is Priority Mail International Package
     Then Details: Expect Reference Number is Reference #123
 
     Then Details: Expect Insure-For is $50.25
@@ -88,7 +88,7 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect Pounds is 2
     Then Details: Expect Ounces is 2
 
-    Then Details: Expect Service is "Priority Mail International Package"
+    Then Details: Expect Service is Priority Mail International Package
 
     Then Details: Expect Insure-For is $50.25
 
