@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - FCM Package
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_5x8_fcm_package
+  @mail_shipping_label_5x8_fcm_package
   Scenario: Shipping Label - 5 ½” x 8 ½” - FCM Package
 
     Then Mail: Select Shipping Label 5 x 8

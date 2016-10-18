@@ -3,8 +3,8 @@ Feature: Envelope #A9
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_envelope_regression
-  @wp_envelope_A9
+  @mail_envelope_regression
+  @mail_envelope_A9
   Scenario: Envelope #A9
     Then Mail: Select Envelope - #A9
     Then Mail: Set Ship-From to default

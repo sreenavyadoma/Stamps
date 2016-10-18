@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - XM Flat Rate Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_sample_shipping_label_5x8_xm_fr_envelope
+  @mail_sample_shipping_label_5x8_xm_fr_envelope
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - XM Flat Rate Envelope
 
     Then Mail: Select Shipping Label 5 x 8

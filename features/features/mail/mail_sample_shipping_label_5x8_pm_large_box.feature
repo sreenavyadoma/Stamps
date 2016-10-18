@@ -3,7 +3,7 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - Large Box
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_sample_shipping_label_5x8_pm_large_box
+  @mail_sample_shipping_label_5x8_pm_large_box
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - Large Box
 
     Then Mail: Select Shipping Label 5 x 8

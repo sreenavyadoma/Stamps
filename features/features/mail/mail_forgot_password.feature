@@ -5,7 +5,7 @@ Feature: Forgot Password
   Background:
     Given I launched default browser
 
-  @wp_forgot_password
+  @mail_forgot_password
   Scenario: Forgot Password
     Then Visit Mail sign in page
     Then Mail: Open Forgot Password Modal

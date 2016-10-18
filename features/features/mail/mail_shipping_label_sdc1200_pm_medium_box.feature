@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Medium Flat Rate Box
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_sdc1200_pm_medium_box
+  @mail_shipping_label_sdc1200_pm_medium_box
   Scenario: Shipping Label - SDC-1200 - PM Medium Flat Rate Box
 
     Then Mail: Select Shipping Label SDC-1200

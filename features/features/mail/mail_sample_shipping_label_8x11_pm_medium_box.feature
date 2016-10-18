@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - PM Medium Flat Rat
     Given I am signed in as Mail shipper
 
 
-  @wp_sample_shipping_label_8x11_pm_medium_box
+  @mail_sample_shipping_label_8x11_pm_medium_box
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - PM Medium Flat Rate Box
 
     Then Mail: Select Shipping Label 8 x 11

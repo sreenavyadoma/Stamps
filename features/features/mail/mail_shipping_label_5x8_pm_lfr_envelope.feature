@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Legal Flat Rate Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_5x8_pm_lfr_envelope
+  @mail_shipping_label_5x8_pm_lfr_envelope
   Scenario: Shipping Label - 5 ½” x 8 ½” - PM Legal Flat Rate Envelope
 
     Then Mail: Select Shipping Label 5 x 8

@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - XM Legal Flat Rate
     Given I am signed in as Mail shipper
 
 
-  @wp_sample_shipping_label_8x11_xm_lfr_envelope
+  @mail_sample_shipping_label_8x11_xm_lfr_envelope
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - XM Legal Flat Rate Envelope
 
     Then Mail: Select Shipping Label 8 x 11

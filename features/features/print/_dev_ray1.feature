@@ -4,8 +4,8 @@ Feature: FPO Shipping BVT
   Background:
     Given I am signed in as a postage shipper
 
-  @wp_bvt
-  @wp_bvt_fpo
+  @mail_bvt
+  @mail_bvt_fpo
   Scenario: FPO Shipping
 
     Then Postage: Select Roll 4 x 6

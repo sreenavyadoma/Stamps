@@ -5,8 +5,8 @@ Feature: Stamps C Series - Specify Postage
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_stamps_regression
-  @wp_stamps_c_series_specify
+  @mail_stamps_regression
+  @mail_stamps_c_series_specify
   Scenario: Stamps Regression C Series - Specify Postage
     Then Mail: Select Stamps
     Then Mail Stamps: Set Serial Number to C12345

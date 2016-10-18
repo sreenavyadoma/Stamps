@@ -3,8 +3,8 @@ Feature: Envelope #11
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_envelope_regression
-  @wp_envelope_11
+  @mail_envelope_regression
+  @mail_envelope_11
   Scenario: Envelope #11
     Then Mail: Select Envelope - #11
     Then Mail: Set Ship-From to default

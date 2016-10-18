@@ -5,8 +5,8 @@ Feature: Stamps C Series Calculate - Calculate Postage
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_stamps_regression
-  @wp_stamps_c_series_calculate
+  @mail_stamps_regression
+  @mail_stamps_c_series_calculate
 
   Scenario: Stamps Regression C Series - Calculate Postage
     Then Mail: Select Stamps

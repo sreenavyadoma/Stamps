@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Large Package
     Given I am signed in as Mail shipper
 
 
-  @wp_sample_shipping_label_sdc1200_pm_large_package
+  @mail_sample_shipping_label_sdc1200_pm_large_package
   Scenario: Sample Shipping Label - SDC-1200 - PM Large Package
 
     Then Mail: Select Shipping Label SDC-1200

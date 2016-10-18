@@ -3,8 +3,8 @@ Feature: Address Cleansing BVT
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_bvt
-  @wp_bvt_address_cleansing
+  @mail_bvt
+  @mail_bvt_address_cleansing
   Scenario: Address Cleansing
     Then Mail: Select Shipping Label 5 x 8
     Then Mail: Set Ship-From to default

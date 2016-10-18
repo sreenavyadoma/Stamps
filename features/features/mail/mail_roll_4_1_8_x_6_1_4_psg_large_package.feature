@@ -5,7 +5,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PSG Large Package
     Given I am signed in as Mail shipper
 
 
-  @wp_roll_4_1_8_x_6_1_4_psg_large_package
+  @mail_roll_4_1_8_x_6_1_4_psg_large_package
   Scenario: Roll - 4 ⅛” x 6 ¼” - PSG Large Package
 
     Then Mail: Select Roll 4 ⅛ x 6 ¼

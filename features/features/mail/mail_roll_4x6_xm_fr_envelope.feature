@@ -6,7 +6,7 @@ Feature: Mail Roll - 4" x 6" - XM FR Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_roll_4x6_xm_fr_envelope
+  @mail_roll_4x6_xm_fr_envelope
   Scenario: Roll - 4" x 6" - XM FR Envelope
 
 

@@ -5,8 +5,8 @@ Feature: Envelope #10
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_envelope_regression
-  @wp_envelope_10
+  @mail_envelope_regression
+  @mail_envelope_10
   Scenario: Envelope #10
     Then Mail: Select Envelope - #10
     Then Mail: Set Ship-From to default

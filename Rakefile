@@ -977,1075 +977,1075 @@ Cucumber::Rake::Task.new(:healthcheck) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_bvt) do |t|
-  t.profile = 'wp_bvt'
+Cucumber::Rake::Task.new(:mail_bvt) do |t|
+  t.profile = 'mail_bvt'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_bvt_address_cleansing) do |t|
-  t.profile = 'wp_bvt_address_cleansing'
+Cucumber::Rake::Task.new(:mail_bvt_address_cleansing) do |t|
+  t.profile = 'mail_bvt_address_cleansing'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_bvt_contacts) do |t|
-  t.profile = 'wp_bvt_contacts'
+Cucumber::Rake::Task.new(:mail_bvt_contacts) do |t|
+  t.profile = 'mail_bvt_contacts'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_bvt_envelopes) do |t|
-  t.profile = 'wp_bvt_envelopes'
+Cucumber::Rake::Task.new(:mail_bvt_envelopes) do |t|
+  t.profile = 'mail_bvt_envelopes'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_bvt_extra_services) do |t|
-  t.profile = 'wp_bvt_extra_services'
+Cucumber::Rake::Task.new(:mail_bvt_extra_services) do |t|
+  t.profile = 'mail_bvt_extra_services'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_bvt_purchasing) do |t|
-  t.profile = 'wp_bvt_purchasing'
+Cucumber::Rake::Task.new(:mail_bvt_purchasing) do |t|
+  t.profile = 'mail_bvt_purchasing'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_bvt_netstamps_calculate) do |t|
-  t.profile = 'wp_bvt_netstamps_calculate'
+Cucumber::Rake::Task.new(:mail_bvt_netstamps_calculate) do |t|
+  t.profile = 'mail_bvt_netstamps_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_bvt_netstamps_specify) do |t|
-  t.profile = 'wp_bvt_netstamps_specify'
+Cucumber::Rake::Task.new(:mail_bvt_netstamps_specify) do |t|
+  t.profile = 'mail_bvt_netstamps_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_bvt_international) do |t|
-  t.profile = 'wp_bvt_international'
+Cucumber::Rake::Task.new(:mail_bvt_international) do |t|
+  t.profile = 'mail_bvt_international'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_label_left_side) do |t|
-  t.profile = 'wp_label_left_side'
+Cucumber::Rake::Task.new(:mail_label_left_side) do |t|
+  t.profile = 'mail_label_left_side'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_label_right_side) do |t|
-  t.profile = 'wp_label_right_side'
+Cucumber::Rake::Task.new(:mail_label_right_side) do |t|
+  t.profile = 'mail_label_right_side'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_envelope_10) do |t|
-  t.profile = 'wp_envelope_10'
+Cucumber::Rake::Task.new(:mail_envelope_10) do |t|
+  t.profile = 'mail_envelope_10'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_envelope_9) do |t|
-  t.profile = 'wp_envelope_9'
+Cucumber::Rake::Task.new(:mail_envelope_9) do |t|
+  t.profile = 'mail_envelope_9'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_envelope_A9) do |t|
-  t.profile = 'wp_envelope_A9'
+Cucumber::Rake::Task.new(:mail_envelope_A9) do |t|
+  t.profile = 'mail_envelope_A9'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_envelope_6) do |t|
-  t.profile = 'wp_envelope_6'
+Cucumber::Rake::Task.new(:mail_envelope_6) do |t|
+  t.profile = 'mail_envelope_6'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_envelope_A2) do |t|
-  t.profile = 'wp_envelope_A2'
+Cucumber::Rake::Task.new(:mail_envelope_A2) do |t|
+  t.profile = 'mail_envelope_A2'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_envelope_7) do |t|
-  t.profile = 'wp_envelope_7'
+Cucumber::Rake::Task.new(:mail_envelope_7) do |t|
+  t.profile = 'mail_envelope_7'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_envelope_11) do |t|
-  t.profile = 'wp_envelope_11'
+Cucumber::Rake::Task.new(:mail_envelope_11) do |t|
+  t.profile = 'mail_envelope_11'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_envelope_12) do |t|
-  t.profile = 'wp_envelope_12'
+Cucumber::Rake::Task.new(:mail_envelope_12) do |t|
+  t.profile = 'mail_envelope_12'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_envelope_regression) do |t|
-  t.profile = 'wp_envelope_regression'
+Cucumber::Rake::Task.new(:mail_envelope_regression) do |t|
+  t.profile = 'mail_envelope_regression'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_preview_panel_options) do |t|
-  t.profile = 'wp_shipping_label_preview_panel_options'
+Cucumber::Rake::Task.new(:mail_shipping_label_preview_panel_options) do |t|
+  t.profile = 'mail_shipping_label_preview_panel_options'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_forgot_username) do |t|
-  t.profile = 'wp_forgot_username'
+Cucumber::Rake::Task.new(:mail_forgot_username) do |t|
+  t.profile = 'mail_forgot_username'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_forgot_password) do |t|
-  t.profile = 'wp_forgot_password'
+Cucumber::Rake::Task.new(:mail_forgot_password) do |t|
+  t.profile = 'mail_forgot_password'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_fcm_large_envelope) do |t|
-  t.profile = 'wp_shipping_label_5x8_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_fcm_large_envelope) do |t|
+  t.profile = 'mail_shipping_label_5x8_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_fcm_package) do |t|
-  t.profile = 'wp_shipping_label_5x8_fcm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_fcm_package) do |t|
+  t.profile = 'mail_shipping_label_5x8_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_mm_package) do |t|
-  t.profile = 'wp_shipping_label_5x8_mm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_mm_package) do |t|
+  t.profile = 'mail_shipping_label_5x8_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_fr_envelope) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_fr_envelope) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_large_box) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_large_box'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_large_box) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_large_envelope) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_large_envelope) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_large_package) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_large_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_large_package) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_lfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_lfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_medium_box) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_medium_box) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_package) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_package) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_pfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_pfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_regional_box_a) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_regional_box_a) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_regional_box_b) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_regional_box_b) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_pm_small_box) do |t|
-  t.profile = 'wp_shipping_label_5x8_pm_small_box'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_small_box) do |t|
+  t.profile = 'mail_shipping_label_5x8_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_psg_large_package) do |t|
-  t.profile = 'wp_shipping_label_5x8_psg_large_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_psg_large_package) do |t|
+  t.profile = 'mail_shipping_label_5x8_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_psg_oversized_package) do |t|
-  t.profile = 'wp_shipping_label_5x8_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_psg_oversized_package) do |t|
+  t.profile = 'mail_shipping_label_5x8_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_psg_package) do |t|
-  t.profile = 'wp_shipping_label_5x8_psg_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_psg_package) do |t|
+  t.profile = 'mail_shipping_label_5x8_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_xm_fr_envelope) do |t|
-  t.profile = 'wp_shipping_label_5x8_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_xm_fr_envelope) do |t|
+  t.profile = 'mail_shipping_label_5x8_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_xm_lfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_5x8_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_xm_lfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_5x8_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_xm_package) do |t|
-  t.profile = 'wp_shipping_label_5x8_xm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_xm_package) do |t|
+  t.profile = 'mail_shipping_label_5x8_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_5x8_xm_pfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_5x8_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_5x8_xm_pfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_5x8_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_fcm_large_envelope) do |t|
-  t.profile = 'wp_shipping_label_8x11_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_fcm_large_envelope) do |t|
+  t.profile = 'mail_shipping_label_8x11_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_fcm_package) do |t|
-  t.profile = 'wp_shipping_label_8x11_fcm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_fcm_package) do |t|
+  t.profile = 'mail_shipping_label_8x11_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_mm_package) do |t|
-  t.profile = 'wp_shipping_label_8x11_mm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_mm_package) do |t|
+  t.profile = 'mail_shipping_label_8x11_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_fr_envelope) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_fr_envelope) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_large_box) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_large_box'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_large_box) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_large_envelope) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_large_envelope) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_large_package) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_large_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_large_package) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_lfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_lfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_medium_box) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_medium_box) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_package) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_package) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_pfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_pfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_regional_box_a) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_regional_box_a) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_regional_box_b) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_regional_box_b) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_pm_small_box) do |t|
-  t.profile = 'wp_shipping_label_8x11_pm_small_box'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_small_box) do |t|
+  t.profile = 'mail_shipping_label_8x11_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_psg_large_package) do |t|
-  t.profile = 'wp_shipping_label_8x11_psg_large_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_psg_large_package) do |t|
+  t.profile = 'mail_shipping_label_8x11_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_psg_oversized_package) do |t|
-  t.profile = 'wp_shipping_label_8x11_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_psg_oversized_package) do |t|
+  t.profile = 'mail_shipping_label_8x11_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_psg_package) do |t|
-  t.profile = 'wp_shipping_label_8x11_psg_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_psg_package) do |t|
+  t.profile = 'mail_shipping_label_8x11_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_xm_fr_envelope) do |t|
-  t.profile = 'wp_shipping_label_8x11_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_xm_fr_envelope) do |t|
+  t.profile = 'mail_shipping_label_8x11_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_xm_lfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_8x11_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_xm_lfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_8x11_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_xm_package) do |t|
-  t.profile = 'wp_shipping_label_8x11_xm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_xm_package) do |t|
+  t.profile = 'mail_shipping_label_8x11_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_8x11_xm_pfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_8x11_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_8x11_xm_pfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_8x11_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_fcm_large_envelope) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_fcm_large_envelope) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_fcm_package) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_fcm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_fcm_package) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_mm_package) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_mm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_mm_package) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_fr_envelope) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_fr_envelope) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_large_box) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_large_box'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_large_box) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_large_envelope) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_large_envelope) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_large_package) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_large_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_large_package) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_lfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_lfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_medium_box) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_medium_box) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_package) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_package) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_pfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_pfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_regional_box_a) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_regional_box_a) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_regional_box_b) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_regional_box_b) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_pm_small_box) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_pm_small_box'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_small_box) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_psg_large_package) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_psg_large_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_psg_large_package) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_psg_oversized_package) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_psg_oversized_package) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_psg_package) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_psg_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_psg_package) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_fr_envelope) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_xm_fr_envelope) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_lfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_xm_lfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_package) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_xm_package'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_xm_package) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_shipping_label_sdc1200_xm_pfr_envelope) do |t|
-  t.profile = 'wp_shipping_label_sdc1200_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_xm_pfr_envelope) do |t|
+  t.profile = 'mail_shipping_label_sdc1200_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_fcm_large_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_fcm_large_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_fcm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_fcm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_fcm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_mm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_mm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_mm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_fr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_fr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_large_box) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_large_box'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_large_box) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_large_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_large_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_large_package) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_large_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_large_package) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_lfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_lfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_medium_box) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_medium_box) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_pfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_pfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_regional_box_a) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_regional_box_a) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_regional_box_b) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_regional_box_b) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_pm_small_box) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_pm_small_box'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_small_box) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_psg_large_package) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_psg_large_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_psg_large_package) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_psg_oversized_package) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_psg_oversized_package) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_psg_package) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_psg_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_psg_package) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_xm_fr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_xm_fr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_xm_lfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_xm_lfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_xm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_xm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_xm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_5x8_xm_pfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_5x8_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_xm_pfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_5x8_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_fcm_large_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_fcm_large_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_fcm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_fcm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_fcm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_mm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_mm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_mm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_fr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_fr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_large_box) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_large_box'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_large_box) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_large_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_large_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_large_package) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_large_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_large_package) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_lfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_lfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_medium_box) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_medium_box) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_pfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_pfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_regional_box_a) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_regional_box_a) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_regional_box_b) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_regional_box_b) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_pm_small_box) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_pm_small_box'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_small_box) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_psg_large_package) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_psg_large_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_psg_large_package) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_psg_oversized_package) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_psg_oversized_package) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_psg_package) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_psg_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_psg_package) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_xm_fr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_xm_fr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_xm_lfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_xm_lfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_xm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_xm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_xm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_8x11_xm_pfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_8x11_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_xm_pfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_8x11_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_fcm_large_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_fcm_large_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_fcm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_fcm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_fcm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_mm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_mm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_mm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_fr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_fr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_large_box) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_large_box'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_large_box) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_large_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_large_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_large_package) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_large_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_large_package) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_lfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_lfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_medium_box) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_medium_box) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_pfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_pfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_regional_box_a) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_regional_box_a) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_regional_box_b) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_regional_box_b) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_pm_small_box) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_pm_small_box'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_small_box) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_psg_large_package) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_psg_large_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_psg_large_package) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_psg_oversized_package) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_psg_oversized_package) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_psg_package) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_psg_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_psg_package) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_xm_fr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_xm_fr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_xm_lfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_xm_lfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_xm_package) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_xm_package'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_xm_package) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_sample_shipping_label_sdc1200_xm_pfr_envelope) do |t|
-  t.profile = 'wp_sample_shipping_label_sdc1200_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_xm_pfr_envelope) do |t|
+  t.profile = 'mail_sample_shipping_label_sdc1200_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
 
-Cucumber::Rake::Task.new(:wp_stamps_a_series_calculate) do |t|
-  t.profile = 'wp_stamps_a_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_a_series_calculate) do |t|
+  t.profile = 'mail_stamps_a_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_a_series_specify) do |t|
-  t.profile = 'wp_stamps_a_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_a_series_specify) do |t|
+  t.profile = 'mail_stamps_a_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_b_series_calculate) do |t|
-  t.profile = 'wp_stamps_b_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_b_series_calculate) do |t|
+  t.profile = 'mail_stamps_b_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_b_series_specify) do |t|
-  t.profile = 'wp_stamps_b_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_b_series_specify) do |t|
+  t.profile = 'mail_stamps_b_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_c_series_calculate) do |t|
-  t.profile = 'wp_stamps_c_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_c_series_calculate) do |t|
+  t.profile = 'mail_stamps_c_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_c_series_specify) do |t|
-  t.profile = 'wp_stamps_c_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_c_series_specify) do |t|
+  t.profile = 'mail_stamps_c_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_k_series_calculate) do |t|
-  t.profile = 'wp_stamps_k_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_k_series_calculate) do |t|
+  t.profile = 'mail_stamps_k_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_k_series_specify) do |t|
-  t.profile = 'wp_stamps_k_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_k_series_specify) do |t|
+  t.profile = 'mail_stamps_k_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_l_series_calculate) do |t|
-  t.profile = 'wp_stamps_l_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_l_series_calculate) do |t|
+  t.profile = 'mail_stamps_l_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_l_series_specify) do |t|
-  t.profile = 'wp_stamps_l_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_l_series_specify) do |t|
+  t.profile = 'mail_stamps_l_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_ml_series_calculate) do |t|
-  t.profile = 'wp_stamps_ml_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_ml_series_calculate) do |t|
+  t.profile = 'mail_stamps_ml_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_ml_series_specify) do |t|
-  t.profile = 'wp_stamps_ml_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_ml_series_specify) do |t|
+  t.profile = 'mail_stamps_ml_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_p_series_calculate) do |t|
-  t.profile = 'wp_stamps_p_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_p_series_calculate) do |t|
+  t.profile = 'mail_stamps_p_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_p_series_specify) do |t|
-  t.profile = 'wp_stamps_p_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_p_series_specify) do |t|
+  t.profile = 'mail_stamps_p_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_r_series_calculate) do |t|
-  t.profile = 'wp_stamps_r_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_r_series_calculate) do |t|
+  t.profile = 'mail_stamps_r_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_r_series_specify) do |t|
-  t.profile = 'wp_stamps_r_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_r_series_specify) do |t|
+  t.profile = 'mail_stamps_r_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_s_series_calculate) do |t|
-  t.profile = 'wp_stamps_s_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_s_series_calculate) do |t|
+  t.profile = 'mail_stamps_s_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_s_series_specify) do |t|
-  t.profile = 'wp_stamps_s_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_s_series_specify) do |t|
+  t.profile = 'mail_stamps_s_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_v_series_calculate) do |t|
-  t.profile = 'wp_stamps_v_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_v_series_calculate) do |t|
+  t.profile = 'mail_stamps_v_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_v_series_specify) do |t|
-  t.profile = 'wp_stamps_v_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_v_series_specify) do |t|
+  t.profile = 'mail_stamps_v_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_wn_series_calculate) do |t|
-  t.profile = 'wp_stamps_wn_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_wn_series_calculate) do |t|
+  t.profile = 'mail_stamps_wn_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_stamps_wn_series_specify) do |t|
-  t.profile = 'wp_stamps_wn_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_wn_series_specify) do |t|
+  t.profile = 'mail_stamps_wn_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_fcm_large_envelope) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_fcm_large_envelope) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_fcm_package) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_fcm_package'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_fcm_package) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_mm_package) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_mm_package'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_mm_package) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_fr_envelope) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_fr_envelope) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_large_box) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_large_box'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_large_box) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_large_envelope) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_large_envelope) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_large_package) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_large_package'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_large_package) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_lfr_envelope) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_medium_box) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_medium_box) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_package) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_package'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_package) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_pfr_envelope) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_pfr_envelope) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_regional_box_a) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_regional_box_a) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_regional_box_b) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_regional_box_b) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_pm_small_box) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_pm_small_box'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_small_box) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_psg_large_package) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_psg_large_package'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_psg_large_package) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_psg_oversized_package) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_psg_oversized_package) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_psg_package) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_psg_package'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_psg_package) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_xm_fr_envelope) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_xm_fr_envelope) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_xm_lfr_envelope) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_xm_lfr_envelope) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_xm_package) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_xm_package'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_xm_package) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4_1_8_x_6_1_4_xm_pfr_envelope) do |t|
-  t.profile = 'wp_roll_4_1_8_x_6_1_4_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_xm_pfr_envelope) do |t|
+  t.profile = 'mail_roll_4_1_8_x_6_1_4_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_fcm_large_envelope) do |t|
-  t.profile = 'wp_roll_4x6_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4x6_fcm_large_envelope) do |t|
+  t.profile = 'mail_roll_4x6_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_fcm_package) do |t|
-  t.profile = 'wp_roll_4x6_fcm_package'
+Cucumber::Rake::Task.new(:mail_roll_4x6_fcm_package) do |t|
+  t.profile = 'mail_roll_4x6_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_mm_package) do |t|
-  t.profile = 'wp_roll_4x6_mm_package'
+Cucumber::Rake::Task.new(:mail_roll_4x6_mm_package) do |t|
+  t.profile = 'mail_roll_4x6_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_fr_envelope) do |t|
-  t.profile = 'wp_roll_4x6_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_fr_envelope) do |t|
+  t.profile = 'mail_roll_4x6_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_large_box) do |t|
-  t.profile = 'wp_roll_4x6_pm_large_box'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_large_box) do |t|
+  t.profile = 'mail_roll_4x6_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_large_envelope) do |t|
-  t.profile = 'wp_roll_4x6_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_large_envelope) do |t|
+  t.profile = 'mail_roll_4x6_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_large_package) do |t|
-  t.profile = 'wp_roll_4x6_pm_large_package'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_large_package) do |t|
+  t.profile = 'mail_roll_4x6_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_lfr_envelope) do |t|
-  t.profile = 'wp_roll_4x6_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_lfr_envelope) do |t|
+  t.profile = 'mail_roll_4x6_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_medium_box) do |t|
-  t.profile = 'wp_roll_4x6_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_medium_box) do |t|
+  t.profile = 'mail_roll_4x6_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_package) do |t|
-  t.profile = 'wp_roll_4x6_pm_package'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_package) do |t|
+  t.profile = 'mail_roll_4x6_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_pfr_envelope) do |t|
-  t.profile = 'wp_roll_4x6_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_pfr_envelope) do |t|
+  t.profile = 'mail_roll_4x6_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_regional_box_a) do |t|
-  t.profile = 'wp_roll_4x6_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_regional_box_a) do |t|
+  t.profile = 'mail_roll_4x6_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_regional_box_b) do |t|
-  t.profile = 'wp_roll_4x6_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_regional_box_b) do |t|
+  t.profile = 'mail_roll_4x6_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_pm_small_box) do |t|
-  t.profile = 'wp_roll_4x6_pm_small_box'
+Cucumber::Rake::Task.new(:mail_roll_4x6_pm_small_box) do |t|
+  t.profile = 'mail_roll_4x6_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_psg_large_package) do |t|
-  t.profile = 'wp_roll_4x6_psg_large_package'
+Cucumber::Rake::Task.new(:mail_roll_4x6_psg_large_package) do |t|
+  t.profile = 'mail_roll_4x6_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_psg_oversized_package) do |t|
-  t.profile = 'wp_roll_4x6_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_roll_4x6_psg_oversized_package) do |t|
+  t.profile = 'mail_roll_4x6_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_psg_package) do |t|
-  t.profile = 'wp_roll_4x6_psg_package'
+Cucumber::Rake::Task.new(:mail_roll_4x6_psg_package) do |t|
+  t.profile = 'mail_roll_4x6_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_xm_fr_envelope) do |t|
-  t.profile = 'wp_roll_4x6_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4x6_xm_fr_envelope) do |t|
+  t.profile = 'mail_roll_4x6_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_xm_lfr_envelope) do |t|
-  t.profile = 'wp_roll_4x6_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4x6_xm_lfr_envelope) do |t|
+  t.profile = 'mail_roll_4x6_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_xm_package) do |t|
-  t.profile = 'wp_roll_4x6_xm_package'
+Cucumber::Rake::Task.new(:mail_roll_4x6_xm_package) do |t|
+  t.profile = 'mail_roll_4x6_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_roll_4x6_xm_pfr_envelope) do |t|
-  t.profile = 'wp_roll_4x6_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_roll_4x6_xm_pfr_envelope) do |t|
+  t.profile = 'mail_roll_4x6_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_print_on_list_of_values) do |t|
-  t.profile = 'wp_print_on_list_of_values'
+Cucumber::Rake::Task.new(:mail_print_on_list_of_values) do |t|
+  t.profile = 'mail_print_on_list_of_values'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -2085,18 +2085,18 @@ Cucumber::Rake::Task.new(:orders_bvt_purchasing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_print_postage_elements) do |t|
-  t.profile = 'wp_print_postage_elements'
+Cucumber::Rake::Task.new(:mail_print_postage_elements) do |t|
+  t.profile = 'mail_print_postage_elements'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_invalid_credentials) do |t|
-  t.profile = 'wp_invalid_credentials'
+Cucumber::Rake::Task.new(:mail_invalid_credentials) do |t|
+  t.profile = 'mail_invalid_credentials'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_manage_shipping_addresses) do |t|
-  t.profile = 'wp_manage_shipping_addresses'
+Cucumber::Rake::Task.new(:mail_manage_shipping_addresses) do |t|
+  t.profile = 'mail_manage_shipping_addresses'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -2105,8 +2105,8 @@ Cucumber::Rake::Task.new(:mail_remember_username) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:wp_welcome) do |t|
-  t.profile = 'wp_welcome'
+Cucumber::Rake::Task.new(:mail_welcome) do |t|
+  t.profile = 'mail_welcome'
   t.cucumber_opts = "-p cuke_reports"
 end
 

@@ -3,8 +3,8 @@ Feature: International Shipping BVT
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_bvt
-  @wp_bvt_international
+  @mail_bvt
+  @mail_bvt_international
   Scenario: International Shipping
 
     Then Mail: Select Shipping Label 5 x 8

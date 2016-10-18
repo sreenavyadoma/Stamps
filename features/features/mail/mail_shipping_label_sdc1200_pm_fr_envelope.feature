@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM FR Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_sdc1200_pm_fr_envelope
+  @mail_shipping_label_sdc1200_pm_fr_envelope
   Scenario: Shipping Label - SDC-1200 - PM FR Envelope
 
     Then Mail: Select Shipping Label SDC-1200

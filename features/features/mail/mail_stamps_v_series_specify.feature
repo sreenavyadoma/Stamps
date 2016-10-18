@@ -5,8 +5,8 @@ Feature: Stamps V Series - Specify Postage
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_stamps_regression
-  @wp_stamps_v_series_specify
+  @mail_stamps_regression
+  @mail_stamps_v_series_specify
   Scenario: Stamps Regression V Series - Specify Postage
     Then Mail: Select Stamps
     Then Mail Stamps: Set Serial Number to V12345

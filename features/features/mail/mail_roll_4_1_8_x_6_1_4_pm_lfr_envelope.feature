@@ -6,7 +6,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM LFR Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_roll_4_1_8_x_6_1_4_pm_lfr_envelope
+  @mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope
   Scenario: Roll - 4 ⅛” x 6 ¼” - PM PM LFR Envelope
 
     Then Mail: Select Roll 4 ⅛ x 6 ¼

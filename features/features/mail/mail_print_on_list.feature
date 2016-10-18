@@ -3,7 +3,7 @@ Feature: Print On List Of Values
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_print_on_list_of_values
+  @mail_print_on_list_of_values
   Scenario: Print On List Of Values
     Then Mail: Select Shipping Label 8 x 11
     Then Mail: Select Stamps
