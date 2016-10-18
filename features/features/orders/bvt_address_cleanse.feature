@@ -1,4 +1,3 @@
-@bvt
 Feature:  BVT Address Cleansing
 
   Background:
