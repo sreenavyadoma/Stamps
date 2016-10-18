@@ -4,7 +4,7 @@ Feature: Address Cleansing
   Background:
     Given I am signed in to Orders
 
-  @address_cleansing
+  @orders_address_cleansing
   Scenario: Address Cleansing
     Then Toolbar: Add
     Then Details: Set Ship-From to default

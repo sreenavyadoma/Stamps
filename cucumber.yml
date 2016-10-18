@@ -206,8 +206,8 @@ tooltips_services: --tags @tooltips_services --guess VERBOSE=false HEALTHCHECK=t
 filter_change_order_status: --tags @filter_change_order_status --guess VERBOSE=false HEALTHCHECK=true
 grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=true
 order_creation: --tags @order_creation --guess VERBOSE=false HEALTHCHECK=true
-address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=true
-address_management: --tags @address_management --guess VERBOSE=false HEALTHCHECK=true
+orders_address_cleansing: --tags @orders_address_cleansing,@bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=true
+orders_address_management: --tags @orders_address_management --guess VERBOSE=false HEALTHCHECK=true
 tracking: --tags @tracking --guess VERBOSE=false HEALTHCHECK=true
 inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false HEALTHCHECK=true
 local_rating: --tags @local_rating --guess VERBOSE=false HEALTHCHECK=true
@@ -220,7 +220,8 @@ add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false HEALTHCHECK=t
 orders_10: --tags @orders_10 --guess VERBOSE=false HEALTHCHECK=true
 orders_20: --tags @orders_20 --guess VERBOSE=false HEALTHCHECK=true
 jenkins_orders: --tags @jenkins_orders --guess VERBOSE=false HEALTHCHECK=true
-auto_suggest: --tags @auto_suggest --guess VERBOSE=false HEALTHCHECK=true
+orders_auto_suggest: --tags @orders_auto_suggest --guess VERBOSE=false HEALTHCHECK=true
+orders_auto_suggest_international: --tags @orders_auto_suggest_international --guess VERBOSE=false HEALTHCHECK=true
 new_country_code: --tags  @new_country_code --guess VERBOSE=false HEALTHCHECK=true
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEALTHCHECK=true
 rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=true

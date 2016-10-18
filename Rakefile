@@ -831,13 +831,13 @@ Cucumber::Rake::Task.new(:wonder_bvt) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:address_cleansing) do |t|
-  t.profile = 'address_cleansing'
+Cucumber::Rake::Task.new(:orders_address_cleansing) do |t|
+  t.profile = 'orders_address_cleansing'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:address_management) do |t|
-  t.profile = 'address_management'
+Cucumber::Rake::Task.new(:orders_address_management) do |t|
+  t.profile = 'orders_address_management'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -937,8 +937,13 @@ Cucumber::Rake::Task.new(:print_regression) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:auto_suggest) do |t|
-  t.profile = 'auto_suggest'
+Cucumber::Rake::Task.new(:orders_auto_suggest) do |t|
+  t.profile = 'orders_auto_suggest'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:orders_auto_suggest_international) do |t|
+  t.profile = 'orders_auto_suggest_international'
   t.cucumber_opts = "-p cuke_reports"
 end
 

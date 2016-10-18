@@ -1,10 +1,9 @@
-@regression
 Feature: Ambigious Address
 
   Background:
     Given I am signed in to Orders
 
-  @ambigious_address
+  @orders_ambigious_address
   Scenario: Exact Address Not Found
     Then Toolbar: Add
     Then Details: Set Ship-From to default
