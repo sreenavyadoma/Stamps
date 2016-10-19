@@ -170,6 +170,7 @@ Then /^Mail: Set Ship-To to$/ do |table|
   end
 end
 
+#todo-rob refactor ship-to random address
 Then /^Mail: Set Ship-To address to (.*)$/ do |address|
   logger.step "Mail: Set Ship-To to \"#{address}\""
   case address.downcase

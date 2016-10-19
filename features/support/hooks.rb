@@ -13,6 +13,13 @@ include RAutomation
 Before do  |scenario|
   Stamps.init scenario.name
   @orders_test_data = Hash.new
+
+  address = ParameterHelper.rand_zone_1_4
+  @orders_test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
+
+  address = ParameterHelper.rand_zone_6
+  @orders_test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
+
   logger.message "Running Tests..."
   logger.message "-"
   logger.message "-"

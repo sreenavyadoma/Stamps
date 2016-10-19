@@ -7,7 +7,10 @@ Feature:  BVT Order Creation
   Scenario:  Add a new order
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
+    Then Details: Set Ship-To to address in Zone 1
+
+    Then Details: Set Ship-To to address in Zone 1 through 4
+
     Then Details: Select Service Priority Mail Package
 
     # Single Order Details Weight
