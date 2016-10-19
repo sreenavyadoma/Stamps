@@ -591,13 +591,13 @@ module Stamps
         end
 
         class AddButton < Browser::Modal
-          attr_reader :button, :initializing_db
+          attr_reader :button, :initializing_db, :loading_orders
 
           def initialize param
             super param
             @button ||= ElementWrapper.new browser.span text: 'Add'
             @initializing_db ||= ElementWrapper.new browser.div text: "Initializing Order Database"
-
+            @loading_orders = ElementWrapper.new browser.div(text: "Loading orders...")
           end
 
           def order_details
@@ -616,6 +616,17 @@ module Stamps
                     logger.info initializing_db.text
                     sleep1
                     break unless initializing_db.present?
+                  end
+                end
+
+                3.times do
+                  if loading_orders.present?
+                    logger.step loading_orders.safe_text
+                    logger.step loading_orders.safe_text
+                    logger.step loading_orders.safe_text
+                    loading_orders.safely_wait_while_present 5
+                  else
+                    break
                   end
                 end
 

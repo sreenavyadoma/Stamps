@@ -138,9 +138,9 @@ module Stamps
 
             3.times do
               if loading_orders.present?
-                logger.info loading_orders.safe_text
-                logger.info loading_orders.safe_text
-                logger.info loading_orders.safe_text
+                logger.step loading_orders.safe_text
+                logger.step loading_orders.safe_text
+                logger.step loading_orders.safe_text
                 loading_orders.safely_wait_while_present 5
               else
                 break
