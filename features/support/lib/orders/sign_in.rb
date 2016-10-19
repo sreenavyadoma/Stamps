@@ -91,7 +91,7 @@ module Stamps
         plugin_issue = ErrorStampsPluginIssue.new param
         toolbar = Stamps::Orders::Toolbar::Toolbar.new param
         market_place = Orders::Stores::MarketPlace.new param
-        loading_orders = ElementWrapper.new browser.div text: "Loading orders..."
+        loading_orders = ElementWrapper.new browser.div(text: "Loading orders...")
 
         raise "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
 
@@ -139,7 +139,9 @@ module Stamps
             3.times do
               if loading_orders.present?
                 logger.info loading_orders.safe_text
-                sleep 1
+                logger.info loading_orders.safe_text
+                logger.info loading_orders.safe_text
+                loading_orders.safely_wait_while_present 5
               else
                 break
               end
