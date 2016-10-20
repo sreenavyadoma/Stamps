@@ -25,8 +25,6 @@ Feature:  BVT International Shipping
     Then Customs: Close Modal
 
     Then Print: Open Modal
-    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
-    Then Print: Set Printer to "factory"
-    Then Print: Print
+    Then Print: Close Modal
 
     Then Sign out
