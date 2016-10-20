@@ -5,7 +5,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 
 #qasc800 mail_bvt_international
 rob_cc: --tags @bvt_new_order --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
-rob_stg: --tags @shipstation_updates_domestic --guess VERBOSE=true HEALTHCHECK=false URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
+rob_stg: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true HEALTHCHECK=false URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_sc: --tags @mail_sample_shipping_label_5x8_pm_large_box --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc #yh95ws85j c2jinmzmu64 store parcel_select
 rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=chrome PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
 rob_dev_ie: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=ie PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
@@ -87,8 +87,8 @@ details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE
 details_insure_for_box_unchecked_manual: --tags @details_insure_for_box_unchecked_manual --guess VERBOSE=false HEALTHCHECK=true
 details_insure_for_box_unchecked_imported: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=false HEALTHCHECK=true #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
 
-shipstation_updates_domestic: --tags @shipstation_updates_domestic --guess VERBOSE=false HEALTHCHECK=true
-shipstation_updates_international: --tags @shipstation_updates_international --guess VERBOSE=false HEALTHCHECK=true
+bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=false HEALTHCHECK=true
+bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess VERBOSE=false HEALTHCHECK=true
 
 import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=bu8sdr5ui PW=pass111
 

@@ -4,7 +4,7 @@ Feature:  Update International Orders to ShipStation
   Background:
     Given I am signed in to Orders
 
-  @shipstation_updates_international
+  @bvt_shipstation_updates_international
   Scenario:  Update ShipStation
 
     Then Toolbar: Add
