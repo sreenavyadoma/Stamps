@@ -2,6 +2,7 @@ default: --profile cuke_reports --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
+
 #qasc800 mail_bvt_international
 rob_cc: --tags @orders_bvt_add_new_order --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 rob_stg: --tags @shipstation_updates_domestic --guess VERBOSE=true HEALTHCHECK=false URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates

@@ -1,0 +1,3 @@
+FAILED PLUGINS:
+Multi-Branch Project Plugin
+Environment Script Plugin
