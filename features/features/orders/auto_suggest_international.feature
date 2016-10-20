@@ -4,7 +4,7 @@ Feature: International Address
   Background:
     Given I am signed in to Orders
 
-  @orders_auto_suggest_international
+  @auto_suggest_international
   Scenario: Select International Address
 
     Then Toolbar: Add

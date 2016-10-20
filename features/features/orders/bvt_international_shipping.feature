@@ -3,7 +3,7 @@ Feature:  BVT International Shipping
   Background:
     Given I am signed in to Orders
 
-  @orders_bvt_international_shipping
+  @bvt_international_shipping
   Scenario: International Shipping
 
     Then Toolbar: Add

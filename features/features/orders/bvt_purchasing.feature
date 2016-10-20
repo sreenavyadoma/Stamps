@@ -4,7 +4,7 @@ Feature: BVT Purchasing
   Background:
     Given I am signed in to Orders
 
-  @orders_bvt_purchasing
+  @bvt_purchasing
   Scenario: Purchasing $10
     Then Buy Mail: Purchase 10
     Then Buy Mail: Click Purchase button

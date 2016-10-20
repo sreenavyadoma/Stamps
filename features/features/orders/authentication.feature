@@ -1,4 +1,4 @@
-@orders_authentication
+@authentication
 Feature: Orders Authentication Test
   Background:
     Given I am signed in to Orders

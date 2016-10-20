@@ -4,7 +4,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 
 
 #qasc800 mail_bvt_international
-rob_cc: --tags @orders_bvt_add_new_order --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+rob_cc: --tags @bvt_add_new_order --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 rob_stg: --tags @shipstation_updates_domestic --guess VERBOSE=true HEALTHCHECK=false URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_sc: --tags @mail_sample_shipping_label_5x8_pm_large_box --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc #yh95ws85j c2jinmzmu64 store parcel_select
 rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=chrome PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
@@ -49,20 +49,20 @@ healthcheck: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true
 healthcheck_cc: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=bz9005j1r2jx0 PW=pass111
 healthcheck_stg: --tags @healthcheck --guess VERBOSE=false HEALTHCHECK=true URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=uadybt5iev PW=pass111
 
-orders_authentication_stg: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=uadybt5iev PW=pass111
-orders_authentication_cc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=bz9005j1r2jx0 PW=pass111
-orders_authentication_sc: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=jes9t1kus PW=pass111
-orders_authentication: --tags @orders_authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=jes9t1kus PW=pass111
+authentication_stg: --tags @authentication --guess VERBOSE=false HEALTHCHECK=true URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=uadybt5iev PW=pass111
+authentication_cc: --tags @authentication --guess VERBOSE=false HEALTHCHECK=true URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=bz9005j1r2jx0 PW=pass111
+authentication_sc: --tags @authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=jes9t1kus PW=pass111
+authentication: --tags @authentication --guess VERBOSE=false HEALTHCHECK=true URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=jes9t1kus PW=pass111
 print_cc: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=true USR=mi9m76jlbgya PW=pass111
 
 # --------------------------  ORDERS BVT
-orders_bvt_shipping_address_management: --tags @orders_bvt_shipping_address_management --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_ambigious_address: --tags @orders_bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_address_cleansing: --tags @orders_bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_international_shipping: --tags @orders_bvt_international_shipping --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_add_new_order: --tags @orders_bvt_add_new_order --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_printing: --tags @orders_bvt_printing --guess VERBOSE=false HEALTHCHECK=true
-orders_bvt_purchasing: --tags @orders_bvt_purchasing --guess VERBOSE=false HEALTHCHECK=true
+bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess VERBOSE=false HEALTHCHECK=true
+bvt_ambigious_address: --tags @bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=true
+bvt_address_cleansing: --tags @bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=true
+bvt_international_shipping: --tags @bvt_international_shipping --guess VERBOSE=false HEALTHCHECK=true
+bvt_add_new_order: --tags @bvt_add_new_order --guess VERBOSE=false HEALTHCHECK=true
+bvt_printing: --tags @bvt_printing --guess VERBOSE=false HEALTHCHECK=true
+bvt_purchasing: --tags @bvt_purchasing --guess VERBOSE=false HEALTHCHECK=true
 
 # Stores
 marketplace: --tags @marketplace --guess VERBOSE=false HEALTHCHECK=true
@@ -208,8 +208,8 @@ tooltips_services: --tags @tooltips_services --guess VERBOSE=false HEALTHCHECK=t
 filter_change_order_status: --tags @filter_change_order_status --guess VERBOSE=false HEALTHCHECK=true
 grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=true
 order_creation: --tags @order_creation --guess VERBOSE=false HEALTHCHECK=true
-orders_address_cleansing: --tags @orders_address_cleansing,@bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=true
-orders_address_management: --tags @orders_address_management --guess VERBOSE=false HEALTHCHECK=true
+address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=true
+address_management: --tags @address_management --guess VERBOSE=false HEALTHCHECK=true
 tracking: --tags @tracking --guess VERBOSE=false HEALTHCHECK=true
 inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false HEALTHCHECK=true
 local_rating: --tags @local_rating --guess VERBOSE=false HEALTHCHECK=true
@@ -222,8 +222,8 @@ add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false HEALTHCHECK=t
 orders_10: --tags @orders_10 --guess VERBOSE=false HEALTHCHECK=true
 orders_20: --tags @orders_20 --guess VERBOSE=false HEALTHCHECK=true
 jenkins_orders: --tags @jenkins_orders --guess VERBOSE=false HEALTHCHECK=true
-orders_auto_suggest: --tags @orders_auto_suggest --guess VERBOSE=false HEALTHCHECK=true
-orders_auto_suggest_international: --tags @orders_auto_suggest_international --guess VERBOSE=false HEALTHCHECK=true
+auto_suggest: --tags @auto_suggest --guess VERBOSE=false HEALTHCHECK=true
+auto_suggest_international: --tags @auto_suggest_international --guess VERBOSE=false HEALTHCHECK=true
 new_country_code: --tags  @new_country_code --guess VERBOSE=false HEALTHCHECK=true
 fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEALTHCHECK=true
 rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=true

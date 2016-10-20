@@ -216,13 +216,13 @@ Cucumber::Rake::Task.new(:print_cc) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_authentication) do |t|
-  t.profile = 'orders_authentication'
+Cucumber::Rake::Task.new(:authentication) do |t|
+  t.profile = 'authentication'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_authentication_stg) do |t|
-  t.profile = 'orders_authentication_stg'
+Cucumber::Rake::Task.new(:authentication_stg) do |t|
+  t.profile = 'authentication_stg'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -271,13 +271,13 @@ Cucumber::Rake::Task.new(:shipstation_updates_domestic) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_authentication_sc) do |t|
-  t.profile = 'orders_authentication_sc'
+Cucumber::Rake::Task.new(:authentication_sc) do |t|
+  t.profile = 'authentication_sc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_authentication_cc) do |t|
-  t.profile = 'orders_authentication_cc'
+Cucumber::Rake::Task.new(:authentication_cc) do |t|
+  t.profile = 'authentication_cc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -606,8 +606,8 @@ Cucumber::Rake::Task.new(:details_reference_no) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_authentication) do |t|
-  t.profile = 'orders_authentication'
+Cucumber::Rake::Task.new(:authentication) do |t|
+  t.profile = 'authentication'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -831,13 +831,13 @@ Cucumber::Rake::Task.new(:wonder_bvt) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_address_cleansing) do |t|
-  t.profile = 'orders_address_cleansing'
+Cucumber::Rake::Task.new(:address_cleansing) do |t|
+  t.profile = 'address_cleansing'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_address_management) do |t|
-  t.profile = 'orders_address_management'
+Cucumber::Rake::Task.new(:address_management) do |t|
+  t.profile = 'address_management'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -937,13 +937,13 @@ Cucumber::Rake::Task.new(:print_regression) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_auto_suggest) do |t|
-  t.profile = 'orders_auto_suggest'
+Cucumber::Rake::Task.new(:auto_suggest) do |t|
+  t.profile = 'auto_suggest'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_auto_suggest_international) do |t|
-  t.profile = 'orders_auto_suggest_international'
+Cucumber::Rake::Task.new(:auto_suggest_international) do |t|
+  t.profile = 'auto_suggest_international'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -2054,39 +2054,39 @@ Cucumber::Rake::Task.new(:mail_print_on_list_of_values) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_bvt_shipping_address_management) do |t|
-  t.profile = 'orders_bvt_shipping_address_management'
+Cucumber::Rake::Task.new(:bvt_shipping_address_management) do |t|
+  t.profile = 'bvt_shipping_address_management'
   t.cucumber_opts = "-p cuke_reports"
 end
 
 
 
-Cucumber::Rake::Task.new(:orders_bvt_ambigious_address) do |t|
-  t.profile = 'orders_bvt_ambigious_address'
+Cucumber::Rake::Task.new(:bvt_ambigious_address) do |t|
+  t.profile = 'bvt_ambigious_address'
   t.cucumber_opts = "-p cuke_reports"
 end
-Cucumber::Rake::Task.new(:orders_bvt_address_cleansing) do |t|
-  t.profile = 'orders_bvt_address_cleansing'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:orders_bvt_international_shipping) do |t|
-  t.profile = 'orders_bvt_international_shipping'
+Cucumber::Rake::Task.new(:bvt_address_cleansing) do |t|
+  t.profile = 'bvt_address_cleansing'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_bvt_add_new_order) do |t|
-  t.profile = 'orders_bvt_add_new_order'
+Cucumber::Rake::Task.new(:bvt_international_shipping) do |t|
+  t.profile = 'bvt_international_shipping'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_bvt_printing) do |t|
-  t.profile = 'orders_bvt_printing'
+Cucumber::Rake::Task.new(:bvt_add_new_order) do |t|
+  t.profile = 'bvt_add_new_order'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_bvt_purchasing) do |t|
-  t.profile = 'orders_bvt_purchasing'
+Cucumber::Rake::Task.new(:bvt_printing) do |t|
+  t.profile = 'bvt_printing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bvt_purchasing) do |t|
+  t.profile = 'bvt_purchasing'
   t.cucumber_opts = "-p cuke_reports"
 end
 

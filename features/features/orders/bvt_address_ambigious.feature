@@ -3,7 +3,7 @@ Feature:  Ambigious Address
   Background:
     Given I am signed in to Orders
 
-  @orders_bvt_ambigious_address
+  @bvt_ambigious_address
   Scenario: Ambigious Address
     Then Toolbar: Add
     Then Details: Set Ship-From to default

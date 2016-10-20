@@ -4,7 +4,7 @@ Feature:  Address Management
   Background:
     Given I am signed in to Orders
 
-  @orders_address_management
+  @address_management
   Scenario: Address Management
     Then Toolbar: Add
     Then Add Ship-From address

@@ -4,7 +4,7 @@ Feature:  BVT Address Management
   Background:
     Given I am signed in to Orders
 
-  @orders_bvt_shipping_address_management
+  @bvt_shipping_address_management
   Scenario: BVT Shipping Address
     Then Toolbar: Add
     Then Add Ship-From address

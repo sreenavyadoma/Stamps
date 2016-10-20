@@ -4,7 +4,7 @@ Feature: Domestic Address
   Background:
     Given I am signed in to Orders
 
-  @orders_auto_suggest
+  @auto_suggest
   Scenario: Auto Suggest for Domestic Addresses
 
     Then Toolbar: Add

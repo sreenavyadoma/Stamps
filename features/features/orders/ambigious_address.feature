@@ -3,7 +3,7 @@ Feature: Ambigious Address
   Background:
     Given I am signed in to Orders
 
-  @orders_ambigious_address
+  @ambigious_address
   Scenario: Exact Address Not Found
     Then Toolbar: Add
     Then Details: Set Ship-From to default
