@@ -3,7 +3,7 @@ Feature:  BVT Order Creation
   Background:
     Given I am signed in to Orders
 
-  @bvt_add_new_order
+  @bvt_new_order
   Scenario:  Add a new order
     Then Toolbar: Add
     Then Details: Set Ship-From to default

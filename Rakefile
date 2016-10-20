@@ -166,8 +166,8 @@ Cucumber::Rake::Task.new(:bvt_international_shipping) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:bvt_add_new_order) do |t|
-  t.profile = 'bvt_add_new_order'
+Cucumber::Rake::Task.new(:bvt_new_order) do |t|
+  t.profile = 'bvt_new_order'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -2075,8 +2075,8 @@ Cucumber::Rake::Task.new(:bvt_international_shipping) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:bvt_add_new_order) do |t|
-  t.profile = 'bvt_add_new_order'
+Cucumber::Rake::Task.new(:bvt_new_order) do |t|
+  t.profile = 'bvt_new_order'
   t.cucumber_opts = "-p cuke_reports"
 end
 

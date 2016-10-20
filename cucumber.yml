@@ -4,7 +4,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 
 
 #qasc800 mail_bvt_international
-rob_cc: --tags @bvt_add_new_order --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+rob_cc: --tags @bvt_new_order --guess VERBOSE=true HEALTHCHECK=true URL=cc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 rob_stg: --tags @shipstation_updates_domestic --guess VERBOSE=true HEALTHCHECK=false URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_sc: --tags @mail_sample_shipping_label_5x8_pm_large_box --guess VERBOSE=true HEALTHCHECK=false URL=sc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc #yh95ws85j c2jinmzmu64 store parcel_select
 rob_dev_gc: --tags @bvt --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=chrome PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
@@ -60,7 +60,7 @@ bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess
 bvt_ambigious_address: --tags @bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=true
 bvt_address_cleansing: --tags @bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=true
 bvt_international_shipping: --tags @bvt_international_shipping --guess VERBOSE=false HEALTHCHECK=true
-bvt_add_new_order: --tags @bvt_add_new_order --guess VERBOSE=false HEALTHCHECK=true
+bvt_new_order: --tags @bvt_new_order --guess VERBOSE=false HEALTHCHECK=true
 bvt_printing: --tags @bvt_printing --guess VERBOSE=false HEALTHCHECK=true
 bvt_purchasing: --tags @bvt_purchasing --guess VERBOSE=false HEALTHCHECK=true
 
