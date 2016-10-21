@@ -90,6 +90,10 @@ module Stamps
     @param
   end
 
+  def test_data
+    @test_data
+  end
+
   def test_helper
     begin
       TestHelper

@@ -1,15 +1,12 @@
 Then /^Toolbar: Import$/ do
   logger.step "Toolbar: Import"
   @import_orders = web_apps.orders.toolbar.import
-  logger.step "Test #{(@import_web_apps.orders.present?)?"Passed":"Failed - Unable to open Import Orders modal."}"
 end
 
 Then /^Import Orders: Select CSV File$/ do
   logger.step "Import Orders: Select CSV File"
   step "Toolbar: Import" if @import_web_apps.orders.nil?
-  
   @open_file = @import_web_apps.orders.select_csv_file
-  logger.step "Test #{(@open_file.present?)?"Passed":"Failed"}"
   @open_file.present?.should be true
 end
 
@@ -17,11 +14,6 @@ Then /^Import Orders: Import$/ do
   logger.step "Import Orders: Import"
   @import_successful.should be_truthy
   @import_successful = @import_web_apps.orders.import
-end
-
-Then /^Import Orders: Expect Order Number (.*) was imported$/ do
-  @import_successful.should be_truthy
-  @import_successful.window_title.should eql "Success"
 end
 
 Then /^Import Orders: Expect Import is successful$/ do
@@ -63,7 +55,6 @@ end
 Then /^Import Orders: Expect Imported Filename is (.*)$/ do |expectation|
   logger.step "Import Import Filename is #{expectation}"
   actual_value = @import_web_apps.orders.filename_label
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 

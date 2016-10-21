@@ -294,18 +294,15 @@ Then /^Details: Set Service to (.*)$/ do |service|
     break if web_apps.orders.details.service.cost.to_f > 0
     step "Details: Blur out"
   end
-  @orders_test_data[:service_cost] = web_apps.orders.details.service.cost
+  test_data[:service_cost] = web_apps.orders.details.service.cost
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Expect Service is \"(.*)\"$/ do |expectation|
   logger.step "Details: Expect Service is #{expectation}"
-  expectation = web_apps.orders.details.service.abbrev_service_name expectation
+  expectation = web_apps.orders.details.service.abbrev_service_name(expectation)
   10.times do
-    actual_value = web_apps.orders.details.service.text_box.text
-    break if actual_value.include? expectation
+    break if web_apps.orders.details.service.text_box.text.include? expectation
   end
-  actual_value = web_apps.orders.details.service.text_box.text
-  logger.step "Test #{(actual_value.include? expectation)?"Passed":"Failed"}"
-  actual_value.should include expectation
+  web_apps.orders.details.service.text_box.text.should include expectation
 end

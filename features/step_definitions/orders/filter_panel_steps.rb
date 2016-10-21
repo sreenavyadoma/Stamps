@@ -42,60 +42,43 @@ end
 
 Then /^Filter: Expect order moved to Shipped$/ do
   logger.step "Filter: Expect order moved to Shipped"
-  grid = web_apps.orders.filter.shipped
-  grid.order_date.sort_descending
-  row = grid.order_id.row_num @orders_test_data[:order_id]
-  logger.step "Test #{(row > 0)?"Passed":"Failed"}"
-  row.should be > 0
+  web_apps.orders.filter.shipped.order_date.sort_descending
+  web_apps.orders.grid.order_id.row_num(test_data[:order_id]).should be > 0
 end
 
 Then /^Filter: Expect order moved to Canceled$/ do
   logger.step "Filter: Expect order moved to Canceled"
-  grid = web_apps.orders.filter.cancelled
-  grid.order_date.sort_descending
-  row = grid.order_id.row_num @orders_test_data[:order_id]
-  logger.step "Test #{(row > 0)?"Passed":"Failed"}"
-  row.should be > 0
+  web_apps.orders.filter.cancelled.order_date.sort_descending
+  web_apps.orders.filter.cancelled.order_id.row_num(test_data[:order_id]).should be > 0
 end
 
 Then /^Filter: Move order to Awaiting Shipment$/ do
   logger.step "Move order to Awaiting Shipmen"
-  grid = web_apps.orders.grid
-  raise "Order ID #{@orders_test_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @orders_test_data[:order_id]) > 0
-  grid.order_date.sort_descending
-  grid.checkbox.check_order @orders_test_data[:order_id]
-  grid.toolbar.move.to_awaiting_shipment.cancel
-  grid.toolbar.move.to_awaiting_shipment.move
+  web_apps.orders.grid.order_date.sort_descending
+  web_apps.orders.grid.checkbox.check_order test_data[:order_id]
+  web_apps.orders.grid.toolbar.move.to_awaiting_shipment.cancel
+  web_apps.orders.grid.toolbar.move.to_awaiting_shipment.move
 end
 
 Then /^Filter: Expect order moved to Awaiting Shipment$/ do
   logger.step "Filter: Expect order moved to Awaiting Shipment"
-  grid = web_apps.orders.filter.awaiting_shipment
-  grid.order_date.sort_descending
-  row = grid.order_id.row_num @orders_test_data[:order_id]
-  logger.step "Test #{(row > 0)?"Passed":"Failed"}"
-  row.should be > 0
+  web_apps.orders.grid.order_date.sort_descending
+  web_apps.orders.grid.order_id.row_num(test_data[:order_id]).should be > 0
 end
 
-Then /^Expect Awaiting Shipment count is less by (\d+)$/ do |count|
-  logger.step "Expect Awaiting Shipment count is less by #{count}"
-  awaiting_shipment_count = web_apps.orders.filter.awaiting_shipment_count
-  logger.step "Test #{(awaiting_shipment_count = @orders_test_data[:awaiting_shipment_count].to_i - count.to_i)?'Passed':'Failed'}"
-  awaiting_shipment_count.should eql @orders_test_data[:awaiting_shipment_count].to_i - count.to_i
+Then /^Filter: Expect Awaiting Shipment count is less by (\d+)$/ do |count|
+  logger.step "Filter: Expect Awaiting Shipment count is less by #{count}"
+  web_apps.orders.filter.awaiting_shipment_count.should eql test_data[:awaiting_shipment_count].to_i - count.to_i
 end
 
 Then /^Filter: Expect system shows name of (.*) Filter Panel - in closed panel$/ do |expectation|
   logger.step "Filter: Expect system shows name of #{expectation} Filter Panel - in closed panel"
-  actual = web_apps.orders.filter.get_closed_filter_name
-  logger.step "Test #{(actual==expectation)?'Passed':'Failed'}"
-  actual.should eql expectation
+  web_apps.orders.filter.get_closed_filter_name.should eql expectation
 end
 
 Then /^Filter: Expect panel arrow is pointing to the (.*) direction$/ do |expectation|
   logger.step "Filter: Expect panel arrow is pointing to the #{expectation} direction"
-  actual = web_apps.orders.filter.get_arrow_direction
-  logger.step "Test #{(actual==expectation)?'Passed':'Failed'}"
-  actual.should eql expectation
+  web_apps.orders.filter.get_arrow_direction.should eql expectation
 end
 
 Then /^Filter: Expect system selects (.*) Filter Panel - and deselects the previous filter$/ do |filter|
@@ -104,32 +87,24 @@ Then /^Filter: Expect system selects (.*) Filter Panel - and deselects the previ
   actual.should eql filter
 end
 
-Then /^Expect system updates the grid to show only orders that match the (.*) filter$/ do |expectation|
-  logger.step "Expect system updates the grid to show only orders that match the #{expectation} filter"
-  actual = web_apps.orders.filter.is_order_grid_filtered(expectation)
-  logger.step "Test #{(actual==expectation)?'Passed':'Failed'}"
-  actual.should eql true
+Then /^Filter: Expect system updates the grid to show only orders that match the (.*) filter$/ do |expectation|
+  logger.step "Filter: Expect system updates the grid to show only orders that match the #{expectation} filter"
+  web_apps.orders.filter.is_order_grid_filtered(expectation).should be true
 end
 
-Then /^Expect system displays expanded filters panel$/ do
-  logger.step "Expect system displays expanded filters panel"
-  actual = web_apps.orders.filter.is_filter_panel_present?
-  logger.step "Test #{(actual==true)?'Passed':'Failed'}"
-  actual.should eql true
+Then /^Filter: Expect system displays expanded filters panel$/ do
+  logger.step "Filter: Expect system displays expanded filters panel"
+  web_apps.orders.filter.is_filter_panel_present?.should be true
 end
 
-Then /^Expect system displays "Awaiting Shipment" and "Shipped" filters in panel$/ do
+Then /^Filter: Expect system displays "Awaiting Shipment" and "Shipped" filters in panel$/ do
   logger.step "Expect system displays Awaiting Shipment and Shipped filters in panel"
-  actual = web_apps.orders.filter.is_filter_panel_present?
-  logger.step "Test #{(actual==true)?'Passed':'Failed'}"
-  actual.should eql true
+  web_apps.orders.filter.is_filter_panel_present?.should be true
 end
 
 Then /^Filter: Expect system selects the (.*) Filter Panel - by default$/ do |expectation|
   logger.step "Filter: Expect system selects the #{expectation} Filter Panel - by default"
-  actual = web_apps.orders.filter.get_selected_filter_text
-  logger.step "Test #{(actual==expectation)?'Passed':'Failed'}"
-  actual.should eql expectation
+  web_apps.orders.filter.get_selected_filter_text.should eql expectation
 end
 
 Then /^Filter: Click on panel$/ do
@@ -150,16 +125,12 @@ end
 
 Then /^Filter: Expect Panel is open$/ do
   logger.step "Filter: Expect Panel is open"
-  actual = web_apps.orders.filter.is_filter_panel_present?
-  logger.step "Test #{(actual==true)?'Passed':'Failed'}"
-  actual.should eql true
+  web_apps.orders.filter.is_filter_panel_present?.should be true
 end
 
 Then /^Filter: Expect panel is hidden$/ do
   logger.step "Filter: Expect panel is hidden"
-  actual = web_apps.orders.filter.are_filter_links_present
-  logger.step "Test #{(actual==false)?'Passed':'Failed'}"
-  actual.should eql false
+  web_apps.orders.filter.are_filter_links_present.should eql false
 end
 
 Then /^Filter: Click panel name$/ do
@@ -173,73 +144,35 @@ Then /^Filter: Click on the closed Filters panel$/ do
 end
 
 
-Then /^Expect printed Order ID is not in Awaiting Shipment tab$/ do
-  logger.step "Expect printed Order ID is not in Awaiting Shipment tab"
+Then /^Filter: Expect printed Order ID is not in Awaiting Shipment tab$/ do
+  logger.step "Filter: Expect printed Order ID is not in Awaiting Shipment tab"
   grid = web_apps.orders.filter.awaiting_shipment
-  logger.step "First Order ID: #{@orders_test_data[:order_id]} in Awaiting Shipment tab"
+  logger.step "First Order ID: #{test_data[:order_id]} in Awaiting Shipment tab"
   row = 1
   row1_order_id = grid.order_id.row row
   logger.step "Row #{row} Order ID: #{row1_order_id}"
-  expect(@orders_test_data[:order_id].include? row1_order_id).is false
+  expect(test_data[:order_id].include? row1_order_id).is false
 end
 
-Then /^Expect all printed Order IDs not in Awaiting Shipment tab$/ do
-  logger.step "Expect all printed Order IDs not in Awaiting Shipment tab"
-  grid = web_apps.orders.filter.awaiting_shipment
-
-  logger.step "First Order ID: #{@orders_test_data[:order_id]} in Awaiting Shipment tab"
-  row = 1
-  row1_order_id = grid.order_id.row row
-  logger.step "Row #{row} Order ID: #{row1_order_id}"
-  expect(@orders_test_data[:order_id].include? row1_order_id).is false
-
-  logger.step "Second Order ID: #{@orders_test_data[:order_id_2]} in Awaiting Shipment tab"
-  row = 2
-  row2_order_id = grid.order_id.row row
-  logger.step "Row #{row} Order ID: #{row2_order_id}"
-  expect(@orders_test_data[:order_id_2].include? row2_order_id).is false
-
-  logger.step "Third Order ID: #{@orders_test_data[:order_id_3]} in Awaiting Shipment tab"
-  row = 3
-  row3_order_id = grid.order_id.row row
-  logger.step "Row #{row} Order ID: #{row3_order_id}"
-  expect(@orders_test_data[:order_id_3].include? row3_order_id).is false
-
+Then /^Filter: Expect all printed Order IDs not in Awaiting Shipment tab$/ do
+  logger.step "Filter: Expect all printed Order IDs not in Awaiting Shipment tab"
+  test_data[:order_id].should_not include web_apps.orders.filter.awaiting_shipment.order_id.row(1)
+  test_data[:order_id].should_not include web_apps.orders.filter.awaiting_shipment.order_id.row(2)
+  test_data[:order_id].should_not include web_apps.orders.filter.awaiting_shipment.order_id.row(3)
 end
 
-Then /^Expect printed Order ID is in Shipped tab$/ do
-  logger.step "Expect printed Order ID is in Shipped tab"
-  grid = web_apps.orders.filter.shipped
-  grid.order_id.sort_descending
-  sleep 1
-  grid.order_id.sort_descending
-  row1_order_id = grid.order_id.row 1
-  logger.step "Shipped - Row #{1} Order ID: #{row1_order_id}"
-  logger.step "Test #{(@orders_test_data[:order_id]==row1_order_id)?'Passed':'Failed'}"
-  @orders_test_data[:order_id].should eql row1_order_id
+Then /^Filter: Expect printed Order ID is in Shipped tab$/ do
+  logger.step "Filter: Expect printed Order ID is in Shipped tab"
+  web_apps.orders.filter.shipped.order_id.sort_descending
+  web_apps.orders.filter.shipped.order_id.sort_descending
+  web_apps.orders.filter.shipped.order_id.row(1).should eql test_data[:order_id]
 end
 
-Then /^Expect all printed Order IDs are in Shipped tab$/ do
-  logger.step "Expect all printed Order IDs are in Shipped tab"
-  grid = web_apps.orders.filter.shipped
-
-  logger.step "First Order ID: #{@orders_test_data[:order_id]} Shipped tab"
-  row = 3
-  row3_order_id = grid.order_id.row row
-  logger.step "Row #{row} Order ID: #{row3_order_id}"
-  @orders_test_data[:order_id].should include row3_order_id
-
-  logger.step "Second Order ID: #{@orders_test_data[:order_id_2]} Shipped tab"
-  row = 2
-  row2_order_id = grid.order_id.row row
-  logger.step "Row #{row} Order ID: #{row2_order_id}"
-  @orders_test_data[:order_id_2].should include row2_order_id
-
-  logger.step "Third Order ID: #{@orders_test_data[:order_id_3]} Shipped tab"
-  row = 1
-  row1_order_id = grid.order_id.row row
-  logger.step "Row #{row} Order ID: #{row1_order_id}"
-  @orders_test_data[:order_id_3].should include row1_order_id
+Then /^Filter: Expect all printed Order IDs are in Shipped tab$/ do
+  logger.step "Filter: Expect all printed Order IDs are in Shipped tab"
+  test_data[:order_id].should include grid.order_id.row(3)
+  test_data[:order_id_2].should include grid.order_id.row(2)
+  test_data[:order_id_3].should include grid.order_id.row(1)
 end
 
 

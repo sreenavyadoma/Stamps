@@ -43,13 +43,13 @@ end
 Then /^Customs: Set Package Contents to \"(.+)\"$/ do |value|
   logger.step "Customs: Set Package Contents to #{value}"
   step "Customs: Blur out"
-  @orders_test_data[:customs_package_contents] = value
-  web_apps.orders.details.customs.edit_form.package_contents.select @orders_test_data[:customs_package_contents]
+  test_data[:customs_package_contents] = value
+  web_apps.orders.details.customs.edit_form.package_contents.select test_data[:customs_package_contents]
   step "Customs: Save Total"
 end
 
 Then /^Customs: Expect Package Contents saved value is the same$/ do
-  step "Customs: Expect Package Contents is #{@orders_test_data[:customs_package_contents]}"
+  step "Customs: Expect Package Contents is #{test_data[:customs_package_contents]}"
 end
 
 Then /^Customs: Expect Package Contents is Merchandise$/ do
@@ -97,13 +97,13 @@ end
 Then /^Customs: Set Non-Delivery Options to \"(.+)\"$/ do |value|
   logger.step "Customs: Set Non-Delivery Options to #{value}"
   step "Customs: Blur out"
-  @orders_test_data[:customs_non_delivery_options] = value
-  web_apps.orders.details.customs.edit_form.non_delivery_options.select @orders_test_data[:customs_non_delivery_options]
+  test_data[:customs_non_delivery_options] = value
+  web_apps.orders.details.customs.edit_form.non_delivery_options.select test_data[:customs_non_delivery_options]
   step "Customs: Save Total"
 end
 
 Then /^Customs: Expect Non-Delivery Options saved value is the same$/ do
-  step "Customs: Expect Non-Delivery Options is #{@orders_test_data[:customs_non_delivery_options]}"
+  step "Customs: Expect Non-Delivery Options is #{test_data[:customs_non_delivery_options]}"
 end
 
 Then /^Customs: Expect Non-Delivery Options is Treat as abandoned$/ do
@@ -131,13 +131,13 @@ end
 Then /^Customs: Set Internal Transaction Number to \"(.+)\"$/ do |value|
   logger.step "Customs: Set Internal Transaction Number to #{value}"
   step "Customs: Blur out"
-  @orders_test_data[:customs_internal_transaction_no] = value
-  web_apps.orders.details.customs.edit_form.internal_transaction.select @orders_test_data[:customs_internal_transaction_no]
+  test_data[:customs_internal_transaction_no] = value
+  web_apps.orders.details.customs.edit_form.internal_transaction.select test_data[:customs_internal_transaction_no]
   step "Customs: Save Total"
 end
 
 Then /^Customs: Expect Internal Transaction Number saved value is the same$/ do
-  step "Customs: Expect Internal Transaction Number is #{@orders_test_data[:customs_internal_transaction_no]}"
+  step "Customs: Expect Internal Transaction Number is #{test_data[:customs_internal_transaction_no]}"
 end
 
 Then /^Customs: Expect Internal Transaction Number is Not required$/ do
@@ -156,13 +156,13 @@ end
 
 Then /^Customs: Set More Info to \"(.+)\"$/ do |value|
   logger.step "Customs: Set More Info to #{value}"
-  @orders_test_data[:customs_more_info] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric(18): value
-  web_apps.orders.details.customs.edit_form.more_info.set @orders_test_data[:customs_more_info]
+  test_data[:customs_more_info] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric(18): value
+  web_apps.orders.details.customs.edit_form.more_info.set test_data[:customs_more_info]
   step "Customs: Save Total"
 end
 
 Then /^Customs: Expect More Info saved value is the same$/ do
-  step "Customs: Expect More Info is #{@orders_test_data[:customs_more_info]}"
+  step "Customs: Expect More Info is #{test_data[:customs_more_info]}"
 end
 
 Then /^Customs: Expect More Info is (.+)$/ do |expectation|
@@ -174,13 +174,13 @@ end
 Then /^Customs: Set ITN Number to \"(.+)\"$/ do |value|
   logger.step "Customs: Set ITN Number to #{value}"
   step "Customs: Blur out"
-  @orders_test_data[:customs_itn_no] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
-  web_apps.orders.details.customs.edit_form.itn_number.set @orders_test_data[:customs_itn_no]
+  test_data[:customs_itn_no] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
+  web_apps.orders.details.customs.edit_form.itn_number.set test_data[:customs_itn_no]
   step "Customs: Save Total"
 end
 
 Then /^Customs: Expect ITN Number saved value is the same$/ do
-  step "Customs: Expect ITN Number is #{@orders_test_data[:customs_itn_no]}"
+  step "Customs: Expect ITN Number is #{test_data[:customs_itn_no]}"
 end
 
 Then /^Customs: Expect ITN Number is (.+)$/ do |expectation|
@@ -192,13 +192,13 @@ end
 Then /^Customs: Set License Number to \"(.+)\"$/ do |value|
   logger.step "Customs: Set License Number to #{value}"
   step "Customs: Blur out"
-  @orders_test_data[:customs_license_no] = ((value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value)
-  web_apps.orders.details.customs.edit_form.license.set @orders_test_data[:customs_license_no]
+  test_data[:customs_license_no] = ((value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value)
+  web_apps.orders.details.customs.edit_form.license.set test_data[:customs_license_no]
   step "Customs: Save Total"
 end
 
 Then /^Customs: Expect License Number saved value is the same$/ do
-  step "Customs: Expect License Number is #{@orders_test_data[:customs_license_no]}"
+  step "Customs: Expect License Number is #{test_data[:customs_license_no]}"
 end
 
 Then /^Customs: Expect License Number is (.+)$/ do |expectation|
@@ -210,13 +210,13 @@ end
 Then /^Customs: Set Certificate Number to \"(.+)\"$/ do |value|
   logger.step "Customs: Set Certificate Number to #{value}"
   step "Customs: Blur out"
-  @orders_test_data[:customs_certificate_no] = ((value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value)
-  web_apps.orders.details.customs.edit_form.certificate.set @orders_test_data[:customs_certificate_no]
+  test_data[:customs_certificate_no] = ((value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value)
+  web_apps.orders.details.customs.edit_form.certificate.set test_data[:customs_certificate_no]
   step "Customs: Save Total"
 end
 
 Then /^Customs: Expect Certificate Number saved value is the same$/ do
-  step "Customs: Expect Certificate Number is #{@orders_test_data[:customs_certificate_no]}"
+  step "Customs: Expect Certificate Number is #{test_data[:customs_certificate_no]}"
 end
 
 Then /^Customs: Expect Certificate Number is (.+)$/ do |expectation|
@@ -228,13 +228,13 @@ end
 Then /^Customs: Set Invoice Number to \"(.+)\"$/ do |value|
   logger.step "Customs: Set Invoice Number to #{value}"
   step "Customs: Blur out"
-  @orders_test_data[:customs_invoice_no] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
-  web_apps.orders.details.customs.edit_form.invoice.set @orders_test_data[:customs_invoice_no]
+  test_data[:customs_invoice_no] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
+  web_apps.orders.details.customs.edit_form.invoice.set test_data[:customs_invoice_no]
   step "Customs: Save Total"
 end
 
 Then /^Customs: Expect Invoice Number saved value is the same$/ do
-  step "Customs: Expect Invoice Number is #{@orders_test_data[:customs_invoice_no]}"
+  step "Customs: Expect Invoice Number is #{test_data[:customs_invoice_no]}"
 end
 
 Then /^Customs: Expect Invoice Number is (.+)$/ do |expectation|
@@ -394,11 +394,11 @@ Then /^Customs: Expect Item Grid count is (.+)$/ do |expectation|
 end
 
 Then /^Customs: Save Total$/ do
-  @orders_test_data[:customs_total_value] = web_apps.orders.details.customs.edit_form.total_value
+  test_data[:customs_total_value] = web_apps.orders.details.customs.edit_form.total_value
 end
 
 Then /^Customs: Expect Total saved value is the same$/ do
-  step "Customs Form: Expect Total Value is #{@orders_test_data[:customs_total_value]}"
+  step "Customs Form: Expect Total Value is #{test_data[:customs_total_value]}"
 end
 
 Then /^Customs Form: Expect Total Value is (.+)$/ do |expectation|
@@ -411,7 +411,7 @@ Then /^Customs: Add Item (\d+), Description (.*), Qty (\d+), Price (.+), Origin 
   logger.step "Customs: Add Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Origin #{origin_country}, Tariff #{tariff}"
   step "Customs: Blur out"
   item = web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i)
-  @orders_test_data["customs_total_value"]
+  test_data["customs_total_value"]
   item.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
   step "Customs: Blur out"
   item.qty.set qty

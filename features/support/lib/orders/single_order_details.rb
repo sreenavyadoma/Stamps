@@ -118,7 +118,7 @@ module Stamps
         def initialize param
           super param
           @less ||= ElementWrapper.new browser.span(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
-          @ship_to_dd = ElementWrapper.new browser.span(css: "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)")
+          @ship_to_dd = ElementWrapper.new browser.span(css: "div#shiptoview-addressCollapsed-targetEl>a>span>span>span[class*=down]")
         end
 
         def hide_address_details
@@ -204,7 +204,6 @@ module Stamps
             end
           end
           logger.info "#{country} selected."
-          #Assert textbox text includes country
           text_box.text.should include country
         end
       end

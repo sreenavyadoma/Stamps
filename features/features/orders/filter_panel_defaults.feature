@@ -6,8 +6,8 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
 
   @filters
   Scenario: User Views Filter Panel - Panel Default
-    When Expect system displays expanded filters panel
-    Then Expect system displays "Awaiting Shipment" and "Shipped" filters in panel
+    When Filter: Expect system displays expanded filters panel
+    Then Filter: Expect system displays "Awaiting Shipment" and "Shipped" filters in panel
     Then Filter: Expect system selects the Awaiting Shipment Filter Panel - by default
 
     Then Filter: Click on panel
@@ -48,7 +48,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
   @filters
   Scenario: User Changes filters
 
-    When Expect system displays expanded filters panel
+    When Filter: Expect system displays expanded filters panel
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default

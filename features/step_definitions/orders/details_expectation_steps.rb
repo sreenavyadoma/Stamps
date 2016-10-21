@@ -1,7 +1,7 @@
 
 Then /^Details: Expect Ship-From saved value is the same$/ do
   logger.step "Details: Expect Ship-From saved value is the same"
-  web_apps.orders.details.ship_from.text_box.text.should eql @orders_test_data[:ship_from]
+  web_apps.orders.details.ship_from.text_box.text.should eql test_data[:ship_from]
 end
 
 Then /^Details: Expect Item (\d+) Qty is (\d+)$/ do |item_number, expectation|
@@ -194,73 +194,55 @@ end
 Then /^Details: Expect International Ship-To Name Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Email Placeholder is #{expectation}"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.ship_to.international.name.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.international.name.placeholder.should eql expectation
 end
 
 Then /^Details: Expect International Ship-To Company Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.ship_to.international.company.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.international.company.placeholder.should eql expectation
 end
 
 Then /^Details: Expect International Ship-To Address 1 Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.ship_to.international.address_1.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.international.address_1.placeholder.should eql expectation
 end
 
 Then /^Details: Expect International Ship-To Address 2 Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.ship_to.international.address_2.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.international.address_2.placeholder.should eql expectation
 end
 
 Then /^Details: Expect International Ship-To City Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.ship_to.international.city.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.international.city.placeholder.should eql expectation
 end
 
 Then /^Details: Expect International Ship-To Province Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.ship_to.international.province.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.international.province.placeholder.should eql expectation
 end
 
 Then /^Details: Expect International Ship-To Postal Code Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.ship_to.international.postal_code.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.international.postal_code.placeholder.should eql expectation
 end
 
 Then /^Details: Expect International Ship-To Phone Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.ship_to.international.phone.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.international.phone.placeholder.should eql expectation
 end
 
 Then /^Details: Expect International Ship-To Email Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect International Ship-To Company Placeholder is #{expectation}"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.ship_to.international.email.placeholder
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.international.email.placeholder.should eql expectation
 end
 
 Then /^Details: Collapse Panel$/ do
@@ -268,24 +250,20 @@ Then /^Details: Collapse Panel$/ do
   web_apps.orders.details.toolbar.menu.collapse
 end
 
-Then /^Details: Expect Panel Expanded$/ do
-  logger.step "Details: Expect Panel Expanded"
+Then /^Details: Expect Panel is present$/ do
+  logger.step "Details: Expect Panel is present"
   web_apps.orders.details.present?.should be true
 end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
   logger.step "Expect \"Exact Address Not Found\" module to appear"
-  address_not_found = web_apps.orders.details.ship_to.address.ambiguous.address_not_found
-  logger.step "Test #{(address_not_found.present?)?"Passed":"Failed"}"
-  address_not_found.window_title.text.should eql "Exact Address Not Found"
+  web_apps.orders.details.ship_to.address.ambiguous.address_not_found.window_title.text.should eql "Exact Address Not Found"
 end
 
 Then /^Details: Expect Reference Number is (.*)$/ do |expectation|
-  reference_no = (expectation.downcase.include? "random") ? @orders_test_data[:reference_no] : expectation
+  reference_no = (expectation.downcase.include? "random") ? test_data[:reference_no] : expectation
   logger.step "Details: Expect Reference Number is #{reference_no}"
-  actual_value = web_apps.orders.details.reference_no.text
-  logger.step "Test #{(actual_value==reference_no)?"Passed":"Failed"}"
-  actual_value.should eql reference_no
+  web_apps.orders.details.reference_no.text.should eql reference_no
 end
 
 Then /^Details: Expect Insure-For is \$(.*)$/ do |expectation|
@@ -295,15 +273,13 @@ Then /^Details: Expect Insure-For is \$(.*)$/ do |expectation|
   5.times do
     break if web_apps.orders.details.insure_for.text_box.text == expectation
   end
-  actual_value = web_apps.orders.details.insure_for.text_box.text
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.insure_for.text_box.text.should eql expectation
 end
 
 Then /^Details: Expect Insure-For Cost saved value is the same$/ do
   logger.step "Details: Expect Insure-For Cost saved value is the same"
   step "Details: Blur out"
-  step "Details: Expect Insure-For Cost is $#{@orders_test_data[:insure_for_cost]}"
+  step "Details: Expect Insure-For Cost is $#{test_data[:insure_for_cost]}"
 end
 
 Then /^Details: Expect Insure-For Cost is \$(.*)$/ do |expectation|
@@ -312,9 +288,7 @@ Then /^Details: Expect Insure-For Cost is \$(.*)$/ do |expectation|
   5.times do
     break if web_apps.orders.details.insure_for.cost == expectation
   end
-  actual_value = web_apps.orders.details.insure_for.cost
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.insure_for.cost.should eql expectation
 end
 
 Then /^Details: Expect Insure-For Cost is greater than \$(.*)$/ do |expectation|
@@ -323,45 +297,29 @@ Then /^Details: Expect Insure-For Cost is greater than \$(.*)$/ do |expectation|
   15.times do
     break if web_apps.orders.details.insure_for.cost.to_f > expectation.to_f
   end
-  actual_value = web_apps.orders.details.insure_for.cost.to_f
-  logger.step "Test #{(actual_value>expectation.to_f)?"Passed":"Failed"}"
-  actual_value.should be > expectation.to_f
+  web_apps.orders.details.insure_for.cost.to_f.should be > expectation.to_f
 end
 
 Then /^Details: Expect Service \"(.*)\" is disabled/ do |service|
   logger.step "Details: Expect Service \"#{service}\" is disabled"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.service.disabled? service
-  logger.step "Test #{(actual_value)?"Passed":"Failed"}"
-  actual_value.should be true
+  web_apps.orders.details.service.disabled?(service).should be true
 end
 
 Then /^Details: Expect Service \"(.*)\" is enabled/ do |expectation|
   logger.step "Details: Expect Service \"#{expectation}\" is enabled"
   step "Details: Blur out"
-  actual_value = web_apps.orders.details.service.enabled? expectation
-  logger.step "Test #{(actual_value)?"Passed":"Failed"}"
-  actual_value.should be true
-end
-
-Then /^Details: Expect Ship-From selection has (.*)$/ do |address|
-  logger.step "Expect #{address} Ship-From address was added"
-  step "Details: Blur out"
-  web_apps.orders.details.ship_from.select("Manage Shipping Addresses...").address_located?(@ship_from_address).should be true
+  web_apps.orders.details.service.enabled?(expectation).should be true
 end
 
 Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
   logger.step "Expect Pounds tooltip to display - The maximum value for this field is #{expectation}"
-  actual_value = web_apps.orders.details.pounds_max_value
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.pounds_max_value.should eql expectation
 end
 
 Then /^Expect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
   logger.step "Expect Ounces tooltip to display - The maximum value for this field is #{expectation}"
-  actual_value = web_apps.orders.details.ounces_max_value
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ounces_max_value.should eql expectation
 end
 
 Then /^Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" is greater than \$([0-9.]*)$/ do |service, expectation|
@@ -369,9 +327,7 @@ Then /^Details: Expect Service Cost inline price for "([a-zA-Z -\/]+)" is greate
   10.times do
     break if web_apps.orders.details.service.inline_cost(service).to_f >= expectation.to_f
   end
-  actual_value = web_apps.orders.details.service.inline_cost(service).to_f
-  logger.step "Test #{(actual_value > expectation.to_f)?"Passed":"Failed"}"
-  actual_value.should be >= expectation.to_f
+  web_apps.orders.details.service.inline_cost(service).to_f.should be >= expectation.to_f
 end
 
 Then /^Details: Expect Service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
@@ -386,14 +342,12 @@ end
 
 Then /^Details: Expect Service Cost saved value is the same$/ do
   logger.step "Details: Expect Service Cost saved value is the same"
-  step "Details: Expect Service Cost is $#{@orders_test_data[:service_cost]}"
+  step "Details: Expect Service Cost is $#{test_data[:service_cost]}"
 end
 
 Then /^Details: Expect Service Cost is \$([0-9.]*)$/ do |expectation|
   logger.step "Details: Expect Service Cost is $#{expectation}"
-  actual_value = web_apps.orders.details.service.cost
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.service.cost.should eql expectation
 end
 
 Then /^Details: Expect Service Cost is greater than \$([0-9.]*)$/ do |expectation|
@@ -402,14 +356,12 @@ Then /^Details: Expect Service Cost is greater than \$([0-9.]*)$/ do |expectatio
   10.times do
     break if web_apps.orders.details.service.cost.to_f > expectation
   end
-  actual_value = web_apps.orders.details.service.cost.to_f
-  logger.step "Test #{(actual_value>expectation)?"Passed":"Failed"}"
-  actual_value.should be > expectation
+  web_apps.orders.details.service.cost.to_f.should be > expectation
 end
 
 Then /^Details: Expect Tracking Cost saved value is correct$/ do
   logger.step "Details: Expect Tracking Cost saved value is correct"
-  step "Details: Expect Tracking Cost is $#{@orders_test_data[:tracking_cost]}"
+  step "Details: Expect Tracking Cost is $#{test_data[:tracking_cost]}"
 end
 
 Then /^Details: Expect Tracking Cost is \$([0-9.]*)$/ do |expectation|
@@ -417,9 +369,7 @@ Then /^Details: Expect Tracking Cost is \$([0-9.]*)$/ do |expectation|
   10.times do
     break if web_apps.orders.details.tracking.cost == expectation
   end
-  actual_value = web_apps.orders.details.tracking.cost
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.tracking.cost.should eql expectation
 end
 
 Then /^Details: Expect Tracking Cost is greater than \$([0-9.]*)$/ do |expectation|
@@ -428,9 +378,7 @@ Then /^Details: Expect Tracking Cost is greater than \$([0-9.]*)$/ do |expectati
   10.times do
     break if web_apps.orders.details.tracking.cost.to_f > expectation
   end
-  actual_value = web_apps.orders.details.tracking.cost.to_f
-  logger.step "Test #{(actual_value>expectation)?"Passed":"Failed"}"
-  actual_value.should be > expectation
+  web_apps.orders.details.tracking.cost.to_f.should be > expectation
 end
 
 Then /^Details: Expect Pounds? is (.*)$/ do |expectation|
@@ -438,9 +386,7 @@ Then /^Details: Expect Pounds? is (.*)$/ do |expectation|
   10.times do
     break if web_apps.orders.details.weight.lbs.text_box.text == expectation
   end
-  actual_value = web_apps.orders.details.weight.lbs.text_box.text
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.weight.lbs.text_box.text.should eql expectation
 end
 
 Then /^Details: Expect Ounces? is (.*)$/ do |expectation|
@@ -448,9 +394,7 @@ Then /^Details: Expect Ounces? is (.*)$/ do |expectation|
   10.times do
     break if web_apps.orders.details.weight.oz.text_box.text == expectation
   end
-  actual_value = web_apps.orders.details.weight.oz.text_box.text
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.weight.oz.text_box.text.should eql expectation
 end
 
 Then /^Details: Expect Length is (\d+)$/ do |expectation|
@@ -458,9 +402,7 @@ Then /^Details: Expect Length is (\d+)$/ do |expectation|
   10.times do
     break if web_apps.orders.details.dimensions.length.text_box.text == expectation
   end
-  actual_value = web_apps.orders.details.dimensions.length.text_box.text
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.dimensions.length.text_box.text.should eql expectation
 end
 
 Then /^Details: Expect Width is (\d+)$/ do |expectation|
@@ -468,9 +410,7 @@ Then /^Details: Expect Width is (\d+)$/ do |expectation|
   10.times do
     break if web_apps.orders.details.dimensions.width.text_box.text == expectation
   end
-  actual_value = web_apps.orders.details.dimensions.width.text_box.text
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.dimensions.width.text_box.text.should eql expectation
 end
 
 Then /^Details: Expect Height is (\d+)$/ do |expectation|
@@ -478,9 +418,7 @@ Then /^Details: Expect Height is (\d+)$/ do |expectation|
   10.times do
     break if web_apps.orders.details.dimensions.height.text_box.text == expectation
   end
-  actual_value = web_apps.orders.details.dimensions.height.text_box.text
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.dimensions.height.text_box.text.should eql expectation
 end
 
 Then /^Details: Expect Tracking is Signature Required$/ do
@@ -497,15 +435,13 @@ Then /^Details: Expect Tracking is \"([\w\s]*)\"$/ do |expectation|
   10.times do
     break if web_apps.orders.details.tracking.text_box.text.include? expectation
   end
-  actual_value = web_apps.orders.details.tracking.text_box.text
-  logger.step "Test #{(actual_value == expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.tracking.text_box.text.should eql expectation
 end
 
 Then /^Details: Expect Total Ship Cost saved value is correct$/ do
   logger.step "Details: Expect Tracking Cost saved value is correct"
   step "Details: Blur out"
-  step "Details: Expect Tracking Cost is $#{@orders_test_data[:tracking_cost]}"
+  step "Details: Expect Tracking Cost is $#{test_data[:tracking_cost]}"
 end
 
 Then /^Details: Expect Total Ship Cost is \$(.*)$/ do |expectation|

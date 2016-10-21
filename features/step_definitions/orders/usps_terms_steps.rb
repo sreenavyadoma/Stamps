@@ -1,7 +1,7 @@
 Then /^Expect USPS Terms modal appears$/ do
   logger.step "Expect USPS Terms modal appears"
   actual = web_apps.orders.toolbar.usps_intl_terms.is_usps_terms_modal_present
-  actual.should eql true
+  actual.should be true
 end
 
 Then /^Click Cancel on USPS Terms modal$/ do

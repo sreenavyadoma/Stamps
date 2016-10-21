@@ -24,27 +24,13 @@ Then /^Details: Expect auto-suggest pop-up entry for Firstname (.*), Lastname (.
   @auto_suggest.name_fields.each do |field|
     @found_item = true  if field.text.eql? selection
   end
-  logger.step "Test #{(@found_item)?"passed":"failed"}"
   @found_item.should be true
-end
-
-Then /^Details: Expect Domestic Ship-To Company is (.*)$/ do |company|
-  ship_to = web_apps.orders.details.ship_to.address.text_area.text
-  logger.step "Test #{(company.include? company)?"Passed":"Failed"} - #{company}"
-  ship_to.should include company
-end
-
-Then /^Details: Expect Domestic Ship-To Name is (.*)$/ do |name|
-  ship_to = web_apps.orders.details.ship_to.address.text_area.text
-  logger.step "Test #{(ship_to.include? name)?"Passed":"Failed"} "
-  ship_to.should include name
 end
 
 Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|
   logger.step "Expect Auto Suggest name shows #{value} for entry #{entry}"
   actual =  web_apps.orders.details.get_auto_suggest_name entry
   actual.should eql value
-
 end
 
 Then /^Expect Auto Suggest location shows (.*) for entry (.*)$/ do |value, entry|

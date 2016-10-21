@@ -9,7 +9,7 @@ Feature: 150 orders
     # First Class Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -19,7 +19,7 @@ Feature: 150 orders
     * Details: Set Tracking to "None"
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -31,7 +31,7 @@ Feature: 150 orders
     #Priority Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -40,7 +40,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -49,7 +49,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -59,7 +59,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -68,7 +68,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -78,7 +78,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -87,7 +87,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -97,7 +97,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -107,7 +107,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -117,7 +117,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -127,7 +127,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -137,7 +137,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -148,7 +148,7 @@ Feature: 150 orders
     # Priority Mail Express
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -157,7 +157,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -166,7 +166,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -175,7 +175,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -184,7 +184,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -195,7 +195,7 @@ Feature: 150 orders
     # Media Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -207,7 +207,7 @@ Feature: 150 orders
     # Parcel Select
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -217,7 +217,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -227,7 +227,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -283,7 +283,7 @@ Feature: 150 orders
     # First Class Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -293,7 +293,7 @@ Feature: 150 orders
     * Details: Set Tracking to "None"
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -305,7 +305,7 @@ Feature: 150 orders
     #Priority Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -314,7 +314,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -323,7 +323,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -333,7 +333,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -342,7 +342,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -352,7 +352,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -361,7 +361,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -371,7 +371,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -381,7 +381,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -391,7 +391,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -401,7 +401,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -411,7 +411,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -422,7 +422,7 @@ Feature: 150 orders
     # Priority Mail Express
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -431,7 +431,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -440,7 +440,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -449,7 +449,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -458,7 +458,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -469,7 +469,7 @@ Feature: 150 orders
     # Media Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -481,7 +481,7 @@ Feature: 150 orders
     # Parcel Select
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -491,7 +491,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -501,7 +501,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -557,7 +557,7 @@ Feature: 150 orders
     # First Class Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -567,7 +567,7 @@ Feature: 150 orders
     * Details: Set Tracking to "None"
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -579,7 +579,7 @@ Feature: 150 orders
     #Priority Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -588,7 +588,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -597,7 +597,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -607,7 +607,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -616,7 +616,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -626,7 +626,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -635,7 +635,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -645,7 +645,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -655,7 +655,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -665,7 +665,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -675,7 +675,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -685,7 +685,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
     * Details: Set Ounces to 14
@@ -695,7 +695,7 @@ Feature: 150 orders
     # Priority Mail Express
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -704,7 +704,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -713,7 +713,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -722,7 +722,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -731,7 +731,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -742,7 +742,7 @@ Feature: 150 orders
     # Media Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -754,7 +754,7 @@ Feature: 150 orders
     # Parcel Select
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -764,7 +764,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -774,7 +774,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -830,7 +830,7 @@ Feature: 150 orders
     # First Class Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -840,7 +840,7 @@ Feature: 150 orders
     * Details: Set Tracking to "None"
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -852,7 +852,7 @@ Feature: 150 orders
     #Priority Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -861,7 +861,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -870,7 +870,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -880,7 +880,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -889,7 +889,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -899,7 +899,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -908,7 +908,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -918,7 +918,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -928,7 +928,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -938,7 +938,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -948,7 +948,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -958,7 +958,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -969,7 +969,7 @@ Feature: 150 orders
     # Priority Mail Express
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -978,7 +978,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -987,7 +987,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -996,7 +996,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1005,7 +1005,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1016,7 +1016,7 @@ Feature: 150 orders
     # Media Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1028,7 +1028,7 @@ Feature: 150 orders
     # Parcel Select
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1038,7 +1038,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1048,7 +1048,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1104,7 +1104,7 @@ Feature: 150 orders
     # First Class Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1114,7 +1114,7 @@ Feature: 150 orders
     * Details: Set Tracking to "None"
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1126,7 +1126,7 @@ Feature: 150 orders
     #Priority Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1135,7 +1135,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1144,7 +1144,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1154,7 +1154,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1163,7 +1163,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1173,7 +1173,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1182,7 +1182,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1192,7 +1192,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1202,7 +1202,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1212,7 +1212,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1222,7 +1222,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1232,7 +1232,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1243,7 +1243,7 @@ Feature: 150 orders
     # Priority Mail Express
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1252,7 +1252,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1261,7 +1261,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1270,7 +1270,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1279,7 +1279,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1290,7 +1290,7 @@ Feature: 150 orders
     # Media Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1302,7 +1302,7 @@ Feature: 150 orders
     # Parcel Select
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1312,7 +1312,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1322,7 +1322,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1378,7 +1378,7 @@ Feature: 150 orders
     # First Class Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1388,7 +1388,7 @@ Feature: 150 orders
     * Details: Set Tracking to "None"
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1400,7 +1400,7 @@ Feature: 150 orders
     #Priority Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1409,7 +1409,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1418,7 +1418,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1428,7 +1428,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1437,7 +1437,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1447,7 +1447,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1456,7 +1456,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1466,7 +1466,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1476,7 +1476,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1486,7 +1486,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1496,7 +1496,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1506,7 +1506,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1517,7 +1517,7 @@ Feature: 150 orders
     # Priority Mail Express
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1526,7 +1526,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1535,7 +1535,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1544,7 +1544,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1553,7 +1553,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1564,7 +1564,7 @@ Feature: 150 orders
     # Media Mail
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1576,7 +1576,7 @@ Feature: 150 orders
     # Parcel Select
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1586,7 +1586,7 @@ Feature: 150 orders
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 
@@ -1596,7 +1596,7 @@ Feature: 150 orders
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
-    * Expect new Order ID created
+    * Details: Expect Order ID is truthy
     * Details: Set Ship-From to default
     * Details: Set Ship-To to address in Zone 1 through 4
 

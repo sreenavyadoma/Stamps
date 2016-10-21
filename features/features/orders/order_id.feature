@@ -7,6 +7,6 @@ Feature: Saved Order ID Created
   @order_id
   Scenario:  Saved Order ID Created
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Expect Order ID equals Grid order ID
     Then Sign out

@@ -4,7 +4,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Given I am signed in to Orders
 
   Scenario: User Views Filter Panel - Panel Default
-    When Expect system displays expanded filters panel
+    When Filter: Expect system displays expanded filters panel
 
     Then Filter: Select Shipped
     Then Filter: Expect system selects Shipped Filter Panel - and deselects the previous filter

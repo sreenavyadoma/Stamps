@@ -62,7 +62,7 @@ module Stamps
           row = row_number order_id
           scroll column
           logger.info "Retrieving #{GRID_COLUMNS[column]} for Order ID #{order_id}...."
-          data = grid_text column, row
+          data = grid_text(column, row)
           logger.info "Column:  #{GRID_COLUMNS[column]}, Order ID #{order_id}, Row #{row}, Data #{data}"
           data
         end

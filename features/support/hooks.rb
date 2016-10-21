@@ -12,13 +12,8 @@ include RAutomation
 
 Before do  |scenario|
   Stamps.init scenario.name
-  @orders_test_data = Hash.new
-
-  address = ParameterHelper.rand_zone_1_4
-  @orders_test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
-
-  address = ParameterHelper.rand_zone_6
-  @orders_test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
+  # test data store
+  @test_data = Hash.new
 
   logger.message "Running Tests..."
   logger.message "-"
@@ -54,7 +49,7 @@ After do |scenario|
     logger.error "#{scenario.feature}"
   end
   logger.step "  --  Test Parameters"
-  @orders_test_data.each do |key, value|
+  test_data.each do |key, value|
     logger.step "  --  #{key} : #{value}"
   end
 end

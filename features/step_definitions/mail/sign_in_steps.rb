@@ -77,7 +77,6 @@ Then /^Mail Sign In: Expect Remember Username is checked$/ do
   logger.step "Mail Sign In: Expect Remember Username is checked"
   fix me!
   #todo-fix username
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
@@ -92,7 +91,6 @@ Then /^Mail Sign In: Expect Remember Username is unchecked$/ do
   logger.step "Postage Sign In: Expect Remember Username is unchecked"
   fix me
   #todo-fix username
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 

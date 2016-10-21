@@ -1,11 +1,8 @@
 Feature: Envelopes BVT
 
-
-
   Background:
     Given I am signed in as Mail shipper
 
-  @mail_bvt
   @mail_bvt_envelopes
   Scenario: Envelope
     Then Mail: Select Envelope - #10
