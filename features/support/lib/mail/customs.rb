@@ -94,8 +94,7 @@ module Stamps
           element_helper.safe_click button
           return add_item_modal if add_item_modal.present?
         end
-
-        stop_test "Unable to open Add Item Modal, check your code." unless customs_modal.present?
+        "Unable to open Add Item Modal, check your code.".should eql "" unless customs_modal.present?
       end
 
       def edit_item
@@ -105,8 +104,7 @@ module Stamps
           element_helper.safe_click button
           return edit_item_modal if edit_item_modal.present?
         end
-
-        stop_test "Unable to open Edit Item Modal, check your code." unless customs_modal.present?
+        "Unable to open Edit Item Modal, check your code.".should eql "" unless customs_modal.present?
       end
 
       def delete
@@ -460,7 +458,7 @@ module Stamps
           edit_form_button.safe_click
           break if @customs_form.present?
         }
-        stop_test "Customs Information Modal is not visible." unless @customs_form.present?
+        "Customs Information Modal is not visible.".should eql "" unless @customs_form.present?
         @customs_form
       end
 

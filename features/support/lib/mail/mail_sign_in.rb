@@ -325,7 +325,7 @@ module Stamps
             sleep 1
             return forgot_username_modal if forgot_username_modal.present?
           end
-          stop_test "Unable to open Forgot Username Modal, check your code." unless forgot_password_modal.present?
+          "Unable to open Forgot Username Modal, check your code.".should eql "" unless forgot_password_modal.present?
         end
 
         def forgot_password
@@ -338,7 +338,7 @@ module Stamps
             sleep 1
             return forgot_password_modal if forgot_password_modal.present?
           end
-          stop_test "Unable to open Forgot Password Modal, check your code." unless forgot_password_modal.present?
+          "Unable to open Forgot Password Modal, check your code.".should eql "" unless forgot_password_modal.present?
         end
 
       end

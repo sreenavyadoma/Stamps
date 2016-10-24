@@ -43,11 +43,7 @@ module Stamps
           logger.message "-"
 
         else
-          logger.info "Invalid environment type!"
-          logger.info "Teardown: Begin tearing down test"
-          TestHelper.teardown
-          logger.info "Teardown: Done!"
-          stop_test "#{ENV['URL']} is not a valid URL selection"
+          "#{ENV['URL']} is not a valid URL selection".should eql ""
       end
 
       if browser.text.include? "Server Error"
@@ -100,7 +96,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          stop_test "#{ENV['URL']} is not a valid URL selection"
+          "#{ENV['URL']} is not a valid URL selection".should eql ""
       end
 
       if browser.text.include? "Server Error"
@@ -153,7 +149,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          stop_test "#{ENV['URL']} is not a valid URL selection"
+          "#{ENV['URL']} is not a valid URL selection".should eql ""
       end
 
       if browser.text.include? "Server Error"
@@ -211,7 +207,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          stop_test "#{ENV['URL']} is not a valid URL selection"
+          "#{ENV['URL']} is not a valid URL selection".should eql ""
       end
 
       if browser.text.include? "Server Error"

@@ -38,14 +38,18 @@ module Stamps
 
           if browser_selection.firefox?
             begin
-              system "taskkill /im firefox.exe /f"
+              stdout, stdeerr, status = Open3.capture3("taskkill /im firefox.exe /f")
+              logger.message status
+              #logger.info stdeerr
+              logger.message stdout
             rescue
               #ignore
             end
 
             # Launch Firefox
             if ENV['FIREFOX_PROFILE'].nil? || ENV['FIREFOX_PROFILE'].downcase == 'selenium'
-              driver = Watir::Browser.new :firefox, profile: data_for(:profile, {})['firefox']
+              #driver = Watir::Browser.new :firefox, profile: data_for(:profile, {})['firefox']
+              driver = Watir::Browser.new :firefox, :profile => 'selenium'
             elsif ENV['FIREFOX_PROFILE'].downcase == 'new'
               driver = Watir::Browser.new :firefox
             else
@@ -81,10 +85,7 @@ module Stamps
             logger.info "chrome_data_dir path:  #{chrome_data_dir}  #{(File.exist? chrome_data_dir)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'}"
 
             begin
-              logger.info "Teardown: Begin tearing down test"
-              TestHelper.teardown
-              logger.info "Teardown: Done!"
-              stop_test logger.info "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}"
+              "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}".should eql ""
             end unless File.exist? chrome_data_dir
 
             driver = Watir::Browser.new :chrome, :switches => ["--disable-mail-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
@@ -97,20 +98,17 @@ module Stamps
             driver = Watir::Browser.new :ie
             @browser_name = 'Internet Explorer'
           end
-
-          logger.info "#{@browser_name} is ready."
-
           #driver.window.move_to 0, 0
           #driver.window.resize_to 1250, 850
-
           driver.window.maximize
+          logger.message "-"
+          logger.message "BROWSER: #{@browser_name}"
+          logger.message "-"
           @browser = driver
         rescue Exception => e
-          logger.error e
-          logger.info "Teardown: Begin tearing down test"
-          TestHelper.teardown
-          logger.info "Teardown: Done!"
-          raise e
+          err = e.backtrace.join("\n")
+          logger.error e.backtrace.join("\n")
+          err.should eql ""
         end
       end
 
@@ -154,10 +152,7 @@ module Stamps
             when /solaris|bsd/
               return :unix
             else
-              logger.info "Teardown: Begin tearing down test"
-              TestHelper.teardown
-              logger.info "Teardown: Done!"
-              stop_test Error::WebDriverError, "unknown os: #{host_os.inspect}"
+              "OS #{host_os.inspect} is not defined".should eql ""
           end
         end
       end

@@ -15,6 +15,7 @@ require 'rbconfig'
 require "csv"
 require "rautomation"
 require 'rubygems' # for compatibility with JRuby, MRI 1.8, etc
+require 'open3'
 
 # Stamps module
 require_relative 'lib/core/browser'

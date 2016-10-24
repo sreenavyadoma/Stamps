@@ -28,7 +28,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          stop_test "Unsupported address format."
+          "Unsupported address format.".should eql ""
         end
         logger.info "Formatted Shipping Address:  \n#{formatted_address}"
         formatted_address
@@ -47,7 +47,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          stop_test "Unsupported address format."
+          "Unsupported address format.".should eql ""
         end
       end
 
@@ -135,7 +135,7 @@ module Stamps
             now = "#{month}/#{day}/#{new_date.year}"
             now
           else
-            stop_test "Illegal number of arguments for TestHelper.date_from_today"
+            "Illegal number of arguments for TestHelper.date_from_today".should eql ""
         end
       end
 
@@ -154,8 +154,7 @@ module Stamps
           when 1
             @length = args[0]
           else
-            stop_test "Illegal number of arguments for random_alpha_numeric"
-
+            "Illegal number of arguments for random_alpha_numeric".should eql ""
         end
         rand(36 ** @length - 1).to_s(36).rjust(@length, "0")
       end

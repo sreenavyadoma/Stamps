@@ -58,7 +58,7 @@ module Stamps
           sleep 1
           return confirmation if confirmation.present?
         end
-        stop_test "Unable to confirm password reset, check your code." unless confirmation.present?
+        "Unable to confirm password reset, check your code.".should eql "" unless confirmation.present?
       end
     end
   end

@@ -92,10 +92,8 @@ module Stamps
               selection_label = ElementWrapper.new browser.li text: /DYMO/
             when /zdesigner/
               selection_label = ElementWrapper.new browser.li text: /ZDesigner/
-
-
             else
-              stop_test "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
+              "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To print using PDF Factory, use factory.  To Print using Kyocera use Kyocera.".should eql ""
           end
 
           5.times do

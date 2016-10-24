@@ -48,10 +48,10 @@ module Stamps
 
       def dont_show_this_again dont_show
         checkbox_field = (browser.inputs css: "input[id^=checkbox-][id$=-inputEl]").last
-        stop_test "USPS Terms - Don't show this again checkbox is not present" unless checkbox_field.present?
+        "USPS Terms - Don't show this again checkbox is not present".should eql "" unless checkbox_field.present?
 
         verify_field = browser.div css: "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
-        stop_test "USPS Terms - Don't show this again checkbox is not present" unless verify_field.present?
+        "USPS Terms - Don't show this again checkbox is not present".should eql "" unless verify_field.present?
 
         attribute = "class"
         attrib_value_check = "checked"
@@ -154,7 +154,7 @@ module Stamps
           when /4" x 6"/
             return ElementWrapper.new (browser.li text: /4" x 6"/)
           else
-            stop_test "Invalid Media Selection.  Don't know what to do with #{media}."
+            "Invalid Media Selection.  Don't know what to do with #{media}.".should eql ""
         end
       end
 
@@ -225,7 +225,7 @@ module Stamps
           sleep 1
           return ParameterHelper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
         }
-        stop_test "Unable to select today's date from date picker object in Print Modal."
+        "Unable to select today's date from date picker object in Print Modal.".should eql ""
       end
 
       def todays_date
@@ -237,7 +237,7 @@ module Stamps
           sleep 1
           return ParameterHelper.now_plus_mon_dd 0
         }
-        stop_test "Unable to select today's date from date picker object in Print Modal."
+        "Unable to select today's date from date picker object in Print Modal.".should eql ""
       end
 
       def today_button
@@ -307,7 +307,7 @@ module Stamps
           when /designer/
             selection_label = ElementWrapper.new browser.li text: /Designer/
           else
-            stop_test "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
+            "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.".should eql ""
         end
 
         8.times do
@@ -315,7 +315,7 @@ module Stamps
           drop_down.safe_click unless selection_label.present?
           selection_label.safe_click
         end
-        stop_test "Unable to select Printer #{printer}.  Check and make sure the printer exist in this PC."
+        "Unable to select Printer #{printer}.  Check and make sure the printer exist in this PC.".should eql ""
       end
     end
 

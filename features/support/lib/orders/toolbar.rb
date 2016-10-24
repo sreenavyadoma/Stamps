@@ -430,7 +430,7 @@ module Stamps
               when 1
                 error_window.error_message.include? error_message
               else
-                stop_test "Illegal number of arguments."
+                "Illegal number of arguments.".should eql ""
             end
           end
 
@@ -454,7 +454,7 @@ module Stamps
                 selection = ElementWrapper.new(browser.span text: "Add/Edit Stores")
                 modal = Orders::Stores::ManageStores.new param
               else
-                stop_test "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores."
+                "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores.".should eql ""
             end
 
             20.times do
@@ -465,7 +465,7 @@ module Stamps
               selection.safe_click
               selection.safe_click
             end
-            stop_test "Unable to Toolbar Settings Menu Selection - #{menu_item}"
+            "Unable to Toolbar Settings Menu Selection - #{menu_item}".should eql ""
           end
 
           def general_settings
@@ -517,7 +517,7 @@ module Stamps
               when :awaiting_shipment
                 selection_str = "Move to Awaiting Shipment"
               else
-                stop_test "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment"
+                "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment".should eql ""
             end
 
             confirmation = MoveConfirmation.new param
@@ -529,8 +529,7 @@ module Stamps
               selection_label.safe_click
               return confirmation if confirmation.present?
             }
-
-            stop_test "Unable to select #{selection} from Move menu."
+            "Unable to select #{selection} from Move menu.".should eql ""
           end
 
           def tooltip

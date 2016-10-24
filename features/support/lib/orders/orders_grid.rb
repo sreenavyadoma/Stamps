@@ -801,7 +801,7 @@ module Stamps
               rows = args[0]
               logger.info "Restoring #{} checked orders..."
             else
-              stop_test "Invalid parameter exception.  This method expects a Hash of Web Elements."
+              "Invalid parameter exception.  This method expects a Hash of Web Elements.".should eql ""
             end
             rows.each do |hash_element|
               row_number = hash_element[0]

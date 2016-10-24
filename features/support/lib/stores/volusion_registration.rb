@@ -192,7 +192,7 @@ module Stamps
             sleep 1
             return checkout if checkout.present?
           end
-          stop_test "Unable to proceed to checkout!"
+          "Unable to proceed to checkout!".should eql ""
         end
       end
 

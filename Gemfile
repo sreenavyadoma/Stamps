@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'watir-webdriver', '0.9.3'
+gem 'watir'
 gem 'rspec'
 gem 'rake'
 gem 'data_magic'

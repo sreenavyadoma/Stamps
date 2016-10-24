@@ -15,14 +15,6 @@ module Stamps
         @scenario_name = param.scenario_name
         @element_helper = ElementHelper
       end
-
-      def stop_test message
-        logger.fatal message
-        logger.fatal "Teardown: Begin tearing down test"
-        TestHelper.teardown
-        logger.fatal "Teardown: Done!"
-        raise message
-      end
     end
 
     # ElementWrapper object is primarily used to wrap elements for used on step definitions.
@@ -40,7 +32,7 @@ module Stamps
             @error_qtip_element = args[1]
             @error_qtip_element_attribute = args[2]
           else
-            stop_test "Illegal number of arguments.  Unable to create element."
+            "Illegal number of arguments.  Unable to create element.".should eql ""
         end
         @browser = @element.browser
         @element_helper = ElementHelper
@@ -313,7 +305,6 @@ module Stamps
           break if checked?
           safe_click
         }
-        #"Unable to check element".should eql "" unless checked?
       end
 
       def uncheck
@@ -323,7 +314,6 @@ module Stamps
             break unless checked?
           }
         end
-        #"Unable to uncheck element".should eql "" if checked?
       end
 
       def checked?
@@ -474,7 +464,7 @@ module Stamps
               text = args[1]
               element_name = args[2]
             else
-              stop_test "Wrong number of arguments for BrowserHelper.set_text method."
+              "Wrong number of arguments for BrowserHelper.set_text method.".should eql ""
           end
           2.times do
             begin
@@ -568,7 +558,7 @@ module Stamps
               @element_attribute = args[1]
               @search_string = args[2]
             else
-              stop_test "Wrong number of arguments for enabled?"
+              "Wrong number of arguments for enabled?".should eql ""
           end
           attribute_value = attribute_value @disabled_element, @element_attribute
           disabled = attribute_value.include? @search_string

@@ -10,7 +10,7 @@ module Stamps
             exist = RAutomation::Window.new(:title => /&Open/i).exists?
             return exist
           else
-            stop_test "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
+            "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie".should eql ""
           end
         rescue
           false
@@ -28,7 +28,7 @@ module Stamps
         if Browser.firefox?
           print_window = RAutomation::Window.new(:title => /File Upload/i)
           wait_until_present
-          stop_test "Print Window is not open" unless present?
+          "Print Window is not open".should eql "" unless present?
           print_window.activate
 
           print_window.text_field(class: "Edit", :index => 0).set filename
@@ -39,11 +39,11 @@ module Stamps
         elsif TestHelper.browser.chrome?
           print_window = RAutomation::Window.new(:title => /&Open/i)
           wait_until_present
-          stop_test "Print Window is not open" unless present?
+          "Print Window is not open".should eql "" unless present?
           print_window.activate
           print_window.button(:value => "&Open").click
         else
-          stop_test "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie"
+          "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie".should eql ""
         end
       end
     end

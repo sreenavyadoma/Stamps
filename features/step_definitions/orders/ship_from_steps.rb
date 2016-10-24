@@ -22,7 +22,8 @@ end
 
 Then /^Ship-From: Add address$/ do |ship_from|
   logger.step "Ship-From: Add address #{ship_from}"
-  add_form = web_apps.orders.details.ship_from.select("Manage Shipping Addresses...").add.shipping_address ship_from.hashes.first
+  add_form = web_apps.orders.details.ship_from.select("Manage Shipping Addresses...")
+  add_form.add.shipping_address ship_from.hashes.first
 end
 
 Then /^Ship-From: Add address (\w+)$/ do |address|
