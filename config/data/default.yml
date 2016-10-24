@@ -13,6 +13,35 @@ url_prefix:
   staging: mail.staging
   rating: printext.qacc
 
+credentials:
+
+  cc:
+    authentication:
+      usr: bz9005j1r2jx0
+      pw: pass111
+
+    bvt_shipping_address_management:
+      usr: ccje975fmb
+      pw: pass111
+
+  sc:
+    authentication:
+      usr: jes9t1kus
+      pw: pass111
+
+    bvt_shipping_address_management:
+      usr: ccje975fmb
+      pw: pass111
+
+  stg:
+    authentication:
+      usr: uadybt5iev
+      pw: pass111
+
+    bvt_shipping_address_management:
+      usr: ccje975fmb
+      pw: pass111
+
 details_services:
   #First-Class Mail
   # First-Class Mail Large Envelope/Flat
