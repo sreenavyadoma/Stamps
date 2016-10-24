@@ -41,12 +41,19 @@ module Stamps
           url = ENV['URL']
       end
 
+      logger.message "-"
+      logger.message "URL: #{url}"
+      logger.message "-"
+
       browser.goto url
       if browser.text.include? "Server Error"
         logger.error browser.text
         raise browser.text
       end
-      logger.info "Page loaded: #{browser.url}"
+
+      logger.message "-"
+      logger.message "Page loaded: #{browser.url}"
+      logger.message "-"
       browser.url
     end
   end

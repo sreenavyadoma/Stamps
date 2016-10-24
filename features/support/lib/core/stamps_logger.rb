@@ -23,10 +23,8 @@ module Stamps
     end
 
     def message message
-
-      message = repeat message, 60 if message.size==1
-
       begin
+        message = repeat message, 40 if message.size==1
         @logger.info "#{@test_name} :: #{message}"
       rescue
         # ignore
@@ -45,6 +43,7 @@ module Stamps
 
     def info message
       begin
+        message = repeat message, 40 if message.size==1
         (@logger.info "#{@test_name} :: #{message}") if TestHelper.verbose
       rescue
         # ignore
