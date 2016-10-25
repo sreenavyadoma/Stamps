@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile authentication
+default: --profile cuke_reports --profile bvt_address_cleansing
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -16,7 +16,6 @@ galina_cc: --tags @webreg_fields_validation_blank_to_next_page1 --guess VERBOSE=
 eli_dev: --tags @item_details   --guess VERBOSE=true HEALTHCHECK=false TEST=item_details URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=go45dhfhkw PW=pass111
 ray_dev: --tags @mail_envelope_10_postage --guess VERBOSE=true HEALTHCHECK=false TEST=mail_envelope_10_postage URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=webpost_0017 PW=pass111
 eva_dev: --tags @details_panel --guess VERBOSE=true HEALTHCHECK=false TEST=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
-daniel_dev: --tags @local_rating --guess VERBOSE=true HEALTHCHECK=false TEST=local_rating URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=auto21 PW=326tsetaqcdS!
 
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false TEST=xxxxxxxxxxxxxx
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false TEST=xxxxxxxxxxxxxx
@@ -38,164 +37,162 @@ grid_order_status: --tags @grid_order_status --guess VERBOSE=false HEALTHCHECK=f
 tooltips_improvements: --tags @tooltips_improvements --guess VERBOSE=false HEALTHCHECK=false TEST=tooltips_improvements
 
 # --------------------------  ORDERS BVT
-bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess VERBOSE=false HEALTHCHECK=false TEST=
-bvt_ambigious_address: --tags @bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=false TEST=
-bvt_address_cleansing: --tags @bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=false TEST=
-bvt_international_shipping: --tags @bvt_international_shipping --guess VERBOSE=false HEALTHCHECK=false TEST=
-bvt_new_order: --tags @bvt_new_order --guess VERBOSE=false HEALTHCHECK=false TEST=
-bvt_printing: --tags @bvt_printing --guess VERBOSE=false HEALTHCHECK=false TEST=
-bvt_purchasing: --tags @bvt_purchasing --guess VERBOSE=false HEALTHCHECK=false TEST=
-bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=false HEALTHCHECK=false TEST=
-bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess VERBOSE=false HEALTHCHECK=false TEST=
+bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_shipping_address_management
+bvt_ambigious_address: --tags @bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_ambigious_address
+bvt_address_cleansing: --tags @bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_address_cleansing
+bvt_international_shipping: --tags @bvt_international_shipping --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_international_shipping
+bvt_new_order: --tags @bvt_new_order --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_new_order
+bvt_printing: --tags @bvt_printing --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_printing
+bvt_purchasing: --tags @bvt_purchasing --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_purchasing
+bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_shipstation_updates_domestic
+bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_shipstation_updates_international
 
 # Stores
-marketplace: --tags @marketplace --guess VERBOSE=false HEALTHCHECK=false TEST=
-big_commerce: --tags @big_commerce --guess VERBOSE=false HEALTHCHECK=false TEST=
-paypal: --tags @paypal --guess VERBOSE=false HEALTHCHECK=false TEST=
-yahoo: --tags @yahoo --guess VERBOSE=false HEALTHCHECK=false TEST= BROWSER=chrome
-threedcart: --tags @3dcart --guess VERBOSE=false HEALTHCHECK=false TEST=
-shopify: --tags @shopify --guess VERBOSE=false HEALTHCHECK=false TEST=
-etsy: --tags @etsy --guess VERBOSE=false HEALTHCHECK=false TEST=
-rakuten: --tags @rakuten --guess VERBOSE=false HEALTHCHECK=false TEST=
-volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=false TEST=
-amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=false TEST=
+marketplace: --tags @marketplace --guess VERBOSE=false HEALTHCHECK=false TEST=marketplace
+big_commerce: --tags @big_commerce --guess VERBOSE=false HEALTHCHECK=false TEST=big_commerce
+paypal: --tags @paypal --guess VERBOSE=false HEALTHCHECK=false TEST=paypal
+yahoo: --tags @yahoo --guess VERBOSE=false HEALTHCHECK=false TEST=yahoo
+threedcart: --tags @3dcart --guess VERBOSE=false HEALTHCHECK=false TEST=threedcart
+shopify: --tags @shopify --guess VERBOSE=false HEALTHCHECK=false TEST=shopify
+etsy: --tags @etsy --guess VERBOSE=false HEALTHCHECK=false TEST=etsy
+rakuten: --tags @rakuten --guess VERBOSE=false HEALTHCHECK=false TEST=rakuten
+volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=false TEST=volusion
+amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=false TEST=amazon
 
-details_edit_order: --tags @details_edit_order --guess VERBOSE=false HEALTHCHECK=false TEST=
+details_edit_order: --tags @details_edit_order --guess VERBOSE=false HEALTHCHECK=false TEST=details_edit_order
 
-details_services: --tags @details_services --guess VERBOSE=false HEALTHCHECK=false TEST=
+details_services: --tags @details_services --guess VERBOSE=false HEALTHCHECK=false TEST=details_services
 #eln5mw78g for general setting autofund testing in sc
-grid_column_order: --tags @grid_column_order --guess VERBOSE=false HEALTHCHECK=false TEST=
-details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess VERBOSE=false HEALTHCHECK=false TEST=
-details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess VERBOSE=false HEALTHCHECK=false TEST=
-details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false HEALTHCHECK=false TEST=
-details_insure_for_box_unchecked_manual: --tags @details_insure_for_box_unchecked_manual --guess VERBOSE=false HEALTHCHECK=false TEST=
-details_insure_for_box_unchecked_imported: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=false HEALTHCHECK=false TEST= #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
+grid_column_order: --tags @grid_column_order --guess VERBOSE=false HEALTHCHECK=false TEST=grid_column_order
+details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess VERBOSE=false HEALTHCHECK=false TEST=details_flat_rate_no_weight_international
+details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess VERBOSE=false HEALTHCHECK=false TEST=details_flat_rate_no_weight_domestic
+details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false HEALTHCHECK=false TEST=details_large_dimensions_pm
+details_insure_for_box_unchecked_manual: --tags @details_insure_for_box_unchecked_manual --guess VERBOSE=false HEALTHCHECK=false TEST=details_insure_for_box_unchecked_manual
+details_insure_for_box_unchecked_imported: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=false HEALTHCHECK=false TEST=details_insure_for_box_unchecked_imported #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
 
-import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess VERBOSE=false HEALTHCHECK=false TEST= URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=bu8sdr5ui PW=pass111
+import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess VERBOSE=false HEALTHCHECK=false TEST=import_orders_ship_from_test
 
-international_customs_form_totals: --tags @international_customs_form_totals --guess VERBOSE=false HEALTHCHECK=false TEST=
-international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess VERBOSE=false HEALTHCHECK=false TEST=
-tooltip_customs_form: --tags @tooltip_customs_form --guess VERBOSE=false HEALTHCHECK=false TEST=
+international_customs_form_totals: --tags @international_customs_form_totals --guess VERBOSE=false HEALTHCHECK=false TEST=international_customs_form_totals
+international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess VERBOSE=false HEALTHCHECK=false TEST=international_customs_form_edit_delete_item
+tooltip_customs_form: --tags @tooltip_customs_form --guess VERBOSE=false HEALTHCHECK=false TEST=tooltip_customs_form
 
 # PRINT TWO UP EXPANDED
-print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_sdc1200_4x6_left_print1: --tags @print_two_up_expanded_sdc1200_4x6_left_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_paper_right_print2: --tags @print_two_up_expanded_paper_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_paper_left_print2: --tags @print_two_up_expanded_paper_left_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_paper_left_print1: --tags @print_two_up_expanded_paper_left_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_fpo_cn22_paper_right: --tags @print_two_up_expanded_fpo_cn22_paper_right --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_cp72_paper_left_print3: --tags @print_two_up_expanded_cp72_paper_left_print3 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_cp72_paper_left: --tags @print_two_up_expanded_cp72_paper_left --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_cp72_5x8_right_print1: --tags @print_two_up_expanded_cp72_5x8_right_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_cp72_5x8_left_print1: --tags @print_two_up_expanded_cp72_5x8_left_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_cn22_sdc1200_left: --tags @print_two_up_expanded_cn22_sdc1200_left --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_cn22_paper_right: --tags @print_two_up_expanded_cn22_paper_right --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_cn22_paper_left: --tags @print_two_up_expanded_cn22_paper_left --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_cn22_cp72_5x8_right_print2: --tags @print_two_up_expanded_cn22_cp72_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_cn22_5x8_right_print2: --tags @print_two_up_expanded_cn22_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_5x8_right_print2: --tags @print_two_up_expanded_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_5x8_right_print1: --tags @print_two_up_expanded_5x8_right_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_5x8_left_print3: --tags @print_two_up_expanded_5x8_left_print3 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_5x8_left_print2: --tags @print_two_up_expanded_5x8_left_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded_5x8_left: --tags @print_two_up_expanded_5x8_left --guess VERBOSE=false HEALTHCHECK=false TEST=
+print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_sdc1200_left_print3
+print_two_up_expanded_sdc1200_4x6_left_print1: --tags @print_two_up_expanded_sdc1200_4x6_left_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_sdc1200_4x6_left_print1
+print_two_up_expanded_paper_right_print2: --tags @print_two_up_expanded_paper_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_paper_right_print2
+print_two_up_expanded_paper_left_print2: --tags @print_two_up_expanded_paper_left_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_paper_left_print2
+print_two_up_expanded_paper_left_print1: --tags @print_two_up_expanded_paper_left_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_paper_left_print1
+print_two_up_expanded_fpo_cn22_paper_right: --tags @print_two_up_expanded_fpo_cn22_paper_right --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_fpo_cn22_paper_right
+print_two_up_expanded_cp72_paper_left_print3: --tags @print_two_up_expanded_cp72_paper_left_print3 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cp72_paper_left_print3
+print_two_up_expanded_cp72_paper_left: --tags @print_two_up_expanded_cp72_paper_left --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cp72_paper_left
+print_two_up_expanded_cp72_5x8_right_print1: --tags @print_two_up_expanded_cp72_5x8_right_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cp72_5x8_right_print1
+print_two_up_expanded_cp72_5x8_left_print1: --tags @print_two_up_expanded_cp72_5x8_left_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cp72_5x8_left_print1
+print_two_up_expanded_cn22_sdc1200_left: --tags @print_two_up_expanded_cn22_sdc1200_left --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cn22_sdc1200_left
+print_two_up_expanded_cn22_paper_right: --tags @print_two_up_expanded_cn22_paper_right --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cn22_paper_right
+print_two_up_expanded_cn22_paper_left: --tags @print_two_up_expanded_cn22_paper_left --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cn22_paper_left
+print_two_up_expanded_cn22_cp72_5x8_right_print2: --tags @print_two_up_expanded_cn22_cp72_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cn22_cp72_5x8_right_print2
+print_two_up_expanded_cn22_5x8_right_print2: --tags @print_two_up_expanded_cn22_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cn22_5x8_right_print2
+print_two_up_expanded_5x8_right_print2: --tags @print_two_up_expanded_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_5x8_right_print2
+print_two_up_expanded_5x8_right_print1: --tags @print_two_up_expanded_5x8_right_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_5x8_right_print1
+print_two_up_expanded_5x8_left_print3: --tags @print_two_up_expanded_5x8_left_print3 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_5x8_left_print3
+print_two_up_expanded_5x8_left_print2: --tags @print_two_up_expanded_5x8_left_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_5x8_left_print2
+print_two_up_expanded_5x8_left: --tags @print_two_up_expanded_5x8_left --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_5x8_left
 
 #PRINT TWO UP
-print_dialog_two_up_window_title: --tags @print_dialog_two_up_window_title --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_two_up_x_number_of_labels: --tags @print_dialog_two_up_x_number_of_labels --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess VERBOSE=false HEALTHCHECK=false TEST=
+print_dialog_two_up_window_title: --tags @print_dialog_two_up_window_title --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_two_up_window_title
+print_dialog_two_up_x_number_of_labels: --tags @print_dialog_two_up_x_number_of_labels --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_two_up_x_number_of_labels
+print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_multiple_domestic_labels
 
 # PRINT SAMPLE
-print_sample_pm_flat_rate_envelope: --tags @print_sample_pm_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_sample_pme_package: --tags @print_sample_pme_package --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=
+print_sample_pm_flat_rate_envelope: --tags @print_sample_pm_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample_pm_flat_rate_envelope
+print_sample_pme_package: --tags @print_sample_pme_package --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample_pme_package
+print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample_pm_regional_rate_box_a
+print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample_parcel_select_ground_large_package
+print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample_pme_padded_flat_rate_envelope
 
-
-print_multiple_orders: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=false TEST=
-
+print_multiple_orders: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=false TEST=print_multiple_orders
 
 # PRINT SHIP DATE
-print_dialog_ship_date_today_plus3: --tags @print_dialog_ship_date_today_plus3 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_ship_date_today_plus2: --tags @print_dialog_ship_date_today_plus2 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_ship_date_today_plus1: --tags @print_dialog_ship_date_today_plus1 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_ship_date_today: --tags @print_dialog_ship_date_today --guess VERBOSE=false HEALTHCHECK=false TEST=
+print_dialog_ship_date_today_plus3: --tags @print_dialog_ship_date_today_plus3 --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_ship_date_today_plus3
+print_dialog_ship_date_today_plus2: --tags @print_dialog_ship_date_today_plus2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_ship_date_today_plus2
+print_dialog_ship_date_today_plus1: --tags @print_dialog_ship_date_today_plus1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_ship_date_today_plus1
+print_dialog_ship_date_today: --tags @print_dialog_ship_date_today --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_ship_date_today
 
 # PRINT MEDIA
-tooltip_print_media: --tags @tooltip_print_media --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_printing_on_8x11_paper: --tags @print_dialog_printing_on_8x11_paper --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_printing_on_4x6_sdc1200: --tags @print_dialog_printing_on_4x6_sdc1200 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_printing_on_4x6_shipping_label: --tags @print_dialog_printing_on_4x6_shipping_label --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_printing_on_4x6_roll: --tags @print_dialog_printing_on_4x6_roll --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_hide_postage_value: --tags @print_dialog_hide_postage_value --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_change_date: --tags @print_dialog_change_date --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess VERBOSE=false HEALTHCHECK=false TEST=
+tooltip_print_media: --tags @tooltip_print_media --guess VERBOSE=false HEALTHCHECK=false TEST=tooltip_print_media
+print_dialog_printing_on_8x11_paper: --tags @print_dialog_printing_on_8x11_paper --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_printing_on_8x11_paper
+print_dialog_printing_on_4x6_sdc1200: --tags @print_dialog_printing_on_4x6_sdc1200 --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_printing_on_4x6_sdc1200
+print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_printing_on_5x8_shipping_label
+print_dialog_printing_on_4x6_shipping_label: --tags @print_dialog_printing_on_4x6_shipping_label --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_printing_on_4x6_shipping_label
+print_dialog_printing_on_4x6_roll: --tags @print_dialog_printing_on_4x6_roll --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_printing_on_4x6_roll
+print_dialog_hide_postage_value: --tags @print_dialog_hide_postage_value --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_hide_postage_value
+print_dialog_change_date: --tags @print_dialog_change_date --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_change_date
+print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_email_tracking
 # PRINT LABEL SIDES
-print_dialog_label_left_side: --tags @print_dialog_label_left_side --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_label_right_side: --tags @print_dialog_label_right_side --guess VERBOSE=false HEALTHCHECK=false TEST=
+print_dialog_label_left_side: --tags @print_dialog_label_left_side --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_label_left_side
+print_dialog_label_right_side: --tags @print_dialog_label_right_side --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_label_right_side
 
 # CP72 & CN22
-print_layout_cp72_sdc1200_single_ply: --tags @print_layout_cp72_sdc1200_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cp72_roll_continuation: --tags @print_layout_cp72_roll_continuation --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cp72_4x6roll: --tags @print_layout_cp72_4x6roll --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cp72_5x8_left: --tags @print_layout_cp72_5x8_left --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cp72_5x8_right: --tags @print_layout_cp72_5x8_right --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cp72_5x8_single_ply: --tags @print_layout_cp72_5x8_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cp72_single_ply_apo_roll: --tags @print_layout_cp72_single_ply_apo_roll --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cp72_paper_continuation: --tags @print_layout_cp72_paper_continuation --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cp72_paper_single_ply: --tags @print_layout_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_dpo_cp72_roll_single_ply: --tags @print_layout_dpo_cp72_roll_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_fsa_cp72_paper_single_ply: --tags @print_layout_fsa_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false HEALTHCHECK=false TEST=
+print_layout_cp72_sdc1200_single_ply: --tags @print_layout_cp72_sdc1200_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_sdc1200_single_ply
+print_layout_cp72_roll_continuation: --tags @print_layout_cp72_roll_continuation --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_roll_continuation
+print_layout_cp72_4x6roll: --tags @print_layout_cp72_4x6roll --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_4x6roll
+print_layout_cp72_5x8_left: --tags @print_layout_cp72_5x8_left --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_5x8_left
+print_layout_cp72_5x8_right: --tags @print_layout_cp72_5x8_right --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_5x8_right
+print_layout_cp72_5x8_single_ply: --tags @print_layout_cp72_5x8_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_5x8_single_ply
+print_layout_cp72_single_ply_apo_roll: --tags @print_layout_cp72_single_ply_apo_roll --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_single_ply_apo_roll
+print_layout_cp72_paper_continuation: --tags @print_layout_cp72_paper_continuation --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_paper_continuation
+print_layout_cp72_paper_single_ply: --tags @print_layout_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_paper_single_ply
+print_layout_dpo_cp72_roll_single_ply: --tags @print_layout_dpo_cp72_roll_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_dpo_cp72_roll_single_ply
+print_layout_fsa_cp72_paper_single_ply: --tags @print_layout_fsa_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_fsa_cp72_paper_single_ply
+print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cn22_5x8
+print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cn22_5x8_continuation
+print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cn22_paper_left_side
+print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cn22_roll
 
-details_reference_no: --tags @details_reference_no --guess VERBOSE=false HEALTHCHECK=false TEST=
-customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false HEALTHCHECK=false TEST=
-grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_dialog_thermal_number_of_labels_count: --tags @print_dialog_thermal_number_of_labels_count --guess VERBOSE=false HEALTHCHECK=false TEST=
-details_placeholders: --tags @details_placeholders --guess VERBOSE=false HEALTHCHECK=false TEST=
-grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=false TEST=
-grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=false TEST=
-import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=false TEST=
-pagination: --tags @pagination --guess VERBOSE=false HEALTHCHECK=false TEST=
-webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess VERBOSE=false HEALTHCHECK=false TEST=
-general_settings: --tags @general_settings --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_media: --tags @print_media --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_media_tooltips: --tags @print_media_tooltips --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up: --tags @print_two_up --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_many_orders: --tags @print_many_orders --guess VERBOSE=false HEALTHCHECK=false TEST=
-printing_errors: --tags @printing_error --guess VERBOSE=false HEALTHCHECK=false TEST=
-printing:  --tags @mail --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_sample: --tags @print_sample --guess VERBOSE=false HEALTHCHECK=false TEST=
-details_ship_cost_total: --tags @details_ship_cost_total --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_date: --tags @print_date --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=false HEALTHCHECK=false TEST=
-nav_postage_balance_update: --tags @nav_postage_balance_update --guess VERBOSE=false HEALTHCHECK=false TEST=
-reprint: --tags @reprint --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layouts_cp72: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false TEST=
-print_layouts_cn22: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false TEST=
+details_reference_no: --tags @details_reference_no --guess VERBOSE=false HEALTHCHECK=false TEST=details_reference_no
+customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false HEALTHCHECK=false TEST=customs_form_qty
+grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false HEALTHCHECK=false TEST=grid_ship_cost
+print_dialog_thermal_number_of_labels_count: --tags @print_dialog_thermal_number_of_labels_count --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_thermal_number_of_labels_count
+details_placeholders: --tags @details_placeholders --guess VERBOSE=false HEALTHCHECK=false TEST=details_placeholders
+grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=false TEST=grid_tracking
+grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=false TEST=grid_insured_value
+import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=false TEST=import_orders
+pagination: --tags @pagination --guess VERBOSE=false HEALTHCHECK=false TEST=pagination
+webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess VERBOSE=false HEALTHCHECK=false TEST=webreg_specify_username_jenkins
+general_settings: --tags @general_settings --guess VERBOSE=false HEALTHCHECK=false TEST=general_settings
+print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false TEST=print_label_position
+print_media: --tags @print_media --guess VERBOSE=false HEALTHCHECK=false TEST=print_media
+print_media_tooltips: --tags @print_media_tooltips --guess VERBOSE=false HEALTHCHECK=false TEST=print_media_tooltips
+print_two_up: --tags @print_two_up --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up
+print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false TEST=print_label_position
+print_many_orders: --tags @print_many_orders --guess VERBOSE=false HEALTHCHECK=false TEST=print_many_orders
+printing_errors: --tags @printing_error --guess VERBOSE=false HEALTHCHECK=false TEST=printing_errors
+printing:  --tags @mail --guess VERBOSE=false HEALTHCHECK=false TEST=printing
+print_sample: --tags @print_sample --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample
+details_ship_cost_total: --tags @details_ship_cost_total --guess VERBOSE=false HEALTHCHECK=false TEST=details_ship_cost_total
+print_date: --tags @print_date --guess VERBOSE=false HEALTHCHECK=false TEST=print_date
+print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded
+print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=false HEALTHCHECK=false TEST=print_print_label_position_layouts
+nav_postage_balance_update: --tags @nav_postage_balance_update --guess VERBOSE=false HEALTHCHECK=false TEST=nav_postage_balance_update
+reprint: --tags @reprint --guess VERBOSE=false HEALTHCHECK=false TEST=reprint
+print_layouts_cp72: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false TEST=print_layouts_cp72
+print_layouts_cn22: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false TEST=print_layouts_cn22
 
-local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=false HEALTHCHECK=false TEST=
-tracking_defaults: --tags @tracking_defaults --guess VERBOSE=false HEALTHCHECK=false TEST=
-rules_domestic: --tags @rules_domestic --guess VERBOSE=false HEALTHCHECK=false TEST=
-parcel_select: --tags @parcel_select --guess VERBOSE=false HEALTHCHECK=false TEST=
-tooltips_services: --tags @tooltips_services --guess VERBOSE=false HEALTHCHECK=false TEST=
-filter_change_order_status: --tags @filter_change_order_status --guess VERBOSE=false HEALTHCHECK=false TEST=
-grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=false TEST=
-order_creation: --tags @order_creation --guess VERBOSE=false HEALTHCHECK=false TEST=
-address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=false TEST=
-address_management: --tags @address_management --guess VERBOSE=false HEALTHCHECK=false TEST=
-tracking: --tags @tracking --guess VERBOSE=false HEALTHCHECK=false TEST=
-inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false HEALTHCHECK=false TEST=
-local_rating: --tags @local_rating --guess VERBOSE=false HEALTHCHECK=false TEST=
-international: --tags @international --guess VERBOSE=false HEALTHCHECK=false TEST=
-purchasing: --tags @purchasing --guess VERBOSE=false HEALTHCHECK=false TEST=
+local_rating: --tags @local_rating --guess VERBOSE=false HEALTHCHECK=false TEST=local_rating
+local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=false HEALTHCHECK=false TEST=local_rating_smoke_test
+tracking_defaults: --tags @tracking_defaults --guess VERBOSE=false HEALTHCHECK=false TEST=tracking_defaults
+rules_domestic: --tags @rules_domestic --guess VERBOSE=false HEALTHCHECK=false TEST=rules_domestic
+parcel_select: --tags @parcel_select --guess VERBOSE=false HEALTHCHECK=false TEST=parcel_select
+tooltips_services: --tags @tooltips_services --guess VERBOSE=false HEALTHCHECK=false TEST=tooltips_services
+filter_change_order_status: --tags @filter_change_order_status --guess VERBOSE=false HEALTHCHECK=false TEST=filter_change_order_status
+grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=false TEST=grid_tracking
+order_creation: --tags @order_creation --guess VERBOSE=false HEALTHCHECK=false TEST=order_creation
+address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=false TEST=address_cleansing
+address_management: --tags @address_management --guess VERBOSE=false HEALTHCHECK=false TEST=address_management
+tracking: --tags @tracking --guess VERBOSE=false HEALTHCHECK=false TEST=tracking
+inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false HEALTHCHECK=false TEST=inline_service_rates
+international: --tags @international --guess VERBOSE=false HEALTHCHECK=false TEST=international
+purchasing: --tags @purchasing --guess VERBOSE=false HEALTHCHECK=false TEST=purchasing
 change_settings: --tags @settings --guess VERBOSE=false HEALTHCHECK=false TEST=
 print_on_thermal: --tags @print_on_thermal --guess VERBOSE=false HEALTHCHECK=false TEST=
 sorting: --tags @sort --guess VERBOSE=false HEALTHCHECK=false TEST=

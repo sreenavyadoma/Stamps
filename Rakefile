@@ -32,6 +32,16 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:authentication) do |t|
+  t.profile = 'authentication'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:healthcheck) do |t|
+  t.profile = 'healthcheck'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:customs_form_auto_calculate_weight) do |t|
   t.profile = 'customs_form_auto_calculate_weight'
   t.cucumber_opts = "-p cuke_reports"
@@ -79,16 +89,6 @@ end
 
 Cucumber::Rake::Task.new(:default) do |t|
   t.profile = 'default'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:healthcheck_stg) do |t|
-  t.profile = 'healthcheck_stg'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:healthcheck_cc) do |t|
-  t.profile = 'healthcheck_cc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -171,16 +171,6 @@ Cucumber::Rake::Task.new(:yahoo) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:authentication) do |t|
-  t.profile = 'authentication'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:authentication_stg) do |t|
-  t.profile = 'authentication_stg'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:grid_column_order) do |t|
   t.profile = 'grid_column_order'
   t.cucumber_opts = "-p cuke_reports"
@@ -223,16 +213,6 @@ end
 
 Cucumber::Rake::Task.new(:bvt_shipstation_updates_domestic) do |t|
   t.profile = 'bvt_shipstation_updates_domestic'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:authentication_sc) do |t|
-  t.profile = 'authentication_sc'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:authentication_cc) do |t|
-  t.profile = 'authentication_cc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -548,11 +528,6 @@ end
 
 Cucumber::Rake::Task.new(:details_reference_no) do |t|
   t.profile = 'details_reference_no'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:authentication) do |t|
-  t.profile = 'authentication'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -908,11 +883,6 @@ end
 
 Cucumber::Rake::Task.new(:item_details) do |t|
   t.profile = 'item_details'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:healthcheck) do |t|
-  t.profile = 'healthcheck'
   t.cucumber_opts = "-p cuke_reports"
 end
 
