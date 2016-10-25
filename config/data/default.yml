@@ -27,8 +27,6 @@ credentials:
     auto_suggest:
       usr: AUTOSUGGEST888
       pw: pass111
-
-
     bvt_shipping_address_management:
       usr: ccje975fmb
       pw: pass111
