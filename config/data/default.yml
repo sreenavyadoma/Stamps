@@ -21,6 +21,9 @@ credentials:
     authentication:
       usr: uadybt5iev
       pw: pass111
+    orders_bvt_ambigious_address:
+      usr: vfknhokj9wq
+      pw: pass111
     bvt_address_cleansing:
       usr: lxev9vn
       pw: pass111
@@ -84,6 +87,9 @@ credentials:
       pw: pass111
     authentication:
       usr: jes9t1kus
+      pw: pass111
+    orders_bvt_ambigious_address:
+      usr: jp6tygn7q
       pw: pass111
     bvt_address_cleansing:
       usr: rzyb4un
