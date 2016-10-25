@@ -17,7 +17,7 @@ credentials:
   cc:
     authentication:
       usr: bz9005j1r2jx0
-     pw: pass111
+      pw: pass111
     address_cleansing:
       usr: swv6wmuno
       pw: pass111
@@ -44,7 +44,6 @@ credentials:
     auto_suggest:
       usr: eueys1zwc
       pw: pass111
-
     bvt_shipping_address_management:
       usr: ccje975fmb
       pw: pass111
@@ -62,11 +61,9 @@ credentials:
     auto_suggest:
       usr: wwelioo2e0nlf
       pw: pass111
-
     bvt_shipping_address_management:
       usr: ccje975fmb
       pw: pass111
-
 
 details_services:
   #First-Class Mail

@@ -29,8 +29,8 @@ Before do  |scenario|
   begin
     if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default')
       logger.message "Using Default Credentials from ../config/data/default.yml"
-      ENV['USR'] = data_for(:credentials, {})[ENV['URL']][ENV['TEST']]['usr']
-      ENV['PW'] = data_for(:credentials, {})[ENV['URL']][ENV['TEST']]['pw']
+      ENV['USR'] = data_for(:credentials, {})[ENV['URL']][ENV['TEST']]['USR']
+      ENV['PW'] = data_for(:credentials, {})[ENV['URL']][ENV['TEST']]['PW']
       ENV['USR'].should be_truthy
       ENV['PW'].should be_truthy
       logger.message "Default Username: #{ENV['USR']}"
