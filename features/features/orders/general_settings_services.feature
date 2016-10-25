@@ -4,7 +4,7 @@ Feature: Checkoxes Services, Print Confirm, USPS Terms, Contacts and Shipments
   Background:
     Given I am signed in to Orders
 
-  @general_settings
+  @general_settings_t1
   Scenario: Services, Print Confirm, USPS Terms, Contacts and Shipments
 
     Then Open Settings Modal
