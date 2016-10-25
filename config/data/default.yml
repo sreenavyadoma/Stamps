@@ -17,7 +17,7 @@ credentials:
   cc:
     xxxxxx:
       usr: xxxxxx
-      pw: xxxxxx
+      pw: pass111
     authentication:
       usr: bz9005j1r2jx0
       pw: pass111
@@ -40,7 +40,7 @@ credentials:
   sc:
     yyyyyyy:
       usr: yyyyyyy
-      pw: yyyyyyy
+      pw: pass111
     authentication:
       usr: jes9t1kus
       pw: pass111
@@ -59,7 +59,6 @@ credentials:
     bvt_shipping_address_management:
       usr: ccje975fmb
       pw: pass111
-
   stg:
     zzzzzzz:
       usr: zzzzzzz
@@ -82,6 +81,10 @@ credentials:
     bvt_shipping_address_management:
       usr: ccje975fmb
       pw: pass111
+    mail_bvt_envelopes:
+      usr: t5mjsiuy2sukk9
+      pw: pass111
+
 
 details_services:
   #First-Class Mail
