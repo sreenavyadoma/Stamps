@@ -18,6 +18,9 @@ credentials:
     xxxxxx:
       usr: xxxxxx
       pw: pass111
+    bvt_address_cleansing:
+      usr: knmeaba
+      pw: pass111
     authentication:
       usr: bz9005j1r2jx0
       pw: pass111
