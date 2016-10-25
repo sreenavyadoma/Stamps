@@ -44,6 +44,9 @@ credentials:
     xxxxxx:
       usr: xxxxxx
       pw: pass111
+    bvt_printing:
+      usr: rz6fcd8qfg8x
+      pw: pass111
     bvt_new_order:
       usr: u0d9jawgcqaj
       pw: pass111
