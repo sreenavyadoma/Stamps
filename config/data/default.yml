@@ -14,11 +14,20 @@ url_prefix:
   rating: printext.qacc
 
 credentials:
-
   cc:
     authentication:
       usr: bz9005j1r2jx0
       pw: pass111
+    address_cleansing:
+      usr: swv6wmuno
+      pw: pass111
+    address_management:
+      usr: mc6ozi754o
+      pw: pass111
+    auto_suggest:
+      usr: AUTOSUGGEST888
+      pw: pass111
+
 
     bvt_shipping_address_management:
       usr: ccje975fmb
@@ -28,6 +37,15 @@ credentials:
     authentication:
       usr: jes9t1kus
       pw: pass111
+    address_cleansing:
+      usr: t6ewlt1
+      pw: pass111
+    address_management:
+      usr: loj26qb4rk3
+      pw: pass111
+    auto_suggest:
+      usr: eueys1zwc
+      pw: pass111
 
     bvt_shipping_address_management:
       usr: ccje975fmb
@@ -36,6 +54,15 @@ credentials:
   stg:
     authentication:
       usr: uadybt5iev
+      pw: pass111
+    address_cleansing:
+      usr: tc7lbuuldm7gud
+      pw: pass111
+    address_management:
+      usr: ts1n7vq9ywir7
+      pw: pass111
+    auto_suggest:
+      usr: wwelioo2e0nlf
       pw: pass111
 
     bvt_shipping_address_management:
