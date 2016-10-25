@@ -42,16 +42,16 @@ credentials:
 
   cc:
     xxxxxx:
-      usr: xk0v35wf9ndq
-      pw: pass111
-    bvt_ambigious_address:
       usr: xxxxxx
       pw: pass111
     authentication:
       usr: bz9005j1r2jx0
       pw: pass111
+    bvt_international_shipping:
+      usr: xk0v35wf9ndq
+      pw: pass111
     bvt_address_cleansing:
-      usr: knmeaba
+      usr: u0d9jawgcqaj
       pw: pass111
     bvt_shipping_address_management:
       usr: ccje975fmb
