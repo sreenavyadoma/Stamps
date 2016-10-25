@@ -36,7 +36,7 @@ credentials:
     authentication:
       usr: uadybt5iev
       pw: pass111
-    orders_bvt_ambigious_address:
+    bvt_ambigious_address:
       usr: vfknhokj9wq
       pw: pass111
     bvt_address_cleansing:
@@ -77,7 +77,7 @@ credentials:
     bvt_add_new_order:
       usr: u0d9jawgcqaj
       pw: pass111
-    orders_bvt_ambigious_address:
+    bvt_ambigious_address:
       usr: xk0v35wf9ndq
       pw: pass111
     bvt_printing:
@@ -136,7 +136,7 @@ credentials:
     authentication:
       usr: jes9t1kus
       pw: pass111
-    orders_bvt_ambigious_address:
+    bvt_ambigious_address:
       usr: jp6tygn7q
       pw: pass111
     bvt_address_cleansing:
