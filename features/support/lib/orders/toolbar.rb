@@ -650,8 +650,12 @@ module Stamps
 
             "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
+            logger.info "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}" if initializing_db.present?
+
+            initializing_db.safely_wait_while_present 15
+
             if initializing_db.present?
-              message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text} "
+              message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}"
               logger.info message
               message.should eql ""
             end

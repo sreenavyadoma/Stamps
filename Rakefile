@@ -127,26 +127,6 @@ Cucumber::Rake::Task.new(:big_commerce) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:rob_cc) do |t|
-  t.profile = 'rob_cc'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_staging) do |t|
-  t.profile = 'rob_staging'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_sc) do |t|
-  t.profile = 'rob_sc'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_stg) do |t|
-  t.profile = 'rob_stg'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:bvt_shipping_address_management) do |t|
   t.profile = 'bvt_shipping_address_management'
   t.cucumber_opts = "-p cuke_reports"
@@ -186,33 +166,8 @@ Cucumber::Rake::Task.new(:details_services) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:rob_cc) do |t|
-  t.profile = 'rob_cc'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:eli_dev) do |t|
-  t.profile = 'eli_dev'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:ray_dev) do |t|
-  t.profile = 'ray_dev'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:eva_dev) do |t|
-  t.profile = 'eva_dev'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:yahoo) do |t|
   t.profile = 'yahoo'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:print_cc) do |t|
-  t.profile = 'print_cc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -293,16 +248,6 @@ end
 
 Cucumber::Rake::Task.new(:tooltip_customs_form) do |t|
   t.profile = 'tooltip_customs_form'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_dev_ie) do |t|
-  t.profile = 'rob_dev_ie'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rob_dev_gc) do |t|
-  t.profile = 'rob_dev_gc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -796,11 +741,6 @@ Cucumber::Rake::Task.new(:order_creation) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:rob_jenkins_dev) do |t|
-  t.profile = 'rob_jenkins_dev'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:date_printed) do |t|
   t.profile = 'print_date'
   t.cucumber_opts = "-p cuke_reports"
@@ -913,12 +853,6 @@ end
 
 Cucumber::Rake::Task.new(:sorting) do |t|
   t.profile = 'sorting'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-
-Cucumber::Rake::Task.new(:add_new_order_eva) do |t|
-  t.profile = 'add_new_order_eva'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -2127,6 +2061,66 @@ end
 
 Cucumber::Rake::Task.new(:mail_envelope_10_postage) do |t|
   t.profile = 'mail_envelope_10_postage'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_cc) do |t|
+  t.profile = 'rob_cc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_staging) do |t|
+  t.profile = 'rob_staging'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_sc) do |t|
+  t.profile = 'rob_sc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_stg) do |t|
+  t.profile = 'rob_stg'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_jenkins_dev) do |t|
+  t.profile = 'rob_jenkins_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_dev_ie) do |t|
+  t.profile = 'rob_dev_ie'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_dev_gc) do |t|
+  t.profile = 'rob_dev_gc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_cc) do |t|
+  t.profile = 'rob_cc'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:eli_dev) do |t|
+  t.profile = 'eli_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:add_new_order_eva) do |t|
+  t.profile = 'add_new_order_eva'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:eva_dev) do |t|
+  t.profile = 'eva_dev'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:ray_dev) do |t|
+  t.profile = 'ray_dev'
   t.cucumber_opts = "-p cuke_reports"
 end
 
