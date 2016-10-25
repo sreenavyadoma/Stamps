@@ -15,9 +15,24 @@ url_prefix:
 
 credentials:
   stg:
-    zzzzzzz:
-      usr: zzzzzzz
-      pw: zzzzzzz
+    bvt_add_new_order:
+      usr: lxev9vn
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
     authentication:
       usr: uadybt5iev
       pw: pass111
@@ -44,8 +59,23 @@ credentials:
       pw: pass111
 
   cc:
-    xxxxxx:
-      usr: xxxxxx
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    bvt_add_new_order:
+      usr: u0d9jawgcqaj
       pw: pass111
     orders_bvt_ambigious_address:
       usr: xk0v35wf9ndq
@@ -82,8 +112,26 @@ credentials:
       pw: pass111
 
   sc:
-    yyyyyyy:
-      usr: yyyyyyy
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    bvt_add_new_order:
+      usr: rzyb4un
       pw: pass111
     authentication:
       usr: jes9t1kus
