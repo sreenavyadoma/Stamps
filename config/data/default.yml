@@ -14,8 +14,37 @@ url_prefix:
   rating: printext.qacc
 
 credentials:
+  stg:
+    zzzzzzz:
+      usr: zzzzzzz
+      pw: zzzzzzz
+    authentication:
+      usr: uadybt5iev
+      pw: pass111
+    bvt_address_cleansing:
+      usr: lxev9vn
+      pw: pass111
+    bvt_shipping_address_management:
+      usr: ccje975fmb
+      pw: pass111
+    address_cleansing:
+      usr: tc7lbuuldm7gud
+      pw: pass111
+    address_management:
+      usr: ts1n7vq9ywir7
+      pw: pass111
+    auto_suggest:
+      usr: wwelioo2e0nlf
+      pw: pass111
+    mail_bvt_envelopes:
+      usr: t5mjsiuy2sukk9
+      pw: pass111
+
   cc:
     xxxxxx:
+      usr: xk0v35wf9ndq
+      pw: pass111
+    bvt_ambigious_address:
       usr: xxxxxx
       pw: pass111
     authentication:
@@ -61,31 +90,6 @@ credentials:
       pw: pass111
     auto_suggest:
       usr: eueys1zwc
-      pw: pass111
-  stg:
-    zzzzzzz:
-      usr: zzzzzzz
-      pw: zzzzzzz
-    authentication:
-      usr: uadybt5iev
-      pw: pass111
-    bvt_address_cleansing:
-      usr: lxev9vn
-      pw: pass111
-    bvt_shipping_address_management:
-      usr: ccje975fmb
-      pw: pass111
-    address_cleansing:
-      usr: tc7lbuuldm7gud
-      pw: pass111
-    address_management:
-      usr: ts1n7vq9ywir7
-      pw: pass111
-    auto_suggest:
-      usr: wwelioo2e0nlf
-      pw: pass111
-    mail_bvt_envelopes:
-      usr: t5mjsiuy2sukk9
       pw: pass111
 
 
