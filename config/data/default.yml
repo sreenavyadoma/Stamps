@@ -18,11 +18,14 @@ credentials:
     xxxxxx:
       usr: xxxxxx
       pw: pass111
+    authentication:
+      usr: bz9005j1r2jx0
+      pw: pass111
     bvt_address_cleansing:
       usr: knmeaba
       pw: pass111
-    authentication:
-      usr: bz9005j1r2jx0
+    bvt_shipping_address_management:
+      usr: ccje975fmb
       pw: pass111
     bvt_address_cleansing:
       usr: u0d9jawgcqaj
@@ -36,9 +39,6 @@ credentials:
     auto_suggest:
       usr: AUTOSUGGEST888
       pw: pass111
-    bvt_shipping_address_management:
-      usr: ccje975fmb
-      pw: pass111
 
   sc:
     yyyyyyy:
@@ -50,6 +50,9 @@ credentials:
     bvt_address_cleansing:
       usr: rzyb4un
       pw: pass111
+    bvt_shipping_address_management:
+      usr: ccje975fmb
+      pw: pass111
     address_cleansing:
       usr: t6ewlt1
       pw: pass111
@@ -58,9 +61,6 @@ credentials:
       pw: pass111
     auto_suggest:
       usr: eueys1zwc
-      pw: pass111
-    bvt_shipping_address_management:
-      usr: ccje975fmb
       pw: pass111
   stg:
     zzzzzzz:
@@ -72,6 +72,9 @@ credentials:
     bvt_address_cleansing:
       usr: lxev9vn
       pw: pass111
+    bvt_shipping_address_management:
+      usr: ccje975fmb
+      pw: pass111
     address_cleansing:
       usr: tc7lbuuldm7gud
       pw: pass111
@@ -80,9 +83,6 @@ credentials:
       pw: pass111
     auto_suggest:
       usr: wwelioo2e0nlf
-      pw: pass111
-    bvt_shipping_address_management:
-      usr: ccje975fmb
       pw: pass111
     mail_bvt_envelopes:
       usr: t5mjsiuy2sukk9
