@@ -14,61 +14,36 @@ url_prefix:
   rating: printext.qacc
 
 credentials:
-  cc:
-    xxxxxx:
-      usr: xxxxxx
-      pw: pass111
-    authentication:
-      usr: bz9005j1r2jx0
-      pw: pass111
-    bvt_address_cleansing:
-      usr: u0d9jawgcqaj
-      pw: pass111
-    address_cleansing:
-      usr: swv6wmuno
-      pw: pass111
-    address_management:
-      usr: mc6ozi754o
-      pw: pass111
-    auto_suggest:
-      usr: AUTOSUGGEST888
-      pw: pass111
-    bvt_shipping_address_management:
-      usr: ccje975fmb
-      pw: pass111
-
-  sc:
-    yyyyyyy:
-      usr: yyyyyyy
-      pw: pass111
-    authentication:
-      usr: jes9t1kus
-      pw: pass111
-    bvt_address_cleansing:
-      usr: rzyb4un
-      pw: pass111
-    address_cleansing:
-      usr: t6ewlt1
-      pw: pass111
-    address_management:
-      usr: loj26qb4rk3
-      pw: pass111
-    auto_suggest:
-      usr: eueys1zwc
-      pw: pass111
-    bvt_shipping_address_management:
-      usr: ccje975fmb
-      pw: pass111
-
   stg:
-    zzzzzzz:
-      usr: zzzzzzz
+    bvt_add_new_order:
+      usr: lxev9vn
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
       pw: pass111
     authentication:
       usr: uadybt5iev
       pw: pass111
+    bvt_ambigious_address:
+      usr: vfknhokj9wq
+      pw: pass111
     bvt_address_cleansing:
-      usr: lxev9vn
+      usr: l0ub8l45a
+      pw: pass111
+    bvt_shipping_address_management:
+      usr: ccje975fmb
       pw: pass111
     address_cleansing:
       usr: tc7lbuuldm7gud
@@ -79,61 +54,103 @@ credentials:
     auto_suggest:
       usr: wwelioo2e0nlf
       pw: pass111
+    mail_bvt_envelopes:
+      usr: t5mjsiuy2sukk9
+      pw: pass111
+
+  cc:
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    bvt_add_new_order:
+      usr: u0d9jawgcqaj
+      pw: pass111
+    bvt_ambigious_address:
+      usr: xk0v35wf9ndq
+      pw: pass111
+    bvt_printing:
+      usr: rz6fcd8qfg8x
+      pw: pass111
+    bvt_new_order:
+      usr: u0d9jawgcqaj
+      pw: pass111
+    authentication:
+      usr: bz9005j1r2jx0
+      pw: pass111
+    bvt_international_shipping:
+      usr: xk0v35wf9ndq
+      pw: pass111
+    bvt_address_cleansing:
+      usr: knmeaba
+      pw: pass111
     bvt_shipping_address_management:
       usr: ccje975fmb
       pw: pass111
-
-    print_dialog_change_date:
-      usr: mwnp2cwefg
+    address_cleansing:
+      usr: swv6wmuno
       pw: pass111
-    print_dialog_email_tracking:
-      usr: vncmsvqa1
+    address_management:
+      usr: mc6ozi754o
       pw: pass111
-    print_dialog_hide_postage_value:
-      usr: lngmwr21
-      pw: pass111
-    print_dialog_label_left_side:
-      usr: fhix7qqr9
-      pw: pass111
-    print_dialog_label_right_side:
-      usr: b25wtqtq3nvk5v
-      pw: pass111
-    print_dialog_printing_on_4x6_roll:
-      usr: j2i75rsxxtj
-      pw: pass111
-    print_dialog_printing_on_4x6_sdc1200:
-      usr: uk6oxddbk16
-      pw: pass111
-    print_dialog_printing_on_4x6_shipping_label:
-      usr: dks7plhj
-      pw: pass111
-    print_dialog_printing_on_5x8_shipping_label:
-      usr: lxowg9cu
-      pw: pass111
-    print_dialog_printing_on_8x11_paper:
-      usr: b9avaywj
-      pw: pass111
-    print_dialog_ship_date_today:
-      usr: t8jnj7r4rwc1n
-      pw: pass111
-    print_dialog_ship_date_today_plus1:
-      usr: r185heirbqv76l
-      pw: pass111
-    print_dialog_ship_date_today_plus2:
-      usr: xa4sk9jsk
-      pw: pass111
-    print_dialog_ship_date_today_plus3:
-      usr: wmzvi1kmzab7
-      pw: pass111
-    print_dialog_thermal_number_of_labels_count:
-      usr: h12wjdrskuyu
+    auto_suggest:
+      usr: AUTOSUGGEST888
       pw: pass111
 
-
-
-
-
-
+  sc:
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    bvt_add_new_order:
+      usr: rzyb4un
+      pw: pass111
+    authentication:
+      usr: jes9t1kus
+      pw: pass111
+    bvt_ambigious_address:
+      usr: jp6tygn7q
+      pw: pass111
+    bvt_address_cleansing:
+      usr: lm1xroylhznp
+      pw: pass111
+    bvt_shipping_address_management:
+      usr: ccje975fmb
+      pw: pass111
+    address_cleansing:
+      usr: t6ewlt1
+      pw: pass111
+    address_management:
+      usr: loj26qb4rk3
+      pw: pass111
+    auto_suggest:
+      usr: eueys1zwc
+      pw: pass111
 
 
 details_services:
