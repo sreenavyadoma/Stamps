@@ -211,17 +211,17 @@ multiple_order_total_cost: --tags @multiple_order_total_cost --guess VERBOSE=fal
 item_details: --tags @item_details --guess VERBOSE=false HEALTHCHECK=false TEST=item_details
 
 # --------------------------  WEB PRINT
-mail_bvt: --tags  @mail_bvt --guess VERBOSE=false HEALTHCHECK=false TEST=
-mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=false TEST=
-mail_bvt_contacts: --tags  @mail_bvt_contacts --guess VERBOSE=false HEALTHCHECK=false TEST=
-mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess VERBOSE=false HEALTHCHECK=false TEST=
-mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess VERBOSE=false HEALTHCHECK=false TEST=
-mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess VERBOSE=false HEALTHCHECK=false TEST=
-mail_bvt_netstamps_calculate: --tags  @mail_bvt_netstamps_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=
-mail_bvt_netstamps_specify: --tags  @mail_bvt_netstamps_specify --guess VERBOSE=false HEALTHCHECK=false TEST=
-mail_bvt_international: --tags  @mail_bvt_international --guess VERBOSE=false HEALTHCHECK=false TEST=
+mail_bvt: --tags  @mail_bvt --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt
+mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_address_cleansing
+mail_bvt_contacts: --tags  @mail_bvt_contacts --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_contacts
+mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_envelopes
+mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_extra_services
+mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_purchasing
+mail_bvt_netstamps_calculate: --tags  @mail_bvt_netstamps_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_netstamps_calculate
+mail_bvt_netstamps_specify: --tags  @mail_bvt_netstamps_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_netstamps_specify
+mail_bvt_international: --tags  @mail_bvt_international --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_international
 
-mail_label_left_side: --tags  @mail_label_left_side --guess VERBOSE=false HEALTHCHECK=false TEST=
+mail_label_left_side: --tags  @mail_label_left_side --guess VERBOSE=false HEALTHCHECK=false TEST=mail_label_left_side
 mail_label_right_side: --tags  @mail_label_right_side --guess VERBOSE=false HEALTHCHECK=false TEST=
 mail_envelope_regression: --tags  @mail_envelope_regression --guess VERBOSE=false HEALTHCHECK=false TEST=
 mail_envelope_10: --tags  @mail_envelope_10 --guess VERBOSE=false HEALTHCHECK=false TEST=
