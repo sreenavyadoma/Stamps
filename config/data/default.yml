@@ -15,8 +15,14 @@ url_prefix:
 
 credentials:
   cc:
+    xxxxxx:
+      usr: xxxxxx
+      pw: xxxxxx
     authentication:
       usr: bz9005j1r2jx0
+      pw: pass111
+    bvt_address_cleansing:
+      usr: u0d9jawgcqaj
       pw: pass111
     address_cleansing:
       usr: swv6wmuno
@@ -32,8 +38,14 @@ credentials:
       pw: pass111
 
   sc:
+    yyyyyyy:
+      usr: yyyyyyy
+      pw: yyyyyyy
     authentication:
       usr: jes9t1kus
+      pw: pass111
+    bvt_address_cleansing:
+      usr: rzyb4un
       pw: pass111
     address_cleansing:
       usr: t6ewlt1
@@ -44,14 +56,19 @@ credentials:
     auto_suggest:
       usr: eueys1zwc
       pw: pass111
-
     bvt_shipping_address_management:
       usr: ccje975fmb
       pw: pass111
 
   stg:
+    zzzzzzz:
+      usr: zzzzzzz
+      pw: zzzzzzz
     authentication:
       usr: uadybt5iev
+      pw: pass111
+    bvt_address_cleansing:
+      usr: lxev9vn
       pw: pass111
     address_cleansing:
       usr: tc7lbuuldm7gud
@@ -62,7 +79,6 @@ credentials:
     auto_suggest:
       usr: wwelioo2e0nlf
       pw: pass111
-
     bvt_shipping_address_management:
       usr: ccje975fmb
       pw: pass111

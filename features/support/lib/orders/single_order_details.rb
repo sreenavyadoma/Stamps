@@ -954,7 +954,7 @@ module Stamps
             7.times{
               begin
                 drop_down.safe_click unless selection.present?
-                selection.safe_safe_scroll_into_view
+                selection.safe_scroll_into_view
                 selection.safe_click
                 sleep 1
                 return manage_shipping_adddress if manage_shipping_adddress.present?
@@ -966,7 +966,7 @@ module Stamps
           else
             drop_down.safe_click unless selection.present?
             if selection.present?
-              selection.safe_safe_scroll_into_view
+              selection.safe_scroll_into_view
               service_text = selection.text
             end
             10.times do

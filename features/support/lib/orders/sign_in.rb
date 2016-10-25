@@ -106,6 +106,7 @@ module Stamps
         end
 
         usr.should be_truthy
+        pw.should be_truthy
 
         logger.message "-"
         logger.message "Username: #{usr}"
