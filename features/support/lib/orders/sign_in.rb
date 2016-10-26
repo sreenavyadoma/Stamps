@@ -118,11 +118,14 @@ module Stamps
         5.times do
           begin
             break if grid.present?
-            username.set usr
-            password.set pw
-            sign_in_btn.safe_send_keys :enter
-            sign_in_btn.safe_click
-            sign_in_btn.safe_click
+
+            if username.present?
+              username.set usr
+              password.set pw
+              sign_in_btn.safe_send_keys :enter
+              sign_in_btn.safe_click
+              sign_in_btn.safe_click
+            end
 
             2.times do
               if username.present?
@@ -134,18 +137,28 @@ module Stamps
 
             loading_orders.safely_wait_until_present 2
 
-            3.times do
+            5.times do
               if loading_orders.present?
                 logger.step loading_orders.safe_text
                 logger.step loading_orders.safe_text
                 logger.step loading_orders.safe_text
-                loading_orders.safely_wait_while_present 5
+                loading_orders.safely_wait_while_present 2
               else
                 break
               end
             end
 
+            if market_place.present?
+              market_place.close
+              break
+            end
+
             grid.wait_until_present 2
+
+            if market_place.present?
+              market_place.close
+              break
+            end
             break if grid.present?
             break if grid.present?
             break if grid.present?
@@ -187,7 +200,7 @@ module Stamps
               break
             end
 
-            toolbar.wait_until_present 60
+            toolbar.wait_until_present 10
 
             logger.info "#{usr} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 
