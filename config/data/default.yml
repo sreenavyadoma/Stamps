@@ -30,8 +30,8 @@ credentials:
     stgstgstg:
       usr: stgstgstg
       pw: pass111
-    stgstgstg:
-      usr: stgstgstg
+    bvt_purchasing:
+      usr: stgxil5cp0pi
       pw: pass111
     authentication:
       usr: uadybt5iev
@@ -117,8 +117,8 @@ credentials:
     ccccc:
       usr: ccccc
       pw: pass111
-    ccccc:
-      usr: ccccc
+    bvt_purchasing:
+      usr: ccv2ad917b
       pw: pass111
     bvt_add_new_order:
       usr: u0d9jawgcqaj
@@ -170,8 +170,8 @@ credentials:
     scscscsc:
       usr: scscscsc
       pw: pass111
-    scscscsc:
-      usr: scscscsc
+    bvt_purchasing:
+      usr: scqeypuf8y2l
       pw: pass111
     bvt_add_new_order:
       usr: rzyb4un
