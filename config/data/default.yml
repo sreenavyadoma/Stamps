@@ -27,8 +27,8 @@ credentials:
     stgstgstg:
       usr: stgstgstg
       pw: pass111
-    stgstgstg:
-      usr: stgstgstg
+    bvt_shipstation_updates_domestic:
+      usr: stgrryltfc0
       pw: pass111
     bvt_purchasing:
       usr: stgxil5cp0pi
@@ -114,8 +114,8 @@ credentials:
     ccccc:
       usr: ccccc
       pw: pass111
-    ccccc:
-      usr: ccccc
+    bvt_shipstation_updates_domestic:
+      usr: pzlnwe2z03m7y
       pw: pass111
     bvt_purchasing:
       usr: ccv2ad917b
@@ -167,8 +167,8 @@ credentials:
     scscscsc:
       usr: scscscsc
       pw: pass111
-    scscscsc:
-      usr: scscscsc
+    bvt_shipstation_updates_domestic:
+      usr: scoini7whe
       pw: pass111
     bvt_purchasing:
       usr: scqeypuf8y2l
