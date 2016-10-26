@@ -43,12 +43,12 @@ Before do  |scenario|
       begin
         ENV['USR'] = data_for(:credentials, {})[ENV['URL']][ENV['TEST']]['usr']
       rescue
-        "".should eql "There are no user credentials defined in default.yml file for URL:#{ENV['URL']} TEST:#{ENV['TEST']} usr:#{ENV['usr']}"
+        "Missing Parameter credentials #{ENV['URL']}:#{ENV['TEST']}".should eql "There are no user credentials defined in default.yml file for URL:#{ENV['URL']} TEST:#{ENV['TEST']} usr:#{ENV['usr']}"
       end
       begin
         ENV['PW'] = data_for(:credentials, {})[ENV['URL']][ENV['TEST']]['pw']
       rescue
-        "".should eql "There are no user credentials defined in default.yml file for URL:#{ENV['URL']} TEST:#{ENV['TEST']} usr:#{ENV['pw']}"
+        "Missing Parameter credentials #{ENV['URL']}:#{ENV['TEST']}".should eql "There are no user credentials defined in default.yml file for URL:#{ENV['URL']} TEST:#{ENV['TEST']} usr:#{ENV['pw']}"
       end
       logger.message "Default Username: #{ENV['USR']}"
     else
