@@ -214,7 +214,7 @@ module Stamps
           end
         end
 
-        "Orders Login Failed. Username: #{usr}\n#{browser.url}".should eql "" unless toolbar.present?
+        "Check your sign-in credentials: #{usr}".should eql "Orders Login Failed. Username: #{usr}\n#{browser.url}" unless toolbar.present?
       end
     end
   end
