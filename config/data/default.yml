@@ -115,7 +115,6 @@ credentials:
       usr: h12wjdrskuyu
       pw: pass111
 
-
   cc:
     ccccc:
       usr: ccccc
@@ -224,6 +223,96 @@ credentials:
     auto_suggest:
       usr: eueys1zwc
       pw: pass111
+
+
+mail_credentials:
+  stg:
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+
+  cc:
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+
+  sc:
+    scscscscscscscscsc:
+      usr: scscscscscscscscsc
+      pw: pass111
+    scscscscscscscscsc:
+      usr: scscscscscscscscsc
+      pw: pass111
+    scscscscscscscscsc:
+      usr: scscscscscscscscsc
+      pw: pass111
+    scscscscscscscscsc:
+      usr: scscscscscscscscsc
+      pw: pass111
+    scscscscscscscscsc:
+      usr: scscscscscscscscsc
+      pw: pass111
+    scscscscscscscscsc:
+      usr: scscscscscscscscsc
+      pw: pass111
+    scscscscscscscscsc:
+      usr: scscscscscscscscsc
+      pw: pass111
+    scscscscscscscscsc:
+      usr: scscscscscscscscsc
+      pw: pass111
+    scscscscscscscscsc:
+      usr: scscscscscscscscsc
+      pw: pass111
+    scscscscscscscscsc:
+      usr: scscscscscscscscsc
+      pw: pass111
+
 
 
 details_services:
