@@ -57,6 +57,52 @@ credentials:
     mail_bvt_envelopes:
       usr: t5mjsiuy2sukk9
       pw: pass111
+    print_dialog_change_date:
+      usr: mwnp2cwefg
+      pw: pass111
+    print_dialog_email_tracking:
+      usr: vncmsvqa1
+      pw: pass111
+    print_dialog_hide_postage_value:
+      usr: lngmwr21
+      pw: pass111
+    print_dialog_label_left_side:
+      usr: fhix7qqr9
+      pw: pass111
+    print_dialog_label_right_side:
+      usr: b25wtqtq3nvk5v
+      pw: pass111
+    print_dialog_printing_on_4x6_roll:
+      usr: j2i75rsxxtj
+      pw: pass111
+    print_dialog_printing_on_4x6_sdc1200:
+      usr: uk6oxddbk16
+      pw: pass111
+    print_dialog_printing_on_4x6_shipping_label:
+      usr: dks7plhj
+      pw: pass111
+    print_dialog_printing_on_5x8_shipping_label:
+      usr: lxowg9cu
+      pw: pass111
+    print_dialog_printing_on_8x11_paper:
+      usr: b9avaywj
+      pw: pass111
+    print_dialog_ship_date_today:
+      usr: t8jnj7r4rwc1n
+      pw: pass111
+    print_dialog_ship_date_today_plus1:
+      usr: r185heirbqv76l
+      pw: pass111
+    print_dialog_ship_date_today_plus2:
+      usr: xa4sk9jsk
+      pw: pass111
+    print_dialog_ship_date_today_plus3:
+      usr: wmzvi1kmzab7
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
+      usr: h12wjdrskuyu
+      pw: pass111
+
 
   cc:
     ccccc:
