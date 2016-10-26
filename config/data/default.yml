@@ -114,6 +114,142 @@ credentials:
     print_dialog_thermal_number_of_labels_count:
       usr: h12wjdrskuyu
       pw: pass111
+    print_dialog_two_up_window_title:
+      usr: sm0z7fnr
+      pw: pass111
+    print_dialog_two_up_x_number_of_labels:
+      usr: dgskuwa16ion4m
+      pw: pass111
+    print_layout_cn22_5x8:
+      usr: q5z9uzb
+      pw: pass111
+    print_layout_cn22_5x8_continuation:
+      usr: enmsmy77n
+      pw: pass111
+    print_layout_cn22_paper_left_side:
+      usr: ehe96944qsb8
+      pw: pass111
+    print_layout_cn22_roll:
+      usr: nnrvo1u9bpr
+      pw: pass111
+    print_layout_cp72_4x6roll:
+      usr: rappxugbk
+      pw: pass111
+    print_layout_cp72_5x8_left:
+      usr: ko5cwhazj9csh
+      pw: pass111
+    print_layout_cp72_5x8_right:
+      usr: gazqbag62
+      pw: pass111
+    print_layout_cp72_5x8_single_ply:
+      usr: qzoonwdh
+      pw: pass111
+    print_layout_cp72_paper_continuation:
+      usr: t243vtu
+      pw: pass111
+    print_layout_cp72_paper_single_ply:
+      usr: rb5cc5xtkq
+      pw: pass111
+    print_layout_cp72_roll_continuation:
+      usr: urgnhlodv7zyvz
+      pw: pass111
+    print_layout_cp72_sdc1200_single_ply:
+      usr: urgnhlodv7zyvz
+      pw: pass111
+    print_layout_cp72_single_ply_apo_roll:
+      usr: s582uohx
+      pw: pass111
+    print_layout_dpo_cp72_roll_single_ply:
+     usr: tkyf6l0
+      pw: pass111
+    print_layout_fsa_cp72_paper_single_ply:
+      usr: stgyoxkifp15
+      pw: pass111
+    print_multiple_orders:
+      usr: tc7lbuuldm7gud
+      pw: pass111
+    print_multiple_reprints:
+      usr: enpdd08aew5
+      pw: pass111
+    print_on_thermal:
+      usr: x31q76qtkucf
+      pw: pass111
+    print_sample_parcel_select_ground_large_package:
+      usr: gsw1raa5
+      pw: pass111
+    print_sample_pm_flat_rate_envelope:
+      usr: mi6cu3n0
+      pw: pass111
+    print_sample_pm_regional_rate_box_a:
+      usr: n7n9kolwtc
+      pw: pass111
+    print_sample_pme_package:
+     usr: qwjsdoq
+      pw: pass111
+    print_sample_pme_padded_flat_rate_envelope:
+      usr: yfq03xbol
+      pw: pass111
+    print_two_up_expanded_5x8_left:
+      usr: z53ocf1
+      pw: pass111
+    print_two_up_expanded_5x8_left_print2:
+      usr: gbv9xjbc
+      pw: pass111
+    print_two_up_expanded_5x8_left_print3:
+      usr: chzeav3fsz
+      pw: pass111
+    print_two_up_expanded_5x8_right_print1:
+      usr: z46dgktbl
+      pw: pass111
+    print_two_up_expanded_5x8_right_print2:
+      usr: w8u81mj
+      pw: pass111
+    print_two_up_expanded_cn22_5x8_right_print2:
+      usr: yld0aax87zynl4
+     pw: pass111
+    print_two_up_expanded_cn22_cp72_5x8_right_print2:
+      usr: w6x3pwfwy
+      pw: pass111
+    print_two_up_expanded_cn22_paper_left:
+      usr: gl3ippf3slyiod
+      pw: pass111
+    print_two_up_expanded_cn22_paper_right:
+      usr: kyiqsdshy
+      pw: pass111
+    print_two_up_expanded_cn22_sdc1200_left:
+      usr: mtyni6ic0zcs
+      pw: pass111
+    print_two_up_expanded_cp72_5x8_left_print1:
+      usr: oo7lee0xwvv6mj
+      pw: pass111
+    print_two_up_expanded_cp72_5x8_right_print1:
+      usr: y619bx4cuj5
+      pw: pass111
+    print_two_up_expanded_cp72_paper_left:
+      usr: kehrq9e3q
+      pw: pass111
+    print_two_up_expanded_fpo_cn22_paper_right:
+      usr: htlylt2
+      pw: pass111
+    print_two_up_expanded_paper_left_print1:
+      usr: uegnf9s502les
+      pw: pass111
+    print_two_up_expanded_paper_left_print2:
+      usr: uc7p0o9c3x6j8u
+      pw: pass111
+    print_two_up_expanded_paper_right_print2:
+      usr: uzkyhna5owjtq
+      pw: pass111
+    print_two_up_expanded_sdc1200_4x6_left_print1:
+      usr: ubjr6w9i4eom5z
+      pw: pass111
+    print_two_up_expanded_sdc1200_left_print3:
+      usr: jr118nj7pf35
+      pw: pass111
+    print_two_up_multiple_domestic_labels:
+      usr: c1k4p8bga4cmg
+      pw: pass111
+
 
   cc:
     ccccc:
