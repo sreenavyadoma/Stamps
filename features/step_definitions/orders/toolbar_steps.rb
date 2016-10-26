@@ -1,15 +1,21 @@
 Then /^Toolbar: Add$/ do
-  logger.step "Toolbar: Add"
-  web_apps.orders.grid.checkbox.uncheck 1
-  @order_details = web_apps.orders.toolbar.add.order_details
-  test_data[:order_id] = @order_details.toolbar.order_id
-  test_data[:old_balance] = web_apps.navigation_bar.balance.amount
-  step "Save Shipping Costs Data"
-  logger.step "Saved Order ID #{test_data[:order_id]}"
-  test_data[:order_id] = test_data[:order_id]
-  test_data[:awaiting_shipment_count] = web_apps.orders.filter.awaiting_shipment_count
-  @item_count = 0
-  @index = 0
+  begin
+    logger.step "Toolbar: Add"
+    web_apps.orders.grid.checkbox.uncheck 1
+    @order_details = web_apps.orders.toolbar.add.order_details
+    test_data[:order_id] = @order_details.toolbar.order_id
+    test_data[:old_balance] = web_apps.navigation_bar.balance.amount
+    step "Save Shipping Costs Data"
+    logger.step "Saved Order ID #{test_data[:order_id]}"
+    test_data[:order_id] = test_data[:order_id]
+    test_data[:awaiting_shipment_count] = web_apps.orders.filter.awaiting_shipment_count
+    @item_count = 0
+    @index = 0
+  rescue Exception => e
+    logger.error e.message
+    logger.error e.backtrace.join("\n")
+    e.message.should eql "Unable to add new orders, something went wrong."
+  end
 end
 
 Then /^Save Shipping Costs Data$/ do

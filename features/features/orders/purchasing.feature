@@ -1,4 +1,4 @@
-
+#todo-rob Fix Purchasing so that if a user has 100K the test will fail right away, not being able to purchase more stamps.
 Feature: Purchasing
 
   Background:

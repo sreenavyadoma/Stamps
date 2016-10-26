@@ -1,3 +1,6 @@
+#todo-rob webreg: Fix WebReg Membership: Submit and correct errors to proceed even if there are errors.
+#todo-rob webreg:Add a test for purchasing that will change limit to 100K but not add value to it. This will be an orders-pam-change-limit test.
+
 Feature: WebReg
   Background:
     Given I launched default browser
