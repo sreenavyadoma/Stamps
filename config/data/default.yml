@@ -15,8 +15,11 @@ url_prefix:
 
 credentials:
   stg:
-    bvt_add_new_order:
-      usr: lxev9vn
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
       pw: pass111
     stgstgstg:
       usr: stgstgstg
@@ -25,6 +28,15 @@ credentials:
       usr: stgstgstg
       pw: pass111
     stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    bvt_new_order:
+      usr: v8r4q2nb3dbv
+      pw: pass111
+    bvt_shipstation_updates_international:
       usr: stgstgstg
       pw: pass111
     bvt_shipstation_updates_domestic:
@@ -114,13 +126,25 @@ credentials:
     ccccc:
       usr: ccccc
       pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    ccccc:
+      usr: ccccc
+      pw: pass111
+    bvt_shipstation_updates_international:
+      usr: qp9nkipuzhh
+      pw: pass111
     bvt_shipstation_updates_domestic:
       usr: pzlnwe2z03m7y
       pw: pass111
     bvt_purchasing:
       usr: ccv2ad917b
       pw: pass111
-    bvt_add_new_order:
+    bvt_new_order:
       usr: u0d9jawgcqaj
       pw: pass111
     bvt_ambigious_address:
@@ -128,9 +152,6 @@ credentials:
       pw: pass111
     bvt_printing:
       usr: rz6fcd8qfg8x
-      pw: pass111
-    bvt_new_order:
-      usr: u0d9jawgcqaj
       pw: pass111
     authentication:
       usr: bz9005j1r2jx0
@@ -167,13 +188,19 @@ credentials:
     scscscsc:
       usr: scscscsc
       pw: pass111
+    scscscsc:
+      usr: scscscsc
+      pw: pass111
+    bvt_shipstation_updates_international:
+      usr: scscscsc
+      pw: pass111
     bvt_shipstation_updates_domestic:
       usr: scoini7whe
       pw: pass111
     bvt_purchasing:
       usr: scqeypuf8y2l
       pw: pass111
-    bvt_add_new_order:
+    bvt_new_order:
       usr: rzyb4un
       pw: pass111
     authentication:
