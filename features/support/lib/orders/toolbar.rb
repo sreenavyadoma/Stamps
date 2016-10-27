@@ -614,7 +614,9 @@ module Stamps
 
                 15.times do
                   if initializing_db.present?
-                    logger.info initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
                     initializing_db.safely_wait_while_present 2
                     break unless initializing_db.present?
                   end
@@ -636,7 +638,9 @@ module Stamps
 
                 15.times do
                   if initializing_db.present?
-                    logger.info initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
                     initializing_db.safely_wait_while_present 2
                     break unless initializing_db.present?
                   end
@@ -657,7 +661,9 @@ module Stamps
 
                 15.times do
                   if initializing_db.present?
-                    logger.info initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
                     initializing_db.safely_wait_while_present 2
                     break unless initializing_db.present?
                   end
