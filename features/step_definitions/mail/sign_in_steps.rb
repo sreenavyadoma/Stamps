@@ -7,8 +7,13 @@ end
 Given /^I am signed in as Mail shipper$/ do
   logger.step "I am signed in as a mail shipper"
   step "Launch default browser"
+  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
+    step "Health Check: Print - Web Batch"
+    step "Health Check: Print - Address Book"
+  end
   step "Visit Mail sign in page"
   web_apps.mail.sign_in_modal.sign_in
+  step "Navigation Bar: Customer Balance"
 end
 
 Given /^I am signed in as Mail shipper (.*)\/(.*)/ do |username, password|

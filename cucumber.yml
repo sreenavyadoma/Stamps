@@ -3,437 +3,438 @@ default: --profile cuke_reports --profile rob_cc
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 #qasc800 mail_bvt_international
-rob_cc: --tags @bvt_shipstation_updates_international --guess VERBOSE=true HEALTHCHECK=false TEST=bvt_shipstation_updates_international URL=cc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=ccje975fmb #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
-rob_stg: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true HEALTHCHECK=false TEST=bvt_shipstation_updates_domestic URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
-rob_sc: --tags @mail_sample_shipping_label_5x8_pm_large_box --guess VERBOSE=true HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_large_box URL=sc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc #yh95ws85j c2jinmzmu64 store parcel_select
-rob_dev_gc: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true HEALTHCHECK=false TEST=bvt_shipstation_updates_domestic URL=cc BROWSER=chrome PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
-rob_dev_ie: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true HEALTHCHECK=false TEST=bvt_shipstation_updates_domestic URL=cc BROWSER=ie PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
-rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=false TEST=orders_20
+rob_cc: --tags @mail_authentication --guess VERBOSE=true HEALTHCHECK=false WEB_APP=mail TEST=mail_authentication URL=cc BROWSER=ff FIREFOX_PROFILE=selenium #PW=pass111 USR= #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+
+rob_stg: --tags @bvt_shipstation_updates_international --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_updates_domestic URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
+rob_sc: --tags @bvt_address_cleansing --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=mail_sample_shipping_label_5x8_pm_large_box URL=sc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc #yh95ws85j c2jinmzmu64 store parcel_select
+rob_dev_gc: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_updates_domestic URL=cc BROWSER=chrome PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
+rob_dev_ie: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_updates_domestic URL=cc BROWSER=ie PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
+rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=orders_20
 purchasing_username: cce5nk6k6068z
-galina_cc: --tags @webreg_fields_validation_blank_to_next_page1 --guess VERBOSE=false HEALTHCHECK=false TEST=webreg_fields_validation_blank_to_next_page1 URL=cc BROWSER=ff PW=pass111 USR=hd9glvtoauago #ym3tcgykqt7ops #hd9glvtoauago fawlz7jqdsx
+galina_cc: --tags @webreg_fields_validation_blank_to_next_page1 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_fields_validation_blank_to_next_page1 URL=cc BROWSER=ff PW=pass111 USR=hd9glvtoauago #ym3tcgykqt7ops #hd9glvtoauago fawlz7jqdsx
 
-eli_dev: --tags @item_details   --guess VERBOSE=true HEALTHCHECK=false TEST=item_details URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=go45dhfhkw PW=pass111
-ray_dev: --tags @mail_envelope_10_postage --guess VERBOSE=true HEALTHCHECK=false TEST=mail_envelope_10_postage URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=webpost_0017 PW=pass111
-eva_dev: --tags @details_panel --guess VERBOSE=true HEALTHCHECK=false TEST=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
+eli_dev: --tags @item_details   --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=item_details URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=go45dhfhkw PW=pass111
+ray_dev: --tags @mail_envelope_10_postage --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=mail_envelope_10_postage URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=webpost_0017 PW=pass111
+eva_dev: --tags @details_panel --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
 
-xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false TEST=xxxxxxxxxxxxxx
-xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false TEST=xxxxxxxxxxxxxx
-xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false TEST=xxxxxxxxxxxxxx
+xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=xxxxxxxxxxxxxx
+xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=xxxxxxxxxxxxxx
+xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=xxxxxxxxxxxxxx
 
-healthcheck: --tags @healthcheck --guess VERBOSE=true HEALTHCHECK=false TEST=healthcheck
-authentication: --tags @authentication --guess VERBOSE=false HEALTHCHECK=false TEST=authentication
+healthcheck: --tags @healthcheck --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=healthcheck
+authentication: --tags @authentication --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=authentication
 
-customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess VERBOSE=false HEALTHCHECK=false TEST=customs_form_auto_calculate_weight
-whats_new: --tags @whats_new --guess VERBOSE=false HEALTHCHECK=false TEST=whats_new
+customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=customs_form_auto_calculate_weight
+whats_new: --tags @whats_new --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=whats_new
 
-webreg: --tags @webreg --guess VERBOSE=false HEALTHCHECK=false TEST=webreg
-webreg_orders: --tags @webreg_orders --guess VERBOSE=false HEALTHCHECK=false TEST=webreg_orders
-webreg_pam: --tags @webreg_pam --guess VERBOSE=false HEALTHCHECK=false TEST=webreg_pam
-webreg_pam_orders: --tags @webreg_pam_orders --guess VERBOSE=false HEALTHCHECK=false TEST=webreg_pam_orders
+webreg: --tags @webreg --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg
+webreg_orders: --tags @webreg_orders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_orders
+webreg_pam: --tags @webreg_pam --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_pam
+webreg_pam_orders: --tags @webreg_pam_orders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_pam_orders
 
-details_non_integer_lbs: --tags @details_non_integer_lbs --guess VERBOSE=false HEALTHCHECK=false TEST=details_non_integer_lbs
-grid_order_status: --tags @grid_order_status --guess VERBOSE=false HEALTHCHECK=false TEST=grid_order_status
-tooltips_improvements: --tags @tooltips_improvements --guess VERBOSE=false HEALTHCHECK=false TEST=tooltips_improvements
+details_non_integer_lbs: --tags @details_non_integer_lbs --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_non_integer_lbs
+grid_order_status: --tags @grid_order_status --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_order_status
+tooltips_improvements: --tags @tooltips_improvements --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=tooltips_improvements
 
 # --------------------------  ORDERS BVT
-bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_shipping_address_management
-bvt_ambigious_address: --tags @bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_ambigious_address
-bvt_address_cleansing: --tags @bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_address_cleansing
-bvt_international_shipping: --tags @bvt_international_shipping --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_international_shipping
-bvt_new_order: --tags @bvt_new_order --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_new_order
-bvt_printing: --tags @bvt_printing --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_printing
-bvt_purchasing: --tags @bvt_purchasing --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_purchasing
-bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_shipstation_updates_domestic
-bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess VERBOSE=false HEALTHCHECK=false TEST=bvt_shipstation_updates_international
+bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipping_address_management
+bvt_ambigious_address: --tags @bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=bvt_ambigious_address
+bvt_address_cleansing: --tags @bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=bvt_address_cleansing
+bvt_international_shipping: --tags @bvt_international_shipping --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=bvt_international_shipping
+bvt_new_order: --tags @bvt_new_order --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=bvt_new_order
+bvt_printing: --tags @bvt_printing --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=bvt_printing
+bvt_purchasing: --tags @bvt_purchasing --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=bvt_purchasing
+bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_updates_domestic
+bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_updates_international
 
 # Stores
-marketplace: --tags @marketplace --guess VERBOSE=false HEALTHCHECK=false TEST=marketplace
-big_commerce: --tags @big_commerce --guess VERBOSE=false HEALTHCHECK=false TEST=big_commerce
-paypal: --tags @paypal --guess VERBOSE=false HEALTHCHECK=false TEST=paypal
-yahoo: --tags @yahoo --guess VERBOSE=false HEALTHCHECK=false TEST=yahoo
-threedcart: --tags @3dcart --guess VERBOSE=false HEALTHCHECK=false TEST=threedcart
-shopify: --tags @shopify --guess VERBOSE=false HEALTHCHECK=false TEST=shopify
-etsy: --tags @etsy --guess VERBOSE=false HEALTHCHECK=false TEST=etsy
-rakuten: --tags @rakuten --guess VERBOSE=false HEALTHCHECK=false TEST=rakuten
-volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=false TEST=volusion
-amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=false TEST=amazon
+marketplace: --tags @marketplace --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=marketplace
+big_commerce: --tags @big_commerce --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=big_commerce
+paypal: --tags @paypal --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=paypal
+yahoo: --tags @yahoo --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=yahoo
+threedcart: --tags @3dcart --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=threedcart
+shopify: --tags @shopify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=shopify
+etsy: --tags @etsy --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=etsy
+rakuten: --tags @rakuten --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=rakuten
+volusion: --tags @volusion --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=volusion
+amazon: --tags @amazon --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=amazon
 
-details_edit_order: --tags @details_edit_order --guess VERBOSE=false HEALTHCHECK=false TEST=details_edit_order
+details_edit_order: --tags @details_edit_order --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_edit_order
 
-details_services: --tags @details_services --guess VERBOSE=false HEALTHCHECK=false TEST=details_services
+details_services: --tags @details_services --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_services
 #eln5mw78g for general setting autofund testing in sc
-grid_column_order: --tags @grid_column_order --guess VERBOSE=false HEALTHCHECK=false TEST=grid_column_order
-details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess VERBOSE=false HEALTHCHECK=false TEST=details_flat_rate_no_weight_international
-details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess VERBOSE=false HEALTHCHECK=false TEST=details_flat_rate_no_weight_domestic
-details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false HEALTHCHECK=false TEST=details_large_dimensions_pm
-details_insure_for_box_unchecked_manual: --tags @details_insure_for_box_unchecked_manual --guess VERBOSE=false HEALTHCHECK=false TEST=details_insure_for_box_unchecked_manual
-details_insure_for_box_unchecked_imported: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=false HEALTHCHECK=false TEST=details_insure_for_box_unchecked_imported #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
+grid_column_order: --tags @grid_column_order --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_column_order
+details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_flat_rate_no_weight_international
+details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_flat_rate_no_weight_domestic
+details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_large_dimensions_pm
+details_insure_for_box_unchecked_manual: --tags @details_insure_for_box_unchecked_manual --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_insure_for_box_unchecked_manual
+details_insure_for_box_unchecked_imported: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_insure_for_box_unchecked_imported #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
 
-import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess VERBOSE=false HEALTHCHECK=false TEST=import_orders_ship_from_test
+import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=import_orders_ship_from_test
 
-international_customs_form_totals: --tags @international_customs_form_totals --guess VERBOSE=false HEALTHCHECK=false TEST=international_customs_form_totals
-international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess VERBOSE=false HEALTHCHECK=false TEST=international_customs_form_edit_delete_item
-tooltip_customs_form: --tags @tooltip_customs_form --guess VERBOSE=false HEALTHCHECK=false TEST=tooltip_customs_form
+international_customs_form_totals: --tags @international_customs_form_totals --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=international_customs_form_totals
+international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=international_customs_form_edit_delete_item
+tooltip_customs_form: --tags @tooltip_customs_form --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=tooltip_customs_form
 
 # PRINT TWO UP EXPANDED
-print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_sdc1200_left_print3
-print_two_up_expanded_sdc1200_4x6_left_print1: --tags @print_two_up_expanded_sdc1200_4x6_left_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_sdc1200_4x6_left_print1
-print_two_up_expanded_paper_right_print2: --tags @print_two_up_expanded_paper_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_paper_right_print2
-print_two_up_expanded_paper_left_print2: --tags @print_two_up_expanded_paper_left_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_paper_left_print2
-print_two_up_expanded_paper_left_print1: --tags @print_two_up_expanded_paper_left_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_paper_left_print1
-print_two_up_expanded_fpo_cn22_paper_right: --tags @print_two_up_expanded_fpo_cn22_paper_right --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_fpo_cn22_paper_right
-print_two_up_expanded_cp72_paper_left_print3: --tags @print_two_up_expanded_cp72_paper_left_print3 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cp72_paper_left_print3
-print_two_up_expanded_cp72_paper_left: --tags @print_two_up_expanded_cp72_paper_left --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cp72_paper_left
-print_two_up_expanded_cp72_5x8_right_print1: --tags @print_two_up_expanded_cp72_5x8_right_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cp72_5x8_right_print1
-print_two_up_expanded_cp72_5x8_left_print1: --tags @print_two_up_expanded_cp72_5x8_left_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cp72_5x8_left_print1
-print_two_up_expanded_cn22_sdc1200_left: --tags @print_two_up_expanded_cn22_sdc1200_left --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cn22_sdc1200_left
-print_two_up_expanded_cn22_paper_right: --tags @print_two_up_expanded_cn22_paper_right --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cn22_paper_right
-print_two_up_expanded_cn22_paper_left: --tags @print_two_up_expanded_cn22_paper_left --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cn22_paper_left
-print_two_up_expanded_cn22_cp72_5x8_right_print2: --tags @print_two_up_expanded_cn22_cp72_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cn22_cp72_5x8_right_print2
-print_two_up_expanded_cn22_5x8_right_print2: --tags @print_two_up_expanded_cn22_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_cn22_5x8_right_print2
-print_two_up_expanded_5x8_right_print2: --tags @print_two_up_expanded_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_5x8_right_print2
-print_two_up_expanded_5x8_right_print1: --tags @print_two_up_expanded_5x8_right_print1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_5x8_right_print1
-print_two_up_expanded_5x8_left_print3: --tags @print_two_up_expanded_5x8_left_print3 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_5x8_left_print3
-print_two_up_expanded_5x8_left_print2: --tags @print_two_up_expanded_5x8_left_print2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_5x8_left_print2
-print_two_up_expanded_5x8_left: --tags @print_two_up_expanded_5x8_left --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded_5x8_left
+print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_sdc1200_left_print3
+print_two_up_expanded_sdc1200_4x6_left_print1: --tags @print_two_up_expanded_sdc1200_4x6_left_print1 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_sdc1200_4x6_left_print1
+print_two_up_expanded_paper_right_print2: --tags @print_two_up_expanded_paper_right_print2 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_paper_right_print2
+print_two_up_expanded_paper_left_print2: --tags @print_two_up_expanded_paper_left_print2 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_paper_left_print2
+print_two_up_expanded_paper_left_print1: --tags @print_two_up_expanded_paper_left_print1 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_paper_left_print1
+print_two_up_expanded_fpo_cn22_paper_right: --tags @print_two_up_expanded_fpo_cn22_paper_right --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_fpo_cn22_paper_right
+print_two_up_expanded_cp72_paper_left_print3: --tags @print_two_up_expanded_cp72_paper_left_print3 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_cp72_paper_left_print3
+print_two_up_expanded_cp72_paper_left: --tags @print_two_up_expanded_cp72_paper_left --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_cp72_paper_left
+print_two_up_expanded_cp72_5x8_right_print1: --tags @print_two_up_expanded_cp72_5x8_right_print1 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_cp72_5x8_right_print1
+print_two_up_expanded_cp72_5x8_left_print1: --tags @print_two_up_expanded_cp72_5x8_left_print1 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_cp72_5x8_left_print1
+print_two_up_expanded_cn22_sdc1200_left: --tags @print_two_up_expanded_cn22_sdc1200_left --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_cn22_sdc1200_left
+print_two_up_expanded_cn22_paper_right: --tags @print_two_up_expanded_cn22_paper_right --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_cn22_paper_right
+print_two_up_expanded_cn22_paper_left: --tags @print_two_up_expanded_cn22_paper_left --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_cn22_paper_left
+print_two_up_expanded_cn22_cp72_5x8_right_print2: --tags @print_two_up_expanded_cn22_cp72_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_cn22_cp72_5x8_right_print2
+print_two_up_expanded_cn22_5x8_right_print2: --tags @print_two_up_expanded_cn22_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_cn22_5x8_right_print2
+print_two_up_expanded_5x8_right_print2: --tags @print_two_up_expanded_5x8_right_print2 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_5x8_right_print2
+print_two_up_expanded_5x8_right_print1: --tags @print_two_up_expanded_5x8_right_print1 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_5x8_right_print1
+print_two_up_expanded_5x8_left_print3: --tags @print_two_up_expanded_5x8_left_print3 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_5x8_left_print3
+print_two_up_expanded_5x8_left_print2: --tags @print_two_up_expanded_5x8_left_print2 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_5x8_left_print2
+print_two_up_expanded_5x8_left: --tags @print_two_up_expanded_5x8_left --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded_5x8_left
 
 #PRINT TWO UP
-print_dialog_two_up_window_title: --tags @print_dialog_two_up_window_title --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_two_up_window_title
-print_dialog_two_up_x_number_of_labels: --tags @print_dialog_two_up_x_number_of_labels --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_two_up_x_number_of_labels
-print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_multiple_domestic_labels
+print_dialog_two_up_window_title: --tags @print_dialog_two_up_window_title --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_two_up_window_title
+print_dialog_two_up_x_number_of_labels: --tags @print_dialog_two_up_x_number_of_labels --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_two_up_x_number_of_labels
+print_two_up_multiple_domestic_labels: --tags @print_two_up_multiple_domestic_labels --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_multiple_domestic_labels
 
 # PRINT SAMPLE
-print_sample_pm_flat_rate_envelope: --tags @print_sample_pm_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample_pm_flat_rate_envelope
-print_sample_pme_package: --tags @print_sample_pme_package --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample_pme_package
-print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample_pm_regional_rate_box_a
-print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample_parcel_select_ground_large_package
-print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample_pme_padded_flat_rate_envelope
+print_sample_pm_flat_rate_envelope: --tags @print_sample_pm_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_sample_pm_flat_rate_envelope
+print_sample_pme_package: --tags @print_sample_pme_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_sample_pme_package
+print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_sample_pm_regional_rate_box_a
+print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_sample_parcel_select_ground_large_package
+print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_sample_pme_padded_flat_rate_envelope
 
-print_multiple_orders: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=false TEST=print_multiple_orders
+print_multiple_orders: --tags @print_multiple_orders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_multiple_orders
 
 # PRINT SHIP DATE
-print_dialog_ship_date_today_plus3: --tags @print_dialog_ship_date_today_plus3 --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_ship_date_today_plus3
-print_dialog_ship_date_today_plus2: --tags @print_dialog_ship_date_today_plus2 --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_ship_date_today_plus2
-print_dialog_ship_date_today_plus1: --tags @print_dialog_ship_date_today_plus1 --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_ship_date_today_plus1
-print_dialog_ship_date_today: --tags @print_dialog_ship_date_today --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_ship_date_today
+print_dialog_ship_date_today_plus3: --tags @print_dialog_ship_date_today_plus3 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_ship_date_today_plus3
+print_dialog_ship_date_today_plus2: --tags @print_dialog_ship_date_today_plus2 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_ship_date_today_plus2
+print_dialog_ship_date_today_plus1: --tags @print_dialog_ship_date_today_plus1 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_ship_date_today_plus1
+print_dialog_ship_date_today: --tags @print_dialog_ship_date_today --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_ship_date_today
 
 # PRINT MEDIA
-tooltip_print_media: --tags @tooltip_print_media --guess VERBOSE=false HEALTHCHECK=false TEST=tooltip_print_media
-print_dialog_printing_on_8x11_paper: --tags @print_dialog_printing_on_8x11_paper --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_printing_on_8x11_paper
-print_dialog_printing_on_4x6_sdc1200: --tags @print_dialog_printing_on_4x6_sdc1200 --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_printing_on_4x6_sdc1200
-print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_printing_on_5x8_shipping_label
-print_dialog_printing_on_4x6_shipping_label: --tags @print_dialog_printing_on_4x6_shipping_label --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_printing_on_4x6_shipping_label
-print_dialog_printing_on_4x6_roll: --tags @print_dialog_printing_on_4x6_roll --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_printing_on_4x6_roll
-print_dialog_hide_postage_value: --tags @print_dialog_hide_postage_value --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_hide_postage_value
-print_dialog_change_date: --tags @print_dialog_change_date --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_change_date
-print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_email_tracking
+tooltip_print_media: --tags @tooltip_print_media --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=tooltip_print_media
+print_dialog_printing_on_8x11_paper: --tags @print_dialog_printing_on_8x11_paper --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_printing_on_8x11_paper
+print_dialog_printing_on_4x6_sdc1200: --tags @print_dialog_printing_on_4x6_sdc1200 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_printing_on_4x6_sdc1200
+print_dialog_printing_on_5x8_shipping_label: --tags @print_dialog_printing_on_5x8_shipping_label --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_printing_on_5x8_shipping_label
+print_dialog_printing_on_4x6_shipping_label: --tags @print_dialog_printing_on_4x6_shipping_label --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_printing_on_4x6_shipping_label
+print_dialog_printing_on_4x6_roll: --tags @print_dialog_printing_on_4x6_roll --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_printing_on_4x6_roll
+print_dialog_hide_postage_value: --tags @print_dialog_hide_postage_value --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_hide_postage_value
+print_dialog_change_date: --tags @print_dialog_change_date --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_change_date
+print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_email_tracking
 # PRINT LABEL SIDES
-print_dialog_label_left_side: --tags @print_dialog_label_left_side --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_label_left_side
-print_dialog_label_right_side: --tags @print_dialog_label_right_side --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_label_right_side
+print_dialog_label_left_side: --tags @print_dialog_label_left_side --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_label_left_side
+print_dialog_label_right_side: --tags @print_dialog_label_right_side --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_label_right_side
 
 # CP72 & CN22
-print_layout_cp72_sdc1200_single_ply: --tags @print_layout_cp72_sdc1200_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_sdc1200_single_ply
-print_layout_cp72_roll_continuation: --tags @print_layout_cp72_roll_continuation --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_roll_continuation
-print_layout_cp72_4x6roll: --tags @print_layout_cp72_4x6roll --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_4x6roll
-print_layout_cp72_5x8_left: --tags @print_layout_cp72_5x8_left --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_5x8_left
-print_layout_cp72_5x8_right: --tags @print_layout_cp72_5x8_right --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_5x8_right
-print_layout_cp72_5x8_single_ply: --tags @print_layout_cp72_5x8_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_5x8_single_ply
-print_layout_cp72_single_ply_apo_roll: --tags @print_layout_cp72_single_ply_apo_roll --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_single_ply_apo_roll
-print_layout_cp72_paper_continuation: --tags @print_layout_cp72_paper_continuation --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_paper_continuation
-print_layout_cp72_paper_single_ply: --tags @print_layout_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cp72_paper_single_ply
-print_layout_dpo_cp72_roll_single_ply: --tags @print_layout_dpo_cp72_roll_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_dpo_cp72_roll_single_ply
-print_layout_fsa_cp72_paper_single_ply: --tags @print_layout_fsa_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_fsa_cp72_paper_single_ply
-print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cn22_5x8
-print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cn22_5x8_continuation
-print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cn22_paper_left_side
-print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false HEALTHCHECK=false TEST=print_layout_cn22_roll
+print_layout_cp72_sdc1200_single_ply: --tags @print_layout_cp72_sdc1200_single_ply --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cp72_sdc1200_single_ply
+print_layout_cp72_roll_continuation: --tags @print_layout_cp72_roll_continuation --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cp72_roll_continuation
+print_layout_cp72_4x6roll: --tags @print_layout_cp72_4x6roll --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cp72_4x6roll
+print_layout_cp72_5x8_left: --tags @print_layout_cp72_5x8_left --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cp72_5x8_left
+print_layout_cp72_5x8_right: --tags @print_layout_cp72_5x8_right --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cp72_5x8_right
+print_layout_cp72_5x8_single_ply: --tags @print_layout_cp72_5x8_single_ply --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cp72_5x8_single_ply
+print_layout_cp72_single_ply_apo_roll: --tags @print_layout_cp72_single_ply_apo_roll --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cp72_single_ply_apo_roll
+print_layout_cp72_paper_continuation: --tags @print_layout_cp72_paper_continuation --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cp72_paper_continuation
+print_layout_cp72_paper_single_ply: --tags @print_layout_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cp72_paper_single_ply
+print_layout_dpo_cp72_roll_single_ply: --tags @print_layout_dpo_cp72_roll_single_ply --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_dpo_cp72_roll_single_ply
+print_layout_fsa_cp72_paper_single_ply: --tags @print_layout_fsa_cp72_paper_single_ply --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_fsa_cp72_paper_single_ply
+print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cn22_5x8
+print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cn22_5x8_continuation
+print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cn22_paper_left_side
+print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layout_cn22_roll
 
-details_reference_no: --tags @details_reference_no --guess VERBOSE=false HEALTHCHECK=false TEST=details_reference_no
-customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false HEALTHCHECK=false TEST=customs_form_qty
-grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false HEALTHCHECK=false TEST=grid_ship_cost
-print_dialog_thermal_number_of_labels_count: --tags @print_dialog_thermal_number_of_labels_count --guess VERBOSE=false HEALTHCHECK=false TEST=print_dialog_thermal_number_of_labels_count
-details_placeholders: --tags @details_placeholders --guess VERBOSE=false HEALTHCHECK=false TEST=details_placeholders
-grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=false TEST=grid_tracking
-grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=false TEST=grid_insured_value
-import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=false TEST=import_orders
-pagination: --tags @pagination --guess VERBOSE=false HEALTHCHECK=false TEST=pagination
-webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess VERBOSE=false HEALTHCHECK=false TEST=webreg_specify_username_jenkins
-general_settings: --tags @general_settings --guess VERBOSE=false HEALTHCHECK=false TEST=general_settings
-print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false TEST=print_label_position
-print_media: --tags @print_media --guess VERBOSE=false HEALTHCHECK=false TEST=print_media
-print_media_tooltips: --tags @print_media_tooltips --guess VERBOSE=false HEALTHCHECK=false TEST=print_media_tooltips
-print_two_up: --tags @print_two_up --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up
-print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false TEST=print_label_position
-print_many_orders: --tags @print_many_orders --guess VERBOSE=false HEALTHCHECK=false TEST=print_many_orders
-printing_errors: --tags @printing_error --guess VERBOSE=false HEALTHCHECK=false TEST=printing_errors
-printing:  --tags @mail --guess VERBOSE=false HEALTHCHECK=false TEST=printing
-print_sample: --tags @print_sample --guess VERBOSE=false HEALTHCHECK=false TEST=print_sample
-details_ship_cost_total: --tags @details_ship_cost_total --guess VERBOSE=false HEALTHCHECK=false TEST=details_ship_cost_total
-print_date: --tags @print_date --guess VERBOSE=false HEALTHCHECK=false TEST=print_date
-print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false TEST=print_two_up_expanded
-print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=false HEALTHCHECK=false TEST=print_print_label_position_layouts
-nav_postage_balance_update: --tags @nav_postage_balance_update --guess VERBOSE=false HEALTHCHECK=false TEST=nav_postage_balance_update
-reprint: --tags @reprint --guess VERBOSE=false HEALTHCHECK=false TEST=reprint
-print_layouts_cp72: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false TEST=print_layouts_cp72
-print_layouts_cn22: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false TEST=print_layouts_cn22
+details_reference_no: --tags @details_reference_no --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_reference_no
+customs_form_qty: --tags @customs_form_qty --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=customs_form_qty
+grid_ship_cost: --tags @grid_ship_cost --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_ship_cost
+print_dialog_thermal_number_of_labels_count: --tags @print_dialog_thermal_number_of_labels_count --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_dialog_thermal_number_of_labels_count
+details_placeholders: --tags @details_placeholders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_placeholders
+grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_tracking
+grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_insured_value
+import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=import_orders
+pagination: --tags @pagination --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=pagination
+webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_specify_username_jenkins
+general_settings: --tags @general_settings --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=general_settings
+print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_label_position
+print_media: --tags @print_media --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_media
+print_media_tooltips: --tags @print_media_tooltips --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_media_tooltips
+print_two_up: --tags @print_two_up --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up
+print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_label_position
+print_many_orders: --tags @print_many_orders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_many_orders
+printing_errors: --tags @printing_error --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=printing_errors
+printing:  --tags @mail --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=printing
+print_sample: --tags @print_sample --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_sample
+details_ship_cost_total: --tags @details_ship_cost_total --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_ship_cost_total
+print_date: --tags @print_date --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_date
+print_two_up_expanded: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up_expanded
+print_print_label_position_layouts: --tags @print_print_label_position_layouts --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_print_label_position_layouts
+nav_postage_balance_update: --tags @nav_postage_balance_update --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=nav_postage_balance_update
+reprint: --tags @reprint --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=reprint
+print_layouts_cp72: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layouts_cp72
+print_layouts_cn22: --tags @print_two_up_expanded --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_layouts_cn22
 
-local_rating: --tags @local_rating --guess VERBOSE=false HEALTHCHECK=false TEST=local_rating
-local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=false HEALTHCHECK=false TEST=local_rating_smoke_test
-tracking_defaults: --tags @tracking_defaults --guess VERBOSE=false HEALTHCHECK=false TEST=tracking_defaults
-rules_domestic: --tags @rules_domestic --guess VERBOSE=false HEALTHCHECK=false TEST=rules_domestic
-parcel_select: --tags @parcel_select --guess VERBOSE=false HEALTHCHECK=false TEST=parcel_select
-tooltips_services: --tags @tooltips_services --guess VERBOSE=false HEALTHCHECK=false TEST=tooltips_services
-filter_change_order_status: --tags @filter_change_order_status --guess VERBOSE=false HEALTHCHECK=false TEST=filter_change_order_status
-grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=false TEST=grid_tracking
-order_creation: --tags @order_creation --guess VERBOSE=false HEALTHCHECK=false TEST=order_creation
-address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=false TEST=address_cleansing
-address_management: --tags @address_management --guess VERBOSE=false HEALTHCHECK=false TEST=address_management
-tracking: --tags @tracking --guess VERBOSE=false HEALTHCHECK=false TEST=tracking
-inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false HEALTHCHECK=false TEST=inline_service_rates
-international: --tags @international --guess VERBOSE=false HEALTHCHECK=false TEST=international
-purchasing: --tags @purchasing --guess VERBOSE=false HEALTHCHECK=false TEST=purchasing
-change_settings: --tags @settings --guess VERBOSE=false HEALTHCHECK=false TEST=change_settings
-print_on_thermal: --tags @print_on_thermal --guess VERBOSE=false HEALTHCHECK=false TEST=print_on_thermal
-c: --tags @sort --guess VERBOSE=false HEALTHCHECK=false TEST=print_on_thermal
-add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false HEALTHCHECK=false TEST=add_new_order_eva
-orders_10: --tags @orders_10 --guess VERBOSE=false HEALTHCHECK=false TEST=orders_10
-orders_20: --tags @orders_20 --guess VERBOSE=false HEALTHCHECK=false TEST=orders_20
-jenkins_orders: --tags @jenkins_orders --guess VERBOSE=false HEALTHCHECK=false TEST=jenkins_orders
-auto_suggest: --tags @auto_suggest --guess VERBOSE=false HEALTHCHECK=false TEST=auto_suggest
-auto_suggest_international: --tags @auto_suggest_international --guess VERBOSE=false HEALTHCHECK=false TEST=auto_suggest_international
-new_country_code: --tags  @new_country_code --guess VERBOSE=false HEALTHCHECK=false TEST=new_country_code
-fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEALTHCHECK=false TEST=fcm_selection_enabled
-rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=false TEST=rules_international
-details_panel: --tags  @details_panel --guess VERBOSE=false HEALTHCHECK=false TEST=details_panel
-print_multiple_reprints: --tags @print_multiple_reprints --guess VERBOSE=false HEALTHCHECK=false TEST=print_multiple_reprints
-multiple_order_total_cost: --tags @multiple_order_total_cost --guess VERBOSE=false HEALTHCHECK=false TEST=multiple_order_total_cost
-item_details: --tags @item_details --guess VERBOSE=false HEALTHCHECK=false TEST=item_details
+local_rating: --tags @local_rating --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=local_rating
+local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=local_rating_smoke_test
+tracking_defaults: --tags @tracking_defaults --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=tracking_defaults
+rules_domestic: --tags @rules_domestic --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=rules_domestic
+parcel_select: --tags @parcel_select --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=parcel_select
+tooltips_services: --tags @tooltips_services --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=tooltips_services
+filter_change_order_status: --tags @filter_change_order_status --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=filter_change_order_status
+grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_tracking
+order_creation: --tags @order_creation --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=order_creation
+address_cleansing: --tags @address_cleansing,@bvt_ambigious_address --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=address_cleansing
+address_management: --tags @address_management --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=address_management
+tracking: --tags @tracking --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=tracking
+inline_service_rates: --tags @inline_service_rates --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=inline_service_rates
+international: --tags @international --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=international
+purchasing: --tags @purchasing --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=purchasing
+change_settings: --tags @settings --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=change_settings
+print_on_thermal: --tags @print_on_thermal --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_on_thermal
+c: --tags @sort --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_on_thermal
+add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=add_new_order_eva
+orders_10: --tags @orders_10 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=orders_10
+orders_20: --tags @orders_20 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=orders_20
+jenkins_orders: --tags @jenkins_orders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=jenkins_orders
+auto_suggest: --tags @auto_suggest --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=auto_suggest
+auto_suggest_international: --tags @auto_suggest_international --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=auto_suggest_international
+new_country_code: --tags  @new_country_code --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=new_country_code
+fcm_selection_enabled: --tags  @fcm_selection_enabled --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=fcm_selection_enabled
+rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=rules_international
+details_panel: --tags  @details_panel --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_panel
+print_multiple_reprints: --tags @print_multiple_reprints --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_multiple_reprints
+multiple_order_total_cost: --tags @multiple_order_total_cost --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=multiple_order_total_cost
+item_details: --tags @item_details --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=item_details
 
 # --------------------------  WEB PRINT
-mail_bvt: --tags  @mail_bvt --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt
-mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_address_cleansing
-mail_bvt_contacts: --tags  @mail_bvt_contacts --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_contacts
-mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_envelopes
-mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_extra_services
-mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_purchasing
-mail_bvt_netstamps_calculate: --tags  @mail_bvt_netstamps_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_netstamps_calculate
-mail_bvt_netstamps_specify: --tags  @mail_bvt_netstamps_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_netstamps_specify
-mail_bvt_international: --tags  @mail_bvt_international --guess VERBOSE=false HEALTHCHECK=false TEST=mail_bvt_international
+mail_authentication: --tags  @mail_authentication --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_authentication
+mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_address_cleansing
+mail_bvt_contacts: --tags  @mail_bvt_contacts --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_contacts
+mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_envelopes
+mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_extra_services
+mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_purchasing
+mail_bvt_netstamps_calculate: --tags  @mail_bvt_netstamps_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_netstamps_calculate
+mail_bvt_netstamps_specify: --tags  @mail_bvt_netstamps_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_netstamps_specify
+mail_bvt_international: --tags  @mail_bvt_international --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_international
 
-mail_label_left_side: --tags  @mail_label_left_side --guess VERBOSE=false HEALTHCHECK=false TEST=mail_label_left_side
-mail_label_right_side: --tags  @mail_label_right_side --guess VERBOSE=false HEALTHCHECK=false TEST=mail_label_right_side
-mail_envelope_regression: --tags  @mail_envelope_regression --guess VERBOSE=false HEALTHCHECK=false TEST=mail_envelope_regression
-mail_envelope_10: --tags  @mail_envelope_10 --guess VERBOSE=false HEALTHCHECK=false TEST=mail_envelope_10
-mail_envelope_9: --tags  @mail_envelope_9 --guess VERBOSE=false HEALTHCHECK=false TEST=mail_envelope_9
-mail_envelope_A9: --tags  @mail_envelope_A9 --guess VERBOSE=false HEALTHCHECK=false TEST=mail_envelope_A9
-mail_envelope_6: --tags  @mail_envelope_6 --guess VERBOSE=false HEALTHCHECK=false TEST=mail_envelope_6
-mail_envelope_A2: --tags  @mail_envelope_A2 --guess VERBOSE=false HEALTHCHECK=false TEST=mail_envelope_A2
-mail_envelope_7: --tags  @mail_envelope_7 --guess VERBOSE=false HEALTHCHECK=false TEST=mail_envelope_7
-mail_envelope_11: --tags  @mail_envelope_11 --guess VERBOSE=false HEALTHCHECK=false TEST=mail_envelope_11
-c: --tags  @mail_envelope_12 --guess VERBOSE=false HEALTHCHECK=false TEST=mail_envelope_11
-mail_shipping_label_preview_panel_options: --tags  @mail_shipping_label_preview_panel_options --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_preview_panel_options
-mail_forgot_username: --tags  @mail_forgot_username --guess VERBOSE=false HEALTHCHECK=false TEST=mail_forgot_username
-mail_forgot_password: --tags  @mail_forgot_password --guess VERBOSE=false HEALTHCHECK=false TEST=mail_forgot_password
+mail_label_left_side: --tags  @mail_label_left_side --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_label_left_side
+mail_label_right_side: --tags  @mail_label_right_side --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_label_right_side
+mail_envelope_regression: --tags  @mail_envelope_regression --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_regression
+mail_envelope_10: --tags  @mail_envelope_10 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_10
+mail_envelope_9: --tags  @mail_envelope_9 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_9
+mail_envelope_A9: --tags  @mail_envelope_A9 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_A9
+mail_envelope_6: --tags  @mail_envelope_6 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_6
+mail_envelope_A2: --tags  @mail_envelope_A2 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_A2
+mail_envelope_7: --tags  @mail_envelope_7 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_7
+mail_envelope_11: --tags  @mail_envelope_11 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_11
+c: --tags  @mail_envelope_12 --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_11
+mail_shipping_label_preview_panel_options: --tags  @mail_shipping_label_preview_panel_options --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_preview_panel_options
+mail_forgot_username: --tags  @mail_forgot_username --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_forgot_username
+mail_forgot_password: --tags  @mail_forgot_password --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_forgot_password
 
-mail_shipping_label_5x8_fcm_large_envelope: --tags  @mail_shipping_label_5x8_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_fcm_large_envelope
-mail_shipping_label_5x8_fcm_package: --tags  @mail_shipping_label_5x8_fcm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_fcm_package
-mail_shipping_label_5x8_mm_package: --tags  @mail_shipping_label_5x8_mm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_mm_package
-mail_shipping_label_5x8_pm_fr_envelope: --tags  @mail_shipping_label_5x8_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_fr_envelope
-mail_shipping_label_5x8_pm_large_box: --tags  @mail_shipping_label_5x8_pm_large_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_large_box
-mail_shipping_label_5x8_pm_large_envelope: --tags  @mail_shipping_label_5x8_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_large_envelope
-mail_shipping_label_5x8_pm_large_package: --tags  @mail_shipping_label_5x8_pm_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_large_package
-mail_shipping_label_5x8_pm_lfr_envelope: --tags  @mail_shipping_label_5x8_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_lfr_envelope
-mail_shipping_label_5x8_pm_medium_box: --tags  @mail_shipping_label_5x8_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_medium_box
-mail_shipping_label_5x8_pm_package: --tags  @mail_shipping_label_5x8_pm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_package
-mail_shipping_label_5x8_pm_pfr_envelope: --tags  @mail_shipping_label_5x8_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_pfr_envelope
-mail_shipping_label_5x8_pm_regional_box_a: --tags  @mail_shipping_label_5x8_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_regional_box_a
-mail_shipping_label_5x8_pm_regional_box_b: --tags  @mail_shipping_label_5x8_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_regional_box_b
-mail_shipping_label_5x8_pm_small_box: --tags  @mail_shipping_label_5x8_pm_small_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_pm_small_box
-mail_shipping_label_5x8_psg_large_package: --tags  @mail_shipping_label_5x8_psg_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_psg_large_package
-mail_shipping_label_5x8_psg_oversized_package: --tags  @mail_shipping_label_5x8_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_psg_oversized_package
-mail_shipping_label_5x8_psg_package: --tags  @mail_shipping_label_5x8_psg_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_psg_package
-mail_shipping_label_5x8_xm_fr_envelope: --tags  @mail_shipping_label_5x8_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_xm_fr_envelope
-mail_shipping_label_5x8_xm_lfr_envelope: --tags  @mail_shipping_label_5x8_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_xm_lfr_envelope
-mail_shipping_label_5x8_xm_package: --tags  @mail_shipping_label_5x8_xm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_xm_package
-mail_shipping_label_5x8_xm_pfr_envelope: --tags  @mail_shipping_label_5x8_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_5x8_xm_pfr_envelope
-mail_shipping_label_8x11_fcm_large_envelope: --tags  @mail_shipping_label_8x11_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_fcm_large_envelope
-mail_shipping_label_8x11_fcm_package: --tags  @mail_shipping_label_8x11_fcm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_fcm_package
-mail_shipping_label_8x11_mm_package: --tags  @mail_shipping_label_8x11_mm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_mm_package
-mail_shipping_label_8x11_pm_fr_envelope: --tags  @mail_shipping_label_8x11_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_fr_envelope
-mail_shipping_label_8x11_pm_large_box: --tags  @mail_shipping_label_8x11_pm_large_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_large_box
-mail_shipping_label_8x11_pm_large_envelope: --tags  @mail_shipping_label_8x11_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_large_envelope
-mail_shipping_label_8x11_pm_large_package: --tags  @mail_shipping_label_8x11_pm_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_large_package
-mail_shipping_label_8x11_pm_lfr_envelope: --tags  @mail_shipping_label_8x11_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_lfr_envelope
-mail_shipping_label_8x11_pm_medium_box: --tags  @mail_shipping_label_8x11_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_medium_box
-mail_shipping_label_8x11_pm_package: --tags  @mail_shipping_label_8x11_pm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_package
-mail_shipping_label_8x11_pm_pfr_envelope: --tags  @mail_shipping_label_8x11_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_pfr_envelope
-mail_shipping_label_8x11_pm_regional_box_a: --tags  @mail_shipping_label_8x11_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_regional_box_a
-mail_shipping_label_8x11_pm_regional_box_b: --tags  @mail_shipping_label_8x11_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_regional_box_b
-mail_shipping_label_8x11_pm_small_box: --tags  @mail_shipping_label_8x11_pm_small_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_pm_small_box
-mail_shipping_label_8x11_psg_large_package: --tags  @mail_shipping_label_8x11_psg_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_psg_large_package
-mail_shipping_label_8x11_psg_oversized_package: --tags  @mail_shipping_label_8x11_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_psg_oversized_package
-mail_shipping_label_8x11_psg_package: --tags  @mail_shipping_label_8x11_psg_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_psg_package
-mail_shipping_label_8x11_xm_fr_envelope: --tags  @mail_shipping_label_8x11_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_xm_fr_envelope
-mail_shipping_label_8x11_xm_lfr_envelope: --tags  @mail_shipping_label_8x11_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_xm_lfr_envelope
-mail_shipping_label_8x11_xm_package: --tags  @mail_shipping_label_8x11_xm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_xm_package
-mail_shipping_label_8x11_xm_pfr_envelope: --tags  @mail_shipping_label_8x11_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_8x11_xm_pfr_envelope
-mail_shipping_label_sdc1200_fcm_large_envelope: --tags  @mail_shipping_label_sdc1200_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_fcm_large_envelope
-mail_shipping_label_sdc1200_fcm_package: --tags  @mail_shipping_label_sdc1200_fcm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_fcm_package
-mail_shipping_label_sdc1200_mm_package: --tags  @mail_shipping_label_sdc1200_mm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_mm_package
-mail_shipping_label_sdc1200_pm_fr_envelope: --tags  @mail_shipping_label_sdc1200_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_fr_envelope
-mail_shipping_label_sdc1200_pm_large_box: --tags  @mail_shipping_label_sdc1200_pm_large_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_large_box
-mail_shipping_label_sdc1200_pm_large_envelope: --tags  @mail_shipping_label_sdc1200_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_large_envelope
-mail_shipping_label_sdc1200_pm_large_package: --tags  @mail_shipping_label_sdc1200_pm_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_large_package
-mail_shipping_label_sdc1200_pm_lfr_envelope: --tags  @mail_shipping_label_sdc1200_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_lfr_envelope
-mail_shipping_label_sdc1200_pm_medium_box: --tags  @mail_shipping_label_sdc1200_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_medium_box
-mail_shipping_label_sdc1200_pm_package: --tags  @mail_shipping_label_sdc1200_pm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_package
-mail_shipping_label_sdc1200_pm_pfr_envelope: --tags  @mail_shipping_label_sdc1200_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_pfr_envelope
-mail_shipping_label_sdc1200_pm_regional_box_a: --tags  @mail_shipping_label_sdc1200_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_regional_box_a
-mail_shipping_label_sdc1200_pm_regional_box_b: --tags  @mail_shipping_label_sdc1200_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_regional_box_b
-mail_shipping_label_sdc1200_pm_small_box: --tags  @mail_shipping_label_sdc1200_pm_small_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_pm_small_box
-mail_shipping_label_sdc1200_psg_large_package: --tags  @mail_shipping_label_sdc1200_psg_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_psg_large_package
-mail_shipping_label_sdc1200_psg_oversized_package: --tags  @mail_shipping_label_sdc1200_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_psg_oversized_package
-mail_shipping_label_sdc1200_psg_package: --tags  @mail_shipping_label_sdc1200_psg_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_psg_package
-mail_shipping_label_sdc1200_xm_fr_envelope: --tags  @mail_shipping_label_sdc1200_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_xm_fr_envelope
-mail_shipping_label_sdc1200_xm_lfr_envelope: --tags  @mail_shipping_label_sdc1200_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_xm_lfr_envelope
-mail_shipping_label_sdc1200_xm_package: --tags  @mail_shipping_label_sdc1200_xm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_xm_package
-mail_shipping_label_sdc1200_xm_pfr_envelope: --tags  @mail_shipping_label_sdc1200_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_shipping_label_sdc1200_xm_pfr_envelope
+mail_shipping_label_5x8_fcm_large_envelope: --tags  @mail_shipping_label_5x8_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_fcm_large_envelope
+mail_shipping_label_5x8_fcm_package: --tags  @mail_shipping_label_5x8_fcm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_fcm_package
+mail_shipping_label_5x8_mm_package: --tags  @mail_shipping_label_5x8_mm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_mm_package
+mail_shipping_label_5x8_pm_fr_envelope: --tags  @mail_shipping_label_5x8_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_fr_envelope
+mail_shipping_label_5x8_pm_large_box: --tags  @mail_shipping_label_5x8_pm_large_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_large_box
+mail_shipping_label_5x8_pm_large_envelope: --tags  @mail_shipping_label_5x8_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_large_envelope
+mail_shipping_label_5x8_pm_large_package: --tags  @mail_shipping_label_5x8_pm_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_large_package
+mail_shipping_label_5x8_pm_lfr_envelope: --tags  @mail_shipping_label_5x8_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_lfr_envelope
+mail_shipping_label_5x8_pm_medium_box: --tags  @mail_shipping_label_5x8_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_medium_box
+mail_shipping_label_5x8_pm_package: --tags  @mail_shipping_label_5x8_pm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_package
+mail_shipping_label_5x8_pm_pfr_envelope: --tags  @mail_shipping_label_5x8_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_pfr_envelope
+mail_shipping_label_5x8_pm_regional_box_a: --tags  @mail_shipping_label_5x8_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_regional_box_a
+mail_shipping_label_5x8_pm_regional_box_b: --tags  @mail_shipping_label_5x8_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_regional_box_b
+mail_shipping_label_5x8_pm_small_box: --tags  @mail_shipping_label_5x8_pm_small_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_pm_small_box
+mail_shipping_label_5x8_psg_large_package: --tags  @mail_shipping_label_5x8_psg_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_psg_large_package
+mail_shipping_label_5x8_psg_oversized_package: --tags  @mail_shipping_label_5x8_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_psg_oversized_package
+mail_shipping_label_5x8_psg_package: --tags  @mail_shipping_label_5x8_psg_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_psg_package
+mail_shipping_label_5x8_xm_fr_envelope: --tags  @mail_shipping_label_5x8_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_xm_fr_envelope
+mail_shipping_label_5x8_xm_lfr_envelope: --tags  @mail_shipping_label_5x8_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_xm_lfr_envelope
+mail_shipping_label_5x8_xm_package: --tags  @mail_shipping_label_5x8_xm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_xm_package
+mail_shipping_label_5x8_xm_pfr_envelope: --tags  @mail_shipping_label_5x8_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_5x8_xm_pfr_envelope
+mail_shipping_label_8x11_fcm_large_envelope: --tags  @mail_shipping_label_8x11_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_fcm_large_envelope
+mail_shipping_label_8x11_fcm_package: --tags  @mail_shipping_label_8x11_fcm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_fcm_package
+mail_shipping_label_8x11_mm_package: --tags  @mail_shipping_label_8x11_mm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_mm_package
+mail_shipping_label_8x11_pm_fr_envelope: --tags  @mail_shipping_label_8x11_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_fr_envelope
+mail_shipping_label_8x11_pm_large_box: --tags  @mail_shipping_label_8x11_pm_large_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_large_box
+mail_shipping_label_8x11_pm_large_envelope: --tags  @mail_shipping_label_8x11_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_large_envelope
+mail_shipping_label_8x11_pm_large_package: --tags  @mail_shipping_label_8x11_pm_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_large_package
+mail_shipping_label_8x11_pm_lfr_envelope: --tags  @mail_shipping_label_8x11_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_lfr_envelope
+mail_shipping_label_8x11_pm_medium_box: --tags  @mail_shipping_label_8x11_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_medium_box
+mail_shipping_label_8x11_pm_package: --tags  @mail_shipping_label_8x11_pm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_package
+mail_shipping_label_8x11_pm_pfr_envelope: --tags  @mail_shipping_label_8x11_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_pfr_envelope
+mail_shipping_label_8x11_pm_regional_box_a: --tags  @mail_shipping_label_8x11_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_regional_box_a
+mail_shipping_label_8x11_pm_regional_box_b: --tags  @mail_shipping_label_8x11_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_regional_box_b
+mail_shipping_label_8x11_pm_small_box: --tags  @mail_shipping_label_8x11_pm_small_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_pm_small_box
+mail_shipping_label_8x11_psg_large_package: --tags  @mail_shipping_label_8x11_psg_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_psg_large_package
+mail_shipping_label_8x11_psg_oversized_package: --tags  @mail_shipping_label_8x11_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_psg_oversized_package
+mail_shipping_label_8x11_psg_package: --tags  @mail_shipping_label_8x11_psg_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_psg_package
+mail_shipping_label_8x11_xm_fr_envelope: --tags  @mail_shipping_label_8x11_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_xm_fr_envelope
+mail_shipping_label_8x11_xm_lfr_envelope: --tags  @mail_shipping_label_8x11_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_xm_lfr_envelope
+mail_shipping_label_8x11_xm_package: --tags  @mail_shipping_label_8x11_xm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_xm_package
+mail_shipping_label_8x11_xm_pfr_envelope: --tags  @mail_shipping_label_8x11_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_8x11_xm_pfr_envelope
+mail_shipping_label_sdc1200_fcm_large_envelope: --tags  @mail_shipping_label_sdc1200_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_fcm_large_envelope
+mail_shipping_label_sdc1200_fcm_package: --tags  @mail_shipping_label_sdc1200_fcm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_fcm_package
+mail_shipping_label_sdc1200_mm_package: --tags  @mail_shipping_label_sdc1200_mm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_mm_package
+mail_shipping_label_sdc1200_pm_fr_envelope: --tags  @mail_shipping_label_sdc1200_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_fr_envelope
+mail_shipping_label_sdc1200_pm_large_box: --tags  @mail_shipping_label_sdc1200_pm_large_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_large_box
+mail_shipping_label_sdc1200_pm_large_envelope: --tags  @mail_shipping_label_sdc1200_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_large_envelope
+mail_shipping_label_sdc1200_pm_large_package: --tags  @mail_shipping_label_sdc1200_pm_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_large_package
+mail_shipping_label_sdc1200_pm_lfr_envelope: --tags  @mail_shipping_label_sdc1200_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_lfr_envelope
+mail_shipping_label_sdc1200_pm_medium_box: --tags  @mail_shipping_label_sdc1200_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_medium_box
+mail_shipping_label_sdc1200_pm_package: --tags  @mail_shipping_label_sdc1200_pm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_package
+mail_shipping_label_sdc1200_pm_pfr_envelope: --tags  @mail_shipping_label_sdc1200_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_pfr_envelope
+mail_shipping_label_sdc1200_pm_regional_box_a: --tags  @mail_shipping_label_sdc1200_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_regional_box_a
+mail_shipping_label_sdc1200_pm_regional_box_b: --tags  @mail_shipping_label_sdc1200_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_regional_box_b
+mail_shipping_label_sdc1200_pm_small_box: --tags  @mail_shipping_label_sdc1200_pm_small_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_pm_small_box
+mail_shipping_label_sdc1200_psg_large_package: --tags  @mail_shipping_label_sdc1200_psg_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_psg_large_package
+mail_shipping_label_sdc1200_psg_oversized_package: --tags  @mail_shipping_label_sdc1200_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_psg_oversized_package
+mail_shipping_label_sdc1200_psg_package: --tags  @mail_shipping_label_sdc1200_psg_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_psg_package
+mail_shipping_label_sdc1200_xm_fr_envelope: --tags  @mail_shipping_label_sdc1200_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_xm_fr_envelope
+mail_shipping_label_sdc1200_xm_lfr_envelope: --tags  @mail_shipping_label_sdc1200_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_xm_lfr_envelope
+mail_shipping_label_sdc1200_xm_package: --tags  @mail_shipping_label_sdc1200_xm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_xm_package
+mail_shipping_label_sdc1200_xm_pfr_envelope: --tags  @mail_shipping_label_sdc1200_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_shipping_label_sdc1200_xm_pfr_envelope
 
-mail_sample_shipping_label_5x8_fcm_large_envelope: --tags  @mail_sample_shipping_label_5x8_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_fcm_large_envelope
-mail_sample_shipping_label_5x8_fcm_package: --tags  @mail_sample_shipping_label_5x8_fcm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_fcm_package
-mail_sample_shipping_label_5x8_mm_package: --tags  @mail_sample_shipping_label_5x8_mm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_mm_package
-mail_sample_shipping_label_5x8_pm_fr_envelope: --tags  @mail_sample_shipping_label_5x8_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_fr_envelope
-mail_sample_shipping_label_5x8_pm_large_box: --tags  @mail_sample_shipping_label_5x8_pm_large_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_large_box
-mail_sample_shipping_label_5x8_pm_large_envelope: --tags  @mail_sample_shipping_label_5x8_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_large_envelope
-mail_sample_shipping_label_5x8_pm_large_package: --tags  @mail_sample_shipping_label_5x8_pm_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_large_package
-mail_sample_shipping_label_5x8_pm_lfr_envelope: --tags  @mail_sample_shipping_label_5x8_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_lfr_envelope
-mail_sample_shipping_label_5x8_pm_medium_box: --tags  @mail_sample_shipping_label_5x8_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_medium_box
-mail_sample_shipping_label_5x8_pm_package: --tags  @mail_sample_shipping_label_5x8_pm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_package
-mail_sample_shipping_label_5x8_pm_pfr_envelope: --tags  @mail_sample_shipping_label_5x8_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_pfr_envelope
-mail_sample_shipping_label_5x8_pm_regional_box_a: --tags  @mail_sample_shipping_label_5x8_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_regional_box_a
-mail_sample_shipping_label_5x8_pm_regional_box_b: --tags  @mail_sample_shipping_label_5x8_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_regional_box_b
-mail_sample_shipping_label_5x8_pm_small_box: --tags  @mail_sample_shipping_label_5x8_pm_small_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_pm_small_box
-mail_sample_shipping_label_5x8_psg_large_package: --tags  @mail_sample_shipping_label_5x8_psg_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_psg_large_package
-mail_sample_shipping_label_5x8_psg_oversized_package: --tags  @mail_sample_shipping_label_5x8_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_psg_oversized_package
-mail_sample_shipping_label_5x8_psg_package: --tags  @mail_sample_shipping_label_5x8_psg_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_psg_package
-mail_sample_shipping_label_5x8_xm_fr_envelope: --tags  @mail_sample_shipping_label_5x8_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_xm_fr_envelope
-mail_sample_shipping_label_5x8_xm_lfr_envelope: --tags  @mail_sample_shipping_label_5x8_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_xm_lfr_envelope
-mail_sample_shipping_label_5x8_xm_package: --tags  @mail_sample_shipping_label_5x8_xm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_xm_package
-mail_sample_shipping_label_5x8_xm_pfr_envelope: --tags  @mail_sample_shipping_label_5x8_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_5x8_xm_pfr_envelope
-mail_sample_shipping_label_8x11_fcm_large_envelope: --tags  @mail_sample_shipping_label_8x11_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_fcm_large_envelope
-mail_sample_shipping_label_8x11_fcm_package: --tags  @mail_sample_shipping_label_8x11_fcm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_fcm_package
-mail_sample_shipping_label_8x11_mm_package: --tags  @mail_sample_shipping_label_8x11_mm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_mm_package
-mail_sample_shipping_label_8x11_pm_fr_envelope: --tags  @mail_sample_shipping_label_8x11_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_fr_envelope
-mail_sample_shipping_label_8x11_pm_large_box: --tags  @mail_sample_shipping_label_8x11_pm_large_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_large_box
-mail_sample_shipping_label_8x11_pm_large_envelope: --tags  @mail_sample_shipping_label_8x11_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_large_envelope
-mail_sample_shipping_label_8x11_pm_large_package: --tags  @mail_sample_shipping_label_8x11_pm_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_large_package
-mail_sample_shipping_label_8x11_pm_lfr_envelope: --tags  @mail_sample_shipping_label_8x11_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_lfr_envelope
-mail_sample_shipping_label_8x11_pm_medium_box: --tags  @mail_sample_shipping_label_8x11_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_medium_box
-mail_sample_shipping_label_8x11_pm_package: --tags  @mail_sample_shipping_label_8x11_pm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_package
-mail_sample_shipping_label_8x11_pm_pfr_envelope: --tags  @mail_sample_shipping_label_8x11_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_pfr_envelope
-mail_sample_shipping_label_8x11_pm_regional_box_a: --tags  @mail_sample_shipping_label_8x11_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_regional_box_a
-mail_sample_shipping_label_8x11_pm_regional_box_b: --tags  @mail_sample_shipping_label_8x11_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_regional_box_b
-mail_sample_shipping_label_8x11_pm_small_box: --tags  @mail_sample_shipping_label_8x11_pm_small_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_pm_small_box
-mail_sample_shipping_label_8x11_psg_large_package: --tags  @mail_sample_shipping_label_8x11_psg_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_psg_large_package
-mail_sample_shipping_label_8x11_psg_oversized_package: --tags  @mail_sample_shipping_label_8x11_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_psg_oversized_package
-mail_sample_shipping_label_8x11_psg_package: --tags  @mail_sample_shipping_label_8x11_psg_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_psg_package
-mail_sample_shipping_label_8x11_xm_fr_envelope: --tags  @mail_sample_shipping_label_8x11_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_xm_fr_envelope
-mail_sample_shipping_label_8x11_xm_lfr_envelope: --tags  @mail_sample_shipping_label_8x11_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_xm_lfr_envelope
-mail_sample_shipping_label_8x11_xm_package: --tags  @mail_sample_shipping_label_8x11_xm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_xm_package
-mail_sample_shipping_label_8x11_xm_pfr_envelope: --tags  @mail_sample_shipping_label_8x11_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_8x11_xm_pfr_envelope
-mail_sample_shipping_label_sdc1200_fcm_large_envelope: --tags  @mail_sample_shipping_label_sdc1200_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_fcm_large_envelope
-mail_sample_shipping_label_sdc1200_fcm_package: --tags  @mail_sample_shipping_label_sdc1200_fcm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_fcm_package
-mail_sample_shipping_label_sdc1200_mm_package: --tags  @mail_sample_shipping_label_sdc1200_mm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_mm_package
-mail_sample_shipping_label_sdc1200_pm_fr_envelope: --tags  @mail_sample_shipping_label_sdc1200_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_fr_envelope
-mail_sample_shipping_label_sdc1200_pm_large_box: --tags  @mail_sample_shipping_label_sdc1200_pm_large_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_large_box
-mail_sample_shipping_label_sdc1200_pm_large_envelope: --tags  @mail_sample_shipping_label_sdc1200_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_large_envelope
-mail_sample_shipping_label_sdc1200_pm_large_package: --tags  @mail_sample_shipping_label_sdc1200_pm_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_large_package
-mail_sample_shipping_label_sdc1200_pm_lfr_envelope: --tags  @mail_sample_shipping_label_sdc1200_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_lfr_envelope
-mail_sample_shipping_label_sdc1200_pm_medium_box: --tags  @mail_sample_shipping_label_sdc1200_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_medium_box
-mail_sample_shipping_label_sdc1200_pm_package: --tags  @mail_sample_shipping_label_sdc1200_pm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_package
-mail_sample_shipping_label_sdc1200_pm_pfr_envelope: --tags  @mail_sample_shipping_label_sdc1200_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_pfr_envelope
-mail_sample_shipping_label_sdc1200_pm_regional_box_a: --tags  @mail_sample_shipping_label_sdc1200_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_regional_box_a
-mail_sample_shipping_label_sdc1200_pm_regional_box_b: --tags  @mail_sample_shipping_label_sdc1200_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_regional_box_b
-mail_sample_shipping_label_sdc1200_pm_small_box: --tags  @mail_sample_shipping_label_sdc1200_pm_small_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_pm_small_box
-mail_sample_shipping_label_sdc1200_psg_large_package: --tags  @mail_sample_shipping_label_sdc1200_psg_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_psg_large_package
-mail_sample_shipping_label_sdc1200_psg_oversized_package: --tags  @mail_sample_shipping_label_sdc1200_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_psg_oversized_package
-mail_sample_shipping_label_sdc1200_psg_package: --tags  @mail_sample_shipping_label_sdc1200_psg_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_psg_package
-mail_sample_shipping_label_sdc1200_xm_fr_envelope: --tags  @mail_sample_shipping_label_sdc1200_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_xm_fr_envelope
-mail_sample_shipping_label_sdc1200_xm_lfr_envelope: --tags  @mail_sample_shipping_label_sdc1200_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_xm_lfr_envelope
-mail_sample_shipping_label_sdc1200_xm_package: --tags  @mail_sample_shipping_label_sdc1200_xm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_xm_package
-mail_sample_shipping_label_sdc1200_xm_pfr_envelope: --tags  @mail_sample_shipping_label_sdc1200_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_sample_shipping_label_sdc1200_xm_pfr_envelope
+mail_sample_shipping_label_5x8_fcm_large_envelope: --tags  @mail_sample_shipping_label_5x8_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_fcm_large_envelope
+mail_sample_shipping_label_5x8_fcm_package: --tags  @mail_sample_shipping_label_5x8_fcm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_fcm_package
+mail_sample_shipping_label_5x8_mm_package: --tags  @mail_sample_shipping_label_5x8_mm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_mm_package
+mail_sample_shipping_label_5x8_pm_fr_envelope: --tags  @mail_sample_shipping_label_5x8_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_fr_envelope
+mail_sample_shipping_label_5x8_pm_large_box: --tags  @mail_sample_shipping_label_5x8_pm_large_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_large_box
+mail_sample_shipping_label_5x8_pm_large_envelope: --tags  @mail_sample_shipping_label_5x8_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_large_envelope
+mail_sample_shipping_label_5x8_pm_large_package: --tags  @mail_sample_shipping_label_5x8_pm_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_large_package
+mail_sample_shipping_label_5x8_pm_lfr_envelope: --tags  @mail_sample_shipping_label_5x8_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_lfr_envelope
+mail_sample_shipping_label_5x8_pm_medium_box: --tags  @mail_sample_shipping_label_5x8_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_medium_box
+mail_sample_shipping_label_5x8_pm_package: --tags  @mail_sample_shipping_label_5x8_pm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_package
+mail_sample_shipping_label_5x8_pm_pfr_envelope: --tags  @mail_sample_shipping_label_5x8_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_pfr_envelope
+mail_sample_shipping_label_5x8_pm_regional_box_a: --tags  @mail_sample_shipping_label_5x8_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_regional_box_a
+mail_sample_shipping_label_5x8_pm_regional_box_b: --tags  @mail_sample_shipping_label_5x8_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_regional_box_b
+mail_sample_shipping_label_5x8_pm_small_box: --tags  @mail_sample_shipping_label_5x8_pm_small_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_pm_small_box
+mail_sample_shipping_label_5x8_psg_large_package: --tags  @mail_sample_shipping_label_5x8_psg_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_psg_large_package
+mail_sample_shipping_label_5x8_psg_oversized_package: --tags  @mail_sample_shipping_label_5x8_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_psg_oversized_package
+mail_sample_shipping_label_5x8_psg_package: --tags  @mail_sample_shipping_label_5x8_psg_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_psg_package
+mail_sample_shipping_label_5x8_xm_fr_envelope: --tags  @mail_sample_shipping_label_5x8_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_xm_fr_envelope
+mail_sample_shipping_label_5x8_xm_lfr_envelope: --tags  @mail_sample_shipping_label_5x8_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_xm_lfr_envelope
+mail_sample_shipping_label_5x8_xm_package: --tags  @mail_sample_shipping_label_5x8_xm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_xm_package
+mail_sample_shipping_label_5x8_xm_pfr_envelope: --tags  @mail_sample_shipping_label_5x8_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_5x8_xm_pfr_envelope
+mail_sample_shipping_label_8x11_fcm_large_envelope: --tags  @mail_sample_shipping_label_8x11_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_fcm_large_envelope
+mail_sample_shipping_label_8x11_fcm_package: --tags  @mail_sample_shipping_label_8x11_fcm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_fcm_package
+mail_sample_shipping_label_8x11_mm_package: --tags  @mail_sample_shipping_label_8x11_mm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_mm_package
+mail_sample_shipping_label_8x11_pm_fr_envelope: --tags  @mail_sample_shipping_label_8x11_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_fr_envelope
+mail_sample_shipping_label_8x11_pm_large_box: --tags  @mail_sample_shipping_label_8x11_pm_large_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_large_box
+mail_sample_shipping_label_8x11_pm_large_envelope: --tags  @mail_sample_shipping_label_8x11_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_large_envelope
+mail_sample_shipping_label_8x11_pm_large_package: --tags  @mail_sample_shipping_label_8x11_pm_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_large_package
+mail_sample_shipping_label_8x11_pm_lfr_envelope: --tags  @mail_sample_shipping_label_8x11_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_lfr_envelope
+mail_sample_shipping_label_8x11_pm_medium_box: --tags  @mail_sample_shipping_label_8x11_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_medium_box
+mail_sample_shipping_label_8x11_pm_package: --tags  @mail_sample_shipping_label_8x11_pm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_package
+mail_sample_shipping_label_8x11_pm_pfr_envelope: --tags  @mail_sample_shipping_label_8x11_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_pfr_envelope
+mail_sample_shipping_label_8x11_pm_regional_box_a: --tags  @mail_sample_shipping_label_8x11_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_regional_box_a
+mail_sample_shipping_label_8x11_pm_regional_box_b: --tags  @mail_sample_shipping_label_8x11_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_regional_box_b
+mail_sample_shipping_label_8x11_pm_small_box: --tags  @mail_sample_shipping_label_8x11_pm_small_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_pm_small_box
+mail_sample_shipping_label_8x11_psg_large_package: --tags  @mail_sample_shipping_label_8x11_psg_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_psg_large_package
+mail_sample_shipping_label_8x11_psg_oversized_package: --tags  @mail_sample_shipping_label_8x11_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_psg_oversized_package
+mail_sample_shipping_label_8x11_psg_package: --tags  @mail_sample_shipping_label_8x11_psg_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_psg_package
+mail_sample_shipping_label_8x11_xm_fr_envelope: --tags  @mail_sample_shipping_label_8x11_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_xm_fr_envelope
+mail_sample_shipping_label_8x11_xm_lfr_envelope: --tags  @mail_sample_shipping_label_8x11_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_xm_lfr_envelope
+mail_sample_shipping_label_8x11_xm_package: --tags  @mail_sample_shipping_label_8x11_xm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_xm_package
+mail_sample_shipping_label_8x11_xm_pfr_envelope: --tags  @mail_sample_shipping_label_8x11_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_8x11_xm_pfr_envelope
+mail_sample_shipping_label_sdc1200_fcm_large_envelope: --tags  @mail_sample_shipping_label_sdc1200_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_fcm_large_envelope
+mail_sample_shipping_label_sdc1200_fcm_package: --tags  @mail_sample_shipping_label_sdc1200_fcm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_fcm_package
+mail_sample_shipping_label_sdc1200_mm_package: --tags  @mail_sample_shipping_label_sdc1200_mm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_mm_package
+mail_sample_shipping_label_sdc1200_pm_fr_envelope: --tags  @mail_sample_shipping_label_sdc1200_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_fr_envelope
+mail_sample_shipping_label_sdc1200_pm_large_box: --tags  @mail_sample_shipping_label_sdc1200_pm_large_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_large_box
+mail_sample_shipping_label_sdc1200_pm_large_envelope: --tags  @mail_sample_shipping_label_sdc1200_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_large_envelope
+mail_sample_shipping_label_sdc1200_pm_large_package: --tags  @mail_sample_shipping_label_sdc1200_pm_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_large_package
+mail_sample_shipping_label_sdc1200_pm_lfr_envelope: --tags  @mail_sample_shipping_label_sdc1200_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_lfr_envelope
+mail_sample_shipping_label_sdc1200_pm_medium_box: --tags  @mail_sample_shipping_label_sdc1200_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_medium_box
+mail_sample_shipping_label_sdc1200_pm_package: --tags  @mail_sample_shipping_label_sdc1200_pm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_package
+mail_sample_shipping_label_sdc1200_pm_pfr_envelope: --tags  @mail_sample_shipping_label_sdc1200_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_pfr_envelope
+mail_sample_shipping_label_sdc1200_pm_regional_box_a: --tags  @mail_sample_shipping_label_sdc1200_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_regional_box_a
+mail_sample_shipping_label_sdc1200_pm_regional_box_b: --tags  @mail_sample_shipping_label_sdc1200_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_regional_box_b
+mail_sample_shipping_label_sdc1200_pm_small_box: --tags  @mail_sample_shipping_label_sdc1200_pm_small_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_pm_small_box
+mail_sample_shipping_label_sdc1200_psg_large_package: --tags  @mail_sample_shipping_label_sdc1200_psg_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_psg_large_package
+mail_sample_shipping_label_sdc1200_psg_oversized_package: --tags  @mail_sample_shipping_label_sdc1200_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_psg_oversized_package
+mail_sample_shipping_label_sdc1200_psg_package: --tags  @mail_sample_shipping_label_sdc1200_psg_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_psg_package
+mail_sample_shipping_label_sdc1200_xm_fr_envelope: --tags  @mail_sample_shipping_label_sdc1200_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_xm_fr_envelope
+mail_sample_shipping_label_sdc1200_xm_lfr_envelope: --tags  @mail_sample_shipping_label_sdc1200_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_xm_lfr_envelope
+mail_sample_shipping_label_sdc1200_xm_package: --tags  @mail_sample_shipping_label_sdc1200_xm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_xm_package
+mail_sample_shipping_label_sdc1200_xm_pfr_envelope: --tags  @mail_sample_shipping_label_sdc1200_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_sample_shipping_label_sdc1200_xm_pfr_envelope
 
-mail_stamps_a_series_calculate: --tags  @mail_stamps_a_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_a_series_calculate
-mail_stamps_a_series_specify: --tags  @mail_stamps_a_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_a_series_specify
-mail_stamps_b_series_calculate: --tags  @mail_stamps_b_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_b_series_calculate
-mail_stamps_b_series_specify: --tags  @mail_stamps_b_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_b_series_specify
-mail_stamps_c_series_calculate: --tags  @mail_stamps_c_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_c_series_calculate
-mail_stamps_c_series_specify: --tags  @mail_stamps_c_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_c_series_specify
-mail_stamps_k_series_calculate: --tags  @mail_stamps_k_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_k_series_calculate
-mail_stamps_k_series_specify: --tags  @mail_stamps_k_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_k_series_specify
-mail_stamps_l_series_calculate: --tags  @mail_stamps_l_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_l_series_calculate
-mail_stamps_l_series_specify: --tags  @mail_stamps_l_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_l_series_specify
-mail_stamps_ml_series_calculate: --tags  @mail_stamps_ml_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_ml_series_calculate
-mail_stamps_ml_series_specify: --tags  @mail_stamps_ml_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_ml_series_specify
-mail_stamps_p_series_calculate: --tags  @mail_stamps_p_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_p_series_calculate
-mail_stamps_p_series_specify: --tags  @mail_stamps_p_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_p_series_specify
-mail_stamps_r_series_calculate: --tags  @mail_stamps_r_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_r_series_calculate
-mail_stamps_r_series_specify: --tags  @mail_stamps_r_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_r_series_specify
-mail_stamps_s_series_calculate: --tags  @mail_stamps_s_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_s_series_calculate
-mail_stamps_s_series_specify: --tags  @mail_stamps_s_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_s_series_specify
-mail_stamps_v_series_calculate: --tags  @mail_stamps_v_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_v_series_calculate
-mail_stamps_v_series_specify: --tags  @mail_stamps_v_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_v_series_specify
-mail_stamps_wn_series_calculate: --tags  @mail_stamps_wn_series_calculate --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_wn_series_calculate
-mail_stamps_wn_series_specify: --tags  @mail_stamps_wn_series_specify --guess VERBOSE=false HEALTHCHECK=false TEST=mail_stamps_wn_series_specify
+mail_stamps_a_series_calculate: --tags  @mail_stamps_a_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_a_series_calculate
+mail_stamps_a_series_specify: --tags  @mail_stamps_a_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_a_series_specify
+mail_stamps_b_series_calculate: --tags  @mail_stamps_b_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_b_series_calculate
+mail_stamps_b_series_specify: --tags  @mail_stamps_b_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_b_series_specify
+mail_stamps_c_series_calculate: --tags  @mail_stamps_c_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_c_series_calculate
+mail_stamps_c_series_specify: --tags  @mail_stamps_c_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_c_series_specify
+mail_stamps_k_series_calculate: --tags  @mail_stamps_k_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_k_series_calculate
+mail_stamps_k_series_specify: --tags  @mail_stamps_k_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_k_series_specify
+mail_stamps_l_series_calculate: --tags  @mail_stamps_l_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_l_series_calculate
+mail_stamps_l_series_specify: --tags  @mail_stamps_l_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_l_series_specify
+mail_stamps_ml_series_calculate: --tags  @mail_stamps_ml_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_ml_series_calculate
+mail_stamps_ml_series_specify: --tags  @mail_stamps_ml_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_ml_series_specify
+mail_stamps_p_series_calculate: --tags  @mail_stamps_p_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_p_series_calculate
+mail_stamps_p_series_specify: --tags  @mail_stamps_p_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_p_series_specify
+mail_stamps_r_series_calculate: --tags  @mail_stamps_r_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_r_series_calculate
+mail_stamps_r_series_specify: --tags  @mail_stamps_r_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_r_series_specify
+mail_stamps_s_series_calculate: --tags  @mail_stamps_s_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_s_series_calculate
+mail_stamps_s_series_specify: --tags  @mail_stamps_s_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_s_series_specify
+mail_stamps_v_series_calculate: --tags  @mail_stamps_v_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_v_series_calculate
+mail_stamps_v_series_specify: --tags  @mail_stamps_v_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_v_series_specify
+mail_stamps_wn_series_calculate: --tags  @mail_stamps_wn_series_calculate --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_wn_series_calculate
+mail_stamps_wn_series_specify: --tags  @mail_stamps_wn_series_specify --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_stamps_wn_series_specify
 
-mail_roll_4_1_8_x_6_1_4_fcm_large_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_fcm_large_envelope
-mail_roll_4_1_8_x_6_1_4_fcm_package: --tags  @mail_roll_4_1_8_x_6_1_4_fcm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_fcm_package
-mail_roll_4_1_8_x_6_1_4_mm_package: --tags  @mail_roll_4_1_8_x_6_1_4_mm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_mm_package
-mail_roll_4_1_8_x_6_1_4_pm_fr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_fr_envelope
-mail_roll_4_1_8_x_6_1_4_pm_large_box: --tags  @mail_roll_4_1_8_x_6_1_4_pm_large_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_large_box
-mail_roll_4_1_8_x_6_1_4_pm_large_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_large_envelope
-mail_roll_4_1_8_x_6_1_4_pm_large_package: --tags  @mail_roll_4_1_8_x_6_1_4_pm_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_large_package
-mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope
-mail_roll_4_1_8_x_6_1_4_pm_medium_box: --tags  @mail_roll_4_1_8_x_6_1_4_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_medium_box
-mail_roll_4_1_8_x_6_1_4_pm_package: --tags  @mail_roll_4_1_8_x_6_1_4_pm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_package
-mail_roll_4_1_8_x_6_1_4_pm_pfr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_pfr_envelope
-mail_roll_4_1_8_x_6_1_4_pm_regional_box_a: --tags  @mail_roll_4_1_8_x_6_1_4_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_regional_box_a
-mail_roll_4_1_8_x_6_1_4_pm_regional_box_b: --tags  @mail_roll_4_1_8_x_6_1_4_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_regional_box_b
-mail_roll_4_1_8_x_6_1_4_pm_small_box: --tags  @mail_roll_4_1_8_x_6_1_4_pm_small_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_pm_small_box
-mail_roll_4_1_8_x_6_1_4_psg_large_package: --tags  @mail_roll_4_1_8_x_6_1_4_psg_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_psg_large_package
-mail_roll_4_1_8_x_6_1_4_psg_oversized_package: --tags  @mail_roll_4_1_8_x_6_1_4_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_psg_oversized_package
-mail_roll_4_1_8_x_6_1_4_psg_package: --tags  @mail_roll_4_1_8_x_6_1_4_psg_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_psg_package
-mail_roll_4_1_8_x_6_1_4_xm_fr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_xm_fr_envelope
-mail_roll_4_1_8_x_6_1_4_xm_lfr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_xm_lfr_envelope
-mail_roll_4_1_8_x_6_1_4_xm_package: --tags  @mail_roll_4_1_8_x_6_1_4_xm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_xm_package
-mail_roll_4_1_8_x_6_1_4_xm_pfr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4_1_8_x_6_1_4_xm_pfr_envelope
-mail_roll_4x6_fcm_large_envelope: --tags  @mail_roll_4x6_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_fcm_large_envelope
-mail_roll_4x6_fcm_package: --tags  @mail_roll_4x6_fcm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_fcm_package
-mail_roll_4x6_mm_package: --tags  @mail_roll_4x6_mm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_mm_package
-mail_roll_4x6_pm_fr_envelope: --tags  @mail_roll_4x6_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_fr_envelope
-mail_roll_4x6_pm_large_box: --tags  @mail_roll_4x6_pm_large_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_large_box
-mail_roll_4x6_pm_large_envelope: --tags  @mail_roll_4x6_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_large_envelope
-mail_roll_4x6_pm_large_package: --tags  @mail_roll_4x6_pm_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_large_package
-mail_roll_4x6_pm_lfr_envelope: --tags  @mail_roll_4x6_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_lfr_envelope
-mail_roll_4x6_pm_medium_box: --tags  @mail_roll_4x6_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_medium_box
-mail_roll_4x6_pm_package: --tags  @mail_roll_4x6_pm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_package
-mail_roll_4x6_pm_pfr_envelope: --tags  @mail_roll_4x6_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_pfr_envelope
-mail_roll_4x6_pm_regional_box_a: --tags  @mail_roll_4x6_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_regional_box_a
-mail_roll_4x6_pm_regional_box_b: --tags  @mail_roll_4x6_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_regional_box_b
-mail_roll_4x6_pm_small_box: --tags  @mail_roll_4x6_pm_small_box --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_pm_small_box
-mail_roll_4x6_psg_large_package: --tags  @mail_roll_4x6_psg_large_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_psg_large_package
-mail_roll_4x6_psg_oversized_package: --tags  @mail_roll_4x6_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_psg_oversized_package
-mail_roll_4x6_psg_package: --tags  @mail_roll_4x6_psg_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_psg_package
-mail_roll_4x6_xm_fr_envelope: --tags  @mail_roll_4x6_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_xm_fr_envelope
-mail_roll_4x6_xm_lfr_envelope: --tags  @mail_roll_4x6_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_xm_lfr_envelope
-mail_roll_4x6_xm_package: --tags  @mail_roll_4x6_xm_package --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_xm_package
-mail_roll_4x6_xm_pfr_envelope: --tags  @mail_roll_4x6_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false TEST=mail_roll_4x6_xm_pfr_envelope
-mail_print_on_list_of_values: --tags  @mail_print_on_list_of_values --guess VERBOSE=false HEALTHCHECK=false TEST=mail_print_on_list_of_values
-mail_print_postage_elements: --tags  @mail_print_postage_elements --guess VERBOSE=false HEALTHCHECK=false TEST=mail_print_postage_elements
-mail_invalid_credentials: --tags  @mail_invalid_credentials --guess VERBOSE=false HEALTHCHECK=false TEST=mail_invalid_credentials
-mail_manage_shipping_addresses: --tags  @mail_manage_shipping_addresses --guess VERBOSE=false HEALTHCHECK=false TEST=mail_manage_shipping_addresses
-mail_remember_username: --tags  @mail_remember_username --guess VERBOSE=false HEALTHCHECK=false TEST=mail_remember_username
-mail_welcome: --tags  @mail_welcome --guess VERBOSE=false HEALTHCHECK=false TEST=mail_welcome
-mail_envelope_10_return_address: --tags  @mail_envelope_10_return_address --guess VERBOSE=true HEALTHCHECK=false TEST=mail_envelope_10_return_address
-mail_envelope_10_delivery_address: --tags  @mail_envelope_10_delivery_address --guess VERBOSE=true HEALTHCHECK=false TEST=mail_envelope_10_delivery_address
-mail_envelope_10_postage: --tags  @mail_envelope_10_postage --guess VERBOSE=true HEALTHCHECK=false TEST=mail_envelope_10_postage
+mail_roll_4_1_8_x_6_1_4_fcm_large_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_fcm_large_envelope
+mail_roll_4_1_8_x_6_1_4_fcm_package: --tags  @mail_roll_4_1_8_x_6_1_4_fcm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_fcm_package
+mail_roll_4_1_8_x_6_1_4_mm_package: --tags  @mail_roll_4_1_8_x_6_1_4_mm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_mm_package
+mail_roll_4_1_8_x_6_1_4_pm_fr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_fr_envelope
+mail_roll_4_1_8_x_6_1_4_pm_large_box: --tags  @mail_roll_4_1_8_x_6_1_4_pm_large_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_large_box
+mail_roll_4_1_8_x_6_1_4_pm_large_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_large_envelope
+mail_roll_4_1_8_x_6_1_4_pm_large_package: --tags  @mail_roll_4_1_8_x_6_1_4_pm_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_large_package
+mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope
+mail_roll_4_1_8_x_6_1_4_pm_medium_box: --tags  @mail_roll_4_1_8_x_6_1_4_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_medium_box
+mail_roll_4_1_8_x_6_1_4_pm_package: --tags  @mail_roll_4_1_8_x_6_1_4_pm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_package
+mail_roll_4_1_8_x_6_1_4_pm_pfr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_pfr_envelope
+mail_roll_4_1_8_x_6_1_4_pm_regional_box_a: --tags  @mail_roll_4_1_8_x_6_1_4_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_regional_box_a
+mail_roll_4_1_8_x_6_1_4_pm_regional_box_b: --tags  @mail_roll_4_1_8_x_6_1_4_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_regional_box_b
+mail_roll_4_1_8_x_6_1_4_pm_small_box: --tags  @mail_roll_4_1_8_x_6_1_4_pm_small_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_pm_small_box
+mail_roll_4_1_8_x_6_1_4_psg_large_package: --tags  @mail_roll_4_1_8_x_6_1_4_psg_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_psg_large_package
+mail_roll_4_1_8_x_6_1_4_psg_oversized_package: --tags  @mail_roll_4_1_8_x_6_1_4_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_psg_oversized_package
+mail_roll_4_1_8_x_6_1_4_psg_package: --tags  @mail_roll_4_1_8_x_6_1_4_psg_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_psg_package
+mail_roll_4_1_8_x_6_1_4_xm_fr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_xm_fr_envelope
+mail_roll_4_1_8_x_6_1_4_xm_lfr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_xm_lfr_envelope
+mail_roll_4_1_8_x_6_1_4_xm_package: --tags  @mail_roll_4_1_8_x_6_1_4_xm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_xm_package
+mail_roll_4_1_8_x_6_1_4_xm_pfr_envelope: --tags  @mail_roll_4_1_8_x_6_1_4_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4_1_8_x_6_1_4_xm_pfr_envelope
+mail_roll_4x6_fcm_large_envelope: --tags  @mail_roll_4x6_fcm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_fcm_large_envelope
+mail_roll_4x6_fcm_package: --tags  @mail_roll_4x6_fcm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_fcm_package
+mail_roll_4x6_mm_package: --tags  @mail_roll_4x6_mm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_mm_package
+mail_roll_4x6_pm_fr_envelope: --tags  @mail_roll_4x6_pm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_fr_envelope
+mail_roll_4x6_pm_large_box: --tags  @mail_roll_4x6_pm_large_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_large_box
+mail_roll_4x6_pm_large_envelope: --tags  @mail_roll_4x6_pm_large_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_large_envelope
+mail_roll_4x6_pm_large_package: --tags  @mail_roll_4x6_pm_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_large_package
+mail_roll_4x6_pm_lfr_envelope: --tags  @mail_roll_4x6_pm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_lfr_envelope
+mail_roll_4x6_pm_medium_box: --tags  @mail_roll_4x6_pm_medium_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_medium_box
+mail_roll_4x6_pm_package: --tags  @mail_roll_4x6_pm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_package
+mail_roll_4x6_pm_pfr_envelope: --tags  @mail_roll_4x6_pm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_pfr_envelope
+mail_roll_4x6_pm_regional_box_a: --tags  @mail_roll_4x6_pm_regional_box_a --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_regional_box_a
+mail_roll_4x6_pm_regional_box_b: --tags  @mail_roll_4x6_pm_regional_box_b --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_regional_box_b
+mail_roll_4x6_pm_small_box: --tags  @mail_roll_4x6_pm_small_box --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_pm_small_box
+mail_roll_4x6_psg_large_package: --tags  @mail_roll_4x6_psg_large_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_psg_large_package
+mail_roll_4x6_psg_oversized_package: --tags  @mail_roll_4x6_psg_oversized_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_psg_oversized_package
+mail_roll_4x6_psg_package: --tags  @mail_roll_4x6_psg_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_psg_package
+mail_roll_4x6_xm_fr_envelope: --tags  @mail_roll_4x6_xm_fr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_xm_fr_envelope
+mail_roll_4x6_xm_lfr_envelope: --tags  @mail_roll_4x6_xm_lfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_xm_lfr_envelope
+mail_roll_4x6_xm_package: --tags  @mail_roll_4x6_xm_package --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_xm_package
+mail_roll_4x6_xm_pfr_envelope: --tags  @mail_roll_4x6_xm_pfr_envelope --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_roll_4x6_xm_pfr_envelope
+mail_print_on_list_of_values: --tags  @mail_print_on_list_of_values --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_print_on_list_of_values
+mail_print_postage_elements: --tags  @mail_print_postage_elements --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_print_postage_elements
+mail_invalid_credentials: --tags  @mail_invalid_credentials --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_invalid_credentials
+mail_manage_shipping_addresses: --tags  @mail_manage_shipping_addresses --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_manage_shipping_addresses
+mail_remember_username: --tags  @mail_remember_username --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_remember_username
+mail_welcome: --tags  @mail_welcome --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_welcome
+mail_envelope_10_return_address: --tags  @mail_envelope_10_return_address --guess VERBOSE=true HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_10_return_address
+mail_envelope_10_delivery_address: --tags  @mail_envelope_10_delivery_address --guess VERBOSE=true HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_10_delivery_address
+mail_envelope_10_postage: --tags  @mail_envelope_10_postage --guess VERBOSE=true HEALTHCHECK=false WEB_APP=mail TEST=mail_envelope_10_postage

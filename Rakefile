@@ -27,8 +27,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:mail_authentication) do |t|
+  t.profile = 'mail_authentication'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -888,11 +888,6 @@ end
 
 Cucumber::Rake::Task.new(:mail_bvt) do |t|
   t.profile = 'mail_bvt'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_bvt_address_cleansing) do |t|
-  t.profile = 'mail_bvt_address_cleansing'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1963,14 +1958,8 @@ Cucumber::Rake::Task.new(:bvt_shipping_address_management) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-
-
 Cucumber::Rake::Task.new(:bvt_ambigious_address) do |t|
   t.profile = 'bvt_ambigious_address'
-  t.cucumber_opts = "-p cuke_reports"
-end
-Cucumber::Rake::Task.new(:bvt_address_cleansing) do |t|
-  t.profile = 'bvt_address_cleansing'
   t.cucumber_opts = "-p cuke_reports"
 end
 

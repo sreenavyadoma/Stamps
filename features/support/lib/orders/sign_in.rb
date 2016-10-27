@@ -88,7 +88,7 @@ module Stamps
         market_place = Orders::Stores::MarketPlace.new param
         loading_orders = ElementWrapper.new browser.div(text: "Loading orders...")
 
-        raise "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
+        "Check that URL is valid: #{browser.url}".should eql "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
 
         case args.length
           when 1
@@ -102,7 +102,7 @@ module Stamps
             usr = args[0]
             pw = args[1]
           else
-            raise "Invalid parameter. Usage: sign_in :default or sign_in username,password"
+            "Invalid parameter. Usage: sign_in :default or sign_in username,password".should eql "Invalid Parameter: usr=#{usr}, pw=#{pw}"
         end
 
         usr.should be_truthy
@@ -214,7 +214,7 @@ module Stamps
           end
         end
 
-        "Orders Login Failed. Username: #{usr}\n#{browser.url}".should eql "" unless toolbar.present?
+        "Check your sign-in credentials: #{usr}".should eql "Orders Login Failed. Username: #{usr}\n#{browser.url}" unless toolbar.present?
       end
     end
   end
