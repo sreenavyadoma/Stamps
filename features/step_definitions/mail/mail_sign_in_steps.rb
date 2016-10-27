@@ -1,7 +1,7 @@
 Given /^Visit Mail sign in page$/ do
   logger.step "I visit mail sign-in page"
   web_apps.param.app = :mail
-  web_apps.visit(:mail).should include "stamps.com"
+  web_apps.visit(:mail).should include "Webpostage"
 end
 
 Given /^I am signed in as Mail shipper$/ do
