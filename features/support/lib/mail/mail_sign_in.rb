@@ -172,16 +172,23 @@ module Stamps
           username username
           password password
           login
+          whats_new_modal.close if whats_new_modal.present?
 
           50.times do
             logger.message verifying_account_info.safe_text
+            whats_new_modal.close if whats_new_modal.present?
             verifying_account_info.safely_wait_while_present 2
+            whats_new_modal.close if whats_new_modal.present?
             break unless verifying_account_info.present?
+            whats_new_modal.close if whats_new_modal.present?
           end
 
+          whats_new_modal.close if whats_new_modal.present?
 
           logger.info "Signed in username is #{signed_in_user.text}" if signed_in_user.present?
           logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
+
+          whats_new_modal.close if whats_new_modal.present?
 
           break if signed_in_user.present?
 
@@ -194,9 +201,11 @@ module Stamps
 
         end
 
+        whats_new_modal.close if whats_new_modal.present?
         signed_in_user.safely_wait_until_present 6
+        whats_new_modal.close if whats_new_modal.present?
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
-        raise "SIGN IN FAILED FOR USER: #{username}! The environment might be down!" unless signed_in_user.present?
+        "The environment might be down!".should eql "SIGN IN FAILED FOR USER: #{username}!" unless signed_in_user.present?
       end
 
       def sign_in_first_time *args
@@ -218,8 +227,8 @@ module Stamps
 
           return whats_new_modal if whats_new_modal.present?
         end
-        raise "Unable to sign in to Mail with credentials #{username}/#{password}" if sign_in_link.present?
-        raise "What's New modal did not appear upon login"
+        "".should eql "Unable to sign in to Mail with credentials #{username}/#{password}" if sign_in_link.present?
+        "".should eql "What's New modal did not appear upon login"
       end
 
       def sign_in_username_check *args
