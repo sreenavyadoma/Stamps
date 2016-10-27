@@ -1,7 +1,7 @@
 @mail_authentication
-Feature: Orders Authentication Test
+Feature: Mail Authentication Test
   Background:
-    Given I am signed in to Orders
+    Given I am signed in as Mail shipper
 
-  Scenario: Orders Authentication Test
+  Scenario: Mail Authentication Test
     Then Sign out

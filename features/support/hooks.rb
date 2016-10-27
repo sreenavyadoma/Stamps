@@ -43,7 +43,6 @@ Before do  |scenario|
     elsif (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail')
       if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default')
         logger.message "Using Default Credentials from ../config/data/default.yml"
-        ""
         begin
           if ENV['WEB_APP'].downcase == 'orders'
             ENV['USR'] = data_for(:orders_credentials, {})[ENV['URL']][ENV['TEST']]['usr']
