@@ -361,6 +361,9 @@ orders_credentials:
 
 mail_credentials:
   stg:
+    authentication:
+      usr: stgrryltfc0
+      pw: pass111
     stgstgstg:
       usr: stgstgstg
       pw: pass111
@@ -407,6 +410,9 @@ mail_credentials:
       usr: b2vc5867
       pw: pass111
   cc:
+    authentication:
+      usr: cce50cu2o
+      pw: pass111
     cccccccccccccccc:
       usr: cccccccccccccccc
       pw: pass111
@@ -447,6 +453,9 @@ mail_credentials:
       usr: wpqacc1002
       pw: pass111
   sc:
+    authentication:
+      usr: scxzc76ola293
+      pw: pass111
     scscscscscscscscsc:
       usr: scscscscscscscscsc
       pw: pass111
