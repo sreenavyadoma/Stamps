@@ -36,21 +36,26 @@ Before do  |scenario|
   logger.message "-"
 
   logger.message "-"
-  logger.message "      USER CREDENTIALS"
+  logger.message "USER CREDENTIALS"
   begin
     if ENV['WEB_APP'].nil?
       "cucumber.yml: Missing WEB_APP variable".should eql "WEB_APP is nil"
     elsif (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail')
       if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default')
         logger.message "Using Default Credentials from ../config/data/default.yml"
+        ""
         begin
           if ENV['WEB_APP'].downcase == 'orders'
             ENV['USR'] = data_for(:orders_credentials, {})[ENV['URL']][ENV['TEST']]['usr']
           else
             ENV['USR'] = data_for(:mail_credentials, {})[ENV['URL']][ENV['TEST']]['usr']
           end
-        rescue
-          "There are no user credentials in default.yml file for WEB_APP=#{ENV['WEB_APP']}, #{(ENV['WEB_APP'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['TEST']}".should eql "Missing in default.yml #{(ENV['WEB_APP'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['TEST']}"
+        rescue => e
+          if e.message.include? "mapping values are not allowed"
+            "Formatting issues in default.yml file".should eql "default.yml - #{e.message.split(':').last}}"
+          else
+            "There are no user credentials in default.yml file for WEB_APP=#{ENV['WEB_APP']}, #{(ENV['WEB_APP'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['TEST']}".should eql "Missing credentials in default.yml #{(ENV['WEB_APP'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['TEST']} - #{e.message}"
+          end
         end
         begin
           if ENV['WEB_APP'].downcase == 'orders'
@@ -58,8 +63,8 @@ Before do  |scenario|
           else
             ENV['PW'] = data_for(:mail_credentials, {})[ENV['URL']][ENV['TEST']]['pw']
           end
-        rescue
-          "Missing #{ENV['WEB_APP']} Parameter credentials #{ENV['URL']}:#{ENV['TEST']}".should eql "There are no user credentials defined in default.yml file for URL:#{ENV['URL']} TEST:#{ENV['TEST']} usr:#{ENV['usr']}"
+        rescue => e
+          "Missing credentials in #{ENV['WEB_APP']} Parameter credentials #{ENV['URL']}:#{ENV['TEST']}".should eql "There are no user credentials defined in default.yml file for URL:#{ENV['URL']} TEST:#{ENV['TEST']} usr:#{ENV['usr']} - #{e.message}"
         end
         logger.message "#{ENV['WEB_APP']} Default Username: #{ENV['USR']}"
       else

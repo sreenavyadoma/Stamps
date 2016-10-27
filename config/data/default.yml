@@ -160,7 +160,7 @@ orders_credentials:
       usr: s582uohx
       pw: pass111
     print_layout_dpo_cp72_roll_single_ply:
-     usr: tkyf6l0
+      usr: tkyf6l0
       pw: pass111
     print_layout_fsa_cp72_paper_single_ply:
       usr: stgyoxkifp15
@@ -184,7 +184,7 @@ orders_credentials:
       usr: n7n9kolwtc
       pw: pass111
     print_sample_pme_package:
-     usr: qwjsdoq
+      usr: qwjsdoq
       pw: pass111
     print_sample_pme_padded_flat_rate_envelope:
       usr: yfq03xbol
@@ -206,7 +206,7 @@ orders_credentials:
       pw: pass111
     print_two_up_expanded_cn22_5x8_right_print2:
       usr: yld0aax87zynl4
-     pw: pass111
+      pw: pass111
     print_two_up_expanded_cn22_cp72_5x8_right_print2:
       usr: w6x3pwfwy
       pw: pass111
@@ -406,7 +406,6 @@ mail_credentials:
     mail_bvt_address_cleansing:
       usr: b2vc5867
       pw: pass111
-
   cc:
     cccccccccccccccc:
       usr: cccccccccccccccc
@@ -447,7 +446,6 @@ mail_credentials:
     mail_bvt_address_cleansing:
       usr: wpqacc1002
       pw: pass111
-
   sc:
     scscscscscscscscsc:
       usr: scscscscscscscscsc
