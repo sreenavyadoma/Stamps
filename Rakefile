@@ -196,6 +196,7 @@ Cucumber::Rake::Task.new(:bvt_ambigious_address) do |t|
   t.profile = 'bvt_ambigious_address'
   t.cucumber_opts = "-p cuke_reports"
 end
+
 Cucumber::Rake::Task.new(:bvt_address_cleansing) do |t|
   t.profile = 'bvt_address_cleansing'
   t.cucumber_opts = "-p cuke_reports"
@@ -2059,11 +2060,6 @@ end
 
 Cucumber::Rake::Task.new(:bvt_shipping_address_management) do |t|
   t.profile = 'bvt_shipping_address_management'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:bvt_ambigious_address) do |t|
-  t.profile = 'bvt_ambigious_address'
   t.cucumber_opts = "-p cuke_reports"
 end
 
