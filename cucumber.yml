@@ -211,6 +211,7 @@ multiple_order_total_cost: --tags @multiple_order_total_cost --guess VERBOSE=fal
 item_details: --tags @item_details --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=item_details
 
 # --------------------------  WEB PRINT
+mail_authentication: --tags  @mail_authentication --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_authentication
 mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_address_cleansing
 mail_bvt_contacts: --tags  @mail_bvt_contacts --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_contacts
 mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess VERBOSE=false HEALTHCHECK=false WEB_APP=mail TEST=mail_bvt_envelopes
