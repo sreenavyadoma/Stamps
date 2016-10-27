@@ -80,7 +80,11 @@ end
 
 Then /^Sign out$/ do
   logger.step "Sign out"
-  step "Navigation Bar: Customer Balance"
+  begin
+    step "Navigation Bar: Customer Balance"
+  rescue
+    #ignore
+  end
   begin
     web_apps.navigation_bar.username.sign_out
   rescue
