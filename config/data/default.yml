@@ -13,7 +13,7 @@ url_prefix:
   staging: mail.staging
   rating: printext.qacc
 
-credentials:
+orders_credentials:
   stg:
     stgstgstg:
       usr: stgstgstg
@@ -250,7 +250,6 @@ credentials:
       usr: c1k4p8bga4cmg
       pw: pass111
 
-
   cc:
     ccccc:
       usr: ccccc
@@ -360,7 +359,6 @@ credentials:
       usr: eueys1zwc
       pw: pass111
 
-
 mail_credentials:
   stg:
     stgstgstg:
@@ -384,11 +382,29 @@ mail_credentials:
     stgstgstg:
       usr: stgstgstg
       pw: pass111
-    stgstgstg:
-      usr: stgstgstg
+    mail_bvt_international:
+      usr: jho7vpgem5
       pw: pass111
-    stgstgstg:
-      usr: stgstgstg
+    mail_bvt_netstamps_specify:
+      usr: sqpklsh7h
+      pw: pass111
+    mail_bvt_netstamps_calculate:
+      usr: c5mq9slp2
+      pw: pass111
+    mail_bvt_purchasing:
+      usr: gmh8y0m
+      pw: pass111
+    mail_bvt_extra_services:
+      usr: zkoa63fq4ezbb
+      pw: pass111
+    mail_bvt_envelopes:
+      usr: t5mjsiuy2sukk9
+      pw: pass111
+    mail_bvt_contacts:
+      usr: k2sljxb2tc
+      pw: pass111
+    mail_bvt_address_cleansing:
+      usr: b2vc5867
       pw: pass111
 
   cc:
@@ -407,14 +423,29 @@ mail_credentials:
     cccccccccccccccc:
       usr: cccccccccccccccc
       pw: pass111
-    cccccccccccccccc:
-      usr: cccccccccccccccc
+    mail_bvt_international:
+      usr: wpqacc1006
       pw: pass111
-    cccccccccccccccc:
-      usr: cccccccccccccccc
+    mail_bvt_netstamps_specify:
+      usr: wpqacc1008
       pw: pass111
-    cccccccccccccccc:
-      usr: cccccccccccccccc
+    mail_bvt_netstamps_calculate:
+      usr: wpqacc1007
+      pw: pass111
+    mail_bvt_purchasing:
+      usr: wpqacc1009
+      pw: pass111
+    mail_bvt_extra_services:
+      usr: wpqacc1005
+      pw: pass111
+    mail_bvt_envelopes:
+      usr: wpqacc1004
+      pw: pass111
+    mail_bvt_contacts:
+      usr: wpqacc1003
+      pw: pass111
+    mail_bvt_address_cleansing:
+      usr: wpqacc1002
       pw: pass111
 
   sc:
@@ -433,23 +464,30 @@ mail_credentials:
     scscscscscscscscsc:
       usr: scscscscscscscscsc
       pw: pass111
-    scscscscscscscscsc:
-      usr: scscscscscscscscsc
+    mail_bvt_international:
+      usr: nk0cvx3290y
       pw: pass111
-    scscscscscscscscsc:
-      usr: scscscscscscscscsc
+    mail_bvt_netstamps_specify:
+      usr: sitm74p
       pw: pass111
-    scscscscscscscscsc:
-      usr: scscscscscscscscsc
+    mail_bvt_netstamps_calculate:
+      usr: e6kwio06so
       pw: pass111
-    scscscscscscscscsc:
-      usr: scscscscscscscscsc
+    mail_bvt_purchasing:
+      usr: scnrgd30q9cc
       pw: pass111
-    scscscscscscscscsc:
-      usr: scscscscscscscscsc
+    mail_bvt_extra_services:
+      usr: na4ko6nkqh
       pw: pass111
-
-
+    mail_bvt_envelopes:
+      usr: jjaql40
+      pw: pass111
+    mail_bvt_contacts:
+      usr: o70mepjdk6hy
+      pw: pass111
+    mail_bvt_address_cleansing:
+      usr: wpt6q9j
+      pw: pass111
 
 details_services:
   #First-Class Mail
