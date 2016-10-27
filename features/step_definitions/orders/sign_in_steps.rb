@@ -1,7 +1,7 @@
-Given /^Visit Orders Sign-in page$/ do
-  #logger.step "Visit Orders Sign-in page"
-  stamps.load_page
-  browser.url.should include "stamps.com"
+Given /^Orders: Visit Sign-in page$/ do
+  logger.step "Orders: Visit Sign-in page"
+  web_apps.param.app = :orders
+  web_apps.visit(:orders).should include "stamps.com"
 end
 
 Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
@@ -11,8 +11,8 @@ Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
     usr = username
     @username = username
   end
-  #logger.step "A user is signed in to Orders as #{usr}/#{password}"
-  @market_place_modal = stamps.orders.landing_page.first_time_sign_in usr, password
+  logger.step "I am signed in to Orders as #{usr}/#{password}"
+  @market_place_modal = web_apps.orders.landing_page.first_time_sign_in usr, password
 end
 
 Then /^Orders: Expect Marketplace modal is present$/ do
@@ -24,68 +24,65 @@ Then /^Orders: Close Marketplace modal$/ do
   @market_place_modal.close
 end
 
-Given /^A user is signed in to Orders$/ do
+Given /^I am signed in to Orders$/ do
+  logger.step "I am signed in to Orders"
   step "I launched default browser"
-  if ParameterHelper.to_bool ENV['HEALTHCHECK']
+  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
   end
-  step "Visit Orders Sign-in page"
-  test_data[:username] = stamps.orders.landing_page.sign_in :default
+  step "Orders: Visit Sign-in page"
+  web_apps.orders.landing_page.sign_in :default
   step "Navigation Bar: Customer Balance"
 end
 
-Given /^A user is signed in to Orders as (.*)\/(.*)/ do |username, password|
-  #logger.step "A user is signed in to Orders as #{username}/#{password}"
+Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
+  logger.step "I am signed in to Orders as #{username}/#{password}"
   step "I launched default browser"
-  if ParameterHelper.to_bool ENV['HEALTHCHECK']
+  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
   end
-  step "Visit Orders Sign-in page"
-  stamps.orders.landing_page.sign_in username, password
+  step "Orders: Visit Sign-in page"
+  web_apps.orders.landing_page.sign_in username, password
   step "Navigation Bar: Customer Balance"
 end
 
 #todo Refactor SIGN-IN step definition into one step
-Given /^A user is signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, password|
-  #logger.step "A user is signed in to Orders as #{browser}/#{username}/#{password}"
+Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, password|
+  logger.step "I am signed in to Orders as #{browser}/#{username}/#{password}"
   step "I launched browser #{browser}"
-  if ParameterHelper.to_bool ENV['HEALTHCHECK']
+  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
   end
-  step "Visit Orders Sign-in page"
-  stamps.orders.landing_page.sign_in username, password
+  step "Orders: Visit Sign-in page"
+  web_apps.orders.landing_page.sign_in username, password
   step "Navigation Bar: Customer Balance"
 end
 
-Given /^A user is signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, username, password|
-  #logger.step "A user is signed in to Orders as #{browser}/#{url}/#{username}/#{password}"
+Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, username, password|
+  logger.step "I am signed in to Orders as #{browser}/#{url}/#{username}/#{password}"
   step "I launched browser #{browser}"
-  if ParameterHelper.to_bool ENV['HEALTHCHECK']
+  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
   end
-  step "Visit Orders Sign-in page #{url}"
-  stamps.orders.landing_page.sign_in username, password
+  step "Orders: Visit Sign-in page #{url}"
+  web_apps.orders.landing_page.sign_in username, password
   step "Navigation Bar: Customer Balance"
 end
 
 Then /^Orders: Sign in$/ do
-  #logger.step "Orders: Sign in"
-  stamps.orders.landing_page.sign_in :default
+  logger.step "Orders: Sign in"
+  web_apps.orders.landing_page.sign_in :default
 end
 
 Then /^Sign out$/ do
-  #logger.step "Sign out"
+  logger.step "Sign out"
+  step "Navigation Bar: Customer Balance"
   begin
-    step "Navigation Bar: Customer Balance"
-  rescue
-    #ignore
-  end
-  begin
-    stamps.navigation_bar.username.sign_out
+    web_apps.navigation_bar.username.sign_out
   rescue
     #do nothing
   end
