@@ -3,7 +3,7 @@ Feature: Purchasing BVT
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_bvt_purchasing
+  @mail_bvt_purchasing
   Scenario: Purchasing $10
 
     Then Buy Mail: Purchase Other Amount 35

@@ -7,7 +7,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
    @filters
   Scenario: User Changes filters
 
-    When Expect system displays expanded filters panel
+    When Filter: Expect system displays expanded filters panel
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default

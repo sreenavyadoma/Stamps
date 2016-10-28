@@ -6,8 +6,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM Package
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_shipping_label_sdc1200_fcm_package
+  @mail_shipping_label_sdc1200_fcm_package
   Scenario: Shipping Label - SDC-1200 - FCM Package
 
     Then Mail: Select Shipping Label SDC-1200

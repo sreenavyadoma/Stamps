@@ -6,8 +6,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PSG Large Package
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_shipping_label_8x11_psg_large_package
+  @mail_shipping_label_8x11_psg_large_package
   Scenario: Shipping Label - 8 ½” x 11” Paper - PSG Large Package
 
     Then Mail: Select Shipping Label 8 x 11

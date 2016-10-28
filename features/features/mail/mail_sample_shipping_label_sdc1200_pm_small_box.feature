@@ -6,8 +6,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Small Flat Rate Box
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_sample_shipping_label_sdc1200_pm_small_box
+  @mail_sample_shipping_label_sdc1200_pm_small_box
   Scenario: Sample Shipping Label - SDC-1200 - PM Small Flat Rate Box
 
     Then Mail: Select Shipping Label SDC-1200

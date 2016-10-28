@@ -6,8 +6,7 @@ Feature: Mail Shipping Label - SDC-1200 - PSG Oversized Package
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_shipping_label_sdc1200_psg_oversized_package
+  @mail_shipping_label_sdc1200_psg_oversized_package
   Scenario: Shipping Label - SDC-1200 - PSG Oversized Package
 
     Then Mail: Select Shipping Label SDC-1200

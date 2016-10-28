@@ -14,22 +14,22 @@ Feature: Internal Transaction # Not Required
     Then Details: Select Service Priority Mail International Flat Rate Envelope
     Then Details: Set Ounces to 5
     Then Details: Edit Customs Form
-    Then Expect Customs Form Internal Transaction # is "Not required"
-    Then Customs: Set Package Contents to "Commercial Sample"
-    Then Expect Customs Form Internal Transaction # is "Not required"
-    Then Customs: Set Package Contents to "Document"
-    Then Expect Customs Form Internal Transaction # is "Not required"
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Expect Customs Form Internal Transaction # is "Not required"
-    Then Customs: Set Package Contents to "Gift"
-    Then Expect Customs Form Internal Transaction # is "Not required"
-    Then Customs: Set Package Contents to "Humanitarian Donation"
-    Then Expect Customs Form Internal Transaction # is "Not required"
-    Then Customs: Set Package Contents to "Returned Goods"
-    Then Expect Customs Form Internal Transaction # is "Not required"
-    Then Customs: Set Package Contents to "Other"
-    Then Expect Customs Form Internal Transaction # is "Not required"
-    Then Expect Customs Form Internal Transaction # is "Not required"
+    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Customs: Set Package Contents to Commercial Sample
+    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Customs: Set Package Contents to Document
+    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Customs: Set Package Contents to Merchandise
+    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Customs: Set Package Contents to Gift
+    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Customs: Set Package Contents to Humanitarian Donation
+    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Customs: Set Package Contents to Returned Goods
+    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Customs: Set Package Contents to Other
+    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Expect Customs Form Internal Transaction Number is Not required
     Then Customs: Set ITN Number to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal

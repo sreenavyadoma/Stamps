@@ -98,7 +98,7 @@ module Stamps
 
 
           else
-            stop_test "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera."
+            "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.".should eql ""
         end
 
         5.times do

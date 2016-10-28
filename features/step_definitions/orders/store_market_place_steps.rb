@@ -7,7 +7,6 @@ Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation
 end
 
 Then /^Marketplace: Select PayPal$/ do
-  logger.step ""
   @market_place.should_not be_nil
   @store = @market_place.paypal
 end

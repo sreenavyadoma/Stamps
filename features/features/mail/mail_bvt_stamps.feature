@@ -5,7 +5,7 @@ Feature: Stamps BVT
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_bvt_netstamps_specify
+  @mail_bvt_netstamps_specify
 
   Scenario: Stamps Specify Postage
     Then Mail: Select Stamps
@@ -25,7 +25,7 @@ Feature: Stamps BVT
     Then Mail Print Modal: Print
     Then Sign out
 
-  @wp_bvt_netstamps_calculate
+  @mail_bvt_netstamps_calculate
   Scenario: Stamps Calculate Postage
     Then Mail: Select Stamps
     Then Mail Stamps: Set Serial Number to random

@@ -134,7 +134,7 @@ module Stamps
             return settings if settings.present?
             return shopify if shopify.present?
           end
-          stop_test "Shopify Store Connect failed.  Settings Modal did not open.  "
+          "Shopify Store Connect failed.  Settings Modal did not open.  ".should eql ""
         end
 
         def reconnect

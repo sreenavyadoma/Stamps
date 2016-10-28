@@ -111,7 +111,7 @@ module Stamps
 
 
         return window if window.present?
-        stop_test "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper."
+        "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper.".should eql ""
       end
 
       def open_sample_window window
@@ -156,7 +156,7 @@ module Stamps
 
 
         return window if window.present?
-        stop_test "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper."
+        "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper.".should eql ""
       end
     end
   end

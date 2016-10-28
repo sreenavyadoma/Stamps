@@ -6,8 +6,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Medium Flat Rate Box
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_shipping_label_8x11_pm_medium_box
+  @mail_shipping_label_8x11_pm_medium_box
   Scenario: Shipping Label - 8 ½” x 11” Paper - PM Medium Flat Rate Box
 
     Then Mail: Select Shipping Label 8 x 11

@@ -28,7 +28,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          stop_test "Unsupported address format."
+          "Unsupported address format.".should eql ""
         end
         logger.info "Formatted Shipping Address:  \n#{formatted_address}"
         formatted_address
@@ -47,7 +47,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          stop_test "Unsupported address format."
+          "Unsupported address format.".should eql ""
         end
       end
 
@@ -55,6 +55,13 @@ module Stamps
         name = (address['name'].downcase.include? "random") ? ParameterHelper.random_name : address['name']
         company_name = (address['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address['company']
         street_address = address["street_address"]
+
+        if address['street_address_2'].nil?
+          street_address_2 = ""
+        else
+          street_address_2 = address["street_address_2"]
+        end
+
         city = address['city']
         state = address["state"]
         zip = address["zip"]
@@ -70,13 +77,14 @@ module Stamps
         logger.info "Ship-To Name: #{name}"
         logger.info "Ship-To Company: #{company_name}"
         logger.info "Ship-To Address: #{street_address}"
+        logger.info "Ship-To Address 2: #{street_address_2}"
         logger.info "Ship-To City: #{city}"
         logger.info "Ship-To State: #{state}"
         logger.info "Ship-To Zip: #{zip}"
         logger.info "Ship-To Phone: #{phone}" unless address['phone'].nil?
         logger.info "Ship-To Email: #{email}" unless address['email'].nil?
 
-        formatted_address = "#{name},#{company_name},#{street_address},#{city} #{state} #{zip}"
+        formatted_address = "#{name}\n#{company_name}\n#{street_address} #{street_address_2}\n#{city} #{state} #{zip}"
         logger.info "Formatted Address: #{formatted_address}"
         formatted_address
       end
@@ -127,7 +135,7 @@ module Stamps
             now = "#{month}/#{day}/#{new_date.year}"
             now
           else
-            stop_test "Illegal number of arguments for TestHelper.date_from_today"
+            "Illegal number of arguments for TestHelper.date_from_today".should eql ""
         end
       end
 
@@ -146,8 +154,7 @@ module Stamps
           when 1
             @length = args[0]
           else
-            stop_test "Illegal number of arguments for random_alpha_numeric"
-
+            "Illegal number of arguments for random_alpha_numeric".should eql ""
         end
         rand(36 ** @length - 1).to_s(36).rjust(@length, "0")
       end

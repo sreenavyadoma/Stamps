@@ -13,7 +13,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then Details: Select Service Priority Mail International Large Flat Rate Box
     Then Details: Set Weight to 2 lbs 0 oz
     Then Details: Edit Customs Form
-    Then Customs: Set Package Contents to "Merchandise"
+    Then Customs: Set Package Contents to Merchandise
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 1
     Then Customs: Add Item 2, Description random, Qty 1, Price 2, Origin United States, Tariff 2
     Then Customs: Add Item 3, Description random, Qty 1, Price 3, Origin United States, Tariff 3

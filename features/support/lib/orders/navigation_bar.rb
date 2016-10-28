@@ -235,11 +235,11 @@ module Stamps
       end
 
       def edit_payment_method
-        stop_test "Edit Payment Method is not yet implemented."
+        "Edit Payment Method is not yet implemented.".should eql ""
       end
 
       def autobuy
-        stop_test "AutoBuy is not implemented"
+        "AutoBuy is not implemented".should eql ""
       end
     end
 

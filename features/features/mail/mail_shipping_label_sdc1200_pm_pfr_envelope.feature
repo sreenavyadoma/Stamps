@@ -6,8 +6,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Padded Flat Rate Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_shipping_label_sdc1200_pm_pfr_envelope
+  @mail_shipping_label_sdc1200_pm_pfr_envelope
   Scenario: Shipping Label - SDC-1200 - PM Padded Flat Rate Envelope
 
     Then Mail: Select Shipping Label SDC-1200

@@ -1,4 +1,3 @@
-@regression
 Feature: Ambigious Address
 
   Background:

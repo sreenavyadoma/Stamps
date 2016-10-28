@@ -3,7 +3,7 @@ Feature: Extra Services BVT
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_bvt_extra_services
+  @mail_bvt_extra_services
   Scenario: Extra Services
 
     Then Mail: Select Shipping Label 5 x 8

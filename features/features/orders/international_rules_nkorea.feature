@@ -13,22 +13,22 @@ Feature: North Korea Internal Transaction Number Required
     Then Details: Set Ounces to 5
     Then Details: Select Service Priority Mail International Flat Rate Envelope
     Then Details: Edit Customs Form
-    Then Customs: Set Package Contents to "Commercial Sample"
-    Then Expect Customs Form Internal Transaction # is "Required"
-    Then Customs: Set Package Contents to "Document"
-    Then Expect Customs Form Internal Transaction # is "Required"
-    Then Customs: Set Package Contents to "Merchandise"
-    Then Expect Customs Form Internal Transaction # is "Required"
-    Then Customs: Set Package Contents to "Gift"
-    Then Expect Customs Form Internal Transaction # is "Not required"
-    Then Customs: Set Package Contents to "Humanitarian Donation"
-    Then Expect Customs Form Internal Transaction # is "Not required"
-    Then Customs: Set Package Contents to "Returned Goods"
-    Then Expect Customs Form Internal Transaction # is "Required"
-    Then Customs: Set Package Contents to "Other"
-    Then Expect Customs Form Internal Transaction # is "Required"
+    Then Customs: Set Package Contents to Commercial Sample
+    Then Expect Customs Form Internal Transaction Number is Required
+    Then Customs: Set Package Contents to Document
+    Then Expect Customs Form Internal Transaction Number is Required
+    Then Customs: Set Package Contents to Merchandise
+    Then Expect Customs Form Internal Transaction Number is Required
+    Then Customs: Set Package Contents to Gift
+    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Customs: Set Package Contents to Humanitarian Donation
+    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Customs: Set Package Contents to Returned Goods
+    Then Expect Customs Form Internal Transaction Number is Required
+    Then Customs: Set Package Contents to Other
+    Then Expect Customs Form Internal Transaction Number is Required
     Then Customs: Add Item 1, Description random, Qty 1, Price 3000, Origin United States, Tariff 10
-    Then Expect Customs Form Internal Transaction # is "Required"
+    Then Expect Customs Form Internal Transaction Number is Required
     Then Customs: Set ITN Number to "random"
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal

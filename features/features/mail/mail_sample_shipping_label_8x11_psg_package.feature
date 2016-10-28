@@ -6,8 +6,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - PSG Package
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_sample_shipping_label_8x11_psg_package
+  @mail_sample_shipping_label_8x11_psg_package
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - PSG Package
 
     Then Mail: Select Shipping Label 8 x 11

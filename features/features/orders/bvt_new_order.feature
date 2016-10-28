@@ -1,14 +1,16 @@
-@bvt
 Feature:  BVT Order Creation
 
   Background:
     Given I am signed in to Orders
 
-  @orders_bvt_add_new_order
+  @bvt_new_order
   Scenario:  Add a new order
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
+    Then Details: Set Ship-To to address in Zone 1
+
+    Then Details: Set Ship-To to address in Zone 1 through 4
+
     Then Details: Select Service Priority Mail Package
 
     # Single Order Details Weight
@@ -30,4 +32,3 @@ Feature:  BVT Order Creation
     Then Grid: Expect Weight is 1 lbs. 1 oz.
     Then Grid: Expect Insured Value is $1.00
     Then Sign out
-

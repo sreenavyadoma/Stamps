@@ -38,7 +38,7 @@ Feature: 25 orders
 
     # First Class Mail
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
@@ -51,7 +51,7 @@ Feature: 25 orders
     Then Grid: Check row 1
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 2
@@ -65,7 +65,7 @@ Feature: 25 orders
 
     #Priority Mail
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Grid: Check row 1
@@ -77,7 +77,7 @@ Feature: 25 orders
     Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 4
@@ -88,7 +88,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 5
@@ -100,7 +100,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 6
@@ -111,7 +111,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 7
@@ -123,7 +123,7 @@ Feature: 25 orders
     Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 8
@@ -134,7 +134,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 9
@@ -146,7 +146,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 10
@@ -158,7 +158,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 11
@@ -170,7 +170,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 12
@@ -182,7 +182,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 13
@@ -194,7 +194,7 @@ Feature: 25 orders
     Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 14
@@ -206,7 +206,7 @@ Feature: 25 orders
 
     # Priority Mail Express
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 15
@@ -217,7 +217,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 16
@@ -228,7 +228,7 @@ Feature: 25 orders
     Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 17
@@ -239,7 +239,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 18
@@ -250,7 +250,7 @@ Feature: 25 orders
     Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 19
@@ -262,7 +262,7 @@ Feature: 25 orders
 
     # Media Mail
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 20
@@ -275,7 +275,7 @@ Feature: 25 orders
 
     # Parcel Select
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 21
@@ -287,7 +287,7 @@ Feature: 25 orders
     Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 22
@@ -299,7 +299,7 @@ Feature: 25 orders
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
-    Then Expect new Order ID created
+    Then Details: Expect Order ID is truthy
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 23

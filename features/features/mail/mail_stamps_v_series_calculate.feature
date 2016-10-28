@@ -5,8 +5,8 @@ Feature: Stamps V Series - Calculate Postage
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_stamps_regression
-  @wp_stamps_v_series_calculate
+  @mail_stamps_regression
+  @mail_stamps_v_series_calculate
 
   Scenario: Stamps Regression V Series - Calculate Postage
     Then Mail: Select Stamps

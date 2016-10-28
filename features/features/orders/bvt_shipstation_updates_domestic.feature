@@ -4,7 +4,7 @@ Feature:  Update Order to ShipStation
   Background:
     Given I am signed in to Orders
 
-  @shipstation_updates_domestic
+  @bvt_shipstation_updates_domestic
   Scenario:  Update ShipStation
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -17,7 +17,7 @@ Feature:  Update Order to ShipStation
 
     Then Details: Select Service Priority Mail Package
 
-    Then Details: Set Insure-For to $1.00
+    Then Details: Set Insure-For to $100.00
 
     Then Details: Set Tracking to Signature Required
 
@@ -31,6 +31,9 @@ Feature:  Update Order to ShipStation
 
     Then Pause for 2 seconds
     Then Details: Blur out
+    Then Details: Blur out
+    Then Details: Blur out
+    Then Pause for 3 seconds
 
     Then Grid: Uncheck Saved Order ID
     Then Pause for 5 seconds
@@ -42,6 +45,8 @@ Feature:  Update Order to ShipStation
     Then Pause for 2 seconds
 
     #Verify Single Order Details form was saved in ShipStation
+    Then Details: Expect Ship-From saved value is the same
+
     Then Details: Expect Ship-To Name is First Last
     Then Details: Expect Ship-To Company Name is Company Name
     Then Details: Expect Ship-To Cleansed Street Address is 777 N Orange Ave Apt 100
@@ -53,19 +58,23 @@ Feature:  Update Order to ShipStation
     Then Details: Expect Ship-To Email is rtest@stamps.com
 
     Then Details: Hide Ship-To fields
-    Then Details: Expect Pounds is 1
-    Then Details: Expect Ounces is 1
+    Then Details: Expect Pound is 1
+    Then Details: Expect Ounce is 1
 
     Then Details: Expect Length is 1
     Then Details: Expect Width is 1
     Then Details: Expect Height is 1
 
     Then Details: Expect Service is Priority Mail Package
-    Then Details: Expect Service Cost is the same as saved value
+    Then Details: Expect Service Cost saved value is the same
 
-    Then Details: Expect Reference Number is Update Orders To ShipStation
+    Then Details: Expect Insure-For is $100.00
+    Then Details: Expect Insure-For Cost saved value is the same
 
     Then Details: Expect Tracking is Signature Required
+    Then Details: Expect Tracking Cost saved value is correct
+
+    Then Details: Expect Reference Number is Update Orders To ShipStation
 
     #Verify Orders Grid data was saved in ShipStation
     Then Grid: Expect Store is Manual Orders
@@ -98,7 +107,7 @@ Feature:  Update Order to ShipStation
     Then Grid: Expect Pounds is 1
     Then Grid: Expect Ounces is 1
 
-    Then Grid: Expect Insured Value is $1.00
+    Then Grid: Expect Insured Value is $100.00
 
     Then Print: Open Modal
     Then Print: Close Modal

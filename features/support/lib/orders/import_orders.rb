@@ -49,7 +49,7 @@ module Stamps
             error_str = server_error.message
             logger.info error_str
             server_error.ok
-            stop_test "Server Error: \n#{error_msg}"
+            "Server Error: \n#{error_str}".should eql ""
           end
         end
       end

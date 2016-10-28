@@ -46,7 +46,7 @@ Feature: Mail Shipping Label - Left Side
     Then Mail Print Modal: Print
     Then Sign out
 
-  @wp_label_left_side
+  @mail_label_left_side
   Scenario: Left Side Shipping Label -  SDC-1200
 
     Then Mail: Select Shipping Label SDC-1200

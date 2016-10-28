@@ -6,8 +6,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - PM Package
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_sample_shipping_label_8x11_pm_package
+  @mail_sample_shipping_label_8x11_pm_package
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - PM Package
 
     Then Mail: Select Shipping Label 8 x 11

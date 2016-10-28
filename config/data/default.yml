@@ -8,10 +8,1065 @@ profile:
 url_prefix:
   ss: printss600.qacc
   satya: svarma-win7.corp
-  qacc:  printext.qacc
-  qasc:  printext.qasc
+  qacc: printext.qacc
+  qasc: printext.qasc
   staging: mail.staging
   rating: printext.qacc
+
+orders_credentials:
+  stg:
+    details_edit_order:
+      usr: i992vss4lipq
+      pw: pass111
+    details_services:
+      usr: mwn2ghor
+      pw: pass111
+    grid_column_order:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_flat_rate_no_weight_international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_flat_rate_no_weight_domestic:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_large_dimensions_pm:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_insure_for_box_unchecked_manual:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_insure_for_box_unchecked_imported:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international_customs_form_totals:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international_customs_form_edit_delete_item:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltip_customs_form:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_reference_no:
+      usr: scscscscscscscscsc
+      pw: pass111
+    customs_form_qty:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_ship_cost:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_placeholders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_insured_value:
+      usr: scscscscscscscscsc
+      pw: pass111
+    import_orders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    pagination:
+      usr: scscscscscscscscsc
+      pw: pass111
+    webreg_specify_username_jenkins:
+      usr: scscscscscscscscsc
+      pw: pass111
+    general_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_label_position:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_media:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_media_tooltips:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_label_position:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_many_orders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing_errors:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_sample:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_ship_cost_total:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_date:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up_expanded:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_print_label_position_layouts:
+      usr: scscscscscscscscsc
+      pw: pass111
+    nav_postage_balance_update:
+      usr: scscscscscscscscsc
+      pw: pass111
+    reprint:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cp72:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cn22:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_multiple_reprints:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking_defaults:
+      usr: scscscscscscscscsc
+      pw: pass111
+    parcel_select:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltips_services:
+      usr: scscscscscscscscsc
+      pw: pass111
+    filter_change_order_status:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    order_creation:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_cleansing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_management:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    inline_service_rates:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    purchasing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    change_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_on_thermal:
+      usr: scscscscscscscscsc
+      pw: pass111
+    sorting:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest_international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    new_country_code:
+      usr: scscscscscscscscsc
+      pw: pass111
+    fcm_selection_enabled:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_panel:
+      usr: scscscscscscscscsc
+      pw: pass111
+    multiple_order_total_cost:
+      usr: scscscscscscscscsc
+      pw: pass111
+    item_details:
+      usr: scscscscscscscscsc
+      pw: pass111
+    bvt_printing:
+      usr: f32xij63p
+      pw: pass111
+    bvt_international_shipping:
+      usr: vfknhokj9wq
+      pw: pass111
+    bvt_new_order:
+      usr: v8r4q2nb3dbv
+      pw: pass111
+    bvt_shipstation_updates_international:
+      usr: stgp9r55c6r4
+      pw: pass111
+    bvt_shipstation_updates_domestic:
+      usr: stgrryltfc0
+      pw: pass111
+    bvt_purchasing:
+      usr: stgxil5cp0pi
+      pw: pass111
+    authentication:
+      usr: uadybt5iev
+      pw: pass111
+    bvt_ambigious_address:
+      usr: vfknhokj9wq
+      pw: pass111
+    bvt_address_cleansing:
+      usr: l0ub8l45a
+      pw: pass111
+    bvt_shipping_address_management:
+      usr: ccje975fmb
+      pw: pass111
+    address_cleansing:
+      usr: tc7lbuuldm7gud
+      pw: pass111
+    address_management:
+      usr: ts1n7vq9ywir7
+      pw: pass111
+    auto_suggest:
+      usr: wwelioo2e0nlf
+      pw: pass111
+    mail_bvt_envelopes:
+      usr: t5mjsiuy2sukk9
+      pw: pass111
+    print_dialog_change_date:
+      usr: mwnp2cwefg
+      pw: pass111
+    print_dialog_email_tracking:
+      usr: vncmsvqa1
+      pw: pass111
+    print_dialog_hide_postage_value:
+      usr: lngmwr21
+      pw: pass111
+    print_dialog_label_left_side:
+      usr: fhix7qqr9
+      pw: pass111
+    print_dialog_label_right_side:
+      usr: b25wtqtq3nvk5v
+      pw: pass111
+    print_dialog_printing_on_4x6_roll:
+      usr: j2i75rsxxtj
+      pw: pass111
+    print_dialog_printing_on_4x6_sdc1200:
+      usr: uk6oxddbk16
+      pw: pass111
+    print_dialog_printing_on_4x6_shipping_label:
+      usr: dks7plhj
+      pw: pass111
+    print_dialog_printing_on_5x8_shipping_label:
+      usr: lxowg9cu
+      pw: pass111
+    print_dialog_printing_on_8x11_paper:
+      usr: b9avaywj
+      pw: pass111
+    print_dialog_ship_date_today:
+      usr: t8jnj7r4rwc1n
+      pw: pass111
+    print_dialog_ship_date_today_plus1:
+      usr: r185heirbqv76l
+      pw: pass111
+    print_dialog_ship_date_today_plus2:
+      usr: xa4sk9jsk
+      pw: pass111
+    print_dialog_ship_date_today_plus3:
+      usr: wmzvi1kmzab7
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
+      usr: h12wjdrskuyu
+      pw: pass111
+    print_dialog_two_up_window_title:
+      usr: sm0z7fnr
+      pw: pass111
+    print_dialog_two_up_x_number_of_labels:
+      usr: dgskuwa16ion4m
+      pw: pass111
+    print_layout_cn22_5x8:
+      usr: q5z9uzb
+      pw: pass111
+    print_layout_cn22_5x8_continuation:
+      usr: enmsmy77n
+      pw: pass111
+    print_layout_cn22_paper_left_side:
+      usr: ehe96944qsb8
+      pw: pass111
+    print_layout_cn22_roll:
+      usr: nnrvo1u9bpr
+      pw: pass111
+    print_layout_cp72_4x6roll:
+      usr: rappxugbk
+      pw: pass111
+    print_layout_cp72_5x8_left:
+      usr: ko5cwhazj9csh
+      pw: pass111
+    print_layout_cp72_5x8_right:
+      usr: gazqbag62
+      pw: pass111
+    print_layout_cp72_5x8_single_ply:
+      usr: qzoonwdh
+      pw: pass111
+    print_layout_cp72_paper_continuation:
+      usr: t243vtu
+      pw: pass111
+    print_layout_cp72_paper_single_ply:
+      usr: rb5cc5xtkq
+      pw: pass111
+    print_layout_cp72_roll_continuation:
+      usr: urgnhlodv7zyvz
+      pw: pass111
+    print_layout_cp72_sdc1200_single_ply:
+      usr: urgnhlodv7zyvz
+      pw: pass111
+    print_layout_cp72_single_ply_apo_roll:
+      usr: s582uohx
+      pw: pass111
+    print_layout_dpo_cp72_roll_single_ply:
+      usr: tkyf6l0
+      pw: pass111
+    print_layout_fsa_cp72_paper_single_ply:
+      usr: stgyoxkifp15
+      pw: pass111
+    print_multiple_orders:
+      usr: tc7lbuuldm7gud
+      pw: pass111
+    print_multiple_reprints:
+      usr: enpdd08aew5
+      pw: pass111
+    print_on_thermal:
+      usr: x31q76qtkucf
+      pw: pass111
+    print_sample_parcel_select_ground_large_package:
+      usr: gsw1raa5
+      pw: pass111
+    print_sample_pm_flat_rate_envelope:
+      usr: mi6cu3n0
+      pw: pass111
+    print_sample_pm_regional_rate_box_a:
+      usr: n7n9kolwtc
+      pw: pass111
+    print_sample_pme_package:
+      usr: qwjsdoq
+      pw: pass111
+    print_sample_pme_padded_flat_rate_envelope:
+      usr: yfq03xbol
+      pw: pass111
+    print_two_up_expanded_5x8_left:
+      usr: z53ocf1
+      pw: pass111
+    print_two_up_expanded_5x8_left_print2:
+      usr: gbv9xjbc
+      pw: pass111
+    print_two_up_expanded_5x8_left_print3:
+      usr: chzeav3fsz
+      pw: pass111
+    print_two_up_expanded_5x8_right_print1:
+      usr: z46dgktbl
+      pw: pass111
+    print_two_up_expanded_5x8_right_print2:
+      usr: w8u81mj
+      pw: pass111
+    print_two_up_expanded_cn22_5x8_right_print2:
+      usr: yld0aax87zynl4
+      pw: pass111
+    print_two_up_expanded_cn22_cp72_5x8_right_print2:
+      usr: w6x3pwfwy
+      pw: pass111
+    print_two_up_expanded_cn22_paper_left:
+      usr: gl3ippf3slyiod
+      pw: pass111
+    print_two_up_expanded_cn22_paper_right:
+      usr: kyiqsdshy
+      pw: pass111
+    print_two_up_expanded_cn22_sdc1200_left:
+      usr: mtyni6ic0zcs
+      pw: pass111
+    print_two_up_expanded_cp72_5x8_left_print1:
+      usr: oo7lee0xwvv6mj
+      pw: pass111
+    print_two_up_expanded_cp72_5x8_right_print1:
+      usr: y619bx4cuj5
+      pw: pass111
+    print_two_up_expanded_cp72_paper_left:
+      usr: kehrq9e3q
+      pw: pass111
+    print_two_up_expanded_fpo_cn22_paper_right:
+      usr: htlylt2
+      pw: pass111
+    print_two_up_expanded_paper_left_print1:
+      usr: uegnf9s502les
+      pw: pass111
+    print_two_up_expanded_paper_left_print2:
+      usr: uc7p0o9c3x6j8u
+      pw: pass111
+    print_two_up_expanded_paper_right_print2:
+      usr: uzkyhna5owjtq
+      pw: pass111
+    print_two_up_expanded_sdc1200_4x6_left_print1:
+      usr: ubjr6w9i4eom5z
+      pw: pass111
+    print_two_up_expanded_sdc1200_left_print3:
+      usr: jr118nj7pf35
+      pw: pass111
+    print_two_up_multiple_domestic_labels:
+      usr: c1k4p8bga4cmg
+      pw: pass111
+  cc:
+    details_edit_order:
+      usr: stgstgstg
+      pw: pass111
+    details_services:
+      usr: stgstgstg
+      pw: pass111
+    grid_column_order:
+      usr: stgstgstg
+      pw: pass111
+    details_flat_rate_no_weight_international:
+      usr: stgstgstg
+      pw: pass111
+    details_flat_rate_no_weight_domestic:
+      usr: stgstgstg
+      pw: pass111
+    details_large_dimensions_pm:
+      usr: stgstgstg
+      pw: pass111
+    details_insure_for_box_unchecked_manual:
+      usr: stgstgstg
+      pw: pass111
+    details_insure_for_box_unchecked_imported:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international_customs_form_totals:
+      usr: stgstgstg
+      pw: pass111
+    international_customs_form_edit_delete_item:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltip_customs_form:
+      usr: stgstgstg
+      pw: pass111
+    details_reference_no:
+      usr: stgstgstg
+      pw: pass111
+    customs_form_qty:
+      usr: stgstgstg
+      pw: pass111
+    grid_ship_cost:
+      usr: stgstgstg
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
+      usr: stgstgstg
+      pw: pass111
+    details_placeholders:
+      usr: stgstgstg
+      pw: pass111
+    grid_tracking:
+      usr: stgstgstg
+      pw: pass111
+    grid_insured_value:
+      usr: stgstgstg
+      pw: pass111
+    import_orders:
+      usr: stgstgstg
+      pw: pass111
+    pagination:
+      usr: stgstgstg
+      pw: pass111
+    webreg_specify_username_jenkins:
+      usr: scscscscscscscscsc
+      pw: pass111
+    general_settings:
+      usr: stgstgstg
+      pw: pass111
+    print_label_position:
+      usr: stgstgstg
+      pw: pass111
+    print_media:
+      usr: stgstgstg
+      pw: pass111
+    print_media_tooltips:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_label_position:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_many_orders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing_errors:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_sample:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_ship_cost_total:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_date:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up_expanded:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_print_label_position_layouts:
+      usr: scscscscscscscscsc
+      pw: pass111
+    nav_postage_balance_update:
+      usr: scscscscscscscscsc
+      pw: pass111
+    reprint:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cp72:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cn22:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_multiple_reprints:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking_defaults:
+      usr: scscscscscscscscsc
+      pw: pass111
+    parcel_select:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltips_services:
+      usr: scscscscscscscscsc
+      pw: pass111
+    filter_change_order_status:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    order_creation:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_cleansing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_management:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    inline_service_rates:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    purchasing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    change_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_on_thermal:
+      usr: scscscscscscscscsc
+      pw: pass111
+    sorting:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest_international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    new_country_code:
+      usr: scscscscscscscscsc
+      pw: pass111
+    fcm_selection_enabled:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_panel:
+      usr: scscscscscscscscsc
+      pw: pass111
+    multiple_order_total_cost:
+      usr: scscscscscscscscsc
+      pw: pass111
+    item_details:
+      usr: scscscscscscscscsc
+      pw: pass111
+    bvt_printing:
+      usr: f32xij63p
+      pw: pass111
+    bvt_international_shipping:
+      usr: vfknhokj9wq
+      pw: pass111
+    bvt_new_order:
+      usr: v8r4q2nb3dbv
+      pw: pass111
+    bvt_shipstation_updates_international:
+      usr: ccje975fmb
+      pw: pass111
+    bvt_shipstation_updates_domestic:
+      usr: pzlnwe2z03m7y
+      pw: pass111
+    bvt_purchasing:
+      usr: ccv2ad917b
+      pw: pass111
+    bvt_new_order:
+      usr: u0d9jawgcqaj
+      pw: pass111
+    bvt_ambigious_address:
+      usr: xk0v35wf9ndq
+      pw: pass111
+    bvt_printing:
+      usr: rz6fcd8qfg8x
+      pw: pass111
+    authentication:
+      usr: bz9005j1r2jx0
+      pw: pass111
+    bvt_international_shipping:
+      usr: xk0v35wf9ndq
+      pw: pass111
+    bvt_address_cleansing:
+      usr: knmeaba
+      pw: pass111
+    bvt_shipping_address_management:
+      usr: ccje975fmb
+      pw: pass111
+    address_cleansing:
+      usr: swv6wmuno
+      pw: pass111
+    address_management:
+      usr: mc6ozi754o
+      pw: pass111
+    auto_suggest:
+      usr: AUTOSUGGEST888
+      pw: pass111
+
+  sc:
+    details_edit_order:
+      usr: i992vss4lipq
+      pw: pass111
+    details_services:
+      usr: mwn2ghor
+      pw: pass111
+    grid_column_order:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_flat_rate_no_weight_international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_flat_rate_no_weight_domestic:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_large_dimensions_pm:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_insure_for_box_unchecked_manual:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_insure_for_box_unchecked_imported:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international_customs_form_totals:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international_customs_form_edit_delete_item:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltip_customs_form:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_reference_no:
+      usr: scscscscscscscscsc
+      pw: pass111
+    customs_form_qty:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_ship_cost:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_placeholders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_insured_value:
+      usr: scscscscscscscscsc
+      pw: pass111
+    import_orders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    pagination:
+      usr: scscscscscscscscsc
+      pw: pass111
+    webreg_specify_username_jenkins:
+      usr: scscscscscscscscsc
+      pw: pass111
+    general_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_label_position:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_media:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_media_tooltips:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_label_position:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_many_orders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing_errors:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_sample:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_ship_cost_total:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_date:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up_expanded:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_print_label_position_layouts:
+      usr: scscscscscscscscsc
+      pw: pass111
+    nav_postage_balance_update:
+      usr: scscscscscscscscsc
+      pw: pass111
+    reprint:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cp72:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cn22:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_multiple_reprints:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking_defaults:
+      usr: scscscscscscscscsc
+      pw: pass111
+    parcel_select:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltips_services:
+      usr: scscscscscscscscsc
+      pw: pass111
+    filter_change_order_status:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    order_creation:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_cleansing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_management:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    inline_service_rates:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    purchasing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    change_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_on_thermal:
+      usr: scscscscscscscscsc
+      pw: pass111
+    sorting:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest_international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    new_country_code:
+      usr: scscscscscscscscsc
+      pw: pass111
+    fcm_selection_enabled:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_panel:
+      usr: scscscscscscscscsc
+      pw: pass111
+    multiple_order_total_cost:
+      usr: scscscscscscscscsc
+      pw: pass111
+    item_details:
+      usr: scscscscscscscscsc
+      pw: pass111
+    bvt_printing:
+      usr: f32xij63p
+      pw: pass111
+    bvt_international_shipping:
+      usr: l1pcjtghjcj
+      pw: pass111
+    bvt_printing:
+      usr: rvgip8h6z
+      pw: pass111
+    bvt_shipstation_updates_international:
+      usr: e6kwio06so
+      pw: pass111
+    bvt_shipstation_updates_domestic:
+      usr: scoini7whe
+      pw: pass111
+    bvt_purchasing:
+      usr: scqeypuf8y2l
+      pw: pass111
+    bvt_new_order:
+      usr: rzyb4un
+      pw: pass111
+    authentication:
+      usr: jes9t1kus
+      pw: pass111
+    bvt_ambigious_address:
+      usr: jp6tygn7q
+      pw: pass111
+    bvt_address_cleansing:
+      usr: lm1xroylhznp
+      pw: pass111
+    bvt_shipping_address_management:
+      usr: ccje975fmb
+      pw: pass111
+    address_cleansing:
+      usr: t6ewlt1
+      pw: pass111
+    address_management:
+      usr: loj26qb4rk3
+      pw: pass111
+    auto_suggest:
+      usr: eueys1zwc
+      pw: pass111
+
+mail_credentials:
+  stg:
+    mail_authentication:
+      usr: stgrryltfc0
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    stgstgstg:
+      usr: stgstgstg
+      pw: pass111
+    international_customs_form_edit_delete_item:
+      usr: stgstgstg
+      pw: pass111
+    international_customs_form_totals:
+      usr: stgstgstg
+      pw: pass111
+    details_insure_for_box_unchecked_imported:
+      usr: stgstgstg
+      pw: pass111
+    details_insure_for_box_unchecked_manual:
+      usr: stgstgstg
+      pw: pass111
+    details_large_dimensions_pm:
+      usr: stgstgstg
+      pw: pass111
+    details_flat_rate_no_weight_domestic:
+      usr: stgstgstg
+      pw: pass111
+    details_flat_rate_no_weight_international:
+      usr: stgstgstg
+      pw: pass111
+    grid_column_order:
+      usr: stgstgstg
+      pw: pass111
+    details_services:
+      usr: stgstgstg
+      pw: pass111
+    details_edit_order:
+      usr: stgstgstg
+      pw: pass111
+    mail_bvt_international:
+      usr: jho7vpgem5
+      pw: pass111
+    mail_bvt_netstamps_specify:
+      usr: sqpklsh7h
+      pw: pass111
+    mail_bvt_netstamps_calculate:
+      usr: c5mq9slp2
+      pw: pass111
+    mail_bvt_purchasing:
+      usr: gmh8y0m
+      pw: pass111
+    mail_bvt_extra_services:
+      usr: zkoa63fq4ezbb
+      pw: pass111
+    mail_bvt_envelopes:
+      usr: t5mjsiuy2sukk9
+      pw: pass111
+    mail_bvt_contacts:
+      usr: k2sljxb2tc
+      pw: pass111
+    mail_bvt_address_cleansing:
+      usr: b2vc5867
+      pw: pass111
+  cc:
+    mail_authentication:
+      usr: cce50cu2o
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    cccccccccccccccc:
+      usr: cccccccccccccccc
+      pw: pass111
+    international_customs_form_edit_delete_item:
+      usr: cccccccccccccccc
+      pw: pass111
+    international_customs_form_totals:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_insure_for_box_unchecked_imported:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_insure_for_box_unchecked_manual:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_large_dimensions_pm:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_flat_rate_no_weight_domestic:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_flat_rate_no_weight_international:
+      usr: cccccccccccccccc
+      pw: pass111
+    grid_column_order:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_services:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_edit_order:
+      usr: cccccccccccccccc
+      pw: pass111
+    mail_bvt_international:
+      usr: wpqacc1006
+      pw: pass111
+    mail_bvt_netstamps_specify:
+      usr: wpqacc1008
+      pw: pass111
+    mail_bvt_netstamps_calculate:
+      usr: wpqacc1007
+      pw: pass111
+    mail_bvt_purchasing:
+      usr: wpqacc1009
+      pw: pass111
+    mail_bvt_extra_services:
+      usr: wpqacc1005
+      pw: pass111
+    mail_bvt_envelopes:
+      usr: wpqacc1004
+      pw: pass111
+    mail_bvt_contacts:
+      usr: wpqacc1003
+      pw: pass111
+    mail_bvt_address_cleansing:
+      usr: wpqacc1002
+      pw: pass111
+  sc:
+    mail_authentication:
+      usr: scxzc76ola293
+      pw: pass111
+    mail_bvt_international:
+      usr: nk0cvx3290y
+      pw: pass111
+    mail_bvt_netstamps_specify:
+      usr: sitm74p
+      pw: pass111
+    mail_bvt_netstamps_calculate:
+      usr: e6kwio06so
+      pw: pass111
+    mail_bvt_purchasing:
+      usr: scnrgd30q9cc
+      pw: pass111
+    mail_bvt_extra_services:
+      usr: na4ko6nkqh
+      pw: pass111
+    mail_bvt_envelopes:
+      usr: jjaql40
+      pw: pass111
+    mail_bvt_contacts:
+      usr: o70mepjdk6hy
+      pw: pass111
+    mail_bvt_address_cleansing:
+      usr: wpt6q9j
+      pw: pass111
 
 details_services:
   #First-Class Mail
@@ -78,85 +1133,86 @@ shipping_method:
 zone_1_through_4:
     zone1:
       1:
-        street_address:  2791 Agoura Road
+        street_address: 2791 Agoura Road
         city: Thousand Oaks
         state: CA
         zip: 91361-3101
       2:
-        street_address:  12280 Perris Blvd
+        street_address: 12280 Perris Blvd
         city: Moreno Valley
         state: CA
         zip: 92557-7418
       3:
-        street_address:  610 W Tefft St
+        street_address: 610 W Tefft St
         city: Nipomo
         state: CA
         zip: 93444-9187
       4:
-        street_address:  42136 Big Bear Blvd
+        street_address: 42136 Big Bear Blvd
         city: Big Bear Lake
         state: CA
         zip: 92315-1530
     zone2:
       1:
-        street_address:  530 K Street Unit 504
+        street_address: 530 K Street
+        street_address_2: Unit 504
         city: San Diego
         state: CA
         zip: 92101-7060
       2:
-        street_address:  3217 Shasta Circle S.
+        street_address: 3217 Shasta Circle S.
         city: Los Angeles
         state: CA
         zip: 90065-4807
       3:
-        street_address:  618 Falconer Rd
+        street_address: 618 Falconer Rd
         city: Escondido
         state: CA
         zip: 92027-4229
       4:
-        street_address:  4216 Laurel Glen Dr.
+        street_address: 4216 Laurel Glen Dr.
         city: Moorpark
         state: CA
         zip: 93021-2725
     zone3:
       1:
-        street_address:  3555 Las Vegas Blvd S
+        street_address: 3555 Las Vegas Blvd S
         city: Las Vegas
         state: NV
         zip: 89109-8901
       2:
-        street_address:  7065 N Ingram Ave
+        street_address: 7065 N Ingram Ave
         city: Fresno
         state: CA
         zip: 93650-1083
       3:
-        street_address:  1804 E Ashlan Ave
+        street_address: 1804 E Ashlan Ave
         city: Fresno
         state: CA
         zip: 93726-2019
       4:
-        street_address:  6301 W Charleston Blvd
+        street_address: 6301 W Charleston Blvd
         city: Las Vegas
         state: NV
         zip: 89146-1124
     zone4:
       1:
-        street_address:  PO Box 567
+        street_address: PO Box 567
         city: Kelseyville
         state: CA
         zip: 95451-0567
       2:
-        street_address:  2105 Kietzke Ln
+        street_address: 2105 Kietzke Ln
         city: Reno
         state: NV
         zip: 89502-3602
       3:
-        street_address:  4937 79th St.
+        street_address: 4937 79th St.
         city: Sacramento
         state: CA
         zip: 95820-6213
       4:
-        street_address:  1406 Long Creek Way
+        street_address: 1406 Long Creek Way
         city: Roseville
         state: CA
         zip: 95747-7312
@@ -164,85 +1220,86 @@ zone_1_through_4:
 zone_5_through_8:
     zone5:
       1:
-        street_address:  530 9th Ave. N.
+        street_address: 530 9th Ave. N.
         city: Buhl
         state: ID
         zip: 83316-1115
       2:
-        street_address:  26930 NE 152nd St.
+        street_address: 26930 NE 152nd St.
         city: Duvall
         state: WA
         zip: 98019-8316
       3:
-        street_address:  3232 SE 89th Ave.
+        street_address: 3232 SE 89th Ave.
         city: Portland
         state: OR
         zip: 97266-1911
       4:
-        street_address:  648 Gehr St.
+        street_address: 648 Gehr St.
         city: Wenatchee
         state: WA
         zip: 98801-8011
     zone6:
       1:
-        street_address:  11 Laguna Madre Dr.
+        street_address: 11 Laguna Madre Dr.
         city: Laguna Vista
         state: TX
         zip: 78578-2602
       2:
-        street_address:  204 Nursery Ln.
+        street_address: 204 Nursery Ln.
         city: Ft Worth
         state: TX
         zip: 76114-4348
       3:
-        street_address:  1327 Yates Dr.
+        street_address: 1327 Yates Dr.
         city: Hurst
         state: TX
         zip: 76053-4038
       4:
-        street_address:  2601 Avenue of the Stars Ste 100
+        street_address: 2601 Avenue of the Stars
+        street_address_2: Ste 100
         city: Frisco
         state: TX
         zip: 75034-9016
     zone7:
       1:
-        street_address:  9435 Pettit Rd.
+        street_address: 9435 Pettit Rd.
         city: Baker
         state: LA
         zip: 70714-6434
       2:
-        street_address:  1071 Trelane Ave.
+        street_address: 1071 Trelane Ave.
         city: Saint Louis
         state: MO
         zip: 63126-1117
       3:
-        street_address:  557 County Rd. H
+        street_address: 557 County Rd. H
         city: Fredonia
         state: WI
         zip: 53021-9634
       4:
-        street_address:  2215 Pelopidas St
+        street_address: 2215 Pelopidas St
         city: New Orleans
         state: LA
         zip: 70122-4957
     zone8:
       1:
-        street_address:  2622 New Banner Ln.
+        street_address: 2622 New Banner Ln.
         city: Herndon
         state: VA
         zip: 20171-2659
       2:
-        street_address:  401 Sherborne Dr.
+        street_address: 401 Sherborne Dr.
         city: Columbus
         state: OH
         zip: 43219-2971
       3:
-        street_address:  2775 Stark Dr.
+        street_address: 2775 Stark Dr.
         city: Willoughby Hills
         state: OH
         zip: 44094-9113
       4:
-        street_address:  283 Chinquapin Rd.
+        street_address: 283 Chinquapin Rd.
         city: Mocksville
         state: NC
         zip: 27028-4708
@@ -328,161 +1385,161 @@ login_fields:
 login_credentials:
   qacc:
     01:
-      username:  auto01
-      password:  326tsetaqcdS!
+      username: auto01
+      password: 326tsetaqcdS!
     02:
-      username:  auto02
-      password:  326tsetaqcdS!
+      username: auto02
+      password: 326tsetaqcdS!
     03:
-      username:  auto03
-      password:  326tsetaqcdS!
+      username: auto03
+      password: 326tsetaqcdS!
     04:
-      username:  auto04
-      password:  326tsetaqcdS!
+      username: auto04
+      password: 326tsetaqcdS!
     05:
-      username:  auto05
-      password:  326tsetaqcdS!
+      username: auto05
+      password: 326tsetaqcdS!
     06:
-      username:  auto06
-      password:  326tsetaqcdS!
+      username: auto06
+      password: 326tsetaqcdS!
     07:
-      username:  auto07
-      password:  326tsetaqcdS!
+      username: auto07
+      password: 326tsetaqcdS!
     08:
-      username:  auto08
-      password:  326tsetaqcdS!
+      username: auto08
+      password: 326tsetaqcdS!
     09:
-      username:  auto09
-      password:  326tsetaqcdS!
+      username: auto09
+      password: 326tsetaqcdS!
     10:
-      username:  auto10
-      password:  326tsetaqcdS!
+      username: auto10
+      password: 326tsetaqcdS!
     11:
-      username:  auto11
-      password:  326tsetaqcdS!
+      username: auto11
+      password: 326tsetaqcdS!
     12:
-      username:  auto12
-      password:  326tsetaqcdS!
+      username: auto12
+      password: 326tsetaqcdS!
     13:
-      username:  auto13
-      password:  326tsetaqcdS!
+      username: auto13
+      password: 326tsetaqcdS!
     14:
-      username:  auto14
-      password:  password1
+      username: auto14
+      password: password1
     15:
-      username:  auto15
-      password:  password1
+      username: auto15
+      password: password1
     16:
-      username:  auto16
-      password:  password1
+      username: auto16
+      password: password1
     17:
-      username:  auto17
-      password:  password1
+      username: auto17
+      password: password1
     18:
-      username:  auto18
-      password:  password1
+      username: auto18
+      password: password1
     19:
-      username:  auto19
-      password:  password1
+      username: auto19
+      password: password1
     20:
-      username:  auto20
-      password:  password1
+      username: auto20
+      password: password1
     21:
-      username:  auto21
-      password:  password1
+      username: auto21
+      password: password1
     22:
-      username:  auto22
-      password:  password1
+      username: auto22
+      password: password1
     23:
-      username:  auto23
-      password:  password1
+      username: auto23
+      password: password1
     24:
-      username:  auto24
-      password:  password1
+      username: auto24
+      password: password1
     25:
-      username:  auto25
-      password:  password1
+      username: auto25
+      password: password1
     26:
-      username:  auto26
-      password:  password1
+      username: auto26
+      password: password1
     27:
-      username:  auto27
-      password:  password1
+      username: auto27
+      password: password1
     28:
-      username:  auto28
-      password:  password1
+      username: auto28
+      password: password1
     29:
-      username:  auto29
-      password:  password1
+      username: auto29
+      password: password1
     30:
-      username:  auto30
-      password:  password1
+      username: auto30
+      password: password1
     31:
-      username:  auto31
-      password:  password1
+      username: auto31
+      password: password1
     32:
-      username:  auto32
-      password:  password1
+      username: auto32
+      password: password1
     33:
-      username:  auto33
-      password:  password1
+      username: auto33
+      password: password1
     34:
-      username:  auto34
-      password:  password1
+      username: auto34
+      password: password1
     35:
-      username:  auto35
-      password:  password1
+      username: auto35
+      password: password1
     36:
-      username:  auto36
-      password:  password1
+      username: auto36
+      password: password1
     37:
-      username:  auto37
-      password:  password1
+      username: auto37
+      password: password1
     38:
-      username:  auto38
-      password:  password1
+      username: auto38
+      password: password1
 
 login_credentials_invalid:
   qacc:
     39:
-      username:  auto39
-      password:  password1
+      username: auto39
+      password: password1
     40:
-      username:  auto40
-      password:  password1
+      username: auto40
+      password: password1
 
   staging:
-    username:  wc102_cc
-    password:  password1
+    username: wc102_cc
+    password: password1
   staging:
-    username:  webbatch_0001
-    password:  password1
+    username: webbatch_0001
+    password: password1
 
 
 
   non_domestic:
     zone9:
       1:
-        street_address:  PO Box 659
-        city:  Kosrae, FM 96944-0305
+        street_address: PO Box 659
+        city: Kosrae, FM 96944-0305
         state: FM
         zip: 96944-0305
       2:
-        street_address:  PO Box 735
-        city:  Majuro
+        street_address: PO Box 735
+        city: Majuro
         state: MH
         zip: 96960-0735
       3:
-        street_address:  PO Box 1949
-        city:  Pohnpei
+        street_address: PO Box 1949
+        city: Pohnpei
         state: FM
         zip: 96941-0735
       4:
-        street_address:  PO Box 8067
-        city:  Palau
+        street_address: PO Box 8067
+        city: Palau
         state: PW
         zip: 96940-0871
 
 rob:
   autobase: 326tsetaqcdS!
-  qaclient@stamps.com:  3d75007e-c693-4af8-bc83-12b68eb7ea34
+  qaclient@stamps.com: 3d75007e-c693-4af8-bc83-12b68eb7ea34

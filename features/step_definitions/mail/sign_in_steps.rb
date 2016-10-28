@@ -1,14 +1,19 @@
 Given /^Visit Mail sign in page$/ do
   logger.step "I visit mail sign-in page"
   web_apps.param.app = :mail
-  web_apps.visit(:mail).should include "stamps.com"
+  web_apps.visit(:mail).should include "Webpostage"
 end
 
 Given /^I am signed in as Mail shipper$/ do
   logger.step "I am signed in as a mail shipper"
   step "Launch default browser"
+  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
+    step "Health Check: Print - Web Batch"
+    step "Health Check: Print - Address Book"
+  end
   step "Visit Mail sign in page"
   web_apps.mail.sign_in_modal.sign_in
+  step "Navigation Bar: Customer Balance"
 end
 
 Given /^I am signed in as Mail shipper (.*)\/(.*)/ do |username, password|
@@ -77,7 +82,6 @@ Then /^Mail Sign In: Expect Remember Username is checked$/ do
   logger.step "Mail Sign In: Expect Remember Username is checked"
   fix me!
   #todo-fix username
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 
@@ -92,7 +96,6 @@ Then /^Mail Sign In: Expect Remember Username is unchecked$/ do
   logger.step "Postage Sign In: Expect Remember Username is unchecked"
   fix me
   #todo-fix username
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
   actual_value.should eql expectation
 end
 

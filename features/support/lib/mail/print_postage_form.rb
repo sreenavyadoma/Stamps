@@ -100,112 +100,91 @@ module Stamps
       end
     end
 
+    class Pounds < Browser::Modal
+      def text_box
+        TextBoxElement.new (browser.text_field id: 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
+      end
+
+      def set value
+        text_field = text_box
+        value = value.to_i
+        max = value + text_field.text.to_i
+        max.times do
+          current_value = text_field.text.to_i
+          break if value == current_value
+          if value > current_value
+            increment 1
+          else
+            decrement 1
+          end
+          break if value == current_value
+        end
+        sleep 1
+        logger.info "Pounds set to #{text_field.text}"
+      end
+
+      def increment value
+        button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
+
+    class Ounces < Browser::Modal
+      def text_box
+        TextBoxElement.new (browser.text_field id: 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
+      end
+
+      def set value
+        text_field = text_box
+        value = value.to_i
+        max = value + text_field.text.to_i
+        max.times do
+          current_value = text_field.text.to_i
+          break if value == current_value
+          if value > current_value
+            increment 1
+          else
+            decrement 1
+          end
+          break if value == current_value
+        end
+        sleep 1
+        logger.info "Pounds set to #{text_field.text}"
+      end
+
+      def increment value
+        button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+
+      def decrement value
+        button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
+        value.to_i.times do
+          button.safe_click
+        end
+      end
+    end
+
     class Weight < Browser::Modal
-      class Pounds < Browser::Modal
-        def text_box
-          TextBoxElement.new (browser.text_field id: 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
-        end
+      attr_reader :auto_weigh, :weigh_button, :lbs, :oz
 
-        def set value
-          text_field = text_box
-          value = value.to_i
-          max = value + text_field.text.to_i
-          max.times do
-            current_value = text_field.text.to_i
-            break if value == current_value
-            if value > current_value
-              increment 1
-            else
-              decrement 1
-            end
-            break if value == current_value
-          end
-          sleep 1
-          logger.info "Pounds set to #{text_field.text}"
-        end
-
-        def increment value
-          button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
-          value.to_i.times do
-            button.safe_click
-          end
-        end
-
-        def decrement value
-          button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
-          value.to_i.times do
-            button.safe_click
-          end
-        end
-      end
-
-      class Ounces < Browser::Modal
-        def text_box
-          TextBoxElement.new (browser.text_field id: 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
-        end
-
-        def set value
-          text_field = text_box
-          value = value.to_i
-          max = value + text_field.text.to_i
-          max.times do
-            current_value = text_field.text.to_i
-            break if value == current_value
-            if value > current_value
-              increment 1
-            else
-              decrement 1
-            end
-            break if value == current_value
-          end
-          sleep 1
-          logger.info "Pounds set to #{text_field.text}"
-        end
-
-        def increment value
-          button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
-          value.to_i.times do
-            button.safe_click
-          end
-        end
-
-        def decrement value
-          button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
-          value.to_i.times do
-            button.safe_click
-          end
-        end
-      end
-
-      class AutoWeigh < Browser::Modal
-        def checkbox_element
-          browser.text_field id: "sdc-mainpanel-autoweightcheckbox-inputEl"
-        end
-
-        def checkbox
-
-          checkbox_field = checkbox_element
-          verify_field = browser.table id: "sdc-mainpanel-autoweightcheckbox"
-
-          Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
-
-        end
-      end
-
-      def weigh_button
-        ElementWrapper.new browser.span id: "sdc-mainpanel-scalebtn-btnIconEl"
-      end
-
-      def auto_weigh
-        AutoWeigh.new param
-      end
-
-      def lbs
-        Pounds.new param
-      end
-
-      def oz
-        Ounces.new param
+      def initialize param
+        super param
+        @auto_weigh ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-autoweightcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
+        @weigh_button ||= ElementWrapper.new browser.span id: "sdc-mainpanel-scalebtn-btnIconEl"
+        @oz ||= Ounces.new param
+        @lbs ||= Pounds.new param
       end
     end
 
@@ -224,18 +203,18 @@ module Stamps
         box = text_box
         button = drop_down
         if selection == "First-Class Mail Letter"
-          selection_label = ElementWrapper.new browser.tr css: "tr[data-qtip*='First-Class Mail Envelope']"
+          selection_label = ElementWrapper.new browser.tr(css: "tr[data-qtip*='First-Class Mail Envelope']")
         else
-          selection_label = ElementWrapper.new browser.tr css: "tr[data-qtip*='#{selection}']"
+          selection_label = ElementWrapper.new browser.tr(css: "tr[data-qtip*='#{selection}']")
         end
         10.times {
           begin
+            break if selected_service.include? selection
             button.safe_click #unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
             selected_service = box.text
             logger.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
-            break if selected_service.include? selection
           rescue
             #ignore
           end
@@ -485,7 +464,7 @@ module Stamps
           sleep 1
           return contacts_modal if contacts_modal.present?
         end
-        stop_test "Unable to open Contacts Modal, check your code." unless contacts_modal.present?
+        "Unable to open Contacts Modal, check your code.".should eql "" unless contacts_modal.present?
       end
     end
 

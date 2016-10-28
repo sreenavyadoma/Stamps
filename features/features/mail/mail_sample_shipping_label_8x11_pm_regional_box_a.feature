@@ -6,8 +6,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - PM Regional Rate B
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_sample_shipping_label_8x11_pm_regional_box_a
+  @mail_sample_shipping_label_8x11_pm_regional_box_a
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - PM Regional Rate Box A
 
     Then Mail: Select Shipping Label 8 x 11

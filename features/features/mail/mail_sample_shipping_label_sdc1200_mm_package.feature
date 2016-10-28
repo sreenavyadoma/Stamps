@@ -6,8 +6,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - MM Package
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_sample_shipping_label_sdc1200_mm_package
+  @mail_sample_shipping_label_sdc1200_mm_package
   Scenario: Sample Shipping Label - SDC-1200 - MM Package
 
     Then Mail: Select Shipping Label SDC-1200

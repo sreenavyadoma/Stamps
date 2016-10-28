@@ -12,7 +12,7 @@ module Stamps
           when /stg/
             url = "https://site.staging.stamps.com:82/pam/"
           else
-            stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
+            "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
         end
 
         logger.info "Visit: #{url}"
@@ -43,7 +43,7 @@ module Stamps
           when /stg/
             url = "https://site.staging.stamps.com:82/pam/AccountSearch.asp"
           else
-            stop_test "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!"
+            "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
         end
 
         browser.goto url

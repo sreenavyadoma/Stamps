@@ -6,8 +6,7 @@ Feature: Mail Roll - 4" x 6" - XM PFR Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_roll_regression
-  @wp_roll_4x6_xm_pfr_envelope
+  @mail_roll_4x6_xm_pfr_envelope
   Scenario: Roll - 4" x 6" - XM PFR Envelope
 
 

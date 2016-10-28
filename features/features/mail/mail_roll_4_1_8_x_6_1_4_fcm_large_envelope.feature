@@ -1,13 +1,9 @@
 Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM Large Envelope
 
-
-
   Background:
     Given I am signed in as Mail shipper
 
-
-  @wp_roll_regression
-  @wp_roll_4_1_8_x_6_1_4_fcm_large_envelope
+  @mail_roll_4_1_8_x_6_1_4_fcm_large_envelope
   Scenario: Roll - 4 ⅛” x 6 ¼” - FCM Large Envelope
 
     Then Mail: Select Roll 4 ⅛ x 6 ¼

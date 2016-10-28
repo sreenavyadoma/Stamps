@@ -4,8 +4,8 @@ Feature: FPO Shipping BVT
   Background:
     Given I am signed in as a postage shipper
 
-  @wp_bvt
-  @wp_bvt_fpo
+  @mail_bvt
+  @mail_bvt_fpo
   Scenario: FPO Shipping
 
     Then Postage: Select Roll 4 x 6
@@ -22,7 +22,7 @@ Feature: FPO Shipping BVT
     Then Postage Roll: Select Service Priority Mail Large-Thick Envelope
 
     Then Postage Shipping Labels: Edit Customs Form
-    Then Postage Customs: Set Package Contents to "Gift"
+    Then Postage Customs: Set Package Contents to Gift
     Then Postage Customs: Set Non-Delivery Options to "Treat as abandoned"
     Then Postage Customs: Set Internal Transaction Number Requirement to "Required"
     Then Postage Customs: Set ITN Number to "12345"

@@ -6,7 +6,7 @@ Feature:Shipping Label Preview Panel
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_preview_panel_options
+  @mail_shipping_label_preview_panel_options
   Scenario: Shipping Label Preview Panel
 
     Then Mail: Select Shipping Label 5 x 8

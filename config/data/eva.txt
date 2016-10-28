@@ -5,7 +5,7 @@ Feature: Select All Print Ons and Services
   Background:
     Given I am signed in as a postage shipper
 
-  @wp_bvt1
+  @mail_bvt1
   Scenario: Select Print Media and Services
 
     Then Select Print Postage Print On Stamps

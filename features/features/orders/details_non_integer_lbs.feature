@@ -17,3 +17,4 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
     Then Details: Set Ounces to 6.0
     Then Details: Expect Ounces is 6.0
     Then Sign out
+

@@ -6,7 +6,7 @@ Feature: Manage Shipping Addresses
     Given I am signed in as Mail shipper
 
 
-  @wp_manage_shipping_addresses
+  @mail_manage_shipping_addresses
   Scenario: Open Manage Shipping Addresses Modal
 
     Then Mail: Select Shipping Label 5 x 8

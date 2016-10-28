@@ -22,28 +22,15 @@ Then /^Manage Stores: Delete Row (\d+)$/ do |row|
   logger.step "Grid Count before delete is #{size}"
   delete_modal = @manage_stores.stores_grid.delete_row row
   delete_modal.delete
-=begin
-  30.times do
-    logger.step "Old Grid line items:  #{size}.  New Grid line items:  #{grid.size}"
-    break if size == grid.size + 1
-    sleep 1
-  end
-=end
-  #new_size = grid.size
-  #logger.step "Test #{(size == new_size + 1)?"Passed":"Failed"} - Old Grid line items:  #{size}.  New Grid line items:  #{new_size}"
-  logger.step "Test #{(delete_modal.present?)?"Failed":"Passed"}"
-  #expect(size == new_size + 1).is true
   delete_modal.present?.should be false
 end
 
 Then /^Manage Stores: Select Store (.*)$/ do |store_name|
-  @store_name = (store_name.downcase.include? "random")?@store_name:store_name
-  logger.step "Manage Stores: Select Store #{@store_name}"
-  raise "Unble to select store name: #{@store_name}.  Either it's nil or does not exist in the modal.  Check your test." if @store_name.nil?
-  raise "Store name can't be nil or an empty String" if @store_name.nil? || @store_name.size == 0
-  @manage_stores.stores_grid.select @store_name
-  @manage_stores.stores_grid.select @store_name
-  @manage_stores.stores_grid.select @store_name
+  test_data[:store_name] = (store_name.downcase.include? "random")?test_data[:store_name]:store_name
+  logger.step "Manage Stores: Select Store #{test_data[:store_name]}"
+  raise "Unble to select store name: #{test_data[:store_name]}.  Either it's nil or does not exist in the modal.  Check your test." if test_data[:store_name].nil?
+  raise "Store name can't be nil or an empty String" if test_data[:store_name].nil? || test_data[:store_name].size == 0
+  @manage_stores.stores_grid.select(test_data[:store_name])
 end
 
 Then /^Manage Stores: Delete All Stores$/ do

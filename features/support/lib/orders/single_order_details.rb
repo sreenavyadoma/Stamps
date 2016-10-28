@@ -118,7 +118,7 @@ module Stamps
         def initialize param
           super param
           @less ||= ElementWrapper.new browser.span(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
-          @ship_to_dd = ElementWrapper.new browser.span(css: "div[id=shiptoview-addressCollapsed-innerCt]>a>span>span>span:nth-child(1)")
+          @ship_to_dd = ElementWrapper.new browser.span(css: "div#shiptoview-addressCollapsed-targetEl>a>span>span>span[class*=down]")
         end
 
         def hide_address_details
@@ -159,6 +159,7 @@ module Stamps
 
         def text_box
           show_address_details
+          sleep 1
           if dom_text_box.present?
             dom_text_box
           elsif int_text_box.present?
@@ -179,10 +180,10 @@ module Stamps
               break if text_box.text.include? country
               drop_down.safe_click unless selection_1.present? || selection_2.present?
               if selection_1.present?
-                selection_1.scroll_into_view
+                selection_1.safe_scroll_into_view
                 selection_1.safe_click
               elsif selection_2.present?
-                selection_2.scroll_into_view
+                selection_2.safe_scroll_into_view
                 selection_2.safe_click
               else
                 sleep 1
@@ -203,7 +204,6 @@ module Stamps
             end
           end
           logger.info "#{country} selected."
-          #Assert textbox text includes country
           text_box.text.should include country
         end
       end
@@ -211,7 +211,7 @@ module Stamps
       class IntShipToBase < ShipToBase
         attr_reader :name_field, :company_field, :address_1_field, :address_2_field, :city_field, :phone_field, :province_field, :postal_code_field, :email_field
 
-            def initialize param
+        def initialize param
           super param
           @name_field ||= TextBoxElement.new browser.text_field(name: "ShipName"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(2)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
           @company_field ||= TextBoxElement.new browser.text_field(name: "ShipCompany"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(3)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
@@ -221,8 +221,7 @@ module Stamps
           @phone_field = TextBoxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipPhone]"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(8)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
           @province_field ||= TextBoxElement.new browser.text_field(name: "ShipState")
           @postal_code_field ||= TextBoxElement.new browser.text_field(name: "ShipPostalCode")
-          @email_field ||= TextBoxElement.new browser.text_field(name: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]")
-
+          @email_field ||= TextBoxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]")
         end
 
         def present?
@@ -353,7 +352,7 @@ module Stamps
           super param
           @country ||= ShipToCountry.new param
           @address ||= DomShipTo.new param
-          @international ||= Orders::Details::IntShipTo.new param
+          @international ||= IntShipTo.new param
         end
       end
 
@@ -476,7 +475,7 @@ module Stamps
             address_not_found.wait_until_present 4
             return address_not_found if address_not_found.present? if address_not_found.present?
           end
-          stop_test "Exact Address Not Found module did not appear."
+          "Exact Address Not Found module did not appear.".should eql ""
         end
 
         def data_error
@@ -515,7 +514,6 @@ module Stamps
 
         def initialize param
           super param
-
           @window_title ||= ElementWrapper.new browser.div(text: 'Add Shipping Address')
           @save_button ||= ElementWrapper.new browser.span(text: 'Save')
           @origin_zip ||= ElementWrapper.new browser.text_field(name: 'OriginZip')
@@ -704,13 +702,11 @@ module Stamps
 
         def initialize param
           super param
-
           @edit_button ||= ElementWrapper.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
           @add_button ||= ElementWrapper.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"
           @window_title ||= ElementWrapper.new browser.div css: 'div[class*=x-window-header-title-default]>div'
           @close_button ||= ElementWrapper.new browser.image css: "img[class*='x-tool-close']"
           @delete_button ||= ElementWrapper.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
-
           @add_shipping_address ||= AddShippingAdress.new param
         end
 
@@ -788,11 +784,11 @@ module Stamps
               if address.is_a? Hash
                 delete_row(locate_ship_from(address['name'], address['company'], address['city']))
               else
-                stop_test "Address format is not yet supported for this delete call."
+                "Address format is not yet supported for this delete call.".should eql ""
               end
 
             else
-              stop_test "Parameter Exception: Paramter not supported."
+              "Parameter Exception: Paramter not supported.".should eql ""
           end
         end
 
@@ -841,14 +837,14 @@ module Stamps
                 company = address_hash['company']
                 city = address_hash['city']
               else
-                stop_test "Wrong number of arguments for locate_address" unless args.length == 3
+                "Wrong number of arguments for locate_address".should eql "" unless args.length == 3
               end
             when 3
               name = args[0]
               company = args[1]
               city = args[2]
             else
-              stop_test "Wrong number of arguments for locate_address" unless args.length == 3
+              "Wrong number of arguments for locate_address".should eql "" unless args.length == 3
           end
           locate_ship_from(name, company, city) > 0
         end
@@ -862,7 +858,7 @@ module Stamps
             when 1
               shipping_address.shipping_address = args[0]
             else
-              stop_test "Illegal number of arguments."
+              "Illegal number of arguments.".should eql ""
           end
           self
         end
@@ -940,29 +936,27 @@ module Stamps
         end
 
         def select service
-
           return manage_shipping_adddress if manage_shipping_adddress.present?
 
-          ship_from_default_selection_field = (browser.lis css: "li[data-recordindex='0']").first
-          ship_from_dropdown = drop_down
-          ship_from_textbox = text_box
+          default_element = browser.li(css: "ul[id^=boundlist-]>li[data-recordindex='0']")
 
           if service.downcase == "default"
-            ship_from_selection_field = ship_from_default_selection_field
+            element = default_element
           elsif service.downcase.include? "manage shipping"
-            ship_from_selection_field = browser.li text: "Manage Shipping Addresses..."
+            element = browser.li(text: "Manage Shipping Addresses...")
           else
-            ship_from_selection_field = browser.div text: "#{service}"
+            element = browser.div text: "#{service}"
           end
 
-          selection_label = ElementWrapper.new ship_from_selection_field
+          selection = ElementWrapper.new element
           service_text = ""
           if service.downcase.include? "manage shipping"
-            10.times{
+            7.times{
               begin
-                ship_from_dropdown.safe_click unless selection_label.present?
-                selection_label.scroll_into_view
-                selection_label.safe_click
+                drop_down.safe_click unless selection.present?
+                selection.safe_scroll_into_view
+                selection.safe_click
+                sleep 1
                 return manage_shipping_adddress if manage_shipping_adddress.present?
               rescue
                 #ignore
@@ -970,21 +964,21 @@ module Stamps
               blur_out
             }
           else
-            ship_from_dropdown.safe_click unless selection_label.present?
-            if selection_label.present?
-              selection_label.scroll_into_view
-              service_text = selection_label.text
+            drop_down.safe_click unless selection.present?
+            if selection.present?
+              selection.safe_scroll_into_view
+              service_text = selection.text
             end
             10.times do
-              ship_from_dropdown.safe_click unless selection_label.present?
-              selection_label.scroll_into_view
-              selection_label.safe_click
+              drop_down.safe_click unless selection.present?
+              selection.safe_scroll_into_view
+              selection.safe_click
               sleep 1
-              text_box_text = ship_from_textbox.text
+              text_box_text = text_box.text
               return if text_box_text.include? service_text
             end
           end
-          stop_test "Unable to select service #{service}"
+          "Unable to select service #{service}".should eql ""
         end
       end
 
@@ -1109,13 +1103,7 @@ module Stamps
         def select selection
           logger.info "Select Service #{selection}"
 
-          # This is a temporary fix to support user story
-          # ORDERSAUTO-1026 Sprint 40: Abbreviate Service Names for Selected Service, which is in CC but not SC.
-          if ENV['URL'].downcase.include? 'sc' #abbreviate when in SC
-            abbrev_selection = selection
-          else
-            abbrev_selection = abbrev_service_name selection
-          end
+          abbrev_selection = abbrev_service_name(selection)
 
           selected_service = ""
           @details_services ||= data_for(:details_services, {})
@@ -1125,7 +1113,7 @@ module Stamps
           20.times do
             begin
               drop_down.safe_click unless selection_label.present?
-              selection_label.scroll_into_view
+              selection_label.safe_scroll_into_view
               selection_label.safe_click
               blur_out
               selected_service = text_box.text
@@ -1498,21 +1486,19 @@ module Stamps
           end
 
           class Qty < Browser::Modal
+            attr_reader :text_box
+
             def initialize param, number
               super param
               @index = number
-            end
-
-            def text_box
-              TextBoxElement.new ((browser.text_fields name: "Quantity")[@index-1]), "data-errorqtip"
+              @text_box = TextBoxElement.new ((browser.text_fields name: "Quantity")[@index-1]), "data-errorqtip"
             end
 
             def set value
-              text_field = text_box
               value = value.to_i
-              max = value + text_field.text.to_i
+              max = value + text_box.text.to_i
               max.times do
-                current_value = text_field.text.to_i
+                current_value = text_box.text.to_i
                 break if value == current_value
                 if value > current_value
                   increment 1
@@ -1521,7 +1507,7 @@ module Stamps
                 end
                 break if value == current_value
               end
-              logger.info "Qty set to #{text_field.text}"
+              logger.info "Qty set to #{text_box.text}"
             end
 
             def increment value
@@ -1721,7 +1707,7 @@ module Stamps
           @tracking ||= DetailsTracking.new param
           @dimensions ||= Dimensions.new param
           @footer ||= DetailsFooter.new param
-          @customs ||= CustomsFields.new param
+          @customs ||= OrdersCustomsFields.new param
           @item_grid ||= DetailsItemGrid.new param
           @reference_no ||= TextBoxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input")
           @collapsed_details = DetailsCollapsible.new param
@@ -1762,7 +1748,7 @@ module Stamps
 
         def add_item
           add_item = ElementWrapper.new browser.span text: "Add Item"
-          stop_test "Add Item button is not present in Order Details form!" unless add_item.present?
+          "Add Item button is not present in Order Details form!".should be "" unless add_item.present?
           count = items_count
           5.times do
             add_item.safe_click

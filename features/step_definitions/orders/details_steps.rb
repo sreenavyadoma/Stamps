@@ -21,10 +21,15 @@ end
 Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
   logger.step "Details: Add Item #{item_number}, Qty #{qty}, ID #{id} Description #{description}"
   item = web_apps.orders.details.item_grid.item item_number.to_i
+  step "Details: Blur out"
   item.qty.set qty
+  step "Details: Blur out"
   item.id.set (id.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : id
+  step "Details: Blur out"
   item.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
+  step "Details: Blur out"
   step "Details: Save Total Ship Cost"
+  step "Details: Blur out"
 end
 
 Then /^Details: Add Item (\d+)$/ do |value|
@@ -152,14 +157,16 @@ end
 
 Then /^Details: Set Pounds to (.*)$/ do |value|
   logger.step "Details: Set Pounds to \"#{value}\""
-  @details_form_data[:lbs] = value
+  test_data[:lbs] = value
+  step "Details: Blur out"
   web_apps.orders.details.weight.lbs.set value
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Ounces to (.*)$/ do |value|
   logger.step "Details: Set Ounces to \"#{value}\""
-  @details_form_data[:oz] = value
+  test_data[:oz] = value
+  step "Details: Blur out"
   web_apps.orders.details.weight.oz.set value
   step "Details: Save Total Ship Cost"
 end
@@ -169,7 +176,7 @@ Then /^Details: Blur out$/ do
 end
 
 Then /^Details: Save Total Ship Cost$/ do
-  @details_form_data[:total_ship_cost] = web_apps.orders.details.footer.total_ship_cost
+  test_data[:total_ship_cost] = web_apps.orders.details.footer.total_ship_cost
 end
 
 Then /^Details: Set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
@@ -182,21 +189,21 @@ end
 
 Then /^Details: Set Length to (\d*)$/ do |value|
   logger.step "Details: Set Length to \"#{value}\""
-  @details_form_data[:length] = value
+  test_data[:length] = value
   web_apps.orders.details.dimensions.length.set value
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Width to (\d*)$/ do |value|
   logger.step "Details: Set Width to \"#{value}\""
-  @details_form_data[:width] = value
+  test_data[:width] = value
   web_apps.orders.details.dimensions.width.set value
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Height to (\d*)$/ do |value|
   logger.step "Details: Set Height to \"#{value}\""
-  @details_form_data[:height] = value
+  test_data[:height] = value
   web_apps.orders.details.dimensions.height.set value
   step "Details: Save Total Ship Cost"
 end
@@ -212,13 +219,14 @@ Then /^Details: Uncheck Insure-For checkbox$/ do
 end
 
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
-  logger.step "Details: Set Insure-For to #{value}"
-  @details_form_data[:insure_for] = value
-  web_apps.orders.details.insure_for.set value
-  10.times do
+  test_data[:insure_for] = value
+  logger.step "Details: Set Insure-For to #{test_data[:insure_for]}"
+  web_apps.orders.details.insure_for.set test_data[:insure_for]
+  20.times do
     break if web_apps.orders.details.insure_for.cost.to_f > 0
+    step "Details: Blur out"
   end
-  @details_form_data[:insure_for_cost] = web_apps.orders.details.insure_for.cost
+  test_data[:insure_for_cost] = web_apps.orders.details.insure_for.cost
   step "Details: Save Total Ship Cost"
 end
 
@@ -232,18 +240,21 @@ end
 
 Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   logger.step "Details: Set Tracking to #{value}"
-  @details_form_data[:tracking] = value
+  test_data[:tracking] = value
   web_apps.orders.details.tracking.select value
   10.times do
     break if web_apps.orders.details.tracking.cost.to_f > 0
+    step "Details: Blur out"
   end
-  @details_form_data[:tracking_cost] = web_apps.orders.details.tracking.cost
+  test_data[:tracking_cost] = web_apps.orders.details.tracking.cost
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Ship-From to (\w+)$/ do |value|
   logger.step "Details: Set Ship-From to: \n #{value}"
   web_apps.orders.details.ship_from.select value
+  step "Details: Blur out"
+  test_data[:ship_from] = web_apps.orders.details.ship_from.text_box.text
   step "Details: Save Total Ship Cost"
 end
 
@@ -310,22 +321,22 @@ Then /^Details: Set Ship-To to domestic address$/ do |table|
 
   ship_to = "#{name},#{company},#{street_address},#{street_address_2} ,#{city} #{state} #{zip}"
 
-  @details_form_data[:ship_to] = ship_to
-  @details_form_data[:name] = name
-  @details_form_data[:company] = company
-  @details_form_data[:city] = city
-  @details_form_data[:phone] = phone
-  @details_form_data[:email] = email
-  @details_form_data[:street_address] = street_address
-  @details_form_data[:street_address_2] = street_address_2
-  @details_form_data[:state] = state
-  @details_form_data[:zip] = zip
-  @details_form_data[:country] = country
+  test_data[:ship_to] = ship_to
+  test_data[:name] = name
+  test_data[:company] = company
+  test_data[:city] = city
+  test_data[:phone] = phone
+  test_data[:email] = email
+  test_data[:street_address] = street_address
+  test_data[:street_address_2] = street_address_2
+  test_data[:state] = state
+  test_data[:zip] = zip
+  test_data[:country] = country
 
-  step "Details: Set Ship-To Country to #{@details_form_data[:country]}"
-  step "Details: Set Ship-To text area to #{@details_form_data[:ship_to]}"
-  step "Details: Set Phone to #{@details_form_data[:phone]}"
-  step "Details: Set Email to #{@details_form_data[:email]}"
+  step "Details: Set Ship-To Country to #{test_data[:country]}"
+  step "Details: Set Ship-To text area to #{test_data[:ship_to]}"
+  step "Details: Set Phone to #{test_data[:phone]}"
+  step "Details: Set Email to #{test_data[:email]}"
 end
 
 Then /^Details: Set Ship-To to international address$/ do |table|
@@ -344,81 +355,66 @@ Then /^Details: Set Ship-To to international address$/ do |table|
   province = (address_table['province'].downcase.include? "random") ? ParameterHelper.random_string : address_table['province']
   postal_code = (address_table['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address_table['postal_code']
 
-  @details_form_data[:country] = country
-  @details_form_data[:name] = name
-  @details_form_data[:company] = company
-  @details_form_data[:street_address_1] = street_address_1
-  @details_form_data[:street_address_2] = street_address_2
-  @details_form_data[:city] = city
-  @details_form_data[:province] = province
-  @details_form_data[:postal_code] = postal_code
-  @details_form_data[:phone] = phone
-  @details_form_data[:email] = email
+  test_data[:country] = country
+  test_data[:name] = name
+  test_data[:company] = company
+  test_data[:street_address_1] = street_address_1
+  test_data[:street_address_2] = street_address_2
+  test_data[:city] = city
+  test_data[:province] = province
+  test_data[:postal_code] = postal_code
+  test_data[:phone] = phone
+  test_data[:email] = email
 
-  step "Details: Set Ship-To Country to #{@details_form_data[:country]}"
-  step "Details: Set International Ship-To Name to \"#{@details_form_data[:name]}\""
-  step "Details: Set International Ship-To Company to \"#{@details_form_data[:company]}\""
-  step "Details: Set International Ship-To Address 1 to \"#{@details_form_data[:street_address_1]}\""
-  step "Details: Set International Ship-To Address 2 to \"#{@details_form_data[:street_address_2]}\""
-  step "Details: Set International Ship-To City to \"#{@details_form_data[:city]}\""
-  step "Details: Set International Ship-To Province to \"#{@details_form_data[:province]}\""
-  step "Details: Set International Ship-To Postal Code to \"#{@details_form_data[:postal_code]}\""
-  step "Details: Set International Ship-To Phone to \"#{@details_form_data[:phone]}\""
-  step "Details: Set International Ship-To Email to \"#{@details_form_data[:email]}\""
+  step "Details: Set Ship-To Country to #{test_data[:country]}"
+  step "Details: Set International Ship-To Name to \"#{test_data[:name]}\""
+  step "Details: Set International Ship-To Company to \"#{test_data[:company]}\""
+  step "Details: Set International Ship-To Address 1 to \"#{test_data[:street_address_1]}\""
+  step "Details: Set International Ship-To Address 2 to \"#{test_data[:street_address_2]}\""
+  step "Details: Set International Ship-To City to \"#{test_data[:city]}\""
+  step "Details: Set International Ship-To Province to \"#{test_data[:province]}\""
+  step "Details: Set International Ship-To Postal Code to \"#{test_data[:postal_code]}\""
+  step "Details: Set International Ship-To Phone to \"#{test_data[:phone]}\""
+  step "Details: Set International Ship-To Email to \"#{test_data[:email]}\""
 end
 
 Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
+  address = ""
   case zone.downcase
-    when /zone 1 through 4/
-      zone = ParameterHelper.rand_zone_1_4
-      address = ParameterHelper.format_address zone
-      logger.step "Details: Set Ship-To random zone 1 through 4 address to \"#{address}\""
-    when /zone 5 through 8/
-      zone = ParameterHelper.rand_zone_5_8
-      address = ParameterHelper.format_address zone
-      logger.step "Details: Set Ship-To random zone 5 through 8 address to \"#{address}\""
-    when /zone 1/
-      zone = ParameterHelper.rand_zone_1
-      address = ParameterHelper.format_address zone
-      logger.step "Details: Set Ship-To to address in Zone 1 = \"#{address}\""
-    when /zone 2/
-      zone = ParameterHelper.rand_zone_2
-      address = ParameterHelper.format_address zone
-      logger.step "Details: Set Ship-To to address in Zone 2 = \"#{address}\""
-    when /zone 3/
-      zone = ParameterHelper.rand_zone_3
-      address = ParameterHelper.format_address zone
-      logger.step "Details: Set Ship-To to address in Zone 3 = \"#{address}\""
-    when /zone 4/
-      zone = ParameterHelper.rand_zone_4
-      address = ParameterHelper.format_address zone
-      logger.step "Details: Set Ship-To to address in Zone 4 = \"#{address}\""
+    when /1 through 4/
+      address = ParameterHelper.rand_zone_1_4
+    when /5 through 8/
+      address = ParameterHelper.rand_zone_5_8
+    when /1/
+      address = ParameterHelper.rand_zone_1
+    when /2/
+      address = ParameterHelper.rand_zone_2
+    when /3/
+      address = ParameterHelper.rand_zone_3
+    when /4/
+      address = ParameterHelper.rand_zone_4
     when /zone 5/
-      zone = ParameterHelper.rand_zone_5
-      address = ParameterHelper.format_address zone
-      logger.step "Details: Set Ship-To to address in Zone 5 = \"#{address}\""
-    when /zone 6/
-      zone = ParameterHelper.rand_zone_6
-      address = ParameterHelper.format_address zone
-      logger.step "Details: Set Ship-To to address in Zone 6 = \"#{address}\""
-    when /zone 7/
-      zone = ParameterHelper.rand_zone_7
-      address = ParameterHelper.format_address zone
-      logger.step "Details: Set Ship-To to address in Zone 7 = \"#{address}\""
-    when /zone 8/
-      zone = ParameterHelper.rand_zone_8
-      address = ParameterHelper.format_address zone
-      logger.step "Details: Set Ship-To to address in Zone 8 = \"#{address}\""
+      address = ParameterHelper.rand_zone_5
+    when /6/
+      address = ParameterHelper.rand_zone_6
+    when /7/
+      address = ParameterHelper.rand_zone_7
+    when /8/
+      address = ParameterHelper.rand_zone_8
     else
-      address = ParameterHelper.format_address zone
+      "Invalid Zone Option".should eql "Zone #{zone} is not a valid zone. Valid options are from zone 1 through 8."
   end
-  step "Details: Set Ship-To text area to #{address}"
+  logger.step "Details: Set Ship-To to address in Zone #{zone} = \"#{address}\""
+  # set Ship-To address
+  test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
+  web_apps.orders.details.ship_to.address.set test_data[:ship_to_text_area]
+  step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Ship-To text area to (.*)$/ do |address|
   logger.step "Details: Set Ship-To text area to \"#{address}\""
-  address = ParameterHelper.format_address address
-  web_apps.orders.details.ship_to.address.set address
+  test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
+  web_apps.orders.details.ship_to.address.set test_data[:ship_to_text_area]
   step "Details: Save Total Ship Cost"
 end
 
@@ -428,70 +424,63 @@ end
 
 Then /^Details: Hide Ship-To fields$/ do
   logger.step "Details: Hide Ship-To fields"
-  web_apps.orders.details.ship_to.hide_address_details
+  web_apps.orders.details.ship_to.address.hide_address_details
+end
+
+Then /^Details: Expect Order ID is truthy$/ do
+  logger.step "Details: Expect Order ID is truthy"
+  logger.step "Saved Order ID created:  #{test_data[:order_id].to_i>0}"
+  test_data[:order_id].to_i.should be > 0
+end
+
+Then /^Details: Expect Order ID equals Grid order ID$/ do
+  logger.step "Details: Expect Order ID equals Grid order ID"
+  web_apps.orders.details.order_id.should eql web_apps.orders.grid.order_id.row(1)
 end
 
 Then /^Details: Expect Ship-To Name is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Name is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.text_area.recipient_name
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.address.text_area.recipient_name.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Company Name is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Company Name is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.text_area.company_name
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.address.text_area.company_name.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Cleansed Street Address is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Cleansed Street Address is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.text_area.street_address
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.address.text_area.street_address.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Cleansed City is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Cleansed City is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.text_area.city
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.address.text_area.city.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Cleansed State is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Cleansed State is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.text_area.state
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.address.text_area.state.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Cleansed Zip Plus 4 Code is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Cleansed Zip Plus 4 Code is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.text_area.zip_plus_4
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.address.text_area.zip_plus_4.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Cleansed Zip Code is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Cleansed Zip Code is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.text_area.zip_code
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.address.text_area.zip_code.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Phone is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Phone is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.phone.text
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.address.phone.text.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Email is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Email is #{expectation}"
-  actual_value = web_apps.orders.details.ship_to.address.email.text
-  logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
-  actual_value.should eql expectation
+  web_apps.orders.details.ship_to.address.email.text.should eql expectation
 end
 
 Then /^Details: Set Ship-To to ambiguous address$/ do |table|
@@ -502,10 +491,7 @@ end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
   logger.step "Select row #{row} from Exact Address Not Found module"
-  address_not_found_module = web_apps.orders.details.ship_to.address.ambiguous.address_not_found
-  logger.step "Test #{(address_not_found_module.present?)?"Passed":"Failed"}"
-  raise "Ambiguous Address Module is not present.  Unable to set Ambiguous Address Row to #{row}" unless address_not_found_module.present?
-  address_not_found_module.row row
+  web_apps.orders.details.ship_to.address.ambiguous.address_not_found.row row
 end
 
 Then /^Details: Set Phone to (.*)$/ do |phone|
@@ -601,46 +587,16 @@ Then /^Details: Set Reference Number to (.*)$/ do |value|
   reference_no = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
   logger.step "Details: Set Reference Number to #{reference_no}"
   web_apps.orders.details.reference_no.set reference_no
-  @details_form_data[:reference_no] = reference_no
+  test_data[:reference_no] = reference_no
   step "Details: Save Total Ship Cost"
 end
 
-Then /^Add Ship-From address$/ do |ship_from|
-  logger.step "Add Ship-From address #{ship_from}"
-  add_form = web_apps.orders.details.ship_from.select("Manage Shipping Addresses...").add.shipping_address ship_from.hashes.first
+Then /^Details: Expect Domestic Ship-To Company is (.*)$/ do |company|
+  web_apps.orders.details.ship_to.address.text_area.text.should include company
 end
 
-Then /^Add Ship-From address (\w+)$/ do |address|
-  ship_from = (address.include?'random ship from zone 1 through 4')?(ParameterHelper.rand_ship_from_zone_1_4):address
-  logger.step "Add Ship-From address #{(address.include?'random')?ship_from:(address)}"
-  @ship_from_address = web_apps.orders.details.ship_from.select("Manage Shipping Addresses...").add ship_from
-  logger.step "Random address added: #{@ship_from_address}"
-end
-
-Then /^Details: Delete Ship-From address (\w+)$/ do |address|
-  logger.step "Details: Delete Ship-From address #{address}"
-  # not implemented
-end
-
-Then /^Details: Delete all Ship-From address$/ do
-  logger.step "Details: Delete all Ship-From address"
-  web_apps.orders.details.ship_from.select("Manage Shipping Addresses...").delete_all.close_window
-end
-
-Then /^Delete Ship-From Row (\d+) from Manage Shipping Addresses Modal/ do |row|
-  logger.step "Delete Ship-From Row #{row} from Manage Shipping Addresses Modal"
-  web_apps.orders.details.ship_from.select("Manage Shipping Addresses...").delete_row(row)
-end
-
-Then /^Details: Set Ship-From to Manage Shipping Addresses$/ do
-  logger.step "Details: Set Ship-From to Manage Shipping Addresses"
-  web_apps.orders.details.ship_from.select("Manage Shipping Addresses...").add table.hashes.first
-end
-
-Then /^Edit Ship-From address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
-  logger.step "Edit Ship-From address for name = \"#{name}\", company = \"#{company}\" and city = \"#{city}\" to #{new_address}"
-  ship_address_modal = web_apps.orders.details.ship_from.select "Manage Shipping Addresses..."
-  ship_address_modal.edit_address name, company, city,  new_address.hashes.first
+Then /^Details: Expect Domestic Ship-To Name is (.*)$/ do |name|
+  web_apps.orders.details.ship_to.address.text_area.text.should include name
 end
 
 Then /^Verify Order Details Form Total Amount$/ do

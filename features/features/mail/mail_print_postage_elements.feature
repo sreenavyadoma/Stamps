@@ -1,11 +1,9 @@
 Feature: Verify Mail Elements Are Present
 
-
   Background:
     Given I am signed in as Mail shipper
 
-
-  @wp_print_postage_elements
+  @mail_print_postage_elements
   Scenario: Print Mail Elements
     Then Mail: Select Shipping Label 8 x 11
     Then Mail: Expect Print On Field is present

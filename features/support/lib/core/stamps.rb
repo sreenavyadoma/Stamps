@@ -90,6 +90,10 @@ module Stamps
     @param
   end
 
+  def test_data
+    @test_data
+  end
+
   def test_helper
     begin
       TestHelper
@@ -109,10 +113,4 @@ module Stamps
   def browser
     test_helper.browser
   end
-
-  def stop_test error_message
-    @orders_object ||= Modal.new param
-    @orders_object.stop_test error_message
-  end
-
 end

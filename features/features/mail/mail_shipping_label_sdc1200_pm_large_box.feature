@@ -6,8 +6,7 @@ Feature: Mail Shipping Label - SDC-1200 - Large Box
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_shipping_label_sdc1200_pm_large_box
+  @mail_shipping_label_sdc1200_pm_large_box
   Scenario: Shipping Label - SDC-1200 - Large Box
 
 

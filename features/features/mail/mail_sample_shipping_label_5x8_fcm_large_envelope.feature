@@ -1,13 +1,9 @@
 Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - FCM Large Envelope
 
-
-
   Background:
     Given I am signed in as Mail shipper
 
-
-  @wp_shipping_label_regression
-  @wp_sample_shipping_label_5x8_fcm_large_envelope
+  @mail_sample_shipping_label_5x8_fcm_large_envelope
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - FCM Large Envelope
 
     Then Mail: Select Shipping Label 5 x 8

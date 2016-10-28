@@ -1,6 +1,6 @@
 ruby -e "`gem list`.split(/$/).each { |line| puts `gem uninstall -Iax #{line.split(' ')[0]}` unless line.strip.empty? }"
 
-rake orders_authentication USR=kiu9r9yzo PW=pass111 URL=qacc BROWSER=ff
+rake authentication USR=kiu9r9yzo PW=pass111 URL=qacc BROWSER=ff
 
 
 

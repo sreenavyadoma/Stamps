@@ -30,13 +30,13 @@ module Stamps
       end
     end
 
-    class CustomsFields < Browser::Modal
+    class OrdersCustomsFields < Browser::Modal
       attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
 
       def initialize param
         super param
-        @customs_form = OrdersCustomsForm.new param
-        @view_restrictions = Orders::Details::ViewRestrictions.new param
+        @customs_form ||= OrdersCustomsForm.new param
+        @view_restrictions ||= Orders::Details::ViewRestrictions.new param
         @edit_form_btn ||= ElementWrapper.new browser.span text: 'Edit Form...'
         @restrictions_btn ||= ElementWrapper.new browser.span text: 'Restrictions...'
       end
@@ -306,35 +306,29 @@ module Stamps
 
         @more_info ||= TextBoxElement.new browser.text_field name: "CustomsComments"
         @usps_privacy_act_warning ||= ElementWrapper.new (browser.label text: "You must agree to the USPS Privacy Act Statement")
-        @itn_number ||= TextBoxElement.new browser.text_field name: "AES"
-        @license ||= TextBoxElement.new browser.text_field name: "CustomsLicenseNumber"
-        @certificate ||= TextBoxElement.new browser.text_field name: "CustomsCertificateNumber"
-        @invoice ||= TextBoxElement.new browser.text_field name: "CustomsInvoiceNumber"
-        @total_value_element ||= ElementWrapper.new browser.div css: "div[id^=customswindow-][id$=-body]>div>div[id^=panel]>div>div>div>div[id^=displayfield]>div>div"
+        @itn_number ||= TextBoxElement.new browser.text_field(name: "AES")
+        @license ||= TextBoxElement.new browser.text_field(name: "CustomsLicenseNumber")
+        @certificate ||= TextBoxElement.new browser.text_field(name: "CustomsCertificateNumber")
+        @invoice ||= TextBoxElement.new browser.text_field(name: "CustomsInvoiceNumber")
+        @total_value_element ||= ElementWrapper.new browser.div(css: "div[id^=customswindow-][id$=-body]>div>div[id^=panel]>div>div>div>div[id^=displayfield]>div>div")
 
-        field = browser.input css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input"
-        verify_field = browser.div css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]"
+        field = browser.input(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input")
+        verify_field = browser.div(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]")
         @i_agree ||= CheckboxElement.new field, verify_field, "class", "checked"
 
         @privacy_statement ||= UspsPrivactActStatementModal.new param
-        @privacy_link ||= ElementWrapper.new browser.span text: "USPS Privacy Act Statement"
+        @privacy_link ||= ElementWrapper.new browser.span(text: "USPS Privacy Act Statement")
         @restrictions_link ||= RestrictionsAndProhibitionsModal.new param
-        @restrictions_prohibitions_link ||= ElementWrapper.new browser.span text: "Restrictions and Prohibitions"
+        @restrictions_prohibitions_link ||= ElementWrapper.new browser.span(text: "Restrictions and Prohibitions")
 
-        @close_button ||= ElementWrapper.new browser.span text: "Close"
-        @x_button ||= ElementWrapper.new browser.image css: "img[class*='x-tool-close']"
+        @close_button ||= ElementWrapper.new browser.span(text: "Close")
+        @x_button ||= ElementWrapper.new browser.image(css: "img[class*='x-tool-close']")
         @total_label ||= ElementWrapper.new browser.span(text: 'Total:')
       end
 
       def blur_out
-        3.times do
-          begin
-            total_label.safe_click
-            total_label.safe_double_click
-          rescue
-            #ignore
-          end
-        end
+        total_label.safe_click
+        total_label.safe_double_click
       end
 
       def present?
@@ -346,7 +340,7 @@ module Stamps
       end
 
       def total_value
-        ParameterHelper.remove_dollar_sign total_value_element
+        ParameterHelper.remove_dollar_sign total_value_element.text
       end
 
       def usps_privacy_act_statement

@@ -2,33 +2,26 @@
 Then /^Paging: Set Per Page drop-down to 100$/ do
   logger.step "Toolbar:  Set Per Page Count to 100"
   web_apps.orders.grid.toolbar.per_page.x100
-  per_page = web_apps.orders.grid.toolbar.per_page.text_box.text
-  logger.step "Test #{(per_page == "100")?"Passed":"Failed"}"
-  per_page.should eql "100"
+  web_apps.orders.grid.toolbar.per_page.text_box.text.should eql "100"
 end
 
 Then /^Toolbar:  Set Per Page drop-down to 250$/ do
   logger.step "Toolbar:  Set Per Page Count to 250"
   web_apps.orders.grid.toolbar.per_page.x250
-  per_page = web_apps.orders.grid.toolbar.per_page.text_box.text
-  logger.step "Test #{(per_page == "250")?"Passed":"Failed"}"
-  per_page.should eql "250"
+  web_apps.orders.grid.toolbar.per_page.text_box.text.should eql "250"
 end
 
 Then /^Toolbar:  Set Per Page drop-down to 500$/ do
   logger.step "Toolbar:  Set Per Page Count to 500"
   web_apps.orders.grid.toolbar.per_page.x500
-  per_page = web_apps.orders.grid.toolbar.per_page.text_box.text
-  logger.step "Test #{(per_page == "500")?"Passed":"Failed"}"
-  per_page.should eql "500"
+  web_apps.orders.grid.toolbar.per_page.text_box.text.should eql "500"
 end
 
 Then /^Toolbar: Expect number of orders on page is correct$/ do
   logger.step "Toolbar: Expect number of orders on page is correct"
-  filter = web_apps.orders.filter
-  grid = filter.awaiting_shipment
+  web_apps.orders.filter.awaiting_shipment
   sleep 1
-  grid.checkbox.check_all
+  web_apps.orders.checkbox.check_all
   sleep 1
   awaiting_shipment_total_count = filter.awaiting_shipment_count
   multi_order_count = web_apps.orders.multi_order.order_count
@@ -41,41 +34,35 @@ Then /^Toolbar: Expect number of orders on page is correct$/ do
   end
 
   sleep 1
-  grid.checkbox.uncheck_all
+  web_apps.orders.checkbox.uncheck_all
   logger.step "Test #{(max_order_count == multi_order_count)?"Passed":"Failed"}"
   max_order_count.should eql multi_order_count
 end
 
 Then /^User is on the first page of orders$/ do
   logger.step "User is on the first page of orders"
-  logger.step "Page Count = Page #{web_apps.orders.grid.row_count} orders"
-  page_count = web_apps.orders.grid.toolbar.page_count.text
-  logger.step "Page Count = Page #{page_count}"
-  expect(page_count.to_i = 1).is true
+  web_apps.orders.grid.toolbar.page_count.text.to_i.should eql 1
 end
 
 Then /^User clicks first page pagination control$/ do
   logger.step "User clicks first page pagination control"
-  paging_toolbar = web_apps.orders.grid.toolbar
-  paging_toolbar.first_page.click
+  web_apps.orders.grid.toolbar.first_page.click
 end
 
 Then /^User clicks previous page pagination control$/ do
   logger.step "User clicks previous page pagination control"
-  paging_toolbar = web_apps.orders.grid.toolbar
-  paging_toolbar.previous_page.click
+  web_apps.orders.grid.toolbar.previous_page.click
 end
 
 Then /^User clicks next page pagination control$/ do
   logger.step "User clicks next page pagination control"
-  paging_toolbar = web_apps.orders.grid.toolbar
-  paging_toolbar.next_page.click
+  web_apps.orders.grid.toolbar.next_page.click
 end
 
 Then /^User clicks last page pagination control$/ do
   logger.step "User clicks last page pagination control"
   paging_toolbar = web_apps.orders.grid.toolbar
-  paging_toolbar.last_page.click
+  web_apps.orders.grid.toolbar.last_page.click
 end
 
 Then /^Pagination control to go to first page is (\w+)$/ do |first_pagination_enabled|

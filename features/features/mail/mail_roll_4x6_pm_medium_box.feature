@@ -6,8 +6,7 @@ Feature: Mail Roll - 4" x 6" - PM Medium Box
     Given I am signed in as Mail shipper
 
 
-  @wp_roll_regression
-  @wp_roll_4x6_pm_medium_box
+  @mail_roll_4x6_pm_medium_box
   Scenario: Roll - 4" x 6" - PM Medium Box
 
 

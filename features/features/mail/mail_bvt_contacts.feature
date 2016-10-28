@@ -3,7 +3,7 @@ Feature: Contacts BVT
   Background:
     Given I am signed in as Mail shipper
 
-  @wp_bvt_contacts
+  @mail_bvt_contacts
   Scenario: Contacts
 
     Then Mail: Select Shipping Label 5 x 8

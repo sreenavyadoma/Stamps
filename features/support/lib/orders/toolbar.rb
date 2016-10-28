@@ -430,7 +430,7 @@ module Stamps
               when 1
                 error_window.error_message.include? error_message
               else
-                stop_test "Illegal number of arguments."
+                "Illegal number of arguments.".should eql ""
             end
           end
 
@@ -454,7 +454,7 @@ module Stamps
                 selection = ElementWrapper.new(browser.span text: "Add/Edit Stores")
                 modal = Orders::Stores::ManageStores.new param
               else
-                stop_test "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores."
+                "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores.".should eql ""
             end
 
             20.times do
@@ -465,7 +465,7 @@ module Stamps
               selection.safe_click
               selection.safe_click
             end
-            stop_test "Unable to Toolbar Settings Menu Selection - #{menu_item}"
+            "Unable to Toolbar Settings Menu Selection - #{menu_item}".should eql ""
           end
 
           def general_settings
@@ -517,7 +517,7 @@ module Stamps
               when :awaiting_shipment
                 selection_str = "Move to Awaiting Shipment"
               else
-                stop_test "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment"
+                "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment".should eql ""
             end
 
             confirmation = MoveConfirmation.new param
@@ -529,8 +529,7 @@ module Stamps
               selection_label.safe_click
               return confirmation if confirmation.present?
             }
-
-            stop_test "Unable to select #{selection} from Move menu."
+            "Unable to select #{selection} from Move menu.".should eql ""
           end
 
           def tooltip
@@ -591,13 +590,13 @@ module Stamps
         end
 
         class AddButton < Browser::Modal
-          attr_reader :button, :initializing_db
+          attr_reader :button, :initializing_db, :loading_orders
 
           def initialize param
             super param
-            @button ||= ElementWrapper.new browser.span text: 'Add'
-            @initializing_db ||= ElementWrapper.new browser.div text: "Initializing Order Database"
-
+            @button ||= ElementWrapper.new browser.span(text: 'Add')
+            @initializing_db ||= ElementWrapper.new browser.div(text: "Initializing Order Database")
+            @loading_orders = ElementWrapper.new browser.div(text: "Loading orders...")
           end
 
           def order_details
@@ -611,17 +610,75 @@ module Stamps
               begin
                 button.safe_click
 
-                if initializing_db.present?
-                  30.times do
-                    logger.info initializing_db.text
-                    sleep1
+                details.wait_until_present 6
+
+                15.times do
+                  if initializing_db.present?
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    initializing_db.safely_wait_while_present 2
                     break unless initializing_db.present?
+                  end
+                end
+
+                15.times do
+                  if loading_orders.present?
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    loading_orders.safely_wait_while_present 2
+                  else
+                    break
                   end
                 end
 
                 "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
+
+                15.times do
+                  if initializing_db.present?
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    initializing_db.safely_wait_while_present 2
+                    break unless initializing_db.present?
+                  end
+                end
+
+                15.times do
+                  if loading_orders.present?
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    loading_orders.safely_wait_while_present 2
+                  else
+                    break
+                  end
+                end
+
                 details.wait_until_present 8
+
+                15.times do
+                  if initializing_db.present?
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    initializing_db.safely_wait_while_present 2
+                    break unless initializing_db.present?
+                  end
+                end
+
+                15.times do
+                  if loading_orders.present?
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    loading_orders.safely_wait_while_present 2
+                  else
+                    break
+                  end
+                end
 
                 if details.present?
                   details_order_id = details.toolbar.order_id
@@ -640,8 +697,12 @@ module Stamps
 
             "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
+            logger.info "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}" if initializing_db.present?
+
+            initializing_db.safely_wait_while_present 15
+
             if initializing_db.present?
-              message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text} "
+              message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}"
               logger.info message
               message.should eql ""
             end

@@ -9,12 +9,12 @@ Feature: Able to collapse and reopen details panel when click Add order
     Then Toolbar: Add
     Then Details: Collapse Panel
     Then Toolbar: Add
-    Then Details: Expect Panel Expanded
+    Then Details: Expect Panel is present
 
     Then Toolbar: Add
     Then Details: Collapse Panel
     Then Details: Expand panel
-    Then Details: Expect Panel Expanded
+    Then Details: Expect Panel is present
 
 
 

@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - Right Side
     Given I am signed in as Mail shipper
 
 
-  @wp_label_right_side
+  @mail_label_right_side
   Scenario: Right Side Shipping Label - 8 ½” x 11” Paper
 
     Then Mail: Select Shipping Label 8 x 11
@@ -23,7 +23,7 @@ Feature: Mail Shipping Label - Right Side
     Then Mail Print Modal: Print
     Then Sign out
 
-  @wp_label_right_side
+  @mail_label_right_side
   Scenario: Right Side Shipping Label -  5 ½” x 8 ½”
 
     Then Mail: Select Shipping Label 5 x 8
@@ -40,7 +40,7 @@ Feature: Mail Shipping Label - Right Side
     Then Mail Print Modal: Print
     Then Sign out
 
-  @wp_label_right_side
+  @mail_label_right_side
   Scenario: Right Side Shipping Label -  SDC-1200
 
     Then Mail: Select Shipping Label SDC-1200

@@ -6,8 +6,7 @@ Feature: Mail Roll - 4" x 6" - PSG Large Package
     Given I am signed in as Mail shipper
 
 
-  @wp_roll_regression
-  @wp_roll_4x6_psg_large_package
+  @mail_roll_4x6_psg_large_package
   Scenario: Roll - 4" x 6" - PSG Large Package
 
 

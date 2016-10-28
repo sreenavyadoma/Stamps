@@ -1,81 +1,51 @@
 
 Then /^Open Settings Modal$/ do
   logger.step "Open Settings Modal"
-  @general_settings = web_apps.orders.toolbar.settings.general_settings
+  @general_settings = web_apps.orders.toolbar.settings.general_settings #todo-Rob refactor General Settings.
 end
 # Services checkbox
 Then /^Settings: Check Services$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-
   @general_settings.services.check
-  logger.step "Show unavailable service #{(@general_settings.services.checked?)?"checked":"unchecked"}"
 end
 
 Then /^Settings:  Uncheck Services$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-
   @general_settings.services.uncheck
-  logger.step "Show unavailable service #{(@general_settings.services.checked?)?"checked":"unchecked"}"
 end
 
 # Services checkbox
 Then /^Settings: Check Print Confirm$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-
   @general_settings.print_confirm.check
-  logger.step "Settings: Check Print Confirm #{(@general_settings.print_confirm.checked?)?"checked":"unchecked"}"
 end
 
 Then /^Settings: Uncheck Print Confirm$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-
   @general_settings.print_confirm.uncheck
-  logger.step "Settings: Uncheck Print Confirm #{(@general_settings.print_confirm.checked?)?"checked":"unchecked"}"
 end
 
 # Contacts$ checkbox
 Then /^Settings: Check Contacts$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-
   @general_settings.contacts.check
-  logger.step "Settings: Check Contacts$ #{(@general_settings.contacts.checked?)?"checked":"unchecked"}"
 end
 
 Then /^Settings: Uncheck Contacts$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-
   @general_settings.contacts.uncheck
-  logger.step "Settings: Uncheck Contacts$ #{(@general_settings.contacts.checked?)?"checked":"unchecked"}"
 end
 
 # Shipments checkbox
 Then /^Settings: Check Shipments$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-
   @general_settings.shipments.check
-  logger.step "Settings: Check Shipments #{(@general_settings.shipments.checked?)?"checked":"unchecked"}"
 end
 
 Then /^Settings: Uncheck Shipments$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-
   @general_settings.shipments.uncheck
-  logger.step "Settings: Uncheck Shipments #{(@general_settings.shipments.checked?)?"checked":"unchecked"}"
 end
 
 # USPS Terms checkbox
 Then /^Settings: Check USPS Terms$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-
   @general_settings.usps_terms.check
-  logger.step "Settings: Check USPS Terms #{(@general_settings.usps_terms.checked?)?"checked":"unchecked"}"
 end
 
 Then /^Settings: Uncheck USPS Terms$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-
   @general_settings.usps_terms.uncheck
-  logger.step "Settings: Uncheck USPS Terms #{(@general_settings.usps_terms.checked?)?"checked":"unchecked"}"
 end
 
 # Set Logoff
@@ -104,9 +74,9 @@ Then /^Settings:  Set Logoff to 2 hours$/ do
   step "Settings:  Logoff set 2 hours"
 end
 
-Then /^Settings:  Logoff set (.*)$/ do |logoff|
-  step "Open Settings Modal" if @general_settings.nil?
-  case logoff.downcase
+Then /^Settings:  Logoff set (.*)$/ do |value|
+  logger.step "Settings:  Logoff set #{value}"
+  case value.downcase
     when "5 min"
       @general_settings.log_off.five_min
     when "10 min"
@@ -120,15 +90,9 @@ Then /^Settings:  Logoff set (.*)$/ do |logoff|
     when "2 hours"
       @general_settings.log_off.two_hours
     else
-      logger.step "Teardown: Begin tearing down test"
-      TestHelper.teardown
-      logger.step "Teardown: Done!"
-      raise "Invalid Logoff Selection -  Settings:  Logoff #{logoff}"
+      "Invalid Logoff Selection -  Settings:  Logoff #{value}".should eql "Settings"
   end
-  logger.step "Logoff if the application is inactive for #{@general_settings.log_off.text_box.text}"
 end
-
-# Set Postdate
 
 Then /^Settings:  Set Postdate to 12:00 a.m.$/ do
   step "Settings:  Postdate Set 12:00 a.m."
@@ -226,10 +190,9 @@ Then /^Settings:  Set Postdate to 11:00 p.m.$/ do
   step "Settings:  Postdate Set 11:00 p.m."
 end
 
-Then /^Settings:  Postdate Set (.*)$/ do |postdate|
-  step "Open Settings Modal" if @general_settings.nil?
-
-  case postdate.downcase
+Then /^Settings:  Postdate Set (.*)$/ do |value|
+  logger.set "Settings:  Postdate Set #{value}"
+  case value.downcase
     when "12:00 a.m."
       @general_settings.post_date.twelve_am
     when "1:00 a.m."
@@ -279,16 +242,10 @@ Then /^Settings:  Postdate Set (.*)$/ do |postdate|
     when "11:00 p.m."
       @general_settings.post_date.eleven_pm
     else
-      logger.step "Teardown: Begin tearing down test"
-      TestHelper.teardown
-      logger.step "Teardown: Done!"
-      raise "Invalid Postdate Selection -  Settings:  Postdate #{postdate}"
+      "Invalid Postdate Selection -  Settings:  Postdate #{value}".should eql "Settings"
   end
-  logger.step "Postdate mail to next day after #{@general_settings.log_off.text_box.text}"
 end
-
 # Mail Balance
-
 Then /^Settings:  Set Mail Balance to 0$/ do
   step 'Settings:  Mail Balance Set 0'
 end
@@ -320,11 +277,9 @@ Then /^Settings:  Set Mail Balance to 500$/ do
   step 'Settings:  Mail Balance Set 500'
 end
 
-
-Then /^Settings:  Mail Balance Set (.*)$/ do |postage_balance|
-  step "Open Settings Modal" if @general_settings.nil?
-
-  case postage_balance.downcase
+Then /^Settings:  Mail Balance Set (.*)$/ do |value|
+  logger.step "Settings:  Mail Balance Set #{value}"
+  case value.downcase
     when "0"
       @general_settings.postage_balance.zero
     when "10"
@@ -340,92 +295,55 @@ Then /^Settings:  Mail Balance Set (.*)$/ do |postage_balance|
     when "500"
       @general_settings.postage_balance.five_hundred
     else
-      logger.step "Teardown: Begin tearing down test"
-      TestHelper.teardown
-      logger.step "Teardown: Done!"
-      raise "Invalid Mail Balance Selection -  Settings:  Mail Balance #{postage_balance}"
+      "Invalid Mail Balance Selection -  Settings:  Mail Balance #{value}".should eql "Settings"
   end
-  logger.step "Notify me when mail balance drops below #{@general_settings.log_off.text_box.text}"
 end
-
-
-
-
-
 
 # Expectations
 #  Services
 Then /^Settings:  Expect Services Checked$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Expect Settings - Show unavailable service Checked"
-  logger.step "Test #{(@general_settings.services.checked?)?"Passed":"Failed"}"
   @general_settings.services.checked?.should be true
 end
 
 Then /^Settings:  Expect Services Unchecked$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Expect Settings - Show unavailable service Unchecked"
-  logger.step "Test #{(@general_settings.services.checked?)?"Passed":"Failed"}"
   @general_settings.services.checked?.should be false
 end
 
 #  Print Confirm
 Then /^Settings:  Expect Print Confirm Checked$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Expect Print Confirm Checked"
-  logger.step "Test #{(@general_settings.print_confirm.checked?)?"Passed":"Failed"}"
   @general_settings.print_confirm.checked?.should be true
 end
 
 Then /^Settings:  Expect Print Confirm Unchecked$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Expect Print Confirm Unchecked"
-  logger.step "Test #{(@general_settings.print_confirm.checked?)?"Passed":"Failed"}"
   @general_settings.print_confirm.checked?.should be false
 end
 
 #  Print Confirm
 Then /^Settings:  Expect USPS Terms Checked$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Expect USPS Terms Checked"
-  logger.step "Test #{(@general_settings.usps_terms.checked?)?"Passed":"Failed"}"
   @general_settings.usps_terms.checked?.should be true
 end
 
 Then /^Settings:  Expect USPS Terms Unchecked$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Expect USPS Terms Unchecked"
-  logger.step "Test #{(@general_settings.usps_terms.checked?)?"Passed":"Failed"}"
   @general_settings.usps_terms.checked?.should be false
 end
 
 #  Contacts
 Then /^Settings:  Expect Contacts Checked$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Expect Contacts Checked"
-  logger.step "Test #{(@general_settings.contacts.checked?)?"Passed":"Failed"}"
   @general_settings.contacts.checked?.should be true
 end
 
 Then /^Settings:  Expect Contacts Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Expect Contacts Unchecked"
-  logger.step "Test #{(@general_settings.contacts.checked?)?"Passed":"Failed"}"
   @general_settings.contacts.checked?.should be false
 end
 
 #  Shipments
 Then /^Settings:  Expect Shipments Checked$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Expect Shipments Checked"
-  logger.step "Test #{(@general_settings.shipments.checked?)?"Passed":"Failed"}"
   @general_settings.shipments.checked?.should be true
 end
 
 Then /^Settings:  Expect Shipments Unchecked$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Expect Shipments Unchecked"
-  logger.step "Test #{(@general_settings.shipments.checked?)?"Passed":"Failed"}"
   @general_settings.shipments.checked?.should be false
 end
 
@@ -456,9 +374,6 @@ end
 
 Then /^Settings:  Expect Logoff is (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
-
-  logger.step "Settings:  Expect Logoff is set for #{expectation}"
-  logger.step "Test #{(@general_settings.log_off.text_box.text.include? expectation)?"Passed":"Failed"}"
   @general_settings.log_off.text_box.text.should eql expectation
 end
 
@@ -561,9 +476,6 @@ end
 
 Then /^Settings:  Expect Postdate is (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Expect Postdate is #{expectation}"
-
-  logger.step "Test #{(@general_settings.post_date.text_box.text == expectation)?"Passed":"Failed"}"
   @general_settings.post_date.text_box.text.should eql expectation
 end
 
@@ -597,427 +509,295 @@ Then /^Settings:  Expect Mail Balance set to 500$/ do
 end
 
 Then /^Settings:  Expect Mail Balance is (.*)$/ do |expectation|
-  step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Expect Mail Balance is $#{expectation}"
-
-  logger.step "Test #{(@general_settings.postage_balance.text_box.text == expectation)?"Passed":"Failed"}"
   @general_settings.postage_balance.text_box.text.should eql expectation
 end
 
 # Reset Fields
 
 Then /^Settings:  Open Reset Fields Modal$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  logger.step "Settings:  Open Reset Fields Modal"
-
   @reset_fields = @general_settings.reset_fields
 end
 
 Then /^Reset Fields:  Check Service$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
-  logger.step "Reset Fields:  Check Service"
   @reset_fields.service.check
 end
 
 Then /^Reset Fields:  Uncheck Service$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
-  logger.step "Reset Fields:  Uncheck Service"
   @reset_fields.service.uncheck
 end
 
 Then /^Reset Fields:  Expect Service Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
-  logger.step "Reset Fields:  Expect Service Checked"
-
-  logger.step "Test #{(@reset_fields.service.checked?)?"Passed":"Failed"}"
   @reset_fields.service.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Service Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
-  logger.step "Reset Fields:  Expect Service Unchecked"
-
-  logger.step "Test #{(@reset_fields.service.checked?)?"Failed":"Passed"}"
   @reset_fields.service.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Weight$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
-  logger.step "Reset Fields:  Check Weight"
   @reset_fields.weight.checkbox.check
 end
 
 Then /^Reset Fields:  Uncheck Weight$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Weight"
   @reset_fields.weight.checkbox.uncheck
 end
 
 Then /^Reset Fields:  Expect Weight Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Weight Checked"
-
-  logger.step "Test #{(@reset_fields.weight.checkbox.checked?)?"Passed":"Failed"}"
   @reset_fields.weight.checkbox.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Weight Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Weight Unchecked"
-
-  logger.step "Test #{(@reset_fields.weight.checkbox.checked?)?"Failed":"Passed"}"
   @reset_fields.weight.checkbox.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Dimensions$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Check Weight"
   @reset_fields.dimensions.checkbox.check
 end
 
 Then /^Reset Fields:  Uncheck Dimensions$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Weight"
   @reset_fields.dimensions.checkbox.uncheck
 end
 
 Then /^Reset Fields:  Expect Dimensions Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Dimensions Checked"
-
-  logger.step "Test #{(@reset_fields.dimensions.checkbox.checked?)?"Passed":"Failed"}"
   @reset_fields.dimensions.checkbox.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Dimensions Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Dimensions Unchecked"
-
-  logger.step "Test #{(@reset_fields.dimensions.checkbox.checked?)?"Failed":"Passed"}"
   @reset_fields.dimensions.checkbox.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Ship to Address$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Check Ship to Address"
   @reset_fields.ship_to_address.check
-
 end
 
 Then /^Reset Fields:  Uncheck Ship to Address$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Ship to Address"
   @reset_fields.ship_to_address.uncheck
 end
 
 
 Then /^Reset Fields:  Expect Ship to Address Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Ship to Address Checked"
-
-  logger.step "Test #{(@reset_fields.ship_to_address.checked?)?"Passed":"Failed"}"
   @reset_fields.ship_to_address.checked?.should be true
-
 end
 
 Then /^Reset Fields:  Expect Ship to Address Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Ship to Address Unchecked"
-
-  logger.step "Test #{(@reset_fields.ship_to_address.checked?)?"Failed":"Passed"}"
   @reset_fields.ship_to_address.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Tracking$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Check Tracking"
   @reset_fields.tracking.check
 end
 
 Then /^Reset Fields:  Uncheck Tracking$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Tracking"
   @reset_fields.tracking.uncheck
 end
 
 Then /^Reset Fields:  Expect Tracking Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Tracking Checked"
-
-  logger.step "Test #{(@reset_fields.tracking.checked?)?"Passed":"Failed"}"
   @reset_fields.tracking.checked?.should be true
-
 end
 
 Then /^Reset Fields:  Expect Tracking Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Tracking Unchecked"
-
-  logger.step "Test #{(@reset_fields.tracking.checked?)?"Failed":"Passed"}"
   @reset_fields.tracking.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Extra Services$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
-  logger.step "Reset Fields:  Check Extra Services"
+    logger.step "Reset Fields:  Check Extra Services"
   @reset_fields.extra_services.check
 end
 
 Then /^Reset Fields:  Uncheck Extra Services$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Extra Services"
   @reset_fields.extra_services.uncheck
 end
 
 Then /^Reset Fields:  Expect Extra Services Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Extra Services Checked"
-
-  logger.step "Test #{(@reset_fields.extra_services.checked?)?"Passed":"Failed"}"
   @reset_fields.extra_services.checked?.should be true
 
 end
 
 Then /^Reset Fields:  Expect Extra Services Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Extra Services Unchecked"
-
-  logger.step "Test #{(@reset_fields.extra_services.checked?)?"Failed":"Passed"}"
   @reset_fields.extra_services.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Insurance$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Check Insurance"
   @reset_fields.insurance.check
 end
 
 Then /^Reset Fields:  Uncheck Insurance$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Insurance"
   @reset_fields.insurance.uncheck
 end
 
 Then /^Reset Fields:  Expect Insurance Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Insurance Checked"
-
-  logger.step "Test #{(@reset_fields.insurance.checked?)?"Passed":"Failed"}"
   @reset_fields.insurance.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Insurance Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Insurance Unchecked"
-
-  logger.step "Test #{(@reset_fields.insurance.checked?)?"Failed":"Passed"}"
   @reset_fields.insurance.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Reference Numbers$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Check Reference Number"
   @reset_fields.reference_numbers.check
-
 end
 
 Then /^Reset Fields:  Uncheck Reference Numbers$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Reference Numbers"
   @reset_fields.reference_numbers.uncheck
-
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Reference Numbers Checked"
-
-  logger.step "Test #{(@reset_fields.reference_numbers.checked?)?"Passed":"Failed"}"
   @reset_fields.reference_numbers.checked?.should be true
 
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Reference Numbers Unchecked"
-
-  logger.step "Test #{(@reset_fields.reference_numbers.checked?)?"Failed":"Passed"}"
   @reset_fields.reference_numbers.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Cost Code$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Check Cost Code"
   @reset_fields.cost_code.check
 end
 
 Then /^Reset Fields:  Uncheck Cost Code$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Cost Code"
   @reset_fields.cost_code.uncheck
 end
 
 Then /^Reset Fields:  Expect Cost Code Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Cost Code Checked"
-
-  logger.step "Test #{(@reset_fields.insurance.checked?)?"Passed":"Failed"}"
   @reset_fields.cost_code.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Cost Code Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Cost Code Unchecked"
-
-  logger.step "Test #{(@reset_fields.insurance.checked?)?"Failed":"Passed"}"
   @reset_fields.cost_code.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Customs$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Check Customs"
   @reset_fields.customs.check
 end
 
 Then /^Reset Fields:  Uncheck Customs$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Customs"
   @reset_fields.customs.uncheck
 end
 
 Then /^Reset Fields:  Expect Customs Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Customs Checked"
-
-  logger.step "Test #{(@reset_fields.customs.checked?)?"Passed":"Failed"}"
   @reset_fields.customs.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Customs Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Customs Unchecked"
-
-  logger.step "Test #{(@reset_fields.customs.checked?)?"Failed":"Passed"}"
   @reset_fields.customs.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Quantity$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Check Quantity"
   @reset_fields.quantity.check
 end
 
 Then /^Reset Fields:  Uncheck Quantity$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Quantity"
   @reset_fields.quantity.uncheck
 end
 
 Then /^Reset Fields:  Expect Quantity Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Quantity Checked"
-
-  logger.step "Test #{(@reset_fields.quantity.checked?)?"Passed":"Failed"}"
   @reset_fields.quantity.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Quantity Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Quantity Unchecked"
-
-  logger.step "Test #{(@reset_fields.quantity.checked?)?"Failed":"Passed"}"
   @reset_fields.quantity.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Stamps Amount$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Check Stamps Amount"
   @reset_fields.stamps_amount.check
 end
 
 Then /^Reset Fields:  Uncheck Stamps Amount$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Stamps Amount"
   @reset_fields.stamps_amount.uncheck
 end
 
 Then /^Reset Fields:  Expect Stamps Amount Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Stamps Amount Checked"
-
-  logger.step "Test #{(@reset_fields.stamps_amount.checked?)?"Passed":"Failed"}"
   @reset_fields.stamps_amount.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Stamps Amount Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Stamps Amount Unchecked"
-
-  logger.step "Test #{(@reset_fields.stamps_amount.checked?)?"Failed":"Passed"}"
   @reset_fields.stamps_amount.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Auto-Advance Label Position$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Check Auto-Advance Label Position"
   @reset_fields.auto_advance_label_position.check
-
 end
 
 Then /^Reset Fields:  Uncheck Auto-Advance Label Position$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Uncheck Auto-Advance Label Position"
   @reset_fields.auto_advance_label_position.uncheck
-
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Checked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Auto-Advance Label Position Checked"
-
-  logger.step "Test #{(@reset_fields.auto_advance_label_position.checked?)?"Passed":"Failed"}"
   @reset_fields.auto_advance_label_position.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Expect Auto-Advance Label Position Unchecked"
-
-  logger.step "Test #{(@reset_fields.auto_advance_label_position.checked?)?"Failed":"Passed"}"
   @reset_fields.auto_advance_label_position.checked?.should be false
 end
 
 Then /^Reset Fields:  Set Weight to (\d+) lbs (\d+) oz$/ do |lbs, oz|
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step "Reset Fields:  Set Weight to #{lbs} lbs #{oz} oz"
-
   step "Reset Fields:  Check Weight"
   @reset_fields.weight.lbs.set lbs
   @reset_fields.weight.oz.set oz
 end
 
 Then /^Reset Fields:  Expect Weight lbs equals (\d+)$/ do |lbs|
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step  "Reset Fields:  Expect Weight lbs equals #{lbs}"
 
   step "Reset Fields:  Check Weight"
-  logger.step "Test #{(@reset_fields.weight.lbs.text_box.text.to_i == lbs.to_i)?"Passed":"Faild"}"
   @reset_fields.weight.lbs.text_box.text.to_i.should eql lbs.to_i
 end
 
 Then /^Reset Fields:  Expect Weight oz equals (\d+)$/ do |oz|
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step  "Reset Fields:  Expect Weight oz equals #{oz}"
-
   step "Reset Fields:  Check Weight"
-  logger.step "Test #{(@reset_fields.weight.oz.text_box.text.to_i == oz.to_i)?"Passed":"Faild"}"
   @reset_fields.weight.oz.text_box.text.to_i.should eql oz.to_i
 end
 
 Then /^Reset Fields:  Set Dimensions to length (\d+), width (\d+), height (\d+)$/ do |length, width, height|
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step  "Reset Fields:  Set Dimensions to length #{length}, width #{width}, height #{height}"
-
   step "Reset Fields:  Check Dimensions"
   @reset_fields.dimensions.length.set length
   @reset_fields.dimensions.width.set width
@@ -1025,29 +805,20 @@ Then /^Reset Fields:  Set Dimensions to length (\d+), width (\d+), height (\d+)$
 end
 
 Then /^Reset Fields:  Expect Dimensions to length equals (\d+)$/ do |length|
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step  "Reset Fields:  Expect Dimensions to length equals #{length}"
-
   step "Reset Fields:  Check Dimensions"
-  logger.step "Test #{(@reset_fields.dimensions.length.text_box.text.to_i == length.to_i)?"Passed":"Faild"}"
   @reset_fields.dimensions.length.text_box.text.to_i.should eql length.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to width equals (\d+)$/ do |width|
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step  "Reset Fields:  Expect Dimensions to width equals #{width}"
-
   step "Reset Fields:  Check Dimensions"
-  logger.step "Test #{(@reset_fields.dimensions.width.text_box.text.to_i == width.to_i)?"Passed":"Faild"}"
   @reset_fields.dimensions.width.text_box.text.to_i.should eql width.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to height equals (\d+)$/ do |height|
-  step "Settings:  Open Reset Fields Modal" if @reset_fields.nil?
   logger.step  "Reset Fields:  Expect Dimensions to height equals #{height}"
-
   step "Reset Fields:  Check Dimensions"
-  logger.step "Test #{(@reset_fields.dimensions.height.text_box.text.to_i == height.to_i)?"Passed":"Faild"}"
   @reset_fields.dimensions.height.text_box.text.to_i.should eql height.to_i
 end
 
@@ -1060,14 +831,12 @@ Then /^Settings:  Save$/ do
   step "Open Settings Modal" if @general_settings.nil?
   logger.step "Settings:  Save"
   @general_settings.save
-  logger.step "Settings #{(@general_settings.present?)?"was not saved":"Saved"}"
 end
 
 Then /^Settings:  Close$/ do
   step "Open Settings Modal" if @general_settings.nil?
   logger.step "Settings:  Close"
   @general_settings.close
-  logger.step "Settings #{(@general_settings.present?)?"was not closed":"Closed"}"
 end
 
 

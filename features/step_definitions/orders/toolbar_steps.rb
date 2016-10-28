@@ -1,31 +1,37 @@
 Then /^Toolbar: Add$/ do
-  logger.step "Toolbar: Add"
-  web_apps.orders.grid.checkbox.uncheck 1
-  @order_details = web_apps.orders.toolbar.add.order_details
-  @details_form_data[:order_id] = @order_details.toolbar.order_id
-  @details_form_data[:old_balance] = web_apps.navigation_bar.balance.amount
-  step "Save Shipping Costs Data"
-  logger.step "Saved Order ID #{@details_form_data[:order_id]}"
-  @details_form_data[:order_id] = @details_form_data[:order_id]
-  @details_form_data[:awaiting_shipment_count] = web_apps.orders.filter.awaiting_shipment_count
-  @item_count = 0
-  @index = 0
+  begin
+    logger.step "Toolbar: Add"
+    web_apps.orders.grid.checkbox.uncheck 1
+    @order_details = web_apps.orders.toolbar.add.order_details
+    test_data[:order_id] = @order_details.toolbar.order_id
+    test_data[:old_balance] = web_apps.navigation_bar.balance.amount
+    step "Save Shipping Costs Data"
+    logger.step "Saved Order ID #{test_data[:order_id]}"
+    test_data[:order_id] = test_data[:order_id]
+    test_data[:awaiting_shipment_count] = web_apps.orders.filter.awaiting_shipment_count
+    @item_count = 0
+    @index = 0
+  rescue Exception => e
+    logger.error e.message
+    logger.error e.backtrace.join("\n")
+    e.message.should eql "Unable to add new orders, something went wrong."
+  end
 end
 
 Then /^Save Shipping Costs Data$/ do
   logger.step "Save Shipping Costs Data"
-  @details_form_data[:service_cost] = web_apps.orders.details.service.cost
-  @details_form_data[:insure_for_cost] = web_apps.orders.details.insure_for.cost
-  @details_form_data[:tracking_cost] = web_apps.orders.details.tracking.cost
-  @details_form_data[:total_ship_cost] = web_apps.orders.details.footer.total_ship_cost
+  test_data[:service_cost] = web_apps.orders.details.service.cost
+  test_data[:insure_for_cost] = web_apps.orders.details.insure_for.cost
+  test_data[:tracking_cost] = web_apps.orders.details.tracking.cost
+  test_data[:total_ship_cost] = web_apps.orders.details.footer.total_ship_cost
 end
 
 Then /^Toolbar: Move to Shipped$/ do
   logger.step "Toolbar: Move to Shipped"
   grid = web_apps.orders.grid
-  raise "Order ID #{@details_form_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @details_form_data[:order_id]) > 0
+  raise "Order ID #{test_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num test_data[:order_id]) > 0
   grid.order_date.sort_descending
-  grid.checkbox.check_order @details_form_data[:order_id]
+  grid.checkbox.check_order test_data[:order_id]
   grid.toolbar.move.to_shipped.cancel
   grid.toolbar.move.to_shipped.move
 end
@@ -33,9 +39,9 @@ end
 Then /^Toolbar: Move to Canceled$/ do
   logger.step "Toolbar: Move to Canceled"
   grid = web_apps.orders.grid
-  raise "Order ID #{@details_form_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num @details_form_data[:order_id]) > 0
+  raise "Order ID #{test_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num test_data[:order_id]) > 0
   grid.order_date.sort_descending
-  grid.checkbox.check_order @details_form_data[:order_id]
+  grid.checkbox.check_order test_data[:order_id]
   grid.toolbar.move.to_canceled.cancel
   grid.toolbar.move.to_canceled.move
 end
@@ -84,27 +90,27 @@ end
 Then /^Toolbar: Add second order$/ do
   logger.step "Toolbar: Add second order"
   @order_details = web_apps.orders.toolbar.add.order_details
-  @details_form_data[:order_id_2] = @order_details.toolbar.order_id
+  test_data[:order_id_2] = @order_details.toolbar.order_id
 end
 
 Then /^Toolbar: Add third order$/ do
   logger.step "Toolbar: Add third order"
   @order_details = web_apps.orders.toolbar.add.order_details
-  @details_form_data[:order_id_3] = @order_details.toolbar.order_id
+  test_data[:order_id_3] = @order_details.toolbar.order_id
 end
 
 Then /^Add a second order$/ do
   logger.step "Add a second order"
   first_row_order_id = web_apps.orders.grid.order_id.row 1
   5.times{
-    @details_form_data[:order_id_2] = web_apps.orders.toolbar.add.order_details_shipping_address_window
-    if first_row_order_id.include? @details_form_data[:order_id]
+    test_data[:order_id_2] = web_apps.orders.toolbar.add.order_details_shipping_address_window
+    if first_row_order_id.include? test_data[:order_id]
       sleep(3)
     end
-    break unless first_row_order_id.include? @details_form_data[:order_id_2]
+    break unless first_row_order_id.include? test_data[:order_id_2]
   }
-  logger.step "Second Order Id:  #{@details_form_data[:order_id_2]}"
-  web_apps.orders.grid.checkbox.edit @details_form_data[:order_id_2]
+  logger.step "Second Order Id:  #{test_data[:order_id_2]}"
+  web_apps.orders.grid.checkbox.edit test_data[:order_id_2]
 end
 
 Then /^Fail the test$/ do

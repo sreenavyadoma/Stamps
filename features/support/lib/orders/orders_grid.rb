@@ -59,19 +59,11 @@ module Stamps
 
         def grid_text_by_id column, order_id
           scroll column
-          row = row_number order_id
-          scroll column
-          logger.info "Retrieving #{GRID_COLUMNS[column]} for Order ID #{order_id}...."
-          data = grid_text column, row
-          logger.info "Column:  #{GRID_COLUMNS[column]}, Order ID #{order_id}, Row #{row}, Data #{data}"
-          data
+          grid_text(column, row_number(order_id))
         end
 
         def row_count
-          tables = browser.tables css: "div[id^=ordersGrid]>div>div>table"
-          count = tables.size
-          logger.info "Total Number of Orders on Grid:  #{count}"
-          count.to_i
+          browser.tables(css: "div[id^=ordersGrid]>div>div>table").size.to_i
         end
 
         def scroll column
@@ -136,8 +128,7 @@ module Stamps
           fields.each_with_index { |div, index|
             row_text = element_helper.text div
             if row_text.include? order_id
-              row = index + 1 #row offset
-              logger.info "Order ID #{order_id} is in Row #{row}"
+              row = index + 1
               break
             end
           }
@@ -147,9 +138,7 @@ module Stamps
 
         def row_div number
           number.should be_truthy
-          div = browser.div css: "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]"
-          "Orders Grid Row number #{number} is not present".should eql "" unless div.present?
-          div
+          browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]")
         end
       end
 
@@ -654,13 +643,8 @@ module Stamps
 
         def ship_cost_error order_id
           scroll_into_view
-          row = row_number(order_id)
-          logger.info "Order ID: #{order_id} = Row #{row}"
-
-          ship_cost_field = grid_field :ship_cost, row
-
           begin
-            div = ship_cost_field.div
+            div = grid_field(:ship_cost, row_number(order_id)).div
             data_error = div.attribute_value "data-qtip"
           rescue
             data_error = ""
@@ -787,7 +771,19 @@ module Stamps
       end
 
       class GridCheckBox < Column
-        private
+        attr_reader :checkbox_element_hash
+
+        def initialize param
+          super param
+          @checkbox_element_hash ||= Hash.new
+        end
+
+        def scroll_into_view
+          field = ElementWrapper.new((browser.spans css: "div[componentid^=gridcolumn]").first)
+          field.scroll_into_view
+          field
+        end
+
         def checkbox_header
           scroll_into_view
 
@@ -798,12 +794,31 @@ module Stamps
           Stamps::Browser::CheckboxElement.new checkbox_field, check_verify_field, attribute, attrib_value_check
         end
 
-        public
+        def check_all *args
+          scroll_into_view
+          if args.length==1
+            if args[0].is_a? Hash
+              rows = args[0]
+              logger.info "Restoring #{} checked orders..."
+            else
+              "Invalid parameter exception.  This method expects a Hash of Web Elements.".should eql ""
+            end
+            rows.each do |hash_element|
+              row_number = hash_element[0]
+              checked = hash_element[1]
+              if checked
+                check row_number
+                logger.info "Row #{row_number} #{checked? row_number}"
+              end
+            end
+          else
+            checkbox_header.check
+          end
+        end
 
-        def scroll_into_view
-          field = ElementWrapper.new((browser.spans css: "div[componentid^=gridcolumn]").first)
-          field.scroll_into_view
-          field
+        def uncheck_all
+          scroll_into_view
+          checkbox_header.uncheck
         end
 
         def row row
@@ -826,73 +841,42 @@ module Stamps
           uncheck row_number(order_id)
         end
 
+        def checkbox_element number
+          if checkbox_element_hash.has_key?(number)
+            checkbox_element_hash[number]
+          else
+            checkbox_field = row_div(number)
+            verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
+            checkbox_element_hash[number] = CheckboxElement.new checkbox_field, verify_field, "class", "grid-item-selected"
+          end
+        end
+
         def check number
           scroll_into_view
           if size > 0
-            checkbox_field = row_div number
-            verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-            checkbox = CheckboxElement.new checkbox_field, verify_field, "class", "grid-item-selected"
-            checkbox.check
-            logger.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
+            checkbox_element(number).check
+            checked?(number).should be true
           else
-            logger.info "Grid is empty"
             "Unable to check order number #{number}".should eql "Grid is empty"
           end
-          checked?(number).should be true
         end
 
         def uncheck number
           scroll_into_view
           if size > 0
-            checkbox_field = row_div number
-            verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-            checkbox = CheckboxElement.new checkbox_field, verify_field, "class", "grid-item-selected"
-            checkbox.uncheck
-            logger.info "Row #{number} #{(checkbox.checked?)?"checked":"unchecked"}."
+            checkbox_element(number).uncheck
             checked?(number).should be false
           end
         end
 
         def checked? number
           scroll_into_view
-          checkbox_field = row_div number
-          verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-          checkbox = CheckboxElement.new checkbox_field, verify_field, "class", "grid-item-selected"
-          checkbox.checked?
+          checkbox_element(number).checked?
         end
 
         def order_checked? order_number
           scroll_into_view
           checked? row_number order_number
-        end
-
-        def check_all *args
-          scroll_into_view
-          if args.length==1
-            if args[0].is_a? Hash
-              rows = args[0]
-              logger.info "Restoring #{} checked orders..."
-            else
-              stop_test "Invalid parameter exception.  This method expects a Hash of Web Elements."
-            end
-
-            rows.each do |hash_element|
-              row_number = hash_element[0]
-              checked = hash_element[1]
-              if checked
-                check row_number
-                logger.info "Row #{row_number} #{checked? row_number}"
-              end
-
-            end
-          else
-            checkbox_header.check
-          end
-        end
-
-        def uncheck_all
-          scroll_into_view
-          checkbox_header.uncheck
         end
 
         def checked_rows *args

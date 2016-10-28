@@ -23,10 +23,8 @@ module Stamps
     end
 
     def message message
-
-      message = repeat message, 60 if message.size==1
-
       begin
+        message = repeat message, 25 if message.size==1
         @logger.info "#{@test_name} :: #{message}"
       rescue
         # ignore
@@ -36,6 +34,7 @@ module Stamps
 
     def step message
       begin
+        message = repeat message, 25 if message.size==1
         (@logger.info "#{@test_name} :: #{message}")
       rescue
         # ignore
@@ -45,6 +44,7 @@ module Stamps
 
     def info message
       begin
+        message = repeat message, 25 if message.size==1
         (@logger.info "#{@test_name} :: #{message}") if TestHelper.verbose
       rescue
         # ignore
@@ -54,6 +54,7 @@ module Stamps
 
     def warn message
       begin
+        message = repeat message, 25 if message.size==1
         (@logger.warn "#{@test_name} :: #{message}") if TestHelper.verbose
       rescue
         # ignore
@@ -63,6 +64,7 @@ module Stamps
 
     def error message
       begin
+        message = repeat message, 25 if message.size==1
         (@logger.error "#{@test_name} :: #{message}") if TestHelper.verbose
       rescue
         # ignore
@@ -72,6 +74,7 @@ module Stamps
 
     def fatal message
       begin
+        message = repeat message, 25 if message.size==1
         (@logger.fatal "#{@test_name} :: #{message}") if TestHelper.verbose
       rescue
         # ignore
@@ -81,6 +84,7 @@ module Stamps
 
     def debug message
       begin
+        message = repeat message, 25 if message.size==1
         @logger.debug "#{@test_name} :: #{message}"
       rescue
         #ignroe

@@ -6,8 +6,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - FCM Large Envelope
     Given I am signed in as Mail shipper
 
 
-  @wp_shipping_label_regression
-  @wp_sample_shipping_label_sdc1200_fcm_large_envelope
+  @mail_sample_shipping_label_sdc1200_fcm_large_envelope
   Scenario: Sample Shipping Label - SDC-1200 - FCM Large Envelope
 
     Then Mail: Select Shipping Label SDC-1200

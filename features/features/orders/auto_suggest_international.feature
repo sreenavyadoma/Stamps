@@ -4,7 +4,7 @@ Feature: International Address
   Background:
     Given I am signed in to Orders
 
-  @auto_suggest
+  @auto_suggest_international
   Scenario: Select International Address
 
     Then Toolbar: Add
@@ -28,3 +28,5 @@ Feature: International Address
     Then Details: Expect International Ship-To Email is autosuggest001.2@mailinator.com
 
     Then Sign out
+
+
