@@ -15,17 +15,191 @@ url_prefix:
 
 orders_credentials:
   stg:
-    stgstgstg:
-      usr: stgstgstg
+    details_edit_order:
+      usr: i992vss4lipq
       pw: pass111
-    stgstgstg:
-      usr: stgstgstg
+    details_services:
+      usr: mwn2ghor
       pw: pass111
-    stgstgstg:
-      usr: stgstgstg
+    grid_column_order:
+      usr: scscscscscscscscsc
       pw: pass111
-    stgstgstg:
-      usr: stgstgstg
+    details_flat_rate_no_weight_international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_flat_rate_no_weight_domestic:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_large_dimensions_pm:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_insure_for_box_unchecked_manual:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_insure_for_box_unchecked_imported:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international_customs_form_totals:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international_customs_form_edit_delete_item:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltip_customs_form:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_reference_no:
+      usr: scscscscscscscscsc
+      pw: pass111
+    customs_form_qty:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_ship_cost:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_placeholders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_insured_value:
+      usr: scscscscscscscscsc
+      pw: pass111
+    import_orders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    pagination:
+      usr: scscscscscscscscsc
+      pw: pass111
+    webreg_specify_username_jenkins:
+      usr: scscscscscscscscsc
+      pw: pass111
+    general_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_label_position:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_media:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_media_tooltips:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_label_position:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_many_orders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing_errors:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_sample:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_ship_cost_total:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_date:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up_expanded:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_print_label_position_layouts:
+      usr: scscscscscscscscsc
+      pw: pass111
+    nav_postage_balance_update:
+      usr: scscscscscscscscsc
+      pw: pass111
+    reprint:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cp72:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cn22:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_multiple_reprints:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking_defaults:
+      usr: scscscscscscscscsc
+      pw: pass111
+    parcel_select:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltips_services:
+      usr: scscscscscscscscsc
+      pw: pass111
+    filter_change_order_status:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    order_creation:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_cleansing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_management:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    inline_service_rates:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    purchasing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    change_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_on_thermal:
+      usr: scscscscscscscscsc
+      pw: pass111
+    sorting:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest_international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    new_country_code:
+      usr: scscscscscscscscsc
+      pw: pass111
+    fcm_selection_enabled:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_panel:
+      usr: scscscscscscscscsc
+      pw: pass111
+    multiple_order_total_cost:
+      usr: scscscscscscscscsc
+      pw: pass111
+    item_details:
+      usr: scscscscscscscscsc
       pw: pass111
     bvt_printing:
       usr: f32xij63p
@@ -249,25 +423,201 @@ orders_credentials:
     print_two_up_multiple_domestic_labels:
       usr: c1k4p8bga4cmg
       pw: pass111
-
   cc:
-    ccccc:
-      usr: ccccc
+    details_edit_order:
+      usr: stgstgstg
       pw: pass111
-    ccccc:
-      usr: ccccc
+    details_services:
+      usr: stgstgstg
       pw: pass111
-    ccccc:
-      usr: ccccc
+    grid_column_order:
+      usr: stgstgstg
       pw: pass111
-    ccccc:
-      usr: ccccc
+    details_flat_rate_no_weight_international:
+      usr: stgstgstg
       pw: pass111
-    ccccc:
-      usr: ccccc
+    details_flat_rate_no_weight_domestic:
+      usr: stgstgstg
       pw: pass111
-    ccccc:
-      usr: ccccc
+    details_large_dimensions_pm:
+      usr: stgstgstg
+      pw: pass111
+    details_insure_for_box_unchecked_manual:
+      usr: stgstgstg
+      pw: pass111
+    details_insure_for_box_unchecked_imported:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international_customs_form_totals:
+      usr: stgstgstg
+      pw: pass111
+    international_customs_form_edit_delete_item:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltip_customs_form:
+      usr: stgstgstg
+      pw: pass111
+    details_reference_no:
+      usr: stgstgstg
+      pw: pass111
+    customs_form_qty:
+      usr: stgstgstg
+      pw: pass111
+    grid_ship_cost:
+      usr: stgstgstg
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
+      usr: stgstgstg
+      pw: pass111
+    details_placeholders:
+      usr: stgstgstg
+      pw: pass111
+    grid_tracking:
+      usr: stgstgstg
+      pw: pass111
+    grid_insured_value:
+      usr: stgstgstg
+      pw: pass111
+    import_orders:
+      usr: stgstgstg
+      pw: pass111
+    pagination:
+      usr: stgstgstg
+      pw: pass111
+    webreg_specify_username_jenkins:
+      usr: scscscscscscscscsc
+      pw: pass111
+    general_settings:
+      usr: stgstgstg
+      pw: pass111
+    print_label_position:
+      usr: stgstgstg
+      pw: pass111
+    print_media:
+      usr: stgstgstg
+      pw: pass111
+    print_media_tooltips:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_label_position:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_many_orders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing_errors:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_sample:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_ship_cost_total:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_date:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up_expanded:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_print_label_position_layouts:
+      usr: scscscscscscscscsc
+      pw: pass111
+    nav_postage_balance_update:
+      usr: scscscscscscscscsc
+      pw: pass111
+    reprint:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cp72:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cn22:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_multiple_reprints:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking_defaults:
+      usr: scscscscscscscscsc
+      pw: pass111
+    parcel_select:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltips_services:
+      usr: scscscscscscscscsc
+      pw: pass111
+    filter_change_order_status:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    order_creation:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_cleansing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_management:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    inline_service_rates:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    purchasing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    change_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_on_thermal:
+      usr: scscscscscscscscsc
+      pw: pass111
+    sorting:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest_international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    new_country_code:
+      usr: scscscscscscscscsc
+      pw: pass111
+    fcm_selection_enabled:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_panel:
+      usr: scscscscscscscscsc
+      pw: pass111
+    multiple_order_total_cost:
+      usr: scscscscscscscscsc
+      pw: pass111
+    item_details:
+      usr: scscscscscscscscsc
+      pw: pass111
+    bvt_printing:
+      usr: f32xij63p
+      pw: pass111
+    bvt_international_shipping:
+      usr: vfknhokj9wq
+      pw: pass111
+    bvt_new_order:
+      usr: v8r4q2nb3dbv
       pw: pass111
     bvt_shipstation_updates_international:
       usr: ccje975fmb
@@ -310,14 +660,194 @@ orders_credentials:
       pw: pass111
 
   sc:
-    scscscsc:
-      usr: scscscsc
+    details_edit_order:
+      usr: i992vss4lipq
       pw: pass111
-    scscscsc:
-      usr: scscscsc
+    details_services:
+      usr: mwn2ghor
       pw: pass111
-    scscscsc:
-      usr: scscscsc
+    grid_column_order:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_flat_rate_no_weight_international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_flat_rate_no_weight_domestic:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_large_dimensions_pm:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_insure_for_box_unchecked_manual:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_insure_for_box_unchecked_imported:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international_customs_form_totals:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international_customs_form_edit_delete_item:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltip_customs_form:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_reference_no:
+      usr: scscscscscscscscsc
+      pw: pass111
+    customs_form_qty:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_ship_cost:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_placeholders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_insured_value:
+      usr: scscscscscscscscsc
+      pw: pass111
+    import_orders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    pagination:
+      usr: scscscscscscscscsc
+      pw: pass111
+    webreg_specify_username_jenkins:
+      usr: scscscscscscscscsc
+      pw: pass111
+    general_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_label_position:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_media:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_media_tooltips:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_label_position:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_many_orders:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing_errors:
+      usr: scscscscscscscscsc
+      pw: pass111
+    printing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_sample:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_ship_cost_total:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_date:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up_expanded:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_print_label_position_layouts:
+      usr: scscscscscscscscsc
+      pw: pass111
+    nav_postage_balance_update:
+      usr: scscscscscscscscsc
+      pw: pass111
+    reprint:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cp72:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_layouts_cn22:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_multiple_reprints:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking_defaults:
+      usr: scscscscscscscscsc
+      pw: pass111
+    parcel_select:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tooltips_services:
+      usr: scscscscscscscscsc
+      pw: pass111
+    filter_change_order_status:
+      usr: scscscscscscscscsc
+      pw: pass111
+    grid_tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    order_creation:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_cleansing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    address_management:
+      usr: scscscscscscscscsc
+      pw: pass111
+    tracking:
+      usr: scscscscscscscscsc
+      pw: pass111
+    inline_service_rates:
+      usr: scscscscscscscscsc
+      pw: pass111
+    international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    purchasing:
+      usr: scscscscscscscscsc
+      pw: pass111
+    change_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_on_thermal:
+      usr: scscscscscscscscsc
+      pw: pass111
+    sorting:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest:
+      usr: scscscscscscscscsc
+      pw: pass111
+    auto_suggest_international:
+      usr: scscscscscscscscsc
+      pw: pass111
+    new_country_code:
+      usr: scscscscscscscscsc
+      pw: pass111
+    fcm_selection_enabled:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_panel:
+      usr: scscscscscscscscsc
+      pw: pass111
+    multiple_order_total_cost:
+      usr: scscscscscscscscsc
+      pw: pass111
+    item_details:
+      usr: scscscscscscscscsc
+      pw: pass111
+    bvt_printing:
+      usr: f32xij63p
       pw: pass111
     bvt_international_shipping:
       usr: l1pcjtghjcj
@@ -382,7 +912,34 @@ mail_credentials:
     stgstgstg:
       usr: stgstgstg
       pw: pass111
-    stgstgstg:
+    international_customs_form_edit_delete_item:
+      usr: stgstgstg
+      pw: pass111
+    international_customs_form_totals:
+      usr: stgstgstg
+      pw: pass111
+    details_insure_for_box_unchecked_imported:
+      usr: stgstgstg
+      pw: pass111
+    details_insure_for_box_unchecked_manual:
+      usr: stgstgstg
+      pw: pass111
+    details_large_dimensions_pm:
+      usr: stgstgstg
+      pw: pass111
+    details_flat_rate_no_weight_domestic:
+      usr: stgstgstg
+      pw: pass111
+    details_flat_rate_no_weight_international:
+      usr: stgstgstg
+      pw: pass111
+    grid_column_order:
+      usr: stgstgstg
+      pw: pass111
+    details_services:
+      usr: stgstgstg
+      pw: pass111
+    details_edit_order:
       usr: stgstgstg
       pw: pass111
     mail_bvt_international:
@@ -428,6 +985,36 @@ mail_credentials:
     cccccccccccccccc:
       usr: cccccccccccccccc
       pw: pass111
+    international_customs_form_edit_delete_item:
+      usr: cccccccccccccccc
+      pw: pass111
+    international_customs_form_totals:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_insure_for_box_unchecked_imported:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_insure_for_box_unchecked_manual:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_large_dimensions_pm:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_flat_rate_no_weight_domestic:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_flat_rate_no_weight_international:
+      usr: cccccccccccccccc
+      pw: pass111
+    grid_column_order:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_services:
+      usr: cccccccccccccccc
+      pw: pass111
+    details_edit_order:
+      usr: cccccccccccccccc
+      pw: pass111
     mail_bvt_international:
       usr: wpqacc1006
       pw: pass111
@@ -455,21 +1042,6 @@ mail_credentials:
   sc:
     mail_authentication:
       usr: scxzc76ola293
-      pw: pass111
-    scscscscscscscscsc:
-      usr: scscscscscscscscsc
-      pw: pass111
-    scscscscscscscscsc:
-      usr: scscscscscscscscsc
-      pw: pass111
-    scscscscscscscscsc:
-      usr: scscscscscscscscsc
-      pw: pass111
-    scscscscscscscscsc:
-      usr: scscscscscscscscsc
-      pw: pass111
-    scscscscscscscscsc:
-      usr: scscscscscscscscsc
       pw: pass111
     mail_bvt_international:
       usr: nk0cvx3290y
