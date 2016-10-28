@@ -10,10 +10,12 @@ module Stamps
 
       case ENV['URL'].downcase
         when /sc/
+          url = "https://printext.qasc.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
-          browser.goto "https://printext.qasc.stamps.com/orders/healthcheck.aspx"
+          logger.message "Visit: #{url}"
+          browser.goto url
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
@@ -21,10 +23,12 @@ module Stamps
           logger.message "-"
 
         when /cc/
+          url = "https://printext.qacc.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
-          browser.goto "https://printext.qacc.stamps.com/orders/healthcheck.aspx"
+          logger.message "Visit: #{url}"
+          browser.goto url
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
@@ -32,10 +36,12 @@ module Stamps
           logger.message "-"
 
         when /stg/
+          url = "https://print.testing.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
-          browser.goto "https://print.testing.stamps.com/orders/healthcheck.aspx"
+          logger.message "Visit: #{url}"
+          browser.goto url
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
@@ -45,6 +51,8 @@ module Stamps
         else
           "#{ENV['URL']} is not a valid URL selection".should eql ""
       end
+
+      logger.message browser.text
 
       if browser.text.include? "Server Error"
         logger.error "\n#{browser.url}\n#{browser.text}"
@@ -56,7 +64,7 @@ module Stamps
         raise "\n#{browser.url}\n#{browser.text}"
       end
 
-      logger.info browser.url
+      logger.message browser.url
       browser.text.should include "All tests passed"
     end
 
