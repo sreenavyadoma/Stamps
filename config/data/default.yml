@@ -425,94 +425,94 @@ orders_credentials:
       pw: pass111
   cc:
     details_edit_order:
-      usr: stgstgstg
+      usr: txdq1khl
       pw: pass111
     details_services:
-      usr: stgstgstg
+      usr: mpanilrcqgxmz
       pw: pass111
     grid_column_order:
-      usr: stgstgstg
+      usr: p5ldl4kjt
       pw: pass111
     details_flat_rate_no_weight_international:
-      usr: stgstgstg
+      usr: lsv9xmm
       pw: pass111
     details_flat_rate_no_weight_domestic:
-      usr: stgstgstg
+      usr: i18yzz9pt3
       pw: pass111
     details_large_dimensions_pm:
-      usr: stgstgstg
+      usr: lmyc7on9t
       pw: pass111
     details_insure_for_box_unchecked_manual:
-      usr: stgstgstg
+      usr: ryzymjfr0s
       pw: pass111
     details_insure_for_box_unchecked_imported:
-      usr: scscscscscscscscsc
+      usr: h1di8lkr
       pw: pass111
     international_customs_form_totals:
-      usr: stgstgstg
+      usr: ifkirzik55td4h
       pw: pass111
     international_customs_form_edit_delete_item:
-      usr: scscscscscscscscsc
+      usr: ybz43m9mrp6x
       pw: pass111
     tooltip_customs_form:
-      usr: stgstgstg
+      usr: pbxeqimim
       pw: pass111
     details_reference_no:
-      usr: stgstgstg
+      usr: uughc31aenj
       pw: pass111
     customs_form_qty:
-      usr: stgstgstg
+      usr: w5s9lr2kett0
       pw: pass111
     grid_ship_cost:
-      usr: stgstgstg
+      usr: om8tabs4mx2
       pw: pass111
     print_dialog_thermal_number_of_labels_count:
-      usr: stgstgstg
+      usr: qfqd7nbzkjp9
       pw: pass111
     details_placeholders:
-      usr: stgstgstg
+      usr: za0xh2034rmu8
       pw: pass111
     grid_tracking:
-      usr: stgstgstg
+      usr: rxkuzwwclobat
       pw: pass111
     grid_insured_value:
-      usr: stgstgstg
+      usr: p74c4js
       pw: pass111
     import_orders:
-      usr: stgstgstg
+      usr: obeku8a
       pw: pass111
     pagination:
-      usr: stgstgstg
+      usr: i8ptwpv2n
       pw: pass111
     webreg_specify_username_jenkins:
-      usr: scscscscscscscscsc
+      usr: ydjliio
       pw: pass111
     general_settings:
-      usr: stgstgstg
+      usr: qp1z9dnytt62r
       pw: pass111
     print_label_position:
-      usr: stgstgstg
+      usr:
       pw: pass111
     print_media:
-      usr: stgstgstg
+      usr:
       pw: pass111
     print_media_tooltips:
-      usr: scscscscscscscscsc
+      usr:
       pw: pass111
     print_two_up:
-      usr: scscscscscscscscsc
+      usr:
       pw: pass111
     print_label_position:
-      usr: scscscscscscscscsc
+      usr:
       pw: pass111
     print_many_orders:
-      usr: scscscscscscscscsc
+      usr:
       pw: pass111
     printing_errors:
-      usr: scscscscscscscscsc
+      usr:
       pw: pass111
     printing:
-      usr: scscscscscscscscsc
+      usr: c7gc1ymot
       pw: pass111
     print_sample:
       usr: scscscscscscscscsc
