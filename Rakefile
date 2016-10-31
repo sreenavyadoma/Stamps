@@ -2,13 +2,7 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-
-
-
-#PERSONAL
-
-
-
+# QA DEV
 
 Cucumber::Rake::Task.new(:rob_cc) do |t|
   t.profile = 'rob_cc'
@@ -70,12 +64,7 @@ Cucumber::Rake::Task.new(:ray_dev) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-
-
 #ORDERS
-
-
-
 
 Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
