@@ -104,7 +104,7 @@ module Stamps
         end
 
         def column_number column_name
-          4.times do
+          5.times do
             begin
               column_str = GRID_COLUMNS[column_name]
               columns = column_fields
