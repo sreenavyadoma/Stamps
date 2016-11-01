@@ -14,7 +14,7 @@ Then /^Toolbar: Add$/ do
   rescue Exception => e
     logger.error e.message
     logger.error e.backtrace.join("\n")
-    e.message.should eql "Unable to add new orders, an exception occured #{e.backtrace.join("\n")}"
+    e.message.should eql "Unable to add new orders, an exception occured: #{e.backtrace.join("\n")}"
   end
 end
 

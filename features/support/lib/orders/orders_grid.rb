@@ -117,8 +117,7 @@ module Stamps
           rescue => e
             e.backtrace.join("\n").should eql "#{e.message}"
           end
-
-          "Can't get Column Name: #{column_name}".should eql "Unable to get column number for #{column_name}"
+          "Column Name: #{column_name}".should eql "Unable to get column number for #{column_name}"
         end
 
         def column_fields
