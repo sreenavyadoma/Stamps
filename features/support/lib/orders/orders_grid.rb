@@ -104,20 +104,22 @@ module Stamps
         end
 
         def column_number column_name
-          begin
-            column_str = GRID_COLUMNS[column_name]
-            columns = column_fields
-            columns.each_with_index do |column_field, index|
-              column_text = element_helper.text column_field
-              if column_text == column_str
-                logger.message "Grid:  #{column_str} is in column #{index+1}"
-                return index+1
+          4.times do
+            begin
+              column_str = GRID_COLUMNS[column_name]
+              columns = column_fields
+              columns.each_with_index do |column_field, index|
+                column_text = element_helper.text column_field
+                if column_text == column_str
+                  logger.message "Grid:  #{column_str} is in column #{index+1}"
+                  return index+1
+                end
               end
+            rescue => e
+              e.backtrace.join("\n").should eql "#{e.message}"
             end
-          rescue => e
-            e.backtrace.join("\n").should eql "#{e.message}"
           end
-          "Column Name: #{column_name}".should eql "Unable to get column number for #{column_name}"
+          #"Column Name: #{column_name}".should eql "Unable to get column number for #{column_name}"
         end
 
         def column_fields
