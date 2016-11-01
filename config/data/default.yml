@@ -663,7 +663,7 @@ orders_credentials:
 
   sc:
     details_edit_order:
-      usr: i992vss4lipq
+      usr: k042sbaxfh
       pw: pass111
     details_services:
       usr: mwn2ghor
@@ -941,9 +941,6 @@ mail_credentials:
     details_services:
       usr: stgstgstg
       pw: pass111
-    details_edit_order:
-      usr: stgstgstg
-      pw: pass111
     mail_bvt_international:
       usr: jho7vpgem5
       pw: pass111
@@ -1012,9 +1009,6 @@ mail_credentials:
       usr: cccccccccccccccc
       pw: pass111
     details_services:
-      usr: cccccccccccccccc
-      pw: pass111
-    details_edit_order:
       usr: cccccccccccccccc
       pw: pass111
     mail_bvt_international:
