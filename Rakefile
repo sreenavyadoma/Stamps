@@ -795,11 +795,6 @@ Cucumber::Rake::Task.new(:address_management) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:tracking_no) do |t|
-  t.profile = 'tracking'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:inline_service_rates) do |t|
   t.profile = 'inline_service_rates'
   t.cucumber_opts = "-p cuke_reports"
@@ -2042,11 +2037,6 @@ end
 
 Cucumber::Rake::Task.new(:mail_manage_shipping_addresses) do |t|
   t.profile = 'mail_manage_shipping_addresses'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_remember_username) do |t|
-  t.profile = 'mail_remember_username'
   t.cucumber_opts = "-p cuke_reports"
 end
 
