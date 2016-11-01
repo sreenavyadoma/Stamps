@@ -3,7 +3,7 @@ default: --profile cuke_reports --profile rob_cc
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 #qasc800 mail_bvt_international
-rob_cc: --tags @bvt_new_order --guess VERBOSE=true HEALTHCHECK=false WEB_APP=mail TEST=mail_authentication URL=cc BROWSER=ff FIREFOX_PROFILE=selenium #PW=pass111 USR= #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+rob_cc: --tags @details_flat_rate_no_weight_international --guess VERBOSE=true HEALTHCHECK=false WEB_APP=mail TEST=mail_authentication URL=cc BROWSER=ff FIREFOX_PROFILE=selenium #PW=pass111 USR= #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 
 rob_stg: --tags @mail_bvt_envelopes --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_sc: --tags @bvt_address_cleansing --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders URL=sc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc #yh95ws85j c2jinmzmu64 store parcel_select
@@ -116,8 +116,6 @@ print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess VERBOSE=false HEA
 # ORDERS REGRESSION
 details_edit_order: --tags @details_edit_order --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_edit_order
 details_services: --tags @details_services --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_services
-#eln5mw78g for general setting autofund testing in sc
-grid_column_order: --tags @grid_column_order --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_column_order
 details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_flat_rate_no_weight_international
 details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_flat_rate_no_weight_domestic
 details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_large_dimensions_pm
@@ -139,6 +137,7 @@ import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=false WEB
 pagination: --tags @pagination --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=pagination
 webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_specify_username_jenkins
 general_settings: --tags @general_settings --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=general_settings
+# do up to here.
 print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_label_position
 print_media: --tags @print_media --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_media
 print_media_tooltips: --tags @print_media_tooltips --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_media_tooltips
@@ -180,6 +179,9 @@ details_panel: --tags  @details_panel --guess VERBOSE=false HEALTHCHECK=false WE
 multiple_order_total_cost: --tags @multiple_order_total_cost --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=multiple_order_total_cost
 item_details: --tags @item_details --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=item_details
 
+# REGRESSION NOT INCLUDED
+grid_column_order: --tags @grid_column_order --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_column_order
+
 #need to reevaluate
 rules_domestic: --tags @rules_domestic --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=rules_domestic
 rules_international: --tags  @rules_international --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=rules_international
@@ -190,7 +192,6 @@ add_new_order_eva: --tags @add_new_order_eva --guess VERBOSE=false HEALTHCHECK=f
 
 local_rating: --tags @local_rating --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=local_rating
 local_rating_smoke_test: --tags @local_rating_smoke_test --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=local_rating_smoke_test
-
 import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=import_orders_ship_from_test
 
 # Stores
