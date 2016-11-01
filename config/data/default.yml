@@ -666,7 +666,7 @@ orders_credentials:
       usr: k042sbaxfh
       pw: pass111
     details_services:
-      usr: mwn2ghor
+      usr: ni53o49pxe
       pw: pass111
     grid_column_order:
       usr: scscscscscscscscsc
@@ -914,33 +914,6 @@ mail_credentials:
     stgstgstg:
       usr: stgstgstg
       pw: pass111
-    international_customs_form_edit_delete_item:
-      usr: stgstgstg
-      pw: pass111
-    international_customs_form_totals:
-      usr: stgstgstg
-      pw: pass111
-    details_insure_for_box_unchecked_imported:
-      usr: stgstgstg
-      pw: pass111
-    details_insure_for_box_unchecked_manual:
-      usr: stgstgstg
-      pw: pass111
-    details_large_dimensions_pm:
-      usr: stgstgstg
-      pw: pass111
-    details_flat_rate_no_weight_domestic:
-      usr: stgstgstg
-      pw: pass111
-    details_flat_rate_no_weight_international:
-      usr: stgstgstg
-      pw: pass111
-    grid_column_order:
-      usr: stgstgstg
-      pw: pass111
-    details_services:
-      usr: stgstgstg
-      pw: pass111
     mail_bvt_international:
       usr: jho7vpgem5
       pw: pass111
@@ -982,33 +955,6 @@ mail_credentials:
       usr: cccccccccccccccc
       pw: pass111
     cccccccccccccccc:
-      usr: cccccccccccccccc
-      pw: pass111
-    international_customs_form_edit_delete_item:
-      usr: cccccccccccccccc
-      pw: pass111
-    international_customs_form_totals:
-      usr: cccccccccccccccc
-      pw: pass111
-    details_insure_for_box_unchecked_imported:
-      usr: cccccccccccccccc
-      pw: pass111
-    details_insure_for_box_unchecked_manual:
-      usr: cccccccccccccccc
-      pw: pass111
-    details_large_dimensions_pm:
-      usr: cccccccccccccccc
-      pw: pass111
-    details_flat_rate_no_weight_domestic:
-      usr: cccccccccccccccc
-      pw: pass111
-    details_flat_rate_no_weight_international:
-      usr: cccccccccccccccc
-      pw: pass111
-    grid_column_order:
-      usr: cccccccccccccccc
-      pw: pass111
-    details_services:
       usr: cccccccccccccccc
       pw: pass111
     mail_bvt_international:
