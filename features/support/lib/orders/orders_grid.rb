@@ -128,18 +128,18 @@ module Stamps
 
         def row_number order_id
           scroll :order_id
-          row = 0
-          column_num = column_number(:order_id)
-          fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
-          fields.each_with_index { |div, index|
-            row_text = element_helper.text div
-            if row_text.include? order_id
-              row = index + 1
-              break
+          5.times do
+            column_num = column_number(:order_id)
+            fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
+            fields.each_with_index do |div, index|
+              row_text = element_helper.text div
+              if row_text.include? order_id
+                logger.message "Grid: Order ID #{order_id} is in row #{index+1}"
+                return index + 1
+              end
             end
-          }
-          "Unable to obtain row number for Order ID #{order_id}".should eql "" if row == 0
-          row
+          end
+          #"Unable to obtain row number for Order ID #{order_id}".should eql "" if row == 0
         end
 
         def row_div number
