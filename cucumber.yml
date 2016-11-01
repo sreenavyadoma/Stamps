@@ -1,9 +1,9 @@
-default: --profile cuke_reports --profile rob_stg
+default: --profile cuke_reports --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 #qasc800 mail_bvt_international
-rob_cc: --tags @mail_authentication --guess VERBOSE=true HEALTHCHECK=false WEB_APP=mail TEST=mail_authentication URL=cc BROWSER=ff FIREFOX_PROFILE=selenium #PW=pass111 USR= #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+rob_cc: --tags @bvt_new_order --guess VERBOSE=true HEALTHCHECK=false WEB_APP=mail TEST=mail_authentication URL=cc BROWSER=ff FIREFOX_PROFILE=selenium #PW=pass111 USR= #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 
 rob_stg: --tags @mail_bvt_envelopes --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_sc: --tags @bvt_address_cleansing --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders URL=sc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc #yh95ws85j c2jinmzmu64 store parcel_select

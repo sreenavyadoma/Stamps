@@ -283,7 +283,7 @@ end
 
 Then /^Grid: Expect Pounds is (\d+)$/ do |expectation|
   logger.step "Grid: Expect Pounds is #{expectation}"
-  10.times do
+  20.times do
     break if web_apps.orders.grid.weight.lbs(test_data[:order_id]).eql? expectation
   end
   web_apps.orders.grid.weight.lbs(test_data[:order_id]).should eql expectation
