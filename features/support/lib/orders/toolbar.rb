@@ -594,8 +594,8 @@ module Stamps
 
           def initialize param
             super param
-            @button ||= ElementWrapper.new browser.span text: 'Add'
-            @initializing_db ||= ElementWrapper.new browser.div text: "Initializing Order Database"
+            @button ||= ElementWrapper.new browser.span(text: 'Add')
+            @initializing_db ||= ElementWrapper.new browser.div(text: "Initializing Order Database")
             @loading_orders = ElementWrapper.new browser.div(text: "Loading orders...")
           end
 
@@ -610,20 +610,24 @@ module Stamps
               begin
                 button.safe_click
 
-                if initializing_db.present?
-                  30.times do
-                    logger.info initializing_db.text
-                    sleep1
+                details.wait_until_present 6
+
+                15.times do
+                  if initializing_db.present?
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    initializing_db.safely_wait_while_present 2
                     break unless initializing_db.present?
                   end
                 end
 
-                3.times do
+                15.times do
                   if loading_orders.present?
-                    logger.step loading_orders.safe_text
-                    logger.step loading_orders.safe_text
-                    logger.step loading_orders.safe_text
-                    loading_orders.safely_wait_while_present 5
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    loading_orders.safely_wait_while_present 2
                   else
                     break
                   end
@@ -631,7 +635,50 @@ module Stamps
 
                 "Server Error: #{server_error.text}".should eql "" if server_error.present?
 
+
+                15.times do
+                  if initializing_db.present?
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    initializing_db.safely_wait_while_present 2
+                    break unless initializing_db.present?
+                  end
+                end
+
+                15.times do
+                  if loading_orders.present?
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    loading_orders.safely_wait_while_present 2
+                  else
+                    break
+                  end
+                end
+
                 details.wait_until_present 8
+
+                15.times do
+                  if initializing_db.present?
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    logger.message initializing_db.text
+                    initializing_db.safely_wait_while_present 2
+                    break unless initializing_db.present?
+                  end
+                end
+
+                15.times do
+                  if loading_orders.present?
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    logger.message loading_orders.safe_text
+                    loading_orders.safely_wait_while_present 2
+                  else
+                    break
+                  end
+                end
 
                 if details.present?
                   details_order_id = details.toolbar.order_id
