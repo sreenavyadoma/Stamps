@@ -13,6 +13,8 @@ url_prefix:
   staging: mail.staging
   rating: printext.qacc
 
+#todo-rob sub divide usernames, bvt, printing, regression
+
 orders_credentials:
   stg:
     details_edit_order:
@@ -702,9 +704,6 @@ orders_credentials:
     grid_ship_cost:
       usr: scscscscscscscscsc
       pw: pass111
-    print_dialog_thermal_number_of_labels_count:
-      usr: scscscscscscscscsc
-      pw: pass111
     details_placeholders:
       usr: scscscscscscscscsc
       pw: pass111
@@ -724,6 +723,15 @@ orders_credentials:
       usr: scscscscscscscscsc
       pw: pass111
     general_settings:
+      usr: scscscscscscscscsc
+      pw: pass111
+    details_ship_cost_total:
+      usr: scscscscscscscscsc
+      pw: pass111
+    nav_postage_balance_update:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
       usr: scscscscscscscscsc
       pw: pass111
     print_label_position:
@@ -753,21 +761,6 @@ orders_credentials:
     print_sample:
       usr: scscscscscscscscsc
       pw: pass111
-    details_ship_cost_total:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_date:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_two_up_expanded:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_print_label_position_layouts:
-      usr: scscscscscscscscsc
-      pw: pass111
-    nav_postage_balance_update:
-      usr: scscscscscscscscsc
-      pw: pass111
     reprint:
       usr: scscscscscscscscsc
       pw: pass111
@@ -778,6 +771,18 @@ orders_credentials:
       usr: scscscscscscscscsc
       pw: pass111
     print_multiple_reprints:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_on_thermal:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_date:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_two_up_expanded:
+      usr: scscscscscscscscsc
+      pw: pass111
+    print_print_label_position_layouts:
       usr: scscscscscscscscsc
       pw: pass111
     tracking_defaults:
@@ -817,9 +822,6 @@ orders_credentials:
       usr: scscscscscscscscsc
       pw: pass111
     change_settings:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_on_thermal:
       usr: scscscscscscscscsc
       pw: pass111
     sorting:
