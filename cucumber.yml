@@ -133,13 +133,7 @@ print_dialog_thermal_number_of_labels_count: --tags @print_dialog_thermal_number
 details_placeholders: --tags @details_placeholders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_placeholders
 grid_tracking: --tags @grid_tracking --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_tracking
 grid_insured_value: --tags @grid_insured_value --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_insured_value
-import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=import_orders
-pagination: --tags @pagination --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=pagination
-webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_specify_username_jenkins
 general_settings: --tags @general_settings --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=general_settings
-# do up to here.
-print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_label_position
-print_media: --tags @print_media --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_media
 print_media_tooltips: --tags @print_media_tooltips --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_media_tooltips
 print_two_up: --tags @print_two_up --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_two_up
 print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_label_position
@@ -181,6 +175,12 @@ item_details: --tags @item_details --guess VERBOSE=false HEALTHCHECK=false WEB_A
 
 # REGRESSION NOT INCLUDED
 grid_column_order: --tags @grid_column_order --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=grid_column_order
+import_orders: --tags @import_orders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=import_orders
+pagination: --tags @pagination --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=pagination
+webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_specify_username_jenkins
+# DOES NOT EXIST
+print_label_position: --tags @print_label_position --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_label_position
+print_media: --tags @print_media --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=print_media
 
 #need to reevaluate
 rules_domestic: --tags @rules_domestic --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=rules_domestic
