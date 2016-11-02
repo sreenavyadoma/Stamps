@@ -347,7 +347,11 @@ end
 
 Then /^Details: Expect Service Cost is \$([0-9.]*)$/ do |expectation|
   logger.step "Details: Expect Service Cost is $#{expectation}"
-  web_apps.orders.details.service.cost.should eql expectation
+  expectation = expectation.to_f
+  10.times do
+    break if web_apps.orders.details.service.cost.to_f == expectation
+  end
+  web_apps.orders.details.service.cost.to_f.should eql expectation
 end
 
 Then /^Details: Expect Service Cost is greater than \$([0-9.]*)$/ do |expectation|
@@ -366,10 +370,11 @@ end
 
 Then /^Details: Expect Tracking Cost is \$([0-9.]*)$/ do |expectation|
   logger.step "Details: Expect Tracking Cost is #{expectation}"
+  expectation = expectation.to_f
   10.times do
-    break if web_apps.orders.details.tracking.cost == expectation
+    break if web_apps.orders.details.tracking.cost.to_f == expectation
   end
-  web_apps.orders.details.tracking.cost.should eql expectation
+  web_apps.orders.details.tracking.cost.to_f.should eql expectation
 end
 
 Then /^Details: Expect Tracking Cost is greater than \$([0-9.]*)$/ do |expectation|
@@ -383,42 +388,47 @@ end
 
 Then /^Details: Expect Pounds? is (.*)$/ do |expectation|
   logger.step "Details: Expect Pounds is #{expectation}"
+  expectation = expectation.to_f
   10.times do
-    break if web_apps.orders.details.weight.lbs.text_box.text == expectation
+    break if web_apps.orders.details.weight.lbs.text_box.text.to_f == expectation
   end
-  web_apps.orders.details.weight.lbs.text_box.text.should eql expectation
+  web_apps.orders.details.weight.lbs.text_box.text.to_f.should eql expectation
 end
 
 Then /^Details: Expect Ounces? is (.*)$/ do |expectation|
   logger.step "Details: Expect Ounces is  #{expectation}"
+  expectation = expectation.to_f
   10.times do
-    break if web_apps.orders.details.weight.oz.text_box.text == expectation
+    break if web_apps.orders.details.weight.oz.text_box.text.to_f == expectation
   end
-  web_apps.orders.details.weight.oz.text_box.text.should eql expectation
+  web_apps.orders.details.weight.oz.text_box.text.to_f.should eql expectation
 end
 
 Then /^Details: Expect Length is (\d+)$/ do |expectation|
   logger.step "Details: Expect Length is #{expectation}"
+  expectation = expectation.to_f
   10.times do
-    break if web_apps.orders.details.dimensions.length.text_box.text == expectation
+    break if web_apps.orders.details.dimensions.length.text_box.text.to_f == expectation
   end
-  web_apps.orders.details.dimensions.length.text_box.text.should eql expectation
+  web_apps.orders.details.dimensions.length.text_box.text.to_f.should eql expectation
 end
 
 Then /^Details: Expect Width is (\d+)$/ do |expectation|
   logger.step "Details: Expect Width is #{expectation}"
+  expectation = expectation.to_f
   10.times do
-    break if web_apps.orders.details.dimensions.width.text_box.text == expectation
+    break if web_apps.orders.details.dimensions.width.text_box.text.to_f == expectation
   end
-  web_apps.orders.details.dimensions.width.text_box.text.should eql expectation
+  web_apps.orders.details.dimensions.width.text_box.text.to_f.should eql expectation
 end
 
 Then /^Details: Expect Height is (\d+)$/ do |expectation|
   logger.step "Details: Expect Height is #{expectation}"
+  expectation = expectation.to_f
   10.times do
-    break if web_apps.orders.details.dimensions.height.text_box.text == expectation
+    break if web_apps.orders.details.dimensions.height.text_box.to_f.text == expectation
   end
-  web_apps.orders.details.dimensions.height.text_box.text.should eql expectation
+  web_apps.orders.details.dimensions.height.text_box.text.to_f.should eql expectation
 end
 
 Then /^Details: Expect Tracking is Signature Required$/ do

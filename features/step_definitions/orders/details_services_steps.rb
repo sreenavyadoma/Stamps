@@ -294,8 +294,8 @@ Then /^Details: Set Service to (.*)$/ do |service|
     break if web_apps.orders.details.service.cost.to_f > 0
     step "Details: Blur out"
   end
-  test_data[:service_cost] = web_apps.orders.details.service.cost
   step "Details: Save Total Ship Cost"
+  test_data[:service_cost] = web_apps.orders.details.service.cost
 end
 
 Then /^Details: Expect Service is \"(.*)\"$/ do |expectation|
