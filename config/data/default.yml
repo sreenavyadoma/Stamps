@@ -242,9 +242,6 @@ orders_credentials:
     auto_suggest:
       usr: wwelioo2e0nlf
       pw: pass111
-    mail_bvt_envelopes:
-      usr: t5mjsiuy2sukk9
-      pw: pass111
     print_dialog_change_date:
       usr: mwnp2cwefg
       pw: pass111
@@ -433,88 +430,88 @@ orders_credentials:
       usr: mpanilrcqgxmz
       pw: pass111
     grid_column_order:
-      usr: p5ldl4kjt
+      usr: stgstgstg
       pw: pass111
     details_flat_rate_no_weight_international:
-      usr: lsv9xmm
+      usr: stgstgstg
       pw: pass111
     details_flat_rate_no_weight_domestic:
-      usr: i18yzz9pt3
+      usr: stgstgstg
       pw: pass111
     details_large_dimensions_pm:
-      usr: lmyc7on9t
+      usr: stgstgstg
       pw: pass111
     details_insure_for_box_unchecked_manual:
-      usr: ryzymjfr0s
+      usr: stgstgstg
       pw: pass111
     details_insure_for_box_unchecked_imported:
-      usr: h1di8lkr
+      usr: scscscscscscscscsc
       pw: pass111
     international_customs_form_totals:
-      usr: ifkirzik55td4h
+      usr: stgstgstg
       pw: pass111
     international_customs_form_edit_delete_item:
-      usr: ybz43m9mrp6x
+      usr: scscscscscscscscsc
       pw: pass111
     tooltip_customs_form:
-      usr: pbxeqimim
+      usr: stgstgstg
       pw: pass111
     details_reference_no:
-      usr: uughc31aenj
+      usr: stgstgstg
       pw: pass111
     customs_form_qty:
-      usr: w5s9lr2kett0
+      usr: stgstgstg
       pw: pass111
     grid_ship_cost:
-      usr: om8tabs4mx2
+      usr: stgstgstg
       pw: pass111
     print_dialog_thermal_number_of_labels_count:
-      usr: qfqd7nbzkjp9
+      usr: stgstgstg
       pw: pass111
     details_placeholders:
-      usr: za0xh2034rmu8
+      usr: stgstgstg
       pw: pass111
     grid_tracking:
-      usr: rxkuzwwclobat
+      usr: stgstgstg
       pw: pass111
     grid_insured_value:
-      usr: p74c4js
+      usr: stgstgstg
       pw: pass111
     import_orders:
-      usr: obeku8a
+      usr: stgstgstg
       pw: pass111
     pagination:
-      usr: i8ptwpv2n
+      usr: stgstgstg
       pw: pass111
     webreg_specify_username_jenkins:
-      usr: ydjliio
+      usr: scscscscscscscscsc
       pw: pass111
     general_settings:
-      usr: qp1z9dnytt62r
+      usr: stgstgstg
       pw: pass111
     print_label_position:
-      usr:
+      usr: stgstgstg
       pw: pass111
     print_media:
-      usr:
+      usr: stgstgstg
       pw: pass111
     print_media_tooltips:
-      usr:
+      usr: scscscscscscscscsc
       pw: pass111
     print_two_up:
-      usr:
+      usr: scscscscscscscscsc
       pw: pass111
     print_label_position:
-      usr:
+      usr: scscscscscscscscsc
       pw: pass111
     print_many_orders:
-      usr:
+      usr: scscscscscscscscsc
       pw: pass111
     printing_errors:
-      usr:
+      usr: scscscscscscscscsc
       pw: pass111
     printing:
-      usr: c7gc1ymot
+      usr: scscscscscscscscsc
       pw: pass111
     print_sample:
       usr: scscscscscscscscsc
@@ -660,6 +657,187 @@ orders_credentials:
     auto_suggest:
       usr: AUTOSUGGEST888
       pw: pass111
+    print_dialog_change_date:
+      usr: mj48umjm5halr
+      pw: pass111
+    print_dialog_email_tracking:
+      usr: cg1w1bc7tsnkgd
+      pw: pass111
+    print_dialog_hide_postage_value:
+      usr: x9qpc1svshbn
+      pw: pass111
+    print_dialog_label_left_side:
+      usr: tq0n8vxqotdn
+      pw: pass111
+    print_dialog_label_right_side:
+      usr: bty8o0janwt
+      pw: pass111
+    print_dialog_printing_on_4x6_roll:
+      usr: mooz6r8a0
+      pw: pass111
+    print_dialog_printing_on_4x6_sdc1200:
+      usr: s4tof5xyk
+      pw: pass111
+    print_dialog_printing_on_4x6_shipping_label:
+      usr: zm0cl501d3x
+      pw: pass111
+    print_dialog_printing_on_5x8_shipping_label:
+      usr: p5954o1lsp3
+      pw: pass111
+    print_dialog_printing_on_8x11_paper:
+      usr: r38ciqm9
+      pw: pass111
+    print_dialog_ship_date_today:
+      usr: s8nxs3g
+      pw: pass111
+    print_dialog_ship_date_today_plus1:
+      usr: z19f8umqulmh
+      pw: pass111
+    print_dialog_ship_date_today_plus2:
+      usr: uizz9gepmf5at
+      pw: pass111
+    print_dialog_ship_date_today_plus3:
+      usr: zijm4ci9a8j
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
+      usr: qfqd7nbzkjp9
+      pw: pass111
+    print_dialog_two_up_window_title:
+      usr: ue13ol5q
+      pw: pass111
+    print_dialog_two_up_x_number_of_labels:
+      usr: zxhmtlm6
+      pw: pass111
+    print_layout_cn22_5x8:
+      usr: p2wpeexull6xft
+      pw: pass111
+    print_layout_cn22_5x8_continuation:
+      usr: k9ue042j3599pk
+      pw: pass111
+    print_layout_cn22_paper_left_side:
+      usr: f9o7tk4kv
+      pw: pass111
+    print_layout_cn22_roll:
+      usr: xnod55b1ml9mj
+      pw: pass111
+    print_layout_cp72_4x6roll:
+      usr: d5vwzzrs5v6cd
+      pw: pass111
+    print_layout_cp72_5x8_left:
+      usr: uekddzh1qz7x
+      pw: pass111
+    print_layout_cp72_5x8_right:
+      usr: gqm50d5ezq
+      pw: pass111
+    print_layout_cp72_5x8_single_ply:
+      usr: b2i82ul2pw
+      pw: pass111
+    print_layout_cp72_paper_continuation:
+      usr: v45qw77nvirf
+      pw: pass111
+    print_layout_cp72_paper_single_ply:
+      usr: uiampec5
+      pw: pass111
+    print_layout_cp72_roll_continuation:
+      usr: vwkoicltozoh
+      pw: pass111
+    print_layout_cp72_sdc1200_single_ply:
+      usr: dnjmuxmgfravz
+      pw: pass111
+    print_layout_cp72_single_ply_apo_roll:
+      usr: h74h650rc4
+      pw: pass111
+    print_layout_dpo_cp72_roll_single_ply:
+      usr: yqykbq976b
+      pw: pass111
+    print_layout_fsa_cp72_paper_single_ply:
+      usr: uzbhg1g
+      pw: pass111
+    print_multiple_orders:
+      usr: zuk48fx
+      pw: pass111
+    print_multiple_reprints:
+      usr: cm5jn67dm05
+      pw: pass111
+    print_on_thermal:
+      usr: xcvc19m4as5b7z
+      pw: pass111
+    print_sample_parcel_select_ground_large_package:
+      usr: v6b430ethqunf
+      pw: pass111
+    print_sample_pm_flat_rate_envelope:
+      usr: v92mghwv03
+      pw: pass111
+    print_sample_pm_regional_rate_box_a:
+      usr: drj710ca90bd
+      pw: pass111
+    print_sample_pme_package:
+      usr: oho5uuz1y
+      pw: pass111
+    print_sample_pme_padded_flat_rate_envelope:
+      usr: na7sh1ww12lh
+      pw: pass111
+    print_two_up_expanded_5x8_left:
+      usr: krlmiae4
+      pw: pass111
+    print_two_up_expanded_5x8_left_print2:
+      usr: pd1mdztbk85q
+      pw: pass111
+    print_two_up_expanded_5x8_left_print3:
+      usr: viri9cqqk2
+      pw: pass111
+    print_two_up_expanded_5x8_right_print1:
+      usr: kcoc022sums
+      pw: pass111
+    print_two_up_expanded_5x8_right_print2:
+      usr: g6813enm2x0i60
+      pw: pass111
+    print_two_up_expanded_cn22_5x8_right_print2:
+      usr: vipyr1w8vfpcbe
+      pw: pass111
+    print_two_up_expanded_cn22_cp72_5x8_right_print2:
+      usr: yqzkmya4u
+      pw: pass111
+    print_two_up_expanded_cn22_paper_left:
+      usr: tssumzy
+      pw: pass111
+    print_two_up_expanded_cn22_paper_right:
+      usr: lrw3axy4pmk0
+      pw: pass111
+    print_two_up_expanded_cn22_sdc1200_left:
+      usr: oodduyrefp
+      pw: pass111
+    print_two_up_expanded_cp72_5x8_left_print1:
+      usr: v0t4bxqhd
+      pw: pass111
+    print_two_up_expanded_cp72_5x8_right_print1:
+      usr: q4oyqgq05d575
+      pw: pass111
+    print_two_up_expanded_cp72_paper_left:
+      usr: kehrq9e3q
+      pw: pass111
+    print_two_up_expanded_fpo_cn22_paper_right:
+      usr: e00qko079g
+      pw: pass111
+    print_two_up_expanded_paper_left_print1:
+      usr: xzhiri8p
+      pw: pass111
+    print_two_up_expanded_paper_left_print2:
+      usr: zxfceacc
+      pw: pass111
+    print_two_up_expanded_paper_right_print2:
+      usr: qp9nkipuzhh
+      pw: pass111
+    print_two_up_expanded_sdc1200_4x6_left_print1:
+      usr: ljrofvuqhwr1
+      pw: pass111
+    print_two_up_expanded_sdc1200_left_print3:
+      usr: la7kq3hrajo4k
+      pw: pass111
+    print_two_up_multiple_domestic_labels:
+      usr: p8rk9lk7e
+      pw: pass111
+
 
   sc:
     details_edit_order:

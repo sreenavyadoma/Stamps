@@ -384,7 +384,11 @@ end
 Then /^Expect Customs Form Internal Transaction Number is \"(.+)\"$/ do |expectation|
   logger.step "Expect Customs Form Internal Transaction Number is #{expectation}"
   step "Customs: Blur out"
-  web_apps.orders.details.customs.edit_form.internal_transaction.text_box.text.should eql expectation
+  text_box = web_apps.orders.details.customs.edit_form.internal_transaction.text_box
+  10.times do
+    break if text_box.text == expectation
+  end
+  text_box.text.should eql expectation
 end
 
 Then /^Customs: Expect Item Grid count is (.+)$/ do |expectation|
@@ -404,7 +408,12 @@ end
 Then /^Customs Form: Expect Total Value is (.+)$/ do |expectation|
   logger.step "Customs Form: Expect Total Value is #{expectation}"
   step "Customs: Blur out"
-  web_apps.orders.details.customs.edit_form.total_value.should eql expectation
+  expectation = expectation.to_f
+  total_value = web_apps.orders.details.customs.edit_form.total_value
+  10.times do
+    break if total_value.to_f == expectation
+  end
+  total_value.to_f.should eql expectation
 end
 
 Then /^Customs: Add Item (\d+), Description (.*), Qty (\d+), Price (.+), Origin (.+), Tariff (.*)$/ do |item_number, description, qty, price, origin_country, tariff|
@@ -472,29 +481,52 @@ end
 Then /^Customs: Expect Item (\d+) Description is (.*)$/ do |item_number, expectation|
   logger.step "Customs: Expect Item #{item_number} Description is #{expectation}"
   step "Customs: Blur out"
-  web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i).description.text.should eql expectation
+  item = web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i)
+  10.times do
+    break if item.description.text == expectation
+  end
+  item.description.text.should eql expectation
 end
 
 Then /^Customs: Expect Item (\d+) Quantity is (\d+)$/ do |item_number, expectation|
   logger.step "Customs: Expect Item #{item_number} Quantity is #{expectation}"
   step "Customs: Blur out"
-  web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i).qty.text_box.text.should eql expectation
+  expectation = expectation.to_i
+  item = web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i)
+  10.times do
+    break if item.qty.text_box.text.to_i == expectation
+  end
+  item.qty.text_box.text.to_i.should eql expectation
 end
 
 Then /^Customs: Expect Item (\d+) Unit Price is (.*)$/ do |item_number, expectation|
   logger.step "Customs: Expect Item #{item_number} Unit Price is #{expectation}"
   step "Customs: Blur out"
-  web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i).unit_price.text_box.text.should eql expectation
+  expectation = expectation.to_f
+  item = web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i)
+  10.times do
+    break if item.unit_price.text_box.text.to_f == expectation
+  end
+  item.unit_price.text_box.text.to_f.should eql expectation
 end
 
 Then /^Customs: Expect Item (\d+) Origin Country is (.*)$/ do |item_number, expectation|
   logger.step "Customs: Expect Item #{item_number} Origin Country is #{expectation}"
   step "Customs: Blur out"
-  web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i).made_in.text_box.text.should eql expectation
+  item = web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i)
+  10.times do
+    break if item.made_in.text_box.text == expectation
+  end
+  item.made_in.text_box.text.should eql expectation
 end
 
 Then /^Customs: Expect Item (\d+) Tariff is (.*)$/ do |item_number, expectation|
   logger.step "Customs: Expect Item #{item_number} Tariff is #{expectation}"
   step "Customs: Blur out"
-  web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i).hs_tariff.text.should eql expectation
+  expectation = expectation.to_f
+  item = web_apps.orders.details.customs.edit_form.item_grid.item(item_number.to_i)
+  10.times do
+    break if item.hs_tariff.text.to_f == expectation
+  end
+  item.hs_tariff.text.to_f.should eql expectation
 end
