@@ -424,11 +424,12 @@ end
 
 Then /^Details: Expect Height is (\d+)$/ do |expectation|
   logger.step "Details: Expect Height is #{expectation}"
-  expectation = expectation.to_f
+  expectation = expectation.to_i
+  text_box = web_apps.orders.details.dimensions.height.text_box
   10.times do
-    break if web_apps.orders.details.dimensions.height.text_box.to_f.text == expectation
+    break if text_box.text.to_i == expectation
   end
-  web_apps.orders.details.dimensions.height.text_box.text.to_f.should eql expectation
+  text_box.text.to_i.should eql expectation
 end
 
 Then /^Details: Expect Tracking is Signature Required$/ do
