@@ -13,8 +13,6 @@ url_prefix:
   staging: mail.staging
   rating: printext.qacc
 
-#todo-rob sub divide usernames, bvt, printing, regression
-
 orders_credentials:
   stg:
     details_edit_order:
@@ -80,32 +78,8 @@ orders_credentials:
     general_settings:
       usr: pm5lf5804
       pw: pass111
-    print_media:
-      usr: scscscsScscscscscsc
-      pw: pass111
-    print_media_tooltips:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_two_up:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_many_orders:
-      usr: scscscscscscscscsc
-      pw: pass111
-    printing_errors:
-      usr: scscscscscscscscsc
-      pw: pass111
-    printing:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_sample:
-      usr: scscscscscscscscsc
-      pw: pass111
     details_ship_cost_total:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_date:
-      usr: scscscscscscscscsc
+      usr: bpgjftki
       pw: pass111
     print_two_up_expanded:
       usr: scscscscscscscscsc
@@ -471,32 +445,8 @@ orders_credentials:
     general_settings:
       usr: qp1z9dnytt62r
       pw: pass111
-    print_media:
-      usr: stgstgstg
-      pw: pass111
-    print_media_tooltips:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_two_up:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_many_orders:
-      usr: scscscscscscscscsc
-      pw: pass111
-    printing_errors:
-      usr: scscscscscscscscsc
-      pw: pass111
-    printing:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_sample:
-      usr: scscscscscscscscsc
-      pw: pass111
     details_ship_cost_total:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_date:
-      usr: scscscscscscscscsc
+      usr: ales8sj
       pw: pass111
     print_two_up_expanded:
       usr: scscscscscscscscsc
@@ -872,34 +822,13 @@ orders_credentials:
       usr: awtkr6qjmcjv
       pw: pass111
     details_ship_cost_total:
-      usr: scscscscscscscscsc
+      usr: cecvi03
       pw: pass111
     nav_postage_balance_update:
       usr: scscscscscscscscsc
       pw: pass111
     print_dialog_thermal_number_of_labels_count:
       usr: ur7ikt4ak
-      pw: pass111
-    print_media:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_media_tooltips:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_two_up:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_many_orders:
-      usr: scscscscscscscscsc
-      pw: pass111
-    printing_errors:
-      usr: scscscscscscscscsc
-      pw: pass111
-    printing:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_sample:
-      usr: scscscscscscscscsc
       pw: pass111
     reprint:
       usr: scscscscscscscscsc
@@ -914,9 +843,6 @@ orders_credentials:
       usr: scscscscscscscscsc
       pw: pass111
     print_on_thermal:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_date:
       usr: scscscscscscscscsc
       pw: pass111
     print_two_up_expanded:
