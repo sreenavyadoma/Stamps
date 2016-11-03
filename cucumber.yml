@@ -126,7 +126,6 @@ details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domest
 details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_large_dimensions_pm
 details_insure_for_box_unchecked_manual: --tags @details_insure_for_box_unchecked_manual --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_insure_for_box_unchecked_manual
 details_insure_for_box_unchecked_imported: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=details_insure_for_box_unchecked_imported #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
-
 international_customs_form_totals: --tags @international_customs_form_totals --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=international_customs_form_totals
 international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=international_customs_form_edit_delete_item
 tooltip_customs_form: --tags @tooltip_customs_form --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=tooltip_customs_form
