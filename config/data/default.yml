@@ -81,80 +81,53 @@ orders_credentials:
     details_ship_cost_total:
       usr: bpgjftki
       pw: pass111
-    print_two_up_expanded:
-      usr: scscscscscscscscsc
-      pw: pass111
     nav_postage_balance_update:
-      usr: scscscscscscscscsc
+      usr: td4wcrwb6f8mi
       pw: pass111
     reprint:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_layouts_cp72:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_layouts_cn22:
-      usr: scscscscscscscscsc
+      usr: paxok4qecrbv
       pw: pass111
     print_multiple_reprints:
-      usr: scscscscscscscscsc
+      usr: enpdd08aew5
       pw: pass111
     tracking_defaults:
-      usr: scscscscscscscscsc
+      usr: tc7lbuuldm7gud
       pw: pass111
     parcel_select:
-      usr: scscscscscscscscsc
+      usr: tv3td1cp6
       pw: pass111
     tooltips_services:
       usr: scscscscscscscscsc
       pw: pass111
     filter_change_order_status:
-      usr: scscscscscscscscsc
-      pw: pass111
-    order_creation:
-      usr: scscscscscscscscsc
-      pw: pass111
-    address_cleansing:
-      usr: scscscscscscscscsc
-      pw: pass111
-    address_management:
-      usr: scscscscscscscscsc
-      pw: pass111
-    tracking:
-      usr: scscscscscscscscsc
+      usr: xg6ar0zae
       pw: pass111
     inline_service_rates:
-      usr: scscscscscscscscsc
-      pw: pass111
-    international:
-      usr: scscscscscscscscsc
+      usr: o6kzymy8rn94ax
       pw: pass111
     purchasing:
-      usr: scscscscscscscscsc
+      usr: v8r4q2nb3dbv
       pw: pass111
     change_settings:
       usr: scscscscscscscscsc
       pw: pass111
     print_on_thermal:
-      usr: scscscscscscscscsc
+      usr: x31q76qtkucf
       pw: pass111
     sorting:
-      usr: scscscscscscscscsc
+      usr: q5bfct2
       pw: pass111
     auto_suggest:
-      usr: scscscscscscscscsc
+      usr: wwelioo2e0nlf
       pw: pass111
     auto_suggest_international:
       usr: scscscscscscscscsc
       pw: pass111
     new_country_code:
-      usr: scscscscscscscscsc
-      pw: pass111
-    fcm_selection_enabled:
-      usr: scscscscscscscscsc
+      usr: mz8wjct3zin1cc
       pw: pass111
     details_panel:
-      usr: scscscscscscscscsc
+      usr: vl0erw0k
       pw: pass111
     multiple_order_total_cost:
       usr: scscscscscscscscsc
@@ -300,12 +273,6 @@ orders_credentials:
     print_multiple_orders:
       usr: tc7lbuuldm7gud
       pw: pass111
-    print_multiple_reprints:
-      usr: enpdd08aew5
-      pw: pass111
-    print_on_thermal:
-      usr: x31q76qtkucf
-      pw: pass111
     print_sample_parcel_select_ground_large_package:
       usr: gsw1raa5
       pw: pass111
@@ -448,80 +415,50 @@ orders_credentials:
     details_ship_cost_total:
       usr: ales8sj
       pw: pass111
-    print_two_up_expanded:
-      usr: scscscscscscscscsc
-      pw: pass111
     nav_postage_balance_update:
-      usr: scscscscscscscscsc
+      usr: eubyiccm
       pw: pass111
     reprint:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_layouts_cp72:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_layouts_cn22:
-      usr: scscscscscscscscsc
+      usr: swd4e1ai4lz
       pw: pass111
     print_multiple_reprints:
-      usr: scscscscscscscscsc
+      usr: cm5jn67dm05
       pw: pass111
     tracking_defaults:
-      usr: scscscscscscscscsc
+      usr: pbgwtrqhe
       pw: pass111
     parcel_select:
-      usr: scscscscscscscscsc
+      usr: ma6sawp2uj
       pw: pass111
     tooltips_services:
       usr: scscscscscscscscsc
       pw: pass111
     filter_change_order_status:
-      usr: scscscscscscscscsc
-      pw: pass111
-    order_creation:
-      usr: scscscscscscscscsc
-      pw: pass111
-    address_cleansing:
-      usr: scscscscscscscscsc
-      pw: pass111
-    address_management:
-      usr: scscscscscscscscsc
-      pw: pass111
-    tracking:
-      usr: scscscscscscscscsc
+      usr: iuc75alcb8
       pw: pass111
     inline_service_rates:
-      usr: scscscscscscscscsc
-      pw: pass111
-    international:
-      usr: scscscscscscscscsc
+      usr: xha5o97
       pw: pass111
     purchasing:
-      usr: scscscscscscscscsc
+      usr: kulwyj9vs0f3kd
       pw: pass111
     change_settings:
       usr: scscscscscscscscsc
       pw: pass111
-    print_on_thermal:
-      usr: scscscscscscscscsc
-      pw: pass111
     sorting:
-      usr: scscscscscscscscsc
+      usr: mysfp0c9g
       pw: pass111
     auto_suggest:
-      usr: scscscscscscscscsc
+      usr: AUTOSUGGEST888
       pw: pass111
     auto_suggest_international:
       usr: scscscscscscscscsc
       pw: pass111
     new_country_code:
-      usr: scscscscscscscscsc
-      pw: pass111
-    fcm_selection_enabled:
-      usr: scscscscscscscscsc
+      usr: i92zdwav5
       pw: pass111
     details_panel:
-      usr: scscscscscscscscsc
+      usr: iotkm2t8nbf3
       pw: pass111
     multiple_order_total_cost:
       usr: scscscscscscscscsc
@@ -573,9 +510,6 @@ orders_credentials:
       pw: pass111
     address_management:
       usr: mc6ozi754o
-      pw: pass111
-    auto_suggest:
-      usr: AUTOSUGGEST888
       pw: pass111
     print_dialog_change_date:
       usr: mj48umjm5halr
@@ -675,9 +609,6 @@ orders_credentials:
       pw: pass111
     print_multiple_orders:
       usr: zuk48fx
-      pw: pass111
-    print_multiple_reprints:
-      usr: cm5jn67dm05
       pw: pass111
     print_on_thermal:
       usr: xcvc19m4as5b7z
@@ -825,85 +756,55 @@ orders_credentials:
       usr: cecvi03
       pw: pass111
     nav_postage_balance_update:
-      usr: scscscscscscscscsc
+      usr: e8a39bwi4hnq
       pw: pass111
     print_dialog_thermal_number_of_labels_count:
       usr: ur7ikt4ak
       pw: pass111
     reprint:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_layouts_cp72:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_layouts_cn22:
-      usr: scscscscscscscscsc
+      usr: r6rvopgwciw
       pw: pass111
     print_multiple_reprints:
-      usr: scscscscscscscscsc
+      usr: zko6zz8zu19se
       pw: pass111
     print_on_thermal:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_two_up_expanded:
-      usr: scscscscscscscscsc
-      pw: pass111
-    print_print_label_position_layouts:
-      usr: scscscscscscscscsc
+      usr: qgckyoo5of2
       pw: pass111
     tracking_defaults:
-      usr: scscscscscscscscsc
+      usr: scs2a0y06fxsyb
       pw: pass111
     parcel_select:
-      usr: scscscscscscscscsc
+      usr: hkwppypdpq
       pw: pass111
     tooltips_services:
       usr: scscscscscscscscsc
       pw: pass111
     filter_change_order_status:
-      usr: scscscscscscscscsc
-      pw: pass111
-    order_creation:
-      usr: scscscscscscscscsc
-      pw: pass111
-    address_cleansing:
-      usr: scscscscscscscscsc
-      pw: pass111
-    address_management:
-      usr: scscscscscscscscsc
-      pw: pass111
-    tracking:
-      usr: scscscscscscscscsc
+      usr: ucgt1sacruzz
       pw: pass111
     inline_service_rates:
-      usr: scscscscscscscscsc
-      pw: pass111
-    international:
-      usr: scscscscscscscscsc
+      usr: eeyxyvr8drajc
       pw: pass111
     purchasing:
-      usr: scscscscscscscscsc
+      usr: scb5x5fe9
       pw: pass111
     change_settings:
       usr: scscscscscscscscsc
       pw: pass111
     sorting:
-      usr: scscscscscscscscsc
+      usr: scyu1rbn94etw
       pw: pass111
     auto_suggest:
-      usr: scscscscscscscscsc
+      usr: eueys1zwc
       pw: pass111
     auto_suggest_international:
       usr: scscscscscscscscsc
       pw: pass111
     new_country_code:
-      usr: scscscscscscscscsc
-      pw: pass111
-    fcm_selection_enabled:
-      usr: scscscscscscscscsc
+      usr: ivl2l7zs
       pw: pass111
     details_panel:
-      usr: scscscscscscscscsc
+      usr: vzksnzd7pzxy6
       pw: pass111
     multiple_order_total_cost:
       usr: scscscscscscscscsc
