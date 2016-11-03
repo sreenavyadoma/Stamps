@@ -327,6 +327,9 @@ orders_credentials:
     print_two_up_expanded_cp72_paper_left:
       usr: kehrq9e3q
       pw: pass111
+    print_two_up_expanded_cp72_paper_left_print3:
+      usr: pj174e11wmg
+      pw: pass111
     print_two_up_expanded_fpo_cn22_paper_right:
       usr: htlylt2
       pw: pass111
@@ -667,6 +670,9 @@ orders_credentials:
     print_two_up_expanded_cp72_paper_left:
       usr: kehrq9e3q
       pw: pass111
+    print_two_up_expanded_cp72_paper_left_print3:
+      usr: xl1b8easo
+      pw: pass111
     print_two_up_expanded_fpo_cn22_paper_right:
       usr: e00qko079g
       pw: pass111
@@ -853,6 +859,189 @@ orders_credentials:
       pw: pass111
     auto_suggest:
       usr: eueys1zwc
+      pw: pass111
+    print_dialog_change_date:
+      usr: e28x2wqr4
+      pw: pass111
+    print_dialog_email_tracking:
+      usr: e8a39bwi4hnq
+      pw: pass111
+    print_dialog_hide_postage_value:
+      usr: aog9r8ll
+      pw: pass111
+    print_dialog_label_left_side:
+      usr: cwgcof36wy
+      pw: pass111
+    print_dialog_label_right_side:
+      usr: fvv5a0uux3g
+      pw: pass111
+    print_dialog_printing_on_4x6_roll:
+      usr: yvgnrkb
+      pw: pass111
+    print_dialog_printing_on_4x6_sdc1200:
+      usr: va4agcjzfm
+      pw: pass111
+    print_dialog_printing_on_4x6_shipping_label:
+      usr: va4agcjzfm
+      pw: pass111
+    print_dialog_printing_on_5x8_shipping_label:
+      usr: v38lyx2x5ggtvf
+      pw: pass111
+    print_dialog_printing_on_8x11_paper:
+      usr: t6uvkkyrlrz
+      pw: pass111
+    print_dialog_ship_date_today:
+      usr: ahyi8qq1bpf2e
+      pw: pass111
+    print_dialog_ship_date_today_plus1:
+      usr: fwnfzx37n6g6e
+      pw: pass111
+    print_dialog_ship_date_today_plus2:
+      usr: j8eobjar
+      pw: pass111
+    print_dialog_ship_date_today_plus3:
+      usr: ssotel1g2r
+      pw: pass111
+    print_dialog_thermal_number_of_labels_count:
+      usr: ur7ikt4ak
+      pw: pass111
+    print_dialog_two_up_window_title:
+      usr: cjq5xiqttg
+      pw: pass111
+    print_dialog_two_up_x_number_of_labels:
+      usr: i502y887fi
+      pw: pass111
+    print_layout_cn22_5x8:
+      usr: nxhryty6e6
+      pw: pass111
+    print_layout_cn22_5x8_continuation:
+      usr: m9rqvdp97u5
+      pw: pass111
+    print_layout_cn22_paper_left_side:
+      usr: z9aqnmhmfdnpe
+      pw: pass111
+    print_layout_cn22_roll:
+      usr: trua9wr9ghh77
+      pw: pass111
+    print_layout_cp72_4x6roll:
+      usr: yhvfhqh6la9f25
+      pw: pass111
+    print_layout_cp72_5x8_left:
+      usr: fdc20ak
+      pw: pass111
+    print_layout_cp72_5x8_right:
+      usr: wp278sejo4qu
+      pw: pass111
+    print_layout_cp72_5x8_single_ply:
+      usr: ykb7dkuitijiz
+      pw: pass111
+    print_layout_cp72_paper_continuation:
+      usr: yk7u0pxlx0
+      pw: pass111
+    print_layout_cp72_paper_single_ply:
+      usr: yptbcy6cpas7y
+      pw: pass111
+    print_layout_cp72_roll_continuation:
+      usr: wm2i3pi
+      pw: pass111
+    print_layout_cp72_sdc1200_single_ply:
+      usr: vvxpt52
+      pw: pass111
+    print_layout_cp72_single_ply_apo_roll:
+      usr: jttkyz5heul
+      pw: pass111
+    print_layout_dpo_cp72_roll_single_ply:
+      usr: lrifg4kckr8354
+      pw: pass111
+    print_layout_fsa_cp72_paper_single_ply:
+      usr: lrifg4kckr8354
+      pw: pass111
+    print_multiple_orders:
+      usr: pk5qt2m
+      pw: pass111
+    print_multiple_reprints:
+      usr: zko6zz8zu19se
+      pw: pass111
+    print_on_thermal:
+      usr: qgckyoo5of2
+      pw: pass111
+    print_sample_parcel_select_ground_large_package:
+      usr: yhu60ww6st
+      pw: pass111
+    print_sample_pm_flat_rate_envelope:
+      usr: egtpxykt
+      pw: pass111
+    print_sample_pm_regional_rate_box_a:
+      usr: m3j4srlt8yvac7
+      pw: pass111
+    print_sample_pme_package:
+      usr: e95akjb
+      pw: pass111
+    print_sample_pme_padded_flat_rate_envelope:
+      usr: h9bmwj1y
+      pw: pass111
+    print_two_up_expanded_5x8_left:
+      usr: x1ybimp
+      pw: pass111
+    print_two_up_expanded_5x8_left_print2:
+      usr: axsas1ozkagaub
+      pw: pass111
+    print_two_up_expanded_5x8_left_print3:
+      usr: axsas1ozkagaub
+      pw: pass111
+    print_two_up_expanded_5x8_right_print1:
+      usr: utv8ekskq
+      pw: pass111
+    print_two_up_expanded_5x8_right_print2:
+      usr: f0rg88ca5i2t
+      pw: pass111
+    print_two_up_expanded_cn22_5x8_right_print2:
+      usr: jd7ft4vwshwok
+      pw: pass111
+    print_two_up_expanded_cn22_cp72_5x8_right_print2:
+      usr: n19czyhfk63ck3
+      pw: pass111
+    print_two_up_expanded_cn22_paper_left:
+      usr: qko4h5dr6cfhci
+      pw: pass111
+    print_two_up_expanded_cn22_paper_right:
+      usr: pocvzqf7ek
+      pw: pass111
+    print_two_up_expanded_cn22_sdc1200_left:
+      usr: wfztph7wk
+      pw: pass111
+    print_two_up_expanded_cp72_5x8_left_print1:
+      usr: c4li4u3idcc0ct
+      pw: pass111
+    print_two_up_expanded_cp72_5x8_right_print1:
+      usr: ssbeegguo
+      pw: pass111
+    print_two_up_expanded_cp72_paper_left:
+      usr: bo9abbmtp2ite9
+      pw: pass111
+    print_two_up_expanded_cp72_paper_left_print3:
+      usr: fbjxc0boi6c7
+      pw: pass111
+    print_two_up_expanded_fpo_cn22_paper_right:
+      usr: eenxf1zbflh0x
+      pw: pass111
+    print_two_up_expanded_paper_left_print1:
+      usr: zuw2fc3o
+      pw: pass111
+    print_two_up_expanded_paper_left_print2:
+      usr: ifg24nk43n
+      pw: pass111
+    print_two_up_expanded_paper_right_print2:
+      usr: l6707gptg
+      pw: pass111
+    print_two_up_expanded_sdc1200_4x6_left_print1:
+      usr: wudxtptg
+      pw: pass111
+    print_two_up_expanded_sdc1200_left_print3:
+      usr: j2s8homv8ucib
+      pw: pass111
+    print_two_up_multiple_domestic_labels:
+      usr: xvkdti7ie8x6y
       pw: pass111
 
 mail_credentials:
