@@ -1091,6 +1091,171 @@ mail_credentials:
     mail_bvt_address_cleansing:
       usr: b2vc5867
       pw: pass111
+
+
+    mail_forgot_password:
+      usr: kocp1opzgz
+      pw: pass111
+    mail_forgot_username:
+      usr: kocp1opzgz
+      pw: pass111
+    mail_remember_username:
+      usr: stgsaufv05k13n
+      pw: pass111
+    mail_invalid_credentials:
+      usr: webpost_0007
+      pw: pass111
+    mail_envelope_6:
+      usr: pxihh2exps
+      pw: pass111
+    mail_envelope_7:
+      usr: p55hc6n
+      pw: pass111
+    mail_envelope_9:
+      usr: uqadlz5bmsh4j
+      pw: pass111
+    mail_envelope_10:
+      usr: d4u7y4ddpwf4k6
+      pw: pass111
+    mail_envelope_10_delivery_address:
+      usr: d4u7y4ddpwf4k6
+      pw: pass111
+    mail_envelope_10_postage:
+      usr: d4u7y4ddpwf4k6
+      pw: pass111
+    mail_envelope_10_return_address:
+      usr: d4u7y4ddpwf4k6
+      pw: pass111
+    mail_envelope_11:
+      usr: o0d14h7vg2
+      pw: pass111
+    mail_envelope_12:
+      usr: NEEED USER
+      pw: pass111
+    mail_envelope_A2:
+      usr: iu7hwvv30dttf
+      pw: pass111
+    mail_envelope_A9:
+      usr: qvh97u3em
+      pw: pass111
+    mail_envelope_regression:
+      usr: uuphges8560gvj
+      pw: pass111
+    mail_label_left_side:
+      usr: tlrsoldhsxr
+      pw: pass111
+    mail_label_right_side:
+      usr: bp0iqa7ipf9r
+      pw: pass111
+    mail_manage_shipping_addresses:
+      usr: b2vc5867
+      pw: pass111
+    mail_preview_panel_shipping_label_options:
+      usr: aaoem5we470vx2
+      pw: pass111
+    mail_print_on_list_of_values:
+      usr: webpost_0007
+      pw: pass111
+    mail_print_postage_elements:
+      usr: b2vc5867
+      pw: pass111
+    mail_roll_4_1_8_x_6_1_4_fcm_large_envelope:
+      usr: ha44q8ipqo6sqd
+      pw: pass111
+    mail_roll_4_1_8_x_6_1_4_fcm_package:
+      usr: hnsu5j9a8
+      pw: pass111
+    mail_roll_4_1_8_x_6_1_4_mm_package:
+      usr: b8enji285rp2q
+      pw: pass111
+    mail_roll_4_1_8_x_6_1_4_pm_fr_envelope:
+      usr: sewlg5j97bk8
+      pw: pass111
+    mail_roll_4_1_8_x_6_1_4_pm_large_box:
+      usr: rkk5xqoi
+      pw: pass111
+    mail_roll_4_1_8_x_6_1_4_pm_large_envelope:
+      usr: qaz54f6g6ay
+      pw: pass111
+    mail_roll_4_1_8_x_6_1_4_pm_large_package:
+      usr: tr2oqt021iaeb
+      pw: pass111
+    mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope:
+      usr: imtopb17
+      pw: pass111
+    mail_roll_4_1_8_x_6_1_4_pm_medium_box:
+      usr: jmuv820w5ty4
+      pw: pass111
+    mail_roll_4_1_8_x_6_1_4_pm_package:
+      usr: bw9yyxf9xaq
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+    mail_XXX:
+      usr: stgstg
+      pw: pass111
+
   cc:
     mail_authentication:
       usr: cce50cu2o
