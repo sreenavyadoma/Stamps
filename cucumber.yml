@@ -20,8 +20,8 @@ eva_dev: --tags @details_panel --guess VERBOSE=true HEALTHCHECK=false WEB_APP=or
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=xxxxxxxxxxxxxx
 
 
-output_username: --tags @output_username --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=output_username
-generate_username: --tags @generate_username --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=generate_username
+output_username: --tags @output_username --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg
+generate_username: --tags @generate_username --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg
 
 healthcheck: --tags @healthcheck --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=healthcheck
 authentication: --tags @authentication --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=authentication
