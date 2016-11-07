@@ -1,9 +1,17 @@
 Then /^Generate Username$/ do
-  ENV['USR'] = ParameterHelper.rand_username
+  ENV['WEB_REG_USR'] = ParameterHelper.rand_username
+  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
   logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
 end
 
 Then /^Output Username$/ do
+  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
   logger.message "Output Username: #{ENV['WEB_REG_USR']}"
 end
 
