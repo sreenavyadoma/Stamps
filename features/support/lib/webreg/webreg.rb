@@ -62,7 +62,7 @@ module Stamps
 
         5.times do
           browser.goto url
-          break if browser.url.include? 'stamps.com'
+          break if browser.url.include? 'registration'
         end
 
         error_occured.wait_until_present 1
@@ -73,8 +73,7 @@ module Stamps
           logger.error error_occured.error_description
           "#{error_occured.header} #{error_occured.top_message} #{error_occured.error_code} #{error_occured.error_description} ".should eql error_occured.header
         end
-
-        return "Registration page did not load" unless browser.url.include? "registration"
+        browser.url.should include "profile"
         sign_up_for_new_account = ElementWrapper.new browser.h1(text: "Sign up for a new account")
         sign_up_for_new_account.safely_wait_until_present 8
         logger.info "Page loaded.  #{browser.url}"
