@@ -36,5 +36,5 @@ Feature: PAM page
     Then Settings:  Save
     Then Pause for 1 second
     Then Sign out
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
     Then Pause for 1 second

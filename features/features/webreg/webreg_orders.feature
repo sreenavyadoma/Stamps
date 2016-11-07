@@ -32,7 +32,7 @@ Feature: WebReg
     Then WebReg Membership: Set Billing address same as mailing address to Checked
     Then WebReg Membership: Set Terms & Conditions to Checked
     Then WebReg Membership: Submit and correct errors
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
     Then Registration Choose Supplies: Place Order
     Then Registration Result: Wait for Download Page or Webpostage page to load
 
@@ -46,5 +46,5 @@ Feature: WebReg
     Then Toolbar: Add
     Then Pause for 3 seconds
     Then Sign out
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
 

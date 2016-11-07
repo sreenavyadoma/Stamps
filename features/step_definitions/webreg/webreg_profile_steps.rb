@@ -1,3 +1,12 @@
+Then /^Generate Username$/ do
+  ENV['USR'] = ParameterHelper.rand_username
+  logger.message "Generate Username: #{ENV['USR']}"
+end
+
+Then /^Output Username$/ do
+  logger.message "Output Username: #{ENV['USR']}"
+end
+
 Then /^WebReg Profile: Load Registration Page$/ do
   logger.step "WebReg Profile: Load Registration Page"
   status = webreg.visit

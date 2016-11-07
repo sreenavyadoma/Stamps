@@ -18,8 +18,10 @@ ray_dev: --tags @mail_envelope_10_postage --guess VERBOSE=true HEALTHCHECK=false
 eva_dev: --tags @details_panel --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
 
 xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=xxxxxxxxxxxxxx
-xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=xxxxxxxxxxxxxx
-xxxxxxxxxxxxxx: --tags @xxxxxxxxxxxxxx --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=xxxxxxxxxxxxxx
+
+
+output_username: --tags @output_username --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=output_username
+generate_username: --tags @generate_username --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=generate_username
 
 healthcheck: --tags @healthcheck --guess VERBOSE=true HEALTHCHECK=false WEB_APP=orders TEST=healthcheck
 authentication: --tags @authentication --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=authentication
