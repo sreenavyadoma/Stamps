@@ -267,11 +267,11 @@ Then /^WebReg Profile: Continue to Mailing Information Page$/ do
     sleep 1
     break if webreg.profile.membership.present?
   end
-  raise "Unable to continue to Mailing Information Page" unless webreg.profile.membership.present?
+  "Unable to continue....".should eql "Mailing Information Page Did not load." unless webreg.profile.membership.present?
 end
 
 Then /^Registration Choose Supplies: Place Order$/ do
-  raise "Choose Supplies:  Place Order - @webreg_result is nil.  Check your test" if @webreg_result.nil?
+  @webreg_result.should be_truthy
   case @webreg_result
     when WebReg::UserIdTaken
       message = @webreg_result.message

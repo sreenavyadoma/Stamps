@@ -1091,8 +1091,6 @@ mail_credentials:
     mail_bvt_address_cleansing:
       usr: b2vc5867
       pw: pass111
-
-
     mail_forgot_password:
       usr: kocp1opzgz
       pw: pass111
@@ -1255,7 +1253,6 @@ mail_credentials:
     mail_XXX:
       usr: stgstg
       pw: pass111
-
   cc:
     mail_authentication:
       usr: cce50cu2o
