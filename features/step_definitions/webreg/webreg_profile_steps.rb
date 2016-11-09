@@ -60,11 +60,13 @@ end
 
 Then /^WebReg Profile: Set Password to (.*)$/ do |password|
   logger.step "WebReg Profile: Set Password to #{password}"
+  @password=password
   webreg.profile.password.set password
 end
 
 Then /^WebReg Profile: Set Re-Type password to (.*)$/ do |password|
   logger.step "WebReg Profile: Set Re-Type password to #{password}"
+  @password=password
   webreg.profile.retype_password.set password
 end
 

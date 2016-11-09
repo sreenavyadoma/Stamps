@@ -78,6 +78,11 @@ Then /^Orders: Sign in$/ do
   web_apps.orders.landing_page.sign_in :default
 end
 
+Then /^Orders: Sign in using Jenkins web reg credentials$/ do
+  logger.step "Orders: Sign in"
+  web_apps.orders.landing_page.sign_in :default
+end
+
 Then /^Sign out$/ do
   logger.step "Sign out"
   begin
