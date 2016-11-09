@@ -16,7 +16,7 @@ Then /^Output Username$/ do
 end
 
 Then /^Write Username to file$/ do
-  File.open("web_reg_username.txt", 'w') {|f| f.write("WEB_REG_USR=#{ENV['WEB_REG_USR']}")}
+  File.open("\\\\jenkins01\Hudson\\temp\\web_reg_username.txt", 'w') {|f| f.write("WEB_REG_USR=#{ENV['WEB_REG_USR']}")}
 end
 
 Then /^WebReg Profile: Load Registration Page$/ do
