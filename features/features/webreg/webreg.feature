@@ -36,7 +36,6 @@ Feature: WebReg
 
     Then WebReg Membership: Submit
     Then WebReg Profile: Send username to standard out
-    Then WebReg Profile: Write username to properties file
 
   @generate_username
   Scenario:
