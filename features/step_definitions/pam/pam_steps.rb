@@ -353,6 +353,10 @@ Then /^WebReg Profile: Send username to standard out$/ do
   logger.message " ############## NEW USER ID "
 end
 
+Then /^WebReg Profile: Write username to properties file$/ do
+  File.open("\\\\jenkins01\\Hudson\\temp\\web_reg_username.properties", 'w') {|f| f.write("WEB_REG_USR=#{ENV['WEB_REG_USR']}")}
+end
+
 
 
 

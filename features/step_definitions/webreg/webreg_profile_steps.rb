@@ -14,9 +14,6 @@ Then /^Output Username$/ do
   logger.message "Output Username: #{ENV['WEB_REG_USR']}"
   logger.message "Output Username: #{ENV['WEB_REG_USR']}"
 end
-Then /^Write Username to file$/ do
-  File.open("\\\\jenkins01\\Hudson\\temp\\web_reg_username.properties", 'w') {|f| f.write("WEB_REG_USR=#{ENV['WEB_REG_USR']}")}
-end
 
 Then /^WebReg Profile: Load Registration Page$/ do
   logger.step "WebReg Profile: Load Registration Page"

@@ -30,7 +30,7 @@ customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight -
 whats_new: --tags @whats_new --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=whats_new
 
 webreg: --tags @webreg --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg
-webreg_orders: --tags @webreg_orders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_orders
+webreg_orders_sign_in: --tags @webreg_orders_sign_in --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_orders_sign_in
 webreg_pam: --tags @webreg_pam --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_pam
 webreg_pam_orders: --tags @webreg_pam_orders --guess VERBOSE=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_pam_orders
 
