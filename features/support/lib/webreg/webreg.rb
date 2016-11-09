@@ -73,6 +73,10 @@ module Stamps
           logger.error error_occured.error_description
           "#{error_occured.header} #{error_occured.top_message} #{error_occured.error_code} #{error_occured.error_description} ".should eql error_occured.header
         end
+        5.times do
+          break if browser.url.include? 'profile'
+          sleep 1
+        end
         browser.url.should include "profile"
         sign_up_for_new_account = ElementWrapper.new browser.h1(text: "Sign up for a new account")
         sign_up_for_new_account.safely_wait_until_present 8
