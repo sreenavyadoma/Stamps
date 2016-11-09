@@ -2,10 +2,10 @@ Feature: WebReg
   Background:
     Given I launched default browser
 
-  @webreg_orders_sign_in
+  @webreg_orders
   Scenario:
     Then Orders: Visit Sign-in page
-    #Then Orders: Sign-in as new user random/pass111
+    Then Orders: Sign in
     Then Orders: Expect Marketplace modal is present
     Then Orders: Close Marketplace modal
     Then Toolbar: Add
