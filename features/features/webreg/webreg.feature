@@ -1,6 +1,6 @@
 Feature: WebReg
   Background:
-    #Given I launched default browser
+    Given I launched default browser
 
   @webreg
   Scenario:
