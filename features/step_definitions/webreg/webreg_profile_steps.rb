@@ -46,6 +46,7 @@ Then /^WebReg Profile: Set User ID and Email to (.*)$/ do |usr|
   logger.step "WebReg Profile: Set User ID and Email to #{@username}"
   step "WebReg Profile: Set Email to #{@username}@mailinator.com"
   step "WebReg Profile: Set User ID to #{@username}"
+  step "WebReg Profile: Write username to properties file"
 end
 
 Then /^WebReg Profile: Set Email to (.*)$/ do |email|
@@ -62,6 +63,7 @@ Then /^WebReg Profile: Set Password to (.*)$/ do |password|
   logger.step "WebReg Profile: Set Password to #{password}"
   @password=password
   webreg.profile.password.set password
+  step "WebReg Profile: Write password to properties file"
 end
 
 Then /^WebReg Profile: Set Re-Type password to (.*)$/ do |password|

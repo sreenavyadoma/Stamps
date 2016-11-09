@@ -6,11 +6,9 @@ Feature: WebReg
   Scenario:
     Then WebReg Profile: Load Registration Page
     Then WebReg Profile: Set User ID and Email to Random Value
-    Then WebReg Profile: Write username to properties file
     Then WebReg Profile: Send username to standard out
     Then WebReg Profile: Set Password to pass111
     Then WebReg Profile: Set Re-Type password to pass111
-    Then WebReg Profile: Write password to properties file
     Then WebReg Profile: Set How will you use Stamps.com to Both Mailing and Shipping
     Then WebReg Profile: Set Referrer Name to Already used in office
     Then WebReg Profile: Set 1st Question to What is your mother's maiden name
