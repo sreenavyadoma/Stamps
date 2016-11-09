@@ -15,6 +15,10 @@ Then /^Output Username$/ do
   logger.message "Output Username: #{ENV['WEB_REG_USR']}"
 end
 
+Then /^Write Username to file$/ do
+  File.open("web_reg_username.txt", 'w') {|f| f.write("WEB_REG_USR=#{ENV['WEB_REG_USR']}")}
+end
+
 Then /^WebReg Profile: Load Registration Page$/ do
   logger.step "WebReg Profile: Load Registration Page"
   status = webreg.visit

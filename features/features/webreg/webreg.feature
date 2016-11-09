@@ -41,8 +41,8 @@ Feature: WebReg
 
   @generate_username
   Scenario:
-    Then Output Username
     Then Generate Username
+    Then Write Username to file
 
   @output_username
   Scenario:
