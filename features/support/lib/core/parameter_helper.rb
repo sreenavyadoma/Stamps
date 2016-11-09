@@ -174,8 +174,8 @@ module Stamps
         #ENV['URL'] = 'stg' if ENV['URL'].downcase.include? 'staging'
         #ENV['URL'] = 'cc' if ENV['URL'].downcase.include? 'qacc'
         #ENV['URL'] = 'sc' if ENV['URL'].downcase.include? 'qasc'
-        #user_name = "#{ENV['URL']}#{('a'..'z').to_a.sample}#{Array.new(rand(6..11)){[*'0'..'9', *'a'..'z'].sample}.join}"
-        user_name = "#{('a'..'z').to_a.sample}#{Array.new(rand(6..14)){[*'0'..'9', *'a'..'z'].sample}.join}"
+        user_name = "#{ENV['URL']}#{('a'..'z').to_a.sample}#{Array.new(rand(6..11)){[*'0'..'9', *'a'..'z'].sample}.join}"
+        #user_name = "#{('a'..'z').to_a.sample}#{Array.new(rand(6..14)){[*'0'..'9', *'a'..'z'].sample}.join}"
         if user_name.length > 14
           user_name[0..13]
         else
