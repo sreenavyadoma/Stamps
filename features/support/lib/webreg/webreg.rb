@@ -51,7 +51,7 @@ module Stamps
           when /cc/
             url = "https://qa-registration.stamps.com/registration"
           when /sc/
-            url = "https://registration.qasc.stamps.com/registration"
+            url = "https://registrationext.qasc.stamps.com/registration"
           when /stg/
             url = "https://registration.staging.stamps.com/registration"
           else
