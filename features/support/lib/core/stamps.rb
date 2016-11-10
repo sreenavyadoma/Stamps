@@ -58,6 +58,33 @@ module Stamps
     end
   end
 
+  def web_reg_usr_dir
+    begin
+      if @web_reg_usr_dir.nil?
+        if ParameterHelper.to_bool(ENV['JENKINS'])
+          @web_reg_usr_dir ||= data_for(:web_reg, {})['jenkins_usr_dir']
+        else
+          @web_reg_usr_dir ||= "#{data_for(:web_reg, {})['dev_usr_dir']}:"
+        end
+      end
+    rescue Exception => e
+      logger.error e.message
+      logger.error e.backtrace.join("\n")
+      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
+    end
+    @web_reg_usr_dir
+  end
+
+  def web_reg_usr_list_dir
+    begin
+      @web_reg_usr_list_dir ||= data_for(:web_reg, {})['web_reg_usr_list_dir']
+    rescue Exception => e
+      logger.error e.message
+      logger.error e.backtrace.join("\n")
+      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
+    end
+  end
+
   def pam
     begin
       @pam ||= Pam::PaymentAdministratorManager.new param

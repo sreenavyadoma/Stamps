@@ -354,11 +354,12 @@ Then /^WebReg Profile: Send username to standard out$/ do
 end
 
 Then /^WebReg Profile: Write username to properties file$/ do
-  File.open("\\\\jenkins01\\Hudson\\temp\\#{ENV['URL']}_web_reg_username.properties", 'w') {|f| f.write("WEB_REG_USR=#{@username}\n")}
+  File.open("#{web_reg_usr_dir}\\#{ENV['URL']}_web_reg_username.properties", 'w') {|f| f.write("WEB_REG_USR=#{@username}\n")}
+  File.open("#{web_reg_usr_dir}\\#{ENV['URL']}_web_reg_usr_list.properties", 'a+') {|f| f.write("#{@username}\n")}
 end
 
 Then /^WebReg Profile: Write password to properties file$/ do
-  File.open("\\\\jenkins01\\Hudson\\temp\\#{ENV['URL']}_web_reg_username.properties", 'a+') {|f| f.write("WEB_REG_PW=#{@password}\n")}
+  File.open("#{web_reg_usr_dir}\\#{ENV['URL']}_web_reg_username.properties", 'a+') {|f| f.write("WEB_REG_PW=#{@password}\n")}
 end
 
 

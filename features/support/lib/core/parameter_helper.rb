@@ -332,8 +332,8 @@ module Stamps
         end
       end
 
-      def to_boolean(str)
-        str == 'true'
+      def to_bool(str)
+        str.downcase == 'true'
       end
     end
   end

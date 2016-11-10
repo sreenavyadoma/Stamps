@@ -2,6 +2,7 @@
 Feature: PAM page
   Background:
     Given PAM: Load PAM Page
+
   @pam
   Scenario: PAM page
     Then PAM: Load Customer Search Page

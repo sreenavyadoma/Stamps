@@ -921,15 +921,15 @@ module Stamps
 
         submit_button.safely_wait_until_present 6
         submit_button.present?.should be true
-        30.times do
+        10.times do
           sleep 1
           submit_button.safe_click
           submit_button.send_keys :enter
-          loading.safely_wait_while_present 3
-          page_header.safely_wait_until_present 3
+          loading.safely_wait_while_present 4
+          page_header.safely_wait_until_present 4
           break unless submit_button.present?
-         end
-
+        end
+        sleep 3
       end
 
       # Added by Galina

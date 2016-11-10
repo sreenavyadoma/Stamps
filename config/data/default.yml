@@ -1,4 +1,9 @@
 
+web_reg:
+  dev_usr_dir: c
+  jenkins_usr_dir: \\\\jenkins01\\Hudson\\temp
+  web_reg_usr_list_dir:
+
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty
 
@@ -1560,7 +1565,6 @@ zone_5_through_8:
         city: Mocksville
         state: NC
         zip: 27028-4708
-
 
 us_states:
   AL:	Alabama

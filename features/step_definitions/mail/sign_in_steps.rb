@@ -7,7 +7,7 @@ end
 Given /^I am signed in as Mail shipper$/ do
   logger.step "I am signed in as a mail shipper"
   step "Launch default browser"
-  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
+  if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
   end

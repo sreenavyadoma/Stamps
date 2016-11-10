@@ -35,6 +35,7 @@ Feature: WebReg
     Then WebReg Membership: Set Terms & Conditions to Checked
 
     Then WebReg Membership: Submit
+    Then WebReg Profile: Write username to properties file
     Then WebReg Profile: Send username to standard out
 
   @generate_username
