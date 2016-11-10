@@ -1,8 +1,8 @@
 
-web_reg:
+webreg:
   dev_usr_dir: c
-  jenkins_usr_dir: \\\\jenkins01\\Hudson\\temp
-  web_reg_usr_list_dir:
+  jenkins_usr_dir: \\jenkins01\Hudson\jenkins\web_reg
+  webreg_usr_list_dir: \\jenkins01\Hudson\jenkins\web_reg
 
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty

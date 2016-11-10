@@ -929,7 +929,10 @@ module Stamps
           page_header.safely_wait_until_present 4
           break unless submit_button.present?
         end
-        sleep 3
+        15.times do
+          sleep 1
+          break if browser.url.include? "catalog"
+        end
       end
 
       # Added by Galina

@@ -58,26 +58,43 @@ module Stamps
     end
   end
 
-  def web_reg_usr_dir
+  def webreg_usr_filename
     begin
-      if @web_reg_usr_dir.nil?
-        if ParameterHelper.to_bool(ENV['JENKINS'])
-          @web_reg_usr_dir ||= data_for(:web_reg, {})['jenkins_usr_dir']
-        else
-          @web_reg_usr_dir ||= "#{data_for(:web_reg, {})['dev_usr_dir']}:"
-        end
+      if ParameterHelper.to_bool(ENV['JENKINS'])
+        "#{data_for(:webreg, {})['jenkins_usr_dir']}\\#{ENV['URL']}_webreg_usr.txt"
+      else
+        "#{data_for(:webreg, {})['dev_usr_dir']}:\\#{ENV['URL']}_webreg_usr.txt"
       end
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
       "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
     end
-    @web_reg_usr_dir
   end
 
-  def web_reg_usr_list_dir
+  def webreg_data_filename
     begin
-      @web_reg_usr_list_dir ||= data_for(:web_reg, {})['web_reg_usr_list_dir']
+      "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg_data.txt"
+    rescue Exception => e
+      logger.error e.message
+      logger.error e.backtrace.join("\n")
+      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
+    end
+  end
+
+  def reg_pam_data_filename
+    begin
+      "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_reg_pam_data.txt"
+    rescue Exception => e
+      logger.error e.message
+      logger.error e.backtrace.join("\n")
+      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
+    end
+  end
+
+  def reg_pam_ord_data_filename
+    begin
+      "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_reg_pam_ord_data.txt"
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")

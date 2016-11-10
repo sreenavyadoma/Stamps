@@ -78,13 +78,6 @@ Then /^Orders: Sign in$/ do
   web_apps.orders.landing_page.sign_in :default
 end
 
-Then /^Orders: Sign in using Jenkins web reg credentials$/ do
-  logger.step "Orders: Sign in"
-  ENV['WEB_REG_USR'].should be_truthy
-  ENV['WEB_REG_PW'].should be_truthy
-  web_apps.orders.landing_page.sign_in ENV['WEB_REG_USR'], ENV['WEB_REG_PW']
-end
-
 Then /^Sign out$/ do
   logger.step "Sign out"
   begin

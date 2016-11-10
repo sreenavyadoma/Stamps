@@ -6,7 +6,7 @@ Feature: PAM page
   @pam
   Scenario: PAM page
     Then PAM: Load Customer Search Page
-
+    Then PAM Customer Search: Set username as web reg credentials
     Then PAM Customer Search: Set username to m207hzh944o48f
     Then PAM Customer Search: Set 5.2 or lower
     Then PAM Customer Search: Click Search button
@@ -26,16 +26,3 @@ Feature: PAM page
     Then PAM AppCap Overrides: Set International Shipping to Always On
     Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM AppCap Overrides: Submit
-
-    Then Orders: Visit Sign-in page
-    Then Orders: Sign-in as new user random/pass111
-    Then Pause for 2 seconds
-    Then Toolbar: Add
-    Then Pause for 1 second
-    Then Open Settings Modal
-    Then Settings:  Set Logoff to 2 hours
-    Then Settings:  Save
-    Then Pause for 1 second
-    Then Sign out
-    Then WebReg Profile: Send username to standard out
-    Then Pause for 1 second

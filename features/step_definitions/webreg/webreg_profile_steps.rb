@@ -55,6 +55,7 @@ end
 
 Then /^WebReg Profile: Set User ID to (.*)$/ do |user_id|
   logger.step "WebReg Profile: Set User ID to #{user_id}"
+  @username = username
   webreg.profile.user_id.set user_id
 end
 
@@ -62,12 +63,10 @@ Then /^WebReg Profile: Set Password to (.*)$/ do |password|
   logger.step "WebReg Profile: Set Password to #{password}"
   @password=password
   webreg.profile.password.set password
-  step "WebReg Profile: Write password to properties file"
 end
 
 Then /^WebReg Profile: Set Re-Type password to (.*)$/ do |password|
   logger.step "WebReg Profile: Set Re-Type password to #{password}"
-  @password=password
   webreg.profile.retype_password.set password
 end
 
