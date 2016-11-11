@@ -893,7 +893,7 @@ module Stamps
 
 
 
-        @submit_button = ElementWrapper.new browser.button(text: "Continue") #Change by Galina from "Submit"
+        @submit_button = ElementWrapper.new browser.button(text: "Submit") #Change by Galina from "Submit"
         @supplies = ChooseSupplies.new param
         @userid_taken = UserIdTaken.new param
         @download_page = DownloadPage.new param
@@ -920,24 +920,19 @@ module Stamps
         connection_failed = WebRegSecureConnectionFailed.new param
 
         submit_button.safely_wait_until_present 6
-        raise "Submit button is not present on Membership Page! Check your test then file a defect." unless submit_button.present?
-        30.times do
+        submit_button.present?.should be true
+        10.times do
           sleep 1
           submit_button.safe_click
           submit_button.send_keys :enter
-          loading.safely_wait_while_present 3
-          page_header.safely_wait_until_present 3
-
-          raise error_occured.error_message if error_occured.present?
-
-          raise connection_failed.error_message if connection_failed.present?
-
-          return phone if phone.has_error?
-          return userid_taken if userid_taken.present?
-          return supplies if supplies.present?
-          return download_page if download_page.present?
-         end
-
+          loading.safely_wait_while_present 4
+          page_header.safely_wait_until_present 4
+          break unless submit_button.present?
+        end
+        15.times do
+          sleep 1
+          break if browser.url.include? "catalog"
+        end
       end
 
       # Added by Galina

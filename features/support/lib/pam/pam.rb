@@ -53,6 +53,7 @@ module Stamps
           sleep 2
           return customer_search_page if customer_search_page.present?
         end
+        customer_search_page.present?.should be true
       end
     end
   end

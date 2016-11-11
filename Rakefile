@@ -76,13 +76,13 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:generate_username) do |t|
+  t.profile = 'generate_username'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:output_username) do |t|
+  t.profile = 'output_username'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -121,8 +121,8 @@ Cucumber::Rake::Task.new(:webreg_pam_stg) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg_orders) do |t|
-  t.profile = 'webreg_orders'
+Cucumber::Rake::Task.new(:orders_sign_in) do |t|
+  t.profile = 'orders_sign_in'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -652,6 +652,11 @@ end
 
 Cucumber::Rake::Task.new(:webreg) do |t|
   t.profile = 'webreg'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:pam) do |t|
+  t.profile = 'pam'
   t.cucumber_opts = "-p cuke_reports"
 end
 

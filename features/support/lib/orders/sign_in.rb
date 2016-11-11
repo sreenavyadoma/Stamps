@@ -115,7 +115,7 @@ module Stamps
 
         username.safely_wait_until_present 8
 
-        5.times do
+        15.times do
           begin
             break if grid.present?
 
@@ -214,7 +214,7 @@ module Stamps
           end
         end
 
-        "Check your sign-in credentials: #{usr}".should eql "Orders Login Failed. Username: #{usr}\n#{browser.url}" unless toolbar.present?
+        #"Check your sign-in credentials: #{usr}".should eql "Orders Login Failed. Username: #{usr}\n#{browser.url}" unless toolbar.present?
       end
     end
   end

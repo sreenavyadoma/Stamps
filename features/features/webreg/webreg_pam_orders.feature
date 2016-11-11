@@ -32,7 +32,7 @@ Feature: WebReg
     Then WebReg Membership: Set Billing address same as mailing address to Checked
     Then WebReg Membership: Set Terms & Conditions to Checked
     Then WebReg Membership: Submit and correct errors
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
     Then Registration Choose Supplies: Place Order
     Then Registration Result: Wait for Download Page or Webpostage page to load
     #Then Registration: Expect Web Registration result page is either Download page or Webpostage
@@ -59,11 +59,11 @@ Feature: WebReg
     Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM AppCap Overrides: Submit
 
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
 
     Then Health Check: Print - Web Batch
 
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
 
     Then Pause for 2 seconds
 
@@ -74,6 +74,6 @@ Feature: WebReg
     Then Toolbar: Add
     Then Pause for 3 seconds
     Then Sign out
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
 
 

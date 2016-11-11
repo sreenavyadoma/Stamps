@@ -1,3 +1,20 @@
+Then /^Generate Username$/ do
+  ENV['WEB_REG_USR'] = ParameterHelper.rand_username
+  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
+end
+
+Then /^Output Username$/ do
+  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
+  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
+end
+
 Then /^WebReg Profile: Load Registration Page$/ do
   logger.step "WebReg Profile: Load Registration Page"
   status = webreg.visit
@@ -38,11 +55,13 @@ end
 
 Then /^WebReg Profile: Set User ID to (.*)$/ do |user_id|
   logger.step "WebReg Profile: Set User ID to #{user_id}"
+  @username = user_id
   webreg.profile.user_id.set user_id
 end
 
 Then /^WebReg Profile: Set Password to (.*)$/ do |password|
   logger.step "WebReg Profile: Set Password to #{password}"
+  @password=password
   webreg.profile.password.set password
 end
 
@@ -267,11 +286,11 @@ Then /^WebReg Profile: Continue to Mailing Information Page$/ do
     sleep 1
     break if webreg.profile.membership.present?
   end
-  raise "Unable to continue to Mailing Information Page" unless webreg.profile.membership.present?
+  "Unable to continue....".should eql "Mailing Information Page Did not load." unless webreg.profile.membership.present?
 end
 
 Then /^Registration Choose Supplies: Place Order$/ do
-  raise "Choose Supplies:  Place Order - @webreg_result is nil.  Check your test" if @webreg_result.nil?
+  @webreg_result.should be_truthy
   case @webreg_result
     when WebReg::UserIdTaken
       message = @webreg_result.message

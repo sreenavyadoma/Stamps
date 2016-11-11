@@ -27,7 +27,7 @@ end
 Given /^I am signed in to Orders$/ do
   logger.step "I am signed in to Orders"
   step "I launched default browser"
-  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
+  if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
   end
@@ -39,7 +39,7 @@ end
 Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
   logger.step "I am signed in to Orders as #{username}/#{password}"
   step "I launched default browser"
-  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
+  if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
   end
@@ -52,7 +52,7 @@ end
 Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, password|
   logger.step "I am signed in to Orders as #{browser}/#{username}/#{password}"
   step "I launched browser #{browser}"
-  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
+  if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
   end
@@ -64,7 +64,7 @@ end
 Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, username, password|
   logger.step "I am signed in to Orders as #{browser}/#{url}/#{username}/#{password}"
   step "I launched browser #{browser}"
-  if ParameterHelper.to_boolean ENV['HEALTHCHECK']
+  if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
   end

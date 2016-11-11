@@ -37,7 +37,7 @@ Feature: WebReg
     Then WebReg Membership: Submit and correct errors
 
     Then Registration Choose Supplies: Place Order
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
     Then Registration: Expect Web Registration result page is either Download page or Webpostage
 
     Then PAM: Load PAM Page
@@ -65,6 +65,6 @@ Feature: WebReg
     Then PAM AppCap Overrides: Set International Shipping to Always On
     Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM AppCap Overrides: Submit
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
 
 

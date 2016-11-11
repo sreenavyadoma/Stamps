@@ -75,5 +75,5 @@ Feature: WebReg
     Then Navigation Bar: Customer Balance
     Then Navigation Bar: Wait while balance less than 5000
     Then Sign out
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
     Then Pause for 1 second

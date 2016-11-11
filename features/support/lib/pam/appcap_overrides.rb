@@ -1,137 +1,144 @@
 module Stamps
   module Pam
-    class AppCapOverrides < Browser::Modal
 
-      class AppCapOverridesConfirmation < Browser::Modal
-        def present?
-          browser.td(text: 'AppCap Overrides').present?
-        end
+    class AppCapOverridesConfirmation < Browser::Modal
+      attr_reader :title, :ok_button
 
-        def ok
-          button = ElementWrapper.new browser.a(text: ' OK ')
-          button.click_while_present
-          Pam::CustomerProfile.new param
-        end
+      def initialize param
+        super param
+        @title ||= ElementWrapper.new browser.td(text: 'AppCap Overrides')
+        @ok_button ||= ElementWrapper.new browser.a(css: 'a[href*=Profile]')
       end
 
-      class InternetPostagePrinting < Browser::Modal
-        def always_on
-          browser.radio(css: 'input[name=IBIP][value=On]').set
-        end
-
-        def always_off
-          browser.radio(css: 'input[name=IBIP][value=off]').set
-        end
-
-        def no_override
-          browser.radio(css: 'input[name=IBIP][value=None]').set
-        end
-      end
-
-      class NetStampsPrinting < Browser::Modal
-        def always_on
-          browser.radio(css: 'input[name=NS][value=On]').set
-        end
-
-        def always_off
-          browser.radio(css: 'input[name=NS][value=off]').set
-        end
-
-        def no_override
-          browser.radio(css: 'input[name=NS][value=None]').set
-        end
-      end
-
-      class ShippingLabelPrinting < Browser::Modal
-        def always_on
-          browser.radio(css: 'input[name=SL][value=On]').set
-        end
-
-        def always_off
-          browser.radio(css: 'input[name=SL][value=off]').set
-        end
-
-        def no_override
-          browser.radio(css: 'input[name=SL][value=None]').set
-        end
-      end
-
-      class InternationalShipping < Browser::Modal
-        def always_on
-          browser.radio(css: 'input[name=IntlShipping][value=On]').set
-        end
-
-        def always_off
-          browser.radio(css: 'input[name=IntlShipping][value=off]').set
-        end
-
-        def no_override
-          browser.radio(css: 'input[name=IntlShipping][value=None]').set
-        end
-      end
-
-      class AllowHighRiskCountries < Browser::Modal
-        def always_on
-          browser.radio(css: 'input[name=AllowHighRiskCountries][value=On]').set
-        end
-
-        def always_off
-          browser.radio(css: 'input[name=AllowHighRiskCountries][value=off]').set
-        end
-
-        def no_override
-          browser.radio(css: 'input[name=AllowHighRiskCountries][value=None]').set
-        end
-      end
-
-      class MailingLabelPrinting < Browser::Modal
-        def always_on
-          browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=On]').set
-        end
-
-        def always_off
-          browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=off]').set
-        end
-
-        def no_override
-          browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=None]').set
-        end
+      def text
+        title.text
       end
 
       def present?
-        browser.text_field(css: 'input[name=IBIP][value=On]').present?
+        title.present?
       end
 
-      def internet_postage_printing
-        InternetPostagePrinting.new param
+      def ok
+        ok_button.send_keys :enter
+        ok_button.click_while_present
+      end
+    end
+
+    class InternetPostagePrinting < Browser::Modal
+      def always_on
+        browser.radio(css: 'input[name=IBIP][value=On]').set
       end
 
-      def netstamps_printing
-        NetStampsPrinting.new param
+      def always_off
+        browser.radio(css: 'input[name=IBIP][value=off]').set
       end
 
-      def shipping_label_printing
-        ShippingLabelPrinting.new param
+      def no_override
+        browser.radio(css: 'input[name=IBIP][value=None]').set
+      end
+    end
+
+    class NetStampsPrinting < Browser::Modal
+      def always_on
+        browser.radio(css: 'input[name=NS][value=On]').set
       end
 
-      def international_shipping
-        InternationalShipping.new param
+      def always_off
+        browser.radio(css: 'input[name=NS][value=off]').set
       end
 
-      def allow_high_risk_countries
-        AllowHighRiskCountries.new param
+      def no_override
+        browser.radio(css: 'input[name=NS][value=None]').set
+      end
+    end
+
+    class ShippingLabelPrinting < Browser::Modal
+      def always_on
+        browser.radio(css: 'input[name=SL][value=On]').set
       end
 
-      def mailing_label_printing
-        MailingLabelPrinting.new param
+      def always_off
+        browser.radio(css: 'input[name=SL][value=off]').set
+      end
+
+      def no_override
+        browser.radio(css: 'input[name=SL][value=None]').set
+      end
+    end
+
+    class InternationalShipping < Browser::Modal
+      def always_on
+        browser.radio(css: 'input[name=IntlShipping][value=On]').set
+      end
+
+      def always_off
+        browser.radio(css: 'input[name=IntlShipping][value=off]').set
+      end
+
+      def no_override
+        browser.radio(css: 'input[name=IntlShipping][value=None]').set
+      end
+    end
+
+    class AllowHighRiskCountries < Browser::Modal
+      def always_on
+        browser.radio(css: 'input[name=AllowHighRiskCountries][value=On]').set
+      end
+
+      def always_off
+        browser.radio(css: 'input[name=AllowHighRiskCountries][value=off]').set
+      end
+
+      def no_override
+        browser.radio(css: 'input[name=AllowHighRiskCountries][value=None]').set
+      end
+    end
+
+    class MailingLabelPrinting < Browser::Modal
+      def always_on
+        browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=On]').set
+      end
+
+      def always_off
+        browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=off]').set
+      end
+
+      def no_override
+        browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=None]').set
+      end
+    end
+
+    class AppCapOverrides < Browser::Modal
+      attr_reader :internet_postage_printing, :netstamps_printing, :shipping_label_printing, :international_shipping, :allow_high_risk_countries,
+                  :mailing_label_printing, :submit_button, :appcap_overrides
+
+      def initialize param
+        super param
+        @internet_postage_printing ||= InternetPostagePrinting.new param
+        @netstamps_printing ||= NetStampsPrinting.new param
+        @shipping_label_printing ||= ShippingLabelPrinting.new param
+        @international_shipping ||= InternationalShipping.new param
+        @allow_high_risk_countries ||= AllowHighRiskCountries.new param
+        @mailing_label_printing ||= MailingLabelPrinting.new param
+        @submit_button = ElementWrapper.new browser.input(name: 'submit')
+        @appcap_overrides = AppCapOverridesConfirmation.new param
+      end
+
+      def present?
+        submit_button.present?
       end
 
       def submit
-        button = ElementWrapper.new browser.text_field(name: 'submit')
-        appcap_overrides = AppCapOverridesConfirmation.new param
         5.times do
-          button.safe_click
-          return appcap_overrides if appcap_overrides.present?
+          submit_button.safe_click
+          if appcap_overrides.present?
+            logger.message appcap_overrides.text
+            logger.message appcap_overrides.text
+            logger.message appcap_overrides.text
+            logger.message appcap_overrides.text
+            logger.message appcap_overrides.text
+            return appcap_overrides
+          end
         end
       end
     end

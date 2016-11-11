@@ -79,7 +79,7 @@ Feature: "Country" grid column should appear to left of "Address" column by defa
     Then Grid: Expect Column Country appears to left of Address
 
     Then Sign out
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
 
 
 

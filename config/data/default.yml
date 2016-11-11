@@ -1,4 +1,9 @@
 
+webreg:
+  dev_usr_dir: C:\watir-webdriver
+  jenkins_usr_dir: \\jenkins01\Hudson\jenkins\webreg
+  webreg_usr_list_dir: \\jenkins01\Hudson\jenkins\webreg
+
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty
 
@@ -1727,7 +1732,6 @@ mail_credentials:
     mail_stamps_wn_series_specify:
       usr: fmaxzis6mr36
       pw: pass111
-
   cc:
     mail_authentication:
       usr: cce50cu2o
@@ -2035,7 +2039,6 @@ zone_5_through_8:
         city: Mocksville
         state: NC
         zip: 27028-4708
-
 
 us_states:
   AL:	Alabama

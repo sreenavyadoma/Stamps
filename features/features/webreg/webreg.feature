@@ -5,8 +5,8 @@ Feature: WebReg
   @webreg
   Scenario:
     Then WebReg Profile: Load Registration Page
-    Then WebReg Profile: Set User ID and Email to Random Value
-
+    Then WebReg Profile: Set User ID and Email to random
+    Then WebReg Profile: Send username to standard out
     Then WebReg Profile: Set Password to pass111
     Then WebReg Profile: Set Re-Type password to pass111
     Then WebReg Profile: Set How will you use Stamps.com to Both Mailing and Shipping
@@ -20,7 +20,7 @@ Feature: WebReg
     Then WebReg Membership: Set First Name to random
     Then WebReg Membership: Set Last Name to random
     Then WebReg Membership: Set Company to random
-    Then WebReg Membership: Set Address to 1990 West Grand Avenue
+    Then WebReg Membership: Set Address to 1990 East Grand Avenue
     Then WebReg Membership: Set City to El Segundo
     Then WebReg Membership: Set State to California
     Then WebReg Membership: Set Zip Code to 90245
@@ -34,11 +34,15 @@ Feature: WebReg
     Then WebReg Membership: Set Billing address same as mailing address to Checked
     Then WebReg Membership: Set Terms & Conditions to Checked
 
-    Then WebReg Membership: Submit and correct errors
-    Then Registration Choose Supplies: Place Order
-    Then WebReg Profile:  Send username to standard out
-    Then Registration: Expect Web Registration result page is either Download page or Webpostage
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Membership: Submit
+    Then WebReg Profile: Write credentials to properties file
+    Then WebReg Profile: Send username to standard out
 
+  @generate_username
+  Scenario:
+    Then Generate Username
+    Then WebReg Profile: Write username to properties file
 
-    Then Expect
+  @output_username
+  Scenario:
+    Then Output Username

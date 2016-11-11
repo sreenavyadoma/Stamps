@@ -1,74 +1,115 @@
 module Stamps
   module Pam
-    class ACHCreditConfirmation < Browser::Modal
+    class ACHCreditError < Browser::Modal
+      attr_reader :title, :ok_button
+
+      def initialize param
+        super param
+        @ok_button ||= ElementWrapper.new browser.a(css: "a[href*=AccountACHCredit]")
+        @title ||= ElementWrapper.new browser.td(text: "ACH Credit Error")
+      end
+
       def present?
-        browser.td(text: "ACH Credit Confirmation").present?
+        title.present?
       end
 
       def text
-        (ElementWrapper.new browser.td text: "ACH Credit Confirmation").text
+        title.text
       end
 
       def ok
-        profile = CustomerProfile.new param
-        link = Stamps::Browser::ElementWrapper.new browser.a(css: "a[href^=Profile]")
-        5.times do
-          link.safe_click
-          return profile if profile.present?
-        end
+        ok_button.click_while_present
       end
-
     end
 
-    class ACHPurchaseVerification < Browser::Modal
+    class ACHCreditConfirmation < Browser::Modal
+      attr_reader :title, :ok_button
+
+      def initialize param
+        super param
+        @title ||= ElementWrapper.new browser.td(text: "ACH Credit Confirmation")
+        @ok_button ||= ElementWrapper.new browser.a(css: "a[href^=Profile]")
+      end
+
       def present?
-        (browser.td text: "ACH Purchase Verification").present?
+        title.present?
       end
 
       def text
-        (ElementWrapper.new browser.td text: "ACH Purchase Verification").text
+        title.text
+      end
+
+      def ok
+        ok_button.click_while_present
+      end
+    end
+
+    class ACHPurchaseVerification < Browser::Modal
+      attr_reader :title, :confirmation, :ach_error, :yes_button, :no_button
+
+      def initialize param
+        super param
+        @title ||= ElementWrapper.new browser.td(text: "ACH Purchase Verification")
+        @confirmation = ACHCreditConfirmation.new param
+        @ach_error = ACHCreditError.new param
+        @yes_button = ElementWrapper.new browser.input(name: "YES")
+        @no_button = ElementWrapper.new browser.text_field(name: "NO")
+      end
+
+      def present?
+        title.present?
+      end
+
+      def text
+        title.text
       end
 
       def yes
-        confirmation = ACHCreditConfirmation.new param
-        button = Stamps::Browser::ElementWrapper.new browser.input(name: "YES")
         5.times do
-          button.send_keys :enter
-          button.safe_click
+          yes_button.send_keys :enter
+          yes_button.safe_click
+          sleep 1
           if confirmation.present?
-            logger.info confirmation.text
+            logger.message confirmation.text
+            logger.message confirmation.text
+            logger.message confirmation.text
+            logger.message confirmation.text
             return confirmation
           end
+          if ach_error.present?
+            logger.message ach_error.text
+            logger.message ach_error.text
+            logger.message ach_error.text
+            logger.message ach_error.text
+            return ach_error
+          end
         end
+        nil
       end
 
       def no
-        button = ElementWrapper.new browser.text_field(name: "NO")
-        button.click_while_present
+        no_button.click_while_present
       end
     end
 
     class ACHCredit < Browser::Modal
+      attr_reader :dollar_amount, :cents_amount, :comments, :purchase_verification, :submit_button
+
+      def initialize param
+        super param
+        @dollar_amount ||= TextBoxElement.new browser.text_field(name: "Amount")
+        @cents_amount ||= TextBoxElement.new browser.text_field(name: "AmountFraction")
+        @comments ||= TextBoxElement.new browser.text_field(name: "comments")
+        @purchase_verification = ACHPurchaseVerification.new param
+        @submit_button = ElementWrapper.new browser.input(:value => "Submit")
+      end
+
       def present?
-        browser.text_field(name: "AmountFraction").present?
-      end
-
-      def dollar_amount
-        TextBoxElement.new browser.text_field(name: "Amount")
-      end
-
-      def cents_amount
-        TextBoxElement.new browser.text_field(name: "AmountFraction")
-      end
-
-      def comments
-        TextBoxElement.new browser.text_field(name: "comments")
+        cents_amount.present?
       end
 
       def submit
-        purchase_verification = ACHPurchaseVerification.new param
-        submit_button = ElementWrapper.new browser.input(:value => "Submit")
-        15.times do
+        10.times do
           submit_button.send_keys :enter
           submit_button.safe_click
           if purchase_verification.present?
@@ -76,9 +117,7 @@ module Stamps
             return purchase_verification
           end
         end
-        raise "ACH Credit Confirmation page is not present!" unless purchase_verification.present?
       end
-
     end
   end
 end

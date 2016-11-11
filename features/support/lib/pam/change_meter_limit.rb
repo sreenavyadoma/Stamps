@@ -1,36 +1,39 @@
 module Stamps
   module Pam
-    class ChangeMeterLimit < Browser::Modal
-      class USPSCheckbox < Browser::Modal
-        def check
-          browser.checkbox(name: 'USPSApproved').set
-          browser.checkbox(name: 'USPSApproved').set
+    class USPSCheckbox < Browser::Modal
+      def check
+        browser.checkbox(name: 'USPSApproved').set
+        browser.checkbox(name: 'USPSApproved').set
 
-        end
-
-        def uncheck
-          browser.checkbox(name: 'USPSApproved').clear
-          browser.checkbox(name: 'USPSApproved').clear
-        end
       end
+
+      def uncheck
+        browser.checkbox(name: 'USPSApproved').clear
+        browser.checkbox(name: 'USPSApproved').clear
+      end
+    end
+
+    class ChangeMeterLimit < Browser::Modal
+      attr_reader :usps_approval, :new_meter_limit, :current_meter, :maximum_meter
+
+      def initialize param
+        super param
+        @usps_approval ||= USPSCheckbox.new param
+        @new_meter_limit ||= TextBoxElement.new browser.text_field(name: "resetAmt")
+        @current_meter ||= ElementWrapper.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
+        @maximum_meter ||= ElementWrapper.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
+      end
+
       def present?
         browser.td(text: "Change Meter Limit").present?
       end
 
       def current_meter_limit
-
+        current_meter.text.gsub(/\n/, "").to_f
       end
 
       def maximum_meter_limit
-
-      end
-
-      def new_meter_limit
-        TextBoxElement.new browser.text_field(name: "resetAmt")
-      end
-
-      def usps_approval
-        USPSCheckbox.new param
+        maximum_meter.text.gsub(/\n/, "").to_f
       end
 
       def submit

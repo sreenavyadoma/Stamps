@@ -33,7 +33,6 @@ end
 
 Then /^PAM Customer Search: Click Search button$/ do
   logger.step "PAM Customer Search: Click Search button"
-
   @customer_profile = @customer_search.search
   if @customer_profile.instance_of? Pam::CustomerProfile
     if @customer_profile.present?
@@ -68,85 +67,70 @@ Then /^PAM Customer Search: Verify user is found$/ do
 end
 
 Then /^PAM Customer Profile: Click Change Meter Limit link$/ do
-  if @pam_customer_profile_found
-    raise "Illegal State Exception:  Customer Profile was not loaded before this step was called.  Check your test." if @customer_profile.nil?
-    @change_meter_limit = @customer_profile.header.change_meter_limit
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @customer_profile.should be_truthy
+  @change_meter_limit = @customer_profile.header.change_meter_limit
 end
 
 Then /^PAM Change Meter Limit: Set New Meter Limit to \$(\d+)$/ do |new_limit|
   logger.step "PAM Change Meter Limit: Set New Meter Limit to #{new_limit}"
-  if @pam_customer_profile_found
-    @change_meter_limit.new_meter_limit.set new_limit
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @change_meter_limit.should be_truthy
+  # change meter limit if new limit is greater than current limit.
+  @change_limit = @change_meter_limit.current_meter_limit > new_limit.to_f
+  @change_meter_limit.new_meter_limit.set(new_limit )if @change_limit
 end
 
 Then /^PAM Change Meter Limit: Set USPS approval to Checked$/ do
   logger.step "PAM Change Meter Limit: Set USPS approval to Checked"
-  if @pam_customer_profile_found
+  if @change_limit
+    @change_meter_limit.should be_truthy
     @change_meter_limit.usps_approval.check
-  else
-    logger.step "PAM:  Customer not found!"
   end
 end
 
 Then /^PAM Change Meter Limit: Set USPS approval to Unchecked$/ do
   logger.step "PAM Change Meter Limit: Set USPS approval to Unchecked"
-  if @pam_customer_profile_found
+  if @change_limit
+    @change_meter_limit.should be_truthy
     @change_meter_limit.usps_approval.uncheck
-  else
-    logger.step "PAM:  Customer not found!"
   end
 end
 
 Then /^PAM Change Meter Limit: Click Submit$/ do
   logger.step "PAM Change Meter Limit: Click Submit"
-  if @pam_customer_profile_found
+  if @change_limit
+    @change_meter_limit.should be_truthy
     @customer_profile = @change_meter_limit.submit.ok
-  else
-    logger.step "PAM:  Customer not found!"
   end
 end
 
 Then /^PAM Customer Profile: Click ACH Credit link$/ do
   logger.step "PAM Customer Profile: Click ACH Credit link"
-  if @pam_customer_profile_found
-    raise "Illegal State Exception:  Customer Profile was not loaded before this step was called.  Check your test." if @customer_profile.nil?
-    @ach_credit = @customer_profile.header.ach_credit
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @customer_profile.should be_truthy
+  @ach_credit = @customer_profile.header.ach_credit
 end
 
 Then /^PAM ACH Purchase: Set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
   logger.step "PAM ACH Purchase: Set Amount to $#{dollars}.#{cents}"
-  if @pam_customer_profile_found
-    dollar_amount = @ach_credit.dollar_amount
-    dollar_amount.set dollars
-    dollar_amount.safe_click
-    dollar_amount.safe_click
-    dollar_amount.safe_click
+  @ach_credit.should be_truthy
+  dollar_amount = @ach_credit.dollar_amount
+  dollar_amount.set dollars
+  dollar_amount.safe_click
+  dollar_amount.safe_click
+  dollar_amount.safe_click
 
-    cents_amount = @ach_credit.cents_amount
-    cents_amount.safe_click
-    cents_amount.safe_click
-    cents_amount.safe_click
-    cents_amount.set cents
+  cents_amount = @ach_credit.cents_amount
+  cents_amount.safe_click
+  cents_amount.safe_click
+  cents_amount.safe_click
+  cents_amount.set cents
 
-    comments = @ach_credit.comments
-    comments.safe_click
-    comments.safe_click
-    comments.safe_click
-    comments.set @username
+  comments = @ach_credit.comments
+  comments.safe_click
+  comments.safe_click
+  comments.safe_click
+  comments.set @username
 
-    @customer_profile = @ach_credit.submit.yes.ok
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @ach_credit.submit.yes.ok
 end
 
 Then /^PAM Customer Profile: Get Available Mail Amount$/ do
@@ -165,186 +149,125 @@ end
 
 Then /^PAM Customer Profile: Click  AppCap Overrides link$/ do
   logger.step "PAM Customer Profile: Click  AppCap Overrides link"
-  if @pam_customer_profile_found
-    raise "Illegal State Exception:  Customer Profile was not loaded before this step was called.  Check your test." if @customer_profile.nil?
-    @appcapp_overrides = @customer_profile.header.appcapp_overrides
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @customer_profile.should be_truthy
+  @appcapp_overrides = @customer_profile.header.appcapp_overrides
 end
 
 Then /^PAM AppCap Overrides: Set Internet Mail Printing to Always On$/ do
   logger.step "PAM AppCap Overrides: Set Internet Mail Printing to Always On"
-  if @pam_customer_profile_found
-    @appcapp_overrides.internet_postage_printing.always_on
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.internet_postage_printing.always_on
 end
 
 Then /^PAM AppCap Overrides: Set Internet Mail Printing to Always Off$/ do
   logger.step "PAM AppCap Overrides: Set Internet Mail Printing to Always Off"
-  if @pam_customer_profile_found
-    @appcapp_overrides.internet_postage_printing.always_off
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.internet_postage_printing.always_off
 end
 
 Then /^PAM AppCap Overrides: Set Internet Mail Printing to No Override$/ do
   logger.step "PAM AppCap Overrides: Set Internet Mail Printing to No Override"
-  if @pam_customer_profile_found
-    @appcapp_overrides.internet_postage_printing.no_override
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.internet_postage_printing.no_override
 end
 
 Then /^PAM AppCap Overrides: Set Netstamps Printing to Always On$/ do
   logger.step "PAM AppCap Overrides: Set Netstamps Printing to Always On"
-  if @pam_customer_profile_found
-    @appcapp_overrides.netstamps_printing.always_on
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.netstamps_printing.always_on
 end
 
 Then /^PAM AppCap Overrides: Set Netstamps Printing to Always Off$/ do
   logger.step "PAM AppCap Overrides: Set Netstamps Printing to Always Off"
-  if @pam_customer_profile_found
-    @appcapp_overrides.netstamps_printing.always_off
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.netstamps_printing.always_off
 end
 
 Then /^PAM AppCap Overrides: Set Netstamps Printing to No Override$/ do
   logger.step "PAM AppCap Overrides: Set Netstamps Printing to No Override"
-  if @pam_customer_profile_found
-    @appcapp_overrides.netstamps_printing.no_override
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.netstamps_printing.no_override
 end
 
 Then /^PAM AppCap Overrides: Set Shipping Label Printing to Always On$/ do
   logger.step "PAM AppCap Overrides: Set Shipping Label Printing to Always On"
-  if @pam_customer_profile_found
-    @appcapp_overrides.shipping_label_printing.always_on
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.shipping_label_printing.always_on
 end
 
 Then /^PAM AppCap Overrides: Set Shipping Label Printing to Always Off$/ do
   logger.step "PAM AppCap Overrides: Set Shipping Label Printing to Always Off"
-  if @pam_customer_profile_found
-    @appcapp_overrides.shipping_label_printing.always_off
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.shipping_label_printing.always_off
 end
 
 Then /^PAM AppCap Overrides: Set Shipping Label Printing to Override$/ do
   logger.step "PAM AppCap Overrides: Set Shipping Label Printing to Override"
-  if @pam_customer_profile_found
-    @appcapp_overrides.shipping_label_printing.no_override
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.shipping_label_printing.no_override
 end
 
 Then /^PAM AppCap Overrides: Set International Shipping to Always On$/ do
   logger.step "PAM AppCap Overrides: Set International Shipping to Always On"
-  if @pam_customer_profile_found
-    @appcapp_overrides.international_shipping.always_on
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.international_shipping.always_on
 end
 
 Then /^PAM AppCap Overrides: Set International Shipping to Always Off$/ do
   logger.step "PAM AppCap Overrides: Set International Shipping to Always Off"
-  if @pam_customer_profile_found
-    @appcapp_overrides.international_shipping.always_off
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.international_shipping.always_off
 end
 
 Then /^PAM AppCap Overrides: Set International Shipping to Override$/ do
   logger.step "PAM AppCap Overrides: Set International Shipping to Override"
-  if @pam_customer_profile_found
-    @appcapp_overrides.international_shipping.no_override
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.international_shipping.no_override
 end
 
 Then /^PAM AppCap Overrides: Set Allow High Risk Countries to Always On$/ do
   logger.step "PAM AppCap Overrides: Set Allow High Risk Countries to Always On"
-  if @pam_customer_profile_found
-    @appcapp_overrides.allow_high_risk_countries.always_on
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.allow_high_risk_countries.always_on
 end
 
 Then /^PAM AppCap Overrides: Set Allow High Risk Countries to Always Off$/ do
   logger.step "PAM AppCap Overrides: Set Allow High Risk Countries to Always Off"
-  if @pam_customer_profile_found
-    @appcapp_overrides.allow_high_risk_countries.always_off
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.allow_high_risk_countries.always_off
 end
 
 Then /^PAM AppCap Overrides: Set Allow High Risk Countries to Override$/ do
   logger.step "PAM AppCap Overrides: Set Allow High Risk Countries to Override"
-  if @pam_customer_profile_found
-    @appcapp_overrides.allow_high_risk_countries.no_override
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.allow_high_risk_countries.no_override
 end
 
 Then /^PAM AppCap Overrides: Set Mailing Label Printing to Always On$/ do
   logger.step "PAM AppCap Overrides: Set Mailing Label Printing to Always On"
-  if @pam_customer_profile_found
-    @appcapp_overrides.mailing_label_printing.always_on
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.mailing_label_printing.always_on
 end
 
 Then /^PAM AppCap Overrides: Set Mailing Label Printing to Always Off$/ do
   logger.step "PAM AppCap Overrides: Set Mailing Label Printing to Always Off"
-  if @pam_customer_profile_found
-    @appcapp_overrides.mailing_label_printing.always_off
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.mailing_label_printing.always_off
 end
 
 Then /^PAM AppCap Overrides: Set Mailing Label Printing to Override$/ do
   logger.step "PAM AppCap Overrides: Set Mailing Label Printing to Override"
-  if @pam_customer_profile_found
-    @appcapp_overrides.mailing_label_printing.no_override
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.mailing_label_printing.no_override
 end
 
 Then /^PAM AppCap Overrides: Submit$/ do
   logger.step "PAM AppCap Overrides: Submit"
-  if @pam_customer_profile_found
-    @customer_profile = @appcapp_overrides.submit.ok
-  else
-    logger.step "PAM:  Customer not found!"
-  end
+  @appcapp_overrides.should be_truthy
+  @appcapp_overrides.submit.ok
 end
 
-Then /^WebReg Profile:  Send username to standard out$/ do
+Then /^WebReg Profile: Send username to standard out$/ do
   logger.message " ############## NEW USER ID "
   logger.message " ############## #{@username}"
   logger.message " ############## #{@username}"

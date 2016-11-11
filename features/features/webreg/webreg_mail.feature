@@ -39,7 +39,7 @@ Feature: First time Mail sign in
     Then WebReg Membership: Submit and correct errors
     Then Registration Choose Supplies: Place Order
     Then Registration: Expect Web Registration result page is either Download page or Webpostage
-    Then WebReg Profile:  Send username to standard out
+    Then WebReg Profile: Send username to standard out
 
     Then What's New: Expect modal is present
     Then What's new: Click More Info
