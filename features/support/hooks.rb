@@ -72,7 +72,7 @@ Before do  |scenario|
     else
       "Valid values are WEB_APP=orders or WEB_APP=mail".should eql "WEB_APP=#{ENV['WEB_APP']} is not a valid value."
     end
-  end unless (ENV['TEST'] == 'healthcheck' || ENV['TEST'].include?('webreg'))
+  end unless (ENV['TEST'] == 'healthcheck' || ENV['TEST'].include?('webreg') || ENV['TEST'].include?('pam'))
   logger.message "-"
 
   logger.message "Running Tests..."

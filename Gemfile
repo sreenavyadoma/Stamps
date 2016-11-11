@@ -9,6 +9,7 @@ gem 'log4r'
 gem 'rautomation'
 gem 'gherkin'
 gem 'cucumber'
+gem 'yml_reader'
 
 
 

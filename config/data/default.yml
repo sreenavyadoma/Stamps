@@ -1,8 +1,8 @@
 
 webreg:
-  dev_usr_dir: c
-  jenkins_usr_dir: \\jenkins01\Hudson\jenkins\web_reg
-  webreg_usr_list_dir: \\jenkins01\Hudson\jenkins\web_reg
+  dev_usr_dir: C:\watir-webdriver
+  jenkins_usr_dir: \\jenkins01\Hudson\jenkins\webreg
+  webreg_usr_list_dir: \\jenkins01\Hudson\jenkins\webreg
 
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty

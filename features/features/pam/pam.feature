@@ -1,13 +1,13 @@
 
 Feature: PAM page
   Background:
-    Given PAM: Load PAM Page
+    Given I launched default browser
 
   @pam
   Scenario: PAM page
+    Then PAM: Load PAM Page
     Then PAM: Load Customer Search Page
     Then PAM Customer Search: Set username as web reg credentials
-    Then PAM Customer Search: Set username to m207hzh944o48f
     Then PAM Customer Search: Set 5.2 or lower
     Then PAM Customer Search: Click Search button
 

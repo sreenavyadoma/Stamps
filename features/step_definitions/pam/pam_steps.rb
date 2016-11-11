@@ -69,8 +69,8 @@ end
 
 Then /^PAM Customer Profile: Click Change Meter Limit link$/ do
   if @pam_customer_profile_found
-    raise "Illegal State Exception:  Customer Profile was not loaded before this step was called.  Check your test." if @customer_profile.nil?
-    @change_meter_limit = @customer_profile.header_elem.change_meter_limit
+    "Check your test.".should eql "Illegal State Exception:  Customer Profile was not loaded before this step was called." if @customer_profile.nil?
+    @change_meter_limit = @customer_profile.header.change_meter_limit
   else
     logger.step "PAM:  Customer not found!"
   end
@@ -115,8 +115,8 @@ end
 Then /^PAM Customer Profile: Click ACH Credit link$/ do
   logger.step "PAM Customer Profile: Click ACH Credit link"
   if @pam_customer_profile_found
-    raise "Illegal State Exception:  Customer Profile was not loaded before this step was called.  Check your test." if @customer_profile.nil?
-    @ach_credit = @customer_profile.header_elem.ach_credit
+    "Check your test.".should eql "Illegal State Exception:  Customer Profile was not loaded before this step was called." if @customer_profile.nil?
+    @ach_credit = @customer_profile.header.ach_credit
   else
     logger.step "PAM:  Customer not found!"
   end

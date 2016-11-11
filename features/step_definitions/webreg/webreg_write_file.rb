@@ -1,15 +1,17 @@
 
 Then /^Orders: Sign in using Jenkins web reg credentials$/ do
   logger.step "Orders: Sign in"
-  ENV['USR'].should be_truthy
-  ENV['PW'].should be_truthy
-  web_apps.orders.landing_page.sign_in ENV['USR'], ENV['PW']
+  CONFIG = YAML.load_file(webreg_usr_filename)
+  CONFIG['usr'].should be_truthy
+  CONFIG['pw'].should be_truthy
+  web_apps.orders.landing_page.sign_in CONFIG['usr'], CONFIG['pw']
 end
 
 Then /^PAM Customer Search: Set username as web reg credentials$/ do
   logger.info "PAM Customer Search: Set username as web reg credentials"
-  ENV['USR'].should be_truthy
-  step "PAM Customer Search: Set username to #{ENV['USR']}"
+  CONFIG = YAML.load_file(webreg_usr_filename)
+  CONFIG['usr'].should be_truthy
+  step "PAM Customer Search: Set username to #{CONFIG['usr']}"
 end
 
 Then /^WebReg Profile: Write credentials to properties file$/ do
@@ -19,13 +21,13 @@ end
 
 Then /^WebReg Profile: Write username to properties file$/ do
   logger.message "WebReg Profile: Write username to properties file: #{webreg_usr_filename}"
-  File.open(webreg_usr_filename, 'a+') {|f| f.write("USR=#{@username}\n")}
+  File.open(webreg_usr_filename, 'w+') {|f| f.write("usr: #{@username}\n")}
   step "WebReg Profile: Save username to file"
 end
 
 Then /^WebReg Profile: Write password to properties file$/ do
   logger.message "WebReg Profile: Write password to properties file: #{webreg_usr_filename}"
-  File.open(webreg_usr_filename, 'a+') {|f| f.write("PW=#{@password}\n")}
+  File.open(webreg_usr_filename, 'a+') {|f| f.write("pw: #{@password}\n")}
 end
 
 Then /^WebReg Profile: Save username to file$/ do
@@ -42,3 +44,5 @@ Then /^WebReg PAM Orders: Write username to properties file$/ do
   logger.message "WebReg Profile: Write username to properties file: #{reg_pam_ord_data_filename}"
   File.open(reg_pam_ord_data_filename, 'a+') {|f| f.write("#{@username}\n")}
 end
+
+
