@@ -55,7 +55,7 @@ end
 
 Then /^WebReg Profile: Set User ID to (.*)$/ do |user_id|
   logger.step "WebReg Profile: Set User ID to #{user_id}"
-  @username = username
+  @username = user_id
   webreg.profile.user_id.set user_id
 end
 

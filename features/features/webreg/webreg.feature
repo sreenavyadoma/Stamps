@@ -5,7 +5,7 @@ Feature: WebReg
   @webreg
   Scenario:
     Then WebReg Profile: Load Registration Page
-    Then WebReg Profile: Set User ID and Email to Random Value
+    Then WebReg Profile: Set User ID and Email to random
     Then WebReg Profile: Send username to standard out
     Then WebReg Profile: Set Password to pass111
     Then WebReg Profile: Set Re-Type password to pass111
