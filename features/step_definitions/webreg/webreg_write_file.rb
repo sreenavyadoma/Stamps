@@ -32,17 +32,29 @@ end
 
 Then /^WebReg Profile: Save username to file$/ do
   logger.message "WebReg Profile: Save username to file: #{webreg_data_filename}"
-  File.open(webreg_data_filename, 'a+') {|f| f.write("#{@username}\n")} unless File.readlines(webreg_data_filename).to_s.include? @username
+  if File.exist? webreg_data_filename
+    File.open(webreg_data_filename, 'a+') {|f| f.write("#{@username}\n")} unless File.readlines(webreg_data_filename).to_s.include? @username
+  else
+    File.open(webreg_data_filename, 'w+') {|f| f.write("#{@username}\n")}
+  end
 end
 
 Then /^PAM: Write username to properties file$/ do
   logger.message "WebReg Profile: Write username to properties file: #{webreg_pam_data_filename}"
-  File.open(webreg_pam_data_filename, 'a+') {|f| f.write("#{@username}\n")} unless File.readlines(webreg_pam_data_filename).to_s.include? @username
+  if File.exist? webreg_pam_data_filename
+    File.open(webreg_pam_data_filename, 'a+') {|f| f.write("#{@username}\n")} unless File.readlines(webreg_pam_data_filename).to_s.include? @username
+  else
+    File.open(webreg_pam_data_filename, 'w+') {|f| f.write("#{@username}\n")}
+  end
 end
 
 Then /^WebReg PAM Orders: Write username to properties file$/ do
   logger.message "WebReg Profile: Write username to properties file: #{webreg_pam_ord_data_filename}"
-  File.open(webreg_pam_ord_data_filename, 'a+') {|f| f.write("#{@username}\n")} unless File.readlines(webreg_pam_ord_data_filename).to_s.include? @username
+  if File.exist? webreg_pam_ord_data_filename
+    File.open(webreg_pam_ord_data_filename, 'a+') {|f| f.write("#{@username}\n")} unless File.readlines(webreg_pam_ord_data_filename).to_s.include? @username
+  else
+    File.open(webreg_pam_ord_data_filename, 'w+') {|f| f.write("#{@username}\n")}
+  end
 end
 
 
