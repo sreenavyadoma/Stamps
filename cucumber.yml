@@ -29,11 +29,11 @@ authentication: --tags @authentication --guess VERBOSE=false JENKINS=true HEALTH
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=customs_form_auto_calculate_weight
 whats_new: --tags @whats_new --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=whats_new
 
-webreg: --tags @webreg --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=webreg
-orders_sign_in: --tags @orders_sign_in --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=orders_sign_in
-pam: --tags @pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=pam
-webreg_pam: --tags @webreg_pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=webreg_pam
-webreg_pam_orders: --tags @webreg_pam_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=webreg_pam_orders
+webreg: --tags @webreg --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
+orders_sign_in: --tags @orders_sign_in --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
+pam: --tags @pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=pam TEST=pam
+webreg_pam: --tags @webreg_pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
+webreg_pam_orders: --tags @webreg_pam_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
 
 details_non_integer_lbs: --tags @details_non_integer_lbs --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=details_non_integer_lbs
 grid_order_status: --tags @grid_order_status --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=grid_order_status
