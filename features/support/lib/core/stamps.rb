@@ -62,9 +62,9 @@ module Stamps
     begin
       begin
         if ParameterHelper.to_bool(ENV['JENKINS'])
-          @webreg_usr_filename = "#{data_for(:webreg, {})['jenkins_usr_dir']}\\#{ENV['URL']}_webreg.yml"
+          @webreg_usr_filename ||= "#{data_for(:webreg, {})['jenkins_usr_dir']}\\#{ENV['URL']}_webreg.yml"
         else
-          @webreg_usr_filename = "#{data_for(:webreg, {})['dev_usr_dir']}\\#{ENV['URL']}_webreg.yml"
+          @webreg_usr_filename ||= "#{data_for(:webreg, {})['dev_usr_dir']}\\#{ENV['URL']}_webreg.yml"
         end
         logger.message "WebReg parameter file: #{@filename}"        
       end if @webreg_usr_filename.nil?
@@ -78,7 +78,7 @@ module Stamps
 
   def webreg_data_filename
     begin
-      "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg.txt"
+      @webreg_data_filename ||= "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg.txt"
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
@@ -88,7 +88,7 @@ module Stamps
 
   def webreg_pam_data_filename
     begin
-      "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg_pam.txt"
+      @webreg_pam_data_filename ||= "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg_pam.txt"
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
@@ -98,7 +98,7 @@ module Stamps
 
   def webreg_pam_ord_data_filename
     begin
-      "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg_pam_ord.txt"
+      @webreg_pam_ord_data_filename ||= "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg_pam_ord.txt"
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
