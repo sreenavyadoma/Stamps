@@ -31,6 +31,7 @@ whats_new: --tags @whats_new --guess VERBOSE=false JENKINS=true HEALTHCHECK=fals
 
 webreg: --tags @webreg --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=webreg
 orders_sign_in: --tags @orders_sign_in --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=orders_sign_in
+pam: --tags @pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=pam
 webreg_pam: --tags @webreg_pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=webreg_pam
 webreg_pam_orders: --tags @webreg_pam_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=webreg_pam_orders
 

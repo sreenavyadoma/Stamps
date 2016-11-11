@@ -3,12 +3,12 @@ module Stamps
     class PamPageHeader < Browser::Modal
       def change_meter_limit
         link = Stamps::Browser::ElementWrapper.new browser.a(text: "Change Meter Limit")
-        page = ChangeMeterLimit.new param
+        meter_limit_page = ChangeMeterLimit.new param
         change_meter_limit_header = Browser::ElementWrapper.new browser.td(text: "Change Meter Limit")
         5.times do
           link.safe_click
           change_meter_limit_header.safely_wait_until_present 4
-          return page if page.present?
+          return meter_limit_page if meter_limit_page.present?
         end
       end
 

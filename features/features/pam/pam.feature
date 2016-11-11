@@ -26,3 +26,4 @@ Feature: PAM page
     Then PAM AppCap Overrides: Set International Shipping to Always On
     Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM AppCap Overrides: Submit
+    Then Pause for 4 seconds
