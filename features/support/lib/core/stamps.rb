@@ -86,7 +86,7 @@ module Stamps
     end
   end
 
-  def reg_pam_data_filename
+  def webreg_pam_data_filename
     begin
       "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg_pam.txt"
     rescue Exception => e
@@ -96,7 +96,7 @@ module Stamps
     end
   end
 
-  def reg_pam_ord_data_filename
+  def webreg_pam_ord_data_filename
     begin
       "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg_pam_ord.txt"
     rescue Exception => e

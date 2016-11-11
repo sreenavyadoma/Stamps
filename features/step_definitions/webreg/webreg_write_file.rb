@@ -36,13 +36,13 @@ Then /^WebReg Profile: Save username to file$/ do
 end
 
 Then /^PAM: Write username to properties file$/ do
-  logger.message "WebReg Profile: Write username to properties file: #{reg_pam_data_filename}"
-  File.open(reg_pam_data_filename, 'a+') {|f| f.write("#{@username}\n")} unless File.readlines(reg_pam_data_filename).to_s.include? @username
+  logger.message "WebReg Profile: Write username to properties file: #{webreg_pam_data_filename}"
+  File.open(webreg_pam_data_filename, 'a+') {|f| f.write("#{@username}\n")} unless File.readlines(webreg_pam_data_filename).to_s.include? @username
 end
 
 Then /^WebReg PAM Orders: Write username to properties file$/ do
-  logger.message "WebReg Profile: Write username to properties file: #{reg_pam_ord_data_filename}"
-  File.open(reg_pam_ord_data_filename, 'a+') {|f| f.write("#{@username}\n")} unless File.readlines(reg_pam_ord_data_filename).to_s.include? @username
+  logger.message "WebReg Profile: Write username to properties file: #{webreg_pam_ord_data_filename}"
+  File.open(webreg_pam_ord_data_filename, 'a+') {|f| f.write("#{@username}\n")} unless File.readlines(webreg_pam_ord_data_filename).to_s.include? @username
 end
 
 
