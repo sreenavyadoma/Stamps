@@ -61,21 +61,21 @@ module Stamps
         customer_profile = CustomerProfile.new param
         customer_profile_not__found = CustomerProfileNotFound.new param
         meter_info_unavailable = MeterInfoNotAvailableForAccount.new param
-        count = 15
+        count = 20
         count.times do |counter|
           button.send_keys :enter
           button.safe_click
           sleep 1
           return customer_profile if customer_profile.present?
           if customer_profile_not__found.present?
-            logger.info "PAM:  #{customer_profile_not__found.message}"
+            logger.info "PAM:  #{customer_profile_not__found.text}"
             browser.back if counter < count-1
           end
         end
-
         return customer_profile if customer_profile.present?
         return customer_profile_not__found if customer_profile_not__found.present?
         meter_info_unavailable if meter_info_unavailable.present?
+        customer_profile_not__found.text.should_not include "No records found" if customer_profile_not__found.present?
       end
     end
   end
